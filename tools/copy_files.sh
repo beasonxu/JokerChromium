@@ -2,9 +2,9 @@
 
 set -e
 
-PRO_DIR="/f/chromiumcopy"
-BASE_DIR="/f/chromium/src"
-RELEASE_DIR="${BASE_DIR}/out/89"
+PRO_DIR="/home/sxh/chromiumcopy1"
+BASE_DIR="/home/sxh/chromium/src"
+RELEASE_DIR="${BASE_DIR}/out/Default"
 
 APP_DIR="${PRO_DIR}/app"
 MODULES_DIR="${PRO_DIR}"
