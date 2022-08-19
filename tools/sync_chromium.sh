@@ -2,9 +2,9 @@
 
 set -e
 
-PRO_DIR="/f/chromiumcopy"
-BASE_DIR="/f/chromium/src"
-RELEASE_DIR="${BASE_DIR}/out/89"
+PRO_DIR="/home/sxh/chromiumcopy"
+BASE_DIR="/home/sxh/chromium/src"
+RELEASE_DIR="${BASE_DIR}/out/Default"
 APP_DIR="${PRO_DIR}/app"
 MODULES_DIR="${PRO_DIR}"
 
@@ -207,7 +207,12 @@ sync_aidl() {
 		# ${BASE_DIR}/third_party/cacheinvalidation/src/java/* \
 		# ${BASE_DIR}/third_party/feed/src/src/main/java/* \
 sync_chrome() {
-	mkdir -p ${APP_DIR}/{src/main/{java,res,aidl},libs}
+  local asset_dir="${APP_DIR}/src/main/assets"
+  	mkdir -p "$asset_dir"
+	mkdir -p "${APP_DIR}/src/main/java"
+	mkdir -p "${APP_DIR}/src/main/res"
+	mkdir -p "${APP_DIR}/src/main/aidl"
+	mkdir -p "${APP_DIR}/src/main/libs"
 	local src_dir="${APP_DIR}/src/main/java"
 	local res_dir="${APP_DIR}/src/main/res"
 
