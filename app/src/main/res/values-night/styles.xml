@@ -4,7 +4,6 @@
      found in the LICENSE file. -->
 
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="ColorOverlay.ChromiumAndroid" parent="ColorOverlay.ChromiumAndroid.DayNight">
-        <!-- TODO(https://crbug.com/1216642): Move color attributes here. -->
+    <style name="ColorOverlay.Ui" parent="ColorOverlay.Ui.DayNight">
     </style>
 </resources>
