@@ -88,14 +88,14 @@ public class AnnouncementNotificationManager {
             };
 
             // Try to load native.
-            ChromeBrowserInitializer.getInstance().handlePreNativeStartup(parts);
+            ChromeBrowserInitializer.getInstance().handlePreNativeStartupAndLoadLibraries(parts);
             ChromeBrowserInitializer.getInstance().handlePostNativeStartup(true, parts);
         }
     }
 
     private static PendingIntentProvider createIntent(
             Context context, @IntentType int intentType, String url) {
-        Intent intent = new Intent(context, AnnouncementNotificationManager.Receiver.class);
+        Intent intent = new Intent(context, Receiver.class);
         intent.putExtra(EXTRA_INTENT_TYPE, intentType);
         intent.putExtra(EXTRA_URL, url);
         return PendingIntentProvider.getBroadcast(
@@ -118,9 +118,8 @@ public class AnnouncementNotificationManager {
         Context context = ContextUtils.getApplicationContext();
         NotificationWrapperBuilder builder =
                 NotificationWrapperBuilderFactory
-                        .createNotificationWrapperBuilder(true /* preferCompat */,
+                        .createNotificationWrapperBuilder(
                                 ChromeChannelDefinitions.ChannelId.ANNOUNCEMENT,
-                                null /* remoteAppPackageName */,
                                 new NotificationMetadata(
                                         NotificationUmaTracker.SystemNotificationType.ANNOUNCEMENT,
                                         ANNOUNCEMENT_NOTIFICATION_TAG,

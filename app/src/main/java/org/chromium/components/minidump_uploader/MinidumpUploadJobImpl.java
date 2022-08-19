@@ -73,9 +73,9 @@ public class MinidumpUploadJobImpl implements MinidumpUploadJob {
      * to the worker thread.
      */
     private class UploadRunnable implements Runnable {
-        private final MinidumpUploadJob.UploadsFinishedCallback mUploadsFinishedCallback;
+        private final UploadsFinishedCallback mUploadsFinishedCallback;
 
-        public UploadRunnable(MinidumpUploadJob.UploadsFinishedCallback uploadsFinishedCallback) {
+        public UploadRunnable(UploadsFinishedCallback uploadsFinishedCallback) {
             mUploadsFinishedCallback = uploadsFinishedCallback;
         }
 
@@ -158,7 +158,7 @@ public class MinidumpUploadJobImpl implements MinidumpUploadJob {
 
     @Override
     public void uploadAllMinidumps(
-            final MinidumpUploadJob.UploadsFinishedCallback uploadsFinishedCallback) {
+            final UploadsFinishedCallback uploadsFinishedCallback) {
         ThreadUtils.assertOnUiThread();
         if (mWorkerThread != null) {
             throw new RuntimeException(

@@ -69,8 +69,8 @@ public class UnguessableToken implements Parcelable {
         return 31 * mLowHash + mHighHash;
     }
 
-    public static final Parcelable.Creator<UnguessableToken> CREATOR =
-            new Parcelable.Creator<UnguessableToken>() {
+    public static final Creator<UnguessableToken> CREATOR =
+            new Creator<UnguessableToken>() {
                 @Override
                 public UnguessableToken createFromParcel(Parcel source) {
                     long high = source.readLong();

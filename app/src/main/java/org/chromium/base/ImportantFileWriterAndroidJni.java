@@ -2,19 +2,17 @@ package org.chromium.base;
 
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ImportantFileWriterAndroidJni implements ImportantFileWriterAndroid.Natives {
+class ImportantFileWriterAndroidJni implements ImportantFileWriterAndroid.Natives {
   private static ImportantFileWriterAndroid.Natives testInstance;
 
-  public static final JniStaticTestMocker<ImportantFileWriterAndroid.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.base.ImportantFileWriterAndroid.Natives>() {
-    @java.lang.Override
-    public void setInstanceForTesting(org.chromium.base.ImportantFileWriterAndroid.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+  public static final JniStaticTestMocker<ImportantFileWriterAndroid.Natives> TEST_HOOKS = new JniStaticTestMocker<ImportantFileWriterAndroid.Natives>() {
+    @Override
+    public void setInstanceForTesting(ImportantFileWriterAndroid.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

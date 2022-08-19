@@ -1,19 +1,17 @@
 package org.chromium.base;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class PowerMonitorJni implements PowerMonitor.Natives {
+class PowerMonitorJni implements PowerMonitor.Natives {
   private static PowerMonitor.Natives testInstance;
 
-  public static final JniStaticTestMocker<PowerMonitor.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.base.PowerMonitor.Natives>() {
-    @java.lang.Override
-    public void setInstanceForTesting(org.chromium.base.PowerMonitor.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+  public static final JniStaticTestMocker<PowerMonitor.Natives> TEST_HOOKS = new JniStaticTestMocker<PowerMonitor.Natives>() {
+    @Override
+    public void setInstanceForTesting(PowerMonitor.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;
@@ -23,6 +21,11 @@ final class PowerMonitorJni implements PowerMonitor.Natives {
   @Override
   public void onBatteryChargingChanged() {
     GEN_JNI.org_chromium_base_PowerMonitor_onBatteryChargingChanged();
+  }
+
+  @Override
+  public void onThermalStatusChanged(int thermalStatus) {
+    GEN_JNI.org_chromium_base_PowerMonitor_onThermalStatusChanged(thermalStatus);
   }
 
   public static PowerMonitor.Natives get() {

@@ -47,7 +47,7 @@ public class TextViewEllipsizerSafe extends TextView {
         // First trim the string to some reasonable length limit.
         int beginIndex = Math.max(0, stringToEllipsize.length() - STRING_MAXIMUM_LENGTH);
         String result = stringToEllipsize.substring(beginIndex);
-        int measureSpec = android.view.View.MeasureSpec.EXACTLY;
+        int measureSpec = MeasureSpec.EXACTLY;
         while (result.length() > STRING_MINIMUM_LENGTH) {
             try {
                 // Attempt to set and measure the altered text.  In rare cases this may crash.

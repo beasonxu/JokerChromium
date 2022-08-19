@@ -86,7 +86,7 @@ public class DistilledPagePrefsView extends LinearLayout
 
     public static void showDialog(Context context) {
         AlertDialog.Builder builder =
-                new AlertDialog.Builder(context, R.style.Theme_Chromium_AlertDialog);
+                new AlertDialog.Builder(context, R.style.ThemeOverlay_BrowserUI_AlertDialog);
         builder.setView(DistilledPagePrefsView.create(context));
         builder.show();
     }
@@ -258,7 +258,7 @@ public class DistilledPagePrefsView extends LinearLayout
     private RadioButton initializeAndGetButton(int id, final int theme) {
         Theme.validate(theme);
         final RadioButton button = (RadioButton) findViewById(id);
-        button.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 mDistilledPagePrefs.setTheme(theme);

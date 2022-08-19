@@ -4,7 +4,6 @@
 
 package org.chromium.base;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityOptions;
@@ -45,14 +44,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.core.widget.ImageViewCompat;
-
-import org.chromium.base.annotations.VerifiesOnLollipopMR1;
-import org.chromium.base.annotations.VerifiesOnM;
-import org.chromium.base.annotations.VerifiesOnN;
-import org.chromium.base.annotations.VerifiesOnO;
-import org.chromium.base.annotations.VerifiesOnP;
-import org.chromium.base.annotations.VerifiesOnQ;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -69,8 +62,7 @@ public class ApiCompatibilityUtils {
     private ApiCompatibilityUtils() {
     }
 
-    @VerifiesOnQ
-    @TargetApi(Build.VERSION_CODES.Q)
+    @RequiresApi(Build.VERSION_CODES.Q)
     private static class ApisQ {
         static boolean isRunningInUserTestHarness() {
             return ActivityManager.isRunningInUserTestHarness();
@@ -96,8 +88,7 @@ public class ApiCompatibilityUtils {
         }
     }
 
-    @VerifiesOnP
-    @TargetApi(Build.VERSION_CODES.P)
+    @RequiresApi(Build.VERSION_CODES.P)
     private static class ApisP {
         static String getProcessName() {
             return Application.getProcessName();
@@ -108,8 +99,7 @@ public class ApiCompatibilityUtils {
         }
     }
 
-    @VerifiesOnO
-    @TargetApi(Build.VERSION_CODES.O)
+    @RequiresApi(Build.VERSION_CODES.O)
     private static class ApisO {
         static void initNotificationSettingsIntent(Intent intent, String packageName) {
             intent.setAction(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
@@ -127,15 +117,14 @@ public class ApiCompatibilityUtils {
         }
     }
 
-    @VerifiesOnN
-    @TargetApi(Build.VERSION_CODES.N)
+    @RequiresApi(Build.VERSION_CODES.N)
     private static class ApisN {
         static String toHtml(Spanned spanned, int option) {
             return Html.toHtml(spanned, option);
         }
 
         // This class is sufficiently small that it's fine if it doesn't verify for N devices.
-        @TargetApi(Build.VERSION_CODES.N_MR1)
+        @RequiresApi(Build.VERSION_CODES.N_MR1)
         static boolean isDemoUser() {
             UserManager userManager =
                     (UserManager) ContextUtils.getApplicationContext().getSystemService(
@@ -152,8 +141,7 @@ public class ApiCompatibilityUtils {
         }
     }
 
-    @VerifiesOnM
-    @TargetApi(Build.VERSION_CODES.M)
+    @RequiresApi(Build.VERSION_CODES.M)
     private static class ApisM {
         public static void setStatusBarIconColor(View rootView, boolean useDarkIcons) {
             int systemUiVisibility = rootView.getSystemUiVisibility();
@@ -166,8 +154,6 @@ public class ApiCompatibilityUtils {
         }
     }
 
-    @VerifiesOnLollipopMR1
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP_MR1)
     private static class ApisLmr1 {
         static void setAccessibilityTraversalBefore(View view, int viewFocusedAfter) {
             view.setAccessibilityTraversalBefore(viewFocusedAfter);
@@ -226,7 +212,7 @@ public class ApiCompatibilityUtils {
     }
 
     /**
-     * @see android.text.Html#toHtml(Spanned, int)
+     * @see Html#toHtml(Spanned, int)
      * @param option is ignored on below N
      */
     @SuppressWarnings("deprecation")
@@ -235,21 +221,6 @@ public class ApiCompatibilityUtils {
             return ApisN.toHtml(spanned, option);
         }
         return Html.toHtml(spanned);
-    }
-
-    // These methods have a new name, and the old name is deprecated.
-
-    /**
-     * @see android.app.Activity#finishAndRemoveTask()
-     */
-    public static void finishAndRemoveTask(Activity activity) {
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
-            activity.finishAndRemoveTask();
-        } else {
-            assert Build.VERSION.SDK_INT == Build.VERSION_CODES.LOLLIPOP;
-            // crbug.com/395772 : Fallback for Activity.finishAndRemoveTask() failing.
-            new FinishAndRemoveTaskWithRetry(activity).run();
-        }
     }
 
     /**
@@ -270,32 +241,8 @@ public class ApiCompatibilityUtils {
         return intent;
     }
 
-    private static class FinishAndRemoveTaskWithRetry implements Runnable {
-        private static final long RETRY_DELAY_MS = 500;
-        private static final long MAX_TRY_COUNT = 3;
-        private final Activity mActivity;
-        private int mTryCount;
-
-        FinishAndRemoveTaskWithRetry(Activity activity) {
-            mActivity = activity;
-        }
-
-        @Override
-        public void run() {
-            mActivity.finishAndRemoveTask();
-            mTryCount++;
-            if (!mActivity.isFinishing()) {
-                if (mTryCount < MAX_TRY_COUNT) {
-                    ThreadUtils.postOnUiThreadDelayed(this, RETRY_DELAY_MS);
-                } else {
-                    mActivity.finish();
-                }
-            }
-        }
-    }
-
     /**
-     * @see android.view.Window#setStatusBarColor(int color).
+     * @see Window#setStatusBarColor(int color).
      */
     public static void setStatusBarColor(Window window, int statusBarColor) {
         // If both system bars are black, we can remove these from our layout,
@@ -325,7 +272,7 @@ public class ApiCompatibilityUtils {
     }
 
     /**
-     * @see android.content.res.Resources#getDrawable(int id).
+     * @see Resources#getDrawable(int id).
      * TODO(ltian): use {@link AppCompatResources} to parse drawable to prevent fail on
      * {@link VectorDrawable}. (http://crbug.com/792129)
      */
@@ -351,7 +298,7 @@ public class ApiCompatibilityUtils {
     }
 
     /**
-     * @see android.content.res.Resources#getDrawableForDensity(int id, int density).
+     * @see Resources#getDrawableForDensity(int id, int density).
      */
     @SuppressWarnings("deprecation")
     public static Drawable getDrawableForDensity(Resources res, int id, int density) {
@@ -370,7 +317,7 @@ public class ApiCompatibilityUtils {
     }
 
     /**
-     * @see android.content.res.Resources#getColor(int id).
+     * @see Resources#getColor(int id).
      */
     @SuppressWarnings("deprecation")
     public static int getColor(Resources res, int id) throws NotFoundException {
@@ -378,7 +325,7 @@ public class ApiCompatibilityUtils {
     }
 
     /**
-     * @see android.widget.TextView#setTextAppearance(int id).
+     * @see TextView#setTextAppearance(int id).
      */
     @SuppressWarnings("deprecation")
     public static void setTextAppearance(TextView view, int id) {
@@ -526,7 +473,7 @@ public class ApiCompatibilityUtils {
     }
 
     /**
-     * Retrieves an image for the given url as a Bitmap.
+     * Retrieves an image for the given uri as a Bitmap.
      */
     public static Bitmap getBitmapByUri(ContentResolver cr, Uri uri) throws IOException {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {

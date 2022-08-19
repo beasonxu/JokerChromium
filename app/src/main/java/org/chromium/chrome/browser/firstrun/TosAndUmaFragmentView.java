@@ -311,8 +311,8 @@ public class TosAndUmaFragmentView extends RelativeLayout {
     }
 
     private void setBottomGroupLayoutParams(boolean useWideScreen) {
-        RelativeLayout.LayoutParams bottomGroupParams =
-                (RelativeLayout.LayoutParams) mBottomGroup.getLayoutParams();
+        LayoutParams bottomGroupParams =
+                (LayoutParams) mBottomGroup.getLayoutParams();
         int removedRule =
                 useWideScreen ? RelativeLayout.CENTER_HORIZONTAL : RelativeLayout.ALIGN_PARENT_END;
         int addedRule =

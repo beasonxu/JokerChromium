@@ -4,15 +4,14 @@
 
 package org.chromium.chrome.browser.notifications.channels;
 
-import android.annotation.TargetApi;
 import android.app.NotificationManager;
 import android.os.Build;
 import android.text.TextUtils;
 
+import androidx.annotation.RequiresApi;
 import androidx.annotation.StringDef;
 
-import org.chromium.chrome.R;
-import org.chromium.chrome.browser.webapps.WebApkServiceClient;
+import org.chromium.chrome.browser.notifications.R;
 import org.chromium.components.browser_ui.notifications.channels.ChannelDefinitions;
 
 import java.lang.annotation.Retention;
@@ -37,14 +36,14 @@ import java.util.Set;
  * <br/>
  * See the README.md in this directory for more information before adding or changing any channels.
  */
-@TargetApi(Build.VERSION_CODES.O)
+@RequiresApi(Build.VERSION_CODES.O)
 public class ChromeChannelDefinitions extends ChannelDefinitions {
     /**
      * Version number identifying the current set of channels. This must be incremented whenever the
      * set of channels returned by {@link #getStartupChannelIds()} or {@link #getLegacyChannelIds()}
      * changes.
      */
-    static final int CHANNELS_VERSION = 2;
+    static final int CHANNELS_VERSION = 3;
 
     private static class LazyHolder {
         private static ChromeChannelDefinitions sInstance = new ChromeChannelDefinitions();
@@ -57,6 +56,12 @@ public class ChromeChannelDefinitions extends ChannelDefinitions {
     private ChromeChannelDefinitions() {}
 
     /**
+     * Keeps the value consistent with {@link
+     * org.chromium.webapk.shell_apk.WebApkServiceImplWrapper#DEFAULT_NOTIFICATION_CHANNEL_ID}.
+     */
+    public static final String CHANNEL_ID_WEBAPKS = "default_channel_id";
+
+    /**
      * To define a new channel, add the channel ID to this StringDef and add a new entry to
      * PredefinedChannels.MAP below with the appropriate channel parameters. To remove an existing
      * channel, remove the ID from this StringDef, remove its entry from Predefined Channels.MAP,
@@ -67,9 +72,9 @@ public class ChromeChannelDefinitions extends ChannelDefinitions {
             ChannelId.MEDIA_PLAYBACK, ChannelId.SCREEN_CAPTURE, ChannelId.CONTENT_SUGGESTIONS,
             ChannelId.WEBAPP_ACTIONS, ChannelId.SITES, ChannelId.SHARING, ChannelId.UPDATES,
             ChannelId.COMPLETED_DOWNLOADS, ChannelId.PERMISSION_REQUESTS,
-            ChannelId.PERMISSION_REQUESTS_HIGH, ChannelId.ANNOUNCEMENT,
-            ChannelId.TWA_DISCLOSURE_INITIAL, ChannelId.TWA_DISCLOSURE_SUBSEQUENT,
-            ChannelId.PRICE_DROP})
+            ChannelId.PERMISSION_REQUESTS_HIGH, ChannelId.ANNOUNCEMENT, ChannelId.WEBAPPS,
+            ChannelId.WEBAPPS_QUIET, ChannelId.PRICE_DROP, ChannelId.SECURITY_KEY,
+            ChannelId.CHROME_TIPS, ChannelId.BLUETOOTH, ChannelId.USB})
     @Retention(RetentionPolicy.SOURCE)
     public @interface ChannelId {
         String BROWSER = "browser";
@@ -88,10 +93,14 @@ public class ChromeChannelDefinitions extends ChannelDefinitions {
         String PERMISSION_REQUESTS = "permission_requests";
         String PERMISSION_REQUESTS_HIGH = "permission_requests_high";
         String ANNOUNCEMENT = "announcement";
-        String TWA_DISCLOSURE_INITIAL = "twa_disclosure_initial";
-        String TWA_DISCLOSURE_SUBSEQUENT = "twa_disclosure_subsequent";
+        String WEBAPPS = "twa_disclosure_initial";
+        String WEBAPPS_QUIET = "twa_disclosure_subsequent";
         String WEBRTC_CAM_AND_MIC = "webrtc_cam_and_mic";
         String PRICE_DROP = "shopping_price_drop_alerts";
+        String SECURITY_KEY = "security_key";
+        String CHROME_TIPS = "chrome_tips";
+        String BLUETOOTH = "bluetooth";
+        String USB = "usb";
     }
 
     @StringDef({ChannelGroupId.GENERAL, ChannelGroupId.SITES})
@@ -102,7 +111,7 @@ public class ChromeChannelDefinitions extends ChannelDefinitions {
     }
 
     // Map defined in static inner class so it's only initialized lazily.
-    @TargetApi(Build.VERSION_CODES.N) // for NotificationManager.IMPORTANCE_* constants
+    @RequiresApi(Build.VERSION_CODES.N) // for NotificationManager.IMPORTANCE_* constants
     private static class PredefinedChannels {
         /**
          * Definitions for predefined channels. Any channel listed in STARTUP must have an entry in
@@ -208,13 +217,13 @@ public class ChromeChannelDefinitions extends ChannelDefinitions {
                             NotificationManager.IMPORTANCE_LOW, ChannelGroupId.GENERAL));
 
             // Not added to startup channels as not all users will use Trusted Web Activities.
-            map.put(ChannelId.TWA_DISCLOSURE_INITIAL,
-                    PredefinedChannel.createSilenced(ChannelId.TWA_DISCLOSURE_INITIAL,
-                            R.string.twa_running_in_chrome_channel_name_initial,
+            map.put(ChannelId.WEBAPPS,
+                    PredefinedChannel.createSilenced(ChannelId.WEBAPPS,
+                            R.string.notification_category_webapps,
                             NotificationManager.IMPORTANCE_MAX, ChannelGroupId.GENERAL));
-            map.put(ChannelId.TWA_DISCLOSURE_SUBSEQUENT,
-                    PredefinedChannel.create(ChannelId.TWA_DISCLOSURE_SUBSEQUENT,
-                            R.string.twa_running_in_chrome_channel_name_subsequent,
+            map.put(ChannelId.WEBAPPS_QUIET,
+                    PredefinedChannel.create(ChannelId.WEBAPPS_QUIET,
+                            R.string.notification_category_webapps_quiet,
                             NotificationManager.IMPORTANCE_MIN, ChannelGroupId.GENERAL));
 
             // Not added to startup channels because we want this channel to be created on the first
@@ -222,6 +231,33 @@ public class ChromeChannelDefinitions extends ChannelDefinitions {
             map.put(ChannelId.PRICE_DROP,
                     PredefinedChannel.create(ChannelId.PRICE_DROP,
                             R.string.notification_category_price_drop,
+                            NotificationManager.IMPORTANCE_LOW, ChannelGroupId.GENERAL));
+
+            // The security key notification channel will only appear for users
+            // who use this feature.
+            map.put(ChannelId.SECURITY_KEY,
+                    PredefinedChannel.create(ChannelId.SECURITY_KEY,
+                            R.string.notification_category_security_key,
+                            NotificationManager.IMPORTANCE_HIGH, ChannelGroupId.GENERAL));
+
+            // The chrome tips notification channel will only appear for users
+            // who are targeted for this feature.
+            map.put(ChannelId.CHROME_TIPS,
+                    PredefinedChannel.create(ChannelId.CHROME_TIPS,
+                            R.string.notification_category_feature_guide,
+                            NotificationManager.IMPORTANCE_HIGH, ChannelGroupId.GENERAL));
+
+            // The bluetooth notification channel will only appear for users
+            // who are targeted for this feature.
+            map.put(ChannelId.BLUETOOTH,
+                    PredefinedChannel.create(ChannelId.BLUETOOTH,
+                            R.string.notification_category_bluetooth,
+                            NotificationManager.IMPORTANCE_LOW, ChannelGroupId.GENERAL));
+
+            // The usb notification channel will only appear for users
+            // who are targeted for this feature.
+            map.put(ChannelId.USB,
+                    PredefinedChannel.create(ChannelId.USB, R.string.notification_category_usb,
                             NotificationManager.IMPORTANCE_LOW, ChannelGroupId.GENERAL));
 
             MAP = Collections.unmodifiableMap(map);
@@ -235,9 +271,9 @@ public class ChromeChannelDefinitions extends ChannelDefinitions {
      * channel ids so they aren't accidentally reused.
      */
     private static final String[] LEGACY_CHANNEL_IDS = {
-            ChromeChannelDefinitions.ChannelId.SITES,
-            ChromeChannelDefinitions.ChannelId.PERMISSION_REQUESTS,
-            ChromeChannelDefinitions.ChannelId.PERMISSION_REQUESTS_HIGH,
+            ChannelId.SITES,
+            ChannelId.PERMISSION_REQUESTS,
+            ChannelId.PERMISSION_REQUESTS_HIGH,
     };
 
     // Map defined in static inner class so it's only initialized lazily.
@@ -290,6 +326,6 @@ public class ChromeChannelDefinitions extends ChannelDefinitions {
     @Override
     public boolean isValidNonPredefinedChannelId(String channelId) {
         return SiteChannelsManager.isValidSiteChannelId(channelId)
-                || TextUtils.equals(channelId, WebApkServiceClient.CHANNEL_ID_WEBAPKS);
+                || TextUtils.equals(channelId, ChromeChannelDefinitions.CHANNEL_ID_WEBAPKS);
     }
 }

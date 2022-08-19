@@ -13,8 +13,8 @@ import java.util.zip.ZipFile;
  */
 public class StreamUtil {
     /**
-     * Handle closing a {@link java.io.Closeable} via {@link java.io.Closeable#close()} and catch
-     * the potentially thrown {@link java.io.IOException}.
+     * Handle closing a {@link Closeable} via {@link Closeable#close()} and catch
+     * the potentially thrown {@link IOException}.
      * @param closeable The Closeable to be closed.
      */
     public static void closeQuietly(Closeable closeable) {

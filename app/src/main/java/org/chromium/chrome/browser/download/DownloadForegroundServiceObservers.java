@@ -96,7 +96,7 @@ public final class DownloadForegroundServiceObservers {
         removeAllObservers();
 
         for (String observerClassName : observers) {
-            DownloadForegroundServiceObservers.Observer observer =
+            Observer observer =
                     DownloadForegroundServiceObservers.getObserverFromClassName(observerClassName);
             if (observer != null) observer.onForegroundServiceRestarted(pinnedNotificationId);
         }
@@ -106,7 +106,7 @@ public final class DownloadForegroundServiceObservers {
         Set<String> observers = getAllObservers();
 
         for (String observerClassName : observers) {
-            DownloadForegroundServiceObservers.Observer observer =
+            Observer observer =
                     DownloadForegroundServiceObservers.getObserverFromClassName(observerClassName);
             if (observer != null) observer.onForegroundServiceDestroyed();
         }

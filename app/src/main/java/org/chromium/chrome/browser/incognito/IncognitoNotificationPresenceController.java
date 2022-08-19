@@ -4,8 +4,10 @@
 
 package org.chromium.chrome.browser.incognito;
 
+import org.chromium.chrome.browser.tabmodel.IncognitoTabHostUtils;
 import org.chromium.chrome.browser.tabmodel.IncognitoTabModelObserver;
 import org.chromium.chrome.browser.tabmodel.TabModelSelector;
+import org.chromium.ui.permissions.ContextualNotificationPermissionRequester;
 
 /**
  * Controls the presence incognito notification through {@link IncognitoNotificationManager}.
@@ -28,11 +30,12 @@ public class IncognitoNotificationPresenceController implements IncognitoTabMode
     @Override
     public void wasFirstTabCreated() {
         IncognitoNotificationManager.showIncognitoNotification();
+        ContextualNotificationPermissionRequester.getInstance().requestPermissionIfNeeded();
     }
 
     @Override
     public void didBecomeEmpty() {
-        if (!IncognitoUtils.doIncognitoTabsExist()) {
+        if (!IncognitoTabHostUtils.doIncognitoTabsExist()) {
             IncognitoNotificationManager.dismissIncognitoNotification();
         }
     }

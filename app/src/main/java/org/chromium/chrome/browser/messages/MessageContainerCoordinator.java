@@ -10,8 +10,10 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
+import org.chromium.base.ObserverList;
 import org.chromium.chrome.R;
 import org.chromium.chrome.browser.browser_controls.BrowserControlsStateProvider;
+import org.chromium.chrome.browser.flags.ChromeFeatureList;
 import org.chromium.chrome.browser.fullscreen.BrowserControlsManager;
 import org.chromium.components.messages.MessageContainer;
 
@@ -22,6 +24,9 @@ import org.chromium.components.messages.MessageContainer;
 public class MessageContainerCoordinator implements BrowserControlsStateProvider.Observer {
     private MessageContainer mContainer;
     private BrowserControlsManager mControlsManager;
+
+    /** The list of observers for the message container. */
+    private final ObserverList<MessageContainerObserver> mObservers = new ObserverList<>();
 
     public MessageContainerCoordinator(
             @NonNull MessageContainer container, @NonNull BrowserControlsManager controlsManager) {
@@ -34,12 +39,17 @@ public class MessageContainerCoordinator implements BrowserControlsStateProvider
         mControlsManager.removeObserver(this);
         mContainer = null;
         mControlsManager = null;
+        mObservers.clear();
     }
 
     private void updateMargins() {
+        if (mContainer.getVisibility() != View.VISIBLE
+                && ChromeFeatureList.isEnabled(
+                        ChromeFeatureList.MESSAGES_FOR_ANDROID_REDUCE_LAYOUT_CHANGES)) {
+            return;
+        }
         CoordinatorLayout.LayoutParams params =
                 (CoordinatorLayout.LayoutParams) mContainer.getLayoutParams();
-        // TODO(crbug.com/1123947): Update dimens for PWAs.
         params.topMargin = getContainerTopOffset();
         mContainer.setLayoutParams(params);
     }
@@ -47,10 +57,12 @@ public class MessageContainerCoordinator implements BrowserControlsStateProvider
     protected void showMessageContainer() {
         mContainer.setVisibility(View.VISIBLE);
         updateMargins();
+        for (MessageContainerObserver o : mObservers) o.onShowMessageContainer();
     }
 
     protected void hideMessageContainer() {
         mContainer.setVisibility(View.GONE);
+        for (MessageContainerObserver o : mObservers) o.onHideMessageContainer();
     }
 
     /**
@@ -64,9 +76,8 @@ public class MessageContainerCoordinator implements BrowserControlsStateProvider
     public int getMessageMaxTranslation() {
         // The max translation is message height + message shadow + controls height (adjusted for
         // Message container offsets)
-        final int messageHeightWithShadow = mContainer.findViewById(R.id.message_banner).getHeight()
-                + mContainer.getResources().getDimensionPixelOffset(
-                        R.dimen.message_shadow_top_margin);
+        final int messageHeightWithShadow =
+                mContainer.getMessageBannerHeight() + mContainer.getMessageShadowTopMargin();
         return messageHeightWithShadow + getContainerTopOffset();
     }
 
@@ -81,12 +92,28 @@ public class MessageContainerCoordinator implements BrowserControlsStateProvider
         updateMargins();
     }
 
+    /**
+     * Adds an observer.
+     * @param observer The observer to add.
+     */
+    public void addObserver(MessageContainerObserver observer) {
+        mObservers.addObserver(observer);
+    }
+
+    /**
+     * Removes an observer.
+     * @param observer The observer to remove.
+     */
+    public void removeObserver(MessageContainerObserver observer) {
+        mObservers.removeObserver(observer);
+    }
+
     /** @return Offset of the message container from the top of the screen. */
     private int getContainerTopOffset() {
         if (mControlsManager.getContentOffset() == 0) return 0;
         final Resources res = mContainer.getResources();
         return mControlsManager.getContentOffset()
                 - res.getDimensionPixelOffset(R.dimen.message_bubble_inset)
-                - res.getDimensionPixelOffset(R.dimen.message_shadow_top_margin);
+                - mContainer.getMessageShadowTopMargin();
     }
 }

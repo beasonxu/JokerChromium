@@ -1,25 +1,22 @@
 package org.chromium.base.library_loader;
 
 import java.lang.Override;
-import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.annotations.MainDex;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @MainDex
 @CheckDiscard("crbug.com/993421")
-final class LibraryLoaderJni implements LibraryLoader.Natives {
+class LibraryLoaderJni implements LibraryLoader.Natives {
   private static LibraryLoader.Natives testInstance;
 
-  public static final JniStaticTestMocker<LibraryLoader.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.base.library_loader.LibraryLoader.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<LibraryLoader.Natives> TEST_HOOKS = new JniStaticTestMocker<LibraryLoader.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.base.library_loader.LibraryLoader.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        LibraryLoader.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;
@@ -34,16 +31,6 @@ final class LibraryLoaderJni implements LibraryLoader.Natives {
   @Override
   public void registerNonMainDexJni() {
     GEN_JNI.org_chromium_base_library_1loader_LibraryLoader_registerNonMainDexJni();
-  }
-
-  @Override
-  public void recordRendererLibraryLoadTime(long libraryLoadTime) {
-    GEN_JNI.org_chromium_base_library_1loader_LibraryLoader_recordRendererLibraryLoadTime(libraryLoadTime);
-  }
-
-  @Override
-  public String getVersionNumber() {
-    return (String)GEN_JNI.org_chromium_base_library_1loader_LibraryLoader_getVersionNumber();
   }
 
   public static LibraryLoader.Natives get() {

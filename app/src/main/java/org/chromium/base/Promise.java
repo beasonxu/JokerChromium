@@ -161,7 +161,7 @@ public class Promise<T> {
     }
 
     /**
-     * Queues a {@link Promise.AsyncFunction} to be run when the Promise is fulfilled. When this
+     * Queues a {@link AsyncFunction} to be run when the Promise is fulfilled. When this
      * Promise is fulfilled, the AsyncFunction will be run. When the result of the AsyncFunction is
      * available, it will be placed in the returned Promise.
      */

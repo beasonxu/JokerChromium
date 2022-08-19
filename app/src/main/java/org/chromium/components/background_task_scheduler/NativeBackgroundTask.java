@@ -71,8 +71,10 @@ public abstract class NativeBackgroundTask implements BackgroundTask {
         mTaskId = taskParameters.getTaskId();
 
         TaskFinishedCallback wrappedCallback = needsReschedule -> {
-            recordTaskFinishedMetric();
-            callback.taskFinished(needsReschedule);
+            PostTask.runOrPostTask(UiThreadTaskTraits.DEFAULT, () -> {
+                recordTaskFinishedMetric();
+                callback.taskFinished(needsReschedule);
+            });
         };
 
         // WrappedCallback will only be called when the work is done or in onStopTask. If the task
@@ -128,7 +130,6 @@ public abstract class NativeBackgroundTask implements BackgroundTask {
         if (isNativeLoadedInFullBrowserMode()) {
             mRunningInMinimalBrowserMode = false;
             getUmaReporter().reportNativeTaskStarted(mTaskId, mRunningInMinimalBrowserMode);
-            mDelegate.recordMemoryUsageWithRandomDelay(mTaskId, mRunningInMinimalBrowserMode);
             PostTask.postTask(UiThreadTaskTraits.DEFAULT, startWithNativeRunnable);
             return;
         }
@@ -151,8 +152,8 @@ public abstract class NativeBackgroundTask implements BackgroundTask {
                 }
 
                 // Start native initialization.
-                mDelegate.initializeNativeAsync(mTaskId, mRunningInMinimalBrowserMode,
-                        startWithNativeRunnable, rescheduleRunnable);
+                mDelegate.initializeNativeAsync(
+                        mRunningInMinimalBrowserMode, startWithNativeRunnable, rescheduleRunnable);
             }
         });
     }

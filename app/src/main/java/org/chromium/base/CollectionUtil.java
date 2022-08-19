@@ -79,8 +79,8 @@ public final class CollectionUtil {
     @SuppressWarnings("unchecked")
     public static <K, V> void forEach(
             Map<? extends K, ? extends V> map, Callback<Entry<K, V>> worker) {
-        for (Map.Entry<? extends K, ? extends V> entry : map.entrySet()) {
-            worker.onResult((Map.Entry<K, V>) entry);
+        for (Entry<? extends K, ? extends V> entry : map.entrySet()) {
+            worker.onResult((Entry<K, V>) entry);
         }
     }
 

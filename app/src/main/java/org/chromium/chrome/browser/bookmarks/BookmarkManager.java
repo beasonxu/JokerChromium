@@ -21,10 +21,13 @@ import org.chromium.base.ContextUtils;
 import org.chromium.base.ObserverList;
 import org.chromium.base.metrics.RecordUserAction;
 import org.chromium.chrome.R;
+import org.chromium.chrome.browser.app.bookmarks.BookmarkActivity;
 import org.chromium.chrome.browser.bookmarks.BookmarkBridge.BookmarkItem;
 import org.chromium.chrome.browser.bookmarks.BookmarkBridge.BookmarkModelObserver;
+import org.chromium.chrome.browser.commerce.ShoppingFeatures;
 import org.chromium.chrome.browser.partnerbookmarks.PartnerBookmarksReader;
 import org.chromium.chrome.browser.profiles.Profile;
+import org.chromium.chrome.browser.subscriptions.CommerceSubscriptionsServiceFactory;
 import org.chromium.chrome.browser.ui.messages.snackbar.SnackbarManager;
 import org.chromium.chrome.browser.ui.native_page.BasicNativePage;
 import org.chromium.components.bookmarks.BookmarkId;
@@ -67,6 +70,7 @@ public class BookmarkManager
     private boolean mFaviconsNeedRefresh;
     private String mInitialUrl;
     private boolean mIsDialogUi;
+    private boolean mIsIncognito;
     private boolean mIsDestroyed;
 
     private BookmarkItemsAdapter mAdapter;
@@ -88,7 +92,7 @@ public class BookmarkManager
                     && node.getId().equals(mStateStack.peek().mFolder)) {
                 if (mBookmarkModel.getTopLevelFolderIDs(true, true).contains(
                         node.getId())) {
-                    openFolder(mBookmarkModel.getDefaultFolder());
+                    openFolder(mBookmarkModel.getDefaultFolderViewLocation());
                 } else {
                     openFolder(parent.getId());
                 }
@@ -99,6 +103,16 @@ public class BookmarkManager
             // the item decorations are reapplied correctly when item indices change as the result
             // of an item being deleted.
             mAdapter.notifyDataSetChanged();
+        }
+
+        @Override
+        public void bookmarkNodeChanged(BookmarkItem node) {
+            if (getCurrentState() == BookmarkUIState.STATE_FOLDER && !mStateStack.isEmpty()
+                    && node.getId().equals(mStateStack.peek().mFolder)) {
+                notifyUI(mStateStack.peek());
+                return;
+            }
+            super.bookmarkNodeChanged(node);
         }
 
         @Override
@@ -164,13 +178,15 @@ public class BookmarkManager
      * @param context The current {@link Context} used to obtain resources or inflate views.
      * @param openBookmarkComponentName The component to use when opening a bookmark.
      * @param isDialogUi Whether the main bookmarks UI will be shown in a dialog, not a NativePage.
+     * @param isIncognito Whether the tab model loading the bookmark manager is for incognito mode.
      * @param snackbarManager The {@link SnackbarManager} used to display snackbars.
      */
     public BookmarkManager(Context context, ComponentName openBookmarkComponentName,
-            boolean isDialogUi, SnackbarManager snackbarManager) {
+            boolean isDialogUi, boolean isIncognito, SnackbarManager snackbarManager) {
         mContext = context;
         mOpenBookmarkComponentName = openBookmarkComponentName;
         mIsDialogUi = isDialogUi;
+        mIsIncognito = isIncognito;
 
         mSelectionDelegate = new SelectionDelegate<BookmarkId>() {
             @Override
@@ -188,14 +204,22 @@ public class BookmarkManager
         mBookmarkModel = new BookmarkModel();
         mMainView = (ViewGroup) LayoutInflater.from(mContext).inflate(R.layout.bookmark_main, null);
 
+        // TODO(1293885): Remove this validator once we have an API on the backend that sends
+        //                success/failure information back.
+        if (ShoppingFeatures.isShoppingListEnabled()) {
+            PowerBookmarkUtils.validateBookmarkedCommerceSubscriptions(mBookmarkModel,
+                    new CommerceSubscriptionsServiceFactory()
+                            .getForLastUsedProfile()
+                            .getSubscriptionsManager());
+        }
+
         @SuppressWarnings("unchecked")
         SelectableListLayout<BookmarkId> selectableList =
                 mMainView.findViewById(R.id.selectable_list);
         mSelectableListLayout = selectableList;
-        mSelectableListLayout.initializeEmptyView(
-                R.string.bookmarks_folder_empty, R.string.bookmark_no_result);
+        mSelectableListLayout.initializeEmptyView(R.string.bookmarks_folder_empty);
 
-        mAdapter = new BookmarkItemsAdapter(mContext);
+        mAdapter = new BookmarkItemsAdapter(mContext, snackbarManager);
 
         mAdapterDataObserver = new AdapterDataObserver() {
             @Override
@@ -214,7 +238,7 @@ public class BookmarkManager
 
         mToolbar = (BookmarkActionBar) mSelectableListLayout.initializeToolbar(
                 R.layout.bookmark_action_bar, mSelectionDelegate, 0, R.id.normal_menu_group,
-                R.id.selection_mode_menu_group, null, true, isDialogUi);
+                R.id.selection_mode_menu_group, null, isDialogUi);
         mToolbar.initializeSearchView(
                 this, R.string.bookmark_action_bar_search, R.id.search_menu_id);
 
@@ -377,32 +401,34 @@ public class BookmarkManager
     /**
      * This is the ultimate internal method that updates UI and controls backstack. And it is the
      * only method that pushes states to {@link #mStateStack}.
-     * <p>
-     * If the given state is not valid, all_bookmark state will be shown. Afterwards, this method
+     *
+     * <p>If the given state is not valid, all_bookmark state will be shown. Afterwards, this method
      * checks the current state: if currently in loading state, it pops it out and adds the new
      * state to the back stack. It also notifies the {@link #mNativePage} (if any) that the
      * url has changed.
-     * <p>
-     * Also note that even if we store states to {@link #mStateStack}, on tablet the back navigation
-     * and back button are not controlled by the manager: the tab handles back key and backstack
-     * navigation.
+     *
+     * <p>Also note that even if we store states to {@link #mStateStack}, on tablet the back
+     * navigation and back button are not controlled by the manager: the tab handles back key and
+     * backstack navigation.
      */
     private void setState(BookmarkUIState state) {
         if (!state.isValid(mBookmarkModel)) {
-            state = BookmarkUIState.createFolderState(mBookmarkModel.getDefaultFolder(),
-                    mBookmarkModel);
+            state = BookmarkUIState.createFolderState(
+                    mBookmarkModel.getDefaultFolderViewLocation(), mBookmarkModel);
         }
 
         if (!mStateStack.isEmpty() && mStateStack.peek().equals(state)) return;
 
         // The loading state is not persisted in history stack and once we have a valid state it
         // shall be removed.
-        if (!mStateStack.isEmpty()
-                && mStateStack.peek().mState == BookmarkUIState.STATE_LOADING) {
+        if (!mStateStack.isEmpty() && mStateStack.peek().mState == BookmarkUIState.STATE_LOADING) {
             mStateStack.pop();
         }
         mStateStack.push(state);
+        notifyUI(state);
+    }
 
+    private void notifyUI(BookmarkUIState state) {
         if (state.mState == BookmarkUIState.STATE_FOLDER) {
             // Loading and searching states may be pushed to the stack but should never be stored in
             // preferences.
@@ -496,7 +522,7 @@ public class BookmarkManager
     @Override
     public void openBookmark(BookmarkId bookmark) {
         if (!BookmarkUtils.openBookmark(
-                    mContext, mOpenBookmarkComponentName, mBookmarkModel, bookmark)) {
+                    mContext, mOpenBookmarkComponentName, mBookmarkModel, bookmark, mIsIncognito)) {
             return;
         }
 
@@ -509,8 +535,8 @@ public class BookmarkManager
     @Override
     public void openSearchUI() {
         setState(BookmarkUIState.createSearchState());
-        mSelectableListLayout.onStartSearch();
-        mToolbar.showSearchView();
+        mSelectableListLayout.onStartSearch(R.string.bookmark_no_result);
+        mToolbar.showSearchView(true);
     }
 
     @Override

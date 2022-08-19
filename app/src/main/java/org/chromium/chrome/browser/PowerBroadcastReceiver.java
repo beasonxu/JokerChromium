@@ -28,7 +28,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * Monitors the event that indicates the screen is turning on.  Used to run actions that shouldn't
  * occur while the phone's screen is off (i.e. when the user expects the phone to be "asleep").
  *
- * When conditions are right, code in {@link PowerBroadcastReceiver.ServiceRunnable#runActions()}
+ * When conditions are right, code in {@link ServiceRunnable#runActions()}
  * is executed.
  */
 public class PowerBroadcastReceiver extends BroadcastReceiver {

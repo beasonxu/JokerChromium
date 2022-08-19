@@ -4,16 +4,18 @@
 
 package org.chromium.chrome.browser.incognito;
 
+import android.content.Context;
 import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.annotation.VisibleForTesting;
 
 import org.chromium.base.FeatureList;
-import org.chromium.chrome.browser.compositor.layouts.EmptyOverviewModeObserver;
 import org.chromium.chrome.browser.compositor.layouts.LayoutManagerChrome;
-import org.chromium.chrome.browser.compositor.layouts.OverviewModeBehavior.OverviewModeObserver;
 import org.chromium.chrome.browser.flags.ChromeFeatureList;
+import org.chromium.chrome.browser.layouts.FilterLayoutStateObserver;
+import org.chromium.chrome.browser.layouts.LayoutStateProvider.LayoutStateObserver;
+import org.chromium.chrome.browser.layouts.LayoutType;
 import org.chromium.chrome.browser.tabmodel.TabModelSelector;
 import org.chromium.chrome.browser.tabmodel.TabModelSelectorObserver;
 import org.chromium.chrome.browser.tasks.tab_management.TabUiFeatureUtilities;
@@ -25,40 +27,48 @@ public class IncognitoTabSnapshotController implements TabModelSelectorObserver 
     private final Window mWindow;
     private final TabModelSelector mTabModelSelector;
     private boolean mInOverviewMode;
+    private Context mContext;
 
     /**
      * Creates and registers a new {@link IncognitoTabSnapshotController}.
+     * @param context The activity context.
      * @param window The {@link Window} containing the flags to which the secure flag will be added
      *               and cleared.
      * @param layoutManager The {@link LayoutManagerChrome} where this controller will be added.
      * @param tabModelSelector The {@link TabModelSelector} from where tab information will be
-     *                         extracted.
      */
-    public static void createIncognitoTabSnapshotController(
-            Window window, LayoutManagerChrome layoutManager, TabModelSelector tabModelSelector) {
-        new IncognitoTabSnapshotController(window, layoutManager, tabModelSelector);
+    public static void createIncognitoTabSnapshotController(Context context, Window window,
+            LayoutManagerChrome layoutManager, TabModelSelector tabModelSelector) {
+        new IncognitoTabSnapshotController(context, window, layoutManager, tabModelSelector);
     }
 
     @VisibleForTesting
-    IncognitoTabSnapshotController(
-            Window window, LayoutManagerChrome layoutManager, TabModelSelector tabModelSelector) {
+    IncognitoTabSnapshotController(Context context, Window window,
+            LayoutManagerChrome layoutManager, TabModelSelector tabModelSelector) {
         mWindow = window;
         mTabModelSelector = tabModelSelector;
+        mContext = context;
 
-        OverviewModeObserver mOverviewModeObserver = new EmptyOverviewModeObserver() {
-            @Override
-            public void onOverviewModeStartedShowing(boolean showToolbar) {
-                mInOverviewMode = true;
-                updateIncognitoState();
-            }
+        LayoutStateObserver mLayoutStateObserver =
+                new FilterLayoutStateObserver(LayoutType.TAB_SWITCHER, new LayoutStateObserver() {
+                    @Override
+                    public void onStartedShowing(int layoutType, boolean showToolbar) {
+                        assert layoutType == LayoutType.TAB_SWITCHER;
 
-            @Override
-            public void onOverviewModeStartedHiding(boolean showToolbar, boolean delayAnimation) {
-                mInOverviewMode = false;
-            }
-        };
+                        mInOverviewMode = true;
+                        updateIncognitoState();
+                    }
 
-        layoutManager.addOverviewModeObserver(mOverviewModeObserver);
+                    @Override
+                    public void onStartedHiding(
+                            int layoutType, boolean showToolbar, boolean delayAnimation) {
+                        assert layoutType == LayoutType.TAB_SWITCHER;
+
+                        mInOverviewMode = false;
+                    }
+                });
+
+        layoutManager.addObserver(mLayoutStateObserver);
         tabModelSelector.addObserver(this);
     }
 
@@ -111,7 +121,7 @@ public class IncognitoTabSnapshotController implements TabModelSelectorObserver 
 
     @VisibleForTesting
     public boolean isGridTabSwitcherEnabled() {
-        return TabUiFeatureUtilities.isGridTabSwitcherEnabled();
+        return TabUiFeatureUtilities.isGridTabSwitcherEnabled(mContext);
     }
 
     /**

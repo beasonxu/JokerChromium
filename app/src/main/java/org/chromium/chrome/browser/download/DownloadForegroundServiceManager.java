@@ -19,6 +19,7 @@ import android.os.IBinder;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
+import org.chromium.base.ApplicationStatus;
 import org.chromium.base.ContextUtils;
 import org.chromium.base.Log;
 import org.chromium.chrome.browser.download.DownloadNotificationService.DownloadStatus;
@@ -39,12 +40,12 @@ public class DownloadForegroundServiceManager {
     protected static class DownloadUpdate {
         int mNotificationId;
         Notification mNotification;
-        @DownloadNotificationService.DownloadStatus
+        @DownloadStatus
         int mDownloadStatus;
         Context mContext;
 
         DownloadUpdate(int notificationId, @Nullable Notification notification,
-                @DownloadNotificationService.DownloadStatus int downloadStatus, Context context) {
+                       @DownloadStatus int downloadStatus, Context context) {
             mNotificationId = notificationId;
             mNotification = notification;
             mDownloadStatus = downloadStatus;
@@ -104,9 +105,9 @@ public class DownloadForegroundServiceManager {
      *         DownloadNotificationService} tries to cancel a notification.
      */
     public void updateDownloadStatus(Context context,
-            @DownloadNotificationService.DownloadStatus int downloadStatus, int notificationId,
-            @Nullable Notification notification) {
-        if (downloadStatus != DownloadNotificationService.DownloadStatus.IN_PROGRESS) {
+                                     @DownloadStatus int downloadStatus, int notificationId,
+                                     @Nullable Notification notification) {
+        if (downloadStatus != DownloadStatus.IN_PROGRESS) {
             Log.w(TAG,
                     "updateDownloadStatus status: " + downloadStatus + ", id: " + notificationId);
         }
@@ -127,6 +128,9 @@ public class DownloadForegroundServiceManager {
     void processDownloadUpdateQueue(boolean isProcessingPending) {
         DownloadUpdate downloadUpdate = findInterestingDownloadUpdate();
         if (downloadUpdate == null) return;
+        // If foreground service is disallowed, don't handle active download updates. Only stopping
+        // the foreground service is allowed.
+        if (isActive(downloadUpdate.mDownloadStatus) && !canStartForeground()) return;
 
         // When nothing has been initialized, just bind the service.
         if (!mIsServiceBound) {
@@ -192,8 +196,8 @@ public class DownloadForegroundServiceManager {
         return null;
     }
 
-    private boolean isActive(@DownloadNotificationService.DownloadStatus int downloadStatus) {
-        return downloadStatus == DownloadNotificationService.DownloadStatus.IN_PROGRESS;
+    private boolean isActive(@DownloadStatus int downloadStatus) {
+        return downloadStatus == DownloadStatus.IN_PROGRESS;
     }
 
     private void cleanDownloadUpdateQueue() {
@@ -253,7 +257,9 @@ public class DownloadForegroundServiceManager {
 
     @VisibleForTesting
     void startOrUpdateForegroundService(DownloadUpdate update) {
-        Log.w(TAG, "startOrUpdateForegroundService id: " + update.mNotificationId);
+        Log.w(TAG,
+                "startOrUpdateForegroundService id: " + update.mNotificationId
+                        + ", startForeground() Called: " + mStartForegroundCalled);
 
         int notificationId = update.mNotificationId;
         Notification notification = update.mNotification;
@@ -291,8 +297,7 @@ public class DownloadForegroundServiceManager {
     private Notification createEmptyNotification(int notificationId, Context context) {
         NotificationWrapperBuilder builder =
                 NotificationWrapperBuilderFactory.createNotificationWrapperBuilder(
-                        true /* preferCompat */, ChromeChannelDefinitions.ChannelId.DOWNLOADS,
-                        null /* remoteAppPackageName */,
+                        ChromeChannelDefinitions.ChannelId.DOWNLOADS,
                         new NotificationMetadata(
                                 NotificationUmaTracker.SystemNotificationType.DOWNLOAD_FILES, null,
                                 notificationId));
@@ -302,14 +307,14 @@ public class DownloadForegroundServiceManager {
     /** Helper code to stop and unbind service. */
 
     @VisibleForTesting
-    void stopAndUnbindService(@DownloadNotificationService.DownloadStatus int downloadStatus) {
+    void stopAndUnbindService(@DownloadStatus int downloadStatus) {
         Log.w(TAG, "stopAndUnbindService status: " + downloadStatus);
         checkNotNull(mBoundService);
         mIsServiceBound = false;
 
         @DownloadForegroundServiceImpl.StopForegroundNotification
         int stopForegroundNotification;
-        if (downloadStatus == DownloadNotificationService.DownloadStatus.CANCELLED) {
+        if (downloadStatus == DownloadStatus.CANCELLED) {
             stopForegroundNotification =
                     DownloadForegroundServiceImpl.StopForegroundNotification.KILL;
         } else {
@@ -325,6 +330,7 @@ public class DownloadForegroundServiceManager {
                 stopForegroundNotification, mPinnedNotificationId, oldNotification);
 
         mBoundService = null;
+        mStartForegroundCalled = false;
 
         mPinnedNotificationId = INVALID_NOTIFICATION_ID;
     }
@@ -357,9 +363,12 @@ public class DownloadForegroundServiceManager {
     }
 
     /**
-     * @return whether the service for making the app foreground is bound.
+     * @return Whether startForeground() is allowed to be called.
      */
-    public boolean isServiceBound() {
-        return mIsServiceBound;
+    private boolean canStartForeground() {
+        if (VERSION.SDK_INT < VERSION_CODES.S) return true;
+        // If foreground service is started, startForeground() must be called.
+        return ApplicationStatus.hasVisibleActivities()
+                || (mIsServiceBound && !mStartForegroundCalled);
     }
 }

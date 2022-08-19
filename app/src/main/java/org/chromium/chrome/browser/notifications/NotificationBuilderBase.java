@@ -4,10 +4,8 @@
 
 package org.chromium.chrome.browser.notifications;
 
-import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.PendingIntent;
-import android.app.RemoteInput;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -16,14 +14,16 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
-import android.graphics.drawable.Icon;
 import android.os.Build;
 
 import androidx.annotation.IntDef;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.annotation.VisibleForTesting;
+import androidx.core.app.NotificationCompat;
+import androidx.core.graphics.drawable.IconCompat;
 
-import org.chromium.chrome.browser.flags.ChromeFeatureList;
+import org.chromium.base.compat.ApiHelperForM;
 import org.chromium.components.browser_ui.notifications.NotificationMetadata;
 import org.chromium.components.browser_ui.notifications.NotificationWrapper;
 import org.chromium.components.browser_ui.notifications.NotificationWrapperBuilder;
@@ -59,7 +59,7 @@ public abstract class NotificationBuilderBase {
         public int iconId;
         public Bitmap iconBitmap;
         public CharSequence title;
-        public PendingIntent intent;
+        public PendingIntentProvider intent;
         public @Type int type;
         public @NotificationUmaTracker.ActionType int umaActionType;
 
@@ -68,13 +68,13 @@ public abstract class NotificationBuilderBase {
          */
         public String placeholder;
 
-        Action(int iconId, CharSequence title, PendingIntent intent, @Type int type,
+        Action(int iconId, CharSequence title, PendingIntentProvider intent, @Type int type,
                 String placeholder) {
             this(iconId, title, intent, type, placeholder,
                     NotificationUmaTracker.ActionType.UNKNOWN);
         }
 
-        Action(int iconId, CharSequence title, PendingIntent intent, @Type int type,
+        Action(int iconId, CharSequence title, PendingIntentProvider intent, @Type int type,
                 String placeholder, @NotificationUmaTracker.ActionType int umaActionType) {
             this.iconId = iconId;
             this.title = title;
@@ -84,7 +84,7 @@ public abstract class NotificationBuilderBase {
             this.umaActionType = umaActionType;
         }
 
-        Action(Bitmap iconBitmap, CharSequence title, PendingIntent intent, @Type int type,
+        Action(Bitmap iconBitmap, CharSequence title, PendingIntentProvider intent, @Type int type,
                 String placeholder) {
             this.iconBitmap = iconBitmap;
             this.title = title;
@@ -133,15 +133,10 @@ public abstract class NotificationBuilderBase {
     protected Bitmap mImage;
 
     protected int mSmallIconId;
-    @Nullable protected Bitmap mSmallIconBitmapForStatusBar;
-    @Nullable protected Bitmap mSmallIconBitmapForContent;
-
-    /**
-     * Package name to use for creating remote package context to be passed to NotificationBuilder.
-     * If null, Chrome's context is used. Currently only used as a workaround for a certain issue,
-     * see {@link #setStatusBarIconForRemoteApp}, {@link #deviceSupportsBitmapStatusBarIcons}.
-     */
-    @Nullable protected String mRemotePackageForBuilderContext;
+    @Nullable
+    protected Bitmap mSmallIconBitmapForStatusBar;
+    @Nullable
+    protected Bitmap mSmallIconBitmapForContent;
 
     protected PendingIntentProvider mContentIntent;
     protected PendingIntentProvider mDeleteIntent;
@@ -149,6 +144,7 @@ public abstract class NotificationBuilderBase {
     protected Action mSettingsAction;
     protected int mDefaults;
     protected long[] mVibratePattern;
+    protected boolean mSilent;
     protected long mTimestamp;
     protected boolean mRenotify;
     protected int mPriority;
@@ -261,34 +257,22 @@ public abstract class NotificationBuilderBase {
      * This is safe to use for any app.
      * @param iconId An iconId for a resource in the package that will display the notification.
      * @param iconBitmap The decoded bitmap. Depending on the device we need either id or bitmap.
-     * @param packageName The package name of the package that will display the notification.
      */
     public NotificationBuilderBase setStatusBarIconForRemoteApp(
-            int iconId, @Nullable Bitmap iconBitmap, String packageName) {
+            int iconId, @Nullable Bitmap iconBitmap) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             // On Android M+, the small icon has to be from the resources of the app whose context
             // is passed to the Notification.Builder constructor. Thus we can't use iconId directly,
             // and instead use the decoded Bitmap.
             if (deviceSupportsBitmapStatusBarIcons()) {
                 setStatusBarIcon(iconBitmap);
-            } else if (usingRemoteAppContextAllowed()) {
-                // For blacklisted M devices we can use neither iconId (see comment below), nor
-                // iconBitmap, because that leads to crashes. Here we attempt to work around that by
-                // using remote app context: with that context iconId can be used.
-                mRemotePackageForBuilderContext = packageName;
-                setSmallIconId(iconId);
-            }  // else we're out of luck.
+            }
         } else {
             // Pre Android M, the small icon has to be from the resources of the app whose
             // NotificationManager is used in NotificationManager#notify.
             setSmallIconId(iconId);
         }
         return this;
-    }
-
-    private static boolean usingRemoteAppContextAllowed() {
-        return ChromeFeatureList.isEnabled(
-                ChromeFeatureList.ALLOW_REMOTE_CONTEXT_FOR_NOTIFICATIONS);
     }
 
     /**
@@ -340,7 +324,7 @@ public abstract class NotificationBuilderBase {
      * content.
      */
     public NotificationBuilderBase addButtonAction(@Nullable Bitmap iconBitmap,
-            @Nullable CharSequence title, @Nullable PendingIntent intent) {
+            @Nullable CharSequence title, PendingIntentProvider intent) {
         addAuthorProvidedAction(iconBitmap, title, intent, Action.Type.BUTTON, null);
         return this;
     }
@@ -351,13 +335,13 @@ public abstract class NotificationBuilderBase {
      * from Android N, displays a text box within the notification for inline replies.
      */
     public NotificationBuilderBase addTextAction(@Nullable Bitmap iconBitmap,
-            @Nullable CharSequence title, @Nullable PendingIntent intent, String placeholder) {
+            @Nullable CharSequence title, PendingIntentProvider intent, String placeholder) {
         addAuthorProvidedAction(iconBitmap, title, intent, Action.Type.TEXT, placeholder);
         return this;
     }
 
     private void addAuthorProvidedAction(@Nullable Bitmap iconBitmap, @Nullable CharSequence title,
-            @Nullable PendingIntent intent, @Action.Type int actionType,
+            PendingIntentProvider intent, @Action.Type int actionType,
             @Nullable String placeholder) {
         if (mActions.size() == MAX_AUTHOR_PROVIDED_ACTION_BUTTONS) {
             throw new IllegalStateException(
@@ -373,7 +357,7 @@ public abstract class NotificationBuilderBase {
      * Adds an action to the notification for opening the settings screen.
      */
     public NotificationBuilderBase addSettingsAction(
-            int iconId, @Nullable CharSequence title, @Nullable PendingIntent intent) {
+            int iconId, @Nullable CharSequence title, PendingIntentProvider intent) {
         mSettingsAction = new Action(iconId, limitLength(title), intent, Action.Type.BUTTON, null,
                 NotificationUmaTracker.ActionType.SETTINGS);
         return this;
@@ -399,6 +383,14 @@ public abstract class NotificationBuilderBase {
      */
     public NotificationBuilderBase setVibrate(long[] pattern) {
         mVibratePattern = Arrays.copyOf(pattern, pattern.length);
+        return this;
+    }
+
+    /**
+     * Sets whether this notification should be silent.
+     */
+    public NotificationBuilderBase setSilent(boolean silent) {
+        mSilent = silent;
         return this;
     }
 
@@ -470,13 +462,10 @@ public abstract class NotificationBuilderBase {
      * on the lockscreen, displaying just the site origin and badge or generated icon.
      */
     protected Notification createPublicNotification(Context context) {
-        // Use a non-compat builder because we want the default small icon behaviour.
         NotificationWrapperBuilder builder =
-                NotificationWrapperBuilderFactory
-                        .createNotificationWrapperBuilder(false /* preferCompat */, mChannelId)
-                        .setContentText(context.getString(
-                                org.chromium.chrome.R.string.notification_hidden_text))
-                        .setSmallIcon(org.chromium.chrome.R.drawable.ic_chrome);
+                NotificationWrapperBuilderFactory.createNotificationWrapperBuilder(mChannelId)
+                        .setContentText(context.getString(R.string.notification_hidden_text))
+                        .setSmallIcon(R.drawable.ic_chrome);
 
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
             // On N, 'subtext' displays at the top of the notification and this looks better.
@@ -494,7 +483,7 @@ public abstract class NotificationBuilderBase {
             // The Icon class was added in Android M.
             Bitmap publicIcon = mSmallIconBitmapForStatusBar.copy(
                     mSmallIconBitmapForStatusBar.getConfig(), true);
-            builder.setSmallIcon(Icon.createWithBitmap(publicIcon));
+            builder.setSmallIcon(ApiHelperForM.createIconWithBitmap(publicIcon));
         } else if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.M && mOrigin != null) {
             // Only set the large icon for L & M because on N(+?) it would add an extra icon on
             // the right hand side, which looks odd without a notification title.
@@ -519,12 +508,12 @@ public abstract class NotificationBuilderBase {
      * provided and the API level is high enough, otherwise the resource id is used.
      * @param iconBitmap should be used only on devices that support bitmap icons.
      */
-    @TargetApi(Build.VERSION_CODES.M) // For the Icon class.
+    @RequiresApi(Build.VERSION_CODES.M) // For the Icon class.
     protected static void setStatusBarIcon(
             NotificationWrapperBuilder builder, int iconId, @Nullable Bitmap iconBitmap) {
         if (iconBitmap != null) {
             assert deviceSupportsBitmapStatusBarIcons();
-            builder.setSmallIcon(Icon.createWithBitmap(iconBitmap));
+            builder.setSmallIcon(ApiHelperForM.createIconWithBitmap(iconBitmap));
         } else {
             builder.setSmallIcon(iconId);
         }
@@ -545,8 +534,8 @@ public abstract class NotificationBuilderBase {
             // Also, there are crashes on Lenovo M devices: https://crbug.com/894361. These include
             // Lenovo Zuk devices, which have Build.MANUFACTURER="ZUK": https://crbug.com/927271.
             // And some more crashes from Hisense and LeEco devices: https://crbug.com/903268.
-            for (String name : new String[] {"samsung", "yulong", "lenovo", "zuk", "hisense",
-                    "leeco"}) {
+            for (String name :
+                    new String[] {"samsung", "yulong", "lenovo", "zuk", "hisense", "leeco"}) {
                 if (Build.MANUFACTURER.equalsIgnoreCase(name)) {
                     return false;
                 }
@@ -559,13 +548,13 @@ public abstract class NotificationBuilderBase {
      * Adds an action to {@code builder} using a {@code Bitmap} if a bitmap is provided and the API
      * level is high enough, otherwise a resource id is used.
      */
-    @SuppressWarnings("deprecation") // For addAction(int, CharSequence, PendingIntent)
+    @SuppressWarnings("deprecation") // For addAction(NotificationCompat.Action)
     protected static void addActionToBuilder(NotificationWrapperBuilder builder, Action action) {
-        Notification.Action.Builder actionBuilder = getActionBuilder(action);
+        NotificationCompat.Action.Builder actionBuilder = getActionBuilder(action);
         if (action.type == Action.Type.TEXT) {
             assert action.placeholder != null;
             actionBuilder.addRemoteInput(
-                    new RemoteInput.Builder(NotificationConstants.KEY_TEXT_REPLY)
+                    new androidx.core.app.RemoteInput.Builder(NotificationConstants.KEY_TEXT_REPLY)
                             .setLabel(action.placeholder)
                             .build());
         }
@@ -573,8 +562,8 @@ public abstract class NotificationBuilderBase {
         if (action.umaActionType == NotificationUmaTracker.ActionType.UNKNOWN) {
             builder.addAction(actionBuilder.build());
         } else {
-            builder.addAction(
-                    actionBuilder.build(), PendingIntent.FLAG_UPDATE_CURRENT, action.umaActionType);
+            builder.addAction(actionBuilder.build(), action.intent.getFlags(), action.umaActionType,
+                    /*requestCode=*/0);
         }
     }
 
@@ -592,18 +581,13 @@ public abstract class NotificationBuilderBase {
         // all Chrome notifications on N though (see crbug.com/674015).
     }
 
-    @SuppressWarnings("deprecation") // For Builder(int, CharSequence, PendingIntent)
-    private static Notification.Action.Builder getActionBuilder(Action action) {
-        Notification.Action.Builder actionBuilder;
+    private static NotificationCompat.Action.Builder getActionBuilder(Action action) {
+        PendingIntent intent = action.intent.getPendingIntent();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && action.iconBitmap != null) {
-            // Icon was added in Android M.
-            Icon icon = Icon.createWithBitmap(action.iconBitmap);
-            actionBuilder = new Notification.Action.Builder(icon, action.title, action.intent);
-        } else {
-            actionBuilder =
-                    new Notification.Action.Builder(action.iconId, action.title, action.intent);
+            IconCompat icon = IconCompat.createWithBitmap(action.iconBitmap);
+            return new NotificationCompat.Action.Builder(icon, action.title, intent);
         }
-        return actionBuilder;
+        return new NotificationCompat.Action.Builder(action.iconId, action.title, intent);
     }
 
     /**

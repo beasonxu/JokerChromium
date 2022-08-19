@@ -1,27 +1,29 @@
-// Copyright 2017 The Chromium Authors. All rights reserved.
+// Copyright 2021 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
 package org.chromium.chrome.browser.notifications;
 
-import android.annotation.TargetApi;
 import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.text.format.DateUtils;
 
 import androidx.annotation.IntDef;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.core.app.NotificationChannelCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import org.chromium.base.ContextUtils;
 import org.chromium.base.MathUtils;
+import org.chromium.base.compat.ApiHelperForO;
 import org.chromium.base.metrics.RecordHistogram;
 import org.chromium.base.metrics.RecordUserAction;
 import org.chromium.chrome.browser.notifications.channels.ChromeChannelDefinitions;
 import org.chromium.chrome.browser.preferences.ChromePreferenceKeys;
 import org.chromium.chrome.browser.preferences.SharedPreferencesManager;
+import org.chromium.ui.permissions.PermissionConstants;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -51,13 +53,19 @@ public class NotificationUmaTracker {
             SystemNotificationType.TRUSTED_WEB_ACTIVITY_SITES, SystemNotificationType.OFFLINE_PAGES,
             SystemNotificationType.SEND_TAB_TO_SELF, SystemNotificationType.UPDATES,
             SystemNotificationType.CLICK_TO_CALL, SystemNotificationType.SHARED_CLIPBOARD,
-            SystemNotificationType.PERMISSION_REQUESTS,
+            SystemNotificationType.SMS_FETCHER, SystemNotificationType.PERMISSION_REQUESTS,
             SystemNotificationType.PERMISSION_REQUESTS_HIGH, SystemNotificationType.ANNOUNCEMENT,
             SystemNotificationType.SHARE_SAVE_IMAGE, SystemNotificationType.TWA_DISCLOSURE_INITIAL,
             SystemNotificationType.TWA_DISCLOSURE_SUBSEQUENT,
             SystemNotificationType.CHROME_REENGAGEMENT_1,
             SystemNotificationType.CHROME_REENGAGEMENT_2,
-            SystemNotificationType.CHROME_REENGAGEMENT_3, SystemNotificationType.PRICE_DROP_ALERTS})
+            SystemNotificationType.CHROME_REENGAGEMENT_3, SystemNotificationType.PRICE_DROP_ALERTS,
+            SystemNotificationType.WEBAPK_INSTALL_IN_PROGRESS,
+            SystemNotificationType.WEBAPK_INSTALL_COMPLETE,
+            SystemNotificationType.PRICE_DROP_ALERTS_CHROME_MANAGED,
+            SystemNotificationType.PRICE_DROP_ALERTS_USER_MANAGED,
+            SystemNotificationType.CHROME_TIPS, SystemNotificationType.BLUETOOTH,
+            SystemNotificationType.USB, SystemNotificationType.UPM_ERROR})
     @Retention(RetentionPolicy.SOURCE)
     public @interface SystemNotificationType {
         int UNKNOWN = -1;
@@ -90,8 +98,17 @@ public class NotificationUmaTracker {
         int CHROME_REENGAGEMENT_2 = 26;
         int CHROME_REENGAGEMENT_3 = 27;
         int PRICE_DROP_ALERTS = 28;
+        int SMS_FETCHER = 29;
+        int WEBAPK_INSTALL_IN_PROGRESS = 30;
+        int WEBAPK_INSTALL_COMPLETE = 31;
+        int PRICE_DROP_ALERTS_CHROME_MANAGED = 32;
+        int PRICE_DROP_ALERTS_USER_MANAGED = 33;
+        int CHROME_TIPS = 34;
+        int BLUETOOTH = 35;
+        int USB = 36;
+        int UPM_ERROR = 37;
 
-        int NUM_ENTRIES = 29;
+        int NUM_ENTRIES = 38;
     }
 
     /*
@@ -106,7 +123,8 @@ public class NotificationUmaTracker {
             ActionType.CONTENT_SUGGESTION_SETTINGS, ActionType.WEB_APP_ACTION_SHARE,
             ActionType.WEB_APP_ACTION_OPEN_IN_CHROME,
             ActionType.OFFLINE_CONTENT_SUGGESTION_SETTINGS, ActionType.SHARING_TRY_AGAIN,
-            ActionType.SETTINGS, ActionType.ANNOUNCEMENT_ACK, ActionType.ANNOUNCEMENT_OPEN})
+            ActionType.SETTINGS, ActionType.ANNOUNCEMENT_ACK, ActionType.ANNOUNCEMENT_OPEN,
+            ActionType.PRICE_DROP_VISIT_SITE, ActionType.PRICE_DROP_TURN_OFF_ALERT})
     @Retention(RetentionPolicy.SOURCE)
     public @interface ActionType {
         int UNKNOWN = -1;
@@ -142,8 +160,74 @@ public class NotificationUmaTracker {
         int ANNOUNCEMENT_OPEN = 14;
         // "Got it" button on the TWA "Running in Chrome" notification.
         int TWA_NOTIFICATION_ACCEPTANCE = 15;
+        // "Cancel" button in auto fetch offline page notification.
+        int AUTO_FETCH_CANCEL = 16;
 
-        int NUM_ENTRIES = 16;
+        // Media notification buttons.
+        int MEDIA_ACTION_PLAY = 17;
+        int MEDIA_ACTION_PAUSE = 18;
+        int MEDIA_ACTION_STOP = 19;
+        int MEDIA_ACTION_PREVIOUS_TRACK = 20;
+        int MEDIA_ACTION_NEXT_TRACK = 21;
+        int MEDIA_ACTION_SEEK_FORWARD = 22;
+        int MEDIA_ACTION_SEEK_BACKWARD = 23;
+
+        // Price drop notification buttons.
+        int PRICE_DROP_VISIT_SITE = 24;
+        int PRICE_DROP_TURN_OFF_ALERT = 25;
+
+        // Confirm button on sharing notification.
+        int SHARING_CONFIRM = 26;
+        // Cancel button on sharing notification.
+        int SHARING_CANCEL = 27;
+
+        int NUM_ENTRIES = 28;
+    }
+
+    /**
+     * A list of results from showing the notification permission rationale dialog, defined in
+     * enums.xml These values are persisted to logs. Entries should not be renumbered and numeric
+     * values should never be reused.
+     */
+    @IntDef({NotificationRationaleResult.POSITIVE_BUTTON_CLICKED,
+            NotificationRationaleResult.NEGATIVE_BUTTON_CLICKED,
+            NotificationRationaleResult.NAVIGATE_BACK_OR_TOUCH_OUTSIDE,
+            NotificationRationaleResult.NOT_ATTACHED_TO_WINDOW,
+            NotificationRationaleResult.ACTIVITY_DESTROYED,
+            NotificationRationaleResult.NUM_ENTRIES})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface NotificationRationaleResult {
+        int POSITIVE_BUTTON_CLICKED = 0;
+        int NEGATIVE_BUTTON_CLICKED = 1;
+        int NAVIGATE_BACK_OR_TOUCH_OUTSIDE = 2;
+        int ACTIVITY_DESTROYED = 3;
+        int NOT_ATTACHED_TO_WINDOW = 4;
+
+        int NUM_ENTRIES = 5;
+    }
+
+    /**
+     * A list of possible states of the notification permission, to be recorded on startup. Defined
+     * in enums.xml These values are persisted to logs. Entries should not be renumbered and numeric
+     * values should never be reused.
+     */
+    @IntDef({NotificationPermissionState.ALLOWED,
+            NotificationPermissionState.DENIED_BY_DEVICE_POLICY,
+            NotificationPermissionState.DENIED_NEVER_ASKED,
+            NotificationPermissionState.DENIED_ASKED_ONCE,
+            NotificationPermissionState.DENIED_ASKED_TWICE,
+            NotificationPermissionState.DENIED_ASKED_MORE_THAN_TWICE,
+            NotificationPermissionState.NUM_ENTRIES})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface NotificationPermissionState {
+        int ALLOWED = 0;
+        int DENIED_BY_DEVICE_POLICY = 1;
+        int DENIED_NEVER_ASKED = 2;
+        int DENIED_ASKED_ONCE = 3;
+        int DENIED_ASKED_TWICE = 4;
+        int DENIED_ASKED_MORE_THAN_TWICE = 5;
+
+        int NUM_ENTRIES = 6;
     }
 
     private static class LazyHolder {
@@ -164,7 +248,7 @@ public class NotificationUmaTracker {
     }
 
     /**
-     * Logs {@link android.app.Notification} usage, categorized into {@link SystemNotificationType}
+     * Logs {@link Notification} usage, categorized into {@link SystemNotificationType}
      * types.  Splits the logs by the global enabled state of notifications and also logs the last
      * notification shown prior to the global notifications state being disabled by the user.
      * @param type The type of notification that was shown.
@@ -176,7 +260,7 @@ public class NotificationUmaTracker {
         if (type == SystemNotificationType.UNKNOWN || notification == null) return;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            logNotificationShown(type, notification.getChannelId());
+            logNotificationShown(type, ApiHelperForO.getNotificationChannelId(notification));
         } else {
             logNotificationShown(type, null);
         }
@@ -210,6 +294,20 @@ public class NotificationUmaTracker {
                 recordNotificationAgeHistogram(
                         "Mobile.SystemNotification.Content.Click.Age.SharedClipboard", createTime);
                 break;
+            case SystemNotificationType.SMS_FETCHER:
+                recordNotificationAgeHistogram(
+                        "Mobile.SystemNotification.Content.Click.Age.SmsFetcher", createTime);
+                break;
+            case SystemNotificationType.PRICE_DROP_ALERTS_CHROME_MANAGED:
+                recordNotificationAgeHistogram(
+                        "Mobile.SystemNotification.Content.Click.Age.PriceDropChromeManaged",
+                        createTime);
+                break;
+            case SystemNotificationType.PRICE_DROP_ALERTS_USER_MANAGED:
+                recordNotificationAgeHistogram(
+                        "Mobile.SystemNotification.Content.Click.Age.PriceDropUserManaged",
+                        createTime);
+                break;
         }
     }
 
@@ -239,6 +337,18 @@ public class NotificationUmaTracker {
             case SystemNotificationType.SHARED_CLIPBOARD:
                 recordNotificationAgeHistogram(
                         "Mobile.SystemNotification.Dismiss.Age.SharedClipboard", createTime);
+                break;
+            case SystemNotificationType.SMS_FETCHER:
+                recordNotificationAgeHistogram(
+                        "Mobile.SystemNotification.Dismiss.Age.SmsFetcher", createTime);
+                break;
+            case SystemNotificationType.PRICE_DROP_ALERTS_CHROME_MANAGED:
+                recordNotificationAgeHistogram(
+                        "Mobile.SystemNotification.Dismiss.Age.PriceDropChromeManaged", createTime);
+                break;
+            case SystemNotificationType.PRICE_DROP_ALERTS_USER_MANAGED:
+                recordNotificationAgeHistogram(
+                        "Mobile.SystemNotification.Dismiss.Age.PriceDropUserManaged", createTime);
                 break;
         }
     }
@@ -272,14 +382,81 @@ public class NotificationUmaTracker {
                 recordNotificationAgeHistogram(
                         "Mobile.SystemNotification.Action.Click.Age.SharedClipboard", createTime);
                 break;
+            case SystemNotificationType.SMS_FETCHER:
+                recordNotificationAgeHistogram(
+                        "Mobile.SystemNotification.Action.Click.Age.SmsFetcher", createTime);
+                break;
+            case SystemNotificationType.PRICE_DROP_ALERTS_CHROME_MANAGED:
+                recordNotificationAgeHistogram(
+                        "Mobile.SystemNotification.Action.Click.Age.PriceDropChromeManaged",
+                        createTime);
+                break;
+            case SystemNotificationType.PRICE_DROP_ALERTS_USER_MANAGED:
+                recordNotificationAgeHistogram(
+                        "Mobile.SystemNotification.Action.Click.Age.PriceDropUserManaged",
+                        createTime);
+                break;
         }
     }
 
     /**
-     * Tracks UMA when failed to notify {@link NotificationManager}.
+     * Records the count of requests for notification permission, this includes either showing the
+     * OS prompt or Chrome's permission rationale.
      */
-    public void onFailedToNotify(@SystemNotificationType int type) {
-        recordHistogram("Mobile.SystemNotification.NotifyFailure", type);
+    public void onNotificationPermissionRequested() {
+        int requestCount = mSharedPreferences.readInt(
+                ChromePreferenceKeys.NOTIFICATION_PERMISSION_REQUEST_COUNT);
+        RecordHistogram.recordExactLinearHistogram(
+                "Mobile.SystemNotification.Permission.StartupRequestCount", requestCount, 50);
+    }
+
+    /**
+     * Records the result of an OS prompt for notification permissions.
+     * @param permissions List of permissions requested, the only element should be the notification
+     *         permission.
+     * @param grantResults List of grant results.
+     */
+    public void onNotificationPermissionRequestResult(String[] permissions, int[] grantResults) {
+        if (permissions.length != 1 || grantResults.length != 1
+                || !permissions[0].equals(PermissionConstants.NOTIFICATION_PERMISSION)) {
+            assert false;
+            return;
+        }
+
+        boolean isPermissionGranted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+
+        RecordHistogram.recordBooleanHistogram(
+                "Mobile.SystemNotification.Permission.OSPromptResult", isPermissionGranted);
+    }
+
+    /**
+     * Called when the app's notifications are blocked or allowed through Android settings or when
+     * allowed through the OS prompt.
+     * @param blockedState If true all notifications are blocked.
+     */
+    public void onNotificationPermissionSettingChange(boolean blockedState) {
+        boolean isPermissionGranted = !blockedState;
+
+        RecordHistogram.recordBooleanHistogram(
+                "Mobile.SystemNotification.Permission.Change", isPermissionGranted);
+    }
+
+    /**
+     * Records the result of showing the notification permission rationale dialog.
+     */
+    public void onNotificationPermissionRationaleResult(@NotificationRationaleResult int result) {
+        RecordHistogram.recordEnumeratedHistogram(
+                "Mobile.SystemNotification.Permission.RationaleResult", result,
+                NotificationRationaleResult.NUM_ENTRIES);
+    }
+
+    /**
+     * Records a metric indicating the state of notification permissions on startup.
+     */
+    public void recordNotificationPermissionState(@NotificationPermissionState int state) {
+        RecordHistogram.recordEnumeratedHistogram(
+                "Mobile.SystemNotification.Permission.StartupState", state,
+                NotificationPermissionState.NUM_ENTRIES);
     }
 
     private void logNotificationShown(@SystemNotificationType int type,
@@ -298,13 +475,12 @@ public class NotificationUmaTracker {
         recordHistogram("Mobile.SystemNotification.Shown", type);
     }
 
-    @TargetApi(26)
+    @RequiresApi(26)
     private boolean isChannelBlocked(@ChromeChannelDefinitions.ChannelId String channelId) {
-        // Use non-compat notification manager as compat does not have getNotificationChannel (yet).
-        NotificationManager notificationManager =
-                ContextUtils.getApplicationContext().getSystemService(NotificationManager.class);
-        NotificationChannel channel = notificationManager.getNotificationChannel(channelId);
-        return channel != null && channel.getImportance() == NotificationManager.IMPORTANCE_NONE;
+        NotificationChannelCompat channel =
+                mNotificationManager.getNotificationChannelCompat(channelId);
+        return channel != null
+                && channel.getImportance() == NotificationManagerCompat.IMPORTANCE_NONE;
     }
 
     private void saveLastShownNotification(@SystemNotificationType int type) {

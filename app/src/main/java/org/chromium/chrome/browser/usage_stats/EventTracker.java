@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
- * In-memory store of {@link org.chromium.chrome.browser.usage_stats.WebsiteEvent} objects.
+ * In-memory store of {@link WebsiteEvent} objects.
  * Allows for addition of events and querying for all events in a time interval.
  */
 public class EventTracker {
@@ -60,9 +60,6 @@ public class EventTracker {
     public Promise<Void> addWebsiteEvent(WebsiteEvent event) {
         final Promise<Void> writePromise = new Promise<>();
         mRootPromise.then((result) -> {
-            assert result.size() == 0
-                    || event.getTimestamp() >= result.get(result.size() - 1).getTimestamp();
-
             List<WebsiteEventProtos.WebsiteEvent> eventsList = Arrays.asList(getProtoEvent(event));
             mBridge.addEvents(eventsList, (didSucceed) -> {
                 if (didSucceed) {

@@ -74,7 +74,7 @@ public class BookmarkModel extends BookmarkBridge {
      *                  children, because deleting folder will also remove all its children, and
      *                  deleting children once more will cause errors.
      */
-    void deleteBookmarks(BookmarkId... bookmarks) {
+    public void deleteBookmarks(BookmarkId... bookmarks) {
         assert bookmarks != null && bookmarks.length > 0;
         // Store all titles of bookmarks.
         List<String> titles = new ArrayList<>();
@@ -99,7 +99,7 @@ public class BookmarkModel extends BookmarkBridge {
      * Calls {@link BookmarkBridge#moveBookmark(BookmarkId, BookmarkId, int)} for the given
      * bookmark list. The bookmarks are appended at the end.
      */
-    void moveBookmarks(List<BookmarkId> bookmarkIds, BookmarkId newParentId) {
+    public void moveBookmarks(List<BookmarkId> bookmarkIds, BookmarkId newParentId) {
         int appendIndex = getChildCount(newParentId);
         for (int i = 0; i < bookmarkIds.size(); ++i) {
             moveBookmark(bookmarkIds.get(i), newParentId, appendIndex + i);
@@ -107,9 +107,9 @@ public class BookmarkModel extends BookmarkBridge {
     }
 
     /**
-     * @see org.chromium.chrome.browser.bookmarks.BookmarkBridge.BookmarkItem#getTitle()
+     * @see BookmarkItem#getTitle()
      */
-    String getBookmarkTitle(BookmarkId bookmarkId) {
+    public String getBookmarkTitle(BookmarkId bookmarkId) {
         BookmarkItem bookmarkItem = getBookmarkById(bookmarkId);
         if (bookmarkItem == null) return "";
         return bookmarkItem.getTitle();
@@ -132,9 +132,19 @@ public class BookmarkModel extends BookmarkBridge {
     }
 
     /**
-     * @return The id of the default folder to add bookmarks/folders to.
+     * @return The id of the default folder to save bookmarks/folders to.
      */
     public BookmarkId getDefaultFolder() {
+        return getMobileFolderId();
+    }
+
+    /**
+     * @return The id of the default folder to view bookmarks.
+     */
+    public BookmarkId getDefaultFolderViewLocation() {
+        if (ReadingListFeatures.shouldUseRootFolderAsDefaultForReadLater()) {
+            return getRootFolderId();
+        }
         return getMobileFolderId();
     }
 }

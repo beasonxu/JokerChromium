@@ -1,21 +1,19 @@
 package org.chromium.base;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.annotations.MainDex;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @MainDex
 @CheckDiscard("crbug.com/993421")
-final class MemoryPressureListenerJni implements MemoryPressureListener.Natives {
+class MemoryPressureListenerJni implements MemoryPressureListener.Natives {
   private static MemoryPressureListener.Natives testInstance;
 
-  public static final JniStaticTestMocker<MemoryPressureListener.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.base.MemoryPressureListener.Natives>() {
-    @java.lang.Override
-    public void setInstanceForTesting(org.chromium.base.MemoryPressureListener.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+  public static final JniStaticTestMocker<MemoryPressureListener.Natives> TEST_HOOKS = new JniStaticTestMocker<MemoryPressureListener.Natives>() {
+    @Override
+    public void setInstanceForTesting(MemoryPressureListener.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

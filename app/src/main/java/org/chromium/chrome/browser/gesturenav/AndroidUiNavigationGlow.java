@@ -6,6 +6,7 @@ package org.chromium.chrome.browser.gesturenav;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EdgeEffect;
@@ -23,7 +24,7 @@ public class AndroidUiNavigationGlow extends NavigationGlow {
     private final Runnable mRemoveGlowViewRunnable;
 
     /**
-     * {@link android.view.View} where the glow effect is rendered. Stays attached to view
+     * {@link View} where the glow effect is rendered. Stays attached to view
      * hierarchy while rendering is in progress only.
      */
     private final GlowView mGlowView;
@@ -85,7 +86,7 @@ public class AndroidUiNavigationGlow extends NavigationGlow {
         }
 
         private void setColor() {
-            mEdgeEffectRight.setColor(android.R.color.black);
+            mEdgeEffectRight.setColor(Color.BLACK);
         }
 
         @Override
