@@ -173,24 +173,7 @@ sync_splash() {
 	       "${MODULES_DIR}/splash/src/main/res"
 }
 
-sync_feed() {
-	#mkdir -p ${MODULES_DIR}/feed/{shared_res,shared_public_res,basic_res,basic_view_res,piet_res}
 
-	# cp -r ${BASE_DIR}/third_party/feed/src/src/main/java/com/google/android/libraries/feed/sharedstream/res/* \
-	# "${MODULES_DIR}/feed/shared_res"
-
-	# cp -r ${BASE_DIR}/third_party/feed/src/src/main/java/com/google/android/libraries/feed/sharedstream/publicapi/menumeasurer/res/* \
-	# "${MODULES_DIR}/feed/shared_public_res"
-
-	# cp -r ${BASE_DIR}/third_party/feed/src/src/main/java/com/google/android/libraries/feed/basicstream/res/* \
-	# "${MODULES_DIR}/feed/basic_res"
-
-	# cp -r ${BASE_DIR}/third_party/feed/src/src/main/java/com/google/android/libraries/feed/basicstream/internal/viewholders/res/* \
-	# "${MODULES_DIR}/feed/basic_view_res"
-
-	# cp -r ${BASE_DIR}/third_party/feed/src/src/main/java/com/google/android/libraries/feed/piet/res/* \
-	# "${MODULES_DIR}/feed/piet_res"
-}
 
 sync_aidl() {
         local custom_tabs_aidl="${APP_DIR}/src/main/aidl/android/support/customtabs"
