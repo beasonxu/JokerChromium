@@ -20,7 +20,6 @@ sync_ui() {
 }
 
 sync_components() {
-	mkdir -p ${MODULES_DIR}/components/{autofill,components_base,embedder_support}/src/main/res
 	mkdir -p "${MODULES_DIR}/components/autofill/src/main/res"
 	mkdir -p "${MODULES_DIR}/components/components_base/src/main/res"
 	mkdir -p "${MODULES_DIR}/components/embedder_support/src/main/res"
