@@ -670,7 +670,7 @@ do_sync() {
 	sync_download
 	sync_splash
 	sync_autofill_assistant
-	sync_feed
+#	sync_feed
 	sync_aidl
 
 	sync_assets
