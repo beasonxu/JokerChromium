@@ -21,6 +21,9 @@ sync_ui() {
 
 sync_components() {
 	mkdir -p ${MODULES_DIR}/components/{autofill,components_base,embedder_support}/src/main/res
+	mkdir -p "${MODULES_DIR}/components/autofill/src/main/res"
+	mkdir -p "${MODULES_DIR}/components/components_base/src/main/res"
+	mkdir -p "${MODULES_DIR}/components/embedder_support/src/main/res"
 
 		# ${components}/invalidation/impl/android/java/src/* \
 		# ${components}/module_installer/android/java/src-common/* \
@@ -118,7 +121,8 @@ sync_content() {
 }
 
 sync_data_chart() {
-	mkdir -p ${MODULES_DIR}/data_chart/src/main/{java,res}
+	mkdir -p "${MODULES_DIR}/data_chart/src/main/java"
+	mkdir -p "${MODULES_DIR}/data_chart/src/main/res"
 
 	cp -r ${BASE_DIR}/third_party/android_data_chart/java/src/* \
 		"${MODULES_DIR}/data_chart/src/main/java"
@@ -128,8 +132,10 @@ sync_data_chart() {
 }
 
 sync_media() {
-	mkdir -p ${MODULES_DIR}/media/src/main/{java,res}
+	mkdir -p "${MODULES_DIR}/media/src/main/java"
+	mkdir -p "${MODULES_DIR}/media/src/main/res"
 
+  mkdir -p "${MODULES_DIR}/media/src/main/java,res}"
 	cp -r ${BASE_DIR}/third_party/android_media/java/src/* \
 		"${MODULES_DIR}/media/src/main/java"
 	cp -r ${BASE_DIR}/third_party/android_media/java/res/* \
@@ -169,7 +175,7 @@ sync_splash() {
 }
 
 sync_feed() {
-	mkdir -p ${MODULES_DIR}/feed/{shared_res,shared_public_res,basic_res,basic_view_res,piet_res}
+	#mkdir -p ${MODULES_DIR}/feed/{shared_res,shared_public_res,basic_res,basic_view_res,piet_res}
 
 	# cp -r ${BASE_DIR}/third_party/feed/src/src/main/java/com/google/android/libraries/feed/sharedstream/res/* \
 	# "${MODULES_DIR}/feed/shared_res"
