@@ -560,7 +560,20 @@ sync_src() {
 #        ${BASE_DIR}/build/android/bytecode/java/* \
 
 sync_res() {
-  mkdir -p ${MODULES_DIR}/libraries_res/{android_webview_res,chrome_res,components_res,content_res,media_res,net_res,remoting_res,tools_res,ui_res,weblayer_res,gen_res,third_party_res}
+  #mkdir -p ${MODULES_DIR}/libraries_res/{android_webview_res,chrome_res,components_res,content_res,media_res,net_res,remoting_res,tools_res,ui_res,weblayer_res,gen_res,third_party_res}
+  mkdir -p "${MODULES_DIR}/libraries_res/android_webview_res"
+  mkdir -p "${MODULES_DIR}/libraries_res/chrome_res"
+  mkdir -p "${MODULES_DIR}/libraries_res/components_res"
+  mkdir -p "${MODULES_DIR}/libraries_res/content_res"
+  mkdir -p "${MODULES_DIR}/libraries_res/media_res"
+  mkdir -p "${MODULES_DIR}/libraries_res/net_res"
+
+   mkdir -p "${MODULES_DIR}/libraries_res/remoting_res"
+    mkdir -p "${MODULES_DIR}/libraries_res/tools_res"
+    mkdir -p "${MODULES_DIR}/libraries_res/ui_res"
+    mkdir -p "${MODULES_DIR}/libraries_res/weblayer_res"
+    mkdir -p "${MODULES_DIR}/libraries_res/gen_res"
+    mkdir -p "${MODULES_DIR}/libraries_res/third_party_res"
 	local android_webview_res="${MODULES_DIR}/libraries_res/android_webview_res/"
 	local chrome_res="${MODULES_DIR}/libraries_res/chrome_res/"
 	local components_res="${MODULES_DIR}/libraries_res/components_res/"
