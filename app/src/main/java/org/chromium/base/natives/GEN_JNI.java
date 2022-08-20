@@ -1,7 +1,6 @@
 package org.chromium.base.natives;
 
 import java.lang.Object;
-import java.lang.String;
 
 public final class GEN_JNI {
   public static boolean TESTING_ENABLED;
@@ -9,130 +8,282 @@ public final class GEN_JNI {
   public static boolean REQUIRE_MOCK;
 
   /**
-   * org.chromium.content.app.ContentChildProcessServiceDelegate.initChildProcess
-   * @param caller (org.chromium.content.app.ContentChildProcessServiceDelegate)
-   * @param cpuCount (int)
-   * @param cpuFeatures (long)
-   * @return (void)
-   */
-  public static final native void org_chromium_content_app_ContentChildProcessServiceDelegate_initChildProcess(
-      Object caller, int cpuCount, long cpuFeatures);
-
-  /**
-   * org.chromium.content.app.ContentChildProcessServiceDelegate.initMemoryPressureListener
-   * @return (void)
-   */
-  public static final native void org_chromium_content_app_ContentChildProcessServiceDelegate_initMemoryPressureListener(
-      );
-
-  /**
-   * org.chromium.content.app.ContentChildProcessServiceDelegate.retrieveFileDescriptorsIdsToKeys
-   * @param caller (org.chromium.content.app.ContentChildProcessServiceDelegate)
-   * @return (void)
-   */
-  public static final native void org_chromium_content_app_ContentChildProcessServiceDelegate_retrieveFileDescriptorsIdsToKeys(
-      Object caller);
-
-  /**
-   * org.chromium.content.app.ContentMain.start
-   * @param startMinimalBrowser (boolean)
-   * @return (int)
-   */
-  public static final native int org_chromium_content_app_ContentMain_start(
-      boolean startMinimalBrowser);
-
-  /**
-   * org.chromium.content.browser.BrowserStartupControllerImpl.flushStartupTasks
-   * @return (void)
-   */
-  public static final native void org_chromium_content_browser_BrowserStartupControllerImpl_flushStartupTasks(
-      );
-
-  /**
-   * org.chromium.content.browser.BrowserStartupControllerImpl.setCommandLineFlags
-   * @param singleProcess (boolean)
-   * @return (void)
-   */
-  public static final native void org_chromium_content_browser_BrowserStartupControllerImpl_setCommandLineFlags(
-      boolean singleProcess);
-
-  /**
-   * org.chromium.content.browser.TracingControllerAndroidImpl.destroy
-   * @param nativeTracingControllerAndroid (long)
-   * @param caller (org.chromium.content.browser.TracingControllerAndroidImpl)
-   * @return (void)
-   */
-  public static final native void org_chromium_content_browser_TracingControllerAndroidImpl_destroy(
-      long nativeTracingControllerAndroid, Object caller);
-
-  /**
-   * org.chromium.content.browser.TracingControllerAndroidImpl.getDefaultCategories
-   * @param caller (org.chromium.content.browser.TracingControllerAndroidImpl)
-   * @return (java.lang.String)
-   */
-  public static final native String org_chromium_content_browser_TracingControllerAndroidImpl_getDefaultCategories(
-      Object caller);
-
-  /**
-   * org.chromium.content.browser.TracingControllerAndroidImpl.getKnownCategoriesAsync
-   * @param nativeTracingControllerAndroid (long)
-   * @param caller (org.chromium.content.browser.TracingControllerAndroidImpl)
-   * @param callback (org.chromium.base.Callback<java.lang.String[]>)
-   * @return (boolean)
-   */
-  public static final native boolean org_chromium_content_browser_TracingControllerAndroidImpl_getKnownCategoriesAsync(
-      long nativeTracingControllerAndroid, Object caller, Object callback);
-
-  /**
-   * org.chromium.content.browser.TracingControllerAndroidImpl.getTraceBufferUsageAsync
-   * @param nativeTracingControllerAndroid (long)
-   * @param caller (org.chromium.content.browser.TracingControllerAndroidImpl)
-   * @param callback (org.chromium.base.Callback<android.util.Pair<java.lang.Float, java.lang.Long>>)
-   * @return (boolean)
-   */
-  public static final native boolean org_chromium_content_browser_TracingControllerAndroidImpl_getTraceBufferUsageAsync(
-      long nativeTracingControllerAndroid, Object caller, Object callback);
-
-  /**
-   * org.chromium.content.browser.TracingControllerAndroidImpl.init
-   * @param caller (org.chromium.content.browser.TracingControllerAndroidImpl)
+   * org.chromium.mojo.system.impl.BaseRunLoop.createBaseRunLoop
+   * @param caller (org.chromium.mojo.system.impl.BaseRunLoop)
    * @return (long)
    */
-  public static final native long org_chromium_content_browser_TracingControllerAndroidImpl_init(
+  public static final native long org_chromium_mojo_system_impl_BaseRunLoop_createBaseRunLoop(
       Object caller);
 
   /**
-   * org.chromium.content.browser.TracingControllerAndroidImpl.startTracing
-   * @param nativeTracingControllerAndroid (long)
-   * @param caller (org.chromium.content.browser.TracingControllerAndroidImpl)
-   * @param categories (java.lang.String)
-   * @param traceOptions (java.lang.String)
-   * @param useProtobuf (boolean)
-   * @return (boolean)
-   */
-  public static final native boolean org_chromium_content_browser_TracingControllerAndroidImpl_startTracing(
-      long nativeTracingControllerAndroid, Object caller, String categories, String traceOptions,
-      boolean useProtobuf);
-
-  /**
-   * org.chromium.content.browser.TracingControllerAndroidImpl.stopTracing
-   * @param nativeTracingControllerAndroid (long)
-   * @param caller (org.chromium.content.browser.TracingControllerAndroidImpl)
-   * @param filename (java.lang.String)
-   * @param compressFile (boolean)
-   * @param useProtobuf (boolean)
-   * @param callback (org.chromium.base.Callback<java.lang.Void>)
+   * org.chromium.mojo.system.impl.BaseRunLoop.deleteMessageLoop
+   * @param caller (org.chromium.mojo.system.impl.BaseRunLoop)
+   * @param runLoopID (long)
    * @return (void)
    */
-  public static final native void org_chromium_content_browser_TracingControllerAndroidImpl_stopTracing(
-      long nativeTracingControllerAndroid, Object caller, String filename, boolean compressFile,
-      boolean useProtobuf, Object callback);
+  public static final native void org_chromium_mojo_system_impl_BaseRunLoop_deleteMessageLoop(
+      Object caller, long runLoopID);
 
   /**
-   * org.chromium.content_public.common.ResourceRequestBody.createResourceRequestBodyFromBytes
-   * @param httpBody (byte[])
-   * @return (byte[])
+   * org.chromium.mojo.system.impl.BaseRunLoop.postDelayedTask
+   * @param caller (org.chromium.mojo.system.impl.BaseRunLoop)
+   * @param runLoopID (long)
+   * @param runnable (java.lang.Runnable)
+   * @param delay (long)
+   * @return (void)
    */
-  public static final native byte[] org_chromium_content_1public_common_ResourceRequestBody_createResourceRequestBodyFromBytes(
-      byte[] httpBody);
+  public static final native void org_chromium_mojo_system_impl_BaseRunLoop_postDelayedTask(
+      Object caller, long runLoopID, Object runnable, long delay);
+
+  /**
+   * org.chromium.mojo.system.impl.BaseRunLoop.quit
+   * @param caller (org.chromium.mojo.system.impl.BaseRunLoop)
+   * @return (void)
+   */
+  public static final native void org_chromium_mojo_system_impl_BaseRunLoop_quit(Object caller);
+
+  /**
+   * org.chromium.mojo.system.impl.BaseRunLoop.run
+   * @param caller (org.chromium.mojo.system.impl.BaseRunLoop)
+   * @return (void)
+   */
+  public static final native void org_chromium_mojo_system_impl_BaseRunLoop_run(Object caller);
+
+  /**
+   * org.chromium.mojo.system.impl.BaseRunLoop.runUntilIdle
+   * @param caller (org.chromium.mojo.system.impl.BaseRunLoop)
+   * @return (void)
+   */
+  public static final native void org_chromium_mojo_system_impl_BaseRunLoop_runUntilIdle(
+      Object caller);
+
+  /**
+   * org.chromium.mojo.system.impl.CoreImpl.beginReadData
+   * @param caller (org.chromium.mojo.system.impl.CoreImpl)
+   * @param mojoHandle (long)
+   * @param numBytes (int)
+   * @param flags (int)
+   * @return (org.chromium.mojo.system.ResultAnd<java.nio.ByteBuffer>)
+   */
+  public static final native Object org_chromium_mojo_system_impl_CoreImpl_beginReadData(
+      Object caller, long mojoHandle, int numBytes, int flags);
+
+  /**
+   * org.chromium.mojo.system.impl.CoreImpl.beginWriteData
+   * @param caller (org.chromium.mojo.system.impl.CoreImpl)
+   * @param mojoHandle (long)
+   * @param numBytes (int)
+   * @param flags (int)
+   * @return (org.chromium.mojo.system.ResultAnd<java.nio.ByteBuffer>)
+   */
+  public static final native Object org_chromium_mojo_system_impl_CoreImpl_beginWriteData(
+      Object caller, long mojoHandle, int numBytes, int flags);
+
+  /**
+   * org.chromium.mojo.system.impl.CoreImpl.close
+   * @param caller (org.chromium.mojo.system.impl.CoreImpl)
+   * @param mojoHandle (long)
+   * @return (int)
+   */
+  public static final native int org_chromium_mojo_system_impl_CoreImpl_close(Object caller,
+      long mojoHandle);
+
+  /**
+   * org.chromium.mojo.system.impl.CoreImpl.createDataPipe
+   * @param caller (org.chromium.mojo.system.impl.CoreImpl)
+   * @param optionsBuffer (java.nio.ByteBuffer)
+   * @return (org.chromium.mojo.system.ResultAnd<org.chromium.mojo.system.impl.CoreImpl.RawHandlePair>)
+   */
+  public static final native Object org_chromium_mojo_system_impl_CoreImpl_createDataPipe(
+      Object caller, Object optionsBuffer);
+
+  /**
+   * org.chromium.mojo.system.impl.CoreImpl.createMessagePipe
+   * @param caller (org.chromium.mojo.system.impl.CoreImpl)
+   * @param optionsBuffer (java.nio.ByteBuffer)
+   * @return (org.chromium.mojo.system.ResultAnd<org.chromium.mojo.system.impl.CoreImpl.RawHandlePair>)
+   */
+  public static final native Object org_chromium_mojo_system_impl_CoreImpl_createMessagePipe(
+      Object caller, Object optionsBuffer);
+
+  /**
+   * org.chromium.mojo.system.impl.CoreImpl.createPlatformHandle
+   * @param fd (int)
+   * @return (long)
+   */
+  public static final native long org_chromium_mojo_system_impl_CoreImpl_createPlatformHandle(
+      int fd);
+
+  /**
+   * org.chromium.mojo.system.impl.CoreImpl.createSharedBuffer
+   * @param caller (org.chromium.mojo.system.impl.CoreImpl)
+   * @param optionsBuffer (java.nio.ByteBuffer)
+   * @param numBytes (long)
+   * @return (org.chromium.mojo.system.ResultAnd<java.lang.Long>)
+   */
+  public static final native Object org_chromium_mojo_system_impl_CoreImpl_createSharedBuffer(
+      Object caller, Object optionsBuffer, long numBytes);
+
+  /**
+   * org.chromium.mojo.system.impl.CoreImpl.duplicate
+   * @param caller (org.chromium.mojo.system.impl.CoreImpl)
+   * @param mojoHandle (long)
+   * @param optionsBuffer (java.nio.ByteBuffer)
+   * @return (org.chromium.mojo.system.ResultAnd<java.lang.Long>)
+   */
+  public static final native Object org_chromium_mojo_system_impl_CoreImpl_duplicate(Object caller,
+      long mojoHandle, Object optionsBuffer);
+
+  /**
+   * org.chromium.mojo.system.impl.CoreImpl.endReadData
+   * @param caller (org.chromium.mojo.system.impl.CoreImpl)
+   * @param mojoHandle (long)
+   * @param numBytesRead (int)
+   * @return (int)
+   */
+  public static final native int org_chromium_mojo_system_impl_CoreImpl_endReadData(Object caller,
+      long mojoHandle, int numBytesRead);
+
+  /**
+   * org.chromium.mojo.system.impl.CoreImpl.endWriteData
+   * @param caller (org.chromium.mojo.system.impl.CoreImpl)
+   * @param mojoHandle (long)
+   * @param numBytesWritten (int)
+   * @return (int)
+   */
+  public static final native int org_chromium_mojo_system_impl_CoreImpl_endWriteData(Object caller,
+      long mojoHandle, int numBytesWritten);
+
+  /**
+   * org.chromium.mojo.system.impl.CoreImpl.getNativeBufferOffset
+   * @param caller (org.chromium.mojo.system.impl.CoreImpl)
+   * @param buffer (java.nio.ByteBuffer)
+   * @param alignment (int)
+   * @return (int)
+   */
+  public static final native int org_chromium_mojo_system_impl_CoreImpl_getNativeBufferOffset(
+      Object caller, Object buffer, int alignment);
+
+  /**
+   * org.chromium.mojo.system.impl.CoreImpl.getTimeTicksNow
+   * @param caller (org.chromium.mojo.system.impl.CoreImpl)
+   * @return (long)
+   */
+  public static final native long org_chromium_mojo_system_impl_CoreImpl_getTimeTicksNow(
+      Object caller);
+
+  /**
+   * org.chromium.mojo.system.impl.CoreImpl.map
+   * @param caller (org.chromium.mojo.system.impl.CoreImpl)
+   * @param mojoHandle (long)
+   * @param offset (long)
+   * @param numBytes (long)
+   * @param flags (int)
+   * @return (org.chromium.mojo.system.ResultAnd<java.nio.ByteBuffer>)
+   */
+  public static final native Object org_chromium_mojo_system_impl_CoreImpl_map(Object caller,
+      long mojoHandle, long offset, long numBytes, int flags);
+
+  /**
+   * org.chromium.mojo.system.impl.CoreImpl.queryHandleSignalsState
+   * @param caller (org.chromium.mojo.system.impl.CoreImpl)
+   * @param mojoHandle (long)
+   * @param signalsStateBuffer (java.nio.ByteBuffer)
+   * @return (int)
+   */
+  public static final native int org_chromium_mojo_system_impl_CoreImpl_queryHandleSignalsState(
+      Object caller, long mojoHandle, Object signalsStateBuffer);
+
+  /**
+   * org.chromium.mojo.system.impl.CoreImpl.readData
+   * @param caller (org.chromium.mojo.system.impl.CoreImpl)
+   * @param mojoHandle (long)
+   * @param elements (java.nio.ByteBuffer)
+   * @param elementsSize (int)
+   * @param flags (int)
+   * @return (org.chromium.mojo.system.ResultAnd<java.lang.Integer>)
+   */
+  public static final native Object org_chromium_mojo_system_impl_CoreImpl_readData(Object caller,
+      long mojoHandle, Object elements, int elementsSize, int flags);
+
+  /**
+   * org.chromium.mojo.system.impl.CoreImpl.readMessage
+   * @param caller (org.chromium.mojo.system.impl.CoreImpl)
+   * @param mojoHandle (long)
+   * @param flags (int)
+   * @return (org.chromium.mojo.system.ResultAnd<org.chromium.mojo.system.MessagePipeHandle.ReadMessageResult>)
+   */
+  public static final native Object org_chromium_mojo_system_impl_CoreImpl_readMessage(
+      Object caller, long mojoHandle, int flags);
+
+  /**
+   * org.chromium.mojo.system.impl.CoreImpl.unmap
+   * @param caller (org.chromium.mojo.system.impl.CoreImpl)
+   * @param buffer (java.nio.ByteBuffer)
+   * @return (int)
+   */
+  public static final native int org_chromium_mojo_system_impl_CoreImpl_unmap(Object caller,
+      Object buffer);
+
+  /**
+   * org.chromium.mojo.system.impl.CoreImpl.writeData
+   * @param caller (org.chromium.mojo.system.impl.CoreImpl)
+   * @param mojoHandle (long)
+   * @param elements (java.nio.ByteBuffer)
+   * @param limit (int)
+   * @param flags (int)
+   * @return (org.chromium.mojo.system.ResultAnd<java.lang.Integer>)
+   */
+  public static final native Object org_chromium_mojo_system_impl_CoreImpl_writeData(Object caller,
+      long mojoHandle, Object elements, int limit, int flags);
+
+  /**
+   * org.chromium.mojo.system.impl.CoreImpl.writeMessage
+   * @param caller (org.chromium.mojo.system.impl.CoreImpl)
+   * @param mojoHandle (long)
+   * @param bytes (java.nio.ByteBuffer)
+   * @param numBytes (int)
+   * @param handlesBuffer (java.nio.ByteBuffer)
+   * @param flags (int)
+   * @return (int)
+   */
+  public static final native int org_chromium_mojo_system_impl_CoreImpl_writeMessage(Object caller,
+      long mojoHandle, Object bytes, int numBytes, Object handlesBuffer, int flags);
+
+  /**
+   * org.chromium.mojo.system.impl.WatcherImpl.cancel
+   * @param caller (org.chromium.mojo.system.impl.WatcherImpl)
+   * @param implPtr (long)
+   * @return (void)
+   */
+  public static final native void org_chromium_mojo_system_impl_WatcherImpl_cancel(Object caller,
+      long implPtr);
+
+  /**
+   * org.chromium.mojo.system.impl.WatcherImpl.createWatcher
+   * @param caller (org.chromium.mojo.system.impl.WatcherImpl)
+   * @return (long)
+   */
+  public static final native long org_chromium_mojo_system_impl_WatcherImpl_createWatcher(
+      Object caller);
+
+  /**
+   * org.chromium.mojo.system.impl.WatcherImpl.delete
+   * @param caller (org.chromium.mojo.system.impl.WatcherImpl)
+   * @param implPtr (long)
+   * @return (void)
+   */
+  public static final native void org_chromium_mojo_system_impl_WatcherImpl_delete(Object caller,
+      long implPtr);
+
+  /**
+   * org.chromium.mojo.system.impl.WatcherImpl.start
+   * @param caller (org.chromium.mojo.system.impl.WatcherImpl)
+   * @param implPtr (long)
+   * @param mojoHandle (long)
+   * @param flags (int)
+   * @return (int)
+   */
+  public static final native int org_chromium_mojo_system_impl_WatcherImpl_start(Object caller,
+      long implPtr, long mojoHandle, int flags);
 }

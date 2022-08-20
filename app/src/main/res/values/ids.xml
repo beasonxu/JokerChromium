@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Copyright 2019 The Chromium Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file. -->
+
 <resources>
-    <!-- Dropdown Popup Window -->
-    <item type="id" name="dropdown_popup_window" />
+    <!-- DualControlLayout button ids -->
+    <item type="id" name="button_primary" />
+    <item type="id" name="button_secondary" />
 
-    <!-- Model Utils -->
-    <item type="id" name="view_model" />
-    <item type="id" name="view_type" />
-    <item type="id" name="view_mcp" />
-
-    <!-- Widgets -->
-    <item type="id" name="chip_cancel_btn" />
+    <!-- ViewHighlighter tags -->
+    <item type="id" name="highlight_state" />
 </resources>
