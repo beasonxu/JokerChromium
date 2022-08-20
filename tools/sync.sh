@@ -305,7 +305,7 @@ sync_chrome() {
   cp -r ${RELEASE_DIR}/gen/components/sync/protocol/protocol_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/chrome/browser/signin/services/android/java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/incognito/android/java/src/* ${src_dir}
-  cp -r ${BASE_DIR}/chrome/browser/continuous_search/android/java/src/* ${src_dir}
+  #cp -r ${BASE_DIR}/chrome/browser/continuous_search/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/commerce/price_tracking/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/continuous_search/internal/android/java/src/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/components/paint_preview/player/android/java/generated_java/input_srcjars/* ${src_dir}
@@ -325,7 +325,7 @@ sync_chrome() {
   cp -r ${RELEASE_DIR}/gen/content/public/common/trust_tokens_mojo_bindings_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/gpu/ipc/common/vulkan_interface_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/services/network/public/mojom/mojom_network_isolation_key_java/generated_java/input_srcjars/* ${src_dir}
-  cp -r ${RELEASE_DIR}/gen/chrome/browser/continuous_search/internal/java/generated_java/input_srcjars/* ${src_dir}
+ # cp -r ${RELEASE_DIR}/gen/chrome/browser/continuous_search/internal/java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/chrome/browser/tab/critical_persisted_tab_data_proto_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/components/background_task_scheduler/internal/proto_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/chrome/browser/contextmenu/java/generated_java/input_srcjars/* ${src_dir}
@@ -795,9 +795,9 @@ sync_browser(){
   cp -r ${BASE_DIR}/chrome/browser/incognito/android/java/res/* \
         ${MODULES_DIR}/browser/incognito_interstitial/src/main/res
 
-   mkdir -p ${MODULES_DIR}/browser/continuous_search/src/main/res
-  cp -r ${BASE_DIR}/chrome/browser/continuous_search/android/java/res/* \
-        ${MODULES_DIR}/browser/continuous_search/src/main/res
+  # mkdir -p ${MODULES_DIR}/browser/continuous_search/src/main/res
+  #cp -r ${BASE_DIR}/chrome/browser/continuous_search/android/java/res/* \
+   #     ${MODULES_DIR}/browser/continuous_search/src/main/res
 
    mkdir -p ${MODULES_DIR}/browser/password_entry_edit/src/main/res
   cp -r ${BASE_DIR}/chrome/browser/password_entry_edit/android/java/res/* \
