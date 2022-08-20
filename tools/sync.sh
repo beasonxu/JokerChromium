@@ -19,7 +19,9 @@ sync_chrome() {
   cp -r ${BASE_DIR}/chrome/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/base/android/java/src/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/base/base_java/generated_java/input_srcjars/* ${src_dir}
-  cp -r ${BASE_DIR}/chrome/browser/version/java/src/* ${src_dir}
+
+ # cp -r ${BASE_DIR}/chrome/browser/version/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/version/templates/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/settings/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/preferences/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/image_descriptions/android/java/src/* ${src_dir}
