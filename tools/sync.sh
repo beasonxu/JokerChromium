@@ -818,7 +818,7 @@ sync_surface() {
        mkdir -p ${MODULES_DIR}/chrome_start_surface/src/main/res
        cp -r ${BASE_DIR}/chrome/android/features/start_surface/java/res/* \
         #  ${BASE_DIR}/chrome/android/features/start_surface/internal/java/explore_res/* \
-	       "${MODULES_DIR}/chrome_start_surface/src/main/res"
+	       ${MODULES_DIR}/chrome_start_surface/src/main/res
 }
 
 sync_splash() {
