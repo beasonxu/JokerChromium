@@ -876,9 +876,9 @@ sync_libs() {
 	cp ${LIB_DIR}/components/browser_ui/photo_picker/android/java.jar "${APP_DIR}/libs/components/browser_ui/photo_picker/android/"
 	cp ${LIB_DIR}/third_party/gif_player/gif_player_java.jar "${APP_DIR}/libs/third_party/gif_player/"
 	cp ${LIB_DIR}/ui/android/ui_no_recycler_view_java.jar "${APP_DIR}/libs/ui/android/"
-	cp ${LIB_DIR}/url/gurl_java.jar "${APP_DIR}/libs/url/" \
-    "${APP_DIR}/libs"
+	cp ${LIB_DIR}/url/gurl_java.jar "${APP_DIR}/libs/url/"
 #	cp ${BASE_DIR}/third_party/google_android_play_core/*.aar \
+#    "${APP_DIR}/libs"
 }
 
 
