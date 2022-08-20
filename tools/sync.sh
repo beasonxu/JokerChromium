@@ -182,7 +182,7 @@ sync_chrome() {
   cp -r ${RELEASE_DIR}/gen/components/security_state/core/security_state_enums_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/android/features/keyboard_accessory/internal/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/omnibox/browser/android/java/src/* ${src_dir}
-  cp -r ${BASE_DIR}/chrome/browser/image_fetcher/android/java/src/* ${src_dir}
+  #cp -r ${BASE_DIR}/chrome/browser/image_fetcher/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/query_tiles/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/browser_ui/banners/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/android/browserservices/verification/java/src/* ${src_dir}
