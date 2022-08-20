@@ -380,7 +380,7 @@ sync_chrome() {
   cp -r ${RELEASE_DIR}/gen/components/download/internal/common/internal_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/components/feature_engagement/internal/internal_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/components/gcm_driver/android/gcm_driver_java/generated_java/input_srcjars/* ${src_dir}
-  cp -r ${RELEASE_DIR}/gen/components/language/android/language_bridge_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/language/android/java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${BASE_DIR}/services/device/geolocation/android/java/src/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/components/webxr/android/ar_java_base/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/components/variations/android/variations_java/generated_java/input_srcjars/* ${src_dir}
