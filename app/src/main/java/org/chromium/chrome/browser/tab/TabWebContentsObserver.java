@@ -332,7 +332,7 @@ public class TabWebContentsObserver extends TabWebContentsUserData {
         }
 
         @Override
-        public void viewportFitChanged(@WebContentsObserver.ViewportFitType int value) {
+        public void viewportFitChanged(@ViewportFitType int value) {
             DisplayCutoutTabHelper.from(mTab).setViewportFit(value);
         }
 

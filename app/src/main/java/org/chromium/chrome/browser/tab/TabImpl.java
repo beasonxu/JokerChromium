@@ -981,12 +981,12 @@ public class TabImpl implements Tab, TabObscuringHandler.Observer {
     }
 
     /**
-     * @return An {@link ObserverList.RewindableIterator} instance that points to all of
+     * @return An {@link RewindableIterator} instance that points to all of
      *         the current {@link TabObserver}s on this class.  Note that calling
      *         {@link java.util.Iterator#remove()} will throw an
      *         {@link UnsupportedOperationException}.
      */
-    ObserverList.RewindableIterator<TabObserver> getTabObservers() {
+    RewindableIterator<TabObserver> getTabObservers() {
         return mObservers.rewindableIterator();
     }
 

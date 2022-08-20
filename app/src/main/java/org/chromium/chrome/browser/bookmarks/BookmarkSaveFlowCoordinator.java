@@ -79,7 +79,7 @@ public class BookmarkSaveFlowCoordinator {
         mDestroyChecker = new DestroyChecker();
 
         mBookmarkSaveFlowView = LayoutInflater.from(mContext).inflate(
-                R.layout.bookmark_save_flow, /*root=*/null);
+                org.chromium.chrome.R.layout.bookmark_save_flow, /*root=*/null);
         mMediator = new BookmarkSaveFlowMediator(
                 mBookmarkModel, mPropertyModel, mContext, this::close, subscriptionsManager);
         mChangeProcessor = PropertyModelChangeProcessor.create(mPropertyModel,

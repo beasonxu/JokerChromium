@@ -25,8 +25,8 @@ class SearchBoxViewBinder
     @Override
     public final void bind(PropertyModel model, View view, PropertyKey propertyKey) {
         ImageView voiceSearchButton =
-                view.findViewById(R.id.voice_search_button);
-        ImageView lensButton = view.findViewById(R.id.lens_camera_button);
+                view.findViewById(org.chromium.chrome.R.id.voice_search_button);
+        ImageView lensButton = view.findViewById(org.chromium.chrome.R.id.lens_camera_button);
         View searchBoxContainer = view;
         final TextView searchBoxTextView = searchBoxContainer.findViewById(R.id.search_box_text);
 
@@ -69,7 +69,7 @@ class SearchBoxViewBinder
             boolean isHintVisible = model.get(SearchBoxProperties.SEARCH_HINT_VISIBILITY);
             searchBoxTextView.setHint(isHintVisible
                             ? view.getContext().getString(
-                                    R.string.search_or_type_web_address)
+                                    org.chromium.chrome.R.string.search_or_type_web_address)
                             : null);
         } else if (SearchBoxProperties.VOICE_SEARCH_CLICK_CALLBACK == propertyKey) {
             voiceSearchButton.setOnClickListener(

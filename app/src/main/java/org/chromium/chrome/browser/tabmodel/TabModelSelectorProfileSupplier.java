@@ -13,7 +13,7 @@ import org.chromium.chrome.browser.tab.Tab;
 /**
  * {@link ObservableSupplier} for {@link Profile} that updates each time the profile of the current
  * tab model changes, e.g. if the current tab model switches to/from incognito.
- * Like {@link org.chromium.base.supplier.ObservableSupplier}, this class must only be
+ * Like {@link ObservableSupplier}, this class must only be
  * accessed from a single thread.
  */
 public class TabModelSelectorProfileSupplier
