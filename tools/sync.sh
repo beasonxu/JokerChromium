@@ -230,7 +230,7 @@ sync_chrome() {
   cp -r ${RELEASE_DIR}/gen/components/crash/android/java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/components/version_info/android/version_constants_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/enterprise/util/android/java/src/* ${src_dir}
-  cp -r ${BASE_DIR}/third_party/android_data_chart/java/src/* ${src_dir}
+ # cp -r ${BASE_DIR}/third_party/android_data_chart/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/location/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/browser_ui/display_cutout/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/dom_distiller/content/browser/android/java/src/* ${src_dir}
@@ -826,9 +826,9 @@ sync_splash() {
 }
 
 sync_third_party() {
-  mkdir -p ${MODULES_DIR}/third_party/data_chart/src/main/res
-  cp -r ${BASE_DIR}/third_party/android_data_chart/java/res/* \
-        ${MODULES_DIR}/third_party/data_chart/src/main/res
+  #mkdir -p ${MODULES_DIR}/third_party/data_chart/src/main/res
+  #cp -r ${BASE_DIR}/third_party/android_data_chart/java/res/* \
+  #     ${MODULES_DIR}/third_party/data_chart/src/main/res
 
   mkdir -p ${MODULES_DIR}/third_party/android_media/src/main/res
   cp -r ${BASE_DIR}/third_party/android_media/java/res/* \
