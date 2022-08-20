@@ -197,7 +197,7 @@ sync_chrome() {
   cp -r ${RELEASE_DIR}/gen/components/infobars/android/infobar_android_enums_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/components/autofill/android/main_autofill_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/components/autofill/android/prefeditor_autofill_java/generated_java/input_srcjars/* ${src_dir}
-  cp -r ${RELEASE_DIR}/gen/chrome/browser/image_fetcher/java/generated_java/input_srcjars/* ${src_dir}
+  #cp -r ${RELEASE_DIR}/gen/chrome/browser/image_fetcher/java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/components/browser_ui/site_settings/android/java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/components/favicon/android/java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/chrome/browser/video_tutorials/java/generated_java/input_srcjars/* ${src_dir}
