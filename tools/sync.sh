@@ -121,7 +121,7 @@ sync_chrome() {
   cp -r ${BASE_DIR}/chrome/browser/device/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/bookmarks/common/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/android/features/vr/java/src/* ${src_dir}
-  cp -r ${BASE_DIR}/chrome/android/features/start_surface/public/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/android/features/start_surface/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/variations/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/webapk/android/libs/common/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/gsa/java/src/* ${src_dir}
@@ -167,6 +167,7 @@ sync_chrome() {
   cp -r ${BASE_DIR}/components/dom_distiller/core/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/security_state/content/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/android/features/autofill_assistant/public/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/android/features/cablev2_authenticator/java/src/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/components/signin/public/android/java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/android/features/keyboard_accessory/factory/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/webapps/android/java/src/* ${src_dir}
@@ -443,7 +444,7 @@ sync_chrome() {
   cp -r ${BASE_DIR}/components/cronet/android/api/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/android/modules/stack_unwinder/public/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/android/modules/dev_ui/provider/java/src/* ${src_dir}
-  cp -r ${BASE_DIR}/chrome/android/features/start_surface/internal/java/src/* ${src_dir}
+ # cp -r ${BASE_DIR}/chrome/android/features/start_surface/internal/java/src/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/chrome/android/features/dev_ui/public/java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/components/cronet/android/cronet_impl_native_base_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/components/cronet/android/cronet_impl_common_base_java/generated_java/input_srcjars/* ${src_dir}
@@ -812,8 +813,8 @@ sync_browser(){
 
 sync_surface() {
        mkdir -p ${MODULES_DIR}/chrome_start_surface/src/main/res
-       cp -r ${BASE_DIR}/chrome/android/features/start_surface/internal/java/res/* \
-          ${BASE_DIR}/chrome/android/features/start_surface/internal/java/explore_res/* \
+       cp -r ${BASE_DIR}/chrome/android/features/start_surface/java/res/* \
+        #  ${BASE_DIR}/chrome/android/features/start_surface/internal/java/explore_res/* \
 	       "${MODULES_DIR}/chrome_start_surface/src/main/res"
 }
 
