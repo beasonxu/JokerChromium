@@ -608,9 +608,9 @@ sync_components(){
   cp -r ${BASE_DIR}/components/payments/content/android/java/res/* \
         ${MODULES_DIR}/components/payments/src/main/res
 
-  mkdir -p ${MODULES_DIR}/components/payments/src/main/google_pay_res
-  cp -r ${BASE_DIR}/components/payments/content/android/google_pay_res/* \
-        ${MODULES_DIR}/components/payments/src/main/google_pay_res
+  #mkdir -p ${MODULES_DIR}/components/payments/src/main/google_pay_res
+  #cp -r ${BASE_DIR}/components/payments/content/android/google_pay_res/* \
+   #     ${MODULES_DIR}/components/payments/src/main/google_pay_res
 
   mkdir -p ${MODULES_DIR}/components/browser_ui_contacts_picker/src/main/res
   cp -r ${BASE_DIR}/components/browser_ui/contacts_picker/android/java/res/* \
