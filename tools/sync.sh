@@ -211,7 +211,7 @@ sync_chrome() {
   cp -r ${RELEASE_DIR}/gen/components/webapps/browser/android/java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/components/infobars/core/infobar_enums_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/components/content_settings/android/content_settings_enums_java/generated_java/input_srcjars/* ${src_dir}
-  cp -r ${BASE_DIR}/chrome/browser/signin/ui/android/java/src/* ${src_dir}
+  #cp -r ${BASE_DIR}/chrome/browser/signin/ui/android/java/src/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/chrome/browser/safe_browsing/android/java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/privacy/settings/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/android/crypto/java/src/* ${src_dir}
@@ -787,9 +787,9 @@ sync_browser(){
   cp -r ${BASE_DIR}/chrome/browser/signin/services/android/java/res/* \
         ${MODULES_DIR}/browser/signin_services/src/main/res
 
-  mkdir -p ${MODULES_DIR}/browser/signin_ui/src/main/res
-  cp -r ${BASE_DIR}/chrome/browser/signin/ui/android/java/res/* \
-        ${MODULES_DIR}/browser/signin_ui/src/main/res
+  #mkdir -p ${MODULES_DIR}/browser/signin_ui/src/main/res
+  #cp -r ${BASE_DIR}/chrome/browser/signin/ui/android/java/res/* \
+   #     ${MODULES_DIR}/browser/signin_ui/src/main/res
 
    mkdir -p ${MODULES_DIR}/browser/incognito_interstitial/src/main/res
   cp -r ${BASE_DIR}/chrome/browser/incognito/interstitial/android/java/res/* \
