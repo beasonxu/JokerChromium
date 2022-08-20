@@ -985,7 +985,7 @@ do_sync() {
   sync_splash
   sync_libs
   sync_chrome_vr
-  sync_third_party_res
+  #sync_third_party_res
   sync_media
 	clean_project
 	# NativeLibraries
