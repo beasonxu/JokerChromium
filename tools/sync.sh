@@ -805,9 +805,9 @@ sync_browser(){
   cp -r ${BASE_DIR}/chrome/browser/password_entry_edit/android/java/res/* \
         ${MODULES_DIR}/browser/password_entry_edit/src/main/res
 
-   mkdir -p ${MODULES_DIR}/browser/webapps/src/main/res
-  cp -r ${BASE_DIR}/chrome/browser/webapps/android/java/res/* \
-        ${MODULES_DIR}/browser/webapps/src/main/res
+   #mkdir -p ${MODULES_DIR}/browser/webapps/src/main/res
+  #cp -r ${BASE_DIR}/chrome/browser/webapps/android/java/res/* \
+   #     ${MODULES_DIR}/browser/webapps/src/main/res
 
    mkdir -p ${MODULES_DIR}/browser/privacy_sandbox/src/main/res
   cp -r ${BASE_DIR}/chrome/browser/privacy_sandbox/android/java/res/* \
