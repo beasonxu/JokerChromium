@@ -320,7 +320,7 @@ sync_chrome() {
   cp -r ${BASE_DIR}/components/background_task_scheduler/internal/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/services/device/public/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/third_party/android_media/java/src/* ${src_dir}
-  cp -r ${BASE_DIR}/components/signin/core/browser/android/java/src/* ${src_dir}
+  #cp -r ${BASE_DIR}/components/signin/core/browser/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/thin_webview/internal/java/src/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/content/public/common/trust_tokens_mojo_bindings_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/gpu/ipc/common/vulkan_interface_java/generated_java/input_srcjars/* ${src_dir}
