@@ -149,7 +149,7 @@ sync_chrome() {
   cp -r ${BASE_DIR}/components/translate/content/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/language/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/browser_ui/bottomsheet/android/java/src/* ${src_dir}
-  cp -r ${RELEASE_DIR}/gen/components/contextual_search/content/common/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
+  #cp -r ${RELEASE_DIR}/gen/components/contextual_search/content/common/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/android/features/keyboard_accessory/public/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/page_info/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/webxr/android/java/src/* ${src_dir}
