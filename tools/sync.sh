@@ -304,7 +304,7 @@ sync_chrome() {
   cp -r ${BASE_DIR}/chrome/browser/password_entry_edit/android/internal/java/src/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/components/sync/protocol/protocol_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/chrome/browser/signin/services/android/java/generated_java/input_srcjars/* ${src_dir}
-  cp -r ${BASE_DIR}/chrome/browser/incognito/interstitial/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/incognito/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/continuous_search/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/commerce/price_tracking/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/continuous_search/internal/android/java/src/* ${src_dir}
@@ -792,7 +792,7 @@ sync_browser(){
    #     ${MODULES_DIR}/browser/signin_ui/src/main/res
 
    mkdir -p ${MODULES_DIR}/browser/incognito_interstitial/src/main/res
-  cp -r ${BASE_DIR}/chrome/browser/incognito/interstitial/android/java/res/* \
+  cp -r ${BASE_DIR}/chrome/browser/incognito/android/java/res/* \
         ${MODULES_DIR}/browser/incognito_interstitial/src/main/res
 
    mkdir -p ${MODULES_DIR}/browser/continuous_search/src/main/res
