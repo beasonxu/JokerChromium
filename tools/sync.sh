@@ -2,15 +2,16 @@
 
 set -e
 
-PRO_DIR="/f/chromiumcopy"
-BASE_DIR="/f/chromium/src"
-RELEASE_DIR="${BASE_DIR}/out/90"
+PRO_DIR="/home/sxh/chromiumcopy2"
+BASE_DIR="/home/sxh/chromium/src"
+RELEASE_DIR="${BASE_DIR}/out/Default"
 APP_DIR="${PRO_DIR}/app"
-LIB_DIR="${BASE_DIR}/out/90/lib.java"
+LIB_DIR="${BASE_DIR}/out/Default/lib.java"
 MODULES_DIR="${PRO_DIR}"
 
 sync_chrome() {
-  mkdir -p ${APP_DIR}/{src/main/java,libs}
+  mkdir -p ${APP_DIR}/src/main/java
+  mkdir -p ${APP_DIR}/libs
 	local src_dir="${APP_DIR}/src/main/java"
   mkdir -p ${APP_DIR}/src/main
   mkdir -p ${APP_DIR}/src/main/res_gen
