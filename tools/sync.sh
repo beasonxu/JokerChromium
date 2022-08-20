@@ -533,7 +533,7 @@ sync_assets() {
 	cp ${RELEASE_DIR}/gen/chrome/android/chrome_apk_paks/*.pak \
 		"$asset_dir"
 
-	cp ${RELEASE_DIR}/gen/chrome/android/chrome_apk_paks/locales/{en-US,zh-CN}.pak \
+	cp ${RELEASE_DIR}/gen/chrome/android/chrome_apk_paks/locales/*.pak \
 		"${asset_dir}/locales"
 	cp ${RELEASE_DIR}/snapshot_blob.bin "$asset_dir"/snapshot_blob_32.bin
 }
