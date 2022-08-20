@@ -293,7 +293,7 @@ sync_chrome() {
   cp -r ${RELEASE_DIR}/gen/chrome/browser/password_check/android/password_check_java_enums/generated_java/input_srcjars/* ${src_dir}
   cp -r ${BASE_DIR}/components/gcm_driver/instance_id/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/password_entry_edit/android/java/src/* ${src_dir}
-  cp -r ${RELEASE_DIR}/gen/components/paint_preview/common/proto/proto_java/generated_java/input_srcjars/* ${src_dir}
+  #cp -r ${RELEASE_DIR}/gen/components/paint_preview/common/proto/proto_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${BASE_DIR}/third_party/android_swipe_refresh/java/src/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/components/password_manager/core/browser/password_manager_java_enums/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/chrome/browser/privacy/java/generated_java/input_srcjars/* ${src_dir}
