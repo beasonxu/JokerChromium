@@ -684,10 +684,10 @@ sync_components(){
 }
 
 sync_browser(){
-  mkdir -p ${MODULES_DIR}/browser/autofill_assistant/src/main/res
-  cp -r ${BASE_DIR}/chrome/android/features/autofill_assistant/java/res/* \
-        ${BASE_DIR}/chrome/android/features/autofill_assistant/java/res_poodle/* \
-        ${MODULES_DIR}/browser/autofill_assistant/src/main/res
+  #mkdir -p ${MODULES_DIR}/browser/autofill_assistant/src/main/res
+ # cp -r ${BASE_DIR}/chrome/android/features/autofill_assistant/java/res/* \
+  #      ${BASE_DIR}/chrome/android/features/autofill_assistant/java/res_poodle/* \
+   #     ${MODULES_DIR}/browser/autofill_assistant/src/main/res
 
   mkdir -p ${MODULES_DIR}/browser/keyboard_accessory/src/main/res
   cp -r ${BASE_DIR}/chrome/android/features/keyboard_accessory/internal/java/res/* \
