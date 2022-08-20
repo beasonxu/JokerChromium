@@ -98,7 +98,7 @@ sync_chrome() {
   cp -r ${RELEASE_DIR}/gen/services/network/public/mojom/mojom_network_param_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/components/payments/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/components/schema_org/common/mojom_java/generated_java/input_srcjars/* ${src_dir}
-  cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/frame/frame_java/generated_java/input_srcjars/* ${src_dir}
+  #cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/frame/frame_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/services/media_session/public/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/tokens/tokens_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/gpu/ipc/common/interfaces_java/generated_java/input_srcjars/* ${src_dir}
