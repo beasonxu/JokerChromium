@@ -266,7 +266,7 @@ sync_chrome() {
   cp -r ${BASE_DIR}/components/gcm_driver/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/subresource_filter/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/optimization_guide/android/java/src/* ${src_dir}
-  cp -r ${BASE_DIR}/chrome/android/features/start_surface/internal/java/src/* ${src_dir}
+  #cp -r ${BASE_DIR}/chrome/android/features/start_surface/internal/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/third_party/android_provider/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/services/device/nfc/android/java/src/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/chrome/android/webapk/libs/client/client_java/generated_java/input_srcjars/* ${src_dir}
@@ -501,7 +501,7 @@ sync_base_res() {
           ${RELEASE_DIR}/gen/components/browser_ui/strings/android/browser_ui_strings_grd_grit_output/* \
           ${RELEASE_DIR}/gen/components/strings/java/res/* \
           ${RELEASE_DIR}/gen/chrome/browser/password_check/android/internal/java_strings_grd_grit_output/* \
-          ${RELEASE_DIR}/gen/chrome/android/features/start_surface/internal/java_strings_grd_grit_output/* \
+          #${RELEASE_DIR}/gen/chrome/android/features/start_surface/internal/java_strings_grd_grit_output/* \
           ${RELEASE_DIR}/gen/chrome/android/features/keyboard_accessory/internal/java_strings_grd_grit_output/* \
           ${RELEASE_DIR}/gen/chrome/android/features/tab_ui/java_strings_grd_grit_output/* \
           ${RELEASE_DIR}/gen/chrome/browser/touch_to_fill/android/internal/java_strings_grd_grit_output/* \
