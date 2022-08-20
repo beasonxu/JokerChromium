@@ -403,9 +403,9 @@ sync_chrome() {
   cp -r ${RELEASE_DIR}/gen/components/module_installer/android/module_installer_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/media/learning/mojo/public/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/android/modules/cablev2_authenticator/public/java/src/* ${src_dir}
-  cp -r ${BASE_DIR}/chrome/android/modules/extra_icu/provider/java/src/* ${src_dir}
-  cp -r ${BASE_DIR}/chrome/android/modules/extra_icu/public/java/src/* ${src_dir}
-  cp -r ${RELEASE_DIR}/gen/chrome/android/modules/extra_icu/public/java/generated_java/input_srcjars/* ${src_dir}
+#  cp -r ${BASE_DIR}/chrome/android/modules/extra_icu/provider/java/src/* ${src_dir}
+ # cp -r ${BASE_DIR}/chrome/android/modules/extra_icu/public/java/src/* ${src_dir}
+  #cp -r ${RELEASE_DIR}/gen/chrome/android/modules/extra_icu/public/java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${BASE_DIR}/components/version_info/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/services/shape_detection/android/java/src/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/services/shape_detection/public/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
@@ -443,7 +443,9 @@ sync_chrome() {
   cp -r ${BASE_DIR}/components/cronet/android/java/src/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/services/device/public/mojom/generic_sensor_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${BASE_DIR}/components/cronet/android/api/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/android/modules/stack_unwinder/internal/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/android/modules/stack_unwinder/public/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/android/modules/stack_unwinder/provider/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/android/modules/dev_ui/provider/java/src/* ${src_dir}
  # cp -r ${BASE_DIR}/chrome/android/features/start_surface/internal/java/src/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/chrome/android/features/dev_ui/public/java/generated_java/input_srcjars/* ${src_dir}
