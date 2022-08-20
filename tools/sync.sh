@@ -307,7 +307,7 @@ sync_chrome() {
   cp -r ${BASE_DIR}/chrome/browser/incognito/android/java/src/* ${src_dir}
   #cp -r ${BASE_DIR}/chrome/browser/continuous_search/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/commerce/price_tracking/android/java/src/* ${src_dir}
-  cp -r ${BASE_DIR}/chrome/browser/continuous_search/internal/android/java/src/* ${src_dir}
+ # cp -r ${BASE_DIR}/chrome/browser/continuous_search/internal/android/java/src/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/components/paint_preview/player/android/java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/components/signin/core/browser/signin_enums_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${BASE_DIR}/components/site_engagement/content/android/java/src/* ${src_dir}
