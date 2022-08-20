@@ -503,7 +503,6 @@ sync_base_res() {
           ${RELEASE_DIR}/gen/components/browser_ui/strings/android/browser_ui_strings_grd_grit_output/* \
           ${RELEASE_DIR}/gen/components/strings/java/res/* \
           ${RELEASE_DIR}/gen/chrome/browser/password_check/android/internal/java_strings_grd_grit_output/* \
-          #${RELEASE_DIR}/gen/chrome/android/features/start_surface/internal/java_strings_grd_grit_output/* \
           ${RELEASE_DIR}/gen/chrome/android/features/keyboard_accessory/internal/java_strings_grd_grit_output/* \
           ${RELEASE_DIR}/gen/chrome/android/features/tab_ui/java_strings_grd_grit_output/* \
           ${RELEASE_DIR}/gen/chrome/browser/touch_to_fill/android/internal/java_strings_grd_grit_output/* \
