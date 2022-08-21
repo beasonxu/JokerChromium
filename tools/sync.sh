@@ -185,6 +185,8 @@ sync_chrome() {
   #cp -r ${BASE_DIR}/chrome/browser/image_fetcher/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/query_tiles/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/browser_ui/banners/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/android/browserservices/intents/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/android/browserservices/metrics/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/android/browserservices/verification/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/content_settings/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/third_party/android_deps/util/* ${src_dir}
