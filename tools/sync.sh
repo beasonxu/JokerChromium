@@ -255,6 +255,7 @@ sync_chrome() {
   cp -r ${BASE_DIR}/chrome/android/webapk/libs/common/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/tabmodel/internal/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/notifications/chime/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/notifications/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/android/modules/image_editor/provider/java/src/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/components/browser_ui/contacts_picker/android/java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/components/dom_distiller/core/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
