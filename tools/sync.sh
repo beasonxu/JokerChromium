@@ -145,7 +145,7 @@ sync_chrome() {
   cp -r ${BASE_DIR}/components/prefs/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/feed/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/ui/android/appmenu/java/src/* ${src_dir}
-  cp -r ${BASE_DIR}/chrome/browser/ui/android/autofill/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/ui/android/autofill/internal/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/ui/messages/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/browser_ui/notifications/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/policy/android/java/src/* ${src_dir}
