@@ -159,7 +159,7 @@ sync_chrome() {
   cp -r ${BASE_DIR}/chrome/browser/share/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/sync/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/favicon/android/java/src/* ${src_dir}
-  cp -r ${BASE_DIR}/chrome/browser/tab/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/tab/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/tabmodel/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/tabpersistence/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/test_dummy/android/java/src/* ${src_dir}
