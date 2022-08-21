@@ -29,6 +29,7 @@ sync_chrome() {
   cp -r ${BASE_DIR}/chrome/browser/browser_controls/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/flags/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/android/features/tab_ui/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/ui/android/night_mode/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/ui/android/native_page/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/ui/android/layouts/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/profiles/android/java/src/* ${src_dir}
@@ -113,10 +114,23 @@ sync_chrome() {
   cp -r ${RELEASE_DIR}/gen/chrome/browser/ui/android/favicon/java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${BASE_DIR}/components/browser_ui/widget/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/ui/android/layouts/glue/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/ui/android/logo/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/ui/android/management/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/ui/android/multiwindow/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/ui/android/omnibox/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/ui/android/page_info/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/ui/android/quickactionsearchwidget/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/ui/android/searchactivityutils/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/ui/android/signin/java/src/* ${src_dir}
+
+
   cp -r ${BASE_DIR}/components/url_formatter/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/ui/android/layouts/third_party/float_property/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/ui/android/theme/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/ui/android/toolbar/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/ui/android/webid/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/ui/android/webid/internal/java/src/* ${src_dir}
+
   cp -r ${BASE_DIR}/chrome/browser/fullscreen/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/device/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/bookmarks/common/android/java/src/* ${src_dir}
@@ -131,6 +145,7 @@ sync_chrome() {
   cp -r ${BASE_DIR}/components/prefs/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/feed/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/ui/android/appmenu/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/ui/android/autofill/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/ui/messages/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/browser_ui/notifications/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/policy/android/java/src/* ${src_dir}
@@ -219,6 +234,8 @@ sync_chrome() {
   cp -r ${BASE_DIR}/chrome/browser/android/crypto/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/thin_webview/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/ui/android/default_browser_promo/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/ui/android/fast_checkout/internal/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/ui/android/fast_checkout/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/banners/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/page_annotations/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/uid/android/java/src/* ${src_dir}
