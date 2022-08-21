@@ -157,8 +157,15 @@ sync_chrome() {
   cp -r ${BASE_DIR}/components/content_capture/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/browser_ui/share/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/share/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/sync/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/favicon/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/tab/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/tabmodel/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/tabpersistence/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/test_dummy/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/test_dummy/android/java/src/* ${src_dir}
+
+
   cp -r ${BASE_DIR}/components/signin/public/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/feature_engagement/public/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/translate/content/android/java/src/* ${src_dir}
@@ -450,6 +457,8 @@ sync_chrome() {
   cp -r ${BASE_DIR}/chrome/browser/engagement/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/touch_to_fill/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/touch_to_fill/android/internal/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/touch_to_fill/payments/android/internal/java/src/* ${src_dir}
+
   cp -r ${BASE_DIR}/chrome/android/features/dev_ui/public/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/browser_ui/client_certificate/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/javascript_dialogs/android/java/src/* ${src_dir}
