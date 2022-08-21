@@ -457,7 +457,6 @@ sync_chrome() {
   cp -r ${BASE_DIR}/chrome/browser/engagement/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/touch_to_fill/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/touch_to_fill/android/internal/java/src/* ${src_dir}
-  cp -r ${BASE_DIR}/chrome/browser/touch_to_fill/payments/android/internal/java/src/* ${src_dir}
 
   cp -r ${BASE_DIR}/chrome/android/features/dev_ui/public/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/browser_ui/client_certificate/android/java/src/* ${src_dir}
