@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface PeriodicBackgroundSyncService extends org.chromium.mojo.bindings.Interface {
 
@@ -23,28 +25,25 @@ public interface PeriodicBackgroundSyncService extends org.chromium.mojo.binding
 
     Manager<PeriodicBackgroundSyncService, PeriodicBackgroundSyncService.Proxy> MANAGER = PeriodicBackgroundSyncService_Internal.MANAGER;
 
-
     void register(
 SyncRegistrationOptions options, long serviceWorkerRegistrationId, 
-RegisterResponse callback);
+Register_Response callback);
 
-    interface RegisterResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, SyncRegistrationOptions> { }
-
+    interface Register_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, SyncRegistrationOptions> { }
 
 
     void unregister(
 long serviceWorkerRegistrationId, String tag, 
-UnregisterResponse callback);
+Unregister_Response callback);
 
-    interface UnregisterResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface Unregister_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void getRegistrations(
 long serviceWorkerRegistrationId, 
-GetRegistrationsResponse callback);
+GetRegistrations_Response callback);
 
-    interface GetRegistrationsResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, SyncRegistrationOptions[]> { }
+    interface GetRegistrations_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, SyncRegistrationOptions[]> { }
 
 
 }

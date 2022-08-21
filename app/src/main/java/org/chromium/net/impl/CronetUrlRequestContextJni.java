@@ -2,15 +2,13 @@ package org.chromium.net.impl;
 
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class CronetUrlRequestContextJni implements CronetUrlRequestContext.Natives {
+class CronetUrlRequestContextJni implements CronetUrlRequestContext.Natives {
   private static CronetUrlRequestContext.Natives testInstance;
 
   public static final JniStaticTestMocker<CronetUrlRequestContext.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.net.impl.CronetUrlRequestContext.Natives>() {
@@ -103,6 +101,11 @@ final class CronetUrlRequestContextJni implements CronetUrlRequestContext.Native
   public void provideThroughputObservations(long nativePtr, CronetUrlRequestContext caller,
       boolean should) {
     GEN_JNI.org_chromium_net_impl_CronetUrlRequestContext_provideThroughputObservations(nativePtr, caller, should);
+  }
+
+  @Override
+  public boolean skipLogging(long nativePtr, CronetUrlRequestContext caller) {
+    return (boolean)GEN_JNI.org_chromium_net_impl_CronetUrlRequestContext_skipLogging(nativePtr, caller);
   }
 
   public static CronetUrlRequestContext.Natives get() {

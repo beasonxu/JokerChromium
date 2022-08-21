@@ -2,15 +2,13 @@ package org.chromium.device.gamepad;
 
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class GamepadListJni implements GamepadList.Natives {
+class GamepadListJni implements GamepadList.Natives {
   private static GamepadList.Natives testInstance;
 
   public static final JniStaticTestMocker<GamepadList.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.device.gamepad.GamepadList.Natives>() {
@@ -25,9 +23,9 @@ final class GamepadListJni implements GamepadList.Natives {
 
   @Override
   public void setGamepadData(GamepadList caller, long webGamepadsPtr, int index, boolean mapping,
-      boolean connected, String devicename, long timestamp, float[] axes, float[] buttons,
-      int buttonsLength) {
-    GEN_JNI.org_chromium_device_gamepad_GamepadList_setGamepadData(caller, webGamepadsPtr, index, mapping, connected, devicename, timestamp, axes, buttons, buttonsLength);
+      boolean connected, String devicename, int vendorId, int productId, long timestamp,
+      float[] axes, float[] buttons, int buttonsLength, boolean supportsDualRumble) {
+    GEN_JNI.org_chromium_device_gamepad_GamepadList_setGamepadData(caller, webGamepadsPtr, index, mapping, connected, devicename, vendorId, productId, timestamp, axes, buttons, buttonsLength, supportsDualRumble);
   }
 
   public static GamepadList.Natives get() {

@@ -13,6 +13,8 @@
 
 package org.chromium.shape_detection.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ShapeDetectionService extends org.chromium.mojo.bindings.Interface {
 
@@ -23,15 +25,12 @@ public interface ShapeDetectionService extends org.chromium.mojo.bindings.Interf
 
     Manager<ShapeDetectionService, ShapeDetectionService.Proxy> MANAGER = ShapeDetectionService_Internal.MANAGER;
 
-
     void bindBarcodeDetectionProvider(
 org.chromium.mojo.bindings.InterfaceRequest<BarcodeDetectionProvider> receiver);
 
 
-
     void bindFaceDetectionProvider(
 org.chromium.mojo.bindings.InterfaceRequest<FaceDetectionProvider> receiver);
-
 
 
     void bindTextDetection(

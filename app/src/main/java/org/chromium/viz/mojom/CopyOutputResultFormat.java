@@ -13,16 +13,21 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class CopyOutputResultFormat {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
 
-    public static final int RGBA_BITMAP = 0;
-    public static final int RGBA_TEXTURE = 1;
+        CopyOutputResultFormat.RGBA})
+    public @interface EnumType {}
+
+    public static final int RGBA = 0;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 1;
+    public static final int MAX_VALUE = 0;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 1;
+        return value >= 0 && value <= 0;
     }
 
     public static void validate(int value) {

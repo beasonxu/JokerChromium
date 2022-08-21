@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface OneShotBackgroundSyncService extends org.chromium.mojo.bindings.Interface {
 
@@ -23,25 +25,22 @@ public interface OneShotBackgroundSyncService extends org.chromium.mojo.bindings
 
     Manager<OneShotBackgroundSyncService, OneShotBackgroundSyncService.Proxy> MANAGER = OneShotBackgroundSyncService_Internal.MANAGER;
 
-
     void register(
 SyncRegistrationOptions options, long serviceWorkerRegistrationId, 
-RegisterResponse callback);
+Register_Response callback);
 
-    interface RegisterResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, SyncRegistrationOptions> { }
-
+    interface Register_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, SyncRegistrationOptions> { }
 
 
     void didResolveRegistration(
 BackgroundSyncRegistrationInfo registrationInfo);
 
 
-
     void getRegistrations(
 long serviceWorkerRegistrationId, 
-GetRegistrationsResponse callback);
+GetRegistrations_Response callback);
 
-    interface GetRegistrationsResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, SyncRegistrationOptions[]> { }
+    interface GetRegistrations_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, SyncRegistrationOptions[]> { }
 
 
 }

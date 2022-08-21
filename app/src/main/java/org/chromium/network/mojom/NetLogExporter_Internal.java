@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class NetLogExporter_Internal {
 
@@ -63,7 +65,7 @@ class NetLogExporter_Internal {
         @Override
         public void start(
 org.chromium.mojo_base.mojom.File destination, org.chromium.mojo_base.mojom.DictionaryValue extraConstants, int captureMode, long maxFileSize, 
-StartResponse callback) {
+Start_Response callback) {
 
             NetLogExporterStartParams _message = new NetLogExporterStartParams();
 
@@ -91,7 +93,7 @@ StartResponse callback) {
         @Override
         public void stop(
 org.chromium.mojo_base.mojom.DictionaryValue polledValues, 
-StopResponse callback) {
+Stop_Response callback) {
 
             NetLogExporterStopParams _message = new NetLogExporterStopParams();
 
@@ -363,9 +365,9 @@ StopResponse callback) {
 
     static class NetLogExporterStartResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetLogExporter.StartResponse mCallback;
+        private final NetLogExporter.Start_Response mCallback;
 
-        NetLogExporterStartResponseParamsForwardToCallback(NetLogExporter.StartResponse callback) {
+        NetLogExporterStartResponseParamsForwardToCallback(NetLogExporter.Start_Response callback) {
             this.mCallback = callback;
         }
 
@@ -390,7 +392,7 @@ StopResponse callback) {
         }
     }
 
-    static class NetLogExporterStartResponseParamsProxyToResponder implements NetLogExporter.StartResponse {
+    static class NetLogExporterStartResponseParamsProxyToResponder implements NetLogExporter.Start_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -551,9 +553,9 @@ StopResponse callback) {
 
     static class NetLogExporterStopResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetLogExporter.StopResponse mCallback;
+        private final NetLogExporter.Stop_Response mCallback;
 
-        NetLogExporterStopResponseParamsForwardToCallback(NetLogExporter.StopResponse callback) {
+        NetLogExporterStopResponseParamsForwardToCallback(NetLogExporter.Stop_Response callback) {
             this.mCallback = callback;
         }
 
@@ -578,7 +580,7 @@ StopResponse callback) {
         }
     }
 
-    static class NetLogExporterStopResponseParamsProxyToResponder implements NetLogExporter.StopResponse {
+    static class NetLogExporterStopResponseParamsProxyToResponder implements NetLogExporter.Stop_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

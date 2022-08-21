@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class IdleMonitor_Internal {
 
@@ -60,11 +62,13 @@ class IdleMonitor_Internal {
 
         @Override
         public void update(
-IdleState state) {
+IdleState state, boolean isOverriddenByDevtools) {
 
             IdleMonitorUpdateParams _message = new IdleMonitorUpdateParams();
 
             _message.state = state;
+
+            _message.isOverriddenByDevtools = isOverriddenByDevtools;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -111,7 +115,7 @@ IdleState state) {
                         IdleMonitorUpdateParams data =
                                 IdleMonitorUpdateParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().update(data.state);
+                        getImpl().update(data.state, data.isOverriddenByDevtools);
                         return true;
                     }
 
@@ -161,10 +165,11 @@ IdleState state) {
     
     static final class IdleMonitorUpdateParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public IdleState state;
+        public boolean isOverriddenByDevtools;
 
         private IdleMonitorUpdateParams(int version) {
             super(STRUCT_SIZE, version);
@@ -204,6 +209,10 @@ IdleState state) {
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
                     result.state = IdleState.decode(decoder1);
                     }
+                    {
+                        
+                    result.isOverriddenByDevtools = decoder0.readBoolean(16, 0);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -217,6 +226,8 @@ IdleState state) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.state, 8, false);
+            
+            encoder0.encode(this.isOverriddenByDevtools, 16, 0);
         }
     }
 

@@ -1,7 +1,6 @@
 package org.chromium.chrome.browser.performance_hints;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
@@ -9,9 +8,8 @@ import org.chromium.base.natives.GEN_JNI;
 import org.chromium.content_public.browser.WebContents;
 import org.chromium.url.GURL;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-public final class PerformanceHintsObserverJni implements PerformanceHintsObserver.Natives {
+public class PerformanceHintsObserverJni implements PerformanceHintsObserver.Natives {
   private static PerformanceHintsObserver.Natives testInstance;
 
   public static final JniStaticTestMocker<PerformanceHintsObserver.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.performance_hints.PerformanceHintsObserver.Natives>() {

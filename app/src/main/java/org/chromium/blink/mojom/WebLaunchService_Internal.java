@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class WebLaunchService_Internal {
 
@@ -49,6 +51,8 @@ class WebLaunchService_Internal {
 
     private static final int SET_LAUNCH_FILES_ORDINAL = 0;
 
+    private static final int ENQUEUE_LAUNCH_PARAMS_ORDINAL = 1;
+
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements WebLaunchService.Proxy {
 
@@ -71,6 +75,23 @@ FileSystemAccessEntry[] files) {
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(SET_LAUNCH_FILES_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void enqueueLaunchParams(
+org.chromium.url.mojom.Url launchUrl) {
+
+            WebLaunchServiceEnqueueLaunchParamsParams _message = new WebLaunchServiceEnqueueLaunchParamsParams();
+
+            _message.launchUrl = launchUrl;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(ENQUEUE_LAUNCH_PARAMS_ORDINAL)));
 
         }
 
@@ -116,6 +137,19 @@ FileSystemAccessEntry[] files) {
                     }
 
 
+
+
+
+                    case ENQUEUE_LAUNCH_PARAMS_ORDINAL: {
+
+                        WebLaunchServiceEnqueueLaunchParamsParams data =
+                                WebLaunchServiceEnqueueLaunchParamsParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().enqueueLaunchParams(data.launchUrl);
+                        return true;
+                    }
+
+
                     default:
                         return false;
                 }
@@ -143,6 +177,8 @@ FileSystemAccessEntry[] files) {
                     case org.chromium.mojo.bindings.interfacecontrol.InterfaceControlMessagesConstants.RUN_MESSAGE_ID:
                         return org.chromium.mojo.bindings.InterfaceControlMessagesHelper.handleRun(
                                 getCore(), WebLaunchService_Internal.MANAGER, messageWithHeader, receiver);
+
+
 
 
 
@@ -233,6 +269,70 @@ FileSystemAccessEntry[] files) {
                     encoder1.encode(this.files[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
                 }
             }
+        }
+    }
+
+
+
+    
+    static final class WebLaunchServiceEnqueueLaunchParamsParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.url.mojom.Url launchUrl;
+
+        private WebLaunchServiceEnqueueLaunchParamsParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public WebLaunchServiceEnqueueLaunchParamsParams() {
+            this(0);
+        }
+
+        public static WebLaunchServiceEnqueueLaunchParamsParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static WebLaunchServiceEnqueueLaunchParamsParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static WebLaunchServiceEnqueueLaunchParamsParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            WebLaunchServiceEnqueueLaunchParamsParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new WebLaunchServiceEnqueueLaunchParamsParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.launchUrl = org.chromium.url.mojom.Url.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.launchUrl, 8, false);
         }
     }
 

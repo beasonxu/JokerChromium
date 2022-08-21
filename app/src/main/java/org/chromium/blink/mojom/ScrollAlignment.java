@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class ScrollAlignment extends org.chromium.mojo.bindings.Struct {
 
@@ -22,6 +24,16 @@ public final class ScrollAlignment extends org.chromium.mojo.bindings.Struct {
 
     public static final class Behavior {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            Behavior.NO_SCROLL,
+            Behavior.CENTER,
+            Behavior.TOP,
+            Behavior.BOTTOM,
+            Behavior.LEFT,
+            Behavior.RIGHT,
+            Behavior.CLOSEST_EDGE})
+        public @interface EnumType {}
 
         public static final int NO_SCROLL = 0;
         public static final int CENTER = 1;

@@ -13,8 +13,17 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ContextType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ContextType.CROSS_SITE,
+        ContextType.SAME_SITE_LAX_METHOD_UNSAFE,
+        ContextType.SAME_SITE_LAX,
+        ContextType.SAME_SITE_STRICT})
+    public @interface EnumType {}
 
     public static final int CROSS_SITE = 0;
     public static final int SAME_SITE_LAX_METHOD_UNSAFE = 1;

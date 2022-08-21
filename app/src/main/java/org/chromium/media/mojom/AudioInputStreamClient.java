@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface AudioInputStreamClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface AudioInputStreamClient extends org.chromium.mojo.bindings.Inter
 
     Manager<AudioInputStreamClient, AudioInputStreamClient.Proxy> MANAGER = AudioInputStreamClient_Internal.MANAGER;
 
-
     void onError(
-);
-
+int code);
 
 
     void onMutedStateChanged(

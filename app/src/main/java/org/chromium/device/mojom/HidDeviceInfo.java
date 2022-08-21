@@ -13,12 +13,14 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class HidDeviceInfo extends org.chromium.mojo.bindings.Struct {
 
     private static final int STRUCT_SIZE = 128;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(104, 0),new org.chromium.mojo.bindings.DataHeader(128, 1)};
-    private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[1];
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(104, 0),new org.chromium.mojo.bindings.DataHeader(128, 1),new org.chromium.mojo.bindings.DataHeader(128, 3)};
+    private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[2];
     public String guid;
     public String physicalDeviceId;
     public short vendorId;
@@ -36,13 +38,14 @@ public final class HidDeviceInfo extends org.chromium.mojo.bindings.Struct {
     public byte[] protectedInputReportIds;
     public byte[] protectedOutputReportIds;
     public byte[] protectedFeatureReportIds;
+    public boolean isExcludedByBlocklist;
 
     private HidDeviceInfo(int version) {
         super(STRUCT_SIZE, version);
     }
 
     public HidDeviceInfo() {
-        this(1);
+        this(3);
     }
 
     public static HidDeviceInfo deserialize(org.chromium.mojo.bindings.Message message) {
@@ -121,6 +124,12 @@ public final class HidDeviceInfo extends org.chromium.mojo.bindings.Struct {
                     
                 result.hasReportId = decoder0.readBoolean(64, 0);
                 }
+            if (elementsOrVersion >= 3) {
+                {
+                    
+                result.isExcludedByBlocklist = decoder0.readBoolean(64, 1);
+                }
+            }
                 {
                     
                 result.maxInputReportSize = decoder0.readLong(72);
@@ -190,6 +199,8 @@ public final class HidDeviceInfo extends org.chromium.mojo.bindings.Struct {
         }
         
         encoder0.encode(this.hasReportId, 64, 0);
+        
+        encoder0.encode(this.isExcludedByBlocklist, 64, 1);
         
         encoder0.encode(this.maxInputReportSize, 72);
         

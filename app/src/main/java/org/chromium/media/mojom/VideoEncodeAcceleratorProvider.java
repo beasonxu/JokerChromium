@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface VideoEncodeAcceleratorProvider extends org.chromium.mojo.bindings.Interface {
 
@@ -23,17 +25,15 @@ public interface VideoEncodeAcceleratorProvider extends org.chromium.mojo.bindin
 
     Manager<VideoEncodeAcceleratorProvider, VideoEncodeAcceleratorProvider.Proxy> MANAGER = VideoEncodeAcceleratorProvider_Internal.MANAGER;
 
-
     void createVideoEncodeAccelerator(
 org.chromium.mojo.bindings.InterfaceRequest<VideoEncodeAccelerator> receiver);
 
 
-
     void getVideoEncodeAcceleratorSupportedProfiles(
 
-GetVideoEncodeAcceleratorSupportedProfilesResponse callback);
+GetVideoEncodeAcceleratorSupportedProfiles_Response callback);
 
-    interface GetVideoEncodeAcceleratorSupportedProfilesResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<VideoEncodeAcceleratorSupportedProfile[]> { }
+    interface GetVideoEncodeAcceleratorSupportedProfiles_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<VideoEncodeAcceleratorSupportedProfile[]> { }
 
 
 }

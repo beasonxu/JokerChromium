@@ -13,6 +13,8 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface VideoDetectorObserver extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface VideoDetectorObserver extends org.chromium.mojo.bindings.Interf
 
     Manager<VideoDetectorObserver, VideoDetectorObserver.Proxy> MANAGER = VideoDetectorObserver_Internal.MANAGER;
 
-
     void onVideoActivityStarted(
 );
-
 
 
     void onVideoActivityEnded(

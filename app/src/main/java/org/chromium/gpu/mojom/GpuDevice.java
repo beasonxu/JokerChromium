@@ -13,11 +13,13 @@
 
 package org.chromium.gpu.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class GpuDevice extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 56;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(56, 0)};
+    private static final int STRUCT_SIZE = 64;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(64, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int vendorId;
     public int deviceId;
@@ -27,6 +29,7 @@ public final class GpuDevice extends org.chromium.mojo.bindings.Struct {
     public String driverVendor;
     public String driverVersion;
     public int cudaComputeCapabilityMajor;
+    public int gpuPreference;
 
     private GpuDevice(int version) {
         super(STRUCT_SIZE, version);
@@ -93,6 +96,12 @@ public final class GpuDevice extends org.chromium.mojo.bindings.Struct {
                     
                 result.driverVersion = decoder0.readString(48, false);
                 }
+                {
+                    
+                result.gpuPreference = decoder0.readInt(56);
+                    org.chromium.gl.mojom.GpuPreference.validate(result.gpuPreference);
+                    result.gpuPreference = org.chromium.gl.mojom.GpuPreference.toKnownValue(result.gpuPreference);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -120,5 +129,7 @@ public final class GpuDevice extends org.chromium.mojo.bindings.Struct {
         encoder0.encode(this.driverVendor, 40, false);
         
         encoder0.encode(this.driverVersion, 48, false);
+        
+        encoder0.encode(this.gpuPreference, 56);
     }
 }

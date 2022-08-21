@@ -13,6 +13,8 @@
 
 package org.chromium.handwriting.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class HandwritingPoint extends org.chromium.mojo.bindings.Struct {
 
@@ -62,7 +64,7 @@ public final class HandwritingPoint extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, true);
                 result.t = org.chromium.mojo_base.mojom.TimeDelta.decode(decoder1);
                 }
 
@@ -79,6 +81,6 @@ public final class HandwritingPoint extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.location, 8, false);
         
-        encoder0.encode(this.t, 16, false);
+        encoder0.encode(this.t, 16, true);
     }
 }

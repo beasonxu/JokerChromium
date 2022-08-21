@@ -3,16 +3,14 @@ package org.chromium.components.search_engines;
 import java.lang.Override;
 import java.lang.String;
 import java.util.List;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.url.GURL;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class TemplateUrlServiceJni implements TemplateUrlService.Natives {
+public class TemplateUrlServiceJni implements TemplateUrlService.Natives {
   private static TemplateUrlService.Natives testInstance;
 
   public static final JniStaticTestMocker<TemplateUrlService.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.search_engines.TemplateUrlService.Natives>() {
@@ -58,6 +56,12 @@ final class TemplateUrlServiceJni implements TemplateUrlService.Natives {
   public boolean isSearchByImageAvailable(long nativeTemplateUrlServiceAndroid,
       TemplateUrlService caller) {
     return (boolean)GEN_JNI.org_chromium_components_search_1engines_TemplateUrlService_isSearchByImageAvailable(nativeTemplateUrlServiceAndroid, caller);
+  }
+
+  @Override
+  public boolean doesDefaultSearchEngineHaveLogo(long nativeTemplateUrlServiceAndroid,
+      TemplateUrlService caller) {
+    return (boolean)GEN_JNI.org_chromium_components_search_1engines_TemplateUrlService_doesDefaultSearchEngineHaveLogo(nativeTemplateUrlServiceAndroid, caller);
   }
 
   @Override

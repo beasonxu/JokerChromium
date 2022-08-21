@@ -13,8 +13,17 @@
 
 package org.chromium.display.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class Rotation {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        Rotation.VALUE_0,
+        Rotation.VALUE_90,
+        Rotation.VALUE_180,
+        Rotation.VALUE_270})
+    public @interface EnumType {}
 
     public static final int VALUE_0 = 0;
     public static final int VALUE_90 = 1;

@@ -13,8 +13,27 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class MediaUrlScheme {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        MediaUrlScheme.UNKNOWN,
+        MediaUrlScheme.MISSING,
+        MediaUrlScheme.HTTP,
+        MediaUrlScheme.HTTPS,
+        MediaUrlScheme.FTP,
+        MediaUrlScheme.CHROME_EXTENSION,
+        MediaUrlScheme.JAVASCRIPT,
+        MediaUrlScheme.FILE,
+        MediaUrlScheme.BLOB,
+        MediaUrlScheme.DATA,
+        MediaUrlScheme.FILE_SYSTEM,
+        MediaUrlScheme.CHROME,
+        MediaUrlScheme.CONTENT,
+        MediaUrlScheme.CONTENT_ID})
+    public @interface EnumType {}
 
     public static final int UNKNOWN = 0;
     public static final int MISSING = 1;

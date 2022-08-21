@@ -13,7 +13,7 @@ import androidx.annotation.VisibleForTesting;
 import org.chromium.base.Callback;
 import org.chromium.base.CommandLine;
 import org.chromium.components.content_settings.ContentSettingsType;
-import org.chromium.components.embedder_support.browser_context.BrowserContextHandle;
+import org.chromium.content_public.browser.BrowserContextHandle;
 import org.chromium.content_public.browser.ContentFeatureList;
 import org.chromium.content_public.common.ContentSwitches;
 
@@ -57,12 +57,16 @@ public class WebsitePermissionsFetcher {
             @ContentSettingsType int contentSettingsType) {
         switch (contentSettingsType) {
             case ContentSettingsType.ADS:
+            case ContentSettingsType.AUTO_DARK_WEB_CONTENT:
             case ContentSettingsType.AUTOMATIC_DOWNLOADS:
             case ContentSettingsType.BACKGROUND_SYNC:
             case ContentSettingsType.BLUETOOTH_SCANNING:
             case ContentSettingsType.COOKIES:
+            case ContentSettingsType.FEDERATED_IDENTITY_API:
             case ContentSettingsType.JAVASCRIPT:
+            case ContentSettingsType.JAVASCRIPT_JIT:
             case ContentSettingsType.POPUPS:
+            case ContentSettingsType.REQUEST_DESKTOP_SITE:
             case ContentSettingsType.SOUND:
                 return WebsitePermissionsType.CONTENT_SETTING_EXCEPTION;
             case ContentSettingsType.AR:
@@ -159,13 +163,13 @@ public class WebsitePermissionsFetcher {
      */
     public void fetchPreferencesForCategory(
             SiteSettingsCategory category, WebsitePermissionsCallback callback) {
-        if (category.showSites(SiteSettingsCategory.Type.ALL_SITES)) {
+        if (category.getType() == SiteSettingsCategory.Type.ALL_SITES) {
             fetchAllPreferences(callback);
             return;
         }
 
         TaskQueue queue = new TaskQueue();
-        if (category.showSites(SiteSettingsCategory.Type.USE_STORAGE)) {
+        if (category.getType() == SiteSettingsCategory.Type.USE_STORAGE) {
             addFetcherForStorage(queue);
         } else {
             assert getPermissionsType(category.getContentSettingsType()) != null;
@@ -336,7 +340,7 @@ public class WebsitePermissionsFetcher {
                          mBrowserContextHandle, mChooserDataType)) {
                 String origin = info.getOrigin();
                 if (origin == null) continue;
-                findOrCreateSite(origin, info.getEmbedder()).addChosenObjectInfo(info);
+                findOrCreateSite(origin, null).addChosenObjectInfo(info);
             }
         }
     }

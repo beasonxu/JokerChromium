@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class HighPriorityLocalFrame_Internal {
 
@@ -61,7 +63,7 @@ class HighPriorityLocalFrame_Internal {
         @Override
         public void dispatchBeforeUnload(
 boolean isReload, 
-DispatchBeforeUnloadResponse callback) {
+DispatchBeforeUnload_Response callback) {
 
             HighPriorityLocalFrameDispatchBeforeUnloadParams _message = new HighPriorityLocalFrameDispatchBeforeUnloadParams();
 
@@ -307,9 +309,9 @@ DispatchBeforeUnloadResponse callback) {
 
     static class HighPriorityLocalFrameDispatchBeforeUnloadResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final HighPriorityLocalFrame.DispatchBeforeUnloadResponse mCallback;
+        private final HighPriorityLocalFrame.DispatchBeforeUnload_Response mCallback;
 
-        HighPriorityLocalFrameDispatchBeforeUnloadResponseParamsForwardToCallback(HighPriorityLocalFrame.DispatchBeforeUnloadResponse callback) {
+        HighPriorityLocalFrameDispatchBeforeUnloadResponseParamsForwardToCallback(HighPriorityLocalFrame.DispatchBeforeUnload_Response callback) {
             this.mCallback = callback;
         }
 
@@ -334,7 +336,7 @@ DispatchBeforeUnloadResponse callback) {
         }
     }
 
-    static class HighPriorityLocalFrameDispatchBeforeUnloadResponseParamsProxyToResponder implements HighPriorityLocalFrame.DispatchBeforeUnloadResponse {
+    static class HighPriorityLocalFrameDispatchBeforeUnloadResponseParamsProxyToResponder implements HighPriorityLocalFrame.DispatchBeforeUnload_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

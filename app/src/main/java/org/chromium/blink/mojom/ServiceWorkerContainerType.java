@@ -13,8 +13,18 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ServiceWorkerContainerType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ServiceWorkerContainerType.UNKNOWN,
+        ServiceWorkerContainerType.FOR_WINDOW,
+        ServiceWorkerContainerType.FOR_DEDICATED_WORKER,
+        ServiceWorkerContainerType.FOR_SHARED_WORKER,
+        ServiceWorkerContainerType.FOR_SERVICE_WORKER})
+    public @interface EnumType {}
 
     public static final int UNKNOWN = 0;
     public static final int FOR_WINDOW = 1;

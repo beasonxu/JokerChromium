@@ -1,9 +1,8 @@
 package org.chromium.chrome.browser.share.send_tab_to_self;
 
+import java.lang.Integer;
 import java.lang.Override;
 import java.lang.String;
-import java.util.List;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
@@ -11,9 +10,8 @@ import org.chromium.base.natives.GEN_JNI;
 import org.chromium.chrome.browser.profiles.Profile;
 import org.chromium.content_public.browser.WebContents;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-public final class SendTabToSelfAndroidBridgeJni implements SendTabToSelfAndroidBridge.Natives {
+public class SendTabToSelfAndroidBridgeJni implements SendTabToSelfAndroidBridge.Natives {
   private static SendTabToSelfAndroidBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<SendTabToSelfAndroidBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.share.send_tab_to_self.SendTabToSelfAndroidBridge.Natives>() {
@@ -28,19 +26,9 @@ public final class SendTabToSelfAndroidBridgeJni implements SendTabToSelfAndroid
   };
 
   @Override
-  public SendTabToSelfEntry addEntry(Profile profile, String url, String title, long navigationTime,
+  public boolean addEntry(Profile profile, String url, String title,
       String targetDeviceSyncCacheGuid) {
-    return (SendTabToSelfEntry)GEN_JNI.org_chromium_chrome_browser_share_send_1tab_1to_1self_SendTabToSelfAndroidBridge_addEntry(profile, url, title, navigationTime, targetDeviceSyncCacheGuid);
-  }
-
-  @Override
-  public void getAllGuids(Profile profile, List<String> guids) {
-    GEN_JNI.org_chromium_chrome_browser_share_send_1tab_1to_1self_SendTabToSelfAndroidBridge_getAllGuids(profile, guids);
-  }
-
-  @Override
-  public void deleteAllEntries(Profile profile) {
-    GEN_JNI.org_chromium_chrome_browser_share_send_1tab_1to_1self_SendTabToSelfAndroidBridge_deleteAllEntries(profile);
+    return (boolean)GEN_JNI.org_chromium_chrome_browser_share_send_1tab_1to_1self_SendTabToSelfAndroidBridge_addEntry(profile, url, title, targetDeviceSyncCacheGuid);
   }
 
   @Override
@@ -54,29 +42,18 @@ public final class SendTabToSelfAndroidBridgeJni implements SendTabToSelfAndroid
   }
 
   @Override
-  public void markEntryOpened(Profile profile, String guid) {
-    GEN_JNI.org_chromium_chrome_browser_share_send_1tab_1to_1self_SendTabToSelfAndroidBridge_markEntryOpened(profile, guid);
+  public TargetDeviceInfo[] getAllTargetDeviceInfos(Profile profile) {
+    return (TargetDeviceInfo[])GEN_JNI.org_chromium_chrome_browser_share_send_1tab_1to_1self_SendTabToSelfAndroidBridge_getAllTargetDeviceInfos(profile);
   }
 
   @Override
-  public SendTabToSelfEntry getEntryByGUID(Profile profile, String guid) {
-    return (SendTabToSelfEntry)GEN_JNI.org_chromium_chrome_browser_share_send_1tab_1to_1self_SendTabToSelfAndroidBridge_getEntryByGUID(profile, guid);
+  public void updateActiveWebContents(WebContents webContents) {
+    GEN_JNI.org_chromium_chrome_browser_share_send_1tab_1to_1self_SendTabToSelfAndroidBridge_updateActiveWebContents(webContents);
   }
 
   @Override
-  public boolean isFeatureAvailable(WebContents webContents) {
-    return (boolean)GEN_JNI.org_chromium_chrome_browser_share_send_1tab_1to_1self_SendTabToSelfAndroidBridge_isFeatureAvailable(webContents);
-  }
-
-  @Override
-  public void showInfoBar(WebContents webContents, String guid, String url,
-      String targetDeviceSyncCacheGuid) {
-    GEN_JNI.org_chromium_chrome_browser_share_send_1tab_1to_1self_SendTabToSelfAndroidBridge_showInfoBar(webContents, guid, url, targetDeviceSyncCacheGuid);
-  }
-
-  @Override
-  public void getAllTargetDeviceInfos(Profile profile, List<TargetDeviceInfo> guids) {
-    GEN_JNI.org_chromium_chrome_browser_share_send_1tab_1to_1self_SendTabToSelfAndroidBridge_getAllTargetDeviceInfos(profile, guids);
+  public Integer getEntryPointDisplayReason(Profile profile, String url) {
+    return (Integer)GEN_JNI.org_chromium_chrome_browser_share_send_1tab_1to_1self_SendTabToSelfAndroidBridge_getEntryPointDisplayReason(profile, url);
   }
 
   public static SendTabToSelfAndroidBridge.Natives get() {

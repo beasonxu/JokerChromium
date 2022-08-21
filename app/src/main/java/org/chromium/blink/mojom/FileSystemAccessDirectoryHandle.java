@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface FileSystemAccessDirectoryHandle extends org.chromium.mojo.bindings.Interface {
 
@@ -23,58 +25,71 @@ public interface FileSystemAccessDirectoryHandle extends org.chromium.mojo.bindi
 
     Manager<FileSystemAccessDirectoryHandle, FileSystemAccessDirectoryHandle.Proxy> MANAGER = FileSystemAccessDirectoryHandle_Internal.MANAGER;
 
-
     void getPermissionStatus(
 boolean writable, 
-GetPermissionStatusResponse callback);
+GetPermissionStatus_Response callback);
 
-    interface GetPermissionStatusResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface GetPermissionStatus_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void requestPermission(
 boolean writable, 
-RequestPermissionResponse callback);
+RequestPermission_Response callback);
 
-    interface RequestPermissionResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<FileSystemAccessError, Integer> { }
-
+    interface RequestPermission_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<FileSystemAccessError, Integer> { }
 
 
     void getFile(
 String basename, boolean create, 
-GetFileResponse callback);
+GetFile_Response callback);
 
-    interface GetFileResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<FileSystemAccessError, FileSystemAccessFileHandle> { }
-
+    interface GetFile_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<FileSystemAccessError, FileSystemAccessFileHandle> { }
 
 
     void getDirectory(
 String basename, boolean create, 
-GetDirectoryResponse callback);
+GetDirectory_Response callback);
 
-    interface GetDirectoryResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<FileSystemAccessError, FileSystemAccessDirectoryHandle> { }
-
+    interface GetDirectory_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<FileSystemAccessError, FileSystemAccessDirectoryHandle> { }
 
 
     void getEntries(
 FileSystemAccessDirectoryEntriesListener listener);
 
 
+    void rename(
+String newEntryName, 
+Rename_Response callback);
+
+    interface Rename_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<FileSystemAccessError> { }
+
+
+    void move(
+FileSystemAccessTransferToken destinationDirectory, String newEntryName, 
+Move_Response callback);
+
+    interface Move_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<FileSystemAccessError> { }
+
+
+    void remove(
+boolean recurse, 
+Remove_Response callback);
+
+    interface Remove_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<FileSystemAccessError> { }
+
 
     void removeEntry(
 String basename, boolean recurse, 
-RemoveEntryResponse callback);
+RemoveEntry_Response callback);
 
-    interface RemoveEntryResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<FileSystemAccessError> { }
-
+    interface RemoveEntry_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<FileSystemAccessError> { }
 
 
     void resolve(
 FileSystemAccessTransferToken possibleChild, 
-ResolveResponse callback);
+Resolve_Response callback);
 
-    interface ResolveResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<FileSystemAccessError, String[]> { }
-
+    interface Resolve_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<FileSystemAccessError, String[]> { }
 
 
     void transfer(

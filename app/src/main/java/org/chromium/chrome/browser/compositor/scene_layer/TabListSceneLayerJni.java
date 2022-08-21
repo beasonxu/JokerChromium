@@ -1,18 +1,15 @@
 package org.chromium.chrome.browser.compositor.scene_layer;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
-import org.chromium.chrome.browser.compositor.LayerTitleCache;
 import org.chromium.chrome.browser.compositor.layouts.content.TabContentManager;
 import org.chromium.ui.resources.ResourceManager;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class TabListSceneLayerJni implements TabListSceneLayer.Natives {
+class TabListSceneLayerJni implements TabListSceneLayer.Natives {
   private static TabListSceneLayer.Natives testInstance;
 
   public static final JniStaticTestMocker<TabListSceneLayer.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.compositor.scene_layer.TabListSceneLayer.Natives>() {
@@ -43,9 +40,8 @@ final class TabListSceneLayerJni implements TabListSceneLayer.Natives {
 
   @Override
   public void setDependencies(long nativeTabListSceneLayer, TabListSceneLayer caller,
-      TabContentManager tabContentManager, LayerTitleCache layerTitleCache,
-      ResourceManager resourceManager) {
-    GEN_JNI.org_chromium_chrome_browser_compositor_scene_1layer_TabListSceneLayer_setDependencies(nativeTabListSceneLayer, caller, tabContentManager, layerTitleCache, resourceManager);
+      TabContentManager tabContentManager, ResourceManager resourceManager) {
+    GEN_JNI.org_chromium_chrome_browser_compositor_scene_1layer_TabListSceneLayer_setDependencies(nativeTabListSceneLayer, caller, tabContentManager, resourceManager);
   }
 
   @Override
@@ -57,21 +53,18 @@ final class TabListSceneLayerJni implements TabListSceneLayer.Natives {
 
   @Override
   public void putTabLayer(long nativeTabListSceneLayer, TabListSceneLayer caller, int selectedId,
-      int[] ids, boolean useAdditionalIds, int toolbarResourceId, int closeButtonResourceId,
-      int shadowResourceId, int contourResourceId, int backLogoResourceId, int borderResourceId,
-      int borderInnerShadowResourceId, boolean canUseLiveLayer, int tabBackgroundColor,
-      int backLogoColor, boolean incognito, boolean isPortrait, float x, float y, float width,
-      float height, float contentWidth, float contentHeight, float shadowX, float shadowY,
-      float shadowWidth, float shadowHeight, float pivotX, float pivotY, float rotationX,
-      float rotationY, float alpha, float borderAlpha, float borderInnerShadowAlpha,
-      float contourAlpha, float shadowAlpha, float closeAlpha, float closeBtnWidth,
-      float closeBtnAssetSize, float staticToViewBlend, float borderScale, float saturation,
-      float brightness, boolean showToolbar, int defaultThemeColor, int toolbarBackgroundColor,
-      int closeButtonColor, boolean anonymizeToolbar, boolean showTabTitle,
+      int[] ids, boolean useAdditionalIds, int toolbarResourceId, int shadowResourceId,
+      int contourResourceId, int borderResourceId, int borderInnerShadowResourceId,
+      boolean canUseLiveLayer, int tabBackgroundColor, boolean incognito, float x, float y,
+      float width, float height, float contentWidth, float contentHeight, float shadowX,
+      float shadowY, float shadowWidth, float shadowHeight, float alpha, float borderAlpha,
+      float borderInnerShadowAlpha, float contourAlpha, float shadowAlpha, float staticToViewBlend,
+      float borderScale, float saturation, float brightness, boolean showToolbar,
+      int defaultThemeColor, int toolbarBackgroundColor, boolean anonymizeToolbar,
       int toolbarTextBoxResource, int toolbarTextBoxBackgroundColor, float toolbarTextBoxAlpha,
       float toolbarYOffset, float contentOffset, float sideBorderScale,
       boolean insetVerticalBorder) {
-    GEN_JNI.org_chromium_chrome_browser_compositor_scene_1layer_TabListSceneLayer_putTabLayer(nativeTabListSceneLayer, caller, selectedId, ids, useAdditionalIds, toolbarResourceId, closeButtonResourceId, shadowResourceId, contourResourceId, backLogoResourceId, borderResourceId, borderInnerShadowResourceId, canUseLiveLayer, tabBackgroundColor, backLogoColor, incognito, isPortrait, x, y, width, height, contentWidth, contentHeight, shadowX, shadowY, shadowWidth, shadowHeight, pivotX, pivotY, rotationX, rotationY, alpha, borderAlpha, borderInnerShadowAlpha, contourAlpha, shadowAlpha, closeAlpha, closeBtnWidth, closeBtnAssetSize, staticToViewBlend, borderScale, saturation, brightness, showToolbar, defaultThemeColor, toolbarBackgroundColor, closeButtonColor, anonymizeToolbar, showTabTitle, toolbarTextBoxResource, toolbarTextBoxBackgroundColor, toolbarTextBoxAlpha, toolbarYOffset, contentOffset, sideBorderScale, insetVerticalBorder);
+    GEN_JNI.org_chromium_chrome_browser_compositor_scene_1layer_TabListSceneLayer_putTabLayer(nativeTabListSceneLayer, caller, selectedId, ids, useAdditionalIds, toolbarResourceId, shadowResourceId, contourResourceId, borderResourceId, borderInnerShadowResourceId, canUseLiveLayer, tabBackgroundColor, incognito, x, y, width, height, contentWidth, contentHeight, shadowX, shadowY, shadowWidth, shadowHeight, alpha, borderAlpha, borderInnerShadowAlpha, contourAlpha, shadowAlpha, staticToViewBlend, borderScale, saturation, brightness, showToolbar, defaultThemeColor, toolbarBackgroundColor, anonymizeToolbar, toolbarTextBoxResource, toolbarTextBoxBackgroundColor, toolbarTextBoxAlpha, toolbarYOffset, contentOffset, sideBorderScale, insetVerticalBorder);
   }
 
   @Override

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface AnchorElementMetricsHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,14 +25,16 @@ public interface AnchorElementMetricsHost extends org.chromium.mojo.bindings.Int
 
     Manager<AnchorElementMetricsHost, AnchorElementMetricsHost.Proxy> MANAGER = AnchorElementMetricsHost_Internal.MANAGER;
 
-
-    void reportAnchorElementMetricsOnClick(
-AnchorElementMetrics metrics);
-
+    void reportAnchorElementClick(
+AnchorElementClick clicked);
 
 
-    void reportAnchorElementMetricsOnLoad(
-AnchorElementMetrics[] metrics, org.chromium.gfx.mojom.Size viewportSize);
+    void reportNewAnchorElements(
+AnchorElementMetrics[] metrics);
+
+
+    void reportAnchorElementsEnteredViewport(
+AnchorElementEnteredViewport[] elements);
 
 
 }

@@ -13,8 +13,21 @@
 
 package org.chromium.skia.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ColorType {
-    private static final boolean IS_EXTENSIBLE = false;
+    private static final boolean IS_EXTENSIBLE = true;
+    @IntDef({
+
+        ColorType.UNKNOWN,
+        ColorType.ALPHA_8,
+        ColorType.RGB_565,
+        ColorType.ARGB_4444,
+        ColorType.RGBA_8888,
+        ColorType.BGRA_8888,
+        ColorType.DEPRECATED_INDEX_8,
+        ColorType.GRAY_8})
+    public @interface EnumType {}
 
     public static final int UNKNOWN = 0;
     public static final int ALPHA_8 = 1;
@@ -26,6 +39,7 @@ public final class ColorType {
     public static final int GRAY_8 = 7;
     public static final int MIN_VALUE = 0;
     public static final int MAX_VALUE = 7;
+    public static final int DEFAULT_VALUE = 0;
 
     public static boolean isKnownValue(int value) {
         return value >= 0 && value <= 7;
@@ -37,7 +51,10 @@ public final class ColorType {
     }
 
     public static int toKnownValue(int value) {
-      return value;
+      if (isKnownValue(value)) {
+        return value;
+      }
+      return DEFAULT_VALUE;
     }
 
     private ColorType() {}

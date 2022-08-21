@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ManifestManager extends org.chromium.mojo.bindings.Interface {
 
@@ -23,20 +25,18 @@ public interface ManifestManager extends org.chromium.mojo.bindings.Interface {
 
     Manager<ManifestManager, ManifestManager.Proxy> MANAGER = ManifestManager_Internal.MANAGER;
 
-
     void requestManifest(
 
-RequestManifestResponse callback);
+RequestManifest_Response callback);
 
-    interface RequestManifestResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<org.chromium.url.mojom.Url, Manifest_> { }
-
+    interface RequestManifest_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<org.chromium.url.mojom.Url, Manifest_> { }
 
 
     void requestManifestDebugInfo(
 
-RequestManifestDebugInfoResponse callback);
+RequestManifestDebugInfo_Response callback);
 
-    interface RequestManifestDebugInfoResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<org.chromium.url.mojom.Url, Manifest_, ManifestDebugInfo> { }
+    interface RequestManifestDebugInfo_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<org.chromium.url.mojom.Url, Manifest_, ManifestDebugInfo> { }
 
 
 }

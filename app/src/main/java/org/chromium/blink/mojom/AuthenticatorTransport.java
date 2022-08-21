@@ -13,8 +13,18 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class AuthenticatorTransport {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        AuthenticatorTransport.USB,
+        AuthenticatorTransport.NFC,
+        AuthenticatorTransport.BLE,
+        AuthenticatorTransport.CABLE,
+        AuthenticatorTransport.INTERNAL})
+    public @interface EnumType {}
 
     public static final int USB = 0;
     public static final int NFC = 1;

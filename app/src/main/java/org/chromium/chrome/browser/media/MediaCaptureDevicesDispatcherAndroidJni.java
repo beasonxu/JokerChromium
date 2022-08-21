@@ -1,16 +1,14 @@
 package org.chromium.chrome.browser.media;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.content_public.browser.WebContents;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class MediaCaptureDevicesDispatcherAndroidJni implements MediaCaptureDevicesDispatcherAndroid.Natives {
+class MediaCaptureDevicesDispatcherAndroidJni implements MediaCaptureDevicesDispatcherAndroid.Natives {
   private static MediaCaptureDevicesDispatcherAndroid.Natives testInstance;
 
   public static final JniStaticTestMocker<MediaCaptureDevicesDispatcherAndroid.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.media.MediaCaptureDevicesDispatcherAndroid.Natives>() {

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class SynchronousCompositor_Internal {
 
@@ -65,11 +67,13 @@ class SynchronousCompositor_Internal {
 
     private static final int RECLAIM_RESOURCES_ORDINAL = 8;
 
-    private static final int SET_SCROLL_ORDINAL = 9;
+    private static final int ON_COMPOSITOR_FRAME_TRANSITION_DIRECTIVE_PROCESSED_ORDINAL = 9;
 
-    private static final int BEGIN_FRAME_ORDINAL = 10;
+    private static final int SET_SCROLL_ORDINAL = 10;
 
-    private static final int SET_BEGIN_FRAME_SOURCE_PAUSED_ORDINAL = 11;
+    private static final int BEGIN_FRAME_ORDINAL = 11;
+
+    private static final int SET_BEGIN_FRAME_SOURCE_PAUSED_ORDINAL = 12;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements SynchronousCompositor.Proxy {
@@ -100,7 +104,7 @@ SyncCompositorDemandDrawHwParams drawParams) {
         @Override
         public void demandDrawHw(
 SyncCompositorDemandDrawHwParams drawParams, 
-DemandDrawHwResponse callback) {
+DemandDrawHw_Response callback) {
 
             SynchronousCompositorDemandDrawHwParams _message = new SynchronousCompositorDemandDrawHwParams();
 
@@ -122,7 +126,7 @@ DemandDrawHwResponse callback) {
         @Override
         public void setSharedMemory(
 org.chromium.mojo_base.mojom.WritableSharedMemoryRegion shmRegion, 
-SetSharedMemoryResponse callback) {
+SetSharedMemory_Response callback) {
 
             SynchronousCompositorSetSharedMemoryParams _message = new SynchronousCompositorSetSharedMemoryParams();
 
@@ -144,7 +148,7 @@ SetSharedMemoryResponse callback) {
         @Override
         public void demandDrawSw(
 SyncCompositorDemandDrawSwParams drawParams, 
-DemandDrawSwResponse callback) {
+DemandDrawSw_Response callback) {
 
             SynchronousCompositorDemandDrawSwParams _message = new SynchronousCompositorDemandDrawSwParams();
 
@@ -196,7 +200,7 @@ DemandDrawSwResponse callback) {
         @Override
         public void zoomBy(
 float delta, org.chromium.gfx.mojom.Point anchor, 
-ZoomByResponse callback) {
+ZoomBy_Response callback) {
 
             SynchronousCompositorZoomByParams _message = new SynchronousCompositorZoomByParams();
 
@@ -254,8 +258,27 @@ int layerTreeFrameSinkId, org.chromium.viz.mojom.ReturnedResource[] resources) {
 
 
         @Override
+        public void onCompositorFrameTransitionDirectiveProcessed(
+int layerTreeFrameSinkId, int sequenceId) {
+
+            SynchronousCompositorOnCompositorFrameTransitionDirectiveProcessedParams _message = new SynchronousCompositorOnCompositorFrameTransitionDirectiveProcessedParams();
+
+            _message.layerTreeFrameSinkId = layerTreeFrameSinkId;
+
+            _message.sequenceId = sequenceId;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(ON_COMPOSITOR_FRAME_TRANSITION_DIRECTIVE_PROCESSED_ORDINAL)));
+
+        }
+
+
+        @Override
         public void setScroll(
-org.chromium.gfx.mojom.ScrollOffset offset) {
+org.chromium.gfx.mojom.PointF offset) {
 
             SynchronousCompositorSetScrollParams _message = new SynchronousCompositorSetScrollParams();
 
@@ -408,6 +431,19 @@ boolean paused) {
 
 
 
+                    case ON_COMPOSITOR_FRAME_TRANSITION_DIRECTIVE_PROCESSED_ORDINAL: {
+
+                        SynchronousCompositorOnCompositorFrameTransitionDirectiveProcessedParams data =
+                                SynchronousCompositorOnCompositorFrameTransitionDirectiveProcessedParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().onCompositorFrameTransitionDirectiveProcessed(data.layerTreeFrameSinkId, data.sequenceId);
+                        return true;
+                    }
+
+
+
+
+
                     case SET_SCROLL_ORDINAL: {
 
                         SynchronousCompositorSetScrollParams data =
@@ -537,6 +573,8 @@ boolean paused) {
                         getImpl().zoomBy(data.delta, data.anchor, new SynchronousCompositorZoomByResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
+
+
 
 
 
@@ -790,9 +828,9 @@ boolean paused) {
 
     static class SynchronousCompositorDemandDrawHwResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final SynchronousCompositor.DemandDrawHwResponse mCallback;
+        private final SynchronousCompositor.DemandDrawHw_Response mCallback;
 
-        SynchronousCompositorDemandDrawHwResponseParamsForwardToCallback(SynchronousCompositor.DemandDrawHwResponse callback) {
+        SynchronousCompositorDemandDrawHwResponseParamsForwardToCallback(SynchronousCompositor.DemandDrawHw_Response callback) {
             this.mCallback = callback;
         }
 
@@ -817,7 +855,7 @@ boolean paused) {
         }
     }
 
-    static class SynchronousCompositorDemandDrawHwResponseParamsProxyToResponder implements SynchronousCompositor.DemandDrawHwResponse {
+    static class SynchronousCompositorDemandDrawHwResponseParamsProxyToResponder implements SynchronousCompositor.DemandDrawHw_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -996,9 +1034,9 @@ boolean paused) {
 
     static class SynchronousCompositorSetSharedMemoryResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final SynchronousCompositor.SetSharedMemoryResponse mCallback;
+        private final SynchronousCompositor.SetSharedMemory_Response mCallback;
 
-        SynchronousCompositorSetSharedMemoryResponseParamsForwardToCallback(SynchronousCompositor.SetSharedMemoryResponse callback) {
+        SynchronousCompositorSetSharedMemoryResponseParamsForwardToCallback(SynchronousCompositor.SetSharedMemory_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1023,7 +1061,7 @@ boolean paused) {
         }
     }
 
-    static class SynchronousCompositorSetSharedMemoryResponseParamsProxyToResponder implements SynchronousCompositor.SetSharedMemoryResponse {
+    static class SynchronousCompositorSetSharedMemoryResponseParamsProxyToResponder implements SynchronousCompositor.SetSharedMemory_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1202,9 +1240,9 @@ boolean paused) {
 
     static class SynchronousCompositorDemandDrawSwResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final SynchronousCompositor.DemandDrawSwResponse mCallback;
+        private final SynchronousCompositor.DemandDrawSw_Response mCallback;
 
-        SynchronousCompositorDemandDrawSwResponseParamsForwardToCallback(SynchronousCompositor.DemandDrawSwResponse callback) {
+        SynchronousCompositorDemandDrawSwResponseParamsForwardToCallback(SynchronousCompositor.DemandDrawSw_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1229,7 +1267,7 @@ boolean paused) {
         }
     }
 
-    static class SynchronousCompositorDemandDrawSwResponseParamsProxyToResponder implements SynchronousCompositor.DemandDrawSwResponse {
+    static class SynchronousCompositorDemandDrawSwResponseParamsProxyToResponder implements SynchronousCompositor.DemandDrawSw_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1514,9 +1552,9 @@ boolean paused) {
 
     static class SynchronousCompositorZoomByResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final SynchronousCompositor.ZoomByResponse mCallback;
+        private final SynchronousCompositor.ZoomBy_Response mCallback;
 
-        SynchronousCompositorZoomByResponseParamsForwardToCallback(SynchronousCompositor.ZoomByResponse callback) {
+        SynchronousCompositorZoomByResponseParamsForwardToCallback(SynchronousCompositor.ZoomBy_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1541,7 +1579,7 @@ boolean paused) {
         }
     }
 
-    static class SynchronousCompositorZoomByResponseParamsProxyToResponder implements SynchronousCompositor.ZoomByResponse {
+    static class SynchronousCompositorZoomByResponseParamsProxyToResponder implements SynchronousCompositor.ZoomBy_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1726,12 +1764,82 @@ boolean paused) {
 
 
     
+    static final class SynchronousCompositorOnCompositorFrameTransitionDirectiveProcessedParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int layerTreeFrameSinkId;
+        public int sequenceId;
+
+        private SynchronousCompositorOnCompositorFrameTransitionDirectiveProcessedParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public SynchronousCompositorOnCompositorFrameTransitionDirectiveProcessedParams() {
+            this(0);
+        }
+
+        public static SynchronousCompositorOnCompositorFrameTransitionDirectiveProcessedParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static SynchronousCompositorOnCompositorFrameTransitionDirectiveProcessedParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static SynchronousCompositorOnCompositorFrameTransitionDirectiveProcessedParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            SynchronousCompositorOnCompositorFrameTransitionDirectiveProcessedParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new SynchronousCompositorOnCompositorFrameTransitionDirectiveProcessedParams(elementsOrVersion);
+                    {
+                        
+                    result.layerTreeFrameSinkId = decoder0.readInt(8);
+                    }
+                    {
+                        
+                    result.sequenceId = decoder0.readInt(12);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.layerTreeFrameSinkId, 8);
+            
+            encoder0.encode(this.sequenceId, 12);
+        }
+    }
+
+
+
+    
     static final class SynchronousCompositorSetScrollParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public org.chromium.gfx.mojom.ScrollOffset offset;
+        public org.chromium.gfx.mojom.PointF offset;
 
         private SynchronousCompositorSetScrollParams(int version) {
             super(STRUCT_SIZE, version);
@@ -1769,7 +1877,7 @@ boolean paused) {
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    result.offset = org.chromium.gfx.mojom.ScrollOffset.decode(decoder1);
+                    result.offset = org.chromium.gfx.mojom.PointF.decode(decoder1);
                     }
 
             } finally {

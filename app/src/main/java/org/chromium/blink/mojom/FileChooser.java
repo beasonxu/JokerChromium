@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface FileChooser extends org.chromium.mojo.bindings.Interface {
 
@@ -23,20 +25,18 @@ public interface FileChooser extends org.chromium.mojo.bindings.Interface {
 
     Manager<FileChooser, FileChooser.Proxy> MANAGER = FileChooser_Internal.MANAGER;
 
-
     void openFileChooser(
 FileChooserParams params, 
-OpenFileChooserResponse callback);
+OpenFileChooser_Response callback);
 
-    interface OpenFileChooserResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<FileChooserResult> { }
-
+    interface OpenFileChooser_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<FileChooserResult> { }
 
 
     void enumerateChosenDirectory(
 org.chromium.mojo_base.mojom.FilePath directoryPath, 
-EnumerateChosenDirectoryResponse callback);
+EnumerateChosenDirectory_Response callback);
 
-    interface EnumerateChosenDirectoryResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<FileChooserResult> { }
+    interface EnumerateChosenDirectory_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<FileChooserResult> { }
 
 
 }

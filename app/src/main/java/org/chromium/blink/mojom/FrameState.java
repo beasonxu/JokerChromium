@@ -13,12 +13,14 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class FrameState extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 104;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(96, 0),new org.chromium.mojo.bindings.DataHeader(104, 2)};
-    private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[1];
+    private static final int STRUCT_SIZE = 136;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(96, 0),new org.chromium.mojo.bindings.DataHeader(104, 2),new org.chromium.mojo.bindings.DataHeader(120, 3),new org.chromium.mojo.bindings.DataHeader(128, 4),new org.chromium.mojo.bindings.DataHeader(136, 5)};
+    private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[4];
     public org.chromium.mojo_base.mojom.String16 urlString;
     public org.chromium.mojo_base.mojom.String16 referrer;
     public org.chromium.mojo_base.mojom.String16 target;
@@ -32,13 +34,17 @@ public final class FrameState extends org.chromium.mojo.bindings.Struct {
     public HttpBody httpBody;
     public FrameState[] children;
     public String initiatorOrigin;
+    public org.chromium.mojo_base.mojom.String16 navigationApiKey;
+    public org.chromium.mojo_base.mojom.String16 navigationApiId;
+    public org.chromium.mojo_base.mojom.String16 navigationApiState;
+    public boolean protectUrlInNavigationApi;
 
     private FrameState(int version) {
         super(STRUCT_SIZE, version);
     }
 
     public FrameState() {
-        this(2);
+        this(5);
     }
 
     public static FrameState deserialize(org.chromium.mojo.bindings.Message message) {
@@ -148,6 +154,31 @@ public final class FrameState extends org.chromium.mojo.bindings.Struct {
                 result.initiatorOrigin = decoder0.readString(96, true);
                 }
             }
+            if (elementsOrVersion >= 3) {
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(104, true);
+                result.navigationApiKey = org.chromium.mojo_base.mojom.String16.decode(decoder1);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(112, true);
+                result.navigationApiId = org.chromium.mojo_base.mojom.String16.decode(decoder1);
+                }
+            }
+            if (elementsOrVersion >= 4) {
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(120, true);
+                result.navigationApiState = org.chromium.mojo_base.mojom.String16.decode(decoder1);
+                }
+            }
+            if (elementsOrVersion >= 5) {
+                {
+                    
+                result.protectUrlInNavigationApi = decoder0.readBoolean(128, 0);
+                }
+            }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -201,5 +232,13 @@ public final class FrameState extends org.chromium.mojo.bindings.Struct {
         }
         
         encoder0.encode(this.initiatorOrigin, 96, true);
+        
+        encoder0.encode(this.navigationApiKey, 104, true);
+        
+        encoder0.encode(this.navigationApiId, 112, true);
+        
+        encoder0.encode(this.navigationApiState, 120, true);
+        
+        encoder0.encode(this.protectUrlInNavigationApi, 128, 0);
     }
 }

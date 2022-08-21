@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface CodeCacheHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,23 +25,19 @@ public interface CodeCacheHost extends org.chromium.mojo.bindings.Interface {
 
     Manager<CodeCacheHost, CodeCacheHost.Proxy> MANAGER = CodeCacheHost_Internal.MANAGER;
 
-
     void didGenerateCacheableMetadata(
 int cacheType, org.chromium.url.mojom.Url url, org.chromium.mojo_base.mojom.Time expectedResponseTime, org.chromium.mojo_base.mojom.BigBuffer data);
 
 
-
     void fetchCachedCode(
 int cacheType, org.chromium.url.mojom.Url url, 
-FetchCachedCodeResponse callback);
+FetchCachedCode_Response callback);
 
-    interface FetchCachedCodeResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<org.chromium.mojo_base.mojom.Time, org.chromium.mojo_base.mojom.BigBuffer> { }
-
+    interface FetchCachedCode_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<org.chromium.mojo_base.mojom.Time, org.chromium.mojo_base.mojom.BigBuffer> { }
 
 
     void clearCodeCacheEntry(
 int cacheType, org.chromium.url.mojom.Url url);
-
 
 
     void didGenerateCacheableMetadataInCacheStorage(

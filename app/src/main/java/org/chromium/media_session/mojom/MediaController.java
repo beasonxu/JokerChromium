@@ -13,6 +13,8 @@
 
 package org.chromium.media_session.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface MediaController extends org.chromium.mojo.bindings.Interface {
 
@@ -23,74 +25,80 @@ public interface MediaController extends org.chromium.mojo.bindings.Interface {
 
     Manager<MediaController, MediaController.Proxy> MANAGER = MediaController_Internal.MANAGER;
 
-
     void suspend(
 );
-
 
 
     void resume(
 );
 
 
-
     void stop(
 );
-
 
 
     void toggleSuspendResume(
 );
 
 
-
     void addObserver(
 MediaControllerObserver observer);
-
 
 
     void previousTrack(
 );
 
 
-
     void nextTrack(
 );
-
 
 
     void seek(
 org.chromium.mojo_base.mojom.TimeDelta seekTime);
 
 
-
     void observeImages(
 int type, int minimumSizePx, int desiredSizePx, MediaControllerImageObserver observer);
-
 
 
     void seekTo(
 org.chromium.mojo_base.mojom.TimeDelta seekTime);
 
 
-
     void scrubTo(
 org.chromium.mojo_base.mojom.TimeDelta seekTime);
-
 
 
     void enterPictureInPicture(
 );
 
 
-
     void exitPictureInPicture(
 );
 
 
-
     void setAudioSinkId(
 String id);
+
+
+    void toggleMicrophone(
+);
+
+
+    void toggleCamera(
+);
+
+
+    void hangUp(
+);
+
+
+    void raise(
+);
+
+
+    void setMute(
+boolean mute);
 
 
 }

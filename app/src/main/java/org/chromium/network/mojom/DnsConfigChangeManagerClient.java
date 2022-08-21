@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface DnsConfigChangeManagerClient extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface DnsConfigChangeManagerClient extends org.chromium.mojo.bindings
     }
 
     Manager<DnsConfigChangeManagerClient, DnsConfigChangeManagerClient.Proxy> MANAGER = DnsConfigChangeManagerClient_Internal.MANAGER;
-
 
     void onDnsConfigChanged(
 );

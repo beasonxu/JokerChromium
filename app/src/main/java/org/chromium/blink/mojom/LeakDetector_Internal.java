@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class LeakDetector_Internal {
 
@@ -61,7 +63,7 @@ class LeakDetector_Internal {
         @Override
         public void performLeakDetection(
 
-PerformLeakDetectionResponse callback) {
+PerformLeakDetection_Response callback) {
 
             LeakDetectorPerformLeakDetectionParams _message = new LeakDetectorPerformLeakDetectionParams();
 
@@ -261,7 +263,7 @@ PerformLeakDetectionResponse callback) {
                 result = new LeakDetectorPerformLeakDetectionResponseParams(elementsOrVersion);
                     {
                         
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, true);
                     result.result = LeakDetectionResult.decode(decoder1);
                     }
 
@@ -276,15 +278,15 @@ PerformLeakDetectionResponse callback) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.result, 8, false);
+            encoder0.encode(this.result, 8, true);
         }
     }
 
     static class LeakDetectorPerformLeakDetectionResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final LeakDetector.PerformLeakDetectionResponse mCallback;
+        private final LeakDetector.PerformLeakDetection_Response mCallback;
 
-        LeakDetectorPerformLeakDetectionResponseParamsForwardToCallback(LeakDetector.PerformLeakDetectionResponse callback) {
+        LeakDetectorPerformLeakDetectionResponseParamsForwardToCallback(LeakDetector.PerformLeakDetection_Response callback) {
             this.mCallback = callback;
         }
 
@@ -309,7 +311,7 @@ PerformLeakDetectionResponse callback) {
         }
     }
 
-    static class LeakDetectorPerformLeakDetectionResponseParamsProxyToResponder implements LeakDetector.PerformLeakDetectionResponse {
+    static class LeakDetectorPerformLeakDetectionResponseParamsProxyToResponder implements LeakDetector.PerformLeakDetection_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

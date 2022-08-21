@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class WakeLockProvider_Internal {
 
@@ -128,7 +130,7 @@ int type, WakeLockObserver observer) {
         @Override
         public void getActiveWakeLocksForTests(
 int type, 
-GetActiveWakeLocksForTestsResponse callback) {
+GetActiveWakeLocksForTests_Response callback) {
 
             WakeLockProviderGetActiveWakeLocksForTestsParams _message = new WakeLockProviderGetActiveWakeLocksForTestsParams();
 
@@ -635,9 +637,9 @@ GetActiveWakeLocksForTestsResponse callback) {
 
     static class WakeLockProviderGetActiveWakeLocksForTestsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final WakeLockProvider.GetActiveWakeLocksForTestsResponse mCallback;
+        private final WakeLockProvider.GetActiveWakeLocksForTests_Response mCallback;
 
-        WakeLockProviderGetActiveWakeLocksForTestsResponseParamsForwardToCallback(WakeLockProvider.GetActiveWakeLocksForTestsResponse callback) {
+        WakeLockProviderGetActiveWakeLocksForTestsResponseParamsForwardToCallback(WakeLockProvider.GetActiveWakeLocksForTests_Response callback) {
             this.mCallback = callback;
         }
 
@@ -662,7 +664,7 @@ GetActiveWakeLocksForTestsResponse callback) {
         }
     }
 
-    static class WakeLockProviderGetActiveWakeLocksForTestsResponseParamsProxyToResponder implements WakeLockProvider.GetActiveWakeLocksForTestsResponse {
+    static class WakeLockProviderGetActiveWakeLocksForTestsResponseParamsProxyToResponder implements WakeLockProvider.GetActiveWakeLocksForTests_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

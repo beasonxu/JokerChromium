@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface FederatedAuthRequest extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,22 @@ public interface FederatedAuthRequest extends org.chromium.mojo.bindings.Interfa
 
     Manager<FederatedAuthRequest, FederatedAuthRequest.Proxy> MANAGER = FederatedAuthRequest_Internal.MANAGER;
 
+    void requestToken(
+IdentityProvider identityProviderPtr, boolean preferAutoSignIn, 
+RequestToken_Response callback);
 
-    void requestIdToken(
-org.chromium.url.mojom.Url provider, String idRequest, 
-RequestIdTokenResponse callback);
+    interface RequestToken_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, String> { }
 
-    interface RequestIdTokenResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, String> { }
+
+    void cancelTokenRequest(
+);
+
+
+    void logoutRps(
+LogoutRpsRequest[] rpLogoutRequests, 
+LogoutRps_Response callback);
+
+    interface LogoutRps_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
 }

@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class P2pSocketClient_Internal {
 
@@ -51,9 +53,7 @@ class P2pSocketClient_Internal {
 
     private static final int SEND_COMPLETE_ORDINAL = 1;
 
-    private static final int INCOMING_TCP_CONNECTION_ORDINAL = 2;
-
-    private static final int DATA_RECEIVED_ORDINAL = 3;
+    private static final int DATA_RECEIVED_ORDINAL = 2;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements P2pSocketClient.Proxy {
@@ -96,27 +96,6 @@ P2pSendPacketMetrics sendMetrics) {
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(SEND_COMPLETE_ORDINAL)));
-
-        }
-
-
-        @Override
-        public void incomingTcpConnection(
-IpEndPoint socketAddress, P2pSocket socket, org.chromium.mojo.bindings.InterfaceRequest<P2pSocketClient> client) {
-
-            P2pSocketClientIncomingTcpConnectionParams _message = new P2pSocketClientIncomingTcpConnectionParams();
-
-            _message.socketAddress = socketAddress;
-
-            _message.socket = socket;
-
-            _message.client = client;
-
-
-            getProxyHandler().getMessageReceiver().accept(
-                    _message.serializeWithHeader(
-                            getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(INCOMING_TCP_CONNECTION_ORDINAL)));
 
         }
 
@@ -199,19 +178,6 @@ IpEndPoint socketAddress, byte[] data, org.chromium.mojo_base.mojom.TimeTicks ti
 
 
 
-                    case INCOMING_TCP_CONNECTION_ORDINAL: {
-
-                        P2pSocketClientIncomingTcpConnectionParams data =
-                                P2pSocketClientIncomingTcpConnectionParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().incomingTcpConnection(data.socketAddress, data.socket, data.client);
-                        return true;
-                    }
-
-
-
-
-
                     case DATA_RECEIVED_ORDINAL: {
 
                         P2pSocketClientDataReceivedParams data =
@@ -249,8 +215,6 @@ IpEndPoint socketAddress, byte[] data, org.chromium.mojo_base.mojom.TimeTicks ti
                     case org.chromium.mojo.bindings.interfacecontrol.InterfaceControlMessagesConstants.RUN_MESSAGE_ID:
                         return org.chromium.mojo.bindings.InterfaceControlMessagesHelper.handleRun(
                                 getCore(), P2pSocketClient_Internal.MANAGER, messageWithHeader, receiver);
-
-
 
 
 
@@ -401,84 +365,6 @@ IpEndPoint socketAddress, byte[] data, org.chromium.mojo_base.mojom.TimeTicks ti
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.sendMetrics, 8, false);
-        }
-    }
-
-
-
-    
-    static final class P2pSocketClientIncomingTcpConnectionParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 32;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public IpEndPoint socketAddress;
-        public P2pSocket socket;
-        public org.chromium.mojo.bindings.InterfaceRequest<P2pSocketClient> client;
-
-        private P2pSocketClientIncomingTcpConnectionParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public P2pSocketClientIncomingTcpConnectionParams() {
-            this(0);
-        }
-
-        public static P2pSocketClientIncomingTcpConnectionParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static P2pSocketClientIncomingTcpConnectionParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static P2pSocketClientIncomingTcpConnectionParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            P2pSocketClientIncomingTcpConnectionParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new P2pSocketClientIncomingTcpConnectionParams(elementsOrVersion);
-                    {
-                        
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    result.socketAddress = IpEndPoint.decode(decoder1);
-                    }
-                    {
-                        
-                    result.socket = decoder0.readServiceInterface(16, false, P2pSocket.MANAGER);
-                    }
-                    {
-                        
-                    result.client = decoder0.readInterfaceRequest(24, false);
-                    }
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-            
-            encoder0.encode(this.socketAddress, 8, false);
-            
-            encoder0.encode(this.socket, 16, false, P2pSocket.MANAGER);
-            
-            encoder0.encode(this.client, 24, false);
         }
     }
 

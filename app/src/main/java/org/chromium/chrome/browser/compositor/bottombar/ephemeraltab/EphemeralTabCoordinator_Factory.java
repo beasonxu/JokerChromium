@@ -3,7 +3,7 @@ package org.chromium.chrome.browser.compositor.bottombar.ephemeraltab;
 import android.content.Context;
 import android.view.View;
 import dagger.internal.Factory;
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 import javax.inject.Provider;
 import org.chromium.base.supplier.Supplier;
 import org.chromium.chrome.browser.ActivityTabProvider;

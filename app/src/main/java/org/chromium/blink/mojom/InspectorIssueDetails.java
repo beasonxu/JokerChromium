@@ -13,13 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class InspectorIssueDetails extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 72;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(72, 0)};
+    private static final int STRUCT_SIZE = 96;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(96, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-    public SameSiteCookieIssueDetails samesiteCookieIssueDetails;
+    public CookieIssueDetails cookieIssueDetails;
     public MixedContentIssueDetails mixedContentIssueDetails;
     public BlockedByResponseIssueDetails blockedByResponseIssueDetails;
     public ContentSecurityPolicyIssueDetails cspIssueDetails;
@@ -27,6 +29,9 @@ public final class InspectorIssueDetails extends org.chromium.mojo.bindings.Stru
     public TrustedWebActivityIssueDetails twaIssueDetails;
     public HeavyAdIssueDetails heavyAdIssueDetails;
     public LowTextContrastIssue lowTextContrastDetails;
+    public FederatedAuthRequestIssueDetails federatedAuthRequestDetails;
+    public GenericIssueDetails genericIssueDetails;
+    public org.chromium.mojo_base.mojom.UnguessableToken issueId;
 
     private InspectorIssueDetails(int version) {
         super(STRUCT_SIZE, version);
@@ -64,7 +69,7 @@ public final class InspectorIssueDetails extends org.chromium.mojo.bindings.Stru
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, true);
-                result.samesiteCookieIssueDetails = SameSiteCookieIssueDetails.decode(decoder1);
+                result.cookieIssueDetails = CookieIssueDetails.decode(decoder1);
                 }
                 {
                     
@@ -101,6 +106,21 @@ public final class InspectorIssueDetails extends org.chromium.mojo.bindings.Stru
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(64, true);
                 result.lowTextContrastDetails = LowTextContrastIssue.decode(decoder1);
                 }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(72, true);
+                result.federatedAuthRequestDetails = FederatedAuthRequestIssueDetails.decode(decoder1);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(80, true);
+                result.genericIssueDetails = GenericIssueDetails.decode(decoder1);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(88, true);
+                result.issueId = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -113,7 +133,7 @@ public final class InspectorIssueDetails extends org.chromium.mojo.bindings.Stru
     protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
         org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         
-        encoder0.encode(this.samesiteCookieIssueDetails, 8, true);
+        encoder0.encode(this.cookieIssueDetails, 8, true);
         
         encoder0.encode(this.mixedContentIssueDetails, 16, true);
         
@@ -128,5 +148,11 @@ public final class InspectorIssueDetails extends org.chromium.mojo.bindings.Stru
         encoder0.encode(this.heavyAdIssueDetails, 56, true);
         
         encoder0.encode(this.lowTextContrastDetails, 64, true);
+        
+        encoder0.encode(this.federatedAuthRequestDetails, 72, true);
+        
+        encoder0.encode(this.genericIssueDetails, 80, true);
+        
+        encoder0.encode(this.issueId, 88, true);
     }
 }

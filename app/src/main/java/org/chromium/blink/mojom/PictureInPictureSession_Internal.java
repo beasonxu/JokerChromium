@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class PictureInPictureSession_Internal {
 
@@ -62,11 +64,13 @@ class PictureInPictureSession_Internal {
 
         @Override
         public void update(
-int playerId, org.chromium.viz.mojom.SurfaceId surfaceId, org.chromium.gfx.mojom.Size naturalSize, boolean showPlayPauseButton) {
+int playerId, org.chromium.mojo.bindings.AssociatedInterfaceNotSupported playerRemote, org.chromium.viz.mojom.SurfaceId surfaceId, org.chromium.gfx.mojom.Size naturalSize, boolean showPlayPauseButton) {
 
             PictureInPictureSessionUpdateParams _message = new PictureInPictureSessionUpdateParams();
 
             _message.playerId = playerId;
+
+            _message.playerRemote = playerRemote;
 
             _message.surfaceId = surfaceId;
 
@@ -86,7 +90,7 @@ int playerId, org.chromium.viz.mojom.SurfaceId surfaceId, org.chromium.gfx.mojom
         @Override
         public void stop(
 
-StopResponse callback) {
+Stop_Response callback) {
 
             PictureInPictureSessionStopParams _message = new PictureInPictureSessionStopParams();
 
@@ -139,7 +143,7 @@ StopResponse callback) {
                         PictureInPictureSessionUpdateParams data =
                                 PictureInPictureSessionUpdateParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().update(data.playerId, data.surfaceId, data.naturalSize, data.showPlayPauseButton);
+                        getImpl().update(data.playerId, data.playerRemote, data.surfaceId, data.naturalSize, data.showPlayPauseButton);
                         return true;
                     }
 
@@ -205,10 +209,11 @@ StopResponse callback) {
     
     static final class PictureInPictureSessionUpdateParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 32;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
+        private static final int STRUCT_SIZE = 40;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public int playerId;
+        public org.chromium.mojo.bindings.AssociatedInterfaceNotSupported playerRemote;
         public org.chromium.viz.mojom.SurfaceId surfaceId;
         public org.chromium.gfx.mojom.Size naturalSize;
         public boolean showPlayPauseButton;
@@ -252,16 +257,20 @@ StopResponse callback) {
                     }
                     {
                         
-                    result.showPlayPauseButton = decoder0.readBoolean(12, 0);
+                    result.playerRemote = decoder0.readAssociatedServiceInterfaceNotSupported(12, false);
                     }
                     {
                         
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, true);
-                    result.surfaceId = org.chromium.viz.mojom.SurfaceId.decode(decoder1);
+                    result.showPlayPauseButton = decoder0.readBoolean(20, 0);
                     }
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
+                    result.surfaceId = org.chromium.viz.mojom.SurfaceId.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
                     result.naturalSize = org.chromium.gfx.mojom.Size.decode(decoder1);
                     }
 
@@ -278,11 +287,13 @@ StopResponse callback) {
             
             encoder0.encode(this.playerId, 8);
             
-            encoder0.encode(this.showPlayPauseButton, 12, 0);
+            encoder0.encode(this.playerRemote, 12, false);
             
-            encoder0.encode(this.surfaceId, 16, true);
+            encoder0.encode(this.showPlayPauseButton, 20, 0);
             
-            encoder0.encode(this.naturalSize, 24, false);
+            encoder0.encode(this.surfaceId, 24, false);
+            
+            encoder0.encode(this.naturalSize, 32, false);
         }
     }
 
@@ -400,9 +411,9 @@ StopResponse callback) {
 
     static class PictureInPictureSessionStopResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PictureInPictureSession.StopResponse mCallback;
+        private final PictureInPictureSession.Stop_Response mCallback;
 
-        PictureInPictureSessionStopResponseParamsForwardToCallback(PictureInPictureSession.StopResponse callback) {
+        PictureInPictureSessionStopResponseParamsForwardToCallback(PictureInPictureSession.Stop_Response callback) {
             this.mCallback = callback;
         }
 
@@ -425,7 +436,7 @@ StopResponse callback) {
         }
     }
 
-    static class PictureInPictureSessionStopResponseParamsProxyToResponder implements PictureInPictureSession.StopResponse {
+    static class PictureInPictureSessionStopResponseParamsProxyToResponder implements PictureInPictureSession.Stop_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

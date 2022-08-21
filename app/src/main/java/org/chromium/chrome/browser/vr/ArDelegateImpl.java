@@ -5,6 +5,7 @@
 package org.chromium.chrome.browser.vr;
 
 import org.chromium.base.annotations.UsedByReflection;
+import org.chromium.base.supplier.ObservableSupplier;
 import org.chromium.components.webxr.ArCoreJavaUtils;
 import org.chromium.components.webxr.ArDelegate;
 
@@ -20,5 +21,20 @@ public class ArDelegateImpl implements ArDelegate {
     @Override
     public boolean onBackPressed() {
         return ArCoreJavaUtils.onBackPressed();
+    }
+
+    @Override
+    public boolean hasActiveArSession() {
+        return ArCoreJavaUtils.hasActiveArSession();
+    }
+
+    @Override
+    public void handleBackPress() {
+        onBackPressed();
+    }
+
+    @Override
+    public ObservableSupplier<Boolean> getHandleBackPressChangedSupplier() {
+        return ArCoreJavaUtils.hasActiveArSessionSupplier();
     }
 }

@@ -13,8 +13,16 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class TrustTokenSignRequestData {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        TrustTokenSignRequestData.OMIT,
+        TrustTokenSignRequestData.HEADERS_ONLY,
+        TrustTokenSignRequestData.INCLUDE})
+    public @interface EnumType {}
 
     public static final int OMIT = 0;
     public static final int HEADERS_ONLY = 1;

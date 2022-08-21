@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface MediaStreamDeviceObserver extends org.chromium.mojo.bindings.Interface {
 
@@ -23,19 +25,20 @@ public interface MediaStreamDeviceObserver extends org.chromium.mojo.bindings.In
 
     Manager<MediaStreamDeviceObserver, MediaStreamDeviceObserver.Proxy> MANAGER = MediaStreamDeviceObserver_Internal.MANAGER;
 
-
     void onDeviceStopped(
 String label, MediaStreamDevice device);
-
 
 
     void onDeviceChanged(
 String label, MediaStreamDevice oldDevice, MediaStreamDevice newDevice);
 
 
-
     void onDeviceRequestStateChange(
 String label, MediaStreamDevice device, int newState);
+
+
+    void onDeviceCaptureHandleChange(
+String label, MediaStreamDevice device);
 
 
 }

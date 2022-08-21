@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface UrlLoaderClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,38 +25,31 @@ public interface UrlLoaderClient extends org.chromium.mojo.bindings.Interface {
 
     Manager<UrlLoaderClient, UrlLoaderClient.Proxy> MANAGER = UrlLoaderClient_Internal.MANAGER;
 
+    void onReceiveEarlyHints(
+EarlyHints earlyHints);
+
 
     void onReceiveResponse(
-UrlResponseHead head);
-
+UrlResponseHead head, org.chromium.mojo.system.DataPipe.ConsumerHandle body);
 
 
     void onReceiveRedirect(
 UrlRequestRedirectInfo redirectInfo, UrlResponseHead head);
 
 
-
     void onUploadProgress(
 long currentPosition, long totalSize, 
-OnUploadProgressResponse callback);
+OnUploadProgress_Response callback);
 
-    interface OnUploadProgressResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface OnUploadProgress_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void onReceiveCachedMetadata(
 org.chromium.mojo_base.mojom.BigBuffer data);
 
 
-
     void onTransferSizeUpdated(
 int transferSizeDiff);
-
-
-
-    void onStartLoadingResponseBody(
-org.chromium.mojo.system.DataPipe.ConsumerHandle body);
-
 
 
     void onComplete(

@@ -20,11 +20,12 @@ import java.util.Map;
  * Helper class that encapsulates the logic for which optional button is displayed on the browsing
  * mode toolbar.
  */
-class OptionalBrowsingModeButtonController {
+@VisibleForTesting(otherwise = VisibleForTesting.PACKAGE_PRIVATE)
+public class OptionalBrowsingModeButtonController {
     private final UserEducationHelper mUserEducationHelper;
     private final Map<ButtonDataProvider, ButtonDataProvider.ButtonDataObserver> mObserverMap;
     private ButtonDataProvider mCurrentProvider;
-    private final List<ButtonDataProvider> mButtonDataProviders;
+    private List<ButtonDataProvider> mButtonDataProviders;
     private final ToolbarLayout mToolbarLayout;
     private final Supplier<Tab> mTabSupplier;
 
@@ -108,12 +109,12 @@ class OptionalBrowsingModeButtonController {
     private void setCurrentOptionalButton(ButtonDataProvider provider, ButtonData buttonData) {
         mCurrentProvider = provider;
         mToolbarLayout.updateOptionalButton(buttonData);
-        if (buttonData.getButtonSpec().getIPHCommandBuilder() != null) {
+        // ToolbarPhone's optional button has animated transitions and it takes care of showing IPH
+        // on its own.
+        if (buttonData.getButtonSpec().getIPHCommandBuilder() != null
+                && !(mToolbarLayout instanceof ToolbarPhone)) {
             mUserEducationHelper.requestShowIPH(
-                    buttonData.getButtonSpec()
-                            .getIPHCommandBuilder()
-                            .setAnchorView(mToolbarLayout.getOptionalButtonView())
-                            .build());
+                    buttonData.getButtonSpec().getIPHCommandBuilder().build());
         }
     }
 
@@ -128,11 +129,17 @@ class OptionalBrowsingModeButtonController {
      */
     private void updateCurrentOptionalButton(ButtonDataProvider provider) {
         ButtonData buttonData = provider.get(mTabSupplier.get());
-        if (buttonData.canShow()) {
+        if (buttonData != null && buttonData.canShow()) {
             setCurrentOptionalButton(provider, buttonData);
         } else {
             hideCurrentOptionalButton();
             showHighestPrecedenceOptionalButton();
         }
+    }
+
+    /** Returns the list of {@link ButtonDataProvider}s. */
+    @VisibleForTesting
+    public List<ButtonDataProvider> getButtonDataProvidersForTesting() {
+        return mButtonDataProviders;
     }
 }

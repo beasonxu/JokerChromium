@@ -1,15 +1,13 @@
 package org.chromium.chrome.browser.vr;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class VrModuleProviderJni implements VrModuleProvider.Natives {
+class VrModuleProviderJni implements VrModuleProvider.Natives {
   private static VrModuleProvider.Natives testInstance;
 
   public static final JniStaticTestMocker<VrModuleProvider.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.vr.VrModuleProvider.Natives>() {

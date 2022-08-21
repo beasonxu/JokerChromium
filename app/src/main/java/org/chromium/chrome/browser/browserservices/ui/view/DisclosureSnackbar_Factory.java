@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import dagger.Lazy;
 import dagger.internal.DoubleCheck;
 import dagger.internal.Factory;
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 import javax.inject.Provider;
 import org.chromium.chrome.browser.browserservices.ui.TrustedWebActivityModel;
 import org.chromium.chrome.browser.lifecycle.ActivityLifecycleDispatcher;

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface FeatureObserver extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface FeatureObserver extends org.chromium.mojo.bindings.Interface {
     }
 
     Manager<FeatureObserver, FeatureObserver.Proxy> MANAGER = FeatureObserver_Internal.MANAGER;
-
 
     void register(
 org.chromium.mojo.bindings.InterfaceRequest<ObservedFeature> feature, int type);

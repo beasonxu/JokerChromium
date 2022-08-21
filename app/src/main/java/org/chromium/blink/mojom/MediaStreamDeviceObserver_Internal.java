@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class MediaStreamDeviceObserver_Internal {
 
@@ -52,6 +54,8 @@ class MediaStreamDeviceObserver_Internal {
     private static final int ON_DEVICE_CHANGED_ORDINAL = 1;
 
     private static final int ON_DEVICE_REQUEST_STATE_CHANGE_ORDINAL = 2;
+
+    private static final int ON_DEVICE_CAPTURE_HANDLE_CHANGE_ORDINAL = 3;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements MediaStreamDeviceObserver.Proxy {
@@ -123,6 +127,25 @@ String label, MediaStreamDevice device, int newState) {
         }
 
 
+        @Override
+        public void onDeviceCaptureHandleChange(
+String label, MediaStreamDevice device) {
+
+            MediaStreamDeviceObserverOnDeviceCaptureHandleChangeParams _message = new MediaStreamDeviceObserverOnDeviceCaptureHandleChangeParams();
+
+            _message.label = label;
+
+            _message.device = device;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(ON_DEVICE_CAPTURE_HANDLE_CHANGE_ORDINAL)));
+
+        }
+
+
     }
 
     static final class Stub extends org.chromium.mojo.bindings.Interface.Stub<MediaStreamDeviceObserver> {
@@ -190,6 +213,19 @@ String label, MediaStreamDevice device, int newState) {
                     }
 
 
+
+
+
+                    case ON_DEVICE_CAPTURE_HANDLE_CHANGE_ORDINAL: {
+
+                        MediaStreamDeviceObserverOnDeviceCaptureHandleChangeParams data =
+                                MediaStreamDeviceObserverOnDeviceCaptureHandleChangeParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().onDeviceCaptureHandleChange(data.label, data.device);
+                        return true;
+                    }
+
+
                     default:
                         return false;
                 }
@@ -217,6 +253,8 @@ String label, MediaStreamDevice device, int newState) {
                     case org.chromium.mojo.bindings.interfacecontrol.InterfaceControlMessagesConstants.RUN_MESSAGE_ID:
                         return org.chromium.mojo.bindings.InterfaceControlMessagesHelper.handleRun(
                                 getCore(), MediaStreamDeviceObserver_Internal.MANAGER, messageWithHeader, receiver);
+
+
 
 
 
@@ -461,6 +499,77 @@ String label, MediaStreamDevice device, int newState) {
             encoder0.encode(this.device, 16, false);
             
             encoder0.encode(this.newState, 24);
+        }
+    }
+
+
+
+    
+    static final class MediaStreamDeviceObserverOnDeviceCaptureHandleChangeParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public String label;
+        public MediaStreamDevice device;
+
+        private MediaStreamDeviceObserverOnDeviceCaptureHandleChangeParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public MediaStreamDeviceObserverOnDeviceCaptureHandleChangeParams() {
+            this(0);
+        }
+
+        public static MediaStreamDeviceObserverOnDeviceCaptureHandleChangeParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static MediaStreamDeviceObserverOnDeviceCaptureHandleChangeParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static MediaStreamDeviceObserverOnDeviceCaptureHandleChangeParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            MediaStreamDeviceObserverOnDeviceCaptureHandleChangeParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new MediaStreamDeviceObserverOnDeviceCaptureHandleChangeParams(elementsOrVersion);
+                    {
+                        
+                    result.label = decoder0.readString(8, false);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                    result.device = MediaStreamDevice.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.label, 8, false);
+            
+            encoder0.encode(this.device, 16, false);
         }
     }
 

@@ -43,6 +43,14 @@ public  final class WebAppIconInfo extends
      * <code>MASKABLE = 2;</code>
      */
     MASKABLE(2),
+    /**
+     * <pre>
+     * Suitable for monochrome purposes.
+     * </pre>
+     *
+     * <code>MONOCHROME = 3;</code>
+     */
+    MONOCHROME(3),
     ;
 
     /**
@@ -65,6 +73,14 @@ public  final class WebAppIconInfo extends
      * <code>MASKABLE = 2;</code>
      */
     public static final int MASKABLE_VALUE = 2;
+    /**
+     * <pre>
+     * Suitable for monochrome purposes.
+     * </pre>
+     *
+     * <code>MONOCHROME = 3;</code>
+     */
+    public static final int MONOCHROME_VALUE = 3;
 
 
     @java.lang.Override
@@ -87,6 +103,7 @@ public  final class WebAppIconInfo extends
         case 0: return UNSPECIFIED;
         case 1: return ANY;
         case 2: return MASKABLE;
+        case 3: return MONOCHROME;
         default: return null;
       }
     }

@@ -113,6 +113,47 @@ public final class SystemProfileProtos {
 
     /**
      * <pre>
+     * The application can create logs about previous versions. In particular the
+     * initial stability log refers to the previous run, which can be an older
+     * version. This field is set by the client when the log being written has an
+     * app_version that's different than the version of the app writing the log.
+     * Note that the version uploading the log may also be different.
+     * </pre>
+     *
+     * <code>optional string log_written_by_app_version = 40;</code>
+     * @return Whether the logWrittenByAppVersion field is set.
+     */
+    boolean hasLogWrittenByAppVersion();
+    /**
+     * <pre>
+     * The application can create logs about previous versions. In particular the
+     * initial stability log refers to the previous run, which can be an older
+     * version. This field is set by the client when the log being written has an
+     * app_version that's different than the version of the app writing the log.
+     * Note that the version uploading the log may also be different.
+     * </pre>
+     *
+     * <code>optional string log_written_by_app_version = 40;</code>
+     * @return The logWrittenByAppVersion.
+     */
+    java.lang.String getLogWrittenByAppVersion();
+    /**
+     * <pre>
+     * The application can create logs about previous versions. In particular the
+     * initial stability log refers to the previous run, which can be an older
+     * version. This field is set by the client when the log being written has an
+     * app_version that's different than the version of the app writing the log.
+     * Note that the version uploading the log may also be different.
+     * </pre>
+     *
+     * <code>optional string log_written_by_app_version = 40;</code>
+     * @return The bytes for logWrittenByAppVersion.
+     */
+    com.google.protobuf.ByteString
+        getLogWrittenByAppVersionBytes();
+
+    /**
+     * <pre>
      * The brand code or distribution tag assigned to a partner, if available.
      * Brand codes are only available on Windows.  Not every Windows install
      * though will have a brand code.
@@ -156,6 +197,27 @@ public final class SystemProfileProtos {
      * @return The channel.
      */
     org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Channel getChannel();
+
+    /**
+     * <pre>
+     * True for a client following updates on the extended stable channel;
+     * see go/chrome-extended-dd.
+     * </pre>
+     *
+     * <code>optional bool is_extended_stable_channel = 36 [default = false];</code>
+     * @return Whether the isExtendedStableChannel field is set.
+     */
+    boolean hasIsExtendedStableChannel();
+    /**
+     * <pre>
+     * True for a client following updates on the extended stable channel;
+     * see go/chrome-extended-dd.
+     * </pre>
+     *
+     * <code>optional bool is_extended_stable_channel = 36 [default = false];</code>
+     * @return The isExtendedStableChannel.
+     */
+    boolean getIsExtendedStableChannel();
 
     /**
      * <pre>
@@ -227,9 +289,24 @@ public final class SystemProfileProtos {
     long getInstallDate();
 
     /**
+     * <code>optional .metrics.SystemProfileProto.ClonedInstallInfo cloned_install_info = 39;</code>
+     * @return Whether the clonedInstallInfo field is set.
+     */
+    boolean hasClonedInstallInfo();
+    /**
+     * <code>optional .metrics.SystemProfileProto.ClonedInstallInfo cloned_install_info = 39;</code>
+     * @return The clonedInstallInfo.
+     */
+    org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo getClonedInstallInfo();
+
+    /**
      * <pre>
      * The non-identifying low entropy source value. This value seeds the
-     * pseudorandom generator which picks experimental groups.
+     * pseudorandom generator which picks experimental groups. Clients only report
+     * the value that they used for picking experimental groups on startup which
+     * means this value won't be changed within the session even even if the low
+     * entropy source is reset (e.g. via the UMA checkbox) because group
+     * assignments won't be changed until restart.
      * </pre>
      *
      * <code>optional int32 low_entropy_source = 31;</code>
@@ -239,7 +316,11 @@ public final class SystemProfileProtos {
     /**
      * <pre>
      * The non-identifying low entropy source value. This value seeds the
-     * pseudorandom generator which picks experimental groups.
+     * pseudorandom generator which picks experimental groups. Clients only report
+     * the value that they used for picking experimental groups on startup which
+     * means this value won't be changed within the session even even if the low
+     * entropy source is reset (e.g. via the UMA checkbox) because group
+     * assignments won't be changed until restart.
      * </pre>
      *
      * <code>optional int32 low_entropy_source = 31;</code>
@@ -276,6 +357,39 @@ public final class SystemProfileProtos {
 
     /**
      * <pre>
+     * A pseudo low entropy value. The actual low_entropy_source value is used for
+     * assignment to experiment arms, and this use may cause drift over time (for
+     * example, if a bad experiment arm drives away some users permanently.) This
+     * pseudo low entropy value is generated identically to low_entropy_source,
+     * but it is generated with a different randomization seed and is not used for
+     * experiment randomization. Consequently, it can be used in statistical
+     * validation to answer the question of how our data would be distributed if
+     * we didn't have to worry about low entropy source drift.
+     * </pre>
+     *
+     * <code>optional int32 pseudo_low_entropy_source = 37;</code>
+     * @return Whether the pseudoLowEntropySource field is set.
+     */
+    boolean hasPseudoLowEntropySource();
+    /**
+     * <pre>
+     * A pseudo low entropy value. The actual low_entropy_source value is used for
+     * assignment to experiment arms, and this use may cause drift over time (for
+     * example, if a bad experiment arm drives away some users permanently.) This
+     * pseudo low entropy value is generated identically to low_entropy_source,
+     * but it is generated with a different randomization seed and is not used for
+     * experiment randomization. Consequently, it can be used in statistical
+     * validation to answer the question of how our data would be distributed if
+     * we didn't have to worry about low entropy source drift.
+     * </pre>
+     *
+     * <code>optional int32 pseudo_low_entropy_source = 37;</code>
+     * @return The pseudoLowEntropySource.
+     */
+    int getPseudoLowEntropySource();
+
+    /**
+     * <pre>
      * The user's selected application locale, i.e. the user interface language.
      * The locale includes a language code and, possibly, also a country code,
      * e.g. "en-US".
@@ -308,6 +422,47 @@ public final class SystemProfileProtos {
      */
     com.google.protobuf.ByteString
         getApplicationLocaleBytes();
+
+    /**
+     * <pre>
+     * Hashes of command line keys used in the browser session when the MetricsLog
+     * is created. This takes into account the command line switches that were
+     * used when launching the session, as well as any modifications made to them,
+     * for example via CommandLine::AppendSwitch and CommandLine::RemoveSwitch.
+     * Values are the lower 32-bit of SHA1 hash in little-endian.
+     * </pre>
+     *
+     * <code>repeated fixed32 command_line_key_hash = 38 [packed = true];</code>
+     * @return A list containing the commandLineKeyHash.
+     */
+    java.util.List<java.lang.Integer> getCommandLineKeyHashList();
+    /**
+     * <pre>
+     * Hashes of command line keys used in the browser session when the MetricsLog
+     * is created. This takes into account the command line switches that were
+     * used when launching the session, as well as any modifications made to them,
+     * for example via CommandLine::AppendSwitch and CommandLine::RemoveSwitch.
+     * Values are the lower 32-bit of SHA1 hash in little-endian.
+     * </pre>
+     *
+     * <code>repeated fixed32 command_line_key_hash = 38 [packed = true];</code>
+     * @return The count of commandLineKeyHash.
+     */
+    int getCommandLineKeyHashCount();
+    /**
+     * <pre>
+     * Hashes of command line keys used in the browser session when the MetricsLog
+     * is created. This takes into account the command line switches that were
+     * used when launching the session, as well as any modifications made to them,
+     * for example via CommandLine::AppendSwitch and CommandLine::RemoveSwitch.
+     * Values are the lower 32-bit of SHA1 hash in little-endian.
+     * </pre>
+     *
+     * <code>repeated fixed32 command_line_key_hash = 38 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The commandLineKeyHash at the given index.
+     */
+    int getCommandLineKeyHash(int index);
 
     /**
      * <code>optional .metrics.SystemProfileProto.OS os = 5;</code>
@@ -352,20 +507,6 @@ public final class SystemProfileProtos {
      * @return The googleUpdate.
      */
     org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.GoogleUpdate getGoogleUpdate();
-
-    /**
-     * <code>repeated .metrics.SystemProfileProto.Plugin plugin = 7;</code>
-     */
-    java.util.List<org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin> 
-        getPluginList();
-    /**
-     * <code>repeated .metrics.SystemProfileProto.Plugin plugin = 7;</code>
-     */
-    org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin getPlugin(int index);
-    /**
-     * <code>repeated .metrics.SystemProfileProto.Plugin plugin = 7;</code>
-     */
-    int getPluginCount();
 
     /**
      * <code>optional .metrics.SystemProfileProto.Stability stability = 8;</code>
@@ -739,6 +880,17 @@ public final class SystemProfileProtos {
      * @return The linkedAndroidPhoneData.
      */
     org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.LinkedAndroidPhoneData getLinkedAndroidPhoneData();
+
+    /**
+     * <code>optional .metrics.SystemProfileProto.DemoModeDimensions demo_mode_dimensions = 41;</code>
+     * @return Whether the demoModeDimensions field is set.
+     */
+    boolean hasDemoModeDimensions();
+    /**
+     * <code>optional .metrics.SystemProfileProto.DemoModeDimensions demo_mode_dimensions = 41;</code>
+     * @return The demoModeDimensions.
+     */
+    org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions getDemoModeDimensions();
   }
   /**
    * <pre>
@@ -746,7 +898,7 @@ public final class SystemProfileProtos {
    * Almost all the fields should be populated on every upload. (The only
    * exception is some fields in the stability section that are only uploaded
    * once per browsing session, usually shortly after startup.)
-   * Next tag: 36
+   * Next tag: 42
    * </pre>
    *
    * Protobuf type {@code metrics.SystemProfileProto}
@@ -758,9 +910,10 @@ public final class SystemProfileProtos {
       SystemProfileProtoOrBuilder {
     private SystemProfileProto() {
       appVersion_ = "";
+      logWrittenByAppVersion_ = "";
       brandCode_ = "";
       applicationLocale_ = "";
-      plugin_ = emptyProtobufList();
+      commandLineKeyHash_ = emptyIntList();
       fieldTrial_ = emptyProtobufList();
       variationsSeedVersion_ = "";
       clientUuid_ = "";
@@ -1409,6 +1562,10 @@ public final class SystemProfileProtos {
        * <code>AUTOFILL_REGEX_CONSTANTS = 28;</code>
        */
       AUTOFILL_REGEX_CONSTANTS(28),
+      /**
+       * <code>WEBVIEW_APPS_PACKAGE_NAMES_ALLOWLIST = 29;</code>
+       */
+      WEBVIEW_APPS_PACKAGE_NAMES_ALLOWLIST(29),
       ;
 
       /**
@@ -1531,6 +1688,10 @@ public final class SystemProfileProtos {
        * <code>AUTOFILL_REGEX_CONSTANTS = 28;</code>
        */
       public static final int AUTOFILL_REGEX_CONSTANTS_VALUE = 28;
+      /**
+       * <code>WEBVIEW_APPS_PACKAGE_NAMES_ALLOWLIST = 29;</code>
+       */
+      public static final int WEBVIEW_APPS_PACKAGE_NAMES_ALLOWLIST_VALUE = 29;
 
 
       @java.lang.Override
@@ -1578,6 +1739,7 @@ public final class SystemProfileProtos {
           case 26: return CROS_SMART_DIM;
           case 27: return ZXCVBN_DATA;
           case 28: return AUTOFILL_REGEX_CONSTANTS;
+          case 29: return WEBVIEW_APPS_PACKAGE_NAMES_ALLOWLIST;
           default: return null;
         }
       }
@@ -1755,6 +1917,759 @@ public final class SystemProfileProtos {
       }
 
       // @@protoc_insertion_point(enum_scope:metrics.SystemProfileProto.InstallerPackage)
+    }
+
+    public interface ClonedInstallInfoOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:metrics.SystemProfileProto.ClonedInstallInfo)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <pre>
+       * The latest timestamp we reset a cloned client’s client id, in seconds
+       * since the epoch. For privacy, this is rounded to the nearest hour.
+       * </pre>
+       *
+       * <code>optional int64 last_timestamp = 1;</code>
+       * @return Whether the lastTimestamp field is set.
+       */
+      boolean hasLastTimestamp();
+      /**
+       * <pre>
+       * The latest timestamp we reset a cloned client’s client id, in seconds
+       * since the epoch. For privacy, this is rounded to the nearest hour.
+       * </pre>
+       *
+       * <code>optional int64 last_timestamp = 1;</code>
+       * @return The lastTimestamp.
+       */
+      long getLastTimestamp();
+
+      /**
+       * <pre>
+       * The client_id that this client is cloned from. This field is tied to the
+       * cloned install detector only; any other way of resetting client_id
+       * doesn't touch this field. This field is only reported in the
+       * resetting session.
+       * </pre>
+       *
+       * <code>optional fixed64 cloned_from_client_id = 2;</code>
+       * @return Whether the clonedFromClientId field is set.
+       */
+      boolean hasClonedFromClientId();
+      /**
+       * <pre>
+       * The client_id that this client is cloned from. This field is tied to the
+       * cloned install detector only; any other way of resetting client_id
+       * doesn't touch this field. This field is only reported in the
+       * resetting session.
+       * </pre>
+       *
+       * <code>optional fixed64 cloned_from_client_id = 2;</code>
+       * @return The clonedFromClientId.
+       */
+      long getClonedFromClientId();
+
+      /**
+       * <pre>
+       * The first timestamp when we reset a cloned client’s client id, in seconds
+       * since the epoch. For privacy, this is rounded to the nearest hour.
+       * </pre>
+       *
+       * <code>optional int64 first_timestamp = 3;</code>
+       * @return Whether the firstTimestamp field is set.
+       */
+      boolean hasFirstTimestamp();
+      /**
+       * <pre>
+       * The first timestamp when we reset a cloned client’s client id, in seconds
+       * since the epoch. For privacy, this is rounded to the nearest hour.
+       * </pre>
+       *
+       * <code>optional int64 first_timestamp = 3;</code>
+       * @return The firstTimestamp.
+       */
+      long getFirstTimestamp();
+
+      /**
+       * <pre>
+       * The number of times this client has been reset due to cloned install.
+       * Increment by one per reset happens.
+       * </pre>
+       *
+       * <code>optional int32 count = 4;</code>
+       * @return Whether the count field is set.
+       */
+      boolean hasCount();
+      /**
+       * <pre>
+       * The number of times this client has been reset due to cloned install.
+       * Increment by one per reset happens.
+       * </pre>
+       *
+       * <code>optional int32 count = 4;</code>
+       * @return The count.
+       */
+      int getCount();
+    }
+    /**
+     * <pre>
+     * A message about the cloned install detection that helps improve data
+     * quality by identifying potential VMs and bots. This message will be
+     * set in every record after the client has ever been reset due to cloned
+     * install detection. However, the `cloned_from_client_id`
+     * field will only be set in the resetting session because this is not
+     * persisted in the local prefs.
+     * Next tag: 5
+     * </pre>
+     *
+     * Protobuf type {@code metrics.SystemProfileProto.ClonedInstallInfo}
+     */
+    public  static final class ClonedInstallInfo extends
+        com.google.protobuf.GeneratedMessageLite<
+            ClonedInstallInfo, ClonedInstallInfo.Builder> implements
+        // @@protoc_insertion_point(message_implements:metrics.SystemProfileProto.ClonedInstallInfo)
+        ClonedInstallInfoOrBuilder {
+      private ClonedInstallInfo() {
+      }
+      private int bitField0_;
+      public static final int LAST_TIMESTAMP_FIELD_NUMBER = 1;
+      private long lastTimestamp_;
+      /**
+       * <pre>
+       * The latest timestamp we reset a cloned client’s client id, in seconds
+       * since the epoch. For privacy, this is rounded to the nearest hour.
+       * </pre>
+       *
+       * <code>optional int64 last_timestamp = 1;</code>
+       * @return Whether the lastTimestamp field is set.
+       */
+      @java.lang.Override
+      public boolean hasLastTimestamp() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * The latest timestamp we reset a cloned client’s client id, in seconds
+       * since the epoch. For privacy, this is rounded to the nearest hour.
+       * </pre>
+       *
+       * <code>optional int64 last_timestamp = 1;</code>
+       * @return The lastTimestamp.
+       */
+      @java.lang.Override
+      public long getLastTimestamp() {
+        return lastTimestamp_;
+      }
+      /**
+       * <pre>
+       * The latest timestamp we reset a cloned client’s client id, in seconds
+       * since the epoch. For privacy, this is rounded to the nearest hour.
+       * </pre>
+       *
+       * <code>optional int64 last_timestamp = 1;</code>
+       * @param value The lastTimestamp to set.
+       */
+      private void setLastTimestamp(long value) {
+        bitField0_ |= 0x00000001;
+        lastTimestamp_ = value;
+      }
+      /**
+       * <pre>
+       * The latest timestamp we reset a cloned client’s client id, in seconds
+       * since the epoch. For privacy, this is rounded to the nearest hour.
+       * </pre>
+       *
+       * <code>optional int64 last_timestamp = 1;</code>
+       */
+      private void clearLastTimestamp() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        lastTimestamp_ = 0L;
+      }
+
+      public static final int CLONED_FROM_CLIENT_ID_FIELD_NUMBER = 2;
+      private long clonedFromClientId_;
+      /**
+       * <pre>
+       * The client_id that this client is cloned from. This field is tied to the
+       * cloned install detector only; any other way of resetting client_id
+       * doesn't touch this field. This field is only reported in the
+       * resetting session.
+       * </pre>
+       *
+       * <code>optional fixed64 cloned_from_client_id = 2;</code>
+       * @return Whether the clonedFromClientId field is set.
+       */
+      @java.lang.Override
+      public boolean hasClonedFromClientId() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * The client_id that this client is cloned from. This field is tied to the
+       * cloned install detector only; any other way of resetting client_id
+       * doesn't touch this field. This field is only reported in the
+       * resetting session.
+       * </pre>
+       *
+       * <code>optional fixed64 cloned_from_client_id = 2;</code>
+       * @return The clonedFromClientId.
+       */
+      @java.lang.Override
+      public long getClonedFromClientId() {
+        return clonedFromClientId_;
+      }
+      /**
+       * <pre>
+       * The client_id that this client is cloned from. This field is tied to the
+       * cloned install detector only; any other way of resetting client_id
+       * doesn't touch this field. This field is only reported in the
+       * resetting session.
+       * </pre>
+       *
+       * <code>optional fixed64 cloned_from_client_id = 2;</code>
+       * @param value The clonedFromClientId to set.
+       */
+      private void setClonedFromClientId(long value) {
+        bitField0_ |= 0x00000002;
+        clonedFromClientId_ = value;
+      }
+      /**
+       * <pre>
+       * The client_id that this client is cloned from. This field is tied to the
+       * cloned install detector only; any other way of resetting client_id
+       * doesn't touch this field. This field is only reported in the
+       * resetting session.
+       * </pre>
+       *
+       * <code>optional fixed64 cloned_from_client_id = 2;</code>
+       */
+      private void clearClonedFromClientId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        clonedFromClientId_ = 0L;
+      }
+
+      public static final int FIRST_TIMESTAMP_FIELD_NUMBER = 3;
+      private long firstTimestamp_;
+      /**
+       * <pre>
+       * The first timestamp when we reset a cloned client’s client id, in seconds
+       * since the epoch. For privacy, this is rounded to the nearest hour.
+       * </pre>
+       *
+       * <code>optional int64 first_timestamp = 3;</code>
+       * @return Whether the firstTimestamp field is set.
+       */
+      @java.lang.Override
+      public boolean hasFirstTimestamp() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <pre>
+       * The first timestamp when we reset a cloned client’s client id, in seconds
+       * since the epoch. For privacy, this is rounded to the nearest hour.
+       * </pre>
+       *
+       * <code>optional int64 first_timestamp = 3;</code>
+       * @return The firstTimestamp.
+       */
+      @java.lang.Override
+      public long getFirstTimestamp() {
+        return firstTimestamp_;
+      }
+      /**
+       * <pre>
+       * The first timestamp when we reset a cloned client’s client id, in seconds
+       * since the epoch. For privacy, this is rounded to the nearest hour.
+       * </pre>
+       *
+       * <code>optional int64 first_timestamp = 3;</code>
+       * @param value The firstTimestamp to set.
+       */
+      private void setFirstTimestamp(long value) {
+        bitField0_ |= 0x00000004;
+        firstTimestamp_ = value;
+      }
+      /**
+       * <pre>
+       * The first timestamp when we reset a cloned client’s client id, in seconds
+       * since the epoch. For privacy, this is rounded to the nearest hour.
+       * </pre>
+       *
+       * <code>optional int64 first_timestamp = 3;</code>
+       */
+      private void clearFirstTimestamp() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        firstTimestamp_ = 0L;
+      }
+
+      public static final int COUNT_FIELD_NUMBER = 4;
+      private int count_;
+      /**
+       * <pre>
+       * The number of times this client has been reset due to cloned install.
+       * Increment by one per reset happens.
+       * </pre>
+       *
+       * <code>optional int32 count = 4;</code>
+       * @return Whether the count field is set.
+       */
+      @java.lang.Override
+      public boolean hasCount() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <pre>
+       * The number of times this client has been reset due to cloned install.
+       * Increment by one per reset happens.
+       * </pre>
+       *
+       * <code>optional int32 count = 4;</code>
+       * @return The count.
+       */
+      @java.lang.Override
+      public int getCount() {
+        return count_;
+      }
+      /**
+       * <pre>
+       * The number of times this client has been reset due to cloned install.
+       * Increment by one per reset happens.
+       * </pre>
+       *
+       * <code>optional int32 count = 4;</code>
+       * @param value The count to set.
+       */
+      private void setCount(int value) {
+        bitField0_ |= 0x00000008;
+        count_ = value;
+      }
+      /**
+       * <pre>
+       * The number of times this client has been reset due to cloned install.
+       * Increment by one per reset happens.
+       * </pre>
+       *
+       * <code>optional int32 count = 4;</code>
+       */
+      private void clearCount() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        count_ = 0;
+      }
+
+      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return (Builder) DEFAULT_INSTANCE.createBuilder();
+      }
+      public static Builder newBuilder(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo prototype) {
+        return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+      }
+
+      /**
+       * <pre>
+       * A message about the cloned install detection that helps improve data
+       * quality by identifying potential VMs and bots. This message will be
+       * set in every record after the client has ever been reset due to cloned
+       * install detection. However, the `cloned_from_client_id`
+       * field will only be set in the resetting session because this is not
+       * persisted in the local prefs.
+       * Next tag: 5
+       * </pre>
+       *
+       * Protobuf type {@code metrics.SystemProfileProto.ClonedInstallInfo}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo, Builder> implements
+          // @@protoc_insertion_point(builder_implements:metrics.SystemProfileProto.ClonedInstallInfo)
+          org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfoOrBuilder {
+        // Construct using org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <pre>
+         * The latest timestamp we reset a cloned client’s client id, in seconds
+         * since the epoch. For privacy, this is rounded to the nearest hour.
+         * </pre>
+         *
+         * <code>optional int64 last_timestamp = 1;</code>
+         * @return Whether the lastTimestamp field is set.
+         */
+        @java.lang.Override
+        public boolean hasLastTimestamp() {
+          return instance.hasLastTimestamp();
+        }
+        /**
+         * <pre>
+         * The latest timestamp we reset a cloned client’s client id, in seconds
+         * since the epoch. For privacy, this is rounded to the nearest hour.
+         * </pre>
+         *
+         * <code>optional int64 last_timestamp = 1;</code>
+         * @return The lastTimestamp.
+         */
+        @java.lang.Override
+        public long getLastTimestamp() {
+          return instance.getLastTimestamp();
+        }
+        /**
+         * <pre>
+         * The latest timestamp we reset a cloned client’s client id, in seconds
+         * since the epoch. For privacy, this is rounded to the nearest hour.
+         * </pre>
+         *
+         * <code>optional int64 last_timestamp = 1;</code>
+         * @param value The lastTimestamp to set.
+         * @return This builder for chaining.
+         */
+        public Builder setLastTimestamp(long value) {
+          copyOnWrite();
+          instance.setLastTimestamp(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * The latest timestamp we reset a cloned client’s client id, in seconds
+         * since the epoch. For privacy, this is rounded to the nearest hour.
+         * </pre>
+         *
+         * <code>optional int64 last_timestamp = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearLastTimestamp() {
+          copyOnWrite();
+          instance.clearLastTimestamp();
+          return this;
+        }
+
+        /**
+         * <pre>
+         * The client_id that this client is cloned from. This field is tied to the
+         * cloned install detector only; any other way of resetting client_id
+         * doesn't touch this field. This field is only reported in the
+         * resetting session.
+         * </pre>
+         *
+         * <code>optional fixed64 cloned_from_client_id = 2;</code>
+         * @return Whether the clonedFromClientId field is set.
+         */
+        @java.lang.Override
+        public boolean hasClonedFromClientId() {
+          return instance.hasClonedFromClientId();
+        }
+        /**
+         * <pre>
+         * The client_id that this client is cloned from. This field is tied to the
+         * cloned install detector only; any other way of resetting client_id
+         * doesn't touch this field. This field is only reported in the
+         * resetting session.
+         * </pre>
+         *
+         * <code>optional fixed64 cloned_from_client_id = 2;</code>
+         * @return The clonedFromClientId.
+         */
+        @java.lang.Override
+        public long getClonedFromClientId() {
+          return instance.getClonedFromClientId();
+        }
+        /**
+         * <pre>
+         * The client_id that this client is cloned from. This field is tied to the
+         * cloned install detector only; any other way of resetting client_id
+         * doesn't touch this field. This field is only reported in the
+         * resetting session.
+         * </pre>
+         *
+         * <code>optional fixed64 cloned_from_client_id = 2;</code>
+         * @param value The clonedFromClientId to set.
+         * @return This builder for chaining.
+         */
+        public Builder setClonedFromClientId(long value) {
+          copyOnWrite();
+          instance.setClonedFromClientId(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * The client_id that this client is cloned from. This field is tied to the
+         * cloned install detector only; any other way of resetting client_id
+         * doesn't touch this field. This field is only reported in the
+         * resetting session.
+         * </pre>
+         *
+         * <code>optional fixed64 cloned_from_client_id = 2;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearClonedFromClientId() {
+          copyOnWrite();
+          instance.clearClonedFromClientId();
+          return this;
+        }
+
+        /**
+         * <pre>
+         * The first timestamp when we reset a cloned client’s client id, in seconds
+         * since the epoch. For privacy, this is rounded to the nearest hour.
+         * </pre>
+         *
+         * <code>optional int64 first_timestamp = 3;</code>
+         * @return Whether the firstTimestamp field is set.
+         */
+        @java.lang.Override
+        public boolean hasFirstTimestamp() {
+          return instance.hasFirstTimestamp();
+        }
+        /**
+         * <pre>
+         * The first timestamp when we reset a cloned client’s client id, in seconds
+         * since the epoch. For privacy, this is rounded to the nearest hour.
+         * </pre>
+         *
+         * <code>optional int64 first_timestamp = 3;</code>
+         * @return The firstTimestamp.
+         */
+        @java.lang.Override
+        public long getFirstTimestamp() {
+          return instance.getFirstTimestamp();
+        }
+        /**
+         * <pre>
+         * The first timestamp when we reset a cloned client’s client id, in seconds
+         * since the epoch. For privacy, this is rounded to the nearest hour.
+         * </pre>
+         *
+         * <code>optional int64 first_timestamp = 3;</code>
+         * @param value The firstTimestamp to set.
+         * @return This builder for chaining.
+         */
+        public Builder setFirstTimestamp(long value) {
+          copyOnWrite();
+          instance.setFirstTimestamp(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * The first timestamp when we reset a cloned client’s client id, in seconds
+         * since the epoch. For privacy, this is rounded to the nearest hour.
+         * </pre>
+         *
+         * <code>optional int64 first_timestamp = 3;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearFirstTimestamp() {
+          copyOnWrite();
+          instance.clearFirstTimestamp();
+          return this;
+        }
+
+        /**
+         * <pre>
+         * The number of times this client has been reset due to cloned install.
+         * Increment by one per reset happens.
+         * </pre>
+         *
+         * <code>optional int32 count = 4;</code>
+         * @return Whether the count field is set.
+         */
+        @java.lang.Override
+        public boolean hasCount() {
+          return instance.hasCount();
+        }
+        /**
+         * <pre>
+         * The number of times this client has been reset due to cloned install.
+         * Increment by one per reset happens.
+         * </pre>
+         *
+         * <code>optional int32 count = 4;</code>
+         * @return The count.
+         */
+        @java.lang.Override
+        public int getCount() {
+          return instance.getCount();
+        }
+        /**
+         * <pre>
+         * The number of times this client has been reset due to cloned install.
+         * Increment by one per reset happens.
+         * </pre>
+         *
+         * <code>optional int32 count = 4;</code>
+         * @param value The count to set.
+         * @return This builder for chaining.
+         */
+        public Builder setCount(int value) {
+          copyOnWrite();
+          instance.setCount(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * The number of times this client has been reset due to cloned install.
+         * Increment by one per reset happens.
+         * </pre>
+         *
+         * <code>optional int32 count = 4;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearCount() {
+          copyOnWrite();
+          instance.clearCount();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:metrics.SystemProfileProto.ClonedInstallInfo)
+      }
+      @java.lang.Override
+      @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+      protected final java.lang.Object dynamicMethod(
+          com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+          java.lang.Object arg0, java.lang.Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo();
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case BUILD_MESSAGE_INFO: {
+              java.lang.Object[] objects = new java.lang.Object[] {
+                "bitField0_",
+                "lastTimestamp_",
+                "clonedFromClientId_",
+                "firstTimestamp_",
+                "count_",
+              };
+              java.lang.String info =
+                  "\u0001\u0004\u0000\u0001\u0001\u0004\u0004\u0000\u0000\u0000\u0001\u1002\u0000\u0002" +
+                  "\u1005\u0001\u0003\u1002\u0002\u0004\u1004\u0003";
+              return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+          }
+          // fall through
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            com.google.protobuf.Parser<org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo> parser = PARSER;
+            if (parser == null) {
+              synchronized (org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo.class) {
+                parser = PARSER;
+                if (parser == null) {
+                  parser =
+                      new DefaultInstanceBasedParser<org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo>(
+                          DEFAULT_INSTANCE);
+                  PARSER = parser;
+                }
+              }
+            }
+            return parser;
+        }
+        case GET_MEMOIZED_IS_INITIALIZED: {
+          return (byte) 1;
+        }
+        case SET_MEMOIZED_IS_INITIALIZED: {
+          return null;
+        }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:metrics.SystemProfileProto.ClonedInstallInfo)
+      private static final org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo DEFAULT_INSTANCE;
+      static {
+        ClonedInstallInfo defaultInstance = new ClonedInstallInfo();
+        // New instances are implicitly immutable so no need to make
+        // immutable.
+        DEFAULT_INSTANCE = defaultInstance;
+        com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+          ClonedInstallInfo.class, defaultInstance);
+      }
+
+      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<ClonedInstallInfo> PARSER;
+
+      public static com.google.protobuf.Parser<ClonedInstallInfo> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
     }
 
     public interface OSOrBuilder extends
@@ -1994,11 +2909,22 @@ public final class SystemProfileProtos {
        * @return The arc.
        */
       org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.OS.Arc getArc();
+
+      /**
+       * <code>optional .metrics.SystemProfileProto.OS.DarkModeState dark_mode_state = 8 [default = UNKNOWN];</code>
+       * @return Whether the darkModeState field is set.
+       */
+      boolean hasDarkModeState();
+      /**
+       * <code>optional .metrics.SystemProfileProto.OS.DarkModeState dark_mode_state = 8 [default = UNKNOWN];</code>
+       * @return The darkModeState.
+       */
+      org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.OS.DarkModeState getDarkModeState();
     }
     /**
      * <pre>
      * Information on the user's operating system.
-     * Next tag: 8
+     * Next tag: 9
      * </pre>
      *
      * Protobuf type {@code metrics.SystemProfileProto.OS}
@@ -2015,6 +2941,159 @@ public final class SystemProfileProtos {
         buildNumber_ = "";
         kernelVersion_ = "";
       }
+      /**
+       * <pre>
+       * Data related to system-level dark mode configuration. This is currently
+       * only uploaded on Android. "*_APP" variants are included to reflect when
+       * the user overrides the system configuration within the browser
+       * </pre>
+       *
+       * Protobuf enum {@code metrics.SystemProfileProto.OS.DarkModeState}
+       */
+      public enum DarkModeState
+          implements com.google.protobuf.Internal.EnumLite {
+        /**
+         * <code>UNKNOWN = 0;</code>
+         */
+        UNKNOWN(0),
+        /**
+         * <pre>
+         * Both the system and the browser are in dark mode.
+         * </pre>
+         *
+         * <code>DARK_MODE_SYSTEM = 1;</code>
+         */
+        DARK_MODE_SYSTEM(1),
+        /**
+         * <pre>
+         * The browser is in dark mode, but the state of the system either cannot
+         * be determined or has been overridden by the user.
+         * </pre>
+         *
+         * <code>DARK_MODE_APP = 2;</code>
+         */
+        DARK_MODE_APP(2),
+        /**
+         * <pre>
+         * Both the system and the browser are in light mode.
+         * </pre>
+         *
+         * <code>LIGHT_MODE_SYSTEM = 3;</code>
+         */
+        LIGHT_MODE_SYSTEM(3),
+        /**
+         * <pre>
+         * The browser is in light mode, but the state of the system either cannot
+         * be determined or has been overridden by the user.
+         * </pre>
+         *
+         * <code>LIGHT_MODE_APP = 4;</code>
+         */
+        LIGHT_MODE_APP(4),
+        ;
+
+        /**
+         * <code>UNKNOWN = 0;</code>
+         */
+        public static final int UNKNOWN_VALUE = 0;
+        /**
+         * <pre>
+         * Both the system and the browser are in dark mode.
+         * </pre>
+         *
+         * <code>DARK_MODE_SYSTEM = 1;</code>
+         */
+        public static final int DARK_MODE_SYSTEM_VALUE = 1;
+        /**
+         * <pre>
+         * The browser is in dark mode, but the state of the system either cannot
+         * be determined or has been overridden by the user.
+         * </pre>
+         *
+         * <code>DARK_MODE_APP = 2;</code>
+         */
+        public static final int DARK_MODE_APP_VALUE = 2;
+        /**
+         * <pre>
+         * Both the system and the browser are in light mode.
+         * </pre>
+         *
+         * <code>LIGHT_MODE_SYSTEM = 3;</code>
+         */
+        public static final int LIGHT_MODE_SYSTEM_VALUE = 3;
+        /**
+         * <pre>
+         * The browser is in light mode, but the state of the system either cannot
+         * be determined or has been overridden by the user.
+         * </pre>
+         *
+         * <code>LIGHT_MODE_APP = 4;</code>
+         */
+        public static final int LIGHT_MODE_APP_VALUE = 4;
+
+
+        @java.lang.Override
+        public final int getNumber() {
+          return value;
+        }
+
+        /**
+         * @param value The number of the enum to look for.
+         * @return The enum associated with the given number.
+         * @deprecated Use {@link #forNumber(int)} instead.
+         */
+        @java.lang.Deprecated
+        public static DarkModeState valueOf(int value) {
+          return forNumber(value);
+        }
+
+        public static DarkModeState forNumber(int value) {
+          switch (value) {
+            case 0: return UNKNOWN;
+            case 1: return DARK_MODE_SYSTEM;
+            case 2: return DARK_MODE_APP;
+            case 3: return LIGHT_MODE_SYSTEM;
+            case 4: return LIGHT_MODE_APP;
+            default: return null;
+          }
+        }
+
+        public static com.google.protobuf.Internal.EnumLiteMap<DarkModeState>
+            internalGetValueMap() {
+          return internalValueMap;
+        }
+        private static final com.google.protobuf.Internal.EnumLiteMap<
+            DarkModeState> internalValueMap =
+              new com.google.protobuf.Internal.EnumLiteMap<DarkModeState>() {
+                @java.lang.Override
+                public DarkModeState findValueByNumber(int number) {
+                  return DarkModeState.forNumber(number);
+                }
+              };
+
+        public static com.google.protobuf.Internal.EnumVerifier 
+            internalGetVerifier() {
+          return DarkModeStateVerifier.INSTANCE;
+        }
+
+        private static final class DarkModeStateVerifier implements 
+             com.google.protobuf.Internal.EnumVerifier { 
+                static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new DarkModeStateVerifier();
+                @java.lang.Override
+                public boolean isInRange(int number) {
+                  return DarkModeState.forNumber(number) != null;
+                }
+              };
+
+        private final int value;
+
+        private DarkModeState(int value) {
+          this.value = value;
+        }
+
+        // @@protoc_insertion_point(enum_scope:metrics.SystemProfileProto.OS.DarkModeState)
+      }
+
       public interface ArcOrBuilder extends
           // @@protoc_insertion_point(interface_extends:metrics.SystemProfileProto.OS.Arc)
           com.google.protobuf.MessageLiteOrBuilder {
@@ -3030,6 +4109,41 @@ public final class SystemProfileProtos {
         bitField0_ = (bitField0_ & ~0x00000040);
       }
 
+      public static final int DARK_MODE_STATE_FIELD_NUMBER = 8;
+      private int darkModeState_;
+      /**
+       * <code>optional .metrics.SystemProfileProto.OS.DarkModeState dark_mode_state = 8 [default = UNKNOWN];</code>
+       * @return Whether the darkModeState field is set.
+       */
+      @java.lang.Override
+      public boolean hasDarkModeState() {
+        return ((bitField0_ & 0x00000080) != 0);
+      }
+      /**
+       * <code>optional .metrics.SystemProfileProto.OS.DarkModeState dark_mode_state = 8 [default = UNKNOWN];</code>
+       * @return The darkModeState.
+       */
+      @java.lang.Override
+      public org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.OS.DarkModeState getDarkModeState() {
+        org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.OS.DarkModeState result = org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.OS.DarkModeState.forNumber(darkModeState_);
+        return result == null ? org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.OS.DarkModeState.UNKNOWN : result;
+      }
+      /**
+       * <code>optional .metrics.SystemProfileProto.OS.DarkModeState dark_mode_state = 8 [default = UNKNOWN];</code>
+       * @param value The darkModeState to set.
+       */
+      private void setDarkModeState(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.OS.DarkModeState value) {
+        darkModeState_ = value.getNumber();
+        bitField0_ |= 0x00000080;
+      }
+      /**
+       * <code>optional .metrics.SystemProfileProto.OS.DarkModeState dark_mode_state = 8 [default = UNKNOWN];</code>
+       */
+      private void clearDarkModeState() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        darkModeState_ = 0;
+      }
+
       public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.OS parseFrom(
           java.nio.ByteBuffer data)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3114,7 +4228,7 @@ public final class SystemProfileProtos {
       /**
        * <pre>
        * Information on the user's operating system.
-       * Next tag: 8
+       * Next tag: 9
        * </pre>
        *
        * Protobuf type {@code metrics.SystemProfileProto.OS}
@@ -3766,6 +4880,42 @@ public final class SystemProfileProtos {
           return this;
         }
 
+        /**
+         * <code>optional .metrics.SystemProfileProto.OS.DarkModeState dark_mode_state = 8 [default = UNKNOWN];</code>
+         * @return Whether the darkModeState field is set.
+         */
+        @java.lang.Override
+        public boolean hasDarkModeState() {
+          return instance.hasDarkModeState();
+        }
+        /**
+         * <code>optional .metrics.SystemProfileProto.OS.DarkModeState dark_mode_state = 8 [default = UNKNOWN];</code>
+         * @return The darkModeState.
+         */
+        @java.lang.Override
+        public org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.OS.DarkModeState getDarkModeState() {
+          return instance.getDarkModeState();
+        }
+        /**
+         * <code>optional .metrics.SystemProfileProto.OS.DarkModeState dark_mode_state = 8 [default = UNKNOWN];</code>
+         * @param value The enum numeric value on the wire for darkModeState to set.
+         * @return This builder for chaining.
+         */
+        public Builder setDarkModeState(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.OS.DarkModeState value) {
+          copyOnWrite();
+          instance.setDarkModeState(value);
+          return this;
+        }
+        /**
+         * <code>optional .metrics.SystemProfileProto.OS.DarkModeState dark_mode_state = 8 [default = UNKNOWN];</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearDarkModeState() {
+          copyOnWrite();
+          instance.clearDarkModeState();
+          return this;
+        }
+
         // @@protoc_insertion_point(builder_scope:metrics.SystemProfileProto.OS)
       }
       @java.lang.Override
@@ -3790,11 +4940,13 @@ public final class SystemProfileProtos {
                 "buildNumber_",
                 "kernelVersion_",
                 "arc_",
+                "darkModeState_",
+                org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.OS.DarkModeState.internalGetVerifier(),
               };
               java.lang.String info =
-                  "\u0001\u0007\u0000\u0001\u0001\u0007\u0007\u0000\u0000\u0000\u0001\u1008\u0000\u0002" +
-                  "\u1008\u0001\u0003\u1008\u0002\u0004\u1007\u0003\u0005\u1008\u0004\u0006\u1008\u0005" +
-                  "\u0007\u1009\u0006";
+                  "\u0001\b\u0000\u0001\u0001\b\b\u0000\u0000\u0000\u0001\u1008\u0000\u0002\u1008\u0001" +
+                  "\u0003\u1008\u0002\u0004\u1007\u0003\u0005\u1008\u0004\u0006\u1008\u0005\u0007\u1009" +
+                  "\u0006\b\u100c\u0007";
               return newMessageInfo(DEFAULT_INSTANCE, info, objects);
           }
           // fall through
@@ -3855,9 +5007,9 @@ public final class SystemProfileProtos {
 
       /**
        * <pre>
-       * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
-       * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
-       * Not recorded on iOS.
+       * OS CPU architecture. Common options are: x86, x86_64, armv7l, armv8l,
+       * and aarch64.
+       * Started being correctly recorded on iOS in M90: crrev/c/2723012.
        * </pre>
        *
        * <code>optional string cpu_architecture = 1;</code>
@@ -3866,9 +5018,9 @@ public final class SystemProfileProtos {
       boolean hasCpuArchitecture();
       /**
        * <pre>
-       * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
-       * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
-       * Not recorded on iOS.
+       * OS CPU architecture. Common options are: x86, x86_64, armv7l, armv8l,
+       * and aarch64.
+       * Started being correctly recorded on iOS in M90: crrev/c/2723012.
        * </pre>
        *
        * <code>optional string cpu_architecture = 1;</code>
@@ -3877,9 +5029,9 @@ public final class SystemProfileProtos {
       java.lang.String getCpuArchitecture();
       /**
        * <pre>
-       * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
-       * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
-       * Not recorded on iOS.
+       * OS CPU architecture. Common options are: x86, x86_64, armv7l, armv8l,
+       * and aarch64.
+       * Started being correctly recorded on iOS in M90: crrev/c/2723012.
        * </pre>
        *
        * <code>optional string cpu_architecture = 1;</code>
@@ -4038,6 +5190,38 @@ public final class SystemProfileProtos {
 
       /**
        * <pre>
+       * This field is only sent on Chrome OS devices with cellular support.
+       * This represents the variant of cellular modem present on the device.
+       * </pre>
+       *
+       * <code>optional string cellular_device_variant = 24;</code>
+       * @return Whether the cellularDeviceVariant field is set.
+       */
+      boolean hasCellularDeviceVariant();
+      /**
+       * <pre>
+       * This field is only sent on Chrome OS devices with cellular support.
+       * This represents the variant of cellular modem present on the device.
+       * </pre>
+       *
+       * <code>optional string cellular_device_variant = 24;</code>
+       * @return The cellularDeviceVariant.
+       */
+      java.lang.String getCellularDeviceVariant();
+      /**
+       * <pre>
+       * This field is only sent on Chrome OS devices with cellular support.
+       * This represents the variant of cellular modem present on the device.
+       * </pre>
+       *
+       * <code>optional string cellular_device_variant = 24;</code>
+       * @return The bytes for cellularDeviceVariant.
+       */
+      com.google.protobuf.ByteString
+          getCellularDeviceVariantBytes();
+
+      /**
+       * <pre>
        * The number of physical screens.
        * </pre>
        *
@@ -4135,20 +5319,12 @@ public final class SystemProfileProtos {
       float getMaxDpiY();
 
       /**
-       * <pre>
-       * The device form factor.
-       * </pre>
-       *
-       * <code>optional .metrics.SystemProfileProto.Hardware.FormFactor form_factor = 19;</code>
+       * <code>optional .metrics.SystemProfileProto.Hardware.FormFactor form_factor = 22;</code>
        * @return Whether the formFactor field is set.
        */
       boolean hasFormFactor();
       /**
-       * <pre>
-       * The device form factor.
-       * </pre>
-       *
-       * <code>optional .metrics.SystemProfileProto.Hardware.FormFactor form_factor = 19;</code>
+       * <code>optional .metrics.SystemProfileProto.Hardware.FormFactor form_factor = 22;</code>
        * @return The formFactor.
        */
       org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.FormFactor getFormFactor();
@@ -4163,6 +5339,17 @@ public final class SystemProfileProtos {
        * @return The cpu.
        */
       org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.CPU getCpu();
+
+      /**
+       * <code>optional .metrics.SystemProfileProto.Hardware.Motherboard motherboard = 25;</code>
+       * @return Whether the motherboard field is set.
+       */
+      boolean hasMotherboard();
+      /**
+       * <code>optional .metrics.SystemProfileProto.Hardware.Motherboard motherboard = 25;</code>
+       * @return The motherboard.
+       */
+      org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard getMotherboard();
 
       /**
        * <code>optional .metrics.SystemProfileProto.Hardware.Graphics gpu = 8;</code>
@@ -4259,11 +5446,43 @@ public final class SystemProfileProtos {
        * @return The userDataDrive.
        */
       org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Drive getUserDataDrive();
+
+      /**
+       * <code>optional .metrics.SystemProfileProto.Hardware.TpmType tpm_type = 23;</code>
+       * @return Whether the tpmType field is set.
+       */
+      boolean hasTpmType();
+      /**
+       * <code>optional .metrics.SystemProfileProto.Hardware.TpmType tpm_type = 23;</code>
+       * @return The tpmType.
+       */
+      org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.TpmType getTpmType();
+
+      /**
+       * <pre>
+       * Firmware version of the TPM on the device. This field is only filled in
+       * on ChromeOS devices (both CrOS and LaCrOS platforms).
+       * </pre>
+       *
+       * <code>optional uint64 tpm_firmware_version = 26;</code>
+       * @return Whether the tpmFirmwareVersion field is set.
+       */
+      boolean hasTpmFirmwareVersion();
+      /**
+       * <pre>
+       * Firmware version of the TPM on the device. This field is only filled in
+       * on ChromeOS devices (both CrOS and LaCrOS platforms).
+       * </pre>
+       *
+       * <code>optional uint64 tpm_firmware_version = 26;</code>
+       * @return The tpmFirmwareVersion.
+       */
+      long getTpmFirmwareVersion();
     }
     /**
      * <pre>
      * Information on the user's hardware.
-     * Next tag: 22
+     * Next tag: 27
      * </pre>
      *
      * Protobuf type {@code metrics.SystemProfileProto.Hardware}
@@ -4278,11 +5497,15 @@ public final class SystemProfileProtos {
         appCpuArchitecture_ = "";
         hardwareClass_ = "";
         fullHardwareClass_ = "";
+        cellularDeviceVariant_ = "";
         internalStorageDevices_ = emptyProtobufList();
       }
       /**
        * <pre>
-       * Device form factors.
+       * The form factor of the device. Added in M101.
+       * Android devices can be phone, tablet, or TV. iOS devices can be phone or
+       * tablet. For Windows, Mac, ChromeOS, Lacros, and Linux, the desktop form
+       * factor is always used.
        * </pre>
        *
        * Protobuf enum {@code metrics.SystemProfileProto.Hardware.FormFactor}
@@ -4306,9 +5529,9 @@ public final class SystemProfileProtos {
          */
         FORM_FACTOR_TABLET(3),
         /**
-         * <code>FORM_FACTOR_KIOSK = 4;</code>
+         * <code>FORM_FACTOR_TV = 4;</code>
          */
-        FORM_FACTOR_KIOSK(4),
+        FORM_FACTOR_TV(4),
         ;
 
         /**
@@ -4328,9 +5551,9 @@ public final class SystemProfileProtos {
          */
         public static final int FORM_FACTOR_TABLET_VALUE = 3;
         /**
-         * <code>FORM_FACTOR_KIOSK = 4;</code>
+         * <code>FORM_FACTOR_TV = 4;</code>
          */
-        public static final int FORM_FACTOR_KIOSK_VALUE = 4;
+        public static final int FORM_FACTOR_TV_VALUE = 4;
 
 
         @java.lang.Override
@@ -4354,7 +5577,7 @@ public final class SystemProfileProtos {
             case 1: return FORM_FACTOR_DESKTOP;
             case 2: return FORM_FACTOR_PHONE;
             case 3: return FORM_FACTOR_TABLET;
-            case 4: return FORM_FACTOR_KIOSK;
+            case 4: return FORM_FACTOR_TV;
             default: return null;
           }
         }
@@ -4393,6 +5616,248 @@ public final class SystemProfileProtos {
         }
 
         // @@protoc_insertion_point(enum_scope:metrics.SystemProfileProto.Hardware.FormFactor)
+      }
+
+      /**
+       * <pre>
+       * Type of BIOS (can change at each boot).
+       * </pre>
+       *
+       * Protobuf enum {@code metrics.SystemProfileProto.Hardware.BiosType}
+       */
+      public enum BiosType
+          implements com.google.protobuf.Internal.EnumLite {
+        /**
+         * <code>BIOS_TYPE_UNKNOWN = 0;</code>
+         */
+        BIOS_TYPE_UNKNOWN(0),
+        /**
+         * <pre>
+         * Legacy BIOS or UEFI with CSM mode.
+         * </pre>
+         *
+         * <code>BIOS_TYPE_LEGACY = 1;</code>
+         */
+        BIOS_TYPE_LEGACY(1),
+        /**
+         * <pre>
+         * BIOS is UEFI and booted into UEFI mode.
+         * </pre>
+         *
+         * <code>BIOS_TYPE_UEFI = 2;</code>
+         */
+        BIOS_TYPE_UEFI(2),
+        ;
+
+        /**
+         * <code>BIOS_TYPE_UNKNOWN = 0;</code>
+         */
+        public static final int BIOS_TYPE_UNKNOWN_VALUE = 0;
+        /**
+         * <pre>
+         * Legacy BIOS or UEFI with CSM mode.
+         * </pre>
+         *
+         * <code>BIOS_TYPE_LEGACY = 1;</code>
+         */
+        public static final int BIOS_TYPE_LEGACY_VALUE = 1;
+        /**
+         * <pre>
+         * BIOS is UEFI and booted into UEFI mode.
+         * </pre>
+         *
+         * <code>BIOS_TYPE_UEFI = 2;</code>
+         */
+        public static final int BIOS_TYPE_UEFI_VALUE = 2;
+
+
+        @java.lang.Override
+        public final int getNumber() {
+          return value;
+        }
+
+        /**
+         * @param value The number of the enum to look for.
+         * @return The enum associated with the given number.
+         * @deprecated Use {@link #forNumber(int)} instead.
+         */
+        @java.lang.Deprecated
+        public static BiosType valueOf(int value) {
+          return forNumber(value);
+        }
+
+        public static BiosType forNumber(int value) {
+          switch (value) {
+            case 0: return BIOS_TYPE_UNKNOWN;
+            case 1: return BIOS_TYPE_LEGACY;
+            case 2: return BIOS_TYPE_UEFI;
+            default: return null;
+          }
+        }
+
+        public static com.google.protobuf.Internal.EnumLiteMap<BiosType>
+            internalGetValueMap() {
+          return internalValueMap;
+        }
+        private static final com.google.protobuf.Internal.EnumLiteMap<
+            BiosType> internalValueMap =
+              new com.google.protobuf.Internal.EnumLiteMap<BiosType>() {
+                @java.lang.Override
+                public BiosType findValueByNumber(int number) {
+                  return BiosType.forNumber(number);
+                }
+              };
+
+        public static com.google.protobuf.Internal.EnumVerifier 
+            internalGetVerifier() {
+          return BiosTypeVerifier.INSTANCE;
+        }
+
+        private static final class BiosTypeVerifier implements 
+             com.google.protobuf.Internal.EnumVerifier { 
+                static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new BiosTypeVerifier();
+                @java.lang.Override
+                public boolean isInRange(int number) {
+                  return BiosType.forNumber(number) != null;
+                }
+              };
+
+        private final int value;
+
+        private BiosType(int value) {
+          this.value = value;
+        }
+
+        // @@protoc_insertion_point(enum_scope:metrics.SystemProfileProto.Hardware.BiosType)
+      }
+
+      /**
+       * <pre>
+       * Type of TPM on the device. This field is only filled in on ChromeOS
+       * devices (both CrOS and LaCrOS platforms). This includes Chromebooks with
+       * TPM1.2 or GSC (cr50 and ti50), flex devices (ChromeOS installed on
+       * devices with other OS) which has TPM type "runtime selection", and lastly
+       * generic TPM2 devices that use TPM2 chips that aren't manufactured by
+       * Google.
+       * </pre>
+       *
+       * Protobuf enum {@code metrics.SystemProfileProto.Hardware.TpmType}
+       */
+      public enum TpmType
+          implements com.google.protobuf.Internal.EnumLite {
+        /**
+         * <code>TPM_TYPE_UNKNOWN = 0;</code>
+         */
+        TPM_TYPE_UNKNOWN(0),
+        /**
+         * <code>TPM_TYPE_1 = 1;</code>
+         */
+        TPM_TYPE_1(1),
+        /**
+         * <code>TPM_TYPE_CR50 = 2;</code>
+         */
+        TPM_TYPE_CR50(2),
+        /**
+         * <code>TPM_TYPE_TI50 = 3;</code>
+         */
+        TPM_TYPE_TI50(3),
+        /**
+         * <code>TPM_TYPE_RUNTIME_SELECTION = 4;</code>
+         */
+        TPM_TYPE_RUNTIME_SELECTION(4),
+        /**
+         * <code>TPM_TYPE_GENERIC_2 = 5;</code>
+         */
+        TPM_TYPE_GENERIC_2(5),
+        ;
+
+        /**
+         * <code>TPM_TYPE_UNKNOWN = 0;</code>
+         */
+        public static final int TPM_TYPE_UNKNOWN_VALUE = 0;
+        /**
+         * <code>TPM_TYPE_1 = 1;</code>
+         */
+        public static final int TPM_TYPE_1_VALUE = 1;
+        /**
+         * <code>TPM_TYPE_CR50 = 2;</code>
+         */
+        public static final int TPM_TYPE_CR50_VALUE = 2;
+        /**
+         * <code>TPM_TYPE_TI50 = 3;</code>
+         */
+        public static final int TPM_TYPE_TI50_VALUE = 3;
+        /**
+         * <code>TPM_TYPE_RUNTIME_SELECTION = 4;</code>
+         */
+        public static final int TPM_TYPE_RUNTIME_SELECTION_VALUE = 4;
+        /**
+         * <code>TPM_TYPE_GENERIC_2 = 5;</code>
+         */
+        public static final int TPM_TYPE_GENERIC_2_VALUE = 5;
+
+
+        @java.lang.Override
+        public final int getNumber() {
+          return value;
+        }
+
+        /**
+         * @param value The number of the enum to look for.
+         * @return The enum associated with the given number.
+         * @deprecated Use {@link #forNumber(int)} instead.
+         */
+        @java.lang.Deprecated
+        public static TpmType valueOf(int value) {
+          return forNumber(value);
+        }
+
+        public static TpmType forNumber(int value) {
+          switch (value) {
+            case 0: return TPM_TYPE_UNKNOWN;
+            case 1: return TPM_TYPE_1;
+            case 2: return TPM_TYPE_CR50;
+            case 3: return TPM_TYPE_TI50;
+            case 4: return TPM_TYPE_RUNTIME_SELECTION;
+            case 5: return TPM_TYPE_GENERIC_2;
+            default: return null;
+          }
+        }
+
+        public static com.google.protobuf.Internal.EnumLiteMap<TpmType>
+            internalGetValueMap() {
+          return internalValueMap;
+        }
+        private static final com.google.protobuf.Internal.EnumLiteMap<
+            TpmType> internalValueMap =
+              new com.google.protobuf.Internal.EnumLiteMap<TpmType>() {
+                @java.lang.Override
+                public TpmType findValueByNumber(int number) {
+                  return TpmType.forNumber(number);
+                }
+              };
+
+        public static com.google.protobuf.Internal.EnumVerifier 
+            internalGetVerifier() {
+          return TpmTypeVerifier.INSTANCE;
+        }
+
+        private static final class TpmTypeVerifier implements 
+             com.google.protobuf.Internal.EnumVerifier { 
+                static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new TpmTypeVerifier();
+                @java.lang.Override
+                public boolean isInRange(int number) {
+                  return TpmType.forNumber(number) != null;
+                }
+              };
+
+        private final int value;
+
+        private TpmType(int value) {
+          this.value = value;
+        }
+
+        // @@protoc_insertion_point(enum_scope:metrics.SystemProfileProto.Hardware.TpmType)
       }
 
       public interface CPUOrBuilder extends
@@ -5150,6 +6615,1083 @@ public final class SystemProfileProtos {
         private static volatile com.google.protobuf.Parser<CPU> PARSER;
 
         public static com.google.protobuf.Parser<CPU> parser() {
+          return DEFAULT_INSTANCE.getParserForType();
+        }
+      }
+
+      public interface MotherboardOrBuilder extends
+          // @@protoc_insertion_point(interface_extends:metrics.SystemProfileProto.Hardware.Motherboard)
+          com.google.protobuf.MessageLiteOrBuilder {
+
+        /**
+         * <pre>
+         * Manufacturer for the motherboard.
+         * </pre>
+         *
+         * <code>optional string manufacturer = 1;</code>
+         * @return Whether the manufacturer field is set.
+         */
+        boolean hasManufacturer();
+        /**
+         * <pre>
+         * Manufacturer for the motherboard.
+         * </pre>
+         *
+         * <code>optional string manufacturer = 1;</code>
+         * @return The manufacturer.
+         */
+        java.lang.String getManufacturer();
+        /**
+         * <pre>
+         * Manufacturer for the motherboard.
+         * </pre>
+         *
+         * <code>optional string manufacturer = 1;</code>
+         * @return The bytes for manufacturer.
+         */
+        com.google.protobuf.ByteString
+            getManufacturerBytes();
+
+        /**
+         * <pre>
+         * Model for the motherboard.
+         * </pre>
+         *
+         * <code>optional string model = 2;</code>
+         * @return Whether the model field is set.
+         */
+        boolean hasModel();
+        /**
+         * <pre>
+         * Model for the motherboard.
+         * </pre>
+         *
+         * <code>optional string model = 2;</code>
+         * @return The model.
+         */
+        java.lang.String getModel();
+        /**
+         * <pre>
+         * Model for the motherboard.
+         * </pre>
+         *
+         * <code>optional string model = 2;</code>
+         * @return The bytes for model.
+         */
+        com.google.protobuf.ByteString
+            getModelBytes();
+
+        /**
+         * <pre>
+         * Manufacturer for the BIOS.
+         * </pre>
+         *
+         * <code>optional string bios_manufacturer = 3;</code>
+         * @return Whether the biosManufacturer field is set.
+         */
+        boolean hasBiosManufacturer();
+        /**
+         * <pre>
+         * Manufacturer for the BIOS.
+         * </pre>
+         *
+         * <code>optional string bios_manufacturer = 3;</code>
+         * @return The biosManufacturer.
+         */
+        java.lang.String getBiosManufacturer();
+        /**
+         * <pre>
+         * Manufacturer for the BIOS.
+         * </pre>
+         *
+         * <code>optional string bios_manufacturer = 3;</code>
+         * @return The bytes for biosManufacturer.
+         */
+        com.google.protobuf.ByteString
+            getBiosManufacturerBytes();
+
+        /**
+         * <pre>
+         * Version of the BIOS currently installed.
+         * </pre>
+         *
+         * <code>optional string bios_version = 4;</code>
+         * @return Whether the biosVersion field is set.
+         */
+        boolean hasBiosVersion();
+        /**
+         * <pre>
+         * Version of the BIOS currently installed.
+         * </pre>
+         *
+         * <code>optional string bios_version = 4;</code>
+         * @return The biosVersion.
+         */
+        java.lang.String getBiosVersion();
+        /**
+         * <pre>
+         * Version of the BIOS currently installed.
+         * </pre>
+         *
+         * <code>optional string bios_version = 4;</code>
+         * @return The bytes for biosVersion.
+         */
+        com.google.protobuf.ByteString
+            getBiosVersionBytes();
+
+        /**
+         * <pre>
+         * What mode of BIOS is booted.
+         * </pre>
+         *
+         * <code>optional .metrics.SystemProfileProto.Hardware.BiosType bios_type = 5;</code>
+         * @return Whether the biosType field is set.
+         */
+        boolean hasBiosType();
+        /**
+         * <pre>
+         * What mode of BIOS is booted.
+         * </pre>
+         *
+         * <code>optional .metrics.SystemProfileProto.Hardware.BiosType bios_type = 5;</code>
+         * @return The biosType.
+         */
+        org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.BiosType getBiosType();
+      }
+      /**
+       * <pre>
+       * Motherboard information.
+       * </pre>
+       *
+       * Protobuf type {@code metrics.SystemProfileProto.Hardware.Motherboard}
+       */
+      public  static final class Motherboard extends
+          com.google.protobuf.GeneratedMessageLite<
+              Motherboard, Motherboard.Builder> implements
+          // @@protoc_insertion_point(message_implements:metrics.SystemProfileProto.Hardware.Motherboard)
+          MotherboardOrBuilder {
+        private Motherboard() {
+          manufacturer_ = "";
+          model_ = "";
+          biosManufacturer_ = "";
+          biosVersion_ = "";
+        }
+        private int bitField0_;
+        public static final int MANUFACTURER_FIELD_NUMBER = 1;
+        private java.lang.String manufacturer_;
+        /**
+         * <pre>
+         * Manufacturer for the motherboard.
+         * </pre>
+         *
+         * <code>optional string manufacturer = 1;</code>
+         * @return Whether the manufacturer field is set.
+         */
+        @java.lang.Override
+        public boolean hasManufacturer() {
+          return ((bitField0_ & 0x00000001) != 0);
+        }
+        /**
+         * <pre>
+         * Manufacturer for the motherboard.
+         * </pre>
+         *
+         * <code>optional string manufacturer = 1;</code>
+         * @return The manufacturer.
+         */
+        @java.lang.Override
+        public java.lang.String getManufacturer() {
+          return manufacturer_;
+        }
+        /**
+         * <pre>
+         * Manufacturer for the motherboard.
+         * </pre>
+         *
+         * <code>optional string manufacturer = 1;</code>
+         * @return The bytes for manufacturer.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString
+            getManufacturerBytes() {
+          return com.google.protobuf.ByteString.copyFromUtf8(manufacturer_);
+        }
+        /**
+         * <pre>
+         * Manufacturer for the motherboard.
+         * </pre>
+         *
+         * <code>optional string manufacturer = 1;</code>
+         * @param value The manufacturer to set.
+         */
+        private void setManufacturer(
+            java.lang.String value) {
+          value.getClass();
+  bitField0_ |= 0x00000001;
+          manufacturer_ = value;
+        }
+        /**
+         * <pre>
+         * Manufacturer for the motherboard.
+         * </pre>
+         *
+         * <code>optional string manufacturer = 1;</code>
+         */
+        private void clearManufacturer() {
+          bitField0_ = (bitField0_ & ~0x00000001);
+          manufacturer_ = getDefaultInstance().getManufacturer();
+        }
+        /**
+         * <pre>
+         * Manufacturer for the motherboard.
+         * </pre>
+         *
+         * <code>optional string manufacturer = 1;</code>
+         * @param value The bytes for manufacturer to set.
+         */
+        private void setManufacturerBytes(
+            com.google.protobuf.ByteString value) {
+          manufacturer_ = value.toStringUtf8();
+          bitField0_ |= 0x00000001;
+        }
+
+        public static final int MODEL_FIELD_NUMBER = 2;
+        private java.lang.String model_;
+        /**
+         * <pre>
+         * Model for the motherboard.
+         * </pre>
+         *
+         * <code>optional string model = 2;</code>
+         * @return Whether the model field is set.
+         */
+        @java.lang.Override
+        public boolean hasModel() {
+          return ((bitField0_ & 0x00000002) != 0);
+        }
+        /**
+         * <pre>
+         * Model for the motherboard.
+         * </pre>
+         *
+         * <code>optional string model = 2;</code>
+         * @return The model.
+         */
+        @java.lang.Override
+        public java.lang.String getModel() {
+          return model_;
+        }
+        /**
+         * <pre>
+         * Model for the motherboard.
+         * </pre>
+         *
+         * <code>optional string model = 2;</code>
+         * @return The bytes for model.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString
+            getModelBytes() {
+          return com.google.protobuf.ByteString.copyFromUtf8(model_);
+        }
+        /**
+         * <pre>
+         * Model for the motherboard.
+         * </pre>
+         *
+         * <code>optional string model = 2;</code>
+         * @param value The model to set.
+         */
+        private void setModel(
+            java.lang.String value) {
+          value.getClass();
+  bitField0_ |= 0x00000002;
+          model_ = value;
+        }
+        /**
+         * <pre>
+         * Model for the motherboard.
+         * </pre>
+         *
+         * <code>optional string model = 2;</code>
+         */
+        private void clearModel() {
+          bitField0_ = (bitField0_ & ~0x00000002);
+          model_ = getDefaultInstance().getModel();
+        }
+        /**
+         * <pre>
+         * Model for the motherboard.
+         * </pre>
+         *
+         * <code>optional string model = 2;</code>
+         * @param value The bytes for model to set.
+         */
+        private void setModelBytes(
+            com.google.protobuf.ByteString value) {
+          model_ = value.toStringUtf8();
+          bitField0_ |= 0x00000002;
+        }
+
+        public static final int BIOS_MANUFACTURER_FIELD_NUMBER = 3;
+        private java.lang.String biosManufacturer_;
+        /**
+         * <pre>
+         * Manufacturer for the BIOS.
+         * </pre>
+         *
+         * <code>optional string bios_manufacturer = 3;</code>
+         * @return Whether the biosManufacturer field is set.
+         */
+        @java.lang.Override
+        public boolean hasBiosManufacturer() {
+          return ((bitField0_ & 0x00000004) != 0);
+        }
+        /**
+         * <pre>
+         * Manufacturer for the BIOS.
+         * </pre>
+         *
+         * <code>optional string bios_manufacturer = 3;</code>
+         * @return The biosManufacturer.
+         */
+        @java.lang.Override
+        public java.lang.String getBiosManufacturer() {
+          return biosManufacturer_;
+        }
+        /**
+         * <pre>
+         * Manufacturer for the BIOS.
+         * </pre>
+         *
+         * <code>optional string bios_manufacturer = 3;</code>
+         * @return The bytes for biosManufacturer.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString
+            getBiosManufacturerBytes() {
+          return com.google.protobuf.ByteString.copyFromUtf8(biosManufacturer_);
+        }
+        /**
+         * <pre>
+         * Manufacturer for the BIOS.
+         * </pre>
+         *
+         * <code>optional string bios_manufacturer = 3;</code>
+         * @param value The biosManufacturer to set.
+         */
+        private void setBiosManufacturer(
+            java.lang.String value) {
+          value.getClass();
+  bitField0_ |= 0x00000004;
+          biosManufacturer_ = value;
+        }
+        /**
+         * <pre>
+         * Manufacturer for the BIOS.
+         * </pre>
+         *
+         * <code>optional string bios_manufacturer = 3;</code>
+         */
+        private void clearBiosManufacturer() {
+          bitField0_ = (bitField0_ & ~0x00000004);
+          biosManufacturer_ = getDefaultInstance().getBiosManufacturer();
+        }
+        /**
+         * <pre>
+         * Manufacturer for the BIOS.
+         * </pre>
+         *
+         * <code>optional string bios_manufacturer = 3;</code>
+         * @param value The bytes for biosManufacturer to set.
+         */
+        private void setBiosManufacturerBytes(
+            com.google.protobuf.ByteString value) {
+          biosManufacturer_ = value.toStringUtf8();
+          bitField0_ |= 0x00000004;
+        }
+
+        public static final int BIOS_VERSION_FIELD_NUMBER = 4;
+        private java.lang.String biosVersion_;
+        /**
+         * <pre>
+         * Version of the BIOS currently installed.
+         * </pre>
+         *
+         * <code>optional string bios_version = 4;</code>
+         * @return Whether the biosVersion field is set.
+         */
+        @java.lang.Override
+        public boolean hasBiosVersion() {
+          return ((bitField0_ & 0x00000008) != 0);
+        }
+        /**
+         * <pre>
+         * Version of the BIOS currently installed.
+         * </pre>
+         *
+         * <code>optional string bios_version = 4;</code>
+         * @return The biosVersion.
+         */
+        @java.lang.Override
+        public java.lang.String getBiosVersion() {
+          return biosVersion_;
+        }
+        /**
+         * <pre>
+         * Version of the BIOS currently installed.
+         * </pre>
+         *
+         * <code>optional string bios_version = 4;</code>
+         * @return The bytes for biosVersion.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString
+            getBiosVersionBytes() {
+          return com.google.protobuf.ByteString.copyFromUtf8(biosVersion_);
+        }
+        /**
+         * <pre>
+         * Version of the BIOS currently installed.
+         * </pre>
+         *
+         * <code>optional string bios_version = 4;</code>
+         * @param value The biosVersion to set.
+         */
+        private void setBiosVersion(
+            java.lang.String value) {
+          value.getClass();
+  bitField0_ |= 0x00000008;
+          biosVersion_ = value;
+        }
+        /**
+         * <pre>
+         * Version of the BIOS currently installed.
+         * </pre>
+         *
+         * <code>optional string bios_version = 4;</code>
+         */
+        private void clearBiosVersion() {
+          bitField0_ = (bitField0_ & ~0x00000008);
+          biosVersion_ = getDefaultInstance().getBiosVersion();
+        }
+        /**
+         * <pre>
+         * Version of the BIOS currently installed.
+         * </pre>
+         *
+         * <code>optional string bios_version = 4;</code>
+         * @param value The bytes for biosVersion to set.
+         */
+        private void setBiosVersionBytes(
+            com.google.protobuf.ByteString value) {
+          biosVersion_ = value.toStringUtf8();
+          bitField0_ |= 0x00000008;
+        }
+
+        public static final int BIOS_TYPE_FIELD_NUMBER = 5;
+        private int biosType_;
+        /**
+         * <pre>
+         * What mode of BIOS is booted.
+         * </pre>
+         *
+         * <code>optional .metrics.SystemProfileProto.Hardware.BiosType bios_type = 5;</code>
+         * @return Whether the biosType field is set.
+         */
+        @java.lang.Override
+        public boolean hasBiosType() {
+          return ((bitField0_ & 0x00000010) != 0);
+        }
+        /**
+         * <pre>
+         * What mode of BIOS is booted.
+         * </pre>
+         *
+         * <code>optional .metrics.SystemProfileProto.Hardware.BiosType bios_type = 5;</code>
+         * @return The biosType.
+         */
+        @java.lang.Override
+        public org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.BiosType getBiosType() {
+          org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.BiosType result = org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.BiosType.forNumber(biosType_);
+          return result == null ? org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.BiosType.BIOS_TYPE_UNKNOWN : result;
+        }
+        /**
+         * <pre>
+         * What mode of BIOS is booted.
+         * </pre>
+         *
+         * <code>optional .metrics.SystemProfileProto.Hardware.BiosType bios_type = 5;</code>
+         * @param value The biosType to set.
+         */
+        private void setBiosType(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.BiosType value) {
+          biosType_ = value.getNumber();
+          bitField0_ |= 0x00000010;
+        }
+        /**
+         * <pre>
+         * What mode of BIOS is booted.
+         * </pre>
+         *
+         * <code>optional .metrics.SystemProfileProto.Hardware.BiosType bios_type = 5;</code>
+         */
+        private void clearBiosType() {
+          bitField0_ = (bitField0_ & ~0x00000010);
+          biosType_ = 0;
+        }
+
+        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard parseFrom(
+            java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, data);
+        }
+        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard parseFrom(
+            java.nio.ByteBuffer data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, data, extensionRegistry);
+        }
+        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, data);
+        }
+        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, data, extensionRegistry);
+        }
+        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, data);
+        }
+        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, data, extensionRegistry);
+        }
+        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, input);
+        }
+        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, input, extensionRegistry);
+        }
+        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
+          return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+        }
+        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+        }
+        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, input);
+        }
+        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+          return (Builder) DEFAULT_INSTANCE.createBuilder();
+        }
+        public static Builder newBuilder(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard prototype) {
+          return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+        }
+
+        /**
+         * <pre>
+         * Motherboard information.
+         * </pre>
+         *
+         * Protobuf type {@code metrics.SystemProfileProto.Hardware.Motherboard}
+         */
+        public static final class Builder extends
+            com.google.protobuf.GeneratedMessageLite.Builder<
+              org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard, Builder> implements
+            // @@protoc_insertion_point(builder_implements:metrics.SystemProfileProto.Hardware.Motherboard)
+            org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.MotherboardOrBuilder {
+          // Construct using org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard.newBuilder()
+          private Builder() {
+            super(DEFAULT_INSTANCE);
+          }
+
+
+          /**
+           * <pre>
+           * Manufacturer for the motherboard.
+           * </pre>
+           *
+           * <code>optional string manufacturer = 1;</code>
+           * @return Whether the manufacturer field is set.
+           */
+          @java.lang.Override
+          public boolean hasManufacturer() {
+            return instance.hasManufacturer();
+          }
+          /**
+           * <pre>
+           * Manufacturer for the motherboard.
+           * </pre>
+           *
+           * <code>optional string manufacturer = 1;</code>
+           * @return The manufacturer.
+           */
+          @java.lang.Override
+          public java.lang.String getManufacturer() {
+            return instance.getManufacturer();
+          }
+          /**
+           * <pre>
+           * Manufacturer for the motherboard.
+           * </pre>
+           *
+           * <code>optional string manufacturer = 1;</code>
+           * @return The bytes for manufacturer.
+           */
+          @java.lang.Override
+          public com.google.protobuf.ByteString
+              getManufacturerBytes() {
+            return instance.getManufacturerBytes();
+          }
+          /**
+           * <pre>
+           * Manufacturer for the motherboard.
+           * </pre>
+           *
+           * <code>optional string manufacturer = 1;</code>
+           * @param value The manufacturer to set.
+           * @return This builder for chaining.
+           */
+          public Builder setManufacturer(
+              java.lang.String value) {
+            copyOnWrite();
+            instance.setManufacturer(value);
+            return this;
+          }
+          /**
+           * <pre>
+           * Manufacturer for the motherboard.
+           * </pre>
+           *
+           * <code>optional string manufacturer = 1;</code>
+           * @return This builder for chaining.
+           */
+          public Builder clearManufacturer() {
+            copyOnWrite();
+            instance.clearManufacturer();
+            return this;
+          }
+          /**
+           * <pre>
+           * Manufacturer for the motherboard.
+           * </pre>
+           *
+           * <code>optional string manufacturer = 1;</code>
+           * @param value The bytes for manufacturer to set.
+           * @return This builder for chaining.
+           */
+          public Builder setManufacturerBytes(
+              com.google.protobuf.ByteString value) {
+            copyOnWrite();
+            instance.setManufacturerBytes(value);
+            return this;
+          }
+
+          /**
+           * <pre>
+           * Model for the motherboard.
+           * </pre>
+           *
+           * <code>optional string model = 2;</code>
+           * @return Whether the model field is set.
+           */
+          @java.lang.Override
+          public boolean hasModel() {
+            return instance.hasModel();
+          }
+          /**
+           * <pre>
+           * Model for the motherboard.
+           * </pre>
+           *
+           * <code>optional string model = 2;</code>
+           * @return The model.
+           */
+          @java.lang.Override
+          public java.lang.String getModel() {
+            return instance.getModel();
+          }
+          /**
+           * <pre>
+           * Model for the motherboard.
+           * </pre>
+           *
+           * <code>optional string model = 2;</code>
+           * @return The bytes for model.
+           */
+          @java.lang.Override
+          public com.google.protobuf.ByteString
+              getModelBytes() {
+            return instance.getModelBytes();
+          }
+          /**
+           * <pre>
+           * Model for the motherboard.
+           * </pre>
+           *
+           * <code>optional string model = 2;</code>
+           * @param value The model to set.
+           * @return This builder for chaining.
+           */
+          public Builder setModel(
+              java.lang.String value) {
+            copyOnWrite();
+            instance.setModel(value);
+            return this;
+          }
+          /**
+           * <pre>
+           * Model for the motherboard.
+           * </pre>
+           *
+           * <code>optional string model = 2;</code>
+           * @return This builder for chaining.
+           */
+          public Builder clearModel() {
+            copyOnWrite();
+            instance.clearModel();
+            return this;
+          }
+          /**
+           * <pre>
+           * Model for the motherboard.
+           * </pre>
+           *
+           * <code>optional string model = 2;</code>
+           * @param value The bytes for model to set.
+           * @return This builder for chaining.
+           */
+          public Builder setModelBytes(
+              com.google.protobuf.ByteString value) {
+            copyOnWrite();
+            instance.setModelBytes(value);
+            return this;
+          }
+
+          /**
+           * <pre>
+           * Manufacturer for the BIOS.
+           * </pre>
+           *
+           * <code>optional string bios_manufacturer = 3;</code>
+           * @return Whether the biosManufacturer field is set.
+           */
+          @java.lang.Override
+          public boolean hasBiosManufacturer() {
+            return instance.hasBiosManufacturer();
+          }
+          /**
+           * <pre>
+           * Manufacturer for the BIOS.
+           * </pre>
+           *
+           * <code>optional string bios_manufacturer = 3;</code>
+           * @return The biosManufacturer.
+           */
+          @java.lang.Override
+          public java.lang.String getBiosManufacturer() {
+            return instance.getBiosManufacturer();
+          }
+          /**
+           * <pre>
+           * Manufacturer for the BIOS.
+           * </pre>
+           *
+           * <code>optional string bios_manufacturer = 3;</code>
+           * @return The bytes for biosManufacturer.
+           */
+          @java.lang.Override
+          public com.google.protobuf.ByteString
+              getBiosManufacturerBytes() {
+            return instance.getBiosManufacturerBytes();
+          }
+          /**
+           * <pre>
+           * Manufacturer for the BIOS.
+           * </pre>
+           *
+           * <code>optional string bios_manufacturer = 3;</code>
+           * @param value The biosManufacturer to set.
+           * @return This builder for chaining.
+           */
+          public Builder setBiosManufacturer(
+              java.lang.String value) {
+            copyOnWrite();
+            instance.setBiosManufacturer(value);
+            return this;
+          }
+          /**
+           * <pre>
+           * Manufacturer for the BIOS.
+           * </pre>
+           *
+           * <code>optional string bios_manufacturer = 3;</code>
+           * @return This builder for chaining.
+           */
+          public Builder clearBiosManufacturer() {
+            copyOnWrite();
+            instance.clearBiosManufacturer();
+            return this;
+          }
+          /**
+           * <pre>
+           * Manufacturer for the BIOS.
+           * </pre>
+           *
+           * <code>optional string bios_manufacturer = 3;</code>
+           * @param value The bytes for biosManufacturer to set.
+           * @return This builder for chaining.
+           */
+          public Builder setBiosManufacturerBytes(
+              com.google.protobuf.ByteString value) {
+            copyOnWrite();
+            instance.setBiosManufacturerBytes(value);
+            return this;
+          }
+
+          /**
+           * <pre>
+           * Version of the BIOS currently installed.
+           * </pre>
+           *
+           * <code>optional string bios_version = 4;</code>
+           * @return Whether the biosVersion field is set.
+           */
+          @java.lang.Override
+          public boolean hasBiosVersion() {
+            return instance.hasBiosVersion();
+          }
+          /**
+           * <pre>
+           * Version of the BIOS currently installed.
+           * </pre>
+           *
+           * <code>optional string bios_version = 4;</code>
+           * @return The biosVersion.
+           */
+          @java.lang.Override
+          public java.lang.String getBiosVersion() {
+            return instance.getBiosVersion();
+          }
+          /**
+           * <pre>
+           * Version of the BIOS currently installed.
+           * </pre>
+           *
+           * <code>optional string bios_version = 4;</code>
+           * @return The bytes for biosVersion.
+           */
+          @java.lang.Override
+          public com.google.protobuf.ByteString
+              getBiosVersionBytes() {
+            return instance.getBiosVersionBytes();
+          }
+          /**
+           * <pre>
+           * Version of the BIOS currently installed.
+           * </pre>
+           *
+           * <code>optional string bios_version = 4;</code>
+           * @param value The biosVersion to set.
+           * @return This builder for chaining.
+           */
+          public Builder setBiosVersion(
+              java.lang.String value) {
+            copyOnWrite();
+            instance.setBiosVersion(value);
+            return this;
+          }
+          /**
+           * <pre>
+           * Version of the BIOS currently installed.
+           * </pre>
+           *
+           * <code>optional string bios_version = 4;</code>
+           * @return This builder for chaining.
+           */
+          public Builder clearBiosVersion() {
+            copyOnWrite();
+            instance.clearBiosVersion();
+            return this;
+          }
+          /**
+           * <pre>
+           * Version of the BIOS currently installed.
+           * </pre>
+           *
+           * <code>optional string bios_version = 4;</code>
+           * @param value The bytes for biosVersion to set.
+           * @return This builder for chaining.
+           */
+          public Builder setBiosVersionBytes(
+              com.google.protobuf.ByteString value) {
+            copyOnWrite();
+            instance.setBiosVersionBytes(value);
+            return this;
+          }
+
+          /**
+           * <pre>
+           * What mode of BIOS is booted.
+           * </pre>
+           *
+           * <code>optional .metrics.SystemProfileProto.Hardware.BiosType bios_type = 5;</code>
+           * @return Whether the biosType field is set.
+           */
+          @java.lang.Override
+          public boolean hasBiosType() {
+            return instance.hasBiosType();
+          }
+          /**
+           * <pre>
+           * What mode of BIOS is booted.
+           * </pre>
+           *
+           * <code>optional .metrics.SystemProfileProto.Hardware.BiosType bios_type = 5;</code>
+           * @return The biosType.
+           */
+          @java.lang.Override
+          public org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.BiosType getBiosType() {
+            return instance.getBiosType();
+          }
+          /**
+           * <pre>
+           * What mode of BIOS is booted.
+           * </pre>
+           *
+           * <code>optional .metrics.SystemProfileProto.Hardware.BiosType bios_type = 5;</code>
+           * @param value The enum numeric value on the wire for biosType to set.
+           * @return This builder for chaining.
+           */
+          public Builder setBiosType(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.BiosType value) {
+            copyOnWrite();
+            instance.setBiosType(value);
+            return this;
+          }
+          /**
+           * <pre>
+           * What mode of BIOS is booted.
+           * </pre>
+           *
+           * <code>optional .metrics.SystemProfileProto.Hardware.BiosType bios_type = 5;</code>
+           * @return This builder for chaining.
+           */
+          public Builder clearBiosType() {
+            copyOnWrite();
+            instance.clearBiosType();
+            return this;
+          }
+
+          // @@protoc_insertion_point(builder_scope:metrics.SystemProfileProto.Hardware.Motherboard)
+        }
+        @java.lang.Override
+        @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+        protected final java.lang.Object dynamicMethod(
+            com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+            java.lang.Object arg0, java.lang.Object arg1) {
+          switch (method) {
+            case NEW_MUTABLE_INSTANCE: {
+              return new org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard();
+            }
+            case NEW_BUILDER: {
+              return new Builder();
+            }
+            case BUILD_MESSAGE_INFO: {
+                java.lang.Object[] objects = new java.lang.Object[] {
+                  "bitField0_",
+                  "manufacturer_",
+                  "model_",
+                  "biosManufacturer_",
+                  "biosVersion_",
+                  "biosType_",
+                  org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.BiosType.internalGetVerifier(),
+                };
+                java.lang.String info =
+                    "\u0001\u0005\u0000\u0001\u0001\u0005\u0005\u0000\u0000\u0000\u0001\u1008\u0000\u0002" +
+                    "\u1008\u0001\u0003\u1008\u0002\u0004\u1008\u0003\u0005\u100c\u0004";
+                return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+            }
+            // fall through
+            case GET_DEFAULT_INSTANCE: {
+              return DEFAULT_INSTANCE;
+            }
+            case GET_PARSER: {
+              com.google.protobuf.Parser<org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard> parser = PARSER;
+              if (parser == null) {
+                synchronized (org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard.class) {
+                  parser = PARSER;
+                  if (parser == null) {
+                    parser =
+                        new DefaultInstanceBasedParser<org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard>(
+                            DEFAULT_INSTANCE);
+                    PARSER = parser;
+                  }
+                }
+              }
+              return parser;
+          }
+          case GET_MEMOIZED_IS_INITIALIZED: {
+            return (byte) 1;
+          }
+          case SET_MEMOIZED_IS_INITIALIZED: {
+            return null;
+          }
+          }
+          throw new UnsupportedOperationException();
+        }
+
+
+        // @@protoc_insertion_point(class_scope:metrics.SystemProfileProto.Hardware.Motherboard)
+        private static final org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard DEFAULT_INSTANCE;
+        static {
+          Motherboard defaultInstance = new Motherboard();
+          // New instances are implicitly immutable so no need to make
+          // immutable.
+          DEFAULT_INSTANCE = defaultInstance;
+          com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+            Motherboard.class, defaultInstance);
+        }
+
+        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard getDefaultInstance() {
+          return DEFAULT_INSTANCE;
+        }
+
+        private static volatile com.google.protobuf.Parser<Motherboard> PARSER;
+
+        public static com.google.protobuf.Parser<Motherboard> parser() {
           return DEFAULT_INSTANCE.getParserForType();
         }
       }
@@ -7971,9 +10513,9 @@ public final class SystemProfileProtos {
       private java.lang.String cpuArchitecture_;
       /**
        * <pre>
-       * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
-       * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
-       * Not recorded on iOS.
+       * OS CPU architecture. Common options are: x86, x86_64, armv7l, armv8l,
+       * and aarch64.
+       * Started being correctly recorded on iOS in M90: crrev/c/2723012.
        * </pre>
        *
        * <code>optional string cpu_architecture = 1;</code>
@@ -7985,9 +10527,9 @@ public final class SystemProfileProtos {
       }
       /**
        * <pre>
-       * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
-       * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
-       * Not recorded on iOS.
+       * OS CPU architecture. Common options are: x86, x86_64, armv7l, armv8l,
+       * and aarch64.
+       * Started being correctly recorded on iOS in M90: crrev/c/2723012.
        * </pre>
        *
        * <code>optional string cpu_architecture = 1;</code>
@@ -7999,9 +10541,9 @@ public final class SystemProfileProtos {
       }
       /**
        * <pre>
-       * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
-       * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
-       * Not recorded on iOS.
+       * OS CPU architecture. Common options are: x86, x86_64, armv7l, armv8l,
+       * and aarch64.
+       * Started being correctly recorded on iOS in M90: crrev/c/2723012.
        * </pre>
        *
        * <code>optional string cpu_architecture = 1;</code>
@@ -8014,9 +10556,9 @@ public final class SystemProfileProtos {
       }
       /**
        * <pre>
-       * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
-       * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
-       * Not recorded on iOS.
+       * OS CPU architecture. Common options are: x86, x86_64, armv7l, armv8l,
+       * and aarch64.
+       * Started being correctly recorded on iOS in M90: crrev/c/2723012.
        * </pre>
        *
        * <code>optional string cpu_architecture = 1;</code>
@@ -8030,9 +10572,9 @@ public final class SystemProfileProtos {
       }
       /**
        * <pre>
-       * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
-       * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
-       * Not recorded on iOS.
+       * OS CPU architecture. Common options are: x86, x86_64, armv7l, armv8l,
+       * and aarch64.
+       * Started being correctly recorded on iOS in M90: crrev/c/2723012.
        * </pre>
        *
        * <code>optional string cpu_architecture = 1;</code>
@@ -8043,9 +10585,9 @@ public final class SystemProfileProtos {
       }
       /**
        * <pre>
-       * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
-       * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
-       * Not recorded on iOS.
+       * OS CPU architecture. Common options are: x86, x86_64, armv7l, armv8l,
+       * and aarch64.
+       * Started being correctly recorded on iOS in M90: crrev/c/2723012.
        * </pre>
        *
        * <code>optional string cpu_architecture = 1;</code>
@@ -8437,6 +10979,90 @@ public final class SystemProfileProtos {
         bitField0_ |= 0x00000020;
       }
 
+      public static final int CELLULAR_DEVICE_VARIANT_FIELD_NUMBER = 24;
+      private java.lang.String cellularDeviceVariant_;
+      /**
+       * <pre>
+       * This field is only sent on Chrome OS devices with cellular support.
+       * This represents the variant of cellular modem present on the device.
+       * </pre>
+       *
+       * <code>optional string cellular_device_variant = 24;</code>
+       * @return Whether the cellularDeviceVariant field is set.
+       */
+      @java.lang.Override
+      public boolean hasCellularDeviceVariant() {
+        return ((bitField0_ & 0x00000040) != 0);
+      }
+      /**
+       * <pre>
+       * This field is only sent on Chrome OS devices with cellular support.
+       * This represents the variant of cellular modem present on the device.
+       * </pre>
+       *
+       * <code>optional string cellular_device_variant = 24;</code>
+       * @return The cellularDeviceVariant.
+       */
+      @java.lang.Override
+      public java.lang.String getCellularDeviceVariant() {
+        return cellularDeviceVariant_;
+      }
+      /**
+       * <pre>
+       * This field is only sent on Chrome OS devices with cellular support.
+       * This represents the variant of cellular modem present on the device.
+       * </pre>
+       *
+       * <code>optional string cellular_device_variant = 24;</code>
+       * @return The bytes for cellularDeviceVariant.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getCellularDeviceVariantBytes() {
+        return com.google.protobuf.ByteString.copyFromUtf8(cellularDeviceVariant_);
+      }
+      /**
+       * <pre>
+       * This field is only sent on Chrome OS devices with cellular support.
+       * This represents the variant of cellular modem present on the device.
+       * </pre>
+       *
+       * <code>optional string cellular_device_variant = 24;</code>
+       * @param value The cellularDeviceVariant to set.
+       */
+      private void setCellularDeviceVariant(
+          java.lang.String value) {
+        value.getClass();
+  bitField0_ |= 0x00000040;
+        cellularDeviceVariant_ = value;
+      }
+      /**
+       * <pre>
+       * This field is only sent on Chrome OS devices with cellular support.
+       * This represents the variant of cellular modem present on the device.
+       * </pre>
+       *
+       * <code>optional string cellular_device_variant = 24;</code>
+       */
+      private void clearCellularDeviceVariant() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        cellularDeviceVariant_ = getDefaultInstance().getCellularDeviceVariant();
+      }
+      /**
+       * <pre>
+       * This field is only sent on Chrome OS devices with cellular support.
+       * This represents the variant of cellular modem present on the device.
+       * </pre>
+       *
+       * <code>optional string cellular_device_variant = 24;</code>
+       * @param value The bytes for cellularDeviceVariant to set.
+       */
+      private void setCellularDeviceVariantBytes(
+          com.google.protobuf.ByteString value) {
+        cellularDeviceVariant_ = value.toStringUtf8();
+        bitField0_ |= 0x00000040;
+      }
+
       public static final int SCREEN_COUNT_FIELD_NUMBER = 5;
       private int screenCount_;
       /**
@@ -8449,7 +11075,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasScreenCount() {
-        return ((bitField0_ & 0x00000040) != 0);
+        return ((bitField0_ & 0x00000080) != 0);
       }
       /**
        * <pre>
@@ -8472,7 +11098,7 @@ public final class SystemProfileProtos {
        * @param value The screenCount to set.
        */
       private void setScreenCount(int value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         screenCount_ = value;
       }
       /**
@@ -8483,7 +11109,7 @@ public final class SystemProfileProtos {
        * <code>optional int32 screen_count = 5;</code>
        */
       private void clearScreenCount() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
         screenCount_ = 0;
       }
 
@@ -8499,7 +11125,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasPrimaryScreenWidth() {
-        return ((bitField0_ & 0x00000080) != 0);
+        return ((bitField0_ & 0x00000100) != 0);
       }
       /**
        * <pre>
@@ -8522,7 +11148,7 @@ public final class SystemProfileProtos {
        * @param value The primaryScreenWidth to set.
        */
       private void setPrimaryScreenWidth(int value) {
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000100;
         primaryScreenWidth_ = value;
       }
       /**
@@ -8533,7 +11159,7 @@ public final class SystemProfileProtos {
        * <code>optional int32 primary_screen_width = 6;</code>
        */
       private void clearPrimaryScreenWidth() {
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000100);
         primaryScreenWidth_ = 0;
       }
 
@@ -8545,7 +11171,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasPrimaryScreenHeight() {
-        return ((bitField0_ & 0x00000100) != 0);
+        return ((bitField0_ & 0x00000200) != 0);
       }
       /**
        * <code>optional int32 primary_screen_height = 7;</code>
@@ -8560,14 +11186,14 @@ public final class SystemProfileProtos {
        * @param value The primaryScreenHeight to set.
        */
       private void setPrimaryScreenHeight(int value) {
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000200;
         primaryScreenHeight_ = value;
       }
       /**
        * <code>optional int32 primary_screen_height = 7;</code>
        */
       private void clearPrimaryScreenHeight() {
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000200);
         primaryScreenHeight_ = 0;
       }
 
@@ -8583,7 +11209,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasPrimaryScreenScaleFactor() {
-        return ((bitField0_ & 0x00000200) != 0);
+        return ((bitField0_ & 0x00000400) != 0);
       }
       /**
        * <pre>
@@ -8606,7 +11232,7 @@ public final class SystemProfileProtos {
        * @param value The primaryScreenScaleFactor to set.
        */
       private void setPrimaryScreenScaleFactor(float value) {
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         primaryScreenScaleFactor_ = value;
       }
       /**
@@ -8617,7 +11243,7 @@ public final class SystemProfileProtos {
        * <code>optional float primary_screen_scale_factor = 12;</code>
        */
       private void clearPrimaryScreenScaleFactor() {
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000400);
         primaryScreenScaleFactor_ = 0F;
       }
 
@@ -8633,7 +11259,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasMaxDpiX() {
-        return ((bitField0_ & 0x00000400) != 0);
+        return ((bitField0_ & 0x00000800) != 0);
       }
       /**
        * <pre>
@@ -8656,7 +11282,7 @@ public final class SystemProfileProtos {
        * @param value The maxDpiX to set.
        */
       private void setMaxDpiX(float value) {
-        bitField0_ |= 0x00000400;
+        bitField0_ |= 0x00000800;
         maxDpiX_ = value;
       }
       /**
@@ -8667,7 +11293,7 @@ public final class SystemProfileProtos {
        * <code>optional float max_dpi_x = 9;</code>
        */
       private void clearMaxDpiX() {
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00000800);
         maxDpiX_ = 0F;
       }
 
@@ -8679,7 +11305,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasMaxDpiY() {
-        return ((bitField0_ & 0x00000800) != 0);
+        return ((bitField0_ & 0x00001000) != 0);
       }
       /**
        * <code>optional float max_dpi_y = 10;</code>
@@ -8694,37 +11320,29 @@ public final class SystemProfileProtos {
        * @param value The maxDpiY to set.
        */
       private void setMaxDpiY(float value) {
-        bitField0_ |= 0x00000800;
+        bitField0_ |= 0x00001000;
         maxDpiY_ = value;
       }
       /**
        * <code>optional float max_dpi_y = 10;</code>
        */
       private void clearMaxDpiY() {
-        bitField0_ = (bitField0_ & ~0x00000800);
+        bitField0_ = (bitField0_ & ~0x00001000);
         maxDpiY_ = 0F;
       }
 
-      public static final int FORM_FACTOR_FIELD_NUMBER = 19;
+      public static final int FORM_FACTOR_FIELD_NUMBER = 22;
       private int formFactor_;
       /**
-       * <pre>
-       * The device form factor.
-       * </pre>
-       *
-       * <code>optional .metrics.SystemProfileProto.Hardware.FormFactor form_factor = 19;</code>
+       * <code>optional .metrics.SystemProfileProto.Hardware.FormFactor form_factor = 22;</code>
        * @return Whether the formFactor field is set.
        */
       @java.lang.Override
       public boolean hasFormFactor() {
-        return ((bitField0_ & 0x00001000) != 0);
+        return ((bitField0_ & 0x00002000) != 0);
       }
       /**
-       * <pre>
-       * The device form factor.
-       * </pre>
-       *
-       * <code>optional .metrics.SystemProfileProto.Hardware.FormFactor form_factor = 19;</code>
+       * <code>optional .metrics.SystemProfileProto.Hardware.FormFactor form_factor = 22;</code>
        * @return The formFactor.
        */
       @java.lang.Override
@@ -8733,26 +11351,18 @@ public final class SystemProfileProtos {
         return result == null ? org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.FormFactor.FORM_FACTOR_UNKNOWN : result;
       }
       /**
-       * <pre>
-       * The device form factor.
-       * </pre>
-       *
-       * <code>optional .metrics.SystemProfileProto.Hardware.FormFactor form_factor = 19;</code>
+       * <code>optional .metrics.SystemProfileProto.Hardware.FormFactor form_factor = 22;</code>
        * @param value The formFactor to set.
        */
       private void setFormFactor(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.FormFactor value) {
         formFactor_ = value.getNumber();
-        bitField0_ |= 0x00001000;
+        bitField0_ |= 0x00002000;
       }
       /**
-       * <pre>
-       * The device form factor.
-       * </pre>
-       *
-       * <code>optional .metrics.SystemProfileProto.Hardware.FormFactor form_factor = 19;</code>
+       * <code>optional .metrics.SystemProfileProto.Hardware.FormFactor form_factor = 22;</code>
        */
       private void clearFormFactor() {
-        bitField0_ = (bitField0_ & ~0x00001000);
+        bitField0_ = (bitField0_ & ~0x00002000);
         formFactor_ = 0;
       }
 
@@ -8763,7 +11373,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasCpu() {
-        return ((bitField0_ & 0x00002000) != 0);
+        return ((bitField0_ & 0x00004000) != 0);
       }
       /**
        * <code>optional .metrics.SystemProfileProto.Hardware.CPU cpu = 13;</code>
@@ -8778,7 +11388,7 @@ public final class SystemProfileProtos {
       private void setCpu(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.CPU value) {
         value.getClass();
   cpu_ = value;
-        bitField0_ |= 0x00002000;
+        bitField0_ |= 0x00004000;
         }
       /**
        * <code>optional .metrics.SystemProfileProto.Hardware.CPU cpu = 13;</code>
@@ -8793,13 +11403,59 @@ public final class SystemProfileProtos {
         } else {
           cpu_ = value;
         }
-        bitField0_ |= 0x00002000;
+        bitField0_ |= 0x00004000;
       }
       /**
        * <code>optional .metrics.SystemProfileProto.Hardware.CPU cpu = 13;</code>
        */
       private void clearCpu() {  cpu_ = null;
-        bitField0_ = (bitField0_ & ~0x00002000);
+        bitField0_ = (bitField0_ & ~0x00004000);
+      }
+
+      public static final int MOTHERBOARD_FIELD_NUMBER = 25;
+      private org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard motherboard_;
+      /**
+       * <code>optional .metrics.SystemProfileProto.Hardware.Motherboard motherboard = 25;</code>
+       */
+      @java.lang.Override
+      public boolean hasMotherboard() {
+        return ((bitField0_ & 0x00008000) != 0);
+      }
+      /**
+       * <code>optional .metrics.SystemProfileProto.Hardware.Motherboard motherboard = 25;</code>
+       */
+      @java.lang.Override
+      public org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard getMotherboard() {
+        return motherboard_ == null ? org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard.getDefaultInstance() : motherboard_;
+      }
+      /**
+       * <code>optional .metrics.SystemProfileProto.Hardware.Motherboard motherboard = 25;</code>
+       */
+      private void setMotherboard(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard value) {
+        value.getClass();
+  motherboard_ = value;
+        bitField0_ |= 0x00008000;
+        }
+      /**
+       * <code>optional .metrics.SystemProfileProto.Hardware.Motherboard motherboard = 25;</code>
+       */
+      @java.lang.SuppressWarnings({"ReferenceEquality"})
+      private void mergeMotherboard(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard value) {
+        value.getClass();
+  if (motherboard_ != null &&
+            motherboard_ != org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard.getDefaultInstance()) {
+          motherboard_ =
+            org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard.newBuilder(motherboard_).mergeFrom(value).buildPartial();
+        } else {
+          motherboard_ = value;
+        }
+        bitField0_ |= 0x00008000;
+      }
+      /**
+       * <code>optional .metrics.SystemProfileProto.Hardware.Motherboard motherboard = 25;</code>
+       */
+      private void clearMotherboard() {  motherboard_ = null;
+        bitField0_ = (bitField0_ & ~0x00008000);
       }
 
       public static final int GPU_FIELD_NUMBER = 8;
@@ -8809,7 +11465,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasGpu() {
-        return ((bitField0_ & 0x00004000) != 0);
+        return ((bitField0_ & 0x00010000) != 0);
       }
       /**
        * <code>optional .metrics.SystemProfileProto.Hardware.Graphics gpu = 8;</code>
@@ -8824,7 +11480,7 @@ public final class SystemProfileProtos {
       private void setGpu(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Graphics value) {
         value.getClass();
   gpu_ = value;
-        bitField0_ |= 0x00004000;
+        bitField0_ |= 0x00010000;
         }
       /**
        * <code>optional .metrics.SystemProfileProto.Hardware.Graphics gpu = 8;</code>
@@ -8839,13 +11495,13 @@ public final class SystemProfileProtos {
         } else {
           gpu_ = value;
         }
-        bitField0_ |= 0x00004000;
+        bitField0_ |= 0x00010000;
       }
       /**
        * <code>optional .metrics.SystemProfileProto.Hardware.Graphics gpu = 8;</code>
        */
       private void clearGpu() {  gpu_ = null;
-        bitField0_ = (bitField0_ & ~0x00004000);
+        bitField0_ = (bitField0_ & ~0x00010000);
       }
 
       public static final int INTERNAL_DISPLAY_SUPPORTS_TOUCH_FIELD_NUMBER = 14;
@@ -8861,7 +11517,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasInternalDisplaySupportsTouch() {
-        return ((bitField0_ & 0x00008000) != 0);
+        return ((bitField0_ & 0x00020000) != 0);
       }
       /**
        * <pre>
@@ -8886,7 +11542,7 @@ public final class SystemProfileProtos {
        * @param value The internalDisplaySupportsTouch to set.
        */
       private void setInternalDisplaySupportsTouch(boolean value) {
-        bitField0_ |= 0x00008000;
+        bitField0_ |= 0x00020000;
         internalDisplaySupportsTouch_ = value;
       }
       /**
@@ -8898,7 +11554,7 @@ public final class SystemProfileProtos {
        * <code>optional bool internal_display_supports_touch = 14;</code>
        */
       private void clearInternalDisplaySupportsTouch() {
-        bitField0_ = (bitField0_ & ~0x00008000);
+        bitField0_ = (bitField0_ & ~0x00020000);
         internalDisplaySupportsTouch_ = false;
       }
 
@@ -9051,7 +11707,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasAppDrive() {
-        return ((bitField0_ & 0x00010000) != 0);
+        return ((bitField0_ & 0x00040000) != 0);
       }
       /**
        * <pre>
@@ -9074,7 +11730,7 @@ public final class SystemProfileProtos {
       private void setAppDrive(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Drive value) {
         value.getClass();
   appDrive_ = value;
-        bitField0_ |= 0x00010000;
+        bitField0_ |= 0x00040000;
         }
       /**
        * <pre>
@@ -9093,7 +11749,7 @@ public final class SystemProfileProtos {
         } else {
           appDrive_ = value;
         }
-        bitField0_ |= 0x00010000;
+        bitField0_ |= 0x00040000;
       }
       /**
        * <pre>
@@ -9103,7 +11759,7 @@ public final class SystemProfileProtos {
        * <code>optional .metrics.SystemProfileProto.Hardware.Drive app_drive = 16;</code>
        */
       private void clearAppDrive() {  appDrive_ = null;
-        bitField0_ = (bitField0_ & ~0x00010000);
+        bitField0_ = (bitField0_ & ~0x00040000);
       }
 
       public static final int USER_DATA_DRIVE_FIELD_NUMBER = 17;
@@ -9117,7 +11773,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasUserDataDrive() {
-        return ((bitField0_ & 0x00020000) != 0);
+        return ((bitField0_ & 0x00080000) != 0);
       }
       /**
        * <pre>
@@ -9140,7 +11796,7 @@ public final class SystemProfileProtos {
       private void setUserDataDrive(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Drive value) {
         value.getClass();
   userDataDrive_ = value;
-        bitField0_ |= 0x00020000;
+        bitField0_ |= 0x00080000;
         }
       /**
        * <pre>
@@ -9159,7 +11815,7 @@ public final class SystemProfileProtos {
         } else {
           userDataDrive_ = value;
         }
-        bitField0_ |= 0x00020000;
+        bitField0_ |= 0x00080000;
       }
       /**
        * <pre>
@@ -9169,7 +11825,96 @@ public final class SystemProfileProtos {
        * <code>optional .metrics.SystemProfileProto.Hardware.Drive user_data_drive = 17;</code>
        */
       private void clearUserDataDrive() {  userDataDrive_ = null;
-        bitField0_ = (bitField0_ & ~0x00020000);
+        bitField0_ = (bitField0_ & ~0x00080000);
+      }
+
+      public static final int TPM_TYPE_FIELD_NUMBER = 23;
+      private int tpmType_;
+      /**
+       * <code>optional .metrics.SystemProfileProto.Hardware.TpmType tpm_type = 23;</code>
+       * @return Whether the tpmType field is set.
+       */
+      @java.lang.Override
+      public boolean hasTpmType() {
+        return ((bitField0_ & 0x00100000) != 0);
+      }
+      /**
+       * <code>optional .metrics.SystemProfileProto.Hardware.TpmType tpm_type = 23;</code>
+       * @return The tpmType.
+       */
+      @java.lang.Override
+      public org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.TpmType getTpmType() {
+        org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.TpmType result = org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.TpmType.forNumber(tpmType_);
+        return result == null ? org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.TpmType.TPM_TYPE_UNKNOWN : result;
+      }
+      /**
+       * <code>optional .metrics.SystemProfileProto.Hardware.TpmType tpm_type = 23;</code>
+       * @param value The tpmType to set.
+       */
+      private void setTpmType(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.TpmType value) {
+        tpmType_ = value.getNumber();
+        bitField0_ |= 0x00100000;
+      }
+      /**
+       * <code>optional .metrics.SystemProfileProto.Hardware.TpmType tpm_type = 23;</code>
+       */
+      private void clearTpmType() {
+        bitField0_ = (bitField0_ & ~0x00100000);
+        tpmType_ = 0;
+      }
+
+      public static final int TPM_FIRMWARE_VERSION_FIELD_NUMBER = 26;
+      private long tpmFirmwareVersion_;
+      /**
+       * <pre>
+       * Firmware version of the TPM on the device. This field is only filled in
+       * on ChromeOS devices (both CrOS and LaCrOS platforms).
+       * </pre>
+       *
+       * <code>optional uint64 tpm_firmware_version = 26;</code>
+       * @return Whether the tpmFirmwareVersion field is set.
+       */
+      @java.lang.Override
+      public boolean hasTpmFirmwareVersion() {
+        return ((bitField0_ & 0x00200000) != 0);
+      }
+      /**
+       * <pre>
+       * Firmware version of the TPM on the device. This field is only filled in
+       * on ChromeOS devices (both CrOS and LaCrOS platforms).
+       * </pre>
+       *
+       * <code>optional uint64 tpm_firmware_version = 26;</code>
+       * @return The tpmFirmwareVersion.
+       */
+      @java.lang.Override
+      public long getTpmFirmwareVersion() {
+        return tpmFirmwareVersion_;
+      }
+      /**
+       * <pre>
+       * Firmware version of the TPM on the device. This field is only filled in
+       * on ChromeOS devices (both CrOS and LaCrOS platforms).
+       * </pre>
+       *
+       * <code>optional uint64 tpm_firmware_version = 26;</code>
+       * @param value The tpmFirmwareVersion to set.
+       */
+      private void setTpmFirmwareVersion(long value) {
+        bitField0_ |= 0x00200000;
+        tpmFirmwareVersion_ = value;
+      }
+      /**
+       * <pre>
+       * Firmware version of the TPM on the device. This field is only filled in
+       * on ChromeOS devices (both CrOS and LaCrOS platforms).
+       * </pre>
+       *
+       * <code>optional uint64 tpm_firmware_version = 26;</code>
+       */
+      private void clearTpmFirmwareVersion() {
+        bitField0_ = (bitField0_ & ~0x00200000);
+        tpmFirmwareVersion_ = 0L;
       }
 
       public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware parseFrom(
@@ -9256,7 +12001,7 @@ public final class SystemProfileProtos {
       /**
        * <pre>
        * Information on the user's hardware.
-       * Next tag: 22
+       * Next tag: 27
        * </pre>
        *
        * Protobuf type {@code metrics.SystemProfileProto.Hardware}
@@ -9274,9 +12019,9 @@ public final class SystemProfileProtos {
 
         /**
          * <pre>
-         * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
-         * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
-         * Not recorded on iOS.
+         * OS CPU architecture. Common options are: x86, x86_64, armv7l, armv8l,
+         * and aarch64.
+         * Started being correctly recorded on iOS in M90: crrev/c/2723012.
          * </pre>
          *
          * <code>optional string cpu_architecture = 1;</code>
@@ -9288,9 +12033,9 @@ public final class SystemProfileProtos {
         }
         /**
          * <pre>
-         * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
-         * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
-         * Not recorded on iOS.
+         * OS CPU architecture. Common options are: x86, x86_64, armv7l, armv8l,
+         * and aarch64.
+         * Started being correctly recorded on iOS in M90: crrev/c/2723012.
          * </pre>
          *
          * <code>optional string cpu_architecture = 1;</code>
@@ -9302,9 +12047,9 @@ public final class SystemProfileProtos {
         }
         /**
          * <pre>
-         * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
-         * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
-         * Not recorded on iOS.
+         * OS CPU architecture. Common options are: x86, x86_64, armv7l, armv8l,
+         * and aarch64.
+         * Started being correctly recorded on iOS in M90: crrev/c/2723012.
          * </pre>
          *
          * <code>optional string cpu_architecture = 1;</code>
@@ -9317,9 +12062,9 @@ public final class SystemProfileProtos {
         }
         /**
          * <pre>
-         * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
-         * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
-         * Not recorded on iOS.
+         * OS CPU architecture. Common options are: x86, x86_64, armv7l, armv8l,
+         * and aarch64.
+         * Started being correctly recorded on iOS in M90: crrev/c/2723012.
          * </pre>
          *
          * <code>optional string cpu_architecture = 1;</code>
@@ -9334,9 +12079,9 @@ public final class SystemProfileProtos {
         }
         /**
          * <pre>
-         * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
-         * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
-         * Not recorded on iOS.
+         * OS CPU architecture. Common options are: x86, x86_64, armv7l, armv8l,
+         * and aarch64.
+         * Started being correctly recorded on iOS in M90: crrev/c/2723012.
          * </pre>
          *
          * <code>optional string cpu_architecture = 1;</code>
@@ -9349,9 +12094,9 @@ public final class SystemProfileProtos {
         }
         /**
          * <pre>
-         * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
-         * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
-         * Not recorded on iOS.
+         * OS CPU architecture. Common options are: x86, x86_64, armv7l, armv8l,
+         * and aarch64.
+         * Started being correctly recorded on iOS in M90: crrev/c/2723012.
          * </pre>
          *
          * <code>optional string cpu_architecture = 1;</code>
@@ -9760,6 +12505,93 @@ public final class SystemProfileProtos {
 
         /**
          * <pre>
+         * This field is only sent on Chrome OS devices with cellular support.
+         * This represents the variant of cellular modem present on the device.
+         * </pre>
+         *
+         * <code>optional string cellular_device_variant = 24;</code>
+         * @return Whether the cellularDeviceVariant field is set.
+         */
+        @java.lang.Override
+        public boolean hasCellularDeviceVariant() {
+          return instance.hasCellularDeviceVariant();
+        }
+        /**
+         * <pre>
+         * This field is only sent on Chrome OS devices with cellular support.
+         * This represents the variant of cellular modem present on the device.
+         * </pre>
+         *
+         * <code>optional string cellular_device_variant = 24;</code>
+         * @return The cellularDeviceVariant.
+         */
+        @java.lang.Override
+        public java.lang.String getCellularDeviceVariant() {
+          return instance.getCellularDeviceVariant();
+        }
+        /**
+         * <pre>
+         * This field is only sent on Chrome OS devices with cellular support.
+         * This represents the variant of cellular modem present on the device.
+         * </pre>
+         *
+         * <code>optional string cellular_device_variant = 24;</code>
+         * @return The bytes for cellularDeviceVariant.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString
+            getCellularDeviceVariantBytes() {
+          return instance.getCellularDeviceVariantBytes();
+        }
+        /**
+         * <pre>
+         * This field is only sent on Chrome OS devices with cellular support.
+         * This represents the variant of cellular modem present on the device.
+         * </pre>
+         *
+         * <code>optional string cellular_device_variant = 24;</code>
+         * @param value The cellularDeviceVariant to set.
+         * @return This builder for chaining.
+         */
+        public Builder setCellularDeviceVariant(
+            java.lang.String value) {
+          copyOnWrite();
+          instance.setCellularDeviceVariant(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * This field is only sent on Chrome OS devices with cellular support.
+         * This represents the variant of cellular modem present on the device.
+         * </pre>
+         *
+         * <code>optional string cellular_device_variant = 24;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearCellularDeviceVariant() {
+          copyOnWrite();
+          instance.clearCellularDeviceVariant();
+          return this;
+        }
+        /**
+         * <pre>
+         * This field is only sent on Chrome OS devices with cellular support.
+         * This represents the variant of cellular modem present on the device.
+         * </pre>
+         *
+         * <code>optional string cellular_device_variant = 24;</code>
+         * @param value The bytes for cellularDeviceVariant to set.
+         * @return This builder for chaining.
+         */
+        public Builder setCellularDeviceVariantBytes(
+            com.google.protobuf.ByteString value) {
+          copyOnWrite();
+          instance.setCellularDeviceVariantBytes(value);
+          return this;
+        }
+
+        /**
+         * <pre>
          * The number of physical screens.
          * </pre>
          *
@@ -10039,11 +12871,7 @@ public final class SystemProfileProtos {
         }
 
         /**
-         * <pre>
-         * The device form factor.
-         * </pre>
-         *
-         * <code>optional .metrics.SystemProfileProto.Hardware.FormFactor form_factor = 19;</code>
+         * <code>optional .metrics.SystemProfileProto.Hardware.FormFactor form_factor = 22;</code>
          * @return Whether the formFactor field is set.
          */
         @java.lang.Override
@@ -10051,11 +12879,7 @@ public final class SystemProfileProtos {
           return instance.hasFormFactor();
         }
         /**
-         * <pre>
-         * The device form factor.
-         * </pre>
-         *
-         * <code>optional .metrics.SystemProfileProto.Hardware.FormFactor form_factor = 19;</code>
+         * <code>optional .metrics.SystemProfileProto.Hardware.FormFactor form_factor = 22;</code>
          * @return The formFactor.
          */
         @java.lang.Override
@@ -10063,11 +12887,7 @@ public final class SystemProfileProtos {
           return instance.getFormFactor();
         }
         /**
-         * <pre>
-         * The device form factor.
-         * </pre>
-         *
-         * <code>optional .metrics.SystemProfileProto.Hardware.FormFactor form_factor = 19;</code>
+         * <code>optional .metrics.SystemProfileProto.Hardware.FormFactor form_factor = 22;</code>
          * @param value The enum numeric value on the wire for formFactor to set.
          * @return This builder for chaining.
          */
@@ -10077,11 +12897,7 @@ public final class SystemProfileProtos {
           return this;
         }
         /**
-         * <pre>
-         * The device form factor.
-         * </pre>
-         *
-         * <code>optional .metrics.SystemProfileProto.Hardware.FormFactor form_factor = 19;</code>
+         * <code>optional .metrics.SystemProfileProto.Hardware.FormFactor form_factor = 22;</code>
          * @return This builder for chaining.
          */
         public Builder clearFormFactor() {
@@ -10134,6 +12950,53 @@ public final class SystemProfileProtos {
          */
         public Builder clearCpu() {  copyOnWrite();
           instance.clearCpu();
+          return this;
+        }
+
+        /**
+         * <code>optional .metrics.SystemProfileProto.Hardware.Motherboard motherboard = 25;</code>
+         */
+        @java.lang.Override
+        public boolean hasMotherboard() {
+          return instance.hasMotherboard();
+        }
+        /**
+         * <code>optional .metrics.SystemProfileProto.Hardware.Motherboard motherboard = 25;</code>
+         */
+        @java.lang.Override
+        public org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard getMotherboard() {
+          return instance.getMotherboard();
+        }
+        /**
+         * <code>optional .metrics.SystemProfileProto.Hardware.Motherboard motherboard = 25;</code>
+         */
+        public Builder setMotherboard(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard value) {
+          copyOnWrite();
+          instance.setMotherboard(value);
+          return this;
+          }
+        /**
+         * <code>optional .metrics.SystemProfileProto.Hardware.Motherboard motherboard = 25;</code>
+         */
+        public Builder setMotherboard(
+            org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard.Builder builderForValue) {
+          copyOnWrite();
+          instance.setMotherboard(builderForValue.build());
+          return this;
+        }
+        /**
+         * <code>optional .metrics.SystemProfileProto.Hardware.Motherboard motherboard = 25;</code>
+         */
+        public Builder mergeMotherboard(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Motherboard value) {
+          copyOnWrite();
+          instance.mergeMotherboard(value);
+          return this;
+        }
+        /**
+         * <code>optional .metrics.SystemProfileProto.Hardware.Motherboard motherboard = 25;</code>
+         */
+        public Builder clearMotherboard() {  copyOnWrite();
+          instance.clearMotherboard();
           return this;
         }
 
@@ -10532,6 +13395,98 @@ public final class SystemProfileProtos {
           return this;
         }
 
+        /**
+         * <code>optional .metrics.SystemProfileProto.Hardware.TpmType tpm_type = 23;</code>
+         * @return Whether the tpmType field is set.
+         */
+        @java.lang.Override
+        public boolean hasTpmType() {
+          return instance.hasTpmType();
+        }
+        /**
+         * <code>optional .metrics.SystemProfileProto.Hardware.TpmType tpm_type = 23;</code>
+         * @return The tpmType.
+         */
+        @java.lang.Override
+        public org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.TpmType getTpmType() {
+          return instance.getTpmType();
+        }
+        /**
+         * <code>optional .metrics.SystemProfileProto.Hardware.TpmType tpm_type = 23;</code>
+         * @param value The enum numeric value on the wire for tpmType to set.
+         * @return This builder for chaining.
+         */
+        public Builder setTpmType(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.TpmType value) {
+          copyOnWrite();
+          instance.setTpmType(value);
+          return this;
+        }
+        /**
+         * <code>optional .metrics.SystemProfileProto.Hardware.TpmType tpm_type = 23;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearTpmType() {
+          copyOnWrite();
+          instance.clearTpmType();
+          return this;
+        }
+
+        /**
+         * <pre>
+         * Firmware version of the TPM on the device. This field is only filled in
+         * on ChromeOS devices (both CrOS and LaCrOS platforms).
+         * </pre>
+         *
+         * <code>optional uint64 tpm_firmware_version = 26;</code>
+         * @return Whether the tpmFirmwareVersion field is set.
+         */
+        @java.lang.Override
+        public boolean hasTpmFirmwareVersion() {
+          return instance.hasTpmFirmwareVersion();
+        }
+        /**
+         * <pre>
+         * Firmware version of the TPM on the device. This field is only filled in
+         * on ChromeOS devices (both CrOS and LaCrOS platforms).
+         * </pre>
+         *
+         * <code>optional uint64 tpm_firmware_version = 26;</code>
+         * @return The tpmFirmwareVersion.
+         */
+        @java.lang.Override
+        public long getTpmFirmwareVersion() {
+          return instance.getTpmFirmwareVersion();
+        }
+        /**
+         * <pre>
+         * Firmware version of the TPM on the device. This field is only filled in
+         * on ChromeOS devices (both CrOS and LaCrOS platforms).
+         * </pre>
+         *
+         * <code>optional uint64 tpm_firmware_version = 26;</code>
+         * @param value The tpmFirmwareVersion to set.
+         * @return This builder for chaining.
+         */
+        public Builder setTpmFirmwareVersion(long value) {
+          copyOnWrite();
+          instance.setTpmFirmwareVersion(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Firmware version of the TPM on the device. This field is only filled in
+         * on ChromeOS devices (both CrOS and LaCrOS platforms).
+         * </pre>
+         *
+         * <code>optional uint64 tpm_firmware_version = 26;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearTpmFirmwareVersion() {
+          copyOnWrite();
+          instance.clearTpmFirmwareVersion();
+          return this;
+        }
+
         // @@protoc_insertion_point(builder_scope:metrics.SystemProfileProto.Hardware)
       }
       @java.lang.Override
@@ -10565,18 +13520,24 @@ public final class SystemProfileProtos {
                 "appDrive_",
                 "userDataDrive_",
                 "fullHardwareClass_",
-                "formFactor_",
-                org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.FormFactor.internalGetVerifier(),
                 "internalStorageDevices_",
                 org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.InternalStorageDevice.class,
                 "appCpuArchitecture_",
+                "formFactor_",
+                org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.FormFactor.internalGetVerifier(),
+                "tpmType_",
+                org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.TpmType.internalGetVerifier(),
+                "cellularDeviceVariant_",
+                "motherboard_",
+                "tpmFirmwareVersion_",
               };
               java.lang.String info =
-                  "\u0001\u0013\u0000\u0001\u0001\u0015\u0013\u0000\u0001\u0000\u0001\u1008\u0000\u0002" +
-                  "\u1002\u0002\u0003\u1002\u0003\u0004\u1008\u0004\u0005\u1004\u0006\u0006\u1004\u0007" +
-                  "\u0007\u1004\b\b\u1009\u000e\t\u1001\n\n\u1001\u000b\f\u1001\t\r\u1009\r\u000e\u1007" +
-                  "\u000f\u0010\u1009\u0010\u0011\u1009\u0011\u0012\u1008\u0005\u0013\u100c\f\u0014" +
-                  "\u001b\u0015\u1008\u0001";
+                  "\u0001\u0017\u0000\u0001\u0001\u001a\u0017\u0000\u0001\u0000\u0001\u1008\u0000\u0002" +
+                  "\u1002\u0002\u0003\u1002\u0003\u0004\u1008\u0004\u0005\u1004\u0007\u0006\u1004\b" +
+                  "\u0007\u1004\t\b\u1009\u0010\t\u1001\u000b\n\u1001\f\f\u1001\n\r\u1009\u000e\u000e" +
+                  "\u1007\u0011\u0010\u1009\u0012\u0011\u1009\u0013\u0012\u1008\u0005\u0014\u001b\u0015" +
+                  "\u1008\u0001\u0016\u100c\r\u0017\u100c\u0014\u0018\u1008\u0006\u0019\u1009\u000f" +
+                  "\u001a\u1003\u0015";
               return newMessageInfo(DEFAULT_INSTANCE, info, objects);
           }
           // fall through
@@ -10982,6 +13943,18 @@ public final class SystemProfileProtos {
          * <code>WIFI_PHY_LAYER_PROTOCOL_UNKNOWN = 6;</code>
          */
         WIFI_PHY_LAYER_PROTOCOL_UNKNOWN(6),
+        /**
+         * <code>WIFI_PHY_LAYER_PROTOCOL_AC = 7;</code>
+         */
+        WIFI_PHY_LAYER_PROTOCOL_AC(7),
+        /**
+         * <code>WIFI_PHY_LAYER_PROTOCOL_AD = 8;</code>
+         */
+        WIFI_PHY_LAYER_PROTOCOL_AD(8),
+        /**
+         * <code>WIFI_PHY_LAYER_PROTOCOL_AX = 9;</code>
+         */
+        WIFI_PHY_LAYER_PROTOCOL_AX(9),
         ;
 
         /**
@@ -11012,6 +13985,18 @@ public final class SystemProfileProtos {
          * <code>WIFI_PHY_LAYER_PROTOCOL_UNKNOWN = 6;</code>
          */
         public static final int WIFI_PHY_LAYER_PROTOCOL_UNKNOWN_VALUE = 6;
+        /**
+         * <code>WIFI_PHY_LAYER_PROTOCOL_AC = 7;</code>
+         */
+        public static final int WIFI_PHY_LAYER_PROTOCOL_AC_VALUE = 7;
+        /**
+         * <code>WIFI_PHY_LAYER_PROTOCOL_AD = 8;</code>
+         */
+        public static final int WIFI_PHY_LAYER_PROTOCOL_AD_VALUE = 8;
+        /**
+         * <code>WIFI_PHY_LAYER_PROTOCOL_AX = 9;</code>
+         */
+        public static final int WIFI_PHY_LAYER_PROTOCOL_AX_VALUE = 9;
 
 
         @java.lang.Override
@@ -11038,6 +14023,9 @@ public final class SystemProfileProtos {
             case 4: return WIFI_PHY_LAYER_PROTOCOL_G;
             case 5: return WIFI_PHY_LAYER_PROTOCOL_N;
             case 6: return WIFI_PHY_LAYER_PROTOCOL_UNKNOWN;
+            case 7: return WIFI_PHY_LAYER_PROTOCOL_AC;
+            case 8: return WIFI_PHY_LAYER_PROTOCOL_AD;
+            case 9: return WIFI_PHY_LAYER_PROTOCOL_AX;
             default: return null;
           }
         }
@@ -13849,973 +16837,6 @@ public final class SystemProfileProtos {
       }
     }
 
-    public interface PluginOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:metrics.SystemProfileProto.Plugin)
-        com.google.protobuf.MessageLiteOrBuilder {
-
-      /**
-       * <pre>
-       * The plugin's self-reported name and filename (without path).
-       * </pre>
-       *
-       * <code>optional string name = 1;</code>
-       * @return Whether the name field is set.
-       */
-      boolean hasName();
-      /**
-       * <pre>
-       * The plugin's self-reported name and filename (without path).
-       * </pre>
-       *
-       * <code>optional string name = 1;</code>
-       * @return The name.
-       */
-      java.lang.String getName();
-      /**
-       * <pre>
-       * The plugin's self-reported name and filename (without path).
-       * </pre>
-       *
-       * <code>optional string name = 1;</code>
-       * @return The bytes for name.
-       */
-      com.google.protobuf.ByteString
-          getNameBytes();
-
-      /**
-       * <code>optional string filename = 2;</code>
-       * @return Whether the filename field is set.
-       */
-      boolean hasFilename();
-      /**
-       * <code>optional string filename = 2;</code>
-       * @return The filename.
-       */
-      java.lang.String getFilename();
-      /**
-       * <code>optional string filename = 2;</code>
-       * @return The bytes for filename.
-       */
-      com.google.protobuf.ByteString
-          getFilenameBytes();
-
-      /**
-       * <pre>
-       * The plugin's version.
-       * </pre>
-       *
-       * <code>optional string version = 3;</code>
-       * @return Whether the version field is set.
-       */
-      boolean hasVersion();
-      /**
-       * <pre>
-       * The plugin's version.
-       * </pre>
-       *
-       * <code>optional string version = 3;</code>
-       * @return The version.
-       */
-      java.lang.String getVersion();
-      /**
-       * <pre>
-       * The plugin's version.
-       * </pre>
-       *
-       * <code>optional string version = 3;</code>
-       * @return The bytes for version.
-       */
-      com.google.protobuf.ByteString
-          getVersionBytes();
-
-      /**
-       * <pre>
-       * True if the plugin is disabled.
-       * If a client has multiple local Chrome user accounts, this is logged based
-       * on the first user account launched during the current session.
-       * </pre>
-       *
-       * <code>optional bool is_disabled = 4;</code>
-       * @return Whether the isDisabled field is set.
-       */
-      boolean hasIsDisabled();
-      /**
-       * <pre>
-       * True if the plugin is disabled.
-       * If a client has multiple local Chrome user accounts, this is logged based
-       * on the first user account launched during the current session.
-       * </pre>
-       *
-       * <code>optional bool is_disabled = 4;</code>
-       * @return The isDisabled.
-       */
-      boolean getIsDisabled();
-
-      /**
-       * <pre>
-       * True if the plugin is PPAPI.
-       * </pre>
-       *
-       * <code>optional bool is_pepper = 5;</code>
-       * @return Whether the isPepper field is set.
-       */
-      boolean hasIsPepper();
-      /**
-       * <pre>
-       * True if the plugin is PPAPI.
-       * </pre>
-       *
-       * <code>optional bool is_pepper = 5;</code>
-       * @return The isPepper.
-       */
-      boolean getIsPepper();
-    }
-    /**
-     * <pre>
-     * Information on all installed plugins.
-     * </pre>
-     *
-     * Protobuf type {@code metrics.SystemProfileProto.Plugin}
-     */
-    public  static final class Plugin extends
-        com.google.protobuf.GeneratedMessageLite<
-            Plugin, Plugin.Builder> implements
-        // @@protoc_insertion_point(message_implements:metrics.SystemProfileProto.Plugin)
-        PluginOrBuilder {
-      private Plugin() {
-        name_ = "";
-        filename_ = "";
-        version_ = "";
-      }
-      private int bitField0_;
-      public static final int NAME_FIELD_NUMBER = 1;
-      private java.lang.String name_;
-      /**
-       * <pre>
-       * The plugin's self-reported name and filename (without path).
-       * </pre>
-       *
-       * <code>optional string name = 1;</code>
-       * @return Whether the name field is set.
-       */
-      @java.lang.Override
-      public boolean hasName() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <pre>
-       * The plugin's self-reported name and filename (without path).
-       * </pre>
-       *
-       * <code>optional string name = 1;</code>
-       * @return The name.
-       */
-      @java.lang.Override
-      public java.lang.String getName() {
-        return name_;
-      }
-      /**
-       * <pre>
-       * The plugin's self-reported name and filename (without path).
-       * </pre>
-       *
-       * <code>optional string name = 1;</code>
-       * @return The bytes for name.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getNameBytes() {
-        return com.google.protobuf.ByteString.copyFromUtf8(name_);
-      }
-      /**
-       * <pre>
-       * The plugin's self-reported name and filename (without path).
-       * </pre>
-       *
-       * <code>optional string name = 1;</code>
-       * @param value The name to set.
-       */
-      private void setName(
-          java.lang.String value) {
-        value.getClass();
-  bitField0_ |= 0x00000001;
-        name_ = value;
-      }
-      /**
-       * <pre>
-       * The plugin's self-reported name and filename (without path).
-       * </pre>
-       *
-       * <code>optional string name = 1;</code>
-       */
-      private void clearName() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        name_ = getDefaultInstance().getName();
-      }
-      /**
-       * <pre>
-       * The plugin's self-reported name and filename (without path).
-       * </pre>
-       *
-       * <code>optional string name = 1;</code>
-       * @param value The bytes for name to set.
-       */
-      private void setNameBytes(
-          com.google.protobuf.ByteString value) {
-        name_ = value.toStringUtf8();
-        bitField0_ |= 0x00000001;
-      }
-
-      public static final int FILENAME_FIELD_NUMBER = 2;
-      private java.lang.String filename_;
-      /**
-       * <code>optional string filename = 2;</code>
-       * @return Whether the filename field is set.
-       */
-      @java.lang.Override
-      public boolean hasFilename() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-      /**
-       * <code>optional string filename = 2;</code>
-       * @return The filename.
-       */
-      @java.lang.Override
-      public java.lang.String getFilename() {
-        return filename_;
-      }
-      /**
-       * <code>optional string filename = 2;</code>
-       * @return The bytes for filename.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getFilenameBytes() {
-        return com.google.protobuf.ByteString.copyFromUtf8(filename_);
-      }
-      /**
-       * <code>optional string filename = 2;</code>
-       * @param value The filename to set.
-       */
-      private void setFilename(
-          java.lang.String value) {
-        value.getClass();
-  bitField0_ |= 0x00000002;
-        filename_ = value;
-      }
-      /**
-       * <code>optional string filename = 2;</code>
-       */
-      private void clearFilename() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        filename_ = getDefaultInstance().getFilename();
-      }
-      /**
-       * <code>optional string filename = 2;</code>
-       * @param value The bytes for filename to set.
-       */
-      private void setFilenameBytes(
-          com.google.protobuf.ByteString value) {
-        filename_ = value.toStringUtf8();
-        bitField0_ |= 0x00000002;
-      }
-
-      public static final int VERSION_FIELD_NUMBER = 3;
-      private java.lang.String version_;
-      /**
-       * <pre>
-       * The plugin's version.
-       * </pre>
-       *
-       * <code>optional string version = 3;</code>
-       * @return Whether the version field is set.
-       */
-      @java.lang.Override
-      public boolean hasVersion() {
-        return ((bitField0_ & 0x00000004) != 0);
-      }
-      /**
-       * <pre>
-       * The plugin's version.
-       * </pre>
-       *
-       * <code>optional string version = 3;</code>
-       * @return The version.
-       */
-      @java.lang.Override
-      public java.lang.String getVersion() {
-        return version_;
-      }
-      /**
-       * <pre>
-       * The plugin's version.
-       * </pre>
-       *
-       * <code>optional string version = 3;</code>
-       * @return The bytes for version.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getVersionBytes() {
-        return com.google.protobuf.ByteString.copyFromUtf8(version_);
-      }
-      /**
-       * <pre>
-       * The plugin's version.
-       * </pre>
-       *
-       * <code>optional string version = 3;</code>
-       * @param value The version to set.
-       */
-      private void setVersion(
-          java.lang.String value) {
-        value.getClass();
-  bitField0_ |= 0x00000004;
-        version_ = value;
-      }
-      /**
-       * <pre>
-       * The plugin's version.
-       * </pre>
-       *
-       * <code>optional string version = 3;</code>
-       */
-      private void clearVersion() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        version_ = getDefaultInstance().getVersion();
-      }
-      /**
-       * <pre>
-       * The plugin's version.
-       * </pre>
-       *
-       * <code>optional string version = 3;</code>
-       * @param value The bytes for version to set.
-       */
-      private void setVersionBytes(
-          com.google.protobuf.ByteString value) {
-        version_ = value.toStringUtf8();
-        bitField0_ |= 0x00000004;
-      }
-
-      public static final int IS_DISABLED_FIELD_NUMBER = 4;
-      private boolean isDisabled_;
-      /**
-       * <pre>
-       * True if the plugin is disabled.
-       * If a client has multiple local Chrome user accounts, this is logged based
-       * on the first user account launched during the current session.
-       * </pre>
-       *
-       * <code>optional bool is_disabled = 4;</code>
-       * @return Whether the isDisabled field is set.
-       */
-      @java.lang.Override
-      public boolean hasIsDisabled() {
-        return ((bitField0_ & 0x00000008) != 0);
-      }
-      /**
-       * <pre>
-       * True if the plugin is disabled.
-       * If a client has multiple local Chrome user accounts, this is logged based
-       * on the first user account launched during the current session.
-       * </pre>
-       *
-       * <code>optional bool is_disabled = 4;</code>
-       * @return The isDisabled.
-       */
-      @java.lang.Override
-      public boolean getIsDisabled() {
-        return isDisabled_;
-      }
-      /**
-       * <pre>
-       * True if the plugin is disabled.
-       * If a client has multiple local Chrome user accounts, this is logged based
-       * on the first user account launched during the current session.
-       * </pre>
-       *
-       * <code>optional bool is_disabled = 4;</code>
-       * @param value The isDisabled to set.
-       */
-      private void setIsDisabled(boolean value) {
-        bitField0_ |= 0x00000008;
-        isDisabled_ = value;
-      }
-      /**
-       * <pre>
-       * True if the plugin is disabled.
-       * If a client has multiple local Chrome user accounts, this is logged based
-       * on the first user account launched during the current session.
-       * </pre>
-       *
-       * <code>optional bool is_disabled = 4;</code>
-       */
-      private void clearIsDisabled() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        isDisabled_ = false;
-      }
-
-      public static final int IS_PEPPER_FIELD_NUMBER = 5;
-      private boolean isPepper_;
-      /**
-       * <pre>
-       * True if the plugin is PPAPI.
-       * </pre>
-       *
-       * <code>optional bool is_pepper = 5;</code>
-       * @return Whether the isPepper field is set.
-       */
-      @java.lang.Override
-      public boolean hasIsPepper() {
-        return ((bitField0_ & 0x00000010) != 0);
-      }
-      /**
-       * <pre>
-       * True if the plugin is PPAPI.
-       * </pre>
-       *
-       * <code>optional bool is_pepper = 5;</code>
-       * @return The isPepper.
-       */
-      @java.lang.Override
-      public boolean getIsPepper() {
-        return isPepper_;
-      }
-      /**
-       * <pre>
-       * True if the plugin is PPAPI.
-       * </pre>
-       *
-       * <code>optional bool is_pepper = 5;</code>
-       * @param value The isPepper to set.
-       */
-      private void setIsPepper(boolean value) {
-        bitField0_ |= 0x00000010;
-        isPepper_ = value;
-      }
-      /**
-       * <pre>
-       * True if the plugin is PPAPI.
-       * </pre>
-       *
-       * <code>optional bool is_pepper = 5;</code>
-       */
-      private void clearIsPepper() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        isPepper_ = false;
-      }
-
-      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin parseFrom(
-          java.nio.ByteBuffer data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return com.google.protobuf.GeneratedMessageLite.parseFrom(
-            DEFAULT_INSTANCE, data);
-      }
-      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin parseFrom(
-          java.nio.ByteBuffer data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return com.google.protobuf.GeneratedMessageLite.parseFrom(
-            DEFAULT_INSTANCE, data, extensionRegistry);
-      }
-      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin parseFrom(
-          com.google.protobuf.ByteString data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return com.google.protobuf.GeneratedMessageLite.parseFrom(
-            DEFAULT_INSTANCE, data);
-      }
-      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin parseFrom(
-          com.google.protobuf.ByteString data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return com.google.protobuf.GeneratedMessageLite.parseFrom(
-            DEFAULT_INSTANCE, data, extensionRegistry);
-      }
-      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin parseFrom(byte[] data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return com.google.protobuf.GeneratedMessageLite.parseFrom(
-            DEFAULT_INSTANCE, data);
-      }
-      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin parseFrom(
-          byte[] data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return com.google.protobuf.GeneratedMessageLite.parseFrom(
-            DEFAULT_INSTANCE, data, extensionRegistry);
-      }
-      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin parseFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageLite.parseFrom(
-            DEFAULT_INSTANCE, input);
-      }
-      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin parseFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageLite.parseFrom(
-            DEFAULT_INSTANCE, input, extensionRegistry);
-      }
-      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin parseDelimitedFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
-      }
-      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin parseDelimitedFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
-      }
-      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin parseFrom(
-          com.google.protobuf.CodedInputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageLite.parseFrom(
-            DEFAULT_INSTANCE, input);
-      }
-      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin parseFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageLite.parseFrom(
-            DEFAULT_INSTANCE, input, extensionRegistry);
-      }
-
-      public static Builder newBuilder() {
-        return (Builder) DEFAULT_INSTANCE.createBuilder();
-      }
-      public static Builder newBuilder(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin prototype) {
-        return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
-      }
-
-      /**
-       * <pre>
-       * Information on all installed plugins.
-       * </pre>
-       *
-       * Protobuf type {@code metrics.SystemProfileProto.Plugin}
-       */
-      public static final class Builder extends
-          com.google.protobuf.GeneratedMessageLite.Builder<
-            org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin, Builder> implements
-          // @@protoc_insertion_point(builder_implements:metrics.SystemProfileProto.Plugin)
-          org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.PluginOrBuilder {
-        // Construct using org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin.newBuilder()
-        private Builder() {
-          super(DEFAULT_INSTANCE);
-        }
-
-
-        /**
-         * <pre>
-         * The plugin's self-reported name and filename (without path).
-         * </pre>
-         *
-         * <code>optional string name = 1;</code>
-         * @return Whether the name field is set.
-         */
-        @java.lang.Override
-        public boolean hasName() {
-          return instance.hasName();
-        }
-        /**
-         * <pre>
-         * The plugin's self-reported name and filename (without path).
-         * </pre>
-         *
-         * <code>optional string name = 1;</code>
-         * @return The name.
-         */
-        @java.lang.Override
-        public java.lang.String getName() {
-          return instance.getName();
-        }
-        /**
-         * <pre>
-         * The plugin's self-reported name and filename (without path).
-         * </pre>
-         *
-         * <code>optional string name = 1;</code>
-         * @return The bytes for name.
-         */
-        @java.lang.Override
-        public com.google.protobuf.ByteString
-            getNameBytes() {
-          return instance.getNameBytes();
-        }
-        /**
-         * <pre>
-         * The plugin's self-reported name and filename (without path).
-         * </pre>
-         *
-         * <code>optional string name = 1;</code>
-         * @param value The name to set.
-         * @return This builder for chaining.
-         */
-        public Builder setName(
-            java.lang.String value) {
-          copyOnWrite();
-          instance.setName(value);
-          return this;
-        }
-        /**
-         * <pre>
-         * The plugin's self-reported name and filename (without path).
-         * </pre>
-         *
-         * <code>optional string name = 1;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearName() {
-          copyOnWrite();
-          instance.clearName();
-          return this;
-        }
-        /**
-         * <pre>
-         * The plugin's self-reported name and filename (without path).
-         * </pre>
-         *
-         * <code>optional string name = 1;</code>
-         * @param value The bytes for name to set.
-         * @return This builder for chaining.
-         */
-        public Builder setNameBytes(
-            com.google.protobuf.ByteString value) {
-          copyOnWrite();
-          instance.setNameBytes(value);
-          return this;
-        }
-
-        /**
-         * <code>optional string filename = 2;</code>
-         * @return Whether the filename field is set.
-         */
-        @java.lang.Override
-        public boolean hasFilename() {
-          return instance.hasFilename();
-        }
-        /**
-         * <code>optional string filename = 2;</code>
-         * @return The filename.
-         */
-        @java.lang.Override
-        public java.lang.String getFilename() {
-          return instance.getFilename();
-        }
-        /**
-         * <code>optional string filename = 2;</code>
-         * @return The bytes for filename.
-         */
-        @java.lang.Override
-        public com.google.protobuf.ByteString
-            getFilenameBytes() {
-          return instance.getFilenameBytes();
-        }
-        /**
-         * <code>optional string filename = 2;</code>
-         * @param value The filename to set.
-         * @return This builder for chaining.
-         */
-        public Builder setFilename(
-            java.lang.String value) {
-          copyOnWrite();
-          instance.setFilename(value);
-          return this;
-        }
-        /**
-         * <code>optional string filename = 2;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearFilename() {
-          copyOnWrite();
-          instance.clearFilename();
-          return this;
-        }
-        /**
-         * <code>optional string filename = 2;</code>
-         * @param value The bytes for filename to set.
-         * @return This builder for chaining.
-         */
-        public Builder setFilenameBytes(
-            com.google.protobuf.ByteString value) {
-          copyOnWrite();
-          instance.setFilenameBytes(value);
-          return this;
-        }
-
-        /**
-         * <pre>
-         * The plugin's version.
-         * </pre>
-         *
-         * <code>optional string version = 3;</code>
-         * @return Whether the version field is set.
-         */
-        @java.lang.Override
-        public boolean hasVersion() {
-          return instance.hasVersion();
-        }
-        /**
-         * <pre>
-         * The plugin's version.
-         * </pre>
-         *
-         * <code>optional string version = 3;</code>
-         * @return The version.
-         */
-        @java.lang.Override
-        public java.lang.String getVersion() {
-          return instance.getVersion();
-        }
-        /**
-         * <pre>
-         * The plugin's version.
-         * </pre>
-         *
-         * <code>optional string version = 3;</code>
-         * @return The bytes for version.
-         */
-        @java.lang.Override
-        public com.google.protobuf.ByteString
-            getVersionBytes() {
-          return instance.getVersionBytes();
-        }
-        /**
-         * <pre>
-         * The plugin's version.
-         * </pre>
-         *
-         * <code>optional string version = 3;</code>
-         * @param value The version to set.
-         * @return This builder for chaining.
-         */
-        public Builder setVersion(
-            java.lang.String value) {
-          copyOnWrite();
-          instance.setVersion(value);
-          return this;
-        }
-        /**
-         * <pre>
-         * The plugin's version.
-         * </pre>
-         *
-         * <code>optional string version = 3;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearVersion() {
-          copyOnWrite();
-          instance.clearVersion();
-          return this;
-        }
-        /**
-         * <pre>
-         * The plugin's version.
-         * </pre>
-         *
-         * <code>optional string version = 3;</code>
-         * @param value The bytes for version to set.
-         * @return This builder for chaining.
-         */
-        public Builder setVersionBytes(
-            com.google.protobuf.ByteString value) {
-          copyOnWrite();
-          instance.setVersionBytes(value);
-          return this;
-        }
-
-        /**
-         * <pre>
-         * True if the plugin is disabled.
-         * If a client has multiple local Chrome user accounts, this is logged based
-         * on the first user account launched during the current session.
-         * </pre>
-         *
-         * <code>optional bool is_disabled = 4;</code>
-         * @return Whether the isDisabled field is set.
-         */
-        @java.lang.Override
-        public boolean hasIsDisabled() {
-          return instance.hasIsDisabled();
-        }
-        /**
-         * <pre>
-         * True if the plugin is disabled.
-         * If a client has multiple local Chrome user accounts, this is logged based
-         * on the first user account launched during the current session.
-         * </pre>
-         *
-         * <code>optional bool is_disabled = 4;</code>
-         * @return The isDisabled.
-         */
-        @java.lang.Override
-        public boolean getIsDisabled() {
-          return instance.getIsDisabled();
-        }
-        /**
-         * <pre>
-         * True if the plugin is disabled.
-         * If a client has multiple local Chrome user accounts, this is logged based
-         * on the first user account launched during the current session.
-         * </pre>
-         *
-         * <code>optional bool is_disabled = 4;</code>
-         * @param value The isDisabled to set.
-         * @return This builder for chaining.
-         */
-        public Builder setIsDisabled(boolean value) {
-          copyOnWrite();
-          instance.setIsDisabled(value);
-          return this;
-        }
-        /**
-         * <pre>
-         * True if the plugin is disabled.
-         * If a client has multiple local Chrome user accounts, this is logged based
-         * on the first user account launched during the current session.
-         * </pre>
-         *
-         * <code>optional bool is_disabled = 4;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearIsDisabled() {
-          copyOnWrite();
-          instance.clearIsDisabled();
-          return this;
-        }
-
-        /**
-         * <pre>
-         * True if the plugin is PPAPI.
-         * </pre>
-         *
-         * <code>optional bool is_pepper = 5;</code>
-         * @return Whether the isPepper field is set.
-         */
-        @java.lang.Override
-        public boolean hasIsPepper() {
-          return instance.hasIsPepper();
-        }
-        /**
-         * <pre>
-         * True if the plugin is PPAPI.
-         * </pre>
-         *
-         * <code>optional bool is_pepper = 5;</code>
-         * @return The isPepper.
-         */
-        @java.lang.Override
-        public boolean getIsPepper() {
-          return instance.getIsPepper();
-        }
-        /**
-         * <pre>
-         * True if the plugin is PPAPI.
-         * </pre>
-         *
-         * <code>optional bool is_pepper = 5;</code>
-         * @param value The isPepper to set.
-         * @return This builder for chaining.
-         */
-        public Builder setIsPepper(boolean value) {
-          copyOnWrite();
-          instance.setIsPepper(value);
-          return this;
-        }
-        /**
-         * <pre>
-         * True if the plugin is PPAPI.
-         * </pre>
-         *
-         * <code>optional bool is_pepper = 5;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearIsPepper() {
-          copyOnWrite();
-          instance.clearIsPepper();
-          return this;
-        }
-
-        // @@protoc_insertion_point(builder_scope:metrics.SystemProfileProto.Plugin)
-      }
-      @java.lang.Override
-      @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
-      protected final java.lang.Object dynamicMethod(
-          com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
-          java.lang.Object arg0, java.lang.Object arg1) {
-        switch (method) {
-          case NEW_MUTABLE_INSTANCE: {
-            return new org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin();
-          }
-          case NEW_BUILDER: {
-            return new Builder();
-          }
-          case BUILD_MESSAGE_INFO: {
-              java.lang.Object[] objects = new java.lang.Object[] {
-                "bitField0_",
-                "name_",
-                "filename_",
-                "version_",
-                "isDisabled_",
-                "isPepper_",
-              };
-              java.lang.String info =
-                  "\u0001\u0005\u0000\u0001\u0001\u0005\u0005\u0000\u0000\u0000\u0001\u1008\u0000\u0002" +
-                  "\u1008\u0001\u0003\u1008\u0002\u0004\u1007\u0003\u0005\u1007\u0004";
-              return newMessageInfo(DEFAULT_INSTANCE, info, objects);
-          }
-          // fall through
-          case GET_DEFAULT_INSTANCE: {
-            return DEFAULT_INSTANCE;
-          }
-          case GET_PARSER: {
-            com.google.protobuf.Parser<org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin> parser = PARSER;
-            if (parser == null) {
-              synchronized (org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin.class) {
-                parser = PARSER;
-                if (parser == null) {
-                  parser =
-                      new DefaultInstanceBasedParser<org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin>(
-                          DEFAULT_INSTANCE);
-                  PARSER = parser;
-                }
-              }
-            }
-            return parser;
-        }
-        case GET_MEMOIZED_IS_INITIALIZED: {
-          return (byte) 1;
-        }
-        case SET_MEMOIZED_IS_INITIALIZED: {
-          return null;
-        }
-        }
-        throw new UnsupportedOperationException();
-      }
-
-
-      // @@protoc_insertion_point(class_scope:metrics.SystemProfileProto.Plugin)
-      private static final org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin DEFAULT_INSTANCE;
-      static {
-        Plugin defaultInstance = new Plugin();
-        // New instances are implicitly immutable so no need to make
-        // immutable.
-        DEFAULT_INSTANCE = defaultInstance;
-        com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
-          Plugin.class, defaultInstance);
-      }
-
-      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin getDefaultInstance() {
-        return DEFAULT_INSTANCE;
-      }
-
-      private static volatile com.google.protobuf.Parser<Plugin> PARSER;
-
-      public static com.google.protobuf.Parser<Plugin> parser() {
-        return DEFAULT_INSTANCE.getParserForType();
-      }
-    }
-
     public interface StabilityOrBuilder extends
         // @@protoc_insertion_point(interface_extends:metrics.SystemProfileProto.Stability)
         com.google.protobuf.MessageLiteOrBuilder {
@@ -14880,8 +16901,8 @@ public final class SystemProfileProtos {
 
       /**
        * <pre>
-       * Page loads along with renderer launches, crashes, hangs and failed
-       * launches, since page load count roughly corresponds to usage.
+       * Logged on Android only as of late Q2 2022. Used by only Android WebView.
+       * Other platforms should use Stability.Counts2.
        * </pre>
        *
        * <code>optional int32 page_load_count = 2;</code>
@@ -14890,8 +16911,8 @@ public final class SystemProfileProtos {
       boolean hasPageLoadCount();
       /**
        * <pre>
-       * Page loads along with renderer launches, crashes, hangs and failed
-       * launches, since page load count roughly corresponds to usage.
+       * Logged on Android only as of late Q2 2022. Used by only Android WebView.
+       * Other platforms should use Stability.Counts2.
        * </pre>
        *
        * <code>optional int32 page_load_count = 2;</code>
@@ -14900,131 +16921,25 @@ public final class SystemProfileProtos {
       int getPageLoadCount();
 
       /**
-       * <code>optional int32 renderer_crash_count = 3;</code>
-       * @return Whether the rendererCrashCount field is set.
-       */
-      boolean hasRendererCrashCount();
-      /**
-       * <code>optional int32 renderer_crash_count = 3;</code>
-       * @return The rendererCrashCount.
-       */
-      int getRendererCrashCount();
-
-      /**
-       * <code>optional int32 renderer_hang_count = 4;</code>
-       * @return Whether the rendererHangCount field is set.
-       */
-      boolean hasRendererHangCount();
-      /**
-       * <code>optional int32 renderer_hang_count = 4;</code>
-       * @return The rendererHangCount.
-       */
-      int getRendererHangCount();
-
-      /**
-       * <code>optional int32 renderer_failed_launch_count = 24;</code>
-       * @return Whether the rendererFailedLaunchCount field is set.
-       */
-      boolean hasRendererFailedLaunchCount();
-      /**
-       * <code>optional int32 renderer_failed_launch_count = 24;</code>
-       * @return The rendererFailedLaunchCount.
-       */
-      int getRendererFailedLaunchCount();
-
-      /**
+       * <pre>
+       * Logged on Android only as of Q2 2022. Used by only Android WebView. Other
+       * platforms should use Stability.Counts2.
+       * </pre>
+       *
        * <code>optional int32 renderer_launch_count = 26;</code>
        * @return Whether the rendererLaunchCount field is set.
        */
       boolean hasRendererLaunchCount();
       /**
+       * <pre>
+       * Logged on Android only as of Q2 2022. Used by only Android WebView. Other
+       * platforms should use Stability.Counts2.
+       * </pre>
+       *
        * <code>optional int32 renderer_launch_count = 26;</code>
        * @return The rendererLaunchCount.
        */
       int getRendererLaunchCount();
-
-      /**
-       * <pre>
-       * Number of renderer launches, crashes and failed launches that were for
-       * extensions. These are not counted in the renderer counts above.
-       * </pre>
-       *
-       * <code>optional int32 extension_renderer_crash_count = 5;</code>
-       * @return Whether the extensionRendererCrashCount field is set.
-       */
-      boolean hasExtensionRendererCrashCount();
-      /**
-       * <pre>
-       * Number of renderer launches, crashes and failed launches that were for
-       * extensions. These are not counted in the renderer counts above.
-       * </pre>
-       *
-       * <code>optional int32 extension_renderer_crash_count = 5;</code>
-       * @return The extensionRendererCrashCount.
-       */
-      int getExtensionRendererCrashCount();
-
-      /**
-       * <code>optional int32 extension_renderer_failed_launch_count = 25;</code>
-       * @return Whether the extensionRendererFailedLaunchCount field is set.
-       */
-      boolean hasExtensionRendererFailedLaunchCount();
-      /**
-       * <code>optional int32 extension_renderer_failed_launch_count = 25;</code>
-       * @return The extensionRendererFailedLaunchCount.
-       */
-      int getExtensionRendererFailedLaunchCount();
-
-      /**
-       * <code>optional int32 extension_renderer_launch_count = 27;</code>
-       * @return Whether the extensionRendererLaunchCount field is set.
-       */
-      boolean hasExtensionRendererLaunchCount();
-      /**
-       * <code>optional int32 extension_renderer_launch_count = 27;</code>
-       * @return The extensionRendererLaunchCount.
-       */
-      int getExtensionRendererLaunchCount();
-
-      /**
-       * <pre>
-       * Number of non-renderer child process crashes.
-       * </pre>
-       *
-       * <code>optional int32 child_process_crash_count = 6;</code>
-       * @return Whether the childProcessCrashCount field is set.
-       */
-      boolean hasChildProcessCrashCount();
-      /**
-       * <pre>
-       * Number of non-renderer child process crashes.
-       * </pre>
-       *
-       * <code>optional int32 child_process_crash_count = 6;</code>
-       * @return The childProcessCrashCount.
-       */
-      int getChildProcessCrashCount();
-
-      /**
-       * <pre>
-       * Number of gpu crashes that generate a crash dump. Currently only used by
-       * Android Chrome starting with M71.
-       * </pre>
-       *
-       * <code>optional int32 gpu_crash_count = 31;</code>
-       * @return Whether the gpuCrashCount field is set.
-       */
-      boolean hasGpuCrashCount();
-      /**
-       * <pre>
-       * Number of gpu crashes that generate a crash dump. Currently only used by
-       * Android Chrome starting with M71.
-       * </pre>
-       *
-       * <code>optional int32 gpu_crash_count = 31;</code>
-       * @return The gpuCrashCount.
-       */
-      int getGpuCrashCount();
 
       /**
        * <pre>
@@ -15095,10 +17010,12 @@ public final class SystemProfileProtos {
        * <pre>
        * The number of times the program was launched since the last time metrics
        * was uploaded. For the initial metrics upload (right after startup), this
-       * will often be equal to 1.  However, it is possible that Chrome was unable
+       * will often be equal to 1. However, it is possible that Chrome was unable
        * to upload stability metrics for previous launches (e.g. due to crashing
-       * early during startup), making this value greater than 1.  For subsequent
+       * early during startup), making this value greater than 1. For subsequent
        * metrics uploads, this value will be 0.
+       * Logged on Android only as of Q1 2022. Used by only Android WebView. Other
+       * platforms should use Stability.Counts2.
        * </pre>
        *
        * <code>optional int32 launch_count = 15;</code>
@@ -15109,39 +17026,18 @@ public final class SystemProfileProtos {
        * <pre>
        * The number of times the program was launched since the last time metrics
        * was uploaded. For the initial metrics upload (right after startup), this
-       * will often be equal to 1.  However, it is possible that Chrome was unable
+       * will often be equal to 1. However, it is possible that Chrome was unable
        * to upload stability metrics for previous launches (e.g. due to crashing
-       * early during startup), making this value greater than 1.  For subsequent
+       * early during startup), making this value greater than 1. For subsequent
        * metrics uploads, this value will be 0.
+       * Logged on Android only as of Q1 2022. Used by only Android WebView. Other
+       * platforms should use Stability.Counts2.
        * </pre>
        *
        * <code>optional int32 launch_count = 15;</code>
        * @return The launchCount.
        */
       int getLaunchCount();
-
-      /**
-       * <pre>
-       * The number of times that it didn't exit cleanly (which we assume to be
-       * mostly crashes). On Android M71+ this does not include times when the Gms
-       * Core version has changed, which is recorded separately below.
-       * </pre>
-       *
-       * <code>optional int32 crash_count = 16;</code>
-       * @return Whether the crashCount field is set.
-       */
-      boolean hasCrashCount();
-      /**
-       * <pre>
-       * The number of times that it didn't exit cleanly (which we assume to be
-       * mostly crashes). On Android M71+ this does not include times when the Gms
-       * Core version has changed, which is recorded separately below.
-       * </pre>
-       *
-       * <code>optional int32 crash_count = 16;</code>
-       * @return The crashCount.
-       */
-      int getCrashCount();
 
       /**
        * <pre>
@@ -15170,119 +17066,6 @@ public final class SystemProfileProtos {
 
       /**
        * <pre>
-       * The number of times the program began, but did not complete, the shutdown
-       * process.  (For example, this may occur when Windows is shutting down, and
-       * it only gives the process a few seconds to clean up.)
-       * </pre>
-       *
-       * <code>optional int32 incomplete_shutdown_count = 17;</code>
-       * @return Whether the incompleteShutdownCount field is set.
-       */
-      boolean hasIncompleteShutdownCount();
-      /**
-       * <pre>
-       * The number of times the program began, but did not complete, the shutdown
-       * process.  (For example, this may occur when Windows is shutting down, and
-       * it only gives the process a few seconds to clean up.)
-       * </pre>
-       *
-       * <code>optional int32 incomplete_shutdown_count = 17;</code>
-       * @return The incompleteShutdownCount.
-       */
-      int getIncompleteShutdownCount();
-
-      /**
-       * <pre>
-       * The number of times the program was able register with breakpad crash
-       * services.
-       * </pre>
-       *
-       * <code>optional int32 breakpad_registration_success_count = 18;</code>
-       * @return Whether the breakpadRegistrationSuccessCount field is set.
-       */
-      boolean hasBreakpadRegistrationSuccessCount();
-      /**
-       * <pre>
-       * The number of times the program was able register with breakpad crash
-       * services.
-       * </pre>
-       *
-       * <code>optional int32 breakpad_registration_success_count = 18;</code>
-       * @return The breakpadRegistrationSuccessCount.
-       */
-      int getBreakpadRegistrationSuccessCount();
-
-      /**
-       * <pre>
-       * The number of times the program failed to register with breakpad crash
-       * services.  If crash registration fails then when the program crashes no
-       * crash report will be generated.
-       * </pre>
-       *
-       * <code>optional int32 breakpad_registration_failure_count = 19;</code>
-       * @return Whether the breakpadRegistrationFailureCount field is set.
-       */
-      boolean hasBreakpadRegistrationFailureCount();
-      /**
-       * <pre>
-       * The number of times the program failed to register with breakpad crash
-       * services.  If crash registration fails then when the program crashes no
-       * crash report will be generated.
-       * </pre>
-       *
-       * <code>optional int32 breakpad_registration_failure_count = 19;</code>
-       * @return The breakpadRegistrationFailureCount.
-       */
-      int getBreakpadRegistrationFailureCount();
-
-      /**
-       * <pre>
-       * The number of times the program has run under a debugger.  This should
-       * be an exceptional condition.  Running under a debugger prevents crash
-       * dumps from being generated.
-       * </pre>
-       *
-       * <code>optional int32 debugger_present_count = 20;</code>
-       * @return Whether the debuggerPresentCount field is set.
-       */
-      boolean hasDebuggerPresentCount();
-      /**
-       * <pre>
-       * The number of times the program has run under a debugger.  This should
-       * be an exceptional condition.  Running under a debugger prevents crash
-       * dumps from being generated.
-       * </pre>
-       *
-       * <code>optional int32 debugger_present_count = 20;</code>
-       * @return The debuggerPresentCount.
-       */
-      int getDebuggerPresentCount();
-
-      /**
-       * <pre>
-       * The number of times the program has run without a debugger attached.
-       * This should be most common scenario and should be very close to
-       * |launch_count|.
-       * </pre>
-       *
-       * <code>optional int32 debugger_not_present_count = 21;</code>
-       * @return Whether the debuggerNotPresentCount field is set.
-       */
-      boolean hasDebuggerNotPresentCount();
-      /**
-       * <pre>
-       * The number of times the program has run without a debugger attached.
-       * This should be most common scenario and should be very close to
-       * |launch_count|.
-       * </pre>
-       *
-       * <code>optional int32 debugger_not_present_count = 21;</code>
-       * @return The debuggerNotPresentCount.
-       */
-      int getDebuggerNotPresentCount();
-
-      /**
-       * <pre>
        * Whether the metrics being reported are from a previous run picked up via
        * the left-over memory mapped files.
        * </pre>
@@ -15301,20 +17084,6 @@ public final class SystemProfileProtos {
        * @return The fromPreviousRun.
        */
       boolean getFromPreviousRun();
-
-      /**
-       * <code>repeated .metrics.SystemProfileProto.Stability.PluginStability plugin_stability = 22;</code>
-       */
-      java.util.List<org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability> 
-          getPluginStabilityList();
-      /**
-       * <code>repeated .metrics.SystemProfileProto.Stability.PluginStability plugin_stability = 22;</code>
-       */
-      org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability getPluginStability(int index);
-      /**
-       * <code>repeated .metrics.SystemProfileProto.Stability.PluginStability plugin_stability = 22;</code>
-       */
-      int getPluginStabilityCount();
     }
     /**
      * <pre>
@@ -15332,886 +17101,7 @@ public final class SystemProfileProtos {
         // @@protoc_insertion_point(message_implements:metrics.SystemProfileProto.Stability)
         StabilityOrBuilder {
       private Stability() {
-        pluginStability_ = emptyProtobufList();
       }
-      public interface PluginStabilityOrBuilder extends
-          // @@protoc_insertion_point(interface_extends:metrics.SystemProfileProto.Stability.PluginStability)
-          com.google.protobuf.MessageLiteOrBuilder {
-
-        /**
-         * <pre>
-         * The relevant plugin's information (name, etc.)
-         * </pre>
-         *
-         * <code>optional .metrics.SystemProfileProto.Plugin plugin = 1;</code>
-         * @return Whether the plugin field is set.
-         */
-        boolean hasPlugin();
-        /**
-         * <pre>
-         * The relevant plugin's information (name, etc.)
-         * </pre>
-         *
-         * <code>optional .metrics.SystemProfileProto.Plugin plugin = 1;</code>
-         * @return The plugin.
-         */
-        org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin getPlugin();
-
-        /**
-         * <pre>
-         * The number of times this plugin's process was launched.
-         * </pre>
-         *
-         * <code>optional int32 launch_count = 2;</code>
-         * @return Whether the launchCount field is set.
-         */
-        boolean hasLaunchCount();
-        /**
-         * <pre>
-         * The number of times this plugin's process was launched.
-         * </pre>
-         *
-         * <code>optional int32 launch_count = 2;</code>
-         * @return The launchCount.
-         */
-        int getLaunchCount();
-
-        /**
-         * <pre>
-         * The number of times this plugin was instantiated on a web page.
-         * This will be &gt;= |launch_count|.
-         * (A page load with multiple sections drawn by this plugin will
-         * increase this count multiple times.)
-         * </pre>
-         *
-         * <code>optional int32 instance_count = 3;</code>
-         * @return Whether the instanceCount field is set.
-         */
-        boolean hasInstanceCount();
-        /**
-         * <pre>
-         * The number of times this plugin was instantiated on a web page.
-         * This will be &gt;= |launch_count|.
-         * (A page load with multiple sections drawn by this plugin will
-         * increase this count multiple times.)
-         * </pre>
-         *
-         * <code>optional int32 instance_count = 3;</code>
-         * @return The instanceCount.
-         */
-        int getInstanceCount();
-
-        /**
-         * <pre>
-         * The number of times this plugin process crashed.
-         * This value will be &lt;= |launch_count|.
-         * </pre>
-         *
-         * <code>optional int32 crash_count = 4;</code>
-         * @return Whether the crashCount field is set.
-         */
-        boolean hasCrashCount();
-        /**
-         * <pre>
-         * The number of times this plugin process crashed.
-         * This value will be &lt;= |launch_count|.
-         * </pre>
-         *
-         * <code>optional int32 crash_count = 4;</code>
-         * @return The crashCount.
-         */
-        int getCrashCount();
-
-        /**
-         * <pre>
-         * The number of times this plugin could not be loaded.
-         * </pre>
-         *
-         * <code>optional int32 loading_error_count = 5;</code>
-         * @return Whether the loadingErrorCount field is set.
-         */
-        boolean hasLoadingErrorCount();
-        /**
-         * <pre>
-         * The number of times this plugin could not be loaded.
-         * </pre>
-         *
-         * <code>optional int32 loading_error_count = 5;</code>
-         * @return The loadingErrorCount.
-         */
-        int getLoadingErrorCount();
-      }
-      /**
-       * <pre>
-       * Stability information for all installed plugins.
-       * </pre>
-       *
-       * Protobuf type {@code metrics.SystemProfileProto.Stability.PluginStability}
-       */
-      public  static final class PluginStability extends
-          com.google.protobuf.GeneratedMessageLite<
-              PluginStability, PluginStability.Builder> implements
-          // @@protoc_insertion_point(message_implements:metrics.SystemProfileProto.Stability.PluginStability)
-          PluginStabilityOrBuilder {
-        private PluginStability() {
-        }
-        private int bitField0_;
-        public static final int PLUGIN_FIELD_NUMBER = 1;
-        private org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin plugin_;
-        /**
-         * <pre>
-         * The relevant plugin's information (name, etc.)
-         * </pre>
-         *
-         * <code>optional .metrics.SystemProfileProto.Plugin plugin = 1;</code>
-         */
-        @java.lang.Override
-        public boolean hasPlugin() {
-          return ((bitField0_ & 0x00000001) != 0);
-        }
-        /**
-         * <pre>
-         * The relevant plugin's information (name, etc.)
-         * </pre>
-         *
-         * <code>optional .metrics.SystemProfileProto.Plugin plugin = 1;</code>
-         */
-        @java.lang.Override
-        public org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin getPlugin() {
-          return plugin_ == null ? org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin.getDefaultInstance() : plugin_;
-        }
-        /**
-         * <pre>
-         * The relevant plugin's information (name, etc.)
-         * </pre>
-         *
-         * <code>optional .metrics.SystemProfileProto.Plugin plugin = 1;</code>
-         */
-        private void setPlugin(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin value) {
-          value.getClass();
-  plugin_ = value;
-          bitField0_ |= 0x00000001;
-          }
-        /**
-         * <pre>
-         * The relevant plugin's information (name, etc.)
-         * </pre>
-         *
-         * <code>optional .metrics.SystemProfileProto.Plugin plugin = 1;</code>
-         */
-        @java.lang.SuppressWarnings({"ReferenceEquality"})
-        private void mergePlugin(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin value) {
-          value.getClass();
-  if (plugin_ != null &&
-              plugin_ != org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin.getDefaultInstance()) {
-            plugin_ =
-              org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin.newBuilder(plugin_).mergeFrom(value).buildPartial();
-          } else {
-            plugin_ = value;
-          }
-          bitField0_ |= 0x00000001;
-        }
-        /**
-         * <pre>
-         * The relevant plugin's information (name, etc.)
-         * </pre>
-         *
-         * <code>optional .metrics.SystemProfileProto.Plugin plugin = 1;</code>
-         */
-        private void clearPlugin() {  plugin_ = null;
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
-
-        public static final int LAUNCH_COUNT_FIELD_NUMBER = 2;
-        private int launchCount_;
-        /**
-         * <pre>
-         * The number of times this plugin's process was launched.
-         * </pre>
-         *
-         * <code>optional int32 launch_count = 2;</code>
-         * @return Whether the launchCount field is set.
-         */
-        @java.lang.Override
-        public boolean hasLaunchCount() {
-          return ((bitField0_ & 0x00000002) != 0);
-        }
-        /**
-         * <pre>
-         * The number of times this plugin's process was launched.
-         * </pre>
-         *
-         * <code>optional int32 launch_count = 2;</code>
-         * @return The launchCount.
-         */
-        @java.lang.Override
-        public int getLaunchCount() {
-          return launchCount_;
-        }
-        /**
-         * <pre>
-         * The number of times this plugin's process was launched.
-         * </pre>
-         *
-         * <code>optional int32 launch_count = 2;</code>
-         * @param value The launchCount to set.
-         */
-        private void setLaunchCount(int value) {
-          bitField0_ |= 0x00000002;
-          launchCount_ = value;
-        }
-        /**
-         * <pre>
-         * The number of times this plugin's process was launched.
-         * </pre>
-         *
-         * <code>optional int32 launch_count = 2;</code>
-         */
-        private void clearLaunchCount() {
-          bitField0_ = (bitField0_ & ~0x00000002);
-          launchCount_ = 0;
-        }
-
-        public static final int INSTANCE_COUNT_FIELD_NUMBER = 3;
-        private int instanceCount_;
-        /**
-         * <pre>
-         * The number of times this plugin was instantiated on a web page.
-         * This will be &gt;= |launch_count|.
-         * (A page load with multiple sections drawn by this plugin will
-         * increase this count multiple times.)
-         * </pre>
-         *
-         * <code>optional int32 instance_count = 3;</code>
-         * @return Whether the instanceCount field is set.
-         */
-        @java.lang.Override
-        public boolean hasInstanceCount() {
-          return ((bitField0_ & 0x00000004) != 0);
-        }
-        /**
-         * <pre>
-         * The number of times this plugin was instantiated on a web page.
-         * This will be &gt;= |launch_count|.
-         * (A page load with multiple sections drawn by this plugin will
-         * increase this count multiple times.)
-         * </pre>
-         *
-         * <code>optional int32 instance_count = 3;</code>
-         * @return The instanceCount.
-         */
-        @java.lang.Override
-        public int getInstanceCount() {
-          return instanceCount_;
-        }
-        /**
-         * <pre>
-         * The number of times this plugin was instantiated on a web page.
-         * This will be &gt;= |launch_count|.
-         * (A page load with multiple sections drawn by this plugin will
-         * increase this count multiple times.)
-         * </pre>
-         *
-         * <code>optional int32 instance_count = 3;</code>
-         * @param value The instanceCount to set.
-         */
-        private void setInstanceCount(int value) {
-          bitField0_ |= 0x00000004;
-          instanceCount_ = value;
-        }
-        /**
-         * <pre>
-         * The number of times this plugin was instantiated on a web page.
-         * This will be &gt;= |launch_count|.
-         * (A page load with multiple sections drawn by this plugin will
-         * increase this count multiple times.)
-         * </pre>
-         *
-         * <code>optional int32 instance_count = 3;</code>
-         */
-        private void clearInstanceCount() {
-          bitField0_ = (bitField0_ & ~0x00000004);
-          instanceCount_ = 0;
-        }
-
-        public static final int CRASH_COUNT_FIELD_NUMBER = 4;
-        private int crashCount_;
-        /**
-         * <pre>
-         * The number of times this plugin process crashed.
-         * This value will be &lt;= |launch_count|.
-         * </pre>
-         *
-         * <code>optional int32 crash_count = 4;</code>
-         * @return Whether the crashCount field is set.
-         */
-        @java.lang.Override
-        public boolean hasCrashCount() {
-          return ((bitField0_ & 0x00000008) != 0);
-        }
-        /**
-         * <pre>
-         * The number of times this plugin process crashed.
-         * This value will be &lt;= |launch_count|.
-         * </pre>
-         *
-         * <code>optional int32 crash_count = 4;</code>
-         * @return The crashCount.
-         */
-        @java.lang.Override
-        public int getCrashCount() {
-          return crashCount_;
-        }
-        /**
-         * <pre>
-         * The number of times this plugin process crashed.
-         * This value will be &lt;= |launch_count|.
-         * </pre>
-         *
-         * <code>optional int32 crash_count = 4;</code>
-         * @param value The crashCount to set.
-         */
-        private void setCrashCount(int value) {
-          bitField0_ |= 0x00000008;
-          crashCount_ = value;
-        }
-        /**
-         * <pre>
-         * The number of times this plugin process crashed.
-         * This value will be &lt;= |launch_count|.
-         * </pre>
-         *
-         * <code>optional int32 crash_count = 4;</code>
-         */
-        private void clearCrashCount() {
-          bitField0_ = (bitField0_ & ~0x00000008);
-          crashCount_ = 0;
-        }
-
-        public static final int LOADING_ERROR_COUNT_FIELD_NUMBER = 5;
-        private int loadingErrorCount_;
-        /**
-         * <pre>
-         * The number of times this plugin could not be loaded.
-         * </pre>
-         *
-         * <code>optional int32 loading_error_count = 5;</code>
-         * @return Whether the loadingErrorCount field is set.
-         */
-        @java.lang.Override
-        public boolean hasLoadingErrorCount() {
-          return ((bitField0_ & 0x00000010) != 0);
-        }
-        /**
-         * <pre>
-         * The number of times this plugin could not be loaded.
-         * </pre>
-         *
-         * <code>optional int32 loading_error_count = 5;</code>
-         * @return The loadingErrorCount.
-         */
-        @java.lang.Override
-        public int getLoadingErrorCount() {
-          return loadingErrorCount_;
-        }
-        /**
-         * <pre>
-         * The number of times this plugin could not be loaded.
-         * </pre>
-         *
-         * <code>optional int32 loading_error_count = 5;</code>
-         * @param value The loadingErrorCount to set.
-         */
-        private void setLoadingErrorCount(int value) {
-          bitField0_ |= 0x00000010;
-          loadingErrorCount_ = value;
-        }
-        /**
-         * <pre>
-         * The number of times this plugin could not be loaded.
-         * </pre>
-         *
-         * <code>optional int32 loading_error_count = 5;</code>
-         */
-        private void clearLoadingErrorCount() {
-          bitField0_ = (bitField0_ & ~0x00000010);
-          loadingErrorCount_ = 0;
-        }
-
-        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability parseFrom(
-            java.nio.ByteBuffer data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return com.google.protobuf.GeneratedMessageLite.parseFrom(
-              DEFAULT_INSTANCE, data);
-        }
-        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability parseFrom(
-            java.nio.ByteBuffer data,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return com.google.protobuf.GeneratedMessageLite.parseFrom(
-              DEFAULT_INSTANCE, data, extensionRegistry);
-        }
-        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability parseFrom(
-            com.google.protobuf.ByteString data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return com.google.protobuf.GeneratedMessageLite.parseFrom(
-              DEFAULT_INSTANCE, data);
-        }
-        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability parseFrom(
-            com.google.protobuf.ByteString data,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return com.google.protobuf.GeneratedMessageLite.parseFrom(
-              DEFAULT_INSTANCE, data, extensionRegistry);
-        }
-        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability parseFrom(byte[] data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return com.google.protobuf.GeneratedMessageLite.parseFrom(
-              DEFAULT_INSTANCE, data);
-        }
-        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability parseFrom(
-            byte[] data,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return com.google.protobuf.GeneratedMessageLite.parseFrom(
-              DEFAULT_INSTANCE, data, extensionRegistry);
-        }
-        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability parseFrom(java.io.InputStream input)
-            throws java.io.IOException {
-          return com.google.protobuf.GeneratedMessageLite.parseFrom(
-              DEFAULT_INSTANCE, input);
-        }
-        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability parseFrom(
-            java.io.InputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          return com.google.protobuf.GeneratedMessageLite.parseFrom(
-              DEFAULT_INSTANCE, input, extensionRegistry);
-        }
-        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability parseDelimitedFrom(java.io.InputStream input)
-            throws java.io.IOException {
-          return parseDelimitedFrom(DEFAULT_INSTANCE, input);
-        }
-        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability parseDelimitedFrom(
-            java.io.InputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
-        }
-        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability parseFrom(
-            com.google.protobuf.CodedInputStream input)
-            throws java.io.IOException {
-          return com.google.protobuf.GeneratedMessageLite.parseFrom(
-              DEFAULT_INSTANCE, input);
-        }
-        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability parseFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          return com.google.protobuf.GeneratedMessageLite.parseFrom(
-              DEFAULT_INSTANCE, input, extensionRegistry);
-        }
-
-        public static Builder newBuilder() {
-          return (Builder) DEFAULT_INSTANCE.createBuilder();
-        }
-        public static Builder newBuilder(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability prototype) {
-          return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
-        }
-
-        /**
-         * <pre>
-         * Stability information for all installed plugins.
-         * </pre>
-         *
-         * Protobuf type {@code metrics.SystemProfileProto.Stability.PluginStability}
-         */
-        public static final class Builder extends
-            com.google.protobuf.GeneratedMessageLite.Builder<
-              org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability, Builder> implements
-            // @@protoc_insertion_point(builder_implements:metrics.SystemProfileProto.Stability.PluginStability)
-            org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStabilityOrBuilder {
-          // Construct using org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability.newBuilder()
-          private Builder() {
-            super(DEFAULT_INSTANCE);
-          }
-
-
-          /**
-           * <pre>
-           * The relevant plugin's information (name, etc.)
-           * </pre>
-           *
-           * <code>optional .metrics.SystemProfileProto.Plugin plugin = 1;</code>
-           */
-          @java.lang.Override
-          public boolean hasPlugin() {
-            return instance.hasPlugin();
-          }
-          /**
-           * <pre>
-           * The relevant plugin's information (name, etc.)
-           * </pre>
-           *
-           * <code>optional .metrics.SystemProfileProto.Plugin plugin = 1;</code>
-           */
-          @java.lang.Override
-          public org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin getPlugin() {
-            return instance.getPlugin();
-          }
-          /**
-           * <pre>
-           * The relevant plugin's information (name, etc.)
-           * </pre>
-           *
-           * <code>optional .metrics.SystemProfileProto.Plugin plugin = 1;</code>
-           */
-          public Builder setPlugin(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin value) {
-            copyOnWrite();
-            instance.setPlugin(value);
-            return this;
-            }
-          /**
-           * <pre>
-           * The relevant plugin's information (name, etc.)
-           * </pre>
-           *
-           * <code>optional .metrics.SystemProfileProto.Plugin plugin = 1;</code>
-           */
-          public Builder setPlugin(
-              org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin.Builder builderForValue) {
-            copyOnWrite();
-            instance.setPlugin(builderForValue.build());
-            return this;
-          }
-          /**
-           * <pre>
-           * The relevant plugin's information (name, etc.)
-           * </pre>
-           *
-           * <code>optional .metrics.SystemProfileProto.Plugin plugin = 1;</code>
-           */
-          public Builder mergePlugin(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin value) {
-            copyOnWrite();
-            instance.mergePlugin(value);
-            return this;
-          }
-          /**
-           * <pre>
-           * The relevant plugin's information (name, etc.)
-           * </pre>
-           *
-           * <code>optional .metrics.SystemProfileProto.Plugin plugin = 1;</code>
-           */
-          public Builder clearPlugin() {  copyOnWrite();
-            instance.clearPlugin();
-            return this;
-          }
-
-          /**
-           * <pre>
-           * The number of times this plugin's process was launched.
-           * </pre>
-           *
-           * <code>optional int32 launch_count = 2;</code>
-           * @return Whether the launchCount field is set.
-           */
-          @java.lang.Override
-          public boolean hasLaunchCount() {
-            return instance.hasLaunchCount();
-          }
-          /**
-           * <pre>
-           * The number of times this plugin's process was launched.
-           * </pre>
-           *
-           * <code>optional int32 launch_count = 2;</code>
-           * @return The launchCount.
-           */
-          @java.lang.Override
-          public int getLaunchCount() {
-            return instance.getLaunchCount();
-          }
-          /**
-           * <pre>
-           * The number of times this plugin's process was launched.
-           * </pre>
-           *
-           * <code>optional int32 launch_count = 2;</code>
-           * @param value The launchCount to set.
-           * @return This builder for chaining.
-           */
-          public Builder setLaunchCount(int value) {
-            copyOnWrite();
-            instance.setLaunchCount(value);
-            return this;
-          }
-          /**
-           * <pre>
-           * The number of times this plugin's process was launched.
-           * </pre>
-           *
-           * <code>optional int32 launch_count = 2;</code>
-           * @return This builder for chaining.
-           */
-          public Builder clearLaunchCount() {
-            copyOnWrite();
-            instance.clearLaunchCount();
-            return this;
-          }
-
-          /**
-           * <pre>
-           * The number of times this plugin was instantiated on a web page.
-           * This will be &gt;= |launch_count|.
-           * (A page load with multiple sections drawn by this plugin will
-           * increase this count multiple times.)
-           * </pre>
-           *
-           * <code>optional int32 instance_count = 3;</code>
-           * @return Whether the instanceCount field is set.
-           */
-          @java.lang.Override
-          public boolean hasInstanceCount() {
-            return instance.hasInstanceCount();
-          }
-          /**
-           * <pre>
-           * The number of times this plugin was instantiated on a web page.
-           * This will be &gt;= |launch_count|.
-           * (A page load with multiple sections drawn by this plugin will
-           * increase this count multiple times.)
-           * </pre>
-           *
-           * <code>optional int32 instance_count = 3;</code>
-           * @return The instanceCount.
-           */
-          @java.lang.Override
-          public int getInstanceCount() {
-            return instance.getInstanceCount();
-          }
-          /**
-           * <pre>
-           * The number of times this plugin was instantiated on a web page.
-           * This will be &gt;= |launch_count|.
-           * (A page load with multiple sections drawn by this plugin will
-           * increase this count multiple times.)
-           * </pre>
-           *
-           * <code>optional int32 instance_count = 3;</code>
-           * @param value The instanceCount to set.
-           * @return This builder for chaining.
-           */
-          public Builder setInstanceCount(int value) {
-            copyOnWrite();
-            instance.setInstanceCount(value);
-            return this;
-          }
-          /**
-           * <pre>
-           * The number of times this plugin was instantiated on a web page.
-           * This will be &gt;= |launch_count|.
-           * (A page load with multiple sections drawn by this plugin will
-           * increase this count multiple times.)
-           * </pre>
-           *
-           * <code>optional int32 instance_count = 3;</code>
-           * @return This builder for chaining.
-           */
-          public Builder clearInstanceCount() {
-            copyOnWrite();
-            instance.clearInstanceCount();
-            return this;
-          }
-
-          /**
-           * <pre>
-           * The number of times this plugin process crashed.
-           * This value will be &lt;= |launch_count|.
-           * </pre>
-           *
-           * <code>optional int32 crash_count = 4;</code>
-           * @return Whether the crashCount field is set.
-           */
-          @java.lang.Override
-          public boolean hasCrashCount() {
-            return instance.hasCrashCount();
-          }
-          /**
-           * <pre>
-           * The number of times this plugin process crashed.
-           * This value will be &lt;= |launch_count|.
-           * </pre>
-           *
-           * <code>optional int32 crash_count = 4;</code>
-           * @return The crashCount.
-           */
-          @java.lang.Override
-          public int getCrashCount() {
-            return instance.getCrashCount();
-          }
-          /**
-           * <pre>
-           * The number of times this plugin process crashed.
-           * This value will be &lt;= |launch_count|.
-           * </pre>
-           *
-           * <code>optional int32 crash_count = 4;</code>
-           * @param value The crashCount to set.
-           * @return This builder for chaining.
-           */
-          public Builder setCrashCount(int value) {
-            copyOnWrite();
-            instance.setCrashCount(value);
-            return this;
-          }
-          /**
-           * <pre>
-           * The number of times this plugin process crashed.
-           * This value will be &lt;= |launch_count|.
-           * </pre>
-           *
-           * <code>optional int32 crash_count = 4;</code>
-           * @return This builder for chaining.
-           */
-          public Builder clearCrashCount() {
-            copyOnWrite();
-            instance.clearCrashCount();
-            return this;
-          }
-
-          /**
-           * <pre>
-           * The number of times this plugin could not be loaded.
-           * </pre>
-           *
-           * <code>optional int32 loading_error_count = 5;</code>
-           * @return Whether the loadingErrorCount field is set.
-           */
-          @java.lang.Override
-          public boolean hasLoadingErrorCount() {
-            return instance.hasLoadingErrorCount();
-          }
-          /**
-           * <pre>
-           * The number of times this plugin could not be loaded.
-           * </pre>
-           *
-           * <code>optional int32 loading_error_count = 5;</code>
-           * @return The loadingErrorCount.
-           */
-          @java.lang.Override
-          public int getLoadingErrorCount() {
-            return instance.getLoadingErrorCount();
-          }
-          /**
-           * <pre>
-           * The number of times this plugin could not be loaded.
-           * </pre>
-           *
-           * <code>optional int32 loading_error_count = 5;</code>
-           * @param value The loadingErrorCount to set.
-           * @return This builder for chaining.
-           */
-          public Builder setLoadingErrorCount(int value) {
-            copyOnWrite();
-            instance.setLoadingErrorCount(value);
-            return this;
-          }
-          /**
-           * <pre>
-           * The number of times this plugin could not be loaded.
-           * </pre>
-           *
-           * <code>optional int32 loading_error_count = 5;</code>
-           * @return This builder for chaining.
-           */
-          public Builder clearLoadingErrorCount() {
-            copyOnWrite();
-            instance.clearLoadingErrorCount();
-            return this;
-          }
-
-          // @@protoc_insertion_point(builder_scope:metrics.SystemProfileProto.Stability.PluginStability)
-        }
-        @java.lang.Override
-        @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
-        protected final java.lang.Object dynamicMethod(
-            com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
-            java.lang.Object arg0, java.lang.Object arg1) {
-          switch (method) {
-            case NEW_MUTABLE_INSTANCE: {
-              return new org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability();
-            }
-            case NEW_BUILDER: {
-              return new Builder();
-            }
-            case BUILD_MESSAGE_INFO: {
-                java.lang.Object[] objects = new java.lang.Object[] {
-                  "bitField0_",
-                  "plugin_",
-                  "launchCount_",
-                  "instanceCount_",
-                  "crashCount_",
-                  "loadingErrorCount_",
-                };
-                java.lang.String info =
-                    "\u0001\u0005\u0000\u0001\u0001\u0005\u0005\u0000\u0000\u0000\u0001\u1009\u0000\u0002" +
-                    "\u1004\u0001\u0003\u1004\u0002\u0004\u1004\u0003\u0005\u1004\u0004";
-                return newMessageInfo(DEFAULT_INSTANCE, info, objects);
-            }
-            // fall through
-            case GET_DEFAULT_INSTANCE: {
-              return DEFAULT_INSTANCE;
-            }
-            case GET_PARSER: {
-              com.google.protobuf.Parser<org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability> parser = PARSER;
-              if (parser == null) {
-                synchronized (org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability.class) {
-                  parser = PARSER;
-                  if (parser == null) {
-                    parser =
-                        new DefaultInstanceBasedParser<org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability>(
-                            DEFAULT_INSTANCE);
-                    PARSER = parser;
-                  }
-                }
-              }
-              return parser;
-          }
-          case GET_MEMOIZED_IS_INITIALIZED: {
-            return (byte) 1;
-          }
-          case SET_MEMOIZED_IS_INITIALIZED: {
-            return null;
-          }
-          }
-          throw new UnsupportedOperationException();
-        }
-
-
-        // @@protoc_insertion_point(class_scope:metrics.SystemProfileProto.Stability.PluginStability)
-        private static final org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability DEFAULT_INSTANCE;
-        static {
-          PluginStability defaultInstance = new PluginStability();
-          // New instances are implicitly immutable so no need to make
-          // immutable.
-          DEFAULT_INSTANCE = defaultInstance;
-          com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
-            PluginStability.class, defaultInstance);
-        }
-
-        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability getDefaultInstance() {
-          return DEFAULT_INSTANCE;
-        }
-
-        private static volatile com.google.protobuf.Parser<PluginStability> PARSER;
-
-        public static com.google.protobuf.Parser<PluginStability> parser() {
-          return DEFAULT_INSTANCE.getParserForType();
-        }
-      }
-
       private int bitField0_;
       public static final int INCREMENTAL_UPTIME_SEC_FIELD_NUMBER = 1;
       private long incrementalUptimeSec_;
@@ -16357,8 +17247,8 @@ public final class SystemProfileProtos {
       private int pageLoadCount_;
       /**
        * <pre>
-       * Page loads along with renderer launches, crashes, hangs and failed
-       * launches, since page load count roughly corresponds to usage.
+       * Logged on Android only as of late Q2 2022. Used by only Android WebView.
+       * Other platforms should use Stability.Counts2.
        * </pre>
        *
        * <code>optional int32 page_load_count = 2;</code>
@@ -16370,8 +17260,8 @@ public final class SystemProfileProtos {
       }
       /**
        * <pre>
-       * Page loads along with renderer launches, crashes, hangs and failed
-       * launches, since page load count roughly corresponds to usage.
+       * Logged on Android only as of late Q2 2022. Used by only Android WebView.
+       * Other platforms should use Stability.Counts2.
        * </pre>
        *
        * <code>optional int32 page_load_count = 2;</code>
@@ -16383,8 +17273,8 @@ public final class SystemProfileProtos {
       }
       /**
        * <pre>
-       * Page loads along with renderer launches, crashes, hangs and failed
-       * launches, since page load count roughly corresponds to usage.
+       * Logged on Android only as of late Q2 2022. Used by only Android WebView.
+       * Other platforms should use Stability.Counts2.
        * </pre>
        *
        * <code>optional int32 page_load_count = 2;</code>
@@ -16396,8 +17286,8 @@ public final class SystemProfileProtos {
       }
       /**
        * <pre>
-       * Page loads along with renderer launches, crashes, hangs and failed
-       * launches, since page load count roughly corresponds to usage.
+       * Logged on Android only as of late Q2 2022. Used by only Android WebView.
+       * Other platforms should use Stability.Counts2.
        * </pre>
        *
        * <code>optional int32 page_load_count = 2;</code>
@@ -16407,119 +17297,27 @@ public final class SystemProfileProtos {
         pageLoadCount_ = 0;
       }
 
-      public static final int RENDERER_CRASH_COUNT_FIELD_NUMBER = 3;
-      private int rendererCrashCount_;
-      /**
-       * <code>optional int32 renderer_crash_count = 3;</code>
-       * @return Whether the rendererCrashCount field is set.
-       */
-      @java.lang.Override
-      public boolean hasRendererCrashCount() {
-        return ((bitField0_ & 0x00000008) != 0);
-      }
-      /**
-       * <code>optional int32 renderer_crash_count = 3;</code>
-       * @return The rendererCrashCount.
-       */
-      @java.lang.Override
-      public int getRendererCrashCount() {
-        return rendererCrashCount_;
-      }
-      /**
-       * <code>optional int32 renderer_crash_count = 3;</code>
-       * @param value The rendererCrashCount to set.
-       */
-      private void setRendererCrashCount(int value) {
-        bitField0_ |= 0x00000008;
-        rendererCrashCount_ = value;
-      }
-      /**
-       * <code>optional int32 renderer_crash_count = 3;</code>
-       */
-      private void clearRendererCrashCount() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        rendererCrashCount_ = 0;
-      }
-
-      public static final int RENDERER_HANG_COUNT_FIELD_NUMBER = 4;
-      private int rendererHangCount_;
-      /**
-       * <code>optional int32 renderer_hang_count = 4;</code>
-       * @return Whether the rendererHangCount field is set.
-       */
-      @java.lang.Override
-      public boolean hasRendererHangCount() {
-        return ((bitField0_ & 0x00000010) != 0);
-      }
-      /**
-       * <code>optional int32 renderer_hang_count = 4;</code>
-       * @return The rendererHangCount.
-       */
-      @java.lang.Override
-      public int getRendererHangCount() {
-        return rendererHangCount_;
-      }
-      /**
-       * <code>optional int32 renderer_hang_count = 4;</code>
-       * @param value The rendererHangCount to set.
-       */
-      private void setRendererHangCount(int value) {
-        bitField0_ |= 0x00000010;
-        rendererHangCount_ = value;
-      }
-      /**
-       * <code>optional int32 renderer_hang_count = 4;</code>
-       */
-      private void clearRendererHangCount() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        rendererHangCount_ = 0;
-      }
-
-      public static final int RENDERER_FAILED_LAUNCH_COUNT_FIELD_NUMBER = 24;
-      private int rendererFailedLaunchCount_;
-      /**
-       * <code>optional int32 renderer_failed_launch_count = 24;</code>
-       * @return Whether the rendererFailedLaunchCount field is set.
-       */
-      @java.lang.Override
-      public boolean hasRendererFailedLaunchCount() {
-        return ((bitField0_ & 0x00000020) != 0);
-      }
-      /**
-       * <code>optional int32 renderer_failed_launch_count = 24;</code>
-       * @return The rendererFailedLaunchCount.
-       */
-      @java.lang.Override
-      public int getRendererFailedLaunchCount() {
-        return rendererFailedLaunchCount_;
-      }
-      /**
-       * <code>optional int32 renderer_failed_launch_count = 24;</code>
-       * @param value The rendererFailedLaunchCount to set.
-       */
-      private void setRendererFailedLaunchCount(int value) {
-        bitField0_ |= 0x00000020;
-        rendererFailedLaunchCount_ = value;
-      }
-      /**
-       * <code>optional int32 renderer_failed_launch_count = 24;</code>
-       */
-      private void clearRendererFailedLaunchCount() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        rendererFailedLaunchCount_ = 0;
-      }
-
       public static final int RENDERER_LAUNCH_COUNT_FIELD_NUMBER = 26;
       private int rendererLaunchCount_;
       /**
+       * <pre>
+       * Logged on Android only as of Q2 2022. Used by only Android WebView. Other
+       * platforms should use Stability.Counts2.
+       * </pre>
+       *
        * <code>optional int32 renderer_launch_count = 26;</code>
        * @return Whether the rendererLaunchCount field is set.
        */
       @java.lang.Override
       public boolean hasRendererLaunchCount() {
-        return ((bitField0_ & 0x00000040) != 0);
+        return ((bitField0_ & 0x00000008) != 0);
       }
       /**
+       * <pre>
+       * Logged on Android only as of Q2 2022. Used by only Android WebView. Other
+       * platforms should use Stability.Counts2.
+       * </pre>
+       *
        * <code>optional int32 renderer_launch_count = 26;</code>
        * @return The rendererLaunchCount.
        */
@@ -16528,245 +17326,29 @@ public final class SystemProfileProtos {
         return rendererLaunchCount_;
       }
       /**
+       * <pre>
+       * Logged on Android only as of Q2 2022. Used by only Android WebView. Other
+       * platforms should use Stability.Counts2.
+       * </pre>
+       *
        * <code>optional int32 renderer_launch_count = 26;</code>
        * @param value The rendererLaunchCount to set.
        */
       private void setRendererLaunchCount(int value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000008;
         rendererLaunchCount_ = value;
       }
       /**
+       * <pre>
+       * Logged on Android only as of Q2 2022. Used by only Android WebView. Other
+       * platforms should use Stability.Counts2.
+       * </pre>
+       *
        * <code>optional int32 renderer_launch_count = 26;</code>
        */
       private void clearRendererLaunchCount() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000008);
         rendererLaunchCount_ = 0;
-      }
-
-      public static final int EXTENSION_RENDERER_CRASH_COUNT_FIELD_NUMBER = 5;
-      private int extensionRendererCrashCount_;
-      /**
-       * <pre>
-       * Number of renderer launches, crashes and failed launches that were for
-       * extensions. These are not counted in the renderer counts above.
-       * </pre>
-       *
-       * <code>optional int32 extension_renderer_crash_count = 5;</code>
-       * @return Whether the extensionRendererCrashCount field is set.
-       */
-      @java.lang.Override
-      public boolean hasExtensionRendererCrashCount() {
-        return ((bitField0_ & 0x00000080) != 0);
-      }
-      /**
-       * <pre>
-       * Number of renderer launches, crashes and failed launches that were for
-       * extensions. These are not counted in the renderer counts above.
-       * </pre>
-       *
-       * <code>optional int32 extension_renderer_crash_count = 5;</code>
-       * @return The extensionRendererCrashCount.
-       */
-      @java.lang.Override
-      public int getExtensionRendererCrashCount() {
-        return extensionRendererCrashCount_;
-      }
-      /**
-       * <pre>
-       * Number of renderer launches, crashes and failed launches that were for
-       * extensions. These are not counted in the renderer counts above.
-       * </pre>
-       *
-       * <code>optional int32 extension_renderer_crash_count = 5;</code>
-       * @param value The extensionRendererCrashCount to set.
-       */
-      private void setExtensionRendererCrashCount(int value) {
-        bitField0_ |= 0x00000080;
-        extensionRendererCrashCount_ = value;
-      }
-      /**
-       * <pre>
-       * Number of renderer launches, crashes and failed launches that were for
-       * extensions. These are not counted in the renderer counts above.
-       * </pre>
-       *
-       * <code>optional int32 extension_renderer_crash_count = 5;</code>
-       */
-      private void clearExtensionRendererCrashCount() {
-        bitField0_ = (bitField0_ & ~0x00000080);
-        extensionRendererCrashCount_ = 0;
-      }
-
-      public static final int EXTENSION_RENDERER_FAILED_LAUNCH_COUNT_FIELD_NUMBER = 25;
-      private int extensionRendererFailedLaunchCount_;
-      /**
-       * <code>optional int32 extension_renderer_failed_launch_count = 25;</code>
-       * @return Whether the extensionRendererFailedLaunchCount field is set.
-       */
-      @java.lang.Override
-      public boolean hasExtensionRendererFailedLaunchCount() {
-        return ((bitField0_ & 0x00000100) != 0);
-      }
-      /**
-       * <code>optional int32 extension_renderer_failed_launch_count = 25;</code>
-       * @return The extensionRendererFailedLaunchCount.
-       */
-      @java.lang.Override
-      public int getExtensionRendererFailedLaunchCount() {
-        return extensionRendererFailedLaunchCount_;
-      }
-      /**
-       * <code>optional int32 extension_renderer_failed_launch_count = 25;</code>
-       * @param value The extensionRendererFailedLaunchCount to set.
-       */
-      private void setExtensionRendererFailedLaunchCount(int value) {
-        bitField0_ |= 0x00000100;
-        extensionRendererFailedLaunchCount_ = value;
-      }
-      /**
-       * <code>optional int32 extension_renderer_failed_launch_count = 25;</code>
-       */
-      private void clearExtensionRendererFailedLaunchCount() {
-        bitField0_ = (bitField0_ & ~0x00000100);
-        extensionRendererFailedLaunchCount_ = 0;
-      }
-
-      public static final int EXTENSION_RENDERER_LAUNCH_COUNT_FIELD_NUMBER = 27;
-      private int extensionRendererLaunchCount_;
-      /**
-       * <code>optional int32 extension_renderer_launch_count = 27;</code>
-       * @return Whether the extensionRendererLaunchCount field is set.
-       */
-      @java.lang.Override
-      public boolean hasExtensionRendererLaunchCount() {
-        return ((bitField0_ & 0x00000200) != 0);
-      }
-      /**
-       * <code>optional int32 extension_renderer_launch_count = 27;</code>
-       * @return The extensionRendererLaunchCount.
-       */
-      @java.lang.Override
-      public int getExtensionRendererLaunchCount() {
-        return extensionRendererLaunchCount_;
-      }
-      /**
-       * <code>optional int32 extension_renderer_launch_count = 27;</code>
-       * @param value The extensionRendererLaunchCount to set.
-       */
-      private void setExtensionRendererLaunchCount(int value) {
-        bitField0_ |= 0x00000200;
-        extensionRendererLaunchCount_ = value;
-      }
-      /**
-       * <code>optional int32 extension_renderer_launch_count = 27;</code>
-       */
-      private void clearExtensionRendererLaunchCount() {
-        bitField0_ = (bitField0_ & ~0x00000200);
-        extensionRendererLaunchCount_ = 0;
-      }
-
-      public static final int CHILD_PROCESS_CRASH_COUNT_FIELD_NUMBER = 6;
-      private int childProcessCrashCount_;
-      /**
-       * <pre>
-       * Number of non-renderer child process crashes.
-       * </pre>
-       *
-       * <code>optional int32 child_process_crash_count = 6;</code>
-       * @return Whether the childProcessCrashCount field is set.
-       */
-      @java.lang.Override
-      public boolean hasChildProcessCrashCount() {
-        return ((bitField0_ & 0x00000400) != 0);
-      }
-      /**
-       * <pre>
-       * Number of non-renderer child process crashes.
-       * </pre>
-       *
-       * <code>optional int32 child_process_crash_count = 6;</code>
-       * @return The childProcessCrashCount.
-       */
-      @java.lang.Override
-      public int getChildProcessCrashCount() {
-        return childProcessCrashCount_;
-      }
-      /**
-       * <pre>
-       * Number of non-renderer child process crashes.
-       * </pre>
-       *
-       * <code>optional int32 child_process_crash_count = 6;</code>
-       * @param value The childProcessCrashCount to set.
-       */
-      private void setChildProcessCrashCount(int value) {
-        bitField0_ |= 0x00000400;
-        childProcessCrashCount_ = value;
-      }
-      /**
-       * <pre>
-       * Number of non-renderer child process crashes.
-       * </pre>
-       *
-       * <code>optional int32 child_process_crash_count = 6;</code>
-       */
-      private void clearChildProcessCrashCount() {
-        bitField0_ = (bitField0_ & ~0x00000400);
-        childProcessCrashCount_ = 0;
-      }
-
-      public static final int GPU_CRASH_COUNT_FIELD_NUMBER = 31;
-      private int gpuCrashCount_;
-      /**
-       * <pre>
-       * Number of gpu crashes that generate a crash dump. Currently only used by
-       * Android Chrome starting with M71.
-       * </pre>
-       *
-       * <code>optional int32 gpu_crash_count = 31;</code>
-       * @return Whether the gpuCrashCount field is set.
-       */
-      @java.lang.Override
-      public boolean hasGpuCrashCount() {
-        return ((bitField0_ & 0x00000800) != 0);
-      }
-      /**
-       * <pre>
-       * Number of gpu crashes that generate a crash dump. Currently only used by
-       * Android Chrome starting with M71.
-       * </pre>
-       *
-       * <code>optional int32 gpu_crash_count = 31;</code>
-       * @return The gpuCrashCount.
-       */
-      @java.lang.Override
-      public int getGpuCrashCount() {
-        return gpuCrashCount_;
-      }
-      /**
-       * <pre>
-       * Number of gpu crashes that generate a crash dump. Currently only used by
-       * Android Chrome starting with M71.
-       * </pre>
-       *
-       * <code>optional int32 gpu_crash_count = 31;</code>
-       * @param value The gpuCrashCount to set.
-       */
-      private void setGpuCrashCount(int value) {
-        bitField0_ |= 0x00000800;
-        gpuCrashCount_ = value;
-      }
-      /**
-       * <pre>
-       * Number of gpu crashes that generate a crash dump. Currently only used by
-       * Android Chrome starting with M71.
-       * </pre>
-       *
-       * <code>optional int32 gpu_crash_count = 31;</code>
-       */
-      private void clearGpuCrashCount() {
-        bitField0_ = (bitField0_ & ~0x00000800);
-        gpuCrashCount_ = 0;
       }
 
       public static final int OTHER_USER_CRASH_COUNT_FIELD_NUMBER = 7;
@@ -16783,7 +17365,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasOtherUserCrashCount() {
-        return ((bitField0_ & 0x00001000) != 0);
+        return ((bitField0_ & 0x00000010) != 0);
       }
       /**
        * <pre>
@@ -16810,7 +17392,7 @@ public final class SystemProfileProtos {
        * @param value The otherUserCrashCount to set.
        */
       private void setOtherUserCrashCount(int value) {
-        bitField0_ |= 0x00001000;
+        bitField0_ |= 0x00000010;
         otherUserCrashCount_ = value;
       }
       /**
@@ -16823,7 +17405,7 @@ public final class SystemProfileProtos {
        * <code>optional int32 other_user_crash_count = 7;</code>
        */
       private void clearOtherUserCrashCount() {
-        bitField0_ = (bitField0_ & ~0x00001000);
+        bitField0_ = (bitField0_ & ~0x00000010);
         otherUserCrashCount_ = 0;
       }
 
@@ -16840,7 +17422,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasKernelCrashCount() {
-        return ((bitField0_ & 0x00002000) != 0);
+        return ((bitField0_ & 0x00000020) != 0);
       }
       /**
        * <pre>
@@ -16865,7 +17447,7 @@ public final class SystemProfileProtos {
        * @param value The kernelCrashCount to set.
        */
       private void setKernelCrashCount(int value) {
-        bitField0_ |= 0x00002000;
+        bitField0_ |= 0x00000020;
         kernelCrashCount_ = value;
       }
       /**
@@ -16877,7 +17459,7 @@ public final class SystemProfileProtos {
        * <code>optional int32 kernel_crash_count = 8;</code>
        */
       private void clearKernelCrashCount() {
-        bitField0_ = (bitField0_ & ~0x00002000);
+        bitField0_ = (bitField0_ & ~0x00000020);
         kernelCrashCount_ = 0;
       }
 
@@ -16894,7 +17476,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasUncleanSystemShutdownCount() {
-        return ((bitField0_ & 0x00004000) != 0);
+        return ((bitField0_ & 0x00000040) != 0);
       }
       /**
        * <pre>
@@ -16919,7 +17501,7 @@ public final class SystemProfileProtos {
        * @param value The uncleanSystemShutdownCount to set.
        */
       private void setUncleanSystemShutdownCount(int value) {
-        bitField0_ |= 0x00004000;
+        bitField0_ |= 0x00000040;
         uncleanSystemShutdownCount_ = value;
       }
       /**
@@ -16931,7 +17513,7 @@ public final class SystemProfileProtos {
        * <code>optional int32 unclean_system_shutdown_count = 9;</code>
        */
       private void clearUncleanSystemShutdownCount() {
-        bitField0_ = (bitField0_ & ~0x00004000);
+        bitField0_ = (bitField0_ & ~0x00000040);
         uncleanSystemShutdownCount_ = 0;
       }
 
@@ -16941,10 +17523,12 @@ public final class SystemProfileProtos {
        * <pre>
        * The number of times the program was launched since the last time metrics
        * was uploaded. For the initial metrics upload (right after startup), this
-       * will often be equal to 1.  However, it is possible that Chrome was unable
+       * will often be equal to 1. However, it is possible that Chrome was unable
        * to upload stability metrics for previous launches (e.g. due to crashing
-       * early during startup), making this value greater than 1.  For subsequent
+       * early during startup), making this value greater than 1. For subsequent
        * metrics uploads, this value will be 0.
+       * Logged on Android only as of Q1 2022. Used by only Android WebView. Other
+       * platforms should use Stability.Counts2.
        * </pre>
        *
        * <code>optional int32 launch_count = 15;</code>
@@ -16952,16 +17536,18 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasLaunchCount() {
-        return ((bitField0_ & 0x00008000) != 0);
+        return ((bitField0_ & 0x00000080) != 0);
       }
       /**
        * <pre>
        * The number of times the program was launched since the last time metrics
        * was uploaded. For the initial metrics upload (right after startup), this
-       * will often be equal to 1.  However, it is possible that Chrome was unable
+       * will often be equal to 1. However, it is possible that Chrome was unable
        * to upload stability metrics for previous launches (e.g. due to crashing
-       * early during startup), making this value greater than 1.  For subsequent
+       * early during startup), making this value greater than 1. For subsequent
        * metrics uploads, this value will be 0.
+       * Logged on Android only as of Q1 2022. Used by only Android WebView. Other
+       * platforms should use Stability.Counts2.
        * </pre>
        *
        * <code>optional int32 launch_count = 15;</code>
@@ -16975,92 +17561,38 @@ public final class SystemProfileProtos {
        * <pre>
        * The number of times the program was launched since the last time metrics
        * was uploaded. For the initial metrics upload (right after startup), this
-       * will often be equal to 1.  However, it is possible that Chrome was unable
+       * will often be equal to 1. However, it is possible that Chrome was unable
        * to upload stability metrics for previous launches (e.g. due to crashing
-       * early during startup), making this value greater than 1.  For subsequent
+       * early during startup), making this value greater than 1. For subsequent
        * metrics uploads, this value will be 0.
+       * Logged on Android only as of Q1 2022. Used by only Android WebView. Other
+       * platforms should use Stability.Counts2.
        * </pre>
        *
        * <code>optional int32 launch_count = 15;</code>
        * @param value The launchCount to set.
        */
       private void setLaunchCount(int value) {
-        bitField0_ |= 0x00008000;
+        bitField0_ |= 0x00000080;
         launchCount_ = value;
       }
       /**
        * <pre>
        * The number of times the program was launched since the last time metrics
        * was uploaded. For the initial metrics upload (right after startup), this
-       * will often be equal to 1.  However, it is possible that Chrome was unable
+       * will often be equal to 1. However, it is possible that Chrome was unable
        * to upload stability metrics for previous launches (e.g. due to crashing
-       * early during startup), making this value greater than 1.  For subsequent
+       * early during startup), making this value greater than 1. For subsequent
        * metrics uploads, this value will be 0.
+       * Logged on Android only as of Q1 2022. Used by only Android WebView. Other
+       * platforms should use Stability.Counts2.
        * </pre>
        *
        * <code>optional int32 launch_count = 15;</code>
        */
       private void clearLaunchCount() {
-        bitField0_ = (bitField0_ & ~0x00008000);
+        bitField0_ = (bitField0_ & ~0x00000080);
         launchCount_ = 0;
-      }
-
-      public static final int CRASH_COUNT_FIELD_NUMBER = 16;
-      private int crashCount_;
-      /**
-       * <pre>
-       * The number of times that it didn't exit cleanly (which we assume to be
-       * mostly crashes). On Android M71+ this does not include times when the Gms
-       * Core version has changed, which is recorded separately below.
-       * </pre>
-       *
-       * <code>optional int32 crash_count = 16;</code>
-       * @return Whether the crashCount field is set.
-       */
-      @java.lang.Override
-      public boolean hasCrashCount() {
-        return ((bitField0_ & 0x00010000) != 0);
-      }
-      /**
-       * <pre>
-       * The number of times that it didn't exit cleanly (which we assume to be
-       * mostly crashes). On Android M71+ this does not include times when the Gms
-       * Core version has changed, which is recorded separately below.
-       * </pre>
-       *
-       * <code>optional int32 crash_count = 16;</code>
-       * @return The crashCount.
-       */
-      @java.lang.Override
-      public int getCrashCount() {
-        return crashCount_;
-      }
-      /**
-       * <pre>
-       * The number of times that it didn't exit cleanly (which we assume to be
-       * mostly crashes). On Android M71+ this does not include times when the Gms
-       * Core version has changed, which is recorded separately below.
-       * </pre>
-       *
-       * <code>optional int32 crash_count = 16;</code>
-       * @param value The crashCount to set.
-       */
-      private void setCrashCount(int value) {
-        bitField0_ |= 0x00010000;
-        crashCount_ = value;
-      }
-      /**
-       * <pre>
-       * The number of times that it didn't exit cleanly (which we assume to be
-       * mostly crashes). On Android M71+ this does not include times when the Gms
-       * Core version has changed, which is recorded separately below.
-       * </pre>
-       *
-       * <code>optional int32 crash_count = 16;</code>
-       */
-      private void clearCrashCount() {
-        bitField0_ = (bitField0_ & ~0x00010000);
-        crashCount_ = 0;
       }
 
       public static final int CRASH_COUNT_DUE_TO_GMS_CORE_UPDATE_FIELD_NUMBER = 30;
@@ -17078,7 +17610,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasCrashCountDueToGmsCoreUpdate() {
-        return ((bitField0_ & 0x00020000) != 0);
+        return ((bitField0_ & 0x00000100) != 0);
       }
       /**
        * <pre>
@@ -17107,7 +17639,7 @@ public final class SystemProfileProtos {
        * @param value The crashCountDueToGmsCoreUpdate to set.
        */
       private void setCrashCountDueToGmsCoreUpdate(int value) {
-        bitField0_ |= 0x00020000;
+        bitField0_ |= 0x00000100;
         crashCountDueToGmsCoreUpdate_ = value;
       }
       /**
@@ -17121,294 +17653,8 @@ public final class SystemProfileProtos {
        * <code>optional int32 crash_count_due_to_gms_core_update = 30;</code>
        */
       private void clearCrashCountDueToGmsCoreUpdate() {
-        bitField0_ = (bitField0_ & ~0x00020000);
+        bitField0_ = (bitField0_ & ~0x00000100);
         crashCountDueToGmsCoreUpdate_ = 0;
-      }
-
-      public static final int INCOMPLETE_SHUTDOWN_COUNT_FIELD_NUMBER = 17;
-      private int incompleteShutdownCount_;
-      /**
-       * <pre>
-       * The number of times the program began, but did not complete, the shutdown
-       * process.  (For example, this may occur when Windows is shutting down, and
-       * it only gives the process a few seconds to clean up.)
-       * </pre>
-       *
-       * <code>optional int32 incomplete_shutdown_count = 17;</code>
-       * @return Whether the incompleteShutdownCount field is set.
-       */
-      @java.lang.Override
-      public boolean hasIncompleteShutdownCount() {
-        return ((bitField0_ & 0x00040000) != 0);
-      }
-      /**
-       * <pre>
-       * The number of times the program began, but did not complete, the shutdown
-       * process.  (For example, this may occur when Windows is shutting down, and
-       * it only gives the process a few seconds to clean up.)
-       * </pre>
-       *
-       * <code>optional int32 incomplete_shutdown_count = 17;</code>
-       * @return The incompleteShutdownCount.
-       */
-      @java.lang.Override
-      public int getIncompleteShutdownCount() {
-        return incompleteShutdownCount_;
-      }
-      /**
-       * <pre>
-       * The number of times the program began, but did not complete, the shutdown
-       * process.  (For example, this may occur when Windows is shutting down, and
-       * it only gives the process a few seconds to clean up.)
-       * </pre>
-       *
-       * <code>optional int32 incomplete_shutdown_count = 17;</code>
-       * @param value The incompleteShutdownCount to set.
-       */
-      private void setIncompleteShutdownCount(int value) {
-        bitField0_ |= 0x00040000;
-        incompleteShutdownCount_ = value;
-      }
-      /**
-       * <pre>
-       * The number of times the program began, but did not complete, the shutdown
-       * process.  (For example, this may occur when Windows is shutting down, and
-       * it only gives the process a few seconds to clean up.)
-       * </pre>
-       *
-       * <code>optional int32 incomplete_shutdown_count = 17;</code>
-       */
-      private void clearIncompleteShutdownCount() {
-        bitField0_ = (bitField0_ & ~0x00040000);
-        incompleteShutdownCount_ = 0;
-      }
-
-      public static final int BREAKPAD_REGISTRATION_SUCCESS_COUNT_FIELD_NUMBER = 18;
-      private int breakpadRegistrationSuccessCount_;
-      /**
-       * <pre>
-       * The number of times the program was able register with breakpad crash
-       * services.
-       * </pre>
-       *
-       * <code>optional int32 breakpad_registration_success_count = 18;</code>
-       * @return Whether the breakpadRegistrationSuccessCount field is set.
-       */
-      @java.lang.Override
-      public boolean hasBreakpadRegistrationSuccessCount() {
-        return ((bitField0_ & 0x00080000) != 0);
-      }
-      /**
-       * <pre>
-       * The number of times the program was able register with breakpad crash
-       * services.
-       * </pre>
-       *
-       * <code>optional int32 breakpad_registration_success_count = 18;</code>
-       * @return The breakpadRegistrationSuccessCount.
-       */
-      @java.lang.Override
-      public int getBreakpadRegistrationSuccessCount() {
-        return breakpadRegistrationSuccessCount_;
-      }
-      /**
-       * <pre>
-       * The number of times the program was able register with breakpad crash
-       * services.
-       * </pre>
-       *
-       * <code>optional int32 breakpad_registration_success_count = 18;</code>
-       * @param value The breakpadRegistrationSuccessCount to set.
-       */
-      private void setBreakpadRegistrationSuccessCount(int value) {
-        bitField0_ |= 0x00080000;
-        breakpadRegistrationSuccessCount_ = value;
-      }
-      /**
-       * <pre>
-       * The number of times the program was able register with breakpad crash
-       * services.
-       * </pre>
-       *
-       * <code>optional int32 breakpad_registration_success_count = 18;</code>
-       */
-      private void clearBreakpadRegistrationSuccessCount() {
-        bitField0_ = (bitField0_ & ~0x00080000);
-        breakpadRegistrationSuccessCount_ = 0;
-      }
-
-      public static final int BREAKPAD_REGISTRATION_FAILURE_COUNT_FIELD_NUMBER = 19;
-      private int breakpadRegistrationFailureCount_;
-      /**
-       * <pre>
-       * The number of times the program failed to register with breakpad crash
-       * services.  If crash registration fails then when the program crashes no
-       * crash report will be generated.
-       * </pre>
-       *
-       * <code>optional int32 breakpad_registration_failure_count = 19;</code>
-       * @return Whether the breakpadRegistrationFailureCount field is set.
-       */
-      @java.lang.Override
-      public boolean hasBreakpadRegistrationFailureCount() {
-        return ((bitField0_ & 0x00100000) != 0);
-      }
-      /**
-       * <pre>
-       * The number of times the program failed to register with breakpad crash
-       * services.  If crash registration fails then when the program crashes no
-       * crash report will be generated.
-       * </pre>
-       *
-       * <code>optional int32 breakpad_registration_failure_count = 19;</code>
-       * @return The breakpadRegistrationFailureCount.
-       */
-      @java.lang.Override
-      public int getBreakpadRegistrationFailureCount() {
-        return breakpadRegistrationFailureCount_;
-      }
-      /**
-       * <pre>
-       * The number of times the program failed to register with breakpad crash
-       * services.  If crash registration fails then when the program crashes no
-       * crash report will be generated.
-       * </pre>
-       *
-       * <code>optional int32 breakpad_registration_failure_count = 19;</code>
-       * @param value The breakpadRegistrationFailureCount to set.
-       */
-      private void setBreakpadRegistrationFailureCount(int value) {
-        bitField0_ |= 0x00100000;
-        breakpadRegistrationFailureCount_ = value;
-      }
-      /**
-       * <pre>
-       * The number of times the program failed to register with breakpad crash
-       * services.  If crash registration fails then when the program crashes no
-       * crash report will be generated.
-       * </pre>
-       *
-       * <code>optional int32 breakpad_registration_failure_count = 19;</code>
-       */
-      private void clearBreakpadRegistrationFailureCount() {
-        bitField0_ = (bitField0_ & ~0x00100000);
-        breakpadRegistrationFailureCount_ = 0;
-      }
-
-      public static final int DEBUGGER_PRESENT_COUNT_FIELD_NUMBER = 20;
-      private int debuggerPresentCount_;
-      /**
-       * <pre>
-       * The number of times the program has run under a debugger.  This should
-       * be an exceptional condition.  Running under a debugger prevents crash
-       * dumps from being generated.
-       * </pre>
-       *
-       * <code>optional int32 debugger_present_count = 20;</code>
-       * @return Whether the debuggerPresentCount field is set.
-       */
-      @java.lang.Override
-      public boolean hasDebuggerPresentCount() {
-        return ((bitField0_ & 0x00200000) != 0);
-      }
-      /**
-       * <pre>
-       * The number of times the program has run under a debugger.  This should
-       * be an exceptional condition.  Running under a debugger prevents crash
-       * dumps from being generated.
-       * </pre>
-       *
-       * <code>optional int32 debugger_present_count = 20;</code>
-       * @return The debuggerPresentCount.
-       */
-      @java.lang.Override
-      public int getDebuggerPresentCount() {
-        return debuggerPresentCount_;
-      }
-      /**
-       * <pre>
-       * The number of times the program has run under a debugger.  This should
-       * be an exceptional condition.  Running under a debugger prevents crash
-       * dumps from being generated.
-       * </pre>
-       *
-       * <code>optional int32 debugger_present_count = 20;</code>
-       * @param value The debuggerPresentCount to set.
-       */
-      private void setDebuggerPresentCount(int value) {
-        bitField0_ |= 0x00200000;
-        debuggerPresentCount_ = value;
-      }
-      /**
-       * <pre>
-       * The number of times the program has run under a debugger.  This should
-       * be an exceptional condition.  Running under a debugger prevents crash
-       * dumps from being generated.
-       * </pre>
-       *
-       * <code>optional int32 debugger_present_count = 20;</code>
-       */
-      private void clearDebuggerPresentCount() {
-        bitField0_ = (bitField0_ & ~0x00200000);
-        debuggerPresentCount_ = 0;
-      }
-
-      public static final int DEBUGGER_NOT_PRESENT_COUNT_FIELD_NUMBER = 21;
-      private int debuggerNotPresentCount_;
-      /**
-       * <pre>
-       * The number of times the program has run without a debugger attached.
-       * This should be most common scenario and should be very close to
-       * |launch_count|.
-       * </pre>
-       *
-       * <code>optional int32 debugger_not_present_count = 21;</code>
-       * @return Whether the debuggerNotPresentCount field is set.
-       */
-      @java.lang.Override
-      public boolean hasDebuggerNotPresentCount() {
-        return ((bitField0_ & 0x00400000) != 0);
-      }
-      /**
-       * <pre>
-       * The number of times the program has run without a debugger attached.
-       * This should be most common scenario and should be very close to
-       * |launch_count|.
-       * </pre>
-       *
-       * <code>optional int32 debugger_not_present_count = 21;</code>
-       * @return The debuggerNotPresentCount.
-       */
-      @java.lang.Override
-      public int getDebuggerNotPresentCount() {
-        return debuggerNotPresentCount_;
-      }
-      /**
-       * <pre>
-       * The number of times the program has run without a debugger attached.
-       * This should be most common scenario and should be very close to
-       * |launch_count|.
-       * </pre>
-       *
-       * <code>optional int32 debugger_not_present_count = 21;</code>
-       * @param value The debuggerNotPresentCount to set.
-       */
-      private void setDebuggerNotPresentCount(int value) {
-        bitField0_ |= 0x00400000;
-        debuggerNotPresentCount_ = value;
-      }
-      /**
-       * <pre>
-       * The number of times the program has run without a debugger attached.
-       * This should be most common scenario and should be very close to
-       * |launch_count|.
-       * </pre>
-       *
-       * <code>optional int32 debugger_not_present_count = 21;</code>
-       */
-      private void clearDebuggerNotPresentCount() {
-        bitField0_ = (bitField0_ & ~0x00400000);
-        debuggerNotPresentCount_ = 0;
       }
 
       public static final int FROM_PREVIOUS_RUN_FIELD_NUMBER = 29;
@@ -17424,7 +17670,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasFromPreviousRun() {
-        return ((bitField0_ & 0x00800000) != 0);
+        return ((bitField0_ & 0x00000200) != 0);
       }
       /**
        * <pre>
@@ -17449,7 +17695,7 @@ public final class SystemProfileProtos {
        * @param value The fromPreviousRun to set.
        */
       private void setFromPreviousRun(boolean value) {
-        bitField0_ |= 0x00800000;
+        bitField0_ |= 0x00000200;
         fromPreviousRun_ = value;
       }
       /**
@@ -17461,102 +17707,8 @@ public final class SystemProfileProtos {
        * <code>optional bool from_previous_run = 29;</code>
        */
       private void clearFromPreviousRun() {
-        bitField0_ = (bitField0_ & ~0x00800000);
+        bitField0_ = (bitField0_ & ~0x00000200);
         fromPreviousRun_ = false;
-      }
-
-      public static final int PLUGIN_STABILITY_FIELD_NUMBER = 22;
-      private com.google.protobuf.Internal.ProtobufList<org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability> pluginStability_;
-      /**
-       * <code>repeated .metrics.SystemProfileProto.Stability.PluginStability plugin_stability = 22;</code>
-       */
-      @java.lang.Override
-      public java.util.List<org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability> getPluginStabilityList() {
-        return pluginStability_;
-      }
-      /**
-       * <code>repeated .metrics.SystemProfileProto.Stability.PluginStability plugin_stability = 22;</code>
-       */
-      public java.util.List<? extends org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStabilityOrBuilder> 
-          getPluginStabilityOrBuilderList() {
-        return pluginStability_;
-      }
-      /**
-       * <code>repeated .metrics.SystemProfileProto.Stability.PluginStability plugin_stability = 22;</code>
-       */
-      @java.lang.Override
-      public int getPluginStabilityCount() {
-        return pluginStability_.size();
-      }
-      /**
-       * <code>repeated .metrics.SystemProfileProto.Stability.PluginStability plugin_stability = 22;</code>
-       */
-      @java.lang.Override
-      public org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability getPluginStability(int index) {
-        return pluginStability_.get(index);
-      }
-      /**
-       * <code>repeated .metrics.SystemProfileProto.Stability.PluginStability plugin_stability = 22;</code>
-       */
-      public org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStabilityOrBuilder getPluginStabilityOrBuilder(
-          int index) {
-        return pluginStability_.get(index);
-      }
-      private void ensurePluginStabilityIsMutable() {
-        com.google.protobuf.Internal.ProtobufList<org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability> tmp = pluginStability_;
-        if (!tmp.isModifiable()) {
-          pluginStability_ =
-              com.google.protobuf.GeneratedMessageLite.mutableCopy(tmp);
-         }
-      }
-
-      /**
-       * <code>repeated .metrics.SystemProfileProto.Stability.PluginStability plugin_stability = 22;</code>
-       */
-      private void setPluginStability(
-          int index, org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability value) {
-        value.getClass();
-  ensurePluginStabilityIsMutable();
-        pluginStability_.set(index, value);
-      }
-      /**
-       * <code>repeated .metrics.SystemProfileProto.Stability.PluginStability plugin_stability = 22;</code>
-       */
-      private void addPluginStability(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability value) {
-        value.getClass();
-  ensurePluginStabilityIsMutable();
-        pluginStability_.add(value);
-      }
-      /**
-       * <code>repeated .metrics.SystemProfileProto.Stability.PluginStability plugin_stability = 22;</code>
-       */
-      private void addPluginStability(
-          int index, org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability value) {
-        value.getClass();
-  ensurePluginStabilityIsMutable();
-        pluginStability_.add(index, value);
-      }
-      /**
-       * <code>repeated .metrics.SystemProfileProto.Stability.PluginStability plugin_stability = 22;</code>
-       */
-      private void addAllPluginStability(
-          java.lang.Iterable<? extends org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability> values) {
-        ensurePluginStabilityIsMutable();
-        com.google.protobuf.AbstractMessageLite.addAll(
-            values, pluginStability_);
-      }
-      /**
-       * <code>repeated .metrics.SystemProfileProto.Stability.PluginStability plugin_stability = 22;</code>
-       */
-      private void clearPluginStability() {
-        pluginStability_ = emptyProtobufList();
-      }
-      /**
-       * <code>repeated .metrics.SystemProfileProto.Stability.PluginStability plugin_stability = 22;</code>
-       */
-      private void removePluginStability(int index) {
-        ensurePluginStabilityIsMutable();
-        pluginStability_.remove(index);
       }
 
       public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability parseFrom(
@@ -17807,8 +17959,8 @@ public final class SystemProfileProtos {
 
         /**
          * <pre>
-         * Page loads along with renderer launches, crashes, hangs and failed
-         * launches, since page load count roughly corresponds to usage.
+         * Logged on Android only as of late Q2 2022. Used by only Android WebView.
+         * Other platforms should use Stability.Counts2.
          * </pre>
          *
          * <code>optional int32 page_load_count = 2;</code>
@@ -17820,8 +17972,8 @@ public final class SystemProfileProtos {
         }
         /**
          * <pre>
-         * Page loads along with renderer launches, crashes, hangs and failed
-         * launches, since page load count roughly corresponds to usage.
+         * Logged on Android only as of late Q2 2022. Used by only Android WebView.
+         * Other platforms should use Stability.Counts2.
          * </pre>
          *
          * <code>optional int32 page_load_count = 2;</code>
@@ -17833,8 +17985,8 @@ public final class SystemProfileProtos {
         }
         /**
          * <pre>
-         * Page loads along with renderer launches, crashes, hangs and failed
-         * launches, since page load count roughly corresponds to usage.
+         * Logged on Android only as of late Q2 2022. Used by only Android WebView.
+         * Other platforms should use Stability.Counts2.
          * </pre>
          *
          * <code>optional int32 page_load_count = 2;</code>
@@ -17848,8 +18000,8 @@ public final class SystemProfileProtos {
         }
         /**
          * <pre>
-         * Page loads along with renderer launches, crashes, hangs and failed
-         * launches, since page load count roughly corresponds to usage.
+         * Logged on Android only as of late Q2 2022. Used by only Android WebView.
+         * Other platforms should use Stability.Counts2.
          * </pre>
          *
          * <code>optional int32 page_load_count = 2;</code>
@@ -17862,114 +18014,11 @@ public final class SystemProfileProtos {
         }
 
         /**
-         * <code>optional int32 renderer_crash_count = 3;</code>
-         * @return Whether the rendererCrashCount field is set.
-         */
-        @java.lang.Override
-        public boolean hasRendererCrashCount() {
-          return instance.hasRendererCrashCount();
-        }
-        /**
-         * <code>optional int32 renderer_crash_count = 3;</code>
-         * @return The rendererCrashCount.
-         */
-        @java.lang.Override
-        public int getRendererCrashCount() {
-          return instance.getRendererCrashCount();
-        }
-        /**
-         * <code>optional int32 renderer_crash_count = 3;</code>
-         * @param value The rendererCrashCount to set.
-         * @return This builder for chaining.
-         */
-        public Builder setRendererCrashCount(int value) {
-          copyOnWrite();
-          instance.setRendererCrashCount(value);
-          return this;
-        }
-        /**
-         * <code>optional int32 renderer_crash_count = 3;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearRendererCrashCount() {
-          copyOnWrite();
-          instance.clearRendererCrashCount();
-          return this;
-        }
-
-        /**
-         * <code>optional int32 renderer_hang_count = 4;</code>
-         * @return Whether the rendererHangCount field is set.
-         */
-        @java.lang.Override
-        public boolean hasRendererHangCount() {
-          return instance.hasRendererHangCount();
-        }
-        /**
-         * <code>optional int32 renderer_hang_count = 4;</code>
-         * @return The rendererHangCount.
-         */
-        @java.lang.Override
-        public int getRendererHangCount() {
-          return instance.getRendererHangCount();
-        }
-        /**
-         * <code>optional int32 renderer_hang_count = 4;</code>
-         * @param value The rendererHangCount to set.
-         * @return This builder for chaining.
-         */
-        public Builder setRendererHangCount(int value) {
-          copyOnWrite();
-          instance.setRendererHangCount(value);
-          return this;
-        }
-        /**
-         * <code>optional int32 renderer_hang_count = 4;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearRendererHangCount() {
-          copyOnWrite();
-          instance.clearRendererHangCount();
-          return this;
-        }
-
-        /**
-         * <code>optional int32 renderer_failed_launch_count = 24;</code>
-         * @return Whether the rendererFailedLaunchCount field is set.
-         */
-        @java.lang.Override
-        public boolean hasRendererFailedLaunchCount() {
-          return instance.hasRendererFailedLaunchCount();
-        }
-        /**
-         * <code>optional int32 renderer_failed_launch_count = 24;</code>
-         * @return The rendererFailedLaunchCount.
-         */
-        @java.lang.Override
-        public int getRendererFailedLaunchCount() {
-          return instance.getRendererFailedLaunchCount();
-        }
-        /**
-         * <code>optional int32 renderer_failed_launch_count = 24;</code>
-         * @param value The rendererFailedLaunchCount to set.
-         * @return This builder for chaining.
-         */
-        public Builder setRendererFailedLaunchCount(int value) {
-          copyOnWrite();
-          instance.setRendererFailedLaunchCount(value);
-          return this;
-        }
-        /**
-         * <code>optional int32 renderer_failed_launch_count = 24;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearRendererFailedLaunchCount() {
-          copyOnWrite();
-          instance.clearRendererFailedLaunchCount();
-          return this;
-        }
-
-        /**
+         * <pre>
+         * Logged on Android only as of Q2 2022. Used by only Android WebView. Other
+         * platforms should use Stability.Counts2.
+         * </pre>
+         *
          * <code>optional int32 renderer_launch_count = 26;</code>
          * @return Whether the rendererLaunchCount field is set.
          */
@@ -17978,6 +18027,11 @@ public final class SystemProfileProtos {
           return instance.hasRendererLaunchCount();
         }
         /**
+         * <pre>
+         * Logged on Android only as of Q2 2022. Used by only Android WebView. Other
+         * platforms should use Stability.Counts2.
+         * </pre>
+         *
          * <code>optional int32 renderer_launch_count = 26;</code>
          * @return The rendererLaunchCount.
          */
@@ -17986,6 +18040,11 @@ public final class SystemProfileProtos {
           return instance.getRendererLaunchCount();
         }
         /**
+         * <pre>
+         * Logged on Android only as of Q2 2022. Used by only Android WebView. Other
+         * platforms should use Stability.Counts2.
+         * </pre>
+         *
          * <code>optional int32 renderer_launch_count = 26;</code>
          * @param value The rendererLaunchCount to set.
          * @return This builder for chaining.
@@ -17996,248 +18055,17 @@ public final class SystemProfileProtos {
           return this;
         }
         /**
+         * <pre>
+         * Logged on Android only as of Q2 2022. Used by only Android WebView. Other
+         * platforms should use Stability.Counts2.
+         * </pre>
+         *
          * <code>optional int32 renderer_launch_count = 26;</code>
          * @return This builder for chaining.
          */
         public Builder clearRendererLaunchCount() {
           copyOnWrite();
           instance.clearRendererLaunchCount();
-          return this;
-        }
-
-        /**
-         * <pre>
-         * Number of renderer launches, crashes and failed launches that were for
-         * extensions. These are not counted in the renderer counts above.
-         * </pre>
-         *
-         * <code>optional int32 extension_renderer_crash_count = 5;</code>
-         * @return Whether the extensionRendererCrashCount field is set.
-         */
-        @java.lang.Override
-        public boolean hasExtensionRendererCrashCount() {
-          return instance.hasExtensionRendererCrashCount();
-        }
-        /**
-         * <pre>
-         * Number of renderer launches, crashes and failed launches that were for
-         * extensions. These are not counted in the renderer counts above.
-         * </pre>
-         *
-         * <code>optional int32 extension_renderer_crash_count = 5;</code>
-         * @return The extensionRendererCrashCount.
-         */
-        @java.lang.Override
-        public int getExtensionRendererCrashCount() {
-          return instance.getExtensionRendererCrashCount();
-        }
-        /**
-         * <pre>
-         * Number of renderer launches, crashes and failed launches that were for
-         * extensions. These are not counted in the renderer counts above.
-         * </pre>
-         *
-         * <code>optional int32 extension_renderer_crash_count = 5;</code>
-         * @param value The extensionRendererCrashCount to set.
-         * @return This builder for chaining.
-         */
-        public Builder setExtensionRendererCrashCount(int value) {
-          copyOnWrite();
-          instance.setExtensionRendererCrashCount(value);
-          return this;
-        }
-        /**
-         * <pre>
-         * Number of renderer launches, crashes and failed launches that were for
-         * extensions. These are not counted in the renderer counts above.
-         * </pre>
-         *
-         * <code>optional int32 extension_renderer_crash_count = 5;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearExtensionRendererCrashCount() {
-          copyOnWrite();
-          instance.clearExtensionRendererCrashCount();
-          return this;
-        }
-
-        /**
-         * <code>optional int32 extension_renderer_failed_launch_count = 25;</code>
-         * @return Whether the extensionRendererFailedLaunchCount field is set.
-         */
-        @java.lang.Override
-        public boolean hasExtensionRendererFailedLaunchCount() {
-          return instance.hasExtensionRendererFailedLaunchCount();
-        }
-        /**
-         * <code>optional int32 extension_renderer_failed_launch_count = 25;</code>
-         * @return The extensionRendererFailedLaunchCount.
-         */
-        @java.lang.Override
-        public int getExtensionRendererFailedLaunchCount() {
-          return instance.getExtensionRendererFailedLaunchCount();
-        }
-        /**
-         * <code>optional int32 extension_renderer_failed_launch_count = 25;</code>
-         * @param value The extensionRendererFailedLaunchCount to set.
-         * @return This builder for chaining.
-         */
-        public Builder setExtensionRendererFailedLaunchCount(int value) {
-          copyOnWrite();
-          instance.setExtensionRendererFailedLaunchCount(value);
-          return this;
-        }
-        /**
-         * <code>optional int32 extension_renderer_failed_launch_count = 25;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearExtensionRendererFailedLaunchCount() {
-          copyOnWrite();
-          instance.clearExtensionRendererFailedLaunchCount();
-          return this;
-        }
-
-        /**
-         * <code>optional int32 extension_renderer_launch_count = 27;</code>
-         * @return Whether the extensionRendererLaunchCount field is set.
-         */
-        @java.lang.Override
-        public boolean hasExtensionRendererLaunchCount() {
-          return instance.hasExtensionRendererLaunchCount();
-        }
-        /**
-         * <code>optional int32 extension_renderer_launch_count = 27;</code>
-         * @return The extensionRendererLaunchCount.
-         */
-        @java.lang.Override
-        public int getExtensionRendererLaunchCount() {
-          return instance.getExtensionRendererLaunchCount();
-        }
-        /**
-         * <code>optional int32 extension_renderer_launch_count = 27;</code>
-         * @param value The extensionRendererLaunchCount to set.
-         * @return This builder for chaining.
-         */
-        public Builder setExtensionRendererLaunchCount(int value) {
-          copyOnWrite();
-          instance.setExtensionRendererLaunchCount(value);
-          return this;
-        }
-        /**
-         * <code>optional int32 extension_renderer_launch_count = 27;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearExtensionRendererLaunchCount() {
-          copyOnWrite();
-          instance.clearExtensionRendererLaunchCount();
-          return this;
-        }
-
-        /**
-         * <pre>
-         * Number of non-renderer child process crashes.
-         * </pre>
-         *
-         * <code>optional int32 child_process_crash_count = 6;</code>
-         * @return Whether the childProcessCrashCount field is set.
-         */
-        @java.lang.Override
-        public boolean hasChildProcessCrashCount() {
-          return instance.hasChildProcessCrashCount();
-        }
-        /**
-         * <pre>
-         * Number of non-renderer child process crashes.
-         * </pre>
-         *
-         * <code>optional int32 child_process_crash_count = 6;</code>
-         * @return The childProcessCrashCount.
-         */
-        @java.lang.Override
-        public int getChildProcessCrashCount() {
-          return instance.getChildProcessCrashCount();
-        }
-        /**
-         * <pre>
-         * Number of non-renderer child process crashes.
-         * </pre>
-         *
-         * <code>optional int32 child_process_crash_count = 6;</code>
-         * @param value The childProcessCrashCount to set.
-         * @return This builder for chaining.
-         */
-        public Builder setChildProcessCrashCount(int value) {
-          copyOnWrite();
-          instance.setChildProcessCrashCount(value);
-          return this;
-        }
-        /**
-         * <pre>
-         * Number of non-renderer child process crashes.
-         * </pre>
-         *
-         * <code>optional int32 child_process_crash_count = 6;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearChildProcessCrashCount() {
-          copyOnWrite();
-          instance.clearChildProcessCrashCount();
-          return this;
-        }
-
-        /**
-         * <pre>
-         * Number of gpu crashes that generate a crash dump. Currently only used by
-         * Android Chrome starting with M71.
-         * </pre>
-         *
-         * <code>optional int32 gpu_crash_count = 31;</code>
-         * @return Whether the gpuCrashCount field is set.
-         */
-        @java.lang.Override
-        public boolean hasGpuCrashCount() {
-          return instance.hasGpuCrashCount();
-        }
-        /**
-         * <pre>
-         * Number of gpu crashes that generate a crash dump. Currently only used by
-         * Android Chrome starting with M71.
-         * </pre>
-         *
-         * <code>optional int32 gpu_crash_count = 31;</code>
-         * @return The gpuCrashCount.
-         */
-        @java.lang.Override
-        public int getGpuCrashCount() {
-          return instance.getGpuCrashCount();
-        }
-        /**
-         * <pre>
-         * Number of gpu crashes that generate a crash dump. Currently only used by
-         * Android Chrome starting with M71.
-         * </pre>
-         *
-         * <code>optional int32 gpu_crash_count = 31;</code>
-         * @param value The gpuCrashCount to set.
-         * @return This builder for chaining.
-         */
-        public Builder setGpuCrashCount(int value) {
-          copyOnWrite();
-          instance.setGpuCrashCount(value);
-          return this;
-        }
-        /**
-         * <pre>
-         * Number of gpu crashes that generate a crash dump. Currently only used by
-         * Android Chrome starting with M71.
-         * </pre>
-         *
-         * <code>optional int32 gpu_crash_count = 31;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearGpuCrashCount() {
-          copyOnWrite();
-          instance.clearGpuCrashCount();
           return this;
         }
 
@@ -18417,10 +18245,12 @@ public final class SystemProfileProtos {
          * <pre>
          * The number of times the program was launched since the last time metrics
          * was uploaded. For the initial metrics upload (right after startup), this
-         * will often be equal to 1.  However, it is possible that Chrome was unable
+         * will often be equal to 1. However, it is possible that Chrome was unable
          * to upload stability metrics for previous launches (e.g. due to crashing
-         * early during startup), making this value greater than 1.  For subsequent
+         * early during startup), making this value greater than 1. For subsequent
          * metrics uploads, this value will be 0.
+         * Logged on Android only as of Q1 2022. Used by only Android WebView. Other
+         * platforms should use Stability.Counts2.
          * </pre>
          *
          * <code>optional int32 launch_count = 15;</code>
@@ -18434,10 +18264,12 @@ public final class SystemProfileProtos {
          * <pre>
          * The number of times the program was launched since the last time metrics
          * was uploaded. For the initial metrics upload (right after startup), this
-         * will often be equal to 1.  However, it is possible that Chrome was unable
+         * will often be equal to 1. However, it is possible that Chrome was unable
          * to upload stability metrics for previous launches (e.g. due to crashing
-         * early during startup), making this value greater than 1.  For subsequent
+         * early during startup), making this value greater than 1. For subsequent
          * metrics uploads, this value will be 0.
+         * Logged on Android only as of Q1 2022. Used by only Android WebView. Other
+         * platforms should use Stability.Counts2.
          * </pre>
          *
          * <code>optional int32 launch_count = 15;</code>
@@ -18451,10 +18283,12 @@ public final class SystemProfileProtos {
          * <pre>
          * The number of times the program was launched since the last time metrics
          * was uploaded. For the initial metrics upload (right after startup), this
-         * will often be equal to 1.  However, it is possible that Chrome was unable
+         * will often be equal to 1. However, it is possible that Chrome was unable
          * to upload stability metrics for previous launches (e.g. due to crashing
-         * early during startup), making this value greater than 1.  For subsequent
+         * early during startup), making this value greater than 1. For subsequent
          * metrics uploads, this value will be 0.
+         * Logged on Android only as of Q1 2022. Used by only Android WebView. Other
+         * platforms should use Stability.Counts2.
          * </pre>
          *
          * <code>optional int32 launch_count = 15;</code>
@@ -18470,10 +18304,12 @@ public final class SystemProfileProtos {
          * <pre>
          * The number of times the program was launched since the last time metrics
          * was uploaded. For the initial metrics upload (right after startup), this
-         * will often be equal to 1.  However, it is possible that Chrome was unable
+         * will often be equal to 1. However, it is possible that Chrome was unable
          * to upload stability metrics for previous launches (e.g. due to crashing
-         * early during startup), making this value greater than 1.  For subsequent
+         * early during startup), making this value greater than 1. For subsequent
          * metrics uploads, this value will be 0.
+         * Logged on Android only as of Q1 2022. Used by only Android WebView. Other
+         * platforms should use Stability.Counts2.
          * </pre>
          *
          * <code>optional int32 launch_count = 15;</code>
@@ -18482,66 +18318,6 @@ public final class SystemProfileProtos {
         public Builder clearLaunchCount() {
           copyOnWrite();
           instance.clearLaunchCount();
-          return this;
-        }
-
-        /**
-         * <pre>
-         * The number of times that it didn't exit cleanly (which we assume to be
-         * mostly crashes). On Android M71+ this does not include times when the Gms
-         * Core version has changed, which is recorded separately below.
-         * </pre>
-         *
-         * <code>optional int32 crash_count = 16;</code>
-         * @return Whether the crashCount field is set.
-         */
-        @java.lang.Override
-        public boolean hasCrashCount() {
-          return instance.hasCrashCount();
-        }
-        /**
-         * <pre>
-         * The number of times that it didn't exit cleanly (which we assume to be
-         * mostly crashes). On Android M71+ this does not include times when the Gms
-         * Core version has changed, which is recorded separately below.
-         * </pre>
-         *
-         * <code>optional int32 crash_count = 16;</code>
-         * @return The crashCount.
-         */
-        @java.lang.Override
-        public int getCrashCount() {
-          return instance.getCrashCount();
-        }
-        /**
-         * <pre>
-         * The number of times that it didn't exit cleanly (which we assume to be
-         * mostly crashes). On Android M71+ this does not include times when the Gms
-         * Core version has changed, which is recorded separately below.
-         * </pre>
-         *
-         * <code>optional int32 crash_count = 16;</code>
-         * @param value The crashCount to set.
-         * @return This builder for chaining.
-         */
-        public Builder setCrashCount(int value) {
-          copyOnWrite();
-          instance.setCrashCount(value);
-          return this;
-        }
-        /**
-         * <pre>
-         * The number of times that it didn't exit cleanly (which we assume to be
-         * mostly crashes). On Android M71+ this does not include times when the Gms
-         * Core version has changed, which is recorded separately below.
-         * </pre>
-         *
-         * <code>optional int32 crash_count = 16;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearCrashCount() {
-          copyOnWrite();
-          instance.clearCrashCount();
           return this;
         }
 
@@ -18611,302 +18387,6 @@ public final class SystemProfileProtos {
 
         /**
          * <pre>
-         * The number of times the program began, but did not complete, the shutdown
-         * process.  (For example, this may occur when Windows is shutting down, and
-         * it only gives the process a few seconds to clean up.)
-         * </pre>
-         *
-         * <code>optional int32 incomplete_shutdown_count = 17;</code>
-         * @return Whether the incompleteShutdownCount field is set.
-         */
-        @java.lang.Override
-        public boolean hasIncompleteShutdownCount() {
-          return instance.hasIncompleteShutdownCount();
-        }
-        /**
-         * <pre>
-         * The number of times the program began, but did not complete, the shutdown
-         * process.  (For example, this may occur when Windows is shutting down, and
-         * it only gives the process a few seconds to clean up.)
-         * </pre>
-         *
-         * <code>optional int32 incomplete_shutdown_count = 17;</code>
-         * @return The incompleteShutdownCount.
-         */
-        @java.lang.Override
-        public int getIncompleteShutdownCount() {
-          return instance.getIncompleteShutdownCount();
-        }
-        /**
-         * <pre>
-         * The number of times the program began, but did not complete, the shutdown
-         * process.  (For example, this may occur when Windows is shutting down, and
-         * it only gives the process a few seconds to clean up.)
-         * </pre>
-         *
-         * <code>optional int32 incomplete_shutdown_count = 17;</code>
-         * @param value The incompleteShutdownCount to set.
-         * @return This builder for chaining.
-         */
-        public Builder setIncompleteShutdownCount(int value) {
-          copyOnWrite();
-          instance.setIncompleteShutdownCount(value);
-          return this;
-        }
-        /**
-         * <pre>
-         * The number of times the program began, but did not complete, the shutdown
-         * process.  (For example, this may occur when Windows is shutting down, and
-         * it only gives the process a few seconds to clean up.)
-         * </pre>
-         *
-         * <code>optional int32 incomplete_shutdown_count = 17;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearIncompleteShutdownCount() {
-          copyOnWrite();
-          instance.clearIncompleteShutdownCount();
-          return this;
-        }
-
-        /**
-         * <pre>
-         * The number of times the program was able register with breakpad crash
-         * services.
-         * </pre>
-         *
-         * <code>optional int32 breakpad_registration_success_count = 18;</code>
-         * @return Whether the breakpadRegistrationSuccessCount field is set.
-         */
-        @java.lang.Override
-        public boolean hasBreakpadRegistrationSuccessCount() {
-          return instance.hasBreakpadRegistrationSuccessCount();
-        }
-        /**
-         * <pre>
-         * The number of times the program was able register with breakpad crash
-         * services.
-         * </pre>
-         *
-         * <code>optional int32 breakpad_registration_success_count = 18;</code>
-         * @return The breakpadRegistrationSuccessCount.
-         */
-        @java.lang.Override
-        public int getBreakpadRegistrationSuccessCount() {
-          return instance.getBreakpadRegistrationSuccessCount();
-        }
-        /**
-         * <pre>
-         * The number of times the program was able register with breakpad crash
-         * services.
-         * </pre>
-         *
-         * <code>optional int32 breakpad_registration_success_count = 18;</code>
-         * @param value The breakpadRegistrationSuccessCount to set.
-         * @return This builder for chaining.
-         */
-        public Builder setBreakpadRegistrationSuccessCount(int value) {
-          copyOnWrite();
-          instance.setBreakpadRegistrationSuccessCount(value);
-          return this;
-        }
-        /**
-         * <pre>
-         * The number of times the program was able register with breakpad crash
-         * services.
-         * </pre>
-         *
-         * <code>optional int32 breakpad_registration_success_count = 18;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearBreakpadRegistrationSuccessCount() {
-          copyOnWrite();
-          instance.clearBreakpadRegistrationSuccessCount();
-          return this;
-        }
-
-        /**
-         * <pre>
-         * The number of times the program failed to register with breakpad crash
-         * services.  If crash registration fails then when the program crashes no
-         * crash report will be generated.
-         * </pre>
-         *
-         * <code>optional int32 breakpad_registration_failure_count = 19;</code>
-         * @return Whether the breakpadRegistrationFailureCount field is set.
-         */
-        @java.lang.Override
-        public boolean hasBreakpadRegistrationFailureCount() {
-          return instance.hasBreakpadRegistrationFailureCount();
-        }
-        /**
-         * <pre>
-         * The number of times the program failed to register with breakpad crash
-         * services.  If crash registration fails then when the program crashes no
-         * crash report will be generated.
-         * </pre>
-         *
-         * <code>optional int32 breakpad_registration_failure_count = 19;</code>
-         * @return The breakpadRegistrationFailureCount.
-         */
-        @java.lang.Override
-        public int getBreakpadRegistrationFailureCount() {
-          return instance.getBreakpadRegistrationFailureCount();
-        }
-        /**
-         * <pre>
-         * The number of times the program failed to register with breakpad crash
-         * services.  If crash registration fails then when the program crashes no
-         * crash report will be generated.
-         * </pre>
-         *
-         * <code>optional int32 breakpad_registration_failure_count = 19;</code>
-         * @param value The breakpadRegistrationFailureCount to set.
-         * @return This builder for chaining.
-         */
-        public Builder setBreakpadRegistrationFailureCount(int value) {
-          copyOnWrite();
-          instance.setBreakpadRegistrationFailureCount(value);
-          return this;
-        }
-        /**
-         * <pre>
-         * The number of times the program failed to register with breakpad crash
-         * services.  If crash registration fails then when the program crashes no
-         * crash report will be generated.
-         * </pre>
-         *
-         * <code>optional int32 breakpad_registration_failure_count = 19;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearBreakpadRegistrationFailureCount() {
-          copyOnWrite();
-          instance.clearBreakpadRegistrationFailureCount();
-          return this;
-        }
-
-        /**
-         * <pre>
-         * The number of times the program has run under a debugger.  This should
-         * be an exceptional condition.  Running under a debugger prevents crash
-         * dumps from being generated.
-         * </pre>
-         *
-         * <code>optional int32 debugger_present_count = 20;</code>
-         * @return Whether the debuggerPresentCount field is set.
-         */
-        @java.lang.Override
-        public boolean hasDebuggerPresentCount() {
-          return instance.hasDebuggerPresentCount();
-        }
-        /**
-         * <pre>
-         * The number of times the program has run under a debugger.  This should
-         * be an exceptional condition.  Running under a debugger prevents crash
-         * dumps from being generated.
-         * </pre>
-         *
-         * <code>optional int32 debugger_present_count = 20;</code>
-         * @return The debuggerPresentCount.
-         */
-        @java.lang.Override
-        public int getDebuggerPresentCount() {
-          return instance.getDebuggerPresentCount();
-        }
-        /**
-         * <pre>
-         * The number of times the program has run under a debugger.  This should
-         * be an exceptional condition.  Running under a debugger prevents crash
-         * dumps from being generated.
-         * </pre>
-         *
-         * <code>optional int32 debugger_present_count = 20;</code>
-         * @param value The debuggerPresentCount to set.
-         * @return This builder for chaining.
-         */
-        public Builder setDebuggerPresentCount(int value) {
-          copyOnWrite();
-          instance.setDebuggerPresentCount(value);
-          return this;
-        }
-        /**
-         * <pre>
-         * The number of times the program has run under a debugger.  This should
-         * be an exceptional condition.  Running under a debugger prevents crash
-         * dumps from being generated.
-         * </pre>
-         *
-         * <code>optional int32 debugger_present_count = 20;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearDebuggerPresentCount() {
-          copyOnWrite();
-          instance.clearDebuggerPresentCount();
-          return this;
-        }
-
-        /**
-         * <pre>
-         * The number of times the program has run without a debugger attached.
-         * This should be most common scenario and should be very close to
-         * |launch_count|.
-         * </pre>
-         *
-         * <code>optional int32 debugger_not_present_count = 21;</code>
-         * @return Whether the debuggerNotPresentCount field is set.
-         */
-        @java.lang.Override
-        public boolean hasDebuggerNotPresentCount() {
-          return instance.hasDebuggerNotPresentCount();
-        }
-        /**
-         * <pre>
-         * The number of times the program has run without a debugger attached.
-         * This should be most common scenario and should be very close to
-         * |launch_count|.
-         * </pre>
-         *
-         * <code>optional int32 debugger_not_present_count = 21;</code>
-         * @return The debuggerNotPresentCount.
-         */
-        @java.lang.Override
-        public int getDebuggerNotPresentCount() {
-          return instance.getDebuggerNotPresentCount();
-        }
-        /**
-         * <pre>
-         * The number of times the program has run without a debugger attached.
-         * This should be most common scenario and should be very close to
-         * |launch_count|.
-         * </pre>
-         *
-         * <code>optional int32 debugger_not_present_count = 21;</code>
-         * @param value The debuggerNotPresentCount to set.
-         * @return This builder for chaining.
-         */
-        public Builder setDebuggerNotPresentCount(int value) {
-          copyOnWrite();
-          instance.setDebuggerNotPresentCount(value);
-          return this;
-        }
-        /**
-         * <pre>
-         * The number of times the program has run without a debugger attached.
-         * This should be most common scenario and should be very close to
-         * |launch_count|.
-         * </pre>
-         *
-         * <code>optional int32 debugger_not_present_count = 21;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearDebuggerNotPresentCount() {
-          copyOnWrite();
-          instance.clearDebuggerNotPresentCount();
-          return this;
-        }
-
-        /**
-         * <pre>
          * Whether the metrics being reported are from a previous run picked up via
          * the left-over memory mapped files.
          * </pre>
@@ -18961,108 +18441,6 @@ public final class SystemProfileProtos {
           return this;
         }
 
-        /**
-         * <code>repeated .metrics.SystemProfileProto.Stability.PluginStability plugin_stability = 22;</code>
-         */
-        @java.lang.Override
-        public java.util.List<org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability> getPluginStabilityList() {
-          return java.util.Collections.unmodifiableList(
-              instance.getPluginStabilityList());
-        }
-        /**
-         * <code>repeated .metrics.SystemProfileProto.Stability.PluginStability plugin_stability = 22;</code>
-         */
-        @java.lang.Override
-        public int getPluginStabilityCount() {
-          return instance.getPluginStabilityCount();
-        }/**
-         * <code>repeated .metrics.SystemProfileProto.Stability.PluginStability plugin_stability = 22;</code>
-         */
-        @java.lang.Override
-        public org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability getPluginStability(int index) {
-          return instance.getPluginStability(index);
-        }
-        /**
-         * <code>repeated .metrics.SystemProfileProto.Stability.PluginStability plugin_stability = 22;</code>
-         */
-        public Builder setPluginStability(
-            int index, org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability value) {
-          copyOnWrite();
-          instance.setPluginStability(index, value);
-          return this;
-        }
-        /**
-         * <code>repeated .metrics.SystemProfileProto.Stability.PluginStability plugin_stability = 22;</code>
-         */
-        public Builder setPluginStability(
-            int index, org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability.Builder builderForValue) {
-          copyOnWrite();
-          instance.setPluginStability(index,
-              builderForValue.build());
-          return this;
-        }
-        /**
-         * <code>repeated .metrics.SystemProfileProto.Stability.PluginStability plugin_stability = 22;</code>
-         */
-        public Builder addPluginStability(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability value) {
-          copyOnWrite();
-          instance.addPluginStability(value);
-          return this;
-        }
-        /**
-         * <code>repeated .metrics.SystemProfileProto.Stability.PluginStability plugin_stability = 22;</code>
-         */
-        public Builder addPluginStability(
-            int index, org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability value) {
-          copyOnWrite();
-          instance.addPluginStability(index, value);
-          return this;
-        }
-        /**
-         * <code>repeated .metrics.SystemProfileProto.Stability.PluginStability plugin_stability = 22;</code>
-         */
-        public Builder addPluginStability(
-            org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability.Builder builderForValue) {
-          copyOnWrite();
-          instance.addPluginStability(builderForValue.build());
-          return this;
-        }
-        /**
-         * <code>repeated .metrics.SystemProfileProto.Stability.PluginStability plugin_stability = 22;</code>
-         */
-        public Builder addPluginStability(
-            int index, org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability.Builder builderForValue) {
-          copyOnWrite();
-          instance.addPluginStability(index,
-              builderForValue.build());
-          return this;
-        }
-        /**
-         * <code>repeated .metrics.SystemProfileProto.Stability.PluginStability plugin_stability = 22;</code>
-         */
-        public Builder addAllPluginStability(
-            java.lang.Iterable<? extends org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability> values) {
-          copyOnWrite();
-          instance.addAllPluginStability(values);
-          return this;
-        }
-        /**
-         * <code>repeated .metrics.SystemProfileProto.Stability.PluginStability plugin_stability = 22;</code>
-         */
-        public Builder clearPluginStability() {
-          copyOnWrite();
-          instance.clearPluginStability();
-          return this;
-        }
-        /**
-         * <code>repeated .metrics.SystemProfileProto.Stability.PluginStability plugin_stability = 22;</code>
-         */
-        public Builder removePluginStability(int index) {
-          copyOnWrite();
-          instance.removePluginStability(index);
-          return this;
-        }
-
         // @@protoc_insertion_point(builder_scope:metrics.SystemProfileProto.Stability)
       }
       @java.lang.Override
@@ -19082,38 +18460,19 @@ public final class SystemProfileProtos {
                 "bitField0_",
                 "incrementalUptimeSec_",
                 "pageLoadCount_",
-                "rendererCrashCount_",
-                "rendererHangCount_",
-                "extensionRendererCrashCount_",
-                "childProcessCrashCount_",
                 "otherUserCrashCount_",
                 "kernelCrashCount_",
                 "uncleanSystemShutdownCount_",
                 "launchCount_",
-                "crashCount_",
-                "incompleteShutdownCount_",
-                "breakpadRegistrationSuccessCount_",
-                "breakpadRegistrationFailureCount_",
-                "debuggerPresentCount_",
-                "debuggerNotPresentCount_",
-                "pluginStability_",
-                org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability.PluginStability.class,
                 "uptimeSec_",
-                "rendererFailedLaunchCount_",
-                "extensionRendererFailedLaunchCount_",
                 "rendererLaunchCount_",
-                "extensionRendererLaunchCount_",
                 "fromPreviousRun_",
                 "crashCountDueToGmsCoreUpdate_",
-                "gpuCrashCount_",
               };
               java.lang.String info =
-                  "\u0001\u0019\u0000\u0001\u0001\u001f\u0019\u0000\u0001\u0000\u0001\u1002\u0000\u0002" +
-                  "\u1004\u0002\u0003\u1004\u0003\u0004\u1004\u0004\u0005\u1004\u0007\u0006\u1004\n" +
-                  "\u0007\u1004\f\b\u1004\r\t\u1004\u000e\u000f\u1004\u000f\u0010\u1004\u0010\u0011" +
-                  "\u1004\u0012\u0012\u1004\u0013\u0013\u1004\u0014\u0014\u1004\u0015\u0015\u1004\u0016" +
-                  "\u0016\u001b\u0017\u1002\u0001\u0018\u1004\u0005\u0019\u1004\b\u001a\u1004\u0006" +
-                  "\u001b\u1004\t\u001d\u1007\u0017\u001e\u1004\u0011\u001f\u1004\u000b";
+                  "\u0001\n\u0000\u0001\u0001\u001e\n\u0000\u0000\u0000\u0001\u1002\u0000\u0002\u1004" +
+                  "\u0002\u0007\u1004\u0004\b\u1004\u0005\t\u1004\u0006\u000f\u1004\u0007\u0017\u1002" +
+                  "\u0001\u001a\u1004\u0003\u001d\u1007\t\u001e\u1004\b";
               return newMessageInfo(DEFAULT_INSTANCE, info, objects);
           }
           // fall through
@@ -29308,6 +28667,891 @@ public final class SystemProfileProtos {
       }
     }
 
+    public interface DemoModeDimensionsOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:metrics.SystemProfileProto.DemoModeDimensions)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <code>optional string country = 1;</code>
+       * @return Whether the country field is set.
+       */
+      boolean hasCountry();
+      /**
+       * <code>optional string country = 1;</code>
+       * @return The country.
+       */
+      java.lang.String getCountry();
+      /**
+       * <code>optional string country = 1;</code>
+       * @return The bytes for country.
+       */
+      com.google.protobuf.ByteString
+          getCountryBytes();
+
+      /**
+       * <code>optional .metrics.SystemProfileProto.DemoModeDimensions.Retailer retailer = 2;</code>
+       * @return Whether the retailer field is set.
+       */
+      boolean hasRetailer();
+      /**
+       * <code>optional .metrics.SystemProfileProto.DemoModeDimensions.Retailer retailer = 2;</code>
+       * @return The retailer.
+       */
+      org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer getRetailer();
+    }
+    /**
+     * <pre>
+     * Demo mode related dimension information.
+     * Next Tag: 3
+     * </pre>
+     *
+     * Protobuf type {@code metrics.SystemProfileProto.DemoModeDimensions}
+     */
+    public  static final class DemoModeDimensions extends
+        com.google.protobuf.GeneratedMessageLite<
+            DemoModeDimensions, DemoModeDimensions.Builder> implements
+        // @@protoc_insertion_point(message_implements:metrics.SystemProfileProto.DemoModeDimensions)
+        DemoModeDimensionsOrBuilder {
+      private DemoModeDimensions() {
+        country_ = "";
+      }
+      public interface RetailerOrBuilder extends
+          // @@protoc_insertion_point(interface_extends:metrics.SystemProfileProto.DemoModeDimensions.Retailer)
+          com.google.protobuf.MessageLiteOrBuilder {
+
+        /**
+         * <code>optional string retailer_id = 1;</code>
+         * @return Whether the retailerId field is set.
+         */
+        boolean hasRetailerId();
+        /**
+         * <code>optional string retailer_id = 1;</code>
+         * @return The retailerId.
+         */
+        java.lang.String getRetailerId();
+        /**
+         * <code>optional string retailer_id = 1;</code>
+         * @return The bytes for retailerId.
+         */
+        com.google.protobuf.ByteString
+            getRetailerIdBytes();
+
+        /**
+         * <code>optional string store_id = 2;</code>
+         * @return Whether the storeId field is set.
+         */
+        boolean hasStoreId();
+        /**
+         * <code>optional string store_id = 2;</code>
+         * @return The storeId.
+         */
+        java.lang.String getStoreId();
+        /**
+         * <code>optional string store_id = 2;</code>
+         * @return The bytes for storeId.
+         */
+        com.google.protobuf.ByteString
+            getStoreIdBytes();
+      }
+      /**
+       * <pre>
+       * Demo devices retailer id and store id, value is set during demo setup.
+       * Next Tag: 3
+       * </pre>
+       *
+       * Protobuf type {@code metrics.SystemProfileProto.DemoModeDimensions.Retailer}
+       */
+      public  static final class Retailer extends
+          com.google.protobuf.GeneratedMessageLite<
+              Retailer, Retailer.Builder> implements
+          // @@protoc_insertion_point(message_implements:metrics.SystemProfileProto.DemoModeDimensions.Retailer)
+          RetailerOrBuilder {
+        private Retailer() {
+          retailerId_ = "";
+          storeId_ = "";
+        }
+        private int bitField0_;
+        public static final int RETAILER_ID_FIELD_NUMBER = 1;
+        private java.lang.String retailerId_;
+        /**
+         * <code>optional string retailer_id = 1;</code>
+         * @return Whether the retailerId field is set.
+         */
+        @java.lang.Override
+        public boolean hasRetailerId() {
+          return ((bitField0_ & 0x00000001) != 0);
+        }
+        /**
+         * <code>optional string retailer_id = 1;</code>
+         * @return The retailerId.
+         */
+        @java.lang.Override
+        public java.lang.String getRetailerId() {
+          return retailerId_;
+        }
+        /**
+         * <code>optional string retailer_id = 1;</code>
+         * @return The bytes for retailerId.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString
+            getRetailerIdBytes() {
+          return com.google.protobuf.ByteString.copyFromUtf8(retailerId_);
+        }
+        /**
+         * <code>optional string retailer_id = 1;</code>
+         * @param value The retailerId to set.
+         */
+        private void setRetailerId(
+            java.lang.String value) {
+          value.getClass();
+  bitField0_ |= 0x00000001;
+          retailerId_ = value;
+        }
+        /**
+         * <code>optional string retailer_id = 1;</code>
+         */
+        private void clearRetailerId() {
+          bitField0_ = (bitField0_ & ~0x00000001);
+          retailerId_ = getDefaultInstance().getRetailerId();
+        }
+        /**
+         * <code>optional string retailer_id = 1;</code>
+         * @param value The bytes for retailerId to set.
+         */
+        private void setRetailerIdBytes(
+            com.google.protobuf.ByteString value) {
+          retailerId_ = value.toStringUtf8();
+          bitField0_ |= 0x00000001;
+        }
+
+        public static final int STORE_ID_FIELD_NUMBER = 2;
+        private java.lang.String storeId_;
+        /**
+         * <code>optional string store_id = 2;</code>
+         * @return Whether the storeId field is set.
+         */
+        @java.lang.Override
+        public boolean hasStoreId() {
+          return ((bitField0_ & 0x00000002) != 0);
+        }
+        /**
+         * <code>optional string store_id = 2;</code>
+         * @return The storeId.
+         */
+        @java.lang.Override
+        public java.lang.String getStoreId() {
+          return storeId_;
+        }
+        /**
+         * <code>optional string store_id = 2;</code>
+         * @return The bytes for storeId.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString
+            getStoreIdBytes() {
+          return com.google.protobuf.ByteString.copyFromUtf8(storeId_);
+        }
+        /**
+         * <code>optional string store_id = 2;</code>
+         * @param value The storeId to set.
+         */
+        private void setStoreId(
+            java.lang.String value) {
+          value.getClass();
+  bitField0_ |= 0x00000002;
+          storeId_ = value;
+        }
+        /**
+         * <code>optional string store_id = 2;</code>
+         */
+        private void clearStoreId() {
+          bitField0_ = (bitField0_ & ~0x00000002);
+          storeId_ = getDefaultInstance().getStoreId();
+        }
+        /**
+         * <code>optional string store_id = 2;</code>
+         * @param value The bytes for storeId to set.
+         */
+        private void setStoreIdBytes(
+            com.google.protobuf.ByteString value) {
+          storeId_ = value.toStringUtf8();
+          bitField0_ |= 0x00000002;
+        }
+
+        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer parseFrom(
+            java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, data);
+        }
+        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer parseFrom(
+            java.nio.ByteBuffer data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, data, extensionRegistry);
+        }
+        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, data);
+        }
+        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, data, extensionRegistry);
+        }
+        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, data);
+        }
+        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, data, extensionRegistry);
+        }
+        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, input);
+        }
+        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, input, extensionRegistry);
+        }
+        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
+          return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+        }
+        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+        }
+        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, input);
+        }
+        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageLite.parseFrom(
+              DEFAULT_INSTANCE, input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+          return (Builder) DEFAULT_INSTANCE.createBuilder();
+        }
+        public static Builder newBuilder(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer prototype) {
+          return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+        }
+
+        /**
+         * <pre>
+         * Demo devices retailer id and store id, value is set during demo setup.
+         * Next Tag: 3
+         * </pre>
+         *
+         * Protobuf type {@code metrics.SystemProfileProto.DemoModeDimensions.Retailer}
+         */
+        public static final class Builder extends
+            com.google.protobuf.GeneratedMessageLite.Builder<
+              org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer, Builder> implements
+            // @@protoc_insertion_point(builder_implements:metrics.SystemProfileProto.DemoModeDimensions.Retailer)
+            org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.RetailerOrBuilder {
+          // Construct using org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer.newBuilder()
+          private Builder() {
+            super(DEFAULT_INSTANCE);
+          }
+
+
+          /**
+           * <code>optional string retailer_id = 1;</code>
+           * @return Whether the retailerId field is set.
+           */
+          @java.lang.Override
+          public boolean hasRetailerId() {
+            return instance.hasRetailerId();
+          }
+          /**
+           * <code>optional string retailer_id = 1;</code>
+           * @return The retailerId.
+           */
+          @java.lang.Override
+          public java.lang.String getRetailerId() {
+            return instance.getRetailerId();
+          }
+          /**
+           * <code>optional string retailer_id = 1;</code>
+           * @return The bytes for retailerId.
+           */
+          @java.lang.Override
+          public com.google.protobuf.ByteString
+              getRetailerIdBytes() {
+            return instance.getRetailerIdBytes();
+          }
+          /**
+           * <code>optional string retailer_id = 1;</code>
+           * @param value The retailerId to set.
+           * @return This builder for chaining.
+           */
+          public Builder setRetailerId(
+              java.lang.String value) {
+            copyOnWrite();
+            instance.setRetailerId(value);
+            return this;
+          }
+          /**
+           * <code>optional string retailer_id = 1;</code>
+           * @return This builder for chaining.
+           */
+          public Builder clearRetailerId() {
+            copyOnWrite();
+            instance.clearRetailerId();
+            return this;
+          }
+          /**
+           * <code>optional string retailer_id = 1;</code>
+           * @param value The bytes for retailerId to set.
+           * @return This builder for chaining.
+           */
+          public Builder setRetailerIdBytes(
+              com.google.protobuf.ByteString value) {
+            copyOnWrite();
+            instance.setRetailerIdBytes(value);
+            return this;
+          }
+
+          /**
+           * <code>optional string store_id = 2;</code>
+           * @return Whether the storeId field is set.
+           */
+          @java.lang.Override
+          public boolean hasStoreId() {
+            return instance.hasStoreId();
+          }
+          /**
+           * <code>optional string store_id = 2;</code>
+           * @return The storeId.
+           */
+          @java.lang.Override
+          public java.lang.String getStoreId() {
+            return instance.getStoreId();
+          }
+          /**
+           * <code>optional string store_id = 2;</code>
+           * @return The bytes for storeId.
+           */
+          @java.lang.Override
+          public com.google.protobuf.ByteString
+              getStoreIdBytes() {
+            return instance.getStoreIdBytes();
+          }
+          /**
+           * <code>optional string store_id = 2;</code>
+           * @param value The storeId to set.
+           * @return This builder for chaining.
+           */
+          public Builder setStoreId(
+              java.lang.String value) {
+            copyOnWrite();
+            instance.setStoreId(value);
+            return this;
+          }
+          /**
+           * <code>optional string store_id = 2;</code>
+           * @return This builder for chaining.
+           */
+          public Builder clearStoreId() {
+            copyOnWrite();
+            instance.clearStoreId();
+            return this;
+          }
+          /**
+           * <code>optional string store_id = 2;</code>
+           * @param value The bytes for storeId to set.
+           * @return This builder for chaining.
+           */
+          public Builder setStoreIdBytes(
+              com.google.protobuf.ByteString value) {
+            copyOnWrite();
+            instance.setStoreIdBytes(value);
+            return this;
+          }
+
+          // @@protoc_insertion_point(builder_scope:metrics.SystemProfileProto.DemoModeDimensions.Retailer)
+        }
+        @java.lang.Override
+        @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+        protected final java.lang.Object dynamicMethod(
+            com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+            java.lang.Object arg0, java.lang.Object arg1) {
+          switch (method) {
+            case NEW_MUTABLE_INSTANCE: {
+              return new org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer();
+            }
+            case NEW_BUILDER: {
+              return new Builder();
+            }
+            case BUILD_MESSAGE_INFO: {
+                java.lang.Object[] objects = new java.lang.Object[] {
+                  "bitField0_",
+                  "retailerId_",
+                  "storeId_",
+                };
+                java.lang.String info =
+                    "\u0001\u0002\u0000\u0001\u0001\u0002\u0002\u0000\u0000\u0000\u0001\u1008\u0000\u0002" +
+                    "\u1008\u0001";
+                return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+            }
+            // fall through
+            case GET_DEFAULT_INSTANCE: {
+              return DEFAULT_INSTANCE;
+            }
+            case GET_PARSER: {
+              com.google.protobuf.Parser<org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer> parser = PARSER;
+              if (parser == null) {
+                synchronized (org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer.class) {
+                  parser = PARSER;
+                  if (parser == null) {
+                    parser =
+                        new DefaultInstanceBasedParser<org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer>(
+                            DEFAULT_INSTANCE);
+                    PARSER = parser;
+                  }
+                }
+              }
+              return parser;
+          }
+          case GET_MEMOIZED_IS_INITIALIZED: {
+            return (byte) 1;
+          }
+          case SET_MEMOIZED_IS_INITIALIZED: {
+            return null;
+          }
+          }
+          throw new UnsupportedOperationException();
+        }
+
+
+        // @@protoc_insertion_point(class_scope:metrics.SystemProfileProto.DemoModeDimensions.Retailer)
+        private static final org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer DEFAULT_INSTANCE;
+        static {
+          Retailer defaultInstance = new Retailer();
+          // New instances are implicitly immutable so no need to make
+          // immutable.
+          DEFAULT_INSTANCE = defaultInstance;
+          com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+            Retailer.class, defaultInstance);
+        }
+
+        public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer getDefaultInstance() {
+          return DEFAULT_INSTANCE;
+        }
+
+        private static volatile com.google.protobuf.Parser<Retailer> PARSER;
+
+        public static com.google.protobuf.Parser<Retailer> parser() {
+          return DEFAULT_INSTANCE.getParserForType();
+        }
+      }
+
+      private int bitField0_;
+      public static final int COUNTRY_FIELD_NUMBER = 1;
+      private java.lang.String country_;
+      /**
+       * <code>optional string country = 1;</code>
+       * @return Whether the country field is set.
+       */
+      @java.lang.Override
+      public boolean hasCountry() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>optional string country = 1;</code>
+       * @return The country.
+       */
+      @java.lang.Override
+      public java.lang.String getCountry() {
+        return country_;
+      }
+      /**
+       * <code>optional string country = 1;</code>
+       * @return The bytes for country.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getCountryBytes() {
+        return com.google.protobuf.ByteString.copyFromUtf8(country_);
+      }
+      /**
+       * <code>optional string country = 1;</code>
+       * @param value The country to set.
+       */
+      private void setCountry(
+          java.lang.String value) {
+        value.getClass();
+  bitField0_ |= 0x00000001;
+        country_ = value;
+      }
+      /**
+       * <code>optional string country = 1;</code>
+       */
+      private void clearCountry() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        country_ = getDefaultInstance().getCountry();
+      }
+      /**
+       * <code>optional string country = 1;</code>
+       * @param value The bytes for country to set.
+       */
+      private void setCountryBytes(
+          com.google.protobuf.ByteString value) {
+        country_ = value.toStringUtf8();
+        bitField0_ |= 0x00000001;
+      }
+
+      public static final int RETAILER_FIELD_NUMBER = 2;
+      private org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer retailer_;
+      /**
+       * <code>optional .metrics.SystemProfileProto.DemoModeDimensions.Retailer retailer = 2;</code>
+       */
+      @java.lang.Override
+      public boolean hasRetailer() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>optional .metrics.SystemProfileProto.DemoModeDimensions.Retailer retailer = 2;</code>
+       */
+      @java.lang.Override
+      public org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer getRetailer() {
+        return retailer_ == null ? org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer.getDefaultInstance() : retailer_;
+      }
+      /**
+       * <code>optional .metrics.SystemProfileProto.DemoModeDimensions.Retailer retailer = 2;</code>
+       */
+      private void setRetailer(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer value) {
+        value.getClass();
+  retailer_ = value;
+        bitField0_ |= 0x00000002;
+        }
+      /**
+       * <code>optional .metrics.SystemProfileProto.DemoModeDimensions.Retailer retailer = 2;</code>
+       */
+      @java.lang.SuppressWarnings({"ReferenceEquality"})
+      private void mergeRetailer(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer value) {
+        value.getClass();
+  if (retailer_ != null &&
+            retailer_ != org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer.getDefaultInstance()) {
+          retailer_ =
+            org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer.newBuilder(retailer_).mergeFrom(value).buildPartial();
+        } else {
+          retailer_ = value;
+        }
+        bitField0_ |= 0x00000002;
+      }
+      /**
+       * <code>optional .metrics.SystemProfileProto.DemoModeDimensions.Retailer retailer = 2;</code>
+       */
+      private void clearRetailer() {  retailer_ = null;
+        bitField0_ = (bitField0_ & ~0x00000002);
+      }
+
+      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return (Builder) DEFAULT_INSTANCE.createBuilder();
+      }
+      public static Builder newBuilder(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions prototype) {
+        return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+      }
+
+      /**
+       * <pre>
+       * Demo mode related dimension information.
+       * Next Tag: 3
+       * </pre>
+       *
+       * Protobuf type {@code metrics.SystemProfileProto.DemoModeDimensions}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions, Builder> implements
+          // @@protoc_insertion_point(builder_implements:metrics.SystemProfileProto.DemoModeDimensions)
+          org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensionsOrBuilder {
+        // Construct using org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <code>optional string country = 1;</code>
+         * @return Whether the country field is set.
+         */
+        @java.lang.Override
+        public boolean hasCountry() {
+          return instance.hasCountry();
+        }
+        /**
+         * <code>optional string country = 1;</code>
+         * @return The country.
+         */
+        @java.lang.Override
+        public java.lang.String getCountry() {
+          return instance.getCountry();
+        }
+        /**
+         * <code>optional string country = 1;</code>
+         * @return The bytes for country.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString
+            getCountryBytes() {
+          return instance.getCountryBytes();
+        }
+        /**
+         * <code>optional string country = 1;</code>
+         * @param value The country to set.
+         * @return This builder for chaining.
+         */
+        public Builder setCountry(
+            java.lang.String value) {
+          copyOnWrite();
+          instance.setCountry(value);
+          return this;
+        }
+        /**
+         * <code>optional string country = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearCountry() {
+          copyOnWrite();
+          instance.clearCountry();
+          return this;
+        }
+        /**
+         * <code>optional string country = 1;</code>
+         * @param value The bytes for country to set.
+         * @return This builder for chaining.
+         */
+        public Builder setCountryBytes(
+            com.google.protobuf.ByteString value) {
+          copyOnWrite();
+          instance.setCountryBytes(value);
+          return this;
+        }
+
+        /**
+         * <code>optional .metrics.SystemProfileProto.DemoModeDimensions.Retailer retailer = 2;</code>
+         */
+        @java.lang.Override
+        public boolean hasRetailer() {
+          return instance.hasRetailer();
+        }
+        /**
+         * <code>optional .metrics.SystemProfileProto.DemoModeDimensions.Retailer retailer = 2;</code>
+         */
+        @java.lang.Override
+        public org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer getRetailer() {
+          return instance.getRetailer();
+        }
+        /**
+         * <code>optional .metrics.SystemProfileProto.DemoModeDimensions.Retailer retailer = 2;</code>
+         */
+        public Builder setRetailer(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer value) {
+          copyOnWrite();
+          instance.setRetailer(value);
+          return this;
+          }
+        /**
+         * <code>optional .metrics.SystemProfileProto.DemoModeDimensions.Retailer retailer = 2;</code>
+         */
+        public Builder setRetailer(
+            org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer.Builder builderForValue) {
+          copyOnWrite();
+          instance.setRetailer(builderForValue.build());
+          return this;
+        }
+        /**
+         * <code>optional .metrics.SystemProfileProto.DemoModeDimensions.Retailer retailer = 2;</code>
+         */
+        public Builder mergeRetailer(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Retailer value) {
+          copyOnWrite();
+          instance.mergeRetailer(value);
+          return this;
+        }
+        /**
+         * <code>optional .metrics.SystemProfileProto.DemoModeDimensions.Retailer retailer = 2;</code>
+         */
+        public Builder clearRetailer() {  copyOnWrite();
+          instance.clearRetailer();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:metrics.SystemProfileProto.DemoModeDimensions)
+      }
+      @java.lang.Override
+      @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+      protected final java.lang.Object dynamicMethod(
+          com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+          java.lang.Object arg0, java.lang.Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions();
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case BUILD_MESSAGE_INFO: {
+              java.lang.Object[] objects = new java.lang.Object[] {
+                "bitField0_",
+                "country_",
+                "retailer_",
+              };
+              java.lang.String info =
+                  "\u0001\u0002\u0000\u0001\u0001\u0002\u0002\u0000\u0000\u0000\u0001\u1008\u0000\u0002" +
+                  "\u1009\u0001";
+              return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+          }
+          // fall through
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            com.google.protobuf.Parser<org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions> parser = PARSER;
+            if (parser == null) {
+              synchronized (org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.class) {
+                parser = PARSER;
+                if (parser == null) {
+                  parser =
+                      new DefaultInstanceBasedParser<org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions>(
+                          DEFAULT_INSTANCE);
+                  PARSER = parser;
+                }
+              }
+            }
+            return parser;
+        }
+        case GET_MEMOIZED_IS_INITIALIZED: {
+          return (byte) 1;
+        }
+        case SET_MEMOIZED_IS_INITIALIZED: {
+          return null;
+        }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:metrics.SystemProfileProto.DemoModeDimensions)
+      private static final org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions DEFAULT_INSTANCE;
+      static {
+        DemoModeDimensions defaultInstance = new DemoModeDimensions();
+        // New instances are implicitly immutable so no need to make
+        // immutable.
+        DEFAULT_INSTANCE = defaultInstance;
+        com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+          DemoModeDimensions.class, defaultInstance);
+      }
+
+      public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<DemoModeDimensions> PARSER;
+
+      public static com.google.protobuf.Parser<DemoModeDimensions> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
     private int bitField0_;
     public static final int BUILD_TIMESTAMP_FIELD_NUMBER = 1;
     private long buildTimestamp_;
@@ -29539,6 +29783,108 @@ public final class SystemProfileProtos {
       bitField0_ |= 0x00000002;
     }
 
+    public static final int LOG_WRITTEN_BY_APP_VERSION_FIELD_NUMBER = 40;
+    private java.lang.String logWrittenByAppVersion_;
+    /**
+     * <pre>
+     * The application can create logs about previous versions. In particular the
+     * initial stability log refers to the previous run, which can be an older
+     * version. This field is set by the client when the log being written has an
+     * app_version that's different than the version of the app writing the log.
+     * Note that the version uploading the log may also be different.
+     * </pre>
+     *
+     * <code>optional string log_written_by_app_version = 40;</code>
+     * @return Whether the logWrittenByAppVersion field is set.
+     */
+    @java.lang.Override
+    public boolean hasLogWrittenByAppVersion() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <pre>
+     * The application can create logs about previous versions. In particular the
+     * initial stability log refers to the previous run, which can be an older
+     * version. This field is set by the client when the log being written has an
+     * app_version that's different than the version of the app writing the log.
+     * Note that the version uploading the log may also be different.
+     * </pre>
+     *
+     * <code>optional string log_written_by_app_version = 40;</code>
+     * @return The logWrittenByAppVersion.
+     */
+    @java.lang.Override
+    public java.lang.String getLogWrittenByAppVersion() {
+      return logWrittenByAppVersion_;
+    }
+    /**
+     * <pre>
+     * The application can create logs about previous versions. In particular the
+     * initial stability log refers to the previous run, which can be an older
+     * version. This field is set by the client when the log being written has an
+     * app_version that's different than the version of the app writing the log.
+     * Note that the version uploading the log may also be different.
+     * </pre>
+     *
+     * <code>optional string log_written_by_app_version = 40;</code>
+     * @return The bytes for logWrittenByAppVersion.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getLogWrittenByAppVersionBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(logWrittenByAppVersion_);
+    }
+    /**
+     * <pre>
+     * The application can create logs about previous versions. In particular the
+     * initial stability log refers to the previous run, which can be an older
+     * version. This field is set by the client when the log being written has an
+     * app_version that's different than the version of the app writing the log.
+     * Note that the version uploading the log may also be different.
+     * </pre>
+     *
+     * <code>optional string log_written_by_app_version = 40;</code>
+     * @param value The logWrittenByAppVersion to set.
+     */
+    private void setLogWrittenByAppVersion(
+        java.lang.String value) {
+      value.getClass();
+  bitField0_ |= 0x00000004;
+      logWrittenByAppVersion_ = value;
+    }
+    /**
+     * <pre>
+     * The application can create logs about previous versions. In particular the
+     * initial stability log refers to the previous run, which can be an older
+     * version. This field is set by the client when the log being written has an
+     * app_version that's different than the version of the app writing the log.
+     * Note that the version uploading the log may also be different.
+     * </pre>
+     *
+     * <code>optional string log_written_by_app_version = 40;</code>
+     */
+    private void clearLogWrittenByAppVersion() {
+      bitField0_ = (bitField0_ & ~0x00000004);
+      logWrittenByAppVersion_ = getDefaultInstance().getLogWrittenByAppVersion();
+    }
+    /**
+     * <pre>
+     * The application can create logs about previous versions. In particular the
+     * initial stability log refers to the previous run, which can be an older
+     * version. This field is set by the client when the log being written has an
+     * app_version that's different than the version of the app writing the log.
+     * Note that the version uploading the log may also be different.
+     * </pre>
+     *
+     * <code>optional string log_written_by_app_version = 40;</code>
+     * @param value The bytes for logWrittenByAppVersion to set.
+     */
+    private void setLogWrittenByAppVersionBytes(
+        com.google.protobuf.ByteString value) {
+      logWrittenByAppVersion_ = value.toStringUtf8();
+      bitField0_ |= 0x00000004;
+    }
+
     public static final int BRAND_CODE_FIELD_NUMBER = 12;
     private java.lang.String brandCode_;
     /**
@@ -29553,7 +29899,7 @@ public final class SystemProfileProtos {
      */
     @java.lang.Override
     public boolean hasBrandCode() {
-      return ((bitField0_ & 0x00000004) != 0);
+      return ((bitField0_ & 0x00000008) != 0);
     }
     /**
      * <pre>
@@ -29597,7 +29943,7 @@ public final class SystemProfileProtos {
     private void setBrandCode(
         java.lang.String value) {
       value.getClass();
-  bitField0_ |= 0x00000004;
+  bitField0_ |= 0x00000008;
       brandCode_ = value;
     }
     /**
@@ -29610,7 +29956,7 @@ public final class SystemProfileProtos {
      * <code>optional string brand_code = 12;</code>
      */
     private void clearBrandCode() {
-      bitField0_ = (bitField0_ & ~0x00000004);
+      bitField0_ = (bitField0_ & ~0x00000008);
       brandCode_ = getDefaultInstance().getBrandCode();
     }
     /**
@@ -29626,7 +29972,7 @@ public final class SystemProfileProtos {
     private void setBrandCodeBytes(
         com.google.protobuf.ByteString value) {
       brandCode_ = value.toStringUtf8();
-      bitField0_ |= 0x00000004;
+      bitField0_ |= 0x00000008;
     }
 
     public static final int CHANNEL_FIELD_NUMBER = 10;
@@ -29637,7 +29983,7 @@ public final class SystemProfileProtos {
      */
     @java.lang.Override
     public boolean hasChannel() {
-      return ((bitField0_ & 0x00000008) != 0);
+      return ((bitField0_ & 0x00000010) != 0);
     }
     /**
      * <code>optional .metrics.SystemProfileProto.Channel channel = 10;</code>
@@ -29654,14 +30000,68 @@ public final class SystemProfileProtos {
      */
     private void setChannel(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Channel value) {
       channel_ = value.getNumber();
-      bitField0_ |= 0x00000008;
+      bitField0_ |= 0x00000010;
     }
     /**
      * <code>optional .metrics.SystemProfileProto.Channel channel = 10;</code>
      */
     private void clearChannel() {
-      bitField0_ = (bitField0_ & ~0x00000008);
+      bitField0_ = (bitField0_ & ~0x00000010);
       channel_ = 0;
+    }
+
+    public static final int IS_EXTENDED_STABLE_CHANNEL_FIELD_NUMBER = 36;
+    private boolean isExtendedStableChannel_;
+    /**
+     * <pre>
+     * True for a client following updates on the extended stable channel;
+     * see go/chrome-extended-dd.
+     * </pre>
+     *
+     * <code>optional bool is_extended_stable_channel = 36 [default = false];</code>
+     * @return Whether the isExtendedStableChannel field is set.
+     */
+    @java.lang.Override
+    public boolean hasIsExtendedStableChannel() {
+      return ((bitField0_ & 0x00000020) != 0);
+    }
+    /**
+     * <pre>
+     * True for a client following updates on the extended stable channel;
+     * see go/chrome-extended-dd.
+     * </pre>
+     *
+     * <code>optional bool is_extended_stable_channel = 36 [default = false];</code>
+     * @return The isExtendedStableChannel.
+     */
+    @java.lang.Override
+    public boolean getIsExtendedStableChannel() {
+      return isExtendedStableChannel_;
+    }
+    /**
+     * <pre>
+     * True for a client following updates on the extended stable channel;
+     * see go/chrome-extended-dd.
+     * </pre>
+     *
+     * <code>optional bool is_extended_stable_channel = 36 [default = false];</code>
+     * @param value The isExtendedStableChannel to set.
+     */
+    private void setIsExtendedStableChannel(boolean value) {
+      bitField0_ |= 0x00000020;
+      isExtendedStableChannel_ = value;
+    }
+    /**
+     * <pre>
+     * True for a client following updates on the extended stable channel;
+     * see go/chrome-extended-dd.
+     * </pre>
+     *
+     * <code>optional bool is_extended_stable_channel = 36 [default = false];</code>
+     */
+    private void clearIsExtendedStableChannel() {
+      bitField0_ = (bitField0_ & ~0x00000020);
+      isExtendedStableChannel_ = false;
     }
 
     public static final int IS_INSTRUMENTED_BUILD_FIELD_NUMBER = 20;
@@ -29678,7 +30078,7 @@ public final class SystemProfileProtos {
      */
     @java.lang.Override
     public boolean hasIsInstrumentedBuild() {
-      return ((bitField0_ & 0x00000010) != 0);
+      return ((bitField0_ & 0x00000040) != 0);
     }
     /**
      * <pre>
@@ -29705,7 +30105,7 @@ public final class SystemProfileProtos {
      * @param value The isInstrumentedBuild to set.
      */
     private void setIsInstrumentedBuild(boolean value) {
-      bitField0_ |= 0x00000010;
+      bitField0_ |= 0x00000040;
       isInstrumentedBuild_ = value;
     }
     /**
@@ -29718,7 +30118,7 @@ public final class SystemProfileProtos {
      * <code>optional bool is_instrumented_build = 20 [default = false];</code>
      */
     private void clearIsInstrumentedBuild() {
-      bitField0_ = (bitField0_ & ~0x00000010);
+      bitField0_ = (bitField0_ & ~0x00000040);
       isInstrumentedBuild_ = false;
     }
 
@@ -29737,7 +30137,7 @@ public final class SystemProfileProtos {
      */
     @java.lang.Override
     public boolean hasUmaEnabledDate() {
-      return ((bitField0_ & 0x00000020) != 0);
+      return ((bitField0_ & 0x00000080) != 0);
     }
     /**
      * <pre>
@@ -29766,7 +30166,7 @@ public final class SystemProfileProtos {
      * @param value The umaEnabledDate to set.
      */
     private void setUmaEnabledDate(long value) {
-      bitField0_ |= 0x00000020;
+      bitField0_ |= 0x00000080;
       umaEnabledDate_ = value;
     }
     /**
@@ -29780,7 +30180,7 @@ public final class SystemProfileProtos {
      * <code>optional int64 uma_enabled_date = 3;</code>
      */
     private void clearUmaEnabledDate() {
-      bitField0_ = (bitField0_ & ~0x00000020);
+      bitField0_ = (bitField0_ & ~0x00000080);
       umaEnabledDate_ = 0L;
     }
 
@@ -29797,7 +30197,7 @@ public final class SystemProfileProtos {
      */
     @java.lang.Override
     public boolean hasInstallDate() {
-      return ((bitField0_ & 0x00000040) != 0);
+      return ((bitField0_ & 0x00000100) != 0);
     }
     /**
      * <pre>
@@ -29822,7 +30222,7 @@ public final class SystemProfileProtos {
      * @param value The installDate to set.
      */
     private void setInstallDate(long value) {
-      bitField0_ |= 0x00000040;
+      bitField0_ |= 0x00000100;
       installDate_ = value;
     }
     /**
@@ -29834,8 +30234,54 @@ public final class SystemProfileProtos {
      * <code>optional int64 install_date = 16;</code>
      */
     private void clearInstallDate() {
-      bitField0_ = (bitField0_ & ~0x00000040);
+      bitField0_ = (bitField0_ & ~0x00000100);
       installDate_ = 0L;
+    }
+
+    public static final int CLONED_INSTALL_INFO_FIELD_NUMBER = 39;
+    private org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo clonedInstallInfo_;
+    /**
+     * <code>optional .metrics.SystemProfileProto.ClonedInstallInfo cloned_install_info = 39;</code>
+     */
+    @java.lang.Override
+    public boolean hasClonedInstallInfo() {
+      return ((bitField0_ & 0x00000200) != 0);
+    }
+    /**
+     * <code>optional .metrics.SystemProfileProto.ClonedInstallInfo cloned_install_info = 39;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo getClonedInstallInfo() {
+      return clonedInstallInfo_ == null ? org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo.getDefaultInstance() : clonedInstallInfo_;
+    }
+    /**
+     * <code>optional .metrics.SystemProfileProto.ClonedInstallInfo cloned_install_info = 39;</code>
+     */
+    private void setClonedInstallInfo(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo value) {
+      value.getClass();
+  clonedInstallInfo_ = value;
+      bitField0_ |= 0x00000200;
+      }
+    /**
+     * <code>optional .metrics.SystemProfileProto.ClonedInstallInfo cloned_install_info = 39;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeClonedInstallInfo(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo value) {
+      value.getClass();
+  if (clonedInstallInfo_ != null &&
+          clonedInstallInfo_ != org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo.getDefaultInstance()) {
+        clonedInstallInfo_ =
+          org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo.newBuilder(clonedInstallInfo_).mergeFrom(value).buildPartial();
+      } else {
+        clonedInstallInfo_ = value;
+      }
+      bitField0_ |= 0x00000200;
+    }
+    /**
+     * <code>optional .metrics.SystemProfileProto.ClonedInstallInfo cloned_install_info = 39;</code>
+     */
+    private void clearClonedInstallInfo() {  clonedInstallInfo_ = null;
+      bitField0_ = (bitField0_ & ~0x00000200);
     }
 
     public static final int LOW_ENTROPY_SOURCE_FIELD_NUMBER = 31;
@@ -29843,7 +30289,11 @@ public final class SystemProfileProtos {
     /**
      * <pre>
      * The non-identifying low entropy source value. This value seeds the
-     * pseudorandom generator which picks experimental groups.
+     * pseudorandom generator which picks experimental groups. Clients only report
+     * the value that they used for picking experimental groups on startup which
+     * means this value won't be changed within the session even even if the low
+     * entropy source is reset (e.g. via the UMA checkbox) because group
+     * assignments won't be changed until restart.
      * </pre>
      *
      * <code>optional int32 low_entropy_source = 31;</code>
@@ -29851,12 +30301,16 @@ public final class SystemProfileProtos {
      */
     @java.lang.Override
     public boolean hasLowEntropySource() {
-      return ((bitField0_ & 0x00000080) != 0);
+      return ((bitField0_ & 0x00000400) != 0);
     }
     /**
      * <pre>
      * The non-identifying low entropy source value. This value seeds the
-     * pseudorandom generator which picks experimental groups.
+     * pseudorandom generator which picks experimental groups. Clients only report
+     * the value that they used for picking experimental groups on startup which
+     * means this value won't be changed within the session even even if the low
+     * entropy source is reset (e.g. via the UMA checkbox) because group
+     * assignments won't be changed until restart.
      * </pre>
      *
      * <code>optional int32 low_entropy_source = 31;</code>
@@ -29869,26 +30323,34 @@ public final class SystemProfileProtos {
     /**
      * <pre>
      * The non-identifying low entropy source value. This value seeds the
-     * pseudorandom generator which picks experimental groups.
+     * pseudorandom generator which picks experimental groups. Clients only report
+     * the value that they used for picking experimental groups on startup which
+     * means this value won't be changed within the session even even if the low
+     * entropy source is reset (e.g. via the UMA checkbox) because group
+     * assignments won't be changed until restart.
      * </pre>
      *
      * <code>optional int32 low_entropy_source = 31;</code>
      * @param value The lowEntropySource to set.
      */
     private void setLowEntropySource(int value) {
-      bitField0_ |= 0x00000080;
+      bitField0_ |= 0x00000400;
       lowEntropySource_ = value;
     }
     /**
      * <pre>
      * The non-identifying low entropy source value. This value seeds the
-     * pseudorandom generator which picks experimental groups.
+     * pseudorandom generator which picks experimental groups. Clients only report
+     * the value that they used for picking experimental groups on startup which
+     * means this value won't be changed within the session even even if the low
+     * entropy source is reset (e.g. via the UMA checkbox) because group
+     * assignments won't be changed until restart.
      * </pre>
      *
      * <code>optional int32 low_entropy_source = 31;</code>
      */
     private void clearLowEntropySource() {
-      bitField0_ = (bitField0_ & ~0x00000080);
+      bitField0_ = (bitField0_ & ~0x00000400);
       lowEntropySource_ = 0;
     }
 
@@ -29908,7 +30370,7 @@ public final class SystemProfileProtos {
      */
     @java.lang.Override
     public boolean hasOldLowEntropySource() {
-      return ((bitField0_ & 0x00000100) != 0);
+      return ((bitField0_ & 0x00000800) != 0);
     }
     /**
      * <pre>
@@ -29939,7 +30401,7 @@ public final class SystemProfileProtos {
      * @param value The oldLowEntropySource to set.
      */
     private void setOldLowEntropySource(int value) {
-      bitField0_ |= 0x00000100;
+      bitField0_ |= 0x00000800;
       oldLowEntropySource_ = value;
     }
     /**
@@ -29954,8 +30416,86 @@ public final class SystemProfileProtos {
      * <code>optional int32 old_low_entropy_source = 32;</code>
      */
     private void clearOldLowEntropySource() {
-      bitField0_ = (bitField0_ & ~0x00000100);
+      bitField0_ = (bitField0_ & ~0x00000800);
       oldLowEntropySource_ = 0;
+    }
+
+    public static final int PSEUDO_LOW_ENTROPY_SOURCE_FIELD_NUMBER = 37;
+    private int pseudoLowEntropySource_;
+    /**
+     * <pre>
+     * A pseudo low entropy value. The actual low_entropy_source value is used for
+     * assignment to experiment arms, and this use may cause drift over time (for
+     * example, if a bad experiment arm drives away some users permanently.) This
+     * pseudo low entropy value is generated identically to low_entropy_source,
+     * but it is generated with a different randomization seed and is not used for
+     * experiment randomization. Consequently, it can be used in statistical
+     * validation to answer the question of how our data would be distributed if
+     * we didn't have to worry about low entropy source drift.
+     * </pre>
+     *
+     * <code>optional int32 pseudo_low_entropy_source = 37;</code>
+     * @return Whether the pseudoLowEntropySource field is set.
+     */
+    @java.lang.Override
+    public boolean hasPseudoLowEntropySource() {
+      return ((bitField0_ & 0x00001000) != 0);
+    }
+    /**
+     * <pre>
+     * A pseudo low entropy value. The actual low_entropy_source value is used for
+     * assignment to experiment arms, and this use may cause drift over time (for
+     * example, if a bad experiment arm drives away some users permanently.) This
+     * pseudo low entropy value is generated identically to low_entropy_source,
+     * but it is generated with a different randomization seed and is not used for
+     * experiment randomization. Consequently, it can be used in statistical
+     * validation to answer the question of how our data would be distributed if
+     * we didn't have to worry about low entropy source drift.
+     * </pre>
+     *
+     * <code>optional int32 pseudo_low_entropy_source = 37;</code>
+     * @return The pseudoLowEntropySource.
+     */
+    @java.lang.Override
+    public int getPseudoLowEntropySource() {
+      return pseudoLowEntropySource_;
+    }
+    /**
+     * <pre>
+     * A pseudo low entropy value. The actual low_entropy_source value is used for
+     * assignment to experiment arms, and this use may cause drift over time (for
+     * example, if a bad experiment arm drives away some users permanently.) This
+     * pseudo low entropy value is generated identically to low_entropy_source,
+     * but it is generated with a different randomization seed and is not used for
+     * experiment randomization. Consequently, it can be used in statistical
+     * validation to answer the question of how our data would be distributed if
+     * we didn't have to worry about low entropy source drift.
+     * </pre>
+     *
+     * <code>optional int32 pseudo_low_entropy_source = 37;</code>
+     * @param value The pseudoLowEntropySource to set.
+     */
+    private void setPseudoLowEntropySource(int value) {
+      bitField0_ |= 0x00001000;
+      pseudoLowEntropySource_ = value;
+    }
+    /**
+     * <pre>
+     * A pseudo low entropy value. The actual low_entropy_source value is used for
+     * assignment to experiment arms, and this use may cause drift over time (for
+     * example, if a bad experiment arm drives away some users permanently.) This
+     * pseudo low entropy value is generated identically to low_entropy_source,
+     * but it is generated with a different randomization seed and is not used for
+     * experiment randomization. Consequently, it can be used in statistical
+     * validation to answer the question of how our data would be distributed if
+     * we didn't have to worry about low entropy source drift.
+     * </pre>
+     *
+     * <code>optional int32 pseudo_low_entropy_source = 37;</code>
+     */
+    private void clearPseudoLowEntropySource() {
+      bitField0_ = (bitField0_ & ~0x00001000);
+      pseudoLowEntropySource_ = 0;
     }
 
     public static final int APPLICATION_LOCALE_FIELD_NUMBER = 4;
@@ -29972,7 +30512,7 @@ public final class SystemProfileProtos {
      */
     @java.lang.Override
     public boolean hasApplicationLocale() {
-      return ((bitField0_ & 0x00000200) != 0);
+      return ((bitField0_ & 0x00002000) != 0);
     }
     /**
      * <pre>
@@ -30016,7 +30556,7 @@ public final class SystemProfileProtos {
     private void setApplicationLocale(
         java.lang.String value) {
       value.getClass();
-  bitField0_ |= 0x00000200;
+  bitField0_ |= 0x00002000;
       applicationLocale_ = value;
     }
     /**
@@ -30029,7 +30569,7 @@ public final class SystemProfileProtos {
      * <code>optional string application_locale = 4;</code>
      */
     private void clearApplicationLocale() {
-      bitField0_ = (bitField0_ & ~0x00000200);
+      bitField0_ = (bitField0_ & ~0x00002000);
       applicationLocale_ = getDefaultInstance().getApplicationLocale();
     }
     /**
@@ -30045,7 +30585,134 @@ public final class SystemProfileProtos {
     private void setApplicationLocaleBytes(
         com.google.protobuf.ByteString value) {
       applicationLocale_ = value.toStringUtf8();
-      bitField0_ |= 0x00000200;
+      bitField0_ |= 0x00002000;
+    }
+
+    public static final int COMMAND_LINE_KEY_HASH_FIELD_NUMBER = 38;
+    private com.google.protobuf.Internal.IntList commandLineKeyHash_;
+    /**
+     * <pre>
+     * Hashes of command line keys used in the browser session when the MetricsLog
+     * is created. This takes into account the command line switches that were
+     * used when launching the session, as well as any modifications made to them,
+     * for example via CommandLine::AppendSwitch and CommandLine::RemoveSwitch.
+     * Values are the lower 32-bit of SHA1 hash in little-endian.
+     * </pre>
+     *
+     * <code>repeated fixed32 command_line_key_hash = 38 [packed = true];</code>
+     * @return A list containing the commandLineKeyHash.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getCommandLineKeyHashList() {
+      return commandLineKeyHash_;
+    }
+    /**
+     * <pre>
+     * Hashes of command line keys used in the browser session when the MetricsLog
+     * is created. This takes into account the command line switches that were
+     * used when launching the session, as well as any modifications made to them,
+     * for example via CommandLine::AppendSwitch and CommandLine::RemoveSwitch.
+     * Values are the lower 32-bit of SHA1 hash in little-endian.
+     * </pre>
+     *
+     * <code>repeated fixed32 command_line_key_hash = 38 [packed = true];</code>
+     * @return The count of commandLineKeyHash.
+     */
+    @java.lang.Override
+    public int getCommandLineKeyHashCount() {
+      return commandLineKeyHash_.size();
+    }
+    /**
+     * <pre>
+     * Hashes of command line keys used in the browser session when the MetricsLog
+     * is created. This takes into account the command line switches that were
+     * used when launching the session, as well as any modifications made to them,
+     * for example via CommandLine::AppendSwitch and CommandLine::RemoveSwitch.
+     * Values are the lower 32-bit of SHA1 hash in little-endian.
+     * </pre>
+     *
+     * <code>repeated fixed32 command_line_key_hash = 38 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The commandLineKeyHash at the given index.
+     */
+    @java.lang.Override
+    public int getCommandLineKeyHash(int index) {
+      return commandLineKeyHash_.getInt(index);
+    }
+    private int commandLineKeyHashMemoizedSerializedSize = -1;
+    private void ensureCommandLineKeyHashIsMutable() {
+      com.google.protobuf.Internal.IntList tmp = commandLineKeyHash_;
+      if (!tmp.isModifiable()) {
+        commandLineKeyHash_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(tmp);
+       }
+    }
+    /**
+     * <pre>
+     * Hashes of command line keys used in the browser session when the MetricsLog
+     * is created. This takes into account the command line switches that were
+     * used when launching the session, as well as any modifications made to them,
+     * for example via CommandLine::AppendSwitch and CommandLine::RemoveSwitch.
+     * Values are the lower 32-bit of SHA1 hash in little-endian.
+     * </pre>
+     *
+     * <code>repeated fixed32 command_line_key_hash = 38 [packed = true];</code>
+     * @param index The index to set the value at.
+     * @param value The commandLineKeyHash to set.
+     */
+    private void setCommandLineKeyHash(
+        int index, int value) {
+      ensureCommandLineKeyHashIsMutable();
+      commandLineKeyHash_.setInt(index, value);
+    }
+    /**
+     * <pre>
+     * Hashes of command line keys used in the browser session when the MetricsLog
+     * is created. This takes into account the command line switches that were
+     * used when launching the session, as well as any modifications made to them,
+     * for example via CommandLine::AppendSwitch and CommandLine::RemoveSwitch.
+     * Values are the lower 32-bit of SHA1 hash in little-endian.
+     * </pre>
+     *
+     * <code>repeated fixed32 command_line_key_hash = 38 [packed = true];</code>
+     * @param value The commandLineKeyHash to add.
+     */
+    private void addCommandLineKeyHash(int value) {
+      ensureCommandLineKeyHashIsMutable();
+      commandLineKeyHash_.addInt(value);
+    }
+    /**
+     * <pre>
+     * Hashes of command line keys used in the browser session when the MetricsLog
+     * is created. This takes into account the command line switches that were
+     * used when launching the session, as well as any modifications made to them,
+     * for example via CommandLine::AppendSwitch and CommandLine::RemoveSwitch.
+     * Values are the lower 32-bit of SHA1 hash in little-endian.
+     * </pre>
+     *
+     * <code>repeated fixed32 command_line_key_hash = 38 [packed = true];</code>
+     * @param values The commandLineKeyHash to add.
+     */
+    private void addAllCommandLineKeyHash(
+        java.lang.Iterable<? extends java.lang.Integer> values) {
+      ensureCommandLineKeyHashIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, commandLineKeyHash_);
+    }
+    /**
+     * <pre>
+     * Hashes of command line keys used in the browser session when the MetricsLog
+     * is created. This takes into account the command line switches that were
+     * used when launching the session, as well as any modifications made to them,
+     * for example via CommandLine::AppendSwitch and CommandLine::RemoveSwitch.
+     * Values are the lower 32-bit of SHA1 hash in little-endian.
+     * </pre>
+     *
+     * <code>repeated fixed32 command_line_key_hash = 38 [packed = true];</code>
+     */
+    private void clearCommandLineKeyHash() {
+      commandLineKeyHash_ = emptyIntList();
     }
 
     public static final int OS_FIELD_NUMBER = 5;
@@ -30055,7 +30722,7 @@ public final class SystemProfileProtos {
      */
     @java.lang.Override
     public boolean hasOs() {
-      return ((bitField0_ & 0x00000400) != 0);
+      return ((bitField0_ & 0x00004000) != 0);
     }
     /**
      * <code>optional .metrics.SystemProfileProto.OS os = 5;</code>
@@ -30070,7 +30737,7 @@ public final class SystemProfileProtos {
     private void setOs(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.OS value) {
       value.getClass();
   os_ = value;
-      bitField0_ |= 0x00000400;
+      bitField0_ |= 0x00004000;
       }
     /**
      * <code>optional .metrics.SystemProfileProto.OS os = 5;</code>
@@ -30085,13 +30752,13 @@ public final class SystemProfileProtos {
       } else {
         os_ = value;
       }
-      bitField0_ |= 0x00000400;
+      bitField0_ |= 0x00004000;
     }
     /**
      * <code>optional .metrics.SystemProfileProto.OS os = 5;</code>
      */
     private void clearOs() {  os_ = null;
-      bitField0_ = (bitField0_ & ~0x00000400);
+      bitField0_ = (bitField0_ & ~0x00004000);
     }
 
     public static final int HARDWARE_FIELD_NUMBER = 6;
@@ -30101,7 +30768,7 @@ public final class SystemProfileProtos {
      */
     @java.lang.Override
     public boolean hasHardware() {
-      return ((bitField0_ & 0x00000800) != 0);
+      return ((bitField0_ & 0x00008000) != 0);
     }
     /**
      * <code>optional .metrics.SystemProfileProto.Hardware hardware = 6;</code>
@@ -30116,7 +30783,7 @@ public final class SystemProfileProtos {
     private void setHardware(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware value) {
       value.getClass();
   hardware_ = value;
-      bitField0_ |= 0x00000800;
+      bitField0_ |= 0x00008000;
       }
     /**
      * <code>optional .metrics.SystemProfileProto.Hardware hardware = 6;</code>
@@ -30131,13 +30798,13 @@ public final class SystemProfileProtos {
       } else {
         hardware_ = value;
       }
-      bitField0_ |= 0x00000800;
+      bitField0_ |= 0x00008000;
     }
     /**
      * <code>optional .metrics.SystemProfileProto.Hardware hardware = 6;</code>
      */
     private void clearHardware() {  hardware_ = null;
-      bitField0_ = (bitField0_ & ~0x00000800);
+      bitField0_ = (bitField0_ & ~0x00008000);
     }
 
     public static final int NETWORK_FIELD_NUMBER = 13;
@@ -30147,7 +30814,7 @@ public final class SystemProfileProtos {
      */
     @java.lang.Override
     public boolean hasNetwork() {
-      return ((bitField0_ & 0x00001000) != 0);
+      return ((bitField0_ & 0x00010000) != 0);
     }
     /**
      * <code>optional .metrics.SystemProfileProto.Network network = 13;</code>
@@ -30162,7 +30829,7 @@ public final class SystemProfileProtos {
     private void setNetwork(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Network value) {
       value.getClass();
   network_ = value;
-      bitField0_ |= 0x00001000;
+      bitField0_ |= 0x00010000;
       }
     /**
      * <code>optional .metrics.SystemProfileProto.Network network = 13;</code>
@@ -30177,13 +30844,13 @@ public final class SystemProfileProtos {
       } else {
         network_ = value;
       }
-      bitField0_ |= 0x00001000;
+      bitField0_ |= 0x00010000;
     }
     /**
      * <code>optional .metrics.SystemProfileProto.Network network = 13;</code>
      */
     private void clearNetwork() {  network_ = null;
-      bitField0_ = (bitField0_ & ~0x00001000);
+      bitField0_ = (bitField0_ & ~0x00010000);
     }
 
     public static final int GOOGLE_UPDATE_FIELD_NUMBER = 11;
@@ -30193,7 +30860,7 @@ public final class SystemProfileProtos {
      */
     @java.lang.Override
     public boolean hasGoogleUpdate() {
-      return ((bitField0_ & 0x00002000) != 0);
+      return ((bitField0_ & 0x00020000) != 0);
     }
     /**
      * <code>optional .metrics.SystemProfileProto.GoogleUpdate google_update = 11;</code>
@@ -30208,7 +30875,7 @@ public final class SystemProfileProtos {
     private void setGoogleUpdate(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.GoogleUpdate value) {
       value.getClass();
   googleUpdate_ = value;
-      bitField0_ |= 0x00002000;
+      bitField0_ |= 0x00020000;
       }
     /**
      * <code>optional .metrics.SystemProfileProto.GoogleUpdate google_update = 11;</code>
@@ -30223,107 +30890,13 @@ public final class SystemProfileProtos {
       } else {
         googleUpdate_ = value;
       }
-      bitField0_ |= 0x00002000;
+      bitField0_ |= 0x00020000;
     }
     /**
      * <code>optional .metrics.SystemProfileProto.GoogleUpdate google_update = 11;</code>
      */
     private void clearGoogleUpdate() {  googleUpdate_ = null;
-      bitField0_ = (bitField0_ & ~0x00002000);
-    }
-
-    public static final int PLUGIN_FIELD_NUMBER = 7;
-    private com.google.protobuf.Internal.ProtobufList<org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin> plugin_;
-    /**
-     * <code>repeated .metrics.SystemProfileProto.Plugin plugin = 7;</code>
-     */
-    @java.lang.Override
-    public java.util.List<org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin> getPluginList() {
-      return plugin_;
-    }
-    /**
-     * <code>repeated .metrics.SystemProfileProto.Plugin plugin = 7;</code>
-     */
-    public java.util.List<? extends org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.PluginOrBuilder> 
-        getPluginOrBuilderList() {
-      return plugin_;
-    }
-    /**
-     * <code>repeated .metrics.SystemProfileProto.Plugin plugin = 7;</code>
-     */
-    @java.lang.Override
-    public int getPluginCount() {
-      return plugin_.size();
-    }
-    /**
-     * <code>repeated .metrics.SystemProfileProto.Plugin plugin = 7;</code>
-     */
-    @java.lang.Override
-    public org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin getPlugin(int index) {
-      return plugin_.get(index);
-    }
-    /**
-     * <code>repeated .metrics.SystemProfileProto.Plugin plugin = 7;</code>
-     */
-    public org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.PluginOrBuilder getPluginOrBuilder(
-        int index) {
-      return plugin_.get(index);
-    }
-    private void ensurePluginIsMutable() {
-      com.google.protobuf.Internal.ProtobufList<org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin> tmp = plugin_;
-      if (!tmp.isModifiable()) {
-        plugin_ =
-            com.google.protobuf.GeneratedMessageLite.mutableCopy(tmp);
-       }
-    }
-
-    /**
-     * <code>repeated .metrics.SystemProfileProto.Plugin plugin = 7;</code>
-     */
-    private void setPlugin(
-        int index, org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin value) {
-      value.getClass();
-  ensurePluginIsMutable();
-      plugin_.set(index, value);
-    }
-    /**
-     * <code>repeated .metrics.SystemProfileProto.Plugin plugin = 7;</code>
-     */
-    private void addPlugin(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin value) {
-      value.getClass();
-  ensurePluginIsMutable();
-      plugin_.add(value);
-    }
-    /**
-     * <code>repeated .metrics.SystemProfileProto.Plugin plugin = 7;</code>
-     */
-    private void addPlugin(
-        int index, org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin value) {
-      value.getClass();
-  ensurePluginIsMutable();
-      plugin_.add(index, value);
-    }
-    /**
-     * <code>repeated .metrics.SystemProfileProto.Plugin plugin = 7;</code>
-     */
-    private void addAllPlugin(
-        java.lang.Iterable<? extends org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin> values) {
-      ensurePluginIsMutable();
-      com.google.protobuf.AbstractMessageLite.addAll(
-          values, plugin_);
-    }
-    /**
-     * <code>repeated .metrics.SystemProfileProto.Plugin plugin = 7;</code>
-     */
-    private void clearPlugin() {
-      plugin_ = emptyProtobufList();
-    }
-    /**
-     * <code>repeated .metrics.SystemProfileProto.Plugin plugin = 7;</code>
-     */
-    private void removePlugin(int index) {
-      ensurePluginIsMutable();
-      plugin_.remove(index);
+      bitField0_ = (bitField0_ & ~0x00020000);
     }
 
     public static final int STABILITY_FIELD_NUMBER = 8;
@@ -30333,7 +30906,7 @@ public final class SystemProfileProtos {
      */
     @java.lang.Override
     public boolean hasStability() {
-      return ((bitField0_ & 0x00004000) != 0);
+      return ((bitField0_ & 0x00040000) != 0);
     }
     /**
      * <code>optional .metrics.SystemProfileProto.Stability stability = 8;</code>
@@ -30348,7 +30921,7 @@ public final class SystemProfileProtos {
     private void setStability(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Stability value) {
       value.getClass();
   stability_ = value;
-      bitField0_ |= 0x00004000;
+      bitField0_ |= 0x00040000;
       }
     /**
      * <code>optional .metrics.SystemProfileProto.Stability stability = 8;</code>
@@ -30363,13 +30936,13 @@ public final class SystemProfileProtos {
       } else {
         stability_ = value;
       }
-      bitField0_ |= 0x00004000;
+      bitField0_ |= 0x00040000;
     }
     /**
      * <code>optional .metrics.SystemProfileProto.Stability stability = 8;</code>
      */
     private void clearStability() {  stability_ = null;
-      bitField0_ = (bitField0_ & ~0x00004000);
+      bitField0_ = (bitField0_ & ~0x00040000);
     }
 
     public static final int FIELD_TRIAL_FIELD_NUMBER = 9;
@@ -30479,7 +31052,7 @@ public final class SystemProfileProtos {
      */
     @java.lang.Override
     public boolean hasVariationsSeedVersion() {
-      return ((bitField0_ & 0x00008000) != 0);
+      return ((bitField0_ & 0x00080000) != 0);
     }
     /**
      * <pre>
@@ -30520,7 +31093,7 @@ public final class SystemProfileProtos {
     private void setVariationsSeedVersion(
         java.lang.String value) {
       value.getClass();
-  bitField0_ |= 0x00008000;
+  bitField0_ |= 0x00080000;
       variationsSeedVersion_ = value;
     }
     /**
@@ -30532,7 +31105,7 @@ public final class SystemProfileProtos {
      * <code>optional string variations_seed_version = 28;</code>
      */
     private void clearVariationsSeedVersion() {
-      bitField0_ = (bitField0_ & ~0x00008000);
+      bitField0_ = (bitField0_ & ~0x00080000);
       variationsSeedVersion_ = getDefaultInstance().getVariationsSeedVersion();
     }
     /**
@@ -30547,7 +31120,7 @@ public final class SystemProfileProtos {
     private void setVariationsSeedVersionBytes(
         com.google.protobuf.ByteString value) {
       variationsSeedVersion_ = value.toStringUtf8();
-      bitField0_ |= 0x00008000;
+      bitField0_ |= 0x00080000;
     }
 
     public static final int CLIENT_ID_WAS_USED_FOR_TRIAL_ASSIGNMENT_FIELD_NUMBER = 33;
@@ -30563,7 +31136,7 @@ public final class SystemProfileProtos {
      */
     @java.lang.Override
     public boolean hasClientIdWasUsedForTrialAssignment() {
-      return ((bitField0_ & 0x00010000) != 0);
+      return ((bitField0_ & 0x00100000) != 0);
     }
     /**
      * <pre>
@@ -30588,7 +31161,7 @@ public final class SystemProfileProtos {
      * @param value The clientIdWasUsedForTrialAssignment to set.
      */
     private void setClientIdWasUsedForTrialAssignment(boolean value) {
-      bitField0_ |= 0x00010000;
+      bitField0_ |= 0x00100000;
       clientIdWasUsedForTrialAssignment_ = value;
     }
     /**
@@ -30600,7 +31173,7 @@ public final class SystemProfileProtos {
      * <code>optional bool client_id_was_used_for_trial_assignment = 33;</code>
      */
     private void clearClientIdWasUsedForTrialAssignment() {
-      bitField0_ = (bitField0_ & ~0x00010000);
+      bitField0_ = (bitField0_ & ~0x00100000);
       clientIdWasUsedForTrialAssignment_ = false;
     }
 
@@ -30618,7 +31191,7 @@ public final class SystemProfileProtos {
      */
     @java.lang.Override
     public boolean hasClientUuid() {
-      return ((bitField0_ & 0x00020000) != 0);
+      return ((bitField0_ & 0x00200000) != 0);
     }
     /**
      * <pre>
@@ -30662,7 +31235,7 @@ public final class SystemProfileProtos {
     private void setClientUuid(
         java.lang.String value) {
       value.getClass();
-  bitField0_ |= 0x00020000;
+  bitField0_ |= 0x00200000;
       clientUuid_ = value;
     }
     /**
@@ -30675,7 +31248,7 @@ public final class SystemProfileProtos {
      * <code>optional string client_uuid = 34;</code>
      */
     private void clearClientUuid() {
-      bitField0_ = (bitField0_ & ~0x00020000);
+      bitField0_ = (bitField0_ & ~0x00200000);
       clientUuid_ = getDefaultInstance().getClientUuid();
     }
     /**
@@ -30691,7 +31264,7 @@ public final class SystemProfileProtos {
     private void setClientUuidBytes(
         com.google.protobuf.ByteString value) {
       clientUuid_ = value.toStringUtf8();
-      bitField0_ |= 0x00020000;
+      bitField0_ |= 0x00200000;
     }
 
     public static final int EXTERNAL_AUDIO_VIDEO_DEVICE_FIELD_NUMBER = 14;
@@ -30795,7 +31368,7 @@ public final class SystemProfileProtos {
      */
     @java.lang.Override
     public boolean hasExternalAccessPoint() {
-      return ((bitField0_ & 0x00040000) != 0);
+      return ((bitField0_ & 0x00400000) != 0);
     }
     /**
      * <code>optional .metrics.SystemProfileProto.ExternalAccessPoint external_access_point = 15;</code>
@@ -30810,7 +31383,7 @@ public final class SystemProfileProtos {
     private void setExternalAccessPoint(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ExternalAccessPoint value) {
       value.getClass();
   externalAccessPoint_ = value;
-      bitField0_ |= 0x00040000;
+      bitField0_ |= 0x00400000;
       }
     /**
      * <code>optional .metrics.SystemProfileProto.ExternalAccessPoint external_access_point = 15;</code>
@@ -30825,13 +31398,13 @@ public final class SystemProfileProtos {
       } else {
         externalAccessPoint_ = value;
       }
-      bitField0_ |= 0x00040000;
+      bitField0_ |= 0x00400000;
     }
     /**
      * <code>optional .metrics.SystemProfileProto.ExternalAccessPoint external_access_point = 15;</code>
      */
     private void clearExternalAccessPoint() {  externalAccessPoint_ = null;
-      bitField0_ = (bitField0_ & ~0x00040000);
+      bitField0_ = (bitField0_ & ~0x00400000);
     }
 
     public static final int MULTI_PROFILE_USER_COUNT_FIELD_NUMBER = 17;
@@ -30848,7 +31421,7 @@ public final class SystemProfileProtos {
      */
     @java.lang.Override
     public boolean hasMultiProfileUserCount() {
-      return ((bitField0_ & 0x00080000) != 0);
+      return ((bitField0_ & 0x00800000) != 0);
     }
     /**
      * <pre>
@@ -30875,7 +31448,7 @@ public final class SystemProfileProtos {
      * @param value The multiProfileUserCount to set.
      */
     private void setMultiProfileUserCount(int value) {
-      bitField0_ |= 0x00080000;
+      bitField0_ |= 0x00800000;
       multiProfileUserCount_ = value;
     }
     /**
@@ -30888,7 +31461,7 @@ public final class SystemProfileProtos {
      * <code>optional uint32 multi_profile_user_count = 17;</code>
      */
     private void clearMultiProfileUserCount() {
-      bitField0_ = (bitField0_ & ~0x00080000);
+      bitField0_ = (bitField0_ & ~0x00800000);
       multiProfileUserCount_ = 0;
     }
 
@@ -31089,7 +31662,7 @@ public final class SystemProfileProtos {
      */
     @java.lang.Override
     public boolean hasOffstoreExtensionsState() {
-      return ((bitField0_ & 0x00100000) != 0);
+      return ((bitField0_ & 0x01000000) != 0);
     }
     /**
      * <code>optional .metrics.SystemProfileProto.ExtensionsState offstore_extensions_state = 19;</code>
@@ -31106,13 +31679,13 @@ public final class SystemProfileProtos {
      */
     private void setOffstoreExtensionsState(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ExtensionsState value) {
       offstoreExtensionsState_ = value.getNumber();
-      bitField0_ |= 0x00100000;
+      bitField0_ |= 0x01000000;
     }
     /**
      * <code>optional .metrics.SystemProfileProto.ExtensionsState offstore_extensions_state = 19;</code>
      */
     private void clearOffstoreExtensionsState() {
-      bitField0_ = (bitField0_ & ~0x00100000);
+      bitField0_ = (bitField0_ & ~0x01000000);
       offstoreExtensionsState_ = 0;
     }
 
@@ -31124,7 +31697,7 @@ public final class SystemProfileProtos {
      */
     @java.lang.Override
     public boolean hasUmaDefaultState() {
-      return ((bitField0_ & 0x00200000) != 0);
+      return ((bitField0_ & 0x02000000) != 0);
     }
     /**
      * <code>optional .metrics.SystemProfileProto.UmaDefaultState uma_default_state = 22;</code>
@@ -31141,13 +31714,13 @@ public final class SystemProfileProtos {
      */
     private void setUmaDefaultState(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.UmaDefaultState value) {
       umaDefaultState_ = value.getNumber();
-      bitField0_ |= 0x00200000;
+      bitField0_ |= 0x02000000;
     }
     /**
      * <code>optional .metrics.SystemProfileProto.UmaDefaultState uma_default_state = 22;</code>
      */
     private void clearUmaDefaultState() {
-      bitField0_ = (bitField0_ & ~0x00200000);
+      bitField0_ = (bitField0_ & ~0x02000000);
       umaDefaultState_ = 0;
     }
 
@@ -31512,7 +32085,7 @@ public final class SystemProfileProtos {
      */
     @java.lang.Override
     public boolean hasAppPackageName() {
-      return ((bitField0_ & 0x00400000) != 0);
+      return ((bitField0_ & 0x04000000) != 0);
     }
     /**
      * <pre>
@@ -31553,7 +32126,7 @@ public final class SystemProfileProtos {
     private void setAppPackageName(
         java.lang.String value) {
       value.getClass();
-  bitField0_ |= 0x00400000;
+  bitField0_ |= 0x04000000;
       appPackageName_ = value;
     }
     /**
@@ -31565,7 +32138,7 @@ public final class SystemProfileProtos {
      * <code>optional string app_package_name = 26;</code>
      */
     private void clearAppPackageName() {
-      bitField0_ = (bitField0_ & ~0x00400000);
+      bitField0_ = (bitField0_ & ~0x04000000);
       appPackageName_ = getDefaultInstance().getAppPackageName();
     }
     /**
@@ -31580,7 +32153,7 @@ public final class SystemProfileProtos {
     private void setAppPackageNameBytes(
         com.google.protobuf.ByteString value) {
       appPackageName_ = value.toStringUtf8();
-      bitField0_ |= 0x00400000;
+      bitField0_ |= 0x04000000;
     }
 
     public static final int INSTALLER_PACKAGE_FIELD_NUMBER = 35;
@@ -31595,7 +32168,7 @@ public final class SystemProfileProtos {
      */
     @java.lang.Override
     public boolean hasInstallerPackage() {
-      return ((bitField0_ & 0x00800000) != 0);
+      return ((bitField0_ & 0x08000000) != 0);
     }
     /**
      * <pre>
@@ -31620,7 +32193,7 @@ public final class SystemProfileProtos {
      */
     private void setInstallerPackage(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.InstallerPackage value) {
       installerPackage_ = value.getNumber();
-      bitField0_ |= 0x00800000;
+      bitField0_ |= 0x08000000;
     }
     /**
      * <pre>
@@ -31630,7 +32203,7 @@ public final class SystemProfileProtos {
      * <code>optional .metrics.SystemProfileProto.InstallerPackage installer_package = 35;</code>
      */
     private void clearInstallerPackage() {
-      bitField0_ = (bitField0_ & ~0x00800000);
+      bitField0_ = (bitField0_ & ~0x08000000);
       installerPackage_ = 0;
     }
 
@@ -31641,7 +32214,7 @@ public final class SystemProfileProtos {
      */
     @java.lang.Override
     public boolean hasLinkedAndroidPhoneData() {
-      return ((bitField0_ & 0x01000000) != 0);
+      return ((bitField0_ & 0x10000000) != 0);
     }
     /**
      * <code>optional .metrics.SystemProfileProto.LinkedAndroidPhoneData linked_android_phone_data = 29;</code>
@@ -31656,7 +32229,7 @@ public final class SystemProfileProtos {
     private void setLinkedAndroidPhoneData(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.LinkedAndroidPhoneData value) {
       value.getClass();
   linkedAndroidPhoneData_ = value;
-      bitField0_ |= 0x01000000;
+      bitField0_ |= 0x10000000;
       }
     /**
      * <code>optional .metrics.SystemProfileProto.LinkedAndroidPhoneData linked_android_phone_data = 29;</code>
@@ -31671,13 +32244,59 @@ public final class SystemProfileProtos {
       } else {
         linkedAndroidPhoneData_ = value;
       }
-      bitField0_ |= 0x01000000;
+      bitField0_ |= 0x10000000;
     }
     /**
      * <code>optional .metrics.SystemProfileProto.LinkedAndroidPhoneData linked_android_phone_data = 29;</code>
      */
     private void clearLinkedAndroidPhoneData() {  linkedAndroidPhoneData_ = null;
-      bitField0_ = (bitField0_ & ~0x01000000);
+      bitField0_ = (bitField0_ & ~0x10000000);
+    }
+
+    public static final int DEMO_MODE_DIMENSIONS_FIELD_NUMBER = 41;
+    private org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions demoModeDimensions_;
+    /**
+     * <code>optional .metrics.SystemProfileProto.DemoModeDimensions demo_mode_dimensions = 41;</code>
+     */
+    @java.lang.Override
+    public boolean hasDemoModeDimensions() {
+      return ((bitField0_ & 0x20000000) != 0);
+    }
+    /**
+     * <code>optional .metrics.SystemProfileProto.DemoModeDimensions demo_mode_dimensions = 41;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions getDemoModeDimensions() {
+      return demoModeDimensions_ == null ? org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.getDefaultInstance() : demoModeDimensions_;
+    }
+    /**
+     * <code>optional .metrics.SystemProfileProto.DemoModeDimensions demo_mode_dimensions = 41;</code>
+     */
+    private void setDemoModeDimensions(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions value) {
+      value.getClass();
+  demoModeDimensions_ = value;
+      bitField0_ |= 0x20000000;
+      }
+    /**
+     * <code>optional .metrics.SystemProfileProto.DemoModeDimensions demo_mode_dimensions = 41;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeDemoModeDimensions(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions value) {
+      value.getClass();
+  if (demoModeDimensions_ != null &&
+          demoModeDimensions_ != org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.getDefaultInstance()) {
+        demoModeDimensions_ =
+          org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.newBuilder(demoModeDimensions_).mergeFrom(value).buildPartial();
+      } else {
+        demoModeDimensions_ = value;
+      }
+      bitField0_ |= 0x20000000;
+    }
+    /**
+     * <code>optional .metrics.SystemProfileProto.DemoModeDimensions demo_mode_dimensions = 41;</code>
+     */
+    private void clearDemoModeDimensions() {  demoModeDimensions_ = null;
+      bitField0_ = (bitField0_ & ~0x20000000);
     }
 
     public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto parseFrom(
@@ -31767,7 +32386,7 @@ public final class SystemProfileProtos {
      * Almost all the fields should be populated on every upload. (The only
      * exception is some fields in the stability section that are only uploaded
      * once per browsing session, usually shortly after startup.)
-     * Next tag: 36
+     * Next tag: 42
      * </pre>
      *
      * Protobuf type {@code metrics.SystemProfileProto}
@@ -32020,6 +32639,111 @@ public final class SystemProfileProtos {
 
       /**
        * <pre>
+       * The application can create logs about previous versions. In particular the
+       * initial stability log refers to the previous run, which can be an older
+       * version. This field is set by the client when the log being written has an
+       * app_version that's different than the version of the app writing the log.
+       * Note that the version uploading the log may also be different.
+       * </pre>
+       *
+       * <code>optional string log_written_by_app_version = 40;</code>
+       * @return Whether the logWrittenByAppVersion field is set.
+       */
+      @java.lang.Override
+      public boolean hasLogWrittenByAppVersion() {
+        return instance.hasLogWrittenByAppVersion();
+      }
+      /**
+       * <pre>
+       * The application can create logs about previous versions. In particular the
+       * initial stability log refers to the previous run, which can be an older
+       * version. This field is set by the client when the log being written has an
+       * app_version that's different than the version of the app writing the log.
+       * Note that the version uploading the log may also be different.
+       * </pre>
+       *
+       * <code>optional string log_written_by_app_version = 40;</code>
+       * @return The logWrittenByAppVersion.
+       */
+      @java.lang.Override
+      public java.lang.String getLogWrittenByAppVersion() {
+        return instance.getLogWrittenByAppVersion();
+      }
+      /**
+       * <pre>
+       * The application can create logs about previous versions. In particular the
+       * initial stability log refers to the previous run, which can be an older
+       * version. This field is set by the client when the log being written has an
+       * app_version that's different than the version of the app writing the log.
+       * Note that the version uploading the log may also be different.
+       * </pre>
+       *
+       * <code>optional string log_written_by_app_version = 40;</code>
+       * @return The bytes for logWrittenByAppVersion.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getLogWrittenByAppVersionBytes() {
+        return instance.getLogWrittenByAppVersionBytes();
+      }
+      /**
+       * <pre>
+       * The application can create logs about previous versions. In particular the
+       * initial stability log refers to the previous run, which can be an older
+       * version. This field is set by the client when the log being written has an
+       * app_version that's different than the version of the app writing the log.
+       * Note that the version uploading the log may also be different.
+       * </pre>
+       *
+       * <code>optional string log_written_by_app_version = 40;</code>
+       * @param value The logWrittenByAppVersion to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLogWrittenByAppVersion(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setLogWrittenByAppVersion(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * The application can create logs about previous versions. In particular the
+       * initial stability log refers to the previous run, which can be an older
+       * version. This field is set by the client when the log being written has an
+       * app_version that's different than the version of the app writing the log.
+       * Note that the version uploading the log may also be different.
+       * </pre>
+       *
+       * <code>optional string log_written_by_app_version = 40;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLogWrittenByAppVersion() {
+        copyOnWrite();
+        instance.clearLogWrittenByAppVersion();
+        return this;
+      }
+      /**
+       * <pre>
+       * The application can create logs about previous versions. In particular the
+       * initial stability log refers to the previous run, which can be an older
+       * version. This field is set by the client when the log being written has an
+       * app_version that's different than the version of the app writing the log.
+       * Note that the version uploading the log may also be different.
+       * </pre>
+       *
+       * <code>optional string log_written_by_app_version = 40;</code>
+       * @param value The bytes for logWrittenByAppVersion to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLogWrittenByAppVersionBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setLogWrittenByAppVersionBytes(value);
+        return this;
+      }
+
+      /**
+       * <pre>
        * The brand code or distribution tag assigned to a partner, if available.
        * Brand codes are only available on Windows.  Not every Windows install
        * though will have a brand code.
@@ -32144,6 +32868,62 @@ public final class SystemProfileProtos {
       public Builder clearChannel() {
         copyOnWrite();
         instance.clearChannel();
+        return this;
+      }
+
+      /**
+       * <pre>
+       * True for a client following updates on the extended stable channel;
+       * see go/chrome-extended-dd.
+       * </pre>
+       *
+       * <code>optional bool is_extended_stable_channel = 36 [default = false];</code>
+       * @return Whether the isExtendedStableChannel field is set.
+       */
+      @java.lang.Override
+      public boolean hasIsExtendedStableChannel() {
+        return instance.hasIsExtendedStableChannel();
+      }
+      /**
+       * <pre>
+       * True for a client following updates on the extended stable channel;
+       * see go/chrome-extended-dd.
+       * </pre>
+       *
+       * <code>optional bool is_extended_stable_channel = 36 [default = false];</code>
+       * @return The isExtendedStableChannel.
+       */
+      @java.lang.Override
+      public boolean getIsExtendedStableChannel() {
+        return instance.getIsExtendedStableChannel();
+      }
+      /**
+       * <pre>
+       * True for a client following updates on the extended stable channel;
+       * see go/chrome-extended-dd.
+       * </pre>
+       *
+       * <code>optional bool is_extended_stable_channel = 36 [default = false];</code>
+       * @param value The isExtendedStableChannel to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIsExtendedStableChannel(boolean value) {
+        copyOnWrite();
+        instance.setIsExtendedStableChannel(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * True for a client following updates on the extended stable channel;
+       * see go/chrome-extended-dd.
+       * </pre>
+       *
+       * <code>optional bool is_extended_stable_channel = 36 [default = false];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearIsExtendedStableChannel() {
+        copyOnWrite();
+        instance.clearIsExtendedStableChannel();
         return this;
       }
 
@@ -32328,9 +33108,60 @@ public final class SystemProfileProtos {
       }
 
       /**
+       * <code>optional .metrics.SystemProfileProto.ClonedInstallInfo cloned_install_info = 39;</code>
+       */
+      @java.lang.Override
+      public boolean hasClonedInstallInfo() {
+        return instance.hasClonedInstallInfo();
+      }
+      /**
+       * <code>optional .metrics.SystemProfileProto.ClonedInstallInfo cloned_install_info = 39;</code>
+       */
+      @java.lang.Override
+      public org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo getClonedInstallInfo() {
+        return instance.getClonedInstallInfo();
+      }
+      /**
+       * <code>optional .metrics.SystemProfileProto.ClonedInstallInfo cloned_install_info = 39;</code>
+       */
+      public Builder setClonedInstallInfo(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo value) {
+        copyOnWrite();
+        instance.setClonedInstallInfo(value);
+        return this;
+        }
+      /**
+       * <code>optional .metrics.SystemProfileProto.ClonedInstallInfo cloned_install_info = 39;</code>
+       */
+      public Builder setClonedInstallInfo(
+          org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo.Builder builderForValue) {
+        copyOnWrite();
+        instance.setClonedInstallInfo(builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>optional .metrics.SystemProfileProto.ClonedInstallInfo cloned_install_info = 39;</code>
+       */
+      public Builder mergeClonedInstallInfo(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.ClonedInstallInfo value) {
+        copyOnWrite();
+        instance.mergeClonedInstallInfo(value);
+        return this;
+      }
+      /**
+       * <code>optional .metrics.SystemProfileProto.ClonedInstallInfo cloned_install_info = 39;</code>
+       */
+      public Builder clearClonedInstallInfo() {  copyOnWrite();
+        instance.clearClonedInstallInfo();
+        return this;
+      }
+
+      /**
        * <pre>
        * The non-identifying low entropy source value. This value seeds the
-       * pseudorandom generator which picks experimental groups.
+       * pseudorandom generator which picks experimental groups. Clients only report
+       * the value that they used for picking experimental groups on startup which
+       * means this value won't be changed within the session even even if the low
+       * entropy source is reset (e.g. via the UMA checkbox) because group
+       * assignments won't be changed until restart.
        * </pre>
        *
        * <code>optional int32 low_entropy_source = 31;</code>
@@ -32343,7 +33174,11 @@ public final class SystemProfileProtos {
       /**
        * <pre>
        * The non-identifying low entropy source value. This value seeds the
-       * pseudorandom generator which picks experimental groups.
+       * pseudorandom generator which picks experimental groups. Clients only report
+       * the value that they used for picking experimental groups on startup which
+       * means this value won't be changed within the session even even if the low
+       * entropy source is reset (e.g. via the UMA checkbox) because group
+       * assignments won't be changed until restart.
        * </pre>
        *
        * <code>optional int32 low_entropy_source = 31;</code>
@@ -32356,7 +33191,11 @@ public final class SystemProfileProtos {
       /**
        * <pre>
        * The non-identifying low entropy source value. This value seeds the
-       * pseudorandom generator which picks experimental groups.
+       * pseudorandom generator which picks experimental groups. Clients only report
+       * the value that they used for picking experimental groups on startup which
+       * means this value won't be changed within the session even even if the low
+       * entropy source is reset (e.g. via the UMA checkbox) because group
+       * assignments won't be changed until restart.
        * </pre>
        *
        * <code>optional int32 low_entropy_source = 31;</code>
@@ -32371,7 +33210,11 @@ public final class SystemProfileProtos {
       /**
        * <pre>
        * The non-identifying low entropy source value. This value seeds the
-       * pseudorandom generator which picks experimental groups.
+       * pseudorandom generator which picks experimental groups. Clients only report
+       * the value that they used for picking experimental groups on startup which
+       * means this value won't be changed within the session even even if the low
+       * entropy source is reset (e.g. via the UMA checkbox) because group
+       * assignments won't be changed until restart.
        * </pre>
        *
        * <code>optional int32 low_entropy_source = 31;</code>
@@ -32448,6 +33291,86 @@ public final class SystemProfileProtos {
       public Builder clearOldLowEntropySource() {
         copyOnWrite();
         instance.clearOldLowEntropySource();
+        return this;
+      }
+
+      /**
+       * <pre>
+       * A pseudo low entropy value. The actual low_entropy_source value is used for
+       * assignment to experiment arms, and this use may cause drift over time (for
+       * example, if a bad experiment arm drives away some users permanently.) This
+       * pseudo low entropy value is generated identically to low_entropy_source,
+       * but it is generated with a different randomization seed and is not used for
+       * experiment randomization. Consequently, it can be used in statistical
+       * validation to answer the question of how our data would be distributed if
+       * we didn't have to worry about low entropy source drift.
+       * </pre>
+       *
+       * <code>optional int32 pseudo_low_entropy_source = 37;</code>
+       * @return Whether the pseudoLowEntropySource field is set.
+       */
+      @java.lang.Override
+      public boolean hasPseudoLowEntropySource() {
+        return instance.hasPseudoLowEntropySource();
+      }
+      /**
+       * <pre>
+       * A pseudo low entropy value. The actual low_entropy_source value is used for
+       * assignment to experiment arms, and this use may cause drift over time (for
+       * example, if a bad experiment arm drives away some users permanently.) This
+       * pseudo low entropy value is generated identically to low_entropy_source,
+       * but it is generated with a different randomization seed and is not used for
+       * experiment randomization. Consequently, it can be used in statistical
+       * validation to answer the question of how our data would be distributed if
+       * we didn't have to worry about low entropy source drift.
+       * </pre>
+       *
+       * <code>optional int32 pseudo_low_entropy_source = 37;</code>
+       * @return The pseudoLowEntropySource.
+       */
+      @java.lang.Override
+      public int getPseudoLowEntropySource() {
+        return instance.getPseudoLowEntropySource();
+      }
+      /**
+       * <pre>
+       * A pseudo low entropy value. The actual low_entropy_source value is used for
+       * assignment to experiment arms, and this use may cause drift over time (for
+       * example, if a bad experiment arm drives away some users permanently.) This
+       * pseudo low entropy value is generated identically to low_entropy_source,
+       * but it is generated with a different randomization seed and is not used for
+       * experiment randomization. Consequently, it can be used in statistical
+       * validation to answer the question of how our data would be distributed if
+       * we didn't have to worry about low entropy source drift.
+       * </pre>
+       *
+       * <code>optional int32 pseudo_low_entropy_source = 37;</code>
+       * @param value The pseudoLowEntropySource to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPseudoLowEntropySource(int value) {
+        copyOnWrite();
+        instance.setPseudoLowEntropySource(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * A pseudo low entropy value. The actual low_entropy_source value is used for
+       * assignment to experiment arms, and this use may cause drift over time (for
+       * example, if a bad experiment arm drives away some users permanently.) This
+       * pseudo low entropy value is generated identically to low_entropy_source,
+       * but it is generated with a different randomization seed and is not used for
+       * experiment randomization. Consequently, it can be used in statistical
+       * validation to answer the question of how our data would be distributed if
+       * we didn't have to worry about low entropy source drift.
+       * </pre>
+       *
+       * <code>optional int32 pseudo_low_entropy_source = 37;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPseudoLowEntropySource() {
+        copyOnWrite();
+        instance.clearPseudoLowEntropySource();
         return this;
       }
 
@@ -32541,6 +33464,131 @@ public final class SystemProfileProtos {
           com.google.protobuf.ByteString value) {
         copyOnWrite();
         instance.setApplicationLocaleBytes(value);
+        return this;
+      }
+
+      /**
+       * <pre>
+       * Hashes of command line keys used in the browser session when the MetricsLog
+       * is created. This takes into account the command line switches that were
+       * used when launching the session, as well as any modifications made to them,
+       * for example via CommandLine::AppendSwitch and CommandLine::RemoveSwitch.
+       * Values are the lower 32-bit of SHA1 hash in little-endian.
+       * </pre>
+       *
+       * <code>repeated fixed32 command_line_key_hash = 38 [packed = true];</code>
+       * @return A list containing the commandLineKeyHash.
+       */
+      @java.lang.Override
+      public java.util.List<java.lang.Integer>
+          getCommandLineKeyHashList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getCommandLineKeyHashList());
+      }
+      /**
+       * <pre>
+       * Hashes of command line keys used in the browser session when the MetricsLog
+       * is created. This takes into account the command line switches that were
+       * used when launching the session, as well as any modifications made to them,
+       * for example via CommandLine::AppendSwitch and CommandLine::RemoveSwitch.
+       * Values are the lower 32-bit of SHA1 hash in little-endian.
+       * </pre>
+       *
+       * <code>repeated fixed32 command_line_key_hash = 38 [packed = true];</code>
+       * @return The count of commandLineKeyHash.
+       */
+      @java.lang.Override
+      public int getCommandLineKeyHashCount() {
+        return instance.getCommandLineKeyHashCount();
+      }
+      /**
+       * <pre>
+       * Hashes of command line keys used in the browser session when the MetricsLog
+       * is created. This takes into account the command line switches that were
+       * used when launching the session, as well as any modifications made to them,
+       * for example via CommandLine::AppendSwitch and CommandLine::RemoveSwitch.
+       * Values are the lower 32-bit of SHA1 hash in little-endian.
+       * </pre>
+       *
+       * <code>repeated fixed32 command_line_key_hash = 38 [packed = true];</code>
+       * @param index The index of the element to return.
+       * @return The commandLineKeyHash at the given index.
+       */
+      @java.lang.Override
+      public int getCommandLineKeyHash(int index) {
+        return instance.getCommandLineKeyHash(index);
+      }
+      /**
+       * <pre>
+       * Hashes of command line keys used in the browser session when the MetricsLog
+       * is created. This takes into account the command line switches that were
+       * used when launching the session, as well as any modifications made to them,
+       * for example via CommandLine::AppendSwitch and CommandLine::RemoveSwitch.
+       * Values are the lower 32-bit of SHA1 hash in little-endian.
+       * </pre>
+       *
+       * <code>repeated fixed32 command_line_key_hash = 38 [packed = true];</code>
+       * @param value The commandLineKeyHash to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCommandLineKeyHash(
+          int index, int value) {
+        copyOnWrite();
+        instance.setCommandLineKeyHash(index, value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Hashes of command line keys used in the browser session when the MetricsLog
+       * is created. This takes into account the command line switches that were
+       * used when launching the session, as well as any modifications made to them,
+       * for example via CommandLine::AppendSwitch and CommandLine::RemoveSwitch.
+       * Values are the lower 32-bit of SHA1 hash in little-endian.
+       * </pre>
+       *
+       * <code>repeated fixed32 command_line_key_hash = 38 [packed = true];</code>
+       * @param value The commandLineKeyHash to add.
+       * @return This builder for chaining.
+       */
+      public Builder addCommandLineKeyHash(int value) {
+        copyOnWrite();
+        instance.addCommandLineKeyHash(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Hashes of command line keys used in the browser session when the MetricsLog
+       * is created. This takes into account the command line switches that were
+       * used when launching the session, as well as any modifications made to them,
+       * for example via CommandLine::AppendSwitch and CommandLine::RemoveSwitch.
+       * Values are the lower 32-bit of SHA1 hash in little-endian.
+       * </pre>
+       *
+       * <code>repeated fixed32 command_line_key_hash = 38 [packed = true];</code>
+       * @param values The commandLineKeyHash to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllCommandLineKeyHash(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        copyOnWrite();
+        instance.addAllCommandLineKeyHash(values);
+        return this;
+      }
+      /**
+       * <pre>
+       * Hashes of command line keys used in the browser session when the MetricsLog
+       * is created. This takes into account the command line switches that were
+       * used when launching the session, as well as any modifications made to them,
+       * for example via CommandLine::AppendSwitch and CommandLine::RemoveSwitch.
+       * Values are the lower 32-bit of SHA1 hash in little-endian.
+       * </pre>
+       *
+       * <code>repeated fixed32 command_line_key_hash = 38 [packed = true];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCommandLineKeyHash() {
+        copyOnWrite();
+        instance.clearCommandLineKeyHash();
         return this;
       }
 
@@ -32729,108 +33777,6 @@ public final class SystemProfileProtos {
        */
       public Builder clearGoogleUpdate() {  copyOnWrite();
         instance.clearGoogleUpdate();
-        return this;
-      }
-
-      /**
-       * <code>repeated .metrics.SystemProfileProto.Plugin plugin = 7;</code>
-       */
-      @java.lang.Override
-      public java.util.List<org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin> getPluginList() {
-        return java.util.Collections.unmodifiableList(
-            instance.getPluginList());
-      }
-      /**
-       * <code>repeated .metrics.SystemProfileProto.Plugin plugin = 7;</code>
-       */
-      @java.lang.Override
-      public int getPluginCount() {
-        return instance.getPluginCount();
-      }/**
-       * <code>repeated .metrics.SystemProfileProto.Plugin plugin = 7;</code>
-       */
-      @java.lang.Override
-      public org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin getPlugin(int index) {
-        return instance.getPlugin(index);
-      }
-      /**
-       * <code>repeated .metrics.SystemProfileProto.Plugin plugin = 7;</code>
-       */
-      public Builder setPlugin(
-          int index, org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin value) {
-        copyOnWrite();
-        instance.setPlugin(index, value);
-        return this;
-      }
-      /**
-       * <code>repeated .metrics.SystemProfileProto.Plugin plugin = 7;</code>
-       */
-      public Builder setPlugin(
-          int index, org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin.Builder builderForValue) {
-        copyOnWrite();
-        instance.setPlugin(index,
-            builderForValue.build());
-        return this;
-      }
-      /**
-       * <code>repeated .metrics.SystemProfileProto.Plugin plugin = 7;</code>
-       */
-      public Builder addPlugin(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin value) {
-        copyOnWrite();
-        instance.addPlugin(value);
-        return this;
-      }
-      /**
-       * <code>repeated .metrics.SystemProfileProto.Plugin plugin = 7;</code>
-       */
-      public Builder addPlugin(
-          int index, org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin value) {
-        copyOnWrite();
-        instance.addPlugin(index, value);
-        return this;
-      }
-      /**
-       * <code>repeated .metrics.SystemProfileProto.Plugin plugin = 7;</code>
-       */
-      public Builder addPlugin(
-          org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin.Builder builderForValue) {
-        copyOnWrite();
-        instance.addPlugin(builderForValue.build());
-        return this;
-      }
-      /**
-       * <code>repeated .metrics.SystemProfileProto.Plugin plugin = 7;</code>
-       */
-      public Builder addPlugin(
-          int index, org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin.Builder builderForValue) {
-        copyOnWrite();
-        instance.addPlugin(index,
-            builderForValue.build());
-        return this;
-      }
-      /**
-       * <code>repeated .metrics.SystemProfileProto.Plugin plugin = 7;</code>
-       */
-      public Builder addAllPlugin(
-          java.lang.Iterable<? extends org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin> values) {
-        copyOnWrite();
-        instance.addAllPlugin(values);
-        return this;
-      }
-      /**
-       * <code>repeated .metrics.SystemProfileProto.Plugin plugin = 7;</code>
-       */
-      public Builder clearPlugin() {
-        copyOnWrite();
-        instance.clearPlugin();
-        return this;
-      }
-      /**
-       * <code>repeated .metrics.SystemProfileProto.Plugin plugin = 7;</code>
-       */
-      public Builder removePlugin(int index) {
-        copyOnWrite();
-        instance.removePlugin(index);
         return this;
       }
 
@@ -34252,6 +35198,53 @@ public final class SystemProfileProtos {
         return this;
       }
 
+      /**
+       * <code>optional .metrics.SystemProfileProto.DemoModeDimensions demo_mode_dimensions = 41;</code>
+       */
+      @java.lang.Override
+      public boolean hasDemoModeDimensions() {
+        return instance.hasDemoModeDimensions();
+      }
+      /**
+       * <code>optional .metrics.SystemProfileProto.DemoModeDimensions demo_mode_dimensions = 41;</code>
+       */
+      @java.lang.Override
+      public org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions getDemoModeDimensions() {
+        return instance.getDemoModeDimensions();
+      }
+      /**
+       * <code>optional .metrics.SystemProfileProto.DemoModeDimensions demo_mode_dimensions = 41;</code>
+       */
+      public Builder setDemoModeDimensions(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions value) {
+        copyOnWrite();
+        instance.setDemoModeDimensions(value);
+        return this;
+        }
+      /**
+       * <code>optional .metrics.SystemProfileProto.DemoModeDimensions demo_mode_dimensions = 41;</code>
+       */
+      public Builder setDemoModeDimensions(
+          org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions.Builder builderForValue) {
+        copyOnWrite();
+        instance.setDemoModeDimensions(builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>optional .metrics.SystemProfileProto.DemoModeDimensions demo_mode_dimensions = 41;</code>
+       */
+      public Builder mergeDemoModeDimensions(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.DemoModeDimensions value) {
+        copyOnWrite();
+        instance.mergeDemoModeDimensions(value);
+        return this;
+      }
+      /**
+       * <code>optional .metrics.SystemProfileProto.DemoModeDimensions demo_mode_dimensions = 41;</code>
+       */
+      public Builder clearDemoModeDimensions() {  copyOnWrite();
+        instance.clearDemoModeDimensions();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:metrics.SystemProfileProto)
     }
     @java.lang.Override
@@ -34275,8 +35268,6 @@ public final class SystemProfileProtos {
               "applicationLocale_",
               "os_",
               "hardware_",
-              "plugin_",
-              org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Plugin.class,
               "stability_",
               "fieldTrial_",
               org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.FieldTrial.class,
@@ -34311,15 +35302,22 @@ public final class SystemProfileProtos {
               "clientUuid_",
               "installerPackage_",
               org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.InstallerPackage.internalGetVerifier(),
+              "isExtendedStableChannel_",
+              "pseudoLowEntropySource_",
+              "commandLineKeyHash_",
+              "clonedInstallInfo_",
+              "logWrittenByAppVersion_",
+              "demoModeDimensions_",
             };
             java.lang.String info =
-                "\u0001 \u0000\u0001\u0001# \u0000\u0007\u0000\u0001\u1002\u0000\u0002\u1008\u0001" +
-                "\u0003\u1002\u0005\u0004\u1008\t\u0005\u1009\n\u0006\u1009\u000b\u0007\u001b\b\u1009" +
-                "\u000e\t\u001b\n\u100c\u0003\u000b\u1009\r\f\u1008\u0002\r\u1009\f\u000e\u001b\u000f" +
-                "\u1009\u0012\u0010\u1002\u0006\u0011\u100b\u0013\u0012\u0016\u0013\u100c\u0014\u0014" +
-                "\u1007\u0004\u0016\u100c\u0015\u0017\u001b\u0018\u001b\u0019\u001b\u001a\u1008\u0016" +
-                "\u001c\u1008\u000f\u001d\u1009\u0018\u001f\u1004\u0007 \u1004\b!\u1007\u0010\"\u1008" +
-                "\u0011#\u100c\u0017";
+                "\u0001%\u0000\u0001\u0001)%\u0000\u0007\u0000\u0001\u1002\u0000\u0002\u1008\u0001" +
+                "\u0003\u1002\u0007\u0004\u1008\r\u0005\u1009\u000e\u0006\u1009\u000f\b\u1009\u0012" +
+                "\t\u001b\n\u100c\u0004\u000b\u1009\u0011\f\u1008\u0003\r\u1009\u0010\u000e\u001b" +
+                "\u000f\u1009\u0016\u0010\u1002\b\u0011\u100b\u0017\u0012\u0016\u0013\u100c\u0018" +
+                "\u0014\u1007\u0006\u0016\u100c\u0019\u0017\u001b\u0018\u001b\u0019\u001b\u001a\u1008" +
+                "\u001a\u001c\u1008\u0013\u001d\u1009\u001c\u001f\u1004\n \u1004\u000b!\u1007\u0014" +
+                "\"\u1008\u0015#\u100c\u001b$\u1007\u0005%\u1004\f&)\'\u1009\t(\u1008\u0002)\u1009" +
+                "\u001d";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface TrustedHeaderClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,20 +25,18 @@ public interface TrustedHeaderClient extends org.chromium.mojo.bindings.Interfac
 
     Manager<TrustedHeaderClient, TrustedHeaderClient.Proxy> MANAGER = TrustedHeaderClient_Internal.MANAGER;
 
-
     void onBeforeSendHeaders(
 HttpRequestHeaders headers, 
-OnBeforeSendHeadersResponse callback);
+OnBeforeSendHeaders_Response callback);
 
-    interface OnBeforeSendHeadersResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, HttpRequestHeaders> { }
-
+    interface OnBeforeSendHeaders_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, HttpRequestHeaders> { }
 
 
     void onHeadersReceived(
 String headers, IpEndPoint remoteEndpoint, 
-OnHeadersReceivedResponse callback);
+OnHeadersReceived_Response callback);
 
-    interface OnHeadersReceivedResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<Integer, String, org.chromium.url.mojom.Url> { }
+    interface OnHeadersReceived_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<Integer, String, org.chromium.url.mojom.Url> { }
 
 
 }

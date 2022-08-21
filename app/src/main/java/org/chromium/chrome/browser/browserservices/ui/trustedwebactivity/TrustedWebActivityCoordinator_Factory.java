@@ -3,17 +3,17 @@ package org.chromium.chrome.browser.browserservices.ui.trustedwebactivity;
 import dagger.Lazy;
 import dagger.internal.DoubleCheck;
 import dagger.internal.Factory;
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 import javax.inject.Provider;
-import org.chromium.chrome.browser.browserservices.BrowserServicesIntentDataProvider;
+import org.chromium.chrome.browser.browserservices.InstalledWebappRegistrar;
 import org.chromium.chrome.browser.browserservices.QualityEnforcer;
-import org.chromium.chrome.browser.browserservices.TrustedWebActivityUmaRecorder;
+import org.chromium.chrome.browser.browserservices.intents.BrowserServicesIntentDataProvider;
+import org.chromium.chrome.browser.browserservices.metrics.TrustedWebActivityUmaRecorder;
 import org.chromium.chrome.browser.browserservices.ui.SharedActivityCoordinator;
 import org.chromium.chrome.browser.browserservices.ui.controller.CurrentPageVerifier;
 import org.chromium.chrome.browser.browserservices.ui.controller.trustedwebactivity.ClientPackageNameProvider;
 import org.chromium.chrome.browser.browserservices.ui.controller.trustedwebactivity.TrustedWebActivityDisclosureController;
 import org.chromium.chrome.browser.browserservices.ui.controller.trustedwebactivity.TrustedWebActivityOpenTimeRecorder;
-import org.chromium.chrome.browser.browserservices.ui.controller.trustedwebactivity.TwaRegistrar;
 import org.chromium.chrome.browser.browserservices.ui.splashscreen.trustedwebactivity.TwaSplashController;
 import org.chromium.chrome.browser.customtabs.CustomTabsConnection;
 import org.chromium.chrome.browser.lifecycle.ActivityLifecycleDispatcher;
@@ -45,7 +45,7 @@ public final class TrustedWebActivityCoordinator_Factory implements Factory<Trus
 
   private final Provider<ActivityLifecycleDispatcher> lifecycleDispatcherProvider;
 
-  private final Provider<TwaRegistrar> twaRegistrarProvider;
+  private final Provider<InstalledWebappRegistrar> installedWebappRegistrarProvider;
 
   private final Provider<ClientPackageNameProvider> clientPackageNameProvider;
 
@@ -63,7 +63,7 @@ public final class TrustedWebActivityCoordinator_Factory implements Factory<Trus
       Provider<BrowserServicesIntentDataProvider> intentDataProvider,
       Provider<TrustedWebActivityUmaRecorder> umaRecorderProvider,
       Provider<ActivityLifecycleDispatcher> lifecycleDispatcherProvider,
-      Provider<TwaRegistrar> twaRegistrarProvider,
+      Provider<InstalledWebappRegistrar> installedWebappRegistrarProvider,
       Provider<ClientPackageNameProvider> clientPackageNameProvider,
       Provider<CustomTabsConnection> customTabsConnectionProvider,
       Provider<QualityEnforcer> enforcerProvider) {
@@ -76,7 +76,7 @@ public final class TrustedWebActivityCoordinator_Factory implements Factory<Trus
     this.intentDataProvider = intentDataProvider;
     this.umaRecorderProvider = umaRecorderProvider;
     this.lifecycleDispatcherProvider = lifecycleDispatcherProvider;
-    this.twaRegistrarProvider = twaRegistrarProvider;
+    this.installedWebappRegistrarProvider = installedWebappRegistrarProvider;
     this.clientPackageNameProvider = clientPackageNameProvider;
     this.customTabsConnectionProvider = customTabsConnectionProvider;
     this.enforcerProvider = enforcerProvider;
@@ -84,7 +84,7 @@ public final class TrustedWebActivityCoordinator_Factory implements Factory<Trus
 
   @Override
   public TrustedWebActivityCoordinator get() {
-    return newInstance(sharedActivityCoordinatorProvider.get(), disclosureControllerProvider.get(), disclosureUiPickerProvider.get(), openTimeRecorderProvider.get(), currentPageVerifierProvider.get(), DoubleCheck.lazy(splashControllerProvider), intentDataProvider.get(), umaRecorderProvider.get(), lifecycleDispatcherProvider.get(), twaRegistrarProvider.get(), clientPackageNameProvider.get(), customTabsConnectionProvider.get(), enforcerProvider.get());
+    return newInstance(sharedActivityCoordinatorProvider.get(), disclosureControllerProvider.get(), disclosureUiPickerProvider.get(), openTimeRecorderProvider.get(), currentPageVerifierProvider.get(), DoubleCheck.lazy(splashControllerProvider), intentDataProvider.get(), umaRecorderProvider.get(), lifecycleDispatcherProvider.get(), installedWebappRegistrarProvider.get(), clientPackageNameProvider.get(), customTabsConnectionProvider.get(), enforcerProvider.get());
   }
 
   public static TrustedWebActivityCoordinator_Factory create(
@@ -97,11 +97,11 @@ public final class TrustedWebActivityCoordinator_Factory implements Factory<Trus
       Provider<BrowserServicesIntentDataProvider> intentDataProvider,
       Provider<TrustedWebActivityUmaRecorder> umaRecorderProvider,
       Provider<ActivityLifecycleDispatcher> lifecycleDispatcherProvider,
-      Provider<TwaRegistrar> twaRegistrarProvider,
+      Provider<InstalledWebappRegistrar> installedWebappRegistrarProvider,
       Provider<ClientPackageNameProvider> clientPackageNameProvider,
       Provider<CustomTabsConnection> customTabsConnectionProvider,
       Provider<QualityEnforcer> enforcerProvider) {
-    return new TrustedWebActivityCoordinator_Factory(sharedActivityCoordinatorProvider, disclosureControllerProvider, disclosureUiPickerProvider, openTimeRecorderProvider, currentPageVerifierProvider, splashControllerProvider, intentDataProvider, umaRecorderProvider, lifecycleDispatcherProvider, twaRegistrarProvider, clientPackageNameProvider, customTabsConnectionProvider, enforcerProvider);
+    return new TrustedWebActivityCoordinator_Factory(sharedActivityCoordinatorProvider, disclosureControllerProvider, disclosureUiPickerProvider, openTimeRecorderProvider, currentPageVerifierProvider, splashControllerProvider, intentDataProvider, umaRecorderProvider, lifecycleDispatcherProvider, installedWebappRegistrarProvider, clientPackageNameProvider, customTabsConnectionProvider, enforcerProvider);
   }
 
   public static TrustedWebActivityCoordinator newInstance(
@@ -111,8 +111,9 @@ public final class TrustedWebActivityCoordinator_Factory implements Factory<Trus
       CurrentPageVerifier currentPageVerifier, Lazy<TwaSplashController> splashController,
       BrowserServicesIntentDataProvider intentDataProvider,
       TrustedWebActivityUmaRecorder umaRecorder, ActivityLifecycleDispatcher lifecycleDispatcher,
-      TwaRegistrar twaRegistrar, ClientPackageNameProvider clientPackageNameProvider,
+      InstalledWebappRegistrar installedWebappRegistrar,
+      ClientPackageNameProvider clientPackageNameProvider,
       CustomTabsConnection customTabsConnection, QualityEnforcer enforcer) {
-    return new TrustedWebActivityCoordinator(sharedActivityCoordinator, disclosureController, disclosureUiPicker, openTimeRecorder, currentPageVerifier, splashController, intentDataProvider, umaRecorder, lifecycleDispatcher, twaRegistrar, clientPackageNameProvider, customTabsConnection, enforcer);
+    return new TrustedWebActivityCoordinator(sharedActivityCoordinator, disclosureController, disclosureUiPicker, openTimeRecorder, currentPageVerifier, splashController, intentDataProvider, umaRecorder, lifecycleDispatcher, installedWebappRegistrar, clientPackageNameProvider, customTabsConnection, enforcer);
   }
 }

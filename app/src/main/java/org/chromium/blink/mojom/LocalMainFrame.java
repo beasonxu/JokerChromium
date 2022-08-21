@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface LocalMainFrame extends org.chromium.mojo.bindings.Interface {
 
@@ -23,70 +25,50 @@ public interface LocalMainFrame extends org.chromium.mojo.bindings.Interface {
 
     Manager<LocalMainFrame, LocalMainFrame.Proxy> MANAGER = LocalMainFrame_Internal.MANAGER;
 
-
     void animateDoubleTapZoom(
 org.chromium.gfx.mojom.Point point, org.chromium.gfx.mojom.Rect rect);
-
 
 
     void setScaleFactor(
 float scale);
 
 
-
     void closePage(
 
-ClosePageResponse callback);
+ClosePage_Response callback);
 
-    interface ClosePageResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
-
-
-    void pluginActionAt(
-org.chromium.gfx.mojom.Point location, int action);
-
+    interface ClosePage_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void setInitialFocus(
 boolean reverse);
 
 
-
     void enablePreferredSizeChangedMode(
 );
-
 
 
     void zoomToFindInPageRect(
 org.chromium.gfx.mojom.Rect rectInRootFrame);
 
 
-
     void installCoopAccessMonitor(
-int reportType, FrameToken accessedWindow, org.chromium.network.mojom.CrossOriginOpenerPolicyReporter reporter, boolean endpointDefined, String reportedWindowUrl);
-
+FrameToken accessedWindow, org.chromium.network.mojom.CrossOriginOpenerPolicyReporterParams coopReporterInfo);
 
 
     void onPortalActivated(
 PortalToken portalToken, org.chromium.mojo.bindings.AssociatedInterfaceNotSupported portal, org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported portalClient, TransferableMessage data, long traceId, 
-OnPortalActivatedResponse callback);
+OnPortalActivated_Response callback);
 
-    interface OnPortalActivatedResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface OnPortalActivated_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void forwardMessageFromHost(
 TransferableMessage message, org.chromium.url.internal.mojom.Origin sourceOrigin);
 
 
-
     void updateBrowserControlsState(
 int constraints, int current, boolean animate);
-
-
-
-    void updateWindowControlsOverlay(
-org.chromium.gfx.mojom.Rect windowControlsOverlayRect, org.chromium.gfx.mojom.Insets insets);
 
 
 }

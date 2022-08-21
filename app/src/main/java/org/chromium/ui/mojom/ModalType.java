@@ -13,8 +13,17 @@
 
 package org.chromium.ui.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ModalType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ModalType.NONE,
+        ModalType.WINDOW,
+        ModalType.CHILD,
+        ModalType.SYSTEM})
+    public @interface EnumType {}
 
     public static final int NONE = 0;
     public static final int WINDOW = 1;

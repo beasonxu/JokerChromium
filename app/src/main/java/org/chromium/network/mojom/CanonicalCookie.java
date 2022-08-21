@@ -13,11 +13,13 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class CanonicalCookie extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 88;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(88, 0)};
+    private static final int STRUCT_SIZE = 104;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(104, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public String name;
     public String value;
@@ -26,12 +28,14 @@ public final class CanonicalCookie extends org.chromium.mojo.bindings.Struct {
     public org.chromium.mojo_base.mojom.Time creation;
     public org.chromium.mojo_base.mojom.Time expiry;
     public org.chromium.mojo_base.mojom.Time lastAccess;
+    public org.chromium.mojo_base.mojom.Time lastUpdate;
     public boolean secure;
     public boolean httponly;
     public int siteRestrictions;
     public int priority;
     public int sourceScheme;
     public boolean sameParty;
+    public CookiePartitionKey partitionKey;
     public int sourcePort;
 
     private CanonicalCookie(int version) {
@@ -107,37 +111,47 @@ public final class CanonicalCookie extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.secure = decoder0.readBoolean(64, 0);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(64, false);
+                result.lastUpdate = org.chromium.mojo_base.mojom.Time.decode(decoder1);
                 }
                 {
                     
-                result.httponly = decoder0.readBoolean(64, 1);
+                result.secure = decoder0.readBoolean(72, 0);
                 }
                 {
                     
-                result.sameParty = decoder0.readBoolean(64, 2);
+                result.httponly = decoder0.readBoolean(72, 1);
                 }
                 {
                     
-                result.siteRestrictions = decoder0.readInt(68);
+                result.sameParty = decoder0.readBoolean(72, 2);
+                }
+                {
+                    
+                result.siteRestrictions = decoder0.readInt(76);
                     CookieSameSite.validate(result.siteRestrictions);
                     result.siteRestrictions = CookieSameSite.toKnownValue(result.siteRestrictions);
                 }
                 {
                     
-                result.priority = decoder0.readInt(72);
+                result.priority = decoder0.readInt(80);
                     CookiePriority.validate(result.priority);
                     result.priority = CookiePriority.toKnownValue(result.priority);
                 }
                 {
                     
-                result.sourceScheme = decoder0.readInt(76);
+                result.sourceScheme = decoder0.readInt(84);
                     CookieSourceScheme.validate(result.sourceScheme);
                     result.sourceScheme = CookieSourceScheme.toKnownValue(result.sourceScheme);
                 }
                 {
                     
-                result.sourcePort = decoder0.readInt(80);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(88, true);
+                result.partitionKey = CookiePartitionKey.decode(decoder1);
+                }
+                {
+                    
+                result.sourcePort = decoder0.readInt(96);
                 }
 
         } finally {
@@ -165,18 +179,22 @@ public final class CanonicalCookie extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.lastAccess, 56, false);
         
-        encoder0.encode(this.secure, 64, 0);
+        encoder0.encode(this.lastUpdate, 64, false);
         
-        encoder0.encode(this.httponly, 64, 1);
+        encoder0.encode(this.secure, 72, 0);
         
-        encoder0.encode(this.sameParty, 64, 2);
+        encoder0.encode(this.httponly, 72, 1);
         
-        encoder0.encode(this.siteRestrictions, 68);
+        encoder0.encode(this.sameParty, 72, 2);
         
-        encoder0.encode(this.priority, 72);
+        encoder0.encode(this.siteRestrictions, 76);
         
-        encoder0.encode(this.sourceScheme, 76);
+        encoder0.encode(this.priority, 80);
         
-        encoder0.encode(this.sourcePort, 80);
+        encoder0.encode(this.sourceScheme, 84);
+        
+        encoder0.encode(this.partitionKey, 88, true);
+        
+        encoder0.encode(this.sourcePort, 96);
     }
 }

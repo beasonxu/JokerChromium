@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class ServiceWorker_Internal {
 
@@ -93,6 +95,8 @@ class ServiceWorker_Internal {
 
     private static final int ADD_MESSAGE_TO_CONSOLE_ORDINAL = 22;
 
+    private static final int EXECUTE_SCRIPT_FOR_TEST_ORDINAL = 23;
+
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements ServiceWorker.Proxy {
 
@@ -104,7 +108,7 @@ class ServiceWorker_Internal {
 
         @Override
         public void initializeGlobalScope(
-org.chromium.mojo.bindings.AssociatedInterfaceNotSupported serviceWorkerHost, ServiceWorkerRegistrationObjectInfo registrationInfo, ServiceWorkerObjectInfo serviceWorkerInfo, int fetchHandlerExistence, UrlLoaderFactoryBundle subresourceLoaderFactories, org.chromium.mojo.bindings.InterfaceRequest<ReportingObserver> reportingObserverReceiver) {
+org.chromium.mojo.bindings.AssociatedInterfaceNotSupported serviceWorkerHost, ServiceWorkerRegistrationObjectInfo registrationInfo, ServiceWorkerObjectInfo serviceWorkerInfo, int fetchHandlerExistence, org.chromium.mojo.bindings.InterfaceRequest<ReportingObserver> reportingObserverReceiver, int ancestorFrameType) {
 
             ServiceWorkerInitializeGlobalScopeParams _message = new ServiceWorkerInitializeGlobalScopeParams();
 
@@ -116,9 +120,9 @@ org.chromium.mojo.bindings.AssociatedInterfaceNotSupported serviceWorkerHost, Se
 
             _message.fetchHandlerExistence = fetchHandlerExistence;
 
-            _message.subresourceLoaderFactories = subresourceLoaderFactories;
-
             _message.reportingObserverReceiver = reportingObserverReceiver;
+
+            _message.ancestorFrameType = ancestorFrameType;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -132,7 +136,7 @@ org.chromium.mojo.bindings.AssociatedInterfaceNotSupported serviceWorkerHost, Se
         @Override
         public void dispatchInstallEvent(
 
-DispatchInstallEventResponse callback) {
+DispatchInstallEvent_Response callback) {
 
             ServiceWorkerDispatchInstallEventParams _message = new ServiceWorkerDispatchInstallEventParams();
 
@@ -152,7 +156,7 @@ DispatchInstallEventResponse callback) {
         @Override
         public void dispatchActivateEvent(
 
-DispatchActivateEventResponse callback) {
+DispatchActivateEvent_Response callback) {
 
             ServiceWorkerDispatchActivateEventParams _message = new ServiceWorkerDispatchActivateEventParams();
 
@@ -172,7 +176,7 @@ DispatchActivateEventResponse callback) {
         @Override
         public void dispatchBackgroundFetchAbortEvent(
 BackgroundFetchRegistration registration, 
-DispatchBackgroundFetchAbortEventResponse callback) {
+DispatchBackgroundFetchAbortEvent_Response callback) {
 
             ServiceWorkerDispatchBackgroundFetchAbortEventParams _message = new ServiceWorkerDispatchBackgroundFetchAbortEventParams();
 
@@ -194,7 +198,7 @@ DispatchBackgroundFetchAbortEventResponse callback) {
         @Override
         public void dispatchBackgroundFetchClickEvent(
 BackgroundFetchRegistration registration, 
-DispatchBackgroundFetchClickEventResponse callback) {
+DispatchBackgroundFetchClickEvent_Response callback) {
 
             ServiceWorkerDispatchBackgroundFetchClickEventParams _message = new ServiceWorkerDispatchBackgroundFetchClickEventParams();
 
@@ -216,7 +220,7 @@ DispatchBackgroundFetchClickEventResponse callback) {
         @Override
         public void dispatchBackgroundFetchFailEvent(
 BackgroundFetchRegistration registration, 
-DispatchBackgroundFetchFailEventResponse callback) {
+DispatchBackgroundFetchFailEvent_Response callback) {
 
             ServiceWorkerDispatchBackgroundFetchFailEventParams _message = new ServiceWorkerDispatchBackgroundFetchFailEventParams();
 
@@ -238,7 +242,7 @@ DispatchBackgroundFetchFailEventResponse callback) {
         @Override
         public void dispatchBackgroundFetchSuccessEvent(
 BackgroundFetchRegistration registration, 
-DispatchBackgroundFetchSuccessEventResponse callback) {
+DispatchBackgroundFetchSuccessEvent_Response callback) {
 
             ServiceWorkerDispatchBackgroundFetchSuccessEventParams _message = new ServiceWorkerDispatchBackgroundFetchSuccessEventParams();
 
@@ -260,7 +264,7 @@ DispatchBackgroundFetchSuccessEventResponse callback) {
         @Override
         public void dispatchCookieChangeEvent(
 org.chromium.network.mojom.CookieChangeInfo change, 
-DispatchCookieChangeEventResponse callback) {
+DispatchCookieChangeEvent_Response callback) {
 
             ServiceWorkerDispatchCookieChangeEventParams _message = new ServiceWorkerDispatchCookieChangeEventParams();
 
@@ -282,7 +286,7 @@ DispatchCookieChangeEventResponse callback) {
         @Override
         public void dispatchFetchEventForMainResource(
 DispatchFetchEventParams params, ServiceWorkerFetchResponseCallback responseCallback, 
-DispatchFetchEventForMainResourceResponse callback) {
+DispatchFetchEventForMainResource_Response callback) {
 
             ServiceWorkerDispatchFetchEventForMainResourceParams _message = new ServiceWorkerDispatchFetchEventForMainResourceParams();
 
@@ -306,7 +310,7 @@ DispatchFetchEventForMainResourceResponse callback) {
         @Override
         public void dispatchNotificationClickEvent(
 String notificationId, NotificationData notificationData, int actionIndex, org.chromium.mojo_base.mojom.String16 reply, 
-DispatchNotificationClickEventResponse callback) {
+DispatchNotificationClickEvent_Response callback) {
 
             ServiceWorkerDispatchNotificationClickEventParams _message = new ServiceWorkerDispatchNotificationClickEventParams();
 
@@ -334,7 +338,7 @@ DispatchNotificationClickEventResponse callback) {
         @Override
         public void dispatchNotificationCloseEvent(
 String notificationId, NotificationData notificationData, 
-DispatchNotificationCloseEventResponse callback) {
+DispatchNotificationCloseEvent_Response callback) {
 
             ServiceWorkerDispatchNotificationCloseEventParams _message = new ServiceWorkerDispatchNotificationCloseEventParams();
 
@@ -358,7 +362,7 @@ DispatchNotificationCloseEventResponse callback) {
         @Override
         public void dispatchPushEvent(
 String payload, 
-DispatchPushEventResponse callback) {
+DispatchPushEvent_Response callback) {
 
             ServiceWorkerDispatchPushEventParams _message = new ServiceWorkerDispatchPushEventParams();
 
@@ -380,7 +384,7 @@ DispatchPushEventResponse callback) {
         @Override
         public void dispatchPushSubscriptionChangeEvent(
 PushSubscription oldSubscription, PushSubscription newSubscription, 
-DispatchPushSubscriptionChangeEventResponse callback) {
+DispatchPushSubscriptionChangeEvent_Response callback) {
 
             ServiceWorkerDispatchPushSubscriptionChangeEventParams _message = new ServiceWorkerDispatchPushSubscriptionChangeEventParams();
 
@@ -404,7 +408,7 @@ DispatchPushSubscriptionChangeEventResponse callback) {
         @Override
         public void dispatchSyncEvent(
 String tag, boolean lastChance, org.chromium.mojo_base.mojom.TimeDelta timeout, 
-DispatchSyncEventResponse callback) {
+DispatchSyncEvent_Response callback) {
 
             ServiceWorkerDispatchSyncEventParams _message = new ServiceWorkerDispatchSyncEventParams();
 
@@ -430,7 +434,7 @@ DispatchSyncEventResponse callback) {
         @Override
         public void dispatchPeriodicSyncEvent(
 String tag, org.chromium.mojo_base.mojom.TimeDelta timeout, 
-DispatchPeriodicSyncEventResponse callback) {
+DispatchPeriodicSyncEvent_Response callback) {
 
             ServiceWorkerDispatchPeriodicSyncEventParams _message = new ServiceWorkerDispatchPeriodicSyncEventParams();
 
@@ -454,7 +458,7 @@ DispatchPeriodicSyncEventResponse callback) {
         @Override
         public void dispatchAbortPaymentEvent(
 org.chromium.payments.mojom.PaymentHandlerResponseCallback resultOfAbortPayment, 
-DispatchAbortPaymentEventResponse callback) {
+DispatchAbortPaymentEvent_Response callback) {
 
             ServiceWorkerDispatchAbortPaymentEventParams _message = new ServiceWorkerDispatchAbortPaymentEventParams();
 
@@ -476,7 +480,7 @@ DispatchAbortPaymentEventResponse callback) {
         @Override
         public void dispatchCanMakePaymentEvent(
 org.chromium.payments.mojom.CanMakePaymentEventData eventData, org.chromium.payments.mojom.PaymentHandlerResponseCallback resultOfCanMakePayment, 
-DispatchCanMakePaymentEventResponse callback) {
+DispatchCanMakePaymentEvent_Response callback) {
 
             ServiceWorkerDispatchCanMakePaymentEventParams _message = new ServiceWorkerDispatchCanMakePaymentEventParams();
 
@@ -500,7 +504,7 @@ DispatchCanMakePaymentEventResponse callback) {
         @Override
         public void dispatchPaymentRequestEvent(
 org.chromium.payments.mojom.PaymentRequestEventData requestData, org.chromium.payments.mojom.PaymentHandlerResponseCallback responseCallback, 
-DispatchPaymentRequestEventResponse callback) {
+DispatchPaymentRequestEvent_Response callback) {
 
             ServiceWorkerDispatchPaymentRequestEventParams _message = new ServiceWorkerDispatchPaymentRequestEventParams();
 
@@ -524,7 +528,7 @@ DispatchPaymentRequestEventResponse callback) {
         @Override
         public void dispatchExtendableMessageEvent(
 ExtendableMessageEvent event, 
-DispatchExtendableMessageEventResponse callback) {
+DispatchExtendableMessageEvent_Response callback) {
 
             ServiceWorkerDispatchExtendableMessageEventParams _message = new ServiceWorkerDispatchExtendableMessageEventParams();
 
@@ -546,7 +550,7 @@ DispatchExtendableMessageEventResponse callback) {
         @Override
         public void dispatchContentDeleteEvent(
 String id, 
-DispatchContentDeleteEventResponse callback) {
+DispatchContentDeleteEvent_Response callback) {
 
             ServiceWorkerDispatchContentDeleteEventParams _message = new ServiceWorkerDispatchContentDeleteEventParams();
 
@@ -568,7 +572,7 @@ DispatchContentDeleteEventResponse callback) {
         @Override
         public void ping(
 
-PingResponse callback) {
+Ping_Response callback) {
 
             ServiceWorkerPingParams _message = new ServiceWorkerPingParams();
 
@@ -621,6 +625,30 @@ int level, String message) {
         }
 
 
+        @Override
+        public void executeScriptForTest(
+org.chromium.mojo_base.mojom.BigString16 javascript, boolean wantsResult, 
+ExecuteScriptForTest_Response callback) {
+
+            ServiceWorkerExecuteScriptForTestParams _message = new ServiceWorkerExecuteScriptForTestParams();
+
+            _message.javascript = javascript;
+
+            _message.wantsResult = wantsResult;
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    EXECUTE_SCRIPT_FOR_TEST_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new ServiceWorkerExecuteScriptForTestResponseParamsForwardToCallback(callback));
+
+        }
+
+
     }
 
     static final class Stub extends org.chromium.mojo.bindings.Interface.Stub<ServiceWorker> {
@@ -657,7 +685,7 @@ int level, String message) {
                         ServiceWorkerInitializeGlobalScopeParams data =
                                 ServiceWorkerInitializeGlobalScopeParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().initializeGlobalScope(data.serviceWorkerHost, data.registrationInfo, data.serviceWorkerInfo, data.fetchHandlerExistence, data.subresourceLoaderFactories, data.reportingObserverReceiver);
+                        getImpl().initializeGlobalScope(data.serviceWorkerHost, data.registrationInfo, data.serviceWorkerInfo, data.fetchHandlerExistence, data.reportingObserverReceiver, data.ancestorFrameType);
                         return true;
                     }
 
@@ -726,6 +754,8 @@ int level, String message) {
                         getImpl().addMessageToConsole(data.level, data.message);
                         return true;
                     }
+
+
 
 
                     default:
@@ -1060,6 +1090,21 @@ int level, String message) {
 
 
 
+
+
+
+
+
+                    case EXECUTE_SCRIPT_FOR_TEST_ORDINAL: {
+
+                        ServiceWorkerExecuteScriptForTestParams data =
+                                ServiceWorkerExecuteScriptForTestParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().executeScriptForTest(data.javascript, data.wantsResult, new ServiceWorkerExecuteScriptForTestResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
                     default:
                         return false;
                 }
@@ -1081,8 +1126,8 @@ int level, String message) {
         public ServiceWorkerRegistrationObjectInfo registrationInfo;
         public ServiceWorkerObjectInfo serviceWorkerInfo;
         public int fetchHandlerExistence;
-        public UrlLoaderFactoryBundle subresourceLoaderFactories;
         public org.chromium.mojo.bindings.InterfaceRequest<ReportingObserver> reportingObserverReceiver;
+        public int ancestorFrameType;
 
         private ServiceWorkerInitializeGlobalScopeParams(int version) {
             super(STRUCT_SIZE, version);
@@ -1143,8 +1188,9 @@ int level, String message) {
                     }
                     {
                         
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, true);
-                    result.subresourceLoaderFactories = UrlLoaderFactoryBundle.decode(decoder1);
+                    result.ancestorFrameType = decoder0.readInt(40);
+                        AncestorFrameType.validate(result.ancestorFrameType);
+                        result.ancestorFrameType = AncestorFrameType.toKnownValue(result.ancestorFrameType);
                     }
 
             } finally {
@@ -1168,7 +1214,7 @@ int level, String message) {
             
             encoder0.encode(this.reportingObserverReceiver, 36, true);
             
-            encoder0.encode(this.subresourceLoaderFactories, 40, true);
+            encoder0.encode(this.ancestorFrameType, 40);
         }
     }
 
@@ -1302,9 +1348,9 @@ int level, String message) {
 
     static class ServiceWorkerDispatchInstallEventResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorker.DispatchInstallEventResponse mCallback;
+        private final ServiceWorker.DispatchInstallEvent_Response mCallback;
 
-        ServiceWorkerDispatchInstallEventResponseParamsForwardToCallback(ServiceWorker.DispatchInstallEventResponse callback) {
+        ServiceWorkerDispatchInstallEventResponseParamsForwardToCallback(ServiceWorker.DispatchInstallEvent_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1329,7 +1375,7 @@ int level, String message) {
         }
     }
 
-    static class ServiceWorkerDispatchInstallEventResponseParamsProxyToResponder implements ServiceWorker.DispatchInstallEventResponse {
+    static class ServiceWorkerDispatchInstallEventResponseParamsProxyToResponder implements ServiceWorker.DispatchInstallEvent_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1486,9 +1532,9 @@ int level, String message) {
 
     static class ServiceWorkerDispatchActivateEventResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorker.DispatchActivateEventResponse mCallback;
+        private final ServiceWorker.DispatchActivateEvent_Response mCallback;
 
-        ServiceWorkerDispatchActivateEventResponseParamsForwardToCallback(ServiceWorker.DispatchActivateEventResponse callback) {
+        ServiceWorkerDispatchActivateEventResponseParamsForwardToCallback(ServiceWorker.DispatchActivateEvent_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1513,7 +1559,7 @@ int level, String message) {
         }
     }
 
-    static class ServiceWorkerDispatchActivateEventResponseParamsProxyToResponder implements ServiceWorker.DispatchActivateEventResponse {
+    static class ServiceWorkerDispatchActivateEventResponseParamsProxyToResponder implements ServiceWorker.DispatchActivateEvent_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1676,9 +1722,9 @@ int level, String message) {
 
     static class ServiceWorkerDispatchBackgroundFetchAbortEventResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorker.DispatchBackgroundFetchAbortEventResponse mCallback;
+        private final ServiceWorker.DispatchBackgroundFetchAbortEvent_Response mCallback;
 
-        ServiceWorkerDispatchBackgroundFetchAbortEventResponseParamsForwardToCallback(ServiceWorker.DispatchBackgroundFetchAbortEventResponse callback) {
+        ServiceWorkerDispatchBackgroundFetchAbortEventResponseParamsForwardToCallback(ServiceWorker.DispatchBackgroundFetchAbortEvent_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1703,7 +1749,7 @@ int level, String message) {
         }
     }
 
-    static class ServiceWorkerDispatchBackgroundFetchAbortEventResponseParamsProxyToResponder implements ServiceWorker.DispatchBackgroundFetchAbortEventResponse {
+    static class ServiceWorkerDispatchBackgroundFetchAbortEventResponseParamsProxyToResponder implements ServiceWorker.DispatchBackgroundFetchAbortEvent_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1866,9 +1912,9 @@ int level, String message) {
 
     static class ServiceWorkerDispatchBackgroundFetchClickEventResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorker.DispatchBackgroundFetchClickEventResponse mCallback;
+        private final ServiceWorker.DispatchBackgroundFetchClickEvent_Response mCallback;
 
-        ServiceWorkerDispatchBackgroundFetchClickEventResponseParamsForwardToCallback(ServiceWorker.DispatchBackgroundFetchClickEventResponse callback) {
+        ServiceWorkerDispatchBackgroundFetchClickEventResponseParamsForwardToCallback(ServiceWorker.DispatchBackgroundFetchClickEvent_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1893,7 +1939,7 @@ int level, String message) {
         }
     }
 
-    static class ServiceWorkerDispatchBackgroundFetchClickEventResponseParamsProxyToResponder implements ServiceWorker.DispatchBackgroundFetchClickEventResponse {
+    static class ServiceWorkerDispatchBackgroundFetchClickEventResponseParamsProxyToResponder implements ServiceWorker.DispatchBackgroundFetchClickEvent_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2056,9 +2102,9 @@ int level, String message) {
 
     static class ServiceWorkerDispatchBackgroundFetchFailEventResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorker.DispatchBackgroundFetchFailEventResponse mCallback;
+        private final ServiceWorker.DispatchBackgroundFetchFailEvent_Response mCallback;
 
-        ServiceWorkerDispatchBackgroundFetchFailEventResponseParamsForwardToCallback(ServiceWorker.DispatchBackgroundFetchFailEventResponse callback) {
+        ServiceWorkerDispatchBackgroundFetchFailEventResponseParamsForwardToCallback(ServiceWorker.DispatchBackgroundFetchFailEvent_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2083,7 +2129,7 @@ int level, String message) {
         }
     }
 
-    static class ServiceWorkerDispatchBackgroundFetchFailEventResponseParamsProxyToResponder implements ServiceWorker.DispatchBackgroundFetchFailEventResponse {
+    static class ServiceWorkerDispatchBackgroundFetchFailEventResponseParamsProxyToResponder implements ServiceWorker.DispatchBackgroundFetchFailEvent_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2246,9 +2292,9 @@ int level, String message) {
 
     static class ServiceWorkerDispatchBackgroundFetchSuccessEventResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorker.DispatchBackgroundFetchSuccessEventResponse mCallback;
+        private final ServiceWorker.DispatchBackgroundFetchSuccessEvent_Response mCallback;
 
-        ServiceWorkerDispatchBackgroundFetchSuccessEventResponseParamsForwardToCallback(ServiceWorker.DispatchBackgroundFetchSuccessEventResponse callback) {
+        ServiceWorkerDispatchBackgroundFetchSuccessEventResponseParamsForwardToCallback(ServiceWorker.DispatchBackgroundFetchSuccessEvent_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2273,7 +2319,7 @@ int level, String message) {
         }
     }
 
-    static class ServiceWorkerDispatchBackgroundFetchSuccessEventResponseParamsProxyToResponder implements ServiceWorker.DispatchBackgroundFetchSuccessEventResponse {
+    static class ServiceWorkerDispatchBackgroundFetchSuccessEventResponseParamsProxyToResponder implements ServiceWorker.DispatchBackgroundFetchSuccessEvent_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2436,9 +2482,9 @@ int level, String message) {
 
     static class ServiceWorkerDispatchCookieChangeEventResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorker.DispatchCookieChangeEventResponse mCallback;
+        private final ServiceWorker.DispatchCookieChangeEvent_Response mCallback;
 
-        ServiceWorkerDispatchCookieChangeEventResponseParamsForwardToCallback(ServiceWorker.DispatchCookieChangeEventResponse callback) {
+        ServiceWorkerDispatchCookieChangeEventResponseParamsForwardToCallback(ServiceWorker.DispatchCookieChangeEvent_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2463,7 +2509,7 @@ int level, String message) {
         }
     }
 
-    static class ServiceWorkerDispatchCookieChangeEventResponseParamsProxyToResponder implements ServiceWorker.DispatchCookieChangeEventResponse {
+    static class ServiceWorkerDispatchCookieChangeEventResponseParamsProxyToResponder implements ServiceWorker.DispatchCookieChangeEvent_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2633,9 +2679,9 @@ int level, String message) {
 
     static class ServiceWorkerDispatchFetchEventForMainResourceResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorker.DispatchFetchEventForMainResourceResponse mCallback;
+        private final ServiceWorker.DispatchFetchEventForMainResource_Response mCallback;
 
-        ServiceWorkerDispatchFetchEventForMainResourceResponseParamsForwardToCallback(ServiceWorker.DispatchFetchEventForMainResourceResponse callback) {
+        ServiceWorkerDispatchFetchEventForMainResourceResponseParamsForwardToCallback(ServiceWorker.DispatchFetchEventForMainResource_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2660,7 +2706,7 @@ int level, String message) {
         }
     }
 
-    static class ServiceWorkerDispatchFetchEventForMainResourceResponseParamsProxyToResponder implements ServiceWorker.DispatchFetchEventForMainResourceResponse {
+    static class ServiceWorkerDispatchFetchEventForMainResourceResponseParamsProxyToResponder implements ServiceWorker.DispatchFetchEventForMainResource_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2845,9 +2891,9 @@ int level, String message) {
 
     static class ServiceWorkerDispatchNotificationClickEventResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorker.DispatchNotificationClickEventResponse mCallback;
+        private final ServiceWorker.DispatchNotificationClickEvent_Response mCallback;
 
-        ServiceWorkerDispatchNotificationClickEventResponseParamsForwardToCallback(ServiceWorker.DispatchNotificationClickEventResponse callback) {
+        ServiceWorkerDispatchNotificationClickEventResponseParamsForwardToCallback(ServiceWorker.DispatchNotificationClickEvent_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2872,7 +2918,7 @@ int level, String message) {
         }
     }
 
-    static class ServiceWorkerDispatchNotificationClickEventResponseParamsProxyToResponder implements ServiceWorker.DispatchNotificationClickEventResponse {
+    static class ServiceWorkerDispatchNotificationClickEventResponseParamsProxyToResponder implements ServiceWorker.DispatchNotificationClickEvent_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -3042,9 +3088,9 @@ int level, String message) {
 
     static class ServiceWorkerDispatchNotificationCloseEventResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorker.DispatchNotificationCloseEventResponse mCallback;
+        private final ServiceWorker.DispatchNotificationCloseEvent_Response mCallback;
 
-        ServiceWorkerDispatchNotificationCloseEventResponseParamsForwardToCallback(ServiceWorker.DispatchNotificationCloseEventResponse callback) {
+        ServiceWorkerDispatchNotificationCloseEventResponseParamsForwardToCallback(ServiceWorker.DispatchNotificationCloseEvent_Response callback) {
             this.mCallback = callback;
         }
 
@@ -3069,7 +3115,7 @@ int level, String message) {
         }
     }
 
-    static class ServiceWorkerDispatchNotificationCloseEventResponseParamsProxyToResponder implements ServiceWorker.DispatchNotificationCloseEventResponse {
+    static class ServiceWorkerDispatchNotificationCloseEventResponseParamsProxyToResponder implements ServiceWorker.DispatchNotificationCloseEvent_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -3231,9 +3277,9 @@ int level, String message) {
 
     static class ServiceWorkerDispatchPushEventResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorker.DispatchPushEventResponse mCallback;
+        private final ServiceWorker.DispatchPushEvent_Response mCallback;
 
-        ServiceWorkerDispatchPushEventResponseParamsForwardToCallback(ServiceWorker.DispatchPushEventResponse callback) {
+        ServiceWorkerDispatchPushEventResponseParamsForwardToCallback(ServiceWorker.DispatchPushEvent_Response callback) {
             this.mCallback = callback;
         }
 
@@ -3258,7 +3304,7 @@ int level, String message) {
         }
     }
 
-    static class ServiceWorkerDispatchPushEventResponseParamsProxyToResponder implements ServiceWorker.DispatchPushEventResponse {
+    static class ServiceWorkerDispatchPushEventResponseParamsProxyToResponder implements ServiceWorker.DispatchPushEvent_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -3429,9 +3475,9 @@ int level, String message) {
 
     static class ServiceWorkerDispatchPushSubscriptionChangeEventResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorker.DispatchPushSubscriptionChangeEventResponse mCallback;
+        private final ServiceWorker.DispatchPushSubscriptionChangeEvent_Response mCallback;
 
-        ServiceWorkerDispatchPushSubscriptionChangeEventResponseParamsForwardToCallback(ServiceWorker.DispatchPushSubscriptionChangeEventResponse callback) {
+        ServiceWorkerDispatchPushSubscriptionChangeEventResponseParamsForwardToCallback(ServiceWorker.DispatchPushSubscriptionChangeEvent_Response callback) {
             this.mCallback = callback;
         }
 
@@ -3456,7 +3502,7 @@ int level, String message) {
         }
     }
 
-    static class ServiceWorkerDispatchPushSubscriptionChangeEventResponseParamsProxyToResponder implements ServiceWorker.DispatchPushSubscriptionChangeEventResponse {
+    static class ServiceWorkerDispatchPushSubscriptionChangeEventResponseParamsProxyToResponder implements ServiceWorker.DispatchPushSubscriptionChangeEvent_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -3633,9 +3679,9 @@ int level, String message) {
 
     static class ServiceWorkerDispatchSyncEventResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorker.DispatchSyncEventResponse mCallback;
+        private final ServiceWorker.DispatchSyncEvent_Response mCallback;
 
-        ServiceWorkerDispatchSyncEventResponseParamsForwardToCallback(ServiceWorker.DispatchSyncEventResponse callback) {
+        ServiceWorkerDispatchSyncEventResponseParamsForwardToCallback(ServiceWorker.DispatchSyncEvent_Response callback) {
             this.mCallback = callback;
         }
 
@@ -3660,7 +3706,7 @@ int level, String message) {
         }
     }
 
-    static class ServiceWorkerDispatchSyncEventResponseParamsProxyToResponder implements ServiceWorker.DispatchSyncEventResponse {
+    static class ServiceWorkerDispatchSyncEventResponseParamsProxyToResponder implements ServiceWorker.DispatchSyncEvent_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -3830,9 +3876,9 @@ int level, String message) {
 
     static class ServiceWorkerDispatchPeriodicSyncEventResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorker.DispatchPeriodicSyncEventResponse mCallback;
+        private final ServiceWorker.DispatchPeriodicSyncEvent_Response mCallback;
 
-        ServiceWorkerDispatchPeriodicSyncEventResponseParamsForwardToCallback(ServiceWorker.DispatchPeriodicSyncEventResponse callback) {
+        ServiceWorkerDispatchPeriodicSyncEventResponseParamsForwardToCallback(ServiceWorker.DispatchPeriodicSyncEvent_Response callback) {
             this.mCallback = callback;
         }
 
@@ -3857,7 +3903,7 @@ int level, String message) {
         }
     }
 
-    static class ServiceWorkerDispatchPeriodicSyncEventResponseParamsProxyToResponder implements ServiceWorker.DispatchPeriodicSyncEventResponse {
+    static class ServiceWorkerDispatchPeriodicSyncEventResponseParamsProxyToResponder implements ServiceWorker.DispatchPeriodicSyncEvent_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -4019,9 +4065,9 @@ int level, String message) {
 
     static class ServiceWorkerDispatchAbortPaymentEventResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorker.DispatchAbortPaymentEventResponse mCallback;
+        private final ServiceWorker.DispatchAbortPaymentEvent_Response mCallback;
 
-        ServiceWorkerDispatchAbortPaymentEventResponseParamsForwardToCallback(ServiceWorker.DispatchAbortPaymentEventResponse callback) {
+        ServiceWorkerDispatchAbortPaymentEventResponseParamsForwardToCallback(ServiceWorker.DispatchAbortPaymentEvent_Response callback) {
             this.mCallback = callback;
         }
 
@@ -4046,7 +4092,7 @@ int level, String message) {
         }
     }
 
-    static class ServiceWorkerDispatchAbortPaymentEventResponseParamsProxyToResponder implements ServiceWorker.DispatchAbortPaymentEventResponse {
+    static class ServiceWorkerDispatchAbortPaymentEventResponseParamsProxyToResponder implements ServiceWorker.DispatchAbortPaymentEvent_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -4216,9 +4262,9 @@ int level, String message) {
 
     static class ServiceWorkerDispatchCanMakePaymentEventResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorker.DispatchCanMakePaymentEventResponse mCallback;
+        private final ServiceWorker.DispatchCanMakePaymentEvent_Response mCallback;
 
-        ServiceWorkerDispatchCanMakePaymentEventResponseParamsForwardToCallback(ServiceWorker.DispatchCanMakePaymentEventResponse callback) {
+        ServiceWorkerDispatchCanMakePaymentEventResponseParamsForwardToCallback(ServiceWorker.DispatchCanMakePaymentEvent_Response callback) {
             this.mCallback = callback;
         }
 
@@ -4243,7 +4289,7 @@ int level, String message) {
         }
     }
 
-    static class ServiceWorkerDispatchCanMakePaymentEventResponseParamsProxyToResponder implements ServiceWorker.DispatchCanMakePaymentEventResponse {
+    static class ServiceWorkerDispatchCanMakePaymentEventResponseParamsProxyToResponder implements ServiceWorker.DispatchCanMakePaymentEvent_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -4413,9 +4459,9 @@ int level, String message) {
 
     static class ServiceWorkerDispatchPaymentRequestEventResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorker.DispatchPaymentRequestEventResponse mCallback;
+        private final ServiceWorker.DispatchPaymentRequestEvent_Response mCallback;
 
-        ServiceWorkerDispatchPaymentRequestEventResponseParamsForwardToCallback(ServiceWorker.DispatchPaymentRequestEventResponse callback) {
+        ServiceWorkerDispatchPaymentRequestEventResponseParamsForwardToCallback(ServiceWorker.DispatchPaymentRequestEvent_Response callback) {
             this.mCallback = callback;
         }
 
@@ -4440,7 +4486,7 @@ int level, String message) {
         }
     }
 
-    static class ServiceWorkerDispatchPaymentRequestEventResponseParamsProxyToResponder implements ServiceWorker.DispatchPaymentRequestEventResponse {
+    static class ServiceWorkerDispatchPaymentRequestEventResponseParamsProxyToResponder implements ServiceWorker.DispatchPaymentRequestEvent_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -4603,9 +4649,9 @@ int level, String message) {
 
     static class ServiceWorkerDispatchExtendableMessageEventResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorker.DispatchExtendableMessageEventResponse mCallback;
+        private final ServiceWorker.DispatchExtendableMessageEvent_Response mCallback;
 
-        ServiceWorkerDispatchExtendableMessageEventResponseParamsForwardToCallback(ServiceWorker.DispatchExtendableMessageEventResponse callback) {
+        ServiceWorkerDispatchExtendableMessageEventResponseParamsForwardToCallback(ServiceWorker.DispatchExtendableMessageEvent_Response callback) {
             this.mCallback = callback;
         }
 
@@ -4630,7 +4676,7 @@ int level, String message) {
         }
     }
 
-    static class ServiceWorkerDispatchExtendableMessageEventResponseParamsProxyToResponder implements ServiceWorker.DispatchExtendableMessageEventResponse {
+    static class ServiceWorkerDispatchExtendableMessageEventResponseParamsProxyToResponder implements ServiceWorker.DispatchExtendableMessageEvent_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -4792,9 +4838,9 @@ int level, String message) {
 
     static class ServiceWorkerDispatchContentDeleteEventResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorker.DispatchContentDeleteEventResponse mCallback;
+        private final ServiceWorker.DispatchContentDeleteEvent_Response mCallback;
 
-        ServiceWorkerDispatchContentDeleteEventResponseParamsForwardToCallback(ServiceWorker.DispatchContentDeleteEventResponse callback) {
+        ServiceWorkerDispatchContentDeleteEventResponseParamsForwardToCallback(ServiceWorker.DispatchContentDeleteEvent_Response callback) {
             this.mCallback = callback;
         }
 
@@ -4819,7 +4865,7 @@ int level, String message) {
         }
     }
 
-    static class ServiceWorkerDispatchContentDeleteEventResponseParamsProxyToResponder implements ServiceWorker.DispatchContentDeleteEventResponse {
+    static class ServiceWorkerDispatchContentDeleteEventResponseParamsProxyToResponder implements ServiceWorker.DispatchContentDeleteEvent_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -4965,9 +5011,9 @@ int level, String message) {
 
     static class ServiceWorkerPingResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorker.PingResponse mCallback;
+        private final ServiceWorker.Ping_Response mCallback;
 
-        ServiceWorkerPingResponseParamsForwardToCallback(ServiceWorker.PingResponse callback) {
+        ServiceWorkerPingResponseParamsForwardToCallback(ServiceWorker.Ping_Response callback) {
             this.mCallback = callback;
         }
 
@@ -4990,7 +5036,7 @@ int level, String message) {
         }
     }
 
-    static class ServiceWorkerPingResponseParamsProxyToResponder implements ServiceWorker.PingResponse {
+    static class ServiceWorkerPingResponseParamsProxyToResponder implements ServiceWorker.Ping_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -5153,6 +5199,210 @@ int level, String message) {
             encoder0.encode(this.level, 8);
             
             encoder0.encode(this.message, 16, false);
+        }
+    }
+
+
+
+    
+    static final class ServiceWorkerExecuteScriptForTestParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.mojo_base.mojom.BigString16 javascript;
+        public boolean wantsResult;
+
+        private ServiceWorkerExecuteScriptForTestParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public ServiceWorkerExecuteScriptForTestParams() {
+            this(0);
+        }
+
+        public static ServiceWorkerExecuteScriptForTestParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static ServiceWorkerExecuteScriptForTestParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static ServiceWorkerExecuteScriptForTestParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            ServiceWorkerExecuteScriptForTestParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new ServiceWorkerExecuteScriptForTestParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.javascript = org.chromium.mojo_base.mojom.BigString16.decode(decoder1);
+                    }
+                    {
+                        
+                    result.wantsResult = decoder0.readBoolean(16, 0);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.javascript, 8, false);
+            
+            encoder0.encode(this.wantsResult, 16, 0);
+        }
+    }
+
+
+
+    
+    static final class ServiceWorkerExecuteScriptForTestResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.mojo_base.mojom.Value result;
+        public String error;
+
+        private ServiceWorkerExecuteScriptForTestResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public ServiceWorkerExecuteScriptForTestResponseParams() {
+            this(0);
+        }
+
+        public static ServiceWorkerExecuteScriptForTestResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static ServiceWorkerExecuteScriptForTestResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static ServiceWorkerExecuteScriptForTestResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            ServiceWorkerExecuteScriptForTestResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new ServiceWorkerExecuteScriptForTestResponseParams(elementsOrVersion);
+                    {
+                        
+                    result.result = org.chromium.mojo_base.mojom.Value.decode(decoder0, 8);
+                    }
+                    {
+                        
+                    result.error = decoder0.readString(24, true);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.result, 8, false);
+            
+            encoder0.encode(this.error, 24, true);
+        }
+    }
+
+    static class ServiceWorkerExecuteScriptForTestResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final ServiceWorker.ExecuteScriptForTest_Response mCallback;
+
+        ServiceWorkerExecuteScriptForTestResponseParamsForwardToCallback(ServiceWorker.ExecuteScriptForTest_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(EXECUTE_SCRIPT_FOR_TEST_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                ServiceWorkerExecuteScriptForTestResponseParams response = ServiceWorkerExecuteScriptForTestResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.result, response.error);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class ServiceWorkerExecuteScriptForTestResponseParamsProxyToResponder implements ServiceWorker.ExecuteScriptForTest_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        ServiceWorkerExecuteScriptForTestResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(org.chromium.mojo_base.mojom.Value result, String error) {
+            ServiceWorkerExecuteScriptForTestResponseParams _response = new ServiceWorkerExecuteScriptForTestResponseParams();
+
+            _response.result = result;
+
+            _response.error = error;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    EXECUTE_SCRIPT_FOR_TEST_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
         }
     }
 

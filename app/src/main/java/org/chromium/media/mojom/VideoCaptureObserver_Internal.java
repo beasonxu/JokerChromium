@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class VideoCaptureObserver_Internal {
 
@@ -55,6 +57,8 @@ class VideoCaptureObserver_Internal {
 
     private static final int ON_BUFFER_DESTROYED_ORDINAL = 3;
 
+    private static final int ON_NEW_CROP_VERSION_ORDINAL = 4;
+
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements VideoCaptureObserver.Proxy {
 
@@ -66,11 +70,11 @@ class VideoCaptureObserver_Internal {
 
         @Override
         public void onStateChanged(
-int state) {
+VideoCaptureResult result) {
 
             VideoCaptureObserverOnStateChangedParams _message = new VideoCaptureObserverOnStateChangedParams();
 
-            _message.state = state;
+            _message.result = result;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -136,6 +140,23 @@ int bufferId) {
         }
 
 
+        @Override
+        public void onNewCropVersion(
+int cropVersion) {
+
+            VideoCaptureObserverOnNewCropVersionParams _message = new VideoCaptureObserverOnNewCropVersionParams();
+
+            _message.cropVersion = cropVersion;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(ON_NEW_CROP_VERSION_ORDINAL)));
+
+        }
+
+
     }
 
     static final class Stub extends org.chromium.mojo.bindings.Interface.Stub<VideoCaptureObserver> {
@@ -172,7 +193,7 @@ int bufferId) {
                         VideoCaptureObserverOnStateChangedParams data =
                                 VideoCaptureObserverOnStateChangedParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().onStateChanged(data.state);
+                        getImpl().onStateChanged(data.result);
                         return true;
                     }
 
@@ -216,6 +237,19 @@ int bufferId) {
                     }
 
 
+
+
+
+                    case ON_NEW_CROP_VERSION_ORDINAL: {
+
+                        VideoCaptureObserverOnNewCropVersionParams data =
+                                VideoCaptureObserverOnNewCropVersionParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().onNewCropVersion(data.cropVersion);
+                        return true;
+                    }
+
+
                     default:
                         return false;
                 }
@@ -253,6 +287,8 @@ int bufferId) {
 
 
 
+
+
                     default:
                         return false;
                 }
@@ -267,10 +303,10 @@ int bufferId) {
     
     static final class VideoCaptureObserverOnStateChangedParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public int state;
+        public VideoCaptureResult result;
 
         private VideoCaptureObserverOnStateChangedParams(int version) {
             super(STRUCT_SIZE, version);
@@ -307,9 +343,7 @@ int bufferId) {
                 result = new VideoCaptureObserverOnStateChangedParams(elementsOrVersion);
                     {
                         
-                    result.state = decoder0.readInt(8);
-                        VideoCaptureState.validate(result.state);
-                        result.state = VideoCaptureState.toKnownValue(result.state);
+                    result.result = VideoCaptureResult.decode(decoder0, 8);
                     }
 
             } finally {
@@ -323,7 +357,7 @@ int bufferId) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.state, 8);
+            encoder0.encode(this.result, 8, false);
         }
     }
 
@@ -545,6 +579,69 @@ int bufferId) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.bufferId, 8);
+        }
+    }
+
+
+
+    
+    static final class VideoCaptureObserverOnNewCropVersionParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int cropVersion;
+
+        private VideoCaptureObserverOnNewCropVersionParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public VideoCaptureObserverOnNewCropVersionParams() {
+            this(0);
+        }
+
+        public static VideoCaptureObserverOnNewCropVersionParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static VideoCaptureObserverOnNewCropVersionParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static VideoCaptureObserverOnNewCropVersionParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            VideoCaptureObserverOnNewCropVersionParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new VideoCaptureObserverOnNewCropVersionParams(elementsOrVersion);
+                    {
+                        
+                    result.cropVersion = decoder0.readInt(8);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.cropVersion, 8);
         }
     }
 

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class OneShotBackgroundSyncService_Internal {
 
@@ -65,7 +67,7 @@ class OneShotBackgroundSyncService_Internal {
         @Override
         public void register(
 SyncRegistrationOptions options, long serviceWorkerRegistrationId, 
-RegisterResponse callback) {
+Register_Response callback) {
 
             OneShotBackgroundSyncServiceRegisterParams _message = new OneShotBackgroundSyncServiceRegisterParams();
 
@@ -106,7 +108,7 @@ BackgroundSyncRegistrationInfo registrationInfo) {
         @Override
         public void getRegistrations(
 long serviceWorkerRegistrationId, 
-GetRegistrationsResponse callback) {
+GetRegistrations_Response callback) {
 
             OneShotBackgroundSyncServiceGetRegistrationsParams _message = new OneShotBackgroundSyncServiceGetRegistrationsParams();
 
@@ -386,9 +388,9 @@ GetRegistrationsResponse callback) {
 
     static class OneShotBackgroundSyncServiceRegisterResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final OneShotBackgroundSyncService.RegisterResponse mCallback;
+        private final OneShotBackgroundSyncService.Register_Response mCallback;
 
-        OneShotBackgroundSyncServiceRegisterResponseParamsForwardToCallback(OneShotBackgroundSyncService.RegisterResponse callback) {
+        OneShotBackgroundSyncServiceRegisterResponseParamsForwardToCallback(OneShotBackgroundSyncService.Register_Response callback) {
             this.mCallback = callback;
         }
 
@@ -413,7 +415,7 @@ GetRegistrationsResponse callback) {
         }
     }
 
-    static class OneShotBackgroundSyncServiceRegisterResponseParamsProxyToResponder implements OneShotBackgroundSyncService.RegisterResponse {
+    static class OneShotBackgroundSyncServiceRegisterResponseParamsProxyToResponder implements OneShotBackgroundSyncService.Register_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -665,9 +667,9 @@ GetRegistrationsResponse callback) {
 
     static class OneShotBackgroundSyncServiceGetRegistrationsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final OneShotBackgroundSyncService.GetRegistrationsResponse mCallback;
+        private final OneShotBackgroundSyncService.GetRegistrations_Response mCallback;
 
-        OneShotBackgroundSyncServiceGetRegistrationsResponseParamsForwardToCallback(OneShotBackgroundSyncService.GetRegistrationsResponse callback) {
+        OneShotBackgroundSyncServiceGetRegistrationsResponseParamsForwardToCallback(OneShotBackgroundSyncService.GetRegistrations_Response callback) {
             this.mCallback = callback;
         }
 
@@ -692,7 +694,7 @@ GetRegistrationsResponse callback) {
         }
     }
 
-    static class OneShotBackgroundSyncServiceGetRegistrationsResponseParamsProxyToResponder implements OneShotBackgroundSyncService.GetRegistrationsResponse {
+    static class OneShotBackgroundSyncServiceGetRegistrationsResponseParamsProxyToResponder implements OneShotBackgroundSyncService.GetRegistrations_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

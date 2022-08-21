@@ -13,6 +13,8 @@
 
 package org.chromium.media_session.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface AudioFocusObserver extends org.chromium.mojo.bindings.Interface {
 
@@ -23,14 +25,16 @@ public interface AudioFocusObserver extends org.chromium.mojo.bindings.Interface
 
     Manager<AudioFocusObserver, AudioFocusObserver.Proxy> MANAGER = AudioFocusObserver_Internal.MANAGER;
 
-
     void onFocusGained(
 AudioFocusRequestState state);
 
 
-
     void onFocusLost(
 AudioFocusRequestState state);
+
+
+    void onRequestIdReleased(
+org.chromium.mojo_base.mojom.UnguessableToken requestId);
 
 
 }

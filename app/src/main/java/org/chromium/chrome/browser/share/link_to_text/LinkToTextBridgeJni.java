@@ -1,16 +1,15 @@
 package org.chromium.chrome.browser.share.link_to_text;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
+import org.chromium.content_public.browser.WebContents;
 import org.chromium.url.GURL;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class LinkToTextBridgeJni implements LinkToTextBridge.Natives {
+class LinkToTextBridgeJni implements LinkToTextBridge.Natives {
   private static LinkToTextBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<LinkToTextBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.share.link_to_text.LinkToTextBridge.Natives>() {
@@ -25,38 +24,33 @@ final class LinkToTextBridgeJni implements LinkToTextBridge.Natives {
   };
 
   @Override
-  public void logGenerateErrorTabHidden() {
-    GEN_JNI.org_chromium_chrome_browser_share_link_1to_1text_LinkToTextBridge_logGenerateErrorTabHidden();
-  }
-
-  @Override
-  public void logGenerateErrorOmniboxNavigation() {
-    GEN_JNI.org_chromium_chrome_browser_share_link_1to_1text_LinkToTextBridge_logGenerateErrorOmniboxNavigation();
-  }
-
-  @Override
-  public void logGenerateErrorTabCrash() {
-    GEN_JNI.org_chromium_chrome_browser_share_link_1to_1text_LinkToTextBridge_logGenerateErrorTabCrash();
-  }
-
-  @Override
-  public void logGenerateErrorIFrame() {
-    GEN_JNI.org_chromium_chrome_browser_share_link_1to_1text_LinkToTextBridge_logGenerateErrorIFrame();
-  }
-
-  @Override
-  public void logGenerateErrorBlockList() {
-    GEN_JNI.org_chromium_chrome_browser_share_link_1to_1text_LinkToTextBridge_logGenerateErrorBlockList();
-  }
-
-  @Override
-  public void logGenerateErrorTimeout() {
-    GEN_JNI.org_chromium_chrome_browser_share_link_1to_1text_LinkToTextBridge_logGenerateErrorTimeout();
-  }
-
-  @Override
   public boolean shouldOfferLinkToText(GURL url) {
     return (boolean)GEN_JNI.org_chromium_chrome_browser_share_link_1to_1text_LinkToTextBridge_shouldOfferLinkToText(url);
+  }
+
+  @Override
+  public boolean supportsLinkGenerationInIframe(GURL url) {
+    return (boolean)GEN_JNI.org_chromium_chrome_browser_share_link_1to_1text_LinkToTextBridge_supportsLinkGenerationInIframe(url);
+  }
+
+  @Override
+  public void logFailureMetrics(WebContents webContents, int error) {
+    GEN_JNI.org_chromium_chrome_browser_share_link_1to_1text_LinkToTextBridge_logFailureMetrics(webContents, error);
+  }
+
+  @Override
+  public void logSuccessMetrics(WebContents webContents) {
+    GEN_JNI.org_chromium_chrome_browser_share_link_1to_1text_LinkToTextBridge_logSuccessMetrics(webContents);
+  }
+
+  @Override
+  public void logLinkRequestedBeforeStatus(int status, int readyStatus) {
+    GEN_JNI.org_chromium_chrome_browser_share_link_1to_1text_LinkToTextBridge_logLinkRequestedBeforeStatus(status, readyStatus);
+  }
+
+  @Override
+  public void logLinkToTextReshareStatus(int status) {
+    GEN_JNI.org_chromium_chrome_browser_share_link_1to_1text_LinkToTextBridge_logLinkToTextReshareStatus(status);
   }
 
   public static LinkToTextBridge.Natives get() {

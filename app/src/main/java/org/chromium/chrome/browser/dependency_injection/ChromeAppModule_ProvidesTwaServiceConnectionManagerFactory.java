@@ -4,7 +4,7 @@ import android.content.Context;
 import androidx.browser.trusted.TrustedWebActivityServiceConnectionPool;
 import dagger.internal.Factory;
 import dagger.internal.Preconditions;
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 import javax.inject.Provider;
 
 @Generated(

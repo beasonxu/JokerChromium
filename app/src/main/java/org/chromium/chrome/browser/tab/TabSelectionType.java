@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -17,7 +17,8 @@ import java.lang.annotation.RetentionPolicy;
 
 @IntDef({
     TabSelectionType.FROM_CLOSE, TabSelectionType.FROM_EXIT, TabSelectionType.FROM_NEW,
-    TabSelectionType.FROM_USER, TabSelectionType.FROM_OMNIBOX, TabSelectionType.SIZE
+    TabSelectionType.FROM_USER, TabSelectionType.FROM_OMNIBOX, TabSelectionType.FROM_UNDO,
+    TabSelectionType.SIZE
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface TabSelectionType {
@@ -42,7 +43,11 @@ public @interface TabSelectionType {
    */
   int FROM_OMNIBOX = 4;
   /**
+   * Selection of a previously closed tab when closure is undone.
+   */
+  int FROM_UNDO = 5;
+  /**
    * Must be last.
    */
-  int SIZE = 5;
+  int SIZE = 6;
 }

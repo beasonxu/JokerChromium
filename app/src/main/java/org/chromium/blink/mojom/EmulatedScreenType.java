@@ -13,8 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class EmulatedScreenType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        EmulatedScreenType.DESKTOP,
+        EmulatedScreenType.MOBILE})
+    public @interface EnumType {}
 
     public static final int DESKTOP = 0;
     public static final int MOBILE = 1;

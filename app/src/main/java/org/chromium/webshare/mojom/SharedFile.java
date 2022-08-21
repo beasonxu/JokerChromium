@@ -13,13 +13,15 @@
 
 package org.chromium.webshare.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class SharedFile extends org.chromium.mojo.bindings.Struct {
 
     private static final int STRUCT_SIZE = 24;
     private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-    public String name;
+    public org.chromium.mojo_base.mojom.SafeBaseName name;
     public org.chromium.blink.mojom.SerializedBlob blob;
 
     private SharedFile(int version) {
@@ -57,7 +59,8 @@ public final class SharedFile extends org.chromium.mojo.bindings.Struct {
             result = new SharedFile(elementsOrVersion);
                 {
                     
-                result.name = decoder0.readString(8, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                result.name = org.chromium.mojo_base.mojom.SafeBaseName.decode(decoder1);
                 }
                 {
                     

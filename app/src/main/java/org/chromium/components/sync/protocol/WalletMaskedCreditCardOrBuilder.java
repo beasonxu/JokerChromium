@@ -304,4 +304,81 @@ public interface WalletMaskedCreditCardOrBuilder extends
    * @return The instrumentId.
    */
   long getInstrumentId();
+
+  /**
+   * <pre>
+   * The state of virtual card enrollment.
+   * </pre>
+   *
+   * <code>optional .sync_pb.WalletMaskedCreditCard.VirtualCardEnrollmentState virtual_card_enrollment_state = 16;</code>
+   * @return Whether the virtualCardEnrollmentState field is set.
+   */
+  boolean hasVirtualCardEnrollmentState();
+  /**
+   * <pre>
+   * The state of virtual card enrollment.
+   * </pre>
+   *
+   * <code>optional .sync_pb.WalletMaskedCreditCard.VirtualCardEnrollmentState virtual_card_enrollment_state = 16;</code>
+   * @return The virtualCardEnrollmentState.
+   */
+  org.chromium.components.sync.protocol.WalletMaskedCreditCard.VirtualCardEnrollmentState getVirtualCardEnrollmentState();
+
+  /**
+   * <pre>
+   * The URL for the client to fetche the card art image.
+   * </pre>
+   *
+   * <code>optional string card_art_url = 17;</code>
+   * @return Whether the cardArtUrl field is set.
+   */
+  boolean hasCardArtUrl();
+  /**
+   * <pre>
+   * The URL for the client to fetche the card art image.
+   * </pre>
+   *
+   * <code>optional string card_art_url = 17;</code>
+   * @return The cardArtUrl.
+   */
+  java.lang.String getCardArtUrl();
+  /**
+   * <pre>
+   * The URL for the client to fetche the card art image.
+   * </pre>
+   *
+   * <code>optional string card_art_url = 17;</code>
+   * @return The bytes for cardArtUrl.
+   */
+  com.google.protobuf.ByteString
+      getCardArtUrlBytes();
+
+  /**
+   * <pre>
+   * The product description for the card. Used to be shown in the UI.
+   * </pre>
+   *
+   * <code>optional string product_description = 18;</code>
+   * @return Whether the productDescription field is set.
+   */
+  boolean hasProductDescription();
+  /**
+   * <pre>
+   * The product description for the card. Used to be shown in the UI.
+   * </pre>
+   *
+   * <code>optional string product_description = 18;</code>
+   * @return The productDescription.
+   */
+  java.lang.String getProductDescription();
+  /**
+   * <pre>
+   * The product description for the card. Used to be shown in the UI.
+   * </pre>
+   *
+   * <code>optional string product_description = 18;</code>
+   * @return The bytes for productDescription.
+   */
+  com.google.protobuf.ByteString
+      getProductDescriptionBytes();
 }

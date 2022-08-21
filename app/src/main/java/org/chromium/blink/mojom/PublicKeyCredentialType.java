@@ -13,8 +13,14 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PublicKeyCredentialType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PublicKeyCredentialType.PUBLIC_KEY})
+    public @interface EnumType {}
 
     public static final int PUBLIC_KEY = 0;
     public static final int MIN_VALUE = 0;

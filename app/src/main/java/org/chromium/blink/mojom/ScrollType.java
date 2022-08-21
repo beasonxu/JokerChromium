@@ -13,8 +13,19 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ScrollType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ScrollType.USER,
+        ScrollType.PROGRAMMATIC,
+        ScrollType.CLAMPING,
+        ScrollType.COMPOSITOR,
+        ScrollType.ANCHORING,
+        ScrollType.SEQUENCED})
+    public @interface EnumType {}
 
     public static final int USER = 0;
     public static final int PROGRAMMATIC = 1;

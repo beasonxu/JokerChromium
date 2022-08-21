@@ -1,15 +1,13 @@
 package org.chromium.chrome.browser.firstrun;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-public final class FirstRunUtilsJni implements FirstRunUtils.Natives {
+public class FirstRunUtilsJni implements FirstRunUtils.Natives {
   private static FirstRunUtils.Natives testInstance;
 
   public static final JniStaticTestMocker<FirstRunUtils.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.firstrun.FirstRunUtils.Natives>() {

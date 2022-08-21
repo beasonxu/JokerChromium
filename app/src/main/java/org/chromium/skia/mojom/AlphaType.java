@@ -13,8 +13,17 @@
 
 package org.chromium.skia.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class AlphaType {
-    private static final boolean IS_EXTENSIBLE = false;
+    private static final boolean IS_EXTENSIBLE = true;
+    @IntDef({
+
+        AlphaType.UNKNOWN,
+        AlphaType.ALPHA_TYPE_OPAQUE,
+        AlphaType.PREMUL,
+        AlphaType.UNPREMUL})
+    public @interface EnumType {}
 
     public static final int UNKNOWN = 0;
     public static final int ALPHA_TYPE_OPAQUE = 1;
@@ -22,6 +31,7 @@ public final class AlphaType {
     public static final int UNPREMUL = 3;
     public static final int MIN_VALUE = 0;
     public static final int MAX_VALUE = 3;
+    public static final int DEFAULT_VALUE = 0;
 
     public static boolean isKnownValue(int value) {
         return value >= 0 && value <= 3;
@@ -33,7 +43,10 @@ public final class AlphaType {
     }
 
     public static int toKnownValue(int value) {
-      return value;
+      if (isKnownValue(value)) {
+        return value;
+      }
+      return DEFAULT_VALUE;
     }
 
     private AlphaType() {}

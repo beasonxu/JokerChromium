@@ -1,15 +1,13 @@
 package org.chromium.chrome.browser.safe_browsing;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class SafeBrowsingPasswordReuseDialogBridgeJni implements SafeBrowsingPasswordReuseDialogBridge.Natives {
+class SafeBrowsingPasswordReuseDialogBridgeJni implements SafeBrowsingPasswordReuseDialogBridge.Natives {
   private static SafeBrowsingPasswordReuseDialogBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<SafeBrowsingPasswordReuseDialogBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.safe_browsing.SafeBrowsingPasswordReuseDialogBridge.Natives>() {
@@ -22,6 +20,18 @@ final class SafeBrowsingPasswordReuseDialogBridgeJni implements SafeBrowsingPass
       testInstance = instance;
     }
   };
+
+  @Override
+  public void checkPasswords(long nativePasswordReuseDialogViewAndroid,
+      SafeBrowsingPasswordReuseDialogBridge caller) {
+    GEN_JNI.org_chromium_chrome_browser_safe_1browsing_SafeBrowsingPasswordReuseDialogBridge_checkPasswords(nativePasswordReuseDialogViewAndroid, caller);
+  }
+
+  @Override
+  public void ignore(long nativePasswordReuseDialogViewAndroid,
+      SafeBrowsingPasswordReuseDialogBridge caller) {
+    GEN_JNI.org_chromium_chrome_browser_safe_1browsing_SafeBrowsingPasswordReuseDialogBridge_ignore(nativePasswordReuseDialogViewAndroid, caller);
+  }
 
   @Override
   public void close(long nativePasswordReuseDialogViewAndroid,

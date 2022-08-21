@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -19,18 +19,20 @@ import java.lang.annotation.RetentionPolicy;
     SigninAccessPoint.START_PAGE, SigninAccessPoint.NTP_LINK, SigninAccessPoint.MENU,
     SigninAccessPoint.SETTINGS, SigninAccessPoint.SUPERVISED_USER,
     SigninAccessPoint.EXTENSION_INSTALL_BUBBLE, SigninAccessPoint.EXTENSIONS,
-    SigninAccessPoint.APPS_PAGE_LINK, SigninAccessPoint.BOOKMARK_BUBBLE,
-    SigninAccessPoint.BOOKMARK_MANAGER, SigninAccessPoint.AVATAR_BUBBLE_SIGN_IN,
-    SigninAccessPoint.USER_MANAGER, SigninAccessPoint.DEVICES_PAGE, SigninAccessPoint.CLOUD_PRINT,
-    SigninAccessPoint.CONTENT_AREA, SigninAccessPoint.SIGNIN_PROMO, SigninAccessPoint.RECENT_TABS,
-    SigninAccessPoint.UNKNOWN, SigninAccessPoint.PASSWORD_BUBBLE,
-    SigninAccessPoint.AUTOFILL_DROPDOWN, SigninAccessPoint.NTP_CONTENT_SUGGESTIONS,
-    SigninAccessPoint.RESIGNIN_INFOBAR, SigninAccessPoint.TAB_SWITCHER,
-    SigninAccessPoint.SAVE_CARD_BUBBLE, SigninAccessPoint.MANAGE_CARDS_BUBBLE,
-    SigninAccessPoint.MACHINE_LOGON, SigninAccessPoint.GOOGLE_SERVICES_SETTINGS,
-    SigninAccessPoint.SYNC_ERROR_CARD, SigninAccessPoint.FORCED_SIGNIN,
-    SigninAccessPoint.ACCOUNT_RENAMED, SigninAccessPoint.WEB_SIGNIN, SigninAccessPoint.SAFETY_CHECK,
-    SigninAccessPoint.KALEIDOSCOPE, SigninAccessPoint.MAX
+    SigninAccessPoint.BOOKMARK_BUBBLE, SigninAccessPoint.BOOKMARK_MANAGER,
+    SigninAccessPoint.AVATAR_BUBBLE_SIGN_IN, SigninAccessPoint.USER_MANAGER,
+    SigninAccessPoint.DEVICES_PAGE, SigninAccessPoint.CLOUD_PRINT, SigninAccessPoint.CONTENT_AREA,
+    SigninAccessPoint.SIGNIN_PROMO, SigninAccessPoint.RECENT_TABS, SigninAccessPoint.UNKNOWN,
+    SigninAccessPoint.PASSWORD_BUBBLE, SigninAccessPoint.AUTOFILL_DROPDOWN,
+    SigninAccessPoint.NTP_CONTENT_SUGGESTIONS, SigninAccessPoint.RESIGNIN_INFOBAR,
+    SigninAccessPoint.TAB_SWITCHER, SigninAccessPoint.MACHINE_LOGON,
+    SigninAccessPoint.GOOGLE_SERVICES_SETTINGS, SigninAccessPoint.SYNC_ERROR_CARD,
+    SigninAccessPoint.FORCED_SIGNIN, SigninAccessPoint.ACCOUNT_RENAMED,
+    SigninAccessPoint.WEB_SIGNIN, SigninAccessPoint.SAFETY_CHECK, SigninAccessPoint.KALEIDOSCOPE,
+    SigninAccessPoint.ENTERPRISE_SIGNOUT_COORDINATOR,
+    SigninAccessPoint.SIGNIN_INTERCEPT_FIRST_RUN_EXPERIENCE,
+    SigninAccessPoint.SEND_TAB_TO_SELF_PROMO, SigninAccessPoint.NTP_FEED_TOP_PROMO,
+    SigninAccessPoint.SETTINGS_SYNC_OFF_ROW, SigninAccessPoint.MAX
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface SigninAccessPoint {
@@ -41,7 +43,9 @@ public @interface SigninAccessPoint {
   int SUPERVISED_USER = 4;
   int EXTENSION_INSTALL_BUBBLE = 5;
   int EXTENSIONS = 6;
-  int APPS_PAGE_LINK = 7;
+  /**
+   * APPS_PAGE_LINK = 7, no longer used.
+   */
   int BOOKMARK_BUBBLE = 8;
   int BOOKMARK_MANAGER = 9;
   int AVATAR_BUBBLE_SIGN_IN = 10;
@@ -61,10 +65,9 @@ public @interface SigninAccessPoint {
   int RESIGNIN_INFOBAR = 21;
   int TAB_SWITCHER = 22;
   /**
-   * FORCE_SIGNIN_WARNING is no longer used.
+   * FORCE_SIGNIN_WARNING = 23, no longer used. SAVE_CARD_BUBBLE = 24, no longer used
+   * MANAGE_CARDS_BUBBLE = 25, no longer used
    */
-  int SAVE_CARD_BUBBLE = 24;
-  int MANAGE_CARDS_BUBBLE = 25;
   int MACHINE_LOGON = 26;
   int GOOGLE_SERVICES_SETTINGS = 27;
   int SYNC_ERROR_CARD = 28;
@@ -73,5 +76,14 @@ public @interface SigninAccessPoint {
   int WEB_SIGNIN = 31;
   int SAFETY_CHECK = 32;
   int KALEIDOSCOPE = 33;
-  int MAX = 34;
+  int ENTERPRISE_SIGNOUT_COORDINATOR = 34;
+  int SIGNIN_INTERCEPT_FIRST_RUN_EXPERIENCE = 35;
+  int SEND_TAB_TO_SELF_PROMO = 36;
+  int NTP_FEED_TOP_PROMO = 37;
+  int SETTINGS_SYNC_OFF_ROW = 38;
+  /**
+   * Add values above this line with a corresponding label to the "SigninAccessPoint" enum in
+   * tools/metrics/histograms/enums.xml
+   */
+  int MAX = 39;
 }

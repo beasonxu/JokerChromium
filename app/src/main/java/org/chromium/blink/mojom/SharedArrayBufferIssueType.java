@@ -13,8 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class SharedArrayBufferIssueType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        SharedArrayBufferIssueType.TRANSFER_ISSUE,
+        SharedArrayBufferIssueType.CREATION_ISSUE})
+    public @interface EnumType {}
 
     public static final int TRANSFER_ISSUE = 0;
     public static final int CREATION_ISSUE = 1;

@@ -1,16 +1,14 @@
 package org.chromium.chrome.browser.signin.services;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.chrome.browser.profiles.Profile;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class UnifiedConsentServiceBridgeJni implements UnifiedConsentServiceBridge.Natives {
+class UnifiedConsentServiceBridgeJni implements UnifiedConsentServiceBridge.Natives {
   private static UnifiedConsentServiceBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<UnifiedConsentServiceBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.signin.services.UnifiedConsentServiceBridge.Natives>() {

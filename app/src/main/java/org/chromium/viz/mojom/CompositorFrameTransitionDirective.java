@@ -13,16 +13,20 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class CompositorFrameTransitionDirective extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 32;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
+    private static final int STRUCT_SIZE = 40;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int sequenceId;
     public int type;
+    public boolean isRendererDrivenAnimation;
     public int effect;
-    public org.chromium.mojo_base.mojom.TimeDelta duration;
+    public CompositorFrameTransitionDirectiveConfig rootConfig;
+    public CompositorFrameTransitionDirectiveSharedElement[] sharedElements;
 
     private CompositorFrameTransitionDirective(int version) {
         super(STRUCT_SIZE, version);
@@ -69,14 +73,31 @@ public final class CompositorFrameTransitionDirective extends org.chromium.mojo.
                 }
                 {
                     
-                result.effect = decoder0.readInt(16);
+                result.isRendererDrivenAnimation = decoder0.readBoolean(16, 0);
+                }
+                {
+                    
+                result.effect = decoder0.readInt(20);
                     CompositorFrameTransitionDirectiveEffect.validate(result.effect);
                     result.effect = CompositorFrameTransitionDirectiveEffect.toKnownValue(result.effect);
                 }
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
-                result.duration = org.chromium.mojo_base.mojom.TimeDelta.decode(decoder1);
+                result.rootConfig = CompositorFrameTransitionDirectiveConfig.decode(decoder1);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
+                {
+                    org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                    result.sharedElements = new CompositorFrameTransitionDirectiveSharedElement[si1.elementsOrVersion];
+                    for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
+                        
+                        org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                        result.sharedElements[i1] = CompositorFrameTransitionDirectiveSharedElement.decode(decoder2);
+                    }
+                }
                 }
 
         } finally {
@@ -94,8 +115,20 @@ public final class CompositorFrameTransitionDirective extends org.chromium.mojo.
         
         encoder0.encode(this.type, 12);
         
-        encoder0.encode(this.effect, 16);
+        encoder0.encode(this.isRendererDrivenAnimation, 16, 0);
         
-        encoder0.encode(this.duration, 24, false);
+        encoder0.encode(this.effect, 20);
+        
+        encoder0.encode(this.rootConfig, 24, false);
+        
+        if (this.sharedElements == null) {
+            encoder0.encodeNullPointer(32, false);
+        } else {
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.sharedElements.length, 32, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            for (int i0 = 0; i0 < this.sharedElements.length; ++i0) {
+                
+                encoder1.encode(this.sharedElements[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
+            }
+        }
     }
 }

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface DevToolsAgentHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,9 +25,8 @@ public interface DevToolsAgentHost extends org.chromium.mojo.bindings.Interface 
 
     Manager<DevToolsAgentHost, DevToolsAgentHost.Proxy> MANAGER = DevToolsAgentHost_Internal.MANAGER;
 
-
-    void childWorkerCreated(
-DevToolsAgent workerDevtoolsAgent, org.chromium.mojo.bindings.InterfaceRequest<DevToolsAgentHost> workerDevtoolsAgentHost, org.chromium.url.mojom.Url url, String name, org.chromium.mojo_base.mojom.UnguessableToken devtoolsWorkerToken, boolean waitingForDebugger);
+    void childTargetCreated(
+DevToolsAgent workerDevtoolsAgent, org.chromium.mojo.bindings.InterfaceRequest<DevToolsAgentHost> workerDevtoolsAgentHost, org.chromium.url.mojom.Url url, String name, org.chromium.mojo_base.mojom.UnguessableToken devtoolsWorkerToken, boolean waitingForDebugger, int contextType);
 
 
 }

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface SharedWorkerFactory extends org.chromium.mojo.bindings.Interface {
 
@@ -23,9 +25,8 @@ public interface SharedWorkerFactory extends org.chromium.mojo.bindings.Interfac
 
     Manager<SharedWorkerFactory, SharedWorkerFactory.Proxy> MANAGER = SharedWorkerFactory_Internal.MANAGER;
 
-
     void createSharedWorker(
-SharedWorkerInfo info, SharedWorkerToken token, org.chromium.url.internal.mojom.Origin constructorOrigin, String userAgent, UserAgentMetadata uaMetadata, boolean pauseOnStart, org.chromium.mojo_base.mojom.UnguessableToken devtoolsWorkerToken, RendererPreferences rendererPreferences, org.chromium.mojo.bindings.InterfaceRequest<RendererPreferenceWatcher> preferenceWatcherReceiver, WorkerContentSettingsProxy contentSettings, ServiceWorkerContainerInfoForClient serviceWorkerContainerInfo, org.chromium.mojo_base.mojom.UnguessableToken appcacheHostId, WorkerMainScriptLoadParams mainScriptLoadParams, UrlLoaderFactoryBundle subresourceLoaderFactories, ControllerServiceWorkerInfo controllerInfo, SharedWorkerHost host, org.chromium.mojo.bindings.InterfaceRequest<SharedWorker> sharedWorker, BrowserInterfaceBroker browserInterfaceBroker, long ukmSourceId);
+SharedWorkerInfo info, SharedWorkerToken token, org.chromium.url.internal.mojom.Origin constructorOrigin, boolean isConstructorSecureContext, String userAgent, String fullUserAgent, String reducedUserAgent, UserAgentMetadata uaMetadata, boolean pauseOnStart, org.chromium.mojo_base.mojom.UnguessableToken devtoolsWorkerToken, RendererPreferences rendererPreferences, org.chromium.mojo.bindings.InterfaceRequest<RendererPreferenceWatcher> preferenceWatcherReceiver, WorkerContentSettingsProxy contentSettings, ServiceWorkerContainerInfoForClient serviceWorkerContainerInfo, WorkerMainScriptLoadParams mainScriptLoadParams, UrlLoaderFactoryBundle subresourceLoaderFactories, ControllerServiceWorkerInfo controllerInfo, PolicyContainer policyContainer, SharedWorkerHost host, org.chromium.mojo.bindings.InterfaceRequest<SharedWorker> sharedWorker, BrowserInterfaceBroker browserInterfaceBroker, long ukmSourceId);
 
 
 }

@@ -2,15 +2,13 @@ package org.chromium.components.language;
 
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class AndroidLanguageMetricsBridgeJni implements AndroidLanguageMetricsBridge.Natives {
+class AndroidLanguageMetricsBridgeJni implements AndroidLanguageMetricsBridge.Natives {
   private static AndroidLanguageMetricsBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<AndroidLanguageMetricsBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.language.AndroidLanguageMetricsBridge.Natives>() {
@@ -27,6 +25,11 @@ final class AndroidLanguageMetricsBridgeJni implements AndroidLanguageMetricsBri
   @Override
   public void reportExplicitLanguageAskStateChanged(String language, boolean added) {
     GEN_JNI.org_chromium_components_language_AndroidLanguageMetricsBridge_reportExplicitLanguageAskStateChanged(language, added);
+  }
+
+  @Override
+  public void reportHashMetricName(String histogramName, String value) {
+    GEN_JNI.org_chromium_components_language_AndroidLanguageMetricsBridge_reportHashMetricName(histogramName, value);
   }
 
   public static AndroidLanguageMetricsBridge.Natives get() {

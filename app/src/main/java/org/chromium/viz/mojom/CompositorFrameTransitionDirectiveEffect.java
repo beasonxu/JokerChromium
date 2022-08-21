@@ -13,8 +13,25 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class CompositorFrameTransitionDirectiveEffect {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        CompositorFrameTransitionDirectiveEffect.NONE,
+        CompositorFrameTransitionDirectiveEffect.COVER_DOWN,
+        CompositorFrameTransitionDirectiveEffect.COVER_LEFT,
+        CompositorFrameTransitionDirectiveEffect.COVER_RIGHT,
+        CompositorFrameTransitionDirectiveEffect.COVER_UP,
+        CompositorFrameTransitionDirectiveEffect.EXPLODE,
+        CompositorFrameTransitionDirectiveEffect.FADE,
+        CompositorFrameTransitionDirectiveEffect.IMPLODE,
+        CompositorFrameTransitionDirectiveEffect.REVEAL_DOWN,
+        CompositorFrameTransitionDirectiveEffect.REVEAL_LEFT,
+        CompositorFrameTransitionDirectiveEffect.REVEAL_RIGHT,
+        CompositorFrameTransitionDirectiveEffect.REVEAL_UP})
+    public @interface EnumType {}
 
     public static final int NONE = 0;
     public static final int COVER_DOWN = 1;

@@ -16,127 +16,6 @@ public  final class SessionWindow extends
     browserType_ = 1;
     tab_ = emptyIntList();
   }
-  /**
-   * <pre>
-   * Type of the window.
-   * </pre>
-   *
-   * Protobuf enum {@code sync_pb.SessionWindow.BrowserType}
-   */
-  public enum BrowserType
-      implements com.google.protobuf.Internal.EnumLite {
-    /**
-     * <pre>
-     * A normal tabbed window.
-     * </pre>
-     *
-     * <code>TYPE_TABBED = 1;</code>
-     */
-    TYPE_TABBED(1),
-    /**
-     * <pre>
-     * A popup window.
-     * </pre>
-     *
-     * <code>TYPE_POPUP = 2;</code>
-     */
-    TYPE_POPUP(2),
-    /**
-     * <pre>
-     * A custom tab within an app. Not restored
-     * </pre>
-     *
-     * <code>TYPE_CUSTOM_TAB = 3;</code>
-     */
-    TYPE_CUSTOM_TAB(3),
-    ;
-
-    /**
-     * <pre>
-     * A normal tabbed window.
-     * </pre>
-     *
-     * <code>TYPE_TABBED = 1;</code>
-     */
-    public static final int TYPE_TABBED_VALUE = 1;
-    /**
-     * <pre>
-     * A popup window.
-     * </pre>
-     *
-     * <code>TYPE_POPUP = 2;</code>
-     */
-    public static final int TYPE_POPUP_VALUE = 2;
-    /**
-     * <pre>
-     * A custom tab within an app. Not restored
-     * </pre>
-     *
-     * <code>TYPE_CUSTOM_TAB = 3;</code>
-     */
-    public static final int TYPE_CUSTOM_TAB_VALUE = 3;
-
-
-    @java.lang.Override
-    public final int getNumber() {
-      return value;
-    }
-
-    /**
-     * @param value The number of the enum to look for.
-     * @return The enum associated with the given number.
-     * @deprecated Use {@link #forNumber(int)} instead.
-     */
-    @java.lang.Deprecated
-    public static BrowserType valueOf(int value) {
-      return forNumber(value);
-    }
-
-    public static BrowserType forNumber(int value) {
-      switch (value) {
-        case 1: return TYPE_TABBED;
-        case 2: return TYPE_POPUP;
-        case 3: return TYPE_CUSTOM_TAB;
-        default: return null;
-      }
-    }
-
-    public static com.google.protobuf.Internal.EnumLiteMap<BrowserType>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        BrowserType> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<BrowserType>() {
-            @java.lang.Override
-            public BrowserType findValueByNumber(int number) {
-              return BrowserType.forNumber(number);
-            }
-          };
-
-    public static com.google.protobuf.Internal.EnumVerifier 
-        internalGetVerifier() {
-      return BrowserTypeVerifier.INSTANCE;
-    }
-
-    private static final class BrowserTypeVerifier implements 
-         com.google.protobuf.Internal.EnumVerifier { 
-            static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new BrowserTypeVerifier();
-            @java.lang.Override
-            public boolean isInRange(int number) {
-              return BrowserType.forNumber(number) != null;
-            }
-          };
-
-    private final int value;
-
-    private BrowserType(int value) {
-      this.value = value;
-    }
-
-    // @@protoc_insertion_point(enum_scope:sync_pb.SessionWindow.BrowserType)
-  }
-
   private int bitField0_;
   public static final int WINDOW_ID_FIELD_NUMBER = 1;
   private int windowId_;
@@ -241,7 +120,11 @@ public  final class SessionWindow extends
   public static final int BROWSER_TYPE_FIELD_NUMBER = 3;
   private int browserType_;
   /**
-   * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 3 [default = TYPE_TABBED];</code>
+   * <pre>
+   * Type of the window.
+   * </pre>
+   *
+   * <code>optional .sync_pb.SyncEnums.BrowserType browser_type = 3 [default = TYPE_TABBED];</code>
    * @return Whether the browserType field is set.
    */
   @java.lang.Override
@@ -249,24 +132,36 @@ public  final class SessionWindow extends
     return ((bitField0_ & 0x00000004) != 0);
   }
   /**
-   * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 3 [default = TYPE_TABBED];</code>
+   * <pre>
+   * Type of the window.
+   * </pre>
+   *
+   * <code>optional .sync_pb.SyncEnums.BrowserType browser_type = 3 [default = TYPE_TABBED];</code>
    * @return The browserType.
    */
   @java.lang.Override
-  public org.chromium.components.sync.protocol.SessionWindow.BrowserType getBrowserType() {
-    org.chromium.components.sync.protocol.SessionWindow.BrowserType result = org.chromium.components.sync.protocol.SessionWindow.BrowserType.forNumber(browserType_);
-    return result == null ? org.chromium.components.sync.protocol.SessionWindow.BrowserType.TYPE_TABBED : result;
+  public org.chromium.components.sync.protocol.SyncEnums.BrowserType getBrowserType() {
+    org.chromium.components.sync.protocol.SyncEnums.BrowserType result = org.chromium.components.sync.protocol.SyncEnums.BrowserType.forNumber(browserType_);
+    return result == null ? org.chromium.components.sync.protocol.SyncEnums.BrowserType.TYPE_TABBED : result;
   }
   /**
-   * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 3 [default = TYPE_TABBED];</code>
+   * <pre>
+   * Type of the window.
+   * </pre>
+   *
+   * <code>optional .sync_pb.SyncEnums.BrowserType browser_type = 3 [default = TYPE_TABBED];</code>
    * @param value The browserType to set.
    */
-  private void setBrowserType(org.chromium.components.sync.protocol.SessionWindow.BrowserType value) {
+  private void setBrowserType(org.chromium.components.sync.protocol.SyncEnums.BrowserType value) {
     browserType_ = value.getNumber();
     bitField0_ |= 0x00000004;
   }
   /**
-   * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 3 [default = TYPE_TABBED];</code>
+   * <pre>
+   * Type of the window.
+   * </pre>
+   *
+   * <code>optional .sync_pb.SyncEnums.BrowserType browser_type = 3 [default = TYPE_TABBED];</code>
    */
   private void clearBrowserType() {
     bitField0_ = (bitField0_ & ~0x00000004);
@@ -571,7 +466,11 @@ public  final class SessionWindow extends
     }
 
     /**
-     * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 3 [default = TYPE_TABBED];</code>
+     * <pre>
+     * Type of the window.
+     * </pre>
+     *
+     * <code>optional .sync_pb.SyncEnums.BrowserType browser_type = 3 [default = TYPE_TABBED];</code>
      * @return Whether the browserType field is set.
      */
     @java.lang.Override
@@ -579,25 +478,37 @@ public  final class SessionWindow extends
       return instance.hasBrowserType();
     }
     /**
-     * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 3 [default = TYPE_TABBED];</code>
+     * <pre>
+     * Type of the window.
+     * </pre>
+     *
+     * <code>optional .sync_pb.SyncEnums.BrowserType browser_type = 3 [default = TYPE_TABBED];</code>
      * @return The browserType.
      */
     @java.lang.Override
-    public org.chromium.components.sync.protocol.SessionWindow.BrowserType getBrowserType() {
+    public org.chromium.components.sync.protocol.SyncEnums.BrowserType getBrowserType() {
       return instance.getBrowserType();
     }
     /**
-     * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 3 [default = TYPE_TABBED];</code>
+     * <pre>
+     * Type of the window.
+     * </pre>
+     *
+     * <code>optional .sync_pb.SyncEnums.BrowserType browser_type = 3 [default = TYPE_TABBED];</code>
      * @param value The enum numeric value on the wire for browserType to set.
      * @return This builder for chaining.
      */
-    public Builder setBrowserType(org.chromium.components.sync.protocol.SessionWindow.BrowserType value) {
+    public Builder setBrowserType(org.chromium.components.sync.protocol.SyncEnums.BrowserType value) {
       copyOnWrite();
       instance.setBrowserType(value);
       return this;
     }
     /**
-     * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 3 [default = TYPE_TABBED];</code>
+     * <pre>
+     * Type of the window.
+     * </pre>
+     *
+     * <code>optional .sync_pb.SyncEnums.BrowserType browser_type = 3 [default = TYPE_TABBED];</code>
      * @return This builder for chaining.
      */
     public Builder clearBrowserType() {
@@ -723,7 +634,7 @@ public  final class SessionWindow extends
             "windowId_",
             "selectedTabIndex_",
             "browserType_",
-            org.chromium.components.sync.protocol.SessionWindow.BrowserType.internalGetVerifier(),
+            org.chromium.components.sync.protocol.SyncEnums.BrowserType.internalGetVerifier(),
             "tab_",
           };
           java.lang.String info =

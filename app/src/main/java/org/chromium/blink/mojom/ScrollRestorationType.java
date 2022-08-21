@@ -13,8 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ScrollRestorationType {
     private static final boolean IS_EXTENSIBLE = true;
+    @IntDef({
+
+        ScrollRestorationType.AUTO,
+        ScrollRestorationType.MANUAL})
+    public @interface EnumType {}
 
     public static final int AUTO = 0;
     public static final int MANUAL = 1;

@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface WebSocketAuthenticationHandler extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface WebSocketAuthenticationHandler extends org.chromium.mojo.bindin
 
     Manager<WebSocketAuthenticationHandler, WebSocketAuthenticationHandler.Proxy> MANAGER = WebSocketAuthenticationHandler_Internal.MANAGER;
 
-
     void onAuthRequired(
 AuthChallengeInfo info, HttpResponseHeaders headers, IpEndPoint remoteEndpoint, 
-OnAuthRequiredResponse callback);
+OnAuthRequired_Response callback);
 
-    interface OnAuthRequiredResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<AuthCredentials> { }
+    interface OnAuthRequired_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<AuthCredentials> { }
 
 
 }

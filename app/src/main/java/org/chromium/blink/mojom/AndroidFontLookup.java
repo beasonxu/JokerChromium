@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface AndroidFontLookup extends org.chromium.mojo.bindings.Interface {
 
@@ -23,20 +25,25 @@ public interface AndroidFontLookup extends org.chromium.mojo.bindings.Interface 
 
     Manager<AndroidFontLookup, AndroidFontLookup.Proxy> MANAGER = AndroidFontLookup_Internal.MANAGER;
 
-
     void getUniqueNameLookupTable(
 
-GetUniqueNameLookupTableResponse callback);
+GetUniqueNameLookupTable_Response callback);
 
-    interface GetUniqueNameLookupTableResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<String[]> { }
-
+    interface GetUniqueNameLookupTable_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<String[]> { }
 
 
     void matchLocalFontByUniqueName(
 String fontUniqueName, 
-MatchLocalFontByUniqueNameResponse callback);
+MatchLocalFontByUniqueName_Response callback);
 
-    interface MatchLocalFontByUniqueNameResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.ReadOnlyFile> { }
+    interface MatchLocalFontByUniqueName_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.ReadOnlyFile> { }
+
+
+    void fetchAllFontFiles(
+
+FetchAllFontFiles_Response callback);
+
+    interface FetchAllFontFiles_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<java.util.Map<String, org.chromium.mojo_base.mojom.ReadOnlyFile>> { }
 
 
 }

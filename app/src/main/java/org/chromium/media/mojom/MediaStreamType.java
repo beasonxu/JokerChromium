@@ -13,8 +13,20 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class MediaStreamType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        MediaStreamType.LOCAL_ELEMENT_CAPTURE,
+        MediaStreamType.LOCAL_DEVICE_CAPTURE,
+        MediaStreamType.LOCAL_TAB_CAPTURE,
+        MediaStreamType.LOCAL_DESKTOP_CAPTURE,
+        MediaStreamType.LOCAL_DISPLAY_CAPTURE,
+        MediaStreamType.REMOTE,
+        MediaStreamType.NONE})
+    public @interface EnumType {}
 
     public static final int LOCAL_ELEMENT_CAPTURE = 0;
     public static final int LOCAL_DEVICE_CAPTURE = 1;

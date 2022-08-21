@@ -13,15 +13,18 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class BitstreamBufferMetadata extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 40;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
+    private static final int STRUCT_SIZE = 48;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int payloadSizeBytes;
     public boolean keyFrame;
     public org.chromium.mojo_base.mojom.TimeDelta timestamp;
+    public int qp;
     public CodecMetadata codecMetadata;
 
     private BitstreamBufferMetadata(int version) {
@@ -72,7 +75,11 @@ public final class BitstreamBufferMetadata extends org.chromium.mojo.bindings.St
                 }
                 {
                     
-                result.codecMetadata = CodecMetadata.decode(decoder0, 24);
+                result.qp = decoder0.readInt(24);
+                }
+                {
+                    
+                result.codecMetadata = CodecMetadata.decode(decoder0, 32);
                 }
 
         } finally {
@@ -92,6 +99,8 @@ public final class BitstreamBufferMetadata extends org.chromium.mojo.bindings.St
         
         encoder0.encode(this.timestamp, 16, false);
         
-        encoder0.encode(this.codecMetadata, 24, true);
+        encoder0.encode(this.qp, 24);
+        
+        encoder0.encode(this.codecMetadata, 32, true);
     }
 }

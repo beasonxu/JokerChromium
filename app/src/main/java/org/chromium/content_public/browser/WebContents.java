@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
+import org.chromium.blink_public.input.SelectionGranularity;
 import org.chromium.ui.OverscrollRefreshHandler;
 import org.chromium.ui.base.EventForwarder;
 import org.chromium.ui.base.ViewAndroidDelegate;
@@ -83,7 +84,14 @@ public interface WebContents extends Parcelable {
     }
 
     /**
+     * TODO(ctzsm): Rename this method to setDelegates()
+     *
      * Initialize various content objects of {@link WebContents} lifetime.
+     *
+     * Note: This method is more of to set the {@link ViewAndroidDelegate} and {@link
+     * ViewEventSink.InternalAccessDelegate}, most of the embedder should only call this once during
+     * the whole lifecycle of the {@link WebContents}, but it is safe to call it multiple times.
+     *
      * @param productVersion Product version for accessibility.
      * @param viewDelegate Delegate to add/remove anchor views.
      * @param accessDelegate Handles dispatching all hidden or super methods to the containerView.
@@ -93,6 +101,16 @@ public interface WebContents extends Parcelable {
     void initialize(String productVersion, ViewAndroidDelegate viewDelegate,
             ViewEventSink.InternalAccessDelegate accessDelegate, WindowAndroid windowAndroid,
             @NonNull InternalsHolder internalsHolder);
+
+    /**
+     * Clear Java WebContentsObservers so we can put this WebContents to the background. Use this
+     * method only when the WebContents will not be destroyed shortly. Currently only used by Chrome
+     * for swapping WebContents in Tab.
+     *
+     * Note: This is a temporary workaround for Chrome until it can clean up Observers directly.
+     * Avoid new calls to this method.
+     */
+    void clearJavaWebContentsObservers();
 
     /**
      * @return The top level WindowAndroid associated with this WebContents.  This can be null.
@@ -129,6 +147,7 @@ public interface WebContents extends Parcelable {
      * Removes the native WebContents' reference to this object. This is used when we want to
      * destroy this object without destroying its native counterpart.
      */
+    @Deprecated
     void clearNativeReference();
 
     /**
@@ -149,11 +168,11 @@ public interface WebContents extends Parcelable {
     RenderFrameHost getFocusedFrame();
 
     /**
-     * @return The frame associated with renderProcessId and renderFrameId. Will be null if the IDs
-     *         do not correspond to a live RenderFrameHost.
+     * @return The frame associated with the id. Will be null if the ID does not correspond to a
+     *         live RenderFrameHost.
      */
     @Nullable
-    RenderFrameHost getRenderFrameHostFromId(int renderProcessId, int renderFrameId);
+    RenderFrameHost getRenderFrameHostFromId(GlobalRenderFrameHostId id);
 
     /**
      * @return The root level view from the renderer, or {@code null} in some cases where there is
@@ -194,10 +213,10 @@ public interface WebContents extends Parcelable {
     boolean isLoading();
 
     /**
-     * @return Whether this WebContents is loading and and the load is to a different top-level
-     *         document (rather than being a navigation within the same document).
+     * @return Whether this WebContents is loading and expects any loading UI to
+     * be displayed.
      */
-    boolean isLoadingToDifferentDocument();
+    boolean shouldShowLoadingUI();
 
     /**
      * Runs the beforeunload handler, if any. The tab will be closed if there's no beforeunload
@@ -224,10 +243,11 @@ public interface WebContents extends Parcelable {
 
     /**
      * ChildProcessImportance on Android allows controls of the renderer process bindings
-     * independent of visibility. Note this does not affect importance of subframe processes.
-     * @param mainFrameImportance importance of the main frame process.
+     * independent of visibility. Note this does not affect importance of subframe processes
+     * or main frames processeses for non-primary pages.
+     * @param primaryMainFrameImportance importance of the primary page's main frame process.
      */
-    void setImportance(@ChildProcessImportance int mainFrameImportance);
+    void setImportance(@ChildProcessImportance int primaryMainFrameImportance);
 
     /**
      * Suspends all media players for this WebContents.  Note: There may still
@@ -270,10 +290,15 @@ public interface WebContents extends Parcelable {
     void scrollFocusedEditableNodeIntoView();
 
     /**
-     * Selects the word around the caret, if any.
-     * The caller can check if selection actually occurred by listening to OnSelectionChanged.
+     * Selects at the specified granularity around the caret and potentially shows the selection
+     * handles and context menu. The caller can check if selection actually occurred by listening to
+     * OnSelectionChanged.
+     * @param granularity The granularity at which the selection should happen.
+     * @param shouldShowHandle Whether the selection handles should be shown after selection.
+     * @param shouldShowContextMenu Whether the context menu should be shown after selection.
      */
-    void selectWordAroundCaret();
+    void selectAroundCaret(@SelectionGranularity int granularity, boolean shouldShowHandle,
+            boolean shouldShowContextMenu);
 
     /**
      * Adjusts the selection starting and ending points by the given amount.
@@ -343,14 +368,14 @@ public interface WebContents extends Parcelable {
     /**
      * Post a message to main frame.
      *
-     * @param message   The message
+     * @param messagePayload   The message payload.
      * @param targetOrigin  The target origin. If the target origin is a "*" or a
      *                  empty string, it indicates a wildcard target origin.
      * @param ports The sent message ports, if any. Pass null if there is no
      *                  message ports to pass.
      */
-    void postMessageToMainFrame(String message, String sourceOrigin, String targetOrigin,
-            @Nullable MessagePort[] ports);
+    void postMessageToMainFrame(MessagePayload messagePayload, String sourceOrigin,
+            String targetOrigin, @Nullable MessagePort[] ports);
 
     /**
      * Creates a message channel for sending postMessage requests and returns the ports for
@@ -394,12 +419,11 @@ public interface WebContents extends Parcelable {
     void setSmartClipResultHandler(final Handler smartClipHandler);
 
     /**
-     * Requests a snapshop of accessibility tree. The result is provided asynchronously
-     * using the callback
-     * @param callback The callback to be called when the snapshot is ready. The callback
-     *                 cannot be null.
+     * Set the handler that provides stylus handwriting recognition.
+     *
+     * @param stylusWritingHandler the object that implements StylusWritingHandler interface.
      */
-    void requestAccessibilitySnapshot(AccessibilitySnapshotCallback callback);
+    void setStylusWritingHandler(StylusWritingHandler stylusWritingHandler);
 
     /**
      * Returns {@link EventForwarder} which is used to forward input/view events
@@ -451,7 +475,7 @@ public interface WebContents extends Parcelable {
      *                 renderer.
      * @return The unique id of the download request
      */
-    int downloadImage(String url, boolean isFavicon, int maxBitmapSize, boolean bypassCache,
+    int downloadImage(GURL url, boolean isFavicon, int maxBitmapSize, boolean bypassCache,
             ImageDownloadCallback callback);
 
     /**

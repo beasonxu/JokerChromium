@@ -13,6 +13,8 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface CopyOutputResultSender extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface CopyOutputResultSender extends org.chromium.mojo.bindings.Inter
     }
 
     Manager<CopyOutputResultSender, CopyOutputResultSender.Proxy> MANAGER = CopyOutputResultSender_Internal.MANAGER;
-
 
     void sendResult(
 CopyOutputResult result);

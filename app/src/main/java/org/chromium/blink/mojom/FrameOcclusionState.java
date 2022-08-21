@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class FrameOcclusionState {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        FrameOcclusionState.UNKNOWN,
+        FrameOcclusionState.POSSIBLY_OCCLUDED,
+        FrameOcclusionState.GUARANTEED_NOT_OCCLUDED})
+    public @interface EnumType {}
 
     public static final int UNKNOWN = 0;
     public static final int POSSIBLY_OCCLUDED = 1;

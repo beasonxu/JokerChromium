@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -17,38 +17,44 @@ import java.lang.annotation.RetentionPolicy;
 
 @IntDef({
     ContentSettingsType.DEFAULT, ContentSettingsType.COOKIES, ContentSettingsType.IMAGES,
-    ContentSettingsType.JAVASCRIPT, ContentSettingsType.DEPRECATED_PLUGINS,
-    ContentSettingsType.POPUPS, ContentSettingsType.GEOLOCATION, ContentSettingsType.NOTIFICATIONS,
-    ContentSettingsType.AUTO_SELECT_CERTIFICATE, ContentSettingsType.MIXEDSCRIPT,
-    ContentSettingsType.MEDIASTREAM_MIC, ContentSettingsType.MEDIASTREAM_CAMERA,
-    ContentSettingsType.PROTOCOL_HANDLERS, ContentSettingsType.PPAPI_BROKER,
-    ContentSettingsType.AUTOMATIC_DOWNLOADS, ContentSettingsType.MIDI_SYSEX,
-    ContentSettingsType.SSL_CERT_DECISIONS, ContentSettingsType.PROTECTED_MEDIA_IDENTIFIER,
-    ContentSettingsType.APP_BANNER, ContentSettingsType.SITE_ENGAGEMENT,
-    ContentSettingsType.DURABLE_STORAGE, ContentSettingsType.USB_CHOOSER_DATA,
-    ContentSettingsType.BLUETOOTH_GUARD, ContentSettingsType.BACKGROUND_SYNC,
-    ContentSettingsType.AUTOPLAY, ContentSettingsType.IMPORTANT_SITE_INFO,
-    ContentSettingsType.PERMISSION_AUTOBLOCKER_DATA, ContentSettingsType.ADS,
-    ContentSettingsType.ADS_DATA, ContentSettingsType.MIDI, ContentSettingsType.PASSWORD_PROTECTION,
-    ContentSettingsType.MEDIA_ENGAGEMENT, ContentSettingsType.SOUND,
-    ContentSettingsType.CLIENT_HINTS, ContentSettingsType.SENSORS,
+    ContentSettingsType.JAVASCRIPT, ContentSettingsType.POPUPS, ContentSettingsType.GEOLOCATION,
+    ContentSettingsType.NOTIFICATIONS, ContentSettingsType.AUTO_SELECT_CERTIFICATE,
+    ContentSettingsType.MIXEDSCRIPT, ContentSettingsType.MEDIASTREAM_MIC,
+    ContentSettingsType.MEDIASTREAM_CAMERA, ContentSettingsType.PROTOCOL_HANDLERS,
+    ContentSettingsType.PPAPI_BROKER, ContentSettingsType.AUTOMATIC_DOWNLOADS,
+    ContentSettingsType.MIDI_SYSEX, ContentSettingsType.SSL_CERT_DECISIONS,
+    ContentSettingsType.PROTECTED_MEDIA_IDENTIFIER, ContentSettingsType.APP_BANNER,
+    ContentSettingsType.SITE_ENGAGEMENT, ContentSettingsType.DURABLE_STORAGE,
+    ContentSettingsType.USB_CHOOSER_DATA, ContentSettingsType.BLUETOOTH_GUARD,
+    ContentSettingsType.BACKGROUND_SYNC, ContentSettingsType.AUTOPLAY,
+    ContentSettingsType.IMPORTANT_SITE_INFO, ContentSettingsType.PERMISSION_AUTOBLOCKER_DATA,
+    ContentSettingsType.ADS, ContentSettingsType.ADS_DATA, ContentSettingsType.MIDI,
+    ContentSettingsType.PASSWORD_PROTECTION, ContentSettingsType.MEDIA_ENGAGEMENT,
+    ContentSettingsType.SOUND, ContentSettingsType.CLIENT_HINTS, ContentSettingsType.SENSORS,
     ContentSettingsType.ACCESSIBILITY_EVENTS, ContentSettingsType.PAYMENT_HANDLER,
     ContentSettingsType.USB_GUARD, ContentSettingsType.BACKGROUND_FETCH,
     ContentSettingsType.INTENT_PICKER_DISPLAY, ContentSettingsType.IDLE_DETECTION,
-    ContentSettingsType.SERIAL_GUARD, ContentSettingsType.SERIAL_CHOOSER_DATA,
-    ContentSettingsType.PERIODIC_BACKGROUND_SYNC, ContentSettingsType.BLUETOOTH_SCANNING,
-    ContentSettingsType.HID_GUARD, ContentSettingsType.HID_CHOOSER_DATA,
-    ContentSettingsType.WAKE_LOCK_SCREEN, ContentSettingsType.WAKE_LOCK_SYSTEM,
-    ContentSettingsType.LEGACY_COOKIE_ACCESS, ContentSettingsType.FILE_SYSTEM_WRITE_GUARD,
-    ContentSettingsType.INSTALLED_WEB_APP_METADATA, ContentSettingsType.NFC,
-    ContentSettingsType.BLUETOOTH_CHOOSER_DATA, ContentSettingsType.CLIPBOARD_READ_WRITE,
-    ContentSettingsType.CLIPBOARD_SANITIZED_WRITE, ContentSettingsType.SAFE_BROWSING_URL_CHECK_DATA,
-    ContentSettingsType.VR, ContentSettingsType.AR, ContentSettingsType.FILE_SYSTEM_READ_GUARD,
+    ContentSettingsType.GET_DISPLAY_MEDIA_SET_SELECT_ALL_SCREENS, ContentSettingsType.SERIAL_GUARD,
+    ContentSettingsType.SERIAL_CHOOSER_DATA, ContentSettingsType.PERIODIC_BACKGROUND_SYNC,
+    ContentSettingsType.BLUETOOTH_SCANNING, ContentSettingsType.HID_GUARD,
+    ContentSettingsType.HID_CHOOSER_DATA, ContentSettingsType.WAKE_LOCK_SCREEN,
+    ContentSettingsType.WAKE_LOCK_SYSTEM, ContentSettingsType.LEGACY_COOKIE_ACCESS,
+    ContentSettingsType.FILE_SYSTEM_WRITE_GUARD, ContentSettingsType.INSTALLED_WEB_APP_METADATA,
+    ContentSettingsType.NFC, ContentSettingsType.BLUETOOTH_CHOOSER_DATA,
+    ContentSettingsType.CLIPBOARD_READ_WRITE, ContentSettingsType.CLIPBOARD_SANITIZED_WRITE,
+    ContentSettingsType.SAFE_BROWSING_URL_CHECK_DATA, ContentSettingsType.VR,
+    ContentSettingsType.AR, ContentSettingsType.FILE_SYSTEM_READ_GUARD,
     ContentSettingsType.STORAGE_ACCESS, ContentSettingsType.CAMERA_PAN_TILT_ZOOM,
     ContentSettingsType.WINDOW_PLACEMENT, ContentSettingsType.INSECURE_PRIVATE_NETWORK,
-    ContentSettingsType.FONT_ACCESS, ContentSettingsType.PERMISSION_AUTOREVOCATION_DATA,
+    ContentSettingsType.LOCAL_FONTS, ContentSettingsType.PERMISSION_AUTOREVOCATION_DATA,
     ContentSettingsType.FILE_SYSTEM_LAST_PICKED_DIRECTORY, ContentSettingsType.DISPLAY_CAPTURE,
-    ContentSettingsType.NUM_TYPES
+    ContentSettingsType.FILE_SYSTEM_ACCESS_CHOOSER_DATA,
+    ContentSettingsType.FEDERATED_IDENTITY_SHARING, ContentSettingsType.JAVASCRIPT_JIT,
+    ContentSettingsType.HTTP_ALLOWED, ContentSettingsType.FORMFILL_METADATA,
+    ContentSettingsType.FEDERATED_IDENTITY_ACTIVE_SESSION,
+    ContentSettingsType.AUTO_DARK_WEB_CONTENT, ContentSettingsType.REQUEST_DESKTOP_SITE,
+    ContentSettingsType.FEDERATED_IDENTITY_API, ContentSettingsType.NOTIFICATION_INTERACTIONS,
+    ContentSettingsType.REDUCED_ACCEPT_LANGUAGE, ContentSettingsType.NUM_TYPES
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface ContentSettingsType {
@@ -60,104 +66,104 @@ public @interface ContentSettingsType {
   int COOKIES = 0;
   int IMAGES = 1;
   int JAVASCRIPT = 2;
-  int DEPRECATED_PLUGINS = 3;
   /**
    * This setting governs both popups and unwanted redirects like tab-unders and framebusting.
    * TODO(csharrison): Consider renaming it to POPUPS_AND_REDIRECTS, but it might not be worth the
    * trouble.
    */
-  int POPUPS = 4;
-  int GEOLOCATION = 5;
-  int NOTIFICATIONS = 6;
-  int AUTO_SELECT_CERTIFICATE = 7;
-  int MIXEDSCRIPT = 8;
-  int MEDIASTREAM_MIC = 9;
-  int MEDIASTREAM_CAMERA = 10;
-  int PROTOCOL_HANDLERS = 11;
-  int PPAPI_BROKER = 12;
-  int AUTOMATIC_DOWNLOADS = 13;
-  int MIDI_SYSEX = 14;
-  int SSL_CERT_DECISIONS = 15;
-  int PROTECTED_MEDIA_IDENTIFIER = 16;
-  int APP_BANNER = 17;
-  int SITE_ENGAGEMENT = 18;
-  int DURABLE_STORAGE = 19;
-  int USB_CHOOSER_DATA = 20;
-  int BLUETOOTH_GUARD = 21;
-  int BACKGROUND_SYNC = 22;
-  int AUTOPLAY = 23;
-  int IMPORTANT_SITE_INFO = 24;
-  int PERMISSION_AUTOBLOCKER_DATA = 25;
-  int ADS = 26;
+  int POPUPS = 3;
+  int GEOLOCATION = 4;
+  int NOTIFICATIONS = 5;
+  int AUTO_SELECT_CERTIFICATE = 6;
+  int MIXEDSCRIPT = 7;
+  int MEDIASTREAM_MIC = 8;
+  int MEDIASTREAM_CAMERA = 9;
+  int PROTOCOL_HANDLERS = 10;
+  int PPAPI_BROKER = 11;
+  int AUTOMATIC_DOWNLOADS = 12;
+  int MIDI_SYSEX = 13;
+  int SSL_CERT_DECISIONS = 14;
+  int PROTECTED_MEDIA_IDENTIFIER = 15;
+  int APP_BANNER = 16;
+  int SITE_ENGAGEMENT = 17;
+  int DURABLE_STORAGE = 18;
+  int USB_CHOOSER_DATA = 19;
+  int BLUETOOTH_GUARD = 20;
+  int BACKGROUND_SYNC = 21;
+  int AUTOPLAY = 22;
+  int IMPORTANT_SITE_INFO = 23;
+  int PERMISSION_AUTOBLOCKER_DATA = 24;
+  int ADS = 25;
   /**
    * Website setting which stores metadata for the subresource filter to aid in decisions for
    * whether or not to show the UI.
    */
-  int ADS_DATA = 27;
+  int ADS_DATA = 26;
   /**
    * This is special-cased in the permissions layer to always allow, and as such doesn't have
    * associated prefs data.
    */
-  int MIDI = 28;
+  int MIDI = 27;
   /**
    * This content setting type is for caching password protection service's verdicts of each origin.
    */
-  int PASSWORD_PROTECTION = 29;
+  int PASSWORD_PROTECTION = 28;
   /**
    * Website setting which stores engagement data for media related to a specific origin.
    */
-  int MEDIA_ENGAGEMENT = 30;
+  int MEDIA_ENGAGEMENT = 29;
   /**
    * Content setting which stores whether or not the site can play audible sound. This will not
    * block playback but instead the user will not hear it.
    */
-  int SOUND = 31;
+  int SOUND = 30;
   /**
-   * Website setting which stores the list of client hints (and the preference expiration time for
-   * each of the client hints) that the origin requested the browser to remember. Spec:
-   * http://httpwg.org/http-extensions/client-hints.html#accept-ch-lifetime. The setting is stored
-   * as a dictionary that includes the mapping from different client hints to their respective
-   * expiration times (seconds since epoch). The browser is expected to send all the unexpired
-   * client hints in the HTTP request headers for every resource requested from that origin.
+   * Website setting which stores the list of client hints that the origin requested the browser to
+   * remember. The browser is expected to send all client hints in the HTTP request headers for
+   * every resource requested from that origin.
    */
-  int CLIENT_HINTS = 32;
+  int CLIENT_HINTS = 31;
   /**
    * Generic Sensor API covering ambient-light-sensor, accelerometer, gyroscope and magnetometer are
    * all mapped to a single content_settings_type. Setting for the Generic Sensor API covering
    * ambient-light-sensor, accelerometer, gyroscope and magnetometer. These are all mapped to a
    * single ContentSettingsType.
    */
-  int SENSORS = 33;
+  int SENSORS = 32;
   /**
    * Content setting which stores whether or not the user has granted the site permission to respond
    * to accessibility events, which can be used to provide a custom accessibility experience.
    * Requires explicit user consent because some users may not want sites to know they're using
    * assistive technology.
    */
-  int ACCESSIBILITY_EVENTS = 34;
+  int ACCESSIBILITY_EVENTS = 33;
   /**
    * Used to store whether to allow a website to install a payment handler.
    */
-  int PAYMENT_HANDLER = 35;
+  int PAYMENT_HANDLER = 34;
   /**
    * Content setting which stores whether to allow sites to ask for permission to access USB
    * devices. If this is allowed specific device permissions are stored under USB_CHOOSER_DATA.
    */
-  int USB_GUARD = 36;
+  int USB_GUARD = 35;
   /**
    * Nothing is stored in this setting at present. Please refer to BackgroundFetchPermissionContext
    * for details on how this permission is ascertained.
    */
-  int BACKGROUND_FETCH = 37;
+  int BACKGROUND_FETCH = 36;
   /**
    * Website setting which stores the amount of times the user has dismissed intent picker UI
    * without explicitly choosing an option.
    */
-  int INTENT_PICKER_DISPLAY = 38;
+  int INTENT_PICKER_DISPLAY = 37;
   /**
    * Used to store whether to allow a website to detect user active/idle state.
    */
-  int IDLE_DETECTION = 39;
+  int IDLE_DETECTION = 38;
+  /**
+   * Setting for enabling auto-select of all screens for getDisplayMediaSet.
+   */
+  int GET_DISPLAY_MEDIA_SET_SELECT_ALL_SCREENS = 39;
   /**
    * Content settings for access to serial ports. The "guard" content setting stores whether to
    * allow sites to ask for permission to access a port. The permissions granted to access
@@ -191,16 +197,16 @@ public @interface ContentSettingsType {
   int WAKE_LOCK_SCREEN = 46;
   int WAKE_LOCK_SYSTEM = 47;
   /**
-   * Legacy SameSite cookie behavior. This disables SameSiteByDefaultCookies,
-   * CookiesWithoutSameSiteMustBeSecure, and SchemefulSameSite, forcing the legacy behavior wherein
-   * cookies that don't specify SameSite are treated as SameSite=None, SameSite=None cookies are not
-   * required to be Secure, and schemeful same-site is not active. This will also be used to revert
-   * to legacy behavior when future changes in cookie handling are introduced.
+   * Legacy SameSite cookie behavior. This disables SameSite=Lax-by-default, SameSite=None requires
+   * Secure, and Schemeful Same-Site, forcing the legacy behavior wherein 1) cookies that don't
+   * specify SameSite are treated as SameSite=None, 2) SameSite=None cookies are not required to be
+   * Secure, and 3) schemeful same-site is not active. This will also be used to revert to legacy
+   * behavior when future changes in cookie handling are introduced.
    */
   int LEGACY_COOKIE_ACCESS = 48;
   /**
    * Content settings which stores whether to allow sites to ask for permission to save changes to
-   * an original file selected by the user through the File System API.
+   * an original file selected by the user through the File System Access API.
    */
   int FILE_SYSTEM_WRITE_GUARD = 49;
   /**
@@ -240,7 +246,7 @@ public @interface ContentSettingsType {
   int AR = 57;
   /**
    * Content setting which stores whether to allow site to open and read files and directories
-   * selected through the File System API.
+   * selected through the File System Access API.
    */
   int FILE_SYSTEM_READ_GUARD = 58;
   /**
@@ -268,9 +274,9 @@ public @interface ContentSettingsType {
   int INSECURE_PRIVATE_NETWORK = 62;
   /**
    * Content setting which stores whether or not a site can access low-level locally installed font
-   * data using the Font Access API.
+   * data using the Local Fonts Access API.
    */
-  int FONT_ACCESS = 63;
+  int LOCAL_FONTS = 63;
   /**
    * Stores per-origin state for permission auto-revocation (for all permission types).
    */
@@ -281,10 +287,70 @@ public @interface ContentSettingsType {
    */
   int FILE_SYSTEM_LAST_PICKED_DIRECTORY = 65;
   /**
-   * Capture the current tab using getCurrentBrowsingContextMedia(). TODO(crbug.com/1150788): Apply
-   * this to getDisplayMedia() as well. No values are stored for this type, this is solely needed to
-   * be able to register the PermissionContext.
+   * Controls access to the getDisplayMedia API when {preferCurrentTab: true} is specified.
+   * TODO(crbug.com/1150788): Also apply this when getDisplayMedia() is called without specifying
+   * {preferCurrentTab: true}. No values are stored for this type, this is solely needed to be able
+   * to register the PermissionContext.
    */
   int DISPLAY_CAPTURE = 66;
-  int NUM_TYPES = 67;
+  /**
+   * Website setting to store permissions metadata granted to paths on the local file system via the
+   * File System Access API. |FILE_SYSTEM_WRITE_GUARD| is the corresponding "guard" setting.
+   */
+  int FILE_SYSTEM_ACCESS_CHOOSER_DATA = 67;
+  /**
+   * Stores a grant that allows a relying party to send a request for identity information to
+   * specified identity providers, potentially through any anti-tracking measures that would
+   * otherwise prevent it. This setting is associated with the relying party's origin.
+   */
+  int FEDERATED_IDENTITY_SHARING = 68;
+  /**
+   * Whether to use the v8 optimized JIT for running JavaScript on the page.
+   */
+  int JAVASCRIPT_JIT = 69;
+  /**
+   * Content setting which stores user decisions to allow loading a site over HTTP. Entries are
+   * added by hostname when a user bypasses the HTTPS-First Mode interstitial warning when a site
+   * does not support HTTPS. Allowed hosts are exact hostname matches -- subdomains of a host on the
+   * allowlist must be separately allowlisted.
+   */
+  int HTTP_ALLOWED = 70;
+  /**
+   * Stores metadata related to form fill, such as e.g. whether user data was autofilled on a
+   * specific website.
+   */
+  int FORMFILL_METADATA = 71;
+  /**
+   * Setting to indicate that there is an active federated sign-in session between a specified
+   * relying party and a specified identity provider for a specified account. When this is present
+   * it allows access to session management capabilities between the sites. This setting is
+   * associated with the relying party's origin.
+   */
+  int FEDERATED_IDENTITY_ACTIVE_SESSION = 72;
+  /**
+   * Setting to indicate whether Chrome should automatically apply darkening to web content.
+   */
+  int AUTO_DARK_WEB_CONTENT = 73;
+  /**
+   * Setting to indicate whether Chrome should request the desktop view of a site instead of the
+   * mobile one.
+   */
+  int REQUEST_DESKTOP_SITE = 74;
+  /**
+   * Setting to indicate whether browser should allow signing into a website via the browser FedCM
+   * API.
+   */
+  int FEDERATED_IDENTITY_API = 75;
+  /**
+   * Stores notification interactions per origin for the past 90 days. Interactions per origin are
+   * pre-aggregated over seven-day windows: A notification interaction or display is assigned to the
+   * last Monday midnight in local time.
+   */
+  int NOTIFICATION_INTERACTIONS = 76;
+  /**
+   * Website setting which stores the last reduced accept language negotiated for a given origin, to
+   * be used on future visits to the origin.
+   */
+  int REDUCED_ACCEPT_LANGUAGE = 77;
+  int NUM_TYPES = 78;
 }

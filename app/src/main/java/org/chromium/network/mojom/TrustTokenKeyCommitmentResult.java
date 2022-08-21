@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class TrustTokenKeyCommitmentResult extends org.chromium.mojo.bindings.Struct {
 
@@ -22,6 +24,10 @@ public final class TrustTokenKeyCommitmentResult extends org.chromium.mojo.bindi
 
     public static final class Os {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            Os.ANDROID})
+        public @interface EnumType {}
 
         public static final int ANDROID = 0;
         public static final int MIN_VALUE = 0;
@@ -45,6 +51,11 @@ public final class TrustTokenKeyCommitmentResult extends org.chromium.mojo.bindi
 
     public static final class UnavailableLocalOperationFallback {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            UnavailableLocalOperationFallback.WEB_ISSUANCE,
+            UnavailableLocalOperationFallback.RETURN_WITH_ERROR})
+        public @interface EnumType {}
 
         public static final int WEB_ISSUANCE = 0;
         public static final int RETURN_WITH_ERROR = 1;

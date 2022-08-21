@@ -13,6 +13,8 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class InputTargetClient_Internal {
 
@@ -61,7 +63,7 @@ class InputTargetClient_Internal {
         @Override
         public void frameSinkIdAt(
 org.chromium.gfx.mojom.PointF point, long traceId, 
-FrameSinkIdAtResponse callback) {
+FrameSinkIdAt_Response callback) {
 
             InputTargetClientFrameSinkIdAtParams _message = new InputTargetClientFrameSinkIdAtParams();
 
@@ -310,9 +312,9 @@ FrameSinkIdAtResponse callback) {
 
     static class InputTargetClientFrameSinkIdAtResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final InputTargetClient.FrameSinkIdAtResponse mCallback;
+        private final InputTargetClient.FrameSinkIdAt_Response mCallback;
 
-        InputTargetClientFrameSinkIdAtResponseParamsForwardToCallback(InputTargetClient.FrameSinkIdAtResponse callback) {
+        InputTargetClientFrameSinkIdAtResponseParamsForwardToCallback(InputTargetClient.FrameSinkIdAt_Response callback) {
             this.mCallback = callback;
         }
 
@@ -337,7 +339,7 @@ FrameSinkIdAtResponse callback) {
         }
     }
 
-    static class InputTargetClientFrameSinkIdAtResponseParamsProxyToResponder implements InputTargetClient.FrameSinkIdAtResponse {
+    static class InputTargetClientFrameSinkIdAtResponseParamsProxyToResponder implements InputTargetClient.FrameSinkIdAt_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

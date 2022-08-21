@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface PresentationController extends org.chromium.mojo.bindings.Interface {
 
@@ -23,20 +25,16 @@ public interface PresentationController extends org.chromium.mojo.bindings.Inter
 
     Manager<PresentationController, PresentationController.Proxy> MANAGER = PresentationController_Internal.MANAGER;
 
-
     void onScreenAvailabilityUpdated(
 org.chromium.url.mojom.Url url, int availability);
-
 
 
     void onDefaultPresentationStarted(
 PresentationConnectionResult result);
 
 
-
     void onConnectionStateChanged(
 PresentationInfo presentationInfo, int newState);
-
 
 
     void onConnectionClosed(

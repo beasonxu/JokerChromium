@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface FileSystemManager extends org.chromium.mojo.bindings.Interface {
 
@@ -23,126 +25,117 @@ public interface FileSystemManager extends org.chromium.mojo.bindings.Interface 
 
     Manager<FileSystemManager, FileSystemManager.Proxy> MANAGER = FileSystemManager_Internal.MANAGER;
 
-
     void open(
 org.chromium.url.internal.mojom.Origin origin, int fileSystemType, 
-OpenResponse callback);
+Open_Response callback);
 
-    interface OpenResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<String, org.chromium.url.mojom.Url, Integer> { }
-
+    interface Open_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<String, org.chromium.url.mojom.Url, Integer> { }
 
 
     void resolveUrl(
 org.chromium.url.mojom.Url filesystemUrl, 
-ResolveUrlResponse callback);
+ResolveUrl_Response callback);
 
-    interface ResolveUrlResponse extends org.chromium.mojo.bindings.Callbacks.Callback4<FileSystemInfo, org.chromium.mojo_base.mojom.FilePath, Boolean, Integer> { }
-
+    interface ResolveUrl_Response extends org.chromium.mojo.bindings.Callbacks.Callback4<FileSystemInfo, org.chromium.mojo_base.mojom.FilePath, Boolean, Integer> { }
 
 
     void move(
 org.chromium.url.mojom.Url srcPath, org.chromium.url.mojom.Url destPath, 
-MoveResponse callback);
+Move_Response callback);
 
-    interface MoveResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface Move_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void copy(
 org.chromium.url.mojom.Url srcPath, org.chromium.url.mojom.Url destPath, 
-CopyResponse callback);
+Copy_Response callback);
 
-    interface CopyResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface Copy_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void remove(
 org.chromium.url.mojom.Url path, boolean recursive, 
-RemoveResponse callback);
+Remove_Response callback);
 
-    interface RemoveResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface Remove_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void readMetadata(
 org.chromium.url.mojom.Url path, 
-ReadMetadataResponse callback);
+ReadMetadata_Response callback);
 
-    interface ReadMetadataResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<org.chromium.mojo_base.mojom.FileInfo, Integer> { }
-
+    interface ReadMetadata_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<org.chromium.mojo_base.mojom.FileInfo, Integer> { }
 
 
     void create(
 org.chromium.url.mojom.Url path, boolean exclusive, boolean isDirectory, boolean recursive, 
-CreateResponse callback);
+Create_Response callback);
 
-    interface CreateResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface Create_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void exists(
 org.chromium.url.mojom.Url path, boolean isDirectory, 
-ExistsResponse callback);
+Exists_Response callback);
 
-    interface ExistsResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface Exists_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void readDirectory(
 org.chromium.url.mojom.Url path, FileSystemOperationListener listener);
 
 
-
     void readDirectorySync(
 org.chromium.url.mojom.Url path, 
-ReadDirectorySyncResponse callback);
+ReadDirectorySync_Response callback);
 
-    interface ReadDirectorySyncResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<org.chromium.filesystem.mojom.DirectoryEntry[], Integer> { }
-
+    interface ReadDirectorySync_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<org.chromium.filesystem.mojom.DirectoryEntry[], Integer> { }
 
 
     void write(
 org.chromium.url.mojom.Url filePath, String blobUuid, long position, org.chromium.mojo.bindings.InterfaceRequest<FileSystemCancellableOperation> opReceiver, FileSystemOperationListener listener);
 
 
-
     void writeSync(
 org.chromium.url.mojom.Url filePath, String blobUuid, long position, 
-WriteSyncResponse callback);
+WriteSync_Response callback);
 
-    interface WriteSyncResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Long, Integer> { }
-
+    interface WriteSync_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Long, Integer> { }
 
 
     void truncate(
 org.chromium.url.mojom.Url filePath, long length, org.chromium.mojo.bindings.InterfaceRequest<FileSystemCancellableOperation> opReceiver, 
-TruncateResponse callback);
+Truncate_Response callback);
 
-    interface TruncateResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface Truncate_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void truncateSync(
 org.chromium.url.mojom.Url filePath, long length, 
-TruncateSyncResponse callback);
+TruncateSync_Response callback);
 
-    interface TruncateSyncResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface TruncateSync_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void createSnapshotFile(
 org.chromium.url.mojom.Url filePath, 
-CreateSnapshotFileResponse callback);
+CreateSnapshotFile_Response callback);
 
-    interface CreateSnapshotFileResponse extends org.chromium.mojo.bindings.Callbacks.Callback4<org.chromium.mojo_base.mojom.FileInfo, org.chromium.mojo_base.mojom.FilePath, Integer, ReceivedSnapshotListener> { }
-
+    interface CreateSnapshotFile_Response extends org.chromium.mojo.bindings.Callbacks.Callback4<org.chromium.mojo_base.mojom.FileInfo, org.chromium.mojo_base.mojom.FilePath, Integer, ReceivedSnapshotListener> { }
 
 
     void getPlatformPath(
 org.chromium.url.mojom.Url filePath, 
-GetPlatformPathResponse callback);
+GetPlatformPath_Response callback);
 
-    interface GetPlatformPathResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.FilePath> { }
+    interface GetPlatformPath_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.FilePath> { }
+
+
+    void registerBlob(
+String contentType, org.chromium.url.mojom.Url url, long length, org.chromium.mojo_base.mojom.Time expectedModificationTime, 
+RegisterBlob_Response callback);
+
+    interface RegisterBlob_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<SerializedBlob> { }
 
 
 }

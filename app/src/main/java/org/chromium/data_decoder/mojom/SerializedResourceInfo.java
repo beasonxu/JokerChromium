@@ -13,6 +13,8 @@
 
 package org.chromium.data_decoder.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class SerializedResourceInfo extends org.chromium.mojo.bindings.Struct {
 

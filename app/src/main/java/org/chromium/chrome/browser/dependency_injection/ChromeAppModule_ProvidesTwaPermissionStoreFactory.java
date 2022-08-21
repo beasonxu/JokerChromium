@@ -2,8 +2,8 @@ package org.chromium.chrome.browser.dependency_injection;
 
 import dagger.internal.Factory;
 import dagger.internal.Preconditions;
-import javax.annotation.Generated;
-import org.chromium.chrome.browser.browserservices.permissiondelegation.TrustedWebActivityPermissionStore;
+import javax.annotation.processing.Generated;
+import org.chromium.chrome.browser.browserservices.permissiondelegation.InstalledWebappPermissionStore;
 
 @Generated(
     value = "dagger.internal.codegen.ComponentProcessor",
@@ -13,7 +13,7 @@ import org.chromium.chrome.browser.browserservices.permissiondelegation.TrustedW
     "unchecked",
     "rawtypes"
 })
-public final class ChromeAppModule_ProvidesTwaPermissionStoreFactory implements Factory<TrustedWebActivityPermissionStore> {
+public final class ChromeAppModule_ProvidesTwaPermissionStoreFactory implements Factory<InstalledWebappPermissionStore> {
   private final ChromeAppModule module;
 
   public ChromeAppModule_ProvidesTwaPermissionStoreFactory(ChromeAppModule module) {
@@ -21,7 +21,7 @@ public final class ChromeAppModule_ProvidesTwaPermissionStoreFactory implements 
   }
 
   @Override
-  public TrustedWebActivityPermissionStore get() {
+  public InstalledWebappPermissionStore get() {
     return providesTwaPermissionStore(module);
   }
 
@@ -29,7 +29,7 @@ public final class ChromeAppModule_ProvidesTwaPermissionStoreFactory implements 
     return new ChromeAppModule_ProvidesTwaPermissionStoreFactory(module);
   }
 
-  public static TrustedWebActivityPermissionStore providesTwaPermissionStore(
+  public static InstalledWebappPermissionStore providesTwaPermissionStore(
       ChromeAppModule instance) {
     return Preconditions.checkNotNullFromProvides(instance.providesTwaPermissionStore());
   }

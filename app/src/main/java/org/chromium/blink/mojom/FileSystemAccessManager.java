@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface FileSystemAccessManager extends org.chromium.mojo.bindings.Interface {
 
@@ -23,38 +25,33 @@ public interface FileSystemAccessManager extends org.chromium.mojo.bindings.Inte
 
     Manager<FileSystemAccessManager, FileSystemAccessManager.Proxy> MANAGER = FileSystemAccessManager_Internal.MANAGER;
 
-
     void getSandboxedFileSystem(
 
-GetSandboxedFileSystemResponse callback);
+GetSandboxedFileSystem_Response callback);
 
-    interface GetSandboxedFileSystemResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<FileSystemAccessError, FileSystemAccessDirectoryHandle> { }
-
+    interface GetSandboxedFileSystem_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<FileSystemAccessError, FileSystemAccessDirectoryHandle> { }
 
 
     void chooseEntries(
 FilePickerOptions options, CommonFilePickerOptions commonOptions, 
-ChooseEntriesResponse callback);
+ChooseEntries_Response callback);
 
-    interface ChooseEntriesResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<FileSystemAccessError, FileSystemAccessEntry[]> { }
-
+    interface ChooseEntries_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<FileSystemAccessError, FileSystemAccessEntry[]> { }
 
 
     void getFileHandleFromToken(
 FileSystemAccessTransferToken token, org.chromium.mojo.bindings.InterfaceRequest<FileSystemAccessFileHandle> fileHandle);
 
 
-
     void getDirectoryHandleFromToken(
 FileSystemAccessTransferToken token, org.chromium.mojo.bindings.InterfaceRequest<FileSystemAccessDirectoryHandle> directoryHandle);
 
 
-
     void getEntryFromDataTransferToken(
 FileSystemAccessDataTransferToken token, 
-GetEntryFromDataTransferTokenResponse callback);
+GetEntryFromDataTransferToken_Response callback);
 
-    interface GetEntryFromDataTransferTokenResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<FileSystemAccessEntry> { }
+    interface GetEntryFromDataTransferToken_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<FileSystemAccessEntry> { }
 
 
 }

@@ -1,7 +1,6 @@
 package org.chromium.chrome.browser.media;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
@@ -9,9 +8,8 @@ import org.chromium.base.natives.GEN_JNI;
 import org.chromium.components.thinwebview.CompositorView;
 import org.chromium.ui.base.WindowAndroid;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class PictureInPictureActivityJni implements PictureInPictureActivity.Natives {
+public class PictureInPictureActivityJni implements PictureInPictureActivity.Natives {
   private static PictureInPictureActivity.Natives testInstance;
 
   public static final JniStaticTestMocker<PictureInPictureActivity.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.media.PictureInPictureActivity.Natives>() {
@@ -37,8 +35,33 @@ final class PictureInPictureActivityJni implements PictureInPictureActivity.Nati
   }
 
   @Override
-  public void play(long nativeOverlayWindowAndroid) {
-    GEN_JNI.org_chromium_chrome_browser_media_PictureInPictureActivity_play(nativeOverlayWindowAndroid);
+  public void togglePlayPause(long nativeOverlayWindowAndroid, boolean toggleOn) {
+    GEN_JNI.org_chromium_chrome_browser_media_PictureInPictureActivity_togglePlayPause(nativeOverlayWindowAndroid, toggleOn);
+  }
+
+  @Override
+  public void nextTrack(long nativeOverlayWindowAndroid) {
+    GEN_JNI.org_chromium_chrome_browser_media_PictureInPictureActivity_nextTrack(nativeOverlayWindowAndroid);
+  }
+
+  @Override
+  public void previousTrack(long nativeOverlayWindowAndroid) {
+    GEN_JNI.org_chromium_chrome_browser_media_PictureInPictureActivity_previousTrack(nativeOverlayWindowAndroid);
+  }
+
+  @Override
+  public void toggleMicrophone(long nativeOverlayWindowAndroid, boolean toggleOn) {
+    GEN_JNI.org_chromium_chrome_browser_media_PictureInPictureActivity_toggleMicrophone(nativeOverlayWindowAndroid, toggleOn);
+  }
+
+  @Override
+  public void toggleCamera(long nativeOverlayWindowAndroid, boolean toggleOn) {
+    GEN_JNI.org_chromium_chrome_browser_media_PictureInPictureActivity_toggleCamera(nativeOverlayWindowAndroid, toggleOn);
+  }
+
+  @Override
+  public void hangUp(long nativeOverlayWindowAndroid) {
+    GEN_JNI.org_chromium_chrome_browser_media_PictureInPictureActivity_hangUp(nativeOverlayWindowAndroid);
   }
 
   @Override
@@ -50,6 +73,11 @@ final class PictureInPictureActivityJni implements PictureInPictureActivity.Nati
   @Override
   public void onViewSizeChanged(long nativeOverlayWindowAndroid, int width, int height) {
     GEN_JNI.org_chromium_chrome_browser_media_PictureInPictureActivity_onViewSizeChanged(nativeOverlayWindowAndroid, width, height);
+  }
+
+  @Override
+  public void onBackToTab(long nativeOverlayWindowAndroid) {
+    GEN_JNI.org_chromium_chrome_browser_media_PictureInPictureActivity_onBackToTab(nativeOverlayWindowAndroid);
   }
 
   public static PictureInPictureActivity.Natives get() {

@@ -2,15 +2,13 @@ package org.chromium.chrome.browser.safe_browsing;
 
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class SafeBrowsingBridgeJni implements SafeBrowsingBridge.Natives {
+class SafeBrowsingBridgeJni implements SafeBrowsingBridge.Natives {
   private static SafeBrowsingBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<SafeBrowsingBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.safe_browsing.SafeBrowsingBridge.Natives>() {
@@ -55,13 +53,18 @@ final class SafeBrowsingBridgeJni implements SafeBrowsingBridge.Natives {
   }
 
   @Override
+  public boolean isSafeBrowsingManaged() {
+    return (boolean)GEN_JNI.org_chromium_chrome_browser_safe_1browsing_SafeBrowsingBridge_isSafeBrowsingManaged();
+  }
+
+  @Override
   public boolean hasAccountForLeakCheckRequest() {
     return (boolean)GEN_JNI.org_chromium_chrome_browser_safe_1browsing_SafeBrowsingBridge_hasAccountForLeakCheckRequest();
   }
 
   @Override
-  public boolean isSafeBrowsingManaged() {
-    return (boolean)GEN_JNI.org_chromium_chrome_browser_safe_1browsing_SafeBrowsingBridge_isSafeBrowsingManaged();
+  public boolean isLeakDetectionUnauthenticatedEnabled() {
+    return (boolean)GEN_JNI.org_chromium_chrome_browser_safe_1browsing_SafeBrowsingBridge_isLeakDetectionUnauthenticatedEnabled();
   }
 
   public static SafeBrowsingBridge.Natives get() {

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface BackgroundFetchService extends org.chromium.mojo.bindings.Interface {
 
@@ -23,36 +25,32 @@ public interface BackgroundFetchService extends org.chromium.mojo.bindings.Inter
 
     Manager<BackgroundFetchService, BackgroundFetchService.Proxy> MANAGER = BackgroundFetchService_Internal.MANAGER;
 
-
     void fetch(
 long serviceWorkerRegistrationId, String developerId, FetchApiRequest[] requests, BackgroundFetchOptions options, org.chromium.skia.mojom.BitmapN32 icon, BackgroundFetchUkmData ukmData, 
-FetchResponse callback);
+Fetch_Response callback);
 
-    interface FetchResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, BackgroundFetchRegistration> { }
-
+    interface Fetch_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, BackgroundFetchRegistration> { }
 
 
     void getRegistration(
 long serviceWorkerRegistrationId, String developerId, 
-GetRegistrationResponse callback);
+GetRegistration_Response callback);
 
-    interface GetRegistrationResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, BackgroundFetchRegistration> { }
-
+    interface GetRegistration_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, BackgroundFetchRegistration> { }
 
 
     void getDeveloperIds(
 long serviceWorkerRegistrationId, 
-GetDeveloperIdsResponse callback);
+GetDeveloperIds_Response callback);
 
-    interface GetDeveloperIdsResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, String[]> { }
-
+    interface GetDeveloperIds_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, String[]> { }
 
 
     void getIconDisplaySize(
 
-GetIconDisplaySizeResponse callback);
+GetIconDisplaySize_Response callback);
 
-    interface GetIconDisplaySizeResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.gfx.mojom.Size> { }
+    interface GetIconDisplaySize_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.gfx.mojom.Size> { }
 
 
 }

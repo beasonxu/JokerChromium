@@ -521,7 +521,8 @@ public final class OmniboxEventProtos {
     }
     /**
      * <pre>
-     * The type of page currently displayed when the user used the omnibox.
+     * The type of page the user was on when they used the omnibox. Or the type of
+     * page for which suggestions were prefetched from the server.
      * </pre>
      *
      * Protobuf enum {@code metrics.OmniboxEventProto.PageClassification}
@@ -579,7 +580,7 @@ public final class OmniboxEventProtos {
       OTHER(4),
       /**
        * <pre>
-       * The instant new tab page enum value was deprecated on August 2, 2013.
+       * The instant new tab page.
        * </pre>
        *
        * <code>OBSOLETE_INSTANT_NTP = 5;</code>
@@ -607,8 +608,8 @@ public final class OmniboxEventProtos {
       /**
        * <pre>
        * The new tab page in which this omnibox interaction first started with the
-       * user having focus in the fakebox. Note that this started being replaced
-       * by NTP_REALBOX in Aug 2020 and will eventually be obsolete.
+       * user having focus in the fakebox. This is replaced by NTP_REALBOX.
+       * DEPRECATED on Aug 17, 2020.
        * </pre>
        *
        * <code>INSTANT_NTP_WITH_FAKEBOX_AS_STARTING_FOCUS = 8;</code>
@@ -682,6 +683,72 @@ public final class OmniboxEventProtos {
        * <code>ANDROID_SEARCH_WIDGET = 16;</code>
        */
       ANDROID_SEARCH_WIDGET(16),
+      /**
+       * <pre>
+       * Android's Start surface homepage.
+       * </pre>
+       *
+       * <code>START_SURFACE_HOMEPAGE = 17;</code>
+       */
+      START_SURFACE_HOMEPAGE(17),
+      /**
+       * <pre>
+       * New Tab with Omnibox focused with Android's start surface finale enabled.
+       * </pre>
+       *
+       * <code>START_SURFACE_NEW_TAB = 18;</code>
+       */
+      START_SURFACE_NEW_TAB(18),
+      /**
+       * <pre>
+       * Android's improved Search Widget with new suggestions.
+       * </pre>
+       *
+       * <code>ANDROID_SHORTCUTS_WIDGET = 19;</code>
+       */
+      ANDROID_SHORTCUTS_WIDGET(19),
+      /**
+       * <pre>
+       * The New Tab Page zero-prefix suggestion prefetch.
+       * Used for prefetching suggestions and should never appear in an
+       * OmniboxEventProto or any of its derived histograms. (PageClassification
+       * enum is used in other places too, and not only OmniboxEventProto.)
+       * </pre>
+       *
+       * <code>NTP_ZPS_PREFETCH = 20;</code>
+       */
+      NTP_ZPS_PREFETCH(20),
+      /**
+       * <pre>
+       * Android's auxiliary search backend.
+       * </pre>
+       *
+       * <code>ANDROID_AUXILIARY_SEARCH = 21;</code>
+       */
+      ANDROID_AUXILIARY_SEARCH(21),
+      /**
+       * <pre>
+       * The Search Results Page zero-prefix suggestion prefetch.
+       * Used for prefetching suggestions and should never appear in an
+       * OmniboxEventProto or any of its derived histograms. (PageClassification
+       * enum is used in other places too, and not only OmniboxEventProto.)
+       * </pre>
+       *
+       * <code>SRP_ZPS_PREFETCH = 22;</code>
+       */
+      SRP_ZPS_PREFETCH(22),
+      /**
+       * <pre>
+       * The catch-all zero-prefix suggestion prefetch for everything other than
+       * NTP and SRP.
+       * Used for prefetching suggestions and should never appear in an
+       * OmniboxEventProto or any of its derived histograms. (PageClassification
+       * enum is used in other places too, and not only OmniboxEventProto.)
+       * </pre>
+       *
+       * <code>OTHER_ZPS_PREFETCH = 23;</code>
+       */
+      OTHER_ZPS_PREFETCH(23),
       ;
 
       /**
@@ -735,7 +802,7 @@ public final class OmniboxEventProtos {
       public static final int OTHER_VALUE = 4;
       /**
        * <pre>
-       * The instant new tab page enum value was deprecated on August 2, 2013.
+       * The instant new tab page.
        * </pre>
        *
        * <code>OBSOLETE_INSTANT_NTP = 5;</code>
@@ -763,8 +830,8 @@ public final class OmniboxEventProtos {
       /**
        * <pre>
        * The new tab page in which this omnibox interaction first started with the
-       * user having focus in the fakebox. Note that this started being replaced
-       * by NTP_REALBOX in Aug 2020 and will eventually be obsolete.
+       * user having focus in the fakebox. This is replaced by NTP_REALBOX.
+       * DEPRECATED on Aug 17, 2020.
        * </pre>
        *
        * <code>INSTANT_NTP_WITH_FAKEBOX_AS_STARTING_FOCUS = 8;</code>
@@ -838,6 +905,72 @@ public final class OmniboxEventProtos {
        * <code>ANDROID_SEARCH_WIDGET = 16;</code>
        */
       public static final int ANDROID_SEARCH_WIDGET_VALUE = 16;
+      /**
+       * <pre>
+       * Android's Start surface homepage.
+       * </pre>
+       *
+       * <code>START_SURFACE_HOMEPAGE = 17;</code>
+       */
+      public static final int START_SURFACE_HOMEPAGE_VALUE = 17;
+      /**
+       * <pre>
+       * New Tab with Omnibox focused with Android's start surface finale enabled.
+       * </pre>
+       *
+       * <code>START_SURFACE_NEW_TAB = 18;</code>
+       */
+      public static final int START_SURFACE_NEW_TAB_VALUE = 18;
+      /**
+       * <pre>
+       * Android's improved Search Widget with new suggestions.
+       * </pre>
+       *
+       * <code>ANDROID_SHORTCUTS_WIDGET = 19;</code>
+       */
+      public static final int ANDROID_SHORTCUTS_WIDGET_VALUE = 19;
+      /**
+       * <pre>
+       * The New Tab Page zero-prefix suggestion prefetch.
+       * Used for prefetching suggestions and should never appear in an
+       * OmniboxEventProto or any of its derived histograms. (PageClassification
+       * enum is used in other places too, and not only OmniboxEventProto.)
+       * </pre>
+       *
+       * <code>NTP_ZPS_PREFETCH = 20;</code>
+       */
+      public static final int NTP_ZPS_PREFETCH_VALUE = 20;
+      /**
+       * <pre>
+       * Android's auxiliary search backend.
+       * </pre>
+       *
+       * <code>ANDROID_AUXILIARY_SEARCH = 21;</code>
+       */
+      public static final int ANDROID_AUXILIARY_SEARCH_VALUE = 21;
+      /**
+       * <pre>
+       * The Search Results Page zero-prefix suggestion prefetch.
+       * Used for prefetching suggestions and should never appear in an
+       * OmniboxEventProto or any of its derived histograms. (PageClassification
+       * enum is used in other places too, and not only OmniboxEventProto.)
+       * </pre>
+       *
+       * <code>SRP_ZPS_PREFETCH = 22;</code>
+       */
+      public static final int SRP_ZPS_PREFETCH_VALUE = 22;
+      /**
+       * <pre>
+       * The catch-all zero-prefix suggestion prefetch for everything other than
+       * NTP and SRP.
+       * Used for prefetching suggestions and should never appear in an
+       * OmniboxEventProto or any of its derived histograms. (PageClassification
+       * enum is used in other places too, and not only OmniboxEventProto.)
+       * </pre>
+       *
+       * <code>OTHER_ZPS_PREFETCH = 23;</code>
+       */
+      public static final int OTHER_ZPS_PREFETCH_VALUE = 23;
 
 
       @java.lang.Override
@@ -874,6 +1007,13 @@ public final class OmniboxEventProtos {
           case 14: return CHROMEOS_APP_LIST;
           case 15: return NTP_REALBOX;
           case 16: return ANDROID_SEARCH_WIDGET;
+          case 17: return START_SURFACE_HOMEPAGE;
+          case 18: return START_SURFACE_NEW_TAB;
+          case 19: return ANDROID_SHORTCUTS_WIDGET;
+          case 20: return NTP_ZPS_PREFETCH;
+          case 21: return ANDROID_AUXILIARY_SEARCH;
+          case 22: return SRP_ZPS_PREFETCH;
+          case 23: return OTHER_ZPS_PREFETCH;
           default: return null;
         }
       }
@@ -1204,6 +1344,30 @@ public final class OmniboxEventProtos {
        * <code>QUERY_TILE = 19;</code>
        */
       QUERY_TILE(19),
+      /**
+       * <pre>
+       * Clusters generated on-device from the user's Chrome history.
+       * </pre>
+       *
+       * <code>HISTORY_CLUSTER = 20;</code>
+       */
+      HISTORY_CLUSTER(20),
+      /**
+       * <pre>
+       * Suggestions from history derived from input with automatic corrections.
+       * </pre>
+       *
+       * <code>HISTORY_FUZZY = 21;</code>
+       */
+      HISTORY_FUZZY(21),
+      /**
+       * <pre>
+       * URLs amongst the user's currently open tabs.
+       * </pre>
+       *
+       * <code>OPEN_TAB = 22;</code>
+       */
+      OPEN_TAB(22),
       ;
 
       /**
@@ -1370,6 +1534,30 @@ public final class OmniboxEventProtos {
        * <code>QUERY_TILE = 19;</code>
        */
       public static final int QUERY_TILE_VALUE = 19;
+      /**
+       * <pre>
+       * Clusters generated on-device from the user's Chrome history.
+       * </pre>
+       *
+       * <code>HISTORY_CLUSTER = 20;</code>
+       */
+      public static final int HISTORY_CLUSTER_VALUE = 20;
+      /**
+       * <pre>
+       * Suggestions from history derived from input with automatic corrections.
+       * </pre>
+       *
+       * <code>HISTORY_FUZZY = 21;</code>
+       */
+      public static final int HISTORY_FUZZY_VALUE = 21;
+      /**
+       * <pre>
+       * URLs amongst the user's currently open tabs.
+       * </pre>
+       *
+       * <code>OPEN_TAB = 22;</code>
+       */
+      public static final int OPEN_TAB_VALUE = 22;
 
 
       @java.lang.Override
@@ -1409,6 +1597,9 @@ public final class OmniboxEventProtos {
           case 17: return ON_DEVICE_HEAD;
           case 18: return ZERO_SUGGEST_LOCAL_HISTORY;
           case 19: return QUERY_TILE;
+          case 20: return HISTORY_CLUSTER;
+          case 21: return HISTORY_FUZZY;
+          case 22: return OPEN_TAB;
           default: return null;
         }
       }
@@ -2153,6 +2344,26 @@ public final class OmniboxEventProtos {
          * <code>TILE_SUGGESTION = 30;</code>
          */
         TILE_SUGGESTION(30),
+        /**
+         * <pre>
+         * feature. Only used by Android.
+         * </pre>
+         *
+         * <code>HISTORY_CLUSTER = 31;</code>
+         */
+        HISTORY_CLUSTER(31),
+        /**
+         * <pre>
+         * (an aggregation of related searches and
+         * URLs from the user's history) that
+         * contains the input (the input might or
+         * might not also match the title or URL of
+         * this page).
+         * </pre>
+         *
+         * <code>OPEN_TAB = 32;</code>
+         */
+        OPEN_TAB(32),
         ;
 
         /**
@@ -2417,6 +2628,26 @@ public final class OmniboxEventProtos {
          * <code>TILE_SUGGESTION = 30;</code>
          */
         public static final int TILE_SUGGESTION_VALUE = 30;
+        /**
+         * <pre>
+         * feature. Only used by Android.
+         * </pre>
+         *
+         * <code>HISTORY_CLUSTER = 31;</code>
+         */
+        public static final int HISTORY_CLUSTER_VALUE = 31;
+        /**
+         * <pre>
+         * (an aggregation of related searches and
+         * URLs from the user's history) that
+         * contains the input (the input might or
+         * might not also match the title or URL of
+         * this page).
+         * </pre>
+         *
+         * <code>OPEN_TAB = 32;</code>
+         */
+        public static final int OPEN_TAB_VALUE = 32;
 
 
         @java.lang.Override
@@ -2467,6 +2698,8 @@ public final class OmniboxEventProtos {
             case 28: return CLIPBOARD_TEXT;
             case 29: return CLIPBOARD_IMAGE;
             case 30: return TILE_SUGGESTION;
+            case 31: return HISTORY_CLUSTER;
+            case 32: return OPEN_TAB;
             default: return null;
           }
         }

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ServiceWorkerContainerHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,60 +25,51 @@ public interface ServiceWorkerContainerHost extends org.chromium.mojo.bindings.I
 
     Manager<ServiceWorkerContainerHost, ServiceWorkerContainerHost.Proxy> MANAGER = ServiceWorkerContainerHost_Internal.MANAGER;
 
-
     void register(
 org.chromium.url.mojom.Url scriptUrl, ServiceWorkerRegistrationOptions options, FetchClientSettingsObject outsideFetchClientSettingsObject, 
-RegisterResponse callback);
+Register_Response callback);
 
-    interface RegisterResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<Integer, String, ServiceWorkerRegistrationObjectInfo> { }
-
+    interface Register_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<Integer, String, ServiceWorkerRegistrationObjectInfo> { }
 
 
     void getRegistration(
 org.chromium.url.mojom.Url clientUrl, 
-GetRegistrationResponse callback);
+GetRegistration_Response callback);
 
-    interface GetRegistrationResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<Integer, String, ServiceWorkerRegistrationObjectInfo> { }
-
+    interface GetRegistration_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<Integer, String, ServiceWorkerRegistrationObjectInfo> { }
 
 
     void getRegistrations(
 
-GetRegistrationsResponse callback);
+GetRegistrations_Response callback);
 
-    interface GetRegistrationsResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<Integer, String, ServiceWorkerRegistrationObjectInfo[]> { }
-
+    interface GetRegistrations_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<Integer, String, ServiceWorkerRegistrationObjectInfo[]> { }
 
 
     void getRegistrationForReady(
 
-GetRegistrationForReadyResponse callback);
+GetRegistrationForReady_Response callback);
 
-    interface GetRegistrationForReadyResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<ServiceWorkerRegistrationObjectInfo> { }
-
+    interface GetRegistrationForReady_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<ServiceWorkerRegistrationObjectInfo> { }
 
 
     void ensureControllerServiceWorker(
 org.chromium.mojo.bindings.InterfaceRequest<ControllerServiceWorker> receiver, int purpose);
 
 
-
     void cloneContainerHost(
 org.chromium.mojo.bindings.InterfaceRequest<ServiceWorkerContainerHost> containerHost);
-
 
 
     void hintToUpdateServiceWorker(
 );
 
 
-
     void ensureFileAccess(
 org.chromium.mojo_base.mojom.FilePath[] files, 
-EnsureFileAccessResponse callback);
+EnsureFileAccess_Response callback);
 
-    interface EnsureFileAccessResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface EnsureFileAccess_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void onExecutionReady(

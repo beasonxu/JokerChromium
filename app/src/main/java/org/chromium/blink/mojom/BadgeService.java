@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface BadgeService extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface BadgeService extends org.chromium.mojo.bindings.Interface {
 
     Manager<BadgeService, BadgeService.Proxy> MANAGER = BadgeService_Internal.MANAGER;
 
-
     void setBadge(
 BadgeValue value);
-
 
 
     void clearBadge(

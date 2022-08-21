@@ -1,7 +1,7 @@
 package org.chromium.chrome.browser.browserservices.trustedwebactivityui;
 
 import dagger.internal.Factory;
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 import javax.inject.Provider;
 import org.chromium.chrome.browser.browserservices.trustedwebactivityui.sharing.TwaSharingController;
 import org.chromium.chrome.browser.customtabs.content.DefaultCustomTabIntentHandlingStrategy;

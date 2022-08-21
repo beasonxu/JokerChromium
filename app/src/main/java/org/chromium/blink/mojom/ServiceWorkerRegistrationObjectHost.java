@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ServiceWorkerRegistrationObjectHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,44 +25,39 @@ public interface ServiceWorkerRegistrationObjectHost extends org.chromium.mojo.b
 
     Manager<ServiceWorkerRegistrationObjectHost, ServiceWorkerRegistrationObjectHost.Proxy> MANAGER = ServiceWorkerRegistrationObjectHost_Internal.MANAGER;
 
-
     void update(
 FetchClientSettingsObject outsideFetchClientSettingsObject, 
-UpdateResponse callback);
+Update_Response callback);
 
-    interface UpdateResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, String> { }
-
+    interface Update_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, String> { }
 
 
     void unregister(
 
-UnregisterResponse callback);
+Unregister_Response callback);
 
-    interface UnregisterResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, String> { }
-
+    interface Unregister_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, String> { }
 
 
     void enableNavigationPreload(
 boolean enable, 
-EnableNavigationPreloadResponse callback);
+EnableNavigationPreload_Response callback);
 
-    interface EnableNavigationPreloadResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, String> { }
-
+    interface EnableNavigationPreload_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, String> { }
 
 
     void getNavigationPreloadState(
 
-GetNavigationPreloadStateResponse callback);
+GetNavigationPreloadState_Response callback);
 
-    interface GetNavigationPreloadStateResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<Integer, String, NavigationPreloadState> { }
-
+    interface GetNavigationPreloadState_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<Integer, String, NavigationPreloadState> { }
 
 
     void setNavigationPreloadHeader(
 String value, 
-SetNavigationPreloadHeaderResponse callback);
+SetNavigationPreloadHeader_Response callback);
 
-    interface SetNavigationPreloadHeaderResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, String> { }
+    interface SetNavigationPreloadHeader_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, String> { }
 
 
 }

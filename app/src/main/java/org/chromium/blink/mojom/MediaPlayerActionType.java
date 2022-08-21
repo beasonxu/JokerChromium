@@ -13,8 +13,19 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class MediaPlayerActionType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        MediaPlayerActionType.PLAY,
+        MediaPlayerActionType.MUTE,
+        MediaPlayerActionType.LOOP,
+        MediaPlayerActionType.CONTROLS,
+        MediaPlayerActionType.PICTURE_IN_PICTURE,
+        MediaPlayerActionType.DEFAULT_ACTION_TYPE})
+    public @interface EnumType {}
 
     public static final int PLAY = 0;
     public static final int MUTE = 1;

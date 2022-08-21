@@ -27,8 +27,10 @@ import org.chromium.components.browser_ui.widget.dragreorder.DragReorderableList
 import org.chromium.components.browser_ui.widget.dragreorder.DragStateDelegate;
 import org.chromium.components.browser_ui.widget.listmenu.ListMenuButton;
 import org.chromium.components.browser_ui.widget.listmenu.ListMenuButtonDelegate;
+import org.chromium.components.browser_ui.widget.selectable_list.SelectableListUtils;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -77,7 +79,9 @@ public class LanguageListBaseAdapter extends DragReorderableListAdapter<Language
                 mDescription.setText(item.getNativeDisplayName());
             }
 
-            mMoreButton.setContentDescriptionContext(item.getDisplayName());
+            SelectableListUtils.setContentDescriptionContext(mMoreButton.getContext(), mMoreButton,
+                    item.getDisplayName(),
+                    SelectableListUtils.ContentDescriptionSource.MENU_BUTTON);
 
             // The more button will become visible if setMenuButtonDelegate is called.
             mStartIcon.setVisibility(View.GONE);
@@ -206,7 +210,7 @@ public class LanguageListBaseAdapter extends DragReorderableListAdapter<Language
      *
      * @param languages The language items to show.
      */
-    void setDisplayedLanguages(List<LanguageItem> languages) {
+    void setDisplayedLanguages(Collection<LanguageItem> languages) {
         mElements = new ArrayList<>(languages);
         notifyDataSetChanged();
     }

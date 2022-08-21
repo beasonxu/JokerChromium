@@ -2,15 +2,13 @@ package org.chromium.mojo.system.impl;
 
 import java.lang.Override;
 import java.lang.Runnable;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class BaseRunLoopJni implements BaseRunLoop.Natives {
+class BaseRunLoopJni implements BaseRunLoop.Natives {
   private static BaseRunLoop.Natives testInstance;
 
   public static final JniStaticTestMocker<BaseRunLoop.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.mojo.system.impl.BaseRunLoop.Natives>() {

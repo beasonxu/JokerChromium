@@ -4,7 +4,7 @@ import android.app.Activity;
 import dagger.Lazy;
 import dagger.internal.DoubleCheck;
 import dagger.internal.Factory;
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 import javax.inject.Provider;
 import org.chromium.base.supplier.ObservableSupplier;
 import org.chromium.chrome.browser.compositor.CompositorViewHolder;

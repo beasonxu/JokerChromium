@@ -13,8 +13,15 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class TrustTokenRedemptionPolicy {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        TrustTokenRedemptionPolicy.FORBID,
+        TrustTokenRedemptionPolicy.POTENTIALLY_PERMIT})
+    public @interface EnumType {}
 
     public static final int FORBID = 0;
     public static final int POTENTIALLY_PERMIT = 1;

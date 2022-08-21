@@ -13,8 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class NotificationActionType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        NotificationActionType.BUTTON,
+        NotificationActionType.TEXT})
+    public @interface EnumType {}
 
     public static final int BUTTON = 0;
     public static final int TEXT = 1;

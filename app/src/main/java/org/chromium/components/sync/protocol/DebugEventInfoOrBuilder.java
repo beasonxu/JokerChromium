@@ -96,23 +96,4 @@ public interface DebugEventInfoOrBuilder extends
    * @return The datatypesNotifiedFromServer at the given index.
    */
   int getDatatypesNotifiedFromServer(int index);
-
-  /**
-   * <pre>
-   * A datatype finished model association.
-   * </pre>
-   *
-   * <code>optional .sync_pb.DatatypeAssociationStats datatype_association_stats = 5;</code>
-   * @return Whether the datatypeAssociationStats field is set.
-   */
-  boolean hasDatatypeAssociationStats();
-  /**
-   * <pre>
-   * A datatype finished model association.
-   * </pre>
-   *
-   * <code>optional .sync_pb.DatatypeAssociationStats datatype_association_stats = 5;</code>
-   * @return The datatypeAssociationStats.
-   */
-  org.chromium.components.sync.protocol.DatatypeAssociationStats getDatatypeAssociationStats();
 }

@@ -13,8 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class BackgroundSyncEventLastChance {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        BackgroundSyncEventLastChance.IS_NOT_LAST_CHANCE,
+        BackgroundSyncEventLastChance.IS_LAST_CHANCE})
+    public @interface EnumType {}
 
     public static final int IS_NOT_LAST_CHANCE = 0;
     public static final int IS_LAST_CHANCE = 1;

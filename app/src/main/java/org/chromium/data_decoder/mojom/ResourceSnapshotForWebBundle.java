@@ -13,6 +13,8 @@
 
 package org.chromium.data_decoder.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ResourceSnapshotForWebBundle extends org.chromium.mojo.bindings.Interface {
 
@@ -23,28 +25,25 @@ public interface ResourceSnapshotForWebBundle extends org.chromium.mojo.bindings
 
     Manager<ResourceSnapshotForWebBundle, ResourceSnapshotForWebBundle.Proxy> MANAGER = ResourceSnapshotForWebBundle_Internal.MANAGER;
 
-
     void getResourceCount(
 
-GetResourceCountResponse callback);
+GetResourceCount_Response callback);
 
-    interface GetResourceCountResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Long> { }
-
+    interface GetResourceCount_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Long> { }
 
 
     void getResourceInfo(
 long index, 
-GetResourceInfoResponse callback);
+GetResourceInfo_Response callback);
 
-    interface GetResourceInfoResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<SerializedResourceInfo> { }
-
+    interface GetResourceInfo_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<SerializedResourceInfo> { }
 
 
     void getResourceBody(
 long index, 
-GetResourceBodyResponse callback);
+GetResourceBody_Response callback);
 
-    interface GetResourceBodyResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.BigBuffer> { }
+    interface GetResourceBody_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.BigBuffer> { }
 
 
 }

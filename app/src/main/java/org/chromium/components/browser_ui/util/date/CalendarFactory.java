@@ -4,18 +4,31 @@
 
 package org.chromium.components.browser_ui.util.date;
 
+import org.chromium.base.annotations.DoNotInline;
 import org.chromium.base.task.AsyncTask;
 import org.chromium.base.task.BackgroundOnlyAsyncTask;
 
 import java.util.Calendar;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 /** Helper class to simplify querying for a {@link Calendar} instance. */
 public final class CalendarFactory {
     private static final AsyncTask<Calendar> sCalendarBuilder =
             new CalendarBuilder().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    private static Calendar sCalendarToClone;
 
     private CalendarFactory() {}
+
+    /**
+     * Call this to warm up the AsyncTask.
+     *
+     * Since the AsyncTask is a static field, it won't be started until the static initializer runs.
+     * Calling this function simply forces the static initialized to be run.
+     */
+    @DoNotInline
+    public static void warmUp() {}
 
     /**
      *
@@ -23,16 +36,17 @@ public final class CalendarFactory {
      *         other caller and (2) will be completely reset.
      */
     public static Calendar get() {
-        Calendar calendar = null;
-        try {
-            calendar = (Calendar) sCalendarBuilder.get().clone();
-        } catch (InterruptedException | ExecutionException e) {
-            // We've tried our best. If AsyncTask really does not work, we give up. :(
-            calendar = Calendar.getInstance();
+        if (sCalendarToClone == null) {
+            try {
+                sCalendarToClone = (Calendar) sCalendarBuilder.get(250L, TimeUnit.MILLISECONDS);
+            } catch (InterruptedException | ExecutionException | TimeoutException e) {
+                // We've tried our best. If AsyncTask really does not work, we give up. :(
+                sCalendarToClone = Calendar.getInstance();
+            }
         }
-
-        calendar.clear();
-        return calendar;
+        Calendar c = (Calendar) sCalendarToClone.clone();
+        c.clear();
+        return c;
     }
 
     private static class CalendarBuilder extends BackgroundOnlyAsyncTask<Calendar> {

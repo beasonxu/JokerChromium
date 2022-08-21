@@ -13,8 +13,17 @@
 
 package org.chromium.proxy_resolver.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class HostResolveOperation {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        HostResolveOperation.DNS_RESOLVE,
+        HostResolveOperation.DNS_RESOLVE_EX,
+        HostResolveOperation.MY_IP_ADDRESS,
+        HostResolveOperation.MY_IP_ADDRESS_EX})
+    public @interface EnumType {}
 
     public static final int DNS_RESOLVE = 0;
     public static final int DNS_RESOLVE_EX = 1;

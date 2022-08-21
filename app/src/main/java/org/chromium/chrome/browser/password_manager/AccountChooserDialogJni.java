@@ -1,15 +1,13 @@
 package org.chromium.chrome.browser.password_manager;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class AccountChooserDialogJni implements AccountChooserDialog.Natives {
+class AccountChooserDialogJni implements AccountChooserDialog.Natives {
   private static AccountChooserDialog.Natives testInstance;
 
   public static final JniStaticTestMocker<AccountChooserDialog.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.password_manager.AccountChooserDialog.Natives>() {
@@ -32,11 +30,6 @@ final class AccountChooserDialogJni implements AccountChooserDialog.Natives {
   @Override
   public void cancelDialog(long nativeAccountChooserDialogAndroid, AccountChooserDialog caller) {
     GEN_JNI.org_chromium_chrome_browser_password_1manager_AccountChooserDialog_cancelDialog(nativeAccountChooserDialogAndroid, caller);
-  }
-
-  @Override
-  public void destroy(long nativeAccountChooserDialogAndroid, AccountChooserDialog caller) {
-    GEN_JNI.org_chromium_chrome_browser_password_1manager_AccountChooserDialog_destroy(nativeAccountChooserDialogAndroid, caller);
   }
 
   @Override

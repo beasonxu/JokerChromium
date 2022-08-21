@@ -1,15 +1,13 @@
 package org.chromium.chrome.modules.dev_ui;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class DevUiInstallListenerJni implements DevUiInstallListener.Natives {
+class DevUiInstallListenerJni implements DevUiInstallListener.Natives {
   private static DevUiInstallListener.Natives testInstance;
 
   public static final JniStaticTestMocker<DevUiInstallListener.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.modules.dev_ui.DevUiInstallListener.Natives>() {

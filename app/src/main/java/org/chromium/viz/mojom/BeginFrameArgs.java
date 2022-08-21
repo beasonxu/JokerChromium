@@ -13,17 +13,20 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class BeginFrameArgs extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 64;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(64, 0)};
+    private static final int STRUCT_SIZE = 72;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(72, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public org.chromium.mojo_base.mojom.TimeTicks frameTime;
     public org.chromium.mojo_base.mojom.TimeTicks deadline;
     public org.chromium.mojo_base.mojom.TimeDelta interval;
     public long sourceId;
     public long sequenceNumber;
+    public long framesThrottledSinceLast;
     public long traceId;
     public int type;
     public boolean onCriticalPath;
@@ -87,21 +90,25 @@ public final class BeginFrameArgs extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.traceId = decoder0.readLong(48);
+                result.framesThrottledSinceLast = decoder0.readLong(48);
                 }
                 {
                     
-                result.type = decoder0.readInt(56);
+                result.traceId = decoder0.readLong(56);
+                }
+                {
+                    
+                result.type = decoder0.readInt(64);
                     BeginFrameArgsType.validate(result.type);
                     result.type = BeginFrameArgsType.toKnownValue(result.type);
                 }
                 {
                     
-                result.onCriticalPath = decoder0.readBoolean(60, 0);
+                result.onCriticalPath = decoder0.readBoolean(68, 0);
                 }
                 {
                     
-                result.animateOnly = decoder0.readBoolean(60, 1);
+                result.animateOnly = decoder0.readBoolean(68, 1);
                 }
 
         } finally {
@@ -125,12 +132,14 @@ public final class BeginFrameArgs extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.sequenceNumber, 40);
         
-        encoder0.encode(this.traceId, 48);
+        encoder0.encode(this.framesThrottledSinceLast, 48);
         
-        encoder0.encode(this.type, 56);
+        encoder0.encode(this.traceId, 56);
         
-        encoder0.encode(this.onCriticalPath, 60, 0);
+        encoder0.encode(this.type, 64);
         
-        encoder0.encode(this.animateOnly, 60, 1);
+        encoder0.encode(this.onCriticalPath, 68, 0);
+        
+        encoder0.encode(this.animateOnly, 68, 1);
     }
 }

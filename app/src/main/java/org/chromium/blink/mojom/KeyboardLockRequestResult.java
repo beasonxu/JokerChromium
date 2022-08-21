@@ -13,8 +13,18 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class KeyboardLockRequestResult {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        KeyboardLockRequestResult.SUCCESS,
+        KeyboardLockRequestResult.FRAME_DETACHED_ERROR,
+        KeyboardLockRequestResult.NO_VALID_KEY_CODES_ERROR,
+        KeyboardLockRequestResult.CHILD_FRAME_ERROR,
+        KeyboardLockRequestResult.REQUEST_FAILED_ERROR})
+    public @interface EnumType {}
 
     public static final int SUCCESS = 0;
     public static final int FRAME_DETACHED_ERROR = 1;

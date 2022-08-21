@@ -1,16 +1,15 @@
 package org.chromium.chrome.browser.enterprise.util;
 
 import java.lang.Override;
-import javax.annotation.Generated;
+import java.lang.String;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.chrome.browser.profiles.Profile;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-public final class ManagedBrowserUtilsJni implements ManagedBrowserUtils.Natives {
+public class ManagedBrowserUtilsJni implements ManagedBrowserUtils.Natives {
   private static ManagedBrowserUtils.Natives testInstance;
 
   public static final JniStaticTestMocker<ManagedBrowserUtils.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.enterprise.util.ManagedBrowserUtils.Natives>() {
@@ -25,8 +24,13 @@ public final class ManagedBrowserUtilsJni implements ManagedBrowserUtils.Natives
   };
 
   @Override
-  public boolean hasBrowserPoliciesApplied(Profile profile) {
-    return (boolean)GEN_JNI.org_chromium_chrome_browser_enterprise_util_ManagedBrowserUtils_hasBrowserPoliciesApplied(profile);
+  public boolean isBrowserManaged(Profile profile) {
+    return (boolean)GEN_JNI.org_chromium_chrome_browser_enterprise_util_ManagedBrowserUtils_isBrowserManaged(profile);
+  }
+
+  @Override
+  public String getAccountManagerName(Profile profile) {
+    return (String)GEN_JNI.org_chromium_chrome_browser_enterprise_util_ManagedBrowserUtils_getAccountManagerName(profile);
   }
 
   public static ManagedBrowserUtils.Natives get() {

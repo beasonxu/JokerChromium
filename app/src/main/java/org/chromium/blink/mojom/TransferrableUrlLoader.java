@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class TransferrableUrlLoader extends org.chromium.mojo.bindings.Struct {
 
@@ -23,9 +25,11 @@ public final class TransferrableUrlLoader extends org.chromium.mojo.bindings.Str
     public org.chromium.network.mojom.UrlLoader urlLoader;
     public org.chromium.mojo.bindings.InterfaceRequest<org.chromium.network.mojom.UrlLoaderClient> urlLoaderClient;
     public org.chromium.network.mojom.UrlResponseHead head;
+    public org.chromium.mojo.system.DataPipe.ConsumerHandle body;
 
     private TransferrableUrlLoader(int version) {
         super(STRUCT_SIZE, version);
+        this.body = org.chromium.mojo.system.InvalidHandle.INSTANCE;
     }
 
     public TransferrableUrlLoader() {
@@ -72,6 +76,10 @@ public final class TransferrableUrlLoader extends org.chromium.mojo.bindings.Str
                 }
                 {
                     
+                result.body = decoder0.readConsumerHandle(28, true);
+                }
+                {
+                    
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
                 result.head = org.chromium.network.mojom.UrlResponseHead.decode(decoder1);
                 }
@@ -92,6 +100,8 @@ public final class TransferrableUrlLoader extends org.chromium.mojo.bindings.Str
         encoder0.encode(this.urlLoader, 16, false, org.chromium.network.mojom.UrlLoader.MANAGER);
         
         encoder0.encode(this.urlLoaderClient, 24, false);
+        
+        encoder0.encode(this.body, 28, true);
         
         encoder0.encode(this.head, 32, false);
     }

@@ -1,8 +1,6 @@
 package org.chromium.chrome.browser.infobar;
 
 import java.lang.Override;
-import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
@@ -10,9 +8,8 @@ import org.chromium.base.natives.GEN_JNI;
 import org.chromium.chrome.browser.tab.Tab;
 import org.chromium.content_public.browser.WebContents;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class SurveyInfoBarJni implements SurveyInfoBar.Natives {
+class SurveyInfoBarJni implements SurveyInfoBar.Natives {
   private static SurveyInfoBar.Natives testInstance;
 
   public static final JniStaticTestMocker<SurveyInfoBar.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.infobar.SurveyInfoBar.Natives>() {
@@ -27,9 +24,9 @@ final class SurveyInfoBarJni implements SurveyInfoBar.Natives {
   };
 
   @Override
-  public void create(WebContents webContents, String siteId, boolean showAsBottomSheet,
-      int displayLogoResId, SurveyInfoBarDelegate surveyInfoBarDelegate) {
-    GEN_JNI.org_chromium_chrome_browser_infobar_SurveyInfoBar_create(webContents, siteId, showAsBottomSheet, displayLogoResId, surveyInfoBarDelegate);
+  public void create(WebContents webContents, int displayLogoResId,
+      SurveyInfoBarDelegate surveyInfoBarDelegate) {
+    GEN_JNI.org_chromium_chrome_browser_infobar_SurveyInfoBar_create(webContents, displayLogoResId, surveyInfoBarDelegate);
   }
 
   @Override

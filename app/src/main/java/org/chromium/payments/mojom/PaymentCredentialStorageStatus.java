@@ -13,11 +13,18 @@
 
 package org.chromium.payments.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PaymentCredentialStorageStatus {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PaymentCredentialStorageStatus.SUCCESS,
+        PaymentCredentialStorageStatus.FAILED_TO_STORE_CREDENTIAL})
+    public @interface EnumType {}
 
     public static final int SUCCESS = 0;
-    public static final int FAILED_TO_STORE_INSTRUMENT = 1;
+    public static final int FAILED_TO_STORE_CREDENTIAL = 1;
     public static final int MIN_VALUE = 0;
     public static final int MAX_VALUE = 1;
 

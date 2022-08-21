@@ -13,8 +13,15 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class CorsPreflightPolicy {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        CorsPreflightPolicy.CONSIDER_PREFLIGHT,
+        CorsPreflightPolicy.PREVENT_PREFLIGHT})
+    public @interface EnumType {}
 
     public static final int CONSIDER_PREFLIGHT = 0;
     public static final int PREVENT_PREFLIGHT = 1;

@@ -970,6 +970,72 @@ public  final class NigoriModel extends
     bitField0_ |= 0x00000200;
   }
 
+  public static final int TRUSTED_VAULT_DEBUG_INFO_FIELD_NUMBER = 13;
+  private org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo trustedVaultDebugInfo_;
+  /**
+   * <pre>
+   * Some debug-only fields for passphrase type TRUSTED_VAULT_PASSPHRASE.
+   * </pre>
+   *
+   * <code>optional .sync_pb.NigoriSpecifics.TrustedVaultDebugInfo trusted_vault_debug_info = 13;</code>
+   */
+  @java.lang.Override
+  public boolean hasTrustedVaultDebugInfo() {
+    return ((bitField0_ & 0x00000400) != 0);
+  }
+  /**
+   * <pre>
+   * Some debug-only fields for passphrase type TRUSTED_VAULT_PASSPHRASE.
+   * </pre>
+   *
+   * <code>optional .sync_pb.NigoriSpecifics.TrustedVaultDebugInfo trusted_vault_debug_info = 13;</code>
+   */
+  @java.lang.Override
+  public org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo getTrustedVaultDebugInfo() {
+    return trustedVaultDebugInfo_ == null ? org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo.getDefaultInstance() : trustedVaultDebugInfo_;
+  }
+  /**
+   * <pre>
+   * Some debug-only fields for passphrase type TRUSTED_VAULT_PASSPHRASE.
+   * </pre>
+   *
+   * <code>optional .sync_pb.NigoriSpecifics.TrustedVaultDebugInfo trusted_vault_debug_info = 13;</code>
+   */
+  private void setTrustedVaultDebugInfo(org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo value) {
+    value.getClass();
+  trustedVaultDebugInfo_ = value;
+    bitField0_ |= 0x00000400;
+    }
+  /**
+   * <pre>
+   * Some debug-only fields for passphrase type TRUSTED_VAULT_PASSPHRASE.
+   * </pre>
+   *
+   * <code>optional .sync_pb.NigoriSpecifics.TrustedVaultDebugInfo trusted_vault_debug_info = 13;</code>
+   */
+  @java.lang.SuppressWarnings({"ReferenceEquality"})
+  private void mergeTrustedVaultDebugInfo(org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo value) {
+    value.getClass();
+  if (trustedVaultDebugInfo_ != null &&
+        trustedVaultDebugInfo_ != org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo.getDefaultInstance()) {
+      trustedVaultDebugInfo_ =
+        org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo.newBuilder(trustedVaultDebugInfo_).mergeFrom(value).buildPartial();
+    } else {
+      trustedVaultDebugInfo_ = value;
+    }
+    bitField0_ |= 0x00000400;
+  }
+  /**
+   * <pre>
+   * Some debug-only fields for passphrase type TRUSTED_VAULT_PASSPHRASE.
+   * </pre>
+   *
+   * <code>optional .sync_pb.NigoriSpecifics.TrustedVaultDebugInfo trusted_vault_debug_info = 13;</code>
+   */
+  private void clearTrustedVaultDebugInfo() {  trustedVaultDebugInfo_ = null;
+    bitField0_ = (bitField0_ & ~0x00000400);
+  }
+
   public static org.chromium.components.sync.protocol.NigoriModel parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2052,6 +2118,77 @@ public  final class NigoriModel extends
       return this;
     }
 
+    /**
+     * <pre>
+     * Some debug-only fields for passphrase type TRUSTED_VAULT_PASSPHRASE.
+     * </pre>
+     *
+     * <code>optional .sync_pb.NigoriSpecifics.TrustedVaultDebugInfo trusted_vault_debug_info = 13;</code>
+     */
+    @java.lang.Override
+    public boolean hasTrustedVaultDebugInfo() {
+      return instance.hasTrustedVaultDebugInfo();
+    }
+    /**
+     * <pre>
+     * Some debug-only fields for passphrase type TRUSTED_VAULT_PASSPHRASE.
+     * </pre>
+     *
+     * <code>optional .sync_pb.NigoriSpecifics.TrustedVaultDebugInfo trusted_vault_debug_info = 13;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo getTrustedVaultDebugInfo() {
+      return instance.getTrustedVaultDebugInfo();
+    }
+    /**
+     * <pre>
+     * Some debug-only fields for passphrase type TRUSTED_VAULT_PASSPHRASE.
+     * </pre>
+     *
+     * <code>optional .sync_pb.NigoriSpecifics.TrustedVaultDebugInfo trusted_vault_debug_info = 13;</code>
+     */
+    public Builder setTrustedVaultDebugInfo(org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo value) {
+      copyOnWrite();
+      instance.setTrustedVaultDebugInfo(value);
+      return this;
+      }
+    /**
+     * <pre>
+     * Some debug-only fields for passphrase type TRUSTED_VAULT_PASSPHRASE.
+     * </pre>
+     *
+     * <code>optional .sync_pb.NigoriSpecifics.TrustedVaultDebugInfo trusted_vault_debug_info = 13;</code>
+     */
+    public Builder setTrustedVaultDebugInfo(
+        org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo.Builder builderForValue) {
+      copyOnWrite();
+      instance.setTrustedVaultDebugInfo(builderForValue.build());
+      return this;
+    }
+    /**
+     * <pre>
+     * Some debug-only fields for passphrase type TRUSTED_VAULT_PASSPHRASE.
+     * </pre>
+     *
+     * <code>optional .sync_pb.NigoriSpecifics.TrustedVaultDebugInfo trusted_vault_debug_info = 13;</code>
+     */
+    public Builder mergeTrustedVaultDebugInfo(org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo value) {
+      copyOnWrite();
+      instance.mergeTrustedVaultDebugInfo(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * Some debug-only fields for passphrase type TRUSTED_VAULT_PASSPHRASE.
+     * </pre>
+     *
+     * <code>optional .sync_pb.NigoriSpecifics.TrustedVaultDebugInfo trusted_vault_debug_info = 13;</code>
+     */
+    public Builder clearTrustedVaultDebugInfo() {  copyOnWrite();
+      instance.clearTrustedVaultDebugInfo();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:sync_pb.NigoriModel)
   }
   @java.lang.Override
@@ -2082,11 +2219,12 @@ public  final class NigoriModel extends
             "keystoreKey_",
             "pendingKeystoreDecryptorToken_",
             "lastDefaultTrustedVaultKeyName_",
+            "trustedVaultDebugInfo_",
           };
           java.lang.String info =
-              "\u0001\f\u0000\u0001\u0001\f\f\u0000\u0002\u0000\u0001\u1009\u0000\u0002\u1008\u0001" +
+              "\u0001\r\u0000\u0001\u0001\r\r\u0000\u0002\u0000\u0001\u1009\u0000\u0002\u1008\u0001" +
               "\u0003\u1009\u0002\u0004\u100c\u0003\u0005\u1002\u0004\u0006\u1002\u0005\u0007\u1009" +
-              "\u0006\b\u1007\u0007\t\u0016\n\u001a\u000b\u1009\b\f\u1008\t";
+              "\u0006\b\u1007\u0007\t\u0016\n\u001a\u000b\u1009\b\f\u1008\t\r\u1009\n";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

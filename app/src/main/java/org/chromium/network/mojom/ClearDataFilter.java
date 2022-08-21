@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class ClearDataFilter extends org.chromium.mojo.bindings.Struct {
 
@@ -22,6 +24,11 @@ public final class ClearDataFilter extends org.chromium.mojo.bindings.Struct {
 
     public static final class Type {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            Type.DELETE_MATCHES,
+            Type.KEEP_MATCHES})
+        public @interface EnumType {}
 
         public static final int DELETE_MATCHES = 0;
         public static final int KEEP_MATCHES = 1;

@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class VibrationManager_Internal {
 
@@ -63,7 +65,7 @@ class VibrationManager_Internal {
         @Override
         public void vibrate(
 long milliseconds, 
-VibrateResponse callback) {
+Vibrate_Response callback) {
 
             VibrationManagerVibrateParams _message = new VibrationManagerVibrateParams();
 
@@ -85,7 +87,7 @@ VibrateResponse callback) {
         @Override
         public void cancel(
 
-CancelResponse callback) {
+Cancel_Response callback) {
 
             VibrationManagerCancelParams _message = new VibrationManagerCancelParams();
 
@@ -322,9 +324,9 @@ CancelResponse callback) {
 
     static class VibrationManagerVibrateResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final VibrationManager.VibrateResponse mCallback;
+        private final VibrationManager.Vibrate_Response mCallback;
 
-        VibrationManagerVibrateResponseParamsForwardToCallback(VibrationManager.VibrateResponse callback) {
+        VibrationManagerVibrateResponseParamsForwardToCallback(VibrationManager.Vibrate_Response callback) {
             this.mCallback = callback;
         }
 
@@ -347,7 +349,7 @@ CancelResponse callback) {
         }
     }
 
-    static class VibrationManagerVibrateResponseParamsProxyToResponder implements VibrationManager.VibrateResponse {
+    static class VibrationManagerVibrateResponseParamsProxyToResponder implements VibrationManager.Vibrate_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -491,9 +493,9 @@ CancelResponse callback) {
 
     static class VibrationManagerCancelResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final VibrationManager.CancelResponse mCallback;
+        private final VibrationManager.Cancel_Response mCallback;
 
-        VibrationManagerCancelResponseParamsForwardToCallback(VibrationManager.CancelResponse callback) {
+        VibrationManagerCancelResponseParamsForwardToCallback(VibrationManager.Cancel_Response callback) {
             this.mCallback = callback;
         }
 
@@ -516,7 +518,7 @@ CancelResponse callback) {
         }
     }
 
-    static class VibrationManagerCancelResponseParamsProxyToResponder implements VibrationManager.CancelResponse {
+    static class VibrationManagerCancelResponseParamsProxyToResponder implements VibrationManager.Cancel_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

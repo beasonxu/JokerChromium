@@ -1205,24 +1205,6 @@ public final class ExtensionInstallProtos {
       /**
        * <pre>
        * by enterprise policy.
-       * Deprecated: The extension is disabled because it's blocked due to mature
-       * content for supervised users.
-       * </pre>
-       *
-       * <code>DEPRECATED_BLOCKED_MATURE = 14;</code>
-       */
-      DEPRECATED_BLOCKED_MATURE(14),
-      /**
-       * <pre>
-       * The extension is disabled due to having a malware attribute in the Omaha
-       * config.
-       * </pre>
-       *
-       * <code>DISABLE_REMOTELY_FOR_MALWARE = 15;</code>
-       */
-      DISABLE_REMOTELY_FOR_MALWARE(15),
-      /**
-       * <pre>
        * The extension is being reinstalled.
        * </pre>
        *
@@ -1238,6 +1220,15 @@ public final class ExtensionInstallProtos {
        * <code>NOT_ALLOWLISTED = 17;</code>
        */
       NOT_ALLOWLISTED(17),
+      /**
+       * <pre>
+       * The extension is disabled because it is not in 1st party ash keep list
+       * and the 1st party ash extension keep list is enforced in ash.
+       * </pre>
+       *
+       * <code>NOT_ASH_KEEPLISTED = 18;</code>
+       */
+      NOT_ASH_KEEPLISTED(18),
       ;
 
       /**
@@ -1355,24 +1346,6 @@ public final class ExtensionInstallProtos {
       /**
        * <pre>
        * by enterprise policy.
-       * Deprecated: The extension is disabled because it's blocked due to mature
-       * content for supervised users.
-       * </pre>
-       *
-       * <code>DEPRECATED_BLOCKED_MATURE = 14;</code>
-       */
-      public static final int DEPRECATED_BLOCKED_MATURE_VALUE = 14;
-      /**
-       * <pre>
-       * The extension is disabled due to having a malware attribute in the Omaha
-       * config.
-       * </pre>
-       *
-       * <code>DISABLE_REMOTELY_FOR_MALWARE = 15;</code>
-       */
-      public static final int DISABLE_REMOTELY_FOR_MALWARE_VALUE = 15;
-      /**
-       * <pre>
        * The extension is being reinstalled.
        * </pre>
        *
@@ -1388,6 +1361,15 @@ public final class ExtensionInstallProtos {
        * <code>NOT_ALLOWLISTED = 17;</code>
        */
       public static final int NOT_ALLOWLISTED_VALUE = 17;
+      /**
+       * <pre>
+       * The extension is disabled because it is not in 1st party ash keep list
+       * and the 1st party ash extension keep list is enforced in ash.
+       * </pre>
+       *
+       * <code>NOT_ASH_KEEPLISTED = 18;</code>
+       */
+      public static final int NOT_ASH_KEEPLISTED_VALUE = 18;
 
 
       @java.lang.Override
@@ -1421,10 +1403,9 @@ public final class ExtensionInstallProtos {
           case 11: return UPDATE_REQUIRED_BY_POLICY;
           case 12: return CUSTODIAN_APPROVAL_REQUIRED;
           case 13: return BLOCKED_BY_POLICY;
-          case 14: return DEPRECATED_BLOCKED_MATURE;
-          case 15: return DISABLE_REMOTELY_FOR_MALWARE;
           case 16: return REINSTALL;
           case 17: return NOT_ALLOWLISTED;
+          case 18: return NOT_ASH_KEEPLISTED;
           default: return null;
         }
       }

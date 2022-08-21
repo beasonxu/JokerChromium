@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class EmbeddedWorkerInstanceHost_Internal {
 
@@ -77,7 +79,7 @@ class EmbeddedWorkerInstanceHost_Internal {
         @Override
         public void requestTermination(
 
-RequestTerminationResponse callback) {
+RequestTermination_Response callback) {
 
             EmbeddedWorkerInstanceHostRequestTerminationParams _message = new EmbeddedWorkerInstanceHostRequestTerminationParams();
 
@@ -162,13 +164,13 @@ DevToolsAgent agent, org.chromium.mojo.bindings.InterfaceRequest<DevToolsAgentHo
 
         @Override
         public void onStarted(
-int status, boolean hasFetchHandler, int threadId, EmbeddedWorkerStartTiming startTiming) {
+int status, int fetchHandlerType, int threadId, EmbeddedWorkerStartTiming startTiming) {
 
             EmbeddedWorkerInstanceHostOnStartedParams _message = new EmbeddedWorkerInstanceHostOnStartedParams();
 
             _message.status = status;
 
-            _message.hasFetchHandler = hasFetchHandler;
+            _message.fetchHandlerType = fetchHandlerType;
 
             _message.threadId = threadId;
 
@@ -334,7 +336,7 @@ int source, int messageLevel, org.chromium.mojo_base.mojom.String16 message, int
                         EmbeddedWorkerInstanceHostOnStartedParams data =
                                 EmbeddedWorkerInstanceHostOnStartedParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().onStarted(data.status, data.hasFetchHandler, data.threadId, data.startTiming);
+                        getImpl().onStarted(data.status, data.fetchHandlerType, data.threadId, data.startTiming);
                         return true;
                     }
 
@@ -566,9 +568,9 @@ int source, int messageLevel, org.chromium.mojo_base.mojom.String16 message, int
 
     static class EmbeddedWorkerInstanceHostRequestTerminationResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final EmbeddedWorkerInstanceHost.RequestTerminationResponse mCallback;
+        private final EmbeddedWorkerInstanceHost.RequestTermination_Response mCallback;
 
-        EmbeddedWorkerInstanceHostRequestTerminationResponseParamsForwardToCallback(EmbeddedWorkerInstanceHost.RequestTerminationResponse callback) {
+        EmbeddedWorkerInstanceHostRequestTerminationResponseParamsForwardToCallback(EmbeddedWorkerInstanceHost.RequestTermination_Response callback) {
             this.mCallback = callback;
         }
 
@@ -593,7 +595,7 @@ int source, int messageLevel, org.chromium.mojo_base.mojom.String16 message, int
         }
     }
 
-    static class EmbeddedWorkerInstanceHostRequestTerminationResponseParamsProxyToResponder implements EmbeddedWorkerInstanceHost.RequestTerminationResponse {
+    static class EmbeddedWorkerInstanceHostRequestTerminationResponseParamsProxyToResponder implements EmbeddedWorkerInstanceHost.RequestTermination_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -881,7 +883,7 @@ int source, int messageLevel, org.chromium.mojo_base.mojom.String16 message, int
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public int status;
-        public boolean hasFetchHandler;
+        public int fetchHandlerType;
         public int threadId;
         public EmbeddedWorkerStartTiming startTiming;
 
@@ -926,7 +928,9 @@ int source, int messageLevel, org.chromium.mojo_base.mojom.String16 message, int
                     }
                     {
                         
-                    result.hasFetchHandler = decoder0.readBoolean(12, 0);
+                    result.fetchHandlerType = decoder0.readInt(12);
+                        ServiceWorkerFetchHandlerType.validate(result.fetchHandlerType);
+                        result.fetchHandlerType = ServiceWorkerFetchHandlerType.toKnownValue(result.fetchHandlerType);
                     }
                     {
                         
@@ -951,7 +955,7 @@ int source, int messageLevel, org.chromium.mojo_base.mojom.String16 message, int
             
             encoder0.encode(this.status, 8);
             
-            encoder0.encode(this.hasFetchHandler, 12, 0);
+            encoder0.encode(this.fetchHandlerType, 12);
             
             encoder0.encode(this.threadId, 16);
             

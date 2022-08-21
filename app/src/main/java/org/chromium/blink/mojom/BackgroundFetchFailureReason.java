@@ -13,8 +13,21 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class BackgroundFetchFailureReason {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        BackgroundFetchFailureReason.NONE,
+        BackgroundFetchFailureReason.CANCELLED_FROM_UI,
+        BackgroundFetchFailureReason.CANCELLED_BY_DEVELOPER,
+        BackgroundFetchFailureReason.BAD_STATUS,
+        BackgroundFetchFailureReason.FETCH_ERROR,
+        BackgroundFetchFailureReason.SERVICE_WORKER_UNAVAILABLE,
+        BackgroundFetchFailureReason.QUOTA_EXCEEDED,
+        BackgroundFetchFailureReason.DOWNLOAD_TOTAL_EXCEEDED})
+    public @interface EnumType {}
 
     public static final int NONE = 0;
     public static final int CANCELLED_FROM_UI = 1;

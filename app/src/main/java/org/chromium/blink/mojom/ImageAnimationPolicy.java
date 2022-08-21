@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ImageAnimationPolicy {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ImageAnimationPolicy.IMAGE_ANIMATION_POLICY_ALLOWED,
+        ImageAnimationPolicy.IMAGE_ANIMATION_POLICY_ANIMATE_ONCE,
+        ImageAnimationPolicy.IMAGE_ANIMATION_POLICY_NO_ANIMATION})
+    public @interface EnumType {}
 
     public static final int IMAGE_ANIMATION_POLICY_ALLOWED = 0;
     public static final int IMAGE_ANIMATION_POLICY_ANIMATE_ONCE = 1;

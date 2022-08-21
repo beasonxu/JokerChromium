@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ProxyLookupClient extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface ProxyLookupClient extends org.chromium.mojo.bindings.Interface 
     }
 
     Manager<ProxyLookupClient, ProxyLookupClient.Proxy> MANAGER = ProxyLookupClient_Internal.MANAGER;
-
 
     void onProxyLookupComplete(
 int netError, org.chromium.proxy_resolver.mojom.ProxyInfo proxyInfo);

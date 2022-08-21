@@ -13,8 +13,36 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PermissionName {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PermissionName.GEOLOCATION,
+        PermissionName.NOTIFICATIONS,
+        PermissionName.MIDI,
+        PermissionName.PROTECTED_MEDIA_IDENTIFIER,
+        PermissionName.DURABLE_STORAGE,
+        PermissionName.AUDIO_CAPTURE,
+        PermissionName.VIDEO_CAPTURE,
+        PermissionName.BACKGROUND_SYNC,
+        PermissionName.SENSORS,
+        PermissionName.ACCESSIBILITY_EVENTS,
+        PermissionName.CLIPBOARD_READ,
+        PermissionName.CLIPBOARD_WRITE,
+        PermissionName.PAYMENT_HANDLER,
+        PermissionName.BACKGROUND_FETCH,
+        PermissionName.IDLE_DETECTION,
+        PermissionName.PERIODIC_BACKGROUND_SYNC,
+        PermissionName.SCREEN_WAKE_LOCK,
+        PermissionName.SYSTEM_WAKE_LOCK,
+        PermissionName.NFC,
+        PermissionName.STORAGE_ACCESS,
+        PermissionName.WINDOW_PLACEMENT,
+        PermissionName.LOCAL_FONTS,
+        PermissionName.DISPLAY_CAPTURE})
+    public @interface EnumType {}
 
     public static final int GEOLOCATION = 0;
     public static final int NOTIFICATIONS = 1;
@@ -37,7 +65,7 @@ public final class PermissionName {
     public static final int NFC = 18;
     public static final int STORAGE_ACCESS = 19;
     public static final int WINDOW_PLACEMENT = 20;
-    public static final int FONT_ACCESS = 21;
+    public static final int LOCAL_FONTS = 21;
     public static final int DISPLAY_CAPTURE = 22;
     public static final int MIN_VALUE = 0;
     public static final int MAX_VALUE = 22;

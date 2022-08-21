@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -21,8 +21,8 @@ import java.lang.annotation.RetentionPolicy;
 @Retention(RetentionPolicy.SOURCE)
 public @interface NetId {
   /**
-   * Cannot use |kInvalidNetworkHandle| here as the Java generator fails, instead enforce their
-   * equality with CHECK in NetworkChangeNotifierAndroid().
+   * Cannot use |handles::kInvalidNetworkHandle| here as the Java generator fails, instead enforce
+   * their equality with CHECK in NetworkChangeNotifierAndroid().
    */
   int INVALID = -1;
 }

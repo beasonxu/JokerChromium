@@ -27,7 +27,9 @@ class TabModelOrderControllerImpl implements TabModelOrderController {
 
     @Override
     public int determineInsertionIndex(@TabLaunchType int type, int position, Tab newTab) {
-        if (type == TabLaunchType.FROM_BROWSER_ACTIONS) return -1;
+        if (type == TabLaunchType.FROM_BROWSER_ACTIONS || type == TabLaunchType.FROM_RECENT_TABS) {
+            return -1;
+        }
         if (linkClicked(type)) {
             position = determineInsertionIndex(type, newTab);
         }
@@ -122,7 +124,9 @@ class TabModelOrderControllerImpl implements TabModelOrderController {
      */
     static boolean linkClicked(@TabLaunchType int type) {
         return type == TabLaunchType.FROM_LINK || type == TabLaunchType.FROM_LONGPRESS_FOREGROUND
-                || type == TabLaunchType.FROM_LONGPRESS_BACKGROUND;
+                || type == TabLaunchType.FROM_LONGPRESS_BACKGROUND
+                || type == TabLaunchType.FROM_LONGPRESS_BACKGROUND_IN_GROUP
+                || type == TabLaunchType.FROM_LONGPRESS_INCOGNITO;
     }
 
     @Override
@@ -132,6 +136,8 @@ class TabModelOrderControllerImpl implements TabModelOrderController {
             return false;
         }
         return type != TabLaunchType.FROM_LONGPRESS_BACKGROUND
+                && type != TabLaunchType.FROM_LONGPRESS_BACKGROUND_IN_GROUP
+                && type != TabLaunchType.FROM_RECENT_TABS
                 || (!mTabModelSelector.isIncognitoSelected() && isNewTabIncognito);
     }
 

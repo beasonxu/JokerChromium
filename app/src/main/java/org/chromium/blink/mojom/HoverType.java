@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class HoverType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        HoverType.HOVER_NONE,
+        HoverType.HOVER_FIRST_TYPE,
+        HoverType.HOVER_HOVER_TYPE})
+    public @interface EnumType {}
 
     public static final int HOVER_NONE = 1;
     public static final int HOVER_FIRST_TYPE = 1;

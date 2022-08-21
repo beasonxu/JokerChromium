@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class ProxyResolvingSocket_Internal {
 
@@ -61,7 +63,7 @@ class ProxyResolvingSocket_Internal {
         @Override
         public void upgradeToTls(
 HostPortPair hostPortPair, MutableNetworkTrafficAnnotationTag trafficAnnotation, org.chromium.mojo.bindings.InterfaceRequest<TlsClientSocket> receiver, SocketObserver observer, 
-UpgradeToTlsResponse callback) {
+UpgradeToTls_Response callback) {
 
             ProxyResolvingSocketUpgradeToTlsParams _message = new ProxyResolvingSocketUpgradeToTlsParams();
 
@@ -336,9 +338,9 @@ UpgradeToTlsResponse callback) {
 
     static class ProxyResolvingSocketUpgradeToTlsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ProxyResolvingSocket.UpgradeToTlsResponse mCallback;
+        private final ProxyResolvingSocket.UpgradeToTls_Response mCallback;
 
-        ProxyResolvingSocketUpgradeToTlsResponseParamsForwardToCallback(ProxyResolvingSocket.UpgradeToTlsResponse callback) {
+        ProxyResolvingSocketUpgradeToTlsResponseParamsForwardToCallback(ProxyResolvingSocket.UpgradeToTls_Response callback) {
             this.mCallback = callback;
         }
 
@@ -363,7 +365,7 @@ UpgradeToTlsResponse callback) {
         }
     }
 
-    static class ProxyResolvingSocketUpgradeToTlsResponseParamsProxyToResponder implements ProxyResolvingSocket.UpgradeToTlsResponse {
+    static class ProxyResolvingSocketUpgradeToTlsResponseParamsProxyToResponder implements ProxyResolvingSocket.UpgradeToTls_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

@@ -2,15 +2,13 @@ package org.chromium.chrome.browser.download;
 
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class DownloadUtilsJni implements DownloadUtils.Natives {
+class DownloadUtilsJni implements DownloadUtils.Natives {
   private static DownloadUtils.Natives testInstance;
 
   public static final JniStaticTestMocker<DownloadUtils.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.download.DownloadUtils.Natives>() {

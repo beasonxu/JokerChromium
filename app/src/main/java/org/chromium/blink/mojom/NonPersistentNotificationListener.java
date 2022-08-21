@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface NonPersistentNotificationListener extends org.chromium.mojo.bindings.Interface {
 
@@ -23,25 +25,22 @@ public interface NonPersistentNotificationListener extends org.chromium.mojo.bin
 
     Manager<NonPersistentNotificationListener, NonPersistentNotificationListener.Proxy> MANAGER = NonPersistentNotificationListener_Internal.MANAGER;
 
-
     void onShow(
 );
 
 
-
     void onClick(
 
-OnClickResponse callback);
+OnClick_Response callback);
 
-    interface OnClickResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface OnClick_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void onClose(
 
-OnCloseResponse callback);
+OnClose_Response callback);
 
-    interface OnCloseResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
+    interface OnClose_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
 }

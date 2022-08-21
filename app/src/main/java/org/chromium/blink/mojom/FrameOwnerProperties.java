@@ -13,11 +13,13 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class FrameOwnerProperties extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 48;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
+    private static final int STRUCT_SIZE = 40;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public String name;
     public int scrollbarMode;
@@ -27,7 +29,6 @@ public final class FrameOwnerProperties extends org.chromium.mojo.bindings.Struc
     public boolean allowPaymentRequest;
     public boolean isDisplayNone;
     public int colorScheme;
-    public String requiredCsp;
 
     private FrameOwnerProperties(int version) {
         super(STRUCT_SIZE, version);
@@ -99,10 +100,6 @@ public final class FrameOwnerProperties extends org.chromium.mojo.bindings.Struc
                     ColorScheme.validate(result.colorScheme);
                     result.colorScheme = ColorScheme.toKnownValue(result.colorScheme);
                 }
-                {
-                    
-                result.requiredCsp = decoder0.readString(40, false);
-                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -130,7 +127,5 @@ public final class FrameOwnerProperties extends org.chromium.mojo.bindings.Struc
         encoder0.encode(this.isDisplayNone, 28, 2);
         
         encoder0.encode(this.colorScheme, 32);
-        
-        encoder0.encode(this.requiredCsp, 40, false);
     }
 }

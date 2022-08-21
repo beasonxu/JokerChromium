@@ -23,11 +23,125 @@ public  final class BookmarkSpecifics extends
     metaInfo_ = emptyProtobufList();
     guid_ = "";
     fullTitle_ = "";
+    parentGuid_ = "";
   }
+  /**
+   * <pre>
+   * Introduced in M94, determines whether this entity represents a bookmark
+   * folder. This field is redundant to the similar field in SyncEntity. If this
+   * field in specifics is set, it takes precedence over the one in SyncEntity.
+   * </pre>
+   *
+   * Protobuf enum {@code sync_pb.BookmarkSpecifics.Type}
+   */
+  public enum Type
+      implements com.google.protobuf.Internal.EnumLite {
+    /**
+     * <pre>
+     * |UNSPECIFIED| is relevant only for the case where the field is not set.
+     * M94 and above should not use this value.
+     * </pre>
+     *
+     * <code>UNSPECIFIED = 0;</code>
+     */
+    UNSPECIFIED(0),
+    /**
+     * <code>URL = 1;</code>
+     */
+    URL(1),
+    /**
+     * <code>FOLDER = 2;</code>
+     */
+    FOLDER(2),
+    ;
+
+    /**
+     * <pre>
+     * |UNSPECIFIED| is relevant only for the case where the field is not set.
+     * M94 and above should not use this value.
+     * </pre>
+     *
+     * <code>UNSPECIFIED = 0;</code>
+     */
+    public static final int UNSPECIFIED_VALUE = 0;
+    /**
+     * <code>URL = 1;</code>
+     */
+    public static final int URL_VALUE = 1;
+    /**
+     * <code>FOLDER = 2;</code>
+     */
+    public static final int FOLDER_VALUE = 2;
+
+
+    @java.lang.Override
+    public final int getNumber() {
+      return value;
+    }
+
+    /**
+     * @param value The number of the enum to look for.
+     * @return The enum associated with the given number.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static Type valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static Type forNumber(int value) {
+      switch (value) {
+        case 0: return UNSPECIFIED;
+        case 1: return URL;
+        case 2: return FOLDER;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<Type>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        Type> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<Type>() {
+            @java.lang.Override
+            public Type findValueByNumber(int number) {
+              return Type.forNumber(number);
+            }
+          };
+
+    public static com.google.protobuf.Internal.EnumVerifier 
+        internalGetVerifier() {
+      return TypeVerifier.INSTANCE;
+    }
+
+    private static final class TypeVerifier implements 
+         com.google.protobuf.Internal.EnumVerifier { 
+            static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new TypeVerifier();
+            @java.lang.Override
+            public boolean isInRange(int number) {
+              return Type.forNumber(number) != null;
+            }
+          };
+
+    private final int value;
+
+    private Type(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:sync_pb.BookmarkSpecifics.Type)
+  }
+
   private int bitField0_;
   public static final int URL_FIELD_NUMBER = 1;
   private java.lang.String url_;
   /**
+   * <pre>
+   * URL of the bookmarked page (unset for folders).
+   * </pre>
+   *
    * <code>optional string url = 1;</code>
    * @return Whether the url field is set.
    */
@@ -36,6 +150,10 @@ public  final class BookmarkSpecifics extends
     return ((bitField0_ & 0x00000001) != 0);
   }
   /**
+   * <pre>
+   * URL of the bookmarked page (unset for folders).
+   * </pre>
+   *
    * <code>optional string url = 1;</code>
    * @return The url.
    */
@@ -44,6 +162,10 @@ public  final class BookmarkSpecifics extends
     return url_;
   }
   /**
+   * <pre>
+   * URL of the bookmarked page (unset for folders).
+   * </pre>
+   *
    * <code>optional string url = 1;</code>
    * @return The bytes for url.
    */
@@ -53,6 +175,10 @@ public  final class BookmarkSpecifics extends
     return com.google.protobuf.ByteString.copyFromUtf8(url_);
   }
   /**
+   * <pre>
+   * URL of the bookmarked page (unset for folders).
+   * </pre>
+   *
    * <code>optional string url = 1;</code>
    * @param value The url to set.
    */
@@ -63,6 +189,10 @@ public  final class BookmarkSpecifics extends
     url_ = value;
   }
   /**
+   * <pre>
+   * URL of the bookmarked page (unset for folders).
+   * </pre>
+   *
    * <code>optional string url = 1;</code>
    */
   private void clearUrl() {
@@ -70,6 +200,10 @@ public  final class BookmarkSpecifics extends
     url_ = getDefaultInstance().getUrl();
   }
   /**
+   * <pre>
+   * URL of the bookmarked page (unset for folders).
+   * </pre>
+   *
    * <code>optional string url = 1;</code>
    * @param value The bytes for url to set.
    */
@@ -82,6 +216,12 @@ public  final class BookmarkSpecifics extends
   public static final int FAVICON_FIELD_NUMBER = 2;
   private com.google.protobuf.ByteString favicon_;
   /**
+   * <pre>
+   * PNG-encoded content of the favicon image (in practice 16x16, as determined
+   * by |kFaviconSize|). Empty if the bookmark has no favicon (which includes
+   * bookmark folders).
+   * </pre>
+   *
    * <code>optional bytes favicon = 2;</code>
    * @return Whether the favicon field is set.
    */
@@ -90,6 +230,12 @@ public  final class BookmarkSpecifics extends
     return ((bitField0_ & 0x00000002) != 0);
   }
   /**
+   * <pre>
+   * PNG-encoded content of the favicon image (in practice 16x16, as determined
+   * by |kFaviconSize|). Empty if the bookmark has no favicon (which includes
+   * bookmark folders).
+   * </pre>
+   *
    * <code>optional bytes favicon = 2;</code>
    * @return The favicon.
    */
@@ -98,6 +244,12 @@ public  final class BookmarkSpecifics extends
     return favicon_;
   }
   /**
+   * <pre>
+   * PNG-encoded content of the favicon image (in practice 16x16, as determined
+   * by |kFaviconSize|). Empty if the bookmark has no favicon (which includes
+   * bookmark folders).
+   * </pre>
+   *
    * <code>optional bytes favicon = 2;</code>
    * @param value The favicon to set.
    */
@@ -107,6 +259,12 @@ public  final class BookmarkSpecifics extends
     favicon_ = value;
   }
   /**
+   * <pre>
+   * PNG-encoded content of the favicon image (in practice 16x16, as determined
+   * by |kFaviconSize|). Empty if the bookmark has no favicon (which includes
+   * bookmark folders).
+   * </pre>
+   *
    * <code>optional bytes favicon = 2;</code>
    */
   private void clearFavicon() {
@@ -249,6 +407,20 @@ public  final class BookmarkSpecifics extends
   public static final int ICON_URL_FIELD_NUMBER = 5;
   private java.lang.String iconUrl_;
   /**
+   * <pre>
+   * The URL of the favicon image encoded in field |favicon|. Note that there
+   * are various cases where this URL may be missing (field unset or empty) even
+   * if the |favicon| field (image content) is populated:
+   * 1. WebUI pages such as "chrome://bookmarks/" are missing a favicon URL but
+   *    they have a favicon.
+   * 2. Data generated by ancient clients (prior to M25) may not contain the
+   *    favicon URL.
+   * 3. If the favicon URL is too large (determined by |kMaxFaviconUrlSize|) it
+   *    may be omitted by clients to avoid running into the max-entity-size
+   *    limit. Most notably, this includes URLs prefixed with the data: scheme
+   *    that may encode the image content itself in the URL.
+   * </pre>
+   *
    * <code>optional string icon_url = 5;</code>
    * @return Whether the iconUrl field is set.
    */
@@ -257,6 +429,20 @@ public  final class BookmarkSpecifics extends
     return ((bitField0_ & 0x00000010) != 0);
   }
   /**
+   * <pre>
+   * The URL of the favicon image encoded in field |favicon|. Note that there
+   * are various cases where this URL may be missing (field unset or empty) even
+   * if the |favicon| field (image content) is populated:
+   * 1. WebUI pages such as "chrome://bookmarks/" are missing a favicon URL but
+   *    they have a favicon.
+   * 2. Data generated by ancient clients (prior to M25) may not contain the
+   *    favicon URL.
+   * 3. If the favicon URL is too large (determined by |kMaxFaviconUrlSize|) it
+   *    may be omitted by clients to avoid running into the max-entity-size
+   *    limit. Most notably, this includes URLs prefixed with the data: scheme
+   *    that may encode the image content itself in the URL.
+   * </pre>
+   *
    * <code>optional string icon_url = 5;</code>
    * @return The iconUrl.
    */
@@ -265,6 +451,20 @@ public  final class BookmarkSpecifics extends
     return iconUrl_;
   }
   /**
+   * <pre>
+   * The URL of the favicon image encoded in field |favicon|. Note that there
+   * are various cases where this URL may be missing (field unset or empty) even
+   * if the |favicon| field (image content) is populated:
+   * 1. WebUI pages such as "chrome://bookmarks/" are missing a favicon URL but
+   *    they have a favicon.
+   * 2. Data generated by ancient clients (prior to M25) may not contain the
+   *    favicon URL.
+   * 3. If the favicon URL is too large (determined by |kMaxFaviconUrlSize|) it
+   *    may be omitted by clients to avoid running into the max-entity-size
+   *    limit. Most notably, this includes URLs prefixed with the data: scheme
+   *    that may encode the image content itself in the URL.
+   * </pre>
+   *
    * <code>optional string icon_url = 5;</code>
    * @return The bytes for iconUrl.
    */
@@ -274,6 +474,20 @@ public  final class BookmarkSpecifics extends
     return com.google.protobuf.ByteString.copyFromUtf8(iconUrl_);
   }
   /**
+   * <pre>
+   * The URL of the favicon image encoded in field |favicon|. Note that there
+   * are various cases where this URL may be missing (field unset or empty) even
+   * if the |favicon| field (image content) is populated:
+   * 1. WebUI pages such as "chrome://bookmarks/" are missing a favicon URL but
+   *    they have a favicon.
+   * 2. Data generated by ancient clients (prior to M25) may not contain the
+   *    favicon URL.
+   * 3. If the favicon URL is too large (determined by |kMaxFaviconUrlSize|) it
+   *    may be omitted by clients to avoid running into the max-entity-size
+   *    limit. Most notably, this includes URLs prefixed with the data: scheme
+   *    that may encode the image content itself in the URL.
+   * </pre>
+   *
    * <code>optional string icon_url = 5;</code>
    * @param value The iconUrl to set.
    */
@@ -284,6 +498,20 @@ public  final class BookmarkSpecifics extends
     iconUrl_ = value;
   }
   /**
+   * <pre>
+   * The URL of the favicon image encoded in field |favicon|. Note that there
+   * are various cases where this URL may be missing (field unset or empty) even
+   * if the |favicon| field (image content) is populated:
+   * 1. WebUI pages such as "chrome://bookmarks/" are missing a favicon URL but
+   *    they have a favicon.
+   * 2. Data generated by ancient clients (prior to M25) may not contain the
+   *    favicon URL.
+   * 3. If the favicon URL is too large (determined by |kMaxFaviconUrlSize|) it
+   *    may be omitted by clients to avoid running into the max-entity-size
+   *    limit. Most notably, this includes URLs prefixed with the data: scheme
+   *    that may encode the image content itself in the URL.
+   * </pre>
+   *
    * <code>optional string icon_url = 5;</code>
    */
   private void clearIconUrl() {
@@ -291,6 +519,20 @@ public  final class BookmarkSpecifics extends
     iconUrl_ = getDefaultInstance().getIconUrl();
   }
   /**
+   * <pre>
+   * The URL of the favicon image encoded in field |favicon|. Note that there
+   * are various cases where this URL may be missing (field unset or empty) even
+   * if the |favicon| field (image content) is populated:
+   * 1. WebUI pages such as "chrome://bookmarks/" are missing a favicon URL but
+   *    they have a favicon.
+   * 2. Data generated by ancient clients (prior to M25) may not contain the
+   *    favicon URL.
+   * 3. If the favicon URL is too large (determined by |kMaxFaviconUrlSize|) it
+   *    may be omitted by clients to avoid running into the max-entity-size
+   *    limit. Most notably, this includes URLs prefixed with the data: scheme
+   *    that may encode the image content itself in the URL.
+   * </pre>
+   *
    * <code>optional string icon_url = 5;</code>
    * @param value The bytes for iconUrl to set.
    */
@@ -598,6 +840,249 @@ public  final class BookmarkSpecifics extends
     bitField0_ |= 0x00000040;
   }
 
+  public static final int PARENT_GUID_FIELD_NUMBER = 14;
+  private java.lang.String parentGuid_;
+  /**
+   * <pre>
+   * Introduced in M94, represents the GUID (field |guid|) of the parent.
+   * </pre>
+   *
+   * <code>optional string parent_guid = 14;</code>
+   * @return Whether the parentGuid field is set.
+   */
+  @java.lang.Override
+  public boolean hasParentGuid() {
+    return ((bitField0_ & 0x00000080) != 0);
+  }
+  /**
+   * <pre>
+   * Introduced in M94, represents the GUID (field |guid|) of the parent.
+   * </pre>
+   *
+   * <code>optional string parent_guid = 14;</code>
+   * @return The parentGuid.
+   */
+  @java.lang.Override
+  public java.lang.String getParentGuid() {
+    return parentGuid_;
+  }
+  /**
+   * <pre>
+   * Introduced in M94, represents the GUID (field |guid|) of the parent.
+   * </pre>
+   *
+   * <code>optional string parent_guid = 14;</code>
+   * @return The bytes for parentGuid.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getParentGuidBytes() {
+    return com.google.protobuf.ByteString.copyFromUtf8(parentGuid_);
+  }
+  /**
+   * <pre>
+   * Introduced in M94, represents the GUID (field |guid|) of the parent.
+   * </pre>
+   *
+   * <code>optional string parent_guid = 14;</code>
+   * @param value The parentGuid to set.
+   */
+  private void setParentGuid(
+      java.lang.String value) {
+    value.getClass();
+  bitField0_ |= 0x00000080;
+    parentGuid_ = value;
+  }
+  /**
+   * <pre>
+   * Introduced in M94, represents the GUID (field |guid|) of the parent.
+   * </pre>
+   *
+   * <code>optional string parent_guid = 14;</code>
+   */
+  private void clearParentGuid() {
+    bitField0_ = (bitField0_ & ~0x00000080);
+    parentGuid_ = getDefaultInstance().getParentGuid();
+  }
+  /**
+   * <pre>
+   * Introduced in M94, represents the GUID (field |guid|) of the parent.
+   * </pre>
+   *
+   * <code>optional string parent_guid = 14;</code>
+   * @param value The bytes for parentGuid to set.
+   */
+  private void setParentGuidBytes(
+      com.google.protobuf.ByteString value) {
+    parentGuid_ = value.toStringUtf8();
+    bitField0_ |= 0x00000080;
+  }
+
+  public static final int TYPE_FIELD_NUMBER = 15;
+  private int type_;
+  /**
+   * <code>optional .sync_pb.BookmarkSpecifics.Type type = 15;</code>
+   * @return Whether the type field is set.
+   */
+  @java.lang.Override
+  public boolean hasType() {
+    return ((bitField0_ & 0x00000100) != 0);
+  }
+  /**
+   * <code>optional .sync_pb.BookmarkSpecifics.Type type = 15;</code>
+   * @return The type.
+   */
+  @java.lang.Override
+  public org.chromium.components.sync.protocol.BookmarkSpecifics.Type getType() {
+    org.chromium.components.sync.protocol.BookmarkSpecifics.Type result = org.chromium.components.sync.protocol.BookmarkSpecifics.Type.forNumber(type_);
+    return result == null ? org.chromium.components.sync.protocol.BookmarkSpecifics.Type.UNSPECIFIED : result;
+  }
+  /**
+   * <code>optional .sync_pb.BookmarkSpecifics.Type type = 15;</code>
+   * @param value The type to set.
+   */
+  private void setType(org.chromium.components.sync.protocol.BookmarkSpecifics.Type value) {
+    type_ = value.getNumber();
+    bitField0_ |= 0x00000100;
+  }
+  /**
+   * <code>optional .sync_pb.BookmarkSpecifics.Type type = 15;</code>
+   */
+  private void clearType() {
+    bitField0_ = (bitField0_ & ~0x00000100);
+    type_ = 0;
+  }
+
+  public static final int UNIQUE_POSITION_FIELD_NUMBER = 16;
+  private org.chromium.components.sync.protocol.UniquePosition uniquePosition_;
+  /**
+   * <pre>
+   * Introduced in M94, determines ordering among siblings. This field is
+   * redundant to the similar field in SyncEntity. If this field in specifics is
+   * set, it takes precedence over the one in SyncEntity.
+   * </pre>
+   *
+   * <code>optional .sync_pb.UniquePosition unique_position = 16;</code>
+   */
+  @java.lang.Override
+  public boolean hasUniquePosition() {
+    return ((bitField0_ & 0x00000200) != 0);
+  }
+  /**
+   * <pre>
+   * Introduced in M94, determines ordering among siblings. This field is
+   * redundant to the similar field in SyncEntity. If this field in specifics is
+   * set, it takes precedence over the one in SyncEntity.
+   * </pre>
+   *
+   * <code>optional .sync_pb.UniquePosition unique_position = 16;</code>
+   */
+  @java.lang.Override
+  public org.chromium.components.sync.protocol.UniquePosition getUniquePosition() {
+    return uniquePosition_ == null ? org.chromium.components.sync.protocol.UniquePosition.getDefaultInstance() : uniquePosition_;
+  }
+  /**
+   * <pre>
+   * Introduced in M94, determines ordering among siblings. This field is
+   * redundant to the similar field in SyncEntity. If this field in specifics is
+   * set, it takes precedence over the one in SyncEntity.
+   * </pre>
+   *
+   * <code>optional .sync_pb.UniquePosition unique_position = 16;</code>
+   */
+  private void setUniquePosition(org.chromium.components.sync.protocol.UniquePosition value) {
+    value.getClass();
+  uniquePosition_ = value;
+    bitField0_ |= 0x00000200;
+    }
+  /**
+   * <pre>
+   * Introduced in M94, determines ordering among siblings. This field is
+   * redundant to the similar field in SyncEntity. If this field in specifics is
+   * set, it takes precedence over the one in SyncEntity.
+   * </pre>
+   *
+   * <code>optional .sync_pb.UniquePosition unique_position = 16;</code>
+   */
+  @java.lang.SuppressWarnings({"ReferenceEquality"})
+  private void mergeUniquePosition(org.chromium.components.sync.protocol.UniquePosition value) {
+    value.getClass();
+  if (uniquePosition_ != null &&
+        uniquePosition_ != org.chromium.components.sync.protocol.UniquePosition.getDefaultInstance()) {
+      uniquePosition_ =
+        org.chromium.components.sync.protocol.UniquePosition.newBuilder(uniquePosition_).mergeFrom(value).buildPartial();
+    } else {
+      uniquePosition_ = value;
+    }
+    bitField0_ |= 0x00000200;
+  }
+  /**
+   * <pre>
+   * Introduced in M94, determines ordering among siblings. This field is
+   * redundant to the similar field in SyncEntity. If this field in specifics is
+   * set, it takes precedence over the one in SyncEntity.
+   * </pre>
+   *
+   * <code>optional .sync_pb.UniquePosition unique_position = 16;</code>
+   */
+  private void clearUniquePosition() {  uniquePosition_ = null;
+    bitField0_ = (bitField0_ & ~0x00000200);
+  }
+
+  public static final int LAST_USED_TIME_US_FIELD_NUMBER = 17;
+  private long lastUsedTimeUs_;
+  /**
+   * <pre>
+   * Introduced in M106, corresponds to BookmarkNode::date_last_used()
+   * represented as microseconds since the Windows epoch.
+   * </pre>
+   *
+   * <code>optional int64 last_used_time_us = 17;</code>
+   * @return Whether the lastUsedTimeUs field is set.
+   */
+  @java.lang.Override
+  public boolean hasLastUsedTimeUs() {
+    return ((bitField0_ & 0x00000400) != 0);
+  }
+  /**
+   * <pre>
+   * Introduced in M106, corresponds to BookmarkNode::date_last_used()
+   * represented as microseconds since the Windows epoch.
+   * </pre>
+   *
+   * <code>optional int64 last_used_time_us = 17;</code>
+   * @return The lastUsedTimeUs.
+   */
+  @java.lang.Override
+  public long getLastUsedTimeUs() {
+    return lastUsedTimeUs_;
+  }
+  /**
+   * <pre>
+   * Introduced in M106, corresponds to BookmarkNode::date_last_used()
+   * represented as microseconds since the Windows epoch.
+   * </pre>
+   *
+   * <code>optional int64 last_used_time_us = 17;</code>
+   * @param value The lastUsedTimeUs to set.
+   */
+  private void setLastUsedTimeUs(long value) {
+    bitField0_ |= 0x00000400;
+    lastUsedTimeUs_ = value;
+  }
+  /**
+   * <pre>
+   * Introduced in M106, corresponds to BookmarkNode::date_last_used()
+   * represented as microseconds since the Windows epoch.
+   * </pre>
+   *
+   * <code>optional int64 last_used_time_us = 17;</code>
+   */
+  private void clearLastUsedTimeUs() {
+    bitField0_ = (bitField0_ & ~0x00000400);
+    lastUsedTimeUs_ = 0L;
+  }
+
   public static org.chromium.components.sync.protocol.BookmarkSpecifics parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -698,6 +1183,10 @@ public  final class BookmarkSpecifics extends
 
 
     /**
+     * <pre>
+     * URL of the bookmarked page (unset for folders).
+     * </pre>
+     *
      * <code>optional string url = 1;</code>
      * @return Whether the url field is set.
      */
@@ -706,6 +1195,10 @@ public  final class BookmarkSpecifics extends
       return instance.hasUrl();
     }
     /**
+     * <pre>
+     * URL of the bookmarked page (unset for folders).
+     * </pre>
+     *
      * <code>optional string url = 1;</code>
      * @return The url.
      */
@@ -714,6 +1207,10 @@ public  final class BookmarkSpecifics extends
       return instance.getUrl();
     }
     /**
+     * <pre>
+     * URL of the bookmarked page (unset for folders).
+     * </pre>
+     *
      * <code>optional string url = 1;</code>
      * @return The bytes for url.
      */
@@ -723,6 +1220,10 @@ public  final class BookmarkSpecifics extends
       return instance.getUrlBytes();
     }
     /**
+     * <pre>
+     * URL of the bookmarked page (unset for folders).
+     * </pre>
+     *
      * <code>optional string url = 1;</code>
      * @param value The url to set.
      * @return This builder for chaining.
@@ -734,6 +1235,10 @@ public  final class BookmarkSpecifics extends
       return this;
     }
     /**
+     * <pre>
+     * URL of the bookmarked page (unset for folders).
+     * </pre>
+     *
      * <code>optional string url = 1;</code>
      * @return This builder for chaining.
      */
@@ -743,6 +1248,10 @@ public  final class BookmarkSpecifics extends
       return this;
     }
     /**
+     * <pre>
+     * URL of the bookmarked page (unset for folders).
+     * </pre>
+     *
      * <code>optional string url = 1;</code>
      * @param value The bytes for url to set.
      * @return This builder for chaining.
@@ -755,6 +1264,12 @@ public  final class BookmarkSpecifics extends
     }
 
     /**
+     * <pre>
+     * PNG-encoded content of the favicon image (in practice 16x16, as determined
+     * by |kFaviconSize|). Empty if the bookmark has no favicon (which includes
+     * bookmark folders).
+     * </pre>
+     *
      * <code>optional bytes favicon = 2;</code>
      * @return Whether the favicon field is set.
      */
@@ -763,6 +1278,12 @@ public  final class BookmarkSpecifics extends
       return instance.hasFavicon();
     }
     /**
+     * <pre>
+     * PNG-encoded content of the favicon image (in practice 16x16, as determined
+     * by |kFaviconSize|). Empty if the bookmark has no favicon (which includes
+     * bookmark folders).
+     * </pre>
+     *
      * <code>optional bytes favicon = 2;</code>
      * @return The favicon.
      */
@@ -771,6 +1292,12 @@ public  final class BookmarkSpecifics extends
       return instance.getFavicon();
     }
     /**
+     * <pre>
+     * PNG-encoded content of the favicon image (in practice 16x16, as determined
+     * by |kFaviconSize|). Empty if the bookmark has no favicon (which includes
+     * bookmark folders).
+     * </pre>
+     *
      * <code>optional bytes favicon = 2;</code>
      * @param value The favicon to set.
      * @return This builder for chaining.
@@ -781,6 +1308,12 @@ public  final class BookmarkSpecifics extends
       return this;
     }
     /**
+     * <pre>
+     * PNG-encoded content of the favicon image (in practice 16x16, as determined
+     * by |kFaviconSize|). Empty if the bookmark has no favicon (which includes
+     * bookmark folders).
+     * </pre>
+     *
      * <code>optional bytes favicon = 2;</code>
      * @return This builder for chaining.
      */
@@ -928,6 +1461,20 @@ public  final class BookmarkSpecifics extends
     }
 
     /**
+     * <pre>
+     * The URL of the favicon image encoded in field |favicon|. Note that there
+     * are various cases where this URL may be missing (field unset or empty) even
+     * if the |favicon| field (image content) is populated:
+     * 1. WebUI pages such as "chrome://bookmarks/" are missing a favicon URL but
+     *    they have a favicon.
+     * 2. Data generated by ancient clients (prior to M25) may not contain the
+     *    favicon URL.
+     * 3. If the favicon URL is too large (determined by |kMaxFaviconUrlSize|) it
+     *    may be omitted by clients to avoid running into the max-entity-size
+     *    limit. Most notably, this includes URLs prefixed with the data: scheme
+     *    that may encode the image content itself in the URL.
+     * </pre>
+     *
      * <code>optional string icon_url = 5;</code>
      * @return Whether the iconUrl field is set.
      */
@@ -936,6 +1483,20 @@ public  final class BookmarkSpecifics extends
       return instance.hasIconUrl();
     }
     /**
+     * <pre>
+     * The URL of the favicon image encoded in field |favicon|. Note that there
+     * are various cases where this URL may be missing (field unset or empty) even
+     * if the |favicon| field (image content) is populated:
+     * 1. WebUI pages such as "chrome://bookmarks/" are missing a favicon URL but
+     *    they have a favicon.
+     * 2. Data generated by ancient clients (prior to M25) may not contain the
+     *    favicon URL.
+     * 3. If the favicon URL is too large (determined by |kMaxFaviconUrlSize|) it
+     *    may be omitted by clients to avoid running into the max-entity-size
+     *    limit. Most notably, this includes URLs prefixed with the data: scheme
+     *    that may encode the image content itself in the URL.
+     * </pre>
+     *
      * <code>optional string icon_url = 5;</code>
      * @return The iconUrl.
      */
@@ -944,6 +1505,20 @@ public  final class BookmarkSpecifics extends
       return instance.getIconUrl();
     }
     /**
+     * <pre>
+     * The URL of the favicon image encoded in field |favicon|. Note that there
+     * are various cases where this URL may be missing (field unset or empty) even
+     * if the |favicon| field (image content) is populated:
+     * 1. WebUI pages such as "chrome://bookmarks/" are missing a favicon URL but
+     *    they have a favicon.
+     * 2. Data generated by ancient clients (prior to M25) may not contain the
+     *    favicon URL.
+     * 3. If the favicon URL is too large (determined by |kMaxFaviconUrlSize|) it
+     *    may be omitted by clients to avoid running into the max-entity-size
+     *    limit. Most notably, this includes URLs prefixed with the data: scheme
+     *    that may encode the image content itself in the URL.
+     * </pre>
+     *
      * <code>optional string icon_url = 5;</code>
      * @return The bytes for iconUrl.
      */
@@ -953,6 +1528,20 @@ public  final class BookmarkSpecifics extends
       return instance.getIconUrlBytes();
     }
     /**
+     * <pre>
+     * The URL of the favicon image encoded in field |favicon|. Note that there
+     * are various cases where this URL may be missing (field unset or empty) even
+     * if the |favicon| field (image content) is populated:
+     * 1. WebUI pages such as "chrome://bookmarks/" are missing a favicon URL but
+     *    they have a favicon.
+     * 2. Data generated by ancient clients (prior to M25) may not contain the
+     *    favicon URL.
+     * 3. If the favicon URL is too large (determined by |kMaxFaviconUrlSize|) it
+     *    may be omitted by clients to avoid running into the max-entity-size
+     *    limit. Most notably, this includes URLs prefixed with the data: scheme
+     *    that may encode the image content itself in the URL.
+     * </pre>
+     *
      * <code>optional string icon_url = 5;</code>
      * @param value The iconUrl to set.
      * @return This builder for chaining.
@@ -964,6 +1553,20 @@ public  final class BookmarkSpecifics extends
       return this;
     }
     /**
+     * <pre>
+     * The URL of the favicon image encoded in field |favicon|. Note that there
+     * are various cases where this URL may be missing (field unset or empty) even
+     * if the |favicon| field (image content) is populated:
+     * 1. WebUI pages such as "chrome://bookmarks/" are missing a favicon URL but
+     *    they have a favicon.
+     * 2. Data generated by ancient clients (prior to M25) may not contain the
+     *    favicon URL.
+     * 3. If the favicon URL is too large (determined by |kMaxFaviconUrlSize|) it
+     *    may be omitted by clients to avoid running into the max-entity-size
+     *    limit. Most notably, this includes URLs prefixed with the data: scheme
+     *    that may encode the image content itself in the URL.
+     * </pre>
+     *
      * <code>optional string icon_url = 5;</code>
      * @return This builder for chaining.
      */
@@ -973,6 +1576,20 @@ public  final class BookmarkSpecifics extends
       return this;
     }
     /**
+     * <pre>
+     * The URL of the favicon image encoded in field |favicon|. Note that there
+     * are various cases where this URL may be missing (field unset or empty) even
+     * if the |favicon| field (image content) is populated:
+     * 1. WebUI pages such as "chrome://bookmarks/" are missing a favicon URL but
+     *    they have a favicon.
+     * 2. Data generated by ancient clients (prior to M25) may not contain the
+     *    favicon URL.
+     * 3. If the favicon URL is too large (determined by |kMaxFaviconUrlSize|) it
+     *    may be omitted by clients to avoid running into the max-entity-size
+     *    limit. Most notably, this includes URLs prefixed with the data: scheme
+     *    that may encode the image content itself in the URL.
+     * </pre>
+     *
      * <code>optional string icon_url = 5;</code>
      * @param value The bytes for iconUrl to set.
      * @return This builder for chaining.
@@ -1296,6 +1913,262 @@ public  final class BookmarkSpecifics extends
       return this;
     }
 
+    /**
+     * <pre>
+     * Introduced in M94, represents the GUID (field |guid|) of the parent.
+     * </pre>
+     *
+     * <code>optional string parent_guid = 14;</code>
+     * @return Whether the parentGuid field is set.
+     */
+    @java.lang.Override
+    public boolean hasParentGuid() {
+      return instance.hasParentGuid();
+    }
+    /**
+     * <pre>
+     * Introduced in M94, represents the GUID (field |guid|) of the parent.
+     * </pre>
+     *
+     * <code>optional string parent_guid = 14;</code>
+     * @return The parentGuid.
+     */
+    @java.lang.Override
+    public java.lang.String getParentGuid() {
+      return instance.getParentGuid();
+    }
+    /**
+     * <pre>
+     * Introduced in M94, represents the GUID (field |guid|) of the parent.
+     * </pre>
+     *
+     * <code>optional string parent_guid = 14;</code>
+     * @return The bytes for parentGuid.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getParentGuidBytes() {
+      return instance.getParentGuidBytes();
+    }
+    /**
+     * <pre>
+     * Introduced in M94, represents the GUID (field |guid|) of the parent.
+     * </pre>
+     *
+     * <code>optional string parent_guid = 14;</code>
+     * @param value The parentGuid to set.
+     * @return This builder for chaining.
+     */
+    public Builder setParentGuid(
+        java.lang.String value) {
+      copyOnWrite();
+      instance.setParentGuid(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * Introduced in M94, represents the GUID (field |guid|) of the parent.
+     * </pre>
+     *
+     * <code>optional string parent_guid = 14;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearParentGuid() {
+      copyOnWrite();
+      instance.clearParentGuid();
+      return this;
+    }
+    /**
+     * <pre>
+     * Introduced in M94, represents the GUID (field |guid|) of the parent.
+     * </pre>
+     *
+     * <code>optional string parent_guid = 14;</code>
+     * @param value The bytes for parentGuid to set.
+     * @return This builder for chaining.
+     */
+    public Builder setParentGuidBytes(
+        com.google.protobuf.ByteString value) {
+      copyOnWrite();
+      instance.setParentGuidBytes(value);
+      return this;
+    }
+
+    /**
+     * <code>optional .sync_pb.BookmarkSpecifics.Type type = 15;</code>
+     * @return Whether the type field is set.
+     */
+    @java.lang.Override
+    public boolean hasType() {
+      return instance.hasType();
+    }
+    /**
+     * <code>optional .sync_pb.BookmarkSpecifics.Type type = 15;</code>
+     * @return The type.
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.BookmarkSpecifics.Type getType() {
+      return instance.getType();
+    }
+    /**
+     * <code>optional .sync_pb.BookmarkSpecifics.Type type = 15;</code>
+     * @param value The enum numeric value on the wire for type to set.
+     * @return This builder for chaining.
+     */
+    public Builder setType(org.chromium.components.sync.protocol.BookmarkSpecifics.Type value) {
+      copyOnWrite();
+      instance.setType(value);
+      return this;
+    }
+    /**
+     * <code>optional .sync_pb.BookmarkSpecifics.Type type = 15;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearType() {
+      copyOnWrite();
+      instance.clearType();
+      return this;
+    }
+
+    /**
+     * <pre>
+     * Introduced in M94, determines ordering among siblings. This field is
+     * redundant to the similar field in SyncEntity. If this field in specifics is
+     * set, it takes precedence over the one in SyncEntity.
+     * </pre>
+     *
+     * <code>optional .sync_pb.UniquePosition unique_position = 16;</code>
+     */
+    @java.lang.Override
+    public boolean hasUniquePosition() {
+      return instance.hasUniquePosition();
+    }
+    /**
+     * <pre>
+     * Introduced in M94, determines ordering among siblings. This field is
+     * redundant to the similar field in SyncEntity. If this field in specifics is
+     * set, it takes precedence over the one in SyncEntity.
+     * </pre>
+     *
+     * <code>optional .sync_pb.UniquePosition unique_position = 16;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.UniquePosition getUniquePosition() {
+      return instance.getUniquePosition();
+    }
+    /**
+     * <pre>
+     * Introduced in M94, determines ordering among siblings. This field is
+     * redundant to the similar field in SyncEntity. If this field in specifics is
+     * set, it takes precedence over the one in SyncEntity.
+     * </pre>
+     *
+     * <code>optional .sync_pb.UniquePosition unique_position = 16;</code>
+     */
+    public Builder setUniquePosition(org.chromium.components.sync.protocol.UniquePosition value) {
+      copyOnWrite();
+      instance.setUniquePosition(value);
+      return this;
+      }
+    /**
+     * <pre>
+     * Introduced in M94, determines ordering among siblings. This field is
+     * redundant to the similar field in SyncEntity. If this field in specifics is
+     * set, it takes precedence over the one in SyncEntity.
+     * </pre>
+     *
+     * <code>optional .sync_pb.UniquePosition unique_position = 16;</code>
+     */
+    public Builder setUniquePosition(
+        org.chromium.components.sync.protocol.UniquePosition.Builder builderForValue) {
+      copyOnWrite();
+      instance.setUniquePosition(builderForValue.build());
+      return this;
+    }
+    /**
+     * <pre>
+     * Introduced in M94, determines ordering among siblings. This field is
+     * redundant to the similar field in SyncEntity. If this field in specifics is
+     * set, it takes precedence over the one in SyncEntity.
+     * </pre>
+     *
+     * <code>optional .sync_pb.UniquePosition unique_position = 16;</code>
+     */
+    public Builder mergeUniquePosition(org.chromium.components.sync.protocol.UniquePosition value) {
+      copyOnWrite();
+      instance.mergeUniquePosition(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * Introduced in M94, determines ordering among siblings. This field is
+     * redundant to the similar field in SyncEntity. If this field in specifics is
+     * set, it takes precedence over the one in SyncEntity.
+     * </pre>
+     *
+     * <code>optional .sync_pb.UniquePosition unique_position = 16;</code>
+     */
+    public Builder clearUniquePosition() {  copyOnWrite();
+      instance.clearUniquePosition();
+      return this;
+    }
+
+    /**
+     * <pre>
+     * Introduced in M106, corresponds to BookmarkNode::date_last_used()
+     * represented as microseconds since the Windows epoch.
+     * </pre>
+     *
+     * <code>optional int64 last_used_time_us = 17;</code>
+     * @return Whether the lastUsedTimeUs field is set.
+     */
+    @java.lang.Override
+    public boolean hasLastUsedTimeUs() {
+      return instance.hasLastUsedTimeUs();
+    }
+    /**
+     * <pre>
+     * Introduced in M106, corresponds to BookmarkNode::date_last_used()
+     * represented as microseconds since the Windows epoch.
+     * </pre>
+     *
+     * <code>optional int64 last_used_time_us = 17;</code>
+     * @return The lastUsedTimeUs.
+     */
+    @java.lang.Override
+    public long getLastUsedTimeUs() {
+      return instance.getLastUsedTimeUs();
+    }
+    /**
+     * <pre>
+     * Introduced in M106, corresponds to BookmarkNode::date_last_used()
+     * represented as microseconds since the Windows epoch.
+     * </pre>
+     *
+     * <code>optional int64 last_used_time_us = 17;</code>
+     * @param value The lastUsedTimeUs to set.
+     * @return This builder for chaining.
+     */
+    public Builder setLastUsedTimeUs(long value) {
+      copyOnWrite();
+      instance.setLastUsedTimeUs(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * Introduced in M106, corresponds to BookmarkNode::date_last_used()
+     * represented as microseconds since the Windows epoch.
+     * </pre>
+     *
+     * <code>optional int64 last_used_time_us = 17;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearLastUsedTimeUs() {
+      copyOnWrite();
+      instance.clearLastUsedTimeUs();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:sync_pb.BookmarkSpecifics)
   }
   @java.lang.Override
@@ -1322,11 +2195,17 @@ public  final class BookmarkSpecifics extends
             org.chromium.components.sync.protocol.MetaInfo.class,
             "guid_",
             "fullTitle_",
+            "parentGuid_",
+            "type_",
+            org.chromium.components.sync.protocol.BookmarkSpecifics.Type.internalGetVerifier(),
+            "uniquePosition_",
+            "lastUsedTimeUs_",
           };
           java.lang.String info =
-              "\u0001\b\u0000\u0001\u0001\u000b\b\u0000\u0001\u0000\u0001\u1008\u0000\u0002\u100a" +
+              "\u0001\f\u0000\u0001\u0001\u0011\f\u0000\u0001\u0000\u0001\u1008\u0000\u0002\u100a" +
               "\u0001\u0003\u1008\u0002\u0004\u1002\u0003\u0005\u1008\u0004\u0006\u001b\n\u1008" +
-              "\u0005\u000b\u1008\u0006";
+              "\u0005\u000b\u1008\u0006\u000e\u1008\u0007\u000f\u100c\b\u0010\u1009\t\u0011\u1002" +
+              "\n";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

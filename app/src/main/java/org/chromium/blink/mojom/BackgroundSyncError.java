@@ -13,8 +13,20 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class BackgroundSyncError {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        BackgroundSyncError.NONE,
+        BackgroundSyncError.STORAGE,
+        BackgroundSyncError.NOT_FOUND,
+        BackgroundSyncError.NO_SERVICE_WORKER,
+        BackgroundSyncError.NOT_ALLOWED,
+        BackgroundSyncError.PERMISSION_DENIED,
+        BackgroundSyncError.MAX})
+    public @interface EnumType {}
 
     public static final int NONE = 0;
     public static final int STORAGE = 1;

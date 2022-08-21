@@ -13,8 +13,16 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class BeginFrameArgsType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        BeginFrameArgsType.INVALID,
+        BeginFrameArgsType.NORMAL,
+        BeginFrameArgsType.MISSED})
+    public @interface EnumType {}
 
     public static final int INVALID = 0;
     public static final int NORMAL = 1;

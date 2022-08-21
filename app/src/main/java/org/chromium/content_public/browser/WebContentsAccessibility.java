@@ -3,13 +3,14 @@
 // found in the LICENSE file.
 package org.chromium.content_public.browser;
 
-import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewStructure;
 import android.view.accessibility.AccessibilityNodeProvider;
 
+import androidx.annotation.RequiresApi;
 import androidx.annotation.VisibleForTesting;
 
 import org.chromium.content.browser.accessibility.WebContentsAccessibilityImpl;
@@ -49,6 +50,12 @@ public interface WebContentsAccessibility {
     void setAccessibilityEnabledForTesting();
 
     /**
+     * Enables a11y service mask flags in the BrowserAccessibilityState for testing.
+     */
+    @VisibleForTesting
+    void setBrowserAccessibilityStateForTesting();
+
+    /**
      *  Add a spelling error.
      */
     @VisibleForTesting
@@ -78,7 +85,7 @@ public interface WebContentsAccessibility {
     /**
      * @see View#onProvideVirtualStructure().
      */
-    @TargetApi(Build.VERSION_CODES.M)
+    @RequiresApi(Build.VERSION_CODES.M)
     void onProvideVirtualStructure(ViewStructure structure, boolean ignoreScrollOffset);
 
     /**
@@ -110,6 +117,11 @@ public interface WebContentsAccessibility {
     void setShouldFocusOnPageLoad(boolean on);
 
     /**
+     * Sets whether or not the image descriptions feature should be allowed.
+     */
+    void setAllowImageDescriptions(boolean allowImageDescriptions);
+
+    /**
      * Called when autofill popup is displayed. Used to upport navigation through the view.
      * @param autofillPopupView The displayed autofill popup view.
      */
@@ -124,4 +136,15 @@ public interface WebContentsAccessibility {
      * Called when the a11y focus gets cleared on the autofill popup.
      */
     void onAutofillPopupAccessibilityFocusCleared();
+
+    /**
+     * Called directly from A {@link View} in the absence of a WebView and renderer.
+     * @return Whether the hover event was consumed.
+     */
+    boolean onHoverEventNoRenderer(MotionEvent event);
+
+    /**
+     * Called to reset focus state to nothing.
+     */
+    void resetFocus();
 }

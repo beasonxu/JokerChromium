@@ -1,17 +1,15 @@
 package org.chromium.media;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.annotations.MainDex;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @MainDex
 @CheckDiscard("crbug.com/993421")
-final class HdrMetadataJni implements HdrMetadata.Natives {
+class HdrMetadataJni implements HdrMetadata.Natives {
   private static HdrMetadata.Natives testInstance;
 
   public static final JniStaticTestMocker<HdrMetadata.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.media.HdrMetadata.Natives>() {
@@ -80,13 +78,13 @@ final class HdrMetadataJni implements HdrMetadata.Natives {
   }
 
   @Override
-  public float maxMasteringLuminance(long nativeJniHdrMetadata, HdrMetadata caller) {
-    return (float)GEN_JNI.org_chromium_media_HdrMetadata_maxMasteringLuminance(nativeJniHdrMetadata, caller);
+  public float maxColorVolumeLuminance(long nativeJniHdrMetadata, HdrMetadata caller) {
+    return (float)GEN_JNI.org_chromium_media_HdrMetadata_maxColorVolumeLuminance(nativeJniHdrMetadata, caller);
   }
 
   @Override
-  public float minMasteringLuminance(long nativeJniHdrMetadata, HdrMetadata caller) {
-    return (float)GEN_JNI.org_chromium_media_HdrMetadata_minMasteringLuminance(nativeJniHdrMetadata, caller);
+  public float minColorVolumeLuminance(long nativeJniHdrMetadata, HdrMetadata caller) {
+    return (float)GEN_JNI.org_chromium_media_HdrMetadata_minColorVolumeLuminance(nativeJniHdrMetadata, caller);
   }
 
   @Override

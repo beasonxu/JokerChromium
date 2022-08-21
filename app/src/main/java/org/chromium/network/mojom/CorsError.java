@@ -13,8 +13,40 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class CorsError {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        CorsError.DISALLOWED_BY_MODE,
+        CorsError.INVALID_RESPONSE,
+        CorsError.WILDCARD_ORIGIN_NOT_ALLOWED,
+        CorsError.MISSING_ALLOW_ORIGIN_HEADER,
+        CorsError.MULTIPLE_ALLOW_ORIGIN_VALUES,
+        CorsError.INVALID_ALLOW_ORIGIN_VALUE,
+        CorsError.ALLOW_ORIGIN_MISMATCH,
+        CorsError.INVALID_ALLOW_CREDENTIALS,
+        CorsError.CORS_DISABLED_SCHEME,
+        CorsError.PREFLIGHT_INVALID_STATUS,
+        CorsError.PREFLIGHT_DISALLOWED_REDIRECT,
+        CorsError.PREFLIGHT_WILDCARD_ORIGIN_NOT_ALLOWED,
+        CorsError.PREFLIGHT_MISSING_ALLOW_ORIGIN_HEADER,
+        CorsError.PREFLIGHT_MULTIPLE_ALLOW_ORIGIN_VALUES,
+        CorsError.PREFLIGHT_INVALID_ALLOW_ORIGIN_VALUE,
+        CorsError.PREFLIGHT_ALLOW_ORIGIN_MISMATCH,
+        CorsError.PREFLIGHT_INVALID_ALLOW_CREDENTIALS,
+        CorsError.PREFLIGHT_MISSING_ALLOW_PRIVATE_NETWORK,
+        CorsError.PREFLIGHT_INVALID_ALLOW_PRIVATE_NETWORK,
+        CorsError.INVALID_ALLOW_METHODS_PREFLIGHT_RESPONSE,
+        CorsError.INVALID_ALLOW_HEADERS_PREFLIGHT_RESPONSE,
+        CorsError.METHOD_DISALLOWED_BY_PREFLIGHT_RESPONSE,
+        CorsError.HEADER_DISALLOWED_BY_PREFLIGHT_RESPONSE,
+        CorsError.REDIRECT_CONTAINS_CREDENTIALS,
+        CorsError.INSECURE_PRIVATE_NETWORK,
+        CorsError.INVALID_PRIVATE_NETWORK_ACCESS,
+        CorsError.UNEXPECTED_PRIVATE_NETWORK_ACCESS})
+    public @interface EnumType {}
 
     public static final int DISALLOWED_BY_MODE = 0;
     public static final int INVALID_RESPONSE = 1;
@@ -33,19 +65,21 @@ public final class CorsError {
     public static final int PREFLIGHT_INVALID_ALLOW_ORIGIN_VALUE = 14;
     public static final int PREFLIGHT_ALLOW_ORIGIN_MISMATCH = 15;
     public static final int PREFLIGHT_INVALID_ALLOW_CREDENTIALS = 16;
-    public static final int PREFLIGHT_MISSING_ALLOW_EXTERNAL = 17;
-    public static final int PREFLIGHT_INVALID_ALLOW_EXTERNAL = 18;
+    public static final int PREFLIGHT_MISSING_ALLOW_PRIVATE_NETWORK = 17;
+    public static final int PREFLIGHT_INVALID_ALLOW_PRIVATE_NETWORK = 18;
     public static final int INVALID_ALLOW_METHODS_PREFLIGHT_RESPONSE = 19;
     public static final int INVALID_ALLOW_HEADERS_PREFLIGHT_RESPONSE = 20;
     public static final int METHOD_DISALLOWED_BY_PREFLIGHT_RESPONSE = 21;
     public static final int HEADER_DISALLOWED_BY_PREFLIGHT_RESPONSE = 22;
     public static final int REDIRECT_CONTAINS_CREDENTIALS = 23;
     public static final int INSECURE_PRIVATE_NETWORK = 24;
+    public static final int INVALID_PRIVATE_NETWORK_ACCESS = 25;
+    public static final int UNEXPECTED_PRIVATE_NETWORK_ACCESS = 26;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 24;
+    public static final int MAX_VALUE = 26;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 24;
+        return value >= 0 && value <= 26;
     }
 
     public static void validate(int value) {

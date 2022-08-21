@@ -13,17 +13,19 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class FilterOperation extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 64;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(64, 0)};
+    private static final int STRUCT_SIZE = 72;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(72, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int type;
     public float amount;
     public float outerThreshold;
     public org.chromium.gfx.mojom.Point dropShadowOffset;
-    public int dropShadowColor;
+    public org.chromium.skia.mojom.SkColor4f dropShadowColor;
     public PaintFilter imageFilter;
     public float[] matrix;
     public int zoomInset;
@@ -79,7 +81,7 @@ public final class FilterOperation extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.dropShadowColor = decoder0.readInt(20);
+                result.zoomInset = decoder0.readInt(20);
                 }
                 {
                     
@@ -89,25 +91,26 @@ public final class FilterOperation extends org.chromium.mojo.bindings.Struct {
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
+                result.dropShadowColor = org.chromium.skia.mojom.SkColor4f.decode(decoder1);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, false);
                 result.imageFilter = PaintFilter.decode(decoder1);
                 }
                 {
                     
-                result.matrix = decoder0.readFloats(40, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, 20);
+                result.matrix = decoder0.readFloats(48, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, 20);
                 }
                 {
                     
-                result.zoomInset = decoder0.readInt(48);
-                }
-                {
-                    
-                result.blurTileMode = decoder0.readInt(52);
+                result.blurTileMode = decoder0.readInt(56);
                     org.chromium.skia.mojom.TileMode.validate(result.blurTileMode);
                     result.blurTileMode = org.chromium.skia.mojom.TileMode.toKnownValue(result.blurTileMode);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(56, true);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(64, true);
                 if (decoder1 == null) {
                     result.shape = null;
                 } else {
@@ -138,22 +141,22 @@ public final class FilterOperation extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.outerThreshold, 16);
         
-        encoder0.encode(this.dropShadowColor, 20);
+        encoder0.encode(this.zoomInset, 20);
         
         encoder0.encode(this.dropShadowOffset, 24, false);
         
-        encoder0.encode(this.imageFilter, 32, false);
+        encoder0.encode(this.dropShadowColor, 32, false);
         
-        encoder0.encode(this.matrix, 40, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, 20);
+        encoder0.encode(this.imageFilter, 40, false);
         
-        encoder0.encode(this.zoomInset, 48);
+        encoder0.encode(this.matrix, 48, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, 20);
         
-        encoder0.encode(this.blurTileMode, 52);
+        encoder0.encode(this.blurTileMode, 56);
         
         if (this.shape == null) {
-            encoder0.encodeNullPointer(56, true);
+            encoder0.encodeNullPointer(64, true);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.shape.length, 56, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.shape.length, 64, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
             for (int i0 = 0; i0 < this.shape.length; ++i0) {
                 
                 encoder1.encode(this.shape[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);

@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface MediaPlayerObserver extends org.chromium.mojo.bindings.Interface {
 
@@ -23,63 +25,47 @@ public interface MediaPlayerObserver extends org.chromium.mojo.bindings.Interfac
 
     Manager<MediaPlayerObserver, MediaPlayerObserver.Proxy> MANAGER = MediaPlayerObserver_Internal.MANAGER;
 
-
     void onMediaPlaying(
 );
-
 
 
     void onMediaPaused(
 boolean streamEnded);
 
 
-
     void onMutedStatusChanged(
 boolean muted);
-
 
 
     void onMediaMetadataChanged(
 boolean hasAudio, boolean hasVideo, int contentType);
 
 
-
     void onMediaPositionStateChanged(
 org.chromium.media_session.mojom.MediaPosition mediaPosition);
-
 
 
     void onMediaEffectivelyFullscreenChanged(
 int status);
 
 
-
     void onMediaSizeChanged(
 org.chromium.gfx.mojom.Size size);
-
 
 
     void onPictureInPictureAvailabilityChanged(
 boolean available);
 
 
-
     void onAudioOutputSinkChanged(
 String hashedDeviceId);
 
 
+    void onUseAudioServiceChanged(
+boolean usesAudioService);
+
 
     void onAudioOutputSinkChangingDisabled(
-);
-
-
-
-    void onBufferUnderflow(
-);
-
-
-
-    void onSeek(
 );
 
 

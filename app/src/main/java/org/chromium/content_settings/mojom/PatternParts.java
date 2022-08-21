@@ -13,6 +13,8 @@
 
 package org.chromium.content_settings.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class PatternParts extends org.chromium.mojo.bindings.Struct {
 

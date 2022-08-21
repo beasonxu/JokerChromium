@@ -1,7 +1,6 @@
 package org.chromium.chrome.browser.toolbar.bottom;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
@@ -9,9 +8,8 @@ import org.chromium.base.natives.GEN_JNI;
 import org.chromium.chrome.browser.layouts.scene_layer.SceneLayer;
 import org.chromium.ui.resources.ResourceManager;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ScrollingBottomViewSceneLayerJni implements ScrollingBottomViewSceneLayer.Natives {
+class ScrollingBottomViewSceneLayerJni implements ScrollingBottomViewSceneLayer.Natives {
   private static ScrollingBottomViewSceneLayer.Natives testInstance;
 
   public static final JniStaticTestMocker<ScrollingBottomViewSceneLayer.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.toolbar.bottom.ScrollingBottomViewSceneLayer.Natives>() {

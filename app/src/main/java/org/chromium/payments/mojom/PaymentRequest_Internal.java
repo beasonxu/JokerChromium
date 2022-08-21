@@ -13,6 +13,8 @@
 
 package org.chromium.payments.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class PaymentRequest_Internal {
 
@@ -76,7 +78,7 @@ class PaymentRequest_Internal {
 
         @Override
         public void init(
-PaymentRequestClient client, PaymentMethodData[] methodData, PaymentDetails details, PaymentOptions options, boolean googlePayBridgeEligible) {
+PaymentRequestClient client, PaymentMethodData[] methodData, PaymentDetails details, PaymentOptions options) {
 
             PaymentRequestInitParams _message = new PaymentRequestInitParams();
 
@@ -87,8 +89,6 @@ PaymentRequestClient client, PaymentMethodData[] methodData, PaymentDetails deta
             _message.details = details;
 
             _message.options = options;
-
-            _message.googlePayBridgeEligible = googlePayBridgeEligible;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -101,11 +101,9 @@ PaymentRequestClient client, PaymentMethodData[] methodData, PaymentDetails deta
 
         @Override
         public void show(
-boolean isUserGesture, boolean waitForUpdatedDetails) {
+boolean waitForUpdatedDetails) {
 
             PaymentRequestShowParams _message = new PaymentRequestShowParams();
-
-            _message.isUserGesture = isUserGesture;
 
             _message.waitForUpdatedDetails = waitForUpdatedDetails;
 
@@ -265,7 +263,7 @@ PaymentValidationErrors errors) {
                         PaymentRequestInitParams data =
                                 PaymentRequestInitParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().init(data.client, data.methodData, data.details, data.options, data.googlePayBridgeEligible);
+                        getImpl().init(data.client, data.methodData, data.details, data.options);
                         return true;
                     }
 
@@ -278,7 +276,7 @@ PaymentValidationErrors errors) {
                         PaymentRequestShowParams data =
                                 PaymentRequestShowParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().show(data.isUserGesture, data.waitForUpdatedDetails);
+                        getImpl().show(data.waitForUpdatedDetails);
                         return true;
                     }
 
@@ -431,14 +429,13 @@ PaymentValidationErrors errors) {
     
     static final class PaymentRequestInitParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 48;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
+        private static final int STRUCT_SIZE = 40;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public PaymentRequestClient client;
         public PaymentMethodData[] methodData;
         public PaymentDetails details;
         public PaymentOptions options;
-        public boolean googlePayBridgeEligible;
 
         private PaymentRequestInitParams(int version) {
             super(STRUCT_SIZE, version);
@@ -500,10 +497,6 @@ PaymentValidationErrors errors) {
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
                     result.options = PaymentOptions.decode(decoder1);
                     }
-                    {
-                        
-                    result.googlePayBridgeEligible = decoder0.readBoolean(40, 0);
-                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -531,8 +524,6 @@ PaymentValidationErrors errors) {
             encoder0.encode(this.details, 24, false);
             
             encoder0.encode(this.options, 32, false);
-            
-            encoder0.encode(this.googlePayBridgeEligible, 40, 0);
         }
     }
 
@@ -544,7 +535,6 @@ PaymentValidationErrors errors) {
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public boolean isUserGesture;
         public boolean waitForUpdatedDetails;
 
         private PaymentRequestShowParams(int version) {
@@ -582,11 +572,7 @@ PaymentValidationErrors errors) {
                 result = new PaymentRequestShowParams(elementsOrVersion);
                     {
                         
-                    result.isUserGesture = decoder0.readBoolean(8, 0);
-                    }
-                    {
-                        
-                    result.waitForUpdatedDetails = decoder0.readBoolean(8, 1);
+                    result.waitForUpdatedDetails = decoder0.readBoolean(8, 0);
                     }
 
             } finally {
@@ -600,9 +586,7 @@ PaymentValidationErrors errors) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.isUserGesture, 8, 0);
-            
-            encoder0.encode(this.waitForUpdatedDetails, 8, 1);
+            encoder0.encode(this.waitForUpdatedDetails, 8, 0);
         }
     }
 

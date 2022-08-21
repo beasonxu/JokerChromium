@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class PolicyContainerHost_Internal {
 
@@ -49,7 +51,9 @@ class PolicyContainerHost_Internal {
 
     private static final int SET_REFERRER_POLICY_ORDINAL = 0;
 
-    private static final int ISSUE_KEEP_ALIVE_HANDLE_ORDINAL = 1;
+    private static final int ADD_CONTENT_SECURITY_POLICIES_ORDINAL = 1;
+
+    private static final int ISSUE_KEEP_ALIVE_HANDLE_ORDINAL = 2;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements PolicyContainerHost.Proxy {
@@ -73,6 +77,23 @@ int referrerPolicy) {
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(SET_REFERRER_POLICY_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void addContentSecurityPolicies(
+org.chromium.network.mojom.ContentSecurityPolicy[] contentSecurityPolicies) {
+
+            PolicyContainerHostAddContentSecurityPoliciesParams _message = new PolicyContainerHostAddContentSecurityPoliciesParams();
+
+            _message.contentSecurityPolicies = contentSecurityPolicies;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(ADD_CONTENT_SECURITY_POLICIES_ORDINAL)));
 
         }
 
@@ -138,6 +159,19 @@ org.chromium.mojo.bindings.InterfaceRequest<PolicyContainerHostKeepAliveHandle> 
 
 
 
+                    case ADD_CONTENT_SECURITY_POLICIES_ORDINAL: {
+
+                        PolicyContainerHostAddContentSecurityPoliciesParams data =
+                                PolicyContainerHostAddContentSecurityPoliciesParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().addContentSecurityPolicies(data.contentSecurityPolicies);
+                        return true;
+                    }
+
+
+
+
+
                     case ISSUE_KEEP_ALIVE_HANDLE_ORDINAL: {
 
                         PolicyContainerHostIssueKeepAliveHandleParams data =
@@ -175,6 +209,8 @@ org.chromium.mojo.bindings.InterfaceRequest<PolicyContainerHostKeepAliveHandle> 
                     case org.chromium.mojo.bindings.interfacecontrol.InterfaceControlMessagesConstants.RUN_MESSAGE_ID:
                         return org.chromium.mojo.bindings.InterfaceControlMessagesHelper.handleRun(
                                 getCore(), PolicyContainerHost_Internal.MANAGER, messageWithHeader, receiver);
+
+
 
 
 
@@ -252,6 +288,86 @@ org.chromium.mojo.bindings.InterfaceRequest<PolicyContainerHostKeepAliveHandle> 
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.referrerPolicy, 8);
+        }
+    }
+
+
+
+    
+    static final class PolicyContainerHostAddContentSecurityPoliciesParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.network.mojom.ContentSecurityPolicy[] contentSecurityPolicies;
+
+        private PolicyContainerHostAddContentSecurityPoliciesParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public PolicyContainerHostAddContentSecurityPoliciesParams() {
+            this(0);
+        }
+
+        public static PolicyContainerHostAddContentSecurityPoliciesParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static PolicyContainerHostAddContentSecurityPoliciesParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static PolicyContainerHostAddContentSecurityPoliciesParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            PolicyContainerHostAddContentSecurityPoliciesParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new PolicyContainerHostAddContentSecurityPoliciesParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    {
+                        org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                        result.contentSecurityPolicies = new org.chromium.network.mojom.ContentSecurityPolicy[si1.elementsOrVersion];
+                        for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
+                            
+                            org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                            result.contentSecurityPolicies[i1] = org.chromium.network.mojom.ContentSecurityPolicy.decode(decoder2);
+                        }
+                    }
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            if (this.contentSecurityPolicies == null) {
+                encoder0.encodeNullPointer(8, false);
+            } else {
+                org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.contentSecurityPolicies.length, 8, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                for (int i0 = 0; i0 < this.contentSecurityPolicies.length; ++i0) {
+                    
+                    encoder1.encode(this.contentSecurityPolicies[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
+                }
+            }
         }
     }
 

@@ -13,8 +13,16 @@
 
 package org.chromium.dom_distiller.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class FontFamily {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        FontFamily.SANS_SERIF,
+        FontFamily.SERIF,
+        FontFamily.MONOSPACE})
+    public @interface EnumType {}
 
     public static final int SANS_SERIF = 0;
     public static final int SERIF = 1;

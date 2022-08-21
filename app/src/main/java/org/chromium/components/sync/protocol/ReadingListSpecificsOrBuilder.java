@@ -103,6 +103,17 @@ public interface ReadingListSpecificsOrBuilder extends
   long getUpdateTitleTimeUs();
 
   /**
+   * <code>optional int32 estimated_read_time_seconds = 9;</code>
+   * @return Whether the estimatedReadTimeSeconds field is set.
+   */
+  boolean hasEstimatedReadTimeSeconds();
+  /**
+   * <code>optional int32 estimated_read_time_seconds = 9;</code>
+   * @return The estimatedReadTimeSeconds.
+   */
+  int getEstimatedReadTimeSeconds();
+
+  /**
    * <pre>
    * If the field is not present, it defaults to UNSEEN.
    * </pre>

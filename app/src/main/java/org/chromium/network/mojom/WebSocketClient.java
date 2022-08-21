@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface WebSocketClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,15 +25,12 @@ public interface WebSocketClient extends org.chromium.mojo.bindings.Interface {
 
     Manager<WebSocketClient, WebSocketClient.Proxy> MANAGER = WebSocketClient_Internal.MANAGER;
 
-
     void onDataFrame(
 boolean fin, int type, long dataLength);
 
 
-
     void onDropChannel(
 boolean wasClean, short code, String reason);
-
 
 
     void onClosingHandshake(

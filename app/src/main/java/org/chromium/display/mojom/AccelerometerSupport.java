@@ -13,8 +13,16 @@
 
 package org.chromium.display.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class AccelerometerSupport {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        AccelerometerSupport.UNKNOWN,
+        AccelerometerSupport.AVAILABLE,
+        AccelerometerSupport.UNAVAILABLE})
+    public @interface EnumType {}
 
     public static final int UNKNOWN = 0;
     public static final int AVAILABLE = 1;

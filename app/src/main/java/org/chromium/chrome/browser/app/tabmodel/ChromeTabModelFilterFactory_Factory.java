@@ -1,7 +1,9 @@
 package org.chromium.chrome.browser.app.tabmodel;
 
+import android.app.Activity;
 import dagger.internal.Factory;
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
+import javax.inject.Provider;
 
 @Generated(
     value = "dagger.internal.codegen.ComponentProcessor",
@@ -12,20 +14,22 @@ import javax.annotation.Generated;
     "rawtypes"
 })
 public final class ChromeTabModelFilterFactory_Factory implements Factory<ChromeTabModelFilterFactory> {
+  private final Provider<Activity> activityProvider;
+
+  public ChromeTabModelFilterFactory_Factory(Provider<Activity> activityProvider) {
+    this.activityProvider = activityProvider;
+  }
+
   @Override
   public ChromeTabModelFilterFactory get() {
-    return newInstance();
+    return newInstance(activityProvider.get());
   }
 
-  public static ChromeTabModelFilterFactory_Factory create() {
-    return InstanceHolder.INSTANCE;
+  public static ChromeTabModelFilterFactory_Factory create(Provider<Activity> activityProvider) {
+    return new ChromeTabModelFilterFactory_Factory(activityProvider);
   }
 
-  public static ChromeTabModelFilterFactory newInstance() {
-    return new ChromeTabModelFilterFactory();
-  }
-
-  private static final class InstanceHolder {
-    private static final ChromeTabModelFilterFactory_Factory INSTANCE = new ChromeTabModelFilterFactory_Factory();
+  public static ChromeTabModelFilterFactory newInstance(Activity activity) {
+    return new ChromeTabModelFilterFactory(activity);
   }
 }

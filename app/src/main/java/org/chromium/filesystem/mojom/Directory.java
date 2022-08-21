@@ -13,6 +13,8 @@
 
 package org.chromium.filesystem.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface Directory extends org.chromium.mojo.bindings.Interface {
 
@@ -23,121 +25,99 @@ public interface Directory extends org.chromium.mojo.bindings.Interface {
 
     Manager<Directory, Directory.Proxy> MANAGER = Directory_Internal.MANAGER;
 
-
     void read(
 
-ReadResponse callback);
+Read_Response callback);
 
-    interface ReadResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, DirectoryEntry[]> { }
-
-
-
-    void openFile(
-String path, org.chromium.mojo.bindings.InterfaceRequest<File> file, int openFlags, 
-OpenFileResponse callback);
-
-    interface OpenFileResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface Read_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, DirectoryEntry[]> { }
 
 
     void openFileHandle(
 String path, int openFlags, 
-OpenFileHandleResponse callback);
+OpenFileHandle_Response callback);
 
-    interface OpenFileHandleResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, org.chromium.mojo_base.mojom.File> { }
-
+    interface OpenFileHandle_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, org.chromium.mojo_base.mojom.File> { }
 
 
     void openFileHandles(
 FileOpenDetails[] files, 
-OpenFileHandlesResponse callback);
+OpenFileHandles_Response callback);
 
-    interface OpenFileHandlesResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<FileOpenResult[]> { }
-
+    interface OpenFileHandles_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<FileOpenResult[]> { }
 
 
     void openDirectory(
 String path, org.chromium.mojo.bindings.InterfaceRequest<Directory> directory, int openFlags, 
-OpenDirectoryResponse callback);
+OpenDirectory_Response callback);
 
-    interface OpenDirectoryResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface OpenDirectory_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void rename(
 String path, String newPath, 
-RenameResponse callback);
+Rename_Response callback);
 
-    interface RenameResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface Rename_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void replace(
 String path, String newPath, 
-ReplaceResponse callback);
+Replace_Response callback);
 
-    interface ReplaceResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface Replace_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void delete(
 String path, int deleteFlags, 
-DeleteResponse callback);
+Delete_Response callback);
 
-    interface DeleteResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface Delete_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void exists(
 String path, 
-ExistsResponse callback);
+Exists_Response callback);
 
-    interface ExistsResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, Boolean> { }
-
+    interface Exists_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, Boolean> { }
 
 
     void isWritable(
 String path, 
-IsWritableResponse callback);
+IsWritable_Response callback);
 
-    interface IsWritableResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, Boolean> { }
-
+    interface IsWritable_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, Boolean> { }
 
 
     void flush(
 
-FlushResponse callback);
+Flush_Response callback);
 
-    interface FlushResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface Flush_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void statFile(
 String path, 
-StatFileResponse callback);
+StatFile_Response callback);
 
-    interface StatFileResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, FileInformation> { }
-
+    interface StatFile_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, FileInformation> { }
 
 
     void clone(
 org.chromium.mojo.bindings.InterfaceRequest<Directory> directory);
 
 
-
     void readEntireFile(
 String path, 
-ReadEntireFileResponse callback);
+ReadEntireFile_Response callback);
 
-    interface ReadEntireFileResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, byte[]> { }
-
+    interface ReadEntireFile_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, byte[]> { }
 
 
     void writeFile(
 String path, byte[] data, 
-WriteFileResponse callback);
+WriteFile_Response callback);
 
-    interface WriteFileResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
+    interface WriteFile_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
 }

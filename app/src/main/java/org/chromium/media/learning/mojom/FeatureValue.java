@@ -13,6 +13,8 @@
 
 package org.chromium.media.learning.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class FeatureValue extends org.chromium.mojo.bindings.Struct {
 

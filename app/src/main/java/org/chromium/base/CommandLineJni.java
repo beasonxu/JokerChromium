@@ -2,15 +2,13 @@ package org.chromium.base;
 
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.annotations.MainDex;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @MainDex
 @CheckDiscard("crbug.com/993421")
-final class CommandLineJni implements CommandLine.Natives {
+class CommandLineJni implements CommandLine.Natives {
   private static CommandLine.Natives testInstance;
 
   public static final JniStaticTestMocker<CommandLine.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.base.CommandLine.Natives>() {

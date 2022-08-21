@@ -13,8 +13,17 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class UserActivationUpdateType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        UserActivationUpdateType.NOTIFY_ACTIVATION,
+        UserActivationUpdateType.NOTIFY_ACTIVATION_PENDING_BROWSER_VERIFICATION,
+        UserActivationUpdateType.CONSUME_TRANSIENT_ACTIVATION,
+        UserActivationUpdateType.CLEAR_ACTIVATION})
+    public @interface EnumType {}
 
     public static final int NOTIFY_ACTIVATION = 0;
     public static final int NOTIFY_ACTIVATION_PENDING_BROWSER_VERIFICATION = 1;

@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class Renderer_Internal {
 
@@ -71,7 +73,7 @@ class Renderer_Internal {
         @Override
         public void initialize(
 org.chromium.mojo.bindings.AssociatedInterfaceNotSupported client, DemuxerStream[] streams, MediaUrlParams mediaUrlParams, 
-InitializeResponse callback) {
+Initialize_Response callback) {
 
             RendererInitializeParams _message = new RendererInitializeParams();
 
@@ -97,7 +99,7 @@ InitializeResponse callback) {
         @Override
         public void flush(
 
-FlushResponse callback) {
+Flush_Response callback) {
 
             RendererFlushParams _message = new RendererFlushParams();
 
@@ -168,7 +170,7 @@ float volume) {
         @Override
         public void setCdm(
 org.chromium.mojo_base.mojom.UnguessableToken cdmId, 
-SetCdmResponse callback) {
+SetCdm_Response callback) {
 
             RendererSetCdmParams _message = new RendererSetCdmParams();
 
@@ -491,9 +493,9 @@ SetCdmResponse callback) {
 
     static class RendererInitializeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Renderer.InitializeResponse mCallback;
+        private final Renderer.Initialize_Response mCallback;
 
-        RendererInitializeResponseParamsForwardToCallback(Renderer.InitializeResponse callback) {
+        RendererInitializeResponseParamsForwardToCallback(Renderer.Initialize_Response callback) {
             this.mCallback = callback;
         }
 
@@ -518,7 +520,7 @@ SetCdmResponse callback) {
         }
     }
 
-    static class RendererInitializeResponseParamsProxyToResponder implements Renderer.InitializeResponse {
+    static class RendererInitializeResponseParamsProxyToResponder implements Renderer.Initialize_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -664,9 +666,9 @@ SetCdmResponse callback) {
 
     static class RendererFlushResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Renderer.FlushResponse mCallback;
+        private final Renderer.Flush_Response mCallback;
 
-        RendererFlushResponseParamsForwardToCallback(Renderer.FlushResponse callback) {
+        RendererFlushResponseParamsForwardToCallback(Renderer.Flush_Response callback) {
             this.mCallback = callback;
         }
 
@@ -689,7 +691,7 @@ SetCdmResponse callback) {
         }
     }
 
-    static class RendererFlushResponseParamsProxyToResponder implements Renderer.FlushResponse {
+    static class RendererFlushResponseParamsProxyToResponder implements Renderer.Flush_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1038,9 +1040,9 @@ SetCdmResponse callback) {
 
     static class RendererSetCdmResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Renderer.SetCdmResponse mCallback;
+        private final Renderer.SetCdm_Response mCallback;
 
-        RendererSetCdmResponseParamsForwardToCallback(Renderer.SetCdmResponse callback) {
+        RendererSetCdmResponseParamsForwardToCallback(Renderer.SetCdm_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1065,7 +1067,7 @@ SetCdmResponse callback) {
         }
     }
 
-    static class RendererSetCdmResponseParamsProxyToResponder implements Renderer.SetCdmResponse {
+    static class RendererSetCdmResponseParamsProxyToResponder implements Renderer.SetCdm_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

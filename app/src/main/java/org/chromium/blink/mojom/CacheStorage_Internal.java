@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class CacheStorage_Internal {
 
@@ -69,7 +71,7 @@ class CacheStorage_Internal {
         @Override
         public void has(
 org.chromium.mojo_base.mojom.String16 cacheName, long traceId, 
-HasResponse callback) {
+Has_Response callback) {
 
             CacheStorageHasParams _message = new CacheStorageHasParams();
 
@@ -93,7 +95,7 @@ HasResponse callback) {
         @Override
         public void delete(
 org.chromium.mojo_base.mojom.String16 cacheName, long traceId, 
-DeleteResponse callback) {
+Delete_Response callback) {
 
             CacheStorageDeleteParams _message = new CacheStorageDeleteParams();
 
@@ -117,7 +119,7 @@ DeleteResponse callback) {
         @Override
         public void keys(
 long traceId, 
-KeysResponse callback) {
+Keys_Response callback) {
 
             CacheStorageKeysParams _message = new CacheStorageKeysParams();
 
@@ -138,8 +140,8 @@ KeysResponse callback) {
 
         @Override
         public void match(
-FetchApiRequest request, MultiCacheQueryOptions matchOptions, boolean inRelatedFetchEvent, long traceId, 
-MatchResponse callback) {
+FetchApiRequest request, MultiCacheQueryOptions matchOptions, boolean inRelatedFetchEvent, boolean inRangeFetchEvent, long traceId, 
+Match_Response callback) {
 
             CacheStorageMatchParams _message = new CacheStorageMatchParams();
 
@@ -148,6 +150,8 @@ MatchResponse callback) {
             _message.matchOptions = matchOptions;
 
             _message.inRelatedFetchEvent = inRelatedFetchEvent;
+
+            _message.inRangeFetchEvent = inRangeFetchEvent;
 
             _message.traceId = traceId;
 
@@ -167,7 +171,7 @@ MatchResponse callback) {
         @Override
         public void open(
 org.chromium.mojo_base.mojom.String16 cacheName, long traceId, 
-OpenResponse callback) {
+Open_Response callback) {
 
             CacheStorageOpenParams _message = new CacheStorageOpenParams();
 
@@ -310,7 +314,7 @@ OpenResponse callback) {
                         CacheStorageMatchParams data =
                                 CacheStorageMatchParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().match(data.request, data.matchOptions, data.inRelatedFetchEvent, data.traceId, new CacheStorageMatchResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().match(data.request, data.matchOptions, data.inRelatedFetchEvent, data.inRangeFetchEvent, data.traceId, new CacheStorageMatchResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -477,9 +481,9 @@ OpenResponse callback) {
 
     static class CacheStorageHasResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CacheStorage.HasResponse mCallback;
+        private final CacheStorage.Has_Response mCallback;
 
-        CacheStorageHasResponseParamsForwardToCallback(CacheStorage.HasResponse callback) {
+        CacheStorageHasResponseParamsForwardToCallback(CacheStorage.Has_Response callback) {
             this.mCallback = callback;
         }
 
@@ -504,7 +508,7 @@ OpenResponse callback) {
         }
     }
 
-    static class CacheStorageHasResponseParamsProxyToResponder implements CacheStorage.HasResponse {
+    static class CacheStorageHasResponseParamsProxyToResponder implements CacheStorage.Has_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -674,9 +678,9 @@ OpenResponse callback) {
 
     static class CacheStorageDeleteResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CacheStorage.DeleteResponse mCallback;
+        private final CacheStorage.Delete_Response mCallback;
 
-        CacheStorageDeleteResponseParamsForwardToCallback(CacheStorage.DeleteResponse callback) {
+        CacheStorageDeleteResponseParamsForwardToCallback(CacheStorage.Delete_Response callback) {
             this.mCallback = callback;
         }
 
@@ -701,7 +705,7 @@ OpenResponse callback) {
         }
     }
 
-    static class CacheStorageDeleteResponseParamsProxyToResponder implements CacheStorage.DeleteResponse {
+    static class CacheStorageDeleteResponseParamsProxyToResponder implements CacheStorage.Delete_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -878,9 +882,9 @@ OpenResponse callback) {
 
     static class CacheStorageKeysResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CacheStorage.KeysResponse mCallback;
+        private final CacheStorage.Keys_Response mCallback;
 
-        CacheStorageKeysResponseParamsForwardToCallback(CacheStorage.KeysResponse callback) {
+        CacheStorageKeysResponseParamsForwardToCallback(CacheStorage.Keys_Response callback) {
             this.mCallback = callback;
         }
 
@@ -905,7 +909,7 @@ OpenResponse callback) {
         }
     }
 
-    static class CacheStorageKeysResponseParamsProxyToResponder implements CacheStorage.KeysResponse {
+    static class CacheStorageKeysResponseParamsProxyToResponder implements CacheStorage.Keys_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -948,6 +952,7 @@ OpenResponse callback) {
         public FetchApiRequest request;
         public MultiCacheQueryOptions matchOptions;
         public boolean inRelatedFetchEvent;
+        public boolean inRangeFetchEvent;
         public long traceId;
 
         private CacheStorageMatchParams(int version) {
@@ -999,6 +1004,10 @@ OpenResponse callback) {
                     }
                     {
                         
+                    result.inRangeFetchEvent = decoder0.readBoolean(24, 1);
+                    }
+                    {
+                        
                     result.traceId = decoder0.readLong(32);
                     }
 
@@ -1018,6 +1027,8 @@ OpenResponse callback) {
             encoder0.encode(this.matchOptions, 16, false);
             
             encoder0.encode(this.inRelatedFetchEvent, 24, 0);
+            
+            encoder0.encode(this.inRangeFetchEvent, 24, 1);
             
             encoder0.encode(this.traceId, 32);
         }
@@ -1088,9 +1099,9 @@ OpenResponse callback) {
 
     static class CacheStorageMatchResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CacheStorage.MatchResponse mCallback;
+        private final CacheStorage.Match_Response mCallback;
 
-        CacheStorageMatchResponseParamsForwardToCallback(CacheStorage.MatchResponse callback) {
+        CacheStorageMatchResponseParamsForwardToCallback(CacheStorage.Match_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1115,7 +1126,7 @@ OpenResponse callback) {
         }
     }
 
-    static class CacheStorageMatchResponseParamsProxyToResponder implements CacheStorage.MatchResponse {
+    static class CacheStorageMatchResponseParamsProxyToResponder implements CacheStorage.Match_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1283,9 +1294,9 @@ OpenResponse callback) {
 
     static class CacheStorageOpenResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CacheStorage.OpenResponse mCallback;
+        private final CacheStorage.Open_Response mCallback;
 
-        CacheStorageOpenResponseParamsForwardToCallback(CacheStorage.OpenResponse callback) {
+        CacheStorageOpenResponseParamsForwardToCallback(CacheStorage.Open_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1310,7 +1321,7 @@ OpenResponse callback) {
         }
     }
 
-    static class CacheStorageOpenResponseParamsProxyToResponder implements CacheStorage.OpenResponse {
+    static class CacheStorageOpenResponseParamsProxyToResponder implements CacheStorage.Open_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

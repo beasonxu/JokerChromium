@@ -13,6 +13,8 @@
 
 package org.chromium.handwriting.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class HandwritingModelConstraint extends org.chromium.mojo.bindings.Struct {
 

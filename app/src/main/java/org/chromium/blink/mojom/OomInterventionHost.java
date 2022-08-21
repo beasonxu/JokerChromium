@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface OomInterventionHost extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface OomInterventionHost extends org.chromium.mojo.bindings.Interfac
     }
 
     Manager<OomInterventionHost, OomInterventionHost.Proxy> MANAGER = OomInterventionHost_Internal.MANAGER;
-
 
     void onHighMemoryUsage(
 );

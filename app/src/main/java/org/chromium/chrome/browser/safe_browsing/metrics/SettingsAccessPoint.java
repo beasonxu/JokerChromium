@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -18,7 +18,8 @@ import java.lang.annotation.RetentionPolicy;
 @IntDef({
     SettingsAccessPoint.DEFAULT, SettingsAccessPoint.PARENT_SETTINGS,
     SettingsAccessPoint.SAFETY_CHECK, SettingsAccessPoint.SURFACE_EXPLORER_PROMO_SLINGER,
-    SettingsAccessPoint.SECURITY_INTERSTITIAL, SettingsAccessPoint.MAX_VALUE
+    SettingsAccessPoint.SECURITY_INTERSTITIAL, SettingsAccessPoint.TAILORED_SECURITY,
+    SettingsAccessPoint.MAX_VALUE
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface SettingsAccessPoint {
@@ -39,5 +40,9 @@ public @interface SettingsAccessPoint {
    * From security interstitial.
    */
   int SECURITY_INTERSTITIAL = 4;
-  int MAX_VALUE = SURFACE_EXPLORER_PROMO_SLINGER;
+  /**
+   * From UX shown due to the Tailored Security setting changing.
+   */
+  int TAILORED_SECURITY = 5;
+  int MAX_VALUE = TAILORED_SECURITY;
 }

@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class DemuxerStream_Internal {
 
@@ -65,7 +67,7 @@ class DemuxerStream_Internal {
         @Override
         public void initialize(
 
-InitializeResponse callback) {
+Initialize_Response callback) {
 
             DemuxerStreamInitializeParams _message = new DemuxerStreamInitializeParams();
 
@@ -85,7 +87,7 @@ InitializeResponse callback) {
         @Override
         public void read(
 
-ReadResponse callback) {
+Read_Response callback) {
 
             DemuxerStreamReadParams _message = new DemuxerStreamReadParams();
 
@@ -376,9 +378,9 @@ ReadResponse callback) {
 
     static class DemuxerStreamInitializeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final DemuxerStream.InitializeResponse mCallback;
+        private final DemuxerStream.Initialize_Response mCallback;
 
-        DemuxerStreamInitializeResponseParamsForwardToCallback(DemuxerStream.InitializeResponse callback) {
+        DemuxerStreamInitializeResponseParamsForwardToCallback(DemuxerStream.Initialize_Response callback) {
             this.mCallback = callback;
         }
 
@@ -403,7 +405,7 @@ ReadResponse callback) {
         }
     }
 
-    static class DemuxerStreamInitializeResponseParamsProxyToResponder implements DemuxerStream.InitializeResponse {
+    static class DemuxerStreamInitializeResponseParamsProxyToResponder implements DemuxerStream.Initialize_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -588,9 +590,9 @@ ReadResponse callback) {
 
     static class DemuxerStreamReadResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final DemuxerStream.ReadResponse mCallback;
+        private final DemuxerStream.Read_Response mCallback;
 
-        DemuxerStreamReadResponseParamsForwardToCallback(DemuxerStream.ReadResponse callback) {
+        DemuxerStreamReadResponseParamsForwardToCallback(DemuxerStream.Read_Response callback) {
             this.mCallback = callback;
         }
 
@@ -615,7 +617,7 @@ ReadResponse callback) {
         }
     }
 
-    static class DemuxerStreamReadResponseParamsProxyToResponder implements DemuxerStream.ReadResponse {
+    static class DemuxerStreamReadResponseParamsProxyToResponder implements DemuxerStream.Read_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

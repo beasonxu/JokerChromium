@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class NetworkContext_Internal {
 
@@ -57,123 +59,131 @@ class NetworkContext_Internal {
 
     private static final int GET_RESTRICTED_COOKIE_MANAGER_ORDINAL = 4;
 
-    private static final int GET_HAS_TRUST_TOKENS_ANSWERER_ORDINAL = 5;
+    private static final int GET_TRUST_TOKEN_QUERY_ANSWERER_ORDINAL = 5;
 
     private static final int CLEAR_TRUST_TOKEN_DATA_ORDINAL = 6;
 
     private static final int GET_STORED_TRUST_TOKEN_COUNTS_ORDINAL = 7;
 
-    private static final int CLEAR_NETWORKING_HISTORY_BETWEEN_ORDINAL = 8;
+    private static final int DELETE_STORED_TRUST_TOKENS_ORDINAL = 8;
 
-    private static final int CLEAR_HTTP_CACHE_ORDINAL = 9;
+    private static final int SET_BLOCK_TRUST_TOKENS_ORDINAL = 9;
 
-    private static final int COMPUTE_HTTP_CACHE_SIZE_ORDINAL = 10;
+    private static final int CLEAR_NETWORKING_HISTORY_BETWEEN_ORDINAL = 10;
 
-    private static final int NOTIFY_EXTERNAL_CACHE_HIT_ORDINAL = 11;
+    private static final int CLEAR_HTTP_CACHE_ORDINAL = 11;
 
-    private static final int CLEAR_HOST_CACHE_ORDINAL = 12;
+    private static final int COMPUTE_HTTP_CACHE_SIZE_ORDINAL = 12;
 
-    private static final int CLEAR_HTTP_AUTH_CACHE_ORDINAL = 13;
+    private static final int NOTIFY_EXTERNAL_CACHE_HIT_ORDINAL = 13;
 
-    private static final int CLEAR_REPORTING_CACHE_REPORTS_ORDINAL = 14;
+    private static final int CLEAR_HOST_CACHE_ORDINAL = 14;
 
-    private static final int CLEAR_REPORTING_CACHE_CLIENTS_ORDINAL = 15;
+    private static final int CLEAR_HTTP_AUTH_CACHE_ORDINAL = 15;
 
-    private static final int CLEAR_NETWORK_ERROR_LOGGING_ORDINAL = 16;
+    private static final int CLEAR_REPORTING_CACHE_REPORTS_ORDINAL = 16;
 
-    private static final int CLEAR_DOMAIN_RELIABILITY_ORDINAL = 17;
+    private static final int CLEAR_REPORTING_CACHE_CLIENTS_ORDINAL = 17;
 
-    private static final int GET_DOMAIN_RELIABILITY_JSON_ORDINAL = 18;
+    private static final int CLEAR_NETWORK_ERROR_LOGGING_ORDINAL = 18;
 
-    private static final int QUEUE_REPORT_ORDINAL = 19;
+    private static final int CLEAR_DOMAIN_RELIABILITY_ORDINAL = 19;
 
-    private static final int QUEUE_SIGNED_EXCHANGE_REPORT_ORDINAL = 20;
+    private static final int SET_DOCUMENT_REPORTING_ENDPOINTS_ORDINAL = 20;
 
-    private static final int CLOSE_ALL_CONNECTIONS_ORDINAL = 21;
+    private static final int SEND_REPORTS_AND_REMOVE_SOURCE_ORDINAL = 21;
 
-    private static final int CLOSE_IDLE_CONNECTIONS_ORDINAL = 22;
+    private static final int QUEUE_REPORT_ORDINAL = 22;
 
-    private static final int SET_NETWORK_CONDITIONS_ORDINAL = 23;
+    private static final int QUEUE_SIGNED_EXCHANGE_REPORT_ORDINAL = 23;
 
-    private static final int SET_ACCEPT_LANGUAGE_ORDINAL = 24;
+    private static final int CLOSE_ALL_CONNECTIONS_ORDINAL = 24;
 
-    private static final int SET_ENABLE_REFERRERS_ORDINAL = 25;
+    private static final int CLOSE_IDLE_CONNECTIONS_ORDINAL = 25;
 
-    private static final int SET_CT_POLICY_ORDINAL = 26;
+    private static final int SET_NETWORK_CONDITIONS_ORDINAL = 26;
 
-    private static final int ADD_EXPECT_CT_ORDINAL = 27;
+    private static final int SET_ACCEPT_LANGUAGE_ORDINAL = 27;
 
-    private static final int SET_EXPECT_CT_TEST_REPORT_ORDINAL = 28;
+    private static final int SET_ENABLE_REFERRERS_ORDINAL = 28;
 
-    private static final int GET_EXPECT_CT_STATE_ORDINAL = 29;
+    private static final int SET_CT_POLICY_ORDINAL = 29;
 
-    private static final int CREATE_UDP_SOCKET_ORDINAL = 30;
+    private static final int ADD_EXPECT_CT_ORDINAL = 30;
 
-    private static final int CREATE_TCP_SERVER_SOCKET_ORDINAL = 31;
+    private static final int SET_EXPECT_CT_TEST_REPORT_ORDINAL = 31;
 
-    private static final int CREATE_TCP_CONNECTED_SOCKET_ORDINAL = 32;
+    private static final int GET_EXPECT_CT_STATE_ORDINAL = 32;
 
-    private static final int CREATE_TCP_BOUND_SOCKET_ORDINAL = 33;
+    private static final int CREATE_UDP_SOCKET_ORDINAL = 33;
 
-    private static final int CREATE_PROXY_RESOLVING_SOCKET_FACTORY_ORDINAL = 34;
+    private static final int CREATE_TCP_SERVER_SOCKET_ORDINAL = 34;
 
-    private static final int LOOK_UP_PROXY_FOR_URL_ORDINAL = 35;
+    private static final int CREATE_TCP_CONNECTED_SOCKET_ORDINAL = 35;
 
-    private static final int FORCE_RELOAD_PROXY_CONFIG_ORDINAL = 36;
+    private static final int CREATE_TCP_BOUND_SOCKET_ORDINAL = 36;
 
-    private static final int CLEAR_BAD_PROXIES_CACHE_ORDINAL = 37;
+    private static final int CREATE_PROXY_RESOLVING_SOCKET_FACTORY_ORDINAL = 37;
 
-    private static final int CREATE_WEB_SOCKET_ORDINAL = 38;
+    private static final int LOOK_UP_PROXY_FOR_URL_ORDINAL = 38;
 
-    private static final int CREATE_QUIC_TRANSPORT_ORDINAL = 39;
+    private static final int FORCE_RELOAD_PROXY_CONFIG_ORDINAL = 39;
 
-    private static final int CREATE_NET_LOG_EXPORTER_ORDINAL = 40;
+    private static final int CLEAR_BAD_PROXIES_CACHE_ORDINAL = 40;
 
-    private static final int PRECONNECT_SOCKETS_ORDINAL = 41;
+    private static final int CREATE_WEB_SOCKET_ORDINAL = 41;
 
-    private static final int CREATE_P2P_SOCKET_MANAGER_ORDINAL = 42;
+    private static final int CREATE_WEB_TRANSPORT_ORDINAL = 42;
 
-    private static final int CREATE_MDNS_RESPONDER_ORDINAL = 43;
+    private static final int CREATE_NET_LOG_EXPORTER_ORDINAL = 43;
 
-    private static final int RESOLVE_HOST_ORDINAL = 44;
+    private static final int PRECONNECT_SOCKETS_ORDINAL = 44;
 
-    private static final int CREATE_HOST_RESOLVER_ORDINAL = 45;
+    private static final int CREATE_P2P_SOCKET_MANAGER_ORDINAL = 45;
 
-    private static final int VERIFY_CERT_FOR_SIGNED_EXCHANGE_ORDINAL = 46;
+    private static final int CREATE_MDNS_RESPONDER_ORDINAL = 46;
 
-    private static final int PARSE_HEADERS_ORDINAL = 47;
+    private static final int RESOLVE_HOST_ORDINAL = 47;
 
-    private static final int ADD_HSTS_ORDINAL = 48;
+    private static final int CREATE_HOST_RESOLVER_ORDINAL = 48;
 
-    private static final int IS_HSTS_ACTIVE_FOR_HOST_ORDINAL = 49;
+    private static final int VERIFY_CERT_FOR_SIGNED_EXCHANGE_ORDINAL = 49;
 
-    private static final int GET_HSTS_STATE_ORDINAL = 50;
+    private static final int ADD_HSTS_ORDINAL = 50;
 
-    private static final int SET_CORS_ORIGIN_ACCESS_LISTS_FOR_ORIGIN_ORDINAL = 51;
+    private static final int IS_HSTS_ACTIVE_FOR_HOST_ORDINAL = 51;
 
-    private static final int DELETE_DYNAMIC_DATA_FOR_HOST_ORDINAL = 52;
+    private static final int GET_HSTS_STATE_ORDINAL = 52;
 
-    private static final int SET_SPLIT_AUTH_CACHE_BY_NETWORK_ISOLATION_KEY_ORDINAL = 53;
+    private static final int SET_CORS_ORIGIN_ACCESS_LISTS_FOR_ORIGIN_ORDINAL = 53;
 
-    private static final int SAVE_HTTP_AUTH_CACHE_PROXY_ENTRIES_ORDINAL = 54;
+    private static final int DELETE_DYNAMIC_DATA_FOR_HOST_ORDINAL = 54;
 
-    private static final int LOAD_HTTP_AUTH_CACHE_PROXY_ENTRIES_ORDINAL = 55;
+    private static final int SET_SPLIT_AUTH_CACHE_BY_NETWORK_ISOLATION_KEY_ORDINAL = 55;
 
-    private static final int ADD_AUTH_CACHE_ENTRY_ORDINAL = 56;
+    private static final int SAVE_HTTP_AUTH_CACHE_PROXY_ENTRIES_ORDINAL = 56;
 
-    private static final int LOOKUP_SERVER_BASIC_AUTH_CREDENTIALS_ORDINAL = 57;
+    private static final int LOAD_HTTP_AUTH_CACHE_PROXY_ENTRIES_ORDINAL = 57;
 
-    private static final int ENABLE_STATIC_KEY_PINNING_FOR_TESTING_ORDINAL = 58;
+    private static final int ADD_AUTH_CACHE_ENTRY_ORDINAL = 58;
 
-    private static final int VERIFY_CERTIFICATE_FOR_TESTING_ORDINAL = 59;
+    private static final int SET_CORS_NON_WILDCARD_REQUEST_HEADERS_SUPPORT_ORDINAL = 59;
 
-    private static final int ADD_DOMAIN_RELIABILITY_CONTEXT_FOR_TESTING_ORDINAL = 60;
+    private static final int LOOKUP_SERVER_BASIC_AUTH_CREDENTIALS_ORDINAL = 60;
 
-    private static final int FORCE_DOMAIN_RELIABILITY_UPLOADS_FOR_TESTING_ORDINAL = 61;
+    private static final int ENABLE_STATIC_KEY_PINNING_FOR_TESTING_ORDINAL = 61;
 
-    private static final int GET_ORIGIN_POLICY_MANAGER_ORDINAL = 62;
+    private static final int VERIFY_CERTIFICATE_FOR_TESTING_ORDINAL = 62;
 
-    private static final int SET_SCT_AUDITING_ENABLED_ORDINAL = 63;
+    private static final int ADD_DOMAIN_RELIABILITY_CONTEXT_FOR_TESTING_ORDINAL = 63;
+
+    private static final int FORCE_DOMAIN_RELIABILITY_UPLOADS_FOR_TESTING_ORDINAL = 64;
+
+    private static final int SET_CT_LOG_LIST_ALWAYS_TIMELY_FOR_TESTING_ORDINAL = 65;
+
+    private static final int SET_SCT_AUDITING_MODE_ORDINAL = 66;
+
+    private static final int ADD_REPORTING_API_OBSERVER_ORDINAL = 67;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements NetworkContext.Proxy {
@@ -278,12 +288,12 @@ org.chromium.mojo.bindings.InterfaceRequest<RestrictedCookieManager> restrictedC
 
 
         @Override
-        public void getHasTrustTokensAnswerer(
-org.chromium.mojo.bindings.InterfaceRequest<HasTrustTokensAnswerer> hasTrustTokensAnswerer, org.chromium.url.internal.mojom.Origin topFrameOrigin) {
+        public void getTrustTokenQueryAnswerer(
+org.chromium.mojo.bindings.InterfaceRequest<TrustTokenQueryAnswerer> trustTokenQueryAnswerer, org.chromium.url.internal.mojom.Origin topFrameOrigin) {
 
-            NetworkContextGetHasTrustTokensAnswererParams _message = new NetworkContextGetHasTrustTokensAnswererParams();
+            NetworkContextGetTrustTokenQueryAnswererParams _message = new NetworkContextGetTrustTokenQueryAnswererParams();
 
-            _message.hasTrustTokensAnswerer = hasTrustTokensAnswerer;
+            _message.trustTokenQueryAnswerer = trustTokenQueryAnswerer;
 
             _message.topFrameOrigin = topFrameOrigin;
 
@@ -291,7 +301,7 @@ org.chromium.mojo.bindings.InterfaceRequest<HasTrustTokensAnswerer> hasTrustToke
             getProxyHandler().getMessageReceiver().accept(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(GET_HAS_TRUST_TOKENS_ANSWERER_ORDINAL)));
+                            new org.chromium.mojo.bindings.MessageHeader(GET_TRUST_TOKEN_QUERY_ANSWERER_ORDINAL)));
 
         }
 
@@ -299,7 +309,7 @@ org.chromium.mojo.bindings.InterfaceRequest<HasTrustTokensAnswerer> hasTrustToke
         @Override
         public void clearTrustTokenData(
 ClearDataFilter filter, 
-ClearTrustTokenDataResponse callback) {
+ClearTrustTokenData_Response callback) {
 
             NetworkContextClearTrustTokenDataParams _message = new NetworkContextClearTrustTokenDataParams();
 
@@ -321,7 +331,7 @@ ClearTrustTokenDataResponse callback) {
         @Override
         public void getStoredTrustTokenCounts(
 
-GetStoredTrustTokenCountsResponse callback) {
+GetStoredTrustTokenCounts_Response callback) {
 
             NetworkContextGetStoredTrustTokenCountsParams _message = new NetworkContextGetStoredTrustTokenCountsParams();
 
@@ -339,9 +349,48 @@ GetStoredTrustTokenCountsResponse callback) {
 
 
         @Override
+        public void deleteStoredTrustTokens(
+org.chromium.url.internal.mojom.Origin issuer, 
+DeleteStoredTrustTokens_Response callback) {
+
+            NetworkContextDeleteStoredTrustTokensParams _message = new NetworkContextDeleteStoredTrustTokensParams();
+
+            _message.issuer = issuer;
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    DELETE_STORED_TRUST_TOKENS_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new NetworkContextDeleteStoredTrustTokensResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void setBlockTrustTokens(
+boolean block) {
+
+            NetworkContextSetBlockTrustTokensParams _message = new NetworkContextSetBlockTrustTokensParams();
+
+            _message.block = block;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(SET_BLOCK_TRUST_TOKENS_ORDINAL)));
+
+        }
+
+
+        @Override
         public void clearNetworkingHistoryBetween(
 org.chromium.mojo_base.mojom.Time startTime, org.chromium.mojo_base.mojom.Time endTime, 
-ClearNetworkingHistoryBetweenResponse callback) {
+ClearNetworkingHistoryBetween_Response callback) {
 
             NetworkContextClearNetworkingHistoryBetweenParams _message = new NetworkContextClearNetworkingHistoryBetweenParams();
 
@@ -365,7 +414,7 @@ ClearNetworkingHistoryBetweenResponse callback) {
         @Override
         public void clearHttpCache(
 org.chromium.mojo_base.mojom.Time startTime, org.chromium.mojo_base.mojom.Time endTime, ClearDataFilter filter, 
-ClearHttpCacheResponse callback) {
+ClearHttpCache_Response callback) {
 
             NetworkContextClearHttpCacheParams _message = new NetworkContextClearHttpCacheParams();
 
@@ -391,7 +440,7 @@ ClearHttpCacheResponse callback) {
         @Override
         public void computeHttpCacheSize(
 org.chromium.mojo_base.mojom.Time startTime, org.chromium.mojo_base.mojom.Time endTime, 
-ComputeHttpCacheSizeResponse callback) {
+ComputeHttpCacheSize_Response callback) {
 
             NetworkContextComputeHttpCacheSizeParams _message = new NetworkContextComputeHttpCacheSizeParams();
 
@@ -414,7 +463,7 @@ ComputeHttpCacheSizeResponse callback) {
 
         @Override
         public void notifyExternalCacheHit(
-org.chromium.url.mojom.Url url, String httpMethod, NetworkIsolationKey key, boolean isSubframeDocumentResource) {
+org.chromium.url.mojom.Url url, String httpMethod, NetworkIsolationKey key, boolean isSubframeDocumentResource, boolean includeCredentials) {
 
             NetworkContextNotifyExternalCacheHitParams _message = new NetworkContextNotifyExternalCacheHitParams();
 
@@ -425,6 +474,8 @@ org.chromium.url.mojom.Url url, String httpMethod, NetworkIsolationKey key, bool
             _message.key = key;
 
             _message.isSubframeDocumentResource = isSubframeDocumentResource;
+
+            _message.includeCredentials = includeCredentials;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -438,7 +489,7 @@ org.chromium.url.mojom.Url url, String httpMethod, NetworkIsolationKey key, bool
         @Override
         public void clearHostCache(
 ClearDataFilter filter, 
-ClearHostCacheResponse callback) {
+ClearHostCache_Response callback) {
 
             NetworkContextClearHostCacheParams _message = new NetworkContextClearHostCacheParams();
 
@@ -460,7 +511,7 @@ ClearHostCacheResponse callback) {
         @Override
         public void clearHttpAuthCache(
 org.chromium.mojo_base.mojom.Time startTime, org.chromium.mojo_base.mojom.Time endTime, 
-ClearHttpAuthCacheResponse callback) {
+ClearHttpAuthCache_Response callback) {
 
             NetworkContextClearHttpAuthCacheParams _message = new NetworkContextClearHttpAuthCacheParams();
 
@@ -484,7 +535,7 @@ ClearHttpAuthCacheResponse callback) {
         @Override
         public void clearReportingCacheReports(
 ClearDataFilter filter, 
-ClearReportingCacheReportsResponse callback) {
+ClearReportingCacheReports_Response callback) {
 
             NetworkContextClearReportingCacheReportsParams _message = new NetworkContextClearReportingCacheReportsParams();
 
@@ -506,7 +557,7 @@ ClearReportingCacheReportsResponse callback) {
         @Override
         public void clearReportingCacheClients(
 ClearDataFilter filter, 
-ClearReportingCacheClientsResponse callback) {
+ClearReportingCacheClients_Response callback) {
 
             NetworkContextClearReportingCacheClientsParams _message = new NetworkContextClearReportingCacheClientsParams();
 
@@ -528,7 +579,7 @@ ClearReportingCacheClientsResponse callback) {
         @Override
         public void clearNetworkErrorLogging(
 ClearDataFilter filter, 
-ClearNetworkErrorLoggingResponse callback) {
+ClearNetworkErrorLogging_Response callback) {
 
             NetworkContextClearNetworkErrorLoggingParams _message = new NetworkContextClearNetworkErrorLoggingParams();
 
@@ -550,7 +601,7 @@ ClearNetworkErrorLoggingResponse callback) {
         @Override
         public void clearDomainReliability(
 ClearDataFilter filter, int mode, 
-ClearDomainReliabilityResponse callback) {
+ClearDomainReliability_Response callback) {
 
             NetworkContextClearDomainReliabilityParams _message = new NetworkContextClearDomainReliabilityParams();
 
@@ -572,28 +623,48 @@ ClearDomainReliabilityResponse callback) {
 
 
         @Override
-        public void getDomainReliabilityJson(
+        public void setDocumentReportingEndpoints(
+org.chromium.mojo_base.mojom.UnguessableToken reportingSource, org.chromium.url.internal.mojom.Origin origin, IsolationInfo isolationInfo, java.util.Map<String, String> endpoints) {
 
-GetDomainReliabilityJsonResponse callback) {
+            NetworkContextSetDocumentReportingEndpointsParams _message = new NetworkContextSetDocumentReportingEndpointsParams();
 
-            NetworkContextGetDomainReliabilityJsonParams _message = new NetworkContextGetDomainReliabilityJsonParams();
+            _message.reportingSource = reportingSource;
+
+            _message.origin = origin;
+
+            _message.isolationInfo = isolationInfo;
+
+            _message.endpoints = endpoints;
 
 
-            getProxyHandler().getMessageReceiver().acceptWithResponder(
+            getProxyHandler().getMessageReceiver().accept(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(
-                                    GET_DOMAIN_RELIABILITY_JSON_ORDINAL,
-                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
-                                    0)),
-                    new NetworkContextGetDomainReliabilityJsonResponseParamsForwardToCallback(callback));
+                            new org.chromium.mojo.bindings.MessageHeader(SET_DOCUMENT_REPORTING_ENDPOINTS_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void sendReportsAndRemoveSource(
+org.chromium.mojo_base.mojom.UnguessableToken reportingSource) {
+
+            NetworkContextSendReportsAndRemoveSourceParams _message = new NetworkContextSendReportsAndRemoveSourceParams();
+
+            _message.reportingSource = reportingSource;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(SEND_REPORTS_AND_REMOVE_SOURCE_ORDINAL)));
 
         }
 
 
         @Override
         public void queueReport(
-String type, String group, org.chromium.url.mojom.Url url, NetworkIsolationKey networkIsolationKey, String userAgent, org.chromium.mojo_base.mojom.DictionaryValue body) {
+String type, String group, org.chromium.url.mojom.Url url, org.chromium.mojo_base.mojom.UnguessableToken reportingSource, NetworkIsolationKey networkIsolationKey, String userAgent, org.chromium.mojo_base.mojom.DictionaryValue body) {
 
             NetworkContextQueueReportParams _message = new NetworkContextQueueReportParams();
 
@@ -602,6 +673,8 @@ String type, String group, org.chromium.url.mojom.Url url, NetworkIsolationKey n
             _message.group = group;
 
             _message.url = url;
+
+            _message.reportingSource = reportingSource;
 
             _message.networkIsolationKey = networkIsolationKey;
 
@@ -640,7 +713,7 @@ SignedExchangeReport report, NetworkIsolationKey networkIsolationKey) {
         @Override
         public void closeAllConnections(
 
-CloseAllConnectionsResponse callback) {
+CloseAllConnections_Response callback) {
 
             NetworkContextCloseAllConnectionsParams _message = new NetworkContextCloseAllConnectionsParams();
 
@@ -660,7 +733,7 @@ CloseAllConnectionsResponse callback) {
         @Override
         public void closeIdleConnections(
 
-CloseIdleConnectionsResponse callback) {
+CloseIdleConnections_Response callback) {
 
             NetworkContextCloseIdleConnectionsParams _message = new NetworkContextCloseIdleConnectionsParams();
 
@@ -750,7 +823,7 @@ CtPolicy ctPolicy) {
         @Override
         public void addExpectCt(
 String host, org.chromium.mojo_base.mojom.Time expiry, boolean enforce, org.chromium.url.mojom.Url reportUri, NetworkIsolationKey networkIsolationKey, 
-AddExpectCtResponse callback) {
+AddExpectCt_Response callback) {
 
             NetworkContextAddExpectCtParams _message = new NetworkContextAddExpectCtParams();
 
@@ -780,7 +853,7 @@ AddExpectCtResponse callback) {
         @Override
         public void setExpectCtTestReport(
 org.chromium.url.mojom.Url reportUri, 
-SetExpectCtTestReportResponse callback) {
+SetExpectCtTestReport_Response callback) {
 
             NetworkContextSetExpectCtTestReportParams _message = new NetworkContextSetExpectCtTestReportParams();
 
@@ -802,7 +875,7 @@ SetExpectCtTestReportResponse callback) {
         @Override
         public void getExpectCtState(
 String domain, NetworkIsolationKey networkIsolationKey, 
-GetExpectCtStateResponse callback) {
+GetExpectCtState_Response callback) {
 
             NetworkContextGetExpectCtStateParams _message = new NetworkContextGetExpectCtStateParams();
 
@@ -845,7 +918,7 @@ org.chromium.mojo.bindings.InterfaceRequest<UdpSocket> receiver, UdpSocketListen
         @Override
         public void createTcpServerSocket(
 IpEndPoint localAddr, int backlog, MutableNetworkTrafficAnnotationTag trafficAnnotation, org.chromium.mojo.bindings.InterfaceRequest<TcpServerSocket> socket, 
-CreateTcpServerSocketResponse callback) {
+CreateTcpServerSocket_Response callback) {
 
             NetworkContextCreateTcpServerSocketParams _message = new NetworkContextCreateTcpServerSocketParams();
 
@@ -873,7 +946,7 @@ CreateTcpServerSocketResponse callback) {
         @Override
         public void createTcpConnectedSocket(
 IpEndPoint localAddr, AddressList remoteAddrList, TcpConnectedSocketOptions tcpConnectedSocketOptions, MutableNetworkTrafficAnnotationTag trafficAnnotation, org.chromium.mojo.bindings.InterfaceRequest<TcpConnectedSocket> socket, SocketObserver observer, 
-CreateTcpConnectedSocketResponse callback) {
+CreateTcpConnectedSocket_Response callback) {
 
             NetworkContextCreateTcpConnectedSocketParams _message = new NetworkContextCreateTcpConnectedSocketParams();
 
@@ -905,7 +978,7 @@ CreateTcpConnectedSocketResponse callback) {
         @Override
         public void createTcpBoundSocket(
 IpEndPoint localAddr, MutableNetworkTrafficAnnotationTag trafficAnnotation, org.chromium.mojo.bindings.InterfaceRequest<TcpBoundSocket> socket, 
-CreateTcpBoundSocketResponse callback) {
+CreateTcpBoundSocket_Response callback) {
 
             NetworkContextCreateTcpBoundSocketParams _message = new NetworkContextCreateTcpBoundSocketParams();
 
@@ -969,7 +1042,7 @@ org.chromium.url.mojom.Url url, NetworkIsolationKey networkIsolationKey, ProxyLo
         @Override
         public void forceReloadProxyConfig(
 
-ForceReloadProxyConfigResponse callback) {
+ForceReloadProxyConfig_Response callback) {
 
             NetworkContextForceReloadProxyConfigParams _message = new NetworkContextForceReloadProxyConfigParams();
 
@@ -989,7 +1062,7 @@ ForceReloadProxyConfigResponse callback) {
         @Override
         public void clearBadProxiesCache(
 
-ClearBadProxiesCacheResponse callback) {
+ClearBadProxiesCache_Response callback) {
 
             NetworkContextClearBadProxiesCacheParams _message = new NetworkContextClearBadProxiesCacheParams();
 
@@ -1008,7 +1081,7 @@ ClearBadProxiesCacheResponse callback) {
 
         @Override
         public void createWebSocket(
-org.chromium.url.mojom.Url url, String[] requestedProtocols, SiteForCookies siteForCookies, IsolationInfo isolationInfo, HttpHeader[] additionalHeaders, int processId, org.chromium.url.internal.mojom.Origin origin, int options, MutableNetworkTrafficAnnotationTag trafficAnnotation, WebSocketHandshakeClient handshakeClient, AuthenticationAndCertificateObserver authCertObserver, WebSocketAuthenticationHandler authHandler, TrustedHeaderClient headerClient) {
+org.chromium.url.mojom.Url url, String[] requestedProtocols, SiteForCookies siteForCookies, IsolationInfo isolationInfo, HttpHeader[] additionalHeaders, int processId, org.chromium.url.internal.mojom.Origin origin, int options, MutableNetworkTrafficAnnotationTag trafficAnnotation, WebSocketHandshakeClient handshakeClient, UrlLoaderNetworkServiceObserver urlLoaderNetworkObserver, WebSocketAuthenticationHandler authHandler, TrustedHeaderClient headerClient, org.chromium.mojo_base.mojom.UnguessableToken throttlingProfileId) {
 
             NetworkContextCreateWebSocketParams _message = new NetworkContextCreateWebSocketParams();
 
@@ -1032,11 +1105,13 @@ org.chromium.url.mojom.Url url, String[] requestedProtocols, SiteForCookies site
 
             _message.handshakeClient = handshakeClient;
 
-            _message.authCertObserver = authCertObserver;
+            _message.urlLoaderNetworkObserver = urlLoaderNetworkObserver;
 
             _message.authHandler = authHandler;
 
             _message.headerClient = headerClient;
+
+            _message.throttlingProfileId = throttlingProfileId;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -1048,10 +1123,10 @@ org.chromium.url.mojom.Url url, String[] requestedProtocols, SiteForCookies site
 
 
         @Override
-        public void createQuicTransport(
-org.chromium.url.mojom.Url url, org.chromium.url.internal.mojom.Origin origin, NetworkIsolationKey networkIsolationKey, QuicTransportCertificateFingerprint[] fingerprints, QuicTransportHandshakeClient handshakeClient) {
+        public void createWebTransport(
+org.chromium.url.mojom.Url url, org.chromium.url.internal.mojom.Origin origin, NetworkIsolationKey networkIsolationKey, WebTransportCertificateFingerprint[] fingerprints, WebTransportHandshakeClient handshakeClient) {
 
-            NetworkContextCreateQuicTransportParams _message = new NetworkContextCreateQuicTransportParams();
+            NetworkContextCreateWebTransportParams _message = new NetworkContextCreateWebTransportParams();
 
             _message.url = url;
 
@@ -1067,7 +1142,7 @@ org.chromium.url.mojom.Url url, org.chromium.url.internal.mojom.Origin origin, N
             getProxyHandler().getMessageReceiver().accept(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(CREATE_QUIC_TRANSPORT_ORDINAL)));
+                            new org.chromium.mojo.bindings.MessageHeader(CREATE_WEB_TRANSPORT_ORDINAL)));
 
         }
 
@@ -1197,7 +1272,7 @@ DnsConfigOverrides configOverrides, org.chromium.mojo.bindings.InterfaceRequest<
         @Override
         public void verifyCertForSignedExchange(
 X509Certificate certificate, org.chromium.url.mojom.Url url, NetworkIsolationKey networkIsolationKey, String ocspResponse, String sctList, 
-VerifyCertForSignedExchangeResponse callback) {
+VerifyCertForSignedExchange_Response callback) {
 
             NetworkContextVerifyCertForSignedExchangeParams _message = new NetworkContextVerifyCertForSignedExchangeParams();
 
@@ -1225,33 +1300,9 @@ VerifyCertForSignedExchangeResponse callback) {
 
 
         @Override
-        public void parseHeaders(
-org.chromium.url.mojom.Url url, HttpResponseHeaders headers, 
-ParseHeadersResponse callback) {
-
-            NetworkContextParseHeadersParams _message = new NetworkContextParseHeadersParams();
-
-            _message.url = url;
-
-            _message.headers = headers;
-
-
-            getProxyHandler().getMessageReceiver().acceptWithResponder(
-                    _message.serializeWithHeader(
-                            getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(
-                                    PARSE_HEADERS_ORDINAL,
-                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
-                                    0)),
-                    new NetworkContextParseHeadersResponseParamsForwardToCallback(callback));
-
-        }
-
-
-        @Override
         public void addHsts(
 String host, org.chromium.mojo_base.mojom.Time expiry, boolean includeSubdomains, 
-AddHstsResponse callback) {
+AddHsts_Response callback) {
 
             NetworkContextAddHstsParams _message = new NetworkContextAddHstsParams();
 
@@ -1277,7 +1328,7 @@ AddHstsResponse callback) {
         @Override
         public void isHstsActiveForHost(
 String host, 
-IsHstsActiveForHostResponse callback) {
+IsHstsActiveForHost_Response callback) {
 
             NetworkContextIsHstsActiveForHostParams _message = new NetworkContextIsHstsActiveForHostParams();
 
@@ -1299,7 +1350,7 @@ IsHstsActiveForHostResponse callback) {
         @Override
         public void getHstsState(
 String domain, 
-GetHstsStateResponse callback) {
+GetHstsState_Response callback) {
 
             NetworkContextGetHstsStateParams _message = new NetworkContextGetHstsStateParams();
 
@@ -1321,7 +1372,7 @@ GetHstsStateResponse callback) {
         @Override
         public void setCorsOriginAccessListsForOrigin(
 org.chromium.url.internal.mojom.Origin sourceOrigin, CorsOriginPattern[] allowPatterns, CorsOriginPattern[] blockPatterns, 
-SetCorsOriginAccessListsForOriginResponse callback) {
+SetCorsOriginAccessListsForOrigin_Response callback) {
 
             NetworkContextSetCorsOriginAccessListsForOriginParams _message = new NetworkContextSetCorsOriginAccessListsForOriginParams();
 
@@ -1347,7 +1398,7 @@ SetCorsOriginAccessListsForOriginResponse callback) {
         @Override
         public void deleteDynamicDataForHost(
 String host, 
-DeleteDynamicDataForHostResponse callback) {
+DeleteDynamicDataForHost_Response callback) {
 
             NetworkContextDeleteDynamicDataForHostParams _message = new NetworkContextDeleteDynamicDataForHostParams();
 
@@ -1386,7 +1437,7 @@ boolean splitAuthCacheByNetworkIsolationKey) {
         @Override
         public void saveHttpAuthCacheProxyEntries(
 
-SaveHttpAuthCacheProxyEntriesResponse callback) {
+SaveHttpAuthCacheProxyEntries_Response callback) {
 
             NetworkContextSaveHttpAuthCacheProxyEntriesParams _message = new NetworkContextSaveHttpAuthCacheProxyEntriesParams();
 
@@ -1406,7 +1457,7 @@ SaveHttpAuthCacheProxyEntriesResponse callback) {
         @Override
         public void loadHttpAuthCacheProxyEntries(
 org.chromium.mojo_base.mojom.UnguessableToken cacheKey, 
-LoadHttpAuthCacheProxyEntriesResponse callback) {
+LoadHttpAuthCacheProxyEntries_Response callback) {
 
             NetworkContextLoadHttpAuthCacheProxyEntriesParams _message = new NetworkContextLoadHttpAuthCacheProxyEntriesParams();
 
@@ -1428,7 +1479,7 @@ LoadHttpAuthCacheProxyEntriesResponse callback) {
         @Override
         public void addAuthCacheEntry(
 AuthChallengeInfo challenge, NetworkIsolationKey networkIsolationKey, AuthCredentials credentials, 
-AddAuthCacheEntryResponse callback) {
+AddAuthCacheEntry_Response callback) {
 
             NetworkContextAddAuthCacheEntryParams _message = new NetworkContextAddAuthCacheEntryParams();
 
@@ -1452,9 +1503,26 @@ AddAuthCacheEntryResponse callback) {
 
 
         @Override
+        public void setCorsNonWildcardRequestHeadersSupport(
+boolean value) {
+
+            NetworkContextSetCorsNonWildcardRequestHeadersSupportParams _message = new NetworkContextSetCorsNonWildcardRequestHeadersSupportParams();
+
+            _message.value = value;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(SET_CORS_NON_WILDCARD_REQUEST_HEADERS_SUPPORT_ORDINAL)));
+
+        }
+
+
+        @Override
         public void lookupServerBasicAuthCredentials(
 org.chromium.url.mojom.Url url, NetworkIsolationKey networkIsolationKey, 
-LookupServerBasicAuthCredentialsResponse callback) {
+LookupServerBasicAuthCredentials_Response callback) {
 
             NetworkContextLookupServerBasicAuthCredentialsParams _message = new NetworkContextLookupServerBasicAuthCredentialsParams();
 
@@ -1478,7 +1546,7 @@ LookupServerBasicAuthCredentialsResponse callback) {
         @Override
         public void enableStaticKeyPinningForTesting(
 
-EnableStaticKeyPinningForTestingResponse callback) {
+EnableStaticKeyPinningForTesting_Response callback) {
 
             NetworkContextEnableStaticKeyPinningForTestingParams _message = new NetworkContextEnableStaticKeyPinningForTestingParams();
 
@@ -1498,7 +1566,7 @@ EnableStaticKeyPinningForTestingResponse callback) {
         @Override
         public void verifyCertificateForTesting(
 X509Certificate certificate, String hostname, String ocspResponse, String sctList, 
-VerifyCertificateForTestingResponse callback) {
+VerifyCertificateForTesting_Response callback) {
 
             NetworkContextVerifyCertificateForTestingParams _message = new NetworkContextVerifyCertificateForTestingParams();
 
@@ -1525,8 +1593,8 @@ VerifyCertificateForTestingResponse callback) {
 
         @Override
         public void addDomainReliabilityContextForTesting(
-org.chromium.url.mojom.Url origin, org.chromium.url.mojom.Url uploadUrl, 
-AddDomainReliabilityContextForTestingResponse callback) {
+org.chromium.url.internal.mojom.Origin origin, org.chromium.url.mojom.Url uploadUrl, 
+AddDomainReliabilityContextForTesting_Response callback) {
 
             NetworkContextAddDomainReliabilityContextForTestingParams _message = new NetworkContextAddDomainReliabilityContextForTestingParams();
 
@@ -1550,7 +1618,7 @@ AddDomainReliabilityContextForTestingResponse callback) {
         @Override
         public void forceDomainReliabilityUploadsForTesting(
 
-ForceDomainReliabilityUploadsForTestingResponse callback) {
+ForceDomainReliabilityUploadsForTesting_Response callback) {
 
             NetworkContextForceDomainReliabilityUploadsForTestingParams _message = new NetworkContextForceDomainReliabilityUploadsForTestingParams();
 
@@ -1568,35 +1636,50 @@ ForceDomainReliabilityUploadsForTestingResponse callback) {
 
 
         @Override
-        public void getOriginPolicyManager(
-org.chromium.mojo.bindings.InterfaceRequest<OriginPolicyManager> originPolicyManager) {
+        public void setCtLogListAlwaysTimelyForTesting(
+) {
 
-            NetworkContextGetOriginPolicyManagerParams _message = new NetworkContextGetOriginPolicyManagerParams();
-
-            _message.originPolicyManager = originPolicyManager;
+            NetworkContextSetCtLogListAlwaysTimelyForTestingParams _message = new NetworkContextSetCtLogListAlwaysTimelyForTestingParams();
 
 
             getProxyHandler().getMessageReceiver().accept(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(GET_ORIGIN_POLICY_MANAGER_ORDINAL)));
+                            new org.chromium.mojo.bindings.MessageHeader(SET_CT_LOG_LIST_ALWAYS_TIMELY_FOR_TESTING_ORDINAL)));
 
         }
 
 
         @Override
-        public void setSctAuditingEnabled(
-boolean enabled) {
+        public void setSctAuditingMode(
+int mode) {
 
-            NetworkContextSetSctAuditingEnabledParams _message = new NetworkContextSetSctAuditingEnabledParams();
+            NetworkContextSetSctAuditingModeParams _message = new NetworkContextSetSctAuditingModeParams();
 
-            _message.enabled = enabled;
+            _message.mode = mode;
 
 
             getProxyHandler().getMessageReceiver().accept(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(SET_SCT_AUDITING_ENABLED_ORDINAL)));
+                            new org.chromium.mojo.bindings.MessageHeader(SET_SCT_AUDITING_MODE_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void addReportingApiObserver(
+ReportingApiObserver observer) {
+
+            NetworkContextAddReportingApiObserverParams _message = new NetworkContextAddReportingApiObserverParams();
+
+            _message.observer = observer;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(ADD_REPORTING_API_OBSERVER_ORDINAL)));
 
         }
 
@@ -1696,18 +1779,33 @@ boolean enabled) {
 
 
 
-                    case GET_HAS_TRUST_TOKENS_ANSWERER_ORDINAL: {
+                    case GET_TRUST_TOKEN_QUERY_ANSWERER_ORDINAL: {
 
-                        NetworkContextGetHasTrustTokensAnswererParams data =
-                                NetworkContextGetHasTrustTokensAnswererParams.deserialize(messageWithHeader.getPayload());
+                        NetworkContextGetTrustTokenQueryAnswererParams data =
+                                NetworkContextGetTrustTokenQueryAnswererParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().getHasTrustTokensAnswerer(data.hasTrustTokensAnswerer, data.topFrameOrigin);
+                        getImpl().getTrustTokenQueryAnswerer(data.trustTokenQueryAnswerer, data.topFrameOrigin);
                         return true;
                     }
 
 
 
 
+
+
+
+
+
+
+
+                    case SET_BLOCK_TRUST_TOKENS_ORDINAL: {
+
+                        NetworkContextSetBlockTrustTokensParams data =
+                                NetworkContextSetBlockTrustTokensParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().setBlockTrustTokens(data.block);
+                        return true;
+                    }
 
 
 
@@ -1724,7 +1822,7 @@ boolean enabled) {
                         NetworkContextNotifyExternalCacheHitParams data =
                                 NetworkContextNotifyExternalCacheHitParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().notifyExternalCacheHit(data.url, data.httpMethod, data.key, data.isSubframeDocumentResource);
+                        getImpl().notifyExternalCacheHit(data.url, data.httpMethod, data.key, data.isSubframeDocumentResource, data.includeCredentials);
                         return true;
                     }
 
@@ -1744,6 +1842,30 @@ boolean enabled) {
 
 
 
+                    case SET_DOCUMENT_REPORTING_ENDPOINTS_ORDINAL: {
+
+                        NetworkContextSetDocumentReportingEndpointsParams data =
+                                NetworkContextSetDocumentReportingEndpointsParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().setDocumentReportingEndpoints(data.reportingSource, data.origin, data.isolationInfo, data.endpoints);
+                        return true;
+                    }
+
+
+
+
+
+                    case SEND_REPORTS_AND_REMOVE_SOURCE_ORDINAL: {
+
+                        NetworkContextSendReportsAndRemoveSourceParams data =
+                                NetworkContextSendReportsAndRemoveSourceParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().sendReportsAndRemoveSource(data.reportingSource);
+                        return true;
+                    }
+
+
+
 
 
                     case QUEUE_REPORT_ORDINAL: {
@@ -1751,7 +1873,7 @@ boolean enabled) {
                         NetworkContextQueueReportParams data =
                                 NetworkContextQueueReportParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().queueReport(data.type, data.group, data.url, data.networkIsolationKey, data.userAgent, data.body);
+                        getImpl().queueReport(data.type, data.group, data.url, data.reportingSource, data.networkIsolationKey, data.userAgent, data.body);
                         return true;
                     }
 
@@ -1888,7 +2010,7 @@ boolean enabled) {
                         NetworkContextCreateWebSocketParams data =
                                 NetworkContextCreateWebSocketParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().createWebSocket(data.url, data.requestedProtocols, data.siteForCookies, data.isolationInfo, data.additionalHeaders, data.processId, data.origin, data.options, data.trafficAnnotation, data.handshakeClient, data.authCertObserver, data.authHandler, data.headerClient);
+                        getImpl().createWebSocket(data.url, data.requestedProtocols, data.siteForCookies, data.isolationInfo, data.additionalHeaders, data.processId, data.origin, data.options, data.trafficAnnotation, data.handshakeClient, data.urlLoaderNetworkObserver, data.authHandler, data.headerClient, data.throttlingProfileId);
                         return true;
                     }
 
@@ -1896,12 +2018,12 @@ boolean enabled) {
 
 
 
-                    case CREATE_QUIC_TRANSPORT_ORDINAL: {
+                    case CREATE_WEB_TRANSPORT_ORDINAL: {
 
-                        NetworkContextCreateQuicTransportParams data =
-                                NetworkContextCreateQuicTransportParams.deserialize(messageWithHeader.getPayload());
+                        NetworkContextCreateWebTransportParams data =
+                                NetworkContextCreateWebTransportParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().createQuicTransport(data.url, data.origin, data.networkIsolationKey, data.fingerprints, data.handshakeClient);
+                        getImpl().createWebTransport(data.url, data.origin, data.networkIsolationKey, data.fingerprints, data.handshakeClient);
                         return true;
                     }
 
@@ -1999,8 +2121,6 @@ boolean enabled) {
 
 
 
-
-
                     case SET_SPLIT_AUTH_CACHE_BY_NETWORK_ISOLATION_KEY_ORDINAL: {
 
                         NetworkContextSetSplitAuthCacheByNetworkIsolationKeyParams data =
@@ -2020,22 +2140,12 @@ boolean enabled) {
 
 
 
+                    case SET_CORS_NON_WILDCARD_REQUEST_HEADERS_SUPPORT_ORDINAL: {
 
+                        NetworkContextSetCorsNonWildcardRequestHeadersSupportParams data =
+                                NetworkContextSetCorsNonWildcardRequestHeadersSupportParams.deserialize(messageWithHeader.getPayload());
 
-
-
-
-
-
-
-
-
-                    case GET_ORIGIN_POLICY_MANAGER_ORDINAL: {
-
-                        NetworkContextGetOriginPolicyManagerParams data =
-                                NetworkContextGetOriginPolicyManagerParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().getOriginPolicyManager(data.originPolicyManager);
+                        getImpl().setCorsNonWildcardRequestHeadersSupport(data.value);
                         return true;
                     }
 
@@ -2043,12 +2153,47 @@ boolean enabled) {
 
 
 
-                    case SET_SCT_AUDITING_ENABLED_ORDINAL: {
 
-                        NetworkContextSetSctAuditingEnabledParams data =
-                                NetworkContextSetSctAuditingEnabledParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().setSctAuditingEnabled(data.enabled);
+
+
+
+
+
+
+
+
+                    case SET_CT_LOG_LIST_ALWAYS_TIMELY_FOR_TESTING_ORDINAL: {
+
+                        NetworkContextSetCtLogListAlwaysTimelyForTestingParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().setCtLogListAlwaysTimelyForTesting();
+                        return true;
+                    }
+
+
+
+
+
+                    case SET_SCT_AUDITING_MODE_ORDINAL: {
+
+                        NetworkContextSetSctAuditingModeParams data =
+                                NetworkContextSetSctAuditingModeParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().setSctAuditingMode(data.mode);
+                        return true;
+                    }
+
+
+
+
+
+                    case ADD_REPORTING_API_OBSERVER_ORDINAL: {
+
+                        NetworkContextAddReportingApiObserverParams data =
+                                NetworkContextAddReportingApiObserverParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().addReportingApiObserver(data.observer);
                         return true;
                     }
 
@@ -2121,6 +2266,23 @@ boolean enabled) {
                         getImpl().getStoredTrustTokenCounts(new NetworkContextGetStoredTrustTokenCountsResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
+
+
+
+
+
+
+
+                    case DELETE_STORED_TRUST_TOKENS_ORDINAL: {
+
+                        NetworkContextDeleteStoredTrustTokensParams data =
+                                NetworkContextDeleteStoredTrustTokensParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().deleteStoredTrustTokens(data.issuer, new NetworkContextDeleteStoredTrustTokensResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
 
 
 
@@ -2262,16 +2424,6 @@ boolean enabled) {
 
 
 
-
-
-
-                    case GET_DOMAIN_RELIABILITY_JSON_ORDINAL: {
-
-                        NetworkContextGetDomainReliabilityJsonParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().getDomainReliabilityJson(new NetworkContextGetDomainReliabilityJsonResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
-                        return true;
-                    }
 
 
 
@@ -2474,21 +2626,6 @@ boolean enabled) {
 
 
 
-                    case PARSE_HEADERS_ORDINAL: {
-
-                        NetworkContextParseHeadersParams data =
-                                NetworkContextParseHeadersParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().parseHeaders(data.url, data.headers, new NetworkContextParseHeadersResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
-                        return true;
-                    }
-
-
-
-
-
-
-
                     case ADD_HSTS_ORDINAL: {
 
                         NetworkContextAddHstsParams data =
@@ -2610,6 +2747,8 @@ boolean enabled) {
 
 
 
+
+
                     case LOOKUP_SERVER_BASIC_AUTH_CREDENTIALS_ORDINAL: {
 
                         NetworkContextLookupServerBasicAuthCredentialsParams data =
@@ -2676,6 +2815,8 @@ boolean enabled) {
                         getImpl().forceDomainReliabilityUploadsForTesting(new NetworkContextForceDomainReliabilityUploadsForTestingResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
+
+
 
 
 
@@ -3042,23 +3183,23 @@ boolean enabled) {
 
 
     
-    static final class NetworkContextGetHasTrustTokensAnswererParams extends org.chromium.mojo.bindings.Struct {
+    static final class NetworkContextGetTrustTokenQueryAnswererParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 24;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public org.chromium.mojo.bindings.InterfaceRequest<HasTrustTokensAnswerer> hasTrustTokensAnswerer;
+        public org.chromium.mojo.bindings.InterfaceRequest<TrustTokenQueryAnswerer> trustTokenQueryAnswerer;
         public org.chromium.url.internal.mojom.Origin topFrameOrigin;
 
-        private NetworkContextGetHasTrustTokensAnswererParams(int version) {
+        private NetworkContextGetTrustTokenQueryAnswererParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public NetworkContextGetHasTrustTokensAnswererParams() {
+        public NetworkContextGetTrustTokenQueryAnswererParams() {
             this(0);
         }
 
-        public static NetworkContextGetHasTrustTokensAnswererParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static NetworkContextGetTrustTokenQueryAnswererParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -3067,25 +3208,25 @@ boolean enabled) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static NetworkContextGetHasTrustTokensAnswererParams deserialize(java.nio.ByteBuffer data) {
+        public static NetworkContextGetTrustTokenQueryAnswererParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static NetworkContextGetHasTrustTokensAnswererParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static NetworkContextGetTrustTokenQueryAnswererParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            NetworkContextGetHasTrustTokensAnswererParams result;
+            NetworkContextGetTrustTokenQueryAnswererParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new NetworkContextGetHasTrustTokensAnswererParams(elementsOrVersion);
+                result = new NetworkContextGetTrustTokenQueryAnswererParams(elementsOrVersion);
                     {
                         
-                    result.hasTrustTokensAnswerer = decoder0.readInterfaceRequest(8, false);
+                    result.trustTokenQueryAnswerer = decoder0.readInterfaceRequest(8, false);
                     }
                     {
                         
@@ -3104,7 +3245,7 @@ boolean enabled) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.hasTrustTokensAnswerer, 8, false);
+            encoder0.encode(this.trustTokenQueryAnswerer, 8, false);
             
             encoder0.encode(this.topFrameOrigin, 16, false);
         }
@@ -3232,9 +3373,9 @@ boolean enabled) {
 
     static class NetworkContextClearTrustTokenDataResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.ClearTrustTokenDataResponse mCallback;
+        private final NetworkContext.ClearTrustTokenData_Response mCallback;
 
-        NetworkContextClearTrustTokenDataResponseParamsForwardToCallback(NetworkContext.ClearTrustTokenDataResponse callback) {
+        NetworkContextClearTrustTokenDataResponseParamsForwardToCallback(NetworkContext.ClearTrustTokenData_Response callback) {
             this.mCallback = callback;
         }
 
@@ -3257,7 +3398,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextClearTrustTokenDataResponseParamsProxyToResponder implements NetworkContext.ClearTrustTokenDataResponse {
+    static class NetworkContextClearTrustTokenDataResponseParamsProxyToResponder implements NetworkContext.ClearTrustTokenData_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -3425,9 +3566,9 @@ boolean enabled) {
 
     static class NetworkContextGetStoredTrustTokenCountsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.GetStoredTrustTokenCountsResponse mCallback;
+        private final NetworkContext.GetStoredTrustTokenCounts_Response mCallback;
 
-        NetworkContextGetStoredTrustTokenCountsResponseParamsForwardToCallback(NetworkContext.GetStoredTrustTokenCountsResponse callback) {
+        NetworkContextGetStoredTrustTokenCountsResponseParamsForwardToCallback(NetworkContext.GetStoredTrustTokenCounts_Response callback) {
             this.mCallback = callback;
         }
 
@@ -3452,7 +3593,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextGetStoredTrustTokenCountsResponseParamsProxyToResponder implements NetworkContext.GetStoredTrustTokenCountsResponse {
+    static class NetworkContextGetStoredTrustTokenCountsResponseParamsProxyToResponder implements NetworkContext.GetStoredTrustTokenCounts_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -3481,6 +3622,259 @@ boolean enabled) {
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class NetworkContextDeleteStoredTrustTokensParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.url.internal.mojom.Origin issuer;
+
+        private NetworkContextDeleteStoredTrustTokensParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NetworkContextDeleteStoredTrustTokensParams() {
+            this(0);
+        }
+
+        public static NetworkContextDeleteStoredTrustTokensParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NetworkContextDeleteStoredTrustTokensParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NetworkContextDeleteStoredTrustTokensParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NetworkContextDeleteStoredTrustTokensParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NetworkContextDeleteStoredTrustTokensParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.issuer = org.chromium.url.internal.mojom.Origin.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.issuer, 8, false);
+        }
+    }
+
+
+
+    
+    static final class NetworkContextDeleteStoredTrustTokensResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int status;
+
+        private NetworkContextDeleteStoredTrustTokensResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NetworkContextDeleteStoredTrustTokensResponseParams() {
+            this(0);
+        }
+
+        public static NetworkContextDeleteStoredTrustTokensResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NetworkContextDeleteStoredTrustTokensResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NetworkContextDeleteStoredTrustTokensResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NetworkContextDeleteStoredTrustTokensResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NetworkContextDeleteStoredTrustTokensResponseParams(elementsOrVersion);
+                    {
+                        
+                    result.status = decoder0.readInt(8);
+                        DeleteStoredTrustTokensStatus.validate(result.status);
+                        result.status = DeleteStoredTrustTokensStatus.toKnownValue(result.status);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.status, 8);
+        }
+    }
+
+    static class NetworkContextDeleteStoredTrustTokensResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final NetworkContext.DeleteStoredTrustTokens_Response mCallback;
+
+        NetworkContextDeleteStoredTrustTokensResponseParamsForwardToCallback(NetworkContext.DeleteStoredTrustTokens_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(DELETE_STORED_TRUST_TOKENS_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                NetworkContextDeleteStoredTrustTokensResponseParams response = NetworkContextDeleteStoredTrustTokensResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.status);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class NetworkContextDeleteStoredTrustTokensResponseParamsProxyToResponder implements NetworkContext.DeleteStoredTrustTokens_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        NetworkContextDeleteStoredTrustTokensResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(Integer status) {
+            NetworkContextDeleteStoredTrustTokensResponseParams _response = new NetworkContextDeleteStoredTrustTokensResponseParams();
+
+            _response.status = status;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    DELETE_STORED_TRUST_TOKENS_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class NetworkContextSetBlockTrustTokensParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public boolean block;
+
+        private NetworkContextSetBlockTrustTokensParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NetworkContextSetBlockTrustTokensParams() {
+            this(0);
+        }
+
+        public static NetworkContextSetBlockTrustTokensParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NetworkContextSetBlockTrustTokensParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NetworkContextSetBlockTrustTokensParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NetworkContextSetBlockTrustTokensParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NetworkContextSetBlockTrustTokensParams(elementsOrVersion);
+                    {
+                        
+                    result.block = decoder0.readBoolean(8, 0);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.block, 8, 0);
         }
     }
 
@@ -3614,9 +4008,9 @@ boolean enabled) {
 
     static class NetworkContextClearNetworkingHistoryBetweenResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.ClearNetworkingHistoryBetweenResponse mCallback;
+        private final NetworkContext.ClearNetworkingHistoryBetween_Response mCallback;
 
-        NetworkContextClearNetworkingHistoryBetweenResponseParamsForwardToCallback(NetworkContext.ClearNetworkingHistoryBetweenResponse callback) {
+        NetworkContextClearNetworkingHistoryBetweenResponseParamsForwardToCallback(NetworkContext.ClearNetworkingHistoryBetween_Response callback) {
             this.mCallback = callback;
         }
 
@@ -3639,7 +4033,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextClearNetworkingHistoryBetweenResponseParamsProxyToResponder implements NetworkContext.ClearNetworkingHistoryBetweenResponse {
+    static class NetworkContextClearNetworkingHistoryBetweenResponseParamsProxyToResponder implements NetworkContext.ClearNetworkingHistoryBetween_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -3807,9 +4201,9 @@ boolean enabled) {
 
     static class NetworkContextClearHttpCacheResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.ClearHttpCacheResponse mCallback;
+        private final NetworkContext.ClearHttpCache_Response mCallback;
 
-        NetworkContextClearHttpCacheResponseParamsForwardToCallback(NetworkContext.ClearHttpCacheResponse callback) {
+        NetworkContextClearHttpCacheResponseParamsForwardToCallback(NetworkContext.ClearHttpCache_Response callback) {
             this.mCallback = callback;
         }
 
@@ -3832,7 +4226,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextClearHttpCacheResponseParamsProxyToResponder implements NetworkContext.ClearHttpCacheResponse {
+    static class NetworkContextClearHttpCacheResponseParamsProxyToResponder implements NetworkContext.ClearHttpCache_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -4006,9 +4400,9 @@ boolean enabled) {
 
     static class NetworkContextComputeHttpCacheSizeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.ComputeHttpCacheSizeResponse mCallback;
+        private final NetworkContext.ComputeHttpCacheSize_Response mCallback;
 
-        NetworkContextComputeHttpCacheSizeResponseParamsForwardToCallback(NetworkContext.ComputeHttpCacheSizeResponse callback) {
+        NetworkContextComputeHttpCacheSizeResponseParamsForwardToCallback(NetworkContext.ComputeHttpCacheSize_Response callback) {
             this.mCallback = callback;
         }
 
@@ -4033,7 +4427,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextComputeHttpCacheSizeResponseParamsProxyToResponder implements NetworkContext.ComputeHttpCacheSizeResponse {
+    static class NetworkContextComputeHttpCacheSizeResponseParamsProxyToResponder implements NetworkContext.ComputeHttpCacheSize_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -4079,6 +4473,7 @@ boolean enabled) {
         public String httpMethod;
         public NetworkIsolationKey key;
         public boolean isSubframeDocumentResource;
+        public boolean includeCredentials;
 
         private NetworkContextNotifyExternalCacheHitParams(int version) {
             super(STRUCT_SIZE, version);
@@ -4131,6 +4526,10 @@ boolean enabled) {
                         
                     result.isSubframeDocumentResource = decoder0.readBoolean(32, 0);
                     }
+                    {
+                        
+                    result.includeCredentials = decoder0.readBoolean(32, 1);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -4150,6 +4549,8 @@ boolean enabled) {
             encoder0.encode(this.key, 24, false);
             
             encoder0.encode(this.isSubframeDocumentResource, 32, 0);
+            
+            encoder0.encode(this.includeCredentials, 32, 1);
         }
     }
 
@@ -4275,9 +4676,9 @@ boolean enabled) {
 
     static class NetworkContextClearHostCacheResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.ClearHostCacheResponse mCallback;
+        private final NetworkContext.ClearHostCache_Response mCallback;
 
-        NetworkContextClearHostCacheResponseParamsForwardToCallback(NetworkContext.ClearHostCacheResponse callback) {
+        NetworkContextClearHostCacheResponseParamsForwardToCallback(NetworkContext.ClearHostCache_Response callback) {
             this.mCallback = callback;
         }
 
@@ -4300,7 +4701,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextClearHostCacheResponseParamsProxyToResponder implements NetworkContext.ClearHostCacheResponse {
+    static class NetworkContextClearHostCacheResponseParamsProxyToResponder implements NetworkContext.ClearHostCache_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -4460,9 +4861,9 @@ boolean enabled) {
 
     static class NetworkContextClearHttpAuthCacheResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.ClearHttpAuthCacheResponse mCallback;
+        private final NetworkContext.ClearHttpAuthCache_Response mCallback;
 
-        NetworkContextClearHttpAuthCacheResponseParamsForwardToCallback(NetworkContext.ClearHttpAuthCacheResponse callback) {
+        NetworkContextClearHttpAuthCacheResponseParamsForwardToCallback(NetworkContext.ClearHttpAuthCache_Response callback) {
             this.mCallback = callback;
         }
 
@@ -4485,7 +4886,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextClearHttpAuthCacheResponseParamsProxyToResponder implements NetworkContext.ClearHttpAuthCacheResponse {
+    static class NetworkContextClearHttpAuthCacheResponseParamsProxyToResponder implements NetworkContext.ClearHttpAuthCache_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -4637,9 +5038,9 @@ boolean enabled) {
 
     static class NetworkContextClearReportingCacheReportsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.ClearReportingCacheReportsResponse mCallback;
+        private final NetworkContext.ClearReportingCacheReports_Response mCallback;
 
-        NetworkContextClearReportingCacheReportsResponseParamsForwardToCallback(NetworkContext.ClearReportingCacheReportsResponse callback) {
+        NetworkContextClearReportingCacheReportsResponseParamsForwardToCallback(NetworkContext.ClearReportingCacheReports_Response callback) {
             this.mCallback = callback;
         }
 
@@ -4662,7 +5063,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextClearReportingCacheReportsResponseParamsProxyToResponder implements NetworkContext.ClearReportingCacheReportsResponse {
+    static class NetworkContextClearReportingCacheReportsResponseParamsProxyToResponder implements NetworkContext.ClearReportingCacheReports_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -4814,9 +5215,9 @@ boolean enabled) {
 
     static class NetworkContextClearReportingCacheClientsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.ClearReportingCacheClientsResponse mCallback;
+        private final NetworkContext.ClearReportingCacheClients_Response mCallback;
 
-        NetworkContextClearReportingCacheClientsResponseParamsForwardToCallback(NetworkContext.ClearReportingCacheClientsResponse callback) {
+        NetworkContextClearReportingCacheClientsResponseParamsForwardToCallback(NetworkContext.ClearReportingCacheClients_Response callback) {
             this.mCallback = callback;
         }
 
@@ -4839,7 +5240,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextClearReportingCacheClientsResponseParamsProxyToResponder implements NetworkContext.ClearReportingCacheClientsResponse {
+    static class NetworkContextClearReportingCacheClientsResponseParamsProxyToResponder implements NetworkContext.ClearReportingCacheClients_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -4991,9 +5392,9 @@ boolean enabled) {
 
     static class NetworkContextClearNetworkErrorLoggingResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.ClearNetworkErrorLoggingResponse mCallback;
+        private final NetworkContext.ClearNetworkErrorLogging_Response mCallback;
 
-        NetworkContextClearNetworkErrorLoggingResponseParamsForwardToCallback(NetworkContext.ClearNetworkErrorLoggingResponse callback) {
+        NetworkContextClearNetworkErrorLoggingResponseParamsForwardToCallback(NetworkContext.ClearNetworkErrorLogging_Response callback) {
             this.mCallback = callback;
         }
 
@@ -5016,7 +5417,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextClearNetworkErrorLoggingResponseParamsProxyToResponder implements NetworkContext.ClearNetworkErrorLoggingResponse {
+    static class NetworkContextClearNetworkErrorLoggingResponseParamsProxyToResponder implements NetworkContext.ClearNetworkErrorLogging_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -5177,9 +5578,9 @@ boolean enabled) {
 
     static class NetworkContextClearDomainReliabilityResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.ClearDomainReliabilityResponse mCallback;
+        private final NetworkContext.ClearDomainReliability_Response mCallback;
 
-        NetworkContextClearDomainReliabilityResponseParamsForwardToCallback(NetworkContext.ClearDomainReliabilityResponse callback) {
+        NetworkContextClearDomainReliabilityResponseParamsForwardToCallback(NetworkContext.ClearDomainReliability_Response callback) {
             this.mCallback = callback;
         }
 
@@ -5202,7 +5603,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextClearDomainReliabilityResponseParamsProxyToResponder implements NetworkContext.ClearDomainReliabilityResponse {
+    static class NetworkContextClearDomainReliabilityResponseParamsProxyToResponder implements NetworkContext.ClearDomainReliability_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -5235,21 +5636,25 @@ boolean enabled) {
 
 
     
-    static final class NetworkContextGetDomainReliabilityJsonParams extends org.chromium.mojo.bindings.Struct {
+    static final class NetworkContextSetDocumentReportingEndpointsParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 8;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final int STRUCT_SIZE = 40;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.mojo_base.mojom.UnguessableToken reportingSource;
+        public org.chromium.url.internal.mojom.Origin origin;
+        public IsolationInfo isolationInfo;
+        public java.util.Map<String, String> endpoints;
 
-        private NetworkContextGetDomainReliabilityJsonParams(int version) {
+        private NetworkContextSetDocumentReportingEndpointsParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public NetworkContextGetDomainReliabilityJsonParams() {
+        public NetworkContextSetDocumentReportingEndpointsParams() {
             this(0);
         }
 
-        public static NetworkContextGetDomainReliabilityJsonParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static NetworkContextSetDocumentReportingEndpointsParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -5258,82 +5663,73 @@ boolean enabled) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static NetworkContextGetDomainReliabilityJsonParams deserialize(java.nio.ByteBuffer data) {
+        public static NetworkContextSetDocumentReportingEndpointsParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static NetworkContextGetDomainReliabilityJsonParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static NetworkContextSetDocumentReportingEndpointsParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            NetworkContextGetDomainReliabilityJsonParams result;
+            NetworkContextSetDocumentReportingEndpointsParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new NetworkContextGetDomainReliabilityJsonParams(elementsOrVersion);
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-        }
-    }
-
-
-
-    
-    static final class NetworkContextGetDomainReliabilityJsonResponseParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public org.chromium.mojo_base.mojom.Value data;
-
-        private NetworkContextGetDomainReliabilityJsonResponseParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public NetworkContextGetDomainReliabilityJsonResponseParams() {
-            this(0);
-        }
-
-        public static NetworkContextGetDomainReliabilityJsonResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static NetworkContextGetDomainReliabilityJsonResponseParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static NetworkContextGetDomainReliabilityJsonResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            NetworkContextGetDomainReliabilityJsonResponseParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new NetworkContextGetDomainReliabilityJsonResponseParams(elementsOrVersion);
+                result = new NetworkContextSetDocumentReportingEndpointsParams(elementsOrVersion);
                     {
                         
-                    result.data = org.chromium.mojo_base.mojom.Value.decode(decoder0, 8);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.reportingSource = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                    result.origin = org.chromium.url.internal.mojom.Origin.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
+                    result.isolationInfo = IsolationInfo.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
+                    {
+                        decoder1.readDataHeaderForMap();
+                        String[] keys0;
+                        String[] values0;
+                        {
+                            
+                            org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, false);
+                            {
+                                org.chromium.mojo.bindings.DataHeader si2 = decoder2.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                                keys0 = new String[si2.elementsOrVersion];
+                                for (int i2 = 0; i2 < si2.elementsOrVersion; ++i2) {
+                                    
+                                    keys0[i2] = decoder2.readString(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i2, false);
+                                }
+                            }
+                        }
+                        {
+                            
+                            org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE, false);
+                            {
+                                org.chromium.mojo.bindings.DataHeader si2 = decoder2.readDataHeaderForPointerArray(keys0.length);
+                                values0 = new String[si2.elementsOrVersion];
+                                for (int i2 = 0; i2 < si2.elementsOrVersion; ++i2) {
+                                    
+                                    values0[i2] = decoder2.readString(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i2, false);
+                                }
+                            }
+                        }
+                        result.endpoints = new java.util.HashMap<String, String>();
+                        for (int index0 = 0; index0 < keys0.length; ++index0) {
+                            result.endpoints.put(keys0[index0],  values0[index0]);
+                        }
+                    }
                     }
 
             } finally {
@@ -5347,68 +5743,106 @@ boolean enabled) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.data, 8, false);
-        }
-    }
-
-    static class NetworkContextGetDomainReliabilityJsonResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
-            implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.GetDomainReliabilityJsonResponse mCallback;
-
-        NetworkContextGetDomainReliabilityJsonResponseParamsForwardToCallback(NetworkContext.GetDomainReliabilityJsonResponse callback) {
-            this.mCallback = callback;
-        }
-
-        @Override
-        public boolean accept(org.chromium.mojo.bindings.Message message) {
-            try {
-                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
-                        message.asServiceMessage();
-                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
-                if (!header.validateHeader(GET_DOMAIN_RELIABILITY_JSON_ORDINAL,
-                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
-                    return false;
+            encoder0.encode(this.reportingSource, 8, false);
+            
+            encoder0.encode(this.origin, 16, false);
+            
+            encoder0.encode(this.isolationInfo, 24, false);
+            
+            if (this.endpoints == null) {
+                encoder0.encodeNullPointer(32, false);
+            } else {
+                org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encoderForMap(32);
+                int size0 = this.endpoints.size();
+                String[] keys0 = new String[size0];
+                String[] values0 = new String[size0];
+                int index0 = 0;
+                for (java.util.Map.Entry<String, String> entry0 : this.endpoints.entrySet()) {
+                    keys0[index0] = entry0.getKey();
+                    values0[index0] = entry0.getValue();
+                    ++index0;
                 }
-
-                NetworkContextGetDomainReliabilityJsonResponseParams response = NetworkContextGetDomainReliabilityJsonResponseParams.deserialize(messageWithHeader.getPayload());
-
-                mCallback.call(response.data);
-                return true;
-            } catch (org.chromium.mojo.bindings.DeserializationException e) {
-                return false;
+                
+                {
+                    org.chromium.mojo.bindings.Encoder encoder2 = encoder1.encodePointerArray(keys0.length, org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                    for (int i1 = 0; i1 < keys0.length; ++i1) {
+                        
+                        encoder2.encode(keys0[i1], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                    }
+                }
+                
+                {
+                    org.chromium.mojo.bindings.Encoder encoder2 = encoder1.encodePointerArray(values0.length, org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                    for (int i1 = 0; i1 < values0.length; ++i1) {
+                        
+                        encoder2.encode(values0[i1], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                    }
+                }
             }
         }
     }
 
-    static class NetworkContextGetDomainReliabilityJsonResponseParamsProxyToResponder implements NetworkContext.GetDomainReliabilityJsonResponse {
 
-        private final org.chromium.mojo.system.Core mCore;
-        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
-        private final long mRequestId;
 
-        NetworkContextGetDomainReliabilityJsonResponseParamsProxyToResponder(
-                org.chromium.mojo.system.Core core,
-                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
-                long requestId) {
-            mCore = core;
-            mMessageReceiver = messageReceiver;
-            mRequestId = requestId;
+    
+    static final class NetworkContextSendReportsAndRemoveSourceParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.mojo_base.mojom.UnguessableToken reportingSource;
+
+        private NetworkContextSendReportsAndRemoveSourceParams(int version) {
+            super(STRUCT_SIZE, version);
         }
 
+        public NetworkContextSendReportsAndRemoveSourceParams() {
+            this(0);
+        }
+
+        public static NetworkContextSendReportsAndRemoveSourceParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NetworkContextSendReportsAndRemoveSourceParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NetworkContextSendReportsAndRemoveSourceParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NetworkContextSendReportsAndRemoveSourceParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NetworkContextSendReportsAndRemoveSourceParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.reportingSource = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
         @Override
-        public void call(org.chromium.mojo_base.mojom.Value data) {
-            NetworkContextGetDomainReliabilityJsonResponseParams _response = new NetworkContextGetDomainReliabilityJsonResponseParams();
-
-            _response.data = data;
-
-            org.chromium.mojo.bindings.ServiceMessage _message =
-                    _response.serializeWithHeader(
-                            mCore,
-                            new org.chromium.mojo.bindings.MessageHeader(
-                                    GET_DOMAIN_RELIABILITY_JSON_ORDINAL,
-                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
-                                    mRequestId));
-            mMessageReceiver.accept(_message);
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.reportingSource, 8, false);
         }
     }
 
@@ -5417,12 +5851,13 @@ boolean enabled) {
     
     static final class NetworkContextQueueReportParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 56;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(56, 0)};
+        private static final int STRUCT_SIZE = 64;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(64, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public String type;
         public String group;
         public org.chromium.url.mojom.Url url;
+        public org.chromium.mojo_base.mojom.UnguessableToken reportingSource;
         public NetworkIsolationKey networkIsolationKey;
         public String userAgent;
         public org.chromium.mojo_base.mojom.DictionaryValue body;
@@ -5475,16 +5910,21 @@ boolean enabled) {
                     }
                     {
                         
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, true);
+                    result.reportingSource = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, false);
                     result.networkIsolationKey = NetworkIsolationKey.decode(decoder1);
                     }
                     {
                         
-                    result.userAgent = decoder0.readString(40, true);
+                    result.userAgent = decoder0.readString(48, true);
                     }
                     {
                         
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(48, false);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(56, false);
                     result.body = org.chromium.mojo_base.mojom.DictionaryValue.decode(decoder1);
                     }
 
@@ -5505,11 +5945,13 @@ boolean enabled) {
             
             encoder0.encode(this.url, 24, false);
             
-            encoder0.encode(this.networkIsolationKey, 32, false);
+            encoder0.encode(this.reportingSource, 32, true);
             
-            encoder0.encode(this.userAgent, 40, true);
+            encoder0.encode(this.networkIsolationKey, 40, false);
             
-            encoder0.encode(this.body, 48, false);
+            encoder0.encode(this.userAgent, 48, true);
+            
+            encoder0.encode(this.body, 56, false);
         }
     }
 
@@ -5699,9 +6141,9 @@ boolean enabled) {
 
     static class NetworkContextCloseAllConnectionsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.CloseAllConnectionsResponse mCallback;
+        private final NetworkContext.CloseAllConnections_Response mCallback;
 
-        NetworkContextCloseAllConnectionsResponseParamsForwardToCallback(NetworkContext.CloseAllConnectionsResponse callback) {
+        NetworkContextCloseAllConnectionsResponseParamsForwardToCallback(NetworkContext.CloseAllConnections_Response callback) {
             this.mCallback = callback;
         }
 
@@ -5724,7 +6166,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextCloseAllConnectionsResponseParamsProxyToResponder implements NetworkContext.CloseAllConnectionsResponse {
+    static class NetworkContextCloseAllConnectionsResponseParamsProxyToResponder implements NetworkContext.CloseAllConnections_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -5868,9 +6310,9 @@ boolean enabled) {
 
     static class NetworkContextCloseIdleConnectionsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.CloseIdleConnectionsResponse mCallback;
+        private final NetworkContext.CloseIdleConnections_Response mCallback;
 
-        NetworkContextCloseIdleConnectionsResponseParamsForwardToCallback(NetworkContext.CloseIdleConnectionsResponse callback) {
+        NetworkContextCloseIdleConnectionsResponseParamsForwardToCallback(NetworkContext.CloseIdleConnections_Response callback) {
             this.mCallback = callback;
         }
 
@@ -5893,7 +6335,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextCloseIdleConnectionsResponseParamsProxyToResponder implements NetworkContext.CloseIdleConnectionsResponse {
+    static class NetworkContextCloseIdleConnectionsResponseParamsProxyToResponder implements NetworkContext.CloseIdleConnections_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -6344,9 +6786,9 @@ boolean enabled) {
 
     static class NetworkContextAddExpectCtResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.AddExpectCtResponse mCallback;
+        private final NetworkContext.AddExpectCt_Response mCallback;
 
-        NetworkContextAddExpectCtResponseParamsForwardToCallback(NetworkContext.AddExpectCtResponse callback) {
+        NetworkContextAddExpectCtResponseParamsForwardToCallback(NetworkContext.AddExpectCt_Response callback) {
             this.mCallback = callback;
         }
 
@@ -6371,7 +6813,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextAddExpectCtResponseParamsProxyToResponder implements NetworkContext.AddExpectCtResponse {
+    static class NetworkContextAddExpectCtResponseParamsProxyToResponder implements NetworkContext.AddExpectCt_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -6532,9 +6974,9 @@ boolean enabled) {
 
     static class NetworkContextSetExpectCtTestReportResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.SetExpectCtTestReportResponse mCallback;
+        private final NetworkContext.SetExpectCtTestReport_Response mCallback;
 
-        NetworkContextSetExpectCtTestReportResponseParamsForwardToCallback(NetworkContext.SetExpectCtTestReportResponse callback) {
+        NetworkContextSetExpectCtTestReportResponseParamsForwardToCallback(NetworkContext.SetExpectCtTestReport_Response callback) {
             this.mCallback = callback;
         }
 
@@ -6559,7 +7001,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextSetExpectCtTestReportResponseParamsProxyToResponder implements NetworkContext.SetExpectCtTestReportResponse {
+    static class NetworkContextSetExpectCtTestReportResponseParamsProxyToResponder implements NetworkContext.SetExpectCtTestReport_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -6728,9 +7170,9 @@ boolean enabled) {
 
     static class NetworkContextGetExpectCtStateResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.GetExpectCtStateResponse mCallback;
+        private final NetworkContext.GetExpectCtState_Response mCallback;
 
-        NetworkContextGetExpectCtStateResponseParamsForwardToCallback(NetworkContext.GetExpectCtStateResponse callback) {
+        NetworkContextGetExpectCtStateResponseParamsForwardToCallback(NetworkContext.GetExpectCtState_Response callback) {
             this.mCallback = callback;
         }
 
@@ -6755,7 +7197,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextGetExpectCtStateResponseParamsProxyToResponder implements NetworkContext.GetExpectCtStateResponse {
+    static class NetworkContextGetExpectCtStateResponseParamsProxyToResponder implements NetworkContext.GetExpectCtState_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -7016,9 +7458,9 @@ boolean enabled) {
 
     static class NetworkContextCreateTcpServerSocketResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.CreateTcpServerSocketResponse mCallback;
+        private final NetworkContext.CreateTcpServerSocket_Response mCallback;
 
-        NetworkContextCreateTcpServerSocketResponseParamsForwardToCallback(NetworkContext.CreateTcpServerSocketResponse callback) {
+        NetworkContextCreateTcpServerSocketResponseParamsForwardToCallback(NetworkContext.CreateTcpServerSocket_Response callback) {
             this.mCallback = callback;
         }
 
@@ -7043,7 +7485,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextCreateTcpServerSocketResponseParamsProxyToResponder implements NetworkContext.CreateTcpServerSocketResponse {
+    static class NetworkContextCreateTcpServerSocketResponseParamsProxyToResponder implements NetworkContext.CreateTcpServerSocket_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -7276,9 +7718,9 @@ boolean enabled) {
 
     static class NetworkContextCreateTcpConnectedSocketResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.CreateTcpConnectedSocketResponse mCallback;
+        private final NetworkContext.CreateTcpConnectedSocket_Response mCallback;
 
-        NetworkContextCreateTcpConnectedSocketResponseParamsForwardToCallback(NetworkContext.CreateTcpConnectedSocketResponse callback) {
+        NetworkContextCreateTcpConnectedSocketResponseParamsForwardToCallback(NetworkContext.CreateTcpConnectedSocket_Response callback) {
             this.mCallback = callback;
         }
 
@@ -7303,7 +7745,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextCreateTcpConnectedSocketResponseParamsProxyToResponder implements NetworkContext.CreateTcpConnectedSocketResponse {
+    static class NetworkContextCreateTcpConnectedSocketResponseParamsProxyToResponder implements NetworkContext.CreateTcpConnectedSocket_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -7495,9 +7937,9 @@ boolean enabled) {
 
     static class NetworkContextCreateTcpBoundSocketResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.CreateTcpBoundSocketResponse mCallback;
+        private final NetworkContext.CreateTcpBoundSocket_Response mCallback;
 
-        NetworkContextCreateTcpBoundSocketResponseParamsForwardToCallback(NetworkContext.CreateTcpBoundSocketResponse callback) {
+        NetworkContextCreateTcpBoundSocketResponseParamsForwardToCallback(NetworkContext.CreateTcpBoundSocket_Response callback) {
             this.mCallback = callback;
         }
 
@@ -7522,7 +7964,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextCreateTcpBoundSocketResponseParamsProxyToResponder implements NetworkContext.CreateTcpBoundSocketResponse {
+    static class NetworkContextCreateTcpBoundSocketResponseParamsProxyToResponder implements NetworkContext.CreateTcpBoundSocket_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -7812,9 +8254,9 @@ boolean enabled) {
 
     static class NetworkContextForceReloadProxyConfigResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.ForceReloadProxyConfigResponse mCallback;
+        private final NetworkContext.ForceReloadProxyConfig_Response mCallback;
 
-        NetworkContextForceReloadProxyConfigResponseParamsForwardToCallback(NetworkContext.ForceReloadProxyConfigResponse callback) {
+        NetworkContextForceReloadProxyConfigResponseParamsForwardToCallback(NetworkContext.ForceReloadProxyConfig_Response callback) {
             this.mCallback = callback;
         }
 
@@ -7837,7 +8279,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextForceReloadProxyConfigResponseParamsProxyToResponder implements NetworkContext.ForceReloadProxyConfigResponse {
+    static class NetworkContextForceReloadProxyConfigResponseParamsProxyToResponder implements NetworkContext.ForceReloadProxyConfig_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -7981,9 +8423,9 @@ boolean enabled) {
 
     static class NetworkContextClearBadProxiesCacheResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.ClearBadProxiesCacheResponse mCallback;
+        private final NetworkContext.ClearBadProxiesCache_Response mCallback;
 
-        NetworkContextClearBadProxiesCacheResponseParamsForwardToCallback(NetworkContext.ClearBadProxiesCacheResponse callback) {
+        NetworkContextClearBadProxiesCacheResponseParamsForwardToCallback(NetworkContext.ClearBadProxiesCache_Response callback) {
             this.mCallback = callback;
         }
 
@@ -8006,7 +8448,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextClearBadProxiesCacheResponseParamsProxyToResponder implements NetworkContext.ClearBadProxiesCacheResponse {
+    static class NetworkContextClearBadProxiesCacheResponseParamsProxyToResponder implements NetworkContext.ClearBadProxiesCache_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -8041,8 +8483,8 @@ boolean enabled) {
     
     static final class NetworkContextCreateWebSocketParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 104;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(104, 0)};
+        private static final int STRUCT_SIZE = 112;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(112, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public org.chromium.url.mojom.Url url;
         public String[] requestedProtocols;
@@ -8054,9 +8496,10 @@ boolean enabled) {
         public int options;
         public MutableNetworkTrafficAnnotationTag trafficAnnotation;
         public WebSocketHandshakeClient handshakeClient;
-        public AuthenticationAndCertificateObserver authCertObserver;
+        public UrlLoaderNetworkServiceObserver urlLoaderNetworkObserver;
         public WebSocketAuthenticationHandler authHandler;
         public TrustedHeaderClient headerClient;
+        public org.chromium.mojo_base.mojom.UnguessableToken throttlingProfileId;
 
         private NetworkContextCreateWebSocketParams(int version) {
             super(STRUCT_SIZE, version);
@@ -8155,7 +8598,7 @@ boolean enabled) {
                     }
                     {
                         
-                    result.authCertObserver = decoder0.readServiceInterface(80, true, AuthenticationAndCertificateObserver.MANAGER);
+                    result.urlLoaderNetworkObserver = decoder0.readServiceInterface(80, true, UrlLoaderNetworkServiceObserver.MANAGER);
                     }
                     {
                         
@@ -8164,6 +8607,11 @@ boolean enabled) {
                     {
                         
                     result.headerClient = decoder0.readServiceInterface(96, true, TrustedHeaderClient.MANAGER);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(104, true);
+                    result.throttlingProfileId = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
                     }
 
             } finally {
@@ -8213,18 +8661,20 @@ boolean enabled) {
             
             encoder0.encode(this.handshakeClient, 72, false, WebSocketHandshakeClient.MANAGER);
             
-            encoder0.encode(this.authCertObserver, 80, true, AuthenticationAndCertificateObserver.MANAGER);
+            encoder0.encode(this.urlLoaderNetworkObserver, 80, true, UrlLoaderNetworkServiceObserver.MANAGER);
             
             encoder0.encode(this.authHandler, 88, true, WebSocketAuthenticationHandler.MANAGER);
             
             encoder0.encode(this.headerClient, 96, true, TrustedHeaderClient.MANAGER);
+            
+            encoder0.encode(this.throttlingProfileId, 104, true);
         }
     }
 
 
 
     
-    static final class NetworkContextCreateQuicTransportParams extends org.chromium.mojo.bindings.Struct {
+    static final class NetworkContextCreateWebTransportParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 48;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
@@ -8232,18 +8682,18 @@ boolean enabled) {
         public org.chromium.url.mojom.Url url;
         public org.chromium.url.internal.mojom.Origin origin;
         public NetworkIsolationKey networkIsolationKey;
-        public QuicTransportCertificateFingerprint[] fingerprints;
-        public QuicTransportHandshakeClient handshakeClient;
+        public WebTransportCertificateFingerprint[] fingerprints;
+        public WebTransportHandshakeClient handshakeClient;
 
-        private NetworkContextCreateQuicTransportParams(int version) {
+        private NetworkContextCreateWebTransportParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public NetworkContextCreateQuicTransportParams() {
+        public NetworkContextCreateWebTransportParams() {
             this(0);
         }
 
-        public static NetworkContextCreateQuicTransportParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static NetworkContextCreateWebTransportParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -8252,22 +8702,22 @@ boolean enabled) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static NetworkContextCreateQuicTransportParams deserialize(java.nio.ByteBuffer data) {
+        public static NetworkContextCreateWebTransportParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static NetworkContextCreateQuicTransportParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static NetworkContextCreateWebTransportParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            NetworkContextCreateQuicTransportParams result;
+            NetworkContextCreateWebTransportParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new NetworkContextCreateQuicTransportParams(elementsOrVersion);
+                result = new NetworkContextCreateWebTransportParams(elementsOrVersion);
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
@@ -8288,17 +8738,17 @@ boolean enabled) {
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
                     {
                         org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                        result.fingerprints = new QuicTransportCertificateFingerprint[si1.elementsOrVersion];
+                        result.fingerprints = new WebTransportCertificateFingerprint[si1.elementsOrVersion];
                         for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
                             
                             org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
-                            result.fingerprints[i1] = QuicTransportCertificateFingerprint.decode(decoder2);
+                            result.fingerprints[i1] = WebTransportCertificateFingerprint.decode(decoder2);
                         }
                     }
                     }
                     {
                         
-                    result.handshakeClient = decoder0.readServiceInterface(40, false, QuicTransportHandshakeClient.MANAGER);
+                    result.handshakeClient = decoder0.readServiceInterface(40, false, WebTransportHandshakeClient.MANAGER);
                     }
 
             } finally {
@@ -8328,7 +8778,7 @@ boolean enabled) {
                 }
             }
             
-            encoder0.encode(this.handshakeClient, 40, false, QuicTransportHandshakeClient.MANAGER);
+            encoder0.encode(this.handshakeClient, 40, false, WebTransportHandshakeClient.MANAGER);
         }
     }
 
@@ -8886,11 +9336,13 @@ boolean enabled) {
     
     static final class NetworkContextVerifyCertForSignedExchangeResponseParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public int errorCode;
         public CertVerifyResult cvResult;
+        public boolean pkpBypassed;
+        public String pinningFailureLog;
 
         private NetworkContextVerifyCertForSignedExchangeResponseParams(int version) {
             super(STRUCT_SIZE, version);
@@ -8931,8 +9383,16 @@ boolean enabled) {
                     }
                     {
                         
+                    result.pkpBypassed = decoder0.readBoolean(12, 0);
+                    }
+                    {
+                        
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
                     result.cvResult = CertVerifyResult.decode(decoder1);
+                    }
+                    {
+                        
+                    result.pinningFailureLog = decoder0.readString(24, false);
                     }
 
             } finally {
@@ -8948,15 +9408,19 @@ boolean enabled) {
             
             encoder0.encode(this.errorCode, 8);
             
+            encoder0.encode(this.pkpBypassed, 12, 0);
+            
             encoder0.encode(this.cvResult, 16, false);
+            
+            encoder0.encode(this.pinningFailureLog, 24, false);
         }
     }
 
     static class NetworkContextVerifyCertForSignedExchangeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.VerifyCertForSignedExchangeResponse mCallback;
+        private final NetworkContext.VerifyCertForSignedExchange_Response mCallback;
 
-        NetworkContextVerifyCertForSignedExchangeResponseParamsForwardToCallback(NetworkContext.VerifyCertForSignedExchangeResponse callback) {
+        NetworkContextVerifyCertForSignedExchangeResponseParamsForwardToCallback(NetworkContext.VerifyCertForSignedExchange_Response callback) {
             this.mCallback = callback;
         }
 
@@ -8973,7 +9437,7 @@ boolean enabled) {
 
                 NetworkContextVerifyCertForSignedExchangeResponseParams response = NetworkContextVerifyCertForSignedExchangeResponseParams.deserialize(messageWithHeader.getPayload());
 
-                mCallback.call(response.errorCode, response.cvResult);
+                mCallback.call(response.errorCode, response.cvResult, response.pkpBypassed, response.pinningFailureLog);
                 return true;
             } catch (org.chromium.mojo.bindings.DeserializationException e) {
                 return false;
@@ -8981,7 +9445,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextVerifyCertForSignedExchangeResponseParamsProxyToResponder implements NetworkContext.VerifyCertForSignedExchangeResponse {
+    static class NetworkContextVerifyCertForSignedExchangeResponseParamsProxyToResponder implements NetworkContext.VerifyCertForSignedExchange_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -8997,215 +9461,22 @@ boolean enabled) {
         }
 
         @Override
-        public void call(Integer errorCode, CertVerifyResult cvResult) {
+        public void call(Integer errorCode, CertVerifyResult cvResult, Boolean pkpBypassed, String pinningFailureLog) {
             NetworkContextVerifyCertForSignedExchangeResponseParams _response = new NetworkContextVerifyCertForSignedExchangeResponseParams();
 
             _response.errorCode = errorCode;
 
             _response.cvResult = cvResult;
 
+            _response.pkpBypassed = pkpBypassed;
+
+            _response.pinningFailureLog = pinningFailureLog;
+
             org.chromium.mojo.bindings.ServiceMessage _message =
                     _response.serializeWithHeader(
                             mCore,
                             new org.chromium.mojo.bindings.MessageHeader(
                                     VERIFY_CERT_FOR_SIGNED_EXCHANGE_ORDINAL,
-                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
-                                    mRequestId));
-            mMessageReceiver.accept(_message);
-        }
-    }
-
-
-
-    
-    static final class NetworkContextParseHeadersParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public org.chromium.url.mojom.Url url;
-        public HttpResponseHeaders headers;
-
-        private NetworkContextParseHeadersParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public NetworkContextParseHeadersParams() {
-            this(0);
-        }
-
-        public static NetworkContextParseHeadersParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static NetworkContextParseHeadersParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static NetworkContextParseHeadersParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            NetworkContextParseHeadersParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new NetworkContextParseHeadersParams(elementsOrVersion);
-                    {
-                        
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    result.url = org.chromium.url.mojom.Url.decode(decoder1);
-                    }
-                    {
-                        
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
-                    result.headers = HttpResponseHeaders.decode(decoder1);
-                    }
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-            
-            encoder0.encode(this.url, 8, false);
-            
-            encoder0.encode(this.headers, 16, false);
-        }
-    }
-
-
-
-    
-    static final class NetworkContextParseHeadersResponseParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public ParsedHeaders parsedHeaders;
-
-        private NetworkContextParseHeadersResponseParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public NetworkContextParseHeadersResponseParams() {
-            this(0);
-        }
-
-        public static NetworkContextParseHeadersResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static NetworkContextParseHeadersResponseParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static NetworkContextParseHeadersResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            NetworkContextParseHeadersResponseParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new NetworkContextParseHeadersResponseParams(elementsOrVersion);
-                    {
-                        
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    result.parsedHeaders = ParsedHeaders.decode(decoder1);
-                    }
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-            
-            encoder0.encode(this.parsedHeaders, 8, false);
-        }
-    }
-
-    static class NetworkContextParseHeadersResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
-            implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.ParseHeadersResponse mCallback;
-
-        NetworkContextParseHeadersResponseParamsForwardToCallback(NetworkContext.ParseHeadersResponse callback) {
-            this.mCallback = callback;
-        }
-
-        @Override
-        public boolean accept(org.chromium.mojo.bindings.Message message) {
-            try {
-                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
-                        message.asServiceMessage();
-                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
-                if (!header.validateHeader(PARSE_HEADERS_ORDINAL,
-                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
-                    return false;
-                }
-
-                NetworkContextParseHeadersResponseParams response = NetworkContextParseHeadersResponseParams.deserialize(messageWithHeader.getPayload());
-
-                mCallback.call(response.parsedHeaders);
-                return true;
-            } catch (org.chromium.mojo.bindings.DeserializationException e) {
-                return false;
-            }
-        }
-    }
-
-    static class NetworkContextParseHeadersResponseParamsProxyToResponder implements NetworkContext.ParseHeadersResponse {
-
-        private final org.chromium.mojo.system.Core mCore;
-        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
-        private final long mRequestId;
-
-        NetworkContextParseHeadersResponseParamsProxyToResponder(
-                org.chromium.mojo.system.Core core,
-                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
-                long requestId) {
-            mCore = core;
-            mMessageReceiver = messageReceiver;
-            mRequestId = requestId;
-        }
-
-        @Override
-        public void call(ParsedHeaders parsedHeaders) {
-            NetworkContextParseHeadersResponseParams _response = new NetworkContextParseHeadersResponseParams();
-
-            _response.parsedHeaders = parsedHeaders;
-
-            org.chromium.mojo.bindings.ServiceMessage _message =
-                    _response.serializeWithHeader(
-                            mCore,
-                            new org.chromium.mojo.bindings.MessageHeader(
-                                    PARSE_HEADERS_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);
@@ -9348,9 +9619,9 @@ boolean enabled) {
 
     static class NetworkContextAddHstsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.AddHstsResponse mCallback;
+        private final NetworkContext.AddHsts_Response mCallback;
 
-        NetworkContextAddHstsResponseParamsForwardToCallback(NetworkContext.AddHstsResponse callback) {
+        NetworkContextAddHstsResponseParamsForwardToCallback(NetworkContext.AddHsts_Response callback) {
             this.mCallback = callback;
         }
 
@@ -9373,7 +9644,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextAddHstsResponseParamsProxyToResponder implements NetworkContext.AddHstsResponse {
+    static class NetworkContextAddHstsResponseParamsProxyToResponder implements NetworkContext.AddHsts_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -9531,9 +9802,9 @@ boolean enabled) {
 
     static class NetworkContextIsHstsActiveForHostResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.IsHstsActiveForHostResponse mCallback;
+        private final NetworkContext.IsHstsActiveForHost_Response mCallback;
 
-        NetworkContextIsHstsActiveForHostResponseParamsForwardToCallback(NetworkContext.IsHstsActiveForHostResponse callback) {
+        NetworkContextIsHstsActiveForHostResponseParamsForwardToCallback(NetworkContext.IsHstsActiveForHost_Response callback) {
             this.mCallback = callback;
         }
 
@@ -9558,7 +9829,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextIsHstsActiveForHostResponseParamsProxyToResponder implements NetworkContext.IsHstsActiveForHostResponse {
+    static class NetworkContextIsHstsActiveForHostResponseParamsProxyToResponder implements NetworkContext.IsHstsActiveForHost_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -9719,9 +9990,9 @@ boolean enabled) {
 
     static class NetworkContextGetHstsStateResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.GetHstsStateResponse mCallback;
+        private final NetworkContext.GetHstsState_Response mCallback;
 
-        NetworkContextGetHstsStateResponseParamsForwardToCallback(NetworkContext.GetHstsStateResponse callback) {
+        NetworkContextGetHstsStateResponseParamsForwardToCallback(NetworkContext.GetHstsState_Response callback) {
             this.mCallback = callback;
         }
 
@@ -9746,7 +10017,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextGetHstsStateResponseParamsProxyToResponder implements NetworkContext.GetHstsStateResponse {
+    static class NetworkContextGetHstsStateResponseParamsProxyToResponder implements NetworkContext.GetHstsState_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -9948,9 +10219,9 @@ boolean enabled) {
 
     static class NetworkContextSetCorsOriginAccessListsForOriginResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.SetCorsOriginAccessListsForOriginResponse mCallback;
+        private final NetworkContext.SetCorsOriginAccessListsForOrigin_Response mCallback;
 
-        NetworkContextSetCorsOriginAccessListsForOriginResponseParamsForwardToCallback(NetworkContext.SetCorsOriginAccessListsForOriginResponse callback) {
+        NetworkContextSetCorsOriginAccessListsForOriginResponseParamsForwardToCallback(NetworkContext.SetCorsOriginAccessListsForOrigin_Response callback) {
             this.mCallback = callback;
         }
 
@@ -9973,7 +10244,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextSetCorsOriginAccessListsForOriginResponseParamsProxyToResponder implements NetworkContext.SetCorsOriginAccessListsForOriginResponse {
+    static class NetworkContextSetCorsOriginAccessListsForOriginResponseParamsProxyToResponder implements NetworkContext.SetCorsOriginAccessListsForOrigin_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -10131,9 +10402,9 @@ boolean enabled) {
 
     static class NetworkContextDeleteDynamicDataForHostResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.DeleteDynamicDataForHostResponse mCallback;
+        private final NetworkContext.DeleteDynamicDataForHost_Response mCallback;
 
-        NetworkContextDeleteDynamicDataForHostResponseParamsForwardToCallback(NetworkContext.DeleteDynamicDataForHostResponse callback) {
+        NetworkContextDeleteDynamicDataForHostResponseParamsForwardToCallback(NetworkContext.DeleteDynamicDataForHost_Response callback) {
             this.mCallback = callback;
         }
 
@@ -10158,7 +10429,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextDeleteDynamicDataForHostResponseParamsProxyToResponder implements NetworkContext.DeleteDynamicDataForHostResponse {
+    static class NetworkContextDeleteDynamicDataForHostResponseParamsProxyToResponder implements NetworkContext.DeleteDynamicDataForHost_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -10375,9 +10646,9 @@ boolean enabled) {
 
     static class NetworkContextSaveHttpAuthCacheProxyEntriesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.SaveHttpAuthCacheProxyEntriesResponse mCallback;
+        private final NetworkContext.SaveHttpAuthCacheProxyEntries_Response mCallback;
 
-        NetworkContextSaveHttpAuthCacheProxyEntriesResponseParamsForwardToCallback(NetworkContext.SaveHttpAuthCacheProxyEntriesResponse callback) {
+        NetworkContextSaveHttpAuthCacheProxyEntriesResponseParamsForwardToCallback(NetworkContext.SaveHttpAuthCacheProxyEntries_Response callback) {
             this.mCallback = callback;
         }
 
@@ -10402,7 +10673,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextSaveHttpAuthCacheProxyEntriesResponseParamsProxyToResponder implements NetworkContext.SaveHttpAuthCacheProxyEntriesResponse {
+    static class NetworkContextSaveHttpAuthCacheProxyEntriesResponseParamsProxyToResponder implements NetworkContext.SaveHttpAuthCacheProxyEntries_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -10556,9 +10827,9 @@ boolean enabled) {
 
     static class NetworkContextLoadHttpAuthCacheProxyEntriesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.LoadHttpAuthCacheProxyEntriesResponse mCallback;
+        private final NetworkContext.LoadHttpAuthCacheProxyEntries_Response mCallback;
 
-        NetworkContextLoadHttpAuthCacheProxyEntriesResponseParamsForwardToCallback(NetworkContext.LoadHttpAuthCacheProxyEntriesResponse callback) {
+        NetworkContextLoadHttpAuthCacheProxyEntriesResponseParamsForwardToCallback(NetworkContext.LoadHttpAuthCacheProxyEntries_Response callback) {
             this.mCallback = callback;
         }
 
@@ -10581,7 +10852,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextLoadHttpAuthCacheProxyEntriesResponseParamsProxyToResponder implements NetworkContext.LoadHttpAuthCacheProxyEntriesResponse {
+    static class NetworkContextLoadHttpAuthCacheProxyEntriesResponseParamsProxyToResponder implements NetworkContext.LoadHttpAuthCacheProxyEntries_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -10749,9 +11020,9 @@ boolean enabled) {
 
     static class NetworkContextAddAuthCacheEntryResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.AddAuthCacheEntryResponse mCallback;
+        private final NetworkContext.AddAuthCacheEntry_Response mCallback;
 
-        NetworkContextAddAuthCacheEntryResponseParamsForwardToCallback(NetworkContext.AddAuthCacheEntryResponse callback) {
+        NetworkContextAddAuthCacheEntryResponseParamsForwardToCallback(NetworkContext.AddAuthCacheEntry_Response callback) {
             this.mCallback = callback;
         }
 
@@ -10774,7 +11045,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextAddAuthCacheEntryResponseParamsProxyToResponder implements NetworkContext.AddAuthCacheEntryResponse {
+    static class NetworkContextAddAuthCacheEntryResponseParamsProxyToResponder implements NetworkContext.AddAuthCacheEntry_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -10801,6 +11072,69 @@ boolean enabled) {
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class NetworkContextSetCorsNonWildcardRequestHeadersSupportParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public boolean value;
+
+        private NetworkContextSetCorsNonWildcardRequestHeadersSupportParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NetworkContextSetCorsNonWildcardRequestHeadersSupportParams() {
+            this(0);
+        }
+
+        public static NetworkContextSetCorsNonWildcardRequestHeadersSupportParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NetworkContextSetCorsNonWildcardRequestHeadersSupportParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NetworkContextSetCorsNonWildcardRequestHeadersSupportParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NetworkContextSetCorsNonWildcardRequestHeadersSupportParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NetworkContextSetCorsNonWildcardRequestHeadersSupportParams(elementsOrVersion);
+                    {
+                        
+                    result.value = decoder0.readBoolean(8, 0);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.value, 8, 0);
         }
     }
 
@@ -10942,9 +11276,9 @@ boolean enabled) {
 
     static class NetworkContextLookupServerBasicAuthCredentialsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.LookupServerBasicAuthCredentialsResponse mCallback;
+        private final NetworkContext.LookupServerBasicAuthCredentials_Response mCallback;
 
-        NetworkContextLookupServerBasicAuthCredentialsResponseParamsForwardToCallback(NetworkContext.LookupServerBasicAuthCredentialsResponse callback) {
+        NetworkContextLookupServerBasicAuthCredentialsResponseParamsForwardToCallback(NetworkContext.LookupServerBasicAuthCredentials_Response callback) {
             this.mCallback = callback;
         }
 
@@ -10969,7 +11303,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextLookupServerBasicAuthCredentialsResponseParamsProxyToResponder implements NetworkContext.LookupServerBasicAuthCredentialsResponse {
+    static class NetworkContextLookupServerBasicAuthCredentialsResponseParamsProxyToResponder implements NetworkContext.LookupServerBasicAuthCredentials_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -11115,9 +11449,9 @@ boolean enabled) {
 
     static class NetworkContextEnableStaticKeyPinningForTestingResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.EnableStaticKeyPinningForTestingResponse mCallback;
+        private final NetworkContext.EnableStaticKeyPinningForTesting_Response mCallback;
 
-        NetworkContextEnableStaticKeyPinningForTestingResponseParamsForwardToCallback(NetworkContext.EnableStaticKeyPinningForTestingResponse callback) {
+        NetworkContextEnableStaticKeyPinningForTestingResponseParamsForwardToCallback(NetworkContext.EnableStaticKeyPinningForTesting_Response callback) {
             this.mCallback = callback;
         }
 
@@ -11140,7 +11474,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextEnableStaticKeyPinningForTestingResponseParamsProxyToResponder implements NetworkContext.EnableStaticKeyPinningForTestingResponse {
+    static class NetworkContextEnableStaticKeyPinningForTestingResponseParamsProxyToResponder implements NetworkContext.EnableStaticKeyPinningForTesting_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -11320,9 +11654,9 @@ boolean enabled) {
 
     static class NetworkContextVerifyCertificateForTestingResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.VerifyCertificateForTestingResponse mCallback;
+        private final NetworkContext.VerifyCertificateForTesting_Response mCallback;
 
-        NetworkContextVerifyCertificateForTestingResponseParamsForwardToCallback(NetworkContext.VerifyCertificateForTestingResponse callback) {
+        NetworkContextVerifyCertificateForTestingResponseParamsForwardToCallback(NetworkContext.VerifyCertificateForTesting_Response callback) {
             this.mCallback = callback;
         }
 
@@ -11333,7 +11667,7 @@ boolean enabled) {
                         message.asServiceMessage();
                 org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
                 if (!header.validateHeader(VERIFY_CERTIFICATE_FOR_TESTING_ORDINAL,
-                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG)) {
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
                     return false;
                 }
 
@@ -11347,7 +11681,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextVerifyCertificateForTestingResponseParamsProxyToResponder implements NetworkContext.VerifyCertificateForTestingResponse {
+    static class NetworkContextVerifyCertificateForTestingResponseParamsProxyToResponder implements NetworkContext.VerifyCertificateForTesting_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -11373,7 +11707,7 @@ boolean enabled) {
                             mCore,
                             new org.chromium.mojo.bindings.MessageHeader(
                                     VERIFY_CERTIFICATE_FOR_TESTING_ORDINAL,
-                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);
         }
@@ -11387,7 +11721,7 @@ boolean enabled) {
         private static final int STRUCT_SIZE = 24;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public org.chromium.url.mojom.Url origin;
+        public org.chromium.url.internal.mojom.Origin origin;
         public org.chromium.url.mojom.Url uploadUrl;
 
         private NetworkContextAddDomainReliabilityContextForTestingParams(int version) {
@@ -11426,7 +11760,7 @@ boolean enabled) {
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    result.origin = org.chromium.url.mojom.Url.decode(decoder1);
+                    result.origin = org.chromium.url.internal.mojom.Origin.decode(decoder1);
                     }
                     {
                         
@@ -11509,9 +11843,9 @@ boolean enabled) {
 
     static class NetworkContextAddDomainReliabilityContextForTestingResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.AddDomainReliabilityContextForTestingResponse mCallback;
+        private final NetworkContext.AddDomainReliabilityContextForTesting_Response mCallback;
 
-        NetworkContextAddDomainReliabilityContextForTestingResponseParamsForwardToCallback(NetworkContext.AddDomainReliabilityContextForTestingResponse callback) {
+        NetworkContextAddDomainReliabilityContextForTestingResponseParamsForwardToCallback(NetworkContext.AddDomainReliabilityContextForTesting_Response callback) {
             this.mCallback = callback;
         }
 
@@ -11534,7 +11868,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextAddDomainReliabilityContextForTestingResponseParamsProxyToResponder implements NetworkContext.AddDomainReliabilityContextForTestingResponse {
+    static class NetworkContextAddDomainReliabilityContextForTestingResponseParamsProxyToResponder implements NetworkContext.AddDomainReliabilityContextForTesting_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -11678,9 +12012,9 @@ boolean enabled) {
 
     static class NetworkContextForceDomainReliabilityUploadsForTestingResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContext.ForceDomainReliabilityUploadsForTestingResponse mCallback;
+        private final NetworkContext.ForceDomainReliabilityUploadsForTesting_Response mCallback;
 
-        NetworkContextForceDomainReliabilityUploadsForTestingResponseParamsForwardToCallback(NetworkContext.ForceDomainReliabilityUploadsForTestingResponse callback) {
+        NetworkContextForceDomainReliabilityUploadsForTestingResponseParamsForwardToCallback(NetworkContext.ForceDomainReliabilityUploadsForTesting_Response callback) {
             this.mCallback = callback;
         }
 
@@ -11703,7 +12037,7 @@ boolean enabled) {
         }
     }
 
-    static class NetworkContextForceDomainReliabilityUploadsForTestingResponseParamsProxyToResponder implements NetworkContext.ForceDomainReliabilityUploadsForTestingResponse {
+    static class NetworkContextForceDomainReliabilityUploadsForTestingResponseParamsProxyToResponder implements NetworkContext.ForceDomainReliabilityUploadsForTesting_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -11736,22 +12070,21 @@ boolean enabled) {
 
 
     
-    static final class NetworkContextGetOriginPolicyManagerParams extends org.chromium.mojo.bindings.Struct {
+    static final class NetworkContextSetCtLogListAlwaysTimelyForTestingParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public org.chromium.mojo.bindings.InterfaceRequest<OriginPolicyManager> originPolicyManager;
 
-        private NetworkContextGetOriginPolicyManagerParams(int version) {
+        private NetworkContextSetCtLogListAlwaysTimelyForTestingParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public NetworkContextGetOriginPolicyManagerParams() {
+        public NetworkContextSetCtLogListAlwaysTimelyForTestingParams() {
             this(0);
         }
 
-        public static NetworkContextGetOriginPolicyManagerParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static NetworkContextSetCtLogListAlwaysTimelyForTestingParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -11760,26 +12093,22 @@ boolean enabled) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static NetworkContextGetOriginPolicyManagerParams deserialize(java.nio.ByteBuffer data) {
+        public static NetworkContextSetCtLogListAlwaysTimelyForTestingParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static NetworkContextGetOriginPolicyManagerParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static NetworkContextSetCtLogListAlwaysTimelyForTestingParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            NetworkContextGetOriginPolicyManagerParams result;
+            NetworkContextSetCtLogListAlwaysTimelyForTestingParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new NetworkContextGetOriginPolicyManagerParams(elementsOrVersion);
-                    {
-                        
-                    result.originPolicyManager = decoder0.readInterfaceRequest(8, false);
-                    }
+                result = new NetworkContextSetCtLogListAlwaysTimelyForTestingParams(elementsOrVersion);
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -11790,31 +12119,29 @@ boolean enabled) {
         @SuppressWarnings("unchecked")
         @Override
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-            
-            encoder0.encode(this.originPolicyManager, 8, false);
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         }
     }
 
 
 
     
-    static final class NetworkContextSetSctAuditingEnabledParams extends org.chromium.mojo.bindings.Struct {
+    static final class NetworkContextSetSctAuditingModeParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public boolean enabled;
+        public int mode;
 
-        private NetworkContextSetSctAuditingEnabledParams(int version) {
+        private NetworkContextSetSctAuditingModeParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public NetworkContextSetSctAuditingEnabledParams() {
+        public NetworkContextSetSctAuditingModeParams() {
             this(0);
         }
 
-        public static NetworkContextSetSctAuditingEnabledParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static NetworkContextSetSctAuditingModeParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -11823,25 +12150,27 @@ boolean enabled) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static NetworkContextSetSctAuditingEnabledParams deserialize(java.nio.ByteBuffer data) {
+        public static NetworkContextSetSctAuditingModeParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static NetworkContextSetSctAuditingEnabledParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static NetworkContextSetSctAuditingModeParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            NetworkContextSetSctAuditingEnabledParams result;
+            NetworkContextSetSctAuditingModeParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new NetworkContextSetSctAuditingEnabledParams(elementsOrVersion);
+                result = new NetworkContextSetSctAuditingModeParams(elementsOrVersion);
                     {
                         
-                    result.enabled = decoder0.readBoolean(8, 0);
+                    result.mode = decoder0.readInt(8);
+                        SctAuditingMode.validate(result.mode);
+                        result.mode = SctAuditingMode.toKnownValue(result.mode);
                     }
 
             } finally {
@@ -11855,7 +12184,70 @@ boolean enabled) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.enabled, 8, 0);
+            encoder0.encode(this.mode, 8);
+        }
+    }
+
+
+
+    
+    static final class NetworkContextAddReportingApiObserverParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public ReportingApiObserver observer;
+
+        private NetworkContextAddReportingApiObserverParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NetworkContextAddReportingApiObserverParams() {
+            this(0);
+        }
+
+        public static NetworkContextAddReportingApiObserverParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NetworkContextAddReportingApiObserverParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NetworkContextAddReportingApiObserverParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NetworkContextAddReportingApiObserverParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NetworkContextAddReportingApiObserverParams(elementsOrVersion);
+                    {
+                        
+                    result.observer = decoder0.readServiceInterface(8, false, ReportingApiObserver.MANAGER);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.observer, 8, false, ReportingApiObserver.MANAGER);
         }
     }
 

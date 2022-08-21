@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class MediaSessionService_Internal {
 
@@ -55,9 +57,13 @@ class MediaSessionService_Internal {
 
     private static final int SET_METADATA_ORDINAL = 3;
 
-    private static final int ENABLE_ACTION_ORDINAL = 4;
+    private static final int SET_MICROPHONE_STATE_ORDINAL = 4;
 
-    private static final int DISABLE_ACTION_ORDINAL = 5;
+    private static final int SET_CAMERA_STATE_ORDINAL = 5;
+
+    private static final int ENABLE_ACTION_ORDINAL = 6;
+
+    private static final int DISABLE_ACTION_ORDINAL = 7;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements MediaSessionService.Proxy {
@@ -132,6 +138,40 @@ SpecMediaMetadata metadata) {
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(SET_METADATA_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void setMicrophoneState(
+int microphoneState) {
+
+            MediaSessionServiceSetMicrophoneStateParams _message = new MediaSessionServiceSetMicrophoneStateParams();
+
+            _message.microphoneState = microphoneState;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(SET_MICROPHONE_STATE_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void setCameraState(
+int cameraState) {
+
+            MediaSessionServiceSetCameraStateParams _message = new MediaSessionServiceSetCameraStateParams();
+
+            _message.cameraState = cameraState;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(SET_CAMERA_STATE_ORDINAL)));
 
         }
 
@@ -253,6 +293,32 @@ int action) {
 
 
 
+                    case SET_MICROPHONE_STATE_ORDINAL: {
+
+                        MediaSessionServiceSetMicrophoneStateParams data =
+                                MediaSessionServiceSetMicrophoneStateParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().setMicrophoneState(data.microphoneState);
+                        return true;
+                    }
+
+
+
+
+
+                    case SET_CAMERA_STATE_ORDINAL: {
+
+                        MediaSessionServiceSetCameraStateParams data =
+                                MediaSessionServiceSetCameraStateParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().setCameraState(data.cameraState);
+                        return true;
+                    }
+
+
+
+
+
                     case ENABLE_ACTION_ORDINAL: {
 
                         MediaSessionServiceEnableActionParams data =
@@ -303,6 +369,10 @@ int action) {
                     case org.chromium.mojo.bindings.interfacecontrol.InterfaceControlMessagesConstants.RUN_MESSAGE_ID:
                         return org.chromium.mojo.bindings.InterfaceControlMessagesHelper.handleRun(
                                 getCore(), MediaSessionService_Internal.MANAGER, messageWithHeader, receiver);
+
+
+
+
 
 
 
@@ -579,6 +649,136 @@ int action) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.metadata, 8, true);
+        }
+    }
+
+
+
+    
+    static final class MediaSessionServiceSetMicrophoneStateParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int microphoneState;
+
+        private MediaSessionServiceSetMicrophoneStateParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public MediaSessionServiceSetMicrophoneStateParams() {
+            this(0);
+        }
+
+        public static MediaSessionServiceSetMicrophoneStateParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static MediaSessionServiceSetMicrophoneStateParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static MediaSessionServiceSetMicrophoneStateParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            MediaSessionServiceSetMicrophoneStateParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new MediaSessionServiceSetMicrophoneStateParams(elementsOrVersion);
+                    {
+                        
+                    result.microphoneState = decoder0.readInt(8);
+                        org.chromium.media_session.mojom.MicrophoneState.validate(result.microphoneState);
+                        result.microphoneState = org.chromium.media_session.mojom.MicrophoneState.toKnownValue(result.microphoneState);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.microphoneState, 8);
+        }
+    }
+
+
+
+    
+    static final class MediaSessionServiceSetCameraStateParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int cameraState;
+
+        private MediaSessionServiceSetCameraStateParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public MediaSessionServiceSetCameraStateParams() {
+            this(0);
+        }
+
+        public static MediaSessionServiceSetCameraStateParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static MediaSessionServiceSetCameraStateParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static MediaSessionServiceSetCameraStateParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            MediaSessionServiceSetCameraStateParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new MediaSessionServiceSetCameraStateParams(elementsOrVersion);
+                    {
+                        
+                    result.cameraState = decoder0.readInt(8);
+                        org.chromium.media_session.mojom.CameraState.validate(result.cameraState);
+                        result.cameraState = org.chromium.media_session.mojom.CameraState.toKnownValue(result.cameraState);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.cameraState, 8);
         }
     }
 

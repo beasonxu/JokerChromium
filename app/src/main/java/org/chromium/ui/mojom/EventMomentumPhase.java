@@ -13,8 +13,19 @@
 
 package org.chromium.ui.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class EventMomentumPhase {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        EventMomentumPhase.NONE,
+        EventMomentumPhase.BEGAN,
+        EventMomentumPhase.MAY_BEGIN,
+        EventMomentumPhase.INERTIAL_UPDATE,
+        EventMomentumPhase.END,
+        EventMomentumPhase.BLOCKED})
+    public @interface EnumType {}
 
     public static final int NONE = 0;
     public static final int BEGAN = 1;

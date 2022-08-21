@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class ScreenOrientationListener_Internal {
 
@@ -61,7 +63,7 @@ class ScreenOrientationListener_Internal {
         @Override
         public void isAutoRotateEnabledByUser(
 
-IsAutoRotateEnabledByUserResponse callback) {
+IsAutoRotateEnabledByUser_Response callback) {
 
             ScreenOrientationListenerIsAutoRotateEnabledByUserParams _message = new ScreenOrientationListenerIsAutoRotateEnabledByUserParams();
 
@@ -281,9 +283,9 @@ IsAutoRotateEnabledByUserResponse callback) {
 
     static class ScreenOrientationListenerIsAutoRotateEnabledByUserResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ScreenOrientationListener.IsAutoRotateEnabledByUserResponse mCallback;
+        private final ScreenOrientationListener.IsAutoRotateEnabledByUser_Response mCallback;
 
-        ScreenOrientationListenerIsAutoRotateEnabledByUserResponseParamsForwardToCallback(ScreenOrientationListener.IsAutoRotateEnabledByUserResponse callback) {
+        ScreenOrientationListenerIsAutoRotateEnabledByUserResponseParamsForwardToCallback(ScreenOrientationListener.IsAutoRotateEnabledByUser_Response callback) {
             this.mCallback = callback;
         }
 
@@ -308,7 +310,7 @@ IsAutoRotateEnabledByUserResponse callback) {
         }
     }
 
-    static class ScreenOrientationListenerIsAutoRotateEnabledByUserResponseParamsProxyToResponder implements ScreenOrientationListener.IsAutoRotateEnabledByUserResponse {
+    static class ScreenOrientationListenerIsAutoRotateEnabledByUserResponseParamsProxyToResponder implements ScreenOrientationListener.IsAutoRotateEnabledByUser_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

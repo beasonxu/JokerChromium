@@ -13,8 +13,16 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class CursorCaptureType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        CursorCaptureType.NEVER,
+        CursorCaptureType.ALWAYS,
+        CursorCaptureType.MOTION})
+    public @interface EnumType {}
 
     public static final int NEVER = 0;
     public static final int ALWAYS = 1;

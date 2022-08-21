@@ -2,15 +2,13 @@ package org.chromium.chrome.browser.contextualsearch;
 
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ContextualSearchContextJni implements ContextualSearchContext.Natives {
+class ContextualSearchContextJni implements ContextualSearchContext.Natives {
   private static ContextualSearchContext.Natives testInstance;
 
   public static final JniStaticTestMocker<ContextualSearchContext.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.contextualsearch.ContextualSearchContext.Natives>() {
@@ -36,21 +34,14 @@ final class ContextualSearchContextJni implements ContextualSearchContext.Native
 
   @Override
   public void setResolveProperties(long nativeContextualSearchContext,
-      ContextualSearchContext caller, String homeCountry, boolean doSendBasePageUrl,
-      long previousEventId, int previousEventResults) {
-    GEN_JNI.org_chromium_chrome_browser_contextualsearch_ContextualSearchContext_setResolveProperties(nativeContextualSearchContext, caller, homeCountry, doSendBasePageUrl, previousEventId, previousEventResults);
+      ContextualSearchContext caller, String homeCountry, boolean doSendBasePageUrl) {
+    GEN_JNI.org_chromium_chrome_browser_contextualsearch_ContextualSearchContext_setResolveProperties(nativeContextualSearchContext, caller, homeCountry, doSendBasePageUrl);
   }
 
   @Override
   public void adjustSelection(long nativeContextualSearchContext, ContextualSearchContext caller,
       int startAdjust, int endAdjust) {
     GEN_JNI.org_chromium_chrome_browser_contextualsearch_ContextualSearchContext_adjustSelection(nativeContextualSearchContext, caller, startAdjust, endAdjust);
-  }
-
-  @Override
-  public void setContent(long nativeContextualSearchContext, ContextualSearchContext caller,
-      String content, int selectionStart, int selectionEnd) {
-    GEN_JNI.org_chromium_chrome_browser_contextualsearch_ContextualSearchContext_setContent(nativeContextualSearchContext, caller, content, selectionStart, selectionEnd);
   }
 
   @Override
@@ -69,6 +60,12 @@ final class ContextualSearchContextJni implements ContextualSearchContext.Native
   public void prepareToResolve(long nativeContextualSearchContext, ContextualSearchContext caller,
       boolean isExactSearch, String relatedSearchesStamp) {
     GEN_JNI.org_chromium_chrome_browser_contextualsearch_ContextualSearchContext_prepareToResolve(nativeContextualSearchContext, caller, isExactSearch, relatedSearchesStamp);
+  }
+
+  @Override
+  public void setSurroundingsAndSelection(long nativeContextualSearchContext,
+      ContextualSearchContext caller, String surroundings, int startOffset, int endOffset) {
+    GEN_JNI.org_chromium_chrome_browser_contextualsearch_ContextualSearchContext_setSurroundingsAndSelection(nativeContextualSearchContext, caller, surroundings, startOffset, endOffset);
   }
 
   public static ContextualSearchContext.Natives get() {

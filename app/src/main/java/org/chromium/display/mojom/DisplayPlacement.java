@@ -13,6 +13,8 @@
 
 package org.chromium.display.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class DisplayPlacement extends org.chromium.mojo.bindings.Struct {
 

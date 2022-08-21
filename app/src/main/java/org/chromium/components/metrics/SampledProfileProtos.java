@@ -150,6 +150,101 @@ public final class SampledProfileProtos {
 
     /**
      * <pre>
+     * A list of pids that belong to Lacros binaries, which are a subset of the
+     * keys of the process_types above.
+     * </pre>
+     *
+     * <code>repeated uint32 lacros_pids = 18 [packed = true];</code>
+     * @return A list containing the lacrosPids.
+     */
+    java.util.List<java.lang.Integer> getLacrosPidsList();
+    /**
+     * <pre>
+     * A list of pids that belong to Lacros binaries, which are a subset of the
+     * keys of the process_types above.
+     * </pre>
+     *
+     * <code>repeated uint32 lacros_pids = 18 [packed = true];</code>
+     * @return The count of lacrosPids.
+     */
+    int getLacrosPidsCount();
+    /**
+     * <pre>
+     * A list of pids that belong to Lacros binaries, which are a subset of the
+     * keys of the process_types above.
+     * </pre>
+     *
+     * <code>repeated uint32 lacros_pids = 18 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The lacrosPids at the given index.
+     */
+    int getLacrosPids(int index);
+
+    /**
+     * <pre>
+     * The version string of the Lacros Chrome browser running on a CrOS machine.
+     * It a 4-tuple of numbers separated by dots.
+     * Note: unlike the app_version in the system_profile.proto, this does not
+     * include any additional suffixes such as development build or bitness.
+     * This, and lacros_channel are only populated when lacros binaries are
+     * found in the running processes, i.e. when lacros_pids is not empty.
+     * </pre>
+     *
+     * <code>optional string lacros_version = 19;</code>
+     * @return Whether the lacrosVersion field is set.
+     */
+    boolean hasLacrosVersion();
+    /**
+     * <pre>
+     * The version string of the Lacros Chrome browser running on a CrOS machine.
+     * It a 4-tuple of numbers separated by dots.
+     * Note: unlike the app_version in the system_profile.proto, this does not
+     * include any additional suffixes such as development build or bitness.
+     * This, and lacros_channel are only populated when lacros binaries are
+     * found in the running processes, i.e. when lacros_pids is not empty.
+     * </pre>
+     *
+     * <code>optional string lacros_version = 19;</code>
+     * @return The lacrosVersion.
+     */
+    java.lang.String getLacrosVersion();
+    /**
+     * <pre>
+     * The version string of the Lacros Chrome browser running on a CrOS machine.
+     * It a 4-tuple of numbers separated by dots.
+     * Note: unlike the app_version in the system_profile.proto, this does not
+     * include any additional suffixes such as development build or bitness.
+     * This, and lacros_channel are only populated when lacros binaries are
+     * found in the running processes, i.e. when lacros_pids is not empty.
+     * </pre>
+     *
+     * <code>optional string lacros_version = 19;</code>
+     * @return The bytes for lacrosVersion.
+     */
+    com.google.protobuf.ByteString
+        getLacrosVersionBytes();
+
+    /**
+     * <pre>
+     * The channel of the Lacros Chrome browser running on a CrOS machine.
+     * </pre>
+     *
+     * <code>optional .metrics.SystemProfileProto.Channel lacros_channel = 20;</code>
+     * @return Whether the lacrosChannel field is set.
+     */
+    boolean hasLacrosChannel();
+    /**
+     * <pre>
+     * The channel of the Lacros Chrome browser running on a CrOS machine.
+     * </pre>
+     *
+     * <code>optional .metrics.SystemProfileProto.Channel lacros_channel = 20;</code>
+     * @return The lacrosChannel.
+     */
+    org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Channel getLacrosChannel();
+
+    /**
+     * <pre>
      * Map of Chrome TIDs running on the system when the profile was collected.
      * Each Chrome TID is mapped to its thread type.
      * </pre>
@@ -473,7 +568,7 @@ public final class SampledProfileProtos {
   }
   /**
    * <pre>
-   * Next tag: 18
+   * Next tag: 21
    * </pre>
    *
    * Protobuf type {@code metrics.SampledProfile}
@@ -484,6 +579,8 @@ public final class SampledProfileProtos {
       // @@protoc_insertion_point(message_implements:metrics.SampledProfile)
       SampledProfileOrBuilder {
     private SampledProfile() {
+      lacrosPids_ = emptyIntList();
+      lacrosVersion_ = "";
       cpuMaxFrequencyMhz_ = emptyIntList();
     }
     /**
@@ -997,6 +1094,271 @@ public final class SampledProfileProtos {
               processTypesValueConverter);
     }
 
+    public static final int LACROS_PIDS_FIELD_NUMBER = 18;
+    private com.google.protobuf.Internal.IntList lacrosPids_;
+    /**
+     * <pre>
+     * A list of pids that belong to Lacros binaries, which are a subset of the
+     * keys of the process_types above.
+     * </pre>
+     *
+     * <code>repeated uint32 lacros_pids = 18 [packed = true];</code>
+     * @return A list containing the lacrosPids.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getLacrosPidsList() {
+      return lacrosPids_;
+    }
+    /**
+     * <pre>
+     * A list of pids that belong to Lacros binaries, which are a subset of the
+     * keys of the process_types above.
+     * </pre>
+     *
+     * <code>repeated uint32 lacros_pids = 18 [packed = true];</code>
+     * @return The count of lacrosPids.
+     */
+    @java.lang.Override
+    public int getLacrosPidsCount() {
+      return lacrosPids_.size();
+    }
+    /**
+     * <pre>
+     * A list of pids that belong to Lacros binaries, which are a subset of the
+     * keys of the process_types above.
+     * </pre>
+     *
+     * <code>repeated uint32 lacros_pids = 18 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The lacrosPids at the given index.
+     */
+    @java.lang.Override
+    public int getLacrosPids(int index) {
+      return lacrosPids_.getInt(index);
+    }
+    private int lacrosPidsMemoizedSerializedSize = -1;
+    private void ensureLacrosPidsIsMutable() {
+      com.google.protobuf.Internal.IntList tmp = lacrosPids_;
+      if (!tmp.isModifiable()) {
+        lacrosPids_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(tmp);
+       }
+    }
+    /**
+     * <pre>
+     * A list of pids that belong to Lacros binaries, which are a subset of the
+     * keys of the process_types above.
+     * </pre>
+     *
+     * <code>repeated uint32 lacros_pids = 18 [packed = true];</code>
+     * @param index The index to set the value at.
+     * @param value The lacrosPids to set.
+     */
+    private void setLacrosPids(
+        int index, int value) {
+      ensureLacrosPidsIsMutable();
+      lacrosPids_.setInt(index, value);
+    }
+    /**
+     * <pre>
+     * A list of pids that belong to Lacros binaries, which are a subset of the
+     * keys of the process_types above.
+     * </pre>
+     *
+     * <code>repeated uint32 lacros_pids = 18 [packed = true];</code>
+     * @param value The lacrosPids to add.
+     */
+    private void addLacrosPids(int value) {
+      ensureLacrosPidsIsMutable();
+      lacrosPids_.addInt(value);
+    }
+    /**
+     * <pre>
+     * A list of pids that belong to Lacros binaries, which are a subset of the
+     * keys of the process_types above.
+     * </pre>
+     *
+     * <code>repeated uint32 lacros_pids = 18 [packed = true];</code>
+     * @param values The lacrosPids to add.
+     */
+    private void addAllLacrosPids(
+        java.lang.Iterable<? extends java.lang.Integer> values) {
+      ensureLacrosPidsIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, lacrosPids_);
+    }
+    /**
+     * <pre>
+     * A list of pids that belong to Lacros binaries, which are a subset of the
+     * keys of the process_types above.
+     * </pre>
+     *
+     * <code>repeated uint32 lacros_pids = 18 [packed = true];</code>
+     */
+    private void clearLacrosPids() {
+      lacrosPids_ = emptyIntList();
+    }
+
+    public static final int LACROS_VERSION_FIELD_NUMBER = 19;
+    private java.lang.String lacrosVersion_;
+    /**
+     * <pre>
+     * The version string of the Lacros Chrome browser running on a CrOS machine.
+     * It a 4-tuple of numbers separated by dots.
+     * Note: unlike the app_version in the system_profile.proto, this does not
+     * include any additional suffixes such as development build or bitness.
+     * This, and lacros_channel are only populated when lacros binaries are
+     * found in the running processes, i.e. when lacros_pids is not empty.
+     * </pre>
+     *
+     * <code>optional string lacros_version = 19;</code>
+     * @return Whether the lacrosVersion field is set.
+     */
+    @java.lang.Override
+    public boolean hasLacrosVersion() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <pre>
+     * The version string of the Lacros Chrome browser running on a CrOS machine.
+     * It a 4-tuple of numbers separated by dots.
+     * Note: unlike the app_version in the system_profile.proto, this does not
+     * include any additional suffixes such as development build or bitness.
+     * This, and lacros_channel are only populated when lacros binaries are
+     * found in the running processes, i.e. when lacros_pids is not empty.
+     * </pre>
+     *
+     * <code>optional string lacros_version = 19;</code>
+     * @return The lacrosVersion.
+     */
+    @java.lang.Override
+    public java.lang.String getLacrosVersion() {
+      return lacrosVersion_;
+    }
+    /**
+     * <pre>
+     * The version string of the Lacros Chrome browser running on a CrOS machine.
+     * It a 4-tuple of numbers separated by dots.
+     * Note: unlike the app_version in the system_profile.proto, this does not
+     * include any additional suffixes such as development build or bitness.
+     * This, and lacros_channel are only populated when lacros binaries are
+     * found in the running processes, i.e. when lacros_pids is not empty.
+     * </pre>
+     *
+     * <code>optional string lacros_version = 19;</code>
+     * @return The bytes for lacrosVersion.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getLacrosVersionBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(lacrosVersion_);
+    }
+    /**
+     * <pre>
+     * The version string of the Lacros Chrome browser running on a CrOS machine.
+     * It a 4-tuple of numbers separated by dots.
+     * Note: unlike the app_version in the system_profile.proto, this does not
+     * include any additional suffixes such as development build or bitness.
+     * This, and lacros_channel are only populated when lacros binaries are
+     * found in the running processes, i.e. when lacros_pids is not empty.
+     * </pre>
+     *
+     * <code>optional string lacros_version = 19;</code>
+     * @param value The lacrosVersion to set.
+     */
+    private void setLacrosVersion(
+        java.lang.String value) {
+      value.getClass();
+  bitField0_ |= 0x00000008;
+      lacrosVersion_ = value;
+    }
+    /**
+     * <pre>
+     * The version string of the Lacros Chrome browser running on a CrOS machine.
+     * It a 4-tuple of numbers separated by dots.
+     * Note: unlike the app_version in the system_profile.proto, this does not
+     * include any additional suffixes such as development build or bitness.
+     * This, and lacros_channel are only populated when lacros binaries are
+     * found in the running processes, i.e. when lacros_pids is not empty.
+     * </pre>
+     *
+     * <code>optional string lacros_version = 19;</code>
+     */
+    private void clearLacrosVersion() {
+      bitField0_ = (bitField0_ & ~0x00000008);
+      lacrosVersion_ = getDefaultInstance().getLacrosVersion();
+    }
+    /**
+     * <pre>
+     * The version string of the Lacros Chrome browser running on a CrOS machine.
+     * It a 4-tuple of numbers separated by dots.
+     * Note: unlike the app_version in the system_profile.proto, this does not
+     * include any additional suffixes such as development build or bitness.
+     * This, and lacros_channel are only populated when lacros binaries are
+     * found in the running processes, i.e. when lacros_pids is not empty.
+     * </pre>
+     *
+     * <code>optional string lacros_version = 19;</code>
+     * @param value The bytes for lacrosVersion to set.
+     */
+    private void setLacrosVersionBytes(
+        com.google.protobuf.ByteString value) {
+      lacrosVersion_ = value.toStringUtf8();
+      bitField0_ |= 0x00000008;
+    }
+
+    public static final int LACROS_CHANNEL_FIELD_NUMBER = 20;
+    private int lacrosChannel_;
+    /**
+     * <pre>
+     * The channel of the Lacros Chrome browser running on a CrOS machine.
+     * </pre>
+     *
+     * <code>optional .metrics.SystemProfileProto.Channel lacros_channel = 20;</code>
+     * @return Whether the lacrosChannel field is set.
+     */
+    @java.lang.Override
+    public boolean hasLacrosChannel() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <pre>
+     * The channel of the Lacros Chrome browser running on a CrOS machine.
+     * </pre>
+     *
+     * <code>optional .metrics.SystemProfileProto.Channel lacros_channel = 20;</code>
+     * @return The lacrosChannel.
+     */
+    @java.lang.Override
+    public org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Channel getLacrosChannel() {
+      org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Channel result = org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Channel.forNumber(lacrosChannel_);
+      return result == null ? org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Channel.CHANNEL_UNKNOWN : result;
+    }
+    /**
+     * <pre>
+     * The channel of the Lacros Chrome browser running on a CrOS machine.
+     * </pre>
+     *
+     * <code>optional .metrics.SystemProfileProto.Channel lacros_channel = 20;</code>
+     * @param value The lacrosChannel to set.
+     */
+    private void setLacrosChannel(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Channel value) {
+      lacrosChannel_ = value.getNumber();
+      bitField0_ |= 0x00000010;
+    }
+    /**
+     * <pre>
+     * The channel of the Lacros Chrome browser running on a CrOS machine.
+     * </pre>
+     *
+     * <code>optional .metrics.SystemProfileProto.Channel lacros_channel = 20;</code>
+     */
+    private void clearLacrosChannel() {
+      bitField0_ = (bitField0_ & ~0x00000010);
+      lacrosChannel_ = 0;
+    }
+
     public static final int THREAD_TYPES_FIELD_NUMBER = 14;
     private static final class ThreadTypesDefaultEntryHolder {
       static final com.google.protobuf.MapEntryLite<
@@ -1142,7 +1504,7 @@ public final class SampledProfileProtos {
      */
     @java.lang.Override
     public boolean hasMsAfterBoot() {
-      return ((bitField0_ & 0x00000008) != 0);
+      return ((bitField0_ & 0x00000020) != 0);
     }
     /**
      * <pre>
@@ -1165,7 +1527,7 @@ public final class SampledProfileProtos {
      * @param value The msAfterBoot to set.
      */
     private void setMsAfterBoot(long value) {
-      bitField0_ |= 0x00000008;
+      bitField0_ |= 0x00000020;
       msAfterBoot_ = value;
     }
     /**
@@ -1176,7 +1538,7 @@ public final class SampledProfileProtos {
      * <code>optional int64 ms_after_boot = 2;</code>
      */
     private void clearMsAfterBoot() {
-      bitField0_ = (bitField0_ & ~0x00000008);
+      bitField0_ = (bitField0_ & ~0x00000020);
       msAfterBoot_ = 0L;
     }
 
@@ -1192,7 +1554,7 @@ public final class SampledProfileProtos {
      */
     @java.lang.Override
     public boolean hasMsAfterLogin() {
-      return ((bitField0_ & 0x00000010) != 0);
+      return ((bitField0_ & 0x00000040) != 0);
     }
     /**
      * <pre>
@@ -1215,7 +1577,7 @@ public final class SampledProfileProtos {
      * @param value The msAfterLogin to set.
      */
     private void setMsAfterLogin(long value) {
-      bitField0_ |= 0x00000010;
+      bitField0_ |= 0x00000040;
       msAfterLogin_ = value;
     }
     /**
@@ -1226,7 +1588,7 @@ public final class SampledProfileProtos {
      * <code>optional int64 ms_after_login = 3;</code>
      */
     private void clearMsAfterLogin() {
-      bitField0_ = (bitField0_ & ~0x00000010);
+      bitField0_ = (bitField0_ & ~0x00000040);
       msAfterLogin_ = 0L;
     }
 
@@ -1243,7 +1605,7 @@ public final class SampledProfileProtos {
      */
     @java.lang.Override
     public boolean hasSuspendDurationMs() {
-      return ((bitField0_ & 0x00000020) != 0);
+      return ((bitField0_ & 0x00000080) != 0);
     }
     /**
      * <pre>
@@ -1268,7 +1630,7 @@ public final class SampledProfileProtos {
      * @param value The suspendDurationMs to set.
      */
     private void setSuspendDurationMs(long value) {
-      bitField0_ |= 0x00000020;
+      bitField0_ |= 0x00000080;
       suspendDurationMs_ = value;
     }
     /**
@@ -1280,7 +1642,7 @@ public final class SampledProfileProtos {
      * <code>optional int64 suspend_duration_ms = 5;</code>
      */
     private void clearSuspendDurationMs() {
-      bitField0_ = (bitField0_ & ~0x00000020);
+      bitField0_ = (bitField0_ & ~0x00000080);
       suspendDurationMs_ = 0L;
     }
 
@@ -1297,7 +1659,7 @@ public final class SampledProfileProtos {
      */
     @java.lang.Override
     public boolean hasMsAfterResume() {
-      return ((bitField0_ & 0x00000040) != 0);
+      return ((bitField0_ & 0x00000100) != 0);
     }
     /**
      * <pre>
@@ -1322,7 +1684,7 @@ public final class SampledProfileProtos {
      * @param value The msAfterResume to set.
      */
     private void setMsAfterResume(long value) {
-      bitField0_ |= 0x00000040;
+      bitField0_ |= 0x00000100;
       msAfterResume_ = value;
     }
     /**
@@ -1334,7 +1696,7 @@ public final class SampledProfileProtos {
      * <code>optional int64 ms_after_resume = 6;</code>
      */
     private void clearMsAfterResume() {
-      bitField0_ = (bitField0_ & ~0x00000040);
+      bitField0_ = (bitField0_ & ~0x00000100);
       msAfterResume_ = 0L;
     }
 
@@ -1351,7 +1713,7 @@ public final class SampledProfileProtos {
      */
     @java.lang.Override
     public boolean hasNumTabsRestored() {
-      return ((bitField0_ & 0x00000080) != 0);
+      return ((bitField0_ & 0x00000200) != 0);
     }
     /**
      * <pre>
@@ -1376,7 +1738,7 @@ public final class SampledProfileProtos {
      * @param value The numTabsRestored to set.
      */
     private void setNumTabsRestored(int value) {
-      bitField0_ |= 0x00000080;
+      bitField0_ |= 0x00000200;
       numTabsRestored_ = value;
     }
     /**
@@ -1388,7 +1750,7 @@ public final class SampledProfileProtos {
      * <code>optional int32 num_tabs_restored = 7;</code>
      */
     private void clearNumTabsRestored() {
-      bitField0_ = (bitField0_ & ~0x00000080);
+      bitField0_ = (bitField0_ & ~0x00000200);
       numTabsRestored_ = 0;
     }
 
@@ -1405,7 +1767,7 @@ public final class SampledProfileProtos {
      */
     @java.lang.Override
     public boolean hasMsAfterRestore() {
-      return ((bitField0_ & 0x00000100) != 0);
+      return ((bitField0_ & 0x00000400) != 0);
     }
     /**
      * <pre>
@@ -1430,7 +1792,7 @@ public final class SampledProfileProtos {
      * @param value The msAfterRestore to set.
      */
     private void setMsAfterRestore(long value) {
-      bitField0_ |= 0x00000100;
+      bitField0_ |= 0x00000400;
       msAfterRestore_ = value;
     }
     /**
@@ -1442,7 +1804,7 @@ public final class SampledProfileProtos {
      * <code>optional int64 ms_after_restore = 8;</code>
      */
     private void clearMsAfterRestore() {
-      bitField0_ = (bitField0_ & ~0x00000100);
+      bitField0_ = (bitField0_ & ~0x00000400);
       msAfterRestore_ = 0L;
     }
 
@@ -1457,7 +1819,7 @@ public final class SampledProfileProtos {
      */
     @java.lang.Override
     public boolean hasPerfData() {
-      return ((bitField0_ & 0x00000200) != 0);
+      return ((bitField0_ & 0x00000800) != 0);
     }
     /**
      * <pre>
@@ -1480,7 +1842,7 @@ public final class SampledProfileProtos {
     private void setPerfData(org.chromium.components.metrics.PerfDataProtos.PerfDataProto value) {
       value.getClass();
   perfData_ = value;
-      bitField0_ |= 0x00000200;
+      bitField0_ |= 0x00000800;
       }
     /**
      * <pre>
@@ -1499,7 +1861,7 @@ public final class SampledProfileProtos {
       } else {
         perfData_ = value;
       }
-      bitField0_ |= 0x00000200;
+      bitField0_ |= 0x00000800;
     }
     /**
      * <pre>
@@ -1509,7 +1871,7 @@ public final class SampledProfileProtos {
      * <code>optional .metrics.PerfDataProto perf_data = 4;</code>
      */
     private void clearPerfData() {  perfData_ = null;
-      bitField0_ = (bitField0_ & ~0x00000200);
+      bitField0_ = (bitField0_ & ~0x00000800);
     }
 
     public static final int CALL_STACK_PROFILE_FIELD_NUMBER = 9;
@@ -1523,7 +1885,7 @@ public final class SampledProfileProtos {
      */
     @java.lang.Override
     public boolean hasCallStackProfile() {
-      return ((bitField0_ & 0x00000400) != 0);
+      return ((bitField0_ & 0x00001000) != 0);
     }
     /**
      * <pre>
@@ -1546,7 +1908,7 @@ public final class SampledProfileProtos {
     private void setCallStackProfile(org.chromium.components.metrics.CallStackProfileProtos.CallStackProfile value) {
       value.getClass();
   callStackProfile_ = value;
-      bitField0_ |= 0x00000400;
+      bitField0_ |= 0x00001000;
       }
     /**
      * <pre>
@@ -1565,7 +1927,7 @@ public final class SampledProfileProtos {
       } else {
         callStackProfile_ = value;
       }
-      bitField0_ |= 0x00000400;
+      bitField0_ |= 0x00001000;
     }
     /**
      * <pre>
@@ -1575,7 +1937,7 @@ public final class SampledProfileProtos {
      * <code>optional .metrics.CallStackProfile call_stack_profile = 9;</code>
      */
     private void clearCallStackProfile() {  callStackProfile_ = null;
-      bitField0_ = (bitField0_ & ~0x00000400);
+      bitField0_ = (bitField0_ & ~0x00001000);
     }
 
     public static final int PERF_STAT_FIELD_NUMBER = 10;
@@ -1589,7 +1951,7 @@ public final class SampledProfileProtos {
      */
     @java.lang.Override
     public boolean hasPerfStat() {
-      return ((bitField0_ & 0x00000800) != 0);
+      return ((bitField0_ & 0x00002000) != 0);
     }
     /**
      * <pre>
@@ -1612,7 +1974,7 @@ public final class SampledProfileProtos {
     private void setPerfStat(org.chromium.components.metrics.PerfStat.PerfStatProto value) {
       value.getClass();
   perfStat_ = value;
-      bitField0_ |= 0x00000800;
+      bitField0_ |= 0x00002000;
       }
     /**
      * <pre>
@@ -1631,7 +1993,7 @@ public final class SampledProfileProtos {
       } else {
         perfStat_ = value;
       }
-      bitField0_ |= 0x00000800;
+      bitField0_ |= 0x00002000;
     }
     /**
      * <pre>
@@ -1641,7 +2003,7 @@ public final class SampledProfileProtos {
      * <code>optional .metrics.PerfStatProto perf_stat = 10;</code>
      */
     private void clearPerfStat() {  perfStat_ = null;
-      bitField0_ = (bitField0_ & ~0x00000800);
+      bitField0_ = (bitField0_ & ~0x00002000);
     }
 
     public static final int CPU_MAX_FREQUENCY_MHZ_FIELD_NUMBER = 15;
@@ -1785,7 +2147,7 @@ public final class SampledProfileProtos {
      */
     @java.lang.Override
     public boolean hasPsiCpuLast10SPct() {
-      return ((bitField0_ & 0x00001000) != 0);
+      return ((bitField0_ & 0x00004000) != 0);
     }
     /**
      * <pre>
@@ -1814,7 +2176,7 @@ public final class SampledProfileProtos {
      * @param value The psiCpuLast10sPct to set.
      */
     private void setPsiCpuLast10SPct(float value) {
-      bitField0_ |= 0x00001000;
+      bitField0_ |= 0x00004000;
       psiCpuLast10SPct_ = value;
     }
     /**
@@ -1828,7 +2190,7 @@ public final class SampledProfileProtos {
      * <code>optional float psi_cpu_last_10s_pct = 16;</code>
      */
     private void clearPsiCpuLast10SPct() {
-      bitField0_ = (bitField0_ & ~0x00001000);
+      bitField0_ = (bitField0_ & ~0x00004000);
       psiCpuLast10SPct_ = 0F;
     }
 
@@ -1845,7 +2207,7 @@ public final class SampledProfileProtos {
      */
     @java.lang.Override
     public boolean hasPsiCpuLast60SPct() {
-      return ((bitField0_ & 0x00002000) != 0);
+      return ((bitField0_ & 0x00008000) != 0);
     }
     /**
      * <pre>
@@ -1870,7 +2232,7 @@ public final class SampledProfileProtos {
      * @param value The psiCpuLast60sPct to set.
      */
     private void setPsiCpuLast60SPct(float value) {
-      bitField0_ |= 0x00002000;
+      bitField0_ |= 0x00008000;
       psiCpuLast60SPct_ = value;
     }
     /**
@@ -1882,7 +2244,7 @@ public final class SampledProfileProtos {
      * <code>optional float psi_cpu_last_60s_pct = 17;</code>
      */
     private void clearPsiCpuLast60SPct() {
-      bitField0_ = (bitField0_ & ~0x00002000);
+      bitField0_ = (bitField0_ & ~0x00008000);
       psiCpuLast60SPct_ = 0F;
     }
 
@@ -1969,7 +2331,7 @@ public final class SampledProfileProtos {
 
     /**
      * <pre>
-     * Next tag: 18
+     * Next tag: 21
      * </pre>
      *
      * Protobuf type {@code metrics.SampledProfile}
@@ -2301,6 +2663,273 @@ public final class SampledProfileProtos {
           java.util.Map<java.lang.Integer, org.chromium.components.metrics.ExecutionContextProtos.Process> values) {
         copyOnWrite();
         instance.getMutableProcessTypesMap().putAll(values);
+        return this;
+      }
+
+      /**
+       * <pre>
+       * A list of pids that belong to Lacros binaries, which are a subset of the
+       * keys of the process_types above.
+       * </pre>
+       *
+       * <code>repeated uint32 lacros_pids = 18 [packed = true];</code>
+       * @return A list containing the lacrosPids.
+       */
+      @java.lang.Override
+      public java.util.List<java.lang.Integer>
+          getLacrosPidsList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getLacrosPidsList());
+      }
+      /**
+       * <pre>
+       * A list of pids that belong to Lacros binaries, which are a subset of the
+       * keys of the process_types above.
+       * </pre>
+       *
+       * <code>repeated uint32 lacros_pids = 18 [packed = true];</code>
+       * @return The count of lacrosPids.
+       */
+      @java.lang.Override
+      public int getLacrosPidsCount() {
+        return instance.getLacrosPidsCount();
+      }
+      /**
+       * <pre>
+       * A list of pids that belong to Lacros binaries, which are a subset of the
+       * keys of the process_types above.
+       * </pre>
+       *
+       * <code>repeated uint32 lacros_pids = 18 [packed = true];</code>
+       * @param index The index of the element to return.
+       * @return The lacrosPids at the given index.
+       */
+      @java.lang.Override
+      public int getLacrosPids(int index) {
+        return instance.getLacrosPids(index);
+      }
+      /**
+       * <pre>
+       * A list of pids that belong to Lacros binaries, which are a subset of the
+       * keys of the process_types above.
+       * </pre>
+       *
+       * <code>repeated uint32 lacros_pids = 18 [packed = true];</code>
+       * @param value The lacrosPids to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLacrosPids(
+          int index, int value) {
+        copyOnWrite();
+        instance.setLacrosPids(index, value);
+        return this;
+      }
+      /**
+       * <pre>
+       * A list of pids that belong to Lacros binaries, which are a subset of the
+       * keys of the process_types above.
+       * </pre>
+       *
+       * <code>repeated uint32 lacros_pids = 18 [packed = true];</code>
+       * @param value The lacrosPids to add.
+       * @return This builder for chaining.
+       */
+      public Builder addLacrosPids(int value) {
+        copyOnWrite();
+        instance.addLacrosPids(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * A list of pids that belong to Lacros binaries, which are a subset of the
+       * keys of the process_types above.
+       * </pre>
+       *
+       * <code>repeated uint32 lacros_pids = 18 [packed = true];</code>
+       * @param values The lacrosPids to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllLacrosPids(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        copyOnWrite();
+        instance.addAllLacrosPids(values);
+        return this;
+      }
+      /**
+       * <pre>
+       * A list of pids that belong to Lacros binaries, which are a subset of the
+       * keys of the process_types above.
+       * </pre>
+       *
+       * <code>repeated uint32 lacros_pids = 18 [packed = true];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLacrosPids() {
+        copyOnWrite();
+        instance.clearLacrosPids();
+        return this;
+      }
+
+      /**
+       * <pre>
+       * The version string of the Lacros Chrome browser running on a CrOS machine.
+       * It a 4-tuple of numbers separated by dots.
+       * Note: unlike the app_version in the system_profile.proto, this does not
+       * include any additional suffixes such as development build or bitness.
+       * This, and lacros_channel are only populated when lacros binaries are
+       * found in the running processes, i.e. when lacros_pids is not empty.
+       * </pre>
+       *
+       * <code>optional string lacros_version = 19;</code>
+       * @return Whether the lacrosVersion field is set.
+       */
+      @java.lang.Override
+      public boolean hasLacrosVersion() {
+        return instance.hasLacrosVersion();
+      }
+      /**
+       * <pre>
+       * The version string of the Lacros Chrome browser running on a CrOS machine.
+       * It a 4-tuple of numbers separated by dots.
+       * Note: unlike the app_version in the system_profile.proto, this does not
+       * include any additional suffixes such as development build or bitness.
+       * This, and lacros_channel are only populated when lacros binaries are
+       * found in the running processes, i.e. when lacros_pids is not empty.
+       * </pre>
+       *
+       * <code>optional string lacros_version = 19;</code>
+       * @return The lacrosVersion.
+       */
+      @java.lang.Override
+      public java.lang.String getLacrosVersion() {
+        return instance.getLacrosVersion();
+      }
+      /**
+       * <pre>
+       * The version string of the Lacros Chrome browser running on a CrOS machine.
+       * It a 4-tuple of numbers separated by dots.
+       * Note: unlike the app_version in the system_profile.proto, this does not
+       * include any additional suffixes such as development build or bitness.
+       * This, and lacros_channel are only populated when lacros binaries are
+       * found in the running processes, i.e. when lacros_pids is not empty.
+       * </pre>
+       *
+       * <code>optional string lacros_version = 19;</code>
+       * @return The bytes for lacrosVersion.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getLacrosVersionBytes() {
+        return instance.getLacrosVersionBytes();
+      }
+      /**
+       * <pre>
+       * The version string of the Lacros Chrome browser running on a CrOS machine.
+       * It a 4-tuple of numbers separated by dots.
+       * Note: unlike the app_version in the system_profile.proto, this does not
+       * include any additional suffixes such as development build or bitness.
+       * This, and lacros_channel are only populated when lacros binaries are
+       * found in the running processes, i.e. when lacros_pids is not empty.
+       * </pre>
+       *
+       * <code>optional string lacros_version = 19;</code>
+       * @param value The lacrosVersion to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLacrosVersion(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setLacrosVersion(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * The version string of the Lacros Chrome browser running on a CrOS machine.
+       * It a 4-tuple of numbers separated by dots.
+       * Note: unlike the app_version in the system_profile.proto, this does not
+       * include any additional suffixes such as development build or bitness.
+       * This, and lacros_channel are only populated when lacros binaries are
+       * found in the running processes, i.e. when lacros_pids is not empty.
+       * </pre>
+       *
+       * <code>optional string lacros_version = 19;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLacrosVersion() {
+        copyOnWrite();
+        instance.clearLacrosVersion();
+        return this;
+      }
+      /**
+       * <pre>
+       * The version string of the Lacros Chrome browser running on a CrOS machine.
+       * It a 4-tuple of numbers separated by dots.
+       * Note: unlike the app_version in the system_profile.proto, this does not
+       * include any additional suffixes such as development build or bitness.
+       * This, and lacros_channel are only populated when lacros binaries are
+       * found in the running processes, i.e. when lacros_pids is not empty.
+       * </pre>
+       *
+       * <code>optional string lacros_version = 19;</code>
+       * @param value The bytes for lacrosVersion to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLacrosVersionBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setLacrosVersionBytes(value);
+        return this;
+      }
+
+      /**
+       * <pre>
+       * The channel of the Lacros Chrome browser running on a CrOS machine.
+       * </pre>
+       *
+       * <code>optional .metrics.SystemProfileProto.Channel lacros_channel = 20;</code>
+       * @return Whether the lacrosChannel field is set.
+       */
+      @java.lang.Override
+      public boolean hasLacrosChannel() {
+        return instance.hasLacrosChannel();
+      }
+      /**
+       * <pre>
+       * The channel of the Lacros Chrome browser running on a CrOS machine.
+       * </pre>
+       *
+       * <code>optional .metrics.SystemProfileProto.Channel lacros_channel = 20;</code>
+       * @return The lacrosChannel.
+       */
+      @java.lang.Override
+      public org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Channel getLacrosChannel() {
+        return instance.getLacrosChannel();
+      }
+      /**
+       * <pre>
+       * The channel of the Lacros Chrome browser running on a CrOS machine.
+       * </pre>
+       *
+       * <code>optional .metrics.SystemProfileProto.Channel lacros_channel = 20;</code>
+       * @param value The enum numeric value on the wire for lacrosChannel to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLacrosChannel(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Channel value) {
+        copyOnWrite();
+        instance.setLacrosChannel(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * The channel of the Lacros Chrome browser running on a CrOS machine.
+       * </pre>
+       *
+       * <code>optional .metrics.SystemProfileProto.Channel lacros_channel = 20;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLacrosChannel() {
+        copyOnWrite();
+        instance.clearLacrosChannel();
         return this;
       }
 
@@ -3268,12 +3897,17 @@ public final class SampledProfileProtos {
               "cpuMaxFrequencyMhz_",
               "psiCpuLast10SPct_",
               "psiCpuLast60SPct_",
+              "lacrosPids_",
+              "lacrosVersion_",
+              "lacrosChannel_",
+              org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Channel.internalGetVerifier(),
             };
             java.lang.String info =
-                "\u0001\u0011\u0000\u0001\u0001\u0011\u0011\u0002\u0001\u0000\u0001\u100c\u0000\u0002" +
-                "\u1002\u0003\u0003\u1002\u0004\u0004\u1009\t\u0005\u1002\u0005\u0006\u1002\u0006" +
-                "\u0007\u1004\u0007\b\u1002\b\t\u1009\n\n\u1009\u000b\u000b\u100c\u0001\f\u100c\u0002" +
-                "\r\u0832\u000e\u0832\u000f\u001d\u0010\u1001\f\u0011\u1001\r";
+                "\u0001\u0014\u0000\u0001\u0001\u0014\u0014\u0002\u0002\u0000\u0001\u100c\u0000\u0002" +
+                "\u1002\u0005\u0003\u1002\u0006\u0004\u1009\u000b\u0005\u1002\u0007\u0006\u1002\b" +
+                "\u0007\u1004\t\b\u1002\n\t\u1009\f\n\u1009\r\u000b\u100c\u0001\f\u100c\u0002\r\u0832" +
+                "\u000e\u0832\u000f\u001d\u0010\u1001\u000e\u0011\u1001\u000f\u0012+\u0013\u1008\u0003" +
+                "\u0014\u100c\u0004";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

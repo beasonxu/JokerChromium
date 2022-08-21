@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface CacheStorageCache extends org.chromium.mojo.bindings.Interface {
 
@@ -23,52 +25,46 @@ public interface CacheStorageCache extends org.chromium.mojo.bindings.Interface 
 
     Manager<CacheStorageCache, CacheStorageCache.Proxy> MANAGER = CacheStorageCache_Internal.MANAGER;
 
-
     void match(
-FetchApiRequest request, CacheQueryOptions queryOptions, boolean inRelatedFetchEvent, long traceId, 
-MatchResponse callback);
+FetchApiRequest request, CacheQueryOptions queryOptions, boolean inRelatedFetchEvent, boolean inRangeFetchEvent, long traceId, 
+Match_Response callback);
 
-    interface MatchResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<MatchResult> { }
-
+    interface Match_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<MatchResult> { }
 
 
     void matchAll(
 FetchApiRequest request, CacheQueryOptions queryOptions, long traceId, 
-MatchAllResponse callback);
+MatchAll_Response callback);
 
-    interface MatchAllResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<MatchAllResult> { }
-
+    interface MatchAll_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<MatchAllResult> { }
 
 
     void getAllMatchedEntries(
 FetchApiRequest request, CacheQueryOptions queryOptions, long traceId, 
-GetAllMatchedEntriesResponse callback);
+GetAllMatchedEntries_Response callback);
 
-    interface GetAllMatchedEntriesResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<GetAllMatchedEntriesResult> { }
-
+    interface GetAllMatchedEntries_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<GetAllMatchedEntriesResult> { }
 
 
     void keys(
 FetchApiRequest request, CacheQueryOptions queryOptions, long traceId, 
-KeysResponse callback);
+Keys_Response callback);
 
-    interface KeysResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<CacheKeysResult> { }
-
+    interface Keys_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<CacheKeysResult> { }
 
 
     void batch(
 BatchOperation[] batchOperations, long traceId, 
-BatchResponse callback);
+Batch_Response callback);
 
-    interface BatchResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<CacheStorageVerboseError> { }
-
+    interface Batch_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<CacheStorageVerboseError> { }
 
 
     void writeSideData(
 org.chromium.url.mojom.Url url, org.chromium.mojo_base.mojom.Time expectedResponseTime, org.chromium.mojo_base.mojom.BigBuffer data, long traceId, 
-WriteSideDataResponse callback);
+WriteSideData_Response callback);
 
-    interface WriteSideDataResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
+    interface WriteSideData_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
 }

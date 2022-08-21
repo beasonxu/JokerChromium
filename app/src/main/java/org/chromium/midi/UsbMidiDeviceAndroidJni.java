@@ -1,15 +1,13 @@
 package org.chromium.midi;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class UsbMidiDeviceAndroidJni implements UsbMidiDeviceAndroid.Natives {
+class UsbMidiDeviceAndroidJni implements UsbMidiDeviceAndroid.Natives {
   private static UsbMidiDeviceAndroid.Natives testInstance;
 
   public static final JniStaticTestMocker<UsbMidiDeviceAndroid.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.midi.UsbMidiDeviceAndroid.Natives>() {

@@ -13,8 +13,24 @@
 
 package org.chromium.ui.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class MenuSourceType {
-    private static final boolean IS_EXTENSIBLE = false;
+    private static final boolean IS_EXTENSIBLE = true;
+    @IntDef({
+
+        MenuSourceType.NONE,
+        MenuSourceType.MOUSE,
+        MenuSourceType.KEYBOARD,
+        MenuSourceType.TOUCH,
+        MenuSourceType.TOUCH_EDIT_MENU,
+        MenuSourceType.LONG_PRESS,
+        MenuSourceType.LONG_TAP,
+        MenuSourceType.TOUCH_HANDLE,
+        MenuSourceType.STYLUS,
+        MenuSourceType.ADJUST_SELECTION,
+        MenuSourceType.ADJUST_SELECTION_RESET})
+    public @interface EnumType {}
 
     public static final int NONE = 0;
     public static final int MOUSE = 1;
@@ -29,6 +45,7 @@ public final class MenuSourceType {
     public static final int ADJUST_SELECTION_RESET = 10;
     public static final int MIN_VALUE = 0;
     public static final int MAX_VALUE = 10;
+    public static final int DEFAULT_VALUE = 0;
 
     public static boolean isKnownValue(int value) {
         return value >= 0 && value <= 10;
@@ -40,7 +57,10 @@ public final class MenuSourceType {
     }
 
     public static int toKnownValue(int value) {
-      return value;
+      if (isKnownValue(value)) {
+        return value;
+      }
+      return DEFAULT_VALUE;
     }
 
     private MenuSourceType() {}

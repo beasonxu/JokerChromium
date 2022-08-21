@@ -3,7 +3,6 @@ package org.chromium.chrome.browser.download;
 import java.lang.Integer;
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.Callback;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
@@ -12,9 +11,8 @@ import org.chromium.base.natives.GEN_JNI;
 import org.chromium.chrome.browser.profiles.Profile;
 import org.chromium.chrome.browser.profiles.ProfileKey;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class DownloadManagerServiceJni implements DownloadManagerService.Natives {
+class DownloadManagerServiceJni implements DownloadManagerService.Natives {
   private static DownloadManagerService.Natives testInstance;
 
   public static final JniStaticTestMocker<DownloadManagerService.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.download.DownloadManagerService.Natives>() {
@@ -83,12 +81,6 @@ final class DownloadManagerServiceJni implements DownloadManagerService.Natives 
   public void renameDownload(long nativeDownloadManagerService, DownloadManagerService caller,
       String downloadGuid, String targetName, Callback<Integer> callback, ProfileKey profileKey) {
     GEN_JNI.org_chromium_chrome_browser_download_DownloadManagerService_renameDownload(nativeDownloadManagerService, caller, downloadGuid, targetName, callback, profileKey);
-  }
-
-  @Override
-  public void changeSchedule(long nativeDownloadManagerService, DownloadManagerService caller,
-      String downloadGuid, boolean onlyOnWifi, long startTimeMs, ProfileKey profileKey) {
-    GEN_JNI.org_chromium_chrome_browser_download_DownloadManagerService_changeSchedule(nativeDownloadManagerService, caller, downloadGuid, onlyOnWifi, startTimeMs, profileKey);
   }
 
   @Override

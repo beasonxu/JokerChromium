@@ -120,6 +120,83 @@ public final class ShoppingPersistedTabData {
      * @return The lastPriceChangeTimeMs.
      */
     long getLastPriceChangeTimeMs();
+
+    /**
+     * <pre>
+     * The id of the main offer on the page.
+     * </pre>
+     *
+     * <code>optional string main_offer_id = 6;</code>
+     * @return Whether the mainOfferId field is set.
+     */
+    boolean hasMainOfferId();
+    /**
+     * <pre>
+     * The id of the main offer on the page.
+     * </pre>
+     *
+     * <code>optional string main_offer_id = 6;</code>
+     * @return The mainOfferId.
+     */
+    java.lang.String getMainOfferId();
+    /**
+     * <pre>
+     * The id of the main offer on the page.
+     * </pre>
+     *
+     * <code>optional string main_offer_id = 6;</code>
+     * @return The bytes for mainOfferId.
+     */
+    com.google.protobuf.ByteString
+        getMainOfferIdBytes();
+
+    /**
+     * <pre>
+     * The gurl associated with the price drop.
+     * </pre>
+     *
+     * <code>optional string serialized_gurl = 7;</code>
+     * @return Whether the serializedGurl field is set.
+     */
+    boolean hasSerializedGurl();
+    /**
+     * <pre>
+     * The gurl associated with the price drop.
+     * </pre>
+     *
+     * <code>optional string serialized_gurl = 7;</code>
+     * @return The serializedGurl.
+     */
+    java.lang.String getSerializedGurl();
+    /**
+     * <pre>
+     * The gurl associated with the price drop.
+     * </pre>
+     *
+     * <code>optional string serialized_gurl = 7;</code>
+     * @return The bytes for serializedGurl.
+     */
+    com.google.protobuf.ByteString
+        getSerializedGurlBytes();
+
+    /**
+     * <pre>
+     * Whether the user has seen the current price drop in the tab switcher grid.
+     * </pre>
+     *
+     * <code>optional bool is_current_price_drop_seen = 8;</code>
+     * @return Whether the isCurrentPriceDropSeen field is set.
+     */
+    boolean hasIsCurrentPriceDropSeen();
+    /**
+     * <pre>
+     * Whether the user has seen the current price drop in the tab switcher grid.
+     * </pre>
+     *
+     * <code>optional bool is_current_price_drop_seen = 8;</code>
+     * @return The isCurrentPriceDropSeen.
+     */
+    boolean getIsCurrentPriceDropSeen();
   }
   /**
    * Protobuf type {@code org.chromium.chrome.browser.tab.proto.ShoppingPersistedTabDataProto}
@@ -131,6 +208,8 @@ public final class ShoppingPersistedTabData {
       ShoppingPersistedTabDataProtoOrBuilder {
     private ShoppingPersistedTabDataProto() {
       priceCurrencyCode_ = "";
+      mainOfferId_ = "";
+      serializedGurl_ = "";
     }
     private int bitField0_;
     public static final int PRICE_MICROS_FIELD_NUMBER = 1;
@@ -417,6 +496,212 @@ public final class ShoppingPersistedTabData {
     private void clearLastPriceChangeTimeMs() {
       bitField0_ = (bitField0_ & ~0x00000010);
       lastPriceChangeTimeMs_ = 0L;
+    }
+
+    public static final int MAIN_OFFER_ID_FIELD_NUMBER = 6;
+    private java.lang.String mainOfferId_;
+    /**
+     * <pre>
+     * The id of the main offer on the page.
+     * </pre>
+     *
+     * <code>optional string main_offer_id = 6;</code>
+     * @return Whether the mainOfferId field is set.
+     */
+    @java.lang.Override
+    public boolean hasMainOfferId() {
+      return ((bitField0_ & 0x00000020) != 0);
+    }
+    /**
+     * <pre>
+     * The id of the main offer on the page.
+     * </pre>
+     *
+     * <code>optional string main_offer_id = 6;</code>
+     * @return The mainOfferId.
+     */
+    @java.lang.Override
+    public java.lang.String getMainOfferId() {
+      return mainOfferId_;
+    }
+    /**
+     * <pre>
+     * The id of the main offer on the page.
+     * </pre>
+     *
+     * <code>optional string main_offer_id = 6;</code>
+     * @return The bytes for mainOfferId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getMainOfferIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(mainOfferId_);
+    }
+    /**
+     * <pre>
+     * The id of the main offer on the page.
+     * </pre>
+     *
+     * <code>optional string main_offer_id = 6;</code>
+     * @param value The mainOfferId to set.
+     */
+    private void setMainOfferId(
+        java.lang.String value) {
+      value.getClass();
+  bitField0_ |= 0x00000020;
+      mainOfferId_ = value;
+    }
+    /**
+     * <pre>
+     * The id of the main offer on the page.
+     * </pre>
+     *
+     * <code>optional string main_offer_id = 6;</code>
+     */
+    private void clearMainOfferId() {
+      bitField0_ = (bitField0_ & ~0x00000020);
+      mainOfferId_ = getDefaultInstance().getMainOfferId();
+    }
+    /**
+     * <pre>
+     * The id of the main offer on the page.
+     * </pre>
+     *
+     * <code>optional string main_offer_id = 6;</code>
+     * @param value The bytes for mainOfferId to set.
+     */
+    private void setMainOfferIdBytes(
+        com.google.protobuf.ByteString value) {
+      mainOfferId_ = value.toStringUtf8();
+      bitField0_ |= 0x00000020;
+    }
+
+    public static final int SERIALIZED_GURL_FIELD_NUMBER = 7;
+    private java.lang.String serializedGurl_;
+    /**
+     * <pre>
+     * The gurl associated with the price drop.
+     * </pre>
+     *
+     * <code>optional string serialized_gurl = 7;</code>
+     * @return Whether the serializedGurl field is set.
+     */
+    @java.lang.Override
+    public boolean hasSerializedGurl() {
+      return ((bitField0_ & 0x00000040) != 0);
+    }
+    /**
+     * <pre>
+     * The gurl associated with the price drop.
+     * </pre>
+     *
+     * <code>optional string serialized_gurl = 7;</code>
+     * @return The serializedGurl.
+     */
+    @java.lang.Override
+    public java.lang.String getSerializedGurl() {
+      return serializedGurl_;
+    }
+    /**
+     * <pre>
+     * The gurl associated with the price drop.
+     * </pre>
+     *
+     * <code>optional string serialized_gurl = 7;</code>
+     * @return The bytes for serializedGurl.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSerializedGurlBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(serializedGurl_);
+    }
+    /**
+     * <pre>
+     * The gurl associated with the price drop.
+     * </pre>
+     *
+     * <code>optional string serialized_gurl = 7;</code>
+     * @param value The serializedGurl to set.
+     */
+    private void setSerializedGurl(
+        java.lang.String value) {
+      value.getClass();
+  bitField0_ |= 0x00000040;
+      serializedGurl_ = value;
+    }
+    /**
+     * <pre>
+     * The gurl associated with the price drop.
+     * </pre>
+     *
+     * <code>optional string serialized_gurl = 7;</code>
+     */
+    private void clearSerializedGurl() {
+      bitField0_ = (bitField0_ & ~0x00000040);
+      serializedGurl_ = getDefaultInstance().getSerializedGurl();
+    }
+    /**
+     * <pre>
+     * The gurl associated with the price drop.
+     * </pre>
+     *
+     * <code>optional string serialized_gurl = 7;</code>
+     * @param value The bytes for serializedGurl to set.
+     */
+    private void setSerializedGurlBytes(
+        com.google.protobuf.ByteString value) {
+      serializedGurl_ = value.toStringUtf8();
+      bitField0_ |= 0x00000040;
+    }
+
+    public static final int IS_CURRENT_PRICE_DROP_SEEN_FIELD_NUMBER = 8;
+    private boolean isCurrentPriceDropSeen_;
+    /**
+     * <pre>
+     * Whether the user has seen the current price drop in the tab switcher grid.
+     * </pre>
+     *
+     * <code>optional bool is_current_price_drop_seen = 8;</code>
+     * @return Whether the isCurrentPriceDropSeen field is set.
+     */
+    @java.lang.Override
+    public boolean hasIsCurrentPriceDropSeen() {
+      return ((bitField0_ & 0x00000080) != 0);
+    }
+    /**
+     * <pre>
+     * Whether the user has seen the current price drop in the tab switcher grid.
+     * </pre>
+     *
+     * <code>optional bool is_current_price_drop_seen = 8;</code>
+     * @return The isCurrentPriceDropSeen.
+     */
+    @java.lang.Override
+    public boolean getIsCurrentPriceDropSeen() {
+      return isCurrentPriceDropSeen_;
+    }
+    /**
+     * <pre>
+     * Whether the user has seen the current price drop in the tab switcher grid.
+     * </pre>
+     *
+     * <code>optional bool is_current_price_drop_seen = 8;</code>
+     * @param value The isCurrentPriceDropSeen to set.
+     */
+    private void setIsCurrentPriceDropSeen(boolean value) {
+      bitField0_ |= 0x00000080;
+      isCurrentPriceDropSeen_ = value;
+    }
+    /**
+     * <pre>
+     * Whether the user has seen the current price drop in the tab switcher grid.
+     * </pre>
+     *
+     * <code>optional bool is_current_price_drop_seen = 8;</code>
+     */
+    private void clearIsCurrentPriceDropSeen() {
+      bitField0_ = (bitField0_ & ~0x00000080);
+      isCurrentPriceDropSeen_ = false;
     }
 
     public static org.chromium.chrome.browser.tab.proto.ShoppingPersistedTabData.ShoppingPersistedTabDataProto parseFrom(
@@ -811,6 +1096,220 @@ public final class ShoppingPersistedTabData {
         return this;
       }
 
+      /**
+       * <pre>
+       * The id of the main offer on the page.
+       * </pre>
+       *
+       * <code>optional string main_offer_id = 6;</code>
+       * @return Whether the mainOfferId field is set.
+       */
+      @java.lang.Override
+      public boolean hasMainOfferId() {
+        return instance.hasMainOfferId();
+      }
+      /**
+       * <pre>
+       * The id of the main offer on the page.
+       * </pre>
+       *
+       * <code>optional string main_offer_id = 6;</code>
+       * @return The mainOfferId.
+       */
+      @java.lang.Override
+      public java.lang.String getMainOfferId() {
+        return instance.getMainOfferId();
+      }
+      /**
+       * <pre>
+       * The id of the main offer on the page.
+       * </pre>
+       *
+       * <code>optional string main_offer_id = 6;</code>
+       * @return The bytes for mainOfferId.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getMainOfferIdBytes() {
+        return instance.getMainOfferIdBytes();
+      }
+      /**
+       * <pre>
+       * The id of the main offer on the page.
+       * </pre>
+       *
+       * <code>optional string main_offer_id = 6;</code>
+       * @param value The mainOfferId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMainOfferId(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setMainOfferId(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * The id of the main offer on the page.
+       * </pre>
+       *
+       * <code>optional string main_offer_id = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMainOfferId() {
+        copyOnWrite();
+        instance.clearMainOfferId();
+        return this;
+      }
+      /**
+       * <pre>
+       * The id of the main offer on the page.
+       * </pre>
+       *
+       * <code>optional string main_offer_id = 6;</code>
+       * @param value The bytes for mainOfferId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMainOfferIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setMainOfferIdBytes(value);
+        return this;
+      }
+
+      /**
+       * <pre>
+       * The gurl associated with the price drop.
+       * </pre>
+       *
+       * <code>optional string serialized_gurl = 7;</code>
+       * @return Whether the serializedGurl field is set.
+       */
+      @java.lang.Override
+      public boolean hasSerializedGurl() {
+        return instance.hasSerializedGurl();
+      }
+      /**
+       * <pre>
+       * The gurl associated with the price drop.
+       * </pre>
+       *
+       * <code>optional string serialized_gurl = 7;</code>
+       * @return The serializedGurl.
+       */
+      @java.lang.Override
+      public java.lang.String getSerializedGurl() {
+        return instance.getSerializedGurl();
+      }
+      /**
+       * <pre>
+       * The gurl associated with the price drop.
+       * </pre>
+       *
+       * <code>optional string serialized_gurl = 7;</code>
+       * @return The bytes for serializedGurl.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getSerializedGurlBytes() {
+        return instance.getSerializedGurlBytes();
+      }
+      /**
+       * <pre>
+       * The gurl associated with the price drop.
+       * </pre>
+       *
+       * <code>optional string serialized_gurl = 7;</code>
+       * @param value The serializedGurl to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSerializedGurl(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setSerializedGurl(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * The gurl associated with the price drop.
+       * </pre>
+       *
+       * <code>optional string serialized_gurl = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSerializedGurl() {
+        copyOnWrite();
+        instance.clearSerializedGurl();
+        return this;
+      }
+      /**
+       * <pre>
+       * The gurl associated with the price drop.
+       * </pre>
+       *
+       * <code>optional string serialized_gurl = 7;</code>
+       * @param value The bytes for serializedGurl to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSerializedGurlBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setSerializedGurlBytes(value);
+        return this;
+      }
+
+      /**
+       * <pre>
+       * Whether the user has seen the current price drop in the tab switcher grid.
+       * </pre>
+       *
+       * <code>optional bool is_current_price_drop_seen = 8;</code>
+       * @return Whether the isCurrentPriceDropSeen field is set.
+       */
+      @java.lang.Override
+      public boolean hasIsCurrentPriceDropSeen() {
+        return instance.hasIsCurrentPriceDropSeen();
+      }
+      /**
+       * <pre>
+       * Whether the user has seen the current price drop in the tab switcher grid.
+       * </pre>
+       *
+       * <code>optional bool is_current_price_drop_seen = 8;</code>
+       * @return The isCurrentPriceDropSeen.
+       */
+      @java.lang.Override
+      public boolean getIsCurrentPriceDropSeen() {
+        return instance.getIsCurrentPriceDropSeen();
+      }
+      /**
+       * <pre>
+       * Whether the user has seen the current price drop in the tab switcher grid.
+       * </pre>
+       *
+       * <code>optional bool is_current_price_drop_seen = 8;</code>
+       * @param value The isCurrentPriceDropSeen to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIsCurrentPriceDropSeen(boolean value) {
+        copyOnWrite();
+        instance.setIsCurrentPriceDropSeen(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Whether the user has seen the current price drop in the tab switcher grid.
+       * </pre>
+       *
+       * <code>optional bool is_current_price_drop_seen = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearIsCurrentPriceDropSeen() {
+        copyOnWrite();
+        instance.clearIsCurrentPriceDropSeen();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:org.chromium.chrome.browser.tab.proto.ShoppingPersistedTabDataProto)
     }
     @java.lang.Override
@@ -833,10 +1332,14 @@ public final class ShoppingPersistedTabData {
               "priceCurrencyCode_",
               "lastUpdatedMs_",
               "lastPriceChangeTimeMs_",
+              "mainOfferId_",
+              "serializedGurl_",
+              "isCurrentPriceDropSeen_",
             };
             java.lang.String info =
-                "\u0001\u0005\u0000\u0001\u0001\u0005\u0005\u0000\u0000\u0000\u0001\u1002\u0000\u0002" +
-                "\u1002\u0001\u0003\u1008\u0002\u0004\u1002\u0003\u0005\u1002\u0004";
+                "\u0001\b\u0000\u0001\u0001\b\b\u0000\u0000\u0000\u0001\u1002\u0000\u0002\u1002\u0001" +
+                "\u0003\u1008\u0002\u0004\u1002\u0003\u0005\u1002\u0004\u0006\u1008\u0005\u0007\u1008" +
+                "\u0006\b\u1007\u0007";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

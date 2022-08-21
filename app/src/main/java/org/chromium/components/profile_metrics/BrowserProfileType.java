@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -18,7 +18,7 @@ import java.lang.annotation.RetentionPolicy;
 @IntDef({
     BrowserProfileType.REGULAR, BrowserProfileType.INCOGNITO, BrowserProfileType.GUEST,
     BrowserProfileType.SYSTEM, BrowserProfileType.OTHER_OFF_THE_RECORD_PROFILE,
-    BrowserProfileType.EPHEMERAL_GUEST, BrowserProfileType.MAX_VALUE
+    BrowserProfileType.DEPRECATED_EPHEMERAL_GUEST, BrowserProfileType.MAX_VALUE
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface BrowserProfileType {
@@ -27,6 +27,6 @@ public @interface BrowserProfileType {
   int GUEST = 2;
   int SYSTEM = 3;
   int OTHER_OFF_THE_RECORD_PROFILE = 4;
-  int EPHEMERAL_GUEST = 5;
-  int MAX_VALUE = EPHEMERAL_GUEST;
+  int DEPRECATED_EPHEMERAL_GUEST = 5;
+  int MAX_VALUE = DEPRECATED_EPHEMERAL_GUEST;
 }

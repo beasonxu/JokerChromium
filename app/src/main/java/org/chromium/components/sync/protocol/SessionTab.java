@@ -846,7 +846,7 @@ public  final class SessionTab extends
   public static final int BROWSER_TYPE_FIELD_NUMBER = 13;
   private int browserType_;
   /**
-   * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 13;</code>
+   * <code>optional .sync_pb.SyncEnums.BrowserType browser_type = 13;</code>
    * @return Whether the browserType field is set.
    */
   @java.lang.Override
@@ -854,24 +854,24 @@ public  final class SessionTab extends
     return ((bitField0_ & 0x00000200) != 0);
   }
   /**
-   * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 13;</code>
+   * <code>optional .sync_pb.SyncEnums.BrowserType browser_type = 13;</code>
    * @return The browserType.
    */
   @java.lang.Override
-  public org.chromium.components.sync.protocol.SessionWindow.BrowserType getBrowserType() {
-    org.chromium.components.sync.protocol.SessionWindow.BrowserType result = org.chromium.components.sync.protocol.SessionWindow.BrowserType.forNumber(browserType_);
-    return result == null ? org.chromium.components.sync.protocol.SessionWindow.BrowserType.TYPE_TABBED : result;
+  public org.chromium.components.sync.protocol.SyncEnums.BrowserType getBrowserType() {
+    org.chromium.components.sync.protocol.SyncEnums.BrowserType result = org.chromium.components.sync.protocol.SyncEnums.BrowserType.forNumber(browserType_);
+    return result == null ? org.chromium.components.sync.protocol.SyncEnums.BrowserType.TYPE_TABBED : result;
   }
   /**
-   * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 13;</code>
+   * <code>optional .sync_pb.SyncEnums.BrowserType browser_type = 13;</code>
    * @param value The browserType to set.
    */
-  private void setBrowserType(org.chromium.components.sync.protocol.SessionWindow.BrowserType value) {
+  private void setBrowserType(org.chromium.components.sync.protocol.SyncEnums.BrowserType value) {
     browserType_ = value.getNumber();
     bitField0_ |= 0x00000200;
   }
   /**
-   * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 13;</code>
+   * <code>optional .sync_pb.SyncEnums.BrowserType browser_type = 13;</code>
    */
   private void clearBrowserType() {
     bitField0_ = (bitField0_ & ~0x00000200);
@@ -1743,7 +1743,7 @@ public  final class SessionTab extends
     }
 
     /**
-     * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 13;</code>
+     * <code>optional .sync_pb.SyncEnums.BrowserType browser_type = 13;</code>
      * @return Whether the browserType field is set.
      */
     @java.lang.Override
@@ -1751,25 +1751,25 @@ public  final class SessionTab extends
       return instance.hasBrowserType();
     }
     /**
-     * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 13;</code>
+     * <code>optional .sync_pb.SyncEnums.BrowserType browser_type = 13;</code>
      * @return The browserType.
      */
     @java.lang.Override
-    public org.chromium.components.sync.protocol.SessionWindow.BrowserType getBrowserType() {
+    public org.chromium.components.sync.protocol.SyncEnums.BrowserType getBrowserType() {
       return instance.getBrowserType();
     }
     /**
-     * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 13;</code>
+     * <code>optional .sync_pb.SyncEnums.BrowserType browser_type = 13;</code>
      * @param value The enum numeric value on the wire for browserType to set.
      * @return This builder for chaining.
      */
-    public Builder setBrowserType(org.chromium.components.sync.protocol.SessionWindow.BrowserType value) {
+    public Builder setBrowserType(org.chromium.components.sync.protocol.SyncEnums.BrowserType value) {
       copyOnWrite();
       instance.setBrowserType(value);
       return this;
     }
     /**
-     * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 13;</code>
+     * <code>optional .sync_pb.SyncEnums.BrowserType browser_type = 13;</code>
      * @return This builder for chaining.
      */
     public Builder clearBrowserType() {
@@ -1809,7 +1809,7 @@ public  final class SessionTab extends
             "faviconSource_",
             "variationId_",
             "browserType_",
-            org.chromium.components.sync.protocol.SessionWindow.BrowserType.internalGetVerifier(),
+            org.chromium.components.sync.protocol.SyncEnums.BrowserType.internalGetVerifier(),
           };
           java.lang.String info =
               "\u0001\f\u0000\u0001\u0001\r\f\u0000\u0002\u0000\u0001\u1004\u0000\u0002\u1004\u0001" +

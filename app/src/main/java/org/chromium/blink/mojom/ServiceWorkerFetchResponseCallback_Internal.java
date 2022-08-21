@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class ServiceWorkerFetchResponseCallback_Internal {
 
@@ -104,9 +106,11 @@ FetchApiResponse response, ServiceWorkerStreamHandle bodyAsStream, ServiceWorker
 
         @Override
         public void onFallback(
-ServiceWorkerFetchEventTiming timing) {
+org.chromium.network.mojom.DataElementChunkedDataPipe requestBody, ServiceWorkerFetchEventTiming timing) {
 
             ServiceWorkerFetchResponseCallbackOnFallbackParams _message = new ServiceWorkerFetchResponseCallbackOnFallbackParams();
+
+            _message.requestBody = requestBody;
 
             _message.timing = timing;
 
@@ -181,7 +185,7 @@ ServiceWorkerFetchEventTiming timing) {
                         ServiceWorkerFetchResponseCallbackOnFallbackParams data =
                                 ServiceWorkerFetchResponseCallbackOnFallbackParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().onFallback(data.timing);
+                        getImpl().onFallback(data.requestBody, data.timing);
                         return true;
                     }
 
@@ -387,9 +391,10 @@ ServiceWorkerFetchEventTiming timing) {
     
     static final class ServiceWorkerFetchResponseCallbackOnFallbackParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.network.mojom.DataElementChunkedDataPipe requestBody;
         public ServiceWorkerFetchEventTiming timing;
 
         private ServiceWorkerFetchResponseCallbackOnFallbackParams(int version) {
@@ -427,7 +432,12 @@ ServiceWorkerFetchEventTiming timing) {
                 result = new ServiceWorkerFetchResponseCallbackOnFallbackParams(elementsOrVersion);
                     {
                         
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, true);
+                    result.requestBody = org.chromium.network.mojom.DataElementChunkedDataPipe.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
                     result.timing = ServiceWorkerFetchEventTiming.decode(decoder1);
                     }
 
@@ -442,7 +452,9 @@ ServiceWorkerFetchEventTiming timing) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.timing, 8, false);
+            encoder0.encode(this.requestBody, 8, true);
+            
+            encoder0.encode(this.timing, 16, false);
         }
     }
 

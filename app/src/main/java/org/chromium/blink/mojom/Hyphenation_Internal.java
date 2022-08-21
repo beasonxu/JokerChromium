@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class Hyphenation_Internal {
 
@@ -61,7 +63,7 @@ class Hyphenation_Internal {
         @Override
         public void openDictionary(
 String locale, 
-OpenDictionaryResponse callback) {
+OpenDictionary_Response callback) {
 
             HyphenationOpenDictionaryParams _message = new HyphenationOpenDictionaryParams();
 
@@ -292,9 +294,9 @@ OpenDictionaryResponse callback) {
 
     static class HyphenationOpenDictionaryResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Hyphenation.OpenDictionaryResponse mCallback;
+        private final Hyphenation.OpenDictionary_Response mCallback;
 
-        HyphenationOpenDictionaryResponseParamsForwardToCallback(Hyphenation.OpenDictionaryResponse callback) {
+        HyphenationOpenDictionaryResponseParamsForwardToCallback(Hyphenation.OpenDictionary_Response callback) {
             this.mCallback = callback;
         }
 
@@ -319,7 +321,7 @@ OpenDictionaryResponse callback) {
         }
     }
 
-    static class HyphenationOpenDictionaryResponseParamsProxyToResponder implements Hyphenation.OpenDictionaryResponse {
+    static class HyphenationOpenDictionaryResponseParamsProxyToResponder implements Hyphenation.OpenDictionary_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

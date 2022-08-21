@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface TextSuggestionHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,15 +25,12 @@ public interface TextSuggestionHost extends org.chromium.mojo.bindings.Interface
 
     Manager<TextSuggestionHost, TextSuggestionHost.Proxy> MANAGER = TextSuggestionHost_Internal.MANAGER;
 
-
     void startSuggestionMenuTimer(
 );
 
 
-
     void showSpellCheckSuggestionMenu(
 double caretX, double caretY, String markedText, SpellCheckSuggestion[] suggestions);
-
 
 
     void showTextSuggestionMenu(

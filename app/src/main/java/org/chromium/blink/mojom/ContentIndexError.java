@@ -13,8 +13,17 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ContentIndexError {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ContentIndexError.NONE,
+        ContentIndexError.INVALID_PARAMETER,
+        ContentIndexError.STORAGE_ERROR,
+        ContentIndexError.NO_SERVICE_WORKER})
+    public @interface EnumType {}
 
     public static final int NONE = 0;
     public static final int INVALID_PARAMETER = 1;

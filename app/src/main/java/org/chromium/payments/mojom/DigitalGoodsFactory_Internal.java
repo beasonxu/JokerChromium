@@ -13,6 +13,8 @@
 
 package org.chromium.payments.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class DigitalGoodsFactory_Internal {
 
@@ -61,7 +63,7 @@ class DigitalGoodsFactory_Internal {
         @Override
         public void createDigitalGoods(
 String paymentMethod, 
-CreateDigitalGoodsResponse callback) {
+CreateDigitalGoods_Response callback) {
 
             DigitalGoodsFactoryCreateDigitalGoodsParams _message = new DigitalGoodsFactoryCreateDigitalGoodsParams();
 
@@ -300,9 +302,9 @@ CreateDigitalGoodsResponse callback) {
 
     static class DigitalGoodsFactoryCreateDigitalGoodsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final DigitalGoodsFactory.CreateDigitalGoodsResponse mCallback;
+        private final DigitalGoodsFactory.CreateDigitalGoods_Response mCallback;
 
-        DigitalGoodsFactoryCreateDigitalGoodsResponseParamsForwardToCallback(DigitalGoodsFactory.CreateDigitalGoodsResponse callback) {
+        DigitalGoodsFactoryCreateDigitalGoodsResponseParamsForwardToCallback(DigitalGoodsFactory.CreateDigitalGoods_Response callback) {
             this.mCallback = callback;
         }
 
@@ -327,7 +329,7 @@ CreateDigitalGoodsResponse callback) {
         }
     }
 
-    static class DigitalGoodsFactoryCreateDigitalGoodsResponseParamsProxyToResponder implements DigitalGoodsFactory.CreateDigitalGoodsResponse {
+    static class DigitalGoodsFactoryCreateDigitalGoodsResponseParamsProxyToResponder implements DigitalGoodsFactory.CreateDigitalGoods_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

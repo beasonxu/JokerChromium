@@ -2,16 +2,14 @@ package org.chromium.chrome.browser.webapps;
 
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.content_public.browser.WebContents;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class WebApkUpdateDataFetcherJni implements WebApkUpdateDataFetcher.Natives {
+class WebApkUpdateDataFetcherJni implements WebApkUpdateDataFetcher.Natives {
   private static WebApkUpdateDataFetcher.Natives testInstance;
 
   public static final JniStaticTestMocker<WebApkUpdateDataFetcher.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.webapps.WebApkUpdateDataFetcher.Natives>() {
@@ -26,8 +24,9 @@ final class WebApkUpdateDataFetcherJni implements WebApkUpdateDataFetcher.Native
   };
 
   @Override
-  public long initialize(WebApkUpdateDataFetcher caller, String scope, String webManifestUrl) {
-    return (long)GEN_JNI.org_chromium_chrome_browser_webapps_WebApkUpdateDataFetcher_initialize(caller, scope, webManifestUrl);
+  public long initialize(WebApkUpdateDataFetcher caller, String startUrl, String scope,
+      String webManifestUrl, String webManifestId) {
+    return (long)GEN_JNI.org_chromium_chrome_browser_webapps_WebApkUpdateDataFetcher_initialize(caller, startUrl, scope, webManifestUrl, webManifestId);
   }
 
   @Override

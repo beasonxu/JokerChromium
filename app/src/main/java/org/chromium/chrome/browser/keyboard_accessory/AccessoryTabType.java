@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -17,7 +17,7 @@ import java.lang.annotation.RetentionPolicy;
 
 @IntDef({
     AccessoryTabType.ALL, AccessoryTabType.PASSWORDS, AccessoryTabType.CREDIT_CARDS,
-    AccessoryTabType.ADDRESSES, AccessoryTabType.TOUCH_TO_FILL, AccessoryTabType.COUNT
+    AccessoryTabType.ADDRESSES, AccessoryTabType.OBSOLETE_TOUCH_TO_FILL, AccessoryTabType.COUNT
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface AccessoryTabType {
@@ -25,6 +25,6 @@ public @interface AccessoryTabType {
   int PASSWORDS = 1;
   int CREDIT_CARDS = 2;
   int ADDRESSES = 3;
-  int TOUCH_TO_FILL = 4;
+  int OBSOLETE_TOUCH_TO_FILL = 4;
   int COUNT = 5;
 }

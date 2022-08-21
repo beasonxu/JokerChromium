@@ -1,10 +1,12 @@
 package org.chromium.chrome.browser.customtabs;
 
+import android.app.Activity;
+import android.os.Bundle;
 import dagger.internal.Factory;
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 import javax.inject.Provider;
-import org.chromium.chrome.browser.app.ChromeActivity;
-import org.chromium.chrome.browser.browserservices.BrowserServicesIntentDataProvider;
+import org.chromium.base.supplier.Supplier;
+import org.chromium.chrome.browser.browserservices.intents.BrowserServicesIntentDataProvider;
 import org.chromium.chrome.browser.lifecycle.ActivityLifecycleDispatcher;
 
 @Generated(
@@ -18,40 +20,40 @@ import org.chromium.chrome.browser.lifecycle.ActivityLifecycleDispatcher;
 public final class CustomTabActivityLifecycleUmaTracker_Factory implements Factory<CustomTabActivityLifecycleUmaTracker> {
   private final Provider<ActivityLifecycleDispatcher> lifecycleDispatcherProvider;
 
-  private final Provider<ChromeActivity<?>> activityProvider;
-
   private final Provider<BrowserServicesIntentDataProvider> intentDataProvider;
 
-  private final Provider<CustomTabsConnection> customTabsConnectionProvider;
+  private final Provider<Activity> activityProvider;
+
+  private final Provider<Supplier<Bundle>> savedInstanceStateSupplierProvider;
 
   public CustomTabActivityLifecycleUmaTracker_Factory(
       Provider<ActivityLifecycleDispatcher> lifecycleDispatcherProvider,
-      Provider<ChromeActivity<?>> activityProvider,
       Provider<BrowserServicesIntentDataProvider> intentDataProvider,
-      Provider<CustomTabsConnection> customTabsConnectionProvider) {
+      Provider<Activity> activityProvider,
+      Provider<Supplier<Bundle>> savedInstanceStateSupplierProvider) {
     this.lifecycleDispatcherProvider = lifecycleDispatcherProvider;
-    this.activityProvider = activityProvider;
     this.intentDataProvider = intentDataProvider;
-    this.customTabsConnectionProvider = customTabsConnectionProvider;
+    this.activityProvider = activityProvider;
+    this.savedInstanceStateSupplierProvider = savedInstanceStateSupplierProvider;
   }
 
   @Override
   public CustomTabActivityLifecycleUmaTracker get() {
-    return newInstance(lifecycleDispatcherProvider.get(), activityProvider.get(), intentDataProvider.get(), customTabsConnectionProvider.get());
+    return newInstance(lifecycleDispatcherProvider.get(), intentDataProvider.get(), activityProvider.get(), savedInstanceStateSupplierProvider.get());
   }
 
   public static CustomTabActivityLifecycleUmaTracker_Factory create(
       Provider<ActivityLifecycleDispatcher> lifecycleDispatcherProvider,
-      Provider<ChromeActivity<?>> activityProvider,
       Provider<BrowserServicesIntentDataProvider> intentDataProvider,
-      Provider<CustomTabsConnection> customTabsConnectionProvider) {
-    return new CustomTabActivityLifecycleUmaTracker_Factory(lifecycleDispatcherProvider, activityProvider, intentDataProvider, customTabsConnectionProvider);
+      Provider<Activity> activityProvider,
+      Provider<Supplier<Bundle>> savedInstanceStateSupplierProvider) {
+    return new CustomTabActivityLifecycleUmaTracker_Factory(lifecycleDispatcherProvider, intentDataProvider, activityProvider, savedInstanceStateSupplierProvider);
   }
 
   public static CustomTabActivityLifecycleUmaTracker newInstance(
-      ActivityLifecycleDispatcher lifecycleDispatcher, ChromeActivity<?> activity,
-      BrowserServicesIntentDataProvider intentDataProvider,
-      CustomTabsConnection customTabsConnection) {
-    return new CustomTabActivityLifecycleUmaTracker(lifecycleDispatcher, activity, intentDataProvider, customTabsConnection);
+      ActivityLifecycleDispatcher lifecycleDispatcher,
+      BrowserServicesIntentDataProvider intentDataProvider, Activity activity,
+      Supplier<Bundle> savedInstanceStateSupplier) {
+    return new CustomTabActivityLifecycleUmaTracker(lifecycleDispatcher, intentDataProvider, activity, savedInstanceStateSupplier);
   }
 }

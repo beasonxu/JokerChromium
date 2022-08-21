@@ -13,8 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class HeavyAdResolutionStatus {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        HeavyAdResolutionStatus.HEAVY_AD_BLOCKED,
+        HeavyAdResolutionStatus.HEAVY_AD_WARNING})
+    public @interface EnumType {}
 
     public static final int HEAVY_AD_BLOCKED = 0;
     public static final int HEAVY_AD_WARNING = 1;

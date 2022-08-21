@@ -13,8 +13,36 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class RequestDestination {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        RequestDestination.EMPTY,
+        RequestDestination.AUDIO,
+        RequestDestination.AUDIO_WORKLET,
+        RequestDestination.DOCUMENT,
+        RequestDestination.EMBED,
+        RequestDestination.FONT,
+        RequestDestination.FRAME,
+        RequestDestination.IFRAME,
+        RequestDestination.IMAGE,
+        RequestDestination.MANIFEST,
+        RequestDestination.OBJECT,
+        RequestDestination.PAINT_WORKLET,
+        RequestDestination.REPORT,
+        RequestDestination.SCRIPT,
+        RequestDestination.SERVICE_WORKER,
+        RequestDestination.SHARED_WORKER,
+        RequestDestination.STYLE,
+        RequestDestination.TRACK,
+        RequestDestination.VIDEO,
+        RequestDestination.WEB_BUNDLE,
+        RequestDestination.WORKER,
+        RequestDestination.XSLT,
+        RequestDestination.FENCEDFRAME})
+    public @interface EnumType {}
 
     public static final int EMPTY = 0;
     public static final int AUDIO = 1;
@@ -38,11 +66,12 @@ public final class RequestDestination {
     public static final int WEB_BUNDLE = 19;
     public static final int WORKER = 20;
     public static final int XSLT = 21;
+    public static final int FENCEDFRAME = 22;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 21;
+    public static final int MAX_VALUE = 22;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 21;
+        return value >= 0 && value <= 22;
     }
 
     public static void validate(int value) {

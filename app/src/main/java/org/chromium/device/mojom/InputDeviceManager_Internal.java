@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class InputDeviceManager_Internal {
 
@@ -63,7 +65,7 @@ class InputDeviceManager_Internal {
         @Override
         public void getDevicesAndSetClient(
 org.chromium.mojo.bindings.AssociatedInterfaceNotSupported client, 
-GetDevicesAndSetClientResponse callback) {
+GetDevicesAndSetClient_Response callback) {
 
             InputDeviceManagerGetDevicesAndSetClientParams _message = new InputDeviceManagerGetDevicesAndSetClientParams();
 
@@ -85,7 +87,7 @@ GetDevicesAndSetClientResponse callback) {
         @Override
         public void getDevices(
 
-GetDevicesResponse callback) {
+GetDevices_Response callback) {
 
             InputDeviceManagerGetDevicesParams _message = new InputDeviceManagerGetDevicesParams();
 
@@ -346,9 +348,9 @@ GetDevicesResponse callback) {
 
     static class InputDeviceManagerGetDevicesAndSetClientResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final InputDeviceManager.GetDevicesAndSetClientResponse mCallback;
+        private final InputDeviceManager.GetDevicesAndSetClient_Response mCallback;
 
-        InputDeviceManagerGetDevicesAndSetClientResponseParamsForwardToCallback(InputDeviceManager.GetDevicesAndSetClientResponse callback) {
+        InputDeviceManagerGetDevicesAndSetClientResponseParamsForwardToCallback(InputDeviceManager.GetDevicesAndSetClient_Response callback) {
             this.mCallback = callback;
         }
 
@@ -373,7 +375,7 @@ GetDevicesResponse callback) {
         }
     }
 
-    static class InputDeviceManagerGetDevicesAndSetClientResponseParamsProxyToResponder implements InputDeviceManager.GetDevicesAndSetClientResponse {
+    static class InputDeviceManagerGetDevicesAndSetClientResponseParamsProxyToResponder implements InputDeviceManager.GetDevicesAndSetClient_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -543,9 +545,9 @@ GetDevicesResponse callback) {
 
     static class InputDeviceManagerGetDevicesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final InputDeviceManager.GetDevicesResponse mCallback;
+        private final InputDeviceManager.GetDevices_Response mCallback;
 
-        InputDeviceManagerGetDevicesResponseParamsForwardToCallback(InputDeviceManager.GetDevicesResponse callback) {
+        InputDeviceManagerGetDevicesResponseParamsForwardToCallback(InputDeviceManager.GetDevices_Response callback) {
             this.mCallback = callback;
         }
 
@@ -570,7 +572,7 @@ GetDevicesResponse callback) {
         }
     }
 
-    static class InputDeviceManagerGetDevicesResponseParamsProxyToResponder implements InputDeviceManager.GetDevicesResponse {
+    static class InputDeviceManagerGetDevicesResponseParamsProxyToResponder implements InputDeviceManager.GetDevices_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

@@ -13,6 +13,8 @@
 
 package org.chromium.proxy_resolver.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface HostResolverRequestClient extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface HostResolverRequestClient extends org.chromium.mojo.bindings.In
     }
 
     Manager<HostResolverRequestClient, HostResolverRequestClient.Proxy> MANAGER = HostResolverRequestClient_Internal.MANAGER;
-
 
     void reportResult(
 int error, org.chromium.network.mojom.IpAddress[] result);

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface PushMessaging extends org.chromium.mojo.bindings.Interface {
 
@@ -23,28 +25,25 @@ public interface PushMessaging extends org.chromium.mojo.bindings.Interface {
 
     Manager<PushMessaging, PushMessaging.Proxy> MANAGER = PushMessaging_Internal.MANAGER;
 
-
     void subscribe(
 long serviceWorkerRegistrationId, PushSubscriptionOptions options, boolean userGesture, 
-SubscribeResponse callback);
+Subscribe_Response callback);
 
-    interface SubscribeResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, PushSubscription> { }
-
+    interface Subscribe_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, PushSubscription> { }
 
 
     void unsubscribe(
 long serviceWorkerRegistrationId, 
-UnsubscribeResponse callback);
+Unsubscribe_Response callback);
 
-    interface UnsubscribeResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<Integer, Boolean, String> { }
-
+    interface Unsubscribe_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<Integer, Boolean, String> { }
 
 
     void getSubscription(
 long serviceWorkerRegistrationId, 
-GetSubscriptionResponse callback);
+GetSubscription_Response callback);
 
-    interface GetSubscriptionResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, PushSubscription> { }
+    interface GetSubscription_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, PushSubscription> { }
 
 
 }

@@ -13,8 +13,18 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class GestureDevice {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        GestureDevice.UNINITIALIZED,
+        GestureDevice.TOUCHPAD,
+        GestureDevice.TOUCHSCREEN,
+        GestureDevice.SYNTHETIC_AUTOSCROLL,
+        GestureDevice.SCROLLBAR})
+    public @interface EnumType {}
 
     public static final int UNINITIALIZED = 0;
     public static final int TOUCHPAD = 1;

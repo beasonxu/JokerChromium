@@ -13,6 +13,8 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class CompositorFrameSinkClient_Internal {
 
@@ -54,6 +56,8 @@ class CompositorFrameSinkClient_Internal {
     private static final int ON_BEGIN_FRAME_PAUSED_CHANGED_ORDINAL = 2;
 
     private static final int RECLAIM_RESOURCES_ORDINAL = 3;
+
+    private static final int ON_COMPOSITOR_FRAME_TRANSITION_DIRECTIVE_PROCESSED_ORDINAL = 4;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements CompositorFrameSinkClient.Proxy {
@@ -130,6 +134,23 @@ ReturnedResource[] resources) {
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(RECLAIM_RESOURCES_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void onCompositorFrameTransitionDirectiveProcessed(
+int sequenceId) {
+
+            CompositorFrameSinkClientOnCompositorFrameTransitionDirectiveProcessedParams _message = new CompositorFrameSinkClientOnCompositorFrameTransitionDirectiveProcessedParams();
+
+            _message.sequenceId = sequenceId;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(ON_COMPOSITOR_FRAME_TRANSITION_DIRECTIVE_PROCESSED_ORDINAL)));
 
         }
 
@@ -214,6 +235,19 @@ ReturnedResource[] resources) {
                     }
 
 
+
+
+
+                    case ON_COMPOSITOR_FRAME_TRANSITION_DIRECTIVE_PROCESSED_ORDINAL: {
+
+                        CompositorFrameSinkClientOnCompositorFrameTransitionDirectiveProcessedParams data =
+                                CompositorFrameSinkClientOnCompositorFrameTransitionDirectiveProcessedParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().onCompositorFrameTransitionDirectiveProcessed(data.sequenceId);
+                        return true;
+                    }
+
+
                     default:
                         return false;
                 }
@@ -241,6 +275,8 @@ ReturnedResource[] resources) {
                     case org.chromium.mojo.bindings.interfacecontrol.InterfaceControlMessagesConstants.RUN_MESSAGE_ID:
                         return org.chromium.mojo.bindings.InterfaceControlMessagesHelper.handleRun(
                                 getCore(), CompositorFrameSinkClient_Internal.MANAGER, messageWithHeader, receiver);
+
+
 
 
 
@@ -600,6 +636,69 @@ ReturnedResource[] resources) {
                     encoder1.encode(this.resources[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
                 }
             }
+        }
+    }
+
+
+
+    
+    static final class CompositorFrameSinkClientOnCompositorFrameTransitionDirectiveProcessedParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int sequenceId;
+
+        private CompositorFrameSinkClientOnCompositorFrameTransitionDirectiveProcessedParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public CompositorFrameSinkClientOnCompositorFrameTransitionDirectiveProcessedParams() {
+            this(0);
+        }
+
+        public static CompositorFrameSinkClientOnCompositorFrameTransitionDirectiveProcessedParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static CompositorFrameSinkClientOnCompositorFrameTransitionDirectiveProcessedParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static CompositorFrameSinkClientOnCompositorFrameTransitionDirectiveProcessedParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            CompositorFrameSinkClientOnCompositorFrameTransitionDirectiveProcessedParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new CompositorFrameSinkClientOnCompositorFrameTransitionDirectiveProcessedParams(elementsOrVersion);
+                    {
+                        
+                    result.sequenceId = decoder0.readInt(8);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.sequenceId, 8);
         }
     }
 

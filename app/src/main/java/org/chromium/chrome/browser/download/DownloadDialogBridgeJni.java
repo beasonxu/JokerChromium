@@ -2,15 +2,13 @@ package org.chromium.chrome.browser.download;
 
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class DownloadDialogBridgeJni implements DownloadDialogBridge.Natives {
+public class DownloadDialogBridgeJni implements DownloadDialogBridge.Natives {
   private static DownloadDialogBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<DownloadDialogBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.download.DownloadDialogBridge.Natives>() {
@@ -46,8 +44,18 @@ final class DownloadDialogBridgeJni implements DownloadDialogBridge.Natives {
   }
 
   @Override
-  public boolean isDataReductionProxyEnabled() {
-    return (boolean)GEN_JNI.org_chromium_chrome_browser_download_DownloadDialogBridge_isDataReductionProxyEnabled();
+  public long getDownloadLaterMinFileSize() {
+    return (long)GEN_JNI.org_chromium_chrome_browser_download_DownloadDialogBridge_getDownloadLaterMinFileSize();
+  }
+
+  @Override
+  public boolean shouldShowDateTimePicker() {
+    return (boolean)GEN_JNI.org_chromium_chrome_browser_download_DownloadDialogBridge_shouldShowDateTimePicker();
+  }
+
+  @Override
+  public boolean isLocationDialogManaged() {
+    return (boolean)GEN_JNI.org_chromium_chrome_browser_download_DownloadDialogBridge_isLocationDialogManaged();
   }
 
   public static DownloadDialogBridge.Natives get() {

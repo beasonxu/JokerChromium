@@ -13,11 +13,13 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class EmbeddedWorkerStartParams extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 176;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(176, 0)};
+    private static final int STRUCT_SIZE = 184;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(184, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public long serviceWorkerVersionId;
     public org.chromium.url.mojom.Url scope;
@@ -32,7 +34,9 @@ public final class EmbeddedWorkerStartParams extends org.chromium.mojo.bindings.
     public boolean waitForDebugger;
     public boolean isInstalled;
     public RendererPreferences rendererPreferences;
+    public String[] forcedEnabledRuntimeFeatures;
     public org.chromium.mojo.bindings.InterfaceRequest<ServiceWorker> serviceWorkerReceiver;
+    public org.chromium.mojo.bindings.InterfaceRequest<org.chromium.service_manager.mojom.InterfaceProvider> interfaceProvider;
     public org.chromium.mojo.bindings.InterfaceRequest<ControllerServiceWorker> controllerReceiver;
     public ServiceWorkerInstalledScriptsInfo installedScriptsInfo;
     public org.chromium.mojo.bindings.AssociatedInterfaceNotSupported instanceHost;
@@ -145,51 +149,67 @@ public final class EmbeddedWorkerStartParams extends org.chromium.mojo.bindings.
                 }
                 {
                     
-                result.controllerReceiver = decoder0.readInterfaceRequest(96, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(96, false);
+                {
+                    org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                    result.forcedEnabledRuntimeFeatures = new String[si1.elementsOrVersion];
+                    for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
+                        
+                        result.forcedEnabledRuntimeFeatures[i1] = decoder1.readString(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                    }
+                }
                 }
                 {
                     
-                result.preferenceWatcherReceiver = decoder0.readInterfaceRequest(100, false);
+                result.interfaceProvider = decoder0.readInterfaceRequest(104, false);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(104, true);
+                result.controllerReceiver = decoder0.readInterfaceRequest(108, false);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(112, true);
                 result.installedScriptsInfo = ServiceWorkerInstalledScriptsInfo.decode(decoder1);
                 }
                 {
                     
-                result.instanceHost = decoder0.readAssociatedServiceInterfaceNotSupported(112, false);
+                result.instanceHost = decoder0.readAssociatedServiceInterfaceNotSupported(120, false);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(120, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(128, false);
                 result.providerInfo = ServiceWorkerProviderInfoForStartWorker.decode(decoder1);
                 }
                 {
                     
-                result.contentSettingsProxy = decoder0.readServiceInterface(128, false, WorkerContentSettingsProxy.MANAGER);
+                result.contentSettingsProxy = decoder0.readServiceInterface(136, false, WorkerContentSettingsProxy.MANAGER);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(136, false);
-                result.subresourceLoaderFactories = UrlLoaderFactoryBundle.decode(decoder1);
+                result.preferenceWatcherReceiver = decoder0.readInterfaceRequest(144, false);
                 }
                 {
                     
-                result.subresourceLoaderUpdater = decoder0.readInterfaceRequest(144, false);
+                result.subresourceLoaderUpdater = decoder0.readInterfaceRequest(148, false);
                 }
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(152, false);
+                result.subresourceLoaderFactories = UrlLoaderFactoryBundle.decode(decoder1);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(160, false);
                 result.serviceWorkerToken = ServiceWorkerToken.decode(decoder1);
                 }
                 {
                     
-                result.ukmSourceId = decoder0.readLong(160);
+                result.ukmSourceId = decoder0.readLong(168);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(168, true);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(176, true);
                 result.mainScriptLoadParams = WorkerMainScriptLoadParams.decode(decoder1);
                 }
 
@@ -232,26 +252,38 @@ public final class EmbeddedWorkerStartParams extends org.chromium.mojo.bindings.
         
         encoder0.encode(this.rendererPreferences, 88, false);
         
-        encoder0.encode(this.controllerReceiver, 96, false);
+        if (this.forcedEnabledRuntimeFeatures == null) {
+            encoder0.encodeNullPointer(96, false);
+        } else {
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.forcedEnabledRuntimeFeatures.length, 96, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            for (int i0 = 0; i0 < this.forcedEnabledRuntimeFeatures.length; ++i0) {
+                
+                encoder1.encode(this.forcedEnabledRuntimeFeatures[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
+            }
+        }
         
-        encoder0.encode(this.preferenceWatcherReceiver, 100, false);
+        encoder0.encode(this.interfaceProvider, 104, false);
         
-        encoder0.encode(this.installedScriptsInfo, 104, true);
+        encoder0.encode(this.controllerReceiver, 108, false);
         
-        encoder0.encode(this.instanceHost, 112, false);
+        encoder0.encode(this.installedScriptsInfo, 112, true);
         
-        encoder0.encode(this.providerInfo, 120, false);
+        encoder0.encode(this.instanceHost, 120, false);
         
-        encoder0.encode(this.contentSettingsProxy, 128, false, WorkerContentSettingsProxy.MANAGER);
+        encoder0.encode(this.providerInfo, 128, false);
         
-        encoder0.encode(this.subresourceLoaderFactories, 136, false);
+        encoder0.encode(this.contentSettingsProxy, 136, false, WorkerContentSettingsProxy.MANAGER);
         
-        encoder0.encode(this.subresourceLoaderUpdater, 144, false);
+        encoder0.encode(this.preferenceWatcherReceiver, 144, false);
         
-        encoder0.encode(this.serviceWorkerToken, 152, false);
+        encoder0.encode(this.subresourceLoaderUpdater, 148, false);
         
-        encoder0.encode(this.ukmSourceId, 160);
+        encoder0.encode(this.subresourceLoaderFactories, 152, false);
         
-        encoder0.encode(this.mainScriptLoadParams, 168, true);
+        encoder0.encode(this.serviceWorkerToken, 160, false);
+        
+        encoder0.encode(this.ukmSourceId, 168);
+        
+        encoder0.encode(this.mainScriptLoadParams, 176, true);
     }
 }

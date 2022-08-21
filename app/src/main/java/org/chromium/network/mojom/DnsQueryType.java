@@ -13,8 +13,20 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class DnsQueryType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        DnsQueryType.UNSPECIFIED,
+        DnsQueryType.A,
+        DnsQueryType.AAAA,
+        DnsQueryType.TXT,
+        DnsQueryType.PTR,
+        DnsQueryType.SRV,
+        DnsQueryType.HTTPS})
+    public @interface EnumType {}
 
     public static final int UNSPECIFIED = 0;
     public static final int A = 1;

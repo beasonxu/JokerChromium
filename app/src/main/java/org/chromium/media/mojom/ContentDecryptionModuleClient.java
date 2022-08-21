@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ContentDecryptionModuleClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,20 +25,16 @@ public interface ContentDecryptionModuleClient extends org.chromium.mojo.binding
 
     Manager<ContentDecryptionModuleClient, ContentDecryptionModuleClient.Proxy> MANAGER = ContentDecryptionModuleClient_Internal.MANAGER;
 
-
     void onSessionMessage(
 String sessionId, int messageType, byte[] message);
 
 
-
     void onSessionClosed(
-String sessionId);
-
+String sessionId, int reason);
 
 
     void onSessionKeysChange(
 String sessionId, boolean hasAdditionalUsableKey, CdmKeyInformation[] keysInfo);
-
 
 
     void onSessionExpirationUpdate(

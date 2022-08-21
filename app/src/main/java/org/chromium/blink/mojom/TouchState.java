@@ -13,8 +13,20 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class TouchState {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        TouchState.STATE_UNDEFINED,
+        TouchState.STATE_RELEASED,
+        TouchState.STATE_PRESSED,
+        TouchState.STATE_MOVED,
+        TouchState.STATE_STATIONARY,
+        TouchState.STATE_CANCELLED,
+        TouchState.STATE_MAX})
+    public @interface EnumType {}
 
     public static final int STATE_UNDEFINED = 0;
     public static final int STATE_RELEASED = 1;

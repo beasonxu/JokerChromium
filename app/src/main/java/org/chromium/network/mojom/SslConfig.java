@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class SslConfig extends org.chromium.mojo.bindings.Struct {
 
@@ -24,10 +26,11 @@ public final class SslConfig extends org.chromium.mojo.bindings.Struct {
     public boolean sha1LocalAnchorsEnabled;
     public boolean symantecEnforcementDisabled;
     public int versionMin;
-    public int versionMinWarn;
     public int versionMax;
     public short[] disabledCipherSuites;
     public String[] clientCertPoolingPolicy;
+    public boolean cecpq2Enabled;
+    public boolean echEnabled;
 
     private SslConfig(int version) {
         super(STRUCT_SIZE, version);
@@ -35,9 +38,10 @@ public final class SslConfig extends org.chromium.mojo.bindings.Struct {
         this.revCheckingRequiredLocalAnchors = (boolean) false;
         this.sha1LocalAnchorsEnabled = (boolean) false;
         this.symantecEnforcementDisabled = (boolean) false;
-        this.versionMin = (int) SslVersion.TLS1;
-        this.versionMinWarn = (int) SslVersion.TLS12;
+        this.versionMin = (int) SslVersion.TLS12;
         this.versionMax = (int) SslVersion.TLS13;
+        this.cecpq2Enabled = (boolean) true;
+        this.echEnabled = (boolean) true;
     }
 
     public SslConfig() {
@@ -87,19 +91,21 @@ public final class SslConfig extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
+                result.cecpq2Enabled = decoder0.readBoolean(8, 4);
+                }
+                {
+                    
+                result.echEnabled = decoder0.readBoolean(8, 5);
+                }
+                {
+                    
                 result.versionMin = decoder0.readInt(12);
                     SslVersion.validate(result.versionMin);
                     result.versionMin = SslVersion.toKnownValue(result.versionMin);
                 }
                 {
                     
-                result.versionMinWarn = decoder0.readInt(16);
-                    SslVersion.validate(result.versionMinWarn);
-                    result.versionMinWarn = SslVersion.toKnownValue(result.versionMinWarn);
-                }
-                {
-                    
-                result.versionMax = decoder0.readInt(20);
+                result.versionMax = decoder0.readInt(16);
                     SslVersion.validate(result.versionMax);
                     result.versionMax = SslVersion.toKnownValue(result.versionMax);
                 }
@@ -139,11 +145,13 @@ public final class SslConfig extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.symantecEnforcementDisabled, 8, 3);
         
+        encoder0.encode(this.cecpq2Enabled, 8, 4);
+        
+        encoder0.encode(this.echEnabled, 8, 5);
+        
         encoder0.encode(this.versionMin, 12);
         
-        encoder0.encode(this.versionMinWarn, 16);
-        
-        encoder0.encode(this.versionMax, 20);
+        encoder0.encode(this.versionMax, 16);
         
         encoder0.encode(this.disabledCipherSuites, 24, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
         

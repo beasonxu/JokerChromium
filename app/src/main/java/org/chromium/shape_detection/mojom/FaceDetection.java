@@ -13,6 +13,8 @@
 
 package org.chromium.shape_detection.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface FaceDetection extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface FaceDetection extends org.chromium.mojo.bindings.Interface {
 
     Manager<FaceDetection, FaceDetection.Proxy> MANAGER = FaceDetection_Internal.MANAGER;
 
-
     void detect(
 org.chromium.skia.mojom.BitmapN32 bitmapData, 
-DetectResponse callback);
+Detect_Response callback);
 
-    interface DetectResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<FaceDetectionResult[]> { }
+    interface Detect_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<FaceDetectionResult[]> { }
 
 
 }

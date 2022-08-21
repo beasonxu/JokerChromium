@@ -13,8 +13,17 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class DisplayCaptureSurfaceType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        DisplayCaptureSurfaceType.MONITOR,
+        DisplayCaptureSurfaceType.WINDOW,
+        DisplayCaptureSurfaceType.APPLICATION,
+        DisplayCaptureSurfaceType.BROWSER})
+    public @interface EnumType {}
 
     public static final int MONITOR = 0;
     public static final int WINDOW = 1;

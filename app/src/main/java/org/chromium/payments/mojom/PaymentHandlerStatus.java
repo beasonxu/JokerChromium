@@ -13,8 +13,19 @@
 
 package org.chromium.payments.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PaymentHandlerStatus {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PaymentHandlerStatus.SUCCESS,
+        PaymentHandlerStatus.NOT_FOUND,
+        PaymentHandlerStatus.NO_ACTIVE_WORKER,
+        PaymentHandlerStatus.STORAGE_OPERATION_FAILED,
+        PaymentHandlerStatus.FETCH_INSTRUMENT_ICON_FAILED,
+        PaymentHandlerStatus.FETCH_PAYMENT_APP_INFO_FAILED})
+    public @interface EnumType {}
 
     public static final int SUCCESS = 0;
     public static final int NOT_FOUND = 1;

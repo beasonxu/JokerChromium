@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface PresentationService extends org.chromium.mojo.bindings.Interface {
 
@@ -23,51 +25,42 @@ public interface PresentationService extends org.chromium.mojo.bindings.Interfac
 
     Manager<PresentationService, PresentationService.Proxy> MANAGER = PresentationService_Internal.MANAGER;
 
-
     void setController(
 PresentationController controller);
-
 
 
     void setReceiver(
 PresentationReceiver receiver);
 
 
-
     void setDefaultPresentationUrls(
 org.chromium.url.mojom.Url[] presentationUrls);
-
 
 
     void listenForScreenAvailability(
 org.chromium.url.mojom.Url availabilityUrl);
 
 
-
     void stopListeningForScreenAvailability(
 org.chromium.url.mojom.Url availabilityUrl);
 
 
-
     void startPresentation(
 org.chromium.url.mojom.Url[] presentationUrls, 
-StartPresentationResponse callback);
+StartPresentation_Response callback);
 
-    interface StartPresentationResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<PresentationConnectionResult, PresentationError> { }
-
+    interface StartPresentation_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<PresentationConnectionResult, PresentationError> { }
 
 
     void reconnectPresentation(
 org.chromium.url.mojom.Url[] presentationUrls, String presentationId, 
-ReconnectPresentationResponse callback);
+ReconnectPresentation_Response callback);
 
-    interface ReconnectPresentationResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<PresentationConnectionResult, PresentationError> { }
-
+    interface ReconnectPresentation_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<PresentationConnectionResult, PresentationError> { }
 
 
     void closeConnection(
 org.chromium.url.mojom.Url presentationUrl, String presentationId);
-
 
 
     void terminate(

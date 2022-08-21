@@ -4,16 +4,14 @@ import java.lang.Integer;
 import java.lang.Override;
 import java.lang.String;
 import java.util.ArrayList;
-import javax.annotation.Generated;
 import org.chromium.base.Callback;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class OfflineContentAggregatorBridgeJni implements OfflineContentAggregatorBridge.Natives {
+class OfflineContentAggregatorBridgeJni implements OfflineContentAggregatorBridge.Natives {
   private static OfflineContentAggregatorBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<OfflineContentAggregatorBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.offline_items_collection.OfflineContentAggregatorBridge.Natives>() {
@@ -89,13 +87,6 @@ final class OfflineContentAggregatorBridgeJni implements OfflineContentAggregato
       OfflineContentAggregatorBridge caller, String nameSpace, String id, String name,
       Callback<Integer> callback) {
     GEN_JNI.org_chromium_components_offline_1items_1collection_OfflineContentAggregatorBridge_renameItem(nativeOfflineContentAggregatorBridge, caller, nameSpace, id, name, callback);
-  }
-
-  @Override
-  public void changeSchedule(long nativeOfflineContentAggregatorBridge,
-      OfflineContentAggregatorBridge caller, String nameSpace, String id, boolean onlyOnWifi,
-      long startTimeMs) {
-    GEN_JNI.org_chromium_components_offline_1items_1collection_OfflineContentAggregatorBridge_changeSchedule(nativeOfflineContentAggregatorBridge, caller, nameSpace, id, onlyOnWifi, startTimeMs);
   }
 
   public static OfflineContentAggregatorBridge.Natives get() {

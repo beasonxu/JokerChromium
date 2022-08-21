@@ -13,6 +13,8 @@
 
 package org.chromium.media_session.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class MediaImageBitmap extends org.chromium.mojo.bindings.Struct {
 

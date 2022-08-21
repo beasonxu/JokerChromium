@@ -224,210 +224,250 @@ public  final class BookmarkModelMetadata extends
     bookmarksMetadata_.remove(index);
   }
 
-  public static final int BOOKMARKS_FULL_TITLE_REUPLOADED_FIELD_NUMBER = 3;
-  private boolean bookmarksFullTitleReuploaded_;
+  public static final int BOOKMARKS_HIERARCHY_FIELDS_REUPLOADED_FIELD_NUMBER = 6;
+  private boolean bookmarksHierarchyFieldsReuploaded_;
   /**
    * <pre>
    * Indicates whether the reupload of bookmarks has been triggered such that
-   * they include the full title, which means that their sequence number has
-   * been increased (independently of whether the commit has succeeded or even
-   * started).
-   * TODO(crbug.com/1066962): remove this code when most of bookmarks are
+   * they include fields like |type|, |unique_position| and |parent_guid|, which
+   * means that their sequence number has been increased (independently of
+   * whether the commit has succeeded or even started).
+   * TODO(crbug.com/1232951): remove this code when most of bookmarks are
    * reuploaded.
    * </pre>
    *
-   * <code>optional bool bookmarks_full_title_reuploaded = 3;</code>
-   * @return Whether the bookmarksFullTitleReuploaded field is set.
+   * <code>optional bool bookmarks_hierarchy_fields_reuploaded = 6;</code>
+   * @return Whether the bookmarksHierarchyFieldsReuploaded field is set.
    */
   @java.lang.Override
-  public boolean hasBookmarksFullTitleReuploaded() {
+  public boolean hasBookmarksHierarchyFieldsReuploaded() {
     return ((bitField0_ & 0x00000002) != 0);
   }
   /**
    * <pre>
    * Indicates whether the reupload of bookmarks has been triggered such that
-   * they include the full title, which means that their sequence number has
-   * been increased (independently of whether the commit has succeeded or even
-   * started).
-   * TODO(crbug.com/1066962): remove this code when most of bookmarks are
+   * they include fields like |type|, |unique_position| and |parent_guid|, which
+   * means that their sequence number has been increased (independently of
+   * whether the commit has succeeded or even started).
+   * TODO(crbug.com/1232951): remove this code when most of bookmarks are
    * reuploaded.
    * </pre>
    *
-   * <code>optional bool bookmarks_full_title_reuploaded = 3;</code>
-   * @return The bookmarksFullTitleReuploaded.
+   * <code>optional bool bookmarks_hierarchy_fields_reuploaded = 6;</code>
+   * @return The bookmarksHierarchyFieldsReuploaded.
    */
   @java.lang.Override
-  public boolean getBookmarksFullTitleReuploaded() {
-    return bookmarksFullTitleReuploaded_;
+  public boolean getBookmarksHierarchyFieldsReuploaded() {
+    return bookmarksHierarchyFieldsReuploaded_;
   }
   /**
    * <pre>
    * Indicates whether the reupload of bookmarks has been triggered such that
-   * they include the full title, which means that their sequence number has
-   * been increased (independently of whether the commit has succeeded or even
-   * started).
-   * TODO(crbug.com/1066962): remove this code when most of bookmarks are
+   * they include fields like |type|, |unique_position| and |parent_guid|, which
+   * means that their sequence number has been increased (independently of
+   * whether the commit has succeeded or even started).
+   * TODO(crbug.com/1232951): remove this code when most of bookmarks are
    * reuploaded.
    * </pre>
    *
-   * <code>optional bool bookmarks_full_title_reuploaded = 3;</code>
-   * @param value The bookmarksFullTitleReuploaded to set.
+   * <code>optional bool bookmarks_hierarchy_fields_reuploaded = 6;</code>
+   * @param value The bookmarksHierarchyFieldsReuploaded to set.
    */
-  private void setBookmarksFullTitleReuploaded(boolean value) {
+  private void setBookmarksHierarchyFieldsReuploaded(boolean value) {
     bitField0_ |= 0x00000002;
-    bookmarksFullTitleReuploaded_ = value;
+    bookmarksHierarchyFieldsReuploaded_ = value;
   }
   /**
    * <pre>
    * Indicates whether the reupload of bookmarks has been triggered such that
-   * they include the full title, which means that their sequence number has
-   * been increased (independently of whether the commit has succeeded or even
-   * started).
-   * TODO(crbug.com/1066962): remove this code when most of bookmarks are
+   * they include fields like |type|, |unique_position| and |parent_guid|, which
+   * means that their sequence number has been increased (independently of
+   * whether the commit has succeeded or even started).
+   * TODO(crbug.com/1232951): remove this code when most of bookmarks are
    * reuploaded.
    * </pre>
    *
-   * <code>optional bool bookmarks_full_title_reuploaded = 3;</code>
+   * <code>optional bool bookmarks_hierarchy_fields_reuploaded = 6;</code>
    */
-  private void clearBookmarksFullTitleReuploaded() {
+  private void clearBookmarksHierarchyFieldsReuploaded() {
     bitField0_ = (bitField0_ & ~0x00000002);
-    bookmarksFullTitleReuploaded_ = false;
+    bookmarksHierarchyFieldsReuploaded_ = false;
   }
 
-  public static final int LAST_SYNC_TIME_FIELD_NUMBER = 4;
-  private long lastSyncTime_;
+  public static final int NUM_IGNORED_UPDATES_DUE_TO_MISSING_PARENT_FIELD_NUMBER = 7;
+  private long numIgnoredUpdatesDueToMissingParent_;
   /**
    * <pre>
-   * The local timestamp corresponding to the last time remote updates were
-   * received, in milliseconds since Unix epoch. Introduced in M86.
-   * TODO(crbug.com/1032052): Remove this code once all local sync metadata
-   * is required to populate the client tag (and be considered invalid
-   * otherwise).
+   * Number of remote updates that were ignored because the parent folder could
+   * not be determined since sync (bookmark sync) started (since initial sync,
+   * including initial sync itself). Note that this excludes updates
+   * representing changes (moves) to existing/tracked bookmarks (i.e. the parent
+   * folder used to be known, but the new one specified in the update isn't).
+   * Only a minority of users should have a non-zero value, due to a) corrupt
+   * data, reasons unknown; or b) permanent folders that were unsupported at the
+   * time the update was received (either for the permanent folder itself or for
+   * descendants). The absence of this field should be interpreted as 'unknown',
+   * which roughly means the counter wasn't supported by the browser -M77 or
+   * below- at the time sync was enabled (it also means, it will remain
+   * 'unknown' until initial sync is exercised, e.g. sync disabled and
+   * reenabled).
    * </pre>
    *
-   * <code>optional int64 last_sync_time = 4;</code>
-   * @return Whether the lastSyncTime field is set.
+   * <code>optional int64 num_ignored_updates_due_to_missing_parent = 7;</code>
+   * @return Whether the numIgnoredUpdatesDueToMissingParent field is set.
    */
   @java.lang.Override
-  public boolean hasLastSyncTime() {
+  public boolean hasNumIgnoredUpdatesDueToMissingParent() {
     return ((bitField0_ & 0x00000004) != 0);
   }
   /**
    * <pre>
-   * The local timestamp corresponding to the last time remote updates were
-   * received, in milliseconds since Unix epoch. Introduced in M86.
-   * TODO(crbug.com/1032052): Remove this code once all local sync metadata
-   * is required to populate the client tag (and be considered invalid
-   * otherwise).
+   * Number of remote updates that were ignored because the parent folder could
+   * not be determined since sync (bookmark sync) started (since initial sync,
+   * including initial sync itself). Note that this excludes updates
+   * representing changes (moves) to existing/tracked bookmarks (i.e. the parent
+   * folder used to be known, but the new one specified in the update isn't).
+   * Only a minority of users should have a non-zero value, due to a) corrupt
+   * data, reasons unknown; or b) permanent folders that were unsupported at the
+   * time the update was received (either for the permanent folder itself or for
+   * descendants). The absence of this field should be interpreted as 'unknown',
+   * which roughly means the counter wasn't supported by the browser -M77 or
+   * below- at the time sync was enabled (it also means, it will remain
+   * 'unknown' until initial sync is exercised, e.g. sync disabled and
+   * reenabled).
    * </pre>
    *
-   * <code>optional int64 last_sync_time = 4;</code>
-   * @return The lastSyncTime.
+   * <code>optional int64 num_ignored_updates_due_to_missing_parent = 7;</code>
+   * @return The numIgnoredUpdatesDueToMissingParent.
    */
   @java.lang.Override
-  public long getLastSyncTime() {
-    return lastSyncTime_;
+  public long getNumIgnoredUpdatesDueToMissingParent() {
+    return numIgnoredUpdatesDueToMissingParent_;
   }
   /**
    * <pre>
-   * The local timestamp corresponding to the last time remote updates were
-   * received, in milliseconds since Unix epoch. Introduced in M86.
-   * TODO(crbug.com/1032052): Remove this code once all local sync metadata
-   * is required to populate the client tag (and be considered invalid
-   * otherwise).
+   * Number of remote updates that were ignored because the parent folder could
+   * not be determined since sync (bookmark sync) started (since initial sync,
+   * including initial sync itself). Note that this excludes updates
+   * representing changes (moves) to existing/tracked bookmarks (i.e. the parent
+   * folder used to be known, but the new one specified in the update isn't).
+   * Only a minority of users should have a non-zero value, due to a) corrupt
+   * data, reasons unknown; or b) permanent folders that were unsupported at the
+   * time the update was received (either for the permanent folder itself or for
+   * descendants). The absence of this field should be interpreted as 'unknown',
+   * which roughly means the counter wasn't supported by the browser -M77 or
+   * below- at the time sync was enabled (it also means, it will remain
+   * 'unknown' until initial sync is exercised, e.g. sync disabled and
+   * reenabled).
    * </pre>
    *
-   * <code>optional int64 last_sync_time = 4;</code>
-   * @param value The lastSyncTime to set.
+   * <code>optional int64 num_ignored_updates_due_to_missing_parent = 7;</code>
+   * @param value The numIgnoredUpdatesDueToMissingParent to set.
    */
-  private void setLastSyncTime(long value) {
+  private void setNumIgnoredUpdatesDueToMissingParent(long value) {
     bitField0_ |= 0x00000004;
-    lastSyncTime_ = value;
+    numIgnoredUpdatesDueToMissingParent_ = value;
   }
   /**
    * <pre>
-   * The local timestamp corresponding to the last time remote updates were
-   * received, in milliseconds since Unix epoch. Introduced in M86.
-   * TODO(crbug.com/1032052): Remove this code once all local sync metadata
-   * is required to populate the client tag (and be considered invalid
-   * otherwise).
+   * Number of remote updates that were ignored because the parent folder could
+   * not be determined since sync (bookmark sync) started (since initial sync,
+   * including initial sync itself). Note that this excludes updates
+   * representing changes (moves) to existing/tracked bookmarks (i.e. the parent
+   * folder used to be known, but the new one specified in the update isn't).
+   * Only a minority of users should have a non-zero value, due to a) corrupt
+   * data, reasons unknown; or b) permanent folders that were unsupported at the
+   * time the update was received (either for the permanent folder itself or for
+   * descendants). The absence of this field should be interpreted as 'unknown',
+   * which roughly means the counter wasn't supported by the browser -M77 or
+   * below- at the time sync was enabled (it also means, it will remain
+   * 'unknown' until initial sync is exercised, e.g. sync disabled and
+   * reenabled).
    * </pre>
    *
-   * <code>optional int64 last_sync_time = 4;</code>
+   * <code>optional int64 num_ignored_updates_due_to_missing_parent = 7;</code>
    */
-  private void clearLastSyncTime() {
+  private void clearNumIgnoredUpdatesDueToMissingParent() {
     bitField0_ = (bitField0_ & ~0x00000004);
-    lastSyncTime_ = 0L;
+    numIgnoredUpdatesDueToMissingParent_ = 0L;
   }
 
-  public static final int BOOKMARK_CLIENT_TAGS_IN_PROTOCOL_ENABLED_FIELD_NUMBER = 5;
-  private boolean bookmarkClientTagsInProtocolEnabled_;
+  public static final int MAX_VERSION_AMONG_IGNORED_UPDATES_DUE_TO_MISSING_PARENT_FIELD_NUMBER = 8;
+  private long maxVersionAmongIgnoredUpdatesDueToMissingParent_;
   /**
    * <pre>
-   * Represents whether bookmark commits sent to the server (most importantly
-   * creations) populate client tags. This is a layer on top of the usual
-   * FeatureList to avoid risky transitions during startup, to guard against
-   * in-flight commits.
-   * TODO(crbug.com/1032052): remove this code when the logic is enabled by
-   * default and enforced to true upon startup.
+   * See field above. Among such ignored updates, this field tracks which was
+   * the highest server version. This may be useful -in the future- to get a
+   * sense of "time" (or, since versions are opaque to the client, at least a
+   * notion of ordering with respect to other updates). The absence of this
+   * field should be interpreted as 'unknown' and does not distinguish the
+   * case between a) no updates ignored; and b) field wasn't supported at the
+   * time the last update was ignored. To distinguish between these two, the
+   * field above can be used.
    * </pre>
    *
-   * <code>optional bool bookmark_client_tags_in_protocol_enabled = 5;</code>
-   * @return Whether the bookmarkClientTagsInProtocolEnabled field is set.
+   * <code>optional int64 max_version_among_ignored_updates_due_to_missing_parent = 8;</code>
+   * @return Whether the maxVersionAmongIgnoredUpdatesDueToMissingParent field is set.
    */
   @java.lang.Override
-  public boolean hasBookmarkClientTagsInProtocolEnabled() {
+  public boolean hasMaxVersionAmongIgnoredUpdatesDueToMissingParent() {
     return ((bitField0_ & 0x00000008) != 0);
   }
   /**
    * <pre>
-   * Represents whether bookmark commits sent to the server (most importantly
-   * creations) populate client tags. This is a layer on top of the usual
-   * FeatureList to avoid risky transitions during startup, to guard against
-   * in-flight commits.
-   * TODO(crbug.com/1032052): remove this code when the logic is enabled by
-   * default and enforced to true upon startup.
+   * See field above. Among such ignored updates, this field tracks which was
+   * the highest server version. This may be useful -in the future- to get a
+   * sense of "time" (or, since versions are opaque to the client, at least a
+   * notion of ordering with respect to other updates). The absence of this
+   * field should be interpreted as 'unknown' and does not distinguish the
+   * case between a) no updates ignored; and b) field wasn't supported at the
+   * time the last update was ignored. To distinguish between these two, the
+   * field above can be used.
    * </pre>
    *
-   * <code>optional bool bookmark_client_tags_in_protocol_enabled = 5;</code>
-   * @return The bookmarkClientTagsInProtocolEnabled.
+   * <code>optional int64 max_version_among_ignored_updates_due_to_missing_parent = 8;</code>
+   * @return The maxVersionAmongIgnoredUpdatesDueToMissingParent.
    */
   @java.lang.Override
-  public boolean getBookmarkClientTagsInProtocolEnabled() {
-    return bookmarkClientTagsInProtocolEnabled_;
+  public long getMaxVersionAmongIgnoredUpdatesDueToMissingParent() {
+    return maxVersionAmongIgnoredUpdatesDueToMissingParent_;
   }
   /**
    * <pre>
-   * Represents whether bookmark commits sent to the server (most importantly
-   * creations) populate client tags. This is a layer on top of the usual
-   * FeatureList to avoid risky transitions during startup, to guard against
-   * in-flight commits.
-   * TODO(crbug.com/1032052): remove this code when the logic is enabled by
-   * default and enforced to true upon startup.
+   * See field above. Among such ignored updates, this field tracks which was
+   * the highest server version. This may be useful -in the future- to get a
+   * sense of "time" (or, since versions are opaque to the client, at least a
+   * notion of ordering with respect to other updates). The absence of this
+   * field should be interpreted as 'unknown' and does not distinguish the
+   * case between a) no updates ignored; and b) field wasn't supported at the
+   * time the last update was ignored. To distinguish between these two, the
+   * field above can be used.
    * </pre>
    *
-   * <code>optional bool bookmark_client_tags_in_protocol_enabled = 5;</code>
-   * @param value The bookmarkClientTagsInProtocolEnabled to set.
+   * <code>optional int64 max_version_among_ignored_updates_due_to_missing_parent = 8;</code>
+   * @param value The maxVersionAmongIgnoredUpdatesDueToMissingParent to set.
    */
-  private void setBookmarkClientTagsInProtocolEnabled(boolean value) {
+  private void setMaxVersionAmongIgnoredUpdatesDueToMissingParent(long value) {
     bitField0_ |= 0x00000008;
-    bookmarkClientTagsInProtocolEnabled_ = value;
+    maxVersionAmongIgnoredUpdatesDueToMissingParent_ = value;
   }
   /**
    * <pre>
-   * Represents whether bookmark commits sent to the server (most importantly
-   * creations) populate client tags. This is a layer on top of the usual
-   * FeatureList to avoid risky transitions during startup, to guard against
-   * in-flight commits.
-   * TODO(crbug.com/1032052): remove this code when the logic is enabled by
-   * default and enforced to true upon startup.
+   * See field above. Among such ignored updates, this field tracks which was
+   * the highest server version. This may be useful -in the future- to get a
+   * sense of "time" (or, since versions are opaque to the client, at least a
+   * notion of ordering with respect to other updates). The absence of this
+   * field should be interpreted as 'unknown' and does not distinguish the
+   * case between a) no updates ignored; and b) field wasn't supported at the
+   * time the last update was ignored. To distinguish between these two, the
+   * field above can be used.
    * </pre>
    *
-   * <code>optional bool bookmark_client_tags_in_protocol_enabled = 5;</code>
+   * <code>optional int64 max_version_among_ignored_updates_due_to_missing_parent = 8;</code>
    */
-  private void clearBookmarkClientTagsInProtocolEnabled() {
+  private void clearMaxVersionAmongIgnoredUpdatesDueToMissingParent() {
     bitField0_ = (bitField0_ & ~0x00000008);
-    bookmarkClientTagsInProtocolEnabled_ = false;
+    maxVersionAmongIgnoredUpdatesDueToMissingParent_ = 0L;
   }
 
   public static org.chromium.components.sync.protocol.BookmarkModelMetadata parseFrom(
@@ -754,212 +794,252 @@ public  final class BookmarkModelMetadata extends
     /**
      * <pre>
      * Indicates whether the reupload of bookmarks has been triggered such that
-     * they include the full title, which means that their sequence number has
-     * been increased (independently of whether the commit has succeeded or even
-     * started).
-     * TODO(crbug.com/1066962): remove this code when most of bookmarks are
+     * they include fields like |type|, |unique_position| and |parent_guid|, which
+     * means that their sequence number has been increased (independently of
+     * whether the commit has succeeded or even started).
+     * TODO(crbug.com/1232951): remove this code when most of bookmarks are
      * reuploaded.
      * </pre>
      *
-     * <code>optional bool bookmarks_full_title_reuploaded = 3;</code>
-     * @return Whether the bookmarksFullTitleReuploaded field is set.
+     * <code>optional bool bookmarks_hierarchy_fields_reuploaded = 6;</code>
+     * @return Whether the bookmarksHierarchyFieldsReuploaded field is set.
      */
     @java.lang.Override
-    public boolean hasBookmarksFullTitleReuploaded() {
-      return instance.hasBookmarksFullTitleReuploaded();
+    public boolean hasBookmarksHierarchyFieldsReuploaded() {
+      return instance.hasBookmarksHierarchyFieldsReuploaded();
     }
     /**
      * <pre>
      * Indicates whether the reupload of bookmarks has been triggered such that
-     * they include the full title, which means that their sequence number has
-     * been increased (independently of whether the commit has succeeded or even
-     * started).
-     * TODO(crbug.com/1066962): remove this code when most of bookmarks are
+     * they include fields like |type|, |unique_position| and |parent_guid|, which
+     * means that their sequence number has been increased (independently of
+     * whether the commit has succeeded or even started).
+     * TODO(crbug.com/1232951): remove this code when most of bookmarks are
      * reuploaded.
      * </pre>
      *
-     * <code>optional bool bookmarks_full_title_reuploaded = 3;</code>
-     * @return The bookmarksFullTitleReuploaded.
+     * <code>optional bool bookmarks_hierarchy_fields_reuploaded = 6;</code>
+     * @return The bookmarksHierarchyFieldsReuploaded.
      */
     @java.lang.Override
-    public boolean getBookmarksFullTitleReuploaded() {
-      return instance.getBookmarksFullTitleReuploaded();
+    public boolean getBookmarksHierarchyFieldsReuploaded() {
+      return instance.getBookmarksHierarchyFieldsReuploaded();
     }
     /**
      * <pre>
      * Indicates whether the reupload of bookmarks has been triggered such that
-     * they include the full title, which means that their sequence number has
-     * been increased (independently of whether the commit has succeeded or even
-     * started).
-     * TODO(crbug.com/1066962): remove this code when most of bookmarks are
+     * they include fields like |type|, |unique_position| and |parent_guid|, which
+     * means that their sequence number has been increased (independently of
+     * whether the commit has succeeded or even started).
+     * TODO(crbug.com/1232951): remove this code when most of bookmarks are
      * reuploaded.
      * </pre>
      *
-     * <code>optional bool bookmarks_full_title_reuploaded = 3;</code>
-     * @param value The bookmarksFullTitleReuploaded to set.
+     * <code>optional bool bookmarks_hierarchy_fields_reuploaded = 6;</code>
+     * @param value The bookmarksHierarchyFieldsReuploaded to set.
      * @return This builder for chaining.
      */
-    public Builder setBookmarksFullTitleReuploaded(boolean value) {
+    public Builder setBookmarksHierarchyFieldsReuploaded(boolean value) {
       copyOnWrite();
-      instance.setBookmarksFullTitleReuploaded(value);
+      instance.setBookmarksHierarchyFieldsReuploaded(value);
       return this;
     }
     /**
      * <pre>
      * Indicates whether the reupload of bookmarks has been triggered such that
-     * they include the full title, which means that their sequence number has
-     * been increased (independently of whether the commit has succeeded or even
-     * started).
-     * TODO(crbug.com/1066962): remove this code when most of bookmarks are
+     * they include fields like |type|, |unique_position| and |parent_guid|, which
+     * means that their sequence number has been increased (independently of
+     * whether the commit has succeeded or even started).
+     * TODO(crbug.com/1232951): remove this code when most of bookmarks are
      * reuploaded.
      * </pre>
      *
-     * <code>optional bool bookmarks_full_title_reuploaded = 3;</code>
+     * <code>optional bool bookmarks_hierarchy_fields_reuploaded = 6;</code>
      * @return This builder for chaining.
      */
-    public Builder clearBookmarksFullTitleReuploaded() {
+    public Builder clearBookmarksHierarchyFieldsReuploaded() {
       copyOnWrite();
-      instance.clearBookmarksFullTitleReuploaded();
+      instance.clearBookmarksHierarchyFieldsReuploaded();
       return this;
     }
 
     /**
      * <pre>
-     * The local timestamp corresponding to the last time remote updates were
-     * received, in milliseconds since Unix epoch. Introduced in M86.
-     * TODO(crbug.com/1032052): Remove this code once all local sync metadata
-     * is required to populate the client tag (and be considered invalid
-     * otherwise).
+     * Number of remote updates that were ignored because the parent folder could
+     * not be determined since sync (bookmark sync) started (since initial sync,
+     * including initial sync itself). Note that this excludes updates
+     * representing changes (moves) to existing/tracked bookmarks (i.e. the parent
+     * folder used to be known, but the new one specified in the update isn't).
+     * Only a minority of users should have a non-zero value, due to a) corrupt
+     * data, reasons unknown; or b) permanent folders that were unsupported at the
+     * time the update was received (either for the permanent folder itself or for
+     * descendants). The absence of this field should be interpreted as 'unknown',
+     * which roughly means the counter wasn't supported by the browser -M77 or
+     * below- at the time sync was enabled (it also means, it will remain
+     * 'unknown' until initial sync is exercised, e.g. sync disabled and
+     * reenabled).
      * </pre>
      *
-     * <code>optional int64 last_sync_time = 4;</code>
-     * @return Whether the lastSyncTime field is set.
+     * <code>optional int64 num_ignored_updates_due_to_missing_parent = 7;</code>
+     * @return Whether the numIgnoredUpdatesDueToMissingParent field is set.
      */
     @java.lang.Override
-    public boolean hasLastSyncTime() {
-      return instance.hasLastSyncTime();
+    public boolean hasNumIgnoredUpdatesDueToMissingParent() {
+      return instance.hasNumIgnoredUpdatesDueToMissingParent();
     }
     /**
      * <pre>
-     * The local timestamp corresponding to the last time remote updates were
-     * received, in milliseconds since Unix epoch. Introduced in M86.
-     * TODO(crbug.com/1032052): Remove this code once all local sync metadata
-     * is required to populate the client tag (and be considered invalid
-     * otherwise).
+     * Number of remote updates that were ignored because the parent folder could
+     * not be determined since sync (bookmark sync) started (since initial sync,
+     * including initial sync itself). Note that this excludes updates
+     * representing changes (moves) to existing/tracked bookmarks (i.e. the parent
+     * folder used to be known, but the new one specified in the update isn't).
+     * Only a minority of users should have a non-zero value, due to a) corrupt
+     * data, reasons unknown; or b) permanent folders that were unsupported at the
+     * time the update was received (either for the permanent folder itself or for
+     * descendants). The absence of this field should be interpreted as 'unknown',
+     * which roughly means the counter wasn't supported by the browser -M77 or
+     * below- at the time sync was enabled (it also means, it will remain
+     * 'unknown' until initial sync is exercised, e.g. sync disabled and
+     * reenabled).
      * </pre>
      *
-     * <code>optional int64 last_sync_time = 4;</code>
-     * @return The lastSyncTime.
+     * <code>optional int64 num_ignored_updates_due_to_missing_parent = 7;</code>
+     * @return The numIgnoredUpdatesDueToMissingParent.
      */
     @java.lang.Override
-    public long getLastSyncTime() {
-      return instance.getLastSyncTime();
+    public long getNumIgnoredUpdatesDueToMissingParent() {
+      return instance.getNumIgnoredUpdatesDueToMissingParent();
     }
     /**
      * <pre>
-     * The local timestamp corresponding to the last time remote updates were
-     * received, in milliseconds since Unix epoch. Introduced in M86.
-     * TODO(crbug.com/1032052): Remove this code once all local sync metadata
-     * is required to populate the client tag (and be considered invalid
-     * otherwise).
+     * Number of remote updates that were ignored because the parent folder could
+     * not be determined since sync (bookmark sync) started (since initial sync,
+     * including initial sync itself). Note that this excludes updates
+     * representing changes (moves) to existing/tracked bookmarks (i.e. the parent
+     * folder used to be known, but the new one specified in the update isn't).
+     * Only a minority of users should have a non-zero value, due to a) corrupt
+     * data, reasons unknown; or b) permanent folders that were unsupported at the
+     * time the update was received (either for the permanent folder itself or for
+     * descendants). The absence of this field should be interpreted as 'unknown',
+     * which roughly means the counter wasn't supported by the browser -M77 or
+     * below- at the time sync was enabled (it also means, it will remain
+     * 'unknown' until initial sync is exercised, e.g. sync disabled and
+     * reenabled).
      * </pre>
      *
-     * <code>optional int64 last_sync_time = 4;</code>
-     * @param value The lastSyncTime to set.
+     * <code>optional int64 num_ignored_updates_due_to_missing_parent = 7;</code>
+     * @param value The numIgnoredUpdatesDueToMissingParent to set.
      * @return This builder for chaining.
      */
-    public Builder setLastSyncTime(long value) {
+    public Builder setNumIgnoredUpdatesDueToMissingParent(long value) {
       copyOnWrite();
-      instance.setLastSyncTime(value);
+      instance.setNumIgnoredUpdatesDueToMissingParent(value);
       return this;
     }
     /**
      * <pre>
-     * The local timestamp corresponding to the last time remote updates were
-     * received, in milliseconds since Unix epoch. Introduced in M86.
-     * TODO(crbug.com/1032052): Remove this code once all local sync metadata
-     * is required to populate the client tag (and be considered invalid
-     * otherwise).
+     * Number of remote updates that were ignored because the parent folder could
+     * not be determined since sync (bookmark sync) started (since initial sync,
+     * including initial sync itself). Note that this excludes updates
+     * representing changes (moves) to existing/tracked bookmarks (i.e. the parent
+     * folder used to be known, but the new one specified in the update isn't).
+     * Only a minority of users should have a non-zero value, due to a) corrupt
+     * data, reasons unknown; or b) permanent folders that were unsupported at the
+     * time the update was received (either for the permanent folder itself or for
+     * descendants). The absence of this field should be interpreted as 'unknown',
+     * which roughly means the counter wasn't supported by the browser -M77 or
+     * below- at the time sync was enabled (it also means, it will remain
+     * 'unknown' until initial sync is exercised, e.g. sync disabled and
+     * reenabled).
      * </pre>
      *
-     * <code>optional int64 last_sync_time = 4;</code>
+     * <code>optional int64 num_ignored_updates_due_to_missing_parent = 7;</code>
      * @return This builder for chaining.
      */
-    public Builder clearLastSyncTime() {
+    public Builder clearNumIgnoredUpdatesDueToMissingParent() {
       copyOnWrite();
-      instance.clearLastSyncTime();
+      instance.clearNumIgnoredUpdatesDueToMissingParent();
       return this;
     }
 
     /**
      * <pre>
-     * Represents whether bookmark commits sent to the server (most importantly
-     * creations) populate client tags. This is a layer on top of the usual
-     * FeatureList to avoid risky transitions during startup, to guard against
-     * in-flight commits.
-     * TODO(crbug.com/1032052): remove this code when the logic is enabled by
-     * default and enforced to true upon startup.
+     * See field above. Among such ignored updates, this field tracks which was
+     * the highest server version. This may be useful -in the future- to get a
+     * sense of "time" (or, since versions are opaque to the client, at least a
+     * notion of ordering with respect to other updates). The absence of this
+     * field should be interpreted as 'unknown' and does not distinguish the
+     * case between a) no updates ignored; and b) field wasn't supported at the
+     * time the last update was ignored. To distinguish between these two, the
+     * field above can be used.
      * </pre>
      *
-     * <code>optional bool bookmark_client_tags_in_protocol_enabled = 5;</code>
-     * @return Whether the bookmarkClientTagsInProtocolEnabled field is set.
+     * <code>optional int64 max_version_among_ignored_updates_due_to_missing_parent = 8;</code>
+     * @return Whether the maxVersionAmongIgnoredUpdatesDueToMissingParent field is set.
      */
     @java.lang.Override
-    public boolean hasBookmarkClientTagsInProtocolEnabled() {
-      return instance.hasBookmarkClientTagsInProtocolEnabled();
+    public boolean hasMaxVersionAmongIgnoredUpdatesDueToMissingParent() {
+      return instance.hasMaxVersionAmongIgnoredUpdatesDueToMissingParent();
     }
     /**
      * <pre>
-     * Represents whether bookmark commits sent to the server (most importantly
-     * creations) populate client tags. This is a layer on top of the usual
-     * FeatureList to avoid risky transitions during startup, to guard against
-     * in-flight commits.
-     * TODO(crbug.com/1032052): remove this code when the logic is enabled by
-     * default and enforced to true upon startup.
+     * See field above. Among such ignored updates, this field tracks which was
+     * the highest server version. This may be useful -in the future- to get a
+     * sense of "time" (or, since versions are opaque to the client, at least a
+     * notion of ordering with respect to other updates). The absence of this
+     * field should be interpreted as 'unknown' and does not distinguish the
+     * case between a) no updates ignored; and b) field wasn't supported at the
+     * time the last update was ignored. To distinguish between these two, the
+     * field above can be used.
      * </pre>
      *
-     * <code>optional bool bookmark_client_tags_in_protocol_enabled = 5;</code>
-     * @return The bookmarkClientTagsInProtocolEnabled.
+     * <code>optional int64 max_version_among_ignored_updates_due_to_missing_parent = 8;</code>
+     * @return The maxVersionAmongIgnoredUpdatesDueToMissingParent.
      */
     @java.lang.Override
-    public boolean getBookmarkClientTagsInProtocolEnabled() {
-      return instance.getBookmarkClientTagsInProtocolEnabled();
+    public long getMaxVersionAmongIgnoredUpdatesDueToMissingParent() {
+      return instance.getMaxVersionAmongIgnoredUpdatesDueToMissingParent();
     }
     /**
      * <pre>
-     * Represents whether bookmark commits sent to the server (most importantly
-     * creations) populate client tags. This is a layer on top of the usual
-     * FeatureList to avoid risky transitions during startup, to guard against
-     * in-flight commits.
-     * TODO(crbug.com/1032052): remove this code when the logic is enabled by
-     * default and enforced to true upon startup.
+     * See field above. Among such ignored updates, this field tracks which was
+     * the highest server version. This may be useful -in the future- to get a
+     * sense of "time" (or, since versions are opaque to the client, at least a
+     * notion of ordering with respect to other updates). The absence of this
+     * field should be interpreted as 'unknown' and does not distinguish the
+     * case between a) no updates ignored; and b) field wasn't supported at the
+     * time the last update was ignored. To distinguish between these two, the
+     * field above can be used.
      * </pre>
      *
-     * <code>optional bool bookmark_client_tags_in_protocol_enabled = 5;</code>
-     * @param value The bookmarkClientTagsInProtocolEnabled to set.
+     * <code>optional int64 max_version_among_ignored_updates_due_to_missing_parent = 8;</code>
+     * @param value The maxVersionAmongIgnoredUpdatesDueToMissingParent to set.
      * @return This builder for chaining.
      */
-    public Builder setBookmarkClientTagsInProtocolEnabled(boolean value) {
+    public Builder setMaxVersionAmongIgnoredUpdatesDueToMissingParent(long value) {
       copyOnWrite();
-      instance.setBookmarkClientTagsInProtocolEnabled(value);
+      instance.setMaxVersionAmongIgnoredUpdatesDueToMissingParent(value);
       return this;
     }
     /**
      * <pre>
-     * Represents whether bookmark commits sent to the server (most importantly
-     * creations) populate client tags. This is a layer on top of the usual
-     * FeatureList to avoid risky transitions during startup, to guard against
-     * in-flight commits.
-     * TODO(crbug.com/1032052): remove this code when the logic is enabled by
-     * default and enforced to true upon startup.
+     * See field above. Among such ignored updates, this field tracks which was
+     * the highest server version. This may be useful -in the future- to get a
+     * sense of "time" (or, since versions are opaque to the client, at least a
+     * notion of ordering with respect to other updates). The absence of this
+     * field should be interpreted as 'unknown' and does not distinguish the
+     * case between a) no updates ignored; and b) field wasn't supported at the
+     * time the last update was ignored. To distinguish between these two, the
+     * field above can be used.
      * </pre>
      *
-     * <code>optional bool bookmark_client_tags_in_protocol_enabled = 5;</code>
+     * <code>optional int64 max_version_among_ignored_updates_due_to_missing_parent = 8;</code>
      * @return This builder for chaining.
      */
-    public Builder clearBookmarkClientTagsInProtocolEnabled() {
+    public Builder clearMaxVersionAmongIgnoredUpdatesDueToMissingParent() {
       copyOnWrite();
-      instance.clearBookmarkClientTagsInProtocolEnabled();
+      instance.clearMaxVersionAmongIgnoredUpdatesDueToMissingParent();
       return this;
     }
 
@@ -983,13 +1063,13 @@ public  final class BookmarkModelMetadata extends
             "modelTypeState_",
             "bookmarksMetadata_",
             org.chromium.components.sync.protocol.BookmarkMetadata.class,
-            "bookmarksFullTitleReuploaded_",
-            "lastSyncTime_",
-            "bookmarkClientTagsInProtocolEnabled_",
+            "bookmarksHierarchyFieldsReuploaded_",
+            "numIgnoredUpdatesDueToMissingParent_",
+            "maxVersionAmongIgnoredUpdatesDueToMissingParent_",
           };
           java.lang.String info =
-              "\u0001\u0005\u0000\u0001\u0001\u0005\u0005\u0000\u0001\u0000\u0001\u1009\u0000\u0002" +
-              "\u001b\u0003\u1007\u0001\u0004\u1002\u0002\u0005\u1007\u0003";
+              "\u0001\u0005\u0000\u0001\u0001\b\u0005\u0000\u0001\u0000\u0001\u1009\u0000\u0002" +
+              "\u001b\u0006\u1007\u0001\u0007\u1002\u0002\b\u1002\u0003";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

@@ -1,15 +1,13 @@
 package org.chromium.base;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.annotations.MainDex;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @MainDex
 @CheckDiscard("crbug.com/993421")
-final class FeatureListJni implements FeatureList.Natives {
+public class FeatureListJni implements FeatureList.Natives {
   private static FeatureList.Natives testInstance;
 
   public static final JniStaticTestMocker<FeatureList.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.base.FeatureList.Natives>() {

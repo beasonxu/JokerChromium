@@ -13,25 +13,30 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class TextureQuadState extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 64;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(64, 0)};
+    private static final int STRUCT_SIZE = 88;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(88, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public ResourceId resourceId;
     public org.chromium.gfx.mojom.Size resourceSizeInPixels;
     public boolean premultipliedAlpha;
     public org.chromium.gfx.mojom.PointF uvTopLeft;
     public org.chromium.gfx.mojom.PointF uvBottomRight;
-    public int backgroundColor;
+    public org.chromium.skia.mojom.SkColor4f backgroundColor;
     public float[] vertexOpacity;
     public boolean yFlipped;
     public boolean nearestNeighbor;
     public boolean secureOutputOnly;
+    public boolean isStreamVideo;
     public boolean isVideoFrame;
     public int protectedVideoType;
-    public int hwProtectedValidationId;
+    public org.chromium.gfx.mojom.HdrMetadata hdrMetadata;
+    public org.chromium.gfx.mojom.Rect damageRect;
+    public int overlayPriorityHint;
 
     private TextureQuadState(int version) {
         super(STRUCT_SIZE, version);
@@ -94,11 +99,17 @@ public final class TextureQuadState extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.isVideoFrame = decoder0.readBoolean(24, 4);
+                result.isStreamVideo = decoder0.readBoolean(24, 4);
                 }
                 {
                     
-                result.backgroundColor = decoder0.readInt(28);
+                result.isVideoFrame = decoder0.readBoolean(24, 5);
+                }
+                {
+                    
+                result.protectedVideoType = decoder0.readInt(28);
+                    ProtectedVideoState.validate(result.protectedVideoType);
+                    result.protectedVideoType = ProtectedVideoState.toKnownValue(result.protectedVideoType);
                 }
                 {
                     
@@ -112,17 +123,28 @@ public final class TextureQuadState extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.vertexOpacity = decoder0.readFloats(48, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, 4);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(48, false);
+                result.backgroundColor = org.chromium.skia.mojom.SkColor4f.decode(decoder1);
                 }
                 {
                     
-                result.protectedVideoType = decoder0.readInt(56);
-                    ProtectedVideoState.validate(result.protectedVideoType);
-                    result.protectedVideoType = ProtectedVideoState.toKnownValue(result.protectedVideoType);
+                result.vertexOpacity = decoder0.readFloats(56, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, 4);
                 }
                 {
                     
-                result.hwProtectedValidationId = decoder0.readInt(60);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(64, true);
+                result.hdrMetadata = org.chromium.gfx.mojom.HdrMetadata.decode(decoder1);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(72, true);
+                result.damageRect = org.chromium.gfx.mojom.Rect.decode(decoder1);
+                }
+                {
+                    
+                result.overlayPriorityHint = decoder0.readInt(80);
+                    OverlayPriority.validate(result.overlayPriorityHint);
+                    result.overlayPriorityHint = OverlayPriority.toKnownValue(result.overlayPriorityHint);
                 }
 
         } finally {
@@ -148,18 +170,24 @@ public final class TextureQuadState extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.secureOutputOnly, 24, 3);
         
-        encoder0.encode(this.isVideoFrame, 24, 4);
+        encoder0.encode(this.isStreamVideo, 24, 4);
         
-        encoder0.encode(this.backgroundColor, 28);
+        encoder0.encode(this.isVideoFrame, 24, 5);
+        
+        encoder0.encode(this.protectedVideoType, 28);
         
         encoder0.encode(this.uvTopLeft, 32, false);
         
         encoder0.encode(this.uvBottomRight, 40, false);
         
-        encoder0.encode(this.vertexOpacity, 48, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, 4);
+        encoder0.encode(this.backgroundColor, 48, false);
         
-        encoder0.encode(this.protectedVideoType, 56);
+        encoder0.encode(this.vertexOpacity, 56, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, 4);
         
-        encoder0.encode(this.hwProtectedValidationId, 60);
+        encoder0.encode(this.hdrMetadata, 64, true);
+        
+        encoder0.encode(this.damageRect, 72, true);
+        
+        encoder0.encode(this.overlayPriorityHint, 80);
     }
 }

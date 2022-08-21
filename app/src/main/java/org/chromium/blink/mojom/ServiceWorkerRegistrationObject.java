@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ServiceWorkerRegistrationObject extends org.chromium.mojo.bindings.Interface {
 
@@ -23,15 +25,12 @@ public interface ServiceWorkerRegistrationObject extends org.chromium.mojo.bindi
 
     Manager<ServiceWorkerRegistrationObject, ServiceWorkerRegistrationObject.Proxy> MANAGER = ServiceWorkerRegistrationObject_Internal.MANAGER;
 
-
     void setServiceWorkerObjects(
 ChangedServiceWorkerObjectsMask changedMask, ServiceWorkerObjectInfo installing, ServiceWorkerObjectInfo waiting, ServiceWorkerObjectInfo active);
 
 
-
     void setUpdateViaCache(
 int updateViaCache);
-
 
 
     void updateFound(

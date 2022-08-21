@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface FileSystemAccessFileWriter extends org.chromium.mojo.bindings.Interface {
 
@@ -23,36 +25,32 @@ public interface FileSystemAccessFileWriter extends org.chromium.mojo.bindings.I
 
     Manager<FileSystemAccessFileWriter, FileSystemAccessFileWriter.Proxy> MANAGER = FileSystemAccessFileWriter_Internal.MANAGER;
 
-
     void write(
 long offset, org.chromium.mojo.system.DataPipe.ConsumerHandle stream, 
-WriteResponse callback);
+Write_Response callback);
 
-    interface WriteResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<FileSystemAccessError, Long> { }
-
+    interface Write_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<FileSystemAccessError, Long> { }
 
 
     void truncate(
 long length, 
-TruncateResponse callback);
+Truncate_Response callback);
 
-    interface TruncateResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<FileSystemAccessError> { }
-
+    interface Truncate_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<FileSystemAccessError> { }
 
 
     void close(
 
-CloseResponse callback);
+Close_Response callback);
 
-    interface CloseResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<FileSystemAccessError> { }
-
+    interface Close_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<FileSystemAccessError> { }
 
 
     void abort(
 
-AbortResponse callback);
+Abort_Response callback);
 
-    interface AbortResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<FileSystemAccessError> { }
+    interface Abort_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<FileSystemAccessError> { }
 
 
 }

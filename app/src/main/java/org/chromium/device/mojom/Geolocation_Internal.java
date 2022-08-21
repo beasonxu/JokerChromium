@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class Geolocation_Internal {
 
@@ -80,7 +82,7 @@ boolean highAccuracy) {
         @Override
         public void queryNextPosition(
 
-QueryNextPositionResponse callback) {
+QueryNextPosition_Response callback) {
 
             GeolocationQueryNextPositionParams _message = new GeolocationQueryNextPositionParams();
 
@@ -379,9 +381,9 @@ QueryNextPositionResponse callback) {
 
     static class GeolocationQueryNextPositionResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Geolocation.QueryNextPositionResponse mCallback;
+        private final Geolocation.QueryNextPosition_Response mCallback;
 
-        GeolocationQueryNextPositionResponseParamsForwardToCallback(Geolocation.QueryNextPositionResponse callback) {
+        GeolocationQueryNextPositionResponseParamsForwardToCallback(Geolocation.QueryNextPosition_Response callback) {
             this.mCallback = callback;
         }
 
@@ -406,7 +408,7 @@ QueryNextPositionResponse callback) {
         }
     }
 
-    static class GeolocationQueryNextPositionResponseParamsProxyToResponder implements Geolocation.QueryNextPositionResponse {
+    static class GeolocationQueryNextPositionResponseParamsProxyToResponder implements Geolocation.QueryNextPosition_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

@@ -13,6 +13,8 @@
 
 package org.chromium.service_manager.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class Connector_Internal {
 
@@ -69,7 +71,7 @@ class Connector_Internal {
         @Override
         public void bindInterface(
 ServiceFilter filter, String interfaceName, org.chromium.mojo.system.MessagePipeHandle interfacePipe, int priority, 
-BindInterfaceResponse callback) {
+BindInterface_Response callback) {
 
             ConnectorBindInterfaceParams _message = new ConnectorBindInterfaceParams();
 
@@ -97,7 +99,7 @@ BindInterfaceResponse callback) {
         @Override
         public void queryService(
 String serviceName, 
-QueryServiceResponse callback) {
+QueryService_Response callback) {
 
             ConnectorQueryServiceParams _message = new ConnectorQueryServiceParams();
 
@@ -119,7 +121,7 @@ QueryServiceResponse callback) {
         @Override
         public void warmService(
 ServiceFilter filter, 
-WarmServiceResponse callback) {
+WarmService_Response callback) {
 
             ConnectorWarmServiceParams _message = new ConnectorWarmServiceParams();
 
@@ -141,7 +143,7 @@ WarmServiceResponse callback) {
         @Override
         public void registerServiceInstance(
 Identity identity, org.chromium.mojo.system.MessagePipeHandle service, org.chromium.mojo.bindings.InterfaceRequest<ProcessMetadata> metadataReceiver, 
-RegisterServiceInstanceResponse callback) {
+RegisterServiceInstance_Response callback) {
 
             ConnectorRegisterServiceInstanceParams _message = new ConnectorRegisterServiceInstanceParams();
 
@@ -493,9 +495,9 @@ org.chromium.mojo.bindings.InterfaceRequest<Connector> receiver) {
 
     static class ConnectorBindInterfaceResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Connector.BindInterfaceResponse mCallback;
+        private final Connector.BindInterface_Response mCallback;
 
-        ConnectorBindInterfaceResponseParamsForwardToCallback(Connector.BindInterfaceResponse callback) {
+        ConnectorBindInterfaceResponseParamsForwardToCallback(Connector.BindInterface_Response callback) {
             this.mCallback = callback;
         }
 
@@ -520,7 +522,7 @@ org.chromium.mojo.bindings.InterfaceRequest<Connector> receiver) {
         }
     }
 
-    static class ConnectorBindInterfaceResponseParamsProxyToResponder implements Connector.BindInterfaceResponse {
+    static class ConnectorBindInterfaceResponseParamsProxyToResponder implements Connector.BindInterface_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -683,9 +685,9 @@ org.chromium.mojo.bindings.InterfaceRequest<Connector> receiver) {
 
     static class ConnectorQueryServiceResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Connector.QueryServiceResponse mCallback;
+        private final Connector.QueryService_Response mCallback;
 
-        ConnectorQueryServiceResponseParamsForwardToCallback(Connector.QueryServiceResponse callback) {
+        ConnectorQueryServiceResponseParamsForwardToCallback(Connector.QueryService_Response callback) {
             this.mCallback = callback;
         }
 
@@ -710,7 +712,7 @@ org.chromium.mojo.bindings.InterfaceRequest<Connector> receiver) {
         }
     }
 
-    static class ConnectorQueryServiceResponseParamsProxyToResponder implements Connector.QueryServiceResponse {
+    static class ConnectorQueryServiceResponseParamsProxyToResponder implements Connector.QueryService_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -881,9 +883,9 @@ org.chromium.mojo.bindings.InterfaceRequest<Connector> receiver) {
 
     static class ConnectorWarmServiceResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Connector.WarmServiceResponse mCallback;
+        private final Connector.WarmService_Response mCallback;
 
-        ConnectorWarmServiceResponseParamsForwardToCallback(Connector.WarmServiceResponse callback) {
+        ConnectorWarmServiceResponseParamsForwardToCallback(Connector.WarmService_Response callback) {
             this.mCallback = callback;
         }
 
@@ -908,7 +910,7 @@ org.chromium.mojo.bindings.InterfaceRequest<Connector> receiver) {
         }
     }
 
-    static class ConnectorWarmServiceResponseParamsProxyToResponder implements Connector.WarmServiceResponse {
+    static class ConnectorWarmServiceResponseParamsProxyToResponder implements Connector.WarmService_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1088,9 +1090,9 @@ org.chromium.mojo.bindings.InterfaceRequest<Connector> receiver) {
 
     static class ConnectorRegisterServiceInstanceResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Connector.RegisterServiceInstanceResponse mCallback;
+        private final Connector.RegisterServiceInstance_Response mCallback;
 
-        ConnectorRegisterServiceInstanceResponseParamsForwardToCallback(Connector.RegisterServiceInstanceResponse callback) {
+        ConnectorRegisterServiceInstanceResponseParamsForwardToCallback(Connector.RegisterServiceInstance_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1115,7 +1117,7 @@ org.chromium.mojo.bindings.InterfaceRequest<Connector> receiver) {
         }
     }
 
-    static class ConnectorRegisterServiceInstanceResponseParamsProxyToResponder implements Connector.RegisterServiceInstanceResponse {
+    static class ConnectorRegisterServiceInstanceResponseParamsProxyToResponder implements Connector.RegisterServiceInstance_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

@@ -12,11 +12,11 @@ public interface IsReadyToPayServiceCallback extends android.os.IInterface
   public static class Default implements org.chromium.IsReadyToPayServiceCallback
   {
     /**
-         * Method to be called by the Service to indicate
-         * whether the payment app is ready for payment.
-         *
-         * @param isReadyToPay Whether payment app is ready to pay.
-         */
+     * Method to be called by the Service to indicate
+     * whether the payment app is ready for payment.
+     * 
+     * @param isReadyToPay Whether payment app is ready to pay.
+     */
     @Override public void handleIsReadyToPay(boolean isReadyToPay) throws android.os.RemoteException
     {
     }
@@ -28,7 +28,6 @@ public interface IsReadyToPayServiceCallback extends android.os.IInterface
   /** Local-side IPC implementation stub class. */
   public static abstract class Stub extends android.os.Binder implements org.chromium.IsReadyToPayServiceCallback
   {
-    private static final java.lang.String DESCRIPTOR = "org.chromium.IsReadyToPayServiceCallback";
     /** Construct the stub at attach it to the interface. */
     public Stub()
     {
@@ -56,6 +55,9 @@ public interface IsReadyToPayServiceCallback extends android.os.IInterface
     @Override public boolean onTransact(int code, android.os.Parcel data, android.os.Parcel reply, int flags) throws android.os.RemoteException
     {
       java.lang.String descriptor = DESCRIPTOR;
+      if (code >= android.os.IBinder.FIRST_CALL_TRANSACTION && code <= android.os.IBinder.LAST_CALL_TRANSACTION) {
+        data.enforceInterface(descriptor);
+      }
       switch (code)
       {
         case INTERFACE_TRANSACTION:
@@ -63,19 +65,22 @@ public interface IsReadyToPayServiceCallback extends android.os.IInterface
           reply.writeString(descriptor);
           return true;
         }
+      }
+      switch (code)
+      {
         case TRANSACTION_handleIsReadyToPay:
         {
-          data.enforceInterface(descriptor);
           boolean _arg0;
           _arg0 = (0!=data.readInt());
           this.handleIsReadyToPay(_arg0);
-          return true;
+          break;
         }
         default:
         {
           return super.onTransact(code, data, reply, flags);
         }
       }
+      return true;
     }
     private static class Proxy implements org.chromium.IsReadyToPayServiceCallback
     {
@@ -93,11 +98,11 @@ public interface IsReadyToPayServiceCallback extends android.os.IInterface
         return DESCRIPTOR;
       }
       /**
-           * Method to be called by the Service to indicate
-           * whether the payment app is ready for payment.
-           *
-           * @param isReadyToPay Whether payment app is ready to pay.
-           */
+       * Method to be called by the Service to indicate
+       * whether the payment app is ready for payment.
+       * 
+       * @param isReadyToPay Whether payment app is ready to pay.
+       */
       @Override public void handleIsReadyToPay(boolean isReadyToPay) throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
@@ -105,40 +110,20 @@ public interface IsReadyToPayServiceCallback extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(((isReadyToPay)?(1):(0)));
           boolean _status = mRemote.transact(Stub.TRANSACTION_handleIsReadyToPay, _data, null, android.os.IBinder.FLAG_ONEWAY);
-          if (!_status && getDefaultImpl() != null) {
-            getDefaultImpl().handleIsReadyToPay(isReadyToPay);
-            return;
-          }
         }
         finally {
           _data.recycle();
         }
       }
-      public static org.chromium.IsReadyToPayServiceCallback sDefaultImpl;
     }
     static final int TRANSACTION_handleIsReadyToPay = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);
-    public static boolean setDefaultImpl(org.chromium.IsReadyToPayServiceCallback impl) {
-      // Only one user of this interface can use this function
-      // at a time. This is a heuristic to detect if two different
-      // users in the same process use this function.
-      if (Stub.Proxy.sDefaultImpl != null) {
-        throw new IllegalStateException("setDefaultImpl() called twice");
-      }
-      if (impl != null) {
-        Stub.Proxy.sDefaultImpl = impl;
-        return true;
-      }
-      return false;
-    }
-    public static org.chromium.IsReadyToPayServiceCallback getDefaultImpl() {
-      return Stub.Proxy.sDefaultImpl;
-    }
   }
+  public static final java.lang.String DESCRIPTOR = "org.chromium.IsReadyToPayServiceCallback";
   /**
-       * Method to be called by the Service to indicate
-       * whether the payment app is ready for payment.
-       *
-       * @param isReadyToPay Whether payment app is ready to pay.
-       */
+   * Method to be called by the Service to indicate
+   * whether the payment app is ready for payment.
+   * 
+   * @param isReadyToPay Whether payment app is ready to pay.
+   */
   public void handleIsReadyToPay(boolean isReadyToPay) throws android.os.RemoteException;
 }

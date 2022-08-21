@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface MediaStreamDispatcherHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,45 +25,52 @@ public interface MediaStreamDispatcherHost extends org.chromium.mojo.bindings.In
 
     Manager<MediaStreamDispatcherHost, MediaStreamDispatcherHost.Proxy> MANAGER = MediaStreamDispatcherHost_Internal.MANAGER;
 
-
-    void generateStream(
+    void generateStreams(
 int requestId, StreamControls controls, boolean userGesture, StreamSelectionInfo audioStreamSelectionInfo, 
-GenerateStreamResponse callback);
+GenerateStreams_Response callback);
 
-    interface GenerateStreamResponse extends org.chromium.mojo.bindings.Callbacks.Callback5<Integer, String, MediaStreamDevice[], MediaStreamDevice[], Boolean> { }
-
+    interface GenerateStreams_Response extends org.chromium.mojo.bindings.Callbacks.Callback4<Integer, String, StreamDevicesSet, Boolean> { }
 
 
     void cancelRequest(
 int requestId);
 
 
-
     void stopStreamDevice(
 String deviceId, org.chromium.mojo_base.mojom.UnguessableToken sessionId);
 
 
-
     void openDevice(
 int requestId, String deviceId, int type, 
-OpenDeviceResponse callback);
+OpenDevice_Response callback);
 
-    interface OpenDeviceResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<Boolean, String, MediaStreamDevice> { }
-
+    interface OpenDevice_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<Boolean, String, MediaStreamDevice> { }
 
 
     void closeDevice(
 String label);
 
 
-
     void setCapturingLinkSecured(
 org.chromium.mojo_base.mojom.UnguessableToken sessionId, int type, boolean isSecure);
 
 
-
     void onStreamStarted(
 String label);
+
+
+    void getOpenDevice(
+int requestId, org.chromium.mojo_base.mojom.UnguessableToken sessionId, org.chromium.mojo_base.mojom.UnguessableToken transferId, 
+GetOpenDevice_Response callback);
+
+    interface GetOpenDevice_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, GetOpenDeviceResponse> { }
+
+
+    void keepDeviceAliveForTransfer(
+org.chromium.mojo_base.mojom.UnguessableToken sessionId, org.chromium.mojo_base.mojom.UnguessableToken transferId, 
+KeepDeviceAliveForTransfer_Response callback);
+
+    interface KeepDeviceAliveForTransfer_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
 }

@@ -13,8 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface IdleManager extends org.chromium.mojo.bindings.Interface {
+
+
+    
+    public static final int USER_INPUT_THRESHOLD_MS = (int) 60000;
+
 
 
 
@@ -23,12 +30,11 @@ public interface IdleManager extends org.chromium.mojo.bindings.Interface {
 
     Manager<IdleManager, IdleManager.Proxy> MANAGER = IdleManager_Internal.MANAGER;
 
-
     void addMonitor(
-org.chromium.mojo_base.mojom.TimeDelta threshold, IdleMonitor monitor, 
-AddMonitorResponse callback);
+IdleMonitor monitor, 
+AddMonitor_Response callback);
 
-    interface AddMonitorResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, IdleState> { }
+    interface AddMonitor_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, IdleState> { }
 
 
 }

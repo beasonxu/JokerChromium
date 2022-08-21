@@ -2,9 +2,9 @@ package org.chromium.chrome.browser.browserservices.ui.splashscreen.trustedwebac
 
 import android.app.Activity;
 import dagger.internal.Factory;
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 import javax.inject.Provider;
-import org.chromium.chrome.browser.browserservices.BrowserServicesIntentDataProvider;
+import org.chromium.chrome.browser.browserservices.intents.BrowserServicesIntentDataProvider;
 import org.chromium.chrome.browser.browserservices.ui.splashscreen.SplashController;
 import org.chromium.ui.base.ActivityWindowAndroid;
 

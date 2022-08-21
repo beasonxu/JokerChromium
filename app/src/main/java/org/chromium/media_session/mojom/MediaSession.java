@@ -13,6 +13,8 @@
 
 package org.chromium.media_session.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface MediaSession extends org.chromium.mojo.bindings.Interface {
 
@@ -20,6 +22,12 @@ public interface MediaSession extends org.chromium.mojo.bindings.Interface {
 
     public static final class SuspendType {
         private static final boolean IS_EXTENSIBLE = true;
+        @IntDef({
+
+            SuspendType.SYSTEM,
+            SuspendType.UI,
+            SuspendType.CONTENT})
+        public @interface EnumType {}
 
         public static final int SYSTEM = 0;
         public static final int UI = 1;
@@ -49,103 +57,105 @@ public interface MediaSession extends org.chromium.mojo.bindings.Interface {
 
     Manager<MediaSession, MediaSession.Proxy> MANAGER = MediaSession_Internal.MANAGER;
 
-
     void getMediaSessionInfo(
 
-GetMediaSessionInfoResponse callback);
+GetMediaSessionInfo_Response callback);
 
-    interface GetMediaSessionInfoResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<MediaSessionInfo> { }
-
+    interface GetMediaSessionInfo_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<MediaSessionInfo> { }
 
 
     void getDebugInfo(
 
-GetDebugInfoResponse callback);
+GetDebugInfo_Response callback);
 
-    interface GetDebugInfoResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<MediaSessionDebugInfo> { }
-
+    interface GetDebugInfo_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<MediaSessionDebugInfo> { }
 
 
     void startDucking(
 );
 
 
-
     void stopDucking(
 );
-
 
 
     void suspend(
 int suspendType);
 
 
-
     void resume(
 int suspendType);
-
 
 
     void addObserver(
 MediaSessionObserver observer);
 
 
-
     void previousTrack(
 );
-
 
 
     void nextTrack(
 );
 
 
-
     void seek(
 org.chromium.mojo_base.mojom.TimeDelta seekTime);
-
 
 
     void stop(
 int suspendType);
 
 
-
     void skipAd(
 );
 
 
-
     void getMediaImageBitmap(
 MediaImage image, int minimumSizePx, int desiredSizePx, 
-GetMediaImageBitmapResponse callback);
+GetMediaImageBitmap_Response callback);
 
-    interface GetMediaImageBitmapResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<MediaImageBitmap> { }
-
+    interface GetMediaImageBitmap_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<MediaImageBitmap> { }
 
 
     void seekTo(
 org.chromium.mojo_base.mojom.TimeDelta seekTime);
 
 
-
     void scrubTo(
 org.chromium.mojo_base.mojom.TimeDelta seekTime);
-
 
 
     void enterPictureInPicture(
 );
 
 
-
     void exitPictureInPicture(
 );
 
 
-
     void setAudioSinkId(
 String id);
+
+
+    void toggleMicrophone(
+);
+
+
+    void toggleCamera(
+);
+
+
+    void hangUp(
+);
+
+
+    void raise(
+);
+
+
+    void setMute(
+boolean mute);
 
 
 }

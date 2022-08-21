@@ -13,8 +13,20 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ClipboardHost extends org.chromium.mojo.bindings.Interface {
+
+
+    
+    public static final int MAX_FORMAT_SIZE = (int) 1024;
+
+
+
+    
+    public static final int MAX_DATA_SIZE = (int) 1073741824;
+
 
 
 
@@ -23,120 +35,120 @@ public interface ClipboardHost extends org.chromium.mojo.bindings.Interface {
 
     Manager<ClipboardHost, ClipboardHost.Proxy> MANAGER = ClipboardHost_Internal.MANAGER;
 
-
     void getSequenceNumber(
 int buffer, 
-GetSequenceNumberResponse callback);
+GetSequenceNumber_Response callback);
 
-    interface GetSequenceNumberResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Long> { }
-
+    interface GetSequenceNumber_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<ClipboardSequenceNumberToken> { }
 
 
     void isFormatAvailable(
 int format, int buffer, 
-IsFormatAvailableResponse callback);
+IsFormatAvailable_Response callback);
 
-    interface IsFormatAvailableResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface IsFormatAvailable_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void readAvailableTypes(
 int buffer, 
-ReadAvailableTypesResponse callback);
+ReadAvailableTypes_Response callback);
 
-    interface ReadAvailableTypesResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.String16[]> { }
-
+    interface ReadAvailableTypes_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.String16[]> { }
 
 
     void readText(
 int buffer, 
-ReadTextResponse callback);
+ReadText_Response callback);
 
-    interface ReadTextResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.BigString16> { }
-
+    interface ReadText_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.BigString16> { }
 
 
     void readHtml(
 int buffer, 
-ReadHtmlResponse callback);
+ReadHtml_Response callback);
 
-    interface ReadHtmlResponse extends org.chromium.mojo.bindings.Callbacks.Callback4<org.chromium.mojo_base.mojom.BigString16, org.chromium.url.mojom.Url, Integer, Integer> { }
-
+    interface ReadHtml_Response extends org.chromium.mojo.bindings.Callbacks.Callback4<org.chromium.mojo_base.mojom.BigString16, org.chromium.url.mojom.Url, Integer, Integer> { }
 
 
     void readSvg(
 int buffer, 
-ReadSvgResponse callback);
+ReadSvg_Response callback);
 
-    interface ReadSvgResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.BigString16> { }
-
+    interface ReadSvg_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.BigString16> { }
 
 
     void readRtf(
 int buffer, 
-ReadRtfResponse callback);
+ReadRtf_Response callback);
 
-    interface ReadRtfResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.BigString> { }
+    interface ReadRtf_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.BigString> { }
 
 
-
-    void readImage(
+    void readPng(
 int buffer, 
-ReadImageResponse callback);
+ReadPng_Response callback);
 
-    interface ReadImageResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.skia.mojom.BitmapN32> { }
-
+    interface ReadPng_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.BigBuffer> { }
 
 
     void readFiles(
 int buffer, 
-ReadFilesResponse callback);
+ReadFiles_Response callback);
 
-    interface ReadFilesResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<ClipboardFiles> { }
-
+    interface ReadFiles_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<ClipboardFiles> { }
 
 
     void readCustomData(
 int buffer, org.chromium.mojo_base.mojom.String16 type, 
-ReadCustomDataResponse callback);
+ReadCustomData_Response callback);
 
-    interface ReadCustomDataResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.BigString16> { }
+    interface ReadCustomData_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.BigString16> { }
 
+
+    void readAvailableCustomAndStandardFormats(
+
+ReadAvailableCustomAndStandardFormats_Response callback);
+
+    interface ReadAvailableCustomAndStandardFormats_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.String16[]> { }
+
+
+    void readUnsanitizedCustomFormat(
+org.chromium.mojo_base.mojom.String16 format, 
+ReadUnsanitizedCustomFormat_Response callback);
+
+    interface ReadUnsanitizedCustomFormat_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.BigBuffer> { }
 
 
     void writeText(
 org.chromium.mojo_base.mojom.BigString16 text);
 
 
-
     void writeHtml(
 org.chromium.mojo_base.mojom.BigString16 markup, org.chromium.url.mojom.Url url);
-
 
 
     void writeSvg(
 org.chromium.mojo_base.mojom.BigString16 markup);
 
 
-
     void writeSmartPasteMarker(
 );
-
 
 
     void writeCustomData(
 java.util.Map<org.chromium.mojo_base.mojom.String16, org.chromium.mojo_base.mojom.BigString16> data);
 
 
-
     void writeBookmark(
 String url, org.chromium.mojo_base.mojom.String16 title);
-
 
 
     void writeImage(
 org.chromium.skia.mojom.BitmapN32 image);
 
+
+    void writeUnsanitizedCustomFormat(
+org.chromium.mojo_base.mojom.String16 format, org.chromium.mojo_base.mojom.BigBuffer data);
 
 
     void commitWrite(

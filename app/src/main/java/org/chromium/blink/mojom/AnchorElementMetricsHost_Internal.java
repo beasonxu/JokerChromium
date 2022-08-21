@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class AnchorElementMetricsHost_Internal {
 
@@ -47,9 +49,11 @@ class AnchorElementMetricsHost_Internal {
     };
 
 
-    private static final int REPORT_ANCHOR_ELEMENT_METRICS_ON_CLICK_ORDINAL = 0;
+    private static final int REPORT_ANCHOR_ELEMENT_CLICK_ORDINAL = 0;
 
-    private static final int REPORT_ANCHOR_ELEMENT_METRICS_ON_LOAD_ORDINAL = 1;
+    private static final int REPORT_NEW_ANCHOR_ELEMENTS_ORDINAL = 1;
+
+    private static final int REPORT_ANCHOR_ELEMENTS_ENTERED_VIEWPORT_ORDINAL = 2;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements AnchorElementMetricsHost.Proxy {
@@ -61,37 +65,52 @@ class AnchorElementMetricsHost_Internal {
 
 
         @Override
-        public void reportAnchorElementMetricsOnClick(
-AnchorElementMetrics metrics) {
+        public void reportAnchorElementClick(
+AnchorElementClick clicked) {
 
-            AnchorElementMetricsHostReportAnchorElementMetricsOnClickParams _message = new AnchorElementMetricsHostReportAnchorElementMetricsOnClickParams();
+            AnchorElementMetricsHostReportAnchorElementClickParams _message = new AnchorElementMetricsHostReportAnchorElementClickParams();
 
-            _message.metrics = metrics;
+            _message.clicked = clicked;
 
 
             getProxyHandler().getMessageReceiver().accept(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(REPORT_ANCHOR_ELEMENT_METRICS_ON_CLICK_ORDINAL)));
+                            new org.chromium.mojo.bindings.MessageHeader(REPORT_ANCHOR_ELEMENT_CLICK_ORDINAL)));
 
         }
 
 
         @Override
-        public void reportAnchorElementMetricsOnLoad(
-AnchorElementMetrics[] metrics, org.chromium.gfx.mojom.Size viewportSize) {
+        public void reportNewAnchorElements(
+AnchorElementMetrics[] metrics) {
 
-            AnchorElementMetricsHostReportAnchorElementMetricsOnLoadParams _message = new AnchorElementMetricsHostReportAnchorElementMetricsOnLoadParams();
+            AnchorElementMetricsHostReportNewAnchorElementsParams _message = new AnchorElementMetricsHostReportNewAnchorElementsParams();
 
             _message.metrics = metrics;
-
-            _message.viewportSize = viewportSize;
 
 
             getProxyHandler().getMessageReceiver().accept(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(REPORT_ANCHOR_ELEMENT_METRICS_ON_LOAD_ORDINAL)));
+                            new org.chromium.mojo.bindings.MessageHeader(REPORT_NEW_ANCHOR_ELEMENTS_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void reportAnchorElementsEnteredViewport(
+AnchorElementEnteredViewport[] elements) {
+
+            AnchorElementMetricsHostReportAnchorElementsEnteredViewportParams _message = new AnchorElementMetricsHostReportAnchorElementsEnteredViewportParams();
+
+            _message.elements = elements;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(REPORT_ANCHOR_ELEMENTS_ENTERED_VIEWPORT_ORDINAL)));
 
         }
 
@@ -127,12 +146,12 @@ AnchorElementMetrics[] metrics, org.chromium.gfx.mojom.Size viewportSize) {
 
 
 
-                    case REPORT_ANCHOR_ELEMENT_METRICS_ON_CLICK_ORDINAL: {
+                    case REPORT_ANCHOR_ELEMENT_CLICK_ORDINAL: {
 
-                        AnchorElementMetricsHostReportAnchorElementMetricsOnClickParams data =
-                                AnchorElementMetricsHostReportAnchorElementMetricsOnClickParams.deserialize(messageWithHeader.getPayload());
+                        AnchorElementMetricsHostReportAnchorElementClickParams data =
+                                AnchorElementMetricsHostReportAnchorElementClickParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().reportAnchorElementMetricsOnClick(data.metrics);
+                        getImpl().reportAnchorElementClick(data.clicked);
                         return true;
                     }
 
@@ -140,12 +159,25 @@ AnchorElementMetrics[] metrics, org.chromium.gfx.mojom.Size viewportSize) {
 
 
 
-                    case REPORT_ANCHOR_ELEMENT_METRICS_ON_LOAD_ORDINAL: {
+                    case REPORT_NEW_ANCHOR_ELEMENTS_ORDINAL: {
 
-                        AnchorElementMetricsHostReportAnchorElementMetricsOnLoadParams data =
-                                AnchorElementMetricsHostReportAnchorElementMetricsOnLoadParams.deserialize(messageWithHeader.getPayload());
+                        AnchorElementMetricsHostReportNewAnchorElementsParams data =
+                                AnchorElementMetricsHostReportNewAnchorElementsParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().reportAnchorElementMetricsOnLoad(data.metrics, data.viewportSize);
+                        getImpl().reportNewAnchorElements(data.metrics);
+                        return true;
+                    }
+
+
+
+
+
+                    case REPORT_ANCHOR_ELEMENTS_ENTERED_VIEWPORT_ORDINAL: {
+
+                        AnchorElementMetricsHostReportAnchorElementsEnteredViewportParams data =
+                                AnchorElementMetricsHostReportAnchorElementsEnteredViewportParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().reportAnchorElementsEnteredViewport(data.elements);
                         return true;
                     }
 
@@ -183,6 +215,8 @@ AnchorElementMetrics[] metrics, org.chromium.gfx.mojom.Size viewportSize) {
 
 
 
+
+
                     default:
                         return false;
                 }
@@ -195,22 +229,22 @@ AnchorElementMetrics[] metrics, org.chromium.gfx.mojom.Size viewportSize) {
 
 
     
-    static final class AnchorElementMetricsHostReportAnchorElementMetricsOnClickParams extends org.chromium.mojo.bindings.Struct {
+    static final class AnchorElementMetricsHostReportAnchorElementClickParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public AnchorElementMetrics metrics;
+        public AnchorElementClick clicked;
 
-        private AnchorElementMetricsHostReportAnchorElementMetricsOnClickParams(int version) {
+        private AnchorElementMetricsHostReportAnchorElementClickParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public AnchorElementMetricsHostReportAnchorElementMetricsOnClickParams() {
+        public AnchorElementMetricsHostReportAnchorElementClickParams() {
             this(0);
         }
 
-        public static AnchorElementMetricsHostReportAnchorElementMetricsOnClickParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static AnchorElementMetricsHostReportAnchorElementClickParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -219,26 +253,26 @@ AnchorElementMetrics[] metrics, org.chromium.gfx.mojom.Size viewportSize) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static AnchorElementMetricsHostReportAnchorElementMetricsOnClickParams deserialize(java.nio.ByteBuffer data) {
+        public static AnchorElementMetricsHostReportAnchorElementClickParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static AnchorElementMetricsHostReportAnchorElementMetricsOnClickParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static AnchorElementMetricsHostReportAnchorElementClickParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            AnchorElementMetricsHostReportAnchorElementMetricsOnClickParams result;
+            AnchorElementMetricsHostReportAnchorElementClickParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new AnchorElementMetricsHostReportAnchorElementMetricsOnClickParams(elementsOrVersion);
+                result = new AnchorElementMetricsHostReportAnchorElementClickParams(elementsOrVersion);
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    result.metrics = AnchorElementMetrics.decode(decoder1);
+                    result.clicked = AnchorElementClick.decode(decoder1);
                     }
 
             } finally {
@@ -252,30 +286,29 @@ AnchorElementMetrics[] metrics, org.chromium.gfx.mojom.Size viewportSize) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.metrics, 8, false);
+            encoder0.encode(this.clicked, 8, false);
         }
     }
 
 
 
     
-    static final class AnchorElementMetricsHostReportAnchorElementMetricsOnLoadParams extends org.chromium.mojo.bindings.Struct {
+    static final class AnchorElementMetricsHostReportNewAnchorElementsParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public AnchorElementMetrics[] metrics;
-        public org.chromium.gfx.mojom.Size viewportSize;
 
-        private AnchorElementMetricsHostReportAnchorElementMetricsOnLoadParams(int version) {
+        private AnchorElementMetricsHostReportNewAnchorElementsParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public AnchorElementMetricsHostReportAnchorElementMetricsOnLoadParams() {
+        public AnchorElementMetricsHostReportNewAnchorElementsParams() {
             this(0);
         }
 
-        public static AnchorElementMetricsHostReportAnchorElementMetricsOnLoadParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static AnchorElementMetricsHostReportNewAnchorElementsParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -284,22 +317,22 @@ AnchorElementMetrics[] metrics, org.chromium.gfx.mojom.Size viewportSize) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static AnchorElementMetricsHostReportAnchorElementMetricsOnLoadParams deserialize(java.nio.ByteBuffer data) {
+        public static AnchorElementMetricsHostReportNewAnchorElementsParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static AnchorElementMetricsHostReportAnchorElementMetricsOnLoadParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static AnchorElementMetricsHostReportNewAnchorElementsParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            AnchorElementMetricsHostReportAnchorElementMetricsOnLoadParams result;
+            AnchorElementMetricsHostReportNewAnchorElementsParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new AnchorElementMetricsHostReportAnchorElementMetricsOnLoadParams(elementsOrVersion);
+                result = new AnchorElementMetricsHostReportNewAnchorElementsParams(elementsOrVersion);
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
@@ -312,11 +345,6 @@ AnchorElementMetrics[] metrics, org.chromium.gfx.mojom.Size viewportSize) {
                             result.metrics[i1] = AnchorElementMetrics.decode(decoder2);
                         }
                     }
-                    }
-                    {
-                        
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
-                    result.viewportSize = org.chromium.gfx.mojom.Size.decode(decoder1);
                     }
 
             } finally {
@@ -339,8 +367,86 @@ AnchorElementMetrics[] metrics, org.chromium.gfx.mojom.Size viewportSize) {
                     encoder1.encode(this.metrics[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
                 }
             }
+        }
+    }
+
+
+
+    
+    static final class AnchorElementMetricsHostReportAnchorElementsEnteredViewportParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public AnchorElementEnteredViewport[] elements;
+
+        private AnchorElementMetricsHostReportAnchorElementsEnteredViewportParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public AnchorElementMetricsHostReportAnchorElementsEnteredViewportParams() {
+            this(0);
+        }
+
+        public static AnchorElementMetricsHostReportAnchorElementsEnteredViewportParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static AnchorElementMetricsHostReportAnchorElementsEnteredViewportParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static AnchorElementMetricsHostReportAnchorElementsEnteredViewportParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            AnchorElementMetricsHostReportAnchorElementsEnteredViewportParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new AnchorElementMetricsHostReportAnchorElementsEnteredViewportParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    {
+                        org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                        result.elements = new AnchorElementEnteredViewport[si1.elementsOrVersion];
+                        for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
+                            
+                            org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                            result.elements[i1] = AnchorElementEnteredViewport.decode(decoder2);
+                        }
+                    }
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.viewportSize, 16, false);
+            if (this.elements == null) {
+                encoder0.encodeNullPointer(8, false);
+            } else {
+                org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.elements.length, 8, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                for (int i0 = 0; i0 < this.elements.length; ++i0) {
+                    
+                    encoder1.encode(this.elements[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
+                }
+            }
         }
     }
 

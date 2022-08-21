@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class ChunkedDataPipeGetter_Internal {
 
@@ -63,7 +65,7 @@ class ChunkedDataPipeGetter_Internal {
         @Override
         public void getSize(
 
-GetSizeResponse callback) {
+GetSize_Response callback) {
 
             ChunkedDataPipeGetterGetSizeParams _message = new ChunkedDataPipeGetterGetSizeParams();
 
@@ -322,9 +324,9 @@ org.chromium.mojo.system.DataPipe.ProducerHandle pipe) {
 
     static class ChunkedDataPipeGetterGetSizeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ChunkedDataPipeGetter.GetSizeResponse mCallback;
+        private final ChunkedDataPipeGetter.GetSize_Response mCallback;
 
-        ChunkedDataPipeGetterGetSizeResponseParamsForwardToCallback(ChunkedDataPipeGetter.GetSizeResponse callback) {
+        ChunkedDataPipeGetterGetSizeResponseParamsForwardToCallback(ChunkedDataPipeGetter.GetSize_Response callback) {
             this.mCallback = callback;
         }
 
@@ -349,7 +351,7 @@ org.chromium.mojo.system.DataPipe.ProducerHandle pipe) {
         }
     }
 
-    static class ChunkedDataPipeGetterGetSizeResponseParamsProxyToResponder implements ChunkedDataPipeGetter.GetSizeResponse {
+    static class ChunkedDataPipeGetterGetSizeResponseParamsProxyToResponder implements ChunkedDataPipeGetter.GetSize_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

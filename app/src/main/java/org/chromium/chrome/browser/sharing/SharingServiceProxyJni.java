@@ -5,7 +5,6 @@ import java.lang.Override;
 import java.lang.Runnable;
 import java.lang.String;
 import java.util.ArrayList;
-import javax.annotation.Generated;
 import org.chromium.base.Callback;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
@@ -13,9 +12,8 @@ import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.chrome.browser.profiles.Profile;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class SharingServiceProxyJni implements SharingServiceProxy.Natives {
+class SharingServiceProxyJni implements SharingServiceProxy.Natives {
   private static SharingServiceProxy.Natives testInstance;
 
   public static final JniStaticTestMocker<SharingServiceProxy.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.sharing.SharingServiceProxy.Natives>() {

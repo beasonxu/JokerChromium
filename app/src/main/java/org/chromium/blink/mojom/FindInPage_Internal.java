@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class FindInPage_Internal {
 
@@ -53,11 +55,11 @@ class FindInPage_Internal {
 
     private static final int CLEAR_ACTIVE_FIND_MATCH_ORDINAL = 2;
 
-    private static final int GET_NEAREST_FIND_RESULT_ORDINAL = 3;
+    private static final int SET_CLIENT_ORDINAL = 3;
 
-    private static final int ACTIVATE_NEAREST_FIND_RESULT_ORDINAL = 4;
+    private static final int GET_NEAREST_FIND_RESULT_ORDINAL = 4;
 
-    private static final int SET_CLIENT_ORDINAL = 5;
+    private static final int ACTIVATE_NEAREST_FIND_RESULT_ORDINAL = 5;
 
     private static final int FIND_MATCH_RECTS_ORDINAL = 6;
 
@@ -124,9 +126,26 @@ int action) {
 
 
         @Override
+        public void setClient(
+FindInPageClient client) {
+
+            FindInPageSetClientParams _message = new FindInPageSetClientParams();
+
+            _message.client = client;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(SET_CLIENT_ORDINAL)));
+
+        }
+
+
+        @Override
         public void getNearestFindResult(
 org.chromium.gfx.mojom.PointF point, 
-GetNearestFindResultResponse callback) {
+GetNearestFindResult_Response callback) {
 
             FindInPageGetNearestFindResultParams _message = new FindInPageGetNearestFindResultParams();
 
@@ -165,26 +184,9 @@ int requestId, org.chromium.gfx.mojom.PointF point) {
 
 
         @Override
-        public void setClient(
-FindInPageClient client) {
-
-            FindInPageSetClientParams _message = new FindInPageSetClientParams();
-
-            _message.client = client;
-
-
-            getProxyHandler().getMessageReceiver().accept(
-                    _message.serializeWithHeader(
-                            getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(SET_CLIENT_ORDINAL)));
-
-        }
-
-
-        @Override
         public void findMatchRects(
 int currentVersion, 
-FindMatchRectsResponse callback) {
+FindMatchRects_Response callback) {
 
             FindInPageFindMatchRectsParams _message = new FindInPageFindMatchRectsParams();
 
@@ -272,6 +274,19 @@ FindMatchRectsResponse callback) {
 
 
 
+                    case SET_CLIENT_ORDINAL: {
+
+                        FindInPageSetClientParams data =
+                                FindInPageSetClientParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().setClient(data.client);
+                        return true;
+                    }
+
+
+
+
+
 
 
                     case ACTIVATE_NEAREST_FIND_RESULT_ORDINAL: {
@@ -280,19 +295,6 @@ FindMatchRectsResponse callback) {
                                 FindInPageActivateNearestFindResultParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().activateNearestFindResult(data.requestId, data.point);
-                        return true;
-                    }
-
-
-
-
-
-                    case SET_CLIENT_ORDINAL: {
-
-                        FindInPageSetClientParams data =
-                                FindInPageSetClientParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().setClient(data.client);
                         return true;
                     }
 
@@ -339,6 +341,8 @@ FindMatchRectsResponse callback) {
 
 
 
+
+
                     case GET_NEAREST_FIND_RESULT_ORDINAL: {
 
                         FindInPageGetNearestFindResultParams data =
@@ -347,8 +351,6 @@ FindMatchRectsResponse callback) {
                         getImpl().getNearestFindResult(data.point, new FindInPageGetNearestFindResultResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
-
-
 
 
 
@@ -579,6 +581,69 @@ FindMatchRectsResponse callback) {
 
 
     
+    static final class FindInPageSetClientParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public FindInPageClient client;
+
+        private FindInPageSetClientParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public FindInPageSetClientParams() {
+            this(0);
+        }
+
+        public static FindInPageSetClientParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static FindInPageSetClientParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static FindInPageSetClientParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            FindInPageSetClientParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new FindInPageSetClientParams(elementsOrVersion);
+                    {
+                        
+                    result.client = decoder0.readServiceInterface(8, false, FindInPageClient.MANAGER);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.client, 8, false, FindInPageClient.MANAGER);
+        }
+    }
+
+
+
+    
     static final class FindInPageGetNearestFindResultParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 16;
@@ -705,9 +770,9 @@ FindMatchRectsResponse callback) {
 
     static class FindInPageGetNearestFindResultResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FindInPage.GetNearestFindResultResponse mCallback;
+        private final FindInPage.GetNearestFindResult_Response mCallback;
 
-        FindInPageGetNearestFindResultResponseParamsForwardToCallback(FindInPage.GetNearestFindResultResponse callback) {
+        FindInPageGetNearestFindResultResponseParamsForwardToCallback(FindInPage.GetNearestFindResult_Response callback) {
             this.mCallback = callback;
         }
 
@@ -732,7 +797,7 @@ FindMatchRectsResponse callback) {
         }
     }
 
-    static class FindInPageGetNearestFindResultResponseParamsProxyToResponder implements FindInPage.GetNearestFindResultResponse {
+    static class FindInPageGetNearestFindResultResponseParamsProxyToResponder implements FindInPage.GetNearestFindResult_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -832,69 +897,6 @@ FindMatchRectsResponse callback) {
             encoder0.encode(this.requestId, 8);
             
             encoder0.encode(this.point, 16, false);
-        }
-    }
-
-
-
-    
-    static final class FindInPageSetClientParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public FindInPageClient client;
-
-        private FindInPageSetClientParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public FindInPageSetClientParams() {
-            this(0);
-        }
-
-        public static FindInPageSetClientParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static FindInPageSetClientParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static FindInPageSetClientParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            FindInPageSetClientParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new FindInPageSetClientParams(elementsOrVersion);
-                    {
-                        
-                    result.client = decoder0.readServiceInterface(8, false, FindInPageClient.MANAGER);
-                    }
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-            
-            encoder0.encode(this.client, 8, false, FindInPageClient.MANAGER);
         }
     }
 
@@ -1058,9 +1060,9 @@ FindMatchRectsResponse callback) {
 
     static class FindInPageFindMatchRectsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FindInPage.FindMatchRectsResponse mCallback;
+        private final FindInPage.FindMatchRects_Response mCallback;
 
-        FindInPageFindMatchRectsResponseParamsForwardToCallback(FindInPage.FindMatchRectsResponse callback) {
+        FindInPageFindMatchRectsResponseParamsForwardToCallback(FindInPage.FindMatchRects_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1085,7 +1087,7 @@ FindMatchRectsResponse callback) {
         }
     }
 
-    static class FindInPageFindMatchRectsResponseParamsProxyToResponder implements FindInPage.FindMatchRectsResponse {
+    static class FindInPageFindMatchRectsResponseParamsProxyToResponder implements FindInPage.FindMatchRects_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class FetchApiResponse extends org.chromium.mojo.bindings.Struct {
 
@@ -41,6 +43,7 @@ public final class FetchApiResponse extends org.chromium.mojo.bindings.Struct {
     public boolean wasFetchedViaSpdy;
     public boolean hasRangeRequested;
     public org.chromium.network.mojom.AuthChallengeInfo authChallengeInfo;
+    public boolean requestIncludeCredentials;
 
     private FetchApiResponse(int version) {
         super(STRUCT_SIZE, version);
@@ -52,6 +55,7 @@ public final class FetchApiResponse extends org.chromium.mojo.bindings.Struct {
         this.alpnNegotiatedProtocol = (String) "unknown";
         this.wasFetchedViaSpdy = (boolean) false;
         this.hasRangeRequested = (boolean) false;
+        this.requestIncludeCredentials = (boolean) true;
     }
 
     public FetchApiResponse() {
@@ -107,6 +111,10 @@ public final class FetchApiResponse extends org.chromium.mojo.bindings.Struct {
                 {
                     
                 result.hasRangeRequested = decoder0.readBoolean(18, 1);
+                }
+                {
+                    
+                result.requestIncludeCredentials = decoder0.readBoolean(18, 2);
                 }
                 {
                     
@@ -262,6 +270,8 @@ public final class FetchApiResponse extends org.chromium.mojo.bindings.Struct {
         encoder0.encode(this.wasFetchedViaSpdy, 18, 0);
         
         encoder0.encode(this.hasRangeRequested, 18, 1);
+        
+        encoder0.encode(this.requestIncludeCredentials, 18, 2);
         
         encoder0.encode(this.responseType, 20);
         

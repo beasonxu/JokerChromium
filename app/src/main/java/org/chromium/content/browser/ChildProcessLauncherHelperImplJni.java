@@ -1,15 +1,13 @@
 package org.chromium.content.browser;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ChildProcessLauncherHelperImplJni implements ChildProcessLauncherHelperImpl.Natives {
+class ChildProcessLauncherHelperImplJni implements ChildProcessLauncherHelperImpl.Natives {
   private static ChildProcessLauncherHelperImpl.Natives testInstance;
 
   public static final JniStaticTestMocker<ChildProcessLauncherHelperImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content.browser.ChildProcessLauncherHelperImpl.Natives>() {
@@ -30,9 +28,8 @@ final class ChildProcessLauncherHelperImplJni implements ChildProcessLauncherHel
 
   @Override
   public void setTerminationInfo(long termiantionInfoPtr, int bindingState, boolean killedByUs,
-      boolean cleanExit, boolean exceptionDuringInit, int remainingStrong, int remainingModerate,
-      int remainingWaived, int reverseRank) {
-    GEN_JNI.org_chromium_content_browser_ChildProcessLauncherHelperImpl_setTerminationInfo(termiantionInfoPtr, bindingState, killedByUs, cleanExit, exceptionDuringInit, remainingStrong, remainingModerate, remainingWaived, reverseRank);
+      boolean cleanExit, boolean exceptionDuringInit, int reverseRank) {
+    GEN_JNI.org_chromium_content_browser_ChildProcessLauncherHelperImpl_setTerminationInfo(termiantionInfoPtr, bindingState, killedByUs, cleanExit, exceptionDuringInit, reverseRank);
   }
 
   @Override

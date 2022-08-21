@@ -3,7 +3,6 @@ package org.chromium.chrome.browser.ntp;
 import java.lang.Override;
 import java.lang.String;
 import java.util.List;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
@@ -11,9 +10,8 @@ import org.chromium.base.natives.GEN_JNI;
 import org.chromium.chrome.browser.profiles.Profile;
 import org.chromium.chrome.browser.tab.Tab;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ForeignSessionHelperJni implements ForeignSessionHelper.Natives {
+class ForeignSessionHelperJni implements ForeignSessionHelper.Natives {
   private static ForeignSessionHelper.Natives testInstance;
 
   public static final JniStaticTestMocker<ForeignSessionHelper.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.ntp.ForeignSessionHelper.Natives>() {

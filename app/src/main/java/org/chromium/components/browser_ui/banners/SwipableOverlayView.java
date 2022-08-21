@@ -232,7 +232,8 @@ public abstract class SwipableOverlayView extends FrameLayout {
             private float mInitialExtentY;
 
             @Override
-            public void onFlingStartGesture(int scrollOffsetY, int scrollExtentY) {
+            public void onFlingStartGesture(
+                    int scrollOffsetY, int scrollExtentY, boolean isDirectionUp) {
                 if (!isAllowedToAutoHide() || !cancelCurrentAnimation()) return;
                 resetInternalScrollState(scrollOffsetY, scrollExtentY);
                 mGestureState = Gesture.FLINGING;
@@ -260,7 +261,8 @@ public abstract class SwipableOverlayView extends FrameLayout {
             }
 
             @Override
-            public void onScrollStarted(int scrollOffsetY, int scrollExtentY) {
+            public void onScrollStarted(
+                    int scrollOffsetY, int scrollExtentY, boolean isDirectionUp) {
                 if (!isAllowedToAutoHide() || !cancelCurrentAnimation()) return;
                 resetInternalScrollState(scrollOffsetY, scrollExtentY);
                 mLastScrollOffsetY = scrollOffsetY;
@@ -425,6 +427,8 @@ public abstract class SwipableOverlayView extends FrameLayout {
      * this ensures no child animation within this view's layout will be clipped by a SurfaceView.
      */
     @Override
+    // TODO(crbug.com/1231201): work out why this is causing a lint error
+    @SuppressWarnings("Override")
     public boolean gatherTransparentRegion(Region region) {
         float translationY = getTranslationY();
         setTranslationY(0);

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface NotificationService extends org.chromium.mojo.bindings.Interface {
 
@@ -23,43 +25,37 @@ public interface NotificationService extends org.chromium.mojo.bindings.Interfac
 
     Manager<NotificationService, NotificationService.Proxy> MANAGER = NotificationService_Internal.MANAGER;
 
-
     void getPermissionStatus(
 
-GetPermissionStatusResponse callback);
+GetPermissionStatus_Response callback);
 
-    interface GetPermissionStatusResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface GetPermissionStatus_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void displayNonPersistentNotification(
 String token, NotificationData notificationData, NotificationResources notificationResources, NonPersistentNotificationListener eventListener);
 
 
-
     void closeNonPersistentNotification(
 String token);
 
 
-
     void displayPersistentNotification(
 long serviceWorkerRegistrationId, NotificationData notificationData, NotificationResources notificationResources, 
-DisplayPersistentNotificationResponse callback);
+DisplayPersistentNotification_Response callback);
 
-    interface DisplayPersistentNotificationResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface DisplayPersistentNotification_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void closePersistentNotification(
 String notificationId);
 
 
-
     void getNotifications(
 long serviceWorkerRegistrationId, String filterTag, boolean includeTriggered, 
-GetNotificationsResponse callback);
+GetNotifications_Response callback);
 
-    interface GetNotificationsResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<String[], NotificationData[]> { }
+    interface GetNotifications_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<String[], NotificationData[]> { }
 
 
 }

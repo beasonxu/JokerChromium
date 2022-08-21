@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface PopupWidgetHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,25 +25,22 @@ public interface PopupWidgetHost extends org.chromium.mojo.bindings.Interface {
 
     Manager<PopupWidgetHost, PopupWidgetHost.Proxy> MANAGER = PopupWidgetHost_Internal.MANAGER;
 
-
     void requestClosePopup(
 );
 
 
-
     void showPopup(
-org.chromium.gfx.mojom.Rect initialRect, 
-ShowPopupResponse callback);
+org.chromium.gfx.mojom.Rect initialRect, org.chromium.gfx.mojom.Rect anchorRect, 
+ShowPopup_Response callback);
 
-    interface ShowPopupResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface ShowPopup_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void setPopupBounds(
 org.chromium.gfx.mojom.Rect bounds, 
-SetPopupBoundsResponse callback);
+SetPopupBounds_Response callback);
 
-    interface SetPopupBoundsResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
+    interface SetPopupBounds_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
 }

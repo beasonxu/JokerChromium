@@ -72,6 +72,11 @@ public abstract class MediaSwitches {
     // Number of buffers to use for WaveOut.
     public static final String WAVE_OUT_BUFFERS = "waveout-buffers";
 
+    // Emulates audio capture timestamps instead of using timestamps from the actual
+    // audio device.
+    // See crbug.com/1315231 for more details.
+    public static final String USE_FAKE_AUDIO_CAPTURE_TIMESTAMPS = "use-fake-audio-capture-timestamps";
+
     // Enables protected buffers for encrypted video streams.
     public static final String ENABLE_PROTECTED_VIDEO_BUFFERS = "enable-protected-video-buffers";
 
@@ -86,12 +91,18 @@ public abstract class MediaSwitches {
     // Present video content as overlays.
     public static final String USE_OVERLAYS_FOR_VIDEO = "use-overlays-for-video";
 
+    // Forces AudioManagerFuchsia to assume that the AudioCapturer implements echo
+    // cancellation.
+    // TODO(crbug.com/852834): Remove this once AudioManagerFuchsia is updated to
+    // get this information from AudioCapturerFactory.
+    public static final String AUDIO_CAPTURER_WITH_ECHO_CANCELLATION = "audio-capturer-with-echo-cancellation";
+
     // Use CRAS, the ChromeOS audio server.
     public static final String USE_CRAS = "use-cras";
 
     // For automated testing of protected content, this switch allows specific
-    // domains (e.g. example.com) to skip asking the user for permission to share
-    // the protected media identifier. In this context, domain does not include the
+    // domains (e.g. example.com) to always allow the permission to share the
+    // protected media identifier. In this context, domain does not include the
     // port number. User's content settings will not be affected by enabling this
     // switch.
     // Reference: http://crbug.com/718608
@@ -172,10 +183,12 @@ public abstract class MediaSwitches {
     public static final String OVERRIDE_ENABLED_CDM_INTERFACE_VERSION = "override-enabled-cdm-interface-version";
 
     // Overrides hardware secure codecs support for testing. If specified, real
-    // platform hardware secure codecs check will be skipped. Codecs are separated
-    // by comma. Valid codecs are "vp8", "vp9" and "avc1". For example:
-    //  --override-hardware-secure-codecs-for-testing=vp8,vp9
-    //  --override-hardware-secure-codecs-for-testing=avc1
+    // platform hardware secure codecs check will be skipped. Valid codecs are:
+    // - video: "vp8", "vp9", "avc1", "hevc", "dolbyvision"
+    // - audio: "mp4a", "vorbis"
+    // Codecs are separated by comma. For example:
+    //  --override-hardware-secure-codecs-for-testing=vp8,vp9,vorbis
+    //  --override-hardware-secure-codecs-for-testing=avc1,mp4a
     // CENC encryption scheme is assumed to be supported for the specified codecs.
     // If no valid codecs specified, no hardware secure codecs are supported. This
     // can be used to disable hardware secure codecs support:
@@ -185,9 +198,6 @@ public abstract class MediaSwitches {
     // Sets the default value for the kLiveCaptionEnabled preference to true.
     public static final String ENABLE_LIVE_CAPTION_PREF_FOR_TESTING = "enable-live-caption-pref-for-testing";
 
-    // Enables playback of clear (unencrypted) HEVC content for testing purposes.
-    public static final String ENABLE_CLEAR_HEVC_FOR_TESTING = "enable-clear-hevc-for-testing";
-
     // Autoplay policy that requires a document user activation.
     public static final String DOCUMENT_USER_ACTIVATION_REQUIRED_POLICY = "document-user-activation-required";
 
@@ -196,6 +206,18 @@ public abstract class MediaSwitches {
 
     // Autoplay policy to require a user gesture in order to play.
     public static final String USER_GESTURE_REQUIRED_POLICY = "user-gesture-required";
+
+    // Some (Qualcomm only at the moment) V4L2 video decoders require setting the
+    // framerate so that the hardware decoder can scale the clocks efficiently.
+    // This provides a mechanism during testing to lock the decoder framerate
+    // to a specific value.
+    public static final String HARDWARE_VIDEO_DECODE_FRAME_RATE = "hardware-video-decode-framerate";
+
+    // Set the maximum number of decoder threads for hardware video decoders on
+    // ChromeOS. This is intended to be used for development only.
+    // TODO(b/195769334): Propagate this to Chrome utility process for
+    // Out-of-Process video decoding.
+    public static final String MAX_CHROME_OS_DECODER_THREADS = "max-chromeos-decoder-threads";
 
     // Prevents instantiation.
     private MediaSwitches() {}

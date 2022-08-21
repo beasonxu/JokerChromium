@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface MdnsResponder extends org.chromium.mojo.bindings.Interface {
 
@@ -23,20 +25,18 @@ public interface MdnsResponder extends org.chromium.mojo.bindings.Interface {
 
     Manager<MdnsResponder, MdnsResponder.Proxy> MANAGER = MdnsResponder_Internal.MANAGER;
 
-
     void createNameForAddress(
 IpAddress address, 
-CreateNameForAddressResponse callback);
+CreateNameForAddress_Response callback);
 
-    interface CreateNameForAddressResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<String, Boolean> { }
-
+    interface CreateNameForAddress_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<String, Boolean> { }
 
 
     void removeNameForAddress(
 IpAddress address, 
-RemoveNameForAddressResponse callback);
+RemoveNameForAddress_Response callback);
 
-    interface RemoveNameForAddressResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Boolean, Boolean> { }
+    interface RemoveNameForAddress_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Boolean, Boolean> { }
 
 
 }

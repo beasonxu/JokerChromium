@@ -1,15 +1,13 @@
 package org.chromium.components.permissions.nfc;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class NfcSystemLevelSettingJni implements NfcSystemLevelSetting.Natives {
+class NfcSystemLevelSettingJni implements NfcSystemLevelSetting.Natives {
   private static NfcSystemLevelSetting.Natives testInstance;
 
   public static final JniStaticTestMocker<NfcSystemLevelSetting.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.permissions.nfc.NfcSystemLevelSetting.Natives>() {

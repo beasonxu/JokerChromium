@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface DevToolsSession extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface DevToolsSession extends org.chromium.mojo.bindings.Interface {
     }
 
     Manager<DevToolsSession, DevToolsSession.Proxy> MANAGER = DevToolsSession_Internal.MANAGER;
-
 
     void dispatchProtocolCommand(
 int callId, String method, org.chromium.mojo_base.mojom.ReadOnlyBuffer message);

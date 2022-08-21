@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class ContentIndexService_Internal {
 
@@ -69,7 +71,7 @@ class ContentIndexService_Internal {
         @Override
         public void getIconSizes(
 int category, 
-GetIconSizesResponse callback) {
+GetIconSizes_Response callback) {
 
             ContentIndexServiceGetIconSizesParams _message = new ContentIndexServiceGetIconSizesParams();
 
@@ -91,7 +93,7 @@ GetIconSizesResponse callback) {
         @Override
         public void checkOfflineCapability(
 long serviceWorkerRegistrationId, org.chromium.url.mojom.Url launchUrl, 
-CheckOfflineCapabilityResponse callback) {
+CheckOfflineCapability_Response callback) {
 
             ContentIndexServiceCheckOfflineCapabilityParams _message = new ContentIndexServiceCheckOfflineCapabilityParams();
 
@@ -115,7 +117,7 @@ CheckOfflineCapabilityResponse callback) {
         @Override
         public void add(
 long serviceWorkerRegistrationId, ContentDescription description, org.chromium.skia.mojom.BitmapN32[] icon, org.chromium.url.mojom.Url launchUrl, 
-AddResponse callback) {
+Add_Response callback) {
 
             ContentIndexServiceAddParams _message = new ContentIndexServiceAddParams();
 
@@ -143,7 +145,7 @@ AddResponse callback) {
         @Override
         public void delete(
 long serviceWorkerRegistrationId, String id, 
-DeleteResponse callback) {
+Delete_Response callback) {
 
             ContentIndexServiceDeleteParams _message = new ContentIndexServiceDeleteParams();
 
@@ -167,7 +169,7 @@ DeleteResponse callback) {
         @Override
         public void getDescriptions(
 long serviceWorkerRegistrationId, 
-GetDescriptionsResponse callback) {
+GetDescriptions_Response callback) {
 
             ContentIndexServiceGetDescriptionsParams _message = new ContentIndexServiceGetDescriptionsParams();
 
@@ -484,9 +486,9 @@ GetDescriptionsResponse callback) {
 
     static class ContentIndexServiceGetIconSizesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ContentIndexService.GetIconSizesResponse mCallback;
+        private final ContentIndexService.GetIconSizes_Response mCallback;
 
-        ContentIndexServiceGetIconSizesResponseParamsForwardToCallback(ContentIndexService.GetIconSizesResponse callback) {
+        ContentIndexServiceGetIconSizesResponseParamsForwardToCallback(ContentIndexService.GetIconSizes_Response callback) {
             this.mCallback = callback;
         }
 
@@ -511,7 +513,7 @@ GetDescriptionsResponse callback) {
         }
     }
 
-    static class ContentIndexServiceGetIconSizesResponseParamsProxyToResponder implements ContentIndexService.GetIconSizesResponse {
+    static class ContentIndexServiceGetIconSizesResponseParamsProxyToResponder implements ContentIndexService.GetIconSizes_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -679,9 +681,9 @@ GetDescriptionsResponse callback) {
 
     static class ContentIndexServiceCheckOfflineCapabilityResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ContentIndexService.CheckOfflineCapabilityResponse mCallback;
+        private final ContentIndexService.CheckOfflineCapability_Response mCallback;
 
-        ContentIndexServiceCheckOfflineCapabilityResponseParamsForwardToCallback(ContentIndexService.CheckOfflineCapabilityResponse callback) {
+        ContentIndexServiceCheckOfflineCapabilityResponseParamsForwardToCallback(ContentIndexService.CheckOfflineCapability_Response callback) {
             this.mCallback = callback;
         }
 
@@ -706,7 +708,7 @@ GetDescriptionsResponse callback) {
         }
     }
 
-    static class ContentIndexServiceCheckOfflineCapabilityResponseParamsProxyToResponder implements ContentIndexService.CheckOfflineCapabilityResponse {
+    static class ContentIndexServiceCheckOfflineCapabilityResponseParamsProxyToResponder implements ContentIndexService.CheckOfflineCapability_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -908,9 +910,9 @@ GetDescriptionsResponse callback) {
 
     static class ContentIndexServiceAddResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ContentIndexService.AddResponse mCallback;
+        private final ContentIndexService.Add_Response mCallback;
 
-        ContentIndexServiceAddResponseParamsForwardToCallback(ContentIndexService.AddResponse callback) {
+        ContentIndexServiceAddResponseParamsForwardToCallback(ContentIndexService.Add_Response callback) {
             this.mCallback = callback;
         }
 
@@ -935,7 +937,7 @@ GetDescriptionsResponse callback) {
         }
     }
 
-    static class ContentIndexServiceAddResponseParamsProxyToResponder implements ContentIndexService.AddResponse {
+    static class ContentIndexServiceAddResponseParamsProxyToResponder implements ContentIndexService.Add_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1104,9 +1106,9 @@ GetDescriptionsResponse callback) {
 
     static class ContentIndexServiceDeleteResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ContentIndexService.DeleteResponse mCallback;
+        private final ContentIndexService.Delete_Response mCallback;
 
-        ContentIndexServiceDeleteResponseParamsForwardToCallback(ContentIndexService.DeleteResponse callback) {
+        ContentIndexServiceDeleteResponseParamsForwardToCallback(ContentIndexService.Delete_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1131,7 +1133,7 @@ GetDescriptionsResponse callback) {
         }
     }
 
-    static class ContentIndexServiceDeleteResponseParamsProxyToResponder implements ContentIndexService.DeleteResponse {
+    static class ContentIndexServiceDeleteResponseParamsProxyToResponder implements ContentIndexService.Delete_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1317,9 +1319,9 @@ GetDescriptionsResponse callback) {
 
     static class ContentIndexServiceGetDescriptionsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ContentIndexService.GetDescriptionsResponse mCallback;
+        private final ContentIndexService.GetDescriptions_Response mCallback;
 
-        ContentIndexServiceGetDescriptionsResponseParamsForwardToCallback(ContentIndexService.GetDescriptionsResponse callback) {
+        ContentIndexServiceGetDescriptionsResponseParamsForwardToCallback(ContentIndexService.GetDescriptions_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1344,7 +1346,7 @@ GetDescriptionsResponse callback) {
         }
     }
 
-    static class ContentIndexServiceGetDescriptionsResponseParamsProxyToResponder implements ContentIndexService.GetDescriptionsResponse {
+    static class ContentIndexServiceGetDescriptionsResponseParamsProxyToResponder implements ContentIndexService.GetDescriptions_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

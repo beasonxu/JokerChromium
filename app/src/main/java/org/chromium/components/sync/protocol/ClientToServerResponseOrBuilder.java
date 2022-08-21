@@ -79,10 +79,18 @@ public interface ClientToServerResponseOrBuilder extends
 
   /**
    * <pre>
-   * Opaque store ID; if it changes, the contents of the client's cache
-   * is meaningless to this server.  This happens most typically when
-   * you switch from one storage backend instance (say, a test instance)
-   * to another (say, the official instance).
+   * Opaque server-provided ID representing an "epoch" of the server-side data,
+   * referred to as "birthday" or "store birthday". This ID remains fixed until
+   * server-side data gets cleared/reset (e.g. via ClearServerDataMessage),
+   * which clients experience as NOT_MY_BIRTHDAY error, and involves clearing
+   * all local sync metadata including the cached store birthday.
+   * This mechanism allows the server to implement clear-data/reset
+   * functionality that reliably identifies and deletes sync entities uploaded
+   * before the clear-data/reset event (e.g. via ClearServerDataMessage).
+   * Furthermore, it allows the server to deal reliably with in-flight changes
+   * from other clients upon clear-data event, because all writes issued with an
+   * outdated birthday (which in-flight writes would use) can be detected by the
+   * server.
    * </pre>
    *
    * <code>optional string store_birthday = 6;</code>
@@ -91,10 +99,18 @@ public interface ClientToServerResponseOrBuilder extends
   boolean hasStoreBirthday();
   /**
    * <pre>
-   * Opaque store ID; if it changes, the contents of the client's cache
-   * is meaningless to this server.  This happens most typically when
-   * you switch from one storage backend instance (say, a test instance)
-   * to another (say, the official instance).
+   * Opaque server-provided ID representing an "epoch" of the server-side data,
+   * referred to as "birthday" or "store birthday". This ID remains fixed until
+   * server-side data gets cleared/reset (e.g. via ClearServerDataMessage),
+   * which clients experience as NOT_MY_BIRTHDAY error, and involves clearing
+   * all local sync metadata including the cached store birthday.
+   * This mechanism allows the server to implement clear-data/reset
+   * functionality that reliably identifies and deletes sync entities uploaded
+   * before the clear-data/reset event (e.g. via ClearServerDataMessage).
+   * Furthermore, it allows the server to deal reliably with in-flight changes
+   * from other clients upon clear-data event, because all writes issued with an
+   * outdated birthday (which in-flight writes would use) can be detected by the
+   * server.
    * </pre>
    *
    * <code>optional string store_birthday = 6;</code>
@@ -103,10 +119,18 @@ public interface ClientToServerResponseOrBuilder extends
   java.lang.String getStoreBirthday();
   /**
    * <pre>
-   * Opaque store ID; if it changes, the contents of the client's cache
-   * is meaningless to this server.  This happens most typically when
-   * you switch from one storage backend instance (say, a test instance)
-   * to another (say, the official instance).
+   * Opaque server-provided ID representing an "epoch" of the server-side data,
+   * referred to as "birthday" or "store birthday". This ID remains fixed until
+   * server-side data gets cleared/reset (e.g. via ClearServerDataMessage),
+   * which clients experience as NOT_MY_BIRTHDAY error, and involves clearing
+   * all local sync metadata including the cached store birthday.
+   * This mechanism allows the server to implement clear-data/reset
+   * functionality that reliably identifies and deletes sync entities uploaded
+   * before the clear-data/reset event (e.g. via ClearServerDataMessage).
+   * Furthermore, it allows the server to deal reliably with in-flight changes
+   * from other clients upon clear-data event, because all writes issued with an
+   * outdated birthday (which in-flight writes would use) can be detected by the
+   * server.
    * </pre>
    *
    * <code>optional string store_birthday = 6;</code>
@@ -125,17 +149,6 @@ public interface ClientToServerResponseOrBuilder extends
    * @return The clientCommand.
    */
   org.chromium.components.sync.protocol.ClientCommand getClientCommand();
-
-  /**
-   * <code>optional .sync_pb.ProfilingData profiling_data = 8;</code>
-   * @return Whether the profilingData field is set.
-   */
-  boolean hasProfilingData();
-  /**
-   * <code>optional .sync_pb.ProfilingData profiling_data = 8;</code>
-   * @return The profilingData.
-   */
-  org.chromium.components.sync.protocol.ProfilingData getProfilingData();
 
   /**
    * <pre>

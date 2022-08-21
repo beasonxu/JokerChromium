@@ -5,7 +5,6 @@ import java.lang.Integer;
 import java.lang.Override;
 import java.lang.String;
 import java.util.List;
-import javax.annotation.Generated;
 import org.chromium.base.Callback;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
@@ -16,9 +15,8 @@ import org.chromium.content_public.browser.LoadUrlParams;
 import org.chromium.content_public.browser.WebContents;
 import org.chromium.url.GURL;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class OfflinePageBridgeJni implements OfflinePageBridge.Natives {
+class OfflinePageBridgeJni implements OfflinePageBridge.Natives {
   private static OfflinePageBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<OfflinePageBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.offlinepages.OfflinePageBridge.Natives>() {
@@ -33,7 +31,7 @@ final class OfflinePageBridgeJni implements OfflinePageBridge.Natives {
   };
 
   @Override
-  public boolean canSavePage(String url) {
+  public boolean canSavePage(GURL url) {
     return (boolean)GEN_JNI.org_chromium_chrome_browser_offlinepages_OfflinePageBridge_canSavePage(url);
   }
 
@@ -169,12 +167,6 @@ final class OfflinePageBridgeJni implements OfflinePageBridge.Natives {
   public OfflinePageItem getOfflinePage(long nativeOfflinePageBridge, OfflinePageBridge caller,
       WebContents webContents) {
     return (OfflinePageItem)GEN_JNI.org_chromium_chrome_browser_offlinepages_OfflinePageBridge_getOfflinePage(nativeOfflinePageBridge, caller, webContents);
-  }
-
-  @Override
-  public void checkForNewOfflineContent(long nativeOfflinePageBridge, OfflinePageBridge caller,
-      long freshnessTimeMillis, Callback<String> callback) {
-    GEN_JNI.org_chromium_chrome_browser_offlinepages_OfflinePageBridge_checkForNewOfflineContent(nativeOfflinePageBridge, caller, freshnessTimeMillis, callback);
   }
 
   @Override

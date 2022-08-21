@@ -5,7 +5,7 @@ package org.chromium.components.sync.protocol;
 
 /**
  * <pre>
- * Next tag: 9
+ * Next tag: 11
  * </pre>
  *
  * Protobuf type {@code sync_pb.AutofillOfferSpecifics}
@@ -54,6 +54,10 @@ public  final class AutofillOfferSpecifics extends
     long getInstrumentId(int index);
   }
   /**
+   * <pre>
+   * Proto containing data specific to a card-linked offer.
+   * </pre>
+   *
    * Protobuf type {@code sync_pb.AutofillOfferSpecifics.CardLinkedOfferData}
    */
   public  static final class CardLinkedOfferData extends
@@ -244,6 +248,10 @@ public  final class AutofillOfferSpecifics extends
     }
 
     /**
+     * <pre>
+     * Proto containing data specific to a card-linked offer.
+     * </pre>
+     *
      * Protobuf type {@code sync_pb.AutofillOfferSpecifics.CardLinkedOfferData}
      */
     public static final class Builder extends
@@ -424,6 +432,1711 @@ public  final class AutofillOfferSpecifics extends
     private static volatile com.google.protobuf.Parser<CardLinkedOfferData> PARSER;
 
     public static com.google.protobuf.Parser<CardLinkedOfferData> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface PromoCodeOfferDataOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:sync_pb.AutofillOfferSpecifics.PromoCodeOfferData)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <pre>
+     * The actual promo code which can be applied at checkout.
+     * </pre>
+     *
+     * <code>optional string promo_code = 1;</code>
+     * @return Whether the promoCode field is set.
+     */
+    boolean hasPromoCode();
+    /**
+     * <pre>
+     * The actual promo code which can be applied at checkout.
+     * </pre>
+     *
+     * <code>optional string promo_code = 1;</code>
+     * @return The promoCode.
+     */
+    java.lang.String getPromoCode();
+    /**
+     * <pre>
+     * The actual promo code which can be applied at checkout.
+     * </pre>
+     *
+     * <code>optional string promo_code = 1;</code>
+     * @return The bytes for promoCode.
+     */
+    com.google.protobuf.ByteString
+        getPromoCodeBytes();
+  }
+  /**
+   * <pre>
+   * Proto containing data specific to a promo code offer.
+   * </pre>
+   *
+   * Protobuf type {@code sync_pb.AutofillOfferSpecifics.PromoCodeOfferData}
+   */
+  public  static final class PromoCodeOfferData extends
+      com.google.protobuf.GeneratedMessageLite<
+          PromoCodeOfferData, PromoCodeOfferData.Builder> implements
+      // @@protoc_insertion_point(message_implements:sync_pb.AutofillOfferSpecifics.PromoCodeOfferData)
+      PromoCodeOfferDataOrBuilder {
+    private PromoCodeOfferData() {
+      promoCode_ = "";
+    }
+    private int bitField0_;
+    public static final int PROMO_CODE_FIELD_NUMBER = 1;
+    private java.lang.String promoCode_;
+    /**
+     * <pre>
+     * The actual promo code which can be applied at checkout.
+     * </pre>
+     *
+     * <code>optional string promo_code = 1;</code>
+     * @return Whether the promoCode field is set.
+     */
+    @java.lang.Override
+    public boolean hasPromoCode() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * The actual promo code which can be applied at checkout.
+     * </pre>
+     *
+     * <code>optional string promo_code = 1;</code>
+     * @return The promoCode.
+     */
+    @java.lang.Override
+    public java.lang.String getPromoCode() {
+      return promoCode_;
+    }
+    /**
+     * <pre>
+     * The actual promo code which can be applied at checkout.
+     * </pre>
+     *
+     * <code>optional string promo_code = 1;</code>
+     * @return The bytes for promoCode.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPromoCodeBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(promoCode_);
+    }
+    /**
+     * <pre>
+     * The actual promo code which can be applied at checkout.
+     * </pre>
+     *
+     * <code>optional string promo_code = 1;</code>
+     * @param value The promoCode to set.
+     */
+    private void setPromoCode(
+        java.lang.String value) {
+      value.getClass();
+  bitField0_ |= 0x00000001;
+      promoCode_ = value;
+    }
+    /**
+     * <pre>
+     * The actual promo code which can be applied at checkout.
+     * </pre>
+     *
+     * <code>optional string promo_code = 1;</code>
+     */
+    private void clearPromoCode() {
+      bitField0_ = (bitField0_ & ~0x00000001);
+      promoCode_ = getDefaultInstance().getPromoCode();
+    }
+    /**
+     * <pre>
+     * The actual promo code which can be applied at checkout.
+     * </pre>
+     *
+     * <code>optional string promo_code = 1;</code>
+     * @param value The bytes for promoCode to set.
+     */
+    private void setPromoCodeBytes(
+        com.google.protobuf.ByteString value) {
+      promoCode_ = value.toStringUtf8();
+      bitField0_ |= 0x00000001;
+    }
+
+    public static org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * <pre>
+     * Proto containing data specific to a promo code offer.
+     * </pre>
+     *
+     * Protobuf type {@code sync_pb.AutofillOfferSpecifics.PromoCodeOfferData}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData, Builder> implements
+        // @@protoc_insertion_point(builder_implements:sync_pb.AutofillOfferSpecifics.PromoCodeOfferData)
+        org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferDataOrBuilder {
+      // Construct using org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <pre>
+       * The actual promo code which can be applied at checkout.
+       * </pre>
+       *
+       * <code>optional string promo_code = 1;</code>
+       * @return Whether the promoCode field is set.
+       */
+      @java.lang.Override
+      public boolean hasPromoCode() {
+        return instance.hasPromoCode();
+      }
+      /**
+       * <pre>
+       * The actual promo code which can be applied at checkout.
+       * </pre>
+       *
+       * <code>optional string promo_code = 1;</code>
+       * @return The promoCode.
+       */
+      @java.lang.Override
+      public java.lang.String getPromoCode() {
+        return instance.getPromoCode();
+      }
+      /**
+       * <pre>
+       * The actual promo code which can be applied at checkout.
+       * </pre>
+       *
+       * <code>optional string promo_code = 1;</code>
+       * @return The bytes for promoCode.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getPromoCodeBytes() {
+        return instance.getPromoCodeBytes();
+      }
+      /**
+       * <pre>
+       * The actual promo code which can be applied at checkout.
+       * </pre>
+       *
+       * <code>optional string promo_code = 1;</code>
+       * @param value The promoCode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPromoCode(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setPromoCode(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * The actual promo code which can be applied at checkout.
+       * </pre>
+       *
+       * <code>optional string promo_code = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPromoCode() {
+        copyOnWrite();
+        instance.clearPromoCode();
+        return this;
+      }
+      /**
+       * <pre>
+       * The actual promo code which can be applied at checkout.
+       * </pre>
+       *
+       * <code>optional string promo_code = 1;</code>
+       * @param value The bytes for promoCode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPromoCodeBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setPromoCodeBytes(value);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:sync_pb.AutofillOfferSpecifics.PromoCodeOfferData)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "bitField0_",
+              "promoCode_",
+            };
+            java.lang.String info =
+                "\u0001\u0001\u0000\u0001\u0001\u0001\u0001\u0000\u0000\u0000\u0001\u1008\u0000";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData> parser = PARSER;
+          if (parser == null) {
+            synchronized (org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser =
+                    new DefaultInstanceBasedParser<org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData>(
+                        DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:sync_pb.AutofillOfferSpecifics.PromoCodeOfferData)
+    private static final org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData DEFAULT_INSTANCE;
+    static {
+      PromoCodeOfferData defaultInstance = new PromoCodeOfferData();
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = defaultInstance;
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        PromoCodeOfferData.class, defaultInstance);
+    }
+
+    public static org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<PromoCodeOfferData> PARSER;
+
+    public static com.google.protobuf.Parser<PromoCodeOfferData> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface DisplayStringsOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:sync_pb.AutofillOfferSpecifics.DisplayStrings)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale, explaining the value
+     * of the offer. For example, a promo code offer might display
+     * "$5 off on shoes, up to $50."
+     * </pre>
+     *
+     * <code>optional string value_prop_text = 1;</code>
+     * @return Whether the valuePropText field is set.
+     */
+    boolean hasValuePropText();
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale, explaining the value
+     * of the offer. For example, a promo code offer might display
+     * "$5 off on shoes, up to $50."
+     * </pre>
+     *
+     * <code>optional string value_prop_text = 1;</code>
+     * @return The valuePropText.
+     */
+    java.lang.String getValuePropText();
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale, explaining the value
+     * of the offer. For example, a promo code offer might display
+     * "$5 off on shoes, up to $50."
+     * </pre>
+     *
+     * <code>optional string value_prop_text = 1;</code>
+     * @return The bytes for valuePropText.
+     */
+    com.google.protobuf.ByteString
+        getValuePropTextBytes();
+
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on mobile as
+     * a link, prompting the user to click it to learn more about the offer.
+     * Generally, "See details".
+     * </pre>
+     *
+     * <code>optional string see_details_text_mobile = 2;</code>
+     * @return Whether the seeDetailsTextMobile field is set.
+     */
+    boolean hasSeeDetailsTextMobile();
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on mobile as
+     * a link, prompting the user to click it to learn more about the offer.
+     * Generally, "See details".
+     * </pre>
+     *
+     * <code>optional string see_details_text_mobile = 2;</code>
+     * @return The seeDetailsTextMobile.
+     */
+    java.lang.String getSeeDetailsTextMobile();
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on mobile as
+     * a link, prompting the user to click it to learn more about the offer.
+     * Generally, "See details".
+     * </pre>
+     *
+     * <code>optional string see_details_text_mobile = 2;</code>
+     * @return The bytes for seeDetailsTextMobile.
+     */
+    com.google.protobuf.ByteString
+        getSeeDetailsTextMobileBytes();
+
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on desktop
+     * (not as a link), informing the user that exclusions and restrictions may
+     * apply to the value prop text. Generally, "Terms apply."
+     * </pre>
+     *
+     * <code>optional string see_details_text_desktop = 3;</code>
+     * @return Whether the seeDetailsTextDesktop field is set.
+     */
+    boolean hasSeeDetailsTextDesktop();
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on desktop
+     * (not as a link), informing the user that exclusions and restrictions may
+     * apply to the value prop text. Generally, "Terms apply."
+     * </pre>
+     *
+     * <code>optional string see_details_text_desktop = 3;</code>
+     * @return The seeDetailsTextDesktop.
+     */
+    java.lang.String getSeeDetailsTextDesktop();
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on desktop
+     * (not as a link), informing the user that exclusions and restrictions may
+     * apply to the value prop text. Generally, "Terms apply."
+     * </pre>
+     *
+     * <code>optional string see_details_text_desktop = 3;</code>
+     * @return The bytes for seeDetailsTextDesktop.
+     */
+    com.google.protobuf.ByteString
+        getSeeDetailsTextDesktopBytes();
+
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on mobile,
+     * instructing them on how to redeem the offer. For example, a promo code
+     * offer might display "Tap the promo code field at checkout to autofill
+     * it."
+     * </pre>
+     *
+     * <code>optional string usage_instructions_text_mobile = 4;</code>
+     * @return Whether the usageInstructionsTextMobile field is set.
+     */
+    boolean hasUsageInstructionsTextMobile();
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on mobile,
+     * instructing them on how to redeem the offer. For example, a promo code
+     * offer might display "Tap the promo code field at checkout to autofill
+     * it."
+     * </pre>
+     *
+     * <code>optional string usage_instructions_text_mobile = 4;</code>
+     * @return The usageInstructionsTextMobile.
+     */
+    java.lang.String getUsageInstructionsTextMobile();
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on mobile,
+     * instructing them on how to redeem the offer. For example, a promo code
+     * offer might display "Tap the promo code field at checkout to autofill
+     * it."
+     * </pre>
+     *
+     * <code>optional string usage_instructions_text_mobile = 4;</code>
+     * @return The bytes for usageInstructionsTextMobile.
+     */
+    com.google.protobuf.ByteString
+        getUsageInstructionsTextMobileBytes();
+
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on desktop,
+     * instructing them on how to redeem the offer. For example, a promo code
+     * offer might display "Click the promo code field at checkout to autofill
+     * it."
+     * </pre>
+     *
+     * <code>optional string usage_instructions_text_desktop = 5;</code>
+     * @return Whether the usageInstructionsTextDesktop field is set.
+     */
+    boolean hasUsageInstructionsTextDesktop();
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on desktop,
+     * instructing them on how to redeem the offer. For example, a promo code
+     * offer might display "Click the promo code field at checkout to autofill
+     * it."
+     * </pre>
+     *
+     * <code>optional string usage_instructions_text_desktop = 5;</code>
+     * @return The usageInstructionsTextDesktop.
+     */
+    java.lang.String getUsageInstructionsTextDesktop();
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on desktop,
+     * instructing them on how to redeem the offer. For example, a promo code
+     * offer might display "Click the promo code field at checkout to autofill
+     * it."
+     * </pre>
+     *
+     * <code>optional string usage_instructions_text_desktop = 5;</code>
+     * @return The bytes for usageInstructionsTextDesktop.
+     */
+    com.google.protobuf.ByteString
+        getUsageInstructionsTextDesktopBytes();
+  }
+  /**
+   * <pre>
+   * Strings to be shown in client UI, based on the offer type and details.
+   * </pre>
+   *
+   * Protobuf type {@code sync_pb.AutofillOfferSpecifics.DisplayStrings}
+   */
+  public  static final class DisplayStrings extends
+      com.google.protobuf.GeneratedMessageLite<
+          DisplayStrings, DisplayStrings.Builder> implements
+      // @@protoc_insertion_point(message_implements:sync_pb.AutofillOfferSpecifics.DisplayStrings)
+      DisplayStringsOrBuilder {
+    private DisplayStrings() {
+      valuePropText_ = "";
+      seeDetailsTextMobile_ = "";
+      seeDetailsTextDesktop_ = "";
+      usageInstructionsTextMobile_ = "";
+      usageInstructionsTextDesktop_ = "";
+    }
+    private int bitField0_;
+    public static final int VALUE_PROP_TEXT_FIELD_NUMBER = 1;
+    private java.lang.String valuePropText_;
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale, explaining the value
+     * of the offer. For example, a promo code offer might display
+     * "$5 off on shoes, up to $50."
+     * </pre>
+     *
+     * <code>optional string value_prop_text = 1;</code>
+     * @return Whether the valuePropText field is set.
+     */
+    @java.lang.Override
+    public boolean hasValuePropText() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale, explaining the value
+     * of the offer. For example, a promo code offer might display
+     * "$5 off on shoes, up to $50."
+     * </pre>
+     *
+     * <code>optional string value_prop_text = 1;</code>
+     * @return The valuePropText.
+     */
+    @java.lang.Override
+    public java.lang.String getValuePropText() {
+      return valuePropText_;
+    }
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale, explaining the value
+     * of the offer. For example, a promo code offer might display
+     * "$5 off on shoes, up to $50."
+     * </pre>
+     *
+     * <code>optional string value_prop_text = 1;</code>
+     * @return The bytes for valuePropText.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getValuePropTextBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(valuePropText_);
+    }
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale, explaining the value
+     * of the offer. For example, a promo code offer might display
+     * "$5 off on shoes, up to $50."
+     * </pre>
+     *
+     * <code>optional string value_prop_text = 1;</code>
+     * @param value The valuePropText to set.
+     */
+    private void setValuePropText(
+        java.lang.String value) {
+      value.getClass();
+  bitField0_ |= 0x00000001;
+      valuePropText_ = value;
+    }
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale, explaining the value
+     * of the offer. For example, a promo code offer might display
+     * "$5 off on shoes, up to $50."
+     * </pre>
+     *
+     * <code>optional string value_prop_text = 1;</code>
+     */
+    private void clearValuePropText() {
+      bitField0_ = (bitField0_ & ~0x00000001);
+      valuePropText_ = getDefaultInstance().getValuePropText();
+    }
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale, explaining the value
+     * of the offer. For example, a promo code offer might display
+     * "$5 off on shoes, up to $50."
+     * </pre>
+     *
+     * <code>optional string value_prop_text = 1;</code>
+     * @param value The bytes for valuePropText to set.
+     */
+    private void setValuePropTextBytes(
+        com.google.protobuf.ByteString value) {
+      valuePropText_ = value.toStringUtf8();
+      bitField0_ |= 0x00000001;
+    }
+
+    public static final int SEE_DETAILS_TEXT_MOBILE_FIELD_NUMBER = 2;
+    private java.lang.String seeDetailsTextMobile_;
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on mobile as
+     * a link, prompting the user to click it to learn more about the offer.
+     * Generally, "See details".
+     * </pre>
+     *
+     * <code>optional string see_details_text_mobile = 2;</code>
+     * @return Whether the seeDetailsTextMobile field is set.
+     */
+    @java.lang.Override
+    public boolean hasSeeDetailsTextMobile() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on mobile as
+     * a link, prompting the user to click it to learn more about the offer.
+     * Generally, "See details".
+     * </pre>
+     *
+     * <code>optional string see_details_text_mobile = 2;</code>
+     * @return The seeDetailsTextMobile.
+     */
+    @java.lang.Override
+    public java.lang.String getSeeDetailsTextMobile() {
+      return seeDetailsTextMobile_;
+    }
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on mobile as
+     * a link, prompting the user to click it to learn more about the offer.
+     * Generally, "See details".
+     * </pre>
+     *
+     * <code>optional string see_details_text_mobile = 2;</code>
+     * @return The bytes for seeDetailsTextMobile.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSeeDetailsTextMobileBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(seeDetailsTextMobile_);
+    }
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on mobile as
+     * a link, prompting the user to click it to learn more about the offer.
+     * Generally, "See details".
+     * </pre>
+     *
+     * <code>optional string see_details_text_mobile = 2;</code>
+     * @param value The seeDetailsTextMobile to set.
+     */
+    private void setSeeDetailsTextMobile(
+        java.lang.String value) {
+      value.getClass();
+  bitField0_ |= 0x00000002;
+      seeDetailsTextMobile_ = value;
+    }
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on mobile as
+     * a link, prompting the user to click it to learn more about the offer.
+     * Generally, "See details".
+     * </pre>
+     *
+     * <code>optional string see_details_text_mobile = 2;</code>
+     */
+    private void clearSeeDetailsTextMobile() {
+      bitField0_ = (bitField0_ & ~0x00000002);
+      seeDetailsTextMobile_ = getDefaultInstance().getSeeDetailsTextMobile();
+    }
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on mobile as
+     * a link, prompting the user to click it to learn more about the offer.
+     * Generally, "See details".
+     * </pre>
+     *
+     * <code>optional string see_details_text_mobile = 2;</code>
+     * @param value The bytes for seeDetailsTextMobile to set.
+     */
+    private void setSeeDetailsTextMobileBytes(
+        com.google.protobuf.ByteString value) {
+      seeDetailsTextMobile_ = value.toStringUtf8();
+      bitField0_ |= 0x00000002;
+    }
+
+    public static final int SEE_DETAILS_TEXT_DESKTOP_FIELD_NUMBER = 3;
+    private java.lang.String seeDetailsTextDesktop_;
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on desktop
+     * (not as a link), informing the user that exclusions and restrictions may
+     * apply to the value prop text. Generally, "Terms apply."
+     * </pre>
+     *
+     * <code>optional string see_details_text_desktop = 3;</code>
+     * @return Whether the seeDetailsTextDesktop field is set.
+     */
+    @java.lang.Override
+    public boolean hasSeeDetailsTextDesktop() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on desktop
+     * (not as a link), informing the user that exclusions and restrictions may
+     * apply to the value prop text. Generally, "Terms apply."
+     * </pre>
+     *
+     * <code>optional string see_details_text_desktop = 3;</code>
+     * @return The seeDetailsTextDesktop.
+     */
+    @java.lang.Override
+    public java.lang.String getSeeDetailsTextDesktop() {
+      return seeDetailsTextDesktop_;
+    }
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on desktop
+     * (not as a link), informing the user that exclusions and restrictions may
+     * apply to the value prop text. Generally, "Terms apply."
+     * </pre>
+     *
+     * <code>optional string see_details_text_desktop = 3;</code>
+     * @return The bytes for seeDetailsTextDesktop.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSeeDetailsTextDesktopBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(seeDetailsTextDesktop_);
+    }
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on desktop
+     * (not as a link), informing the user that exclusions and restrictions may
+     * apply to the value prop text. Generally, "Terms apply."
+     * </pre>
+     *
+     * <code>optional string see_details_text_desktop = 3;</code>
+     * @param value The seeDetailsTextDesktop to set.
+     */
+    private void setSeeDetailsTextDesktop(
+        java.lang.String value) {
+      value.getClass();
+  bitField0_ |= 0x00000004;
+      seeDetailsTextDesktop_ = value;
+    }
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on desktop
+     * (not as a link), informing the user that exclusions and restrictions may
+     * apply to the value prop text. Generally, "Terms apply."
+     * </pre>
+     *
+     * <code>optional string see_details_text_desktop = 3;</code>
+     */
+    private void clearSeeDetailsTextDesktop() {
+      bitField0_ = (bitField0_ & ~0x00000004);
+      seeDetailsTextDesktop_ = getDefaultInstance().getSeeDetailsTextDesktop();
+    }
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on desktop
+     * (not as a link), informing the user that exclusions and restrictions may
+     * apply to the value prop text. Generally, "Terms apply."
+     * </pre>
+     *
+     * <code>optional string see_details_text_desktop = 3;</code>
+     * @param value The bytes for seeDetailsTextDesktop to set.
+     */
+    private void setSeeDetailsTextDesktopBytes(
+        com.google.protobuf.ByteString value) {
+      seeDetailsTextDesktop_ = value.toStringUtf8();
+      bitField0_ |= 0x00000004;
+    }
+
+    public static final int USAGE_INSTRUCTIONS_TEXT_MOBILE_FIELD_NUMBER = 4;
+    private java.lang.String usageInstructionsTextMobile_;
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on mobile,
+     * instructing them on how to redeem the offer. For example, a promo code
+     * offer might display "Tap the promo code field at checkout to autofill
+     * it."
+     * </pre>
+     *
+     * <code>optional string usage_instructions_text_mobile = 4;</code>
+     * @return Whether the usageInstructionsTextMobile field is set.
+     */
+    @java.lang.Override
+    public boolean hasUsageInstructionsTextMobile() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on mobile,
+     * instructing them on how to redeem the offer. For example, a promo code
+     * offer might display "Tap the promo code field at checkout to autofill
+     * it."
+     * </pre>
+     *
+     * <code>optional string usage_instructions_text_mobile = 4;</code>
+     * @return The usageInstructionsTextMobile.
+     */
+    @java.lang.Override
+    public java.lang.String getUsageInstructionsTextMobile() {
+      return usageInstructionsTextMobile_;
+    }
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on mobile,
+     * instructing them on how to redeem the offer. For example, a promo code
+     * offer might display "Tap the promo code field at checkout to autofill
+     * it."
+     * </pre>
+     *
+     * <code>optional string usage_instructions_text_mobile = 4;</code>
+     * @return The bytes for usageInstructionsTextMobile.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getUsageInstructionsTextMobileBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(usageInstructionsTextMobile_);
+    }
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on mobile,
+     * instructing them on how to redeem the offer. For example, a promo code
+     * offer might display "Tap the promo code field at checkout to autofill
+     * it."
+     * </pre>
+     *
+     * <code>optional string usage_instructions_text_mobile = 4;</code>
+     * @param value The usageInstructionsTextMobile to set.
+     */
+    private void setUsageInstructionsTextMobile(
+        java.lang.String value) {
+      value.getClass();
+  bitField0_ |= 0x00000008;
+      usageInstructionsTextMobile_ = value;
+    }
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on mobile,
+     * instructing them on how to redeem the offer. For example, a promo code
+     * offer might display "Tap the promo code field at checkout to autofill
+     * it."
+     * </pre>
+     *
+     * <code>optional string usage_instructions_text_mobile = 4;</code>
+     */
+    private void clearUsageInstructionsTextMobile() {
+      bitField0_ = (bitField0_ & ~0x00000008);
+      usageInstructionsTextMobile_ = getDefaultInstance().getUsageInstructionsTextMobile();
+    }
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on mobile,
+     * instructing them on how to redeem the offer. For example, a promo code
+     * offer might display "Tap the promo code field at checkout to autofill
+     * it."
+     * </pre>
+     *
+     * <code>optional string usage_instructions_text_mobile = 4;</code>
+     * @param value The bytes for usageInstructionsTextMobile to set.
+     */
+    private void setUsageInstructionsTextMobileBytes(
+        com.google.protobuf.ByteString value) {
+      usageInstructionsTextMobile_ = value.toStringUtf8();
+      bitField0_ |= 0x00000008;
+    }
+
+    public static final int USAGE_INSTRUCTIONS_TEXT_DESKTOP_FIELD_NUMBER = 5;
+    private java.lang.String usageInstructionsTextDesktop_;
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on desktop,
+     * instructing them on how to redeem the offer. For example, a promo code
+     * offer might display "Click the promo code field at checkout to autofill
+     * it."
+     * </pre>
+     *
+     * <code>optional string usage_instructions_text_desktop = 5;</code>
+     * @return Whether the usageInstructionsTextDesktop field is set.
+     */
+    @java.lang.Override
+    public boolean hasUsageInstructionsTextDesktop() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on desktop,
+     * instructing them on how to redeem the offer. For example, a promo code
+     * offer might display "Click the promo code field at checkout to autofill
+     * it."
+     * </pre>
+     *
+     * <code>optional string usage_instructions_text_desktop = 5;</code>
+     * @return The usageInstructionsTextDesktop.
+     */
+    @java.lang.Override
+    public java.lang.String getUsageInstructionsTextDesktop() {
+      return usageInstructionsTextDesktop_;
+    }
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on desktop,
+     * instructing them on how to redeem the offer. For example, a promo code
+     * offer might display "Click the promo code field at checkout to autofill
+     * it."
+     * </pre>
+     *
+     * <code>optional string usage_instructions_text_desktop = 5;</code>
+     * @return The bytes for usageInstructionsTextDesktop.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getUsageInstructionsTextDesktopBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(usageInstructionsTextDesktop_);
+    }
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on desktop,
+     * instructing them on how to redeem the offer. For example, a promo code
+     * offer might display "Click the promo code field at checkout to autofill
+     * it."
+     * </pre>
+     *
+     * <code>optional string usage_instructions_text_desktop = 5;</code>
+     * @param value The usageInstructionsTextDesktop to set.
+     */
+    private void setUsageInstructionsTextDesktop(
+        java.lang.String value) {
+      value.getClass();
+  bitField0_ |= 0x00000010;
+      usageInstructionsTextDesktop_ = value;
+    }
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on desktop,
+     * instructing them on how to redeem the offer. For example, a promo code
+     * offer might display "Click the promo code field at checkout to autofill
+     * it."
+     * </pre>
+     *
+     * <code>optional string usage_instructions_text_desktop = 5;</code>
+     */
+    private void clearUsageInstructionsTextDesktop() {
+      bitField0_ = (bitField0_ & ~0x00000010);
+      usageInstructionsTextDesktop_ = getDefaultInstance().getUsageInstructionsTextDesktop();
+    }
+    /**
+     * <pre>
+     * A message translated in the user's GPay app locale and shown on desktop,
+     * instructing them on how to redeem the offer. For example, a promo code
+     * offer might display "Click the promo code field at checkout to autofill
+     * it."
+     * </pre>
+     *
+     * <code>optional string usage_instructions_text_desktop = 5;</code>
+     * @param value The bytes for usageInstructionsTextDesktop to set.
+     */
+    private void setUsageInstructionsTextDesktopBytes(
+        com.google.protobuf.ByteString value) {
+      usageInstructionsTextDesktop_ = value.toStringUtf8();
+      bitField0_ |= 0x00000010;
+    }
+
+    public static org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * <pre>
+     * Strings to be shown in client UI, based on the offer type and details.
+     * </pre>
+     *
+     * Protobuf type {@code sync_pb.AutofillOfferSpecifics.DisplayStrings}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings, Builder> implements
+        // @@protoc_insertion_point(builder_implements:sync_pb.AutofillOfferSpecifics.DisplayStrings)
+        org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStringsOrBuilder {
+      // Construct using org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale, explaining the value
+       * of the offer. For example, a promo code offer might display
+       * "$5 off on shoes, up to $50."
+       * </pre>
+       *
+       * <code>optional string value_prop_text = 1;</code>
+       * @return Whether the valuePropText field is set.
+       */
+      @java.lang.Override
+      public boolean hasValuePropText() {
+        return instance.hasValuePropText();
+      }
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale, explaining the value
+       * of the offer. For example, a promo code offer might display
+       * "$5 off on shoes, up to $50."
+       * </pre>
+       *
+       * <code>optional string value_prop_text = 1;</code>
+       * @return The valuePropText.
+       */
+      @java.lang.Override
+      public java.lang.String getValuePropText() {
+        return instance.getValuePropText();
+      }
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale, explaining the value
+       * of the offer. For example, a promo code offer might display
+       * "$5 off on shoes, up to $50."
+       * </pre>
+       *
+       * <code>optional string value_prop_text = 1;</code>
+       * @return The bytes for valuePropText.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getValuePropTextBytes() {
+        return instance.getValuePropTextBytes();
+      }
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale, explaining the value
+       * of the offer. For example, a promo code offer might display
+       * "$5 off on shoes, up to $50."
+       * </pre>
+       *
+       * <code>optional string value_prop_text = 1;</code>
+       * @param value The valuePropText to set.
+       * @return This builder for chaining.
+       */
+      public Builder setValuePropText(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setValuePropText(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale, explaining the value
+       * of the offer. For example, a promo code offer might display
+       * "$5 off on shoes, up to $50."
+       * </pre>
+       *
+       * <code>optional string value_prop_text = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearValuePropText() {
+        copyOnWrite();
+        instance.clearValuePropText();
+        return this;
+      }
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale, explaining the value
+       * of the offer. For example, a promo code offer might display
+       * "$5 off on shoes, up to $50."
+       * </pre>
+       *
+       * <code>optional string value_prop_text = 1;</code>
+       * @param value The bytes for valuePropText to set.
+       * @return This builder for chaining.
+       */
+      public Builder setValuePropTextBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setValuePropTextBytes(value);
+        return this;
+      }
+
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale and shown on mobile as
+       * a link, prompting the user to click it to learn more about the offer.
+       * Generally, "See details".
+       * </pre>
+       *
+       * <code>optional string see_details_text_mobile = 2;</code>
+       * @return Whether the seeDetailsTextMobile field is set.
+       */
+      @java.lang.Override
+      public boolean hasSeeDetailsTextMobile() {
+        return instance.hasSeeDetailsTextMobile();
+      }
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale and shown on mobile as
+       * a link, prompting the user to click it to learn more about the offer.
+       * Generally, "See details".
+       * </pre>
+       *
+       * <code>optional string see_details_text_mobile = 2;</code>
+       * @return The seeDetailsTextMobile.
+       */
+      @java.lang.Override
+      public java.lang.String getSeeDetailsTextMobile() {
+        return instance.getSeeDetailsTextMobile();
+      }
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale and shown on mobile as
+       * a link, prompting the user to click it to learn more about the offer.
+       * Generally, "See details".
+       * </pre>
+       *
+       * <code>optional string see_details_text_mobile = 2;</code>
+       * @return The bytes for seeDetailsTextMobile.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getSeeDetailsTextMobileBytes() {
+        return instance.getSeeDetailsTextMobileBytes();
+      }
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale and shown on mobile as
+       * a link, prompting the user to click it to learn more about the offer.
+       * Generally, "See details".
+       * </pre>
+       *
+       * <code>optional string see_details_text_mobile = 2;</code>
+       * @param value The seeDetailsTextMobile to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSeeDetailsTextMobile(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setSeeDetailsTextMobile(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale and shown on mobile as
+       * a link, prompting the user to click it to learn more about the offer.
+       * Generally, "See details".
+       * </pre>
+       *
+       * <code>optional string see_details_text_mobile = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSeeDetailsTextMobile() {
+        copyOnWrite();
+        instance.clearSeeDetailsTextMobile();
+        return this;
+      }
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale and shown on mobile as
+       * a link, prompting the user to click it to learn more about the offer.
+       * Generally, "See details".
+       * </pre>
+       *
+       * <code>optional string see_details_text_mobile = 2;</code>
+       * @param value The bytes for seeDetailsTextMobile to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSeeDetailsTextMobileBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setSeeDetailsTextMobileBytes(value);
+        return this;
+      }
+
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale and shown on desktop
+       * (not as a link), informing the user that exclusions and restrictions may
+       * apply to the value prop text. Generally, "Terms apply."
+       * </pre>
+       *
+       * <code>optional string see_details_text_desktop = 3;</code>
+       * @return Whether the seeDetailsTextDesktop field is set.
+       */
+      @java.lang.Override
+      public boolean hasSeeDetailsTextDesktop() {
+        return instance.hasSeeDetailsTextDesktop();
+      }
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale and shown on desktop
+       * (not as a link), informing the user that exclusions and restrictions may
+       * apply to the value prop text. Generally, "Terms apply."
+       * </pre>
+       *
+       * <code>optional string see_details_text_desktop = 3;</code>
+       * @return The seeDetailsTextDesktop.
+       */
+      @java.lang.Override
+      public java.lang.String getSeeDetailsTextDesktop() {
+        return instance.getSeeDetailsTextDesktop();
+      }
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale and shown on desktop
+       * (not as a link), informing the user that exclusions and restrictions may
+       * apply to the value prop text. Generally, "Terms apply."
+       * </pre>
+       *
+       * <code>optional string see_details_text_desktop = 3;</code>
+       * @return The bytes for seeDetailsTextDesktop.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getSeeDetailsTextDesktopBytes() {
+        return instance.getSeeDetailsTextDesktopBytes();
+      }
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale and shown on desktop
+       * (not as a link), informing the user that exclusions and restrictions may
+       * apply to the value prop text. Generally, "Terms apply."
+       * </pre>
+       *
+       * <code>optional string see_details_text_desktop = 3;</code>
+       * @param value The seeDetailsTextDesktop to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSeeDetailsTextDesktop(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setSeeDetailsTextDesktop(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale and shown on desktop
+       * (not as a link), informing the user that exclusions and restrictions may
+       * apply to the value prop text. Generally, "Terms apply."
+       * </pre>
+       *
+       * <code>optional string see_details_text_desktop = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSeeDetailsTextDesktop() {
+        copyOnWrite();
+        instance.clearSeeDetailsTextDesktop();
+        return this;
+      }
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale and shown on desktop
+       * (not as a link), informing the user that exclusions and restrictions may
+       * apply to the value prop text. Generally, "Terms apply."
+       * </pre>
+       *
+       * <code>optional string see_details_text_desktop = 3;</code>
+       * @param value The bytes for seeDetailsTextDesktop to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSeeDetailsTextDesktopBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setSeeDetailsTextDesktopBytes(value);
+        return this;
+      }
+
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale and shown on mobile,
+       * instructing them on how to redeem the offer. For example, a promo code
+       * offer might display "Tap the promo code field at checkout to autofill
+       * it."
+       * </pre>
+       *
+       * <code>optional string usage_instructions_text_mobile = 4;</code>
+       * @return Whether the usageInstructionsTextMobile field is set.
+       */
+      @java.lang.Override
+      public boolean hasUsageInstructionsTextMobile() {
+        return instance.hasUsageInstructionsTextMobile();
+      }
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale and shown on mobile,
+       * instructing them on how to redeem the offer. For example, a promo code
+       * offer might display "Tap the promo code field at checkout to autofill
+       * it."
+       * </pre>
+       *
+       * <code>optional string usage_instructions_text_mobile = 4;</code>
+       * @return The usageInstructionsTextMobile.
+       */
+      @java.lang.Override
+      public java.lang.String getUsageInstructionsTextMobile() {
+        return instance.getUsageInstructionsTextMobile();
+      }
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale and shown on mobile,
+       * instructing them on how to redeem the offer. For example, a promo code
+       * offer might display "Tap the promo code field at checkout to autofill
+       * it."
+       * </pre>
+       *
+       * <code>optional string usage_instructions_text_mobile = 4;</code>
+       * @return The bytes for usageInstructionsTextMobile.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getUsageInstructionsTextMobileBytes() {
+        return instance.getUsageInstructionsTextMobileBytes();
+      }
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale and shown on mobile,
+       * instructing them on how to redeem the offer. For example, a promo code
+       * offer might display "Tap the promo code field at checkout to autofill
+       * it."
+       * </pre>
+       *
+       * <code>optional string usage_instructions_text_mobile = 4;</code>
+       * @param value The usageInstructionsTextMobile to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUsageInstructionsTextMobile(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setUsageInstructionsTextMobile(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale and shown on mobile,
+       * instructing them on how to redeem the offer. For example, a promo code
+       * offer might display "Tap the promo code field at checkout to autofill
+       * it."
+       * </pre>
+       *
+       * <code>optional string usage_instructions_text_mobile = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUsageInstructionsTextMobile() {
+        copyOnWrite();
+        instance.clearUsageInstructionsTextMobile();
+        return this;
+      }
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale and shown on mobile,
+       * instructing them on how to redeem the offer. For example, a promo code
+       * offer might display "Tap the promo code field at checkout to autofill
+       * it."
+       * </pre>
+       *
+       * <code>optional string usage_instructions_text_mobile = 4;</code>
+       * @param value The bytes for usageInstructionsTextMobile to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUsageInstructionsTextMobileBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setUsageInstructionsTextMobileBytes(value);
+        return this;
+      }
+
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale and shown on desktop,
+       * instructing them on how to redeem the offer. For example, a promo code
+       * offer might display "Click the promo code field at checkout to autofill
+       * it."
+       * </pre>
+       *
+       * <code>optional string usage_instructions_text_desktop = 5;</code>
+       * @return Whether the usageInstructionsTextDesktop field is set.
+       */
+      @java.lang.Override
+      public boolean hasUsageInstructionsTextDesktop() {
+        return instance.hasUsageInstructionsTextDesktop();
+      }
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale and shown on desktop,
+       * instructing them on how to redeem the offer. For example, a promo code
+       * offer might display "Click the promo code field at checkout to autofill
+       * it."
+       * </pre>
+       *
+       * <code>optional string usage_instructions_text_desktop = 5;</code>
+       * @return The usageInstructionsTextDesktop.
+       */
+      @java.lang.Override
+      public java.lang.String getUsageInstructionsTextDesktop() {
+        return instance.getUsageInstructionsTextDesktop();
+      }
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale and shown on desktop,
+       * instructing them on how to redeem the offer. For example, a promo code
+       * offer might display "Click the promo code field at checkout to autofill
+       * it."
+       * </pre>
+       *
+       * <code>optional string usage_instructions_text_desktop = 5;</code>
+       * @return The bytes for usageInstructionsTextDesktop.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getUsageInstructionsTextDesktopBytes() {
+        return instance.getUsageInstructionsTextDesktopBytes();
+      }
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale and shown on desktop,
+       * instructing them on how to redeem the offer. For example, a promo code
+       * offer might display "Click the promo code field at checkout to autofill
+       * it."
+       * </pre>
+       *
+       * <code>optional string usage_instructions_text_desktop = 5;</code>
+       * @param value The usageInstructionsTextDesktop to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUsageInstructionsTextDesktop(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setUsageInstructionsTextDesktop(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale and shown on desktop,
+       * instructing them on how to redeem the offer. For example, a promo code
+       * offer might display "Click the promo code field at checkout to autofill
+       * it."
+       * </pre>
+       *
+       * <code>optional string usage_instructions_text_desktop = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUsageInstructionsTextDesktop() {
+        copyOnWrite();
+        instance.clearUsageInstructionsTextDesktop();
+        return this;
+      }
+      /**
+       * <pre>
+       * A message translated in the user's GPay app locale and shown on desktop,
+       * instructing them on how to redeem the offer. For example, a promo code
+       * offer might display "Click the promo code field at checkout to autofill
+       * it."
+       * </pre>
+       *
+       * <code>optional string usage_instructions_text_desktop = 5;</code>
+       * @param value The bytes for usageInstructionsTextDesktop to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUsageInstructionsTextDesktopBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setUsageInstructionsTextDesktopBytes(value);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:sync_pb.AutofillOfferSpecifics.DisplayStrings)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "bitField0_",
+              "valuePropText_",
+              "seeDetailsTextMobile_",
+              "seeDetailsTextDesktop_",
+              "usageInstructionsTextMobile_",
+              "usageInstructionsTextDesktop_",
+            };
+            java.lang.String info =
+                "\u0001\u0005\u0000\u0001\u0001\u0005\u0005\u0000\u0000\u0000\u0001\u1008\u0000\u0002" +
+                "\u1008\u0001\u0003\u1008\u0002\u0004\u1008\u0003\u0005\u1008\u0004";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings> parser = PARSER;
+          if (parser == null) {
+            synchronized (org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser =
+                    new DefaultInstanceBasedParser<org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings>(
+                        DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:sync_pb.AutofillOfferSpecifics.DisplayStrings)
+    private static final org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings DEFAULT_INSTANCE;
+    static {
+      DisplayStrings defaultInstance = new DisplayStrings();
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = defaultInstance;
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        DisplayStrings.class, defaultInstance);
+    }
+
+    public static org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<DisplayStrings> PARSER;
+
+    public static com.google.protobuf.Parser<DisplayStrings> parser() {
       return DEFAULT_INSTANCE.getParserForType();
     }
   }
@@ -1199,6 +2912,7 @@ public  final class AutofillOfferSpecifics extends
   private java.lang.Object typeSpecificOfferData_;
   public enum TypeSpecificOfferDataCase {
     CARD_LINKED_OFFER_DATA(6),
+    PROMO_CODE_OFFER_DATA(9),
     TYPESPECIFICOFFERDATA_NOT_SET(0);
     private final int value;
     private TypeSpecificOfferDataCase(int value) {
@@ -1215,6 +2929,7 @@ public  final class AutofillOfferSpecifics extends
     public static TypeSpecificOfferDataCase forNumber(int value) {
       switch (value) {
         case 6: return CARD_LINKED_OFFER_DATA;
+        case 9: return PROMO_CODE_OFFER_DATA;
         case 0: return TYPESPECIFICOFFERDATA_NOT_SET;
         default: return null;
       }
@@ -1750,6 +3465,102 @@ public  final class AutofillOfferSpecifics extends
     }
   }
 
+  public static final int PROMO_CODE_OFFER_DATA_FIELD_NUMBER = 9;
+  /**
+   * <code>.sync_pb.AutofillOfferSpecifics.PromoCodeOfferData promo_code_offer_data = 9;</code>
+   */
+  @java.lang.Override
+  public boolean hasPromoCodeOfferData() {
+    return typeSpecificOfferDataCase_ == 9;
+  }
+  /**
+   * <code>.sync_pb.AutofillOfferSpecifics.PromoCodeOfferData promo_code_offer_data = 9;</code>
+   */
+  @java.lang.Override
+  public org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData getPromoCodeOfferData() {
+    if (typeSpecificOfferDataCase_ == 9) {
+       return (org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData) typeSpecificOfferData_;
+    }
+    return org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData.getDefaultInstance();
+  }
+  /**
+   * <code>.sync_pb.AutofillOfferSpecifics.PromoCodeOfferData promo_code_offer_data = 9;</code>
+   */
+  private void setPromoCodeOfferData(org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData value) {
+    value.getClass();
+  typeSpecificOfferData_ = value;
+    typeSpecificOfferDataCase_ = 9;
+  }
+  /**
+   * <code>.sync_pb.AutofillOfferSpecifics.PromoCodeOfferData promo_code_offer_data = 9;</code>
+   */
+  private void mergePromoCodeOfferData(org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData value) {
+    value.getClass();
+  if (typeSpecificOfferDataCase_ == 9 &&
+        typeSpecificOfferData_ != org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData.getDefaultInstance()) {
+      typeSpecificOfferData_ = org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData.newBuilder((org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData) typeSpecificOfferData_)
+          .mergeFrom(value).buildPartial();
+    } else {
+      typeSpecificOfferData_ = value;
+    }
+    typeSpecificOfferDataCase_ = 9;
+  }
+  /**
+   * <code>.sync_pb.AutofillOfferSpecifics.PromoCodeOfferData promo_code_offer_data = 9;</code>
+   */
+  private void clearPromoCodeOfferData() {
+    if (typeSpecificOfferDataCase_ == 9) {
+      typeSpecificOfferDataCase_ = 0;
+      typeSpecificOfferData_ = null;
+    }
+  }
+
+  public static final int DISPLAY_STRINGS_FIELD_NUMBER = 10;
+  private org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings displayStrings_;
+  /**
+   * <code>optional .sync_pb.AutofillOfferSpecifics.DisplayStrings display_strings = 10;</code>
+   */
+  @java.lang.Override
+  public boolean hasDisplayStrings() {
+    return ((bitField0_ & 0x00000020) != 0);
+  }
+  /**
+   * <code>optional .sync_pb.AutofillOfferSpecifics.DisplayStrings display_strings = 10;</code>
+   */
+  @java.lang.Override
+  public org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings getDisplayStrings() {
+    return displayStrings_ == null ? org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings.getDefaultInstance() : displayStrings_;
+  }
+  /**
+   * <code>optional .sync_pb.AutofillOfferSpecifics.DisplayStrings display_strings = 10;</code>
+   */
+  private void setDisplayStrings(org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings value) {
+    value.getClass();
+  displayStrings_ = value;
+    bitField0_ |= 0x00000020;
+    }
+  /**
+   * <code>optional .sync_pb.AutofillOfferSpecifics.DisplayStrings display_strings = 10;</code>
+   */
+  @java.lang.SuppressWarnings({"ReferenceEquality"})
+  private void mergeDisplayStrings(org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings value) {
+    value.getClass();
+  if (displayStrings_ != null &&
+        displayStrings_ != org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings.getDefaultInstance()) {
+      displayStrings_ =
+        org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings.newBuilder(displayStrings_).mergeFrom(value).buildPartial();
+    } else {
+      displayStrings_ = value;
+    }
+    bitField0_ |= 0x00000020;
+  }
+  /**
+   * <code>optional .sync_pb.AutofillOfferSpecifics.DisplayStrings display_strings = 10;</code>
+   */
+  private void clearDisplayStrings() {  displayStrings_ = null;
+    bitField0_ = (bitField0_ & ~0x00000020);
+  }
+
   public static final int PERCENTAGE_REWARD_FIELD_NUMBER = 7;
   /**
    * <code>.sync_pb.AutofillOfferSpecifics.PercentageReward percentage_reward = 7;</code>
@@ -1933,7 +3744,7 @@ public  final class AutofillOfferSpecifics extends
 
   /**
    * <pre>
-   * Next tag: 9
+   * Next tag: 11
    * </pre>
    *
    * Protobuf type {@code sync_pb.AutofillOfferSpecifics}
@@ -2450,6 +4261,101 @@ public  final class AutofillOfferSpecifics extends
     }
 
     /**
+     * <code>.sync_pb.AutofillOfferSpecifics.PromoCodeOfferData promo_code_offer_data = 9;</code>
+     */
+    @java.lang.Override
+    public boolean hasPromoCodeOfferData() {
+      return instance.hasPromoCodeOfferData();
+    }
+    /**
+     * <code>.sync_pb.AutofillOfferSpecifics.PromoCodeOfferData promo_code_offer_data = 9;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData getPromoCodeOfferData() {
+      return instance.getPromoCodeOfferData();
+    }
+    /**
+     * <code>.sync_pb.AutofillOfferSpecifics.PromoCodeOfferData promo_code_offer_data = 9;</code>
+     */
+    public Builder setPromoCodeOfferData(org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData value) {
+      copyOnWrite();
+      instance.setPromoCodeOfferData(value);
+      return this;
+    }
+    /**
+     * <code>.sync_pb.AutofillOfferSpecifics.PromoCodeOfferData promo_code_offer_data = 9;</code>
+     */
+    public Builder setPromoCodeOfferData(
+        org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData.Builder builderForValue) {
+      copyOnWrite();
+      instance.setPromoCodeOfferData(builderForValue.build());
+      return this;
+    }
+    /**
+     * <code>.sync_pb.AutofillOfferSpecifics.PromoCodeOfferData promo_code_offer_data = 9;</code>
+     */
+    public Builder mergePromoCodeOfferData(org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData value) {
+      copyOnWrite();
+      instance.mergePromoCodeOfferData(value);
+      return this;
+    }
+    /**
+     * <code>.sync_pb.AutofillOfferSpecifics.PromoCodeOfferData promo_code_offer_data = 9;</code>
+     */
+    public Builder clearPromoCodeOfferData() {
+      copyOnWrite();
+      instance.clearPromoCodeOfferData();
+      return this;
+    }
+
+    /**
+     * <code>optional .sync_pb.AutofillOfferSpecifics.DisplayStrings display_strings = 10;</code>
+     */
+    @java.lang.Override
+    public boolean hasDisplayStrings() {
+      return instance.hasDisplayStrings();
+    }
+    /**
+     * <code>optional .sync_pb.AutofillOfferSpecifics.DisplayStrings display_strings = 10;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings getDisplayStrings() {
+      return instance.getDisplayStrings();
+    }
+    /**
+     * <code>optional .sync_pb.AutofillOfferSpecifics.DisplayStrings display_strings = 10;</code>
+     */
+    public Builder setDisplayStrings(org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings value) {
+      copyOnWrite();
+      instance.setDisplayStrings(value);
+      return this;
+      }
+    /**
+     * <code>optional .sync_pb.AutofillOfferSpecifics.DisplayStrings display_strings = 10;</code>
+     */
+    public Builder setDisplayStrings(
+        org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings.Builder builderForValue) {
+      copyOnWrite();
+      instance.setDisplayStrings(builderForValue.build());
+      return this;
+    }
+    /**
+     * <code>optional .sync_pb.AutofillOfferSpecifics.DisplayStrings display_strings = 10;</code>
+     */
+    public Builder mergeDisplayStrings(org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings value) {
+      copyOnWrite();
+      instance.mergeDisplayStrings(value);
+      return this;
+    }
+    /**
+     * <code>optional .sync_pb.AutofillOfferSpecifics.DisplayStrings display_strings = 10;</code>
+     */
+    public Builder clearDisplayStrings() {  copyOnWrite();
+      instance.clearDisplayStrings();
+      return this;
+    }
+
+    /**
      * <code>.sync_pb.AutofillOfferSpecifics.PercentageReward percentage_reward = 7;</code>
      */
     @java.lang.Override
@@ -2574,11 +4480,13 @@ public  final class AutofillOfferSpecifics extends
             org.chromium.components.sync.protocol.AutofillOfferSpecifics.CardLinkedOfferData.class,
             org.chromium.components.sync.protocol.AutofillOfferSpecifics.PercentageReward.class,
             org.chromium.components.sync.protocol.AutofillOfferSpecifics.FixedAmountReward.class,
+            org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData.class,
+            "displayStrings_",
           };
           java.lang.String info =
-              "\u0001\b\u0002\u0001\u0001\b\b\u0000\u0002\u0000\u0001\u1002\u0000\u0002\u1008\u0001" +
+              "\u0001\n\u0002\u0001\u0001\n\n\u0000\u0002\u0000\u0001\u1002\u0000\u0002\u1008\u0001" +
               "\u0003\u001a\u0004\u001a\u0005\u1002\u0002\u0006\u103c\u0000\u0007\u103c\u0001\b" +
-              "\u103c\u0001";
+              "\u103c\u0001\t\u103c\u0000\n\u1009\u0005";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

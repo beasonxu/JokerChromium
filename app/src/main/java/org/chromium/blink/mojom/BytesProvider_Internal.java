@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class BytesProvider_Internal {
 
@@ -65,7 +67,7 @@ class BytesProvider_Internal {
         @Override
         public void requestAsReply(
 
-RequestAsReplyResponse callback) {
+RequestAsReply_Response callback) {
 
             BytesProviderRequestAsReplyParams _message = new BytesProviderRequestAsReplyParams();
 
@@ -102,7 +104,7 @@ org.chromium.mojo.system.DataPipe.ProducerHandle pipe) {
         @Override
         public void requestAsFile(
 long sourceOffset, long sourceSize, org.chromium.mojo_base.mojom.File file, long fileOffset, 
-RequestAsFileResponse callback) {
+RequestAsFile_Response callback) {
 
             BytesProviderRequestAsFileParams _message = new BytesProviderRequestAsFileParams();
 
@@ -362,9 +364,9 @@ RequestAsFileResponse callback) {
 
     static class BytesProviderRequestAsReplyResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BytesProvider.RequestAsReplyResponse mCallback;
+        private final BytesProvider.RequestAsReply_Response mCallback;
 
-        BytesProviderRequestAsReplyResponseParamsForwardToCallback(BytesProvider.RequestAsReplyResponse callback) {
+        BytesProviderRequestAsReplyResponseParamsForwardToCallback(BytesProvider.RequestAsReply_Response callback) {
             this.mCallback = callback;
         }
 
@@ -389,7 +391,7 @@ RequestAsFileResponse callback) {
         }
     }
 
-    static class BytesProviderRequestAsReplyResponseParamsProxyToResponder implements BytesProvider.RequestAsReplyResponse {
+    static class BytesProviderRequestAsReplyResponseParamsProxyToResponder implements BytesProvider.RequestAsReply_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -636,9 +638,9 @@ RequestAsFileResponse callback) {
 
     static class BytesProviderRequestAsFileResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BytesProvider.RequestAsFileResponse mCallback;
+        private final BytesProvider.RequestAsFile_Response mCallback;
 
-        BytesProviderRequestAsFileResponseParamsForwardToCallback(BytesProvider.RequestAsFileResponse callback) {
+        BytesProviderRequestAsFileResponseParamsForwardToCallback(BytesProvider.RequestAsFile_Response callback) {
             this.mCallback = callback;
         }
 
@@ -663,7 +665,7 @@ RequestAsFileResponse callback) {
         }
     }
 
-    static class BytesProviderRequestAsFileResponseParamsProxyToResponder implements BytesProvider.RequestAsFileResponse {
+    static class BytesProviderRequestAsFileResponseParamsProxyToResponder implements BytesProvider.RequestAsFile_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

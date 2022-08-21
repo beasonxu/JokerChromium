@@ -3,7 +3,6 @@ package org.chromium.components.query_tiles.bridges;
 import java.lang.Override;
 import java.lang.String;
 import java.util.List;
-import javax.annotation.Generated;
 import org.chromium.base.Callback;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
@@ -11,9 +10,8 @@ import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.components.query_tiles.QueryTile;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class TileProviderBridgeJni implements TileProviderBridge.Natives {
+class TileProviderBridgeJni implements TileProviderBridge.Natives {
   private static TileProviderBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<TileProviderBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.query_tiles.bridges.TileProviderBridge.Natives>() {

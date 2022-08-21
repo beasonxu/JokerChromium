@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class SerialPort_Internal {
 
@@ -111,7 +113,7 @@ org.chromium.mojo.system.DataPipe.ProducerHandle producer) {
         @Override
         public void flush(
 int mode, 
-FlushResponse callback) {
+Flush_Response callback) {
 
             SerialPortFlushParams _message = new SerialPortFlushParams();
 
@@ -133,7 +135,7 @@ FlushResponse callback) {
         @Override
         public void drain(
 
-DrainResponse callback) {
+Drain_Response callback) {
 
             SerialPortDrainParams _message = new SerialPortDrainParams();
 
@@ -153,7 +155,7 @@ DrainResponse callback) {
         @Override
         public void getControlSignals(
 
-GetControlSignalsResponse callback) {
+GetControlSignals_Response callback) {
 
             SerialPortGetControlSignalsParams _message = new SerialPortGetControlSignalsParams();
 
@@ -173,7 +175,7 @@ GetControlSignalsResponse callback) {
         @Override
         public void setControlSignals(
 SerialHostControlSignals signals, 
-SetControlSignalsResponse callback) {
+SetControlSignals_Response callback) {
 
             SerialPortSetControlSignalsParams _message = new SerialPortSetControlSignalsParams();
 
@@ -195,7 +197,7 @@ SetControlSignalsResponse callback) {
         @Override
         public void configurePort(
 SerialConnectionOptions options, 
-ConfigurePortResponse callback) {
+ConfigurePort_Response callback) {
 
             SerialPortConfigurePortParams _message = new SerialPortConfigurePortParams();
 
@@ -217,7 +219,7 @@ ConfigurePortResponse callback) {
         @Override
         public void getPortInfo(
 
-GetPortInfoResponse callback) {
+GetPortInfo_Response callback) {
 
             SerialPortGetPortInfoParams _message = new SerialPortGetPortInfoParams();
 
@@ -236,10 +238,12 @@ GetPortInfoResponse callback) {
 
         @Override
         public void close(
-
-CloseResponse callback) {
+boolean flush, 
+Close_Response callback) {
 
             SerialPortCloseParams _message = new SerialPortCloseParams();
+
+            _message.flush = flush;
 
 
             getProxyHandler().getMessageReceiver().acceptWithResponder(
@@ -449,9 +453,10 @@ CloseResponse callback) {
 
                     case CLOSE_ORDINAL: {
 
-                        SerialPortCloseParams.deserialize(messageWithHeader.getPayload());
+                        SerialPortCloseParams data =
+                                SerialPortCloseParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().close(new SerialPortCloseResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().close(data.flush, new SerialPortCloseResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -716,9 +721,9 @@ CloseResponse callback) {
 
     static class SerialPortFlushResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final SerialPort.FlushResponse mCallback;
+        private final SerialPort.Flush_Response mCallback;
 
-        SerialPortFlushResponseParamsForwardToCallback(SerialPort.FlushResponse callback) {
+        SerialPortFlushResponseParamsForwardToCallback(SerialPort.Flush_Response callback) {
             this.mCallback = callback;
         }
 
@@ -741,7 +746,7 @@ CloseResponse callback) {
         }
     }
 
-    static class SerialPortFlushResponseParamsProxyToResponder implements SerialPort.FlushResponse {
+    static class SerialPortFlushResponseParamsProxyToResponder implements SerialPort.Flush_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -885,9 +890,9 @@ CloseResponse callback) {
 
     static class SerialPortDrainResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final SerialPort.DrainResponse mCallback;
+        private final SerialPort.Drain_Response mCallback;
 
-        SerialPortDrainResponseParamsForwardToCallback(SerialPort.DrainResponse callback) {
+        SerialPortDrainResponseParamsForwardToCallback(SerialPort.Drain_Response callback) {
             this.mCallback = callback;
         }
 
@@ -910,7 +915,7 @@ CloseResponse callback) {
         }
     }
 
-    static class SerialPortDrainResponseParamsProxyToResponder implements SerialPort.DrainResponse {
+    static class SerialPortDrainResponseParamsProxyToResponder implements SerialPort.Drain_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1062,9 +1067,9 @@ CloseResponse callback) {
 
     static class SerialPortGetControlSignalsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final SerialPort.GetControlSignalsResponse mCallback;
+        private final SerialPort.GetControlSignals_Response mCallback;
 
-        SerialPortGetControlSignalsResponseParamsForwardToCallback(SerialPort.GetControlSignalsResponse callback) {
+        SerialPortGetControlSignalsResponseParamsForwardToCallback(SerialPort.GetControlSignals_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1089,7 +1094,7 @@ CloseResponse callback) {
         }
     }
 
-    static class SerialPortGetControlSignalsResponseParamsProxyToResponder implements SerialPort.GetControlSignalsResponse {
+    static class SerialPortGetControlSignalsResponseParamsProxyToResponder implements SerialPort.GetControlSignals_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1250,9 +1255,9 @@ CloseResponse callback) {
 
     static class SerialPortSetControlSignalsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final SerialPort.SetControlSignalsResponse mCallback;
+        private final SerialPort.SetControlSignals_Response mCallback;
 
-        SerialPortSetControlSignalsResponseParamsForwardToCallback(SerialPort.SetControlSignalsResponse callback) {
+        SerialPortSetControlSignalsResponseParamsForwardToCallback(SerialPort.SetControlSignals_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1277,7 +1282,7 @@ CloseResponse callback) {
         }
     }
 
-    static class SerialPortSetControlSignalsResponseParamsProxyToResponder implements SerialPort.SetControlSignalsResponse {
+    static class SerialPortSetControlSignalsResponseParamsProxyToResponder implements SerialPort.SetControlSignals_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1438,9 +1443,9 @@ CloseResponse callback) {
 
     static class SerialPortConfigurePortResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final SerialPort.ConfigurePortResponse mCallback;
+        private final SerialPort.ConfigurePort_Response mCallback;
 
-        SerialPortConfigurePortResponseParamsForwardToCallback(SerialPort.ConfigurePortResponse callback) {
+        SerialPortConfigurePortResponseParamsForwardToCallback(SerialPort.ConfigurePort_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1465,7 +1470,7 @@ CloseResponse callback) {
         }
     }
 
-    static class SerialPortConfigurePortResponseParamsProxyToResponder implements SerialPort.ConfigurePortResponse {
+    static class SerialPortConfigurePortResponseParamsProxyToResponder implements SerialPort.ConfigurePort_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1619,9 +1624,9 @@ CloseResponse callback) {
 
     static class SerialPortGetPortInfoResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final SerialPort.GetPortInfoResponse mCallback;
+        private final SerialPort.GetPortInfo_Response mCallback;
 
-        SerialPortGetPortInfoResponseParamsForwardToCallback(SerialPort.GetPortInfoResponse callback) {
+        SerialPortGetPortInfoResponseParamsForwardToCallback(SerialPort.GetPortInfo_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1646,7 +1651,7 @@ CloseResponse callback) {
         }
     }
 
-    static class SerialPortGetPortInfoResponseParamsProxyToResponder implements SerialPort.GetPortInfoResponse {
+    static class SerialPortGetPortInfoResponseParamsProxyToResponder implements SerialPort.GetPortInfo_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1683,9 +1688,10 @@ CloseResponse callback) {
     
     static final class SerialPortCloseParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 8;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public boolean flush;
 
         private SerialPortCloseParams(int version) {
             super(STRUCT_SIZE, version);
@@ -1720,6 +1726,10 @@ CloseResponse callback) {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
                 result = new SerialPortCloseParams(elementsOrVersion);
+                    {
+                        
+                    result.flush = decoder0.readBoolean(8, 0);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -1730,7 +1740,9 @@ CloseResponse callback) {
         @SuppressWarnings("unchecked")
         @Override
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.flush, 8, 0);
         }
     }
 
@@ -1792,9 +1804,9 @@ CloseResponse callback) {
 
     static class SerialPortCloseResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final SerialPort.CloseResponse mCallback;
+        private final SerialPort.Close_Response mCallback;
 
-        SerialPortCloseResponseParamsForwardToCallback(SerialPort.CloseResponse callback) {
+        SerialPortCloseResponseParamsForwardToCallback(SerialPort.Close_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1817,7 +1829,7 @@ CloseResponse callback) {
         }
     }
 
-    static class SerialPortCloseResponseParamsProxyToResponder implements SerialPort.CloseResponse {
+    static class SerialPortCloseResponseParamsProxyToResponder implements SerialPort.Close_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

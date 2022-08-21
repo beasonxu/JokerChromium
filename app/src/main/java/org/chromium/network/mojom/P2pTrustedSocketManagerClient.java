@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface P2pTrustedSocketManagerClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface P2pTrustedSocketManagerClient extends org.chromium.mojo.binding
 
     Manager<P2pTrustedSocketManagerClient, P2pTrustedSocketManagerClient.Proxy> MANAGER = P2pTrustedSocketManagerClient_Internal.MANAGER;
 
-
     void invalidSocketPortRangeRequested(
 );
-
 
 
     void dumpPacket(

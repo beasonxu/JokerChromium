@@ -13,8 +13,17 @@
 
 package org.chromium.payments.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PaymentDelegation {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PaymentDelegation.SHIPPING_ADDRESS,
+        PaymentDelegation.PAYER_NAME,
+        PaymentDelegation.PAYER_PHONE,
+        PaymentDelegation.PAYER_EMAIL})
+    public @interface EnumType {}
 
     public static final int SHIPPING_ADDRESS = 0;
     public static final int PAYER_NAME = 1;

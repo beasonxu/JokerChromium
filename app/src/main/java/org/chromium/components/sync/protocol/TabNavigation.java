@@ -19,7 +19,6 @@ public  final class TabNavigation extends
     searchTerms_ = "";
     faviconUrl_ = "";
     blockedState_ = 1;
-    contentPackCategories_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
     navigationRedirect_ = emptyProtobufList();
     lastNavigationRedirectUrl_ = "";
     correctReferrerPolicy_ = 1;
@@ -1193,134 +1192,6 @@ public  final class TabNavigation extends
   private void clearBlockedState() {
     bitField0_ = (bitField0_ & ~0x00008000);
     blockedState_ = 1;
-  }
-
-  public static final int CONTENT_PACK_CATEGORIES_FIELD_NUMBER = 19;
-  private com.google.protobuf.Internal.ProtobufList<java.lang.String> contentPackCategories_;
-  /**
-   * <pre>
-   * A list of category identifiers for the URL.
-   * </pre>
-   *
-   * <code>repeated string content_pack_categories = 19;</code>
-   * @return A list containing the contentPackCategories.
-   */
-  @java.lang.Override
-  public java.util.List<java.lang.String> getContentPackCategoriesList() {
-    return contentPackCategories_;
-  }
-  /**
-   * <pre>
-   * A list of category identifiers for the URL.
-   * </pre>
-   *
-   * <code>repeated string content_pack_categories = 19;</code>
-   * @return The count of contentPackCategories.
-   */
-  @java.lang.Override
-  public int getContentPackCategoriesCount() {
-    return contentPackCategories_.size();
-  }
-  /**
-   * <pre>
-   * A list of category identifiers for the URL.
-   * </pre>
-   *
-   * <code>repeated string content_pack_categories = 19;</code>
-   * @param index The index of the element to return.
-   * @return The contentPackCategories at the given index.
-   */
-  @java.lang.Override
-  public java.lang.String getContentPackCategories(int index) {
-    return contentPackCategories_.get(index);
-  }
-  /**
-   * <pre>
-   * A list of category identifiers for the URL.
-   * </pre>
-   *
-   * <code>repeated string content_pack_categories = 19;</code>
-   * @param index The index of the value to return.
-   * @return The bytes of the contentPackCategories at the given index.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getContentPackCategoriesBytes(int index) {
-    return com.google.protobuf.ByteString.copyFromUtf8(
-        contentPackCategories_.get(index));
-  }
-  private void ensureContentPackCategoriesIsMutable() {
-    com.google.protobuf.Internal.ProtobufList<java.lang.String> tmp =
-        contentPackCategories_;  if (!tmp.isModifiable()) {
-      contentPackCategories_ =
-          com.google.protobuf.GeneratedMessageLite.mutableCopy(tmp);
-     }
-  }
-  /**
-   * <pre>
-   * A list of category identifiers for the URL.
-   * </pre>
-   *
-   * <code>repeated string content_pack_categories = 19;</code>
-   * @param index The index to set the value at.
-   * @param value The contentPackCategories to set.
-   */
-  private void setContentPackCategories(
-      int index, java.lang.String value) {
-    value.getClass();
-  ensureContentPackCategoriesIsMutable();
-    contentPackCategories_.set(index, value);
-  }
-  /**
-   * <pre>
-   * A list of category identifiers for the URL.
-   * </pre>
-   *
-   * <code>repeated string content_pack_categories = 19;</code>
-   * @param value The contentPackCategories to add.
-   */
-  private void addContentPackCategories(
-      java.lang.String value) {
-    value.getClass();
-  ensureContentPackCategoriesIsMutable();
-    contentPackCategories_.add(value);
-  }
-  /**
-   * <pre>
-   * A list of category identifiers for the URL.
-   * </pre>
-   *
-   * <code>repeated string content_pack_categories = 19;</code>
-   * @param values The contentPackCategories to add.
-   */
-  private void addAllContentPackCategories(
-      java.lang.Iterable<java.lang.String> values) {
-    ensureContentPackCategoriesIsMutable();
-    com.google.protobuf.AbstractMessageLite.addAll(
-        values, contentPackCategories_);
-  }
-  /**
-   * <pre>
-   * A list of category identifiers for the URL.
-   * </pre>
-   *
-   * <code>repeated string content_pack_categories = 19;</code>
-   */
-  private void clearContentPackCategories() {
-    contentPackCategories_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
-  }
-  /**
-   * <pre>
-   * A list of category identifiers for the URL.
-   * </pre>
-   *
-   * <code>repeated string content_pack_categories = 19;</code>
-   * @param value The bytes of the contentPackCategories to add.
-   */
-  private void addContentPackCategoriesBytes(
-      com.google.protobuf.ByteString value) {
-    ensureContentPackCategoriesIsMutable();
-    contentPackCategories_.add(value.toStringUtf8());
   }
 
   public static final int HTTP_STATUS_CODE_FIELD_NUMBER = 20;
@@ -3283,134 +3154,6 @@ public  final class TabNavigation extends
 
     /**
      * <pre>
-     * A list of category identifiers for the URL.
-     * </pre>
-     *
-     * <code>repeated string content_pack_categories = 19;</code>
-     * @return A list containing the contentPackCategories.
-     */
-    @java.lang.Override
-    public java.util.List<java.lang.String>
-        getContentPackCategoriesList() {
-      return java.util.Collections.unmodifiableList(
-          instance.getContentPackCategoriesList());
-    }
-    /**
-     * <pre>
-     * A list of category identifiers for the URL.
-     * </pre>
-     *
-     * <code>repeated string content_pack_categories = 19;</code>
-     * @return The count of contentPackCategories.
-     */
-    @java.lang.Override
-    public int getContentPackCategoriesCount() {
-      return instance.getContentPackCategoriesCount();
-    }
-    /**
-     * <pre>
-     * A list of category identifiers for the URL.
-     * </pre>
-     *
-     * <code>repeated string content_pack_categories = 19;</code>
-     * @param index The index of the element to return.
-     * @return The contentPackCategories at the given index.
-     */
-    @java.lang.Override
-    public java.lang.String getContentPackCategories(int index) {
-      return instance.getContentPackCategories(index);
-    }
-    /**
-     * <pre>
-     * A list of category identifiers for the URL.
-     * </pre>
-     *
-     * <code>repeated string content_pack_categories = 19;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the contentPackCategories at the given index.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getContentPackCategoriesBytes(int index) {
-      return instance.getContentPackCategoriesBytes(index);
-    }
-    /**
-     * <pre>
-     * A list of category identifiers for the URL.
-     * </pre>
-     *
-     * <code>repeated string content_pack_categories = 19;</code>
-     * @param index The index to set the value at.
-     * @param value The contentPackCategories to set.
-     * @return This builder for chaining.
-     */
-    public Builder setContentPackCategories(
-        int index, java.lang.String value) {
-      copyOnWrite();
-      instance.setContentPackCategories(index, value);
-      return this;
-    }
-    /**
-     * <pre>
-     * A list of category identifiers for the URL.
-     * </pre>
-     *
-     * <code>repeated string content_pack_categories = 19;</code>
-     * @param value The contentPackCategories to add.
-     * @return This builder for chaining.
-     */
-    public Builder addContentPackCategories(
-        java.lang.String value) {
-      copyOnWrite();
-      instance.addContentPackCategories(value);
-      return this;
-    }
-    /**
-     * <pre>
-     * A list of category identifiers for the URL.
-     * </pre>
-     *
-     * <code>repeated string content_pack_categories = 19;</code>
-     * @param values The contentPackCategories to add.
-     * @return This builder for chaining.
-     */
-    public Builder addAllContentPackCategories(
-        java.lang.Iterable<java.lang.String> values) {
-      copyOnWrite();
-      instance.addAllContentPackCategories(values);
-      return this;
-    }
-    /**
-     * <pre>
-     * A list of category identifiers for the URL.
-     * </pre>
-     *
-     * <code>repeated string content_pack_categories = 19;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearContentPackCategories() {
-      copyOnWrite();
-      instance.clearContentPackCategories();
-      return this;
-    }
-    /**
-     * <pre>
-     * A list of category identifiers for the URL.
-     * </pre>
-     *
-     * <code>repeated string content_pack_categories = 19;</code>
-     * @param value The bytes of the contentPackCategories to add.
-     * @return This builder for chaining.
-     */
-    public Builder addContentPackCategoriesBytes(
-        com.google.protobuf.ByteString value) {
-      copyOnWrite();
-      instance.addContentPackCategoriesBytes(value);
-      return this;
-    }
-
-    /**
-     * <pre>
      * The status code from the last navigation.
      * </pre>
      *
@@ -4320,7 +4063,6 @@ public  final class TabNavigation extends
             "faviconUrl_",
             "blockedState_",
             org.chromium.components.sync.protocol.TabNavigation.BlockedState.internalGetVerifier(),
-            "contentPackCategories_",
             "httpStatusCode_",
             "obsoleteReferrerPolicy_",
             "isRestored_",
@@ -4336,13 +4078,13 @@ public  final class TabNavigation extends
             "pageLanguage_",
           };
           java.lang.String info =
-              "\u0001\u001c\u0000\u0001\u0002\u001e\u001c\u0000\u0003\u0000\u0002\u1008\u0000\u0003" +
+              "\u0001\u001b\u0000\u0001\u0002\u001e\u001b\u0000\u0002\u0000\u0002\u1008\u0000\u0003" +
               "\u1008\u0001\u0004\u1008\u0002\u0006\u100c\u0003\u0007\u100c\u0004\b\u1004\u0005" +
               "\t\u1002\u0006\n\u1007\u0007\u000b\u1007\b\f\u1007\t\r\u1007\n\u000e\u1007\u000b" +
-              "\u000f\u1002\f\u0010\u1008\r\u0011\u1008\u000e\u0012\u100c\u000f\u0013\u001a\u0014" +
-              "\u1004\u0010\u0015\u1004\u0011\u0016\u1007\u0012\u0017\u001b\u0018\u1008\u0013\u0019" +
-              "\u1004\u0014\u001a\u100c\u0015\u001b\u1002\u0016\u001c\u0014\u001d\u1009\u0017\u001e" +
-              "\u1008\u0018";
+              "\u000f\u1002\f\u0010\u1008\r\u0011\u1008\u000e\u0012\u100c\u000f\u0014\u1004\u0010" +
+              "\u0015\u1004\u0011\u0016\u1007\u0012\u0017\u001b\u0018\u1008\u0013\u0019\u1004\u0014" +
+              "\u001a\u100c\u0015\u001b\u1002\u0016\u001c\u0014\u001d\u1009\u0017\u001e\u1008\u0018" +
+              "";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

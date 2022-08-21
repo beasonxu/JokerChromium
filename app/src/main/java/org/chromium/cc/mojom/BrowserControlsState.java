@@ -13,8 +13,13 @@
 
 package org.chromium.cc.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class BrowserControlsState {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+})
+    public @interface EnumType {}
 
 
     public static boolean isKnownValue(int value) {

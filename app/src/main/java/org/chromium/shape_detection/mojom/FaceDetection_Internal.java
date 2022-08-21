@@ -13,6 +13,8 @@
 
 package org.chromium.shape_detection.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class FaceDetection_Internal {
 
@@ -61,7 +63,7 @@ class FaceDetection_Internal {
         @Override
         public void detect(
 org.chromium.skia.mojom.BitmapN32 bitmapData, 
-DetectResponse callback) {
+Detect_Response callback) {
 
             FaceDetectionDetectParams _message = new FaceDetectionDetectParams();
 
@@ -309,9 +311,9 @@ DetectResponse callback) {
 
     static class FaceDetectionDetectResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FaceDetection.DetectResponse mCallback;
+        private final FaceDetection.Detect_Response mCallback;
 
-        FaceDetectionDetectResponseParamsForwardToCallback(FaceDetection.DetectResponse callback) {
+        FaceDetectionDetectResponseParamsForwardToCallback(FaceDetection.Detect_Response callback) {
             this.mCallback = callback;
         }
 
@@ -336,7 +338,7 @@ DetectResponse callback) {
         }
     }
 
-    static class FaceDetectionDetectResponseParamsProxyToResponder implements FaceDetection.DetectResponse {
+    static class FaceDetectionDetectResponseParamsProxyToResponder implements FaceDetection.Detect_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

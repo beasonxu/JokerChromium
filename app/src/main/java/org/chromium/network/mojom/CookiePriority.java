@@ -13,8 +13,16 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class CookiePriority {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        CookiePriority.LOW,
+        CookiePriority.MEDIUM,
+        CookiePriority.HIGH})
+    public @interface EnumType {}
 
     public static final int LOW = 0;
     public static final int MEDIUM = 1;

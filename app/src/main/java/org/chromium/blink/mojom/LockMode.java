@@ -13,8 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class LockMode {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        LockMode.SHARED,
+        LockMode.EXCLUSIVE})
+    public @interface EnumType {}
 
     public static final int SHARED = 0;
     public static final int EXCLUSIVE = 1;

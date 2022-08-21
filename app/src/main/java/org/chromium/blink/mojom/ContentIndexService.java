@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ContentIndexService extends org.chromium.mojo.bindings.Interface {
 
@@ -28,44 +30,39 @@ public interface ContentIndexService extends org.chromium.mojo.bindings.Interfac
 
     Manager<ContentIndexService, ContentIndexService.Proxy> MANAGER = ContentIndexService_Internal.MANAGER;
 
-
     void getIconSizes(
 int category, 
-GetIconSizesResponse callback);
+GetIconSizes_Response callback);
 
-    interface GetIconSizesResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.gfx.mojom.Size[]> { }
-
+    interface GetIconSizes_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.gfx.mojom.Size[]> { }
 
 
     void checkOfflineCapability(
 long serviceWorkerRegistrationId, org.chromium.url.mojom.Url launchUrl, 
-CheckOfflineCapabilityResponse callback);
+CheckOfflineCapability_Response callback);
 
-    interface CheckOfflineCapabilityResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface CheckOfflineCapability_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void add(
 long serviceWorkerRegistrationId, ContentDescription description, org.chromium.skia.mojom.BitmapN32[] icon, org.chromium.url.mojom.Url launchUrl, 
-AddResponse callback);
+Add_Response callback);
 
-    interface AddResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface Add_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void delete(
 long serviceWorkerRegistrationId, String id, 
-DeleteResponse callback);
+Delete_Response callback);
 
-    interface DeleteResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface Delete_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void getDescriptions(
 long serviceWorkerRegistrationId, 
-GetDescriptionsResponse callback);
+GetDescriptions_Response callback);
 
-    interface GetDescriptionsResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, ContentDescription[]> { }
+    interface GetDescriptions_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, ContentDescription[]> { }
 
 
 }

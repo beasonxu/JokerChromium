@@ -13,21 +13,27 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class AudioDecoderConfig extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 56;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(56, 0)};
+    private static final int STRUCT_SIZE = 72;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(72, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int codec;
-    public int profile;
     public int sampleFormat;
     public int channelLayout;
     public int samplesPerSecond;
     public byte[] extraData;
+    public int encryptionScheme;
     public org.chromium.mojo_base.mojom.TimeDelta seekPreroll;
     public int codecDelay;
-    public int encryptionScheme;
+    public int profile;
+    public int targetOutputChannelLayout;
+    public int targetOutputSampleFormat;
+    public boolean shouldDiscardDecoderDelay;
+    public byte[] aacExtraData;
 
     private AudioDecoderConfig(int version) {
         super(STRUCT_SIZE, version);
@@ -70,33 +76,33 @@ public final class AudioDecoderConfig extends org.chromium.mojo.bindings.Struct 
                 }
                 {
                     
-                result.profile = decoder0.readInt(12);
-                    AudioCodecProfile.validate(result.profile);
-                    result.profile = AudioCodecProfile.toKnownValue(result.profile);
-                }
-                {
-                    
-                result.sampleFormat = decoder0.readInt(16);
+                result.sampleFormat = decoder0.readInt(12);
                     SampleFormat.validate(result.sampleFormat);
                     result.sampleFormat = SampleFormat.toKnownValue(result.sampleFormat);
                 }
                 {
                     
-                result.channelLayout = decoder0.readInt(20);
+                result.channelLayout = decoder0.readInt(16);
                     ChannelLayout.validate(result.channelLayout);
                     result.channelLayout = ChannelLayout.toKnownValue(result.channelLayout);
                 }
                 {
                     
-                result.samplesPerSecond = decoder0.readInt(24);
+                result.samplesPerSecond = decoder0.readInt(20);
                 }
                 {
                     
-                result.codecDelay = decoder0.readInt(28);
+                result.extraData = decoder0.readBytes(24, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 }
                 {
                     
-                result.extraData = decoder0.readBytes(32, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                result.encryptionScheme = decoder0.readInt(32);
+                    EncryptionScheme.validate(result.encryptionScheme);
+                    result.encryptionScheme = EncryptionScheme.toKnownValue(result.encryptionScheme);
+                }
+                {
+                    
+                result.codecDelay = decoder0.readInt(36);
                 }
                 {
                     
@@ -105,9 +111,29 @@ public final class AudioDecoderConfig extends org.chromium.mojo.bindings.Struct 
                 }
                 {
                     
-                result.encryptionScheme = decoder0.readInt(48);
-                    EncryptionScheme.validate(result.encryptionScheme);
-                    result.encryptionScheme = EncryptionScheme.toKnownValue(result.encryptionScheme);
+                result.profile = decoder0.readInt(48);
+                    AudioCodecProfile.validate(result.profile);
+                    result.profile = AudioCodecProfile.toKnownValue(result.profile);
+                }
+                {
+                    
+                result.targetOutputChannelLayout = decoder0.readInt(52);
+                    ChannelLayout.validate(result.targetOutputChannelLayout);
+                    result.targetOutputChannelLayout = ChannelLayout.toKnownValue(result.targetOutputChannelLayout);
+                }
+                {
+                    
+                result.targetOutputSampleFormat = decoder0.readInt(56);
+                    SampleFormat.validate(result.targetOutputSampleFormat);
+                    result.targetOutputSampleFormat = SampleFormat.toKnownValue(result.targetOutputSampleFormat);
+                }
+                {
+                    
+                result.shouldDiscardDecoderDelay = decoder0.readBoolean(60, 0);
+                }
+                {
+                    
+                result.aacExtraData = decoder0.readBytes(64, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 }
 
         } finally {
@@ -123,20 +149,28 @@ public final class AudioDecoderConfig extends org.chromium.mojo.bindings.Struct 
         
         encoder0.encode(this.codec, 8);
         
-        encoder0.encode(this.profile, 12);
+        encoder0.encode(this.sampleFormat, 12);
         
-        encoder0.encode(this.sampleFormat, 16);
+        encoder0.encode(this.channelLayout, 16);
         
-        encoder0.encode(this.channelLayout, 20);
+        encoder0.encode(this.samplesPerSecond, 20);
         
-        encoder0.encode(this.samplesPerSecond, 24);
+        encoder0.encode(this.extraData, 24, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
         
-        encoder0.encode(this.codecDelay, 28);
+        encoder0.encode(this.encryptionScheme, 32);
         
-        encoder0.encode(this.extraData, 32, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+        encoder0.encode(this.codecDelay, 36);
         
         encoder0.encode(this.seekPreroll, 40, false);
         
-        encoder0.encode(this.encryptionScheme, 48);
+        encoder0.encode(this.profile, 48);
+        
+        encoder0.encode(this.targetOutputChannelLayout, 52);
+        
+        encoder0.encode(this.targetOutputSampleFormat, 56);
+        
+        encoder0.encode(this.shouldDiscardDecoderDelay, 60, 0);
+        
+        encoder0.encode(this.aacExtraData, 64, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
     }
 }

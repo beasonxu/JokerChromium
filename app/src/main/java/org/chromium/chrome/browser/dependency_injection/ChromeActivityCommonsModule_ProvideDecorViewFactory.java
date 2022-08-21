@@ -3,7 +3,7 @@ package org.chromium.chrome.browser.dependency_injection;
 import android.view.View;
 import dagger.internal.Factory;
 import dagger.internal.Preconditions;
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 
 @Generated(
     value = "dagger.internal.codegen.ComponentProcessor",

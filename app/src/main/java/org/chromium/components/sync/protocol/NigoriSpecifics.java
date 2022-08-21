@@ -316,6 +316,453 @@ public  final class NigoriSpecifics extends
     // @@protoc_insertion_point(enum_scope:sync_pb.NigoriSpecifics.KeyDerivationMethod)
   }
 
+  public interface TrustedVaultDebugInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:sync_pb.NigoriSpecifics.TrustedVaultDebugInfo)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <pre>
+     * The time (in milliseconds since Unix epoch) at which the trusted vault
+     * migration was performed.
+     * </pre>
+     *
+     * <code>optional int64 migration_time = 1;</code>
+     * @return Whether the migrationTime field is set.
+     */
+    boolean hasMigrationTime();
+    /**
+     * <pre>
+     * The time (in milliseconds since Unix epoch) at which the trusted vault
+     * migration was performed.
+     * </pre>
+     *
+     * <code>optional int64 migration_time = 1;</code>
+     * @return The migrationTime.
+     */
+    long getMigrationTime();
+
+    /**
+     * <pre>
+     * The version (aka key epoch) corresponding to the Nigori keybag.
+     * </pre>
+     *
+     * <code>optional int32 key_version = 2;</code>
+     * @return Whether the keyVersion field is set.
+     */
+    boolean hasKeyVersion();
+    /**
+     * <pre>
+     * The version (aka key epoch) corresponding to the Nigori keybag.
+     * </pre>
+     *
+     * <code>optional int32 key_version = 2;</code>
+     * @return The keyVersion.
+     */
+    int getKeyVersion();
+  }
+  /**
+   * <pre>
+   * Some debug-only fields for passphrase type TRUSTED_VAULT_PASSPHRASE.
+   * </pre>
+   *
+   * Protobuf type {@code sync_pb.NigoriSpecifics.TrustedVaultDebugInfo}
+   */
+  public  static final class TrustedVaultDebugInfo extends
+      com.google.protobuf.GeneratedMessageLite<
+          TrustedVaultDebugInfo, TrustedVaultDebugInfo.Builder> implements
+      // @@protoc_insertion_point(message_implements:sync_pb.NigoriSpecifics.TrustedVaultDebugInfo)
+      TrustedVaultDebugInfoOrBuilder {
+    private TrustedVaultDebugInfo() {
+    }
+    private int bitField0_;
+    public static final int MIGRATION_TIME_FIELD_NUMBER = 1;
+    private long migrationTime_;
+    /**
+     * <pre>
+     * The time (in milliseconds since Unix epoch) at which the trusted vault
+     * migration was performed.
+     * </pre>
+     *
+     * <code>optional int64 migration_time = 1;</code>
+     * @return Whether the migrationTime field is set.
+     */
+    @java.lang.Override
+    public boolean hasMigrationTime() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * The time (in milliseconds since Unix epoch) at which the trusted vault
+     * migration was performed.
+     * </pre>
+     *
+     * <code>optional int64 migration_time = 1;</code>
+     * @return The migrationTime.
+     */
+    @java.lang.Override
+    public long getMigrationTime() {
+      return migrationTime_;
+    }
+    /**
+     * <pre>
+     * The time (in milliseconds since Unix epoch) at which the trusted vault
+     * migration was performed.
+     * </pre>
+     *
+     * <code>optional int64 migration_time = 1;</code>
+     * @param value The migrationTime to set.
+     */
+    private void setMigrationTime(long value) {
+      bitField0_ |= 0x00000001;
+      migrationTime_ = value;
+    }
+    /**
+     * <pre>
+     * The time (in milliseconds since Unix epoch) at which the trusted vault
+     * migration was performed.
+     * </pre>
+     *
+     * <code>optional int64 migration_time = 1;</code>
+     */
+    private void clearMigrationTime() {
+      bitField0_ = (bitField0_ & ~0x00000001);
+      migrationTime_ = 0L;
+    }
+
+    public static final int KEY_VERSION_FIELD_NUMBER = 2;
+    private int keyVersion_;
+    /**
+     * <pre>
+     * The version (aka key epoch) corresponding to the Nigori keybag.
+     * </pre>
+     *
+     * <code>optional int32 key_version = 2;</code>
+     * @return Whether the keyVersion field is set.
+     */
+    @java.lang.Override
+    public boolean hasKeyVersion() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     * The version (aka key epoch) corresponding to the Nigori keybag.
+     * </pre>
+     *
+     * <code>optional int32 key_version = 2;</code>
+     * @return The keyVersion.
+     */
+    @java.lang.Override
+    public int getKeyVersion() {
+      return keyVersion_;
+    }
+    /**
+     * <pre>
+     * The version (aka key epoch) corresponding to the Nigori keybag.
+     * </pre>
+     *
+     * <code>optional int32 key_version = 2;</code>
+     * @param value The keyVersion to set.
+     */
+    private void setKeyVersion(int value) {
+      bitField0_ |= 0x00000002;
+      keyVersion_ = value;
+    }
+    /**
+     * <pre>
+     * The version (aka key epoch) corresponding to the Nigori keybag.
+     * </pre>
+     *
+     * <code>optional int32 key_version = 2;</code>
+     */
+    private void clearKeyVersion() {
+      bitField0_ = (bitField0_ & ~0x00000002);
+      keyVersion_ = 0;
+    }
+
+    public static org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * <pre>
+     * Some debug-only fields for passphrase type TRUSTED_VAULT_PASSPHRASE.
+     * </pre>
+     *
+     * Protobuf type {@code sync_pb.NigoriSpecifics.TrustedVaultDebugInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo, Builder> implements
+        // @@protoc_insertion_point(builder_implements:sync_pb.NigoriSpecifics.TrustedVaultDebugInfo)
+        org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfoOrBuilder {
+      // Construct using org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <pre>
+       * The time (in milliseconds since Unix epoch) at which the trusted vault
+       * migration was performed.
+       * </pre>
+       *
+       * <code>optional int64 migration_time = 1;</code>
+       * @return Whether the migrationTime field is set.
+       */
+      @java.lang.Override
+      public boolean hasMigrationTime() {
+        return instance.hasMigrationTime();
+      }
+      /**
+       * <pre>
+       * The time (in milliseconds since Unix epoch) at which the trusted vault
+       * migration was performed.
+       * </pre>
+       *
+       * <code>optional int64 migration_time = 1;</code>
+       * @return The migrationTime.
+       */
+      @java.lang.Override
+      public long getMigrationTime() {
+        return instance.getMigrationTime();
+      }
+      /**
+       * <pre>
+       * The time (in milliseconds since Unix epoch) at which the trusted vault
+       * migration was performed.
+       * </pre>
+       *
+       * <code>optional int64 migration_time = 1;</code>
+       * @param value The migrationTime to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMigrationTime(long value) {
+        copyOnWrite();
+        instance.setMigrationTime(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * The time (in milliseconds since Unix epoch) at which the trusted vault
+       * migration was performed.
+       * </pre>
+       *
+       * <code>optional int64 migration_time = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMigrationTime() {
+        copyOnWrite();
+        instance.clearMigrationTime();
+        return this;
+      }
+
+      /**
+       * <pre>
+       * The version (aka key epoch) corresponding to the Nigori keybag.
+       * </pre>
+       *
+       * <code>optional int32 key_version = 2;</code>
+       * @return Whether the keyVersion field is set.
+       */
+      @java.lang.Override
+      public boolean hasKeyVersion() {
+        return instance.hasKeyVersion();
+      }
+      /**
+       * <pre>
+       * The version (aka key epoch) corresponding to the Nigori keybag.
+       * </pre>
+       *
+       * <code>optional int32 key_version = 2;</code>
+       * @return The keyVersion.
+       */
+      @java.lang.Override
+      public int getKeyVersion() {
+        return instance.getKeyVersion();
+      }
+      /**
+       * <pre>
+       * The version (aka key epoch) corresponding to the Nigori keybag.
+       * </pre>
+       *
+       * <code>optional int32 key_version = 2;</code>
+       * @param value The keyVersion to set.
+       * @return This builder for chaining.
+       */
+      public Builder setKeyVersion(int value) {
+        copyOnWrite();
+        instance.setKeyVersion(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * The version (aka key epoch) corresponding to the Nigori keybag.
+       * </pre>
+       *
+       * <code>optional int32 key_version = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearKeyVersion() {
+        copyOnWrite();
+        instance.clearKeyVersion();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:sync_pb.NigoriSpecifics.TrustedVaultDebugInfo)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "bitField0_",
+              "migrationTime_",
+              "keyVersion_",
+            };
+            java.lang.String info =
+                "\u0001\u0002\u0000\u0001\u0001\u0002\u0002\u0000\u0000\u0000\u0001\u1002\u0000\u0002" +
+                "\u1004\u0001";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo> parser = PARSER;
+          if (parser == null) {
+            synchronized (org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser =
+                    new DefaultInstanceBasedParser<org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo>(
+                        DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:sync_pb.NigoriSpecifics.TrustedVaultDebugInfo)
+    private static final org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo DEFAULT_INSTANCE;
+    static {
+      TrustedVaultDebugInfo defaultInstance = new TrustedVaultDebugInfo();
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = defaultInstance;
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        TrustedVaultDebugInfo.class, defaultInstance);
+    }
+
+    public static org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<TrustedVaultDebugInfo> PARSER;
+
+    public static com.google.protobuf.Parser<TrustedVaultDebugInfo> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
   private int bitField0_;
   private int bitField1_;
   public static final int ENCRYPTION_KEYBAG_FIELD_NUMBER = 1;
@@ -1138,8 +1585,8 @@ public  final class NigoriSpecifics extends
   private long keystoreMigrationTime_;
   /**
    * <pre>
-   * The time (in epoch milliseconds) at which the keystore migration was
-   * performed.
+   * The time (in milliseconds since Unix epoch) at which the keystore migration
+   * was performed.
    * </pre>
    *
    * <code>optional int64 keystore_migration_time = 32;</code>
@@ -1151,8 +1598,8 @@ public  final class NigoriSpecifics extends
   }
   /**
    * <pre>
-   * The time (in epoch milliseconds) at which the keystore migration was
-   * performed.
+   * The time (in milliseconds since Unix epoch) at which the keystore migration
+   * was performed.
    * </pre>
    *
    * <code>optional int64 keystore_migration_time = 32;</code>
@@ -1164,8 +1611,8 @@ public  final class NigoriSpecifics extends
   }
   /**
    * <pre>
-   * The time (in epoch milliseconds) at which the keystore migration was
-   * performed.
+   * The time (in milliseconds since Unix epoch) at which the keystore migration
+   * was performed.
    * </pre>
    *
    * <code>optional int64 keystore_migration_time = 32;</code>
@@ -1177,8 +1624,8 @@ public  final class NigoriSpecifics extends
   }
   /**
    * <pre>
-   * The time (in epoch milliseconds) at which the keystore migration was
-   * performed.
+   * The time (in milliseconds since Unix epoch) at which the keystore migration
+   * was performed.
    * </pre>
    *
    * <code>optional int64 keystore_migration_time = 32;</code>
@@ -1192,9 +1639,9 @@ public  final class NigoriSpecifics extends
   private long customPassphraseTime_;
   /**
    * <pre>
-   * The time (in epoch milliseconds) at which a custom passphrase was set.
-   * Note: this field may not be set if the custom passphrase was applied before
-   * this field was introduced.
+   * The time (in milliseconds since Unix epoch) at which a custom passphrase
+   * was set. Note: this field may not be set if the custom passphrase was
+   * applied before this field was introduced.
    * </pre>
    *
    * <code>optional int64 custom_passphrase_time = 33;</code>
@@ -1206,9 +1653,9 @@ public  final class NigoriSpecifics extends
   }
   /**
    * <pre>
-   * The time (in epoch milliseconds) at which a custom passphrase was set.
-   * Note: this field may not be set if the custom passphrase was applied before
-   * this field was introduced.
+   * The time (in milliseconds since Unix epoch) at which a custom passphrase
+   * was set. Note: this field may not be set if the custom passphrase was
+   * applied before this field was introduced.
    * </pre>
    *
    * <code>optional int64 custom_passphrase_time = 33;</code>
@@ -1220,9 +1667,9 @@ public  final class NigoriSpecifics extends
   }
   /**
    * <pre>
-   * The time (in epoch milliseconds) at which a custom passphrase was set.
-   * Note: this field may not be set if the custom passphrase was applied before
-   * this field was introduced.
+   * The time (in milliseconds since Unix epoch) at which a custom passphrase
+   * was set. Note: this field may not be set if the custom passphrase was
+   * applied before this field was introduced.
    * </pre>
    *
    * <code>optional int64 custom_passphrase_time = 33;</code>
@@ -1234,9 +1681,9 @@ public  final class NigoriSpecifics extends
   }
   /**
    * <pre>
-   * The time (in epoch milliseconds) at which a custom passphrase was set.
-   * Note: this field may not be set if the custom passphrase was applied before
-   * this field was introduced.
+   * The time (in milliseconds since Unix epoch) at which a custom passphrase
+   * was set. Note: this field may not be set if the custom passphrase was
+   * applied before this field was introduced.
    * </pre>
    *
    * <code>optional int64 custom_passphrase_time = 33;</code>
@@ -1928,6 +2375,156 @@ public  final class NigoriSpecifics extends
   private void clearEncryptOsPreferences() {
     bitField1_ = (bitField1_ & ~0x00000001);
     encryptOsPreferences_ = false;
+  }
+
+  public static final int TRUSTED_VAULT_DEBUG_INFO_FIELD_NUMBER = 50;
+  private org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo trustedVaultDebugInfo_;
+  /**
+   * <code>optional .sync_pb.NigoriSpecifics.TrustedVaultDebugInfo trusted_vault_debug_info = 50;</code>
+   */
+  @java.lang.Override
+  public boolean hasTrustedVaultDebugInfo() {
+    return ((bitField1_ & 0x00000002) != 0);
+  }
+  /**
+   * <code>optional .sync_pb.NigoriSpecifics.TrustedVaultDebugInfo trusted_vault_debug_info = 50;</code>
+   */
+  @java.lang.Override
+  public org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo getTrustedVaultDebugInfo() {
+    return trustedVaultDebugInfo_ == null ? org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo.getDefaultInstance() : trustedVaultDebugInfo_;
+  }
+  /**
+   * <code>optional .sync_pb.NigoriSpecifics.TrustedVaultDebugInfo trusted_vault_debug_info = 50;</code>
+   */
+  private void setTrustedVaultDebugInfo(org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo value) {
+    value.getClass();
+  trustedVaultDebugInfo_ = value;
+    bitField1_ |= 0x00000002;
+    }
+  /**
+   * <code>optional .sync_pb.NigoriSpecifics.TrustedVaultDebugInfo trusted_vault_debug_info = 50;</code>
+   */
+  @java.lang.SuppressWarnings({"ReferenceEquality"})
+  private void mergeTrustedVaultDebugInfo(org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo value) {
+    value.getClass();
+  if (trustedVaultDebugInfo_ != null &&
+        trustedVaultDebugInfo_ != org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo.getDefaultInstance()) {
+      trustedVaultDebugInfo_ =
+        org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo.newBuilder(trustedVaultDebugInfo_).mergeFrom(value).buildPartial();
+    } else {
+      trustedVaultDebugInfo_ = value;
+    }
+    bitField1_ |= 0x00000002;
+  }
+  /**
+   * <code>optional .sync_pb.NigoriSpecifics.TrustedVaultDebugInfo trusted_vault_debug_info = 50;</code>
+   */
+  private void clearTrustedVaultDebugInfo() {  trustedVaultDebugInfo_ = null;
+    bitField1_ = (bitField1_ & ~0x00000002);
+  }
+
+  public static final int ENCRYPT_WORKSPACE_DESK_FIELD_NUMBER = 51;
+  private boolean encryptWorkspaceDesk_;
+  /**
+   * <pre>
+   * Boolean corresponding to whether workspace desk should be encrypted.
+   * </pre>
+   *
+   * <code>optional bool encrypt_workspace_desk = 51;</code>
+   * @return Whether the encryptWorkspaceDesk field is set.
+   */
+  @java.lang.Override
+  public boolean hasEncryptWorkspaceDesk() {
+    return ((bitField1_ & 0x00000004) != 0);
+  }
+  /**
+   * <pre>
+   * Boolean corresponding to whether workspace desk should be encrypted.
+   * </pre>
+   *
+   * <code>optional bool encrypt_workspace_desk = 51;</code>
+   * @return The encryptWorkspaceDesk.
+   */
+  @java.lang.Override
+  public boolean getEncryptWorkspaceDesk() {
+    return encryptWorkspaceDesk_;
+  }
+  /**
+   * <pre>
+   * Boolean corresponding to whether workspace desk should be encrypted.
+   * </pre>
+   *
+   * <code>optional bool encrypt_workspace_desk = 51;</code>
+   * @param value The encryptWorkspaceDesk to set.
+   */
+  private void setEncryptWorkspaceDesk(boolean value) {
+    bitField1_ |= 0x00000004;
+    encryptWorkspaceDesk_ = value;
+  }
+  /**
+   * <pre>
+   * Boolean corresponding to whether workspace desk should be encrypted.
+   * </pre>
+   *
+   * <code>optional bool encrypt_workspace_desk = 51;</code>
+   */
+  private void clearEncryptWorkspaceDesk() {
+    bitField1_ = (bitField1_ & ~0x00000004);
+    encryptWorkspaceDesk_ = false;
+  }
+
+  public static final int ENCRYPT_PRINTERS_AUTHORIZATION_SERVERS_FIELD_NUMBER = 52;
+  private boolean encryptPrintersAuthorizationServers_;
+  /**
+   * <pre>
+   * Boolean corresponding to whether printers authorization server items should
+   * be encrypted.
+   * </pre>
+   *
+   * <code>optional bool encrypt_printers_authorization_servers = 52;</code>
+   * @return Whether the encryptPrintersAuthorizationServers field is set.
+   */
+  @java.lang.Override
+  public boolean hasEncryptPrintersAuthorizationServers() {
+    return ((bitField1_ & 0x00000008) != 0);
+  }
+  /**
+   * <pre>
+   * Boolean corresponding to whether printers authorization server items should
+   * be encrypted.
+   * </pre>
+   *
+   * <code>optional bool encrypt_printers_authorization_servers = 52;</code>
+   * @return The encryptPrintersAuthorizationServers.
+   */
+  @java.lang.Override
+  public boolean getEncryptPrintersAuthorizationServers() {
+    return encryptPrintersAuthorizationServers_;
+  }
+  /**
+   * <pre>
+   * Boolean corresponding to whether printers authorization server items should
+   * be encrypted.
+   * </pre>
+   *
+   * <code>optional bool encrypt_printers_authorization_servers = 52;</code>
+   * @param value The encryptPrintersAuthorizationServers to set.
+   */
+  private void setEncryptPrintersAuthorizationServers(boolean value) {
+    bitField1_ |= 0x00000008;
+    encryptPrintersAuthorizationServers_ = value;
+  }
+  /**
+   * <pre>
+   * Boolean corresponding to whether printers authorization server items should
+   * be encrypted.
+   * </pre>
+   *
+   * <code>optional bool encrypt_printers_authorization_servers = 52;</code>
+   */
+  private void clearEncryptPrintersAuthorizationServers() {
+    bitField1_ = (bitField1_ & ~0x00000008);
+    encryptPrintersAuthorizationServers_ = false;
   }
 
   public static org.chromium.components.sync.protocol.NigoriSpecifics parseFrom(
@@ -2889,8 +3486,8 @@ public  final class NigoriSpecifics extends
 
     /**
      * <pre>
-     * The time (in epoch milliseconds) at which the keystore migration was
-     * performed.
+     * The time (in milliseconds since Unix epoch) at which the keystore migration
+     * was performed.
      * </pre>
      *
      * <code>optional int64 keystore_migration_time = 32;</code>
@@ -2902,8 +3499,8 @@ public  final class NigoriSpecifics extends
     }
     /**
      * <pre>
-     * The time (in epoch milliseconds) at which the keystore migration was
-     * performed.
+     * The time (in milliseconds since Unix epoch) at which the keystore migration
+     * was performed.
      * </pre>
      *
      * <code>optional int64 keystore_migration_time = 32;</code>
@@ -2915,8 +3512,8 @@ public  final class NigoriSpecifics extends
     }
     /**
      * <pre>
-     * The time (in epoch milliseconds) at which the keystore migration was
-     * performed.
+     * The time (in milliseconds since Unix epoch) at which the keystore migration
+     * was performed.
      * </pre>
      *
      * <code>optional int64 keystore_migration_time = 32;</code>
@@ -2930,8 +3527,8 @@ public  final class NigoriSpecifics extends
     }
     /**
      * <pre>
-     * The time (in epoch milliseconds) at which the keystore migration was
-     * performed.
+     * The time (in milliseconds since Unix epoch) at which the keystore migration
+     * was performed.
      * </pre>
      *
      * <code>optional int64 keystore_migration_time = 32;</code>
@@ -2945,9 +3542,9 @@ public  final class NigoriSpecifics extends
 
     /**
      * <pre>
-     * The time (in epoch milliseconds) at which a custom passphrase was set.
-     * Note: this field may not be set if the custom passphrase was applied before
-     * this field was introduced.
+     * The time (in milliseconds since Unix epoch) at which a custom passphrase
+     * was set. Note: this field may not be set if the custom passphrase was
+     * applied before this field was introduced.
      * </pre>
      *
      * <code>optional int64 custom_passphrase_time = 33;</code>
@@ -2959,9 +3556,9 @@ public  final class NigoriSpecifics extends
     }
     /**
      * <pre>
-     * The time (in epoch milliseconds) at which a custom passphrase was set.
-     * Note: this field may not be set if the custom passphrase was applied before
-     * this field was introduced.
+     * The time (in milliseconds since Unix epoch) at which a custom passphrase
+     * was set. Note: this field may not be set if the custom passphrase was
+     * applied before this field was introduced.
      * </pre>
      *
      * <code>optional int64 custom_passphrase_time = 33;</code>
@@ -2973,9 +3570,9 @@ public  final class NigoriSpecifics extends
     }
     /**
      * <pre>
-     * The time (in epoch milliseconds) at which a custom passphrase was set.
-     * Note: this field may not be set if the custom passphrase was applied before
-     * this field was introduced.
+     * The time (in milliseconds since Unix epoch) at which a custom passphrase
+     * was set. Note: this field may not be set if the custom passphrase was
+     * applied before this field was introduced.
      * </pre>
      *
      * <code>optional int64 custom_passphrase_time = 33;</code>
@@ -2989,9 +3586,9 @@ public  final class NigoriSpecifics extends
     }
     /**
      * <pre>
-     * The time (in epoch milliseconds) at which a custom passphrase was set.
-     * Note: this field may not be set if the custom passphrase was applied before
-     * this field was introduced.
+     * The time (in milliseconds since Unix epoch) at which a custom passphrase
+     * was set. Note: this field may not be set if the custom passphrase was
+     * applied before this field was introduced.
      * </pre>
      *
      * <code>optional int64 custom_passphrase_time = 33;</code>
@@ -3712,6 +4309,161 @@ public  final class NigoriSpecifics extends
       return this;
     }
 
+    /**
+     * <code>optional .sync_pb.NigoriSpecifics.TrustedVaultDebugInfo trusted_vault_debug_info = 50;</code>
+     */
+    @java.lang.Override
+    public boolean hasTrustedVaultDebugInfo() {
+      return instance.hasTrustedVaultDebugInfo();
+    }
+    /**
+     * <code>optional .sync_pb.NigoriSpecifics.TrustedVaultDebugInfo trusted_vault_debug_info = 50;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo getTrustedVaultDebugInfo() {
+      return instance.getTrustedVaultDebugInfo();
+    }
+    /**
+     * <code>optional .sync_pb.NigoriSpecifics.TrustedVaultDebugInfo trusted_vault_debug_info = 50;</code>
+     */
+    public Builder setTrustedVaultDebugInfo(org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo value) {
+      copyOnWrite();
+      instance.setTrustedVaultDebugInfo(value);
+      return this;
+      }
+    /**
+     * <code>optional .sync_pb.NigoriSpecifics.TrustedVaultDebugInfo trusted_vault_debug_info = 50;</code>
+     */
+    public Builder setTrustedVaultDebugInfo(
+        org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo.Builder builderForValue) {
+      copyOnWrite();
+      instance.setTrustedVaultDebugInfo(builderForValue.build());
+      return this;
+    }
+    /**
+     * <code>optional .sync_pb.NigoriSpecifics.TrustedVaultDebugInfo trusted_vault_debug_info = 50;</code>
+     */
+    public Builder mergeTrustedVaultDebugInfo(org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo value) {
+      copyOnWrite();
+      instance.mergeTrustedVaultDebugInfo(value);
+      return this;
+    }
+    /**
+     * <code>optional .sync_pb.NigoriSpecifics.TrustedVaultDebugInfo trusted_vault_debug_info = 50;</code>
+     */
+    public Builder clearTrustedVaultDebugInfo() {  copyOnWrite();
+      instance.clearTrustedVaultDebugInfo();
+      return this;
+    }
+
+    /**
+     * <pre>
+     * Boolean corresponding to whether workspace desk should be encrypted.
+     * </pre>
+     *
+     * <code>optional bool encrypt_workspace_desk = 51;</code>
+     * @return Whether the encryptWorkspaceDesk field is set.
+     */
+    @java.lang.Override
+    public boolean hasEncryptWorkspaceDesk() {
+      return instance.hasEncryptWorkspaceDesk();
+    }
+    /**
+     * <pre>
+     * Boolean corresponding to whether workspace desk should be encrypted.
+     * </pre>
+     *
+     * <code>optional bool encrypt_workspace_desk = 51;</code>
+     * @return The encryptWorkspaceDesk.
+     */
+    @java.lang.Override
+    public boolean getEncryptWorkspaceDesk() {
+      return instance.getEncryptWorkspaceDesk();
+    }
+    /**
+     * <pre>
+     * Boolean corresponding to whether workspace desk should be encrypted.
+     * </pre>
+     *
+     * <code>optional bool encrypt_workspace_desk = 51;</code>
+     * @param value The encryptWorkspaceDesk to set.
+     * @return This builder for chaining.
+     */
+    public Builder setEncryptWorkspaceDesk(boolean value) {
+      copyOnWrite();
+      instance.setEncryptWorkspaceDesk(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * Boolean corresponding to whether workspace desk should be encrypted.
+     * </pre>
+     *
+     * <code>optional bool encrypt_workspace_desk = 51;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearEncryptWorkspaceDesk() {
+      copyOnWrite();
+      instance.clearEncryptWorkspaceDesk();
+      return this;
+    }
+
+    /**
+     * <pre>
+     * Boolean corresponding to whether printers authorization server items should
+     * be encrypted.
+     * </pre>
+     *
+     * <code>optional bool encrypt_printers_authorization_servers = 52;</code>
+     * @return Whether the encryptPrintersAuthorizationServers field is set.
+     */
+    @java.lang.Override
+    public boolean hasEncryptPrintersAuthorizationServers() {
+      return instance.hasEncryptPrintersAuthorizationServers();
+    }
+    /**
+     * <pre>
+     * Boolean corresponding to whether printers authorization server items should
+     * be encrypted.
+     * </pre>
+     *
+     * <code>optional bool encrypt_printers_authorization_servers = 52;</code>
+     * @return The encryptPrintersAuthorizationServers.
+     */
+    @java.lang.Override
+    public boolean getEncryptPrintersAuthorizationServers() {
+      return instance.getEncryptPrintersAuthorizationServers();
+    }
+    /**
+     * <pre>
+     * Boolean corresponding to whether printers authorization server items should
+     * be encrypted.
+     * </pre>
+     *
+     * <code>optional bool encrypt_printers_authorization_servers = 52;</code>
+     * @param value The encryptPrintersAuthorizationServers to set.
+     * @return This builder for chaining.
+     */
+    public Builder setEncryptPrintersAuthorizationServers(boolean value) {
+      copyOnWrite();
+      instance.setEncryptPrintersAuthorizationServers(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * Boolean corresponding to whether printers authorization server items should
+     * be encrypted.
+     * </pre>
+     *
+     * <code>optional bool encrypt_printers_authorization_servers = 52;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearEncryptPrintersAuthorizationServers() {
+      copyOnWrite();
+      instance.clearEncryptPrintersAuthorizationServers();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:sync_pb.NigoriSpecifics)
   }
   @java.lang.Override
@@ -3763,15 +4515,18 @@ public  final class NigoriSpecifics extends
             "encryptSendTabToSelf_",
             "encryptWebApps_",
             "encryptOsPreferences_",
+            "trustedVaultDebugInfo_",
+            "encryptWorkspaceDesk_",
+            "encryptPrintersAuthorizationServers_",
           };
           java.lang.String info =
-              "\u0001!\u0000\u0002\u00011!\u0000\u0000\u0000\u0001\u1009\u0000\u0002\u1007\u0001" +
+              "\u0001$\u0000\u0002\u00014$\u0000\u0000\u0000\u0001\u1009\u0000\u0002\u1007\u0001" +
               "\r\u1007\u0002\u000e\u1007\u0003\u000f\u1007\u0004\u0010\u1007\u0005\u0011\u1007" +
               "\u0006\u0012\u1007\u0007\u0013\u1007\b\u0014\u1007\t\u0015\u1007\n\u0016\u1007\u000b" +
               "\u0018\u1007\f\u0019\u1007\r\u001a\u1007\u000e\u001b\u1007\u000f\u001d\u1007\u0010" +
               "\u001e\u1004\u0011\u001f\u1009\u0012 \u1002\u0013!\u1002\u0014\"\u1007\u0015&\u1007" +
               "\u0016\'\u1007\u0017(\u1007\u0018)\u1007\u0019*\u1007\u001a+\u1007\u001b-\u1004\u001c" +
-              ".\u1008\u001d/\u1007\u001e0\u1007\u001f1\u1007 ";
+              ".\u1008\u001d/\u1007\u001e0\u1007\u001f1\u1007 2\u1009!3\u1007\"4\u1007#";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

@@ -13,8 +13,34 @@
 
 package org.chromium.payments.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PaymentEventResponseType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PaymentEventResponseType.PAYER_NAME_EMPTY,
+        PaymentEventResponseType.PAYER_EMAIL_EMPTY,
+        PaymentEventResponseType.PAYER_PHONE_EMPTY,
+        PaymentEventResponseType.PAYMENT_DETAILS_ABSENT,
+        PaymentEventResponseType.PAYMENT_DETAILS_NOT_OBJECT,
+        PaymentEventResponseType.PAYMENT_DETAILS_STRINGIFY_ERROR,
+        PaymentEventResponseType.PAYMENT_EVENT_BROWSER_ERROR,
+        PaymentEventResponseType.PAYMENT_EVENT_INTERNAL_ERROR,
+        PaymentEventResponseType.PAYMENT_EVENT_NO_RESPONSE,
+        PaymentEventResponseType.PAYMENT_EVENT_REJECT,
+        PaymentEventResponseType.PAYMENT_EVENT_SERVICE_WORKER_ERROR,
+        PaymentEventResponseType.PAYMENT_EVENT_SUCCESS,
+        PaymentEventResponseType.PAYMENT_EVENT_TIMEOUT,
+        PaymentEventResponseType.PAYMENT_HANDLER_ACTIVITY_DIED,
+        PaymentEventResponseType.PAYMENT_HANDLER_FAIL_TO_LOAD_MAIN_FRAME,
+        PaymentEventResponseType.PAYMENT_HANDLER_INSECURE_NAVIGATION,
+        PaymentEventResponseType.PAYMENT_HANDLER_INSTALL_FAILED,
+        PaymentEventResponseType.PAYMENT_HANDLER_WINDOW_CLOSING,
+        PaymentEventResponseType.PAYMENT_METHOD_NAME_EMPTY,
+        PaymentEventResponseType.SHIPPING_ADDRESS_INVALID,
+        PaymentEventResponseType.SHIPPING_OPTION_EMPTY})
+    public @interface EnumType {}
 
     public static final int PAYER_NAME_EMPTY = 0;
     public static final int PAYER_EMAIL_EMPTY = 1;
@@ -32,15 +58,16 @@ public final class PaymentEventResponseType {
     public static final int PAYMENT_HANDLER_ACTIVITY_DIED = 13;
     public static final int PAYMENT_HANDLER_FAIL_TO_LOAD_MAIN_FRAME = 14;
     public static final int PAYMENT_HANDLER_INSECURE_NAVIGATION = 15;
-    public static final int PAYMENT_HANDLER_WINDOW_CLOSING = 16;
-    public static final int PAYMENT_METHOD_NAME_EMPTY = 17;
-    public static final int SHIPPING_ADDRESS_INVALID = 18;
-    public static final int SHIPPING_OPTION_EMPTY = 19;
+    public static final int PAYMENT_HANDLER_INSTALL_FAILED = 16;
+    public static final int PAYMENT_HANDLER_WINDOW_CLOSING = 17;
+    public static final int PAYMENT_METHOD_NAME_EMPTY = 18;
+    public static final int SHIPPING_ADDRESS_INVALID = 19;
+    public static final int SHIPPING_OPTION_EMPTY = 20;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 19;
+    public static final int MAX_VALUE = 20;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 19;
+        return value >= 0 && value <= 20;
     }
 
     public static void validate(int value) {

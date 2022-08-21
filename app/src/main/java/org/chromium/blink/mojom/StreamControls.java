@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class StreamControls extends org.chromium.mojo.bindings.Struct {
 
@@ -23,7 +25,9 @@ public final class StreamControls extends org.chromium.mojo.bindings.Struct {
     public TrackControls video;
     public boolean hotwordEnabled;
     public boolean disableLocalEcho;
+    public boolean excludeSystemAudio;
     public boolean requestPanTiltZoomPermission;
+    public boolean requestAllScreens;
 
     private StreamControls(int version) {
         super(STRUCT_SIZE, version);
@@ -78,7 +82,15 @@ public final class StreamControls extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.requestPanTiltZoomPermission = decoder0.readBoolean(24, 2);
+                result.excludeSystemAudio = decoder0.readBoolean(24, 2);
+                }
+                {
+                    
+                result.requestPanTiltZoomPermission = decoder0.readBoolean(24, 3);
+                }
+                {
+                    
+                result.requestAllScreens = decoder0.readBoolean(24, 4);
                 }
 
         } finally {
@@ -100,6 +112,10 @@ public final class StreamControls extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.disableLocalEcho, 24, 1);
         
-        encoder0.encode(this.requestPanTiltZoomPermission, 24, 2);
+        encoder0.encode(this.excludeSystemAudio, 24, 2);
+        
+        encoder0.encode(this.requestPanTiltZoomPermission, 24, 3);
+        
+        encoder0.encode(this.requestAllScreens, 24, 4);
     }
 }

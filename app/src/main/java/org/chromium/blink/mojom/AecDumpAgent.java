@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface AecDumpAgent extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface AecDumpAgent extends org.chromium.mojo.bindings.Interface {
 
     Manager<AecDumpAgent, AecDumpAgent.Proxy> MANAGER = AecDumpAgent_Internal.MANAGER;
 
-
     void start(
 org.chromium.mojo_base.mojom.File file);
-
 
 
     void stop(

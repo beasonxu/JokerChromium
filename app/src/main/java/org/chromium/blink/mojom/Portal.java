@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface Portal extends org.chromium.mojo.bindings.Interface {
 
@@ -23,21 +25,18 @@ public interface Portal extends org.chromium.mojo.bindings.Interface {
 
     Manager<Portal, Portal.Proxy> MANAGER = Portal_Internal.MANAGER;
 
-
     void navigate(
 org.chromium.url.mojom.Url url, Referrer referrer, 
-NavigateResponse callback);
+Navigate_Response callback);
 
-    interface NavigateResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface Navigate_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void activate(
 TransferableMessage data, org.chromium.mojo_base.mojom.TimeTicks activationTime, long traceId, 
-ActivateResponse callback);
+Activate_Response callback);
 
-    interface ActivateResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface Activate_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void postMessageToGuest(

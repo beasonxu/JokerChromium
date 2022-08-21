@@ -13,8 +13,30 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ServiceWorkerResponseError {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ServiceWorkerResponseError.UNKNOWN,
+        ServiceWorkerResponseError.PROMISE_REJECTED,
+        ServiceWorkerResponseError.DEFAULT_PREVENTED,
+        ServiceWorkerResponseError.NO_V8_INSTANCE,
+        ServiceWorkerResponseError.RESPONSE_TYPE_ERROR,
+        ServiceWorkerResponseError.RESPONSE_TYPE_OPAQUE,
+        ServiceWorkerResponseError.RESPONSE_TYPE_NOT_BASIC_OR_DEFAULT,
+        ServiceWorkerResponseError.BODY_USED,
+        ServiceWorkerResponseError.RESPONSE_TYPE_OPAQUE_FOR_CLIENT_REQUEST,
+        ServiceWorkerResponseError.RESPONSE_TYPE_OPAQUE_REDIRECT,
+        ServiceWorkerResponseError.BODY_LOCKED,
+        ServiceWorkerResponseError.REDIRECTED_RESPONSE_FOR_NOT_FOLLOW_REQUEST,
+        ServiceWorkerResponseError.DATA_PIPE_CREATION_FAILED,
+        ServiceWorkerResponseError.RESPONSE_TYPE_CORS_FOR_REQUEST_MODE_SAME_ORIGIN,
+        ServiceWorkerResponseError.RESPONSE_BODY_BROKEN,
+        ServiceWorkerResponseError.DISALLOWED_BY_CORP,
+        ServiceWorkerResponseError.REQUEST_BODY_UNUSABLE})
+    public @interface EnumType {}
 
     public static final int UNKNOWN = 0;
     public static final int PROMISE_REJECTED = 1;

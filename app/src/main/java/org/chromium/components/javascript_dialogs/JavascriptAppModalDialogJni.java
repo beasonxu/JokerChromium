@@ -2,15 +2,13 @@ package org.chromium.components.javascript_dialogs;
 
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class JavascriptAppModalDialogJni implements JavascriptAppModalDialog.Natives {
+class JavascriptAppModalDialogJni implements JavascriptAppModalDialog.Natives {
   private static JavascriptAppModalDialog.Natives testInstance;
 
   public static final JniStaticTestMocker<JavascriptAppModalDialog.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.javascript_dialogs.JavascriptAppModalDialog.Natives>() {

@@ -13,17 +13,21 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class VideoEncodeAcceleratorSupportedProfile extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 40;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
+    private static final int STRUCT_SIZE = 56;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(56, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int profile;
     public org.chromium.gfx.mojom.Size minResolution;
     public org.chromium.gfx.mojom.Size maxResolution;
     public int maxFramerateNumerator;
     public int maxFramerateDenominator;
+    public int[] rateControlModes;
+    public int[] scalabilityModes;
 
     private VideoEncodeAcceleratorSupportedProfile(int version) {
         super(STRUCT_SIZE, version);
@@ -82,6 +86,24 @@ public final class VideoEncodeAcceleratorSupportedProfile extends org.chromium.m
                     
                 result.maxFramerateDenominator = decoder0.readInt(32);
                 }
+                {
+                    
+                result.rateControlModes = decoder0.readInts(40, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                {
+                    for (int i1 = 0; i1 < result.rateControlModes.length; ++i1) {
+                        VideoEncodeAcceleratorSupportedRateControlMode.validate(result.rateControlModes[i1]);
+                    }
+                }
+                }
+                {
+                    
+                result.scalabilityModes = decoder0.readInts(48, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                {
+                    for (int i1 = 0; i1 < result.scalabilityModes.length; ++i1) {
+                        SvcScalabilityMode.validate(result.scalabilityModes[i1]);
+                    }
+                }
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -103,5 +125,9 @@ public final class VideoEncodeAcceleratorSupportedProfile extends org.chromium.m
         encoder0.encode(this.maxResolution, 24, false);
         
         encoder0.encode(this.maxFramerateDenominator, 32);
+        
+        encoder0.encode(this.rateControlModes, 40, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+        
+        encoder0.encode(this.scalabilityModes, 48, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
     }
 }

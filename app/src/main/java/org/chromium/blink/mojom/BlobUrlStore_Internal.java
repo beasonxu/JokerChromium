@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class BlobUrlStore_Internal {
 
@@ -68,14 +70,18 @@ class BlobUrlStore_Internal {
 
         @Override
         public void register(
-Blob blob, org.chromium.url.mojom.Url url, 
-RegisterResponse callback) {
+Blob blob, org.chromium.url.mojom.Url url, org.chromium.mojo_base.mojom.UnguessableToken unsafeAgentClusterId, org.chromium.network.mojom.SchemefulSite unsafeTopLevelSite, 
+Register_Response callback) {
 
             BlobUrlStoreRegisterParams _message = new BlobUrlStoreRegisterParams();
 
             _message.blob = blob;
 
             _message.url = url;
+
+            _message.unsafeAgentClusterId = unsafeAgentClusterId;
+
+            _message.unsafeTopLevelSite = unsafeTopLevelSite;
 
 
             getProxyHandler().getMessageReceiver().acceptWithResponder(
@@ -110,7 +116,7 @@ org.chromium.url.mojom.Url url) {
         @Override
         public void resolve(
 org.chromium.url.mojom.Url url, 
-ResolveResponse callback) {
+Resolve_Response callback) {
 
             BlobUrlStoreResolveParams _message = new BlobUrlStoreResolveParams();
 
@@ -131,7 +137,8 @@ ResolveResponse callback) {
 
         @Override
         public void resolveAsUrlLoaderFactory(
-org.chromium.url.mojom.Url url, org.chromium.mojo.bindings.InterfaceRequest<org.chromium.network.mojom.UrlLoaderFactory> factory) {
+org.chromium.url.mojom.Url url, org.chromium.mojo.bindings.InterfaceRequest<org.chromium.network.mojom.UrlLoaderFactory> factory, 
+ResolveAsUrlLoaderFactory_Response callback) {
 
             BlobUrlStoreResolveAsUrlLoaderFactoryParams _message = new BlobUrlStoreResolveAsUrlLoaderFactoryParams();
 
@@ -140,17 +147,22 @@ org.chromium.url.mojom.Url url, org.chromium.mojo.bindings.InterfaceRequest<org.
             _message.factory = factory;
 
 
-            getProxyHandler().getMessageReceiver().accept(
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(RESOLVE_AS_URL_LOADER_FACTORY_ORDINAL)));
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    RESOLVE_AS_URL_LOADER_FACTORY_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new BlobUrlStoreResolveAsUrlLoaderFactoryResponseParamsForwardToCallback(callback));
 
         }
 
 
         @Override
         public void resolveForNavigation(
-org.chromium.url.mojom.Url url, org.chromium.mojo.bindings.InterfaceRequest<BlobUrlToken> token) {
+org.chromium.url.mojom.Url url, org.chromium.mojo.bindings.InterfaceRequest<BlobUrlToken> token, 
+ResolveForNavigation_Response callback) {
 
             BlobUrlStoreResolveForNavigationParams _message = new BlobUrlStoreResolveForNavigationParams();
 
@@ -159,10 +171,14 @@ org.chromium.url.mojom.Url url, org.chromium.mojo.bindings.InterfaceRequest<Blob
             _message.token = token;
 
 
-            getProxyHandler().getMessageReceiver().accept(
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(RESOLVE_FOR_NAVIGATION_ORDINAL)));
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    RESOLVE_FOR_NAVIGATION_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new BlobUrlStoreResolveForNavigationResponseParamsForwardToCallback(callback));
 
         }
 
@@ -215,28 +231,6 @@ org.chromium.url.mojom.Url url, org.chromium.mojo.bindings.InterfaceRequest<Blob
 
 
 
-                    case RESOLVE_AS_URL_LOADER_FACTORY_ORDINAL: {
-
-                        BlobUrlStoreResolveAsUrlLoaderFactoryParams data =
-                                BlobUrlStoreResolveAsUrlLoaderFactoryParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().resolveAsUrlLoaderFactory(data.url, data.factory);
-                        return true;
-                    }
-
-
-
-
-
-                    case RESOLVE_FOR_NAVIGATION_ORDINAL: {
-
-                        BlobUrlStoreResolveForNavigationParams data =
-                                BlobUrlStoreResolveForNavigationParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().resolveForNavigation(data.url, data.token);
-                        return true;
-                    }
-
 
                     default:
                         return false;
@@ -277,7 +271,7 @@ org.chromium.url.mojom.Url url, org.chromium.mojo.bindings.InterfaceRequest<Blob
                         BlobUrlStoreRegisterParams data =
                                 BlobUrlStoreRegisterParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().register(data.blob, data.url, new BlobUrlStoreRegisterResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().register(data.blob, data.url, data.unsafeAgentClusterId, data.unsafeTopLevelSite, new BlobUrlStoreRegisterResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -303,6 +297,32 @@ org.chromium.url.mojom.Url url, org.chromium.mojo.bindings.InterfaceRequest<Blob
 
 
 
+
+                    case RESOLVE_AS_URL_LOADER_FACTORY_ORDINAL: {
+
+                        BlobUrlStoreResolveAsUrlLoaderFactoryParams data =
+                                BlobUrlStoreResolveAsUrlLoaderFactoryParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().resolveAsUrlLoaderFactory(data.url, data.factory, new BlobUrlStoreResolveAsUrlLoaderFactoryResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
+                    case RESOLVE_FOR_NAVIGATION_ORDINAL: {
+
+                        BlobUrlStoreResolveForNavigationParams data =
+                                BlobUrlStoreResolveForNavigationParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().resolveForNavigation(data.url, data.token, new BlobUrlStoreResolveForNavigationResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
                     default:
                         return false;
                 }
@@ -317,11 +337,13 @@ org.chromium.url.mojom.Url url, org.chromium.mojo.bindings.InterfaceRequest<Blob
     
     static final class BlobUrlStoreRegisterParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final int STRUCT_SIZE = 40;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public Blob blob;
         public org.chromium.url.mojom.Url url;
+        public org.chromium.mojo_base.mojom.UnguessableToken unsafeAgentClusterId;
+        public org.chromium.network.mojom.SchemefulSite unsafeTopLevelSite;
 
         private BlobUrlStoreRegisterParams(int version) {
             super(STRUCT_SIZE, version);
@@ -365,6 +387,16 @@ org.chromium.url.mojom.Url url, org.chromium.mojo.bindings.InterfaceRequest<Blob
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
                     result.url = org.chromium.url.mojom.Url.decode(decoder1);
                     }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
+                    result.unsafeAgentClusterId = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, true);
+                    result.unsafeTopLevelSite = org.chromium.network.mojom.SchemefulSite.decode(decoder1);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -380,6 +412,10 @@ org.chromium.url.mojom.Url url, org.chromium.mojo.bindings.InterfaceRequest<Blob
             encoder0.encode(this.blob, 8, false, Blob.MANAGER);
             
             encoder0.encode(this.url, 16, false);
+            
+            encoder0.encode(this.unsafeAgentClusterId, 24, false);
+            
+            encoder0.encode(this.unsafeTopLevelSite, 32, true);
         }
     }
 
@@ -441,9 +477,9 @@ org.chromium.url.mojom.Url url, org.chromium.mojo.bindings.InterfaceRequest<Blob
 
     static class BlobUrlStoreRegisterResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BlobUrlStore.RegisterResponse mCallback;
+        private final BlobUrlStore.Register_Response mCallback;
 
-        BlobUrlStoreRegisterResponseParamsForwardToCallback(BlobUrlStore.RegisterResponse callback) {
+        BlobUrlStoreRegisterResponseParamsForwardToCallback(BlobUrlStore.Register_Response callback) {
             this.mCallback = callback;
         }
 
@@ -466,7 +502,7 @@ org.chromium.url.mojom.Url url, org.chromium.mojo.bindings.InterfaceRequest<Blob
         }
     }
 
-    static class BlobUrlStoreRegisterResponseParamsProxyToResponder implements BlobUrlStore.RegisterResponse {
+    static class BlobUrlStoreRegisterResponseParamsProxyToResponder implements BlobUrlStore.Register_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -629,10 +665,11 @@ org.chromium.url.mojom.Url url, org.chromium.mojo.bindings.InterfaceRequest<Blob
     
     static final class BlobUrlStoreResolveResponseParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public Blob blob;
+        public org.chromium.mojo_base.mojom.UnguessableToken unsafeAgentClusterId;
 
         private BlobUrlStoreResolveResponseParams(int version) {
             super(STRUCT_SIZE, version);
@@ -671,6 +708,11 @@ org.chromium.url.mojom.Url url, org.chromium.mojo.bindings.InterfaceRequest<Blob
                         
                     result.blob = decoder0.readServiceInterface(8, true, Blob.MANAGER);
                     }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, true);
+                    result.unsafeAgentClusterId = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -684,14 +726,16 @@ org.chromium.url.mojom.Url url, org.chromium.mojo.bindings.InterfaceRequest<Blob
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.blob, 8, true, Blob.MANAGER);
+            
+            encoder0.encode(this.unsafeAgentClusterId, 16, true);
         }
     }
 
     static class BlobUrlStoreResolveResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BlobUrlStore.ResolveResponse mCallback;
+        private final BlobUrlStore.Resolve_Response mCallback;
 
-        BlobUrlStoreResolveResponseParamsForwardToCallback(BlobUrlStore.ResolveResponse callback) {
+        BlobUrlStoreResolveResponseParamsForwardToCallback(BlobUrlStore.Resolve_Response callback) {
             this.mCallback = callback;
         }
 
@@ -708,7 +752,7 @@ org.chromium.url.mojom.Url url, org.chromium.mojo.bindings.InterfaceRequest<Blob
 
                 BlobUrlStoreResolveResponseParams response = BlobUrlStoreResolveResponseParams.deserialize(messageWithHeader.getPayload());
 
-                mCallback.call(response.blob);
+                mCallback.call(response.blob, response.unsafeAgentClusterId);
                 return true;
             } catch (org.chromium.mojo.bindings.DeserializationException e) {
                 return false;
@@ -716,7 +760,7 @@ org.chromium.url.mojom.Url url, org.chromium.mojo.bindings.InterfaceRequest<Blob
         }
     }
 
-    static class BlobUrlStoreResolveResponseParamsProxyToResponder implements BlobUrlStore.ResolveResponse {
+    static class BlobUrlStoreResolveResponseParamsProxyToResponder implements BlobUrlStore.Resolve_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -732,10 +776,12 @@ org.chromium.url.mojom.Url url, org.chromium.mojo.bindings.InterfaceRequest<Blob
         }
 
         @Override
-        public void call(Blob blob) {
+        public void call(Blob blob, org.chromium.mojo_base.mojom.UnguessableToken unsafeAgentClusterId) {
             BlobUrlStoreResolveResponseParams _response = new BlobUrlStoreResolveResponseParams();
 
             _response.blob = blob;
+
+            _response.unsafeAgentClusterId = unsafeAgentClusterId;
 
             org.chromium.mojo.bindings.ServiceMessage _message =
                     _response.serializeWithHeader(
@@ -822,6 +868,141 @@ org.chromium.url.mojom.Url url, org.chromium.mojo.bindings.InterfaceRequest<Blob
 
 
     
+    static final class BlobUrlStoreResolveAsUrlLoaderFactoryResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.mojo_base.mojom.UnguessableToken unsafeAgentClusterId;
+        public org.chromium.network.mojom.SchemefulSite unsafeTopLevelSite;
+
+        private BlobUrlStoreResolveAsUrlLoaderFactoryResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public BlobUrlStoreResolveAsUrlLoaderFactoryResponseParams() {
+            this(0);
+        }
+
+        public static BlobUrlStoreResolveAsUrlLoaderFactoryResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static BlobUrlStoreResolveAsUrlLoaderFactoryResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static BlobUrlStoreResolveAsUrlLoaderFactoryResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            BlobUrlStoreResolveAsUrlLoaderFactoryResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new BlobUrlStoreResolveAsUrlLoaderFactoryResponseParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, true);
+                    result.unsafeAgentClusterId = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, true);
+                    result.unsafeTopLevelSite = org.chromium.network.mojom.SchemefulSite.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.unsafeAgentClusterId, 8, true);
+            
+            encoder0.encode(this.unsafeTopLevelSite, 16, true);
+        }
+    }
+
+    static class BlobUrlStoreResolveAsUrlLoaderFactoryResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final BlobUrlStore.ResolveAsUrlLoaderFactory_Response mCallback;
+
+        BlobUrlStoreResolveAsUrlLoaderFactoryResponseParamsForwardToCallback(BlobUrlStore.ResolveAsUrlLoaderFactory_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(RESOLVE_AS_URL_LOADER_FACTORY_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                BlobUrlStoreResolveAsUrlLoaderFactoryResponseParams response = BlobUrlStoreResolveAsUrlLoaderFactoryResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.unsafeAgentClusterId, response.unsafeTopLevelSite);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class BlobUrlStoreResolveAsUrlLoaderFactoryResponseParamsProxyToResponder implements BlobUrlStore.ResolveAsUrlLoaderFactory_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        BlobUrlStoreResolveAsUrlLoaderFactoryResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(org.chromium.mojo_base.mojom.UnguessableToken unsafeAgentClusterId, org.chromium.network.mojom.SchemefulSite unsafeTopLevelSite) {
+            BlobUrlStoreResolveAsUrlLoaderFactoryResponseParams _response = new BlobUrlStoreResolveAsUrlLoaderFactoryResponseParams();
+
+            _response.unsafeAgentClusterId = unsafeAgentClusterId;
+
+            _response.unsafeTopLevelSite = unsafeTopLevelSite;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    RESOLVE_AS_URL_LOADER_FACTORY_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
     static final class BlobUrlStoreResolveForNavigationParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 24;
@@ -887,6 +1068,131 @@ org.chromium.url.mojom.Url url, org.chromium.mojo.bindings.InterfaceRequest<Blob
             encoder0.encode(this.url, 8, false);
             
             encoder0.encode(this.token, 16, false);
+        }
+    }
+
+
+
+    
+    static final class BlobUrlStoreResolveForNavigationResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.mojo_base.mojom.UnguessableToken unsafeAgentClusterId;
+
+        private BlobUrlStoreResolveForNavigationResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public BlobUrlStoreResolveForNavigationResponseParams() {
+            this(0);
+        }
+
+        public static BlobUrlStoreResolveForNavigationResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static BlobUrlStoreResolveForNavigationResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static BlobUrlStoreResolveForNavigationResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            BlobUrlStoreResolveForNavigationResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new BlobUrlStoreResolveForNavigationResponseParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, true);
+                    result.unsafeAgentClusterId = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.unsafeAgentClusterId, 8, true);
+        }
+    }
+
+    static class BlobUrlStoreResolveForNavigationResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final BlobUrlStore.ResolveForNavigation_Response mCallback;
+
+        BlobUrlStoreResolveForNavigationResponseParamsForwardToCallback(BlobUrlStore.ResolveForNavigation_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(RESOLVE_FOR_NAVIGATION_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                BlobUrlStoreResolveForNavigationResponseParams response = BlobUrlStoreResolveForNavigationResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.unsafeAgentClusterId);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class BlobUrlStoreResolveForNavigationResponseParamsProxyToResponder implements BlobUrlStore.ResolveForNavigation_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        BlobUrlStoreResolveForNavigationResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(org.chromium.mojo_base.mojom.UnguessableToken unsafeAgentClusterId) {
+            BlobUrlStoreResolveForNavigationResponseParams _response = new BlobUrlStoreResolveForNavigationResponseParams();
+
+            _response.unsafeAgentClusterId = unsafeAgentClusterId;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    RESOLVE_FOR_NAVIGATION_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
         }
     }
 

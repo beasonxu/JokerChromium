@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface P2pSocketClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,20 +25,12 @@ public interface P2pSocketClient extends org.chromium.mojo.bindings.Interface {
 
     Manager<P2pSocketClient, P2pSocketClient.Proxy> MANAGER = P2pSocketClient_Internal.MANAGER;
 
-
     void socketCreated(
 IpEndPoint localAddress, IpEndPoint remoteAddress);
 
 
-
     void sendComplete(
 P2pSendPacketMetrics sendMetrics);
-
-
-
-    void incomingTcpConnection(
-IpEndPoint socketAddress, P2pSocket socket, org.chromium.mojo.bindings.InterfaceRequest<P2pSocketClient> client);
-
 
 
     void dataReceived(

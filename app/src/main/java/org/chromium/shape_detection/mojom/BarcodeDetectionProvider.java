@@ -13,6 +13,8 @@
 
 package org.chromium.shape_detection.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface BarcodeDetectionProvider extends org.chromium.mojo.bindings.Interface {
 
@@ -23,17 +25,15 @@ public interface BarcodeDetectionProvider extends org.chromium.mojo.bindings.Int
 
     Manager<BarcodeDetectionProvider, BarcodeDetectionProvider.Proxy> MANAGER = BarcodeDetectionProvider_Internal.MANAGER;
 
-
     void createBarcodeDetection(
 org.chromium.mojo.bindings.InterfaceRequest<BarcodeDetection> receiver, BarcodeDetectorOptions options);
 
 
-
     void enumerateSupportedFormats(
 
-EnumerateSupportedFormatsResponse callback);
+EnumerateSupportedFormats_Response callback);
 
-    interface EnumerateSupportedFormatsResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<int[]> { }
+    interface EnumerateSupportedFormats_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<int[]> { }
 
 
 }

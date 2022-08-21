@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class MimeRegistry_Internal {
 
@@ -61,7 +63,7 @@ class MimeRegistry_Internal {
         @Override
         public void getMimeTypeFromExtension(
 String extension, 
-GetMimeTypeFromExtensionResponse callback) {
+GetMimeTypeFromExtension_Response callback) {
 
             MimeRegistryGetMimeTypeFromExtensionParams _message = new MimeRegistryGetMimeTypeFromExtensionParams();
 
@@ -291,9 +293,9 @@ GetMimeTypeFromExtensionResponse callback) {
 
     static class MimeRegistryGetMimeTypeFromExtensionResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final MimeRegistry.GetMimeTypeFromExtensionResponse mCallback;
+        private final MimeRegistry.GetMimeTypeFromExtension_Response mCallback;
 
-        MimeRegistryGetMimeTypeFromExtensionResponseParamsForwardToCallback(MimeRegistry.GetMimeTypeFromExtensionResponse callback) {
+        MimeRegistryGetMimeTypeFromExtensionResponseParamsForwardToCallback(MimeRegistry.GetMimeTypeFromExtension_Response callback) {
             this.mCallback = callback;
         }
 
@@ -318,7 +320,7 @@ GetMimeTypeFromExtensionResponse callback) {
         }
     }
 
-    static class MimeRegistryGetMimeTypeFromExtensionResponseParamsProxyToResponder implements MimeRegistry.GetMimeTypeFromExtensionResponse {
+    static class MimeRegistryGetMimeTypeFromExtensionResponseParamsProxyToResponder implements MimeRegistry.GetMimeTypeFromExtension_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

@@ -13,15 +13,23 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class DnsConfigOverrides extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 80;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(80, 0)};
+    private static final int STRUCT_SIZE = 72;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(72, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
 
     public static final class Tristate {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            Tristate.NO_OVERRIDE,
+            Tristate.TRISTATE_TRUE,
+            Tristate.TRISTATE_FALSE})
+        public @interface EnumType {}
 
         public static final int NO_OVERRIDE = 0;
         public static final int TRISTATE_TRUE = 1;
@@ -52,10 +60,9 @@ public final class DnsConfigOverrides extends org.chromium.mojo.bindings.Struct 
     public int attempts;
     public int rotate;
     public int useLocalIpv6;
-    public DnsOverHttpsServer[] dnsOverHttpsServers;
+    public DnsOverHttpsConfig dnsOverHttpsConfig;
     public int secureDnsMode;
     public int allowDnsOverHttpsUpgrade;
-    public String[] disabledUpgradeProviders;
     public boolean clearHosts;
 
     private DnsConfigOverrides(int version) {
@@ -172,37 +179,13 @@ public final class DnsConfigOverrides extends org.chromium.mojo.bindings.Struct 
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(56, true);
-                if (decoder1 == null) {
-                    result.dnsOverHttpsServers = null;
-                } else {
-                    org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                    result.dnsOverHttpsServers = new DnsOverHttpsServer[si1.elementsOrVersion];
-                    for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
-                        
-                        org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
-                        result.dnsOverHttpsServers[i1] = DnsOverHttpsServer.decode(decoder2);
-                    }
-                }
+                result.dnsOverHttpsConfig = DnsOverHttpsConfig.decode(decoder1);
                 }
                 {
                     
                 result.allowDnsOverHttpsUpgrade = decoder0.readInt(64);
                     DnsConfigOverrides.Tristate.validate(result.allowDnsOverHttpsUpgrade);
                     result.allowDnsOverHttpsUpgrade = DnsConfigOverrides.Tristate.toKnownValue(result.allowDnsOverHttpsUpgrade);
-                }
-                {
-                    
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(72, true);
-                if (decoder1 == null) {
-                    result.disabledUpgradeProviders = null;
-                } else {
-                    org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                    result.disabledUpgradeProviders = new String[si1.elementsOrVersion];
-                    for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
-                        
-                        result.disabledUpgradeProviders[i1] = decoder1.readString(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
-                    }
-                }
                 }
 
         } finally {
@@ -252,26 +235,8 @@ public final class DnsConfigOverrides extends org.chromium.mojo.bindings.Struct 
         
         encoder0.encode(this.secureDnsMode, 52);
         
-        if (this.dnsOverHttpsServers == null) {
-            encoder0.encodeNullPointer(56, true);
-        } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.dnsOverHttpsServers.length, 56, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-            for (int i0 = 0; i0 < this.dnsOverHttpsServers.length; ++i0) {
-                
-                encoder1.encode(this.dnsOverHttpsServers[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
-            }
-        }
+        encoder0.encode(this.dnsOverHttpsConfig, 56, true);
         
         encoder0.encode(this.allowDnsOverHttpsUpgrade, 64);
-        
-        if (this.disabledUpgradeProviders == null) {
-            encoder0.encodeNullPointer(72, true);
-        } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.disabledUpgradeProviders.length, 72, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-            for (int i0 = 0; i0 < this.disabledUpgradeProviders.length; ++i0) {
-                
-                encoder1.encode(this.disabledUpgradeProviders[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
-            }
-        }
     }
 }

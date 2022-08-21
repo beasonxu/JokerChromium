@@ -13,8 +13,16 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class SensorCreationResult {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        SensorCreationResult.SUCCESS,
+        SensorCreationResult.ERROR_NOT_AVAILABLE,
+        SensorCreationResult.ERROR_NOT_ALLOWED})
+    public @interface EnumType {}
 
     public static final int SUCCESS = 0;
     public static final int ERROR_NOT_AVAILABLE = 1;

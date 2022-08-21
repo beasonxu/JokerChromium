@@ -1,15 +1,13 @@
 package org.chromium.chrome.browser.autofill;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class AutofillPopupBridgeJni implements AutofillPopupBridge.Natives {
+class AutofillPopupBridgeJni implements AutofillPopupBridge.Natives {
   private static AutofillPopupBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<AutofillPopupBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.autofill.AutofillPopupBridge.Natives>() {

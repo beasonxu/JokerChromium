@@ -2,7 +2,7 @@ package org.chromium.chrome.browser.customtabs;
 
 import android.app.Activity;
 import dagger.internal.Factory;
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 import javax.inject.Provider;
 
 @Generated(

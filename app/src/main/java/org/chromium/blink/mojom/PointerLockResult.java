@@ -13,8 +13,22 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PointerLockResult {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PointerLockResult.SUCCESS,
+        PointerLockResult.UNSUPPORTED_OPTIONS,
+        PointerLockResult.REQUIRES_USER_GESTURE,
+        PointerLockResult.USER_REJECTED,
+        PointerLockResult.PERMISSION_DENIED,
+        PointerLockResult.ALREADY_LOCKED,
+        PointerLockResult.WRONG_DOCUMENT,
+        PointerLockResult.ELEMENT_DESTROYED,
+        PointerLockResult.UNKNOWN_ERROR})
+    public @interface EnumType {}
 
     public static final int SUCCESS = 0;
     public static final int UNSUPPORTED_OPTIONS = 1;

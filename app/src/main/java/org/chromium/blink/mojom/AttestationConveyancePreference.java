@@ -13,8 +13,17 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class AttestationConveyancePreference {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        AttestationConveyancePreference.NONE,
+        AttestationConveyancePreference.INDIRECT,
+        AttestationConveyancePreference.DIRECT,
+        AttestationConveyancePreference.ENTERPRISE})
+    public @interface EnumType {}
 
     public static final int NONE = 0;
     public static final int INDIRECT = 1;

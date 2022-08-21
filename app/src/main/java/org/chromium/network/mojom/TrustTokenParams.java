@@ -13,14 +13,17 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class TrustTokenParams extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 48;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
+    private static final int STRUCT_SIZE = 56;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(56, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int type;
     public int refreshPolicy;
+    public String customKeyCommitment;
     public int signRequestData;
     public boolean includeTimestampHeader;
     public org.chromium.url.internal.mojom.Origin[] issuers;
@@ -77,17 +80,21 @@ public final class TrustTokenParams extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.signRequestData = decoder0.readInt(16);
+                result.customKeyCommitment = decoder0.readString(16, true);
+                }
+                {
+                    
+                result.signRequestData = decoder0.readInt(24);
                     TrustTokenSignRequestData.validate(result.signRequestData);
                     result.signRequestData = TrustTokenSignRequestData.toKnownValue(result.signRequestData);
                 }
                 {
                     
-                result.includeTimestampHeader = decoder0.readBoolean(20, 0);
+                result.includeTimestampHeader = decoder0.readBoolean(28, 0);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     result.issuers = new org.chromium.url.internal.mojom.Origin[si1.elementsOrVersion];
@@ -100,7 +107,7 @@ public final class TrustTokenParams extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     result.additionalSignedHeaders = new String[si1.elementsOrVersion];
@@ -112,7 +119,7 @@ public final class TrustTokenParams extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.possiblyUnsafeAdditionalSigningData = decoder0.readString(40, true);
+                result.possiblyUnsafeAdditionalSigningData = decoder0.readString(48, true);
                 }
 
         } finally {
@@ -130,14 +137,16 @@ public final class TrustTokenParams extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.refreshPolicy, 12);
         
-        encoder0.encode(this.signRequestData, 16);
+        encoder0.encode(this.customKeyCommitment, 16, true);
         
-        encoder0.encode(this.includeTimestampHeader, 20, 0);
+        encoder0.encode(this.signRequestData, 24);
+        
+        encoder0.encode(this.includeTimestampHeader, 28, 0);
         
         if (this.issuers == null) {
-            encoder0.encodeNullPointer(24, false);
+            encoder0.encodeNullPointer(32, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.issuers.length, 24, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.issuers.length, 32, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
             for (int i0 = 0; i0 < this.issuers.length; ++i0) {
                 
                 encoder1.encode(this.issuers[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
@@ -145,15 +154,15 @@ public final class TrustTokenParams extends org.chromium.mojo.bindings.Struct {
         }
         
         if (this.additionalSignedHeaders == null) {
-            encoder0.encodeNullPointer(32, false);
+            encoder0.encodeNullPointer(40, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.additionalSignedHeaders.length, 32, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.additionalSignedHeaders.length, 40, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
             for (int i0 = 0; i0 < this.additionalSignedHeaders.length; ++i0) {
                 
                 encoder1.encode(this.additionalSignedHeaders[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
             }
         }
         
-        encoder0.encode(this.possiblyUnsafeAdditionalSigningData, 40, true);
+        encoder0.encode(this.possiblyUnsafeAdditionalSigningData, 48, true);
     }
 }

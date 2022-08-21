@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class ContentDecryptionModuleClient_Internal {
 
@@ -87,11 +89,13 @@ String sessionId, int messageType, byte[] message) {
 
         @Override
         public void onSessionClosed(
-String sessionId) {
+String sessionId, int reason) {
 
             ContentDecryptionModuleClientOnSessionClosedParams _message = new ContentDecryptionModuleClientOnSessionClosedParams();
 
             _message.sessionId = sessionId;
+
+            _message.reason = reason;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -191,7 +195,7 @@ String sessionId, double newExpiryTimeSec) {
                         ContentDecryptionModuleClientOnSessionClosedParams data =
                                 ContentDecryptionModuleClientOnSessionClosedParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().onSessionClosed(data.sessionId);
+                        getImpl().onSessionClosed(data.sessionId, data.reason);
                         return true;
                     }
 
@@ -352,10 +356,11 @@ String sessionId, double newExpiryTimeSec) {
     
     static final class ContentDecryptionModuleClientOnSessionClosedParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public String sessionId;
+        public int reason;
 
         private ContentDecryptionModuleClientOnSessionClosedParams(int version) {
             super(STRUCT_SIZE, version);
@@ -394,6 +399,12 @@ String sessionId, double newExpiryTimeSec) {
                         
                     result.sessionId = decoder0.readString(8, false);
                     }
+                    {
+                        
+                    result.reason = decoder0.readInt(16);
+                        CdmSessionClosedReason.validate(result.reason);
+                        result.reason = CdmSessionClosedReason.toKnownValue(result.reason);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -407,6 +418,8 @@ String sessionId, double newExpiryTimeSec) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.sessionId, 8, false);
+            
+            encoder0.encode(this.reason, 16);
         }
     }
 

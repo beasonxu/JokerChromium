@@ -13,17 +13,18 @@
 
 package org.chromium.payments.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class CanMakePaymentEventData extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 48;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
+    private static final int STRUCT_SIZE = 40;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public org.chromium.url.mojom.Url topOrigin;
     public org.chromium.url.mojom.Url paymentRequestOrigin;
     public PaymentMethodData[] methodData;
     public PaymentDetailsModifier[] modifiers;
-    public String currency;
 
     private CanMakePaymentEventData(int version) {
         super(STRUCT_SIZE, version);
@@ -94,10 +95,6 @@ public final class CanMakePaymentEventData extends org.chromium.mojo.bindings.St
                     }
                 }
                 }
-                {
-                    
-                result.currency = decoder0.readString(40, true);
-                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -133,7 +130,5 @@ public final class CanMakePaymentEventData extends org.chromium.mojo.bindings.St
                 encoder1.encode(this.modifiers[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
             }
         }
-        
-        encoder0.encode(this.currency, 40, true);
     }
 }

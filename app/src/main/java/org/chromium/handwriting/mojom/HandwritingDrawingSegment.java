@@ -13,6 +13,8 @@
 
 package org.chromium.handwriting.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class HandwritingDrawingSegment extends org.chromium.mojo.bindings.Struct {
 

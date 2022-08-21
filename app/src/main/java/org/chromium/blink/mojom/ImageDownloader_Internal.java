@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class ImageDownloader_Internal {
 
@@ -60,8 +62,8 @@ class ImageDownloader_Internal {
 
         @Override
         public void downloadImage(
-org.chromium.url.mojom.Url url, boolean isFavicon, int preferredSize, int maxBitmapSize, boolean bypassCache, 
-DownloadImageResponse callback) {
+org.chromium.url.mojom.Url url, boolean isFavicon, org.chromium.gfx.mojom.Size preferredSize, int maxBitmapSize, boolean bypassCache, 
+DownloadImage_Response callback) {
 
             ImageDownloaderDownloadImageParams _message = new ImageDownloaderDownloadImageParams();
 
@@ -181,7 +183,7 @@ DownloadImageResponse callback) {
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public org.chromium.url.mojom.Url url;
         public boolean isFavicon;
-        public int preferredSize;
+        public org.chromium.gfx.mojom.Size preferredSize;
         public int maxBitmapSize;
         public boolean bypassCache;
 
@@ -233,11 +235,12 @@ DownloadImageResponse callback) {
                     }
                     {
                         
-                    result.preferredSize = decoder0.readInt(20);
+                    result.maxBitmapSize = decoder0.readInt(20);
                     }
                     {
                         
-                    result.maxBitmapSize = decoder0.readInt(24);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
+                    result.preferredSize = org.chromium.gfx.mojom.Size.decode(decoder1);
                     }
 
             } finally {
@@ -257,9 +260,9 @@ DownloadImageResponse callback) {
             
             encoder0.encode(this.bypassCache, 16, 1);
             
-            encoder0.encode(this.preferredSize, 20);
+            encoder0.encode(this.maxBitmapSize, 20);
             
-            encoder0.encode(this.maxBitmapSize, 24);
+            encoder0.encode(this.preferredSize, 24, false);
         }
     }
 
@@ -376,9 +379,9 @@ DownloadImageResponse callback) {
 
     static class ImageDownloaderDownloadImageResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ImageDownloader.DownloadImageResponse mCallback;
+        private final ImageDownloader.DownloadImage_Response mCallback;
 
-        ImageDownloaderDownloadImageResponseParamsForwardToCallback(ImageDownloader.DownloadImageResponse callback) {
+        ImageDownloaderDownloadImageResponseParamsForwardToCallback(ImageDownloader.DownloadImage_Response callback) {
             this.mCallback = callback;
         }
 
@@ -403,7 +406,7 @@ DownloadImageResponse callback) {
         }
     }
 
-    static class ImageDownloaderDownloadImageResponseParamsProxyToResponder implements ImageDownloader.DownloadImageResponse {
+    static class ImageDownloaderDownloadImageResponseParamsProxyToResponder implements ImageDownloader.DownloadImage_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

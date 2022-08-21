@@ -13,11 +13,13 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class YuvVideoQuadState extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 104;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(104, 0)};
+    private static final int STRUCT_SIZE = 112;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(112, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public org.chromium.gfx.mojom.RectF yaTexCoordRect;
     public org.chromium.gfx.mojom.RectF uvTexCoordRect;
@@ -33,6 +35,7 @@ public final class YuvVideoQuadState extends org.chromium.mojo.bindings.Struct {
     public org.chromium.gfx.mojom.ColorSpace videoColorSpace;
     public int protectedVideoType;
     public org.chromium.gfx.mojom.HdrMetadata hdrMetadata;
+    public org.chromium.gfx.mojom.Rect damageRect;
 
     private YuvVideoQuadState(int version) {
         super(STRUCT_SIZE, version);
@@ -132,8 +135,13 @@ public final class YuvVideoQuadState extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(96, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(96, true);
                 result.hdrMetadata = org.chromium.gfx.mojom.HdrMetadata.decode(decoder1);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(104, true);
+                result.damageRect = org.chromium.gfx.mojom.Rect.decode(decoder1);
                 }
 
         } finally {
@@ -173,6 +181,8 @@ public final class YuvVideoQuadState extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.videoColorSpace, 88, false);
         
-        encoder0.encode(this.hdrMetadata, 96, false);
+        encoder0.encode(this.hdrMetadata, 96, true);
+        
+        encoder0.encode(this.damageRect, 104, true);
     }
 }

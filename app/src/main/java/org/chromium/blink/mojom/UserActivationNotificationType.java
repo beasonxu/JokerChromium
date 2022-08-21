@@ -13,8 +13,29 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class UserActivationNotificationType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        UserActivationNotificationType.NONE,
+        UserActivationNotificationType.INTERACTION,
+        UserActivationNotificationType.DEV_TOOLS,
+        UserActivationNotificationType.EXTENSION_EVENT,
+        UserActivationNotificationType.EXTENSION_GUEST_VIEW,
+        UserActivationNotificationType.EXTENSION_MESSAGING,
+        UserActivationNotificationType.MEDIA,
+        UserActivationNotificationType.FILE_SYSTEM_ACCESS,
+        UserActivationNotificationType.PLUGIN,
+        UserActivationNotificationType.TEST,
+        UserActivationNotificationType.WEB_SCRIPT_EXEC,
+        UserActivationNotificationType.VOICE_SEARCH,
+        UserActivationNotificationType.EXTENSION_MESSAGING_BOTH_PRIVILEGED,
+        UserActivationNotificationType.EXTENSION_MESSAGING_SENDER_PRIVILEGED,
+        UserActivationNotificationType.EXTENSION_MESSAGING_RECEIVER_PRIVILEGED,
+        UserActivationNotificationType.EXTENSION_MESSAGING_NEITHER_PRIVILEGED})
+    public @interface EnumType {}
 
     public static final int NONE = 0;
     public static final int INTERACTION = 1;

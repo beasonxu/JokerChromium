@@ -13,8 +13,19 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ContextMenuDataInputFieldType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ContextMenuDataInputFieldType.NONE,
+        ContextMenuDataInputFieldType.PLAIN_TEXT,
+        ContextMenuDataInputFieldType.PASSWORD,
+        ContextMenuDataInputFieldType.NUMBER,
+        ContextMenuDataInputFieldType.TELEPHONE,
+        ContextMenuDataInputFieldType.OTHER})
+    public @interface EnumType {}
 
     public static final int NONE = 0;
     public static final int PLAIN_TEXT = 1;

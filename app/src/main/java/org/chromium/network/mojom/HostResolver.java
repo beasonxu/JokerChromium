@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface HostResolver extends org.chromium.mojo.bindings.Interface {
 
@@ -23,17 +25,15 @@ public interface HostResolver extends org.chromium.mojo.bindings.Interface {
 
     Manager<HostResolver, HostResolver.Proxy> MANAGER = HostResolver_Internal.MANAGER;
 
-
     void resolveHost(
 HostPortPair host, NetworkIsolationKey networkIsolationKey, ResolveHostParameters optionalParameters, ResolveHostClient responseClient);
 
 
-
     void mdnsListen(
 HostPortPair host, int queryType, MdnsListenClient responseClient, 
-MdnsListenResponse callback);
+MdnsListen_Response callback);
 
-    interface MdnsListenResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
+    interface MdnsListen_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
 }

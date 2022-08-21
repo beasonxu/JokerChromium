@@ -2,7 +2,6 @@ package org.chromium.chrome.browser.survey;
 
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.Callback;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
@@ -11,9 +10,8 @@ import org.chromium.base.natives.GEN_JNI;
 import org.chromium.chrome.browser.profiles.Profile;
 import org.chromium.url.GURL;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class SurveyHttpClientBridgeJni implements SurveyHttpClientBridge.Natives {
+class SurveyHttpClientBridgeJni implements SurveyHttpClientBridge.Natives {
   private static SurveyHttpClientBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<SurveyHttpClientBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.survey.SurveyHttpClientBridge.Natives>() {
@@ -28,8 +26,8 @@ final class SurveyHttpClientBridgeJni implements SurveyHttpClientBridge.Natives 
   };
 
   @Override
-  public long init(Profile profile) {
-    return (long)GEN_JNI.org_chromium_chrome_browser_survey_SurveyHttpClientBridge_init(profile);
+  public long init(int clientType, Profile profile) {
+    return (long)GEN_JNI.org_chromium_chrome_browser_survey_SurveyHttpClientBridge_init(clientType, profile);
   }
 
   @Override

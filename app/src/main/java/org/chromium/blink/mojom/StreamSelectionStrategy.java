@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class StreamSelectionStrategy {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        StreamSelectionStrategy.SEARCH_BY_SESSION_ID,
+        StreamSelectionStrategy.SEARCH_BY_DEVICE_ID,
+        StreamSelectionStrategy.FORCE_NEW_STREAM})
+    public @interface EnumType {}
 
     public static final int SEARCH_BY_SESSION_ID = 0;
     public static final int SEARCH_BY_DEVICE_ID = 1;

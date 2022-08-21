@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface PictureInPictureService extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface PictureInPictureService extends org.chromium.mojo.bindings.Inte
 
     Manager<PictureInPictureService, PictureInPictureService.Proxy> MANAGER = PictureInPictureService_Internal.MANAGER;
 
-
     void startSession(
-int playerId, org.chromium.mojo.bindings.AssociatedInterfaceNotSupported playerRemote, org.chromium.viz.mojom.SurfaceId surfaceId, org.chromium.gfx.mojom.Size naturalSize, boolean showPlayPauseButton, PictureInPictureSessionObserver observer, 
-StartSessionResponse callback);
+int playerId, org.chromium.mojo.bindings.AssociatedInterfaceNotSupported playerRemote, org.chromium.viz.mojom.SurfaceId surfaceId, org.chromium.gfx.mojom.Size naturalSize, boolean showPlayPauseButton, PictureInPictureSessionObserver observer, org.chromium.gfx.mojom.Rect sourceBounds, 
+StartSession_Response callback);
 
-    interface StartSessionResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<PictureInPictureSession, org.chromium.gfx.mojom.Size> { }
+    interface StartSession_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<PictureInPictureSession, org.chromium.gfx.mojom.Size> { }
 
 
 }

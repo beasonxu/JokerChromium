@@ -5,8 +5,6 @@
 package org.chromium.chrome.browser.tasks.tab_groups;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -14,7 +12,6 @@ import androidx.annotation.StringRes;
 import androidx.annotation.VisibleForTesting;
 
 import org.chromium.base.ApplicationStatus;
-import org.chromium.base.ContextUtils;
 import org.chromium.chrome.browser.ChromeTabbedActivity;
 import org.chromium.chrome.browser.feature_engagement.TrackerFactory;
 import org.chromium.chrome.browser.profiles.Profile;
@@ -46,15 +43,13 @@ public class TabGroupUtils {
 
     public static void maybeShowIPH(@FeatureConstants String featureName, View view,
             @Nullable BottomSheetController bottomSheetController) {
+        if (view == null) return;
         // For tab group, all three IPHs are valid. For conditional tab strip, the only valid IPH
         // below is TAB_GROUPS_TAP_TO_SEE_ANOTHER_TAB_FEATURE.
-        if (!TabUiFeatureUtilities.isTabGroupsAndroidEnabled()
+        if (!TabUiFeatureUtilities.isTabGroupsAndroidEnabled(view.getContext())
                 && !(TabUiFeatureUtilities.isConditionalTabStripEnabled()
                         && featureName.equals(
                                 FeatureConstants.TAB_GROUPS_TAP_TO_SEE_ANOTHER_TAB_FEATURE))) {
-            return;
-        }
-        if (TabUiFeatureUtilities.isLaunchPolishEnabled() && view == null) {
             return;
         }
 
@@ -103,7 +98,7 @@ public class TabGroupUtils {
         // explicitly closing the text bubble.
         BottomSheetObserver bottomSheetObserver = new EmptyBottomSheetObserver() {
             @Override
-            public void onSheetStateChanged(int newState) {
+            public void onSheetStateChanged(int newState, int reason) {
                 if (newState == BottomSheetController.SheetState.HIDDEN) {
                     textBubble.show();
                 } else {
@@ -138,14 +133,14 @@ public class TabGroupUtils {
         sTabModelSelectorTabObserver = new TabModelSelectorTabObserver(selector) {
             @Override
             public void onDidFinishNavigation(Tab tab, NavigationHandle navigationHandle) {
-                if (!navigationHandle.isInMainFrame()) return;
+                if (!navigationHandle.isInPrimaryMainFrame()) return;
                 if (tab.isIncognito()) return;
-                Integer transition = navigationHandle.pageTransition();
+                if (!navigationHandle.hasCommitted()) return;
+
                 // Searching from omnibox results in PageTransition.GENERATED.
                 if (navigationHandle.isValidSearchFormUrl()
-                        || (transition != null
-                                && (transition & PageTransition.CORE_MASK)
-                                        == PageTransition.GENERATED)) {
+                        || (navigationHandle.pageTransition() & PageTransition.CORE_MASK)
+                                == PageTransition.GENERATED) {
                     maybeShowIPH(FeatureConstants.TAB_GROUPS_QUICKLY_COMPARE_PAGES_FEATURE,
                             tab.getView(), null);
                     sTabModelSelectorTabObserver.destroy();
@@ -188,41 +183,6 @@ public class TabGroupUtils {
         assert tabs != null && tabs.size() != 0;
 
         return tabModel.indexOf(tabs.get(tabs.size() - 1));
-    }
-
-    /**
-     * This method stores tab group title with reference to {@code tabRootId}.
-     * @param tabRootId   The tab root ID which is used as reference to store group title.
-     * @param title       The tab group title to store.
-     */
-    public static void storeTabGroupTitle(int tabRootId, String title) {
-        assert tabRootId != Tab.INVALID_TAB_ID;
-        getSharedPreferences().edit().putString(String.valueOf(tabRootId), title).apply();
-    }
-
-    /**
-     * This method deletes specific stored tab group title with reference to {@code tabRootId}.
-     * @param tabRootId  The tab root ID whose related tab group title will be deleted.
-     */
-    public static void deleteTabGroupTitle(int tabRootId) {
-        assert tabRootId != Tab.INVALID_TAB_ID;
-        getSharedPreferences().edit().remove(String.valueOf(tabRootId)).apply();
-    }
-
-    /**
-     * This method fetches tab group title with related tab group root ID.
-     * @param tabRootId  The tab root ID whose related tab group title will be fetched.
-     * @return The stored title of the target tab group, default value is null.
-     */
-    @Nullable
-    public static String getTabGroupTitle(int tabRootId) {
-        assert tabRootId != Tab.INVALID_TAB_ID;
-        return getSharedPreferences().getString(String.valueOf(tabRootId), null);
-    }
-
-    private static SharedPreferences getSharedPreferences() {
-        return ContextUtils.getApplicationContext().getSharedPreferences(
-                TAB_GROUP_TITLES_FILE_NAME, Context.MODE_PRIVATE);
     }
 
     @VisibleForTesting

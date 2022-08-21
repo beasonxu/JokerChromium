@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface MediaDevicesDispatcherHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,49 +25,47 @@ public interface MediaDevicesDispatcherHost extends org.chromium.mojo.bindings.I
 
     Manager<MediaDevicesDispatcherHost, MediaDevicesDispatcherHost.Proxy> MANAGER = MediaDevicesDispatcherHost_Internal.MANAGER;
 
-
     void enumerateDevices(
 boolean requestAudioInput, boolean requestVideoInput, boolean requestAudioOutput, boolean requestVideoInputCapabilities, boolean requestAudioInputCapabilities, 
-EnumerateDevicesResponse callback);
+EnumerateDevices_Response callback);
 
-    interface EnumerateDevicesResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<MediaDeviceInfo[][], VideoInputDeviceCapabilities[], AudioInputDeviceCapabilities[]> { }
-
+    interface EnumerateDevices_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<MediaDeviceInfo[][], VideoInputDeviceCapabilities[], AudioInputDeviceCapabilities[]> { }
 
 
     void getVideoInputCapabilities(
 
-GetVideoInputCapabilitiesResponse callback);
+GetVideoInputCapabilities_Response callback);
 
-    interface GetVideoInputCapabilitiesResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<VideoInputDeviceCapabilities[]> { }
-
+    interface GetVideoInputCapabilities_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<VideoInputDeviceCapabilities[]> { }
 
 
     void getAllVideoInputDeviceFormats(
 String deviceId, 
-GetAllVideoInputDeviceFormatsResponse callback);
+GetAllVideoInputDeviceFormats_Response callback);
 
-    interface GetAllVideoInputDeviceFormatsResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.media.mojom.VideoCaptureFormat[]> { }
-
+    interface GetAllVideoInputDeviceFormats_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.media.mojom.VideoCaptureFormat[]> { }
 
 
     void getAvailableVideoInputDeviceFormats(
 String deviceId, 
-GetAvailableVideoInputDeviceFormatsResponse callback);
+GetAvailableVideoInputDeviceFormats_Response callback);
 
-    interface GetAvailableVideoInputDeviceFormatsResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.media.mojom.VideoCaptureFormat[]> { }
-
+    interface GetAvailableVideoInputDeviceFormats_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.media.mojom.VideoCaptureFormat[]> { }
 
 
     void getAudioInputCapabilities(
 
-GetAudioInputCapabilitiesResponse callback);
+GetAudioInputCapabilities_Response callback);
 
-    interface GetAudioInputCapabilitiesResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<AudioInputDeviceCapabilities[]> { }
-
+    interface GetAudioInputCapabilities_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<AudioInputDeviceCapabilities[]> { }
 
 
     void addMediaDevicesListener(
 boolean subscribeAudioInput, boolean subscribeVideoInput, boolean subscribeAudioOutput, MediaDevicesListener listener);
+
+
+    void setCaptureHandleConfig(
+CaptureHandleConfig config);
 
 
 }

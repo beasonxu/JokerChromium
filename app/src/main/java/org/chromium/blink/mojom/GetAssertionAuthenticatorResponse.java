@@ -13,13 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class GetAssertionAuthenticatorResponse extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 64;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(64, 0)};
+    private static final int STRUCT_SIZE = 72;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(72, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public CommonCredentialInfo info;
+    public int authenticatorAttachment;
     public byte[] signature;
     public byte[] userHandle;
     public boolean echoAppidExtension;
@@ -33,6 +36,7 @@ public final class GetAssertionAuthenticatorResponse extends org.chromium.mojo.b
     public byte[] largeBlob;
     public boolean echoLargeBlobWritten;
     public boolean largeBlobWritten;
+    public byte[] getCredBlob;
 
     private GetAssertionAuthenticatorResponse(int version) {
         super(STRUCT_SIZE, version);
@@ -74,43 +78,49 @@ public final class GetAssertionAuthenticatorResponse extends org.chromium.mojo.b
                 }
                 {
                     
-                result.signature = decoder0.readBytes(16, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                result.authenticatorAttachment = decoder0.readInt(16);
+                    AuthenticatorAttachment.validate(result.authenticatorAttachment);
+                    result.authenticatorAttachment = AuthenticatorAttachment.toKnownValue(result.authenticatorAttachment);
                 }
                 {
                     
-                result.userHandle = decoder0.readBytes(24, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                result.echoAppidExtension = decoder0.readBoolean(20, 0);
                 }
                 {
                     
-                result.echoAppidExtension = decoder0.readBoolean(32, 0);
+                result.appidExtension = decoder0.readBoolean(20, 1);
                 }
                 {
                     
-                result.appidExtension = decoder0.readBoolean(32, 1);
+                result.echoUserVerificationMethods = decoder0.readBoolean(20, 2);
                 }
                 {
                     
-                result.echoUserVerificationMethods = decoder0.readBoolean(32, 2);
+                result.echoPrf = decoder0.readBoolean(20, 3);
                 }
                 {
                     
-                result.echoPrf = decoder0.readBoolean(32, 3);
+                result.prfNotEvaluated = decoder0.readBoolean(20, 4);
                 }
                 {
                     
-                result.prfNotEvaluated = decoder0.readBoolean(32, 4);
+                result.echoLargeBlob = decoder0.readBoolean(20, 5);
                 }
                 {
                     
-                result.echoLargeBlob = decoder0.readBoolean(32, 5);
+                result.echoLargeBlobWritten = decoder0.readBoolean(20, 6);
                 }
                 {
                     
-                result.echoLargeBlobWritten = decoder0.readBoolean(32, 6);
+                result.largeBlobWritten = decoder0.readBoolean(20, 7);
                 }
                 {
                     
-                result.largeBlobWritten = decoder0.readBoolean(32, 7);
+                result.signature = decoder0.readBytes(24, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                }
+                {
+                    
+                result.userHandle = decoder0.readBytes(32, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 }
                 {
                     
@@ -136,6 +146,10 @@ public final class GetAssertionAuthenticatorResponse extends org.chromium.mojo.b
                     
                 result.largeBlob = decoder0.readBytes(56, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 }
+                {
+                    
+                result.getCredBlob = decoder0.readBytes(64, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -150,25 +164,27 @@ public final class GetAssertionAuthenticatorResponse extends org.chromium.mojo.b
         
         encoder0.encode(this.info, 8, false);
         
-        encoder0.encode(this.signature, 16, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+        encoder0.encode(this.authenticatorAttachment, 16);
         
-        encoder0.encode(this.userHandle, 24, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+        encoder0.encode(this.echoAppidExtension, 20, 0);
         
-        encoder0.encode(this.echoAppidExtension, 32, 0);
+        encoder0.encode(this.appidExtension, 20, 1);
         
-        encoder0.encode(this.appidExtension, 32, 1);
+        encoder0.encode(this.echoUserVerificationMethods, 20, 2);
         
-        encoder0.encode(this.echoUserVerificationMethods, 32, 2);
+        encoder0.encode(this.echoPrf, 20, 3);
         
-        encoder0.encode(this.echoPrf, 32, 3);
+        encoder0.encode(this.prfNotEvaluated, 20, 4);
         
-        encoder0.encode(this.prfNotEvaluated, 32, 4);
+        encoder0.encode(this.echoLargeBlob, 20, 5);
         
-        encoder0.encode(this.echoLargeBlob, 32, 5);
+        encoder0.encode(this.echoLargeBlobWritten, 20, 6);
         
-        encoder0.encode(this.echoLargeBlobWritten, 32, 6);
+        encoder0.encode(this.largeBlobWritten, 20, 7);
         
-        encoder0.encode(this.largeBlobWritten, 32, 7);
+        encoder0.encode(this.signature, 24, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+        
+        encoder0.encode(this.userHandle, 32, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
         
         if (this.userVerificationMethods == null) {
             encoder0.encodeNullPointer(40, true);
@@ -183,5 +199,7 @@ public final class GetAssertionAuthenticatorResponse extends org.chromium.mojo.b
         encoder0.encode(this.prfResults, 48, true);
         
         encoder0.encode(this.largeBlob, 56, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+        
+        encoder0.encode(this.getCredBlob, 64, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
     }
 }

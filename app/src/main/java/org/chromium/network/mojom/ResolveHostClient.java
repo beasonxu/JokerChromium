@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ResolveHostClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,15 +25,12 @@ public interface ResolveHostClient extends org.chromium.mojo.bindings.Interface 
 
     Manager<ResolveHostClient, ResolveHostClient.Proxy> MANAGER = ResolveHostClient_Internal.MANAGER;
 
-
     void onComplete(
 int result, ResolveErrorInfo resolveErrorInfo, AddressList resolvedAddresses);
 
 
-
     void onTextResults(
 String[] textResults);
-
 
 
     void onHostnameResults(

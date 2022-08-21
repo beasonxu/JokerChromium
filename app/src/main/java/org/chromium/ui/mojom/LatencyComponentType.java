@@ -13,8 +13,25 @@
 
 package org.chromium.ui.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class LatencyComponentType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        LatencyComponentType.INPUT_EVENT_LATENCY_BEGIN_RWH_COMPONENT,
+        LatencyComponentType.INPUT_EVENT_LATENCY_SCROLL_UPDATE_ORIGINAL_COMPONENT,
+        LatencyComponentType.INPUT_EVENT_LATENCY_FIRST_SCROLL_UPDATE_ORIGINAL_COMPONENT,
+        LatencyComponentType.INPUT_EVENT_LATENCY_ORIGINAL_COMPONENT,
+        LatencyComponentType.INPUT_EVENT_LATENCY_UI_COMPONENT,
+        LatencyComponentType.INPUT_EVENT_LATENCY_RENDERER_MAIN_COMPONENT,
+        LatencyComponentType.INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_MAIN_COMPONENT,
+        LatencyComponentType.INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_IMPL_COMPONENT,
+        LatencyComponentType.INPUT_EVENT_LATENCY_RENDERER_SWAP_COMPONENT,
+        LatencyComponentType.DISPLAY_COMPOSITOR_RECEIVED_FRAME_COMPONENT,
+        LatencyComponentType.INPUT_EVENT_GPU_SWAP_BUFFER_COMPONENT,
+        LatencyComponentType.INPUT_EVENT_LATENCY_FRAME_SWAP_COMPONENT})
+    public @interface EnumType {}
 
     public static final int INPUT_EVENT_LATENCY_BEGIN_RWH_COMPONENT = 0;
     public static final int INPUT_EVENT_LATENCY_SCROLL_UPDATE_ORIGINAL_COMPONENT = 1;
@@ -24,16 +41,15 @@ public final class LatencyComponentType {
     public static final int INPUT_EVENT_LATENCY_RENDERER_MAIN_COMPONENT = 5;
     public static final int INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_MAIN_COMPONENT = 6;
     public static final int INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_IMPL_COMPONENT = 7;
-    public static final int INPUT_EVENT_LATENCY_SCROLL_UPDATE_LAST_EVENT_COMPONENT = 8;
-    public static final int INPUT_EVENT_LATENCY_RENDERER_SWAP_COMPONENT = 9;
-    public static final int DISPLAY_COMPOSITOR_RECEIVED_FRAME_COMPONENT = 10;
-    public static final int INPUT_EVENT_GPU_SWAP_BUFFER_COMPONENT = 11;
-    public static final int INPUT_EVENT_LATENCY_FRAME_SWAP_COMPONENT = 12;
+    public static final int INPUT_EVENT_LATENCY_RENDERER_SWAP_COMPONENT = 8;
+    public static final int DISPLAY_COMPOSITOR_RECEIVED_FRAME_COMPONENT = 9;
+    public static final int INPUT_EVENT_GPU_SWAP_BUFFER_COMPONENT = 10;
+    public static final int INPUT_EVENT_LATENCY_FRAME_SWAP_COMPONENT = 11;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 12;
+    public static final int MAX_VALUE = 11;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 12;
+        return value >= 0 && value <= 11;
     }
 
     public static void validate(int value) {

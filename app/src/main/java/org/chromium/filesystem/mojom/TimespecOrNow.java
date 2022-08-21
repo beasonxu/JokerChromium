@@ -13,6 +13,8 @@
 
 package org.chromium.filesystem.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class TimespecOrNow extends org.chromium.mojo.bindings.Struct {
 

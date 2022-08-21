@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class ProxyResolvingSocketFactory_Internal {
 
@@ -61,7 +63,7 @@ class ProxyResolvingSocketFactory_Internal {
         @Override
         public void createProxyResolvingSocket(
 org.chromium.url.mojom.Url url, NetworkIsolationKey networkIsolationKey, ProxyResolvingSocketOptions options, MutableNetworkTrafficAnnotationTag trafficAnnotation, org.chromium.mojo.bindings.InterfaceRequest<ProxyResolvingSocket> socket, SocketObserver observer, 
-CreateProxyResolvingSocketResponse callback) {
+CreateProxyResolvingSocket_Response callback) {
 
             ProxyResolvingSocketFactoryCreateProxyResolvingSocketParams _message = new ProxyResolvingSocketFactoryCreateProxyResolvingSocketParams();
 
@@ -372,9 +374,9 @@ CreateProxyResolvingSocketResponse callback) {
 
     static class ProxyResolvingSocketFactoryCreateProxyResolvingSocketResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ProxyResolvingSocketFactory.CreateProxyResolvingSocketResponse mCallback;
+        private final ProxyResolvingSocketFactory.CreateProxyResolvingSocket_Response mCallback;
 
-        ProxyResolvingSocketFactoryCreateProxyResolvingSocketResponseParamsForwardToCallback(ProxyResolvingSocketFactory.CreateProxyResolvingSocketResponse callback) {
+        ProxyResolvingSocketFactoryCreateProxyResolvingSocketResponseParamsForwardToCallback(ProxyResolvingSocketFactory.CreateProxyResolvingSocket_Response callback) {
             this.mCallback = callback;
         }
 
@@ -399,7 +401,7 @@ CreateProxyResolvingSocketResponse callback) {
         }
     }
 
-    static class ProxyResolvingSocketFactoryCreateProxyResolvingSocketResponseParamsProxyToResponder implements ProxyResolvingSocketFactory.CreateProxyResolvingSocketResponse {
+    static class ProxyResolvingSocketFactoryCreateProxyResolvingSocketResponseParamsProxyToResponder implements ProxyResolvingSocketFactory.CreateProxyResolvingSocket_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

@@ -4,9 +4,9 @@ import android.app.Activity;
 import dagger.Lazy;
 import dagger.internal.DoubleCheck;
 import dagger.internal.Factory;
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 import javax.inject.Provider;
-import org.chromium.chrome.browser.browserservices.BrowserServicesIntentDataProvider;
+import org.chromium.chrome.browser.browserservices.intents.BrowserServicesIntentDataProvider;
 import org.chromium.chrome.browser.customtabs.CloseButtonNavigator;
 import org.chromium.chrome.browser.customtabs.CustomTabObserver;
 import org.chromium.chrome.browser.customtabs.CustomTabsConnection;
@@ -43,6 +43,8 @@ public final class CustomTabActivityNavigationController_Factory implements Fact
 
   private final Provider<FullscreenManager> fullscreenManagerProvider;
 
+  private final Provider<CustomTabActivityNavigationController.DefaultBrowserProvider> customTabsDefaultBrowserProvider;
+
   public CustomTabActivityNavigationController_Factory(
       Provider<CustomTabActivityTabController> tabControllerProvider,
       Provider<CustomTabActivityTabProvider> tabProvider,
@@ -53,7 +55,8 @@ public final class CustomTabActivityNavigationController_Factory implements Fact
       Provider<ChromeBrowserInitializer> chromeBrowserInitializerProvider,
       Provider<Activity> activityProvider,
       Provider<ActivityLifecycleDispatcher> lifecycleDispatcherProvider,
-      Provider<FullscreenManager> fullscreenManagerProvider) {
+      Provider<FullscreenManager> fullscreenManagerProvider,
+      Provider<CustomTabActivityNavigationController.DefaultBrowserProvider> customTabsDefaultBrowserProvider) {
     this.tabControllerProvider = tabControllerProvider;
     this.tabProvider = tabProvider;
     this.intentDataProvider = intentDataProvider;
@@ -64,11 +67,12 @@ public final class CustomTabActivityNavigationController_Factory implements Fact
     this.activityProvider = activityProvider;
     this.lifecycleDispatcherProvider = lifecycleDispatcherProvider;
     this.fullscreenManagerProvider = fullscreenManagerProvider;
+    this.customTabsDefaultBrowserProvider = customTabsDefaultBrowserProvider;
   }
 
   @Override
   public CustomTabActivityNavigationController get() {
-    return newInstance(tabControllerProvider.get(), tabProvider.get(), intentDataProvider.get(), connectionProvider.get(), DoubleCheck.lazy(customTabObserverProvider), closeButtonNavigatorProvider.get(), chromeBrowserInitializerProvider.get(), activityProvider.get(), lifecycleDispatcherProvider.get(), DoubleCheck.lazy(fullscreenManagerProvider));
+    return newInstance(tabControllerProvider.get(), tabProvider.get(), intentDataProvider.get(), connectionProvider.get(), DoubleCheck.lazy(customTabObserverProvider), closeButtonNavigatorProvider.get(), chromeBrowserInitializerProvider.get(), activityProvider.get(), lifecycleDispatcherProvider.get(), DoubleCheck.lazy(fullscreenManagerProvider), customTabsDefaultBrowserProvider.get());
   }
 
   public static CustomTabActivityNavigationController_Factory create(
@@ -81,8 +85,9 @@ public final class CustomTabActivityNavigationController_Factory implements Fact
       Provider<ChromeBrowserInitializer> chromeBrowserInitializerProvider,
       Provider<Activity> activityProvider,
       Provider<ActivityLifecycleDispatcher> lifecycleDispatcherProvider,
-      Provider<FullscreenManager> fullscreenManagerProvider) {
-    return new CustomTabActivityNavigationController_Factory(tabControllerProvider, tabProvider, intentDataProvider, connectionProvider, customTabObserverProvider, closeButtonNavigatorProvider, chromeBrowserInitializerProvider, activityProvider, lifecycleDispatcherProvider, fullscreenManagerProvider);
+      Provider<FullscreenManager> fullscreenManagerProvider,
+      Provider<CustomTabActivityNavigationController.DefaultBrowserProvider> customTabsDefaultBrowserProvider) {
+    return new CustomTabActivityNavigationController_Factory(tabControllerProvider, tabProvider, intentDataProvider, connectionProvider, customTabObserverProvider, closeButtonNavigatorProvider, chromeBrowserInitializerProvider, activityProvider, lifecycleDispatcherProvider, fullscreenManagerProvider, customTabsDefaultBrowserProvider);
   }
 
   public static CustomTabActivityNavigationController newInstance(
@@ -90,7 +95,8 @@ public final class CustomTabActivityNavigationController_Factory implements Fact
       BrowserServicesIntentDataProvider intentDataProvider, CustomTabsConnection connection,
       Lazy<CustomTabObserver> customTabObserver, CloseButtonNavigator closeButtonNavigator,
       ChromeBrowserInitializer chromeBrowserInitializer, Activity activity,
-      ActivityLifecycleDispatcher lifecycleDispatcher, Lazy<FullscreenManager> fullscreenManager) {
-    return new CustomTabActivityNavigationController(tabController, tabProvider, intentDataProvider, connection, customTabObserver, closeButtonNavigator, chromeBrowserInitializer, activity, lifecycleDispatcher, fullscreenManager);
+      ActivityLifecycleDispatcher lifecycleDispatcher, Lazy<FullscreenManager> fullscreenManager,
+      CustomTabActivityNavigationController.DefaultBrowserProvider customTabsDefaultBrowserProvider) {
+    return new CustomTabActivityNavigationController(tabController, tabProvider, intentDataProvider, connection, customTabObserver, closeButtonNavigator, chromeBrowserInitializer, activity, lifecycleDispatcher, fullscreenManager, customTabsDefaultBrowserProvider);
   }
 }

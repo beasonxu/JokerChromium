@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class P2pHostAndIpEndPoint extends org.chromium.mojo.bindings.Struct {
 

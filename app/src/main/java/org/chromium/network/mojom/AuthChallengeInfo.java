@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class AuthChallengeInfo extends org.chromium.mojo.bindings.Struct {
 
@@ -20,7 +22,7 @@ public final class AuthChallengeInfo extends org.chromium.mojo.bindings.Struct {
     private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(56, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public boolean isProxy;
-    public org.chromium.url.internal.mojom.Origin challenger;
+    public org.chromium.url.mojom.SchemeHostPort challenger;
     public String scheme;
     public String realm;
     public String challenge;
@@ -66,7 +68,7 @@ public final class AuthChallengeInfo extends org.chromium.mojo.bindings.Struct {
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
-                result.challenger = org.chromium.url.internal.mojom.Origin.decode(decoder1);
+                result.challenger = org.chromium.url.mojom.SchemeHostPort.decode(decoder1);
                 }
                 {
                     

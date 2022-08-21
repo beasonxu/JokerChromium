@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class WakeLock_Internal {
 
@@ -116,7 +118,7 @@ org.chromium.mojo.bindings.InterfaceRequest<WakeLock> wakeLock) {
         @Override
         public void changeType(
 int type, 
-ChangeTypeResponse callback) {
+ChangeType_Response callback) {
 
             WakeLockChangeTypeParams _message = new WakeLockChangeTypeParams();
 
@@ -138,7 +140,7 @@ ChangeTypeResponse callback) {
         @Override
         public void hasWakeLockForTests(
 
-HasWakeLockForTestsResponse callback) {
+HasWakeLockForTests_Response callback) {
 
             WakeLockHasWakeLockForTestsParams _message = new WakeLockHasWakeLockForTestsParams();
 
@@ -602,9 +604,9 @@ HasWakeLockForTestsResponse callback) {
 
     static class WakeLockChangeTypeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final WakeLock.ChangeTypeResponse mCallback;
+        private final WakeLock.ChangeType_Response mCallback;
 
-        WakeLockChangeTypeResponseParamsForwardToCallback(WakeLock.ChangeTypeResponse callback) {
+        WakeLockChangeTypeResponseParamsForwardToCallback(WakeLock.ChangeType_Response callback) {
             this.mCallback = callback;
         }
 
@@ -629,7 +631,7 @@ HasWakeLockForTestsResponse callback) {
         }
     }
 
-    static class WakeLockChangeTypeResponseParamsProxyToResponder implements WakeLock.ChangeTypeResponse {
+    static class WakeLockChangeTypeResponseParamsProxyToResponder implements WakeLock.ChangeType_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -782,9 +784,9 @@ HasWakeLockForTestsResponse callback) {
 
     static class WakeLockHasWakeLockForTestsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final WakeLock.HasWakeLockForTestsResponse mCallback;
+        private final WakeLock.HasWakeLockForTests_Response mCallback;
 
-        WakeLockHasWakeLockForTestsResponseParamsForwardToCallback(WakeLock.HasWakeLockForTestsResponse callback) {
+        WakeLockHasWakeLockForTestsResponseParamsForwardToCallback(WakeLock.HasWakeLockForTests_Response callback) {
             this.mCallback = callback;
         }
 
@@ -809,7 +811,7 @@ HasWakeLockForTestsResponse callback) {
         }
     }
 
-    static class WakeLockHasWakeLockForTestsResponseParamsProxyToResponder implements WakeLock.HasWakeLockForTestsResponse {
+    static class WakeLockHasWakeLockForTestsResponseParamsProxyToResponder implements WakeLock.HasWakeLockForTests_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

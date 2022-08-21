@@ -13,11 +13,13 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class WebPreferences extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 304;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(304, 0)};
+    private static final int STRUCT_SIZE = 288;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(288, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public java.util.Map<String, org.chromium.mojo_base.mojom.String16> standardFontFamilyMap;
     public java.util.Map<String, org.chromium.mojo_base.mojom.String16> fixedFontFamilyMap;
@@ -25,7 +27,7 @@ public final class WebPreferences extends org.chromium.mojo.bindings.Struct {
     public java.util.Map<String, org.chromium.mojo_base.mojom.String16> sansSerifFontFamilyMap;
     public java.util.Map<String, org.chromium.mojo_base.mojom.String16> cursiveFontFamilyMap;
     public java.util.Map<String, org.chromium.mojo_base.mojom.String16> fantasyFontFamilyMap;
-    public java.util.Map<String, org.chromium.mojo_base.mojom.String16> pictographFontFamilyMap;
+    public java.util.Map<String, org.chromium.mojo_base.mojom.String16> mathFontFamilyMap;
     public int defaultFontSize;
     public int defaultFixedFontSize;
     public int minimumFontSize;
@@ -46,10 +48,8 @@ public final class WebPreferences extends org.chromium.mojo.bindings.Struct {
     public boolean xsltEnabled;
     public boolean dnsPrefetchingEnabled;
     public boolean dataSaverEnabled;
-    public boolean dataSaverHoldbackWebApiEnabled;
     public boolean localStorageEnabled;
     public boolean databasesEnabled;
-    public boolean applicationCacheEnabled;
     public boolean tabsToLinks;
     public boolean disableIpcFloodingProtection;
     public boolean hyperlinkAuditingEnabled;
@@ -58,14 +58,12 @@ public final class WebPreferences extends org.chromium.mojo.bindings.Struct {
     public boolean webgl1Enabled;
     public boolean webgl2Enabled;
     public boolean pepper3dEnabled;
-    public boolean flash3dEnabled;
-    public boolean flashStage3dEnabled;
-    public boolean flashStage3dBaselineEnabled;
     public boolean privilegedWebglExtensionsEnabled;
     public boolean webglErrorsToConsoleEnabled;
     public boolean hideScrollbars;
+    public boolean enableWebkitScrollbarStyling;
     public boolean accelerated2dCanvasEnabled;
-    public boolean newCanvas2dApiEnabled;
+    public boolean canvas2dLayersEnabled;
     public boolean antialiased2dCanvasDisabled;
     public boolean antialiasedClips2dCanvasEnabled;
     public boolean acceleratedFiltersEnabled;
@@ -99,6 +97,7 @@ public final class WebPreferences extends org.chromium.mojo.bindings.Struct {
     public boolean supportsMultipleWindows;
     public boolean viewportEnabled;
     public boolean viewportMetaEnabled;
+    public boolean autoZoomFocusedEditableToLegibleScale;
     public boolean shrinksViewportContentsToFit;
     public int viewportStyle;
     public boolean smoothScrollForFindEnabled;
@@ -107,8 +106,10 @@ public final class WebPreferences extends org.chromium.mojo.bindings.Struct {
     public boolean smartInsertDeleteEnabled;
     public boolean spatialNavigationEnabled;
     public boolean navigateOnDragDrop;
+    public boolean fakeNoAllocDirectCallForTestingEnabled;
     public int v8CacheOptions;
     public boolean recordWholeDocument;
+    public boolean stylusHandwritingEnabled;
     public boolean cookieEnabled;
     public boolean acceleratedVideoDecodeEnabled;
     public int animationPolicy;
@@ -122,7 +123,6 @@ public final class WebPreferences extends org.chromium.mojo.bindings.Struct {
     public String textTrackFontStyle;
     public String textTrackFontVariant;
     public String textTrackWindowColor;
-    public String textTrackWindowPadding;
     public String textTrackWindowRadius;
     public float textTrackMarginPercentage;
     public boolean immersiveModeEnabled;
@@ -152,8 +152,8 @@ public final class WebPreferences extends org.chromium.mojo.bindings.Struct {
     public boolean embeddedMediaExperienceEnabled;
     public boolean cssHexAlphaColorEnabled;
     public boolean scrollTopLeftInteropEnabled;
-    public boolean disableFeaturesDependingOnViz;
     public boolean disableAcceleratedSmallCanvases;
+    public boolean disableWebauthn;
     public boolean forceDarkModeEnabled;
     public float defaultMinimumPageScaleFactor;
     public float defaultMaximumPageScaleFactor;
@@ -171,11 +171,11 @@ public final class WebPreferences extends org.chromium.mojo.bindings.Struct {
     public boolean lazyLoadEnabled;
     public java.util.Map<Integer, Integer> lazyFrameLoadingDistanceThresholdsPx;
     public java.util.Map<Integer, Integer> lazyImageLoadingDistanceThresholdsPx;
-    public java.util.Map<Integer, Integer> lazyImageFirstKFullyLoad;
     public boolean allowMixedContentUpgrades;
     public boolean alwaysShowFocus;
     public boolean touchDragDropEnabled;
     public boolean webxrImmersiveArAllowed;
+    public boolean rendererWideNamedFrameLookup;
 
     private WebPreferences(int version) {
         super(STRUCT_SIZE, version);
@@ -470,9 +470,9 @@ public final class WebPreferences extends org.chromium.mojo.bindings.Struct {
                             }
                         }
                     }
-                    result.pictographFontFamilyMap = new java.util.HashMap<String, org.chromium.mojo_base.mojom.String16>();
+                    result.mathFontFamilyMap = new java.util.HashMap<String, org.chromium.mojo_base.mojom.String16>();
                     for (int index0 = 0; index0 < keys0.length; ++index0) {
-                        result.pictographFontFamilyMap.put(keys0[index0],  values0[index0]);
+                        result.mathFontFamilyMap.put(keys0[index0],  values0[index0]);
                     }
                 }
                 }
@@ -558,199 +558,199 @@ public final class WebPreferences extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.dataSaverHoldbackWebApiEnabled = decoder0.readBoolean(89, 7);
+                result.localStorageEnabled = decoder0.readBoolean(89, 7);
                 }
                 {
                     
-                result.localStorageEnabled = decoder0.readBoolean(90, 0);
+                result.databasesEnabled = decoder0.readBoolean(90, 0);
                 }
                 {
                     
-                result.databasesEnabled = decoder0.readBoolean(90, 1);
+                result.tabsToLinks = decoder0.readBoolean(90, 1);
                 }
                 {
                     
-                result.applicationCacheEnabled = decoder0.readBoolean(90, 2);
+                result.disableIpcFloodingProtection = decoder0.readBoolean(90, 2);
                 }
                 {
                     
-                result.tabsToLinks = decoder0.readBoolean(90, 3);
+                result.hyperlinkAuditingEnabled = decoder0.readBoolean(90, 3);
                 }
                 {
                     
-                result.disableIpcFloodingProtection = decoder0.readBoolean(90, 4);
+                result.allowUniversalAccessFromFileUrls = decoder0.readBoolean(90, 4);
                 }
                 {
                     
-                result.hyperlinkAuditingEnabled = decoder0.readBoolean(90, 5);
+                result.allowFileAccessFromFileUrls = decoder0.readBoolean(90, 5);
                 }
                 {
                     
-                result.allowUniversalAccessFromFileUrls = decoder0.readBoolean(90, 6);
+                result.webgl1Enabled = decoder0.readBoolean(90, 6);
                 }
                 {
                     
-                result.allowFileAccessFromFileUrls = decoder0.readBoolean(90, 7);
+                result.webgl2Enabled = decoder0.readBoolean(90, 7);
                 }
                 {
                     
-                result.webgl1Enabled = decoder0.readBoolean(91, 0);
+                result.pepper3dEnabled = decoder0.readBoolean(91, 0);
                 }
                 {
                     
-                result.webgl2Enabled = decoder0.readBoolean(91, 1);
+                result.privilegedWebglExtensionsEnabled = decoder0.readBoolean(91, 1);
                 }
                 {
                     
-                result.pepper3dEnabled = decoder0.readBoolean(91, 2);
+                result.webglErrorsToConsoleEnabled = decoder0.readBoolean(91, 2);
                 }
                 {
                     
-                result.flash3dEnabled = decoder0.readBoolean(91, 3);
+                result.hideScrollbars = decoder0.readBoolean(91, 3);
                 }
                 {
                     
-                result.flashStage3dEnabled = decoder0.readBoolean(91, 4);
+                result.enableWebkitScrollbarStyling = decoder0.readBoolean(91, 4);
                 }
                 {
                     
-                result.flashStage3dBaselineEnabled = decoder0.readBoolean(91, 5);
+                result.accelerated2dCanvasEnabled = decoder0.readBoolean(91, 5);
                 }
                 {
                     
-                result.privilegedWebglExtensionsEnabled = decoder0.readBoolean(91, 6);
+                result.canvas2dLayersEnabled = decoder0.readBoolean(91, 6);
                 }
                 {
                     
-                result.webglErrorsToConsoleEnabled = decoder0.readBoolean(91, 7);
+                result.antialiased2dCanvasDisabled = decoder0.readBoolean(91, 7);
                 }
                 {
                     
-                result.hideScrollbars = decoder0.readBoolean(92, 0);
+                result.antialiasedClips2dCanvasEnabled = decoder0.readBoolean(92, 0);
                 }
                 {
                     
-                result.accelerated2dCanvasEnabled = decoder0.readBoolean(92, 1);
+                result.acceleratedFiltersEnabled = decoder0.readBoolean(92, 1);
                 }
                 {
                     
-                result.newCanvas2dApiEnabled = decoder0.readBoolean(92, 2);
+                result.deferredFiltersEnabled = decoder0.readBoolean(92, 2);
                 }
                 {
                     
-                result.antialiased2dCanvasDisabled = decoder0.readBoolean(92, 3);
+                result.containerCullingEnabled = decoder0.readBoolean(92, 3);
                 }
                 {
                     
-                result.antialiasedClips2dCanvasEnabled = decoder0.readBoolean(92, 4);
+                result.allowRunningInsecureContent = decoder0.readBoolean(92, 4);
                 }
                 {
                     
-                result.acceleratedFiltersEnabled = decoder0.readBoolean(92, 5);
+                result.disableReadingFromCanvas = decoder0.readBoolean(92, 5);
                 }
                 {
                     
-                result.deferredFiltersEnabled = decoder0.readBoolean(92, 6);
+                result.strictMixedContentChecking = decoder0.readBoolean(92, 6);
                 }
                 {
                     
-                result.containerCullingEnabled = decoder0.readBoolean(92, 7);
+                result.strictPowerfulFeatureRestrictions = decoder0.readBoolean(92, 7);
                 }
                 {
                     
-                result.allowRunningInsecureContent = decoder0.readBoolean(93, 0);
+                result.allowGeolocationOnInsecureOrigins = decoder0.readBoolean(93, 0);
                 }
                 {
                     
-                result.disableReadingFromCanvas = decoder0.readBoolean(93, 1);
+                result.strictlyBlockBlockableMixedContent = decoder0.readBoolean(93, 1);
                 }
                 {
                     
-                result.strictMixedContentChecking = decoder0.readBoolean(93, 2);
+                result.blockMixedPluginContent = decoder0.readBoolean(93, 2);
                 }
                 {
                     
-                result.strictPowerfulFeatureRestrictions = decoder0.readBoolean(93, 3);
+                result.passwordEchoEnabled = decoder0.readBoolean(93, 3);
                 }
                 {
                     
-                result.allowGeolocationOnInsecureOrigins = decoder0.readBoolean(93, 4);
+                result.shouldClearDocumentBackground = decoder0.readBoolean(93, 4);
                 }
                 {
                     
-                result.strictlyBlockBlockableMixedContent = decoder0.readBoolean(93, 5);
+                result.enableScrollAnimator = decoder0.readBoolean(93, 5);
                 }
                 {
                     
-                result.blockMixedPluginContent = decoder0.readBoolean(93, 6);
+                result.threadedScrollingEnabled = decoder0.readBoolean(93, 6);
                 }
                 {
                     
-                result.passwordEchoEnabled = decoder0.readBoolean(93, 7);
+                result.prefersReducedMotion = decoder0.readBoolean(93, 7);
                 }
                 {
                     
-                result.shouldClearDocumentBackground = decoder0.readBoolean(94, 0);
+                result.touchEventFeatureDetectionEnabled = decoder0.readBoolean(94, 0);
                 }
                 {
                     
-                result.enableScrollAnimator = decoder0.readBoolean(94, 1);
+                result.dontSendKeyEventsToJavascript = decoder0.readBoolean(94, 1);
                 }
                 {
                     
-                result.threadedScrollingEnabled = decoder0.readBoolean(94, 2);
+                result.barrelButtonForDragEnabled = decoder0.readBoolean(94, 2);
                 }
                 {
                     
-                result.prefersReducedMotion = decoder0.readBoolean(94, 3);
+                result.syncXhrInDocumentsEnabled = decoder0.readBoolean(94, 3);
                 }
                 {
                     
-                result.touchEventFeatureDetectionEnabled = decoder0.readBoolean(94, 4);
+                result.targetBlankImpliesNoOpenerEnabledWillBeRemoved = decoder0.readBoolean(94, 4);
                 }
                 {
                     
-                result.dontSendKeyEventsToJavascript = decoder0.readBoolean(94, 5);
+                result.allowNonEmptyNavigatorPlugins = decoder0.readBoolean(94, 5);
                 }
                 {
                     
-                result.barrelButtonForDragEnabled = decoder0.readBoolean(94, 6);
+                result.supportsMultipleWindows = decoder0.readBoolean(94, 6);
                 }
                 {
                     
-                result.syncXhrInDocumentsEnabled = decoder0.readBoolean(94, 7);
+                result.viewportEnabled = decoder0.readBoolean(94, 7);
                 }
                 {
                     
-                result.targetBlankImpliesNoOpenerEnabledWillBeRemoved = decoder0.readBoolean(95, 0);
+                result.viewportMetaEnabled = decoder0.readBoolean(95, 0);
                 }
                 {
                     
-                result.allowNonEmptyNavigatorPlugins = decoder0.readBoolean(95, 1);
+                result.autoZoomFocusedEditableToLegibleScale = decoder0.readBoolean(95, 1);
                 }
                 {
                     
-                result.supportsMultipleWindows = decoder0.readBoolean(95, 2);
+                result.shrinksViewportContentsToFit = decoder0.readBoolean(95, 2);
                 }
                 {
                     
-                result.viewportEnabled = decoder0.readBoolean(95, 3);
+                result.smoothScrollForFindEnabled = decoder0.readBoolean(95, 3);
                 }
                 {
                     
-                result.viewportMetaEnabled = decoder0.readBoolean(95, 4);
+                result.mainFrameResizesAreOrientationChanges = decoder0.readBoolean(95, 4);
                 }
                 {
                     
-                result.shrinksViewportContentsToFit = decoder0.readBoolean(95, 5);
+                result.initializeAtMinimumPageScale = decoder0.readBoolean(95, 5);
                 }
                 {
                     
-                result.smoothScrollForFindEnabled = decoder0.readBoolean(95, 6);
+                result.smartInsertDeleteEnabled = decoder0.readBoolean(95, 6);
                 }
                 {
                     
-                result.mainFrameResizesAreOrientationChanges = decoder0.readBoolean(95, 7);
+                result.spatialNavigationEnabled = decoder0.readBoolean(95, 7);
                 }
                 {
                     
@@ -794,131 +794,131 @@ public final class WebPreferences extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.initializeAtMinimumPageScale = decoder0.readBoolean(128, 0);
+                result.navigateOnDragDrop = decoder0.readBoolean(128, 0);
                 }
                 {
                     
-                result.smartInsertDeleteEnabled = decoder0.readBoolean(128, 1);
+                result.fakeNoAllocDirectCallForTestingEnabled = decoder0.readBoolean(128, 1);
                 }
                 {
                     
-                result.spatialNavigationEnabled = decoder0.readBoolean(128, 2);
+                result.recordWholeDocument = decoder0.readBoolean(128, 2);
                 }
                 {
                     
-                result.navigateOnDragDrop = decoder0.readBoolean(128, 3);
+                result.stylusHandwritingEnabled = decoder0.readBoolean(128, 3);
                 }
                 {
                     
-                result.recordWholeDocument = decoder0.readBoolean(128, 4);
+                result.cookieEnabled = decoder0.readBoolean(128, 4);
                 }
                 {
                     
-                result.cookieEnabled = decoder0.readBoolean(128, 5);
+                result.acceleratedVideoDecodeEnabled = decoder0.readBoolean(128, 5);
                 }
                 {
                     
-                result.acceleratedVideoDecodeEnabled = decoder0.readBoolean(128, 6);
+                result.userGestureRequiredForPresentation = decoder0.readBoolean(128, 6);
                 }
                 {
                     
-                result.userGestureRequiredForPresentation = decoder0.readBoolean(128, 7);
+                result.textTracksEnabled = decoder0.readBoolean(128, 7);
                 }
                 {
                     
-                result.textTracksEnabled = decoder0.readBoolean(129, 0);
+                result.immersiveModeEnabled = decoder0.readBoolean(129, 0);
                 }
                 {
                     
-                result.immersiveModeEnabled = decoder0.readBoolean(129, 1);
+                result.doubleTapToZoomEnabled = decoder0.readBoolean(129, 1);
                 }
                 {
                     
-                result.doubleTapToZoomEnabled = decoder0.readBoolean(129, 2);
+                result.fullscreenSupported = decoder0.readBoolean(129, 2);
                 }
                 {
                     
-                result.fullscreenSupported = decoder0.readBoolean(129, 3);
+                result.textAutosizingEnabled = decoder0.readBoolean(129, 3);
                 }
                 {
                     
-                result.textAutosizingEnabled = decoder0.readBoolean(129, 4);
+                result.forceEnableZoom = decoder0.readBoolean(129, 4);
                 }
                 {
                     
-                result.forceEnableZoom = decoder0.readBoolean(129, 5);
+                result.supportDeprecatedTargetDensityDpi = decoder0.readBoolean(129, 5);
                 }
                 {
                     
-                result.supportDeprecatedTargetDensityDpi = decoder0.readBoolean(129, 6);
+                result.useLegacyBackgroundSizeShorthandBehavior = decoder0.readBoolean(129, 6);
                 }
                 {
                     
-                result.useLegacyBackgroundSizeShorthandBehavior = decoder0.readBoolean(129, 7);
+                result.wideViewportQuirk = decoder0.readBoolean(129, 7);
                 }
                 {
                     
-                result.wideViewportQuirk = decoder0.readBoolean(130, 0);
+                result.useWideViewport = decoder0.readBoolean(130, 0);
                 }
                 {
                     
-                result.useWideViewport = decoder0.readBoolean(130, 1);
+                result.forceZeroLayoutHeight = decoder0.readBoolean(130, 1);
                 }
                 {
                     
-                result.forceZeroLayoutHeight = decoder0.readBoolean(130, 2);
+                result.viewportMetaMergeContentQuirk = decoder0.readBoolean(130, 2);
                 }
                 {
                     
-                result.viewportMetaMergeContentQuirk = decoder0.readBoolean(130, 3);
+                result.viewportMetaNonUserScalableQuirk = decoder0.readBoolean(130, 3);
                 }
                 {
                     
-                result.viewportMetaNonUserScalableQuirk = decoder0.readBoolean(130, 4);
+                result.viewportMetaZeroValuesQuirk = decoder0.readBoolean(130, 4);
                 }
                 {
                     
-                result.viewportMetaZeroValuesQuirk = decoder0.readBoolean(130, 5);
+                result.clobberUserAgentInitialScaleQuirk = decoder0.readBoolean(130, 5);
                 }
                 {
                     
-                result.clobberUserAgentInitialScaleQuirk = decoder0.readBoolean(130, 6);
+                result.ignoreMainFrameOverflowHiddenQuirk = decoder0.readBoolean(130, 6);
                 }
                 {
                     
-                result.ignoreMainFrameOverflowHiddenQuirk = decoder0.readBoolean(130, 7);
+                result.reportScreenSizeInPhysicalPixelsQuirk = decoder0.readBoolean(130, 7);
                 }
                 {
                     
-                result.reportScreenSizeInPhysicalPixelsQuirk = decoder0.readBoolean(131, 0);
+                result.reuseGlobalForUnownedMainFrame = decoder0.readBoolean(131, 0);
                 }
                 {
                     
-                result.reuseGlobalForUnownedMainFrame = decoder0.readBoolean(131, 1);
+                result.spellcheckEnabledByDefault = decoder0.readBoolean(131, 1);
                 }
                 {
                     
-                result.spellcheckEnabledByDefault = decoder0.readBoolean(131, 2);
+                result.videoFullscreenOrientationLockEnabled = decoder0.readBoolean(131, 2);
                 }
                 {
                     
-                result.videoFullscreenOrientationLockEnabled = decoder0.readBoolean(131, 3);
+                result.videoRotateToFullscreenEnabled = decoder0.readBoolean(131, 3);
                 }
                 {
                     
-                result.videoRotateToFullscreenEnabled = decoder0.readBoolean(131, 4);
+                result.embeddedMediaExperienceEnabled = decoder0.readBoolean(131, 4);
                 }
                 {
                     
-                result.embeddedMediaExperienceEnabled = decoder0.readBoolean(131, 5);
+                result.cssHexAlphaColorEnabled = decoder0.readBoolean(131, 5);
                 }
                 {
                     
-                result.cssHexAlphaColorEnabled = decoder0.readBoolean(131, 6);
+                result.scrollTopLeftInteropEnabled = decoder0.readBoolean(131, 6);
                 }
                 {
                     
-                result.scrollTopLeftInteropEnabled = decoder0.readBoolean(131, 7);
+                result.disableAcceleratedSmallCanvases = decoder0.readBoolean(131, 7);
                 }
                 {
                     
@@ -970,127 +970,123 @@ public final class WebPreferences extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.textTrackWindowPadding = decoder0.readString(208, false);
+                result.textTrackWindowRadius = decoder0.readString(208, false);
                 }
                 {
                     
-                result.textTrackWindowRadius = decoder0.readString(216, false);
-                }
-                {
-                    
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(224, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(216, false);
                 result.webAppScope = org.chromium.url.mojom.Url.decode(decoder1);
                 }
                 {
                     
-                result.fontScaleFactor = decoder0.readFloat(232);
+                result.fontScaleFactor = decoder0.readFloat(224);
                 }
                 {
                     
-                result.deviceScaleAdjustment = decoder0.readFloat(236);
+                result.deviceScaleAdjustment = decoder0.readFloat(228);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(240, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(232, false);
                 result.defaultVideoPosterUrl = org.chromium.url.mojom.Url.decode(decoder1);
                 }
                 {
                     
-                result.disableFeaturesDependingOnViz = decoder0.readBoolean(248, 0);
+                result.disableWebauthn = decoder0.readBoolean(240, 0);
                 }
                 {
                     
-                result.disableAcceleratedSmallCanvases = decoder0.readBoolean(248, 1);
+                result.forceDarkModeEnabled = decoder0.readBoolean(240, 1);
                 }
                 {
                     
-                result.forceDarkModeEnabled = decoder0.readBoolean(248, 2);
+                result.hideDownloadUi = decoder0.readBoolean(240, 2);
                 }
                 {
                     
-                result.hideDownloadUi = decoder0.readBoolean(248, 3);
+                result.presentationReceiver = decoder0.readBoolean(240, 3);
                 }
                 {
                     
-                result.presentationReceiver = decoder0.readBoolean(248, 4);
+                result.mediaControlsEnabled = decoder0.readBoolean(240, 4);
                 }
                 {
                     
-                result.mediaControlsEnabled = decoder0.readBoolean(248, 5);
+                result.doNotUpdateSelectionOnMutatingSelectionRange = decoder0.readBoolean(240, 5);
                 }
                 {
                     
-                result.doNotUpdateSelectionOnMutatingSelectionRange = decoder0.readBoolean(248, 6);
+                result.pictureInPictureEnabled = decoder0.readBoolean(240, 6);
                 }
                 {
                     
-                result.pictureInPictureEnabled = decoder0.readBoolean(248, 7);
+                result.translateServiceAvailable = decoder0.readBoolean(240, 7);
                 }
                 {
                     
-                result.translateServiceAvailable = decoder0.readBoolean(249, 0);
+                result.lazyLoadEnabled = decoder0.readBoolean(241, 0);
                 }
                 {
                     
-                result.lazyLoadEnabled = decoder0.readBoolean(249, 1);
+                result.allowMixedContentUpgrades = decoder0.readBoolean(241, 1);
                 }
                 {
                     
-                result.allowMixedContentUpgrades = decoder0.readBoolean(249, 2);
+                result.alwaysShowFocus = decoder0.readBoolean(241, 2);
                 }
                 {
                     
-                result.alwaysShowFocus = decoder0.readBoolean(249, 3);
+                result.touchDragDropEnabled = decoder0.readBoolean(241, 3);
                 }
                 {
                     
-                result.touchDragDropEnabled = decoder0.readBoolean(249, 4);
+                result.webxrImmersiveArAllowed = decoder0.readBoolean(241, 4);
                 }
                 {
                     
-                result.webxrImmersiveArAllowed = decoder0.readBoolean(249, 5);
+                result.rendererWideNamedFrameLookup = decoder0.readBoolean(241, 5);
                 }
                 {
                     
-                result.defaultMinimumPageScaleFactor = decoder0.readFloat(252);
+                result.defaultMinimumPageScaleFactor = decoder0.readFloat(244);
                 }
                 {
                     
-                result.defaultMaximumPageScaleFactor = decoder0.readFloat(256);
+                result.defaultMaximumPageScaleFactor = decoder0.readFloat(248);
                 }
                 {
                     
-                result.autoplayPolicy = decoder0.readInt(260);
+                result.autoplayPolicy = decoder0.readInt(252);
                     AutoplayPolicy.validate(result.autoplayPolicy);
                     result.autoplayPolicy = AutoplayPolicy.toKnownValue(result.autoplayPolicy);
                 }
                 {
                     
-                result.preferredColorScheme = decoder0.readInt(264);
+                result.preferredColorScheme = decoder0.readInt(256);
                     PreferredColorScheme.validate(result.preferredColorScheme);
                     result.preferredColorScheme = PreferredColorScheme.toKnownValue(result.preferredColorScheme);
                 }
                 {
                     
-                result.preferredContrast = decoder0.readInt(268);
+                result.preferredContrast = decoder0.readInt(260);
                     PreferredContrast.validate(result.preferredContrast);
                     result.preferredContrast = PreferredContrast.toKnownValue(result.preferredContrast);
                 }
                 {
                     
-                result.lowPriorityIframesThreshold = decoder0.readInt(272);
+                result.lowPriorityIframesThreshold = decoder0.readInt(264);
                     EffectiveConnectionType.validate(result.lowPriorityIframesThreshold);
                     result.lowPriorityIframesThreshold = EffectiveConnectionType.toKnownValue(result.lowPriorityIframesThreshold);
                 }
                 {
                     
-                result.networkQualityEstimatorWebHoldback = decoder0.readInt(276);
+                result.networkQualityEstimatorWebHoldback = decoder0.readInt(268);
                     EffectiveConnectionType.validate(result.networkQualityEstimatorWebHoldback);
                     result.networkQualityEstimatorWebHoldback = EffectiveConnectionType.toKnownValue(result.networkQualityEstimatorWebHoldback);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(280, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(272, false);
                 {
                     decoder1.readDataHeaderForMap();
                     int[] keys0;
@@ -1116,7 +1112,7 @@ public final class WebPreferences extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(288, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(280, false);
                 {
                     decoder1.readDataHeaderForMap();
                     int[] keys0;
@@ -1137,32 +1133,6 @@ public final class WebPreferences extends org.chromium.mojo.bindings.Struct {
                     result.lazyImageLoadingDistanceThresholdsPx = new java.util.HashMap<Integer, Integer>();
                     for (int index0 = 0; index0 < keys0.length; ++index0) {
                         result.lazyImageLoadingDistanceThresholdsPx.put(keys0[index0],  values0[index0]);
-                    }
-                }
-                }
-                {
-                    
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(296, false);
-                {
-                    decoder1.readDataHeaderForMap();
-                    int[] keys0;
-                    int[] values0;
-                    {
-                        
-                        keys0 = decoder1.readInts(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                        {
-                            for (int i2 = 0; i2 < keys0.length; ++i2) {
-                                EffectiveConnectionType.validate(keys0[i2]);
-                            }
-                        }
-                    }
-                    {
-                        
-                        values0 = decoder1.readInts(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, keys0.length);
-                    }
-                    result.lazyImageFirstKFullyLoad = new java.util.HashMap<Integer, Integer>();
-                    for (int index0 = 0; index0 < keys0.length; ++index0) {
-                        result.lazyImageFirstKFullyLoad.put(keys0[index0],  values0[index0]);
                     }
                 }
                 }
@@ -1364,15 +1334,15 @@ public final class WebPreferences extends org.chromium.mojo.bindings.Struct {
             }
         }
         
-        if (this.pictographFontFamilyMap == null) {
+        if (this.mathFontFamilyMap == null) {
             encoder0.encodeNullPointer(56, false);
         } else {
             org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encoderForMap(56);
-            int size0 = this.pictographFontFamilyMap.size();
+            int size0 = this.mathFontFamilyMap.size();
             String[] keys0 = new String[size0];
             org.chromium.mojo_base.mojom.String16[] values0 = new org.chromium.mojo_base.mojom.String16[size0];
             int index0 = 0;
-            for (java.util.Map.Entry<String, org.chromium.mojo_base.mojom.String16> entry0 : this.pictographFontFamilyMap.entrySet()) {
+            for (java.util.Map.Entry<String, org.chromium.mojo_base.mojom.String16> entry0 : this.mathFontFamilyMap.entrySet()) {
                 keys0[index0] = entry0.getKey();
                 values0[index0] = entry0.getValue();
                 ++index0;
@@ -1435,103 +1405,103 @@ public final class WebPreferences extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.dataSaverEnabled, 89, 6);
         
-        encoder0.encode(this.dataSaverHoldbackWebApiEnabled, 89, 7);
+        encoder0.encode(this.localStorageEnabled, 89, 7);
         
-        encoder0.encode(this.localStorageEnabled, 90, 0);
+        encoder0.encode(this.databasesEnabled, 90, 0);
         
-        encoder0.encode(this.databasesEnabled, 90, 1);
+        encoder0.encode(this.tabsToLinks, 90, 1);
         
-        encoder0.encode(this.applicationCacheEnabled, 90, 2);
+        encoder0.encode(this.disableIpcFloodingProtection, 90, 2);
         
-        encoder0.encode(this.tabsToLinks, 90, 3);
+        encoder0.encode(this.hyperlinkAuditingEnabled, 90, 3);
         
-        encoder0.encode(this.disableIpcFloodingProtection, 90, 4);
+        encoder0.encode(this.allowUniversalAccessFromFileUrls, 90, 4);
         
-        encoder0.encode(this.hyperlinkAuditingEnabled, 90, 5);
+        encoder0.encode(this.allowFileAccessFromFileUrls, 90, 5);
         
-        encoder0.encode(this.allowUniversalAccessFromFileUrls, 90, 6);
+        encoder0.encode(this.webgl1Enabled, 90, 6);
         
-        encoder0.encode(this.allowFileAccessFromFileUrls, 90, 7);
+        encoder0.encode(this.webgl2Enabled, 90, 7);
         
-        encoder0.encode(this.webgl1Enabled, 91, 0);
+        encoder0.encode(this.pepper3dEnabled, 91, 0);
         
-        encoder0.encode(this.webgl2Enabled, 91, 1);
+        encoder0.encode(this.privilegedWebglExtensionsEnabled, 91, 1);
         
-        encoder0.encode(this.pepper3dEnabled, 91, 2);
+        encoder0.encode(this.webglErrorsToConsoleEnabled, 91, 2);
         
-        encoder0.encode(this.flash3dEnabled, 91, 3);
+        encoder0.encode(this.hideScrollbars, 91, 3);
         
-        encoder0.encode(this.flashStage3dEnabled, 91, 4);
+        encoder0.encode(this.enableWebkitScrollbarStyling, 91, 4);
         
-        encoder0.encode(this.flashStage3dBaselineEnabled, 91, 5);
+        encoder0.encode(this.accelerated2dCanvasEnabled, 91, 5);
         
-        encoder0.encode(this.privilegedWebglExtensionsEnabled, 91, 6);
+        encoder0.encode(this.canvas2dLayersEnabled, 91, 6);
         
-        encoder0.encode(this.webglErrorsToConsoleEnabled, 91, 7);
+        encoder0.encode(this.antialiased2dCanvasDisabled, 91, 7);
         
-        encoder0.encode(this.hideScrollbars, 92, 0);
+        encoder0.encode(this.antialiasedClips2dCanvasEnabled, 92, 0);
         
-        encoder0.encode(this.accelerated2dCanvasEnabled, 92, 1);
+        encoder0.encode(this.acceleratedFiltersEnabled, 92, 1);
         
-        encoder0.encode(this.newCanvas2dApiEnabled, 92, 2);
+        encoder0.encode(this.deferredFiltersEnabled, 92, 2);
         
-        encoder0.encode(this.antialiased2dCanvasDisabled, 92, 3);
+        encoder0.encode(this.containerCullingEnabled, 92, 3);
         
-        encoder0.encode(this.antialiasedClips2dCanvasEnabled, 92, 4);
+        encoder0.encode(this.allowRunningInsecureContent, 92, 4);
         
-        encoder0.encode(this.acceleratedFiltersEnabled, 92, 5);
+        encoder0.encode(this.disableReadingFromCanvas, 92, 5);
         
-        encoder0.encode(this.deferredFiltersEnabled, 92, 6);
+        encoder0.encode(this.strictMixedContentChecking, 92, 6);
         
-        encoder0.encode(this.containerCullingEnabled, 92, 7);
+        encoder0.encode(this.strictPowerfulFeatureRestrictions, 92, 7);
         
-        encoder0.encode(this.allowRunningInsecureContent, 93, 0);
+        encoder0.encode(this.allowGeolocationOnInsecureOrigins, 93, 0);
         
-        encoder0.encode(this.disableReadingFromCanvas, 93, 1);
+        encoder0.encode(this.strictlyBlockBlockableMixedContent, 93, 1);
         
-        encoder0.encode(this.strictMixedContentChecking, 93, 2);
+        encoder0.encode(this.blockMixedPluginContent, 93, 2);
         
-        encoder0.encode(this.strictPowerfulFeatureRestrictions, 93, 3);
+        encoder0.encode(this.passwordEchoEnabled, 93, 3);
         
-        encoder0.encode(this.allowGeolocationOnInsecureOrigins, 93, 4);
+        encoder0.encode(this.shouldClearDocumentBackground, 93, 4);
         
-        encoder0.encode(this.strictlyBlockBlockableMixedContent, 93, 5);
+        encoder0.encode(this.enableScrollAnimator, 93, 5);
         
-        encoder0.encode(this.blockMixedPluginContent, 93, 6);
+        encoder0.encode(this.threadedScrollingEnabled, 93, 6);
         
-        encoder0.encode(this.passwordEchoEnabled, 93, 7);
+        encoder0.encode(this.prefersReducedMotion, 93, 7);
         
-        encoder0.encode(this.shouldClearDocumentBackground, 94, 0);
+        encoder0.encode(this.touchEventFeatureDetectionEnabled, 94, 0);
         
-        encoder0.encode(this.enableScrollAnimator, 94, 1);
+        encoder0.encode(this.dontSendKeyEventsToJavascript, 94, 1);
         
-        encoder0.encode(this.threadedScrollingEnabled, 94, 2);
+        encoder0.encode(this.barrelButtonForDragEnabled, 94, 2);
         
-        encoder0.encode(this.prefersReducedMotion, 94, 3);
+        encoder0.encode(this.syncXhrInDocumentsEnabled, 94, 3);
         
-        encoder0.encode(this.touchEventFeatureDetectionEnabled, 94, 4);
+        encoder0.encode(this.targetBlankImpliesNoOpenerEnabledWillBeRemoved, 94, 4);
         
-        encoder0.encode(this.dontSendKeyEventsToJavascript, 94, 5);
+        encoder0.encode(this.allowNonEmptyNavigatorPlugins, 94, 5);
         
-        encoder0.encode(this.barrelButtonForDragEnabled, 94, 6);
+        encoder0.encode(this.supportsMultipleWindows, 94, 6);
         
-        encoder0.encode(this.syncXhrInDocumentsEnabled, 94, 7);
+        encoder0.encode(this.viewportEnabled, 94, 7);
         
-        encoder0.encode(this.targetBlankImpliesNoOpenerEnabledWillBeRemoved, 95, 0);
+        encoder0.encode(this.viewportMetaEnabled, 95, 0);
         
-        encoder0.encode(this.allowNonEmptyNavigatorPlugins, 95, 1);
+        encoder0.encode(this.autoZoomFocusedEditableToLegibleScale, 95, 1);
         
-        encoder0.encode(this.supportsMultipleWindows, 95, 2);
+        encoder0.encode(this.shrinksViewportContentsToFit, 95, 2);
         
-        encoder0.encode(this.viewportEnabled, 95, 3);
+        encoder0.encode(this.smoothScrollForFindEnabled, 95, 3);
         
-        encoder0.encode(this.viewportMetaEnabled, 95, 4);
+        encoder0.encode(this.mainFrameResizesAreOrientationChanges, 95, 4);
         
-        encoder0.encode(this.shrinksViewportContentsToFit, 95, 5);
+        encoder0.encode(this.initializeAtMinimumPageScale, 95, 5);
         
-        encoder0.encode(this.smoothScrollForFindEnabled, 95, 6);
+        encoder0.encode(this.smartInsertDeleteEnabled, 95, 6);
         
-        encoder0.encode(this.mainFrameResizesAreOrientationChanges, 95, 7);
+        encoder0.encode(this.spatialNavigationEnabled, 95, 7);
         
         encoder0.encode(this.pointerEventsMaxTouchPoints, 96);
         
@@ -1549,69 +1519,69 @@ public final class WebPreferences extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.viewportStyle, 124);
         
-        encoder0.encode(this.initializeAtMinimumPageScale, 128, 0);
+        encoder0.encode(this.navigateOnDragDrop, 128, 0);
         
-        encoder0.encode(this.smartInsertDeleteEnabled, 128, 1);
+        encoder0.encode(this.fakeNoAllocDirectCallForTestingEnabled, 128, 1);
         
-        encoder0.encode(this.spatialNavigationEnabled, 128, 2);
+        encoder0.encode(this.recordWholeDocument, 128, 2);
         
-        encoder0.encode(this.navigateOnDragDrop, 128, 3);
+        encoder0.encode(this.stylusHandwritingEnabled, 128, 3);
         
-        encoder0.encode(this.recordWholeDocument, 128, 4);
+        encoder0.encode(this.cookieEnabled, 128, 4);
         
-        encoder0.encode(this.cookieEnabled, 128, 5);
+        encoder0.encode(this.acceleratedVideoDecodeEnabled, 128, 5);
         
-        encoder0.encode(this.acceleratedVideoDecodeEnabled, 128, 6);
+        encoder0.encode(this.userGestureRequiredForPresentation, 128, 6);
         
-        encoder0.encode(this.userGestureRequiredForPresentation, 128, 7);
+        encoder0.encode(this.textTracksEnabled, 128, 7);
         
-        encoder0.encode(this.textTracksEnabled, 129, 0);
+        encoder0.encode(this.immersiveModeEnabled, 129, 0);
         
-        encoder0.encode(this.immersiveModeEnabled, 129, 1);
+        encoder0.encode(this.doubleTapToZoomEnabled, 129, 1);
         
-        encoder0.encode(this.doubleTapToZoomEnabled, 129, 2);
+        encoder0.encode(this.fullscreenSupported, 129, 2);
         
-        encoder0.encode(this.fullscreenSupported, 129, 3);
+        encoder0.encode(this.textAutosizingEnabled, 129, 3);
         
-        encoder0.encode(this.textAutosizingEnabled, 129, 4);
+        encoder0.encode(this.forceEnableZoom, 129, 4);
         
-        encoder0.encode(this.forceEnableZoom, 129, 5);
+        encoder0.encode(this.supportDeprecatedTargetDensityDpi, 129, 5);
         
-        encoder0.encode(this.supportDeprecatedTargetDensityDpi, 129, 6);
+        encoder0.encode(this.useLegacyBackgroundSizeShorthandBehavior, 129, 6);
         
-        encoder0.encode(this.useLegacyBackgroundSizeShorthandBehavior, 129, 7);
+        encoder0.encode(this.wideViewportQuirk, 129, 7);
         
-        encoder0.encode(this.wideViewportQuirk, 130, 0);
+        encoder0.encode(this.useWideViewport, 130, 0);
         
-        encoder0.encode(this.useWideViewport, 130, 1);
+        encoder0.encode(this.forceZeroLayoutHeight, 130, 1);
         
-        encoder0.encode(this.forceZeroLayoutHeight, 130, 2);
+        encoder0.encode(this.viewportMetaMergeContentQuirk, 130, 2);
         
-        encoder0.encode(this.viewportMetaMergeContentQuirk, 130, 3);
+        encoder0.encode(this.viewportMetaNonUserScalableQuirk, 130, 3);
         
-        encoder0.encode(this.viewportMetaNonUserScalableQuirk, 130, 4);
+        encoder0.encode(this.viewportMetaZeroValuesQuirk, 130, 4);
         
-        encoder0.encode(this.viewportMetaZeroValuesQuirk, 130, 5);
+        encoder0.encode(this.clobberUserAgentInitialScaleQuirk, 130, 5);
         
-        encoder0.encode(this.clobberUserAgentInitialScaleQuirk, 130, 6);
+        encoder0.encode(this.ignoreMainFrameOverflowHiddenQuirk, 130, 6);
         
-        encoder0.encode(this.ignoreMainFrameOverflowHiddenQuirk, 130, 7);
+        encoder0.encode(this.reportScreenSizeInPhysicalPixelsQuirk, 130, 7);
         
-        encoder0.encode(this.reportScreenSizeInPhysicalPixelsQuirk, 131, 0);
+        encoder0.encode(this.reuseGlobalForUnownedMainFrame, 131, 0);
         
-        encoder0.encode(this.reuseGlobalForUnownedMainFrame, 131, 1);
+        encoder0.encode(this.spellcheckEnabledByDefault, 131, 1);
         
-        encoder0.encode(this.spellcheckEnabledByDefault, 131, 2);
+        encoder0.encode(this.videoFullscreenOrientationLockEnabled, 131, 2);
         
-        encoder0.encode(this.videoFullscreenOrientationLockEnabled, 131, 3);
+        encoder0.encode(this.videoRotateToFullscreenEnabled, 131, 3);
         
-        encoder0.encode(this.videoRotateToFullscreenEnabled, 131, 4);
+        encoder0.encode(this.embeddedMediaExperienceEnabled, 131, 4);
         
-        encoder0.encode(this.embeddedMediaExperienceEnabled, 131, 5);
+        encoder0.encode(this.cssHexAlphaColorEnabled, 131, 5);
         
-        encoder0.encode(this.cssHexAlphaColorEnabled, 131, 6);
+        encoder0.encode(this.scrollTopLeftInteropEnabled, 131, 6);
         
-        encoder0.encode(this.scrollTopLeftInteropEnabled, 131, 7);
+        encoder0.encode(this.disableAcceleratedSmallCanvases, 131, 7);
         
         encoder0.encode(this.v8CacheOptions, 132);
         
@@ -1635,64 +1605,62 @@ public final class WebPreferences extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.textTrackWindowColor, 200, false);
         
-        encoder0.encode(this.textTrackWindowPadding, 208, false);
+        encoder0.encode(this.textTrackWindowRadius, 208, false);
         
-        encoder0.encode(this.textTrackWindowRadius, 216, false);
+        encoder0.encode(this.webAppScope, 216, false);
         
-        encoder0.encode(this.webAppScope, 224, false);
+        encoder0.encode(this.fontScaleFactor, 224);
         
-        encoder0.encode(this.fontScaleFactor, 232);
+        encoder0.encode(this.deviceScaleAdjustment, 228);
         
-        encoder0.encode(this.deviceScaleAdjustment, 236);
+        encoder0.encode(this.defaultVideoPosterUrl, 232, false);
         
-        encoder0.encode(this.defaultVideoPosterUrl, 240, false);
+        encoder0.encode(this.disableWebauthn, 240, 0);
         
-        encoder0.encode(this.disableFeaturesDependingOnViz, 248, 0);
+        encoder0.encode(this.forceDarkModeEnabled, 240, 1);
         
-        encoder0.encode(this.disableAcceleratedSmallCanvases, 248, 1);
+        encoder0.encode(this.hideDownloadUi, 240, 2);
         
-        encoder0.encode(this.forceDarkModeEnabled, 248, 2);
+        encoder0.encode(this.presentationReceiver, 240, 3);
         
-        encoder0.encode(this.hideDownloadUi, 248, 3);
+        encoder0.encode(this.mediaControlsEnabled, 240, 4);
         
-        encoder0.encode(this.presentationReceiver, 248, 4);
+        encoder0.encode(this.doNotUpdateSelectionOnMutatingSelectionRange, 240, 5);
         
-        encoder0.encode(this.mediaControlsEnabled, 248, 5);
+        encoder0.encode(this.pictureInPictureEnabled, 240, 6);
         
-        encoder0.encode(this.doNotUpdateSelectionOnMutatingSelectionRange, 248, 6);
+        encoder0.encode(this.translateServiceAvailable, 240, 7);
         
-        encoder0.encode(this.pictureInPictureEnabled, 248, 7);
+        encoder0.encode(this.lazyLoadEnabled, 241, 0);
         
-        encoder0.encode(this.translateServiceAvailable, 249, 0);
+        encoder0.encode(this.allowMixedContentUpgrades, 241, 1);
         
-        encoder0.encode(this.lazyLoadEnabled, 249, 1);
+        encoder0.encode(this.alwaysShowFocus, 241, 2);
         
-        encoder0.encode(this.allowMixedContentUpgrades, 249, 2);
+        encoder0.encode(this.touchDragDropEnabled, 241, 3);
         
-        encoder0.encode(this.alwaysShowFocus, 249, 3);
+        encoder0.encode(this.webxrImmersiveArAllowed, 241, 4);
         
-        encoder0.encode(this.touchDragDropEnabled, 249, 4);
+        encoder0.encode(this.rendererWideNamedFrameLookup, 241, 5);
         
-        encoder0.encode(this.webxrImmersiveArAllowed, 249, 5);
+        encoder0.encode(this.defaultMinimumPageScaleFactor, 244);
         
-        encoder0.encode(this.defaultMinimumPageScaleFactor, 252);
+        encoder0.encode(this.defaultMaximumPageScaleFactor, 248);
         
-        encoder0.encode(this.defaultMaximumPageScaleFactor, 256);
+        encoder0.encode(this.autoplayPolicy, 252);
         
-        encoder0.encode(this.autoplayPolicy, 260);
+        encoder0.encode(this.preferredColorScheme, 256);
         
-        encoder0.encode(this.preferredColorScheme, 264);
+        encoder0.encode(this.preferredContrast, 260);
         
-        encoder0.encode(this.preferredContrast, 268);
+        encoder0.encode(this.lowPriorityIframesThreshold, 264);
         
-        encoder0.encode(this.lowPriorityIframesThreshold, 272);
-        
-        encoder0.encode(this.networkQualityEstimatorWebHoldback, 276);
+        encoder0.encode(this.networkQualityEstimatorWebHoldback, 268);
         
         if (this.lazyFrameLoadingDistanceThresholdsPx == null) {
-            encoder0.encodeNullPointer(280, false);
+            encoder0.encodeNullPointer(272, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encoderForMap(280);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encoderForMap(272);
             int size0 = this.lazyFrameLoadingDistanceThresholdsPx.size();
             int[] keys0 = new int[size0];
             int[] values0 = new int[size0];
@@ -1709,33 +1677,14 @@ public final class WebPreferences extends org.chromium.mojo.bindings.Struct {
         }
         
         if (this.lazyImageLoadingDistanceThresholdsPx == null) {
-            encoder0.encodeNullPointer(288, false);
+            encoder0.encodeNullPointer(280, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encoderForMap(288);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encoderForMap(280);
             int size0 = this.lazyImageLoadingDistanceThresholdsPx.size();
             int[] keys0 = new int[size0];
             int[] values0 = new int[size0];
             int index0 = 0;
             for (java.util.Map.Entry<Integer, Integer> entry0 : this.lazyImageLoadingDistanceThresholdsPx.entrySet()) {
-                keys0[index0] = entry0.getKey();
-                values0[index0] = entry0.getValue();
-                ++index0;
-            }
-            
-            encoder1.encode(keys0, org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-            
-            encoder1.encode(values0, org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-        }
-        
-        if (this.lazyImageFirstKFullyLoad == null) {
-            encoder0.encodeNullPointer(296, false);
-        } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encoderForMap(296);
-            int size0 = this.lazyImageFirstKFullyLoad.size();
-            int[] keys0 = new int[size0];
-            int[] values0 = new int[size0];
-            int index0 = 0;
-            for (java.util.Map.Entry<Integer, Integer> entry0 : this.lazyImageFirstKFullyLoad.entrySet()) {
                 keys0[index0] = entry0.getKey();
                 values0[index0] = entry0.getValue();
                 ++index0;

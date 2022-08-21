@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class ScreenOrientation_Internal {
 
@@ -63,7 +65,7 @@ class ScreenOrientation_Internal {
         @Override
         public void lockOrientation(
 int orientation, 
-LockOrientationResponse callback) {
+LockOrientation_Response callback) {
 
             ScreenOrientationLockOrientationParams _message = new ScreenOrientationLockOrientationParams();
 
@@ -326,9 +328,9 @@ LockOrientationResponse callback) {
 
     static class ScreenOrientationLockOrientationResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ScreenOrientation.LockOrientationResponse mCallback;
+        private final ScreenOrientation.LockOrientation_Response mCallback;
 
-        ScreenOrientationLockOrientationResponseParamsForwardToCallback(ScreenOrientation.LockOrientationResponse callback) {
+        ScreenOrientationLockOrientationResponseParamsForwardToCallback(ScreenOrientation.LockOrientation_Response callback) {
             this.mCallback = callback;
         }
 
@@ -353,7 +355,7 @@ LockOrientationResponse callback) {
         }
     }
 
-    static class ScreenOrientationLockOrientationResponseParamsProxyToResponder implements ScreenOrientation.LockOrientationResponse {
+    static class ScreenOrientationLockOrientationResponseParamsProxyToResponder implements ScreenOrientation.LockOrientation_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

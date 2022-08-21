@@ -13,8 +13,19 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ServiceWorkerState {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ServiceWorkerState.PARSED,
+        ServiceWorkerState.INSTALLING,
+        ServiceWorkerState.INSTALLED,
+        ServiceWorkerState.ACTIVATING,
+        ServiceWorkerState.ACTIVATED,
+        ServiceWorkerState.REDUNDANT})
+    public @interface EnumType {}
 
     public static final int PARSED = 0;
     public static final int INSTALLING = 1;

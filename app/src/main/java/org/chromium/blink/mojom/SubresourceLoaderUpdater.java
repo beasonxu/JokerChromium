@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface SubresourceLoaderUpdater extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface SubresourceLoaderUpdater extends org.chromium.mojo.bindings.Int
     }
 
     Manager<SubresourceLoaderUpdater, SubresourceLoaderUpdater.Proxy> MANAGER = SubresourceLoaderUpdater_Internal.MANAGER;
-
 
     void updateSubresourceLoaderFactories(
 UrlLoaderFactoryBundle subresourceLoaderFactories);

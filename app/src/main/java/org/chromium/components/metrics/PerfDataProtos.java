@@ -121,6 +121,20 @@ public final class PerfDataProtos {
     int getBuildIdsCount();
 
     /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    java.util.List<org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata> 
+        getPmuMappingsList();
+    /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata getPmuMappings(int index);
+    /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    int getPmuMappingsCount();
+
+    /**
      * <pre>
      * All the string metadata from the perf data file.
      * </pre>
@@ -141,11 +155,8 @@ public final class PerfDataProtos {
   }
   /**
    * <pre>
-   * Please do not modify this protobuf directly, except to mirror the upstream
-   * version found here:
-   * https://github.com/google/perf_data_converter/blob/master/src/quipper/perf_data.proto
-   * with some fields omitted for privacy reasons. Because it is a read-only copy
-   * of the upstream protobuf, "Next tag:" comments are also absent.
+   * This is a read-only copy of the upstream protobuf; "Next tag:" comments are
+   * absent.
    * </pre>
    *
    * Protobuf type {@code metrics.PerfDataProto}
@@ -160,6 +171,7 @@ public final class PerfDataProtos {
       events_ = emptyProtobufList();
       eventTypes_ = emptyProtobufList();
       buildIds_ = emptyProtobufList();
+      pmuMappings_ = emptyProtobufList();
     }
     public interface PerfEventAttrOrBuilder extends
         // @@protoc_insertion_point(interface_extends:metrics.PerfDataProto.PerfEventAttr)
@@ -8401,6 +8413,1322 @@ public final class PerfDataProtos {
       }
     }
 
+    public interface LostEventOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:metrics.PerfDataProto.LostEvent)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <pre>
+       * ID of the event which has been lost.  This should be an id found in a
+       * PerfFileAttr.
+       * </pre>
+       *
+       * <code>optional uint64 id = 1;</code>
+       * @return Whether the id field is set.
+       */
+      boolean hasId();
+      /**
+       * <pre>
+       * ID of the event which has been lost.  This should be an id found in a
+       * PerfFileAttr.
+       * </pre>
+       *
+       * <code>optional uint64 id = 1;</code>
+       * @return The id.
+       */
+      long getId();
+
+      /**
+       * <pre>
+       * Number of events that were lost.
+       * </pre>
+       *
+       * <code>optional uint64 lost = 2;</code>
+       * @return Whether the lost field is set.
+       */
+      boolean hasLost();
+      /**
+       * <pre>
+       * Number of events that were lost.
+       * </pre>
+       *
+       * <code>optional uint64 lost = 2;</code>
+       * @return The lost.
+       */
+      long getLost();
+
+      /**
+       * <pre>
+       * Info about the perf sample containing this event.
+       * </pre>
+       *
+       * <code>optional .metrics.PerfDataProto.SampleInfo sample_info = 3;</code>
+       * @return Whether the sampleInfo field is set.
+       */
+      boolean hasSampleInfo();
+      /**
+       * <pre>
+       * Info about the perf sample containing this event.
+       * </pre>
+       *
+       * <code>optional .metrics.PerfDataProto.SampleInfo sample_info = 3;</code>
+       * @return The sampleInfo.
+       */
+      org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleInfo getSampleInfo();
+    }
+    /**
+     * <pre>
+     * The kernel collects the number of events it couldn't send in a stretch and
+     * when possible sends this number in a PERF_RECORD_LOST event, which is
+     * stored in LostEvent.
+     * </pre>
+     *
+     * Protobuf type {@code metrics.PerfDataProto.LostEvent}
+     */
+    public  static final class LostEvent extends
+        com.google.protobuf.GeneratedMessageLite<
+            LostEvent, LostEvent.Builder> implements
+        // @@protoc_insertion_point(message_implements:metrics.PerfDataProto.LostEvent)
+        LostEventOrBuilder {
+      private LostEvent() {
+      }
+      private int bitField0_;
+      public static final int ID_FIELD_NUMBER = 1;
+      private long id_;
+      /**
+       * <pre>
+       * ID of the event which has been lost.  This should be an id found in a
+       * PerfFileAttr.
+       * </pre>
+       *
+       * <code>optional uint64 id = 1;</code>
+       * @return Whether the id field is set.
+       */
+      @java.lang.Override
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * ID of the event which has been lost.  This should be an id found in a
+       * PerfFileAttr.
+       * </pre>
+       *
+       * <code>optional uint64 id = 1;</code>
+       * @return The id.
+       */
+      @java.lang.Override
+      public long getId() {
+        return id_;
+      }
+      /**
+       * <pre>
+       * ID of the event which has been lost.  This should be an id found in a
+       * PerfFileAttr.
+       * </pre>
+       *
+       * <code>optional uint64 id = 1;</code>
+       * @param value The id to set.
+       */
+      private void setId(long value) {
+        bitField0_ |= 0x00000001;
+        id_ = value;
+      }
+      /**
+       * <pre>
+       * ID of the event which has been lost.  This should be an id found in a
+       * PerfFileAttr.
+       * </pre>
+       *
+       * <code>optional uint64 id = 1;</code>
+       */
+      private void clearId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        id_ = 0L;
+      }
+
+      public static final int LOST_FIELD_NUMBER = 2;
+      private long lost_;
+      /**
+       * <pre>
+       * Number of events that were lost.
+       * </pre>
+       *
+       * <code>optional uint64 lost = 2;</code>
+       * @return Whether the lost field is set.
+       */
+      @java.lang.Override
+      public boolean hasLost() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * Number of events that were lost.
+       * </pre>
+       *
+       * <code>optional uint64 lost = 2;</code>
+       * @return The lost.
+       */
+      @java.lang.Override
+      public long getLost() {
+        return lost_;
+      }
+      /**
+       * <pre>
+       * Number of events that were lost.
+       * </pre>
+       *
+       * <code>optional uint64 lost = 2;</code>
+       * @param value The lost to set.
+       */
+      private void setLost(long value) {
+        bitField0_ |= 0x00000002;
+        lost_ = value;
+      }
+      /**
+       * <pre>
+       * Number of events that were lost.
+       * </pre>
+       *
+       * <code>optional uint64 lost = 2;</code>
+       */
+      private void clearLost() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        lost_ = 0L;
+      }
+
+      public static final int SAMPLE_INFO_FIELD_NUMBER = 3;
+      private org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleInfo sampleInfo_;
+      /**
+       * <pre>
+       * Info about the perf sample containing this event.
+       * </pre>
+       *
+       * <code>optional .metrics.PerfDataProto.SampleInfo sample_info = 3;</code>
+       */
+      @java.lang.Override
+      public boolean hasSampleInfo() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <pre>
+       * Info about the perf sample containing this event.
+       * </pre>
+       *
+       * <code>optional .metrics.PerfDataProto.SampleInfo sample_info = 3;</code>
+       */
+      @java.lang.Override
+      public org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleInfo getSampleInfo() {
+        return sampleInfo_ == null ? org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleInfo.getDefaultInstance() : sampleInfo_;
+      }
+      /**
+       * <pre>
+       * Info about the perf sample containing this event.
+       * </pre>
+       *
+       * <code>optional .metrics.PerfDataProto.SampleInfo sample_info = 3;</code>
+       */
+      private void setSampleInfo(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleInfo value) {
+        value.getClass();
+  sampleInfo_ = value;
+        bitField0_ |= 0x00000004;
+        }
+      /**
+       * <pre>
+       * Info about the perf sample containing this event.
+       * </pre>
+       *
+       * <code>optional .metrics.PerfDataProto.SampleInfo sample_info = 3;</code>
+       */
+      @java.lang.SuppressWarnings({"ReferenceEquality"})
+      private void mergeSampleInfo(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleInfo value) {
+        value.getClass();
+  if (sampleInfo_ != null &&
+            sampleInfo_ != org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleInfo.getDefaultInstance()) {
+          sampleInfo_ =
+            org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleInfo.newBuilder(sampleInfo_).mergeFrom(value).buildPartial();
+        } else {
+          sampleInfo_ = value;
+        }
+        bitField0_ |= 0x00000004;
+      }
+      /**
+       * <pre>
+       * Info about the perf sample containing this event.
+       * </pre>
+       *
+       * <code>optional .metrics.PerfDataProto.SampleInfo sample_info = 3;</code>
+       */
+      private void clearSampleInfo() {  sampleInfo_ = null;
+        bitField0_ = (bitField0_ & ~0x00000004);
+      }
+
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return (Builder) DEFAULT_INSTANCE.createBuilder();
+      }
+      public static Builder newBuilder(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent prototype) {
+        return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+      }
+
+      /**
+       * <pre>
+       * The kernel collects the number of events it couldn't send in a stretch and
+       * when possible sends this number in a PERF_RECORD_LOST event, which is
+       * stored in LostEvent.
+       * </pre>
+       *
+       * Protobuf type {@code metrics.PerfDataProto.LostEvent}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent, Builder> implements
+          // @@protoc_insertion_point(builder_implements:metrics.PerfDataProto.LostEvent)
+          org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEventOrBuilder {
+        // Construct using org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <pre>
+         * ID of the event which has been lost.  This should be an id found in a
+         * PerfFileAttr.
+         * </pre>
+         *
+         * <code>optional uint64 id = 1;</code>
+         * @return Whether the id field is set.
+         */
+        @java.lang.Override
+        public boolean hasId() {
+          return instance.hasId();
+        }
+        /**
+         * <pre>
+         * ID of the event which has been lost.  This should be an id found in a
+         * PerfFileAttr.
+         * </pre>
+         *
+         * <code>optional uint64 id = 1;</code>
+         * @return The id.
+         */
+        @java.lang.Override
+        public long getId() {
+          return instance.getId();
+        }
+        /**
+         * <pre>
+         * ID of the event which has been lost.  This should be an id found in a
+         * PerfFileAttr.
+         * </pre>
+         *
+         * <code>optional uint64 id = 1;</code>
+         * @param value The id to set.
+         * @return This builder for chaining.
+         */
+        public Builder setId(long value) {
+          copyOnWrite();
+          instance.setId(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * ID of the event which has been lost.  This should be an id found in a
+         * PerfFileAttr.
+         * </pre>
+         *
+         * <code>optional uint64 id = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearId() {
+          copyOnWrite();
+          instance.clearId();
+          return this;
+        }
+
+        /**
+         * <pre>
+         * Number of events that were lost.
+         * </pre>
+         *
+         * <code>optional uint64 lost = 2;</code>
+         * @return Whether the lost field is set.
+         */
+        @java.lang.Override
+        public boolean hasLost() {
+          return instance.hasLost();
+        }
+        /**
+         * <pre>
+         * Number of events that were lost.
+         * </pre>
+         *
+         * <code>optional uint64 lost = 2;</code>
+         * @return The lost.
+         */
+        @java.lang.Override
+        public long getLost() {
+          return instance.getLost();
+        }
+        /**
+         * <pre>
+         * Number of events that were lost.
+         * </pre>
+         *
+         * <code>optional uint64 lost = 2;</code>
+         * @param value The lost to set.
+         * @return This builder for chaining.
+         */
+        public Builder setLost(long value) {
+          copyOnWrite();
+          instance.setLost(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Number of events that were lost.
+         * </pre>
+         *
+         * <code>optional uint64 lost = 2;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearLost() {
+          copyOnWrite();
+          instance.clearLost();
+          return this;
+        }
+
+        /**
+         * <pre>
+         * Info about the perf sample containing this event.
+         * </pre>
+         *
+         * <code>optional .metrics.PerfDataProto.SampleInfo sample_info = 3;</code>
+         */
+        @java.lang.Override
+        public boolean hasSampleInfo() {
+          return instance.hasSampleInfo();
+        }
+        /**
+         * <pre>
+         * Info about the perf sample containing this event.
+         * </pre>
+         *
+         * <code>optional .metrics.PerfDataProto.SampleInfo sample_info = 3;</code>
+         */
+        @java.lang.Override
+        public org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleInfo getSampleInfo() {
+          return instance.getSampleInfo();
+        }
+        /**
+         * <pre>
+         * Info about the perf sample containing this event.
+         * </pre>
+         *
+         * <code>optional .metrics.PerfDataProto.SampleInfo sample_info = 3;</code>
+         */
+        public Builder setSampleInfo(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleInfo value) {
+          copyOnWrite();
+          instance.setSampleInfo(value);
+          return this;
+          }
+        /**
+         * <pre>
+         * Info about the perf sample containing this event.
+         * </pre>
+         *
+         * <code>optional .metrics.PerfDataProto.SampleInfo sample_info = 3;</code>
+         */
+        public Builder setSampleInfo(
+            org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleInfo.Builder builderForValue) {
+          copyOnWrite();
+          instance.setSampleInfo(builderForValue.build());
+          return this;
+        }
+        /**
+         * <pre>
+         * Info about the perf sample containing this event.
+         * </pre>
+         *
+         * <code>optional .metrics.PerfDataProto.SampleInfo sample_info = 3;</code>
+         */
+        public Builder mergeSampleInfo(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleInfo value) {
+          copyOnWrite();
+          instance.mergeSampleInfo(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Info about the perf sample containing this event.
+         * </pre>
+         *
+         * <code>optional .metrics.PerfDataProto.SampleInfo sample_info = 3;</code>
+         */
+        public Builder clearSampleInfo() {  copyOnWrite();
+          instance.clearSampleInfo();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:metrics.PerfDataProto.LostEvent)
+      }
+      @java.lang.Override
+      @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+      protected final java.lang.Object dynamicMethod(
+          com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+          java.lang.Object arg0, java.lang.Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent();
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case BUILD_MESSAGE_INFO: {
+              java.lang.Object[] objects = new java.lang.Object[] {
+                "bitField0_",
+                "id_",
+                "lost_",
+                "sampleInfo_",
+              };
+              java.lang.String info =
+                  "\u0001\u0003\u0000\u0001\u0001\u0003\u0003\u0000\u0000\u0000\u0001\u1003\u0000\u0002" +
+                  "\u1003\u0001\u0003\u1009\u0002";
+              return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+          }
+          // fall through
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            com.google.protobuf.Parser<org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent> parser = PARSER;
+            if (parser == null) {
+              synchronized (org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent.class) {
+                parser = PARSER;
+                if (parser == null) {
+                  parser =
+                      new DefaultInstanceBasedParser<org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent>(
+                          DEFAULT_INSTANCE);
+                  PARSER = parser;
+                }
+              }
+            }
+            return parser;
+        }
+        case GET_MEMOIZED_IS_INITIALIZED: {
+          return (byte) 1;
+        }
+        case SET_MEMOIZED_IS_INITIALIZED: {
+          return null;
+        }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:metrics.PerfDataProto.LostEvent)
+      private static final org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent DEFAULT_INSTANCE;
+      static {
+        LostEvent defaultInstance = new LostEvent();
+        // New instances are implicitly immutable so no need to make
+        // immutable.
+        DEFAULT_INSTANCE = defaultInstance;
+        com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+          LostEvent.class, defaultInstance);
+      }
+
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<LostEvent> PARSER;
+
+      public static com.google.protobuf.Parser<LostEvent> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
+    public interface ThrottleEventOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:metrics.PerfDataProto.ThrottleEvent)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <pre>
+       * Time of throttle event, in nanoseconds since system startup.
+       * </pre>
+       *
+       * <code>optional uint64 time_ns = 1;</code>
+       * @return Whether the timeNs field is set.
+       */
+      boolean hasTimeNs();
+      /**
+       * <pre>
+       * Time of throttle event, in nanoseconds since system startup.
+       * </pre>
+       *
+       * <code>optional uint64 time_ns = 1;</code>
+       * @return The timeNs.
+       */
+      long getTimeNs();
+
+      /**
+       * <pre>
+       * Event ID.
+       * </pre>
+       *
+       * <code>optional uint64 id = 2;</code>
+       * @return Whether the id field is set.
+       */
+      boolean hasId();
+      /**
+       * <pre>
+       * Event ID.
+       * </pre>
+       *
+       * <code>optional uint64 id = 2;</code>
+       * @return The id.
+       */
+      long getId();
+
+      /**
+       * <pre>
+       * Stream ID.
+       * </pre>
+       *
+       * <code>optional uint64 stream_id = 3;</code>
+       * @return Whether the streamId field is set.
+       */
+      boolean hasStreamId();
+      /**
+       * <pre>
+       * Stream ID.
+       * </pre>
+       *
+       * <code>optional uint64 stream_id = 3;</code>
+       * @return The streamId.
+       */
+      long getStreamId();
+
+      /**
+       * <pre>
+       * Info about the perf sample containing this event.
+       * </pre>
+       *
+       * <code>optional .metrics.PerfDataProto.SampleInfo sample_info = 4;</code>
+       * @return Whether the sampleInfo field is set.
+       */
+      boolean hasSampleInfo();
+      /**
+       * <pre>
+       * Info about the perf sample containing this event.
+       * </pre>
+       *
+       * <code>optional .metrics.PerfDataProto.SampleInfo sample_info = 4;</code>
+       * @return The sampleInfo.
+       */
+      org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleInfo getSampleInfo();
+    }
+    /**
+     * Protobuf type {@code metrics.PerfDataProto.ThrottleEvent}
+     */
+    public  static final class ThrottleEvent extends
+        com.google.protobuf.GeneratedMessageLite<
+            ThrottleEvent, ThrottleEvent.Builder> implements
+        // @@protoc_insertion_point(message_implements:metrics.PerfDataProto.ThrottleEvent)
+        ThrottleEventOrBuilder {
+      private ThrottleEvent() {
+      }
+      private int bitField0_;
+      public static final int TIME_NS_FIELD_NUMBER = 1;
+      private long timeNs_;
+      /**
+       * <pre>
+       * Time of throttle event, in nanoseconds since system startup.
+       * </pre>
+       *
+       * <code>optional uint64 time_ns = 1;</code>
+       * @return Whether the timeNs field is set.
+       */
+      @java.lang.Override
+      public boolean hasTimeNs() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * Time of throttle event, in nanoseconds since system startup.
+       * </pre>
+       *
+       * <code>optional uint64 time_ns = 1;</code>
+       * @return The timeNs.
+       */
+      @java.lang.Override
+      public long getTimeNs() {
+        return timeNs_;
+      }
+      /**
+       * <pre>
+       * Time of throttle event, in nanoseconds since system startup.
+       * </pre>
+       *
+       * <code>optional uint64 time_ns = 1;</code>
+       * @param value The timeNs to set.
+       */
+      private void setTimeNs(long value) {
+        bitField0_ |= 0x00000001;
+        timeNs_ = value;
+      }
+      /**
+       * <pre>
+       * Time of throttle event, in nanoseconds since system startup.
+       * </pre>
+       *
+       * <code>optional uint64 time_ns = 1;</code>
+       */
+      private void clearTimeNs() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        timeNs_ = 0L;
+      }
+
+      public static final int ID_FIELD_NUMBER = 2;
+      private long id_;
+      /**
+       * <pre>
+       * Event ID.
+       * </pre>
+       *
+       * <code>optional uint64 id = 2;</code>
+       * @return Whether the id field is set.
+       */
+      @java.lang.Override
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * Event ID.
+       * </pre>
+       *
+       * <code>optional uint64 id = 2;</code>
+       * @return The id.
+       */
+      @java.lang.Override
+      public long getId() {
+        return id_;
+      }
+      /**
+       * <pre>
+       * Event ID.
+       * </pre>
+       *
+       * <code>optional uint64 id = 2;</code>
+       * @param value The id to set.
+       */
+      private void setId(long value) {
+        bitField0_ |= 0x00000002;
+        id_ = value;
+      }
+      /**
+       * <pre>
+       * Event ID.
+       * </pre>
+       *
+       * <code>optional uint64 id = 2;</code>
+       */
+      private void clearId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        id_ = 0L;
+      }
+
+      public static final int STREAM_ID_FIELD_NUMBER = 3;
+      private long streamId_;
+      /**
+       * <pre>
+       * Stream ID.
+       * </pre>
+       *
+       * <code>optional uint64 stream_id = 3;</code>
+       * @return Whether the streamId field is set.
+       */
+      @java.lang.Override
+      public boolean hasStreamId() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <pre>
+       * Stream ID.
+       * </pre>
+       *
+       * <code>optional uint64 stream_id = 3;</code>
+       * @return The streamId.
+       */
+      @java.lang.Override
+      public long getStreamId() {
+        return streamId_;
+      }
+      /**
+       * <pre>
+       * Stream ID.
+       * </pre>
+       *
+       * <code>optional uint64 stream_id = 3;</code>
+       * @param value The streamId to set.
+       */
+      private void setStreamId(long value) {
+        bitField0_ |= 0x00000004;
+        streamId_ = value;
+      }
+      /**
+       * <pre>
+       * Stream ID.
+       * </pre>
+       *
+       * <code>optional uint64 stream_id = 3;</code>
+       */
+      private void clearStreamId() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        streamId_ = 0L;
+      }
+
+      public static final int SAMPLE_INFO_FIELD_NUMBER = 4;
+      private org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleInfo sampleInfo_;
+      /**
+       * <pre>
+       * Info about the perf sample containing this event.
+       * </pre>
+       *
+       * <code>optional .metrics.PerfDataProto.SampleInfo sample_info = 4;</code>
+       */
+      @java.lang.Override
+      public boolean hasSampleInfo() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <pre>
+       * Info about the perf sample containing this event.
+       * </pre>
+       *
+       * <code>optional .metrics.PerfDataProto.SampleInfo sample_info = 4;</code>
+       */
+      @java.lang.Override
+      public org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleInfo getSampleInfo() {
+        return sampleInfo_ == null ? org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleInfo.getDefaultInstance() : sampleInfo_;
+      }
+      /**
+       * <pre>
+       * Info about the perf sample containing this event.
+       * </pre>
+       *
+       * <code>optional .metrics.PerfDataProto.SampleInfo sample_info = 4;</code>
+       */
+      private void setSampleInfo(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleInfo value) {
+        value.getClass();
+  sampleInfo_ = value;
+        bitField0_ |= 0x00000008;
+        }
+      /**
+       * <pre>
+       * Info about the perf sample containing this event.
+       * </pre>
+       *
+       * <code>optional .metrics.PerfDataProto.SampleInfo sample_info = 4;</code>
+       */
+      @java.lang.SuppressWarnings({"ReferenceEquality"})
+      private void mergeSampleInfo(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleInfo value) {
+        value.getClass();
+  if (sampleInfo_ != null &&
+            sampleInfo_ != org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleInfo.getDefaultInstance()) {
+          sampleInfo_ =
+            org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleInfo.newBuilder(sampleInfo_).mergeFrom(value).buildPartial();
+        } else {
+          sampleInfo_ = value;
+        }
+        bitField0_ |= 0x00000008;
+      }
+      /**
+       * <pre>
+       * Info about the perf sample containing this event.
+       * </pre>
+       *
+       * <code>optional .metrics.PerfDataProto.SampleInfo sample_info = 4;</code>
+       */
+      private void clearSampleInfo() {  sampleInfo_ = null;
+        bitField0_ = (bitField0_ & ~0x00000008);
+      }
+
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return (Builder) DEFAULT_INSTANCE.createBuilder();
+      }
+      public static Builder newBuilder(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent prototype) {
+        return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+      }
+
+      /**
+       * Protobuf type {@code metrics.PerfDataProto.ThrottleEvent}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent, Builder> implements
+          // @@protoc_insertion_point(builder_implements:metrics.PerfDataProto.ThrottleEvent)
+          org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEventOrBuilder {
+        // Construct using org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <pre>
+         * Time of throttle event, in nanoseconds since system startup.
+         * </pre>
+         *
+         * <code>optional uint64 time_ns = 1;</code>
+         * @return Whether the timeNs field is set.
+         */
+        @java.lang.Override
+        public boolean hasTimeNs() {
+          return instance.hasTimeNs();
+        }
+        /**
+         * <pre>
+         * Time of throttle event, in nanoseconds since system startup.
+         * </pre>
+         *
+         * <code>optional uint64 time_ns = 1;</code>
+         * @return The timeNs.
+         */
+        @java.lang.Override
+        public long getTimeNs() {
+          return instance.getTimeNs();
+        }
+        /**
+         * <pre>
+         * Time of throttle event, in nanoseconds since system startup.
+         * </pre>
+         *
+         * <code>optional uint64 time_ns = 1;</code>
+         * @param value The timeNs to set.
+         * @return This builder for chaining.
+         */
+        public Builder setTimeNs(long value) {
+          copyOnWrite();
+          instance.setTimeNs(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Time of throttle event, in nanoseconds since system startup.
+         * </pre>
+         *
+         * <code>optional uint64 time_ns = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearTimeNs() {
+          copyOnWrite();
+          instance.clearTimeNs();
+          return this;
+        }
+
+        /**
+         * <pre>
+         * Event ID.
+         * </pre>
+         *
+         * <code>optional uint64 id = 2;</code>
+         * @return Whether the id field is set.
+         */
+        @java.lang.Override
+        public boolean hasId() {
+          return instance.hasId();
+        }
+        /**
+         * <pre>
+         * Event ID.
+         * </pre>
+         *
+         * <code>optional uint64 id = 2;</code>
+         * @return The id.
+         */
+        @java.lang.Override
+        public long getId() {
+          return instance.getId();
+        }
+        /**
+         * <pre>
+         * Event ID.
+         * </pre>
+         *
+         * <code>optional uint64 id = 2;</code>
+         * @param value The id to set.
+         * @return This builder for chaining.
+         */
+        public Builder setId(long value) {
+          copyOnWrite();
+          instance.setId(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Event ID.
+         * </pre>
+         *
+         * <code>optional uint64 id = 2;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearId() {
+          copyOnWrite();
+          instance.clearId();
+          return this;
+        }
+
+        /**
+         * <pre>
+         * Stream ID.
+         * </pre>
+         *
+         * <code>optional uint64 stream_id = 3;</code>
+         * @return Whether the streamId field is set.
+         */
+        @java.lang.Override
+        public boolean hasStreamId() {
+          return instance.hasStreamId();
+        }
+        /**
+         * <pre>
+         * Stream ID.
+         * </pre>
+         *
+         * <code>optional uint64 stream_id = 3;</code>
+         * @return The streamId.
+         */
+        @java.lang.Override
+        public long getStreamId() {
+          return instance.getStreamId();
+        }
+        /**
+         * <pre>
+         * Stream ID.
+         * </pre>
+         *
+         * <code>optional uint64 stream_id = 3;</code>
+         * @param value The streamId to set.
+         * @return This builder for chaining.
+         */
+        public Builder setStreamId(long value) {
+          copyOnWrite();
+          instance.setStreamId(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Stream ID.
+         * </pre>
+         *
+         * <code>optional uint64 stream_id = 3;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearStreamId() {
+          copyOnWrite();
+          instance.clearStreamId();
+          return this;
+        }
+
+        /**
+         * <pre>
+         * Info about the perf sample containing this event.
+         * </pre>
+         *
+         * <code>optional .metrics.PerfDataProto.SampleInfo sample_info = 4;</code>
+         */
+        @java.lang.Override
+        public boolean hasSampleInfo() {
+          return instance.hasSampleInfo();
+        }
+        /**
+         * <pre>
+         * Info about the perf sample containing this event.
+         * </pre>
+         *
+         * <code>optional .metrics.PerfDataProto.SampleInfo sample_info = 4;</code>
+         */
+        @java.lang.Override
+        public org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleInfo getSampleInfo() {
+          return instance.getSampleInfo();
+        }
+        /**
+         * <pre>
+         * Info about the perf sample containing this event.
+         * </pre>
+         *
+         * <code>optional .metrics.PerfDataProto.SampleInfo sample_info = 4;</code>
+         */
+        public Builder setSampleInfo(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleInfo value) {
+          copyOnWrite();
+          instance.setSampleInfo(value);
+          return this;
+          }
+        /**
+         * <pre>
+         * Info about the perf sample containing this event.
+         * </pre>
+         *
+         * <code>optional .metrics.PerfDataProto.SampleInfo sample_info = 4;</code>
+         */
+        public Builder setSampleInfo(
+            org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleInfo.Builder builderForValue) {
+          copyOnWrite();
+          instance.setSampleInfo(builderForValue.build());
+          return this;
+        }
+        /**
+         * <pre>
+         * Info about the perf sample containing this event.
+         * </pre>
+         *
+         * <code>optional .metrics.PerfDataProto.SampleInfo sample_info = 4;</code>
+         */
+        public Builder mergeSampleInfo(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleInfo value) {
+          copyOnWrite();
+          instance.mergeSampleInfo(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Info about the perf sample containing this event.
+         * </pre>
+         *
+         * <code>optional .metrics.PerfDataProto.SampleInfo sample_info = 4;</code>
+         */
+        public Builder clearSampleInfo() {  copyOnWrite();
+          instance.clearSampleInfo();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:metrics.PerfDataProto.ThrottleEvent)
+      }
+      @java.lang.Override
+      @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+      protected final java.lang.Object dynamicMethod(
+          com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+          java.lang.Object arg0, java.lang.Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent();
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case BUILD_MESSAGE_INFO: {
+              java.lang.Object[] objects = new java.lang.Object[] {
+                "bitField0_",
+                "timeNs_",
+                "id_",
+                "streamId_",
+                "sampleInfo_",
+              };
+              java.lang.String info =
+                  "\u0001\u0004\u0000\u0001\u0001\u0004\u0004\u0000\u0000\u0000\u0001\u1003\u0000\u0002" +
+                  "\u1003\u0001\u0003\u1003\u0002\u0004\u1009\u0003";
+              return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+          }
+          // fall through
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            com.google.protobuf.Parser<org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent> parser = PARSER;
+            if (parser == null) {
+              synchronized (org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent.class) {
+                parser = PARSER;
+                if (parser == null) {
+                  parser =
+                      new DefaultInstanceBasedParser<org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent>(
+                          DEFAULT_INSTANCE);
+                  PARSER = parser;
+                }
+              }
+            }
+            return parser;
+        }
+        case GET_MEMOIZED_IS_INITIALIZED: {
+          return (byte) 1;
+        }
+        case SET_MEMOIZED_IS_INITIALIZED: {
+          return null;
+        }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:metrics.PerfDataProto.ThrottleEvent)
+      private static final org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent DEFAULT_INSTANCE;
+      static {
+        ThrottleEvent defaultInstance = new ThrottleEvent();
+        // New instances are implicitly immutable so no need to make
+        // immutable.
+        DEFAULT_INSTANCE = defaultInstance;
+        com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+          ThrottleEvent.class, defaultInstance);
+      }
+
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<ThrottleEvent> PARSER;
+
+      public static com.google.protobuf.Parser<ThrottleEvent> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
     public interface BranchStackEntryOrBuilder extends
         // @@protoc_insertion_point(interface_extends:metrics.PerfDataProto.BranchStackEntry)
         com.google.protobuf.MessageLiteOrBuilder {
@@ -8461,6 +9789,82 @@ public final class PerfDataProtos {
        * @return The mispredicted.
        */
       boolean getMispredicted();
+
+      /**
+       * <pre>
+       * Indicates a predicted branch.
+       * </pre>
+       *
+       * <code>optional bool predicted = 4;</code>
+       * @return Whether the predicted field is set.
+       */
+      boolean hasPredicted();
+      /**
+       * <pre>
+       * Indicates a predicted branch.
+       * </pre>
+       *
+       * <code>optional bool predicted = 4;</code>
+       * @return The predicted.
+       */
+      boolean getPredicted();
+
+      /**
+       * <pre>
+       * Indicates running in a hardware transaction
+       * </pre>
+       *
+       * <code>optional bool in_transaction = 5;</code>
+       * @return Whether the inTransaction field is set.
+       */
+      boolean hasInTransaction();
+      /**
+       * <pre>
+       * Indicates running in a hardware transaction
+       * </pre>
+       *
+       * <code>optional bool in_transaction = 5;</code>
+       * @return The inTransaction.
+       */
+      boolean getInTransaction();
+
+      /**
+       * <pre>
+       * Indicates aborting a hardware transaction
+       * </pre>
+       *
+       * <code>optional bool abort = 6;</code>
+       * @return Whether the abort field is set.
+       */
+      boolean hasAbort();
+      /**
+       * <pre>
+       * Indicates aborting a hardware transaction
+       * </pre>
+       *
+       * <code>optional bool abort = 6;</code>
+       * @return The abort.
+       */
+      boolean getAbort();
+
+      /**
+       * <pre>
+       * Cycle count to last branch
+       * </pre>
+       *
+       * <code>optional uint32 cycles = 7;</code>
+       * @return Whether the cycles field is set.
+       */
+      boolean hasCycles();
+      /**
+       * <pre>
+       * Cycle count to last branch
+       * </pre>
+       *
+       * <code>optional uint32 cycles = 7;</code>
+       * @return The cycles.
+       */
+      int getCycles();
     }
     /**
      * Protobuf type {@code metrics.PerfDataProto.BranchStackEntry}
@@ -8621,6 +10025,206 @@ public final class PerfDataProtos {
       private void clearMispredicted() {
         bitField0_ = (bitField0_ & ~0x00000004);
         mispredicted_ = false;
+      }
+
+      public static final int PREDICTED_FIELD_NUMBER = 4;
+      private boolean predicted_;
+      /**
+       * <pre>
+       * Indicates a predicted branch.
+       * </pre>
+       *
+       * <code>optional bool predicted = 4;</code>
+       * @return Whether the predicted field is set.
+       */
+      @java.lang.Override
+      public boolean hasPredicted() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <pre>
+       * Indicates a predicted branch.
+       * </pre>
+       *
+       * <code>optional bool predicted = 4;</code>
+       * @return The predicted.
+       */
+      @java.lang.Override
+      public boolean getPredicted() {
+        return predicted_;
+      }
+      /**
+       * <pre>
+       * Indicates a predicted branch.
+       * </pre>
+       *
+       * <code>optional bool predicted = 4;</code>
+       * @param value The predicted to set.
+       */
+      private void setPredicted(boolean value) {
+        bitField0_ |= 0x00000008;
+        predicted_ = value;
+      }
+      /**
+       * <pre>
+       * Indicates a predicted branch.
+       * </pre>
+       *
+       * <code>optional bool predicted = 4;</code>
+       */
+      private void clearPredicted() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        predicted_ = false;
+      }
+
+      public static final int IN_TRANSACTION_FIELD_NUMBER = 5;
+      private boolean inTransaction_;
+      /**
+       * <pre>
+       * Indicates running in a hardware transaction
+       * </pre>
+       *
+       * <code>optional bool in_transaction = 5;</code>
+       * @return Whether the inTransaction field is set.
+       */
+      @java.lang.Override
+      public boolean hasInTransaction() {
+        return ((bitField0_ & 0x00000010) != 0);
+      }
+      /**
+       * <pre>
+       * Indicates running in a hardware transaction
+       * </pre>
+       *
+       * <code>optional bool in_transaction = 5;</code>
+       * @return The inTransaction.
+       */
+      @java.lang.Override
+      public boolean getInTransaction() {
+        return inTransaction_;
+      }
+      /**
+       * <pre>
+       * Indicates running in a hardware transaction
+       * </pre>
+       *
+       * <code>optional bool in_transaction = 5;</code>
+       * @param value The inTransaction to set.
+       */
+      private void setInTransaction(boolean value) {
+        bitField0_ |= 0x00000010;
+        inTransaction_ = value;
+      }
+      /**
+       * <pre>
+       * Indicates running in a hardware transaction
+       * </pre>
+       *
+       * <code>optional bool in_transaction = 5;</code>
+       */
+      private void clearInTransaction() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        inTransaction_ = false;
+      }
+
+      public static final int ABORT_FIELD_NUMBER = 6;
+      private boolean abort_;
+      /**
+       * <pre>
+       * Indicates aborting a hardware transaction
+       * </pre>
+       *
+       * <code>optional bool abort = 6;</code>
+       * @return Whether the abort field is set.
+       */
+      @java.lang.Override
+      public boolean hasAbort() {
+        return ((bitField0_ & 0x00000020) != 0);
+      }
+      /**
+       * <pre>
+       * Indicates aborting a hardware transaction
+       * </pre>
+       *
+       * <code>optional bool abort = 6;</code>
+       * @return The abort.
+       */
+      @java.lang.Override
+      public boolean getAbort() {
+        return abort_;
+      }
+      /**
+       * <pre>
+       * Indicates aborting a hardware transaction
+       * </pre>
+       *
+       * <code>optional bool abort = 6;</code>
+       * @param value The abort to set.
+       */
+      private void setAbort(boolean value) {
+        bitField0_ |= 0x00000020;
+        abort_ = value;
+      }
+      /**
+       * <pre>
+       * Indicates aborting a hardware transaction
+       * </pre>
+       *
+       * <code>optional bool abort = 6;</code>
+       */
+      private void clearAbort() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        abort_ = false;
+      }
+
+      public static final int CYCLES_FIELD_NUMBER = 7;
+      private int cycles_;
+      /**
+       * <pre>
+       * Cycle count to last branch
+       * </pre>
+       *
+       * <code>optional uint32 cycles = 7;</code>
+       * @return Whether the cycles field is set.
+       */
+      @java.lang.Override
+      public boolean hasCycles() {
+        return ((bitField0_ & 0x00000040) != 0);
+      }
+      /**
+       * <pre>
+       * Cycle count to last branch
+       * </pre>
+       *
+       * <code>optional uint32 cycles = 7;</code>
+       * @return The cycles.
+       */
+      @java.lang.Override
+      public int getCycles() {
+        return cycles_;
+      }
+      /**
+       * <pre>
+       * Cycle count to last branch
+       * </pre>
+       *
+       * <code>optional uint32 cycles = 7;</code>
+       * @param value The cycles to set.
+       */
+      private void setCycles(int value) {
+        bitField0_ |= 0x00000040;
+        cycles_ = value;
+      }
+      /**
+       * <pre>
+       * Cycle count to last branch
+       * </pre>
+       *
+       * <code>optional uint32 cycles = 7;</code>
+       */
+      private void clearCycles() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        cycles_ = 0;
       }
 
       public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.BranchStackEntry parseFrom(
@@ -8874,6 +10478,214 @@ public final class PerfDataProtos {
           return this;
         }
 
+        /**
+         * <pre>
+         * Indicates a predicted branch.
+         * </pre>
+         *
+         * <code>optional bool predicted = 4;</code>
+         * @return Whether the predicted field is set.
+         */
+        @java.lang.Override
+        public boolean hasPredicted() {
+          return instance.hasPredicted();
+        }
+        /**
+         * <pre>
+         * Indicates a predicted branch.
+         * </pre>
+         *
+         * <code>optional bool predicted = 4;</code>
+         * @return The predicted.
+         */
+        @java.lang.Override
+        public boolean getPredicted() {
+          return instance.getPredicted();
+        }
+        /**
+         * <pre>
+         * Indicates a predicted branch.
+         * </pre>
+         *
+         * <code>optional bool predicted = 4;</code>
+         * @param value The predicted to set.
+         * @return This builder for chaining.
+         */
+        public Builder setPredicted(boolean value) {
+          copyOnWrite();
+          instance.setPredicted(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Indicates a predicted branch.
+         * </pre>
+         *
+         * <code>optional bool predicted = 4;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearPredicted() {
+          copyOnWrite();
+          instance.clearPredicted();
+          return this;
+        }
+
+        /**
+         * <pre>
+         * Indicates running in a hardware transaction
+         * </pre>
+         *
+         * <code>optional bool in_transaction = 5;</code>
+         * @return Whether the inTransaction field is set.
+         */
+        @java.lang.Override
+        public boolean hasInTransaction() {
+          return instance.hasInTransaction();
+        }
+        /**
+         * <pre>
+         * Indicates running in a hardware transaction
+         * </pre>
+         *
+         * <code>optional bool in_transaction = 5;</code>
+         * @return The inTransaction.
+         */
+        @java.lang.Override
+        public boolean getInTransaction() {
+          return instance.getInTransaction();
+        }
+        /**
+         * <pre>
+         * Indicates running in a hardware transaction
+         * </pre>
+         *
+         * <code>optional bool in_transaction = 5;</code>
+         * @param value The inTransaction to set.
+         * @return This builder for chaining.
+         */
+        public Builder setInTransaction(boolean value) {
+          copyOnWrite();
+          instance.setInTransaction(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Indicates running in a hardware transaction
+         * </pre>
+         *
+         * <code>optional bool in_transaction = 5;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearInTransaction() {
+          copyOnWrite();
+          instance.clearInTransaction();
+          return this;
+        }
+
+        /**
+         * <pre>
+         * Indicates aborting a hardware transaction
+         * </pre>
+         *
+         * <code>optional bool abort = 6;</code>
+         * @return Whether the abort field is set.
+         */
+        @java.lang.Override
+        public boolean hasAbort() {
+          return instance.hasAbort();
+        }
+        /**
+         * <pre>
+         * Indicates aborting a hardware transaction
+         * </pre>
+         *
+         * <code>optional bool abort = 6;</code>
+         * @return The abort.
+         */
+        @java.lang.Override
+        public boolean getAbort() {
+          return instance.getAbort();
+        }
+        /**
+         * <pre>
+         * Indicates aborting a hardware transaction
+         * </pre>
+         *
+         * <code>optional bool abort = 6;</code>
+         * @param value The abort to set.
+         * @return This builder for chaining.
+         */
+        public Builder setAbort(boolean value) {
+          copyOnWrite();
+          instance.setAbort(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Indicates aborting a hardware transaction
+         * </pre>
+         *
+         * <code>optional bool abort = 6;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearAbort() {
+          copyOnWrite();
+          instance.clearAbort();
+          return this;
+        }
+
+        /**
+         * <pre>
+         * Cycle count to last branch
+         * </pre>
+         *
+         * <code>optional uint32 cycles = 7;</code>
+         * @return Whether the cycles field is set.
+         */
+        @java.lang.Override
+        public boolean hasCycles() {
+          return instance.hasCycles();
+        }
+        /**
+         * <pre>
+         * Cycle count to last branch
+         * </pre>
+         *
+         * <code>optional uint32 cycles = 7;</code>
+         * @return The cycles.
+         */
+        @java.lang.Override
+        public int getCycles() {
+          return instance.getCycles();
+        }
+        /**
+         * <pre>
+         * Cycle count to last branch
+         * </pre>
+         *
+         * <code>optional uint32 cycles = 7;</code>
+         * @param value The cycles to set.
+         * @return This builder for chaining.
+         */
+        public Builder setCycles(int value) {
+          copyOnWrite();
+          instance.setCycles(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Cycle count to last branch
+         * </pre>
+         *
+         * <code>optional uint32 cycles = 7;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearCycles() {
+          copyOnWrite();
+          instance.clearCycles();
+          return this;
+        }
+
         // @@protoc_insertion_point(builder_scope:metrics.PerfDataProto.BranchStackEntry)
       }
       @java.lang.Override
@@ -8894,10 +10706,15 @@ public final class PerfDataProtos {
                 "fromIp_",
                 "toIp_",
                 "mispredicted_",
+                "predicted_",
+                "inTransaction_",
+                "abort_",
+                "cycles_",
               };
               java.lang.String info =
-                  "\u0001\u0003\u0000\u0001\u0001\u0003\u0003\u0000\u0000\u0000\u0001\u1003\u0000\u0002" +
-                  "\u1003\u0001\u0003\u1007\u0002";
+                  "\u0001\u0007\u0000\u0001\u0001\u0007\u0007\u0000\u0000\u0000\u0001\u1003\u0000\u0002" +
+                  "\u1003\u0001\u0003\u1007\u0002\u0004\u1007\u0003\u0005\u1007\u0004\u0006\u1007\u0005" +
+                  "\u0007\u100b\u0006";
               return newMessageInfo(DEFAULT_INSTANCE, info, objects);
           }
           // fall through
@@ -12800,69 +14617,116 @@ public final class PerfDataProtos {
       org.chromium.components.metrics.PerfDataProtos.PerfDataProto.EventHeader getHeader();
 
       /**
-       * <code>optional .metrics.PerfDataProto.MMapEvent mmap_event = 2;</code>
+       * <code>.metrics.PerfDataProto.MMapEvent mmap_event = 2;</code>
        * @return Whether the mmapEvent field is set.
        */
       boolean hasMmapEvent();
       /**
-       * <code>optional .metrics.PerfDataProto.MMapEvent mmap_event = 2;</code>
+       * <code>.metrics.PerfDataProto.MMapEvent mmap_event = 2;</code>
        * @return The mmapEvent.
        */
       org.chromium.components.metrics.PerfDataProtos.PerfDataProto.MMapEvent getMmapEvent();
 
       /**
-       * <code>optional .metrics.PerfDataProto.SampleEvent sample_event = 3;</code>
+       * <code>.metrics.PerfDataProto.SampleEvent sample_event = 3;</code>
        * @return Whether the sampleEvent field is set.
        */
       boolean hasSampleEvent();
       /**
-       * <code>optional .metrics.PerfDataProto.SampleEvent sample_event = 3;</code>
+       * <code>.metrics.PerfDataProto.SampleEvent sample_event = 3;</code>
        * @return The sampleEvent.
        */
       org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleEvent getSampleEvent();
 
       /**
-       * <code>optional .metrics.PerfDataProto.CommEvent comm_event = 4;</code>
+       * <code>.metrics.PerfDataProto.CommEvent comm_event = 4;</code>
        * @return Whether the commEvent field is set.
        */
       boolean hasCommEvent();
       /**
-       * <code>optional .metrics.PerfDataProto.CommEvent comm_event = 4;</code>
+       * <code>.metrics.PerfDataProto.CommEvent comm_event = 4;</code>
        * @return The commEvent.
        */
       org.chromium.components.metrics.PerfDataProtos.PerfDataProto.CommEvent getCommEvent();
 
       /**
        * <pre>
-       * FORK and EXIT events are structurally identical. They only differ by the
-       * event type. But using two distinct fields makes things easier.
+       * FORK and EXIT events are structurally identical. They only differ by
+       * the event type. But using two distinct fields allows us to
+       * differentiate between them without having to check the event type under
+       * |header|.
        * </pre>
        *
-       * <code>optional .metrics.PerfDataProto.ForkEvent fork_event = 5;</code>
+       * <code>.metrics.PerfDataProto.ForkEvent fork_event = 5;</code>
        * @return Whether the forkEvent field is set.
        */
       boolean hasForkEvent();
       /**
        * <pre>
-       * FORK and EXIT events are structurally identical. They only differ by the
-       * event type. But using two distinct fields makes things easier.
+       * FORK and EXIT events are structurally identical. They only differ by
+       * the event type. But using two distinct fields allows us to
+       * differentiate between them without having to check the event type under
+       * |header|.
        * </pre>
        *
-       * <code>optional .metrics.PerfDataProto.ForkEvent fork_event = 5;</code>
+       * <code>.metrics.PerfDataProto.ForkEvent fork_event = 5;</code>
        * @return The forkEvent.
        */
       org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent getForkEvent();
 
       /**
-       * <code>optional .metrics.PerfDataProto.ForkEvent exit_event = 9;</code>
+       * <code>.metrics.PerfDataProto.ForkEvent exit_event = 9;</code>
        * @return Whether the exitEvent field is set.
        */
       boolean hasExitEvent();
       /**
-       * <code>optional .metrics.PerfDataProto.ForkEvent exit_event = 9;</code>
+       * <code>.metrics.PerfDataProto.ForkEvent exit_event = 9;</code>
        * @return The exitEvent.
        */
       org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent getExitEvent();
+
+      /**
+       * <code>.metrics.PerfDataProto.LostEvent lost_event = 6;</code>
+       * @return Whether the lostEvent field is set.
+       */
+      boolean hasLostEvent();
+      /**
+       * <code>.metrics.PerfDataProto.LostEvent lost_event = 6;</code>
+       * @return The lostEvent.
+       */
+      org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent getLostEvent();
+
+      /**
+       * <code>.metrics.PerfDataProto.ThrottleEvent throttle_event = 7;</code>
+       * @return Whether the throttleEvent field is set.
+       */
+      boolean hasThrottleEvent();
+      /**
+       * <code>.metrics.PerfDataProto.ThrottleEvent throttle_event = 7;</code>
+       * @return The throttleEvent.
+       */
+      org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent getThrottleEvent();
+
+      /**
+       * <pre>
+       * Time after boot in nanoseconds corresponding to the event.
+       * </pre>
+       *
+       * <code>optional uint64 timestamp = 10;</code>
+       * @return Whether the timestamp field is set.
+       */
+      boolean hasTimestamp();
+      /**
+       * <pre>
+       * Time after boot in nanoseconds corresponding to the event.
+       * </pre>
+       *
+       * <code>optional uint64 timestamp = 10;</code>
+       * @return The timestamp.
+       */
+      long getTimestamp();
+
+      public org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfEvent.EventTypeCase getEventTypeCase();
     }
     /**
      * Protobuf type {@code metrics.PerfDataProto.PerfEvent}
@@ -12875,6 +14739,59 @@ public final class PerfDataProtos {
       private PerfEvent() {
       }
       private int bitField0_;
+      private int eventTypeCase_ = 0;
+      private java.lang.Object eventType_;
+      public enum EventTypeCase {
+        MMAP_EVENT(2),
+        SAMPLE_EVENT(3),
+        COMM_EVENT(4),
+        FORK_EVENT(5),
+        EXIT_EVENT(9),
+        LOST_EVENT(6),
+        THROTTLE_EVENT(7),
+        EVENTTYPE_NOT_SET(0);
+        private final int value;
+        private EventTypeCase(int value) {
+          this.value = value;
+        }
+        /**
+         * @deprecated Use {@link #forNumber(int)} instead.
+         */
+        @java.lang.Deprecated
+        public static EventTypeCase valueOf(int value) {
+          return forNumber(value);
+        }
+
+        public static EventTypeCase forNumber(int value) {
+          switch (value) {
+            case 2: return MMAP_EVENT;
+            case 3: return SAMPLE_EVENT;
+            case 4: return COMM_EVENT;
+            case 5: return FORK_EVENT;
+            case 9: return EXIT_EVENT;
+            case 6: return LOST_EVENT;
+            case 7: return THROTTLE_EVENT;
+            case 0: return EVENTTYPE_NOT_SET;
+            default: return null;
+          }
+        }
+        public int getNumber() {
+          return this.value;
+        }
+      };
+
+      @java.lang.Override
+      public EventTypeCase
+      getEventTypeCase() {
+        return EventTypeCase.forNumber(
+            eventTypeCase_);
+      }
+
+      private void clearEventType() {
+        eventTypeCase_ = 0;
+        eventType_ = null;
+      }
+
       public static final int HEADER_FIELD_NUMBER = 1;
       private org.chromium.components.metrics.PerfDataProtos.PerfDataProto.EventHeader header_;
       /**
@@ -12922,258 +14839,438 @@ public final class PerfDataProtos {
       }
 
       public static final int MMAP_EVENT_FIELD_NUMBER = 2;
-      private org.chromium.components.metrics.PerfDataProtos.PerfDataProto.MMapEvent mmapEvent_;
       /**
-       * <code>optional .metrics.PerfDataProto.MMapEvent mmap_event = 2;</code>
+       * <code>.metrics.PerfDataProto.MMapEvent mmap_event = 2;</code>
        */
       @java.lang.Override
       public boolean hasMmapEvent() {
-        return ((bitField0_ & 0x00000002) != 0);
+        return eventTypeCase_ == 2;
       }
       /**
-       * <code>optional .metrics.PerfDataProto.MMapEvent mmap_event = 2;</code>
+       * <code>.metrics.PerfDataProto.MMapEvent mmap_event = 2;</code>
        */
       @java.lang.Override
       public org.chromium.components.metrics.PerfDataProtos.PerfDataProto.MMapEvent getMmapEvent() {
-        return mmapEvent_ == null ? org.chromium.components.metrics.PerfDataProtos.PerfDataProto.MMapEvent.getDefaultInstance() : mmapEvent_;
+        if (eventTypeCase_ == 2) {
+           return (org.chromium.components.metrics.PerfDataProtos.PerfDataProto.MMapEvent) eventType_;
+        }
+        return org.chromium.components.metrics.PerfDataProtos.PerfDataProto.MMapEvent.getDefaultInstance();
       }
       /**
-       * <code>optional .metrics.PerfDataProto.MMapEvent mmap_event = 2;</code>
+       * <code>.metrics.PerfDataProto.MMapEvent mmap_event = 2;</code>
        */
       private void setMmapEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.MMapEvent value) {
         value.getClass();
-  mmapEvent_ = value;
-        bitField0_ |= 0x00000002;
-        }
-      /**
-       * <code>optional .metrics.PerfDataProto.MMapEvent mmap_event = 2;</code>
-       */
-      @java.lang.SuppressWarnings({"ReferenceEquality"})
-      private void mergeMmapEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.MMapEvent value) {
-        value.getClass();
-  if (mmapEvent_ != null &&
-            mmapEvent_ != org.chromium.components.metrics.PerfDataProtos.PerfDataProto.MMapEvent.getDefaultInstance()) {
-          mmapEvent_ =
-            org.chromium.components.metrics.PerfDataProtos.PerfDataProto.MMapEvent.newBuilder(mmapEvent_).mergeFrom(value).buildPartial();
-        } else {
-          mmapEvent_ = value;
-        }
-        bitField0_ |= 0x00000002;
+  eventType_ = value;
+        eventTypeCase_ = 2;
       }
       /**
-       * <code>optional .metrics.PerfDataProto.MMapEvent mmap_event = 2;</code>
+       * <code>.metrics.PerfDataProto.MMapEvent mmap_event = 2;</code>
        */
-      private void clearMmapEvent() {  mmapEvent_ = null;
-        bitField0_ = (bitField0_ & ~0x00000002);
+      private void mergeMmapEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.MMapEvent value) {
+        value.getClass();
+  if (eventTypeCase_ == 2 &&
+            eventType_ != org.chromium.components.metrics.PerfDataProtos.PerfDataProto.MMapEvent.getDefaultInstance()) {
+          eventType_ = org.chromium.components.metrics.PerfDataProtos.PerfDataProto.MMapEvent.newBuilder((org.chromium.components.metrics.PerfDataProtos.PerfDataProto.MMapEvent) eventType_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          eventType_ = value;
+        }
+        eventTypeCase_ = 2;
+      }
+      /**
+       * <code>.metrics.PerfDataProto.MMapEvent mmap_event = 2;</code>
+       */
+      private void clearMmapEvent() {
+        if (eventTypeCase_ == 2) {
+          eventTypeCase_ = 0;
+          eventType_ = null;
+        }
       }
 
       public static final int SAMPLE_EVENT_FIELD_NUMBER = 3;
-      private org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleEvent sampleEvent_;
       /**
-       * <code>optional .metrics.PerfDataProto.SampleEvent sample_event = 3;</code>
+       * <code>.metrics.PerfDataProto.SampleEvent sample_event = 3;</code>
        */
       @java.lang.Override
       public boolean hasSampleEvent() {
-        return ((bitField0_ & 0x00000004) != 0);
+        return eventTypeCase_ == 3;
       }
       /**
-       * <code>optional .metrics.PerfDataProto.SampleEvent sample_event = 3;</code>
+       * <code>.metrics.PerfDataProto.SampleEvent sample_event = 3;</code>
        */
       @java.lang.Override
       public org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleEvent getSampleEvent() {
-        return sampleEvent_ == null ? org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleEvent.getDefaultInstance() : sampleEvent_;
+        if (eventTypeCase_ == 3) {
+           return (org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleEvent) eventType_;
+        }
+        return org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleEvent.getDefaultInstance();
       }
       /**
-       * <code>optional .metrics.PerfDataProto.SampleEvent sample_event = 3;</code>
+       * <code>.metrics.PerfDataProto.SampleEvent sample_event = 3;</code>
        */
       private void setSampleEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleEvent value) {
         value.getClass();
-  sampleEvent_ = value;
-        bitField0_ |= 0x00000004;
-        }
-      /**
-       * <code>optional .metrics.PerfDataProto.SampleEvent sample_event = 3;</code>
-       */
-      @java.lang.SuppressWarnings({"ReferenceEquality"})
-      private void mergeSampleEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleEvent value) {
-        value.getClass();
-  if (sampleEvent_ != null &&
-            sampleEvent_ != org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleEvent.getDefaultInstance()) {
-          sampleEvent_ =
-            org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleEvent.newBuilder(sampleEvent_).mergeFrom(value).buildPartial();
-        } else {
-          sampleEvent_ = value;
-        }
-        bitField0_ |= 0x00000004;
+  eventType_ = value;
+        eventTypeCase_ = 3;
       }
       /**
-       * <code>optional .metrics.PerfDataProto.SampleEvent sample_event = 3;</code>
+       * <code>.metrics.PerfDataProto.SampleEvent sample_event = 3;</code>
        */
-      private void clearSampleEvent() {  sampleEvent_ = null;
-        bitField0_ = (bitField0_ & ~0x00000004);
+      private void mergeSampleEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleEvent value) {
+        value.getClass();
+  if (eventTypeCase_ == 3 &&
+            eventType_ != org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleEvent.getDefaultInstance()) {
+          eventType_ = org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleEvent.newBuilder((org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleEvent) eventType_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          eventType_ = value;
+        }
+        eventTypeCase_ = 3;
+      }
+      /**
+       * <code>.metrics.PerfDataProto.SampleEvent sample_event = 3;</code>
+       */
+      private void clearSampleEvent() {
+        if (eventTypeCase_ == 3) {
+          eventTypeCase_ = 0;
+          eventType_ = null;
+        }
       }
 
       public static final int COMM_EVENT_FIELD_NUMBER = 4;
-      private org.chromium.components.metrics.PerfDataProtos.PerfDataProto.CommEvent commEvent_;
       /**
-       * <code>optional .metrics.PerfDataProto.CommEvent comm_event = 4;</code>
+       * <code>.metrics.PerfDataProto.CommEvent comm_event = 4;</code>
        */
       @java.lang.Override
       public boolean hasCommEvent() {
-        return ((bitField0_ & 0x00000008) != 0);
+        return eventTypeCase_ == 4;
       }
       /**
-       * <code>optional .metrics.PerfDataProto.CommEvent comm_event = 4;</code>
+       * <code>.metrics.PerfDataProto.CommEvent comm_event = 4;</code>
        */
       @java.lang.Override
       public org.chromium.components.metrics.PerfDataProtos.PerfDataProto.CommEvent getCommEvent() {
-        return commEvent_ == null ? org.chromium.components.metrics.PerfDataProtos.PerfDataProto.CommEvent.getDefaultInstance() : commEvent_;
+        if (eventTypeCase_ == 4) {
+           return (org.chromium.components.metrics.PerfDataProtos.PerfDataProto.CommEvent) eventType_;
+        }
+        return org.chromium.components.metrics.PerfDataProtos.PerfDataProto.CommEvent.getDefaultInstance();
       }
       /**
-       * <code>optional .metrics.PerfDataProto.CommEvent comm_event = 4;</code>
+       * <code>.metrics.PerfDataProto.CommEvent comm_event = 4;</code>
        */
       private void setCommEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.CommEvent value) {
         value.getClass();
-  commEvent_ = value;
-        bitField0_ |= 0x00000008;
-        }
-      /**
-       * <code>optional .metrics.PerfDataProto.CommEvent comm_event = 4;</code>
-       */
-      @java.lang.SuppressWarnings({"ReferenceEquality"})
-      private void mergeCommEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.CommEvent value) {
-        value.getClass();
-  if (commEvent_ != null &&
-            commEvent_ != org.chromium.components.metrics.PerfDataProtos.PerfDataProto.CommEvent.getDefaultInstance()) {
-          commEvent_ =
-            org.chromium.components.metrics.PerfDataProtos.PerfDataProto.CommEvent.newBuilder(commEvent_).mergeFrom(value).buildPartial();
-        } else {
-          commEvent_ = value;
-        }
-        bitField0_ |= 0x00000008;
+  eventType_ = value;
+        eventTypeCase_ = 4;
       }
       /**
-       * <code>optional .metrics.PerfDataProto.CommEvent comm_event = 4;</code>
+       * <code>.metrics.PerfDataProto.CommEvent comm_event = 4;</code>
        */
-      private void clearCommEvent() {  commEvent_ = null;
-        bitField0_ = (bitField0_ & ~0x00000008);
+      private void mergeCommEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.CommEvent value) {
+        value.getClass();
+  if (eventTypeCase_ == 4 &&
+            eventType_ != org.chromium.components.metrics.PerfDataProtos.PerfDataProto.CommEvent.getDefaultInstance()) {
+          eventType_ = org.chromium.components.metrics.PerfDataProtos.PerfDataProto.CommEvent.newBuilder((org.chromium.components.metrics.PerfDataProtos.PerfDataProto.CommEvent) eventType_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          eventType_ = value;
+        }
+        eventTypeCase_ = 4;
+      }
+      /**
+       * <code>.metrics.PerfDataProto.CommEvent comm_event = 4;</code>
+       */
+      private void clearCommEvent() {
+        if (eventTypeCase_ == 4) {
+          eventTypeCase_ = 0;
+          eventType_ = null;
+        }
       }
 
       public static final int FORK_EVENT_FIELD_NUMBER = 5;
-      private org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent forkEvent_;
       /**
        * <pre>
-       * FORK and EXIT events are structurally identical. They only differ by the
-       * event type. But using two distinct fields makes things easier.
+       * FORK and EXIT events are structurally identical. They only differ by
+       * the event type. But using two distinct fields allows us to
+       * differentiate between them without having to check the event type under
+       * |header|.
        * </pre>
        *
-       * <code>optional .metrics.PerfDataProto.ForkEvent fork_event = 5;</code>
+       * <code>.metrics.PerfDataProto.ForkEvent fork_event = 5;</code>
        */
       @java.lang.Override
       public boolean hasForkEvent() {
-        return ((bitField0_ & 0x00000010) != 0);
+        return eventTypeCase_ == 5;
       }
       /**
        * <pre>
-       * FORK and EXIT events are structurally identical. They only differ by the
-       * event type. But using two distinct fields makes things easier.
+       * FORK and EXIT events are structurally identical. They only differ by
+       * the event type. But using two distinct fields allows us to
+       * differentiate between them without having to check the event type under
+       * |header|.
        * </pre>
        *
-       * <code>optional .metrics.PerfDataProto.ForkEvent fork_event = 5;</code>
+       * <code>.metrics.PerfDataProto.ForkEvent fork_event = 5;</code>
        */
       @java.lang.Override
       public org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent getForkEvent() {
-        return forkEvent_ == null ? org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent.getDefaultInstance() : forkEvent_;
+        if (eventTypeCase_ == 5) {
+           return (org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent) eventType_;
+        }
+        return org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent.getDefaultInstance();
       }
       /**
        * <pre>
-       * FORK and EXIT events are structurally identical. They only differ by the
-       * event type. But using two distinct fields makes things easier.
+       * FORK and EXIT events are structurally identical. They only differ by
+       * the event type. But using two distinct fields allows us to
+       * differentiate between them without having to check the event type under
+       * |header|.
        * </pre>
        *
-       * <code>optional .metrics.PerfDataProto.ForkEvent fork_event = 5;</code>
+       * <code>.metrics.PerfDataProto.ForkEvent fork_event = 5;</code>
        */
       private void setForkEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent value) {
         value.getClass();
-  forkEvent_ = value;
-        bitField0_ |= 0x00000010;
-        }
-      /**
-       * <pre>
-       * FORK and EXIT events are structurally identical. They only differ by the
-       * event type. But using two distinct fields makes things easier.
-       * </pre>
-       *
-       * <code>optional .metrics.PerfDataProto.ForkEvent fork_event = 5;</code>
-       */
-      @java.lang.SuppressWarnings({"ReferenceEquality"})
-      private void mergeForkEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent value) {
-        value.getClass();
-  if (forkEvent_ != null &&
-            forkEvent_ != org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent.getDefaultInstance()) {
-          forkEvent_ =
-            org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent.newBuilder(forkEvent_).mergeFrom(value).buildPartial();
-        } else {
-          forkEvent_ = value;
-        }
-        bitField0_ |= 0x00000010;
+  eventType_ = value;
+        eventTypeCase_ = 5;
       }
       /**
        * <pre>
-       * FORK and EXIT events are structurally identical. They only differ by the
-       * event type. But using two distinct fields makes things easier.
+       * FORK and EXIT events are structurally identical. They only differ by
+       * the event type. But using two distinct fields allows us to
+       * differentiate between them without having to check the event type under
+       * |header|.
        * </pre>
        *
-       * <code>optional .metrics.PerfDataProto.ForkEvent fork_event = 5;</code>
+       * <code>.metrics.PerfDataProto.ForkEvent fork_event = 5;</code>
        */
-      private void clearForkEvent() {  forkEvent_ = null;
-        bitField0_ = (bitField0_ & ~0x00000010);
+      private void mergeForkEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent value) {
+        value.getClass();
+  if (eventTypeCase_ == 5 &&
+            eventType_ != org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent.getDefaultInstance()) {
+          eventType_ = org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent.newBuilder((org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent) eventType_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          eventType_ = value;
+        }
+        eventTypeCase_ = 5;
+      }
+      /**
+       * <pre>
+       * FORK and EXIT events are structurally identical. They only differ by
+       * the event type. But using two distinct fields allows us to
+       * differentiate between them without having to check the event type under
+       * |header|.
+       * </pre>
+       *
+       * <code>.metrics.PerfDataProto.ForkEvent fork_event = 5;</code>
+       */
+      private void clearForkEvent() {
+        if (eventTypeCase_ == 5) {
+          eventTypeCase_ = 0;
+          eventType_ = null;
+        }
       }
 
       public static final int EXIT_EVENT_FIELD_NUMBER = 9;
-      private org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent exitEvent_;
       /**
-       * <code>optional .metrics.PerfDataProto.ForkEvent exit_event = 9;</code>
+       * <code>.metrics.PerfDataProto.ForkEvent exit_event = 9;</code>
        */
       @java.lang.Override
       public boolean hasExitEvent() {
-        return ((bitField0_ & 0x00000020) != 0);
+        return eventTypeCase_ == 9;
       }
       /**
-       * <code>optional .metrics.PerfDataProto.ForkEvent exit_event = 9;</code>
+       * <code>.metrics.PerfDataProto.ForkEvent exit_event = 9;</code>
        */
       @java.lang.Override
       public org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent getExitEvent() {
-        return exitEvent_ == null ? org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent.getDefaultInstance() : exitEvent_;
+        if (eventTypeCase_ == 9) {
+           return (org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent) eventType_;
+        }
+        return org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent.getDefaultInstance();
       }
       /**
-       * <code>optional .metrics.PerfDataProto.ForkEvent exit_event = 9;</code>
+       * <code>.metrics.PerfDataProto.ForkEvent exit_event = 9;</code>
        */
       private void setExitEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent value) {
         value.getClass();
-  exitEvent_ = value;
-        bitField0_ |= 0x00000020;
-        }
-      /**
-       * <code>optional .metrics.PerfDataProto.ForkEvent exit_event = 9;</code>
-       */
-      @java.lang.SuppressWarnings({"ReferenceEquality"})
-      private void mergeExitEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent value) {
-        value.getClass();
-  if (exitEvent_ != null &&
-            exitEvent_ != org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent.getDefaultInstance()) {
-          exitEvent_ =
-            org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent.newBuilder(exitEvent_).mergeFrom(value).buildPartial();
-        } else {
-          exitEvent_ = value;
-        }
-        bitField0_ |= 0x00000020;
+  eventType_ = value;
+        eventTypeCase_ = 9;
       }
       /**
-       * <code>optional .metrics.PerfDataProto.ForkEvent exit_event = 9;</code>
+       * <code>.metrics.PerfDataProto.ForkEvent exit_event = 9;</code>
        */
-      private void clearExitEvent() {  exitEvent_ = null;
-        bitField0_ = (bitField0_ & ~0x00000020);
+      private void mergeExitEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent value) {
+        value.getClass();
+  if (eventTypeCase_ == 9 &&
+            eventType_ != org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent.getDefaultInstance()) {
+          eventType_ = org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent.newBuilder((org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent) eventType_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          eventType_ = value;
+        }
+        eventTypeCase_ = 9;
+      }
+      /**
+       * <code>.metrics.PerfDataProto.ForkEvent exit_event = 9;</code>
+       */
+      private void clearExitEvent() {
+        if (eventTypeCase_ == 9) {
+          eventTypeCase_ = 0;
+          eventType_ = null;
+        }
+      }
+
+      public static final int LOST_EVENT_FIELD_NUMBER = 6;
+      /**
+       * <code>.metrics.PerfDataProto.LostEvent lost_event = 6;</code>
+       */
+      @java.lang.Override
+      public boolean hasLostEvent() {
+        return eventTypeCase_ == 6;
+      }
+      /**
+       * <code>.metrics.PerfDataProto.LostEvent lost_event = 6;</code>
+       */
+      @java.lang.Override
+      public org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent getLostEvent() {
+        if (eventTypeCase_ == 6) {
+           return (org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent) eventType_;
+        }
+        return org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent.getDefaultInstance();
+      }
+      /**
+       * <code>.metrics.PerfDataProto.LostEvent lost_event = 6;</code>
+       */
+      private void setLostEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent value) {
+        value.getClass();
+  eventType_ = value;
+        eventTypeCase_ = 6;
+      }
+      /**
+       * <code>.metrics.PerfDataProto.LostEvent lost_event = 6;</code>
+       */
+      private void mergeLostEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent value) {
+        value.getClass();
+  if (eventTypeCase_ == 6 &&
+            eventType_ != org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent.getDefaultInstance()) {
+          eventType_ = org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent.newBuilder((org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent) eventType_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          eventType_ = value;
+        }
+        eventTypeCase_ = 6;
+      }
+      /**
+       * <code>.metrics.PerfDataProto.LostEvent lost_event = 6;</code>
+       */
+      private void clearLostEvent() {
+        if (eventTypeCase_ == 6) {
+          eventTypeCase_ = 0;
+          eventType_ = null;
+        }
+      }
+
+      public static final int THROTTLE_EVENT_FIELD_NUMBER = 7;
+      /**
+       * <code>.metrics.PerfDataProto.ThrottleEvent throttle_event = 7;</code>
+       */
+      @java.lang.Override
+      public boolean hasThrottleEvent() {
+        return eventTypeCase_ == 7;
+      }
+      /**
+       * <code>.metrics.PerfDataProto.ThrottleEvent throttle_event = 7;</code>
+       */
+      @java.lang.Override
+      public org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent getThrottleEvent() {
+        if (eventTypeCase_ == 7) {
+           return (org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent) eventType_;
+        }
+        return org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent.getDefaultInstance();
+      }
+      /**
+       * <code>.metrics.PerfDataProto.ThrottleEvent throttle_event = 7;</code>
+       */
+      private void setThrottleEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent value) {
+        value.getClass();
+  eventType_ = value;
+        eventTypeCase_ = 7;
+      }
+      /**
+       * <code>.metrics.PerfDataProto.ThrottleEvent throttle_event = 7;</code>
+       */
+      private void mergeThrottleEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent value) {
+        value.getClass();
+  if (eventTypeCase_ == 7 &&
+            eventType_ != org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent.getDefaultInstance()) {
+          eventType_ = org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent.newBuilder((org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent) eventType_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          eventType_ = value;
+        }
+        eventTypeCase_ = 7;
+      }
+      /**
+       * <code>.metrics.PerfDataProto.ThrottleEvent throttle_event = 7;</code>
+       */
+      private void clearThrottleEvent() {
+        if (eventTypeCase_ == 7) {
+          eventTypeCase_ = 0;
+          eventType_ = null;
+        }
+      }
+
+      public static final int TIMESTAMP_FIELD_NUMBER = 10;
+      private long timestamp_;
+      /**
+       * <pre>
+       * Time after boot in nanoseconds corresponding to the event.
+       * </pre>
+       *
+       * <code>optional uint64 timestamp = 10;</code>
+       * @return Whether the timestamp field is set.
+       */
+      @java.lang.Override
+      public boolean hasTimestamp() {
+        return ((bitField0_ & 0x00000100) != 0);
+      }
+      /**
+       * <pre>
+       * Time after boot in nanoseconds corresponding to the event.
+       * </pre>
+       *
+       * <code>optional uint64 timestamp = 10;</code>
+       * @return The timestamp.
+       */
+      @java.lang.Override
+      public long getTimestamp() {
+        return timestamp_;
+      }
+      /**
+       * <pre>
+       * Time after boot in nanoseconds corresponding to the event.
+       * </pre>
+       *
+       * <code>optional uint64 timestamp = 10;</code>
+       * @param value The timestamp to set.
+       */
+      private void setTimestamp(long value) {
+        bitField0_ |= 0x00000100;
+        timestamp_ = value;
+      }
+      /**
+       * <pre>
+       * Time after boot in nanoseconds corresponding to the event.
+       * </pre>
+       *
+       * <code>optional uint64 timestamp = 10;</code>
+       */
+      private void clearTimestamp() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        timestamp_ = 0L;
       }
 
       public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfEvent parseFrom(
@@ -13270,6 +15367,18 @@ public final class PerfDataProtos {
           super(DEFAULT_INSTANCE);
         }
 
+        @java.lang.Override
+        public EventTypeCase
+            getEventTypeCase() {
+          return instance.getEventTypeCase();
+        }
+
+        public Builder clearEventType() {
+          copyOnWrite();
+          instance.clearEventType();
+          return this;
+        }
+
 
         /**
          * <code>optional .metrics.PerfDataProto.EventHeader header = 1;</code>
@@ -13319,29 +15428,29 @@ public final class PerfDataProtos {
         }
 
         /**
-         * <code>optional .metrics.PerfDataProto.MMapEvent mmap_event = 2;</code>
+         * <code>.metrics.PerfDataProto.MMapEvent mmap_event = 2;</code>
          */
         @java.lang.Override
         public boolean hasMmapEvent() {
           return instance.hasMmapEvent();
         }
         /**
-         * <code>optional .metrics.PerfDataProto.MMapEvent mmap_event = 2;</code>
+         * <code>.metrics.PerfDataProto.MMapEvent mmap_event = 2;</code>
          */
         @java.lang.Override
         public org.chromium.components.metrics.PerfDataProtos.PerfDataProto.MMapEvent getMmapEvent() {
           return instance.getMmapEvent();
         }
         /**
-         * <code>optional .metrics.PerfDataProto.MMapEvent mmap_event = 2;</code>
+         * <code>.metrics.PerfDataProto.MMapEvent mmap_event = 2;</code>
          */
         public Builder setMmapEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.MMapEvent value) {
           copyOnWrite();
           instance.setMmapEvent(value);
           return this;
-          }
+        }
         /**
-         * <code>optional .metrics.PerfDataProto.MMapEvent mmap_event = 2;</code>
+         * <code>.metrics.PerfDataProto.MMapEvent mmap_event = 2;</code>
          */
         public Builder setMmapEvent(
             org.chromium.components.metrics.PerfDataProtos.PerfDataProto.MMapEvent.Builder builderForValue) {
@@ -13350,7 +15459,7 @@ public final class PerfDataProtos {
           return this;
         }
         /**
-         * <code>optional .metrics.PerfDataProto.MMapEvent mmap_event = 2;</code>
+         * <code>.metrics.PerfDataProto.MMapEvent mmap_event = 2;</code>
          */
         public Builder mergeMmapEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.MMapEvent value) {
           copyOnWrite();
@@ -13358,37 +15467,38 @@ public final class PerfDataProtos {
           return this;
         }
         /**
-         * <code>optional .metrics.PerfDataProto.MMapEvent mmap_event = 2;</code>
+         * <code>.metrics.PerfDataProto.MMapEvent mmap_event = 2;</code>
          */
-        public Builder clearMmapEvent() {  copyOnWrite();
+        public Builder clearMmapEvent() {
+          copyOnWrite();
           instance.clearMmapEvent();
           return this;
         }
 
         /**
-         * <code>optional .metrics.PerfDataProto.SampleEvent sample_event = 3;</code>
+         * <code>.metrics.PerfDataProto.SampleEvent sample_event = 3;</code>
          */
         @java.lang.Override
         public boolean hasSampleEvent() {
           return instance.hasSampleEvent();
         }
         /**
-         * <code>optional .metrics.PerfDataProto.SampleEvent sample_event = 3;</code>
+         * <code>.metrics.PerfDataProto.SampleEvent sample_event = 3;</code>
          */
         @java.lang.Override
         public org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleEvent getSampleEvent() {
           return instance.getSampleEvent();
         }
         /**
-         * <code>optional .metrics.PerfDataProto.SampleEvent sample_event = 3;</code>
+         * <code>.metrics.PerfDataProto.SampleEvent sample_event = 3;</code>
          */
         public Builder setSampleEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleEvent value) {
           copyOnWrite();
           instance.setSampleEvent(value);
           return this;
-          }
+        }
         /**
-         * <code>optional .metrics.PerfDataProto.SampleEvent sample_event = 3;</code>
+         * <code>.metrics.PerfDataProto.SampleEvent sample_event = 3;</code>
          */
         public Builder setSampleEvent(
             org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleEvent.Builder builderForValue) {
@@ -13397,7 +15507,7 @@ public final class PerfDataProtos {
           return this;
         }
         /**
-         * <code>optional .metrics.PerfDataProto.SampleEvent sample_event = 3;</code>
+         * <code>.metrics.PerfDataProto.SampleEvent sample_event = 3;</code>
          */
         public Builder mergeSampleEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleEvent value) {
           copyOnWrite();
@@ -13405,37 +15515,38 @@ public final class PerfDataProtos {
           return this;
         }
         /**
-         * <code>optional .metrics.PerfDataProto.SampleEvent sample_event = 3;</code>
+         * <code>.metrics.PerfDataProto.SampleEvent sample_event = 3;</code>
          */
-        public Builder clearSampleEvent() {  copyOnWrite();
+        public Builder clearSampleEvent() {
+          copyOnWrite();
           instance.clearSampleEvent();
           return this;
         }
 
         /**
-         * <code>optional .metrics.PerfDataProto.CommEvent comm_event = 4;</code>
+         * <code>.metrics.PerfDataProto.CommEvent comm_event = 4;</code>
          */
         @java.lang.Override
         public boolean hasCommEvent() {
           return instance.hasCommEvent();
         }
         /**
-         * <code>optional .metrics.PerfDataProto.CommEvent comm_event = 4;</code>
+         * <code>.metrics.PerfDataProto.CommEvent comm_event = 4;</code>
          */
         @java.lang.Override
         public org.chromium.components.metrics.PerfDataProtos.PerfDataProto.CommEvent getCommEvent() {
           return instance.getCommEvent();
         }
         /**
-         * <code>optional .metrics.PerfDataProto.CommEvent comm_event = 4;</code>
+         * <code>.metrics.PerfDataProto.CommEvent comm_event = 4;</code>
          */
         public Builder setCommEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.CommEvent value) {
           copyOnWrite();
           instance.setCommEvent(value);
           return this;
-          }
+        }
         /**
-         * <code>optional .metrics.PerfDataProto.CommEvent comm_event = 4;</code>
+         * <code>.metrics.PerfDataProto.CommEvent comm_event = 4;</code>
          */
         public Builder setCommEvent(
             org.chromium.components.metrics.PerfDataProtos.PerfDataProto.CommEvent.Builder builderForValue) {
@@ -13444,7 +15555,7 @@ public final class PerfDataProtos {
           return this;
         }
         /**
-         * <code>optional .metrics.PerfDataProto.CommEvent comm_event = 4;</code>
+         * <code>.metrics.PerfDataProto.CommEvent comm_event = 4;</code>
          */
         public Builder mergeCommEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.CommEvent value) {
           copyOnWrite();
@@ -13452,20 +15563,23 @@ public final class PerfDataProtos {
           return this;
         }
         /**
-         * <code>optional .metrics.PerfDataProto.CommEvent comm_event = 4;</code>
+         * <code>.metrics.PerfDataProto.CommEvent comm_event = 4;</code>
          */
-        public Builder clearCommEvent() {  copyOnWrite();
+        public Builder clearCommEvent() {
+          copyOnWrite();
           instance.clearCommEvent();
           return this;
         }
 
         /**
          * <pre>
-         * FORK and EXIT events are structurally identical. They only differ by the
-         * event type. But using two distinct fields makes things easier.
+         * FORK and EXIT events are structurally identical. They only differ by
+         * the event type. But using two distinct fields allows us to
+         * differentiate between them without having to check the event type under
+         * |header|.
          * </pre>
          *
-         * <code>optional .metrics.PerfDataProto.ForkEvent fork_event = 5;</code>
+         * <code>.metrics.PerfDataProto.ForkEvent fork_event = 5;</code>
          */
         @java.lang.Override
         public boolean hasForkEvent() {
@@ -13473,11 +15587,13 @@ public final class PerfDataProtos {
         }
         /**
          * <pre>
-         * FORK and EXIT events are structurally identical. They only differ by the
-         * event type. But using two distinct fields makes things easier.
+         * FORK and EXIT events are structurally identical. They only differ by
+         * the event type. But using two distinct fields allows us to
+         * differentiate between them without having to check the event type under
+         * |header|.
          * </pre>
          *
-         * <code>optional .metrics.PerfDataProto.ForkEvent fork_event = 5;</code>
+         * <code>.metrics.PerfDataProto.ForkEvent fork_event = 5;</code>
          */
         @java.lang.Override
         public org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent getForkEvent() {
@@ -13485,24 +15601,28 @@ public final class PerfDataProtos {
         }
         /**
          * <pre>
-         * FORK and EXIT events are structurally identical. They only differ by the
-         * event type. But using two distinct fields makes things easier.
+         * FORK and EXIT events are structurally identical. They only differ by
+         * the event type. But using two distinct fields allows us to
+         * differentiate between them without having to check the event type under
+         * |header|.
          * </pre>
          *
-         * <code>optional .metrics.PerfDataProto.ForkEvent fork_event = 5;</code>
+         * <code>.metrics.PerfDataProto.ForkEvent fork_event = 5;</code>
          */
         public Builder setForkEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent value) {
           copyOnWrite();
           instance.setForkEvent(value);
           return this;
-          }
+        }
         /**
          * <pre>
-         * FORK and EXIT events are structurally identical. They only differ by the
-         * event type. But using two distinct fields makes things easier.
+         * FORK and EXIT events are structurally identical. They only differ by
+         * the event type. But using two distinct fields allows us to
+         * differentiate between them without having to check the event type under
+         * |header|.
          * </pre>
          *
-         * <code>optional .metrics.PerfDataProto.ForkEvent fork_event = 5;</code>
+         * <code>.metrics.PerfDataProto.ForkEvent fork_event = 5;</code>
          */
         public Builder setForkEvent(
             org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent.Builder builderForValue) {
@@ -13512,11 +15632,13 @@ public final class PerfDataProtos {
         }
         /**
          * <pre>
-         * FORK and EXIT events are structurally identical. They only differ by the
-         * event type. But using two distinct fields makes things easier.
+         * FORK and EXIT events are structurally identical. They only differ by
+         * the event type. But using two distinct fields allows us to
+         * differentiate between them without having to check the event type under
+         * |header|.
          * </pre>
          *
-         * <code>optional .metrics.PerfDataProto.ForkEvent fork_event = 5;</code>
+         * <code>.metrics.PerfDataProto.ForkEvent fork_event = 5;</code>
          */
         public Builder mergeForkEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent value) {
           copyOnWrite();
@@ -13525,41 +15647,44 @@ public final class PerfDataProtos {
         }
         /**
          * <pre>
-         * FORK and EXIT events are structurally identical. They only differ by the
-         * event type. But using two distinct fields makes things easier.
+         * FORK and EXIT events are structurally identical. They only differ by
+         * the event type. But using two distinct fields allows us to
+         * differentiate between them without having to check the event type under
+         * |header|.
          * </pre>
          *
-         * <code>optional .metrics.PerfDataProto.ForkEvent fork_event = 5;</code>
+         * <code>.metrics.PerfDataProto.ForkEvent fork_event = 5;</code>
          */
-        public Builder clearForkEvent() {  copyOnWrite();
+        public Builder clearForkEvent() {
+          copyOnWrite();
           instance.clearForkEvent();
           return this;
         }
 
         /**
-         * <code>optional .metrics.PerfDataProto.ForkEvent exit_event = 9;</code>
+         * <code>.metrics.PerfDataProto.ForkEvent exit_event = 9;</code>
          */
         @java.lang.Override
         public boolean hasExitEvent() {
           return instance.hasExitEvent();
         }
         /**
-         * <code>optional .metrics.PerfDataProto.ForkEvent exit_event = 9;</code>
+         * <code>.metrics.PerfDataProto.ForkEvent exit_event = 9;</code>
          */
         @java.lang.Override
         public org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent getExitEvent() {
           return instance.getExitEvent();
         }
         /**
-         * <code>optional .metrics.PerfDataProto.ForkEvent exit_event = 9;</code>
+         * <code>.metrics.PerfDataProto.ForkEvent exit_event = 9;</code>
          */
         public Builder setExitEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent value) {
           copyOnWrite();
           instance.setExitEvent(value);
           return this;
-          }
+        }
         /**
-         * <code>optional .metrics.PerfDataProto.ForkEvent exit_event = 9;</code>
+         * <code>.metrics.PerfDataProto.ForkEvent exit_event = 9;</code>
          */
         public Builder setExitEvent(
             org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent.Builder builderForValue) {
@@ -13568,7 +15693,7 @@ public final class PerfDataProtos {
           return this;
         }
         /**
-         * <code>optional .metrics.PerfDataProto.ForkEvent exit_event = 9;</code>
+         * <code>.metrics.PerfDataProto.ForkEvent exit_event = 9;</code>
          */
         public Builder mergeExitEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent value) {
           copyOnWrite();
@@ -13576,10 +15701,159 @@ public final class PerfDataProtos {
           return this;
         }
         /**
-         * <code>optional .metrics.PerfDataProto.ForkEvent exit_event = 9;</code>
+         * <code>.metrics.PerfDataProto.ForkEvent exit_event = 9;</code>
          */
-        public Builder clearExitEvent() {  copyOnWrite();
+        public Builder clearExitEvent() {
+          copyOnWrite();
           instance.clearExitEvent();
+          return this;
+        }
+
+        /**
+         * <code>.metrics.PerfDataProto.LostEvent lost_event = 6;</code>
+         */
+        @java.lang.Override
+        public boolean hasLostEvent() {
+          return instance.hasLostEvent();
+        }
+        /**
+         * <code>.metrics.PerfDataProto.LostEvent lost_event = 6;</code>
+         */
+        @java.lang.Override
+        public org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent getLostEvent() {
+          return instance.getLostEvent();
+        }
+        /**
+         * <code>.metrics.PerfDataProto.LostEvent lost_event = 6;</code>
+         */
+        public Builder setLostEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent value) {
+          copyOnWrite();
+          instance.setLostEvent(value);
+          return this;
+        }
+        /**
+         * <code>.metrics.PerfDataProto.LostEvent lost_event = 6;</code>
+         */
+        public Builder setLostEvent(
+            org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent.Builder builderForValue) {
+          copyOnWrite();
+          instance.setLostEvent(builderForValue.build());
+          return this;
+        }
+        /**
+         * <code>.metrics.PerfDataProto.LostEvent lost_event = 6;</code>
+         */
+        public Builder mergeLostEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent value) {
+          copyOnWrite();
+          instance.mergeLostEvent(value);
+          return this;
+        }
+        /**
+         * <code>.metrics.PerfDataProto.LostEvent lost_event = 6;</code>
+         */
+        public Builder clearLostEvent() {
+          copyOnWrite();
+          instance.clearLostEvent();
+          return this;
+        }
+
+        /**
+         * <code>.metrics.PerfDataProto.ThrottleEvent throttle_event = 7;</code>
+         */
+        @java.lang.Override
+        public boolean hasThrottleEvent() {
+          return instance.hasThrottleEvent();
+        }
+        /**
+         * <code>.metrics.PerfDataProto.ThrottleEvent throttle_event = 7;</code>
+         */
+        @java.lang.Override
+        public org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent getThrottleEvent() {
+          return instance.getThrottleEvent();
+        }
+        /**
+         * <code>.metrics.PerfDataProto.ThrottleEvent throttle_event = 7;</code>
+         */
+        public Builder setThrottleEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent value) {
+          copyOnWrite();
+          instance.setThrottleEvent(value);
+          return this;
+        }
+        /**
+         * <code>.metrics.PerfDataProto.ThrottleEvent throttle_event = 7;</code>
+         */
+        public Builder setThrottleEvent(
+            org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent.Builder builderForValue) {
+          copyOnWrite();
+          instance.setThrottleEvent(builderForValue.build());
+          return this;
+        }
+        /**
+         * <code>.metrics.PerfDataProto.ThrottleEvent throttle_event = 7;</code>
+         */
+        public Builder mergeThrottleEvent(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent value) {
+          copyOnWrite();
+          instance.mergeThrottleEvent(value);
+          return this;
+        }
+        /**
+         * <code>.metrics.PerfDataProto.ThrottleEvent throttle_event = 7;</code>
+         */
+        public Builder clearThrottleEvent() {
+          copyOnWrite();
+          instance.clearThrottleEvent();
+          return this;
+        }
+
+        /**
+         * <pre>
+         * Time after boot in nanoseconds corresponding to the event.
+         * </pre>
+         *
+         * <code>optional uint64 timestamp = 10;</code>
+         * @return Whether the timestamp field is set.
+         */
+        @java.lang.Override
+        public boolean hasTimestamp() {
+          return instance.hasTimestamp();
+        }
+        /**
+         * <pre>
+         * Time after boot in nanoseconds corresponding to the event.
+         * </pre>
+         *
+         * <code>optional uint64 timestamp = 10;</code>
+         * @return The timestamp.
+         */
+        @java.lang.Override
+        public long getTimestamp() {
+          return instance.getTimestamp();
+        }
+        /**
+         * <pre>
+         * Time after boot in nanoseconds corresponding to the event.
+         * </pre>
+         *
+         * <code>optional uint64 timestamp = 10;</code>
+         * @param value The timestamp to set.
+         * @return This builder for chaining.
+         */
+        public Builder setTimestamp(long value) {
+          copyOnWrite();
+          instance.setTimestamp(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Time after boot in nanoseconds corresponding to the event.
+         * </pre>
+         *
+         * <code>optional uint64 timestamp = 10;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearTimestamp() {
+          copyOnWrite();
+          instance.clearTimestamp();
           return this;
         }
 
@@ -13599,18 +15873,23 @@ public final class PerfDataProtos {
           }
           case BUILD_MESSAGE_INFO: {
               java.lang.Object[] objects = new java.lang.Object[] {
+                "eventType_",
+                "eventTypeCase_",
                 "bitField0_",
                 "header_",
-                "mmapEvent_",
-                "sampleEvent_",
-                "commEvent_",
-                "forkEvent_",
-                "exitEvent_",
+                org.chromium.components.metrics.PerfDataProtos.PerfDataProto.MMapEvent.class,
+                org.chromium.components.metrics.PerfDataProtos.PerfDataProto.SampleEvent.class,
+                org.chromium.components.metrics.PerfDataProtos.PerfDataProto.CommEvent.class,
+                org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent.class,
+                org.chromium.components.metrics.PerfDataProtos.PerfDataProto.LostEvent.class,
+                org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ThrottleEvent.class,
+                org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent.class,
+                "timestamp_",
               };
               java.lang.String info =
-                  "\u0001\u0006\u0000\u0001\u0001\t\u0006\u0000\u0000\u0000\u0001\u1009\u0000\u0002" +
-                  "\u1009\u0001\u0003\u1009\u0002\u0004\u1009\u0003\u0005\u1009\u0004\t\u1009\u0005" +
-                  "";
+                  "\u0001\t\u0001\u0001\u0001\n\t\u0000\u0000\u0000\u0001\u1009\u0000\u0002\u103c\u0000" +
+                  "\u0003\u103c\u0000\u0004\u103c\u0000\u0005\u103c\u0000\u0006\u103c\u0000\u0007\u103c" +
+                  "\u0000\t\u103c\u0000\n\u1003\b";
               return newMessageInfo(DEFAULT_INSTANCE, info, objects);
           }
           // fall through
@@ -14662,7 +16941,7 @@ public final class PerfDataProtos {
       /**
        * <pre>
        * Build id.  Should always contain kBuildIDArraySize bytes of data.
-       * perf_reader.h in Chrome OS defines kBuildIDArraySize = 20.
+       * perf_reader.h defines kBuildIDArraySize = 20.
        * </pre>
        *
        * <code>optional bytes build_id_hash = 3;</code>
@@ -14672,7 +16951,7 @@ public final class PerfDataProtos {
       /**
        * <pre>
        * Build id.  Should always contain kBuildIDArraySize bytes of data.
-       * perf_reader.h in Chrome OS defines kBuildIDArraySize = 20.
+       * perf_reader.h defines kBuildIDArraySize = 20.
        * </pre>
        *
        * <code>optional bytes build_id_hash = 3;</code>
@@ -14822,7 +17101,7 @@ public final class PerfDataProtos {
       /**
        * <pre>
        * Build id.  Should always contain kBuildIDArraySize bytes of data.
-       * perf_reader.h in Chrome OS defines kBuildIDArraySize = 20.
+       * perf_reader.h defines kBuildIDArraySize = 20.
        * </pre>
        *
        * <code>optional bytes build_id_hash = 3;</code>
@@ -14835,7 +17114,7 @@ public final class PerfDataProtos {
       /**
        * <pre>
        * Build id.  Should always contain kBuildIDArraySize bytes of data.
-       * perf_reader.h in Chrome OS defines kBuildIDArraySize = 20.
+       * perf_reader.h defines kBuildIDArraySize = 20.
        * </pre>
        *
        * <code>optional bytes build_id_hash = 3;</code>
@@ -14848,7 +17127,7 @@ public final class PerfDataProtos {
       /**
        * <pre>
        * Build id.  Should always contain kBuildIDArraySize bytes of data.
-       * perf_reader.h in Chrome OS defines kBuildIDArraySize = 20.
+       * perf_reader.h defines kBuildIDArraySize = 20.
        * </pre>
        *
        * <code>optional bytes build_id_hash = 3;</code>
@@ -14862,7 +17141,7 @@ public final class PerfDataProtos {
       /**
        * <pre>
        * Build id.  Should always contain kBuildIDArraySize bytes of data.
-       * perf_reader.h in Chrome OS defines kBuildIDArraySize = 20.
+       * perf_reader.h defines kBuildIDArraySize = 20.
        * </pre>
        *
        * <code>optional bytes build_id_hash = 3;</code>
@@ -15132,7 +17411,7 @@ public final class PerfDataProtos {
         /**
          * <pre>
          * Build id.  Should always contain kBuildIDArraySize bytes of data.
-         * perf_reader.h in Chrome OS defines kBuildIDArraySize = 20.
+         * perf_reader.h defines kBuildIDArraySize = 20.
          * </pre>
          *
          * <code>optional bytes build_id_hash = 3;</code>
@@ -15145,7 +17424,7 @@ public final class PerfDataProtos {
         /**
          * <pre>
          * Build id.  Should always contain kBuildIDArraySize bytes of data.
-         * perf_reader.h in Chrome OS defines kBuildIDArraySize = 20.
+         * perf_reader.h defines kBuildIDArraySize = 20.
          * </pre>
          *
          * <code>optional bytes build_id_hash = 3;</code>
@@ -15158,7 +17437,7 @@ public final class PerfDataProtos {
         /**
          * <pre>
          * Build id.  Should always contain kBuildIDArraySize bytes of data.
-         * perf_reader.h in Chrome OS defines kBuildIDArraySize = 20.
+         * perf_reader.h defines kBuildIDArraySize = 20.
          * </pre>
          *
          * <code>optional bytes build_id_hash = 3;</code>
@@ -15173,7 +17452,7 @@ public final class PerfDataProtos {
         /**
          * <pre>
          * Build id.  Should always contain kBuildIDArraySize bytes of data.
-         * perf_reader.h in Chrome OS defines kBuildIDArraySize = 20.
+         * perf_reader.h defines kBuildIDArraySize = 20.
          * </pre>
          *
          * <code>optional bytes build_id_hash = 3;</code>
@@ -15316,6 +17595,455 @@ public final class PerfDataProtos {
       private static volatile com.google.protobuf.Parser<PerfBuildID> PARSER;
 
       public static com.google.protobuf.Parser<PerfBuildID> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
+    public interface PerfPMUMappingsMetadataOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:metrics.PerfDataProto.PerfPMUMappingsMetadata)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <pre>
+       * Mapping type.
+       * It is a number the kernel uses to map to PMU devices when initializing
+       * them. It is used to reconstruct the event type across different machines.
+       * </pre>
+       *
+       * <code>optional uint32 type = 1;</code>
+       * @return Whether the type field is set.
+       */
+      boolean hasType();
+      /**
+       * <pre>
+       * Mapping type.
+       * It is a number the kernel uses to map to PMU devices when initializing
+       * them. It is used to reconstruct the event type across different machines.
+       * </pre>
+       *
+       * <code>optional uint32 type = 1;</code>
+       * @return The type.
+       */
+      int getType();
+
+      /**
+       * <pre>
+       * Mapping name's md5 prefix.
+       * </pre>
+       *
+       * <code>optional uint64 name_md5_prefix = 3;</code>
+       * @return Whether the nameMd5Prefix field is set.
+       */
+      boolean hasNameMd5Prefix();
+      /**
+       * <pre>
+       * Mapping name's md5 prefix.
+       * </pre>
+       *
+       * <code>optional uint64 name_md5_prefix = 3;</code>
+       * @return The nameMd5Prefix.
+       */
+      long getNameMd5Prefix();
+    }
+    /**
+     * Protobuf type {@code metrics.PerfDataProto.PerfPMUMappingsMetadata}
+     */
+    public  static final class PerfPMUMappingsMetadata extends
+        com.google.protobuf.GeneratedMessageLite<
+            PerfPMUMappingsMetadata, PerfPMUMappingsMetadata.Builder> implements
+        // @@protoc_insertion_point(message_implements:metrics.PerfDataProto.PerfPMUMappingsMetadata)
+        PerfPMUMappingsMetadataOrBuilder {
+      private PerfPMUMappingsMetadata() {
+      }
+      private int bitField0_;
+      public static final int TYPE_FIELD_NUMBER = 1;
+      private int type_;
+      /**
+       * <pre>
+       * Mapping type.
+       * It is a number the kernel uses to map to PMU devices when initializing
+       * them. It is used to reconstruct the event type across different machines.
+       * </pre>
+       *
+       * <code>optional uint32 type = 1;</code>
+       * @return Whether the type field is set.
+       */
+      @java.lang.Override
+      public boolean hasType() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * Mapping type.
+       * It is a number the kernel uses to map to PMU devices when initializing
+       * them. It is used to reconstruct the event type across different machines.
+       * </pre>
+       *
+       * <code>optional uint32 type = 1;</code>
+       * @return The type.
+       */
+      @java.lang.Override
+      public int getType() {
+        return type_;
+      }
+      /**
+       * <pre>
+       * Mapping type.
+       * It is a number the kernel uses to map to PMU devices when initializing
+       * them. It is used to reconstruct the event type across different machines.
+       * </pre>
+       *
+       * <code>optional uint32 type = 1;</code>
+       * @param value The type to set.
+       */
+      private void setType(int value) {
+        bitField0_ |= 0x00000001;
+        type_ = value;
+      }
+      /**
+       * <pre>
+       * Mapping type.
+       * It is a number the kernel uses to map to PMU devices when initializing
+       * them. It is used to reconstruct the event type across different machines.
+       * </pre>
+       *
+       * <code>optional uint32 type = 1;</code>
+       */
+      private void clearType() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        type_ = 0;
+      }
+
+      public static final int NAME_MD5_PREFIX_FIELD_NUMBER = 3;
+      private long nameMd5Prefix_;
+      /**
+       * <pre>
+       * Mapping name's md5 prefix.
+       * </pre>
+       *
+       * <code>optional uint64 name_md5_prefix = 3;</code>
+       * @return Whether the nameMd5Prefix field is set.
+       */
+      @java.lang.Override
+      public boolean hasNameMd5Prefix() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * Mapping name's md5 prefix.
+       * </pre>
+       *
+       * <code>optional uint64 name_md5_prefix = 3;</code>
+       * @return The nameMd5Prefix.
+       */
+      @java.lang.Override
+      public long getNameMd5Prefix() {
+        return nameMd5Prefix_;
+      }
+      /**
+       * <pre>
+       * Mapping name's md5 prefix.
+       * </pre>
+       *
+       * <code>optional uint64 name_md5_prefix = 3;</code>
+       * @param value The nameMd5Prefix to set.
+       */
+      private void setNameMd5Prefix(long value) {
+        bitField0_ |= 0x00000002;
+        nameMd5Prefix_ = value;
+      }
+      /**
+       * <pre>
+       * Mapping name's md5 prefix.
+       * </pre>
+       *
+       * <code>optional uint64 name_md5_prefix = 3;</code>
+       */
+      private void clearNameMd5Prefix() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        nameMd5Prefix_ = 0L;
+      }
+
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return (Builder) DEFAULT_INSTANCE.createBuilder();
+      }
+      public static Builder newBuilder(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata prototype) {
+        return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+      }
+
+      /**
+       * Protobuf type {@code metrics.PerfDataProto.PerfPMUMappingsMetadata}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata, Builder> implements
+          // @@protoc_insertion_point(builder_implements:metrics.PerfDataProto.PerfPMUMappingsMetadata)
+          org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadataOrBuilder {
+        // Construct using org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <pre>
+         * Mapping type.
+         * It is a number the kernel uses to map to PMU devices when initializing
+         * them. It is used to reconstruct the event type across different machines.
+         * </pre>
+         *
+         * <code>optional uint32 type = 1;</code>
+         * @return Whether the type field is set.
+         */
+        @java.lang.Override
+        public boolean hasType() {
+          return instance.hasType();
+        }
+        /**
+         * <pre>
+         * Mapping type.
+         * It is a number the kernel uses to map to PMU devices when initializing
+         * them. It is used to reconstruct the event type across different machines.
+         * </pre>
+         *
+         * <code>optional uint32 type = 1;</code>
+         * @return The type.
+         */
+        @java.lang.Override
+        public int getType() {
+          return instance.getType();
+        }
+        /**
+         * <pre>
+         * Mapping type.
+         * It is a number the kernel uses to map to PMU devices when initializing
+         * them. It is used to reconstruct the event type across different machines.
+         * </pre>
+         *
+         * <code>optional uint32 type = 1;</code>
+         * @param value The type to set.
+         * @return This builder for chaining.
+         */
+        public Builder setType(int value) {
+          copyOnWrite();
+          instance.setType(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Mapping type.
+         * It is a number the kernel uses to map to PMU devices when initializing
+         * them. It is used to reconstruct the event type across different machines.
+         * </pre>
+         *
+         * <code>optional uint32 type = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearType() {
+          copyOnWrite();
+          instance.clearType();
+          return this;
+        }
+
+        /**
+         * <pre>
+         * Mapping name's md5 prefix.
+         * </pre>
+         *
+         * <code>optional uint64 name_md5_prefix = 3;</code>
+         * @return Whether the nameMd5Prefix field is set.
+         */
+        @java.lang.Override
+        public boolean hasNameMd5Prefix() {
+          return instance.hasNameMd5Prefix();
+        }
+        /**
+         * <pre>
+         * Mapping name's md5 prefix.
+         * </pre>
+         *
+         * <code>optional uint64 name_md5_prefix = 3;</code>
+         * @return The nameMd5Prefix.
+         */
+        @java.lang.Override
+        public long getNameMd5Prefix() {
+          return instance.getNameMd5Prefix();
+        }
+        /**
+         * <pre>
+         * Mapping name's md5 prefix.
+         * </pre>
+         *
+         * <code>optional uint64 name_md5_prefix = 3;</code>
+         * @param value The nameMd5Prefix to set.
+         * @return This builder for chaining.
+         */
+        public Builder setNameMd5Prefix(long value) {
+          copyOnWrite();
+          instance.setNameMd5Prefix(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Mapping name's md5 prefix.
+         * </pre>
+         *
+         * <code>optional uint64 name_md5_prefix = 3;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearNameMd5Prefix() {
+          copyOnWrite();
+          instance.clearNameMd5Prefix();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:metrics.PerfDataProto.PerfPMUMappingsMetadata)
+      }
+      @java.lang.Override
+      @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+      protected final java.lang.Object dynamicMethod(
+          com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+          java.lang.Object arg0, java.lang.Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata();
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case BUILD_MESSAGE_INFO: {
+              java.lang.Object[] objects = new java.lang.Object[] {
+                "bitField0_",
+                "type_",
+                "nameMd5Prefix_",
+              };
+              java.lang.String info =
+                  "\u0001\u0002\u0000\u0001\u0001\u0003\u0002\u0000\u0000\u0000\u0001\u100b\u0000\u0003" +
+                  "\u1003\u0001";
+              return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+          }
+          // fall through
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            com.google.protobuf.Parser<org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata> parser = PARSER;
+            if (parser == null) {
+              synchronized (org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata.class) {
+                parser = PARSER;
+                if (parser == null) {
+                  parser =
+                      new DefaultInstanceBasedParser<org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata>(
+                          DEFAULT_INSTANCE);
+                  PARSER = parser;
+                }
+              }
+            }
+            return parser;
+        }
+        case GET_MEMOIZED_IS_INITIALIZED: {
+          return (byte) 1;
+        }
+        case SET_MEMOIZED_IS_INITIALIZED: {
+          return null;
+        }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:metrics.PerfDataProto.PerfPMUMappingsMetadata)
+      private static final org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata DEFAULT_INSTANCE;
+      static {
+        PerfPMUMappingsMetadata defaultInstance = new PerfPMUMappingsMetadata();
+        // New instances are implicitly immutable so no need to make
+        // immutable.
+        DEFAULT_INSTANCE = defaultInstance;
+        com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+          PerfPMUMappingsMetadata.class, defaultInstance);
+      }
+
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<PerfPMUMappingsMetadata> PARSER;
+
+      public static com.google.protobuf.Parser<PerfPMUMappingsMetadata> parser() {
         return DEFAULT_INSTANCE.getParserForType();
       }
     }
@@ -16516,6 +19244,100 @@ public final class PerfDataProtos {
       buildIds_.remove(index);
     }
 
+    public static final int PMU_MAPPINGS_FIELD_NUMBER = 15;
+    private com.google.protobuf.Internal.ProtobufList<org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata> pmuMappings_;
+    /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    @java.lang.Override
+    public java.util.List<org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata> getPmuMappingsList() {
+      return pmuMappings_;
+    }
+    /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    public java.util.List<? extends org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadataOrBuilder> 
+        getPmuMappingsOrBuilderList() {
+      return pmuMappings_;
+    }
+    /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    @java.lang.Override
+    public int getPmuMappingsCount() {
+      return pmuMappings_.size();
+    }
+    /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata getPmuMappings(int index) {
+      return pmuMappings_.get(index);
+    }
+    /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    public org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadataOrBuilder getPmuMappingsOrBuilder(
+        int index) {
+      return pmuMappings_.get(index);
+    }
+    private void ensurePmuMappingsIsMutable() {
+      com.google.protobuf.Internal.ProtobufList<org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata> tmp = pmuMappings_;
+      if (!tmp.isModifiable()) {
+        pmuMappings_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(tmp);
+       }
+    }
+
+    /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    private void setPmuMappings(
+        int index, org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata value) {
+      value.getClass();
+  ensurePmuMappingsIsMutable();
+      pmuMappings_.set(index, value);
+    }
+    /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    private void addPmuMappings(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata value) {
+      value.getClass();
+  ensurePmuMappingsIsMutable();
+      pmuMappings_.add(value);
+    }
+    /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    private void addPmuMappings(
+        int index, org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata value) {
+      value.getClass();
+  ensurePmuMappingsIsMutable();
+      pmuMappings_.add(index, value);
+    }
+    /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    private void addAllPmuMappings(
+        java.lang.Iterable<? extends org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata> values) {
+      ensurePmuMappingsIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, pmuMappings_);
+    }
+    /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    private void clearPmuMappings() {
+      pmuMappings_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    private void removePmuMappings(int index) {
+      ensurePmuMappingsIsMutable();
+      pmuMappings_.remove(index);
+    }
+
     public static final int STRING_METADATA_FIELD_NUMBER = 13;
     private org.chromium.components.metrics.PerfDataProtos.PerfDataProto.StringMetadata stringMetadata_;
     /**
@@ -16665,11 +19487,8 @@ public final class PerfDataProtos {
 
     /**
      * <pre>
-     * Please do not modify this protobuf directly, except to mirror the upstream
-     * version found here:
-     * https://github.com/google/perf_data_converter/blob/master/src/quipper/perf_data.proto
-     * with some fields omitted for privacy reasons. Because it is a read-only copy
-     * of the upstream protobuf, "Next tag:" comments are also absent.
+     * This is a read-only copy of the upstream protobuf; "Next tag:" comments are
+     * absent.
      * </pre>
      *
      * Protobuf type {@code metrics.PerfDataProto}
@@ -17269,6 +20088,108 @@ public final class PerfDataProtos {
       }
 
       /**
+       * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+       */
+      @java.lang.Override
+      public java.util.List<org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata> getPmuMappingsList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getPmuMappingsList());
+      }
+      /**
+       * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+       */
+      @java.lang.Override
+      public int getPmuMappingsCount() {
+        return instance.getPmuMappingsCount();
+      }/**
+       * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+       */
+      @java.lang.Override
+      public org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata getPmuMappings(int index) {
+        return instance.getPmuMappings(index);
+      }
+      /**
+       * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+       */
+      public Builder setPmuMappings(
+          int index, org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata value) {
+        copyOnWrite();
+        instance.setPmuMappings(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+       */
+      public Builder setPmuMappings(
+          int index, org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata.Builder builderForValue) {
+        copyOnWrite();
+        instance.setPmuMappings(index,
+            builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+       */
+      public Builder addPmuMappings(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata value) {
+        copyOnWrite();
+        instance.addPmuMappings(value);
+        return this;
+      }
+      /**
+       * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+       */
+      public Builder addPmuMappings(
+          int index, org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata value) {
+        copyOnWrite();
+        instance.addPmuMappings(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+       */
+      public Builder addPmuMappings(
+          org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata.Builder builderForValue) {
+        copyOnWrite();
+        instance.addPmuMappings(builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+       */
+      public Builder addPmuMappings(
+          int index, org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata.Builder builderForValue) {
+        copyOnWrite();
+        instance.addPmuMappings(index,
+            builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+       */
+      public Builder addAllPmuMappings(
+          java.lang.Iterable<? extends org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata> values) {
+        copyOnWrite();
+        instance.addAllPmuMappings(values);
+        return this;
+      }
+      /**
+       * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+       */
+      public Builder clearPmuMappings() {
+        copyOnWrite();
+        instance.clearPmuMappings();
+        return this;
+      }
+      /**
+       * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+       */
+      public Builder removePmuMappings(int index) {
+        copyOnWrite();
+        instance.removePmuMappings(index);
+        return this;
+      }
+
+      /**
        * <pre>
        * All the string metadata from the perf data file.
        * </pre>
@@ -17367,10 +20288,12 @@ public final class PerfDataProtos {
               "eventTypes_",
               org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfEventType.class,
               "stringMetadata_",
+              "pmuMappings_",
+              org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata.class,
             };
             java.lang.String info =
-                "\u0001\u0007\u0000\u0001\u0001\r\u0007\u0000\u0004\u0000\u0001\u001b\u0002\u001b" +
-                "\u0003\u1003\u0000\u0004\u1009\u0001\u0007\u001b\n\u001b\r\u1009\u0002";
+                "\u0001\b\u0000\u0001\u0001\u000f\b\u0000\u0005\u0000\u0001\u001b\u0002\u001b\u0003" +
+                "\u1003\u0000\u0004\u1009\u0001\u0007\u001b\n\u001b\r\u1009\u0002\u000f\u001b";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

@@ -25,11 +25,14 @@ import org.chromium.chrome.R;
 import org.chromium.chrome.browser.autofill.AutofillUiUtils;
 import org.chromium.chrome.browser.autofill.PersonalDataManager;
 import org.chromium.chrome.browser.autofill.PersonalDataManager.CreditCard;
-import org.chromium.chrome.browser.payments.AndroidPaymentAppFactory;
+import org.chromium.chrome.browser.flags.ChromeFeatureList;
 import org.chromium.chrome.browser.payments.ServiceWorkerPaymentAppBridge;
 import org.chromium.chrome.browser.profiles.Profile;
 import org.chromium.chrome.browser.settings.ChromeManagedPreferenceDelegate;
+import org.chromium.components.autofill.VirtualCardEnrollmentState;
 import org.chromium.components.browser_ui.settings.ChromeSwitchPreference;
+import org.chromium.components.browser_ui.styles.SemanticColorUtils;
+import org.chromium.components.payments.AndroidPaymentAppFactory;
 
 /**
  * Autofill credit cards fragment, which allows the user to edit credit cards and control
@@ -126,7 +129,22 @@ public class AutofillPaymentMethodsFragment extends PreferenceFragmentCompat
             // line.
             card_pref.setSingleLineTitle(false);
             card_pref.setTitle(card.getCardLabel());
-            card_pref.setSummary(card.getFormattedExpirationDate(getActivity()));
+
+            // Show virtual card enrollment status for eligible cards, expiration date otherwise.
+            if (ChromeFeatureList.isEnabled(
+                        ChromeFeatureList.AUTOFILL_ENABLE_VIRTUAL_CARD_METADATA)) {
+                if (card.getVirtualCardEnrollmentState() == VirtualCardEnrollmentState.ENROLLED) {
+                    card_pref.setSummary(R.string.autofill_virtual_card_enrolled_text);
+                } else if (card.getVirtualCardEnrollmentState()
+                        == VirtualCardEnrollmentState.UNENROLLED_AND_ELIGIBLE) {
+                    card_pref.setSummary(R.string.autofill_virtual_card_enrollment_eligible_text);
+                } else {
+                    card_pref.setSummary(card.getFormattedExpirationDate(getActivity()));
+                }
+            } else {
+                card_pref.setSummary(card.getFormattedExpirationDate(getActivity()));
+            }
+
             card_pref.setIcon(
                     AppCompatResources.getDrawable(getActivity(), card.getIssuerIconDrawableId()));
 
@@ -148,8 +166,7 @@ public class AutofillPaymentMethodsFragment extends PreferenceFragmentCompat
             Preference add_card_pref = new Preference(getStyledContext());
             Drawable plusIcon = ApiCompatibilityUtils.getDrawable(getResources(), R.drawable.plus);
             plusIcon.mutate();
-            plusIcon.setColorFilter(ApiCompatibilityUtils.getColor(
-                                            getResources(), R.color.default_control_color_active),
+            plusIcon.setColorFilter(SemanticColorUtils.getDefaultControlColorActive(getContext()),
                     PorterDuff.Mode.SRC_IN);
             add_card_pref.setIcon(plusIcon);
             add_card_pref.setTitle(R.string.autofill_create_credit_card);

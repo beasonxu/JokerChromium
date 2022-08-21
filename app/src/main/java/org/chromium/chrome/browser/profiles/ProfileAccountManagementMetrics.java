@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -47,7 +47,10 @@ public @interface ProfileAccountManagementMetrics {
    */
   int CLICK_SECONDARY_ACCOUNT = 4;
   /**
-   * User arrived at the Account management screen, toggled Chrome signout.
+   * Despite the name of this enum, the following three interactions track actions triggered from
+   * all user-triggered entry points for the signout dialog.  Currently these are: * The Account
+   * management settings screen * The Sync settings screen * The Google Services settings screen
+   * User toggled Chrome signout.
    */
   int TOGGLE_SIGNOUT = 5;
   /**

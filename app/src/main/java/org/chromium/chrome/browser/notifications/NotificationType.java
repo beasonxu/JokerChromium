@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -19,7 +19,7 @@ import java.lang.annotation.RetentionPolicy;
     NotificationType.WEB_PERSISTENT, NotificationType.WEB_NON_PERSISTENT,
     NotificationType.EXTENSION, NotificationType.SEND_TAB_TO_SELF, NotificationType.TRANSIENT,
     NotificationType.SHARING, NotificationType.ANNOUNCEMENT, NotificationType.NEARBY_SHARE,
-    NotificationType.NOTIFICATIONS_MUTED, NotificationType.MAX
+    NotificationType.NOTIFICATIONS_MUTED, NotificationType.TAILORED_SECURITY, NotificationType.MAX
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface NotificationType {
@@ -36,5 +36,6 @@ public @interface NotificationType {
   int ANNOUNCEMENT = 7;
   int NEARBY_SHARE = 8;
   int NOTIFICATIONS_MUTED = 9;
-  int MAX = NOTIFICATIONS_MUTED;
+  int TAILORED_SECURITY = 10;
+  int MAX = TAILORED_SECURITY;
 }

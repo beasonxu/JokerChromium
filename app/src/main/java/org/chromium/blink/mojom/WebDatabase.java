@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface WebDatabase extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface WebDatabase extends org.chromium.mojo.bindings.Interface {
 
     Manager<WebDatabase, WebDatabase.Proxy> MANAGER = WebDatabase_Internal.MANAGER;
 
-
     void updateSize(
 org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo_base.mojom.String16 name, long size);
-
 
 
     void closeImmediately(

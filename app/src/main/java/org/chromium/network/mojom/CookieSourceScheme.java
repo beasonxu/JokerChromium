@@ -13,8 +13,16 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class CookieSourceScheme {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        CookieSourceScheme.UNSET,
+        CookieSourceScheme.NON_SECURE,
+        CookieSourceScheme.SECURE})
+    public @interface EnumType {}
 
     public static final int UNSET = 0;
     public static final int NON_SECURE = 1;

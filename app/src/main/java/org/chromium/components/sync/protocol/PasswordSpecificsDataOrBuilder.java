@@ -9,12 +9,7 @@ public interface PasswordSpecificsDataOrBuilder extends
 
   /**
    * <pre>
-   * SCHEME_HTML(0), the credential represents either a parsed HTML form, or an
-   * android credential or a password saved through Credential Manager API
-   * (https://w3c.github.io/webappsec/specs/credentialmanagement/).
-   * SCHEME_BASIC(1), basic access http authentication.
-   * SCHEME_DIGEST(2), digest access authentication.
-   * SCHEME_OTHER(3), another access authentication.
+   * See the enum above.
    * </pre>
    *
    * <code>optional int32 scheme = 1;</code>
@@ -23,12 +18,7 @@ public interface PasswordSpecificsDataOrBuilder extends
   boolean hasScheme();
   /**
    * <pre>
-   * SCHEME_HTML(0), the credential represents either a parsed HTML form, or an
-   * android credential or a password saved through Credential Manager API
-   * (https://w3c.github.io/webappsec/specs/credentialmanagement/).
-   * SCHEME_BASIC(1), basic access http authentication.
-   * SCHEME_DIGEST(2), digest access authentication.
-   * SCHEME_OTHER(3), another access authentication.
+   * See the enum above.
    * </pre>
    *
    * <code>optional int32 scheme = 1;</code>
@@ -38,15 +28,69 @@ public interface PasswordSpecificsDataOrBuilder extends
 
   /**
    * <pre>
-   * For parsed web forms and normal passwords saved through Credential Manager
-   * API: url-scheme://url-host[:url-port]/
-   * For Android apps (local + federated):
-   *     "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
-   * where the hash is base64 encoded SHA512 of the app's public certificate.
-   * For federated credentials:
-   *     "federation://" + origin_host + "/" + federation_host
-   * For proxy auth: proxy-host/auth-realm
-   * For HTTP auth: url-scheme://url-host[:url-port]/auth-realm
+   * Signon realm stores information on where the saved password was stored, and
+   * where it's supposed to be filled again.
+   * It can take various formats depending on the exact circumstances where it
+   * was recorded. Note that the format is *not* guaranteed to be a valid URL or
+   * URI:
+   *  * For parsed web forms and normal passwords saved through Credential
+   *  Manager
+   *    API: &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/
+   *    where
+   *      &lt;http-scheme&gt; is one of "http" or "https"
+   *      &lt;url-host&gt; is the host for which the password was stored
+   *      &lt;url-port&gt; is the option port on the host
+   *    The signon realm is a valid URL in this case with an empty path.
+   *    Examples:
+   *      http://www.example.com/
+   *      https://127.0.0.1/
+   *      http://www.google.com:8080/
+   *      http://192.168.1.254/
+   *      https://accounts.google.com/
+   *  * For Android apps saved through Autofill with Google:
+   *      android://&lt;hash-of-cert&gt;&#64;&lt;package-name&gt;/
+   *    where
+   *      &lt;hash-of-cert&gt; is the base64 encoded SHA512 of the app's public
+   *      certificate &lt;package-name&gt; is the app's package name
+   *    Examples:
+   *      android://kCyQDzpaoAX2gs-1zdGPKNAeICb8LzRFOxa4NCq0jO8c8d_NFS_q-Y35bU3Nq3GmFV2lLurmNvIZa6YPYZwmWg==&#64;com.pinterest/
+   *      android://mNUCvTnoWBkzIhSSkVj-uzAdK42YagmCmyUtPoC6JPmYAN3wKpmTdIRsdJtz6pzNBye8XL7nBbEcx-y9CJeo9A==&#64;com.twitter.android.lite/
+   *  * For federated credentials:
+   *      federation://&lt;origin_host&gt;/&lt;federation_host&gt;
+   *    where
+   *      &lt;origin_host&gt; is the host for which the login information was stored
+   *      &lt;federation_host&gt; is the host of the federation provider that was
+   *        used to sign in
+   *    Examples:
+   *      federation://www.example.com/accounts.google.com
+   *      federation://uk.trustpilot.com/www.facebook.com
+   *  * For proxy auth:
+   *      &lt;proxy-host&gt;[:&lt;proxy_port&gt;]/&lt;auth-realm&gt;
+   *    where
+   *      &lt;proxy-host&gt; is the host of the proxy for which the password was
+   *      stored
+   *      &lt;proxy-port&gt; is the port of the proxy
+   *      &lt;auth-realm&gt; is a string provided by the proxy during authentication.
+   *      It can contain spaces.
+   *    Examples:
+   *      proxy2.eq.edu.au:80/MISldap
+   *      proxy.det.nsw.edu.au:8080/NSW Department of Education
+   *      10.47.2.250:3128/Squid Proxy Server CPUT
+   *      default.go2https.com:443/(******Get password from vpnso.com/account/
+   *      *****)
+   *  * For HTTP basic auth:
+   *      &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/&lt;auth-realm&gt;
+   *    where
+   *      &lt;http-scheme&gt; is one of "http" or "https"
+   *      &lt;url-host&gt; is the host for which the password was stored
+   *      &lt;url-port&gt; is the option port on the host
+   *      &lt;auth-realm&gt; is a string provided by the host during authentication.
+   *      It can contain spaces.
+   *    Examples:
+   *      http://192.168.1.1/Broadband Router
+   *      http://192.168.0.1/TP-LINK Wireless N Router WR841N
+   *      http://192.168.1.1/index.htm
+   *      https://www.edge.asic.gov.au/ASIC eBusiness
    * </pre>
    *
    * <code>optional string signon_realm = 2;</code>
@@ -55,15 +99,69 @@ public interface PasswordSpecificsDataOrBuilder extends
   boolean hasSignonRealm();
   /**
    * <pre>
-   * For parsed web forms and normal passwords saved through Credential Manager
-   * API: url-scheme://url-host[:url-port]/
-   * For Android apps (local + federated):
-   *     "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
-   * where the hash is base64 encoded SHA512 of the app's public certificate.
-   * For federated credentials:
-   *     "federation://" + origin_host + "/" + federation_host
-   * For proxy auth: proxy-host/auth-realm
-   * For HTTP auth: url-scheme://url-host[:url-port]/auth-realm
+   * Signon realm stores information on where the saved password was stored, and
+   * where it's supposed to be filled again.
+   * It can take various formats depending on the exact circumstances where it
+   * was recorded. Note that the format is *not* guaranteed to be a valid URL or
+   * URI:
+   *  * For parsed web forms and normal passwords saved through Credential
+   *  Manager
+   *    API: &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/
+   *    where
+   *      &lt;http-scheme&gt; is one of "http" or "https"
+   *      &lt;url-host&gt; is the host for which the password was stored
+   *      &lt;url-port&gt; is the option port on the host
+   *    The signon realm is a valid URL in this case with an empty path.
+   *    Examples:
+   *      http://www.example.com/
+   *      https://127.0.0.1/
+   *      http://www.google.com:8080/
+   *      http://192.168.1.254/
+   *      https://accounts.google.com/
+   *  * For Android apps saved through Autofill with Google:
+   *      android://&lt;hash-of-cert&gt;&#64;&lt;package-name&gt;/
+   *    where
+   *      &lt;hash-of-cert&gt; is the base64 encoded SHA512 of the app's public
+   *      certificate &lt;package-name&gt; is the app's package name
+   *    Examples:
+   *      android://kCyQDzpaoAX2gs-1zdGPKNAeICb8LzRFOxa4NCq0jO8c8d_NFS_q-Y35bU3Nq3GmFV2lLurmNvIZa6YPYZwmWg==&#64;com.pinterest/
+   *      android://mNUCvTnoWBkzIhSSkVj-uzAdK42YagmCmyUtPoC6JPmYAN3wKpmTdIRsdJtz6pzNBye8XL7nBbEcx-y9CJeo9A==&#64;com.twitter.android.lite/
+   *  * For federated credentials:
+   *      federation://&lt;origin_host&gt;/&lt;federation_host&gt;
+   *    where
+   *      &lt;origin_host&gt; is the host for which the login information was stored
+   *      &lt;federation_host&gt; is the host of the federation provider that was
+   *        used to sign in
+   *    Examples:
+   *      federation://www.example.com/accounts.google.com
+   *      federation://uk.trustpilot.com/www.facebook.com
+   *  * For proxy auth:
+   *      &lt;proxy-host&gt;[:&lt;proxy_port&gt;]/&lt;auth-realm&gt;
+   *    where
+   *      &lt;proxy-host&gt; is the host of the proxy for which the password was
+   *      stored
+   *      &lt;proxy-port&gt; is the port of the proxy
+   *      &lt;auth-realm&gt; is a string provided by the proxy during authentication.
+   *      It can contain spaces.
+   *    Examples:
+   *      proxy2.eq.edu.au:80/MISldap
+   *      proxy.det.nsw.edu.au:8080/NSW Department of Education
+   *      10.47.2.250:3128/Squid Proxy Server CPUT
+   *      default.go2https.com:443/(******Get password from vpnso.com/account/
+   *      *****)
+   *  * For HTTP basic auth:
+   *      &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/&lt;auth-realm&gt;
+   *    where
+   *      &lt;http-scheme&gt; is one of "http" or "https"
+   *      &lt;url-host&gt; is the host for which the password was stored
+   *      &lt;url-port&gt; is the option port on the host
+   *      &lt;auth-realm&gt; is a string provided by the host during authentication.
+   *      It can contain spaces.
+   *    Examples:
+   *      http://192.168.1.1/Broadband Router
+   *      http://192.168.0.1/TP-LINK Wireless N Router WR841N
+   *      http://192.168.1.1/index.htm
+   *      https://www.edge.asic.gov.au/ASIC eBusiness
    * </pre>
    *
    * <code>optional string signon_realm = 2;</code>
@@ -72,15 +170,69 @@ public interface PasswordSpecificsDataOrBuilder extends
   java.lang.String getSignonRealm();
   /**
    * <pre>
-   * For parsed web forms and normal passwords saved through Credential Manager
-   * API: url-scheme://url-host[:url-port]/
-   * For Android apps (local + federated):
-   *     "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
-   * where the hash is base64 encoded SHA512 of the app's public certificate.
-   * For federated credentials:
-   *     "federation://" + origin_host + "/" + federation_host
-   * For proxy auth: proxy-host/auth-realm
-   * For HTTP auth: url-scheme://url-host[:url-port]/auth-realm
+   * Signon realm stores information on where the saved password was stored, and
+   * where it's supposed to be filled again.
+   * It can take various formats depending on the exact circumstances where it
+   * was recorded. Note that the format is *not* guaranteed to be a valid URL or
+   * URI:
+   *  * For parsed web forms and normal passwords saved through Credential
+   *  Manager
+   *    API: &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/
+   *    where
+   *      &lt;http-scheme&gt; is one of "http" or "https"
+   *      &lt;url-host&gt; is the host for which the password was stored
+   *      &lt;url-port&gt; is the option port on the host
+   *    The signon realm is a valid URL in this case with an empty path.
+   *    Examples:
+   *      http://www.example.com/
+   *      https://127.0.0.1/
+   *      http://www.google.com:8080/
+   *      http://192.168.1.254/
+   *      https://accounts.google.com/
+   *  * For Android apps saved through Autofill with Google:
+   *      android://&lt;hash-of-cert&gt;&#64;&lt;package-name&gt;/
+   *    where
+   *      &lt;hash-of-cert&gt; is the base64 encoded SHA512 of the app's public
+   *      certificate &lt;package-name&gt; is the app's package name
+   *    Examples:
+   *      android://kCyQDzpaoAX2gs-1zdGPKNAeICb8LzRFOxa4NCq0jO8c8d_NFS_q-Y35bU3Nq3GmFV2lLurmNvIZa6YPYZwmWg==&#64;com.pinterest/
+   *      android://mNUCvTnoWBkzIhSSkVj-uzAdK42YagmCmyUtPoC6JPmYAN3wKpmTdIRsdJtz6pzNBye8XL7nBbEcx-y9CJeo9A==&#64;com.twitter.android.lite/
+   *  * For federated credentials:
+   *      federation://&lt;origin_host&gt;/&lt;federation_host&gt;
+   *    where
+   *      &lt;origin_host&gt; is the host for which the login information was stored
+   *      &lt;federation_host&gt; is the host of the federation provider that was
+   *        used to sign in
+   *    Examples:
+   *      federation://www.example.com/accounts.google.com
+   *      federation://uk.trustpilot.com/www.facebook.com
+   *  * For proxy auth:
+   *      &lt;proxy-host&gt;[:&lt;proxy_port&gt;]/&lt;auth-realm&gt;
+   *    where
+   *      &lt;proxy-host&gt; is the host of the proxy for which the password was
+   *      stored
+   *      &lt;proxy-port&gt; is the port of the proxy
+   *      &lt;auth-realm&gt; is a string provided by the proxy during authentication.
+   *      It can contain spaces.
+   *    Examples:
+   *      proxy2.eq.edu.au:80/MISldap
+   *      proxy.det.nsw.edu.au:8080/NSW Department of Education
+   *      10.47.2.250:3128/Squid Proxy Server CPUT
+   *      default.go2https.com:443/(******Get password from vpnso.com/account/
+   *      *****)
+   *  * For HTTP basic auth:
+   *      &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/&lt;auth-realm&gt;
+   *    where
+   *      &lt;http-scheme&gt; is one of "http" or "https"
+   *      &lt;url-host&gt; is the host for which the password was stored
+   *      &lt;url-port&gt; is the option port on the host
+   *      &lt;auth-realm&gt; is a string provided by the host during authentication.
+   *      It can contain spaces.
+   *    Examples:
+   *      http://192.168.1.1/Broadband Router
+   *      http://192.168.0.1/TP-LINK Wireless N Router WR841N
+   *      http://192.168.1.1/index.htm
+   *      https://www.edge.asic.gov.au/ASIC eBusiness
    * </pre>
    *
    * <code>optional string signon_realm = 2;</code>
@@ -91,7 +243,7 @@ public interface PasswordSpecificsDataOrBuilder extends
 
   /**
    * <pre>
-   * For parsed web forms and Credential Manager API:
+   * For parsed web forms and Credential Management API:
    *     url-scheme://url-host[:url-port]/path
    * For Android: "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
    * For proxy/HTTP auth: url-scheme://url-host[:url-port]/path
@@ -103,7 +255,7 @@ public interface PasswordSpecificsDataOrBuilder extends
   boolean hasOrigin();
   /**
    * <pre>
-   * For parsed web forms and Credential Manager API:
+   * For parsed web forms and Credential Management API:
    *     url-scheme://url-host[:url-port]/path
    * For Android: "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
    * For proxy/HTTP auth: url-scheme://url-host[:url-port]/path
@@ -115,7 +267,7 @@ public interface PasswordSpecificsDataOrBuilder extends
   java.lang.String getOrigin();
   /**
    * <pre>
-   * For parsed web forms and Credential Manager API:
+   * For parsed web forms and Credential Management API:
    *     url-scheme://url-host[:url-port]/path
    * For Android: "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
    * For proxy/HTTP auth: url-scheme://url-host[:url-port]/path
@@ -365,8 +517,13 @@ public interface PasswordSpecificsDataOrBuilder extends
 
   /**
    * <pre>
-   * TYPE_MANUAL(0), user manually filled the username and the password.
-   * TYPE_GENERATED(1), the credential was auto generated.
+   * kFormSubmission(0), user manually filled the username and the password
+   * in the form.
+   * kGenerated(1), the credential was auto generated.
+   * kApi(2), the credential was generated from Credential Management API.
+   * kManuallyAdded(3), user manually created the password credential
+   * via Settings.
+   * kImported(4), the credential was imported using the import flow.
    * </pre>
    *
    * <code>optional int32 type = 13;</code>
@@ -375,8 +532,13 @@ public interface PasswordSpecificsDataOrBuilder extends
   boolean hasType();
   /**
    * <pre>
-   * TYPE_MANUAL(0), user manually filled the username and the password.
-   * TYPE_GENERATED(1), the credential was auto generated.
+   * kFormSubmission(0), user manually filled the username and the password
+   * in the form.
+   * kGenerated(1), the credential was auto generated.
+   * kApi(2), the credential was generated from Credential Management API.
+   * kManuallyAdded(3), user manually created the password credential
+   * via Settings.
+   * kImported(4), the credential was imported using the import flow.
    * </pre>
    *
    * <code>optional int32 type = 13;</code>
@@ -503,7 +665,13 @@ public interface PasswordSpecificsDataOrBuilder extends
 
   /**
    * <pre>
-   * Time when the credential was last used. Amount of microseconds since 1601.
+   * Time when the credential was last used. This covers *successful* logins to
+   * the website, and explicit updates to the password. It does *not* cover if
+   * the password just gets filled but not actually submitted, or if the login
+   * failed.
+   * Note that password consumers other than Chrome (e.g. Google Play Services)
+   * might not update this at all.
+   * Amount of microseconds since 1601, aka Windows epoch.
    * </pre>
    *
    * <code>optional int64 date_last_used = 18;</code>
@@ -512,7 +680,13 @@ public interface PasswordSpecificsDataOrBuilder extends
   boolean hasDateLastUsed();
   /**
    * <pre>
-   * Time when the credential was last used. Amount of microseconds since 1601.
+   * Time when the credential was last used. This covers *successful* logins to
+   * the website, and explicit updates to the password. It does *not* cover if
+   * the password just gets filled but not actually submitted, or if the login
+   * failed.
+   * Note that password consumers other than Chrome (e.g. Google Play Services)
+   * might not update this at all.
+   * Amount of microseconds since 1601, aka Windows epoch.
    * </pre>
    *
    * <code>optional int64 date_last_used = 18;</code>
@@ -544,4 +718,54 @@ public interface PasswordSpecificsDataOrBuilder extends
    * @return The passwordIssues.
    */
   org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues getPasswordIssues();
+
+  /**
+   * <pre>
+   * Time when the |password_value| was last modified. For new credentials it
+   * should be set to |date_created|. For subsequent updates the timestamp is
+   * changed if and only if the new password value was saved.
+   * Number of microseconds since Windows epoch (1601).
+   * </pre>
+   *
+   * <code>optional int64 date_password_modified_windows_epoch_micros = 20;</code>
+   * @return Whether the datePasswordModifiedWindowsEpochMicros field is set.
+   */
+  boolean hasDatePasswordModifiedWindowsEpochMicros();
+  /**
+   * <pre>
+   * Time when the |password_value| was last modified. For new credentials it
+   * should be set to |date_created|. For subsequent updates the timestamp is
+   * changed if and only if the new password value was saved.
+   * Number of microseconds since Windows epoch (1601).
+   * </pre>
+   *
+   * <code>optional int64 date_password_modified_windows_epoch_micros = 20;</code>
+   * @return The datePasswordModifiedWindowsEpochMicros.
+   */
+  long getDatePasswordModifiedWindowsEpochMicros();
+
+  /**
+   * <pre>
+   * Set of extra notes that the user attached to the password. The presence of
+   * this field, even with an empty Notes message, becomes the authoritative
+   * value for notes and would disregard whatever `encrypted_notes_backup`
+   * contains.
+   * </pre>
+   *
+   * <code>optional .sync_pb.PasswordSpecificsData.Notes notes = 21;</code>
+   * @return Whether the notes field is set.
+   */
+  boolean hasNotes();
+  /**
+   * <pre>
+   * Set of extra notes that the user attached to the password. The presence of
+   * this field, even with an empty Notes message, becomes the authoritative
+   * value for notes and would disregard whatever `encrypted_notes_backup`
+   * contains.
+   * </pre>
+   *
+   * <code>optional .sync_pb.PasswordSpecificsData.Notes notes = 21;</code>
+   * @return The notes.
+   */
+  org.chromium.components.sync.protocol.PasswordSpecificsData.Notes getNotes();
 }

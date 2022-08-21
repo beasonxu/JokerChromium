@@ -1,15 +1,13 @@
 package org.chromium.midi;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class MidiManagerAndroidJni implements MidiManagerAndroid.Natives {
+class MidiManagerAndroidJni implements MidiManagerAndroid.Natives {
   private static MidiManagerAndroid.Natives testInstance;
 
   public static final JniStaticTestMocker<MidiManagerAndroid.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.midi.MidiManagerAndroid.Natives>() {

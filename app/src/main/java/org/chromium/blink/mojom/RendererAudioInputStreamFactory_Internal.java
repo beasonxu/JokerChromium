@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class RendererAudioInputStreamFactory_Internal {
 
@@ -62,7 +64,7 @@ class RendererAudioInputStreamFactory_Internal {
 
         @Override
         public void createStream(
-RendererAudioInputStreamFactoryClient client, org.chromium.mojo_base.mojom.UnguessableToken sessionId, org.chromium.media.mojom.AudioParameters params, boolean automaticGainControl, int sharedMemoryCount) {
+RendererAudioInputStreamFactoryClient client, org.chromium.mojo_base.mojom.UnguessableToken sessionId, org.chromium.media.mojom.AudioParameters params, boolean automaticGainControl, int sharedMemoryCount, org.chromium.media.mojom.AudioProcessingConfig processingConfig) {
 
             RendererAudioInputStreamFactoryCreateStreamParams _message = new RendererAudioInputStreamFactoryCreateStreamParams();
 
@@ -75,6 +77,8 @@ RendererAudioInputStreamFactoryClient client, org.chromium.mojo_base.mojom.Ungue
             _message.automaticGainControl = automaticGainControl;
 
             _message.sharedMemoryCount = sharedMemoryCount;
+
+            _message.processingConfig = processingConfig;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -140,7 +144,7 @@ org.chromium.mojo_base.mojom.UnguessableToken inputStreamId, String outputDevice
                         RendererAudioInputStreamFactoryCreateStreamParams data =
                                 RendererAudioInputStreamFactoryCreateStreamParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().createStream(data.client, data.sessionId, data.params, data.automaticGainControl, data.sharedMemoryCount);
+                        getImpl().createStream(data.client, data.sessionId, data.params, data.automaticGainControl, data.sharedMemoryCount, data.processingConfig);
                         return true;
                     }
 
@@ -205,14 +209,15 @@ org.chromium.mojo_base.mojom.UnguessableToken inputStreamId, String outputDevice
     
     static final class RendererAudioInputStreamFactoryCreateStreamParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 40;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
+        private static final int STRUCT_SIZE = 48;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public RendererAudioInputStreamFactoryClient client;
         public org.chromium.mojo_base.mojom.UnguessableToken sessionId;
         public org.chromium.media.mojom.AudioParameters params;
         public boolean automaticGainControl;
         public int sharedMemoryCount;
+        public org.chromium.media.mojom.AudioProcessingConfig processingConfig;
 
         private RendererAudioInputStreamFactoryCreateStreamParams(int version) {
             super(STRUCT_SIZE, version);
@@ -269,6 +274,11 @@ org.chromium.mojo_base.mojom.UnguessableToken inputStreamId, String outputDevice
                         
                     result.sharedMemoryCount = decoder0.readInt(36);
                     }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, true);
+                    result.processingConfig = org.chromium.media.mojom.AudioProcessingConfig.decode(decoder1);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -290,6 +300,8 @@ org.chromium.mojo_base.mojom.UnguessableToken inputStreamId, String outputDevice
             encoder0.encode(this.automaticGainControl, 32, 0);
             
             encoder0.encode(this.sharedMemoryCount, 36);
+            
+            encoder0.encode(this.processingConfig, 40, true);
         }
     }
 

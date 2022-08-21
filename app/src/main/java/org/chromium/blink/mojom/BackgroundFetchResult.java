@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class BackgroundFetchResult {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        BackgroundFetchResult.UNSET,
+        BackgroundFetchResult.FAILURE,
+        BackgroundFetchResult.SUCCESS})
+    public @interface EnumType {}
 
     public static final int UNSET = 0;
     public static final int FAILURE = 1;

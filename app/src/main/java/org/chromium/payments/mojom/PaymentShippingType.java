@@ -13,8 +13,16 @@
 
 package org.chromium.payments.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PaymentShippingType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PaymentShippingType.SHIPPING,
+        PaymentShippingType.DELIVERY,
+        PaymentShippingType.PICKUP})
+    public @interface EnumType {}
 
     public static final int SHIPPING = 0;
     public static final int DELIVERY = 1;

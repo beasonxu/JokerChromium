@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class NetworkContextClient_Internal {
 
@@ -53,11 +55,13 @@ class NetworkContextClient_Internal {
 
     private static final int ON_CAN_SEND_DOMAIN_RELIABILITY_UPLOAD_ORDINAL = 2;
 
-    private static final int ON_CLEAR_SITE_DATA_ORDINAL = 3;
+    private static final int ON_GENERATE_HTTP_NEGOTIATE_AUTH_TOKEN_ORDINAL = 3;
 
-    private static final int ON_GENERATE_HTTP_NEGOTIATE_AUTH_TOKEN_ORDINAL = 4;
+    private static final int ON_TRUST_TOKEN_ISSUANCE_DIVERTED_TO_SYSTEM_ORDINAL = 4;
 
-    private static final int ON_TRUST_TOKEN_ISSUANCE_DIVERTED_TO_SYSTEM_ORDINAL = 5;
+    private static final int ON_CAN_SEND_SCT_AUDITING_REPORT_ORDINAL = 5;
+
+    private static final int ON_NEW_SCT_AUDITING_REPORT_SENT_ORDINAL = 6;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements NetworkContextClient.Proxy {
@@ -70,8 +74,8 @@ class NetworkContextClient_Internal {
 
         @Override
         public void onFileUploadRequested(
-int processId, boolean async, org.chromium.mojo_base.mojom.FilePath[] filePaths, 
-OnFileUploadRequestedResponse callback) {
+int processId, boolean async, org.chromium.mojo_base.mojom.FilePath[] filePaths, org.chromium.url.mojom.Url destinationUrl, 
+OnFileUploadRequested_Response callback) {
 
             NetworkContextClientOnFileUploadRequestedParams _message = new NetworkContextClientOnFileUploadRequestedParams();
 
@@ -80,6 +84,8 @@ OnFileUploadRequestedResponse callback) {
             _message.async = async;
 
             _message.filePaths = filePaths;
+
+            _message.destinationUrl = destinationUrl;
 
 
             getProxyHandler().getMessageReceiver().acceptWithResponder(
@@ -97,7 +103,7 @@ OnFileUploadRequestedResponse callback) {
         @Override
         public void onCanSendReportingReports(
 org.chromium.url.internal.mojom.Origin[] origins, 
-OnCanSendReportingReportsResponse callback) {
+OnCanSendReportingReports_Response callback) {
 
             NetworkContextClientOnCanSendReportingReportsParams _message = new NetworkContextClientOnCanSendReportingReportsParams();
 
@@ -118,8 +124,8 @@ OnCanSendReportingReportsResponse callback) {
 
         @Override
         public void onCanSendDomainReliabilityUpload(
-org.chromium.url.mojom.Url origin, 
-OnCanSendDomainReliabilityUploadResponse callback) {
+org.chromium.url.internal.mojom.Origin origin, 
+OnCanSendDomainReliabilityUpload_Response callback) {
 
             NetworkContextClientOnCanSendDomainReliabilityUploadParams _message = new NetworkContextClientOnCanSendDomainReliabilityUploadParams();
 
@@ -139,39 +145,9 @@ OnCanSendDomainReliabilityUploadResponse callback) {
 
 
         @Override
-        public void onClearSiteData(
-int processId, int routingId, org.chromium.url.mojom.Url url, String headerValue, int loadFlags, 
-OnClearSiteDataResponse callback) {
-
-            NetworkContextClientOnClearSiteDataParams _message = new NetworkContextClientOnClearSiteDataParams();
-
-            _message.processId = processId;
-
-            _message.routingId = routingId;
-
-            _message.url = url;
-
-            _message.headerValue = headerValue;
-
-            _message.loadFlags = loadFlags;
-
-
-            getProxyHandler().getMessageReceiver().acceptWithResponder(
-                    _message.serializeWithHeader(
-                            getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(
-                                    ON_CLEAR_SITE_DATA_ORDINAL,
-                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
-                                    0)),
-                    new NetworkContextClientOnClearSiteDataResponseParamsForwardToCallback(callback));
-
-        }
-
-
-        @Override
         public void onGenerateHttpNegotiateAuthToken(
 String serverAuthToken, boolean canDelegate, String authNegotiateAndroidAccountType, String spn, 
-OnGenerateHttpNegotiateAuthTokenResponse callback) {
+OnGenerateHttpNegotiateAuthToken_Response callback) {
 
             NetworkContextClientOnGenerateHttpNegotiateAuthTokenParams _message = new NetworkContextClientOnGenerateHttpNegotiateAuthTokenParams();
 
@@ -199,7 +175,7 @@ OnGenerateHttpNegotiateAuthTokenResponse callback) {
         @Override
         public void onTrustTokenIssuanceDivertedToSystem(
 FulfillTrustTokenIssuanceRequest request, 
-OnTrustTokenIssuanceDivertedToSystemResponse callback) {
+OnTrustTokenIssuanceDivertedToSystem_Response callback) {
 
             NetworkContextClientOnTrustTokenIssuanceDivertedToSystemParams _message = new NetworkContextClientOnTrustTokenIssuanceDivertedToSystemParams();
 
@@ -214,6 +190,41 @@ OnTrustTokenIssuanceDivertedToSystemResponse callback) {
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
                                     0)),
                     new NetworkContextClientOnTrustTokenIssuanceDivertedToSystemResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void onCanSendSctAuditingReport(
+
+OnCanSendSctAuditingReport_Response callback) {
+
+            NetworkContextClientOnCanSendSctAuditingReportParams _message = new NetworkContextClientOnCanSendSctAuditingReportParams();
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    ON_CAN_SEND_SCT_AUDITING_REPORT_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new NetworkContextClientOnCanSendSctAuditingReportResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void onNewSctAuditingReportSent(
+) {
+
+            NetworkContextClientOnNewSctAuditingReportSentParams _message = new NetworkContextClientOnNewSctAuditingReportSentParams();
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(ON_NEW_SCT_AUDITING_REPORT_SENT_ORDINAL)));
 
         }
 
@@ -258,6 +269,18 @@ OnTrustTokenIssuanceDivertedToSystemResponse callback) {
 
 
 
+
+
+
+                    case ON_NEW_SCT_AUDITING_REPORT_SENT_ORDINAL: {
+
+                        NetworkContextClientOnNewSctAuditingReportSentParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().onNewSctAuditingReportSent();
+                        return true;
+                    }
+
+
                     default:
                         return false;
                 }
@@ -297,7 +320,7 @@ OnTrustTokenIssuanceDivertedToSystemResponse callback) {
                         NetworkContextClientOnFileUploadRequestedParams data =
                                 NetworkContextClientOnFileUploadRequestedParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().onFileUploadRequested(data.processId, data.async, data.filePaths, new NetworkContextClientOnFileUploadRequestedResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().onFileUploadRequested(data.processId, data.async, data.filePaths, data.destinationUrl, new NetworkContextClientOnFileUploadRequestedResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -337,21 +360,6 @@ OnTrustTokenIssuanceDivertedToSystemResponse callback) {
 
 
 
-                    case ON_CLEAR_SITE_DATA_ORDINAL: {
-
-                        NetworkContextClientOnClearSiteDataParams data =
-                                NetworkContextClientOnClearSiteDataParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().onClearSiteData(data.processId, data.routingId, data.url, data.headerValue, data.loadFlags, new NetworkContextClientOnClearSiteDataResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
-                        return true;
-                    }
-
-
-
-
-
-
-
                     case ON_GENERATE_HTTP_NEGOTIATE_AUTH_TOKEN_ORDINAL: {
 
                         NetworkContextClientOnGenerateHttpNegotiateAuthTokenParams data =
@@ -377,6 +385,22 @@ OnTrustTokenIssuanceDivertedToSystemResponse callback) {
                     }
 
 
+
+
+
+
+
+                    case ON_CAN_SEND_SCT_AUDITING_REPORT_ORDINAL: {
+
+                        NetworkContextClientOnCanSendSctAuditingReportParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().onCanSendSctAuditingReport(new NetworkContextClientOnCanSendSctAuditingReportResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
                     default:
                         return false;
                 }
@@ -391,12 +415,13 @@ OnTrustTokenIssuanceDivertedToSystemResponse callback) {
     
     static final class NetworkContextClientOnFileUploadRequestedParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public int processId;
         public boolean async;
         public org.chromium.mojo_base.mojom.FilePath[] filePaths;
+        public org.chromium.url.mojom.Url destinationUrl;
 
         private NetworkContextClientOnFileUploadRequestedParams(int version) {
             super(STRUCT_SIZE, version);
@@ -452,6 +477,11 @@ OnTrustTokenIssuanceDivertedToSystemResponse callback) {
                         }
                     }
                     }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
+                    result.destinationUrl = org.chromium.url.mojom.Url.decode(decoder1);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -477,6 +507,8 @@ OnTrustTokenIssuanceDivertedToSystemResponse callback) {
                     encoder1.encode(this.filePaths[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
                 }
             }
+            
+            encoder0.encode(this.destinationUrl, 24, false);
         }
     }
 
@@ -569,9 +601,9 @@ OnTrustTokenIssuanceDivertedToSystemResponse callback) {
 
     static class NetworkContextClientOnFileUploadRequestedResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContextClient.OnFileUploadRequestedResponse mCallback;
+        private final NetworkContextClient.OnFileUploadRequested_Response mCallback;
 
-        NetworkContextClientOnFileUploadRequestedResponseParamsForwardToCallback(NetworkContextClient.OnFileUploadRequestedResponse callback) {
+        NetworkContextClientOnFileUploadRequestedResponseParamsForwardToCallback(NetworkContextClient.OnFileUploadRequested_Response callback) {
             this.mCallback = callback;
         }
 
@@ -596,7 +628,7 @@ OnTrustTokenIssuanceDivertedToSystemResponse callback) {
         }
     }
 
-    static class NetworkContextClientOnFileUploadRequestedResponseParamsProxyToResponder implements NetworkContextClient.OnFileUploadRequestedResponse {
+    static class NetworkContextClientOnFileUploadRequestedResponseParamsProxyToResponder implements NetworkContextClient.OnFileUploadRequested_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -792,9 +824,9 @@ OnTrustTokenIssuanceDivertedToSystemResponse callback) {
 
     static class NetworkContextClientOnCanSendReportingReportsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContextClient.OnCanSendReportingReportsResponse mCallback;
+        private final NetworkContextClient.OnCanSendReportingReports_Response mCallback;
 
-        NetworkContextClientOnCanSendReportingReportsResponseParamsForwardToCallback(NetworkContextClient.OnCanSendReportingReportsResponse callback) {
+        NetworkContextClientOnCanSendReportingReportsResponseParamsForwardToCallback(NetworkContextClient.OnCanSendReportingReports_Response callback) {
             this.mCallback = callback;
         }
 
@@ -819,7 +851,7 @@ OnTrustTokenIssuanceDivertedToSystemResponse callback) {
         }
     }
 
-    static class NetworkContextClientOnCanSendReportingReportsResponseParamsProxyToResponder implements NetworkContextClient.OnCanSendReportingReportsResponse {
+    static class NetworkContextClientOnCanSendReportingReportsResponseParamsProxyToResponder implements NetworkContextClient.OnCanSendReportingReports_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -859,7 +891,7 @@ OnTrustTokenIssuanceDivertedToSystemResponse callback) {
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public org.chromium.url.mojom.Url origin;
+        public org.chromium.url.internal.mojom.Origin origin;
 
         private NetworkContextClientOnCanSendDomainReliabilityUploadParams(int version) {
             super(STRUCT_SIZE, version);
@@ -897,7 +929,7 @@ OnTrustTokenIssuanceDivertedToSystemResponse callback) {
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    result.origin = org.chromium.url.mojom.Url.decode(decoder1);
+                    result.origin = org.chromium.url.internal.mojom.Origin.decode(decoder1);
                     }
 
             } finally {
@@ -980,9 +1012,9 @@ OnTrustTokenIssuanceDivertedToSystemResponse callback) {
 
     static class NetworkContextClientOnCanSendDomainReliabilityUploadResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContextClient.OnCanSendDomainReliabilityUploadResponse mCallback;
+        private final NetworkContextClient.OnCanSendDomainReliabilityUpload_Response mCallback;
 
-        NetworkContextClientOnCanSendDomainReliabilityUploadResponseParamsForwardToCallback(NetworkContextClient.OnCanSendDomainReliabilityUploadResponse callback) {
+        NetworkContextClientOnCanSendDomainReliabilityUploadResponseParamsForwardToCallback(NetworkContextClient.OnCanSendDomainReliabilityUpload_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1007,7 +1039,7 @@ OnTrustTokenIssuanceDivertedToSystemResponse callback) {
         }
     }
 
-    static class NetworkContextClientOnCanSendDomainReliabilityUploadResponseParamsProxyToResponder implements NetworkContextClient.OnCanSendDomainReliabilityUploadResponse {
+    static class NetworkContextClientOnCanSendDomainReliabilityUploadResponseParamsProxyToResponder implements NetworkContextClient.OnCanSendDomainReliabilityUpload_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1033,211 +1065,6 @@ OnTrustTokenIssuanceDivertedToSystemResponse callback) {
                             mCore,
                             new org.chromium.mojo.bindings.MessageHeader(
                                     ON_CAN_SEND_DOMAIN_RELIABILITY_UPLOAD_ORDINAL,
-                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
-                                    mRequestId));
-            mMessageReceiver.accept(_message);
-        }
-    }
-
-
-
-    
-    static final class NetworkContextClientOnClearSiteDataParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 40;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public int processId;
-        public int routingId;
-        public org.chromium.url.mojom.Url url;
-        public String headerValue;
-        public int loadFlags;
-
-        private NetworkContextClientOnClearSiteDataParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public NetworkContextClientOnClearSiteDataParams() {
-            this(0);
-        }
-
-        public static NetworkContextClientOnClearSiteDataParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static NetworkContextClientOnClearSiteDataParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static NetworkContextClientOnClearSiteDataParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            NetworkContextClientOnClearSiteDataParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new NetworkContextClientOnClearSiteDataParams(elementsOrVersion);
-                    {
-                        
-                    result.processId = decoder0.readInt(8);
-                    }
-                    {
-                        
-                    result.routingId = decoder0.readInt(12);
-                    }
-                    {
-                        
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
-                    result.url = org.chromium.url.mojom.Url.decode(decoder1);
-                    }
-                    {
-                        
-                    result.headerValue = decoder0.readString(24, false);
-                    }
-                    {
-                        
-                    result.loadFlags = decoder0.readInt(32);
-                    }
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-            
-            encoder0.encode(this.processId, 8);
-            
-            encoder0.encode(this.routingId, 12);
-            
-            encoder0.encode(this.url, 16, false);
-            
-            encoder0.encode(this.headerValue, 24, false);
-            
-            encoder0.encode(this.loadFlags, 32);
-        }
-    }
-
-
-
-    
-    static final class NetworkContextClientOnClearSiteDataResponseParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 8;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-
-        private NetworkContextClientOnClearSiteDataResponseParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public NetworkContextClientOnClearSiteDataResponseParams() {
-            this(0);
-        }
-
-        public static NetworkContextClientOnClearSiteDataResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static NetworkContextClientOnClearSiteDataResponseParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static NetworkContextClientOnClearSiteDataResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            NetworkContextClientOnClearSiteDataResponseParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new NetworkContextClientOnClearSiteDataResponseParams(elementsOrVersion);
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-        }
-    }
-
-    static class NetworkContextClientOnClearSiteDataResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
-            implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContextClient.OnClearSiteDataResponse mCallback;
-
-        NetworkContextClientOnClearSiteDataResponseParamsForwardToCallback(NetworkContextClient.OnClearSiteDataResponse callback) {
-            this.mCallback = callback;
-        }
-
-        @Override
-        public boolean accept(org.chromium.mojo.bindings.Message message) {
-            try {
-                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
-                        message.asServiceMessage();
-                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
-                if (!header.validateHeader(ON_CLEAR_SITE_DATA_ORDINAL,
-                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
-                    return false;
-                }
-
-                mCallback.call();
-                return true;
-            } catch (org.chromium.mojo.bindings.DeserializationException e) {
-                return false;
-            }
-        }
-    }
-
-    static class NetworkContextClientOnClearSiteDataResponseParamsProxyToResponder implements NetworkContextClient.OnClearSiteDataResponse {
-
-        private final org.chromium.mojo.system.Core mCore;
-        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
-        private final long mRequestId;
-
-        NetworkContextClientOnClearSiteDataResponseParamsProxyToResponder(
-                org.chromium.mojo.system.Core core,
-                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
-                long requestId) {
-            mCore = core;
-            mMessageReceiver = messageReceiver;
-            mRequestId = requestId;
-        }
-
-        @Override
-        public void call() {
-            NetworkContextClientOnClearSiteDataResponseParams _response = new NetworkContextClientOnClearSiteDataResponseParams();
-
-            org.chromium.mojo.bindings.ServiceMessage _message =
-                    _response.serializeWithHeader(
-                            mCore,
-                            new org.chromium.mojo.bindings.MessageHeader(
-                                    ON_CLEAR_SITE_DATA_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);
@@ -1400,9 +1227,9 @@ OnTrustTokenIssuanceDivertedToSystemResponse callback) {
 
     static class NetworkContextClientOnGenerateHttpNegotiateAuthTokenResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContextClient.OnGenerateHttpNegotiateAuthTokenResponse mCallback;
+        private final NetworkContextClient.OnGenerateHttpNegotiateAuthToken_Response mCallback;
 
-        NetworkContextClientOnGenerateHttpNegotiateAuthTokenResponseParamsForwardToCallback(NetworkContextClient.OnGenerateHttpNegotiateAuthTokenResponse callback) {
+        NetworkContextClientOnGenerateHttpNegotiateAuthTokenResponseParamsForwardToCallback(NetworkContextClient.OnGenerateHttpNegotiateAuthToken_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1427,7 +1254,7 @@ OnTrustTokenIssuanceDivertedToSystemResponse callback) {
         }
     }
 
-    static class NetworkContextClientOnGenerateHttpNegotiateAuthTokenResponseParamsProxyToResponder implements NetworkContextClient.OnGenerateHttpNegotiateAuthTokenResponse {
+    static class NetworkContextClientOnGenerateHttpNegotiateAuthTokenResponseParamsProxyToResponder implements NetworkContextClient.OnGenerateHttpNegotiateAuthToken_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1591,9 +1418,9 @@ OnTrustTokenIssuanceDivertedToSystemResponse callback) {
 
     static class NetworkContextClientOnTrustTokenIssuanceDivertedToSystemResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkContextClient.OnTrustTokenIssuanceDivertedToSystemResponse mCallback;
+        private final NetworkContextClient.OnTrustTokenIssuanceDivertedToSystem_Response mCallback;
 
-        NetworkContextClientOnTrustTokenIssuanceDivertedToSystemResponseParamsForwardToCallback(NetworkContextClient.OnTrustTokenIssuanceDivertedToSystemResponse callback) {
+        NetworkContextClientOnTrustTokenIssuanceDivertedToSystemResponseParamsForwardToCallback(NetworkContextClient.OnTrustTokenIssuanceDivertedToSystem_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1618,7 +1445,7 @@ OnTrustTokenIssuanceDivertedToSystemResponse callback) {
         }
     }
 
-    static class NetworkContextClientOnTrustTokenIssuanceDivertedToSystemResponseParamsProxyToResponder implements NetworkContextClient.OnTrustTokenIssuanceDivertedToSystemResponse {
+    static class NetworkContextClientOnTrustTokenIssuanceDivertedToSystemResponseParamsProxyToResponder implements NetworkContextClient.OnTrustTokenIssuanceDivertedToSystem_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1647,6 +1474,242 @@ OnTrustTokenIssuanceDivertedToSystemResponse callback) {
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class NetworkContextClientOnCanSendSctAuditingReportParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private NetworkContextClientOnCanSendSctAuditingReportParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NetworkContextClientOnCanSendSctAuditingReportParams() {
+            this(0);
+        }
+
+        public static NetworkContextClientOnCanSendSctAuditingReportParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NetworkContextClientOnCanSendSctAuditingReportParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NetworkContextClientOnCanSendSctAuditingReportParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NetworkContextClientOnCanSendSctAuditingReportParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NetworkContextClientOnCanSendSctAuditingReportParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+
+
+    
+    static final class NetworkContextClientOnCanSendSctAuditingReportResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public boolean allowed;
+
+        private NetworkContextClientOnCanSendSctAuditingReportResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NetworkContextClientOnCanSendSctAuditingReportResponseParams() {
+            this(0);
+        }
+
+        public static NetworkContextClientOnCanSendSctAuditingReportResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NetworkContextClientOnCanSendSctAuditingReportResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NetworkContextClientOnCanSendSctAuditingReportResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NetworkContextClientOnCanSendSctAuditingReportResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NetworkContextClientOnCanSendSctAuditingReportResponseParams(elementsOrVersion);
+                    {
+                        
+                    result.allowed = decoder0.readBoolean(8, 0);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.allowed, 8, 0);
+        }
+    }
+
+    static class NetworkContextClientOnCanSendSctAuditingReportResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final NetworkContextClient.OnCanSendSctAuditingReport_Response mCallback;
+
+        NetworkContextClientOnCanSendSctAuditingReportResponseParamsForwardToCallback(NetworkContextClient.OnCanSendSctAuditingReport_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(ON_CAN_SEND_SCT_AUDITING_REPORT_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                NetworkContextClientOnCanSendSctAuditingReportResponseParams response = NetworkContextClientOnCanSendSctAuditingReportResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.allowed);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class NetworkContextClientOnCanSendSctAuditingReportResponseParamsProxyToResponder implements NetworkContextClient.OnCanSendSctAuditingReport_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        NetworkContextClientOnCanSendSctAuditingReportResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(Boolean allowed) {
+            NetworkContextClientOnCanSendSctAuditingReportResponseParams _response = new NetworkContextClientOnCanSendSctAuditingReportResponseParams();
+
+            _response.allowed = allowed;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    ON_CAN_SEND_SCT_AUDITING_REPORT_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class NetworkContextClientOnNewSctAuditingReportSentParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private NetworkContextClientOnNewSctAuditingReportSentParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NetworkContextClientOnNewSctAuditingReportSentParams() {
+            this(0);
+        }
+
+        public static NetworkContextClientOnNewSctAuditingReportSentParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NetworkContextClientOnNewSctAuditingReportSentParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NetworkContextClientOnNewSctAuditingReportSentParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NetworkContextClientOnNewSctAuditingReportSentParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NetworkContextClientOnNewSctAuditingReportSentParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         }
     }
 

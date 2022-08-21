@@ -3,16 +3,14 @@ package org.chromium.chrome.browser.usage_stats;
 import android.graphics.Bitmap;
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.chrome.browser.profiles.Profile;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class NotificationSuspenderJni implements NotificationSuspender.Natives {
+class NotificationSuspenderJni implements NotificationSuspender.Natives {
   private static NotificationSuspender.Natives testInstance;
 
   public static final JniStaticTestMocker<NotificationSuspender.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.usage_stats.NotificationSuspender.Natives>() {

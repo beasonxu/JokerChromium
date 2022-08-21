@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface NetworkServiceTest extends org.chromium.mojo.bindings.Interface {
 
@@ -20,6 +22,11 @@ public interface NetworkServiceTest extends org.chromium.mojo.bindings.Interface
 
     public static final class RequireCt {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            RequireCt.DEFAULT,
+            RequireCt.REQUIRE})
+        public @interface EnumType {}
 
         public static final int DEFAULT = 0;
         public static final int REQUIRE = 1;
@@ -48,136 +55,153 @@ public interface NetworkServiceTest extends org.chromium.mojo.bindings.Interface
 
     Manager<NetworkServiceTest, NetworkServiceTest.Proxy> MANAGER = NetworkServiceTest_Internal.MANAGER;
 
-
     void addRules(
 Rule[] rules, 
-AddRulesResponse callback);
+AddRules_Response callback);
 
-    interface AddRulesResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface AddRules_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void simulateNetworkChange(
 int type, 
-SimulateNetworkChangeResponse callback);
+SimulateNetworkChange_Response callback);
 
-    interface SimulateNetworkChangeResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface SimulateNetworkChange_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void simulateNetworkQualityChange(
 int type, 
-SimulateNetworkQualityChangeResponse callback);
+SimulateNetworkQualityChange_Response callback);
 
-    interface SimulateNetworkQualityChangeResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
+    interface SimulateNetworkQualityChange_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
+
+    void forceNetworkQualityEstimatorReportWifiAsSlow2G(
+
+ForceNetworkQualityEstimatorReportWifiAsSlow2G_Response callback);
+
+    interface ForceNetworkQualityEstimatorReportWifiAsSlow2G_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void simulateCrash(
 );
 
 
-
     void mockCertVerifierSetDefaultResult(
 int defaultResult, 
-MockCertVerifierSetDefaultResultResponse callback);
+MockCertVerifierSetDefaultResult_Response callback);
 
-    interface MockCertVerifierSetDefaultResultResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface MockCertVerifierSetDefaultResult_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void mockCertVerifierAddResultForCertAndHost(
 X509Certificate cert, String hostPattern, CertVerifyResult verifyResult, int rv, 
-MockCertVerifierAddResultForCertAndHostResponse callback);
+MockCertVerifierAddResultForCertAndHost_Response callback);
 
-    interface MockCertVerifierAddResultForCertAndHostResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface MockCertVerifierAddResultForCertAndHost_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void setRequireCt(
 int required, 
-SetRequireCtResponse callback);
+SetRequireCt_Response callback);
 
-    interface SetRequireCtResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface SetRequireCt_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void setTransportSecurityStateSource(
 short reportingPort, 
-SetTransportSecurityStateSourceResponse callback);
+SetTransportSecurityStateSource_Response callback);
 
-    interface SetTransportSecurityStateSourceResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface SetTransportSecurityStateSource_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void setAllowNetworkAccessToHostResolutions(
 
-SetAllowNetworkAccessToHostResolutionsResponse callback);
+SetAllowNetworkAccessToHostResolutions_Response callback);
 
-    interface SetAllowNetworkAccessToHostResolutionsResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
+    interface SetAllowNetworkAccessToHostResolutions_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
+
+    void replaceSystemDnsConfig(
+
+ReplaceSystemDnsConfig_Response callback);
+
+    interface ReplaceSystemDnsConfig_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
+
+
+    void setTestDohConfig(
+int secureDnsMode, DnsOverHttpsConfig dohConfig, 
+SetTestDohConfig_Response callback);
+
+    interface SetTestDohConfig_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void crashOnResolveHost(
 String host);
 
 
-
     void crashOnGetCookieList(
 );
 
 
-
     void getLatestMemoryPressureLevel(
 
-GetLatestMemoryPressureLevelResponse callback);
+GetLatestMemoryPressureLevel_Response callback);
 
-    interface GetLatestMemoryPressureLevelResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface GetLatestMemoryPressureLevel_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void getPeerToPeerConnectionsCountChange(
 
-GetPeerToPeerConnectionsCountChangeResponse callback);
+GetPeerToPeerConnectionsCountChange_Response callback);
 
-    interface GetPeerToPeerConnectionsCountChangeResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface GetPeerToPeerConnectionsCountChange_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void getEnvironmentVariableValue(
 String name, 
-GetEnvironmentVariableValueResponse callback);
+GetEnvironmentVariableValue_Response callback);
 
-    interface GetEnvironmentVariableValueResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<String> { }
-
+    interface GetEnvironmentVariableValue_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<String> { }
 
 
     void log(
 String message, 
-LogResponse callback);
+Log_Response callback);
 
-    interface LogResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface Log_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void activateFieldTrial(
 String fieldTrialName);
 
 
+    void setSctAuditingRetryDelay(
+org.chromium.mojo_base.mojom.TimeDelta delay, 
+SetSctAuditingRetryDelay_Response callback);
 
-    void setEvPolicy(
-byte[] fingerprintSha256, String policyOid, 
-SetEvPolicyResponse callback);
-
-    interface SetEvPolicyResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface SetSctAuditingRetryDelay_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
-    void getFirstPartySetEntriesCount(
+    void openFile(
+org.chromium.mojo_base.mojom.FilePath path, 
+OpenFile_Response callback);
 
-GetFirstPartySetEntriesCountResponse callback);
+    interface OpenFile_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
-    interface GetFirstPartySetEntriesCountResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Long> { }
+
+    void enumerateFiles(
+org.chromium.mojo_base.mojom.FilePath path, HttpCacheBackendFileOperationsFactory factory, 
+EnumerateFiles_Response callback);
+
+    interface EnumerateFiles_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<FileEnumerationEntry[], Boolean> { }
+
+
+    void createSimpleCache(
+HttpCacheBackendFileOperationsFactory factory, org.chromium.mojo_base.mojom.FilePath path, boolean reset, 
+CreateSimpleCache_Response callback);
+
+    interface CreateSimpleCache_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<SimpleCache> { }
 
 
 }

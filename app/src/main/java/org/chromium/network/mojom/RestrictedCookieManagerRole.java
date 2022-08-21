@@ -13,8 +13,15 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class RestrictedCookieManagerRole {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        RestrictedCookieManagerRole.SCRIPT,
+        RestrictedCookieManagerRole.NETWORK})
+    public @interface EnumType {}
 
     public static final int SCRIPT = 0;
     public static final int NETWORK = 1;

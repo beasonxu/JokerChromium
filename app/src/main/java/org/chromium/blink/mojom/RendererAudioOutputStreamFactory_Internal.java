@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class RendererAudioOutputStreamFactory_Internal {
 
@@ -61,7 +63,7 @@ class RendererAudioOutputStreamFactory_Internal {
         @Override
         public void requestDeviceAuthorization(
 org.chromium.mojo.bindings.InterfaceRequest<org.chromium.media.mojom.AudioOutputStreamProvider> streamProviderReceiver, org.chromium.mojo_base.mojom.UnguessableToken sessionId, String deviceId, 
-RequestDeviceAuthorizationResponse callback) {
+RequestDeviceAuthorization_Response callback) {
 
             RendererAudioOutputStreamFactoryRequestDeviceAuthorizationParams _message = new RendererAudioOutputStreamFactoryRequestDeviceAuthorizationParams();
 
@@ -327,9 +329,9 @@ RequestDeviceAuthorizationResponse callback) {
 
     static class RendererAudioOutputStreamFactoryRequestDeviceAuthorizationResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final RendererAudioOutputStreamFactory.RequestDeviceAuthorizationResponse mCallback;
+        private final RendererAudioOutputStreamFactory.RequestDeviceAuthorization_Response mCallback;
 
-        RendererAudioOutputStreamFactoryRequestDeviceAuthorizationResponseParamsForwardToCallback(RendererAudioOutputStreamFactory.RequestDeviceAuthorizationResponse callback) {
+        RendererAudioOutputStreamFactoryRequestDeviceAuthorizationResponseParamsForwardToCallback(RendererAudioOutputStreamFactory.RequestDeviceAuthorization_Response callback) {
             this.mCallback = callback;
         }
 
@@ -354,7 +356,7 @@ RequestDeviceAuthorizationResponse callback) {
         }
     }
 
-    static class RendererAudioOutputStreamFactoryRequestDeviceAuthorizationResponseParamsProxyToResponder implements RendererAudioOutputStreamFactory.RequestDeviceAuthorizationResponse {
+    static class RendererAudioOutputStreamFactoryRequestDeviceAuthorizationResponseParamsProxyToResponder implements RendererAudioOutputStreamFactory.RequestDeviceAuthorization_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

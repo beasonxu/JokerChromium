@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class FullscreenOptions extends org.chromium.mojo.bindings.Struct {
 
@@ -20,6 +22,7 @@ public final class FullscreenOptions extends org.chromium.mojo.bindings.Struct {
     private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public boolean prefersNavigationBar;
+    public boolean prefersStatusBar;
     public long displayId;
     public boolean isPrefixed;
     public boolean isXrOverlay;
@@ -27,6 +30,7 @@ public final class FullscreenOptions extends org.chromium.mojo.bindings.Struct {
     private FullscreenOptions(int version) {
         super(STRUCT_SIZE, version);
         this.prefersNavigationBar = (boolean) false;
+        this.prefersStatusBar = (boolean) false;
         this.displayId = (long) -1;
         this.isPrefixed = (boolean) false;
         this.isXrOverlay = (boolean) false;
@@ -67,11 +71,15 @@ public final class FullscreenOptions extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.isPrefixed = decoder0.readBoolean(8, 1);
+                result.prefersStatusBar = decoder0.readBoolean(8, 1);
                 }
                 {
                     
-                result.isXrOverlay = decoder0.readBoolean(8, 2);
+                result.isPrefixed = decoder0.readBoolean(8, 2);
+                }
+                {
+                    
+                result.isXrOverlay = decoder0.readBoolean(8, 3);
                 }
                 {
                     
@@ -91,9 +99,11 @@ public final class FullscreenOptions extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.prefersNavigationBar, 8, 0);
         
-        encoder0.encode(this.isPrefixed, 8, 1);
+        encoder0.encode(this.prefersStatusBar, 8, 1);
         
-        encoder0.encode(this.isXrOverlay, 8, 2);
+        encoder0.encode(this.isPrefixed, 8, 2);
+        
+        encoder0.encode(this.isXrOverlay, 8, 3);
         
         encoder0.encode(this.displayId, 16);
     }

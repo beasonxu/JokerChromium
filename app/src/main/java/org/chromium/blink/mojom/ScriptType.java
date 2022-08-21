@@ -13,8 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ScriptType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ScriptType.CLASSIC,
+        ScriptType.MODULE})
+    public @interface EnumType {}
 
     public static final int CLASSIC = 0;
     public static final int MODULE = 1;

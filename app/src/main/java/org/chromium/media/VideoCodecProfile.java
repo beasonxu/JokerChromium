@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -38,7 +38,13 @@ import java.lang.annotation.RetentionPolicy;
     VideoCodecProfile.AV1PROFILE_MIN, VideoCodecProfile.AV1PROFILE_PROFILE_MAIN,
     VideoCodecProfile.AV1PROFILE_PROFILE_HIGH, VideoCodecProfile.AV1PROFILE_PROFILE_PRO,
     VideoCodecProfile.AV1PROFILE_MAX, VideoCodecProfile.DOLBYVISION_PROFILE8,
-    VideoCodecProfile.DOLBYVISION_PROFILE9, VideoCodecProfile.VIDEO_CODEC_PROFILE_MAX
+    VideoCodecProfile.DOLBYVISION_PROFILE9, VideoCodecProfile.HEVCPROFILE_EXT_MIN,
+    VideoCodecProfile.HEVCPROFILE_REXT, VideoCodecProfile.HEVCPROFILE_HIGH_THROUGHPUT,
+    VideoCodecProfile.HEVCPROFILE_MULTIVIEW_MAIN, VideoCodecProfile.HEVCPROFILE_SCALABLE_MAIN,
+    VideoCodecProfile.HEVCPROFILE_3D_MAIN, VideoCodecProfile.HEVCPROFILE_SCREEN_EXTENDED,
+    VideoCodecProfile.HEVCPROFILE_SCALABLE_REXT,
+    VideoCodecProfile.HEVCPROFILE_HIGH_THROUGHPUT_SCREEN_EXTENDED,
+    VideoCodecProfile.HEVCPROFILE_EXT_MAX, VideoCodecProfile.VIDEO_CODEC_PROFILE_MAX
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface VideoCodecProfile {
@@ -89,5 +95,15 @@ public @interface VideoCodecProfile {
   int AV1PROFILE_MAX = AV1PROFILE_PROFILE_PRO;
   int DOLBYVISION_PROFILE8 = 27;
   int DOLBYVISION_PROFILE9 = 28;
-  int VIDEO_CODEC_PROFILE_MAX = DOLBYVISION_PROFILE9;
+  int HEVCPROFILE_EXT_MIN = 29;
+  int HEVCPROFILE_REXT = HEVCPROFILE_EXT_MIN;
+  int HEVCPROFILE_HIGH_THROUGHPUT = 30;
+  int HEVCPROFILE_MULTIVIEW_MAIN = 31;
+  int HEVCPROFILE_SCALABLE_MAIN = 32;
+  int HEVCPROFILE_3D_MAIN = 33;
+  int HEVCPROFILE_SCREEN_EXTENDED = 34;
+  int HEVCPROFILE_SCALABLE_REXT = 35;
+  int HEVCPROFILE_HIGH_THROUGHPUT_SCREEN_EXTENDED = 36;
+  int HEVCPROFILE_EXT_MAX = HEVCPROFILE_HIGH_THROUGHPUT_SCREEN_EXTENDED;
+  int VIDEO_CODEC_PROFILE_MAX = HEVCPROFILE_HIGH_THROUGHPUT_SCREEN_EXTENDED;
 }

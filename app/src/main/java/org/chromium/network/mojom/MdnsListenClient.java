@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface MdnsListenClient extends org.chromium.mojo.bindings.Interface {
 
@@ -20,6 +22,12 @@ public interface MdnsListenClient extends org.chromium.mojo.bindings.Interface {
 
     public static final class UpdateType {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            UpdateType.ADDED,
+            UpdateType.CHANGED,
+            UpdateType.REMOVED})
+        public @interface EnumType {}
 
         public static final int ADDED = 0;
         public static final int CHANGED = 1;
@@ -49,20 +57,16 @@ public interface MdnsListenClient extends org.chromium.mojo.bindings.Interface {
 
     Manager<MdnsListenClient, MdnsListenClient.Proxy> MANAGER = MdnsListenClient_Internal.MANAGER;
 
-
     void onAddressResult(
 int updateType, int queryType, IpEndPoint endpoint);
-
 
 
     void onTextResult(
 int updateType, int queryType, String[] textRecords);
 
 
-
     void onHostnameResult(
 int updateType, int queryType, HostPortPair host);
-
 
 
     void onUnhandledResult(

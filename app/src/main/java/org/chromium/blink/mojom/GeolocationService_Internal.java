@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class GeolocationService_Internal {
 
@@ -61,7 +63,7 @@ class GeolocationService_Internal {
         @Override
         public void createGeolocation(
 org.chromium.mojo.bindings.InterfaceRequest<org.chromium.device.mojom.Geolocation> receiver, boolean userGesture, 
-CreateGeolocationResponse callback) {
+CreateGeolocation_Response callback) {
 
             GeolocationServiceCreateGeolocationParams _message = new GeolocationServiceCreateGeolocationParams();
 
@@ -302,9 +304,9 @@ CreateGeolocationResponse callback) {
 
     static class GeolocationServiceCreateGeolocationResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final GeolocationService.CreateGeolocationResponse mCallback;
+        private final GeolocationService.CreateGeolocation_Response mCallback;
 
-        GeolocationServiceCreateGeolocationResponseParamsForwardToCallback(GeolocationService.CreateGeolocationResponse callback) {
+        GeolocationServiceCreateGeolocationResponseParamsForwardToCallback(GeolocationService.CreateGeolocation_Response callback) {
             this.mCallback = callback;
         }
 
@@ -329,7 +331,7 @@ CreateGeolocationResponse callback) {
         }
     }
 
-    static class GeolocationServiceCreateGeolocationResponseParamsProxyToResponder implements GeolocationService.CreateGeolocationResponse {
+    static class GeolocationServiceCreateGeolocationResponseParamsProxyToResponder implements GeolocationService.CreateGeolocation_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

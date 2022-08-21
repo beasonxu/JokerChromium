@@ -123,27 +123,6 @@ public interface SendTabToSelfSpecificsOrBuilder extends
 
   /**
    * <pre>
-   * The time the tab was navigated to as measured by the client in microseconds
-   * since the windows epoch.
-   * </pre>
-   *
-   * <code>optional int64 navigation_time_usec = 6;</code>
-   * @return Whether the navigationTimeUsec field is set.
-   */
-  boolean hasNavigationTimeUsec();
-  /**
-   * <pre>
-   * The time the tab was navigated to as measured by the client in microseconds
-   * since the windows epoch.
-   * </pre>
-   *
-   * <code>optional int64 navigation_time_usec = 6;</code>
-   * @return The navigationTimeUsec.
-   */
-  long getNavigationTimeUsec();
-
-  /**
-   * <pre>
    * A non-unique but human readable name to describe this client, used in UI.
    * </pre>
    *

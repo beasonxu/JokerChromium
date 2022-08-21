@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class CustomProxyConfigClient_Internal {
 
@@ -64,17 +66,22 @@ class CustomProxyConfigClient_Internal {
 
         @Override
         public void onCustomProxyConfigUpdated(
-CustomProxyConfig proxyConfig) {
+CustomProxyConfig proxyConfig, 
+OnCustomProxyConfigUpdated_Response callback) {
 
             CustomProxyConfigClientOnCustomProxyConfigUpdatedParams _message = new CustomProxyConfigClientOnCustomProxyConfigUpdatedParams();
 
             _message.proxyConfig = proxyConfig;
 
 
-            getProxyHandler().getMessageReceiver().accept(
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(ON_CUSTOM_PROXY_CONFIG_UPDATED_ORDINAL)));
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    ON_CUSTOM_PROXY_CONFIG_UPDATED_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new CustomProxyConfigClientOnCustomProxyConfigUpdatedResponseParamsForwardToCallback(callback));
 
         }
 
@@ -82,7 +89,7 @@ CustomProxyConfig proxyConfig) {
         @Override
         public void markProxiesAsBad(
 org.chromium.mojo_base.mojom.TimeDelta bypassDuration, ProxyList badProxies, 
-MarkProxiesAsBadResponse callback) {
+MarkProxiesAsBad_Response callback) {
 
             CustomProxyConfigClientMarkProxiesAsBadParams _message = new CustomProxyConfigClientMarkProxiesAsBadParams();
 
@@ -149,17 +156,6 @@ MarkProxiesAsBadResponse callback) {
 
 
 
-                    case ON_CUSTOM_PROXY_CONFIG_UPDATED_ORDINAL: {
-
-                        CustomProxyConfigClientOnCustomProxyConfigUpdatedParams data =
-                                CustomProxyConfigClientOnCustomProxyConfigUpdatedParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().onCustomProxyConfigUpdated(data.proxyConfig);
-                        return true;
-                    }
-
-
-
 
 
 
@@ -202,6 +198,19 @@ MarkProxiesAsBadResponse callback) {
                                 getCore(), CustomProxyConfigClient_Internal.MANAGER, messageWithHeader, receiver);
 
 
+
+
+
+
+
+                    case ON_CUSTOM_PROXY_CONFIG_UPDATED_ORDINAL: {
+
+                        CustomProxyConfigClientOnCustomProxyConfigUpdatedParams data =
+                                CustomProxyConfigClientOnCustomProxyConfigUpdatedParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().onCustomProxyConfigUpdated(data.proxyConfig, new CustomProxyConfigClientOnCustomProxyConfigUpdatedResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
 
 
 
@@ -291,6 +300,119 @@ MarkProxiesAsBadResponse callback) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.proxyConfig, 8, false);
+        }
+    }
+
+
+
+    
+    static final class CustomProxyConfigClientOnCustomProxyConfigUpdatedResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private CustomProxyConfigClientOnCustomProxyConfigUpdatedResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public CustomProxyConfigClientOnCustomProxyConfigUpdatedResponseParams() {
+            this(0);
+        }
+
+        public static CustomProxyConfigClientOnCustomProxyConfigUpdatedResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static CustomProxyConfigClientOnCustomProxyConfigUpdatedResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static CustomProxyConfigClientOnCustomProxyConfigUpdatedResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            CustomProxyConfigClientOnCustomProxyConfigUpdatedResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new CustomProxyConfigClientOnCustomProxyConfigUpdatedResponseParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+    static class CustomProxyConfigClientOnCustomProxyConfigUpdatedResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final CustomProxyConfigClient.OnCustomProxyConfigUpdated_Response mCallback;
+
+        CustomProxyConfigClientOnCustomProxyConfigUpdatedResponseParamsForwardToCallback(CustomProxyConfigClient.OnCustomProxyConfigUpdated_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(ON_CUSTOM_PROXY_CONFIG_UPDATED_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                mCallback.call();
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class CustomProxyConfigClientOnCustomProxyConfigUpdatedResponseParamsProxyToResponder implements CustomProxyConfigClient.OnCustomProxyConfigUpdated_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        CustomProxyConfigClientOnCustomProxyConfigUpdatedResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call() {
+            CustomProxyConfigClientOnCustomProxyConfigUpdatedResponseParams _response = new CustomProxyConfigClientOnCustomProxyConfigUpdatedResponseParams();
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    ON_CUSTOM_PROXY_CONFIG_UPDATED_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
         }
     }
 
@@ -424,9 +546,9 @@ MarkProxiesAsBadResponse callback) {
 
     static class CustomProxyConfigClientMarkProxiesAsBadResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CustomProxyConfigClient.MarkProxiesAsBadResponse mCallback;
+        private final CustomProxyConfigClient.MarkProxiesAsBad_Response mCallback;
 
-        CustomProxyConfigClientMarkProxiesAsBadResponseParamsForwardToCallback(CustomProxyConfigClient.MarkProxiesAsBadResponse callback) {
+        CustomProxyConfigClientMarkProxiesAsBadResponseParamsForwardToCallback(CustomProxyConfigClient.MarkProxiesAsBad_Response callback) {
             this.mCallback = callback;
         }
 
@@ -449,7 +571,7 @@ MarkProxiesAsBadResponse callback) {
         }
     }
 
-    static class CustomProxyConfigClientMarkProxiesAsBadResponseParamsProxyToResponder implements CustomProxyConfigClient.MarkProxiesAsBadResponse {
+    static class CustomProxyConfigClientMarkProxiesAsBadResponseParamsProxyToResponder implements CustomProxyConfigClient.MarkProxiesAsBad_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface NativeIoHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,44 +25,39 @@ public interface NativeIoHost extends org.chromium.mojo.bindings.Interface {
 
     Manager<NativeIoHost, NativeIoHost.Proxy> MANAGER = NativeIoHost_Internal.MANAGER;
 
-
     void requestCapacityChange(
 long capacityDelta, 
-RequestCapacityChangeResponse callback);
+RequestCapacityChange_Response callback);
 
-    interface RequestCapacityChangeResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Long> { }
-
+    interface RequestCapacityChange_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Long> { }
 
 
     void openFile(
 String name, org.chromium.mojo.bindings.InterfaceRequest<NativeIoFileHost> fileHostReceiver, 
-OpenFileResponse callback);
+OpenFile_Response callback);
 
-    interface OpenFileResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<org.chromium.mojo_base.mojom.File, Long, NativeIoError> { }
-
+    interface OpenFile_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<org.chromium.mojo_base.mojom.File, Long, NativeIoError> { }
 
 
     void deleteFile(
 String name, 
-DeleteFileResponse callback);
+DeleteFile_Response callback);
 
-    interface DeleteFileResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<NativeIoError, Long> { }
-
+    interface DeleteFile_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<NativeIoError, Long> { }
 
 
     void getAllFileNames(
 
-GetAllFileNamesResponse callback);
+GetAllFileNames_Response callback);
 
-    interface GetAllFileNamesResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Boolean, String[]> { }
-
+    interface GetAllFileNames_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Boolean, String[]> { }
 
 
     void renameFile(
 String oldName, String newName, 
-RenameFileResponse callback);
+RenameFile_Response callback);
 
-    interface RenameFileResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<NativeIoError> { }
+    interface RenameFile_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<NativeIoError> { }
 
 
 }

@@ -13,8 +13,19 @@
 
 package org.chromium.content_settings.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ContentSetting {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ContentSetting.DEFAULT,
+        ContentSetting.ALLOW,
+        ContentSetting.BLOCK,
+        ContentSetting.ASK,
+        ContentSetting.SESSION_ONLY,
+        ContentSetting.DETECT_IMPORTANT_CONTENT})
+    public @interface EnumType {}
 
     public static final int DEFAULT = 0;
     public static final int ALLOW = 1;

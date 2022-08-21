@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class V8DetailedMemoryReporter_Internal {
 
@@ -61,7 +63,7 @@ class V8DetailedMemoryReporter_Internal {
         @Override
         public void getV8MemoryUsage(
 int mode, 
-GetV8MemoryUsageResponse callback) {
+GetV8MemoryUsage_Response callback) {
 
             V8DetailedMemoryReporterGetV8MemoryUsageParams _message = new V8DetailedMemoryReporterGetV8MemoryUsageParams();
 
@@ -294,9 +296,9 @@ GetV8MemoryUsageResponse callback) {
 
     static class V8DetailedMemoryReporterGetV8MemoryUsageResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final V8DetailedMemoryReporter.GetV8MemoryUsageResponse mCallback;
+        private final V8DetailedMemoryReporter.GetV8MemoryUsage_Response mCallback;
 
-        V8DetailedMemoryReporterGetV8MemoryUsageResponseParamsForwardToCallback(V8DetailedMemoryReporter.GetV8MemoryUsageResponse callback) {
+        V8DetailedMemoryReporterGetV8MemoryUsageResponseParamsForwardToCallback(V8DetailedMemoryReporter.GetV8MemoryUsage_Response callback) {
             this.mCallback = callback;
         }
 
@@ -321,7 +323,7 @@ GetV8MemoryUsageResponse callback) {
         }
     }
 
-    static class V8DetailedMemoryReporterGetV8MemoryUsageResponseParamsProxyToResponder implements V8DetailedMemoryReporter.GetV8MemoryUsageResponse {
+    static class V8DetailedMemoryReporterGetV8MemoryUsageResponseParamsProxyToResponder implements V8DetailedMemoryReporter.GetV8MemoryUsage_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

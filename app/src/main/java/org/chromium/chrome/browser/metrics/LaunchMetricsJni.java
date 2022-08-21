@@ -2,16 +2,14 @@ package org.chromium.chrome.browser.metrics;
 
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.content_public.browser.WebContents;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class LaunchMetricsJni implements LaunchMetrics.Natives {
+class LaunchMetricsJni implements LaunchMetrics.Natives {
   private static LaunchMetrics.Natives testInstance;
 
   public static final JniStaticTestMocker<LaunchMetrics.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.metrics.LaunchMetrics.Natives>() {

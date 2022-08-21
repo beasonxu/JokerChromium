@@ -1,15 +1,13 @@
 package org.chromium.chrome.browser.flags;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ChromeSessionStateJni implements ChromeSessionState.Natives {
+class ChromeSessionStateJni implements ChromeSessionState.Natives {
   private static ChromeSessionState.Natives testInstance;
 
   public static final JniStaticTestMocker<ChromeSessionState.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.flags.ChromeSessionState.Natives>() {
@@ -31,6 +29,11 @@ final class ChromeSessionStateJni implements ChromeSessionState.Natives {
   @Override
   public void setIsInMultiWindowMode(boolean isInMultiWindowMode) {
     GEN_JNI.org_chromium_chrome_browser_flags_ChromeSessionState_setIsInMultiWindowMode(isInMultiWindowMode);
+  }
+
+  @Override
+  public void setDarkModeState(int state) {
+    GEN_JNI.org_chromium_chrome_browser_flags_ChromeSessionState_setDarkModeState(state);
   }
 
   public static ChromeSessionState.Natives get() {

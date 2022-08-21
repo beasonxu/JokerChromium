@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class FileChooserParams extends org.chromium.mojo.bindings.Struct {
 
@@ -22,6 +24,13 @@ public final class FileChooserParams extends org.chromium.mojo.bindings.Struct {
 
     public static final class Mode {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            Mode.OPEN,
+            Mode.OPEN_MULTIPLE,
+            Mode.UPLOAD_FOLDER,
+            Mode.SAVE})
+        public @interface EnumType {}
 
         public static final int OPEN = 0;
         public static final int OPEN_MULTIPLE = 1;

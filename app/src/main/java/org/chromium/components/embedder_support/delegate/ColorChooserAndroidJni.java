@@ -1,15 +1,13 @@
 package org.chromium.components.embedder_support.delegate;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ColorChooserAndroidJni implements ColorChooserAndroid.Natives {
+class ColorChooserAndroidJni implements ColorChooserAndroid.Natives {
   private static ColorChooserAndroid.Natives testInstance;
 
   public static final JniStaticTestMocker<ColorChooserAndroid.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.embedder_support.delegate.ColorChooserAndroid.Natives>() {

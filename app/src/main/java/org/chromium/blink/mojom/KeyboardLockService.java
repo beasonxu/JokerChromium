@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface KeyboardLockService extends org.chromium.mojo.bindings.Interface {
 
@@ -23,25 +25,22 @@ public interface KeyboardLockService extends org.chromium.mojo.bindings.Interfac
 
     Manager<KeyboardLockService, KeyboardLockService.Proxy> MANAGER = KeyboardLockService_Internal.MANAGER;
 
-
     void requestKeyboardLock(
 String[] keyCodes, 
-RequestKeyboardLockResponse callback);
+RequestKeyboardLock_Response callback);
 
-    interface RequestKeyboardLockResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface RequestKeyboardLock_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void cancelKeyboardLock(
 );
 
 
-
     void getKeyboardLayoutMap(
 
-GetKeyboardLayoutMapResponse callback);
+GetKeyboardLayoutMap_Response callback);
 
-    interface GetKeyboardLayoutMapResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<GetKeyboardLayoutMapResult> { }
+    interface GetKeyboardLayoutMap_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<GetKeyboardLayoutMapResult> { }
 
 
 }

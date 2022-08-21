@@ -13,8 +13,24 @@
 
 package org.chromium.gpu.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class Direct3DFeatureLevel {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        Direct3DFeatureLevel.K1_0_CORE,
+        Direct3DFeatureLevel.K9_1,
+        Direct3DFeatureLevel.K9_2,
+        Direct3DFeatureLevel.K9_3,
+        Direct3DFeatureLevel.K10_0,
+        Direct3DFeatureLevel.K10_1,
+        Direct3DFeatureLevel.K11_0,
+        Direct3DFeatureLevel.K11_1,
+        Direct3DFeatureLevel.K12_0,
+        Direct3DFeatureLevel.K12_1,
+        Direct3DFeatureLevel.K12_2})
+    public @interface EnumType {}
 
     public static final int K1_0_CORE = 0;
     public static final int K9_1 = 1;
@@ -26,11 +42,12 @@ public final class Direct3DFeatureLevel {
     public static final int K11_1 = 7;
     public static final int K12_0 = 8;
     public static final int K12_1 = 9;
+    public static final int K12_2 = 10;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 9;
+    public static final int MAX_VALUE = 10;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 9;
+        return value >= 0 && value <= 10;
     }
 
     public static void validate(int value) {

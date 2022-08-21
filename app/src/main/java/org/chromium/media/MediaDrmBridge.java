@@ -5,10 +5,11 @@
 package org.chromium.media;
 
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.media.MediaCrypto;
 import android.media.MediaDrm;
 import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 
 import org.chromium.base.ApiCompatibilityUtils;
 import org.chromium.base.Callback;
@@ -209,7 +210,6 @@ public class MediaDrmBridge {
     /**
      *  An equivalent of MediaDrm.KeyStatus, which is only available on M+.
      */
-    @MainDex
     private static class KeyStatus {
         private final byte[] mKeyId;
         private final int mStatusCode;
@@ -263,7 +263,7 @@ public class MediaDrmBridge {
         return mSchemeUUID.equals(WIDEVINE_UUID);
     }
 
-    @TargetApi(Build.VERSION_CODES.M)
+    @RequiresApi(Build.VERSION_CODES.M)
     private MediaDrmBridge(UUID schemeUUID, boolean requiresMediaCrypto, long nativeMediaDrmBridge,
             long nativeMediaDrmStorageBridge) throws android.media.UnsupportedSchemeException {
         mSchemeUUID = schemeUUID;
@@ -974,7 +974,7 @@ public class MediaDrmBridge {
      * Load persistent license from storage.
      */
     @CalledByNative
-    @TargetApi(Build.VERSION_CODES.M)
+    @RequiresApi(Build.VERSION_CODES.M)
     private void loadSession(byte[] emeId, final long promiseId) {
         Log.d(TAG, "loadSession()");
         assert !mProvisioningPending;
@@ -996,7 +996,7 @@ public class MediaDrmBridge {
      * Load session back to memory with MediaDrm. Load persistent storage
      * before calling this. It will fail if persistent storage isn't loaded.
      */
-    @TargetApi(Build.VERSION_CODES.M)
+    @RequiresApi(Build.VERSION_CODES.M)
     private void loadSessionWithLoadedStorage(SessionId sessionId, final long promiseId) {
         byte[] drmId = null;
         try {
@@ -1353,7 +1353,7 @@ public class MediaDrmBridge {
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.M)
+    @RequiresApi(Build.VERSION_CODES.M)
     private void onSessionMessage(final SessionId sessionId, final MediaDrm.KeyRequest request) {
         if (!isNativeMediaDrmBridgeValid()) return;
 
@@ -1394,7 +1394,6 @@ public class MediaDrmBridge {
         }
     }
 
-    @MainDex
     private class EventListener implements MediaDrm.OnEventListener {
         @Override
         public void onEvent(
@@ -1455,8 +1454,7 @@ public class MediaDrmBridge {
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.M)
-    @MainDex
+    @RequiresApi(Build.VERSION_CODES.M)
     private class KeyStatusChangeListener implements MediaDrm.OnKeyStatusChangeListener {
         private List<KeyStatus> getKeysInfo(List<MediaDrm.KeyStatus> keyInformation) {
             List<KeyStatus> keysInfo = new ArrayList<KeyStatus>();
@@ -1490,8 +1488,7 @@ public class MediaDrmBridge {
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.M)
-    @MainDex
+    @RequiresApi(Build.VERSION_CODES.M)
     private class ExpirationUpdateListener implements MediaDrm.OnExpirationUpdateListener {
         @Override
         public void onExpirationUpdate(
@@ -1511,7 +1508,6 @@ public class MediaDrmBridge {
         }
     }
 
-    @MainDex
     private class KeyUpdatedCallback implements Callback<Boolean> {
         private final SessionId mSessionId;
         private final long mPromiseId;

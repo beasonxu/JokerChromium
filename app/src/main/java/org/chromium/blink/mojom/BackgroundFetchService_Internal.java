@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class BackgroundFetchService_Internal {
 
@@ -67,7 +69,7 @@ class BackgroundFetchService_Internal {
         @Override
         public void fetch(
 long serviceWorkerRegistrationId, String developerId, FetchApiRequest[] requests, BackgroundFetchOptions options, org.chromium.skia.mojom.BitmapN32 icon, BackgroundFetchUkmData ukmData, 
-FetchResponse callback) {
+Fetch_Response callback) {
 
             BackgroundFetchServiceFetchParams _message = new BackgroundFetchServiceFetchParams();
 
@@ -99,7 +101,7 @@ FetchResponse callback) {
         @Override
         public void getRegistration(
 long serviceWorkerRegistrationId, String developerId, 
-GetRegistrationResponse callback) {
+GetRegistration_Response callback) {
 
             BackgroundFetchServiceGetRegistrationParams _message = new BackgroundFetchServiceGetRegistrationParams();
 
@@ -123,7 +125,7 @@ GetRegistrationResponse callback) {
         @Override
         public void getDeveloperIds(
 long serviceWorkerRegistrationId, 
-GetDeveloperIdsResponse callback) {
+GetDeveloperIds_Response callback) {
 
             BackgroundFetchServiceGetDeveloperIdsParams _message = new BackgroundFetchServiceGetDeveloperIdsParams();
 
@@ -145,7 +147,7 @@ GetDeveloperIdsResponse callback) {
         @Override
         public void getIconDisplaySize(
 
-GetIconDisplaySizeResponse callback) {
+GetIconDisplaySize_Response callback) {
 
             BackgroundFetchServiceGetIconDisplaySizeParams _message = new BackgroundFetchServiceGetIconDisplaySizeParams();
 
@@ -488,9 +490,9 @@ GetIconDisplaySizeResponse callback) {
 
     static class BackgroundFetchServiceFetchResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BackgroundFetchService.FetchResponse mCallback;
+        private final BackgroundFetchService.Fetch_Response mCallback;
 
-        BackgroundFetchServiceFetchResponseParamsForwardToCallback(BackgroundFetchService.FetchResponse callback) {
+        BackgroundFetchServiceFetchResponseParamsForwardToCallback(BackgroundFetchService.Fetch_Response callback) {
             this.mCallback = callback;
         }
 
@@ -515,7 +517,7 @@ GetIconDisplaySizeResponse callback) {
         }
     }
 
-    static class BackgroundFetchServiceFetchResponseParamsProxyToResponder implements BackgroundFetchService.FetchResponse {
+    static class BackgroundFetchServiceFetchResponseParamsProxyToResponder implements BackgroundFetchService.Fetch_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -694,9 +696,9 @@ GetIconDisplaySizeResponse callback) {
 
     static class BackgroundFetchServiceGetRegistrationResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BackgroundFetchService.GetRegistrationResponse mCallback;
+        private final BackgroundFetchService.GetRegistration_Response mCallback;
 
-        BackgroundFetchServiceGetRegistrationResponseParamsForwardToCallback(BackgroundFetchService.GetRegistrationResponse callback) {
+        BackgroundFetchServiceGetRegistrationResponseParamsForwardToCallback(BackgroundFetchService.GetRegistration_Response callback) {
             this.mCallback = callback;
         }
 
@@ -721,7 +723,7 @@ GetIconDisplaySizeResponse callback) {
         }
     }
 
-    static class BackgroundFetchServiceGetRegistrationResponseParamsProxyToResponder implements BackgroundFetchService.GetRegistrationResponse {
+    static class BackgroundFetchServiceGetRegistrationResponseParamsProxyToResponder implements BackgroundFetchService.GetRegistration_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -908,9 +910,9 @@ GetIconDisplaySizeResponse callback) {
 
     static class BackgroundFetchServiceGetDeveloperIdsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BackgroundFetchService.GetDeveloperIdsResponse mCallback;
+        private final BackgroundFetchService.GetDeveloperIds_Response mCallback;
 
-        BackgroundFetchServiceGetDeveloperIdsResponseParamsForwardToCallback(BackgroundFetchService.GetDeveloperIdsResponse callback) {
+        BackgroundFetchServiceGetDeveloperIdsResponseParamsForwardToCallback(BackgroundFetchService.GetDeveloperIds_Response callback) {
             this.mCallback = callback;
         }
 
@@ -935,7 +937,7 @@ GetIconDisplaySizeResponse callback) {
         }
     }
 
-    static class BackgroundFetchServiceGetDeveloperIdsResponseParamsProxyToResponder implements BackgroundFetchService.GetDeveloperIdsResponse {
+    static class BackgroundFetchServiceGetDeveloperIdsResponseParamsProxyToResponder implements BackgroundFetchService.GetDeveloperIds_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1091,9 +1093,9 @@ GetIconDisplaySizeResponse callback) {
 
     static class BackgroundFetchServiceGetIconDisplaySizeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BackgroundFetchService.GetIconDisplaySizeResponse mCallback;
+        private final BackgroundFetchService.GetIconDisplaySize_Response mCallback;
 
-        BackgroundFetchServiceGetIconDisplaySizeResponseParamsForwardToCallback(BackgroundFetchService.GetIconDisplaySizeResponse callback) {
+        BackgroundFetchServiceGetIconDisplaySizeResponseParamsForwardToCallback(BackgroundFetchService.GetIconDisplaySize_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1118,7 +1120,7 @@ GetIconDisplaySizeResponse callback) {
         }
     }
 
-    static class BackgroundFetchServiceGetIconDisplaySizeResponseParamsProxyToResponder implements BackgroundFetchService.GetIconDisplaySizeResponse {
+    static class BackgroundFetchServiceGetIconDisplaySizeResponseParamsProxyToResponder implements BackgroundFetchService.GetIconDisplaySize_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

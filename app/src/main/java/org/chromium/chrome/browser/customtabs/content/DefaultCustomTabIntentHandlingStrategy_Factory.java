@@ -3,7 +3,7 @@ package org.chromium.chrome.browser.customtabs.content;
 import dagger.Lazy;
 import dagger.internal.DoubleCheck;
 import dagger.internal.Factory;
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 import javax.inject.Provider;
 import org.chromium.chrome.browser.customtabs.CustomTabNavigationEventObserver;
 import org.chromium.chrome.browser.customtabs.CustomTabObserver;

@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class TcpBoundSocket_Internal {
 
@@ -63,7 +65,7 @@ class TcpBoundSocket_Internal {
         @Override
         public void listen(
 int backlog, org.chromium.mojo.bindings.InterfaceRequest<TcpServerSocket> socket, 
-ListenResponse callback) {
+Listen_Response callback) {
 
             TcpBoundSocketListenParams _message = new TcpBoundSocketListenParams();
 
@@ -87,7 +89,7 @@ ListenResponse callback) {
         @Override
         public void connect(
 AddressList remoteAddrList, TcpConnectedSocketOptions tcpConnectedSocketOptions, org.chromium.mojo.bindings.InterfaceRequest<TcpConnectedSocket> socket, SocketObserver observer, 
-ConnectResponse callback) {
+Connect_Response callback) {
 
             TcpBoundSocketConnectParams _message = new TcpBoundSocketConnectParams();
 
@@ -347,9 +349,9 @@ ConnectResponse callback) {
 
     static class TcpBoundSocketListenResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final TcpBoundSocket.ListenResponse mCallback;
+        private final TcpBoundSocket.Listen_Response mCallback;
 
-        TcpBoundSocketListenResponseParamsForwardToCallback(TcpBoundSocket.ListenResponse callback) {
+        TcpBoundSocketListenResponseParamsForwardToCallback(TcpBoundSocket.Listen_Response callback) {
             this.mCallback = callback;
         }
 
@@ -374,7 +376,7 @@ ConnectResponse callback) {
         }
     }
 
-    static class TcpBoundSocketListenResponseParamsProxyToResponder implements TcpBoundSocket.ListenResponse {
+    static class TcpBoundSocketListenResponseParamsProxyToResponder implements TcpBoundSocket.Listen_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -589,9 +591,9 @@ ConnectResponse callback) {
 
     static class TcpBoundSocketConnectResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final TcpBoundSocket.ConnectResponse mCallback;
+        private final TcpBoundSocket.Connect_Response mCallback;
 
-        TcpBoundSocketConnectResponseParamsForwardToCallback(TcpBoundSocket.ConnectResponse callback) {
+        TcpBoundSocketConnectResponseParamsForwardToCallback(TcpBoundSocket.Connect_Response callback) {
             this.mCallback = callback;
         }
 
@@ -616,7 +618,7 @@ ConnectResponse callback) {
         }
     }
 
-    static class TcpBoundSocketConnectResponseParamsProxyToResponder implements TcpBoundSocket.ConnectResponse {
+    static class TcpBoundSocketConnectResponseParamsProxyToResponder implements TcpBoundSocket.Connect_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

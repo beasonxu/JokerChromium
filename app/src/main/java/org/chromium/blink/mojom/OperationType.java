@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class OperationType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        OperationType.UNDEFINED,
+        OperationType.PUT,
+        OperationType.DELETE})
+    public @interface EnumType {}
 
     public static final int UNDEFINED = 0;
     public static final int PUT = 1;

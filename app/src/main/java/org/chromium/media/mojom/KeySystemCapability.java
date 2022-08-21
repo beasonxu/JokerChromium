@@ -13,18 +13,16 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class KeySystemCapability extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 56;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(56, 0)};
+    private static final int STRUCT_SIZE = 24;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-    public int[] videoCodecs;
-    public boolean supportsVp9Profile2;
-    public int[] encryptionSchemes;
-    public int[] hwSecureVideoCodecs;
-    public int[] hwSecureEncryptionSchemes;
-    public int[] sessionTypes;
+    public CdmCapability swSecureCapability;
+    public CdmCapability hwSecureCapability;
 
     private KeySystemCapability(int version) {
         super(STRUCT_SIZE, version);
@@ -61,52 +59,13 @@ public final class KeySystemCapability extends org.chromium.mojo.bindings.Struct
             result = new KeySystemCapability(elementsOrVersion);
                 {
                     
-                result.videoCodecs = decoder0.readInts(8, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                {
-                    for (int i1 = 0; i1 < result.videoCodecs.length; ++i1) {
-                        VideoCodec.validate(result.videoCodecs[i1]);
-                    }
-                }
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, true);
+                result.swSecureCapability = CdmCapability.decode(decoder1);
                 }
                 {
                     
-                result.supportsVp9Profile2 = decoder0.readBoolean(16, 0);
-                }
-                {
-                    
-                result.encryptionSchemes = decoder0.readInts(24, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                {
-                    for (int i1 = 0; i1 < result.encryptionSchemes.length; ++i1) {
-                        EncryptionScheme.validate(result.encryptionSchemes[i1]);
-                    }
-                }
-                }
-                {
-                    
-                result.hwSecureVideoCodecs = decoder0.readInts(32, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                {
-                    for (int i1 = 0; i1 < result.hwSecureVideoCodecs.length; ++i1) {
-                        VideoCodec.validate(result.hwSecureVideoCodecs[i1]);
-                    }
-                }
-                }
-                {
-                    
-                result.hwSecureEncryptionSchemes = decoder0.readInts(40, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                {
-                    for (int i1 = 0; i1 < result.hwSecureEncryptionSchemes.length; ++i1) {
-                        EncryptionScheme.validate(result.hwSecureEncryptionSchemes[i1]);
-                    }
-                }
-                }
-                {
-                    
-                result.sessionTypes = decoder0.readInts(48, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                {
-                    for (int i1 = 0; i1 < result.sessionTypes.length; ++i1) {
-                        CdmSessionType.validate(result.sessionTypes[i1]);
-                    }
-                }
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, true);
+                result.hwSecureCapability = CdmCapability.decode(decoder1);
                 }
 
         } finally {
@@ -120,16 +79,8 @@ public final class KeySystemCapability extends org.chromium.mojo.bindings.Struct
     protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
         org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         
-        encoder0.encode(this.videoCodecs, 8, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+        encoder0.encode(this.swSecureCapability, 8, true);
         
-        encoder0.encode(this.supportsVp9Profile2, 16, 0);
-        
-        encoder0.encode(this.encryptionSchemes, 24, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-        
-        encoder0.encode(this.hwSecureVideoCodecs, 32, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-        
-        encoder0.encode(this.hwSecureEncryptionSchemes, 40, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-        
-        encoder0.encode(this.sessionTypes, 48, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+        encoder0.encode(this.hwSecureCapability, 16, true);
     }
 }

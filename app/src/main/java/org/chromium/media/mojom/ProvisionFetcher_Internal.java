@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class ProvisionFetcher_Internal {
 
@@ -61,7 +63,7 @@ class ProvisionFetcher_Internal {
         @Override
         public void retrieve(
 org.chromium.url.mojom.Url defaultUrl, String requestData, 
-RetrieveResponse callback) {
+Retrieve_Response callback) {
 
             ProvisionFetcherRetrieveParams _message = new ProvisionFetcherRetrieveParams();
 
@@ -308,9 +310,9 @@ RetrieveResponse callback) {
 
     static class ProvisionFetcherRetrieveResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ProvisionFetcher.RetrieveResponse mCallback;
+        private final ProvisionFetcher.Retrieve_Response mCallback;
 
-        ProvisionFetcherRetrieveResponseParamsForwardToCallback(ProvisionFetcher.RetrieveResponse callback) {
+        ProvisionFetcherRetrieveResponseParamsForwardToCallback(ProvisionFetcher.Retrieve_Response callback) {
             this.mCallback = callback;
         }
 
@@ -335,7 +337,7 @@ RetrieveResponse callback) {
         }
     }
 
-    static class ProvisionFetcherRetrieveResponseParamsProxyToResponder implements ProvisionFetcher.RetrieveResponse {
+    static class ProvisionFetcherRetrieveResponseParamsProxyToResponder implements ProvisionFetcher.Retrieve_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

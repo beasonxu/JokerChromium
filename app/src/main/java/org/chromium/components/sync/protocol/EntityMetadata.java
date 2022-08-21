@@ -846,6 +846,97 @@ public  final class EntityMetadata extends
     bookmarkFaviconHash_ = 0;
   }
 
+  public static final int POSSIBLY_TRIMMED_BASE_SPECIFICS_FIELD_NUMBER = 13;
+  private org.chromium.components.sync.protocol.EntitySpecifics possiblyTrimmedBaseSpecifics_;
+  /**
+   * <pre>
+   * Last specifics known by both the client and server. Used during commits to
+   * the server in order to prevent data loss caused by older clients dealing
+   * with unknown proto fields (fields that were introduced later). Datatypes
+   * (ModelTypeSyncBridge) may implement logic to trim down (or fully clear)
+   * this proto prior to caching, to avoid the memory and I/O overhead of
+   * dealing with an extra copy of the data. Introduced in M101.
+   * </pre>
+   *
+   * <code>optional .sync_pb.EntitySpecifics possibly_trimmed_base_specifics = 13;</code>
+   */
+  @java.lang.Override
+  public boolean hasPossiblyTrimmedBaseSpecifics() {
+    return ((bitField0_ & 0x00001000) != 0);
+  }
+  /**
+   * <pre>
+   * Last specifics known by both the client and server. Used during commits to
+   * the server in order to prevent data loss caused by older clients dealing
+   * with unknown proto fields (fields that were introduced later). Datatypes
+   * (ModelTypeSyncBridge) may implement logic to trim down (or fully clear)
+   * this proto prior to caching, to avoid the memory and I/O overhead of
+   * dealing with an extra copy of the data. Introduced in M101.
+   * </pre>
+   *
+   * <code>optional .sync_pb.EntitySpecifics possibly_trimmed_base_specifics = 13;</code>
+   */
+  @java.lang.Override
+  public org.chromium.components.sync.protocol.EntitySpecifics getPossiblyTrimmedBaseSpecifics() {
+    return possiblyTrimmedBaseSpecifics_ == null ? org.chromium.components.sync.protocol.EntitySpecifics.getDefaultInstance() : possiblyTrimmedBaseSpecifics_;
+  }
+  /**
+   * <pre>
+   * Last specifics known by both the client and server. Used during commits to
+   * the server in order to prevent data loss caused by older clients dealing
+   * with unknown proto fields (fields that were introduced later). Datatypes
+   * (ModelTypeSyncBridge) may implement logic to trim down (or fully clear)
+   * this proto prior to caching, to avoid the memory and I/O overhead of
+   * dealing with an extra copy of the data. Introduced in M101.
+   * </pre>
+   *
+   * <code>optional .sync_pb.EntitySpecifics possibly_trimmed_base_specifics = 13;</code>
+   */
+  private void setPossiblyTrimmedBaseSpecifics(org.chromium.components.sync.protocol.EntitySpecifics value) {
+    value.getClass();
+  possiblyTrimmedBaseSpecifics_ = value;
+    bitField0_ |= 0x00001000;
+    }
+  /**
+   * <pre>
+   * Last specifics known by both the client and server. Used during commits to
+   * the server in order to prevent data loss caused by older clients dealing
+   * with unknown proto fields (fields that were introduced later). Datatypes
+   * (ModelTypeSyncBridge) may implement logic to trim down (or fully clear)
+   * this proto prior to caching, to avoid the memory and I/O overhead of
+   * dealing with an extra copy of the data. Introduced in M101.
+   * </pre>
+   *
+   * <code>optional .sync_pb.EntitySpecifics possibly_trimmed_base_specifics = 13;</code>
+   */
+  @java.lang.SuppressWarnings({"ReferenceEquality"})
+  private void mergePossiblyTrimmedBaseSpecifics(org.chromium.components.sync.protocol.EntitySpecifics value) {
+    value.getClass();
+  if (possiblyTrimmedBaseSpecifics_ != null &&
+        possiblyTrimmedBaseSpecifics_ != org.chromium.components.sync.protocol.EntitySpecifics.getDefaultInstance()) {
+      possiblyTrimmedBaseSpecifics_ =
+        org.chromium.components.sync.protocol.EntitySpecifics.newBuilder(possiblyTrimmedBaseSpecifics_).mergeFrom(value).buildPartial();
+    } else {
+      possiblyTrimmedBaseSpecifics_ = value;
+    }
+    bitField0_ |= 0x00001000;
+  }
+  /**
+   * <pre>
+   * Last specifics known by both the client and server. Used during commits to
+   * the server in order to prevent data loss caused by older clients dealing
+   * with unknown proto fields (fields that were introduced later). Datatypes
+   * (ModelTypeSyncBridge) may implement logic to trim down (or fully clear)
+   * this proto prior to caching, to avoid the memory and I/O overhead of
+   * dealing with an extra copy of the data. Introduced in M101.
+   * </pre>
+   *
+   * <code>optional .sync_pb.EntitySpecifics possibly_trimmed_base_specifics = 13;</code>
+   */
+  private void clearPossiblyTrimmedBaseSpecifics() {  possiblyTrimmedBaseSpecifics_ = null;
+    bitField0_ = (bitField0_ & ~0x00001000);
+  }
+
   public static org.chromium.components.sync.protocol.EntityMetadata parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1802,6 +1893,107 @@ public  final class EntityMetadata extends
       return this;
     }
 
+    /**
+     * <pre>
+     * Last specifics known by both the client and server. Used during commits to
+     * the server in order to prevent data loss caused by older clients dealing
+     * with unknown proto fields (fields that were introduced later). Datatypes
+     * (ModelTypeSyncBridge) may implement logic to trim down (or fully clear)
+     * this proto prior to caching, to avoid the memory and I/O overhead of
+     * dealing with an extra copy of the data. Introduced in M101.
+     * </pre>
+     *
+     * <code>optional .sync_pb.EntitySpecifics possibly_trimmed_base_specifics = 13;</code>
+     */
+    @java.lang.Override
+    public boolean hasPossiblyTrimmedBaseSpecifics() {
+      return instance.hasPossiblyTrimmedBaseSpecifics();
+    }
+    /**
+     * <pre>
+     * Last specifics known by both the client and server. Used during commits to
+     * the server in order to prevent data loss caused by older clients dealing
+     * with unknown proto fields (fields that were introduced later). Datatypes
+     * (ModelTypeSyncBridge) may implement logic to trim down (or fully clear)
+     * this proto prior to caching, to avoid the memory and I/O overhead of
+     * dealing with an extra copy of the data. Introduced in M101.
+     * </pre>
+     *
+     * <code>optional .sync_pb.EntitySpecifics possibly_trimmed_base_specifics = 13;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.EntitySpecifics getPossiblyTrimmedBaseSpecifics() {
+      return instance.getPossiblyTrimmedBaseSpecifics();
+    }
+    /**
+     * <pre>
+     * Last specifics known by both the client and server. Used during commits to
+     * the server in order to prevent data loss caused by older clients dealing
+     * with unknown proto fields (fields that were introduced later). Datatypes
+     * (ModelTypeSyncBridge) may implement logic to trim down (or fully clear)
+     * this proto prior to caching, to avoid the memory and I/O overhead of
+     * dealing with an extra copy of the data. Introduced in M101.
+     * </pre>
+     *
+     * <code>optional .sync_pb.EntitySpecifics possibly_trimmed_base_specifics = 13;</code>
+     */
+    public Builder setPossiblyTrimmedBaseSpecifics(org.chromium.components.sync.protocol.EntitySpecifics value) {
+      copyOnWrite();
+      instance.setPossiblyTrimmedBaseSpecifics(value);
+      return this;
+      }
+    /**
+     * <pre>
+     * Last specifics known by both the client and server. Used during commits to
+     * the server in order to prevent data loss caused by older clients dealing
+     * with unknown proto fields (fields that were introduced later). Datatypes
+     * (ModelTypeSyncBridge) may implement logic to trim down (or fully clear)
+     * this proto prior to caching, to avoid the memory and I/O overhead of
+     * dealing with an extra copy of the data. Introduced in M101.
+     * </pre>
+     *
+     * <code>optional .sync_pb.EntitySpecifics possibly_trimmed_base_specifics = 13;</code>
+     */
+    public Builder setPossiblyTrimmedBaseSpecifics(
+        org.chromium.components.sync.protocol.EntitySpecifics.Builder builderForValue) {
+      copyOnWrite();
+      instance.setPossiblyTrimmedBaseSpecifics(builderForValue.build());
+      return this;
+    }
+    /**
+     * <pre>
+     * Last specifics known by both the client and server. Used during commits to
+     * the server in order to prevent data loss caused by older clients dealing
+     * with unknown proto fields (fields that were introduced later). Datatypes
+     * (ModelTypeSyncBridge) may implement logic to trim down (or fully clear)
+     * this proto prior to caching, to avoid the memory and I/O overhead of
+     * dealing with an extra copy of the data. Introduced in M101.
+     * </pre>
+     *
+     * <code>optional .sync_pb.EntitySpecifics possibly_trimmed_base_specifics = 13;</code>
+     */
+    public Builder mergePossiblyTrimmedBaseSpecifics(org.chromium.components.sync.protocol.EntitySpecifics value) {
+      copyOnWrite();
+      instance.mergePossiblyTrimmedBaseSpecifics(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * Last specifics known by both the client and server. Used during commits to
+     * the server in order to prevent data loss caused by older clients dealing
+     * with unknown proto fields (fields that were introduced later). Datatypes
+     * (ModelTypeSyncBridge) may implement logic to trim down (or fully clear)
+     * this proto prior to caching, to avoid the memory and I/O overhead of
+     * dealing with an extra copy of the data. Introduced in M101.
+     * </pre>
+     *
+     * <code>optional .sync_pb.EntitySpecifics possibly_trimmed_base_specifics = 13;</code>
+     */
+    public Builder clearPossiblyTrimmedBaseSpecifics() {  copyOnWrite();
+      instance.clearPossiblyTrimmedBaseSpecifics();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:sync_pb.EntityMetadata)
   }
   @java.lang.Override
@@ -1831,11 +2023,12 @@ public  final class EntityMetadata extends
             "baseSpecificsHash_",
             "uniquePosition_",
             "bookmarkFaviconHash_",
+            "possiblyTrimmedBaseSpecifics_",
           };
           java.lang.String info =
-              "\u0001\f\u0000\u0001\u0001\f\f\u0000\u0000\u0000\u0001\u1008\u0000\u0002\u1008\u0001" +
+              "\u0001\r\u0000\u0001\u0001\r\r\u0000\u0000\u0000\u0001\u1008\u0000\u0002\u1008\u0001" +
               "\u0003\u1007\u0002\u0004\u1002\u0003\u0005\u1002\u0004\u0006\u1002\u0005\u0007\u1002" +
-              "\u0006\b\u1002\u0007\t\u1008\b\n\u1008\t\u000b\u1009\n\f\u1006\u000b";
+              "\u0006\b\u1002\u0007\t\u1008\b\n\u1008\t\u000b\u1009\n\f\u1006\u000b\r\u1009\f";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

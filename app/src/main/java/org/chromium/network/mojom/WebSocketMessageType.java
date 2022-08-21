@@ -13,8 +13,17 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class WebSocketMessageType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        WebSocketMessageType.CONTINUATION,
+        WebSocketMessageType.TEXT,
+        WebSocketMessageType.BINARY,
+        WebSocketMessageType.LAST})
+    public @interface EnumType {}
 
     public static final int CONTINUATION = 0;
     public static final int TEXT = 1;

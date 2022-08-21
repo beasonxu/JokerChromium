@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class DedicatedWorkerHostFactoryClient_Internal {
 
@@ -83,7 +85,7 @@ BrowserInterfaceBroker browserInterfaceBroker, DedicatedWorkerHost host) {
 
         @Override
         public void onScriptLoadStarted(
-ServiceWorkerContainerInfoForClient serviceWorkerContainerInfo, WorkerMainScriptLoadParams mainScriptLoadParams, UrlLoaderFactoryBundle subresourceLoaderFactories, org.chromium.mojo.bindings.InterfaceRequest<SubresourceLoaderUpdater> subresourceLoaderUpdater, ControllerServiceWorkerInfo controllerInfo) {
+ServiceWorkerContainerInfoForClient serviceWorkerContainerInfo, WorkerMainScriptLoadParams mainScriptLoadParams, UrlLoaderFactoryBundle subresourceLoaderFactories, org.chromium.mojo.bindings.InterfaceRequest<SubresourceLoaderUpdater> subresourceLoaderUpdater, ControllerServiceWorkerInfo controllerInfo, BackForwardCacheControllerHost backForwardCacheControllerHost) {
 
             DedicatedWorkerHostFactoryClientOnScriptLoadStartedParams _message = new DedicatedWorkerHostFactoryClientOnScriptLoadStartedParams();
 
@@ -96,6 +98,8 @@ ServiceWorkerContainerInfoForClient serviceWorkerContainerInfo, WorkerMainScript
             _message.subresourceLoaderUpdater = subresourceLoaderUpdater;
 
             _message.controllerInfo = controllerInfo;
+
+            _message.backForwardCacheControllerHost = backForwardCacheControllerHost;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -170,7 +174,7 @@ ServiceWorkerContainerInfoForClient serviceWorkerContainerInfo, WorkerMainScript
                         DedicatedWorkerHostFactoryClientOnScriptLoadStartedParams data =
                                 DedicatedWorkerHostFactoryClientOnScriptLoadStartedParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().onScriptLoadStarted(data.serviceWorkerContainerInfo, data.mainScriptLoadParams, data.subresourceLoaderFactories, data.subresourceLoaderUpdater, data.controllerInfo);
+                        getImpl().onScriptLoadStarted(data.serviceWorkerContainerInfo, data.mainScriptLoadParams, data.subresourceLoaderFactories, data.subresourceLoaderUpdater, data.controllerInfo, data.backForwardCacheControllerHost);
                         return true;
                     }
 
@@ -306,14 +310,15 @@ ServiceWorkerContainerInfoForClient serviceWorkerContainerInfo, WorkerMainScript
     
     static final class DedicatedWorkerHostFactoryClientOnScriptLoadStartedParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 48;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
+        private static final int STRUCT_SIZE = 56;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(56, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public ServiceWorkerContainerInfoForClient serviceWorkerContainerInfo;
         public WorkerMainScriptLoadParams mainScriptLoadParams;
         public UrlLoaderFactoryBundle subresourceLoaderFactories;
         public org.chromium.mojo.bindings.InterfaceRequest<SubresourceLoaderUpdater> subresourceLoaderUpdater;
         public ControllerServiceWorkerInfo controllerInfo;
+        public BackForwardCacheControllerHost backForwardCacheControllerHost;
 
         private DedicatedWorkerHostFactoryClientOnScriptLoadStartedParams(int version) {
             super(STRUCT_SIZE, version);
@@ -372,6 +377,10 @@ ServiceWorkerContainerInfoForClient serviceWorkerContainerInfo, WorkerMainScript
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, true);
                     result.controllerInfo = ControllerServiceWorkerInfo.decode(decoder1);
                     }
+                    {
+                        
+                    result.backForwardCacheControllerHost = decoder0.readServiceInterface(48, false, BackForwardCacheControllerHost.MANAGER);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -393,6 +402,8 @@ ServiceWorkerContainerInfoForClient serviceWorkerContainerInfo, WorkerMainScript
             encoder0.encode(this.subresourceLoaderUpdater, 32, false);
             
             encoder0.encode(this.controllerInfo, 40, true);
+            
+            encoder0.encode(this.backForwardCacheControllerHost, 48, false, BackForwardCacheControllerHost.MANAGER);
         }
     }
 

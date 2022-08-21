@@ -163,6 +163,28 @@ public interface AutofillOfferSpecificsOrBuilder extends
   org.chromium.components.sync.protocol.AutofillOfferSpecifics.CardLinkedOfferData getCardLinkedOfferData();
 
   /**
+   * <code>.sync_pb.AutofillOfferSpecifics.PromoCodeOfferData promo_code_offer_data = 9;</code>
+   * @return Whether the promoCodeOfferData field is set.
+   */
+  boolean hasPromoCodeOfferData();
+  /**
+   * <code>.sync_pb.AutofillOfferSpecifics.PromoCodeOfferData promo_code_offer_data = 9;</code>
+   * @return The promoCodeOfferData.
+   */
+  org.chromium.components.sync.protocol.AutofillOfferSpecifics.PromoCodeOfferData getPromoCodeOfferData();
+
+  /**
+   * <code>optional .sync_pb.AutofillOfferSpecifics.DisplayStrings display_strings = 10;</code>
+   * @return Whether the displayStrings field is set.
+   */
+  boolean hasDisplayStrings();
+  /**
+   * <code>optional .sync_pb.AutofillOfferSpecifics.DisplayStrings display_strings = 10;</code>
+   * @return The displayStrings.
+   */
+  org.chromium.components.sync.protocol.AutofillOfferSpecifics.DisplayStrings getDisplayStrings();
+
+  /**
    * <code>.sync_pb.AutofillOfferSpecifics.PercentageReward percentage_reward = 7;</code>
    * @return Whether the percentageReward field is set.
    */

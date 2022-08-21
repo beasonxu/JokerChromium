@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class VideoCaptureHost_Internal {
 
@@ -173,7 +175,7 @@ org.chromium.mojo_base.mojom.UnguessableToken deviceId) {
 
         @Override
         public void releaseBuffer(
-org.chromium.mojo_base.mojom.UnguessableToken deviceId, int bufferId, VideoFrameFeedback feedback) {
+org.chromium.mojo_base.mojom.UnguessableToken deviceId, int bufferId, VideoCaptureFeedback feedback) {
 
             VideoCaptureHostReleaseBufferParams _message = new VideoCaptureHostReleaseBufferParams();
 
@@ -195,7 +197,7 @@ org.chromium.mojo_base.mojom.UnguessableToken deviceId, int bufferId, VideoFrame
         @Override
         public void getDeviceSupportedFormats(
 org.chromium.mojo_base.mojom.UnguessableToken deviceId, org.chromium.mojo_base.mojom.UnguessableToken sessionId, 
-GetDeviceSupportedFormatsResponse callback) {
+GetDeviceSupportedFormats_Response callback) {
 
             VideoCaptureHostGetDeviceSupportedFormatsParams _message = new VideoCaptureHostGetDeviceSupportedFormatsParams();
 
@@ -219,7 +221,7 @@ GetDeviceSupportedFormatsResponse callback) {
         @Override
         public void getDeviceFormatsInUse(
 org.chromium.mojo_base.mojom.UnguessableToken deviceId, org.chromium.mojo_base.mojom.UnguessableToken sessionId, 
-GetDeviceFormatsInUseResponse callback) {
+GetDeviceFormatsInUse_Response callback) {
 
             VideoCaptureHostGetDeviceFormatsInUseParams _message = new VideoCaptureHostGetDeviceFormatsInUseParams();
 
@@ -867,7 +869,7 @@ org.chromium.mojo_base.mojom.UnguessableToken deviceId, String message) {
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public org.chromium.mojo_base.mojom.UnguessableToken deviceId;
         public int bufferId;
-        public VideoFrameFeedback feedback;
+        public VideoCaptureFeedback feedback;
 
         private VideoCaptureHostReleaseBufferParams(int version) {
             super(STRUCT_SIZE, version);
@@ -914,7 +916,7 @@ org.chromium.mojo_base.mojom.UnguessableToken deviceId, String message) {
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
-                    result.feedback = VideoFrameFeedback.decode(decoder1);
+                    result.feedback = VideoCaptureFeedback.decode(decoder1);
                     }
 
             } finally {
@@ -1090,9 +1092,9 @@ org.chromium.mojo_base.mojom.UnguessableToken deviceId, String message) {
 
     static class VideoCaptureHostGetDeviceSupportedFormatsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final VideoCaptureHost.GetDeviceSupportedFormatsResponse mCallback;
+        private final VideoCaptureHost.GetDeviceSupportedFormats_Response mCallback;
 
-        VideoCaptureHostGetDeviceSupportedFormatsResponseParamsForwardToCallback(VideoCaptureHost.GetDeviceSupportedFormatsResponse callback) {
+        VideoCaptureHostGetDeviceSupportedFormatsResponseParamsForwardToCallback(VideoCaptureHost.GetDeviceSupportedFormats_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1117,7 +1119,7 @@ org.chromium.mojo_base.mojom.UnguessableToken deviceId, String message) {
         }
     }
 
-    static class VideoCaptureHostGetDeviceSupportedFormatsResponseParamsProxyToResponder implements VideoCaptureHost.GetDeviceSupportedFormatsResponse {
+    static class VideoCaptureHostGetDeviceSupportedFormatsResponseParamsProxyToResponder implements VideoCaptureHost.GetDeviceSupportedFormats_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1303,9 +1305,9 @@ org.chromium.mojo_base.mojom.UnguessableToken deviceId, String message) {
 
     static class VideoCaptureHostGetDeviceFormatsInUseResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final VideoCaptureHost.GetDeviceFormatsInUseResponse mCallback;
+        private final VideoCaptureHost.GetDeviceFormatsInUse_Response mCallback;
 
-        VideoCaptureHostGetDeviceFormatsInUseResponseParamsForwardToCallback(VideoCaptureHost.GetDeviceFormatsInUseResponse callback) {
+        VideoCaptureHostGetDeviceFormatsInUseResponseParamsForwardToCallback(VideoCaptureHost.GetDeviceFormatsInUse_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1330,7 +1332,7 @@ org.chromium.mojo_base.mojom.UnguessableToken deviceId, String message) {
         }
     }
 
-    static class VideoCaptureHostGetDeviceFormatsInUseResponseParamsProxyToResponder implements VideoCaptureHost.GetDeviceFormatsInUseResponse {
+    static class VideoCaptureHostGetDeviceFormatsInUseResponseParamsProxyToResponder implements VideoCaptureHost.GetDeviceFormatsInUse_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

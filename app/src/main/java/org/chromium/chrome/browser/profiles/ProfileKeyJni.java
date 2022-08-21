@@ -1,15 +1,13 @@
 package org.chromium.chrome.browser.profiles;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ProfileKeyJni implements ProfileKey.Natives {
+class ProfileKeyJni implements ProfileKey.Natives {
   private static ProfileKey.Natives testInstance;
 
   public static final JniStaticTestMocker<ProfileKey.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.profiles.ProfileKey.Natives>() {
@@ -36,6 +34,11 @@ final class ProfileKeyJni implements ProfileKey.Natives {
   @Override
   public boolean isOffTheRecord(long nativeProfileKeyAndroid) {
     return (boolean)GEN_JNI.org_chromium_chrome_browser_profiles_ProfileKey_isOffTheRecord(nativeProfileKeyAndroid);
+  }
+
+  @Override
+  public long getSimpleFactoryKeyPointer(long nativeProfileKeyAndroid) {
+    return (long)GEN_JNI.org_chromium_chrome_browser_profiles_ProfileKey_getSimpleFactoryKeyPointer(nativeProfileKeyAndroid);
   }
 
   public static ProfileKey.Natives get() {

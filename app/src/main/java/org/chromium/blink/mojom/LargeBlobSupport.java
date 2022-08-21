@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class LargeBlobSupport {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        LargeBlobSupport.NOT_REQUESTED,
+        LargeBlobSupport.REQUIRED,
+        LargeBlobSupport.PREFERRED})
+    public @interface EnumType {}
 
     public static final int NOT_REQUESTED = 0;
     public static final int REQUIRED = 1;

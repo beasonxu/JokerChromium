@@ -1,7 +1,7 @@
 package org.chromium.chrome.browser.browserservices;
 
 import dagger.internal.Factory;
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 import javax.inject.Provider;
 import org.chromium.chrome.browser.preferences.SharedPreferencesManager;
 

@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface HidConnection extends org.chromium.mojo.bindings.Interface {
 
@@ -23,36 +25,32 @@ public interface HidConnection extends org.chromium.mojo.bindings.Interface {
 
     Manager<HidConnection, HidConnection.Proxy> MANAGER = HidConnection_Internal.MANAGER;
 
-
     void read(
 
-ReadResponse callback);
+Read_Response callback);
 
-    interface ReadResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<Boolean, Byte, byte[]> { }
-
+    interface Read_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<Boolean, Byte, byte[]> { }
 
 
     void write(
 byte reportId, byte[] buffer, 
-WriteResponse callback);
+Write_Response callback);
 
-    interface WriteResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface Write_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void getFeatureReport(
 byte reportId, 
-GetFeatureReportResponse callback);
+GetFeatureReport_Response callback);
 
-    interface GetFeatureReportResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Boolean, byte[]> { }
-
+    interface GetFeatureReport_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Boolean, byte[]> { }
 
 
     void sendFeatureReport(
 byte reportId, byte[] buffer, 
-SendFeatureReportResponse callback);
+SendFeatureReport_Response callback);
 
-    interface SendFeatureReportResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
+    interface SendFeatureReport_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
 }

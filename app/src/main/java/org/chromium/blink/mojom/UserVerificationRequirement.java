@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class UserVerificationRequirement {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        UserVerificationRequirement.REQUIRED,
+        UserVerificationRequirement.PREFERRED,
+        UserVerificationRequirement.DISCOURAGED})
+    public @interface EnumType {}
 
     public static final int REQUIRED = 0;
     public static final int PREFERRED = 1;

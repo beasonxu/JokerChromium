@@ -3,7 +3,6 @@ package org.chromium.content.browser.framehost;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
@@ -11,10 +10,10 @@ import org.chromium.base.natives.GEN_JNI;
 import org.chromium.content_public.browser.NavigationEntry;
 import org.chromium.content_public.browser.NavigationHistory;
 import org.chromium.content_public.common.ResourceRequestBody;
+import org.chromium.url.Origin;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class NavigationControllerImplJni implements NavigationControllerImpl.Natives {
+class NavigationControllerImplJni implements NavigationControllerImpl.Natives {
   private static NavigationControllerImpl.Natives testInstance;
 
   public static final JniStaticTestMocker<NavigationControllerImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content.browser.framehost.NavigationControllerImpl.Natives>() {
@@ -121,9 +120,10 @@ final class NavigationControllerImplJni implements NavigationControllerImpl.Nati
       String url, int loadUrlType, int transitionType, String referrerUrl, int referrerPolicy,
       int uaOverrideOption, String extraHeaders, ResourceRequestBody postData,
       String baseUrlForDataUrl, String virtualUrlForDataUrl, String dataUrlAsString,
-      boolean canLoadLocalResources, boolean isRendererInitiated,
-      boolean shouldReplaceCurrentEntry) {
-    GEN_JNI.org_chromium_content_browser_framehost_NavigationControllerImpl_loadUrl(nativeNavigationControllerAndroid, caller, url, loadUrlType, transitionType, referrerUrl, referrerPolicy, uaOverrideOption, extraHeaders, postData, baseUrlForDataUrl, virtualUrlForDataUrl, dataUrlAsString, canLoadLocalResources, isRendererInitiated, shouldReplaceCurrentEntry);
+      boolean canLoadLocalResources, boolean isRendererInitiated, boolean shouldReplaceCurrentEntry,
+      Origin initiatorOrigin, boolean hasUserGesture, boolean shouldClearHistoryList,
+      long inputStart, long navigationUIDataPtr) {
+    GEN_JNI.org_chromium_content_browser_framehost_NavigationControllerImpl_loadUrl(nativeNavigationControllerAndroid, caller, url, loadUrlType, transitionType, referrerUrl, referrerPolicy, uaOverrideOption, extraHeaders, postData, baseUrlForDataUrl, virtualUrlForDataUrl, dataUrlAsString, canLoadLocalResources, isRendererInitiated, shouldReplaceCurrentEntry, initiatorOrigin, hasUserGesture, shouldClearHistoryList, inputStart, navigationUIDataPtr);
   }
 
   @Override
@@ -159,8 +159,8 @@ final class NavigationControllerImplJni implements NavigationControllerImpl.Nati
 
   @Override
   public void setUseDesktopUserAgent(long nativeNavigationControllerAndroid,
-      NavigationControllerImpl caller, boolean override, boolean reloadOnChange) {
-    GEN_JNI.org_chromium_content_browser_framehost_NavigationControllerImpl_setUseDesktopUserAgent(nativeNavigationControllerAndroid, caller, override, reloadOnChange);
+      NavigationControllerImpl caller, boolean override, boolean reloadOnChange, int source) {
+    GEN_JNI.org_chromium_content_browser_framehost_NavigationControllerImpl_setUseDesktopUserAgent(nativeNavigationControllerAndroid, caller, override, reloadOnChange, source);
   }
 
   @Override

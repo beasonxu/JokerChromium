@@ -6,6 +6,7 @@ package org.chromium.chrome.browser.tasks.tab_management;
 
 import android.content.res.ColorStateList;
 import android.view.View;
+
 import org.chromium.ui.modelutil.PropertyKey;
 import org.chromium.ui.modelutil.PropertyModel;
 
@@ -38,19 +39,23 @@ public class TabSelectionEditorProperties {
             new PropertyModel.WritableIntPropertyKey();
 
     public static final PropertyModel
-            .WritableObjectPropertyKey<ColorStateList> TOOLBAR_GROUP_BUTTON_TINT =
+            .WritableObjectPropertyKey<ColorStateList> TOOLBAR_GROUP_TEXT_TINT =
             new PropertyModel.WritableObjectPropertyKey<>();
 
-    public static final PropertyModel.WritableIntPropertyKey TOOLBAR_TEXT_APPEARANCE =
-            new PropertyModel.WritableIntPropertyKey();
+    public static final PropertyModel
+            .WritableObjectPropertyKey<ColorStateList> TOOLBAR_GROUP_BUTTON_TINT =
+            new PropertyModel.WritableObjectPropertyKey<>();
 
     public static final PropertyModel
             .WritableIntPropertyKey TOOLBAR_ACTION_BUTTON_DESCRIPTION_RESOURCE_ID =
             new PropertyModel.WritableIntPropertyKey();
 
+    public static final PropertyModel.WritableIntPropertyKey TOOLBAR_ACTION_BUTTON_VISIBILITY =
+            new PropertyModel.WritableIntPropertyKey();
+
     public static final PropertyKey[] ALL_KEYS = new PropertyKey[] {IS_VISIBLE,
             TOOLBAR_ACTION_BUTTON_LISTENER, TOOLBAR_ACTION_BUTTON_TEXT,
             TOOLBAR_ACTION_BUTTON_ENABLING_THRESHOLD, TOOLBAR_NAVIGATION_LISTENER, PRIMARY_COLOR,
-            TOOLBAR_BACKGROUND_COLOR, TOOLBAR_GROUP_BUTTON_TINT, TOOLBAR_TEXT_APPEARANCE,
-            TOOLBAR_ACTION_BUTTON_DESCRIPTION_RESOURCE_ID};
+            TOOLBAR_BACKGROUND_COLOR, TOOLBAR_GROUP_TEXT_TINT, TOOLBAR_GROUP_BUTTON_TINT,
+            TOOLBAR_ACTION_BUTTON_DESCRIPTION_RESOURCE_ID, TOOLBAR_ACTION_BUTTON_VISIBILITY};
 }

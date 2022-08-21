@@ -13,26 +13,33 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class ParsedHeaders extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 80;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(80, 0)};
+    private static final int STRUCT_SIZE = 128;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(128, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public ContentSecurityPolicy[] contentSecurityPolicy;
     public AllowCspFromHeaderValue allowCspFrom;
     public CrossOriginEmbedderPolicy crossOriginEmbedderPolicy;
     public CrossOriginOpenerPolicy crossOriginOpenerPolicy;
-    public boolean originAgentCluster;
+    public int originAgentCluster;
     public int[] acceptCh;
-    public org.chromium.mojo_base.mojom.TimeDelta acceptChLifetime;
     public int[] criticalCh;
     public int xfo;
+    public LinkHeader[] linkHeaders;
+    public TimingAllowOrigin timingAllowOrigin;
+    public boolean bfcacheOptInUnload;
+    public java.util.Map<String, String> reportingEndpoints;
+    public VariantsHeader[] variantsHeaders;
+    public String[] contentLanguage;
 
     private ParsedHeaders(int version) {
         super(STRUCT_SIZE, version);
-        this.originAgentCluster = (boolean) false;
         this.xfo = (int) XFrameOptionsValue.NONE;
+        this.bfcacheOptInUnload = (boolean) false;
     }
 
     public ParsedHeaders() {
@@ -93,7 +100,9 @@ public final class ParsedHeaders extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.originAgentCluster = decoder0.readBoolean(48, 0);
+                result.originAgentCluster = decoder0.readInt(48);
+                    OriginAgentClusterValue.validate(result.originAgentCluster);
+                    result.originAgentCluster = OriginAgentClusterValue.toKnownValue(result.originAgentCluster);
                 }
                 {
                     
@@ -112,15 +121,99 @@ public final class ParsedHeaders extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(64, false);
-                result.acceptChLifetime = org.chromium.mojo_base.mojom.TimeDelta.decode(decoder1);
-                }
-                {
-                    
-                result.criticalCh = decoder0.readInts(72, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                result.criticalCh = decoder0.readInts(64, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 if (result.criticalCh != null) {
                     for (int i1 = 0; i1 < result.criticalCh.length; ++i1) {
                         WebClientHintsType.validate(result.criticalCh[i1]);
+                    }
+                }
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(72, false);
+                {
+                    org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                    result.linkHeaders = new LinkHeader[si1.elementsOrVersion];
+                    for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
+                        
+                        org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                        result.linkHeaders[i1] = LinkHeader.decode(decoder2);
+                    }
+                }
+                }
+                {
+                    
+                result.timingAllowOrigin = TimingAllowOrigin.decode(decoder0, 80);
+                }
+                {
+                    
+                result.bfcacheOptInUnload = decoder0.readBoolean(96, 0);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(104, true);
+                if (decoder1 == null) {
+                    result.reportingEndpoints = null;
+                } else {
+                    decoder1.readDataHeaderForMap();
+                    String[] keys0;
+                    String[] values0;
+                    {
+                        
+                        org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, false);
+                        {
+                            org.chromium.mojo.bindings.DataHeader si2 = decoder2.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                            keys0 = new String[si2.elementsOrVersion];
+                            for (int i2 = 0; i2 < si2.elementsOrVersion; ++i2) {
+                                
+                                keys0[i2] = decoder2.readString(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i2, false);
+                            }
+                        }
+                    }
+                    {
+                        
+                        org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE, false);
+                        {
+                            org.chromium.mojo.bindings.DataHeader si2 = decoder2.readDataHeaderForPointerArray(keys0.length);
+                            values0 = new String[si2.elementsOrVersion];
+                            for (int i2 = 0; i2 < si2.elementsOrVersion; ++i2) {
+                                
+                                values0[i2] = decoder2.readString(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i2, false);
+                            }
+                        }
+                    }
+                    result.reportingEndpoints = new java.util.HashMap<String, String>();
+                    for (int index0 = 0; index0 < keys0.length; ++index0) {
+                        result.reportingEndpoints.put(keys0[index0],  values0[index0]);
+                    }
+                }
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(112, true);
+                if (decoder1 == null) {
+                    result.variantsHeaders = null;
+                } else {
+                    org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                    result.variantsHeaders = new VariantsHeader[si1.elementsOrVersion];
+                    for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
+                        
+                        org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                        result.variantsHeaders[i1] = VariantsHeader.decode(decoder2);
+                    }
+                }
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(120, true);
+                if (decoder1 == null) {
+                    result.contentLanguage = null;
+                } else {
+                    org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                    result.contentLanguage = new String[si1.elementsOrVersion];
+                    for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
+                        
+                        result.contentLanguage[i1] = decoder1.readString(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
                     }
                 }
                 }
@@ -152,14 +245,77 @@ public final class ParsedHeaders extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.crossOriginOpenerPolicy, 40, false);
         
-        encoder0.encode(this.originAgentCluster, 48, 0);
+        encoder0.encode(this.originAgentCluster, 48);
         
         encoder0.encode(this.xfo, 52);
         
         encoder0.encode(this.acceptCh, 56, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
         
-        encoder0.encode(this.acceptChLifetime, 64, false);
+        encoder0.encode(this.criticalCh, 64, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
         
-        encoder0.encode(this.criticalCh, 72, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+        if (this.linkHeaders == null) {
+            encoder0.encodeNullPointer(72, false);
+        } else {
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.linkHeaders.length, 72, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            for (int i0 = 0; i0 < this.linkHeaders.length; ++i0) {
+                
+                encoder1.encode(this.linkHeaders[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
+            }
+        }
+        
+        encoder0.encode(this.timingAllowOrigin, 80, true);
+        
+        encoder0.encode(this.bfcacheOptInUnload, 96, 0);
+        
+        if (this.reportingEndpoints == null) {
+            encoder0.encodeNullPointer(104, true);
+        } else {
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encoderForMap(104);
+            int size0 = this.reportingEndpoints.size();
+            String[] keys0 = new String[size0];
+            String[] values0 = new String[size0];
+            int index0 = 0;
+            for (java.util.Map.Entry<String, String> entry0 : this.reportingEndpoints.entrySet()) {
+                keys0[index0] = entry0.getKey();
+                values0[index0] = entry0.getValue();
+                ++index0;
+            }
+            
+            {
+                org.chromium.mojo.bindings.Encoder encoder2 = encoder1.encodePointerArray(keys0.length, org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                for (int i1 = 0; i1 < keys0.length; ++i1) {
+                    
+                    encoder2.encode(keys0[i1], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                }
+            }
+            
+            {
+                org.chromium.mojo.bindings.Encoder encoder2 = encoder1.encodePointerArray(values0.length, org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                for (int i1 = 0; i1 < values0.length; ++i1) {
+                    
+                    encoder2.encode(values0[i1], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                }
+            }
+        }
+        
+        if (this.variantsHeaders == null) {
+            encoder0.encodeNullPointer(112, true);
+        } else {
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.variantsHeaders.length, 112, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            for (int i0 = 0; i0 < this.variantsHeaders.length; ++i0) {
+                
+                encoder1.encode(this.variantsHeaders[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
+            }
+        }
+        
+        if (this.contentLanguage == null) {
+            encoder0.encodeNullPointer(120, true);
+        } else {
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.contentLanguage.length, 120, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            for (int i0 = 0; i0 < this.contentLanguage.length; ++i0) {
+                
+                encoder1.encode(this.contentLanguage[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
+            }
+        }
     }
 }

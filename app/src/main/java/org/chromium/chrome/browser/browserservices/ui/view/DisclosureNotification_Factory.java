@@ -3,7 +3,7 @@ package org.chromium.chrome.browser.browserservices.ui.view;
 import android.content.Context;
 import android.content.res.Resources;
 import dagger.internal.Factory;
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 import javax.inject.Provider;
 import org.chromium.chrome.browser.browserservices.ui.TrustedWebActivityModel;
 import org.chromium.chrome.browser.lifecycle.ActivityLifecycleDispatcher;

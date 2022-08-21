@@ -4,7 +4,7 @@ import dagger.Lazy;
 import dagger.internal.DoubleCheck;
 import dagger.internal.Factory;
 import dagger.internal.Preconditions;
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 import javax.inject.Provider;
 import org.chromium.chrome.browser.browserservices.trustedwebactivityui.TwaIntentHandlingStrategy;
 import org.chromium.chrome.browser.customtabs.content.CustomTabIntentHandlingStrategy;

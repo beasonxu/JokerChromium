@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ImageDownloader extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface ImageDownloader extends org.chromium.mojo.bindings.Interface {
 
     Manager<ImageDownloader, ImageDownloader.Proxy> MANAGER = ImageDownloader_Internal.MANAGER;
 
-
     void downloadImage(
-org.chromium.url.mojom.Url url, boolean isFavicon, int preferredSize, int maxBitmapSize, boolean bypassCache, 
-DownloadImageResponse callback);
+org.chromium.url.mojom.Url url, boolean isFavicon, org.chromium.gfx.mojom.Size preferredSize, int maxBitmapSize, boolean bypassCache, 
+DownloadImage_Response callback);
 
-    interface DownloadImageResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<Integer, org.chromium.skia.mojom.BitmapN32[], org.chromium.gfx.mojom.Size[]> { }
+    interface DownloadImage_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<Integer, org.chromium.skia.mojom.BitmapN32[], org.chromium.gfx.mojom.Size[]> { }
 
 
 }

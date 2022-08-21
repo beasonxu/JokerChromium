@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ResidentKeyRequirement {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ResidentKeyRequirement.DISCOURAGED,
+        ResidentKeyRequirement.PREFERRED,
+        ResidentKeyRequirement.REQUIRED})
+    public @interface EnumType {}
 
     public static final int DISCOURAGED = 0;
     public static final int PREFERRED = 1;

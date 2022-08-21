@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ServiceWorkerFetchResponseCallback extends org.chromium.mojo.bindings.Interface {
 
@@ -23,19 +25,16 @@ public interface ServiceWorkerFetchResponseCallback extends org.chromium.mojo.bi
 
     Manager<ServiceWorkerFetchResponseCallback, ServiceWorkerFetchResponseCallback.Proxy> MANAGER = ServiceWorkerFetchResponseCallback_Internal.MANAGER;
 
-
     void onResponse(
 FetchApiResponse response, ServiceWorkerFetchEventTiming timing);
-
 
 
     void onResponseStream(
 FetchApiResponse response, ServiceWorkerStreamHandle bodyAsStream, ServiceWorkerFetchEventTiming timing);
 
 
-
     void onFallback(
-ServiceWorkerFetchEventTiming timing);
+org.chromium.network.mojom.DataElementChunkedDataPipe requestBody, ServiceWorkerFetchEventTiming timing);
 
 
 }

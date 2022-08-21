@@ -1,15 +1,13 @@
 package org.chromium.chrome.browser.password_manager;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class PasswordGenerationPopupBridgeJni implements PasswordGenerationPopupBridge.Natives {
+class PasswordGenerationPopupBridgeJni implements PasswordGenerationPopupBridge.Natives {
   private static PasswordGenerationPopupBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<PasswordGenerationPopupBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.password_manager.PasswordGenerationPopupBridge.Natives>() {

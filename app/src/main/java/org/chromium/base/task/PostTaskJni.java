@@ -3,15 +3,13 @@ package org.chromium.base.task;
 import java.lang.Override;
 import java.lang.Runnable;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class PostTaskJni implements PostTask.Natives {
+class PostTaskJni implements PostTask.Natives {
   private static PostTask.Natives testInstance;
 
   public static final JniStaticTestMocker<PostTask.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.base.task.PostTask.Natives>() {

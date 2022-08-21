@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class Nfc_Internal {
 
@@ -53,9 +55,13 @@ class Nfc_Internal {
 
     private static final int CANCEL_PUSH_ORDINAL = 2;
 
-    private static final int WATCH_ORDINAL = 3;
+    private static final int MAKE_READ_ONLY_ORDINAL = 3;
 
-    private static final int CANCEL_WATCH_ORDINAL = 4;
+    private static final int CANCEL_MAKE_READ_ONLY_ORDINAL = 4;
+
+    private static final int WATCH_ORDINAL = 5;
+
+    private static final int CANCEL_WATCH_ORDINAL = 6;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements Nfc.Proxy {
@@ -86,7 +92,7 @@ NfcClient client) {
         @Override
         public void push(
 NdefMessage message, NdefWriteOptions options, 
-PushResponse callback) {
+Push_Response callback) {
 
             NfcPushParams _message = new NfcPushParams();
 
@@ -123,9 +129,44 @@ PushResponse callback) {
 
 
         @Override
+        public void makeReadOnly(
+
+MakeReadOnly_Response callback) {
+
+            NfcMakeReadOnlyParams _message = new NfcMakeReadOnlyParams();
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    MAKE_READ_ONLY_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new NfcMakeReadOnlyResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void cancelMakeReadOnly(
+) {
+
+            NfcCancelMakeReadOnlyParams _message = new NfcCancelMakeReadOnlyParams();
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(CANCEL_MAKE_READ_ONLY_ORDINAL)));
+
+        }
+
+
+        @Override
         public void watch(
 int id, 
-WatchResponse callback) {
+Watch_Response callback) {
 
             NfcWatchParams _message = new NfcWatchParams();
 
@@ -221,6 +262,20 @@ int id) {
 
 
 
+                    case CANCEL_MAKE_READ_ONLY_ORDINAL: {
+
+                        NfcCancelMakeReadOnlyParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().cancelMakeReadOnly();
+                        return true;
+                    }
+
+
+
+
+
+
+
                     case CANCEL_WATCH_ORDINAL: {
 
                         NfcCancelWatchParams data =
@@ -273,6 +328,22 @@ int id) {
                                 NfcPushParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().push(data.message, data.options, new NfcPushResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
+
+
+                    case MAKE_READ_ONLY_ORDINAL: {
+
+                        NfcMakeReadOnlyParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().makeReadOnly(new NfcMakeReadOnlyResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -506,9 +577,9 @@ int id) {
 
     static class NfcPushResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Nfc.PushResponse mCallback;
+        private final Nfc.Push_Response mCallback;
 
-        NfcPushResponseParamsForwardToCallback(Nfc.PushResponse callback) {
+        NfcPushResponseParamsForwardToCallback(Nfc.Push_Response callback) {
             this.mCallback = callback;
         }
 
@@ -533,7 +604,7 @@ int id) {
         }
     }
 
-    static class NfcPushResponseParamsProxyToResponder implements Nfc.PushResponse {
+    static class NfcPushResponseParamsProxyToResponder implements Nfc.Push_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -607,6 +678,243 @@ int id) {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
                 result = new NfcCancelPushParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+
+
+    
+    static final class NfcMakeReadOnlyParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private NfcMakeReadOnlyParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NfcMakeReadOnlyParams() {
+            this(0);
+        }
+
+        public static NfcMakeReadOnlyParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NfcMakeReadOnlyParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NfcMakeReadOnlyParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NfcMakeReadOnlyParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NfcMakeReadOnlyParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+
+
+    
+    static final class NfcMakeReadOnlyResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public NdefError error;
+
+        private NfcMakeReadOnlyResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NfcMakeReadOnlyResponseParams() {
+            this(0);
+        }
+
+        public static NfcMakeReadOnlyResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NfcMakeReadOnlyResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NfcMakeReadOnlyResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NfcMakeReadOnlyResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NfcMakeReadOnlyResponseParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, true);
+                    result.error = NdefError.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.error, 8, true);
+        }
+    }
+
+    static class NfcMakeReadOnlyResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final Nfc.MakeReadOnly_Response mCallback;
+
+        NfcMakeReadOnlyResponseParamsForwardToCallback(Nfc.MakeReadOnly_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(MAKE_READ_ONLY_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                NfcMakeReadOnlyResponseParams response = NfcMakeReadOnlyResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.error);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class NfcMakeReadOnlyResponseParamsProxyToResponder implements Nfc.MakeReadOnly_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        NfcMakeReadOnlyResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(NdefError error) {
+            NfcMakeReadOnlyResponseParams _response = new NfcMakeReadOnlyResponseParams();
+
+            _response.error = error;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    MAKE_READ_ONLY_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class NfcCancelMakeReadOnlyParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private NfcCancelMakeReadOnlyParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NfcCancelMakeReadOnlyParams() {
+            this(0);
+        }
+
+        public static NfcCancelMakeReadOnlyParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NfcCancelMakeReadOnlyParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NfcCancelMakeReadOnlyParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NfcCancelMakeReadOnlyParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NfcCancelMakeReadOnlyParams(elementsOrVersion);
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -750,9 +1058,9 @@ int id) {
 
     static class NfcWatchResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Nfc.WatchResponse mCallback;
+        private final Nfc.Watch_Response mCallback;
 
-        NfcWatchResponseParamsForwardToCallback(Nfc.WatchResponse callback) {
+        NfcWatchResponseParamsForwardToCallback(Nfc.Watch_Response callback) {
             this.mCallback = callback;
         }
 
@@ -777,7 +1085,7 @@ int id) {
         }
     }
 
-    static class NfcWatchResponseParamsProxyToResponder implements Nfc.WatchResponse {
+    static class NfcWatchResponseParamsProxyToResponder implements Nfc.Watch_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

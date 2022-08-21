@@ -13,8 +13,17 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class DispatchType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        DispatchType.BLOCKING,
+        DispatchType.EVENT_NON_BLOCKING,
+        DispatchType.LISTENERS_NON_BLOCKING_PASSIVE,
+        DispatchType.LISTENERS_FORCED_NON_BLOCKING_DUE_TO_FLING})
+    public @interface EnumType {}
 
     public static final int BLOCKING = 0;
     public static final int EVENT_NON_BLOCKING = 1;

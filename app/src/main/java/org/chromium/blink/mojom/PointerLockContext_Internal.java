@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class PointerLockContext_Internal {
 
@@ -61,7 +63,7 @@ class PointerLockContext_Internal {
         @Override
         public void requestMouseLockChange(
 boolean unadjustedMovement, 
-RequestMouseLockChangeResponse callback) {
+RequestMouseLockChange_Response callback) {
 
             PointerLockContextRequestMouseLockChangeParams _message = new PointerLockContextRequestMouseLockChangeParams();
 
@@ -293,9 +295,9 @@ RequestMouseLockChangeResponse callback) {
 
     static class PointerLockContextRequestMouseLockChangeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PointerLockContext.RequestMouseLockChangeResponse mCallback;
+        private final PointerLockContext.RequestMouseLockChange_Response mCallback;
 
-        PointerLockContextRequestMouseLockChangeResponseParamsForwardToCallback(PointerLockContext.RequestMouseLockChangeResponse callback) {
+        PointerLockContextRequestMouseLockChangeResponseParamsForwardToCallback(PointerLockContext.RequestMouseLockChange_Response callback) {
             this.mCallback = callback;
         }
 
@@ -320,7 +322,7 @@ RequestMouseLockChangeResponse callback) {
         }
     }
 
-    static class PointerLockContextRequestMouseLockChangeResponseParamsProxyToResponder implements PointerLockContext.RequestMouseLockChangeResponse {
+    static class PointerLockContextRequestMouseLockChangeResponseParamsProxyToResponder implements PointerLockContext.RequestMouseLockChange_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

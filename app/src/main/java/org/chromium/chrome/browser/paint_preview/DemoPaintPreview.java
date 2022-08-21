@@ -111,16 +111,27 @@ public class DemoPaintPreview implements PlayerManager.Listener {
         return ChromeAccessibilityUtil.get().isAccessibilityEnabled();
     }
 
+    @Override
+    public void onAccessibilityNotSupported() {
+        if (isAccessibilityEnabled()) {
+            Toast.makeText(mTab.getContext(), R.string.paint_preview_demo_no_accessibility,
+                         Toast.LENGTH_LONG)
+                    .show();
+        }
+    }
+
     private class DemoPaintPreviewTabObserver extends EmptyTabObserver {
         @Override
-        public void onDidStartNavigation(Tab tab, NavigationHandle navigationHandle) {
+        public void onDidStartNavigationInPrimaryMainFrame(
+                Tab tab, NavigationHandle navigationHandle) {
             if (!mTabbedPaintPreview.isAttached()) return;
-
-            // Ignore navigations from subframes. We should only remove the paint preview
-            // player when the user navigates to a new page.
-            if (!navigationHandle.isInMainFrame()) return;
-
             removePaintPreviewDemo();
+        }
+
+        @Override
+        public void onDidStartNavigationNoop(Tab tab, NavigationHandle navigationHandle) {
+            if (!mTabbedPaintPreview.isAttached()) return;
+            if (!navigationHandle.isInPrimaryMainFrame()) return;
         }
     }
 }

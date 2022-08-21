@@ -13,8 +13,17 @@
 
 package org.chromium.ui.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ScrollEventPhase {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ScrollEventPhase.NONE,
+        ScrollEventPhase.BEGAN,
+        ScrollEventPhase.UPDATE,
+        ScrollEventPhase.END})
+    public @interface EnumType {}
 
     public static final int NONE = 0;
     public static final int BEGAN = 1;

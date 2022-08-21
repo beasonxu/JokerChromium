@@ -1,7 +1,7 @@
 package org.chromium.chrome.browser.browserservices.ui.splashscreen.trustedwebactivity;
 
 import dagger.internal.Factory;
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 
 @Generated(
     value = "dagger.internal.codegen.ComponentProcessor",

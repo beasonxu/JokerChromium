@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class Authenticator_Internal {
 
@@ -53,7 +55,9 @@ class Authenticator_Internal {
 
     private static final int IS_USER_VERIFYING_PLATFORM_AUTHENTICATOR_AVAILABLE_ORDINAL = 2;
 
-    private static final int CANCEL_ORDINAL = 3;
+    private static final int IS_CONDITIONAL_MEDIATION_AVAILABLE_ORDINAL = 3;
+
+    private static final int CANCEL_ORDINAL = 4;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements Authenticator.Proxy {
@@ -67,7 +71,7 @@ class Authenticator_Internal {
         @Override
         public void makeCredential(
 PublicKeyCredentialCreationOptions options, 
-MakeCredentialResponse callback) {
+MakeCredential_Response callback) {
 
             AuthenticatorMakeCredentialParams _message = new AuthenticatorMakeCredentialParams();
 
@@ -89,7 +93,7 @@ MakeCredentialResponse callback) {
         @Override
         public void getAssertion(
 PublicKeyCredentialRequestOptions options, 
-GetAssertionResponse callback) {
+GetAssertion_Response callback) {
 
             AuthenticatorGetAssertionParams _message = new AuthenticatorGetAssertionParams();
 
@@ -111,7 +115,7 @@ GetAssertionResponse callback) {
         @Override
         public void isUserVerifyingPlatformAuthenticatorAvailable(
 
-IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
+IsUserVerifyingPlatformAuthenticatorAvailable_Response callback) {
 
             AuthenticatorIsUserVerifyingPlatformAuthenticatorAvailableParams _message = new AuthenticatorIsUserVerifyingPlatformAuthenticatorAvailableParams();
 
@@ -124,6 +128,26 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
                                     0)),
                     new AuthenticatorIsUserVerifyingPlatformAuthenticatorAvailableResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void isConditionalMediationAvailable(
+
+IsConditionalMediationAvailable_Response callback) {
+
+            AuthenticatorIsConditionalMediationAvailableParams _message = new AuthenticatorIsConditionalMediationAvailableParams();
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    IS_CONDITIONAL_MEDIATION_AVAILABLE_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new AuthenticatorIsConditionalMediationAvailableResponseParamsForwardToCallback(callback));
 
         }
 
@@ -169,6 +193,8 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
                     case org.chromium.mojo.bindings.interfacecontrol.InterfaceControlMessagesConstants.RUN_OR_CLOSE_PIPE_MESSAGE_ID:
                         return org.chromium.mojo.bindings.InterfaceControlMessagesHelper.handleRunOrClosePipe(
                                 Authenticator_Internal.MANAGER, messageWithHeader);
+
+
 
 
 
@@ -264,6 +290,20 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
 
 
 
+
+
+
+                    case IS_CONDITIONAL_MEDIATION_AVAILABLE_ORDINAL: {
+
+                        AuthenticatorIsConditionalMediationAvailableParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().isConditionalMediationAvailable(new AuthenticatorIsConditionalMediationAvailableResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
                     default:
                         return false;
                 }
@@ -342,11 +382,12 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
     
     static final class AuthenticatorMakeCredentialResponseParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public int status;
         public MakeCredentialAuthenticatorResponse credential;
+        public WebAuthnDomExceptionDetails domExceptionDetails;
 
         private AuthenticatorMakeCredentialResponseParams(int version) {
             super(STRUCT_SIZE, version);
@@ -392,6 +433,11 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, true);
                     result.credential = MakeCredentialAuthenticatorResponse.decode(decoder1);
                     }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, true);
+                    result.domExceptionDetails = WebAuthnDomExceptionDetails.decode(decoder1);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -407,14 +453,16 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
             encoder0.encode(this.status, 8);
             
             encoder0.encode(this.credential, 16, true);
+            
+            encoder0.encode(this.domExceptionDetails, 24, true);
         }
     }
 
     static class AuthenticatorMakeCredentialResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Authenticator.MakeCredentialResponse mCallback;
+        private final Authenticator.MakeCredential_Response mCallback;
 
-        AuthenticatorMakeCredentialResponseParamsForwardToCallback(Authenticator.MakeCredentialResponse callback) {
+        AuthenticatorMakeCredentialResponseParamsForwardToCallback(Authenticator.MakeCredential_Response callback) {
             this.mCallback = callback;
         }
 
@@ -431,7 +479,7 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
 
                 AuthenticatorMakeCredentialResponseParams response = AuthenticatorMakeCredentialResponseParams.deserialize(messageWithHeader.getPayload());
 
-                mCallback.call(response.status, response.credential);
+                mCallback.call(response.status, response.credential, response.domExceptionDetails);
                 return true;
             } catch (org.chromium.mojo.bindings.DeserializationException e) {
                 return false;
@@ -439,7 +487,7 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
         }
     }
 
-    static class AuthenticatorMakeCredentialResponseParamsProxyToResponder implements Authenticator.MakeCredentialResponse {
+    static class AuthenticatorMakeCredentialResponseParamsProxyToResponder implements Authenticator.MakeCredential_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -455,12 +503,14 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
         }
 
         @Override
-        public void call(Integer status, MakeCredentialAuthenticatorResponse credential) {
+        public void call(Integer status, MakeCredentialAuthenticatorResponse credential, WebAuthnDomExceptionDetails domExceptionDetails) {
             AuthenticatorMakeCredentialResponseParams _response = new AuthenticatorMakeCredentialResponseParams();
 
             _response.status = status;
 
             _response.credential = credential;
+
+            _response.domExceptionDetails = domExceptionDetails;
 
             org.chromium.mojo.bindings.ServiceMessage _message =
                     _response.serializeWithHeader(
@@ -542,11 +592,12 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
     
     static final class AuthenticatorGetAssertionResponseParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public int status;
         public GetAssertionAuthenticatorResponse credential;
+        public WebAuthnDomExceptionDetails domExceptionDetails;
 
         private AuthenticatorGetAssertionResponseParams(int version) {
             super(STRUCT_SIZE, version);
@@ -592,6 +643,11 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, true);
                     result.credential = GetAssertionAuthenticatorResponse.decode(decoder1);
                     }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, true);
+                    result.domExceptionDetails = WebAuthnDomExceptionDetails.decode(decoder1);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -607,14 +663,16 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
             encoder0.encode(this.status, 8);
             
             encoder0.encode(this.credential, 16, true);
+            
+            encoder0.encode(this.domExceptionDetails, 24, true);
         }
     }
 
     static class AuthenticatorGetAssertionResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Authenticator.GetAssertionResponse mCallback;
+        private final Authenticator.GetAssertion_Response mCallback;
 
-        AuthenticatorGetAssertionResponseParamsForwardToCallback(Authenticator.GetAssertionResponse callback) {
+        AuthenticatorGetAssertionResponseParamsForwardToCallback(Authenticator.GetAssertion_Response callback) {
             this.mCallback = callback;
         }
 
@@ -631,7 +689,7 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
 
                 AuthenticatorGetAssertionResponseParams response = AuthenticatorGetAssertionResponseParams.deserialize(messageWithHeader.getPayload());
 
-                mCallback.call(response.status, response.credential);
+                mCallback.call(response.status, response.credential, response.domExceptionDetails);
                 return true;
             } catch (org.chromium.mojo.bindings.DeserializationException e) {
                 return false;
@@ -639,7 +697,7 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
         }
     }
 
-    static class AuthenticatorGetAssertionResponseParamsProxyToResponder implements Authenticator.GetAssertionResponse {
+    static class AuthenticatorGetAssertionResponseParamsProxyToResponder implements Authenticator.GetAssertion_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -655,12 +713,14 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
         }
 
         @Override
-        public void call(Integer status, GetAssertionAuthenticatorResponse credential) {
+        public void call(Integer status, GetAssertionAuthenticatorResponse credential, WebAuthnDomExceptionDetails domExceptionDetails) {
             AuthenticatorGetAssertionResponseParams _response = new AuthenticatorGetAssertionResponseParams();
 
             _response.status = status;
 
             _response.credential = credential;
+
+            _response.domExceptionDetails = domExceptionDetails;
 
             org.chromium.mojo.bindings.ServiceMessage _message =
                     _response.serializeWithHeader(
@@ -794,9 +854,9 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
 
     static class AuthenticatorIsUserVerifyingPlatformAuthenticatorAvailableResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Authenticator.IsUserVerifyingPlatformAuthenticatorAvailableResponse mCallback;
+        private final Authenticator.IsUserVerifyingPlatformAuthenticatorAvailable_Response mCallback;
 
-        AuthenticatorIsUserVerifyingPlatformAuthenticatorAvailableResponseParamsForwardToCallback(Authenticator.IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
+        AuthenticatorIsUserVerifyingPlatformAuthenticatorAvailableResponseParamsForwardToCallback(Authenticator.IsUserVerifyingPlatformAuthenticatorAvailable_Response callback) {
             this.mCallback = callback;
         }
 
@@ -821,7 +881,7 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
         }
     }
 
-    static class AuthenticatorIsUserVerifyingPlatformAuthenticatorAvailableResponseParamsProxyToResponder implements Authenticator.IsUserVerifyingPlatformAuthenticatorAvailableResponse {
+    static class AuthenticatorIsUserVerifyingPlatformAuthenticatorAvailableResponseParamsProxyToResponder implements Authenticator.IsUserVerifyingPlatformAuthenticatorAvailable_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -847,6 +907,186 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
                             mCore,
                             new org.chromium.mojo.bindings.MessageHeader(
                                     IS_USER_VERIFYING_PLATFORM_AUTHENTICATOR_AVAILABLE_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class AuthenticatorIsConditionalMediationAvailableParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private AuthenticatorIsConditionalMediationAvailableParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public AuthenticatorIsConditionalMediationAvailableParams() {
+            this(0);
+        }
+
+        public static AuthenticatorIsConditionalMediationAvailableParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static AuthenticatorIsConditionalMediationAvailableParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static AuthenticatorIsConditionalMediationAvailableParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            AuthenticatorIsConditionalMediationAvailableParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new AuthenticatorIsConditionalMediationAvailableParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+
+
+    
+    static final class AuthenticatorIsConditionalMediationAvailableResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public boolean available;
+
+        private AuthenticatorIsConditionalMediationAvailableResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public AuthenticatorIsConditionalMediationAvailableResponseParams() {
+            this(0);
+        }
+
+        public static AuthenticatorIsConditionalMediationAvailableResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static AuthenticatorIsConditionalMediationAvailableResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static AuthenticatorIsConditionalMediationAvailableResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            AuthenticatorIsConditionalMediationAvailableResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new AuthenticatorIsConditionalMediationAvailableResponseParams(elementsOrVersion);
+                    {
+                        
+                    result.available = decoder0.readBoolean(8, 0);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.available, 8, 0);
+        }
+    }
+
+    static class AuthenticatorIsConditionalMediationAvailableResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final Authenticator.IsConditionalMediationAvailable_Response mCallback;
+
+        AuthenticatorIsConditionalMediationAvailableResponseParamsForwardToCallback(Authenticator.IsConditionalMediationAvailable_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(IS_CONDITIONAL_MEDIATION_AVAILABLE_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                AuthenticatorIsConditionalMediationAvailableResponseParams response = AuthenticatorIsConditionalMediationAvailableResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.available);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class AuthenticatorIsConditionalMediationAvailableResponseParamsProxyToResponder implements Authenticator.IsConditionalMediationAvailable_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        AuthenticatorIsConditionalMediationAvailableResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(Boolean available) {
+            AuthenticatorIsConditionalMediationAvailableResponseParams _response = new AuthenticatorIsConditionalMediationAvailableResponseParams();
+
+            _response.available = available;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    IS_CONDITIONAL_MEDIATION_AVAILABLE_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);

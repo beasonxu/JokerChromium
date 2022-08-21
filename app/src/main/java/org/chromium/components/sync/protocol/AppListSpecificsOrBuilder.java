@@ -200,4 +200,15 @@ public interface AppListSpecificsOrBuilder extends
    */
   com.google.protobuf.ByteString
       getItemPinOrdinalBytes();
+
+  /**
+   * <code>optional .sync_pb.AppListSpecifics.IconColor item_color = 8;</code>
+   * @return Whether the itemColor field is set.
+   */
+  boolean hasItemColor();
+  /**
+   * <code>optional .sync_pb.AppListSpecifics.IconColor item_color = 8;</code>
+   * @return The itemColor.
+   */
+  org.chromium.components.sync.protocol.AppListSpecifics.IconColor getItemColor();
 }

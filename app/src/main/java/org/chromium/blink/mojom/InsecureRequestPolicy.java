@@ -13,8 +13,17 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class InsecureRequestPolicy {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        InsecureRequestPolicy.LEAVE_INSECURE_REQUESTS_ALONE,
+        InsecureRequestPolicy.UPGRADE_INSECURE_REQUESTS,
+        InsecureRequestPolicy.BLOCK_ALL_MIXED_CONTENT,
+        InsecureRequestPolicy.MAX_INSECURE_REQUEST_POLICY})
+    public @interface EnumType {}
 
     public static final int LEAVE_INSECURE_REQUESTS_ALONE = 0;
     public static final int UPGRADE_INSECURE_REQUESTS = 1;

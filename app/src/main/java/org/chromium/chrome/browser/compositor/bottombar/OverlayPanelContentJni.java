@@ -2,7 +2,6 @@ package org.chromium.chrome.browser.compositor.bottombar;
 
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
@@ -11,9 +10,8 @@ import org.chromium.components.embedder_support.delegate.WebContentsDelegateAndr
 import org.chromium.components.navigation_interception.InterceptNavigationDelegate;
 import org.chromium.content_public.browser.WebContents;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class OverlayPanelContentJni implements OverlayPanelContent.Natives {
+class OverlayPanelContentJni implements OverlayPanelContent.Natives {
   private static OverlayPanelContent.Natives testInstance;
 
   public static final JniStaticTestMocker<OverlayPanelContent.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.compositor.bottombar.OverlayPanelContent.Natives>() {

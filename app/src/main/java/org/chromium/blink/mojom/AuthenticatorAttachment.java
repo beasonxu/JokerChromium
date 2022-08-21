@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class AuthenticatorAttachment {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        AuthenticatorAttachment.NO_PREFERENCE,
+        AuthenticatorAttachment.PLATFORM,
+        AuthenticatorAttachment.CROSS_PLATFORM})
+    public @interface EnumType {}
 
     public static final int NO_PREFERENCE = 0;
     public static final int PLATFORM = 1;

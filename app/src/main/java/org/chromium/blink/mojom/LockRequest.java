@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface LockRequest extends org.chromium.mojo.bindings.Interface {
 
@@ -23,15 +25,12 @@ public interface LockRequest extends org.chromium.mojo.bindings.Interface {
 
     Manager<LockRequest, LockRequest.Proxy> MANAGER = LockRequest_Internal.MANAGER;
 
-
     void granted(
 org.chromium.mojo.bindings.AssociatedInterfaceNotSupported lockHandle);
 
 
-
     void failed(
 );
-
 
 
     void abort(

@@ -13,6 +13,8 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface CompositorFrameSink extends org.chromium.mojo.bindings.Interface {
 
@@ -23,47 +25,43 @@ public interface CompositorFrameSink extends org.chromium.mojo.bindings.Interfac
 
     Manager<CompositorFrameSink, CompositorFrameSink.Proxy> MANAGER = CompositorFrameSink_Internal.MANAGER;
 
-
     void setNeedsBeginFrame(
 boolean needsBeginFrame);
-
 
 
     void setWantsAnimateOnlyBeginFrames(
 );
 
 
-
     void submitCompositorFrame(
 LocalSurfaceId localSurfaceId, CompositorFrame frame, HitTestRegionList hitTestRegionList, long submitTime);
 
 
-
     void submitCompositorFrameSync(
 LocalSurfaceId localSurfaceId, CompositorFrame frame, HitTestRegionList hitTestRegionList, long submitTime, 
-SubmitCompositorFrameSyncResponse callback);
+SubmitCompositorFrameSync_Response callback);
 
-    interface SubmitCompositorFrameSyncResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<ReturnedResource[]> { }
-
+    interface SubmitCompositorFrameSync_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<ReturnedResource[]> { }
 
 
     void didNotProduceFrame(
 BeginFrameAck ack);
 
 
-
     void didAllocateSharedBitmap(
 org.chromium.mojo_base.mojom.ReadOnlySharedMemoryRegion region, org.chromium.gpu.mojom.Mailbox id);
-
 
 
     void didDeleteSharedBitmap(
 org.chromium.gpu.mojom.Mailbox id);
 
 
-
     void initializeCompositorFrameSinkType(
 int type);
+
+
+    void setThreadIds(
+int[] threadIds);
 
 
 }

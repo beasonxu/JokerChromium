@@ -19,6 +19,9 @@ import androidx.annotation.RequiresApi;
 
 import org.chromium.base.annotations.CalledByNative;
 import org.chromium.base.annotations.MainDex;
+import org.chromium.base.compat.ApiHelperForM;
+import org.chromium.base.compat.ApiHelperForQ;
+import org.chromium.base.compat.ApiHelperForR;
 import org.chromium.base.task.AsyncTask;
 
 import java.io.File;
@@ -198,8 +201,8 @@ public abstract class PathUtils {
     /**
      * Returns the downloads directory. Before Android Q, this returns the public download directory
      * for Chrome app. On Q+, this returns the first private download directory for the app, since Q
-     * will block public directory access. May return null when there is no external storage volumes
-     * mounted.
+     * will block public directory access. May return empty string when there are no external
+     * storage volumes mounted.
      */
     @SuppressWarnings("unused")
     @CalledByNative
@@ -214,7 +217,7 @@ public abstract class PathUtils {
                 // storage for which no additional permissions are required.
                 String[] dirs = getAllPrivateDownloadsDirectories();
                 assert dirs != null;
-                return dirs[0];
+                return dirs.length == 0 ? "" : dirs[0];
             }
             return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
                     .getPath();
@@ -248,20 +251,21 @@ public abstract class PathUtils {
     public static @NonNull String[] getExternalDownloadVolumesNames() {
         ArrayList<File> files = new ArrayList<>();
         Set<String> volumes =
-                MediaStore.getExternalVolumeNames(ContextUtils.getApplicationContext());
+                ApiHelperForQ.getExternalVolumeNames(ContextUtils.getApplicationContext());
         for (String vol : volumes) {
             if (!TextUtils.isEmpty(vol) && !vol.contains(MediaStore.VOLUME_EXTERNAL_PRIMARY)) {
-                File volumeDir = ContextUtils.getApplicationContext()
-                                         .getSystemService(StorageManager.class)
-                                         .getStorageVolume(MediaStore.Files.getContentUri(vol))
-                                         .getDirectory();
-                assert volumeDir.isDirectory();
-                assert volumeDir.exists();
-
-                File volumeDownloadDir =
-                        new File(volumeDir.getAbsolutePath(), Environment.DIRECTORY_DOWNLOADS);
-                assert volumeDownloadDir.isDirectory();
-                assert volumeDownloadDir.exists();
+                StorageManager manager = ApiHelperForM.getSystemService(
+                        ContextUtils.getApplicationContext(), StorageManager.class);
+                File volumeDir =
+                        ApiHelperForR.getVolumeDir(manager, MediaStore.Files.getContentUri(vol));
+                File volumeDownloadDir = new File(volumeDir, Environment.DIRECTORY_DOWNLOADS);
+                // Happens in rare case when Android doesn't create the download directory for this
+                // volume.
+                if (!volumeDownloadDir.isDirectory()) {
+                    Log.w(TAG, "Download dir missing: %s, parent dir:%s, isDirectory:%s",
+                            volumeDownloadDir.getAbsolutePath(), volumeDir.getAbsolutePath(),
+                            volumeDir.isDirectory());
+                }
                 files.add(volumeDownloadDir);
             }
         }

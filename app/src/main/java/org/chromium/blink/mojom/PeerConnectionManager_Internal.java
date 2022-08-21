@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class PeerConnectionManager_Internal {
 
@@ -51,13 +53,15 @@ class PeerConnectionManager_Internal {
 
     private static final int ON_THERMAL_STATE_CHANGE_ORDINAL = 1;
 
-    private static final int START_EVENT_LOG_ORDINAL = 2;
+    private static final int ON_SPEED_LIMIT_CHANGE_ORDINAL = 2;
 
-    private static final int STOP_EVENT_LOG_ORDINAL = 3;
+    private static final int START_EVENT_LOG_ORDINAL = 3;
 
-    private static final int GET_STANDARD_STATS_ORDINAL = 4;
+    private static final int STOP_EVENT_LOG_ORDINAL = 4;
 
-    private static final int GET_LEGACY_STATS_ORDINAL = 5;
+    private static final int GET_STANDARD_STATS_ORDINAL = 5;
+
+    private static final int GET_LEGACY_STATS_ORDINAL = 6;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements PeerConnectionManager.Proxy {
@@ -96,6 +100,23 @@ int thermalState) {
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(ON_THERMAL_STATE_CHANGE_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void onSpeedLimitChange(
+int speedLimit) {
+
+            PeerConnectionManagerOnSpeedLimitChangeParams _message = new PeerConnectionManagerOnSpeedLimitChangeParams();
+
+            _message.speedLimit = speedLimit;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(ON_SPEED_LIMIT_CHANGE_ORDINAL)));
 
         }
 
@@ -222,6 +243,19 @@ int peerConnectionLocalId) {
 
 
 
+                    case ON_SPEED_LIMIT_CHANGE_ORDINAL: {
+
+                        PeerConnectionManagerOnSpeedLimitChangeParams data =
+                                PeerConnectionManagerOnSpeedLimitChangeParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().onSpeedLimitChange(data.speedLimit);
+                        return true;
+                    }
+
+
+
+
+
                     case START_EVENT_LOG_ORDINAL: {
 
                         PeerConnectionManagerStartEventLogParams data =
@@ -296,6 +330,8 @@ int peerConnectionLocalId) {
                     case org.chromium.mojo.bindings.interfacecontrol.InterfaceControlMessagesConstants.RUN_MESSAGE_ID:
                         return org.chromium.mojo.bindings.InterfaceControlMessagesHelper.handleRun(
                                 getCore(), PeerConnectionManager_Internal.MANAGER, messageWithHeader, receiver);
+
+
 
 
 
@@ -437,6 +473,69 @@ int peerConnectionLocalId) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.thermalState, 8);
+        }
+    }
+
+
+
+    
+    static final class PeerConnectionManagerOnSpeedLimitChangeParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int speedLimit;
+
+        private PeerConnectionManagerOnSpeedLimitChangeParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public PeerConnectionManagerOnSpeedLimitChangeParams() {
+            this(0);
+        }
+
+        public static PeerConnectionManagerOnSpeedLimitChangeParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static PeerConnectionManagerOnSpeedLimitChangeParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static PeerConnectionManagerOnSpeedLimitChangeParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            PeerConnectionManagerOnSpeedLimitChangeParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new PeerConnectionManagerOnSpeedLimitChangeParams(elementsOrVersion);
+                    {
+                        
+                    result.speedLimit = decoder0.readInt(8);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.speedLimit, 8);
         }
     }
 

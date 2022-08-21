@@ -34,6 +34,123 @@ public  final class SearchEngineSpecifics extends
     imageUrlPostParams_ = "";
     newTabUrl_ = "";
   }
+  /**
+   * Protobuf enum {@code sync_pb.SearchEngineSpecifics.ActiveStatus}
+   */
+  public enum ActiveStatus
+      implements com.google.protobuf.Internal.EnumLite {
+    /**
+     * <pre>
+     * The default state when a SE is auto-added. Unspecified SE are inactive.
+     * </pre>
+     *
+     * <code>ACTIVE_STATUS_UNSPECIFIED = 0;</code>
+     */
+    ACTIVE_STATUS_UNSPECIFIED(0),
+    /**
+     * <pre>
+     * The SE is active and can be triggered via the omnibox.
+     * </pre>
+     *
+     * <code>ACTIVE_STATUS_TRUE = 1;</code>
+     */
+    ACTIVE_STATUS_TRUE(1),
+    /**
+     * <pre>
+     * The SE has been manually set to inactive by the user.
+     * </pre>
+     *
+     * <code>ACTIVE_STATUS_FALSE = 2;</code>
+     */
+    ACTIVE_STATUS_FALSE(2),
+    ;
+
+    /**
+     * <pre>
+     * The default state when a SE is auto-added. Unspecified SE are inactive.
+     * </pre>
+     *
+     * <code>ACTIVE_STATUS_UNSPECIFIED = 0;</code>
+     */
+    public static final int ACTIVE_STATUS_UNSPECIFIED_VALUE = 0;
+    /**
+     * <pre>
+     * The SE is active and can be triggered via the omnibox.
+     * </pre>
+     *
+     * <code>ACTIVE_STATUS_TRUE = 1;</code>
+     */
+    public static final int ACTIVE_STATUS_TRUE_VALUE = 1;
+    /**
+     * <pre>
+     * The SE has been manually set to inactive by the user.
+     * </pre>
+     *
+     * <code>ACTIVE_STATUS_FALSE = 2;</code>
+     */
+    public static final int ACTIVE_STATUS_FALSE_VALUE = 2;
+
+
+    @java.lang.Override
+    public final int getNumber() {
+      return value;
+    }
+
+    /**
+     * @param value The number of the enum to look for.
+     * @return The enum associated with the given number.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static ActiveStatus valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static ActiveStatus forNumber(int value) {
+      switch (value) {
+        case 0: return ACTIVE_STATUS_UNSPECIFIED;
+        case 1: return ACTIVE_STATUS_TRUE;
+        case 2: return ACTIVE_STATUS_FALSE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<ActiveStatus>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        ActiveStatus> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ActiveStatus>() {
+            @java.lang.Override
+            public ActiveStatus findValueByNumber(int number) {
+              return ActiveStatus.forNumber(number);
+            }
+          };
+
+    public static com.google.protobuf.Internal.EnumVerifier 
+        internalGetVerifier() {
+      return ActiveStatusVerifier.INSTANCE;
+    }
+
+    private static final class ActiveStatusVerifier implements 
+         com.google.protobuf.Internal.EnumVerifier { 
+            static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new ActiveStatusVerifier();
+            @java.lang.Override
+            public boolean isInRange(int number) {
+              return ActiveStatus.forNumber(number) != null;
+            }
+          };
+
+    private final int value;
+
+    private ActiveStatus(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:sync_pb.SearchEngineSpecifics.ActiveStatus)
+  }
+
   private int bitField0_;
   public static final int SHORT_NAME_FIELD_NUMBER = 1;
   private java.lang.String shortName_;
@@ -1696,6 +1813,115 @@ public  final class SearchEngineSpecifics extends
       com.google.protobuf.ByteString value) {
     newTabUrl_ = value.toStringUtf8();
     bitField0_ |= 0x00200000;
+  }
+
+  public static final int IS_ACTIVE_FIELD_NUMBER = 27;
+  private int isActive_;
+  /**
+   * <pre>
+   * Whether a search engine is 'active' and can be triggered via the omnibox by
+   * typing in the relevant keyword.
+   * </pre>
+   *
+   * <code>optional .sync_pb.SearchEngineSpecifics.ActiveStatus is_active = 27;</code>
+   * @return Whether the isActive field is set.
+   */
+  @java.lang.Override
+  public boolean hasIsActive() {
+    return ((bitField0_ & 0x00400000) != 0);
+  }
+  /**
+   * <pre>
+   * Whether a search engine is 'active' and can be triggered via the omnibox by
+   * typing in the relevant keyword.
+   * </pre>
+   *
+   * <code>optional .sync_pb.SearchEngineSpecifics.ActiveStatus is_active = 27;</code>
+   * @return The isActive.
+   */
+  @java.lang.Override
+  public org.chromium.components.sync.protocol.SearchEngineSpecifics.ActiveStatus getIsActive() {
+    org.chromium.components.sync.protocol.SearchEngineSpecifics.ActiveStatus result = org.chromium.components.sync.protocol.SearchEngineSpecifics.ActiveStatus.forNumber(isActive_);
+    return result == null ? org.chromium.components.sync.protocol.SearchEngineSpecifics.ActiveStatus.ACTIVE_STATUS_UNSPECIFIED : result;
+  }
+  /**
+   * <pre>
+   * Whether a search engine is 'active' and can be triggered via the omnibox by
+   * typing in the relevant keyword.
+   * </pre>
+   *
+   * <code>optional .sync_pb.SearchEngineSpecifics.ActiveStatus is_active = 27;</code>
+   * @param value The isActive to set.
+   */
+  private void setIsActive(org.chromium.components.sync.protocol.SearchEngineSpecifics.ActiveStatus value) {
+    isActive_ = value.getNumber();
+    bitField0_ |= 0x00400000;
+  }
+  /**
+   * <pre>
+   * Whether a search engine is 'active' and can be triggered via the omnibox by
+   * typing in the relevant keyword.
+   * </pre>
+   *
+   * <code>optional .sync_pb.SearchEngineSpecifics.ActiveStatus is_active = 27;</code>
+   */
+  private void clearIsActive() {
+    bitField0_ = (bitField0_ & ~0x00400000);
+    isActive_ = 0;
+  }
+
+  public static final int STARTER_PACK_ID_FIELD_NUMBER = 28;
+  private int starterPackId_;
+  /**
+   * <pre>
+   * The ID associated with the starter pack engine.  This is set to 0 if not a
+   * starter pack engine.
+   * </pre>
+   *
+   * <code>optional int32 starter_pack_id = 28;</code>
+   * @return Whether the starterPackId field is set.
+   */
+  @java.lang.Override
+  public boolean hasStarterPackId() {
+    return ((bitField0_ & 0x00800000) != 0);
+  }
+  /**
+   * <pre>
+   * The ID associated with the starter pack engine.  This is set to 0 if not a
+   * starter pack engine.
+   * </pre>
+   *
+   * <code>optional int32 starter_pack_id = 28;</code>
+   * @return The starterPackId.
+   */
+  @java.lang.Override
+  public int getStarterPackId() {
+    return starterPackId_;
+  }
+  /**
+   * <pre>
+   * The ID associated with the starter pack engine.  This is set to 0 if not a
+   * starter pack engine.
+   * </pre>
+   *
+   * <code>optional int32 starter_pack_id = 28;</code>
+   * @param value The starterPackId to set.
+   */
+  private void setStarterPackId(int value) {
+    bitField0_ |= 0x00800000;
+    starterPackId_ = value;
+  }
+  /**
+   * <pre>
+   * The ID associated with the starter pack engine.  This is set to 0 if not a
+   * starter pack engine.
+   * </pre>
+   *
+   * <code>optional int32 starter_pack_id = 28;</code>
+   */
+  private void clearStarterPackId() {
+    bitField0_ = (bitField0_ & ~0x00800000);
+    starterPackId_ = 0;
   }
 
   public static org.chromium.components.sync.protocol.SearchEngineSpecifics parseFrom(
@@ -3520,6 +3746,118 @@ public  final class SearchEngineSpecifics extends
       return this;
     }
 
+    /**
+     * <pre>
+     * Whether a search engine is 'active' and can be triggered via the omnibox by
+     * typing in the relevant keyword.
+     * </pre>
+     *
+     * <code>optional .sync_pb.SearchEngineSpecifics.ActiveStatus is_active = 27;</code>
+     * @return Whether the isActive field is set.
+     */
+    @java.lang.Override
+    public boolean hasIsActive() {
+      return instance.hasIsActive();
+    }
+    /**
+     * <pre>
+     * Whether a search engine is 'active' and can be triggered via the omnibox by
+     * typing in the relevant keyword.
+     * </pre>
+     *
+     * <code>optional .sync_pb.SearchEngineSpecifics.ActiveStatus is_active = 27;</code>
+     * @return The isActive.
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.SearchEngineSpecifics.ActiveStatus getIsActive() {
+      return instance.getIsActive();
+    }
+    /**
+     * <pre>
+     * Whether a search engine is 'active' and can be triggered via the omnibox by
+     * typing in the relevant keyword.
+     * </pre>
+     *
+     * <code>optional .sync_pb.SearchEngineSpecifics.ActiveStatus is_active = 27;</code>
+     * @param value The enum numeric value on the wire for isActive to set.
+     * @return This builder for chaining.
+     */
+    public Builder setIsActive(org.chromium.components.sync.protocol.SearchEngineSpecifics.ActiveStatus value) {
+      copyOnWrite();
+      instance.setIsActive(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * Whether a search engine is 'active' and can be triggered via the omnibox by
+     * typing in the relevant keyword.
+     * </pre>
+     *
+     * <code>optional .sync_pb.SearchEngineSpecifics.ActiveStatus is_active = 27;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearIsActive() {
+      copyOnWrite();
+      instance.clearIsActive();
+      return this;
+    }
+
+    /**
+     * <pre>
+     * The ID associated with the starter pack engine.  This is set to 0 if not a
+     * starter pack engine.
+     * </pre>
+     *
+     * <code>optional int32 starter_pack_id = 28;</code>
+     * @return Whether the starterPackId field is set.
+     */
+    @java.lang.Override
+    public boolean hasStarterPackId() {
+      return instance.hasStarterPackId();
+    }
+    /**
+     * <pre>
+     * The ID associated with the starter pack engine.  This is set to 0 if not a
+     * starter pack engine.
+     * </pre>
+     *
+     * <code>optional int32 starter_pack_id = 28;</code>
+     * @return The starterPackId.
+     */
+    @java.lang.Override
+    public int getStarterPackId() {
+      return instance.getStarterPackId();
+    }
+    /**
+     * <pre>
+     * The ID associated with the starter pack engine.  This is set to 0 if not a
+     * starter pack engine.
+     * </pre>
+     *
+     * <code>optional int32 starter_pack_id = 28;</code>
+     * @param value The starterPackId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setStarterPackId(int value) {
+      copyOnWrite();
+      instance.setStarterPackId(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * The ID associated with the starter pack engine.  This is set to 0 if not a
+     * starter pack engine.
+     * </pre>
+     *
+     * <code>optional int32 starter_pack_id = 28;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearStarterPackId() {
+      copyOnWrite();
+      instance.clearStarterPackId();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:sync_pb.SearchEngineSpecifics)
   }
   @java.lang.Override
@@ -3560,14 +3898,17 @@ public  final class SearchEngineSpecifics extends
             "instantUrlPostParams_",
             "imageUrlPostParams_",
             "newTabUrl_",
+            "isActive_",
+            org.chromium.components.sync.protocol.SearchEngineSpecifics.ActiveStatus.internalGetVerifier(),
+            "starterPackId_",
           };
           java.lang.String info =
-              "\u0001\u0017\u0000\u0001\u0001\u001a\u0017\u0000\u0001\u0000\u0001\u1008\u0000\u0002" +
+              "\u0001\u0019\u0000\u0001\u0001\u001c\u0019\u0000\u0001\u0000\u0001\u1008\u0000\u0002" +
               "\u1008\u0001\u0003\u1008\u0002\u0004\u1008\u0003\u0005\u1007\u0004\u0006\u1008\u0005" +
               "\u0007\u1002\u0006\b\u1008\u0007\t\u1007\b\n\u1008\t\u000b\u1004\n\f\u1007\u000b" +
               "\u000f\u1008\f\u0011\u1002\r\u0012\u1008\u000e\u0013\u001a\u0014\u1008\u000f\u0015" +
               "\u1008\u0010\u0016\u1008\u0011\u0017\u1008\u0012\u0018\u1008\u0013\u0019\u1008\u0014" +
-              "\u001a\u1008\u0015";
+              "\u001a\u1008\u0015\u001b\u100c\u0016\u001c\u1004\u0017";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

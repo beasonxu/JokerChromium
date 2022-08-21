@@ -2,7 +2,6 @@ package org.chromium.chrome.browser.contextmenu;
 
 import android.graphics.Bitmap;
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.Callback;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
@@ -12,9 +11,8 @@ import org.chromium.components.embedder_support.contextmenu.ContextMenuParams;
 import org.chromium.content_public.browser.RenderFrameHost;
 import org.chromium.content_public.browser.WebContents;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ContextMenuNativeDelegateImplJni implements ContextMenuNativeDelegateImpl.Natives {
+class ContextMenuNativeDelegateImplJni implements ContextMenuNativeDelegateImpl.Natives {
   private static ContextMenuNativeDelegateImpl.Natives testInstance;
 
   public static final JniStaticTestMocker<ContextMenuNativeDelegateImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.contextmenu.ContextMenuNativeDelegateImpl.Natives>() {

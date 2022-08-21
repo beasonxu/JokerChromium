@@ -1,17 +1,14 @@
 package org.chromium.chrome.browser.tabmodel;
 
-import java.lang.Object;
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.chrome.browser.tab.Tab;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class TabModelObserverJniBridgeJni implements TabModelObserverJniBridge.Natives {
+class TabModelObserverJniBridgeJni implements TabModelObserverJniBridge.Natives {
   private static TabModelObserverJniBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<TabModelObserverJniBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.tabmodel.TabModelObserverJniBridge.Natives>() {
@@ -38,9 +35,15 @@ final class TabModelObserverJniBridgeJni implements TabModelObserverJniBridge.Na
   }
 
   @Override
-  public void didCloseTab(long nativeTabModelObserverJniBridge, TabModelObserverJniBridge caller,
-      int tabId, boolean incognito) {
-    GEN_JNI.org_chromium_chrome_browser_tabmodel_TabModelObserverJniBridge_didCloseTab(nativeTabModelObserverJniBridge, caller, tabId, incognito);
+  public void onFinishingTabClosure(long nativeTabModelObserverJniBridge,
+      TabModelObserverJniBridge caller, int tabId, boolean incognito) {
+    GEN_JNI.org_chromium_chrome_browser_tabmodel_TabModelObserverJniBridge_onFinishingTabClosure(nativeTabModelObserverJniBridge, caller, tabId, incognito);
+  }
+
+  @Override
+  public void onFinishingMultipleTabClosure(long nativeTabModelObserverJniBridge,
+      TabModelObserverJniBridge caller, Tab[] tabs) {
+    GEN_JNI.org_chromium_chrome_browser_tabmodel_TabModelObserverJniBridge_onFinishingMultipleTabClosure(nativeTabModelObserverJniBridge, caller, tabs);
   }
 
   @Override
@@ -81,7 +84,7 @@ final class TabModelObserverJniBridgeJni implements TabModelObserverJniBridge.Na
 
   @Override
   public void allTabsPendingClosure(long nativeTabModelObserverJniBridge,
-      TabModelObserverJniBridge caller, Object[] tabs) {
+      TabModelObserverJniBridge caller, Tab[] tabs) {
     GEN_JNI.org_chromium_chrome_browser_tabmodel_TabModelObserverJniBridge_allTabsPendingClosure(nativeTabModelObserverJniBridge, caller, tabs);
   }
 

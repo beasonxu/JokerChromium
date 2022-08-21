@@ -10,9 +10,10 @@ import android.view.View;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
-import androidx.appcompat.content.res.AppCompatResources;
 
-import org.chromium.base.ApiCompatibilityUtils;
+import org.chromium.base.supplier.ObservableSupplier;
+import org.chromium.base.supplier.ObservableSupplierImpl;
+import org.chromium.chrome.browser.flags.ChromeFeatureList;
 import org.chromium.chrome.browser.tab.Tab;
 import org.chromium.chrome.browser.tab.TabCreationState;
 import org.chromium.chrome.browser.tab.TabLaunchType;
@@ -22,8 +23,11 @@ import org.chromium.chrome.browser.tabmodel.TabModelSelectorObserver;
 import org.chromium.chrome.browser.tabmodel.TabModelSelectorTabModelObserver;
 import org.chromium.chrome.browser.tabmodel.TabModelUtils;
 import org.chromium.chrome.browser.tasks.tab_management.TabSelectionEditorCoordinator.TabSelectionEditorNavigationProvider;
-import org.chromium.chrome.tab_ui.R;
+import org.chromium.components.browser_ui.styles.ChromeColors;
 import org.chromium.components.browser_ui.widget.selectable_list.SelectionDelegate;
+import org.chromium.ui.modelutil.ListModelChangeProcessor;
+import org.chromium.ui.modelutil.PropertyKey;
+import org.chromium.ui.modelutil.PropertyListModel;
 import org.chromium.ui.modelutil.PropertyModel;
 
 import java.util.ArrayList;
@@ -55,10 +59,17 @@ class TabSelectionEditorMediator
     private final ResetHandler mResetHandler;
     private final PropertyModel mModel;
     private final SelectionDelegate<Integer> mSelectionDelegate;
+    private final TabSelectionEditorToolbar mTabSelectionEditorToolbar;
     private final TabModelSelectorTabModelObserver mTabModelObserver;
     private final TabModelSelectorObserver mTabModelSelectorObserver;
     private TabSelectionEditorActionProvider mActionProvider;
     private TabSelectionEditorCoordinator.TabSelectionEditorNavigationProvider mNavigationProvider;
+    private final ObservableSupplierImpl<Boolean> mBackPressChangedSupplier =
+            new ObservableSupplierImpl<>();
+
+    private PropertyListModel<PropertyModel, PropertyKey> mActionListModel;
+    private ListModelChangeProcessor mActionChangeProcessor;
+    private TabSelectionEditorMenu mTabSelectionEditorMenu;
 
     private final View.OnClickListener mNavigationClickListener = new View.OnClickListener() {
         @Override
@@ -84,12 +95,14 @@ class TabSelectionEditorMediator
 
     TabSelectionEditorMediator(Context context, TabModelSelector tabModelSelector,
             ResetHandler resetHandler, PropertyModel model,
-            SelectionDelegate<Integer> selectionDelegate) {
+            SelectionDelegate<Integer> selectionDelegate,
+            TabSelectionEditorToolbar tabSelectionEditorToolbar) {
         mContext = context;
         mTabModelSelector = tabModelSelector;
         mResetHandler = resetHandler;
         mModel = model;
         mSelectionDelegate = selectionDelegate;
+        mTabSelectionEditorToolbar = tabSelectionEditorToolbar;
 
         mModel.set(
                 TabSelectionEditorProperties.TOOLBAR_NAVIGATION_LISTENER, mNavigationClickListener);
@@ -119,31 +132,11 @@ class TabSelectionEditorMediator
                 // Incognito in both light/dark theme is the same as non-incognito mode in dark
                 // theme. Non-incognito mode and incognito in both light/dark themes in dark theme
                 // all look dark.
-                boolean isIncognito = newModel.isIncognito();
-                @ColorInt
-                int primaryColor = ApiCompatibilityUtils.getColor(mContext.getResources(),
-                        isIncognito ? R.color.default_bg_color_dark : R.color.default_bg_color);
-                // TODO(995876): Update color modern_blue_300 to active_color_dark when the
-                // associated bug is landed.
-                @ColorInt
-                int toolbarBackgroundColor = ApiCompatibilityUtils.getColor(mContext.getResources(),
-                        isIncognito ? R.color.modern_blue_300
-                                    : R.color.default_control_color_active);
-                ColorStateList toolbarTintColorList = AppCompatResources.getColorStateList(mContext,
-                        isIncognito ? R.color.dark_text_color_list
-                                    : R.color.default_text_color_inverse_list);
-                int textAppearance = isIncognito ? R.style.TextAppearance_Headline_Primary_Dark
-                                                 : R.style.TextAppearance_Headline_Primary_Inverse;
-
-                mModel.set(TabSelectionEditorProperties.PRIMARY_COLOR, primaryColor);
-                mModel.set(TabSelectionEditorProperties.TOOLBAR_BACKGROUND_COLOR,
-                        toolbarBackgroundColor);
-                mModel.set(TabSelectionEditorProperties.TOOLBAR_GROUP_BUTTON_TINT,
-                        toolbarTintColorList);
-                mModel.set(TabSelectionEditorProperties.TOOLBAR_TEXT_APPEARANCE, textAppearance);
+                updateColors(newModel.isIncognito());
             }
         };
         mTabModelSelector.addObserver(mTabModelSelectorObserver);
+        updateColors(mTabModelSelector.isIncognitoSelected());
 
         // Default action for action button is to group selected tabs.
         mActionProvider = new TabSelectionEditorActionProvider(
@@ -151,10 +144,40 @@ class TabSelectionEditorMediator
 
         mNavigationProvider =
                 new TabSelectionEditorCoordinator.TabSelectionEditorNavigationProvider(this);
+        mBackPressChangedSupplier.set(isEditorVisible());
+        mModel.addObserver((source, key) -> {
+            if (key == TabSelectionEditorProperties.IS_VISIBLE) {
+                mBackPressChangedSupplier.set(isEditorVisible());
+            }
+        });
     }
 
     private boolean isEditorVisible() {
         return mModel.get(TabSelectionEditorProperties.IS_VISIBLE);
+    }
+
+    private void updateColors(boolean isIncognito) {
+        @ColorInt
+        int primaryColor = ChromeColors.getPrimaryBackgroundColor(mContext, isIncognito);
+        @ColorInt
+        int toolbarBackgroundColor =
+                TabUiThemeProvider.getTabSelectionToolbarBackground(mContext, isIncognito);
+        ColorStateList toolbarTintColorList =
+                TabUiThemeProvider.getTabSelectionToolbarIconTintList(mContext, isIncognito);
+
+        mModel.set(TabSelectionEditorProperties.PRIMARY_COLOR, primaryColor);
+        mModel.set(TabSelectionEditorProperties.TOOLBAR_BACKGROUND_COLOR, toolbarBackgroundColor);
+        mModel.set(TabSelectionEditorProperties.TOOLBAR_GROUP_TEXT_TINT, toolbarTintColorList);
+        mModel.set(TabSelectionEditorProperties.TOOLBAR_GROUP_BUTTON_TINT, toolbarTintColorList);
+
+        if (mActionListModel == null) return;
+
+        for (PropertyModel model : mActionListModel) {
+            // TODO(ckitagawa): update these tints with input from UX. Add a check if the action
+            // ignores icon tints (for the select/deselect all button).
+            model.set(TabSelectionEditorActionProperties.TEXT_TINT, toolbarTintColorList);
+            model.set(TabSelectionEditorActionProperties.ICON_TINT, toolbarTintColorList);
+        }
     }
 
     /**
@@ -209,6 +232,39 @@ class TabSelectionEditorMediator
             mModel.set(TabSelectionEditorProperties.TOOLBAR_ACTION_BUTTON_DESCRIPTION_RESOURCE_ID,
                     actionButtonDescriptionResourceId);
         }
+        mModel.set(TabSelectionEditorProperties.TOOLBAR_ACTION_BUTTON_VISIBILITY, View.VISIBLE);
+        updateColors(mTabModelSelector.isIncognitoSelected());
+    }
+
+    @Override
+    public void configureToolbarWithMenuItems(List<TabSelectionEditorAction> actions,
+            @Nullable TabSelectionEditorNavigationProvider navigationProvider) {
+        // Deferred initialization.
+        // TODO(ckitagawa): Move this to TabSelectionEditorCoordinator once it is lazily
+        // initialized.
+        assert ChromeFeatureList.isEnabled(ChromeFeatureList.TAB_SELECTION_EDITOR_V2);
+        if (mActionListModel == null) {
+            mActionListModel = new PropertyListModel<>();
+            mTabSelectionEditorMenu =
+                    new TabSelectionEditorMenu(mContext, mTabSelectionEditorToolbar.getMenu());
+            mTabSelectionEditorToolbar.setOnMenuItemClickListener(
+                    mTabSelectionEditorMenu::onMenuItemClick);
+            mSelectionDelegate.addObserver(mTabSelectionEditorMenu);
+            mActionChangeProcessor = new ListModelChangeProcessor(
+                    mActionListModel, mTabSelectionEditorMenu, new TabSelectionEditorMenuAdapter());
+            mActionListModel.addObserver(mActionChangeProcessor);
+        }
+
+        mActionListModel.clear();
+        for (TabSelectionEditorAction action : actions) {
+            action.configure(mTabModelSelector, mSelectionDelegate);
+            mActionListModel.add(action.getPropertyModel());
+        }
+        if (navigationProvider != null) {
+            mNavigationProvider = navigationProvider;
+        }
+        mModel.set(TabSelectionEditorProperties.TOOLBAR_ACTION_BUTTON_VISIBILITY, View.GONE);
+        updateColors(mTabModelSelector.isIncognitoSelected());
     }
 
     @Override
@@ -216,6 +272,16 @@ class TabSelectionEditorMediator
         if (!isEditorVisible()) return false;
         mNavigationProvider.goBack();
         return true;
+    }
+
+    @Override
+    public void handleBackPress() {
+        mNavigationProvider.goBack();
+    }
+
+    @Override
+    public ObservableSupplier<Boolean> getHandleBackPressChangedSupplier() {
+        return mBackPressChangedSupplier;
     }
 
     @Override

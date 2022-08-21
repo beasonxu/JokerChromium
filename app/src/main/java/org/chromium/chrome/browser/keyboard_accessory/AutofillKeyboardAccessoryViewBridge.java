@@ -5,10 +5,10 @@
 package org.chromium.chrome.browser.keyboard_accessory;
 
 import android.content.Context;
-import android.content.DialogInterface;
 
 import androidx.annotation.Nullable;
 
+import org.chromium.base.Callback;
 import org.chromium.base.annotations.CalledByNative;
 import org.chromium.base.annotations.JNINamespace;
 import org.chromium.base.annotations.NativeMethods;
@@ -18,21 +18,22 @@ import org.chromium.components.autofill.AutofillDelegate;
 import org.chromium.components.autofill.AutofillSuggestion;
 import org.chromium.ui.DropdownItem;
 import org.chromium.ui.base.WindowAndroid;
-
+import org.chromium.url.GURL;
 /**
  * JNI call glue for AutofillExternalDelagate C++ and Java objects.
  * This provides an alternative UI for Autofill suggestions, and replaces AutofillPopupBridge when
  * --enable-autofill-keyboard-accessory-view is passed on the command line.
  */
 @JNINamespace("autofill")
-public class AutofillKeyboardAccessoryViewBridge
-        implements AutofillDelegate, DialogInterface.OnClickListener {
+public class AutofillKeyboardAccessoryViewBridge implements AutofillDelegate {
     private long mNativeAutofillKeyboardAccessory;
     private @Nullable ObservableSupplier<ManualFillingComponent> mManualFillingComponentSupplier;
     private @Nullable ManualFillingComponent mManualFillingComponent;
     private @Nullable Context mContext;
     private final PropertyProvider<AutofillSuggestion[]> mChipProvider =
             new PropertyProvider<>(AccessoryAction.AUTOFILL_SUGGESTION);
+    private final Callback<ManualFillingComponent> mFillingComponentObserver =
+            this::connectToFillingComponent;
 
     private AutofillKeyboardAccessoryViewBridge() {}
 
@@ -68,9 +69,7 @@ public class AutofillKeyboardAccessoryViewBridge
     @Override
     public void accessibilityFocusCleared() {}
 
-    @Override
-    public void onClick(DialogInterface dialog, int which) {
-        assert which == DialogInterface.BUTTON_POSITIVE;
+    private void onDeletionConfirmed() {
         if (mNativeAutofillKeyboardAccessory == 0) return;
         AutofillKeyboardAccessoryViewBridgeJni.get().deletionConfirmed(
                 mNativeAutofillKeyboardAccessory, AutofillKeyboardAccessoryViewBridge.this);
@@ -90,7 +89,7 @@ public class AutofillKeyboardAccessoryViewBridge
         mManualFillingComponentSupplier = ManualFillingComponentSupplier.from(windowAndroid);
         if (mManualFillingComponentSupplier != null) {
             ManualFillingComponent currentFillingComponent =
-                    mManualFillingComponentSupplier.addObserver(this::connectToFillingComponent);
+                    mManualFillingComponentSupplier.addObserver(mFillingComponentObserver);
             connectToFillingComponent(currentFillingComponent);
         }
 
@@ -111,9 +110,10 @@ public class AutofillKeyboardAccessoryViewBridge
     @CalledByNative
     private void dismiss() {
         if (mManualFillingComponentSupplier != null) {
-            mManualFillingComponentSupplier.removeObserver(this::connectToFillingComponent);
+            mChipProvider.notifyObservers(new AutofillSuggestion[0]);
+            mManualFillingComponentSupplier.removeObserver(mFillingComponentObserver);
         }
-        mChipProvider.notifyObservers(new AutofillSuggestion[0]);
+        dismissed();
         mContext = null;
     }
 
@@ -126,14 +126,10 @@ public class AutofillKeyboardAccessoryViewBridge
         mChipProvider.notifyObservers(suggestions);
     }
 
-    // Helper methods for AutofillSuggestion. These are copied from AutofillPopupBridge (which
-    // should
-    // eventually disappear).
-
     @CalledByNative
-    private void confirmDeletion(String title, String body) throws Exception {
-        // TODO(fhorschig): If deletion is implemented, build a ModalDialogView!
-        throw new Exception("Not implemented yet!");
+    private void confirmDeletion(String title, String body) {
+        assert mManualFillingComponent != null;
+        mManualFillingComponent.confirmOperation(title, body, this::onDeletionConfirmed);
     }
 
     @CalledByNative
@@ -159,15 +155,29 @@ public class AutofillKeyboardAccessoryViewBridge
      * @param iconId The resource ID for the icon associated with the suggestion, or 0 for no icon.
      * @param suggestionId Identifier for the suggestion type.
      * @param isDeletable Whether the item can be deleted by the user.
+     * @param featureForIPH The In-Product-Help feature used for displaying the bubble for the
+     *         suggestion.
+     * @param customIconUrl The url used to fetch the custom icon to be displayed in the autofill
+     *         suggestion chip.
      */
     @CalledByNative
     private static void addToAutofillSuggestionArray(AutofillSuggestion[] array, int index,
             String label, String sublabel, String itemTag, int iconId, int suggestionId,
-            boolean isDeletable) {
+            boolean isDeletable, String featureForIPH, GURL customIconUrl) {
         int drawableId = iconId == 0 ? DropdownItem.NO_ICON : iconId;
-        array[index] = new AutofillSuggestion(label, sublabel, itemTag, drawableId,
-                false /* isIconAtStart */, suggestionId, isDeletable, false /* isMultilineLabel */,
-                false /* isBoldLabel */);
+        array[index] = new AutofillSuggestion.Builder()
+                               .setLabel(label)
+                               .setSubLabel(sublabel)
+                               .setItemTag(itemTag)
+                               .setIconId(drawableId)
+                               .setIsIconAtStart(false)
+                               .setSuggestionId(suggestionId)
+                               .setIsDeletable(isDeletable)
+                               .setIsMultiLineLabel(false)
+                               .setIsBoldLabel(false)
+                               .setFeatureForIPH(featureForIPH)
+                               .setCustomIconUrl(customIconUrl)
+                               .build();
     }
 
     /**

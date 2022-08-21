@@ -13,6 +13,8 @@
 
 package org.chromium.webshare.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ShareService extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface ShareService extends org.chromium.mojo.bindings.Interface {
 
     Manager<ShareService, ShareService.Proxy> MANAGER = ShareService_Internal.MANAGER;
 
-
     void share(
 String title, String text, org.chromium.url.mojom.Url url, SharedFile[] files, 
-ShareResponse callback);
+Share_Response callback);
 
-    interface ShareResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
+    interface Share_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
 }

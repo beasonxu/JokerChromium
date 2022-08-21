@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class WidgetInputHandlerHost_Internal {
 
@@ -49,17 +51,19 @@ class WidgetInputHandlerHost_Internal {
 
     private static final int SET_TOUCH_ACTION_FROM_MAIN_ORDINAL = 0;
 
-    private static final int DID_OVERSCROLL_ORDINAL = 1;
+    private static final int SET_PAN_ACTION_ORDINAL = 1;
 
-    private static final int DID_START_SCROLLING_VIEWPORT_ORDINAL = 2;
+    private static final int DID_OVERSCROLL_ORDINAL = 2;
 
-    private static final int IME_CANCEL_COMPOSITION_ORDINAL = 3;
+    private static final int DID_START_SCROLLING_VIEWPORT_ORDINAL = 3;
 
-    private static final int IME_COMPOSITION_RANGE_CHANGED_ORDINAL = 4;
+    private static final int IME_CANCEL_COMPOSITION_ORDINAL = 4;
 
-    private static final int SET_MOUSE_CAPTURE_ORDINAL = 5;
+    private static final int IME_COMPOSITION_RANGE_CHANGED_ORDINAL = 5;
 
-    private static final int REQUEST_MOUSE_LOCK_ORDINAL = 6;
+    private static final int SET_MOUSE_CAPTURE_ORDINAL = 6;
+
+    private static final int REQUEST_MOUSE_LOCK_ORDINAL = 7;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements WidgetInputHandlerHost.Proxy {
@@ -83,6 +87,23 @@ int touchAction) {
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(SET_TOUCH_ACTION_FROM_MAIN_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void setPanAction(
+int panAction) {
+
+            WidgetInputHandlerHostSetPanActionParams _message = new WidgetInputHandlerHostSetPanActionParams();
+
+            _message.panAction = panAction;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(SET_PAN_ACTION_ORDINAL)));
 
         }
 
@@ -173,7 +194,7 @@ boolean capture) {
         @Override
         public void requestMouseLock(
 boolean fromUserGesture, boolean unadjustedMovement, 
-RequestMouseLockResponse callback) {
+RequestMouseLock_Response callback) {
 
             WidgetInputHandlerHostRequestMouseLockParams _message = new WidgetInputHandlerHostRequestMouseLockParams();
 
@@ -231,6 +252,19 @@ RequestMouseLockResponse callback) {
                                 WidgetInputHandlerHostSetTouchActionFromMainParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().setTouchActionFromMain(data.touchAction);
+                        return true;
+                    }
+
+
+
+
+
+                    case SET_PAN_ACTION_ORDINAL: {
+
+                        WidgetInputHandlerHostSetPanActionParams data =
+                                WidgetInputHandlerHostSetPanActionParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().setPanAction(data.panAction);
                         return true;
                     }
 
@@ -346,6 +380,8 @@ RequestMouseLockResponse callback) {
 
 
 
+
+
                     case REQUEST_MOUSE_LOCK_ORDINAL: {
 
                         WidgetInputHandlerHostRequestMouseLockParams data =
@@ -427,6 +463,71 @@ RequestMouseLockResponse callback) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.touchAction, 8);
+        }
+    }
+
+
+
+    
+    static final class WidgetInputHandlerHostSetPanActionParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int panAction;
+
+        private WidgetInputHandlerHostSetPanActionParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public WidgetInputHandlerHostSetPanActionParams() {
+            this(0);
+        }
+
+        public static WidgetInputHandlerHostSetPanActionParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static WidgetInputHandlerHostSetPanActionParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static WidgetInputHandlerHostSetPanActionParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            WidgetInputHandlerHostSetPanActionParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new WidgetInputHandlerHostSetPanActionParams(elementsOrVersion);
+                    {
+                        
+                    result.panAction = decoder0.readInt(8);
+                        PanAction.validate(result.panAction);
+                        result.panAction = PanAction.toKnownValue(result.panAction);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.panAction, 8);
         }
     }
 
@@ -901,9 +1002,9 @@ RequestMouseLockResponse callback) {
 
     static class WidgetInputHandlerHostRequestMouseLockResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final WidgetInputHandlerHost.RequestMouseLockResponse mCallback;
+        private final WidgetInputHandlerHost.RequestMouseLock_Response mCallback;
 
-        WidgetInputHandlerHostRequestMouseLockResponseParamsForwardToCallback(WidgetInputHandlerHost.RequestMouseLockResponse callback) {
+        WidgetInputHandlerHostRequestMouseLockResponseParamsForwardToCallback(WidgetInputHandlerHost.RequestMouseLock_Response callback) {
             this.mCallback = callback;
         }
 
@@ -928,7 +1029,7 @@ RequestMouseLockResponse callback) {
         }
     }
 
-    static class WidgetInputHandlerHostRequestMouseLockResponseParamsProxyToResponder implements WidgetInputHandlerHost.RequestMouseLockResponse {
+    static class WidgetInputHandlerHostRequestMouseLockResponseParamsProxyToResponder implements WidgetInputHandlerHost.RequestMouseLock_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

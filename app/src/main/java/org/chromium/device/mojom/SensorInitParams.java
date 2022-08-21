@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class SensorInitParams extends org.chromium.mojo.bindings.Struct {
 
@@ -25,7 +27,7 @@ public final class SensorInitParams extends org.chromium.mojo.bindings.Struct {
 
     public Sensor sensor;
     public org.chromium.mojo.bindings.InterfaceRequest<SensorClient> clientReceiver;
-    public org.chromium.mojo.system.SharedBufferHandle memory;
+    public org.chromium.mojo_base.mojom.ReadOnlySharedMemoryRegion memory;
     public long bufferOffset;
     public int mode;
     public SensorConfiguration defaultConfiguration;
@@ -34,7 +36,6 @@ public final class SensorInitParams extends org.chromium.mojo.bindings.Struct {
 
     private SensorInitParams(int version) {
         super(STRUCT_SIZE, version);
-        this.memory = org.chromium.mojo.system.InvalidHandle.INSTANCE;
     }
 
     public SensorInitParams() {
@@ -76,17 +77,18 @@ public final class SensorInitParams extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.memory = decoder0.readSharedBufferHandle(20, false);
-                }
-                {
-                    
-                result.bufferOffset = decoder0.readLong(24);
-                }
-                {
-                    
-                result.mode = decoder0.readInt(32);
+                result.mode = decoder0.readInt(20);
                     ReportingMode.validate(result.mode);
                     result.mode = ReportingMode.toKnownValue(result.mode);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
+                result.memory = org.chromium.mojo_base.mojom.ReadOnlySharedMemoryRegion.decode(decoder1);
+                }
+                {
+                    
+                result.bufferOffset = decoder0.readLong(32);
                 }
                 {
                     
@@ -117,11 +119,11 @@ public final class SensorInitParams extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.clientReceiver, 16, false);
         
-        encoder0.encode(this.memory, 20, false);
+        encoder0.encode(this.mode, 20);
         
-        encoder0.encode(this.bufferOffset, 24);
+        encoder0.encode(this.memory, 24, false);
         
-        encoder0.encode(this.mode, 32);
+        encoder0.encode(this.bufferOffset, 32);
         
         encoder0.encode(this.defaultConfiguration, 40, false);
         

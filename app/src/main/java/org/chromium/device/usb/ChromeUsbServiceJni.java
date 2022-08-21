@@ -2,15 +2,13 @@ package org.chromium.device.usb;
 
 import android.hardware.usb.UsbDevice;
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ChromeUsbServiceJni implements ChromeUsbService.Natives {
+class ChromeUsbServiceJni implements ChromeUsbService.Natives {
   private static ChromeUsbService.Natives testInstance;
 
   public static final JniStaticTestMocker<ChromeUsbService.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.device.usb.ChromeUsbService.Natives>() {

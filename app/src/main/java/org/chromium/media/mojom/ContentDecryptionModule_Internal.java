@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class ContentDecryptionModule_Internal {
 
@@ -92,7 +94,7 @@ org.chromium.mojo.bindings.AssociatedInterfaceNotSupported client) {
         @Override
         public void setServerCertificate(
 byte[] certificateData, 
-SetServerCertificateResponse callback) {
+SetServerCertificate_Response callback) {
 
             ContentDecryptionModuleSetServerCertificateParams _message = new ContentDecryptionModuleSetServerCertificateParams();
 
@@ -114,7 +116,7 @@ SetServerCertificateResponse callback) {
         @Override
         public void getStatusForPolicy(
 int minHdcpVersion, 
-GetStatusForPolicyResponse callback) {
+GetStatusForPolicy_Response callback) {
 
             ContentDecryptionModuleGetStatusForPolicyParams _message = new ContentDecryptionModuleGetStatusForPolicyParams();
 
@@ -136,7 +138,7 @@ GetStatusForPolicyResponse callback) {
         @Override
         public void createSessionAndGenerateRequest(
 int sessionType, int initDataType, byte[] initData, 
-CreateSessionAndGenerateRequestResponse callback) {
+CreateSessionAndGenerateRequest_Response callback) {
 
             ContentDecryptionModuleCreateSessionAndGenerateRequestParams _message = new ContentDecryptionModuleCreateSessionAndGenerateRequestParams();
 
@@ -162,7 +164,7 @@ CreateSessionAndGenerateRequestResponse callback) {
         @Override
         public void loadSession(
 int sessionType, String sessionId, 
-LoadSessionResponse callback) {
+LoadSession_Response callback) {
 
             ContentDecryptionModuleLoadSessionParams _message = new ContentDecryptionModuleLoadSessionParams();
 
@@ -186,7 +188,7 @@ LoadSessionResponse callback) {
         @Override
         public void updateSession(
 String sessionId, byte[] response, 
-UpdateSessionResponse callback) {
+UpdateSession_Response callback) {
 
             ContentDecryptionModuleUpdateSessionParams _message = new ContentDecryptionModuleUpdateSessionParams();
 
@@ -210,7 +212,7 @@ UpdateSessionResponse callback) {
         @Override
         public void closeSession(
 String sessionId, 
-CloseSessionResponse callback) {
+CloseSession_Response callback) {
 
             ContentDecryptionModuleCloseSessionParams _message = new ContentDecryptionModuleCloseSessionParams();
 
@@ -232,7 +234,7 @@ CloseSessionResponse callback) {
         @Override
         public void removeSession(
 String sessionId, 
-RemoveSessionResponse callback) {
+RemoveSession_Response callback) {
 
             ContentDecryptionModuleRemoveSessionParams _message = new ContentDecryptionModuleRemoveSessionParams();
 
@@ -643,9 +645,9 @@ RemoveSessionResponse callback) {
 
     static class ContentDecryptionModuleSetServerCertificateResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ContentDecryptionModule.SetServerCertificateResponse mCallback;
+        private final ContentDecryptionModule.SetServerCertificate_Response mCallback;
 
-        ContentDecryptionModuleSetServerCertificateResponseParamsForwardToCallback(ContentDecryptionModule.SetServerCertificateResponse callback) {
+        ContentDecryptionModuleSetServerCertificateResponseParamsForwardToCallback(ContentDecryptionModule.SetServerCertificate_Response callback) {
             this.mCallback = callback;
         }
 
@@ -670,7 +672,7 @@ RemoveSessionResponse callback) {
         }
     }
 
-    static class ContentDecryptionModuleSetServerCertificateResponseParamsProxyToResponder implements ContentDecryptionModule.SetServerCertificateResponse {
+    static class ContentDecryptionModuleSetServerCertificateResponseParamsProxyToResponder implements ContentDecryptionModule.SetServerCertificate_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -842,9 +844,9 @@ RemoveSessionResponse callback) {
 
     static class ContentDecryptionModuleGetStatusForPolicyResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ContentDecryptionModule.GetStatusForPolicyResponse mCallback;
+        private final ContentDecryptionModule.GetStatusForPolicy_Response mCallback;
 
-        ContentDecryptionModuleGetStatusForPolicyResponseParamsForwardToCallback(ContentDecryptionModule.GetStatusForPolicyResponse callback) {
+        ContentDecryptionModuleGetStatusForPolicyResponseParamsForwardToCallback(ContentDecryptionModule.GetStatusForPolicy_Response callback) {
             this.mCallback = callback;
         }
 
@@ -869,7 +871,7 @@ RemoveSessionResponse callback) {
         }
     }
 
-    static class ContentDecryptionModuleGetStatusForPolicyResponseParamsProxyToResponder implements ContentDecryptionModule.GetStatusForPolicyResponse {
+    static class ContentDecryptionModuleGetStatusForPolicyResponseParamsProxyToResponder implements ContentDecryptionModule.GetStatusForPolicy_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1057,9 +1059,9 @@ RemoveSessionResponse callback) {
 
     static class ContentDecryptionModuleCreateSessionAndGenerateRequestResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ContentDecryptionModule.CreateSessionAndGenerateRequestResponse mCallback;
+        private final ContentDecryptionModule.CreateSessionAndGenerateRequest_Response mCallback;
 
-        ContentDecryptionModuleCreateSessionAndGenerateRequestResponseParamsForwardToCallback(ContentDecryptionModule.CreateSessionAndGenerateRequestResponse callback) {
+        ContentDecryptionModuleCreateSessionAndGenerateRequestResponseParamsForwardToCallback(ContentDecryptionModule.CreateSessionAndGenerateRequest_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1084,7 +1086,7 @@ RemoveSessionResponse callback) {
         }
     }
 
-    static class ContentDecryptionModuleCreateSessionAndGenerateRequestResponseParamsProxyToResponder implements ContentDecryptionModule.CreateSessionAndGenerateRequestResponse {
+    static class ContentDecryptionModuleCreateSessionAndGenerateRequestResponseParamsProxyToResponder implements ContentDecryptionModule.CreateSessionAndGenerateRequest_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1263,9 +1265,9 @@ RemoveSessionResponse callback) {
 
     static class ContentDecryptionModuleLoadSessionResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ContentDecryptionModule.LoadSessionResponse mCallback;
+        private final ContentDecryptionModule.LoadSession_Response mCallback;
 
-        ContentDecryptionModuleLoadSessionResponseParamsForwardToCallback(ContentDecryptionModule.LoadSessionResponse callback) {
+        ContentDecryptionModuleLoadSessionResponseParamsForwardToCallback(ContentDecryptionModule.LoadSession_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1290,7 +1292,7 @@ RemoveSessionResponse callback) {
         }
     }
 
-    static class ContentDecryptionModuleLoadSessionResponseParamsProxyToResponder implements ContentDecryptionModule.LoadSessionResponse {
+    static class ContentDecryptionModuleLoadSessionResponseParamsProxyToResponder implements ContentDecryptionModule.LoadSession_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1460,9 +1462,9 @@ RemoveSessionResponse callback) {
 
     static class ContentDecryptionModuleUpdateSessionResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ContentDecryptionModule.UpdateSessionResponse mCallback;
+        private final ContentDecryptionModule.UpdateSession_Response mCallback;
 
-        ContentDecryptionModuleUpdateSessionResponseParamsForwardToCallback(ContentDecryptionModule.UpdateSessionResponse callback) {
+        ContentDecryptionModuleUpdateSessionResponseParamsForwardToCallback(ContentDecryptionModule.UpdateSession_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1487,7 +1489,7 @@ RemoveSessionResponse callback) {
         }
     }
 
-    static class ContentDecryptionModuleUpdateSessionResponseParamsProxyToResponder implements ContentDecryptionModule.UpdateSessionResponse {
+    static class ContentDecryptionModuleUpdateSessionResponseParamsProxyToResponder implements ContentDecryptionModule.UpdateSession_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1648,9 +1650,9 @@ RemoveSessionResponse callback) {
 
     static class ContentDecryptionModuleCloseSessionResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ContentDecryptionModule.CloseSessionResponse mCallback;
+        private final ContentDecryptionModule.CloseSession_Response mCallback;
 
-        ContentDecryptionModuleCloseSessionResponseParamsForwardToCallback(ContentDecryptionModule.CloseSessionResponse callback) {
+        ContentDecryptionModuleCloseSessionResponseParamsForwardToCallback(ContentDecryptionModule.CloseSession_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1675,7 +1677,7 @@ RemoveSessionResponse callback) {
         }
     }
 
-    static class ContentDecryptionModuleCloseSessionResponseParamsProxyToResponder implements ContentDecryptionModule.CloseSessionResponse {
+    static class ContentDecryptionModuleCloseSessionResponseParamsProxyToResponder implements ContentDecryptionModule.CloseSession_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1836,9 +1838,9 @@ RemoveSessionResponse callback) {
 
     static class ContentDecryptionModuleRemoveSessionResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ContentDecryptionModule.RemoveSessionResponse mCallback;
+        private final ContentDecryptionModule.RemoveSession_Response mCallback;
 
-        ContentDecryptionModuleRemoveSessionResponseParamsForwardToCallback(ContentDecryptionModule.RemoveSessionResponse callback) {
+        ContentDecryptionModuleRemoveSessionResponseParamsForwardToCallback(ContentDecryptionModule.RemoveSession_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1863,7 +1865,7 @@ RemoveSessionResponse callback) {
         }
     }
 
-    static class ContentDecryptionModuleRemoveSessionResponseParamsProxyToResponder implements ContentDecryptionModule.RemoveSessionResponse {
+    static class ContentDecryptionModuleRemoveSessionResponseParamsProxyToResponder implements ContentDecryptionModule.RemoveSession_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

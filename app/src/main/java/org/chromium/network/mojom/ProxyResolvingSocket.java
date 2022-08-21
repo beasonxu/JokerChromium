@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ProxyResolvingSocket extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface ProxyResolvingSocket extends org.chromium.mojo.bindings.Interfa
 
     Manager<ProxyResolvingSocket, ProxyResolvingSocket.Proxy> MANAGER = ProxyResolvingSocket_Internal.MANAGER;
 
-
     void upgradeToTls(
 HostPortPair hostPortPair, MutableNetworkTrafficAnnotationTag trafficAnnotation, org.chromium.mojo.bindings.InterfaceRequest<TlsClientSocket> receiver, SocketObserver observer, 
-UpgradeToTlsResponse callback);
+UpgradeToTls_Response callback);
 
-    interface UpgradeToTlsResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<Integer, org.chromium.mojo.system.DataPipe.ConsumerHandle, org.chromium.mojo.system.DataPipe.ProducerHandle> { }
+    interface UpgradeToTls_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<Integer, org.chromium.mojo.system.DataPipe.ConsumerHandle, org.chromium.mojo.system.DataPipe.ProducerHandle> { }
 
 
 }

@@ -186,14 +186,18 @@ public class ViewResourceInflater {
 
         unregisterResource();
 
-        detachView();
-        mView = null;
+        // Ensure the view isn't detached in the middle of a layout pass by posting. See
+        // https://crbug.com/1234713 for details.
+        mView.post(() -> {
+            detachView();
+            mView = null;
+            mContainer = null;
+        });
 
         mLayoutId = INVALID_ID;
         mViewId = INVALID_ID;
 
         mContext = null;
-        mContainer = null;
         mResourceLoader = null;
     }
 
@@ -397,7 +401,7 @@ public class ViewResourceInflater {
         }
 
         @Override
-        protected void onCaptureEnd() {
+        public void onCaptureEnd() {
             ViewResourceInflater.this.onCaptureEnd();
         }
     }

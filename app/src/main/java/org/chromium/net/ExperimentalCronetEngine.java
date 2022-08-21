@@ -75,6 +75,11 @@ public abstract class ExperimentalCronetEngine extends CronetEngine {
     public static final int EFFECTIVE_CONNECTION_TYPE_4G = 5;
 
     /**
+     * The value to be used to undo any previous network binding.
+     */
+    public static final long UNBIND_NETWORK_HANDLE = -1;
+
+    /**
      * A version of {@link CronetEngine.Builder} that exposes experimental
      * features. Instances of this class are not meant for general use, but
      * instead only to access experimental features. Experimental features
@@ -260,7 +265,7 @@ public abstract class ExperimentalCronetEngine extends CronetEngine {
      * Once logging has stopped {@link #stopNetLog}, the data will be written
      * to netlog.json in {@code dirPath}. If logging is interrupted, you can
      * stitch the files found in .inprogress subdirectory manually using:
-     * https://chromium.googlesource.com/chromium/src/+/master/net/tools/stitch_net_log_files.py.
+     * https://chromium.googlesource.com/chromium/src/+/main/net/tools/stitch_net_log_files.py.
      * The log can be viewed using a Chrome browser navigated to chrome://net-internals/#import.
      * @param dirPath the directory where the netlog.json file will be created. dirPath must
      *            already exist. NetLog files must not exist in the directory. If actively
@@ -410,4 +415,16 @@ public abstract class ExperimentalCronetEngine extends CronetEngine {
     public int getDownstreamThroughputKbps() {
         return CONNECTION_METRIC_UNKNOWN;
     }
+
+    /**
+     * Binds the engine to the specified network handle. All requests created through this engine
+     * will use the network associated to this handle. If this network disconnects all requests will
+     * fail, the exact error will depend on the stage of request processing when the network
+     * disconnects. Network handles can be obtained through {@code Network#getNetworkHandle}.
+     * Only available starting from Android Marshmallow.
+     *
+     * @param networkHandle the network handle to bind the engine to. Specify
+     *        {@link #UNBIND_NETWORK_HANDLE} to unbind.
+     */
+    public void bindToNetwork(long networkHandle) {}
 }

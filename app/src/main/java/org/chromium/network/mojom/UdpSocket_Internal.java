@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class UdpSocket_Internal {
 
@@ -83,7 +85,7 @@ class UdpSocket_Internal {
         @Override
         public void bind(
 IpEndPoint localAddr, UdpSocketOptions socketOptions, 
-BindResponse callback) {
+Bind_Response callback) {
 
             UdpSocketBindParams _message = new UdpSocketBindParams();
 
@@ -107,7 +109,7 @@ BindResponse callback) {
         @Override
         public void connect(
 IpEndPoint remoteAddr, UdpSocketOptions socketOptions, 
-ConnectResponse callback) {
+Connect_Response callback) {
 
             UdpSocketConnectParams _message = new UdpSocketConnectParams();
 
@@ -131,7 +133,7 @@ ConnectResponse callback) {
         @Override
         public void setBroadcast(
 boolean broadcast, 
-SetBroadcastResponse callback) {
+SetBroadcast_Response callback) {
 
             UdpSocketSetBroadcastParams _message = new UdpSocketSetBroadcastParams();
 
@@ -153,7 +155,7 @@ SetBroadcastResponse callback) {
         @Override
         public void setSendBufferSize(
 int sendBufferSize, 
-SetSendBufferSizeResponse callback) {
+SetSendBufferSize_Response callback) {
 
             UdpSocketSetSendBufferSizeParams _message = new UdpSocketSetSendBufferSizeParams();
 
@@ -175,7 +177,7 @@ SetSendBufferSizeResponse callback) {
         @Override
         public void setReceiveBufferSize(
 int receiveBufferSize, 
-SetReceiveBufferSizeResponse callback) {
+SetReceiveBufferSize_Response callback) {
 
             UdpSocketSetReceiveBufferSizeParams _message = new UdpSocketSetReceiveBufferSizeParams();
 
@@ -197,7 +199,7 @@ SetReceiveBufferSizeResponse callback) {
         @Override
         public void joinGroup(
 IpAddress groupAddress, 
-JoinGroupResponse callback) {
+JoinGroup_Response callback) {
 
             UdpSocketJoinGroupParams _message = new UdpSocketJoinGroupParams();
 
@@ -219,7 +221,7 @@ JoinGroupResponse callback) {
         @Override
         public void leaveGroup(
 IpAddress groupAddress, 
-LeaveGroupResponse callback) {
+LeaveGroup_Response callback) {
 
             UdpSocketLeaveGroupParams _message = new UdpSocketLeaveGroupParams();
 
@@ -277,7 +279,7 @@ int numAdditionalDatagrams, int bufferSize) {
         @Override
         public void sendTo(
 IpEndPoint destAddr, org.chromium.mojo_base.mojom.ReadOnlyBuffer data, MutableNetworkTrafficAnnotationTag trafficAnnotation, 
-SendToResponse callback) {
+SendTo_Response callback) {
 
             UdpSocketSendToParams _message = new UdpSocketSendToParams();
 
@@ -303,7 +305,7 @@ SendToResponse callback) {
         @Override
         public void send(
 org.chromium.mojo_base.mojom.ReadOnlyBuffer data, MutableNetworkTrafficAnnotationTag trafficAnnotation, 
-SendResponse callback) {
+Send_Response callback) {
 
             UdpSocketSendParams _message = new UdpSocketSendParams();
 
@@ -747,9 +749,9 @@ SendResponse callback) {
 
     static class UdpSocketBindResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final UdpSocket.BindResponse mCallback;
+        private final UdpSocket.Bind_Response mCallback;
 
-        UdpSocketBindResponseParamsForwardToCallback(UdpSocket.BindResponse callback) {
+        UdpSocketBindResponseParamsForwardToCallback(UdpSocket.Bind_Response callback) {
             this.mCallback = callback;
         }
 
@@ -774,7 +776,7 @@ SendResponse callback) {
         }
     }
 
-    static class UdpSocketBindResponseParamsProxyToResponder implements UdpSocket.BindResponse {
+    static class UdpSocketBindResponseParamsProxyToResponder implements UdpSocket.Bind_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -953,9 +955,9 @@ SendResponse callback) {
 
     static class UdpSocketConnectResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final UdpSocket.ConnectResponse mCallback;
+        private final UdpSocket.Connect_Response mCallback;
 
-        UdpSocketConnectResponseParamsForwardToCallback(UdpSocket.ConnectResponse callback) {
+        UdpSocketConnectResponseParamsForwardToCallback(UdpSocket.Connect_Response callback) {
             this.mCallback = callback;
         }
 
@@ -980,7 +982,7 @@ SendResponse callback) {
         }
     }
 
-    static class UdpSocketConnectResponseParamsProxyToResponder implements UdpSocket.ConnectResponse {
+    static class UdpSocketConnectResponseParamsProxyToResponder implements UdpSocket.Connect_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1142,9 +1144,9 @@ SendResponse callback) {
 
     static class UdpSocketSetBroadcastResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final UdpSocket.SetBroadcastResponse mCallback;
+        private final UdpSocket.SetBroadcast_Response mCallback;
 
-        UdpSocketSetBroadcastResponseParamsForwardToCallback(UdpSocket.SetBroadcastResponse callback) {
+        UdpSocketSetBroadcastResponseParamsForwardToCallback(UdpSocket.SetBroadcast_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1169,7 +1171,7 @@ SendResponse callback) {
         }
     }
 
-    static class UdpSocketSetBroadcastResponseParamsProxyToResponder implements UdpSocket.SetBroadcastResponse {
+    static class UdpSocketSetBroadcastResponseParamsProxyToResponder implements UdpSocket.SetBroadcast_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1329,9 +1331,9 @@ SendResponse callback) {
 
     static class UdpSocketSetSendBufferSizeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final UdpSocket.SetSendBufferSizeResponse mCallback;
+        private final UdpSocket.SetSendBufferSize_Response mCallback;
 
-        UdpSocketSetSendBufferSizeResponseParamsForwardToCallback(UdpSocket.SetSendBufferSizeResponse callback) {
+        UdpSocketSetSendBufferSizeResponseParamsForwardToCallback(UdpSocket.SetSendBufferSize_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1356,7 +1358,7 @@ SendResponse callback) {
         }
     }
 
-    static class UdpSocketSetSendBufferSizeResponseParamsProxyToResponder implements UdpSocket.SetSendBufferSizeResponse {
+    static class UdpSocketSetSendBufferSizeResponseParamsProxyToResponder implements UdpSocket.SetSendBufferSize_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1516,9 +1518,9 @@ SendResponse callback) {
 
     static class UdpSocketSetReceiveBufferSizeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final UdpSocket.SetReceiveBufferSizeResponse mCallback;
+        private final UdpSocket.SetReceiveBufferSize_Response mCallback;
 
-        UdpSocketSetReceiveBufferSizeResponseParamsForwardToCallback(UdpSocket.SetReceiveBufferSizeResponse callback) {
+        UdpSocketSetReceiveBufferSizeResponseParamsForwardToCallback(UdpSocket.SetReceiveBufferSize_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1543,7 +1545,7 @@ SendResponse callback) {
         }
     }
 
-    static class UdpSocketSetReceiveBufferSizeResponseParamsProxyToResponder implements UdpSocket.SetReceiveBufferSizeResponse {
+    static class UdpSocketSetReceiveBufferSizeResponseParamsProxyToResponder implements UdpSocket.SetReceiveBufferSize_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1704,9 +1706,9 @@ SendResponse callback) {
 
     static class UdpSocketJoinGroupResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final UdpSocket.JoinGroupResponse mCallback;
+        private final UdpSocket.JoinGroup_Response mCallback;
 
-        UdpSocketJoinGroupResponseParamsForwardToCallback(UdpSocket.JoinGroupResponse callback) {
+        UdpSocketJoinGroupResponseParamsForwardToCallback(UdpSocket.JoinGroup_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1731,7 +1733,7 @@ SendResponse callback) {
         }
     }
 
-    static class UdpSocketJoinGroupResponseParamsProxyToResponder implements UdpSocket.JoinGroupResponse {
+    static class UdpSocketJoinGroupResponseParamsProxyToResponder implements UdpSocket.JoinGroup_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1892,9 +1894,9 @@ SendResponse callback) {
 
     static class UdpSocketLeaveGroupResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final UdpSocket.LeaveGroupResponse mCallback;
+        private final UdpSocket.LeaveGroup_Response mCallback;
 
-        UdpSocketLeaveGroupResponseParamsForwardToCallback(UdpSocket.LeaveGroupResponse callback) {
+        UdpSocketLeaveGroupResponseParamsForwardToCallback(UdpSocket.LeaveGroup_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1919,7 +1921,7 @@ SendResponse callback) {
         }
     }
 
-    static class UdpSocketLeaveGroupResponseParamsProxyToResponder implements UdpSocket.LeaveGroupResponse {
+    static class UdpSocketLeaveGroupResponseParamsProxyToResponder implements UdpSocket.LeaveGroup_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2229,9 +2231,9 @@ SendResponse callback) {
 
     static class UdpSocketSendToResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final UdpSocket.SendToResponse mCallback;
+        private final UdpSocket.SendTo_Response mCallback;
 
-        UdpSocketSendToResponseParamsForwardToCallback(UdpSocket.SendToResponse callback) {
+        UdpSocketSendToResponseParamsForwardToCallback(UdpSocket.SendTo_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2256,7 +2258,7 @@ SendResponse callback) {
         }
     }
 
-    static class UdpSocketSendToResponseParamsProxyToResponder implements UdpSocket.SendToResponse {
+    static class UdpSocketSendToResponseParamsProxyToResponder implements UdpSocket.SendTo_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2425,9 +2427,9 @@ SendResponse callback) {
 
     static class UdpSocketSendResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final UdpSocket.SendResponse mCallback;
+        private final UdpSocket.Send_Response mCallback;
 
-        UdpSocketSendResponseParamsForwardToCallback(UdpSocket.SendResponse callback) {
+        UdpSocketSendResponseParamsForwardToCallback(UdpSocket.Send_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2452,7 +2454,7 @@ SendResponse callback) {
         }
     }
 
-    static class UdpSocketSendResponseParamsProxyToResponder implements UdpSocket.SendResponse {
+    static class UdpSocketSendResponseParamsProxyToResponder implements UdpSocket.Send_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

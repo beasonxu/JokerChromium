@@ -13,8 +13,16 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class VerticalScrollDirection {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        VerticalScrollDirection.NULL,
+        VerticalScrollDirection.DOWN,
+        VerticalScrollDirection.UP})
+    public @interface EnumType {}
 
     public static final int NULL = 0;
     public static final int DOWN = 1;

@@ -13,8 +13,31 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class MediaStreamRequestResult {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        MediaStreamRequestResult.OK,
+        MediaStreamRequestResult.PERMISSION_DENIED,
+        MediaStreamRequestResult.PERMISSION_DISMISSED,
+        MediaStreamRequestResult.INVALID_STATE,
+        MediaStreamRequestResult.NO_HARDWARE,
+        MediaStreamRequestResult.INVALID_SECURITY_ORIGIN,
+        MediaStreamRequestResult.TAB_CAPTURE_FAILURE,
+        MediaStreamRequestResult.SCREEN_CAPTURE_FAILURE,
+        MediaStreamRequestResult.CAPTURE_FAILURE,
+        MediaStreamRequestResult.CONSTRAINT_NOT_SATISFIED,
+        MediaStreamRequestResult.TRACK_START_FAILURE_AUDIO,
+        MediaStreamRequestResult.TRACK_START_FAILURE_VIDEO,
+        MediaStreamRequestResult.NOT_SUPPORTED,
+        MediaStreamRequestResult.FAILED_DUE_TO_SHUTDOWN,
+        MediaStreamRequestResult.KILL_SWITCH_ON,
+        MediaStreamRequestResult.SYSTEM_PERMISSION_DENIED,
+        MediaStreamRequestResult.DEVICE_IN_USE,
+        MediaStreamRequestResult.NUM_MEDIA_REQUEST_RESULTS})
+    public @interface EnumType {}
 
     public static final int OK = 0;
     public static final int PERMISSION_DENIED = 1;
@@ -32,12 +55,13 @@ public final class MediaStreamRequestResult {
     public static final int FAILED_DUE_TO_SHUTDOWN = 13;
     public static final int KILL_SWITCH_ON = 14;
     public static final int SYSTEM_PERMISSION_DENIED = 15;
-    public static final int NUM_MEDIA_REQUEST_RESULTS = 16;
+    public static final int DEVICE_IN_USE = 16;
+    public static final int NUM_MEDIA_REQUEST_RESULTS = 17;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 16;
+    public static final int MAX_VALUE = 17;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 16;
+        return value >= 0 && value <= 17;
     }
 
     public static void validate(int value) {

@@ -2,19 +2,16 @@ package org.chromium.chrome.browser.tab;
 
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.chrome.browser.contextmenu.ContextMenuPopulatorFactory;
 import org.chromium.content_public.browser.WebContents;
-import org.chromium.content_public.common.ResourceRequestBody;
-import org.chromium.url.Origin;
+import org.chromium.url.GURL;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class TabImplJni implements TabImpl.Natives {
+class TabImplJni implements TabImpl.Natives {
   private static TabImpl.Natives testInstance;
 
   public static final JniStaticTestMocker<TabImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.tab.TabImpl.Natives>() {
@@ -44,9 +41,9 @@ final class TabImplJni implements TabImpl.Natives {
 
   @Override
   public void initWebContents(long nativeTabAndroid, boolean incognito, boolean isBackgroundTab,
-      WebContents webContents, int parentTabId, TabWebContentsDelegateAndroidImpl delegate,
+      WebContents webContents, TabWebContentsDelegateAndroidImpl delegate,
       ContextMenuPopulatorFactory contextMenuPopulatorFactory) {
-    GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_initWebContents(nativeTabAndroid, incognito, isBackgroundTab, webContents, parentTabId, delegate, contextMenuPopulatorFactory);
+    GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_initWebContents(nativeTabAndroid, incognito, isBackgroundTab, webContents, delegate, contextMenuPopulatorFactory);
   }
 
   @Override
@@ -72,15 +69,6 @@ final class TabImplJni implements TabImpl.Natives {
   }
 
   @Override
-  public int loadUrl(long nativeTabAndroid, String url, Origin initiatorOrigin, String extraHeaders,
-      ResourceRequestBody postData, int transition, String referrerUrl, int referrerPolicy,
-      boolean isRendererInitiated, boolean shoulReplaceCurrentEntry, boolean hasUserGesture,
-      boolean shouldClearHistoryList, long inputStartTimestamp, long intentReceivedTimestamp,
-      int userAgentOverrideOption) {
-    return (int)GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_loadUrl(nativeTabAndroid, url, initiatorOrigin, extraHeaders, postData, transition, referrerUrl, referrerPolicy, isRendererInitiated, shoulReplaceCurrentEntry, hasUserGesture, shouldClearHistoryList, inputStartTimestamp, intentReceivedTimestamp, userAgentOverrideOption);
-  }
-
-  @Override
   public void setActiveNavigationEntryTitleForUrl(long nativeTabAndroid, String url, String title) {
     GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_setActiveNavigationEntryTitleForUrl(nativeTabAndroid, url, title);
   }
@@ -91,33 +79,8 @@ final class TabImplJni implements TabImpl.Natives {
   }
 
   @Override
-  public void setAddApi2TransitionToFutureNavigations(long nativeTabAndroid, boolean shouldAdd) {
-    GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_setAddApi2TransitionToFutureNavigations(nativeTabAndroid, shouldAdd);
-  }
-
-  @Override
-  public boolean getAddApi2TransitionToFutureNavigations(long nativeTabAndroid) {
-    return (boolean)GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_getAddApi2TransitionToFutureNavigations(nativeTabAndroid);
-  }
-
-  @Override
-  public void setHideFutureNavigations(long nativeTabAndroid, boolean hide) {
-    GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_setHideFutureNavigations(nativeTabAndroid, hide);
-  }
-
-  @Override
-  public boolean getHideFutureNavigations(long nativeTabAndroid) {
-    return (boolean)GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_getHideFutureNavigations(nativeTabAndroid);
-  }
-
-  @Override
-  public void setShouldBlockNewNotificationRequests(long nativeTabAndroid, boolean value) {
-    GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_setShouldBlockNewNotificationRequests(nativeTabAndroid, value);
-  }
-
-  @Override
-  public boolean getShouldBlockNewNotificationRequests(long nativeTabAndroid) {
-    return (boolean)GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_getShouldBlockNewNotificationRequests(nativeTabAndroid);
+  public boolean handleNonNavigationAboutURL(GURL url) {
+    return (boolean)GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_handleNonNavigationAboutURL(url);
   }
 
   public static TabImpl.Natives get() {

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface RemoteObjectGatewayFactory extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface RemoteObjectGatewayFactory extends org.chromium.mojo.bindings.I
     }
 
     Manager<RemoteObjectGatewayFactory, RemoteObjectGatewayFactory.Proxy> MANAGER = RemoteObjectGatewayFactory_Internal.MANAGER;
-
 
     void createRemoteObjectGateway(
 RemoteObjectHost host, org.chromium.mojo.bindings.InterfaceRequest<RemoteObjectGateway> gateway);

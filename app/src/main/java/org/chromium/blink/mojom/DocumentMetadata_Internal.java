@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class DocumentMetadata_Internal {
 
@@ -61,7 +63,7 @@ class DocumentMetadata_Internal {
         @Override
         public void getEntities(
 
-GetEntitiesResponse callback) {
+GetEntities_Response callback) {
 
             DocumentMetadataGetEntitiesParams _message = new DocumentMetadataGetEntitiesParams();
 
@@ -282,9 +284,9 @@ GetEntitiesResponse callback) {
 
     static class DocumentMetadataGetEntitiesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final DocumentMetadata.GetEntitiesResponse mCallback;
+        private final DocumentMetadata.GetEntities_Response mCallback;
 
-        DocumentMetadataGetEntitiesResponseParamsForwardToCallback(DocumentMetadata.GetEntitiesResponse callback) {
+        DocumentMetadataGetEntitiesResponseParamsForwardToCallback(DocumentMetadata.GetEntities_Response callback) {
             this.mCallback = callback;
         }
 
@@ -309,7 +311,7 @@ GetEntitiesResponse callback) {
         }
     }
 
-    static class DocumentMetadataGetEntitiesResponseParamsProxyToResponder implements DocumentMetadata.GetEntitiesResponse {
+    static class DocumentMetadataGetEntitiesResponseParamsProxyToResponder implements DocumentMetadata.GetEntities_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

@@ -13,8 +13,16 @@
 
 package org.chromium.display.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ContentProtectionMethod {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ContentProtectionMethod.CONTENT_PROTECTION_METHOD_NONE,
+        ContentProtectionMethod.CONTENT_PROTECTION_METHOD_HDCP_TYPE_0,
+        ContentProtectionMethod.CONTENT_PROTECTION_METHOD_HDCP_TYPE_1})
+    public @interface EnumType {}
 
     public static final int CONTENT_PROTECTION_METHOD_NONE = 0;
     public static final int CONTENT_PROTECTION_METHOD_HDCP_TYPE_0 = 1;

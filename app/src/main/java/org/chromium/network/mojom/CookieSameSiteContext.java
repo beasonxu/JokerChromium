@@ -13,14 +13,18 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class CookieSameSiteContext extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 16;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+    private static final int STRUCT_SIZE = 32;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int context;
     public int schemefulContext;
+    public CookieSameSiteContextMetadata metadata;
+    public CookieSameSiteContextMetadata schemefulMetadata;
 
     private CookieSameSiteContext(int version) {
         super(STRUCT_SIZE, version);
@@ -69,6 +73,16 @@ public final class CookieSameSiteContext extends org.chromium.mojo.bindings.Stru
                     ContextType.validate(result.schemefulContext);
                     result.schemefulContext = ContextType.toKnownValue(result.schemefulContext);
                 }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                result.metadata = CookieSameSiteContextMetadata.decode(decoder1);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
+                result.schemefulMetadata = CookieSameSiteContextMetadata.decode(decoder1);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -84,5 +98,9 @@ public final class CookieSameSiteContext extends org.chromium.mojo.bindings.Stru
         encoder0.encode(this.context, 8);
         
         encoder0.encode(this.schemefulContext, 12);
+        
+        encoder0.encode(this.metadata, 16, false);
+        
+        encoder0.encode(this.schemefulMetadata, 24, false);
     }
 }

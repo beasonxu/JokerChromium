@@ -13,6 +13,8 @@
 
 package org.chromium.cert_verifier.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface CertVerifierService extends org.chromium.mojo.bindings.Interface {
 
@@ -23,15 +25,12 @@ public interface CertVerifierService extends org.chromium.mojo.bindings.Interfac
 
     Manager<CertVerifierService, CertVerifierService.Proxy> MANAGER = CertVerifierService_Internal.MANAGER;
 
-
     void enableNetworkAccess(
 org.chromium.network.mojom.UrlLoaderFactory urlLoaderFactory, UrlLoaderFactoryConnector reconnector);
 
 
-
     void verify(
-RequestParams params, CertVerifierRequest certVerifierRequest);
-
+RequestParams params, int netlogSourceType, int netlogSourceId, org.chromium.mojo_base.mojom.TimeTicks netlogSourceStartTime, CertVerifierRequest certVerifierRequest);
 
 
     void setConfig(

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface QuotaManagerHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,28 +25,25 @@ public interface QuotaManagerHost extends org.chromium.mojo.bindings.Interface {
 
     Manager<QuotaManagerHost, QuotaManagerHost.Proxy> MANAGER = QuotaManagerHost_Internal.MANAGER;
 
-
     void addChangeListener(
 QuotaChangeListener listener, 
-AddChangeListenerResponse callback);
+AddChangeListener_Response callback);
 
-    interface AddChangeListenerResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface AddChangeListener_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void queryStorageUsageAndQuota(
 int storageType, 
-QueryStorageUsageAndQuotaResponse callback);
+QueryStorageUsageAndQuota_Response callback);
 
-    interface QueryStorageUsageAndQuotaResponse extends org.chromium.mojo.bindings.Callbacks.Callback4<Integer, Long, Long, UsageBreakdown> { }
-
+    interface QueryStorageUsageAndQuota_Response extends org.chromium.mojo.bindings.Callbacks.Callback4<Integer, Long, Long, UsageBreakdown> { }
 
 
     void requestStorageQuota(
 int storageType, long requestedSize, 
-RequestStorageQuotaResponse callback);
+RequestStorageQuota_Response callback);
 
-    interface RequestStorageQuotaResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<Integer, Long, Long> { }
+    interface RequestStorageQuota_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<Integer, Long, Long> { }
 
 
 }

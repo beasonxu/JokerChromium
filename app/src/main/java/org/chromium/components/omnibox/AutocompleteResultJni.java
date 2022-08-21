@@ -1,15 +1,13 @@
 package org.chromium.components.omnibox;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class AutocompleteResultJni implements AutocompleteResult.Natives {
+class AutocompleteResultJni implements AutocompleteResult.Natives {
   private static AutocompleteResult.Natives testInstance;
 
   public static final JniStaticTestMocker<AutocompleteResult.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.omnibox.AutocompleteResult.Natives>() {
@@ -27,6 +25,12 @@ final class AutocompleteResultJni implements AutocompleteResult.Natives {
   public void groupSuggestionsBySearchVsURL(long nativeAutocompleteResult, int firstIndex,
       int lastIndex) {
     GEN_JNI.org_chromium_components_omnibox_AutocompleteResult_groupSuggestionsBySearchVsURL(nativeAutocompleteResult, firstIndex, lastIndex);
+  }
+
+  @Override
+  public boolean verifyCoherency(long nativeAutocompleteResult, long[] matches,
+      long suggestionIndex, int origin) {
+    return (boolean)GEN_JNI.org_chromium_components_omnibox_AutocompleteResult_verifyCoherency(nativeAutocompleteResult, matches, suggestionIndex, origin);
   }
 
   public static AutocompleteResult.Natives get() {

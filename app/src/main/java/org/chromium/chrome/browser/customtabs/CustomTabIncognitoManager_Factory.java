@@ -2,13 +2,13 @@ package org.chromium.chrome.browser.customtabs;
 
 import android.app.Activity;
 import dagger.internal.Factory;
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 import javax.inject.Provider;
-import org.chromium.chrome.browser.browserservices.BrowserServicesIntentDataProvider;
+import org.chromium.chrome.browser.browserservices.intents.BrowserServicesIntentDataProvider;
 import org.chromium.chrome.browser.customtabs.content.CustomTabActivityNavigationController;
-import org.chromium.chrome.browser.customtabs.content.CustomTabActivityTabProvider;
+import org.chromium.chrome.browser.incognito.IncognitoCctProfileManager;
 import org.chromium.chrome.browser.lifecycle.ActivityLifecycleDispatcher;
-import org.chromium.ui.base.WindowAndroid;
+import org.chromium.chrome.browser.tabmodel.IncognitoTabHostRegistry;
 
 @Generated(
     value = "dagger.internal.codegen.ComponentProcessor",
@@ -21,48 +21,50 @@ import org.chromium.ui.base.WindowAndroid;
 public final class CustomTabIncognitoManager_Factory implements Factory<CustomTabIncognitoManager> {
   private final Provider<Activity> activityProvider;
 
-  private final Provider<WindowAndroid> windowAndroidProvider;
-
   private final Provider<BrowserServicesIntentDataProvider> intentDataProvider;
 
   private final Provider<CustomTabActivityNavigationController> navigationControllerProvider;
 
-  private final Provider<CustomTabActivityTabProvider> tabProvider;
-
   private final Provider<ActivityLifecycleDispatcher> lifecycleDispatcherProvider;
 
+  private final Provider<IncognitoTabHostRegistry> incognitoTabHostRegistryProvider;
+
+  private final Provider<IncognitoCctProfileManager> incognitoCctProfileManagerProvider;
+
   public CustomTabIncognitoManager_Factory(Provider<Activity> activityProvider,
-      Provider<WindowAndroid> windowAndroidProvider,
       Provider<BrowserServicesIntentDataProvider> intentDataProvider,
       Provider<CustomTabActivityNavigationController> navigationControllerProvider,
-      Provider<CustomTabActivityTabProvider> tabProvider,
-      Provider<ActivityLifecycleDispatcher> lifecycleDispatcherProvider) {
+      Provider<ActivityLifecycleDispatcher> lifecycleDispatcherProvider,
+      Provider<IncognitoTabHostRegistry> incognitoTabHostRegistryProvider,
+      Provider<IncognitoCctProfileManager> incognitoCctProfileManagerProvider) {
     this.activityProvider = activityProvider;
-    this.windowAndroidProvider = windowAndroidProvider;
     this.intentDataProvider = intentDataProvider;
     this.navigationControllerProvider = navigationControllerProvider;
-    this.tabProvider = tabProvider;
     this.lifecycleDispatcherProvider = lifecycleDispatcherProvider;
+    this.incognitoTabHostRegistryProvider = incognitoTabHostRegistryProvider;
+    this.incognitoCctProfileManagerProvider = incognitoCctProfileManagerProvider;
   }
 
   @Override
   public CustomTabIncognitoManager get() {
-    return newInstance(activityProvider.get(), windowAndroidProvider.get(), intentDataProvider.get(), navigationControllerProvider.get(), tabProvider.get(), lifecycleDispatcherProvider.get());
+    return newInstance(activityProvider.get(), intentDataProvider.get(), navigationControllerProvider.get(), lifecycleDispatcherProvider.get(), incognitoTabHostRegistryProvider.get(), incognitoCctProfileManagerProvider.get());
   }
 
   public static CustomTabIncognitoManager_Factory create(Provider<Activity> activityProvider,
-      Provider<WindowAndroid> windowAndroidProvider,
       Provider<BrowserServicesIntentDataProvider> intentDataProvider,
       Provider<CustomTabActivityNavigationController> navigationControllerProvider,
-      Provider<CustomTabActivityTabProvider> tabProvider,
-      Provider<ActivityLifecycleDispatcher> lifecycleDispatcherProvider) {
-    return new CustomTabIncognitoManager_Factory(activityProvider, windowAndroidProvider, intentDataProvider, navigationControllerProvider, tabProvider, lifecycleDispatcherProvider);
+      Provider<ActivityLifecycleDispatcher> lifecycleDispatcherProvider,
+      Provider<IncognitoTabHostRegistry> incognitoTabHostRegistryProvider,
+      Provider<IncognitoCctProfileManager> incognitoCctProfileManagerProvider) {
+    return new CustomTabIncognitoManager_Factory(activityProvider, intentDataProvider, navigationControllerProvider, lifecycleDispatcherProvider, incognitoTabHostRegistryProvider, incognitoCctProfileManagerProvider);
   }
 
   public static CustomTabIncognitoManager newInstance(Activity activity,
-      WindowAndroid windowAndroid, BrowserServicesIntentDataProvider intentDataProvider,
+      BrowserServicesIntentDataProvider intentDataProvider,
       CustomTabActivityNavigationController navigationController,
-      CustomTabActivityTabProvider tabProvider, ActivityLifecycleDispatcher lifecycleDispatcher) {
-    return new CustomTabIncognitoManager(activity, windowAndroid, intentDataProvider, navigationController, tabProvider, lifecycleDispatcher);
+      ActivityLifecycleDispatcher lifecycleDispatcher,
+      IncognitoTabHostRegistry incognitoTabHostRegistry,
+      IncognitoCctProfileManager incognitoCctProfileManager) {
+    return new CustomTabIncognitoManager(activity, intentDataProvider, navigationController, lifecycleDispatcher, incognitoTabHostRegistry, incognitoCctProfileManager);
   }
 }

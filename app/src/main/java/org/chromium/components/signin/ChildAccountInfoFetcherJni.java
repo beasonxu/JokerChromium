@@ -1,16 +1,14 @@
 package org.chromium.components.signin;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.components.signin.base.CoreAccountId;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ChildAccountInfoFetcherJni implements ChildAccountInfoFetcher.Natives {
+class ChildAccountInfoFetcherJni implements ChildAccountInfoFetcher.Natives {
   private static ChildAccountInfoFetcher.Natives testInstance;
 
   public static final JniStaticTestMocker<ChildAccountInfoFetcher.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.signin.ChildAccountInfoFetcher.Natives>() {

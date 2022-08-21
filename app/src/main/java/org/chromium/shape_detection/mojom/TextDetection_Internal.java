@@ -13,6 +13,8 @@
 
 package org.chromium.shape_detection.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class TextDetection_Internal {
 
@@ -61,7 +63,7 @@ class TextDetection_Internal {
         @Override
         public void detect(
 org.chromium.skia.mojom.BitmapN32 bitmapData, 
-DetectResponse callback) {
+Detect_Response callback) {
 
             TextDetectionDetectParams _message = new TextDetectionDetectParams();
 
@@ -309,9 +311,9 @@ DetectResponse callback) {
 
     static class TextDetectionDetectResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final TextDetection.DetectResponse mCallback;
+        private final TextDetection.Detect_Response mCallback;
 
-        TextDetectionDetectResponseParamsForwardToCallback(TextDetection.DetectResponse callback) {
+        TextDetectionDetectResponseParamsForwardToCallback(TextDetection.Detect_Response callback) {
             this.mCallback = callback;
         }
 
@@ -336,7 +338,7 @@ DetectResponse callback) {
         }
     }
 
-    static class TextDetectionDetectResponseParamsProxyToResponder implements TextDetection.DetectResponse {
+    static class TextDetectionDetectResponseParamsProxyToResponder implements TextDetection.Detect_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

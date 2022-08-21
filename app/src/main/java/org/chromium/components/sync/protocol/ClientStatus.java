@@ -28,13 +28,14 @@ public  final class ClientStatus extends
    * is set.  The client may not assume that any particular action will be
    * taken.  There is no guarantee the problem will be addressed in a reasonable
    * amount of time.
+   * TODO(crbug.com/1315573): Deprecated in M103.
    * </pre>
    *
-   * <code>optional bool hierarchy_conflict_detected = 1;</code>
+   * <code>optional bool hierarchy_conflict_detected = 1 [deprecated = true];</code>
    * @return Whether the hierarchyConflictDetected field is set.
    */
   @java.lang.Override
-  public boolean hasHierarchyConflictDetected() {
+  @java.lang.Deprecated public boolean hasHierarchyConflictDetected() {
     return ((bitField0_ & 0x00000001) != 0);
   }
   /**
@@ -45,13 +46,14 @@ public  final class ClientStatus extends
    * is set.  The client may not assume that any particular action will be
    * taken.  There is no guarantee the problem will be addressed in a reasonable
    * amount of time.
+   * TODO(crbug.com/1315573): Deprecated in M103.
    * </pre>
    *
-   * <code>optional bool hierarchy_conflict_detected = 1;</code>
+   * <code>optional bool hierarchy_conflict_detected = 1 [deprecated = true];</code>
    * @return The hierarchyConflictDetected.
    */
   @java.lang.Override
-  public boolean getHierarchyConflictDetected() {
+  @java.lang.Deprecated public boolean getHierarchyConflictDetected() {
     return hierarchyConflictDetected_;
   }
   /**
@@ -62,9 +64,10 @@ public  final class ClientStatus extends
    * is set.  The client may not assume that any particular action will be
    * taken.  There is no guarantee the problem will be addressed in a reasonable
    * amount of time.
+   * TODO(crbug.com/1315573): Deprecated in M103.
    * </pre>
    *
-   * <code>optional bool hierarchy_conflict_detected = 1;</code>
+   * <code>optional bool hierarchy_conflict_detected = 1 [deprecated = true];</code>
    * @param value The hierarchyConflictDetected to set.
    */
   private void setHierarchyConflictDetected(boolean value) {
@@ -79,9 +82,10 @@ public  final class ClientStatus extends
    * is set.  The client may not assume that any particular action will be
    * taken.  There is no guarantee the problem will be addressed in a reasonable
    * amount of time.
+   * TODO(crbug.com/1315573): Deprecated in M103.
    * </pre>
    *
-   * <code>optional bool hierarchy_conflict_detected = 1;</code>
+   * <code>optional bool hierarchy_conflict_detected = 1 [deprecated = true];</code>
    */
   private void clearHierarchyConflictDetected() {
     bitField0_ = (bitField0_ & ~0x00000001);
@@ -245,13 +249,14 @@ public  final class ClientStatus extends
      * is set.  The client may not assume that any particular action will be
      * taken.  There is no guarantee the problem will be addressed in a reasonable
      * amount of time.
+     * TODO(crbug.com/1315573): Deprecated in M103.
      * </pre>
      *
-     * <code>optional bool hierarchy_conflict_detected = 1;</code>
+     * <code>optional bool hierarchy_conflict_detected = 1 [deprecated = true];</code>
      * @return Whether the hierarchyConflictDetected field is set.
      */
     @java.lang.Override
-    public boolean hasHierarchyConflictDetected() {
+    @java.lang.Deprecated public boolean hasHierarchyConflictDetected() {
       return instance.hasHierarchyConflictDetected();
     }
     /**
@@ -262,13 +267,14 @@ public  final class ClientStatus extends
      * is set.  The client may not assume that any particular action will be
      * taken.  There is no guarantee the problem will be addressed in a reasonable
      * amount of time.
+     * TODO(crbug.com/1315573): Deprecated in M103.
      * </pre>
      *
-     * <code>optional bool hierarchy_conflict_detected = 1;</code>
+     * <code>optional bool hierarchy_conflict_detected = 1 [deprecated = true];</code>
      * @return The hierarchyConflictDetected.
      */
     @java.lang.Override
-    public boolean getHierarchyConflictDetected() {
+    @java.lang.Deprecated public boolean getHierarchyConflictDetected() {
       return instance.getHierarchyConflictDetected();
     }
     /**
@@ -279,13 +285,14 @@ public  final class ClientStatus extends
      * is set.  The client may not assume that any particular action will be
      * taken.  There is no guarantee the problem will be addressed in a reasonable
      * amount of time.
+     * TODO(crbug.com/1315573): Deprecated in M103.
      * </pre>
      *
-     * <code>optional bool hierarchy_conflict_detected = 1;</code>
+     * <code>optional bool hierarchy_conflict_detected = 1 [deprecated = true];</code>
      * @param value The hierarchyConflictDetected to set.
      * @return This builder for chaining.
      */
-    public Builder setHierarchyConflictDetected(boolean value) {
+    @java.lang.Deprecated public Builder setHierarchyConflictDetected(boolean value) {
       copyOnWrite();
       instance.setHierarchyConflictDetected(value);
       return this;
@@ -298,12 +305,13 @@ public  final class ClientStatus extends
      * is set.  The client may not assume that any particular action will be
      * taken.  There is no guarantee the problem will be addressed in a reasonable
      * amount of time.
+     * TODO(crbug.com/1315573): Deprecated in M103.
      * </pre>
      *
-     * <code>optional bool hierarchy_conflict_detected = 1;</code>
+     * <code>optional bool hierarchy_conflict_detected = 1 [deprecated = true];</code>
      * @return This builder for chaining.
      */
-    public Builder clearHierarchyConflictDetected() {
+    @java.lang.Deprecated public Builder clearHierarchyConflictDetected() {
       copyOnWrite();
       instance.clearHierarchyConflictDetected();
       return this;

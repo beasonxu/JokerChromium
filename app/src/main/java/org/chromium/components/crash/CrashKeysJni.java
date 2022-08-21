@@ -2,15 +2,13 @@ package org.chromium.components.crash;
 
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class CrashKeysJni implements CrashKeys.Natives {
+class CrashKeysJni implements CrashKeys.Natives {
   private static CrashKeys.Natives testInstance;
 
   public static final JniStaticTestMocker<CrashKeys.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.crash.CrashKeys.Natives>() {

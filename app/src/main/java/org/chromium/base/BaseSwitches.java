@@ -41,6 +41,20 @@ public final class BaseSwitches {
     // Force low-end device mode when set.
     public static final String ENABLE_LOW_END_DEVICE_MODE = "enable-low-end-device-mode";
 
+    // Enable the use of background thread priorities for background tasks in the
+    // ThreadPool even on systems where it is disabled by default, e.g. due to
+    // concerns about priority inversions.
+    public static final String ENABLE_BACKGROUND_THREAD_POOL = "enable-background-thread-pool";
+
+    // Handle to the shared memory segment containing field trial state that is to
+    // be shared between processes. The argument to this switch is made of 4
+    // segments, separated by commas:
+    // 1. The platform-specific handle id for the shared memory as a string.
+    // 2. The high 64 bits of the shared memory block GUID.
+    // 3. The low 64 bits of the shared memory block GUID.
+    // 4. The size of the shared memory segment as a string.
+    public static final String FIELD_TRIAL_HANDLE = "field-trial-handle";
+
     // This option can be used to force field trials when testing changes locally.
     // The argument is a list of name and value pairs, separated by slashes. If a
     // trial name is prefixed with an asterisk, that trial will start activated.
@@ -143,9 +157,6 @@ public final class BaseSwitches {
 
     // The field trial parameters and their values when testing changes locally.
     public static final String FORCE_FIELD_TRIAL_PARAMS = "force-fieldtrial-params";
-
-    // This flag requires the BPF sandbox to be disabled.
-    public static final String ENABLE_THREAD_INSTRUCTION_COUNT = "enable-thread-instruction-count";
 
     // Override the default scheduling boosting value for urgent tasks.
     // This can be adjusted if a specific chromeos device shows better perf/power

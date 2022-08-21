@@ -86,10 +86,15 @@ public interface ClientConfigParamsOrBuilder extends
 
   /**
    * <pre>
-   * Indicates that the client is not aware of any other active clients for the
-   * user. This flag shows that it is not necessary to send invalidations for
-   * the committed data. The client is considered active if it's DeviceInfo has
-   * updated recent enough.
+   * Indicates that the client is not aware of any other active clients
+   * interested in the committed data types. This flag shows that it is not
+   * necessary to send invalidations for the committed data. A client is
+   * considered active if it's DeviceInfo has updated recent enough. This flag
+   * does not take into account whether standalone invalidations are enabled (as
+   * opposed to |single_client_with_standalone_invalidations|). However, it's
+   * set depending on interested data types of other devices, e.g. if there are
+   * other devices but they are not interested in SESSION data type, and current
+   * commit request contains only SESSION, it will be set to true.
    * </pre>
    *
    * <code>optional bool single_client = 4;</code>
@@ -98,10 +103,15 @@ public interface ClientConfigParamsOrBuilder extends
   boolean hasSingleClient();
   /**
    * <pre>
-   * Indicates that the client is not aware of any other active clients for the
-   * user. This flag shows that it is not necessary to send invalidations for
-   * the committed data. The client is considered active if it's DeviceInfo has
-   * updated recent enough.
+   * Indicates that the client is not aware of any other active clients
+   * interested in the committed data types. This flag shows that it is not
+   * necessary to send invalidations for the committed data. A client is
+   * considered active if it's DeviceInfo has updated recent enough. This flag
+   * does not take into account whether standalone invalidations are enabled (as
+   * opposed to |single_client_with_standalone_invalidations|). However, it's
+   * set depending on interested data types of other devices, e.g. if there are
+   * other devices but they are not interested in SESSION data type, and current
+   * commit request contains only SESSION, it will be set to true.
    * </pre>
    *
    * <code>optional bool single_client = 4;</code>
@@ -120,9 +130,11 @@ public interface ClientConfigParamsOrBuilder extends
    * 2. There are too many active devices and the list would have too many
    * items.
    * 3. An empty list could also mean that the current client is the only
-   * client. This case should be covered by the |single_client| field instead
-   * (otherwise it could be mixed up with older clients). The server doesn't
-   * have to use this field and can ignore it.
+   * client. This case should be covered by the
+   * |single_client_with_standalone_invalidations| field instead (otherwise it
+   * could be mixed up with older clients). The server doesn't have to use this
+   * field and can ignore it. Note that this list does not take into account
+   * interested data types from the other clients.
    * </pre>
    *
    * <code>repeated string devices_fcm_registration_tokens = 5;</code>
@@ -141,9 +153,11 @@ public interface ClientConfigParamsOrBuilder extends
    * 2. There are too many active devices and the list would have too many
    * items.
    * 3. An empty list could also mean that the current client is the only
-   * client. This case should be covered by the |single_client| field instead
-   * (otherwise it could be mixed up with older clients). The server doesn't
-   * have to use this field and can ignore it.
+   * client. This case should be covered by the
+   * |single_client_with_standalone_invalidations| field instead (otherwise it
+   * could be mixed up with older clients). The server doesn't have to use this
+   * field and can ignore it. Note that this list does not take into account
+   * interested data types from the other clients.
    * </pre>
    *
    * <code>repeated string devices_fcm_registration_tokens = 5;</code>
@@ -161,9 +175,11 @@ public interface ClientConfigParamsOrBuilder extends
    * 2. There are too many active devices and the list would have too many
    * items.
    * 3. An empty list could also mean that the current client is the only
-   * client. This case should be covered by the |single_client| field instead
-   * (otherwise it could be mixed up with older clients). The server doesn't
-   * have to use this field and can ignore it.
+   * client. This case should be covered by the
+   * |single_client_with_standalone_invalidations| field instead (otherwise it
+   * could be mixed up with older clients). The server doesn't have to use this
+   * field and can ignore it. Note that this list does not take into account
+   * interested data types from the other clients.
    * </pre>
    *
    * <code>repeated string devices_fcm_registration_tokens = 5;</code>
@@ -182,9 +198,11 @@ public interface ClientConfigParamsOrBuilder extends
    * 2. There are too many active devices and the list would have too many
    * items.
    * 3. An empty list could also mean that the current client is the only
-   * client. This case should be covered by the |single_client| field instead
-   * (otherwise it could be mixed up with older clients). The server doesn't
-   * have to use this field and can ignore it.
+   * client. This case should be covered by the
+   * |single_client_with_standalone_invalidations| field instead (otherwise it
+   * could be mixed up with older clients). The server doesn't have to use this
+   * field and can ignore it. Note that this list does not take into account
+   * interested data types from the other clients.
    * </pre>
    *
    * <code>repeated string devices_fcm_registration_tokens = 5;</code>
@@ -193,4 +211,140 @@ public interface ClientConfigParamsOrBuilder extends
    */
   com.google.protobuf.ByteString
       getDevicesFcmRegistrationTokensBytes(int index);
+
+  /**
+   * <pre>
+   * Similar to |single_client| but takes into account only clients with enabled
+   * sync standalone invalidations. When set to true, there are no other clients
+   * with sync standalone invalidations interested in the committing types and
+   * hence it's not necessary to send out standalone invalidations (it may still
+   * be necessary to send out invalidations using the legacy system, see
+   * |single_client| instead).
+   * Introduced in M105.
+   * </pre>
+   *
+   * <code>optional bool single_client_with_standalone_invalidations = 6;</code>
+   * @return Whether the singleClientWithStandaloneInvalidations field is set.
+   */
+  boolean hasSingleClientWithStandaloneInvalidations();
+  /**
+   * <pre>
+   * Similar to |single_client| but takes into account only clients with enabled
+   * sync standalone invalidations. When set to true, there are no other clients
+   * with sync standalone invalidations interested in the committing types and
+   * hence it's not necessary to send out standalone invalidations (it may still
+   * be necessary to send out invalidations using the legacy system, see
+   * |single_client| instead).
+   * Introduced in M105.
+   * </pre>
+   *
+   * <code>optional bool single_client_with_standalone_invalidations = 6;</code>
+   * @return The singleClientWithStandaloneInvalidations.
+   */
+  boolean getSingleClientWithStandaloneInvalidations();
+
+  /**
+   * <pre>
+   * Similar to |devices_fcm_registration_tokens| but takes into account clients
+   * which are subscribed to the data types which are committed in current
+   * commit request.
+   * A list of FCM registration tokens which are obtained from other clients.
+   * This list is used by the server to send invalidations to all other clients.
+   * If the list is empty, the server should treat this as "there is no
+   * information about other clients". In practice, this happens by the next
+   * causes:
+   * 1. This is the old client which doesn't set this field.
+   * 2. There are too many active devices and the list would have too many
+   * items.
+   * 3. An empty list could also mean that the current client is the only
+   * client. This case should be covered by the
+   * |single_client_with_standalone_invalidations| field instead (otherwise it
+   * could be mixed up with older clients). The server doesn't have to use this
+   * field and can ignore it.
+   * Introduced in M105.
+   * </pre>
+   *
+   * <code>repeated string fcm_registration_tokens_for_interested_clients = 7;</code>
+   * @return A list containing the fcmRegistrationTokensForInterestedClients.
+   */
+  java.util.List<java.lang.String>
+      getFcmRegistrationTokensForInterestedClientsList();
+  /**
+   * <pre>
+   * Similar to |devices_fcm_registration_tokens| but takes into account clients
+   * which are subscribed to the data types which are committed in current
+   * commit request.
+   * A list of FCM registration tokens which are obtained from other clients.
+   * This list is used by the server to send invalidations to all other clients.
+   * If the list is empty, the server should treat this as "there is no
+   * information about other clients". In practice, this happens by the next
+   * causes:
+   * 1. This is the old client which doesn't set this field.
+   * 2. There are too many active devices and the list would have too many
+   * items.
+   * 3. An empty list could also mean that the current client is the only
+   * client. This case should be covered by the
+   * |single_client_with_standalone_invalidations| field instead (otherwise it
+   * could be mixed up with older clients). The server doesn't have to use this
+   * field and can ignore it.
+   * Introduced in M105.
+   * </pre>
+   *
+   * <code>repeated string fcm_registration_tokens_for_interested_clients = 7;</code>
+   * @return The count of fcmRegistrationTokensForInterestedClients.
+   */
+  int getFcmRegistrationTokensForInterestedClientsCount();
+  /**
+   * <pre>
+   * Similar to |devices_fcm_registration_tokens| but takes into account clients
+   * which are subscribed to the data types which are committed in current
+   * commit request.
+   * A list of FCM registration tokens which are obtained from other clients.
+   * This list is used by the server to send invalidations to all other clients.
+   * If the list is empty, the server should treat this as "there is no
+   * information about other clients". In practice, this happens by the next
+   * causes:
+   * 1. This is the old client which doesn't set this field.
+   * 2. There are too many active devices and the list would have too many
+   * items.
+   * 3. An empty list could also mean that the current client is the only
+   * client. This case should be covered by the
+   * |single_client_with_standalone_invalidations| field instead (otherwise it
+   * could be mixed up with older clients). The server doesn't have to use this
+   * field and can ignore it.
+   * Introduced in M105.
+   * </pre>
+   *
+   * <code>repeated string fcm_registration_tokens_for_interested_clients = 7;</code>
+   * @param index The index of the element to return.
+   * @return The fcmRegistrationTokensForInterestedClients at the given index.
+   */
+  java.lang.String getFcmRegistrationTokensForInterestedClients(int index);
+  /**
+   * <pre>
+   * Similar to |devices_fcm_registration_tokens| but takes into account clients
+   * which are subscribed to the data types which are committed in current
+   * commit request.
+   * A list of FCM registration tokens which are obtained from other clients.
+   * This list is used by the server to send invalidations to all other clients.
+   * If the list is empty, the server should treat this as "there is no
+   * information about other clients". In practice, this happens by the next
+   * causes:
+   * 1. This is the old client which doesn't set this field.
+   * 2. There are too many active devices and the list would have too many
+   * items.
+   * 3. An empty list could also mean that the current client is the only
+   * client. This case should be covered by the
+   * |single_client_with_standalone_invalidations| field instead (otherwise it
+   * could be mixed up with older clients). The server doesn't have to use this
+   * field and can ignore it.
+   * Introduced in M105.
+   * </pre>
+   *
+   * <code>repeated string fcm_registration_tokens_for_interested_clients = 7;</code>
+   * @param index The index of the element to return.
+   * @return The fcmRegistrationTokensForInterestedClients at the given index.
+   */
+  com.google.protobuf.ByteString
+      getFcmRegistrationTokensForInterestedClientsBytes(int index);
 }

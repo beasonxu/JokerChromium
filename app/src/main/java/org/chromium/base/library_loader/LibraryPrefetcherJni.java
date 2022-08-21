@@ -1,17 +1,15 @@
 package org.chromium.base.library_loader;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.annotations.MainDex;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @MainDex
 @CheckDiscard("crbug.com/993421")
-final class LibraryPrefetcherJni implements LibraryPrefetcher.Natives {
+class LibraryPrefetcherJni implements LibraryPrefetcher.Natives {
   private static LibraryPrefetcher.Natives testInstance;
 
   public static final JniStaticTestMocker<LibraryPrefetcher.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.base.library_loader.LibraryPrefetcher.Natives>() {

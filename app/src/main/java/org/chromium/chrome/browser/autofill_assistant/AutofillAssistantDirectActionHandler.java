@@ -6,20 +6,27 @@ package org.chromium.chrome.browser.autofill_assistant;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 
 import org.chromium.base.Callback;
 import org.chromium.base.ThreadUtils;
+import org.chromium.base.supplier.Supplier;
 import org.chromium.chrome.browser.ActivityTabProvider;
 import org.chromium.chrome.browser.browser_controls.BrowserControlsStateProvider;
-import org.chromium.chrome.browser.compositor.CompositorViewHolder;
 import org.chromium.chrome.browser.directactions.DirectActionHandler;
 import org.chromium.chrome.browser.directactions.DirectActionReporter;
 import org.chromium.chrome.browser.directactions.DirectActionReporter.Definition;
 import org.chromium.chrome.browser.directactions.DirectActionReporter.Type;
 import org.chromium.chrome.browser.tab.Tab;
+import org.chromium.components.autofill_assistant.AutofillAssistantActionHandler;
+import org.chromium.components.autofill_assistant.AutofillAssistantDirectAction;
+import org.chromium.components.autofill_assistant.AutofillAssistantModuleEntry;
+import org.chromium.components.autofill_assistant.AutofillAssistantModuleEntryProvider;
+import org.chromium.components.autofill_assistant.AutofillAssistantPreferencesUtil;
 import org.chromium.components.browser_ui.bottomsheet.BottomSheetController;
+import org.chromium.content_public.browser.WebContents;
 
 /**
  * A handler that provides just enough functionality to allow on-demand loading of the module
@@ -32,13 +39,16 @@ public class AutofillAssistantDirectActionHandler implements DirectActionHandler
     private static final String ACTION_NAME = "name";
     private static final String EXPERIMENT_IDS = "experiment_ids";
     private static final String ONBOARDING_ACTION = "onboarding";
+    private static final String ONBOARDING_AND_START_ACTION = "onboarding_and_start";
     private static final String USER_NAME = "user_name";
+    private static final String SHOW_ERROR_ON_FAILURE = "show_error_on_failure";
 
     private final Context mContext;
     private final BottomSheetController mBottomSheetController;
     private final BrowserControlsStateProvider mBrowserControls;
-    private final CompositorViewHolder mCompositorViewHolder;
+    private final View mRootView;
     private final ActivityTabProvider mActivityTabProvider;
+    private final Supplier<WebContents> mWebContentsSupplier;
     private final AutofillAssistantModuleEntryProvider mModuleEntryProvider;
 
     @Nullable
@@ -46,14 +56,15 @@ public class AutofillAssistantDirectActionHandler implements DirectActionHandler
 
     AutofillAssistantDirectActionHandler(Context context,
             BottomSheetController bottomSheetController,
-            BrowserControlsStateProvider browserControls, CompositorViewHolder compositorViewHolder,
-            ActivityTabProvider activityTabProvider,
+            BrowserControlsStateProvider browserControls, View rootView,
+            ActivityTabProvider activityTabProvider, Supplier<WebContents> webContentsSupplier,
             AutofillAssistantModuleEntryProvider moduleEntryProvider) {
         mContext = context;
         mBottomSheetController = bottomSheetController;
         mBrowserControls = browserControls;
-        mCompositorViewHolder = compositorViewHolder;
+        mRootView = rootView;
         mActivityTabProvider = activityTabProvider;
+        mWebContentsSupplier = webContentsSupplier;
         mModuleEntryProvider = moduleEntryProvider;
     }
 
@@ -67,6 +78,12 @@ public class AutofillAssistantDirectActionHandler implements DirectActionHandler
             reporter.addDirectAction(ONBOARDING_ACTION)
                     .withParameter(ACTION_NAME, Type.STRING, /* required= */ false)
                     .withParameter(EXPERIMENT_IDS, Type.STRING, /* required= */ false)
+                    .withResult(AA_ACTION_RESULT, Type.BOOLEAN);
+            reporter.addDirectAction(ONBOARDING_AND_START_ACTION)
+                    .withParameter(ACTION_NAME, Type.STRING, /* required= */ true)
+                    .withParameter(USER_NAME, Type.STRING, /* required= */ false)
+                    .withParameter(EXPERIMENT_IDS, Type.STRING, /* required= */ false)
+                    .withParameter(SHOW_ERROR_ON_FAILURE, Type.BOOLEAN, /* required= */ false)
                     .withResult(AA_ACTION_RESULT, Type.BOOLEAN);
             return;
         }
@@ -109,7 +126,8 @@ public class AutofillAssistantDirectActionHandler implements DirectActionHandler
             return true;
         }
         // Only handle and perform the action if it is known to the controller.
-        if (isActionAvailable(actionId) || ONBOARDING_ACTION.equals(actionId)) {
+        if (isActionAvailable(actionId) || ONBOARDING_ACTION.equals(actionId)
+                || ONBOARDING_AND_START_ACTION.equals(actionId)) {
             performAction(actionId, arguments, callback);
             return true;
         }
@@ -117,7 +135,7 @@ public class AutofillAssistantDirectActionHandler implements DirectActionHandler
     }
 
     private boolean isActionAvailable(String actionId) {
-        if (mDelegate == null) return false;
+        if (mDelegate == null || !mDelegate.hasRunFirstCheck()) return false;
         for (AutofillAssistantDirectAction action : mDelegate.getActions()) {
             if (action.getNames().contains(actionId)) return true;
         }
@@ -176,8 +194,44 @@ public class AutofillAssistantDirectActionHandler implements DirectActionHandler
                 booleanCallback.onResult(false);
                 return;
             }
+            if (delegate.isSupervisedUser()) {
+                booleanCallback.onResult(false);
+                return;
+            }
             if (ONBOARDING_ACTION.equals(actionId)) {
                 delegate.performOnboarding(experimentIds, arguments, booleanCallback);
+                return;
+            }
+            if (ONBOARDING_AND_START_ACTION.equals(actionId)) {
+                delegate.performOnboarding(experimentIds, arguments, onboardingResult -> {
+                    if (!onboardingResult) {
+                        booleanCallback.onResult(false);
+                        return;
+                    }
+                    boolean showErrorOnFailure = arguments.getBoolean(SHOW_ERROR_ON_FAILURE, false);
+                    delegate.fetchWebsiteActions(arguments.getString(USER_NAME, ""),
+                            arguments.getString(EXPERIMENT_IDS, ""), arguments,
+                            fetchActionsResult -> {
+                                if (!fetchActionsResult) {
+                                    booleanCallback.onResult(false);
+                                    if (showErrorOnFailure) {
+                                        delegate.showFatalError();
+                                    }
+                                    return;
+                                }
+                                String afterOnboardingActionId =
+                                        arguments.getString(ACTION_NAME, "");
+                                if (!isActionAvailable(afterOnboardingActionId)) {
+                                    booleanCallback.onResult(false);
+                                    if (showErrorOnFailure) {
+                                        delegate.showFatalError();
+                                    }
+                                    return;
+                                }
+                                delegate.performAction(afterOnboardingActionId, experimentIds,
+                                        arguments, booleanCallback);
+                            });
+                });
                 return;
             }
 
@@ -213,10 +267,10 @@ public class AutofillAssistantDirectActionHandler implements DirectActionHandler
             callback.onResult(null);
             return;
         }
-        mModuleEntryProvider.getModuleEntry(tab, (entry) -> {
+        mModuleEntryProvider.getModuleEntry((entry) -> {
             mDelegate = createDelegate(entry);
             callback.onResult(mDelegate);
-        }, /* showUi = */ true);
+        }, new AssistantModuleInstallUiProviderChrome(tab), /* showUi = */ true);
     }
 
     /** Creates a delegate from the given {@link AutofillAssistantModuleEntry}, if possible. */
@@ -225,7 +279,9 @@ public class AutofillAssistantDirectActionHandler implements DirectActionHandler
             @Nullable AutofillAssistantModuleEntry entry) {
         if (entry == null) return null;
 
-        return entry.createActionHandler(mContext, mBottomSheetController, mBrowserControls,
-                mCompositorViewHolder, mActivityTabProvider);
+        return entry.createActionHandler(mContext, mBottomSheetController,
+                ()
+                        -> new AssistantBrowserControlsChrome(mBrowserControls),
+                mRootView, mWebContentsSupplier, new AssistantStaticDependenciesChrome());
     }
 }

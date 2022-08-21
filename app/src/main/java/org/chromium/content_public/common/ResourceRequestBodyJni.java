@@ -1,15 +1,13 @@
 package org.chromium.content_public.common;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ResourceRequestBodyJni implements ResourceRequestBody.Natives {
+class ResourceRequestBodyJni implements ResourceRequestBody.Natives {
   private static ResourceRequestBody.Natives testInstance;
 
   public static final JniStaticTestMocker<ResourceRequestBody.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content_public.common.ResourceRequestBody.Natives>() {

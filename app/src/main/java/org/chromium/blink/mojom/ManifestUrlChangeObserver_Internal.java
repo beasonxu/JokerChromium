@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class ManifestUrlChangeObserver_Internal {
 
@@ -201,7 +203,7 @@ org.chromium.url.mojom.Url manifestUrl) {
                 result = new ManifestUrlChangeObserverManifestUrlChangedParams(elementsOrVersion);
                     {
                         
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, true);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
                     result.manifestUrl = org.chromium.url.mojom.Url.decode(decoder1);
                     }
 
@@ -216,7 +218,7 @@ org.chromium.url.mojom.Url manifestUrl) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.manifestUrl, 8, true);
+            encoder0.encode(this.manifestUrl, 8, false);
         }
     }
 

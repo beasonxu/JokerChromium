@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface SynchronousCompositor extends org.chromium.mojo.bindings.Interface {
 
@@ -23,72 +25,64 @@ public interface SynchronousCompositor extends org.chromium.mojo.bindings.Interf
 
     Manager<SynchronousCompositor, SynchronousCompositor.Proxy> MANAGER = SynchronousCompositor_Internal.MANAGER;
 
-
     void demandDrawHwAsync(
 SyncCompositorDemandDrawHwParams drawParams);
 
 
-
     void demandDrawHw(
 SyncCompositorDemandDrawHwParams drawParams, 
-DemandDrawHwResponse callback);
+DemandDrawHw_Response callback);
 
-    interface DemandDrawHwResponse extends org.chromium.mojo.bindings.Callbacks.Callback6<SyncCompositorCommonRendererParams, Integer, Integer, org.chromium.viz.mojom.LocalSurfaceId, org.chromium.viz.mojom.CompositorFrame, org.chromium.viz.mojom.HitTestRegionList> { }
-
+    interface DemandDrawHw_Response extends org.chromium.mojo.bindings.Callbacks.Callback6<SyncCompositorCommonRendererParams, Integer, Integer, org.chromium.viz.mojom.LocalSurfaceId, org.chromium.viz.mojom.CompositorFrame, org.chromium.viz.mojom.HitTestRegionList> { }
 
 
     void setSharedMemory(
 org.chromium.mojo_base.mojom.WritableSharedMemoryRegion shmRegion, 
-SetSharedMemoryResponse callback);
+SetSharedMemory_Response callback);
 
-    interface SetSharedMemoryResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Boolean, SyncCompositorCommonRendererParams> { }
-
+    interface SetSharedMemory_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Boolean, SyncCompositorCommonRendererParams> { }
 
 
     void demandDrawSw(
 SyncCompositorDemandDrawSwParams drawParams, 
-DemandDrawSwResponse callback);
+DemandDrawSw_Response callback);
 
-    interface DemandDrawSwResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<SyncCompositorCommonRendererParams, Integer, org.chromium.viz.mojom.CompositorFrameMetadata> { }
-
+    interface DemandDrawSw_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<SyncCompositorCommonRendererParams, Integer, org.chromium.viz.mojom.CompositorFrameMetadata> { }
 
 
     void willSkipDraw(
 );
 
 
-
     void zeroSharedMemory(
 );
 
 
-
     void zoomBy(
 float delta, org.chromium.gfx.mojom.Point anchor, 
-ZoomByResponse callback);
+ZoomBy_Response callback);
 
-    interface ZoomByResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<SyncCompositorCommonRendererParams> { }
-
+    interface ZoomBy_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<SyncCompositorCommonRendererParams> { }
 
 
     void setMemoryPolicy(
 int bytesLimit);
 
 
-
     void reclaimResources(
 int layerTreeFrameSinkId, org.chromium.viz.mojom.ReturnedResource[] resources);
 
 
+    void onCompositorFrameTransitionDirectiveProcessed(
+int layerTreeFrameSinkId, int sequenceId);
+
 
     void setScroll(
-org.chromium.gfx.mojom.ScrollOffset offset);
-
+org.chromium.gfx.mojom.PointF offset);
 
 
     void beginFrame(
 org.chromium.viz.mojom.BeginFrameArgs args, java.util.Map<Integer, org.chromium.viz.mojom.FrameTimingDetails> timingDetails);
-
 
 
     void setBeginFrameSourcePaused(

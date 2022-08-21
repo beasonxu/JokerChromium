@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface MediaLog extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface MediaLog extends org.chromium.mojo.bindings.Interface {
     }
 
     Manager<MediaLog, MediaLog.Proxy> MANAGER = MediaLog_Internal.MANAGER;
-
 
     void addLogRecord(
 MediaLogRecord event);

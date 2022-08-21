@@ -13,8 +13,17 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class IpAddressSpace {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        IpAddressSpace.LOCAL,
+        IpAddressSpace.PRIVATE,
+        IpAddressSpace.PUBLIC,
+        IpAddressSpace.UNKNOWN})
+    public @interface EnumType {}
 
     public static final int LOCAL = 0;
     public static final int PRIVATE = 1;

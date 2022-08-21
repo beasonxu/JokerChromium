@@ -13,11 +13,18 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class TrustTokenProtocolVersion {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
 
-    public static final int TRUST_TOKEN_V2_PMB = 0;
-    public static final int TRUST_TOKEN_V2_VOPRF = 1;
+        TrustTokenProtocolVersion.TRUST_TOKEN_V3_PMB,
+        TrustTokenProtocolVersion.TRUST_TOKEN_V3_VOPRF})
+    public @interface EnumType {}
+
+    public static final int TRUST_TOKEN_V3_PMB = 0;
+    public static final int TRUST_TOKEN_V3_VOPRF = 1;
     public static final int MIN_VALUE = 0;
     public static final int MAX_VALUE = 1;
 

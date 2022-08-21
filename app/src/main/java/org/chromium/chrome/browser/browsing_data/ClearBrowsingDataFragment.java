@@ -9,6 +9,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.SpannableString;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,10 +21,12 @@ import androidx.annotation.IntDef;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import androidx.collection.ArraySet;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
+import org.chromium.base.Callback;
 import org.chromium.base.CollectionUtil;
 import org.chromium.base.metrics.RecordHistogram;
 import org.chromium.chrome.R;
@@ -33,9 +36,21 @@ import org.chromium.chrome.browser.historyreport.AppIndexingReporter;
 import org.chromium.chrome.browser.multiwindow.MultiWindowUtils;
 import org.chromium.chrome.browser.preferences.Pref;
 import org.chromium.chrome.browser.profiles.Profile;
+import org.chromium.chrome.browser.signin.services.IdentityServicesProvider;
+import org.chromium.chrome.browser.signin.services.SigninManager;
+import org.chromium.chrome.browser.sync.settings.ClearDataProgressDialog;
+import org.chromium.chrome.browser.ui.signin.SignOutDialogCoordinator;
+import org.chromium.chrome.browser.ui.signin.SignOutDialogCoordinator.ActionType;
+import org.chromium.components.browser_ui.settings.ClickableSpansTextMessagePreference;
 import org.chromium.components.browser_ui.settings.SettingsUtils;
 import org.chromium.components.browser_ui.settings.SpinnerPreference;
+import org.chromium.components.signin.GAIAServiceType;
+import org.chromium.components.signin.identitymanager.ConsentLevel;
 import org.chromium.components.user_prefs.UserPrefs;
+import org.chromium.ui.modaldialog.ModalDialogManagerHolder;
+import org.chromium.ui.text.NoUnderlineClickableSpan;
+import org.chromium.ui.text.SpanApplier;
+import org.chromium.ui.text.SpanApplier.SpanInfo;
 import org.chromium.ui.widget.ButtonCompat;
 
 import java.lang.annotation.Retention;
@@ -51,7 +66,10 @@ import java.util.Set;
  */
 public abstract class ClearBrowsingDataFragment extends PreferenceFragmentCompat
         implements BrowsingDataBridge.OnClearBrowsingDataListener,
-                   Preference.OnPreferenceClickListener, Preference.OnPreferenceChangeListener {
+                   Preference.OnPreferenceClickListener, Preference.OnPreferenceChangeListener,
+                   SignOutDialogCoordinator.Listener {
+    private static final String CLEAR_DATA_PROGRESS_DIALOG_TAG = "clear_data_progress";
+
     /**
      * Represents a single item in the dialog.
      */
@@ -160,6 +178,11 @@ public abstract class ClearBrowsingDataFragment extends PreferenceFragmentCompat
 
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     static final String PREF_TIME_RANGE = "time_period_spinner";
+
+    static final String PREF_GOOGLE_DATA_TEXT = "clear_google_data_text";
+    static final String PREF_SEARCH_HISTORY_NON_GOOGLE_TEXT =
+            "clear_search_history_non_google_text";
+    static final String PREF_SIGN_OUT_OF_CHROME_TEXT = "sign_out_of_chrome_text";
 
     /** The "Clear" button preference. */
     @VisibleForTesting
@@ -390,11 +413,6 @@ public abstract class ClearBrowsingDataFragment extends PreferenceFragmentCompat
                 activity.getString(R.string.clear_browsing_data_tab_period_7_days)));
         options.add(new TimePeriodSpinnerOption(TimePeriod.FOUR_WEEKS,
                 activity.getString(R.string.clear_browsing_data_tab_period_four_weeks)));
-        if (ChromeFeatureList.isEnabled(ChromeFeatureList.CLEAR_OLD_BROWSING_DATA)) {
-            options.add(new TimePeriodSpinnerOption(TimePeriod.OLDER_THAN_30_DAYS,
-                    activity.getString(
-                            R.string.clear_browsing_data_tab_period_older_than_30_days)));
-        }
         options.add(new TimePeriodSpinnerOption(TimePeriod.ALL_TIME,
                 activity.getString(R.string.clear_browsing_data_tab_period_everything)));
         return options.toArray(new TimePeriodSpinnerOption[0]);
@@ -567,6 +585,21 @@ public abstract class ClearBrowsingDataFragment extends PreferenceFragmentCompat
         assert spinnerOptionIndex != -1;
         spinner.setOptions(spinnerOptions, spinnerOptionIndex);
         spinner.setOnPreferenceChangeListener(this);
+
+        // Text for sign-out option.
+        if (ChromeFeatureList.isEnabled(ChromeFeatureList.ENABLE_CBD_SIGN_OUT)
+                && IdentityServicesProvider.get()
+                           .getIdentityManager(Profile.getLastUsedRegularProfile())
+                           .hasPrimaryAccount(ConsentLevel.SIGNIN)
+                && IdentityServicesProvider.get()
+                           .getSigninManager(Profile.getLastUsedRegularProfile())
+                           .isSignOutAllowed()) {
+            ClickableSpansTextMessagePreference signOutOfChromeTextPref =
+                    findPreference(ClearBrowsingDataFragment.PREF_SIGN_OUT_OF_CHROME_TEXT);
+            signOutOfChromeTextPref.setSummary(buildSignOutOfChromeText());
+        } else {
+            deleteSignOutOfChromeTextIfExists();
+        }
     }
 
     @Override
@@ -634,6 +667,29 @@ public abstract class ClearBrowsingDataFragment extends PreferenceFragmentCompat
         return mConfirmImportantSitesDialog;
     }
 
+    @VisibleForTesting
+    SpannableString buildSignOutOfChromeText() {
+        return SpanApplier.applySpans(getContext().getString(R.string.sign_out_of_chrome_link),
+                new SpanInfo("<link1>", "</link1>",
+                        new NoUnderlineClickableSpan(
+                                requireContext(), createSignOutOfChromeCallback())));
+    }
+
+    private Callback<View> createSignOutOfChromeCallback() {
+        return view
+                -> SignOutDialogCoordinator.show(requireContext(),
+                        ((ModalDialogManagerHolder) getActivity()).getModalDialogManager(), this,
+                        ActionType.CLEAR_PRIMARY_ACCOUNT, GAIAServiceType.GAIA_SERVICE_TYPE_NONE);
+    }
+
+    private void deleteSignOutOfChromeTextIfExists() {
+        Preference signOutOfChromeTextPref =
+                findPreference(ClearBrowsingDataFragment.PREF_SIGN_OUT_OF_CHROME_TEXT);
+        if (signOutOfChromeTextPref != null) {
+            getPreferenceScreen().removePreference(signOutOfChromeTextPref);
+        }
+    }
+
     /**
      * This method shows the important sites dialog. After the dialog is shown, we correctly clear.
      */
@@ -695,5 +751,45 @@ public abstract class ClearBrowsingDataFragment extends PreferenceFragmentCompat
             clearBrowsingData(getSelectedOptions(), deselectedDomains, deselectedDomainReasons,
                     ignoredDomains, ignoredDomainReasons);
         }
+    }
+
+    /** {@link SignOutDialogCoordinator.Listener} implementation */
+    @Override
+    public void onSignOutClicked(boolean forceWipeUserData) {
+        // In case the user is not signed in, we guard the sign out so we do not hit a native crash.
+        if (!IdentityServicesProvider.get()
+                        .getIdentityManager(Profile.getLastUsedRegularProfile())
+                        .hasPrimaryAccount(ConsentLevel.SIGNIN)) {
+            return;
+        }
+        final SigninManager signinManager = IdentityServicesProvider.get().getSigninManager(
+                Profile.getLastUsedRegularProfile());
+        signinManager.runAfterOperationInProgress(() -> {
+            // In case supervised users reach this flow, remove the preference and guard against
+            // signing out.
+            if (!signinManager.isSignOutAllowed()) {
+                deleteSignOutOfChromeTextIfExists();
+                return;
+            }
+            final DialogFragment clearDataProgressDialog = new ClearDataProgressDialog();
+            signinManager.signOut(org.chromium.components.signin.metrics.SignoutReason
+                                          .USER_CLICKED_SIGNOUT_FROM_CLEAR_BROWSING_DATA_PAGE,
+                    new SigninManager.SignOutCallback() {
+                        @Override
+                        public void preWipeData() {
+                            clearDataProgressDialog.show(
+                                    getChildFragmentManager(), CLEAR_DATA_PROGRESS_DIALOG_TAG);
+                        }
+
+                        @Override
+                        public void signOutComplete() {
+                            clearDataProgressDialog.dismissAllowingStateLoss();
+                        }
+                    },
+                    forceWipeUserData);
+            // TODO(https://crbug.com/1334918): Observe SignInStateObserver and move this inside
+            // onSignOutAllowedChanged().
+            deleteSignOutOfChromeTextIfExists();
+        });
     }
 }

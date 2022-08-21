@@ -320,4 +320,33 @@ public interface EntityMetadataOrBuilder extends
    * @return The bookmarkFaviconHash.
    */
   int getBookmarkFaviconHash();
+
+  /**
+   * <pre>
+   * Last specifics known by both the client and server. Used during commits to
+   * the server in order to prevent data loss caused by older clients dealing
+   * with unknown proto fields (fields that were introduced later). Datatypes
+   * (ModelTypeSyncBridge) may implement logic to trim down (or fully clear)
+   * this proto prior to caching, to avoid the memory and I/O overhead of
+   * dealing with an extra copy of the data. Introduced in M101.
+   * </pre>
+   *
+   * <code>optional .sync_pb.EntitySpecifics possibly_trimmed_base_specifics = 13;</code>
+   * @return Whether the possiblyTrimmedBaseSpecifics field is set.
+   */
+  boolean hasPossiblyTrimmedBaseSpecifics();
+  /**
+   * <pre>
+   * Last specifics known by both the client and server. Used during commits to
+   * the server in order to prevent data loss caused by older clients dealing
+   * with unknown proto fields (fields that were introduced later). Datatypes
+   * (ModelTypeSyncBridge) may implement logic to trim down (or fully clear)
+   * this proto prior to caching, to avoid the memory and I/O overhead of
+   * dealing with an extra copy of the data. Introduced in M101.
+   * </pre>
+   *
+   * <code>optional .sync_pb.EntitySpecifics possibly_trimmed_base_specifics = 13;</code>
+   * @return The possiblyTrimmedBaseSpecifics.
+   */
+  org.chromium.components.sync.protocol.EntitySpecifics getPossiblyTrimmedBaseSpecifics();
 }

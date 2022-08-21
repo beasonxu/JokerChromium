@@ -13,6 +13,8 @@
 
 package org.chromium.ui.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class LatencyInfo extends org.chromium.mojo.bindings.Struct {
 
@@ -26,9 +28,8 @@ public final class LatencyInfo extends org.chromium.mojo.bindings.Struct {
     public boolean began;
     public boolean terminated;
     public int sourceEventType;
-    public float scrollUpdateDelta;
-    public float predictedScrollUpdateDelta;
     public long gestureScrollId;
+    public long touchTraceId;
 
     private LatencyInfo(int version) {
         super(STRUCT_SIZE, version);
@@ -126,15 +127,11 @@ public final class LatencyInfo extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.scrollUpdateDelta = decoder0.readFloat(40);
+                result.gestureScrollId = decoder0.readLong(40);
                 }
                 {
                     
-                result.predictedScrollUpdateDelta = decoder0.readFloat(44);
-                }
-                {
-                    
-                result.gestureScrollId = decoder0.readLong(48);
+                result.touchTraceId = decoder0.readLong(48);
                 }
 
         } finally {
@@ -185,10 +182,8 @@ public final class LatencyInfo extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.sourceEventType, 36);
         
-        encoder0.encode(this.scrollUpdateDelta, 40);
+        encoder0.encode(this.gestureScrollId, 40);
         
-        encoder0.encode(this.predictedScrollUpdateDelta, 44);
-        
-        encoder0.encode(this.gestureScrollId, 48);
+        encoder0.encode(this.touchTraceId, 48);
     }
 }

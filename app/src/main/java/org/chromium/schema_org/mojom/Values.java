@@ -13,6 +13,8 @@
 
 package org.chromium.schema_org.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class Values extends org.chromium.mojo.bindings.Union {
 

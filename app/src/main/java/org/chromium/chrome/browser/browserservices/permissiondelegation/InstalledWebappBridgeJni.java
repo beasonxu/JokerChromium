@@ -1,15 +1,13 @@
 package org.chromium.chrome.browser.browserservices.permissiondelegation;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class InstalledWebappBridgeJni implements InstalledWebappBridge.Natives {
+class InstalledWebappBridgeJni implements InstalledWebappBridge.Natives {
   private static InstalledWebappBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<InstalledWebappBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.browserservices.permissiondelegation.InstalledWebappBridge.Natives>() {
@@ -29,8 +27,8 @@ final class InstalledWebappBridgeJni implements InstalledWebappBridge.Natives {
   }
 
   @Override
-  public void notifyPermissionResult(long callback, boolean allow) {
-    GEN_JNI.org_chromium_chrome_browser_browserservices_permissiondelegation_InstalledWebappBridge_notifyPermissionResult(callback, allow);
+  public void runPermissionCallback(long callback, int settingValue) {
+    GEN_JNI.org_chromium_chrome_browser_browserservices_permissiondelegation_InstalledWebappBridge_runPermissionCallback(callback, settingValue);
   }
 
   public static InstalledWebappBridge.Natives get() {

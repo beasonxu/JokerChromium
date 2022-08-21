@@ -11,13 +11,13 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.ResolveInfo;
 import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
+import org.chromium.base.Log;
 import org.chromium.base.ObserverList;
 import org.chromium.base.PackageManagerUtils;
 import org.chromium.base.PackageUtils;
@@ -28,7 +28,8 @@ import org.chromium.components.signin.base.CoreAccountInfo;
 import org.chromium.components.signin.identitymanager.ConsentLevel;
 import org.chromium.components.signin.identitymanager.IdentityManager;
 
-import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * A class responsible for representing the current state of Chrome's integration with GSA.
@@ -66,6 +67,9 @@ public class GSAState {
      */
     @SuppressLint("StaticFieldLeak")
     private static GSAState sGSAState;
+
+    private static final Pattern MAJOR_MINOR_VERSION_PATTERN =
+            Pattern.compile("^(\\d+)\\.(\\d+)(\\.\\d+)*$");
 
     /**
      * The application context to use.
@@ -149,19 +153,24 @@ public class GSAState {
      */
     public boolean isGsaAvailable() {
         if (mGsaAvailable != null) return mGsaAvailable;
-        mGsaAvailable = false;
+
         Intent searchIntent = new Intent(SEARCH_INTENT_ACTION);
         searchIntent.setPackage(GSAState.SEARCH_INTENT_PACKAGE);
-        List<ResolveInfo> resolveInfo = PackageManagerUtils.queryIntentActivities(searchIntent, 0);
-        if (resolveInfo.size() == 0) {
-            mGsaAvailable = false;
-        } else if (!isPackageAboveVersion(SEARCH_INTENT_PACKAGE, GSA_VERSION_FOR_DOCUMENT)
-                || !isPackageAboveVersion(GMS_CORE_PACKAGE, GMS_CORE_VERSION)) {
-            mGsaAvailable = false;
-        } else {
-            mGsaAvailable = true;
-        }
+        mGsaAvailable = PackageManagerUtils.canResolveActivity(searchIntent)
+                && isPackageAboveVersion(SEARCH_INTENT_PACKAGE, GSA_VERSION_FOR_DOCUMENT)
+                && isPackageAboveVersion(GMS_CORE_PACKAGE, GMS_CORE_VERSION);
+
         return mGsaAvailable;
+    }
+
+    /** Returns whether the GSA package is installed on device. */
+    public boolean isGsaInstalled() {
+        try {
+            PackageInfo packageInfo = mContext.getPackageManager().getPackageInfo(PACKAGE_NAME, 0);
+            return true;
+        } catch (NameNotFoundException e) {
+            return false;
+        }
     }
 
     /**
@@ -240,6 +249,44 @@ public class GSAState {
             PackageInfo packageInfo = mContext.getPackageManager().getPackageInfo(PACKAGE_NAME, 0);
             return packageInfo.versionName;
         } catch (NameNotFoundException e) {
+            return null;
+        }
+    }
+
+    /**
+     * Converts the given version name into a reportable integer which contains the major and minor
+     * version.
+     * - The returned integer ranges between 1,000 - 999,999.
+     * - The major version is represented by the numbers in the hundred/ten/thousanths places.
+     * - The minor version is represented by the numbers in the tens/hundredths places.
+     * - The max for both major and minor versions is 999. If either exceeds the maximum, null is
+     *   returned.
+     *
+     * @param versionName The version name as a string (eg 11.9).
+     * @return The version name as an integer between 1,000 - 999,999 as described above or null if
+     *         the above conditions aren't satisfied.
+     */
+    public @Nullable Integer parseAgsaMajorMinorVersionAsInteger(String versionName) {
+        if (versionName == null) return null;
+
+        Matcher matcher = MAJOR_MINOR_VERSION_PATTERN.matcher(versionName);
+        if (!matcher.find() || matcher.groupCount() < 2) return null;
+
+        try {
+            int major = Integer.parseInt(matcher.group(1));
+            if (major > 999) {
+                Log.e(TAG, "Major verison exceeded maximum of 999.");
+                return null;
+            }
+
+            int minor = Integer.parseInt(matcher.group(2));
+            if (minor > 999) {
+                Log.e(TAG, "Minor verison exceeded maximum of 999.");
+                return null;
+            }
+            return major * 1000 + minor;
+        } catch (NumberFormatException e) {
+            Log.e(TAG, "Version was incorrectly formatted.");
             return null;
         }
     }

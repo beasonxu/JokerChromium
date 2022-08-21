@@ -27,6 +27,167 @@ public  final class PasswordSpecificsData extends
     avatarUrl_ = "";
     federationUrl_ = "";
   }
+  /**
+   * <pre>
+   * The different types of the saved credential.
+   * </pre>
+   *
+   * Protobuf enum {@code sync_pb.PasswordSpecificsData.Scheme}
+   */
+  public enum Scheme
+      implements com.google.protobuf.Internal.EnumLite {
+    /**
+     * <pre>
+     * SCHEME_HTML, the credential represents either a parsed HTML form, or an
+     * android credential or a password saved through Credential Management API
+     * (https://w3c.github.io/webappsec/specs/credentialmanagement/).
+     * </pre>
+     *
+     * <code>SCHEME_HTML = 0;</code>
+     */
+    SCHEME_HTML(0),
+    /**
+     * <pre>
+     * SCHEME_BASIC, basic access http authentication.
+     * </pre>
+     *
+     * <code>SCHEME_BASIC = 1;</code>
+     */
+    SCHEME_BASIC(1),
+    /**
+     * <pre>
+     * SCHEME_DIGEST, digest access authentication.
+     * </pre>
+     *
+     * <code>SCHEME_DIGEST = 2;</code>
+     */
+    SCHEME_DIGEST(2),
+    /**
+     * <pre>
+     * SCHEME_OTHER, another proxy access authentication.
+     * </pre>
+     *
+     * <code>SCHEME_OTHER = 3;</code>
+     */
+    SCHEME_OTHER(3),
+    /**
+     * <pre>
+     * USERNAME_ONLY, partial credentials saved on Android that contain only
+     * username and miss the password.
+     * </pre>
+     *
+     * <code>USERNAME_ONLY = 4;</code>
+     */
+    USERNAME_ONLY(4),
+    ;
+
+    /**
+     * <pre>
+     * SCHEME_HTML, the credential represents either a parsed HTML form, or an
+     * android credential or a password saved through Credential Management API
+     * (https://w3c.github.io/webappsec/specs/credentialmanagement/).
+     * </pre>
+     *
+     * <code>SCHEME_HTML = 0;</code>
+     */
+    public static final int SCHEME_HTML_VALUE = 0;
+    /**
+     * <pre>
+     * SCHEME_BASIC, basic access http authentication.
+     * </pre>
+     *
+     * <code>SCHEME_BASIC = 1;</code>
+     */
+    public static final int SCHEME_BASIC_VALUE = 1;
+    /**
+     * <pre>
+     * SCHEME_DIGEST, digest access authentication.
+     * </pre>
+     *
+     * <code>SCHEME_DIGEST = 2;</code>
+     */
+    public static final int SCHEME_DIGEST_VALUE = 2;
+    /**
+     * <pre>
+     * SCHEME_OTHER, another proxy access authentication.
+     * </pre>
+     *
+     * <code>SCHEME_OTHER = 3;</code>
+     */
+    public static final int SCHEME_OTHER_VALUE = 3;
+    /**
+     * <pre>
+     * USERNAME_ONLY, partial credentials saved on Android that contain only
+     * username and miss the password.
+     * </pre>
+     *
+     * <code>USERNAME_ONLY = 4;</code>
+     */
+    public static final int USERNAME_ONLY_VALUE = 4;
+
+
+    @java.lang.Override
+    public final int getNumber() {
+      return value;
+    }
+
+    /**
+     * @param value The number of the enum to look for.
+     * @return The enum associated with the given number.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static Scheme valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static Scheme forNumber(int value) {
+      switch (value) {
+        case 0: return SCHEME_HTML;
+        case 1: return SCHEME_BASIC;
+        case 2: return SCHEME_DIGEST;
+        case 3: return SCHEME_OTHER;
+        case 4: return USERNAME_ONLY;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<Scheme>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        Scheme> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<Scheme>() {
+            @java.lang.Override
+            public Scheme findValueByNumber(int number) {
+              return Scheme.forNumber(number);
+            }
+          };
+
+    public static com.google.protobuf.Internal.EnumVerifier 
+        internalGetVerifier() {
+      return SchemeVerifier.INSTANCE;
+    }
+
+    private static final class SchemeVerifier implements 
+         com.google.protobuf.Internal.EnumVerifier { 
+            static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new SchemeVerifier();
+            @java.lang.Override
+            public boolean isInRange(int number) {
+              return Scheme.forNumber(number) != null;
+            }
+          };
+
+    private final int value;
+
+    private Scheme(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:sync_pb.PasswordSpecificsData.Scheme)
+  }
+
   public interface PasswordIssuesOrBuilder extends
       // @@protoc_insertion_point(interface_extends:sync_pb.PasswordSpecificsData.PasswordIssues)
       com.google.protobuf.MessageLiteOrBuilder {
@@ -93,6 +254,9 @@ public  final class PasswordSpecificsData extends
        * <pre>
        * Timestamp set by a client detecting the issue for the first time.
        * Number of microseconds since Windows epoch (1601).
+       * This can be unset even if is_muted is set in a few cases in
+       * storage (for a time mutes were written without setting this
+       * field - fixed starting 2021-11-10).
        * </pre>
        *
        * <code>optional uint64 date_first_detection_microseconds = 1;</code>
@@ -103,6 +267,9 @@ public  final class PasswordSpecificsData extends
        * <pre>
        * Timestamp set by a client detecting the issue for the first time.
        * Number of microseconds since Windows epoch (1601).
+       * This can be unset even if is_muted is set in a few cases in
+       * storage (for a time mutes were written without setting this
+       * field - fixed starting 2021-11-10).
        * </pre>
        *
        * <code>optional uint64 date_first_detection_microseconds = 1;</code>
@@ -146,6 +313,9 @@ public  final class PasswordSpecificsData extends
        * <pre>
        * Timestamp set by a client detecting the issue for the first time.
        * Number of microseconds since Windows epoch (1601).
+       * This can be unset even if is_muted is set in a few cases in
+       * storage (for a time mutes were written without setting this
+       * field - fixed starting 2021-11-10).
        * </pre>
        *
        * <code>optional uint64 date_first_detection_microseconds = 1;</code>
@@ -159,6 +329,9 @@ public  final class PasswordSpecificsData extends
        * <pre>
        * Timestamp set by a client detecting the issue for the first time.
        * Number of microseconds since Windows epoch (1601).
+       * This can be unset even if is_muted is set in a few cases in
+       * storage (for a time mutes were written without setting this
+       * field - fixed starting 2021-11-10).
        * </pre>
        *
        * <code>optional uint64 date_first_detection_microseconds = 1;</code>
@@ -172,6 +345,9 @@ public  final class PasswordSpecificsData extends
        * <pre>
        * Timestamp set by a client detecting the issue for the first time.
        * Number of microseconds since Windows epoch (1601).
+       * This can be unset even if is_muted is set in a few cases in
+       * storage (for a time mutes were written without setting this
+       * field - fixed starting 2021-11-10).
        * </pre>
        *
        * <code>optional uint64 date_first_detection_microseconds = 1;</code>
@@ -185,6 +361,9 @@ public  final class PasswordSpecificsData extends
        * <pre>
        * Timestamp set by a client detecting the issue for the first time.
        * Number of microseconds since Windows epoch (1601).
+       * This can be unset even if is_muted is set in a few cases in
+       * storage (for a time mutes were written without setting this
+       * field - fixed starting 2021-11-10).
        * </pre>
        *
        * <code>optional uint64 date_first_detection_microseconds = 1;</code>
@@ -343,6 +522,9 @@ public  final class PasswordSpecificsData extends
          * <pre>
          * Timestamp set by a client detecting the issue for the first time.
          * Number of microseconds since Windows epoch (1601).
+         * This can be unset even if is_muted is set in a few cases in
+         * storage (for a time mutes were written without setting this
+         * field - fixed starting 2021-11-10).
          * </pre>
          *
          * <code>optional uint64 date_first_detection_microseconds = 1;</code>
@@ -356,6 +538,9 @@ public  final class PasswordSpecificsData extends
          * <pre>
          * Timestamp set by a client detecting the issue for the first time.
          * Number of microseconds since Windows epoch (1601).
+         * This can be unset even if is_muted is set in a few cases in
+         * storage (for a time mutes were written without setting this
+         * field - fixed starting 2021-11-10).
          * </pre>
          *
          * <code>optional uint64 date_first_detection_microseconds = 1;</code>
@@ -369,6 +554,9 @@ public  final class PasswordSpecificsData extends
          * <pre>
          * Timestamp set by a client detecting the issue for the first time.
          * Number of microseconds since Windows epoch (1601).
+         * This can be unset even if is_muted is set in a few cases in
+         * storage (for a time mutes were written without setting this
+         * field - fixed starting 2021-11-10).
          * </pre>
          *
          * <code>optional uint64 date_first_detection_microseconds = 1;</code>
@@ -384,6 +572,9 @@ public  final class PasswordSpecificsData extends
          * <pre>
          * Timestamp set by a client detecting the issue for the first time.
          * Number of microseconds since Windows epoch (1601).
+         * This can be unset even if is_muted is set in a few cases in
+         * storage (for a time mutes were written without setting this
+         * field - fixed starting 2021-11-10).
          * </pre>
          *
          * <code>optional uint64 date_first_detection_microseconds = 1;</code>
@@ -1071,17 +1262,1226 @@ public  final class PasswordSpecificsData extends
     }
   }
 
+  public interface NotesOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:sync_pb.PasswordSpecificsData.Notes)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>repeated .sync_pb.PasswordSpecificsData.Notes.Note note = 1;</code>
+     */
+    java.util.List<org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note> 
+        getNoteList();
+    /**
+     * <code>repeated .sync_pb.PasswordSpecificsData.Notes.Note note = 1;</code>
+     */
+    org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note getNote(int index);
+    /**
+     * <code>repeated .sync_pb.PasswordSpecificsData.Notes.Note note = 1;</code>
+     */
+    int getNoteCount();
+  }
+  /**
+   * Protobuf type {@code sync_pb.PasswordSpecificsData.Notes}
+   */
+  public  static final class Notes extends
+      com.google.protobuf.GeneratedMessageLite<
+          Notes, Notes.Builder> implements
+      // @@protoc_insertion_point(message_implements:sync_pb.PasswordSpecificsData.Notes)
+      NotesOrBuilder {
+    private Notes() {
+      note_ = emptyProtobufList();
+    }
+    public interface NoteOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:sync_pb.PasswordSpecificsData.Notes.Note)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <pre>
+       * The display name must be unique within the scope of a password.
+       * </pre>
+       *
+       * <code>optional string unique_display_name = 1;</code>
+       * @return Whether the uniqueDisplayName field is set.
+       */
+      boolean hasUniqueDisplayName();
+      /**
+       * <pre>
+       * The display name must be unique within the scope of a password.
+       * </pre>
+       *
+       * <code>optional string unique_display_name = 1;</code>
+       * @return The uniqueDisplayName.
+       */
+      java.lang.String getUniqueDisplayName();
+      /**
+       * <pre>
+       * The display name must be unique within the scope of a password.
+       * </pre>
+       *
+       * <code>optional string unique_display_name = 1;</code>
+       * @return The bytes for uniqueDisplayName.
+       */
+      com.google.protobuf.ByteString
+          getUniqueDisplayNameBytes();
+
+      /**
+       * <pre>
+       * The user-defined value of the note.
+       * </pre>
+       *
+       * <code>optional string value = 2;</code>
+       * @return Whether the value field is set.
+       */
+      boolean hasValue();
+      /**
+       * <pre>
+       * The user-defined value of the note.
+       * </pre>
+       *
+       * <code>optional string value = 2;</code>
+       * @return The value.
+       */
+      java.lang.String getValue();
+      /**
+       * <pre>
+       * The user-defined value of the note.
+       * </pre>
+       *
+       * <code>optional string value = 2;</code>
+       * @return The bytes for value.
+       */
+      com.google.protobuf.ByteString
+          getValueBytes();
+
+      /**
+       * <pre>
+       * The creation time of the note. Number of microseconds since 1601.
+       * </pre>
+       *
+       * <code>optional int64 date_created_windows_epoch_micros = 3;</code>
+       * @return Whether the dateCreatedWindowsEpochMicros field is set.
+       */
+      boolean hasDateCreatedWindowsEpochMicros();
+      /**
+       * <pre>
+       * The creation time of the note. Number of microseconds since 1601.
+       * </pre>
+       *
+       * <code>optional int64 date_created_windows_epoch_micros = 3;</code>
+       * @return The dateCreatedWindowsEpochMicros.
+       */
+      long getDateCreatedWindowsEpochMicros();
+
+      /**
+       * <pre>
+       * Whether the value of the note is not displayed in plain text by
+       * default.
+       * </pre>
+       *
+       * <code>optional bool hide_by_default = 4;</code>
+       * @return Whether the hideByDefault field is set.
+       */
+      boolean hasHideByDefault();
+      /**
+       * <pre>
+       * Whether the value of the note is not displayed in plain text by
+       * default.
+       * </pre>
+       *
+       * <code>optional bool hide_by_default = 4;</code>
+       * @return The hideByDefault.
+       */
+      boolean getHideByDefault();
+    }
+    /**
+     * Protobuf type {@code sync_pb.PasswordSpecificsData.Notes.Note}
+     */
+    public  static final class Note extends
+        com.google.protobuf.GeneratedMessageLite<
+            Note, Note.Builder> implements
+        // @@protoc_insertion_point(message_implements:sync_pb.PasswordSpecificsData.Notes.Note)
+        NoteOrBuilder {
+      private Note() {
+        uniqueDisplayName_ = "";
+        value_ = "";
+      }
+      private int bitField0_;
+      public static final int UNIQUE_DISPLAY_NAME_FIELD_NUMBER = 1;
+      private java.lang.String uniqueDisplayName_;
+      /**
+       * <pre>
+       * The display name must be unique within the scope of a password.
+       * </pre>
+       *
+       * <code>optional string unique_display_name = 1;</code>
+       * @return Whether the uniqueDisplayName field is set.
+       */
+      @java.lang.Override
+      public boolean hasUniqueDisplayName() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * The display name must be unique within the scope of a password.
+       * </pre>
+       *
+       * <code>optional string unique_display_name = 1;</code>
+       * @return The uniqueDisplayName.
+       */
+      @java.lang.Override
+      public java.lang.String getUniqueDisplayName() {
+        return uniqueDisplayName_;
+      }
+      /**
+       * <pre>
+       * The display name must be unique within the scope of a password.
+       * </pre>
+       *
+       * <code>optional string unique_display_name = 1;</code>
+       * @return The bytes for uniqueDisplayName.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getUniqueDisplayNameBytes() {
+        return com.google.protobuf.ByteString.copyFromUtf8(uniqueDisplayName_);
+      }
+      /**
+       * <pre>
+       * The display name must be unique within the scope of a password.
+       * </pre>
+       *
+       * <code>optional string unique_display_name = 1;</code>
+       * @param value The uniqueDisplayName to set.
+       */
+      private void setUniqueDisplayName(
+          java.lang.String value) {
+        value.getClass();
+  bitField0_ |= 0x00000001;
+        uniqueDisplayName_ = value;
+      }
+      /**
+       * <pre>
+       * The display name must be unique within the scope of a password.
+       * </pre>
+       *
+       * <code>optional string unique_display_name = 1;</code>
+       */
+      private void clearUniqueDisplayName() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        uniqueDisplayName_ = getDefaultInstance().getUniqueDisplayName();
+      }
+      /**
+       * <pre>
+       * The display name must be unique within the scope of a password.
+       * </pre>
+       *
+       * <code>optional string unique_display_name = 1;</code>
+       * @param value The bytes for uniqueDisplayName to set.
+       */
+      private void setUniqueDisplayNameBytes(
+          com.google.protobuf.ByteString value) {
+        uniqueDisplayName_ = value.toStringUtf8();
+        bitField0_ |= 0x00000001;
+      }
+
+      public static final int VALUE_FIELD_NUMBER = 2;
+      private java.lang.String value_;
+      /**
+       * <pre>
+       * The user-defined value of the note.
+       * </pre>
+       *
+       * <code>optional string value = 2;</code>
+       * @return Whether the value field is set.
+       */
+      @java.lang.Override
+      public boolean hasValue() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * The user-defined value of the note.
+       * </pre>
+       *
+       * <code>optional string value = 2;</code>
+       * @return The value.
+       */
+      @java.lang.Override
+      public java.lang.String getValue() {
+        return value_;
+      }
+      /**
+       * <pre>
+       * The user-defined value of the note.
+       * </pre>
+       *
+       * <code>optional string value = 2;</code>
+       * @return The bytes for value.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getValueBytes() {
+        return com.google.protobuf.ByteString.copyFromUtf8(value_);
+      }
+      /**
+       * <pre>
+       * The user-defined value of the note.
+       * </pre>
+       *
+       * <code>optional string value = 2;</code>
+       * @param value The value to set.
+       */
+      private void setValue(
+          java.lang.String value) {
+        value.getClass();
+  bitField0_ |= 0x00000002;
+        value_ = value;
+      }
+      /**
+       * <pre>
+       * The user-defined value of the note.
+       * </pre>
+       *
+       * <code>optional string value = 2;</code>
+       */
+      private void clearValue() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        value_ = getDefaultInstance().getValue();
+      }
+      /**
+       * <pre>
+       * The user-defined value of the note.
+       * </pre>
+       *
+       * <code>optional string value = 2;</code>
+       * @param value The bytes for value to set.
+       */
+      private void setValueBytes(
+          com.google.protobuf.ByteString value) {
+        value_ = value.toStringUtf8();
+        bitField0_ |= 0x00000002;
+      }
+
+      public static final int DATE_CREATED_WINDOWS_EPOCH_MICROS_FIELD_NUMBER = 3;
+      private long dateCreatedWindowsEpochMicros_;
+      /**
+       * <pre>
+       * The creation time of the note. Number of microseconds since 1601.
+       * </pre>
+       *
+       * <code>optional int64 date_created_windows_epoch_micros = 3;</code>
+       * @return Whether the dateCreatedWindowsEpochMicros field is set.
+       */
+      @java.lang.Override
+      public boolean hasDateCreatedWindowsEpochMicros() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <pre>
+       * The creation time of the note. Number of microseconds since 1601.
+       * </pre>
+       *
+       * <code>optional int64 date_created_windows_epoch_micros = 3;</code>
+       * @return The dateCreatedWindowsEpochMicros.
+       */
+      @java.lang.Override
+      public long getDateCreatedWindowsEpochMicros() {
+        return dateCreatedWindowsEpochMicros_;
+      }
+      /**
+       * <pre>
+       * The creation time of the note. Number of microseconds since 1601.
+       * </pre>
+       *
+       * <code>optional int64 date_created_windows_epoch_micros = 3;</code>
+       * @param value The dateCreatedWindowsEpochMicros to set.
+       */
+      private void setDateCreatedWindowsEpochMicros(long value) {
+        bitField0_ |= 0x00000004;
+        dateCreatedWindowsEpochMicros_ = value;
+      }
+      /**
+       * <pre>
+       * The creation time of the note. Number of microseconds since 1601.
+       * </pre>
+       *
+       * <code>optional int64 date_created_windows_epoch_micros = 3;</code>
+       */
+      private void clearDateCreatedWindowsEpochMicros() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        dateCreatedWindowsEpochMicros_ = 0L;
+      }
+
+      public static final int HIDE_BY_DEFAULT_FIELD_NUMBER = 4;
+      private boolean hideByDefault_;
+      /**
+       * <pre>
+       * Whether the value of the note is not displayed in plain text by
+       * default.
+       * </pre>
+       *
+       * <code>optional bool hide_by_default = 4;</code>
+       * @return Whether the hideByDefault field is set.
+       */
+      @java.lang.Override
+      public boolean hasHideByDefault() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <pre>
+       * Whether the value of the note is not displayed in plain text by
+       * default.
+       * </pre>
+       *
+       * <code>optional bool hide_by_default = 4;</code>
+       * @return The hideByDefault.
+       */
+      @java.lang.Override
+      public boolean getHideByDefault() {
+        return hideByDefault_;
+      }
+      /**
+       * <pre>
+       * Whether the value of the note is not displayed in plain text by
+       * default.
+       * </pre>
+       *
+       * <code>optional bool hide_by_default = 4;</code>
+       * @param value The hideByDefault to set.
+       */
+      private void setHideByDefault(boolean value) {
+        bitField0_ |= 0x00000008;
+        hideByDefault_ = value;
+      }
+      /**
+       * <pre>
+       * Whether the value of the note is not displayed in plain text by
+       * default.
+       * </pre>
+       *
+       * <code>optional bool hide_by_default = 4;</code>
+       */
+      private void clearHideByDefault() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        hideByDefault_ = false;
+      }
+
+      public static org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return (Builder) DEFAULT_INSTANCE.createBuilder();
+      }
+      public static Builder newBuilder(org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note prototype) {
+        return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+      }
+
+      /**
+       * Protobuf type {@code sync_pb.PasswordSpecificsData.Notes.Note}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note, Builder> implements
+          // @@protoc_insertion_point(builder_implements:sync_pb.PasswordSpecificsData.Notes.Note)
+          org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.NoteOrBuilder {
+        // Construct using org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <pre>
+         * The display name must be unique within the scope of a password.
+         * </pre>
+         *
+         * <code>optional string unique_display_name = 1;</code>
+         * @return Whether the uniqueDisplayName field is set.
+         */
+        @java.lang.Override
+        public boolean hasUniqueDisplayName() {
+          return instance.hasUniqueDisplayName();
+        }
+        /**
+         * <pre>
+         * The display name must be unique within the scope of a password.
+         * </pre>
+         *
+         * <code>optional string unique_display_name = 1;</code>
+         * @return The uniqueDisplayName.
+         */
+        @java.lang.Override
+        public java.lang.String getUniqueDisplayName() {
+          return instance.getUniqueDisplayName();
+        }
+        /**
+         * <pre>
+         * The display name must be unique within the scope of a password.
+         * </pre>
+         *
+         * <code>optional string unique_display_name = 1;</code>
+         * @return The bytes for uniqueDisplayName.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString
+            getUniqueDisplayNameBytes() {
+          return instance.getUniqueDisplayNameBytes();
+        }
+        /**
+         * <pre>
+         * The display name must be unique within the scope of a password.
+         * </pre>
+         *
+         * <code>optional string unique_display_name = 1;</code>
+         * @param value The uniqueDisplayName to set.
+         * @return This builder for chaining.
+         */
+        public Builder setUniqueDisplayName(
+            java.lang.String value) {
+          copyOnWrite();
+          instance.setUniqueDisplayName(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * The display name must be unique within the scope of a password.
+         * </pre>
+         *
+         * <code>optional string unique_display_name = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearUniqueDisplayName() {
+          copyOnWrite();
+          instance.clearUniqueDisplayName();
+          return this;
+        }
+        /**
+         * <pre>
+         * The display name must be unique within the scope of a password.
+         * </pre>
+         *
+         * <code>optional string unique_display_name = 1;</code>
+         * @param value The bytes for uniqueDisplayName to set.
+         * @return This builder for chaining.
+         */
+        public Builder setUniqueDisplayNameBytes(
+            com.google.protobuf.ByteString value) {
+          copyOnWrite();
+          instance.setUniqueDisplayNameBytes(value);
+          return this;
+        }
+
+        /**
+         * <pre>
+         * The user-defined value of the note.
+         * </pre>
+         *
+         * <code>optional string value = 2;</code>
+         * @return Whether the value field is set.
+         */
+        @java.lang.Override
+        public boolean hasValue() {
+          return instance.hasValue();
+        }
+        /**
+         * <pre>
+         * The user-defined value of the note.
+         * </pre>
+         *
+         * <code>optional string value = 2;</code>
+         * @return The value.
+         */
+        @java.lang.Override
+        public java.lang.String getValue() {
+          return instance.getValue();
+        }
+        /**
+         * <pre>
+         * The user-defined value of the note.
+         * </pre>
+         *
+         * <code>optional string value = 2;</code>
+         * @return The bytes for value.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString
+            getValueBytes() {
+          return instance.getValueBytes();
+        }
+        /**
+         * <pre>
+         * The user-defined value of the note.
+         * </pre>
+         *
+         * <code>optional string value = 2;</code>
+         * @param value The value to set.
+         * @return This builder for chaining.
+         */
+        public Builder setValue(
+            java.lang.String value) {
+          copyOnWrite();
+          instance.setValue(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * The user-defined value of the note.
+         * </pre>
+         *
+         * <code>optional string value = 2;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearValue() {
+          copyOnWrite();
+          instance.clearValue();
+          return this;
+        }
+        /**
+         * <pre>
+         * The user-defined value of the note.
+         * </pre>
+         *
+         * <code>optional string value = 2;</code>
+         * @param value The bytes for value to set.
+         * @return This builder for chaining.
+         */
+        public Builder setValueBytes(
+            com.google.protobuf.ByteString value) {
+          copyOnWrite();
+          instance.setValueBytes(value);
+          return this;
+        }
+
+        /**
+         * <pre>
+         * The creation time of the note. Number of microseconds since 1601.
+         * </pre>
+         *
+         * <code>optional int64 date_created_windows_epoch_micros = 3;</code>
+         * @return Whether the dateCreatedWindowsEpochMicros field is set.
+         */
+        @java.lang.Override
+        public boolean hasDateCreatedWindowsEpochMicros() {
+          return instance.hasDateCreatedWindowsEpochMicros();
+        }
+        /**
+         * <pre>
+         * The creation time of the note. Number of microseconds since 1601.
+         * </pre>
+         *
+         * <code>optional int64 date_created_windows_epoch_micros = 3;</code>
+         * @return The dateCreatedWindowsEpochMicros.
+         */
+        @java.lang.Override
+        public long getDateCreatedWindowsEpochMicros() {
+          return instance.getDateCreatedWindowsEpochMicros();
+        }
+        /**
+         * <pre>
+         * The creation time of the note. Number of microseconds since 1601.
+         * </pre>
+         *
+         * <code>optional int64 date_created_windows_epoch_micros = 3;</code>
+         * @param value The dateCreatedWindowsEpochMicros to set.
+         * @return This builder for chaining.
+         */
+        public Builder setDateCreatedWindowsEpochMicros(long value) {
+          copyOnWrite();
+          instance.setDateCreatedWindowsEpochMicros(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * The creation time of the note. Number of microseconds since 1601.
+         * </pre>
+         *
+         * <code>optional int64 date_created_windows_epoch_micros = 3;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearDateCreatedWindowsEpochMicros() {
+          copyOnWrite();
+          instance.clearDateCreatedWindowsEpochMicros();
+          return this;
+        }
+
+        /**
+         * <pre>
+         * Whether the value of the note is not displayed in plain text by
+         * default.
+         * </pre>
+         *
+         * <code>optional bool hide_by_default = 4;</code>
+         * @return Whether the hideByDefault field is set.
+         */
+        @java.lang.Override
+        public boolean hasHideByDefault() {
+          return instance.hasHideByDefault();
+        }
+        /**
+         * <pre>
+         * Whether the value of the note is not displayed in plain text by
+         * default.
+         * </pre>
+         *
+         * <code>optional bool hide_by_default = 4;</code>
+         * @return The hideByDefault.
+         */
+        @java.lang.Override
+        public boolean getHideByDefault() {
+          return instance.getHideByDefault();
+        }
+        /**
+         * <pre>
+         * Whether the value of the note is not displayed in plain text by
+         * default.
+         * </pre>
+         *
+         * <code>optional bool hide_by_default = 4;</code>
+         * @param value The hideByDefault to set.
+         * @return This builder for chaining.
+         */
+        public Builder setHideByDefault(boolean value) {
+          copyOnWrite();
+          instance.setHideByDefault(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Whether the value of the note is not displayed in plain text by
+         * default.
+         * </pre>
+         *
+         * <code>optional bool hide_by_default = 4;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearHideByDefault() {
+          copyOnWrite();
+          instance.clearHideByDefault();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:sync_pb.PasswordSpecificsData.Notes.Note)
+      }
+      @java.lang.Override
+      @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+      protected final java.lang.Object dynamicMethod(
+          com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+          java.lang.Object arg0, java.lang.Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note();
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case BUILD_MESSAGE_INFO: {
+              java.lang.Object[] objects = new java.lang.Object[] {
+                "bitField0_",
+                "uniqueDisplayName_",
+                "value_",
+                "dateCreatedWindowsEpochMicros_",
+                "hideByDefault_",
+              };
+              java.lang.String info =
+                  "\u0001\u0004\u0000\u0001\u0001\u0004\u0004\u0000\u0000\u0000\u0001\u1008\u0000\u0002" +
+                  "\u1008\u0001\u0003\u1002\u0002\u0004\u1007\u0003";
+              return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+          }
+          // fall through
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            com.google.protobuf.Parser<org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note> parser = PARSER;
+            if (parser == null) {
+              synchronized (org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note.class) {
+                parser = PARSER;
+                if (parser == null) {
+                  parser =
+                      new DefaultInstanceBasedParser<org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note>(
+                          DEFAULT_INSTANCE);
+                  PARSER = parser;
+                }
+              }
+            }
+            return parser;
+        }
+        case GET_MEMOIZED_IS_INITIALIZED: {
+          return (byte) 1;
+        }
+        case SET_MEMOIZED_IS_INITIALIZED: {
+          return null;
+        }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:sync_pb.PasswordSpecificsData.Notes.Note)
+      private static final org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note DEFAULT_INSTANCE;
+      static {
+        Note defaultInstance = new Note();
+        // New instances are implicitly immutable so no need to make
+        // immutable.
+        DEFAULT_INSTANCE = defaultInstance;
+        com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+          Note.class, defaultInstance);
+      }
+
+      public static org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<Note> PARSER;
+
+      public static com.google.protobuf.Parser<Note> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
+    public static final int NOTE_FIELD_NUMBER = 1;
+    private com.google.protobuf.Internal.ProtobufList<org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note> note_;
+    /**
+     * <code>repeated .sync_pb.PasswordSpecificsData.Notes.Note note = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note> getNoteList() {
+      return note_;
+    }
+    /**
+     * <code>repeated .sync_pb.PasswordSpecificsData.Notes.Note note = 1;</code>
+     */
+    public java.util.List<? extends org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.NoteOrBuilder> 
+        getNoteOrBuilderList() {
+      return note_;
+    }
+    /**
+     * <code>repeated .sync_pb.PasswordSpecificsData.Notes.Note note = 1;</code>
+     */
+    @java.lang.Override
+    public int getNoteCount() {
+      return note_.size();
+    }
+    /**
+     * <code>repeated .sync_pb.PasswordSpecificsData.Notes.Note note = 1;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note getNote(int index) {
+      return note_.get(index);
+    }
+    /**
+     * <code>repeated .sync_pb.PasswordSpecificsData.Notes.Note note = 1;</code>
+     */
+    public org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.NoteOrBuilder getNoteOrBuilder(
+        int index) {
+      return note_.get(index);
+    }
+    private void ensureNoteIsMutable() {
+      com.google.protobuf.Internal.ProtobufList<org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note> tmp = note_;
+      if (!tmp.isModifiable()) {
+        note_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(tmp);
+       }
+    }
+
+    /**
+     * <code>repeated .sync_pb.PasswordSpecificsData.Notes.Note note = 1;</code>
+     */
+    private void setNote(
+        int index, org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note value) {
+      value.getClass();
+  ensureNoteIsMutable();
+      note_.set(index, value);
+    }
+    /**
+     * <code>repeated .sync_pb.PasswordSpecificsData.Notes.Note note = 1;</code>
+     */
+    private void addNote(org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note value) {
+      value.getClass();
+  ensureNoteIsMutable();
+      note_.add(value);
+    }
+    /**
+     * <code>repeated .sync_pb.PasswordSpecificsData.Notes.Note note = 1;</code>
+     */
+    private void addNote(
+        int index, org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note value) {
+      value.getClass();
+  ensureNoteIsMutable();
+      note_.add(index, value);
+    }
+    /**
+     * <code>repeated .sync_pb.PasswordSpecificsData.Notes.Note note = 1;</code>
+     */
+    private void addAllNote(
+        java.lang.Iterable<? extends org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note> values) {
+      ensureNoteIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, note_);
+    }
+    /**
+     * <code>repeated .sync_pb.PasswordSpecificsData.Notes.Note note = 1;</code>
+     */
+    private void clearNote() {
+      note_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .sync_pb.PasswordSpecificsData.Notes.Note note = 1;</code>
+     */
+    private void removeNote(int index) {
+      ensureNoteIsMutable();
+      note_.remove(index);
+    }
+
+    public static org.chromium.components.sync.protocol.PasswordSpecificsData.Notes parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.chromium.components.sync.protocol.PasswordSpecificsData.Notes parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.PasswordSpecificsData.Notes parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.chromium.components.sync.protocol.PasswordSpecificsData.Notes parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.PasswordSpecificsData.Notes parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.chromium.components.sync.protocol.PasswordSpecificsData.Notes parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.PasswordSpecificsData.Notes parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static org.chromium.components.sync.protocol.PasswordSpecificsData.Notes parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.PasswordSpecificsData.Notes parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static org.chromium.components.sync.protocol.PasswordSpecificsData.Notes parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.PasswordSpecificsData.Notes parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static org.chromium.components.sync.protocol.PasswordSpecificsData.Notes parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(org.chromium.components.sync.protocol.PasswordSpecificsData.Notes prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * Protobuf type {@code sync_pb.PasswordSpecificsData.Notes}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          org.chromium.components.sync.protocol.PasswordSpecificsData.Notes, Builder> implements
+        // @@protoc_insertion_point(builder_implements:sync_pb.PasswordSpecificsData.Notes)
+        org.chromium.components.sync.protocol.PasswordSpecificsData.NotesOrBuilder {
+      // Construct using org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>repeated .sync_pb.PasswordSpecificsData.Notes.Note note = 1;</code>
+       */
+      @java.lang.Override
+      public java.util.List<org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note> getNoteList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getNoteList());
+      }
+      /**
+       * <code>repeated .sync_pb.PasswordSpecificsData.Notes.Note note = 1;</code>
+       */
+      @java.lang.Override
+      public int getNoteCount() {
+        return instance.getNoteCount();
+      }/**
+       * <code>repeated .sync_pb.PasswordSpecificsData.Notes.Note note = 1;</code>
+       */
+      @java.lang.Override
+      public org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note getNote(int index) {
+        return instance.getNote(index);
+      }
+      /**
+       * <code>repeated .sync_pb.PasswordSpecificsData.Notes.Note note = 1;</code>
+       */
+      public Builder setNote(
+          int index, org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note value) {
+        copyOnWrite();
+        instance.setNote(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .sync_pb.PasswordSpecificsData.Notes.Note note = 1;</code>
+       */
+      public Builder setNote(
+          int index, org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note.Builder builderForValue) {
+        copyOnWrite();
+        instance.setNote(index,
+            builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>repeated .sync_pb.PasswordSpecificsData.Notes.Note note = 1;</code>
+       */
+      public Builder addNote(org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note value) {
+        copyOnWrite();
+        instance.addNote(value);
+        return this;
+      }
+      /**
+       * <code>repeated .sync_pb.PasswordSpecificsData.Notes.Note note = 1;</code>
+       */
+      public Builder addNote(
+          int index, org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note value) {
+        copyOnWrite();
+        instance.addNote(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .sync_pb.PasswordSpecificsData.Notes.Note note = 1;</code>
+       */
+      public Builder addNote(
+          org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note.Builder builderForValue) {
+        copyOnWrite();
+        instance.addNote(builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>repeated .sync_pb.PasswordSpecificsData.Notes.Note note = 1;</code>
+       */
+      public Builder addNote(
+          int index, org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note.Builder builderForValue) {
+        copyOnWrite();
+        instance.addNote(index,
+            builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>repeated .sync_pb.PasswordSpecificsData.Notes.Note note = 1;</code>
+       */
+      public Builder addAllNote(
+          java.lang.Iterable<? extends org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note> values) {
+        copyOnWrite();
+        instance.addAllNote(values);
+        return this;
+      }
+      /**
+       * <code>repeated .sync_pb.PasswordSpecificsData.Notes.Note note = 1;</code>
+       */
+      public Builder clearNote() {
+        copyOnWrite();
+        instance.clearNote();
+        return this;
+      }
+      /**
+       * <code>repeated .sync_pb.PasswordSpecificsData.Notes.Note note = 1;</code>
+       */
+      public Builder removeNote(int index) {
+        copyOnWrite();
+        instance.removeNote(index);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:sync_pb.PasswordSpecificsData.Notes)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new org.chromium.components.sync.protocol.PasswordSpecificsData.Notes();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "note_",
+              org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Note.class,
+            };
+            java.lang.String info =
+                "\u0001\u0001\u0000\u0000\u0001\u0001\u0001\u0000\u0001\u0000\u0001\u001b";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<org.chromium.components.sync.protocol.PasswordSpecificsData.Notes> parser = PARSER;
+          if (parser == null) {
+            synchronized (org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser =
+                    new DefaultInstanceBasedParser<org.chromium.components.sync.protocol.PasswordSpecificsData.Notes>(
+                        DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:sync_pb.PasswordSpecificsData.Notes)
+    private static final org.chromium.components.sync.protocol.PasswordSpecificsData.Notes DEFAULT_INSTANCE;
+    static {
+      Notes defaultInstance = new Notes();
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = defaultInstance;
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        Notes.class, defaultInstance);
+    }
+
+    public static org.chromium.components.sync.protocol.PasswordSpecificsData.Notes getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<Notes> PARSER;
+
+    public static com.google.protobuf.Parser<Notes> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
   private int bitField0_;
   public static final int SCHEME_FIELD_NUMBER = 1;
   private int scheme_;
   /**
    * <pre>
-   * SCHEME_HTML(0), the credential represents either a parsed HTML form, or an
-   * android credential or a password saved through Credential Manager API
-   * (https://w3c.github.io/webappsec/specs/credentialmanagement/).
-   * SCHEME_BASIC(1), basic access http authentication.
-   * SCHEME_DIGEST(2), digest access authentication.
-   * SCHEME_OTHER(3), another access authentication.
+   * See the enum above.
    * </pre>
    *
    * <code>optional int32 scheme = 1;</code>
@@ -1093,12 +2493,7 @@ public  final class PasswordSpecificsData extends
   }
   /**
    * <pre>
-   * SCHEME_HTML(0), the credential represents either a parsed HTML form, or an
-   * android credential or a password saved through Credential Manager API
-   * (https://w3c.github.io/webappsec/specs/credentialmanagement/).
-   * SCHEME_BASIC(1), basic access http authentication.
-   * SCHEME_DIGEST(2), digest access authentication.
-   * SCHEME_OTHER(3), another access authentication.
+   * See the enum above.
    * </pre>
    *
    * <code>optional int32 scheme = 1;</code>
@@ -1110,12 +2505,7 @@ public  final class PasswordSpecificsData extends
   }
   /**
    * <pre>
-   * SCHEME_HTML(0), the credential represents either a parsed HTML form, or an
-   * android credential or a password saved through Credential Manager API
-   * (https://w3c.github.io/webappsec/specs/credentialmanagement/).
-   * SCHEME_BASIC(1), basic access http authentication.
-   * SCHEME_DIGEST(2), digest access authentication.
-   * SCHEME_OTHER(3), another access authentication.
+   * See the enum above.
    * </pre>
    *
    * <code>optional int32 scheme = 1;</code>
@@ -1127,12 +2517,7 @@ public  final class PasswordSpecificsData extends
   }
   /**
    * <pre>
-   * SCHEME_HTML(0), the credential represents either a parsed HTML form, or an
-   * android credential or a password saved through Credential Manager API
-   * (https://w3c.github.io/webappsec/specs/credentialmanagement/).
-   * SCHEME_BASIC(1), basic access http authentication.
-   * SCHEME_DIGEST(2), digest access authentication.
-   * SCHEME_OTHER(3), another access authentication.
+   * See the enum above.
    * </pre>
    *
    * <code>optional int32 scheme = 1;</code>
@@ -1146,15 +2531,69 @@ public  final class PasswordSpecificsData extends
   private java.lang.String signonRealm_;
   /**
    * <pre>
-   * For parsed web forms and normal passwords saved through Credential Manager
-   * API: url-scheme://url-host[:url-port]/
-   * For Android apps (local + federated):
-   *     "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
-   * where the hash is base64 encoded SHA512 of the app's public certificate.
-   * For federated credentials:
-   *     "federation://" + origin_host + "/" + federation_host
-   * For proxy auth: proxy-host/auth-realm
-   * For HTTP auth: url-scheme://url-host[:url-port]/auth-realm
+   * Signon realm stores information on where the saved password was stored, and
+   * where it's supposed to be filled again.
+   * It can take various formats depending on the exact circumstances where it
+   * was recorded. Note that the format is *not* guaranteed to be a valid URL or
+   * URI:
+   *  * For parsed web forms and normal passwords saved through Credential
+   *  Manager
+   *    API: &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/
+   *    where
+   *      &lt;http-scheme&gt; is one of "http" or "https"
+   *      &lt;url-host&gt; is the host for which the password was stored
+   *      &lt;url-port&gt; is the option port on the host
+   *    The signon realm is a valid URL in this case with an empty path.
+   *    Examples:
+   *      http://www.example.com/
+   *      https://127.0.0.1/
+   *      http://www.google.com:8080/
+   *      http://192.168.1.254/
+   *      https://accounts.google.com/
+   *  * For Android apps saved through Autofill with Google:
+   *      android://&lt;hash-of-cert&gt;&#64;&lt;package-name&gt;/
+   *    where
+   *      &lt;hash-of-cert&gt; is the base64 encoded SHA512 of the app's public
+   *      certificate &lt;package-name&gt; is the app's package name
+   *    Examples:
+   *      android://kCyQDzpaoAX2gs-1zdGPKNAeICb8LzRFOxa4NCq0jO8c8d_NFS_q-Y35bU3Nq3GmFV2lLurmNvIZa6YPYZwmWg==&#64;com.pinterest/
+   *      android://mNUCvTnoWBkzIhSSkVj-uzAdK42YagmCmyUtPoC6JPmYAN3wKpmTdIRsdJtz6pzNBye8XL7nBbEcx-y9CJeo9A==&#64;com.twitter.android.lite/
+   *  * For federated credentials:
+   *      federation://&lt;origin_host&gt;/&lt;federation_host&gt;
+   *    where
+   *      &lt;origin_host&gt; is the host for which the login information was stored
+   *      &lt;federation_host&gt; is the host of the federation provider that was
+   *        used to sign in
+   *    Examples:
+   *      federation://www.example.com/accounts.google.com
+   *      federation://uk.trustpilot.com/www.facebook.com
+   *  * For proxy auth:
+   *      &lt;proxy-host&gt;[:&lt;proxy_port&gt;]/&lt;auth-realm&gt;
+   *    where
+   *      &lt;proxy-host&gt; is the host of the proxy for which the password was
+   *      stored
+   *      &lt;proxy-port&gt; is the port of the proxy
+   *      &lt;auth-realm&gt; is a string provided by the proxy during authentication.
+   *      It can contain spaces.
+   *    Examples:
+   *      proxy2.eq.edu.au:80/MISldap
+   *      proxy.det.nsw.edu.au:8080/NSW Department of Education
+   *      10.47.2.250:3128/Squid Proxy Server CPUT
+   *      default.go2https.com:443/(******Get password from vpnso.com/account/
+   *      *****)
+   *  * For HTTP basic auth:
+   *      &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/&lt;auth-realm&gt;
+   *    where
+   *      &lt;http-scheme&gt; is one of "http" or "https"
+   *      &lt;url-host&gt; is the host for which the password was stored
+   *      &lt;url-port&gt; is the option port on the host
+   *      &lt;auth-realm&gt; is a string provided by the host during authentication.
+   *      It can contain spaces.
+   *    Examples:
+   *      http://192.168.1.1/Broadband Router
+   *      http://192.168.0.1/TP-LINK Wireless N Router WR841N
+   *      http://192.168.1.1/index.htm
+   *      https://www.edge.asic.gov.au/ASIC eBusiness
    * </pre>
    *
    * <code>optional string signon_realm = 2;</code>
@@ -1166,15 +2605,69 @@ public  final class PasswordSpecificsData extends
   }
   /**
    * <pre>
-   * For parsed web forms and normal passwords saved through Credential Manager
-   * API: url-scheme://url-host[:url-port]/
-   * For Android apps (local + federated):
-   *     "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
-   * where the hash is base64 encoded SHA512 of the app's public certificate.
-   * For federated credentials:
-   *     "federation://" + origin_host + "/" + federation_host
-   * For proxy auth: proxy-host/auth-realm
-   * For HTTP auth: url-scheme://url-host[:url-port]/auth-realm
+   * Signon realm stores information on where the saved password was stored, and
+   * where it's supposed to be filled again.
+   * It can take various formats depending on the exact circumstances where it
+   * was recorded. Note that the format is *not* guaranteed to be a valid URL or
+   * URI:
+   *  * For parsed web forms and normal passwords saved through Credential
+   *  Manager
+   *    API: &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/
+   *    where
+   *      &lt;http-scheme&gt; is one of "http" or "https"
+   *      &lt;url-host&gt; is the host for which the password was stored
+   *      &lt;url-port&gt; is the option port on the host
+   *    The signon realm is a valid URL in this case with an empty path.
+   *    Examples:
+   *      http://www.example.com/
+   *      https://127.0.0.1/
+   *      http://www.google.com:8080/
+   *      http://192.168.1.254/
+   *      https://accounts.google.com/
+   *  * For Android apps saved through Autofill with Google:
+   *      android://&lt;hash-of-cert&gt;&#64;&lt;package-name&gt;/
+   *    where
+   *      &lt;hash-of-cert&gt; is the base64 encoded SHA512 of the app's public
+   *      certificate &lt;package-name&gt; is the app's package name
+   *    Examples:
+   *      android://kCyQDzpaoAX2gs-1zdGPKNAeICb8LzRFOxa4NCq0jO8c8d_NFS_q-Y35bU3Nq3GmFV2lLurmNvIZa6YPYZwmWg==&#64;com.pinterest/
+   *      android://mNUCvTnoWBkzIhSSkVj-uzAdK42YagmCmyUtPoC6JPmYAN3wKpmTdIRsdJtz6pzNBye8XL7nBbEcx-y9CJeo9A==&#64;com.twitter.android.lite/
+   *  * For federated credentials:
+   *      federation://&lt;origin_host&gt;/&lt;federation_host&gt;
+   *    where
+   *      &lt;origin_host&gt; is the host for which the login information was stored
+   *      &lt;federation_host&gt; is the host of the federation provider that was
+   *        used to sign in
+   *    Examples:
+   *      federation://www.example.com/accounts.google.com
+   *      federation://uk.trustpilot.com/www.facebook.com
+   *  * For proxy auth:
+   *      &lt;proxy-host&gt;[:&lt;proxy_port&gt;]/&lt;auth-realm&gt;
+   *    where
+   *      &lt;proxy-host&gt; is the host of the proxy for which the password was
+   *      stored
+   *      &lt;proxy-port&gt; is the port of the proxy
+   *      &lt;auth-realm&gt; is a string provided by the proxy during authentication.
+   *      It can contain spaces.
+   *    Examples:
+   *      proxy2.eq.edu.au:80/MISldap
+   *      proxy.det.nsw.edu.au:8080/NSW Department of Education
+   *      10.47.2.250:3128/Squid Proxy Server CPUT
+   *      default.go2https.com:443/(******Get password from vpnso.com/account/
+   *      *****)
+   *  * For HTTP basic auth:
+   *      &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/&lt;auth-realm&gt;
+   *    where
+   *      &lt;http-scheme&gt; is one of "http" or "https"
+   *      &lt;url-host&gt; is the host for which the password was stored
+   *      &lt;url-port&gt; is the option port on the host
+   *      &lt;auth-realm&gt; is a string provided by the host during authentication.
+   *      It can contain spaces.
+   *    Examples:
+   *      http://192.168.1.1/Broadband Router
+   *      http://192.168.0.1/TP-LINK Wireless N Router WR841N
+   *      http://192.168.1.1/index.htm
+   *      https://www.edge.asic.gov.au/ASIC eBusiness
    * </pre>
    *
    * <code>optional string signon_realm = 2;</code>
@@ -1186,15 +2679,69 @@ public  final class PasswordSpecificsData extends
   }
   /**
    * <pre>
-   * For parsed web forms and normal passwords saved through Credential Manager
-   * API: url-scheme://url-host[:url-port]/
-   * For Android apps (local + federated):
-   *     "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
-   * where the hash is base64 encoded SHA512 of the app's public certificate.
-   * For federated credentials:
-   *     "federation://" + origin_host + "/" + federation_host
-   * For proxy auth: proxy-host/auth-realm
-   * For HTTP auth: url-scheme://url-host[:url-port]/auth-realm
+   * Signon realm stores information on where the saved password was stored, and
+   * where it's supposed to be filled again.
+   * It can take various formats depending on the exact circumstances where it
+   * was recorded. Note that the format is *not* guaranteed to be a valid URL or
+   * URI:
+   *  * For parsed web forms and normal passwords saved through Credential
+   *  Manager
+   *    API: &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/
+   *    where
+   *      &lt;http-scheme&gt; is one of "http" or "https"
+   *      &lt;url-host&gt; is the host for which the password was stored
+   *      &lt;url-port&gt; is the option port on the host
+   *    The signon realm is a valid URL in this case with an empty path.
+   *    Examples:
+   *      http://www.example.com/
+   *      https://127.0.0.1/
+   *      http://www.google.com:8080/
+   *      http://192.168.1.254/
+   *      https://accounts.google.com/
+   *  * For Android apps saved through Autofill with Google:
+   *      android://&lt;hash-of-cert&gt;&#64;&lt;package-name&gt;/
+   *    where
+   *      &lt;hash-of-cert&gt; is the base64 encoded SHA512 of the app's public
+   *      certificate &lt;package-name&gt; is the app's package name
+   *    Examples:
+   *      android://kCyQDzpaoAX2gs-1zdGPKNAeICb8LzRFOxa4NCq0jO8c8d_NFS_q-Y35bU3Nq3GmFV2lLurmNvIZa6YPYZwmWg==&#64;com.pinterest/
+   *      android://mNUCvTnoWBkzIhSSkVj-uzAdK42YagmCmyUtPoC6JPmYAN3wKpmTdIRsdJtz6pzNBye8XL7nBbEcx-y9CJeo9A==&#64;com.twitter.android.lite/
+   *  * For federated credentials:
+   *      federation://&lt;origin_host&gt;/&lt;federation_host&gt;
+   *    where
+   *      &lt;origin_host&gt; is the host for which the login information was stored
+   *      &lt;federation_host&gt; is the host of the federation provider that was
+   *        used to sign in
+   *    Examples:
+   *      federation://www.example.com/accounts.google.com
+   *      federation://uk.trustpilot.com/www.facebook.com
+   *  * For proxy auth:
+   *      &lt;proxy-host&gt;[:&lt;proxy_port&gt;]/&lt;auth-realm&gt;
+   *    where
+   *      &lt;proxy-host&gt; is the host of the proxy for which the password was
+   *      stored
+   *      &lt;proxy-port&gt; is the port of the proxy
+   *      &lt;auth-realm&gt; is a string provided by the proxy during authentication.
+   *      It can contain spaces.
+   *    Examples:
+   *      proxy2.eq.edu.au:80/MISldap
+   *      proxy.det.nsw.edu.au:8080/NSW Department of Education
+   *      10.47.2.250:3128/Squid Proxy Server CPUT
+   *      default.go2https.com:443/(******Get password from vpnso.com/account/
+   *      *****)
+   *  * For HTTP basic auth:
+   *      &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/&lt;auth-realm&gt;
+   *    where
+   *      &lt;http-scheme&gt; is one of "http" or "https"
+   *      &lt;url-host&gt; is the host for which the password was stored
+   *      &lt;url-port&gt; is the option port on the host
+   *      &lt;auth-realm&gt; is a string provided by the host during authentication.
+   *      It can contain spaces.
+   *    Examples:
+   *      http://192.168.1.1/Broadband Router
+   *      http://192.168.0.1/TP-LINK Wireless N Router WR841N
+   *      http://192.168.1.1/index.htm
+   *      https://www.edge.asic.gov.au/ASIC eBusiness
    * </pre>
    *
    * <code>optional string signon_realm = 2;</code>
@@ -1207,15 +2754,69 @@ public  final class PasswordSpecificsData extends
   }
   /**
    * <pre>
-   * For parsed web forms and normal passwords saved through Credential Manager
-   * API: url-scheme://url-host[:url-port]/
-   * For Android apps (local + federated):
-   *     "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
-   * where the hash is base64 encoded SHA512 of the app's public certificate.
-   * For federated credentials:
-   *     "federation://" + origin_host + "/" + federation_host
-   * For proxy auth: proxy-host/auth-realm
-   * For HTTP auth: url-scheme://url-host[:url-port]/auth-realm
+   * Signon realm stores information on where the saved password was stored, and
+   * where it's supposed to be filled again.
+   * It can take various formats depending on the exact circumstances where it
+   * was recorded. Note that the format is *not* guaranteed to be a valid URL or
+   * URI:
+   *  * For parsed web forms and normal passwords saved through Credential
+   *  Manager
+   *    API: &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/
+   *    where
+   *      &lt;http-scheme&gt; is one of "http" or "https"
+   *      &lt;url-host&gt; is the host for which the password was stored
+   *      &lt;url-port&gt; is the option port on the host
+   *    The signon realm is a valid URL in this case with an empty path.
+   *    Examples:
+   *      http://www.example.com/
+   *      https://127.0.0.1/
+   *      http://www.google.com:8080/
+   *      http://192.168.1.254/
+   *      https://accounts.google.com/
+   *  * For Android apps saved through Autofill with Google:
+   *      android://&lt;hash-of-cert&gt;&#64;&lt;package-name&gt;/
+   *    where
+   *      &lt;hash-of-cert&gt; is the base64 encoded SHA512 of the app's public
+   *      certificate &lt;package-name&gt; is the app's package name
+   *    Examples:
+   *      android://kCyQDzpaoAX2gs-1zdGPKNAeICb8LzRFOxa4NCq0jO8c8d_NFS_q-Y35bU3Nq3GmFV2lLurmNvIZa6YPYZwmWg==&#64;com.pinterest/
+   *      android://mNUCvTnoWBkzIhSSkVj-uzAdK42YagmCmyUtPoC6JPmYAN3wKpmTdIRsdJtz6pzNBye8XL7nBbEcx-y9CJeo9A==&#64;com.twitter.android.lite/
+   *  * For federated credentials:
+   *      federation://&lt;origin_host&gt;/&lt;federation_host&gt;
+   *    where
+   *      &lt;origin_host&gt; is the host for which the login information was stored
+   *      &lt;federation_host&gt; is the host of the federation provider that was
+   *        used to sign in
+   *    Examples:
+   *      federation://www.example.com/accounts.google.com
+   *      federation://uk.trustpilot.com/www.facebook.com
+   *  * For proxy auth:
+   *      &lt;proxy-host&gt;[:&lt;proxy_port&gt;]/&lt;auth-realm&gt;
+   *    where
+   *      &lt;proxy-host&gt; is the host of the proxy for which the password was
+   *      stored
+   *      &lt;proxy-port&gt; is the port of the proxy
+   *      &lt;auth-realm&gt; is a string provided by the proxy during authentication.
+   *      It can contain spaces.
+   *    Examples:
+   *      proxy2.eq.edu.au:80/MISldap
+   *      proxy.det.nsw.edu.au:8080/NSW Department of Education
+   *      10.47.2.250:3128/Squid Proxy Server CPUT
+   *      default.go2https.com:443/(******Get password from vpnso.com/account/
+   *      *****)
+   *  * For HTTP basic auth:
+   *      &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/&lt;auth-realm&gt;
+   *    where
+   *      &lt;http-scheme&gt; is one of "http" or "https"
+   *      &lt;url-host&gt; is the host for which the password was stored
+   *      &lt;url-port&gt; is the option port on the host
+   *      &lt;auth-realm&gt; is a string provided by the host during authentication.
+   *      It can contain spaces.
+   *    Examples:
+   *      http://192.168.1.1/Broadband Router
+   *      http://192.168.0.1/TP-LINK Wireless N Router WR841N
+   *      http://192.168.1.1/index.htm
+   *      https://www.edge.asic.gov.au/ASIC eBusiness
    * </pre>
    *
    * <code>optional string signon_realm = 2;</code>
@@ -1229,15 +2830,69 @@ public  final class PasswordSpecificsData extends
   }
   /**
    * <pre>
-   * For parsed web forms and normal passwords saved through Credential Manager
-   * API: url-scheme://url-host[:url-port]/
-   * For Android apps (local + federated):
-   *     "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
-   * where the hash is base64 encoded SHA512 of the app's public certificate.
-   * For federated credentials:
-   *     "federation://" + origin_host + "/" + federation_host
-   * For proxy auth: proxy-host/auth-realm
-   * For HTTP auth: url-scheme://url-host[:url-port]/auth-realm
+   * Signon realm stores information on where the saved password was stored, and
+   * where it's supposed to be filled again.
+   * It can take various formats depending on the exact circumstances where it
+   * was recorded. Note that the format is *not* guaranteed to be a valid URL or
+   * URI:
+   *  * For parsed web forms and normal passwords saved through Credential
+   *  Manager
+   *    API: &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/
+   *    where
+   *      &lt;http-scheme&gt; is one of "http" or "https"
+   *      &lt;url-host&gt; is the host for which the password was stored
+   *      &lt;url-port&gt; is the option port on the host
+   *    The signon realm is a valid URL in this case with an empty path.
+   *    Examples:
+   *      http://www.example.com/
+   *      https://127.0.0.1/
+   *      http://www.google.com:8080/
+   *      http://192.168.1.254/
+   *      https://accounts.google.com/
+   *  * For Android apps saved through Autofill with Google:
+   *      android://&lt;hash-of-cert&gt;&#64;&lt;package-name&gt;/
+   *    where
+   *      &lt;hash-of-cert&gt; is the base64 encoded SHA512 of the app's public
+   *      certificate &lt;package-name&gt; is the app's package name
+   *    Examples:
+   *      android://kCyQDzpaoAX2gs-1zdGPKNAeICb8LzRFOxa4NCq0jO8c8d_NFS_q-Y35bU3Nq3GmFV2lLurmNvIZa6YPYZwmWg==&#64;com.pinterest/
+   *      android://mNUCvTnoWBkzIhSSkVj-uzAdK42YagmCmyUtPoC6JPmYAN3wKpmTdIRsdJtz6pzNBye8XL7nBbEcx-y9CJeo9A==&#64;com.twitter.android.lite/
+   *  * For federated credentials:
+   *      federation://&lt;origin_host&gt;/&lt;federation_host&gt;
+   *    where
+   *      &lt;origin_host&gt; is the host for which the login information was stored
+   *      &lt;federation_host&gt; is the host of the federation provider that was
+   *        used to sign in
+   *    Examples:
+   *      federation://www.example.com/accounts.google.com
+   *      federation://uk.trustpilot.com/www.facebook.com
+   *  * For proxy auth:
+   *      &lt;proxy-host&gt;[:&lt;proxy_port&gt;]/&lt;auth-realm&gt;
+   *    where
+   *      &lt;proxy-host&gt; is the host of the proxy for which the password was
+   *      stored
+   *      &lt;proxy-port&gt; is the port of the proxy
+   *      &lt;auth-realm&gt; is a string provided by the proxy during authentication.
+   *      It can contain spaces.
+   *    Examples:
+   *      proxy2.eq.edu.au:80/MISldap
+   *      proxy.det.nsw.edu.au:8080/NSW Department of Education
+   *      10.47.2.250:3128/Squid Proxy Server CPUT
+   *      default.go2https.com:443/(******Get password from vpnso.com/account/
+   *      *****)
+   *  * For HTTP basic auth:
+   *      &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/&lt;auth-realm&gt;
+   *    where
+   *      &lt;http-scheme&gt; is one of "http" or "https"
+   *      &lt;url-host&gt; is the host for which the password was stored
+   *      &lt;url-port&gt; is the option port on the host
+   *      &lt;auth-realm&gt; is a string provided by the host during authentication.
+   *      It can contain spaces.
+   *    Examples:
+   *      http://192.168.1.1/Broadband Router
+   *      http://192.168.0.1/TP-LINK Wireless N Router WR841N
+   *      http://192.168.1.1/index.htm
+   *      https://www.edge.asic.gov.au/ASIC eBusiness
    * </pre>
    *
    * <code>optional string signon_realm = 2;</code>
@@ -1248,15 +2903,69 @@ public  final class PasswordSpecificsData extends
   }
   /**
    * <pre>
-   * For parsed web forms and normal passwords saved through Credential Manager
-   * API: url-scheme://url-host[:url-port]/
-   * For Android apps (local + federated):
-   *     "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
-   * where the hash is base64 encoded SHA512 of the app's public certificate.
-   * For federated credentials:
-   *     "federation://" + origin_host + "/" + federation_host
-   * For proxy auth: proxy-host/auth-realm
-   * For HTTP auth: url-scheme://url-host[:url-port]/auth-realm
+   * Signon realm stores information on where the saved password was stored, and
+   * where it's supposed to be filled again.
+   * It can take various formats depending on the exact circumstances where it
+   * was recorded. Note that the format is *not* guaranteed to be a valid URL or
+   * URI:
+   *  * For parsed web forms and normal passwords saved through Credential
+   *  Manager
+   *    API: &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/
+   *    where
+   *      &lt;http-scheme&gt; is one of "http" or "https"
+   *      &lt;url-host&gt; is the host for which the password was stored
+   *      &lt;url-port&gt; is the option port on the host
+   *    The signon realm is a valid URL in this case with an empty path.
+   *    Examples:
+   *      http://www.example.com/
+   *      https://127.0.0.1/
+   *      http://www.google.com:8080/
+   *      http://192.168.1.254/
+   *      https://accounts.google.com/
+   *  * For Android apps saved through Autofill with Google:
+   *      android://&lt;hash-of-cert&gt;&#64;&lt;package-name&gt;/
+   *    where
+   *      &lt;hash-of-cert&gt; is the base64 encoded SHA512 of the app's public
+   *      certificate &lt;package-name&gt; is the app's package name
+   *    Examples:
+   *      android://kCyQDzpaoAX2gs-1zdGPKNAeICb8LzRFOxa4NCq0jO8c8d_NFS_q-Y35bU3Nq3GmFV2lLurmNvIZa6YPYZwmWg==&#64;com.pinterest/
+   *      android://mNUCvTnoWBkzIhSSkVj-uzAdK42YagmCmyUtPoC6JPmYAN3wKpmTdIRsdJtz6pzNBye8XL7nBbEcx-y9CJeo9A==&#64;com.twitter.android.lite/
+   *  * For federated credentials:
+   *      federation://&lt;origin_host&gt;/&lt;federation_host&gt;
+   *    where
+   *      &lt;origin_host&gt; is the host for which the login information was stored
+   *      &lt;federation_host&gt; is the host of the federation provider that was
+   *        used to sign in
+   *    Examples:
+   *      federation://www.example.com/accounts.google.com
+   *      federation://uk.trustpilot.com/www.facebook.com
+   *  * For proxy auth:
+   *      &lt;proxy-host&gt;[:&lt;proxy_port&gt;]/&lt;auth-realm&gt;
+   *    where
+   *      &lt;proxy-host&gt; is the host of the proxy for which the password was
+   *      stored
+   *      &lt;proxy-port&gt; is the port of the proxy
+   *      &lt;auth-realm&gt; is a string provided by the proxy during authentication.
+   *      It can contain spaces.
+   *    Examples:
+   *      proxy2.eq.edu.au:80/MISldap
+   *      proxy.det.nsw.edu.au:8080/NSW Department of Education
+   *      10.47.2.250:3128/Squid Proxy Server CPUT
+   *      default.go2https.com:443/(******Get password from vpnso.com/account/
+   *      *****)
+   *  * For HTTP basic auth:
+   *      &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/&lt;auth-realm&gt;
+   *    where
+   *      &lt;http-scheme&gt; is one of "http" or "https"
+   *      &lt;url-host&gt; is the host for which the password was stored
+   *      &lt;url-port&gt; is the option port on the host
+   *      &lt;auth-realm&gt; is a string provided by the host during authentication.
+   *      It can contain spaces.
+   *    Examples:
+   *      http://192.168.1.1/Broadband Router
+   *      http://192.168.0.1/TP-LINK Wireless N Router WR841N
+   *      http://192.168.1.1/index.htm
+   *      https://www.edge.asic.gov.au/ASIC eBusiness
    * </pre>
    *
    * <code>optional string signon_realm = 2;</code>
@@ -1272,7 +2981,7 @@ public  final class PasswordSpecificsData extends
   private java.lang.String origin_;
   /**
    * <pre>
-   * For parsed web forms and Credential Manager API:
+   * For parsed web forms and Credential Management API:
    *     url-scheme://url-host[:url-port]/path
    * For Android: "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
    * For proxy/HTTP auth: url-scheme://url-host[:url-port]/path
@@ -1287,7 +2996,7 @@ public  final class PasswordSpecificsData extends
   }
   /**
    * <pre>
-   * For parsed web forms and Credential Manager API:
+   * For parsed web forms and Credential Management API:
    *     url-scheme://url-host[:url-port]/path
    * For Android: "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
    * For proxy/HTTP auth: url-scheme://url-host[:url-port]/path
@@ -1302,7 +3011,7 @@ public  final class PasswordSpecificsData extends
   }
   /**
    * <pre>
-   * For parsed web forms and Credential Manager API:
+   * For parsed web forms and Credential Management API:
    *     url-scheme://url-host[:url-port]/path
    * For Android: "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
    * For proxy/HTTP auth: url-scheme://url-host[:url-port]/path
@@ -1318,7 +3027,7 @@ public  final class PasswordSpecificsData extends
   }
   /**
    * <pre>
-   * For parsed web forms and Credential Manager API:
+   * For parsed web forms and Credential Management API:
    *     url-scheme://url-host[:url-port]/path
    * For Android: "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
    * For proxy/HTTP auth: url-scheme://url-host[:url-port]/path
@@ -1335,7 +3044,7 @@ public  final class PasswordSpecificsData extends
   }
   /**
    * <pre>
-   * For parsed web forms and Credential Manager API:
+   * For parsed web forms and Credential Management API:
    *     url-scheme://url-host[:url-port]/path
    * For Android: "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
    * For proxy/HTTP auth: url-scheme://url-host[:url-port]/path
@@ -1349,7 +3058,7 @@ public  final class PasswordSpecificsData extends
   }
   /**
    * <pre>
-   * For parsed web forms and Credential Manager API:
+   * For parsed web forms and Credential Management API:
    *     url-scheme://url-host[:url-port]/path
    * For Android: "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
    * For proxy/HTTP auth: url-scheme://url-host[:url-port]/path
@@ -1988,8 +3697,13 @@ public  final class PasswordSpecificsData extends
   private int type_;
   /**
    * <pre>
-   * TYPE_MANUAL(0), user manually filled the username and the password.
-   * TYPE_GENERATED(1), the credential was auto generated.
+   * kFormSubmission(0), user manually filled the username and the password
+   * in the form.
+   * kGenerated(1), the credential was auto generated.
+   * kApi(2), the credential was generated from Credential Management API.
+   * kManuallyAdded(3), user manually created the password credential
+   * via Settings.
+   * kImported(4), the credential was imported using the import flow.
    * </pre>
    *
    * <code>optional int32 type = 13;</code>
@@ -2001,8 +3715,13 @@ public  final class PasswordSpecificsData extends
   }
   /**
    * <pre>
-   * TYPE_MANUAL(0), user manually filled the username and the password.
-   * TYPE_GENERATED(1), the credential was auto generated.
+   * kFormSubmission(0), user manually filled the username and the password
+   * in the form.
+   * kGenerated(1), the credential was auto generated.
+   * kApi(2), the credential was generated from Credential Management API.
+   * kManuallyAdded(3), user manually created the password credential
+   * via Settings.
+   * kImported(4), the credential was imported using the import flow.
    * </pre>
    *
    * <code>optional int32 type = 13;</code>
@@ -2014,8 +3733,13 @@ public  final class PasswordSpecificsData extends
   }
   /**
    * <pre>
-   * TYPE_MANUAL(0), user manually filled the username and the password.
-   * TYPE_GENERATED(1), the credential was auto generated.
+   * kFormSubmission(0), user manually filled the username and the password
+   * in the form.
+   * kGenerated(1), the credential was auto generated.
+   * kApi(2), the credential was generated from Credential Management API.
+   * kManuallyAdded(3), user manually created the password credential
+   * via Settings.
+   * kImported(4), the credential was imported using the import flow.
    * </pre>
    *
    * <code>optional int32 type = 13;</code>
@@ -2027,8 +3751,13 @@ public  final class PasswordSpecificsData extends
   }
   /**
    * <pre>
-   * TYPE_MANUAL(0), user manually filled the username and the password.
-   * TYPE_GENERATED(1), the credential was auto generated.
+   * kFormSubmission(0), user manually filled the username and the password
+   * in the form.
+   * kGenerated(1), the credential was auto generated.
+   * kApi(2), the credential was generated from Credential Management API.
+   * kManuallyAdded(3), user manually created the password credential
+   * via Settings.
+   * kImported(4), the credential was imported using the import flow.
    * </pre>
    *
    * <code>optional int32 type = 13;</code>
@@ -2348,7 +4077,13 @@ public  final class PasswordSpecificsData extends
   private long dateLastUsed_;
   /**
    * <pre>
-   * Time when the credential was last used. Amount of microseconds since 1601.
+   * Time when the credential was last used. This covers *successful* logins to
+   * the website, and explicit updates to the password. It does *not* cover if
+   * the password just gets filled but not actually submitted, or if the login
+   * failed.
+   * Note that password consumers other than Chrome (e.g. Google Play Services)
+   * might not update this at all.
+   * Amount of microseconds since 1601, aka Windows epoch.
    * </pre>
    *
    * <code>optional int64 date_last_used = 18;</code>
@@ -2360,7 +4095,13 @@ public  final class PasswordSpecificsData extends
   }
   /**
    * <pre>
-   * Time when the credential was last used. Amount of microseconds since 1601.
+   * Time when the credential was last used. This covers *successful* logins to
+   * the website, and explicit updates to the password. It does *not* cover if
+   * the password just gets filled but not actually submitted, or if the login
+   * failed.
+   * Note that password consumers other than Chrome (e.g. Google Play Services)
+   * might not update this at all.
+   * Amount of microseconds since 1601, aka Windows epoch.
    * </pre>
    *
    * <code>optional int64 date_last_used = 18;</code>
@@ -2372,7 +4113,13 @@ public  final class PasswordSpecificsData extends
   }
   /**
    * <pre>
-   * Time when the credential was last used. Amount of microseconds since 1601.
+   * Time when the credential was last used. This covers *successful* logins to
+   * the website, and explicit updates to the password. It does *not* cover if
+   * the password just gets filled but not actually submitted, or if the login
+   * failed.
+   * Note that password consumers other than Chrome (e.g. Google Play Services)
+   * might not update this at all.
+   * Amount of microseconds since 1601, aka Windows epoch.
    * </pre>
    *
    * <code>optional int64 date_last_used = 18;</code>
@@ -2384,7 +4131,13 @@ public  final class PasswordSpecificsData extends
   }
   /**
    * <pre>
-   * Time when the credential was last used. Amount of microseconds since 1601.
+   * Time when the credential was last used. This covers *successful* logins to
+   * the website, and explicit updates to the password. It does *not* cover if
+   * the password just gets filled but not actually submitted, or if the login
+   * failed.
+   * Note that password consumers other than Chrome (e.g. Google Play Services)
+   * might not update this at all.
+   * Amount of microseconds since 1601, aka Windows epoch.
    * </pre>
    *
    * <code>optional int64 date_last_used = 18;</code>
@@ -2473,6 +4226,149 @@ public  final class PasswordSpecificsData extends
    */
   private void clearPasswordIssues() {  passwordIssues_ = null;
     bitField0_ = (bitField0_ & ~0x00040000);
+  }
+
+  public static final int DATE_PASSWORD_MODIFIED_WINDOWS_EPOCH_MICROS_FIELD_NUMBER = 20;
+  private long datePasswordModifiedWindowsEpochMicros_;
+  /**
+   * <pre>
+   * Time when the |password_value| was last modified. For new credentials it
+   * should be set to |date_created|. For subsequent updates the timestamp is
+   * changed if and only if the new password value was saved.
+   * Number of microseconds since Windows epoch (1601).
+   * </pre>
+   *
+   * <code>optional int64 date_password_modified_windows_epoch_micros = 20;</code>
+   * @return Whether the datePasswordModifiedWindowsEpochMicros field is set.
+   */
+  @java.lang.Override
+  public boolean hasDatePasswordModifiedWindowsEpochMicros() {
+    return ((bitField0_ & 0x00080000) != 0);
+  }
+  /**
+   * <pre>
+   * Time when the |password_value| was last modified. For new credentials it
+   * should be set to |date_created|. For subsequent updates the timestamp is
+   * changed if and only if the new password value was saved.
+   * Number of microseconds since Windows epoch (1601).
+   * </pre>
+   *
+   * <code>optional int64 date_password_modified_windows_epoch_micros = 20;</code>
+   * @return The datePasswordModifiedWindowsEpochMicros.
+   */
+  @java.lang.Override
+  public long getDatePasswordModifiedWindowsEpochMicros() {
+    return datePasswordModifiedWindowsEpochMicros_;
+  }
+  /**
+   * <pre>
+   * Time when the |password_value| was last modified. For new credentials it
+   * should be set to |date_created|. For subsequent updates the timestamp is
+   * changed if and only if the new password value was saved.
+   * Number of microseconds since Windows epoch (1601).
+   * </pre>
+   *
+   * <code>optional int64 date_password_modified_windows_epoch_micros = 20;</code>
+   * @param value The datePasswordModifiedWindowsEpochMicros to set.
+   */
+  private void setDatePasswordModifiedWindowsEpochMicros(long value) {
+    bitField0_ |= 0x00080000;
+    datePasswordModifiedWindowsEpochMicros_ = value;
+  }
+  /**
+   * <pre>
+   * Time when the |password_value| was last modified. For new credentials it
+   * should be set to |date_created|. For subsequent updates the timestamp is
+   * changed if and only if the new password value was saved.
+   * Number of microseconds since Windows epoch (1601).
+   * </pre>
+   *
+   * <code>optional int64 date_password_modified_windows_epoch_micros = 20;</code>
+   */
+  private void clearDatePasswordModifiedWindowsEpochMicros() {
+    bitField0_ = (bitField0_ & ~0x00080000);
+    datePasswordModifiedWindowsEpochMicros_ = 0L;
+  }
+
+  public static final int NOTES_FIELD_NUMBER = 21;
+  private org.chromium.components.sync.protocol.PasswordSpecificsData.Notes notes_;
+  /**
+   * <pre>
+   * Set of extra notes that the user attached to the password. The presence of
+   * this field, even with an empty Notes message, becomes the authoritative
+   * value for notes and would disregard whatever `encrypted_notes_backup`
+   * contains.
+   * </pre>
+   *
+   * <code>optional .sync_pb.PasswordSpecificsData.Notes notes = 21;</code>
+   */
+  @java.lang.Override
+  public boolean hasNotes() {
+    return ((bitField0_ & 0x00100000) != 0);
+  }
+  /**
+   * <pre>
+   * Set of extra notes that the user attached to the password. The presence of
+   * this field, even with an empty Notes message, becomes the authoritative
+   * value for notes and would disregard whatever `encrypted_notes_backup`
+   * contains.
+   * </pre>
+   *
+   * <code>optional .sync_pb.PasswordSpecificsData.Notes notes = 21;</code>
+   */
+  @java.lang.Override
+  public org.chromium.components.sync.protocol.PasswordSpecificsData.Notes getNotes() {
+    return notes_ == null ? org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.getDefaultInstance() : notes_;
+  }
+  /**
+   * <pre>
+   * Set of extra notes that the user attached to the password. The presence of
+   * this field, even with an empty Notes message, becomes the authoritative
+   * value for notes and would disregard whatever `encrypted_notes_backup`
+   * contains.
+   * </pre>
+   *
+   * <code>optional .sync_pb.PasswordSpecificsData.Notes notes = 21;</code>
+   */
+  private void setNotes(org.chromium.components.sync.protocol.PasswordSpecificsData.Notes value) {
+    value.getClass();
+  notes_ = value;
+    bitField0_ |= 0x00100000;
+    }
+  /**
+   * <pre>
+   * Set of extra notes that the user attached to the password. The presence of
+   * this field, even with an empty Notes message, becomes the authoritative
+   * value for notes and would disregard whatever `encrypted_notes_backup`
+   * contains.
+   * </pre>
+   *
+   * <code>optional .sync_pb.PasswordSpecificsData.Notes notes = 21;</code>
+   */
+  @java.lang.SuppressWarnings({"ReferenceEquality"})
+  private void mergeNotes(org.chromium.components.sync.protocol.PasswordSpecificsData.Notes value) {
+    value.getClass();
+  if (notes_ != null &&
+        notes_ != org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.getDefaultInstance()) {
+      notes_ =
+        org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.newBuilder(notes_).mergeFrom(value).buildPartial();
+    } else {
+      notes_ = value;
+    }
+    bitField0_ |= 0x00100000;
+  }
+  /**
+   * <pre>
+   * Set of extra notes that the user attached to the password. The presence of
+   * this field, even with an empty Notes message, becomes the authoritative
+   * value for notes and would disregard whatever `encrypted_notes_backup`
+   * contains.
+   * </pre>
+   *
+   * <code>optional .sync_pb.PasswordSpecificsData.Notes notes = 21;</code>
+   */
+  private void clearNotes() {  notes_ = null;
+    bitField0_ = (bitField0_ & ~0x00100000);
   }
 
   public static org.chromium.components.sync.protocol.PasswordSpecificsData parseFrom(
@@ -2576,12 +4472,7 @@ public  final class PasswordSpecificsData extends
 
     /**
      * <pre>
-     * SCHEME_HTML(0), the credential represents either a parsed HTML form, or an
-     * android credential or a password saved through Credential Manager API
-     * (https://w3c.github.io/webappsec/specs/credentialmanagement/).
-     * SCHEME_BASIC(1), basic access http authentication.
-     * SCHEME_DIGEST(2), digest access authentication.
-     * SCHEME_OTHER(3), another access authentication.
+     * See the enum above.
      * </pre>
      *
      * <code>optional int32 scheme = 1;</code>
@@ -2593,12 +4484,7 @@ public  final class PasswordSpecificsData extends
     }
     /**
      * <pre>
-     * SCHEME_HTML(0), the credential represents either a parsed HTML form, or an
-     * android credential or a password saved through Credential Manager API
-     * (https://w3c.github.io/webappsec/specs/credentialmanagement/).
-     * SCHEME_BASIC(1), basic access http authentication.
-     * SCHEME_DIGEST(2), digest access authentication.
-     * SCHEME_OTHER(3), another access authentication.
+     * See the enum above.
      * </pre>
      *
      * <code>optional int32 scheme = 1;</code>
@@ -2610,12 +4496,7 @@ public  final class PasswordSpecificsData extends
     }
     /**
      * <pre>
-     * SCHEME_HTML(0), the credential represents either a parsed HTML form, or an
-     * android credential or a password saved through Credential Manager API
-     * (https://w3c.github.io/webappsec/specs/credentialmanagement/).
-     * SCHEME_BASIC(1), basic access http authentication.
-     * SCHEME_DIGEST(2), digest access authentication.
-     * SCHEME_OTHER(3), another access authentication.
+     * See the enum above.
      * </pre>
      *
      * <code>optional int32 scheme = 1;</code>
@@ -2629,12 +4510,7 @@ public  final class PasswordSpecificsData extends
     }
     /**
      * <pre>
-     * SCHEME_HTML(0), the credential represents either a parsed HTML form, or an
-     * android credential or a password saved through Credential Manager API
-     * (https://w3c.github.io/webappsec/specs/credentialmanagement/).
-     * SCHEME_BASIC(1), basic access http authentication.
-     * SCHEME_DIGEST(2), digest access authentication.
-     * SCHEME_OTHER(3), another access authentication.
+     * See the enum above.
      * </pre>
      *
      * <code>optional int32 scheme = 1;</code>
@@ -2648,15 +4524,69 @@ public  final class PasswordSpecificsData extends
 
     /**
      * <pre>
-     * For parsed web forms and normal passwords saved through Credential Manager
-     * API: url-scheme://url-host[:url-port]/
-     * For Android apps (local + federated):
-     *     "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
-     * where the hash is base64 encoded SHA512 of the app's public certificate.
-     * For federated credentials:
-     *     "federation://" + origin_host + "/" + federation_host
-     * For proxy auth: proxy-host/auth-realm
-     * For HTTP auth: url-scheme://url-host[:url-port]/auth-realm
+     * Signon realm stores information on where the saved password was stored, and
+     * where it's supposed to be filled again.
+     * It can take various formats depending on the exact circumstances where it
+     * was recorded. Note that the format is *not* guaranteed to be a valid URL or
+     * URI:
+     *  * For parsed web forms and normal passwords saved through Credential
+     *  Manager
+     *    API: &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/
+     *    where
+     *      &lt;http-scheme&gt; is one of "http" or "https"
+     *      &lt;url-host&gt; is the host for which the password was stored
+     *      &lt;url-port&gt; is the option port on the host
+     *    The signon realm is a valid URL in this case with an empty path.
+     *    Examples:
+     *      http://www.example.com/
+     *      https://127.0.0.1/
+     *      http://www.google.com:8080/
+     *      http://192.168.1.254/
+     *      https://accounts.google.com/
+     *  * For Android apps saved through Autofill with Google:
+     *      android://&lt;hash-of-cert&gt;&#64;&lt;package-name&gt;/
+     *    where
+     *      &lt;hash-of-cert&gt; is the base64 encoded SHA512 of the app's public
+     *      certificate &lt;package-name&gt; is the app's package name
+     *    Examples:
+     *      android://kCyQDzpaoAX2gs-1zdGPKNAeICb8LzRFOxa4NCq0jO8c8d_NFS_q-Y35bU3Nq3GmFV2lLurmNvIZa6YPYZwmWg==&#64;com.pinterest/
+     *      android://mNUCvTnoWBkzIhSSkVj-uzAdK42YagmCmyUtPoC6JPmYAN3wKpmTdIRsdJtz6pzNBye8XL7nBbEcx-y9CJeo9A==&#64;com.twitter.android.lite/
+     *  * For federated credentials:
+     *      federation://&lt;origin_host&gt;/&lt;federation_host&gt;
+     *    where
+     *      &lt;origin_host&gt; is the host for which the login information was stored
+     *      &lt;federation_host&gt; is the host of the federation provider that was
+     *        used to sign in
+     *    Examples:
+     *      federation://www.example.com/accounts.google.com
+     *      federation://uk.trustpilot.com/www.facebook.com
+     *  * For proxy auth:
+     *      &lt;proxy-host&gt;[:&lt;proxy_port&gt;]/&lt;auth-realm&gt;
+     *    where
+     *      &lt;proxy-host&gt; is the host of the proxy for which the password was
+     *      stored
+     *      &lt;proxy-port&gt; is the port of the proxy
+     *      &lt;auth-realm&gt; is a string provided by the proxy during authentication.
+     *      It can contain spaces.
+     *    Examples:
+     *      proxy2.eq.edu.au:80/MISldap
+     *      proxy.det.nsw.edu.au:8080/NSW Department of Education
+     *      10.47.2.250:3128/Squid Proxy Server CPUT
+     *      default.go2https.com:443/(******Get password from vpnso.com/account/
+     *      *****)
+     *  * For HTTP basic auth:
+     *      &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/&lt;auth-realm&gt;
+     *    where
+     *      &lt;http-scheme&gt; is one of "http" or "https"
+     *      &lt;url-host&gt; is the host for which the password was stored
+     *      &lt;url-port&gt; is the option port on the host
+     *      &lt;auth-realm&gt; is a string provided by the host during authentication.
+     *      It can contain spaces.
+     *    Examples:
+     *      http://192.168.1.1/Broadband Router
+     *      http://192.168.0.1/TP-LINK Wireless N Router WR841N
+     *      http://192.168.1.1/index.htm
+     *      https://www.edge.asic.gov.au/ASIC eBusiness
      * </pre>
      *
      * <code>optional string signon_realm = 2;</code>
@@ -2668,15 +4598,69 @@ public  final class PasswordSpecificsData extends
     }
     /**
      * <pre>
-     * For parsed web forms and normal passwords saved through Credential Manager
-     * API: url-scheme://url-host[:url-port]/
-     * For Android apps (local + federated):
-     *     "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
-     * where the hash is base64 encoded SHA512 of the app's public certificate.
-     * For federated credentials:
-     *     "federation://" + origin_host + "/" + federation_host
-     * For proxy auth: proxy-host/auth-realm
-     * For HTTP auth: url-scheme://url-host[:url-port]/auth-realm
+     * Signon realm stores information on where the saved password was stored, and
+     * where it's supposed to be filled again.
+     * It can take various formats depending on the exact circumstances where it
+     * was recorded. Note that the format is *not* guaranteed to be a valid URL or
+     * URI:
+     *  * For parsed web forms and normal passwords saved through Credential
+     *  Manager
+     *    API: &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/
+     *    where
+     *      &lt;http-scheme&gt; is one of "http" or "https"
+     *      &lt;url-host&gt; is the host for which the password was stored
+     *      &lt;url-port&gt; is the option port on the host
+     *    The signon realm is a valid URL in this case with an empty path.
+     *    Examples:
+     *      http://www.example.com/
+     *      https://127.0.0.1/
+     *      http://www.google.com:8080/
+     *      http://192.168.1.254/
+     *      https://accounts.google.com/
+     *  * For Android apps saved through Autofill with Google:
+     *      android://&lt;hash-of-cert&gt;&#64;&lt;package-name&gt;/
+     *    where
+     *      &lt;hash-of-cert&gt; is the base64 encoded SHA512 of the app's public
+     *      certificate &lt;package-name&gt; is the app's package name
+     *    Examples:
+     *      android://kCyQDzpaoAX2gs-1zdGPKNAeICb8LzRFOxa4NCq0jO8c8d_NFS_q-Y35bU3Nq3GmFV2lLurmNvIZa6YPYZwmWg==&#64;com.pinterest/
+     *      android://mNUCvTnoWBkzIhSSkVj-uzAdK42YagmCmyUtPoC6JPmYAN3wKpmTdIRsdJtz6pzNBye8XL7nBbEcx-y9CJeo9A==&#64;com.twitter.android.lite/
+     *  * For federated credentials:
+     *      federation://&lt;origin_host&gt;/&lt;federation_host&gt;
+     *    where
+     *      &lt;origin_host&gt; is the host for which the login information was stored
+     *      &lt;federation_host&gt; is the host of the federation provider that was
+     *        used to sign in
+     *    Examples:
+     *      federation://www.example.com/accounts.google.com
+     *      federation://uk.trustpilot.com/www.facebook.com
+     *  * For proxy auth:
+     *      &lt;proxy-host&gt;[:&lt;proxy_port&gt;]/&lt;auth-realm&gt;
+     *    where
+     *      &lt;proxy-host&gt; is the host of the proxy for which the password was
+     *      stored
+     *      &lt;proxy-port&gt; is the port of the proxy
+     *      &lt;auth-realm&gt; is a string provided by the proxy during authentication.
+     *      It can contain spaces.
+     *    Examples:
+     *      proxy2.eq.edu.au:80/MISldap
+     *      proxy.det.nsw.edu.au:8080/NSW Department of Education
+     *      10.47.2.250:3128/Squid Proxy Server CPUT
+     *      default.go2https.com:443/(******Get password from vpnso.com/account/
+     *      *****)
+     *  * For HTTP basic auth:
+     *      &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/&lt;auth-realm&gt;
+     *    where
+     *      &lt;http-scheme&gt; is one of "http" or "https"
+     *      &lt;url-host&gt; is the host for which the password was stored
+     *      &lt;url-port&gt; is the option port on the host
+     *      &lt;auth-realm&gt; is a string provided by the host during authentication.
+     *      It can contain spaces.
+     *    Examples:
+     *      http://192.168.1.1/Broadband Router
+     *      http://192.168.0.1/TP-LINK Wireless N Router WR841N
+     *      http://192.168.1.1/index.htm
+     *      https://www.edge.asic.gov.au/ASIC eBusiness
      * </pre>
      *
      * <code>optional string signon_realm = 2;</code>
@@ -2688,15 +4672,69 @@ public  final class PasswordSpecificsData extends
     }
     /**
      * <pre>
-     * For parsed web forms and normal passwords saved through Credential Manager
-     * API: url-scheme://url-host[:url-port]/
-     * For Android apps (local + federated):
-     *     "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
-     * where the hash is base64 encoded SHA512 of the app's public certificate.
-     * For federated credentials:
-     *     "federation://" + origin_host + "/" + federation_host
-     * For proxy auth: proxy-host/auth-realm
-     * For HTTP auth: url-scheme://url-host[:url-port]/auth-realm
+     * Signon realm stores information on where the saved password was stored, and
+     * where it's supposed to be filled again.
+     * It can take various formats depending on the exact circumstances where it
+     * was recorded. Note that the format is *not* guaranteed to be a valid URL or
+     * URI:
+     *  * For parsed web forms and normal passwords saved through Credential
+     *  Manager
+     *    API: &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/
+     *    where
+     *      &lt;http-scheme&gt; is one of "http" or "https"
+     *      &lt;url-host&gt; is the host for which the password was stored
+     *      &lt;url-port&gt; is the option port on the host
+     *    The signon realm is a valid URL in this case with an empty path.
+     *    Examples:
+     *      http://www.example.com/
+     *      https://127.0.0.1/
+     *      http://www.google.com:8080/
+     *      http://192.168.1.254/
+     *      https://accounts.google.com/
+     *  * For Android apps saved through Autofill with Google:
+     *      android://&lt;hash-of-cert&gt;&#64;&lt;package-name&gt;/
+     *    where
+     *      &lt;hash-of-cert&gt; is the base64 encoded SHA512 of the app's public
+     *      certificate &lt;package-name&gt; is the app's package name
+     *    Examples:
+     *      android://kCyQDzpaoAX2gs-1zdGPKNAeICb8LzRFOxa4NCq0jO8c8d_NFS_q-Y35bU3Nq3GmFV2lLurmNvIZa6YPYZwmWg==&#64;com.pinterest/
+     *      android://mNUCvTnoWBkzIhSSkVj-uzAdK42YagmCmyUtPoC6JPmYAN3wKpmTdIRsdJtz6pzNBye8XL7nBbEcx-y9CJeo9A==&#64;com.twitter.android.lite/
+     *  * For federated credentials:
+     *      federation://&lt;origin_host&gt;/&lt;federation_host&gt;
+     *    where
+     *      &lt;origin_host&gt; is the host for which the login information was stored
+     *      &lt;federation_host&gt; is the host of the federation provider that was
+     *        used to sign in
+     *    Examples:
+     *      federation://www.example.com/accounts.google.com
+     *      federation://uk.trustpilot.com/www.facebook.com
+     *  * For proxy auth:
+     *      &lt;proxy-host&gt;[:&lt;proxy_port&gt;]/&lt;auth-realm&gt;
+     *    where
+     *      &lt;proxy-host&gt; is the host of the proxy for which the password was
+     *      stored
+     *      &lt;proxy-port&gt; is the port of the proxy
+     *      &lt;auth-realm&gt; is a string provided by the proxy during authentication.
+     *      It can contain spaces.
+     *    Examples:
+     *      proxy2.eq.edu.au:80/MISldap
+     *      proxy.det.nsw.edu.au:8080/NSW Department of Education
+     *      10.47.2.250:3128/Squid Proxy Server CPUT
+     *      default.go2https.com:443/(******Get password from vpnso.com/account/
+     *      *****)
+     *  * For HTTP basic auth:
+     *      &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/&lt;auth-realm&gt;
+     *    where
+     *      &lt;http-scheme&gt; is one of "http" or "https"
+     *      &lt;url-host&gt; is the host for which the password was stored
+     *      &lt;url-port&gt; is the option port on the host
+     *      &lt;auth-realm&gt; is a string provided by the host during authentication.
+     *      It can contain spaces.
+     *    Examples:
+     *      http://192.168.1.1/Broadband Router
+     *      http://192.168.0.1/TP-LINK Wireless N Router WR841N
+     *      http://192.168.1.1/index.htm
+     *      https://www.edge.asic.gov.au/ASIC eBusiness
      * </pre>
      *
      * <code>optional string signon_realm = 2;</code>
@@ -2709,15 +4747,69 @@ public  final class PasswordSpecificsData extends
     }
     /**
      * <pre>
-     * For parsed web forms and normal passwords saved through Credential Manager
-     * API: url-scheme://url-host[:url-port]/
-     * For Android apps (local + federated):
-     *     "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
-     * where the hash is base64 encoded SHA512 of the app's public certificate.
-     * For federated credentials:
-     *     "federation://" + origin_host + "/" + federation_host
-     * For proxy auth: proxy-host/auth-realm
-     * For HTTP auth: url-scheme://url-host[:url-port]/auth-realm
+     * Signon realm stores information on where the saved password was stored, and
+     * where it's supposed to be filled again.
+     * It can take various formats depending on the exact circumstances where it
+     * was recorded. Note that the format is *not* guaranteed to be a valid URL or
+     * URI:
+     *  * For parsed web forms and normal passwords saved through Credential
+     *  Manager
+     *    API: &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/
+     *    where
+     *      &lt;http-scheme&gt; is one of "http" or "https"
+     *      &lt;url-host&gt; is the host for which the password was stored
+     *      &lt;url-port&gt; is the option port on the host
+     *    The signon realm is a valid URL in this case with an empty path.
+     *    Examples:
+     *      http://www.example.com/
+     *      https://127.0.0.1/
+     *      http://www.google.com:8080/
+     *      http://192.168.1.254/
+     *      https://accounts.google.com/
+     *  * For Android apps saved through Autofill with Google:
+     *      android://&lt;hash-of-cert&gt;&#64;&lt;package-name&gt;/
+     *    where
+     *      &lt;hash-of-cert&gt; is the base64 encoded SHA512 of the app's public
+     *      certificate &lt;package-name&gt; is the app's package name
+     *    Examples:
+     *      android://kCyQDzpaoAX2gs-1zdGPKNAeICb8LzRFOxa4NCq0jO8c8d_NFS_q-Y35bU3Nq3GmFV2lLurmNvIZa6YPYZwmWg==&#64;com.pinterest/
+     *      android://mNUCvTnoWBkzIhSSkVj-uzAdK42YagmCmyUtPoC6JPmYAN3wKpmTdIRsdJtz6pzNBye8XL7nBbEcx-y9CJeo9A==&#64;com.twitter.android.lite/
+     *  * For federated credentials:
+     *      federation://&lt;origin_host&gt;/&lt;federation_host&gt;
+     *    where
+     *      &lt;origin_host&gt; is the host for which the login information was stored
+     *      &lt;federation_host&gt; is the host of the federation provider that was
+     *        used to sign in
+     *    Examples:
+     *      federation://www.example.com/accounts.google.com
+     *      federation://uk.trustpilot.com/www.facebook.com
+     *  * For proxy auth:
+     *      &lt;proxy-host&gt;[:&lt;proxy_port&gt;]/&lt;auth-realm&gt;
+     *    where
+     *      &lt;proxy-host&gt; is the host of the proxy for which the password was
+     *      stored
+     *      &lt;proxy-port&gt; is the port of the proxy
+     *      &lt;auth-realm&gt; is a string provided by the proxy during authentication.
+     *      It can contain spaces.
+     *    Examples:
+     *      proxy2.eq.edu.au:80/MISldap
+     *      proxy.det.nsw.edu.au:8080/NSW Department of Education
+     *      10.47.2.250:3128/Squid Proxy Server CPUT
+     *      default.go2https.com:443/(******Get password from vpnso.com/account/
+     *      *****)
+     *  * For HTTP basic auth:
+     *      &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/&lt;auth-realm&gt;
+     *    where
+     *      &lt;http-scheme&gt; is one of "http" or "https"
+     *      &lt;url-host&gt; is the host for which the password was stored
+     *      &lt;url-port&gt; is the option port on the host
+     *      &lt;auth-realm&gt; is a string provided by the host during authentication.
+     *      It can contain spaces.
+     *    Examples:
+     *      http://192.168.1.1/Broadband Router
+     *      http://192.168.0.1/TP-LINK Wireless N Router WR841N
+     *      http://192.168.1.1/index.htm
+     *      https://www.edge.asic.gov.au/ASIC eBusiness
      * </pre>
      *
      * <code>optional string signon_realm = 2;</code>
@@ -2732,15 +4824,69 @@ public  final class PasswordSpecificsData extends
     }
     /**
      * <pre>
-     * For parsed web forms and normal passwords saved through Credential Manager
-     * API: url-scheme://url-host[:url-port]/
-     * For Android apps (local + federated):
-     *     "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
-     * where the hash is base64 encoded SHA512 of the app's public certificate.
-     * For federated credentials:
-     *     "federation://" + origin_host + "/" + federation_host
-     * For proxy auth: proxy-host/auth-realm
-     * For HTTP auth: url-scheme://url-host[:url-port]/auth-realm
+     * Signon realm stores information on where the saved password was stored, and
+     * where it's supposed to be filled again.
+     * It can take various formats depending on the exact circumstances where it
+     * was recorded. Note that the format is *not* guaranteed to be a valid URL or
+     * URI:
+     *  * For parsed web forms and normal passwords saved through Credential
+     *  Manager
+     *    API: &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/
+     *    where
+     *      &lt;http-scheme&gt; is one of "http" or "https"
+     *      &lt;url-host&gt; is the host for which the password was stored
+     *      &lt;url-port&gt; is the option port on the host
+     *    The signon realm is a valid URL in this case with an empty path.
+     *    Examples:
+     *      http://www.example.com/
+     *      https://127.0.0.1/
+     *      http://www.google.com:8080/
+     *      http://192.168.1.254/
+     *      https://accounts.google.com/
+     *  * For Android apps saved through Autofill with Google:
+     *      android://&lt;hash-of-cert&gt;&#64;&lt;package-name&gt;/
+     *    where
+     *      &lt;hash-of-cert&gt; is the base64 encoded SHA512 of the app's public
+     *      certificate &lt;package-name&gt; is the app's package name
+     *    Examples:
+     *      android://kCyQDzpaoAX2gs-1zdGPKNAeICb8LzRFOxa4NCq0jO8c8d_NFS_q-Y35bU3Nq3GmFV2lLurmNvIZa6YPYZwmWg==&#64;com.pinterest/
+     *      android://mNUCvTnoWBkzIhSSkVj-uzAdK42YagmCmyUtPoC6JPmYAN3wKpmTdIRsdJtz6pzNBye8XL7nBbEcx-y9CJeo9A==&#64;com.twitter.android.lite/
+     *  * For federated credentials:
+     *      federation://&lt;origin_host&gt;/&lt;federation_host&gt;
+     *    where
+     *      &lt;origin_host&gt; is the host for which the login information was stored
+     *      &lt;federation_host&gt; is the host of the federation provider that was
+     *        used to sign in
+     *    Examples:
+     *      federation://www.example.com/accounts.google.com
+     *      federation://uk.trustpilot.com/www.facebook.com
+     *  * For proxy auth:
+     *      &lt;proxy-host&gt;[:&lt;proxy_port&gt;]/&lt;auth-realm&gt;
+     *    where
+     *      &lt;proxy-host&gt; is the host of the proxy for which the password was
+     *      stored
+     *      &lt;proxy-port&gt; is the port of the proxy
+     *      &lt;auth-realm&gt; is a string provided by the proxy during authentication.
+     *      It can contain spaces.
+     *    Examples:
+     *      proxy2.eq.edu.au:80/MISldap
+     *      proxy.det.nsw.edu.au:8080/NSW Department of Education
+     *      10.47.2.250:3128/Squid Proxy Server CPUT
+     *      default.go2https.com:443/(******Get password from vpnso.com/account/
+     *      *****)
+     *  * For HTTP basic auth:
+     *      &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/&lt;auth-realm&gt;
+     *    where
+     *      &lt;http-scheme&gt; is one of "http" or "https"
+     *      &lt;url-host&gt; is the host for which the password was stored
+     *      &lt;url-port&gt; is the option port on the host
+     *      &lt;auth-realm&gt; is a string provided by the host during authentication.
+     *      It can contain spaces.
+     *    Examples:
+     *      http://192.168.1.1/Broadband Router
+     *      http://192.168.0.1/TP-LINK Wireless N Router WR841N
+     *      http://192.168.1.1/index.htm
+     *      https://www.edge.asic.gov.au/ASIC eBusiness
      * </pre>
      *
      * <code>optional string signon_realm = 2;</code>
@@ -2753,15 +4899,69 @@ public  final class PasswordSpecificsData extends
     }
     /**
      * <pre>
-     * For parsed web forms and normal passwords saved through Credential Manager
-     * API: url-scheme://url-host[:url-port]/
-     * For Android apps (local + federated):
-     *     "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
-     * where the hash is base64 encoded SHA512 of the app's public certificate.
-     * For federated credentials:
-     *     "federation://" + origin_host + "/" + federation_host
-     * For proxy auth: proxy-host/auth-realm
-     * For HTTP auth: url-scheme://url-host[:url-port]/auth-realm
+     * Signon realm stores information on where the saved password was stored, and
+     * where it's supposed to be filled again.
+     * It can take various formats depending on the exact circumstances where it
+     * was recorded. Note that the format is *not* guaranteed to be a valid URL or
+     * URI:
+     *  * For parsed web forms and normal passwords saved through Credential
+     *  Manager
+     *    API: &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/
+     *    where
+     *      &lt;http-scheme&gt; is one of "http" or "https"
+     *      &lt;url-host&gt; is the host for which the password was stored
+     *      &lt;url-port&gt; is the option port on the host
+     *    The signon realm is a valid URL in this case with an empty path.
+     *    Examples:
+     *      http://www.example.com/
+     *      https://127.0.0.1/
+     *      http://www.google.com:8080/
+     *      http://192.168.1.254/
+     *      https://accounts.google.com/
+     *  * For Android apps saved through Autofill with Google:
+     *      android://&lt;hash-of-cert&gt;&#64;&lt;package-name&gt;/
+     *    where
+     *      &lt;hash-of-cert&gt; is the base64 encoded SHA512 of the app's public
+     *      certificate &lt;package-name&gt; is the app's package name
+     *    Examples:
+     *      android://kCyQDzpaoAX2gs-1zdGPKNAeICb8LzRFOxa4NCq0jO8c8d_NFS_q-Y35bU3Nq3GmFV2lLurmNvIZa6YPYZwmWg==&#64;com.pinterest/
+     *      android://mNUCvTnoWBkzIhSSkVj-uzAdK42YagmCmyUtPoC6JPmYAN3wKpmTdIRsdJtz6pzNBye8XL7nBbEcx-y9CJeo9A==&#64;com.twitter.android.lite/
+     *  * For federated credentials:
+     *      federation://&lt;origin_host&gt;/&lt;federation_host&gt;
+     *    where
+     *      &lt;origin_host&gt; is the host for which the login information was stored
+     *      &lt;federation_host&gt; is the host of the federation provider that was
+     *        used to sign in
+     *    Examples:
+     *      federation://www.example.com/accounts.google.com
+     *      federation://uk.trustpilot.com/www.facebook.com
+     *  * For proxy auth:
+     *      &lt;proxy-host&gt;[:&lt;proxy_port&gt;]/&lt;auth-realm&gt;
+     *    where
+     *      &lt;proxy-host&gt; is the host of the proxy for which the password was
+     *      stored
+     *      &lt;proxy-port&gt; is the port of the proxy
+     *      &lt;auth-realm&gt; is a string provided by the proxy during authentication.
+     *      It can contain spaces.
+     *    Examples:
+     *      proxy2.eq.edu.au:80/MISldap
+     *      proxy.det.nsw.edu.au:8080/NSW Department of Education
+     *      10.47.2.250:3128/Squid Proxy Server CPUT
+     *      default.go2https.com:443/(******Get password from vpnso.com/account/
+     *      *****)
+     *  * For HTTP basic auth:
+     *      &lt;http-scheme&gt;://&lt;url-host&gt;[:&lt;url-port&gt;]/&lt;auth-realm&gt;
+     *    where
+     *      &lt;http-scheme&gt; is one of "http" or "https"
+     *      &lt;url-host&gt; is the host for which the password was stored
+     *      &lt;url-port&gt; is the option port on the host
+     *      &lt;auth-realm&gt; is a string provided by the host during authentication.
+     *      It can contain spaces.
+     *    Examples:
+     *      http://192.168.1.1/Broadband Router
+     *      http://192.168.0.1/TP-LINK Wireless N Router WR841N
+     *      http://192.168.1.1/index.htm
+     *      https://www.edge.asic.gov.au/ASIC eBusiness
      * </pre>
      *
      * <code>optional string signon_realm = 2;</code>
@@ -2777,7 +4977,7 @@ public  final class PasswordSpecificsData extends
 
     /**
      * <pre>
-     * For parsed web forms and Credential Manager API:
+     * For parsed web forms and Credential Management API:
      *     url-scheme://url-host[:url-port]/path
      * For Android: "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
      * For proxy/HTTP auth: url-scheme://url-host[:url-port]/path
@@ -2792,7 +4992,7 @@ public  final class PasswordSpecificsData extends
     }
     /**
      * <pre>
-     * For parsed web forms and Credential Manager API:
+     * For parsed web forms and Credential Management API:
      *     url-scheme://url-host[:url-port]/path
      * For Android: "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
      * For proxy/HTTP auth: url-scheme://url-host[:url-port]/path
@@ -2807,7 +5007,7 @@ public  final class PasswordSpecificsData extends
     }
     /**
      * <pre>
-     * For parsed web forms and Credential Manager API:
+     * For parsed web forms and Credential Management API:
      *     url-scheme://url-host[:url-port]/path
      * For Android: "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
      * For proxy/HTTP auth: url-scheme://url-host[:url-port]/path
@@ -2823,7 +5023,7 @@ public  final class PasswordSpecificsData extends
     }
     /**
      * <pre>
-     * For parsed web forms and Credential Manager API:
+     * For parsed web forms and Credential Management API:
      *     url-scheme://url-host[:url-port]/path
      * For Android: "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
      * For proxy/HTTP auth: url-scheme://url-host[:url-port]/path
@@ -2841,7 +5041,7 @@ public  final class PasswordSpecificsData extends
     }
     /**
      * <pre>
-     * For parsed web forms and Credential Manager API:
+     * For parsed web forms and Credential Management API:
      *     url-scheme://url-host[:url-port]/path
      * For Android: "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
      * For proxy/HTTP auth: url-scheme://url-host[:url-port]/path
@@ -2857,7 +5057,7 @@ public  final class PasswordSpecificsData extends
     }
     /**
      * <pre>
-     * For parsed web forms and Credential Manager API:
+     * For parsed web forms and Credential Management API:
      *     url-scheme://url-host[:url-port]/path
      * For Android: "android://&lt;hash of cert&gt;&#64;&lt;package name&gt;/"
      * For proxy/HTTP auth: url-scheme://url-host[:url-port]/path
@@ -3519,8 +5719,13 @@ public  final class PasswordSpecificsData extends
 
     /**
      * <pre>
-     * TYPE_MANUAL(0), user manually filled the username and the password.
-     * TYPE_GENERATED(1), the credential was auto generated.
+     * kFormSubmission(0), user manually filled the username and the password
+     * in the form.
+     * kGenerated(1), the credential was auto generated.
+     * kApi(2), the credential was generated from Credential Management API.
+     * kManuallyAdded(3), user manually created the password credential
+     * via Settings.
+     * kImported(4), the credential was imported using the import flow.
      * </pre>
      *
      * <code>optional int32 type = 13;</code>
@@ -3532,8 +5737,13 @@ public  final class PasswordSpecificsData extends
     }
     /**
      * <pre>
-     * TYPE_MANUAL(0), user manually filled the username and the password.
-     * TYPE_GENERATED(1), the credential was auto generated.
+     * kFormSubmission(0), user manually filled the username and the password
+     * in the form.
+     * kGenerated(1), the credential was auto generated.
+     * kApi(2), the credential was generated from Credential Management API.
+     * kManuallyAdded(3), user manually created the password credential
+     * via Settings.
+     * kImported(4), the credential was imported using the import flow.
      * </pre>
      *
      * <code>optional int32 type = 13;</code>
@@ -3545,8 +5755,13 @@ public  final class PasswordSpecificsData extends
     }
     /**
      * <pre>
-     * TYPE_MANUAL(0), user manually filled the username and the password.
-     * TYPE_GENERATED(1), the credential was auto generated.
+     * kFormSubmission(0), user manually filled the username and the password
+     * in the form.
+     * kGenerated(1), the credential was auto generated.
+     * kApi(2), the credential was generated from Credential Management API.
+     * kManuallyAdded(3), user manually created the password credential
+     * via Settings.
+     * kImported(4), the credential was imported using the import flow.
      * </pre>
      *
      * <code>optional int32 type = 13;</code>
@@ -3560,8 +5775,13 @@ public  final class PasswordSpecificsData extends
     }
     /**
      * <pre>
-     * TYPE_MANUAL(0), user manually filled the username and the password.
-     * TYPE_GENERATED(1), the credential was auto generated.
+     * kFormSubmission(0), user manually filled the username and the password
+     * in the form.
+     * kGenerated(1), the credential was auto generated.
+     * kApi(2), the credential was generated from Credential Management API.
+     * kManuallyAdded(3), user manually created the password credential
+     * via Settings.
+     * kImported(4), the credential was imported using the import flow.
      * </pre>
      *
      * <code>optional int32 type = 13;</code>
@@ -3892,7 +6112,13 @@ public  final class PasswordSpecificsData extends
 
     /**
      * <pre>
-     * Time when the credential was last used. Amount of microseconds since 1601.
+     * Time when the credential was last used. This covers *successful* logins to
+     * the website, and explicit updates to the password. It does *not* cover if
+     * the password just gets filled but not actually submitted, or if the login
+     * failed.
+     * Note that password consumers other than Chrome (e.g. Google Play Services)
+     * might not update this at all.
+     * Amount of microseconds since 1601, aka Windows epoch.
      * </pre>
      *
      * <code>optional int64 date_last_used = 18;</code>
@@ -3904,7 +6130,13 @@ public  final class PasswordSpecificsData extends
     }
     /**
      * <pre>
-     * Time when the credential was last used. Amount of microseconds since 1601.
+     * Time when the credential was last used. This covers *successful* logins to
+     * the website, and explicit updates to the password. It does *not* cover if
+     * the password just gets filled but not actually submitted, or if the login
+     * failed.
+     * Note that password consumers other than Chrome (e.g. Google Play Services)
+     * might not update this at all.
+     * Amount of microseconds since 1601, aka Windows epoch.
      * </pre>
      *
      * <code>optional int64 date_last_used = 18;</code>
@@ -3916,7 +6148,13 @@ public  final class PasswordSpecificsData extends
     }
     /**
      * <pre>
-     * Time when the credential was last used. Amount of microseconds since 1601.
+     * Time when the credential was last used. This covers *successful* logins to
+     * the website, and explicit updates to the password. It does *not* cover if
+     * the password just gets filled but not actually submitted, or if the login
+     * failed.
+     * Note that password consumers other than Chrome (e.g. Google Play Services)
+     * might not update this at all.
+     * Amount of microseconds since 1601, aka Windows epoch.
      * </pre>
      *
      * <code>optional int64 date_last_used = 18;</code>
@@ -3930,7 +6168,13 @@ public  final class PasswordSpecificsData extends
     }
     /**
      * <pre>
-     * Time when the credential was last used. Amount of microseconds since 1601.
+     * Time when the credential was last used. This covers *successful* logins to
+     * the website, and explicit updates to the password. It does *not* cover if
+     * the password just gets filled but not actually submitted, or if the login
+     * failed.
+     * Note that password consumers other than Chrome (e.g. Google Play Services)
+     * might not update this at all.
+     * Amount of microseconds since 1601, aka Windows epoch.
      * </pre>
      *
      * <code>optional int64 date_last_used = 18;</code>
@@ -4031,6 +6275,159 @@ public  final class PasswordSpecificsData extends
       return this;
     }
 
+    /**
+     * <pre>
+     * Time when the |password_value| was last modified. For new credentials it
+     * should be set to |date_created|. For subsequent updates the timestamp is
+     * changed if and only if the new password value was saved.
+     * Number of microseconds since Windows epoch (1601).
+     * </pre>
+     *
+     * <code>optional int64 date_password_modified_windows_epoch_micros = 20;</code>
+     * @return Whether the datePasswordModifiedWindowsEpochMicros field is set.
+     */
+    @java.lang.Override
+    public boolean hasDatePasswordModifiedWindowsEpochMicros() {
+      return instance.hasDatePasswordModifiedWindowsEpochMicros();
+    }
+    /**
+     * <pre>
+     * Time when the |password_value| was last modified. For new credentials it
+     * should be set to |date_created|. For subsequent updates the timestamp is
+     * changed if and only if the new password value was saved.
+     * Number of microseconds since Windows epoch (1601).
+     * </pre>
+     *
+     * <code>optional int64 date_password_modified_windows_epoch_micros = 20;</code>
+     * @return The datePasswordModifiedWindowsEpochMicros.
+     */
+    @java.lang.Override
+    public long getDatePasswordModifiedWindowsEpochMicros() {
+      return instance.getDatePasswordModifiedWindowsEpochMicros();
+    }
+    /**
+     * <pre>
+     * Time when the |password_value| was last modified. For new credentials it
+     * should be set to |date_created|. For subsequent updates the timestamp is
+     * changed if and only if the new password value was saved.
+     * Number of microseconds since Windows epoch (1601).
+     * </pre>
+     *
+     * <code>optional int64 date_password_modified_windows_epoch_micros = 20;</code>
+     * @param value The datePasswordModifiedWindowsEpochMicros to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDatePasswordModifiedWindowsEpochMicros(long value) {
+      copyOnWrite();
+      instance.setDatePasswordModifiedWindowsEpochMicros(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * Time when the |password_value| was last modified. For new credentials it
+     * should be set to |date_created|. For subsequent updates the timestamp is
+     * changed if and only if the new password value was saved.
+     * Number of microseconds since Windows epoch (1601).
+     * </pre>
+     *
+     * <code>optional int64 date_password_modified_windows_epoch_micros = 20;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearDatePasswordModifiedWindowsEpochMicros() {
+      copyOnWrite();
+      instance.clearDatePasswordModifiedWindowsEpochMicros();
+      return this;
+    }
+
+    /**
+     * <pre>
+     * Set of extra notes that the user attached to the password. The presence of
+     * this field, even with an empty Notes message, becomes the authoritative
+     * value for notes and would disregard whatever `encrypted_notes_backup`
+     * contains.
+     * </pre>
+     *
+     * <code>optional .sync_pb.PasswordSpecificsData.Notes notes = 21;</code>
+     */
+    @java.lang.Override
+    public boolean hasNotes() {
+      return instance.hasNotes();
+    }
+    /**
+     * <pre>
+     * Set of extra notes that the user attached to the password. The presence of
+     * this field, even with an empty Notes message, becomes the authoritative
+     * value for notes and would disregard whatever `encrypted_notes_backup`
+     * contains.
+     * </pre>
+     *
+     * <code>optional .sync_pb.PasswordSpecificsData.Notes notes = 21;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.PasswordSpecificsData.Notes getNotes() {
+      return instance.getNotes();
+    }
+    /**
+     * <pre>
+     * Set of extra notes that the user attached to the password. The presence of
+     * this field, even with an empty Notes message, becomes the authoritative
+     * value for notes and would disregard whatever `encrypted_notes_backup`
+     * contains.
+     * </pre>
+     *
+     * <code>optional .sync_pb.PasswordSpecificsData.Notes notes = 21;</code>
+     */
+    public Builder setNotes(org.chromium.components.sync.protocol.PasswordSpecificsData.Notes value) {
+      copyOnWrite();
+      instance.setNotes(value);
+      return this;
+      }
+    /**
+     * <pre>
+     * Set of extra notes that the user attached to the password. The presence of
+     * this field, even with an empty Notes message, becomes the authoritative
+     * value for notes and would disregard whatever `encrypted_notes_backup`
+     * contains.
+     * </pre>
+     *
+     * <code>optional .sync_pb.PasswordSpecificsData.Notes notes = 21;</code>
+     */
+    public Builder setNotes(
+        org.chromium.components.sync.protocol.PasswordSpecificsData.Notes.Builder builderForValue) {
+      copyOnWrite();
+      instance.setNotes(builderForValue.build());
+      return this;
+    }
+    /**
+     * <pre>
+     * Set of extra notes that the user attached to the password. The presence of
+     * this field, even with an empty Notes message, becomes the authoritative
+     * value for notes and would disregard whatever `encrypted_notes_backup`
+     * contains.
+     * </pre>
+     *
+     * <code>optional .sync_pb.PasswordSpecificsData.Notes notes = 21;</code>
+     */
+    public Builder mergeNotes(org.chromium.components.sync.protocol.PasswordSpecificsData.Notes value) {
+      copyOnWrite();
+      instance.mergeNotes(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * Set of extra notes that the user attached to the password. The presence of
+     * this field, even with an empty Notes message, becomes the authoritative
+     * value for notes and would disregard whatever `encrypted_notes_backup`
+     * contains.
+     * </pre>
+     *
+     * <code>optional .sync_pb.PasswordSpecificsData.Notes notes = 21;</code>
+     */
+    public Builder clearNotes() {  copyOnWrite();
+      instance.clearNotes();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:sync_pb.PasswordSpecificsData)
   }
   @java.lang.Override
@@ -4067,13 +6464,15 @@ public  final class PasswordSpecificsData extends
             "federationUrl_",
             "dateLastUsed_",
             "passwordIssues_",
+            "datePasswordModifiedWindowsEpochMicros_",
+            "notes_",
           };
           java.lang.String info =
-              "\u0001\u0013\u0000\u0001\u0001\u0013\u0013\u0000\u0000\u0000\u0001\u1004\u0000\u0002" +
+              "\u0001\u0015\u0000\u0001\u0001\u0015\u0015\u0000\u0000\u0000\u0001\u1004\u0000\u0002" +
               "\u1008\u0001\u0003\u1008\u0002\u0004\u1008\u0003\u0005\u1008\u0004\u0006\u1008\u0005" +
               "\u0007\u1008\u0006\b\u1008\u0007\t\u1007\b\n\u1007\t\u000b\u1002\n\f\u1007\u000b" +
               "\r\u1004\f\u000e\u1004\r\u000f\u1008\u000e\u0010\u1008\u000f\u0011\u1008\u0010\u0012" +
-              "\u1002\u0011\u0013\u1009\u0012";
+              "\u1002\u0011\u0013\u1009\u0012\u0014\u1002\u0013\u0015\u1009\u0014";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

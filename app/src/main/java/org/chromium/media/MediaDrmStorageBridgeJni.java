@@ -2,7 +2,6 @@ package org.chromium.media;
 
 import java.lang.Boolean;
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.Callback;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
@@ -10,10 +9,9 @@ import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.annotations.MainDex;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @MainDex
 @CheckDiscard("crbug.com/993421")
-final class MediaDrmStorageBridgeJni implements MediaDrmStorageBridge.Natives {
+class MediaDrmStorageBridgeJni implements MediaDrmStorageBridge.Natives {
   private static MediaDrmStorageBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<MediaDrmStorageBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.media.MediaDrmStorageBridge.Natives>() {

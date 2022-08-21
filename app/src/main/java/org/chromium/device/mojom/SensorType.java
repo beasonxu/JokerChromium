@@ -13,8 +13,25 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class SensorType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        SensorType.AMBIENT_LIGHT,
+        SensorType.PROXIMITY,
+        SensorType.ACCELEROMETER,
+        SensorType.LINEAR_ACCELERATION,
+        SensorType.GRAVITY,
+        SensorType.GYROSCOPE,
+        SensorType.MAGNETOMETER,
+        SensorType.PRESSURE,
+        SensorType.ABSOLUTE_ORIENTATION_EULER_ANGLES,
+        SensorType.ABSOLUTE_ORIENTATION_QUATERNION,
+        SensorType.RELATIVE_ORIENTATION_EULER_ANGLES,
+        SensorType.RELATIVE_ORIENTATION_QUATERNION})
+    public @interface EnumType {}
 
     public static final int AMBIENT_LIGHT = 0;
     public static final int PROXIMITY = 1;

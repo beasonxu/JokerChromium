@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class VideoFrameHandleReleaser_Internal {
 
@@ -209,7 +211,7 @@ org.chromium.mojo_base.mojom.UnguessableToken releaseToken, org.chromium.gpu.moj
                     }
                     {
                         
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, true);
                     result.releaseSyncToken = org.chromium.gpu.mojom.SyncToken.decode(decoder1);
                     }
 
@@ -226,7 +228,7 @@ org.chromium.mojo_base.mojom.UnguessableToken releaseToken, org.chromium.gpu.moj
             
             encoder0.encode(this.releaseToken, 8, false);
             
-            encoder0.encode(this.releaseSyncToken, 16, false);
+            encoder0.encode(this.releaseSyncToken, 16, true);
         }
     }
 

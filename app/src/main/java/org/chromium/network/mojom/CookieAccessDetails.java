@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class CookieAccessDetails extends org.chromium.mojo.bindings.Struct {
 
@@ -22,6 +24,11 @@ public final class CookieAccessDetails extends org.chromium.mojo.bindings.Struct
 
     public static final class Type {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            Type.READ,
+            Type.CHANGE})
+        public @interface EnumType {}
 
         public static final int READ = 0;
         public static final int CHANGE = 1;

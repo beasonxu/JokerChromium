@@ -13,11 +13,13 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class UntrustworthyContextMenuParams extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 184;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(184, 0)};
+    private static final int STRUCT_SIZE = 192;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(192, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int mediaType;
     public int x;
@@ -49,6 +51,8 @@ public final class UntrustworthyContextMenuParams extends org.chromium.mojo.bind
     public int inputFieldType;
     public org.chromium.gfx.mojom.Rect selectionRect;
     public int selectionStartOffset;
+    public boolean openedFromHighlight;
+    public FieldRendererId fieldRendererId;
 
     private UntrustworthyContextMenuParams(int version) {
         super(STRUCT_SIZE, version);
@@ -108,6 +112,10 @@ public final class UntrustworthyContextMenuParams extends org.chromium.mojo.bind
                 {
                     
                 result.isEditable = decoder0.readBoolean(20, 2);
+                }
+                {
+                    
+                result.openedFromHighlight = decoder0.readBoolean(20, 3);
                 }
                 {
                     
@@ -241,6 +249,11 @@ public final class UntrustworthyContextMenuParams extends org.chromium.mojo.bind
                     
                 result.selectionStartOffset = decoder0.readInt(176);
                 }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(184, true);
+                result.fieldRendererId = FieldRendererId.decode(decoder1);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -264,6 +277,8 @@ public final class UntrustworthyContextMenuParams extends org.chromium.mojo.bind
         encoder0.encode(this.spellcheckEnabled, 20, 1);
         
         encoder0.encode(this.isEditable, 20, 2);
+        
+        encoder0.encode(this.openedFromHighlight, 20, 3);
         
         encoder0.encode(this.linkUrl, 24, false);
         
@@ -328,5 +343,7 @@ public final class UntrustworthyContextMenuParams extends org.chromium.mojo.bind
         encoder0.encode(this.selectionRect, 168, false);
         
         encoder0.encode(this.selectionStartOffset, 176);
+        
+        encoder0.encode(this.fieldRendererId, 184, true);
     }
 }

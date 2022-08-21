@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface SharedWorkerClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,20 +25,16 @@ public interface SharedWorkerClient extends org.chromium.mojo.bindings.Interface
 
     Manager<SharedWorkerClient, SharedWorkerClient.Proxy> MANAGER = SharedWorkerClient_Internal.MANAGER;
 
-
     void onCreated(
 int creationContextType);
-
 
 
     void onConnected(
 int[] featuresUsed);
 
 
-
     void onScriptLoadFailed(
 String errorMessage);
-
 
 
     void onFeatureUsed(

@@ -130,95 +130,89 @@ public interface AppSpecificsOrBuilder extends
 
   /**
    * <pre>
-   * This is the url of a bookmark app. If this exists, the app is a bookmark
-   * app.
+   * DEPRECATED. See https://crbug.com/1233303.
    * </pre>
    *
-   * <code>optional string bookmark_app_url = 6;</code>
+   * <code>optional string bookmark_app_url = 6 [deprecated = true];</code>
    * @return Whether the bookmarkAppUrl field is set.
    */
-  boolean hasBookmarkAppUrl();
+  @java.lang.Deprecated boolean hasBookmarkAppUrl();
   /**
    * <pre>
-   * This is the url of a bookmark app. If this exists, the app is a bookmark
-   * app.
+   * DEPRECATED. See https://crbug.com/1233303.
    * </pre>
    *
-   * <code>optional string bookmark_app_url = 6;</code>
+   * <code>optional string bookmark_app_url = 6 [deprecated = true];</code>
    * @return The bookmarkAppUrl.
    */
-  java.lang.String getBookmarkAppUrl();
+  @java.lang.Deprecated java.lang.String getBookmarkAppUrl();
   /**
    * <pre>
-   * This is the url of a bookmark app. If this exists, the app is a bookmark
-   * app.
+   * DEPRECATED. See https://crbug.com/1233303.
    * </pre>
    *
-   * <code>optional string bookmark_app_url = 6;</code>
+   * <code>optional string bookmark_app_url = 6 [deprecated = true];</code>
    * @return The bytes for bookmarkAppUrl.
    */
-  com.google.protobuf.ByteString
+  @java.lang.Deprecated com.google.protobuf.ByteString
       getBookmarkAppUrlBytes();
 
   /**
    * <pre>
-   * This is the description of a bookmark app.
+   * DEPRECATED. See https://crbug.com/1233303.
    * </pre>
    *
-   * <code>optional string bookmark_app_description = 7;</code>
+   * <code>optional string bookmark_app_description = 7 [deprecated = true];</code>
    * @return Whether the bookmarkAppDescription field is set.
    */
-  boolean hasBookmarkAppDescription();
+  @java.lang.Deprecated boolean hasBookmarkAppDescription();
   /**
    * <pre>
-   * This is the description of a bookmark app.
+   * DEPRECATED. See https://crbug.com/1233303.
    * </pre>
    *
-   * <code>optional string bookmark_app_description = 7;</code>
+   * <code>optional string bookmark_app_description = 7 [deprecated = true];</code>
    * @return The bookmarkAppDescription.
    */
-  java.lang.String getBookmarkAppDescription();
+  @java.lang.Deprecated java.lang.String getBookmarkAppDescription();
   /**
    * <pre>
-   * This is the description of a bookmark app.
+   * DEPRECATED. See https://crbug.com/1233303.
    * </pre>
    *
-   * <code>optional string bookmark_app_description = 7;</code>
+   * <code>optional string bookmark_app_description = 7 [deprecated = true];</code>
    * @return The bytes for bookmarkAppDescription.
    */
-  com.google.protobuf.ByteString
+  @java.lang.Deprecated com.google.protobuf.ByteString
       getBookmarkAppDescriptionBytes();
 
   /**
    * <pre>
-   * This is the color to use when generating bookmark app icons. The string is
-   * in #rrggbb or #rgb syntax, e.g. #d8d8d8.
+   * DEPRECATED. See https://crbug.com/1233303.
    * </pre>
    *
-   * <code>optional string bookmark_app_icon_color = 8;</code>
+   * <code>optional string bookmark_app_icon_color = 8 [deprecated = true];</code>
    * @return Whether the bookmarkAppIconColor field is set.
    */
-  boolean hasBookmarkAppIconColor();
+  @java.lang.Deprecated boolean hasBookmarkAppIconColor();
   /**
    * <pre>
-   * This is the color to use when generating bookmark app icons. The string is
-   * in #rrggbb or #rgb syntax, e.g. #d8d8d8.
+   * DEPRECATED. See https://crbug.com/1233303.
    * </pre>
    *
-   * <code>optional string bookmark_app_icon_color = 8;</code>
+   * <code>optional string bookmark_app_icon_color = 8 [deprecated = true];</code>
    * @return The bookmarkAppIconColor.
    */
-  java.lang.String getBookmarkAppIconColor();
+  @java.lang.Deprecated java.lang.String getBookmarkAppIconColor();
   /**
    * <pre>
-   * This is the color to use when generating bookmark app icons. The string is
-   * in #rrggbb or #rgb syntax, e.g. #d8d8d8.
+   * DEPRECATED. See https://crbug.com/1233303.
    * </pre>
    *
-   * <code>optional string bookmark_app_icon_color = 8;</code>
+   * <code>optional string bookmark_app_icon_color = 8 [deprecated = true];</code>
    * @return The bytes for bookmarkAppIconColor.
    */
-  com.google.protobuf.ByteString
+  @java.lang.Deprecated com.google.protobuf.ByteString
       getBookmarkAppIconColorBytes();
 
   /**
@@ -252,49 +246,49 @@ public interface AppSpecificsOrBuilder extends
 
   /**
    * <pre>
-   * This is the scope of the bookmark app.
+   * DEPRECATED. See https://crbug.com/1233303.
    * </pre>
    *
-   * <code>optional string bookmark_app_scope = 10;</code>
+   * <code>optional string bookmark_app_scope = 10 [deprecated = true];</code>
    * @return Whether the bookmarkAppScope field is set.
    */
-  boolean hasBookmarkAppScope();
+  @java.lang.Deprecated boolean hasBookmarkAppScope();
   /**
    * <pre>
-   * This is the scope of the bookmark app.
+   * DEPRECATED. See https://crbug.com/1233303.
    * </pre>
    *
-   * <code>optional string bookmark_app_scope = 10;</code>
+   * <code>optional string bookmark_app_scope = 10 [deprecated = true];</code>
    * @return The bookmarkAppScope.
    */
-  java.lang.String getBookmarkAppScope();
+  @java.lang.Deprecated java.lang.String getBookmarkAppScope();
   /**
    * <pre>
-   * This is the scope of the bookmark app.
+   * DEPRECATED. See https://crbug.com/1233303.
    * </pre>
    *
-   * <code>optional string bookmark_app_scope = 10;</code>
+   * <code>optional string bookmark_app_scope = 10 [deprecated = true];</code>
    * @return The bytes for bookmarkAppScope.
    */
-  com.google.protobuf.ByteString
+  @java.lang.Deprecated com.google.protobuf.ByteString
       getBookmarkAppScopeBytes();
 
   /**
    * <pre>
-   * This is the SkColor used for the browser frame for this bookmark app.
+   * DEPRECATED. See https://crbug.com/1233303.
    * </pre>
    *
-   * <code>optional uint32 bookmark_app_theme_color = 11;</code>
+   * <code>optional uint32 bookmark_app_theme_color = 11 [deprecated = true];</code>
    * @return Whether the bookmarkAppThemeColor field is set.
    */
-  boolean hasBookmarkAppThemeColor();
+  @java.lang.Deprecated boolean hasBookmarkAppThemeColor();
   /**
    * <pre>
-   * This is the SkColor used for the browser frame for this bookmark app.
+   * DEPRECATED. See https://crbug.com/1233303.
    * </pre>
    *
-   * <code>optional uint32 bookmark_app_theme_color = 11;</code>
+   * <code>optional uint32 bookmark_app_theme_color = 11 [deprecated = true];</code>
    * @return The bookmarkAppThemeColor.
    */
-  int getBookmarkAppThemeColor();
+  @java.lang.Deprecated int getBookmarkAppThemeColor();
 }

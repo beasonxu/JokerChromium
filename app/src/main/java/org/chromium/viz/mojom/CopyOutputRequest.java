@@ -13,6 +13,8 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class CopyOutputRequest extends org.chromium.mojo.bindings.Struct {
 
@@ -20,6 +22,7 @@ public final class CopyOutputRequest extends org.chromium.mojo.bindings.Struct {
     private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(64, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int resultFormat;
+    public int resultDestination;
     public org.chromium.gfx.mojom.Vector2d scaleFrom;
     public org.chromium.gfx.mojom.Vector2d scaleTo;
     public org.chromium.mojo_base.mojom.UnguessableToken source;
@@ -68,6 +71,12 @@ public final class CopyOutputRequest extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
+                result.resultDestination = decoder0.readInt(12);
+                    CopyOutputResultDestination.validate(result.resultDestination);
+                    result.resultDestination = CopyOutputResultDestination.toKnownValue(result.resultDestination);
+                }
+                {
+                    
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
                 result.scaleFrom = org.chromium.gfx.mojom.Vector2d.decode(decoder1);
                 }
@@ -108,6 +117,8 @@ public final class CopyOutputRequest extends org.chromium.mojo.bindings.Struct {
         org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         
         encoder0.encode(this.resultFormat, 8);
+        
+        encoder0.encode(this.resultDestination, 12);
         
         encoder0.encode(this.scaleFrom, 16, false);
         

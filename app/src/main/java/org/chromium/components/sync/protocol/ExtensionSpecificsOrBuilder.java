@@ -140,31 +140,31 @@ public interface ExtensionSpecificsOrBuilder extends
 
   /**
    * <pre>
-   * The name of the extension. Used for bookmark apps.
+   * DEPRECATED. See https://crbug.com/1233303.
    * </pre>
    *
-   * <code>optional string name = 6;</code>
+   * <code>optional string name = 6 [deprecated = true];</code>
    * @return Whether the name field is set.
    */
-  boolean hasName();
+  @java.lang.Deprecated boolean hasName();
   /**
    * <pre>
-   * The name of the extension. Used for bookmark apps.
+   * DEPRECATED. See https://crbug.com/1233303.
    * </pre>
    *
-   * <code>optional string name = 6;</code>
+   * <code>optional string name = 6 [deprecated = true];</code>
    * @return The name.
    */
-  java.lang.String getName();
+  @java.lang.Deprecated java.lang.String getName();
   /**
    * <pre>
-   * The name of the extension. Used for bookmark apps.
+   * DEPRECATED. See https://crbug.com/1233303.
    * </pre>
    *
-   * <code>optional string name = 6;</code>
+   * <code>optional string name = 6 [deprecated = true];</code>
    * @return The bytes for name.
    */
-  com.google.protobuf.ByteString
+  @java.lang.Deprecated com.google.protobuf.ByteString
       getNameBytes();
 
   /**

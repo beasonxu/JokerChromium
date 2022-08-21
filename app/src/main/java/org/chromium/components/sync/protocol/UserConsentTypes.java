@@ -4010,6 +4010,29 @@ public  final class UserConsentTypes extends
      * @return The status.
      */
     org.chromium.components.sync.protocol.UserConsentTypes.ConsentStatus getStatus();
+
+    /**
+     * <pre>
+     * The activity control setting which the consent was given or not given to.
+     * Clients before M93 did not set this field. Such consents should be
+     * treated as applying to ALL.
+     * </pre>
+     *
+     * <code>optional .sync_pb.UserConsentTypes.AssistantActivityControlConsent.SettingType setting_type = 3;</code>
+     * @return Whether the settingType field is set.
+     */
+    boolean hasSettingType();
+    /**
+     * <pre>
+     * The activity control setting which the consent was given or not given to.
+     * Clients before M93 did not set this field. Such consents should be
+     * treated as applying to ALL.
+     * </pre>
+     *
+     * <code>optional .sync_pb.UserConsentTypes.AssistantActivityControlConsent.SettingType setting_type = 3;</code>
+     * @return The settingType.
+     */
+    org.chromium.components.sync.protocol.UserConsentTypes.AssistantActivityControlConsent.SettingType getSettingType();
   }
   /**
    * <pre>
@@ -4027,6 +4050,132 @@ public  final class UserConsentTypes extends
     private AssistantActivityControlConsent() {
       uiAuditKey_ = com.google.protobuf.ByteString.EMPTY;
     }
+    /**
+     * <pre>
+     * Enum denoting different Assistant activity control setting type.
+     * </pre>
+     *
+     * Protobuf enum {@code sync_pb.UserConsentTypes.AssistantActivityControlConsent.SettingType}
+     */
+    public enum SettingType
+        implements com.google.protobuf.Internal.EnumLite {
+      /**
+       * <pre>
+       * Legacy clients (&lt; M93) did not set a SettingType; for those,
+       * UNSPECIFIED should be interpreted as ALL. Newer clients should always
+       * set it explicitly.
+       * </pre>
+       *
+       * <code>SETTING_TYPE_UNSPECIFIED = 0;</code>
+       */
+      SETTING_TYPE_UNSPECIFIED(0),
+      /**
+       * <pre>
+       * All Settings.
+       * </pre>
+       *
+       * <code>ALL = 1;</code>
+       */
+      ALL(1),
+      /**
+       * <code>WEB_AND_APP_ACTIVITY = 2;</code>
+       */
+      WEB_AND_APP_ACTIVITY(2),
+      /**
+       * <code>DEVICE_APPS = 3;</code>
+       */
+      DEVICE_APPS(3),
+      ;
+
+      /**
+       * <pre>
+       * Legacy clients (&lt; M93) did not set a SettingType; for those,
+       * UNSPECIFIED should be interpreted as ALL. Newer clients should always
+       * set it explicitly.
+       * </pre>
+       *
+       * <code>SETTING_TYPE_UNSPECIFIED = 0;</code>
+       */
+      public static final int SETTING_TYPE_UNSPECIFIED_VALUE = 0;
+      /**
+       * <pre>
+       * All Settings.
+       * </pre>
+       *
+       * <code>ALL = 1;</code>
+       */
+      public static final int ALL_VALUE = 1;
+      /**
+       * <code>WEB_AND_APP_ACTIVITY = 2;</code>
+       */
+      public static final int WEB_AND_APP_ACTIVITY_VALUE = 2;
+      /**
+       * <code>DEVICE_APPS = 3;</code>
+       */
+      public static final int DEVICE_APPS_VALUE = 3;
+
+
+      @java.lang.Override
+      public final int getNumber() {
+        return value;
+      }
+
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static SettingType valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static SettingType forNumber(int value) {
+        switch (value) {
+          case 0: return SETTING_TYPE_UNSPECIFIED;
+          case 1: return ALL;
+          case 2: return WEB_AND_APP_ACTIVITY;
+          case 3: return DEVICE_APPS;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<SettingType>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          SettingType> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<SettingType>() {
+              @java.lang.Override
+              public SettingType findValueByNumber(int number) {
+                return SettingType.forNumber(number);
+              }
+            };
+
+      public static com.google.protobuf.Internal.EnumVerifier 
+          internalGetVerifier() {
+        return SettingTypeVerifier.INSTANCE;
+      }
+
+      private static final class SettingTypeVerifier implements 
+           com.google.protobuf.Internal.EnumVerifier { 
+              static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new SettingTypeVerifier();
+              @java.lang.Override
+              public boolean isInRange(int number) {
+                return SettingType.forNumber(number) != null;
+              }
+            };
+
+      private final int value;
+
+      private SettingType(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:sync_pb.UserConsentTypes.AssistantActivityControlConsent.SettingType)
+    }
+
     private int bitField0_;
     public static final int UI_AUDIT_KEY_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString uiAuditKey_;
@@ -4132,6 +4281,65 @@ public  final class UserConsentTypes extends
     private void clearStatus() {
       bitField0_ = (bitField0_ & ~0x00000002);
       status_ = 0;
+    }
+
+    public static final int SETTING_TYPE_FIELD_NUMBER = 3;
+    private int settingType_;
+    /**
+     * <pre>
+     * The activity control setting which the consent was given or not given to.
+     * Clients before M93 did not set this field. Such consents should be
+     * treated as applying to ALL.
+     * </pre>
+     *
+     * <code>optional .sync_pb.UserConsentTypes.AssistantActivityControlConsent.SettingType setting_type = 3;</code>
+     * @return Whether the settingType field is set.
+     */
+    @java.lang.Override
+    public boolean hasSettingType() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <pre>
+     * The activity control setting which the consent was given or not given to.
+     * Clients before M93 did not set this field. Such consents should be
+     * treated as applying to ALL.
+     * </pre>
+     *
+     * <code>optional .sync_pb.UserConsentTypes.AssistantActivityControlConsent.SettingType setting_type = 3;</code>
+     * @return The settingType.
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.UserConsentTypes.AssistantActivityControlConsent.SettingType getSettingType() {
+      org.chromium.components.sync.protocol.UserConsentTypes.AssistantActivityControlConsent.SettingType result = org.chromium.components.sync.protocol.UserConsentTypes.AssistantActivityControlConsent.SettingType.forNumber(settingType_);
+      return result == null ? org.chromium.components.sync.protocol.UserConsentTypes.AssistantActivityControlConsent.SettingType.SETTING_TYPE_UNSPECIFIED : result;
+    }
+    /**
+     * <pre>
+     * The activity control setting which the consent was given or not given to.
+     * Clients before M93 did not set this field. Such consents should be
+     * treated as applying to ALL.
+     * </pre>
+     *
+     * <code>optional .sync_pb.UserConsentTypes.AssistantActivityControlConsent.SettingType setting_type = 3;</code>
+     * @param value The settingType to set.
+     */
+    private void setSettingType(org.chromium.components.sync.protocol.UserConsentTypes.AssistantActivityControlConsent.SettingType value) {
+      settingType_ = value.getNumber();
+      bitField0_ |= 0x00000004;
+    }
+    /**
+     * <pre>
+     * The activity control setting which the consent was given or not given to.
+     * Clients before M93 did not set this field. Such consents should be
+     * treated as applying to ALL.
+     * </pre>
+     *
+     * <code>optional .sync_pb.UserConsentTypes.AssistantActivityControlConsent.SettingType setting_type = 3;</code>
+     */
+    private void clearSettingType() {
+      bitField0_ = (bitField0_ & ~0x00000004);
+      settingType_ = 0;
     }
 
     public static org.chromium.components.sync.protocol.UserConsentTypes.AssistantActivityControlConsent parseFrom(
@@ -4342,6 +4550,66 @@ public  final class UserConsentTypes extends
         return this;
       }
 
+      /**
+       * <pre>
+       * The activity control setting which the consent was given or not given to.
+       * Clients before M93 did not set this field. Such consents should be
+       * treated as applying to ALL.
+       * </pre>
+       *
+       * <code>optional .sync_pb.UserConsentTypes.AssistantActivityControlConsent.SettingType setting_type = 3;</code>
+       * @return Whether the settingType field is set.
+       */
+      @java.lang.Override
+      public boolean hasSettingType() {
+        return instance.hasSettingType();
+      }
+      /**
+       * <pre>
+       * The activity control setting which the consent was given or not given to.
+       * Clients before M93 did not set this field. Such consents should be
+       * treated as applying to ALL.
+       * </pre>
+       *
+       * <code>optional .sync_pb.UserConsentTypes.AssistantActivityControlConsent.SettingType setting_type = 3;</code>
+       * @return The settingType.
+       */
+      @java.lang.Override
+      public org.chromium.components.sync.protocol.UserConsentTypes.AssistantActivityControlConsent.SettingType getSettingType() {
+        return instance.getSettingType();
+      }
+      /**
+       * <pre>
+       * The activity control setting which the consent was given or not given to.
+       * Clients before M93 did not set this field. Such consents should be
+       * treated as applying to ALL.
+       * </pre>
+       *
+       * <code>optional .sync_pb.UserConsentTypes.AssistantActivityControlConsent.SettingType setting_type = 3;</code>
+       * @param value The enum numeric value on the wire for settingType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSettingType(org.chromium.components.sync.protocol.UserConsentTypes.AssistantActivityControlConsent.SettingType value) {
+        copyOnWrite();
+        instance.setSettingType(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * The activity control setting which the consent was given or not given to.
+       * Clients before M93 did not set this field. Such consents should be
+       * treated as applying to ALL.
+       * </pre>
+       *
+       * <code>optional .sync_pb.UserConsentTypes.AssistantActivityControlConsent.SettingType setting_type = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSettingType() {
+        copyOnWrite();
+        instance.clearSettingType();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:sync_pb.UserConsentTypes.AssistantActivityControlConsent)
     }
     @java.lang.Override
@@ -4362,10 +4630,12 @@ public  final class UserConsentTypes extends
               "uiAuditKey_",
               "status_",
               org.chromium.components.sync.protocol.UserConsentTypes.ConsentStatus.internalGetVerifier(),
+              "settingType_",
+              org.chromium.components.sync.protocol.UserConsentTypes.AssistantActivityControlConsent.SettingType.internalGetVerifier(),
             };
             java.lang.String info =
-                "\u0001\u0002\u0000\u0001\u0001\u0002\u0002\u0000\u0000\u0000\u0001\u100a\u0000\u0002" +
-                "\u100c\u0001";
+                "\u0001\u0003\u0000\u0001\u0001\u0003\u0003\u0000\u0000\u0000\u0001\u100a\u0000\u0002" +
+                "\u100c\u0001\u0003\u100c\u0002";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -5103,6 +5373,684 @@ public  final class UserConsentTypes extends
     private static volatile com.google.protobuf.Parser<AccountPasswordsConsent> PARSER;
 
     public static com.google.protobuf.Parser<AccountPasswordsConsent> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface AutofillAssistantConsentOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:sync_pb.UserConsentTypes.AutofillAssistantConsent)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <pre>
+     * Ids of the strings of the consent text presented to the user.
+     * </pre>
+     *
+     * <code>repeated int32 description_grd_ids = 1 [packed = true];</code>
+     * @return A list containing the descriptionGrdIds.
+     */
+    java.util.List<java.lang.Integer> getDescriptionGrdIdsList();
+    /**
+     * <pre>
+     * Ids of the strings of the consent text presented to the user.
+     * </pre>
+     *
+     * <code>repeated int32 description_grd_ids = 1 [packed = true];</code>
+     * @return The count of descriptionGrdIds.
+     */
+    int getDescriptionGrdIdsCount();
+    /**
+     * <pre>
+     * Ids of the strings of the consent text presented to the user.
+     * </pre>
+     *
+     * <code>repeated int32 description_grd_ids = 1 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The descriptionGrdIds at the given index.
+     */
+    int getDescriptionGrdIds(int index);
+
+    /**
+     * <pre>
+     * Id of the string of the UI element the user clicked in order to confirm
+     * the consent dialog.
+     * </pre>
+     *
+     * <code>optional int32 confirmation_grd_id = 2;</code>
+     * @return Whether the confirmationGrdId field is set.
+     */
+    boolean hasConfirmationGrdId();
+    /**
+     * <pre>
+     * Id of the string of the UI element the user clicked in order to confirm
+     * the consent dialog.
+     * </pre>
+     *
+     * <code>optional int32 confirmation_grd_id = 2;</code>
+     * @return The confirmationGrdId.
+     */
+    int getConfirmationGrdId();
+
+    /**
+     * <pre>
+     * The status of the consent.
+     * </pre>
+     *
+     * <code>optional .sync_pb.UserConsentTypes.ConsentStatus status = 3;</code>
+     * @return Whether the status field is set.
+     */
+    boolean hasStatus();
+    /**
+     * <pre>
+     * The status of the consent.
+     * </pre>
+     *
+     * <code>optional .sync_pb.UserConsentTypes.ConsentStatus status = 3;</code>
+     * @return The status.
+     */
+    org.chromium.components.sync.protocol.UserConsentTypes.ConsentStatus getStatus();
+  }
+  /**
+   * <pre>
+   * The User Consent for Autofill Assistant (i.e. Duplex technology) used for
+   * performing automated flows on the web.
+   * </pre>
+   *
+   * Protobuf type {@code sync_pb.UserConsentTypes.AutofillAssistantConsent}
+   */
+  public  static final class AutofillAssistantConsent extends
+      com.google.protobuf.GeneratedMessageLite<
+          AutofillAssistantConsent, AutofillAssistantConsent.Builder> implements
+      // @@protoc_insertion_point(message_implements:sync_pb.UserConsentTypes.AutofillAssistantConsent)
+      AutofillAssistantConsentOrBuilder {
+    private AutofillAssistantConsent() {
+      descriptionGrdIds_ = emptyIntList();
+    }
+    private int bitField0_;
+    public static final int DESCRIPTION_GRD_IDS_FIELD_NUMBER = 1;
+    private com.google.protobuf.Internal.IntList descriptionGrdIds_;
+    /**
+     * <pre>
+     * Ids of the strings of the consent text presented to the user.
+     * </pre>
+     *
+     * <code>repeated int32 description_grd_ids = 1 [packed = true];</code>
+     * @return A list containing the descriptionGrdIds.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getDescriptionGrdIdsList() {
+      return descriptionGrdIds_;
+    }
+    /**
+     * <pre>
+     * Ids of the strings of the consent text presented to the user.
+     * </pre>
+     *
+     * <code>repeated int32 description_grd_ids = 1 [packed = true];</code>
+     * @return The count of descriptionGrdIds.
+     */
+    @java.lang.Override
+    public int getDescriptionGrdIdsCount() {
+      return descriptionGrdIds_.size();
+    }
+    /**
+     * <pre>
+     * Ids of the strings of the consent text presented to the user.
+     * </pre>
+     *
+     * <code>repeated int32 description_grd_ids = 1 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The descriptionGrdIds at the given index.
+     */
+    @java.lang.Override
+    public int getDescriptionGrdIds(int index) {
+      return descriptionGrdIds_.getInt(index);
+    }
+    private int descriptionGrdIdsMemoizedSerializedSize = -1;
+    private void ensureDescriptionGrdIdsIsMutable() {
+      com.google.protobuf.Internal.IntList tmp = descriptionGrdIds_;
+      if (!tmp.isModifiable()) {
+        descriptionGrdIds_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(tmp);
+       }
+    }
+    /**
+     * <pre>
+     * Ids of the strings of the consent text presented to the user.
+     * </pre>
+     *
+     * <code>repeated int32 description_grd_ids = 1 [packed = true];</code>
+     * @param index The index to set the value at.
+     * @param value The descriptionGrdIds to set.
+     */
+    private void setDescriptionGrdIds(
+        int index, int value) {
+      ensureDescriptionGrdIdsIsMutable();
+      descriptionGrdIds_.setInt(index, value);
+    }
+    /**
+     * <pre>
+     * Ids of the strings of the consent text presented to the user.
+     * </pre>
+     *
+     * <code>repeated int32 description_grd_ids = 1 [packed = true];</code>
+     * @param value The descriptionGrdIds to add.
+     */
+    private void addDescriptionGrdIds(int value) {
+      ensureDescriptionGrdIdsIsMutable();
+      descriptionGrdIds_.addInt(value);
+    }
+    /**
+     * <pre>
+     * Ids of the strings of the consent text presented to the user.
+     * </pre>
+     *
+     * <code>repeated int32 description_grd_ids = 1 [packed = true];</code>
+     * @param values The descriptionGrdIds to add.
+     */
+    private void addAllDescriptionGrdIds(
+        java.lang.Iterable<? extends java.lang.Integer> values) {
+      ensureDescriptionGrdIdsIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, descriptionGrdIds_);
+    }
+    /**
+     * <pre>
+     * Ids of the strings of the consent text presented to the user.
+     * </pre>
+     *
+     * <code>repeated int32 description_grd_ids = 1 [packed = true];</code>
+     */
+    private void clearDescriptionGrdIds() {
+      descriptionGrdIds_ = emptyIntList();
+    }
+
+    public static final int CONFIRMATION_GRD_ID_FIELD_NUMBER = 2;
+    private int confirmationGrdId_;
+    /**
+     * <pre>
+     * Id of the string of the UI element the user clicked in order to confirm
+     * the consent dialog.
+     * </pre>
+     *
+     * <code>optional int32 confirmation_grd_id = 2;</code>
+     * @return Whether the confirmationGrdId field is set.
+     */
+    @java.lang.Override
+    public boolean hasConfirmationGrdId() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * Id of the string of the UI element the user clicked in order to confirm
+     * the consent dialog.
+     * </pre>
+     *
+     * <code>optional int32 confirmation_grd_id = 2;</code>
+     * @return The confirmationGrdId.
+     */
+    @java.lang.Override
+    public int getConfirmationGrdId() {
+      return confirmationGrdId_;
+    }
+    /**
+     * <pre>
+     * Id of the string of the UI element the user clicked in order to confirm
+     * the consent dialog.
+     * </pre>
+     *
+     * <code>optional int32 confirmation_grd_id = 2;</code>
+     * @param value The confirmationGrdId to set.
+     */
+    private void setConfirmationGrdId(int value) {
+      bitField0_ |= 0x00000001;
+      confirmationGrdId_ = value;
+    }
+    /**
+     * <pre>
+     * Id of the string of the UI element the user clicked in order to confirm
+     * the consent dialog.
+     * </pre>
+     *
+     * <code>optional int32 confirmation_grd_id = 2;</code>
+     */
+    private void clearConfirmationGrdId() {
+      bitField0_ = (bitField0_ & ~0x00000001);
+      confirmationGrdId_ = 0;
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 3;
+    private int status_;
+    /**
+     * <pre>
+     * The status of the consent.
+     * </pre>
+     *
+     * <code>optional .sync_pb.UserConsentTypes.ConsentStatus status = 3;</code>
+     * @return Whether the status field is set.
+     */
+    @java.lang.Override
+    public boolean hasStatus() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     * The status of the consent.
+     * </pre>
+     *
+     * <code>optional .sync_pb.UserConsentTypes.ConsentStatus status = 3;</code>
+     * @return The status.
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.UserConsentTypes.ConsentStatus getStatus() {
+      org.chromium.components.sync.protocol.UserConsentTypes.ConsentStatus result = org.chromium.components.sync.protocol.UserConsentTypes.ConsentStatus.forNumber(status_);
+      return result == null ? org.chromium.components.sync.protocol.UserConsentTypes.ConsentStatus.CONSENT_STATUS_UNSPECIFIED : result;
+    }
+    /**
+     * <pre>
+     * The status of the consent.
+     * </pre>
+     *
+     * <code>optional .sync_pb.UserConsentTypes.ConsentStatus status = 3;</code>
+     * @param value The status to set.
+     */
+    private void setStatus(org.chromium.components.sync.protocol.UserConsentTypes.ConsentStatus value) {
+      status_ = value.getNumber();
+      bitField0_ |= 0x00000002;
+    }
+    /**
+     * <pre>
+     * The status of the consent.
+     * </pre>
+     *
+     * <code>optional .sync_pb.UserConsentTypes.ConsentStatus status = 3;</code>
+     */
+    private void clearStatus() {
+      bitField0_ = (bitField0_ & ~0x00000002);
+      status_ = 0;
+    }
+
+    public static org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * <pre>
+     * The User Consent for Autofill Assistant (i.e. Duplex technology) used for
+     * performing automated flows on the web.
+     * </pre>
+     *
+     * Protobuf type {@code sync_pb.UserConsentTypes.AutofillAssistantConsent}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent, Builder> implements
+        // @@protoc_insertion_point(builder_implements:sync_pb.UserConsentTypes.AutofillAssistantConsent)
+        org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsentOrBuilder {
+      // Construct using org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <pre>
+       * Ids of the strings of the consent text presented to the user.
+       * </pre>
+       *
+       * <code>repeated int32 description_grd_ids = 1 [packed = true];</code>
+       * @return A list containing the descriptionGrdIds.
+       */
+      @java.lang.Override
+      public java.util.List<java.lang.Integer>
+          getDescriptionGrdIdsList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getDescriptionGrdIdsList());
+      }
+      /**
+       * <pre>
+       * Ids of the strings of the consent text presented to the user.
+       * </pre>
+       *
+       * <code>repeated int32 description_grd_ids = 1 [packed = true];</code>
+       * @return The count of descriptionGrdIds.
+       */
+      @java.lang.Override
+      public int getDescriptionGrdIdsCount() {
+        return instance.getDescriptionGrdIdsCount();
+      }
+      /**
+       * <pre>
+       * Ids of the strings of the consent text presented to the user.
+       * </pre>
+       *
+       * <code>repeated int32 description_grd_ids = 1 [packed = true];</code>
+       * @param index The index of the element to return.
+       * @return The descriptionGrdIds at the given index.
+       */
+      @java.lang.Override
+      public int getDescriptionGrdIds(int index) {
+        return instance.getDescriptionGrdIds(index);
+      }
+      /**
+       * <pre>
+       * Ids of the strings of the consent text presented to the user.
+       * </pre>
+       *
+       * <code>repeated int32 description_grd_ids = 1 [packed = true];</code>
+       * @param value The descriptionGrdIds to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescriptionGrdIds(
+          int index, int value) {
+        copyOnWrite();
+        instance.setDescriptionGrdIds(index, value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Ids of the strings of the consent text presented to the user.
+       * </pre>
+       *
+       * <code>repeated int32 description_grd_ids = 1 [packed = true];</code>
+       * @param value The descriptionGrdIds to add.
+       * @return This builder for chaining.
+       */
+      public Builder addDescriptionGrdIds(int value) {
+        copyOnWrite();
+        instance.addDescriptionGrdIds(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Ids of the strings of the consent text presented to the user.
+       * </pre>
+       *
+       * <code>repeated int32 description_grd_ids = 1 [packed = true];</code>
+       * @param values The descriptionGrdIds to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllDescriptionGrdIds(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        copyOnWrite();
+        instance.addAllDescriptionGrdIds(values);
+        return this;
+      }
+      /**
+       * <pre>
+       * Ids of the strings of the consent text presented to the user.
+       * </pre>
+       *
+       * <code>repeated int32 description_grd_ids = 1 [packed = true];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDescriptionGrdIds() {
+        copyOnWrite();
+        instance.clearDescriptionGrdIds();
+        return this;
+      }
+
+      /**
+       * <pre>
+       * Id of the string of the UI element the user clicked in order to confirm
+       * the consent dialog.
+       * </pre>
+       *
+       * <code>optional int32 confirmation_grd_id = 2;</code>
+       * @return Whether the confirmationGrdId field is set.
+       */
+      @java.lang.Override
+      public boolean hasConfirmationGrdId() {
+        return instance.hasConfirmationGrdId();
+      }
+      /**
+       * <pre>
+       * Id of the string of the UI element the user clicked in order to confirm
+       * the consent dialog.
+       * </pre>
+       *
+       * <code>optional int32 confirmation_grd_id = 2;</code>
+       * @return The confirmationGrdId.
+       */
+      @java.lang.Override
+      public int getConfirmationGrdId() {
+        return instance.getConfirmationGrdId();
+      }
+      /**
+       * <pre>
+       * Id of the string of the UI element the user clicked in order to confirm
+       * the consent dialog.
+       * </pre>
+       *
+       * <code>optional int32 confirmation_grd_id = 2;</code>
+       * @param value The confirmationGrdId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setConfirmationGrdId(int value) {
+        copyOnWrite();
+        instance.setConfirmationGrdId(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Id of the string of the UI element the user clicked in order to confirm
+       * the consent dialog.
+       * </pre>
+       *
+       * <code>optional int32 confirmation_grd_id = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearConfirmationGrdId() {
+        copyOnWrite();
+        instance.clearConfirmationGrdId();
+        return this;
+      }
+
+      /**
+       * <pre>
+       * The status of the consent.
+       * </pre>
+       *
+       * <code>optional .sync_pb.UserConsentTypes.ConsentStatus status = 3;</code>
+       * @return Whether the status field is set.
+       */
+      @java.lang.Override
+      public boolean hasStatus() {
+        return instance.hasStatus();
+      }
+      /**
+       * <pre>
+       * The status of the consent.
+       * </pre>
+       *
+       * <code>optional .sync_pb.UserConsentTypes.ConsentStatus status = 3;</code>
+       * @return The status.
+       */
+      @java.lang.Override
+      public org.chromium.components.sync.protocol.UserConsentTypes.ConsentStatus getStatus() {
+        return instance.getStatus();
+      }
+      /**
+       * <pre>
+       * The status of the consent.
+       * </pre>
+       *
+       * <code>optional .sync_pb.UserConsentTypes.ConsentStatus status = 3;</code>
+       * @param value The enum numeric value on the wire for status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatus(org.chromium.components.sync.protocol.UserConsentTypes.ConsentStatus value) {
+        copyOnWrite();
+        instance.setStatus(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * The status of the consent.
+       * </pre>
+       *
+       * <code>optional .sync_pb.UserConsentTypes.ConsentStatus status = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStatus() {
+        copyOnWrite();
+        instance.clearStatus();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:sync_pb.UserConsentTypes.AutofillAssistantConsent)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "bitField0_",
+              "descriptionGrdIds_",
+              "confirmationGrdId_",
+              "status_",
+              org.chromium.components.sync.protocol.UserConsentTypes.ConsentStatus.internalGetVerifier(),
+            };
+            java.lang.String info =
+                "\u0001\u0003\u0000\u0001\u0001\u0003\u0003\u0000\u0001\u0000\u0001\'\u0002\u1004" +
+                "\u0000\u0003\u100c\u0001";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent> parser = PARSER;
+          if (parser == null) {
+            synchronized (org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser =
+                    new DefaultInstanceBasedParser<org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent>(
+                        DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:sync_pb.UserConsentTypes.AutofillAssistantConsent)
+    private static final org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent DEFAULT_INSTANCE;
+    static {
+      AutofillAssistantConsent defaultInstance = new AutofillAssistantConsent();
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = defaultInstance;
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        AutofillAssistantConsent.class, defaultInstance);
+    }
+
+    public static org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<AutofillAssistantConsent> PARSER;
+
+    public static com.google.protobuf.Parser<AutofillAssistantConsent> parser() {
       return DEFAULT_INSTANCE.getParserForType();
     }
   }

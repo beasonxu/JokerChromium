@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class SensorProvider_Internal {
 
@@ -61,7 +63,7 @@ class SensorProvider_Internal {
         @Override
         public void getSensor(
 int type, 
-GetSensorResponse callback) {
+GetSensor_Response callback) {
 
             SensorProviderGetSensorParams _message = new SensorProviderGetSensorParams();
 
@@ -303,9 +305,9 @@ GetSensorResponse callback) {
 
     static class SensorProviderGetSensorResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final SensorProvider.GetSensorResponse mCallback;
+        private final SensorProvider.GetSensor_Response mCallback;
 
-        SensorProviderGetSensorResponseParamsForwardToCallback(SensorProvider.GetSensorResponse callback) {
+        SensorProviderGetSensorResponseParamsForwardToCallback(SensorProvider.GetSensor_Response callback) {
             this.mCallback = callback;
         }
 
@@ -330,7 +332,7 @@ GetSensorResponse callback) {
         }
     }
 
-    static class SensorProviderGetSensorResponseParamsProxyToResponder implements SensorProvider.GetSensorResponse {
+    static class SensorProviderGetSensorResponseParamsProxyToResponder implements SensorProvider.GetSensor_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

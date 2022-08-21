@@ -1,11 +1,16 @@
 package org.chromium.chrome.features.dev_ui;
 
+import java.lang.String;
+import org.chromium.base.annotations.IdentifierNameString;
 import org.chromium.components.module_installer.builder.Module;
 import org.chromium.components.module_installer.engine.InstallEngine;
 import org.chromium.components.module_installer.engine.InstallListener;
 
 public class DevUiModule {
-  private static final Module<DevUi> sModule = new Module<DevUi>("dev_ui", DevUi.class, "org.chromium.chrome.features.dev_ui.DevUiImpl");
+  @IdentifierNameString
+  private static String sModuleClassString = "org.chromium.chrome.features.dev_ui.DevUiImpl";
+
+  private static final Module<DevUi> sModule = new Module<DevUi>("dev_ui", DevUi.class, sModuleClassString);
 
   private DevUiModule() {
   }

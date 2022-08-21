@@ -13,13 +13,23 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class StorageType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        StorageType.TEMPORARY,
+        StorageType.PERSISTENT,
+        StorageType.SYNCABLE,
+        StorageType.DEPRECATED_QUOTA_NOT_MANAGED,
+        StorageType.UNKNOWN})
+    public @interface EnumType {}
 
     public static final int TEMPORARY = 0;
     public static final int PERSISTENT = 1;
     public static final int SYNCABLE = 2;
-    public static final int QUOTA_NOT_MANAGED = 3;
+    public static final int DEPRECATED_QUOTA_NOT_MANAGED = 3;
     public static final int UNKNOWN = 4;
     public static final int MIN_VALUE = 0;
     public static final int MAX_VALUE = 4;

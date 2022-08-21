@@ -1,7 +1,6 @@
 package org.chromium.chrome.browser.compositor.scene_layer;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
@@ -10,9 +9,8 @@ import org.chromium.chrome.browser.compositor.LayerTitleCache;
 import org.chromium.chrome.browser.layouts.scene_layer.SceneLayer;
 import org.chromium.ui.resources.ResourceManager;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class TabStripSceneLayerJni implements TabStripSceneLayer.Natives {
+class TabStripSceneLayerJni implements TabStripSceneLayer.Natives {
   private static TabStripSceneLayer.Natives testInstance;
 
   public static final JniStaticTestMocker<TabStripSceneLayer.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.compositor.scene_layer.TabStripSceneLayer.Natives>() {
@@ -44,16 +42,21 @@ final class TabStripSceneLayerJni implements TabStripSceneLayer.Natives {
 
   @Override
   public void updateTabStripLayer(long nativeTabStripSceneLayer, TabStripSceneLayer caller,
-      float width, float height, float yOffset, float backgroundTabBrightness, float brightness,
-      boolean shouldReaddBackground) {
-    GEN_JNI.org_chromium_chrome_browser_compositor_scene_1layer_TabStripSceneLayer_updateTabStripLayer(nativeTabStripSceneLayer, caller, width, height, yOffset, backgroundTabBrightness, brightness, shouldReaddBackground);
+      float width, float height, float yOffset, boolean shouldReadBackground) {
+    GEN_JNI.org_chromium_chrome_browser_compositor_scene_1layer_TabStripSceneLayer_updateTabStripLayer(nativeTabStripSceneLayer, caller, width, height, yOffset, shouldReadBackground);
+  }
+
+  @Override
+  public void updateStripScrim(long nativeTabStripSceneLayer, TabStripSceneLayer caller, float x,
+      float y, float width, float height, int color, float alpha) {
+    GEN_JNI.org_chromium_chrome_browser_compositor_scene_1layer_TabStripSceneLayer_updateStripScrim(nativeTabStripSceneLayer, caller, x, y, width, height, color, alpha);
   }
 
   @Override
   public void updateNewTabButton(long nativeTabStripSceneLayer, TabStripSceneLayer caller,
-      int resourceId, float x, float y, float width, float height, boolean visible,
-      ResourceManager resourceManager) {
-    GEN_JNI.org_chromium_chrome_browser_compositor_scene_1layer_TabStripSceneLayer_updateNewTabButton(nativeTabStripSceneLayer, caller, resourceId, x, y, width, height, visible, resourceManager);
+      int resourceId, float x, float y, float width, float height, float touchTargetOffset,
+      boolean visible, int tint, float buttonAlpha, ResourceManager resourceManager) {
+    GEN_JNI.org_chromium_chrome_browser_compositor_scene_1layer_TabStripSceneLayer_updateNewTabButton(nativeTabStripSceneLayer, caller, resourceId, x, y, width, height, touchTargetOffset, visible, tint, buttonAlpha, resourceManager);
   }
 
   @Override
@@ -80,9 +83,9 @@ final class TabStripSceneLayerJni implements TabStripSceneLayer.Natives {
       int closeResourceId, int handleResourceId, int handleOutlineResourceId, int closeTint,
       int handleTint, int handleOutlineTint, boolean foreground, boolean closePressed,
       float toolbarWidth, float x, float y, float width, float height, float contentOffsetX,
-      float closeButtonAlpha, boolean isLoading, float spinnerRotation,
+      float closeButtonAlpha, boolean isLoading, float spinnerRotation, float brightness,
       LayerTitleCache layerTitleCache, ResourceManager resourceManager) {
-    GEN_JNI.org_chromium_chrome_browser_compositor_scene_1layer_TabStripSceneLayer_putStripTabLayer(nativeTabStripSceneLayer, caller, id, closeResourceId, handleResourceId, handleOutlineResourceId, closeTint, handleTint, handleOutlineTint, foreground, closePressed, toolbarWidth, x, y, width, height, contentOffsetX, closeButtonAlpha, isLoading, spinnerRotation, layerTitleCache, resourceManager);
+    GEN_JNI.org_chromium_chrome_browser_compositor_scene_1layer_TabStripSceneLayer_putStripTabLayer(nativeTabStripSceneLayer, caller, id, closeResourceId, handleResourceId, handleOutlineResourceId, closeTint, handleTint, handleOutlineTint, foreground, closePressed, toolbarWidth, x, y, width, height, contentOffsetX, closeButtonAlpha, isLoading, spinnerRotation, brightness, layerTitleCache, resourceManager);
   }
 
   @Override

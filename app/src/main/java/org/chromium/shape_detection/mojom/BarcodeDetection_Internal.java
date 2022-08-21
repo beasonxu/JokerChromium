@@ -13,6 +13,8 @@
 
 package org.chromium.shape_detection.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class BarcodeDetection_Internal {
 
@@ -61,7 +63,7 @@ class BarcodeDetection_Internal {
         @Override
         public void detect(
 org.chromium.skia.mojom.BitmapN32 bitmapData, 
-DetectResponse callback) {
+Detect_Response callback) {
 
             BarcodeDetectionDetectParams _message = new BarcodeDetectionDetectParams();
 
@@ -309,9 +311,9 @@ DetectResponse callback) {
 
     static class BarcodeDetectionDetectResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BarcodeDetection.DetectResponse mCallback;
+        private final BarcodeDetection.Detect_Response mCallback;
 
-        BarcodeDetectionDetectResponseParamsForwardToCallback(BarcodeDetection.DetectResponse callback) {
+        BarcodeDetectionDetectResponseParamsForwardToCallback(BarcodeDetection.Detect_Response callback) {
             this.mCallback = callback;
         }
 
@@ -336,7 +338,7 @@ DetectResponse callback) {
         }
     }
 
-    static class BarcodeDetectionDetectResponseParamsProxyToResponder implements BarcodeDetection.DetectResponse {
+    static class BarcodeDetectionDetectResponseParamsProxyToResponder implements BarcodeDetection.Detect_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

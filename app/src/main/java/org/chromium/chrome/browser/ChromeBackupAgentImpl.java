@@ -4,6 +4,7 @@
 
 package org.chromium.chrome.browser;
 
+import android.accounts.Account;
 import android.app.backup.BackupDataInput;
 import android.app.backup.BackupDataOutput;
 import android.app.backup.BackupManager;
@@ -20,6 +21,7 @@ import org.chromium.base.PathUtils;
 import org.chromium.base.annotations.NativeMethods;
 import org.chromium.base.metrics.RecordHistogram;
 import org.chromium.base.task.PostTask;
+import org.chromium.chrome.browser.base.SplitCompatApplication;
 import org.chromium.chrome.browser.firstrun.FirstRunStatus;
 import org.chromium.chrome.browser.init.AsyncInitTaskRunner;
 import org.chromium.chrome.browser.init.ChromeBrowserInitializer;
@@ -42,6 +44,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
@@ -90,12 +93,11 @@ public class ChromeBackupAgentImpl extends ChromeBackupAgent.Impl {
 
     // List of preferences that should be restored unchanged.
     static final String[] BACKUP_ANDROID_BOOL_PREFS = {
-            ChromePreferenceKeys.DATA_REDUCTION_ENABLED,
             ChromePreferenceKeys.FIRST_RUN_CACHED_TOS_ACCEPTED,
             ChromePreferenceKeys.FIRST_RUN_FLOW_COMPLETE,
             ChromePreferenceKeys.FIRST_RUN_LIGHTWEIGHT_FLOW_COMPLETE,
-            ChromePreferenceKeys.FIRST_RUN_FLOW_SIGNIN_SETUP,
-            ChromePreferenceKeys.PRIVACY_METRICS_REPORTING,
+            ChromePreferenceKeys.PRIVACY_METRICS_REPORTING_PERMITTED_BY_POLICY,
+            ChromePreferenceKeys.PRIVACY_METRICS_REPORTING_PERMITTED_BY_USER,
     };
 
     // Key used to store the email of the signed in account. This email is obtained from
@@ -147,13 +149,6 @@ public class ChromeBackupAgentImpl extends ChromeBackupAgent.Impl {
             out.writeObject(mNames);
             out.writeObject(mValues);
         }
-    }
-
-    @VisibleForTesting
-    protected boolean accountExistsOnDevice(String userName) {
-        return AccountUtils.findAccountByName(
-                       AccountManagerFacadeProvider.getInstance().tryGetGoogleAccounts(), userName)
-                != null;
     }
 
     // TODO (aberent) Refactor the tests to use a mocked ChromeBrowserInitializer, and make this
@@ -325,7 +320,7 @@ public class ChromeBackupAgentImpl extends ChromeBackupAgent.Impl {
         PostTask.runSynchronously(UiThreadTaskTraits.DEFAULT, () -> {
             // Chrome library loading depends on PathUtils.
             PathUtils.setPrivateDataDirectorySuffix(
-                    ChromeApplication.PRIVATE_DATA_DIRECTORY_SUFFIX);
+                    SplitCompatApplication.PRIVATE_DATA_DIRECTORY_SUFFIX);
             createAsyncInitTaskRunner(latch).startBackgroundTasks(
                     false /* allocateChildConnection */, true /* initVariationSeed */);
         });
@@ -352,7 +347,7 @@ public class ChromeBackupAgentImpl extends ChromeBackupAgent.Impl {
         }
 
         // If the user hasn't signed in, or can't sign in, then don't restore anything.
-        if (restoredUserName == null || !accountExistsOnDevice(restoredUserName)) {
+        if (!accountExistsOnDevice(restoredUserName)) {
             setRestoreStatus(RestoreStatus.NOT_SIGNED_IN);
             Log.i(TAG, "Chrome was not signed in with a known account name, not restoring");
             return;
@@ -419,6 +414,15 @@ public class ChromeBackupAgentImpl extends ChromeBackupAgent.Impl {
                 latch.countDown();
             }
         };
+    }
+
+    private boolean accountExistsOnDevice(String accountName) {
+        return PostTask.runSynchronously(UiThreadTaskTraits.DEFAULT, () -> {
+            List<Account> accounts = AccountUtils.getAccountsIfFulfilledOrEmpty(
+                    AccountManagerFacadeProvider.getInstance().getAccounts());
+            return accountName != null
+                    && AccountUtils.findAccountByName(accounts, accountName) != null;
+        });
     }
 
     /**

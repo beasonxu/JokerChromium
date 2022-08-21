@@ -2,15 +2,13 @@ package org.chromium.components.signin.identitymanager;
 
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ProfileOAuth2TokenServiceDelegateJni implements ProfileOAuth2TokenServiceDelegate.Natives {
+class ProfileOAuth2TokenServiceDelegateJni implements ProfileOAuth2TokenServiceDelegate.Natives {
   private static ProfileOAuth2TokenServiceDelegate.Natives testInstance;
 
   public static final JniStaticTestMocker<ProfileOAuth2TokenServiceDelegate.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.signin.identitymanager.ProfileOAuth2TokenServiceDelegate.Natives>() {
@@ -32,8 +30,9 @@ final class ProfileOAuth2TokenServiceDelegateJni implements ProfileOAuth2TokenSe
 
   @Override
   public void reloadAllAccountsWithPrimaryAccountAfterSeeding(
-      long nativeProfileOAuth2TokenServiceDelegateAndroid, String accountId) {
-    GEN_JNI.org_chromium_components_signin_identitymanager_ProfileOAuth2TokenServiceDelegate_reloadAllAccountsWithPrimaryAccountAfterSeeding(nativeProfileOAuth2TokenServiceDelegateAndroid, accountId);
+      long nativeProfileOAuth2TokenServiceDelegateAndroid, String accountId,
+      String[] deviceAccountNames) {
+    GEN_JNI.org_chromium_components_signin_identitymanager_ProfileOAuth2TokenServiceDelegate_reloadAllAccountsWithPrimaryAccountAfterSeeding(nativeProfileOAuth2TokenServiceDelegateAndroid, accountId, deviceAccountNames);
   }
 
   public static ProfileOAuth2TokenServiceDelegate.Natives get() {

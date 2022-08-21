@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface EyeDropperChooser extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface EyeDropperChooser extends org.chromium.mojo.bindings.Interface 
 
     Manager<EyeDropperChooser, EyeDropperChooser.Proxy> MANAGER = EyeDropperChooser_Internal.MANAGER;
 
-
     void choose(
 
-ChooseResponse callback);
+Choose_Response callback);
 
-    interface ChooseResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Boolean, Integer> { }
+    interface Choose_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Boolean, Integer> { }
 
 
 }

@@ -13,8 +13,15 @@
 
 package org.chromium.ui.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class AcceleratorPhase {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        AcceleratorPhase.PRE_TARGET,
+        AcceleratorPhase.POST_TARGET})
+    public @interface EnumType {}
 
     public static final int PRE_TARGET = 0;
     public static final int POST_TARGET = 1;

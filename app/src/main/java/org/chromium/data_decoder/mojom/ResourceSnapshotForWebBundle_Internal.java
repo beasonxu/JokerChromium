@@ -13,6 +13,8 @@
 
 package org.chromium.data_decoder.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class ResourceSnapshotForWebBundle_Internal {
 
@@ -65,7 +67,7 @@ class ResourceSnapshotForWebBundle_Internal {
         @Override
         public void getResourceCount(
 
-GetResourceCountResponse callback) {
+GetResourceCount_Response callback) {
 
             ResourceSnapshotForWebBundleGetResourceCountParams _message = new ResourceSnapshotForWebBundleGetResourceCountParams();
 
@@ -85,7 +87,7 @@ GetResourceCountResponse callback) {
         @Override
         public void getResourceInfo(
 long index, 
-GetResourceInfoResponse callback) {
+GetResourceInfo_Response callback) {
 
             ResourceSnapshotForWebBundleGetResourceInfoParams _message = new ResourceSnapshotForWebBundleGetResourceInfoParams();
 
@@ -107,7 +109,7 @@ GetResourceInfoResponse callback) {
         @Override
         public void getResourceBody(
 long index, 
-GetResourceBodyResponse callback) {
+GetResourceBody_Response callback) {
 
             ResourceSnapshotForWebBundleGetResourceBodyParams _message = new ResourceSnapshotForWebBundleGetResourceBodyParams();
 
@@ -363,9 +365,9 @@ GetResourceBodyResponse callback) {
 
     static class ResourceSnapshotForWebBundleGetResourceCountResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ResourceSnapshotForWebBundle.GetResourceCountResponse mCallback;
+        private final ResourceSnapshotForWebBundle.GetResourceCount_Response mCallback;
 
-        ResourceSnapshotForWebBundleGetResourceCountResponseParamsForwardToCallback(ResourceSnapshotForWebBundle.GetResourceCountResponse callback) {
+        ResourceSnapshotForWebBundleGetResourceCountResponseParamsForwardToCallback(ResourceSnapshotForWebBundle.GetResourceCount_Response callback) {
             this.mCallback = callback;
         }
 
@@ -390,7 +392,7 @@ GetResourceBodyResponse callback) {
         }
     }
 
-    static class ResourceSnapshotForWebBundleGetResourceCountResponseParamsProxyToResponder implements ResourceSnapshotForWebBundle.GetResourceCountResponse {
+    static class ResourceSnapshotForWebBundleGetResourceCountResponseParamsProxyToResponder implements ResourceSnapshotForWebBundle.GetResourceCount_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -551,9 +553,9 @@ GetResourceBodyResponse callback) {
 
     static class ResourceSnapshotForWebBundleGetResourceInfoResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ResourceSnapshotForWebBundle.GetResourceInfoResponse mCallback;
+        private final ResourceSnapshotForWebBundle.GetResourceInfo_Response mCallback;
 
-        ResourceSnapshotForWebBundleGetResourceInfoResponseParamsForwardToCallback(ResourceSnapshotForWebBundle.GetResourceInfoResponse callback) {
+        ResourceSnapshotForWebBundleGetResourceInfoResponseParamsForwardToCallback(ResourceSnapshotForWebBundle.GetResourceInfo_Response callback) {
             this.mCallback = callback;
         }
 
@@ -578,7 +580,7 @@ GetResourceBodyResponse callback) {
         }
     }
 
-    static class ResourceSnapshotForWebBundleGetResourceInfoResponseParamsProxyToResponder implements ResourceSnapshotForWebBundle.GetResourceInfoResponse {
+    static class ResourceSnapshotForWebBundleGetResourceInfoResponseParamsProxyToResponder implements ResourceSnapshotForWebBundle.GetResourceInfo_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -738,9 +740,9 @@ GetResourceBodyResponse callback) {
 
     static class ResourceSnapshotForWebBundleGetResourceBodyResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ResourceSnapshotForWebBundle.GetResourceBodyResponse mCallback;
+        private final ResourceSnapshotForWebBundle.GetResourceBody_Response mCallback;
 
-        ResourceSnapshotForWebBundleGetResourceBodyResponseParamsForwardToCallback(ResourceSnapshotForWebBundle.GetResourceBodyResponse callback) {
+        ResourceSnapshotForWebBundleGetResourceBodyResponseParamsForwardToCallback(ResourceSnapshotForWebBundle.GetResourceBody_Response callback) {
             this.mCallback = callback;
         }
 
@@ -765,7 +767,7 @@ GetResourceBodyResponse callback) {
         }
     }
 
-    static class ResourceSnapshotForWebBundleGetResourceBodyResponseParamsProxyToResponder implements ResourceSnapshotForWebBundle.GetResourceBodyResponse {
+    static class ResourceSnapshotForWebBundleGetResourceBodyResponseParamsProxyToResponder implements ResourceSnapshotForWebBundle.GetResourceBody_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

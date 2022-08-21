@@ -2,15 +2,14 @@ package org.chromium.components.webxr;
 
 import android.view.Surface;
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
+import org.chromium.ui.base.WindowAndroid;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ArCoreJavaUtilsJni implements ArCoreJavaUtils.Natives {
+class ArCoreJavaUtilsJni implements ArCoreJavaUtils.Natives {
   private static ArCoreJavaUtils.Natives testInstance;
 
   public static final JniStaticTestMocker<ArCoreJavaUtils.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.webxr.ArCoreJavaUtils.Natives>() {
@@ -26,8 +25,8 @@ final class ArCoreJavaUtilsJni implements ArCoreJavaUtils.Natives {
 
   @Override
   public void onDrawingSurfaceReady(long nativeArCoreJavaUtils, ArCoreJavaUtils caller,
-      Surface surface, int rotation, int width, int height) {
-    GEN_JNI.org_chromium_components_webxr_ArCoreJavaUtils_onDrawingSurfaceReady(nativeArCoreJavaUtils, caller, surface, rotation, width, height);
+      Surface surface, WindowAndroid rootWindow, int rotation, int width, int height) {
+    GEN_JNI.org_chromium_components_webxr_ArCoreJavaUtils_onDrawingSurfaceReady(nativeArCoreJavaUtils, caller, surface, rootWindow, rotation, width, height);
   }
 
   @Override

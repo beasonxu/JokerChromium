@@ -2,15 +2,13 @@ package org.chromium.chrome.browser.infobar;
 
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class TranslateCompactInfoBarJni implements TranslateCompactInfoBar.Natives {
+class TranslateCompactInfoBarJni implements TranslateCompactInfoBar.Natives {
   private static TranslateCompactInfoBar.Natives testInstance;
 
   public static final JniStaticTestMocker<TranslateCompactInfoBar.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.infobar.TranslateCompactInfoBar.Natives>() {

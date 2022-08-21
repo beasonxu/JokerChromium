@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface BackgroundFetchRegistrationService extends org.chromium.mojo.bindings.Interface {
 
@@ -23,29 +25,25 @@ public interface BackgroundFetchRegistrationService extends org.chromium.mojo.bi
 
     Manager<BackgroundFetchRegistrationService, BackgroundFetchRegistrationService.Proxy> MANAGER = BackgroundFetchRegistrationService_Internal.MANAGER;
 
-
     void updateUi(
 String title, org.chromium.skia.mojom.BitmapN32 icon, 
-UpdateUiResponse callback);
+UpdateUi_Response callback);
 
-    interface UpdateUiResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface UpdateUi_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void abort(
 
-AbortResponse callback);
+Abort_Response callback);
 
-    interface AbortResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface Abort_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void matchRequests(
 FetchApiRequest requestToMatch, CacheQueryOptions cacheQueryOptions, boolean matchAll, 
-MatchRequestsResponse callback);
+MatchRequests_Response callback);
 
-    interface MatchRequestsResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<BackgroundFetchSettledFetch[]> { }
-
+    interface MatchRequests_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<BackgroundFetchSettledFetch[]> { }
 
 
     void addRegistrationObserver(

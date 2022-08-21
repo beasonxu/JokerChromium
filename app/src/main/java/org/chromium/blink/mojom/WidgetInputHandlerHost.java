@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface WidgetInputHandlerHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,42 +25,39 @@ public interface WidgetInputHandlerHost extends org.chromium.mojo.bindings.Inter
 
     Manager<WidgetInputHandlerHost, WidgetInputHandlerHost.Proxy> MANAGER = WidgetInputHandlerHost_Internal.MANAGER;
 
-
     void setTouchActionFromMain(
 int touchAction);
 
+
+    void setPanAction(
+int panAction);
 
 
     void didOverscroll(
 DidOverscrollParams params);
 
 
-
     void didStartScrollingViewport(
 );
-
 
 
     void imeCancelComposition(
 );
 
 
-
     void imeCompositionRangeChanged(
 org.chromium.gfx.mojom.Range range, org.chromium.gfx.mojom.Rect[] bounds);
-
 
 
     void setMouseCapture(
 boolean capture);
 
 
-
     void requestMouseLock(
 boolean fromUserGesture, boolean unadjustedMovement, 
-RequestMouseLockResponse callback);
+RequestMouseLock_Response callback);
 
-    interface RequestMouseLockResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, PointerLockContext> { }
+    interface RequestMouseLock_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, PointerLockContext> { }
 
 
 }

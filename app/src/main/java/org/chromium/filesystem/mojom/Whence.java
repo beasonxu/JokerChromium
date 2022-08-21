@@ -13,8 +13,16 @@
 
 package org.chromium.filesystem.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class Whence {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        Whence.FROM_BEGIN,
+        Whence.FROM_CURRENT,
+        Whence.FROM_END})
+    public @interface EnumType {}
 
     public static final int FROM_BEGIN = 0;
     public static final int FROM_CURRENT = 1;

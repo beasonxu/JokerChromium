@@ -71,7 +71,7 @@ public interface TypedUrlSpecificsOrBuilder extends
    * this information (it's inferred by the history code from the transition
    * type for each visit).
    * optional int32 typed_count = 3; (deprecated)
-   * True if the URL should be used for auto-complete.
+   * True if the URL should NOT be used for auto-complete.
    * </pre>
    *
    * <code>optional bool hidden = 4;</code>
@@ -84,7 +84,7 @@ public interface TypedUrlSpecificsOrBuilder extends
    * this information (it's inferred by the history code from the transition
    * type for each visit).
    * optional int32 typed_count = 3; (deprecated)
-   * True if the URL should be used for auto-complete.
+   * True if the URL should NOT be used for auto-complete.
    * </pre>
    *
    * <code>optional bool hidden = 4;</code>

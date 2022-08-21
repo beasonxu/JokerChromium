@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class DownloadUrlParams extends org.chromium.mojo.bindings.Struct {
 
@@ -27,10 +29,12 @@ public final class DownloadUrlParams extends org.chromium.mojo.bindings.Struct {
     public BlobUrlToken blobUrlToken;
     public Blob dataUrlBlob;
     public boolean isContextMenuSave;
+    public boolean hasUserGesture;
 
     private DownloadUrlParams(int version) {
         super(STRUCT_SIZE, version);
         this.isContextMenuSave = (boolean) false;
+        this.hasUserGesture = (boolean) false;
     }
 
     public DownloadUrlParams() {
@@ -100,6 +104,10 @@ public final class DownloadUrlParams extends org.chromium.mojo.bindings.Struct {
                     
                 result.isContextMenuSave = decoder0.readBoolean(60, 0);
                 }
+                {
+                    
+                result.hasUserGesture = decoder0.readBoolean(60, 1);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -127,5 +135,7 @@ public final class DownloadUrlParams extends org.chromium.mojo.bindings.Struct {
         encoder0.encode(this.dataUrlBlob, 52, true, Blob.MANAGER);
         
         encoder0.encode(this.isContextMenuSave, 60, 0);
+        
+        encoder0.encode(this.hasUserGesture, 60, 1);
     }
 }

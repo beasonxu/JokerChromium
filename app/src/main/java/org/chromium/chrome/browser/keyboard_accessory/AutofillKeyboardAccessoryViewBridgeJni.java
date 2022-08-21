@@ -1,15 +1,13 @@
 package org.chromium.chrome.browser.keyboard_accessory;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class AutofillKeyboardAccessoryViewBridgeJni implements AutofillKeyboardAccessoryViewBridge.Natives {
+class AutofillKeyboardAccessoryViewBridgeJni implements AutofillKeyboardAccessoryViewBridge.Natives {
   private static AutofillKeyboardAccessoryViewBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<AutofillKeyboardAccessoryViewBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.keyboard_accessory.AutofillKeyboardAccessoryViewBridge.Natives>() {

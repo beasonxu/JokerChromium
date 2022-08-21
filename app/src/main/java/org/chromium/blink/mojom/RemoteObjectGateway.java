@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface RemoteObjectGateway extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface RemoteObjectGateway extends org.chromium.mojo.bindings.Interfac
 
     Manager<RemoteObjectGateway, RemoteObjectGateway.Proxy> MANAGER = RemoteObjectGateway_Internal.MANAGER;
 
-
     void addNamedObject(
 String name, int objectId);
-
 
 
     void removeNamedObject(

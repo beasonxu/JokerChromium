@@ -148,6 +148,17 @@ public interface UserConsentSpecificsOrBuilder extends
   org.chromium.components.sync.protocol.UserConsentTypes.AccountPasswordsConsent getAccountPasswordsConsent();
 
   /**
+   * <code>.sync_pb.UserConsentTypes.AutofillAssistantConsent autofill_assistant_consent = 16;</code>
+   * @return Whether the autofillAssistantConsent field is set.
+   */
+  boolean hasAutofillAssistantConsent();
+  /**
+   * <code>.sync_pb.UserConsentTypes.AutofillAssistantConsent autofill_assistant_consent = 16;</code>
+   * @return The autofillAssistantConsent.
+   */
+  org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent getAutofillAssistantConsent();
+
+  /**
    * <pre>
    * The account ID of the user who gave the consent. This field is used
    * by UserEventService to distinguish consents from different users,

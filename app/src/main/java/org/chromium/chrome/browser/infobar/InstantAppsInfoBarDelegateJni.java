@@ -2,7 +2,6 @@ package org.chromium.chrome.browser.infobar;
 
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
@@ -10,9 +9,8 @@ import org.chromium.base.natives.GEN_JNI;
 import org.chromium.chrome.browser.instantapps.InstantAppsBannerData;
 import org.chromium.content_public.browser.WebContents;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class InstantAppsInfoBarDelegateJni implements InstantAppsInfoBarDelegate.Natives {
+class InstantAppsInfoBarDelegateJni implements InstantAppsInfoBarDelegate.Natives {
   private static InstantAppsInfoBarDelegate.Natives testInstance;
 
   public static final JniStaticTestMocker<InstantAppsInfoBarDelegate.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.infobar.InstantAppsInfoBarDelegate.Natives>() {

@@ -13,6 +13,8 @@
 
 package org.chromium.content.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class LocalTrustTokenFulfiller_Internal {
 
@@ -61,7 +63,7 @@ class LocalTrustTokenFulfiller_Internal {
         @Override
         public void fulfillTrustTokenIssuance(
 org.chromium.network.mojom.FulfillTrustTokenIssuanceRequest request, 
-FulfillTrustTokenIssuanceResponse callback) {
+FulfillTrustTokenIssuance_Response callback) {
 
             LocalTrustTokenFulfillerFulfillTrustTokenIssuanceParams _message = new LocalTrustTokenFulfillerFulfillTrustTokenIssuanceParams();
 
@@ -293,9 +295,9 @@ FulfillTrustTokenIssuanceResponse callback) {
 
     static class LocalTrustTokenFulfillerFulfillTrustTokenIssuanceResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final LocalTrustTokenFulfiller.FulfillTrustTokenIssuanceResponse mCallback;
+        private final LocalTrustTokenFulfiller.FulfillTrustTokenIssuance_Response mCallback;
 
-        LocalTrustTokenFulfillerFulfillTrustTokenIssuanceResponseParamsForwardToCallback(LocalTrustTokenFulfiller.FulfillTrustTokenIssuanceResponse callback) {
+        LocalTrustTokenFulfillerFulfillTrustTokenIssuanceResponseParamsForwardToCallback(LocalTrustTokenFulfiller.FulfillTrustTokenIssuance_Response callback) {
             this.mCallback = callback;
         }
 
@@ -320,7 +322,7 @@ FulfillTrustTokenIssuanceResponse callback) {
         }
     }
 
-    static class LocalTrustTokenFulfillerFulfillTrustTokenIssuanceResponseParamsProxyToResponder implements LocalTrustTokenFulfiller.FulfillTrustTokenIssuanceResponse {
+    static class LocalTrustTokenFulfillerFulfillTrustTokenIssuanceResponseParamsProxyToResponder implements LocalTrustTokenFulfiller.FulfillTrustTokenIssuance_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

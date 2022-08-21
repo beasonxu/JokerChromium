@@ -1,15 +1,13 @@
 package org.chromium.device.bluetooth;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ChromeBluetoothRemoteGattDescriptorJni implements ChromeBluetoothRemoteGattDescriptor.Natives {
+class ChromeBluetoothRemoteGattDescriptorJni implements ChromeBluetoothRemoteGattDescriptor.Natives {
   private static ChromeBluetoothRemoteGattDescriptor.Natives testInstance;
 
   public static final JniStaticTestMocker<ChromeBluetoothRemoteGattDescriptor.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.device.bluetooth.ChromeBluetoothRemoteGattDescriptor.Natives>() {

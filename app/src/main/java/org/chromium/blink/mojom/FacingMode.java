@@ -13,8 +13,18 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class FacingMode {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        FacingMode.NONE,
+        FacingMode.USER,
+        FacingMode.ENVIRONMENT,
+        FacingMode.LEFT,
+        FacingMode.RIGHT})
+    public @interface EnumType {}
 
     public static final int NONE = 0;
     public static final int USER = 1;

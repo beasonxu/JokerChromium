@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface DedicatedWorkerHostFactory extends org.chromium.mojo.bindings.Interface {
 
@@ -23,13 +25,11 @@ public interface DedicatedWorkerHostFactory extends org.chromium.mojo.bindings.I
 
     Manager<DedicatedWorkerHostFactory, DedicatedWorkerHostFactory.Proxy> MANAGER = DedicatedWorkerHostFactory_Internal.MANAGER;
 
-
     void createWorkerHost(
-DedicatedWorkerToken token, org.chromium.mojo.bindings.InterfaceRequest<BrowserInterfaceBroker> browserInterfaceBroker, org.chromium.mojo.bindings.InterfaceRequest<DedicatedWorkerHost> host, 
-CreateWorkerHostResponse callback);
+DedicatedWorkerToken token, org.chromium.url.mojom.Url scriptUrl, org.chromium.mojo.bindings.InterfaceRequest<BrowserInterfaceBroker> browserInterfaceBroker, org.chromium.mojo.bindings.InterfaceRequest<DedicatedWorkerHost> host, 
+CreateWorkerHost_Response callback);
 
-    interface CreateWorkerHostResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.network.mojom.CrossOriginEmbedderPolicy> { }
-
+    interface CreateWorkerHost_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<org.chromium.network.mojom.CrossOriginEmbedderPolicy, BackForwardCacheControllerHost> { }
 
 
     void createWorkerHostAndStartScriptLoad(

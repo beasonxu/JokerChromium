@@ -1,15 +1,13 @@
 package org.chromium.chrome.browser.layouts.scene_layer;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class SceneLayerJni implements SceneLayer.Natives {
+class SceneLayerJni implements SceneLayer.Natives {
   private static SceneLayer.Natives testInstance;
 
   public static final JniStaticTestMocker<SceneLayer.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.layouts.scene_layer.SceneLayer.Natives>() {

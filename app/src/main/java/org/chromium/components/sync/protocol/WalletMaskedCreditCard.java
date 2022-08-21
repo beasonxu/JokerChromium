@@ -18,6 +18,8 @@ public  final class WalletMaskedCreditCard extends
     billingAddressId_ = "";
     bankName_ = "";
     nickname_ = "";
+    cardArtUrl_ = "";
+    productDescription_ = "";
   }
   /**
    * Protobuf enum {@code sync_pb.WalletMaskedCreditCard.WalletCardStatus}
@@ -148,6 +150,10 @@ public  final class WalletMaskedCreditCard extends
      * <code>UNIONPAY = 9;</code>
      */
     UNIONPAY(9),
+    /**
+     * <code>ELO = 10;</code>
+     */
+    ELO(10),
     ;
 
     /**
@@ -190,6 +196,10 @@ public  final class WalletMaskedCreditCard extends
      * <code>UNIONPAY = 9;</code>
      */
     public static final int UNIONPAY_VALUE = 9;
+    /**
+     * <code>ELO = 10;</code>
+     */
+    public static final int ELO_VALUE = 10;
 
 
     @java.lang.Override
@@ -219,6 +229,7 @@ public  final class WalletMaskedCreditCard extends
         case 7: return SWITCH;
         case 8: return VISA;
         case 9: return UNIONPAY;
+        case 10: return ELO;
         default: return null;
       }
     }
@@ -257,6 +268,118 @@ public  final class WalletMaskedCreditCard extends
     }
 
     // @@protoc_insertion_point(enum_scope:sync_pb.WalletMaskedCreditCard.WalletCardType)
+  }
+
+  /**
+   * Protobuf enum {@code sync_pb.WalletMaskedCreditCard.VirtualCardEnrollmentState}
+   */
+  public enum VirtualCardEnrollmentState
+      implements com.google.protobuf.Internal.EnumLite {
+    /**
+     * <code>UNSPECIFIED = 0;</code>
+     */
+    UNSPECIFIED(0),
+    /**
+     * <code>UNENROLLED = 1 [deprecated = true];</code>
+     */
+    @java.lang.Deprecated
+    UNENROLLED(1),
+    /**
+     * <code>ENROLLED = 2;</code>
+     */
+    ENROLLED(2),
+    /**
+     * <code>UNENROLLED_AND_NOT_ELIGIBLE = 3;</code>
+     */
+    UNENROLLED_AND_NOT_ELIGIBLE(3),
+    /**
+     * <code>UNENROLLED_AND_ELIGIBLE = 4;</code>
+     */
+    UNENROLLED_AND_ELIGIBLE(4),
+    ;
+
+    /**
+     * <code>UNSPECIFIED = 0;</code>
+     */
+    public static final int UNSPECIFIED_VALUE = 0;
+    /**
+     * <code>UNENROLLED = 1 [deprecated = true];</code>
+     */
+    @java.lang.Deprecated public static final int UNENROLLED_VALUE = 1;
+    /**
+     * <code>ENROLLED = 2;</code>
+     */
+    public static final int ENROLLED_VALUE = 2;
+    /**
+     * <code>UNENROLLED_AND_NOT_ELIGIBLE = 3;</code>
+     */
+    public static final int UNENROLLED_AND_NOT_ELIGIBLE_VALUE = 3;
+    /**
+     * <code>UNENROLLED_AND_ELIGIBLE = 4;</code>
+     */
+    public static final int UNENROLLED_AND_ELIGIBLE_VALUE = 4;
+
+
+    @java.lang.Override
+    public final int getNumber() {
+      return value;
+    }
+
+    /**
+     * @param value The number of the enum to look for.
+     * @return The enum associated with the given number.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static VirtualCardEnrollmentState valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static VirtualCardEnrollmentState forNumber(int value) {
+      switch (value) {
+        case 0: return UNSPECIFIED;
+        case 1: return UNENROLLED;
+        case 2: return ENROLLED;
+        case 3: return UNENROLLED_AND_NOT_ELIGIBLE;
+        case 4: return UNENROLLED_AND_ELIGIBLE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<VirtualCardEnrollmentState>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        VirtualCardEnrollmentState> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<VirtualCardEnrollmentState>() {
+            @java.lang.Override
+            public VirtualCardEnrollmentState findValueByNumber(int number) {
+              return VirtualCardEnrollmentState.forNumber(number);
+            }
+          };
+
+    public static com.google.protobuf.Internal.EnumVerifier 
+        internalGetVerifier() {
+      return VirtualCardEnrollmentStateVerifier.INSTANCE;
+    }
+
+    private static final class VirtualCardEnrollmentStateVerifier implements 
+         com.google.protobuf.Internal.EnumVerifier { 
+            static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new VirtualCardEnrollmentStateVerifier();
+            @java.lang.Override
+            public boolean isInRange(int number) {
+              return VirtualCardEnrollmentState.forNumber(number) != null;
+            }
+          };
+
+    private final int value;
+
+    private VirtualCardEnrollmentState(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:sync_pb.WalletMaskedCreditCard.VirtualCardEnrollmentState)
   }
 
   private int bitField0_;
@@ -1095,6 +1218,213 @@ public  final class WalletMaskedCreditCard extends
   private void clearInstrumentId() {
     bitField0_ = (bitField0_ & ~0x00001000);
     instrumentId_ = 0L;
+  }
+
+  public static final int VIRTUAL_CARD_ENROLLMENT_STATE_FIELD_NUMBER = 16;
+  private int virtualCardEnrollmentState_;
+  /**
+   * <pre>
+   * The state of virtual card enrollment.
+   * </pre>
+   *
+   * <code>optional .sync_pb.WalletMaskedCreditCard.VirtualCardEnrollmentState virtual_card_enrollment_state = 16;</code>
+   * @return Whether the virtualCardEnrollmentState field is set.
+   */
+  @java.lang.Override
+  public boolean hasVirtualCardEnrollmentState() {
+    return ((bitField0_ & 0x00002000) != 0);
+  }
+  /**
+   * <pre>
+   * The state of virtual card enrollment.
+   * </pre>
+   *
+   * <code>optional .sync_pb.WalletMaskedCreditCard.VirtualCardEnrollmentState virtual_card_enrollment_state = 16;</code>
+   * @return The virtualCardEnrollmentState.
+   */
+  @java.lang.Override
+  public org.chromium.components.sync.protocol.WalletMaskedCreditCard.VirtualCardEnrollmentState getVirtualCardEnrollmentState() {
+    org.chromium.components.sync.protocol.WalletMaskedCreditCard.VirtualCardEnrollmentState result = org.chromium.components.sync.protocol.WalletMaskedCreditCard.VirtualCardEnrollmentState.forNumber(virtualCardEnrollmentState_);
+    return result == null ? org.chromium.components.sync.protocol.WalletMaskedCreditCard.VirtualCardEnrollmentState.UNSPECIFIED : result;
+  }
+  /**
+   * <pre>
+   * The state of virtual card enrollment.
+   * </pre>
+   *
+   * <code>optional .sync_pb.WalletMaskedCreditCard.VirtualCardEnrollmentState virtual_card_enrollment_state = 16;</code>
+   * @param value The virtualCardEnrollmentState to set.
+   */
+  private void setVirtualCardEnrollmentState(org.chromium.components.sync.protocol.WalletMaskedCreditCard.VirtualCardEnrollmentState value) {
+    virtualCardEnrollmentState_ = value.getNumber();
+    bitField0_ |= 0x00002000;
+  }
+  /**
+   * <pre>
+   * The state of virtual card enrollment.
+   * </pre>
+   *
+   * <code>optional .sync_pb.WalletMaskedCreditCard.VirtualCardEnrollmentState virtual_card_enrollment_state = 16;</code>
+   */
+  private void clearVirtualCardEnrollmentState() {
+    bitField0_ = (bitField0_ & ~0x00002000);
+    virtualCardEnrollmentState_ = 0;
+  }
+
+  public static final int CARD_ART_URL_FIELD_NUMBER = 17;
+  private java.lang.String cardArtUrl_;
+  /**
+   * <pre>
+   * The URL for the client to fetche the card art image.
+   * </pre>
+   *
+   * <code>optional string card_art_url = 17;</code>
+   * @return Whether the cardArtUrl field is set.
+   */
+  @java.lang.Override
+  public boolean hasCardArtUrl() {
+    return ((bitField0_ & 0x00004000) != 0);
+  }
+  /**
+   * <pre>
+   * The URL for the client to fetche the card art image.
+   * </pre>
+   *
+   * <code>optional string card_art_url = 17;</code>
+   * @return The cardArtUrl.
+   */
+  @java.lang.Override
+  public java.lang.String getCardArtUrl() {
+    return cardArtUrl_;
+  }
+  /**
+   * <pre>
+   * The URL for the client to fetche the card art image.
+   * </pre>
+   *
+   * <code>optional string card_art_url = 17;</code>
+   * @return The bytes for cardArtUrl.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getCardArtUrlBytes() {
+    return com.google.protobuf.ByteString.copyFromUtf8(cardArtUrl_);
+  }
+  /**
+   * <pre>
+   * The URL for the client to fetche the card art image.
+   * </pre>
+   *
+   * <code>optional string card_art_url = 17;</code>
+   * @param value The cardArtUrl to set.
+   */
+  private void setCardArtUrl(
+      java.lang.String value) {
+    value.getClass();
+  bitField0_ |= 0x00004000;
+    cardArtUrl_ = value;
+  }
+  /**
+   * <pre>
+   * The URL for the client to fetche the card art image.
+   * </pre>
+   *
+   * <code>optional string card_art_url = 17;</code>
+   */
+  private void clearCardArtUrl() {
+    bitField0_ = (bitField0_ & ~0x00004000);
+    cardArtUrl_ = getDefaultInstance().getCardArtUrl();
+  }
+  /**
+   * <pre>
+   * The URL for the client to fetche the card art image.
+   * </pre>
+   *
+   * <code>optional string card_art_url = 17;</code>
+   * @param value The bytes for cardArtUrl to set.
+   */
+  private void setCardArtUrlBytes(
+      com.google.protobuf.ByteString value) {
+    cardArtUrl_ = value.toStringUtf8();
+    bitField0_ |= 0x00004000;
+  }
+
+  public static final int PRODUCT_DESCRIPTION_FIELD_NUMBER = 18;
+  private java.lang.String productDescription_;
+  /**
+   * <pre>
+   * The product description for the card. Used to be shown in the UI.
+   * </pre>
+   *
+   * <code>optional string product_description = 18;</code>
+   * @return Whether the productDescription field is set.
+   */
+  @java.lang.Override
+  public boolean hasProductDescription() {
+    return ((bitField0_ & 0x00008000) != 0);
+  }
+  /**
+   * <pre>
+   * The product description for the card. Used to be shown in the UI.
+   * </pre>
+   *
+   * <code>optional string product_description = 18;</code>
+   * @return The productDescription.
+   */
+  @java.lang.Override
+  public java.lang.String getProductDescription() {
+    return productDescription_;
+  }
+  /**
+   * <pre>
+   * The product description for the card. Used to be shown in the UI.
+   * </pre>
+   *
+   * <code>optional string product_description = 18;</code>
+   * @return The bytes for productDescription.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getProductDescriptionBytes() {
+    return com.google.protobuf.ByteString.copyFromUtf8(productDescription_);
+  }
+  /**
+   * <pre>
+   * The product description for the card. Used to be shown in the UI.
+   * </pre>
+   *
+   * <code>optional string product_description = 18;</code>
+   * @param value The productDescription to set.
+   */
+  private void setProductDescription(
+      java.lang.String value) {
+    value.getClass();
+  bitField0_ |= 0x00008000;
+    productDescription_ = value;
+  }
+  /**
+   * <pre>
+   * The product description for the card. Used to be shown in the UI.
+   * </pre>
+   *
+   * <code>optional string product_description = 18;</code>
+   */
+  private void clearProductDescription() {
+    bitField0_ = (bitField0_ & ~0x00008000);
+    productDescription_ = getDefaultInstance().getProductDescription();
+  }
+  /**
+   * <pre>
+   * The product description for the card. Used to be shown in the UI.
+   * </pre>
+   *
+   * <code>optional string product_description = 18;</code>
+   * @param value The bytes for productDescription to set.
+   */
+  private void setProductDescriptionBytes(
+      com.google.protobuf.ByteString value) {
+    productDescription_ = value.toStringUtf8();
+    bitField0_ |= 0x00008000;
   }
 
   public static org.chromium.components.sync.protocol.WalletMaskedCreditCard parseFrom(
@@ -2068,6 +2398,220 @@ public  final class WalletMaskedCreditCard extends
       return this;
     }
 
+    /**
+     * <pre>
+     * The state of virtual card enrollment.
+     * </pre>
+     *
+     * <code>optional .sync_pb.WalletMaskedCreditCard.VirtualCardEnrollmentState virtual_card_enrollment_state = 16;</code>
+     * @return Whether the virtualCardEnrollmentState field is set.
+     */
+    @java.lang.Override
+    public boolean hasVirtualCardEnrollmentState() {
+      return instance.hasVirtualCardEnrollmentState();
+    }
+    /**
+     * <pre>
+     * The state of virtual card enrollment.
+     * </pre>
+     *
+     * <code>optional .sync_pb.WalletMaskedCreditCard.VirtualCardEnrollmentState virtual_card_enrollment_state = 16;</code>
+     * @return The virtualCardEnrollmentState.
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.WalletMaskedCreditCard.VirtualCardEnrollmentState getVirtualCardEnrollmentState() {
+      return instance.getVirtualCardEnrollmentState();
+    }
+    /**
+     * <pre>
+     * The state of virtual card enrollment.
+     * </pre>
+     *
+     * <code>optional .sync_pb.WalletMaskedCreditCard.VirtualCardEnrollmentState virtual_card_enrollment_state = 16;</code>
+     * @param value The enum numeric value on the wire for virtualCardEnrollmentState to set.
+     * @return This builder for chaining.
+     */
+    public Builder setVirtualCardEnrollmentState(org.chromium.components.sync.protocol.WalletMaskedCreditCard.VirtualCardEnrollmentState value) {
+      copyOnWrite();
+      instance.setVirtualCardEnrollmentState(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * The state of virtual card enrollment.
+     * </pre>
+     *
+     * <code>optional .sync_pb.WalletMaskedCreditCard.VirtualCardEnrollmentState virtual_card_enrollment_state = 16;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearVirtualCardEnrollmentState() {
+      copyOnWrite();
+      instance.clearVirtualCardEnrollmentState();
+      return this;
+    }
+
+    /**
+     * <pre>
+     * The URL for the client to fetche the card art image.
+     * </pre>
+     *
+     * <code>optional string card_art_url = 17;</code>
+     * @return Whether the cardArtUrl field is set.
+     */
+    @java.lang.Override
+    public boolean hasCardArtUrl() {
+      return instance.hasCardArtUrl();
+    }
+    /**
+     * <pre>
+     * The URL for the client to fetche the card art image.
+     * </pre>
+     *
+     * <code>optional string card_art_url = 17;</code>
+     * @return The cardArtUrl.
+     */
+    @java.lang.Override
+    public java.lang.String getCardArtUrl() {
+      return instance.getCardArtUrl();
+    }
+    /**
+     * <pre>
+     * The URL for the client to fetche the card art image.
+     * </pre>
+     *
+     * <code>optional string card_art_url = 17;</code>
+     * @return The bytes for cardArtUrl.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getCardArtUrlBytes() {
+      return instance.getCardArtUrlBytes();
+    }
+    /**
+     * <pre>
+     * The URL for the client to fetche the card art image.
+     * </pre>
+     *
+     * <code>optional string card_art_url = 17;</code>
+     * @param value The cardArtUrl to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCardArtUrl(
+        java.lang.String value) {
+      copyOnWrite();
+      instance.setCardArtUrl(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * The URL for the client to fetche the card art image.
+     * </pre>
+     *
+     * <code>optional string card_art_url = 17;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearCardArtUrl() {
+      copyOnWrite();
+      instance.clearCardArtUrl();
+      return this;
+    }
+    /**
+     * <pre>
+     * The URL for the client to fetche the card art image.
+     * </pre>
+     *
+     * <code>optional string card_art_url = 17;</code>
+     * @param value The bytes for cardArtUrl to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCardArtUrlBytes(
+        com.google.protobuf.ByteString value) {
+      copyOnWrite();
+      instance.setCardArtUrlBytes(value);
+      return this;
+    }
+
+    /**
+     * <pre>
+     * The product description for the card. Used to be shown in the UI.
+     * </pre>
+     *
+     * <code>optional string product_description = 18;</code>
+     * @return Whether the productDescription field is set.
+     */
+    @java.lang.Override
+    public boolean hasProductDescription() {
+      return instance.hasProductDescription();
+    }
+    /**
+     * <pre>
+     * The product description for the card. Used to be shown in the UI.
+     * </pre>
+     *
+     * <code>optional string product_description = 18;</code>
+     * @return The productDescription.
+     */
+    @java.lang.Override
+    public java.lang.String getProductDescription() {
+      return instance.getProductDescription();
+    }
+    /**
+     * <pre>
+     * The product description for the card. Used to be shown in the UI.
+     * </pre>
+     *
+     * <code>optional string product_description = 18;</code>
+     * @return The bytes for productDescription.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getProductDescriptionBytes() {
+      return instance.getProductDescriptionBytes();
+    }
+    /**
+     * <pre>
+     * The product description for the card. Used to be shown in the UI.
+     * </pre>
+     *
+     * <code>optional string product_description = 18;</code>
+     * @param value The productDescription to set.
+     * @return This builder for chaining.
+     */
+    public Builder setProductDescription(
+        java.lang.String value) {
+      copyOnWrite();
+      instance.setProductDescription(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * The product description for the card. Used to be shown in the UI.
+     * </pre>
+     *
+     * <code>optional string product_description = 18;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearProductDescription() {
+      copyOnWrite();
+      instance.clearProductDescription();
+      return this;
+    }
+    /**
+     * <pre>
+     * The product description for the card. Used to be shown in the UI.
+     * </pre>
+     *
+     * <code>optional string product_description = 18;</code>
+     * @param value The bytes for productDescription to set.
+     * @return This builder for chaining.
+     */
+    public Builder setProductDescriptionBytes(
+        com.google.protobuf.ByteString value) {
+      copyOnWrite();
+      instance.setProductDescriptionBytes(value);
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:sync_pb.WalletMaskedCreditCard)
   }
   @java.lang.Override
@@ -2100,12 +2644,16 @@ public  final class WalletMaskedCreditCard extends
             "nickname_",
             "cardIssuer_",
             "instrumentId_",
+            "virtualCardEnrollmentState_",
+            org.chromium.components.sync.protocol.WalletMaskedCreditCard.VirtualCardEnrollmentState.internalGetVerifier(),
+            "cardArtUrl_",
+            "productDescription_",
           };
           java.lang.String info =
-              "\u0001\r\u0000\u0001\u0001\u000f\r\u0000\u0000\u0000\u0001\u1008\u0000\u0002\u100c" +
-              "\u0001\u0003\u1008\u0002\u0004\u100c\u0003\u0005\u1008\u0004\u0006\u1004\u0005\u0007" +
-              "\u1004\u0006\b\u1008\u0007\n\u1008\b\u000b\u1009\t\f\u1008\n\r\u1009\u000b\u000f" +
-              "\u1002\f";
+              "\u0001\u0010\u0000\u0001\u0001\u0012\u0010\u0000\u0000\u0000\u0001\u1008\u0000\u0002" +
+              "\u100c\u0001\u0003\u1008\u0002\u0004\u100c\u0003\u0005\u1008\u0004\u0006\u1004\u0005" +
+              "\u0007\u1004\u0006\b\u1008\u0007\n\u1008\b\u000b\u1009\t\f\u1008\n\r\u1009\u000b" +
+              "\u000f\u1002\f\u0010\u100c\r\u0011\u1008\u000e\u0012\u1008\u000f";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

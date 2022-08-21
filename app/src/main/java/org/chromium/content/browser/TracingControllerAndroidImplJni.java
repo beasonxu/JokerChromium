@@ -6,16 +6,14 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.Void;
-import javax.annotation.Generated;
 import org.chromium.base.Callback;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class TracingControllerAndroidImplJni implements TracingControllerAndroidImpl.Natives {
+class TracingControllerAndroidImplJni implements TracingControllerAndroidImpl.Natives {
   private static TracingControllerAndroidImpl.Natives testInstance;
 
   public static final JniStaticTestMocker<TracingControllerAndroidImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content.browser.TracingControllerAndroidImpl.Natives>() {

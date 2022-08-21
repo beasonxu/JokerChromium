@@ -13,8 +13,20 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class EffectiveConnectionType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        EffectiveConnectionType.EFFECTIVE_CONNECTION_UNKNOWN_TYPE,
+        EffectiveConnectionType.EFFECTIVE_CONNECTION_OFFLINE_TYPE,
+        EffectiveConnectionType.EFFECTIVE_CONNECTION_SLOW2_G_TYPE,
+        EffectiveConnectionType.EFFECTIVE_CONNECTION2_G_TYPE,
+        EffectiveConnectionType.EFFECTIVE_CONNECTION3_G_TYPE,
+        EffectiveConnectionType.EFFECTIVE_CONNECTION4_G_TYPE,
+        EffectiveConnectionType.EFFECTIVE_CONNECTION_TYPE_LAST})
+    public @interface EnumType {}
 
     public static final int EFFECTIVE_CONNECTION_UNKNOWN_TYPE = 0;
     public static final int EFFECTIVE_CONNECTION_OFFLINE_TYPE = 1;

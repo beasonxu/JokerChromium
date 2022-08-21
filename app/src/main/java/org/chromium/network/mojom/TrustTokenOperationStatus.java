@@ -13,8 +13,23 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class TrustTokenOperationStatus {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        TrustTokenOperationStatus.OK,
+        TrustTokenOperationStatus.INVALID_ARGUMENT,
+        TrustTokenOperationStatus.FAILED_PRECONDITION,
+        TrustTokenOperationStatus.RESOURCE_EXHAUSTED,
+        TrustTokenOperationStatus.ALREADY_EXISTS,
+        TrustTokenOperationStatus.UNAVAILABLE,
+        TrustTokenOperationStatus.BAD_RESPONSE,
+        TrustTokenOperationStatus.INTERNAL_ERROR,
+        TrustTokenOperationStatus.UNKNOWN_ERROR,
+        TrustTokenOperationStatus.OPERATION_SUCCESSFULLY_FULFILLED_LOCALLY})
+    public @interface EnumType {}
 
     public static final int OK = 0;
     public static final int INVALID_ARGUMENT = 1;

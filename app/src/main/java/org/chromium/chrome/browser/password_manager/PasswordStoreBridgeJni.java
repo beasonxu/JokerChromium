@@ -2,15 +2,13 @@ package org.chromium.chrome.browser.password_manager;
 
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class PasswordStoreBridgeJni implements PasswordStoreBridge.Natives {
+class PasswordStoreBridgeJni implements PasswordStoreBridge.Natives {
   private static PasswordStoreBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<PasswordStoreBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.password_manager.PasswordStoreBridge.Natives>() {
@@ -30,9 +28,9 @@ final class PasswordStoreBridgeJni implements PasswordStoreBridge.Natives {
   }
 
   @Override
-  public void insertPasswordCredential(long nativePasswordStoreBridge,
+  public void insertPasswordCredentialForTesting(long nativePasswordStoreBridge,
       PasswordStoreCredential credential) {
-    GEN_JNI.org_chromium_chrome_browser_password_1manager_PasswordStoreBridge_insertPasswordCredential(nativePasswordStoreBridge, credential);
+    GEN_JNI.org_chromium_chrome_browser_password_1manager_PasswordStoreBridge_insertPasswordCredentialForTesting(nativePasswordStoreBridge, credential);
   }
 
   @Override

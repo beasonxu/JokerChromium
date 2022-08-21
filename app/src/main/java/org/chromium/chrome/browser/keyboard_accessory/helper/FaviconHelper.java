@@ -8,6 +8,8 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 
+import androidx.annotation.VisibleForTesting;
+
 import org.chromium.base.Callback;
 import org.chromium.chrome.browser.keyboard_accessory.R;
 import org.chromium.chrome.browser.profiles.Profile;
@@ -20,24 +22,47 @@ import org.chromium.url.GURL;
  * Provides default favicons and helps to fetch and set favicons.
  */
 public class FaviconHelper {
-    private final Resources mResources;
+    private final Context mContext;
     private final RoundedIconGenerator mIconGenerator;
     private final int mDesiredSize;
+
+    /** Factory used to create this helper or a mock in tests. */
+    @VisibleForTesting
+    public interface CreationStrategy {
+        /**
+         * Creates a non-null favicon helper or returns a static mock in tests.
+         * @return A {@link FaviconHelper}.
+         */
+        FaviconHelper create(Context context);
+    }
+
+    private static CreationStrategy sCreationStrategy = FaviconHelper::new;
+
+    public static FaviconHelper create(Context context) {
+        return sCreationStrategy.create(context);
+    }
+
+    @VisibleForTesting
+    public static void setCreationStrategy(CreationStrategy strategy) {
+        sCreationStrategy = strategy;
+    }
 
     /**
      * Creates a new helper.
      * @param context The {@link Context} used to fetch resources and create Drawables.
      */
-    public FaviconHelper(Context context) {
-        mResources = context.getResources();
+    protected FaviconHelper(Context context) {
+        mContext = context;
+        final Resources resources = mContext.getResources();
         mDesiredSize =
-                mResources.getDimensionPixelSize(R.dimen.keyboard_accessory_suggestion_icon_size);
-        mIconGenerator = FaviconUtils.createCircularIconGenerator(mResources);
+                resources.getDimensionPixelSize(R.dimen.keyboard_accessory_suggestion_icon_size);
+        mIconGenerator = FaviconUtils.createCircularIconGenerator(mContext);
     }
 
     public Drawable getDefaultIcon(String origin) {
         return FaviconUtils.getIconDrawableWithoutFilter(null, origin,
-                R.color.default_favicon_background_color, mIconGenerator, mResources, mDesiredSize);
+                mContext.getColor(R.color.default_favicon_background_color), mIconGenerator,
+                mContext.getResources(), mDesiredSize);
     }
 
     /**
@@ -52,8 +77,8 @@ public class FaviconHelper {
         if (!gurlOrigin.isValid()) return;
         mIconBridge.getLargeIconForUrl(gurlOrigin, mDesiredSize,
                 (icon, fallbackColor, isFallbackColorDefault, iconType) -> {
-                    Drawable drawable = FaviconUtils.getIconDrawableWithoutFilter(
-                            icon, origin, fallbackColor, mIconGenerator, mResources, mDesiredSize);
+                    Drawable drawable = FaviconUtils.getIconDrawableWithoutFilter(icon, gurlOrigin,
+                            fallbackColor, mIconGenerator, mContext.getResources(), mDesiredSize);
                     setIconCallback.onResult(drawable);
                 });
     }

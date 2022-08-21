@@ -13,8 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class TreeScopeType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        TreeScopeType.DOCUMENT,
+        TreeScopeType.SHADOW})
+    public @interface EnumType {}
 
     public static final int DOCUMENT = 0;
     public static final int SHADOW = 1;

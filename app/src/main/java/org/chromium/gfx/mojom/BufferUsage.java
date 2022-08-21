@@ -13,8 +13,24 @@
 
 package org.chromium.gfx.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class BufferUsage {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        BufferUsage.GPU_READ,
+        BufferUsage.SCANOUT,
+        BufferUsage.SCANOUT_CAMERA_READ_WRITE,
+        BufferUsage.CAMERA_AND_CPU_READ_WRITE,
+        BufferUsage.SCANOUT_CPU_READ_WRITE,
+        BufferUsage.SCANOUT_VDA_WRITE,
+        BufferUsage.PROTECTED_SCANOUT_VDA_WRITE,
+        BufferUsage.GPU_READ_CPU_READ_WRITE,
+        BufferUsage.SCANOUT_VEA_CPU_READ,
+        BufferUsage.VEA_READ_CAMERA_AND_CPU_READ_WRITE,
+        BufferUsage.SCANOUT_FRONT_RENDERING})
+    public @interface EnumType {}
 
     public static final int GPU_READ = 0;
     public static final int SCANOUT = 1;
@@ -26,11 +42,12 @@ public final class BufferUsage {
     public static final int GPU_READ_CPU_READ_WRITE = 7;
     public static final int SCANOUT_VEA_CPU_READ = 8;
     public static final int VEA_READ_CAMERA_AND_CPU_READ_WRITE = 9;
+    public static final int SCANOUT_FRONT_RENDERING = 10;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 9;
+    public static final int MAX_VALUE = 10;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 9;
+        return value >= 0 && value <= 10;
     }
 
     public static void validate(int value) {

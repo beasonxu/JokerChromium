@@ -47,6 +47,9 @@ public final class ChromeUserMetricsExtensionProtos {
      * For Chrome clients, this id is unique to a top-level (one level above the
      * "Default" directory) Chrome user data directory [1], and so is shared among
      * all Chrome user profiles contained in this user data directory.
+     * This client_id may not be unique across platforms. Notably, ChromeOS and
+     * Lacros are different platforms yet report the same client_id for the same
+     * device.
      * An id of 0 is reserved for test data (monitoring and internal testing) and
      * should normally be ignored in analysis of the data.
      * [1] http://www.chromium.org/user-experience/user-data-directory
@@ -62,6 +65,9 @@ public final class ChromeUserMetricsExtensionProtos {
      * For Chrome clients, this id is unique to a top-level (one level above the
      * "Default" directory) Chrome user data directory [1], and so is shared among
      * all Chrome user profiles contained in this user data directory.
+     * This client_id may not be unique across platforms. Notably, ChromeOS and
+     * Lacros are different platforms yet report the same client_id for the same
+     * device.
      * An id of 0 is reserved for test data (monitoring and internal testing) and
      * should normally be ignored in analysis of the data.
      * [1] http://www.chromium.org/user-experience/user-data-directory
@@ -98,6 +104,77 @@ public final class ChromeUserMetricsExtensionProtos {
      * @return The sessionId.
      */
     int getSessionId();
+
+    /**
+     * <pre>
+     * The id associated with a user entity that generated these events. These
+     * user IDs are only associated with users on device. Their generation is not
+     * based on any other ID.
+     * This field is not populated on non-Chrome OS platforms.
+     * For Chrome OS, this id refers to a device user entity. This field will be
+     * captured when a log is first opened. If there is no user logged in at the
+     * time the log is opened, then this field will be unset. All ephemeral (i.e.
+     * guest, kiosk) users will have this field unset.
+     * </pre>
+     *
+     * <code>optional fixed64 user_id = 24;</code>
+     * @return Whether the userId field is set.
+     */
+    boolean hasUserId();
+    /**
+     * <pre>
+     * The id associated with a user entity that generated these events. These
+     * user IDs are only associated with users on device. Their generation is not
+     * based on any other ID.
+     * This field is not populated on non-Chrome OS platforms.
+     * For Chrome OS, this id refers to a device user entity. This field will be
+     * captured when a log is first opened. If there is no user logged in at the
+     * time the log is opened, then this field will be unset. All ephemeral (i.e.
+     * guest, kiosk) users will have this field unset.
+     * </pre>
+     *
+     * <code>optional fixed64 user_id = 24;</code>
+     * @return The userId.
+     */
+    long getUserId();
+
+    /**
+     * <pre>
+     * These times are set for "ongoing" UMA logs.  For two other types
+     * of UMA logs, these values are omitted:
+     * - logs recovered from a previous run of Chrome ("persisted UMA"), such as
+     *   one that didn't shut down cleanly.
+     * - the initial stability log.
+     * </pre>
+     *
+     * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime time_log_created = 25;</code>
+     * @return Whether the timeLogCreated field is set.
+     */
+    boolean hasTimeLogCreated();
+    /**
+     * <pre>
+     * These times are set for "ongoing" UMA logs.  For two other types
+     * of UMA logs, these values are omitted:
+     * - logs recovered from a previous run of Chrome ("persisted UMA"), such as
+     *   one that didn't shut down cleanly.
+     * - the initial stability log.
+     * </pre>
+     *
+     * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime time_log_created = 25;</code>
+     * @return The timeLogCreated.
+     */
+    org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime getTimeLogCreated();
+
+    /**
+     * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime time_log_closed = 26;</code>
+     * @return Whether the timeLogClosed field is set.
+     */
+    boolean hasTimeLogClosed();
+    /**
+     * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime time_log_closed = 26;</code>
+     * @return The timeLogClosed.
+     */
+    org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime getTimeLogClosed();
 
     /**
      * <pre>
@@ -435,10 +512,37 @@ public final class ChromeUserMetricsExtensionProtos {
      * <code>repeated .metrics.TraceLog trace_log = 19;</code>
      */
     int getTraceLogCount();
+
+    /**
+     * <pre>
+     * Information about a Custom Tabs session, recorded in the log when the
+     * a CCT session ended. If custom tabs are opened and closed multiple times
+     * within the same log session, only the last one will be recorded. This is
+     * used to identify applications that use Custom Tabs in an abusive way. This
+     * is specific to Android.
+     * </pre>
+     *
+     * <code>optional .metrics.CustomTabSessionProto custom_tab_session = 27;</code>
+     * @return Whether the customTabSession field is set.
+     */
+    boolean hasCustomTabSession();
+    /**
+     * <pre>
+     * Information about a Custom Tabs session, recorded in the log when the
+     * a CCT session ended. If custom tabs are opened and closed multiple times
+     * within the same log session, only the last one will be recorded. This is
+     * used to identify applications that use Custom Tabs in an abusive way. This
+     * is specific to Android.
+     * </pre>
+     *
+     * <code>optional .metrics.CustomTabSessionProto custom_tab_session = 27;</code>
+     * @return The customTabSession.
+     */
+    org.chromium.components.metrics.CustomTabSessionProtos.CustomTabSessionProto getCustomTabSession();
   }
   /**
    * <pre>
-   * Next tag: 24
+   * Next tag: 28
    * </pre>
    *
    * Protobuf type {@code metrics.ChromeUserMetricsExtension}
@@ -616,6 +720,664 @@ public final class ChromeUserMetricsExtensionProtos {
       // @@protoc_insertion_point(enum_scope:metrics.ChromeUserMetricsExtension.Product)
     }
 
+    public interface RealLocalTimeOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:metrics.ChromeUserMetricsExtension.RealLocalTime)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime.TimeSource time_source = 1;</code>
+       * @return Whether the timeSource field is set.
+       */
+      boolean hasTimeSource();
+      /**
+       * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime.TimeSource time_source = 1;</code>
+       * @return The timeSource.
+       */
+      org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime.TimeSource getTimeSource();
+
+      /**
+       * <pre>
+       * |time_sec| is in seconds since epoch.
+       * </pre>
+       *
+       * <code>optional int64 time_sec = 2;</code>
+       * @return Whether the timeSec field is set.
+       */
+      boolean hasTimeSec();
+      /**
+       * <pre>
+       * |time_sec| is in seconds since epoch.
+       * </pre>
+       *
+       * <code>optional int64 time_sec = 2;</code>
+       * @return The timeSec.
+       */
+      long getTimeSec();
+
+      /**
+       * <pre>
+       * |time_zone_offset_from_gmt_sec| is in seconds.
+       * Only logged in |time_log_closed| entries, not |time_log_created| entries.
+       * (Populating this field when creating a log slows down startup too much.)
+       * </pre>
+       *
+       * <code>optional int32 time_zone_offset_from_gmt_sec = 3;</code>
+       * @return Whether the timeZoneOffsetFromGmtSec field is set.
+       */
+      boolean hasTimeZoneOffsetFromGmtSec();
+      /**
+       * <pre>
+       * |time_zone_offset_from_gmt_sec| is in seconds.
+       * Only logged in |time_log_closed| entries, not |time_log_created| entries.
+       * (Populating this field when creating a log slows down startup too much.)
+       * </pre>
+       *
+       * <code>optional int32 time_zone_offset_from_gmt_sec = 3;</code>
+       * @return The timeZoneOffsetFromGmtSec.
+       */
+      int getTimeZoneOffsetFromGmtSec();
+    }
+    /**
+     * <pre>
+     * Next tag: 4
+     * </pre>
+     *
+     * Protobuf type {@code metrics.ChromeUserMetricsExtension.RealLocalTime}
+     */
+    public  static final class RealLocalTime extends
+        com.google.protobuf.GeneratedMessageLite<
+            RealLocalTime, RealLocalTime.Builder> implements
+        // @@protoc_insertion_point(message_implements:metrics.ChromeUserMetricsExtension.RealLocalTime)
+        RealLocalTimeOrBuilder {
+      private RealLocalTime() {
+      }
+      /**
+       * <pre>
+       * The source of the timestamp.
+       * </pre>
+       *
+       * Protobuf enum {@code metrics.ChromeUserMetricsExtension.RealLocalTime.TimeSource}
+       */
+      public enum TimeSource
+          implements com.google.protobuf.Internal.EnumLite {
+        /**
+         * <code>UNSPECIFIED = 0;</code>
+         */
+        UNSPECIFIED(0),
+        /**
+         * <pre>
+         * The time on the local machine.
+         * </pre>
+         *
+         * <code>CLIENT_CLOCK = 1;</code>
+         */
+        CLIENT_CLOCK(1),
+        /**
+         * <pre>
+         * The time derived from server information provided by the
+         * NetworkTimeTracker a.k.a. "sane time" system.  See
+         * https://www.chromium.org/developers/design-documents/sane-time
+         * </pre>
+         *
+         * <code>NETWORK_TIME_CLOCK = 2;</code>
+         */
+        NETWORK_TIME_CLOCK(2),
+        ;
+
+        /**
+         * <code>UNSPECIFIED = 0;</code>
+         */
+        public static final int UNSPECIFIED_VALUE = 0;
+        /**
+         * <pre>
+         * The time on the local machine.
+         * </pre>
+         *
+         * <code>CLIENT_CLOCK = 1;</code>
+         */
+        public static final int CLIENT_CLOCK_VALUE = 1;
+        /**
+         * <pre>
+         * The time derived from server information provided by the
+         * NetworkTimeTracker a.k.a. "sane time" system.  See
+         * https://www.chromium.org/developers/design-documents/sane-time
+         * </pre>
+         *
+         * <code>NETWORK_TIME_CLOCK = 2;</code>
+         */
+        public static final int NETWORK_TIME_CLOCK_VALUE = 2;
+
+
+        @java.lang.Override
+        public final int getNumber() {
+          return value;
+        }
+
+        /**
+         * @param value The number of the enum to look for.
+         * @return The enum associated with the given number.
+         * @deprecated Use {@link #forNumber(int)} instead.
+         */
+        @java.lang.Deprecated
+        public static TimeSource valueOf(int value) {
+          return forNumber(value);
+        }
+
+        public static TimeSource forNumber(int value) {
+          switch (value) {
+            case 0: return UNSPECIFIED;
+            case 1: return CLIENT_CLOCK;
+            case 2: return NETWORK_TIME_CLOCK;
+            default: return null;
+          }
+        }
+
+        public static com.google.protobuf.Internal.EnumLiteMap<TimeSource>
+            internalGetValueMap() {
+          return internalValueMap;
+        }
+        private static final com.google.protobuf.Internal.EnumLiteMap<
+            TimeSource> internalValueMap =
+              new com.google.protobuf.Internal.EnumLiteMap<TimeSource>() {
+                @java.lang.Override
+                public TimeSource findValueByNumber(int number) {
+                  return TimeSource.forNumber(number);
+                }
+              };
+
+        public static com.google.protobuf.Internal.EnumVerifier 
+            internalGetVerifier() {
+          return TimeSourceVerifier.INSTANCE;
+        }
+
+        private static final class TimeSourceVerifier implements 
+             com.google.protobuf.Internal.EnumVerifier { 
+                static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new TimeSourceVerifier();
+                @java.lang.Override
+                public boolean isInRange(int number) {
+                  return TimeSource.forNumber(number) != null;
+                }
+              };
+
+        private final int value;
+
+        private TimeSource(int value) {
+          this.value = value;
+        }
+
+        // @@protoc_insertion_point(enum_scope:metrics.ChromeUserMetricsExtension.RealLocalTime.TimeSource)
+      }
+
+      private int bitField0_;
+      public static final int TIME_SOURCE_FIELD_NUMBER = 1;
+      private int timeSource_;
+      /**
+       * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime.TimeSource time_source = 1;</code>
+       * @return Whether the timeSource field is set.
+       */
+      @java.lang.Override
+      public boolean hasTimeSource() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime.TimeSource time_source = 1;</code>
+       * @return The timeSource.
+       */
+      @java.lang.Override
+      public org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime.TimeSource getTimeSource() {
+        org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime.TimeSource result = org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime.TimeSource.forNumber(timeSource_);
+        return result == null ? org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime.TimeSource.UNSPECIFIED : result;
+      }
+      /**
+       * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime.TimeSource time_source = 1;</code>
+       * @param value The timeSource to set.
+       */
+      private void setTimeSource(org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime.TimeSource value) {
+        timeSource_ = value.getNumber();
+        bitField0_ |= 0x00000001;
+      }
+      /**
+       * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime.TimeSource time_source = 1;</code>
+       */
+      private void clearTimeSource() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        timeSource_ = 0;
+      }
+
+      public static final int TIME_SEC_FIELD_NUMBER = 2;
+      private long timeSec_;
+      /**
+       * <pre>
+       * |time_sec| is in seconds since epoch.
+       * </pre>
+       *
+       * <code>optional int64 time_sec = 2;</code>
+       * @return Whether the timeSec field is set.
+       */
+      @java.lang.Override
+      public boolean hasTimeSec() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * |time_sec| is in seconds since epoch.
+       * </pre>
+       *
+       * <code>optional int64 time_sec = 2;</code>
+       * @return The timeSec.
+       */
+      @java.lang.Override
+      public long getTimeSec() {
+        return timeSec_;
+      }
+      /**
+       * <pre>
+       * |time_sec| is in seconds since epoch.
+       * </pre>
+       *
+       * <code>optional int64 time_sec = 2;</code>
+       * @param value The timeSec to set.
+       */
+      private void setTimeSec(long value) {
+        bitField0_ |= 0x00000002;
+        timeSec_ = value;
+      }
+      /**
+       * <pre>
+       * |time_sec| is in seconds since epoch.
+       * </pre>
+       *
+       * <code>optional int64 time_sec = 2;</code>
+       */
+      private void clearTimeSec() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        timeSec_ = 0L;
+      }
+
+      public static final int TIME_ZONE_OFFSET_FROM_GMT_SEC_FIELD_NUMBER = 3;
+      private int timeZoneOffsetFromGmtSec_;
+      /**
+       * <pre>
+       * |time_zone_offset_from_gmt_sec| is in seconds.
+       * Only logged in |time_log_closed| entries, not |time_log_created| entries.
+       * (Populating this field when creating a log slows down startup too much.)
+       * </pre>
+       *
+       * <code>optional int32 time_zone_offset_from_gmt_sec = 3;</code>
+       * @return Whether the timeZoneOffsetFromGmtSec field is set.
+       */
+      @java.lang.Override
+      public boolean hasTimeZoneOffsetFromGmtSec() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <pre>
+       * |time_zone_offset_from_gmt_sec| is in seconds.
+       * Only logged in |time_log_closed| entries, not |time_log_created| entries.
+       * (Populating this field when creating a log slows down startup too much.)
+       * </pre>
+       *
+       * <code>optional int32 time_zone_offset_from_gmt_sec = 3;</code>
+       * @return The timeZoneOffsetFromGmtSec.
+       */
+      @java.lang.Override
+      public int getTimeZoneOffsetFromGmtSec() {
+        return timeZoneOffsetFromGmtSec_;
+      }
+      /**
+       * <pre>
+       * |time_zone_offset_from_gmt_sec| is in seconds.
+       * Only logged in |time_log_closed| entries, not |time_log_created| entries.
+       * (Populating this field when creating a log slows down startup too much.)
+       * </pre>
+       *
+       * <code>optional int32 time_zone_offset_from_gmt_sec = 3;</code>
+       * @param value The timeZoneOffsetFromGmtSec to set.
+       */
+      private void setTimeZoneOffsetFromGmtSec(int value) {
+        bitField0_ |= 0x00000004;
+        timeZoneOffsetFromGmtSec_ = value;
+      }
+      /**
+       * <pre>
+       * |time_zone_offset_from_gmt_sec| is in seconds.
+       * Only logged in |time_log_closed| entries, not |time_log_created| entries.
+       * (Populating this field when creating a log slows down startup too much.)
+       * </pre>
+       *
+       * <code>optional int32 time_zone_offset_from_gmt_sec = 3;</code>
+       */
+      private void clearTimeZoneOffsetFromGmtSec() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        timeZoneOffsetFromGmtSec_ = 0;
+      }
+
+      public static org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return (Builder) DEFAULT_INSTANCE.createBuilder();
+      }
+      public static Builder newBuilder(org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime prototype) {
+        return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+      }
+
+      /**
+       * <pre>
+       * Next tag: 4
+       * </pre>
+       *
+       * Protobuf type {@code metrics.ChromeUserMetricsExtension.RealLocalTime}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime, Builder> implements
+          // @@protoc_insertion_point(builder_implements:metrics.ChromeUserMetricsExtension.RealLocalTime)
+          org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTimeOrBuilder {
+        // Construct using org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime.TimeSource time_source = 1;</code>
+         * @return Whether the timeSource field is set.
+         */
+        @java.lang.Override
+        public boolean hasTimeSource() {
+          return instance.hasTimeSource();
+        }
+        /**
+         * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime.TimeSource time_source = 1;</code>
+         * @return The timeSource.
+         */
+        @java.lang.Override
+        public org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime.TimeSource getTimeSource() {
+          return instance.getTimeSource();
+        }
+        /**
+         * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime.TimeSource time_source = 1;</code>
+         * @param value The enum numeric value on the wire for timeSource to set.
+         * @return This builder for chaining.
+         */
+        public Builder setTimeSource(org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime.TimeSource value) {
+          copyOnWrite();
+          instance.setTimeSource(value);
+          return this;
+        }
+        /**
+         * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime.TimeSource time_source = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearTimeSource() {
+          copyOnWrite();
+          instance.clearTimeSource();
+          return this;
+        }
+
+        /**
+         * <pre>
+         * |time_sec| is in seconds since epoch.
+         * </pre>
+         *
+         * <code>optional int64 time_sec = 2;</code>
+         * @return Whether the timeSec field is set.
+         */
+        @java.lang.Override
+        public boolean hasTimeSec() {
+          return instance.hasTimeSec();
+        }
+        /**
+         * <pre>
+         * |time_sec| is in seconds since epoch.
+         * </pre>
+         *
+         * <code>optional int64 time_sec = 2;</code>
+         * @return The timeSec.
+         */
+        @java.lang.Override
+        public long getTimeSec() {
+          return instance.getTimeSec();
+        }
+        /**
+         * <pre>
+         * |time_sec| is in seconds since epoch.
+         * </pre>
+         *
+         * <code>optional int64 time_sec = 2;</code>
+         * @param value The timeSec to set.
+         * @return This builder for chaining.
+         */
+        public Builder setTimeSec(long value) {
+          copyOnWrite();
+          instance.setTimeSec(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * |time_sec| is in seconds since epoch.
+         * </pre>
+         *
+         * <code>optional int64 time_sec = 2;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearTimeSec() {
+          copyOnWrite();
+          instance.clearTimeSec();
+          return this;
+        }
+
+        /**
+         * <pre>
+         * |time_zone_offset_from_gmt_sec| is in seconds.
+         * Only logged in |time_log_closed| entries, not |time_log_created| entries.
+         * (Populating this field when creating a log slows down startup too much.)
+         * </pre>
+         *
+         * <code>optional int32 time_zone_offset_from_gmt_sec = 3;</code>
+         * @return Whether the timeZoneOffsetFromGmtSec field is set.
+         */
+        @java.lang.Override
+        public boolean hasTimeZoneOffsetFromGmtSec() {
+          return instance.hasTimeZoneOffsetFromGmtSec();
+        }
+        /**
+         * <pre>
+         * |time_zone_offset_from_gmt_sec| is in seconds.
+         * Only logged in |time_log_closed| entries, not |time_log_created| entries.
+         * (Populating this field when creating a log slows down startup too much.)
+         * </pre>
+         *
+         * <code>optional int32 time_zone_offset_from_gmt_sec = 3;</code>
+         * @return The timeZoneOffsetFromGmtSec.
+         */
+        @java.lang.Override
+        public int getTimeZoneOffsetFromGmtSec() {
+          return instance.getTimeZoneOffsetFromGmtSec();
+        }
+        /**
+         * <pre>
+         * |time_zone_offset_from_gmt_sec| is in seconds.
+         * Only logged in |time_log_closed| entries, not |time_log_created| entries.
+         * (Populating this field when creating a log slows down startup too much.)
+         * </pre>
+         *
+         * <code>optional int32 time_zone_offset_from_gmt_sec = 3;</code>
+         * @param value The timeZoneOffsetFromGmtSec to set.
+         * @return This builder for chaining.
+         */
+        public Builder setTimeZoneOffsetFromGmtSec(int value) {
+          copyOnWrite();
+          instance.setTimeZoneOffsetFromGmtSec(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * |time_zone_offset_from_gmt_sec| is in seconds.
+         * Only logged in |time_log_closed| entries, not |time_log_created| entries.
+         * (Populating this field when creating a log slows down startup too much.)
+         * </pre>
+         *
+         * <code>optional int32 time_zone_offset_from_gmt_sec = 3;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearTimeZoneOffsetFromGmtSec() {
+          copyOnWrite();
+          instance.clearTimeZoneOffsetFromGmtSec();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:metrics.ChromeUserMetricsExtension.RealLocalTime)
+      }
+      @java.lang.Override
+      @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+      protected final java.lang.Object dynamicMethod(
+          com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+          java.lang.Object arg0, java.lang.Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime();
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case BUILD_MESSAGE_INFO: {
+              java.lang.Object[] objects = new java.lang.Object[] {
+                "bitField0_",
+                "timeSource_",
+                org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime.TimeSource.internalGetVerifier(),
+                "timeSec_",
+                "timeZoneOffsetFromGmtSec_",
+              };
+              java.lang.String info =
+                  "\u0001\u0003\u0000\u0001\u0001\u0003\u0003\u0000\u0000\u0000\u0001\u100c\u0000\u0002" +
+                  "\u1002\u0001\u0003\u1004\u0002";
+              return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+          }
+          // fall through
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            com.google.protobuf.Parser<org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime> parser = PARSER;
+            if (parser == null) {
+              synchronized (org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime.class) {
+                parser = PARSER;
+                if (parser == null) {
+                  parser =
+                      new DefaultInstanceBasedParser<org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime>(
+                          DEFAULT_INSTANCE);
+                  PARSER = parser;
+                }
+              }
+            }
+            return parser;
+        }
+        case GET_MEMOIZED_IS_INITIALIZED: {
+          return (byte) 1;
+        }
+        case SET_MEMOIZED_IS_INITIALIZED: {
+          return null;
+        }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:metrics.ChromeUserMetricsExtension.RealLocalTime)
+      private static final org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime DEFAULT_INSTANCE;
+      static {
+        RealLocalTime defaultInstance = new RealLocalTime();
+        // New instances are implicitly immutable so no need to make
+        // immutable.
+        DEFAULT_INSTANCE = defaultInstance;
+        com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+          RealLocalTime.class, defaultInstance);
+      }
+
+      public static org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<RealLocalTime> PARSER;
+
+      public static com.google.protobuf.Parser<RealLocalTime> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
     private int bitField0_;
     public static final int PRODUCT_FIELD_NUMBER = 10;
     private int product_;
@@ -695,6 +1457,9 @@ public final class ChromeUserMetricsExtensionProtos {
      * For Chrome clients, this id is unique to a top-level (one level above the
      * "Default" directory) Chrome user data directory [1], and so is shared among
      * all Chrome user profiles contained in this user data directory.
+     * This client_id may not be unique across platforms. Notably, ChromeOS and
+     * Lacros are different platforms yet report the same client_id for the same
+     * device.
      * An id of 0 is reserved for test data (monitoring and internal testing) and
      * should normally be ignored in analysis of the data.
      * [1] http://www.chromium.org/user-experience/user-data-directory
@@ -713,6 +1478,9 @@ public final class ChromeUserMetricsExtensionProtos {
      * For Chrome clients, this id is unique to a top-level (one level above the
      * "Default" directory) Chrome user data directory [1], and so is shared among
      * all Chrome user profiles contained in this user data directory.
+     * This client_id may not be unique across platforms. Notably, ChromeOS and
+     * Lacros are different platforms yet report the same client_id for the same
+     * device.
      * An id of 0 is reserved for test data (monitoring and internal testing) and
      * should normally be ignored in analysis of the data.
      * [1] http://www.chromium.org/user-experience/user-data-directory
@@ -731,6 +1499,9 @@ public final class ChromeUserMetricsExtensionProtos {
      * For Chrome clients, this id is unique to a top-level (one level above the
      * "Default" directory) Chrome user data directory [1], and so is shared among
      * all Chrome user profiles contained in this user data directory.
+     * This client_id may not be unique across platforms. Notably, ChromeOS and
+     * Lacros are different platforms yet report the same client_id for the same
+     * device.
      * An id of 0 is reserved for test data (monitoring and internal testing) and
      * should normally be ignored in analysis of the data.
      * [1] http://www.chromium.org/user-experience/user-data-directory
@@ -749,6 +1520,9 @@ public final class ChromeUserMetricsExtensionProtos {
      * For Chrome clients, this id is unique to a top-level (one level above the
      * "Default" directory) Chrome user data directory [1], and so is shared among
      * all Chrome user profiles contained in this user data directory.
+     * This client_id may not be unique across platforms. Notably, ChromeOS and
+     * Lacros are different platforms yet report the same client_id for the same
+     * device.
      * An id of 0 is reserved for test data (monitoring and internal testing) and
      * should normally be ignored in analysis of the data.
      * [1] http://www.chromium.org/user-experience/user-data-directory
@@ -827,6 +1601,216 @@ public final class ChromeUserMetricsExtensionProtos {
       sessionId_ = 0;
     }
 
+    public static final int USER_ID_FIELD_NUMBER = 24;
+    private long userId_;
+    /**
+     * <pre>
+     * The id associated with a user entity that generated these events. These
+     * user IDs are only associated with users on device. Their generation is not
+     * based on any other ID.
+     * This field is not populated on non-Chrome OS platforms.
+     * For Chrome OS, this id refers to a device user entity. This field will be
+     * captured when a log is first opened. If there is no user logged in at the
+     * time the log is opened, then this field will be unset. All ephemeral (i.e.
+     * guest, kiosk) users will have this field unset.
+     * </pre>
+     *
+     * <code>optional fixed64 user_id = 24;</code>
+     * @return Whether the userId field is set.
+     */
+    @java.lang.Override
+    public boolean hasUserId() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <pre>
+     * The id associated with a user entity that generated these events. These
+     * user IDs are only associated with users on device. Their generation is not
+     * based on any other ID.
+     * This field is not populated on non-Chrome OS platforms.
+     * For Chrome OS, this id refers to a device user entity. This field will be
+     * captured when a log is first opened. If there is no user logged in at the
+     * time the log is opened, then this field will be unset. All ephemeral (i.e.
+     * guest, kiosk) users will have this field unset.
+     * </pre>
+     *
+     * <code>optional fixed64 user_id = 24;</code>
+     * @return The userId.
+     */
+    @java.lang.Override
+    public long getUserId() {
+      return userId_;
+    }
+    /**
+     * <pre>
+     * The id associated with a user entity that generated these events. These
+     * user IDs are only associated with users on device. Their generation is not
+     * based on any other ID.
+     * This field is not populated on non-Chrome OS platforms.
+     * For Chrome OS, this id refers to a device user entity. This field will be
+     * captured when a log is first opened. If there is no user logged in at the
+     * time the log is opened, then this field will be unset. All ephemeral (i.e.
+     * guest, kiosk) users will have this field unset.
+     * </pre>
+     *
+     * <code>optional fixed64 user_id = 24;</code>
+     * @param value The userId to set.
+     */
+    private void setUserId(long value) {
+      bitField0_ |= 0x00000008;
+      userId_ = value;
+    }
+    /**
+     * <pre>
+     * The id associated with a user entity that generated these events. These
+     * user IDs are only associated with users on device. Their generation is not
+     * based on any other ID.
+     * This field is not populated on non-Chrome OS platforms.
+     * For Chrome OS, this id refers to a device user entity. This field will be
+     * captured when a log is first opened. If there is no user logged in at the
+     * time the log is opened, then this field will be unset. All ephemeral (i.e.
+     * guest, kiosk) users will have this field unset.
+     * </pre>
+     *
+     * <code>optional fixed64 user_id = 24;</code>
+     */
+    private void clearUserId() {
+      bitField0_ = (bitField0_ & ~0x00000008);
+      userId_ = 0L;
+    }
+
+    public static final int TIME_LOG_CREATED_FIELD_NUMBER = 25;
+    private org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime timeLogCreated_;
+    /**
+     * <pre>
+     * These times are set for "ongoing" UMA logs.  For two other types
+     * of UMA logs, these values are omitted:
+     * - logs recovered from a previous run of Chrome ("persisted UMA"), such as
+     *   one that didn't shut down cleanly.
+     * - the initial stability log.
+     * </pre>
+     *
+     * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime time_log_created = 25;</code>
+     */
+    @java.lang.Override
+    public boolean hasTimeLogCreated() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <pre>
+     * These times are set for "ongoing" UMA logs.  For two other types
+     * of UMA logs, these values are omitted:
+     * - logs recovered from a previous run of Chrome ("persisted UMA"), such as
+     *   one that didn't shut down cleanly.
+     * - the initial stability log.
+     * </pre>
+     *
+     * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime time_log_created = 25;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime getTimeLogCreated() {
+      return timeLogCreated_ == null ? org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime.getDefaultInstance() : timeLogCreated_;
+    }
+    /**
+     * <pre>
+     * These times are set for "ongoing" UMA logs.  For two other types
+     * of UMA logs, these values are omitted:
+     * - logs recovered from a previous run of Chrome ("persisted UMA"), such as
+     *   one that didn't shut down cleanly.
+     * - the initial stability log.
+     * </pre>
+     *
+     * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime time_log_created = 25;</code>
+     */
+    private void setTimeLogCreated(org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime value) {
+      value.getClass();
+  timeLogCreated_ = value;
+      bitField0_ |= 0x00000010;
+      }
+    /**
+     * <pre>
+     * These times are set for "ongoing" UMA logs.  For two other types
+     * of UMA logs, these values are omitted:
+     * - logs recovered from a previous run of Chrome ("persisted UMA"), such as
+     *   one that didn't shut down cleanly.
+     * - the initial stability log.
+     * </pre>
+     *
+     * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime time_log_created = 25;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeTimeLogCreated(org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime value) {
+      value.getClass();
+  if (timeLogCreated_ != null &&
+          timeLogCreated_ != org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime.getDefaultInstance()) {
+        timeLogCreated_ =
+          org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime.newBuilder(timeLogCreated_).mergeFrom(value).buildPartial();
+      } else {
+        timeLogCreated_ = value;
+      }
+      bitField0_ |= 0x00000010;
+    }
+    /**
+     * <pre>
+     * These times are set for "ongoing" UMA logs.  For two other types
+     * of UMA logs, these values are omitted:
+     * - logs recovered from a previous run of Chrome ("persisted UMA"), such as
+     *   one that didn't shut down cleanly.
+     * - the initial stability log.
+     * </pre>
+     *
+     * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime time_log_created = 25;</code>
+     */
+    private void clearTimeLogCreated() {  timeLogCreated_ = null;
+      bitField0_ = (bitField0_ & ~0x00000010);
+    }
+
+    public static final int TIME_LOG_CLOSED_FIELD_NUMBER = 26;
+    private org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime timeLogClosed_;
+    /**
+     * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime time_log_closed = 26;</code>
+     */
+    @java.lang.Override
+    public boolean hasTimeLogClosed() {
+      return ((bitField0_ & 0x00000020) != 0);
+    }
+    /**
+     * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime time_log_closed = 26;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime getTimeLogClosed() {
+      return timeLogClosed_ == null ? org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime.getDefaultInstance() : timeLogClosed_;
+    }
+    /**
+     * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime time_log_closed = 26;</code>
+     */
+    private void setTimeLogClosed(org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime value) {
+      value.getClass();
+  timeLogClosed_ = value;
+      bitField0_ |= 0x00000020;
+      }
+    /**
+     * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime time_log_closed = 26;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeTimeLogClosed(org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime value) {
+      value.getClass();
+  if (timeLogClosed_ != null &&
+          timeLogClosed_ != org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime.getDefaultInstance()) {
+        timeLogClosed_ =
+          org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime.newBuilder(timeLogClosed_).mergeFrom(value).buildPartial();
+      } else {
+        timeLogClosed_ = value;
+      }
+      bitField0_ |= 0x00000020;
+    }
+    /**
+     * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime time_log_closed = 26;</code>
+     */
+    private void clearTimeLogClosed() {  timeLogClosed_ = null;
+      bitField0_ = (bitField0_ & ~0x00000020);
+    }
+
     public static final int SYSTEM_PROFILE_FIELD_NUMBER = 3;
     private org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto systemProfile_;
     /**
@@ -838,7 +1822,7 @@ public final class ChromeUserMetricsExtensionProtos {
      */
     @java.lang.Override
     public boolean hasSystemProfile() {
-      return ((bitField0_ & 0x00000008) != 0);
+      return ((bitField0_ & 0x00000040) != 0);
     }
     /**
      * <pre>
@@ -861,7 +1845,7 @@ public final class ChromeUserMetricsExtensionProtos {
     private void setSystemProfile(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto value) {
       value.getClass();
   systemProfile_ = value;
-      bitField0_ |= 0x00000008;
+      bitField0_ |= 0x00000040;
       }
     /**
      * <pre>
@@ -880,7 +1864,7 @@ public final class ChromeUserMetricsExtensionProtos {
       } else {
         systemProfile_ = value;
       }
-      bitField0_ |= 0x00000008;
+      bitField0_ |= 0x00000040;
     }
     /**
      * <pre>
@@ -890,7 +1874,7 @@ public final class ChromeUserMetricsExtensionProtos {
      * <code>optional .metrics.SystemProfileProto system_profile = 3;</code>
      */
     private void clearSystemProfile() {  systemProfile_ = null;
-      bitField0_ = (bitField0_ & ~0x00000008);
+      bitField0_ = (bitField0_ & ~0x00000040);
     }
 
     public static final int USER_DEMOGRAPHICS_FIELD_NUMBER = 21;
@@ -906,7 +1890,7 @@ public final class ChromeUserMetricsExtensionProtos {
      */
     @java.lang.Override
     public boolean hasUserDemographics() {
-      return ((bitField0_ & 0x00000010) != 0);
+      return ((bitField0_ & 0x00000080) != 0);
     }
     /**
      * <pre>
@@ -933,7 +1917,7 @@ public final class ChromeUserMetricsExtensionProtos {
     private void setUserDemographics(org.chromium.components.metrics.UserDemographicsProtos.UserDemographicsProto value) {
       value.getClass();
   userDemographics_ = value;
-      bitField0_ |= 0x00000010;
+      bitField0_ |= 0x00000080;
       }
     /**
      * <pre>
@@ -954,7 +1938,7 @@ public final class ChromeUserMetricsExtensionProtos {
       } else {
         userDemographics_ = value;
       }
-      bitField0_ |= 0x00000010;
+      bitField0_ |= 0x00000080;
     }
     /**
      * <pre>
@@ -966,7 +1950,7 @@ public final class ChromeUserMetricsExtensionProtos {
      * <code>optional .metrics.UserDemographicsProto user_demographics = 21;</code>
      */
     private void clearUserDemographics() {  userDemographics_ = null;
-      bitField0_ = (bitField0_ & ~0x00000010);
+      bitField0_ = (bitField0_ & ~0x00000080);
     }
 
     public static final int USER_ACTION_EVENT_FIELD_NUMBER = 4;
@@ -1678,7 +2662,7 @@ public final class ChromeUserMetricsExtensionProtos {
      */
     @java.lang.Override
     public boolean hasStructuredData() {
-      return ((bitField0_ & 0x00000020) != 0);
+      return ((bitField0_ & 0x00000100) != 0);
     }
     /**
      * <code>optional .metrics.StructuredDataProto structured_data = 23;</code>
@@ -1693,7 +2677,7 @@ public final class ChromeUserMetricsExtensionProtos {
     private void setStructuredData(org.chromium.components.metrics.StructuredData.StructuredDataProto value) {
       value.getClass();
   structuredData_ = value;
-      bitField0_ |= 0x00000020;
+      bitField0_ |= 0x00000100;
       }
     /**
      * <code>optional .metrics.StructuredDataProto structured_data = 23;</code>
@@ -1708,13 +2692,13 @@ public final class ChromeUserMetricsExtensionProtos {
       } else {
         structuredData_ = value;
       }
-      bitField0_ |= 0x00000020;
+      bitField0_ |= 0x00000100;
     }
     /**
      * <code>optional .metrics.StructuredDataProto structured_data = 23;</code>
      */
     private void clearStructuredData() {  structuredData_ = null;
-      bitField0_ = (bitField0_ & ~0x00000020);
+      bitField0_ = (bitField0_ & ~0x00000100);
     }
 
     public static final int PERF_DATA_FIELD_NUMBER = 8;
@@ -2004,7 +2988,7 @@ public final class ChromeUserMetricsExtensionProtos {
      */
     @java.lang.Override
     public boolean hasCastLogs() {
-      return ((bitField0_ & 0x00000040) != 0);
+      return ((bitField0_ & 0x00000200) != 0);
     }
     /**
      * <pre>
@@ -2027,7 +3011,7 @@ public final class ChromeUserMetricsExtensionProtos {
     private void setCastLogs(org.chromium.components.metrics.CastLogsProtos.CastLogsProto value) {
       value.getClass();
   castLogs_ = value;
-      bitField0_ |= 0x00000040;
+      bitField0_ |= 0x00000200;
       }
     /**
      * <pre>
@@ -2046,7 +3030,7 @@ public final class ChromeUserMetricsExtensionProtos {
       } else {
         castLogs_ = value;
       }
-      bitField0_ |= 0x00000040;
+      bitField0_ |= 0x00000200;
     }
     /**
      * <pre>
@@ -2056,7 +3040,7 @@ public final class ChromeUserMetricsExtensionProtos {
      * <code>optional .metrics.CastLogsProto cast_logs = 12;</code>
      */
     private void clearCastLogs() {  castLogs_ = null;
-      bitField0_ = (bitField0_ & ~0x00000040);
+      bitField0_ = (bitField0_ & ~0x00000200);
     }
 
     public static final int MEMORY_LEAK_REPORT_FIELD_NUMBER = 13;
@@ -2209,7 +3193,7 @@ public final class ChromeUserMetricsExtensionProtos {
      */
     @java.lang.Override
     public boolean hasCastAssistantLogs() {
-      return ((bitField0_ & 0x00000080) != 0);
+      return ((bitField0_ & 0x00000400) != 0);
     }
     /**
      * <pre>
@@ -2234,7 +3218,7 @@ public final class ChromeUserMetricsExtensionProtos {
     private void setCastAssistantLogs(org.chromium.components.metrics.CastAssistantLogs.CastAssistantLogsProto value) {
       value.getClass();
   castAssistantLogs_ = value;
-      bitField0_ |= 0x00000080;
+      bitField0_ |= 0x00000400;
       }
     /**
      * <pre>
@@ -2254,7 +3238,7 @@ public final class ChromeUserMetricsExtensionProtos {
       } else {
         castAssistantLogs_ = value;
       }
-      bitField0_ |= 0x00000080;
+      bitField0_ |= 0x00000400;
     }
     /**
      * <pre>
@@ -2265,7 +3249,7 @@ public final class ChromeUserMetricsExtensionProtos {
      * <code>optional .metrics.CastAssistantLogsProto cast_assistant_logs = 14;</code>
      */
     private void clearCastAssistantLogs() {  castAssistantLogs_ = null;
-      bitField0_ = (bitField0_ & ~0x00000080);
+      bitField0_ = (bitField0_ & ~0x00000400);
     }
 
     public static final int REPORTING_INFO_FIELD_NUMBER = 17;
@@ -2280,7 +3264,7 @@ public final class ChromeUserMetricsExtensionProtos {
      */
     @java.lang.Override
     public boolean hasReportingInfo() {
-      return ((bitField0_ & 0x00000100) != 0);
+      return ((bitField0_ & 0x00000800) != 0);
     }
     /**
      * <pre>
@@ -2305,7 +3289,7 @@ public final class ChromeUserMetricsExtensionProtos {
     private void setReportingInfo(org.chromium.components.metrics.ReportingInfoOuterClass.ReportingInfo value) {
       value.getClass();
   reportingInfo_ = value;
-      bitField0_ |= 0x00000100;
+      bitField0_ |= 0x00000800;
       }
     /**
      * <pre>
@@ -2325,7 +3309,7 @@ public final class ChromeUserMetricsExtensionProtos {
       } else {
         reportingInfo_ = value;
       }
-      bitField0_ |= 0x00000100;
+      bitField0_ |= 0x00000800;
     }
     /**
      * <pre>
@@ -2336,7 +3320,7 @@ public final class ChromeUserMetricsExtensionProtos {
      * <code>optional .metrics.ReportingInfo reporting_info = 17;</code>
      */
     private void clearReportingInfo() {  reportingInfo_ = null;
-      bitField0_ = (bitField0_ & ~0x00000100);
+      bitField0_ = (bitField0_ & ~0x00000800);
     }
 
     public static final int TRACE_LOG_FIELD_NUMBER = 19;
@@ -2510,6 +3494,92 @@ public final class ChromeUserMetricsExtensionProtos {
       traceLog_.remove(index);
     }
 
+    public static final int CUSTOM_TAB_SESSION_FIELD_NUMBER = 27;
+    private org.chromium.components.metrics.CustomTabSessionProtos.CustomTabSessionProto customTabSession_;
+    /**
+     * <pre>
+     * Information about a Custom Tabs session, recorded in the log when the
+     * a CCT session ended. If custom tabs are opened and closed multiple times
+     * within the same log session, only the last one will be recorded. This is
+     * used to identify applications that use Custom Tabs in an abusive way. This
+     * is specific to Android.
+     * </pre>
+     *
+     * <code>optional .metrics.CustomTabSessionProto custom_tab_session = 27;</code>
+     */
+    @java.lang.Override
+    public boolean hasCustomTabSession() {
+      return ((bitField0_ & 0x00001000) != 0);
+    }
+    /**
+     * <pre>
+     * Information about a Custom Tabs session, recorded in the log when the
+     * a CCT session ended. If custom tabs are opened and closed multiple times
+     * within the same log session, only the last one will be recorded. This is
+     * used to identify applications that use Custom Tabs in an abusive way. This
+     * is specific to Android.
+     * </pre>
+     *
+     * <code>optional .metrics.CustomTabSessionProto custom_tab_session = 27;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.metrics.CustomTabSessionProtos.CustomTabSessionProto getCustomTabSession() {
+      return customTabSession_ == null ? org.chromium.components.metrics.CustomTabSessionProtos.CustomTabSessionProto.getDefaultInstance() : customTabSession_;
+    }
+    /**
+     * <pre>
+     * Information about a Custom Tabs session, recorded in the log when the
+     * a CCT session ended. If custom tabs are opened and closed multiple times
+     * within the same log session, only the last one will be recorded. This is
+     * used to identify applications that use Custom Tabs in an abusive way. This
+     * is specific to Android.
+     * </pre>
+     *
+     * <code>optional .metrics.CustomTabSessionProto custom_tab_session = 27;</code>
+     */
+    private void setCustomTabSession(org.chromium.components.metrics.CustomTabSessionProtos.CustomTabSessionProto value) {
+      value.getClass();
+  customTabSession_ = value;
+      bitField0_ |= 0x00001000;
+      }
+    /**
+     * <pre>
+     * Information about a Custom Tabs session, recorded in the log when the
+     * a CCT session ended. If custom tabs are opened and closed multiple times
+     * within the same log session, only the last one will be recorded. This is
+     * used to identify applications that use Custom Tabs in an abusive way. This
+     * is specific to Android.
+     * </pre>
+     *
+     * <code>optional .metrics.CustomTabSessionProto custom_tab_session = 27;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeCustomTabSession(org.chromium.components.metrics.CustomTabSessionProtos.CustomTabSessionProto value) {
+      value.getClass();
+  if (customTabSession_ != null &&
+          customTabSession_ != org.chromium.components.metrics.CustomTabSessionProtos.CustomTabSessionProto.getDefaultInstance()) {
+        customTabSession_ =
+          org.chromium.components.metrics.CustomTabSessionProtos.CustomTabSessionProto.newBuilder(customTabSession_).mergeFrom(value).buildPartial();
+      } else {
+        customTabSession_ = value;
+      }
+      bitField0_ |= 0x00001000;
+    }
+    /**
+     * <pre>
+     * Information about a Custom Tabs session, recorded in the log when the
+     * a CCT session ended. If custom tabs are opened and closed multiple times
+     * within the same log session, only the last one will be recorded. This is
+     * used to identify applications that use Custom Tabs in an abusive way. This
+     * is specific to Android.
+     * </pre>
+     *
+     * <code>optional .metrics.CustomTabSessionProto custom_tab_session = 27;</code>
+     */
+    private void clearCustomTabSession() {  customTabSession_ = null;
+      bitField0_ = (bitField0_ & ~0x00001000);
+    }
+
     public static org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2593,7 +3663,7 @@ public final class ChromeUserMetricsExtensionProtos {
 
     /**
      * <pre>
-     * Next tag: 24
+     * Next tag: 28
      * </pre>
      *
      * Protobuf type {@code metrics.ChromeUserMetricsExtension}
@@ -2687,6 +3757,9 @@ public final class ChromeUserMetricsExtensionProtos {
        * For Chrome clients, this id is unique to a top-level (one level above the
        * "Default" directory) Chrome user data directory [1], and so is shared among
        * all Chrome user profiles contained in this user data directory.
+       * This client_id may not be unique across platforms. Notably, ChromeOS and
+       * Lacros are different platforms yet report the same client_id for the same
+       * device.
        * An id of 0 is reserved for test data (monitoring and internal testing) and
        * should normally be ignored in analysis of the data.
        * [1] http://www.chromium.org/user-experience/user-data-directory
@@ -2705,6 +3778,9 @@ public final class ChromeUserMetricsExtensionProtos {
        * For Chrome clients, this id is unique to a top-level (one level above the
        * "Default" directory) Chrome user data directory [1], and so is shared among
        * all Chrome user profiles contained in this user data directory.
+       * This client_id may not be unique across platforms. Notably, ChromeOS and
+       * Lacros are different platforms yet report the same client_id for the same
+       * device.
        * An id of 0 is reserved for test data (monitoring and internal testing) and
        * should normally be ignored in analysis of the data.
        * [1] http://www.chromium.org/user-experience/user-data-directory
@@ -2723,6 +3799,9 @@ public final class ChromeUserMetricsExtensionProtos {
        * For Chrome clients, this id is unique to a top-level (one level above the
        * "Default" directory) Chrome user data directory [1], and so is shared among
        * all Chrome user profiles contained in this user data directory.
+       * This client_id may not be unique across platforms. Notably, ChromeOS and
+       * Lacros are different platforms yet report the same client_id for the same
+       * device.
        * An id of 0 is reserved for test data (monitoring and internal testing) and
        * should normally be ignored in analysis of the data.
        * [1] http://www.chromium.org/user-experience/user-data-directory
@@ -2743,6 +3822,9 @@ public final class ChromeUserMetricsExtensionProtos {
        * For Chrome clients, this id is unique to a top-level (one level above the
        * "Default" directory) Chrome user data directory [1], and so is shared among
        * all Chrome user profiles contained in this user data directory.
+       * This client_id may not be unique across platforms. Notably, ChromeOS and
+       * Lacros are different platforms yet report the same client_id for the same
+       * device.
        * An id of 0 is reserved for test data (monitoring and internal testing) and
        * should normally be ignored in analysis of the data.
        * [1] http://www.chromium.org/user-experience/user-data-directory
@@ -2822,6 +3904,228 @@ public final class ChromeUserMetricsExtensionProtos {
       public Builder clearSessionId() {
         copyOnWrite();
         instance.clearSessionId();
+        return this;
+      }
+
+      /**
+       * <pre>
+       * The id associated with a user entity that generated these events. These
+       * user IDs are only associated with users on device. Their generation is not
+       * based on any other ID.
+       * This field is not populated on non-Chrome OS platforms.
+       * For Chrome OS, this id refers to a device user entity. This field will be
+       * captured when a log is first opened. If there is no user logged in at the
+       * time the log is opened, then this field will be unset. All ephemeral (i.e.
+       * guest, kiosk) users will have this field unset.
+       * </pre>
+       *
+       * <code>optional fixed64 user_id = 24;</code>
+       * @return Whether the userId field is set.
+       */
+      @java.lang.Override
+      public boolean hasUserId() {
+        return instance.hasUserId();
+      }
+      /**
+       * <pre>
+       * The id associated with a user entity that generated these events. These
+       * user IDs are only associated with users on device. Their generation is not
+       * based on any other ID.
+       * This field is not populated on non-Chrome OS platforms.
+       * For Chrome OS, this id refers to a device user entity. This field will be
+       * captured when a log is first opened. If there is no user logged in at the
+       * time the log is opened, then this field will be unset. All ephemeral (i.e.
+       * guest, kiosk) users will have this field unset.
+       * </pre>
+       *
+       * <code>optional fixed64 user_id = 24;</code>
+       * @return The userId.
+       */
+      @java.lang.Override
+      public long getUserId() {
+        return instance.getUserId();
+      }
+      /**
+       * <pre>
+       * The id associated with a user entity that generated these events. These
+       * user IDs are only associated with users on device. Their generation is not
+       * based on any other ID.
+       * This field is not populated on non-Chrome OS platforms.
+       * For Chrome OS, this id refers to a device user entity. This field will be
+       * captured when a log is first opened. If there is no user logged in at the
+       * time the log is opened, then this field will be unset. All ephemeral (i.e.
+       * guest, kiosk) users will have this field unset.
+       * </pre>
+       *
+       * <code>optional fixed64 user_id = 24;</code>
+       * @param value The userId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUserId(long value) {
+        copyOnWrite();
+        instance.setUserId(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * The id associated with a user entity that generated these events. These
+       * user IDs are only associated with users on device. Their generation is not
+       * based on any other ID.
+       * This field is not populated on non-Chrome OS platforms.
+       * For Chrome OS, this id refers to a device user entity. This field will be
+       * captured when a log is first opened. If there is no user logged in at the
+       * time the log is opened, then this field will be unset. All ephemeral (i.e.
+       * guest, kiosk) users will have this field unset.
+       * </pre>
+       *
+       * <code>optional fixed64 user_id = 24;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUserId() {
+        copyOnWrite();
+        instance.clearUserId();
+        return this;
+      }
+
+      /**
+       * <pre>
+       * These times are set for "ongoing" UMA logs.  For two other types
+       * of UMA logs, these values are omitted:
+       * - logs recovered from a previous run of Chrome ("persisted UMA"), such as
+       *   one that didn't shut down cleanly.
+       * - the initial stability log.
+       * </pre>
+       *
+       * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime time_log_created = 25;</code>
+       */
+      @java.lang.Override
+      public boolean hasTimeLogCreated() {
+        return instance.hasTimeLogCreated();
+      }
+      /**
+       * <pre>
+       * These times are set for "ongoing" UMA logs.  For two other types
+       * of UMA logs, these values are omitted:
+       * - logs recovered from a previous run of Chrome ("persisted UMA"), such as
+       *   one that didn't shut down cleanly.
+       * - the initial stability log.
+       * </pre>
+       *
+       * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime time_log_created = 25;</code>
+       */
+      @java.lang.Override
+      public org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime getTimeLogCreated() {
+        return instance.getTimeLogCreated();
+      }
+      /**
+       * <pre>
+       * These times are set for "ongoing" UMA logs.  For two other types
+       * of UMA logs, these values are omitted:
+       * - logs recovered from a previous run of Chrome ("persisted UMA"), such as
+       *   one that didn't shut down cleanly.
+       * - the initial stability log.
+       * </pre>
+       *
+       * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime time_log_created = 25;</code>
+       */
+      public Builder setTimeLogCreated(org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime value) {
+        copyOnWrite();
+        instance.setTimeLogCreated(value);
+        return this;
+        }
+      /**
+       * <pre>
+       * These times are set for "ongoing" UMA logs.  For two other types
+       * of UMA logs, these values are omitted:
+       * - logs recovered from a previous run of Chrome ("persisted UMA"), such as
+       *   one that didn't shut down cleanly.
+       * - the initial stability log.
+       * </pre>
+       *
+       * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime time_log_created = 25;</code>
+       */
+      public Builder setTimeLogCreated(
+          org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime.Builder builderForValue) {
+        copyOnWrite();
+        instance.setTimeLogCreated(builderForValue.build());
+        return this;
+      }
+      /**
+       * <pre>
+       * These times are set for "ongoing" UMA logs.  For two other types
+       * of UMA logs, these values are omitted:
+       * - logs recovered from a previous run of Chrome ("persisted UMA"), such as
+       *   one that didn't shut down cleanly.
+       * - the initial stability log.
+       * </pre>
+       *
+       * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime time_log_created = 25;</code>
+       */
+      public Builder mergeTimeLogCreated(org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime value) {
+        copyOnWrite();
+        instance.mergeTimeLogCreated(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * These times are set for "ongoing" UMA logs.  For two other types
+       * of UMA logs, these values are omitted:
+       * - logs recovered from a previous run of Chrome ("persisted UMA"), such as
+       *   one that didn't shut down cleanly.
+       * - the initial stability log.
+       * </pre>
+       *
+       * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime time_log_created = 25;</code>
+       */
+      public Builder clearTimeLogCreated() {  copyOnWrite();
+        instance.clearTimeLogCreated();
+        return this;
+      }
+
+      /**
+       * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime time_log_closed = 26;</code>
+       */
+      @java.lang.Override
+      public boolean hasTimeLogClosed() {
+        return instance.hasTimeLogClosed();
+      }
+      /**
+       * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime time_log_closed = 26;</code>
+       */
+      @java.lang.Override
+      public org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime getTimeLogClosed() {
+        return instance.getTimeLogClosed();
+      }
+      /**
+       * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime time_log_closed = 26;</code>
+       */
+      public Builder setTimeLogClosed(org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime value) {
+        copyOnWrite();
+        instance.setTimeLogClosed(value);
+        return this;
+        }
+      /**
+       * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime time_log_closed = 26;</code>
+       */
+      public Builder setTimeLogClosed(
+          org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime.Builder builderForValue) {
+        copyOnWrite();
+        instance.setTimeLogClosed(builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime time_log_closed = 26;</code>
+       */
+      public Builder mergeTimeLogClosed(org.chromium.components.metrics.ChromeUserMetricsExtensionProtos.ChromeUserMetricsExtension.RealLocalTime value) {
+        copyOnWrite();
+        instance.mergeTimeLogClosed(value);
+        return this;
+      }
+      /**
+       * <code>optional .metrics.ChromeUserMetricsExtension.RealLocalTime time_log_closed = 26;</code>
+       */
+      public Builder clearTimeLogClosed() {  copyOnWrite();
+        instance.clearTimeLogClosed();
         return this;
       }
 
@@ -4649,6 +5953,101 @@ public final class ChromeUserMetricsExtensionProtos {
         return this;
       }
 
+      /**
+       * <pre>
+       * Information about a Custom Tabs session, recorded in the log when the
+       * a CCT session ended. If custom tabs are opened and closed multiple times
+       * within the same log session, only the last one will be recorded. This is
+       * used to identify applications that use Custom Tabs in an abusive way. This
+       * is specific to Android.
+       * </pre>
+       *
+       * <code>optional .metrics.CustomTabSessionProto custom_tab_session = 27;</code>
+       */
+      @java.lang.Override
+      public boolean hasCustomTabSession() {
+        return instance.hasCustomTabSession();
+      }
+      /**
+       * <pre>
+       * Information about a Custom Tabs session, recorded in the log when the
+       * a CCT session ended. If custom tabs are opened and closed multiple times
+       * within the same log session, only the last one will be recorded. This is
+       * used to identify applications that use Custom Tabs in an abusive way. This
+       * is specific to Android.
+       * </pre>
+       *
+       * <code>optional .metrics.CustomTabSessionProto custom_tab_session = 27;</code>
+       */
+      @java.lang.Override
+      public org.chromium.components.metrics.CustomTabSessionProtos.CustomTabSessionProto getCustomTabSession() {
+        return instance.getCustomTabSession();
+      }
+      /**
+       * <pre>
+       * Information about a Custom Tabs session, recorded in the log when the
+       * a CCT session ended. If custom tabs are opened and closed multiple times
+       * within the same log session, only the last one will be recorded. This is
+       * used to identify applications that use Custom Tabs in an abusive way. This
+       * is specific to Android.
+       * </pre>
+       *
+       * <code>optional .metrics.CustomTabSessionProto custom_tab_session = 27;</code>
+       */
+      public Builder setCustomTabSession(org.chromium.components.metrics.CustomTabSessionProtos.CustomTabSessionProto value) {
+        copyOnWrite();
+        instance.setCustomTabSession(value);
+        return this;
+        }
+      /**
+       * <pre>
+       * Information about a Custom Tabs session, recorded in the log when the
+       * a CCT session ended. If custom tabs are opened and closed multiple times
+       * within the same log session, only the last one will be recorded. This is
+       * used to identify applications that use Custom Tabs in an abusive way. This
+       * is specific to Android.
+       * </pre>
+       *
+       * <code>optional .metrics.CustomTabSessionProto custom_tab_session = 27;</code>
+       */
+      public Builder setCustomTabSession(
+          org.chromium.components.metrics.CustomTabSessionProtos.CustomTabSessionProto.Builder builderForValue) {
+        copyOnWrite();
+        instance.setCustomTabSession(builderForValue.build());
+        return this;
+      }
+      /**
+       * <pre>
+       * Information about a Custom Tabs session, recorded in the log when the
+       * a CCT session ended. If custom tabs are opened and closed multiple times
+       * within the same log session, only the last one will be recorded. This is
+       * used to identify applications that use Custom Tabs in an abusive way. This
+       * is specific to Android.
+       * </pre>
+       *
+       * <code>optional .metrics.CustomTabSessionProto custom_tab_session = 27;</code>
+       */
+      public Builder mergeCustomTabSession(org.chromium.components.metrics.CustomTabSessionProtos.CustomTabSessionProto value) {
+        copyOnWrite();
+        instance.mergeCustomTabSession(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Information about a Custom Tabs session, recorded in the log when the
+       * a CCT session ended. If custom tabs are opened and closed multiple times
+       * within the same log session, only the last one will be recorded. This is
+       * used to identify applications that use Custom Tabs in an abusive way. This
+       * is specific to Android.
+       * </pre>
+       *
+       * <code>optional .metrics.CustomTabSessionProto custom_tab_session = 27;</code>
+       */
+      public Builder clearCustomTabSession() {  copyOnWrite();
+        instance.clearCustomTabSession();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:metrics.ChromeUserMetricsExtension)
     }
     @java.lang.Override
@@ -4697,13 +6096,17 @@ public final class ChromeUserMetricsExtensionProtos {
               "deprecatedStructuredEvent_",
               org.chromium.components.metrics.StructuredData.StructuredEventProto.class,
               "structuredData_",
+              "userId_",
+              "timeLogCreated_",
+              "timeLogClosed_",
+              "customTabSession_",
             };
             java.lang.String info =
-                "\u0001\u0014\u0000\u0001\u0001\u0017\u0014\u0000\u000b\u0000\u0001\u1005\u0001\u0002" +
-                "\u1004\u0002\u0003\u1009\u0003\u0004\u001b\u0005\u001b\u0006\u001b\b\u001b\n\u1004" +
-                "\u0000\u000b\u001b\f\u1009\u0006\r\u001b\u000e\u1009\u0007\u000f\u001b\u0010\u001b" +
-                "\u0011\u1009\b\u0013\u001b\u0014\u001b\u0015\u1009\u0004\u0016\u001b\u0017\u1009" +
-                "\u0005";
+                "\u0001\u0018\u0000\u0001\u0001\u001b\u0018\u0000\u000b\u0000\u0001\u1005\u0001\u0002" +
+                "\u1004\u0002\u0003\u1009\u0006\u0004\u001b\u0005\u001b\u0006\u001b\b\u001b\n\u1004" +
+                "\u0000\u000b\u001b\f\u1009\t\r\u001b\u000e\u1009\n\u000f\u001b\u0010\u001b\u0011" +
+                "\u1009\u000b\u0013\u001b\u0014\u001b\u0015\u1009\u0007\u0016\u001b\u0017\u1009\b" +
+                "\u0018\u1005\u0003\u0019\u1009\u0004\u001a\u1009\u0005\u001b\u1009\f";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

@@ -13,6 +13,8 @@
 
 package org.chromium.payments.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface PaymentRequestClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,55 +25,44 @@ public interface PaymentRequestClient extends org.chromium.mojo.bindings.Interfa
 
     Manager<PaymentRequestClient, PaymentRequestClient.Proxy> MANAGER = PaymentRequestClient_Internal.MANAGER;
 
-
     void onPaymentMethodChange(
 String methodName, String stringifiedDetails);
-
 
 
     void onShippingAddressChange(
 PaymentAddress address);
 
 
-
     void onShippingOptionChange(
 String shippingOptionId);
-
 
 
     void onPayerDetailChange(
 PayerDetail detail);
 
 
-
     void onPaymentResponse(
 PaymentResponse response);
-
 
 
     void onError(
 int error, String errorMessage);
 
 
-
     void onComplete(
 );
-
 
 
     void onAbort(
 boolean abortedSuccessfully);
 
 
-
     void onCanMakePayment(
 int result);
 
 
-
     void onHasEnrolledInstrument(
 int result);
-
 
 
     void warnNoFavicon(

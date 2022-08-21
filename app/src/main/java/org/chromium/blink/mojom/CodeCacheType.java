@@ -13,8 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class CodeCacheType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        CodeCacheType.JAVASCRIPT,
+        CodeCacheType.WEB_ASSEMBLY})
+    public @interface EnumType {}
 
     public static final int JAVASCRIPT = 0;
     public static final int WEB_ASSEMBLY = 1;

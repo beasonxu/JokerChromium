@@ -12,13 +12,14 @@ import android.view.ViewGroup;
 import androidx.annotation.Nullable;
 
 import org.chromium.base.supplier.ObservableSupplier;
+import org.chromium.base.supplier.ObservableSupplierImpl;
 import org.chromium.chrome.browser.browser_controls.BrowserControlsSizer;
 import org.chromium.chrome.browser.fullscreen.FullscreenManager;
 import org.chromium.chrome.browser.layouts.LayoutManager;
 import org.chromium.chrome.browser.layouts.LayoutStateProvider;
-import org.chromium.chrome.browser.theme.ThemeColorProvider;
 import org.chromium.chrome.browser.toolbar.R;
 import org.chromium.chrome.browser.toolbar.bottom.BottomControlsViewBinder.ViewHolder;
+import org.chromium.components.browser_ui.widget.gesture.BackPressHandler;
 import org.chromium.ui.base.WindowAndroid;
 import org.chromium.ui.modelutil.PropertyModel;
 import org.chromium.ui.modelutil.PropertyModelChangeProcessor;
@@ -32,7 +33,7 @@ import org.chromium.ui.widget.Toast;
  * when the controls are being scrolled off-screen. The Android version does not draw unless the
  * controls offset is 0.
  */
-public class BottomControlsCoordinator {
+public class BottomControlsCoordinator implements BackPressHandler {
     /**
      * Interface for the BottomControls component to hide and show itself.
      */
@@ -54,7 +55,6 @@ public class BottomControlsCoordinator {
      *                          height for the renderer.
      * @param fullscreenManager A {@link FullscreenManager} to listen for fullscreen changes.
      * @param stub The bottom controls {@link ViewStub} to inflate.
-     * @param themeColorProvider The {@link ThemeColorProvider} for the bottom toolbar.
      * @param contentDelegate Delegate for bottom controls UI operations.
      * @param overlayPanelVisibilitySupplier Notifies overlay panel visibility event.
      * @param resourceManager A {@link ResourceManager} for loading textures into the compositor.
@@ -64,7 +64,7 @@ public class BottomControlsCoordinator {
     public BottomControlsCoordinator(Activity activity, WindowAndroid windowAndroid,
             LayoutManager layoutManager, ResourceManager resourceManager,
             BrowserControlsSizer controlsSizer, FullscreenManager fullscreenManager,
-            ScrollingBottomViewResourceFrameLayout root, ThemeColorProvider themeColorProvider,
+            ScrollingBottomViewResourceFrameLayout root,
             BottomControlsContentDelegate contentDelegate,
             ObservableSupplier<Boolean> overlayPanelVisibilitySupplier) {
         PropertyModel model = new PropertyModel(BottomControlsProperties.ALL_KEYS);
@@ -124,6 +124,17 @@ public class BottomControlsCoordinator {
      */
     public boolean onBackPressed() {
         return mContentDelegate != null && mContentDelegate.onBackPressed();
+    }
+
+    @Override
+    public void handleBackPress() {
+        if (mContentDelegate != null) mContentDelegate.handleBackPress();
+    }
+
+    @Override
+    public ObservableSupplier<Boolean> getHandleBackPressChangedSupplier() {
+        if (mContentDelegate == null) return new ObservableSupplierImpl<>();
+        return mContentDelegate.getHandleBackPressChangedSupplier();
     }
 
     /**

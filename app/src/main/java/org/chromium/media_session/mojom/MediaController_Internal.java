@@ -13,6 +13,8 @@
 
 package org.chromium.media_session.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class MediaController_Internal {
 
@@ -26,7 +28,7 @@ class MediaController_Internal {
 
         @Override
         public int getVersion() {
-          return 0;
+          return 3;
         }
 
         @Override
@@ -74,6 +76,16 @@ class MediaController_Internal {
     private static final int EXIT_PICTURE_IN_PICTURE_ORDINAL = 12;
 
     private static final int SET_AUDIO_SINK_ID_ORDINAL = 13;
+
+    private static final int TOGGLE_MICROPHONE_ORDINAL = 14;
+
+    private static final int TOGGLE_CAMERA_ORDINAL = 15;
+
+    private static final int HANG_UP_ORDINAL = 16;
+
+    private static final int RAISE_ORDINAL = 17;
+
+    private static final int SET_MUTE_ORDINAL = 18;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements MediaController.Proxy {
@@ -312,6 +324,83 @@ String id) {
         }
 
 
+        @Override
+        public void toggleMicrophone(
+) {
+
+            MediaControllerToggleMicrophoneParams _message = new MediaControllerToggleMicrophoneParams();
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(TOGGLE_MICROPHONE_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void toggleCamera(
+) {
+
+            MediaControllerToggleCameraParams _message = new MediaControllerToggleCameraParams();
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(TOGGLE_CAMERA_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void hangUp(
+) {
+
+            MediaControllerHangUpParams _message = new MediaControllerHangUpParams();
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(HANG_UP_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void raise(
+) {
+
+            MediaControllerRaiseParams _message = new MediaControllerRaiseParams();
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(RAISE_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void setMute(
+boolean mute) {
+
+            MediaControllerSetMuteParams _message = new MediaControllerSetMuteParams();
+
+            _message.mute = mute;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(SET_MUTE_ORDINAL)));
+
+        }
+
+
     }
 
     static final class Stub extends org.chromium.mojo.bindings.Interface.Stub<MediaController> {
@@ -514,6 +603,67 @@ String id) {
                     }
 
 
+
+
+
+                    case TOGGLE_MICROPHONE_ORDINAL: {
+
+                        MediaControllerToggleMicrophoneParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().toggleMicrophone();
+                        return true;
+                    }
+
+
+
+
+
+                    case TOGGLE_CAMERA_ORDINAL: {
+
+                        MediaControllerToggleCameraParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().toggleCamera();
+                        return true;
+                    }
+
+
+
+
+
+                    case HANG_UP_ORDINAL: {
+
+                        MediaControllerHangUpParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().hangUp();
+                        return true;
+                    }
+
+
+
+
+
+                    case RAISE_ORDINAL: {
+
+                        MediaControllerRaiseParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().raise();
+                        return true;
+                    }
+
+
+
+
+
+                    case SET_MUTE_ORDINAL: {
+
+                        MediaControllerSetMuteParams data =
+                                MediaControllerSetMuteParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().setMute(data.mute);
+                        return true;
+                    }
+
+
                     default:
                         return false;
                 }
@@ -541,6 +691,16 @@ String id) {
                     case org.chromium.mojo.bindings.interfacecontrol.InterfaceControlMessagesConstants.RUN_MESSAGE_ID:
                         return org.chromium.mojo.bindings.InterfaceControlMessagesHelper.handleRun(
                                 getCore(), MediaController_Internal.MANAGER, messageWithHeader, receiver);
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1429,6 +1589,293 @@ String id) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.id, 8, true);
+        }
+    }
+
+
+
+    
+    static final class MediaControllerToggleMicrophoneParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private MediaControllerToggleMicrophoneParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public MediaControllerToggleMicrophoneParams() {
+            this(0);
+        }
+
+        public static MediaControllerToggleMicrophoneParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static MediaControllerToggleMicrophoneParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static MediaControllerToggleMicrophoneParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            MediaControllerToggleMicrophoneParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new MediaControllerToggleMicrophoneParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+
+
+    
+    static final class MediaControllerToggleCameraParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private MediaControllerToggleCameraParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public MediaControllerToggleCameraParams() {
+            this(0);
+        }
+
+        public static MediaControllerToggleCameraParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static MediaControllerToggleCameraParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static MediaControllerToggleCameraParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            MediaControllerToggleCameraParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new MediaControllerToggleCameraParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+
+
+    
+    static final class MediaControllerHangUpParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private MediaControllerHangUpParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public MediaControllerHangUpParams() {
+            this(0);
+        }
+
+        public static MediaControllerHangUpParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static MediaControllerHangUpParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static MediaControllerHangUpParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            MediaControllerHangUpParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new MediaControllerHangUpParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+
+
+    
+    static final class MediaControllerRaiseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private MediaControllerRaiseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public MediaControllerRaiseParams() {
+            this(0);
+        }
+
+        public static MediaControllerRaiseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static MediaControllerRaiseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static MediaControllerRaiseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            MediaControllerRaiseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new MediaControllerRaiseParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+
+
+    
+    static final class MediaControllerSetMuteParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public boolean mute;
+
+        private MediaControllerSetMuteParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public MediaControllerSetMuteParams() {
+            this(0);
+        }
+
+        public static MediaControllerSetMuteParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static MediaControllerSetMuteParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static MediaControllerSetMuteParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            MediaControllerSetMuteParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new MediaControllerSetMuteParams(elementsOrVersion);
+                    {
+                        
+                    result.mute = decoder0.readBoolean(8, 0);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.mute, 8, 0);
         }
     }
 

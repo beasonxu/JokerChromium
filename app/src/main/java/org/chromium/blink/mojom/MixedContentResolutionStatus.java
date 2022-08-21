@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class MixedContentResolutionStatus {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        MixedContentResolutionStatus.MIXED_CONTENT_BLOCKED,
+        MixedContentResolutionStatus.MIXED_CONTENT_AUTOMATICALLY_UPGRADED,
+        MixedContentResolutionStatus.MIXED_CONTENT_WARNING})
+    public @interface EnumType {}
 
     public static final int MIXED_CONTENT_BLOCKED = 0;
     public static final int MIXED_CONTENT_AUTOMATICALLY_UPGRADED = 1;

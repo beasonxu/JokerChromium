@@ -3,7 +3,6 @@ package org.chromium.chrome.browser.tab;
 import java.lang.Override;
 import java.lang.String;
 import java.nio.ByteBuffer;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
@@ -11,9 +10,8 @@ import org.chromium.base.natives.GEN_JNI;
 import org.chromium.content_public.browser.WebContents;
 import org.chromium.url.Origin;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-public final class WebContentsStateBridgeJni implements WebContentsStateBridge.Natives {
+public class WebContentsStateBridgeJni implements WebContentsStateBridge.Natives {
   private static WebContentsStateBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<WebContentsStateBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.tab.WebContentsStateBridge.Natives>() {
@@ -29,8 +27,8 @@ public final class WebContentsStateBridgeJni implements WebContentsStateBridge.N
 
   @Override
   public WebContents restoreContentsFromByteBuffer(ByteBuffer buffer, int savedStateVersion,
-      boolean initiallyHidden) {
-    return (WebContents)GEN_JNI.org_chromium_chrome_browser_tab_WebContentsStateBridge_restoreContentsFromByteBuffer(buffer, savedStateVersion, initiallyHidden);
+      boolean initiallyHidden, boolean noRenderer) {
+    return (WebContents)GEN_JNI.org_chromium_chrome_browser_tab_WebContentsStateBridge_restoreContentsFromByteBuffer(buffer, savedStateVersion, initiallyHidden, noRenderer);
   }
 
   @Override

@@ -13,13 +13,14 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class NetworkContextParams extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 256;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(256, 0)};
+    private static final int STRUCT_SIZE = 240;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(240, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-    public String contextName;
     public String userAgent;
     public String acceptLanguage;
     public boolean enableBrotli;
@@ -27,17 +28,13 @@ public final class NetworkContextParams extends org.chromium.mojo.bindings.Struc
     public boolean enableReferrers;
     public boolean validateReferrerPolicyOnInitialRequest;
     public org.chromium.proxy_resolver.mojom.ProxyResolverFactory proxyResolverFactory;
-    public org.chromium.mojo_base.mojom.FilePath cookiePath;
-    public org.chromium.mojo_base.mojom.FilePath trustTokenPath;
     public boolean enableEncryptedCookies;
     public boolean restoreOldSessionCookies;
     public boolean persistSessionCookies;
     public boolean httpCacheEnabled;
     public int httpCacheMaxSize;
-    public org.chromium.mojo_base.mojom.FilePath httpCachePath;
-    public org.chromium.mojo_base.mojom.FilePath httpServerPropertiesPath;
-    public org.chromium.mojo_base.mojom.FilePath transportSecurityPersisterPath;
-    public boolean enableFtpUrlSupport;
+    public TransferableDirectory httpCacheDirectory;
+    public HttpCacheBackendFileOperationsFactory httpCacheFileOperationsFactory;
     public boolean checkClearTextPermitted;
     public boolean disableIdleSocketsCloseOnMemoryPressure;
     public SslConfig initialSslConfig;
@@ -49,14 +46,13 @@ public final class NetworkContextParams extends org.chromium.mojo.bindings.Struc
     public CustomProxyConnectionObserver customProxyConnectionObserverRemote;
     public ProxyConfigPollerClient proxyConfigPollerClient;
     public ProxyErrorClient proxyErrorClient;
+    public SocketBroker socketBroker;
     public boolean pacQuickCheckEnabled;
     public boolean enableCertificateReporting;
     public boolean enforceChromeCtPolicy;
     public boolean enableExpectCtReporting;
-    public boolean enableSctAuditing;
-    public CtLogInfo[] ctLogs;
+    public int sctAuditingMode;
     public CtPolicy ctPolicy;
-    public org.chromium.mojo_base.mojom.Time ctLogUpdateTime;
     public CertVerifierServiceRemoteParams certVerifierParams;
     public CookieManagerParams cookieManagerParams;
     public org.chromium.mojo.bindings.InterfaceRequest<CookieManager> cookieManager;
@@ -69,11 +65,14 @@ public final class NetworkContextParams extends org.chromium.mojo.bindings.Struc
     public String[] corsExemptHeaderList;
     public boolean allowAnyCorsExemptHeaderForBrowser;
     public String[] hstsPolicyBypassList;
-    public org.chromium.mojo_base.mojom.FilePath reportingAndNelStorePath;
     public HttpAuthStaticNetworkContextParams httpAuthStaticNetworkContextParams;
     public boolean resetHttpCacheBackend;
     public boolean splitAuthCacheByNetworkIsolationKey;
     public boolean requireNetworkIsolationKey;
+    public NetworkContextFilePaths filePaths;
+    public boolean blockTrustTokens;
+    public FirstPartySetsAccessDelegateParams firstPartySetsAccessDelegateParams;
+    public org.chromium.mojo.bindings.InterfaceRequest<FirstPartySetsAccessDelegate> firstPartySetsAccessDelegateReceiver;
 
     private NetworkContextParams(int version) {
         super(STRUCT_SIZE, version);
@@ -85,14 +84,13 @@ public final class NetworkContextParams extends org.chromium.mojo.bindings.Struc
         this.persistSessionCookies = (boolean) false;
         this.httpCacheEnabled = (boolean) true;
         this.httpCacheMaxSize = (int) 0;
-        this.enableFtpUrlSupport = (boolean) false;
         this.checkClearTextPermitted = (boolean) false;
         this.disableIdleSocketsCloseOnMemoryPressure = (boolean) false;
         this.pacQuickCheckEnabled = (boolean) true;
         this.enableCertificateReporting = (boolean) false;
         this.enforceChromeCtPolicy = (boolean) false;
         this.enableExpectCtReporting = (boolean) false;
-        this.enableSctAuditing = (boolean) false;
+        this.sctAuditingMode = (int) SctAuditingMode.DISABLED;
         this.enableDomainReliability = (boolean) false;
         this.discardDomainReliablityUploads = (boolean) false;
         this.skipReportingSendPermissionCheck = (boolean) false;
@@ -133,229 +131,200 @@ public final class NetworkContextParams extends org.chromium.mojo.bindings.Struc
             result = new NetworkContextParams(elementsOrVersion);
                 {
                     
-                result.contextName = decoder0.readString(8, true);
+                result.userAgent = decoder0.readString(8, false);
                 }
                 {
                     
-                result.userAgent = decoder0.readString(16, false);
+                result.acceptLanguage = decoder0.readString(16, false);
                 }
                 {
                     
-                result.acceptLanguage = decoder0.readString(24, false);
+                result.enableBrotli = decoder0.readBoolean(24, 0);
                 }
                 {
                     
-                result.enableBrotli = decoder0.readBoolean(32, 0);
+                result.enableReferrers = decoder0.readBoolean(24, 1);
                 }
                 {
                     
-                result.enableReferrers = decoder0.readBoolean(32, 1);
+                result.validateReferrerPolicyOnInitialRequest = decoder0.readBoolean(24, 2);
                 }
                 {
                     
-                result.validateReferrerPolicyOnInitialRequest = decoder0.readBoolean(32, 2);
+                result.enableEncryptedCookies = decoder0.readBoolean(24, 3);
                 }
                 {
                     
-                result.enableEncryptedCookies = decoder0.readBoolean(32, 3);
+                result.restoreOldSessionCookies = decoder0.readBoolean(24, 4);
                 }
                 {
                     
-                result.restoreOldSessionCookies = decoder0.readBoolean(32, 4);
+                result.persistSessionCookies = decoder0.readBoolean(24, 5);
                 }
                 {
                     
-                result.persistSessionCookies = decoder0.readBoolean(32, 5);
+                result.httpCacheEnabled = decoder0.readBoolean(24, 6);
                 }
                 {
                     
-                result.httpCacheEnabled = decoder0.readBoolean(32, 6);
+                result.checkClearTextPermitted = decoder0.readBoolean(24, 7);
                 }
                 {
                     
-                result.enableFtpUrlSupport = decoder0.readBoolean(32, 7);
+                result.disableIdleSocketsCloseOnMemoryPressure = decoder0.readBoolean(25, 0);
                 }
                 {
                     
-                result.checkClearTextPermitted = decoder0.readBoolean(33, 0);
+                result.pacQuickCheckEnabled = decoder0.readBoolean(25, 1);
                 }
                 {
                     
-                result.disableIdleSocketsCloseOnMemoryPressure = decoder0.readBoolean(33, 1);
+                result.enableCertificateReporting = decoder0.readBoolean(25, 2);
                 }
                 {
                     
-                result.pacQuickCheckEnabled = decoder0.readBoolean(33, 2);
+                result.enforceChromeCtPolicy = decoder0.readBoolean(25, 3);
                 }
                 {
                     
-                result.enableCertificateReporting = decoder0.readBoolean(33, 3);
+                result.enableExpectCtReporting = decoder0.readBoolean(25, 4);
                 }
                 {
                     
-                result.enforceChromeCtPolicy = decoder0.readBoolean(33, 4);
+                result.enableDomainReliability = decoder0.readBoolean(25, 5);
                 }
                 {
                     
-                result.enableExpectCtReporting = decoder0.readBoolean(33, 5);
+                result.discardDomainReliablityUploads = decoder0.readBoolean(25, 6);
                 }
                 {
                     
-                result.enableSctAuditing = decoder0.readBoolean(33, 6);
+                result.skipReportingSendPermissionCheck = decoder0.readBoolean(25, 7);
                 }
                 {
                     
-                result.enableDomainReliability = decoder0.readBoolean(33, 7);
+                result.allowAnyCorsExemptHeaderForBrowser = decoder0.readBoolean(26, 0);
                 }
                 {
                     
-                result.discardDomainReliablityUploads = decoder0.readBoolean(34, 0);
+                result.resetHttpCacheBackend = decoder0.readBoolean(26, 1);
                 }
                 {
                     
-                result.skipReportingSendPermissionCheck = decoder0.readBoolean(34, 1);
+                result.splitAuthCacheByNetworkIsolationKey = decoder0.readBoolean(26, 2);
                 }
                 {
                     
-                result.allowAnyCorsExemptHeaderForBrowser = decoder0.readBoolean(34, 2);
+                result.requireNetworkIsolationKey = decoder0.readBoolean(26, 3);
                 }
                 {
                     
-                result.resetHttpCacheBackend = decoder0.readBoolean(34, 3);
+                result.blockTrustTokens = decoder0.readBoolean(26, 4);
                 }
                 {
                     
-                result.splitAuthCacheByNetworkIsolationKey = decoder0.readBoolean(34, 4);
+                result.httpCacheMaxSize = decoder0.readInt(28);
                 }
                 {
                     
-                result.requireNetworkIsolationKey = decoder0.readBoolean(34, 5);
+                result.quicUserAgentId = decoder0.readString(32, false);
                 }
                 {
                     
-                result.httpCacheMaxSize = decoder0.readInt(36);
+                result.proxyResolverFactory = decoder0.readServiceInterface(40, true, org.chromium.proxy_resolver.mojom.ProxyResolverFactory.MANAGER);
                 }
                 {
                     
-                result.quicUserAgentId = decoder0.readString(40, false);
+                result.httpCacheDirectory = TransferableDirectory.decode(decoder0, 48);
                 }
                 {
                     
-                result.proxyResolverFactory = decoder0.readServiceInterface(48, true, org.chromium.proxy_resolver.mojom.ProxyResolverFactory.MANAGER);
-                }
-                {
-                    
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(56, true);
-                result.cookiePath = org.chromium.mojo_base.mojom.FilePath.decode(decoder1);
-                }
-                {
-                    
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(64, true);
-                result.trustTokenPath = org.chromium.mojo_base.mojom.FilePath.decode(decoder1);
+                result.httpCacheFileOperationsFactory = decoder0.readServiceInterface(64, true, HttpCacheBackendFileOperationsFactory.MANAGER);
                 }
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(72, true);
-                result.httpCachePath = org.chromium.mojo_base.mojom.FilePath.decode(decoder1);
-                }
-                {
-                    
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(80, true);
-                result.httpServerPropertiesPath = org.chromium.mojo_base.mojom.FilePath.decode(decoder1);
-                }
-                {
-                    
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(88, true);
-                result.transportSecurityPersisterPath = org.chromium.mojo_base.mojom.FilePath.decode(decoder1);
-                }
-                {
-                    
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(96, true);
                 result.initialSslConfig = SslConfig.decode(decoder1);
                 }
                 {
                     
-                result.sslConfigClientReceiver = decoder0.readInterfaceRequest(104, true);
+                result.sslConfigClientReceiver = decoder0.readInterfaceRequest(80, true);
                 }
                 {
                     
-                result.proxyConfigClientReceiver = decoder0.readInterfaceRequest(108, true);
+                result.proxyConfigClientReceiver = decoder0.readInterfaceRequest(84, true);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(112, true);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(88, true);
                 result.initialProxyConfig = ProxyConfigWithAnnotation.decode(decoder1);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(120, true);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(96, true);
                 result.initialCustomProxyConfig = CustomProxyConfig.decode(decoder1);
                 }
                 {
                     
-                result.customProxyConfigClientReceiver = decoder0.readInterfaceRequest(128, true);
+                result.customProxyConfigClientReceiver = decoder0.readInterfaceRequest(104, true);
                 }
                 {
                     
-                result.customProxyConnectionObserverRemote = decoder0.readServiceInterface(132, true, CustomProxyConnectionObserver.MANAGER);
+                result.customProxyConnectionObserverRemote = decoder0.readServiceInterface(108, true, CustomProxyConnectionObserver.MANAGER);
                 }
                 {
                     
-                result.proxyConfigPollerClient = decoder0.readServiceInterface(140, true, ProxyConfigPollerClient.MANAGER);
+                result.proxyConfigPollerClient = decoder0.readServiceInterface(116, true, ProxyConfigPollerClient.MANAGER);
                 }
                 {
                     
-                result.proxyErrorClient = decoder0.readServiceInterface(148, true, ProxyErrorClient.MANAGER);
+                result.proxyErrorClient = decoder0.readServiceInterface(124, true, ProxyErrorClient.MANAGER);
                 }
                 {
                     
-                result.cookieManager = decoder0.readInterfaceRequest(156, true);
+                result.socketBroker = decoder0.readServiceInterface(132, true, SocketBroker.MANAGER);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(160, false);
-                {
-                    org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                    result.ctLogs = new CtLogInfo[si1.elementsOrVersion];
-                    for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
-                        
-                        org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
-                        result.ctLogs[i1] = CtLogInfo.decode(decoder2);
-                    }
-                }
+                result.sctAuditingMode = decoder0.readInt(140);
+                    SctAuditingMode.validate(result.sctAuditingMode);
+                    result.sctAuditingMode = SctAuditingMode.toKnownValue(result.sctAuditingMode);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(168, true);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(144, true);
                 result.ctPolicy = CtPolicy.decode(decoder1);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(176, false);
-                result.ctLogUpdateTime = org.chromium.mojo_base.mojom.Time.decode(decoder1);
-                }
-                {
-                    
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(184, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(152, false);
                 result.certVerifierParams = CertVerifierServiceRemoteParams.decode(decoder1);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(192, true);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(160, true);
                 result.cookieManagerParams = CookieManagerParams.decode(decoder1);
                 }
                 {
                     
-                result.domainReliabilityUploadReporter = decoder0.readString(200, false);
+                result.cookieManager = decoder0.readInterfaceRequest(168, true);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(208, true);
+                result.firstPartySetsAccessDelegateReceiver = decoder0.readInterfaceRequest(172, true);
+                }
+                {
+                    
+                result.domainReliabilityUploadReporter = decoder0.readString(176, false);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(184, true);
                 result.reportingDeliveryInterval = org.chromium.mojo_base.mojom.TimeDelta.decode(decoder1);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(216, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(192, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     result.corsOriginAccessList = new CorsOriginAccessPatterns[si1.elementsOrVersion];
@@ -368,7 +337,7 @@ public final class NetworkContextParams extends org.chromium.mojo.bindings.Struc
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(224, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(200, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     result.corsExemptHeaderList = new String[si1.elementsOrVersion];
@@ -380,7 +349,7 @@ public final class NetworkContextParams extends org.chromium.mojo.bindings.Struc
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(232, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(208, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     result.hstsPolicyBypassList = new String[si1.elementsOrVersion];
@@ -392,13 +361,18 @@ public final class NetworkContextParams extends org.chromium.mojo.bindings.Struc
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(240, true);
-                result.reportingAndNelStorePath = org.chromium.mojo_base.mojom.FilePath.decode(decoder1);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(216, true);
+                result.httpAuthStaticNetworkContextParams = HttpAuthStaticNetworkContextParams.decode(decoder1);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(248, true);
-                result.httpAuthStaticNetworkContextParams = HttpAuthStaticNetworkContextParams.decode(decoder1);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(224, true);
+                result.filePaths = NetworkContextFilePaths.decode(decoder1);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(232, true);
+                result.firstPartySetsAccessDelegateParams = FirstPartySetsAccessDelegateParams.decode(decoder1);
                 }
 
         } finally {
@@ -412,118 +386,102 @@ public final class NetworkContextParams extends org.chromium.mojo.bindings.Struc
     protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
         org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         
-        encoder0.encode(this.contextName, 8, true);
+        encoder0.encode(this.userAgent, 8, false);
         
-        encoder0.encode(this.userAgent, 16, false);
+        encoder0.encode(this.acceptLanguage, 16, false);
         
-        encoder0.encode(this.acceptLanguage, 24, false);
+        encoder0.encode(this.enableBrotli, 24, 0);
         
-        encoder0.encode(this.enableBrotli, 32, 0);
+        encoder0.encode(this.enableReferrers, 24, 1);
         
-        encoder0.encode(this.enableReferrers, 32, 1);
+        encoder0.encode(this.validateReferrerPolicyOnInitialRequest, 24, 2);
         
-        encoder0.encode(this.validateReferrerPolicyOnInitialRequest, 32, 2);
+        encoder0.encode(this.enableEncryptedCookies, 24, 3);
         
-        encoder0.encode(this.enableEncryptedCookies, 32, 3);
+        encoder0.encode(this.restoreOldSessionCookies, 24, 4);
         
-        encoder0.encode(this.restoreOldSessionCookies, 32, 4);
+        encoder0.encode(this.persistSessionCookies, 24, 5);
         
-        encoder0.encode(this.persistSessionCookies, 32, 5);
+        encoder0.encode(this.httpCacheEnabled, 24, 6);
         
-        encoder0.encode(this.httpCacheEnabled, 32, 6);
+        encoder0.encode(this.checkClearTextPermitted, 24, 7);
         
-        encoder0.encode(this.enableFtpUrlSupport, 32, 7);
+        encoder0.encode(this.disableIdleSocketsCloseOnMemoryPressure, 25, 0);
         
-        encoder0.encode(this.checkClearTextPermitted, 33, 0);
+        encoder0.encode(this.pacQuickCheckEnabled, 25, 1);
         
-        encoder0.encode(this.disableIdleSocketsCloseOnMemoryPressure, 33, 1);
+        encoder0.encode(this.enableCertificateReporting, 25, 2);
         
-        encoder0.encode(this.pacQuickCheckEnabled, 33, 2);
+        encoder0.encode(this.enforceChromeCtPolicy, 25, 3);
         
-        encoder0.encode(this.enableCertificateReporting, 33, 3);
+        encoder0.encode(this.enableExpectCtReporting, 25, 4);
         
-        encoder0.encode(this.enforceChromeCtPolicy, 33, 4);
+        encoder0.encode(this.enableDomainReliability, 25, 5);
         
-        encoder0.encode(this.enableExpectCtReporting, 33, 5);
+        encoder0.encode(this.discardDomainReliablityUploads, 25, 6);
         
-        encoder0.encode(this.enableSctAuditing, 33, 6);
+        encoder0.encode(this.skipReportingSendPermissionCheck, 25, 7);
         
-        encoder0.encode(this.enableDomainReliability, 33, 7);
+        encoder0.encode(this.allowAnyCorsExemptHeaderForBrowser, 26, 0);
         
-        encoder0.encode(this.discardDomainReliablityUploads, 34, 0);
+        encoder0.encode(this.resetHttpCacheBackend, 26, 1);
         
-        encoder0.encode(this.skipReportingSendPermissionCheck, 34, 1);
+        encoder0.encode(this.splitAuthCacheByNetworkIsolationKey, 26, 2);
         
-        encoder0.encode(this.allowAnyCorsExemptHeaderForBrowser, 34, 2);
+        encoder0.encode(this.requireNetworkIsolationKey, 26, 3);
         
-        encoder0.encode(this.resetHttpCacheBackend, 34, 3);
+        encoder0.encode(this.blockTrustTokens, 26, 4);
         
-        encoder0.encode(this.splitAuthCacheByNetworkIsolationKey, 34, 4);
+        encoder0.encode(this.httpCacheMaxSize, 28);
         
-        encoder0.encode(this.requireNetworkIsolationKey, 34, 5);
+        encoder0.encode(this.quicUserAgentId, 32, false);
         
-        encoder0.encode(this.httpCacheMaxSize, 36);
+        encoder0.encode(this.proxyResolverFactory, 40, true, org.chromium.proxy_resolver.mojom.ProxyResolverFactory.MANAGER);
         
-        encoder0.encode(this.quicUserAgentId, 40, false);
+        encoder0.encode(this.httpCacheDirectory, 48, true);
         
-        encoder0.encode(this.proxyResolverFactory, 48, true, org.chromium.proxy_resolver.mojom.ProxyResolverFactory.MANAGER);
+        encoder0.encode(this.httpCacheFileOperationsFactory, 64, true, HttpCacheBackendFileOperationsFactory.MANAGER);
         
-        encoder0.encode(this.cookiePath, 56, true);
+        encoder0.encode(this.initialSslConfig, 72, true);
         
-        encoder0.encode(this.trustTokenPath, 64, true);
+        encoder0.encode(this.sslConfigClientReceiver, 80, true);
         
-        encoder0.encode(this.httpCachePath, 72, true);
+        encoder0.encode(this.proxyConfigClientReceiver, 84, true);
         
-        encoder0.encode(this.httpServerPropertiesPath, 80, true);
+        encoder0.encode(this.initialProxyConfig, 88, true);
         
-        encoder0.encode(this.transportSecurityPersisterPath, 88, true);
+        encoder0.encode(this.initialCustomProxyConfig, 96, true);
         
-        encoder0.encode(this.initialSslConfig, 96, true);
+        encoder0.encode(this.customProxyConfigClientReceiver, 104, true);
         
-        encoder0.encode(this.sslConfigClientReceiver, 104, true);
+        encoder0.encode(this.customProxyConnectionObserverRemote, 108, true, CustomProxyConnectionObserver.MANAGER);
         
-        encoder0.encode(this.proxyConfigClientReceiver, 108, true);
+        encoder0.encode(this.proxyConfigPollerClient, 116, true, ProxyConfigPollerClient.MANAGER);
         
-        encoder0.encode(this.initialProxyConfig, 112, true);
+        encoder0.encode(this.proxyErrorClient, 124, true, ProxyErrorClient.MANAGER);
         
-        encoder0.encode(this.initialCustomProxyConfig, 120, true);
+        encoder0.encode(this.socketBroker, 132, true, SocketBroker.MANAGER);
         
-        encoder0.encode(this.customProxyConfigClientReceiver, 128, true);
+        encoder0.encode(this.sctAuditingMode, 140);
         
-        encoder0.encode(this.customProxyConnectionObserverRemote, 132, true, CustomProxyConnectionObserver.MANAGER);
+        encoder0.encode(this.ctPolicy, 144, true);
         
-        encoder0.encode(this.proxyConfigPollerClient, 140, true, ProxyConfigPollerClient.MANAGER);
+        encoder0.encode(this.certVerifierParams, 152, false);
         
-        encoder0.encode(this.proxyErrorClient, 148, true, ProxyErrorClient.MANAGER);
+        encoder0.encode(this.cookieManagerParams, 160, true);
         
-        encoder0.encode(this.cookieManager, 156, true);
+        encoder0.encode(this.cookieManager, 168, true);
         
-        if (this.ctLogs == null) {
-            encoder0.encodeNullPointer(160, false);
-        } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.ctLogs.length, 160, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-            for (int i0 = 0; i0 < this.ctLogs.length; ++i0) {
-                
-                encoder1.encode(this.ctLogs[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
-            }
-        }
+        encoder0.encode(this.firstPartySetsAccessDelegateReceiver, 172, true);
         
-        encoder0.encode(this.ctPolicy, 168, true);
+        encoder0.encode(this.domainReliabilityUploadReporter, 176, false);
         
-        encoder0.encode(this.ctLogUpdateTime, 176, false);
-        
-        encoder0.encode(this.certVerifierParams, 184, false);
-        
-        encoder0.encode(this.cookieManagerParams, 192, true);
-        
-        encoder0.encode(this.domainReliabilityUploadReporter, 200, false);
-        
-        encoder0.encode(this.reportingDeliveryInterval, 208, true);
+        encoder0.encode(this.reportingDeliveryInterval, 184, true);
         
         if (this.corsOriginAccessList == null) {
-            encoder0.encodeNullPointer(216, false);
+            encoder0.encodeNullPointer(192, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.corsOriginAccessList.length, 216, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.corsOriginAccessList.length, 192, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
             for (int i0 = 0; i0 < this.corsOriginAccessList.length; ++i0) {
                 
                 encoder1.encode(this.corsOriginAccessList[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
@@ -531,9 +489,9 @@ public final class NetworkContextParams extends org.chromium.mojo.bindings.Struc
         }
         
         if (this.corsExemptHeaderList == null) {
-            encoder0.encodeNullPointer(224, false);
+            encoder0.encodeNullPointer(200, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.corsExemptHeaderList.length, 224, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.corsExemptHeaderList.length, 200, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
             for (int i0 = 0; i0 < this.corsExemptHeaderList.length; ++i0) {
                 
                 encoder1.encode(this.corsExemptHeaderList[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
@@ -541,17 +499,19 @@ public final class NetworkContextParams extends org.chromium.mojo.bindings.Struc
         }
         
         if (this.hstsPolicyBypassList == null) {
-            encoder0.encodeNullPointer(232, false);
+            encoder0.encodeNullPointer(208, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.hstsPolicyBypassList.length, 232, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.hstsPolicyBypassList.length, 208, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
             for (int i0 = 0; i0 < this.hstsPolicyBypassList.length; ++i0) {
                 
                 encoder1.encode(this.hstsPolicyBypassList[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
             }
         }
         
-        encoder0.encode(this.reportingAndNelStorePath, 240, true);
+        encoder0.encode(this.httpAuthStaticNetworkContextParams, 216, true);
         
-        encoder0.encode(this.httpAuthStaticNetworkContextParams, 248, true);
+        encoder0.encode(this.filePaths, 224, true);
+        
+        encoder0.encode(this.firstPartySetsAccessDelegateParams, 232, true);
     }
 }

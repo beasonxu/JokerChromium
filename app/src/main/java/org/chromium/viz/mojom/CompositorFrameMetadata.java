@@ -13,20 +13,23 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class CompositorFrameMetadata extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 128;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(128, 0)};
+    private static final int STRUCT_SIZE = 136;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(136, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public float deviceScaleFactor;
-    public org.chromium.gfx.mojom.Vector2dF rootScrollOffset;
+    public org.chromium.gfx.mojom.PointF rootScrollOffset;
     public float pageScaleFactor;
     public org.chromium.gfx.mojom.SizeF scrollableViewportSize;
     public int contentColorUsage;
     public boolean mayContainVideo;
+    public boolean mayThrottleIfUndrawnFrames;
     public boolean isResourcelessSoftwareDrawWithScrollOrAnimation;
-    public int rootBackgroundColor;
+    public org.chromium.skia.mojom.SkColor4f rootBackgroundColor;
     public org.chromium.ui.mojom.LatencyInfo[] latencyInfo;
     public SurfaceRange[] referencedSurfaces;
     public FrameDeadline deadline;
@@ -39,8 +42,10 @@ public final class CompositorFrameMetadata extends org.chromium.mojo.bindings.St
     public float minPageScaleFactor;
     public org.chromium.mojo_base.mojom.TimeDelta preferredFrameInterval;
     public int displayTransformHint;
-    public DelegatedInkMetadata delegatedInkMetadata;
+    public org.chromium.gfx.mojom.DelegatedInkMetadata delegatedInkMetadata;
     public CompositorFrameTransitionDirective[] transitionDirectives;
+    public RegionCaptureBounds captureBounds;
+    public boolean hasSharedElementResources;
 
     private CompositorFrameMetadata(int version) {
         super(STRUCT_SIZE, version);
@@ -86,7 +91,7 @@ public final class CompositorFrameMetadata extends org.chromium.mojo.bindings.St
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
-                result.rootScrollOffset = org.chromium.gfx.mojom.Vector2dF.decode(decoder1);
+                result.rootScrollOffset = org.chromium.gfx.mojom.PointF.decode(decoder1);
                 }
                 {
                     
@@ -105,23 +110,28 @@ public final class CompositorFrameMetadata extends org.chromium.mojo.bindings.St
                 }
                 {
                     
-                result.isResourcelessSoftwareDrawWithScrollOrAnimation = decoder0.readBoolean(36, 1);
+                result.mayThrottleIfUndrawnFrames = decoder0.readBoolean(36, 1);
                 }
                 {
                     
-                result.sendFrameTokenToEmbedder = decoder0.readBoolean(36, 2);
+                result.isResourcelessSoftwareDrawWithScrollOrAnimation = decoder0.readBoolean(36, 2);
                 }
                 {
                     
-                result.topControlsVisibleHeightSet = decoder0.readBoolean(36, 3);
+                result.sendFrameTokenToEmbedder = decoder0.readBoolean(36, 3);
                 }
                 {
                     
-                result.rootBackgroundColor = decoder0.readInt(40);
+                result.topControlsVisibleHeightSet = decoder0.readBoolean(36, 4);
                 }
                 {
                     
-                result.frameToken = decoder0.readInt(44);
+                result.hasSharedElementResources = decoder0.readBoolean(36, 5);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, false);
+                result.rootBackgroundColor = org.chromium.skia.mojom.SkColor4f.decode(decoder1);
                 }
                 {
                     
@@ -174,27 +184,31 @@ public final class CompositorFrameMetadata extends org.chromium.mojo.bindings.St
                 }
                 {
                     
-                result.topControlsVisibleHeight = decoder0.readFloat(88);
+                result.frameToken = decoder0.readInt(88);
                 }
                 {
                     
-                result.minPageScaleFactor = decoder0.readFloat(92);
+                result.topControlsVisibleHeight = decoder0.readFloat(92);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(96, true);
-                result.preferredFrameInterval = org.chromium.mojo_base.mojom.TimeDelta.decode(decoder1);
+                result.minPageScaleFactor = decoder0.readFloat(96);
                 }
                 {
                     
-                result.displayTransformHint = decoder0.readInt(104);
+                result.displayTransformHint = decoder0.readInt(100);
                     org.chromium.gfx.mojom.OverlayTransform.validate(result.displayTransformHint);
                     result.displayTransformHint = org.chromium.gfx.mojom.OverlayTransform.toKnownValue(result.displayTransformHint);
                 }
                 {
                     
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(104, true);
+                result.preferredFrameInterval = org.chromium.mojo_base.mojom.TimeDelta.decode(decoder1);
+                }
+                {
+                    
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(112, true);
-                result.delegatedInkMetadata = DelegatedInkMetadata.decode(decoder1);
+                result.delegatedInkMetadata = org.chromium.gfx.mojom.DelegatedInkMetadata.decode(decoder1);
                 }
                 {
                     
@@ -208,6 +222,11 @@ public final class CompositorFrameMetadata extends org.chromium.mojo.bindings.St
                         result.transitionDirectives[i1] = CompositorFrameTransitionDirective.decode(decoder2);
                     }
                 }
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(128, false);
+                result.captureBounds = RegionCaptureBounds.decode(decoder1);
                 }
 
         } finally {
@@ -233,15 +252,17 @@ public final class CompositorFrameMetadata extends org.chromium.mojo.bindings.St
         
         encoder0.encode(this.mayContainVideo, 36, 0);
         
-        encoder0.encode(this.isResourcelessSoftwareDrawWithScrollOrAnimation, 36, 1);
+        encoder0.encode(this.mayThrottleIfUndrawnFrames, 36, 1);
         
-        encoder0.encode(this.sendFrameTokenToEmbedder, 36, 2);
+        encoder0.encode(this.isResourcelessSoftwareDrawWithScrollOrAnimation, 36, 2);
         
-        encoder0.encode(this.topControlsVisibleHeightSet, 36, 3);
+        encoder0.encode(this.sendFrameTokenToEmbedder, 36, 3);
         
-        encoder0.encode(this.rootBackgroundColor, 40);
+        encoder0.encode(this.topControlsVisibleHeightSet, 36, 4);
         
-        encoder0.encode(this.frameToken, 44);
+        encoder0.encode(this.hasSharedElementResources, 36, 5);
+        
+        encoder0.encode(this.rootBackgroundColor, 40, false);
         
         if (this.latencyInfo == null) {
             encoder0.encodeNullPointer(48, false);
@@ -277,13 +298,15 @@ public final class CompositorFrameMetadata extends org.chromium.mojo.bindings.St
         
         encoder0.encode(this.beginFrameAck, 80, false);
         
-        encoder0.encode(this.topControlsVisibleHeight, 88);
+        encoder0.encode(this.frameToken, 88);
         
-        encoder0.encode(this.minPageScaleFactor, 92);
+        encoder0.encode(this.topControlsVisibleHeight, 92);
         
-        encoder0.encode(this.preferredFrameInterval, 96, true);
+        encoder0.encode(this.minPageScaleFactor, 96);
         
-        encoder0.encode(this.displayTransformHint, 104);
+        encoder0.encode(this.displayTransformHint, 100);
+        
+        encoder0.encode(this.preferredFrameInterval, 104, true);
         
         encoder0.encode(this.delegatedInkMetadata, 112, true);
         
@@ -296,5 +319,7 @@ public final class CompositorFrameMetadata extends org.chromium.mojo.bindings.St
                 encoder1.encode(this.transitionDirectives[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
             }
         }
+        
+        encoder0.encode(this.captureBounds, 128, false);
     }
 }

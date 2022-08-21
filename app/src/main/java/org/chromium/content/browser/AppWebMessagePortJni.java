@@ -1,16 +1,15 @@
 package org.chromium.content.browser;
 
 import java.lang.Override;
-import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
+import org.chromium.content_public.browser.MessagePayload;
+import org.chromium.content_public.browser.MessagePort;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class AppWebMessagePortJni implements AppWebMessagePort.Natives {
+class AppWebMessagePortJni implements AppWebMessagePort.Natives {
   private static AppWebMessagePort.Natives testInstance;
 
   public static final JniStaticTestMocker<AppWebMessagePort.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content.browser.AppWebMessagePort.Natives>() {
@@ -25,13 +24,24 @@ final class AppWebMessagePortJni implements AppWebMessagePort.Natives {
   };
 
   @Override
-  public String decodeStringMessage(byte[] encodedData) {
-    return (String)GEN_JNI.org_chromium_content_browser_AppWebMessagePort_decodeStringMessage(encodedData);
+  public AppWebMessagePort[] createPair() {
+    return (AppWebMessagePort[])GEN_JNI.org_chromium_content_browser_AppWebMessagePort_createPair();
   }
 
   @Override
-  public byte[] encodeStringMessage(String message) {
-    return (byte[])GEN_JNI.org_chromium_content_browser_AppWebMessagePort_encodeStringMessage(message);
+  public void postMessage(long nativeAppWebMessagePort, MessagePayload messagePayload,
+      MessagePort[] sentPorts) {
+    GEN_JNI.org_chromium_content_browser_AppWebMessagePort_postMessage(nativeAppWebMessagePort, messagePayload, sentPorts);
+  }
+
+  @Override
+  public void setShouldReceiveMessages(long nativeAppWebMessagePort, boolean shouldReceiveMessage) {
+    GEN_JNI.org_chromium_content_browser_AppWebMessagePort_setShouldReceiveMessages(nativeAppWebMessagePort, shouldReceiveMessage);
+  }
+
+  @Override
+  public void closeAndDestroy(long nativeAppWebMessagePort) {
+    GEN_JNI.org_chromium_content_browser_AppWebMessagePort_closeAndDestroy(nativeAppWebMessagePort);
   }
 
   public static AppWebMessagePort.Natives get() {

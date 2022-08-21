@@ -5,7 +5,7 @@ package org.chromium.components.sync.protocol;
 
 /**
  * <pre>
- * Next id: 14
+ * Next id: 17
  * </pre>
  *
  * Protobuf type {@code sync_pb.UserConsentSpecifics}
@@ -176,6 +176,7 @@ public  final class UserConsentSpecifics extends
     UNIFIED_CONSENT(13),
     ASSISTANT_ACTIVITY_CONTROL_CONSENT(14),
     ACCOUNT_PASSWORDS_CONSENT(15),
+    AUTOFILL_ASSISTANT_CONSENT(16),
     CONSENT_NOT_SET(0);
     private final int value;
     private ConsentCase(int value) {
@@ -198,6 +199,7 @@ public  final class UserConsentSpecifics extends
         case 13: return UNIFIED_CONSENT;
         case 14: return ASSISTANT_ACTIVITY_CONTROL_CONSENT;
         case 15: return ACCOUNT_PASSWORDS_CONSENT;
+        case 16: return AUTOFILL_ASSISTANT_CONSENT;
         case 0: return CONSENT_NOT_SET;
         default: return null;
       }
@@ -727,6 +729,56 @@ public  final class UserConsentSpecifics extends
     }
   }
 
+  public static final int AUTOFILL_ASSISTANT_CONSENT_FIELD_NUMBER = 16;
+  /**
+   * <code>.sync_pb.UserConsentTypes.AutofillAssistantConsent autofill_assistant_consent = 16;</code>
+   */
+  @java.lang.Override
+  public boolean hasAutofillAssistantConsent() {
+    return consentCase_ == 16;
+  }
+  /**
+   * <code>.sync_pb.UserConsentTypes.AutofillAssistantConsent autofill_assistant_consent = 16;</code>
+   */
+  @java.lang.Override
+  public org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent getAutofillAssistantConsent() {
+    if (consentCase_ == 16) {
+       return (org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent) consent_;
+    }
+    return org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent.getDefaultInstance();
+  }
+  /**
+   * <code>.sync_pb.UserConsentTypes.AutofillAssistantConsent autofill_assistant_consent = 16;</code>
+   */
+  private void setAutofillAssistantConsent(org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent value) {
+    value.getClass();
+  consent_ = value;
+    consentCase_ = 16;
+  }
+  /**
+   * <code>.sync_pb.UserConsentTypes.AutofillAssistantConsent autofill_assistant_consent = 16;</code>
+   */
+  private void mergeAutofillAssistantConsent(org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent value) {
+    value.getClass();
+  if (consentCase_ == 16 &&
+        consent_ != org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent.getDefaultInstance()) {
+      consent_ = org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent.newBuilder((org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent) consent_)
+          .mergeFrom(value).buildPartial();
+    } else {
+      consent_ = value;
+    }
+    consentCase_ = 16;
+  }
+  /**
+   * <code>.sync_pb.UserConsentTypes.AutofillAssistantConsent autofill_assistant_consent = 16;</code>
+   */
+  private void clearAutofillAssistantConsent() {
+    if (consentCase_ == 16) {
+      consentCase_ = 0;
+      consent_ = null;
+    }
+  }
+
   public static final int ACCOUNT_ID_FIELD_NUMBER = 6;
   private java.lang.String accountId_;
   /**
@@ -746,7 +798,7 @@ public  final class UserConsentSpecifics extends
    */
   @java.lang.Override
   public boolean hasAccountId() {
-    return ((bitField0_ & 0x00000200) != 0);
+    return ((bitField0_ & 0x00000400) != 0);
   }
   /**
    * <pre>
@@ -805,7 +857,7 @@ public  final class UserConsentSpecifics extends
   private void setAccountId(
       java.lang.String value) {
     value.getClass();
-  bitField0_ |= 0x00000200;
+  bitField0_ |= 0x00000400;
     accountId_ = value;
   }
   /**
@@ -823,7 +875,7 @@ public  final class UserConsentSpecifics extends
    * <code>optional string account_id = 6;</code>
    */
   private void clearAccountId() {
-    bitField0_ = (bitField0_ & ~0x00000200);
+    bitField0_ = (bitField0_ & ~0x00000400);
     accountId_ = getDefaultInstance().getAccountId();
   }
   /**
@@ -844,7 +896,7 @@ public  final class UserConsentSpecifics extends
   private void setAccountIdBytes(
       com.google.protobuf.ByteString value) {
     accountId_ = value.toStringUtf8();
-    bitField0_ |= 0x00000200;
+    bitField0_ |= 0x00000400;
   }
 
   public static final int FEATURE_FIELD_NUMBER = 1;
@@ -855,7 +907,7 @@ public  final class UserConsentSpecifics extends
    */
   @java.lang.Override
   @java.lang.Deprecated public boolean hasFeature() {
-    return ((bitField0_ & 0x00000400) != 0);
+    return ((bitField0_ & 0x00000800) != 0);
   }
   /**
    * <code>optional .sync_pb.UserConsentSpecifics.Feature feature = 1 [deprecated = true];</code>
@@ -872,13 +924,13 @@ public  final class UserConsentSpecifics extends
    */
   private void setFeature(org.chromium.components.sync.protocol.UserConsentSpecifics.Feature value) {
     feature_ = value.getNumber();
-    bitField0_ |= 0x00000400;
+    bitField0_ |= 0x00000800;
   }
   /**
    * <code>optional .sync_pb.UserConsentSpecifics.Feature feature = 1 [deprecated = true];</code>
    */
   private void clearFeature() {
-    bitField0_ = (bitField0_ & ~0x00000400);
+    bitField0_ = (bitField0_ & ~0x00000800);
     feature_ = 0;
   }
 
@@ -992,7 +1044,7 @@ public  final class UserConsentSpecifics extends
    */
   @java.lang.Override
   @java.lang.Deprecated public boolean hasConfirmationGrdId() {
-    return ((bitField0_ & 0x00000800) != 0);
+    return ((bitField0_ & 0x00001000) != 0);
   }
   /**
    * <pre>
@@ -1015,7 +1067,7 @@ public  final class UserConsentSpecifics extends
    * @param value The confirmationGrdId to set.
    */
   private void setConfirmationGrdId(int value) {
-    bitField0_ |= 0x00000800;
+    bitField0_ |= 0x00001000;
     confirmationGrdId_ = value;
   }
   /**
@@ -1026,7 +1078,7 @@ public  final class UserConsentSpecifics extends
    * <code>optional int32 confirmation_grd_id = 3 [deprecated = true];</code>
    */
   private void clearConfirmationGrdId() {
-    bitField0_ = (bitField0_ & ~0x00000800);
+    bitField0_ = (bitField0_ & ~0x00001000);
     confirmationGrdId_ = 0;
   }
 
@@ -1042,7 +1094,7 @@ public  final class UserConsentSpecifics extends
    */
   @java.lang.Override
   @java.lang.Deprecated public boolean hasStatus() {
-    return ((bitField0_ & 0x00001000) != 0);
+    return ((bitField0_ & 0x00002000) != 0);
   }
   /**
    * <pre>
@@ -1067,7 +1119,7 @@ public  final class UserConsentSpecifics extends
    */
   private void setStatus(org.chromium.components.sync.protocol.UserConsentTypes.ConsentStatus value) {
     status_ = value.getNumber();
-    bitField0_ |= 0x00001000;
+    bitField0_ |= 0x00002000;
   }
   /**
    * <pre>
@@ -1077,7 +1129,7 @@ public  final class UserConsentSpecifics extends
    * <code>optional .sync_pb.UserConsentTypes.ConsentStatus status = 5 [deprecated = true];</code>
    */
   private void clearStatus() {
-    bitField0_ = (bitField0_ & ~0x00001000);
+    bitField0_ = (bitField0_ & ~0x00002000);
     status_ = 0;
   }
 
@@ -1164,7 +1216,7 @@ public  final class UserConsentSpecifics extends
 
   /**
    * <pre>
-   * Next id: 14
+   * Next id: 17
    * </pre>
    *
    * Protobuf type {@code sync_pb.UserConsentSpecifics}
@@ -1692,6 +1744,54 @@ public  final class UserConsentSpecifics extends
     }
 
     /**
+     * <code>.sync_pb.UserConsentTypes.AutofillAssistantConsent autofill_assistant_consent = 16;</code>
+     */
+    @java.lang.Override
+    public boolean hasAutofillAssistantConsent() {
+      return instance.hasAutofillAssistantConsent();
+    }
+    /**
+     * <code>.sync_pb.UserConsentTypes.AutofillAssistantConsent autofill_assistant_consent = 16;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent getAutofillAssistantConsent() {
+      return instance.getAutofillAssistantConsent();
+    }
+    /**
+     * <code>.sync_pb.UserConsentTypes.AutofillAssistantConsent autofill_assistant_consent = 16;</code>
+     */
+    public Builder setAutofillAssistantConsent(org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent value) {
+      copyOnWrite();
+      instance.setAutofillAssistantConsent(value);
+      return this;
+    }
+    /**
+     * <code>.sync_pb.UserConsentTypes.AutofillAssistantConsent autofill_assistant_consent = 16;</code>
+     */
+    public Builder setAutofillAssistantConsent(
+        org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent.Builder builderForValue) {
+      copyOnWrite();
+      instance.setAutofillAssistantConsent(builderForValue.build());
+      return this;
+    }
+    /**
+     * <code>.sync_pb.UserConsentTypes.AutofillAssistantConsent autofill_assistant_consent = 16;</code>
+     */
+    public Builder mergeAutofillAssistantConsent(org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent value) {
+      copyOnWrite();
+      instance.mergeAutofillAssistantConsent(value);
+      return this;
+    }
+    /**
+     * <code>.sync_pb.UserConsentTypes.AutofillAssistantConsent autofill_assistant_consent = 16;</code>
+     */
+    public Builder clearAutofillAssistantConsent() {
+      copyOnWrite();
+      instance.clearAutofillAssistantConsent();
+      return this;
+    }
+
+    /**
      * <pre>
      * The account ID of the user who gave the consent. This field is used
      * by UserEventService to distinguish consents from different users,
@@ -2086,12 +2186,13 @@ public  final class UserConsentSpecifics extends
             org.chromium.components.sync.protocol.UserConsentTypes.UnifiedConsent.class,
             org.chromium.components.sync.protocol.UserConsentTypes.AssistantActivityControlConsent.class,
             org.chromium.components.sync.protocol.UserConsentTypes.AccountPasswordsConsent.class,
+            org.chromium.components.sync.protocol.UserConsentTypes.AutofillAssistantConsent.class,
           };
           java.lang.String info =
-              "\u0001\u000e\u0001\u0001\u0001\u000f\u000e\u0000\u0001\u0000\u0001\u100c\n\u0002" +
-              "\u0016\u0003\u1004\u000b\u0004\u1008\u0000\u0005\u100c\f\u0006\u1008\t\u0007\u103c" +
-              "\u0000\b\u103c\u0000\t\u103c\u0000\n\u103c\u0000\f\u1002\u0001\r\u103c\u0000\u000e" +
-              "\u103c\u0000\u000f\u103c\u0000";
+              "\u0001\u000f\u0001\u0001\u0001\u0010\u000f\u0000\u0001\u0000\u0001\u100c\u000b\u0002" +
+              "\u0016\u0003\u1004\f\u0004\u1008\u0000\u0005\u100c\r\u0006\u1008\n\u0007\u103c\u0000" +
+              "\b\u103c\u0000\t\u103c\u0000\n\u103c\u0000\f\u1002\u0001\r\u103c\u0000\u000e\u103c" +
+              "\u0000\u000f\u103c\u0000\u0010\u103c\u0000";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

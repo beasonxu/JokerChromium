@@ -13,6 +13,8 @@
 
 package org.chromium.media_session.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface AudioFocusRequestClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,18 +25,15 @@ public interface AudioFocusRequestClient extends org.chromium.mojo.bindings.Inte
 
     Manager<AudioFocusRequestClient, AudioFocusRequestClient.Proxy> MANAGER = AudioFocusRequestClient_Internal.MANAGER;
 
-
     void requestAudioFocus(
 MediaSessionInfo sessionInfo, int type, 
-RequestAudioFocusResponse callback);
+RequestAudioFocus_Response callback);
 
-    interface RequestAudioFocusResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface RequestAudioFocus_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void abandonAudioFocus(
 );
-
 
 
     void mediaSessionInfoChanged(

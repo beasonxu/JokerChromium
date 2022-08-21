@@ -13,8 +13,18 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class EditingBehavior {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        EditingBehavior.EDITING_MAC_BEHAVIOR,
+        EditingBehavior.EDITING_WINDOWS_BEHAVIOR,
+        EditingBehavior.EDITING_UNIX_BEHAVIOR,
+        EditingBehavior.EDITING_ANDROID_BEHAVIOR,
+        EditingBehavior.EDITING_CHROME_OS_BEHAVIOR})
+    public @interface EnumType {}
 
     public static final int EDITING_MAC_BEHAVIOR = 0;
     public static final int EDITING_WINDOWS_BEHAVIOR = 1;

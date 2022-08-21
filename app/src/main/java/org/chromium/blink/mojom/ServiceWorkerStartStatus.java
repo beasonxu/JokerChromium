@@ -13,8 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ServiceWorkerStartStatus {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ServiceWorkerStartStatus.NORMAL_COMPLETION,
+        ServiceWorkerStartStatus.ABRUPT_COMPLETION})
+    public @interface EnumType {}
 
     public static final int NORMAL_COMPLETION = 0;
     public static final int ABRUPT_COMPLETION = 1;

@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class AudioDecoder_Internal {
 
@@ -86,7 +88,7 @@ org.chromium.mojo.bindings.AssociatedInterfaceNotSupported client) {
         @Override
         public void initialize(
 AudioDecoderConfig config, org.chromium.mojo_base.mojom.UnguessableToken cdmId, 
-InitializeResponse callback) {
+Initialize_Response callback) {
 
             AudioDecoderInitializeParams _message = new AudioDecoderInitializeParams();
 
@@ -127,7 +129,7 @@ org.chromium.mojo.system.DataPipe.ConsumerHandle receivePipe) {
         @Override
         public void decode(
 DecoderBuffer buffer, 
-DecodeResponse callback) {
+Decode_Response callback) {
 
             AudioDecoderDecodeParams _message = new AudioDecoderDecodeParams();
 
@@ -149,7 +151,7 @@ DecodeResponse callback) {
         @Override
         public void reset(
 
-ResetResponse callback) {
+Reset_Response callback) {
 
             AudioDecoderResetParams _message = new AudioDecoderResetParams();
 
@@ -455,7 +457,7 @@ ResetResponse callback) {
         private static final int STRUCT_SIZE = 24;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public Status success;
+        public DecoderStatus success;
         public boolean needsBitstreamConversion;
         public int decoderType;
 
@@ -495,7 +497,7 @@ ResetResponse callback) {
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    result.success = Status.decode(decoder1);
+                    result.success = DecoderStatus.decode(decoder1);
                     }
                     {
                         
@@ -529,9 +531,9 @@ ResetResponse callback) {
 
     static class AudioDecoderInitializeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final AudioDecoder.InitializeResponse mCallback;
+        private final AudioDecoder.Initialize_Response mCallback;
 
-        AudioDecoderInitializeResponseParamsForwardToCallback(AudioDecoder.InitializeResponse callback) {
+        AudioDecoderInitializeResponseParamsForwardToCallback(AudioDecoder.Initialize_Response callback) {
             this.mCallback = callback;
         }
 
@@ -556,7 +558,7 @@ ResetResponse callback) {
         }
     }
 
-    static class AudioDecoderInitializeResponseParamsProxyToResponder implements AudioDecoder.InitializeResponse {
+    static class AudioDecoderInitializeResponseParamsProxyToResponder implements AudioDecoder.Initialize_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -572,7 +574,7 @@ ResetResponse callback) {
         }
 
         @Override
-        public void call(Status success, Boolean needsBitstreamConversion, Integer decoderType) {
+        public void call(DecoderStatus success, Boolean needsBitstreamConversion, Integer decoderType) {
             AudioDecoderInitializeResponseParams _response = new AudioDecoderInitializeResponseParams();
 
             _response.success = success;
@@ -728,7 +730,7 @@ ResetResponse callback) {
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public Status status;
+        public DecoderStatus status;
 
         private AudioDecoderDecodeResponseParams(int version) {
             super(STRUCT_SIZE, version);
@@ -766,7 +768,7 @@ ResetResponse callback) {
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    result.status = Status.decode(decoder1);
+                    result.status = DecoderStatus.decode(decoder1);
                     }
 
             } finally {
@@ -786,9 +788,9 @@ ResetResponse callback) {
 
     static class AudioDecoderDecodeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final AudioDecoder.DecodeResponse mCallback;
+        private final AudioDecoder.Decode_Response mCallback;
 
-        AudioDecoderDecodeResponseParamsForwardToCallback(AudioDecoder.DecodeResponse callback) {
+        AudioDecoderDecodeResponseParamsForwardToCallback(AudioDecoder.Decode_Response callback) {
             this.mCallback = callback;
         }
 
@@ -813,7 +815,7 @@ ResetResponse callback) {
         }
     }
 
-    static class AudioDecoderDecodeResponseParamsProxyToResponder implements AudioDecoder.DecodeResponse {
+    static class AudioDecoderDecodeResponseParamsProxyToResponder implements AudioDecoder.Decode_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -829,7 +831,7 @@ ResetResponse callback) {
         }
 
         @Override
-        public void call(Status status) {
+        public void call(DecoderStatus status) {
             AudioDecoderDecodeResponseParams _response = new AudioDecoderDecodeResponseParams();
 
             _response.status = status;
@@ -959,9 +961,9 @@ ResetResponse callback) {
 
     static class AudioDecoderResetResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final AudioDecoder.ResetResponse mCallback;
+        private final AudioDecoder.Reset_Response mCallback;
 
-        AudioDecoderResetResponseParamsForwardToCallback(AudioDecoder.ResetResponse callback) {
+        AudioDecoderResetResponseParamsForwardToCallback(AudioDecoder.Reset_Response callback) {
             this.mCallback = callback;
         }
 
@@ -984,7 +986,7 @@ ResetResponse callback) {
         }
     }
 
-    static class AudioDecoderResetResponseParamsProxyToResponder implements AudioDecoder.ResetResponse {
+    static class AudioDecoderResetResponseParamsProxyToResponder implements AudioDecoder.Reset_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

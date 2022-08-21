@@ -13,8 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ObservedFeatureType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ObservedFeatureType.WEB_LOCK,
+        ObservedFeatureType.INDEXED_DB_CONNECTION})
+    public @interface EnumType {}
 
     public static final int WEB_LOCK = 0;
     public static final int INDEXED_DB_CONNECTION = 1;

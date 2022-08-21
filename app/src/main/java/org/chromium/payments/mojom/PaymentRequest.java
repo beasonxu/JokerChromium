@@ -13,6 +13,8 @@
 
 package org.chromium.payments.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface PaymentRequest extends org.chromium.mojo.bindings.Interface {
 
@@ -23,45 +25,36 @@ public interface PaymentRequest extends org.chromium.mojo.bindings.Interface {
 
     Manager<PaymentRequest, PaymentRequest.Proxy> MANAGER = PaymentRequest_Internal.MANAGER;
 
-
     void init(
-PaymentRequestClient client, PaymentMethodData[] methodData, PaymentDetails details, PaymentOptions options, boolean googlePayBridgeEligible);
-
+PaymentRequestClient client, PaymentMethodData[] methodData, PaymentDetails details, PaymentOptions options);
 
 
     void show(
-boolean isUserGesture, boolean waitForUpdatedDetails);
-
+boolean waitForUpdatedDetails);
 
 
     void updateWith(
 PaymentDetails details);
 
 
-
     void onPaymentDetailsNotUpdated(
 );
-
 
 
     void abort(
 );
 
 
-
     void complete(
 int result);
-
 
 
     void retry(
 PaymentValidationErrors errors);
 
 
-
     void canMakePayment(
 );
-
 
 
     void hasEnrolledInstrument(

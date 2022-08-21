@@ -1,10 +1,11 @@
 package org.chromium.chrome.browser.browserservices.ui.controller.trustedwebactivity;
 
+import android.os.Bundle;
 import dagger.internal.Factory;
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 import javax.inject.Provider;
-import org.chromium.chrome.browser.app.ChromeActivity;
-import org.chromium.chrome.browser.browserservices.BrowserServicesIntentDataProvider;
+import org.chromium.base.supplier.Supplier;
+import org.chromium.chrome.browser.browserservices.intents.BrowserServicesIntentDataProvider;
 import org.chromium.chrome.browser.customtabs.CustomTabsConnection;
 import org.chromium.chrome.browser.lifecycle.ActivityLifecycleDispatcher;
 
@@ -17,41 +18,42 @@ import org.chromium.chrome.browser.lifecycle.ActivityLifecycleDispatcher;
     "rawtypes"
 })
 public final class ClientPackageNameProvider_Factory implements Factory<ClientPackageNameProvider> {
-  private final Provider<ChromeActivity<?>> activityProvider;
-
   private final Provider<ActivityLifecycleDispatcher> lifecycleDispatcherProvider;
 
   private final Provider<BrowserServicesIntentDataProvider> intentDataProvider;
 
   private final Provider<CustomTabsConnection> customTabsConnectionProvider;
 
-  public ClientPackageNameProvider_Factory(Provider<ChromeActivity<?>> activityProvider,
+  private final Provider<Supplier<Bundle>> savedInstanceStateSupplierProvider;
+
+  public ClientPackageNameProvider_Factory(
       Provider<ActivityLifecycleDispatcher> lifecycleDispatcherProvider,
       Provider<BrowserServicesIntentDataProvider> intentDataProvider,
-      Provider<CustomTabsConnection> customTabsConnectionProvider) {
-    this.activityProvider = activityProvider;
+      Provider<CustomTabsConnection> customTabsConnectionProvider,
+      Provider<Supplier<Bundle>> savedInstanceStateSupplierProvider) {
     this.lifecycleDispatcherProvider = lifecycleDispatcherProvider;
     this.intentDataProvider = intentDataProvider;
     this.customTabsConnectionProvider = customTabsConnectionProvider;
+    this.savedInstanceStateSupplierProvider = savedInstanceStateSupplierProvider;
   }
 
   @Override
   public ClientPackageNameProvider get() {
-    return newInstance(activityProvider.get(), lifecycleDispatcherProvider.get(), intentDataProvider.get(), customTabsConnectionProvider.get());
+    return newInstance(lifecycleDispatcherProvider.get(), intentDataProvider.get(), customTabsConnectionProvider.get(), savedInstanceStateSupplierProvider.get());
   }
 
   public static ClientPackageNameProvider_Factory create(
-      Provider<ChromeActivity<?>> activityProvider,
       Provider<ActivityLifecycleDispatcher> lifecycleDispatcherProvider,
       Provider<BrowserServicesIntentDataProvider> intentDataProvider,
-      Provider<CustomTabsConnection> customTabsConnectionProvider) {
-    return new ClientPackageNameProvider_Factory(activityProvider, lifecycleDispatcherProvider, intentDataProvider, customTabsConnectionProvider);
+      Provider<CustomTabsConnection> customTabsConnectionProvider,
+      Provider<Supplier<Bundle>> savedInstanceStateSupplierProvider) {
+    return new ClientPackageNameProvider_Factory(lifecycleDispatcherProvider, intentDataProvider, customTabsConnectionProvider, savedInstanceStateSupplierProvider);
   }
 
-  public static ClientPackageNameProvider newInstance(ChromeActivity<?> activity,
+  public static ClientPackageNameProvider newInstance(
       ActivityLifecycleDispatcher lifecycleDispatcher,
       BrowserServicesIntentDataProvider intentDataProvider,
-      CustomTabsConnection customTabsConnection) {
-    return new ClientPackageNameProvider(activity, lifecycleDispatcher, intentDataProvider, customTabsConnection);
+      CustomTabsConnection customTabsConnection, Supplier<Bundle> savedInstanceStateSupplier) {
+    return new ClientPackageNameProvider(lifecycleDispatcher, intentDataProvider, customTabsConnection, savedInstanceStateSupplier);
   }
 }

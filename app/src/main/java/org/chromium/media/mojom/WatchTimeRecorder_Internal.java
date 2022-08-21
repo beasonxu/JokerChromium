@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class WatchTimeRecorder_Internal {
 
@@ -114,7 +116,7 @@ int[] watchTimeKeys) {
 
         @Override
         public void onError(
-int status) {
+PipelineStatus status) {
 
             WatchTimeRecorderOnErrorParams _message = new WatchTimeRecorderOnErrorParams();
 
@@ -617,7 +619,7 @@ org.chromium.mojo_base.mojom.TimeDelta lastTimestamp) {
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public int status;
+        public PipelineStatus status;
 
         private WatchTimeRecorderOnErrorParams(int version) {
             super(STRUCT_SIZE, version);
@@ -654,9 +656,8 @@ org.chromium.mojo_base.mojom.TimeDelta lastTimestamp) {
                 result = new WatchTimeRecorderOnErrorParams(elementsOrVersion);
                     {
                         
-                    result.status = decoder0.readInt(8);
-                        PipelineStatus.validate(result.status);
-                        result.status = PipelineStatus.toKnownValue(result.status);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.status = PipelineStatus.decode(decoder1);
                     }
 
             } finally {
@@ -670,7 +671,7 @@ org.chromium.mojo_base.mojom.TimeDelta lastTimestamp) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.status, 8);
+            encoder0.encode(this.status, 8, false);
         }
     }
 

@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -25,7 +25,9 @@ import java.lang.annotation.RetentionPolicy;
     WebappInstallSource.INTERNAL_DEFAULT, WebappInstallSource.EXTERNAL_DEFAULT,
     WebappInstallSource.EXTERNAL_POLICY, WebappInstallSource.SYSTEM_DEFAULT,
     WebappInstallSource.OMNIBOX_INSTALL_ICON, WebappInstallSource.SYNC,
-    WebappInstallSource.MENU_CREATE_SHORTCUT, WebappInstallSource.COUNT
+    WebappInstallSource.MENU_CREATE_SHORTCUT, WebappInstallSource.SUB_APP,
+    WebappInstallSource.CHROME_SERVICE, WebappInstallSource.RICH_INSTALL_UI_WEBLAYER,
+    WebappInstallSource.COUNT
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface WebappInstallSource {
@@ -102,7 +104,19 @@ public @interface WebappInstallSource {
    */
   int MENU_CREATE_SHORTCUT = 17;
   /**
+   * Installed via the SubApps API.
+   */
+  int SUB_APP = 18;
+  /**
+   * Chrome Android service for installing WebAPKs from another app.
+   */
+  int CHROME_SERVICE = 19;
+  /**
+   * PWA rich install bottom sheet in WebLayer.
+   */
+  int RICH_INSTALL_UI_WEBLAYER = 20;
+  /**
    * Add any new values above this one.
    */
-  int COUNT = 18;
+  int COUNT = 21;
 }

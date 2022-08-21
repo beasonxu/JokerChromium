@@ -13,8 +13,20 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class InputEventResultState {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        InputEventResultState.UNKNOWN,
+        InputEventResultState.CONSUMED,
+        InputEventResultState.NOT_CONSUMED,
+        InputEventResultState.NO_CONSUMER_EXISTS,
+        InputEventResultState.IGNORED,
+        InputEventResultState.SET_NON_BLOCKING,
+        InputEventResultState.SET_NON_BLOCKING_DUE_TO_FLING})
+    public @interface EnumType {}
 
     public static final int UNKNOWN = 0;
     public static final int CONSUMED = 1;

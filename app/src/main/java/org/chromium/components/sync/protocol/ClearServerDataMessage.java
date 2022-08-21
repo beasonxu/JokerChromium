@@ -5,7 +5,9 @@ package org.chromium.components.sync.protocol;
 
 /**
  * <pre>
- * Message from a client asking the server to clear its data.
+ * Message from a client asking the server to clear its data. This causes the
+ * server to generate a new store birthday, which allows dealing reliably with
+ * in-flight requests (in particular commits) from other clients.
  * </pre>
  *
  * Protobuf type {@code sync_pb.ClearServerDataMessage}
@@ -100,7 +102,9 @@ public  final class ClearServerDataMessage extends
 
   /**
    * <pre>
-   * Message from a client asking the server to clear its data.
+   * Message from a client asking the server to clear its data. This causes the
+   * server to generate a new store birthday, which allows dealing reliably with
+   * in-flight requests (in particular commits) from other clients.
    * </pre>
    *
    * Protobuf type {@code sync_pb.ClearServerDataMessage}

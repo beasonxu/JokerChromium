@@ -57,31 +57,7 @@ public interface GetUpdatesMessageOrBuilder extends
 
   /**
    * <pre>
-   * Client-requested limit on the maximum number of updates to return at once.
-   * The server may opt to return fewer updates than this amount, but it should
-   * not return more.
-   * </pre>
-   *
-   * <code>optional int32 batch_size = 5;</code>
-   * @return Whether the batchSize field is set.
-   */
-  boolean hasBatchSize();
-  /**
-   * <pre>
-   * Client-requested limit on the maximum number of updates to return at once.
-   * The server may opt to return fewer updates than this amount, but it should
-   * not return more.
-   * </pre>
-   *
-   * <code>optional int32 batch_size = 5;</code>
-   * @return The batchSize.
-   */
-  int getBatchSize();
-
-  /**
-   * <pre>
-   * Per-datatype progress marker.  If present, the server will ignore
-   * the values of requested_types and from_timestamp, using this instead.
+   * Per-datatype progress marker.
    * With the exception of certain configuration or initial sync requests, the
    * client should include one instance of this field for each enabled data
    * type.
@@ -93,8 +69,7 @@ public interface GetUpdatesMessageOrBuilder extends
       getFromProgressMarkerList();
   /**
    * <pre>
-   * Per-datatype progress marker.  If present, the server will ignore
-   * the values of requested_types and from_timestamp, using this instead.
+   * Per-datatype progress marker.
    * With the exception of certain configuration or initial sync requests, the
    * client should include one instance of this field for each enabled data
    * type.
@@ -105,8 +80,7 @@ public interface GetUpdatesMessageOrBuilder extends
   org.chromium.components.sync.protocol.DataTypeProgressMarker getFromProgressMarker(int index);
   /**
    * <pre>
-   * Per-datatype progress marker.  If present, the server will ignore
-   * the values of requested_types and from_timestamp, using this instead.
+   * Per-datatype progress marker.
    * With the exception of certain configuration or initial sync requests, the
    * client should include one instance of this field for each enabled data
    * type.
@@ -120,7 +94,7 @@ public interface GetUpdatesMessageOrBuilder extends
    * <pre>
    * Indicates whether the response should be sent in chunks.  This may be
    * needed for devices with limited memory resources.  If true, the response
-   * will include one or more ClientToServerResponses, with the frist one
+   * will include one or more ClientToServerResponses, with the first one
    * containing GetUpdatesMetadataResponse, and the remaining ones, if any,
    * containing GetUpdatesStreamingResponse.  These ClientToServerResponses are
    * delimited by a length prefix, which is encoded as a varint.
@@ -134,7 +108,7 @@ public interface GetUpdatesMessageOrBuilder extends
    * <pre>
    * Indicates whether the response should be sent in chunks.  This may be
    * needed for devices with limited memory resources.  If true, the response
-   * will include one or more ClientToServerResponses, with the frist one
+   * will include one or more ClientToServerResponses, with the first one
    * containing GetUpdatesMetadataResponse, and the remaining ones, if any,
    * containing GetUpdatesStreamingResponse.  These ClientToServerResponses are
    * delimited by a length prefix, which is encoded as a varint.

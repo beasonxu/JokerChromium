@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class FileSystemAccessDirectoryHandle_Internal {
 
@@ -57,11 +59,17 @@ class FileSystemAccessDirectoryHandle_Internal {
 
     private static final int GET_ENTRIES_ORDINAL = 4;
 
-    private static final int REMOVE_ENTRY_ORDINAL = 5;
+    private static final int RENAME_ORDINAL = 5;
 
-    private static final int RESOLVE_ORDINAL = 6;
+    private static final int MOVE_ORDINAL = 6;
 
-    private static final int TRANSFER_ORDINAL = 7;
+    private static final int REMOVE_ORDINAL = 7;
+
+    private static final int REMOVE_ENTRY_ORDINAL = 8;
+
+    private static final int RESOLVE_ORDINAL = 9;
+
+    private static final int TRANSFER_ORDINAL = 10;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements FileSystemAccessDirectoryHandle.Proxy {
@@ -75,7 +83,7 @@ class FileSystemAccessDirectoryHandle_Internal {
         @Override
         public void getPermissionStatus(
 boolean writable, 
-GetPermissionStatusResponse callback) {
+GetPermissionStatus_Response callback) {
 
             FileSystemAccessDirectoryHandleGetPermissionStatusParams _message = new FileSystemAccessDirectoryHandleGetPermissionStatusParams();
 
@@ -97,7 +105,7 @@ GetPermissionStatusResponse callback) {
         @Override
         public void requestPermission(
 boolean writable, 
-RequestPermissionResponse callback) {
+RequestPermission_Response callback) {
 
             FileSystemAccessDirectoryHandleRequestPermissionParams _message = new FileSystemAccessDirectoryHandleRequestPermissionParams();
 
@@ -119,7 +127,7 @@ RequestPermissionResponse callback) {
         @Override
         public void getFile(
 String basename, boolean create, 
-GetFileResponse callback) {
+GetFile_Response callback) {
 
             FileSystemAccessDirectoryHandleGetFileParams _message = new FileSystemAccessDirectoryHandleGetFileParams();
 
@@ -143,7 +151,7 @@ GetFileResponse callback) {
         @Override
         public void getDirectory(
 String basename, boolean create, 
-GetDirectoryResponse callback) {
+GetDirectory_Response callback) {
 
             FileSystemAccessDirectoryHandleGetDirectoryParams _message = new FileSystemAccessDirectoryHandleGetDirectoryParams();
 
@@ -182,9 +190,77 @@ FileSystemAccessDirectoryEntriesListener listener) {
 
 
         @Override
+        public void rename(
+String newEntryName, 
+Rename_Response callback) {
+
+            FileSystemAccessDirectoryHandleRenameParams _message = new FileSystemAccessDirectoryHandleRenameParams();
+
+            _message.newEntryName = newEntryName;
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    RENAME_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new FileSystemAccessDirectoryHandleRenameResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void move(
+FileSystemAccessTransferToken destinationDirectory, String newEntryName, 
+Move_Response callback) {
+
+            FileSystemAccessDirectoryHandleMoveParams _message = new FileSystemAccessDirectoryHandleMoveParams();
+
+            _message.destinationDirectory = destinationDirectory;
+
+            _message.newEntryName = newEntryName;
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    MOVE_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new FileSystemAccessDirectoryHandleMoveResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void remove(
+boolean recurse, 
+Remove_Response callback) {
+
+            FileSystemAccessDirectoryHandleRemoveParams _message = new FileSystemAccessDirectoryHandleRemoveParams();
+
+            _message.recurse = recurse;
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    REMOVE_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new FileSystemAccessDirectoryHandleRemoveResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
         public void removeEntry(
 String basename, boolean recurse, 
-RemoveEntryResponse callback) {
+RemoveEntry_Response callback) {
 
             FileSystemAccessDirectoryHandleRemoveEntryParams _message = new FileSystemAccessDirectoryHandleRemoveEntryParams();
 
@@ -208,7 +284,7 @@ RemoveEntryResponse callback) {
         @Override
         public void resolve(
 FileSystemAccessTransferToken possibleChild, 
-ResolveResponse callback) {
+Resolve_Response callback) {
 
             FileSystemAccessDirectoryHandleResolveParams _message = new FileSystemAccessDirectoryHandleResolveParams();
 
@@ -291,6 +367,12 @@ org.chromium.mojo.bindings.InterfaceRequest<FileSystemAccessTransferToken> token
                         getImpl().getEntries(data.listener);
                         return true;
                     }
+
+
+
+
+
+
 
 
 
@@ -399,6 +481,51 @@ org.chromium.mojo.bindings.InterfaceRequest<FileSystemAccessTransferToken> token
                     }
 
 
+
+
+
+
+
+
+
+                    case RENAME_ORDINAL: {
+
+                        FileSystemAccessDirectoryHandleRenameParams data =
+                                FileSystemAccessDirectoryHandleRenameParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().rename(data.newEntryName, new FileSystemAccessDirectoryHandleRenameResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
+                    case MOVE_ORDINAL: {
+
+                        FileSystemAccessDirectoryHandleMoveParams data =
+                                FileSystemAccessDirectoryHandleMoveParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().move(data.destinationDirectory, data.newEntryName, new FileSystemAccessDirectoryHandleMoveResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
+                    case REMOVE_ORDINAL: {
+
+                        FileSystemAccessDirectoryHandleRemoveParams data =
+                                FileSystemAccessDirectoryHandleRemoveParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().remove(data.recurse, new FileSystemAccessDirectoryHandleRemoveResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
 
 
 
@@ -572,9 +699,9 @@ org.chromium.mojo.bindings.InterfaceRequest<FileSystemAccessTransferToken> token
 
     static class FileSystemAccessDirectoryHandleGetPermissionStatusResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemAccessDirectoryHandle.GetPermissionStatusResponse mCallback;
+        private final FileSystemAccessDirectoryHandle.GetPermissionStatus_Response mCallback;
 
-        FileSystemAccessDirectoryHandleGetPermissionStatusResponseParamsForwardToCallback(FileSystemAccessDirectoryHandle.GetPermissionStatusResponse callback) {
+        FileSystemAccessDirectoryHandleGetPermissionStatusResponseParamsForwardToCallback(FileSystemAccessDirectoryHandle.GetPermissionStatus_Response callback) {
             this.mCallback = callback;
         }
 
@@ -599,7 +726,7 @@ org.chromium.mojo.bindings.InterfaceRequest<FileSystemAccessTransferToken> token
         }
     }
 
-    static class FileSystemAccessDirectoryHandleGetPermissionStatusResponseParamsProxyToResponder implements FileSystemAccessDirectoryHandle.GetPermissionStatusResponse {
+    static class FileSystemAccessDirectoryHandleGetPermissionStatusResponseParamsProxyToResponder implements FileSystemAccessDirectoryHandle.GetPermissionStatus_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -769,9 +896,9 @@ org.chromium.mojo.bindings.InterfaceRequest<FileSystemAccessTransferToken> token
 
     static class FileSystemAccessDirectoryHandleRequestPermissionResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemAccessDirectoryHandle.RequestPermissionResponse mCallback;
+        private final FileSystemAccessDirectoryHandle.RequestPermission_Response mCallback;
 
-        FileSystemAccessDirectoryHandleRequestPermissionResponseParamsForwardToCallback(FileSystemAccessDirectoryHandle.RequestPermissionResponse callback) {
+        FileSystemAccessDirectoryHandleRequestPermissionResponseParamsForwardToCallback(FileSystemAccessDirectoryHandle.RequestPermission_Response callback) {
             this.mCallback = callback;
         }
 
@@ -796,7 +923,7 @@ org.chromium.mojo.bindings.InterfaceRequest<FileSystemAccessTransferToken> token
         }
     }
 
-    static class FileSystemAccessDirectoryHandleRequestPermissionResponseParamsProxyToResponder implements FileSystemAccessDirectoryHandle.RequestPermissionResponse {
+    static class FileSystemAccessDirectoryHandleRequestPermissionResponseParamsProxyToResponder implements FileSystemAccessDirectoryHandle.RequestPermission_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -973,9 +1100,9 @@ org.chromium.mojo.bindings.InterfaceRequest<FileSystemAccessTransferToken> token
 
     static class FileSystemAccessDirectoryHandleGetFileResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemAccessDirectoryHandle.GetFileResponse mCallback;
+        private final FileSystemAccessDirectoryHandle.GetFile_Response mCallback;
 
-        FileSystemAccessDirectoryHandleGetFileResponseParamsForwardToCallback(FileSystemAccessDirectoryHandle.GetFileResponse callback) {
+        FileSystemAccessDirectoryHandleGetFileResponseParamsForwardToCallback(FileSystemAccessDirectoryHandle.GetFile_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1000,7 +1127,7 @@ org.chromium.mojo.bindings.InterfaceRequest<FileSystemAccessTransferToken> token
         }
     }
 
-    static class FileSystemAccessDirectoryHandleGetFileResponseParamsProxyToResponder implements FileSystemAccessDirectoryHandle.GetFileResponse {
+    static class FileSystemAccessDirectoryHandleGetFileResponseParamsProxyToResponder implements FileSystemAccessDirectoryHandle.GetFile_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1177,9 +1304,9 @@ org.chromium.mojo.bindings.InterfaceRequest<FileSystemAccessTransferToken> token
 
     static class FileSystemAccessDirectoryHandleGetDirectoryResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemAccessDirectoryHandle.GetDirectoryResponse mCallback;
+        private final FileSystemAccessDirectoryHandle.GetDirectory_Response mCallback;
 
-        FileSystemAccessDirectoryHandleGetDirectoryResponseParamsForwardToCallback(FileSystemAccessDirectoryHandle.GetDirectoryResponse callback) {
+        FileSystemAccessDirectoryHandleGetDirectoryResponseParamsForwardToCallback(FileSystemAccessDirectoryHandle.GetDirectory_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1204,7 +1331,7 @@ org.chromium.mojo.bindings.InterfaceRequest<FileSystemAccessTransferToken> token
         }
     }
 
-    static class FileSystemAccessDirectoryHandleGetDirectoryResponseParamsProxyToResponder implements FileSystemAccessDirectoryHandle.GetDirectoryResponse {
+    static class FileSystemAccessDirectoryHandleGetDirectoryResponseParamsProxyToResponder implements FileSystemAccessDirectoryHandle.GetDirectory_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1298,6 +1425,577 @@ org.chromium.mojo.bindings.InterfaceRequest<FileSystemAccessTransferToken> token
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.listener, 8, false, FileSystemAccessDirectoryEntriesListener.MANAGER);
+        }
+    }
+
+
+
+    
+    static final class FileSystemAccessDirectoryHandleRenameParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public String newEntryName;
+
+        private FileSystemAccessDirectoryHandleRenameParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public FileSystemAccessDirectoryHandleRenameParams() {
+            this(0);
+        }
+
+        public static FileSystemAccessDirectoryHandleRenameParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static FileSystemAccessDirectoryHandleRenameParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static FileSystemAccessDirectoryHandleRenameParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            FileSystemAccessDirectoryHandleRenameParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new FileSystemAccessDirectoryHandleRenameParams(elementsOrVersion);
+                    {
+                        
+                    result.newEntryName = decoder0.readString(8, false);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.newEntryName, 8, false);
+        }
+    }
+
+
+
+    
+    static final class FileSystemAccessDirectoryHandleRenameResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public FileSystemAccessError result;
+
+        private FileSystemAccessDirectoryHandleRenameResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public FileSystemAccessDirectoryHandleRenameResponseParams() {
+            this(0);
+        }
+
+        public static FileSystemAccessDirectoryHandleRenameResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static FileSystemAccessDirectoryHandleRenameResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static FileSystemAccessDirectoryHandleRenameResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            FileSystemAccessDirectoryHandleRenameResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new FileSystemAccessDirectoryHandleRenameResponseParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.result = FileSystemAccessError.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.result, 8, false);
+        }
+    }
+
+    static class FileSystemAccessDirectoryHandleRenameResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final FileSystemAccessDirectoryHandle.Rename_Response mCallback;
+
+        FileSystemAccessDirectoryHandleRenameResponseParamsForwardToCallback(FileSystemAccessDirectoryHandle.Rename_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(RENAME_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                FileSystemAccessDirectoryHandleRenameResponseParams response = FileSystemAccessDirectoryHandleRenameResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.result);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class FileSystemAccessDirectoryHandleRenameResponseParamsProxyToResponder implements FileSystemAccessDirectoryHandle.Rename_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        FileSystemAccessDirectoryHandleRenameResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(FileSystemAccessError result) {
+            FileSystemAccessDirectoryHandleRenameResponseParams _response = new FileSystemAccessDirectoryHandleRenameResponseParams();
+
+            _response.result = result;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    RENAME_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class FileSystemAccessDirectoryHandleMoveParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public FileSystemAccessTransferToken destinationDirectory;
+        public String newEntryName;
+
+        private FileSystemAccessDirectoryHandleMoveParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public FileSystemAccessDirectoryHandleMoveParams() {
+            this(0);
+        }
+
+        public static FileSystemAccessDirectoryHandleMoveParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static FileSystemAccessDirectoryHandleMoveParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static FileSystemAccessDirectoryHandleMoveParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            FileSystemAccessDirectoryHandleMoveParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new FileSystemAccessDirectoryHandleMoveParams(elementsOrVersion);
+                    {
+                        
+                    result.destinationDirectory = decoder0.readServiceInterface(8, false, FileSystemAccessTransferToken.MANAGER);
+                    }
+                    {
+                        
+                    result.newEntryName = decoder0.readString(16, false);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.destinationDirectory, 8, false, FileSystemAccessTransferToken.MANAGER);
+            
+            encoder0.encode(this.newEntryName, 16, false);
+        }
+    }
+
+
+
+    
+    static final class FileSystemAccessDirectoryHandleMoveResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public FileSystemAccessError result;
+
+        private FileSystemAccessDirectoryHandleMoveResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public FileSystemAccessDirectoryHandleMoveResponseParams() {
+            this(0);
+        }
+
+        public static FileSystemAccessDirectoryHandleMoveResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static FileSystemAccessDirectoryHandleMoveResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static FileSystemAccessDirectoryHandleMoveResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            FileSystemAccessDirectoryHandleMoveResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new FileSystemAccessDirectoryHandleMoveResponseParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.result = FileSystemAccessError.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.result, 8, false);
+        }
+    }
+
+    static class FileSystemAccessDirectoryHandleMoveResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final FileSystemAccessDirectoryHandle.Move_Response mCallback;
+
+        FileSystemAccessDirectoryHandleMoveResponseParamsForwardToCallback(FileSystemAccessDirectoryHandle.Move_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(MOVE_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                FileSystemAccessDirectoryHandleMoveResponseParams response = FileSystemAccessDirectoryHandleMoveResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.result);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class FileSystemAccessDirectoryHandleMoveResponseParamsProxyToResponder implements FileSystemAccessDirectoryHandle.Move_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        FileSystemAccessDirectoryHandleMoveResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(FileSystemAccessError result) {
+            FileSystemAccessDirectoryHandleMoveResponseParams _response = new FileSystemAccessDirectoryHandleMoveResponseParams();
+
+            _response.result = result;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    MOVE_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class FileSystemAccessDirectoryHandleRemoveParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public boolean recurse;
+
+        private FileSystemAccessDirectoryHandleRemoveParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public FileSystemAccessDirectoryHandleRemoveParams() {
+            this(0);
+        }
+
+        public static FileSystemAccessDirectoryHandleRemoveParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static FileSystemAccessDirectoryHandleRemoveParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static FileSystemAccessDirectoryHandleRemoveParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            FileSystemAccessDirectoryHandleRemoveParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new FileSystemAccessDirectoryHandleRemoveParams(elementsOrVersion);
+                    {
+                        
+                    result.recurse = decoder0.readBoolean(8, 0);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.recurse, 8, 0);
+        }
+    }
+
+
+
+    
+    static final class FileSystemAccessDirectoryHandleRemoveResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public FileSystemAccessError result;
+
+        private FileSystemAccessDirectoryHandleRemoveResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public FileSystemAccessDirectoryHandleRemoveResponseParams() {
+            this(0);
+        }
+
+        public static FileSystemAccessDirectoryHandleRemoveResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static FileSystemAccessDirectoryHandleRemoveResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static FileSystemAccessDirectoryHandleRemoveResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            FileSystemAccessDirectoryHandleRemoveResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new FileSystemAccessDirectoryHandleRemoveResponseParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.result = FileSystemAccessError.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.result, 8, false);
+        }
+    }
+
+    static class FileSystemAccessDirectoryHandleRemoveResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final FileSystemAccessDirectoryHandle.Remove_Response mCallback;
+
+        FileSystemAccessDirectoryHandleRemoveResponseParamsForwardToCallback(FileSystemAccessDirectoryHandle.Remove_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(REMOVE_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                FileSystemAccessDirectoryHandleRemoveResponseParams response = FileSystemAccessDirectoryHandleRemoveResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.result);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class FileSystemAccessDirectoryHandleRemoveResponseParamsProxyToResponder implements FileSystemAccessDirectoryHandle.Remove_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        FileSystemAccessDirectoryHandleRemoveResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(FileSystemAccessError result) {
+            FileSystemAccessDirectoryHandleRemoveResponseParams _response = new FileSystemAccessDirectoryHandleRemoveResponseParams();
+
+            _response.result = result;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    REMOVE_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
         }
     }
 
@@ -1437,9 +2135,9 @@ org.chromium.mojo.bindings.InterfaceRequest<FileSystemAccessTransferToken> token
 
     static class FileSystemAccessDirectoryHandleRemoveEntryResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemAccessDirectoryHandle.RemoveEntryResponse mCallback;
+        private final FileSystemAccessDirectoryHandle.RemoveEntry_Response mCallback;
 
-        FileSystemAccessDirectoryHandleRemoveEntryResponseParamsForwardToCallback(FileSystemAccessDirectoryHandle.RemoveEntryResponse callback) {
+        FileSystemAccessDirectoryHandleRemoveEntryResponseParamsForwardToCallback(FileSystemAccessDirectoryHandle.RemoveEntry_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1464,7 +2162,7 @@ org.chromium.mojo.bindings.InterfaceRequest<FileSystemAccessTransferToken> token
         }
     }
 
-    static class FileSystemAccessDirectoryHandleRemoveEntryResponseParamsProxyToResponder implements FileSystemAccessDirectoryHandle.RemoveEntryResponse {
+    static class FileSystemAccessDirectoryHandleRemoveEntryResponseParamsProxyToResponder implements FileSystemAccessDirectoryHandle.RemoveEntry_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1650,9 +2348,9 @@ org.chromium.mojo.bindings.InterfaceRequest<FileSystemAccessTransferToken> token
 
     static class FileSystemAccessDirectoryHandleResolveResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemAccessDirectoryHandle.ResolveResponse mCallback;
+        private final FileSystemAccessDirectoryHandle.Resolve_Response mCallback;
 
-        FileSystemAccessDirectoryHandleResolveResponseParamsForwardToCallback(FileSystemAccessDirectoryHandle.ResolveResponse callback) {
+        FileSystemAccessDirectoryHandleResolveResponseParamsForwardToCallback(FileSystemAccessDirectoryHandle.Resolve_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1677,7 +2375,7 @@ org.chromium.mojo.bindings.InterfaceRequest<FileSystemAccessTransferToken> token
         }
     }
 
-    static class FileSystemAccessDirectoryHandleResolveResponseParamsProxyToResponder implements FileSystemAccessDirectoryHandle.ResolveResponse {
+    static class FileSystemAccessDirectoryHandleResolveResponseParamsProxyToResponder implements FileSystemAccessDirectoryHandle.Resolve_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

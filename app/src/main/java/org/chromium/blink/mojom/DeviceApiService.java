@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface DeviceApiService extends org.chromium.mojo.bindings.Interface {
 
@@ -23,49 +25,39 @@ public interface DeviceApiService extends org.chromium.mojo.bindings.Interface {
 
     Manager<DeviceApiService, DeviceApiService.Proxy> MANAGER = DeviceApiService_Internal.MANAGER;
 
-
-    void getManagedConfiguration(
-String[] keys, 
-GetManagedConfigurationResponse callback);
-
-    interface GetManagedConfigurationResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<java.util.Map<String, String>> { }
-
-
-
-    void subscribeToManagedConfiguration(
-ManagedConfigurationObserver observer);
-
-
-
     void getDirectoryId(
 
-GetDirectoryIdResponse callback);
+GetDirectoryId_Response callback);
 
-    interface GetDirectoryIdResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<DeviceAttributeResult> { }
+    interface GetDirectoryId_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<DeviceAttributeResult> { }
 
+
+    void getHostname(
+
+GetHostname_Response callback);
+
+    interface GetHostname_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<DeviceAttributeResult> { }
 
 
     void getSerialNumber(
 
-GetSerialNumberResponse callback);
+GetSerialNumber_Response callback);
 
-    interface GetSerialNumberResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<DeviceAttributeResult> { }
-
+    interface GetSerialNumber_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<DeviceAttributeResult> { }
 
 
     void getAnnotatedAssetId(
 
-GetAnnotatedAssetIdResponse callback);
+GetAnnotatedAssetId_Response callback);
 
-    interface GetAnnotatedAssetIdResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<DeviceAttributeResult> { }
-
+    interface GetAnnotatedAssetId_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<DeviceAttributeResult> { }
 
 
     void getAnnotatedLocation(
 
-GetAnnotatedLocationResponse callback);
+GetAnnotatedLocation_Response callback);
 
-    interface GetAnnotatedLocationResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<DeviceAttributeResult> { }
+    interface GetAnnotatedLocation_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<DeviceAttributeResult> { }
 
 
 }

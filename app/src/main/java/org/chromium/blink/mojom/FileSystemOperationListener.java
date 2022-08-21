@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface FileSystemOperationListener extends org.chromium.mojo.bindings.Interface {
 
@@ -23,15 +25,12 @@ public interface FileSystemOperationListener extends org.chromium.mojo.bindings.
 
     Manager<FileSystemOperationListener, FileSystemOperationListener.Proxy> MANAGER = FileSystemOperationListener_Internal.MANAGER;
 
-
     void resultsRetrieved(
 org.chromium.filesystem.mojom.DirectoryEntry[] entries, boolean hasMore);
 
 
-
     void didWrite(
 long byteCount, boolean complete);
-
 
 
     void errorOccurred(

@@ -1,15 +1,13 @@
 package org.chromium.chrome.browser.contextmenu;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ContextMenuHelperJni implements ContextMenuHelper.Natives {
+class ContextMenuHelperJni implements ContextMenuHelper.Natives {
   private static ContextMenuHelper.Natives testInstance;
 
   public static final JniStaticTestMocker<ContextMenuHelper.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.contextmenu.ContextMenuHelper.Natives>() {

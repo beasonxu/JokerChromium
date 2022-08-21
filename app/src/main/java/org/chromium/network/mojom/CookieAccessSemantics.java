@@ -13,8 +13,16 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class CookieAccessSemantics {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        CookieAccessSemantics.UNKNOWN,
+        CookieAccessSemantics.NONLEGACY,
+        CookieAccessSemantics.LEGACY})
+    public @interface EnumType {}
 
     public static final int UNKNOWN = -1;
     public static final int NONLEGACY = 0;

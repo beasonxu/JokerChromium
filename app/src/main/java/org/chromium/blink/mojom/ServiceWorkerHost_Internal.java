@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class ServiceWorkerHost_Internal {
 
@@ -117,7 +119,7 @@ org.chromium.url.mojom.Url url) {
         @Override
         public void getClients(
 ServiceWorkerClientQueryOptions options, 
-GetClientsResponse callback) {
+GetClients_Response callback) {
 
             ServiceWorkerHostGetClientsParams _message = new ServiceWorkerHostGetClientsParams();
 
@@ -139,7 +141,7 @@ GetClientsResponse callback) {
         @Override
         public void getClient(
 String clientUuid, 
-GetClientResponse callback) {
+GetClient_Response callback) {
 
             ServiceWorkerHostGetClientParams _message = new ServiceWorkerHostGetClientParams();
 
@@ -161,7 +163,7 @@ GetClientResponse callback) {
         @Override
         public void openNewTab(
 org.chromium.url.mojom.Url url, 
-OpenNewTabResponse callback) {
+OpenNewTab_Response callback) {
 
             ServiceWorkerHostOpenNewTabParams _message = new ServiceWorkerHostOpenNewTabParams();
 
@@ -183,7 +185,7 @@ OpenNewTabResponse callback) {
         @Override
         public void openPaymentHandlerWindow(
 org.chromium.url.mojom.Url url, 
-OpenPaymentHandlerWindowResponse callback) {
+OpenPaymentHandlerWindow_Response callback) {
 
             ServiceWorkerHostOpenPaymentHandlerWindowParams _message = new ServiceWorkerHostOpenPaymentHandlerWindowParams();
 
@@ -224,7 +226,7 @@ String clientUuid, TransferableMessage message) {
         @Override
         public void focusClient(
 String clientUuid, 
-FocusClientResponse callback) {
+FocusClient_Response callback) {
 
             ServiceWorkerHostFocusClientParams _message = new ServiceWorkerHostFocusClientParams();
 
@@ -246,7 +248,7 @@ FocusClientResponse callback) {
         @Override
         public void navigateClient(
 String clientUuid, org.chromium.url.mojom.Url url, 
-NavigateClientResponse callback) {
+NavigateClient_Response callback) {
 
             ServiceWorkerHostNavigateClientParams _message = new ServiceWorkerHostNavigateClientParams();
 
@@ -270,7 +272,7 @@ NavigateClientResponse callback) {
         @Override
         public void skipWaiting(
 
-SkipWaitingResponse callback) {
+SkipWaiting_Response callback) {
 
             ServiceWorkerHostSkipWaitingParams _message = new ServiceWorkerHostSkipWaitingParams();
 
@@ -290,7 +292,7 @@ SkipWaitingResponse callback) {
         @Override
         public void claimClients(
 
-ClaimClientsResponse callback) {
+ClaimClients_Response callback) {
 
             ServiceWorkerHostClaimClientsParams _message = new ServiceWorkerHostClaimClientsParams();
 
@@ -834,9 +836,9 @@ ClaimClientsResponse callback) {
 
     static class ServiceWorkerHostGetClientsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorkerHost.GetClientsResponse mCallback;
+        private final ServiceWorkerHost.GetClients_Response mCallback;
 
-        ServiceWorkerHostGetClientsResponseParamsForwardToCallback(ServiceWorkerHost.GetClientsResponse callback) {
+        ServiceWorkerHostGetClientsResponseParamsForwardToCallback(ServiceWorkerHost.GetClients_Response callback) {
             this.mCallback = callback;
         }
 
@@ -861,7 +863,7 @@ ClaimClientsResponse callback) {
         }
     }
 
-    static class ServiceWorkerHostGetClientsResponseParamsProxyToResponder implements ServiceWorkerHost.GetClientsResponse {
+    static class ServiceWorkerHostGetClientsResponseParamsProxyToResponder implements ServiceWorkerHost.GetClients_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1022,9 +1024,9 @@ ClaimClientsResponse callback) {
 
     static class ServiceWorkerHostGetClientResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorkerHost.GetClientResponse mCallback;
+        private final ServiceWorkerHost.GetClient_Response mCallback;
 
-        ServiceWorkerHostGetClientResponseParamsForwardToCallback(ServiceWorkerHost.GetClientResponse callback) {
+        ServiceWorkerHostGetClientResponseParamsForwardToCallback(ServiceWorkerHost.GetClient_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1049,7 +1051,7 @@ ClaimClientsResponse callback) {
         }
     }
 
-    static class ServiceWorkerHostGetClientResponseParamsProxyToResponder implements ServiceWorkerHost.GetClientResponse {
+    static class ServiceWorkerHostGetClientResponseParamsProxyToResponder implements ServiceWorkerHost.GetClient_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1225,9 +1227,9 @@ ClaimClientsResponse callback) {
 
     static class ServiceWorkerHostOpenNewTabResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorkerHost.OpenNewTabResponse mCallback;
+        private final ServiceWorkerHost.OpenNewTab_Response mCallback;
 
-        ServiceWorkerHostOpenNewTabResponseParamsForwardToCallback(ServiceWorkerHost.OpenNewTabResponse callback) {
+        ServiceWorkerHostOpenNewTabResponseParamsForwardToCallback(ServiceWorkerHost.OpenNewTab_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1252,7 +1254,7 @@ ClaimClientsResponse callback) {
         }
     }
 
-    static class ServiceWorkerHostOpenNewTabResponseParamsProxyToResponder implements ServiceWorkerHost.OpenNewTabResponse {
+    static class ServiceWorkerHostOpenNewTabResponseParamsProxyToResponder implements ServiceWorkerHost.OpenNewTab_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1432,9 +1434,9 @@ ClaimClientsResponse callback) {
 
     static class ServiceWorkerHostOpenPaymentHandlerWindowResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorkerHost.OpenPaymentHandlerWindowResponse mCallback;
+        private final ServiceWorkerHost.OpenPaymentHandlerWindow_Response mCallback;
 
-        ServiceWorkerHostOpenPaymentHandlerWindowResponseParamsForwardToCallback(ServiceWorkerHost.OpenPaymentHandlerWindowResponse callback) {
+        ServiceWorkerHostOpenPaymentHandlerWindowResponseParamsForwardToCallback(ServiceWorkerHost.OpenPaymentHandlerWindow_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1459,7 +1461,7 @@ ClaimClientsResponse callback) {
         }
     }
 
-    static class ServiceWorkerHostOpenPaymentHandlerWindowResponseParamsProxyToResponder implements ServiceWorkerHost.OpenPaymentHandlerWindowResponse {
+    static class ServiceWorkerHostOpenPaymentHandlerWindowResponseParamsProxyToResponder implements ServiceWorkerHost.OpenPaymentHandlerWindow_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1695,9 +1697,9 @@ ClaimClientsResponse callback) {
 
     static class ServiceWorkerHostFocusClientResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorkerHost.FocusClientResponse mCallback;
+        private final ServiceWorkerHost.FocusClient_Response mCallback;
 
-        ServiceWorkerHostFocusClientResponseParamsForwardToCallback(ServiceWorkerHost.FocusClientResponse callback) {
+        ServiceWorkerHostFocusClientResponseParamsForwardToCallback(ServiceWorkerHost.FocusClient_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1722,7 +1724,7 @@ ClaimClientsResponse callback) {
         }
     }
 
-    static class ServiceWorkerHostFocusClientResponseParamsProxyToResponder implements ServiceWorkerHost.FocusClientResponse {
+    static class ServiceWorkerHostFocusClientResponseParamsProxyToResponder implements ServiceWorkerHost.FocusClient_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1905,9 +1907,9 @@ ClaimClientsResponse callback) {
 
     static class ServiceWorkerHostNavigateClientResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorkerHost.NavigateClientResponse mCallback;
+        private final ServiceWorkerHost.NavigateClient_Response mCallback;
 
-        ServiceWorkerHostNavigateClientResponseParamsForwardToCallback(ServiceWorkerHost.NavigateClientResponse callback) {
+        ServiceWorkerHostNavigateClientResponseParamsForwardToCallback(ServiceWorkerHost.NavigateClient_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1932,7 +1934,7 @@ ClaimClientsResponse callback) {
         }
     }
 
-    static class ServiceWorkerHostNavigateClientResponseParamsProxyToResponder implements ServiceWorkerHost.NavigateClientResponse {
+    static class ServiceWorkerHostNavigateClientResponseParamsProxyToResponder implements ServiceWorkerHost.NavigateClient_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2089,9 +2091,9 @@ ClaimClientsResponse callback) {
 
     static class ServiceWorkerHostSkipWaitingResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorkerHost.SkipWaitingResponse mCallback;
+        private final ServiceWorkerHost.SkipWaiting_Response mCallback;
 
-        ServiceWorkerHostSkipWaitingResponseParamsForwardToCallback(ServiceWorkerHost.SkipWaitingResponse callback) {
+        ServiceWorkerHostSkipWaitingResponseParamsForwardToCallback(ServiceWorkerHost.SkipWaiting_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2116,7 +2118,7 @@ ClaimClientsResponse callback) {
         }
     }
 
-    static class ServiceWorkerHostSkipWaitingResponseParamsProxyToResponder implements ServiceWorkerHost.SkipWaitingResponse {
+    static class ServiceWorkerHostSkipWaitingResponseParamsProxyToResponder implements ServiceWorkerHost.SkipWaiting_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2278,9 +2280,9 @@ ClaimClientsResponse callback) {
 
     static class ServiceWorkerHostClaimClientsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorkerHost.ClaimClientsResponse mCallback;
+        private final ServiceWorkerHost.ClaimClients_Response mCallback;
 
-        ServiceWorkerHostClaimClientsResponseParamsForwardToCallback(ServiceWorkerHost.ClaimClientsResponse callback) {
+        ServiceWorkerHostClaimClientsResponseParamsForwardToCallback(ServiceWorkerHost.ClaimClients_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2305,7 +2307,7 @@ ClaimClientsResponse callback) {
         }
     }
 
-    static class ServiceWorkerHostClaimClientsResponseParamsProxyToResponder implements ServiceWorkerHost.ClaimClientsResponse {
+    static class ServiceWorkerHostClaimClientsResponseParamsProxyToResponder implements ServiceWorkerHost.ClaimClients_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

@@ -13,18 +13,18 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class DataElement extends org.chromium.mojo.bindings.Union {
 
     public static final class Tag {
         public static final int Bytes = 0;
         public static final int File = 1;
-        public static final int FileFilesystem = 2;
-        public static final int Blob = 3;
+        public static final int Blob = 2;
     };
     private DataElementBytes mBytes;
     private DataElementFile mFile;
-    private DataElementFilesystemUrl mFileFilesystem;
     private DataElementBlob mBlob;
 
     public void setBytes(DataElementBytes bytes) {
@@ -45,16 +45,6 @@ public final class DataElement extends org.chromium.mojo.bindings.Union {
     public DataElementFile getFile() {
         assert this.mTag == Tag.File;
         return this.mFile;
-    }
-
-    public void setFileFilesystem(DataElementFilesystemUrl fileFilesystem) {
-        this.mTag = Tag.FileFilesystem;
-        this.mFileFilesystem = fileFilesystem;
-    }
-
-    public DataElementFilesystemUrl getFileFilesystem() {
-        assert this.mTag == Tag.FileFilesystem;
-        return this.mFileFilesystem;
     }
 
     public void setBlob(DataElementBlob blob) {
@@ -81,11 +71,6 @@ public final class DataElement extends org.chromium.mojo.bindings.Union {
             case Tag.File: {
                 
                 encoder0.encode(this.mFile, offset + 8, false);
-                break;
-            }
-            case Tag.FileFilesystem: {
-                
-                encoder0.encode(this.mFileFilesystem, offset + 8, false);
                 break;
             }
             case Tag.Blob: {
@@ -122,13 +107,6 @@ public final class DataElement extends org.chromium.mojo.bindings.Union {
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(offset + org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, false);
                 result.mFile = DataElementFile.decode(decoder1);
                 result.mTag = Tag.File;
-                break;
-            }
-            case Tag.FileFilesystem: {
-                
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(offset + org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, false);
-                result.mFileFilesystem = DataElementFilesystemUrl.decode(decoder1);
-                result.mTag = Tag.FileFilesystem;
                 break;
             }
             case Tag.Blob: {

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class BackgroundFetchRegistrationService_Internal {
 
@@ -67,7 +69,7 @@ class BackgroundFetchRegistrationService_Internal {
         @Override
         public void updateUi(
 String title, org.chromium.skia.mojom.BitmapN32 icon, 
-UpdateUiResponse callback) {
+UpdateUi_Response callback) {
 
             BackgroundFetchRegistrationServiceUpdateUiParams _message = new BackgroundFetchRegistrationServiceUpdateUiParams();
 
@@ -91,7 +93,7 @@ UpdateUiResponse callback) {
         @Override
         public void abort(
 
-AbortResponse callback) {
+Abort_Response callback) {
 
             BackgroundFetchRegistrationServiceAbortParams _message = new BackgroundFetchRegistrationServiceAbortParams();
 
@@ -111,7 +113,7 @@ AbortResponse callback) {
         @Override
         public void matchRequests(
 FetchApiRequest requestToMatch, CacheQueryOptions cacheQueryOptions, boolean matchAll, 
-MatchRequestsResponse callback) {
+MatchRequests_Response callback) {
 
             BackgroundFetchRegistrationServiceMatchRequestsParams _message = new BackgroundFetchRegistrationServiceMatchRequestsParams();
 
@@ -420,9 +422,9 @@ BackgroundFetchRegistrationObserver observer) {
 
     static class BackgroundFetchRegistrationServiceUpdateUiResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BackgroundFetchRegistrationService.UpdateUiResponse mCallback;
+        private final BackgroundFetchRegistrationService.UpdateUi_Response mCallback;
 
-        BackgroundFetchRegistrationServiceUpdateUiResponseParamsForwardToCallback(BackgroundFetchRegistrationService.UpdateUiResponse callback) {
+        BackgroundFetchRegistrationServiceUpdateUiResponseParamsForwardToCallback(BackgroundFetchRegistrationService.UpdateUi_Response callback) {
             this.mCallback = callback;
         }
 
@@ -447,7 +449,7 @@ BackgroundFetchRegistrationObserver observer) {
         }
     }
 
-    static class BackgroundFetchRegistrationServiceUpdateUiResponseParamsProxyToResponder implements BackgroundFetchRegistrationService.UpdateUiResponse {
+    static class BackgroundFetchRegistrationServiceUpdateUiResponseParamsProxyToResponder implements BackgroundFetchRegistrationService.UpdateUi_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -602,9 +604,9 @@ BackgroundFetchRegistrationObserver observer) {
 
     static class BackgroundFetchRegistrationServiceAbortResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BackgroundFetchRegistrationService.AbortResponse mCallback;
+        private final BackgroundFetchRegistrationService.Abort_Response mCallback;
 
-        BackgroundFetchRegistrationServiceAbortResponseParamsForwardToCallback(BackgroundFetchRegistrationService.AbortResponse callback) {
+        BackgroundFetchRegistrationServiceAbortResponseParamsForwardToCallback(BackgroundFetchRegistrationService.Abort_Response callback) {
             this.mCallback = callback;
         }
 
@@ -629,7 +631,7 @@ BackgroundFetchRegistrationObserver observer) {
         }
     }
 
-    static class BackgroundFetchRegistrationServiceAbortResponseParamsProxyToResponder implements BackgroundFetchRegistrationService.AbortResponse {
+    static class BackgroundFetchRegistrationServiceAbortResponseParamsProxyToResponder implements BackgroundFetchRegistrationService.Abort_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -822,9 +824,9 @@ BackgroundFetchRegistrationObserver observer) {
 
     static class BackgroundFetchRegistrationServiceMatchRequestsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BackgroundFetchRegistrationService.MatchRequestsResponse mCallback;
+        private final BackgroundFetchRegistrationService.MatchRequests_Response mCallback;
 
-        BackgroundFetchRegistrationServiceMatchRequestsResponseParamsForwardToCallback(BackgroundFetchRegistrationService.MatchRequestsResponse callback) {
+        BackgroundFetchRegistrationServiceMatchRequestsResponseParamsForwardToCallback(BackgroundFetchRegistrationService.MatchRequests_Response callback) {
             this.mCallback = callback;
         }
 
@@ -849,7 +851,7 @@ BackgroundFetchRegistrationObserver observer) {
         }
     }
 
-    static class BackgroundFetchRegistrationServiceMatchRequestsResponseParamsProxyToResponder implements BackgroundFetchRegistrationService.MatchRequestsResponse {
+    static class BackgroundFetchRegistrationServiceMatchRequestsResponseParamsProxyToResponder implements BackgroundFetchRegistrationService.MatchRequests_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

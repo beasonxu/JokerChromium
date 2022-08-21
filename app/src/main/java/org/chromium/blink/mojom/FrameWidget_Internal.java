@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class FrameWidget_Internal {
 
@@ -59,29 +61,31 @@ class FrameWidget_Internal {
 
     private static final int DRAG_SOURCE_SYSTEM_DRAG_ENDED_ORDINAL = 5;
 
-    private static final int SET_BACKGROUND_OPAQUE_ORDINAL = 6;
+    private static final int ON_START_STYLUS_WRITING_ORDINAL = 6;
 
-    private static final int SET_TEXT_DIRECTION_ORDINAL = 7;
+    private static final int SET_BACKGROUND_OPAQUE_ORDINAL = 7;
 
-    private static final int SET_ACTIVE_ORDINAL = 8;
+    private static final int SET_TEXT_DIRECTION_ORDINAL = 8;
 
-    private static final int SET_INHERITED_EFFECTIVE_TOUCH_ACTION_FOR_SUB_FRAME_ORDINAL = 9;
+    private static final int SET_ACTIVE_ORDINAL = 9;
 
-    private static final int UPDATE_RENDER_THROTTLING_STATUS_FOR_SUB_FRAME_ORDINAL = 10;
+    private static final int SET_INHERITED_EFFECTIVE_TOUCH_ACTION_FOR_SUB_FRAME_ORDINAL = 10;
 
-    private static final int SET_IS_INERT_FOR_SUB_FRAME_ORDINAL = 11;
+    private static final int UPDATE_RENDER_THROTTLING_STATUS_FOR_SUB_FRAME_ORDINAL = 11;
 
-    private static final int SHOW_CONTEXT_MENU_ORDINAL = 12;
+    private static final int SET_IS_INERT_FOR_SUB_FRAME_ORDINAL = 12;
 
-    private static final int ENABLE_DEVICE_EMULATION_ORDINAL = 13;
+    private static final int SHOW_CONTEXT_MENU_ORDINAL = 13;
 
-    private static final int DISABLE_DEVICE_EMULATION_ORDINAL = 14;
+    private static final int ENABLE_DEVICE_EMULATION_ORDINAL = 14;
 
-    private static final int BIND_WIDGET_COMPOSITOR_ORDINAL = 15;
+    private static final int DISABLE_DEVICE_EMULATION_ORDINAL = 15;
 
-    private static final int BIND_INPUT_TARGET_CLIENT_ORDINAL = 16;
+    private static final int BIND_WIDGET_COMPOSITOR_ORDINAL = 16;
 
-    private static final int SET_VIEWPORT_INTERSECTION_ORDINAL = 17;
+    private static final int BIND_INPUT_TARGET_CLIENT_ORDINAL = 17;
+
+    private static final int SET_VIEWPORT_INTERSECTION_ORDINAL = 18;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements FrameWidget.Proxy {
@@ -95,7 +99,7 @@ class FrameWidget_Internal {
         @Override
         public void dragTargetDragEnter(
 DragData dragData, org.chromium.gfx.mojom.PointF pointInViewport, org.chromium.gfx.mojom.PointF screenPoint, AllowedDragOperations operationsAllowed, int keyModifiers, 
-DragTargetDragEnterResponse callback) {
+DragTargetDragEnter_Response callback) {
 
             FrameWidgetDragTargetDragEnterParams _message = new FrameWidgetDragTargetDragEnterParams();
 
@@ -125,7 +129,7 @@ DragTargetDragEnterResponse callback) {
         @Override
         public void dragTargetDragOver(
 org.chromium.gfx.mojom.PointF pointInViewport, org.chromium.gfx.mojom.PointF screenPoint, AllowedDragOperations operationsAllowed, int keyModifiers, 
-DragTargetDragOverResponse callback) {
+DragTargetDragOver_Response callback) {
 
             FrameWidgetDragTargetDragOverParams _message = new FrameWidgetDragTargetDragOverParams();
 
@@ -171,7 +175,8 @@ org.chromium.gfx.mojom.PointF pointInViewport, org.chromium.gfx.mojom.PointF scr
 
         @Override
         public void dragTargetDrop(
-DragData dragData, org.chromium.gfx.mojom.PointF pointInViewport, org.chromium.gfx.mojom.PointF screenPoint, int keyModifiers) {
+DragData dragData, org.chromium.gfx.mojom.PointF pointInViewport, org.chromium.gfx.mojom.PointF screenPoint, int keyModifiers, 
+DragTargetDrop_Response callback) {
 
             FrameWidgetDragTargetDropParams _message = new FrameWidgetDragTargetDropParams();
 
@@ -184,17 +189,22 @@ DragData dragData, org.chromium.gfx.mojom.PointF pointInViewport, org.chromium.g
             _message.keyModifiers = keyModifiers;
 
 
-            getProxyHandler().getMessageReceiver().accept(
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(DRAG_TARGET_DROP_ORDINAL)));
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    DRAG_TARGET_DROP_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new FrameWidgetDragTargetDropResponseParamsForwardToCallback(callback));
 
         }
 
 
         @Override
         public void dragSourceEndedAt(
-org.chromium.gfx.mojom.PointF pointInViewport, org.chromium.gfx.mojom.PointF screenPoint, int dragOperation) {
+org.chromium.gfx.mojom.PointF pointInViewport, org.chromium.gfx.mojom.PointF screenPoint, int dragOperation, 
+DragSourceEndedAt_Response callback) {
 
             FrameWidgetDragSourceEndedAtParams _message = new FrameWidgetDragSourceEndedAtParams();
 
@@ -205,10 +215,14 @@ org.chromium.gfx.mojom.PointF pointInViewport, org.chromium.gfx.mojom.PointF scr
             _message.dragOperation = dragOperation;
 
 
-            getProxyHandler().getMessageReceiver().accept(
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(DRAG_SOURCE_ENDED_AT_ORDINAL)));
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    DRAG_SOURCE_ENDED_AT_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new FrameWidgetDragSourceEndedAtResponseParamsForwardToCallback(callback));
 
         }
 
@@ -224,6 +238,26 @@ org.chromium.gfx.mojom.PointF pointInViewport, org.chromium.gfx.mojom.PointF scr
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(DRAG_SOURCE_SYSTEM_DRAG_ENDED_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void onStartStylusWriting(
+
+OnStartStylusWriting_Response callback) {
+
+            FrameWidgetOnStartStylusWritingParams _message = new FrameWidgetOnStartStylusWritingParams();
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    ON_START_STYLUS_WRITING_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new FrameWidgetOnStartStylusWritingResponseParamsForwardToCallback(callback));
 
         }
 
@@ -486,28 +520,6 @@ ViewportIntersectionState intersectionState, VisualProperties visualProperties) 
 
 
 
-                    case DRAG_TARGET_DROP_ORDINAL: {
-
-                        FrameWidgetDragTargetDropParams data =
-                                FrameWidgetDragTargetDropParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().dragTargetDrop(data.dragData, data.pointInViewport, data.screenPoint, data.keyModifiers);
-                        return true;
-                    }
-
-
-
-
-
-                    case DRAG_SOURCE_ENDED_AT_ORDINAL: {
-
-                        FrameWidgetDragSourceEndedAtParams data =
-                                FrameWidgetDragSourceEndedAtParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().dragSourceEndedAt(data.pointInViewport, data.screenPoint, data.dragOperation);
-                        return true;
-                    }
-
 
 
 
@@ -519,6 +531,8 @@ ViewportIntersectionState intersectionState, VisualProperties visualProperties) 
                         getImpl().dragSourceSystemDragEnded();
                         return true;
                     }
+
+
 
 
 
@@ -742,6 +756,46 @@ ViewportIntersectionState intersectionState, VisualProperties visualProperties) 
 
 
 
+                    case DRAG_TARGET_DROP_ORDINAL: {
+
+                        FrameWidgetDragTargetDropParams data =
+                                FrameWidgetDragTargetDropParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().dragTargetDrop(data.dragData, data.pointInViewport, data.screenPoint, data.keyModifiers, new FrameWidgetDragTargetDropResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
+                    case DRAG_SOURCE_ENDED_AT_ORDINAL: {
+
+                        FrameWidgetDragSourceEndedAtParams data =
+                                FrameWidgetDragSourceEndedAtParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().dragSourceEndedAt(data.pointInViewport, data.screenPoint, data.dragOperation, new FrameWidgetDragSourceEndedAtResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
+
+
+                    case ON_START_STYLUS_WRITING_ORDINAL: {
+
+                        FrameWidgetOnStartStylusWritingParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().onStartStylusWriting(new FrameWidgetOnStartStylusWritingResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
 
 
 
@@ -938,9 +992,9 @@ ViewportIntersectionState intersectionState, VisualProperties visualProperties) 
 
     static class FrameWidgetDragTargetDragEnterResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FrameWidget.DragTargetDragEnterResponse mCallback;
+        private final FrameWidget.DragTargetDragEnter_Response mCallback;
 
-        FrameWidgetDragTargetDragEnterResponseParamsForwardToCallback(FrameWidget.DragTargetDragEnterResponse callback) {
+        FrameWidgetDragTargetDragEnterResponseParamsForwardToCallback(FrameWidget.DragTargetDragEnter_Response callback) {
             this.mCallback = callback;
         }
 
@@ -965,7 +1019,7 @@ ViewportIntersectionState intersectionState, VisualProperties visualProperties) 
         }
     }
 
-    static class FrameWidgetDragTargetDragEnterResponseParamsProxyToResponder implements FrameWidget.DragTargetDragEnterResponse {
+    static class FrameWidgetDragTargetDragEnterResponseParamsProxyToResponder implements FrameWidget.DragTargetDragEnter_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1151,9 +1205,9 @@ ViewportIntersectionState intersectionState, VisualProperties visualProperties) 
 
     static class FrameWidgetDragTargetDragOverResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FrameWidget.DragTargetDragOverResponse mCallback;
+        private final FrameWidget.DragTargetDragOver_Response mCallback;
 
-        FrameWidgetDragTargetDragOverResponseParamsForwardToCallback(FrameWidget.DragTargetDragOverResponse callback) {
+        FrameWidgetDragTargetDragOverResponseParamsForwardToCallback(FrameWidget.DragTargetDragOver_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1178,7 +1232,7 @@ ViewportIntersectionState intersectionState, VisualProperties visualProperties) 
         }
     }
 
-    static class FrameWidgetDragTargetDragOverResponseParamsProxyToResponder implements FrameWidget.DragTargetDragOverResponse {
+    static class FrameWidgetDragTargetDragOverResponseParamsProxyToResponder implements FrameWidget.DragTargetDragOver_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1372,6 +1426,119 @@ ViewportIntersectionState intersectionState, VisualProperties visualProperties) 
 
 
     
+    static final class FrameWidgetDragTargetDropResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private FrameWidgetDragTargetDropResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public FrameWidgetDragTargetDropResponseParams() {
+            this(0);
+        }
+
+        public static FrameWidgetDragTargetDropResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static FrameWidgetDragTargetDropResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static FrameWidgetDragTargetDropResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            FrameWidgetDragTargetDropResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new FrameWidgetDragTargetDropResponseParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+    static class FrameWidgetDragTargetDropResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final FrameWidget.DragTargetDrop_Response mCallback;
+
+        FrameWidgetDragTargetDropResponseParamsForwardToCallback(FrameWidget.DragTargetDrop_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(DRAG_TARGET_DROP_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                mCallback.call();
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class FrameWidgetDragTargetDropResponseParamsProxyToResponder implements FrameWidget.DragTargetDrop_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        FrameWidgetDragTargetDropResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call() {
+            FrameWidgetDragTargetDropResponseParams _response = new FrameWidgetDragTargetDropResponseParams();
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    DRAG_TARGET_DROP_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
     static final class FrameWidgetDragSourceEndedAtParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 32;
@@ -1453,6 +1620,119 @@ ViewportIntersectionState intersectionState, VisualProperties visualProperties) 
 
 
     
+    static final class FrameWidgetDragSourceEndedAtResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private FrameWidgetDragSourceEndedAtResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public FrameWidgetDragSourceEndedAtResponseParams() {
+            this(0);
+        }
+
+        public static FrameWidgetDragSourceEndedAtResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static FrameWidgetDragSourceEndedAtResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static FrameWidgetDragSourceEndedAtResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            FrameWidgetDragSourceEndedAtResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new FrameWidgetDragSourceEndedAtResponseParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+    static class FrameWidgetDragSourceEndedAtResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final FrameWidget.DragSourceEndedAt_Response mCallback;
+
+        FrameWidgetDragSourceEndedAtResponseParamsForwardToCallback(FrameWidget.DragSourceEndedAt_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(DRAG_SOURCE_ENDED_AT_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                mCallback.call();
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class FrameWidgetDragSourceEndedAtResponseParamsProxyToResponder implements FrameWidget.DragSourceEndedAt_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        FrameWidgetDragSourceEndedAtResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call() {
+            FrameWidgetDragSourceEndedAtResponseParams _response = new FrameWidgetDragSourceEndedAtResponseParams();
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    DRAG_SOURCE_ENDED_AT_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
     static final class FrameWidgetDragSourceSystemDragEndedParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 8;
@@ -1503,6 +1783,197 @@ ViewportIntersectionState intersectionState, VisualProperties visualProperties) 
         @Override
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+
+
+    
+    static final class FrameWidgetOnStartStylusWritingParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private FrameWidgetOnStartStylusWritingParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public FrameWidgetOnStartStylusWritingParams() {
+            this(0);
+        }
+
+        public static FrameWidgetOnStartStylusWritingParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static FrameWidgetOnStartStylusWritingParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static FrameWidgetOnStartStylusWritingParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            FrameWidgetOnStartStylusWritingParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new FrameWidgetOnStartStylusWritingParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+
+
+    
+    static final class FrameWidgetOnStartStylusWritingResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.gfx.mojom.Rect focusedEditBounds;
+        public org.chromium.gfx.mojom.Rect caretBounds;
+
+        private FrameWidgetOnStartStylusWritingResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public FrameWidgetOnStartStylusWritingResponseParams() {
+            this(0);
+        }
+
+        public static FrameWidgetOnStartStylusWritingResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static FrameWidgetOnStartStylusWritingResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static FrameWidgetOnStartStylusWritingResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            FrameWidgetOnStartStylusWritingResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new FrameWidgetOnStartStylusWritingResponseParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, true);
+                    result.focusedEditBounds = org.chromium.gfx.mojom.Rect.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, true);
+                    result.caretBounds = org.chromium.gfx.mojom.Rect.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.focusedEditBounds, 8, true);
+            
+            encoder0.encode(this.caretBounds, 16, true);
+        }
+    }
+
+    static class FrameWidgetOnStartStylusWritingResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final FrameWidget.OnStartStylusWriting_Response mCallback;
+
+        FrameWidgetOnStartStylusWritingResponseParamsForwardToCallback(FrameWidget.OnStartStylusWriting_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(ON_START_STYLUS_WRITING_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                FrameWidgetOnStartStylusWritingResponseParams response = FrameWidgetOnStartStylusWritingResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.focusedEditBounds, response.caretBounds);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class FrameWidgetOnStartStylusWritingResponseParamsProxyToResponder implements FrameWidget.OnStartStylusWriting_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        FrameWidgetOnStartStylusWritingResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(org.chromium.gfx.mojom.Rect focusedEditBounds, org.chromium.gfx.mojom.Rect caretBounds) {
+            FrameWidgetOnStartStylusWritingResponseParams _response = new FrameWidgetOnStartStylusWritingResponseParams();
+
+            _response.focusedEditBounds = focusedEditBounds;
+
+            _response.caretBounds = caretBounds;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    ON_START_STYLUS_WRITING_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
         }
     }
 

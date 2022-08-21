@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class Portal_Internal {
 
@@ -65,7 +67,7 @@ class Portal_Internal {
         @Override
         public void navigate(
 org.chromium.url.mojom.Url url, Referrer referrer, 
-NavigateResponse callback) {
+Navigate_Response callback) {
 
             PortalNavigateParams _message = new PortalNavigateParams();
 
@@ -89,7 +91,7 @@ NavigateResponse callback) {
         @Override
         public void activate(
 TransferableMessage data, org.chromium.mojo_base.mojom.TimeTicks activationTime, long traceId, 
-ActivateResponse callback) {
+Activate_Response callback) {
 
             PortalActivateParams _message = new PortalActivateParams();
 
@@ -374,9 +376,9 @@ TransferableMessage message) {
 
     static class PortalNavigateResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Portal.NavigateResponse mCallback;
+        private final Portal.Navigate_Response mCallback;
 
-        PortalNavigateResponseParamsForwardToCallback(Portal.NavigateResponse callback) {
+        PortalNavigateResponseParamsForwardToCallback(Portal.Navigate_Response callback) {
             this.mCallback = callback;
         }
 
@@ -399,7 +401,7 @@ TransferableMessage message) {
         }
     }
 
-    static class PortalNavigateResponseParamsProxyToResponder implements Portal.NavigateResponse {
+    static class PortalNavigateResponseParamsProxyToResponder implements Portal.Navigate_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -575,9 +577,9 @@ TransferableMessage message) {
 
     static class PortalActivateResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Portal.ActivateResponse mCallback;
+        private final Portal.Activate_Response mCallback;
 
-        PortalActivateResponseParamsForwardToCallback(Portal.ActivateResponse callback) {
+        PortalActivateResponseParamsForwardToCallback(Portal.Activate_Response callback) {
             this.mCallback = callback;
         }
 
@@ -602,7 +604,7 @@ TransferableMessage message) {
         }
     }
 
-    static class PortalActivateResponseParamsProxyToResponder implements Portal.ActivateResponse {
+    static class PortalActivateResponseParamsProxyToResponder implements Portal.Activate_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

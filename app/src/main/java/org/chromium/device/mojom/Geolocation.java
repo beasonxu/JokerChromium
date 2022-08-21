@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface Geolocation extends org.chromium.mojo.bindings.Interface {
 
@@ -23,17 +25,15 @@ public interface Geolocation extends org.chromium.mojo.bindings.Interface {
 
     Manager<Geolocation, Geolocation.Proxy> MANAGER = Geolocation_Internal.MANAGER;
 
-
     void setHighAccuracy(
 boolean highAccuracy);
 
 
-
     void queryNextPosition(
 
-QueryNextPositionResponse callback);
+QueryNextPosition_Response callback);
 
-    interface QueryNextPositionResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Geoposition> { }
+    interface QueryNextPosition_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Geoposition> { }
 
 
 }

@@ -9,8 +9,8 @@ package org.chromium.net;
  * {@hide as it's only used internally}
  */
 public class ApiVersion {
-    private static final String CRONET_VERSION = "90.0.4430.82";
-    private static final int API_LEVEL = 14;
+    private static final String CRONET_VERSION = "106.0.5241.2";
+    private static final int API_LEVEL = 16;
     /**
      * The minimum API level of implementations that are compatible with this API.
      * The last API level which broke backwards API compatibility. In other words, the
@@ -21,7 +21,7 @@ public class ApiVersion {
      * used together various unexpected Errors, like AbstractMethodError, may result.
      */
     private static final int MIN_COMPATIBLE_API_LEVEL = 3;
-    private static final String LAST_CHANGE = "3a0b27d9ba1b2fc9de96e8266d4f7de37f3a052c-refs/branch-heads/4430@{#1304}";
+    private static final String LAST_CHANGE = "171e2512b21f4198bd6ee2c8f7f538a7e1719f40-refs/branch-heads/5241@{#4}";
 
     /**
      * Private constructor. All members of this class should be static.

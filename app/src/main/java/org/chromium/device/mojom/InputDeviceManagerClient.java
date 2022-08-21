@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface InputDeviceManagerClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface InputDeviceManagerClient extends org.chromium.mojo.bindings.Int
 
     Manager<InputDeviceManagerClient, InputDeviceManagerClient.Proxy> MANAGER = InputDeviceManagerClient_Internal.MANAGER;
 
-
     void inputDeviceAdded(
 InputDeviceInfo deviceInfo);
-
 
 
     void inputDeviceRemoved(

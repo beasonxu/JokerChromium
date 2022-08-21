@@ -3,7 +3,6 @@ package org.chromium.components.payments;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Map;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
@@ -11,9 +10,8 @@ import org.chromium.base.natives.GEN_JNI;
 import org.chromium.content_public.browser.WebContents;
 import org.chromium.payments.mojom.PaymentMethodData;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class CanMakePaymentQueryJni implements CanMakePaymentQuery.Natives {
+class CanMakePaymentQueryJni implements CanMakePaymentQuery.Natives {
   private static CanMakePaymentQuery.Natives testInstance;
 
   public static final JniStaticTestMocker<CanMakePaymentQuery.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.payments.CanMakePaymentQuery.Natives>() {

@@ -13,6 +13,8 @@
 
 package org.chromium.service_manager.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class Service_Internal {
 
@@ -65,7 +67,7 @@ class Service_Internal {
         @Override
         public void onStart(
 Identity identity, 
-OnStartResponse callback) {
+OnStart_Response callback) {
 
             ServiceOnStartParams _message = new ServiceOnStartParams();
 
@@ -87,7 +89,7 @@ OnStartResponse callback) {
         @Override
         public void onBindInterface(
 BindSourceInfo source, String interfaceName, org.chromium.mojo.system.MessagePipeHandle interfacePipe, 
-OnBindInterfaceResponse callback) {
+OnBindInterface_Response callback) {
 
             ServiceOnBindInterfaceParams _message = new ServiceOnBindInterfaceParams();
 
@@ -382,9 +384,9 @@ Identity identity, org.chromium.mojo.bindings.InterfaceRequest<Service> receiver
 
     static class ServiceOnStartResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Service.OnStartResponse mCallback;
+        private final Service.OnStart_Response mCallback;
 
-        ServiceOnStartResponseParamsForwardToCallback(Service.OnStartResponse callback) {
+        ServiceOnStartResponseParamsForwardToCallback(Service.OnStart_Response callback) {
             this.mCallback = callback;
         }
 
@@ -409,7 +411,7 @@ Identity identity, org.chromium.mojo.bindings.InterfaceRequest<Service> receiver
         }
     }
 
-    static class ServiceOnStartResponseParamsProxyToResponder implements Service.OnStartResponse {
+    static class ServiceOnStartResponseParamsProxyToResponder implements Service.OnStart_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -580,9 +582,9 @@ Identity identity, org.chromium.mojo.bindings.InterfaceRequest<Service> receiver
 
     static class ServiceOnBindInterfaceResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Service.OnBindInterfaceResponse mCallback;
+        private final Service.OnBindInterface_Response mCallback;
 
-        ServiceOnBindInterfaceResponseParamsForwardToCallback(Service.OnBindInterfaceResponse callback) {
+        ServiceOnBindInterfaceResponseParamsForwardToCallback(Service.OnBindInterface_Response callback) {
             this.mCallback = callback;
         }
 
@@ -605,7 +607,7 @@ Identity identity, org.chromium.mojo.bindings.InterfaceRequest<Service> receiver
         }
     }
 
-    static class ServiceOnBindInterfaceResponseParamsProxyToResponder implements Service.OnBindInterfaceResponse {
+    static class ServiceOnBindInterfaceResponseParamsProxyToResponder implements Service.OnBindInterface_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

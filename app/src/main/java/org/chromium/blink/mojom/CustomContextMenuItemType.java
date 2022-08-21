@@ -13,8 +13,18 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class CustomContextMenuItemType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        CustomContextMenuItemType.OPTION,
+        CustomContextMenuItemType.CHECKABLE_OPTION,
+        CustomContextMenuItemType.GROUP,
+        CustomContextMenuItemType.SEPARATOR,
+        CustomContextMenuItemType.SUB_MENU})
+    public @interface EnumType {}
 
     public static final int OPTION = 0;
     public static final int CHECKABLE_OPTION = 1;

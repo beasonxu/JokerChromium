@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class TrustedHeaderClient_Internal {
 
@@ -63,7 +65,7 @@ class TrustedHeaderClient_Internal {
         @Override
         public void onBeforeSendHeaders(
 HttpRequestHeaders headers, 
-OnBeforeSendHeadersResponse callback) {
+OnBeforeSendHeaders_Response callback) {
 
             TrustedHeaderClientOnBeforeSendHeadersParams _message = new TrustedHeaderClientOnBeforeSendHeadersParams();
 
@@ -85,7 +87,7 @@ OnBeforeSendHeadersResponse callback) {
         @Override
         public void onHeadersReceived(
 String headers, IpEndPoint remoteEndpoint, 
-OnHeadersReceivedResponse callback) {
+OnHeadersReceived_Response callback) {
 
             TrustedHeaderClientOnHeadersReceivedParams _message = new TrustedHeaderClientOnHeadersReceivedParams();
 
@@ -343,9 +345,9 @@ OnHeadersReceivedResponse callback) {
 
     static class TrustedHeaderClientOnBeforeSendHeadersResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final TrustedHeaderClient.OnBeforeSendHeadersResponse mCallback;
+        private final TrustedHeaderClient.OnBeforeSendHeaders_Response mCallback;
 
-        TrustedHeaderClientOnBeforeSendHeadersResponseParamsForwardToCallback(TrustedHeaderClient.OnBeforeSendHeadersResponse callback) {
+        TrustedHeaderClientOnBeforeSendHeadersResponseParamsForwardToCallback(TrustedHeaderClient.OnBeforeSendHeaders_Response callback) {
             this.mCallback = callback;
         }
 
@@ -370,7 +372,7 @@ OnHeadersReceivedResponse callback) {
         }
     }
 
-    static class TrustedHeaderClientOnBeforeSendHeadersResponseParamsProxyToResponder implements TrustedHeaderClient.OnBeforeSendHeadersResponse {
+    static class TrustedHeaderClientOnBeforeSendHeadersResponseParamsProxyToResponder implements TrustedHeaderClient.OnBeforeSendHeaders_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -555,9 +557,9 @@ OnHeadersReceivedResponse callback) {
 
     static class TrustedHeaderClientOnHeadersReceivedResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final TrustedHeaderClient.OnHeadersReceivedResponse mCallback;
+        private final TrustedHeaderClient.OnHeadersReceived_Response mCallback;
 
-        TrustedHeaderClientOnHeadersReceivedResponseParamsForwardToCallback(TrustedHeaderClient.OnHeadersReceivedResponse callback) {
+        TrustedHeaderClientOnHeadersReceivedResponseParamsForwardToCallback(TrustedHeaderClient.OnHeadersReceived_Response callback) {
             this.mCallback = callback;
         }
 
@@ -582,7 +584,7 @@ OnHeadersReceivedResponse callback) {
         }
     }
 
-    static class TrustedHeaderClientOnHeadersReceivedResponseParamsProxyToResponder implements TrustedHeaderClient.OnHeadersReceivedResponse {
+    static class TrustedHeaderClientOnHeadersReceivedResponseParamsProxyToResponder implements TrustedHeaderClient.OnHeadersReceived_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

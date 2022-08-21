@@ -168,4 +168,57 @@ public interface ClientCommandOrBuilder extends
    * <code>repeated .sync_pb.CustomNudgeDelay custom_nudge_delays = 8;</code>
    */
   int getCustomNudgeDelaysCount();
+
+  /**
+   * <pre>
+   * Configuration for commit quota of extension-related data types.
+   * The maximum count of tokens (=initial at browser startup) and the
+   * interval for refilling one more token if not at maximum.
+   * </pre>
+   *
+   * <code>optional int32 extension_types_max_tokens = 9;</code>
+   * @return Whether the extensionTypesMaxTokens field is set.
+   */
+  boolean hasExtensionTypesMaxTokens();
+  /**
+   * <pre>
+   * Configuration for commit quota of extension-related data types.
+   * The maximum count of tokens (=initial at browser startup) and the
+   * interval for refilling one more token if not at maximum.
+   * </pre>
+   *
+   * <code>optional int32 extension_types_max_tokens = 9;</code>
+   * @return The extensionTypesMaxTokens.
+   */
+  int getExtensionTypesMaxTokens();
+
+  /**
+   * <code>optional int32 extension_types_refill_interval_seconds = 10;</code>
+   * @return Whether the extensionTypesRefillIntervalSeconds field is set.
+   */
+  boolean hasExtensionTypesRefillIntervalSeconds();
+  /**
+   * <code>optional int32 extension_types_refill_interval_seconds = 10;</code>
+   * @return The extensionTypesRefillIntervalSeconds.
+   */
+  int getExtensionTypesRefillIntervalSeconds();
+
+  /**
+   * <pre>
+   * Extended nudge delay for data types with depleted quota.
+   * </pre>
+   *
+   * <code>optional int32 extension_types_depleted_quota_nudge_delay_seconds = 11;</code>
+   * @return Whether the extensionTypesDepletedQuotaNudgeDelaySeconds field is set.
+   */
+  boolean hasExtensionTypesDepletedQuotaNudgeDelaySeconds();
+  /**
+   * <pre>
+   * Extended nudge delay for data types with depleted quota.
+   * </pre>
+   *
+   * <code>optional int32 extension_types_depleted_quota_nudge_delay_seconds = 11;</code>
+   * @return The extensionTypesDepletedQuotaNudgeDelaySeconds.
+   */
+  int getExtensionTypesDepletedQuotaNudgeDelaySeconds();
 }

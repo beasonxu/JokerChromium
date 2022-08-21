@@ -13,8 +13,17 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PermissionStatus {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PermissionStatus.GRANTED,
+        PermissionStatus.DENIED,
+        PermissionStatus.ASK,
+        PermissionStatus.LAST})
+    public @interface EnumType {}
 
     public static final int GRANTED = 0;
     public static final int DENIED = 1;

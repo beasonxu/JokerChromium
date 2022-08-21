@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface FrameWidgetHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,45 +25,32 @@ public interface FrameWidgetHost extends org.chromium.mojo.bindings.Interface {
 
     Manager<FrameWidgetHost, FrameWidgetHost.Proxy> MANAGER = FrameWidgetHost_Internal.MANAGER;
 
-
     void animateDoubleTapZoomInMainFrame(
 org.chromium.gfx.mojom.Point tapPoint, org.chromium.gfx.mojom.Rect rectToZoom);
-
 
 
     void zoomToFindInPageRectInMainFrame(
 org.chromium.gfx.mojom.Rect rectToZoom);
 
 
-
     void setHasTouchEventConsumers(
 TouchEventConsumers touchEventConsumers);
-
 
 
     void intrinsicSizingInfoChanged(
 IntrinsicSizingInfo sizingInfo);
 
 
-
     void autoscrollStart(
 org.chromium.gfx.mojom.PointF position);
-
 
 
     void autoscrollFling(
 org.chromium.gfx.mojom.Vector2dF velocity);
 
 
-
     void autoscrollEnd(
 );
-
-
-
-    void didFirstVisuallyNonEmptyPaint(
-);
-
 
 
     void startDragging(

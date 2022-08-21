@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface LocalMainFrameHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,58 +25,57 @@ public interface LocalMainFrameHost extends org.chromium.mojo.bindings.Interface
 
     Manager<LocalMainFrameHost, LocalMainFrameHost.Proxy> MANAGER = LocalMainFrameHost_Internal.MANAGER;
 
-
     void scaleFactorChanged(
 float scale);
-
 
 
     void contentsPreferredSizeChanged(
 org.chromium.gfx.mojom.Size prefSize);
 
 
-
     void textAutosizerPageInfoChanged(
 TextAutosizerPageInfo pageInfo);
-
 
 
     void focusPage(
 );
 
 
-
     void takeFocus(
 boolean reverse);
 
 
-
     void updateTargetUrl(
 org.chromium.url.mojom.Url url, 
-UpdateTargetUrlResponse callback);
+UpdateTargetUrl_Response callback);
 
-    interface UpdateTargetUrlResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface UpdateTargetUrl_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void requestClose(
 );
 
 
-
     void showCreatedWindow(
 LocalFrameToken openerFrameToken, int disposition, org.chromium.gfx.mojom.Rect rect, boolean openedByUserGesture, 
-ShowCreatedWindowResponse callback);
+ShowCreatedWindow_Response callback);
 
-    interface ShowCreatedWindowResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface ShowCreatedWindow_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void setWindowRect(
 org.chromium.gfx.mojom.Rect bounds, 
-SetWindowRectResponse callback);
+SetWindowRect_Response callback);
 
-    interface SetWindowRectResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
+    interface SetWindowRect_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
+
+
+    void didFirstVisuallyNonEmptyPaint(
+);
+
+
+    void didAccessInitialMainDocument(
+);
 
 
 }

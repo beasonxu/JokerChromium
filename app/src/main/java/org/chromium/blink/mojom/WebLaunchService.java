@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface WebLaunchService extends org.chromium.mojo.bindings.Interface {
 
@@ -23,9 +25,12 @@ public interface WebLaunchService extends org.chromium.mojo.bindings.Interface {
 
     Manager<WebLaunchService, WebLaunchService.Proxy> MANAGER = WebLaunchService_Internal.MANAGER;
 
-
     void setLaunchFiles(
 FileSystemAccessEntry[] files);
+
+
+    void enqueueLaunchParams(
+org.chromium.url.mojom.Url launchUrl);
 
 
 }

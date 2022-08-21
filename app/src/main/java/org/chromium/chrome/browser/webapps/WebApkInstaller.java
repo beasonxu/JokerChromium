@@ -14,8 +14,10 @@ import org.chromium.base.annotations.CalledByNative;
 import org.chromium.base.annotations.NativeMethods;
 import org.chromium.base.task.AsyncTask;
 import org.chromium.chrome.browser.AppHooks;
-import org.chromium.chrome.browser.browserservices.BrowserServicesIntentDataProvider;
-import org.chromium.chrome.browser.metrics.WebApkUma;
+import org.chromium.chrome.browser.browserservices.intents.BrowserServicesIntentDataProvider;
+import org.chromium.chrome.browser.browserservices.intents.WebappIntentUtils;
+import org.chromium.chrome.browser.browserservices.metrics.WebApkUmaRecorder;
+import org.chromium.components.webapps.WebApkInstallResult;
 
 /**
  * Java counterpart to webapk_installer.h
@@ -70,9 +72,9 @@ public class WebApkInstaller {
         }
 
         if (mInstallDelegate == null) {
-            notify(WebApkInstallResult.FAILURE);
-            WebApkUma.recordGooglePlayInstallResult(
-                    WebApkUma.GooglePlayInstallResult.FAILED_NO_DELEGATE);
+            notify(WebApkInstallResult.NO_INSTALLER);
+            WebApkUmaRecorder.recordGooglePlayInstallResult(
+                    WebApkUmaRecorder.GooglePlayInstallResult.FAILED_NO_DELEGATE);
             return;
         }
 
@@ -123,7 +125,7 @@ public class WebApkInstaller {
     private void updateAsync(
             String packageName, int version, String title, String token) {
         if (mInstallDelegate == null) {
-            notify(WebApkInstallResult.FAILURE);
+            notify(WebApkInstallResult.NO_INSTALLER);
             return;
         }
 
@@ -141,11 +143,12 @@ public class WebApkInstaller {
         new AsyncTask<Integer>() {
             @Override
             protected Integer doInBackground() {
-                long availableSpaceInBytes = WebApkUma.getAvailableSpaceAboveLowSpaceLimit();
+                long availableSpaceInBytes =
+                        WebApkUmaRecorder.getAvailableSpaceAboveLowSpaceLimit();
 
                 if (availableSpaceInBytes > 0) return SpaceStatus.ENOUGH_SPACE;
 
-                long cacheSizeInBytes = WebApkUma.getCacheDirSize();
+                long cacheSizeInBytes = WebApkUmaRecorder.getCacheDirSize();
                 if (cacheSizeInBytes + availableSpaceInBytes > 0) {
                     return SpaceStatus.ENOUGH_SPACE_AFTER_FREE_UP_CACHE;
                 }

@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface CustomProxyConnectionObserver extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface CustomProxyConnectionObserver extends org.chromium.mojo.binding
 
     Manager<CustomProxyConnectionObserver, CustomProxyConnectionObserver.Proxy> MANAGER = CustomProxyConnectionObserver_Internal.MANAGER;
 
-
     void onFallback(
 org.chromium.proxy_resolver.mojom.ProxyServer badProxy, int netError);
-
 
 
     void onTunnelHeadersReceived(

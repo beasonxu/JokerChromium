@@ -2,8 +2,8 @@ package org.chromium.chrome.browser.customtabs.dependency_injection;
 
 import dagger.internal.Factory;
 import dagger.internal.Preconditions;
-import javax.annotation.Generated;
-import org.chromium.chrome.browser.browserservices.BrowserServicesIntentDataProvider;
+import javax.annotation.processing.Generated;
+import org.chromium.chrome.browser.browserservices.intents.BrowserServicesIntentDataProvider;
 
 @Generated(
     value = "dagger.internal.codegen.ComponentProcessor",

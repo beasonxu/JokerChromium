@@ -13,19 +13,19 @@ public interface IPaymentDetailsUpdateServiceCallback extends android.os.IInterf
   public static class Default implements org.chromium.components.payments.IPaymentDetailsUpdateServiceCallback
   {
     /**
-         * Called to notify the invoked payment app about updated payment details
-         * received from the merchant.
-         *
-         * @param updatedPaymentDetails The updated payment details received from
-         *      the merchant.
-         */
+     * Called to notify the invoked payment app about updated payment details
+     * received from the merchant.
+     * 
+     * @param updatedPaymentDetails The updated payment details received from
+     *      the merchant.
+     */
     @Override public void updateWith(android.os.Bundle updatedPaymentDetails) throws android.os.RemoteException
     {
     }
     /**
-         * Called to notify the invoked payment app that the merchant has not
-         * modified the payment details.
-         */
+     * Called to notify the invoked payment app that the merchant has not
+     * modified the payment details.
+     */
     @Override public void paymentDetailsNotUpdated() throws android.os.RemoteException
     {
     }
@@ -37,7 +37,6 @@ public interface IPaymentDetailsUpdateServiceCallback extends android.os.IInterf
   /** Local-side IPC implementation stub class. */
   public static abstract class Stub extends android.os.Binder implements org.chromium.components.payments.IPaymentDetailsUpdateServiceCallback
   {
-    private static final java.lang.String DESCRIPTOR = "org.chromium.components.payments.IPaymentDetailsUpdateServiceCallback";
     /** Construct the stub at attach it to the interface. */
     public Stub()
     {
@@ -65,6 +64,9 @@ public interface IPaymentDetailsUpdateServiceCallback extends android.os.IInterf
     @Override public boolean onTransact(int code, android.os.Parcel data, android.os.Parcel reply, int flags) throws android.os.RemoteException
     {
       java.lang.String descriptor = DESCRIPTOR;
+      if (code >= android.os.IBinder.FIRST_CALL_TRANSACTION && code <= android.os.IBinder.LAST_CALL_TRANSACTION) {
+        data.enforceInterface(descriptor);
+      }
       switch (code)
       {
         case INTERFACE_TRANSACTION:
@@ -72,30 +74,27 @@ public interface IPaymentDetailsUpdateServiceCallback extends android.os.IInterf
           reply.writeString(descriptor);
           return true;
         }
+      }
+      switch (code)
+      {
         case TRANSACTION_updateWith:
         {
-          data.enforceInterface(descriptor);
           android.os.Bundle _arg0;
-          if ((0!=data.readInt())) {
-            _arg0 = android.os.Bundle.CREATOR.createFromParcel(data);
-          }
-          else {
-            _arg0 = null;
-          }
+          _arg0 = _Parcel.readTypedObject(data, android.os.Bundle.CREATOR);
           this.updateWith(_arg0);
-          return true;
+          break;
         }
         case TRANSACTION_paymentDetailsNotUpdated:
         {
-          data.enforceInterface(descriptor);
           this.paymentDetailsNotUpdated();
-          return true;
+          break;
         }
         default:
         {
           return super.onTransact(code, data, reply, flags);
         }
       }
+      return true;
     }
     private static class Proxy implements org.chromium.components.payments.IPaymentDetailsUpdateServiceCallback
     {
@@ -113,85 +112,76 @@ public interface IPaymentDetailsUpdateServiceCallback extends android.os.IInterf
         return DESCRIPTOR;
       }
       /**
-           * Called to notify the invoked payment app about updated payment details
-           * received from the merchant.
-           *
-           * @param updatedPaymentDetails The updated payment details received from
-           *      the merchant.
-           */
+       * Called to notify the invoked payment app about updated payment details
+       * received from the merchant.
+       * 
+       * @param updatedPaymentDetails The updated payment details received from
+       *      the merchant.
+       */
       @Override public void updateWith(android.os.Bundle updatedPaymentDetails) throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
-          if ((updatedPaymentDetails!=null)) {
-            _data.writeInt(1);
-            updatedPaymentDetails.writeToParcel(_data, 0);
-          }
-          else {
-            _data.writeInt(0);
-          }
+          _Parcel.writeTypedObject(_data, updatedPaymentDetails, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_updateWith, _data, null, android.os.IBinder.FLAG_ONEWAY);
-          if (!_status && getDefaultImpl() != null) {
-            getDefaultImpl().updateWith(updatedPaymentDetails);
-            return;
-          }
         }
         finally {
           _data.recycle();
         }
       }
       /**
-           * Called to notify the invoked payment app that the merchant has not
-           * modified the payment details.
-           */
+       * Called to notify the invoked payment app that the merchant has not
+       * modified the payment details.
+       */
       @Override public void paymentDetailsNotUpdated() throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_paymentDetailsNotUpdated, _data, null, android.os.IBinder.FLAG_ONEWAY);
-          if (!_status && getDefaultImpl() != null) {
-            getDefaultImpl().paymentDetailsNotUpdated();
-            return;
-          }
         }
         finally {
           _data.recycle();
         }
       }
-      public static org.chromium.components.payments.IPaymentDetailsUpdateServiceCallback sDefaultImpl;
     }
     static final int TRANSACTION_updateWith = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);
     static final int TRANSACTION_paymentDetailsNotUpdated = (android.os.IBinder.FIRST_CALL_TRANSACTION + 1);
-    public static boolean setDefaultImpl(org.chromium.components.payments.IPaymentDetailsUpdateServiceCallback impl) {
-      // Only one user of this interface can use this function
-      // at a time. This is a heuristic to detect if two different
-      // users in the same process use this function.
-      if (Stub.Proxy.sDefaultImpl != null) {
-        throw new IllegalStateException("setDefaultImpl() called twice");
-      }
-      if (impl != null) {
-        Stub.Proxy.sDefaultImpl = impl;
-        return true;
-      }
-      return false;
-    }
-    public static org.chromium.components.payments.IPaymentDetailsUpdateServiceCallback getDefaultImpl() {
-      return Stub.Proxy.sDefaultImpl;
-    }
   }
+  public static final java.lang.String DESCRIPTOR = "org.chromium.components.payments.IPaymentDetailsUpdateServiceCallback";
   /**
-       * Called to notify the invoked payment app about updated payment details
-       * received from the merchant.
-       *
-       * @param updatedPaymentDetails The updated payment details received from
-       *      the merchant.
-       */
+   * Called to notify the invoked payment app about updated payment details
+   * received from the merchant.
+   * 
+   * @param updatedPaymentDetails The updated payment details received from
+   *      the merchant.
+   */
   public void updateWith(android.os.Bundle updatedPaymentDetails) throws android.os.RemoteException;
   /**
-       * Called to notify the invoked payment app that the merchant has not
-       * modified the payment details.
-       */
+   * Called to notify the invoked payment app that the merchant has not
+   * modified the payment details.
+   */
   public void paymentDetailsNotUpdated() throws android.os.RemoteException;
+  /** @hide */
+  static class _Parcel {
+    static private <T> T readTypedObject(
+        android.os.Parcel parcel,
+        android.os.Parcelable.Creator<T> c) {
+      if (parcel.readInt() != 0) {
+          return c.createFromParcel(parcel);
+      } else {
+          return null;
+      }
+    }
+    static private <T extends android.os.Parcelable> void writeTypedObject(
+        android.os.Parcel parcel, T value, int parcelableFlags) {
+      if (value != null) {
+        parcel.writeInt(1);
+        value.writeToParcel(parcel, parcelableFlags);
+      } else {
+        parcel.writeInt(0);
+      }
+    }
+  }
 }

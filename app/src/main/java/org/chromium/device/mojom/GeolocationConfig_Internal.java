@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class GeolocationConfig_Internal {
 
@@ -61,7 +63,7 @@ class GeolocationConfig_Internal {
         @Override
         public void isHighAccuracyLocationBeingCaptured(
 
-IsHighAccuracyLocationBeingCapturedResponse callback) {
+IsHighAccuracyLocationBeingCaptured_Response callback) {
 
             GeolocationConfigIsHighAccuracyLocationBeingCapturedParams _message = new GeolocationConfigIsHighAccuracyLocationBeingCapturedParams();
 
@@ -281,9 +283,9 @@ IsHighAccuracyLocationBeingCapturedResponse callback) {
 
     static class GeolocationConfigIsHighAccuracyLocationBeingCapturedResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final GeolocationConfig.IsHighAccuracyLocationBeingCapturedResponse mCallback;
+        private final GeolocationConfig.IsHighAccuracyLocationBeingCaptured_Response mCallback;
 
-        GeolocationConfigIsHighAccuracyLocationBeingCapturedResponseParamsForwardToCallback(GeolocationConfig.IsHighAccuracyLocationBeingCapturedResponse callback) {
+        GeolocationConfigIsHighAccuracyLocationBeingCapturedResponseParamsForwardToCallback(GeolocationConfig.IsHighAccuracyLocationBeingCaptured_Response callback) {
             this.mCallback = callback;
         }
 
@@ -308,7 +310,7 @@ IsHighAccuracyLocationBeingCapturedResponse callback) {
         }
     }
 
-    static class GeolocationConfigIsHighAccuracyLocationBeingCapturedResponseParamsProxyToResponder implements GeolocationConfig.IsHighAccuracyLocationBeingCapturedResponse {
+    static class GeolocationConfigIsHighAccuracyLocationBeingCapturedResponseParamsProxyToResponder implements GeolocationConfig.IsHighAccuracyLocationBeingCaptured_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

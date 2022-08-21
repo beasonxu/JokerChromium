@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface WebSocketHandshakeClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,15 +25,12 @@ public interface WebSocketHandshakeClient extends org.chromium.mojo.bindings.Int
 
     Manager<WebSocketHandshakeClient, WebSocketHandshakeClient.Proxy> MANAGER = WebSocketHandshakeClient_Internal.MANAGER;
 
-
     void onOpeningHandshakeStarted(
 WebSocketHandshakeRequest request);
 
 
-
     void onFailure(
 String message, int netError, int responseCode);
-
 
 
     void onConnectionEstablished(

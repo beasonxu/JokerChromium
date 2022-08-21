@@ -13,8 +13,16 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class NetLogEventPhase {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        NetLogEventPhase.BEGIN,
+        NetLogEventPhase.END,
+        NetLogEventPhase.NONE})
+    public @interface EnumType {}
 
     public static final int BEGIN = 0;
     public static final int END = 1;

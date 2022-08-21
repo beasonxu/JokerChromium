@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class KeyboardLockService_Internal {
 
@@ -65,7 +67,7 @@ class KeyboardLockService_Internal {
         @Override
         public void requestKeyboardLock(
 String[] keyCodes, 
-RequestKeyboardLockResponse callback) {
+RequestKeyboardLock_Response callback) {
 
             KeyboardLockServiceRequestKeyboardLockParams _message = new KeyboardLockServiceRequestKeyboardLockParams();
 
@@ -102,7 +104,7 @@ RequestKeyboardLockResponse callback) {
         @Override
         public void getKeyboardLayoutMap(
 
-GetKeyboardLayoutMapResponse callback) {
+GetKeyboardLayoutMap_Response callback) {
 
             KeyboardLockServiceGetKeyboardLayoutMapParams _message = new KeyboardLockServiceGetKeyboardLayoutMapParams();
 
@@ -378,9 +380,9 @@ GetKeyboardLayoutMapResponse callback) {
 
     static class KeyboardLockServiceRequestKeyboardLockResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final KeyboardLockService.RequestKeyboardLockResponse mCallback;
+        private final KeyboardLockService.RequestKeyboardLock_Response mCallback;
 
-        KeyboardLockServiceRequestKeyboardLockResponseParamsForwardToCallback(KeyboardLockService.RequestKeyboardLockResponse callback) {
+        KeyboardLockServiceRequestKeyboardLockResponseParamsForwardToCallback(KeyboardLockService.RequestKeyboardLock_Response callback) {
             this.mCallback = callback;
         }
 
@@ -405,7 +407,7 @@ GetKeyboardLayoutMapResponse callback) {
         }
     }
 
-    static class KeyboardLockServiceRequestKeyboardLockResponseParamsProxyToResponder implements KeyboardLockService.RequestKeyboardLockResponse {
+    static class KeyboardLockServiceRequestKeyboardLockResponseParamsProxyToResponder implements KeyboardLockService.RequestKeyboardLock_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -615,9 +617,9 @@ GetKeyboardLayoutMapResponse callback) {
 
     static class KeyboardLockServiceGetKeyboardLayoutMapResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final KeyboardLockService.GetKeyboardLayoutMapResponse mCallback;
+        private final KeyboardLockService.GetKeyboardLayoutMap_Response mCallback;
 
-        KeyboardLockServiceGetKeyboardLayoutMapResponseParamsForwardToCallback(KeyboardLockService.GetKeyboardLayoutMapResponse callback) {
+        KeyboardLockServiceGetKeyboardLayoutMapResponseParamsForwardToCallback(KeyboardLockService.GetKeyboardLayoutMap_Response callback) {
             this.mCallback = callback;
         }
 
@@ -642,7 +644,7 @@ GetKeyboardLayoutMapResponse callback) {
         }
     }
 
-    static class KeyboardLockServiceGetKeyboardLayoutMapResponseParamsProxyToResponder implements KeyboardLockService.GetKeyboardLayoutMapResponse {
+    static class KeyboardLockServiceGetKeyboardLayoutMapResponseParamsProxyToResponder implements KeyboardLockService.GetKeyboardLayoutMap_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

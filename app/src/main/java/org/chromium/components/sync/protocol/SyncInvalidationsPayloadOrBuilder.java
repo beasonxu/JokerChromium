@@ -10,7 +10,8 @@ public interface SyncInvalidationsPayloadOrBuilder extends
   /**
    * <pre>
    * This field contains information about each data type which needs to be
-   * updated.
+   * updated. Note that it may contain data types which current client is not
+   * interested in.
    * </pre>
    *
    * <code>repeated .sync_pb.SyncInvalidationsPayload.DataTypeInvalidation data_type_invalidations = 1;</code>
@@ -20,7 +21,8 @@ public interface SyncInvalidationsPayloadOrBuilder extends
   /**
    * <pre>
    * This field contains information about each data type which needs to be
-   * updated.
+   * updated. Note that it may contain data types which current client is not
+   * interested in.
    * </pre>
    *
    * <code>repeated .sync_pb.SyncInvalidationsPayload.DataTypeInvalidation data_type_invalidations = 1;</code>
@@ -29,7 +31,8 @@ public interface SyncInvalidationsPayloadOrBuilder extends
   /**
    * <pre>
    * This field contains information about each data type which needs to be
-   * updated.
+   * updated. Note that it may contain data types which current client is not
+   * interested in.
    * </pre>
    *
    * <code>repeated .sync_pb.SyncInvalidationsPayload.DataTypeInvalidation data_type_invalidations = 1;</code>
@@ -56,4 +59,23 @@ public interface SyncInvalidationsPayloadOrBuilder extends
    * @return The hint.
    */
   com.google.protobuf.ByteString getHint();
+
+  /**
+   * <pre>
+   * Version of invalidation, used to order incoming invalidations.
+   * </pre>
+   *
+   * <code>optional int64 version = 3;</code>
+   * @return Whether the version field is set.
+   */
+  boolean hasVersion();
+  /**
+   * <pre>
+   * Version of invalidation, used to order incoming invalidations.
+   * </pre>
+   *
+   * <code>optional int64 version = 3;</code>
+   * @return The version.
+   */
+  long getVersion();
 }

@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface NetworkContext extends org.chromium.mojo.bindings.Interface {
 
@@ -20,6 +22,11 @@ public interface NetworkContext extends org.chromium.mojo.bindings.Interface {
 
     public static final class DomainReliabilityClearMode {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            DomainReliabilityClearMode.CLEAR_CONTEXTS,
+            DomainReliabilityClearMode.CLEAR_BEACONS})
+        public @interface EnumType {}
 
         public static final int CLEAR_CONTEXTS = 0;
         public static final int CLEAR_BEACONS = 1;
@@ -48,435 +55,384 @@ public interface NetworkContext extends org.chromium.mojo.bindings.Interface {
 
     Manager<NetworkContext, NetworkContext.Proxy> MANAGER = NetworkContext_Internal.MANAGER;
 
-
     void setClient(
 NetworkContextClient client);
-
 
 
     void createUrlLoaderFactory(
 org.chromium.mojo.bindings.InterfaceRequest<UrlLoaderFactory> urlLoaderFactory, UrlLoaderFactoryParams params);
 
 
-
     void resetUrlLoaderFactories(
 );
-
 
 
     void getCookieManager(
 org.chromium.mojo.bindings.InterfaceRequest<CookieManager> cookieManager);
 
 
-
     void getRestrictedCookieManager(
 org.chromium.mojo.bindings.InterfaceRequest<RestrictedCookieManager> restrictedCookieManager, int role, org.chromium.url.internal.mojom.Origin origin, IsolationInfo isolationInfo, CookieAccessObserver cookieObserver);
 
 
-
-    void getHasTrustTokensAnswerer(
-org.chromium.mojo.bindings.InterfaceRequest<HasTrustTokensAnswerer> hasTrustTokensAnswerer, org.chromium.url.internal.mojom.Origin topFrameOrigin);
-
+    void getTrustTokenQueryAnswerer(
+org.chromium.mojo.bindings.InterfaceRequest<TrustTokenQueryAnswerer> trustTokenQueryAnswerer, org.chromium.url.internal.mojom.Origin topFrameOrigin);
 
 
     void clearTrustTokenData(
 ClearDataFilter filter, 
-ClearTrustTokenDataResponse callback);
+ClearTrustTokenData_Response callback);
 
-    interface ClearTrustTokenDataResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface ClearTrustTokenData_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void getStoredTrustTokenCounts(
 
-GetStoredTrustTokenCountsResponse callback);
+GetStoredTrustTokenCounts_Response callback);
 
-    interface GetStoredTrustTokenCountsResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<StoredTrustTokensForIssuer[]> { }
+    interface GetStoredTrustTokenCounts_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<StoredTrustTokensForIssuer[]> { }
 
+
+    void deleteStoredTrustTokens(
+org.chromium.url.internal.mojom.Origin issuer, 
+DeleteStoredTrustTokens_Response callback);
+
+    interface DeleteStoredTrustTokens_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
+
+
+    void setBlockTrustTokens(
+boolean block);
 
 
     void clearNetworkingHistoryBetween(
 org.chromium.mojo_base.mojom.Time startTime, org.chromium.mojo_base.mojom.Time endTime, 
-ClearNetworkingHistoryBetweenResponse callback);
+ClearNetworkingHistoryBetween_Response callback);
 
-    interface ClearNetworkingHistoryBetweenResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface ClearNetworkingHistoryBetween_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void clearHttpCache(
 org.chromium.mojo_base.mojom.Time startTime, org.chromium.mojo_base.mojom.Time endTime, ClearDataFilter filter, 
-ClearHttpCacheResponse callback);
+ClearHttpCache_Response callback);
 
-    interface ClearHttpCacheResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface ClearHttpCache_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void computeHttpCacheSize(
 org.chromium.mojo_base.mojom.Time startTime, org.chromium.mojo_base.mojom.Time endTime, 
-ComputeHttpCacheSizeResponse callback);
+ComputeHttpCacheSize_Response callback);
 
-    interface ComputeHttpCacheSizeResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Boolean, Long> { }
-
+    interface ComputeHttpCacheSize_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Boolean, Long> { }
 
 
     void notifyExternalCacheHit(
-org.chromium.url.mojom.Url url, String httpMethod, NetworkIsolationKey key, boolean isSubframeDocumentResource);
-
+org.chromium.url.mojom.Url url, String httpMethod, NetworkIsolationKey key, boolean isSubframeDocumentResource, boolean includeCredentials);
 
 
     void clearHostCache(
 ClearDataFilter filter, 
-ClearHostCacheResponse callback);
+ClearHostCache_Response callback);
 
-    interface ClearHostCacheResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface ClearHostCache_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void clearHttpAuthCache(
 org.chromium.mojo_base.mojom.Time startTime, org.chromium.mojo_base.mojom.Time endTime, 
-ClearHttpAuthCacheResponse callback);
+ClearHttpAuthCache_Response callback);
 
-    interface ClearHttpAuthCacheResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface ClearHttpAuthCache_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void clearReportingCacheReports(
 ClearDataFilter filter, 
-ClearReportingCacheReportsResponse callback);
+ClearReportingCacheReports_Response callback);
 
-    interface ClearReportingCacheReportsResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface ClearReportingCacheReports_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void clearReportingCacheClients(
 ClearDataFilter filter, 
-ClearReportingCacheClientsResponse callback);
+ClearReportingCacheClients_Response callback);
 
-    interface ClearReportingCacheClientsResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface ClearReportingCacheClients_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void clearNetworkErrorLogging(
 ClearDataFilter filter, 
-ClearNetworkErrorLoggingResponse callback);
+ClearNetworkErrorLogging_Response callback);
 
-    interface ClearNetworkErrorLoggingResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface ClearNetworkErrorLogging_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void clearDomainReliability(
 ClearDataFilter filter, int mode, 
-ClearDomainReliabilityResponse callback);
+ClearDomainReliability_Response callback);
 
-    interface ClearDomainReliabilityResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
+    interface ClearDomainReliability_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
+    void setDocumentReportingEndpoints(
+org.chromium.mojo_base.mojom.UnguessableToken reportingSource, org.chromium.url.internal.mojom.Origin origin, IsolationInfo isolationInfo, java.util.Map<String, String> endpoints);
 
-    void getDomainReliabilityJson(
 
-GetDomainReliabilityJsonResponse callback);
-
-    interface GetDomainReliabilityJsonResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.Value> { }
-
+    void sendReportsAndRemoveSource(
+org.chromium.mojo_base.mojom.UnguessableToken reportingSource);
 
 
     void queueReport(
-String type, String group, org.chromium.url.mojom.Url url, NetworkIsolationKey networkIsolationKey, String userAgent, org.chromium.mojo_base.mojom.DictionaryValue body);
-
+String type, String group, org.chromium.url.mojom.Url url, org.chromium.mojo_base.mojom.UnguessableToken reportingSource, NetworkIsolationKey networkIsolationKey, String userAgent, org.chromium.mojo_base.mojom.DictionaryValue body);
 
 
     void queueSignedExchangeReport(
 SignedExchangeReport report, NetworkIsolationKey networkIsolationKey);
 
 
-
     void closeAllConnections(
 
-CloseAllConnectionsResponse callback);
+CloseAllConnections_Response callback);
 
-    interface CloseAllConnectionsResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface CloseAllConnections_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void closeIdleConnections(
 
-CloseIdleConnectionsResponse callback);
+CloseIdleConnections_Response callback);
 
-    interface CloseIdleConnectionsResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface CloseIdleConnections_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void setNetworkConditions(
 org.chromium.mojo_base.mojom.UnguessableToken throttlingProfileId, NetworkConditions conditions);
 
 
-
     void setAcceptLanguage(
 String newAcceptLanguage);
-
 
 
     void setEnableReferrers(
 boolean enableReferrers);
 
 
-
     void setCtPolicy(
 CtPolicy ctPolicy);
 
 
-
     void addExpectCt(
 String host, org.chromium.mojo_base.mojom.Time expiry, boolean enforce, org.chromium.url.mojom.Url reportUri, NetworkIsolationKey networkIsolationKey, 
-AddExpectCtResponse callback);
+AddExpectCt_Response callback);
 
-    interface AddExpectCtResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface AddExpectCt_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void setExpectCtTestReport(
 org.chromium.url.mojom.Url reportUri, 
-SetExpectCtTestReportResponse callback);
+SetExpectCtTestReport_Response callback);
 
-    interface SetExpectCtTestReportResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface SetExpectCtTestReport_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void getExpectCtState(
 String domain, NetworkIsolationKey networkIsolationKey, 
-GetExpectCtStateResponse callback);
+GetExpectCtState_Response callback);
 
-    interface GetExpectCtStateResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.DictionaryValue> { }
-
+    interface GetExpectCtState_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.DictionaryValue> { }
 
 
     void createUdpSocket(
 org.chromium.mojo.bindings.InterfaceRequest<UdpSocket> receiver, UdpSocketListener listener);
 
 
-
     void createTcpServerSocket(
 IpEndPoint localAddr, int backlog, MutableNetworkTrafficAnnotationTag trafficAnnotation, org.chromium.mojo.bindings.InterfaceRequest<TcpServerSocket> socket, 
-CreateTcpServerSocketResponse callback);
+CreateTcpServerSocket_Response callback);
 
-    interface CreateTcpServerSocketResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, IpEndPoint> { }
-
+    interface CreateTcpServerSocket_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, IpEndPoint> { }
 
 
     void createTcpConnectedSocket(
 IpEndPoint localAddr, AddressList remoteAddrList, TcpConnectedSocketOptions tcpConnectedSocketOptions, MutableNetworkTrafficAnnotationTag trafficAnnotation, org.chromium.mojo.bindings.InterfaceRequest<TcpConnectedSocket> socket, SocketObserver observer, 
-CreateTcpConnectedSocketResponse callback);
+CreateTcpConnectedSocket_Response callback);
 
-    interface CreateTcpConnectedSocketResponse extends org.chromium.mojo.bindings.Callbacks.Callback5<Integer, IpEndPoint, IpEndPoint, org.chromium.mojo.system.DataPipe.ConsumerHandle, org.chromium.mojo.system.DataPipe.ProducerHandle> { }
-
+    interface CreateTcpConnectedSocket_Response extends org.chromium.mojo.bindings.Callbacks.Callback5<Integer, IpEndPoint, IpEndPoint, org.chromium.mojo.system.DataPipe.ConsumerHandle, org.chromium.mojo.system.DataPipe.ProducerHandle> { }
 
 
     void createTcpBoundSocket(
 IpEndPoint localAddr, MutableNetworkTrafficAnnotationTag trafficAnnotation, org.chromium.mojo.bindings.InterfaceRequest<TcpBoundSocket> socket, 
-CreateTcpBoundSocketResponse callback);
+CreateTcpBoundSocket_Response callback);
 
-    interface CreateTcpBoundSocketResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, IpEndPoint> { }
-
+    interface CreateTcpBoundSocket_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, IpEndPoint> { }
 
 
     void createProxyResolvingSocketFactory(
 org.chromium.mojo.bindings.InterfaceRequest<ProxyResolvingSocketFactory> factory);
 
 
-
     void lookUpProxyForUrl(
 org.chromium.url.mojom.Url url, NetworkIsolationKey networkIsolationKey, ProxyLookupClient proxyLookupClient);
 
 
-
     void forceReloadProxyConfig(
 
-ForceReloadProxyConfigResponse callback);
+ForceReloadProxyConfig_Response callback);
 
-    interface ForceReloadProxyConfigResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface ForceReloadProxyConfig_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void clearBadProxiesCache(
 
-ClearBadProxiesCacheResponse callback);
+ClearBadProxiesCache_Response callback);
 
-    interface ClearBadProxiesCacheResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface ClearBadProxiesCache_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void createWebSocket(
-org.chromium.url.mojom.Url url, String[] requestedProtocols, SiteForCookies siteForCookies, IsolationInfo isolationInfo, HttpHeader[] additionalHeaders, int processId, org.chromium.url.internal.mojom.Origin origin, int options, MutableNetworkTrafficAnnotationTag trafficAnnotation, WebSocketHandshakeClient handshakeClient, AuthenticationAndCertificateObserver authCertObserver, WebSocketAuthenticationHandler authHandler, TrustedHeaderClient headerClient);
+org.chromium.url.mojom.Url url, String[] requestedProtocols, SiteForCookies siteForCookies, IsolationInfo isolationInfo, HttpHeader[] additionalHeaders, int processId, org.chromium.url.internal.mojom.Origin origin, int options, MutableNetworkTrafficAnnotationTag trafficAnnotation, WebSocketHandshakeClient handshakeClient, UrlLoaderNetworkServiceObserver urlLoaderNetworkObserver, WebSocketAuthenticationHandler authHandler, TrustedHeaderClient headerClient, org.chromium.mojo_base.mojom.UnguessableToken throttlingProfileId);
 
 
-
-    void createQuicTransport(
-org.chromium.url.mojom.Url url, org.chromium.url.internal.mojom.Origin origin, NetworkIsolationKey networkIsolationKey, QuicTransportCertificateFingerprint[] fingerprints, QuicTransportHandshakeClient handshakeClient);
-
+    void createWebTransport(
+org.chromium.url.mojom.Url url, org.chromium.url.internal.mojom.Origin origin, NetworkIsolationKey networkIsolationKey, WebTransportCertificateFingerprint[] fingerprints, WebTransportHandshakeClient handshakeClient);
 
 
     void createNetLogExporter(
 org.chromium.mojo.bindings.InterfaceRequest<NetLogExporter> receiver);
 
 
-
     void preconnectSockets(
 int numStreams, org.chromium.url.mojom.Url url, boolean allowCredentials, NetworkIsolationKey networkIsolationKey);
-
 
 
     void createP2pSocketManager(
 NetworkIsolationKey networkIsolationKey, P2pTrustedSocketManagerClient client, org.chromium.mojo.bindings.InterfaceRequest<P2pTrustedSocketManager> trustedSocketManager, org.chromium.mojo.bindings.InterfaceRequest<P2pSocketManager> socketManager);
 
 
-
     void createMdnsResponder(
 org.chromium.mojo.bindings.InterfaceRequest<MdnsResponder> responderReceiver);
-
 
 
     void resolveHost(
 HostPortPair host, NetworkIsolationKey networkIsolationKey, ResolveHostParameters optionalParameters, ResolveHostClient responseClient);
 
 
-
     void createHostResolver(
 DnsConfigOverrides configOverrides, org.chromium.mojo.bindings.InterfaceRequest<HostResolver> hostResolver);
 
 
-
     void verifyCertForSignedExchange(
 X509Certificate certificate, org.chromium.url.mojom.Url url, NetworkIsolationKey networkIsolationKey, String ocspResponse, String sctList, 
-VerifyCertForSignedExchangeResponse callback);
+VerifyCertForSignedExchange_Response callback);
 
-    interface VerifyCertForSignedExchangeResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, CertVerifyResult> { }
-
-
-
-    void parseHeaders(
-org.chromium.url.mojom.Url url, HttpResponseHeaders headers, 
-ParseHeadersResponse callback);
-
-    interface ParseHeadersResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<ParsedHeaders> { }
-
+    interface VerifyCertForSignedExchange_Response extends org.chromium.mojo.bindings.Callbacks.Callback4<Integer, CertVerifyResult, Boolean, String> { }
 
 
     void addHsts(
 String host, org.chromium.mojo_base.mojom.Time expiry, boolean includeSubdomains, 
-AddHstsResponse callback);
+AddHsts_Response callback);
 
-    interface AddHstsResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface AddHsts_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void isHstsActiveForHost(
 String host, 
-IsHstsActiveForHostResponse callback);
+IsHstsActiveForHost_Response callback);
 
-    interface IsHstsActiveForHostResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface IsHstsActiveForHost_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void getHstsState(
 String domain, 
-GetHstsStateResponse callback);
+GetHstsState_Response callback);
 
-    interface GetHstsStateResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.DictionaryValue> { }
-
+    interface GetHstsState_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.DictionaryValue> { }
 
 
     void setCorsOriginAccessListsForOrigin(
 org.chromium.url.internal.mojom.Origin sourceOrigin, CorsOriginPattern[] allowPatterns, CorsOriginPattern[] blockPatterns, 
-SetCorsOriginAccessListsForOriginResponse callback);
+SetCorsOriginAccessListsForOrigin_Response callback);
 
-    interface SetCorsOriginAccessListsForOriginResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface SetCorsOriginAccessListsForOrigin_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void deleteDynamicDataForHost(
 String host, 
-DeleteDynamicDataForHostResponse callback);
+DeleteDynamicDataForHost_Response callback);
 
-    interface DeleteDynamicDataForHostResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface DeleteDynamicDataForHost_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void setSplitAuthCacheByNetworkIsolationKey(
 boolean splitAuthCacheByNetworkIsolationKey);
 
 
-
     void saveHttpAuthCacheProxyEntries(
 
-SaveHttpAuthCacheProxyEntriesResponse callback);
+SaveHttpAuthCacheProxyEntries_Response callback);
 
-    interface SaveHttpAuthCacheProxyEntriesResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.UnguessableToken> { }
-
+    interface SaveHttpAuthCacheProxyEntries_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.UnguessableToken> { }
 
 
     void loadHttpAuthCacheProxyEntries(
 org.chromium.mojo_base.mojom.UnguessableToken cacheKey, 
-LoadHttpAuthCacheProxyEntriesResponse callback);
+LoadHttpAuthCacheProxyEntries_Response callback);
 
-    interface LoadHttpAuthCacheProxyEntriesResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface LoadHttpAuthCacheProxyEntries_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void addAuthCacheEntry(
 AuthChallengeInfo challenge, NetworkIsolationKey networkIsolationKey, AuthCredentials credentials, 
-AddAuthCacheEntryResponse callback);
+AddAuthCacheEntry_Response callback);
 
-    interface AddAuthCacheEntryResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
+    interface AddAuthCacheEntry_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
+
+    void setCorsNonWildcardRequestHeadersSupport(
+boolean value);
 
 
     void lookupServerBasicAuthCredentials(
 org.chromium.url.mojom.Url url, NetworkIsolationKey networkIsolationKey, 
-LookupServerBasicAuthCredentialsResponse callback);
+LookupServerBasicAuthCredentials_Response callback);
 
-    interface LookupServerBasicAuthCredentialsResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<AuthCredentials> { }
-
+    interface LookupServerBasicAuthCredentials_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<AuthCredentials> { }
 
 
     void enableStaticKeyPinningForTesting(
 
-EnableStaticKeyPinningForTestingResponse callback);
+EnableStaticKeyPinningForTesting_Response callback);
 
-    interface EnableStaticKeyPinningForTestingResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface EnableStaticKeyPinningForTesting_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void verifyCertificateForTesting(
 X509Certificate certificate, String hostname, String ocspResponse, String sctList, 
-VerifyCertificateForTestingResponse callback);
+VerifyCertificateForTesting_Response callback);
 
-    interface VerifyCertificateForTestingResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface VerifyCertificateForTesting_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void addDomainReliabilityContextForTesting(
-org.chromium.url.mojom.Url origin, org.chromium.url.mojom.Url uploadUrl, 
-AddDomainReliabilityContextForTestingResponse callback);
+org.chromium.url.internal.mojom.Origin origin, org.chromium.url.mojom.Url uploadUrl, 
+AddDomainReliabilityContextForTesting_Response callback);
 
-    interface AddDomainReliabilityContextForTestingResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface AddDomainReliabilityContextForTesting_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void forceDomainReliabilityUploadsForTesting(
 
-ForceDomainReliabilityUploadsForTestingResponse callback);
+ForceDomainReliabilityUploadsForTesting_Response callback);
 
-    interface ForceDomainReliabilityUploadsForTestingResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
-
-
-    void getOriginPolicyManager(
-org.chromium.mojo.bindings.InterfaceRequest<OriginPolicyManager> originPolicyManager);
+    interface ForceDomainReliabilityUploadsForTesting_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
+    void setCtLogListAlwaysTimelyForTesting(
+);
 
-    void setSctAuditingEnabled(
-boolean enabled);
+
+    void setSctAuditingMode(
+int mode);
+
+
+    void addReportingApiObserver(
+ReportingApiObserver observer);
 
 
 }

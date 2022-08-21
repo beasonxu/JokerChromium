@@ -13,17 +13,47 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class WebClientHintsType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
 
-    public static final int DEVICE_MEMORY = 0;
-    public static final int DPR = 1;
-    public static final int RESOURCE_WIDTH = 2;
-    public static final int VIEWPORT_WIDTH = 3;
-    public static final int RTT = 4;
-    public static final int DOWNLINK = 5;
-    public static final int ECT = 6;
-    public static final int LANG = 7;
+        WebClientHintsType.DEVICE_MEMORY_DEPRECATED,
+        WebClientHintsType.DPR_DEPRECATED,
+        WebClientHintsType.RESOURCE_WIDTH_DEPRECATED,
+        WebClientHintsType.VIEWPORT_WIDTH_DEPRECATED,
+        WebClientHintsType.RTT_DEPRECATED,
+        WebClientHintsType.DOWNLINK_DEPRECATED,
+        WebClientHintsType.ECT_DEPRECATED,
+        WebClientHintsType.UA,
+        WebClientHintsType.UA_ARCH,
+        WebClientHintsType.UA_PLATFORM,
+        WebClientHintsType.UA_MODEL,
+        WebClientHintsType.UA_MOBILE,
+        WebClientHintsType.UA_FULL_VERSION,
+        WebClientHintsType.UA_PLATFORM_VERSION,
+        WebClientHintsType.PREFERS_COLOR_SCHEME,
+        WebClientHintsType.UA_BITNESS,
+        WebClientHintsType.UA_REDUCED,
+        WebClientHintsType.VIEWPORT_HEIGHT,
+        WebClientHintsType.DEVICE_MEMORY,
+        WebClientHintsType.DPR,
+        WebClientHintsType.RESOURCE_WIDTH,
+        WebClientHintsType.VIEWPORT_WIDTH,
+        WebClientHintsType.UA_FULL_VERSION_LIST,
+        WebClientHintsType.FULL_USER_AGENT,
+        WebClientHintsType.UA_WO_W64,
+        WebClientHintsType.SAVE_DATA})
+    public @interface EnumType {}
+
+    public static final int DEVICE_MEMORY_DEPRECATED = 0;
+    public static final int DPR_DEPRECATED = 1;
+    public static final int RESOURCE_WIDTH_DEPRECATED = 2;
+    public static final int VIEWPORT_WIDTH_DEPRECATED = 3;
+    public static final int RTT_DEPRECATED = 4;
+    public static final int DOWNLINK_DEPRECATED = 5;
+    public static final int ECT_DEPRECATED = 6;
     public static final int UA = 8;
     public static final int UA_ARCH = 9;
     public static final int UA_PLATFORM = 10;
@@ -31,11 +61,52 @@ public final class WebClientHintsType {
     public static final int UA_MOBILE = 12;
     public static final int UA_FULL_VERSION = 13;
     public static final int UA_PLATFORM_VERSION = 14;
+    public static final int PREFERS_COLOR_SCHEME = 15;
+    public static final int UA_BITNESS = 16;
+    public static final int UA_REDUCED = 17;
+    public static final int VIEWPORT_HEIGHT = 18;
+    public static final int DEVICE_MEMORY = 19;
+    public static final int DPR = 20;
+    public static final int RESOURCE_WIDTH = 21;
+    public static final int VIEWPORT_WIDTH = 22;
+    public static final int UA_FULL_VERSION_LIST = 23;
+    public static final int FULL_USER_AGENT = 24;
+    public static final int UA_WO_W64 = 25;
+    public static final int SAVE_DATA = 27;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 14;
+    public static final int MAX_VALUE = 27;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 14;
+        switch (value) {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 8:
+            case 9:
+            case 10:
+            case 11:
+            case 12:
+            case 13:
+            case 14:
+            case 15:
+            case 16:
+            case 17:
+            case 18:
+            case 19:
+            case 20:
+            case 21:
+            case 22:
+            case 23:
+            case 24:
+            case 25:
+            case 27:
+                return true;
+        }
+        return false;
     }
 
     public static void validate(int value) {

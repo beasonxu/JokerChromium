@@ -13,6 +13,8 @@
 
 package org.chromium.cc.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class OverscrollBehavior extends org.chromium.mojo.bindings.Struct {
 

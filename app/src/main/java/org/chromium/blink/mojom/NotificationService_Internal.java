@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class NotificationService_Internal {
 
@@ -71,7 +73,7 @@ class NotificationService_Internal {
         @Override
         public void getPermissionStatus(
 
-GetPermissionStatusResponse callback) {
+GetPermissionStatus_Response callback) {
 
             NotificationServiceGetPermissionStatusParams _message = new NotificationServiceGetPermissionStatusParams();
 
@@ -131,7 +133,7 @@ String token) {
         @Override
         public void displayPersistentNotification(
 long serviceWorkerRegistrationId, NotificationData notificationData, NotificationResources notificationResources, 
-DisplayPersistentNotificationResponse callback) {
+DisplayPersistentNotification_Response callback) {
 
             NotificationServiceDisplayPersistentNotificationParams _message = new NotificationServiceDisplayPersistentNotificationParams();
 
@@ -174,7 +176,7 @@ String notificationId) {
         @Override
         public void getNotifications(
 long serviceWorkerRegistrationId, String filterTag, boolean includeTriggered, 
-GetNotificationsResponse callback) {
+GetNotifications_Response callback) {
 
             NotificationServiceGetNotificationsParams _message = new NotificationServiceGetNotificationsParams();
 
@@ -481,9 +483,9 @@ GetNotificationsResponse callback) {
 
     static class NotificationServiceGetPermissionStatusResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NotificationService.GetPermissionStatusResponse mCallback;
+        private final NotificationService.GetPermissionStatus_Response mCallback;
 
-        NotificationServiceGetPermissionStatusResponseParamsForwardToCallback(NotificationService.GetPermissionStatusResponse callback) {
+        NotificationServiceGetPermissionStatusResponseParamsForwardToCallback(NotificationService.GetPermissionStatus_Response callback) {
             this.mCallback = callback;
         }
 
@@ -508,7 +510,7 @@ GetNotificationsResponse callback) {
         }
     }
 
-    static class NotificationServiceGetPermissionStatusResponseParamsProxyToResponder implements NotificationService.GetPermissionStatusResponse {
+    static class NotificationServiceGetPermissionStatusResponseParamsProxyToResponder implements NotificationService.GetPermissionStatus_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -835,9 +837,9 @@ GetNotificationsResponse callback) {
 
     static class NotificationServiceDisplayPersistentNotificationResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NotificationService.DisplayPersistentNotificationResponse mCallback;
+        private final NotificationService.DisplayPersistentNotification_Response mCallback;
 
-        NotificationServiceDisplayPersistentNotificationResponseParamsForwardToCallback(NotificationService.DisplayPersistentNotificationResponse callback) {
+        NotificationServiceDisplayPersistentNotificationResponseParamsForwardToCallback(NotificationService.DisplayPersistentNotification_Response callback) {
             this.mCallback = callback;
         }
 
@@ -862,7 +864,7 @@ GetNotificationsResponse callback) {
         }
     }
 
-    static class NotificationServiceDisplayPersistentNotificationResponseParamsProxyToResponder implements NotificationService.DisplayPersistentNotificationResponse {
+    static class NotificationServiceDisplayPersistentNotificationResponseParamsProxyToResponder implements NotificationService.DisplayPersistentNotification_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1139,9 +1141,9 @@ GetNotificationsResponse callback) {
 
     static class NotificationServiceGetNotificationsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NotificationService.GetNotificationsResponse mCallback;
+        private final NotificationService.GetNotifications_Response mCallback;
 
-        NotificationServiceGetNotificationsResponseParamsForwardToCallback(NotificationService.GetNotificationsResponse callback) {
+        NotificationServiceGetNotificationsResponseParamsForwardToCallback(NotificationService.GetNotifications_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1166,7 +1168,7 @@ GetNotificationsResponse callback) {
         }
     }
 
-    static class NotificationServiceGetNotificationsResponseParamsProxyToResponder implements NotificationService.GetNotificationsResponse {
+    static class NotificationServiceGetNotificationsResponseParamsProxyToResponder implements NotificationService.GetNotifications_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

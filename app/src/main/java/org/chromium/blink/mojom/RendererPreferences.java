@@ -13,11 +13,13 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class RendererPreferences extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 88;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(88, 0)};
+    private static final int STRUCT_SIZE = 96;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(96, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public boolean canAcceptLoadDrops;
     public boolean shouldAntialiasText;
@@ -47,6 +49,7 @@ public final class RendererPreferences extends org.chromium.mojo.bindings.Struct
     public String acceptLanguages;
     public boolean pluginFullscreenAllowed;
     public boolean caretBrowsingEnabled;
+    public short[] explicitlyAllowedNetworkPorts;
 
     private RendererPreferences(int version) {
         super(STRUCT_SIZE, version);
@@ -230,6 +233,10 @@ public final class RendererPreferences extends org.chromium.mojo.bindings.Struct
                     
                 result.acceptLanguages = decoder0.readString(80, false);
                 }
+                {
+                    
+                result.explicitlyAllowedNetworkPorts = decoder0.readShorts(88, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -305,5 +312,7 @@ public final class RendererPreferences extends org.chromium.mojo.bindings.Struct
         encoder0.encode(this.userAgentOverride, 72, false);
         
         encoder0.encode(this.acceptLanguages, 80, false);
+        
+        encoder0.encode(this.explicitlyAllowedNetworkPorts, 88, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
     }
 }

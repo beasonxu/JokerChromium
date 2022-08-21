@@ -4,23 +4,20 @@
 
 package org.chromium.components.content_capture;
 
-import android.annotation.TargetApi;
 import android.os.Build;
 import android.view.ViewStructure;
 import android.view.autofill.AutofillId;
 import android.view.contentcapture.ContentCaptureSession;
 
+import androidx.annotation.RequiresApi;
 import androidx.annotation.VisibleForTesting;
-
-import org.chromium.base.annotations.VerifiesOnQ;
 
 /**
  * The class to wrap ContentCapture platform APIs, catches the exception from platform, and
  * re-throws with PlatformAPIException, so the call sites can catch platform exception to avoid
  * the crash.
  */
-@VerifiesOnQ
-@TargetApi(Build.VERSION_CODES.Q)
+@RequiresApi(Build.VERSION_CODES.Q)
 public abstract class PlatformAPIWrapper {
     private static PlatformAPIWrapper sImpl;
     public static PlatformAPIWrapper getInstance() {
@@ -31,7 +28,7 @@ public abstract class PlatformAPIWrapper {
     }
 
     public abstract ContentCaptureSession createContentCaptureSession(
-            ContentCaptureSession parent, String url);
+            ContentCaptureSession parent, String url, String favicon);
 
     public abstract void destroyContentCaptureSession(ContentCaptureSession session);
 
@@ -52,6 +49,8 @@ public abstract class PlatformAPIWrapper {
 
     public abstract void notifyViewTextChanged(
             ContentCaptureSession session, AutofillId autofillId, String newContent);
+
+    public abstract void notifyFaviconUpdated(ContentCaptureSession session, String favicon);
 
     @VisibleForTesting
     public static void setPlatformAPIWrapperImplForTesting(PlatformAPIWrapper impl) {

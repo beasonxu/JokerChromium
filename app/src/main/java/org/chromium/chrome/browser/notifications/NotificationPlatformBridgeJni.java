@@ -2,15 +2,13 @@ package org.chromium.chrome.browser.notifications;
 
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class NotificationPlatformBridgeJni implements NotificationPlatformBridge.Natives {
+class NotificationPlatformBridgeJni implements NotificationPlatformBridge.Natives {
   private static NotificationPlatformBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<NotificationPlatformBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.notifications.NotificationPlatformBridge.Natives>() {

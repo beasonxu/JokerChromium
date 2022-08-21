@@ -13,8 +13,17 @@
 
 package org.chromium.media_session.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class MediaAudioVideoState {
     private static final boolean IS_EXTENSIBLE = true;
+    @IntDef({
+
+        MediaAudioVideoState.DEPRECATED_UNKNOWN,
+        MediaAudioVideoState.AUDIO_ONLY,
+        MediaAudioVideoState.AUDIO_VIDEO,
+        MediaAudioVideoState.VIDEO_ONLY})
+    public @interface EnumType {}
 
     public static final int DEPRECATED_UNKNOWN = 0;
     public static final int AUDIO_ONLY = 1;

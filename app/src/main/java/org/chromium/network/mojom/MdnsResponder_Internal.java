@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class MdnsResponder_Internal {
 
@@ -63,7 +65,7 @@ class MdnsResponder_Internal {
         @Override
         public void createNameForAddress(
 IpAddress address, 
-CreateNameForAddressResponse callback) {
+CreateNameForAddress_Response callback) {
 
             MdnsResponderCreateNameForAddressParams _message = new MdnsResponderCreateNameForAddressParams();
 
@@ -85,7 +87,7 @@ CreateNameForAddressResponse callback) {
         @Override
         public void removeNameForAddress(
 IpAddress address, 
-RemoveNameForAddressResponse callback) {
+RemoveNameForAddress_Response callback) {
 
             MdnsResponderRemoveNameForAddressParams _message = new MdnsResponderRemoveNameForAddressParams();
 
@@ -340,9 +342,9 @@ RemoveNameForAddressResponse callback) {
 
     static class MdnsResponderCreateNameForAddressResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final MdnsResponder.CreateNameForAddressResponse mCallback;
+        private final MdnsResponder.CreateNameForAddress_Response mCallback;
 
-        MdnsResponderCreateNameForAddressResponseParamsForwardToCallback(MdnsResponder.CreateNameForAddressResponse callback) {
+        MdnsResponderCreateNameForAddressResponseParamsForwardToCallback(MdnsResponder.CreateNameForAddress_Response callback) {
             this.mCallback = callback;
         }
 
@@ -367,7 +369,7 @@ RemoveNameForAddressResponse callback) {
         }
     }
 
-    static class MdnsResponderCreateNameForAddressResponseParamsProxyToResponder implements MdnsResponder.CreateNameForAddressResponse {
+    static class MdnsResponderCreateNameForAddressResponseParamsProxyToResponder implements MdnsResponder.CreateNameForAddress_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -537,9 +539,9 @@ RemoveNameForAddressResponse callback) {
 
     static class MdnsResponderRemoveNameForAddressResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final MdnsResponder.RemoveNameForAddressResponse mCallback;
+        private final MdnsResponder.RemoveNameForAddress_Response mCallback;
 
-        MdnsResponderRemoveNameForAddressResponseParamsForwardToCallback(MdnsResponder.RemoveNameForAddressResponse callback) {
+        MdnsResponderRemoveNameForAddressResponseParamsForwardToCallback(MdnsResponder.RemoveNameForAddress_Response callback) {
             this.mCallback = callback;
         }
 
@@ -564,7 +566,7 @@ RemoveNameForAddressResponse callback) {
         }
     }
 
-    static class MdnsResponderRemoveNameForAddressResponseParamsProxyToResponder implements MdnsResponder.RemoveNameForAddressResponse {
+    static class MdnsResponderRemoveNameForAddressResponseParamsProxyToResponder implements MdnsResponder.RemoveNameForAddress_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

@@ -32,6 +32,9 @@ public final class PrefNames {
     public static final String MANAGED_DEFAULT_ADS_SETTING = "profile.managed_default_content_settings.ads";
 
 
+    public static final String MANAGED_DEFAULT_CLIPBOARD_SETTING = "profile.managed_default_content_settings.clipboard";
+
+
     public static final String MANAGED_DEFAULT_COOKIES_SETTING = "profile.managed_default_content_settings.cookies";
 
 
@@ -71,16 +74,31 @@ public final class PrefNames {
     public static final String MANAGED_DEFAULT_FILE_SYSTEM_WRITE_GUARD_SETTING = "profile.managed_default_content_settings.file_system_write_guard";
 
 
-    public static final String MANAGED_DEFAULT_LEGACY_COOKIE_ACCESS_SETTING = "profile.managed_default_content_settings.legacy_cookie_access";
-
-
     public static final String MANAGED_DEFAULT_SERIAL_GUARD_SETTING = "profile.managed_default_content_settings.serial_guard";
 
 
     public static final String MANAGED_DEFAULT_INSECURE_PRIVATE_NETWORK_SETTING = "profile.managed_default_content_settings.insecure_private_network";
 
+
+    public static final String MANAGED_DEFAULT_JAVA_SCRIPT_JIT_SETTING = "profile.managed_default_content_settings.javascript_jit";
+
+
+    public static final String MANAGED_DEFAULT_WEB_HID_GUARD_SETTING = "profile.managed_default_content_settings.web_hid_guard";
+
+
+    public static final String MANAGED_DEFAULT_WINDOW_PLACEMENT_SETTING = "profile.managed_default_content_settings.window_placement";
+
+
+    public static final String MANAGED_DEFAULT_LOCAL_FONTS_SETTING = "profile.managed_default_content_settings.local_fonts";
+
     // Preferences that are exclusively used to store managed
     // content settings patterns.
+    public static final String MANAGED_CLIPBOARD_ALLOWED_FOR_URLS = "profile.managed_clipboard_allowed_for_urls";
+
+
+    public static final String MANAGED_CLIPBOARD_BLOCKED_FOR_URLS = "profile.managed_clipboard_blocked_for_urls";
+
+
     public static final String MANAGED_AUTO_SELECT_CERTIFICATE_FOR_URLS = "profile.managed_auto_select_certificate_for_urls";
 
 
@@ -91,6 +109,9 @@ public final class PrefNames {
 
 
     public static final String MANAGED_COOKIES_SESSION_ONLY_FOR_URLS = "profile.managed_cookies_sessiononly_for_urls";
+
+
+    public static final String MANAGED_GET_DISPLAY_MEDIA_SET_SELECT_ALL_SCREENS_ALLOWED_FOR_URLS = "profile.managed_get_display_media_set_select_all_screens_allowed_for_urls";
 
 
     public static final String MANAGED_IMAGES_ALLOWED_FOR_URLS = "profile.managed_images_allowed_for_urls";
@@ -138,6 +159,12 @@ public final class PrefNames {
     public static final String MANAGED_WEB_USB_BLOCKED_FOR_URLS = "profile.managed_web_usb_blocked_for_urls";
 
 
+    public static final String MANAGED_FILE_HANDLING_ALLOWED_FOR_URLS = "profile.managed_file_handling_allowed_for_urls";
+
+
+    public static final String MANAGED_FILE_HANDLING_BLOCKED_FOR_URLS = "profile.managed_file_handling_blocked_for_urls";
+
+
     public static final String MANAGED_FILE_SYSTEM_READ_ASK_FOR_URLS = "profile.managed_file_system_read_ask_for_urls";
 
 
@@ -161,6 +188,30 @@ public final class PrefNames {
 
     public static final String MANAGED_INSECURE_PRIVATE_NETWORK_ALLOWED_FOR_URLS = "profile.managed_insecure_private_network_allowed_for_urls";
 
+
+    public static final String MANAGED_JAVA_SCRIPT_JIT_ALLOWED_FOR_SITES = "profile.managed_javascript_jit_allowed_for_sites";
+
+
+    public static final String MANAGED_JAVA_SCRIPT_JIT_BLOCKED_FOR_SITES = "profile.managed_javascript_jit_blocked_for_sites";
+
+
+    public static final String MANAGED_WEB_HID_ASK_FOR_URLS = "profile.managed_web_hid_ask_for_urls";
+
+
+    public static final String MANAGED_WEB_HID_BLOCKED_FOR_URLS = "profile.managed_web_hid_blocked_for_urls";
+
+
+    public static final String MANAGED_WINDOW_PLACEMENT_ALLOWED_FOR_URLS = "profile.managed_window_placement_allowed_for_urls";
+
+
+    public static final String MANAGED_WINDOW_PLACEMENT_BLOCKED_FOR_URLS = "profile.managed_window_placement_blocked_for_urls";
+
+
+    public static final String MANAGED_LOCAL_FONTS_ALLOWED_FOR_URLS = "profile.managed_local_fonts_allowed_for_urls";
+
+
+    public static final String MANAGED_LOCAL_FONTS_BLOCKED_FOR_URLS = "profile.managed_local_fonts_blocked_for_urls";
+
     // Boolean indicating whether the quiet UI is enabled for notification
     // permission requests.
     public static final String ENABLE_QUIET_NOTIFICATION_PERMISSION_UI = "profile.content_settings.enable_quiet_permission_ui.notifications";
@@ -172,6 +223,14 @@ public final class PrefNames {
 
     // Enable vibration for web notifications.
     public static final String NOTIFICATIONS_VIBRATE_ENABLED = "notifications.vibrate_enabled";
+
+    // Peripheral setting for request desktop site. When enabled, we will always
+    // request desktop site if a keyboard, trackpad, or mouse is attached.
+    public static final String DESKTOP_SITE_PERIPHERAL_SETTING_ENABLED = "desktop_site.peripheral_setting";
+
+    // Display setting for request desktop site. When enabled, we will always
+    // request desktop site if a monitor is connected.
+    public static final String DESKTOP_SITE_DISPLAY_SETTING_ENABLED = "desktop_site.display_setting";
 
     // Prevents instantiation.
     private PrefNames() {}

@@ -13,6 +13,8 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class DrawQuadState extends org.chromium.mojo.bindings.Union {
 
@@ -20,22 +22,22 @@ public final class DrawQuadState extends org.chromium.mojo.bindings.Union {
         public static final int DebugBorderQuadState = 0;
         public static final int RenderPassQuadState = 1;
         public static final int SolidColorQuadState = 2;
-        public static final int StreamVideoQuadState = 3;
-        public static final int SurfaceQuadState = 4;
-        public static final int TextureQuadState = 5;
-        public static final int TileQuadState = 6;
-        public static final int YuvVideoQuadState = 7;
-        public static final int VideoHoleQuadState = 8;
+        public static final int SurfaceQuadState = 3;
+        public static final int TextureQuadState = 4;
+        public static final int TileQuadState = 5;
+        public static final int YuvVideoQuadState = 6;
+        public static final int VideoHoleQuadState = 7;
+        public static final int SharedElementQuadState = 8;
     };
     private DebugBorderQuadState mDebugBorderQuadState;
     private CompositorRenderPassQuadState mRenderPassQuadState;
     private SolidColorQuadState mSolidColorQuadState;
-    private StreamVideoQuadState mStreamVideoQuadState;
     private SurfaceQuadState mSurfaceQuadState;
     private TextureQuadState mTextureQuadState;
     private TileQuadState mTileQuadState;
     private YuvVideoQuadState mYuvVideoQuadState;
     private VideoHoleQuadState mVideoHoleQuadState;
+    private SharedElementQuadState mSharedElementQuadState;
 
     public void setDebugBorderQuadState(DebugBorderQuadState debugBorderQuadState) {
         this.mTag = Tag.DebugBorderQuadState;
@@ -65,16 +67,6 @@ public final class DrawQuadState extends org.chromium.mojo.bindings.Union {
     public SolidColorQuadState getSolidColorQuadState() {
         assert this.mTag == Tag.SolidColorQuadState;
         return this.mSolidColorQuadState;
-    }
-
-    public void setStreamVideoQuadState(StreamVideoQuadState streamVideoQuadState) {
-        this.mTag = Tag.StreamVideoQuadState;
-        this.mStreamVideoQuadState = streamVideoQuadState;
-    }
-
-    public StreamVideoQuadState getStreamVideoQuadState() {
-        assert this.mTag == Tag.StreamVideoQuadState;
-        return this.mStreamVideoQuadState;
     }
 
     public void setSurfaceQuadState(SurfaceQuadState surfaceQuadState) {
@@ -127,6 +119,16 @@ public final class DrawQuadState extends org.chromium.mojo.bindings.Union {
         return this.mVideoHoleQuadState;
     }
 
+    public void setSharedElementQuadState(SharedElementQuadState sharedElementQuadState) {
+        this.mTag = Tag.SharedElementQuadState;
+        this.mSharedElementQuadState = sharedElementQuadState;
+    }
+
+    public SharedElementQuadState getSharedElementQuadState() {
+        assert this.mTag == Tag.SharedElementQuadState;
+        return this.mSharedElementQuadState;
+    }
+
 
     @Override
     protected final void encode(org.chromium.mojo.bindings.Encoder encoder0, int offset) {
@@ -146,11 +148,6 @@ public final class DrawQuadState extends org.chromium.mojo.bindings.Union {
             case Tag.SolidColorQuadState: {
                 
                 encoder0.encode(this.mSolidColorQuadState, offset + 8, false);
-                break;
-            }
-            case Tag.StreamVideoQuadState: {
-                
-                encoder0.encode(this.mStreamVideoQuadState, offset + 8, false);
                 break;
             }
             case Tag.SurfaceQuadState: {
@@ -176,6 +173,11 @@ public final class DrawQuadState extends org.chromium.mojo.bindings.Union {
             case Tag.VideoHoleQuadState: {
                 
                 encoder0.encode(this.mVideoHoleQuadState, offset + 8, false);
+                break;
+            }
+            case Tag.SharedElementQuadState: {
+                
+                encoder0.encode(this.mSharedElementQuadState, offset + 8, false);
                 break;
             }
             default: {
@@ -216,13 +218,6 @@ public final class DrawQuadState extends org.chromium.mojo.bindings.Union {
                 result.mTag = Tag.SolidColorQuadState;
                 break;
             }
-            case Tag.StreamVideoQuadState: {
-                
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(offset + org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, false);
-                result.mStreamVideoQuadState = StreamVideoQuadState.decode(decoder1);
-                result.mTag = Tag.StreamVideoQuadState;
-                break;
-            }
             case Tag.SurfaceQuadState: {
                 
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(offset + org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, false);
@@ -256,6 +251,13 @@ public final class DrawQuadState extends org.chromium.mojo.bindings.Union {
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(offset + org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, false);
                 result.mVideoHoleQuadState = VideoHoleQuadState.decode(decoder1);
                 result.mTag = Tag.VideoHoleQuadState;
+                break;
+            }
+            case Tag.SharedElementQuadState: {
+                
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(offset + org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, false);
+                result.mSharedElementQuadState = SharedElementQuadState.decode(decoder1);
+                result.mTag = Tag.SharedElementQuadState;
                 break;
             }
             default: {

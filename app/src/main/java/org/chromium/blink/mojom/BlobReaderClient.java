@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface BlobReaderClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface BlobReaderClient extends org.chromium.mojo.bindings.Interface {
 
     Manager<BlobReaderClient, BlobReaderClient.Proxy> MANAGER = BlobReaderClient_Internal.MANAGER;
 
-
     void onCalculatedSize(
 long totalSize, long expectedContentSize);
-
 
 
     void onComplete(

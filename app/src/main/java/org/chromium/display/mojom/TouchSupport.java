@@ -13,8 +13,16 @@
 
 package org.chromium.display.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class TouchSupport {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        TouchSupport.UNKNOWN,
+        TouchSupport.AVAILABLE,
+        TouchSupport.UNAVAILABLE})
+    public @interface EnumType {}
 
     public static final int UNKNOWN = 0;
     public static final int AVAILABLE = 1;

@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -31,6 +31,7 @@ import java.lang.annotation.RetentionPolicy;
     InfobarEvent.INFOBAR_SNACKBAR_AUTO_NEVER_IMPRESSION,
     InfobarEvent.INFOBAR_SNACKBAR_CANCEL_AUTO_ALWAYS,
     InfobarEvent.INFOBAR_SNACKBAR_CANCEL_AUTO_NEVER, InfobarEvent.INFOBAR_HISTOGRAM_BOUNDARY,
+    InfobarEvent.INFOBAR_NEVER_TRANSLATE_UNDO, InfobarEvent.INFOBAR_NEVER_TRANSLATE_SITE_UNDO,
     InfobarEvent.MAX_VALUE
 })
 @Retention(RetentionPolicy.SOURCE)
@@ -61,5 +62,7 @@ public @interface InfobarEvent {
   int INFOBAR_SNACKBAR_CANCEL_AUTO_ALWAYS = 23;
   int INFOBAR_SNACKBAR_CANCEL_AUTO_NEVER = 24;
   int INFOBAR_HISTOGRAM_BOUNDARY = 25;
+  int INFOBAR_NEVER_TRANSLATE_UNDO = 25;
+  int INFOBAR_NEVER_TRANSLATE_SITE_UNDO = 25;
   int MAX_VALUE = INFOBAR_HISTOGRAM_BOUNDARY;
 }

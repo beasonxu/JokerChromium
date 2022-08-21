@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class NonPersistentNotificationListener_Internal {
 
@@ -80,7 +82,7 @@ class NonPersistentNotificationListener_Internal {
         @Override
         public void onClick(
 
-OnClickResponse callback) {
+OnClick_Response callback) {
 
             NonPersistentNotificationListenerOnClickParams _message = new NonPersistentNotificationListenerOnClickParams();
 
@@ -100,7 +102,7 @@ OnClickResponse callback) {
         @Override
         public void onClose(
 
-OnCloseResponse callback) {
+OnClose_Response callback) {
 
             NonPersistentNotificationListenerOnCloseParams _message = new NonPersistentNotificationListenerOnCloseParams();
 
@@ -399,9 +401,9 @@ OnCloseResponse callback) {
 
     static class NonPersistentNotificationListenerOnClickResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NonPersistentNotificationListener.OnClickResponse mCallback;
+        private final NonPersistentNotificationListener.OnClick_Response mCallback;
 
-        NonPersistentNotificationListenerOnClickResponseParamsForwardToCallback(NonPersistentNotificationListener.OnClickResponse callback) {
+        NonPersistentNotificationListenerOnClickResponseParamsForwardToCallback(NonPersistentNotificationListener.OnClick_Response callback) {
             this.mCallback = callback;
         }
 
@@ -424,7 +426,7 @@ OnCloseResponse callback) {
         }
     }
 
-    static class NonPersistentNotificationListenerOnClickResponseParamsProxyToResponder implements NonPersistentNotificationListener.OnClickResponse {
+    static class NonPersistentNotificationListenerOnClickResponseParamsProxyToResponder implements NonPersistentNotificationListener.OnClick_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -568,9 +570,9 @@ OnCloseResponse callback) {
 
     static class NonPersistentNotificationListenerOnCloseResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NonPersistentNotificationListener.OnCloseResponse mCallback;
+        private final NonPersistentNotificationListener.OnClose_Response mCallback;
 
-        NonPersistentNotificationListenerOnCloseResponseParamsForwardToCallback(NonPersistentNotificationListener.OnCloseResponse callback) {
+        NonPersistentNotificationListenerOnCloseResponseParamsForwardToCallback(NonPersistentNotificationListener.OnClose_Response callback) {
             this.mCallback = callback;
         }
 
@@ -593,7 +595,7 @@ OnCloseResponse callback) {
         }
     }
 
-    static class NonPersistentNotificationListenerOnCloseResponseParamsProxyToResponder implements NonPersistentNotificationListener.OnCloseResponse {
+    static class NonPersistentNotificationListenerOnCloseResponseParamsProxyToResponder implements NonPersistentNotificationListener.OnClose_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

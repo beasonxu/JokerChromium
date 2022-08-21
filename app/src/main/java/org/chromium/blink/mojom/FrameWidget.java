@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface FrameWidget extends org.chromium.mojo.bindings.Interface {
 
@@ -23,96 +25,91 @@ public interface FrameWidget extends org.chromium.mojo.bindings.Interface {
 
     Manager<FrameWidget, FrameWidget.Proxy> MANAGER = FrameWidget_Internal.MANAGER;
 
-
     void dragTargetDragEnter(
 DragData dragData, org.chromium.gfx.mojom.PointF pointInViewport, org.chromium.gfx.mojom.PointF screenPoint, AllowedDragOperations operationsAllowed, int keyModifiers, 
-DragTargetDragEnterResponse callback);
+DragTargetDragEnter_Response callback);
 
-    interface DragTargetDragEnterResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface DragTargetDragEnter_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void dragTargetDragOver(
 org.chromium.gfx.mojom.PointF pointInViewport, org.chromium.gfx.mojom.PointF screenPoint, AllowedDragOperations operationsAllowed, int keyModifiers, 
-DragTargetDragOverResponse callback);
+DragTargetDragOver_Response callback);
 
-    interface DragTargetDragOverResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface DragTargetDragOver_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void dragTargetDragLeave(
 org.chromium.gfx.mojom.PointF pointInViewport, org.chromium.gfx.mojom.PointF screenPoint);
 
 
-
     void dragTargetDrop(
-DragData dragData, org.chromium.gfx.mojom.PointF pointInViewport, org.chromium.gfx.mojom.PointF screenPoint, int keyModifiers);
+DragData dragData, org.chromium.gfx.mojom.PointF pointInViewport, org.chromium.gfx.mojom.PointF screenPoint, int keyModifiers, 
+DragTargetDrop_Response callback);
 
+    interface DragTargetDrop_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void dragSourceEndedAt(
-org.chromium.gfx.mojom.PointF pointInViewport, org.chromium.gfx.mojom.PointF screenPoint, int dragOperation);
+org.chromium.gfx.mojom.PointF pointInViewport, org.chromium.gfx.mojom.PointF screenPoint, int dragOperation, 
+DragSourceEndedAt_Response callback);
 
+    interface DragSourceEndedAt_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void dragSourceSystemDragEnded(
 );
 
 
+    void onStartStylusWriting(
+
+OnStartStylusWriting_Response callback);
+
+    interface OnStartStylusWriting_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<org.chromium.gfx.mojom.Rect, org.chromium.gfx.mojom.Rect> { }
+
 
     void setBackgroundOpaque(
 boolean opaque);
-
 
 
     void setTextDirection(
 int direction);
 
 
-
     void setActive(
 boolean active);
-
 
 
     void setInheritedEffectiveTouchActionForSubFrame(
 int touchAction);
 
 
-
     void updateRenderThrottlingStatusForSubFrame(
 boolean isThrottled, boolean subtreeThrottled, boolean displayLocked);
-
 
 
     void setIsInertForSubFrame(
 boolean inert);
 
 
-
     void showContextMenu(
 int sourceType, org.chromium.gfx.mojom.Point location);
-
 
 
     void enableDeviceEmulation(
 DeviceEmulationParams parameters);
 
 
-
     void disableDeviceEmulation(
 );
-
 
 
     void bindWidgetCompositor(
 org.chromium.mojo.bindings.InterfaceRequest<WidgetCompositor> host);
 
 
-
     void bindInputTargetClient(
 org.chromium.mojo.bindings.InterfaceRequest<org.chromium.viz.mojom.InputTargetClient> host);
-
 
 
     void setViewportIntersection(

@@ -6,9 +6,9 @@ package org.chromium.net.impl;
 
 // Version based on chrome/VERSION.
 public class ImplVersion {
-    private static final String CRONET_VERSION = "90.0.4430.82";
-    private static final int API_LEVEL = 14;
-    private static final String LAST_CHANGE = "3a0b27d9ba1b2fc9de96e8266d4f7de37f3a052c-refs/branch-heads/4430@{#1304}";
+    private static final String CRONET_VERSION = "106.0.5241.2";
+    private static final int API_LEVEL = 16;
+    private static final String LAST_CHANGE = "171e2512b21f4198bd6ee2c8f7f538a7e1719f40-refs/branch-heads/5241@{#4}";
 
    /**
     * Private constructor. All members of this class should be static.

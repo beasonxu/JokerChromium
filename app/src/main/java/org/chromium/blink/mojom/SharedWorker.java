@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface SharedWorker extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface SharedWorker extends org.chromium.mojo.bindings.Interface {
 
     Manager<SharedWorker, SharedWorker.Proxy> MANAGER = SharedWorker_Internal.MANAGER;
 
-
     void connect(
 int connectionId, MessagePortDescriptor messagePort);
-
 
 
     void terminate(

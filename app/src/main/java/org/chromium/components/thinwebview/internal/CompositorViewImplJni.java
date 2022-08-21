@@ -2,16 +2,14 @@ package org.chromium.components.thinwebview.internal;
 
 import android.view.Surface;
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.ui.base.WindowAndroid;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class CompositorViewImplJni implements CompositorViewImpl.Natives {
+class CompositorViewImplJni implements CompositorViewImpl.Natives {
   private static CompositorViewImpl.Natives testInstance;
 
   public static final JniStaticTestMocker<CompositorViewImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.thinwebview.internal.CompositorViewImpl.Natives>() {

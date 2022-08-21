@@ -13,8 +13,21 @@
 
 package org.chromium.display.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class DisplayConnectionType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        DisplayConnectionType.DISPLAY_CONNECTION_TYPE_NONE,
+        DisplayConnectionType.DISPLAY_CONNECTION_TYPE_UNKNOWN,
+        DisplayConnectionType.DISPLAY_CONNECTION_TYPE_INTERNAL,
+        DisplayConnectionType.DISPLAY_CONNECTION_TYPE_VGA,
+        DisplayConnectionType.DISPLAY_CONNECTION_TYPE_HDMI,
+        DisplayConnectionType.DISPLAY_CONNECTION_TYPE_DVI,
+        DisplayConnectionType.DISPLAY_CONNECTION_TYPE_DISPLAYPORT,
+        DisplayConnectionType.DISPLAY_CONNECTION_TYPE_NETWORK})
+    public @interface EnumType {}
 
     public static final int DISPLAY_CONNECTION_TYPE_NONE = 0;
     public static final int DISPLAY_CONNECTION_TYPE_UNKNOWN = 1;

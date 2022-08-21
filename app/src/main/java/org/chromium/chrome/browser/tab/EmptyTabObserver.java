@@ -96,10 +96,11 @@ public class EmptyTabObserver implements TabObserver {
     public void onUpdateUrl(Tab tab, GURL url) {}
 
     @Override
-    public void onDidFailLoad(Tab tab, boolean isMainFrame, int errorCode, GURL failingUrl) {}
+    public void onDidStartNavigationInPrimaryMainFrame(Tab tab, NavigationHandle navigationHandle) {
+    }
 
     @Override
-    public void onDidStartNavigation(Tab tab, NavigationHandle navigationHandle) {}
+    public void onDidStartNavigationNoop(Tab tab, NavigationHandle navigationHandle) {}
 
     @Override
     public void onDidRedirectNavigation(Tab tab, NavigationHandle navigationHandle) {}
@@ -138,4 +139,7 @@ public class EmptyTabObserver implements TabObserver {
 
     @Override
     public void onContentViewScrollingStateChanged(boolean scrolling) {}
+
+    @Override
+    public void onContentViewScrollingEnded(int verticalScrollDelta) {}
 }

@@ -2,16 +2,14 @@ package org.chromium.content.browser.androidoverlay;
 
 import android.view.Surface;
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.gfx.mojom.Rect;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class DialogOverlayImplJni implements DialogOverlayImpl.Natives {
+class DialogOverlayImplJni implements DialogOverlayImpl.Natives {
   private static DialogOverlayImpl.Natives testInstance;
 
   public static final JniStaticTestMocker<DialogOverlayImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content.browser.androidoverlay.DialogOverlayImpl.Natives>() {
@@ -62,7 +60,7 @@ final class DialogOverlayImplJni implements DialogOverlayImpl.Natives {
   }
 
   @Override
-  public void notifyDestroyedSynchronously(int messagePipeHandle) {
+  public void notifyDestroyedSynchronously(long messagePipeHandle) {
     GEN_JNI.org_chromium_content_browser_androidoverlay_DialogOverlayImpl_notifyDestroyedSynchronously(messagePipeHandle);
   }
 

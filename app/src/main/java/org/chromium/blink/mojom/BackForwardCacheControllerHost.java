@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface BackForwardCacheControllerHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,9 +25,12 @@ public interface BackForwardCacheControllerHost extends org.chromium.mojo.bindin
 
     Manager<BackForwardCacheControllerHost, BackForwardCacheControllerHost.Proxy> MANAGER = BackForwardCacheControllerHost_Internal.MANAGER;
 
-
     void evictFromBackForwardCache(
 int reason);
+
+
+    void didChangeBackForwardCacheDisablingFeatures(
+long featuresMask);
 
 
 }

@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -17,7 +17,8 @@ import java.lang.annotation.RetentionPolicy;
 
 @IntDef({
     LaunchLocation.DOWNLOAD_HOME, LaunchLocation.NOTIFICATION, LaunchLocation.PROGRESS_BAR,
-    LaunchLocation.SUGGESTION, LaunchLocation.NET_ERROR_SUGGESTION, LaunchLocation.DOWNLOAD_SHELF
+    LaunchLocation.SUGGESTION, LaunchLocation.NET_ERROR_SUGGESTION, LaunchLocation.DOWNLOAD_SHELF,
+    LaunchLocation.DOWNLOAD_INTERSTITIAL
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface LaunchLocation {
@@ -45,4 +46,8 @@ public @interface LaunchLocation {
    * From Download shelf.
    */
   int DOWNLOAD_SHELF = 5;
+  /**
+   * From Download interstitial open button.
+   */
+  int DOWNLOAD_INTERSTITIAL = 6;
 }

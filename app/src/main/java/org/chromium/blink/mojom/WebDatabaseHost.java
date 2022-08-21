@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface WebDatabaseHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,68 +25,51 @@ public interface WebDatabaseHost extends org.chromium.mojo.bindings.Interface {
 
     Manager<WebDatabaseHost, WebDatabaseHost.Proxy> MANAGER = WebDatabaseHost_Internal.MANAGER;
 
-
     void openFile(
 org.chromium.mojo_base.mojom.String16 vfsFileName, int desiredFlags, 
-OpenFileResponse callback);
+OpenFile_Response callback);
 
-    interface OpenFileResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.File> { }
-
+    interface OpenFile_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.File> { }
 
 
     void deleteFile(
 org.chromium.mojo_base.mojom.String16 vfsFileName, boolean syncDir, 
-DeleteFileResponse callback);
+DeleteFile_Response callback);
 
-    interface DeleteFileResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface DeleteFile_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void getFileAttributes(
 org.chromium.mojo_base.mojom.String16 vfsFileName, 
-GetFileAttributesResponse callback);
+GetFileAttributes_Response callback);
 
-    interface GetFileAttributesResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
-
-
-    void getFileSize(
-org.chromium.mojo_base.mojom.String16 vfsFileName, 
-GetFileSizeResponse callback);
-
-    interface GetFileSizeResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Long> { }
-
+    interface GetFileAttributes_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void setFileSize(
 org.chromium.mojo_base.mojom.String16 vfsFileName, long expectedSize, 
-SetFileSizeResponse callback);
+SetFileSize_Response callback);
 
-    interface SetFileSizeResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface SetFileSize_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void getSpaceAvailable(
 org.chromium.url.internal.mojom.Origin origin, 
-GetSpaceAvailableResponse callback);
+GetSpaceAvailable_Response callback);
 
-    interface GetSpaceAvailableResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Long> { }
-
+    interface GetSpaceAvailable_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Long> { }
 
 
     void opened(
-org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo_base.mojom.String16 databaseName, org.chromium.mojo_base.mojom.String16 databaseDescription, long estimatedSize);
-
+org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo_base.mojom.String16 databaseName, org.chromium.mojo_base.mojom.String16 databaseDescription);
 
 
     void modified(
 org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo_base.mojom.String16 databaseName);
 
 
-
     void closed(
 org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo_base.mojom.String16 databaseName);
-
 
 
     void handleSqliteError(

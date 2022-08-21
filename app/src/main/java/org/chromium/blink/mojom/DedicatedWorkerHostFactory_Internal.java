@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class DedicatedWorkerHostFactory_Internal {
 
@@ -62,12 +64,14 @@ class DedicatedWorkerHostFactory_Internal {
 
         @Override
         public void createWorkerHost(
-DedicatedWorkerToken token, org.chromium.mojo.bindings.InterfaceRequest<BrowserInterfaceBroker> browserInterfaceBroker, org.chromium.mojo.bindings.InterfaceRequest<DedicatedWorkerHost> host, 
-CreateWorkerHostResponse callback) {
+DedicatedWorkerToken token, org.chromium.url.mojom.Url scriptUrl, org.chromium.mojo.bindings.InterfaceRequest<BrowserInterfaceBroker> browserInterfaceBroker, org.chromium.mojo.bindings.InterfaceRequest<DedicatedWorkerHost> host, 
+CreateWorkerHost_Response callback) {
 
             DedicatedWorkerHostFactoryCreateWorkerHostParams _message = new DedicatedWorkerHostFactoryCreateWorkerHostParams();
 
             _message.token = token;
+
+            _message.scriptUrl = scriptUrl;
 
             _message.browserInterfaceBroker = browserInterfaceBroker;
 
@@ -195,7 +199,7 @@ DedicatedWorkerToken token, org.chromium.url.mojom.Url scriptUrl, int credential
                         DedicatedWorkerHostFactoryCreateWorkerHostParams data =
                                 DedicatedWorkerHostFactoryCreateWorkerHostParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().createWorkerHost(data.token, data.browserInterfaceBroker, data.host, new DedicatedWorkerHostFactoryCreateWorkerHostResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().createWorkerHost(data.token, data.scriptUrl, data.browserInterfaceBroker, data.host, new DedicatedWorkerHostFactoryCreateWorkerHostResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -216,10 +220,11 @@ DedicatedWorkerToken token, org.chromium.url.mojom.Url scriptUrl, int credential
     
     static final class DedicatedWorkerHostFactoryCreateWorkerHostParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public DedicatedWorkerToken token;
+        public org.chromium.url.mojom.Url scriptUrl;
         public org.chromium.mojo.bindings.InterfaceRequest<BrowserInterfaceBroker> browserInterfaceBroker;
         public org.chromium.mojo.bindings.InterfaceRequest<DedicatedWorkerHost> host;
 
@@ -263,11 +268,16 @@ DedicatedWorkerToken token, org.chromium.url.mojom.Url scriptUrl, int credential
                     }
                     {
                         
-                    result.browserInterfaceBroker = decoder0.readInterfaceRequest(16, false);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                    result.scriptUrl = org.chromium.url.mojom.Url.decode(decoder1);
                     }
                     {
                         
-                    result.host = decoder0.readInterfaceRequest(20, false);
+                    result.browserInterfaceBroker = decoder0.readInterfaceRequest(24, false);
+                    }
+                    {
+                        
+                    result.host = decoder0.readInterfaceRequest(28, false);
                     }
 
             } finally {
@@ -283,9 +293,11 @@ DedicatedWorkerToken token, org.chromium.url.mojom.Url scriptUrl, int credential
             
             encoder0.encode(this.token, 8, false);
             
-            encoder0.encode(this.browserInterfaceBroker, 16, false);
+            encoder0.encode(this.scriptUrl, 16, false);
             
-            encoder0.encode(this.host, 20, false);
+            encoder0.encode(this.browserInterfaceBroker, 24, false);
+            
+            encoder0.encode(this.host, 28, false);
         }
     }
 
@@ -294,10 +306,11 @@ DedicatedWorkerToken token, org.chromium.url.mojom.Url scriptUrl, int credential
     
     static final class DedicatedWorkerHostFactoryCreateWorkerHostResponseParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public org.chromium.network.mojom.CrossOriginEmbedderPolicy parentCoep;
+        public BackForwardCacheControllerHost backForwardCacheControllerHost;
 
         private DedicatedWorkerHostFactoryCreateWorkerHostResponseParams(int version) {
             super(STRUCT_SIZE, version);
@@ -337,6 +350,10 @@ DedicatedWorkerToken token, org.chromium.url.mojom.Url scriptUrl, int credential
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
                     result.parentCoep = org.chromium.network.mojom.CrossOriginEmbedderPolicy.decode(decoder1);
                     }
+                    {
+                        
+                    result.backForwardCacheControllerHost = decoder0.readServiceInterface(16, true, BackForwardCacheControllerHost.MANAGER);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -350,14 +367,16 @@ DedicatedWorkerToken token, org.chromium.url.mojom.Url scriptUrl, int credential
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.parentCoep, 8, false);
+            
+            encoder0.encode(this.backForwardCacheControllerHost, 16, true, BackForwardCacheControllerHost.MANAGER);
         }
     }
 
     static class DedicatedWorkerHostFactoryCreateWorkerHostResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final DedicatedWorkerHostFactory.CreateWorkerHostResponse mCallback;
+        private final DedicatedWorkerHostFactory.CreateWorkerHost_Response mCallback;
 
-        DedicatedWorkerHostFactoryCreateWorkerHostResponseParamsForwardToCallback(DedicatedWorkerHostFactory.CreateWorkerHostResponse callback) {
+        DedicatedWorkerHostFactoryCreateWorkerHostResponseParamsForwardToCallback(DedicatedWorkerHostFactory.CreateWorkerHost_Response callback) {
             this.mCallback = callback;
         }
 
@@ -374,7 +393,7 @@ DedicatedWorkerToken token, org.chromium.url.mojom.Url scriptUrl, int credential
 
                 DedicatedWorkerHostFactoryCreateWorkerHostResponseParams response = DedicatedWorkerHostFactoryCreateWorkerHostResponseParams.deserialize(messageWithHeader.getPayload());
 
-                mCallback.call(response.parentCoep);
+                mCallback.call(response.parentCoep, response.backForwardCacheControllerHost);
                 return true;
             } catch (org.chromium.mojo.bindings.DeserializationException e) {
                 return false;
@@ -382,7 +401,7 @@ DedicatedWorkerToken token, org.chromium.url.mojom.Url scriptUrl, int credential
         }
     }
 
-    static class DedicatedWorkerHostFactoryCreateWorkerHostResponseParamsProxyToResponder implements DedicatedWorkerHostFactory.CreateWorkerHostResponse {
+    static class DedicatedWorkerHostFactoryCreateWorkerHostResponseParamsProxyToResponder implements DedicatedWorkerHostFactory.CreateWorkerHost_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -398,10 +417,12 @@ DedicatedWorkerToken token, org.chromium.url.mojom.Url scriptUrl, int credential
         }
 
         @Override
-        public void call(org.chromium.network.mojom.CrossOriginEmbedderPolicy parentCoep) {
+        public void call(org.chromium.network.mojom.CrossOriginEmbedderPolicy parentCoep, BackForwardCacheControllerHost backForwardCacheControllerHost) {
             DedicatedWorkerHostFactoryCreateWorkerHostResponseParams _response = new DedicatedWorkerHostFactoryCreateWorkerHostResponseParams();
 
             _response.parentCoep = parentCoep;
+
+            _response.backForwardCacheControllerHost = backForwardCacheControllerHost;
 
             org.chromium.mojo.bindings.ServiceMessage _message =
                     _response.serializeWithHeader(

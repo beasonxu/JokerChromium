@@ -13,6 +13,8 @@
 
 package org.chromium.media.learning.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class ObservationCompletion extends org.chromium.mojo.bindings.Struct {
 

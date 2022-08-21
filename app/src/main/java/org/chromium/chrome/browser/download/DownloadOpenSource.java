@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -22,6 +22,8 @@ import java.lang.annotation.RetentionPolicy;
     DownloadOpenSource.AUTO_OPEN, DownloadOpenSource.DOWNLOAD_PROGRESS_INFO_BAR,
     DownloadOpenSource.MENU, DownloadOpenSource.DINO_PAGE_OFFLINE_CONTENT,
     DownloadOpenSource.OFFLINE_INDICATOR, DownloadOpenSource.OFFLINE_CONTENT_NOTIFICATION,
+    DownloadOpenSource.DOWNLOAD_PROGRESS_MESSAGE, DownloadOpenSource.DUPLICATE_DOWNLOAD_DIALOG,
+    DownloadOpenSource.EXTERNAL_APP, DownloadOpenSource.NEW_DOWNLOAD_TAB_OPEN_BUTTON,
     DownloadOpenSource.MAX_VALUE
 })
 @Retention(RetentionPolicy.SOURCE)
@@ -78,5 +80,21 @@ public @interface DownloadOpenSource {
    * Android notification for offline content.
    */
   int OFFLINE_CONTENT_NOTIFICATION = 12;
-  int MAX_VALUE = OFFLINE_CONTENT_NOTIFICATION;
+  /**
+   * Download progress message.
+   */
+  int DOWNLOAD_PROGRESS_MESSAGE = 13;
+  /**
+   * Duplicate download dialog.
+   */
+  int DUPLICATE_DOWNLOAD_DIALOG = 14;
+  /**
+   * Download triggered by external app.
+   */
+  int EXTERNAL_APP = 15;
+  /**
+   * New download tab open button.
+   */
+  int NEW_DOWNLOAD_TAB_OPEN_BUTTON = 16;
+  int MAX_VALUE = NEW_DOWNLOAD_TAB_OPEN_BUTTON;
 }

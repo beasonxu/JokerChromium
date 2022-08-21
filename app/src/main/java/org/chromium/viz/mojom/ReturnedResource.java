@@ -13,14 +13,17 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class ReturnedResource extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 32;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
+    private static final int STRUCT_SIZE = 40;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public ResourceId id;
     public org.chromium.gpu.mojom.SyncToken syncToken;
+    public org.chromium.gfx.mojom.GpuFenceHandle releaseFence;
     public int count;
     public boolean lost;
 
@@ -69,11 +72,16 @@ public final class ReturnedResource extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.count = decoder0.readInt(24);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, true);
+                result.releaseFence = org.chromium.gfx.mojom.GpuFenceHandle.decode(decoder1);
                 }
                 {
                     
-                result.lost = decoder0.readBoolean(28, 0);
+                result.count = decoder0.readInt(32);
+                }
+                {
+                    
+                result.lost = decoder0.readBoolean(36, 0);
                 }
 
         } finally {
@@ -91,8 +99,10 @@ public final class ReturnedResource extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.syncToken, 16, false);
         
-        encoder0.encode(this.count, 24);
+        encoder0.encode(this.releaseFence, 24, true);
         
-        encoder0.encode(this.lost, 28, 0);
+        encoder0.encode(this.count, 32);
+        
+        encoder0.encode(this.lost, 36, 0);
     }
 }

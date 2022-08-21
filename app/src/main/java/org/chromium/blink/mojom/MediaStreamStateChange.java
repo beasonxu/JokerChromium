@@ -13,8 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class MediaStreamStateChange {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        MediaStreamStateChange.PLAY,
+        MediaStreamStateChange.PAUSE})
+    public @interface EnumType {}
 
     public static final int PLAY = 0;
     public static final int PAUSE = 1;

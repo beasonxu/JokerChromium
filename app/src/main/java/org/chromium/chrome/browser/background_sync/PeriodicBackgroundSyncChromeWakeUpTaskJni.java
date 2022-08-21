@@ -2,15 +2,13 @@ package org.chromium.chrome.browser.background_sync;
 
 import java.lang.Override;
 import java.lang.Runnable;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class PeriodicBackgroundSyncChromeWakeUpTaskJni implements PeriodicBackgroundSyncChromeWakeUpTask.Natives {
+class PeriodicBackgroundSyncChromeWakeUpTaskJni implements PeriodicBackgroundSyncChromeWakeUpTask.Natives {
   private static PeriodicBackgroundSyncChromeWakeUpTask.Natives testInstance;
 
   public static final JniStaticTestMocker<PeriodicBackgroundSyncChromeWakeUpTask.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.background_sync.PeriodicBackgroundSyncChromeWakeUpTask.Natives>() {

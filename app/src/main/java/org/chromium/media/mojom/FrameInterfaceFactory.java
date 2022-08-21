@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface FrameInterfaceFactory extends org.chromium.mojo.bindings.Interface {
 
@@ -23,23 +25,19 @@ public interface FrameInterfaceFactory extends org.chromium.mojo.bindings.Interf
 
     Manager<FrameInterfaceFactory, FrameInterfaceFactory.Proxy> MANAGER = FrameInterfaceFactory_Internal.MANAGER;
 
-
     void createProvisionFetcher(
 org.chromium.mojo.bindings.InterfaceRequest<ProvisionFetcher> provisionFetcher);
-
 
 
     void createCdmStorage(
 org.chromium.mojo.bindings.InterfaceRequest<CdmStorage> cdmStorage);
 
 
-
     void getCdmOrigin(
 
-GetCdmOriginResponse callback);
+GetCdmOrigin_Response callback);
 
-    interface GetCdmOriginResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.url.internal.mojom.Origin> { }
-
+    interface GetCdmOrigin_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.url.internal.mojom.Origin> { }
 
 
     void bindEmbedderReceiver(

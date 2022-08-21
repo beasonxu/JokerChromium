@@ -13,8 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ClipboardBuffer {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ClipboardBuffer.STANDARD,
+        ClipboardBuffer.SELECTION})
+    public @interface EnumType {}
 
     public static final int STANDARD = 0;
     public static final int SELECTION = 1;

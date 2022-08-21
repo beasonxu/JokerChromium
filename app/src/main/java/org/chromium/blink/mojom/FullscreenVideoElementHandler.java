@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface FullscreenVideoElementHandler extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface FullscreenVideoElementHandler extends org.chromium.mojo.binding
     }
 
     Manager<FullscreenVideoElementHandler, FullscreenVideoElementHandler.Proxy> MANAGER = FullscreenVideoElementHandler_Internal.MANAGER;
-
 
     void requestFullscreenVideoElement(
 );

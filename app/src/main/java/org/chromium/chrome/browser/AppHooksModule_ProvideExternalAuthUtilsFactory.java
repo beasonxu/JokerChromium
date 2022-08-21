@@ -2,7 +2,7 @@ package org.chromium.chrome.browser;
 
 import dagger.internal.Factory;
 import dagger.internal.Preconditions;
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 import org.chromium.components.externalauth.ExternalAuthUtils;
 
 @Generated(

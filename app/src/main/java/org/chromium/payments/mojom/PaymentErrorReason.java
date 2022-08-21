@@ -13,8 +13,21 @@
 
 package org.chromium.payments.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PaymentErrorReason {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PaymentErrorReason.UNKNOWN,
+        PaymentErrorReason.USER_CANCEL,
+        PaymentErrorReason.NOT_SUPPORTED,
+        PaymentErrorReason.NOT_SUPPORTED_FOR_INVALID_ORIGIN_OR_SSL,
+        PaymentErrorReason.ALREADY_SHOWING,
+        PaymentErrorReason.INVALID_DATA_FROM_RENDERER,
+        PaymentErrorReason.NOT_ALLOWED_ERROR,
+        PaymentErrorReason.USER_OPT_OUT})
+    public @interface EnumType {}
 
     public static final int UNKNOWN = 0;
     public static final int USER_CANCEL = 1;
@@ -22,11 +35,13 @@ public final class PaymentErrorReason {
     public static final int NOT_SUPPORTED_FOR_INVALID_ORIGIN_OR_SSL = 3;
     public static final int ALREADY_SHOWING = 4;
     public static final int INVALID_DATA_FROM_RENDERER = 5;
+    public static final int NOT_ALLOWED_ERROR = 6;
+    public static final int USER_OPT_OUT = 7;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 5;
+    public static final int MAX_VALUE = 7;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 5;
+        return value >= 0 && value <= 7;
     }
 
     public static void validate(int value) {

@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -18,7 +18,6 @@ import java.lang.annotation.RetentionPolicy;
 @IntDef({
     AccountConsistencyPromoAction.SUPPRESSED_NO_ACCOUNTS,
     AccountConsistencyPromoAction.DISMISSED_BACK, AccountConsistencyPromoAction.ADD_ACCOUNT_STARTED,
-    AccountConsistencyPromoAction.STARTED_INCOGNITO_SESSION,
     AccountConsistencyPromoAction.SIGNED_IN_WITH_DEFAULT_ACCOUNT,
     AccountConsistencyPromoAction.SIGNED_IN_WITH_NON_DEFAULT_ACCOUNT,
     AccountConsistencyPromoAction.SHOWN,
@@ -31,7 +30,8 @@ import java.lang.annotation.RetentionPolicy;
     AccountConsistencyPromoAction.DISMISSED_BUTTON,
     AccountConsistencyPromoAction.ADD_ACCOUNT_COMPLETED,
     AccountConsistencyPromoAction.SUPPRESSED_CONSECUTIVE_DISMISSALS,
-    AccountConsistencyPromoAction.MAX
+    AccountConsistencyPromoAction.TIMEOUT_ERROR_SHOWN,
+    AccountConsistencyPromoAction.SUPPRESSED_ALREADY_SIGNED_IN, AccountConsistencyPromoAction.MAX
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface AccountConsistencyPromoAction {
@@ -48,13 +48,9 @@ public @interface AccountConsistencyPromoAction {
    */
   int ADD_ACCOUNT_STARTED = 2;
   /**
-   * User tapped the button from the expanded account list to open the incognito interstitial then
-   * confirmed opening the page in the incognito tab by tapping |Continue| in the incognito
-   * interstitial.
-   */
-  int STARTED_INCOGNITO_SESSION = 3;
-  /**
-   * User has selected the default account and signed in with it
+   * Deprecated 05/2021, since the Incognito option has been removed from account picker
+   * bottomsheet. STARTED_INCOGNITO_SESSION = 3, User has selected the default account and signed in
+   * with it
    */
   int SIGNED_IN_WITH_DEFAULT_ACCOUNT = 4;
   /**
@@ -107,5 +103,13 @@ public @interface AccountConsistencyPromoAction {
    * The bottom sheet was suppressed as the user hit consecutive active dismissal limit.
    */
   int SUPPRESSED_CONSECUTIVE_DISMISSALS = 16;
-  int MAX = 17;
+  /**
+   * The timeout erreur was shown to the user.
+   */
+  int TIMEOUT_ERROR_SHOWN = 17;
+  /**
+   * The web sign-in is not shown because the user is already signed in.
+   */
+  int SUPPRESSED_ALREADY_SIGNED_IN = 18;
+  int MAX = 18;
 }

@@ -13,6 +13,8 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class CompositorFrameSink_Internal {
 
@@ -62,6 +64,8 @@ class CompositorFrameSink_Internal {
     private static final int DID_DELETE_SHARED_BITMAP_ORDINAL = 6;
 
     private static final int INITIALIZE_COMPOSITOR_FRAME_SINK_TYPE_ORDINAL = 7;
+
+    private static final int SET_THREAD_IDS_ORDINAL = 8;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements CompositorFrameSink.Proxy {
@@ -130,7 +134,7 @@ LocalSurfaceId localSurfaceId, CompositorFrame frame, HitTestRegionList hitTestR
         @Override
         public void submitCompositorFrameSync(
 LocalSurfaceId localSurfaceId, CompositorFrame frame, HitTestRegionList hitTestRegionList, long submitTime, 
-SubmitCompositorFrameSyncResponse callback) {
+SubmitCompositorFrameSync_Response callback) {
 
             CompositorFrameSinkSubmitCompositorFrameSyncParams _message = new CompositorFrameSinkSubmitCompositorFrameSyncParams();
 
@@ -221,6 +225,23 @@ int type) {
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(INITIALIZE_COMPOSITOR_FRAME_SINK_TYPE_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void setThreadIds(
+int[] threadIds) {
+
+            CompositorFrameSinkSetThreadIdsParams _message = new CompositorFrameSinkSetThreadIdsParams();
+
+            _message.threadIds = threadIds;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(SET_THREAD_IDS_ORDINAL)));
 
         }
 
@@ -345,6 +366,19 @@ int type) {
                     }
 
 
+
+
+
+                    case SET_THREAD_IDS_ORDINAL: {
+
+                        CompositorFrameSinkSetThreadIdsParams data =
+                                CompositorFrameSinkSetThreadIdsParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().setThreadIds(data.threadIds);
+                        return true;
+                    }
+
+
                     default:
                         return false;
                 }
@@ -393,6 +427,8 @@ int type) {
                         getImpl().submitCompositorFrameSync(data.localSurfaceId, data.frame, data.hitTestRegionList, data.submitTime, new CompositorFrameSinkSubmitCompositorFrameSyncResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
+
+
 
 
 
@@ -787,9 +823,9 @@ int type) {
 
     static class CompositorFrameSinkSubmitCompositorFrameSyncResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CompositorFrameSink.SubmitCompositorFrameSyncResponse mCallback;
+        private final CompositorFrameSink.SubmitCompositorFrameSync_Response mCallback;
 
-        CompositorFrameSinkSubmitCompositorFrameSyncResponseParamsForwardToCallback(CompositorFrameSink.SubmitCompositorFrameSyncResponse callback) {
+        CompositorFrameSinkSubmitCompositorFrameSyncResponseParamsForwardToCallback(CompositorFrameSink.SubmitCompositorFrameSync_Response callback) {
             this.mCallback = callback;
         }
 
@@ -814,7 +850,7 @@ int type) {
         }
     }
 
-    static class CompositorFrameSinkSubmitCompositorFrameSyncResponseParamsProxyToResponder implements CompositorFrameSink.SubmitCompositorFrameSyncResponse {
+    static class CompositorFrameSinkSubmitCompositorFrameSyncResponseParamsProxyToResponder implements CompositorFrameSink.SubmitCompositorFrameSync_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1108,6 +1144,69 @@ int type) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.type, 8);
+        }
+    }
+
+
+
+    
+    static final class CompositorFrameSinkSetThreadIdsParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int[] threadIds;
+
+        private CompositorFrameSinkSetThreadIdsParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public CompositorFrameSinkSetThreadIdsParams() {
+            this(0);
+        }
+
+        public static CompositorFrameSinkSetThreadIdsParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static CompositorFrameSinkSetThreadIdsParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static CompositorFrameSinkSetThreadIdsParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            CompositorFrameSinkSetThreadIdsParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new CompositorFrameSinkSetThreadIdsParams(elementsOrVersion);
+                    {
+                        
+                    result.threadIds = decoder0.readInts(8, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.threadIds, 8, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
         }
     }
 

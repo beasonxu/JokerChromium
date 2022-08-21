@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface RendererClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,50 +25,40 @@ public interface RendererClient extends org.chromium.mojo.bindings.Interface {
 
     Manager<RendererClient, RendererClient.Proxy> MANAGER = RendererClient_Internal.MANAGER;
 
-
     void onTimeUpdate(
 org.chromium.mojo_base.mojom.TimeDelta time, org.chromium.mojo_base.mojom.TimeDelta maxTime, org.chromium.mojo_base.mojom.TimeTicks captureTime);
-
 
 
     void onBufferingStateChange(
 int state, int reason);
 
 
-
     void onEnded(
 );
 
 
-
     void onError(
-Status status);
-
+PipelineStatus status);
 
 
     void onAudioConfigChange(
 AudioDecoderConfig config);
 
 
-
     void onVideoConfigChange(
 VideoDecoderConfig config);
-
 
 
     void onVideoNaturalSizeChange(
 org.chromium.gfx.mojom.Size size);
 
 
-
     void onVideoOpacityChange(
 boolean opaque);
 
 
-
     void onStatisticsUpdate(
 PipelineStatistics stats);
-
 
 
     void onWaiting(

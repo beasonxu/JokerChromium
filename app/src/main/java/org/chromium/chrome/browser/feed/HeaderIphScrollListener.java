@@ -4,10 +4,7 @@
 
 package org.chromium.chrome.browser.feed;
 
-import org.chromium.chrome.browser.flags.ChromeFeatureList;
-import org.chromium.chrome.browser.ntp.ScrollListener;
-import org.chromium.chrome.browser.ntp.ScrollListener.ScrollState;
-import org.chromium.chrome.browser.ntp.ScrollableContainerDelegate;
+import org.chromium.chrome.browser.feed.ScrollListener.ScrollState;
 import org.chromium.components.feature_engagement.FeatureConstants;
 import org.chromium.components.feature_engagement.Tracker;
 import org.chromium.components.feature_engagement.TriggerState;
@@ -28,57 +25,24 @@ import org.chromium.components.feature_engagement.TriggerState;
  * that the user wants to interact with the feed are strong.
  */
 public class HeaderIphScrollListener implements ScrollListener {
-    static final String TOOLBAR_TRANSITION_FRACTION_PARAM_NAME = "toolbar-transition-fraction";
-    static final String MIN_SCROLL_FRACTION_PARAM_NAME = "min-scroll-fraction";
-    static final String HEADER_MAX_POSITION_FRACTION_NAME = "header-max-pos-fraction";
+    private static final float MIN_SCROLL_FRACTION = 0.1f;
+    private static final float MAX_HEADER_POS_FRACTION = 0.35f;
 
-    /**
-     * Delegate to handle actions that are out of the scope of the listener.
-     */
-    public static interface Delegate {
-        /**
-         * Gets the feature engagement tracker.
-         */
-        Tracker getFeatureEngagementTracker();
-
-        /**
-         * Shows the menu IPH.
-         */
-        void showMenuIph();
-
-        /**
-         * Determines whether the feed is expanded (turned on).
-         */
-        boolean isFeedExpanded();
-
-        /**
-         * Determines whether the user is signed in.
-         */
-        boolean isSignedIn();
-
-        /**
-         * Determines whether the position of the feed header in the NTP container is suitable for
-         * showing the IPH.
-         */
-        boolean isFeedHeaderPositionInContainerSuitableForIPH(float headerMaxPosFraction);
-    }
-
-    private Delegate mDelegate;
-    private ScrollableContainerDelegate mScrollableContainerDelegate;
+    private final FeedBubbleDelegate mDelegate;
+    private final ScrollableContainerDelegate mScrollableContainerDelegate;
+    private final Runnable mShowIPHRunnable;
 
     private float mMinScrollFraction;
     private float mHeaderMaxPosFraction;
 
-    HeaderIphScrollListener(
-            Delegate delegate, ScrollableContainerDelegate scrollableContainerDelegate) {
+    HeaderIphScrollListener(FeedBubbleDelegate delegate,
+            ScrollableContainerDelegate scrollableContainerDelegate, Runnable showIPHRunnable) {
         mDelegate = delegate;
         mScrollableContainerDelegate = scrollableContainerDelegate;
+        mShowIPHRunnable = showIPHRunnable;
 
-        mMinScrollFraction = (float) ChromeFeatureList.getFieldTrialParamByFeatureAsDouble(
-                ChromeFeatureList.REPORT_FEED_USER_ACTIONS, MIN_SCROLL_FRACTION_PARAM_NAME, 0.10);
-        mHeaderMaxPosFraction = (float) ChromeFeatureList.getFieldTrialParamByFeatureAsDouble(
-                ChromeFeatureList.REPORT_FEED_USER_ACTIONS, HEADER_MAX_POSITION_FRACTION_NAME,
-                0.35);
+        mMinScrollFraction = MIN_SCROLL_FRACTION;
+        mHeaderMaxPosFraction = MAX_HEADER_POS_FRACTION;
     }
 
     @Override
@@ -110,11 +74,6 @@ public class HeaderIphScrollListener implements ScrollListener {
             return;
         }
 
-        // Don't do any calculation if the IPH cannot be triggered to avoid wasting efforts.
-        if (!tracker.wouldTriggerHelpUI(featureForIph)) {
-            return;
-        }
-
         // Check whether the feed is expanded.
         if (!mDelegate.isFeedExpanded()) return;
 
@@ -132,6 +91,6 @@ public class HeaderIphScrollListener implements ScrollListener {
             return;
         }
 
-        mDelegate.showMenuIph();
+        mShowIPHRunnable.run();
     }
 }

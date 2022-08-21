@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class CookieStore_Internal {
 
@@ -65,7 +67,7 @@ class CookieStore_Internal {
         @Override
         public void addSubscriptions(
 long serviceWorkerRegistrationId, CookieChangeSubscription[] subscription, 
-AddSubscriptionsResponse callback) {
+AddSubscriptions_Response callback) {
 
             CookieStoreAddSubscriptionsParams _message = new CookieStoreAddSubscriptionsParams();
 
@@ -89,7 +91,7 @@ AddSubscriptionsResponse callback) {
         @Override
         public void removeSubscriptions(
 long serviceWorkerRegistrationId, CookieChangeSubscription[] subscription, 
-RemoveSubscriptionsResponse callback) {
+RemoveSubscriptions_Response callback) {
 
             CookieStoreRemoveSubscriptionsParams _message = new CookieStoreRemoveSubscriptionsParams();
 
@@ -113,7 +115,7 @@ RemoveSubscriptionsResponse callback) {
         @Override
         public void getSubscriptions(
 long serviceWorkerRegistrationId, 
-GetSubscriptionsResponse callback) {
+GetSubscriptions_Response callback) {
 
             CookieStoreGetSubscriptionsParams _message = new CookieStoreGetSubscriptionsParams();
 
@@ -401,9 +403,9 @@ GetSubscriptionsResponse callback) {
 
     static class CookieStoreAddSubscriptionsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CookieStore.AddSubscriptionsResponse mCallback;
+        private final CookieStore.AddSubscriptions_Response mCallback;
 
-        CookieStoreAddSubscriptionsResponseParamsForwardToCallback(CookieStore.AddSubscriptionsResponse callback) {
+        CookieStoreAddSubscriptionsResponseParamsForwardToCallback(CookieStore.AddSubscriptions_Response callback) {
             this.mCallback = callback;
         }
 
@@ -428,7 +430,7 @@ GetSubscriptionsResponse callback) {
         }
     }
 
-    static class CookieStoreAddSubscriptionsResponseParamsProxyToResponder implements CookieStore.AddSubscriptionsResponse {
+    static class CookieStoreAddSubscriptionsResponseParamsProxyToResponder implements CookieStore.AddSubscriptions_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -612,9 +614,9 @@ GetSubscriptionsResponse callback) {
 
     static class CookieStoreRemoveSubscriptionsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CookieStore.RemoveSubscriptionsResponse mCallback;
+        private final CookieStore.RemoveSubscriptions_Response mCallback;
 
-        CookieStoreRemoveSubscriptionsResponseParamsForwardToCallback(CookieStore.RemoveSubscriptionsResponse callback) {
+        CookieStoreRemoveSubscriptionsResponseParamsForwardToCallback(CookieStore.RemoveSubscriptions_Response callback) {
             this.mCallback = callback;
         }
 
@@ -639,7 +641,7 @@ GetSubscriptionsResponse callback) {
         }
     }
 
-    static class CookieStoreRemoveSubscriptionsResponseParamsProxyToResponder implements CookieStore.RemoveSubscriptionsResponse {
+    static class CookieStoreRemoveSubscriptionsResponseParamsProxyToResponder implements CookieStore.RemoveSubscriptions_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -823,9 +825,9 @@ GetSubscriptionsResponse callback) {
 
     static class CookieStoreGetSubscriptionsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CookieStore.GetSubscriptionsResponse mCallback;
+        private final CookieStore.GetSubscriptions_Response mCallback;
 
-        CookieStoreGetSubscriptionsResponseParamsForwardToCallback(CookieStore.GetSubscriptionsResponse callback) {
+        CookieStoreGetSubscriptionsResponseParamsForwardToCallback(CookieStore.GetSubscriptions_Response callback) {
             this.mCallback = callback;
         }
 
@@ -850,7 +852,7 @@ GetSubscriptionsResponse callback) {
         }
     }
 
-    static class CookieStoreGetSubscriptionsResponseParamsProxyToResponder implements CookieStore.GetSubscriptionsResponse {
+    static class CookieStoreGetSubscriptionsResponseParamsProxyToResponder implements CookieStore.GetSubscriptions_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

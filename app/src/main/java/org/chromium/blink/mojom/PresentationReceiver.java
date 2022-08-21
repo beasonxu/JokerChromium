@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface PresentationReceiver extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface PresentationReceiver extends org.chromium.mojo.bindings.Interfa
     }
 
     Manager<PresentationReceiver, PresentationReceiver.Proxy> MANAGER = PresentationReceiver_Internal.MANAGER;
-
 
     void onReceiverConnectionAvailable(
 PresentationInfo info, PresentationConnection controllerConnection, org.chromium.mojo.bindings.InterfaceRequest<PresentationConnection> receiverConnectionReceiver);

@@ -13,8 +13,31 @@
 
 package org.chromium.media_session.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class MediaSessionAction {
     private static final boolean IS_EXTENSIBLE = true;
+    @IntDef({
+
+        MediaSessionAction.PLAY,
+        MediaSessionAction.PAUSE,
+        MediaSessionAction.PREVIOUS_TRACK,
+        MediaSessionAction.NEXT_TRACK,
+        MediaSessionAction.SEEK_BACKWARD,
+        MediaSessionAction.SEEK_FORWARD,
+        MediaSessionAction.SKIP_AD,
+        MediaSessionAction.STOP,
+        MediaSessionAction.SEEK_TO,
+        MediaSessionAction.SCRUB_TO,
+        MediaSessionAction.ENTER_PICTURE_IN_PICTURE,
+        MediaSessionAction.EXIT_PICTURE_IN_PICTURE,
+        MediaSessionAction.SWITCH_AUDIO_DEVICE,
+        MediaSessionAction.TOGGLE_MICROPHONE,
+        MediaSessionAction.TOGGLE_CAMERA,
+        MediaSessionAction.HANG_UP,
+        MediaSessionAction.RAISE,
+        MediaSessionAction.SET_MUTE})
+    public @interface EnumType {}
 
     public static final int PLAY = 0;
     public static final int PAUSE = 1;
@@ -29,11 +52,16 @@ public final class MediaSessionAction {
     public static final int ENTER_PICTURE_IN_PICTURE = 10;
     public static final int EXIT_PICTURE_IN_PICTURE = 11;
     public static final int SWITCH_AUDIO_DEVICE = 12;
+    public static final int TOGGLE_MICROPHONE = 13;
+    public static final int TOGGLE_CAMERA = 14;
+    public static final int HANG_UP = 15;
+    public static final int RAISE = 16;
+    public static final int SET_MUTE = 17;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 12;
+    public static final int MAX_VALUE = 17;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 12;
+        return value >= 0 && value <= 17;
     }
 
     public static void validate(int value) {

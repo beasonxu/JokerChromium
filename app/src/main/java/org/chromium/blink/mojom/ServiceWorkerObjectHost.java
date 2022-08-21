@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ServiceWorkerObjectHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,17 +25,15 @@ public interface ServiceWorkerObjectHost extends org.chromium.mojo.bindings.Inte
 
     Manager<ServiceWorkerObjectHost, ServiceWorkerObjectHost.Proxy> MANAGER = ServiceWorkerObjectHost_Internal.MANAGER;
 
-
     void postMessageToServiceWorker(
 TransferableMessage message);
 
 
-
     void terminateForTesting(
 
-TerminateForTestingResponse callback);
+TerminateForTesting_Response callback);
 
-    interface TerminateForTestingResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
+    interface TerminateForTesting_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
 }

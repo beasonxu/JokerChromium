@@ -13,12 +13,16 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class HttpAuthDynamicParams extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 40;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
+    private static final int STRUCT_SIZE = 56;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(56, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+    public String[] allowedSchemes;
+    public String[] patternsAllowedToUseAllSchemes;
     public String serverAllowlist;
     public String delegateAllowlist;
     public boolean delegateByKdcPolicy;
@@ -70,39 +74,65 @@ public final class HttpAuthDynamicParams extends org.chromium.mojo.bindings.Stru
             result = new HttpAuthDynamicParams(elementsOrVersion);
                 {
                     
-                result.serverAllowlist = decoder0.readString(8, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, true);
+                if (decoder1 == null) {
+                    result.allowedSchemes = null;
+                } else {
+                    org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                    result.allowedSchemes = new String[si1.elementsOrVersion];
+                    for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
+                        
+                        result.allowedSchemes[i1] = decoder1.readString(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                    }
+                }
                 }
                 {
                     
-                result.delegateAllowlist = decoder0.readString(16, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                {
+                    org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                    result.patternsAllowedToUseAllSchemes = new String[si1.elementsOrVersion];
+                    for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
+                        
+                        result.patternsAllowedToUseAllSchemes[i1] = decoder1.readString(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                    }
+                }
                 }
                 {
                     
-                result.delegateByKdcPolicy = decoder0.readBoolean(24, 0);
+                result.serverAllowlist = decoder0.readString(24, false);
                 }
                 {
                     
-                result.negotiateDisableCnameLookup = decoder0.readBoolean(24, 1);
+                result.delegateAllowlist = decoder0.readString(32, false);
                 }
                 {
                     
-                result.enableNegotiatePort = decoder0.readBoolean(24, 2);
+                result.delegateByKdcPolicy = decoder0.readBoolean(40, 0);
                 }
                 {
                     
-                result.ntlmV2Enabled = decoder0.readBoolean(24, 3);
+                result.negotiateDisableCnameLookup = decoder0.readBoolean(40, 1);
                 }
                 {
                     
-                result.allowGssapiLibraryLoad = decoder0.readBoolean(24, 4);
+                result.enableNegotiatePort = decoder0.readBoolean(40, 2);
                 }
                 {
                     
-                result.basicOverHttpEnabled = decoder0.readBoolean(24, 5);
+                result.ntlmV2Enabled = decoder0.readBoolean(40, 3);
                 }
                 {
                     
-                result.androidNegotiateAccountType = decoder0.readString(32, false);
+                result.allowGssapiLibraryLoad = decoder0.readBoolean(40, 4);
+                }
+                {
+                    
+                result.basicOverHttpEnabled = decoder0.readBoolean(40, 5);
+                }
+                {
+                    
+                result.androidNegotiateAccountType = decoder0.readString(48, false);
                 }
 
         } finally {
@@ -116,22 +146,42 @@ public final class HttpAuthDynamicParams extends org.chromium.mojo.bindings.Stru
     protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
         org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         
-        encoder0.encode(this.serverAllowlist, 8, false);
+        if (this.allowedSchemes == null) {
+            encoder0.encodeNullPointer(8, true);
+        } else {
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.allowedSchemes.length, 8, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            for (int i0 = 0; i0 < this.allowedSchemes.length; ++i0) {
+                
+                encoder1.encode(this.allowedSchemes[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
+            }
+        }
         
-        encoder0.encode(this.delegateAllowlist, 16, false);
+        if (this.patternsAllowedToUseAllSchemes == null) {
+            encoder0.encodeNullPointer(16, false);
+        } else {
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.patternsAllowedToUseAllSchemes.length, 16, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            for (int i0 = 0; i0 < this.patternsAllowedToUseAllSchemes.length; ++i0) {
+                
+                encoder1.encode(this.patternsAllowedToUseAllSchemes[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
+            }
+        }
         
-        encoder0.encode(this.delegateByKdcPolicy, 24, 0);
+        encoder0.encode(this.serverAllowlist, 24, false);
         
-        encoder0.encode(this.negotiateDisableCnameLookup, 24, 1);
+        encoder0.encode(this.delegateAllowlist, 32, false);
         
-        encoder0.encode(this.enableNegotiatePort, 24, 2);
+        encoder0.encode(this.delegateByKdcPolicy, 40, 0);
         
-        encoder0.encode(this.ntlmV2Enabled, 24, 3);
+        encoder0.encode(this.negotiateDisableCnameLookup, 40, 1);
         
-        encoder0.encode(this.allowGssapiLibraryLoad, 24, 4);
+        encoder0.encode(this.enableNegotiatePort, 40, 2);
         
-        encoder0.encode(this.basicOverHttpEnabled, 24, 5);
+        encoder0.encode(this.ntlmV2Enabled, 40, 3);
         
-        encoder0.encode(this.androidNegotiateAccountType, 32, false);
+        encoder0.encode(this.allowGssapiLibraryLoad, 40, 4);
+        
+        encoder0.encode(this.basicOverHttpEnabled, 40, 5);
+        
+        encoder0.encode(this.androidNegotiateAccountType, 48, false);
     }
 }

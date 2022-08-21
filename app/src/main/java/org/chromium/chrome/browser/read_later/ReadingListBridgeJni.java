@@ -1,15 +1,13 @@
 package org.chromium.chrome.browser.read_later;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ReadingListBridgeJni implements ReadingListBridge.Natives {
+class ReadingListBridgeJni implements ReadingListBridge.Natives {
   private static ReadingListBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<ReadingListBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.read_later.ReadingListBridge.Natives>() {

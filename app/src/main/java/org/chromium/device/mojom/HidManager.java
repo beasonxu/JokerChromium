@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface HidManager extends org.chromium.mojo.bindings.Interface {
 
@@ -23,29 +25,25 @@ public interface HidManager extends org.chromium.mojo.bindings.Interface {
 
     Manager<HidManager, HidManager.Proxy> MANAGER = HidManager_Internal.MANAGER;
 
-
     void getDevicesAndSetClient(
 org.chromium.mojo.bindings.AssociatedInterfaceNotSupported client, 
-GetDevicesAndSetClientResponse callback);
+GetDevicesAndSetClient_Response callback);
 
-    interface GetDevicesAndSetClientResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<HidDeviceInfo[]> { }
-
+    interface GetDevicesAndSetClient_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<HidDeviceInfo[]> { }
 
 
     void getDevices(
 
-GetDevicesResponse callback);
+GetDevices_Response callback);
 
-    interface GetDevicesResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<HidDeviceInfo[]> { }
-
+    interface GetDevices_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<HidDeviceInfo[]> { }
 
 
     void connect(
-String deviceGuid, HidConnectionClient connectionClient, HidConnectionWatcher watcher, boolean allowProtectedReports, 
-ConnectResponse callback);
+String deviceGuid, HidConnectionClient connectionClient, HidConnectionWatcher watcher, boolean allowProtectedReports, boolean allowFidoReports, 
+Connect_Response callback);
 
-    interface ConnectResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<HidConnection> { }
-
+    interface Connect_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<HidConnection> { }
 
 
     void addReceiver(

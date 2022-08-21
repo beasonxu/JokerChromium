@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface BlobUrlToken extends org.chromium.mojo.bindings.Interface {
 
@@ -23,17 +25,15 @@ public interface BlobUrlToken extends org.chromium.mojo.bindings.Interface {
 
     Manager<BlobUrlToken, BlobUrlToken.Proxy> MANAGER = BlobUrlToken_Internal.MANAGER;
 
-
     void clone(
 org.chromium.mojo.bindings.InterfaceRequest<BlobUrlToken> token);
 
 
-
     void getToken(
 
-GetTokenResponse callback);
+GetToken_Response callback);
 
-    interface GetTokenResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.UnguessableToken> { }
+    interface GetToken_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.UnguessableToken> { }
 
 
 }

@@ -2,16 +2,14 @@ package org.chromium.chrome.browser.notifications.scheduler;
 
 import java.lang.Boolean;
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.Callback;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class NotificationSchedulerTaskJni implements NotificationSchedulerTask.Natives {
+class NotificationSchedulerTaskJni implements NotificationSchedulerTask.Natives {
   private static NotificationSchedulerTask.Natives testInstance;
 
   public static final JniStaticTestMocker<NotificationSchedulerTask.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.notifications.scheduler.NotificationSchedulerTask.Natives>() {

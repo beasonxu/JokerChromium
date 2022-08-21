@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface PlaybackEventsRecorder extends org.chromium.mojo.bindings.Interface {
 
@@ -23,45 +25,36 @@ public interface PlaybackEventsRecorder extends org.chromium.mojo.bindings.Inter
 
     Manager<PlaybackEventsRecorder, PlaybackEventsRecorder.Proxy> MANAGER = PlaybackEventsRecorder_Internal.MANAGER;
 
-
     void onPlaying(
 );
-
 
 
     void onPaused(
 );
 
 
-
     void onSeeking(
 );
-
 
 
     void onEnded(
 );
 
 
-
     void onError(
-int status);
-
+PipelineStatus status);
 
 
     void onBuffering(
 );
 
 
-
     void onBufferingComplete(
 );
 
 
-
     void onNaturalSizeChanged(
 org.chromium.gfx.mojom.Size size);
-
 
 
     void onPipelineStatistics(

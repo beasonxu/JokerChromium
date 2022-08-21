@@ -13,16 +13,16 @@
 
 package org.chromium.payments.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class CanMakePaymentResponse extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 24;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+    private static final int STRUCT_SIZE = 16;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int responseType;
     public boolean canMakePayment;
-    public boolean readyForMinimalUi;
-    public String accountBalance;
 
     private CanMakePaymentResponse(int version) {
         super(STRUCT_SIZE, version);
@@ -67,14 +67,6 @@ public final class CanMakePaymentResponse extends org.chromium.mojo.bindings.Str
                     
                 result.canMakePayment = decoder0.readBoolean(12, 0);
                 }
-                {
-                    
-                result.readyForMinimalUi = decoder0.readBoolean(12, 1);
-                }
-                {
-                    
-                result.accountBalance = decoder0.readString(16, true);
-                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -90,9 +82,5 @@ public final class CanMakePaymentResponse extends org.chromium.mojo.bindings.Str
         encoder0.encode(this.responseType, 8);
         
         encoder0.encode(this.canMakePayment, 12, 0);
-        
-        encoder0.encode(this.readyForMinimalUi, 12, 1);
-        
-        encoder0.encode(this.accountBalance, 16, true);
     }
 }

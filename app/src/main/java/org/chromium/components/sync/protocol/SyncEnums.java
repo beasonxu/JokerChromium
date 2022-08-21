@@ -75,14 +75,7 @@ public  final class SyncEnums extends
     /**
      * <pre>
      * Client has finished encrypting all data.
-     * </pre>
-     *
-     * <code>DEPRECATED_ENCRYPTION_COMPLETE = 7 [deprecated = true];</code>
-     */
-    @java.lang.Deprecated
-    DEPRECATED_ENCRYPTION_COMPLETE(7),
-    /**
-     * <pre>
+     * DEPRECATED_ENCRYPTION_COMPLETE = 7;
      * Client received an actionable error.
      * </pre>
      *
@@ -107,12 +100,12 @@ public  final class SyncEnums extends
     PASSPHRASE_TYPE_CHANGED(10),
     /**
      * <pre>
-     * A new keystore encryption token was persisted.
+     * A new keystore encryption token was persisted. Deprecated 11/2021.
      * </pre>
      *
-     * <code>KEYSTORE_TOKEN_UPDATED = 11;</code>
+     * <code>DEPRECATED_KEYSTORE_TOKEN_UPDATED = 11;</code>
      */
-    KEYSTORE_TOKEN_UPDATED(11),
+    DEPRECATED_KEYSTORE_TOKEN_UPDATED(11),
     /**
      * <pre>
      * The datatype manager has finished an at least partially successful
@@ -127,9 +120,9 @@ public  final class SyncEnums extends
      * A new cryptographer bootstrap token was generated.
      * </pre>
      *
-     * <code>BOOTSTRAP_TOKEN_UPDATED = 13;</code>
+     * <code>DEPRECATED_BOOTSTRAP_TOKEN_UPDATED = 13;</code>
      */
-    BOOTSTRAP_TOKEN_UPDATED(13),
+    DEPRECATED_BOOTSTRAP_TOKEN_UPDATED(13),
     /**
      * <pre>
      * Cryptographer needs trusted vault decryption keys.
@@ -201,13 +194,7 @@ public  final class SyncEnums extends
     /**
      * <pre>
      * Client has finished encrypting all data.
-     * </pre>
-     *
-     * <code>DEPRECATED_ENCRYPTION_COMPLETE = 7 [deprecated = true];</code>
-     */
-    @java.lang.Deprecated public static final int DEPRECATED_ENCRYPTION_COMPLETE_VALUE = 7;
-    /**
-     * <pre>
+     * DEPRECATED_ENCRYPTION_COMPLETE = 7;
      * Client received an actionable error.
      * </pre>
      *
@@ -232,12 +219,12 @@ public  final class SyncEnums extends
     public static final int PASSPHRASE_TYPE_CHANGED_VALUE = 10;
     /**
      * <pre>
-     * A new keystore encryption token was persisted.
+     * A new keystore encryption token was persisted. Deprecated 11/2021.
      * </pre>
      *
-     * <code>KEYSTORE_TOKEN_UPDATED = 11;</code>
+     * <code>DEPRECATED_KEYSTORE_TOKEN_UPDATED = 11;</code>
      */
-    public static final int KEYSTORE_TOKEN_UPDATED_VALUE = 11;
+    public static final int DEPRECATED_KEYSTORE_TOKEN_UPDATED_VALUE = 11;
     /**
      * <pre>
      * The datatype manager has finished an at least partially successful
@@ -252,9 +239,9 @@ public  final class SyncEnums extends
      * A new cryptographer bootstrap token was generated.
      * </pre>
      *
-     * <code>BOOTSTRAP_TOKEN_UPDATED = 13;</code>
+     * <code>DEPRECATED_BOOTSTRAP_TOKEN_UPDATED = 13;</code>
      */
-    public static final int BOOTSTRAP_TOKEN_UPDATED_VALUE = 13;
+    public static final int DEPRECATED_BOOTSTRAP_TOKEN_UPDATED_VALUE = 13;
     /**
      * <pre>
      * Cryptographer needs trusted vault decryption keys.
@@ -296,13 +283,12 @@ public  final class SyncEnums extends
         case 4: return PASSPHRASE_ACCEPTED;
         case 5: return INITIALIZATION_COMPLETE;
         case 6: return STOP_SYNCING_PERMANENTLY;
-        case 7: return DEPRECATED_ENCRYPTION_COMPLETE;
         case 8: return ACTIONABLE_ERROR;
         case 9: return ENCRYPTED_TYPES_CHANGED;
         case 10: return PASSPHRASE_TYPE_CHANGED;
-        case 11: return KEYSTORE_TOKEN_UPDATED;
+        case 11: return DEPRECATED_KEYSTORE_TOKEN_UPDATED;
         case 12: return CONFIGURE_COMPLETE;
-        case 13: return BOOTSTRAP_TOKEN_UPDATED;
+        case 13: return DEPRECATED_BOOTSTRAP_TOKEN_UPDATED;
         case 14: return TRUSTED_VAULT_KEY_REQUIRED;
         case 15: return TRUSTED_VAULT_KEY_ACCEPTED;
         default: return null;
@@ -400,8 +386,8 @@ public  final class SyncEnums extends
      * actually transition qualifiers, and are set independently of other
      * qualifiers and of the main transitions. See session_specifics.proto for
      * the list of synced transition qualifiers.
-     * CHAIN_START = 12;     Deprecated.
-     * CHAIN_END = 13;       Deprecated.
+     * DEPRECATED_CHAIN_START = 12;
+     * DEPRECATED_CHAIN_END = 13;
      * </pre>
      *
      * <code>KEYWORD_GENERATED = 10;</code>
@@ -455,8 +441,8 @@ public  final class SyncEnums extends
      * actually transition qualifiers, and are set independently of other
      * qualifiers and of the main transitions. See session_specifics.proto for
      * the list of synced transition qualifiers.
-     * CHAIN_START = 12;     Deprecated.
-     * CHAIN_END = 13;       Deprecated.
+     * DEPRECATED_CHAIN_START = 12;
+     * DEPRECATED_CHAIN_END = 13;
      * </pre>
      *
      * <code>KEYWORD_GENERATED = 10;</code>
@@ -630,12 +616,11 @@ public  final class SyncEnums extends
      */
     SUCCESS(0),
     /**
-     * <code>DEPRECATED_ACCESS_DENIED = 1;</code>
-     */
-    DEPRECATED_ACCESS_DENIED(1),
-    /**
      * <pre>
-     * Returned when the server and client disagree on the store birthday.
+     * DEPRECATED_ACCESS_DENIED = 1;
+     * Returned when the server and client disagree on the store birthday. This
+     * should be interpreted as all local sync metadata requiring cleanup,
+     * obviously including the locally-cached store birthday.
      * </pre>
      *
      * <code>NOT_MY_BIRTHDAY = 2;</code>
@@ -650,19 +635,10 @@ public  final class SyncEnums extends
      */
     THROTTLED(3),
     /**
-     * <code>DEPRECATED_AUTH_EXPIRED = 4;</code>
-     */
-    DEPRECATED_AUTH_EXPIRED(4),
-    /**
-     * <code>DEPRECATED_USER_NOT_ACTIVATED = 5;</code>
-     */
-    DEPRECATED_USER_NOT_ACTIVATED(5),
-    /**
-     * <code>DEPRECATED_AUTH_INVALID = 6;</code>
-     */
-    DEPRECATED_AUTH_INVALID(6),
-    /**
      * <pre>
+     * DEPRECATED_AUTH_EXPIRED = 4;
+     * DEPRECATED_USER_NOT_ACTIVATED = 5;
+     * DEPRECATED_AUTH_INVALID = 6;
      * A clear of the user data is pending (e.g. initiated by privacy request).
      * The client should come back later.
      * </pre>
@@ -700,13 +676,7 @@ public  final class SyncEnums extends
     /**
      * <pre>
      * Deprecated in M50.
-     * </pre>
-     *
-     * <code>DEPRECATED_USER_ROLLBACK = 11;</code>
-     */
-    DEPRECATED_USER_ROLLBACK(11),
-    /**
-     * <pre>
+     * DEPRECATED_USER_ROLLBACK = 11;
      * Returned when the client wants to update several data types, but some of
      * them failed (e.g. throttled).
      * </pre>
@@ -751,12 +721,11 @@ public  final class SyncEnums extends
      */
     public static final int SUCCESS_VALUE = 0;
     /**
-     * <code>DEPRECATED_ACCESS_DENIED = 1;</code>
-     */
-    public static final int DEPRECATED_ACCESS_DENIED_VALUE = 1;
-    /**
      * <pre>
-     * Returned when the server and client disagree on the store birthday.
+     * DEPRECATED_ACCESS_DENIED = 1;
+     * Returned when the server and client disagree on the store birthday. This
+     * should be interpreted as all local sync metadata requiring cleanup,
+     * obviously including the locally-cached store birthday.
      * </pre>
      *
      * <code>NOT_MY_BIRTHDAY = 2;</code>
@@ -771,19 +740,10 @@ public  final class SyncEnums extends
      */
     public static final int THROTTLED_VALUE = 3;
     /**
-     * <code>DEPRECATED_AUTH_EXPIRED = 4;</code>
-     */
-    public static final int DEPRECATED_AUTH_EXPIRED_VALUE = 4;
-    /**
-     * <code>DEPRECATED_USER_NOT_ACTIVATED = 5;</code>
-     */
-    public static final int DEPRECATED_USER_NOT_ACTIVATED_VALUE = 5;
-    /**
-     * <code>DEPRECATED_AUTH_INVALID = 6;</code>
-     */
-    public static final int DEPRECATED_AUTH_INVALID_VALUE = 6;
-    /**
      * <pre>
+     * DEPRECATED_AUTH_EXPIRED = 4;
+     * DEPRECATED_USER_NOT_ACTIVATED = 5;
+     * DEPRECATED_AUTH_INVALID = 6;
      * A clear of the user data is pending (e.g. initiated by privacy request).
      * The client should come back later.
      * </pre>
@@ -821,13 +781,7 @@ public  final class SyncEnums extends
     /**
      * <pre>
      * Deprecated in M50.
-     * </pre>
-     *
-     * <code>DEPRECATED_USER_ROLLBACK = 11;</code>
-     */
-    public static final int DEPRECATED_USER_ROLLBACK_VALUE = 11;
-    /**
-     * <pre>
+     * DEPRECATED_USER_ROLLBACK = 11;
      * Returned when the client wants to update several data types, but some of
      * them failed (e.g. throttled).
      * </pre>
@@ -885,17 +839,12 @@ public  final class SyncEnums extends
     public static ErrorType forNumber(int value) {
       switch (value) {
         case 0: return SUCCESS;
-        case 1: return DEPRECATED_ACCESS_DENIED;
         case 2: return NOT_MY_BIRTHDAY;
         case 3: return THROTTLED;
-        case 4: return DEPRECATED_AUTH_EXPIRED;
-        case 5: return DEPRECATED_USER_NOT_ACTIVATED;
-        case 6: return DEPRECATED_AUTH_INVALID;
         case 7: return CLEAR_PENDING;
         case 8: return TRANSIENT_ERROR;
         case 9: return MIGRATION_DONE;
         case 10: return DISABLED_BY_ADMIN;
-        case 11: return DEPRECATED_USER_ROLLBACK;
         case 12: return PARTIAL_FAILURE;
         case 13: return CLIENT_DATA_OBSOLETE;
         case 14: return ENCRYPTION_OBSOLETE;
@@ -954,24 +903,11 @@ public  final class SyncEnums extends
      */
     UPGRADE_CLIENT(0),
     /**
-     * <code>DEPRECATED_CLEAR_USER_DATA_AND_RESYNC = 1;</code>
-     */
-    DEPRECATED_CLEAR_USER_DATA_AND_RESYNC(1),
-    /**
-     * <code>DEPRECATED_ENABLE_SYNC_ON_ACCOUNT = 2;</code>
-     */
-    DEPRECATED_ENABLE_SYNC_ON_ACCOUNT(2),
-    /**
-     * <code>DEPRECATED_STOP_AND_RESTART_SYNC = 3;</code>
-     */
-    DEPRECATED_STOP_AND_RESTART_SYNC(3),
-    /**
-     * <code>DEPRECATED_DISABLE_SYNC_ON_CLIENT = 4;</code>
-     */
-    DEPRECATED_DISABLE_SYNC_ON_CLIENT(4),
-    /**
      * <pre>
-     * This is the default.
+     * DEPRECATED_CLEAR_USER_DATA_AND_RESYNC = 1;
+     * DEPRECATED_ENABLE_SYNC_ON_ACCOUNT = 2;
+     * DEPRECATED_STOP_AND_RESTART_SYNC = 3;
+     * DEPRECATED_DISABLE_SYNC_ON_CLIENT = 4;
      * </pre>
      *
      * <code>UNKNOWN_ACTION = 5;</code>
@@ -988,24 +924,11 @@ public  final class SyncEnums extends
      */
     public static final int UPGRADE_CLIENT_VALUE = 0;
     /**
-     * <code>DEPRECATED_CLEAR_USER_DATA_AND_RESYNC = 1;</code>
-     */
-    public static final int DEPRECATED_CLEAR_USER_DATA_AND_RESYNC_VALUE = 1;
-    /**
-     * <code>DEPRECATED_ENABLE_SYNC_ON_ACCOUNT = 2;</code>
-     */
-    public static final int DEPRECATED_ENABLE_SYNC_ON_ACCOUNT_VALUE = 2;
-    /**
-     * <code>DEPRECATED_STOP_AND_RESTART_SYNC = 3;</code>
-     */
-    public static final int DEPRECATED_STOP_AND_RESTART_SYNC_VALUE = 3;
-    /**
-     * <code>DEPRECATED_DISABLE_SYNC_ON_CLIENT = 4;</code>
-     */
-    public static final int DEPRECATED_DISABLE_SYNC_ON_CLIENT_VALUE = 4;
-    /**
      * <pre>
-     * This is the default.
+     * DEPRECATED_CLEAR_USER_DATA_AND_RESYNC = 1;
+     * DEPRECATED_ENABLE_SYNC_ON_ACCOUNT = 2;
+     * DEPRECATED_STOP_AND_RESTART_SYNC = 3;
+     * DEPRECATED_DISABLE_SYNC_ON_CLIENT = 4;
      * </pre>
      *
      * <code>UNKNOWN_ACTION = 5;</code>
@@ -1031,10 +954,6 @@ public  final class SyncEnums extends
     public static Action forNumber(int value) {
       switch (value) {
         case 0: return UPGRADE_CLIENT;
-        case 1: return DEPRECATED_CLEAR_USER_DATA_AND_RESYNC;
-        case 2: return DEPRECATED_ENABLE_SYNC_ON_ACCOUNT;
-        case 3: return DEPRECATED_STOP_AND_RESTART_SYNC;
-        case 4: return DEPRECATED_DISABLE_SYNC_ON_CLIENT;
         case 5: return UNKNOWN_ACTION;
         default: return null;
       }
@@ -1216,6 +1135,127 @@ public  final class SyncEnums extends
     }
 
     // @@protoc_insertion_point(enum_scope:sync_pb.SyncEnums.DeviceType)
+  }
+
+  /**
+   * <pre>
+   * Types of browsers; used for history-related data types.
+   * </pre>
+   *
+   * Protobuf enum {@code sync_pb.SyncEnums.BrowserType}
+   */
+  public enum BrowserType
+      implements com.google.protobuf.Internal.EnumLite {
+    /**
+     * <pre>
+     * A normal tabbed window.
+     * </pre>
+     *
+     * <code>TYPE_TABBED = 1;</code>
+     */
+    TYPE_TABBED(1),
+    /**
+     * <pre>
+     * A popup window.
+     * </pre>
+     *
+     * <code>TYPE_POPUP = 2;</code>
+     */
+    TYPE_POPUP(2),
+    /**
+     * <pre>
+     * A custom tab within an app.
+     * </pre>
+     *
+     * <code>TYPE_CUSTOM_TAB = 3;</code>
+     */
+    TYPE_CUSTOM_TAB(3),
+    ;
+
+    /**
+     * <pre>
+     * A normal tabbed window.
+     * </pre>
+     *
+     * <code>TYPE_TABBED = 1;</code>
+     */
+    public static final int TYPE_TABBED_VALUE = 1;
+    /**
+     * <pre>
+     * A popup window.
+     * </pre>
+     *
+     * <code>TYPE_POPUP = 2;</code>
+     */
+    public static final int TYPE_POPUP_VALUE = 2;
+    /**
+     * <pre>
+     * A custom tab within an app.
+     * </pre>
+     *
+     * <code>TYPE_CUSTOM_TAB = 3;</code>
+     */
+    public static final int TYPE_CUSTOM_TAB_VALUE = 3;
+
+
+    @java.lang.Override
+    public final int getNumber() {
+      return value;
+    }
+
+    /**
+     * @param value The number of the enum to look for.
+     * @return The enum associated with the given number.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static BrowserType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static BrowserType forNumber(int value) {
+      switch (value) {
+        case 1: return TYPE_TABBED;
+        case 2: return TYPE_POPUP;
+        case 3: return TYPE_CUSTOM_TAB;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<BrowserType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        BrowserType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<BrowserType>() {
+            @java.lang.Override
+            public BrowserType findValueByNumber(int number) {
+              return BrowserType.forNumber(number);
+            }
+          };
+
+    public static com.google.protobuf.Internal.EnumVerifier 
+        internalGetVerifier() {
+      return BrowserTypeVerifier.INSTANCE;
+    }
+
+    private static final class BrowserTypeVerifier implements 
+         com.google.protobuf.Internal.EnumVerifier { 
+            static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new BrowserTypeVerifier();
+            @java.lang.Override
+            public boolean isInRange(int number) {
+              return BrowserType.forNumber(number) != null;
+            }
+          };
+
+    private final int value;
+
+    private BrowserType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:sync_pb.SyncEnums.BrowserType)
   }
 
   /**

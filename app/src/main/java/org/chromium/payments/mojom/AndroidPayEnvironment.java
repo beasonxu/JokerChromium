@@ -13,8 +13,15 @@
 
 package org.chromium.payments.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class AndroidPayEnvironment {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        AndroidPayEnvironment.PRODUCTION,
+        AndroidPayEnvironment.TEST})
+    public @interface EnumType {}
 
     public static final int PRODUCTION = 0;
     public static final int TEST = 1;

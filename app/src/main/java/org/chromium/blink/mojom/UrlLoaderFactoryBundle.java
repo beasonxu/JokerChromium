@@ -13,16 +13,17 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class UrlLoaderFactoryBundle extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 48;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
+    private static final int STRUCT_SIZE = 40;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public org.chromium.network.mojom.UrlLoaderFactory defaultFactory;
     public java.util.Map<String, org.chromium.network.mojom.UrlLoaderFactory> schemeSpecificFactories;
     public java.util.Map<org.chromium.url.internal.mojom.Origin, org.chromium.network.mojom.UrlLoaderFactory> isolatedWorldFactories;
-    public org.chromium.network.mojom.UrlLoaderFactory appcacheFactory;
     public boolean bypassRedirectChecks;
 
     private UrlLoaderFactoryBundle(int version) {
@@ -124,11 +125,7 @@ public final class UrlLoaderFactoryBundle extends org.chromium.mojo.bindings.Str
                 }
                 {
                     
-                result.appcacheFactory = decoder0.readServiceInterface(32, true, org.chromium.network.mojom.UrlLoaderFactory.MANAGER);
-                }
-                {
-                    
-                result.bypassRedirectChecks = decoder0.readBoolean(40, 0);
+                result.bypassRedirectChecks = decoder0.readBoolean(32, 0);
                 }
 
         } finally {
@@ -194,8 +191,6 @@ public final class UrlLoaderFactoryBundle extends org.chromium.mojo.bindings.Str
             encoder1.encode(values0, org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH, org.chromium.network.mojom.UrlLoaderFactory.MANAGER);
         }
         
-        encoder0.encode(this.appcacheFactory, 32, true, org.chromium.network.mojom.UrlLoaderFactory.MANAGER);
-        
-        encoder0.encode(this.bypassRedirectChecks, 40, 0);
+        encoder0.encode(this.bypassRedirectChecks, 32, 0);
     }
 }

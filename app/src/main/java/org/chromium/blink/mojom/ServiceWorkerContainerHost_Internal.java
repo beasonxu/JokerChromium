@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class ServiceWorkerContainerHost_Internal {
 
@@ -77,7 +79,7 @@ class ServiceWorkerContainerHost_Internal {
         @Override
         public void register(
 org.chromium.url.mojom.Url scriptUrl, ServiceWorkerRegistrationOptions options, FetchClientSettingsObject outsideFetchClientSettingsObject, 
-RegisterResponse callback) {
+Register_Response callback) {
 
             ServiceWorkerContainerHostRegisterParams _message = new ServiceWorkerContainerHostRegisterParams();
 
@@ -103,7 +105,7 @@ RegisterResponse callback) {
         @Override
         public void getRegistration(
 org.chromium.url.mojom.Url clientUrl, 
-GetRegistrationResponse callback) {
+GetRegistration_Response callback) {
 
             ServiceWorkerContainerHostGetRegistrationParams _message = new ServiceWorkerContainerHostGetRegistrationParams();
 
@@ -125,7 +127,7 @@ GetRegistrationResponse callback) {
         @Override
         public void getRegistrations(
 
-GetRegistrationsResponse callback) {
+GetRegistrations_Response callback) {
 
             ServiceWorkerContainerHostGetRegistrationsParams _message = new ServiceWorkerContainerHostGetRegistrationsParams();
 
@@ -145,7 +147,7 @@ GetRegistrationsResponse callback) {
         @Override
         public void getRegistrationForReady(
 
-GetRegistrationForReadyResponse callback) {
+GetRegistrationForReady_Response callback) {
 
             ServiceWorkerContainerHostGetRegistrationForReadyParams _message = new ServiceWorkerContainerHostGetRegistrationForReadyParams();
 
@@ -216,7 +218,7 @@ org.chromium.mojo.bindings.InterfaceRequest<ServiceWorkerContainerHost> containe
         @Override
         public void ensureFileAccess(
 org.chromium.mojo_base.mojom.FilePath[] files, 
-EnsureFileAccessResponse callback) {
+EnsureFileAccess_Response callback) {
 
             ServiceWorkerContainerHostEnsureFileAccessParams _message = new ServiceWorkerContainerHostEnsureFileAccessParams();
 
@@ -619,9 +621,9 @@ EnsureFileAccessResponse callback) {
 
     static class ServiceWorkerContainerHostRegisterResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorkerContainerHost.RegisterResponse mCallback;
+        private final ServiceWorkerContainerHost.Register_Response mCallback;
 
-        ServiceWorkerContainerHostRegisterResponseParamsForwardToCallback(ServiceWorkerContainerHost.RegisterResponse callback) {
+        ServiceWorkerContainerHostRegisterResponseParamsForwardToCallback(ServiceWorkerContainerHost.Register_Response callback) {
             this.mCallback = callback;
         }
 
@@ -646,7 +648,7 @@ EnsureFileAccessResponse callback) {
         }
     }
 
-    static class ServiceWorkerContainerHostRegisterResponseParamsProxyToResponder implements ServiceWorkerContainerHost.RegisterResponse {
+    static class ServiceWorkerContainerHostRegisterResponseParamsProxyToResponder implements ServiceWorkerContainerHost.Register_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -828,9 +830,9 @@ EnsureFileAccessResponse callback) {
 
     static class ServiceWorkerContainerHostGetRegistrationResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorkerContainerHost.GetRegistrationResponse mCallback;
+        private final ServiceWorkerContainerHost.GetRegistration_Response mCallback;
 
-        ServiceWorkerContainerHostGetRegistrationResponseParamsForwardToCallback(ServiceWorkerContainerHost.GetRegistrationResponse callback) {
+        ServiceWorkerContainerHostGetRegistrationResponseParamsForwardToCallback(ServiceWorkerContainerHost.GetRegistration_Response callback) {
             this.mCallback = callback;
         }
 
@@ -855,7 +857,7 @@ EnsureFileAccessResponse callback) {
         }
     }
 
-    static class ServiceWorkerContainerHostGetRegistrationResponseParamsProxyToResponder implements ServiceWorkerContainerHost.GetRegistrationResponse {
+    static class ServiceWorkerContainerHostGetRegistrationResponseParamsProxyToResponder implements ServiceWorkerContainerHost.GetRegistration_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1047,9 +1049,9 @@ EnsureFileAccessResponse callback) {
 
     static class ServiceWorkerContainerHostGetRegistrationsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorkerContainerHost.GetRegistrationsResponse mCallback;
+        private final ServiceWorkerContainerHost.GetRegistrations_Response mCallback;
 
-        ServiceWorkerContainerHostGetRegistrationsResponseParamsForwardToCallback(ServiceWorkerContainerHost.GetRegistrationsResponse callback) {
+        ServiceWorkerContainerHostGetRegistrationsResponseParamsForwardToCallback(ServiceWorkerContainerHost.GetRegistrations_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1074,7 +1076,7 @@ EnsureFileAccessResponse callback) {
         }
     }
 
-    static class ServiceWorkerContainerHostGetRegistrationsResponseParamsProxyToResponder implements ServiceWorkerContainerHost.GetRegistrationsResponse {
+    static class ServiceWorkerContainerHostGetRegistrationsResponseParamsProxyToResponder implements ServiceWorkerContainerHost.GetRegistrations_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1232,9 +1234,9 @@ EnsureFileAccessResponse callback) {
 
     static class ServiceWorkerContainerHostGetRegistrationForReadyResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorkerContainerHost.GetRegistrationForReadyResponse mCallback;
+        private final ServiceWorkerContainerHost.GetRegistrationForReady_Response mCallback;
 
-        ServiceWorkerContainerHostGetRegistrationForReadyResponseParamsForwardToCallback(ServiceWorkerContainerHost.GetRegistrationForReadyResponse callback) {
+        ServiceWorkerContainerHostGetRegistrationForReadyResponseParamsForwardToCallback(ServiceWorkerContainerHost.GetRegistrationForReady_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1259,7 +1261,7 @@ EnsureFileAccessResponse callback) {
         }
     }
 
-    static class ServiceWorkerContainerHostGetRegistrationForReadyResponseParamsProxyToResponder implements ServiceWorkerContainerHost.GetRegistrationForReadyResponse {
+    static class ServiceWorkerContainerHostGetRegistrationForReadyResponseParamsProxyToResponder implements ServiceWorkerContainerHost.GetRegistrationForReady_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1620,9 +1622,9 @@ EnsureFileAccessResponse callback) {
 
     static class ServiceWorkerContainerHostEnsureFileAccessResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorkerContainerHost.EnsureFileAccessResponse mCallback;
+        private final ServiceWorkerContainerHost.EnsureFileAccess_Response mCallback;
 
-        ServiceWorkerContainerHostEnsureFileAccessResponseParamsForwardToCallback(ServiceWorkerContainerHost.EnsureFileAccessResponse callback) {
+        ServiceWorkerContainerHostEnsureFileAccessResponseParamsForwardToCallback(ServiceWorkerContainerHost.EnsureFileAccess_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1645,7 +1647,7 @@ EnsureFileAccessResponse callback) {
         }
     }
 
-    static class ServiceWorkerContainerHostEnsureFileAccessResponseParamsProxyToResponder implements ServiceWorkerContainerHost.EnsureFileAccessResponse {
+    static class ServiceWorkerContainerHostEnsureFileAccessResponseParamsProxyToResponder implements ServiceWorkerContainerHost.EnsureFileAccess_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

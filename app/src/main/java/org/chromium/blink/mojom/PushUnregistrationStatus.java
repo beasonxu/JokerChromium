@@ -13,8 +13,21 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PushUnregistrationStatus {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PushUnregistrationStatus.SUCCESS_UNREGISTERED,
+        PushUnregistrationStatus.SUCCESS_WAS_NOT_REGISTERED,
+        PushUnregistrationStatus.PENDING_NETWORK_ERROR,
+        PushUnregistrationStatus.NO_SERVICE_WORKER,
+        PushUnregistrationStatus.SERVICE_NOT_AVAILABLE,
+        PushUnregistrationStatus.PENDING_SERVICE_ERROR,
+        PushUnregistrationStatus.STORAGE_ERROR,
+        PushUnregistrationStatus.NETWORK_ERROR})
+    public @interface EnumType {}
 
     public static final int SUCCESS_UNREGISTERED = 0;
     public static final int SUCCESS_WAS_NOT_REGISTERED = 1;

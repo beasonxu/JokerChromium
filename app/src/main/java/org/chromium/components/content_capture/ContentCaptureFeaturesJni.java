@@ -1,15 +1,13 @@
 package org.chromium.components.content_capture;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ContentCaptureFeaturesJni implements ContentCaptureFeatures.Natives {
+class ContentCaptureFeaturesJni implements ContentCaptureFeatures.Natives {
   private static ContentCaptureFeatures.Natives testInstance;
 
   public static final JniStaticTestMocker<ContentCaptureFeatures.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.content_capture.ContentCaptureFeatures.Natives>() {

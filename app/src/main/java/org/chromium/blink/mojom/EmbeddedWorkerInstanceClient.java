@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface EmbeddedWorkerInstanceClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface EmbeddedWorkerInstanceClient extends org.chromium.mojo.bindings
 
     Manager<EmbeddedWorkerInstanceClient, EmbeddedWorkerInstanceClient.Proxy> MANAGER = EmbeddedWorkerInstanceClient_Internal.MANAGER;
 
-
     void startWorker(
 EmbeddedWorkerStartParams params);
-
 
 
     void stopWorker(

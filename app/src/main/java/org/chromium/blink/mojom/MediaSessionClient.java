@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface MediaSessionClient extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface MediaSessionClient extends org.chromium.mojo.bindings.Interface
     }
 
     Manager<MediaSessionClient, MediaSessionClient.Proxy> MANAGER = MediaSessionClient_Internal.MANAGER;
-
 
     void didReceiveAction(
 int action, MediaSessionActionDetails details);

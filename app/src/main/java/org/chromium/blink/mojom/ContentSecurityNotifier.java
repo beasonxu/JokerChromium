@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ContentSecurityNotifier extends org.chromium.mojo.bindings.Interface {
 
@@ -23,15 +25,12 @@ public interface ContentSecurityNotifier extends org.chromium.mojo.bindings.Inte
 
     Manager<ContentSecurityNotifier, ContentSecurityNotifier.Proxy> MANAGER = ContentSecurityNotifier_Internal.MANAGER;
 
-
     void notifyContentWithCertificateErrorsRan(
 );
 
 
-
     void notifyContentWithCertificateErrorsDisplayed(
 );
-
 
 
     void notifyInsecureContentRan(

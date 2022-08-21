@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class FrameInterfaceFactory_Internal {
 
@@ -101,7 +103,7 @@ org.chromium.mojo.bindings.InterfaceRequest<CdmStorage> cdmStorage) {
         @Override
         public void getCdmOrigin(
 
-GetCdmOriginResponse callback) {
+GetCdmOrigin_Response callback) {
 
             FrameInterfaceFactoryGetCdmOriginParams _message = new FrameInterfaceFactoryGetCdmOriginParams();
 
@@ -510,9 +512,9 @@ org.chromium.mojo_base.mojom.GenericPendingReceiver receiver) {
 
     static class FrameInterfaceFactoryGetCdmOriginResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FrameInterfaceFactory.GetCdmOriginResponse mCallback;
+        private final FrameInterfaceFactory.GetCdmOrigin_Response mCallback;
 
-        FrameInterfaceFactoryGetCdmOriginResponseParamsForwardToCallback(FrameInterfaceFactory.GetCdmOriginResponse callback) {
+        FrameInterfaceFactoryGetCdmOriginResponseParamsForwardToCallback(FrameInterfaceFactory.GetCdmOrigin_Response callback) {
             this.mCallback = callback;
         }
 
@@ -537,7 +539,7 @@ org.chromium.mojo_base.mojom.GenericPendingReceiver receiver) {
         }
     }
 
-    static class FrameInterfaceFactoryGetCdmOriginResponseParamsProxyToResponder implements FrameInterfaceFactory.GetCdmOriginResponse {
+    static class FrameInterfaceFactoryGetCdmOriginResponseParamsProxyToResponder implements FrameInterfaceFactory.GetCdmOrigin_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

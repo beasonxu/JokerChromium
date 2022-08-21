@@ -39,8 +39,8 @@ class ManualFillingProperties {
      * Properties that a given state enforces. Must be between 0x0 and 0x100.
      * @see KeyboardExtensionState
      */
-//    @IntDef({BAR, VISIBLE_SHEET, HIDDEN_SHEET})
-//    @Retention(RetentionPolicy.SOURCE)
+    @IntDef({BAR, VISIBLE_SHEET, HIDDEN_SHEET})
+    @Retention(RetentionPolicy.SOURCE)
     public @interface StateProperty {
         int BAR = 0x1; // Any state either shows it or hides it - there is no neutral stance.
         int VISIBLE_SHEET = 0x2; // A state with this property shows the sheet container.
@@ -57,9 +57,9 @@ class ManualFillingProperties {
      * The state FLOATING_BAR must close the sheet but show the bar. To satisfy the FLOATING
      * property, the state will ensure that the keyboard can not affect it.
      */
-//    @IntDef({HIDDEN, EXTENDING_KEYBOARD, WAITING_TO_REPLACE, REPLACING_KEYBOARD, FLOATING_BAR,
-//            FLOATING_SHEET})
-//    @Retention(RetentionPolicy.SOURCE)
+    @IntDef({HIDDEN, EXTENDING_KEYBOARD, WAITING_TO_REPLACE, REPLACING_KEYBOARD, FLOATING_BAR,
+            FLOATING_SHEET})
+    @Retention(RetentionPolicy.SOURCE)
     public @interface KeyboardExtensionState {
         int HIDDEN = HIDDEN_SHEET; // == 4
         int EXTENDING_KEYBOARD = BAR | HIDDEN_SHEET; // == 5

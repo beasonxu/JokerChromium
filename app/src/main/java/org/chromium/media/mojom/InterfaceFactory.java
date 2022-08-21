@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface InterfaceFactory extends org.chromium.mojo.bindings.Interface {
 
@@ -23,37 +25,35 @@ public interface InterfaceFactory extends org.chromium.mojo.bindings.Interface {
 
     Manager<InterfaceFactory, InterfaceFactory.Proxy> MANAGER = InterfaceFactory_Internal.MANAGER;
 
-
     void createAudioDecoder(
 org.chromium.mojo.bindings.InterfaceRequest<AudioDecoder> audioDecoder);
 
 
-
     void createVideoDecoder(
-org.chromium.mojo.bindings.InterfaceRequest<VideoDecoder> videoDecoder);
+org.chromium.mojo.bindings.InterfaceRequest<VideoDecoder> videoDecoder, org.chromium.media.stable.mojom.StableVideoDecoder dstVideoDecoder);
 
+
+    void createAudioEncoder(
+org.chromium.mojo.bindings.InterfaceRequest<AudioEncoder> audioEncoder);
 
 
     void createDefaultRenderer(
 String audioDeviceId, org.chromium.mojo.bindings.InterfaceRequest<Renderer> renderer);
 
 
-
     void createMediaPlayerRenderer(
 MediaPlayerRendererClientExtension clientExtension, org.chromium.mojo.bindings.InterfaceRequest<Renderer> renderer, org.chromium.mojo.bindings.InterfaceRequest<MediaPlayerRendererExtension> rendererExtension);
-
 
 
     void createFlingingRenderer(
 String presentationId, FlingingRendererClientExtension clientExtension, org.chromium.mojo.bindings.InterfaceRequest<Renderer> renderer);
 
 
-
     void createCdm(
-String keySystem, CdmConfig cdmConfig, 
-CreateCdmResponse callback);
+CdmConfig cdmConfig, 
+CreateCdm_Response callback);
 
-    interface CreateCdmResponse extends org.chromium.mojo.bindings.Callbacks.Callback4<ContentDecryptionModule, org.chromium.mojo_base.mojom.UnguessableToken, Decryptor, String> { }
+    interface CreateCdm_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<ContentDecryptionModule, CdmContext, String> { }
 
 
 }

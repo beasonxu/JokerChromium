@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class FederatedAuthRequest_Internal {
 
@@ -47,7 +49,11 @@ class FederatedAuthRequest_Internal {
     };
 
 
-    private static final int REQUEST_ID_TOKEN_ORDINAL = 0;
+    private static final int REQUEST_TOKEN_ORDINAL = 0;
+
+    private static final int CANCEL_TOKEN_REQUEST_ORDINAL = 1;
+
+    private static final int LOGOUT_RPS_ORDINAL = 2;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements FederatedAuthRequest.Proxy {
@@ -59,25 +65,62 @@ class FederatedAuthRequest_Internal {
 
 
         @Override
-        public void requestIdToken(
-org.chromium.url.mojom.Url provider, String idRequest, 
-RequestIdTokenResponse callback) {
+        public void requestToken(
+IdentityProvider identityProviderPtr, boolean preferAutoSignIn, 
+RequestToken_Response callback) {
 
-            FederatedAuthRequestRequestIdTokenParams _message = new FederatedAuthRequestRequestIdTokenParams();
+            FederatedAuthRequestRequestTokenParams _message = new FederatedAuthRequestRequestTokenParams();
 
-            _message.provider = provider;
+            _message.identityProviderPtr = identityProviderPtr;
 
-            _message.idRequest = idRequest;
+            _message.preferAutoSignIn = preferAutoSignIn;
 
 
             getProxyHandler().getMessageReceiver().acceptWithResponder(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(
-                                    REQUEST_ID_TOKEN_ORDINAL,
+                                    REQUEST_TOKEN_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
                                     0)),
-                    new FederatedAuthRequestRequestIdTokenResponseParamsForwardToCallback(callback));
+                    new FederatedAuthRequestRequestTokenResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void cancelTokenRequest(
+) {
+
+            FederatedAuthRequestCancelTokenRequestParams _message = new FederatedAuthRequestCancelTokenRequestParams();
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(CANCEL_TOKEN_REQUEST_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void logoutRps(
+LogoutRpsRequest[] rpLogoutRequests, 
+LogoutRps_Response callback) {
+
+            FederatedAuthRequestLogoutRpsParams _message = new FederatedAuthRequestLogoutRpsParams();
+
+            _message.rpLogoutRequests = rpLogoutRequests;
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    LOGOUT_RPS_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new FederatedAuthRequestLogoutRpsResponseParamsForwardToCallback(callback));
 
         }
 
@@ -108,6 +151,20 @@ RequestIdTokenResponse callback) {
                     case org.chromium.mojo.bindings.interfacecontrol.InterfaceControlMessagesConstants.RUN_OR_CLOSE_PIPE_MESSAGE_ID:
                         return org.chromium.mojo.bindings.InterfaceControlMessagesHelper.handleRunOrClosePipe(
                                 FederatedAuthRequest_Internal.MANAGER, messageWithHeader);
+
+
+
+
+
+
+
+                    case CANCEL_TOKEN_REQUEST_ORDINAL: {
+
+                        FederatedAuthRequestCancelTokenRequestParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().cancelTokenRequest();
+                        return true;
+                    }
 
 
 
@@ -146,12 +203,29 @@ RequestIdTokenResponse callback) {
 
 
 
-                    case REQUEST_ID_TOKEN_ORDINAL: {
+                    case REQUEST_TOKEN_ORDINAL: {
 
-                        FederatedAuthRequestRequestIdTokenParams data =
-                                FederatedAuthRequestRequestIdTokenParams.deserialize(messageWithHeader.getPayload());
+                        FederatedAuthRequestRequestTokenParams data =
+                                FederatedAuthRequestRequestTokenParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().requestIdToken(data.provider, data.idRequest, new FederatedAuthRequestRequestIdTokenResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().requestToken(data.identityProviderPtr, data.preferAutoSignIn, new FederatedAuthRequestRequestTokenResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
+
+
+                    case LOGOUT_RPS_ORDINAL: {
+
+                        FederatedAuthRequestLogoutRpsParams data =
+                                FederatedAuthRequestLogoutRpsParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().logoutRps(data.rpLogoutRequests, new FederatedAuthRequestLogoutRpsResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -168,23 +242,23 @@ RequestIdTokenResponse callback) {
 
 
     
-    static final class FederatedAuthRequestRequestIdTokenParams extends org.chromium.mojo.bindings.Struct {
+    static final class FederatedAuthRequestRequestTokenParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 24;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public org.chromium.url.mojom.Url provider;
-        public String idRequest;
+        public IdentityProvider identityProviderPtr;
+        public boolean preferAutoSignIn;
 
-        private FederatedAuthRequestRequestIdTokenParams(int version) {
+        private FederatedAuthRequestRequestTokenParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public FederatedAuthRequestRequestIdTokenParams() {
+        public FederatedAuthRequestRequestTokenParams() {
             this(0);
         }
 
-        public static FederatedAuthRequestRequestIdTokenParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static FederatedAuthRequestRequestTokenParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -193,30 +267,30 @@ RequestIdTokenResponse callback) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static FederatedAuthRequestRequestIdTokenParams deserialize(java.nio.ByteBuffer data) {
+        public static FederatedAuthRequestRequestTokenParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static FederatedAuthRequestRequestIdTokenParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static FederatedAuthRequestRequestTokenParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            FederatedAuthRequestRequestIdTokenParams result;
+            FederatedAuthRequestRequestTokenParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new FederatedAuthRequestRequestIdTokenParams(elementsOrVersion);
+                result = new FederatedAuthRequestRequestTokenParams(elementsOrVersion);
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    result.provider = org.chromium.url.mojom.Url.decode(decoder1);
+                    result.identityProviderPtr = IdentityProvider.decode(decoder1);
                     }
                     {
                         
-                    result.idRequest = decoder0.readString(16, false);
+                    result.preferAutoSignIn = decoder0.readBoolean(16, 0);
                     }
 
             } finally {
@@ -230,32 +304,32 @@ RequestIdTokenResponse callback) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.provider, 8, false);
+            encoder0.encode(this.identityProviderPtr, 8, false);
             
-            encoder0.encode(this.idRequest, 16, false);
+            encoder0.encode(this.preferAutoSignIn, 16, 0);
         }
     }
 
 
 
     
-    static final class FederatedAuthRequestRequestIdTokenResponseParams extends org.chromium.mojo.bindings.Struct {
+    static final class FederatedAuthRequestRequestTokenResponseParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 24;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public int status;
-        public String idToken;
+        public String token;
 
-        private FederatedAuthRequestRequestIdTokenResponseParams(int version) {
+        private FederatedAuthRequestRequestTokenResponseParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public FederatedAuthRequestRequestIdTokenResponseParams() {
+        public FederatedAuthRequestRequestTokenResponseParams() {
             this(0);
         }
 
-        public static FederatedAuthRequestRequestIdTokenResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static FederatedAuthRequestRequestTokenResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -264,31 +338,31 @@ RequestIdTokenResponse callback) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static FederatedAuthRequestRequestIdTokenResponseParams deserialize(java.nio.ByteBuffer data) {
+        public static FederatedAuthRequestRequestTokenResponseParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static FederatedAuthRequestRequestIdTokenResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static FederatedAuthRequestRequestTokenResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            FederatedAuthRequestRequestIdTokenResponseParams result;
+            FederatedAuthRequestRequestTokenResponseParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new FederatedAuthRequestRequestIdTokenResponseParams(elementsOrVersion);
+                result = new FederatedAuthRequestRequestTokenResponseParams(elementsOrVersion);
                     {
                         
                     result.status = decoder0.readInt(8);
-                        RequestIdTokenStatus.validate(result.status);
-                        result.status = RequestIdTokenStatus.toKnownValue(result.status);
+                        RequestTokenStatus.validate(result.status);
+                        result.status = RequestTokenStatus.toKnownValue(result.status);
                     }
                     {
                         
-                    result.idToken = decoder0.readString(16, true);
+                    result.token = decoder0.readString(16, true);
                     }
 
             } finally {
@@ -304,15 +378,15 @@ RequestIdTokenResponse callback) {
             
             encoder0.encode(this.status, 8);
             
-            encoder0.encode(this.idToken, 16, true);
+            encoder0.encode(this.token, 16, true);
         }
     }
 
-    static class FederatedAuthRequestRequestIdTokenResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+    static class FederatedAuthRequestRequestTokenResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FederatedAuthRequest.RequestIdTokenResponse mCallback;
+        private final FederatedAuthRequest.RequestToken_Response mCallback;
 
-        FederatedAuthRequestRequestIdTokenResponseParamsForwardToCallback(FederatedAuthRequest.RequestIdTokenResponse callback) {
+        FederatedAuthRequestRequestTokenResponseParamsForwardToCallback(FederatedAuthRequest.RequestToken_Response callback) {
             this.mCallback = callback;
         }
 
@@ -322,14 +396,14 @@ RequestIdTokenResponse callback) {
                 org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
                         message.asServiceMessage();
                 org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
-                if (!header.validateHeader(REQUEST_ID_TOKEN_ORDINAL,
+                if (!header.validateHeader(REQUEST_TOKEN_ORDINAL,
                                            org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
                     return false;
                 }
 
-                FederatedAuthRequestRequestIdTokenResponseParams response = FederatedAuthRequestRequestIdTokenResponseParams.deserialize(messageWithHeader.getPayload());
+                FederatedAuthRequestRequestTokenResponseParams response = FederatedAuthRequestRequestTokenResponseParams.deserialize(messageWithHeader.getPayload());
 
-                mCallback.call(response.status, response.idToken);
+                mCallback.call(response.status, response.token);
                 return true;
             } catch (org.chromium.mojo.bindings.DeserializationException e) {
                 return false;
@@ -337,13 +411,13 @@ RequestIdTokenResponse callback) {
         }
     }
 
-    static class FederatedAuthRequestRequestIdTokenResponseParamsProxyToResponder implements FederatedAuthRequest.RequestIdTokenResponse {
+    static class FederatedAuthRequestRequestTokenResponseParamsProxyToResponder implements FederatedAuthRequest.RequestToken_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
         private final long mRequestId;
 
-        FederatedAuthRequestRequestIdTokenResponseParamsProxyToResponder(
+        FederatedAuthRequestRequestTokenResponseParamsProxyToResponder(
                 org.chromium.mojo.system.Core core,
                 org.chromium.mojo.bindings.MessageReceiver messageReceiver,
                 long requestId) {
@@ -353,18 +427,280 @@ RequestIdTokenResponse callback) {
         }
 
         @Override
-        public void call(Integer status, String idToken) {
-            FederatedAuthRequestRequestIdTokenResponseParams _response = new FederatedAuthRequestRequestIdTokenResponseParams();
+        public void call(Integer status, String token) {
+            FederatedAuthRequestRequestTokenResponseParams _response = new FederatedAuthRequestRequestTokenResponseParams();
 
             _response.status = status;
 
-            _response.idToken = idToken;
+            _response.token = token;
 
             org.chromium.mojo.bindings.ServiceMessage _message =
                     _response.serializeWithHeader(
                             mCore,
                             new org.chromium.mojo.bindings.MessageHeader(
-                                    REQUEST_ID_TOKEN_ORDINAL,
+                                    REQUEST_TOKEN_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class FederatedAuthRequestCancelTokenRequestParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private FederatedAuthRequestCancelTokenRequestParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public FederatedAuthRequestCancelTokenRequestParams() {
+            this(0);
+        }
+
+        public static FederatedAuthRequestCancelTokenRequestParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static FederatedAuthRequestCancelTokenRequestParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static FederatedAuthRequestCancelTokenRequestParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            FederatedAuthRequestCancelTokenRequestParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new FederatedAuthRequestCancelTokenRequestParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+
+
+    
+    static final class FederatedAuthRequestLogoutRpsParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public LogoutRpsRequest[] rpLogoutRequests;
+
+        private FederatedAuthRequestLogoutRpsParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public FederatedAuthRequestLogoutRpsParams() {
+            this(0);
+        }
+
+        public static FederatedAuthRequestLogoutRpsParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static FederatedAuthRequestLogoutRpsParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static FederatedAuthRequestLogoutRpsParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            FederatedAuthRequestLogoutRpsParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new FederatedAuthRequestLogoutRpsParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    {
+                        org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                        result.rpLogoutRequests = new LogoutRpsRequest[si1.elementsOrVersion];
+                        for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
+                            
+                            org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                            result.rpLogoutRequests[i1] = LogoutRpsRequest.decode(decoder2);
+                        }
+                    }
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            if (this.rpLogoutRequests == null) {
+                encoder0.encodeNullPointer(8, false);
+            } else {
+                org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.rpLogoutRequests.length, 8, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                for (int i0 = 0; i0 < this.rpLogoutRequests.length; ++i0) {
+                    
+                    encoder1.encode(this.rpLogoutRequests[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
+                }
+            }
+        }
+    }
+
+
+
+    
+    static final class FederatedAuthRequestLogoutRpsResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int status;
+
+        private FederatedAuthRequestLogoutRpsResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public FederatedAuthRequestLogoutRpsResponseParams() {
+            this(0);
+        }
+
+        public static FederatedAuthRequestLogoutRpsResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static FederatedAuthRequestLogoutRpsResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static FederatedAuthRequestLogoutRpsResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            FederatedAuthRequestLogoutRpsResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new FederatedAuthRequestLogoutRpsResponseParams(elementsOrVersion);
+                    {
+                        
+                    result.status = decoder0.readInt(8);
+                        LogoutRpsStatus.validate(result.status);
+                        result.status = LogoutRpsStatus.toKnownValue(result.status);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.status, 8);
+        }
+    }
+
+    static class FederatedAuthRequestLogoutRpsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final FederatedAuthRequest.LogoutRps_Response mCallback;
+
+        FederatedAuthRequestLogoutRpsResponseParamsForwardToCallback(FederatedAuthRequest.LogoutRps_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(LOGOUT_RPS_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                FederatedAuthRequestLogoutRpsResponseParams response = FederatedAuthRequestLogoutRpsResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.status);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class FederatedAuthRequestLogoutRpsResponseParamsProxyToResponder implements FederatedAuthRequest.LogoutRps_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        FederatedAuthRequestLogoutRpsResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(Integer status) {
+            FederatedAuthRequestLogoutRpsResponseParams _response = new FederatedAuthRequestLogoutRpsResponseParams();
+
+            _response.status = status;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    LOGOUT_RPS_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);

@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class TcpConnectedSocket_Internal {
 
@@ -69,7 +71,7 @@ class TcpConnectedSocket_Internal {
         @Override
         public void upgradeToTls(
 HostPortPair hostPortPair, TlsClientSocketOptions options, MutableNetworkTrafficAnnotationTag trafficAnnotation, org.chromium.mojo.bindings.InterfaceRequest<TlsClientSocket> receiver, SocketObserver observer, 
-UpgradeToTlsResponse callback) {
+UpgradeToTls_Response callback) {
 
             TcpConnectedSocketUpgradeToTlsParams _message = new TcpConnectedSocketUpgradeToTlsParams();
 
@@ -99,7 +101,7 @@ UpgradeToTlsResponse callback) {
         @Override
         public void setSendBufferSize(
 int sendBufferSize, 
-SetSendBufferSizeResponse callback) {
+SetSendBufferSize_Response callback) {
 
             TcpConnectedSocketSetSendBufferSizeParams _message = new TcpConnectedSocketSetSendBufferSizeParams();
 
@@ -121,7 +123,7 @@ SetSendBufferSizeResponse callback) {
         @Override
         public void setReceiveBufferSize(
 int receiveBufferSize, 
-SetReceiveBufferSizeResponse callback) {
+SetReceiveBufferSize_Response callback) {
 
             TcpConnectedSocketSetReceiveBufferSizeParams _message = new TcpConnectedSocketSetReceiveBufferSizeParams();
 
@@ -143,7 +145,7 @@ SetReceiveBufferSizeResponse callback) {
         @Override
         public void setNoDelay(
 boolean noDelay, 
-SetNoDelayResponse callback) {
+SetNoDelay_Response callback) {
 
             TcpConnectedSocketSetNoDelayParams _message = new TcpConnectedSocketSetNoDelayParams();
 
@@ -165,7 +167,7 @@ SetNoDelayResponse callback) {
         @Override
         public void setKeepAlive(
 boolean enable, int delaySecs, 
-SetKeepAliveResponse callback) {
+SetKeepAlive_Response callback) {
 
             TcpConnectedSocketSetKeepAliveParams _message = new TcpConnectedSocketSetKeepAliveParams();
 
@@ -520,9 +522,9 @@ SetKeepAliveResponse callback) {
 
     static class TcpConnectedSocketUpgradeToTlsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final TcpConnectedSocket.UpgradeToTlsResponse mCallback;
+        private final TcpConnectedSocket.UpgradeToTls_Response mCallback;
 
-        TcpConnectedSocketUpgradeToTlsResponseParamsForwardToCallback(TcpConnectedSocket.UpgradeToTlsResponse callback) {
+        TcpConnectedSocketUpgradeToTlsResponseParamsForwardToCallback(TcpConnectedSocket.UpgradeToTls_Response callback) {
             this.mCallback = callback;
         }
 
@@ -547,7 +549,7 @@ SetKeepAliveResponse callback) {
         }
     }
 
-    static class TcpConnectedSocketUpgradeToTlsResponseParamsProxyToResponder implements TcpConnectedSocket.UpgradeToTlsResponse {
+    static class TcpConnectedSocketUpgradeToTlsResponseParamsProxyToResponder implements TcpConnectedSocket.UpgradeToTls_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -713,9 +715,9 @@ SetKeepAliveResponse callback) {
 
     static class TcpConnectedSocketSetSendBufferSizeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final TcpConnectedSocket.SetSendBufferSizeResponse mCallback;
+        private final TcpConnectedSocket.SetSendBufferSize_Response mCallback;
 
-        TcpConnectedSocketSetSendBufferSizeResponseParamsForwardToCallback(TcpConnectedSocket.SetSendBufferSizeResponse callback) {
+        TcpConnectedSocketSetSendBufferSizeResponseParamsForwardToCallback(TcpConnectedSocket.SetSendBufferSize_Response callback) {
             this.mCallback = callback;
         }
 
@@ -740,7 +742,7 @@ SetKeepAliveResponse callback) {
         }
     }
 
-    static class TcpConnectedSocketSetSendBufferSizeResponseParamsProxyToResponder implements TcpConnectedSocket.SetSendBufferSizeResponse {
+    static class TcpConnectedSocketSetSendBufferSizeResponseParamsProxyToResponder implements TcpConnectedSocket.SetSendBufferSize_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -900,9 +902,9 @@ SetKeepAliveResponse callback) {
 
     static class TcpConnectedSocketSetReceiveBufferSizeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final TcpConnectedSocket.SetReceiveBufferSizeResponse mCallback;
+        private final TcpConnectedSocket.SetReceiveBufferSize_Response mCallback;
 
-        TcpConnectedSocketSetReceiveBufferSizeResponseParamsForwardToCallback(TcpConnectedSocket.SetReceiveBufferSizeResponse callback) {
+        TcpConnectedSocketSetReceiveBufferSizeResponseParamsForwardToCallback(TcpConnectedSocket.SetReceiveBufferSize_Response callback) {
             this.mCallback = callback;
         }
 
@@ -927,7 +929,7 @@ SetKeepAliveResponse callback) {
         }
     }
 
-    static class TcpConnectedSocketSetReceiveBufferSizeResponseParamsProxyToResponder implements TcpConnectedSocket.SetReceiveBufferSizeResponse {
+    static class TcpConnectedSocketSetReceiveBufferSizeResponseParamsProxyToResponder implements TcpConnectedSocket.SetReceiveBufferSize_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1087,9 +1089,9 @@ SetKeepAliveResponse callback) {
 
     static class TcpConnectedSocketSetNoDelayResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final TcpConnectedSocket.SetNoDelayResponse mCallback;
+        private final TcpConnectedSocket.SetNoDelay_Response mCallback;
 
-        TcpConnectedSocketSetNoDelayResponseParamsForwardToCallback(TcpConnectedSocket.SetNoDelayResponse callback) {
+        TcpConnectedSocketSetNoDelayResponseParamsForwardToCallback(TcpConnectedSocket.SetNoDelay_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1114,7 +1116,7 @@ SetKeepAliveResponse callback) {
         }
     }
 
-    static class TcpConnectedSocketSetNoDelayResponseParamsProxyToResponder implements TcpConnectedSocket.SetNoDelayResponse {
+    static class TcpConnectedSocketSetNoDelayResponseParamsProxyToResponder implements TcpConnectedSocket.SetNoDelay_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1281,9 +1283,9 @@ SetKeepAliveResponse callback) {
 
     static class TcpConnectedSocketSetKeepAliveResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final TcpConnectedSocket.SetKeepAliveResponse mCallback;
+        private final TcpConnectedSocket.SetKeepAlive_Response mCallback;
 
-        TcpConnectedSocketSetKeepAliveResponseParamsForwardToCallback(TcpConnectedSocket.SetKeepAliveResponse callback) {
+        TcpConnectedSocketSetKeepAliveResponseParamsForwardToCallback(TcpConnectedSocket.SetKeepAlive_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1308,7 +1310,7 @@ SetKeepAliveResponse callback) {
         }
     }
 
-    static class TcpConnectedSocketSetKeepAliveResponseParamsProxyToResponder implements TcpConnectedSocket.SetKeepAliveResponse {
+    static class TcpConnectedSocketSetKeepAliveResponseParamsProxyToResponder implements TcpConnectedSocket.SetKeepAlive_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

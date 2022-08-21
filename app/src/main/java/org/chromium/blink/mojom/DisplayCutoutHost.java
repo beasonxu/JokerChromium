@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface DisplayCutoutHost extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface DisplayCutoutHost extends org.chromium.mojo.bindings.Interface 
     }
 
     Manager<DisplayCutoutHost, DisplayCutoutHost.Proxy> MANAGER = DisplayCutoutHost_Internal.MANAGER;
-
 
     void notifyViewportFitChanged(
 int value);

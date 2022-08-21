@@ -13,8 +13,21 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class FetchCacheMode {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        FetchCacheMode.DEFAULT,
+        FetchCacheMode.NO_STORE,
+        FetchCacheMode.BYPASS_CACHE,
+        FetchCacheMode.VALIDATE_CACHE,
+        FetchCacheMode.FORCE_CACHE,
+        FetchCacheMode.ONLY_IF_CACHED,
+        FetchCacheMode.UNSPECIFIED_ONLY_IF_CACHED_STRICT,
+        FetchCacheMode.UNSPECIFIED_FORCE_CACHE_MISS})
+    public @interface EnumType {}
 
     public static final int DEFAULT = 0;
     public static final int NO_STORE = 1;

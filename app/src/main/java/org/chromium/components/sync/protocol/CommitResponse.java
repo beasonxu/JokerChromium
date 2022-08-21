@@ -223,35 +223,6 @@ public  final class CommitResponse extends
 
     /**
      * <pre>
-     * should be filled if our parent was assigned a new ID.
-     * </pre>
-     *
-     * <code>optional string parent_id_string = 4;</code>
-     * @return Whether the parentIdString field is set.
-     */
-    boolean hasParentIdString();
-    /**
-     * <pre>
-     * should be filled if our parent was assigned a new ID.
-     * </pre>
-     *
-     * <code>optional string parent_id_string = 4;</code>
-     * @return The parentIdString.
-     */
-    java.lang.String getParentIdString();
-    /**
-     * <pre>
-     * should be filled if our parent was assigned a new ID.
-     * </pre>
-     *
-     * <code>optional string parent_id_string = 4;</code>
-     * @return The bytes for parentIdString.
-     */
-    com.google.protobuf.ByteString
-        getParentIdStringBytes();
-
-    /**
-     * <pre>
      * The item's current version.
      * </pre>
      *
@@ -268,73 +239,6 @@ public  final class CommitResponse extends
      * @return The version.
      */
     long getVersion();
-
-    /**
-     * <pre>
-     * Allows the server to move-aside an entry as it's being committed.
-     * This name is the same as the name field returned within the SyncEntity
-     * message in GetUpdatesResponse.
-     * </pre>
-     *
-     * <code>optional string name = 7;</code>
-     * @return Whether the name field is set.
-     */
-    boolean hasName();
-    /**
-     * <pre>
-     * Allows the server to move-aside an entry as it's being committed.
-     * This name is the same as the name field returned within the SyncEntity
-     * message in GetUpdatesResponse.
-     * </pre>
-     *
-     * <code>optional string name = 7;</code>
-     * @return The name.
-     */
-    java.lang.String getName();
-    /**
-     * <pre>
-     * Allows the server to move-aside an entry as it's being committed.
-     * This name is the same as the name field returned within the SyncEntity
-     * message in GetUpdatesResponse.
-     * </pre>
-     *
-     * <code>optional string name = 7;</code>
-     * @return The bytes for name.
-     */
-    com.google.protobuf.ByteString
-        getNameBytes();
-
-    /**
-     * <pre>
-     * This name is the same as the non_unique_name field returned within the
-     * SyncEntity message in GetUpdatesResponse.
-     * </pre>
-     *
-     * <code>optional string non_unique_name = 8;</code>
-     * @return Whether the nonUniqueName field is set.
-     */
-    boolean hasNonUniqueName();
-    /**
-     * <pre>
-     * This name is the same as the non_unique_name field returned within the
-     * SyncEntity message in GetUpdatesResponse.
-     * </pre>
-     *
-     * <code>optional string non_unique_name = 8;</code>
-     * @return The nonUniqueName.
-     */
-    java.lang.String getNonUniqueName();
-    /**
-     * <pre>
-     * This name is the same as the non_unique_name field returned within the
-     * SyncEntity message in GetUpdatesResponse.
-     * </pre>
-     *
-     * <code>optional string non_unique_name = 8;</code>
-     * @return The bytes for nonUniqueName.
-     */
-    com.google.protobuf.ByteString
-        getNonUniqueNameBytes();
 
     /**
      * <code>optional string error_message = 9;</code>
@@ -355,24 +259,26 @@ public  final class CommitResponse extends
 
     /**
      * <pre>
-     * Last modification time (in java time milliseconds).  Allows the server
-     * to override the client-supplied mtime during a commit operation.
+     * Last modification time (in milliseconds since Unix epoch).  Allows the
+     * server to override the client-supplied mtime during a commit operation.
+     * TODO(crbug.com/1182252): Delete this field too.
      * </pre>
      *
-     * <code>optional int64 mtime = 10;</code>
+     * <code>optional int64 mtime = 10 [deprecated = true];</code>
      * @return Whether the mtime field is set.
      */
-    boolean hasMtime();
+    @java.lang.Deprecated boolean hasMtime();
     /**
      * <pre>
-     * Last modification time (in java time milliseconds).  Allows the server
-     * to override the client-supplied mtime during a commit operation.
+     * Last modification time (in milliseconds since Unix epoch).  Allows the
+     * server to override the client-supplied mtime during a commit operation.
+     * TODO(crbug.com/1182252): Delete this field too.
      * </pre>
      *
-     * <code>optional int64 mtime = 10;</code>
+     * <code>optional int64 mtime = 10 [deprecated = true];</code>
      * @return The mtime.
      */
-    long getMtime();
+    @java.lang.Deprecated long getMtime();
 
     /**
      * <pre>
@@ -404,9 +310,6 @@ public  final class CommitResponse extends
     private EntryResponse() {
       responseType_ = 1;
       idString_ = "";
-      parentIdString_ = "";
-      name_ = "";
-      nonUniqueName_ = "";
       errorMessage_ = "";
     }
     public interface DatatypeSpecificErrorOrBuilder extends
@@ -880,84 +783,6 @@ public  final class CommitResponse extends
       bitField0_ |= 0x00000002;
     }
 
-    public static final int PARENT_ID_STRING_FIELD_NUMBER = 4;
-    private java.lang.String parentIdString_;
-    /**
-     * <pre>
-     * should be filled if our parent was assigned a new ID.
-     * </pre>
-     *
-     * <code>optional string parent_id_string = 4;</code>
-     * @return Whether the parentIdString field is set.
-     */
-    @java.lang.Override
-    public boolean hasParentIdString() {
-      return ((bitField0_ & 0x00000004) != 0);
-    }
-    /**
-     * <pre>
-     * should be filled if our parent was assigned a new ID.
-     * </pre>
-     *
-     * <code>optional string parent_id_string = 4;</code>
-     * @return The parentIdString.
-     */
-    @java.lang.Override
-    public java.lang.String getParentIdString() {
-      return parentIdString_;
-    }
-    /**
-     * <pre>
-     * should be filled if our parent was assigned a new ID.
-     * </pre>
-     *
-     * <code>optional string parent_id_string = 4;</code>
-     * @return The bytes for parentIdString.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getParentIdStringBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(parentIdString_);
-    }
-    /**
-     * <pre>
-     * should be filled if our parent was assigned a new ID.
-     * </pre>
-     *
-     * <code>optional string parent_id_string = 4;</code>
-     * @param value The parentIdString to set.
-     */
-    private void setParentIdString(
-        java.lang.String value) {
-      value.getClass();
-  bitField0_ |= 0x00000004;
-      parentIdString_ = value;
-    }
-    /**
-     * <pre>
-     * should be filled if our parent was assigned a new ID.
-     * </pre>
-     *
-     * <code>optional string parent_id_string = 4;</code>
-     */
-    private void clearParentIdString() {
-      bitField0_ = (bitField0_ & ~0x00000004);
-      parentIdString_ = getDefaultInstance().getParentIdString();
-    }
-    /**
-     * <pre>
-     * should be filled if our parent was assigned a new ID.
-     * </pre>
-     *
-     * <code>optional string parent_id_string = 4;</code>
-     * @param value The bytes for parentIdString to set.
-     */
-    private void setParentIdStringBytes(
-        com.google.protobuf.ByteString value) {
-      parentIdString_ = value.toStringUtf8();
-      bitField0_ |= 0x00000004;
-    }
-
     public static final int VERSION_FIELD_NUMBER = 6;
     private long version_;
     /**
@@ -970,7 +795,7 @@ public  final class CommitResponse extends
      */
     @java.lang.Override
     public boolean hasVersion() {
-      return ((bitField0_ & 0x00000008) != 0);
+      return ((bitField0_ & 0x00000004) != 0);
     }
     /**
      * <pre>
@@ -993,7 +818,7 @@ public  final class CommitResponse extends
      * @param value The version to set.
      */
     private void setVersion(long value) {
-      bitField0_ |= 0x00000008;
+      bitField0_ |= 0x00000004;
       version_ = value;
     }
     /**
@@ -1004,182 +829,8 @@ public  final class CommitResponse extends
      * <code>optional int64 version = 6;</code>
      */
     private void clearVersion() {
-      bitField0_ = (bitField0_ & ~0x00000008);
+      bitField0_ = (bitField0_ & ~0x00000004);
       version_ = 0L;
-    }
-
-    public static final int NAME_FIELD_NUMBER = 7;
-    private java.lang.String name_;
-    /**
-     * <pre>
-     * Allows the server to move-aside an entry as it's being committed.
-     * This name is the same as the name field returned within the SyncEntity
-     * message in GetUpdatesResponse.
-     * </pre>
-     *
-     * <code>optional string name = 7;</code>
-     * @return Whether the name field is set.
-     */
-    @java.lang.Override
-    public boolean hasName() {
-      return ((bitField0_ & 0x00000010) != 0);
-    }
-    /**
-     * <pre>
-     * Allows the server to move-aside an entry as it's being committed.
-     * This name is the same as the name field returned within the SyncEntity
-     * message in GetUpdatesResponse.
-     * </pre>
-     *
-     * <code>optional string name = 7;</code>
-     * @return The name.
-     */
-    @java.lang.Override
-    public java.lang.String getName() {
-      return name_;
-    }
-    /**
-     * <pre>
-     * Allows the server to move-aside an entry as it's being committed.
-     * This name is the same as the name field returned within the SyncEntity
-     * message in GetUpdatesResponse.
-     * </pre>
-     *
-     * <code>optional string name = 7;</code>
-     * @return The bytes for name.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getNameBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(name_);
-    }
-    /**
-     * <pre>
-     * Allows the server to move-aside an entry as it's being committed.
-     * This name is the same as the name field returned within the SyncEntity
-     * message in GetUpdatesResponse.
-     * </pre>
-     *
-     * <code>optional string name = 7;</code>
-     * @param value The name to set.
-     */
-    private void setName(
-        java.lang.String value) {
-      value.getClass();
-  bitField0_ |= 0x00000010;
-      name_ = value;
-    }
-    /**
-     * <pre>
-     * Allows the server to move-aside an entry as it's being committed.
-     * This name is the same as the name field returned within the SyncEntity
-     * message in GetUpdatesResponse.
-     * </pre>
-     *
-     * <code>optional string name = 7;</code>
-     */
-    private void clearName() {
-      bitField0_ = (bitField0_ & ~0x00000010);
-      name_ = getDefaultInstance().getName();
-    }
-    /**
-     * <pre>
-     * Allows the server to move-aside an entry as it's being committed.
-     * This name is the same as the name field returned within the SyncEntity
-     * message in GetUpdatesResponse.
-     * </pre>
-     *
-     * <code>optional string name = 7;</code>
-     * @param value The bytes for name to set.
-     */
-    private void setNameBytes(
-        com.google.protobuf.ByteString value) {
-      name_ = value.toStringUtf8();
-      bitField0_ |= 0x00000010;
-    }
-
-    public static final int NON_UNIQUE_NAME_FIELD_NUMBER = 8;
-    private java.lang.String nonUniqueName_;
-    /**
-     * <pre>
-     * This name is the same as the non_unique_name field returned within the
-     * SyncEntity message in GetUpdatesResponse.
-     * </pre>
-     *
-     * <code>optional string non_unique_name = 8;</code>
-     * @return Whether the nonUniqueName field is set.
-     */
-    @java.lang.Override
-    public boolean hasNonUniqueName() {
-      return ((bitField0_ & 0x00000020) != 0);
-    }
-    /**
-     * <pre>
-     * This name is the same as the non_unique_name field returned within the
-     * SyncEntity message in GetUpdatesResponse.
-     * </pre>
-     *
-     * <code>optional string non_unique_name = 8;</code>
-     * @return The nonUniqueName.
-     */
-    @java.lang.Override
-    public java.lang.String getNonUniqueName() {
-      return nonUniqueName_;
-    }
-    /**
-     * <pre>
-     * This name is the same as the non_unique_name field returned within the
-     * SyncEntity message in GetUpdatesResponse.
-     * </pre>
-     *
-     * <code>optional string non_unique_name = 8;</code>
-     * @return The bytes for nonUniqueName.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getNonUniqueNameBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(nonUniqueName_);
-    }
-    /**
-     * <pre>
-     * This name is the same as the non_unique_name field returned within the
-     * SyncEntity message in GetUpdatesResponse.
-     * </pre>
-     *
-     * <code>optional string non_unique_name = 8;</code>
-     * @param value The nonUniqueName to set.
-     */
-    private void setNonUniqueName(
-        java.lang.String value) {
-      value.getClass();
-  bitField0_ |= 0x00000020;
-      nonUniqueName_ = value;
-    }
-    /**
-     * <pre>
-     * This name is the same as the non_unique_name field returned within the
-     * SyncEntity message in GetUpdatesResponse.
-     * </pre>
-     *
-     * <code>optional string non_unique_name = 8;</code>
-     */
-    private void clearNonUniqueName() {
-      bitField0_ = (bitField0_ & ~0x00000020);
-      nonUniqueName_ = getDefaultInstance().getNonUniqueName();
-    }
-    /**
-     * <pre>
-     * This name is the same as the non_unique_name field returned within the
-     * SyncEntity message in GetUpdatesResponse.
-     * </pre>
-     *
-     * <code>optional string non_unique_name = 8;</code>
-     * @param value The bytes for nonUniqueName to set.
-     */
-    private void setNonUniqueNameBytes(
-        com.google.protobuf.ByteString value) {
-      nonUniqueName_ = value.toStringUtf8();
-      bitField0_ |= 0x00000020;
     }
 
     public static final int ERROR_MESSAGE_FIELD_NUMBER = 9;
@@ -1190,7 +841,7 @@ public  final class CommitResponse extends
      */
     @java.lang.Override
     public boolean hasErrorMessage() {
-      return ((bitField0_ & 0x00000040) != 0);
+      return ((bitField0_ & 0x00000008) != 0);
     }
     /**
      * <code>optional string error_message = 9;</code>
@@ -1216,14 +867,14 @@ public  final class CommitResponse extends
     private void setErrorMessage(
         java.lang.String value) {
       value.getClass();
-  bitField0_ |= 0x00000040;
+  bitField0_ |= 0x00000008;
       errorMessage_ = value;
     }
     /**
      * <code>optional string error_message = 9;</code>
      */
     private void clearErrorMessage() {
-      bitField0_ = (bitField0_ & ~0x00000040);
+      bitField0_ = (bitField0_ & ~0x00000008);
       errorMessage_ = getDefaultInstance().getErrorMessage();
     }
     /**
@@ -1233,60 +884,64 @@ public  final class CommitResponse extends
     private void setErrorMessageBytes(
         com.google.protobuf.ByteString value) {
       errorMessage_ = value.toStringUtf8();
-      bitField0_ |= 0x00000040;
+      bitField0_ |= 0x00000008;
     }
 
     public static final int MTIME_FIELD_NUMBER = 10;
     private long mtime_;
     /**
      * <pre>
-     * Last modification time (in java time milliseconds).  Allows the server
-     * to override the client-supplied mtime during a commit operation.
+     * Last modification time (in milliseconds since Unix epoch).  Allows the
+     * server to override the client-supplied mtime during a commit operation.
+     * TODO(crbug.com/1182252): Delete this field too.
      * </pre>
      *
-     * <code>optional int64 mtime = 10;</code>
+     * <code>optional int64 mtime = 10 [deprecated = true];</code>
      * @return Whether the mtime field is set.
      */
     @java.lang.Override
-    public boolean hasMtime() {
-      return ((bitField0_ & 0x00000080) != 0);
+    @java.lang.Deprecated public boolean hasMtime() {
+      return ((bitField0_ & 0x00000010) != 0);
     }
     /**
      * <pre>
-     * Last modification time (in java time milliseconds).  Allows the server
-     * to override the client-supplied mtime during a commit operation.
+     * Last modification time (in milliseconds since Unix epoch).  Allows the
+     * server to override the client-supplied mtime during a commit operation.
+     * TODO(crbug.com/1182252): Delete this field too.
      * </pre>
      *
-     * <code>optional int64 mtime = 10;</code>
+     * <code>optional int64 mtime = 10 [deprecated = true];</code>
      * @return The mtime.
      */
     @java.lang.Override
-    public long getMtime() {
+    @java.lang.Deprecated public long getMtime() {
       return mtime_;
     }
     /**
      * <pre>
-     * Last modification time (in java time milliseconds).  Allows the server
-     * to override the client-supplied mtime during a commit operation.
+     * Last modification time (in milliseconds since Unix epoch).  Allows the
+     * server to override the client-supplied mtime during a commit operation.
+     * TODO(crbug.com/1182252): Delete this field too.
      * </pre>
      *
-     * <code>optional int64 mtime = 10;</code>
+     * <code>optional int64 mtime = 10 [deprecated = true];</code>
      * @param value The mtime to set.
      */
     private void setMtime(long value) {
-      bitField0_ |= 0x00000080;
+      bitField0_ |= 0x00000010;
       mtime_ = value;
     }
     /**
      * <pre>
-     * Last modification time (in java time milliseconds).  Allows the server
-     * to override the client-supplied mtime during a commit operation.
+     * Last modification time (in milliseconds since Unix epoch).  Allows the
+     * server to override the client-supplied mtime during a commit operation.
+     * TODO(crbug.com/1182252): Delete this field too.
      * </pre>
      *
-     * <code>optional int64 mtime = 10;</code>
+     * <code>optional int64 mtime = 10 [deprecated = true];</code>
      */
     private void clearMtime() {
-      bitField0_ = (bitField0_ & ~0x00000080);
+      bitField0_ = (bitField0_ & ~0x00000010);
       mtime_ = 0L;
     }
 
@@ -1301,7 +956,7 @@ public  final class CommitResponse extends
      */
     @java.lang.Override
     public boolean hasDatatypeSpecificError() {
-      return ((bitField0_ & 0x00000100) != 0);
+      return ((bitField0_ & 0x00000020) != 0);
     }
     /**
      * <pre>
@@ -1324,7 +979,7 @@ public  final class CommitResponse extends
     private void setDatatypeSpecificError(org.chromium.components.sync.protocol.CommitResponse.EntryResponse.DatatypeSpecificError value) {
       value.getClass();
   datatypeSpecificError_ = value;
-      bitField0_ |= 0x00000100;
+      bitField0_ |= 0x00000020;
       }
     /**
      * <pre>
@@ -1343,7 +998,7 @@ public  final class CommitResponse extends
       } else {
         datatypeSpecificError_ = value;
       }
-      bitField0_ |= 0x00000100;
+      bitField0_ |= 0x00000020;
     }
     /**
      * <pre>
@@ -1353,7 +1008,7 @@ public  final class CommitResponse extends
      * <code>optional .sync_pb.CommitResponse.EntryResponse.DatatypeSpecificError datatype_specific_error = 11;</code>
      */
     private void clearDatatypeSpecificError() {  datatypeSpecificError_ = null;
-      bitField0_ = (bitField0_ & ~0x00000100);
+      bitField0_ = (bitField0_ & ~0x00000020);
     }
 
     public static org.chromium.components.sync.protocol.CommitResponse.EntryResponse parseFrom(
@@ -1576,87 +1231,6 @@ public  final class CommitResponse extends
 
       /**
        * <pre>
-       * should be filled if our parent was assigned a new ID.
-       * </pre>
-       *
-       * <code>optional string parent_id_string = 4;</code>
-       * @return Whether the parentIdString field is set.
-       */
-      @java.lang.Override
-      public boolean hasParentIdString() {
-        return instance.hasParentIdString();
-      }
-      /**
-       * <pre>
-       * should be filled if our parent was assigned a new ID.
-       * </pre>
-       *
-       * <code>optional string parent_id_string = 4;</code>
-       * @return The parentIdString.
-       */
-      @java.lang.Override
-      public java.lang.String getParentIdString() {
-        return instance.getParentIdString();
-      }
-      /**
-       * <pre>
-       * should be filled if our parent was assigned a new ID.
-       * </pre>
-       *
-       * <code>optional string parent_id_string = 4;</code>
-       * @return The bytes for parentIdString.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getParentIdStringBytes() {
-        return instance.getParentIdStringBytes();
-      }
-      /**
-       * <pre>
-       * should be filled if our parent was assigned a new ID.
-       * </pre>
-       *
-       * <code>optional string parent_id_string = 4;</code>
-       * @param value The parentIdString to set.
-       * @return This builder for chaining.
-       */
-      public Builder setParentIdString(
-          java.lang.String value) {
-        copyOnWrite();
-        instance.setParentIdString(value);
-        return this;
-      }
-      /**
-       * <pre>
-       * should be filled if our parent was assigned a new ID.
-       * </pre>
-       *
-       * <code>optional string parent_id_string = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearParentIdString() {
-        copyOnWrite();
-        instance.clearParentIdString();
-        return this;
-      }
-      /**
-       * <pre>
-       * should be filled if our parent was assigned a new ID.
-       * </pre>
-       *
-       * <code>optional string parent_id_string = 4;</code>
-       * @param value The bytes for parentIdString to set.
-       * @return This builder for chaining.
-       */
-      public Builder setParentIdStringBytes(
-          com.google.protobuf.ByteString value) {
-        copyOnWrite();
-        instance.setParentIdStringBytes(value);
-        return this;
-      }
-
-      /**
-       * <pre>
        * The item's current version.
        * </pre>
        *
@@ -1704,186 +1278,6 @@ public  final class CommitResponse extends
       public Builder clearVersion() {
         copyOnWrite();
         instance.clearVersion();
-        return this;
-      }
-
-      /**
-       * <pre>
-       * Allows the server to move-aside an entry as it's being committed.
-       * This name is the same as the name field returned within the SyncEntity
-       * message in GetUpdatesResponse.
-       * </pre>
-       *
-       * <code>optional string name = 7;</code>
-       * @return Whether the name field is set.
-       */
-      @java.lang.Override
-      public boolean hasName() {
-        return instance.hasName();
-      }
-      /**
-       * <pre>
-       * Allows the server to move-aside an entry as it's being committed.
-       * This name is the same as the name field returned within the SyncEntity
-       * message in GetUpdatesResponse.
-       * </pre>
-       *
-       * <code>optional string name = 7;</code>
-       * @return The name.
-       */
-      @java.lang.Override
-      public java.lang.String getName() {
-        return instance.getName();
-      }
-      /**
-       * <pre>
-       * Allows the server to move-aside an entry as it's being committed.
-       * This name is the same as the name field returned within the SyncEntity
-       * message in GetUpdatesResponse.
-       * </pre>
-       *
-       * <code>optional string name = 7;</code>
-       * @return The bytes for name.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getNameBytes() {
-        return instance.getNameBytes();
-      }
-      /**
-       * <pre>
-       * Allows the server to move-aside an entry as it's being committed.
-       * This name is the same as the name field returned within the SyncEntity
-       * message in GetUpdatesResponse.
-       * </pre>
-       *
-       * <code>optional string name = 7;</code>
-       * @param value The name to set.
-       * @return This builder for chaining.
-       */
-      public Builder setName(
-          java.lang.String value) {
-        copyOnWrite();
-        instance.setName(value);
-        return this;
-      }
-      /**
-       * <pre>
-       * Allows the server to move-aside an entry as it's being committed.
-       * This name is the same as the name field returned within the SyncEntity
-       * message in GetUpdatesResponse.
-       * </pre>
-       *
-       * <code>optional string name = 7;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearName() {
-        copyOnWrite();
-        instance.clearName();
-        return this;
-      }
-      /**
-       * <pre>
-       * Allows the server to move-aside an entry as it's being committed.
-       * This name is the same as the name field returned within the SyncEntity
-       * message in GetUpdatesResponse.
-       * </pre>
-       *
-       * <code>optional string name = 7;</code>
-       * @param value The bytes for name to set.
-       * @return This builder for chaining.
-       */
-      public Builder setNameBytes(
-          com.google.protobuf.ByteString value) {
-        copyOnWrite();
-        instance.setNameBytes(value);
-        return this;
-      }
-
-      /**
-       * <pre>
-       * This name is the same as the non_unique_name field returned within the
-       * SyncEntity message in GetUpdatesResponse.
-       * </pre>
-       *
-       * <code>optional string non_unique_name = 8;</code>
-       * @return Whether the nonUniqueName field is set.
-       */
-      @java.lang.Override
-      public boolean hasNonUniqueName() {
-        return instance.hasNonUniqueName();
-      }
-      /**
-       * <pre>
-       * This name is the same as the non_unique_name field returned within the
-       * SyncEntity message in GetUpdatesResponse.
-       * </pre>
-       *
-       * <code>optional string non_unique_name = 8;</code>
-       * @return The nonUniqueName.
-       */
-      @java.lang.Override
-      public java.lang.String getNonUniqueName() {
-        return instance.getNonUniqueName();
-      }
-      /**
-       * <pre>
-       * This name is the same as the non_unique_name field returned within the
-       * SyncEntity message in GetUpdatesResponse.
-       * </pre>
-       *
-       * <code>optional string non_unique_name = 8;</code>
-       * @return The bytes for nonUniqueName.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getNonUniqueNameBytes() {
-        return instance.getNonUniqueNameBytes();
-      }
-      /**
-       * <pre>
-       * This name is the same as the non_unique_name field returned within the
-       * SyncEntity message in GetUpdatesResponse.
-       * </pre>
-       *
-       * <code>optional string non_unique_name = 8;</code>
-       * @param value The nonUniqueName to set.
-       * @return This builder for chaining.
-       */
-      public Builder setNonUniqueName(
-          java.lang.String value) {
-        copyOnWrite();
-        instance.setNonUniqueName(value);
-        return this;
-      }
-      /**
-       * <pre>
-       * This name is the same as the non_unique_name field returned within the
-       * SyncEntity message in GetUpdatesResponse.
-       * </pre>
-       *
-       * <code>optional string non_unique_name = 8;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearNonUniqueName() {
-        copyOnWrite();
-        instance.clearNonUniqueName();
-        return this;
-      }
-      /**
-       * <pre>
-       * This name is the same as the non_unique_name field returned within the
-       * SyncEntity message in GetUpdatesResponse.
-       * </pre>
-       *
-       * <code>optional string non_unique_name = 8;</code>
-       * @param value The bytes for nonUniqueName to set.
-       * @return This builder for chaining.
-       */
-      public Builder setNonUniqueNameBytes(
-          com.google.protobuf.ByteString value) {
-        copyOnWrite();
-        instance.setNonUniqueNameBytes(value);
         return this;
       }
 
@@ -1946,55 +1340,59 @@ public  final class CommitResponse extends
 
       /**
        * <pre>
-       * Last modification time (in java time milliseconds).  Allows the server
-       * to override the client-supplied mtime during a commit operation.
+       * Last modification time (in milliseconds since Unix epoch).  Allows the
+       * server to override the client-supplied mtime during a commit operation.
+       * TODO(crbug.com/1182252): Delete this field too.
        * </pre>
        *
-       * <code>optional int64 mtime = 10;</code>
+       * <code>optional int64 mtime = 10 [deprecated = true];</code>
        * @return Whether the mtime field is set.
        */
       @java.lang.Override
-      public boolean hasMtime() {
+      @java.lang.Deprecated public boolean hasMtime() {
         return instance.hasMtime();
       }
       /**
        * <pre>
-       * Last modification time (in java time milliseconds).  Allows the server
-       * to override the client-supplied mtime during a commit operation.
+       * Last modification time (in milliseconds since Unix epoch).  Allows the
+       * server to override the client-supplied mtime during a commit operation.
+       * TODO(crbug.com/1182252): Delete this field too.
        * </pre>
        *
-       * <code>optional int64 mtime = 10;</code>
+       * <code>optional int64 mtime = 10 [deprecated = true];</code>
        * @return The mtime.
        */
       @java.lang.Override
-      public long getMtime() {
+      @java.lang.Deprecated public long getMtime() {
         return instance.getMtime();
       }
       /**
        * <pre>
-       * Last modification time (in java time milliseconds).  Allows the server
-       * to override the client-supplied mtime during a commit operation.
+       * Last modification time (in milliseconds since Unix epoch).  Allows the
+       * server to override the client-supplied mtime during a commit operation.
+       * TODO(crbug.com/1182252): Delete this field too.
        * </pre>
        *
-       * <code>optional int64 mtime = 10;</code>
+       * <code>optional int64 mtime = 10 [deprecated = true];</code>
        * @param value The mtime to set.
        * @return This builder for chaining.
        */
-      public Builder setMtime(long value) {
+      @java.lang.Deprecated public Builder setMtime(long value) {
         copyOnWrite();
         instance.setMtime(value);
         return this;
       }
       /**
        * <pre>
-       * Last modification time (in java time milliseconds).  Allows the server
-       * to override the client-supplied mtime during a commit operation.
+       * Last modification time (in milliseconds since Unix epoch).  Allows the
+       * server to override the client-supplied mtime during a commit operation.
+       * TODO(crbug.com/1182252): Delete this field too.
        * </pre>
        *
-       * <code>optional int64 mtime = 10;</code>
+       * <code>optional int64 mtime = 10 [deprecated = true];</code>
        * @return This builder for chaining.
        */
-      public Builder clearMtime() {
+      @java.lang.Deprecated public Builder clearMtime() {
         copyOnWrite();
         instance.clearMtime();
         return this;
@@ -2092,18 +1490,14 @@ public  final class CommitResponse extends
               "responseType_",
               org.chromium.components.sync.protocol.CommitResponse.ResponseType.internalGetVerifier(),
               "idString_",
-              "parentIdString_",
               "version_",
-              "name_",
-              "nonUniqueName_",
               "errorMessage_",
               "mtime_",
               "datatypeSpecificError_",
             };
             java.lang.String info =
-                "\u0001\t\u0000\u0001\u0002\u000b\t\u0000\u0000\u0001\u0002\u150c\u0000\u0003\u1008" +
-                "\u0001\u0004\u1008\u0002\u0006\u1002\u0003\u0007\u1008\u0004\b\u1008\u0005\t\u1008" +
-                "\u0006\n\u1002\u0007\u000b\u1009\b";
+                "\u0001\u0006\u0000\u0001\u0002\u000b\u0006\u0000\u0000\u0001\u0002\u150c\u0000\u0003" +
+                "\u1008\u0001\u0006\u1002\u0002\t\u1008\u0003\n\u1002\u0004\u000b\u1009\u0005";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

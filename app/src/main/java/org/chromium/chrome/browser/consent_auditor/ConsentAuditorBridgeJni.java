@@ -1,17 +1,15 @@
 package org.chromium.chrome.browser.consent_auditor;
 
 import java.lang.Override;
-import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.chrome.browser.profiles.Profile;
+import org.chromium.components.signin.base.CoreAccountId;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ConsentAuditorBridgeJni implements ConsentAuditorBridge.Natives {
+class ConsentAuditorBridgeJni implements ConsentAuditorBridge.Natives {
   private static ConsentAuditorBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<ConsentAuditorBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.consent_auditor.ConsentAuditorBridge.Natives>() {
@@ -26,7 +24,7 @@ final class ConsentAuditorBridgeJni implements ConsentAuditorBridge.Natives {
   };
 
   @Override
-  public void recordConsent(ConsentAuditorBridge caller, Profile profile, String accountId,
+  public void recordConsent(ConsentAuditorBridge caller, Profile profile, CoreAccountId accountId,
       int feature, int[] consentDescription, int consentConfirmation) {
     GEN_JNI.org_chromium_chrome_browser_consent_1auditor_ConsentAuditorBridge_recordConsent(caller, profile, accountId, feature, consentDescription, consentConfirmation);
   }

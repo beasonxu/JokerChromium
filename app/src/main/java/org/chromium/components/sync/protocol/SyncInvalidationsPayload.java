@@ -351,7 +351,8 @@ public  final class SyncInvalidationsPayload extends
   /**
    * <pre>
    * This field contains information about each data type which needs to be
-   * updated.
+   * updated. Note that it may contain data types which current client is not
+   * interested in.
    * </pre>
    *
    * <code>repeated .sync_pb.SyncInvalidationsPayload.DataTypeInvalidation data_type_invalidations = 1;</code>
@@ -363,7 +364,8 @@ public  final class SyncInvalidationsPayload extends
   /**
    * <pre>
    * This field contains information about each data type which needs to be
-   * updated.
+   * updated. Note that it may contain data types which current client is not
+   * interested in.
    * </pre>
    *
    * <code>repeated .sync_pb.SyncInvalidationsPayload.DataTypeInvalidation data_type_invalidations = 1;</code>
@@ -375,7 +377,8 @@ public  final class SyncInvalidationsPayload extends
   /**
    * <pre>
    * This field contains information about each data type which needs to be
-   * updated.
+   * updated. Note that it may contain data types which current client is not
+   * interested in.
    * </pre>
    *
    * <code>repeated .sync_pb.SyncInvalidationsPayload.DataTypeInvalidation data_type_invalidations = 1;</code>
@@ -387,7 +390,8 @@ public  final class SyncInvalidationsPayload extends
   /**
    * <pre>
    * This field contains information about each data type which needs to be
-   * updated.
+   * updated. Note that it may contain data types which current client is not
+   * interested in.
    * </pre>
    *
    * <code>repeated .sync_pb.SyncInvalidationsPayload.DataTypeInvalidation data_type_invalidations = 1;</code>
@@ -399,7 +403,8 @@ public  final class SyncInvalidationsPayload extends
   /**
    * <pre>
    * This field contains information about each data type which needs to be
-   * updated.
+   * updated. Note that it may contain data types which current client is not
+   * interested in.
    * </pre>
    *
    * <code>repeated .sync_pb.SyncInvalidationsPayload.DataTypeInvalidation data_type_invalidations = 1;</code>
@@ -419,7 +424,8 @@ public  final class SyncInvalidationsPayload extends
   /**
    * <pre>
    * This field contains information about each data type which needs to be
-   * updated.
+   * updated. Note that it may contain data types which current client is not
+   * interested in.
    * </pre>
    *
    * <code>repeated .sync_pb.SyncInvalidationsPayload.DataTypeInvalidation data_type_invalidations = 1;</code>
@@ -433,7 +439,8 @@ public  final class SyncInvalidationsPayload extends
   /**
    * <pre>
    * This field contains information about each data type which needs to be
-   * updated.
+   * updated. Note that it may contain data types which current client is not
+   * interested in.
    * </pre>
    *
    * <code>repeated .sync_pb.SyncInvalidationsPayload.DataTypeInvalidation data_type_invalidations = 1;</code>
@@ -446,7 +453,8 @@ public  final class SyncInvalidationsPayload extends
   /**
    * <pre>
    * This field contains information about each data type which needs to be
-   * updated.
+   * updated. Note that it may contain data types which current client is not
+   * interested in.
    * </pre>
    *
    * <code>repeated .sync_pb.SyncInvalidationsPayload.DataTypeInvalidation data_type_invalidations = 1;</code>
@@ -460,7 +468,8 @@ public  final class SyncInvalidationsPayload extends
   /**
    * <pre>
    * This field contains information about each data type which needs to be
-   * updated.
+   * updated. Note that it may contain data types which current client is not
+   * interested in.
    * </pre>
    *
    * <code>repeated .sync_pb.SyncInvalidationsPayload.DataTypeInvalidation data_type_invalidations = 1;</code>
@@ -474,7 +483,8 @@ public  final class SyncInvalidationsPayload extends
   /**
    * <pre>
    * This field contains information about each data type which needs to be
-   * updated.
+   * updated. Note that it may contain data types which current client is not
+   * interested in.
    * </pre>
    *
    * <code>repeated .sync_pb.SyncInvalidationsPayload.DataTypeInvalidation data_type_invalidations = 1;</code>
@@ -485,7 +495,8 @@ public  final class SyncInvalidationsPayload extends
   /**
    * <pre>
    * This field contains information about each data type which needs to be
-   * updated.
+   * updated. Note that it may contain data types which current client is not
+   * interested in.
    * </pre>
    *
    * <code>repeated .sync_pb.SyncInvalidationsPayload.DataTypeInvalidation data_type_invalidations = 1;</code>
@@ -548,6 +559,56 @@ public  final class SyncInvalidationsPayload extends
   private void clearHint() {
     bitField0_ = (bitField0_ & ~0x00000001);
     hint_ = getDefaultInstance().getHint();
+  }
+
+  public static final int VERSION_FIELD_NUMBER = 3;
+  private long version_;
+  /**
+   * <pre>
+   * Version of invalidation, used to order incoming invalidations.
+   * </pre>
+   *
+   * <code>optional int64 version = 3;</code>
+   * @return Whether the version field is set.
+   */
+  @java.lang.Override
+  public boolean hasVersion() {
+    return ((bitField0_ & 0x00000002) != 0);
+  }
+  /**
+   * <pre>
+   * Version of invalidation, used to order incoming invalidations.
+   * </pre>
+   *
+   * <code>optional int64 version = 3;</code>
+   * @return The version.
+   */
+  @java.lang.Override
+  public long getVersion() {
+    return version_;
+  }
+  /**
+   * <pre>
+   * Version of invalidation, used to order incoming invalidations.
+   * </pre>
+   *
+   * <code>optional int64 version = 3;</code>
+   * @param value The version to set.
+   */
+  private void setVersion(long value) {
+    bitField0_ |= 0x00000002;
+    version_ = value;
+  }
+  /**
+   * <pre>
+   * Version of invalidation, used to order incoming invalidations.
+   * </pre>
+   *
+   * <code>optional int64 version = 3;</code>
+   */
+  private void clearVersion() {
+    bitField0_ = (bitField0_ & ~0x00000002);
+    version_ = 0L;
   }
 
   public static org.chromium.components.sync.protocol.SyncInvalidationsPayload parseFrom(
@@ -652,7 +713,8 @@ public  final class SyncInvalidationsPayload extends
     /**
      * <pre>
      * This field contains information about each data type which needs to be
-     * updated.
+     * updated. Note that it may contain data types which current client is not
+     * interested in.
      * </pre>
      *
      * <code>repeated .sync_pb.SyncInvalidationsPayload.DataTypeInvalidation data_type_invalidations = 1;</code>
@@ -665,7 +727,8 @@ public  final class SyncInvalidationsPayload extends
     /**
      * <pre>
      * This field contains information about each data type which needs to be
-     * updated.
+     * updated. Note that it may contain data types which current client is not
+     * interested in.
      * </pre>
      *
      * <code>repeated .sync_pb.SyncInvalidationsPayload.DataTypeInvalidation data_type_invalidations = 1;</code>
@@ -676,7 +739,8 @@ public  final class SyncInvalidationsPayload extends
     }/**
      * <pre>
      * This field contains information about each data type which needs to be
-     * updated.
+     * updated. Note that it may contain data types which current client is not
+     * interested in.
      * </pre>
      *
      * <code>repeated .sync_pb.SyncInvalidationsPayload.DataTypeInvalidation data_type_invalidations = 1;</code>
@@ -688,7 +752,8 @@ public  final class SyncInvalidationsPayload extends
     /**
      * <pre>
      * This field contains information about each data type which needs to be
-     * updated.
+     * updated. Note that it may contain data types which current client is not
+     * interested in.
      * </pre>
      *
      * <code>repeated .sync_pb.SyncInvalidationsPayload.DataTypeInvalidation data_type_invalidations = 1;</code>
@@ -702,7 +767,8 @@ public  final class SyncInvalidationsPayload extends
     /**
      * <pre>
      * This field contains information about each data type which needs to be
-     * updated.
+     * updated. Note that it may contain data types which current client is not
+     * interested in.
      * </pre>
      *
      * <code>repeated .sync_pb.SyncInvalidationsPayload.DataTypeInvalidation data_type_invalidations = 1;</code>
@@ -717,7 +783,8 @@ public  final class SyncInvalidationsPayload extends
     /**
      * <pre>
      * This field contains information about each data type which needs to be
-     * updated.
+     * updated. Note that it may contain data types which current client is not
+     * interested in.
      * </pre>
      *
      * <code>repeated .sync_pb.SyncInvalidationsPayload.DataTypeInvalidation data_type_invalidations = 1;</code>
@@ -730,7 +797,8 @@ public  final class SyncInvalidationsPayload extends
     /**
      * <pre>
      * This field contains information about each data type which needs to be
-     * updated.
+     * updated. Note that it may contain data types which current client is not
+     * interested in.
      * </pre>
      *
      * <code>repeated .sync_pb.SyncInvalidationsPayload.DataTypeInvalidation data_type_invalidations = 1;</code>
@@ -744,7 +812,8 @@ public  final class SyncInvalidationsPayload extends
     /**
      * <pre>
      * This field contains information about each data type which needs to be
-     * updated.
+     * updated. Note that it may contain data types which current client is not
+     * interested in.
      * </pre>
      *
      * <code>repeated .sync_pb.SyncInvalidationsPayload.DataTypeInvalidation data_type_invalidations = 1;</code>
@@ -758,7 +827,8 @@ public  final class SyncInvalidationsPayload extends
     /**
      * <pre>
      * This field contains information about each data type which needs to be
-     * updated.
+     * updated. Note that it may contain data types which current client is not
+     * interested in.
      * </pre>
      *
      * <code>repeated .sync_pb.SyncInvalidationsPayload.DataTypeInvalidation data_type_invalidations = 1;</code>
@@ -773,7 +843,8 @@ public  final class SyncInvalidationsPayload extends
     /**
      * <pre>
      * This field contains information about each data type which needs to be
-     * updated.
+     * updated. Note that it may contain data types which current client is not
+     * interested in.
      * </pre>
      *
      * <code>repeated .sync_pb.SyncInvalidationsPayload.DataTypeInvalidation data_type_invalidations = 1;</code>
@@ -787,7 +858,8 @@ public  final class SyncInvalidationsPayload extends
     /**
      * <pre>
      * This field contains information about each data type which needs to be
-     * updated.
+     * updated. Note that it may contain data types which current client is not
+     * interested in.
      * </pre>
      *
      * <code>repeated .sync_pb.SyncInvalidationsPayload.DataTypeInvalidation data_type_invalidations = 1;</code>
@@ -800,7 +872,8 @@ public  final class SyncInvalidationsPayload extends
     /**
      * <pre>
      * This field contains information about each data type which needs to be
-     * updated.
+     * updated. Note that it may contain data types which current client is not
+     * interested in.
      * </pre>
      *
      * <code>repeated .sync_pb.SyncInvalidationsPayload.DataTypeInvalidation data_type_invalidations = 1;</code>
@@ -867,6 +940,58 @@ public  final class SyncInvalidationsPayload extends
       return this;
     }
 
+    /**
+     * <pre>
+     * Version of invalidation, used to order incoming invalidations.
+     * </pre>
+     *
+     * <code>optional int64 version = 3;</code>
+     * @return Whether the version field is set.
+     */
+    @java.lang.Override
+    public boolean hasVersion() {
+      return instance.hasVersion();
+    }
+    /**
+     * <pre>
+     * Version of invalidation, used to order incoming invalidations.
+     * </pre>
+     *
+     * <code>optional int64 version = 3;</code>
+     * @return The version.
+     */
+    @java.lang.Override
+    public long getVersion() {
+      return instance.getVersion();
+    }
+    /**
+     * <pre>
+     * Version of invalidation, used to order incoming invalidations.
+     * </pre>
+     *
+     * <code>optional int64 version = 3;</code>
+     * @param value The version to set.
+     * @return This builder for chaining.
+     */
+    public Builder setVersion(long value) {
+      copyOnWrite();
+      instance.setVersion(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * Version of invalidation, used to order incoming invalidations.
+     * </pre>
+     *
+     * <code>optional int64 version = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearVersion() {
+      copyOnWrite();
+      instance.clearVersion();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:sync_pb.SyncInvalidationsPayload)
   }
   @java.lang.Override
@@ -887,10 +1012,11 @@ public  final class SyncInvalidationsPayload extends
             "dataTypeInvalidations_",
             org.chromium.components.sync.protocol.SyncInvalidationsPayload.DataTypeInvalidation.class,
             "hint_",
+            "version_",
           };
           java.lang.String info =
-              "\u0001\u0002\u0000\u0001\u0001\u0002\u0002\u0000\u0001\u0000\u0001\u001b\u0002\u100a" +
-              "\u0000";
+              "\u0001\u0003\u0000\u0001\u0001\u0003\u0003\u0000\u0001\u0000\u0001\u001b\u0002\u100a" +
+              "\u0000\u0003\u1002\u0001";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

@@ -13,11 +13,13 @@
 
 package org.chromium.display.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class Display extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 88;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(88, 0)};
+    private static final int STRUCT_SIZE = 96;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(96, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public long id;
     public org.chromium.gfx.mojom.Rect bounds;
@@ -33,6 +35,7 @@ public final class Display extends org.chromium.mojo.bindings.Struct {
     public int depthPerComponent;
     public boolean isMonochrome;
     public int displayFrequency;
+    public String label;
 
     private Display(int version) {
         super(STRUCT_SIZE, version);
@@ -134,6 +137,10 @@ public final class Display extends org.chromium.mojo.bindings.Struct {
                     
                 result.displayFrequency = decoder0.readInt(84);
                 }
+                {
+                    
+                result.label = decoder0.readString(88, false);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -173,5 +180,7 @@ public final class Display extends org.chromium.mojo.bindings.Struct {
         encoder0.encode(this.isMonochrome, 80, 0);
         
         encoder0.encode(this.displayFrequency, 84);
+        
+        encoder0.encode(this.label, 88, false);
     }
 }

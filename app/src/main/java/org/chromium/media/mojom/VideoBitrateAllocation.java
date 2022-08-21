@@ -13,13 +13,16 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class VideoBitrateAllocation extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 16;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+    private static final int STRUCT_SIZE = 24;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int[] bitrates;
+    public VariableBitratePeak variableBitratePeak;
 
     private VideoBitrateAllocation(int version) {
         super(STRUCT_SIZE, version);
@@ -58,6 +61,11 @@ public final class VideoBitrateAllocation extends org.chromium.mojo.bindings.Str
                     
                 result.bitrates = decoder0.readInts(8, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, true);
+                result.variableBitratePeak = VariableBitratePeak.decode(decoder1);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -71,5 +79,7 @@ public final class VideoBitrateAllocation extends org.chromium.mojo.bindings.Str
         org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         
         encoder0.encode(this.bitrates, 8, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+        
+        encoder0.encode(this.variableBitratePeak, 16, true);
     }
 }

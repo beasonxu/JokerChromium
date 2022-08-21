@@ -13,8 +13,17 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class CookieSameSite {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        CookieSameSite.UNSPECIFIED,
+        CookieSameSite.NO_RESTRICTION,
+        CookieSameSite.LAX_MODE,
+        CookieSameSite.STRICT_MODE})
+    public @interface EnumType {}
 
     public static final int UNSPECIFIED = -1;
     public static final int NO_RESTRICTION = 0;

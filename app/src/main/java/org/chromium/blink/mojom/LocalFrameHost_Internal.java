@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class LocalFrameHost_Internal {
 
@@ -61,7 +63,7 @@ class LocalFrameHost_Internal {
 
     private static final int DID_CONTAIN_INSECURE_FORM_ACTION_ORDINAL = 6;
 
-    private static final int DOCUMENT_AVAILABLE_IN_MAIN_FRAME_ORDINAL = 7;
+    private static final int MAIN_DOCUMENT_ELEMENT_AVAILABLE_ORDINAL = 7;
 
     private static final int SET_NEEDS_OCCLUSION_TRACKING_ORDINAL = 8;
 
@@ -79,91 +81,99 @@ class LocalFrameHost_Internal {
 
     private static final int DID_CALL_FOCUS_ORDINAL = 15;
 
-    private static final int DID_ADD_CONTENT_SECURITY_POLICIES_ORDINAL = 16;
+    private static final int ENFORCE_INSECURE_REQUEST_POLICY_ORDINAL = 16;
 
-    private static final int ENFORCE_INSECURE_REQUEST_POLICY_ORDINAL = 17;
+    private static final int ENFORCE_INSECURE_NAVIGATIONS_SET_ORDINAL = 17;
 
-    private static final int ENFORCE_INSECURE_NAVIGATIONS_SET_ORDINAL = 18;
+    private static final int SUDDEN_TERMINATION_DISABLER_CHANGED_ORDINAL = 18;
 
-    private static final int DID_CHANGE_ACTIVE_SCHEDULER_TRACKED_FEATURES_ORDINAL = 19;
+    private static final int HAD_STICKY_USER_ACTIVATION_BEFORE_NAVIGATION_CHANGED_ORDINAL = 19;
 
-    private static final int SUDDEN_TERMINATION_DISABLER_CHANGED_ORDINAL = 20;
+    private static final int SCROLL_RECT_TO_VISIBLE_IN_PARENT_FRAME_ORDINAL = 20;
 
-    private static final int HAD_STICKY_USER_ACTIVATION_BEFORE_NAVIGATION_CHANGED_ORDINAL = 21;
+    private static final int BUBBLE_LOGICAL_SCROLL_IN_PARENT_FRAME_ORDINAL = 21;
 
-    private static final int SCROLL_RECT_TO_VISIBLE_IN_PARENT_FRAME_ORDINAL = 22;
+    private static final int DID_BLOCK_NAVIGATION_ORDINAL = 22;
 
-    private static final int BUBBLE_LOGICAL_SCROLL_IN_PARENT_FRAME_ORDINAL = 23;
+    private static final int DID_CHANGE_LOAD_PROGRESS_ORDINAL = 23;
 
-    private static final int DID_ACCESS_INITIAL_DOCUMENT_ORDINAL = 24;
+    private static final int DID_FINISH_LOAD_ORDINAL = 24;
 
-    private static final int DID_BLOCK_NAVIGATION_ORDINAL = 25;
+    private static final int DISPATCH_LOAD_ORDINAL = 25;
 
-    private static final int DID_CHANGE_LOAD_PROGRESS_ORDINAL = 26;
+    private static final int GO_TO_ENTRY_AT_OFFSET_ORDINAL = 26;
 
-    private static final int DID_FINISH_LOAD_ORDINAL = 27;
+    private static final int NAVIGATE_TO_NAVIGATION_API_KEY_ORDINAL = 27;
 
-    private static final int DISPATCH_LOAD_ORDINAL = 28;
+    private static final int UPDATE_TITLE_ORDINAL = 28;
 
-    private static final int GO_TO_ENTRY_AT_OFFSET_ORDINAL = 29;
+    private static final int UPDATE_USER_ACTIVATION_STATE_ORDINAL = 29;
 
-    private static final int RENDER_FALLBACK_CONTENT_IN_PARENT_PROCESS_ORDINAL = 30;
+    private static final int HANDLE_ACCESSIBILITY_FIND_IN_PAGE_RESULT_ORDINAL = 30;
 
-    private static final int UPDATE_TITLE_ORDINAL = 31;
+    private static final int HANDLE_ACCESSIBILITY_FIND_IN_PAGE_TERMINATION_ORDINAL = 31;
 
-    private static final int UPDATE_USER_ACTIVATION_STATE_ORDINAL = 32;
+    private static final int DOCUMENT_ON_LOAD_COMPLETED_ORDINAL = 32;
 
-    private static final int HANDLE_ACCESSIBILITY_FIND_IN_PAGE_RESULT_ORDINAL = 33;
+    private static final int FORWARD_RESOURCE_TIMING_TO_PARENT_ORDINAL = 33;
 
-    private static final int HANDLE_ACCESSIBILITY_FIND_IN_PAGE_TERMINATION_ORDINAL = 34;
+    private static final int DID_DISPATCH_DOM_CONTENT_LOADED_EVENT_ORDINAL = 34;
 
-    private static final int DOCUMENT_ON_LOAD_COMPLETED_ORDINAL = 35;
+    private static final int RUN_MODAL_ALERT_DIALOG_ORDINAL = 35;
 
-    private static final int FORWARD_RESOURCE_TIMING_TO_PARENT_ORDINAL = 36;
+    private static final int RUN_MODAL_CONFIRM_DIALOG_ORDINAL = 36;
 
-    private static final int DID_FINISH_DOCUMENT_LOAD_ORDINAL = 37;
+    private static final int RUN_MODAL_PROMPT_DIALOG_ORDINAL = 37;
 
-    private static final int RUN_MODAL_ALERT_DIALOG_ORDINAL = 38;
+    private static final int RUN_BEFORE_UNLOAD_CONFIRM_ORDINAL = 38;
 
-    private static final int RUN_MODAL_CONFIRM_DIALOG_ORDINAL = 39;
+    private static final int UPDATE_FAVICON_URL_ORDINAL = 39;
 
-    private static final int RUN_MODAL_PROMPT_DIALOG_ORDINAL = 40;
+    private static final int DOWNLOAD_URL_ORDINAL = 40;
 
-    private static final int RUN_BEFORE_UNLOAD_CONFIRM_ORDINAL = 41;
+    private static final int FOCUSED_ELEMENT_CHANGED_ORDINAL = 41;
 
-    private static final int UPDATE_FAVICON_URL_ORDINAL = 42;
+    private static final int TEXT_SELECTION_CHANGED_ORDINAL = 42;
 
-    private static final int DOWNLOAD_URL_ORDINAL = 43;
+    private static final int SHOW_POPUP_MENU_ORDINAL = 43;
 
-    private static final int FOCUSED_ELEMENT_CHANGED_ORDINAL = 44;
+    private static final int CREATE_NEW_POPUP_WIDGET_ORDINAL = 44;
 
-    private static final int TEXT_SELECTION_CHANGED_ORDINAL = 45;
+    private static final int SHOW_CONTEXT_MENU_ORDINAL = 45;
 
-    private static final int SHOW_POPUP_MENU_ORDINAL = 46;
+    private static final int DID_LOAD_RESOURCE_FROM_MEMORY_CACHE_ORDINAL = 46;
 
-    private static final int SHOW_CONTEXT_MENU_ORDINAL = 47;
+    private static final int DID_CHANGE_FRAME_OWNER_PROPERTIES_ORDINAL = 47;
 
-    private static final int DID_LOAD_RESOURCE_FROM_MEMORY_CACHE_ORDINAL = 48;
+    private static final int DID_CHANGE_OPENER_ORDINAL = 48;
 
-    private static final int DID_CHANGE_FRAME_OWNER_PROPERTIES_ORDINAL = 49;
+    private static final int DID_CHANGE_FRAME_POLICY_ORDINAL = 49;
 
-    private static final int DID_CHANGE_OPENER_ORDINAL = 50;
+    private static final int DID_CHANGE_IFRAME_ATTRIBUTES_ORDINAL = 50;
 
-    private static final int DID_CHANGE_FRAME_POLICY_ORDINAL = 51;
+    private static final int CAPTURE_PAINT_PREVIEW_OF_SUBFRAME_ORDINAL = 51;
 
-    private static final int DID_CHANGE_CSP_ATTRIBUTE_ORDINAL = 52;
+    private static final int SET_CLOSE_LISTENER_ORDINAL = 52;
 
-    private static final int CAPTURE_PAINT_PREVIEW_OF_SUBFRAME_ORDINAL = 53;
+    private static final int DETACH_ORDINAL = 53;
 
-    private static final int SET_MODAL_CLOSE_LISTENER_ORDINAL = 54;
+    private static final int GET_KEEP_ALIVE_HANDLE_FACTORY_ORDINAL = 54;
 
-    private static final int DETACH_ORDINAL = 55;
+    private static final int DID_ADD_MESSAGE_TO_CONSOLE_ORDINAL = 55;
 
-    private static final int GET_KEEP_ALIVE_HANDLE_FACTORY_ORDINAL = 56;
+    private static final int FRAME_SIZE_CHANGED_ORDINAL = 56;
 
-    private static final int DID_ADD_MESSAGE_TO_CONSOLE_ORDINAL = 57;
+    private static final int DID_INFER_COLOR_SCHEME_ORDINAL = 57;
 
-    private static final int FRAME_SIZE_CHANGED_ORDINAL = 58;
+    private static final int DID_CHANGE_SRC_DOC_ORDINAL = 58;
+
+    private static final int RECEIVED_DELEGATED_CAPABILITY_ORDINAL = 59;
+
+    private static final int CREATE_PORTAL_ORDINAL = 60;
+
+    private static final int ADOPT_PORTAL_ORDINAL = 61;
+
+    private static final int CREATE_FENCED_FRAME_ORDINAL = 62;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements LocalFrameHost.Proxy {
@@ -177,7 +187,7 @@ class LocalFrameHost_Internal {
         @Override
         public void enterFullscreen(
 FullscreenOptions options, 
-EnterFullscreenResponse callback) {
+EnterFullscreen_Response callback) {
 
             LocalFrameHostEnterFullscreenParams _message = new LocalFrameHostEnterFullscreenParams();
 
@@ -303,10 +313,10 @@ String scheme, org.chromium.url.mojom.Url url, boolean userGesture) {
 
 
         @Override
-        public void documentAvailableInMainFrame(
+        public void mainDocumentElementAvailable(
 boolean usesTemporaryZoomLevel) {
 
-            LocalFrameHostDocumentAvailableInMainFrameParams _message = new LocalFrameHostDocumentAvailableInMainFrameParams();
+            LocalFrameHostMainDocumentElementAvailableParams _message = new LocalFrameHostMainDocumentElementAvailableParams();
 
             _message.usesTemporaryZoomLevel = usesTemporaryZoomLevel;
 
@@ -314,7 +324,7 @@ boolean usesTemporaryZoomLevel) {
             getProxyHandler().getMessageReceiver().accept(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(DOCUMENT_AVAILABLE_IN_MAIN_FRAME_ORDINAL)));
+                            new org.chromium.mojo.bindings.MessageHeader(MAIN_DOCUMENT_ELEMENT_AVAILABLE_ORDINAL)));
 
         }
 
@@ -456,23 +466,6 @@ org.chromium.url.mojom.Url url, int errorCode) {
 
 
         @Override
-        public void didAddContentSecurityPolicies(
-org.chromium.network.mojom.ContentSecurityPolicy[] policies) {
-
-            LocalFrameHostDidAddContentSecurityPoliciesParams _message = new LocalFrameHostDidAddContentSecurityPoliciesParams();
-
-            _message.policies = policies;
-
-
-            getProxyHandler().getMessageReceiver().accept(
-                    _message.serializeWithHeader(
-                            getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(DID_ADD_CONTENT_SECURITY_POLICIES_ORDINAL)));
-
-        }
-
-
-        @Override
         public void enforceInsecureRequestPolicy(
 int policyBitmap) {
 
@@ -502,23 +495,6 @@ int[] set) {
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(ENFORCE_INSECURE_NAVIGATIONS_SET_ORDINAL)));
-
-        }
-
-
-        @Override
-        public void didChangeActiveSchedulerTrackedFeatures(
-long featuresMask) {
-
-            LocalFrameHostDidChangeActiveSchedulerTrackedFeaturesParams _message = new LocalFrameHostDidChangeActiveSchedulerTrackedFeaturesParams();
-
-            _message.featuresMask = featuresMask;
-
-
-            getProxyHandler().getMessageReceiver().accept(
-                    _message.serializeWithHeader(
-                            getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(DID_CHANGE_ACTIVE_SCHEDULER_TRACKED_FEATURES_ORDINAL)));
 
         }
 
@@ -561,7 +537,7 @@ boolean hasGesture) {
 
         @Override
         public void scrollRectToVisibleInParentFrame(
-org.chromium.gfx.mojom.Rect rectToScroll, ScrollIntoViewParams params) {
+org.chromium.gfx.mojom.RectF rectToScroll, ScrollIntoViewParams params) {
 
             LocalFrameHostScrollRectToVisibleInParentFrameParams _message = new LocalFrameHostScrollRectToVisibleInParentFrameParams();
 
@@ -593,21 +569,6 @@ int direction, int granularity) {
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(BUBBLE_LOGICAL_SCROLL_IN_PARENT_FRAME_ORDINAL)));
-
-        }
-
-
-        @Override
-        public void didAccessInitialDocument(
-) {
-
-            LocalFrameHostDidAccessInitialDocumentParams _message = new LocalFrameHostDidAccessInitialDocumentParams();
-
-
-            getProxyHandler().getMessageReceiver().accept(
-                    _message.serializeWithHeader(
-                            getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(DID_ACCESS_INITIAL_DOCUMENT_ORDINAL)));
 
         }
 
@@ -702,16 +663,20 @@ int offset, boolean hasUserGesture) {
 
 
         @Override
-        public void renderFallbackContentInParentProcess(
-) {
+        public void navigateToNavigationApiKey(
+String key, boolean hasUserGesture) {
 
-            LocalFrameHostRenderFallbackContentInParentProcessParams _message = new LocalFrameHostRenderFallbackContentInParentProcessParams();
+            LocalFrameHostNavigateToNavigationApiKeyParams _message = new LocalFrameHostNavigateToNavigationApiKeyParams();
+
+            _message.key = key;
+
+            _message.hasUserGesture = hasUserGesture;
 
 
             getProxyHandler().getMessageReceiver().accept(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(RENDER_FALLBACK_CONTENT_IN_PARENT_PROCESS_ORDINAL)));
+                            new org.chromium.mojo.bindings.MessageHeader(NAVIGATE_TO_NAVIGATION_API_KEY_ORDINAL)));
 
         }
 
@@ -819,28 +784,30 @@ ResourceTimingInfo timing) {
 
 
         @Override
-        public void didFinishDocumentLoad(
+        public void didDispatchDomContentLoadedEvent(
 ) {
 
-            LocalFrameHostDidFinishDocumentLoadParams _message = new LocalFrameHostDidFinishDocumentLoadParams();
+            LocalFrameHostDidDispatchDomContentLoadedEventParams _message = new LocalFrameHostDidDispatchDomContentLoadedEventParams();
 
 
             getProxyHandler().getMessageReceiver().accept(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(DID_FINISH_DOCUMENT_LOAD_ORDINAL)));
+                            new org.chromium.mojo.bindings.MessageHeader(DID_DISPATCH_DOM_CONTENT_LOADED_EVENT_ORDINAL)));
 
         }
 
 
         @Override
         public void runModalAlertDialog(
-org.chromium.mojo_base.mojom.String16 alertMessage, 
-RunModalAlertDialogResponse callback) {
+org.chromium.mojo_base.mojom.String16 alertMessage, boolean disableThirdPartySubframeSuppresion, 
+RunModalAlertDialog_Response callback) {
 
             LocalFrameHostRunModalAlertDialogParams _message = new LocalFrameHostRunModalAlertDialogParams();
 
             _message.alertMessage = alertMessage;
+
+            _message.disableThirdPartySubframeSuppresion = disableThirdPartySubframeSuppresion;
 
 
             getProxyHandler().getMessageReceiver().acceptWithResponder(
@@ -857,12 +824,14 @@ RunModalAlertDialogResponse callback) {
 
         @Override
         public void runModalConfirmDialog(
-org.chromium.mojo_base.mojom.String16 alertMessage, 
-RunModalConfirmDialogResponse callback) {
+org.chromium.mojo_base.mojom.String16 alertMessage, boolean disableThirdPartySubframeSuppresion, 
+RunModalConfirmDialog_Response callback) {
 
             LocalFrameHostRunModalConfirmDialogParams _message = new LocalFrameHostRunModalConfirmDialogParams();
 
             _message.alertMessage = alertMessage;
+
+            _message.disableThirdPartySubframeSuppresion = disableThirdPartySubframeSuppresion;
 
 
             getProxyHandler().getMessageReceiver().acceptWithResponder(
@@ -879,14 +848,16 @@ RunModalConfirmDialogResponse callback) {
 
         @Override
         public void runModalPromptDialog(
-org.chromium.mojo_base.mojom.String16 alertMessage, org.chromium.mojo_base.mojom.String16 defaultValue, 
-RunModalPromptDialogResponse callback) {
+org.chromium.mojo_base.mojom.String16 alertMessage, org.chromium.mojo_base.mojom.String16 defaultValue, boolean disableThirdPartySubframeSuppresion, 
+RunModalPromptDialog_Response callback) {
 
             LocalFrameHostRunModalPromptDialogParams _message = new LocalFrameHostRunModalPromptDialogParams();
 
             _message.alertMessage = alertMessage;
 
             _message.defaultValue = defaultValue;
+
+            _message.disableThirdPartySubframeSuppresion = disableThirdPartySubframeSuppresion;
 
 
             getProxyHandler().getMessageReceiver().acceptWithResponder(
@@ -904,7 +875,7 @@ RunModalPromptDialogResponse callback) {
         @Override
         public void runBeforeUnloadConfirm(
 boolean isReload, 
-RunBeforeUnloadConfirmResponse callback) {
+RunBeforeUnloadConfirm_Response callback) {
 
             LocalFrameHostRunBeforeUnloadConfirmParams _message = new LocalFrameHostRunBeforeUnloadConfirmParams();
 
@@ -1031,6 +1002,27 @@ PopupMenuClient popupClient, org.chromium.gfx.mojom.Rect bounds, int itemHeight,
 
 
         @Override
+        public void createNewPopupWidget(
+org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported popupHost, org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported blinkWidgetHost, org.chromium.mojo.bindings.AssociatedInterfaceNotSupported blinkWidget) {
+
+            LocalFrameHostCreateNewPopupWidgetParams _message = new LocalFrameHostCreateNewPopupWidgetParams();
+
+            _message.popupHost = popupHost;
+
+            _message.blinkWidgetHost = blinkWidgetHost;
+
+            _message.blinkWidget = blinkWidget;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(CREATE_NEW_POPUP_WIDGET_ORDINAL)));
+
+        }
+
+
+        @Override
         public void showContextMenu(
 org.chromium.mojo.bindings.AssociatedInterfaceNotSupported client, UntrustworthyContextMenuParams params) {
 
@@ -1051,7 +1043,7 @@ org.chromium.mojo.bindings.AssociatedInterfaceNotSupported client, Untrustworthy
 
         @Override
         public void didLoadResourceFromMemoryCache(
-org.chromium.url.mojom.Url url, String httpMethod, String mimeType, int requestDestination) {
+org.chromium.url.mojom.Url url, String httpMethod, String mimeType, int requestDestination, boolean includeCredentials) {
 
             LocalFrameHostDidLoadResourceFromMemoryCacheParams _message = new LocalFrameHostDidLoadResourceFromMemoryCacheParams();
 
@@ -1062,6 +1054,8 @@ org.chromium.url.mojom.Url url, String httpMethod, String mimeType, int requestD
             _message.mimeType = mimeType;
 
             _message.requestDestination = requestDestination;
+
+            _message.includeCredentials = includeCredentials;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -1128,20 +1122,20 @@ FrameToken childFrameToken, FramePolicy framePolicy) {
 
 
         @Override
-        public void didChangeCspAttribute(
-FrameToken childFrameToken, org.chromium.network.mojom.ContentSecurityPolicy parsedCspAttribute) {
+        public void didChangeIframeAttributes(
+FrameToken childFrameToken, IframeAttributes attributes) {
 
-            LocalFrameHostDidChangeCspAttributeParams _message = new LocalFrameHostDidChangeCspAttributeParams();
+            LocalFrameHostDidChangeIframeAttributesParams _message = new LocalFrameHostDidChangeIframeAttributesParams();
 
             _message.childFrameToken = childFrameToken;
 
-            _message.parsedCspAttribute = parsedCspAttribute;
+            _message.attributes = attributes;
 
 
             getProxyHandler().getMessageReceiver().accept(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(DID_CHANGE_CSP_ATTRIBUTE_ORDINAL)));
+                            new org.chromium.mojo.bindings.MessageHeader(DID_CHANGE_IFRAME_ATTRIBUTES_ORDINAL)));
 
         }
 
@@ -1166,10 +1160,10 @@ org.chromium.gfx.mojom.Rect clipRect, org.chromium.mojo_base.mojom.UnguessableTo
 
 
         @Override
-        public void setModalCloseListener(
-ModalCloseListener listener) {
+        public void setCloseListener(
+CloseListener listener) {
 
-            LocalFrameHostSetModalCloseListenerParams _message = new LocalFrameHostSetModalCloseListenerParams();
+            LocalFrameHostSetCloseListenerParams _message = new LocalFrameHostSetCloseListenerParams();
 
             _message.listener = listener;
 
@@ -1177,7 +1171,7 @@ ModalCloseListener listener) {
             getProxyHandler().getMessageReceiver().accept(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(SET_MODAL_CLOSE_LISTENER_ORDINAL)));
+                            new org.chromium.mojo.bindings.MessageHeader(SET_CLOSE_LISTENER_ORDINAL)));
 
         }
 
@@ -1252,6 +1246,134 @@ org.chromium.gfx.mojom.Size size) {
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(FRAME_SIZE_CHANGED_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void didInferColorScheme(
+int colorScheme) {
+
+            LocalFrameHostDidInferColorSchemeParams _message = new LocalFrameHostDidInferColorSchemeParams();
+
+            _message.colorScheme = colorScheme;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(DID_INFER_COLOR_SCHEME_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void didChangeSrcDoc(
+FrameToken childFrameToken, String srcdocValue) {
+
+            LocalFrameHostDidChangeSrcDocParams _message = new LocalFrameHostDidChangeSrcDocParams();
+
+            _message.childFrameToken = childFrameToken;
+
+            _message.srcdocValue = srcdocValue;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(DID_CHANGE_SRC_DOC_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void receivedDelegatedCapability(
+int delegatedCapability) {
+
+            LocalFrameHostReceivedDelegatedCapabilityParams _message = new LocalFrameHostReceivedDelegatedCapabilityParams();
+
+            _message.delegatedCapability = delegatedCapability;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(RECEIVED_DELEGATED_CAPABILITY_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void createPortal(
+org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported portal, org.chromium.mojo.bindings.AssociatedInterfaceNotSupported client, RemoteFrameInterfacesFromRenderer remoteFrameInterfaces, 
+CreatePortal_Response callback) {
+
+            LocalFrameHostCreatePortalParams _message = new LocalFrameHostCreatePortalParams();
+
+            _message.portal = portal;
+
+            _message.client = client;
+
+            _message.remoteFrameInterfaces = remoteFrameInterfaces;
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    CREATE_PORTAL_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new LocalFrameHostCreatePortalResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void adoptPortal(
+PortalToken portalToken, RemoteFrameInterfacesFromRenderer remoteFrameInterfaces, 
+AdoptPortal_Response callback) {
+
+            LocalFrameHostAdoptPortalParams _message = new LocalFrameHostAdoptPortalParams();
+
+            _message.portalToken = portalToken;
+
+            _message.remoteFrameInterfaces = remoteFrameInterfaces;
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    ADOPT_PORTAL_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new LocalFrameHostAdoptPortalResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void createFencedFrame(
+org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported fencedFrame, int mode, RemoteFrameInterfacesFromRenderer remoteFrameInterfaces, RemoteFrameToken frameToken, org.chromium.mojo_base.mojom.UnguessableToken devtoolsFrameToken) {
+
+            LocalFrameHostCreateFencedFrameParams _message = new LocalFrameHostCreateFencedFrameParams();
+
+            _message.fencedFrame = fencedFrame;
+
+            _message.mode = mode;
+
+            _message.remoteFrameInterfaces = remoteFrameInterfaces;
+
+            _message.frameToken = frameToken;
+
+            _message.devtoolsFrameToken = devtoolsFrameToken;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(CREATE_FENCED_FRAME_ORDINAL)));
 
         }
 
@@ -1364,12 +1486,12 @@ org.chromium.gfx.mojom.Size size) {
 
 
 
-                    case DOCUMENT_AVAILABLE_IN_MAIN_FRAME_ORDINAL: {
+                    case MAIN_DOCUMENT_ELEMENT_AVAILABLE_ORDINAL: {
 
-                        LocalFrameHostDocumentAvailableInMainFrameParams data =
-                                LocalFrameHostDocumentAvailableInMainFrameParams.deserialize(messageWithHeader.getPayload());
+                        LocalFrameHostMainDocumentElementAvailableParams data =
+                                LocalFrameHostMainDocumentElementAvailableParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().documentAvailableInMainFrame(data.usesTemporaryZoomLevel);
+                        getImpl().mainDocumentElementAvailable(data.usesTemporaryZoomLevel);
                         return true;
                     }
 
@@ -1479,19 +1601,6 @@ org.chromium.gfx.mojom.Size size) {
 
 
 
-                    case DID_ADD_CONTENT_SECURITY_POLICIES_ORDINAL: {
-
-                        LocalFrameHostDidAddContentSecurityPoliciesParams data =
-                                LocalFrameHostDidAddContentSecurityPoliciesParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().didAddContentSecurityPolicies(data.policies);
-                        return true;
-                    }
-
-
-
-
-
                     case ENFORCE_INSECURE_REQUEST_POLICY_ORDINAL: {
 
                         LocalFrameHostEnforceInsecureRequestPolicyParams data =
@@ -1511,19 +1620,6 @@ org.chromium.gfx.mojom.Size size) {
                                 LocalFrameHostEnforceInsecureNavigationsSetParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().enforceInsecureNavigationsSet(data.set);
-                        return true;
-                    }
-
-
-
-
-
-                    case DID_CHANGE_ACTIVE_SCHEDULER_TRACKED_FEATURES_ORDINAL: {
-
-                        LocalFrameHostDidChangeActiveSchedulerTrackedFeaturesParams data =
-                                LocalFrameHostDidChangeActiveSchedulerTrackedFeaturesParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().didChangeActiveSchedulerTrackedFeatures(data.featuresMask);
                         return true;
                     }
 
@@ -1576,18 +1672,6 @@ org.chromium.gfx.mojom.Size size) {
                                 LocalFrameHostBubbleLogicalScrollInParentFrameParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().bubbleLogicalScrollInParentFrame(data.direction, data.granularity);
-                        return true;
-                    }
-
-
-
-
-
-                    case DID_ACCESS_INITIAL_DOCUMENT_ORDINAL: {
-
-                        LocalFrameHostDidAccessInitialDocumentParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().didAccessInitialDocument();
                         return true;
                     }
 
@@ -1659,11 +1743,12 @@ org.chromium.gfx.mojom.Size size) {
 
 
 
-                    case RENDER_FALLBACK_CONTENT_IN_PARENT_PROCESS_ORDINAL: {
+                    case NAVIGATE_TO_NAVIGATION_API_KEY_ORDINAL: {
 
-                        LocalFrameHostRenderFallbackContentInParentProcessParams.deserialize(messageWithHeader.getPayload());
+                        LocalFrameHostNavigateToNavigationApiKeyParams data =
+                                LocalFrameHostNavigateToNavigationApiKeyParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().renderFallbackContentInParentProcess();
+                        getImpl().navigateToNavigationApiKey(data.key, data.hasUserGesture);
                         return true;
                     }
 
@@ -1747,11 +1832,11 @@ org.chromium.gfx.mojom.Size size) {
 
 
 
-                    case DID_FINISH_DOCUMENT_LOAD_ORDINAL: {
+                    case DID_DISPATCH_DOM_CONTENT_LOADED_EVENT_ORDINAL: {
 
-                        LocalFrameHostDidFinishDocumentLoadParams.deserialize(messageWithHeader.getPayload());
+                        LocalFrameHostDidDispatchDomContentLoadedEventParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().didFinishDocumentLoad();
+                        getImpl().didDispatchDomContentLoadedEvent();
                         return true;
                     }
 
@@ -1832,6 +1917,19 @@ org.chromium.gfx.mojom.Size size) {
 
 
 
+                    case CREATE_NEW_POPUP_WIDGET_ORDINAL: {
+
+                        LocalFrameHostCreateNewPopupWidgetParams data =
+                                LocalFrameHostCreateNewPopupWidgetParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().createNewPopupWidget(data.popupHost, data.blinkWidgetHost, data.blinkWidget);
+                        return true;
+                    }
+
+
+
+
+
                     case SHOW_CONTEXT_MENU_ORDINAL: {
 
                         LocalFrameHostShowContextMenuParams data =
@@ -1850,7 +1948,7 @@ org.chromium.gfx.mojom.Size size) {
                         LocalFrameHostDidLoadResourceFromMemoryCacheParams data =
                                 LocalFrameHostDidLoadResourceFromMemoryCacheParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().didLoadResourceFromMemoryCache(data.url, data.httpMethod, data.mimeType, data.requestDestination);
+                        getImpl().didLoadResourceFromMemoryCache(data.url, data.httpMethod, data.mimeType, data.requestDestination, data.includeCredentials);
                         return true;
                     }
 
@@ -1897,12 +1995,12 @@ org.chromium.gfx.mojom.Size size) {
 
 
 
-                    case DID_CHANGE_CSP_ATTRIBUTE_ORDINAL: {
+                    case DID_CHANGE_IFRAME_ATTRIBUTES_ORDINAL: {
 
-                        LocalFrameHostDidChangeCspAttributeParams data =
-                                LocalFrameHostDidChangeCspAttributeParams.deserialize(messageWithHeader.getPayload());
+                        LocalFrameHostDidChangeIframeAttributesParams data =
+                                LocalFrameHostDidChangeIframeAttributesParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().didChangeCspAttribute(data.childFrameToken, data.parsedCspAttribute);
+                        getImpl().didChangeIframeAttributes(data.childFrameToken, data.attributes);
                         return true;
                     }
 
@@ -1923,12 +2021,12 @@ org.chromium.gfx.mojom.Size size) {
 
 
 
-                    case SET_MODAL_CLOSE_LISTENER_ORDINAL: {
+                    case SET_CLOSE_LISTENER_ORDINAL: {
 
-                        LocalFrameHostSetModalCloseListenerParams data =
-                                LocalFrameHostSetModalCloseListenerParams.deserialize(messageWithHeader.getPayload());
+                        LocalFrameHostSetCloseListenerParams data =
+                                LocalFrameHostSetCloseListenerParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().setModalCloseListener(data.listener);
+                        getImpl().setCloseListener(data.listener);
                         return true;
                     }
 
@@ -1980,6 +2078,62 @@ org.chromium.gfx.mojom.Size size) {
                                 LocalFrameHostFrameSizeChangedParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().frameSizeChanged(data.size);
+                        return true;
+                    }
+
+
+
+
+
+                    case DID_INFER_COLOR_SCHEME_ORDINAL: {
+
+                        LocalFrameHostDidInferColorSchemeParams data =
+                                LocalFrameHostDidInferColorSchemeParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().didInferColorScheme(data.colorScheme);
+                        return true;
+                    }
+
+
+
+
+
+                    case DID_CHANGE_SRC_DOC_ORDINAL: {
+
+                        LocalFrameHostDidChangeSrcDocParams data =
+                                LocalFrameHostDidChangeSrcDocParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().didChangeSrcDoc(data.childFrameToken, data.srcdocValue);
+                        return true;
+                    }
+
+
+
+
+
+                    case RECEIVED_DELEGATED_CAPABILITY_ORDINAL: {
+
+                        LocalFrameHostReceivedDelegatedCapabilityParams data =
+                                LocalFrameHostReceivedDelegatedCapabilityParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().receivedDelegatedCapability(data.delegatedCapability);
+                        return true;
+                    }
+
+
+
+
+
+
+
+
+
+                    case CREATE_FENCED_FRAME_ORDINAL: {
+
+                        LocalFrameHostCreateFencedFrameParams data =
+                                LocalFrameHostCreateFencedFrameParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().createFencedFrame(data.fencedFrame, data.mode, data.remoteFrameInterfaces, data.frameToken, data.devtoolsFrameToken);
                         return true;
                     }
 
@@ -2101,18 +2255,12 @@ org.chromium.gfx.mojom.Size size) {
 
 
 
-
-
-
-
-
-
                     case RUN_MODAL_ALERT_DIALOG_ORDINAL: {
 
                         LocalFrameHostRunModalAlertDialogParams data =
                                 LocalFrameHostRunModalAlertDialogParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().runModalAlertDialog(data.alertMessage, new LocalFrameHostRunModalAlertDialogResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().runModalAlertDialog(data.alertMessage, data.disableThirdPartySubframeSuppresion, new LocalFrameHostRunModalAlertDialogResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -2127,7 +2275,7 @@ org.chromium.gfx.mojom.Size size) {
                         LocalFrameHostRunModalConfirmDialogParams data =
                                 LocalFrameHostRunModalConfirmDialogParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().runModalConfirmDialog(data.alertMessage, new LocalFrameHostRunModalConfirmDialogResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().runModalConfirmDialog(data.alertMessage, data.disableThirdPartySubframeSuppresion, new LocalFrameHostRunModalConfirmDialogResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -2142,7 +2290,7 @@ org.chromium.gfx.mojom.Size size) {
                         LocalFrameHostRunModalPromptDialogParams data =
                                 LocalFrameHostRunModalPromptDialogParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().runModalPromptDialog(data.alertMessage, data.defaultValue, new LocalFrameHostRunModalPromptDialogResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().runModalPromptDialog(data.alertMessage, data.defaultValue, data.disableThirdPartySubframeSuppresion, new LocalFrameHostRunModalPromptDialogResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -2192,6 +2340,46 @@ org.chromium.gfx.mojom.Size size) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    case CREATE_PORTAL_ORDINAL: {
+
+                        LocalFrameHostCreatePortalParams data =
+                                LocalFrameHostCreatePortalParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().createPortal(data.portal, data.client, data.remoteFrameInterfaces, new LocalFrameHostCreatePortalResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
+                    case ADOPT_PORTAL_ORDINAL: {
+
+                        LocalFrameHostAdoptPortalParams data =
+                                LocalFrameHostAdoptPortalParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().adoptPortal(data.portalToken, data.remoteFrameInterfaces, new LocalFrameHostAdoptPortalResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
 
 
 
@@ -2334,9 +2522,9 @@ org.chromium.gfx.mojom.Size size) {
 
     static class LocalFrameHostEnterFullscreenResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final LocalFrameHost.EnterFullscreenResponse mCallback;
+        private final LocalFrameHost.EnterFullscreen_Response mCallback;
 
-        LocalFrameHostEnterFullscreenResponseParamsForwardToCallback(LocalFrameHost.EnterFullscreenResponse callback) {
+        LocalFrameHostEnterFullscreenResponseParamsForwardToCallback(LocalFrameHost.EnterFullscreen_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2361,7 +2549,7 @@ org.chromium.gfx.mojom.Size size) {
         }
     }
 
-    static class LocalFrameHostEnterFullscreenResponseParamsProxyToResponder implements LocalFrameHost.EnterFullscreenResponse {
+    static class LocalFrameHostEnterFullscreenResponseParamsProxyToResponder implements LocalFrameHost.EnterFullscreen_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2791,22 +2979,22 @@ org.chromium.gfx.mojom.Size size) {
 
 
     
-    static final class LocalFrameHostDocumentAvailableInMainFrameParams extends org.chromium.mojo.bindings.Struct {
+    static final class LocalFrameHostMainDocumentElementAvailableParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public boolean usesTemporaryZoomLevel;
 
-        private LocalFrameHostDocumentAvailableInMainFrameParams(int version) {
+        private LocalFrameHostMainDocumentElementAvailableParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public LocalFrameHostDocumentAvailableInMainFrameParams() {
+        public LocalFrameHostMainDocumentElementAvailableParams() {
             this(0);
         }
 
-        public static LocalFrameHostDocumentAvailableInMainFrameParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static LocalFrameHostMainDocumentElementAvailableParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -2815,22 +3003,22 @@ org.chromium.gfx.mojom.Size size) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static LocalFrameHostDocumentAvailableInMainFrameParams deserialize(java.nio.ByteBuffer data) {
+        public static LocalFrameHostMainDocumentElementAvailableParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static LocalFrameHostDocumentAvailableInMainFrameParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static LocalFrameHostMainDocumentElementAvailableParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            LocalFrameHostDocumentAvailableInMainFrameParams result;
+            LocalFrameHostMainDocumentElementAvailableParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new LocalFrameHostDocumentAvailableInMainFrameParams(elementsOrVersion);
+                result = new LocalFrameHostMainDocumentElementAvailableParams(elementsOrVersion);
                     {
                         
                     result.usesTemporaryZoomLevel = decoder0.readBoolean(8, 0);
@@ -3363,86 +3551,6 @@ org.chromium.gfx.mojom.Size size) {
 
 
     
-    static final class LocalFrameHostDidAddContentSecurityPoliciesParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public org.chromium.network.mojom.ContentSecurityPolicy[] policies;
-
-        private LocalFrameHostDidAddContentSecurityPoliciesParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public LocalFrameHostDidAddContentSecurityPoliciesParams() {
-            this(0);
-        }
-
-        public static LocalFrameHostDidAddContentSecurityPoliciesParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static LocalFrameHostDidAddContentSecurityPoliciesParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static LocalFrameHostDidAddContentSecurityPoliciesParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            LocalFrameHostDidAddContentSecurityPoliciesParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new LocalFrameHostDidAddContentSecurityPoliciesParams(elementsOrVersion);
-                    {
-                        
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    {
-                        org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                        result.policies = new org.chromium.network.mojom.ContentSecurityPolicy[si1.elementsOrVersion];
-                        for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
-                            
-                            org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
-                            result.policies[i1] = org.chromium.network.mojom.ContentSecurityPolicy.decode(decoder2);
-                        }
-                    }
-                    }
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-            
-            if (this.policies == null) {
-                encoder0.encodeNullPointer(8, false);
-            } else {
-                org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.policies.length, 8, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                for (int i0 = 0; i0 < this.policies.length; ++i0) {
-                    
-                    encoder1.encode(this.policies[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
-                }
-            }
-        }
-    }
-
-
-
-    
     static final class LocalFrameHostEnforceInsecureRequestPolicyParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 16;
@@ -3565,69 +3673,6 @@ org.chromium.gfx.mojom.Size size) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.set, 8, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-        }
-    }
-
-
-
-    
-    static final class LocalFrameHostDidChangeActiveSchedulerTrackedFeaturesParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public long featuresMask;
-
-        private LocalFrameHostDidChangeActiveSchedulerTrackedFeaturesParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public LocalFrameHostDidChangeActiveSchedulerTrackedFeaturesParams() {
-            this(0);
-        }
-
-        public static LocalFrameHostDidChangeActiveSchedulerTrackedFeaturesParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static LocalFrameHostDidChangeActiveSchedulerTrackedFeaturesParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static LocalFrameHostDidChangeActiveSchedulerTrackedFeaturesParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            LocalFrameHostDidChangeActiveSchedulerTrackedFeaturesParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new LocalFrameHostDidChangeActiveSchedulerTrackedFeaturesParams(elementsOrVersion);
-                    {
-                        
-                    result.featuresMask = decoder0.readLong(8);
-                    }
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-            
-            encoder0.encode(this.featuresMask, 8);
         }
     }
 
@@ -3774,7 +3819,7 @@ org.chromium.gfx.mojom.Size size) {
         private static final int STRUCT_SIZE = 24;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public org.chromium.gfx.mojom.Rect rectToScroll;
+        public org.chromium.gfx.mojom.RectF rectToScroll;
         public ScrollIntoViewParams params;
 
         private LocalFrameHostScrollRectToVisibleInParentFrameParams(int version) {
@@ -3813,7 +3858,7 @@ org.chromium.gfx.mojom.Size size) {
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    result.rectToScroll = org.chromium.gfx.mojom.Rect.decode(decoder1);
+                    result.rectToScroll = org.chromium.gfx.mojom.RectF.decode(decoder1);
                     }
                     {
                         
@@ -3909,62 +3954,6 @@ org.chromium.gfx.mojom.Size size) {
             encoder0.encode(this.direction, 8);
             
             encoder0.encode(this.granularity, 12);
-        }
-    }
-
-
-
-    
-    static final class LocalFrameHostDidAccessInitialDocumentParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 8;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-
-        private LocalFrameHostDidAccessInitialDocumentParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public LocalFrameHostDidAccessInitialDocumentParams() {
-            this(0);
-        }
-
-        public static LocalFrameHostDidAccessInitialDocumentParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static LocalFrameHostDidAccessInitialDocumentParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static LocalFrameHostDidAccessInitialDocumentParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            LocalFrameHostDidAccessInitialDocumentParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new LocalFrameHostDidAccessInitialDocumentParams(elementsOrVersion);
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         }
     }
 
@@ -4305,21 +4294,23 @@ org.chromium.gfx.mojom.Size size) {
 
 
     
-    static final class LocalFrameHostRenderFallbackContentInParentProcessParams extends org.chromium.mojo.bindings.Struct {
+    static final class LocalFrameHostNavigateToNavigationApiKeyParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 8;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public String key;
+        public boolean hasUserGesture;
 
-        private LocalFrameHostRenderFallbackContentInParentProcessParams(int version) {
+        private LocalFrameHostNavigateToNavigationApiKeyParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public LocalFrameHostRenderFallbackContentInParentProcessParams() {
+        public LocalFrameHostNavigateToNavigationApiKeyParams() {
             this(0);
         }
 
-        public static LocalFrameHostRenderFallbackContentInParentProcessParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static LocalFrameHostNavigateToNavigationApiKeyParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -4328,22 +4319,30 @@ org.chromium.gfx.mojom.Size size) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static LocalFrameHostRenderFallbackContentInParentProcessParams deserialize(java.nio.ByteBuffer data) {
+        public static LocalFrameHostNavigateToNavigationApiKeyParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static LocalFrameHostRenderFallbackContentInParentProcessParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static LocalFrameHostNavigateToNavigationApiKeyParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            LocalFrameHostRenderFallbackContentInParentProcessParams result;
+            LocalFrameHostNavigateToNavigationApiKeyParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new LocalFrameHostRenderFallbackContentInParentProcessParams(elementsOrVersion);
+                result = new LocalFrameHostNavigateToNavigationApiKeyParams(elementsOrVersion);
+                    {
+                        
+                    result.key = decoder0.readString(8, false);
+                    }
+                    {
+                        
+                    result.hasUserGesture = decoder0.readBoolean(16, 0);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -4354,7 +4353,11 @@ org.chromium.gfx.mojom.Size size) {
         @SuppressWarnings("unchecked")
         @Override
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.key, 8, false);
+            
+            encoder0.encode(this.hasUserGesture, 16, 0);
         }
     }
 
@@ -4748,21 +4751,21 @@ org.chromium.gfx.mojom.Size size) {
 
 
     
-    static final class LocalFrameHostDidFinishDocumentLoadParams extends org.chromium.mojo.bindings.Struct {
+    static final class LocalFrameHostDidDispatchDomContentLoadedEventParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 8;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
 
-        private LocalFrameHostDidFinishDocumentLoadParams(int version) {
+        private LocalFrameHostDidDispatchDomContentLoadedEventParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public LocalFrameHostDidFinishDocumentLoadParams() {
+        public LocalFrameHostDidDispatchDomContentLoadedEventParams() {
             this(0);
         }
 
-        public static LocalFrameHostDidFinishDocumentLoadParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static LocalFrameHostDidDispatchDomContentLoadedEventParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -4771,22 +4774,22 @@ org.chromium.gfx.mojom.Size size) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static LocalFrameHostDidFinishDocumentLoadParams deserialize(java.nio.ByteBuffer data) {
+        public static LocalFrameHostDidDispatchDomContentLoadedEventParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static LocalFrameHostDidFinishDocumentLoadParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static LocalFrameHostDidDispatchDomContentLoadedEventParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            LocalFrameHostDidFinishDocumentLoadParams result;
+            LocalFrameHostDidDispatchDomContentLoadedEventParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new LocalFrameHostDidFinishDocumentLoadParams(elementsOrVersion);
+                result = new LocalFrameHostDidDispatchDomContentLoadedEventParams(elementsOrVersion);
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -4806,10 +4809,11 @@ org.chromium.gfx.mojom.Size size) {
     
     static final class LocalFrameHostRunModalAlertDialogParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public org.chromium.mojo_base.mojom.String16 alertMessage;
+        public boolean disableThirdPartySubframeSuppresion;
 
         private LocalFrameHostRunModalAlertDialogParams(int version) {
             super(STRUCT_SIZE, version);
@@ -4849,6 +4853,10 @@ org.chromium.gfx.mojom.Size size) {
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
                     result.alertMessage = org.chromium.mojo_base.mojom.String16.decode(decoder1);
                     }
+                    {
+                        
+                    result.disableThirdPartySubframeSuppresion = decoder0.readBoolean(16, 0);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -4862,6 +4870,8 @@ org.chromium.gfx.mojom.Size size) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.alertMessage, 8, false);
+            
+            encoder0.encode(this.disableThirdPartySubframeSuppresion, 16, 0);
         }
     }
 
@@ -4923,9 +4933,9 @@ org.chromium.gfx.mojom.Size size) {
 
     static class LocalFrameHostRunModalAlertDialogResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final LocalFrameHost.RunModalAlertDialogResponse mCallback;
+        private final LocalFrameHost.RunModalAlertDialog_Response mCallback;
 
-        LocalFrameHostRunModalAlertDialogResponseParamsForwardToCallback(LocalFrameHost.RunModalAlertDialogResponse callback) {
+        LocalFrameHostRunModalAlertDialogResponseParamsForwardToCallback(LocalFrameHost.RunModalAlertDialog_Response callback) {
             this.mCallback = callback;
         }
 
@@ -4948,7 +4958,7 @@ org.chromium.gfx.mojom.Size size) {
         }
     }
 
-    static class LocalFrameHostRunModalAlertDialogResponseParamsProxyToResponder implements LocalFrameHost.RunModalAlertDialogResponse {
+    static class LocalFrameHostRunModalAlertDialogResponseParamsProxyToResponder implements LocalFrameHost.RunModalAlertDialog_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -4983,10 +4993,11 @@ org.chromium.gfx.mojom.Size size) {
     
     static final class LocalFrameHostRunModalConfirmDialogParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public org.chromium.mojo_base.mojom.String16 alertMessage;
+        public boolean disableThirdPartySubframeSuppresion;
 
         private LocalFrameHostRunModalConfirmDialogParams(int version) {
             super(STRUCT_SIZE, version);
@@ -5026,6 +5037,10 @@ org.chromium.gfx.mojom.Size size) {
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
                     result.alertMessage = org.chromium.mojo_base.mojom.String16.decode(decoder1);
                     }
+                    {
+                        
+                    result.disableThirdPartySubframeSuppresion = decoder0.readBoolean(16, 0);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -5039,6 +5054,8 @@ org.chromium.gfx.mojom.Size size) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.alertMessage, 8, false);
+            
+            encoder0.encode(this.disableThirdPartySubframeSuppresion, 16, 0);
         }
     }
 
@@ -5107,9 +5124,9 @@ org.chromium.gfx.mojom.Size size) {
 
     static class LocalFrameHostRunModalConfirmDialogResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final LocalFrameHost.RunModalConfirmDialogResponse mCallback;
+        private final LocalFrameHost.RunModalConfirmDialog_Response mCallback;
 
-        LocalFrameHostRunModalConfirmDialogResponseParamsForwardToCallback(LocalFrameHost.RunModalConfirmDialogResponse callback) {
+        LocalFrameHostRunModalConfirmDialogResponseParamsForwardToCallback(LocalFrameHost.RunModalConfirmDialog_Response callback) {
             this.mCallback = callback;
         }
 
@@ -5134,7 +5151,7 @@ org.chromium.gfx.mojom.Size size) {
         }
     }
 
-    static class LocalFrameHostRunModalConfirmDialogResponseParamsProxyToResponder implements LocalFrameHost.RunModalConfirmDialogResponse {
+    static class LocalFrameHostRunModalConfirmDialogResponseParamsProxyToResponder implements LocalFrameHost.RunModalConfirmDialog_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -5171,11 +5188,12 @@ org.chromium.gfx.mojom.Size size) {
     
     static final class LocalFrameHostRunModalPromptDialogParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public org.chromium.mojo_base.mojom.String16 alertMessage;
         public org.chromium.mojo_base.mojom.String16 defaultValue;
+        public boolean disableThirdPartySubframeSuppresion;
 
         private LocalFrameHostRunModalPromptDialogParams(int version) {
             super(STRUCT_SIZE, version);
@@ -5220,6 +5238,10 @@ org.chromium.gfx.mojom.Size size) {
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
                     result.defaultValue = org.chromium.mojo_base.mojom.String16.decode(decoder1);
                     }
+                    {
+                        
+                    result.disableThirdPartySubframeSuppresion = decoder0.readBoolean(24, 0);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -5235,6 +5257,8 @@ org.chromium.gfx.mojom.Size size) {
             encoder0.encode(this.alertMessage, 8, false);
             
             encoder0.encode(this.defaultValue, 16, false);
+            
+            encoder0.encode(this.disableThirdPartySubframeSuppresion, 24, 0);
         }
     }
 
@@ -5311,9 +5335,9 @@ org.chromium.gfx.mojom.Size size) {
 
     static class LocalFrameHostRunModalPromptDialogResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final LocalFrameHost.RunModalPromptDialogResponse mCallback;
+        private final LocalFrameHost.RunModalPromptDialog_Response mCallback;
 
-        LocalFrameHostRunModalPromptDialogResponseParamsForwardToCallback(LocalFrameHost.RunModalPromptDialogResponse callback) {
+        LocalFrameHostRunModalPromptDialogResponseParamsForwardToCallback(LocalFrameHost.RunModalPromptDialog_Response callback) {
             this.mCallback = callback;
         }
 
@@ -5338,7 +5362,7 @@ org.chromium.gfx.mojom.Size size) {
         }
     }
 
-    static class LocalFrameHostRunModalPromptDialogResponseParamsProxyToResponder implements LocalFrameHost.RunModalPromptDialogResponse {
+    static class LocalFrameHostRunModalPromptDialogResponseParamsProxyToResponder implements LocalFrameHost.RunModalPromptDialog_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -5500,9 +5524,9 @@ org.chromium.gfx.mojom.Size size) {
 
     static class LocalFrameHostRunBeforeUnloadConfirmResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final LocalFrameHost.RunBeforeUnloadConfirmResponse mCallback;
+        private final LocalFrameHost.RunBeforeUnloadConfirm_Response mCallback;
 
-        LocalFrameHostRunBeforeUnloadConfirmResponseParamsForwardToCallback(LocalFrameHost.RunBeforeUnloadConfirmResponse callback) {
+        LocalFrameHostRunBeforeUnloadConfirmResponseParamsForwardToCallback(LocalFrameHost.RunBeforeUnloadConfirm_Response callback) {
             this.mCallback = callback;
         }
 
@@ -5527,7 +5551,7 @@ org.chromium.gfx.mojom.Size size) {
         }
     }
 
-    static class LocalFrameHostRunBeforeUnloadConfirmResponseParamsProxyToResponder implements LocalFrameHost.RunBeforeUnloadConfirmResponse {
+    static class LocalFrameHostRunBeforeUnloadConfirmResponseParamsProxyToResponder implements LocalFrameHost.RunBeforeUnloadConfirm_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -5995,6 +6019,83 @@ org.chromium.gfx.mojom.Size size) {
 
 
     
+    static final class LocalFrameHostCreateNewPopupWidgetParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported popupHost;
+        public org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported blinkWidgetHost;
+        public org.chromium.mojo.bindings.AssociatedInterfaceNotSupported blinkWidget;
+
+        private LocalFrameHostCreateNewPopupWidgetParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameHostCreateNewPopupWidgetParams() {
+            this(0);
+        }
+
+        public static LocalFrameHostCreateNewPopupWidgetParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameHostCreateNewPopupWidgetParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameHostCreateNewPopupWidgetParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameHostCreateNewPopupWidgetParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameHostCreateNewPopupWidgetParams(elementsOrVersion);
+                    {
+                        
+                    result.popupHost = decoder0.readAssociatedInterfaceRequestNotSupported(8, false);
+                    }
+                    {
+                        
+                    result.blinkWidgetHost = decoder0.readAssociatedInterfaceRequestNotSupported(12, false);
+                    }
+                    {
+                        
+                    result.blinkWidget = decoder0.readAssociatedServiceInterfaceNotSupported(16, false);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.popupHost, 8, false);
+            
+            encoder0.encode(this.blinkWidgetHost, 12, false);
+            
+            encoder0.encode(this.blinkWidget, 16, false);
+        }
+    }
+
+
+
+    
     static final class LocalFrameHostShowContextMenuParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 24;
@@ -6075,6 +6176,7 @@ org.chromium.gfx.mojom.Size size) {
         public String httpMethod;
         public String mimeType;
         public int requestDestination;
+        public boolean includeCredentials;
 
         private LocalFrameHostDidLoadResourceFromMemoryCacheParams(int version) {
             super(STRUCT_SIZE, version);
@@ -6128,6 +6230,10 @@ org.chromium.gfx.mojom.Size size) {
                         org.chromium.network.mojom.RequestDestination.validate(result.requestDestination);
                         result.requestDestination = org.chromium.network.mojom.RequestDestination.toKnownValue(result.requestDestination);
                     }
+                    {
+                        
+                    result.includeCredentials = decoder0.readBoolean(36, 0);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -6147,6 +6253,8 @@ org.chromium.gfx.mojom.Size size) {
             encoder0.encode(this.mimeType, 24, false);
             
             encoder0.encode(this.requestDestination, 32);
+            
+            encoder0.encode(this.includeCredentials, 36, 0);
         }
     }
 
@@ -6359,23 +6467,23 @@ org.chromium.gfx.mojom.Size size) {
 
 
     
-    static final class LocalFrameHostDidChangeCspAttributeParams extends org.chromium.mojo.bindings.Struct {
+    static final class LocalFrameHostDidChangeIframeAttributesParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 32;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public FrameToken childFrameToken;
-        public org.chromium.network.mojom.ContentSecurityPolicy parsedCspAttribute;
+        public IframeAttributes attributes;
 
-        private LocalFrameHostDidChangeCspAttributeParams(int version) {
+        private LocalFrameHostDidChangeIframeAttributesParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public LocalFrameHostDidChangeCspAttributeParams() {
+        public LocalFrameHostDidChangeIframeAttributesParams() {
             this(0);
         }
 
-        public static LocalFrameHostDidChangeCspAttributeParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static LocalFrameHostDidChangeIframeAttributesParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -6384,30 +6492,30 @@ org.chromium.gfx.mojom.Size size) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static LocalFrameHostDidChangeCspAttributeParams deserialize(java.nio.ByteBuffer data) {
+        public static LocalFrameHostDidChangeIframeAttributesParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static LocalFrameHostDidChangeCspAttributeParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static LocalFrameHostDidChangeIframeAttributesParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            LocalFrameHostDidChangeCspAttributeParams result;
+            LocalFrameHostDidChangeIframeAttributesParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new LocalFrameHostDidChangeCspAttributeParams(elementsOrVersion);
+                result = new LocalFrameHostDidChangeIframeAttributesParams(elementsOrVersion);
                     {
                         
                     result.childFrameToken = FrameToken.decode(decoder0, 8);
                     }
                     {
                         
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, true);
-                    result.parsedCspAttribute = org.chromium.network.mojom.ContentSecurityPolicy.decode(decoder1);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
+                    result.attributes = IframeAttributes.decode(decoder1);
                     }
 
             } finally {
@@ -6423,7 +6531,7 @@ org.chromium.gfx.mojom.Size size) {
             
             encoder0.encode(this.childFrameToken, 8, false);
             
-            encoder0.encode(this.parsedCspAttribute, 24, true);
+            encoder0.encode(this.attributes, 24, false);
         }
     }
 
@@ -6502,22 +6610,22 @@ org.chromium.gfx.mojom.Size size) {
 
 
     
-    static final class LocalFrameHostSetModalCloseListenerParams extends org.chromium.mojo.bindings.Struct {
+    static final class LocalFrameHostSetCloseListenerParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public ModalCloseListener listener;
+        public CloseListener listener;
 
-        private LocalFrameHostSetModalCloseListenerParams(int version) {
+        private LocalFrameHostSetCloseListenerParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public LocalFrameHostSetModalCloseListenerParams() {
+        public LocalFrameHostSetCloseListenerParams() {
             this(0);
         }
 
-        public static LocalFrameHostSetModalCloseListenerParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static LocalFrameHostSetCloseListenerParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -6526,25 +6634,25 @@ org.chromium.gfx.mojom.Size size) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static LocalFrameHostSetModalCloseListenerParams deserialize(java.nio.ByteBuffer data) {
+        public static LocalFrameHostSetCloseListenerParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static LocalFrameHostSetModalCloseListenerParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static LocalFrameHostSetCloseListenerParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            LocalFrameHostSetModalCloseListenerParams result;
+            LocalFrameHostSetCloseListenerParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new LocalFrameHostSetModalCloseListenerParams(elementsOrVersion);
+                result = new LocalFrameHostSetCloseListenerParams(elementsOrVersion);
                     {
                         
-                    result.listener = decoder0.readServiceInterface(8, false, ModalCloseListener.MANAGER);
+                    result.listener = decoder0.readServiceInterface(8, false, CloseListener.MANAGER);
                     }
 
             } finally {
@@ -6558,7 +6666,7 @@ org.chromium.gfx.mojom.Size size) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.listener, 8, false, ModalCloseListener.MANAGER);
+            encoder0.encode(this.listener, 8, false, CloseListener.MANAGER);
         }
     }
 
@@ -6838,6 +6946,752 @@ org.chromium.gfx.mojom.Size size) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.size, 8, false);
+        }
+    }
+
+
+
+    
+    static final class LocalFrameHostDidInferColorSchemeParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int colorScheme;
+
+        private LocalFrameHostDidInferColorSchemeParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameHostDidInferColorSchemeParams() {
+            this(0);
+        }
+
+        public static LocalFrameHostDidInferColorSchemeParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameHostDidInferColorSchemeParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameHostDidInferColorSchemeParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameHostDidInferColorSchemeParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameHostDidInferColorSchemeParams(elementsOrVersion);
+                    {
+                        
+                    result.colorScheme = decoder0.readInt(8);
+                        PreferredColorScheme.validate(result.colorScheme);
+                        result.colorScheme = PreferredColorScheme.toKnownValue(result.colorScheme);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.colorScheme, 8);
+        }
+    }
+
+
+
+    
+    static final class LocalFrameHostDidChangeSrcDocParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public FrameToken childFrameToken;
+        public String srcdocValue;
+
+        private LocalFrameHostDidChangeSrcDocParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameHostDidChangeSrcDocParams() {
+            this(0);
+        }
+
+        public static LocalFrameHostDidChangeSrcDocParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameHostDidChangeSrcDocParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameHostDidChangeSrcDocParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameHostDidChangeSrcDocParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameHostDidChangeSrcDocParams(elementsOrVersion);
+                    {
+                        
+                    result.childFrameToken = FrameToken.decode(decoder0, 8);
+                    }
+                    {
+                        
+                    result.srcdocValue = decoder0.readString(24, false);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.childFrameToken, 8, false);
+            
+            encoder0.encode(this.srcdocValue, 24, false);
+        }
+    }
+
+
+
+    
+    static final class LocalFrameHostReceivedDelegatedCapabilityParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int delegatedCapability;
+
+        private LocalFrameHostReceivedDelegatedCapabilityParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameHostReceivedDelegatedCapabilityParams() {
+            this(0);
+        }
+
+        public static LocalFrameHostReceivedDelegatedCapabilityParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameHostReceivedDelegatedCapabilityParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameHostReceivedDelegatedCapabilityParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameHostReceivedDelegatedCapabilityParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameHostReceivedDelegatedCapabilityParams(elementsOrVersion);
+                    {
+                        
+                    result.delegatedCapability = decoder0.readInt(8);
+                        DelegatedCapability.validate(result.delegatedCapability);
+                        result.delegatedCapability = DelegatedCapability.toKnownValue(result.delegatedCapability);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.delegatedCapability, 8);
+        }
+    }
+
+
+
+    
+    static final class LocalFrameHostCreatePortalParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported portal;
+        public org.chromium.mojo.bindings.AssociatedInterfaceNotSupported client;
+        public RemoteFrameInterfacesFromRenderer remoteFrameInterfaces;
+
+        private LocalFrameHostCreatePortalParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameHostCreatePortalParams() {
+            this(0);
+        }
+
+        public static LocalFrameHostCreatePortalParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameHostCreatePortalParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameHostCreatePortalParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameHostCreatePortalParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameHostCreatePortalParams(elementsOrVersion);
+                    {
+                        
+                    result.portal = decoder0.readAssociatedInterfaceRequestNotSupported(8, false);
+                    }
+                    {
+                        
+                    result.client = decoder0.readAssociatedServiceInterfaceNotSupported(12, false);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
+                    result.remoteFrameInterfaces = RemoteFrameInterfacesFromRenderer.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.portal, 8, false);
+            
+            encoder0.encode(this.client, 12, false);
+            
+            encoder0.encode(this.remoteFrameInterfaces, 24, false);
+        }
+    }
+
+
+
+    
+    static final class LocalFrameHostCreatePortalResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 40;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public FrameReplicationState initialReplicatedState;
+        public PortalToken portalToken;
+        public RemoteFrameToken frameToken;
+        public org.chromium.mojo_base.mojom.UnguessableToken devtoolsFrameToken;
+
+        private LocalFrameHostCreatePortalResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameHostCreatePortalResponseParams() {
+            this(0);
+        }
+
+        public static LocalFrameHostCreatePortalResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameHostCreatePortalResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameHostCreatePortalResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameHostCreatePortalResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameHostCreatePortalResponseParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.initialReplicatedState = FrameReplicationState.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                    result.portalToken = PortalToken.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
+                    result.frameToken = RemoteFrameToken.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
+                    result.devtoolsFrameToken = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.initialReplicatedState, 8, false);
+            
+            encoder0.encode(this.portalToken, 16, false);
+            
+            encoder0.encode(this.frameToken, 24, false);
+            
+            encoder0.encode(this.devtoolsFrameToken, 32, false);
+        }
+    }
+
+    static class LocalFrameHostCreatePortalResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final LocalFrameHost.CreatePortal_Response mCallback;
+
+        LocalFrameHostCreatePortalResponseParamsForwardToCallback(LocalFrameHost.CreatePortal_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(CREATE_PORTAL_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG)) {
+                    return false;
+                }
+
+                LocalFrameHostCreatePortalResponseParams response = LocalFrameHostCreatePortalResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.initialReplicatedState, response.portalToken, response.frameToken, response.devtoolsFrameToken);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class LocalFrameHostCreatePortalResponseParamsProxyToResponder implements LocalFrameHost.CreatePortal_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        LocalFrameHostCreatePortalResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(FrameReplicationState initialReplicatedState, PortalToken portalToken, RemoteFrameToken frameToken, org.chromium.mojo_base.mojom.UnguessableToken devtoolsFrameToken) {
+            LocalFrameHostCreatePortalResponseParams _response = new LocalFrameHostCreatePortalResponseParams();
+
+            _response.initialReplicatedState = initialReplicatedState;
+
+            _response.portalToken = portalToken;
+
+            _response.frameToken = frameToken;
+
+            _response.devtoolsFrameToken = devtoolsFrameToken;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    CREATE_PORTAL_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class LocalFrameHostAdoptPortalParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public PortalToken portalToken;
+        public RemoteFrameInterfacesFromRenderer remoteFrameInterfaces;
+
+        private LocalFrameHostAdoptPortalParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameHostAdoptPortalParams() {
+            this(0);
+        }
+
+        public static LocalFrameHostAdoptPortalParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameHostAdoptPortalParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameHostAdoptPortalParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameHostAdoptPortalParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameHostAdoptPortalParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.portalToken = PortalToken.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                    result.remoteFrameInterfaces = RemoteFrameInterfacesFromRenderer.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.portalToken, 8, false);
+            
+            encoder0.encode(this.remoteFrameInterfaces, 16, false);
+        }
+    }
+
+
+
+    
+    static final class LocalFrameHostAdoptPortalResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public FrameReplicationState replicatedState;
+        public RemoteFrameToken frameToken;
+        public org.chromium.mojo_base.mojom.UnguessableToken devtoolsFrameToken;
+
+        private LocalFrameHostAdoptPortalResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameHostAdoptPortalResponseParams() {
+            this(0);
+        }
+
+        public static LocalFrameHostAdoptPortalResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameHostAdoptPortalResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameHostAdoptPortalResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameHostAdoptPortalResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameHostAdoptPortalResponseParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.replicatedState = FrameReplicationState.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                    result.frameToken = RemoteFrameToken.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
+                    result.devtoolsFrameToken = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.replicatedState, 8, false);
+            
+            encoder0.encode(this.frameToken, 16, false);
+            
+            encoder0.encode(this.devtoolsFrameToken, 24, false);
+        }
+    }
+
+    static class LocalFrameHostAdoptPortalResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final LocalFrameHost.AdoptPortal_Response mCallback;
+
+        LocalFrameHostAdoptPortalResponseParamsForwardToCallback(LocalFrameHost.AdoptPortal_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(ADOPT_PORTAL_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG)) {
+                    return false;
+                }
+
+                LocalFrameHostAdoptPortalResponseParams response = LocalFrameHostAdoptPortalResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.replicatedState, response.frameToken, response.devtoolsFrameToken);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class LocalFrameHostAdoptPortalResponseParamsProxyToResponder implements LocalFrameHost.AdoptPortal_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        LocalFrameHostAdoptPortalResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(FrameReplicationState replicatedState, RemoteFrameToken frameToken, org.chromium.mojo_base.mojom.UnguessableToken devtoolsFrameToken) {
+            LocalFrameHostAdoptPortalResponseParams _response = new LocalFrameHostAdoptPortalResponseParams();
+
+            _response.replicatedState = replicatedState;
+
+            _response.frameToken = frameToken;
+
+            _response.devtoolsFrameToken = devtoolsFrameToken;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    ADOPT_PORTAL_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class LocalFrameHostCreateFencedFrameParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 40;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported fencedFrame;
+        public int mode;
+        public RemoteFrameInterfacesFromRenderer remoteFrameInterfaces;
+        public RemoteFrameToken frameToken;
+        public org.chromium.mojo_base.mojom.UnguessableToken devtoolsFrameToken;
+
+        private LocalFrameHostCreateFencedFrameParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameHostCreateFencedFrameParams() {
+            this(0);
+        }
+
+        public static LocalFrameHostCreateFencedFrameParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameHostCreateFencedFrameParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameHostCreateFencedFrameParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameHostCreateFencedFrameParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameHostCreateFencedFrameParams(elementsOrVersion);
+                    {
+                        
+                    result.fencedFrame = decoder0.readAssociatedInterfaceRequestNotSupported(8, false);
+                    }
+                    {
+                        
+                    result.mode = decoder0.readInt(12);
+                        FencedFrameMode.validate(result.mode);
+                        result.mode = FencedFrameMode.toKnownValue(result.mode);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                    result.remoteFrameInterfaces = RemoteFrameInterfacesFromRenderer.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
+                    result.frameToken = RemoteFrameToken.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
+                    result.devtoolsFrameToken = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.fencedFrame, 8, false);
+            
+            encoder0.encode(this.mode, 12);
+            
+            encoder0.encode(this.remoteFrameInterfaces, 16, false);
+            
+            encoder0.encode(this.frameToken, 24, false);
+            
+            encoder0.encode(this.devtoolsFrameToken, 32, false);
         }
     }
 

@@ -13,8 +13,22 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ReferrerPolicy {
-    private static final boolean IS_EXTENSIBLE = false;
+    private static final boolean IS_EXTENSIBLE = true;
+    @IntDef({
+
+        ReferrerPolicy.ALWAYS,
+        ReferrerPolicy.DEFAULT,
+        ReferrerPolicy.NO_REFERRER_WHEN_DOWNGRADE,
+        ReferrerPolicy.NEVER,
+        ReferrerPolicy.ORIGIN,
+        ReferrerPolicy.ORIGIN_WHEN_CROSS_ORIGIN,
+        ReferrerPolicy.STRICT_ORIGIN_WHEN_CROSS_ORIGIN,
+        ReferrerPolicy.SAME_ORIGIN,
+        ReferrerPolicy.STRICT_ORIGIN})
+    public @interface EnumType {}
 
     public static final int ALWAYS = 0;
     public static final int DEFAULT = 1;
@@ -27,6 +41,7 @@ public final class ReferrerPolicy {
     public static final int STRICT_ORIGIN = 8;
     public static final int MIN_VALUE = 0;
     public static final int MAX_VALUE = 8;
+    public static final int DEFAULT_VALUE = 1;
 
     public static boolean isKnownValue(int value) {
         return value >= 0 && value <= 8;
@@ -38,7 +53,10 @@ public final class ReferrerPolicy {
     }
 
     public static int toKnownValue(int value) {
-      return value;
+      if (isKnownValue(value)) {
+        return value;
+      }
+      return DEFAULT_VALUE;
     }
 
     private ReferrerPolicy() {}

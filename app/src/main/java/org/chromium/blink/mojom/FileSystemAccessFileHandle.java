@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface FileSystemAccessFileHandle extends org.chromium.mojo.bindings.Interface {
 
@@ -23,45 +25,67 @@ public interface FileSystemAccessFileHandle extends org.chromium.mojo.bindings.I
 
     Manager<FileSystemAccessFileHandle, FileSystemAccessFileHandle.Proxy> MANAGER = FileSystemAccessFileHandle_Internal.MANAGER;
 
-
     void getPermissionStatus(
 boolean writable, 
-GetPermissionStatusResponse callback);
+GetPermissionStatus_Response callback);
 
-    interface GetPermissionStatusResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface GetPermissionStatus_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void requestPermission(
 boolean writable, 
-RequestPermissionResponse callback);
+RequestPermission_Response callback);
 
-    interface RequestPermissionResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<FileSystemAccessError, Integer> { }
-
+    interface RequestPermission_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<FileSystemAccessError, Integer> { }
 
 
     void asBlob(
 
-AsBlobResponse callback);
+AsBlob_Response callback);
 
-    interface AsBlobResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<FileSystemAccessError, org.chromium.mojo_base.mojom.FileInfo, SerializedBlob> { }
-
+    interface AsBlob_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<FileSystemAccessError, org.chromium.mojo_base.mojom.FileInfo, SerializedBlob> { }
 
 
     void createFileWriter(
 boolean keepExistingData, boolean autoClose, 
-CreateFileWriterResponse callback);
+CreateFileWriter_Response callback);
 
-    interface CreateFileWriterResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<FileSystemAccessError, FileSystemAccessFileWriter> { }
+    interface CreateFileWriter_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<FileSystemAccessError, FileSystemAccessFileWriter> { }
 
+
+    void rename(
+String newEntryName, 
+Rename_Response callback);
+
+    interface Rename_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<FileSystemAccessError> { }
+
+
+    void move(
+FileSystemAccessTransferToken destinationDirectory, String newEntryName, 
+Move_Response callback);
+
+    interface Move_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<FileSystemAccessError> { }
+
+
+    void remove(
+
+Remove_Response callback);
+
+    interface Remove_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<FileSystemAccessError> { }
+
+
+    void openAccessHandle(
+
+OpenAccessHandle_Response callback);
+
+    interface OpenAccessHandle_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<FileSystemAccessError, FileSystemAccessAccessHandleFile, FileSystemAccessAccessHandleHost> { }
 
 
     void isSameEntry(
 FileSystemAccessTransferToken other, 
-IsSameEntryResponse callback);
+IsSameEntry_Response callback);
 
-    interface IsSameEntryResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<FileSystemAccessError, Boolean> { }
-
+    interface IsSameEntry_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<FileSystemAccessError, Boolean> { }
 
 
     void transfer(

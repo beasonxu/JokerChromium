@@ -13,11 +13,13 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class ScrollIntoViewParams extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 56;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(56, 0)};
+    private static final int STRUCT_SIZE = 48;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public ScrollAlignment alignX;
     public ScrollAlignment alignY;
@@ -25,10 +27,8 @@ public final class ScrollIntoViewParams extends org.chromium.mojo.bindings.Struc
     public boolean makeVisibleInVisualViewport;
     public int behavior;
     public boolean isForScrollSequence;
-    public boolean zoomIntoRect;
-    public org.chromium.gfx.mojom.RectF relativeElementBounds;
-    public org.chromium.gfx.mojom.RectF relativeCaretBounds;
-    public boolean stopAtMainFrameLayoutViewport;
+    public FocusedEditableParams forFocusedEditable;
+    public boolean crossOriginBoundaries;
 
     private ScrollIntoViewParams(int version) {
         super(STRUCT_SIZE, version);
@@ -36,8 +36,7 @@ public final class ScrollIntoViewParams extends org.chromium.mojo.bindings.Struc
         this.makeVisibleInVisualViewport = (boolean) true;
         this.behavior = (int) ScrollBehavior.AUTO;
         this.isForScrollSequence = (boolean) false;
-        this.zoomIntoRect = (boolean) false;
-        this.stopAtMainFrameLayoutViewport = (boolean) false;
+        this.crossOriginBoundaries = (boolean) true;
     }
 
     public ScrollIntoViewParams() {
@@ -95,11 +94,7 @@ public final class ScrollIntoViewParams extends org.chromium.mojo.bindings.Struc
                 }
                 {
                     
-                result.zoomIntoRect = decoder0.readBoolean(28, 2);
-                }
-                {
-                    
-                result.stopAtMainFrameLayoutViewport = decoder0.readBoolean(28, 3);
+                result.crossOriginBoundaries = decoder0.readBoolean(28, 2);
                 }
                 {
                     
@@ -109,13 +104,8 @@ public final class ScrollIntoViewParams extends org.chromium.mojo.bindings.Struc
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, false);
-                result.relativeElementBounds = org.chromium.gfx.mojom.RectF.decode(decoder1);
-                }
-                {
-                    
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(48, false);
-                result.relativeCaretBounds = org.chromium.gfx.mojom.RectF.decode(decoder1);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, true);
+                result.forFocusedEditable = FocusedEditableParams.decode(decoder1);
                 }
 
         } finally {
@@ -139,14 +129,10 @@ public final class ScrollIntoViewParams extends org.chromium.mojo.bindings.Struc
         
         encoder0.encode(this.isForScrollSequence, 28, 1);
         
-        encoder0.encode(this.zoomIntoRect, 28, 2);
-        
-        encoder0.encode(this.stopAtMainFrameLayoutViewport, 28, 3);
+        encoder0.encode(this.crossOriginBoundaries, 28, 2);
         
         encoder0.encode(this.behavior, 32);
         
-        encoder0.encode(this.relativeElementBounds, 40, false);
-        
-        encoder0.encode(this.relativeCaretBounds, 48, false);
+        encoder0.encode(this.forFocusedEditable, 40, true);
     }
 }

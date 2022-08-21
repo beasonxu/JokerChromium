@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class AndroidFontLookup_Internal {
 
@@ -51,6 +53,8 @@ class AndroidFontLookup_Internal {
 
     private static final int MATCH_LOCAL_FONT_BY_UNIQUE_NAME_ORDINAL = 1;
 
+    private static final int FETCH_ALL_FONT_FILES_ORDINAL = 2;
+
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements AndroidFontLookup.Proxy {
 
@@ -63,7 +67,7 @@ class AndroidFontLookup_Internal {
         @Override
         public void getUniqueNameLookupTable(
 
-GetUniqueNameLookupTableResponse callback) {
+GetUniqueNameLookupTable_Response callback) {
 
             AndroidFontLookupGetUniqueNameLookupTableParams _message = new AndroidFontLookupGetUniqueNameLookupTableParams();
 
@@ -83,7 +87,7 @@ GetUniqueNameLookupTableResponse callback) {
         @Override
         public void matchLocalFontByUniqueName(
 String fontUniqueName, 
-MatchLocalFontByUniqueNameResponse callback) {
+MatchLocalFontByUniqueName_Response callback) {
 
             AndroidFontLookupMatchLocalFontByUniqueNameParams _message = new AndroidFontLookupMatchLocalFontByUniqueNameParams();
 
@@ -98,6 +102,26 @@ MatchLocalFontByUniqueNameResponse callback) {
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
                                     0)),
                     new AndroidFontLookupMatchLocalFontByUniqueNameResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void fetchAllFontFiles(
+
+FetchAllFontFiles_Response callback) {
+
+            AndroidFontLookupFetchAllFontFilesParams _message = new AndroidFontLookupFetchAllFontFilesParams();
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    FETCH_ALL_FONT_FILES_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new AndroidFontLookupFetchAllFontFilesResponseParamsForwardToCallback(callback));
 
         }
 
@@ -128,6 +152,8 @@ MatchLocalFontByUniqueNameResponse callback) {
                     case org.chromium.mojo.bindings.interfacecontrol.InterfaceControlMessagesConstants.RUN_OR_CLOSE_PIPE_MESSAGE_ID:
                         return org.chromium.mojo.bindings.InterfaceControlMessagesHelper.handleRunOrClosePipe(
                                 AndroidFontLookup_Internal.MANAGER, messageWithHeader);
+
+
 
 
 
@@ -188,6 +214,20 @@ MatchLocalFontByUniqueNameResponse callback) {
                                 AndroidFontLookupMatchLocalFontByUniqueNameParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().matchLocalFontByUniqueName(data.fontUniqueName, new AndroidFontLookupMatchLocalFontByUniqueNameResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
+                    case FETCH_ALL_FONT_FILES_ORDINAL: {
+
+                        AndroidFontLookupFetchAllFontFilesParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().fetchAllFontFiles(new AndroidFontLookupFetchAllFontFilesResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -338,9 +378,9 @@ MatchLocalFontByUniqueNameResponse callback) {
 
     static class AndroidFontLookupGetUniqueNameLookupTableResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final AndroidFontLookup.GetUniqueNameLookupTableResponse mCallback;
+        private final AndroidFontLookup.GetUniqueNameLookupTable_Response mCallback;
 
-        AndroidFontLookupGetUniqueNameLookupTableResponseParamsForwardToCallback(AndroidFontLookup.GetUniqueNameLookupTableResponse callback) {
+        AndroidFontLookupGetUniqueNameLookupTableResponseParamsForwardToCallback(AndroidFontLookup.GetUniqueNameLookupTable_Response callback) {
             this.mCallback = callback;
         }
 
@@ -365,7 +405,7 @@ MatchLocalFontByUniqueNameResponse callback) {
         }
     }
 
-    static class AndroidFontLookupGetUniqueNameLookupTableResponseParamsProxyToResponder implements AndroidFontLookup.GetUniqueNameLookupTableResponse {
+    static class AndroidFontLookupGetUniqueNameLookupTableResponseParamsProxyToResponder implements AndroidFontLookup.GetUniqueNameLookupTable_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -526,9 +566,9 @@ MatchLocalFontByUniqueNameResponse callback) {
 
     static class AndroidFontLookupMatchLocalFontByUniqueNameResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final AndroidFontLookup.MatchLocalFontByUniqueNameResponse mCallback;
+        private final AndroidFontLookup.MatchLocalFontByUniqueName_Response mCallback;
 
-        AndroidFontLookupMatchLocalFontByUniqueNameResponseParamsForwardToCallback(AndroidFontLookup.MatchLocalFontByUniqueNameResponse callback) {
+        AndroidFontLookupMatchLocalFontByUniqueNameResponseParamsForwardToCallback(AndroidFontLookup.MatchLocalFontByUniqueName_Response callback) {
             this.mCallback = callback;
         }
 
@@ -553,7 +593,7 @@ MatchLocalFontByUniqueNameResponse callback) {
         }
     }
 
-    static class AndroidFontLookupMatchLocalFontByUniqueNameResponseParamsProxyToResponder implements AndroidFontLookup.MatchLocalFontByUniqueNameResponse {
+    static class AndroidFontLookupMatchLocalFontByUniqueNameResponseParamsProxyToResponder implements AndroidFontLookup.MatchLocalFontByUniqueName_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -580,6 +620,249 @@ MatchLocalFontByUniqueNameResponse callback) {
                             new org.chromium.mojo.bindings.MessageHeader(
                                     MATCH_LOCAL_FONT_BY_UNIQUE_NAME_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class AndroidFontLookupFetchAllFontFilesParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private AndroidFontLookupFetchAllFontFilesParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public AndroidFontLookupFetchAllFontFilesParams() {
+            this(0);
+        }
+
+        public static AndroidFontLookupFetchAllFontFilesParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static AndroidFontLookupFetchAllFontFilesParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static AndroidFontLookupFetchAllFontFilesParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            AndroidFontLookupFetchAllFontFilesParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new AndroidFontLookupFetchAllFontFilesParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+
+
+    
+    static final class AndroidFontLookupFetchAllFontFilesResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public java.util.Map<String, org.chromium.mojo_base.mojom.ReadOnlyFile> fontFiles;
+
+        private AndroidFontLookupFetchAllFontFilesResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public AndroidFontLookupFetchAllFontFilesResponseParams() {
+            this(0);
+        }
+
+        public static AndroidFontLookupFetchAllFontFilesResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static AndroidFontLookupFetchAllFontFilesResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static AndroidFontLookupFetchAllFontFilesResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            AndroidFontLookupFetchAllFontFilesResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new AndroidFontLookupFetchAllFontFilesResponseParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    {
+                        decoder1.readDataHeaderForMap();
+                        String[] keys0;
+                        org.chromium.mojo_base.mojom.ReadOnlyFile[] values0;
+                        {
+                            
+                            org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, false);
+                            {
+                                org.chromium.mojo.bindings.DataHeader si2 = decoder2.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                                keys0 = new String[si2.elementsOrVersion];
+                                for (int i2 = 0; i2 < si2.elementsOrVersion; ++i2) {
+                                    
+                                    keys0[i2] = decoder2.readString(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i2, false);
+                                }
+                            }
+                        }
+                        {
+                            
+                            org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE, false);
+                            {
+                                org.chromium.mojo.bindings.DataHeader si2 = decoder2.readDataHeaderForPointerArray(keys0.length);
+                                values0 = new org.chromium.mojo_base.mojom.ReadOnlyFile[si2.elementsOrVersion];
+                                for (int i2 = 0; i2 < si2.elementsOrVersion; ++i2) {
+                                    
+                                    org.chromium.mojo.bindings.Decoder decoder3 = decoder2.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i2, false);
+                                    values0[i2] = org.chromium.mojo_base.mojom.ReadOnlyFile.decode(decoder3);
+                                }
+                            }
+                        }
+                        result.fontFiles = new java.util.HashMap<String, org.chromium.mojo_base.mojom.ReadOnlyFile>();
+                        for (int index0 = 0; index0 < keys0.length; ++index0) {
+                            result.fontFiles.put(keys0[index0],  values0[index0]);
+                        }
+                    }
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            if (this.fontFiles == null) {
+                encoder0.encodeNullPointer(8, false);
+            } else {
+                org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encoderForMap(8);
+                int size0 = this.fontFiles.size();
+                String[] keys0 = new String[size0];
+                org.chromium.mojo_base.mojom.ReadOnlyFile[] values0 = new org.chromium.mojo_base.mojom.ReadOnlyFile[size0];
+                int index0 = 0;
+                for (java.util.Map.Entry<String, org.chromium.mojo_base.mojom.ReadOnlyFile> entry0 : this.fontFiles.entrySet()) {
+                    keys0[index0] = entry0.getKey();
+                    values0[index0] = entry0.getValue();
+                    ++index0;
+                }
+                
+                {
+                    org.chromium.mojo.bindings.Encoder encoder2 = encoder1.encodePointerArray(keys0.length, org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                    for (int i1 = 0; i1 < keys0.length; ++i1) {
+                        
+                        encoder2.encode(keys0[i1], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                    }
+                }
+                
+                {
+                    org.chromium.mojo.bindings.Encoder encoder2 = encoder1.encodePointerArray(values0.length, org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                    for (int i1 = 0; i1 < values0.length; ++i1) {
+                        
+                        encoder2.encode(values0[i1], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                    }
+                }
+            }
+        }
+    }
+
+    static class AndroidFontLookupFetchAllFontFilesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final AndroidFontLookup.FetchAllFontFiles_Response mCallback;
+
+        AndroidFontLookupFetchAllFontFilesResponseParamsForwardToCallback(AndroidFontLookup.FetchAllFontFiles_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(FETCH_ALL_FONT_FILES_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                AndroidFontLookupFetchAllFontFilesResponseParams response = AndroidFontLookupFetchAllFontFilesResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.fontFiles);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class AndroidFontLookupFetchAllFontFilesResponseParamsProxyToResponder implements AndroidFontLookup.FetchAllFontFiles_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        AndroidFontLookupFetchAllFontFilesResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(java.util.Map<String, org.chromium.mojo_base.mojom.ReadOnlyFile> fontFiles) {
+            AndroidFontLookupFetchAllFontFilesResponseParams _response = new AndroidFontLookupFetchAllFontFilesResponseParams();
+
+            _response.fontFiles = fontFiles;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    FETCH_ALL_FONT_FILES_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);
         }

@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class WebSocketAuthenticationHandler_Internal {
 
@@ -61,7 +63,7 @@ class WebSocketAuthenticationHandler_Internal {
         @Override
         public void onAuthRequired(
 AuthChallengeInfo info, HttpResponseHeaders headers, IpEndPoint remoteEndpoint, 
-OnAuthRequiredResponse callback) {
+OnAuthRequired_Response callback) {
 
             WebSocketAuthenticationHandlerOnAuthRequiredParams _message = new WebSocketAuthenticationHandlerOnAuthRequiredParams();
 
@@ -313,9 +315,9 @@ OnAuthRequiredResponse callback) {
 
     static class WebSocketAuthenticationHandlerOnAuthRequiredResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final WebSocketAuthenticationHandler.OnAuthRequiredResponse mCallback;
+        private final WebSocketAuthenticationHandler.OnAuthRequired_Response mCallback;
 
-        WebSocketAuthenticationHandlerOnAuthRequiredResponseParamsForwardToCallback(WebSocketAuthenticationHandler.OnAuthRequiredResponse callback) {
+        WebSocketAuthenticationHandlerOnAuthRequiredResponseParamsForwardToCallback(WebSocketAuthenticationHandler.OnAuthRequired_Response callback) {
             this.mCallback = callback;
         }
 
@@ -340,7 +342,7 @@ OnAuthRequiredResponse callback) {
         }
     }
 
-    static class WebSocketAuthenticationHandlerOnAuthRequiredResponseParamsProxyToResponder implements WebSocketAuthenticationHandler.OnAuthRequiredResponse {
+    static class WebSocketAuthenticationHandlerOnAuthRequiredResponseParamsProxyToResponder implements WebSocketAuthenticationHandler.OnAuthRequired_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

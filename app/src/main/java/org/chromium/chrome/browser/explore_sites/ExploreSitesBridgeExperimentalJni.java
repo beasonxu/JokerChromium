@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import java.lang.Override;
 import java.lang.String;
 import java.util.List;
-import javax.annotation.Generated;
 import org.chromium.base.Callback;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
@@ -12,9 +11,8 @@ import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.chrome.browser.profiles.Profile;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ExploreSitesBridgeExperimentalJni implements ExploreSitesBridgeExperimental.Natives {
+class ExploreSitesBridgeExperimentalJni implements ExploreSitesBridgeExperimental.Natives {
   private static ExploreSitesBridgeExperimental.Natives testInstance;
 
   public static final JniStaticTestMocker<ExploreSitesBridgeExperimental.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.explore_sites.ExploreSitesBridgeExperimental.Natives>() {

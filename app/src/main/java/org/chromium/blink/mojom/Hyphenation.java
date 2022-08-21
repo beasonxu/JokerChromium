@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface Hyphenation extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface Hyphenation extends org.chromium.mojo.bindings.Interface {
 
     Manager<Hyphenation, Hyphenation.Proxy> MANAGER = Hyphenation_Internal.MANAGER;
 
-
     void openDictionary(
 String locale, 
-OpenDictionaryResponse callback);
+OpenDictionary_Response callback);
 
-    interface OpenDictionaryResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.ReadOnlyFile> { }
+    interface OpenDictionary_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.ReadOnlyFile> { }
 
 
 }

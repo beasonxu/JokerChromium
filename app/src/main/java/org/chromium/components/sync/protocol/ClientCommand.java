@@ -524,6 +524,148 @@ public  final class ClientCommand extends
     customNudgeDelays_.remove(index);
   }
 
+  public static final int EXTENSION_TYPES_MAX_TOKENS_FIELD_NUMBER = 9;
+  private int extensionTypesMaxTokens_;
+  /**
+   * <pre>
+   * Configuration for commit quota of extension-related data types.
+   * The maximum count of tokens (=initial at browser startup) and the
+   * interval for refilling one more token if not at maximum.
+   * </pre>
+   *
+   * <code>optional int32 extension_types_max_tokens = 9;</code>
+   * @return Whether the extensionTypesMaxTokens field is set.
+   */
+  @java.lang.Override
+  public boolean hasExtensionTypesMaxTokens() {
+    return ((bitField0_ & 0x00000080) != 0);
+  }
+  /**
+   * <pre>
+   * Configuration for commit quota of extension-related data types.
+   * The maximum count of tokens (=initial at browser startup) and the
+   * interval for refilling one more token if not at maximum.
+   * </pre>
+   *
+   * <code>optional int32 extension_types_max_tokens = 9;</code>
+   * @return The extensionTypesMaxTokens.
+   */
+  @java.lang.Override
+  public int getExtensionTypesMaxTokens() {
+    return extensionTypesMaxTokens_;
+  }
+  /**
+   * <pre>
+   * Configuration for commit quota of extension-related data types.
+   * The maximum count of tokens (=initial at browser startup) and the
+   * interval for refilling one more token if not at maximum.
+   * </pre>
+   *
+   * <code>optional int32 extension_types_max_tokens = 9;</code>
+   * @param value The extensionTypesMaxTokens to set.
+   */
+  private void setExtensionTypesMaxTokens(int value) {
+    bitField0_ |= 0x00000080;
+    extensionTypesMaxTokens_ = value;
+  }
+  /**
+   * <pre>
+   * Configuration for commit quota of extension-related data types.
+   * The maximum count of tokens (=initial at browser startup) and the
+   * interval for refilling one more token if not at maximum.
+   * </pre>
+   *
+   * <code>optional int32 extension_types_max_tokens = 9;</code>
+   */
+  private void clearExtensionTypesMaxTokens() {
+    bitField0_ = (bitField0_ & ~0x00000080);
+    extensionTypesMaxTokens_ = 0;
+  }
+
+  public static final int EXTENSION_TYPES_REFILL_INTERVAL_SECONDS_FIELD_NUMBER = 10;
+  private int extensionTypesRefillIntervalSeconds_;
+  /**
+   * <code>optional int32 extension_types_refill_interval_seconds = 10;</code>
+   * @return Whether the extensionTypesRefillIntervalSeconds field is set.
+   */
+  @java.lang.Override
+  public boolean hasExtensionTypesRefillIntervalSeconds() {
+    return ((bitField0_ & 0x00000100) != 0);
+  }
+  /**
+   * <code>optional int32 extension_types_refill_interval_seconds = 10;</code>
+   * @return The extensionTypesRefillIntervalSeconds.
+   */
+  @java.lang.Override
+  public int getExtensionTypesRefillIntervalSeconds() {
+    return extensionTypesRefillIntervalSeconds_;
+  }
+  /**
+   * <code>optional int32 extension_types_refill_interval_seconds = 10;</code>
+   * @param value The extensionTypesRefillIntervalSeconds to set.
+   */
+  private void setExtensionTypesRefillIntervalSeconds(int value) {
+    bitField0_ |= 0x00000100;
+    extensionTypesRefillIntervalSeconds_ = value;
+  }
+  /**
+   * <code>optional int32 extension_types_refill_interval_seconds = 10;</code>
+   */
+  private void clearExtensionTypesRefillIntervalSeconds() {
+    bitField0_ = (bitField0_ & ~0x00000100);
+    extensionTypesRefillIntervalSeconds_ = 0;
+  }
+
+  public static final int EXTENSION_TYPES_DEPLETED_QUOTA_NUDGE_DELAY_SECONDS_FIELD_NUMBER = 11;
+  private int extensionTypesDepletedQuotaNudgeDelaySeconds_;
+  /**
+   * <pre>
+   * Extended nudge delay for data types with depleted quota.
+   * </pre>
+   *
+   * <code>optional int32 extension_types_depleted_quota_nudge_delay_seconds = 11;</code>
+   * @return Whether the extensionTypesDepletedQuotaNudgeDelaySeconds field is set.
+   */
+  @java.lang.Override
+  public boolean hasExtensionTypesDepletedQuotaNudgeDelaySeconds() {
+    return ((bitField0_ & 0x00000200) != 0);
+  }
+  /**
+   * <pre>
+   * Extended nudge delay for data types with depleted quota.
+   * </pre>
+   *
+   * <code>optional int32 extension_types_depleted_quota_nudge_delay_seconds = 11;</code>
+   * @return The extensionTypesDepletedQuotaNudgeDelaySeconds.
+   */
+  @java.lang.Override
+  public int getExtensionTypesDepletedQuotaNudgeDelaySeconds() {
+    return extensionTypesDepletedQuotaNudgeDelaySeconds_;
+  }
+  /**
+   * <pre>
+   * Extended nudge delay for data types with depleted quota.
+   * </pre>
+   *
+   * <code>optional int32 extension_types_depleted_quota_nudge_delay_seconds = 11;</code>
+   * @param value The extensionTypesDepletedQuotaNudgeDelaySeconds to set.
+   */
+  private void setExtensionTypesDepletedQuotaNudgeDelaySeconds(int value) {
+    bitField0_ |= 0x00000200;
+    extensionTypesDepletedQuotaNudgeDelaySeconds_ = value;
+  }
+  /**
+   * <pre>
+   * Extended nudge delay for data types with depleted quota.
+   * </pre>
+   *
+   * <code>optional int32 extension_types_depleted_quota_nudge_delay_seconds = 11;</code>
+   */
+  private void clearExtensionTypesDepletedQuotaNudgeDelaySeconds() {
+    bitField0_ = (bitField0_ & ~0x00000200);
+    extensionTypesDepletedQuotaNudgeDelaySeconds_ = 0;
+  }
+
   public static org.chromium.components.sync.protocol.ClientCommand parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1157,6 +1299,154 @@ public  final class ClientCommand extends
       return this;
     }
 
+    /**
+     * <pre>
+     * Configuration for commit quota of extension-related data types.
+     * The maximum count of tokens (=initial at browser startup) and the
+     * interval for refilling one more token if not at maximum.
+     * </pre>
+     *
+     * <code>optional int32 extension_types_max_tokens = 9;</code>
+     * @return Whether the extensionTypesMaxTokens field is set.
+     */
+    @java.lang.Override
+    public boolean hasExtensionTypesMaxTokens() {
+      return instance.hasExtensionTypesMaxTokens();
+    }
+    /**
+     * <pre>
+     * Configuration for commit quota of extension-related data types.
+     * The maximum count of tokens (=initial at browser startup) and the
+     * interval for refilling one more token if not at maximum.
+     * </pre>
+     *
+     * <code>optional int32 extension_types_max_tokens = 9;</code>
+     * @return The extensionTypesMaxTokens.
+     */
+    @java.lang.Override
+    public int getExtensionTypesMaxTokens() {
+      return instance.getExtensionTypesMaxTokens();
+    }
+    /**
+     * <pre>
+     * Configuration for commit quota of extension-related data types.
+     * The maximum count of tokens (=initial at browser startup) and the
+     * interval for refilling one more token if not at maximum.
+     * </pre>
+     *
+     * <code>optional int32 extension_types_max_tokens = 9;</code>
+     * @param value The extensionTypesMaxTokens to set.
+     * @return This builder for chaining.
+     */
+    public Builder setExtensionTypesMaxTokens(int value) {
+      copyOnWrite();
+      instance.setExtensionTypesMaxTokens(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * Configuration for commit quota of extension-related data types.
+     * The maximum count of tokens (=initial at browser startup) and the
+     * interval for refilling one more token if not at maximum.
+     * </pre>
+     *
+     * <code>optional int32 extension_types_max_tokens = 9;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearExtensionTypesMaxTokens() {
+      copyOnWrite();
+      instance.clearExtensionTypesMaxTokens();
+      return this;
+    }
+
+    /**
+     * <code>optional int32 extension_types_refill_interval_seconds = 10;</code>
+     * @return Whether the extensionTypesRefillIntervalSeconds field is set.
+     */
+    @java.lang.Override
+    public boolean hasExtensionTypesRefillIntervalSeconds() {
+      return instance.hasExtensionTypesRefillIntervalSeconds();
+    }
+    /**
+     * <code>optional int32 extension_types_refill_interval_seconds = 10;</code>
+     * @return The extensionTypesRefillIntervalSeconds.
+     */
+    @java.lang.Override
+    public int getExtensionTypesRefillIntervalSeconds() {
+      return instance.getExtensionTypesRefillIntervalSeconds();
+    }
+    /**
+     * <code>optional int32 extension_types_refill_interval_seconds = 10;</code>
+     * @param value The extensionTypesRefillIntervalSeconds to set.
+     * @return This builder for chaining.
+     */
+    public Builder setExtensionTypesRefillIntervalSeconds(int value) {
+      copyOnWrite();
+      instance.setExtensionTypesRefillIntervalSeconds(value);
+      return this;
+    }
+    /**
+     * <code>optional int32 extension_types_refill_interval_seconds = 10;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearExtensionTypesRefillIntervalSeconds() {
+      copyOnWrite();
+      instance.clearExtensionTypesRefillIntervalSeconds();
+      return this;
+    }
+
+    /**
+     * <pre>
+     * Extended nudge delay for data types with depleted quota.
+     * </pre>
+     *
+     * <code>optional int32 extension_types_depleted_quota_nudge_delay_seconds = 11;</code>
+     * @return Whether the extensionTypesDepletedQuotaNudgeDelaySeconds field is set.
+     */
+    @java.lang.Override
+    public boolean hasExtensionTypesDepletedQuotaNudgeDelaySeconds() {
+      return instance.hasExtensionTypesDepletedQuotaNudgeDelaySeconds();
+    }
+    /**
+     * <pre>
+     * Extended nudge delay for data types with depleted quota.
+     * </pre>
+     *
+     * <code>optional int32 extension_types_depleted_quota_nudge_delay_seconds = 11;</code>
+     * @return The extensionTypesDepletedQuotaNudgeDelaySeconds.
+     */
+    @java.lang.Override
+    public int getExtensionTypesDepletedQuotaNudgeDelaySeconds() {
+      return instance.getExtensionTypesDepletedQuotaNudgeDelaySeconds();
+    }
+    /**
+     * <pre>
+     * Extended nudge delay for data types with depleted quota.
+     * </pre>
+     *
+     * <code>optional int32 extension_types_depleted_quota_nudge_delay_seconds = 11;</code>
+     * @param value The extensionTypesDepletedQuotaNudgeDelaySeconds to set.
+     * @return This builder for chaining.
+     */
+    public Builder setExtensionTypesDepletedQuotaNudgeDelaySeconds(int value) {
+      copyOnWrite();
+      instance.setExtensionTypesDepletedQuotaNudgeDelaySeconds(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * Extended nudge delay for data types with depleted quota.
+     * </pre>
+     *
+     * <code>optional int32 extension_types_depleted_quota_nudge_delay_seconds = 11;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearExtensionTypesDepletedQuotaNudgeDelaySeconds() {
+      copyOnWrite();
+      instance.clearExtensionTypesDepletedQuotaNudgeDelaySeconds();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:sync_pb.ClientCommand)
   }
   @java.lang.Override
@@ -1183,11 +1473,14 @@ public  final class ClientCommand extends
             "guRetryDelaySeconds_",
             "customNudgeDelays_",
             org.chromium.components.sync.protocol.CustomNudgeDelay.class,
+            "extensionTypesMaxTokens_",
+            "extensionTypesRefillIntervalSeconds_",
+            "extensionTypesDepletedQuotaNudgeDelaySeconds_",
           };
           java.lang.String info =
-              "\u0001\b\u0000\u0001\u0001\b\b\u0000\u0001\u0000\u0001\u1004\u0000\u0002\u1004\u0001" +
-              "\u0003\u1004\u0002\u0004\u1004\u0003\u0005\u1004\u0004\u0006\u1004\u0005\u0007\u1004" +
-              "\u0006\b\u001b";
+              "\u0001\u000b\u0000\u0001\u0001\u000b\u000b\u0000\u0001\u0000\u0001\u1004\u0000\u0002" +
+              "\u1004\u0001\u0003\u1004\u0002\u0004\u1004\u0003\u0005\u1004\u0004\u0006\u1004\u0005" +
+              "\u0007\u1004\u0006\b\u001b\t\u1004\u0007\n\u1004\b\u000b\u1004\t";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

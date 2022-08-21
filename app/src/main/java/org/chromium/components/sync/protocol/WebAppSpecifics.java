@@ -23,6 +23,7 @@ public  final class WebAppSpecifics extends
     iconInfos_ = emptyProtobufList();
     userPageOrdinal_ = "";
     userLaunchOrdinal_ = "";
+    manifestId_ = "";
   }
   /**
    * <pre>
@@ -51,6 +52,15 @@ public  final class WebAppSpecifics extends
      * <code>STANDALONE = 3;</code>
      */
     STANDALONE(3),
+    /**
+     * <pre>
+     * FULLSCREEN is never serialized.
+     * WINDOW_CONTROLS_OVERLAY is never serialized.
+     * </pre>
+     *
+     * <code>TABBED = 6;</code>
+     */
+    TABBED(6),
     ;
 
     /**
@@ -69,6 +79,15 @@ public  final class WebAppSpecifics extends
      * <code>STANDALONE = 3;</code>
      */
     public static final int STANDALONE_VALUE = 3;
+    /**
+     * <pre>
+     * FULLSCREEN is never serialized.
+     * WINDOW_CONTROLS_OVERLAY is never serialized.
+     * </pre>
+     *
+     * <code>TABBED = 6;</code>
+     */
+    public static final int TABBED_VALUE = 6;
 
 
     @java.lang.Override
@@ -91,6 +110,7 @@ public  final class WebAppSpecifics extends
         case 0: return UNSPECIFIED;
         case 1: return BROWSER;
         case 3: return STANDALONE;
+        case 6: return TABBED;
         default: return null;
       }
     }
@@ -623,6 +643,84 @@ public  final class WebAppSpecifics extends
       com.google.protobuf.ByteString value) {
     userLaunchOrdinal_ = value.toStringUtf8();
     bitField0_ |= 0x00000040;
+  }
+
+  public static final int MANIFEST_ID_FIELD_NUMBER = 9;
+  private java.lang.String manifestId_;
+  /**
+   * <pre>
+   * Used to store id specified in the manifest.
+   * </pre>
+   *
+   * <code>optional string manifest_id = 9;</code>
+   * @return Whether the manifestId field is set.
+   */
+  @java.lang.Override
+  public boolean hasManifestId() {
+    return ((bitField0_ & 0x00000080) != 0);
+  }
+  /**
+   * <pre>
+   * Used to store id specified in the manifest.
+   * </pre>
+   *
+   * <code>optional string manifest_id = 9;</code>
+   * @return The manifestId.
+   */
+  @java.lang.Override
+  public java.lang.String getManifestId() {
+    return manifestId_;
+  }
+  /**
+   * <pre>
+   * Used to store id specified in the manifest.
+   * </pre>
+   *
+   * <code>optional string manifest_id = 9;</code>
+   * @return The bytes for manifestId.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getManifestIdBytes() {
+    return com.google.protobuf.ByteString.copyFromUtf8(manifestId_);
+  }
+  /**
+   * <pre>
+   * Used to store id specified in the manifest.
+   * </pre>
+   *
+   * <code>optional string manifest_id = 9;</code>
+   * @param value The manifestId to set.
+   */
+  private void setManifestId(
+      java.lang.String value) {
+    value.getClass();
+  bitField0_ |= 0x00000080;
+    manifestId_ = value;
+  }
+  /**
+   * <pre>
+   * Used to store id specified in the manifest.
+   * </pre>
+   *
+   * <code>optional string manifest_id = 9;</code>
+   */
+  private void clearManifestId() {
+    bitField0_ = (bitField0_ & ~0x00000080);
+    manifestId_ = getDefaultInstance().getManifestId();
+  }
+  /**
+   * <pre>
+   * Used to store id specified in the manifest.
+   * </pre>
+   *
+   * <code>optional string manifest_id = 9;</code>
+   * @param value The bytes for manifestId to set.
+   */
+  private void setManifestIdBytes(
+      com.google.protobuf.ByteString value) {
+    manifestId_ = value.toStringUtf8();
+    bitField0_ |= 0x00000080;
   }
 
   public static org.chromium.components.sync.protocol.WebAppSpecifics parseFrom(
@@ -1244,6 +1342,87 @@ public  final class WebAppSpecifics extends
       return this;
     }
 
+    /**
+     * <pre>
+     * Used to store id specified in the manifest.
+     * </pre>
+     *
+     * <code>optional string manifest_id = 9;</code>
+     * @return Whether the manifestId field is set.
+     */
+    @java.lang.Override
+    public boolean hasManifestId() {
+      return instance.hasManifestId();
+    }
+    /**
+     * <pre>
+     * Used to store id specified in the manifest.
+     * </pre>
+     *
+     * <code>optional string manifest_id = 9;</code>
+     * @return The manifestId.
+     */
+    @java.lang.Override
+    public java.lang.String getManifestId() {
+      return instance.getManifestId();
+    }
+    /**
+     * <pre>
+     * Used to store id specified in the manifest.
+     * </pre>
+     *
+     * <code>optional string manifest_id = 9;</code>
+     * @return The bytes for manifestId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getManifestIdBytes() {
+      return instance.getManifestIdBytes();
+    }
+    /**
+     * <pre>
+     * Used to store id specified in the manifest.
+     * </pre>
+     *
+     * <code>optional string manifest_id = 9;</code>
+     * @param value The manifestId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setManifestId(
+        java.lang.String value) {
+      copyOnWrite();
+      instance.setManifestId(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * Used to store id specified in the manifest.
+     * </pre>
+     *
+     * <code>optional string manifest_id = 9;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearManifestId() {
+      copyOnWrite();
+      instance.clearManifestId();
+      return this;
+    }
+    /**
+     * <pre>
+     * Used to store id specified in the manifest.
+     * </pre>
+     *
+     * <code>optional string manifest_id = 9;</code>
+     * @param value The bytes for manifestId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setManifestIdBytes(
+        com.google.protobuf.ByteString value) {
+      copyOnWrite();
+      instance.setManifestIdBytes(value);
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:sync_pb.WebAppSpecifics)
   }
   @java.lang.Override
@@ -1271,11 +1450,12 @@ public  final class WebAppSpecifics extends
             org.chromium.components.sync.protocol.WebAppIconInfo.class,
             "userPageOrdinal_",
             "userLaunchOrdinal_",
+            "manifestId_",
           };
           java.lang.String info =
-              "\u0001\b\u0000\u0001\u0001\b\b\u0000\u0001\u0000\u0001\u1008\u0000\u0002\u1008\u0001" +
+              "\u0001\t\u0000\u0001\u0001\t\t\u0000\u0001\u0000\u0001\u1008\u0000\u0002\u1008\u0001" +
               "\u0003\u100c\u0002\u0004\u100b\u0003\u0005\u1008\u0004\u0006\u001b\u0007\u1008\u0005" +
-              "\b\u1008\u0006";
+              "\b\u1008\u0006\t\u1008\u0007";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

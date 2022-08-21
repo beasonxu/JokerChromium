@@ -16,6 +16,15 @@
     android:orientation="horizontal"
     tools:ignore="UnusedResources" >
 
+    <ImageView
+        android:id="@+id/start_dropdown_icon"
+        android:layout_width="@dimen/autofill_dropdown_refresh_icon_width"
+        android:layout_height="@dimen/autofill_dropdown_refresh_icon_height"
+        android:scaleType="centerInside"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="@dimen/autofill_dropdown_refresh_icon_margin"
+        tools:ignore="ContentDescription" />
+
     <!-- TODO(crbug.com/903554): Remove the fixed layout_height in favor of an equivalent line
          height and padding. -->
     <LinearLayout
@@ -34,7 +43,7 @@
             android:ellipsize="end"
             android:includeFontPadding="false"
             android:singleLine="true"
-            android:textAppearance="@style/TextAppearance.TextMedium.Primary" />
+            android:textAppearance="@style/TextAppearance.TextMedium.Primary.Baseline" />
 
         <TextView
             android:id="@+id/dropdown_sublabel"
@@ -44,7 +53,7 @@
             android:includeFontPadding="false"
             android:singleLine="true"
             android:textAlignment="viewStart"
-            android:textAppearance="@style/TextAppearance.TextSmall.Secondary" />
+            android:textAppearance="@style/TextAppearance.TextSmall.Secondary.Baseline" />
 
         <TextView
             android:id="@+id/dropdown_item_tag"
@@ -54,7 +63,7 @@
             android:includeFontPadding="false"
             android:singleLine="true"
             android:textAlignment="viewStart"
-            android:textAppearance="@style/TextAppearance.TextSmall.Secondary" />
+            android:textAppearance="@style/TextAppearance.TextSmall.Secondary.Baseline" />
     </LinearLayout>
 
     <ImageView

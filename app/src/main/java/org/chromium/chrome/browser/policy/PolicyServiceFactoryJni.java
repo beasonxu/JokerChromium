@@ -1,7 +1,6 @@
 package org.chromium.chrome.browser.policy;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
@@ -9,9 +8,8 @@ import org.chromium.base.natives.GEN_JNI;
 import org.chromium.chrome.browser.profiles.Profile;
 import org.chromium.components.policy.PolicyService;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-public final class PolicyServiceFactoryJni implements PolicyServiceFactory.Natives {
+public class PolicyServiceFactoryJni implements PolicyServiceFactory.Natives {
   private static PolicyServiceFactory.Natives testInstance;
 
   public static final JniStaticTestMocker<PolicyServiceFactory.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.policy.PolicyServiceFactory.Natives>() {

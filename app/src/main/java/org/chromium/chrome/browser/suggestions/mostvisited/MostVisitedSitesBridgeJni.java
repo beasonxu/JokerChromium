@@ -1,7 +1,6 @@
 package org.chromium.chrome.browser.suggestions.mostvisited;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
@@ -9,9 +8,8 @@ import org.chromium.base.natives.GEN_JNI;
 import org.chromium.chrome.browser.profiles.Profile;
 import org.chromium.url.GURL;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class MostVisitedSitesBridgeJni implements MostVisitedSitesBridge.Natives {
+class MostVisitedSitesBridgeJni implements MostVisitedSitesBridge.Natives {
   private static MostVisitedSitesBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<MostVisitedSitesBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.suggestions.mostvisited.MostVisitedSitesBridge.Natives>() {
@@ -67,16 +65,14 @@ final class MostVisitedSitesBridgeJni implements MostVisitedSitesBridge.Natives 
 
   @Override
   public void recordTileImpression(long nativeMostVisitedSitesBridge, MostVisitedSitesBridge caller,
-      int index, int type, int iconType, int titleSource, int source, long dataGenerationTimeMs,
-      GURL url) {
-    GEN_JNI.org_chromium_chrome_browser_suggestions_mostvisited_MostVisitedSitesBridge_recordTileImpression(nativeMostVisitedSitesBridge, caller, index, type, iconType, titleSource, source, dataGenerationTimeMs, url);
+      int index, int type, int iconType, int titleSource, int source, GURL url) {
+    GEN_JNI.org_chromium_chrome_browser_suggestions_mostvisited_MostVisitedSitesBridge_recordTileImpression(nativeMostVisitedSitesBridge, caller, index, type, iconType, titleSource, source, url);
   }
 
   @Override
   public void recordOpenedMostVisitedItem(long nativeMostVisitedSitesBridge,
-      MostVisitedSitesBridge caller, int index, int tileType, int titleSource, int source,
-      long dataGenerationTimeMs) {
-    GEN_JNI.org_chromium_chrome_browser_suggestions_mostvisited_MostVisitedSitesBridge_recordOpenedMostVisitedItem(nativeMostVisitedSitesBridge, caller, index, tileType, titleSource, source, dataGenerationTimeMs);
+      MostVisitedSitesBridge caller, int index, int tileType, int titleSource, int source) {
+    GEN_JNI.org_chromium_chrome_browser_suggestions_mostvisited_MostVisitedSitesBridge_recordOpenedMostVisitedItem(nativeMostVisitedSitesBridge, caller, index, tileType, titleSource, source);
   }
 
   public static MostVisitedSitesBridge.Natives get() {

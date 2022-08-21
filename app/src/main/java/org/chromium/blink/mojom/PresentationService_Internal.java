@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class PresentationService_Internal {
 
@@ -162,7 +164,7 @@ org.chromium.url.mojom.Url availabilityUrl) {
         @Override
         public void startPresentation(
 org.chromium.url.mojom.Url[] presentationUrls, 
-StartPresentationResponse callback) {
+StartPresentation_Response callback) {
 
             PresentationServiceStartPresentationParams _message = new PresentationServiceStartPresentationParams();
 
@@ -184,7 +186,7 @@ StartPresentationResponse callback) {
         @Override
         public void reconnectPresentation(
 org.chromium.url.mojom.Url[] presentationUrls, String presentationId, 
-ReconnectPresentationResponse callback) {
+ReconnectPresentation_Response callback) {
 
             PresentationServiceReconnectPresentationParams _message = new PresentationServiceReconnectPresentationParams();
 
@@ -936,9 +938,9 @@ org.chromium.url.mojom.Url presentationUrl, String presentationId) {
 
     static class PresentationServiceStartPresentationResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PresentationService.StartPresentationResponse mCallback;
+        private final PresentationService.StartPresentation_Response mCallback;
 
-        PresentationServiceStartPresentationResponseParamsForwardToCallback(PresentationService.StartPresentationResponse callback) {
+        PresentationServiceStartPresentationResponseParamsForwardToCallback(PresentationService.StartPresentation_Response callback) {
             this.mCallback = callback;
         }
 
@@ -963,7 +965,7 @@ org.chromium.url.mojom.Url presentationUrl, String presentationId) {
         }
     }
 
-    static class PresentationServiceStartPresentationResponseParamsProxyToResponder implements PresentationService.StartPresentationResponse {
+    static class PresentationServiceStartPresentationResponseParamsProxyToResponder implements PresentationService.StartPresentation_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1158,9 +1160,9 @@ org.chromium.url.mojom.Url presentationUrl, String presentationId) {
 
     static class PresentationServiceReconnectPresentationResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PresentationService.ReconnectPresentationResponse mCallback;
+        private final PresentationService.ReconnectPresentation_Response mCallback;
 
-        PresentationServiceReconnectPresentationResponseParamsForwardToCallback(PresentationService.ReconnectPresentationResponse callback) {
+        PresentationServiceReconnectPresentationResponseParamsForwardToCallback(PresentationService.ReconnectPresentation_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1185,7 +1187,7 @@ org.chromium.url.mojom.Url presentationUrl, String presentationId) {
         }
     }
 
-    static class PresentationServiceReconnectPresentationResponseParamsProxyToResponder implements PresentationService.ReconnectPresentationResponse {
+    static class PresentationServiceReconnectPresentationResponseParamsProxyToResponder implements PresentationService.ReconnectPresentation_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

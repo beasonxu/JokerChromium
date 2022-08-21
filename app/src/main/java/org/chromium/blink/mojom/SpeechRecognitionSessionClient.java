@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface SpeechRecognitionSessionClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,40 +25,32 @@ public interface SpeechRecognitionSessionClient extends org.chromium.mojo.bindin
 
     Manager<SpeechRecognitionSessionClient, SpeechRecognitionSessionClient.Proxy> MANAGER = SpeechRecognitionSessionClient_Internal.MANAGER;
 
-
     void resultRetrieved(
 SpeechRecognitionResult[] results);
-
 
 
     void errorOccurred(
 SpeechRecognitionError error);
 
 
-
     void started(
 );
-
 
 
     void audioStarted(
 );
 
 
-
     void soundStarted(
 );
-
 
 
     void soundEnded(
 );
 
 
-
     void audioEnded(
 );
-
 
 
     void ended(

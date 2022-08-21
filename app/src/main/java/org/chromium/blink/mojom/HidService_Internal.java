@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class HidService_Internal {
 
@@ -55,6 +57,8 @@ class HidService_Internal {
 
     private static final int CONNECT_ORDINAL = 3;
 
+    private static final int FORGET_ORDINAL = 4;
+
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements HidService.Proxy {
 
@@ -84,7 +88,7 @@ org.chromium.mojo.bindings.AssociatedInterfaceNotSupported client) {
         @Override
         public void getDevices(
 
-GetDevicesResponse callback) {
+GetDevices_Response callback) {
 
             HidServiceGetDevicesParams _message = new HidServiceGetDevicesParams();
 
@@ -103,12 +107,14 @@ GetDevicesResponse callback) {
 
         @Override
         public void requestDevice(
-HidDeviceFilter[] filters, 
-RequestDeviceResponse callback) {
+HidDeviceFilter[] filters, HidDeviceFilter[] exclusionFilters, 
+RequestDevice_Response callback) {
 
             HidServiceRequestDeviceParams _message = new HidServiceRequestDeviceParams();
 
             _message.filters = filters;
+
+            _message.exclusionFilters = exclusionFilters;
 
 
             getProxyHandler().getMessageReceiver().acceptWithResponder(
@@ -126,7 +132,7 @@ RequestDeviceResponse callback) {
         @Override
         public void connect(
 String deviceGuid, org.chromium.device.mojom.HidConnectionClient client, 
-ConnectResponse callback) {
+Connect_Response callback) {
 
             HidServiceConnectParams _message = new HidServiceConnectParams();
 
@@ -143,6 +149,28 @@ ConnectResponse callback) {
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
                                     0)),
                     new HidServiceConnectResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void forget(
+org.chromium.device.mojom.HidDeviceInfo deviceInfo, 
+Forget_Response callback) {
+
+            HidServiceForgetParams _message = new HidServiceForgetParams();
+
+            _message.deviceInfo = deviceInfo;
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    FORGET_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new HidServiceForgetResponseParamsForwardToCallback(callback));
 
         }
 
@@ -186,6 +214,8 @@ ConnectResponse callback) {
                         getImpl().registerClient(data.client);
                         return true;
                     }
+
+
 
 
 
@@ -249,7 +279,7 @@ ConnectResponse callback) {
                         HidServiceRequestDeviceParams data =
                                 HidServiceRequestDeviceParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().requestDevice(data.filters, new HidServiceRequestDeviceResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().requestDevice(data.filters, data.exclusionFilters, new HidServiceRequestDeviceResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -265,6 +295,21 @@ ConnectResponse callback) {
                                 HidServiceConnectParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().connect(data.deviceGuid, data.client, new HidServiceConnectResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
+                    case FORGET_ORDINAL: {
+
+                        HidServiceForgetParams data =
+                                HidServiceForgetParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().forget(data.deviceInfo, new HidServiceForgetResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -479,9 +524,9 @@ ConnectResponse callback) {
 
     static class HidServiceGetDevicesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final HidService.GetDevicesResponse mCallback;
+        private final HidService.GetDevices_Response mCallback;
 
-        HidServiceGetDevicesResponseParamsForwardToCallback(HidService.GetDevicesResponse callback) {
+        HidServiceGetDevicesResponseParamsForwardToCallback(HidService.GetDevices_Response callback) {
             this.mCallback = callback;
         }
 
@@ -506,7 +551,7 @@ ConnectResponse callback) {
         }
     }
 
-    static class HidServiceGetDevicesResponseParamsProxyToResponder implements HidService.GetDevicesResponse {
+    static class HidServiceGetDevicesResponseParamsProxyToResponder implements HidService.GetDevices_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -543,10 +588,11 @@ ConnectResponse callback) {
     
     static final class HidServiceRequestDeviceParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public HidDeviceFilter[] filters;
+        public HidDeviceFilter[] exclusionFilters;
 
         private HidServiceRequestDeviceParams(int version) {
             super(STRUCT_SIZE, version);
@@ -594,6 +640,19 @@ ConnectResponse callback) {
                         }
                     }
                     }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                    {
+                        org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                        result.exclusionFilters = new HidDeviceFilter[si1.elementsOrVersion];
+                        for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
+                            
+                            org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                            result.exclusionFilters[i1] = HidDeviceFilter.decode(decoder2);
+                        }
+                    }
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -613,6 +672,16 @@ ConnectResponse callback) {
                 for (int i0 = 0; i0 < this.filters.length; ++i0) {
                     
                     encoder1.encode(this.filters[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
+                }
+            }
+            
+            if (this.exclusionFilters == null) {
+                encoder0.encodeNullPointer(16, false);
+            } else {
+                org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.exclusionFilters.length, 16, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                for (int i0 = 0; i0 < this.exclusionFilters.length; ++i0) {
+                    
+                    encoder1.encode(this.exclusionFilters[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
                 }
             }
         }
@@ -700,9 +769,9 @@ ConnectResponse callback) {
 
     static class HidServiceRequestDeviceResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final HidService.RequestDeviceResponse mCallback;
+        private final HidService.RequestDevice_Response mCallback;
 
-        HidServiceRequestDeviceResponseParamsForwardToCallback(HidService.RequestDeviceResponse callback) {
+        HidServiceRequestDeviceResponseParamsForwardToCallback(HidService.RequestDevice_Response callback) {
             this.mCallback = callback;
         }
 
@@ -727,7 +796,7 @@ ConnectResponse callback) {
         }
     }
 
-    static class HidServiceRequestDeviceResponseParamsProxyToResponder implements HidService.RequestDeviceResponse {
+    static class HidServiceRequestDeviceResponseParamsProxyToResponder implements HidService.RequestDevice_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -894,9 +963,9 @@ ConnectResponse callback) {
 
     static class HidServiceConnectResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final HidService.ConnectResponse mCallback;
+        private final HidService.Connect_Response mCallback;
 
-        HidServiceConnectResponseParamsForwardToCallback(HidService.ConnectResponse callback) {
+        HidServiceConnectResponseParamsForwardToCallback(HidService.Connect_Response callback) {
             this.mCallback = callback;
         }
 
@@ -921,7 +990,7 @@ ConnectResponse callback) {
         }
     }
 
-    static class HidServiceConnectResponseParamsProxyToResponder implements HidService.ConnectResponse {
+    static class HidServiceConnectResponseParamsProxyToResponder implements HidService.Connect_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -947,6 +1016,183 @@ ConnectResponse callback) {
                             mCore,
                             new org.chromium.mojo.bindings.MessageHeader(
                                     CONNECT_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class HidServiceForgetParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.device.mojom.HidDeviceInfo deviceInfo;
+
+        private HidServiceForgetParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public HidServiceForgetParams() {
+            this(0);
+        }
+
+        public static HidServiceForgetParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static HidServiceForgetParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static HidServiceForgetParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            HidServiceForgetParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new HidServiceForgetParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.deviceInfo = org.chromium.device.mojom.HidDeviceInfo.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.deviceInfo, 8, false);
+        }
+    }
+
+
+
+    
+    static final class HidServiceForgetResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private HidServiceForgetResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public HidServiceForgetResponseParams() {
+            this(0);
+        }
+
+        public static HidServiceForgetResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static HidServiceForgetResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static HidServiceForgetResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            HidServiceForgetResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new HidServiceForgetResponseParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+    static class HidServiceForgetResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final HidService.Forget_Response mCallback;
+
+        HidServiceForgetResponseParamsForwardToCallback(HidService.Forget_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(FORGET_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                mCallback.call();
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class HidServiceForgetResponseParamsProxyToResponder implements HidService.Forget_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        HidServiceForgetResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call() {
+            HidServiceForgetResponseParams _response = new HidServiceForgetResponseParams();
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    FORGET_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);

@@ -13,6 +13,8 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface CompositingModeReporter extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface CompositingModeReporter extends org.chromium.mojo.bindings.Inte
     }
 
     Manager<CompositingModeReporter, CompositingModeReporter.Proxy> MANAGER = CompositingModeReporter_Internal.MANAGER;
-
 
     void addCompositingModeWatcher(
 CompositingModeWatcher watcher);

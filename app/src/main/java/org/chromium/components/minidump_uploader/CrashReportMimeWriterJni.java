@@ -2,15 +2,13 @@ package org.chromium.components.minidump_uploader;
 
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class CrashReportMimeWriterJni implements CrashReportMimeWriter.Natives {
+class CrashReportMimeWriterJni implements CrashReportMimeWriter.Natives {
   private static CrashReportMimeWriter.Natives testInstance;
 
   public static final JniStaticTestMocker<CrashReportMimeWriter.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.minidump_uploader.CrashReportMimeWriter.Natives>() {
@@ -32,6 +30,11 @@ final class CrashReportMimeWriterJni implements CrashReportMimeWriter.Natives {
   @Override
   public String[] rewriteMinidumpsAsMIMEsAndGetCrashKeys(String srcDir, String destDir) {
     return (String[])GEN_JNI.org_chromium_components_minidump_1uploader_CrashReportMimeWriter_rewriteMinidumpsAsMIMEsAndGetCrashKeys(srcDir, destDir);
+  }
+
+  @Override
+  public void rewriteAnrsAsMIMEs(String[] anrFiles, String[] versionNumbers, String destDir) {
+    GEN_JNI.org_chromium_components_minidump_1uploader_CrashReportMimeWriter_rewriteAnrsAsMIMEs(anrFiles, versionNumbers, destDir);
   }
 
   public static CrashReportMimeWriter.Natives get() {

@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface BluetoothSystemClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface BluetoothSystemClient extends org.chromium.mojo.bindings.Interf
 
     Manager<BluetoothSystemClient, BluetoothSystemClient.Proxy> MANAGER = BluetoothSystemClient_Internal.MANAGER;
 
-
     void onStateChanged(
 int newState);
-
 
 
     void onScanStateChanged(

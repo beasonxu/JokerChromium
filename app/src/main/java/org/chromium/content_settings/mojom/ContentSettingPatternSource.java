@@ -13,6 +13,8 @@
 
 package org.chromium.content_settings.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class ContentSettingPatternSource extends org.chromium.mojo.bindings.Struct {
 

@@ -2,15 +2,13 @@ package org.chromium.base;
 
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.annotations.MainDex;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @MainDex
 @CheckDiscard("crbug.com/993421")
-final class FieldTrialListJni implements FieldTrialList.Natives {
+class FieldTrialListJni implements FieldTrialList.Natives {
   private static FieldTrialList.Natives testInstance;
 
   public static final JniStaticTestMocker<FieldTrialList.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.base.FieldTrialList.Natives>() {

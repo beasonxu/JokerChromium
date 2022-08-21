@@ -13,6 +13,8 @@
 
 package org.chromium.handwriting.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class HandwritingHints extends org.chromium.mojo.bindings.Struct {
 
@@ -67,7 +69,7 @@ public final class HandwritingHints extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.textContext = decoder0.readString(24, false);
+                result.textContext = decoder0.readString(24, true);
                 }
                 {
                     
@@ -89,7 +91,7 @@ public final class HandwritingHints extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.inputType, 16, false);
         
-        encoder0.encode(this.textContext, 24, false);
+        encoder0.encode(this.textContext, 24, true);
         
         encoder0.encode(this.alternatives, 32);
     }

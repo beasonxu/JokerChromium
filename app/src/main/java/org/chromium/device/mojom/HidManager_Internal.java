@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class HidManager_Internal {
 
@@ -26,7 +28,7 @@ class HidManager_Internal {
 
         @Override
         public int getVersion() {
-          return 1;
+          return 2;
         }
 
         @Override
@@ -67,7 +69,7 @@ class HidManager_Internal {
         @Override
         public void getDevicesAndSetClient(
 org.chromium.mojo.bindings.AssociatedInterfaceNotSupported client, 
-GetDevicesAndSetClientResponse callback) {
+GetDevicesAndSetClient_Response callback) {
 
             HidManagerGetDevicesAndSetClientParams _message = new HidManagerGetDevicesAndSetClientParams();
 
@@ -89,7 +91,7 @@ GetDevicesAndSetClientResponse callback) {
         @Override
         public void getDevices(
 
-GetDevicesResponse callback) {
+GetDevices_Response callback) {
 
             HidManagerGetDevicesParams _message = new HidManagerGetDevicesParams();
 
@@ -108,8 +110,8 @@ GetDevicesResponse callback) {
 
         @Override
         public void connect(
-String deviceGuid, HidConnectionClient connectionClient, HidConnectionWatcher watcher, boolean allowProtectedReports, 
-ConnectResponse callback) {
+String deviceGuid, HidConnectionClient connectionClient, HidConnectionWatcher watcher, boolean allowProtectedReports, boolean allowFidoReports, 
+Connect_Response callback) {
 
             HidManagerConnectParams _message = new HidManagerConnectParams();
 
@@ -120,6 +122,8 @@ ConnectResponse callback) {
             _message.watcher = watcher;
 
             _message.allowProtectedReports = allowProtectedReports;
+
+            _message.allowFidoReports = allowFidoReports;
 
 
             getProxyHandler().getMessageReceiver().acceptWithResponder(
@@ -266,7 +270,7 @@ org.chromium.mojo.bindings.InterfaceRequest<HidManager> receiver) {
                         HidManagerConnectParams data =
                                 HidManagerConnectParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().connect(data.deviceGuid, data.connectionClient, data.watcher, data.allowProtectedReports, new HidManagerConnectResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().connect(data.deviceGuid, data.connectionClient, data.watcher, data.allowProtectedReports, data.allowFidoReports, new HidManagerConnectResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -427,9 +431,9 @@ org.chromium.mojo.bindings.InterfaceRequest<HidManager> receiver) {
 
     static class HidManagerGetDevicesAndSetClientResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final HidManager.GetDevicesAndSetClientResponse mCallback;
+        private final HidManager.GetDevicesAndSetClient_Response mCallback;
 
-        HidManagerGetDevicesAndSetClientResponseParamsForwardToCallback(HidManager.GetDevicesAndSetClientResponse callback) {
+        HidManagerGetDevicesAndSetClientResponseParamsForwardToCallback(HidManager.GetDevicesAndSetClient_Response callback) {
             this.mCallback = callback;
         }
 
@@ -454,7 +458,7 @@ org.chromium.mojo.bindings.InterfaceRequest<HidManager> receiver) {
         }
     }
 
-    static class HidManagerGetDevicesAndSetClientResponseParamsProxyToResponder implements HidManager.GetDevicesAndSetClientResponse {
+    static class HidManagerGetDevicesAndSetClientResponseParamsProxyToResponder implements HidManager.GetDevicesAndSetClient_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -624,9 +628,9 @@ org.chromium.mojo.bindings.InterfaceRequest<HidManager> receiver) {
 
     static class HidManagerGetDevicesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final HidManager.GetDevicesResponse mCallback;
+        private final HidManager.GetDevices_Response mCallback;
 
-        HidManagerGetDevicesResponseParamsForwardToCallback(HidManager.GetDevicesResponse callback) {
+        HidManagerGetDevicesResponseParamsForwardToCallback(HidManager.GetDevices_Response callback) {
             this.mCallback = callback;
         }
 
@@ -651,7 +655,7 @@ org.chromium.mojo.bindings.InterfaceRequest<HidManager> receiver) {
         }
     }
 
-    static class HidManagerGetDevicesResponseParamsProxyToResponder implements HidManager.GetDevicesResponse {
+    static class HidManagerGetDevicesResponseParamsProxyToResponder implements HidManager.GetDevices_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -689,19 +693,20 @@ org.chromium.mojo.bindings.InterfaceRequest<HidManager> receiver) {
     static final class HidManagerConnectParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 40;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0),new org.chromium.mojo.bindings.DataHeader(40, 1)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[1];
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0),new org.chromium.mojo.bindings.DataHeader(40, 1),new org.chromium.mojo.bindings.DataHeader(40, 2)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[2];
         public String deviceGuid;
         public HidConnectionClient connectionClient;
         public HidConnectionWatcher watcher;
         public boolean allowProtectedReports;
+        public boolean allowFidoReports;
 
         private HidManagerConnectParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
         public HidManagerConnectParams() {
-            this(1);
+            this(2);
         }
 
         public static HidManagerConnectParams deserialize(org.chromium.mojo.bindings.Message message) {
@@ -747,6 +752,12 @@ org.chromium.mojo.bindings.InterfaceRequest<HidManager> receiver) {
                     result.allowProtectedReports = decoder0.readBoolean(32, 0);
                     }
                 }
+                if (elementsOrVersion >= 2) {
+                    {
+                        
+                    result.allowFidoReports = decoder0.readBoolean(32, 1);
+                    }
+                }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -766,6 +777,8 @@ org.chromium.mojo.bindings.InterfaceRequest<HidManager> receiver) {
             encoder0.encode(this.watcher, 24, true, HidConnectionWatcher.MANAGER);
             
             encoder0.encode(this.allowProtectedReports, 32, 0);
+            
+            encoder0.encode(this.allowFidoReports, 32, 1);
         }
     }
 
@@ -834,9 +847,9 @@ org.chromium.mojo.bindings.InterfaceRequest<HidManager> receiver) {
 
     static class HidManagerConnectResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final HidManager.ConnectResponse mCallback;
+        private final HidManager.Connect_Response mCallback;
 
-        HidManagerConnectResponseParamsForwardToCallback(HidManager.ConnectResponse callback) {
+        HidManagerConnectResponseParamsForwardToCallback(HidManager.Connect_Response callback) {
             this.mCallback = callback;
         }
 
@@ -861,7 +874,7 @@ org.chromium.mojo.bindings.InterfaceRequest<HidManager> receiver) {
         }
     }
 
-    static class HidManagerConnectResponseParamsProxyToResponder implements HidManager.ConnectResponse {
+    static class HidManagerConnectResponseParamsProxyToResponder implements HidManager.Connect_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

@@ -13,6 +13,8 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class SharedQuadState extends org.chromium.mojo.bindings.Struct {
 
@@ -24,14 +26,12 @@ public final class SharedQuadState extends org.chromium.mojo.bindings.Struct {
     public org.chromium.gfx.mojom.Rect visibleQuadLayerRect;
     public org.chromium.gfx.mojom.MaskFilterInfo maskFilterInfo;
     public org.chromium.gfx.mojom.Rect clipRect;
-    public boolean isClipped;
     public boolean areContentsOpaque;
     public float opacity;
     public int blendMode;
     public int sortingContextId;
     public boolean isFastRoundedCorner;
     public float deJellyDeltaY;
-    public boolean noDamage;
 
     private SharedQuadState(int version) {
         super(STRUCT_SIZE, version);
@@ -88,24 +88,16 @@ public final class SharedQuadState extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, true);
                 result.clipRect = org.chromium.gfx.mojom.Rect.decode(decoder1);
                 }
                 {
                     
-                result.isClipped = decoder0.readBoolean(48, 0);
+                result.areContentsOpaque = decoder0.readBoolean(48, 0);
                 }
                 {
                     
-                result.areContentsOpaque = decoder0.readBoolean(48, 1);
-                }
-                {
-                    
-                result.isFastRoundedCorner = decoder0.readBoolean(48, 2);
-                }
-                {
-                    
-                result.noDamage = decoder0.readBoolean(48, 3);
+                result.isFastRoundedCorner = decoder0.readBoolean(48, 1);
                 }
                 {
                     
@@ -143,15 +135,11 @@ public final class SharedQuadState extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.maskFilterInfo, 32, false);
         
-        encoder0.encode(this.clipRect, 40, false);
+        encoder0.encode(this.clipRect, 40, true);
         
-        encoder0.encode(this.isClipped, 48, 0);
+        encoder0.encode(this.areContentsOpaque, 48, 0);
         
-        encoder0.encode(this.areContentsOpaque, 48, 1);
-        
-        encoder0.encode(this.isFastRoundedCorner, 48, 2);
-        
-        encoder0.encode(this.noDamage, 48, 3);
+        encoder0.encode(this.isFastRoundedCorner, 48, 1);
         
         encoder0.encode(this.opacity, 52);
         

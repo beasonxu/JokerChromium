@@ -1,15 +1,13 @@
 package org.chromium.chrome.browser.webauthn;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class CableAuthenticatorModuleProviderJni implements CableAuthenticatorModuleProvider.Natives {
+class CableAuthenticatorModuleProviderJni implements CableAuthenticatorModuleProvider.Natives {
   private static CableAuthenticatorModuleProvider.Natives testInstance;
 
   public static final JniStaticTestMocker<CableAuthenticatorModuleProvider.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.webauthn.CableAuthenticatorModuleProvider.Natives>() {
@@ -34,8 +32,18 @@ final class CableAuthenticatorModuleProviderJni implements CableAuthenticatorMod
   }
 
   @Override
+  public byte[] getSecret() {
+    return (byte[])GEN_JNI.org_chromium_chrome_browser_webauthn_CableAuthenticatorModuleProvider_getSecret();
+  }
+
+  @Override
   public void freeEvent(long event) {
     GEN_JNI.org_chromium_chrome_browser_webauthn_CableAuthenticatorModuleProvider_freeEvent(event);
+  }
+
+  @Override
+  public boolean isMetricsAndCrashReportingEnabled() {
+    return (boolean)GEN_JNI.org_chromium_chrome_browser_webauthn_CableAuthenticatorModuleProvider_isMetricsAndCrashReportingEnabled();
   }
 
   public static CableAuthenticatorModuleProvider.Natives get() {

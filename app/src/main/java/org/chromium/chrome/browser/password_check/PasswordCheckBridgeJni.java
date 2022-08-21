@@ -1,17 +1,17 @@
 package org.chromium.chrome.browser.password_check;
 
 import android.app.Activity;
+import android.content.Context;
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
+import org.chromium.components.browser_ui.settings.SettingsLauncher;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class PasswordCheckBridgeJni implements PasswordCheckBridge.Natives {
+class PasswordCheckBridgeJni implements PasswordCheckBridge.Natives {
   private static PasswordCheckBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<PasswordCheckBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.password_check.PasswordCheckBridge.Natives>() {
@@ -80,6 +80,12 @@ final class PasswordCheckBridgeJni implements PasswordCheckBridge.Natives {
   public void updateCredential(long nativePasswordCheckBridge, CompromisedCredential credential,
       String newPassword) {
     GEN_JNI.org_chromium_chrome_browser_password_1check_PasswordCheckBridge_updateCredential(nativePasswordCheckBridge, credential, newPassword);
+  }
+
+  @Override
+  public void onEditCredential(long nativePasswordCheckBridge, CompromisedCredential credential,
+      Context context, SettingsLauncher settingsLauncher) {
+    GEN_JNI.org_chromium_chrome_browser_password_1check_PasswordCheckBridge_onEditCredential(nativePasswordCheckBridge, credential, context, settingsLauncher);
   }
 
   @Override

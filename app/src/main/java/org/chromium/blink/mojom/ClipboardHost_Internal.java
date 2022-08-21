@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class ClipboardHost_Internal {
 
@@ -61,27 +63,33 @@ class ClipboardHost_Internal {
 
     private static final int READ_RTF_ORDINAL = 6;
 
-    private static final int READ_IMAGE_ORDINAL = 7;
+    private static final int READ_PNG_ORDINAL = 7;
 
     private static final int READ_FILES_ORDINAL = 8;
 
     private static final int READ_CUSTOM_DATA_ORDINAL = 9;
 
-    private static final int WRITE_TEXT_ORDINAL = 10;
+    private static final int READ_AVAILABLE_CUSTOM_AND_STANDARD_FORMATS_ORDINAL = 10;
 
-    private static final int WRITE_HTML_ORDINAL = 11;
+    private static final int READ_UNSANITIZED_CUSTOM_FORMAT_ORDINAL = 11;
 
-    private static final int WRITE_SVG_ORDINAL = 12;
+    private static final int WRITE_TEXT_ORDINAL = 12;
 
-    private static final int WRITE_SMART_PASTE_MARKER_ORDINAL = 13;
+    private static final int WRITE_HTML_ORDINAL = 13;
 
-    private static final int WRITE_CUSTOM_DATA_ORDINAL = 14;
+    private static final int WRITE_SVG_ORDINAL = 14;
 
-    private static final int WRITE_BOOKMARK_ORDINAL = 15;
+    private static final int WRITE_SMART_PASTE_MARKER_ORDINAL = 15;
 
-    private static final int WRITE_IMAGE_ORDINAL = 16;
+    private static final int WRITE_CUSTOM_DATA_ORDINAL = 16;
 
-    private static final int COMMIT_WRITE_ORDINAL = 17;
+    private static final int WRITE_BOOKMARK_ORDINAL = 17;
+
+    private static final int WRITE_IMAGE_ORDINAL = 18;
+
+    private static final int WRITE_UNSANITIZED_CUSTOM_FORMAT_ORDINAL = 19;
+
+    private static final int COMMIT_WRITE_ORDINAL = 20;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements ClipboardHost.Proxy {
@@ -95,7 +103,7 @@ class ClipboardHost_Internal {
         @Override
         public void getSequenceNumber(
 int buffer, 
-GetSequenceNumberResponse callback) {
+GetSequenceNumber_Response callback) {
 
             ClipboardHostGetSequenceNumberParams _message = new ClipboardHostGetSequenceNumberParams();
 
@@ -117,7 +125,7 @@ GetSequenceNumberResponse callback) {
         @Override
         public void isFormatAvailable(
 int format, int buffer, 
-IsFormatAvailableResponse callback) {
+IsFormatAvailable_Response callback) {
 
             ClipboardHostIsFormatAvailableParams _message = new ClipboardHostIsFormatAvailableParams();
 
@@ -141,7 +149,7 @@ IsFormatAvailableResponse callback) {
         @Override
         public void readAvailableTypes(
 int buffer, 
-ReadAvailableTypesResponse callback) {
+ReadAvailableTypes_Response callback) {
 
             ClipboardHostReadAvailableTypesParams _message = new ClipboardHostReadAvailableTypesParams();
 
@@ -163,7 +171,7 @@ ReadAvailableTypesResponse callback) {
         @Override
         public void readText(
 int buffer, 
-ReadTextResponse callback) {
+ReadText_Response callback) {
 
             ClipboardHostReadTextParams _message = new ClipboardHostReadTextParams();
 
@@ -185,7 +193,7 @@ ReadTextResponse callback) {
         @Override
         public void readHtml(
 int buffer, 
-ReadHtmlResponse callback) {
+ReadHtml_Response callback) {
 
             ClipboardHostReadHtmlParams _message = new ClipboardHostReadHtmlParams();
 
@@ -207,7 +215,7 @@ ReadHtmlResponse callback) {
         @Override
         public void readSvg(
 int buffer, 
-ReadSvgResponse callback) {
+ReadSvg_Response callback) {
 
             ClipboardHostReadSvgParams _message = new ClipboardHostReadSvgParams();
 
@@ -229,7 +237,7 @@ ReadSvgResponse callback) {
         @Override
         public void readRtf(
 int buffer, 
-ReadRtfResponse callback) {
+ReadRtf_Response callback) {
 
             ClipboardHostReadRtfParams _message = new ClipboardHostReadRtfParams();
 
@@ -249,11 +257,11 @@ ReadRtfResponse callback) {
 
 
         @Override
-        public void readImage(
+        public void readPng(
 int buffer, 
-ReadImageResponse callback) {
+ReadPng_Response callback) {
 
-            ClipboardHostReadImageParams _message = new ClipboardHostReadImageParams();
+            ClipboardHostReadPngParams _message = new ClipboardHostReadPngParams();
 
             _message.buffer = buffer;
 
@@ -262,10 +270,10 @@ ReadImageResponse callback) {
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(
-                                    READ_IMAGE_ORDINAL,
+                                    READ_PNG_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
                                     0)),
-                    new ClipboardHostReadImageResponseParamsForwardToCallback(callback));
+                    new ClipboardHostReadPngResponseParamsForwardToCallback(callback));
 
         }
 
@@ -273,7 +281,7 @@ ReadImageResponse callback) {
         @Override
         public void readFiles(
 int buffer, 
-ReadFilesResponse callback) {
+ReadFiles_Response callback) {
 
             ClipboardHostReadFilesParams _message = new ClipboardHostReadFilesParams();
 
@@ -295,7 +303,7 @@ ReadFilesResponse callback) {
         @Override
         public void readCustomData(
 int buffer, org.chromium.mojo_base.mojom.String16 type, 
-ReadCustomDataResponse callback) {
+ReadCustomData_Response callback) {
 
             ClipboardHostReadCustomDataParams _message = new ClipboardHostReadCustomDataParams();
 
@@ -312,6 +320,48 @@ ReadCustomDataResponse callback) {
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
                                     0)),
                     new ClipboardHostReadCustomDataResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void readAvailableCustomAndStandardFormats(
+
+ReadAvailableCustomAndStandardFormats_Response callback) {
+
+            ClipboardHostReadAvailableCustomAndStandardFormatsParams _message = new ClipboardHostReadAvailableCustomAndStandardFormatsParams();
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    READ_AVAILABLE_CUSTOM_AND_STANDARD_FORMATS_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new ClipboardHostReadAvailableCustomAndStandardFormatsResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void readUnsanitizedCustomFormat(
+org.chromium.mojo_base.mojom.String16 format, 
+ReadUnsanitizedCustomFormat_Response callback) {
+
+            ClipboardHostReadUnsanitizedCustomFormatParams _message = new ClipboardHostReadUnsanitizedCustomFormatParams();
+
+            _message.format = format;
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    READ_UNSANITIZED_CUSTOM_FORMAT_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new ClipboardHostReadUnsanitizedCustomFormatResponseParamsForwardToCallback(callback));
 
         }
 
@@ -438,6 +488,25 @@ org.chromium.skia.mojom.BitmapN32 image) {
 
 
         @Override
+        public void writeUnsanitizedCustomFormat(
+org.chromium.mojo_base.mojom.String16 format, org.chromium.mojo_base.mojom.BigBuffer data) {
+
+            ClipboardHostWriteUnsanitizedCustomFormatParams _message = new ClipboardHostWriteUnsanitizedCustomFormatParams();
+
+            _message.format = format;
+
+            _message.data = data;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(WRITE_UNSANITIZED_CUSTOM_FORMAT_ORDINAL)));
+
+        }
+
+
+        @Override
         public void commitWrite(
 ) {
 
@@ -478,6 +547,10 @@ org.chromium.skia.mojom.BitmapN32 image) {
                     case org.chromium.mojo.bindings.interfacecontrol.InterfaceControlMessagesConstants.RUN_OR_CLOSE_PIPE_MESSAGE_ID:
                         return org.chromium.mojo.bindings.InterfaceControlMessagesHelper.handleRunOrClosePipe(
                                 ClipboardHost_Internal.MANAGER, messageWithHeader);
+
+
+
+
 
 
 
@@ -586,6 +659,19 @@ org.chromium.skia.mojom.BitmapN32 image) {
                                 ClipboardHostWriteImageParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().writeImage(data.image);
+                        return true;
+                    }
+
+
+
+
+
+                    case WRITE_UNSANITIZED_CUSTOM_FORMAT_ORDINAL: {
+
+                        ClipboardHostWriteUnsanitizedCustomFormatParams data =
+                                ClipboardHostWriteUnsanitizedCustomFormatParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().writeUnsanitizedCustomFormat(data.format, data.data);
                         return true;
                     }
 
@@ -741,12 +827,12 @@ org.chromium.skia.mojom.BitmapN32 image) {
 
 
 
-                    case READ_IMAGE_ORDINAL: {
+                    case READ_PNG_ORDINAL: {
 
-                        ClipboardHostReadImageParams data =
-                                ClipboardHostReadImageParams.deserialize(messageWithHeader.getPayload());
+                        ClipboardHostReadPngParams data =
+                                ClipboardHostReadPngParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().readImage(data.buffer, new ClipboardHostReadImageResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().readPng(data.buffer, new ClipboardHostReadPngResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -779,6 +865,37 @@ org.chromium.skia.mojom.BitmapN32 image) {
                         getImpl().readCustomData(data.buffer, data.type, new ClipboardHostReadCustomDataResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
+
+
+
+
+
+
+
+                    case READ_AVAILABLE_CUSTOM_AND_STANDARD_FORMATS_ORDINAL: {
+
+                        ClipboardHostReadAvailableCustomAndStandardFormatsParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().readAvailableCustomAndStandardFormats(new ClipboardHostReadAvailableCustomAndStandardFormatsResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
+                    case READ_UNSANITIZED_CUSTOM_FORMAT_ORDINAL: {
+
+                        ClipboardHostReadUnsanitizedCustomFormatParams data =
+                                ClipboardHostReadUnsanitizedCustomFormatParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().readUnsanitizedCustomFormat(data.format, new ClipboardHostReadUnsanitizedCustomFormatResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
 
 
 
@@ -879,7 +996,7 @@ org.chromium.skia.mojom.BitmapN32 image) {
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public long result;
+        public ClipboardSequenceNumberToken result;
 
         private ClipboardHostGetSequenceNumberResponseParams(int version) {
             super(STRUCT_SIZE, version);
@@ -916,7 +1033,8 @@ org.chromium.skia.mojom.BitmapN32 image) {
                 result = new ClipboardHostGetSequenceNumberResponseParams(elementsOrVersion);
                     {
                         
-                    result.result = decoder0.readLong(8);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.result = ClipboardSequenceNumberToken.decode(decoder1);
                     }
 
             } finally {
@@ -930,15 +1048,15 @@ org.chromium.skia.mojom.BitmapN32 image) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.result, 8);
+            encoder0.encode(this.result, 8, false);
         }
     }
 
     static class ClipboardHostGetSequenceNumberResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ClipboardHost.GetSequenceNumberResponse mCallback;
+        private final ClipboardHost.GetSequenceNumber_Response mCallback;
 
-        ClipboardHostGetSequenceNumberResponseParamsForwardToCallback(ClipboardHost.GetSequenceNumberResponse callback) {
+        ClipboardHostGetSequenceNumberResponseParamsForwardToCallback(ClipboardHost.GetSequenceNumber_Response callback) {
             this.mCallback = callback;
         }
 
@@ -963,7 +1081,7 @@ org.chromium.skia.mojom.BitmapN32 image) {
         }
     }
 
-    static class ClipboardHostGetSequenceNumberResponseParamsProxyToResponder implements ClipboardHost.GetSequenceNumberResponse {
+    static class ClipboardHostGetSequenceNumberResponseParamsProxyToResponder implements ClipboardHost.GetSequenceNumber_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -979,7 +1097,7 @@ org.chromium.skia.mojom.BitmapN32 image) {
         }
 
         @Override
-        public void call(Long result) {
+        public void call(ClipboardSequenceNumberToken result) {
             ClipboardHostGetSequenceNumberResponseParams _response = new ClipboardHostGetSequenceNumberResponseParams();
 
             _response.result = result;
@@ -1134,9 +1252,9 @@ org.chromium.skia.mojom.BitmapN32 image) {
 
     static class ClipboardHostIsFormatAvailableResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ClipboardHost.IsFormatAvailableResponse mCallback;
+        private final ClipboardHost.IsFormatAvailable_Response mCallback;
 
-        ClipboardHostIsFormatAvailableResponseParamsForwardToCallback(ClipboardHost.IsFormatAvailableResponse callback) {
+        ClipboardHostIsFormatAvailableResponseParamsForwardToCallback(ClipboardHost.IsFormatAvailable_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1161,7 +1279,7 @@ org.chromium.skia.mojom.BitmapN32 image) {
         }
     }
 
-    static class ClipboardHostIsFormatAvailableResponseParamsProxyToResponder implements ClipboardHost.IsFormatAvailableResponse {
+    static class ClipboardHostIsFormatAvailableResponseParamsProxyToResponder implements ClipboardHost.IsFormatAvailable_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1340,9 +1458,9 @@ org.chromium.skia.mojom.BitmapN32 image) {
 
     static class ClipboardHostReadAvailableTypesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ClipboardHost.ReadAvailableTypesResponse mCallback;
+        private final ClipboardHost.ReadAvailableTypes_Response mCallback;
 
-        ClipboardHostReadAvailableTypesResponseParamsForwardToCallback(ClipboardHost.ReadAvailableTypesResponse callback) {
+        ClipboardHostReadAvailableTypesResponseParamsForwardToCallback(ClipboardHost.ReadAvailableTypes_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1367,7 +1485,7 @@ org.chromium.skia.mojom.BitmapN32 image) {
         }
     }
 
-    static class ClipboardHostReadAvailableTypesResponseParamsProxyToResponder implements ClipboardHost.ReadAvailableTypesResponse {
+    static class ClipboardHostReadAvailableTypesResponseParamsProxyToResponder implements ClipboardHost.ReadAvailableTypes_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1530,9 +1648,9 @@ org.chromium.skia.mojom.BitmapN32 image) {
 
     static class ClipboardHostReadTextResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ClipboardHost.ReadTextResponse mCallback;
+        private final ClipboardHost.ReadText_Response mCallback;
 
-        ClipboardHostReadTextResponseParamsForwardToCallback(ClipboardHost.ReadTextResponse callback) {
+        ClipboardHostReadTextResponseParamsForwardToCallback(ClipboardHost.ReadText_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1557,7 +1675,7 @@ org.chromium.skia.mojom.BitmapN32 image) {
         }
     }
 
-    static class ClipboardHostReadTextResponseParamsProxyToResponder implements ClipboardHost.ReadTextResponse {
+    static class ClipboardHostReadTextResponseParamsProxyToResponder implements ClipboardHost.ReadText_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1742,9 +1860,9 @@ org.chromium.skia.mojom.BitmapN32 image) {
 
     static class ClipboardHostReadHtmlResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ClipboardHost.ReadHtmlResponse mCallback;
+        private final ClipboardHost.ReadHtml_Response mCallback;
 
-        ClipboardHostReadHtmlResponseParamsForwardToCallback(ClipboardHost.ReadHtmlResponse callback) {
+        ClipboardHostReadHtmlResponseParamsForwardToCallback(ClipboardHost.ReadHtml_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1769,7 +1887,7 @@ org.chromium.skia.mojom.BitmapN32 image) {
         }
     }
 
-    static class ClipboardHostReadHtmlResponseParamsProxyToResponder implements ClipboardHost.ReadHtmlResponse {
+    static class ClipboardHostReadHtmlResponseParamsProxyToResponder implements ClipboardHost.ReadHtml_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1938,9 +2056,9 @@ org.chromium.skia.mojom.BitmapN32 image) {
 
     static class ClipboardHostReadSvgResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ClipboardHost.ReadSvgResponse mCallback;
+        private final ClipboardHost.ReadSvg_Response mCallback;
 
-        ClipboardHostReadSvgResponseParamsForwardToCallback(ClipboardHost.ReadSvgResponse callback) {
+        ClipboardHostReadSvgResponseParamsForwardToCallback(ClipboardHost.ReadSvg_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1965,7 +2083,7 @@ org.chromium.skia.mojom.BitmapN32 image) {
         }
     }
 
-    static class ClipboardHostReadSvgResponseParamsProxyToResponder implements ClipboardHost.ReadSvgResponse {
+    static class ClipboardHostReadSvgResponseParamsProxyToResponder implements ClipboardHost.ReadSvg_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2128,9 +2246,9 @@ org.chromium.skia.mojom.BitmapN32 image) {
 
     static class ClipboardHostReadRtfResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ClipboardHost.ReadRtfResponse mCallback;
+        private final ClipboardHost.ReadRtf_Response mCallback;
 
-        ClipboardHostReadRtfResponseParamsForwardToCallback(ClipboardHost.ReadRtfResponse callback) {
+        ClipboardHostReadRtfResponseParamsForwardToCallback(ClipboardHost.ReadRtf_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2155,7 +2273,7 @@ org.chromium.skia.mojom.BitmapN32 image) {
         }
     }
 
-    static class ClipboardHostReadRtfResponseParamsProxyToResponder implements ClipboardHost.ReadRtfResponse {
+    static class ClipboardHostReadRtfResponseParamsProxyToResponder implements ClipboardHost.ReadRtf_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2190,22 +2308,22 @@ org.chromium.skia.mojom.BitmapN32 image) {
 
 
     
-    static final class ClipboardHostReadImageParams extends org.chromium.mojo.bindings.Struct {
+    static final class ClipboardHostReadPngParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public int buffer;
 
-        private ClipboardHostReadImageParams(int version) {
+        private ClipboardHostReadPngParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public ClipboardHostReadImageParams() {
+        public ClipboardHostReadPngParams() {
             this(0);
         }
 
-        public static ClipboardHostReadImageParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static ClipboardHostReadPngParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -2214,22 +2332,22 @@ org.chromium.skia.mojom.BitmapN32 image) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static ClipboardHostReadImageParams deserialize(java.nio.ByteBuffer data) {
+        public static ClipboardHostReadPngParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static ClipboardHostReadImageParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static ClipboardHostReadPngParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            ClipboardHostReadImageParams result;
+            ClipboardHostReadPngParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new ClipboardHostReadImageParams(elementsOrVersion);
+                result = new ClipboardHostReadPngParams(elementsOrVersion);
                     {
                         
                     result.buffer = decoder0.readInt(8);
@@ -2255,22 +2373,22 @@ org.chromium.skia.mojom.BitmapN32 image) {
 
 
     
-    static final class ClipboardHostReadImageResponseParams extends org.chromium.mojo.bindings.Struct {
+    static final class ClipboardHostReadPngResponseParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public org.chromium.skia.mojom.BitmapN32 image;
+        public org.chromium.mojo_base.mojom.BigBuffer png;
 
-        private ClipboardHostReadImageResponseParams(int version) {
+        private ClipboardHostReadPngResponseParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public ClipboardHostReadImageResponseParams() {
+        public ClipboardHostReadPngResponseParams() {
             this(0);
         }
 
-        public static ClipboardHostReadImageResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static ClipboardHostReadPngResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -2279,26 +2397,25 @@ org.chromium.skia.mojom.BitmapN32 image) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static ClipboardHostReadImageResponseParams deserialize(java.nio.ByteBuffer data) {
+        public static ClipboardHostReadPngResponseParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static ClipboardHostReadImageResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static ClipboardHostReadPngResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            ClipboardHostReadImageResponseParams result;
+            ClipboardHostReadPngResponseParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new ClipboardHostReadImageResponseParams(elementsOrVersion);
+                result = new ClipboardHostReadPngResponseParams(elementsOrVersion);
                     {
                         
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, true);
-                    result.image = org.chromium.skia.mojom.BitmapN32.decode(decoder1);
+                    result.png = org.chromium.mojo_base.mojom.BigBuffer.decode(decoder0, 8);
                     }
 
             } finally {
@@ -2312,15 +2429,15 @@ org.chromium.skia.mojom.BitmapN32 image) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.image, 8, true);
+            encoder0.encode(this.png, 8, false);
         }
     }
 
-    static class ClipboardHostReadImageResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+    static class ClipboardHostReadPngResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ClipboardHost.ReadImageResponse mCallback;
+        private final ClipboardHost.ReadPng_Response mCallback;
 
-        ClipboardHostReadImageResponseParamsForwardToCallback(ClipboardHost.ReadImageResponse callback) {
+        ClipboardHostReadPngResponseParamsForwardToCallback(ClipboardHost.ReadPng_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2330,14 +2447,14 @@ org.chromium.skia.mojom.BitmapN32 image) {
                 org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
                         message.asServiceMessage();
                 org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
-                if (!header.validateHeader(READ_IMAGE_ORDINAL,
+                if (!header.validateHeader(READ_PNG_ORDINAL,
                                            org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG)) {
                     return false;
                 }
 
-                ClipboardHostReadImageResponseParams response = ClipboardHostReadImageResponseParams.deserialize(messageWithHeader.getPayload());
+                ClipboardHostReadPngResponseParams response = ClipboardHostReadPngResponseParams.deserialize(messageWithHeader.getPayload());
 
-                mCallback.call(response.image);
+                mCallback.call(response.png);
                 return true;
             } catch (org.chromium.mojo.bindings.DeserializationException e) {
                 return false;
@@ -2345,13 +2462,13 @@ org.chromium.skia.mojom.BitmapN32 image) {
         }
     }
 
-    static class ClipboardHostReadImageResponseParamsProxyToResponder implements ClipboardHost.ReadImageResponse {
+    static class ClipboardHostReadPngResponseParamsProxyToResponder implements ClipboardHost.ReadPng_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
         private final long mRequestId;
 
-        ClipboardHostReadImageResponseParamsProxyToResponder(
+        ClipboardHostReadPngResponseParamsProxyToResponder(
                 org.chromium.mojo.system.Core core,
                 org.chromium.mojo.bindings.MessageReceiver messageReceiver,
                 long requestId) {
@@ -2361,16 +2478,16 @@ org.chromium.skia.mojom.BitmapN32 image) {
         }
 
         @Override
-        public void call(org.chromium.skia.mojom.BitmapN32 image) {
-            ClipboardHostReadImageResponseParams _response = new ClipboardHostReadImageResponseParams();
+        public void call(org.chromium.mojo_base.mojom.BigBuffer png) {
+            ClipboardHostReadPngResponseParams _response = new ClipboardHostReadPngResponseParams();
 
-            _response.image = image;
+            _response.png = png;
 
             org.chromium.mojo.bindings.ServiceMessage _message =
                     _response.serializeWithHeader(
                             mCore,
                             new org.chromium.mojo.bindings.MessageHeader(
-                                    READ_IMAGE_ORDINAL,
+                                    READ_PNG_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);
@@ -2508,9 +2625,9 @@ org.chromium.skia.mojom.BitmapN32 image) {
 
     static class ClipboardHostReadFilesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ClipboardHost.ReadFilesResponse mCallback;
+        private final ClipboardHost.ReadFiles_Response mCallback;
 
-        ClipboardHostReadFilesResponseParamsForwardToCallback(ClipboardHost.ReadFilesResponse callback) {
+        ClipboardHostReadFilesResponseParamsForwardToCallback(ClipboardHost.ReadFiles_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2535,7 +2652,7 @@ org.chromium.skia.mojom.BitmapN32 image) {
         }
     }
 
-    static class ClipboardHostReadFilesResponseParamsProxyToResponder implements ClipboardHost.ReadFilesResponse {
+    static class ClipboardHostReadFilesResponseParamsProxyToResponder implements ClipboardHost.ReadFiles_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2706,9 +2823,9 @@ org.chromium.skia.mojom.BitmapN32 image) {
 
     static class ClipboardHostReadCustomDataResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ClipboardHost.ReadCustomDataResponse mCallback;
+        private final ClipboardHost.ReadCustomData_Response mCallback;
 
-        ClipboardHostReadCustomDataResponseParamsForwardToCallback(ClipboardHost.ReadCustomDataResponse callback) {
+        ClipboardHostReadCustomDataResponseParamsForwardToCallback(ClipboardHost.ReadCustomData_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2733,7 +2850,7 @@ org.chromium.skia.mojom.BitmapN32 image) {
         }
     }
 
-    static class ClipboardHostReadCustomDataResponseParamsProxyToResponder implements ClipboardHost.ReadCustomDataResponse {
+    static class ClipboardHostReadCustomDataResponseParamsProxyToResponder implements ClipboardHost.ReadCustomData_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2760,6 +2877,391 @@ org.chromium.skia.mojom.BitmapN32 image) {
                             new org.chromium.mojo.bindings.MessageHeader(
                                     READ_CUSTOM_DATA_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class ClipboardHostReadAvailableCustomAndStandardFormatsParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private ClipboardHostReadAvailableCustomAndStandardFormatsParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public ClipboardHostReadAvailableCustomAndStandardFormatsParams() {
+            this(0);
+        }
+
+        public static ClipboardHostReadAvailableCustomAndStandardFormatsParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static ClipboardHostReadAvailableCustomAndStandardFormatsParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static ClipboardHostReadAvailableCustomAndStandardFormatsParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            ClipboardHostReadAvailableCustomAndStandardFormatsParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new ClipboardHostReadAvailableCustomAndStandardFormatsParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+
+
+    
+    static final class ClipboardHostReadAvailableCustomAndStandardFormatsResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.mojo_base.mojom.String16[] formatTypes;
+
+        private ClipboardHostReadAvailableCustomAndStandardFormatsResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public ClipboardHostReadAvailableCustomAndStandardFormatsResponseParams() {
+            this(0);
+        }
+
+        public static ClipboardHostReadAvailableCustomAndStandardFormatsResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static ClipboardHostReadAvailableCustomAndStandardFormatsResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static ClipboardHostReadAvailableCustomAndStandardFormatsResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            ClipboardHostReadAvailableCustomAndStandardFormatsResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new ClipboardHostReadAvailableCustomAndStandardFormatsResponseParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    {
+                        org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                        result.formatTypes = new org.chromium.mojo_base.mojom.String16[si1.elementsOrVersion];
+                        for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
+                            
+                            org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                            result.formatTypes[i1] = org.chromium.mojo_base.mojom.String16.decode(decoder2);
+                        }
+                    }
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            if (this.formatTypes == null) {
+                encoder0.encodeNullPointer(8, false);
+            } else {
+                org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.formatTypes.length, 8, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                for (int i0 = 0; i0 < this.formatTypes.length; ++i0) {
+                    
+                    encoder1.encode(this.formatTypes[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
+                }
+            }
+        }
+    }
+
+    static class ClipboardHostReadAvailableCustomAndStandardFormatsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final ClipboardHost.ReadAvailableCustomAndStandardFormats_Response mCallback;
+
+        ClipboardHostReadAvailableCustomAndStandardFormatsResponseParamsForwardToCallback(ClipboardHost.ReadAvailableCustomAndStandardFormats_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(READ_AVAILABLE_CUSTOM_AND_STANDARD_FORMATS_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG)) {
+                    return false;
+                }
+
+                ClipboardHostReadAvailableCustomAndStandardFormatsResponseParams response = ClipboardHostReadAvailableCustomAndStandardFormatsResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.formatTypes);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class ClipboardHostReadAvailableCustomAndStandardFormatsResponseParamsProxyToResponder implements ClipboardHost.ReadAvailableCustomAndStandardFormats_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        ClipboardHostReadAvailableCustomAndStandardFormatsResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(org.chromium.mojo_base.mojom.String16[] formatTypes) {
+            ClipboardHostReadAvailableCustomAndStandardFormatsResponseParams _response = new ClipboardHostReadAvailableCustomAndStandardFormatsResponseParams();
+
+            _response.formatTypes = formatTypes;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    READ_AVAILABLE_CUSTOM_AND_STANDARD_FORMATS_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class ClipboardHostReadUnsanitizedCustomFormatParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.mojo_base.mojom.String16 format;
+
+        private ClipboardHostReadUnsanitizedCustomFormatParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public ClipboardHostReadUnsanitizedCustomFormatParams() {
+            this(0);
+        }
+
+        public static ClipboardHostReadUnsanitizedCustomFormatParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static ClipboardHostReadUnsanitizedCustomFormatParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static ClipboardHostReadUnsanitizedCustomFormatParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            ClipboardHostReadUnsanitizedCustomFormatParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new ClipboardHostReadUnsanitizedCustomFormatParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.format = org.chromium.mojo_base.mojom.String16.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.format, 8, false);
+        }
+    }
+
+
+
+    
+    static final class ClipboardHostReadUnsanitizedCustomFormatResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.mojo_base.mojom.BigBuffer data;
+
+        private ClipboardHostReadUnsanitizedCustomFormatResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public ClipboardHostReadUnsanitizedCustomFormatResponseParams() {
+            this(0);
+        }
+
+        public static ClipboardHostReadUnsanitizedCustomFormatResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static ClipboardHostReadUnsanitizedCustomFormatResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static ClipboardHostReadUnsanitizedCustomFormatResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            ClipboardHostReadUnsanitizedCustomFormatResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new ClipboardHostReadUnsanitizedCustomFormatResponseParams(elementsOrVersion);
+                    {
+                        
+                    result.data = org.chromium.mojo_base.mojom.BigBuffer.decode(decoder0, 8);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.data, 8, false);
+        }
+    }
+
+    static class ClipboardHostReadUnsanitizedCustomFormatResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final ClipboardHost.ReadUnsanitizedCustomFormat_Response mCallback;
+
+        ClipboardHostReadUnsanitizedCustomFormatResponseParamsForwardToCallback(ClipboardHost.ReadUnsanitizedCustomFormat_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(READ_UNSANITIZED_CUSTOM_FORMAT_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                ClipboardHostReadUnsanitizedCustomFormatResponseParams response = ClipboardHostReadUnsanitizedCustomFormatResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.data);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class ClipboardHostReadUnsanitizedCustomFormatResponseParamsProxyToResponder implements ClipboardHost.ReadUnsanitizedCustomFormat_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        ClipboardHostReadUnsanitizedCustomFormatResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(org.chromium.mojo_base.mojom.BigBuffer data) {
+            ClipboardHostReadUnsanitizedCustomFormatResponseParams _response = new ClipboardHostReadUnsanitizedCustomFormatResponseParams();
+
+            _response.data = data;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    READ_UNSANITIZED_CUSTOM_FORMAT_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);
         }
@@ -3280,6 +3782,77 @@ org.chromium.skia.mojom.BitmapN32 image) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.image, 8, false);
+        }
+    }
+
+
+
+    
+    static final class ClipboardHostWriteUnsanitizedCustomFormatParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.mojo_base.mojom.String16 format;
+        public org.chromium.mojo_base.mojom.BigBuffer data;
+
+        private ClipboardHostWriteUnsanitizedCustomFormatParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public ClipboardHostWriteUnsanitizedCustomFormatParams() {
+            this(0);
+        }
+
+        public static ClipboardHostWriteUnsanitizedCustomFormatParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static ClipboardHostWriteUnsanitizedCustomFormatParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static ClipboardHostWriteUnsanitizedCustomFormatParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            ClipboardHostWriteUnsanitizedCustomFormatParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new ClipboardHostWriteUnsanitizedCustomFormatParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.format = org.chromium.mojo_base.mojom.String16.decode(decoder1);
+                    }
+                    {
+                        
+                    result.data = org.chromium.mojo_base.mojom.BigBuffer.decode(decoder0, 16);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.format, 8, false);
+            
+            encoder0.encode(this.data, 16, false);
         }
     }
 

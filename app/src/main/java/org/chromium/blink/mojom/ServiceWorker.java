@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ServiceWorker extends org.chromium.mojo.bindings.Interface {
 
@@ -23,179 +25,163 @@ public interface ServiceWorker extends org.chromium.mojo.bindings.Interface {
 
     Manager<ServiceWorker, ServiceWorker.Proxy> MANAGER = ServiceWorker_Internal.MANAGER;
 
-
     void initializeGlobalScope(
-org.chromium.mojo.bindings.AssociatedInterfaceNotSupported serviceWorkerHost, ServiceWorkerRegistrationObjectInfo registrationInfo, ServiceWorkerObjectInfo serviceWorkerInfo, int fetchHandlerExistence, UrlLoaderFactoryBundle subresourceLoaderFactories, org.chromium.mojo.bindings.InterfaceRequest<ReportingObserver> reportingObserverReceiver);
-
+org.chromium.mojo.bindings.AssociatedInterfaceNotSupported serviceWorkerHost, ServiceWorkerRegistrationObjectInfo registrationInfo, ServiceWorkerObjectInfo serviceWorkerInfo, int fetchHandlerExistence, org.chromium.mojo.bindings.InterfaceRequest<ReportingObserver> reportingObserverReceiver, int ancestorFrameType);
 
 
     void dispatchInstallEvent(
 
-DispatchInstallEventResponse callback);
+DispatchInstallEvent_Response callback);
 
-    interface DispatchInstallEventResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, Integer> { }
-
+    interface DispatchInstallEvent_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, Integer> { }
 
 
     void dispatchActivateEvent(
 
-DispatchActivateEventResponse callback);
+DispatchActivateEvent_Response callback);
 
-    interface DispatchActivateEventResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface DispatchActivateEvent_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void dispatchBackgroundFetchAbortEvent(
 BackgroundFetchRegistration registration, 
-DispatchBackgroundFetchAbortEventResponse callback);
+DispatchBackgroundFetchAbortEvent_Response callback);
 
-    interface DispatchBackgroundFetchAbortEventResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface DispatchBackgroundFetchAbortEvent_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void dispatchBackgroundFetchClickEvent(
 BackgroundFetchRegistration registration, 
-DispatchBackgroundFetchClickEventResponse callback);
+DispatchBackgroundFetchClickEvent_Response callback);
 
-    interface DispatchBackgroundFetchClickEventResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface DispatchBackgroundFetchClickEvent_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void dispatchBackgroundFetchFailEvent(
 BackgroundFetchRegistration registration, 
-DispatchBackgroundFetchFailEventResponse callback);
+DispatchBackgroundFetchFailEvent_Response callback);
 
-    interface DispatchBackgroundFetchFailEventResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface DispatchBackgroundFetchFailEvent_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void dispatchBackgroundFetchSuccessEvent(
 BackgroundFetchRegistration registration, 
-DispatchBackgroundFetchSuccessEventResponse callback);
+DispatchBackgroundFetchSuccessEvent_Response callback);
 
-    interface DispatchBackgroundFetchSuccessEventResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface DispatchBackgroundFetchSuccessEvent_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void dispatchCookieChangeEvent(
 org.chromium.network.mojom.CookieChangeInfo change, 
-DispatchCookieChangeEventResponse callback);
+DispatchCookieChangeEvent_Response callback);
 
-    interface DispatchCookieChangeEventResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface DispatchCookieChangeEvent_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void dispatchFetchEventForMainResource(
 DispatchFetchEventParams params, ServiceWorkerFetchResponseCallback responseCallback, 
-DispatchFetchEventForMainResourceResponse callback);
+DispatchFetchEventForMainResource_Response callback);
 
-    interface DispatchFetchEventForMainResourceResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface DispatchFetchEventForMainResource_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void dispatchNotificationClickEvent(
 String notificationId, NotificationData notificationData, int actionIndex, org.chromium.mojo_base.mojom.String16 reply, 
-DispatchNotificationClickEventResponse callback);
+DispatchNotificationClickEvent_Response callback);
 
-    interface DispatchNotificationClickEventResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface DispatchNotificationClickEvent_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void dispatchNotificationCloseEvent(
 String notificationId, NotificationData notificationData, 
-DispatchNotificationCloseEventResponse callback);
+DispatchNotificationCloseEvent_Response callback);
 
-    interface DispatchNotificationCloseEventResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface DispatchNotificationCloseEvent_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void dispatchPushEvent(
 String payload, 
-DispatchPushEventResponse callback);
+DispatchPushEvent_Response callback);
 
-    interface DispatchPushEventResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface DispatchPushEvent_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void dispatchPushSubscriptionChangeEvent(
 PushSubscription oldSubscription, PushSubscription newSubscription, 
-DispatchPushSubscriptionChangeEventResponse callback);
+DispatchPushSubscriptionChangeEvent_Response callback);
 
-    interface DispatchPushSubscriptionChangeEventResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface DispatchPushSubscriptionChangeEvent_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void dispatchSyncEvent(
 String tag, boolean lastChance, org.chromium.mojo_base.mojom.TimeDelta timeout, 
-DispatchSyncEventResponse callback);
+DispatchSyncEvent_Response callback);
 
-    interface DispatchSyncEventResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface DispatchSyncEvent_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void dispatchPeriodicSyncEvent(
 String tag, org.chromium.mojo_base.mojom.TimeDelta timeout, 
-DispatchPeriodicSyncEventResponse callback);
+DispatchPeriodicSyncEvent_Response callback);
 
-    interface DispatchPeriodicSyncEventResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface DispatchPeriodicSyncEvent_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void dispatchAbortPaymentEvent(
 org.chromium.payments.mojom.PaymentHandlerResponseCallback resultOfAbortPayment, 
-DispatchAbortPaymentEventResponse callback);
+DispatchAbortPaymentEvent_Response callback);
 
-    interface DispatchAbortPaymentEventResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface DispatchAbortPaymentEvent_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void dispatchCanMakePaymentEvent(
 org.chromium.payments.mojom.CanMakePaymentEventData eventData, org.chromium.payments.mojom.PaymentHandlerResponseCallback resultOfCanMakePayment, 
-DispatchCanMakePaymentEventResponse callback);
+DispatchCanMakePaymentEvent_Response callback);
 
-    interface DispatchCanMakePaymentEventResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface DispatchCanMakePaymentEvent_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void dispatchPaymentRequestEvent(
 org.chromium.payments.mojom.PaymentRequestEventData requestData, org.chromium.payments.mojom.PaymentHandlerResponseCallback responseCallback, 
-DispatchPaymentRequestEventResponse callback);
+DispatchPaymentRequestEvent_Response callback);
 
-    interface DispatchPaymentRequestEventResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface DispatchPaymentRequestEvent_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void dispatchExtendableMessageEvent(
 ExtendableMessageEvent event, 
-DispatchExtendableMessageEventResponse callback);
+DispatchExtendableMessageEvent_Response callback);
 
-    interface DispatchExtendableMessageEventResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface DispatchExtendableMessageEvent_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void dispatchContentDeleteEvent(
 String id, 
-DispatchContentDeleteEventResponse callback);
+DispatchContentDeleteEvent_Response callback);
 
-    interface DispatchContentDeleteEventResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface DispatchContentDeleteEvent_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void ping(
 
-PingResponse callback);
+Ping_Response callback);
 
-    interface PingResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface Ping_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void setIdleDelay(
 org.chromium.mojo_base.mojom.TimeDelta delay);
 
 
-
     void addMessageToConsole(
 int level, String message);
+
+
+    void executeScriptForTest(
+org.chromium.mojo_base.mojom.BigString16 javascript, boolean wantsResult, 
+ExecuteScriptForTest_Response callback);
+
+    interface ExecuteScriptForTest_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<org.chromium.mojo_base.mojom.Value, String> { }
 
 
 }

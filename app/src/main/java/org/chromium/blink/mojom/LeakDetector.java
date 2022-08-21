@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface LeakDetector extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface LeakDetector extends org.chromium.mojo.bindings.Interface {
 
     Manager<LeakDetector, LeakDetector.Proxy> MANAGER = LeakDetector_Internal.MANAGER;
 
-
     void performLeakDetection(
 
-PerformLeakDetectionResponse callback);
+PerformLeakDetection_Response callback);
 
-    interface PerformLeakDetectionResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<LeakDetectionResult> { }
+    interface PerformLeakDetection_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<LeakDetectionResult> { }
 
 
 }

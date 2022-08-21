@@ -13,8 +13,17 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class FrameLifecycleState {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        FrameLifecycleState.RUNNING,
+        FrameLifecycleState.PAUSED,
+        FrameLifecycleState.FROZEN,
+        FrameLifecycleState.FROZEN_AUTO_RESUME_MEDIA})
+    public @interface EnumType {}
 
     public static final int RUNNING = 0;
     public static final int PAUSED = 1;

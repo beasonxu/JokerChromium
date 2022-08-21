@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface BackgroundFetchRegistrationObserver extends org.chromium.mojo.bindings.Interface {
 
@@ -23,15 +25,12 @@ public interface BackgroundFetchRegistrationObserver extends org.chromium.mojo.b
 
     Manager<BackgroundFetchRegistrationObserver, BackgroundFetchRegistrationObserver.Proxy> MANAGER = BackgroundFetchRegistrationObserver_Internal.MANAGER;
 
-
     void onProgress(
 long uploadTotal, long uploaded, long downloadTotal, long downloaded, int result, int failureReason);
 
 
-
     void onRecordsUnavailable(
 );
-
 
 
     void onRequestCompleted(

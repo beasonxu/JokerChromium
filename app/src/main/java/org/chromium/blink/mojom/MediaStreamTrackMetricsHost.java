@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface MediaStreamTrackMetricsHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface MediaStreamTrackMetricsHost extends org.chromium.mojo.bindings.
 
     Manager<MediaStreamTrackMetricsHost, MediaStreamTrackMetricsHost.Proxy> MANAGER = MediaStreamTrackMetricsHost_Internal.MANAGER;
 
-
     void addTrack(
 long id, boolean isAudio, boolean isRemote);
-
 
 
     void removeTrack(

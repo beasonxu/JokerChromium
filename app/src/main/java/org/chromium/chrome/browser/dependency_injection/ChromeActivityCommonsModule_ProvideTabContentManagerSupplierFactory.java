@@ -2,7 +2,7 @@ package org.chromium.chrome.browser.dependency_injection;
 
 import dagger.internal.Factory;
 import dagger.internal.Preconditions;
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 import org.chromium.base.supplier.ObservableSupplier;
 import org.chromium.chrome.browser.compositor.layouts.content.TabContentManager;
 

@@ -1,11 +1,16 @@
 package org.chromium.chrome.browser.tasks.tab_management;
 
+import java.lang.String;
+import org.chromium.base.annotations.IdentifierNameString;
 import org.chromium.components.module_installer.builder.Module;
 import org.chromium.components.module_installer.engine.InstallEngine;
 import org.chromium.components.module_installer.engine.InstallListener;
 
 public class TabManagementModule {
-  private static final Module<TabManagementDelegate> sModule = new Module<TabManagementDelegate>("tab_management", TabManagementDelegate.class, "org.chromium.chrome.browser.tasks.tab_management.TabManagementDelegateImpl");
+  @IdentifierNameString
+  private static String sModuleClassString = "org.chromium.chrome.browser.tasks.tab_management.TabManagementDelegateImpl";
+
+  private static final Module<TabManagementDelegate> sModule = new Module<TabManagementDelegate>("tab_management", TabManagementDelegate.class, sModuleClassString);
 
   private TabManagementModule() {
   }

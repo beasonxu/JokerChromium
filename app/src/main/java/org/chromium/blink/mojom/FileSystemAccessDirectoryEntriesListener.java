@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface FileSystemAccessDirectoryEntriesListener extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface FileSystemAccessDirectoryEntriesListener extends org.chromium.m
     }
 
     Manager<FileSystemAccessDirectoryEntriesListener, FileSystemAccessDirectoryEntriesListener.Proxy> MANAGER = FileSystemAccessDirectoryEntriesListener_Internal.MANAGER;
-
 
     void didReadDirectory(
 FileSystemAccessError result, FileSystemAccessEntry[] entries, boolean hasMoreEntries);

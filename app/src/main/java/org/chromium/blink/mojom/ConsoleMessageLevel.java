@@ -13,8 +13,17 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ConsoleMessageLevel {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ConsoleMessageLevel.VERBOSE,
+        ConsoleMessageLevel.INFO,
+        ConsoleMessageLevel.WARNING,
+        ConsoleMessageLevel.ERROR})
+    public @interface EnumType {}
 
     public static final int VERBOSE = 0;
     public static final int INFO = 1;

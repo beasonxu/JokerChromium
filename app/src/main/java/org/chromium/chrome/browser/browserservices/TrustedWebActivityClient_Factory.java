@@ -2,9 +2,10 @@ package org.chromium.chrome.browser.browserservices;
 
 import androidx.browser.trusted.TrustedWebActivityServiceConnectionPool;
 import dagger.internal.Factory;
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 import javax.inject.Provider;
-import org.chromium.chrome.browser.browserservices.permissiondelegation.TrustedWebActivityPermissionManager;
+import org.chromium.chrome.browser.browserservices.metrics.TrustedWebActivityUmaRecorder;
+import org.chromium.chrome.browser.browserservices.permissiondelegation.InstalledWebappPermissionManager;
 
 @Generated(
     value = "dagger.internal.codegen.ComponentProcessor",
@@ -15,37 +16,36 @@ import org.chromium.chrome.browser.browserservices.permissiondelegation.TrustedW
     "rawtypes"
 })
 public final class TrustedWebActivityClient_Factory implements Factory<TrustedWebActivityClient> {
-  private final Provider<TrustedWebActivityServiceConnectionPool> connectionProvider;
+  private final Provider<TrustedWebActivityServiceConnectionPool> connectionPoolProvider;
 
-  private final Provider<TrustedWebActivityPermissionManager> delegatesManagerProvider;
+  private final Provider<InstalledWebappPermissionManager> permissionManagerProvider;
 
   private final Provider<TrustedWebActivityUmaRecorder> recorderProvider;
 
   public TrustedWebActivityClient_Factory(
-      Provider<TrustedWebActivityServiceConnectionPool> connectionProvider,
-      Provider<TrustedWebActivityPermissionManager> delegatesManagerProvider,
+      Provider<TrustedWebActivityServiceConnectionPool> connectionPoolProvider,
+      Provider<InstalledWebappPermissionManager> permissionManagerProvider,
       Provider<TrustedWebActivityUmaRecorder> recorderProvider) {
-    this.connectionProvider = connectionProvider;
-    this.delegatesManagerProvider = delegatesManagerProvider;
+    this.connectionPoolProvider = connectionPoolProvider;
+    this.permissionManagerProvider = permissionManagerProvider;
     this.recorderProvider = recorderProvider;
   }
 
   @Override
   public TrustedWebActivityClient get() {
-    return newInstance(connectionProvider.get(), delegatesManagerProvider.get(), recorderProvider.get());
+    return newInstance(connectionPoolProvider.get(), permissionManagerProvider.get(), recorderProvider.get());
   }
 
   public static TrustedWebActivityClient_Factory create(
-      Provider<TrustedWebActivityServiceConnectionPool> connectionProvider,
-      Provider<TrustedWebActivityPermissionManager> delegatesManagerProvider,
+      Provider<TrustedWebActivityServiceConnectionPool> connectionPoolProvider,
+      Provider<InstalledWebappPermissionManager> permissionManagerProvider,
       Provider<TrustedWebActivityUmaRecorder> recorderProvider) {
-    return new TrustedWebActivityClient_Factory(connectionProvider, delegatesManagerProvider, recorderProvider);
+    return new TrustedWebActivityClient_Factory(connectionPoolProvider, permissionManagerProvider, recorderProvider);
   }
 
   public static TrustedWebActivityClient newInstance(
-      TrustedWebActivityServiceConnectionPool connection,
-      TrustedWebActivityPermissionManager delegatesManager,
-      TrustedWebActivityUmaRecorder recorder) {
-    return new TrustedWebActivityClient(connection, delegatesManager, recorder);
+      TrustedWebActivityServiceConnectionPool connectionPool,
+      InstalledWebappPermissionManager permissionManager, TrustedWebActivityUmaRecorder recorder) {
+    return new TrustedWebActivityClient(connectionPool, permissionManager, recorder);
   }
 }

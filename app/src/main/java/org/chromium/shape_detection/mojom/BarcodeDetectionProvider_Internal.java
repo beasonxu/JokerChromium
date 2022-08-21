@@ -13,6 +13,8 @@
 
 package org.chromium.shape_detection.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class BarcodeDetectionProvider_Internal {
 
@@ -82,7 +84,7 @@ org.chromium.mojo.bindings.InterfaceRequest<BarcodeDetection> receiver, BarcodeD
         @Override
         public void enumerateSupportedFormats(
 
-EnumerateSupportedFormatsResponse callback) {
+EnumerateSupportedFormats_Response callback) {
 
             BarcodeDetectionProviderEnumerateSupportedFormatsParams _message = new BarcodeDetectionProviderEnumerateSupportedFormatsParams();
 
@@ -393,9 +395,9 @@ EnumerateSupportedFormatsResponse callback) {
 
     static class BarcodeDetectionProviderEnumerateSupportedFormatsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BarcodeDetectionProvider.EnumerateSupportedFormatsResponse mCallback;
+        private final BarcodeDetectionProvider.EnumerateSupportedFormats_Response mCallback;
 
-        BarcodeDetectionProviderEnumerateSupportedFormatsResponseParamsForwardToCallback(BarcodeDetectionProvider.EnumerateSupportedFormatsResponse callback) {
+        BarcodeDetectionProviderEnumerateSupportedFormatsResponseParamsForwardToCallback(BarcodeDetectionProvider.EnumerateSupportedFormats_Response callback) {
             this.mCallback = callback;
         }
 
@@ -420,7 +422,7 @@ EnumerateSupportedFormatsResponse callback) {
         }
     }
 
-    static class BarcodeDetectionProviderEnumerateSupportedFormatsResponseParamsProxyToResponder implements BarcodeDetectionProvider.EnumerateSupportedFormatsResponse {
+    static class BarcodeDetectionProviderEnumerateSupportedFormatsResponseParamsProxyToResponder implements BarcodeDetectionProvider.EnumerateSupportedFormats_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

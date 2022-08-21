@@ -24,33 +24,36 @@ public  final class SyncCycleCompletedEventInfo extends
   /**
    * <pre>
    * These new conflict counters replace the ones above.
+   * TODO(crbug.com/1315573): Deprecated in M103.
    * </pre>
    *
-   * <code>optional int32 num_encryption_conflicts = 4;</code>
+   * <code>optional int32 num_encryption_conflicts = 4 [deprecated = true];</code>
    * @return Whether the numEncryptionConflicts field is set.
    */
   @java.lang.Override
-  public boolean hasNumEncryptionConflicts() {
+  @java.lang.Deprecated public boolean hasNumEncryptionConflicts() {
     return ((bitField0_ & 0x00000001) != 0);
   }
   /**
    * <pre>
    * These new conflict counters replace the ones above.
+   * TODO(crbug.com/1315573): Deprecated in M103.
    * </pre>
    *
-   * <code>optional int32 num_encryption_conflicts = 4;</code>
+   * <code>optional int32 num_encryption_conflicts = 4 [deprecated = true];</code>
    * @return The numEncryptionConflicts.
    */
   @java.lang.Override
-  public int getNumEncryptionConflicts() {
+  @java.lang.Deprecated public int getNumEncryptionConflicts() {
     return numEncryptionConflicts_;
   }
   /**
    * <pre>
    * These new conflict counters replace the ones above.
+   * TODO(crbug.com/1315573): Deprecated in M103.
    * </pre>
    *
-   * <code>optional int32 num_encryption_conflicts = 4;</code>
+   * <code>optional int32 num_encryption_conflicts = 4 [deprecated = true];</code>
    * @param value The numEncryptionConflicts to set.
    */
   private void setNumEncryptionConflicts(int value) {
@@ -60,9 +63,10 @@ public  final class SyncCycleCompletedEventInfo extends
   /**
    * <pre>
    * These new conflict counters replace the ones above.
+   * TODO(crbug.com/1315573): Deprecated in M103.
    * </pre>
    *
-   * <code>optional int32 num_encryption_conflicts = 4;</code>
+   * <code>optional int32 num_encryption_conflicts = 4 [deprecated = true];</code>
    */
   private void clearNumEncryptionConflicts() {
     bitField0_ = (bitField0_ & ~0x00000001);
@@ -72,23 +76,23 @@ public  final class SyncCycleCompletedEventInfo extends
   public static final int NUM_HIERARCHY_CONFLICTS_FIELD_NUMBER = 5;
   private int numHierarchyConflicts_;
   /**
-   * <code>optional int32 num_hierarchy_conflicts = 5;</code>
+   * <code>optional int32 num_hierarchy_conflicts = 5 [deprecated = true];</code>
    * @return Whether the numHierarchyConflicts field is set.
    */
   @java.lang.Override
-  public boolean hasNumHierarchyConflicts() {
+  @java.lang.Deprecated public boolean hasNumHierarchyConflicts() {
     return ((bitField0_ & 0x00000002) != 0);
   }
   /**
-   * <code>optional int32 num_hierarchy_conflicts = 5;</code>
+   * <code>optional int32 num_hierarchy_conflicts = 5 [deprecated = true];</code>
    * @return The numHierarchyConflicts.
    */
   @java.lang.Override
-  public int getNumHierarchyConflicts() {
+  @java.lang.Deprecated public int getNumHierarchyConflicts() {
     return numHierarchyConflicts_;
   }
   /**
-   * <code>optional int32 num_hierarchy_conflicts = 5;</code>
+   * <code>optional int32 num_hierarchy_conflicts = 5 [deprecated = true];</code>
    * @param value The numHierarchyConflicts to set.
    */
   private void setNumHierarchyConflicts(int value) {
@@ -96,7 +100,7 @@ public  final class SyncCycleCompletedEventInfo extends
     numHierarchyConflicts_ = value;
   }
   /**
-   * <code>optional int32 num_hierarchy_conflicts = 5;</code>
+   * <code>optional int32 num_hierarchy_conflicts = 5 [deprecated = true];</code>
    */
   private void clearNumHierarchyConflicts() {
     bitField0_ = (bitField0_ & ~0x00000002);
@@ -240,23 +244,35 @@ public  final class SyncCycleCompletedEventInfo extends
   public static final int NUM_REFLECTED_UPDATES_DOWNLOADED_FIELD_NUMBER = 9;
   private int numReflectedUpdatesDownloaded_;
   /**
-   * <code>optional int32 num_reflected_updates_downloaded = 9;</code>
+   * <pre>
+   * TODO(crbug.com/1315573): Deprecated in M103.
+   * </pre>
+   *
+   * <code>optional int32 num_reflected_updates_downloaded = 9 [deprecated = true];</code>
    * @return Whether the numReflectedUpdatesDownloaded field is set.
    */
   @java.lang.Override
-  public boolean hasNumReflectedUpdatesDownloaded() {
+  @java.lang.Deprecated public boolean hasNumReflectedUpdatesDownloaded() {
     return ((bitField0_ & 0x00000020) != 0);
   }
   /**
-   * <code>optional int32 num_reflected_updates_downloaded = 9;</code>
+   * <pre>
+   * TODO(crbug.com/1315573): Deprecated in M103.
+   * </pre>
+   *
+   * <code>optional int32 num_reflected_updates_downloaded = 9 [deprecated = true];</code>
    * @return The numReflectedUpdatesDownloaded.
    */
   @java.lang.Override
-  public int getNumReflectedUpdatesDownloaded() {
+  @java.lang.Deprecated public int getNumReflectedUpdatesDownloaded() {
     return numReflectedUpdatesDownloaded_;
   }
   /**
-   * <code>optional int32 num_reflected_updates_downloaded = 9;</code>
+   * <pre>
+   * TODO(crbug.com/1315573): Deprecated in M103.
+   * </pre>
+   *
+   * <code>optional int32 num_reflected_updates_downloaded = 9 [deprecated = true];</code>
    * @param value The numReflectedUpdatesDownloaded to set.
    */
   private void setNumReflectedUpdatesDownloaded(int value) {
@@ -264,7 +280,11 @@ public  final class SyncCycleCompletedEventInfo extends
     numReflectedUpdatesDownloaded_ = value;
   }
   /**
-   * <code>optional int32 num_reflected_updates_downloaded = 9;</code>
+   * <pre>
+   * TODO(crbug.com/1315573): Deprecated in M103.
+   * </pre>
+   *
+   * <code>optional int32 num_reflected_updates_downloaded = 9 [deprecated = true];</code>
    */
   private void clearNumReflectedUpdatesDownloaded() {
     bitField0_ = (bitField0_ & ~0x00000020);
@@ -480,37 +500,40 @@ public  final class SyncCycleCompletedEventInfo extends
     /**
      * <pre>
      * These new conflict counters replace the ones above.
+     * TODO(crbug.com/1315573): Deprecated in M103.
      * </pre>
      *
-     * <code>optional int32 num_encryption_conflicts = 4;</code>
+     * <code>optional int32 num_encryption_conflicts = 4 [deprecated = true];</code>
      * @return Whether the numEncryptionConflicts field is set.
      */
     @java.lang.Override
-    public boolean hasNumEncryptionConflicts() {
+    @java.lang.Deprecated public boolean hasNumEncryptionConflicts() {
       return instance.hasNumEncryptionConflicts();
     }
     /**
      * <pre>
      * These new conflict counters replace the ones above.
+     * TODO(crbug.com/1315573): Deprecated in M103.
      * </pre>
      *
-     * <code>optional int32 num_encryption_conflicts = 4;</code>
+     * <code>optional int32 num_encryption_conflicts = 4 [deprecated = true];</code>
      * @return The numEncryptionConflicts.
      */
     @java.lang.Override
-    public int getNumEncryptionConflicts() {
+    @java.lang.Deprecated public int getNumEncryptionConflicts() {
       return instance.getNumEncryptionConflicts();
     }
     /**
      * <pre>
      * These new conflict counters replace the ones above.
+     * TODO(crbug.com/1315573): Deprecated in M103.
      * </pre>
      *
-     * <code>optional int32 num_encryption_conflicts = 4;</code>
+     * <code>optional int32 num_encryption_conflicts = 4 [deprecated = true];</code>
      * @param value The numEncryptionConflicts to set.
      * @return This builder for chaining.
      */
-    public Builder setNumEncryptionConflicts(int value) {
+    @java.lang.Deprecated public Builder setNumEncryptionConflicts(int value) {
       copyOnWrite();
       instance.setNumEncryptionConflicts(value);
       return this;
@@ -518,48 +541,49 @@ public  final class SyncCycleCompletedEventInfo extends
     /**
      * <pre>
      * These new conflict counters replace the ones above.
+     * TODO(crbug.com/1315573): Deprecated in M103.
      * </pre>
      *
-     * <code>optional int32 num_encryption_conflicts = 4;</code>
+     * <code>optional int32 num_encryption_conflicts = 4 [deprecated = true];</code>
      * @return This builder for chaining.
      */
-    public Builder clearNumEncryptionConflicts() {
+    @java.lang.Deprecated public Builder clearNumEncryptionConflicts() {
       copyOnWrite();
       instance.clearNumEncryptionConflicts();
       return this;
     }
 
     /**
-     * <code>optional int32 num_hierarchy_conflicts = 5;</code>
+     * <code>optional int32 num_hierarchy_conflicts = 5 [deprecated = true];</code>
      * @return Whether the numHierarchyConflicts field is set.
      */
     @java.lang.Override
-    public boolean hasNumHierarchyConflicts() {
+    @java.lang.Deprecated public boolean hasNumHierarchyConflicts() {
       return instance.hasNumHierarchyConflicts();
     }
     /**
-     * <code>optional int32 num_hierarchy_conflicts = 5;</code>
+     * <code>optional int32 num_hierarchy_conflicts = 5 [deprecated = true];</code>
      * @return The numHierarchyConflicts.
      */
     @java.lang.Override
-    public int getNumHierarchyConflicts() {
+    @java.lang.Deprecated public int getNumHierarchyConflicts() {
       return instance.getNumHierarchyConflicts();
     }
     /**
-     * <code>optional int32 num_hierarchy_conflicts = 5;</code>
+     * <code>optional int32 num_hierarchy_conflicts = 5 [deprecated = true];</code>
      * @param value The numHierarchyConflicts to set.
      * @return This builder for chaining.
      */
-    public Builder setNumHierarchyConflicts(int value) {
+    @java.lang.Deprecated public Builder setNumHierarchyConflicts(int value) {
       copyOnWrite();
       instance.setNumHierarchyConflicts(value);
       return this;
     }
     /**
-     * <code>optional int32 num_hierarchy_conflicts = 5;</code>
+     * <code>optional int32 num_hierarchy_conflicts = 5 [deprecated = true];</code>
      * @return This builder for chaining.
      */
-    public Builder clearNumHierarchyConflicts() {
+    @java.lang.Deprecated public Builder clearNumHierarchyConflicts() {
       copyOnWrite();
       instance.clearNumHierarchyConflicts();
       return this;
@@ -706,36 +730,52 @@ public  final class SyncCycleCompletedEventInfo extends
     }
 
     /**
-     * <code>optional int32 num_reflected_updates_downloaded = 9;</code>
+     * <pre>
+     * TODO(crbug.com/1315573): Deprecated in M103.
+     * </pre>
+     *
+     * <code>optional int32 num_reflected_updates_downloaded = 9 [deprecated = true];</code>
      * @return Whether the numReflectedUpdatesDownloaded field is set.
      */
     @java.lang.Override
-    public boolean hasNumReflectedUpdatesDownloaded() {
+    @java.lang.Deprecated public boolean hasNumReflectedUpdatesDownloaded() {
       return instance.hasNumReflectedUpdatesDownloaded();
     }
     /**
-     * <code>optional int32 num_reflected_updates_downloaded = 9;</code>
+     * <pre>
+     * TODO(crbug.com/1315573): Deprecated in M103.
+     * </pre>
+     *
+     * <code>optional int32 num_reflected_updates_downloaded = 9 [deprecated = true];</code>
      * @return The numReflectedUpdatesDownloaded.
      */
     @java.lang.Override
-    public int getNumReflectedUpdatesDownloaded() {
+    @java.lang.Deprecated public int getNumReflectedUpdatesDownloaded() {
       return instance.getNumReflectedUpdatesDownloaded();
     }
     /**
-     * <code>optional int32 num_reflected_updates_downloaded = 9;</code>
+     * <pre>
+     * TODO(crbug.com/1315573): Deprecated in M103.
+     * </pre>
+     *
+     * <code>optional int32 num_reflected_updates_downloaded = 9 [deprecated = true];</code>
      * @param value The numReflectedUpdatesDownloaded to set.
      * @return This builder for chaining.
      */
-    public Builder setNumReflectedUpdatesDownloaded(int value) {
+    @java.lang.Deprecated public Builder setNumReflectedUpdatesDownloaded(int value) {
       copyOnWrite();
       instance.setNumReflectedUpdatesDownloaded(value);
       return this;
     }
     /**
-     * <code>optional int32 num_reflected_updates_downloaded = 9;</code>
+     * <pre>
+     * TODO(crbug.com/1315573): Deprecated in M103.
+     * </pre>
+     *
+     * <code>optional int32 num_reflected_updates_downloaded = 9 [deprecated = true];</code>
      * @return This builder for chaining.
      */
-    public Builder clearNumReflectedUpdatesDownloaded() {
+    @java.lang.Deprecated public Builder clearNumReflectedUpdatesDownloaded() {
       copyOnWrite();
       instance.clearNumReflectedUpdatesDownloaded();
       return this;

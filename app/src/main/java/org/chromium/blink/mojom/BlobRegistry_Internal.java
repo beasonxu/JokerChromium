@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class BlobRegistry_Internal {
 
@@ -67,7 +69,7 @@ class BlobRegistry_Internal {
         @Override
         public void register(
 org.chromium.mojo.bindings.InterfaceRequest<Blob> blob, String uuid, String contentType, String contentDisposition, DataElement[] elements, 
-RegisterResponse callback) {
+Register_Response callback) {
 
             BlobRegistryRegisterParams _message = new BlobRegistryRegisterParams();
 
@@ -97,7 +99,7 @@ RegisterResponse callback) {
         @Override
         public void registerFromStream(
 String contentType, String contentDisposition, long lengthHint, org.chromium.mojo.system.DataPipe.ConsumerHandle data, org.chromium.mojo.bindings.AssociatedInterfaceNotSupported progressClient, 
-RegisterFromStreamResponse callback) {
+RegisterFromStream_Response callback) {
 
             BlobRegistryRegisterFromStreamParams _message = new BlobRegistryRegisterFromStreamParams();
 
@@ -127,7 +129,7 @@ RegisterFromStreamResponse callback) {
         @Override
         public void getBlobFromUuid(
 org.chromium.mojo.bindings.InterfaceRequest<Blob> blob, String uuid, 
-GetBlobFromUuidResponse callback) {
+GetBlobFromUuid_Response callback) {
 
             BlobRegistryGetBlobFromUuidParams _message = new BlobRegistryGetBlobFromUuidParams();
 
@@ -466,9 +468,9 @@ org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo.bindings.Associ
 
     static class BlobRegistryRegisterResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BlobRegistry.RegisterResponse mCallback;
+        private final BlobRegistry.Register_Response mCallback;
 
-        BlobRegistryRegisterResponseParamsForwardToCallback(BlobRegistry.RegisterResponse callback) {
+        BlobRegistryRegisterResponseParamsForwardToCallback(BlobRegistry.Register_Response callback) {
             this.mCallback = callback;
         }
 
@@ -491,7 +493,7 @@ org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo.bindings.Associ
         }
     }
 
-    static class BlobRegistryRegisterResponseParamsProxyToResponder implements BlobRegistry.RegisterResponse {
+    static class BlobRegistryRegisterResponseParamsProxyToResponder implements BlobRegistry.Register_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -679,9 +681,9 @@ org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo.bindings.Associ
 
     static class BlobRegistryRegisterFromStreamResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BlobRegistry.RegisterFromStreamResponse mCallback;
+        private final BlobRegistry.RegisterFromStream_Response mCallback;
 
-        BlobRegistryRegisterFromStreamResponseParamsForwardToCallback(BlobRegistry.RegisterFromStreamResponse callback) {
+        BlobRegistryRegisterFromStreamResponseParamsForwardToCallback(BlobRegistry.RegisterFromStream_Response callback) {
             this.mCallback = callback;
         }
 
@@ -706,7 +708,7 @@ org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo.bindings.Associ
         }
     }
 
-    static class BlobRegistryRegisterFromStreamResponseParamsProxyToResponder implements BlobRegistry.RegisterFromStreamResponse {
+    static class BlobRegistryRegisterFromStreamResponseParamsProxyToResponder implements BlobRegistry.RegisterFromStream_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -866,9 +868,9 @@ org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo.bindings.Associ
 
     static class BlobRegistryGetBlobFromUuidResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BlobRegistry.GetBlobFromUuidResponse mCallback;
+        private final BlobRegistry.GetBlobFromUuid_Response mCallback;
 
-        BlobRegistryGetBlobFromUuidResponseParamsForwardToCallback(BlobRegistry.GetBlobFromUuidResponse callback) {
+        BlobRegistryGetBlobFromUuidResponseParamsForwardToCallback(BlobRegistry.GetBlobFromUuid_Response callback) {
             this.mCallback = callback;
         }
 
@@ -891,7 +893,7 @@ org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo.bindings.Associ
         }
     }
 
-    static class BlobRegistryGetBlobFromUuidResponseParamsProxyToResponder implements BlobRegistry.GetBlobFromUuidResponse {
+    static class BlobRegistryGetBlobFromUuidResponseParamsProxyToResponder implements BlobRegistry.GetBlobFromUuid_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

@@ -2,16 +2,13 @@ package org.chromium.components.language;
 
 import java.lang.Override;
 import java.lang.String;
-import java.util.LinkedHashSet;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class GeoLanguageProviderBridgeJni implements GeoLanguageProviderBridge.Natives {
+class GeoLanguageProviderBridgeJni implements GeoLanguageProviderBridge.Natives {
   private static GeoLanguageProviderBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<GeoLanguageProviderBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.language.GeoLanguageProviderBridge.Natives>() {
@@ -26,8 +23,8 @@ final class GeoLanguageProviderBridgeJni implements GeoLanguageProviderBridge.Na
   };
 
   @Override
-  public void getCurrentGeoLanguages(LinkedHashSet<String> set) {
-    GEN_JNI.org_chromium_components_language_GeoLanguageProviderBridge_getCurrentGeoLanguages(set);
+  public String[] getCurrentGeoLanguages() {
+    return (String[])GEN_JNI.org_chromium_components_language_GeoLanguageProviderBridge_getCurrentGeoLanguages();
   }
 
   public static GeoLanguageProviderBridge.Natives get() {

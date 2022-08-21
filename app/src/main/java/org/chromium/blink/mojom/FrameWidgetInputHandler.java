@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface FrameWidgetInputHandler extends org.chromium.mojo.bindings.Interface {
 
@@ -23,133 +25,118 @@ public interface FrameWidgetInputHandler extends org.chromium.mojo.bindings.Inte
 
     Manager<FrameWidgetInputHandler, FrameWidgetInputHandler.Proxy> MANAGER = FrameWidgetInputHandler_Internal.MANAGER;
 
-
     void addImeTextSpansToExistingText(
 int start, int end, org.chromium.ui.mojom.ImeTextSpan[] imeTextSpans);
-
 
 
     void clearImeTextSpansByType(
 int start, int end, int type);
 
 
-
     void setCompositionFromExistingText(
 int start, int end, org.chromium.ui.mojom.ImeTextSpan[] imeTextSpans);
-
 
 
     void extendSelectionAndDelete(
 int before, int after);
 
 
-
     void deleteSurroundingText(
 int before, int after);
-
 
 
     void deleteSurroundingTextInCodePoints(
 int before, int after);
 
 
-
     void setEditableSelectionOffsets(
 int start, int end);
 
+
+    void handleStylusWritingGestureAction(
+StylusWritingGestureData gestureData);
 
 
     void executeEditCommand(
 String command, org.chromium.mojo_base.mojom.String16 value);
 
 
-
     void undo(
 );
-
 
 
     void redo(
 );
 
 
-
     void cut(
 );
-
 
 
     void copy(
 );
 
 
-
     void copyToFindPboard(
 );
-
 
 
     void paste(
 );
 
 
-
     void pasteAndMatchStyle(
 );
-
 
 
     void delete(
 );
 
 
-
     void selectAll(
 );
-
 
 
     void collapseSelection(
 );
 
 
-
     void replace(
 org.chromium.mojo_base.mojom.String16 word);
-
 
 
     void replaceMisspelling(
 org.chromium.mojo_base.mojom.String16 word);
 
 
-
     void selectRange(
 org.chromium.gfx.mojom.Point base, org.chromium.gfx.mojom.Point extent);
-
 
 
     void adjustSelectionByCharacterOffset(
 int start, int end, int behavior);
 
 
+    void selectAroundCaret(
+int granularity, boolean shouldShowHandle, boolean shouldShowContextMenu, 
+SelectAroundCaret_Response callback);
 
-    void selectWordAroundCaret(
-
-SelectWordAroundCaretResponse callback);
-
-    interface SelectWordAroundCaretResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<Boolean, Integer, Integer> { }
-
+    interface SelectAroundCaret_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<SelectAroundCaretResult> { }
 
 
     void moveRangeSelectionExtent(
 org.chromium.gfx.mojom.Point extent);
 
 
+    void scrollFocusedEditableNodeIntoView(
+);
 
-    void scrollFocusedEditableNodeIntoRect(
-org.chromium.gfx.mojom.Rect rect);
 
+    void waitForPageScaleAnimationForTesting(
+
+WaitForPageScaleAnimationForTesting_Response callback);
+
+    interface WaitForPageScaleAnimationForTesting_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void moveCaret(

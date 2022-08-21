@@ -13,8 +13,17 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ProtectionPolicy {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ProtectionPolicy.UNSPECIFIED,
+        ProtectionPolicy.NONE,
+        ProtectionPolicy.UV_OR_CRED_ID_REQUIRED,
+        ProtectionPolicy.UV_REQUIRED})
+    public @interface EnumType {}
 
     public static final int UNSPECIFIED = 0;
     public static final int NONE = 1;

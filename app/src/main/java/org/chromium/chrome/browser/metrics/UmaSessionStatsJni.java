@@ -2,15 +2,13 @@ package org.chromium.chrome.browser.metrics;
 
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class UmaSessionStatsJni implements UmaSessionStats.Natives {
+class UmaSessionStatsJni implements UmaSessionStats.Natives {
   private static UmaSessionStats.Natives testInstance;
 
   public static final JniStaticTestMocker<UmaSessionStats.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.metrics.UmaSessionStats.Natives>() {
@@ -71,8 +69,8 @@ final class UmaSessionStatsJni implements UmaSessionStats.Natives {
   }
 
   @Override
-  public void registerSyntheticFieldTrial(String trialName, String groupName) {
-    GEN_JNI.org_chromium_chrome_browser_metrics_UmaSessionStats_registerSyntheticFieldTrial(trialName, groupName);
+  public void registerSyntheticFieldTrial(String trialName, String groupName, int annotationMode) {
+    GEN_JNI.org_chromium_chrome_browser_metrics_UmaSessionStats_registerSyntheticFieldTrial(trialName, groupName, annotationMode);
   }
 
   @Override

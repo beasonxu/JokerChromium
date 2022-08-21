@@ -46,15 +46,23 @@ public interface SessionWindowOrBuilder extends
   int getSelectedTabIndex();
 
   /**
-   * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 3 [default = TYPE_TABBED];</code>
+   * <pre>
+   * Type of the window.
+   * </pre>
+   *
+   * <code>optional .sync_pb.SyncEnums.BrowserType browser_type = 3 [default = TYPE_TABBED];</code>
    * @return Whether the browserType field is set.
    */
   boolean hasBrowserType();
   /**
-   * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 3 [default = TYPE_TABBED];</code>
+   * <pre>
+   * Type of the window.
+   * </pre>
+   *
+   * <code>optional .sync_pb.SyncEnums.BrowserType browser_type = 3 [default = TYPE_TABBED];</code>
    * @return The browserType.
    */
-  org.chromium.components.sync.protocol.SessionWindow.BrowserType getBrowserType();
+  org.chromium.components.sync.protocol.SyncEnums.BrowserType getBrowserType();
 
   /**
    * <pre>

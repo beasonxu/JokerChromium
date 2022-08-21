@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface VideoDecodeStatsRecorder extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface VideoDecodeStatsRecorder extends org.chromium.mojo.bindings.Int
 
     Manager<VideoDecodeStatsRecorder, VideoDecodeStatsRecorder.Proxy> MANAGER = VideoDecodeStatsRecorder_Internal.MANAGER;
 
-
     void startNewRecord(
 PredictionFeatures features);
-
 
 
     void updateRecord(

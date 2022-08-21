@@ -13,8 +13,16 @@
 
 package org.chromium.dom_distiller.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class Theme {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        Theme.LIGHT,
+        Theme.DARK,
+        Theme.SEPIA})
+    public @interface EnumType {}
 
     public static final int LIGHT = 0;
     public static final int DARK = 1;

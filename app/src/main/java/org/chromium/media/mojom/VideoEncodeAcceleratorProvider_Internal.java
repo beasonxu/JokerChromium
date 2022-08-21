@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class VideoEncodeAcceleratorProvider_Internal {
 
@@ -80,7 +82,7 @@ org.chromium.mojo.bindings.InterfaceRequest<VideoEncodeAccelerator> receiver) {
         @Override
         public void getVideoEncodeAcceleratorSupportedProfiles(
 
-GetVideoEncodeAcceleratorSupportedProfilesResponse callback) {
+GetVideoEncodeAcceleratorSupportedProfiles_Response callback) {
 
             VideoEncodeAcceleratorProviderGetVideoEncodeAcceleratorSupportedProfilesParams _message = new VideoEncodeAcceleratorProviderGetVideoEncodeAcceleratorSupportedProfilesParams();
 
@@ -395,9 +397,9 @@ GetVideoEncodeAcceleratorSupportedProfilesResponse callback) {
 
     static class VideoEncodeAcceleratorProviderGetVideoEncodeAcceleratorSupportedProfilesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final VideoEncodeAcceleratorProvider.GetVideoEncodeAcceleratorSupportedProfilesResponse mCallback;
+        private final VideoEncodeAcceleratorProvider.GetVideoEncodeAcceleratorSupportedProfiles_Response mCallback;
 
-        VideoEncodeAcceleratorProviderGetVideoEncodeAcceleratorSupportedProfilesResponseParamsForwardToCallback(VideoEncodeAcceleratorProvider.GetVideoEncodeAcceleratorSupportedProfilesResponse callback) {
+        VideoEncodeAcceleratorProviderGetVideoEncodeAcceleratorSupportedProfilesResponseParamsForwardToCallback(VideoEncodeAcceleratorProvider.GetVideoEncodeAcceleratorSupportedProfiles_Response callback) {
             this.mCallback = callback;
         }
 
@@ -422,7 +424,7 @@ GetVideoEncodeAcceleratorSupportedProfilesResponse callback) {
         }
     }
 
-    static class VideoEncodeAcceleratorProviderGetVideoEncodeAcceleratorSupportedProfilesResponseParamsProxyToResponder implements VideoEncodeAcceleratorProvider.GetVideoEncodeAcceleratorSupportedProfilesResponse {
+    static class VideoEncodeAcceleratorProviderGetVideoEncodeAcceleratorSupportedProfilesResponseParamsProxyToResponder implements VideoEncodeAcceleratorProvider.GetVideoEncodeAcceleratorSupportedProfiles_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

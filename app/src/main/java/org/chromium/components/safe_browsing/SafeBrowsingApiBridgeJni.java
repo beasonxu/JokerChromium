@@ -2,15 +2,13 @@ package org.chromium.components.safe_browsing;
 
 import java.lang.Override;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class SafeBrowsingApiBridgeJni implements SafeBrowsingApiBridge.Natives {
+class SafeBrowsingApiBridgeJni implements SafeBrowsingApiBridge.Natives {
   private static SafeBrowsingApiBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<SafeBrowsingApiBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.safe_browsing.SafeBrowsingApiBridge.Natives>() {

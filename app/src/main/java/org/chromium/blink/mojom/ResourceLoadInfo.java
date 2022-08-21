@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class ResourceLoadInfo extends org.chromium.mojo.bindings.Struct {
 
@@ -28,6 +30,7 @@ public final class ResourceLoadInfo extends org.chromium.mojo.bindings.Struct {
     public int requestPriority;
     public String mimeType;
     public boolean wasCached;
+    public boolean wasInNetworkServiceMemoryCache;
     public CommonNetworkInfo networkInfo;
     public int netError;
     public org.chromium.network.mojom.LoadTimingInfo loadTimingInfo;
@@ -37,6 +40,7 @@ public final class ResourceLoadInfo extends org.chromium.mojo.bindings.Struct {
 
     private ResourceLoadInfo(int version) {
         super(STRUCT_SIZE, version);
+        this.wasInNetworkServiceMemoryCache = (boolean) false;
     }
 
     public ResourceLoadInfo() {
@@ -113,6 +117,10 @@ public final class ResourceLoadInfo extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
+                result.wasInNetworkServiceMemoryCache = decoder0.readBoolean(64, 1);
+                }
+                {
+                    
                 result.netError = decoder0.readInt(68);
                 }
                 {
@@ -175,6 +183,8 @@ public final class ResourceLoadInfo extends org.chromium.mojo.bindings.Struct {
         encoder0.encode(this.mimeType, 56, false);
         
         encoder0.encode(this.wasCached, 64, 0);
+        
+        encoder0.encode(this.wasInNetworkServiceMemoryCache, 64, 1);
         
         encoder0.encode(this.netError, 68);
         

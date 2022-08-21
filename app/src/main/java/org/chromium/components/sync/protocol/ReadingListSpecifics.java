@@ -414,6 +414,40 @@ public  final class ReadingListSpecifics extends
     updateTitleTimeUs_ = 0L;
   }
 
+  public static final int ESTIMATED_READ_TIME_SECONDS_FIELD_NUMBER = 9;
+  private int estimatedReadTimeSeconds_;
+  /**
+   * <code>optional int32 estimated_read_time_seconds = 9;</code>
+   * @return Whether the estimatedReadTimeSeconds field is set.
+   */
+  @java.lang.Override
+  public boolean hasEstimatedReadTimeSeconds() {
+    return ((bitField0_ & 0x00000080) != 0);
+  }
+  /**
+   * <code>optional int32 estimated_read_time_seconds = 9;</code>
+   * @return The estimatedReadTimeSeconds.
+   */
+  @java.lang.Override
+  public int getEstimatedReadTimeSeconds() {
+    return estimatedReadTimeSeconds_;
+  }
+  /**
+   * <code>optional int32 estimated_read_time_seconds = 9;</code>
+   * @param value The estimatedReadTimeSeconds to set.
+   */
+  private void setEstimatedReadTimeSeconds(int value) {
+    bitField0_ |= 0x00000080;
+    estimatedReadTimeSeconds_ = value;
+  }
+  /**
+   * <code>optional int32 estimated_read_time_seconds = 9;</code>
+   */
+  private void clearEstimatedReadTimeSeconds() {
+    bitField0_ = (bitField0_ & ~0x00000080);
+    estimatedReadTimeSeconds_ = 0;
+  }
+
   public static final int STATUS_FIELD_NUMBER = 6;
   private int status_;
   /**
@@ -426,7 +460,7 @@ public  final class ReadingListSpecifics extends
    */
   @java.lang.Override
   public boolean hasStatus() {
-    return ((bitField0_ & 0x00000080) != 0);
+    return ((bitField0_ & 0x00000100) != 0);
   }
   /**
    * <pre>
@@ -451,7 +485,7 @@ public  final class ReadingListSpecifics extends
    */
   private void setStatus(org.chromium.components.sync.protocol.ReadingListSpecifics.ReadingListEntryStatus value) {
     status_ = value.getNumber();
-    bitField0_ |= 0x00000080;
+    bitField0_ |= 0x00000100;
   }
   /**
    * <pre>
@@ -461,7 +495,7 @@ public  final class ReadingListSpecifics extends
    * <code>optional .sync_pb.ReadingListSpecifics.ReadingListEntryStatus status = 6;</code>
    */
   private void clearStatus() {
-    bitField0_ = (bitField0_ & ~0x00000080);
+    bitField0_ = (bitField0_ & ~0x00000100);
     status_ = 0;
   }
 
@@ -882,6 +916,42 @@ public  final class ReadingListSpecifics extends
     }
 
     /**
+     * <code>optional int32 estimated_read_time_seconds = 9;</code>
+     * @return Whether the estimatedReadTimeSeconds field is set.
+     */
+    @java.lang.Override
+    public boolean hasEstimatedReadTimeSeconds() {
+      return instance.hasEstimatedReadTimeSeconds();
+    }
+    /**
+     * <code>optional int32 estimated_read_time_seconds = 9;</code>
+     * @return The estimatedReadTimeSeconds.
+     */
+    @java.lang.Override
+    public int getEstimatedReadTimeSeconds() {
+      return instance.getEstimatedReadTimeSeconds();
+    }
+    /**
+     * <code>optional int32 estimated_read_time_seconds = 9;</code>
+     * @param value The estimatedReadTimeSeconds to set.
+     * @return This builder for chaining.
+     */
+    public Builder setEstimatedReadTimeSeconds(int value) {
+      copyOnWrite();
+      instance.setEstimatedReadTimeSeconds(value);
+      return this;
+    }
+    /**
+     * <code>optional int32 estimated_read_time_seconds = 9;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearEstimatedReadTimeSeconds() {
+      copyOnWrite();
+      instance.clearEstimatedReadTimeSeconds();
+      return this;
+    }
+
+    /**
      * <pre>
      * If the field is not present, it defaults to UNSEEN.
      * </pre>
@@ -959,11 +1029,12 @@ public  final class ReadingListSpecifics extends
             org.chromium.components.sync.protocol.ReadingListSpecifics.ReadingListEntryStatus.internalGetVerifier(),
             "firstReadTimeUs_",
             "updateTitleTimeUs_",
+            "estimatedReadTimeSeconds_",
           };
           java.lang.String info =
-              "\u0001\b\u0000\u0001\u0001\b\b\u0000\u0000\u0000\u0001\u1008\u0000\u0002\u1008\u0001" +
-              "\u0003\u1008\u0002\u0004\u1002\u0003\u0005\u1002\u0004\u0006\u100c\u0007\u0007\u1002" +
-              "\u0005\b\u1002\u0006";
+              "\u0001\t\u0000\u0001\u0001\t\t\u0000\u0000\u0000\u0001\u1008\u0000\u0002\u1008\u0001" +
+              "\u0003\u1008\u0002\u0004\u1002\u0003\u0005\u1002\u0004\u0006\u100c\b\u0007\u1002" +
+              "\u0005\b\u1002\u0006\t\u1004\u0007";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

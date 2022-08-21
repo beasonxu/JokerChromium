@@ -2,17 +2,17 @@ package org.chromium.components.feature_engagement.internal;
 
 import java.lang.Boolean;
 import java.lang.Override;
+import java.lang.Runnable;
 import java.lang.String;
-import javax.annotation.Generated;
 import org.chromium.base.Callback;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
+import org.chromium.components.feature_engagement.TriggerDetails;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class TrackerImplJni implements TrackerImpl.Natives {
+class TrackerImplJni implements TrackerImpl.Natives {
   private static TrackerImpl.Natives testInstance;
 
   public static final JniStaticTestMocker<TrackerImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.feature_engagement.internal.TrackerImpl.Natives>() {
@@ -38,6 +38,12 @@ final class TrackerImplJni implements TrackerImpl.Natives {
   }
 
   @Override
+  public TriggerDetails shouldTriggerHelpUIWithSnooze(long nativeTrackerImplAndroid,
+      TrackerImpl caller, String feature) {
+    return (TriggerDetails)GEN_JNI.org_chromium_components_feature_1engagement_internal_TrackerImpl_shouldTriggerHelpUIWithSnooze(nativeTrackerImplAndroid, caller, feature);
+  }
+
+  @Override
   public boolean wouldTriggerHelpUI(long nativeTrackerImplAndroid, TrackerImpl caller,
       String feature) {
     return (boolean)GEN_JNI.org_chromium_components_feature_1engagement_internal_TrackerImpl_wouldTriggerHelpUI(nativeTrackerImplAndroid, caller, feature);
@@ -60,9 +66,38 @@ final class TrackerImplJni implements TrackerImpl.Natives {
   }
 
   @Override
+  public void dismissedWithSnooze(long nativeTrackerImplAndroid, TrackerImpl caller, String feature,
+      int snoozeAction) {
+    GEN_JNI.org_chromium_components_feature_1engagement_internal_TrackerImpl_dismissedWithSnooze(nativeTrackerImplAndroid, caller, feature, snoozeAction);
+  }
+
+  @Override
   public TrackerImpl.DisplayLockHandleAndroid acquireDisplayLock(long nativeTrackerImplAndroid,
       TrackerImpl caller) {
     return (TrackerImpl.DisplayLockHandleAndroid)GEN_JNI.org_chromium_components_feature_1engagement_internal_TrackerImpl_acquireDisplayLock(nativeTrackerImplAndroid, caller);
+  }
+
+  @Override
+  public void setPriorityNotification(long nativeTrackerImplAndroid, TrackerImpl caller,
+      String feature) {
+    GEN_JNI.org_chromium_components_feature_1engagement_internal_TrackerImpl_setPriorityNotification(nativeTrackerImplAndroid, caller, feature);
+  }
+
+  @Override
+  public String getPendingPriorityNotification(long nativeTrackerImplAndroid, TrackerImpl caller) {
+    return (String)GEN_JNI.org_chromium_components_feature_1engagement_internal_TrackerImpl_getPendingPriorityNotification(nativeTrackerImplAndroid, caller);
+  }
+
+  @Override
+  public void registerPriorityNotificationHandler(long nativeTrackerImplAndroid, TrackerImpl caller,
+      String feature, Runnable priorityNotificationHandler) {
+    GEN_JNI.org_chromium_components_feature_1engagement_internal_TrackerImpl_registerPriorityNotificationHandler(nativeTrackerImplAndroid, caller, feature, priorityNotificationHandler);
+  }
+
+  @Override
+  public void unregisterPriorityNotificationHandler(long nativeTrackerImplAndroid,
+      TrackerImpl caller, String feature) {
+    GEN_JNI.org_chromium_components_feature_1engagement_internal_TrackerImpl_unregisterPriorityNotificationHandler(nativeTrackerImplAndroid, caller, feature);
   }
 
   @Override

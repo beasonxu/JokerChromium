@@ -1,10 +1,10 @@
 package org.chromium.chrome.browser.browserservices.permissiondelegation;
 
 import dagger.internal.Factory;
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 import javax.inject.Provider;
 import org.chromium.chrome.browser.browserservices.TrustedWebActivityClient;
-import org.chromium.chrome.browser.browserservices.TrustedWebActivityUmaRecorder;
+import org.chromium.chrome.browser.browserservices.metrics.TrustedWebActivityUmaRecorder;
 
 @Generated(
     value = "dagger.internal.codegen.ComponentProcessor",
@@ -15,14 +15,14 @@ import org.chromium.chrome.browser.browserservices.TrustedWebActivityUmaRecorder
     "rawtypes"
 })
 public final class LocationPermissionUpdater_Factory implements Factory<LocationPermissionUpdater> {
-  private final Provider<TrustedWebActivityPermissionManager> permissionManagerProvider;
+  private final Provider<InstalledWebappPermissionManager> permissionManagerProvider;
 
   private final Provider<TrustedWebActivityClient> trustedWebActivityClientProvider;
 
   private final Provider<TrustedWebActivityUmaRecorder> umaRecorderProvider;
 
   public LocationPermissionUpdater_Factory(
-      Provider<TrustedWebActivityPermissionManager> permissionManagerProvider,
+      Provider<InstalledWebappPermissionManager> permissionManagerProvider,
       Provider<TrustedWebActivityClient> trustedWebActivityClientProvider,
       Provider<TrustedWebActivityUmaRecorder> umaRecorderProvider) {
     this.permissionManagerProvider = permissionManagerProvider;
@@ -36,14 +36,14 @@ public final class LocationPermissionUpdater_Factory implements Factory<Location
   }
 
   public static LocationPermissionUpdater_Factory create(
-      Provider<TrustedWebActivityPermissionManager> permissionManagerProvider,
+      Provider<InstalledWebappPermissionManager> permissionManagerProvider,
       Provider<TrustedWebActivityClient> trustedWebActivityClientProvider,
       Provider<TrustedWebActivityUmaRecorder> umaRecorderProvider) {
     return new LocationPermissionUpdater_Factory(permissionManagerProvider, trustedWebActivityClientProvider, umaRecorderProvider);
   }
 
   public static LocationPermissionUpdater newInstance(
-      TrustedWebActivityPermissionManager permissionManager,
+      InstalledWebappPermissionManager permissionManager,
       TrustedWebActivityClient trustedWebActivityClient,
       TrustedWebActivityUmaRecorder umaRecorder) {
     return new LocationPermissionUpdater(permissionManager, trustedWebActivityClient, umaRecorder);

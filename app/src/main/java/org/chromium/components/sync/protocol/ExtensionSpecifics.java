@@ -374,47 +374,47 @@ public  final class ExtensionSpecifics extends
   private java.lang.String name_;
   /**
    * <pre>
-   * The name of the extension. Used for bookmark apps.
+   * DEPRECATED. See https://crbug.com/1233303.
    * </pre>
    *
-   * <code>optional string name = 6;</code>
+   * <code>optional string name = 6 [deprecated = true];</code>
    * @return Whether the name field is set.
    */
   @java.lang.Override
-  public boolean hasName() {
+  @java.lang.Deprecated public boolean hasName() {
     return ((bitField0_ & 0x00000020) != 0);
   }
   /**
    * <pre>
-   * The name of the extension. Used for bookmark apps.
+   * DEPRECATED. See https://crbug.com/1233303.
    * </pre>
    *
-   * <code>optional string name = 6;</code>
+   * <code>optional string name = 6 [deprecated = true];</code>
    * @return The name.
    */
   @java.lang.Override
-  public java.lang.String getName() {
+  @java.lang.Deprecated public java.lang.String getName() {
     return name_;
   }
   /**
    * <pre>
-   * The name of the extension. Used for bookmark apps.
+   * DEPRECATED. See https://crbug.com/1233303.
    * </pre>
    *
-   * <code>optional string name = 6;</code>
+   * <code>optional string name = 6 [deprecated = true];</code>
    * @return The bytes for name.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
+  @java.lang.Deprecated public com.google.protobuf.ByteString
       getNameBytes() {
     return com.google.protobuf.ByteString.copyFromUtf8(name_);
   }
   /**
    * <pre>
-   * The name of the extension. Used for bookmark apps.
+   * DEPRECATED. See https://crbug.com/1233303.
    * </pre>
    *
-   * <code>optional string name = 6;</code>
+   * <code>optional string name = 6 [deprecated = true];</code>
    * @param value The name to set.
    */
   private void setName(
@@ -425,10 +425,10 @@ public  final class ExtensionSpecifics extends
   }
   /**
    * <pre>
-   * The name of the extension. Used for bookmark apps.
+   * DEPRECATED. See https://crbug.com/1233303.
    * </pre>
    *
-   * <code>optional string name = 6;</code>
+   * <code>optional string name = 6 [deprecated = true];</code>
    */
   private void clearName() {
     bitField0_ = (bitField0_ & ~0x00000020);
@@ -436,10 +436,10 @@ public  final class ExtensionSpecifics extends
   }
   /**
    * <pre>
-   * The name of the extension. Used for bookmark apps.
+   * DEPRECATED. See https://crbug.com/1233303.
    * </pre>
    *
-   * <code>optional string name = 6;</code>
+   * <code>optional string name = 6 [deprecated = true];</code>
    * @param value The bytes for name to set.
    */
   private void setNameBytes(
@@ -1126,51 +1126,51 @@ public  final class ExtensionSpecifics extends
 
     /**
      * <pre>
-     * The name of the extension. Used for bookmark apps.
+     * DEPRECATED. See https://crbug.com/1233303.
      * </pre>
      *
-     * <code>optional string name = 6;</code>
+     * <code>optional string name = 6 [deprecated = true];</code>
      * @return Whether the name field is set.
      */
     @java.lang.Override
-    public boolean hasName() {
+    @java.lang.Deprecated public boolean hasName() {
       return instance.hasName();
     }
     /**
      * <pre>
-     * The name of the extension. Used for bookmark apps.
+     * DEPRECATED. See https://crbug.com/1233303.
      * </pre>
      *
-     * <code>optional string name = 6;</code>
+     * <code>optional string name = 6 [deprecated = true];</code>
      * @return The name.
      */
     @java.lang.Override
-    public java.lang.String getName() {
+    @java.lang.Deprecated public java.lang.String getName() {
       return instance.getName();
     }
     /**
      * <pre>
-     * The name of the extension. Used for bookmark apps.
+     * DEPRECATED. See https://crbug.com/1233303.
      * </pre>
      *
-     * <code>optional string name = 6;</code>
+     * <code>optional string name = 6 [deprecated = true];</code>
      * @return The bytes for name.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
+    @java.lang.Deprecated public com.google.protobuf.ByteString
         getNameBytes() {
       return instance.getNameBytes();
     }
     /**
      * <pre>
-     * The name of the extension. Used for bookmark apps.
+     * DEPRECATED. See https://crbug.com/1233303.
      * </pre>
      *
-     * <code>optional string name = 6;</code>
+     * <code>optional string name = 6 [deprecated = true];</code>
      * @param value The name to set.
      * @return This builder for chaining.
      */
-    public Builder setName(
+    @java.lang.Deprecated public Builder setName(
         java.lang.String value) {
       copyOnWrite();
       instance.setName(value);
@@ -1178,27 +1178,27 @@ public  final class ExtensionSpecifics extends
     }
     /**
      * <pre>
-     * The name of the extension. Used for bookmark apps.
+     * DEPRECATED. See https://crbug.com/1233303.
      * </pre>
      *
-     * <code>optional string name = 6;</code>
+     * <code>optional string name = 6 [deprecated = true];</code>
      * @return This builder for chaining.
      */
-    public Builder clearName() {
+    @java.lang.Deprecated public Builder clearName() {
       copyOnWrite();
       instance.clearName();
       return this;
     }
     /**
      * <pre>
-     * The name of the extension. Used for bookmark apps.
+     * DEPRECATED. See https://crbug.com/1233303.
      * </pre>
      *
-     * <code>optional string name = 6;</code>
+     * <code>optional string name = 6 [deprecated = true];</code>
      * @param value The bytes for name to set.
      * @return This builder for chaining.
      */
-    public Builder setNameBytes(
+    @java.lang.Deprecated public Builder setNameBytes(
         com.google.protobuf.ByteString value) {
       copyOnWrite();
       instance.setNameBytes(value);

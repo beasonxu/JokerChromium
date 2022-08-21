@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class DateTimeChooser_Internal {
 
@@ -49,6 +51,8 @@ class DateTimeChooser_Internal {
 
     private static final int OPEN_DATE_TIME_DIALOG_ORDINAL = 0;
 
+    private static final int CLOSE_DATE_TIME_DIALOG_ORDINAL = 1;
+
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements DateTimeChooser.Proxy {
 
@@ -61,7 +65,7 @@ class DateTimeChooser_Internal {
         @Override
         public void openDateTimeDialog(
 DateTimeDialogValue value, 
-OpenDateTimeDialogResponse callback) {
+OpenDateTimeDialog_Response callback) {
 
             DateTimeChooserOpenDateTimeDialogParams _message = new DateTimeChooserOpenDateTimeDialogParams();
 
@@ -76,6 +80,21 @@ OpenDateTimeDialogResponse callback) {
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
                                     0)),
                     new DateTimeChooserOpenDateTimeDialogResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void closeDateTimeDialog(
+) {
+
+            DateTimeChooserCloseDateTimeDialogParams _message = new DateTimeChooserCloseDateTimeDialogParams();
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(CLOSE_DATE_TIME_DIALOG_ORDINAL)));
 
         }
 
@@ -108,6 +127,18 @@ OpenDateTimeDialogResponse callback) {
                                 DateTimeChooser_Internal.MANAGER, messageWithHeader);
 
 
+
+
+
+
+
+                    case CLOSE_DATE_TIME_DIALOG_ORDINAL: {
+
+                        DateTimeChooserCloseDateTimeDialogParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().closeDateTimeDialog();
+                        return true;
+                    }
 
 
                     default:
@@ -152,6 +183,8 @@ OpenDateTimeDialogResponse callback) {
                         getImpl().openDateTimeDialog(data.value, new DateTimeChooserOpenDateTimeDialogResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
+
+
 
 
                     default:
@@ -299,9 +332,9 @@ OpenDateTimeDialogResponse callback) {
 
     static class DateTimeChooserOpenDateTimeDialogResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final DateTimeChooser.OpenDateTimeDialogResponse mCallback;
+        private final DateTimeChooser.OpenDateTimeDialog_Response mCallback;
 
-        DateTimeChooserOpenDateTimeDialogResponseParamsForwardToCallback(DateTimeChooser.OpenDateTimeDialogResponse callback) {
+        DateTimeChooserOpenDateTimeDialogResponseParamsForwardToCallback(DateTimeChooser.OpenDateTimeDialog_Response callback) {
             this.mCallback = callback;
         }
 
@@ -326,7 +359,7 @@ OpenDateTimeDialogResponse callback) {
         }
     }
 
-    static class DateTimeChooserOpenDateTimeDialogResponseParamsProxyToResponder implements DateTimeChooser.OpenDateTimeDialogResponse {
+    static class DateTimeChooserOpenDateTimeDialogResponseParamsProxyToResponder implements DateTimeChooser.OpenDateTimeDialog_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -357,6 +390,62 @@ OpenDateTimeDialogResponse callback) {
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class DateTimeChooserCloseDateTimeDialogParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private DateTimeChooserCloseDateTimeDialogParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public DateTimeChooserCloseDateTimeDialogParams() {
+            this(0);
+        }
+
+        public static DateTimeChooserCloseDateTimeDialogParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static DateTimeChooserCloseDateTimeDialogParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static DateTimeChooserCloseDateTimeDialogParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            DateTimeChooserCloseDateTimeDialogParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new DateTimeChooserCloseDateTimeDialogParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         }
     }
 

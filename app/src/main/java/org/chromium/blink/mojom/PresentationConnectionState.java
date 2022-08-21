@@ -13,8 +13,17 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PresentationConnectionState {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PresentationConnectionState.CONNECTING,
+        PresentationConnectionState.CONNECTED,
+        PresentationConnectionState.CLOSED,
+        PresentationConnectionState.TERMINATED})
+    public @interface EnumType {}
 
     public static final int CONNECTING = 0;
     public static final int CONNECTED = 1;

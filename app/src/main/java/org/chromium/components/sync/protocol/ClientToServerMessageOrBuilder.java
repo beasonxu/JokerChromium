@@ -43,12 +43,12 @@ public interface ClientToServerMessageOrBuilder extends
       getShareBytes();
 
   /**
-   * <code>optional int32 protocol_version = 2 [default = 90];</code>
+   * <code>optional int32 protocol_version = 2 [default = 99];</code>
    * @return Whether the protocolVersion field is set.
    */
   boolean hasProtocolVersion();
   /**
-   * <code>optional int32 protocol_version = 2 [default = 90];</code>
+   * <code>optional int32 protocol_version = 2 [default = 99];</code>
    * @return The protocolVersion.
    */
   int getProtocolVersion();
@@ -102,7 +102,11 @@ public interface ClientToServerMessageOrBuilder extends
 
   /**
    * <pre>
-   * Opaque store ID; if it changes, duck!
+   * Opaque server-provided ID representing an "epoch" of the server-side data.
+   * Clients must hand this opaque ID back to the server as part of all requests
+   * within the same sync session (i.e. for all requests to the server except
+   * the very first GetUpdates request). See analogous field
+   * ClientToServerResponse.store_birthday for more details about its lifetime.
    * </pre>
    *
    * <code>optional string store_birthday = 7;</code>
@@ -111,7 +115,11 @@ public interface ClientToServerMessageOrBuilder extends
   boolean hasStoreBirthday();
   /**
    * <pre>
-   * Opaque store ID; if it changes, duck!
+   * Opaque server-provided ID representing an "epoch" of the server-side data.
+   * Clients must hand this opaque ID back to the server as part of all requests
+   * within the same sync session (i.e. for all requests to the server except
+   * the very first GetUpdates request). See analogous field
+   * ClientToServerResponse.store_birthday for more details about its lifetime.
    * </pre>
    *
    * <code>optional string store_birthday = 7;</code>
@@ -120,7 +128,11 @@ public interface ClientToServerMessageOrBuilder extends
   java.lang.String getStoreBirthday();
   /**
    * <pre>
-   * Opaque store ID; if it changes, duck!
+   * Opaque server-provided ID representing an "epoch" of the server-side data.
+   * Clients must hand this opaque ID back to the server as part of all requests
+   * within the same sync session (i.e. for all requests to the server except
+   * the very first GetUpdates request). See analogous field
+   * ClientToServerResponse.store_birthday for more details about its lifetime.
    * </pre>
    *
    * <code>optional string store_birthday = 7;</code>

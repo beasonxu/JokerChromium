@@ -13,6 +13,8 @@
 
 package org.chromium.handwriting.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface HandwritingRecognizer extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface HandwritingRecognizer extends org.chromium.mojo.bindings.Interf
 
     Manager<HandwritingRecognizer, HandwritingRecognizer.Proxy> MANAGER = HandwritingRecognizer_Internal.MANAGER;
 
-
     void getPrediction(
 HandwritingStroke[] strokes, HandwritingHints hints, 
-GetPredictionResponse callback);
+GetPrediction_Response callback);
 
-    interface GetPredictionResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<HandwritingPrediction[]> { }
+    interface GetPrediction_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<HandwritingPrediction[]> { }
 
 
 }

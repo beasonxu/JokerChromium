@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class PictureInPictureService_Internal {
 
@@ -60,8 +62,8 @@ class PictureInPictureService_Internal {
 
         @Override
         public void startSession(
-int playerId, org.chromium.mojo.bindings.AssociatedInterfaceNotSupported playerRemote, org.chromium.viz.mojom.SurfaceId surfaceId, org.chromium.gfx.mojom.Size naturalSize, boolean showPlayPauseButton, PictureInPictureSessionObserver observer, 
-StartSessionResponse callback) {
+int playerId, org.chromium.mojo.bindings.AssociatedInterfaceNotSupported playerRemote, org.chromium.viz.mojom.SurfaceId surfaceId, org.chromium.gfx.mojom.Size naturalSize, boolean showPlayPauseButton, PictureInPictureSessionObserver observer, org.chromium.gfx.mojom.Rect sourceBounds, 
+StartSession_Response callback) {
 
             PictureInPictureServiceStartSessionParams _message = new PictureInPictureServiceStartSessionParams();
 
@@ -76,6 +78,8 @@ StartSessionResponse callback) {
             _message.showPlayPauseButton = showPlayPauseButton;
 
             _message.observer = observer;
+
+            _message.sourceBounds = sourceBounds;
 
 
             getProxyHandler().getMessageReceiver().acceptWithResponder(
@@ -159,7 +163,7 @@ StartSessionResponse callback) {
                         PictureInPictureServiceStartSessionParams data =
                                 PictureInPictureServiceStartSessionParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().startSession(data.playerId, data.playerRemote, data.surfaceId, data.naturalSize, data.showPlayPauseButton, data.observer, new PictureInPictureServiceStartSessionResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().startSession(data.playerId, data.playerRemote, data.surfaceId, data.naturalSize, data.showPlayPauseButton, data.observer, data.sourceBounds, new PictureInPictureServiceStartSessionResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -178,8 +182,8 @@ StartSessionResponse callback) {
     
     static final class PictureInPictureServiceStartSessionParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 48;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
+        private static final int STRUCT_SIZE = 56;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(56, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public int playerId;
         public org.chromium.mojo.bindings.AssociatedInterfaceNotSupported playerRemote;
@@ -187,6 +191,7 @@ StartSessionResponse callback) {
         public org.chromium.gfx.mojom.Size naturalSize;
         public boolean showPlayPauseButton;
         public PictureInPictureSessionObserver observer;
+        public org.chromium.gfx.mojom.Rect sourceBounds;
 
         private PictureInPictureServiceStartSessionParams(int version) {
             super(STRUCT_SIZE, version);
@@ -235,7 +240,7 @@ StartSessionResponse callback) {
                     }
                     {
                         
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, true);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
                     result.surfaceId = org.chromium.viz.mojom.SurfaceId.decode(decoder1);
                     }
                     {
@@ -246,6 +251,11 @@ StartSessionResponse callback) {
                     {
                         
                     result.observer = decoder0.readServiceInterface(40, false, PictureInPictureSessionObserver.MANAGER);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(48, false);
+                    result.sourceBounds = org.chromium.gfx.mojom.Rect.decode(decoder1);
                     }
 
             } finally {
@@ -265,11 +275,13 @@ StartSessionResponse callback) {
             
             encoder0.encode(this.showPlayPauseButton, 20, 0);
             
-            encoder0.encode(this.surfaceId, 24, true);
+            encoder0.encode(this.surfaceId, 24, false);
             
             encoder0.encode(this.naturalSize, 32, false);
             
             encoder0.encode(this.observer, 40, false, PictureInPictureSessionObserver.MANAGER);
+            
+            encoder0.encode(this.sourceBounds, 48, false);
         }
     }
 
@@ -346,9 +358,9 @@ StartSessionResponse callback) {
 
     static class PictureInPictureServiceStartSessionResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PictureInPictureService.StartSessionResponse mCallback;
+        private final PictureInPictureService.StartSession_Response mCallback;
 
-        PictureInPictureServiceStartSessionResponseParamsForwardToCallback(PictureInPictureService.StartSessionResponse callback) {
+        PictureInPictureServiceStartSessionResponseParamsForwardToCallback(PictureInPictureService.StartSession_Response callback) {
             this.mCallback = callback;
         }
 
@@ -373,7 +385,7 @@ StartSessionResponse callback) {
         }
     }
 
-    static class PictureInPictureServiceStartSessionResponseParamsProxyToResponder implements PictureInPictureService.StartSessionResponse {
+    static class PictureInPictureServiceStartSessionResponseParamsProxyToResponder implements PictureInPictureService.StartSession_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

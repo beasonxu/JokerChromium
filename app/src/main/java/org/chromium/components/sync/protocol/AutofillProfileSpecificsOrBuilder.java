@@ -77,6 +77,41 @@ public interface AutofillProfileSpecificsOrBuilder extends
 
   /**
    * <pre>
+   * A user chosen profile label that is used to identify the profile.
+   * The value of the label can be freely chosen by the user. Two possible label
+   * values are '$HOME$' or '$WORK$' which have a special meaning.
+   * </pre>
+   *
+   * <code>optional string profile_label = 62;</code>
+   * @return Whether the profileLabel field is set.
+   */
+  boolean hasProfileLabel();
+  /**
+   * <pre>
+   * A user chosen profile label that is used to identify the profile.
+   * The value of the label can be freely chosen by the user. Two possible label
+   * values are '$HOME$' or '$WORK$' which have a special meaning.
+   * </pre>
+   *
+   * <code>optional string profile_label = 62;</code>
+   * @return The profileLabel.
+   */
+  java.lang.String getProfileLabel();
+  /**
+   * <pre>
+   * A user chosen profile label that is used to identify the profile.
+   * The value of the label can be freely chosen by the user. Two possible label
+   * values are '$HOME$' or '$WORK$' which have a special meaning.
+   * </pre>
+   *
+   * <code>optional string profile_label = 62;</code>
+   * @return The bytes for profileLabel.
+   */
+  com.google.protobuf.ByteString
+      getProfileLabelBytes();
+
+  /**
+   * <pre>
    * Contact info name fields.
    * </pre>
    *
@@ -1145,76 +1180,106 @@ public interface AutofillProfileSpecificsOrBuilder extends
 
   /**
    * <pre>
-   * Validity bitfield.
-   * Each set of two bits represents the validity state of a specific part of
-   * the Autofill address. For more info please refer to autofill_profile.h.
+   * The state indicates if the profile qualifies to get merged with a
+   * profile observed in a form submission. If true, the profile can still be
+   * updated silently, but it should not be considered for merges that need to
+   * involve user interactions.
    * </pre>
    *
-   * <code>optional int64 validity_state_bitfield = 24;</code>
-   * @return Whether the validityStateBitfield field is set.
+   * <code>optional bool disallow_settings_visible_updates = 63;</code>
+   * @return Whether the disallowSettingsVisibleUpdates field is set.
    */
-  boolean hasValidityStateBitfield();
+  boolean hasDisallowSettingsVisibleUpdates();
   /**
    * <pre>
-   * Validity bitfield.
-   * Each set of two bits represents the validity state of a specific part of
-   * the Autofill address. For more info please refer to autofill_profile.h.
+   * The state indicates if the profile qualifies to get merged with a
+   * profile observed in a form submission. If true, the profile can still be
+   * updated silently, but it should not be considered for merges that need to
+   * involve user interactions.
    * </pre>
    *
-   * <code>optional int64 validity_state_bitfield = 24;</code>
-   * @return The validityStateBitfield.
+   * <code>optional bool disallow_settings_visible_updates = 63;</code>
+   * @return The disallowSettingsVisibleUpdates.
    */
-  long getValidityStateBitfield();
+  boolean getDisallowSettingsVisibleUpdates();
 
   /**
    * <pre>
-   * Denotes whether the validity_state_bitfield is updated according to the
-   * changes in the autofill profile values.
+   * Birthdate fields.
    * </pre>
    *
-   * <code>optional bool is_client_validity_states_updated = 25;</code>
-   * @return Whether the isClientValidityStatesUpdated field is set.
+   * <code>optional int32 birthdate_day = 64;</code>
+   * @return Whether the birthdateDay field is set.
    */
-  boolean hasIsClientValidityStatesUpdated();
+  boolean hasBirthdateDay();
   /**
    * <pre>
-   * Denotes whether the validity_state_bitfield is updated according to the
-   * changes in the autofill profile values.
+   * Birthdate fields.
    * </pre>
    *
-   * <code>optional bool is_client_validity_states_updated = 25;</code>
-   * @return The isClientValidityStatesUpdated.
+   * <code>optional int32 birthdate_day = 64;</code>
+   * @return The birthdateDay.
    */
-  boolean getIsClientValidityStatesUpdated();
+  int getBirthdateDay();
+
+  /**
+   * <code>optional int32 birthdate_month = 65;</code>
+   * @return Whether the birthdateMonth field is set.
+   */
+  boolean hasBirthdateMonth();
+  /**
+   * <code>optional int32 birthdate_month = 65;</code>
+   * @return The birthdateMonth.
+   */
+  int getBirthdateMonth();
+
+  /**
+   * <pre>
+   * 4 digits.
+   * </pre>
+   *
+   * <code>optional int32 birthdate_year = 66;</code>
+   * @return Whether the birthdateYear field is set.
+   */
+  boolean hasBirthdateYear();
+  /**
+   * <pre>
+   * 4 digits.
+   * </pre>
+   *
+   * <code>optional int32 birthdate_year = 66;</code>
+   * @return The birthdateYear.
+   */
+  int getBirthdateYear();
 
   /**
    * <pre>
    * Deprecated.
    * </pre>
    *
-   * <code>optional string label = 1 [deprecated = true];</code>
-   * @return Whether the label field is set.
+   * <code>optional string deprecated_label = 1 [deprecated = true];</code>
+   * @return Whether the deprecatedLabel field is set.
    */
-  @java.lang.Deprecated boolean hasLabel();
+  @java.lang.Deprecated boolean hasDeprecatedLabel();
   /**
    * <pre>
    * Deprecated.
    * </pre>
    *
-   * <code>optional string label = 1 [deprecated = true];</code>
-   * @return The label.
+   * <code>optional string deprecated_label = 1 [deprecated = true];</code>
+   * @return The deprecatedLabel.
    */
-  @java.lang.Deprecated java.lang.String getLabel();
+  @java.lang.Deprecated java.lang.String getDeprecatedLabel();
   /**
    * <pre>
    * Deprecated.
    * </pre>
    *
-   * <code>optional string label = 1 [deprecated = true];</code>
-   * @return The bytes for label.
+   * <code>optional string deprecated_label = 1 [deprecated = true];</code>
+   * @return The bytes for deprecatedLabel.
    */
   @java.lang.Deprecated com.google.protobuf.ByteString
-      getLabelBytes();
+      getDeprecatedLabelBytes();
 
   /**
    * <code>optional string phone_fax_whole_number = 14 [deprecated = true];</code>
@@ -1232,4 +1297,38 @@ public interface AutofillProfileSpecificsOrBuilder extends
    */
   @java.lang.Deprecated com.google.protobuf.ByteString
       getPhoneFaxWholeNumberBytes();
+
+  /**
+   * <pre>
+   * The following validity-related fields have only been used in combination
+   * with an experimental features that are disabled for all clients and have
+   * been removed in M100.
+   * </pre>
+   *
+   * <code>optional int64 validity_state_bitfield = 24 [deprecated = true];</code>
+   * @return Whether the validityStateBitfield field is set.
+   */
+  @java.lang.Deprecated boolean hasValidityStateBitfield();
+  /**
+   * <pre>
+   * The following validity-related fields have only been used in combination
+   * with an experimental features that are disabled for all clients and have
+   * been removed in M100.
+   * </pre>
+   *
+   * <code>optional int64 validity_state_bitfield = 24 [deprecated = true];</code>
+   * @return The validityStateBitfield.
+   */
+  @java.lang.Deprecated long getValidityStateBitfield();
+
+  /**
+   * <code>optional bool is_client_validity_states_updated = 25 [deprecated = true];</code>
+   * @return Whether the isClientValidityStatesUpdated field is set.
+   */
+  @java.lang.Deprecated boolean hasIsClientValidityStatesUpdated();
+  /**
+   * <code>optional bool is_client_validity_states_updated = 25 [deprecated = true];</code>
+   * @return The isClientValidityStatesUpdated.
+   */
+  @java.lang.Deprecated boolean getIsClientValidityStatesUpdated();
 }

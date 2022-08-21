@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface AppBannerEvent extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface AppBannerEvent extends org.chromium.mojo.bindings.Interface {
 
     Manager<AppBannerEvent, AppBannerEvent.Proxy> MANAGER = AppBannerEvent_Internal.MANAGER;
 
-
     void bannerAccepted(
 String platform);
-
 
 
     void bannerDismissed(

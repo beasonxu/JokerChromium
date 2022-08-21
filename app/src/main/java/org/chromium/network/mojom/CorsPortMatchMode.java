@@ -13,8 +13,15 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class CorsPortMatchMode {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        CorsPortMatchMode.ALLOW_ANY_PORT,
+        CorsPortMatchMode.ALLOW_ONLY_SPECIFIED_PORT})
+    public @interface EnumType {}
 
     public static final int ALLOW_ANY_PORT = 0;
     public static final int ALLOW_ONLY_SPECIFIED_PORT = 1;

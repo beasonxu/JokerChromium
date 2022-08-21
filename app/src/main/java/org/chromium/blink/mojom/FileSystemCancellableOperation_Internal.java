@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class FileSystemCancellableOperation_Internal {
 
@@ -61,7 +63,7 @@ class FileSystemCancellableOperation_Internal {
         @Override
         public void cancel(
 
-CancelResponse callback) {
+Cancel_Response callback) {
 
             FileSystemCancellableOperationCancelParams _message = new FileSystemCancellableOperationCancelParams();
 
@@ -283,9 +285,9 @@ CancelResponse callback) {
 
     static class FileSystemCancellableOperationCancelResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemCancellableOperation.CancelResponse mCallback;
+        private final FileSystemCancellableOperation.Cancel_Response mCallback;
 
-        FileSystemCancellableOperationCancelResponseParamsForwardToCallback(FileSystemCancellableOperation.CancelResponse callback) {
+        FileSystemCancellableOperationCancelResponseParamsForwardToCallback(FileSystemCancellableOperation.Cancel_Response callback) {
             this.mCallback = callback;
         }
 
@@ -310,7 +312,7 @@ CancelResponse callback) {
         }
     }
 
-    static class FileSystemCancellableOperationCancelResponseParamsProxyToResponder implements FileSystemCancellableOperation.CancelResponse {
+    static class FileSystemCancellableOperationCancelResponseParamsProxyToResponder implements FileSystemCancellableOperation.Cancel_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

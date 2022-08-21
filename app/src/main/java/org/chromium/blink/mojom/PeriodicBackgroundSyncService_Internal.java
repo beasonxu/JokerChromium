@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class PeriodicBackgroundSyncService_Internal {
 
@@ -65,7 +67,7 @@ class PeriodicBackgroundSyncService_Internal {
         @Override
         public void register(
 SyncRegistrationOptions options, long serviceWorkerRegistrationId, 
-RegisterResponse callback) {
+Register_Response callback) {
 
             PeriodicBackgroundSyncServiceRegisterParams _message = new PeriodicBackgroundSyncServiceRegisterParams();
 
@@ -89,7 +91,7 @@ RegisterResponse callback) {
         @Override
         public void unregister(
 long serviceWorkerRegistrationId, String tag, 
-UnregisterResponse callback) {
+Unregister_Response callback) {
 
             PeriodicBackgroundSyncServiceUnregisterParams _message = new PeriodicBackgroundSyncServiceUnregisterParams();
 
@@ -113,7 +115,7 @@ UnregisterResponse callback) {
         @Override
         public void getRegistrations(
 long serviceWorkerRegistrationId, 
-GetRegistrationsResponse callback) {
+GetRegistrations_Response callback) {
 
             PeriodicBackgroundSyncServiceGetRegistrationsParams _message = new PeriodicBackgroundSyncServiceGetRegistrationsParams();
 
@@ -395,9 +397,9 @@ GetRegistrationsResponse callback) {
 
     static class PeriodicBackgroundSyncServiceRegisterResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PeriodicBackgroundSyncService.RegisterResponse mCallback;
+        private final PeriodicBackgroundSyncService.Register_Response mCallback;
 
-        PeriodicBackgroundSyncServiceRegisterResponseParamsForwardToCallback(PeriodicBackgroundSyncService.RegisterResponse callback) {
+        PeriodicBackgroundSyncServiceRegisterResponseParamsForwardToCallback(PeriodicBackgroundSyncService.Register_Response callback) {
             this.mCallback = callback;
         }
 
@@ -422,7 +424,7 @@ GetRegistrationsResponse callback) {
         }
     }
 
-    static class PeriodicBackgroundSyncServiceRegisterResponseParamsProxyToResponder implements PeriodicBackgroundSyncService.RegisterResponse {
+    static class PeriodicBackgroundSyncServiceRegisterResponseParamsProxyToResponder implements PeriodicBackgroundSyncService.Register_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -593,9 +595,9 @@ GetRegistrationsResponse callback) {
 
     static class PeriodicBackgroundSyncServiceUnregisterResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PeriodicBackgroundSyncService.UnregisterResponse mCallback;
+        private final PeriodicBackgroundSyncService.Unregister_Response mCallback;
 
-        PeriodicBackgroundSyncServiceUnregisterResponseParamsForwardToCallback(PeriodicBackgroundSyncService.UnregisterResponse callback) {
+        PeriodicBackgroundSyncServiceUnregisterResponseParamsForwardToCallback(PeriodicBackgroundSyncService.Unregister_Response callback) {
             this.mCallback = callback;
         }
 
@@ -620,7 +622,7 @@ GetRegistrationsResponse callback) {
         }
     }
 
-    static class PeriodicBackgroundSyncServiceUnregisterResponseParamsProxyToResponder implements PeriodicBackgroundSyncService.UnregisterResponse {
+    static class PeriodicBackgroundSyncServiceUnregisterResponseParamsProxyToResponder implements PeriodicBackgroundSyncService.Unregister_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -806,9 +808,9 @@ GetRegistrationsResponse callback) {
 
     static class PeriodicBackgroundSyncServiceGetRegistrationsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PeriodicBackgroundSyncService.GetRegistrationsResponse mCallback;
+        private final PeriodicBackgroundSyncService.GetRegistrations_Response mCallback;
 
-        PeriodicBackgroundSyncServiceGetRegistrationsResponseParamsForwardToCallback(PeriodicBackgroundSyncService.GetRegistrationsResponse callback) {
+        PeriodicBackgroundSyncServiceGetRegistrationsResponseParamsForwardToCallback(PeriodicBackgroundSyncService.GetRegistrations_Response callback) {
             this.mCallback = callback;
         }
 
@@ -833,7 +835,7 @@ GetRegistrationsResponse callback) {
         }
     }
 
-    static class PeriodicBackgroundSyncServiceGetRegistrationsResponseParamsProxyToResponder implements PeriodicBackgroundSyncService.GetRegistrationsResponse {
+    static class PeriodicBackgroundSyncServiceGetRegistrationsResponseParamsProxyToResponder implements PeriodicBackgroundSyncService.GetRegistrations_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

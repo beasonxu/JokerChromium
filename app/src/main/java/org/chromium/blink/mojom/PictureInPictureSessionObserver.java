@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface PictureInPictureSessionObserver extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface PictureInPictureSessionObserver extends org.chromium.mojo.bindi
 
     Manager<PictureInPictureSessionObserver, PictureInPictureSessionObserver.Proxy> MANAGER = PictureInPictureSessionObserver_Internal.MANAGER;
 
-
     void onWindowSizeChanged(
 org.chromium.gfx.mojom.Size size);
-
 
 
     void onStopped(

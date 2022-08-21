@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class Sensor_Internal {
 
@@ -71,7 +73,7 @@ class Sensor_Internal {
         @Override
         public void getDefaultConfiguration(
 
-GetDefaultConfigurationResponse callback) {
+GetDefaultConfiguration_Response callback) {
 
             SensorGetDefaultConfigurationParams _message = new SensorGetDefaultConfigurationParams();
 
@@ -91,7 +93,7 @@ GetDefaultConfigurationResponse callback) {
         @Override
         public void addConfiguration(
 SensorConfiguration configuration, 
-AddConfigurationResponse callback) {
+AddConfiguration_Response callback) {
 
             SensorAddConfigurationParams _message = new SensorAddConfigurationParams();
 
@@ -453,9 +455,9 @@ boolean enabled) {
 
     static class SensorGetDefaultConfigurationResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Sensor.GetDefaultConfigurationResponse mCallback;
+        private final Sensor.GetDefaultConfiguration_Response mCallback;
 
-        SensorGetDefaultConfigurationResponseParamsForwardToCallback(Sensor.GetDefaultConfigurationResponse callback) {
+        SensorGetDefaultConfigurationResponseParamsForwardToCallback(Sensor.GetDefaultConfiguration_Response callback) {
             this.mCallback = callback;
         }
 
@@ -480,7 +482,7 @@ boolean enabled) {
         }
     }
 
-    static class SensorGetDefaultConfigurationResponseParamsProxyToResponder implements Sensor.GetDefaultConfigurationResponse {
+    static class SensorGetDefaultConfigurationResponseParamsProxyToResponder implements Sensor.GetDefaultConfiguration_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -641,9 +643,9 @@ boolean enabled) {
 
     static class SensorAddConfigurationResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Sensor.AddConfigurationResponse mCallback;
+        private final Sensor.AddConfiguration_Response mCallback;
 
-        SensorAddConfigurationResponseParamsForwardToCallback(Sensor.AddConfigurationResponse callback) {
+        SensorAddConfigurationResponseParamsForwardToCallback(Sensor.AddConfiguration_Response callback) {
             this.mCallback = callback;
         }
 
@@ -668,7 +670,7 @@ boolean enabled) {
         }
     }
 
-    static class SensorAddConfigurationResponseParamsProxyToResponder implements Sensor.AddConfigurationResponse {
+    static class SensorAddConfigurationResponseParamsProxyToResponder implements Sensor.AddConfiguration_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

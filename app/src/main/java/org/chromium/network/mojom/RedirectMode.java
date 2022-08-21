@@ -13,8 +13,16 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class RedirectMode {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        RedirectMode.FOLLOW,
+        RedirectMode.ERROR,
+        RedirectMode.MANUAL})
+    public @interface EnumType {}
 
     public static final int FOLLOW = 0;
     public static final int ERROR = 1;

@@ -1,16 +1,14 @@
 package org.chromium.components.signin.identitymanager;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.components.signin.base.CoreAccountId;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class IdentityMutatorJni implements IdentityMutator.Natives {
+class IdentityMutatorJni implements IdentityMutator.Natives {
   private static IdentityMutator.Natives testInstance;
 
   public static final JniStaticTestMocker<IdentityMutator.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.signin.identitymanager.IdentityMutator.Natives>() {
@@ -34,6 +32,11 @@ final class IdentityMutatorJni implements IdentityMutator.Natives {
   public boolean clearPrimaryAccount(long nativeJniIdentityMutator, int sourceMetric,
       int deleteMetric) {
     return (boolean)GEN_JNI.org_chromium_components_signin_identitymanager_IdentityMutator_clearPrimaryAccount(nativeJniIdentityMutator, sourceMetric, deleteMetric);
+  }
+
+  @Override
+  public void revokeSyncConsent(long nativeJniIdentityMutator, int sourceMetric, int deleteMetric) {
+    GEN_JNI.org_chromium_components_signin_identitymanager_IdentityMutator_revokeSyncConsent(nativeJniIdentityMutator, sourceMetric, deleteMetric);
   }
 
   @Override

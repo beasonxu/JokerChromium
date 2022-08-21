@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class CdmService_Internal {
 
@@ -47,9 +49,7 @@ class CdmService_Internal {
     };
 
 
-    private static final int LOAD_CDM_ORDINAL = 0;
-
-    private static final int CREATE_CDM_FACTORY_ORDINAL = 1;
+    private static final int CREATE_CDM_FACTORY_ORDINAL = 0;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements CdmService.Proxy {
@@ -57,23 +57,6 @@ class CdmService_Internal {
         Proxy(org.chromium.mojo.system.Core core,
               org.chromium.mojo.bindings.MessageReceiverWithResponder messageReceiver) {
             super(core, messageReceiver);
-        }
-
-
-        @Override
-        public void loadCdm(
-org.chromium.mojo_base.mojom.FilePath cdmPath) {
-
-            CdmServiceLoadCdmParams _message = new CdmServiceLoadCdmParams();
-
-            _message.cdmPath = cdmPath;
-
-
-            getProxyHandler().getMessageReceiver().accept(
-                    _message.serializeWithHeader(
-                            getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(LOAD_CDM_ORDINAL)));
-
         }
 
 
@@ -127,19 +110,6 @@ org.chromium.mojo.bindings.InterfaceRequest<CdmFactory> factory, FrameInterfaceF
 
 
 
-                    case LOAD_CDM_ORDINAL: {
-
-                        CdmServiceLoadCdmParams data =
-                                CdmServiceLoadCdmParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().loadCdm(data.cdmPath);
-                        return true;
-                    }
-
-
-
-
-
                     case CREATE_CDM_FACTORY_ORDINAL: {
 
                         CdmServiceCreateCdmFactoryParams data =
@@ -181,8 +151,6 @@ org.chromium.mojo.bindings.InterfaceRequest<CdmFactory> factory, FrameInterfaceF
 
 
 
-
-
                     default:
                         return false;
                 }
@@ -192,70 +160,6 @@ org.chromium.mojo.bindings.InterfaceRequest<CdmFactory> factory, FrameInterfaceF
             }
         }
     }
-
-
-    
-    static final class CdmServiceLoadCdmParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public org.chromium.mojo_base.mojom.FilePath cdmPath;
-
-        private CdmServiceLoadCdmParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public CdmServiceLoadCdmParams() {
-            this(0);
-        }
-
-        public static CdmServiceLoadCdmParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static CdmServiceLoadCdmParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static CdmServiceLoadCdmParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            CdmServiceLoadCdmParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new CdmServiceLoadCdmParams(elementsOrVersion);
-                    {
-                        
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    result.cdmPath = org.chromium.mojo_base.mojom.FilePath.decode(decoder1);
-                    }
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-            
-            encoder0.encode(this.cdmPath, 8, false);
-        }
-    }
-
 
 
     

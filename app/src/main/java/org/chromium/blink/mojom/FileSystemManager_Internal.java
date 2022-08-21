@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class FileSystemManager_Internal {
 
@@ -79,6 +81,8 @@ class FileSystemManager_Internal {
 
     private static final int GET_PLATFORM_PATH_ORDINAL = 15;
 
+    private static final int REGISTER_BLOB_ORDINAL = 16;
+
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements FileSystemManager.Proxy {
 
@@ -91,7 +95,7 @@ class FileSystemManager_Internal {
         @Override
         public void open(
 org.chromium.url.internal.mojom.Origin origin, int fileSystemType, 
-OpenResponse callback) {
+Open_Response callback) {
 
             FileSystemManagerOpenParams _message = new FileSystemManagerOpenParams();
 
@@ -115,7 +119,7 @@ OpenResponse callback) {
         @Override
         public void resolveUrl(
 org.chromium.url.mojom.Url filesystemUrl, 
-ResolveUrlResponse callback) {
+ResolveUrl_Response callback) {
 
             FileSystemManagerResolveUrlParams _message = new FileSystemManagerResolveUrlParams();
 
@@ -137,7 +141,7 @@ ResolveUrlResponse callback) {
         @Override
         public void move(
 org.chromium.url.mojom.Url srcPath, org.chromium.url.mojom.Url destPath, 
-MoveResponse callback) {
+Move_Response callback) {
 
             FileSystemManagerMoveParams _message = new FileSystemManagerMoveParams();
 
@@ -161,7 +165,7 @@ MoveResponse callback) {
         @Override
         public void copy(
 org.chromium.url.mojom.Url srcPath, org.chromium.url.mojom.Url destPath, 
-CopyResponse callback) {
+Copy_Response callback) {
 
             FileSystemManagerCopyParams _message = new FileSystemManagerCopyParams();
 
@@ -185,7 +189,7 @@ CopyResponse callback) {
         @Override
         public void remove(
 org.chromium.url.mojom.Url path, boolean recursive, 
-RemoveResponse callback) {
+Remove_Response callback) {
 
             FileSystemManagerRemoveParams _message = new FileSystemManagerRemoveParams();
 
@@ -209,7 +213,7 @@ RemoveResponse callback) {
         @Override
         public void readMetadata(
 org.chromium.url.mojom.Url path, 
-ReadMetadataResponse callback) {
+ReadMetadata_Response callback) {
 
             FileSystemManagerReadMetadataParams _message = new FileSystemManagerReadMetadataParams();
 
@@ -231,7 +235,7 @@ ReadMetadataResponse callback) {
         @Override
         public void create(
 org.chromium.url.mojom.Url path, boolean exclusive, boolean isDirectory, boolean recursive, 
-CreateResponse callback) {
+Create_Response callback) {
 
             FileSystemManagerCreateParams _message = new FileSystemManagerCreateParams();
 
@@ -259,7 +263,7 @@ CreateResponse callback) {
         @Override
         public void exists(
 org.chromium.url.mojom.Url path, boolean isDirectory, 
-ExistsResponse callback) {
+Exists_Response callback) {
 
             FileSystemManagerExistsParams _message = new FileSystemManagerExistsParams();
 
@@ -302,7 +306,7 @@ org.chromium.url.mojom.Url path, FileSystemOperationListener listener) {
         @Override
         public void readDirectorySync(
 org.chromium.url.mojom.Url path, 
-ReadDirectorySyncResponse callback) {
+ReadDirectorySync_Response callback) {
 
             FileSystemManagerReadDirectorySyncParams _message = new FileSystemManagerReadDirectorySyncParams();
 
@@ -349,7 +353,7 @@ org.chromium.url.mojom.Url filePath, String blobUuid, long position, org.chromiu
         @Override
         public void writeSync(
 org.chromium.url.mojom.Url filePath, String blobUuid, long position, 
-WriteSyncResponse callback) {
+WriteSync_Response callback) {
 
             FileSystemManagerWriteSyncParams _message = new FileSystemManagerWriteSyncParams();
 
@@ -375,7 +379,7 @@ WriteSyncResponse callback) {
         @Override
         public void truncate(
 org.chromium.url.mojom.Url filePath, long length, org.chromium.mojo.bindings.InterfaceRequest<FileSystemCancellableOperation> opReceiver, 
-TruncateResponse callback) {
+Truncate_Response callback) {
 
             FileSystemManagerTruncateParams _message = new FileSystemManagerTruncateParams();
 
@@ -401,7 +405,7 @@ TruncateResponse callback) {
         @Override
         public void truncateSync(
 org.chromium.url.mojom.Url filePath, long length, 
-TruncateSyncResponse callback) {
+TruncateSync_Response callback) {
 
             FileSystemManagerTruncateSyncParams _message = new FileSystemManagerTruncateSyncParams();
 
@@ -425,7 +429,7 @@ TruncateSyncResponse callback) {
         @Override
         public void createSnapshotFile(
 org.chromium.url.mojom.Url filePath, 
-CreateSnapshotFileResponse callback) {
+CreateSnapshotFile_Response callback) {
 
             FileSystemManagerCreateSnapshotFileParams _message = new FileSystemManagerCreateSnapshotFileParams();
 
@@ -447,7 +451,7 @@ CreateSnapshotFileResponse callback) {
         @Override
         public void getPlatformPath(
 org.chromium.url.mojom.Url filePath, 
-GetPlatformPathResponse callback) {
+GetPlatformPath_Response callback) {
 
             FileSystemManagerGetPlatformPathParams _message = new FileSystemManagerGetPlatformPathParams();
 
@@ -462,6 +466,34 @@ GetPlatformPathResponse callback) {
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
                                     0)),
                     new FileSystemManagerGetPlatformPathResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void registerBlob(
+String contentType, org.chromium.url.mojom.Url url, long length, org.chromium.mojo_base.mojom.Time expectedModificationTime, 
+RegisterBlob_Response callback) {
+
+            FileSystemManagerRegisterBlobParams _message = new FileSystemManagerRegisterBlobParams();
+
+            _message.contentType = contentType;
+
+            _message.url = url;
+
+            _message.length = length;
+
+            _message.expectedModificationTime = expectedModificationTime;
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    REGISTER_BLOB_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new FileSystemManagerRegisterBlobResponseParamsForwardToCallback(callback));
 
         }
 
@@ -536,6 +568,8 @@ GetPlatformPathResponse callback) {
                         getImpl().write(data.filePath, data.blobUuid, data.position, data.opReceiver, data.listener);
                         return true;
                     }
+
+
 
 
 
@@ -791,6 +825,21 @@ GetPlatformPathResponse callback) {
                     }
 
 
+
+
+
+
+
+                    case REGISTER_BLOB_ORDINAL: {
+
+                        FileSystemManagerRegisterBlobParams data =
+                                FileSystemManagerRegisterBlobParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().registerBlob(data.contentType, data.url, data.length, data.expectedModificationTime, new FileSystemManagerRegisterBlobResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
                     default:
                         return false;
                 }
@@ -955,9 +1004,9 @@ GetPlatformPathResponse callback) {
 
     static class FileSystemManagerOpenResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemManager.OpenResponse mCallback;
+        private final FileSystemManager.Open_Response mCallback;
 
-        FileSystemManagerOpenResponseParamsForwardToCallback(FileSystemManager.OpenResponse callback) {
+        FileSystemManagerOpenResponseParamsForwardToCallback(FileSystemManager.Open_Response callback) {
             this.mCallback = callback;
         }
 
@@ -982,7 +1031,7 @@ GetPlatformPathResponse callback) {
         }
     }
 
-    static class FileSystemManagerOpenResponseParamsProxyToResponder implements FileSystemManager.OpenResponse {
+    static class FileSystemManagerOpenResponseParamsProxyToResponder implements FileSystemManager.Open_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1172,9 +1221,9 @@ GetPlatformPathResponse callback) {
 
     static class FileSystemManagerResolveUrlResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemManager.ResolveUrlResponse mCallback;
+        private final FileSystemManager.ResolveUrl_Response mCallback;
 
-        FileSystemManagerResolveUrlResponseParamsForwardToCallback(FileSystemManager.ResolveUrlResponse callback) {
+        FileSystemManagerResolveUrlResponseParamsForwardToCallback(FileSystemManager.ResolveUrl_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1199,7 +1248,7 @@ GetPlatformPathResponse callback) {
         }
     }
 
-    static class FileSystemManagerResolveUrlResponseParamsProxyToResponder implements FileSystemManager.ResolveUrlResponse {
+    static class FileSystemManagerResolveUrlResponseParamsProxyToResponder implements FileSystemManager.ResolveUrl_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1376,9 +1425,9 @@ GetPlatformPathResponse callback) {
 
     static class FileSystemManagerMoveResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemManager.MoveResponse mCallback;
+        private final FileSystemManager.Move_Response mCallback;
 
-        FileSystemManagerMoveResponseParamsForwardToCallback(FileSystemManager.MoveResponse callback) {
+        FileSystemManagerMoveResponseParamsForwardToCallback(FileSystemManager.Move_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1403,7 +1452,7 @@ GetPlatformPathResponse callback) {
         }
     }
 
-    static class FileSystemManagerMoveResponseParamsProxyToResponder implements FileSystemManager.MoveResponse {
+    static class FileSystemManagerMoveResponseParamsProxyToResponder implements FileSystemManager.Move_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1574,9 +1623,9 @@ GetPlatformPathResponse callback) {
 
     static class FileSystemManagerCopyResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemManager.CopyResponse mCallback;
+        private final FileSystemManager.Copy_Response mCallback;
 
-        FileSystemManagerCopyResponseParamsForwardToCallback(FileSystemManager.CopyResponse callback) {
+        FileSystemManagerCopyResponseParamsForwardToCallback(FileSystemManager.Copy_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1601,7 +1650,7 @@ GetPlatformPathResponse callback) {
         }
     }
 
-    static class FileSystemManagerCopyResponseParamsProxyToResponder implements FileSystemManager.CopyResponse {
+    static class FileSystemManagerCopyResponseParamsProxyToResponder implements FileSystemManager.Copy_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1771,9 +1820,9 @@ GetPlatformPathResponse callback) {
 
     static class FileSystemManagerRemoveResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemManager.RemoveResponse mCallback;
+        private final FileSystemManager.Remove_Response mCallback;
 
-        FileSystemManagerRemoveResponseParamsForwardToCallback(FileSystemManager.RemoveResponse callback) {
+        FileSystemManagerRemoveResponseParamsForwardToCallback(FileSystemManager.Remove_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1798,7 +1847,7 @@ GetPlatformPathResponse callback) {
         }
     }
 
-    static class FileSystemManagerRemoveResponseParamsProxyToResponder implements FileSystemManager.RemoveResponse {
+    static class FileSystemManagerRemoveResponseParamsProxyToResponder implements FileSystemManager.Remove_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1969,9 +2018,9 @@ GetPlatformPathResponse callback) {
 
     static class FileSystemManagerReadMetadataResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemManager.ReadMetadataResponse mCallback;
+        private final FileSystemManager.ReadMetadata_Response mCallback;
 
-        FileSystemManagerReadMetadataResponseParamsForwardToCallback(FileSystemManager.ReadMetadataResponse callback) {
+        FileSystemManagerReadMetadataResponseParamsForwardToCallback(FileSystemManager.ReadMetadata_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1996,7 +2045,7 @@ GetPlatformPathResponse callback) {
         }
     }
 
-    static class FileSystemManagerReadMetadataResponseParamsProxyToResponder implements FileSystemManager.ReadMetadataResponse {
+    static class FileSystemManagerReadMetadataResponseParamsProxyToResponder implements FileSystemManager.ReadMetadata_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2182,9 +2231,9 @@ GetPlatformPathResponse callback) {
 
     static class FileSystemManagerCreateResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemManager.CreateResponse mCallback;
+        private final FileSystemManager.Create_Response mCallback;
 
-        FileSystemManagerCreateResponseParamsForwardToCallback(FileSystemManager.CreateResponse callback) {
+        FileSystemManagerCreateResponseParamsForwardToCallback(FileSystemManager.Create_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2209,7 +2258,7 @@ GetPlatformPathResponse callback) {
         }
     }
 
-    static class FileSystemManagerCreateResponseParamsProxyToResponder implements FileSystemManager.CreateResponse {
+    static class FileSystemManagerCreateResponseParamsProxyToResponder implements FileSystemManager.Create_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2379,9 +2428,9 @@ GetPlatformPathResponse callback) {
 
     static class FileSystemManagerExistsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemManager.ExistsResponse mCallback;
+        private final FileSystemManager.Exists_Response mCallback;
 
-        FileSystemManagerExistsResponseParamsForwardToCallback(FileSystemManager.ExistsResponse callback) {
+        FileSystemManagerExistsResponseParamsForwardToCallback(FileSystemManager.Exists_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2406,7 +2455,7 @@ GetPlatformPathResponse callback) {
         }
     }
 
-    static class FileSystemManagerExistsResponseParamsProxyToResponder implements FileSystemManager.ExistsResponse {
+    static class FileSystemManagerExistsResponseParamsProxyToResponder implements FileSystemManager.Exists_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2664,9 +2713,9 @@ GetPlatformPathResponse callback) {
 
     static class FileSystemManagerReadDirectorySyncResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemManager.ReadDirectorySyncResponse mCallback;
+        private final FileSystemManager.ReadDirectorySync_Response mCallback;
 
-        FileSystemManagerReadDirectorySyncResponseParamsForwardToCallback(FileSystemManager.ReadDirectorySyncResponse callback) {
+        FileSystemManagerReadDirectorySyncResponseParamsForwardToCallback(FileSystemManager.ReadDirectorySync_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2691,7 +2740,7 @@ GetPlatformPathResponse callback) {
         }
     }
 
-    static class FileSystemManagerReadDirectorySyncResponseParamsProxyToResponder implements FileSystemManager.ReadDirectorySyncResponse {
+    static class FileSystemManagerReadDirectorySyncResponseParamsProxyToResponder implements FileSystemManager.ReadDirectorySync_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2969,9 +3018,9 @@ GetPlatformPathResponse callback) {
 
     static class FileSystemManagerWriteSyncResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemManager.WriteSyncResponse mCallback;
+        private final FileSystemManager.WriteSync_Response mCallback;
 
-        FileSystemManagerWriteSyncResponseParamsForwardToCallback(FileSystemManager.WriteSyncResponse callback) {
+        FileSystemManagerWriteSyncResponseParamsForwardToCallback(FileSystemManager.WriteSync_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2996,7 +3045,7 @@ GetPlatformPathResponse callback) {
         }
     }
 
-    static class FileSystemManagerWriteSyncResponseParamsProxyToResponder implements FileSystemManager.WriteSyncResponse {
+    static class FileSystemManagerWriteSyncResponseParamsProxyToResponder implements FileSystemManager.WriteSync_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -3175,9 +3224,9 @@ GetPlatformPathResponse callback) {
 
     static class FileSystemManagerTruncateResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemManager.TruncateResponse mCallback;
+        private final FileSystemManager.Truncate_Response mCallback;
 
-        FileSystemManagerTruncateResponseParamsForwardToCallback(FileSystemManager.TruncateResponse callback) {
+        FileSystemManagerTruncateResponseParamsForwardToCallback(FileSystemManager.Truncate_Response callback) {
             this.mCallback = callback;
         }
 
@@ -3202,7 +3251,7 @@ GetPlatformPathResponse callback) {
         }
     }
 
-    static class FileSystemManagerTruncateResponseParamsProxyToResponder implements FileSystemManager.TruncateResponse {
+    static class FileSystemManagerTruncateResponseParamsProxyToResponder implements FileSystemManager.Truncate_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -3372,9 +3421,9 @@ GetPlatformPathResponse callback) {
 
     static class FileSystemManagerTruncateSyncResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemManager.TruncateSyncResponse mCallback;
+        private final FileSystemManager.TruncateSync_Response mCallback;
 
-        FileSystemManagerTruncateSyncResponseParamsForwardToCallback(FileSystemManager.TruncateSyncResponse callback) {
+        FileSystemManagerTruncateSyncResponseParamsForwardToCallback(FileSystemManager.TruncateSync_Response callback) {
             this.mCallback = callback;
         }
 
@@ -3399,7 +3448,7 @@ GetPlatformPathResponse callback) {
         }
     }
 
-    static class FileSystemManagerTruncateSyncResponseParamsProxyToResponder implements FileSystemManager.TruncateSyncResponse {
+    static class FileSystemManagerTruncateSyncResponseParamsProxyToResponder implements FileSystemManager.TruncateSync_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -3585,9 +3634,9 @@ GetPlatformPathResponse callback) {
 
     static class FileSystemManagerCreateSnapshotFileResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemManager.CreateSnapshotFileResponse mCallback;
+        private final FileSystemManager.CreateSnapshotFile_Response mCallback;
 
-        FileSystemManagerCreateSnapshotFileResponseParamsForwardToCallback(FileSystemManager.CreateSnapshotFileResponse callback) {
+        FileSystemManagerCreateSnapshotFileResponseParamsForwardToCallback(FileSystemManager.CreateSnapshotFile_Response callback) {
             this.mCallback = callback;
         }
 
@@ -3612,7 +3661,7 @@ GetPlatformPathResponse callback) {
         }
     }
 
-    static class FileSystemManagerCreateSnapshotFileResponseParamsProxyToResponder implements FileSystemManager.CreateSnapshotFileResponse {
+    static class FileSystemManagerCreateSnapshotFileResponseParamsProxyToResponder implements FileSystemManager.CreateSnapshotFile_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -3780,9 +3829,9 @@ GetPlatformPathResponse callback) {
 
     static class FileSystemManagerGetPlatformPathResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemManager.GetPlatformPathResponse mCallback;
+        private final FileSystemManager.GetPlatformPath_Response mCallback;
 
-        FileSystemManagerGetPlatformPathResponseParamsForwardToCallback(FileSystemManager.GetPlatformPathResponse callback) {
+        FileSystemManagerGetPlatformPathResponseParamsForwardToCallback(FileSystemManager.GetPlatformPath_Response callback) {
             this.mCallback = callback;
         }
 
@@ -3807,7 +3856,7 @@ GetPlatformPathResponse callback) {
         }
     }
 
-    static class FileSystemManagerGetPlatformPathResponseParamsProxyToResponder implements FileSystemManager.GetPlatformPathResponse {
+    static class FileSystemManagerGetPlatformPathResponseParamsProxyToResponder implements FileSystemManager.GetPlatformPath_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -3833,6 +3882,217 @@ GetPlatformPathResponse callback) {
                             mCore,
                             new org.chromium.mojo.bindings.MessageHeader(
                                     GET_PLATFORM_PATH_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class FileSystemManagerRegisterBlobParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 40;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public String contentType;
+        public org.chromium.url.mojom.Url url;
+        public long length;
+        public org.chromium.mojo_base.mojom.Time expectedModificationTime;
+
+        private FileSystemManagerRegisterBlobParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public FileSystemManagerRegisterBlobParams() {
+            this(0);
+        }
+
+        public static FileSystemManagerRegisterBlobParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static FileSystemManagerRegisterBlobParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static FileSystemManagerRegisterBlobParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            FileSystemManagerRegisterBlobParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new FileSystemManagerRegisterBlobParams(elementsOrVersion);
+                    {
+                        
+                    result.contentType = decoder0.readString(8, false);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                    result.url = org.chromium.url.mojom.Url.decode(decoder1);
+                    }
+                    {
+                        
+                    result.length = decoder0.readLong(24);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, true);
+                    result.expectedModificationTime = org.chromium.mojo_base.mojom.Time.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.contentType, 8, false);
+            
+            encoder0.encode(this.url, 16, false);
+            
+            encoder0.encode(this.length, 24);
+            
+            encoder0.encode(this.expectedModificationTime, 32, true);
+        }
+    }
+
+
+
+    
+    static final class FileSystemManagerRegisterBlobResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public SerializedBlob blob;
+
+        private FileSystemManagerRegisterBlobResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public FileSystemManagerRegisterBlobResponseParams() {
+            this(0);
+        }
+
+        public static FileSystemManagerRegisterBlobResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static FileSystemManagerRegisterBlobResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static FileSystemManagerRegisterBlobResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            FileSystemManagerRegisterBlobResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new FileSystemManagerRegisterBlobResponseParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.blob = SerializedBlob.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.blob, 8, false);
+        }
+    }
+
+    static class FileSystemManagerRegisterBlobResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final FileSystemManager.RegisterBlob_Response mCallback;
+
+        FileSystemManagerRegisterBlobResponseParamsForwardToCallback(FileSystemManager.RegisterBlob_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(REGISTER_BLOB_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG)) {
+                    return false;
+                }
+
+                FileSystemManagerRegisterBlobResponseParams response = FileSystemManagerRegisterBlobResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.blob);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class FileSystemManagerRegisterBlobResponseParamsProxyToResponder implements FileSystemManager.RegisterBlob_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        FileSystemManagerRegisterBlobResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(SerializedBlob blob) {
+            FileSystemManagerRegisterBlobResponseParams _response = new FileSystemManagerRegisterBlobResponseParams();
+
+            _response.blob = blob;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    REGISTER_BLOB_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);

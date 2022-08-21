@@ -1,7 +1,6 @@
 package org.chromium.chrome.browser.signin.services;
 
 import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
@@ -9,9 +8,8 @@ import org.chromium.base.natives.GEN_JNI;
 import org.chromium.chrome.browser.profiles.Profile;
 import org.chromium.components.signin.base.CoreAccountInfo;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class WebSigninBridgeJni implements WebSigninBridge.Natives {
+class WebSigninBridgeJni implements WebSigninBridge.Natives {
   private static WebSigninBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<WebSigninBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.signin.services.WebSigninBridge.Natives>() {

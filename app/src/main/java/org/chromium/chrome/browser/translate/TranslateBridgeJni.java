@@ -2,9 +2,7 @@ package org.chromium.chrome.browser.translate;
 
 import java.lang.Override;
 import java.lang.String;
-import java.util.LinkedHashSet;
 import java.util.List;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
@@ -12,9 +10,8 @@ import org.chromium.base.natives.GEN_JNI;
 import org.chromium.chrome.browser.language.settings.LanguageItem;
 import org.chromium.content_public.browser.WebContents;
 
-@Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class TranslateBridgeJni implements TranslateBridge.Natives {
+public class TranslateBridgeJni implements TranslateBridge.Natives {
   private static TranslateBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<TranslateBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.translate.TranslateBridge.Natives>() {
@@ -54,8 +51,8 @@ final class TranslateBridgeJni implements TranslateBridge.Natives {
   }
 
   @Override
-  public String getOriginalLanguage(WebContents webContents) {
-    return (String)GEN_JNI.org_chromium_chrome_browser_translate_TranslateBridge_getOriginalLanguage(webContents);
+  public String getSourceLanguage(WebContents webContents) {
+    return (String)GEN_JNI.org_chromium_chrome_browser_translate_TranslateBridge_getSourceLanguage(webContents);
   }
 
   @Override
@@ -74,11 +71,6 @@ final class TranslateBridgeJni implements TranslateBridge.Natives {
   }
 
   @Override
-  public void getModelLanguages(LinkedHashSet<String> set) {
-    GEN_JNI.org_chromium_chrome_browser_translate_TranslateBridge_getModelLanguages(set);
-  }
-
-  @Override
   public void resetAcceptLanguages(String defaultLocale) {
     GEN_JNI.org_chromium_chrome_browser_translate_TranslateBridge_resetAcceptLanguages(defaultLocale);
   }
@@ -89,13 +81,23 @@ final class TranslateBridgeJni implements TranslateBridge.Natives {
   }
 
   @Override
-  public void getUserAcceptLanguages(List<String> list) {
-    GEN_JNI.org_chromium_chrome_browser_translate_TranslateBridge_getUserAcceptLanguages(list);
+  public String[] getUserAcceptLanguages() {
+    return (String[])GEN_JNI.org_chromium_chrome_browser_translate_TranslateBridge_getUserAcceptLanguages();
   }
 
   @Override
-  public void getAlwaysTranslateLanguages(List<String> list) {
-    GEN_JNI.org_chromium_chrome_browser_translate_TranslateBridge_getAlwaysTranslateLanguages(list);
+  public String[] getAlwaysTranslateLanguages() {
+    return (String[])GEN_JNI.org_chromium_chrome_browser_translate_TranslateBridge_getAlwaysTranslateLanguages();
+  }
+
+  @Override
+  public String[] getNeverTranslateLanguages() {
+    return (String[])GEN_JNI.org_chromium_chrome_browser_translate_TranslateBridge_getNeverTranslateLanguages();
+  }
+
+  @Override
+  public void setLanguageAlwaysTranslateState(String language, boolean alwaysTranslate) {
+    GEN_JNI.org_chromium_chrome_browser_translate_TranslateBridge_setLanguageAlwaysTranslateState(language, alwaysTranslate);
   }
 
   @Override
@@ -131,6 +133,16 @@ final class TranslateBridgeJni implements TranslateBridge.Natives {
   @Override
   public void setExplicitLanguageAskPromptShown(boolean shown) {
     GEN_JNI.org_chromium_chrome_browser_translate_TranslateBridge_setExplicitLanguageAskPromptShown(shown);
+  }
+
+  @Override
+  public boolean getAppLanguagePromptShown() {
+    return (boolean)GEN_JNI.org_chromium_chrome_browser_translate_TranslateBridge_getAppLanguagePromptShown();
+  }
+
+  @Override
+  public void setAppLanguagePromptShown() {
+    GEN_JNI.org_chromium_chrome_browser_translate_TranslateBridge_setAppLanguagePromptShown();
   }
 
   @Override

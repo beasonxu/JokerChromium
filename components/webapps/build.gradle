@@ -41,4 +41,5 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':components:webapk_lib_common')
+    implementation 'androidx.core:core:1.8.0'
 }
