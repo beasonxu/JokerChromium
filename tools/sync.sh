@@ -457,6 +457,7 @@ sync_chrome() {
   cp -r ${BASE_DIR}/services/data_decoder/public/cpp/android/java/src/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/services/data_decoder/public/cpp/android/safe_json_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/engagement/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/first_run/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/touch_to_fill/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/touch_to_fill/android/internal/java/src/* ${src_dir}
 
