@@ -289,6 +289,8 @@ sync_chrome() {
   cp -r ${BASE_DIR}/chrome/browser/endpoint_fetcher/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/password_check/android/internal/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/browser/password_check/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/first_run/android/java/src/* ${src_dir}
+
   cp -r ${BASE_DIR}/chrome/browser/safety_check/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/gcm_driver/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/components/subresource_filter/android/java/src/* ${src_dir}
