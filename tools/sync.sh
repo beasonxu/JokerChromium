@@ -2,7 +2,7 @@
 
 set -e
 
-PRO_DIR="/home/sxh/Desktop/chrome1/chromiumcopy2"
+PRO_DIR="/home/sxh/Desktop/chromiumcopy2"
 BASE_DIR="/home/sxh/chromium/src"
 RELEASE_DIR="${BASE_DIR}/out/Default"
 APP_DIR="${PRO_DIR}/app"
