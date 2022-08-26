@@ -11,7 +11,7 @@ import org.chromium.ui.base.WindowAndroid;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class PictureInPictureActivityJni implements PictureInPictureActivity.Natives {
+public class PictureInPictureActivityJni implements PictureInPictureActivity.Natives {
   private static PictureInPictureActivity.Natives testInstance;
 
   public static final JniStaticTestMocker<PictureInPictureActivity.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.media.PictureInPictureActivity.Natives>() {

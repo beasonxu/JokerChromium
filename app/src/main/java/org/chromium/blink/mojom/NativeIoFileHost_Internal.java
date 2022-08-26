@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class NativeIoFileHost_Internal {
 
@@ -61,7 +63,7 @@ class NativeIoFileHost_Internal {
         @Override
         public void close(
 
-CloseResponse callback) {
+Close_Response callback) {
 
             NativeIoFileHostCloseParams _message = new NativeIoFileHostCloseParams();
 
@@ -274,9 +276,9 @@ CloseResponse callback) {
 
     static class NativeIoFileHostCloseResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NativeIoFileHost.CloseResponse mCallback;
+        private final NativeIoFileHost.Close_Response mCallback;
 
-        NativeIoFileHostCloseResponseParamsForwardToCallback(NativeIoFileHost.CloseResponse callback) {
+        NativeIoFileHostCloseResponseParamsForwardToCallback(NativeIoFileHost.Close_Response callback) {
             this.mCallback = callback;
         }
 
@@ -299,7 +301,7 @@ CloseResponse callback) {
         }
     }
 
-    static class NativeIoFileHostCloseResponseParamsProxyToResponder implements NativeIoFileHost.CloseResponse {
+    static class NativeIoFileHostCloseResponseParamsProxyToResponder implements NativeIoFileHost.Close_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

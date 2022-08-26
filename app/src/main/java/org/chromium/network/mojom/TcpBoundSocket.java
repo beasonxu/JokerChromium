@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface TcpBoundSocket extends org.chromium.mojo.bindings.Interface {
 
@@ -23,20 +25,18 @@ public interface TcpBoundSocket extends org.chromium.mojo.bindings.Interface {
 
     Manager<TcpBoundSocket, TcpBoundSocket.Proxy> MANAGER = TcpBoundSocket_Internal.MANAGER;
 
-
     void listen(
 int backlog, org.chromium.mojo.bindings.InterfaceRequest<TcpServerSocket> socket, 
-ListenResponse callback);
+Listen_Response callback);
 
-    interface ListenResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface Listen_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void connect(
 AddressList remoteAddrList, TcpConnectedSocketOptions tcpConnectedSocketOptions, org.chromium.mojo.bindings.InterfaceRequest<TcpConnectedSocket> socket, SocketObserver observer, 
-ConnectResponse callback);
+Connect_Response callback);
 
-    interface ConnectResponse extends org.chromium.mojo.bindings.Callbacks.Callback5<Integer, IpEndPoint, IpEndPoint, org.chromium.mojo.system.DataPipe.ConsumerHandle, org.chromium.mojo.system.DataPipe.ProducerHandle> { }
+    interface Connect_Response extends org.chromium.mojo.bindings.Callbacks.Callback5<Integer, IpEndPoint, IpEndPoint, org.chromium.mojo.system.DataPipe.ConsumerHandle, org.chromium.mojo.system.DataPipe.ProducerHandle> { }
 
 
 }

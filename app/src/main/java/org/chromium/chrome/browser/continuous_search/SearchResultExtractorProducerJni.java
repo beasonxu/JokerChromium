@@ -11,7 +11,7 @@ import org.chromium.content_public.browser.WebContents;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class SearchResultExtractorProducerJni implements SearchResultExtractorProducer.Natives {
+class SearchResultExtractorProducerJni implements SearchResultExtractorProducer.Natives {
   private static SearchResultExtractorProducer.Natives testInstance;
 
   public static final JniStaticTestMocker<SearchResultExtractorProducer.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.continuous_search.SearchResultExtractorProducer.Natives>() {

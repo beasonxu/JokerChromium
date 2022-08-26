@@ -9,7 +9,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class NetworkStatusListenerAndroidJni implements NetworkStatusListenerAndroid.Natives {
+class NetworkStatusListenerAndroidJni implements NetworkStatusListenerAndroid.Natives {
   private static NetworkStatusListenerAndroid.Natives testInstance;
 
   public static final JniStaticTestMocker<NetworkStatusListenerAndroid.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.download.NetworkStatusListenerAndroid.Natives>() {
@@ -22,6 +22,12 @@ final class NetworkStatusListenerAndroidJni implements NetworkStatusListenerAndr
       testInstance = instance;
     }
   };
+
+  @Override
+  public void onNetworkStatusReady(long nativeNetworkStatusListenerAndroid,
+      NetworkStatusListenerAndroid caller, int connectionType) {
+    GEN_JNI.org_chromium_components_download_NetworkStatusListenerAndroid_onNetworkStatusReady(nativeNetworkStatusListenerAndroid, caller, connectionType);
+  }
 
   @Override
   public void notifyNetworkChange(long nativeNetworkStatusListenerAndroid,

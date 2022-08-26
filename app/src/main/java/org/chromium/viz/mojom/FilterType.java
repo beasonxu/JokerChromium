@@ -13,8 +13,30 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class FilterType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        FilterType.GRAYSCALE,
+        FilterType.SEPIA,
+        FilterType.SATURATE,
+        FilterType.HUE_ROTATE,
+        FilterType.INVERT,
+        FilterType.BRIGHTNESS,
+        FilterType.CONTRAST,
+        FilterType.OPACITY,
+        FilterType.BLUR,
+        FilterType.DROP_SHADOW,
+        FilterType.COLOR_MATRIX,
+        FilterType.ZOOM,
+        FilterType.REFERENCE,
+        FilterType.SATURATING_BRIGHTNESS,
+        FilterType.ALPHA_THRESHOLD,
+        FilterType.STRETCH,
+        FilterType.FILTER_TYPE_LAST})
+    public @interface EnumType {}
 
     public static final int GRAYSCALE = 0;
     public static final int SEPIA = 1;
@@ -31,12 +53,13 @@ public final class FilterType {
     public static final int REFERENCE = 12;
     public static final int SATURATING_BRIGHTNESS = 13;
     public static final int ALPHA_THRESHOLD = 14;
-    public static final int FILTER_TYPE_LAST = 14;
+    public static final int STRETCH = 15;
+    public static final int FILTER_TYPE_LAST = 15;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 14;
+    public static final int MAX_VALUE = 15;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 14;
+        return value >= 0 && value <= 15;
     }
 
     public static void validate(int value) {

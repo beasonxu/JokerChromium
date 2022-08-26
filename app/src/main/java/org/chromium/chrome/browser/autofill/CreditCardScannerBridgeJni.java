@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class CreditCardScannerBridgeJni implements CreditCardScannerBridge.Natives {
+class CreditCardScannerBridgeJni implements CreditCardScannerBridge.Natives {
   private static CreditCardScannerBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<CreditCardScannerBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.autofill.CreditCardScannerBridge.Natives>() {

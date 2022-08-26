@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface Sensor extends org.chromium.mojo.bindings.Interface {
 
@@ -23,36 +25,30 @@ public interface Sensor extends org.chromium.mojo.bindings.Interface {
 
     Manager<Sensor, Sensor.Proxy> MANAGER = Sensor_Internal.MANAGER;
 
-
     void getDefaultConfiguration(
 
-GetDefaultConfigurationResponse callback);
+GetDefaultConfiguration_Response callback);
 
-    interface GetDefaultConfigurationResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<SensorConfiguration> { }
-
+    interface GetDefaultConfiguration_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<SensorConfiguration> { }
 
 
     void addConfiguration(
 SensorConfiguration configuration, 
-AddConfigurationResponse callback);
+AddConfiguration_Response callback);
 
-    interface AddConfigurationResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface AddConfiguration_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void removeConfiguration(
 SensorConfiguration configuration);
 
 
-
     void suspend(
 );
 
 
-
     void resume(
 );
-
 
 
     void configureReadingChangeNotifications(

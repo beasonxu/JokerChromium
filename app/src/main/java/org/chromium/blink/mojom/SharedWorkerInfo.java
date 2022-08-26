@@ -13,16 +13,17 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class SharedWorkerInfo extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 48;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
+    private static final int STRUCT_SIZE = 40;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public org.chromium.url.mojom.Url url;
     public WorkerOptions options;
     public org.chromium.network.mojom.ContentSecurityPolicy[] contentSecurityPolicies;
-    public int creationAddressSpace;
     public FetchClientSettingsObject outsideFetchClientSettingsObject;
 
     private SharedWorkerInfo(int version) {
@@ -83,13 +84,7 @@ public final class SharedWorkerInfo extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.creationAddressSpace = decoder0.readInt(32);
-                    org.chromium.network.mojom.IpAddressSpace.validate(result.creationAddressSpace);
-                    result.creationAddressSpace = org.chromium.network.mojom.IpAddressSpace.toKnownValue(result.creationAddressSpace);
-                }
-                {
-                    
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
                 result.outsideFetchClientSettingsObject = FetchClientSettingsObject.decode(decoder1);
                 }
 
@@ -118,8 +113,6 @@ public final class SharedWorkerInfo extends org.chromium.mojo.bindings.Struct {
             }
         }
         
-        encoder0.encode(this.creationAddressSpace, 32);
-        
-        encoder0.encode(this.outsideFetchClientSettingsObject, 40, false);
+        encoder0.encode(this.outsideFetchClientSettingsObject, 32, false);
     }
 }

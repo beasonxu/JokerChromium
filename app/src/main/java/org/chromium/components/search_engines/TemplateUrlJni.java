@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-public final class TemplateUrlJni implements TemplateUrl.Natives {
+public class TemplateUrlJni implements TemplateUrl.Natives {
   private static TemplateUrl.Natives testInstance;
 
   public static final JniStaticTestMocker<TemplateUrl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.search_engines.TemplateUrl.Natives>() {

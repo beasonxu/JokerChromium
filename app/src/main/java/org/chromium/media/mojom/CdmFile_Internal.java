@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class CdmFile_Internal {
 
@@ -63,7 +65,7 @@ class CdmFile_Internal {
         @Override
         public void read(
 
-ReadResponse callback) {
+Read_Response callback) {
 
             CdmFileReadParams _message = new CdmFileReadParams();
 
@@ -83,7 +85,7 @@ ReadResponse callback) {
         @Override
         public void write(
 byte[] data, 
-WriteResponse callback) {
+Write_Response callback) {
 
             CdmFileWriteParams _message = new CdmFileWriteParams();
 
@@ -331,9 +333,9 @@ WriteResponse callback) {
 
     static class CdmFileReadResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CdmFile.ReadResponse mCallback;
+        private final CdmFile.Read_Response mCallback;
 
-        CdmFileReadResponseParamsForwardToCallback(CdmFile.ReadResponse callback) {
+        CdmFileReadResponseParamsForwardToCallback(CdmFile.Read_Response callback) {
             this.mCallback = callback;
         }
 
@@ -358,7 +360,7 @@ WriteResponse callback) {
         }
     }
 
-    static class CdmFileReadResponseParamsProxyToResponder implements CdmFile.ReadResponse {
+    static class CdmFileReadResponseParamsProxyToResponder implements CdmFile.Read_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -522,9 +524,9 @@ WriteResponse callback) {
 
     static class CdmFileWriteResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CdmFile.WriteResponse mCallback;
+        private final CdmFile.Write_Response mCallback;
 
-        CdmFileWriteResponseParamsForwardToCallback(CdmFile.WriteResponse callback) {
+        CdmFileWriteResponseParamsForwardToCallback(CdmFile.Write_Response callback) {
             this.mCallback = callback;
         }
 
@@ -549,7 +551,7 @@ WriteResponse callback) {
         }
     }
 
-    static class CdmFileWriteResponseParamsProxyToResponder implements CdmFile.WriteResponse {
+    static class CdmFileWriteResponseParamsProxyToResponder implements CdmFile.Write_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

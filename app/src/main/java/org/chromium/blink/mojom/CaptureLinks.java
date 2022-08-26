@@ -13,8 +13,17 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class CaptureLinks {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        CaptureLinks.UNDEFINED,
+        CaptureLinks.NONE,
+        CaptureLinks.NEW_CLIENT,
+        CaptureLinks.EXISTING_CLIENT_NAVIGATE})
+    public @interface EnumType {}
 
     public static final int UNDEFINED = 0;
     public static final int NONE = 1;

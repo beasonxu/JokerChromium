@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ChunkedDataPipeGetter extends org.chromium.mojo.bindings.Interface {
 
@@ -23,13 +25,11 @@ public interface ChunkedDataPipeGetter extends org.chromium.mojo.bindings.Interf
 
     Manager<ChunkedDataPipeGetter, ChunkedDataPipeGetter.Proxy> MANAGER = ChunkedDataPipeGetter_Internal.MANAGER;
 
-
     void getSize(
 
-GetSizeResponse callback);
+GetSize_Response callback);
 
-    interface GetSizeResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, Long> { }
-
+    interface GetSize_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, Long> { }
 
 
     void startReading(

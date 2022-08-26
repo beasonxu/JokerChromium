@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -21,7 +21,9 @@ import java.lang.annotation.RetentionPolicy;
     UploadActionsStatus.UPDATED_CONSISTENCY_TOKEN,
     UploadActionsStatus.FINISHED_WITHOUT_UPDATING_CONSISTENCY_TOKEN,
     UploadActionsStatus.ABORT_UPLOAD_FOR_SIGNED_OUT_USER,
-    UploadActionsStatus.ABORT_UPLOAD_BECAUSE_DISABLED, UploadActionsStatus.MAX_VALUE
+    UploadActionsStatus.ABORT_UPLOAD_BECAUSE_DISABLED,
+    UploadActionsStatus.ABORT_UPLOAD_FOR_WRONG_USER,
+    UploadActionsStatus.ABORT_UPLOAD_ACTIONS_WITH_PENDING_CLEAR_ALL, UploadActionsStatus.MAX_VALUE
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface UploadActionsStatus {
@@ -32,6 +34,11 @@ public @interface UploadActionsStatus {
   int UPDATED_CONSISTENCY_TOKEN = 4;
   int FINISHED_WITHOUT_UPDATING_CONSISTENCY_TOKEN = 5;
   int ABORT_UPLOAD_FOR_SIGNED_OUT_USER = 6;
+  /**
+   * TODO(b/213622639): This is unused, remove it.
+   */
   int ABORT_UPLOAD_BECAUSE_DISABLED = 7;
-  int MAX_VALUE = ABORT_UPLOAD_BECAUSE_DISABLED;
+  int ABORT_UPLOAD_FOR_WRONG_USER = 8;
+  int ABORT_UPLOAD_ACTIONS_WITH_PENDING_CLEAR_ALL = 9;
+  int MAX_VALUE = ABORT_UPLOAD_ACTIONS_WITH_PENDING_CLEAR_ALL;
 }

@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class LocaleTemplateUrlLoaderJni implements LocaleTemplateUrlLoader.Natives {
+class LocaleTemplateUrlLoaderJni implements LocaleTemplateUrlLoader.Natives {
   private static LocaleTemplateUrlLoader.Natives testInstance;
 
   public static final JniStaticTestMocker<LocaleTemplateUrlLoader.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.locale.LocaleTemplateUrlLoader.Natives>() {

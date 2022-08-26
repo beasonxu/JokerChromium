@@ -13,8 +13,15 @@
 
 package org.chromium.ui.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class DragEventSource {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        DragEventSource.MOUSE,
+        DragEventSource.TOUCH})
+    public @interface EnumType {}
 
     public static final int MOUSE = 0;
     public static final int TOUCH = 1;

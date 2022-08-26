@@ -12,7 +12,7 @@ import org.chromium.base.natives.GEN_JNI;
 @Generated("org.chromium.jni_generator.JniProcessor")
 @MainDex
 @CheckDiscard("crbug.com/993421")
-final class ChromeFeatureListJni implements ChromeFeatureList.Natives {
+class ChromeFeatureListJni implements ChromeFeatureList.Natives {
   private static ChromeFeatureList.Natives testInstance;
 
   public static final JniStaticTestMocker<ChromeFeatureList.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.flags.ChromeFeatureList.Natives>() {

@@ -13,8 +13,21 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ScanResult {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ScanResult.SUCCESS,
+        ScanResult.PARTIAL,
+        ScanResult.INSUFFICIENT,
+        ScanResult.SENSOR_DIRTY,
+        ScanResult.TOO_SLOW,
+        ScanResult.TOO_FAST,
+        ScanResult.IMMOBILE,
+        ScanResult.NO_MATCH})
+    public @interface EnumType {}
 
     public static final int SUCCESS = 0;
     public static final int PARTIAL = 1;
@@ -23,11 +36,12 @@ public final class ScanResult {
     public static final int TOO_SLOW = 4;
     public static final int TOO_FAST = 5;
     public static final int IMMOBILE = 6;
+    public static final int NO_MATCH = 7;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 6;
+    public static final int MAX_VALUE = 7;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 6;
+        return value >= 0 && value <= 7;
     }
 
     public static void validate(int value) {

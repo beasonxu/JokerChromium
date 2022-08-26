@@ -11,7 +11,7 @@ import org.chromium.base.natives.GEN_JNI;
 @Generated("org.chromium.jni_generator.JniProcessor")
 @MainDex
 @CheckDiscard("crbug.com/993421")
-final class WatcherImplJni implements WatcherImpl.Natives {
+class WatcherImplJni implements WatcherImpl.Natives {
   private static WatcherImpl.Natives testInstance;
 
   public static final JniStaticTestMocker<WatcherImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.mojo.system.impl.WatcherImpl.Natives>() {
@@ -30,7 +30,7 @@ final class WatcherImplJni implements WatcherImpl.Natives {
   }
 
   @Override
-  public int start(WatcherImpl caller, long implPtr, int mojoHandle, int flags) {
+  public int start(WatcherImpl caller, long implPtr, long mojoHandle, int flags) {
     return (int)GEN_JNI.org_chromium_mojo_system_impl_WatcherImpl_start(caller, implPtr, mojoHandle, flags);
   }
 

@@ -13,8 +13,18 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ScreenAvailability {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ScreenAvailability.UNKNOWN,
+        ScreenAvailability.UNAVAILABLE,
+        ScreenAvailability.SOURCE_NOT_SUPPORTED,
+        ScreenAvailability.DISABLED,
+        ScreenAvailability.AVAILABLE})
+    public @interface EnumType {}
 
     public static final int UNKNOWN = 0;
     public static final int UNAVAILABLE = 1;

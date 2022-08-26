@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class MediaPlayerHost_Internal {
 
@@ -60,11 +62,13 @@ class MediaPlayerHost_Internal {
 
         @Override
         public void onMediaPlayerAdded(
-org.chromium.mojo.bindings.AssociatedInterfaceNotSupported playerRemote, int playerId) {
+org.chromium.mojo.bindings.AssociatedInterfaceNotSupported playerRemote, org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported observer, int playerId) {
 
             MediaPlayerHostOnMediaPlayerAddedParams _message = new MediaPlayerHostOnMediaPlayerAddedParams();
 
             _message.playerRemote = playerRemote;
+
+            _message.observer = observer;
 
             _message.playerId = playerId;
 
@@ -113,7 +117,7 @@ org.chromium.mojo.bindings.AssociatedInterfaceNotSupported playerRemote, int pla
                         MediaPlayerHostOnMediaPlayerAddedParams data =
                                 MediaPlayerHostOnMediaPlayerAddedParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().onMediaPlayerAdded(data.playerRemote, data.playerId);
+                        getImpl().onMediaPlayerAdded(data.playerRemote, data.observer, data.playerId);
                         return true;
                     }
 
@@ -167,6 +171,7 @@ org.chromium.mojo.bindings.AssociatedInterfaceNotSupported playerRemote, int pla
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public org.chromium.mojo.bindings.AssociatedInterfaceNotSupported playerRemote;
+        public org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported observer;
         public int playerId;
 
         private MediaPlayerHostOnMediaPlayerAddedParams(int version) {
@@ -208,7 +213,11 @@ org.chromium.mojo.bindings.AssociatedInterfaceNotSupported playerRemote, int pla
                     }
                     {
                         
-                    result.playerId = decoder0.readInt(16);
+                    result.observer = decoder0.readAssociatedInterfaceRequestNotSupported(16, false);
+                    }
+                    {
+                        
+                    result.playerId = decoder0.readInt(20);
                     }
 
             } finally {
@@ -224,7 +233,9 @@ org.chromium.mojo.bindings.AssociatedInterfaceNotSupported playerRemote, int pla
             
             encoder0.encode(this.playerRemote, 8, false);
             
-            encoder0.encode(this.playerId, 16);
+            encoder0.encode(this.observer, 16, false);
+            
+            encoder0.encode(this.playerId, 20);
         }
     }
 

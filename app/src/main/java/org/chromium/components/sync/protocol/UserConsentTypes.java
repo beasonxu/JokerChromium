@@ -4010,6 +4010,29 @@ public  final class UserConsentTypes extends
      * @return The status.
      */
     org.chromium.components.sync.protocol.UserConsentTypes.ConsentStatus getStatus();
+
+    /**
+     * <pre>
+     * The activity control setting which the consent was given or not given to.
+     * Clients before M93 did not set this field. Such consents should be
+     * treated as applying to ALL.
+     * </pre>
+     *
+     * <code>optional .sync_pb.UserConsentTypes.AssistantActivityControlConsent.SettingType setting_type = 3;</code>
+     * @return Whether the settingType field is set.
+     */
+    boolean hasSettingType();
+    /**
+     * <pre>
+     * The activity control setting which the consent was given or not given to.
+     * Clients before M93 did not set this field. Such consents should be
+     * treated as applying to ALL.
+     * </pre>
+     *
+     * <code>optional .sync_pb.UserConsentTypes.AssistantActivityControlConsent.SettingType setting_type = 3;</code>
+     * @return The settingType.
+     */
+    org.chromium.components.sync.protocol.UserConsentTypes.AssistantActivityControlConsent.SettingType getSettingType();
   }
   /**
    * <pre>
@@ -4027,6 +4050,132 @@ public  final class UserConsentTypes extends
     private AssistantActivityControlConsent() {
       uiAuditKey_ = com.google.protobuf.ByteString.EMPTY;
     }
+    /**
+     * <pre>
+     * Enum denoting different Assistant activity control setting type.
+     * </pre>
+     *
+     * Protobuf enum {@code sync_pb.UserConsentTypes.AssistantActivityControlConsent.SettingType}
+     */
+    public enum SettingType
+        implements com.google.protobuf.Internal.EnumLite {
+      /**
+       * <pre>
+       * Legacy clients (&lt; M93) did not set a SettingType; for those,
+       * UNSPECIFIED should be interpreted as ALL. Newer clients should always
+       * set it explicitly.
+       * </pre>
+       *
+       * <code>SETTING_TYPE_UNSPECIFIED = 0;</code>
+       */
+      SETTING_TYPE_UNSPECIFIED(0),
+      /**
+       * <pre>
+       * All Settings.
+       * </pre>
+       *
+       * <code>ALL = 1;</code>
+       */
+      ALL(1),
+      /**
+       * <code>WEB_AND_APP_ACTIVITY = 2;</code>
+       */
+      WEB_AND_APP_ACTIVITY(2),
+      /**
+       * <code>DEVICE_APPS = 3;</code>
+       */
+      DEVICE_APPS(3),
+      ;
+
+      /**
+       * <pre>
+       * Legacy clients (&lt; M93) did not set a SettingType; for those,
+       * UNSPECIFIED should be interpreted as ALL. Newer clients should always
+       * set it explicitly.
+       * </pre>
+       *
+       * <code>SETTING_TYPE_UNSPECIFIED = 0;</code>
+       */
+      public static final int SETTING_TYPE_UNSPECIFIED_VALUE = 0;
+      /**
+       * <pre>
+       * All Settings.
+       * </pre>
+       *
+       * <code>ALL = 1;</code>
+       */
+      public static final int ALL_VALUE = 1;
+      /**
+       * <code>WEB_AND_APP_ACTIVITY = 2;</code>
+       */
+      public static final int WEB_AND_APP_ACTIVITY_VALUE = 2;
+      /**
+       * <code>DEVICE_APPS = 3;</code>
+       */
+      public static final int DEVICE_APPS_VALUE = 3;
+
+
+      @java.lang.Override
+      public final int getNumber() {
+        return value;
+      }
+
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static SettingType valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static SettingType forNumber(int value) {
+        switch (value) {
+          case 0: return SETTING_TYPE_UNSPECIFIED;
+          case 1: return ALL;
+          case 2: return WEB_AND_APP_ACTIVITY;
+          case 3: return DEVICE_APPS;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<SettingType>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          SettingType> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<SettingType>() {
+              @java.lang.Override
+              public SettingType findValueByNumber(int number) {
+                return SettingType.forNumber(number);
+              }
+            };
+
+      public static com.google.protobuf.Internal.EnumVerifier 
+          internalGetVerifier() {
+        return SettingTypeVerifier.INSTANCE;
+      }
+
+      private static final class SettingTypeVerifier implements 
+           com.google.protobuf.Internal.EnumVerifier { 
+              static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new SettingTypeVerifier();
+              @java.lang.Override
+              public boolean isInRange(int number) {
+                return SettingType.forNumber(number) != null;
+              }
+            };
+
+      private final int value;
+
+      private SettingType(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:sync_pb.UserConsentTypes.AssistantActivityControlConsent.SettingType)
+    }
+
     private int bitField0_;
     public static final int UI_AUDIT_KEY_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString uiAuditKey_;
@@ -4132,6 +4281,65 @@ public  final class UserConsentTypes extends
     private void clearStatus() {
       bitField0_ = (bitField0_ & ~0x00000002);
       status_ = 0;
+    }
+
+    public static final int SETTING_TYPE_FIELD_NUMBER = 3;
+    private int settingType_;
+    /**
+     * <pre>
+     * The activity control setting which the consent was given or not given to.
+     * Clients before M93 did not set this field. Such consents should be
+     * treated as applying to ALL.
+     * </pre>
+     *
+     * <code>optional .sync_pb.UserConsentTypes.AssistantActivityControlConsent.SettingType setting_type = 3;</code>
+     * @return Whether the settingType field is set.
+     */
+    @java.lang.Override
+    public boolean hasSettingType() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <pre>
+     * The activity control setting which the consent was given or not given to.
+     * Clients before M93 did not set this field. Such consents should be
+     * treated as applying to ALL.
+     * </pre>
+     *
+     * <code>optional .sync_pb.UserConsentTypes.AssistantActivityControlConsent.SettingType setting_type = 3;</code>
+     * @return The settingType.
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.UserConsentTypes.AssistantActivityControlConsent.SettingType getSettingType() {
+      org.chromium.components.sync.protocol.UserConsentTypes.AssistantActivityControlConsent.SettingType result = org.chromium.components.sync.protocol.UserConsentTypes.AssistantActivityControlConsent.SettingType.forNumber(settingType_);
+      return result == null ? org.chromium.components.sync.protocol.UserConsentTypes.AssistantActivityControlConsent.SettingType.SETTING_TYPE_UNSPECIFIED : result;
+    }
+    /**
+     * <pre>
+     * The activity control setting which the consent was given or not given to.
+     * Clients before M93 did not set this field. Such consents should be
+     * treated as applying to ALL.
+     * </pre>
+     *
+     * <code>optional .sync_pb.UserConsentTypes.AssistantActivityControlConsent.SettingType setting_type = 3;</code>
+     * @param value The settingType to set.
+     */
+    private void setSettingType(org.chromium.components.sync.protocol.UserConsentTypes.AssistantActivityControlConsent.SettingType value) {
+      settingType_ = value.getNumber();
+      bitField0_ |= 0x00000004;
+    }
+    /**
+     * <pre>
+     * The activity control setting which the consent was given or not given to.
+     * Clients before M93 did not set this field. Such consents should be
+     * treated as applying to ALL.
+     * </pre>
+     *
+     * <code>optional .sync_pb.UserConsentTypes.AssistantActivityControlConsent.SettingType setting_type = 3;</code>
+     */
+    private void clearSettingType() {
+      bitField0_ = (bitField0_ & ~0x00000004);
+      settingType_ = 0;
     }
 
     public static org.chromium.components.sync.protocol.UserConsentTypes.AssistantActivityControlConsent parseFrom(
@@ -4342,6 +4550,66 @@ public  final class UserConsentTypes extends
         return this;
       }
 
+      /**
+       * <pre>
+       * The activity control setting which the consent was given or not given to.
+       * Clients before M93 did not set this field. Such consents should be
+       * treated as applying to ALL.
+       * </pre>
+       *
+       * <code>optional .sync_pb.UserConsentTypes.AssistantActivityControlConsent.SettingType setting_type = 3;</code>
+       * @return Whether the settingType field is set.
+       */
+      @java.lang.Override
+      public boolean hasSettingType() {
+        return instance.hasSettingType();
+      }
+      /**
+       * <pre>
+       * The activity control setting which the consent was given or not given to.
+       * Clients before M93 did not set this field. Such consents should be
+       * treated as applying to ALL.
+       * </pre>
+       *
+       * <code>optional .sync_pb.UserConsentTypes.AssistantActivityControlConsent.SettingType setting_type = 3;</code>
+       * @return The settingType.
+       */
+      @java.lang.Override
+      public org.chromium.components.sync.protocol.UserConsentTypes.AssistantActivityControlConsent.SettingType getSettingType() {
+        return instance.getSettingType();
+      }
+      /**
+       * <pre>
+       * The activity control setting which the consent was given or not given to.
+       * Clients before M93 did not set this field. Such consents should be
+       * treated as applying to ALL.
+       * </pre>
+       *
+       * <code>optional .sync_pb.UserConsentTypes.AssistantActivityControlConsent.SettingType setting_type = 3;</code>
+       * @param value The enum numeric value on the wire for settingType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSettingType(org.chromium.components.sync.protocol.UserConsentTypes.AssistantActivityControlConsent.SettingType value) {
+        copyOnWrite();
+        instance.setSettingType(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * The activity control setting which the consent was given or not given to.
+       * Clients before M93 did not set this field. Such consents should be
+       * treated as applying to ALL.
+       * </pre>
+       *
+       * <code>optional .sync_pb.UserConsentTypes.AssistantActivityControlConsent.SettingType setting_type = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSettingType() {
+        copyOnWrite();
+        instance.clearSettingType();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:sync_pb.UserConsentTypes.AssistantActivityControlConsent)
     }
     @java.lang.Override
@@ -4362,10 +4630,12 @@ public  final class UserConsentTypes extends
               "uiAuditKey_",
               "status_",
               org.chromium.components.sync.protocol.UserConsentTypes.ConsentStatus.internalGetVerifier(),
+              "settingType_",
+              org.chromium.components.sync.protocol.UserConsentTypes.AssistantActivityControlConsent.SettingType.internalGetVerifier(),
             };
             java.lang.String info =
-                "\u0001\u0002\u0000\u0001\u0001\u0002\u0002\u0000\u0000\u0000\u0001\u100a\u0000\u0002" +
-                "\u100c\u0001";
+                "\u0001\u0003\u0000\u0001\u0001\u0003\u0003\u0000\u0000\u0000\u0001\u100a\u0000\u0002" +
+                "\u100c\u0001\u0003\u100c\u0002";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

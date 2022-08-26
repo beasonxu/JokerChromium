@@ -1022,10 +1022,18 @@ public  final class ClientToServerResponse extends
   private java.lang.String storeBirthday_;
   /**
    * <pre>
-   * Opaque store ID; if it changes, the contents of the client's cache
-   * is meaningless to this server.  This happens most typically when
-   * you switch from one storage backend instance (say, a test instance)
-   * to another (say, the official instance).
+   * Opaque server-provided ID representing an "epoch" of the server-side data,
+   * referred to as "birthday" or "store birthday". This ID remains fixed until
+   * server-side data gets cleared/reset (e.g. via ClearServerDataMessage),
+   * which clients experience as NOT_MY_BIRTHDAY error, and involves clearing
+   * all local sync metadata including the cached store birthday.
+   * This mechanism allows the server to implement clear-data/reset
+   * functionality that reliably identifies and deletes sync entities uploaded
+   * before the clear-data/reset event (e.g. via ClearServerDataMessage).
+   * Furthermore, it allows the server to deal reliably with in-flight changes
+   * from other clients upon clear-data event, because all writes issued with an
+   * outdated birthday (which in-flight writes would use) can be detected by the
+   * server.
    * </pre>
    *
    * <code>optional string store_birthday = 6;</code>
@@ -1037,10 +1045,18 @@ public  final class ClientToServerResponse extends
   }
   /**
    * <pre>
-   * Opaque store ID; if it changes, the contents of the client's cache
-   * is meaningless to this server.  This happens most typically when
-   * you switch from one storage backend instance (say, a test instance)
-   * to another (say, the official instance).
+   * Opaque server-provided ID representing an "epoch" of the server-side data,
+   * referred to as "birthday" or "store birthday". This ID remains fixed until
+   * server-side data gets cleared/reset (e.g. via ClearServerDataMessage),
+   * which clients experience as NOT_MY_BIRTHDAY error, and involves clearing
+   * all local sync metadata including the cached store birthday.
+   * This mechanism allows the server to implement clear-data/reset
+   * functionality that reliably identifies and deletes sync entities uploaded
+   * before the clear-data/reset event (e.g. via ClearServerDataMessage).
+   * Furthermore, it allows the server to deal reliably with in-flight changes
+   * from other clients upon clear-data event, because all writes issued with an
+   * outdated birthday (which in-flight writes would use) can be detected by the
+   * server.
    * </pre>
    *
    * <code>optional string store_birthday = 6;</code>
@@ -1052,10 +1068,18 @@ public  final class ClientToServerResponse extends
   }
   /**
    * <pre>
-   * Opaque store ID; if it changes, the contents of the client's cache
-   * is meaningless to this server.  This happens most typically when
-   * you switch from one storage backend instance (say, a test instance)
-   * to another (say, the official instance).
+   * Opaque server-provided ID representing an "epoch" of the server-side data,
+   * referred to as "birthday" or "store birthday". This ID remains fixed until
+   * server-side data gets cleared/reset (e.g. via ClearServerDataMessage),
+   * which clients experience as NOT_MY_BIRTHDAY error, and involves clearing
+   * all local sync metadata including the cached store birthday.
+   * This mechanism allows the server to implement clear-data/reset
+   * functionality that reliably identifies and deletes sync entities uploaded
+   * before the clear-data/reset event (e.g. via ClearServerDataMessage).
+   * Furthermore, it allows the server to deal reliably with in-flight changes
+   * from other clients upon clear-data event, because all writes issued with an
+   * outdated birthday (which in-flight writes would use) can be detected by the
+   * server.
    * </pre>
    *
    * <code>optional string store_birthday = 6;</code>
@@ -1068,10 +1092,18 @@ public  final class ClientToServerResponse extends
   }
   /**
    * <pre>
-   * Opaque store ID; if it changes, the contents of the client's cache
-   * is meaningless to this server.  This happens most typically when
-   * you switch from one storage backend instance (say, a test instance)
-   * to another (say, the official instance).
+   * Opaque server-provided ID representing an "epoch" of the server-side data,
+   * referred to as "birthday" or "store birthday". This ID remains fixed until
+   * server-side data gets cleared/reset (e.g. via ClearServerDataMessage),
+   * which clients experience as NOT_MY_BIRTHDAY error, and involves clearing
+   * all local sync metadata including the cached store birthday.
+   * This mechanism allows the server to implement clear-data/reset
+   * functionality that reliably identifies and deletes sync entities uploaded
+   * before the clear-data/reset event (e.g. via ClearServerDataMessage).
+   * Furthermore, it allows the server to deal reliably with in-flight changes
+   * from other clients upon clear-data event, because all writes issued with an
+   * outdated birthday (which in-flight writes would use) can be detected by the
+   * server.
    * </pre>
    *
    * <code>optional string store_birthday = 6;</code>
@@ -1085,10 +1117,18 @@ public  final class ClientToServerResponse extends
   }
   /**
    * <pre>
-   * Opaque store ID; if it changes, the contents of the client's cache
-   * is meaningless to this server.  This happens most typically when
-   * you switch from one storage backend instance (say, a test instance)
-   * to another (say, the official instance).
+   * Opaque server-provided ID representing an "epoch" of the server-side data,
+   * referred to as "birthday" or "store birthday". This ID remains fixed until
+   * server-side data gets cleared/reset (e.g. via ClearServerDataMessage),
+   * which clients experience as NOT_MY_BIRTHDAY error, and involves clearing
+   * all local sync metadata including the cached store birthday.
+   * This mechanism allows the server to implement clear-data/reset
+   * functionality that reliably identifies and deletes sync entities uploaded
+   * before the clear-data/reset event (e.g. via ClearServerDataMessage).
+   * Furthermore, it allows the server to deal reliably with in-flight changes
+   * from other clients upon clear-data event, because all writes issued with an
+   * outdated birthday (which in-flight writes would use) can be detected by the
+   * server.
    * </pre>
    *
    * <code>optional string store_birthday = 6;</code>
@@ -1099,10 +1139,18 @@ public  final class ClientToServerResponse extends
   }
   /**
    * <pre>
-   * Opaque store ID; if it changes, the contents of the client's cache
-   * is meaningless to this server.  This happens most typically when
-   * you switch from one storage backend instance (say, a test instance)
-   * to another (say, the official instance).
+   * Opaque server-provided ID representing an "epoch" of the server-side data,
+   * referred to as "birthday" or "store birthday". This ID remains fixed until
+   * server-side data gets cleared/reset (e.g. via ClearServerDataMessage),
+   * which clients experience as NOT_MY_BIRTHDAY error, and involves clearing
+   * all local sync metadata including the cached store birthday.
+   * This mechanism allows the server to implement clear-data/reset
+   * functionality that reliably identifies and deletes sync entities uploaded
+   * before the clear-data/reset event (e.g. via ClearServerDataMessage).
+   * Furthermore, it allows the server to deal reliably with in-flight changes
+   * from other clients upon clear-data event, because all writes issued with an
+   * outdated birthday (which in-flight writes would use) can be detected by the
+   * server.
    * </pre>
    *
    * <code>optional string store_birthday = 6;</code>
@@ -1158,52 +1206,6 @@ public  final class ClientToServerResponse extends
    */
   private void clearClientCommand() {  clientCommand_ = null;
     bitField0_ = (bitField0_ & ~0x00000020);
-  }
-
-  public static final int PROFILING_DATA_FIELD_NUMBER = 8;
-  private org.chromium.components.sync.protocol.ProfilingData profilingData_;
-  /**
-   * <code>optional .sync_pb.ProfilingData profiling_data = 8;</code>
-   */
-  @java.lang.Override
-  public boolean hasProfilingData() {
-    return ((bitField0_ & 0x00000040) != 0);
-  }
-  /**
-   * <code>optional .sync_pb.ProfilingData profiling_data = 8;</code>
-   */
-  @java.lang.Override
-  public org.chromium.components.sync.protocol.ProfilingData getProfilingData() {
-    return profilingData_ == null ? org.chromium.components.sync.protocol.ProfilingData.getDefaultInstance() : profilingData_;
-  }
-  /**
-   * <code>optional .sync_pb.ProfilingData profiling_data = 8;</code>
-   */
-  private void setProfilingData(org.chromium.components.sync.protocol.ProfilingData value) {
-    value.getClass();
-  profilingData_ = value;
-    bitField0_ |= 0x00000040;
-    }
-  /**
-   * <code>optional .sync_pb.ProfilingData profiling_data = 8;</code>
-   */
-  @java.lang.SuppressWarnings({"ReferenceEquality"})
-  private void mergeProfilingData(org.chromium.components.sync.protocol.ProfilingData value) {
-    value.getClass();
-  if (profilingData_ != null &&
-        profilingData_ != org.chromium.components.sync.protocol.ProfilingData.getDefaultInstance()) {
-      profilingData_ =
-        org.chromium.components.sync.protocol.ProfilingData.newBuilder(profilingData_).mergeFrom(value).buildPartial();
-    } else {
-      profilingData_ = value;
-    }
-    bitField0_ |= 0x00000040;
-  }
-  /**
-   * <code>optional .sync_pb.ProfilingData profiling_data = 8;</code>
-   */
-  private void clearProfilingData() {  profilingData_ = null;
-    bitField0_ = (bitField0_ & ~0x00000040);
   }
 
   public static final int MIGRATED_DATA_TYPE_ID_FIELD_NUMBER = 12;
@@ -1318,7 +1320,7 @@ public  final class ClientToServerResponse extends
    */
   @java.lang.Override
   public boolean hasError() {
-    return ((bitField0_ & 0x00000080) != 0);
+    return ((bitField0_ & 0x00000040) != 0);
   }
   /**
    * <code>optional .sync_pb.ClientToServerResponse.Error error = 13;</code>
@@ -1333,7 +1335,7 @@ public  final class ClientToServerResponse extends
   private void setError(org.chromium.components.sync.protocol.ClientToServerResponse.Error value) {
     value.getClass();
   error_ = value;
-    bitField0_ |= 0x00000080;
+    bitField0_ |= 0x00000040;
     }
   /**
    * <code>optional .sync_pb.ClientToServerResponse.Error error = 13;</code>
@@ -1348,13 +1350,13 @@ public  final class ClientToServerResponse extends
     } else {
       error_ = value;
     }
-    bitField0_ |= 0x00000080;
+    bitField0_ |= 0x00000040;
   }
   /**
    * <code>optional .sync_pb.ClientToServerResponse.Error error = 13;</code>
    */
   private void clearError() {  error_ = null;
-    bitField0_ = (bitField0_ & ~0x00000080);
+    bitField0_ = (bitField0_ & ~0x00000040);
   }
 
   public static final int NEW_BAG_OF_CHIPS_FIELD_NUMBER = 14;
@@ -1369,7 +1371,7 @@ public  final class ClientToServerResponse extends
    */
   @java.lang.Override
   public boolean hasNewBagOfChips() {
-    return ((bitField0_ & 0x00000100) != 0);
+    return ((bitField0_ & 0x00000080) != 0);
   }
   /**
    * <pre>
@@ -1394,7 +1396,7 @@ public  final class ClientToServerResponse extends
   private void setNewBagOfChips(org.chromium.components.sync.protocol.ChipBag value) {
     value.getClass();
   newBagOfChips_ = value;
-    bitField0_ |= 0x00000100;
+    bitField0_ |= 0x00000080;
     }
   /**
    * <pre>
@@ -1414,7 +1416,7 @@ public  final class ClientToServerResponse extends
     } else {
       newBagOfChips_ = value;
     }
-    bitField0_ |= 0x00000100;
+    bitField0_ |= 0x00000080;
   }
   /**
    * <pre>
@@ -1425,7 +1427,7 @@ public  final class ClientToServerResponse extends
    * <code>optional .sync_pb.ChipBag new_bag_of_chips = 14;</code>
    */
   private void clearNewBagOfChips() {  newBagOfChips_ = null;
-    bitField0_ = (bitField0_ & ~0x00000100);
+    bitField0_ = (bitField0_ & ~0x00000080);
   }
 
   public static final int CLEAR_SERVER_DATA_FIELD_NUMBER = 15;
@@ -1440,7 +1442,7 @@ public  final class ClientToServerResponse extends
    */
   @java.lang.Override
   public boolean hasClearServerData() {
-    return ((bitField0_ & 0x00000200) != 0);
+    return ((bitField0_ & 0x00000100) != 0);
   }
   /**
    * <pre>
@@ -1465,7 +1467,7 @@ public  final class ClientToServerResponse extends
   private void setClearServerData(org.chromium.components.sync.protocol.ClearServerDataResponse value) {
     value.getClass();
   clearServerData_ = value;
-    bitField0_ |= 0x00000200;
+    bitField0_ |= 0x00000100;
     }
   /**
    * <pre>
@@ -1485,7 +1487,7 @@ public  final class ClientToServerResponse extends
     } else {
       clearServerData_ = value;
     }
-    bitField0_ |= 0x00000200;
+    bitField0_ |= 0x00000100;
   }
   /**
    * <pre>
@@ -1496,7 +1498,7 @@ public  final class ClientToServerResponse extends
    * <code>optional .sync_pb.ClearServerDataResponse clear_server_data = 15;</code>
    */
   private void clearClearServerData() {  clearServerData_ = null;
-    bitField0_ = (bitField0_ & ~0x00000200);
+    bitField0_ = (bitField0_ & ~0x00000100);
   }
 
   public static org.chromium.components.sync.protocol.ClientToServerResponse parseFrom(
@@ -1823,10 +1825,18 @@ public  final class ClientToServerResponse extends
 
     /**
      * <pre>
-     * Opaque store ID; if it changes, the contents of the client's cache
-     * is meaningless to this server.  This happens most typically when
-     * you switch from one storage backend instance (say, a test instance)
-     * to another (say, the official instance).
+     * Opaque server-provided ID representing an "epoch" of the server-side data,
+     * referred to as "birthday" or "store birthday". This ID remains fixed until
+     * server-side data gets cleared/reset (e.g. via ClearServerDataMessage),
+     * which clients experience as NOT_MY_BIRTHDAY error, and involves clearing
+     * all local sync metadata including the cached store birthday.
+     * This mechanism allows the server to implement clear-data/reset
+     * functionality that reliably identifies and deletes sync entities uploaded
+     * before the clear-data/reset event (e.g. via ClearServerDataMessage).
+     * Furthermore, it allows the server to deal reliably with in-flight changes
+     * from other clients upon clear-data event, because all writes issued with an
+     * outdated birthday (which in-flight writes would use) can be detected by the
+     * server.
      * </pre>
      *
      * <code>optional string store_birthday = 6;</code>
@@ -1838,10 +1848,18 @@ public  final class ClientToServerResponse extends
     }
     /**
      * <pre>
-     * Opaque store ID; if it changes, the contents of the client's cache
-     * is meaningless to this server.  This happens most typically when
-     * you switch from one storage backend instance (say, a test instance)
-     * to another (say, the official instance).
+     * Opaque server-provided ID representing an "epoch" of the server-side data,
+     * referred to as "birthday" or "store birthday". This ID remains fixed until
+     * server-side data gets cleared/reset (e.g. via ClearServerDataMessage),
+     * which clients experience as NOT_MY_BIRTHDAY error, and involves clearing
+     * all local sync metadata including the cached store birthday.
+     * This mechanism allows the server to implement clear-data/reset
+     * functionality that reliably identifies and deletes sync entities uploaded
+     * before the clear-data/reset event (e.g. via ClearServerDataMessage).
+     * Furthermore, it allows the server to deal reliably with in-flight changes
+     * from other clients upon clear-data event, because all writes issued with an
+     * outdated birthday (which in-flight writes would use) can be detected by the
+     * server.
      * </pre>
      *
      * <code>optional string store_birthday = 6;</code>
@@ -1853,10 +1871,18 @@ public  final class ClientToServerResponse extends
     }
     /**
      * <pre>
-     * Opaque store ID; if it changes, the contents of the client's cache
-     * is meaningless to this server.  This happens most typically when
-     * you switch from one storage backend instance (say, a test instance)
-     * to another (say, the official instance).
+     * Opaque server-provided ID representing an "epoch" of the server-side data,
+     * referred to as "birthday" or "store birthday". This ID remains fixed until
+     * server-side data gets cleared/reset (e.g. via ClearServerDataMessage),
+     * which clients experience as NOT_MY_BIRTHDAY error, and involves clearing
+     * all local sync metadata including the cached store birthday.
+     * This mechanism allows the server to implement clear-data/reset
+     * functionality that reliably identifies and deletes sync entities uploaded
+     * before the clear-data/reset event (e.g. via ClearServerDataMessage).
+     * Furthermore, it allows the server to deal reliably with in-flight changes
+     * from other clients upon clear-data event, because all writes issued with an
+     * outdated birthday (which in-flight writes would use) can be detected by the
+     * server.
      * </pre>
      *
      * <code>optional string store_birthday = 6;</code>
@@ -1869,10 +1895,18 @@ public  final class ClientToServerResponse extends
     }
     /**
      * <pre>
-     * Opaque store ID; if it changes, the contents of the client's cache
-     * is meaningless to this server.  This happens most typically when
-     * you switch from one storage backend instance (say, a test instance)
-     * to another (say, the official instance).
+     * Opaque server-provided ID representing an "epoch" of the server-side data,
+     * referred to as "birthday" or "store birthday". This ID remains fixed until
+     * server-side data gets cleared/reset (e.g. via ClearServerDataMessage),
+     * which clients experience as NOT_MY_BIRTHDAY error, and involves clearing
+     * all local sync metadata including the cached store birthday.
+     * This mechanism allows the server to implement clear-data/reset
+     * functionality that reliably identifies and deletes sync entities uploaded
+     * before the clear-data/reset event (e.g. via ClearServerDataMessage).
+     * Furthermore, it allows the server to deal reliably with in-flight changes
+     * from other clients upon clear-data event, because all writes issued with an
+     * outdated birthday (which in-flight writes would use) can be detected by the
+     * server.
      * </pre>
      *
      * <code>optional string store_birthday = 6;</code>
@@ -1887,10 +1921,18 @@ public  final class ClientToServerResponse extends
     }
     /**
      * <pre>
-     * Opaque store ID; if it changes, the contents of the client's cache
-     * is meaningless to this server.  This happens most typically when
-     * you switch from one storage backend instance (say, a test instance)
-     * to another (say, the official instance).
+     * Opaque server-provided ID representing an "epoch" of the server-side data,
+     * referred to as "birthday" or "store birthday". This ID remains fixed until
+     * server-side data gets cleared/reset (e.g. via ClearServerDataMessage),
+     * which clients experience as NOT_MY_BIRTHDAY error, and involves clearing
+     * all local sync metadata including the cached store birthday.
+     * This mechanism allows the server to implement clear-data/reset
+     * functionality that reliably identifies and deletes sync entities uploaded
+     * before the clear-data/reset event (e.g. via ClearServerDataMessage).
+     * Furthermore, it allows the server to deal reliably with in-flight changes
+     * from other clients upon clear-data event, because all writes issued with an
+     * outdated birthday (which in-flight writes would use) can be detected by the
+     * server.
      * </pre>
      *
      * <code>optional string store_birthday = 6;</code>
@@ -1903,10 +1945,18 @@ public  final class ClientToServerResponse extends
     }
     /**
      * <pre>
-     * Opaque store ID; if it changes, the contents of the client's cache
-     * is meaningless to this server.  This happens most typically when
-     * you switch from one storage backend instance (say, a test instance)
-     * to another (say, the official instance).
+     * Opaque server-provided ID representing an "epoch" of the server-side data,
+     * referred to as "birthday" or "store birthday". This ID remains fixed until
+     * server-side data gets cleared/reset (e.g. via ClearServerDataMessage),
+     * which clients experience as NOT_MY_BIRTHDAY error, and involves clearing
+     * all local sync metadata including the cached store birthday.
+     * This mechanism allows the server to implement clear-data/reset
+     * functionality that reliably identifies and deletes sync entities uploaded
+     * before the clear-data/reset event (e.g. via ClearServerDataMessage).
+     * Furthermore, it allows the server to deal reliably with in-flight changes
+     * from other clients upon clear-data event, because all writes issued with an
+     * outdated birthday (which in-flight writes would use) can be detected by the
+     * server.
      * </pre>
      *
      * <code>optional string store_birthday = 6;</code>
@@ -1964,53 +2014,6 @@ public  final class ClientToServerResponse extends
      */
     public Builder clearClientCommand() {  copyOnWrite();
       instance.clearClientCommand();
-      return this;
-    }
-
-    /**
-     * <code>optional .sync_pb.ProfilingData profiling_data = 8;</code>
-     */
-    @java.lang.Override
-    public boolean hasProfilingData() {
-      return instance.hasProfilingData();
-    }
-    /**
-     * <code>optional .sync_pb.ProfilingData profiling_data = 8;</code>
-     */
-    @java.lang.Override
-    public org.chromium.components.sync.protocol.ProfilingData getProfilingData() {
-      return instance.getProfilingData();
-    }
-    /**
-     * <code>optional .sync_pb.ProfilingData profiling_data = 8;</code>
-     */
-    public Builder setProfilingData(org.chromium.components.sync.protocol.ProfilingData value) {
-      copyOnWrite();
-      instance.setProfilingData(value);
-      return this;
-      }
-    /**
-     * <code>optional .sync_pb.ProfilingData profiling_data = 8;</code>
-     */
-    public Builder setProfilingData(
-        org.chromium.components.sync.protocol.ProfilingData.Builder builderForValue) {
-      copyOnWrite();
-      instance.setProfilingData(builderForValue.build());
-      return this;
-    }
-    /**
-     * <code>optional .sync_pb.ProfilingData profiling_data = 8;</code>
-     */
-    public Builder mergeProfilingData(org.chromium.components.sync.protocol.ProfilingData value) {
-      copyOnWrite();
-      instance.mergeProfilingData(value);
-      return this;
-    }
-    /**
-     * <code>optional .sync_pb.ProfilingData profiling_data = 8;</code>
-     */
-    public Builder clearProfilingData() {  copyOnWrite();
-      instance.clearProfilingData();
       return this;
     }
 
@@ -2344,16 +2347,15 @@ public  final class ClientToServerResponse extends
             "errorMessage_",
             "storeBirthday_",
             "clientCommand_",
-            "profilingData_",
             "migratedDataTypeId_",
             "error_",
             "newBagOfChips_",
             "clearServerData_",
           };
           java.lang.String info =
-              "\u0001\u000b\u0000\u0001\u0001\u000f\u000b\u0000\u0001\u0001\u0001\u1409\u0000\u0002" +
-              "\u1009\u0001\u0004\u100c\u0002\u0005\u1008\u0003\u0006\u1008\u0004\u0007\u1009\u0005" +
-              "\b\u1009\u0006\f\u0016\r\u1009\u0007\u000e\u1009\b\u000f\u1009\t";
+              "\u0001\n\u0000\u0001\u0001\u000f\n\u0000\u0001\u0001\u0001\u1409\u0000\u0002\u1009" +
+              "\u0001\u0004\u100c\u0002\u0005\u1008\u0003\u0006\u1008\u0004\u0007\u1009\u0005\f" +
+              "\u0016\r\u1009\u0006\u000e\u1009\u0007\u000f\u1009\b";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

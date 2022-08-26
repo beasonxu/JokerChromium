@@ -11,7 +11,7 @@ import org.chromium.content_public.browser.RenderFrameHost;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class QualityEnforcerJni implements QualityEnforcer.Natives {
+class QualityEnforcerJni implements QualityEnforcer.Natives {
   private static QualityEnforcer.Natives testInstance;
 
   public static final JniStaticTestMocker<QualityEnforcer.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.browserservices.QualityEnforcer.Natives>() {

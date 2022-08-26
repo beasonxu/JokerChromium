@@ -13,8 +13,16 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ProtectedVideoState {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ProtectedVideoState.CLEAR,
+        ProtectedVideoState.SOFTWARE_PROTECTED,
+        ProtectedVideoState.HARDWARE_PROTECTED})
+    public @interface EnumType {}
 
     public static final int CLEAR = 0;
     public static final int SOFTWARE_PROTECTED = 1;

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class ServiceWorkerRegistrationObjectHost_Internal {
 
@@ -69,7 +71,7 @@ class ServiceWorkerRegistrationObjectHost_Internal {
         @Override
         public void update(
 FetchClientSettingsObject outsideFetchClientSettingsObject, 
-UpdateResponse callback) {
+Update_Response callback) {
 
             ServiceWorkerRegistrationObjectHostUpdateParams _message = new ServiceWorkerRegistrationObjectHostUpdateParams();
 
@@ -91,7 +93,7 @@ UpdateResponse callback) {
         @Override
         public void unregister(
 
-UnregisterResponse callback) {
+Unregister_Response callback) {
 
             ServiceWorkerRegistrationObjectHostUnregisterParams _message = new ServiceWorkerRegistrationObjectHostUnregisterParams();
 
@@ -111,7 +113,7 @@ UnregisterResponse callback) {
         @Override
         public void enableNavigationPreload(
 boolean enable, 
-EnableNavigationPreloadResponse callback) {
+EnableNavigationPreload_Response callback) {
 
             ServiceWorkerRegistrationObjectHostEnableNavigationPreloadParams _message = new ServiceWorkerRegistrationObjectHostEnableNavigationPreloadParams();
 
@@ -133,7 +135,7 @@ EnableNavigationPreloadResponse callback) {
         @Override
         public void getNavigationPreloadState(
 
-GetNavigationPreloadStateResponse callback) {
+GetNavigationPreloadState_Response callback) {
 
             ServiceWorkerRegistrationObjectHostGetNavigationPreloadStateParams _message = new ServiceWorkerRegistrationObjectHostGetNavigationPreloadStateParams();
 
@@ -153,7 +155,7 @@ GetNavigationPreloadStateResponse callback) {
         @Override
         public void setNavigationPreloadHeader(
 String value, 
-SetNavigationPreloadHeaderResponse callback) {
+SetNavigationPreloadHeader_Response callback) {
 
             ServiceWorkerRegistrationObjectHostSetNavigationPreloadHeaderParams _message = new ServiceWorkerRegistrationObjectHostSetNavigationPreloadHeaderParams();
 
@@ -459,9 +461,9 @@ SetNavigationPreloadHeaderResponse callback) {
 
     static class ServiceWorkerRegistrationObjectHostUpdateResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorkerRegistrationObjectHost.UpdateResponse mCallback;
+        private final ServiceWorkerRegistrationObjectHost.Update_Response mCallback;
 
-        ServiceWorkerRegistrationObjectHostUpdateResponseParamsForwardToCallback(ServiceWorkerRegistrationObjectHost.UpdateResponse callback) {
+        ServiceWorkerRegistrationObjectHostUpdateResponseParamsForwardToCallback(ServiceWorkerRegistrationObjectHost.Update_Response callback) {
             this.mCallback = callback;
         }
 
@@ -486,7 +488,7 @@ SetNavigationPreloadHeaderResponse callback) {
         }
     }
 
-    static class ServiceWorkerRegistrationObjectHostUpdateResponseParamsProxyToResponder implements ServiceWorkerRegistrationObjectHost.UpdateResponse {
+    static class ServiceWorkerRegistrationObjectHostUpdateResponseParamsProxyToResponder implements ServiceWorkerRegistrationObjectHost.Update_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -650,9 +652,9 @@ SetNavigationPreloadHeaderResponse callback) {
 
     static class ServiceWorkerRegistrationObjectHostUnregisterResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorkerRegistrationObjectHost.UnregisterResponse mCallback;
+        private final ServiceWorkerRegistrationObjectHost.Unregister_Response mCallback;
 
-        ServiceWorkerRegistrationObjectHostUnregisterResponseParamsForwardToCallback(ServiceWorkerRegistrationObjectHost.UnregisterResponse callback) {
+        ServiceWorkerRegistrationObjectHostUnregisterResponseParamsForwardToCallback(ServiceWorkerRegistrationObjectHost.Unregister_Response callback) {
             this.mCallback = callback;
         }
 
@@ -677,7 +679,7 @@ SetNavigationPreloadHeaderResponse callback) {
         }
     }
 
-    static class ServiceWorkerRegistrationObjectHostUnregisterResponseParamsProxyToResponder implements ServiceWorkerRegistrationObjectHost.UnregisterResponse {
+    static class ServiceWorkerRegistrationObjectHostUnregisterResponseParamsProxyToResponder implements ServiceWorkerRegistrationObjectHost.Unregister_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -848,9 +850,9 @@ SetNavigationPreloadHeaderResponse callback) {
 
     static class ServiceWorkerRegistrationObjectHostEnableNavigationPreloadResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorkerRegistrationObjectHost.EnableNavigationPreloadResponse mCallback;
+        private final ServiceWorkerRegistrationObjectHost.EnableNavigationPreload_Response mCallback;
 
-        ServiceWorkerRegistrationObjectHostEnableNavigationPreloadResponseParamsForwardToCallback(ServiceWorkerRegistrationObjectHost.EnableNavigationPreloadResponse callback) {
+        ServiceWorkerRegistrationObjectHostEnableNavigationPreloadResponseParamsForwardToCallback(ServiceWorkerRegistrationObjectHost.EnableNavigationPreload_Response callback) {
             this.mCallback = callback;
         }
 
@@ -875,7 +877,7 @@ SetNavigationPreloadHeaderResponse callback) {
         }
     }
 
-    static class ServiceWorkerRegistrationObjectHostEnableNavigationPreloadResponseParamsProxyToResponder implements ServiceWorkerRegistrationObjectHost.EnableNavigationPreloadResponse {
+    static class ServiceWorkerRegistrationObjectHostEnableNavigationPreloadResponseParamsProxyToResponder implements ServiceWorkerRegistrationObjectHost.EnableNavigationPreload_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1047,9 +1049,9 @@ SetNavigationPreloadHeaderResponse callback) {
 
     static class ServiceWorkerRegistrationObjectHostGetNavigationPreloadStateResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorkerRegistrationObjectHost.GetNavigationPreloadStateResponse mCallback;
+        private final ServiceWorkerRegistrationObjectHost.GetNavigationPreloadState_Response mCallback;
 
-        ServiceWorkerRegistrationObjectHostGetNavigationPreloadStateResponseParamsForwardToCallback(ServiceWorkerRegistrationObjectHost.GetNavigationPreloadStateResponse callback) {
+        ServiceWorkerRegistrationObjectHostGetNavigationPreloadStateResponseParamsForwardToCallback(ServiceWorkerRegistrationObjectHost.GetNavigationPreloadState_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1074,7 +1076,7 @@ SetNavigationPreloadHeaderResponse callback) {
         }
     }
 
-    static class ServiceWorkerRegistrationObjectHostGetNavigationPreloadStateResponseParamsProxyToResponder implements ServiceWorkerRegistrationObjectHost.GetNavigationPreloadStateResponse {
+    static class ServiceWorkerRegistrationObjectHostGetNavigationPreloadStateResponseParamsProxyToResponder implements ServiceWorkerRegistrationObjectHost.GetNavigationPreloadState_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1247,9 +1249,9 @@ SetNavigationPreloadHeaderResponse callback) {
 
     static class ServiceWorkerRegistrationObjectHostSetNavigationPreloadHeaderResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorkerRegistrationObjectHost.SetNavigationPreloadHeaderResponse mCallback;
+        private final ServiceWorkerRegistrationObjectHost.SetNavigationPreloadHeader_Response mCallback;
 
-        ServiceWorkerRegistrationObjectHostSetNavigationPreloadHeaderResponseParamsForwardToCallback(ServiceWorkerRegistrationObjectHost.SetNavigationPreloadHeaderResponse callback) {
+        ServiceWorkerRegistrationObjectHostSetNavigationPreloadHeaderResponseParamsForwardToCallback(ServiceWorkerRegistrationObjectHost.SetNavigationPreloadHeader_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1274,7 +1276,7 @@ SetNavigationPreloadHeaderResponse callback) {
         }
     }
 
-    static class ServiceWorkerRegistrationObjectHostSetNavigationPreloadHeaderResponseParamsProxyToResponder implements ServiceWorkerRegistrationObjectHost.SetNavigationPreloadHeaderResponse {
+    static class ServiceWorkerRegistrationObjectHostSetNavigationPreloadHeaderResponseParamsProxyToResponder implements ServiceWorkerRegistrationObjectHost.SetNavigationPreloadHeader_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class RemoteMainFrameHost_Internal {
 
@@ -99,7 +101,7 @@ boolean reverse) {
         @Override
         public void updateTargetUrl(
 org.chromium.url.mojom.Url url, 
-UpdateTargetUrlResponse callback) {
+UpdateTargetUrl_Response callback) {
 
             RemoteMainFrameHostUpdateTargetUrlParams _message = new RemoteMainFrameHostUpdateTargetUrlParams();
 
@@ -500,9 +502,9 @@ UpdateTargetUrlResponse callback) {
 
     static class RemoteMainFrameHostUpdateTargetUrlResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final RemoteMainFrameHost.UpdateTargetUrlResponse mCallback;
+        private final RemoteMainFrameHost.UpdateTargetUrl_Response mCallback;
 
-        RemoteMainFrameHostUpdateTargetUrlResponseParamsForwardToCallback(RemoteMainFrameHost.UpdateTargetUrlResponse callback) {
+        RemoteMainFrameHostUpdateTargetUrlResponseParamsForwardToCallback(RemoteMainFrameHost.UpdateTargetUrl_Response callback) {
             this.mCallback = callback;
         }
 
@@ -525,7 +527,7 @@ UpdateTargetUrlResponse callback) {
         }
     }
 
-    static class RemoteMainFrameHostUpdateTargetUrlResponseParamsProxyToResponder implements RemoteMainFrameHost.UpdateTargetUrlResponse {
+    static class RemoteMainFrameHostUpdateTargetUrlResponseParamsProxyToResponder implements RemoteMainFrameHost.UpdateTargetUrl_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

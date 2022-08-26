@@ -13,11 +13,13 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class PublicKeyCredentialCreationOptions extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 96;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(96, 0)};
+    private static final int STRUCT_SIZE = 112;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(112, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public PublicKeyCredentialRpEntity relyingParty;
     public PublicKeyCredentialUserEntity user;
@@ -30,16 +32,21 @@ public final class PublicKeyCredentialCreationOptions extends org.chromium.mojo.
     public CableRegistration cableRegistrationData;
     public boolean hmacCreateSecret;
     public boolean prfEnable;
-    public boolean userVerificationMethods;
     public int protectionPolicy;
     public boolean enforceProtectionPolicy;
     public String appidExclude;
     public boolean credProps;
     public int largeBlobEnable;
     public boolean isPaymentCredentialCreation;
+    public byte[] credBlob;
+    public boolean googleLegacyAppIdSupport;
+    public boolean minPinLengthRequested;
+    public RemoteDesktopClientOverride remoteDesktopClientOverride;
 
     private PublicKeyCredentialCreationOptions(int version) {
         super(STRUCT_SIZE, version);
+        this.googleLegacyAppIdSupport = (boolean) false;
+        this.minPinLengthRequested = (boolean) false;
     }
 
     public PublicKeyCredentialCreationOptions() {
@@ -137,19 +144,23 @@ public final class PublicKeyCredentialCreationOptions extends org.chromium.mojo.
                 }
                 {
                     
-                result.userVerificationMethods = decoder0.readBoolean(68, 2);
+                result.enforceProtectionPolicy = decoder0.readBoolean(68, 2);
                 }
                 {
                     
-                result.enforceProtectionPolicy = decoder0.readBoolean(68, 3);
+                result.credProps = decoder0.readBoolean(68, 3);
                 }
                 {
                     
-                result.credProps = decoder0.readBoolean(68, 4);
+                result.isPaymentCredentialCreation = decoder0.readBoolean(68, 4);
                 }
                 {
                     
-                result.isPaymentCredentialCreation = decoder0.readBoolean(68, 5);
+                result.googleLegacyAppIdSupport = decoder0.readBoolean(68, 5);
+                }
+                {
+                    
+                result.minPinLengthRequested = decoder0.readBoolean(68, 6);
                 }
                 {
                     
@@ -171,6 +182,15 @@ public final class PublicKeyCredentialCreationOptions extends org.chromium.mojo.
                 {
                     
                 result.appidExclude = decoder0.readString(88, true);
+                }
+                {
+                    
+                result.credBlob = decoder0.readBytes(96, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(104, true);
+                result.remoteDesktopClientOverride = RemoteDesktopClientOverride.decode(decoder1);
                 }
 
         } finally {
@@ -220,13 +240,15 @@ public final class PublicKeyCredentialCreationOptions extends org.chromium.mojo.
         
         encoder0.encode(this.prfEnable, 68, 1);
         
-        encoder0.encode(this.userVerificationMethods, 68, 2);
+        encoder0.encode(this.enforceProtectionPolicy, 68, 2);
         
-        encoder0.encode(this.enforceProtectionPolicy, 68, 3);
+        encoder0.encode(this.credProps, 68, 3);
         
-        encoder0.encode(this.credProps, 68, 4);
+        encoder0.encode(this.isPaymentCredentialCreation, 68, 4);
         
-        encoder0.encode(this.isPaymentCredentialCreation, 68, 5);
+        encoder0.encode(this.googleLegacyAppIdSupport, 68, 5);
+        
+        encoder0.encode(this.minPinLengthRequested, 68, 6);
         
         encoder0.encode(this.cableRegistrationData, 72, true);
         
@@ -235,5 +257,9 @@ public final class PublicKeyCredentialCreationOptions extends org.chromium.mojo.
         encoder0.encode(this.largeBlobEnable, 84);
         
         encoder0.encode(this.appidExclude, 88, true);
+        
+        encoder0.encode(this.credBlob, 96, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+        
+        encoder0.encode(this.remoteDesktopClientOverride, 104, true);
     }
 }

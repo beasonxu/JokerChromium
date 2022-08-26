@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface UdpSocketListener extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface UdpSocketListener extends org.chromium.mojo.bindings.Interface 
     }
 
     Manager<UdpSocketListener, UdpSocketListener.Proxy> MANAGER = UdpSocketListener_Internal.MANAGER;
-
 
     void onReceived(
 int result, IpEndPoint srcAddr, org.chromium.mojo_base.mojom.ReadOnlyBuffer data);

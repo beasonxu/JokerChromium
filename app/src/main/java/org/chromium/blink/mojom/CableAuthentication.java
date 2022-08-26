@@ -13,17 +13,20 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class CableAuthentication extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 48;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
+    private static final int STRUCT_SIZE = 56;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(56, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public byte version;
     public byte[] clientEid;
     public byte[] authenticatorEid;
     public byte[] sessionPreKey;
     public byte[] serverLinkData;
+    public byte[] experiments;
 
     private CableAuthentication(int version) {
         super(STRUCT_SIZE, version);
@@ -78,6 +81,10 @@ public final class CableAuthentication extends org.chromium.mojo.bindings.Struct
                     
                 result.serverLinkData = decoder0.readBytes(40, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 }
+                {
+                    
+                result.experiments = decoder0.readBytes(48, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -99,5 +106,7 @@ public final class CableAuthentication extends org.chromium.mojo.bindings.Struct
         encoder0.encode(this.sessionPreKey, 32, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, 32);
         
         encoder0.encode(this.serverLinkData, 40, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+        
+        encoder0.encode(this.experiments, 48, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
     }
 }

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface HighPriorityLocalFrame extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface HighPriorityLocalFrame extends org.chromium.mojo.bindings.Inter
 
     Manager<HighPriorityLocalFrame, HighPriorityLocalFrame.Proxy> MANAGER = HighPriorityLocalFrame_Internal.MANAGER;
 
-
     void dispatchBeforeUnload(
 boolean isReload, 
-DispatchBeforeUnloadResponse callback);
+DispatchBeforeUnload_Response callback);
 
-    interface DispatchBeforeUnloadResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<Boolean, org.chromium.mojo_base.mojom.TimeTicks, org.chromium.mojo_base.mojom.TimeTicks> { }
+    interface DispatchBeforeUnload_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<Boolean, org.chromium.mojo_base.mojom.TimeTicks, org.chromium.mojo_base.mojom.TimeTicks> { }
 
 
 }

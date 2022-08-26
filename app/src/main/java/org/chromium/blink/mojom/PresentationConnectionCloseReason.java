@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PresentationConnectionCloseReason {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PresentationConnectionCloseReason.CONNECTION_ERROR,
+        PresentationConnectionCloseReason.CLOSED,
+        PresentationConnectionCloseReason.WENT_AWAY})
+    public @interface EnumType {}
 
     public static final int CONNECTION_ERROR = 0;
     public static final int CLOSED = 1;

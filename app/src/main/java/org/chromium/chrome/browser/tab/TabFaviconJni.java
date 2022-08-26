@@ -11,7 +11,7 @@ import org.chromium.content_public.browser.WebContents;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class TabFaviconJni implements TabFavicon.Natives {
+class TabFaviconJni implements TabFavicon.Natives {
   private static TabFavicon.Natives testInstance;
 
   public static final JniStaticTestMocker<TabFavicon.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.tab.TabFavicon.Natives>() {

@@ -13,8 +13,15 @@
 
 package org.chromium.media_session.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class MediaPlaybackState {
     private static final boolean IS_EXTENSIBLE = true;
+    @IntDef({
+
+        MediaPlaybackState.PAUSED,
+        MediaPlaybackState.PLAYING})
+    public @interface EnumType {}
 
     public static final int PAUSED = 0;
     public static final int PLAYING = 1;

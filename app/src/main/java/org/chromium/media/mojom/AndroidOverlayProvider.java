@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface AndroidOverlayProvider extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface AndroidOverlayProvider extends org.chromium.mojo.bindings.Inter
     }
 
     Manager<AndroidOverlayProvider, AndroidOverlayProvider.Proxy> MANAGER = AndroidOverlayProvider_Internal.MANAGER;
-
 
     void createOverlay(
 org.chromium.mojo.bindings.InterfaceRequest<AndroidOverlay> overlay, AndroidOverlayClient client, AndroidOverlayConfig config);

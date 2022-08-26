@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class JavascriptTabModalDialogJni implements JavascriptTabModalDialog.Natives {
+class JavascriptTabModalDialogJni implements JavascriptTabModalDialog.Natives {
   private static JavascriptTabModalDialog.Natives testInstance;
 
   public static final JniStaticTestMocker<JavascriptTabModalDialog.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.javascript_dialogs.JavascriptTabModalDialog.Natives>() {

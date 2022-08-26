@@ -10,32 +10,34 @@ public interface SyncCycleCompletedEventInfoOrBuilder extends
   /**
    * <pre>
    * These new conflict counters replace the ones above.
+   * TODO(crbug.com/1315573): Deprecated in M103.
    * </pre>
    *
-   * <code>optional int32 num_encryption_conflicts = 4;</code>
+   * <code>optional int32 num_encryption_conflicts = 4 [deprecated = true];</code>
    * @return Whether the numEncryptionConflicts field is set.
    */
-  boolean hasNumEncryptionConflicts();
+  @java.lang.Deprecated boolean hasNumEncryptionConflicts();
   /**
    * <pre>
    * These new conflict counters replace the ones above.
+   * TODO(crbug.com/1315573): Deprecated in M103.
    * </pre>
    *
-   * <code>optional int32 num_encryption_conflicts = 4;</code>
+   * <code>optional int32 num_encryption_conflicts = 4 [deprecated = true];</code>
    * @return The numEncryptionConflicts.
    */
-  int getNumEncryptionConflicts();
+  @java.lang.Deprecated int getNumEncryptionConflicts();
 
   /**
-   * <code>optional int32 num_hierarchy_conflicts = 5;</code>
+   * <code>optional int32 num_hierarchy_conflicts = 5 [deprecated = true];</code>
    * @return Whether the numHierarchyConflicts field is set.
    */
-  boolean hasNumHierarchyConflicts();
+  @java.lang.Deprecated boolean hasNumHierarchyConflicts();
   /**
-   * <code>optional int32 num_hierarchy_conflicts = 5;</code>
+   * <code>optional int32 num_hierarchy_conflicts = 5 [deprecated = true];</code>
    * @return The numHierarchyConflicts.
    */
-  int getNumHierarchyConflicts();
+  @java.lang.Deprecated int getNumHierarchyConflicts();
 
   /**
    * <pre>
@@ -87,15 +89,23 @@ public interface SyncCycleCompletedEventInfoOrBuilder extends
   int getNumUpdatesDownloaded();
 
   /**
-   * <code>optional int32 num_reflected_updates_downloaded = 9;</code>
+   * <pre>
+   * TODO(crbug.com/1315573): Deprecated in M103.
+   * </pre>
+   *
+   * <code>optional int32 num_reflected_updates_downloaded = 9 [deprecated = true];</code>
    * @return Whether the numReflectedUpdatesDownloaded field is set.
    */
-  boolean hasNumReflectedUpdatesDownloaded();
+  @java.lang.Deprecated boolean hasNumReflectedUpdatesDownloaded();
   /**
-   * <code>optional int32 num_reflected_updates_downloaded = 9;</code>
+   * <pre>
+   * TODO(crbug.com/1315573): Deprecated in M103.
+   * </pre>
+   *
+   * <code>optional int32 num_reflected_updates_downloaded = 9 [deprecated = true];</code>
    * @return The numReflectedUpdatesDownloaded.
    */
-  int getNumReflectedUpdatesDownloaded();
+  @java.lang.Deprecated int getNumReflectedUpdatesDownloaded();
 
   /**
    * <pre>

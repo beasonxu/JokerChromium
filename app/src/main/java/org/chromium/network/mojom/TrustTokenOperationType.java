@@ -13,8 +13,16 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class TrustTokenOperationType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        TrustTokenOperationType.ISSUANCE,
+        TrustTokenOperationType.REDEMPTION,
+        TrustTokenOperationType.SIGNING})
+    public @interface EnumType {}
 
     public static final int ISSUANCE = 0;
     public static final int REDEMPTION = 1;

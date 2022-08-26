@@ -13,8 +13,31 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PushRegistrationStatus {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PushRegistrationStatus.SUCCESS_FROM_PUSH_SERVICE,
+        PushRegistrationStatus.NO_SERVICE_WORKER,
+        PushRegistrationStatus.SERVICE_NOT_AVAILABLE,
+        PushRegistrationStatus.LIMIT_REACHED,
+        PushRegistrationStatus.PERMISSION_DENIED,
+        PushRegistrationStatus.SERVICE_ERROR,
+        PushRegistrationStatus.NO_SENDER_ID,
+        PushRegistrationStatus.STORAGE_ERROR,
+        PushRegistrationStatus.SUCCESS_FROM_CACHE,
+        PushRegistrationStatus.NETWORK_ERROR,
+        PushRegistrationStatus.INCOGNITO_PERMISSION_DENIED,
+        PushRegistrationStatus.PUBLIC_KEY_UNAVAILABLE,
+        PushRegistrationStatus.MANIFEST_EMPTY_OR_MISSING,
+        PushRegistrationStatus.SENDER_ID_MISMATCH,
+        PushRegistrationStatus.STORAGE_CORRUPT,
+        PushRegistrationStatus.RENDERER_SHUTDOWN,
+        PushRegistrationStatus.SUCCESS_NEW_SUBSCRIPTION_FROM_PUSH_SERVICE,
+        PushRegistrationStatus.UNSUPPORTED_GCM_SENDER_ID})
+    public @interface EnumType {}
 
     public static final int SUCCESS_FROM_PUSH_SERVICE = 0;
     public static final int NO_SERVICE_WORKER = 1;

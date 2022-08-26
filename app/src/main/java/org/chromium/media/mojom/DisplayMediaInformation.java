@@ -13,15 +13,18 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class DisplayMediaInformation extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 24;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+    private static final int STRUCT_SIZE = 32;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int displaySurface;
     public boolean logicalSurface;
     public int cursor;
+    public CaptureHandle captureHandle;
 
     private DisplayMediaInformation(int version) {
         super(STRUCT_SIZE, version);
@@ -72,6 +75,11 @@ public final class DisplayMediaInformation extends org.chromium.mojo.bindings.St
                     CursorCaptureType.validate(result.cursor);
                     result.cursor = CursorCaptureType.toKnownValue(result.cursor);
                 }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, true);
+                result.captureHandle = CaptureHandle.decode(decoder1);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -89,5 +97,7 @@ public final class DisplayMediaInformation extends org.chromium.mojo.bindings.St
         encoder0.encode(this.logicalSurface, 12, 0);
         
         encoder0.encode(this.cursor, 16);
+        
+        encoder0.encode(this.captureHandle, 24, true);
     }
 }

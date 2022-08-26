@@ -9,7 +9,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class PermissionDialogDelegateJni implements PermissionDialogDelegate.Natives {
+class PermissionDialogDelegateJni implements PermissionDialogDelegate.Natives {
   private static PermissionDialogDelegate.Natives testInstance;
 
   public static final JniStaticTestMocker<PermissionDialogDelegate.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.permissions.PermissionDialogDelegate.Natives>() {
@@ -41,6 +41,11 @@ final class PermissionDialogDelegateJni implements PermissionDialogDelegate.Nati
   @Override
   public void destroy(long nativePermissionDialogDelegate, PermissionDialogDelegate caller) {
     GEN_JNI.org_chromium_components_permissions_PermissionDialogDelegate_destroy(nativePermissionDialogDelegate, caller);
+  }
+
+  @Override
+  public int getRequestTypeEnumSize() {
+    return (int)GEN_JNI.org_chromium_components_permissions_PermissionDialogDelegate_getRequestTypeEnumSize();
   }
 
   public static PermissionDialogDelegate.Natives get() {

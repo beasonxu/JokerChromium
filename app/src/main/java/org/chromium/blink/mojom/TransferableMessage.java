@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class TransferableMessage extends org.chromium.mojo.bindings.Struct {
 
@@ -25,10 +27,11 @@ public final class TransferableMessage extends org.chromium.mojo.bindings.Struct
     public SerializedArrayBufferContents[] arrayBufferContentsArray;
     public org.chromium.skia.mojom.BitmapN32[] imageBitmapContentsArray;
     public UserActivationSnapshot userActivation;
-    public boolean delegatePaymentRequest;
+    public int delegatedCapability;
 
     private TransferableMessage(int version) {
         super(STRUCT_SIZE, version);
+        this.delegatedCapability = (int) DelegatedCapability.NONE;
     }
 
     public TransferableMessage() {
@@ -124,7 +127,9 @@ public final class TransferableMessage extends org.chromium.mojo.bindings.Struct
                 }
                 {
                     
-                result.delegatePaymentRequest = decoder0.readBoolean(56, 0);
+                result.delegatedCapability = decoder0.readInt(56);
+                    DelegatedCapability.validate(result.delegatedCapability);
+                    result.delegatedCapability = DelegatedCapability.toKnownValue(result.delegatedCapability);
                 }
 
         } finally {
@@ -182,6 +187,6 @@ public final class TransferableMessage extends org.chromium.mojo.bindings.Struct
         
         encoder0.encode(this.userActivation, 48, true);
         
-        encoder0.encode(this.delegatePaymentRequest, 56, 0);
+        encoder0.encode(this.delegatedCapability, 56);
     }
 }

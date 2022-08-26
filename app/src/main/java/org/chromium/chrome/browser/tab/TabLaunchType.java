@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -21,7 +21,10 @@ import java.lang.annotation.RetentionPolicy;
     TabLaunchType.FROM_LONGPRESS_BACKGROUND, TabLaunchType.FROM_REPARENTING,
     TabLaunchType.FROM_LAUNCHER_SHORTCUT, TabLaunchType.FROM_SPECULATIVE_BACKGROUND_CREATION,
     TabLaunchType.FROM_BROWSER_ACTIONS, TabLaunchType.FROM_LAUNCH_NEW_INCOGNITO_TAB,
-    TabLaunchType.FROM_STARTUP, TabLaunchType.FROM_START_SURFACE, TabLaunchType.SIZE
+    TabLaunchType.FROM_STARTUP, TabLaunchType.FROM_START_SURFACE, TabLaunchType.FROM_TAB_GROUP_UI,
+    TabLaunchType.FROM_LONGPRESS_BACKGROUND_IN_GROUP, TabLaunchType.FROM_APP_WIDGET,
+    TabLaunchType.FROM_LONGPRESS_INCOGNITO, TabLaunchType.FROM_RECENT_TABS,
+    TabLaunchType.FROM_READING_LIST, TabLaunchType.SIZE
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface TabLaunchType {
@@ -83,7 +86,35 @@ public @interface TabLaunchType {
    */
   int FROM_START_SURFACE = 12;
   /**
+   * Opened from Tab group UI. Tab group UI include: - "+" button in the bottom tab strip - "+"
+   * button in the tab grid dialog
+   */
+  int FROM_TAB_GROUP_UI = 13;
+  /**
+   * Open from the long press context menu item 'Open in new tab in group'. Will not be brought to
+   * the foreground.
+   */
+  int FROM_LONGPRESS_BACKGROUND_IN_GROUP = 14;
+  /**
+   * Opened from an app widget.
+   */
+  int FROM_APP_WIDGET = 15;
+  /**
+   * Open from the long press context menu item 'Open in Incognito Tab'.
+   */
+  int FROM_LONGPRESS_INCOGNITO = 16;
+  /**
+   * Opened in background from Recent Tabs. This is a non-link launch with no parent/child
+   * relationship. The tab is added to the end of the TabModel. This does not include opening in the
+   * current tab.
+   */
+  int FROM_RECENT_TABS = 17;
+  /**
+   * Opened from a Reading list. When going "back" on Android, the Reading list should be reopened.
+   */
+  int FROM_READING_LIST = 18;
+  /**
    * Must be last.
    */
-  int SIZE = 13;
+  int SIZE = 19;
 }

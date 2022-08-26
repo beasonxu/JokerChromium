@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class RemoteFrame_Internal {
 
@@ -49,67 +51,67 @@ class RemoteFrame_Internal {
 
     private static final int WILL_ENTER_FULLSCREEN_ORDINAL = 0;
 
-    private static final int ADD_REPLICATED_CONTENT_SECURITY_POLICIES_ORDINAL = 1;
+    private static final int ENFORCE_INSECURE_NAVIGATIONS_SET_ORDINAL = 1;
 
-    private static final int RESET_REPLICATED_CONTENT_SECURITY_POLICY_ORDINAL = 2;
+    private static final int SET_FRAME_OWNER_PROPERTIES_ORDINAL = 2;
 
-    private static final int ENFORCE_INSECURE_NAVIGATIONS_SET_ORDINAL = 3;
+    private static final int ENFORCE_INSECURE_REQUEST_POLICY_ORDINAL = 3;
 
-    private static final int SET_FRAME_OWNER_PROPERTIES_ORDINAL = 4;
+    private static final int SET_REPLICATED_ORIGIN_ORDINAL = 4;
 
-    private static final int ENFORCE_INSECURE_REQUEST_POLICY_ORDINAL = 5;
+    private static final int SET_REPLICATED_IS_AD_SUBFRAME_ORDINAL = 5;
 
-    private static final int SET_REPLICATED_ORIGIN_ORDINAL = 6;
+    private static final int SET_REPLICATED_NAME_ORDINAL = 6;
 
-    private static final int SET_REPLICATED_AD_FRAME_TYPE_ORDINAL = 7;
+    private static final int DISPATCH_LOAD_EVENT_FOR_FRAME_OWNER_ORDINAL = 7;
 
-    private static final int SET_REPLICATED_NAME_ORDINAL = 8;
+    private static final int SET_NEEDS_OCCLUSION_TRACKING_ORDINAL = 8;
 
-    private static final int DISPATCH_LOAD_EVENT_FOR_FRAME_OWNER_ORDINAL = 9;
+    private static final int COLLAPSE_ORDINAL = 9;
 
-    private static final int SET_NEEDS_OCCLUSION_TRACKING_ORDINAL = 10;
+    private static final int FOCUS_ORDINAL = 10;
 
-    private static final int COLLAPSE_ORDINAL = 11;
+    private static final int SET_HAD_STICKY_USER_ACTIVATION_BEFORE_NAVIGATION_ORDINAL = 11;
 
-    private static final int FOCUS_ORDINAL = 12;
+    private static final int BUBBLE_LOGICAL_SCROLL_ORDINAL = 12;
 
-    private static final int SET_HAD_STICKY_USER_ACTIVATION_BEFORE_NAVIGATION_ORDINAL = 13;
+    private static final int UPDATE_USER_ACTIVATION_STATE_ORDINAL = 13;
 
-    private static final int BUBBLE_LOGICAL_SCROLL_ORDINAL = 14;
+    private static final int SET_EMBEDDING_TOKEN_ORDINAL = 14;
 
-    private static final int UPDATE_USER_ACTIVATION_STATE_ORDINAL = 15;
+    private static final int SET_PAGE_FOCUS_ORDINAL = 15;
 
-    private static final int SET_EMBEDDING_TOKEN_ORDINAL = 16;
+    private static final int RENDER_FALLBACK_CONTENT_ORDINAL = 16;
 
-    private static final int SET_PAGE_FOCUS_ORDINAL = 17;
+    private static final int RENDER_FALLBACK_CONTENT_WITH_RESOURCE_TIMING_ORDINAL = 17;
 
-    private static final int RENDER_FALLBACK_CONTENT_ORDINAL = 18;
+    private static final int ADD_RESOURCE_TIMING_FROM_CHILD_ORDINAL = 18;
 
-    private static final int ADD_RESOURCE_TIMING_FROM_CHILD_ORDINAL = 19;
+    private static final int SCROLL_RECT_TO_VISIBLE_ORDINAL = 19;
 
-    private static final int SCROLL_RECT_TO_VISIBLE_ORDINAL = 20;
+    private static final int DID_START_LOADING_ORDINAL = 20;
 
-    private static final int DID_START_LOADING_ORDINAL = 21;
+    private static final int DID_STOP_LOADING_ORDINAL = 21;
 
-    private static final int DID_STOP_LOADING_ORDINAL = 22;
+    private static final int INTRINSIC_SIZING_INFO_OF_CHILD_CHANGED_ORDINAL = 22;
 
-    private static final int INTRINSIC_SIZING_INFO_OF_CHILD_CHANGED_ORDINAL = 23;
+    private static final int DID_SET_FRAME_POLICY_HEADERS_ORDINAL = 23;
 
-    private static final int DID_SET_FRAME_POLICY_HEADERS_ORDINAL = 24;
+    private static final int DID_UPDATE_FRAME_POLICY_ORDINAL = 24;
 
-    private static final int DID_UPDATE_FRAME_POLICY_ORDINAL = 25;
+    private static final int UPDATE_OPENER_ORDINAL = 25;
 
-    private static final int UPDATE_OPENER_ORDINAL = 26;
+    private static final int DETACH_AND_DISPOSE_ORDINAL = 26;
 
-    private static final int DETACH_AND_DISPOSE_ORDINAL = 27;
+    private static final int ENABLE_AUTO_RESIZE_ORDINAL = 27;
 
-    private static final int ENABLE_AUTO_RESIZE_ORDINAL = 28;
+    private static final int DISABLE_AUTO_RESIZE_ORDINAL = 28;
 
-    private static final int DISABLE_AUTO_RESIZE_ORDINAL = 29;
+    private static final int DID_UPDATE_VISUAL_PROPERTIES_ORDINAL = 29;
 
-    private static final int DID_UPDATE_VISUAL_PROPERTIES_ORDINAL = 30;
+    private static final int SET_FRAME_SINK_ID_ORDINAL = 30;
 
-    private static final int SET_FRAME_SINK_ID_ORDINAL = 31;
+    private static final int CHILD_PROCESS_GONE_ORDINAL = 31;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements RemoteFrame.Proxy {
@@ -133,38 +135,6 @@ FullscreenOptions options) {
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(WILL_ENTER_FULLSCREEN_ORDINAL)));
-
-        }
-
-
-        @Override
-        public void addReplicatedContentSecurityPolicies(
-org.chromium.network.mojom.ContentSecurityPolicy[] csps) {
-
-            RemoteFrameAddReplicatedContentSecurityPoliciesParams _message = new RemoteFrameAddReplicatedContentSecurityPoliciesParams();
-
-            _message.csps = csps;
-
-
-            getProxyHandler().getMessageReceiver().accept(
-                    _message.serializeWithHeader(
-                            getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(ADD_REPLICATED_CONTENT_SECURITY_POLICIES_ORDINAL)));
-
-        }
-
-
-        @Override
-        public void resetReplicatedContentSecurityPolicy(
-) {
-
-            RemoteFrameResetReplicatedContentSecurityPolicyParams _message = new RemoteFrameResetReplicatedContentSecurityPolicyParams();
-
-
-            getProxyHandler().getMessageReceiver().accept(
-                    _message.serializeWithHeader(
-                            getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(RESET_REPLICATED_CONTENT_SECURITY_POLICY_ORDINAL)));
 
         }
 
@@ -240,18 +210,18 @@ org.chromium.url.internal.mojom.Origin origin, boolean isPotentiallyTrustworthyU
 
 
         @Override
-        public void setReplicatedAdFrameType(
-int adFrameType) {
+        public void setReplicatedIsAdSubframe(
+boolean isAdSubframe) {
 
-            RemoteFrameSetReplicatedAdFrameTypeParams _message = new RemoteFrameSetReplicatedAdFrameTypeParams();
+            RemoteFrameSetReplicatedIsAdSubframeParams _message = new RemoteFrameSetReplicatedIsAdSubframeParams();
 
-            _message.adFrameType = adFrameType;
+            _message.isAdSubframe = isAdSubframe;
 
 
             getProxyHandler().getMessageReceiver().accept(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(SET_REPLICATED_AD_FRAME_TYPE_ORDINAL)));
+                            new org.chromium.mojo.bindings.MessageHeader(SET_REPLICATED_IS_AD_SUBFRAME_ORDINAL)));
 
         }
 
@@ -444,6 +414,25 @@ boolean isFocused) {
 
 
         @Override
+        public void renderFallbackContentWithResourceTiming(
+ResourceTimingInfo timing, String serverTimingValue) {
+
+            RemoteFrameRenderFallbackContentWithResourceTimingParams _message = new RemoteFrameRenderFallbackContentWithResourceTimingParams();
+
+            _message.timing = timing;
+
+            _message.serverTimingValue = serverTimingValue;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(RENDER_FALLBACK_CONTENT_WITH_RESOURCE_TIMING_ORDINAL)));
+
+        }
+
+
+        @Override
         public void addResourceTimingFromChild(
 ResourceTimingInfo timing) {
 
@@ -462,7 +451,7 @@ ResourceTimingInfo timing) {
 
         @Override
         public void scrollRectToVisible(
-org.chromium.gfx.mojom.Rect rect, ScrollIntoViewParams params) {
+org.chromium.gfx.mojom.RectF rect, ScrollIntoViewParams params) {
 
             RemoteFrameScrollRectToVisibleParams _message = new RemoteFrameScrollRectToVisibleParams();
 
@@ -528,13 +517,13 @@ IntrinsicSizingInfo sizingInfo) {
 
         @Override
         public void didSetFramePolicyHeaders(
-int sandboxFlags, ParsedFeaturePolicyDeclaration[] parsedFeaturePolicy) {
+int sandboxFlags, ParsedPermissionsPolicyDeclaration[] parsedPermissionsPolicy) {
 
             RemoteFrameDidSetFramePolicyHeadersParams _message = new RemoteFrameDidSetFramePolicyHeadersParams();
 
             _message.sandboxFlags = sandboxFlags;
 
-            _message.parsedFeaturePolicy = parsedFeaturePolicy;
+            _message.parsedPermissionsPolicy = parsedPermissionsPolicy;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -662,6 +651,21 @@ org.chromium.viz.mojom.FrameSinkId frameSinkId) {
         }
 
 
+        @Override
+        public void childProcessGone(
+) {
+
+            RemoteFrameChildProcessGoneParams _message = new RemoteFrameChildProcessGoneParams();
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(CHILD_PROCESS_GONE_ORDINAL)));
+
+        }
+
+
     }
 
     static final class Stub extends org.chromium.mojo.bindings.Interface.Stub<RemoteFrame> {
@@ -699,31 +703,6 @@ org.chromium.viz.mojom.FrameSinkId frameSinkId) {
                                 RemoteFrameWillEnterFullscreenParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().willEnterFullscreen(data.options);
-                        return true;
-                    }
-
-
-
-
-
-                    case ADD_REPLICATED_CONTENT_SECURITY_POLICIES_ORDINAL: {
-
-                        RemoteFrameAddReplicatedContentSecurityPoliciesParams data =
-                                RemoteFrameAddReplicatedContentSecurityPoliciesParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().addReplicatedContentSecurityPolicies(data.csps);
-                        return true;
-                    }
-
-
-
-
-
-                    case RESET_REPLICATED_CONTENT_SECURITY_POLICY_ORDINAL: {
-
-                        RemoteFrameResetReplicatedContentSecurityPolicyParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().resetReplicatedContentSecurityPolicy();
                         return true;
                     }
 
@@ -783,12 +762,12 @@ org.chromium.viz.mojom.FrameSinkId frameSinkId) {
 
 
 
-                    case SET_REPLICATED_AD_FRAME_TYPE_ORDINAL: {
+                    case SET_REPLICATED_IS_AD_SUBFRAME_ORDINAL: {
 
-                        RemoteFrameSetReplicatedAdFrameTypeParams data =
-                                RemoteFrameSetReplicatedAdFrameTypeParams.deserialize(messageWithHeader.getPayload());
+                        RemoteFrameSetReplicatedIsAdSubframeParams data =
+                                RemoteFrameSetReplicatedIsAdSubframeParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().setReplicatedAdFrameType(data.adFrameType);
+                        getImpl().setReplicatedIsAdSubframe(data.isAdSubframe);
                         return true;
                     }
 
@@ -936,6 +915,19 @@ org.chromium.viz.mojom.FrameSinkId frameSinkId) {
 
 
 
+                    case RENDER_FALLBACK_CONTENT_WITH_RESOURCE_TIMING_ORDINAL: {
+
+                        RemoteFrameRenderFallbackContentWithResourceTimingParams data =
+                                RemoteFrameRenderFallbackContentWithResourceTimingParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().renderFallbackContentWithResourceTiming(data.timing, data.serverTimingValue);
+                        return true;
+                    }
+
+
+
+
+
                     case ADD_RESOURCE_TIMING_FROM_CHILD_ORDINAL: {
 
                         RemoteFrameAddResourceTimingFromChildParams data =
@@ -1004,7 +996,7 @@ org.chromium.viz.mojom.FrameSinkId frameSinkId) {
                         RemoteFrameDidSetFramePolicyHeadersParams data =
                                 RemoteFrameDidSetFramePolicyHeadersParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().didSetFramePolicyHeaders(data.sandboxFlags, data.parsedFeaturePolicy);
+                        getImpl().didSetFramePolicyHeaders(data.sandboxFlags, data.parsedPermissionsPolicy);
                         return true;
                     }
 
@@ -1094,6 +1086,18 @@ org.chromium.viz.mojom.FrameSinkId frameSinkId) {
                                 RemoteFrameSetFrameSinkIdParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().setFrameSinkId(data.frameSinkId);
+                        return true;
+                    }
+
+
+
+
+
+                    case CHILD_PROCESS_GONE_ORDINAL: {
+
+                        RemoteFrameChildProcessGoneParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().childProcessGone();
                         return true;
                     }
 
@@ -1261,142 +1265,6 @@ org.chromium.viz.mojom.FrameSinkId frameSinkId) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.options, 8, false);
-        }
-    }
-
-
-
-    
-    static final class RemoteFrameAddReplicatedContentSecurityPoliciesParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public org.chromium.network.mojom.ContentSecurityPolicy[] csps;
-
-        private RemoteFrameAddReplicatedContentSecurityPoliciesParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public RemoteFrameAddReplicatedContentSecurityPoliciesParams() {
-            this(0);
-        }
-
-        public static RemoteFrameAddReplicatedContentSecurityPoliciesParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static RemoteFrameAddReplicatedContentSecurityPoliciesParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static RemoteFrameAddReplicatedContentSecurityPoliciesParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            RemoteFrameAddReplicatedContentSecurityPoliciesParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new RemoteFrameAddReplicatedContentSecurityPoliciesParams(elementsOrVersion);
-                    {
-                        
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    {
-                        org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                        result.csps = new org.chromium.network.mojom.ContentSecurityPolicy[si1.elementsOrVersion];
-                        for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
-                            
-                            org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
-                            result.csps[i1] = org.chromium.network.mojom.ContentSecurityPolicy.decode(decoder2);
-                        }
-                    }
-                    }
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-            
-            if (this.csps == null) {
-                encoder0.encodeNullPointer(8, false);
-            } else {
-                org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.csps.length, 8, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                for (int i0 = 0; i0 < this.csps.length; ++i0) {
-                    
-                    encoder1.encode(this.csps[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
-                }
-            }
-        }
-    }
-
-
-
-    
-    static final class RemoteFrameResetReplicatedContentSecurityPolicyParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 8;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-
-        private RemoteFrameResetReplicatedContentSecurityPolicyParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public RemoteFrameResetReplicatedContentSecurityPolicyParams() {
-            this(0);
-        }
-
-        public static RemoteFrameResetReplicatedContentSecurityPolicyParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static RemoteFrameResetReplicatedContentSecurityPolicyParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static RemoteFrameResetReplicatedContentSecurityPolicyParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            RemoteFrameResetReplicatedContentSecurityPolicyParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new RemoteFrameResetReplicatedContentSecurityPolicyParams(elementsOrVersion);
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         }
     }
 
@@ -1666,22 +1534,22 @@ org.chromium.viz.mojom.FrameSinkId frameSinkId) {
 
 
     
-    static final class RemoteFrameSetReplicatedAdFrameTypeParams extends org.chromium.mojo.bindings.Struct {
+    static final class RemoteFrameSetReplicatedIsAdSubframeParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public int adFrameType;
+        public boolean isAdSubframe;
 
-        private RemoteFrameSetReplicatedAdFrameTypeParams(int version) {
+        private RemoteFrameSetReplicatedIsAdSubframeParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public RemoteFrameSetReplicatedAdFrameTypeParams() {
+        public RemoteFrameSetReplicatedIsAdSubframeParams() {
             this(0);
         }
 
-        public static RemoteFrameSetReplicatedAdFrameTypeParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static RemoteFrameSetReplicatedIsAdSubframeParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -1690,27 +1558,25 @@ org.chromium.viz.mojom.FrameSinkId frameSinkId) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static RemoteFrameSetReplicatedAdFrameTypeParams deserialize(java.nio.ByteBuffer data) {
+        public static RemoteFrameSetReplicatedIsAdSubframeParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static RemoteFrameSetReplicatedAdFrameTypeParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static RemoteFrameSetReplicatedIsAdSubframeParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            RemoteFrameSetReplicatedAdFrameTypeParams result;
+            RemoteFrameSetReplicatedIsAdSubframeParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new RemoteFrameSetReplicatedAdFrameTypeParams(elementsOrVersion);
+                result = new RemoteFrameSetReplicatedIsAdSubframeParams(elementsOrVersion);
                     {
                         
-                    result.adFrameType = decoder0.readInt(8);
-                        AdFrameType.validate(result.adFrameType);
-                        result.adFrameType = AdFrameType.toKnownValue(result.adFrameType);
+                    result.isAdSubframe = decoder0.readBoolean(8, 0);
                     }
 
             } finally {
@@ -1724,7 +1590,7 @@ org.chromium.viz.mojom.FrameSinkId frameSinkId) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.adFrameType, 8);
+            encoder0.encode(this.isAdSubframe, 8, 0);
         }
     }
 
@@ -2433,6 +2299,77 @@ org.chromium.viz.mojom.FrameSinkId frameSinkId) {
 
 
     
+    static final class RemoteFrameRenderFallbackContentWithResourceTimingParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public ResourceTimingInfo timing;
+        public String serverTimingValue;
+
+        private RemoteFrameRenderFallbackContentWithResourceTimingParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public RemoteFrameRenderFallbackContentWithResourceTimingParams() {
+            this(0);
+        }
+
+        public static RemoteFrameRenderFallbackContentWithResourceTimingParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static RemoteFrameRenderFallbackContentWithResourceTimingParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static RemoteFrameRenderFallbackContentWithResourceTimingParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            RemoteFrameRenderFallbackContentWithResourceTimingParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new RemoteFrameRenderFallbackContentWithResourceTimingParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.timing = ResourceTimingInfo.decode(decoder1);
+                    }
+                    {
+                        
+                    result.serverTimingValue = decoder0.readString(16, false);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.timing, 8, false);
+            
+            encoder0.encode(this.serverTimingValue, 16, false);
+        }
+    }
+
+
+
+    
     static final class RemoteFrameAddResourceTimingFromChildParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 16;
@@ -2502,7 +2439,7 @@ org.chromium.viz.mojom.FrameSinkId frameSinkId) {
         private static final int STRUCT_SIZE = 24;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public org.chromium.gfx.mojom.Rect rect;
+        public org.chromium.gfx.mojom.RectF rect;
         public ScrollIntoViewParams params;
 
         private RemoteFrameScrollRectToVisibleParams(int version) {
@@ -2541,7 +2478,7 @@ org.chromium.viz.mojom.FrameSinkId frameSinkId) {
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    result.rect = org.chromium.gfx.mojom.Rect.decode(decoder1);
+                    result.rect = org.chromium.gfx.mojom.RectF.decode(decoder1);
                     }
                     {
                         
@@ -2751,7 +2688,7 @@ org.chromium.viz.mojom.FrameSinkId frameSinkId) {
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public int sandboxFlags;
-        public ParsedFeaturePolicyDeclaration[] parsedFeaturePolicy;
+        public ParsedPermissionsPolicyDeclaration[] parsedPermissionsPolicy;
 
         private RemoteFrameDidSetFramePolicyHeadersParams(int version) {
             super(STRUCT_SIZE, version);
@@ -2797,11 +2734,11 @@ org.chromium.viz.mojom.FrameSinkId frameSinkId) {
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
                     {
                         org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                        result.parsedFeaturePolicy = new ParsedFeaturePolicyDeclaration[si1.elementsOrVersion];
+                        result.parsedPermissionsPolicy = new ParsedPermissionsPolicyDeclaration[si1.elementsOrVersion];
                         for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
                             
                             org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
-                            result.parsedFeaturePolicy[i1] = ParsedFeaturePolicyDeclaration.decode(decoder2);
+                            result.parsedPermissionsPolicy[i1] = ParsedPermissionsPolicyDeclaration.decode(decoder2);
                         }
                     }
                     }
@@ -2819,13 +2756,13 @@ org.chromium.viz.mojom.FrameSinkId frameSinkId) {
             
             encoder0.encode(this.sandboxFlags, 8);
             
-            if (this.parsedFeaturePolicy == null) {
+            if (this.parsedPermissionsPolicy == null) {
                 encoder0.encodeNullPointer(16, false);
             } else {
-                org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.parsedFeaturePolicy.length, 16, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                for (int i0 = 0; i0 < this.parsedFeaturePolicy.length; ++i0) {
+                org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.parsedPermissionsPolicy.length, 16, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                for (int i0 = 0; i0 < this.parsedPermissionsPolicy.length; ++i0) {
                     
-                    encoder1.encode(this.parsedFeaturePolicy[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
+                    encoder1.encode(this.parsedPermissionsPolicy[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
                 }
             }
         }
@@ -3267,6 +3204,62 @@ org.chromium.viz.mojom.FrameSinkId frameSinkId) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.frameSinkId, 8, false);
+        }
+    }
+
+
+
+    
+    static final class RemoteFrameChildProcessGoneParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private RemoteFrameChildProcessGoneParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public RemoteFrameChildProcessGoneParams() {
+            this(0);
+        }
+
+        public static RemoteFrameChildProcessGoneParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static RemoteFrameChildProcessGoneParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static RemoteFrameChildProcessGoneParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            RemoteFrameChildProcessGoneParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new RemoteFrameChildProcessGoneParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         }
     }
 

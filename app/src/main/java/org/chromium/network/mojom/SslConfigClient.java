@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface SslConfigClient extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface SslConfigClient extends org.chromium.mojo.bindings.Interface {
     }
 
     Manager<SslConfigClient, SslConfigClient.Proxy> MANAGER = SslConfigClient_Internal.MANAGER;
-
 
     void onSslConfigUpdated(
 SslConfig sslConfig);

@@ -36,12 +36,6 @@ public abstract class ChromeSwitches {
     /** Disable promos shown on startup. */
     public static final String DISABLE_STARTUP_PROMOS = "disable-startup-promos-for-testing";
 
-    /**
-     * Forces the First Run Experience (FRE) flow complete check to always return true.
-     */
-    public static final String FORCE_FIRST_RUN_FLOW_COMPLETE_FOR_TESTING =
-            "force-first-run-flow-complete";
-
     /** Force the crash dump to be uploaded regardless of preferences. */
     public static final String FORCE_CRASH_DUMP_UPLOAD = "force-dump-upload";
 
@@ -113,12 +107,6 @@ public abstract class ChromeSwitches {
      */
     public static final String PARTNER_HOMEPAGE_FOR_TESTING = "partner-homepage-for-testing";
 
-    /**
-     * Forces the WebAPK runtime dex to be extracted each time that Chrome is started.
-     */
-    public static final String ALWAYS_EXTRACT_WEBAPK_RUNTIME_DEX_ON_STARTUP =
-            "always-extract-webapk-dex-on-startup";
-
     /** Treats all WebAPKs as valid - useful only for local testing. */
     public static final String SKIP_WEBAPK_VERIFICATION = "skip-webapk-verification";
 
@@ -132,19 +120,7 @@ public abstract class ChromeSwitches {
     /** Enable Vr Shell development environment. */
     public static final String ENABLE_VR_SHELL_DEV = "enable-vr-shell-dev";
 
-    /** Command line switch for Chrome Home's swipe logic. */
-    public static final String CHROME_HOME_SWIPE_LOGIC = "chrome-home-swipe-logic";
-
-    /** Switch for enabling "restricted area" swipe logic for Chrome Home. */
-    public static final String CHROME_HOME_SWIPE_LOGIC_RESTRICT_AREA = "restrict-area";
-
-    /**
-     * Switch for enabling "velocity" swipe logic for Chrome Home. This means the flings will not
-     * open the sheet; the user must slide up the sheet relatively slowly.
-     */
-    public static final String CHROME_HOME_SWIPE_LOGIC_VELOCITY = "velocity";
-
-    /** Switch for enabling the Chrome Survey. */
+    /** Switch for enabling the Chrome Survey. Only works when UMA is accepted. */
     public static final String CHROME_FORCE_ENABLE_SURVEY = "force-enable-chrome-survey";
 
     /** Switch to enable incognito tabs to be seen in Android Recents. */
@@ -188,6 +164,10 @@ public abstract class ChromeSwitches {
     public static final String DISABLE_DEFAULT_BROWSER_PROMO =
             "disable-default-browser-promo";
 
+    /** Debug Chime notifications. */
+    public static final String DEBUG_CHIME_NOTIFICATION =
+            "debug-chime-notification";
+
 
     // This following string constants were inserted by
     //     java_cpp_strings.py
@@ -195,6 +175,15 @@ public abstract class ChromeSwitches {
     //     ../../chrome/common/chrome_switches.cc
     // Into
     //     ../../chrome/browser/flags/android/java_templates/ChromeSwitches.java.tmpl
+
+    // When commenting your switch, please use the same voice as surrounding
+    // comments. Imagine "This switch..." at the beginning of the phrase, and it'll
+    // all work out.
+    // -----------------------------------------------------------------------------
+    // Specifies Accept-Language to send to servers and expose to JavaScript via the
+    // navigator.language DOM property. language[-country] where language is the 2
+    // letter code from ISO-639.
+    public static final String ACCEPT_LANG = "accept-lang";
 
     // Allows third-party content included on a page to prompt for a HTTP basic
     // auth username/password pair.
@@ -237,6 +226,10 @@ public abstract class ChromeSwitches {
     // Value of OAuth2 refresh token for --force-app-mode.
     public static final String APP_MODE_O_AUTH2_TOKEN = "app-mode-oauth-token";
 
+    // This is used along with kAppId to indicate an app was launched during
+    // OS login, and which mode the app was launched in.
+    public static final String APP_RUN_ON_OS_LOGIN_MODE = "app-run-on-os-login-mode";
+
     // The URL that the webstore APIs download extensions from.
     // Note: the URL must contain one '%s' for the extension ID.
     public static final String APPS_GALLERY_DOWNLOAD_URL = "apps-gallery-download-url";
@@ -263,36 +256,20 @@ public abstract class ChromeSwitches {
     // would match "Built-in display" and "External display", whichever comes first.
     public static final String AUTO_SELECT_DESKTOP_CAPTURE_SOURCE = "auto-select-desktop-capture-source";
 
+    // This flag makes Chrome auto-select a tab with the provided title when
+    // the media-picker should otherwise be displayed to the user. This switch
+    // is very similar to kAutoSelectDesktopCaptureSource, but limits selection
+    // to tabs. This solves the issue of kAutoSelectDesktopCaptureSource being
+    // liable to accidentally capturing the Chromium window instead of the tab,
+    // as both have the same title if the tab is focused.
+    public static final String AUTO_SELECT_TAB_CAPTURE_SOURCE_BY_TITLE = "auto-select-tab-capture-source-by-title";
+
     // How often (in seconds) to check for updates. Should only be used for testing
     // purposes.
     public static final String CHECK_FOR_UPDATE_INTERVAL_SEC = "check-for-update-interval";
 
     // Comma-separated list of SSL cipher suites to disable.
     public static final String CIPHER_SUITE_BLACKLIST = "cipher-suite-blacklist";
-
-    // Tells chrome to display the cloud print dialog and upload the specified file
-    // for printing.
-    public static final String CLOUD_PRINT_FILE = "cloud-print-file";
-
-    // Specifies the mime type to be used when uploading data from the file
-    // referenced by cloud-print-file. Defaults to "application/pdf" if
-    // unspecified.
-    public static final String CLOUD_PRINT_FILE_TYPE = "cloud-print-file-type";
-
-    // Used with kCloudPrintFile to specify a title for the resulting print job.
-    public static final String CLOUD_PRINT_JOB_TITLE = "cloud-print-job-title";
-
-    // Used with kCloudPrintFile to specify a JSON print ticket for the resulting
-    // print job. Defaults to null if unspecified.
-    public static final String CLOUD_PRINT_PRINT_TICKET = "cloud-print-print-ticket";
-
-    // DO NOT CHANGE THIS VALUE. Cloud printing relies on an external binary
-    // launching Chrome with this process type.
-    public static final String CLOUD_PRINT_SERVICE_PROCESS = "service";
-
-    // Setup cloud print proxy for provided printers. This does not start
-    // service or register proxy for autostart.
-    public static final String CLOUD_PRINT_SETUP_PROXY = "cloud-print-setup-proxy";
 
     // For example:
     //    --crash-on-hang-threads=UI:18,IO:18 --> Crash the browser if UI or IO is
@@ -306,6 +283,10 @@ public abstract class ChromeSwitches {
     // TODO(nkostylev): Investigate if this switch could be removed.
     // (http://crbug.com/148675)
     public static final String CREATE_BROWSER_ON_STARTUP_FOR_TESTS = "create-browser-on-startup-for-tests";
+
+    // Prints licensing information (same content as found in about:credits) and
+    // quits.
+    public static final String CREDITS = "credits";
 
     // Specifies the http:// endpoint which will be used to serve
     // devtools://devtools/custom/<path>
@@ -321,15 +302,6 @@ public abstract class ChromeSwitches {
     // apps.
     public static final String DEBUG_PACKED_APPS = "debug-packed-apps";
 
-    // Values for the enable-desktop-pwas-attention-badging-cros flag.
-    public static final String DESKTOP_PW_AS_ATTENTION_BADGING_CR_OS_API_AND_NOTIFICATIONS = "api-and-notifications";
-
-
-    public static final String DESKTOP_PW_AS_ATTENTION_BADGING_CR_OS_API_ONLY = "api-only";
-
-
-    public static final String DESKTOP_PW_AS_ATTENTION_BADGING_CR_OS_NOTIFICATIONS_ONLY = "notifications-only";
-
     // Passes command line parameters to the DevTools front-end.
     public static final String DEV_TOOLS_FLAGS = "devtools-flags";
 
@@ -342,19 +314,15 @@ public abstract class ChromeSwitches {
     // Tells the diagnostics mode to do the requested recovery step(s).
     public static final String DIAGNOSTICS_RECOVERY = "diagnostics-recovery";
 
-    // Disable auto-reload of error pages.
-    public static final String DISABLE_AUTO_RELOAD = "disable-auto-reload";
+    // Disables the auto maximize feature on ChromeOS so that a browser window
+    // always starts in normal state. This is used by tests that do not want this
+    // auto maximizing behavior.
+    public static final String DISABLE_AUTO_MAXIMIZE_FOR_TESTS = "disable-auto-maximize-for-tests";
 
     // Disable several subsystems which run network requests in the background.
     // This is for use when doing network performance testing to avoid noise in the
     // measurements.
     public static final String DISABLE_BACKGROUND_NETWORKING = "disable-background-networking";
-
-    // Disables the client-side phishing detection feature. Note that even if
-    // client-side phishing detection is enabled, it will only be active if the
-    // user has opted in to UMA stats and SafeBrowsing is enabled in the
-    // preferences.
-    public static final String DISABLE_CLIENT_SIDE_PHISHING_DETECTION = "disable-client-side-phishing-detection";
 
     // Disable default component extensions with background pages - useful for
     // performance tests where these pages may interfere with perf results.
@@ -388,6 +356,11 @@ public abstract class ChromeSwitches {
     // disable that check. This switch is used during automated testing.
     public static final String DISABLE_PROMPT_ON_REPOST = "disable-prompt-on-repost";
 
+    // Disable stack profiling. Stack profiling may change performance. Disabling
+    // stack profiling is beneficial when comparing performance metrics with a
+    // build that has it disabled by default.
+    public static final String DISABLE_STACK_PROFILER = "disable-stack-profiler";
+
     // Some tests seem to require the application to close when the last
     // browser window is closed. Thus, we need a switch to force this behavior
     // for ChromeOS Aura, disable "zero window mode".
@@ -406,9 +379,6 @@ public abstract class ChromeSwitches {
     // given file. The file is overwritten if it exists.
     public static final String DUMP_BROWSER_HISTOGRAMS = "dump-browser-histograms";
 
-    // Enable auto-reload of error pages.
-    public static final String ENABLE_AUTO_RELOAD = "enable-auto-reload";
-
     // If the WebRTC logging private API is active, enables audio debug recordings.
     public static final String ENABLE_AUDIO_DEBUG_RECORDINGS_FROM_EXTENSION = "enable-audio-debug-recordings-from-extension";
 
@@ -421,9 +391,6 @@ public abstract class ChromeSwitches {
 
     // Enables CriticalPersistedTabData - redesign/replacement for TabState
     public static final String ENABLE_CRITICAL_PERSISTED_TAB_DATA = "enable-critical-persisted-tab-data";
-
-    // Enable device discovery notifications.
-    public static final String ENABLE_DEVICE_DISCOVERY_NOTIFICATIONS = "enable-device-discovery-notifications";
 
     // Enables Domain Reliability Monitoring.
     public static final String ENABLE_DOMAIN_RELIABILITY = "enable-domain-reliability";
@@ -444,6 +411,10 @@ public abstract class ChromeSwitches {
     // Enables a number of potentially annoying security features (strict mixed
     // content mode, powerful feature restrictions, etc.)
     public static final String ENABLE_POTENTIALLY_ANNOYING_SECURITY_FEATURES = "enable-potentially-annoying-security-features";
+
+    // Allows overriding the list of restricted ports by passing a comma-separated
+    // list of port numbers.
+    public static final String EXPLICITLY_ALLOWED_PORTS = "explicitly-allowed-ports";
 
     // Name of the command line flag to force content verification to be on in one
     // of various modes.
@@ -475,8 +446,16 @@ public abstract class ChromeSwitches {
     // whether or not it's actually the First Run (this overrides kNoFirstRun).
     public static final String FORCE_FIRST_RUN = "force-first-run";
 
-    // Forces Chrome to use a stacked tab strip layout.
-    public static final String FORCE_STACKED_TAB_STRIP_LAYOUT = "force-stacked-tab-strip-layout";
+    // Displays the What's New experience when the browser is started if it has not
+    // yet been shown for the current milestone (this overrides kNoFirstRun, without
+    // showing the First Run experience).
+    public static final String FORCE_WHATS_NEW = "force-whats-new";
+
+    // Does not show the crash restore bubble when the browser is started during the
+    // system startup phase in ChromeOS, if the ChromeOS full restore feature is
+    // enabled, because the ChromeOS full restore notification is shown for the user
+    // to select restore or not.
+    public static final String HIDE_CRASH_RESTORE_BUBBLE = "hide-crash-restore-bubble";
 
     // Specifies which page will be displayed in newly-opened tabs. We need this
     // for testing purposes so that the UI tests don't depend on what comes up for
@@ -493,6 +472,9 @@ public abstract class ChromeSwitches {
     // Causes Chrome to initiate an installation flow for the given app.
     public static final String INSTALL_CHROME_APP = "install-chrome-app";
 
+
+    public static final String INSTALL_ISOLATED_APPS_AT_STARTUP = "install-isolated-apps-at-startup";
+
     // Marks a renderer as an Instant process.
     public static final String INSTANT_PROCESS = "instant-process";
 
@@ -504,9 +486,6 @@ public abstract class ChromeSwitches {
 
     // Enable automatically pressing the print button in print preview.
     public static final String KIOSK_MODE_PRINTING = "kiosk-printing";
-
-    // Loads the Media Router component extension on startup.
-    public static final String LOAD_MEDIA_ROUTER_COMPONENT_EXTENSION = "load-media-router-component-extension";
 
     // Makes Chrome default browser
     public static final String MAKE_DEFAULT_BROWSER = "make-default-browser";
@@ -540,10 +519,13 @@ public abstract class ChromeSwitches {
     // then restart chrome without this switch again.
     public static final String NO_EXPERIMENTS = "no-experiments";
 
-    // Skip First Run tasks, whether or not it's actually the First Run. Overridden
-    // by kForceFirstRun. This does not drop the First Run sentinel and thus doesn't
-    // prevent first run from occuring the next time chrome is launched without this
-    // flag.
+    // Skip First Run tasks, whether or not it's actually the First Run, and the
+    // What's New page. Overridden by kForceFirstRun (for FRE) and kForceWhatsNew
+    // (for What's New). This does not drop the First Run sentinel and thus doesn't
+    // prevent first run from occurring the next time chrome is launched without
+    // this flag. It also does not update the last What's New milestone, so does not
+    // prevent What's New from occurring the next time chrome is launched without
+    // this flag.
     public static final String NO_FIRST_RUN = "no-first-run";
 
     // Don't send hyperlink auditing pings
@@ -577,19 +559,18 @@ public abstract class ChromeSwitches {
     // Optional PEM private key to use in signing packaged .crx.
     public static final String PACK_EXTENSION_KEY = "pack-extension-key";
 
-    // Development flag for permission request API. This flag is needed until
-    // the API is finalized.
-    // TODO(bauerb): Remove when this flag is not needed anymore.
-    public static final String PERMISSION_REQUEST_API_SCOPE = "permission-request-api-scope";
-
-    // Development flag for permission request API. This flag is needed until
-    // the API is finalized.
-    // TODO(bauerb): Remove when this flag is not needed anymore.
-    public static final String PERMISSION_REQUEST_API_URL = "permission-request-api-url";
+    // Causes the browser process to crash very early in startup, just before
+    // crashpad (or breakpad) is initialized.
+    public static final String PRE_CRASHPAD_CRASH_TEST = "pre-crashpad-crash-test";
 
     // Used to mock the response received from the Web Permission Prediction
     // Service. Used for testing.
     public static final String PREDICTION_SERVICE_MOCK_LIKELIHOOD = "prediction-service-mock-likelihood";
+
+    // A directory where Chrome looks for json files describing default/preinstalled
+    // web apps. This overrides any default directory to load preinstalled web apps
+    // from.
+    public static final String PREINSTALLED_WEB_APPS_DIR = "preinstalled-web-apps-dir";
 
     // Use IPv6 only for privet HTTP.
     public static final String PRIVET_I_PV6_ONLY = "privet-ipv6-only";
@@ -600,6 +581,12 @@ public abstract class ChromeSwitches {
 
     // Selects directory of profile to associate with the first browser launched.
     public static final String PROFILE_DIRECTORY = "profile-directory";
+
+    // Like kProfileDirectory, but selects the profile by email address. If the
+    // email is not found in any existing profile, this switch has no effect. If
+    // both kProfileDirectory and kProfileUserName are specified, kProfileDirectory
+    // takes priority.
+    public static final String PROFILE_EMAIL = "profile-email";
 
     // Forces proxy auto-detection.
     public static final String PROXY_AUTO_DETECT = "proxy-auto-detect";
@@ -629,9 +616,6 @@ public abstract class ChromeSwitches {
     // See http://crbug.com/120416 for how to remove this switch.
     public static final String SAVE_PAGE_AS_MHTML = "save-page-as-mhtml";
 
-    // Sets the Reporting API delay to under a second to allow much quicker reports.
-    public static final String SHORT_REPORTING_DELAY = "short-reporting-delay";
-
     // Does not show an infobar when an extension attaches to a page using
     // chrome.debugger page. Required to attach to extension background pages.
     public static final String SILENT_DEBUGGER_EXTENSION_API = "silent-debugger-extension-api";
@@ -658,15 +642,8 @@ public abstract class ChromeSwitches {
     // Specifies the maximum SSL/TLS version ("tls1.2" or "tls1.3").
     public static final String SSL_VERSION_MAX = "ssl-version-max";
 
-    // Specifies the minimum SSL/TLS version ("tls1", "tls1.1", "tls1.2", or
-    // "tls1.3").
+    // Specifies the minimum SSL/TLS version ("tls1.2" or "tls1.3").
     public static final String SSL_VERSION_MIN = "ssl-version-min";
-
-    // TLS 1.0 mode for the |kSSLVersionMin| switch.
-    public static final String SSL_VERSION_TL_SV1 = "tls1";
-
-    // TLS 1.1 mode for the |kSSLVersionMin| switch.
-    public static final String SSL_VERSION_TL_SV11 = "tls1.1";
 
     // TLS 1.2 mode for |kSSLVersionMax| and |kSSLVersionMin| switches.
     public static final String SSL_VERSION_TL_SV12 = "tls1.2";
@@ -723,6 +700,10 @@ public abstract class ChromeSwitches {
     // Specifies the user data directory, which is where the browser will look for
     // all of its state.
     public static final String USER_DATA_DIR = "user-data-dir";
+
+    // TODO(https://crbug.com/1032820): Only use WinHttp whenever Chrome is
+    // exclusively using system proxy configs.
+    public static final String USE_SYSTEM_PROXY_RESOLVER = "use-system-proxy-resolver";
 
     // Examines a .crx for validity and prints the result.
     public static final String VALIDATE_CRX = "validate-crx";
@@ -782,6 +763,12 @@ public abstract class ChromeSwitches {
     // Forces the update menu badge to show.
     public static final String FORCE_SHOW_UPDATE_MENU_BADGE = "force-show-update-menu-badge";
 
+    // Forces signin FRE flow.
+    public static final String FORCE_ENABLE_SIGNIN_FRE = "force-enable-signin-fre";
+
+    // Forces the FRE to go through the legacy sync consent flow for testing.
+    public static final String FORCE_DISABLE_SIGNIN_FRE = "force-disable-signin-fre";
+
     // Forces the update menu type to a specific type.
     public static final String FORCE_UPDATE_MENU_TYPE = "force-update-menu-type";
 
@@ -790,9 +777,6 @@ public abstract class ChromeSwitches {
 
     // Sets the market URL for Chrome for use in testing.
     public static final String MARKET_URL_FOR_TESTING = "market-url-for-testing";
-
-    // Custom WebAPK server URL for the sake of testing.
-    public static final String WEB_APK_SERVER_URL = "webapk-server-url";
 
     // Custom crosh command.
     public static final String CROSH_COMMAND = "crosh-command";
@@ -848,15 +832,8 @@ public abstract class ChromeSwitches {
     // Prevents Chrome from quitting when Chrome Apps are open.
     public static final String APPS_KEEP_CHROME_ALIVE_IN_TESTS = "apps-keep-chrome-alive-in-tests";
 
-    // Disables app shim creation for hosted apps on Mac.
-    public static final String DISABLE_HOSTED_APP_SHIM_CREATION = "disable-hosted-app-shim-creation";
-
     // Enable user metrics from within the installer.
     public static final String ENABLE_USER_METRICS = "enable-user-metrics";
-
-    // Shows a notification when quitting Chrome with hosted apps running. Default
-    // behavior is to also quit all hosted apps.
-    public static final String HOSTED_APP_QUIT_NOTIFICATION = "enable-hosted-app-quit-notification";
 
     // This is how the metrics client ID is passed from the browser process to its
     // children. With Crashpad, the metrics client ID is distinct from the crash
@@ -943,6 +920,19 @@ public abstract class ChromeSwitches {
 
     // Causes the browser to launch directly in guest mode.
     public static final String GUEST = "guest";
+
+    // Writes open and installed web apps for each profile to the specified file
+    // without launching a new browser window or tab. Pass a absolute file path to
+    // specify where to output the information. Can be used together with optional
+    // --profile-base-name switch to only write information for a given profile.
+    public static final String LIST_APPS = "list-apps";
+
+    // Pass the basename of the profile directory to specify which profile to get
+    // information. Only relevant when used with --list-apps switch.
+    public static final String PROFILE_BASE_NAME = "profile-base-name";
+
+    // Custom WebAPK server URL for the sake of testing.
+    public static final String WEB_APK_SERVER_URL = "webapk-server-url";
 
     // Uses the system default printer as the initially selected destination in
     // print preview, instead of the most recently used destination.

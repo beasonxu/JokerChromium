@@ -13,18 +13,17 @@ import androidx.annotation.VisibleForTesting;
 
 import org.chromium.base.BaseSwitches;
 import org.chromium.base.CommandLine;
-import org.chromium.base.Log;
 import org.chromium.base.SysUtils;
 import org.chromium.base.ThreadUtils;
 import org.chromium.base.supplier.Supplier;
-import org.chromium.chrome.R;
-import org.chromium.chrome.browser.image_fetcher.ImageFetcher;
 import org.chromium.chrome.browser.omnibox.OmniboxSuggestionType;
+import org.chromium.chrome.browser.omnibox.R;
 import org.chromium.chrome.browser.omnibox.suggestions.OmniboxSuggestionUiType;
 import org.chromium.chrome.browser.omnibox.suggestions.SuggestionHost;
 import org.chromium.chrome.browser.omnibox.suggestions.base.BaseSuggestionViewProcessor;
 import org.chromium.chrome.browser.omnibox.suggestions.base.SuggestionDrawableState;
 import org.chromium.components.browser_ui.util.ConversionUtils;
+import org.chromium.components.image_fetcher.ImageFetcher;
 import org.chromium.components.omnibox.AutocompleteMatch;
 import org.chromium.ui.modelutil.PropertyModel;
 import org.chromium.url.GURL;
@@ -96,9 +95,8 @@ public class EntitySuggestionProcessor extends BaseSuggestionViewProcessor {
         models.add(model);
         mPendingImageRequests.put(url, models);
 
-        ImageFetcher.Params params = ImageFetcher.Params.create(url.getSpec(),
-                ImageFetcher.ENTITY_SUGGESTIONS_UMA_CLIENT_NAME, getDecorationImageSize(),
-                getDecorationImageSize());
+        ImageFetcher.Params params = ImageFetcher.Params.create(
+                url.getSpec(), ImageFetcher.ENTITY_SUGGESTIONS_UMA_CLIENT_NAME);
         imageFetcher.fetchImage(
                 params, (Bitmap bitmap) -> {
                     ThreadUtils.assertOnUiThread();
@@ -129,7 +127,7 @@ public class EntitySuggestionProcessor extends BaseSuggestionViewProcessor {
         try {
             color = Color.parseColor(colorSpec);
         } catch (IllegalArgumentException e) {
-            Log.i(TAG, "Failed to parse dominant color: " + colorSpec);
+            // The supplied color information could not be parsed.
             return;
         }
 

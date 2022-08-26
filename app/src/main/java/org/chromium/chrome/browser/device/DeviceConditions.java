@@ -4,7 +4,6 @@
 
 package org.chromium.chrome.browser.device;
 
-import android.annotation.TargetApi;
 import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
@@ -16,8 +15,10 @@ import android.os.Build;
 import android.os.PowerManager;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.annotation.VisibleForTesting;
 
+import org.chromium.base.compat.ApiHelperForM;
 import org.chromium.net.ConnectionType;
 import org.chromium.net.NetworkChangeNotifier;
 
@@ -132,10 +133,10 @@ public class DeviceConditions {
         return isCurrentlyInIdleModeM(context);
     }
 
-    @TargetApi(Build.VERSION_CODES.M)
+    @RequiresApi(Build.VERSION_CODES.M)
     private static boolean isCurrentlyInIdleModeM(Context context) {
-        PowerManager powerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
-        return powerManager.isDeviceIdleMode();
+        return ApiHelperForM.isDeviceIdleMode(
+                (PowerManager) context.getSystemService(Context.POWER_SERVICE));
     }
 
     /**

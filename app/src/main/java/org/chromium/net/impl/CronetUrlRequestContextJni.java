@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class CronetUrlRequestContextJni implements CronetUrlRequestContext.Natives {
+class CronetUrlRequestContextJni implements CronetUrlRequestContext.Natives {
   private static CronetUrlRequestContext.Natives testInstance;
 
   public static final JniStaticTestMocker<CronetUrlRequestContext.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.net.impl.CronetUrlRequestContext.Natives>() {

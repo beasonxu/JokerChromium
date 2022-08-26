@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -20,7 +20,7 @@ import java.lang.annotation.RetentionPolicy;
     SharingSendMessageResult.NETWORK_ERROR, SharingSendMessageResult.PAYLOAD_TOO_LARGE,
     SharingSendMessageResult.ACK_TIMEOUT, SharingSendMessageResult.INTERNAL_ERROR,
     SharingSendMessageResult.ENCRYPTION_ERROR, SharingSendMessageResult.COMMIT_TIMEOUT,
-    SharingSendMessageResult.MAX_VALUE
+    SharingSendMessageResult.CANCELLED, SharingSendMessageResult.MAX_VALUE
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface SharingSendMessageResult {
@@ -32,5 +32,6 @@ public @interface SharingSendMessageResult {
   int INTERNAL_ERROR = 5;
   int ENCRYPTION_ERROR = 6;
   int COMMIT_TIMEOUT = 7;
-  int MAX_VALUE = COMMIT_TIMEOUT;
+  int CANCELLED = 8;
+  int MAX_VALUE = CANCELLED;
 }

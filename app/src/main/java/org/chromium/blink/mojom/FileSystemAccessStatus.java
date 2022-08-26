@@ -13,22 +13,37 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class FileSystemAccessStatus {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        FileSystemAccessStatus.OK,
+        FileSystemAccessStatus.PERMISSION_DENIED,
+        FileSystemAccessStatus.SECURITY_ERROR,
+        FileSystemAccessStatus.NO_MODIFICATION_ALLOWED_ERROR,
+        FileSystemAccessStatus.INVALID_STATE,
+        FileSystemAccessStatus.INVALID_ARGUMENT,
+        FileSystemAccessStatus.OPERATION_FAILED,
+        FileSystemAccessStatus.OPERATION_ABORTED,
+        FileSystemAccessStatus.FILE_ERROR})
+    public @interface EnumType {}
 
     public static final int OK = 0;
     public static final int PERMISSION_DENIED = 1;
     public static final int SECURITY_ERROR = 2;
-    public static final int INVALID_STATE = 3;
-    public static final int INVALID_ARGUMENT = 4;
-    public static final int OPERATION_FAILED = 5;
-    public static final int OPERATION_ABORTED = 6;
-    public static final int FILE_ERROR = 7;
+    public static final int NO_MODIFICATION_ALLOWED_ERROR = 3;
+    public static final int INVALID_STATE = 4;
+    public static final int INVALID_ARGUMENT = 5;
+    public static final int OPERATION_FAILED = 6;
+    public static final int OPERATION_ABORTED = 7;
+    public static final int FILE_ERROR = 8;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 7;
+    public static final int MAX_VALUE = 8;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 7;
+        return value >= 0 && value <= 8;
     }
 
     public static void validate(int value) {

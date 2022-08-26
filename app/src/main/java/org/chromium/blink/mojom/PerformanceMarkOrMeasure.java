@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class PerformanceMarkOrMeasure extends org.chromium.mojo.bindings.Struct {
 
@@ -22,6 +24,11 @@ public final class PerformanceMarkOrMeasure extends org.chromium.mojo.bindings.S
 
     public static final class EntryType {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            EntryType.MARK,
+            EntryType.MEASURE})
+        public @interface EnumType {}
 
         public static final int MARK = 0;
         public static final int MEASURE = 1;

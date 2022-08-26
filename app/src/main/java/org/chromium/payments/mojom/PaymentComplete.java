@@ -13,8 +13,16 @@
 
 package org.chromium.payments.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PaymentComplete {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PaymentComplete.FAIL,
+        PaymentComplete.SUCCESS,
+        PaymentComplete.UNKNOWN})
+    public @interface EnumType {}
 
     public static final int FAIL = 0;
     public static final int SUCCESS = 1;

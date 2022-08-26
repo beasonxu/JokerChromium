@@ -69,6 +69,36 @@ public final class FeedUiProto {
      * <code>repeated .feedui.SharedState new_shared_states = 2;</code>
      */
     int getNewSharedStatesCount();
+
+    /**
+     * <pre>
+     * Time of the last full server fetch. Populated only after the stream data is
+     * loaded. Not updated on NextPage requests.
+     * </pre>
+     *
+     * <code>int64 fetch_time_ms = 3;</code>
+     * @return The fetchTimeMs.
+     */
+    long getFetchTimeMs();
+
+    /**
+     * <pre>
+     * Logging parameters to be associated with updated_slices.
+     * </pre>
+     *
+     * <code>.feedui.LoggingParameters logging_parameters = 4;</code>
+     * @return Whether the loggingParameters field is set.
+     */
+    boolean hasLoggingParameters();
+    /**
+     * <pre>
+     * Logging parameters to be associated with updated_slices.
+     * </pre>
+     *
+     * <code>.feedui.LoggingParameters logging_parameters = 4;</code>
+     * @return The loggingParameters.
+     */
+    org.chromium.components.feed.proto.FeedUiProto.LoggingParameters getLoggingParameters();
   }
   /**
    * <pre>
@@ -864,6 +894,113 @@ public final class FeedUiProto {
       newSharedStates_.remove(index);
     }
 
+    public static final int FETCH_TIME_MS_FIELD_NUMBER = 3;
+    private long fetchTimeMs_;
+    /**
+     * <pre>
+     * Time of the last full server fetch. Populated only after the stream data is
+     * loaded. Not updated on NextPage requests.
+     * </pre>
+     *
+     * <code>int64 fetch_time_ms = 3;</code>
+     * @return The fetchTimeMs.
+     */
+    @java.lang.Override
+    public long getFetchTimeMs() {
+      return fetchTimeMs_;
+    }
+    /**
+     * <pre>
+     * Time of the last full server fetch. Populated only after the stream data is
+     * loaded. Not updated on NextPage requests.
+     * </pre>
+     *
+     * <code>int64 fetch_time_ms = 3;</code>
+     * @param value The fetchTimeMs to set.
+     */
+    private void setFetchTimeMs(long value) {
+      
+      fetchTimeMs_ = value;
+    }
+    /**
+     * <pre>
+     * Time of the last full server fetch. Populated only after the stream data is
+     * loaded. Not updated on NextPage requests.
+     * </pre>
+     *
+     * <code>int64 fetch_time_ms = 3;</code>
+     */
+    private void clearFetchTimeMs() {
+      
+      fetchTimeMs_ = 0L;
+    }
+
+    public static final int LOGGING_PARAMETERS_FIELD_NUMBER = 4;
+    private org.chromium.components.feed.proto.FeedUiProto.LoggingParameters loggingParameters_;
+    /**
+     * <pre>
+     * Logging parameters to be associated with updated_slices.
+     * </pre>
+     *
+     * <code>.feedui.LoggingParameters logging_parameters = 4;</code>
+     */
+    @java.lang.Override
+    public boolean hasLoggingParameters() {
+      return loggingParameters_ != null;
+    }
+    /**
+     * <pre>
+     * Logging parameters to be associated with updated_slices.
+     * </pre>
+     *
+     * <code>.feedui.LoggingParameters logging_parameters = 4;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.feed.proto.FeedUiProto.LoggingParameters getLoggingParameters() {
+      return loggingParameters_ == null ? org.chromium.components.feed.proto.FeedUiProto.LoggingParameters.getDefaultInstance() : loggingParameters_;
+    }
+    /**
+     * <pre>
+     * Logging parameters to be associated with updated_slices.
+     * </pre>
+     *
+     * <code>.feedui.LoggingParameters logging_parameters = 4;</code>
+     */
+    private void setLoggingParameters(org.chromium.components.feed.proto.FeedUiProto.LoggingParameters value) {
+      value.getClass();
+  loggingParameters_ = value;
+      
+      }
+    /**
+     * <pre>
+     * Logging parameters to be associated with updated_slices.
+     * </pre>
+     *
+     * <code>.feedui.LoggingParameters logging_parameters = 4;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeLoggingParameters(org.chromium.components.feed.proto.FeedUiProto.LoggingParameters value) {
+      value.getClass();
+  if (loggingParameters_ != null &&
+          loggingParameters_ != org.chromium.components.feed.proto.FeedUiProto.LoggingParameters.getDefaultInstance()) {
+        loggingParameters_ =
+          org.chromium.components.feed.proto.FeedUiProto.LoggingParameters.newBuilder(loggingParameters_).mergeFrom(value).buildPartial();
+      } else {
+        loggingParameters_ = value;
+      }
+      
+    }
+    /**
+     * <pre>
+     * Logging parameters to be associated with updated_slices.
+     * </pre>
+     *
+     * <code>.feedui.LoggingParameters logging_parameters = 4;</code>
+     */
+    private void clearLoggingParameters() {  loggingParameters_ = null;
+      
+    }
+
     public static org.chromium.components.feed.proto.FeedUiProto.StreamUpdate parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1290,6 +1427,120 @@ public final class FeedUiProto {
         return this;
       }
 
+      /**
+       * <pre>
+       * Time of the last full server fetch. Populated only after the stream data is
+       * loaded. Not updated on NextPage requests.
+       * </pre>
+       *
+       * <code>int64 fetch_time_ms = 3;</code>
+       * @return The fetchTimeMs.
+       */
+      @java.lang.Override
+      public long getFetchTimeMs() {
+        return instance.getFetchTimeMs();
+      }
+      /**
+       * <pre>
+       * Time of the last full server fetch. Populated only after the stream data is
+       * loaded. Not updated on NextPage requests.
+       * </pre>
+       *
+       * <code>int64 fetch_time_ms = 3;</code>
+       * @param value The fetchTimeMs to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFetchTimeMs(long value) {
+        copyOnWrite();
+        instance.setFetchTimeMs(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Time of the last full server fetch. Populated only after the stream data is
+       * loaded. Not updated on NextPage requests.
+       * </pre>
+       *
+       * <code>int64 fetch_time_ms = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFetchTimeMs() {
+        copyOnWrite();
+        instance.clearFetchTimeMs();
+        return this;
+      }
+
+      /**
+       * <pre>
+       * Logging parameters to be associated with updated_slices.
+       * </pre>
+       *
+       * <code>.feedui.LoggingParameters logging_parameters = 4;</code>
+       */
+      @java.lang.Override
+      public boolean hasLoggingParameters() {
+        return instance.hasLoggingParameters();
+      }
+      /**
+       * <pre>
+       * Logging parameters to be associated with updated_slices.
+       * </pre>
+       *
+       * <code>.feedui.LoggingParameters logging_parameters = 4;</code>
+       */
+      @java.lang.Override
+      public org.chromium.components.feed.proto.FeedUiProto.LoggingParameters getLoggingParameters() {
+        return instance.getLoggingParameters();
+      }
+      /**
+       * <pre>
+       * Logging parameters to be associated with updated_slices.
+       * </pre>
+       *
+       * <code>.feedui.LoggingParameters logging_parameters = 4;</code>
+       */
+      public Builder setLoggingParameters(org.chromium.components.feed.proto.FeedUiProto.LoggingParameters value) {
+        copyOnWrite();
+        instance.setLoggingParameters(value);
+        return this;
+        }
+      /**
+       * <pre>
+       * Logging parameters to be associated with updated_slices.
+       * </pre>
+       *
+       * <code>.feedui.LoggingParameters logging_parameters = 4;</code>
+       */
+      public Builder setLoggingParameters(
+          org.chromium.components.feed.proto.FeedUiProto.LoggingParameters.Builder builderForValue) {
+        copyOnWrite();
+        instance.setLoggingParameters(builderForValue.build());
+        return this;
+      }
+      /**
+       * <pre>
+       * Logging parameters to be associated with updated_slices.
+       * </pre>
+       *
+       * <code>.feedui.LoggingParameters logging_parameters = 4;</code>
+       */
+      public Builder mergeLoggingParameters(org.chromium.components.feed.proto.FeedUiProto.LoggingParameters value) {
+        copyOnWrite();
+        instance.mergeLoggingParameters(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Logging parameters to be associated with updated_slices.
+       * </pre>
+       *
+       * <code>.feedui.LoggingParameters logging_parameters = 4;</code>
+       */
+      public Builder clearLoggingParameters() {  copyOnWrite();
+        instance.clearLoggingParameters();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:feedui.StreamUpdate)
     }
     @java.lang.Override
@@ -1310,10 +1561,12 @@ public final class FeedUiProto {
               org.chromium.components.feed.proto.FeedUiProto.StreamUpdate.SliceUpdate.class,
               "newSharedStates_",
               org.chromium.components.feed.proto.FeedUiProto.SharedState.class,
+              "fetchTimeMs_",
+              "loggingParameters_",
             };
             java.lang.String info =
-                "\u0000\u0002\u0000\u0000\u0001\u0002\u0002\u0000\u0002\u0000\u0001\u001b\u0002\u001b" +
-                "";
+                "\u0000\u0004\u0000\u0000\u0001\u0004\u0004\u0000\u0002\u0000\u0001\u001b\u0002\u001b" +
+                "\u0003\u0002\u0004\t";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -1364,6 +1617,899 @@ public final class FeedUiProto {
     private static volatile com.google.protobuf.Parser<StreamUpdate> PARSER;
 
     public static com.google.protobuf.Parser<StreamUpdate> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface LoggingParametersOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:feedui.LoggingParameters)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <pre>
+     * The session ID is for signed out users.
+     * </pre>
+     *
+     * <code>string session_id = 1;</code>
+     * @return The sessionId.
+     */
+    java.lang.String getSessionId();
+    /**
+     * <pre>
+     * The session ID is for signed out users.
+     * </pre>
+     *
+     * <code>string session_id = 1;</code>
+     * @return The bytes for sessionId.
+     */
+    com.google.protobuf.ByteString
+        getSessionIdBytes();
+
+    /**
+     * <code>string email = 2;</code>
+     * @return The email.
+     */
+    java.lang.String getEmail();
+    /**
+     * <code>string email = 2;</code>
+     * @return The bytes for email.
+     */
+    com.google.protobuf.ByteString
+        getEmailBytes();
+
+    /**
+     * <pre>
+     * A client ID used for reliability logging.
+     * </pre>
+     *
+     * <code>string client_instance_id = 3;</code>
+     * @return The clientInstanceId.
+     */
+    java.lang.String getClientInstanceId();
+    /**
+     * <pre>
+     * A client ID used for reliability logging.
+     * </pre>
+     *
+     * <code>string client_instance_id = 3;</code>
+     * @return The bytes for clientInstanceId.
+     */
+    com.google.protobuf.ByteString
+        getClientInstanceIdBytes();
+
+    /**
+     * <pre>
+     * Whether attention / interaction logging is enabled.
+     * </pre>
+     *
+     * <code>bool logging_enabled = 4;</code>
+     * @return The loggingEnabled.
+     */
+    boolean getLoggingEnabled();
+
+    /**
+     * <pre>
+     * Whether view actions may be recorded.
+     * </pre>
+     *
+     * <code>bool view_actions_enabled = 5;</code>
+     * @return The viewActionsEnabled.
+     */
+    boolean getViewActionsEnabled();
+
+    /**
+     * <pre>
+     * The EventID of the first page response. Must be present for attention
+     * logging.
+     * </pre>
+     *
+     * <code>bytes root_event_id = 6;</code>
+     * @return The rootEventId.
+     */
+    com.google.protobuf.ByteString getRootEventId();
+  }
+  /**
+   * <pre>
+   * Either email or session_id should be set to enable activity logging.
+   * </pre>
+   *
+   * Protobuf type {@code feedui.LoggingParameters}
+   */
+  public  static final class LoggingParameters extends
+      com.google.protobuf.GeneratedMessageLite<
+          LoggingParameters, LoggingParameters.Builder> implements
+      // @@protoc_insertion_point(message_implements:feedui.LoggingParameters)
+      LoggingParametersOrBuilder {
+    private LoggingParameters() {
+      sessionId_ = "";
+      email_ = "";
+      clientInstanceId_ = "";
+      rootEventId_ = com.google.protobuf.ByteString.EMPTY;
+    }
+    public static final int SESSION_ID_FIELD_NUMBER = 1;
+    private java.lang.String sessionId_;
+    /**
+     * <pre>
+     * The session ID is for signed out users.
+     * </pre>
+     *
+     * <code>string session_id = 1;</code>
+     * @return The sessionId.
+     */
+    @java.lang.Override
+    public java.lang.String getSessionId() {
+      return sessionId_;
+    }
+    /**
+     * <pre>
+     * The session ID is for signed out users.
+     * </pre>
+     *
+     * <code>string session_id = 1;</code>
+     * @return The bytes for sessionId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSessionIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(sessionId_);
+    }
+    /**
+     * <pre>
+     * The session ID is for signed out users.
+     * </pre>
+     *
+     * <code>string session_id = 1;</code>
+     * @param value The sessionId to set.
+     */
+    private void setSessionId(
+        java.lang.String value) {
+      value.getClass();
+  
+      sessionId_ = value;
+    }
+    /**
+     * <pre>
+     * The session ID is for signed out users.
+     * </pre>
+     *
+     * <code>string session_id = 1;</code>
+     */
+    private void clearSessionId() {
+      
+      sessionId_ = getDefaultInstance().getSessionId();
+    }
+    /**
+     * <pre>
+     * The session ID is for signed out users.
+     * </pre>
+     *
+     * <code>string session_id = 1;</code>
+     * @param value The bytes for sessionId to set.
+     */
+    private void setSessionIdBytes(
+        com.google.protobuf.ByteString value) {
+      checkByteStringIsUtf8(value);
+      sessionId_ = value.toStringUtf8();
+      
+    }
+
+    public static final int EMAIL_FIELD_NUMBER = 2;
+    private java.lang.String email_;
+    /**
+     * <code>string email = 2;</code>
+     * @return The email.
+     */
+    @java.lang.Override
+    public java.lang.String getEmail() {
+      return email_;
+    }
+    /**
+     * <code>string email = 2;</code>
+     * @return The bytes for email.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getEmailBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(email_);
+    }
+    /**
+     * <code>string email = 2;</code>
+     * @param value The email to set.
+     */
+    private void setEmail(
+        java.lang.String value) {
+      value.getClass();
+  
+      email_ = value;
+    }
+    /**
+     * <code>string email = 2;</code>
+     */
+    private void clearEmail() {
+      
+      email_ = getDefaultInstance().getEmail();
+    }
+    /**
+     * <code>string email = 2;</code>
+     * @param value The bytes for email to set.
+     */
+    private void setEmailBytes(
+        com.google.protobuf.ByteString value) {
+      checkByteStringIsUtf8(value);
+      email_ = value.toStringUtf8();
+      
+    }
+
+    public static final int CLIENT_INSTANCE_ID_FIELD_NUMBER = 3;
+    private java.lang.String clientInstanceId_;
+    /**
+     * <pre>
+     * A client ID used for reliability logging.
+     * </pre>
+     *
+     * <code>string client_instance_id = 3;</code>
+     * @return The clientInstanceId.
+     */
+    @java.lang.Override
+    public java.lang.String getClientInstanceId() {
+      return clientInstanceId_;
+    }
+    /**
+     * <pre>
+     * A client ID used for reliability logging.
+     * </pre>
+     *
+     * <code>string client_instance_id = 3;</code>
+     * @return The bytes for clientInstanceId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getClientInstanceIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(clientInstanceId_);
+    }
+    /**
+     * <pre>
+     * A client ID used for reliability logging.
+     * </pre>
+     *
+     * <code>string client_instance_id = 3;</code>
+     * @param value The clientInstanceId to set.
+     */
+    private void setClientInstanceId(
+        java.lang.String value) {
+      value.getClass();
+  
+      clientInstanceId_ = value;
+    }
+    /**
+     * <pre>
+     * A client ID used for reliability logging.
+     * </pre>
+     *
+     * <code>string client_instance_id = 3;</code>
+     */
+    private void clearClientInstanceId() {
+      
+      clientInstanceId_ = getDefaultInstance().getClientInstanceId();
+    }
+    /**
+     * <pre>
+     * A client ID used for reliability logging.
+     * </pre>
+     *
+     * <code>string client_instance_id = 3;</code>
+     * @param value The bytes for clientInstanceId to set.
+     */
+    private void setClientInstanceIdBytes(
+        com.google.protobuf.ByteString value) {
+      checkByteStringIsUtf8(value);
+      clientInstanceId_ = value.toStringUtf8();
+      
+    }
+
+    public static final int LOGGING_ENABLED_FIELD_NUMBER = 4;
+    private boolean loggingEnabled_;
+    /**
+     * <pre>
+     * Whether attention / interaction logging is enabled.
+     * </pre>
+     *
+     * <code>bool logging_enabled = 4;</code>
+     * @return The loggingEnabled.
+     */
+    @java.lang.Override
+    public boolean getLoggingEnabled() {
+      return loggingEnabled_;
+    }
+    /**
+     * <pre>
+     * Whether attention / interaction logging is enabled.
+     * </pre>
+     *
+     * <code>bool logging_enabled = 4;</code>
+     * @param value The loggingEnabled to set.
+     */
+    private void setLoggingEnabled(boolean value) {
+      
+      loggingEnabled_ = value;
+    }
+    /**
+     * <pre>
+     * Whether attention / interaction logging is enabled.
+     * </pre>
+     *
+     * <code>bool logging_enabled = 4;</code>
+     */
+    private void clearLoggingEnabled() {
+      
+      loggingEnabled_ = false;
+    }
+
+    public static final int VIEW_ACTIONS_ENABLED_FIELD_NUMBER = 5;
+    private boolean viewActionsEnabled_;
+    /**
+     * <pre>
+     * Whether view actions may be recorded.
+     * </pre>
+     *
+     * <code>bool view_actions_enabled = 5;</code>
+     * @return The viewActionsEnabled.
+     */
+    @java.lang.Override
+    public boolean getViewActionsEnabled() {
+      return viewActionsEnabled_;
+    }
+    /**
+     * <pre>
+     * Whether view actions may be recorded.
+     * </pre>
+     *
+     * <code>bool view_actions_enabled = 5;</code>
+     * @param value The viewActionsEnabled to set.
+     */
+    private void setViewActionsEnabled(boolean value) {
+      
+      viewActionsEnabled_ = value;
+    }
+    /**
+     * <pre>
+     * Whether view actions may be recorded.
+     * </pre>
+     *
+     * <code>bool view_actions_enabled = 5;</code>
+     */
+    private void clearViewActionsEnabled() {
+      
+      viewActionsEnabled_ = false;
+    }
+
+    public static final int ROOT_EVENT_ID_FIELD_NUMBER = 6;
+    private com.google.protobuf.ByteString rootEventId_;
+    /**
+     * <pre>
+     * The EventID of the first page response. Must be present for attention
+     * logging.
+     * </pre>
+     *
+     * <code>bytes root_event_id = 6;</code>
+     * @return The rootEventId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getRootEventId() {
+      return rootEventId_;
+    }
+    /**
+     * <pre>
+     * The EventID of the first page response. Must be present for attention
+     * logging.
+     * </pre>
+     *
+     * <code>bytes root_event_id = 6;</code>
+     * @param value The rootEventId to set.
+     */
+    private void setRootEventId(com.google.protobuf.ByteString value) {
+      value.getClass();
+  
+      rootEventId_ = value;
+    }
+    /**
+     * <pre>
+     * The EventID of the first page response. Must be present for attention
+     * logging.
+     * </pre>
+     *
+     * <code>bytes root_event_id = 6;</code>
+     */
+    private void clearRootEventId() {
+      
+      rootEventId_ = getDefaultInstance().getRootEventId();
+    }
+
+    public static org.chromium.components.feed.proto.FeedUiProto.LoggingParameters parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.chromium.components.feed.proto.FeedUiProto.LoggingParameters parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.chromium.components.feed.proto.FeedUiProto.LoggingParameters parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.chromium.components.feed.proto.FeedUiProto.LoggingParameters parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.chromium.components.feed.proto.FeedUiProto.LoggingParameters parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.chromium.components.feed.proto.FeedUiProto.LoggingParameters parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.chromium.components.feed.proto.FeedUiProto.LoggingParameters parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static org.chromium.components.feed.proto.FeedUiProto.LoggingParameters parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static org.chromium.components.feed.proto.FeedUiProto.LoggingParameters parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static org.chromium.components.feed.proto.FeedUiProto.LoggingParameters parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static org.chromium.components.feed.proto.FeedUiProto.LoggingParameters parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static org.chromium.components.feed.proto.FeedUiProto.LoggingParameters parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(org.chromium.components.feed.proto.FeedUiProto.LoggingParameters prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * <pre>
+     * Either email or session_id should be set to enable activity logging.
+     * </pre>
+     *
+     * Protobuf type {@code feedui.LoggingParameters}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          org.chromium.components.feed.proto.FeedUiProto.LoggingParameters, Builder> implements
+        // @@protoc_insertion_point(builder_implements:feedui.LoggingParameters)
+        org.chromium.components.feed.proto.FeedUiProto.LoggingParametersOrBuilder {
+      // Construct using org.chromium.components.feed.proto.FeedUiProto.LoggingParameters.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <pre>
+       * The session ID is for signed out users.
+       * </pre>
+       *
+       * <code>string session_id = 1;</code>
+       * @return The sessionId.
+       */
+      @java.lang.Override
+      public java.lang.String getSessionId() {
+        return instance.getSessionId();
+      }
+      /**
+       * <pre>
+       * The session ID is for signed out users.
+       * </pre>
+       *
+       * <code>string session_id = 1;</code>
+       * @return The bytes for sessionId.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getSessionIdBytes() {
+        return instance.getSessionIdBytes();
+      }
+      /**
+       * <pre>
+       * The session ID is for signed out users.
+       * </pre>
+       *
+       * <code>string session_id = 1;</code>
+       * @param value The sessionId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSessionId(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setSessionId(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * The session ID is for signed out users.
+       * </pre>
+       *
+       * <code>string session_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSessionId() {
+        copyOnWrite();
+        instance.clearSessionId();
+        return this;
+      }
+      /**
+       * <pre>
+       * The session ID is for signed out users.
+       * </pre>
+       *
+       * <code>string session_id = 1;</code>
+       * @param value The bytes for sessionId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSessionIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setSessionIdBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>string email = 2;</code>
+       * @return The email.
+       */
+      @java.lang.Override
+      public java.lang.String getEmail() {
+        return instance.getEmail();
+      }
+      /**
+       * <code>string email = 2;</code>
+       * @return The bytes for email.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getEmailBytes() {
+        return instance.getEmailBytes();
+      }
+      /**
+       * <code>string email = 2;</code>
+       * @param value The email to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEmail(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setEmail(value);
+        return this;
+      }
+      /**
+       * <code>string email = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEmail() {
+        copyOnWrite();
+        instance.clearEmail();
+        return this;
+      }
+      /**
+       * <code>string email = 2;</code>
+       * @param value The bytes for email to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEmailBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setEmailBytes(value);
+        return this;
+      }
+
+      /**
+       * <pre>
+       * A client ID used for reliability logging.
+       * </pre>
+       *
+       * <code>string client_instance_id = 3;</code>
+       * @return The clientInstanceId.
+       */
+      @java.lang.Override
+      public java.lang.String getClientInstanceId() {
+        return instance.getClientInstanceId();
+      }
+      /**
+       * <pre>
+       * A client ID used for reliability logging.
+       * </pre>
+       *
+       * <code>string client_instance_id = 3;</code>
+       * @return The bytes for clientInstanceId.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getClientInstanceIdBytes() {
+        return instance.getClientInstanceIdBytes();
+      }
+      /**
+       * <pre>
+       * A client ID used for reliability logging.
+       * </pre>
+       *
+       * <code>string client_instance_id = 3;</code>
+       * @param value The clientInstanceId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setClientInstanceId(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setClientInstanceId(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * A client ID used for reliability logging.
+       * </pre>
+       *
+       * <code>string client_instance_id = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearClientInstanceId() {
+        copyOnWrite();
+        instance.clearClientInstanceId();
+        return this;
+      }
+      /**
+       * <pre>
+       * A client ID used for reliability logging.
+       * </pre>
+       *
+       * <code>string client_instance_id = 3;</code>
+       * @param value The bytes for clientInstanceId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setClientInstanceIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setClientInstanceIdBytes(value);
+        return this;
+      }
+
+      /**
+       * <pre>
+       * Whether attention / interaction logging is enabled.
+       * </pre>
+       *
+       * <code>bool logging_enabled = 4;</code>
+       * @return The loggingEnabled.
+       */
+      @java.lang.Override
+      public boolean getLoggingEnabled() {
+        return instance.getLoggingEnabled();
+      }
+      /**
+       * <pre>
+       * Whether attention / interaction logging is enabled.
+       * </pre>
+       *
+       * <code>bool logging_enabled = 4;</code>
+       * @param value The loggingEnabled to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLoggingEnabled(boolean value) {
+        copyOnWrite();
+        instance.setLoggingEnabled(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Whether attention / interaction logging is enabled.
+       * </pre>
+       *
+       * <code>bool logging_enabled = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLoggingEnabled() {
+        copyOnWrite();
+        instance.clearLoggingEnabled();
+        return this;
+      }
+
+      /**
+       * <pre>
+       * Whether view actions may be recorded.
+       * </pre>
+       *
+       * <code>bool view_actions_enabled = 5;</code>
+       * @return The viewActionsEnabled.
+       */
+      @java.lang.Override
+      public boolean getViewActionsEnabled() {
+        return instance.getViewActionsEnabled();
+      }
+      /**
+       * <pre>
+       * Whether view actions may be recorded.
+       * </pre>
+       *
+       * <code>bool view_actions_enabled = 5;</code>
+       * @param value The viewActionsEnabled to set.
+       * @return This builder for chaining.
+       */
+      public Builder setViewActionsEnabled(boolean value) {
+        copyOnWrite();
+        instance.setViewActionsEnabled(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Whether view actions may be recorded.
+       * </pre>
+       *
+       * <code>bool view_actions_enabled = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearViewActionsEnabled() {
+        copyOnWrite();
+        instance.clearViewActionsEnabled();
+        return this;
+      }
+
+      /**
+       * <pre>
+       * The EventID of the first page response. Must be present for attention
+       * logging.
+       * </pre>
+       *
+       * <code>bytes root_event_id = 6;</code>
+       * @return The rootEventId.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getRootEventId() {
+        return instance.getRootEventId();
+      }
+      /**
+       * <pre>
+       * The EventID of the first page response. Must be present for attention
+       * logging.
+       * </pre>
+       *
+       * <code>bytes root_event_id = 6;</code>
+       * @param value The rootEventId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRootEventId(com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setRootEventId(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * The EventID of the first page response. Must be present for attention
+       * logging.
+       * </pre>
+       *
+       * <code>bytes root_event_id = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRootEventId() {
+        copyOnWrite();
+        instance.clearRootEventId();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:feedui.LoggingParameters)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new org.chromium.components.feed.proto.FeedUiProto.LoggingParameters();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "sessionId_",
+              "email_",
+              "clientInstanceId_",
+              "loggingEnabled_",
+              "viewActionsEnabled_",
+              "rootEventId_",
+            };
+            java.lang.String info =
+                "\u0000\u0006\u0000\u0000\u0001\u0006\u0006\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +
+                "\u0003\u0208\u0004\u0007\u0005\u0007\u0006\n";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<org.chromium.components.feed.proto.FeedUiProto.LoggingParameters> parser = PARSER;
+          if (parser == null) {
+            synchronized (org.chromium.components.feed.proto.FeedUiProto.LoggingParameters.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser =
+                    new DefaultInstanceBasedParser<org.chromium.components.feed.proto.FeedUiProto.LoggingParameters>(
+                        DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:feedui.LoggingParameters)
+    private static final org.chromium.components.feed.proto.FeedUiProto.LoggingParameters DEFAULT_INSTANCE;
+    static {
+      LoggingParameters defaultInstance = new LoggingParameters();
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = defaultInstance;
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        LoggingParameters.class, defaultInstance);
+    }
+
+    public static org.chromium.components.feed.proto.FeedUiProto.LoggingParameters getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<LoggingParameters> PARSER;
+
+    public static com.google.protobuf.Parser<LoggingParameters> parser() {
       return DEFAULT_INSTANCE.getParserForType();
     }
   }
@@ -2114,6 +3260,14 @@ public final class FeedUiProto {
        * <code>CANT_REFRESH = 2;</code>
        */
       CANT_REFRESH(2),
+      /**
+       * <pre>
+       * There is no content because there are no web feed subscriptions.
+       * </pre>
+       *
+       * <code>NO_WEB_FEED_SUBSCRIPTIONS = 3;</code>
+       */
+      NO_WEB_FEED_SUBSCRIPTIONS(3),
       UNRECOGNIZED(-1),
       ;
 
@@ -2137,6 +3291,14 @@ public final class FeedUiProto {
        * <code>CANT_REFRESH = 2;</code>
        */
       public static final int CANT_REFRESH_VALUE = 2;
+      /**
+       * <pre>
+       * There is no content because there are no web feed subscriptions.
+       * </pre>
+       *
+       * <code>NO_WEB_FEED_SUBSCRIPTIONS = 3;</code>
+       */
+      public static final int NO_WEB_FEED_SUBSCRIPTIONS_VALUE = 3;
 
 
       @java.lang.Override
@@ -2163,6 +3325,7 @@ public final class FeedUiProto {
           case 0: return UNKNOWN;
           case 1: return NO_CARDS_AVAILABLE;
           case 2: return CANT_REFRESH;
+          case 3: return NO_WEB_FEED_SUBSCRIPTIONS;
           default: return null;
         }
       }

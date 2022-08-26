@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class Decryptor_Internal {
 
@@ -100,7 +102,7 @@ org.chromium.mojo.system.DataPipe.ConsumerHandle audioPipe, org.chromium.mojo.sy
         @Override
         public void decrypt(
 int streamType, DecoderBuffer encrypted, 
-DecryptResponse callback) {
+Decrypt_Response callback) {
 
             DecryptorDecryptParams _message = new DecryptorDecryptParams();
 
@@ -141,7 +143,7 @@ int streamType) {
         @Override
         public void initializeAudioDecoder(
 AudioDecoderConfig config, 
-InitializeAudioDecoderResponse callback) {
+InitializeAudioDecoder_Response callback) {
 
             DecryptorInitializeAudioDecoderParams _message = new DecryptorInitializeAudioDecoderParams();
 
@@ -163,7 +165,7 @@ InitializeAudioDecoderResponse callback) {
         @Override
         public void initializeVideoDecoder(
 VideoDecoderConfig config, 
-InitializeVideoDecoderResponse callback) {
+InitializeVideoDecoder_Response callback) {
 
             DecryptorInitializeVideoDecoderParams _message = new DecryptorInitializeVideoDecoderParams();
 
@@ -185,7 +187,7 @@ InitializeVideoDecoderResponse callback) {
         @Override
         public void decryptAndDecodeAudio(
 DecoderBuffer encrypted, 
-DecryptAndDecodeAudioResponse callback) {
+DecryptAndDecodeAudio_Response callback) {
 
             DecryptorDecryptAndDecodeAudioParams _message = new DecryptorDecryptAndDecodeAudioParams();
 
@@ -207,7 +209,7 @@ DecryptAndDecodeAudioResponse callback) {
         @Override
         public void decryptAndDecodeVideo(
 DecoderBuffer encrypted, 
-DecryptAndDecodeVideoResponse callback) {
+DecryptAndDecodeVideo_Response callback) {
 
             DecryptorDecryptAndDecodeVideoParams _message = new DecryptorDecryptAndDecodeVideoParams();
 
@@ -707,9 +709,9 @@ int streamType) {
 
     static class DecryptorDecryptResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Decryptor.DecryptResponse mCallback;
+        private final Decryptor.Decrypt_Response mCallback;
 
-        DecryptorDecryptResponseParamsForwardToCallback(Decryptor.DecryptResponse callback) {
+        DecryptorDecryptResponseParamsForwardToCallback(Decryptor.Decrypt_Response callback) {
             this.mCallback = callback;
         }
 
@@ -734,7 +736,7 @@ int streamType) {
         }
     }
 
-    static class DecryptorDecryptResponseParamsProxyToResponder implements Decryptor.DecryptResponse {
+    static class DecryptorDecryptResponseParamsProxyToResponder implements Decryptor.Decrypt_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -962,9 +964,9 @@ int streamType) {
 
     static class DecryptorInitializeAudioDecoderResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Decryptor.InitializeAudioDecoderResponse mCallback;
+        private final Decryptor.InitializeAudioDecoder_Response mCallback;
 
-        DecryptorInitializeAudioDecoderResponseParamsForwardToCallback(Decryptor.InitializeAudioDecoderResponse callback) {
+        DecryptorInitializeAudioDecoderResponseParamsForwardToCallback(Decryptor.InitializeAudioDecoder_Response callback) {
             this.mCallback = callback;
         }
 
@@ -989,7 +991,7 @@ int streamType) {
         }
     }
 
-    static class DecryptorInitializeAudioDecoderResponseParamsProxyToResponder implements Decryptor.InitializeAudioDecoderResponse {
+    static class DecryptorInitializeAudioDecoderResponseParamsProxyToResponder implements Decryptor.InitializeAudioDecoder_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1150,9 +1152,9 @@ int streamType) {
 
     static class DecryptorInitializeVideoDecoderResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Decryptor.InitializeVideoDecoderResponse mCallback;
+        private final Decryptor.InitializeVideoDecoder_Response mCallback;
 
-        DecryptorInitializeVideoDecoderResponseParamsForwardToCallback(Decryptor.InitializeVideoDecoderResponse callback) {
+        DecryptorInitializeVideoDecoderResponseParamsForwardToCallback(Decryptor.InitializeVideoDecoder_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1177,7 +1179,7 @@ int streamType) {
         }
     }
 
-    static class DecryptorInitializeVideoDecoderResponseParamsProxyToResponder implements Decryptor.InitializeVideoDecoderResponse {
+    static class DecryptorInitializeVideoDecoderResponseParamsProxyToResponder implements Decryptor.InitializeVideoDecoder_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1364,9 +1366,9 @@ int streamType) {
 
     static class DecryptorDecryptAndDecodeAudioResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Decryptor.DecryptAndDecodeAudioResponse mCallback;
+        private final Decryptor.DecryptAndDecodeAudio_Response mCallback;
 
-        DecryptorDecryptAndDecodeAudioResponseParamsForwardToCallback(Decryptor.DecryptAndDecodeAudioResponse callback) {
+        DecryptorDecryptAndDecodeAudioResponseParamsForwardToCallback(Decryptor.DecryptAndDecodeAudio_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1391,7 +1393,7 @@ int streamType) {
         }
     }
 
-    static class DecryptorDecryptAndDecodeAudioResponseParamsProxyToResponder implements Decryptor.DecryptAndDecodeAudioResponse {
+    static class DecryptorDecryptAndDecodeAudioResponseParamsProxyToResponder implements Decryptor.DecryptAndDecodeAudio_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1571,9 +1573,9 @@ int streamType) {
 
     static class DecryptorDecryptAndDecodeVideoResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Decryptor.DecryptAndDecodeVideoResponse mCallback;
+        private final Decryptor.DecryptAndDecodeVideo_Response mCallback;
 
-        DecryptorDecryptAndDecodeVideoResponseParamsForwardToCallback(Decryptor.DecryptAndDecodeVideoResponse callback) {
+        DecryptorDecryptAndDecodeVideoResponseParamsForwardToCallback(Decryptor.DecryptAndDecodeVideo_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1598,7 +1600,7 @@ int streamType) {
         }
     }
 
-    static class DecryptorDecryptAndDecodeVideoResponseParamsProxyToResponder implements Decryptor.DecryptAndDecodeVideoResponse {
+    static class DecryptorDecryptAndDecodeVideoResponseParamsProxyToResponder implements Decryptor.DecryptAndDecodeVideo_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

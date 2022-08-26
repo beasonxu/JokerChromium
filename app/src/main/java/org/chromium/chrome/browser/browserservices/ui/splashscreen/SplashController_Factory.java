@@ -1,11 +1,11 @@
 package org.chromium.chrome.browser.browserservices.ui.splashscreen;
 
+import android.app.Activity;
 import dagger.Lazy;
 import dagger.internal.DoubleCheck;
 import dagger.internal.Factory;
 import javax.annotation.Generated;
 import javax.inject.Provider;
-import org.chromium.chrome.browser.app.ChromeActivity;
 import org.chromium.chrome.browser.browserservices.trustedwebactivityui.TwaFinishHandler;
 import org.chromium.chrome.browser.compositor.CompositorViewHolder;
 import org.chromium.chrome.browser.customtabs.CustomTabOrientationController;
@@ -22,7 +22,7 @@ import org.chromium.chrome.browser.lifecycle.ActivityLifecycleDispatcher;
     "rawtypes"
 })
 public final class SplashController_Factory implements Factory<SplashController> {
-  private final Provider<ChromeActivity<?>> activityProvider;
+  private final Provider<Activity> activityProvider;
 
   private final Provider<ActivityLifecycleDispatcher> lifecycleDispatcherProvider;
 
@@ -36,7 +36,7 @@ public final class SplashController_Factory implements Factory<SplashController>
 
   private final Provider<CompositorViewHolder> compositorViewHolderProvider;
 
-  public SplashController_Factory(Provider<ChromeActivity<?>> activityProvider,
+  public SplashController_Factory(Provider<Activity> activityProvider,
       Provider<ActivityLifecycleDispatcher> lifecycleDispatcherProvider,
       Provider<TabObserverRegistrar> tabObserverRegistrarProvider,
       Provider<CustomTabOrientationController> orientationControllerProvider,
@@ -57,7 +57,7 @@ public final class SplashController_Factory implements Factory<SplashController>
     return newInstance(activityProvider.get(), lifecycleDispatcherProvider.get(), tabObserverRegistrarProvider.get(), orientationControllerProvider.get(), finishHandlerProvider.get(), tabProvider.get(), DoubleCheck.lazy(compositorViewHolderProvider));
   }
 
-  public static SplashController_Factory create(Provider<ChromeActivity<?>> activityProvider,
+  public static SplashController_Factory create(Provider<Activity> activityProvider,
       Provider<ActivityLifecycleDispatcher> lifecycleDispatcherProvider,
       Provider<TabObserverRegistrar> tabObserverRegistrarProvider,
       Provider<CustomTabOrientationController> orientationControllerProvider,
@@ -67,7 +67,7 @@ public final class SplashController_Factory implements Factory<SplashController>
     return new SplashController_Factory(activityProvider, lifecycleDispatcherProvider, tabObserverRegistrarProvider, orientationControllerProvider, finishHandlerProvider, tabProvider, compositorViewHolderProvider);
   }
 
-  public static SplashController newInstance(ChromeActivity<?> activity,
+  public static SplashController newInstance(Activity activity,
       ActivityLifecycleDispatcher lifecycleDispatcher, TabObserverRegistrar tabObserverRegistrar,
       CustomTabOrientationController orientationController, TwaFinishHandler finishHandler,
       CustomTabActivityTabProvider tabProvider, Lazy<CompositorViewHolder> compositorViewHolder) {

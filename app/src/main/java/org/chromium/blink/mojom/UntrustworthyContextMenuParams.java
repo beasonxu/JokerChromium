@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class UntrustworthyContextMenuParams extends org.chromium.mojo.bindings.Struct {
 
@@ -49,6 +51,7 @@ public final class UntrustworthyContextMenuParams extends org.chromium.mojo.bind
     public int inputFieldType;
     public org.chromium.gfx.mojom.Rect selectionRect;
     public int selectionStartOffset;
+    public boolean openedFromHighlight;
 
     private UntrustworthyContextMenuParams(int version) {
         super(STRUCT_SIZE, version);
@@ -108,6 +111,10 @@ public final class UntrustworthyContextMenuParams extends org.chromium.mojo.bind
                 {
                     
                 result.isEditable = decoder0.readBoolean(20, 2);
+                }
+                {
+                    
+                result.openedFromHighlight = decoder0.readBoolean(20, 3);
                 }
                 {
                     
@@ -264,6 +271,8 @@ public final class UntrustworthyContextMenuParams extends org.chromium.mojo.bind
         encoder0.encode(this.spellcheckEnabled, 20, 1);
         
         encoder0.encode(this.isEditable, 20, 2);
+        
+        encoder0.encode(this.openedFromHighlight, 20, 3);
         
         encoder0.encode(this.linkUrl, 24, false);
         

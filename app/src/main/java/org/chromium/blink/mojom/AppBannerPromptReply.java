@@ -13,8 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class AppBannerPromptReply {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        AppBannerPromptReply.NONE,
+        AppBannerPromptReply.CANCEL})
+    public @interface EnumType {}
 
     public static final int NONE = 0;
     public static final int CANCEL = 1;

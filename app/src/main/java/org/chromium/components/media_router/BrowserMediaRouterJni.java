@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class BrowserMediaRouterJni implements BrowserMediaRouter.Natives {
+class BrowserMediaRouterJni implements BrowserMediaRouter.Natives {
   private static BrowserMediaRouter.Natives testInstance;
 
   public static final JniStaticTestMocker<BrowserMediaRouter.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.media_router.BrowserMediaRouter.Natives>() {

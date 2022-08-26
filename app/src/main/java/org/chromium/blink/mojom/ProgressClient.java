@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ProgressClient extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface ProgressClient extends org.chromium.mojo.bindings.Interface {
     }
 
     Manager<ProgressClient, ProgressClient.Proxy> MANAGER = ProgressClient_Internal.MANAGER;
-
 
     void onProgress(
 long delta);

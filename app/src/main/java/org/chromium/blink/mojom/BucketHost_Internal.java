@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class BucketHost_Internal {
 
@@ -71,7 +73,7 @@ class BucketHost_Internal {
         @Override
         public void persist(
 
-PersistResponse callback) {
+Persist_Response callback) {
 
             BucketHostPersistParams _message = new BucketHostPersistParams();
 
@@ -91,7 +93,7 @@ PersistResponse callback) {
         @Override
         public void persisted(
 
-PersistedResponse callback) {
+Persisted_Response callback) {
 
             BucketHostPersistedParams _message = new BucketHostPersistedParams();
 
@@ -111,7 +113,7 @@ PersistedResponse callback) {
         @Override
         public void estimate(
 
-EstimateResponse callback) {
+Estimate_Response callback) {
 
             BucketHostEstimateParams _message = new BucketHostEstimateParams();
 
@@ -131,7 +133,7 @@ EstimateResponse callback) {
         @Override
         public void durability(
 
-DurabilityResponse callback) {
+Durability_Response callback) {
 
             BucketHostDurabilityParams _message = new BucketHostDurabilityParams();
 
@@ -151,7 +153,7 @@ DurabilityResponse callback) {
         @Override
         public void setExpires(
 org.chromium.mojo_base.mojom.Time expires, 
-SetExpiresResponse callback) {
+SetExpires_Response callback) {
 
             BucketHostSetExpiresParams _message = new BucketHostSetExpiresParams();
 
@@ -173,7 +175,7 @@ SetExpiresResponse callback) {
         @Override
         public void expires(
 
-ExpiresResponse callback) {
+Expires_Response callback) {
 
             BucketHostExpiresParams _message = new BucketHostExpiresParams();
 
@@ -481,9 +483,9 @@ ExpiresResponse callback) {
 
     static class BucketHostPersistResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BucketHost.PersistResponse mCallback;
+        private final BucketHost.Persist_Response mCallback;
 
-        BucketHostPersistResponseParamsForwardToCallback(BucketHost.PersistResponse callback) {
+        BucketHostPersistResponseParamsForwardToCallback(BucketHost.Persist_Response callback) {
             this.mCallback = callback;
         }
 
@@ -508,7 +510,7 @@ ExpiresResponse callback) {
         }
     }
 
-    static class BucketHostPersistResponseParamsProxyToResponder implements BucketHost.PersistResponse {
+    static class BucketHostPersistResponseParamsProxyToResponder implements BucketHost.Persist_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -670,9 +672,9 @@ ExpiresResponse callback) {
 
     static class BucketHostPersistedResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BucketHost.PersistedResponse mCallback;
+        private final BucketHost.Persisted_Response mCallback;
 
-        BucketHostPersistedResponseParamsForwardToCallback(BucketHost.PersistedResponse callback) {
+        BucketHostPersistedResponseParamsForwardToCallback(BucketHost.Persisted_Response callback) {
             this.mCallback = callback;
         }
 
@@ -697,7 +699,7 @@ ExpiresResponse callback) {
         }
     }
 
-    static class BucketHostPersistedResponseParamsProxyToResponder implements BucketHost.PersistedResponse {
+    static class BucketHostPersistedResponseParamsProxyToResponder implements BucketHost.Persisted_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -866,9 +868,9 @@ ExpiresResponse callback) {
 
     static class BucketHostEstimateResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BucketHost.EstimateResponse mCallback;
+        private final BucketHost.Estimate_Response mCallback;
 
-        BucketHostEstimateResponseParamsForwardToCallback(BucketHost.EstimateResponse callback) {
+        BucketHostEstimateResponseParamsForwardToCallback(BucketHost.Estimate_Response callback) {
             this.mCallback = callback;
         }
 
@@ -893,7 +895,7 @@ ExpiresResponse callback) {
         }
     }
 
-    static class BucketHostEstimateResponseParamsProxyToResponder implements BucketHost.EstimateResponse {
+    static class BucketHostEstimateResponseParamsProxyToResponder implements BucketHost.Estimate_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1059,9 +1061,9 @@ ExpiresResponse callback) {
 
     static class BucketHostDurabilityResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BucketHost.DurabilityResponse mCallback;
+        private final BucketHost.Durability_Response mCallback;
 
-        BucketHostDurabilityResponseParamsForwardToCallback(BucketHost.DurabilityResponse callback) {
+        BucketHostDurabilityResponseParamsForwardToCallback(BucketHost.Durability_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1086,7 +1088,7 @@ ExpiresResponse callback) {
         }
     }
 
-    static class BucketHostDurabilityResponseParamsProxyToResponder implements BucketHost.DurabilityResponse {
+    static class BucketHostDurabilityResponseParamsProxyToResponder implements BucketHost.Durability_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1249,9 +1251,9 @@ ExpiresResponse callback) {
 
     static class BucketHostSetExpiresResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BucketHost.SetExpiresResponse mCallback;
+        private final BucketHost.SetExpires_Response mCallback;
 
-        BucketHostSetExpiresResponseParamsForwardToCallback(BucketHost.SetExpiresResponse callback) {
+        BucketHostSetExpiresResponseParamsForwardToCallback(BucketHost.SetExpires_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1276,7 +1278,7 @@ ExpiresResponse callback) {
         }
     }
 
-    static class BucketHostSetExpiresResponseParamsProxyToResponder implements BucketHost.SetExpiresResponse {
+    static class BucketHostSetExpiresResponseParamsProxyToResponder implements BucketHost.SetExpires_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1437,9 +1439,9 @@ ExpiresResponse callback) {
 
     static class BucketHostExpiresResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BucketHost.ExpiresResponse mCallback;
+        private final BucketHost.Expires_Response mCallback;
 
-        BucketHostExpiresResponseParamsForwardToCallback(BucketHost.ExpiresResponse callback) {
+        BucketHostExpiresResponseParamsForwardToCallback(BucketHost.Expires_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1464,7 +1466,7 @@ ExpiresResponse callback) {
         }
     }
 
-    static class BucketHostExpiresResponseParamsProxyToResponder implements BucketHost.ExpiresResponse {
+    static class BucketHostExpiresResponseParamsProxyToResponder implements BucketHost.Expires_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

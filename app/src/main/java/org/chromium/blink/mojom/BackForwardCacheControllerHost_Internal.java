@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class BackForwardCacheControllerHost_Internal {
 
@@ -49,6 +51,8 @@ class BackForwardCacheControllerHost_Internal {
 
     private static final int EVICT_FROM_BACK_FORWARD_CACHE_ORDINAL = 0;
 
+    private static final int DID_CHANGE_BACK_FORWARD_CACHE_DISABLING_FEATURES_ORDINAL = 1;
+
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements BackForwardCacheControllerHost.Proxy {
 
@@ -71,6 +75,23 @@ int reason) {
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(EVICT_FROM_BACK_FORWARD_CACHE_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void didChangeBackForwardCacheDisablingFeatures(
+long featuresMask) {
+
+            BackForwardCacheControllerHostDidChangeBackForwardCacheDisablingFeaturesParams _message = new BackForwardCacheControllerHostDidChangeBackForwardCacheDisablingFeaturesParams();
+
+            _message.featuresMask = featuresMask;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(DID_CHANGE_BACK_FORWARD_CACHE_DISABLING_FEATURES_ORDINAL)));
 
         }
 
@@ -116,6 +137,19 @@ int reason) {
                     }
 
 
+
+
+
+                    case DID_CHANGE_BACK_FORWARD_CACHE_DISABLING_FEATURES_ORDINAL: {
+
+                        BackForwardCacheControllerHostDidChangeBackForwardCacheDisablingFeaturesParams data =
+                                BackForwardCacheControllerHostDidChangeBackForwardCacheDisablingFeaturesParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().didChangeBackForwardCacheDisablingFeatures(data.featuresMask);
+                        return true;
+                    }
+
+
                     default:
                         return false;
                 }
@@ -143,6 +177,8 @@ int reason) {
                     case org.chromium.mojo.bindings.interfacecontrol.InterfaceControlMessagesConstants.RUN_MESSAGE_ID:
                         return org.chromium.mojo.bindings.InterfaceControlMessagesHelper.handleRun(
                                 getCore(), BackForwardCacheControllerHost_Internal.MANAGER, messageWithHeader, receiver);
+
+
 
 
 
@@ -218,6 +254,69 @@ int reason) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.reason, 8);
+        }
+    }
+
+
+
+    
+    static final class BackForwardCacheControllerHostDidChangeBackForwardCacheDisablingFeaturesParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public long featuresMask;
+
+        private BackForwardCacheControllerHostDidChangeBackForwardCacheDisablingFeaturesParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public BackForwardCacheControllerHostDidChangeBackForwardCacheDisablingFeaturesParams() {
+            this(0);
+        }
+
+        public static BackForwardCacheControllerHostDidChangeBackForwardCacheDisablingFeaturesParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static BackForwardCacheControllerHostDidChangeBackForwardCacheDisablingFeaturesParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static BackForwardCacheControllerHostDidChangeBackForwardCacheDisablingFeaturesParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            BackForwardCacheControllerHostDidChangeBackForwardCacheDisablingFeaturesParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new BackForwardCacheControllerHostDidChangeBackForwardCacheDisablingFeaturesParams(elementsOrVersion);
+                    {
+                        
+                    result.featuresMask = decoder0.readLong(8);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.featuresMask, 8);
         }
     }
 

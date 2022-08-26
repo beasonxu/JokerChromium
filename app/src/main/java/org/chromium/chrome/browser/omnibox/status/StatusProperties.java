@@ -9,23 +9,23 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.util.ObjectsCompat;
 
-import org.chromium.base.ApiCompatibilityUtils;
-import org.chromium.chrome.R;
+import org.chromium.chrome.browser.omnibox.R;
+import org.chromium.components.browser_ui.styles.SemanticColorUtils;
 import org.chromium.ui.UiUtils;
+import org.chromium.ui.base.ViewUtils;
 import org.chromium.ui.modelutil.PropertyKey;
 import org.chromium.ui.modelutil.PropertyModel.WritableBooleanPropertyKey;
 import org.chromium.ui.modelutil.PropertyModel.WritableFloatPropertyKey;
@@ -36,7 +36,7 @@ import org.chromium.ui.modelutil.PropertyModel.WritableObjectPropertyKey;
 public class StatusProperties {
     // TODO(wylieb): Investigate the case where we only want to swap the tint (if any).
     /** Encapsulates an icon and tint to allow atomic drawable updates for StatusView. */
-    static class StatusIconResource {
+    public static class StatusIconResource {
         private @DrawableRes Integer mIconRes;
         private @ColorRes int mTint;
         private String mIconIdentifier;
@@ -44,21 +44,22 @@ public class StatusProperties {
         private Drawable mDrawable;
         private @StatusView.IconTransitionType int mIconTransitionType =
                 StatusView.IconTransitionType.CROSSFADE;
+        private Runnable mCallback;
 
         /** Constructor for a custom drawable. */
-        StatusIconResource(Drawable drawable) {
+        public StatusIconResource(Drawable drawable) {
             mDrawable = drawable;
         }
 
         /** Constructor for a custom bitmap. */
-        StatusIconResource(String iconIdentifier, Bitmap bitmap, @ColorRes int tint) {
+        public StatusIconResource(String iconIdentifier, Bitmap bitmap, @ColorRes int tint) {
             mIconIdentifier = iconIdentifier;
             mBitmap = bitmap;
             mTint = tint;
         }
 
         /** Constructor for an Android resource. */
-        StatusIconResource(@DrawableRes int iconRes, @ColorRes int tint) {
+        public StatusIconResource(@DrawableRes int iconRes, @ColorRes int tint) {
             mIconRes = iconRes;
             mTint = tint;
         }
@@ -126,6 +127,21 @@ public class StatusProperties {
 
             return true;
         }
+
+        /**
+         * Sets the callback to be run after this icon has been set.
+         * @param callback  The Runnable to be called. Only works for the ROTATE transition and
+         *                  called if the animation has run to completion.
+         */
+        void setAnimationFinishedCallback(Runnable callback) {
+            mCallback = callback;
+        }
+
+        /** @return the callback to be run after this icon has been set, if any. */
+        @Nullable
+        Runnable getAnimationFinishedCallback() {
+            return mCallback;
+        }
     }
 
     /**
@@ -133,6 +149,11 @@ public class StatusProperties {
      * highlight.
      */
     static class PermissionIconResource extends StatusIconResource {
+        // Size of the drawable in the omnibox. This class creates a circle of this size
+        // and draw a icon of size INNER_ICON_DP centered in the circle.
+        public static final int OMNIBOX_ICON_DP = 24;
+        public static final int INNER_ICON_DP = 20;
+
         private boolean mIsIncognito;
 
         PermissionIconResource(Drawable drawable, boolean isIncognito) {
@@ -147,51 +168,36 @@ public class StatusProperties {
             if (icon == null) {
                 return null;
             }
-            // Use the dark mode color if in incognito mode.
-            icon.setColorFilter(ApiCompatibilityUtils.getColor(resources,
-                                        mIsIncognito ? R.color.default_icon_color_blue_light
-                                                     : R.color.default_icon_color_blue),
-                    PorterDuff.Mode.SRC_IN);
-            Bitmap circleCopy = createCircleBackground(resources, icon.getIntrinsicWidth());
-            Canvas canvas = new Canvas(circleCopy);
-            float radius = 0.5f * canvas.getWidth();
-            Bitmap iconBitmap = createScaledIcon(icon, 0.9f);
-            canvas.drawBitmap(iconBitmap, radius - iconBitmap.getWidth() / 2,
-                    radius - iconBitmap.getHeight() / 2, null);
-            return new BitmapDrawable(resources, circleCopy);
+            assert icon.getIntrinsicWidth() == icon.getIntrinsicHeight();
+            int width = ViewUtils.dpToPx(context, OMNIBOX_ICON_DP);
+            Bitmap bitmap = Bitmap.createBitmap(width, width, Bitmap.Config.ARGB_8888);
+            Canvas canvas = new Canvas(bitmap);
+            drawCircleBackground(canvas, context, resources);
+            drawCenteredIcon(context, canvas, icon);
+            return new BitmapDrawable(resources, bitmap);
         }
 
-        /** Returns a scaled bitmap of the icon passed in. */
-        private Bitmap createScaledIcon(@NonNull Drawable icon, float scaleFactor) {
-            // Create bitmap and canvas from icon.
-            Bitmap iconBitmap = Bitmap.createBitmap(
-                    icon.getIntrinsicWidth(), icon.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-            Canvas canvas = new Canvas(iconBitmap);
-            int side = canvas.getWidth();
-            assert side == canvas.getHeight();
-            icon.setBounds(0, 0, side, side);
+        /** Draws the provided icon at INNER_ICON_DP on the canvas. */
+        private void drawCenteredIcon(Context context, Canvas canvas, Drawable icon) {
+            int width = canvas.getWidth();
+            int iconWidth = ViewUtils.dpToPx(context, INNER_ICON_DP);
+            int boundOffset = (width - iconWidth) / 2;
+            icon.setBounds(
+                    boundOffset, boundOffset, boundOffset + iconWidth, boundOffset + iconWidth);
             icon.draw(canvas);
-
-            // Scale bitmap
-            int scaledWidth = Math.round(icon.getIntrinsicWidth() * scaleFactor);
-            int scaledHeight = Math.round(icon.getIntrinsicHeight() * scaleFactor);
-            return Bitmap.createScaledBitmap(iconBitmap, scaledWidth, scaledHeight, false);
         }
 
-        /** Returns a bitmap of the circle icon to be used for the Drawable. */
-        private Bitmap createCircleBackground(Resources resources, int width) {
-            // Recreate circle every time due to changing dpi and light/dark themes.
-            float radius = 0.5f * width;
-            Bitmap circleBackground = Bitmap.createBitmap(width, width, Bitmap.Config.ARGB_8888);
-            Canvas canvas = new Canvas(circleBackground);
+        /** Draws a circle background on canvas. */
+        private void drawCircleBackground(Canvas canvas, Context context, Resources resources) {
+            float radius = 0.5f * canvas.getWidth();
             Paint paint = new Paint();
             // Use the dark mode color if in incognito mode.
-            paint.setColor(ApiCompatibilityUtils.getColor(resources,
-                    mIsIncognito ? R.color.toolbar_background_primary_dark
-                                 : R.color.toolbar_background_primary));
+            final @ColorInt int color = mIsIncognito
+                    ? context.getColor(R.color.toolbar_background_primary_dark)
+                    : SemanticColorUtils.getToolbarBackgroundPrimary(context);
+            paint.setColor(color);
             paint.setAntiAlias(true);
             canvas.drawCircle(radius, radius, radius, paint);
-            return circleBackground;
         }
     }
 
@@ -203,7 +209,7 @@ public class StatusProperties {
             new WritableBooleanPropertyKey();
 
     /** The status separator color. */
-    static final WritableIntPropertyKey SEPARATOR_COLOR_RES = new WritableIntPropertyKey();
+    static final WritableIntPropertyKey SEPARATOR_COLOR = new WritableIntPropertyKey();
 
     /** Whether the icon is shown. */
     static final WritableBooleanPropertyKey SHOW_STATUS_ICON = new WritableBooleanPropertyKey();
@@ -212,8 +218,12 @@ public class StatusProperties {
     static final WritableObjectPropertyKey<View.OnClickListener> STATUS_CLICK_LISTENER =
             new WritableObjectPropertyKey<>();
 
-    /** The accessibility string shown upon a long click on security icon. */
-    static final WritableIntPropertyKey STATUS_ICON_ACCESSIBILITY_TOAST_RES =
+    /** The accessibility string shown upon a long click. */
+    static final WritableIntPropertyKey STATUS_ACCESSIBILITY_TOAST_RES =
+            new WritableIntPropertyKey();
+
+    /** The accessibility description read for double tab upon a click on status view. */
+    static final WritableIntPropertyKey STATUS_ACCESSIBILITY_DOUBLE_TAP_DESCRIPTION_RES =
             new WritableIntPropertyKey();
 
     /** Alpha of the icon. */
@@ -227,8 +237,7 @@ public class StatusProperties {
             new WritableObjectPropertyKey<>();
 
     /** Text color of the verbose status text field. */
-    static final WritableIntPropertyKey VERBOSE_STATUS_TEXT_COLOR_RES =
-            new WritableIntPropertyKey();
+    static final WritableIntPropertyKey VERBOSE_STATUS_TEXT_COLOR = new WritableIntPropertyKey();
 
     /** The string resource used for the content of the verbose status text field. */
     static final WritableIntPropertyKey VERBOSE_STATUS_TEXT_STRING_RES =
@@ -245,14 +254,15 @@ public class StatusProperties {
     public static final PropertyKey[] ALL_KEYS = new PropertyKey[] {
             ANIMATIONS_ENABLED,
             INCOGNITO_BADGE_VISIBLE,
-            SEPARATOR_COLOR_RES,
+            SEPARATOR_COLOR,
             SHOW_STATUS_ICON,
             STATUS_CLICK_LISTENER,
-            STATUS_ICON_ACCESSIBILITY_TOAST_RES,
+            STATUS_ACCESSIBILITY_TOAST_RES,
+            STATUS_ACCESSIBILITY_DOUBLE_TAP_DESCRIPTION_RES,
             STATUS_ICON_ALPHA,
             STATUS_ICON_DESCRIPTION_RES,
             STATUS_ICON_RESOURCE,
-            VERBOSE_STATUS_TEXT_COLOR_RES,
+            VERBOSE_STATUS_TEXT_COLOR,
             VERBOSE_STATUS_TEXT_STRING_RES,
             VERBOSE_STATUS_TEXT_VISIBLE,
             VERBOSE_STATUS_TEXT_WIDTH,

@@ -10,7 +10,7 @@ import org.chromium.content_public.browser.WebContents;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class PageInfoControllerJni implements PageInfoController.Natives {
+class PageInfoControllerJni implements PageInfoController.Natives {
   private static PageInfoController.Natives testInstance;
 
   public static final JniStaticTestMocker<PageInfoController.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.page_info.PageInfoController.Natives>() {
@@ -38,6 +38,12 @@ final class PageInfoControllerJni implements PageInfoController.Natives {
   public void recordPageInfoAction(long nativePageInfoControllerAndroid, PageInfoController caller,
       int action) {
     GEN_JNI.org_chromium_components_page_1info_PageInfoController_recordPageInfoAction(nativePageInfoControllerAndroid, caller, action);
+  }
+
+  @Override
+  public void setAboutThisSiteShown(long nativePageInfoControllerAndroid, PageInfoController caller,
+      boolean wasAboutThisSiteShown) {
+    GEN_JNI.org_chromium_components_page_1info_PageInfoController_setAboutThisSiteShown(nativePageInfoControllerAndroid, caller, wasAboutThisSiteShown);
   }
 
   @Override

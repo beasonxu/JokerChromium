@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class UsbChooserDialogJni implements UsbChooserDialog.Natives {
+class UsbChooserDialogJni implements UsbChooserDialog.Natives {
   private static UsbChooserDialog.Natives testInstance;
 
   public static final JniStaticTestMocker<UsbChooserDialog.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.device_dialog.UsbChooserDialog.Natives>() {

@@ -13,7 +13,7 @@ import org.chromium.chrome.browser.video_tutorials.Tutorial;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class VideoTutorialServiceBridgeJni implements VideoTutorialServiceBridge.Natives {
+class VideoTutorialServiceBridgeJni implements VideoTutorialServiceBridge.Natives {
   private static VideoTutorialServiceBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<VideoTutorialServiceBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.video_tutorials.bridges.VideoTutorialServiceBridge.Natives>() {

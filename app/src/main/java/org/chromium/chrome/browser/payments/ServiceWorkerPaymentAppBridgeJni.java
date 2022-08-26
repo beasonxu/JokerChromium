@@ -11,7 +11,7 @@ import org.chromium.url.GURL;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ServiceWorkerPaymentAppBridgeJni implements ServiceWorkerPaymentAppBridge.Natives {
+class ServiceWorkerPaymentAppBridgeJni implements ServiceWorkerPaymentAppBridge.Natives {
   private static ServiceWorkerPaymentAppBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<ServiceWorkerPaymentAppBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.payments.ServiceWorkerPaymentAppBridge.Natives>() {

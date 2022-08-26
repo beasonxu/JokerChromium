@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class VideoEncodeAccelerator_Internal {
 
@@ -53,11 +55,13 @@ class VideoEncodeAccelerator_Internal {
 
     private static final int USE_OUTPUT_BITSTREAM_BUFFER_ORDINAL = 2;
 
-    private static final int REQUEST_ENCODING_PARAMETERS_CHANGE_ORDINAL = 3;
+    private static final int REQUEST_ENCODING_PARAMETERS_CHANGE_WITH_LAYERS_ORDINAL = 3;
 
-    private static final int IS_FLUSH_SUPPORTED_ORDINAL = 4;
+    private static final int REQUEST_ENCODING_PARAMETERS_CHANGE_WITH_BITRATE_ORDINAL = 4;
 
-    private static final int FLUSH_ORDINAL = 5;
+    private static final int IS_FLUSH_SUPPORTED_ORDINAL = 5;
+
+    private static final int FLUSH_ORDINAL = 6;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements VideoEncodeAccelerator.Proxy {
@@ -70,14 +74,16 @@ class VideoEncodeAccelerator_Internal {
 
         @Override
         public void initialize(
-VideoEncodeAcceleratorConfig config, VideoEncodeAcceleratorClient client, 
-InitializeResponse callback) {
+VideoEncodeAcceleratorConfig config, org.chromium.mojo.bindings.AssociatedInterfaceNotSupported client, MediaLog mediaLog, 
+Initialize_Response callback) {
 
             VideoEncodeAcceleratorInitializeParams _message = new VideoEncodeAcceleratorInitializeParams();
 
             _message.config = config;
 
             _message.client = client;
+
+            _message.mediaLog = mediaLog;
 
 
             getProxyHandler().getMessageReceiver().acceptWithResponder(
@@ -95,7 +101,7 @@ InitializeResponse callback) {
         @Override
         public void encode(
 VideoFrame frame, boolean forceKeyframe, 
-EncodeResponse callback) {
+Encode_Response callback) {
 
             VideoEncodeAcceleratorEncodeParams _message = new VideoEncodeAcceleratorEncodeParams();
 
@@ -118,13 +124,13 @@ EncodeResponse callback) {
 
         @Override
         public void useOutputBitstreamBuffer(
-int bitstreamBufferId, org.chromium.mojo.system.SharedBufferHandle buffer) {
+int bitstreamBufferId, org.chromium.mojo_base.mojom.UnsafeSharedMemoryRegion region) {
 
             VideoEncodeAcceleratorUseOutputBitstreamBufferParams _message = new VideoEncodeAcceleratorUseOutputBitstreamBufferParams();
 
             _message.bitstreamBufferId = bitstreamBufferId;
 
-            _message.buffer = buffer;
+            _message.region = region;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -136,10 +142,10 @@ int bitstreamBufferId, org.chromium.mojo.system.SharedBufferHandle buffer) {
 
 
         @Override
-        public void requestEncodingParametersChange(
+        public void requestEncodingParametersChangeWithLayers(
 VideoBitrateAllocation bitrateAllocation, int framerate) {
 
-            VideoEncodeAcceleratorRequestEncodingParametersChangeParams _message = new VideoEncodeAcceleratorRequestEncodingParametersChangeParams();
+            VideoEncodeAcceleratorRequestEncodingParametersChangeWithLayersParams _message = new VideoEncodeAcceleratorRequestEncodingParametersChangeWithLayersParams();
 
             _message.bitrateAllocation = bitrateAllocation;
 
@@ -149,7 +155,26 @@ VideoBitrateAllocation bitrateAllocation, int framerate) {
             getProxyHandler().getMessageReceiver().accept(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(REQUEST_ENCODING_PARAMETERS_CHANGE_ORDINAL)));
+                            new org.chromium.mojo.bindings.MessageHeader(REQUEST_ENCODING_PARAMETERS_CHANGE_WITH_LAYERS_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void requestEncodingParametersChangeWithBitrate(
+Bitrate bitrate, int framerate) {
+
+            VideoEncodeAcceleratorRequestEncodingParametersChangeWithBitrateParams _message = new VideoEncodeAcceleratorRequestEncodingParametersChangeWithBitrateParams();
+
+            _message.bitrate = bitrate;
+
+            _message.framerate = framerate;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(REQUEST_ENCODING_PARAMETERS_CHANGE_WITH_BITRATE_ORDINAL)));
 
         }
 
@@ -157,7 +182,7 @@ VideoBitrateAllocation bitrateAllocation, int framerate) {
         @Override
         public void isFlushSupported(
 
-IsFlushSupportedResponse callback) {
+IsFlushSupported_Response callback) {
 
             VideoEncodeAcceleratorIsFlushSupportedParams _message = new VideoEncodeAcceleratorIsFlushSupportedParams();
 
@@ -177,7 +202,7 @@ IsFlushSupportedResponse callback) {
         @Override
         public void flush(
 
-FlushResponse callback) {
+Flush_Response callback) {
 
             VideoEncodeAcceleratorFlushParams _message = new VideoEncodeAcceleratorFlushParams();
 
@@ -234,7 +259,7 @@ FlushResponse callback) {
                         VideoEncodeAcceleratorUseOutputBitstreamBufferParams data =
                                 VideoEncodeAcceleratorUseOutputBitstreamBufferParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().useOutputBitstreamBuffer(data.bitstreamBufferId, data.buffer);
+                        getImpl().useOutputBitstreamBuffer(data.bitstreamBufferId, data.region);
                         return true;
                     }
 
@@ -242,12 +267,25 @@ FlushResponse callback) {
 
 
 
-                    case REQUEST_ENCODING_PARAMETERS_CHANGE_ORDINAL: {
+                    case REQUEST_ENCODING_PARAMETERS_CHANGE_WITH_LAYERS_ORDINAL: {
 
-                        VideoEncodeAcceleratorRequestEncodingParametersChangeParams data =
-                                VideoEncodeAcceleratorRequestEncodingParametersChangeParams.deserialize(messageWithHeader.getPayload());
+                        VideoEncodeAcceleratorRequestEncodingParametersChangeWithLayersParams data =
+                                VideoEncodeAcceleratorRequestEncodingParametersChangeWithLayersParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().requestEncodingParametersChange(data.bitrateAllocation, data.framerate);
+                        getImpl().requestEncodingParametersChangeWithLayers(data.bitrateAllocation, data.framerate);
+                        return true;
+                    }
+
+
+
+
+
+                    case REQUEST_ENCODING_PARAMETERS_CHANGE_WITH_BITRATE_ORDINAL: {
+
+                        VideoEncodeAcceleratorRequestEncodingParametersChangeWithBitrateParams data =
+                                VideoEncodeAcceleratorRequestEncodingParametersChangeWithBitrateParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().requestEncodingParametersChangeWithBitrate(data.bitrate, data.framerate);
                         return true;
                     }
 
@@ -295,7 +333,7 @@ FlushResponse callback) {
                         VideoEncodeAcceleratorInitializeParams data =
                                 VideoEncodeAcceleratorInitializeParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().initialize(data.config, data.client, new VideoEncodeAcceleratorInitializeResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().initialize(data.config, data.client, data.mediaLog, new VideoEncodeAcceleratorInitializeResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -313,6 +351,8 @@ FlushResponse callback) {
                         getImpl().encode(data.frame, data.forceKeyframe, new VideoEncodeAcceleratorEncodeResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
+
+
 
 
 
@@ -361,11 +401,12 @@ FlushResponse callback) {
     
     static final class VideoEncodeAcceleratorInitializeParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public VideoEncodeAcceleratorConfig config;
-        public VideoEncodeAcceleratorClient client;
+        public org.chromium.mojo.bindings.AssociatedInterfaceNotSupported client;
+        public MediaLog mediaLog;
 
         private VideoEncodeAcceleratorInitializeParams(int version) {
             super(STRUCT_SIZE, version);
@@ -407,7 +448,11 @@ FlushResponse callback) {
                     }
                     {
                         
-                    result.client = decoder0.readServiceInterface(16, false, VideoEncodeAcceleratorClient.MANAGER);
+                    result.client = decoder0.readAssociatedServiceInterfaceNotSupported(16, false);
+                    }
+                    {
+                        
+                    result.mediaLog = decoder0.readServiceInterface(24, false, MediaLog.MANAGER);
                     }
 
             } finally {
@@ -423,7 +468,9 @@ FlushResponse callback) {
             
             encoder0.encode(this.config, 8, false);
             
-            encoder0.encode(this.client, 16, false, VideoEncodeAcceleratorClient.MANAGER);
+            encoder0.encode(this.client, 16, false);
+            
+            encoder0.encode(this.mediaLog, 24, false, MediaLog.MANAGER);
         }
     }
 
@@ -492,9 +539,9 @@ FlushResponse callback) {
 
     static class VideoEncodeAcceleratorInitializeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final VideoEncodeAccelerator.InitializeResponse mCallback;
+        private final VideoEncodeAccelerator.Initialize_Response mCallback;
 
-        VideoEncodeAcceleratorInitializeResponseParamsForwardToCallback(VideoEncodeAccelerator.InitializeResponse callback) {
+        VideoEncodeAcceleratorInitializeResponseParamsForwardToCallback(VideoEncodeAccelerator.Initialize_Response callback) {
             this.mCallback = callback;
         }
 
@@ -519,7 +566,7 @@ FlushResponse callback) {
         }
     }
 
-    static class VideoEncodeAcceleratorInitializeResponseParamsProxyToResponder implements VideoEncodeAccelerator.InitializeResponse {
+    static class VideoEncodeAcceleratorInitializeResponseParamsProxyToResponder implements VideoEncodeAccelerator.Initialize_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -680,9 +727,9 @@ FlushResponse callback) {
 
     static class VideoEncodeAcceleratorEncodeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final VideoEncodeAccelerator.EncodeResponse mCallback;
+        private final VideoEncodeAccelerator.Encode_Response mCallback;
 
-        VideoEncodeAcceleratorEncodeResponseParamsForwardToCallback(VideoEncodeAccelerator.EncodeResponse callback) {
+        VideoEncodeAcceleratorEncodeResponseParamsForwardToCallback(VideoEncodeAccelerator.Encode_Response callback) {
             this.mCallback = callback;
         }
 
@@ -705,7 +752,7 @@ FlushResponse callback) {
         }
     }
 
-    static class VideoEncodeAcceleratorEncodeResponseParamsProxyToResponder implements VideoEncodeAccelerator.EncodeResponse {
+    static class VideoEncodeAcceleratorEncodeResponseParamsProxyToResponder implements VideoEncodeAccelerator.Encode_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -740,15 +787,14 @@ FlushResponse callback) {
     
     static final class VideoEncodeAcceleratorUseOutputBitstreamBufferParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public int bitstreamBufferId;
-        public org.chromium.mojo.system.SharedBufferHandle buffer;
+        public org.chromium.mojo_base.mojom.UnsafeSharedMemoryRegion region;
 
         private VideoEncodeAcceleratorUseOutputBitstreamBufferParams(int version) {
             super(STRUCT_SIZE, version);
-            this.buffer = org.chromium.mojo.system.InvalidHandle.INSTANCE;
         }
 
         public VideoEncodeAcceleratorUseOutputBitstreamBufferParams() {
@@ -786,7 +832,8 @@ FlushResponse callback) {
                     }
                     {
                         
-                    result.buffer = decoder0.readSharedBufferHandle(12, false);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                    result.region = org.chromium.mojo_base.mojom.UnsafeSharedMemoryRegion.decode(decoder1);
                     }
 
             } finally {
@@ -802,14 +849,14 @@ FlushResponse callback) {
             
             encoder0.encode(this.bitstreamBufferId, 8);
             
-            encoder0.encode(this.buffer, 12, false);
+            encoder0.encode(this.region, 16, false);
         }
     }
 
 
 
     
-    static final class VideoEncodeAcceleratorRequestEncodingParametersChangeParams extends org.chromium.mojo.bindings.Struct {
+    static final class VideoEncodeAcceleratorRequestEncodingParametersChangeWithLayersParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 24;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
@@ -817,15 +864,15 @@ FlushResponse callback) {
         public VideoBitrateAllocation bitrateAllocation;
         public int framerate;
 
-        private VideoEncodeAcceleratorRequestEncodingParametersChangeParams(int version) {
+        private VideoEncodeAcceleratorRequestEncodingParametersChangeWithLayersParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public VideoEncodeAcceleratorRequestEncodingParametersChangeParams() {
+        public VideoEncodeAcceleratorRequestEncodingParametersChangeWithLayersParams() {
             this(0);
         }
 
-        public static VideoEncodeAcceleratorRequestEncodingParametersChangeParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static VideoEncodeAcceleratorRequestEncodingParametersChangeWithLayersParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -834,22 +881,22 @@ FlushResponse callback) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static VideoEncodeAcceleratorRequestEncodingParametersChangeParams deserialize(java.nio.ByteBuffer data) {
+        public static VideoEncodeAcceleratorRequestEncodingParametersChangeWithLayersParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static VideoEncodeAcceleratorRequestEncodingParametersChangeParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static VideoEncodeAcceleratorRequestEncodingParametersChangeWithLayersParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            VideoEncodeAcceleratorRequestEncodingParametersChangeParams result;
+            VideoEncodeAcceleratorRequestEncodingParametersChangeWithLayersParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new VideoEncodeAcceleratorRequestEncodingParametersChangeParams(elementsOrVersion);
+                result = new VideoEncodeAcceleratorRequestEncodingParametersChangeWithLayersParams(elementsOrVersion);
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
@@ -874,6 +921,76 @@ FlushResponse callback) {
             encoder0.encode(this.bitrateAllocation, 8, false);
             
             encoder0.encode(this.framerate, 16);
+        }
+    }
+
+
+
+    
+    static final class VideoEncodeAcceleratorRequestEncodingParametersChangeWithBitrateParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public Bitrate bitrate;
+        public int framerate;
+
+        private VideoEncodeAcceleratorRequestEncodingParametersChangeWithBitrateParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public VideoEncodeAcceleratorRequestEncodingParametersChangeWithBitrateParams() {
+            this(0);
+        }
+
+        public static VideoEncodeAcceleratorRequestEncodingParametersChangeWithBitrateParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static VideoEncodeAcceleratorRequestEncodingParametersChangeWithBitrateParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static VideoEncodeAcceleratorRequestEncodingParametersChangeWithBitrateParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            VideoEncodeAcceleratorRequestEncodingParametersChangeWithBitrateParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new VideoEncodeAcceleratorRequestEncodingParametersChangeWithBitrateParams(elementsOrVersion);
+                    {
+                        
+                    result.bitrate = Bitrate.decode(decoder0, 8);
+                    }
+                    {
+                        
+                    result.framerate = decoder0.readInt(24);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.bitrate, 8, false);
+            
+            encoder0.encode(this.framerate, 24);
         }
     }
 
@@ -998,9 +1115,9 @@ FlushResponse callback) {
 
     static class VideoEncodeAcceleratorIsFlushSupportedResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final VideoEncodeAccelerator.IsFlushSupportedResponse mCallback;
+        private final VideoEncodeAccelerator.IsFlushSupported_Response mCallback;
 
-        VideoEncodeAcceleratorIsFlushSupportedResponseParamsForwardToCallback(VideoEncodeAccelerator.IsFlushSupportedResponse callback) {
+        VideoEncodeAcceleratorIsFlushSupportedResponseParamsForwardToCallback(VideoEncodeAccelerator.IsFlushSupported_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1025,7 +1142,7 @@ FlushResponse callback) {
         }
     }
 
-    static class VideoEncodeAcceleratorIsFlushSupportedResponseParamsProxyToResponder implements VideoEncodeAccelerator.IsFlushSupportedResponse {
+    static class VideoEncodeAcceleratorIsFlushSupportedResponseParamsProxyToResponder implements VideoEncodeAccelerator.IsFlushSupported_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1178,9 +1295,9 @@ FlushResponse callback) {
 
     static class VideoEncodeAcceleratorFlushResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final VideoEncodeAccelerator.FlushResponse mCallback;
+        private final VideoEncodeAccelerator.Flush_Response mCallback;
 
-        VideoEncodeAcceleratorFlushResponseParamsForwardToCallback(VideoEncodeAccelerator.FlushResponse callback) {
+        VideoEncodeAcceleratorFlushResponseParamsForwardToCallback(VideoEncodeAccelerator.Flush_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1205,7 +1322,7 @@ FlushResponse callback) {
         }
     }
 
-    static class VideoEncodeAcceleratorFlushResponseParamsProxyToResponder implements VideoEncodeAccelerator.FlushResponse {
+    static class VideoEncodeAcceleratorFlushResponseParamsProxyToResponder implements VideoEncodeAccelerator.Flush_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

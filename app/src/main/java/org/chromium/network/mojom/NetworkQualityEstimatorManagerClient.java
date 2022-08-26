@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface NetworkQualityEstimatorManagerClient extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface NetworkQualityEstimatorManagerClient extends org.chromium.mojo.
     }
 
     Manager<NetworkQualityEstimatorManagerClient, NetworkQualityEstimatorManagerClient.Proxy> MANAGER = NetworkQualityEstimatorManagerClient_Internal.MANAGER;
-
 
     void onNetworkQualityChanged(
 int type, org.chromium.mojo_base.mojom.TimeDelta httpRtt, org.chromium.mojo_base.mojom.TimeDelta transportRtt, int downlinkBandwidthKbps);

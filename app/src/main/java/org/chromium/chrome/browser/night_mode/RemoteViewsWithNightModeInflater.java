@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +24,6 @@ import org.chromium.base.Log;
  *  settings, see https://buganizer.corp.google.com/issues/133424086, http://crbug.com/1626864.
  */
 public class RemoteViewsWithNightModeInflater {
-
     private static final String TAG = "RemoteViewsInflater";
 
     /**
@@ -57,15 +55,17 @@ public class RemoteViewsWithNightModeInflater {
     private static View inflateNormally(RemoteViews remoteViews, ViewGroup parent) {
         try {
             return remoteViews.apply(ContextUtils.getApplicationContext(), parent);
-        } catch (RemoteViews.ActionException | InflateException | Resources.NotFoundException e) {
+        } catch (RuntimeException e) {
+            // Catching a general RuntimeException is ugly, but RemoteViews are passed in by the
+            // client app, so can contain all sorts of problems, eg. b/205503898.
             Log.e(TAG, "Failed to inflate the RemoteViews", e);
             return null;
         }
     }
 
     @Nullable
-    private static View inflateWithEnforcedDarkMode(RemoteViews remoteViews, ViewGroup parent,
-            boolean isInLocalNightMode) {
+    private static View inflateWithEnforcedDarkMode(
+            RemoteViews remoteViews, ViewGroup parent, boolean isInLocalNightMode) {
         // This is a modified version of RemoteViews#apply. RemoteViews#apply performs two steps:
         // 1. Inflate the View using the context of the remote app.
         // 2. Apply the Actions to the inflated View (actions are requested by remote app using
@@ -83,8 +83,8 @@ public class RemoteViewsWithNightModeInflater {
             // App context must be used instead of activity context to avoid the support library
             // bug, see https://crbug.com/783834
             Context appContext = ContextUtils.getApplicationContext();
-            Context contextForRemoteViews = new RemoteViewsContextWrapper(appContext,
-                    contextForResources);
+            Context contextForRemoteViews =
+                    new RemoteViewsContextWrapper(appContext, contextForResources);
 
             LayoutInflater inflater =
                     LayoutInflater.from(appContext).cloneInContext(contextForRemoteViews);
@@ -92,8 +92,9 @@ public class RemoteViewsWithNightModeInflater {
 
             remoteViews.reapply(appContext, view);
             return view;
-        } catch (RemoteViews.ActionException | InflateException | Resources.NotFoundException
-                | PackageManager.NameNotFoundException e) {
+        } catch (PackageManager.NameNotFoundException | RuntimeException e) {
+            // Catching a general RuntimeException is ugly, but RemoteViews are passed in by the
+            // client app, so can contain all sorts of problems, eg b/205503898.
             Log.e(TAG, "Failed to inflate the RemoteViews", e);
             return null;
         }

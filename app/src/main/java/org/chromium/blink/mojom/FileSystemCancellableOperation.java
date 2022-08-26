@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface FileSystemCancellableOperation extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface FileSystemCancellableOperation extends org.chromium.mojo.bindin
 
     Manager<FileSystemCancellableOperation, FileSystemCancellableOperation.Proxy> MANAGER = FileSystemCancellableOperation_Internal.MANAGER;
 
-
     void cancel(
 
-CancelResponse callback);
+Cancel_Response callback);
 
-    interface CancelResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
+    interface Cancel_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
 }

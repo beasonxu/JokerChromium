@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class RemoteObject_Internal {
 
@@ -67,7 +69,7 @@ class RemoteObject_Internal {
         @Override
         public void hasMethod(
 String name, 
-HasMethodResponse callback) {
+HasMethod_Response callback) {
 
             RemoteObjectHasMethodParams _message = new RemoteObjectHasMethodParams();
 
@@ -89,7 +91,7 @@ HasMethodResponse callback) {
         @Override
         public void getMethods(
 
-GetMethodsResponse callback) {
+GetMethods_Response callback) {
 
             RemoteObjectGetMethodsParams _message = new RemoteObjectGetMethodsParams();
 
@@ -109,7 +111,7 @@ GetMethodsResponse callback) {
         @Override
         public void invokeMethod(
 String name, RemoteInvocationArgument[] arguments, 
-InvokeMethodResponse callback) {
+InvokeMethod_Response callback) {
 
             RemoteObjectInvokeMethodParams _message = new RemoteObjectInvokeMethodParams();
 
@@ -403,9 +405,9 @@ InvokeMethodResponse callback) {
 
     static class RemoteObjectHasMethodResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final RemoteObject.HasMethodResponse mCallback;
+        private final RemoteObject.HasMethod_Response mCallback;
 
-        RemoteObjectHasMethodResponseParamsForwardToCallback(RemoteObject.HasMethodResponse callback) {
+        RemoteObjectHasMethodResponseParamsForwardToCallback(RemoteObject.HasMethod_Response callback) {
             this.mCallback = callback;
         }
 
@@ -430,7 +432,7 @@ InvokeMethodResponse callback) {
         }
     }
 
-    static class RemoteObjectHasMethodResponseParamsProxyToResponder implements RemoteObject.HasMethodResponse {
+    static class RemoteObjectHasMethodResponseParamsProxyToResponder implements RemoteObject.HasMethod_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -599,9 +601,9 @@ InvokeMethodResponse callback) {
 
     static class RemoteObjectGetMethodsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final RemoteObject.GetMethodsResponse mCallback;
+        private final RemoteObject.GetMethods_Response mCallback;
 
-        RemoteObjectGetMethodsResponseParamsForwardToCallback(RemoteObject.GetMethodsResponse callback) {
+        RemoteObjectGetMethodsResponseParamsForwardToCallback(RemoteObject.GetMethods_Response callback) {
             this.mCallback = callback;
         }
 
@@ -626,7 +628,7 @@ InvokeMethodResponse callback) {
         }
     }
 
-    static class RemoteObjectGetMethodsResponseParamsProxyToResponder implements RemoteObject.GetMethodsResponse {
+    static class RemoteObjectGetMethodsResponseParamsProxyToResponder implements RemoteObject.GetMethods_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -812,9 +814,9 @@ InvokeMethodResponse callback) {
 
     static class RemoteObjectInvokeMethodResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final RemoteObject.InvokeMethodResponse mCallback;
+        private final RemoteObject.InvokeMethod_Response mCallback;
 
-        RemoteObjectInvokeMethodResponseParamsForwardToCallback(RemoteObject.InvokeMethodResponse callback) {
+        RemoteObjectInvokeMethodResponseParamsForwardToCallback(RemoteObject.InvokeMethod_Response callback) {
             this.mCallback = callback;
         }
 
@@ -839,7 +841,7 @@ InvokeMethodResponse callback) {
         }
     }
 
-    static class RemoteObjectInvokeMethodResponseParamsProxyToResponder implements RemoteObject.InvokeMethodResponse {
+    static class RemoteObjectInvokeMethodResponseParamsProxyToResponder implements RemoteObject.InvokeMethod_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

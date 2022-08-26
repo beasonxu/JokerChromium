@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface Authenticator extends org.chromium.mojo.bindings.Interface {
 
@@ -23,29 +25,25 @@ public interface Authenticator extends org.chromium.mojo.bindings.Interface {
 
     Manager<Authenticator, Authenticator.Proxy> MANAGER = Authenticator_Internal.MANAGER;
 
-
     void makeCredential(
 PublicKeyCredentialCreationOptions options, 
-MakeCredentialResponse callback);
+MakeCredential_Response callback);
 
-    interface MakeCredentialResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, MakeCredentialAuthenticatorResponse> { }
-
+    interface MakeCredential_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<Integer, MakeCredentialAuthenticatorResponse, WebAuthnDomExceptionDetails> { }
 
 
     void getAssertion(
 PublicKeyCredentialRequestOptions options, 
-GetAssertionResponse callback);
+GetAssertion_Response callback);
 
-    interface GetAssertionResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, GetAssertionAuthenticatorResponse> { }
-
+    interface GetAssertion_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<Integer, GetAssertionAuthenticatorResponse, WebAuthnDomExceptionDetails> { }
 
 
     void isUserVerifyingPlatformAuthenticatorAvailable(
 
-IsUserVerifyingPlatformAuthenticatorAvailableResponse callback);
+IsUserVerifyingPlatformAuthenticatorAvailable_Response callback);
 
-    interface IsUserVerifyingPlatformAuthenticatorAvailableResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface IsUserVerifyingPlatformAuthenticatorAvailable_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void cancel(

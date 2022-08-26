@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface RendererAudioInputStreamFactoryClient extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface RendererAudioInputStreamFactoryClient extends org.chromium.mojo
     }
 
     Manager<RendererAudioInputStreamFactoryClient, RendererAudioInputStreamFactoryClient.Proxy> MANAGER = RendererAudioInputStreamFactoryClient_Internal.MANAGER;
-
 
     void streamCreated(
 org.chromium.media.mojom.AudioInputStream stream, org.chromium.mojo.bindings.InterfaceRequest<org.chromium.media.mojom.AudioInputStreamClient> clientRequest, org.chromium.media.mojom.ReadOnlyAudioDataPipe dataPipe, boolean initiallyMuted, org.chromium.mojo_base.mojom.UnguessableToken streamId);

@@ -10,7 +10,7 @@ import org.chromium.ui.resources.ResourceManager;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class LayerTitleCacheJni implements LayerTitleCache.Natives {
+class LayerTitleCacheJni implements LayerTitleCache.Natives {
   private static LayerTitleCache.Natives testInstance;
 
   public static final JniStaticTestMocker<LayerTitleCache.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.compositor.LayerTitleCache.Natives>() {

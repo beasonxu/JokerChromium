@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface SpeechRecognizer extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface SpeechRecognizer extends org.chromium.mojo.bindings.Interface {
     }
 
     Manager<SpeechRecognizer, SpeechRecognizer.Proxy> MANAGER = SpeechRecognizer_Internal.MANAGER;
-
 
     void start(
 StartSpeechRecognitionRequestParams params);

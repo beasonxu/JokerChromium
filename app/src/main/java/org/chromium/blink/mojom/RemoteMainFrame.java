@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface RemoteMainFrame extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface RemoteMainFrame extends org.chromium.mojo.bindings.Interface {
     }
 
     Manager<RemoteMainFrame, RemoteMainFrame.Proxy> MANAGER = RemoteMainFrame_Internal.MANAGER;
-
 
     void updateTextAutosizerPageInfo(
 TextAutosizerPageInfo pageInfo);

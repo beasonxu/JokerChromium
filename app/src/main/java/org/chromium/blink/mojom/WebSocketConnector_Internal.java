@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class WebSocketConnector_Internal {
 
@@ -60,7 +62,7 @@ class WebSocketConnector_Internal {
 
         @Override
         public void connect(
-org.chromium.url.mojom.Url url, String[] requestedProtocols, org.chromium.network.mojom.SiteForCookies siteForCookies, String userAgent, org.chromium.network.mojom.WebSocketHandshakeClient handshakeClient) {
+org.chromium.url.mojom.Url url, String[] requestedProtocols, org.chromium.network.mojom.SiteForCookies siteForCookies, String userAgent, org.chromium.network.mojom.WebSocketHandshakeClient handshakeClient, org.chromium.mojo_base.mojom.UnguessableToken throttlingProfileId) {
 
             WebSocketConnectorConnectParams _message = new WebSocketConnectorConnectParams();
 
@@ -73,6 +75,8 @@ org.chromium.url.mojom.Url url, String[] requestedProtocols, org.chromium.networ
             _message.userAgent = userAgent;
 
             _message.handshakeClient = handshakeClient;
+
+            _message.throttlingProfileId = throttlingProfileId;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -119,7 +123,7 @@ org.chromium.url.mojom.Url url, String[] requestedProtocols, org.chromium.networ
                         WebSocketConnectorConnectParams data =
                                 WebSocketConnectorConnectParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().connect(data.url, data.requestedProtocols, data.siteForCookies, data.userAgent, data.handshakeClient);
+                        getImpl().connect(data.url, data.requestedProtocols, data.siteForCookies, data.userAgent, data.handshakeClient, data.throttlingProfileId);
                         return true;
                     }
 
@@ -169,14 +173,15 @@ org.chromium.url.mojom.Url url, String[] requestedProtocols, org.chromium.networ
     
     static final class WebSocketConnectorConnectParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 48;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
+        private static final int STRUCT_SIZE = 56;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(56, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public org.chromium.url.mojom.Url url;
         public String[] requestedProtocols;
         public org.chromium.network.mojom.SiteForCookies siteForCookies;
         public String userAgent;
         public org.chromium.network.mojom.WebSocketHandshakeClient handshakeClient;
+        public org.chromium.mojo_base.mojom.UnguessableToken throttlingProfileId;
 
         private WebSocketConnectorConnectParams(int version) {
             super(STRUCT_SIZE, version);
@@ -241,6 +246,11 @@ org.chromium.url.mojom.Url url, String[] requestedProtocols, org.chromium.networ
                         
                     result.handshakeClient = decoder0.readServiceInterface(40, false, org.chromium.network.mojom.WebSocketHandshakeClient.MANAGER);
                     }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(48, true);
+                    result.throttlingProfileId = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -270,6 +280,8 @@ org.chromium.url.mojom.Url url, String[] requestedProtocols, org.chromium.networ
             encoder0.encode(this.userAgent, 32, true);
             
             encoder0.encode(this.handshakeClient, 40, false, org.chromium.network.mojom.WebSocketHandshakeClient.MANAGER);
+            
+            encoder0.encode(this.throttlingProfileId, 48, true);
         }
     }
 

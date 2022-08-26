@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class EmbeddedWorkerStartParams extends org.chromium.mojo.bindings.Struct {
 
@@ -33,6 +35,7 @@ public final class EmbeddedWorkerStartParams extends org.chromium.mojo.bindings.
     public boolean isInstalled;
     public RendererPreferences rendererPreferences;
     public org.chromium.mojo.bindings.InterfaceRequest<ServiceWorker> serviceWorkerReceiver;
+    public org.chromium.mojo.bindings.InterfaceRequest<org.chromium.service_manager.mojom.InterfaceProvider> interfaceProvider;
     public org.chromium.mojo.bindings.InterfaceRequest<ControllerServiceWorker> controllerReceiver;
     public ServiceWorkerInstalledScriptsInfo installedScriptsInfo;
     public org.chromium.mojo.bindings.AssociatedInterfaceNotSupported instanceHost;
@@ -145,11 +148,11 @@ public final class EmbeddedWorkerStartParams extends org.chromium.mojo.bindings.
                 }
                 {
                     
-                result.controllerReceiver = decoder0.readInterfaceRequest(96, false);
+                result.interfaceProvider = decoder0.readInterfaceRequest(96, false);
                 }
                 {
                     
-                result.preferenceWatcherReceiver = decoder0.readInterfaceRequest(100, false);
+                result.controllerReceiver = decoder0.readInterfaceRequest(100, false);
                 }
                 {
                     
@@ -171,12 +174,16 @@ public final class EmbeddedWorkerStartParams extends org.chromium.mojo.bindings.
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(136, false);
-                result.subresourceLoaderFactories = UrlLoaderFactoryBundle.decode(decoder1);
+                result.preferenceWatcherReceiver = decoder0.readInterfaceRequest(136, false);
                 }
                 {
                     
-                result.subresourceLoaderUpdater = decoder0.readInterfaceRequest(144, false);
+                result.subresourceLoaderUpdater = decoder0.readInterfaceRequest(140, false);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(144, false);
+                result.subresourceLoaderFactories = UrlLoaderFactoryBundle.decode(decoder1);
                 }
                 {
                     
@@ -232,9 +239,9 @@ public final class EmbeddedWorkerStartParams extends org.chromium.mojo.bindings.
         
         encoder0.encode(this.rendererPreferences, 88, false);
         
-        encoder0.encode(this.controllerReceiver, 96, false);
+        encoder0.encode(this.interfaceProvider, 96, false);
         
-        encoder0.encode(this.preferenceWatcherReceiver, 100, false);
+        encoder0.encode(this.controllerReceiver, 100, false);
         
         encoder0.encode(this.installedScriptsInfo, 104, true);
         
@@ -244,9 +251,11 @@ public final class EmbeddedWorkerStartParams extends org.chromium.mojo.bindings.
         
         encoder0.encode(this.contentSettingsProxy, 128, false, WorkerContentSettingsProxy.MANAGER);
         
-        encoder0.encode(this.subresourceLoaderFactories, 136, false);
+        encoder0.encode(this.preferenceWatcherReceiver, 136, false);
         
-        encoder0.encode(this.subresourceLoaderUpdater, 144, false);
+        encoder0.encode(this.subresourceLoaderUpdater, 140, false);
+        
+        encoder0.encode(this.subresourceLoaderFactories, 144, false);
         
         encoder0.encode(this.serviceWorkerToken, 152, false);
         

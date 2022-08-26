@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class ManifestImageResource extends org.chromium.mojo.bindings.Struct {
 
@@ -22,6 +24,12 @@ public final class ManifestImageResource extends org.chromium.mojo.bindings.Stru
 
     public static final class Purpose {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            Purpose.ANY,
+            Purpose.MONOCHROME,
+            Purpose.MASKABLE})
+        public @interface EnumType {}
 
         public static final int ANY = 0;
         public static final int MONOCHROME = 1;

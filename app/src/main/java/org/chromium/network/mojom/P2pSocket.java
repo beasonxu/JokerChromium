@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface P2pSocket extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface P2pSocket extends org.chromium.mojo.bindings.Interface {
 
     Manager<P2pSocket, P2pSocket.Proxy> MANAGER = P2pSocket_Internal.MANAGER;
 
-
     void send(
 byte[] data, P2pPacketInfo packetInfo, MutableNetworkTrafficAnnotationTag trafficAnnotation);
-
 
 
     void setOption(

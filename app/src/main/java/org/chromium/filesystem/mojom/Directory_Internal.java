@@ -13,6 +13,8 @@
 
 package org.chromium.filesystem.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class Directory_Internal {
 
@@ -89,7 +91,7 @@ class Directory_Internal {
         @Override
         public void read(
 
-ReadResponse callback) {
+Read_Response callback) {
 
             DirectoryReadParams _message = new DirectoryReadParams();
 
@@ -109,7 +111,7 @@ ReadResponse callback) {
         @Override
         public void openFile(
 String path, org.chromium.mojo.bindings.InterfaceRequest<File> file, int openFlags, 
-OpenFileResponse callback) {
+OpenFile_Response callback) {
 
             DirectoryOpenFileParams _message = new DirectoryOpenFileParams();
 
@@ -135,7 +137,7 @@ OpenFileResponse callback) {
         @Override
         public void openFileHandle(
 String path, int openFlags, 
-OpenFileHandleResponse callback) {
+OpenFileHandle_Response callback) {
 
             DirectoryOpenFileHandleParams _message = new DirectoryOpenFileHandleParams();
 
@@ -159,7 +161,7 @@ OpenFileHandleResponse callback) {
         @Override
         public void openFileHandles(
 FileOpenDetails[] files, 
-OpenFileHandlesResponse callback) {
+OpenFileHandles_Response callback) {
 
             DirectoryOpenFileHandlesParams _message = new DirectoryOpenFileHandlesParams();
 
@@ -181,7 +183,7 @@ OpenFileHandlesResponse callback) {
         @Override
         public void openDirectory(
 String path, org.chromium.mojo.bindings.InterfaceRequest<Directory> directory, int openFlags, 
-OpenDirectoryResponse callback) {
+OpenDirectory_Response callback) {
 
             DirectoryOpenDirectoryParams _message = new DirectoryOpenDirectoryParams();
 
@@ -207,7 +209,7 @@ OpenDirectoryResponse callback) {
         @Override
         public void rename(
 String path, String newPath, 
-RenameResponse callback) {
+Rename_Response callback) {
 
             DirectoryRenameParams _message = new DirectoryRenameParams();
 
@@ -231,7 +233,7 @@ RenameResponse callback) {
         @Override
         public void replace(
 String path, String newPath, 
-ReplaceResponse callback) {
+Replace_Response callback) {
 
             DirectoryReplaceParams _message = new DirectoryReplaceParams();
 
@@ -255,7 +257,7 @@ ReplaceResponse callback) {
         @Override
         public void delete(
 String path, int deleteFlags, 
-DeleteResponse callback) {
+Delete_Response callback) {
 
             DirectoryDeleteParams _message = new DirectoryDeleteParams();
 
@@ -279,7 +281,7 @@ DeleteResponse callback) {
         @Override
         public void exists(
 String path, 
-ExistsResponse callback) {
+Exists_Response callback) {
 
             DirectoryExistsParams _message = new DirectoryExistsParams();
 
@@ -301,7 +303,7 @@ ExistsResponse callback) {
         @Override
         public void isWritable(
 String path, 
-IsWritableResponse callback) {
+IsWritable_Response callback) {
 
             DirectoryIsWritableParams _message = new DirectoryIsWritableParams();
 
@@ -323,7 +325,7 @@ IsWritableResponse callback) {
         @Override
         public void flush(
 
-FlushResponse callback) {
+Flush_Response callback) {
 
             DirectoryFlushParams _message = new DirectoryFlushParams();
 
@@ -343,7 +345,7 @@ FlushResponse callback) {
         @Override
         public void statFile(
 String path, 
-StatFileResponse callback) {
+StatFile_Response callback) {
 
             DirectoryStatFileParams _message = new DirectoryStatFileParams();
 
@@ -382,7 +384,7 @@ org.chromium.mojo.bindings.InterfaceRequest<Directory> directory) {
         @Override
         public void readEntireFile(
 String path, 
-ReadEntireFileResponse callback) {
+ReadEntireFile_Response callback) {
 
             DirectoryReadEntireFileParams _message = new DirectoryReadEntireFileParams();
 
@@ -404,7 +406,7 @@ ReadEntireFileResponse callback) {
         @Override
         public void writeFile(
 String path, byte[] data, 
-WriteFileResponse callback) {
+WriteFile_Response callback) {
 
             DirectoryWriteFileParams _message = new DirectoryWriteFileParams();
 
@@ -891,9 +893,9 @@ WriteFileResponse callback) {
 
     static class DirectoryReadResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Directory.ReadResponse mCallback;
+        private final Directory.Read_Response mCallback;
 
-        DirectoryReadResponseParamsForwardToCallback(Directory.ReadResponse callback) {
+        DirectoryReadResponseParamsForwardToCallback(Directory.Read_Response callback) {
             this.mCallback = callback;
         }
 
@@ -918,7 +920,7 @@ WriteFileResponse callback) {
         }
     }
 
-    static class DirectoryReadResponseParamsProxyToResponder implements Directory.ReadResponse {
+    static class DirectoryReadResponseParamsProxyToResponder implements Directory.Read_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1096,9 +1098,9 @@ WriteFileResponse callback) {
 
     static class DirectoryOpenFileResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Directory.OpenFileResponse mCallback;
+        private final Directory.OpenFile_Response mCallback;
 
-        DirectoryOpenFileResponseParamsForwardToCallback(Directory.OpenFileResponse callback) {
+        DirectoryOpenFileResponseParamsForwardToCallback(Directory.OpenFile_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1123,7 +1125,7 @@ WriteFileResponse callback) {
         }
     }
 
-    static class DirectoryOpenFileResponseParamsProxyToResponder implements Directory.OpenFileResponse {
+    static class DirectoryOpenFileResponseParamsProxyToResponder implements Directory.OpenFile_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1300,9 +1302,9 @@ WriteFileResponse callback) {
 
     static class DirectoryOpenFileHandleResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Directory.OpenFileHandleResponse mCallback;
+        private final Directory.OpenFileHandle_Response mCallback;
 
-        DirectoryOpenFileHandleResponseParamsForwardToCallback(Directory.OpenFileHandleResponse callback) {
+        DirectoryOpenFileHandleResponseParamsForwardToCallback(Directory.OpenFileHandle_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1327,7 +1329,7 @@ WriteFileResponse callback) {
         }
     }
 
-    static class DirectoryOpenFileHandleResponseParamsProxyToResponder implements Directory.OpenFileHandleResponse {
+    static class DirectoryOpenFileHandleResponseParamsProxyToResponder implements Directory.OpenFileHandle_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1523,9 +1525,9 @@ WriteFileResponse callback) {
 
     static class DirectoryOpenFileHandlesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Directory.OpenFileHandlesResponse mCallback;
+        private final Directory.OpenFileHandles_Response mCallback;
 
-        DirectoryOpenFileHandlesResponseParamsForwardToCallback(Directory.OpenFileHandlesResponse callback) {
+        DirectoryOpenFileHandlesResponseParamsForwardToCallback(Directory.OpenFileHandles_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1550,7 +1552,7 @@ WriteFileResponse callback) {
         }
     }
 
-    static class DirectoryOpenFileHandlesResponseParamsProxyToResponder implements Directory.OpenFileHandlesResponse {
+    static class DirectoryOpenFileHandlesResponseParamsProxyToResponder implements Directory.OpenFileHandles_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1726,9 +1728,9 @@ WriteFileResponse callback) {
 
     static class DirectoryOpenDirectoryResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Directory.OpenDirectoryResponse mCallback;
+        private final Directory.OpenDirectory_Response mCallback;
 
-        DirectoryOpenDirectoryResponseParamsForwardToCallback(Directory.OpenDirectoryResponse callback) {
+        DirectoryOpenDirectoryResponseParamsForwardToCallback(Directory.OpenDirectory_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1753,7 +1755,7 @@ WriteFileResponse callback) {
         }
     }
 
-    static class DirectoryOpenDirectoryResponseParamsProxyToResponder implements Directory.OpenDirectoryResponse {
+    static class DirectoryOpenDirectoryResponseParamsProxyToResponder implements Directory.OpenDirectory_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1922,9 +1924,9 @@ WriteFileResponse callback) {
 
     static class DirectoryRenameResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Directory.RenameResponse mCallback;
+        private final Directory.Rename_Response mCallback;
 
-        DirectoryRenameResponseParamsForwardToCallback(Directory.RenameResponse callback) {
+        DirectoryRenameResponseParamsForwardToCallback(Directory.Rename_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1949,7 +1951,7 @@ WriteFileResponse callback) {
         }
     }
 
-    static class DirectoryRenameResponseParamsProxyToResponder implements Directory.RenameResponse {
+    static class DirectoryRenameResponseParamsProxyToResponder implements Directory.Rename_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2118,9 +2120,9 @@ WriteFileResponse callback) {
 
     static class DirectoryReplaceResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Directory.ReplaceResponse mCallback;
+        private final Directory.Replace_Response mCallback;
 
-        DirectoryReplaceResponseParamsForwardToCallback(Directory.ReplaceResponse callback) {
+        DirectoryReplaceResponseParamsForwardToCallback(Directory.Replace_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2145,7 +2147,7 @@ WriteFileResponse callback) {
         }
     }
 
-    static class DirectoryReplaceResponseParamsProxyToResponder implements Directory.ReplaceResponse {
+    static class DirectoryReplaceResponseParamsProxyToResponder implements Directory.Replace_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2314,9 +2316,9 @@ WriteFileResponse callback) {
 
     static class DirectoryDeleteResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Directory.DeleteResponse mCallback;
+        private final Directory.Delete_Response mCallback;
 
-        DirectoryDeleteResponseParamsForwardToCallback(Directory.DeleteResponse callback) {
+        DirectoryDeleteResponseParamsForwardToCallback(Directory.Delete_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2341,7 +2343,7 @@ WriteFileResponse callback) {
         }
     }
 
-    static class DirectoryDeleteResponseParamsProxyToResponder implements Directory.DeleteResponse {
+    static class DirectoryDeleteResponseParamsProxyToResponder implements Directory.Delete_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2510,9 +2512,9 @@ WriteFileResponse callback) {
 
     static class DirectoryExistsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Directory.ExistsResponse mCallback;
+        private final Directory.Exists_Response mCallback;
 
-        DirectoryExistsResponseParamsForwardToCallback(Directory.ExistsResponse callback) {
+        DirectoryExistsResponseParamsForwardToCallback(Directory.Exists_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2537,7 +2539,7 @@ WriteFileResponse callback) {
         }
     }
 
-    static class DirectoryExistsResponseParamsProxyToResponder implements Directory.ExistsResponse {
+    static class DirectoryExistsResponseParamsProxyToResponder implements Directory.Exists_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2708,9 +2710,9 @@ WriteFileResponse callback) {
 
     static class DirectoryIsWritableResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Directory.IsWritableResponse mCallback;
+        private final Directory.IsWritable_Response mCallback;
 
-        DirectoryIsWritableResponseParamsForwardToCallback(Directory.IsWritableResponse callback) {
+        DirectoryIsWritableResponseParamsForwardToCallback(Directory.IsWritable_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2735,7 +2737,7 @@ WriteFileResponse callback) {
         }
     }
 
-    static class DirectoryIsWritableResponseParamsProxyToResponder implements Directory.IsWritableResponse {
+    static class DirectoryIsWritableResponseParamsProxyToResponder implements Directory.IsWritable_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2892,9 +2894,9 @@ WriteFileResponse callback) {
 
     static class DirectoryFlushResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Directory.FlushResponse mCallback;
+        private final Directory.Flush_Response mCallback;
 
-        DirectoryFlushResponseParamsForwardToCallback(Directory.FlushResponse callback) {
+        DirectoryFlushResponseParamsForwardToCallback(Directory.Flush_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2919,7 +2921,7 @@ WriteFileResponse callback) {
         }
     }
 
-    static class DirectoryFlushResponseParamsProxyToResponder implements Directory.FlushResponse {
+    static class DirectoryFlushResponseParamsProxyToResponder implements Directory.Flush_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -3089,9 +3091,9 @@ WriteFileResponse callback) {
 
     static class DirectoryStatFileResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Directory.StatFileResponse mCallback;
+        private final Directory.StatFile_Response mCallback;
 
-        DirectoryStatFileResponseParamsForwardToCallback(Directory.StatFileResponse callback) {
+        DirectoryStatFileResponseParamsForwardToCallback(Directory.StatFile_Response callback) {
             this.mCallback = callback;
         }
 
@@ -3116,7 +3118,7 @@ WriteFileResponse callback) {
         }
     }
 
-    static class DirectoryStatFileResponseParamsProxyToResponder implements Directory.StatFileResponse {
+    static class DirectoryStatFileResponseParamsProxyToResponder implements Directory.StatFile_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -3350,9 +3352,9 @@ WriteFileResponse callback) {
 
     static class DirectoryReadEntireFileResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Directory.ReadEntireFileResponse mCallback;
+        private final Directory.ReadEntireFile_Response mCallback;
 
-        DirectoryReadEntireFileResponseParamsForwardToCallback(Directory.ReadEntireFileResponse callback) {
+        DirectoryReadEntireFileResponseParamsForwardToCallback(Directory.ReadEntireFile_Response callback) {
             this.mCallback = callback;
         }
 
@@ -3377,7 +3379,7 @@ WriteFileResponse callback) {
         }
     }
 
-    static class DirectoryReadEntireFileResponseParamsProxyToResponder implements Directory.ReadEntireFileResponse {
+    static class DirectoryReadEntireFileResponseParamsProxyToResponder implements Directory.ReadEntireFile_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -3548,9 +3550,9 @@ WriteFileResponse callback) {
 
     static class DirectoryWriteFileResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Directory.WriteFileResponse mCallback;
+        private final Directory.WriteFile_Response mCallback;
 
-        DirectoryWriteFileResponseParamsForwardToCallback(Directory.WriteFileResponse callback) {
+        DirectoryWriteFileResponseParamsForwardToCallback(Directory.WriteFile_Response callback) {
             this.mCallback = callback;
         }
 
@@ -3575,7 +3577,7 @@ WriteFileResponse callback) {
         }
     }
 
-    static class DirectoryWriteFileResponseParamsProxyToResponder implements Directory.WriteFileResponse {
+    static class DirectoryWriteFileResponseParamsProxyToResponder implements Directory.WriteFile_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

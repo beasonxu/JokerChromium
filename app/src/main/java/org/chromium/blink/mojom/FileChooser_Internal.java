@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class FileChooser_Internal {
 
@@ -63,7 +65,7 @@ class FileChooser_Internal {
         @Override
         public void openFileChooser(
 FileChooserParams params, 
-OpenFileChooserResponse callback) {
+OpenFileChooser_Response callback) {
 
             FileChooserOpenFileChooserParams _message = new FileChooserOpenFileChooserParams();
 
@@ -85,7 +87,7 @@ OpenFileChooserResponse callback) {
         @Override
         public void enumerateChosenDirectory(
 org.chromium.mojo_base.mojom.FilePath directoryPath, 
-EnumerateChosenDirectoryResponse callback) {
+EnumerateChosenDirectory_Response callback) {
 
             FileChooserEnumerateChosenDirectoryParams _message = new FileChooserEnumerateChosenDirectoryParams();
 
@@ -334,9 +336,9 @@ EnumerateChosenDirectoryResponse callback) {
 
     static class FileChooserOpenFileChooserResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileChooser.OpenFileChooserResponse mCallback;
+        private final FileChooser.OpenFileChooser_Response mCallback;
 
-        FileChooserOpenFileChooserResponseParamsForwardToCallback(FileChooser.OpenFileChooserResponse callback) {
+        FileChooserOpenFileChooserResponseParamsForwardToCallback(FileChooser.OpenFileChooser_Response callback) {
             this.mCallback = callback;
         }
 
@@ -361,7 +363,7 @@ EnumerateChosenDirectoryResponse callback) {
         }
     }
 
-    static class FileChooserOpenFileChooserResponseParamsProxyToResponder implements FileChooser.OpenFileChooserResponse {
+    static class FileChooserOpenFileChooserResponseParamsProxyToResponder implements FileChooser.OpenFileChooser_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -523,9 +525,9 @@ EnumerateChosenDirectoryResponse callback) {
 
     static class FileChooserEnumerateChosenDirectoryResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileChooser.EnumerateChosenDirectoryResponse mCallback;
+        private final FileChooser.EnumerateChosenDirectory_Response mCallback;
 
-        FileChooserEnumerateChosenDirectoryResponseParamsForwardToCallback(FileChooser.EnumerateChosenDirectoryResponse callback) {
+        FileChooserEnumerateChosenDirectoryResponseParamsForwardToCallback(FileChooser.EnumerateChosenDirectory_Response callback) {
             this.mCallback = callback;
         }
 
@@ -550,7 +552,7 @@ EnumerateChosenDirectoryResponse callback) {
         }
     }
 
-    static class FileChooserEnumerateChosenDirectoryResponseParamsProxyToResponder implements FileChooser.EnumerateChosenDirectoryResponse {
+    static class FileChooserEnumerateChosenDirectoryResponseParamsProxyToResponder implements FileChooser.EnumerateChosenDirectory_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

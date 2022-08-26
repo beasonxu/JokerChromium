@@ -13,11 +13,13 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class ResourceTimingInfo extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 112;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(112, 0)};
+    private static final int STRUCT_SIZE = 104;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(104, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public String name;
     public org.chromium.mojo_base.mojom.TimeTicks startTime;
@@ -28,11 +30,11 @@ public final class ResourceTimingInfo extends org.chromium.mojo.bindings.Struct 
     public org.chromium.mojo_base.mojom.TimeTicks responseEnd;
     public int contextType;
     public int requestDestination;
-    public long transferSize;
+    public int cacheState;
     public long encodedBodySize;
     public long decodedBodySize;
     public boolean didReuseConnection;
-    public boolean isSecureContext;
+    public boolean isSecureTransport;
     public boolean allowTimingDetails;
     public boolean allowRedirectDetails;
     public boolean allowNegativeValues;
@@ -117,7 +119,29 @@ public final class ResourceTimingInfo extends org.chromium.mojo.bindings.Struct 
                 }
                 {
                     
-                result.transferSize = decoder0.readLong(72);
+                result.cacheState = decoder0.readInt(72);
+                    CacheState.validate(result.cacheState);
+                    result.cacheState = CacheState.toKnownValue(result.cacheState);
+                }
+                {
+                    
+                result.didReuseConnection = decoder0.readBoolean(76, 0);
+                }
+                {
+                    
+                result.isSecureTransport = decoder0.readBoolean(76, 1);
+                }
+                {
+                    
+                result.allowTimingDetails = decoder0.readBoolean(76, 2);
+                }
+                {
+                    
+                result.allowRedirectDetails = decoder0.readBoolean(76, 3);
+                }
+                {
+                    
+                result.allowNegativeValues = decoder0.readBoolean(76, 4);
                 }
                 {
                     
@@ -129,27 +153,7 @@ public final class ResourceTimingInfo extends org.chromium.mojo.bindings.Struct 
                 }
                 {
                     
-                result.didReuseConnection = decoder0.readBoolean(96, 0);
-                }
-                {
-                    
-                result.isSecureContext = decoder0.readBoolean(96, 1);
-                }
-                {
-                    
-                result.allowTimingDetails = decoder0.readBoolean(96, 2);
-                }
-                {
-                    
-                result.allowRedirectDetails = decoder0.readBoolean(96, 3);
-                }
-                {
-                    
-                result.allowNegativeValues = decoder0.readBoolean(96, 4);
-                }
-                {
-                    
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(104, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(96, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     result.serverTiming = new ServerTimingInfo[si1.elementsOrVersion];
@@ -190,26 +194,26 @@ public final class ResourceTimingInfo extends org.chromium.mojo.bindings.Struct 
         
         encoder0.encode(this.requestDestination, 68);
         
-        encoder0.encode(this.transferSize, 72);
+        encoder0.encode(this.cacheState, 72);
+        
+        encoder0.encode(this.didReuseConnection, 76, 0);
+        
+        encoder0.encode(this.isSecureTransport, 76, 1);
+        
+        encoder0.encode(this.allowTimingDetails, 76, 2);
+        
+        encoder0.encode(this.allowRedirectDetails, 76, 3);
+        
+        encoder0.encode(this.allowNegativeValues, 76, 4);
         
         encoder0.encode(this.encodedBodySize, 80);
         
         encoder0.encode(this.decodedBodySize, 88);
         
-        encoder0.encode(this.didReuseConnection, 96, 0);
-        
-        encoder0.encode(this.isSecureContext, 96, 1);
-        
-        encoder0.encode(this.allowTimingDetails, 96, 2);
-        
-        encoder0.encode(this.allowRedirectDetails, 96, 3);
-        
-        encoder0.encode(this.allowNegativeValues, 96, 4);
-        
         if (this.serverTiming == null) {
-            encoder0.encodeNullPointer(104, false);
+            encoder0.encodeNullPointer(96, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.serverTiming.length, 104, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.serverTiming.length, 96, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
             for (int i0 = 0; i0 < this.serverTiming.length; ++i0) {
                 
                 encoder1.encode(this.serverTiming[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);

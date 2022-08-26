@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface DevToolsFrontendHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,9 +25,8 @@ public interface DevToolsFrontendHost extends org.chromium.mojo.bindings.Interfa
 
     Manager<DevToolsFrontendHost, DevToolsFrontendHost.Proxy> MANAGER = DevToolsFrontendHost_Internal.MANAGER;
 
-
     void dispatchEmbedderMessage(
-String message);
+org.chromium.mojo_base.mojom.DeprecatedDictionaryValue message);
 
 
 }

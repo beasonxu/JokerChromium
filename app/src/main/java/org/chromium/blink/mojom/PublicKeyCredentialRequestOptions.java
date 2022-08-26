@@ -13,11 +13,13 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class PublicKeyCredentialRequestOptions extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 80;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(80, 0)};
+    private static final int STRUCT_SIZE = 88;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(88, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public boolean isConditional;
     public byte[] challenge;
@@ -32,6 +34,8 @@ public final class PublicKeyCredentialRequestOptions extends org.chromium.mojo.b
     public PrfValues[] prfInputs;
     public boolean largeBlobRead;
     public byte[] largeBlobWrite;
+    public boolean getCredBlob;
+    public RemoteDesktopClientOverride remoteDesktopClientOverride;
 
     private PublicKeyCredentialRequestOptions(int version) {
         super(STRUCT_SIZE, version);
@@ -81,6 +85,10 @@ public final class PublicKeyCredentialRequestOptions extends org.chromium.mojo.b
                 {
                     
                 result.largeBlobRead = decoder0.readBoolean(8, 3);
+                }
+                {
+                    
+                result.getCredBlob = decoder0.readBoolean(8, 4);
                 }
                 {
                     
@@ -148,6 +156,11 @@ public final class PublicKeyCredentialRequestOptions extends org.chromium.mojo.b
                     
                 result.largeBlobWrite = decoder0.readBytes(72, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(80, true);
+                result.remoteDesktopClientOverride = RemoteDesktopClientOverride.decode(decoder1);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -167,6 +180,8 @@ public final class PublicKeyCredentialRequestOptions extends org.chromium.mojo.b
         encoder0.encode(this.prf, 8, 2);
         
         encoder0.encode(this.largeBlobRead, 8, 3);
+        
+        encoder0.encode(this.getCredBlob, 8, 4);
         
         encoder0.encode(this.userVerification, 12);
         
@@ -209,5 +224,7 @@ public final class PublicKeyCredentialRequestOptions extends org.chromium.mojo.b
         }
         
         encoder0.encode(this.largeBlobWrite, 72, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+        
+        encoder0.encode(this.remoteDesktopClientOverride, 80, true);
     }
 }

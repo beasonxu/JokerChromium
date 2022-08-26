@@ -9,7 +9,6 @@ public interface IIdentityService extends android.os.IInterface
   public static class Default implements org.chromium.webapk.lib.common.identity_service.IIdentityService
   {
     // Gets the package name of its runtime host browser.
-
     @Override public java.lang.String getRuntimeHostBrowserPackageName() throws android.os.RemoteException
     {
       return null;
@@ -22,7 +21,6 @@ public interface IIdentityService extends android.os.IInterface
   /** Local-side IPC implementation stub class. */
   public static abstract class Stub extends android.os.Binder implements org.chromium.webapk.lib.common.identity_service.IIdentityService
   {
-    private static final java.lang.String DESCRIPTOR = "org.chromium.webapk.lib.common.identity_service.IIdentityService";
     /** Construct the stub at attach it to the interface. */
     public Stub()
     {
@@ -57,6 +55,9 @@ public interface IIdentityService extends android.os.IInterface
           reply.writeString(descriptor);
           return true;
         }
+      }
+      switch (code)
+      {
         case TRANSACTION_getRuntimeHostBrowserPackageName:
         {
           data.enforceInterface(descriptor);
@@ -87,7 +88,6 @@ public interface IIdentityService extends android.os.IInterface
         return DESCRIPTOR;
       }
       // Gets the package name of its runtime host browser.
-
       @Override public java.lang.String getRuntimeHostBrowserPackageName() throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
@@ -96,8 +96,10 @@ public interface IIdentityService extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getRuntimeHostBrowserPackageName, _data, _reply, 0);
-          if (!_status && getDefaultImpl() != null) {
-            return getDefaultImpl().getRuntimeHostBrowserPackageName();
+          if (!_status) {
+            if (getDefaultImpl() != null) {
+              return getDefaultImpl().getRuntimeHostBrowserPackageName();
+            }
           }
           _reply.readException();
           _result = _reply.readString();
@@ -128,7 +130,7 @@ public interface IIdentityService extends android.os.IInterface
       return Stub.Proxy.sDefaultImpl;
     }
   }
+  public static final java.lang.String DESCRIPTOR = "org.chromium.webapk.lib.common.identity_service.IIdentityService";
   // Gets the package name of its runtime host browser.
-
   public java.lang.String getRuntimeHostBrowserPackageName() throws android.os.RemoteException;
 }

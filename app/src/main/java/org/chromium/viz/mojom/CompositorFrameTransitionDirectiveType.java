@@ -13,16 +13,27 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class CompositorFrameTransitionDirectiveType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        CompositorFrameTransitionDirectiveType.SAVE,
+        CompositorFrameTransitionDirectiveType.ANIMATE,
+        CompositorFrameTransitionDirectiveType.ANIMATE_RENDERER,
+        CompositorFrameTransitionDirectiveType.RELEASE})
+    public @interface EnumType {}
 
     public static final int SAVE = 0;
     public static final int ANIMATE = 1;
+    public static final int ANIMATE_RENDERER = 2;
+    public static final int RELEASE = 3;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 1;
+    public static final int MAX_VALUE = 3;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 1;
+        return value >= 0 && value <= 3;
     }
 
     public static void validate(int value) {

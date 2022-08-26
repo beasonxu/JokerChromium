@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class DataPipeGetter_Internal {
 
@@ -63,7 +65,7 @@ class DataPipeGetter_Internal {
         @Override
         public void read(
 org.chromium.mojo.system.DataPipe.ProducerHandle pipe, 
-ReadResponse callback) {
+Read_Response callback) {
 
             DataPipeGetterReadParams _message = new DataPipeGetterReadParams();
 
@@ -333,9 +335,9 @@ org.chromium.mojo.bindings.InterfaceRequest<DataPipeGetter> receiver) {
 
     static class DataPipeGetterReadResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final DataPipeGetter.ReadResponse mCallback;
+        private final DataPipeGetter.Read_Response mCallback;
 
-        DataPipeGetterReadResponseParamsForwardToCallback(DataPipeGetter.ReadResponse callback) {
+        DataPipeGetterReadResponseParamsForwardToCallback(DataPipeGetter.Read_Response callback) {
             this.mCallback = callback;
         }
 
@@ -360,7 +362,7 @@ org.chromium.mojo.bindings.InterfaceRequest<DataPipeGetter> receiver) {
         }
     }
 
-    static class DataPipeGetterReadResponseParamsProxyToResponder implements DataPipeGetter.ReadResponse {
+    static class DataPipeGetterReadResponseParamsProxyToResponder implements DataPipeGetter.Read_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

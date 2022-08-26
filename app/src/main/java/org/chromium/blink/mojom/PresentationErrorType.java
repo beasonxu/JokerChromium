@@ -13,8 +13,18 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PresentationErrorType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PresentationErrorType.NO_AVAILABLE_SCREENS,
+        PresentationErrorType.PRESENTATION_REQUEST_CANCELLED,
+        PresentationErrorType.NO_PRESENTATION_FOUND,
+        PresentationErrorType.PREVIOUS_START_IN_PROGRESS,
+        PresentationErrorType.UNKNOWN})
+    public @interface EnumType {}
 
     public static final int NO_AVAILABLE_SCREENS = 0;
     public static final int PRESENTATION_REQUEST_CANCELLED = 1;

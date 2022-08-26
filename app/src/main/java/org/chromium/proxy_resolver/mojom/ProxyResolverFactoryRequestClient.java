@@ -13,6 +13,8 @@
 
 package org.chromium.proxy_resolver.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ProxyResolverFactoryRequestClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,20 +25,16 @@ public interface ProxyResolverFactoryRequestClient extends org.chromium.mojo.bin
 
     Manager<ProxyResolverFactoryRequestClient, ProxyResolverFactoryRequestClient.Proxy> MANAGER = ProxyResolverFactoryRequestClient_Internal.MANAGER;
 
-
     void reportResult(
 int error);
-
 
 
     void alert(
 String error);
 
 
-
     void onError(
 int lineNumber, String error);
-
 
 
     void resolveDns(

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface BytesProvider extends org.chromium.mojo.bindings.Interface {
 
@@ -23,25 +25,22 @@ public interface BytesProvider extends org.chromium.mojo.bindings.Interface {
 
     Manager<BytesProvider, BytesProvider.Proxy> MANAGER = BytesProvider_Internal.MANAGER;
 
-
     void requestAsReply(
 
-RequestAsReplyResponse callback);
+RequestAsReply_Response callback);
 
-    interface RequestAsReplyResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<byte[]> { }
-
+    interface RequestAsReply_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<byte[]> { }
 
 
     void requestAsStream(
 org.chromium.mojo.system.DataPipe.ProducerHandle pipe);
 
 
-
     void requestAsFile(
 long sourceOffset, long sourceSize, org.chromium.mojo_base.mojom.File file, long fileOffset, 
-RequestAsFileResponse callback);
+RequestAsFile_Response callback);
 
-    interface RequestAsFileResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.Time> { }
+    interface RequestAsFile_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.Time> { }
 
 
 }

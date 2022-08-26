@@ -1,18 +1,21 @@
 package org.chromium.chrome.browser.history;
 
+import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 import javax.annotation.Generated;
+import org.chromium.base.Callback;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.chrome.browser.profiles.Profile;
+import org.chromium.url.GURL;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class BrowsingHistoryBridgeJni implements BrowsingHistoryBridge.Natives {
+class BrowsingHistoryBridgeJni implements BrowsingHistoryBridge.Natives {
   private static BrowsingHistoryBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<BrowsingHistoryBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.history.BrowsingHistoryBridge.Natives>() {
@@ -38,8 +41,8 @@ final class BrowsingHistoryBridgeJni implements BrowsingHistoryBridge.Natives {
 
   @Override
   public void queryHistory(long nativeBrowsingHistoryBridge, BrowsingHistoryBridge caller,
-      List<HistoryItem> historyItems, String query) {
-    GEN_JNI.org_chromium_chrome_browser_history_BrowsingHistoryBridge_queryHistory(nativeBrowsingHistoryBridge, caller, historyItems, query);
+      List<HistoryItem> historyItems, String query, boolean hostOnly) {
+    GEN_JNI.org_chromium_chrome_browser_history_BrowsingHistoryBridge_queryHistory(nativeBrowsingHistoryBridge, caller, historyItems, query, hostOnly);
   }
 
   @Override
@@ -49,8 +52,14 @@ final class BrowsingHistoryBridgeJni implements BrowsingHistoryBridge.Natives {
   }
 
   @Override
+  public void getLastVisitToHostBeforeRecentNavigations(long nativeBrowsingHistoryBridge,
+      BrowsingHistoryBridge caller, String hostName, Callback<Long> callback) {
+    GEN_JNI.org_chromium_chrome_browser_history_BrowsingHistoryBridge_getLastVisitToHostBeforeRecentNavigations(nativeBrowsingHistoryBridge, caller, hostName, callback);
+  }
+
+  @Override
   public void markItemForRemoval(long nativeBrowsingHistoryBridge, BrowsingHistoryBridge caller,
-      String url, long[] nativeTimestamps) {
+      GURL url, long[] nativeTimestamps) {
     GEN_JNI.org_chromium_chrome_browser_history_BrowsingHistoryBridge_markItemForRemoval(nativeBrowsingHistoryBridge, caller, url, nativeTimestamps);
   }
 

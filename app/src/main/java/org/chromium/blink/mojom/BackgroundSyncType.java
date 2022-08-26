@@ -13,8 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class BackgroundSyncType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        BackgroundSyncType.ONE_SHOT,
+        BackgroundSyncType.PERIODIC})
+    public @interface EnumType {}
 
     public static final int ONE_SHOT = 0;
     public static final int PERIODIC = 1;

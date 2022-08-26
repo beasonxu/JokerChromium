@@ -15,7 +15,7 @@ import org.chromium.chrome.browser.profiles.Profile;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class UsageStatsBridgeJni implements UsageStatsBridge.Natives {
+class UsageStatsBridgeJni implements UsageStatsBridge.Natives {
   private static UsageStatsBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<UsageStatsBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.usage_stats.UsageStatsBridge.Natives>() {

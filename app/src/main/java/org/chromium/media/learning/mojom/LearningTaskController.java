@@ -13,6 +13,8 @@
 
 package org.chromium.media.learning.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface LearningTaskController extends org.chromium.mojo.bindings.Interface {
 
@@ -23,32 +25,27 @@ public interface LearningTaskController extends org.chromium.mojo.bindings.Inter
 
     Manager<LearningTaskController, LearningTaskController.Proxy> MANAGER = LearningTaskController_Internal.MANAGER;
 
-
     void beginObservation(
 org.chromium.mojo_base.mojom.UnguessableToken id, FeatureValue[] features, TargetValue defaultTarget);
-
 
 
     void completeObservation(
 org.chromium.mojo_base.mojom.UnguessableToken id, ObservationCompletion completion);
 
 
-
     void cancelObservation(
 org.chromium.mojo_base.mojom.UnguessableToken id);
-
 
 
     void updateDefaultTarget(
 org.chromium.mojo_base.mojom.UnguessableToken id, TargetValue defaultTarget);
 
 
-
     void predictDistribution(
 FeatureValue[] features, 
-PredictDistributionResponse callback);
+PredictDistribution_Response callback);
 
-    interface PredictDistributionResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<TargetHistogram> { }
+    interface PredictDistribution_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<TargetHistogram> { }
 
 
 }

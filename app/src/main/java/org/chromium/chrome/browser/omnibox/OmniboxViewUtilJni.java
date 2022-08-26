@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class OmniboxViewUtilJni implements OmniboxViewUtil.Natives {
+class OmniboxViewUtilJni implements OmniboxViewUtil.Natives {
   private static OmniboxViewUtil.Natives testInstance;
 
   public static final JniStaticTestMocker<OmniboxViewUtil.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.omnibox.OmniboxViewUtil.Natives>() {

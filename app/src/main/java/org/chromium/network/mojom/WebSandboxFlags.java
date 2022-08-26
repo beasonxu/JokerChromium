@@ -13,8 +13,33 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class WebSandboxFlags {
     private static final boolean IS_EXTENSIBLE = true;
+    @IntDef({
+
+        WebSandboxFlags.NONE,
+        WebSandboxFlags.NAVIGATION,
+        WebSandboxFlags.PLUGINS,
+        WebSandboxFlags.ORIGIN,
+        WebSandboxFlags.FORMS,
+        WebSandboxFlags.SCRIPTS,
+        WebSandboxFlags.TOP_NAVIGATION,
+        WebSandboxFlags.POPUPS,
+        WebSandboxFlags.AUTOMATIC_FEATURES,
+        WebSandboxFlags.POINTER_LOCK,
+        WebSandboxFlags.DOCUMENT_DOMAIN,
+        WebSandboxFlags.ORIENTATION_LOCK,
+        WebSandboxFlags.PROPAGATES_TO_AUXILIARY_BROWSING_CONTEXTS,
+        WebSandboxFlags.MODALS,
+        WebSandboxFlags.PRESENTATION_CONTROLLER,
+        WebSandboxFlags.TOP_NAVIGATION_BY_USER_ACTIVATION,
+        WebSandboxFlags.DOWNLOADS,
+        WebSandboxFlags.STORAGE_ACCESS_BY_USER_ACTIVATION,
+        WebSandboxFlags.TOP_NAVIGATION_TO_CUSTOM_PROTOCOLS,
+        WebSandboxFlags.ALL})
+    public @interface EnumType {}
 
     public static final int NONE = 0;
     public static final int NAVIGATION = 1;
@@ -34,9 +59,10 @@ public final class WebSandboxFlags {
     public static final int TOP_NAVIGATION_BY_USER_ACTIVATION = 16384;
     public static final int DOWNLOADS = 32768;
     public static final int STORAGE_ACCESS_BY_USER_ACTIVATION = 65536;
+    public static final int TOP_NAVIGATION_TO_CUSTOM_PROTOCOLS = 131072;
     public static final int ALL = -1;
     public static final int MIN_VALUE = -1;
-    public static final int MAX_VALUE = 65536;
+    public static final int MAX_VALUE = 131072;
 
     public static boolean isKnownValue(int value) {
         switch (value) {
@@ -59,6 +85,7 @@ public final class WebSandboxFlags {
             case 16384:
             case 32768:
             case 65536:
+            case 131072:
                 return true;
         }
         return false;

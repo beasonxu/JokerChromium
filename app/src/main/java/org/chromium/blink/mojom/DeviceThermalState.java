@@ -13,8 +13,18 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class DeviceThermalState {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        DeviceThermalState.UNKNOWN,
+        DeviceThermalState.NOMINAL,
+        DeviceThermalState.FAIR,
+        DeviceThermalState.SERIOUS,
+        DeviceThermalState.CRITICAL})
+    public @interface EnumType {}
 
     public static final int UNKNOWN = 0;
     public static final int NOMINAL = 1;

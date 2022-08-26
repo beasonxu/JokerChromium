@@ -324,60 +324,6 @@ public  final class SendTabToSelfSpecifics extends
     sharedTimeUsec_ = 0L;
   }
 
-  public static final int NAVIGATION_TIME_USEC_FIELD_NUMBER = 6;
-  private long navigationTimeUsec_;
-  /**
-   * <pre>
-   * The time the tab was navigated to as measured by the client in microseconds
-   * since the windows epoch.
-   * </pre>
-   *
-   * <code>optional int64 navigation_time_usec = 6;</code>
-   * @return Whether the navigationTimeUsec field is set.
-   */
-  @java.lang.Override
-  public boolean hasNavigationTimeUsec() {
-    return ((bitField0_ & 0x00000010) != 0);
-  }
-  /**
-   * <pre>
-   * The time the tab was navigated to as measured by the client in microseconds
-   * since the windows epoch.
-   * </pre>
-   *
-   * <code>optional int64 navigation_time_usec = 6;</code>
-   * @return The navigationTimeUsec.
-   */
-  @java.lang.Override
-  public long getNavigationTimeUsec() {
-    return navigationTimeUsec_;
-  }
-  /**
-   * <pre>
-   * The time the tab was navigated to as measured by the client in microseconds
-   * since the windows epoch.
-   * </pre>
-   *
-   * <code>optional int64 navigation_time_usec = 6;</code>
-   * @param value The navigationTimeUsec to set.
-   */
-  private void setNavigationTimeUsec(long value) {
-    bitField0_ |= 0x00000010;
-    navigationTimeUsec_ = value;
-  }
-  /**
-   * <pre>
-   * The time the tab was navigated to as measured by the client in microseconds
-   * since the windows epoch.
-   * </pre>
-   *
-   * <code>optional int64 navigation_time_usec = 6;</code>
-   */
-  private void clearNavigationTimeUsec() {
-    bitField0_ = (bitField0_ & ~0x00000010);
-    navigationTimeUsec_ = 0L;
-  }
-
   public static final int DEVICE_NAME_FIELD_NUMBER = 4;
   private java.lang.String deviceName_;
   /**
@@ -390,7 +336,7 @@ public  final class SendTabToSelfSpecifics extends
    */
   @java.lang.Override
   public boolean hasDeviceName() {
-    return ((bitField0_ & 0x00000020) != 0);
+    return ((bitField0_ & 0x00000010) != 0);
   }
   /**
    * <pre>
@@ -428,7 +374,7 @@ public  final class SendTabToSelfSpecifics extends
   private void setDeviceName(
       java.lang.String value) {
     value.getClass();
-  bitField0_ |= 0x00000020;
+  bitField0_ |= 0x00000010;
     deviceName_ = value;
   }
   /**
@@ -439,7 +385,7 @@ public  final class SendTabToSelfSpecifics extends
    * <code>optional string device_name = 4;</code>
    */
   private void clearDeviceName() {
-    bitField0_ = (bitField0_ & ~0x00000020);
+    bitField0_ = (bitField0_ & ~0x00000010);
     deviceName_ = getDefaultInstance().getDeviceName();
   }
   /**
@@ -453,7 +399,7 @@ public  final class SendTabToSelfSpecifics extends
   private void setDeviceNameBytes(
       com.google.protobuf.ByteString value) {
     deviceName_ = value.toStringUtf8();
-    bitField0_ |= 0x00000020;
+    bitField0_ |= 0x00000010;
   }
 
   public static final int TARGET_DEVICE_SYNC_CACHE_GUID_FIELD_NUMBER = 7;
@@ -469,7 +415,7 @@ public  final class SendTabToSelfSpecifics extends
    */
   @java.lang.Override
   public boolean hasTargetDeviceSyncCacheGuid() {
-    return ((bitField0_ & 0x00000040) != 0);
+    return ((bitField0_ & 0x00000020) != 0);
   }
   /**
    * <pre>
@@ -510,7 +456,7 @@ public  final class SendTabToSelfSpecifics extends
   private void setTargetDeviceSyncCacheGuid(
       java.lang.String value) {
     value.getClass();
-  bitField0_ |= 0x00000040;
+  bitField0_ |= 0x00000020;
     targetDeviceSyncCacheGuid_ = value;
   }
   /**
@@ -522,7 +468,7 @@ public  final class SendTabToSelfSpecifics extends
    * <code>optional string target_device_sync_cache_guid = 7;</code>
    */
   private void clearTargetDeviceSyncCacheGuid() {
-    bitField0_ = (bitField0_ & ~0x00000040);
+    bitField0_ = (bitField0_ & ~0x00000020);
     targetDeviceSyncCacheGuid_ = getDefaultInstance().getTargetDeviceSyncCacheGuid();
   }
   /**
@@ -537,7 +483,7 @@ public  final class SendTabToSelfSpecifics extends
   private void setTargetDeviceSyncCacheGuidBytes(
       com.google.protobuf.ByteString value) {
     targetDeviceSyncCacheGuid_ = value.toStringUtf8();
-    bitField0_ |= 0x00000040;
+    bitField0_ |= 0x00000020;
   }
 
   public static final int OPENED_FIELD_NUMBER = 8;
@@ -552,7 +498,7 @@ public  final class SendTabToSelfSpecifics extends
    */
   @java.lang.Override
   public boolean hasOpened() {
-    return ((bitField0_ & 0x00000080) != 0);
+    return ((bitField0_ & 0x00000040) != 0);
   }
   /**
    * <pre>
@@ -575,7 +521,7 @@ public  final class SendTabToSelfSpecifics extends
    * @param value The opened to set.
    */
   private void setOpened(boolean value) {
-    bitField0_ |= 0x00000080;
+    bitField0_ |= 0x00000040;
     opened_ = value;
   }
   /**
@@ -586,7 +532,7 @@ public  final class SendTabToSelfSpecifics extends
    * <code>optional bool opened = 8;</code>
    */
   private void clearOpened() {
-    bitField0_ = (bitField0_ & ~0x00000080);
+    bitField0_ = (bitField0_ & ~0x00000040);
     opened_ = false;
   }
 
@@ -602,7 +548,7 @@ public  final class SendTabToSelfSpecifics extends
    */
   @java.lang.Override
   public boolean hasNotificationDismissed() {
-    return ((bitField0_ & 0x00000100) != 0);
+    return ((bitField0_ & 0x00000080) != 0);
   }
   /**
    * <pre>
@@ -625,7 +571,7 @@ public  final class SendTabToSelfSpecifics extends
    * @param value The notificationDismissed to set.
    */
   private void setNotificationDismissed(boolean value) {
-    bitField0_ |= 0x00000100;
+    bitField0_ |= 0x00000080;
     notificationDismissed_ = value;
   }
   /**
@@ -636,7 +582,7 @@ public  final class SendTabToSelfSpecifics extends
    * <code>optional bool notification_dismissed = 9;</code>
    */
   private void clearNotificationDismissed() {
-    bitField0_ = (bitField0_ & ~0x00000100);
+    bitField0_ = (bitField0_ & ~0x00000080);
     notificationDismissed_ = false;
   }
 
@@ -1053,62 +999,6 @@ public  final class SendTabToSelfSpecifics extends
 
     /**
      * <pre>
-     * The time the tab was navigated to as measured by the client in microseconds
-     * since the windows epoch.
-     * </pre>
-     *
-     * <code>optional int64 navigation_time_usec = 6;</code>
-     * @return Whether the navigationTimeUsec field is set.
-     */
-    @java.lang.Override
-    public boolean hasNavigationTimeUsec() {
-      return instance.hasNavigationTimeUsec();
-    }
-    /**
-     * <pre>
-     * The time the tab was navigated to as measured by the client in microseconds
-     * since the windows epoch.
-     * </pre>
-     *
-     * <code>optional int64 navigation_time_usec = 6;</code>
-     * @return The navigationTimeUsec.
-     */
-    @java.lang.Override
-    public long getNavigationTimeUsec() {
-      return instance.getNavigationTimeUsec();
-    }
-    /**
-     * <pre>
-     * The time the tab was navigated to as measured by the client in microseconds
-     * since the windows epoch.
-     * </pre>
-     *
-     * <code>optional int64 navigation_time_usec = 6;</code>
-     * @param value The navigationTimeUsec to set.
-     * @return This builder for chaining.
-     */
-    public Builder setNavigationTimeUsec(long value) {
-      copyOnWrite();
-      instance.setNavigationTimeUsec(value);
-      return this;
-    }
-    /**
-     * <pre>
-     * The time the tab was navigated to as measured by the client in microseconds
-     * since the windows epoch.
-     * </pre>
-     *
-     * <code>optional int64 navigation_time_usec = 6;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearNavigationTimeUsec() {
-      copyOnWrite();
-      instance.clearNavigationTimeUsec();
-      return this;
-    }
-
-    /**
-     * <pre>
      * A non-unique but human readable name to describe this client, used in UI.
      * </pre>
      *
@@ -1401,15 +1291,14 @@ public  final class SendTabToSelfSpecifics extends
             "sharedTimeUsec_",
             "deviceName_",
             "guid_",
-            "navigationTimeUsec_",
             "targetDeviceSyncCacheGuid_",
             "opened_",
             "notificationDismissed_",
           };
           java.lang.String info =
-              "\u0001\t\u0000\u0001\u0001\t\t\u0000\u0000\u0000\u0001\u1008\u0001\u0002\u1008\u0002" +
-              "\u0003\u1002\u0003\u0004\u1008\u0005\u0005\u1008\u0000\u0006\u1002\u0004\u0007\u1008" +
-              "\u0006\b\u1007\u0007\t\u1007\b";
+              "\u0001\b\u0000\u0001\u0001\t\b\u0000\u0000\u0000\u0001\u1008\u0001\u0002\u1008\u0002" +
+              "\u0003\u1002\u0003\u0004\u1008\u0004\u0005\u1008\u0000\u0007\u1008\u0005\b\u1007" +
+              "\u0006\t\u1007\u0007";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

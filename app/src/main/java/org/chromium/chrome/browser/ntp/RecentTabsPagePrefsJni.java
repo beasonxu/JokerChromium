@@ -11,7 +11,7 @@ import org.chromium.chrome.browser.profiles.Profile;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class RecentTabsPagePrefsJni implements RecentTabsPagePrefs.Natives {
+class RecentTabsPagePrefsJni implements RecentTabsPagePrefs.Natives {
   private static RecentTabsPagePrefs.Natives testInstance;
 
   public static final JniStaticTestMocker<RecentTabsPagePrefs.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.ntp.RecentTabsPagePrefs.Natives>() {

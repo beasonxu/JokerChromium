@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface RendererAudioOutputStreamFactory extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface RendererAudioOutputStreamFactory extends org.chromium.mojo.bind
 
     Manager<RendererAudioOutputStreamFactory, RendererAudioOutputStreamFactory.Proxy> MANAGER = RendererAudioOutputStreamFactory_Internal.MANAGER;
 
-
     void requestDeviceAuthorization(
 org.chromium.mojo.bindings.InterfaceRequest<org.chromium.media.mojom.AudioOutputStreamProvider> streamProviderReceiver, org.chromium.mojo_base.mojom.UnguessableToken sessionId, String deviceId, 
-RequestDeviceAuthorizationResponse callback);
+RequestDeviceAuthorization_Response callback);
 
-    interface RequestDeviceAuthorizationResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<Integer, org.chromium.media.mojom.AudioParameters, String> { }
+    interface RequestDeviceAuthorization_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<Integer, org.chromium.media.mojom.AudioParameters, String> { }
 
 
 }

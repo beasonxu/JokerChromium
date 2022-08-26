@@ -13,6 +13,8 @@
 
 package org.chromium.installedapp.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface InstalledAppProvider extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface InstalledAppProvider extends org.chromium.mojo.bindings.Interfa
 
     Manager<InstalledAppProvider, InstalledAppProvider.Proxy> MANAGER = InstalledAppProvider_Internal.MANAGER;
 
-
     void filterInstalledApps(
 RelatedApplication[] relatedApps, org.chromium.url.mojom.Url manifestUrl, 
-FilterInstalledAppsResponse callback);
+FilterInstalledApps_Response callback);
 
-    interface FilterInstalledAppsResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<RelatedApplication[]> { }
+    interface FilterInstalledApps_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<RelatedApplication[]> { }
 
 
 }

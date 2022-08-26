@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class P2pTrustedSocketManager_Internal {
 
@@ -50,6 +52,10 @@ class P2pTrustedSocketManager_Internal {
     private static final int START_RTP_DUMP_ORDINAL = 0;
 
     private static final int STOP_RTP_DUMP_ORDINAL = 1;
+
+    private static final int PAUSE_NETWORK_CHANGE_NOTIFICATIONS_ORDINAL = 2;
+
+    private static final int RESUME_NETWORK_CHANGE_NOTIFICATIONS_ORDINAL = 3;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements P2pTrustedSocketManager.Proxy {
@@ -94,6 +100,36 @@ boolean incoming, boolean outgoing) {
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(STOP_RTP_DUMP_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void pauseNetworkChangeNotifications(
+) {
+
+            P2pTrustedSocketManagerPauseNetworkChangeNotificationsParams _message = new P2pTrustedSocketManagerPauseNetworkChangeNotificationsParams();
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(PAUSE_NETWORK_CHANGE_NOTIFICATIONS_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void resumeNetworkChangeNotifications(
+) {
+
+            P2pTrustedSocketManagerResumeNetworkChangeNotificationsParams _message = new P2pTrustedSocketManagerResumeNetworkChangeNotificationsParams();
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(RESUME_NETWORK_CHANGE_NOTIFICATIONS_ORDINAL)));
 
         }
 
@@ -152,6 +188,30 @@ boolean incoming, boolean outgoing) {
                     }
 
 
+
+
+
+                    case PAUSE_NETWORK_CHANGE_NOTIFICATIONS_ORDINAL: {
+
+                        P2pTrustedSocketManagerPauseNetworkChangeNotificationsParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().pauseNetworkChangeNotifications();
+                        return true;
+                    }
+
+
+
+
+
+                    case RESUME_NETWORK_CHANGE_NOTIFICATIONS_ORDINAL: {
+
+                        P2pTrustedSocketManagerResumeNetworkChangeNotificationsParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().resumeNetworkChangeNotifications();
+                        return true;
+                    }
+
+
                     default:
                         return false;
                 }
@@ -179,6 +239,10 @@ boolean incoming, boolean outgoing) {
                     case org.chromium.mojo.bindings.interfacecontrol.InterfaceControlMessagesConstants.RUN_MESSAGE_ID:
                         return org.chromium.mojo.bindings.InterfaceControlMessagesHelper.handleRun(
                                 getCore(), P2pTrustedSocketManager_Internal.MANAGER, messageWithHeader, receiver);
+
+
+
+
 
 
 
@@ -331,6 +395,118 @@ boolean incoming, boolean outgoing) {
             encoder0.encode(this.incoming, 8, 0);
             
             encoder0.encode(this.outgoing, 8, 1);
+        }
+    }
+
+
+
+    
+    static final class P2pTrustedSocketManagerPauseNetworkChangeNotificationsParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private P2pTrustedSocketManagerPauseNetworkChangeNotificationsParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public P2pTrustedSocketManagerPauseNetworkChangeNotificationsParams() {
+            this(0);
+        }
+
+        public static P2pTrustedSocketManagerPauseNetworkChangeNotificationsParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static P2pTrustedSocketManagerPauseNetworkChangeNotificationsParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static P2pTrustedSocketManagerPauseNetworkChangeNotificationsParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            P2pTrustedSocketManagerPauseNetworkChangeNotificationsParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new P2pTrustedSocketManagerPauseNetworkChangeNotificationsParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+
+
+    
+    static final class P2pTrustedSocketManagerResumeNetworkChangeNotificationsParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private P2pTrustedSocketManagerResumeNetworkChangeNotificationsParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public P2pTrustedSocketManagerResumeNetworkChangeNotificationsParams() {
+            this(0);
+        }
+
+        public static P2pTrustedSocketManagerResumeNetworkChangeNotificationsParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static P2pTrustedSocketManagerResumeNetworkChangeNotificationsParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static P2pTrustedSocketManagerResumeNetworkChangeNotificationsParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            P2pTrustedSocketManagerResumeNetworkChangeNotificationsParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new P2pTrustedSocketManagerResumeNetworkChangeNotificationsParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         }
     }
 

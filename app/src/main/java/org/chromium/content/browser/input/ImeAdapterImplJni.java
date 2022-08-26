@@ -13,7 +13,7 @@ import org.chromium.content_public.browser.WebContents;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ImeAdapterImplJni implements ImeAdapterImpl.Natives {
+class ImeAdapterImplJni implements ImeAdapterImpl.Natives {
   private static ImeAdapterImpl.Natives testInstance;
 
   public static final JniStaticTestMocker<ImeAdapterImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content.browser.input.ImeAdapterImpl.Natives>() {
@@ -109,9 +109,9 @@ final class ImeAdapterImplJni implements ImeAdapterImpl.Natives {
   }
 
   @Override
-  public void advanceFocusInForm(long nativeImeAdapterAndroid, ImeAdapterImpl caller,
+  public void advanceFocusForIME(long nativeImeAdapterAndroid, ImeAdapterImpl caller,
       int focusType) {
-    GEN_JNI.org_chromium_content_browser_input_ImeAdapterImpl_advanceFocusInForm(nativeImeAdapterAndroid, caller, focusType);
+    GEN_JNI.org_chromium_content_browser_input_ImeAdapterImpl_advanceFocusForIME(nativeImeAdapterAndroid, caller, focusType);
   }
 
   public static ImeAdapterImpl.Natives get() {

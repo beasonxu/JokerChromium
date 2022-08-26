@@ -1,7 +1,6 @@
 package org.chromium.chrome.browser.contextualsearch;
 
 import java.lang.Override;
-import java.lang.String;
 import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
@@ -11,7 +10,7 @@ import org.chromium.content_public.browser.WebContents;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ContextualSearchManagerJni implements ContextualSearchManager.Natives {
+class ContextualSearchManagerJni implements ContextualSearchManager.Natives {
   private static ContextualSearchManager.Natives testInstance;
 
   public static final JniStaticTestMocker<ContextualSearchManager.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.contextualsearch.ContextualSearchManager.Natives>() {
@@ -47,18 +46,6 @@ final class ContextualSearchManagerJni implements ContextualSearchManager.Native
       ContextualSearchManager caller, ContextualSearchContext contextualSearchContext,
       WebContents baseWebContents) {
     GEN_JNI.org_chromium_chrome_browser_contextualsearch_ContextualSearchManager_gatherSurroundingText(nativeContextualSearchManager, caller, contextualSearchContext, baseWebContents);
-  }
-
-  @Override
-  public void allowlistContextualSearchJsApiUrl(long nativeContextualSearchManager,
-      ContextualSearchManager caller, String url) {
-    GEN_JNI.org_chromium_chrome_browser_contextualsearch_ContextualSearchManager_allowlistContextualSearchJsApiUrl(nativeContextualSearchManager, caller, url);
-  }
-
-  @Override
-  public void enableContextualSearchJsApiForWebContents(long nativeContextualSearchManager,
-      ContextualSearchManager caller, WebContents overlayWebContents) {
-    GEN_JNI.org_chromium_chrome_browser_contextualsearch_ContextualSearchManager_enableContextualSearchJsApiForWebContents(nativeContextualSearchManager, caller, overlayWebContents);
   }
 
   public static ContextualSearchManager.Natives get() {

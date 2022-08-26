@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface DocumentMetadata extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface DocumentMetadata extends org.chromium.mojo.bindings.Interface {
 
     Manager<DocumentMetadata, DocumentMetadata.Proxy> MANAGER = DocumentMetadata_Internal.MANAGER;
 
-
     void getEntities(
 
-GetEntitiesResponse callback);
+GetEntities_Response callback);
 
-    interface GetEntitiesResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<WebPage> { }
+    interface GetEntities_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<WebPage> { }
 
 
 }

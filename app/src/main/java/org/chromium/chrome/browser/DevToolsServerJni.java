@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class DevToolsServerJni implements DevToolsServer.Natives {
+class DevToolsServerJni implements DevToolsServer.Natives {
   private static DevToolsServer.Natives testInstance;
 
   public static final JniStaticTestMocker<DevToolsServer.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.DevToolsServer.Natives>() {

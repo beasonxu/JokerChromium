@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class PopupWidgetHost_Internal {
 
@@ -79,12 +81,14 @@ class PopupWidgetHost_Internal {
 
         @Override
         public void showPopup(
-org.chromium.gfx.mojom.Rect initialRect, 
-ShowPopupResponse callback) {
+org.chromium.gfx.mojom.Rect initialRect, org.chromium.gfx.mojom.Rect anchorRect, 
+ShowPopup_Response callback) {
 
             PopupWidgetHostShowPopupParams _message = new PopupWidgetHostShowPopupParams();
 
             _message.initialRect = initialRect;
+
+            _message.anchorRect = anchorRect;
 
 
             getProxyHandler().getMessageReceiver().acceptWithResponder(
@@ -102,7 +106,7 @@ ShowPopupResponse callback) {
         @Override
         public void setPopupBounds(
 org.chromium.gfx.mojom.Rect bounds, 
-SetPopupBoundsResponse callback) {
+SetPopupBounds_Response callback) {
 
             PopupWidgetHostSetPopupBoundsParams _message = new PopupWidgetHostSetPopupBoundsParams();
 
@@ -206,7 +210,7 @@ SetPopupBoundsResponse callback) {
                         PopupWidgetHostShowPopupParams data =
                                 PopupWidgetHostShowPopupParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().showPopup(data.initialRect, new PopupWidgetHostShowPopupResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().showPopup(data.initialRect, data.anchorRect, new PopupWidgetHostShowPopupResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -296,10 +300,11 @@ SetPopupBoundsResponse callback) {
     
     static final class PopupWidgetHostShowPopupParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public org.chromium.gfx.mojom.Rect initialRect;
+        public org.chromium.gfx.mojom.Rect anchorRect;
 
         private PopupWidgetHostShowPopupParams(int version) {
             super(STRUCT_SIZE, version);
@@ -339,6 +344,11 @@ SetPopupBoundsResponse callback) {
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
                     result.initialRect = org.chromium.gfx.mojom.Rect.decode(decoder1);
                     }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                    result.anchorRect = org.chromium.gfx.mojom.Rect.decode(decoder1);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -352,6 +362,8 @@ SetPopupBoundsResponse callback) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.initialRect, 8, false);
+            
+            encoder0.encode(this.anchorRect, 16, false);
         }
     }
 
@@ -413,9 +425,9 @@ SetPopupBoundsResponse callback) {
 
     static class PopupWidgetHostShowPopupResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PopupWidgetHost.ShowPopupResponse mCallback;
+        private final PopupWidgetHost.ShowPopup_Response mCallback;
 
-        PopupWidgetHostShowPopupResponseParamsForwardToCallback(PopupWidgetHost.ShowPopupResponse callback) {
+        PopupWidgetHostShowPopupResponseParamsForwardToCallback(PopupWidgetHost.ShowPopup_Response callback) {
             this.mCallback = callback;
         }
 
@@ -438,7 +450,7 @@ SetPopupBoundsResponse callback) {
         }
     }
 
-    static class PopupWidgetHostShowPopupResponseParamsProxyToResponder implements PopupWidgetHost.ShowPopupResponse {
+    static class PopupWidgetHostShowPopupResponseParamsProxyToResponder implements PopupWidgetHost.ShowPopup_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -590,9 +602,9 @@ SetPopupBoundsResponse callback) {
 
     static class PopupWidgetHostSetPopupBoundsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PopupWidgetHost.SetPopupBoundsResponse mCallback;
+        private final PopupWidgetHost.SetPopupBounds_Response mCallback;
 
-        PopupWidgetHostSetPopupBoundsResponseParamsForwardToCallback(PopupWidgetHost.SetPopupBoundsResponse callback) {
+        PopupWidgetHostSetPopupBoundsResponseParamsForwardToCallback(PopupWidgetHost.SetPopupBounds_Response callback) {
             this.mCallback = callback;
         }
 
@@ -615,7 +627,7 @@ SetPopupBoundsResponse callback) {
         }
     }
 
-    static class PopupWidgetHostSetPopupBoundsResponseParamsProxyToResponder implements PopupWidgetHost.SetPopupBoundsResponse {
+    static class PopupWidgetHostSetPopupBoundsResponseParamsProxyToResponder implements PopupWidgetHost.SetPopupBounds_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PagehideDispatch {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PagehideDispatch.NOT_DISPATCHED,
+        PagehideDispatch.DISPATCHED_NOT_PERSISTED,
+        PagehideDispatch.DISPATCHED_PERSISTED})
+    public @interface EnumType {}
 
     public static final int NOT_DISPATCHED = 0;
     public static final int DISPATCHED_NOT_PERSISTED = 1;

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class CacheStorageCache_Internal {
 
@@ -70,8 +72,8 @@ class CacheStorageCache_Internal {
 
         @Override
         public void match(
-FetchApiRequest request, CacheQueryOptions queryOptions, boolean inRelatedFetchEvent, long traceId, 
-MatchResponse callback) {
+FetchApiRequest request, CacheQueryOptions queryOptions, boolean inRelatedFetchEvent, boolean inRangeFetchEvent, long traceId, 
+Match_Response callback) {
 
             CacheStorageCacheMatchParams _message = new CacheStorageCacheMatchParams();
 
@@ -80,6 +82,8 @@ MatchResponse callback) {
             _message.queryOptions = queryOptions;
 
             _message.inRelatedFetchEvent = inRelatedFetchEvent;
+
+            _message.inRangeFetchEvent = inRangeFetchEvent;
 
             _message.traceId = traceId;
 
@@ -99,7 +103,7 @@ MatchResponse callback) {
         @Override
         public void matchAll(
 FetchApiRequest request, CacheQueryOptions queryOptions, long traceId, 
-MatchAllResponse callback) {
+MatchAll_Response callback) {
 
             CacheStorageCacheMatchAllParams _message = new CacheStorageCacheMatchAllParams();
 
@@ -125,7 +129,7 @@ MatchAllResponse callback) {
         @Override
         public void getAllMatchedEntries(
 FetchApiRequest request, CacheQueryOptions queryOptions, long traceId, 
-GetAllMatchedEntriesResponse callback) {
+GetAllMatchedEntries_Response callback) {
 
             CacheStorageCacheGetAllMatchedEntriesParams _message = new CacheStorageCacheGetAllMatchedEntriesParams();
 
@@ -151,7 +155,7 @@ GetAllMatchedEntriesResponse callback) {
         @Override
         public void keys(
 FetchApiRequest request, CacheQueryOptions queryOptions, long traceId, 
-KeysResponse callback) {
+Keys_Response callback) {
 
             CacheStorageCacheKeysParams _message = new CacheStorageCacheKeysParams();
 
@@ -177,7 +181,7 @@ KeysResponse callback) {
         @Override
         public void batch(
 BatchOperation[] batchOperations, long traceId, 
-BatchResponse callback) {
+Batch_Response callback) {
 
             CacheStorageCacheBatchParams _message = new CacheStorageCacheBatchParams();
 
@@ -201,7 +205,7 @@ BatchResponse callback) {
         @Override
         public void writeSideData(
 org.chromium.url.mojom.Url url, org.chromium.mojo_base.mojom.Time expectedResponseTime, org.chromium.mojo_base.mojom.BigBuffer data, long traceId, 
-WriteSideDataResponse callback) {
+WriteSideData_Response callback) {
 
             CacheStorageCacheWriteSideDataParams _message = new CacheStorageCacheWriteSideDataParams();
 
@@ -305,7 +309,7 @@ WriteSideDataResponse callback) {
                         CacheStorageCacheMatchParams data =
                                 CacheStorageCacheMatchParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().match(data.request, data.queryOptions, data.inRelatedFetchEvent, data.traceId, new CacheStorageCacheMatchResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().match(data.request, data.queryOptions, data.inRelatedFetchEvent, data.inRangeFetchEvent, data.traceId, new CacheStorageCacheMatchResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -405,6 +409,7 @@ WriteSideDataResponse callback) {
         public FetchApiRequest request;
         public CacheQueryOptions queryOptions;
         public boolean inRelatedFetchEvent;
+        public boolean inRangeFetchEvent;
         public long traceId;
 
         private CacheStorageCacheMatchParams(int version) {
@@ -456,6 +461,10 @@ WriteSideDataResponse callback) {
                     }
                     {
                         
+                    result.inRangeFetchEvent = decoder0.readBoolean(24, 1);
+                    }
+                    {
+                        
                     result.traceId = decoder0.readLong(32);
                     }
 
@@ -475,6 +484,8 @@ WriteSideDataResponse callback) {
             encoder0.encode(this.queryOptions, 16, false);
             
             encoder0.encode(this.inRelatedFetchEvent, 24, 0);
+            
+            encoder0.encode(this.inRangeFetchEvent, 24, 1);
             
             encoder0.encode(this.traceId, 32);
         }
@@ -545,9 +556,9 @@ WriteSideDataResponse callback) {
 
     static class CacheStorageCacheMatchResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CacheStorageCache.MatchResponse mCallback;
+        private final CacheStorageCache.Match_Response mCallback;
 
-        CacheStorageCacheMatchResponseParamsForwardToCallback(CacheStorageCache.MatchResponse callback) {
+        CacheStorageCacheMatchResponseParamsForwardToCallback(CacheStorageCache.Match_Response callback) {
             this.mCallback = callback;
         }
 
@@ -572,7 +583,7 @@ WriteSideDataResponse callback) {
         }
     }
 
-    static class CacheStorageCacheMatchResponseParamsProxyToResponder implements CacheStorageCache.MatchResponse {
+    static class CacheStorageCacheMatchResponseParamsProxyToResponder implements CacheStorageCache.Match_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -748,9 +759,9 @@ WriteSideDataResponse callback) {
 
     static class CacheStorageCacheMatchAllResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CacheStorageCache.MatchAllResponse mCallback;
+        private final CacheStorageCache.MatchAll_Response mCallback;
 
-        CacheStorageCacheMatchAllResponseParamsForwardToCallback(CacheStorageCache.MatchAllResponse callback) {
+        CacheStorageCacheMatchAllResponseParamsForwardToCallback(CacheStorageCache.MatchAll_Response callback) {
             this.mCallback = callback;
         }
 
@@ -775,7 +786,7 @@ WriteSideDataResponse callback) {
         }
     }
 
-    static class CacheStorageCacheMatchAllResponseParamsProxyToResponder implements CacheStorageCache.MatchAllResponse {
+    static class CacheStorageCacheMatchAllResponseParamsProxyToResponder implements CacheStorageCache.MatchAll_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -951,9 +962,9 @@ WriteSideDataResponse callback) {
 
     static class CacheStorageCacheGetAllMatchedEntriesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CacheStorageCache.GetAllMatchedEntriesResponse mCallback;
+        private final CacheStorageCache.GetAllMatchedEntries_Response mCallback;
 
-        CacheStorageCacheGetAllMatchedEntriesResponseParamsForwardToCallback(CacheStorageCache.GetAllMatchedEntriesResponse callback) {
+        CacheStorageCacheGetAllMatchedEntriesResponseParamsForwardToCallback(CacheStorageCache.GetAllMatchedEntries_Response callback) {
             this.mCallback = callback;
         }
 
@@ -978,7 +989,7 @@ WriteSideDataResponse callback) {
         }
     }
 
-    static class CacheStorageCacheGetAllMatchedEntriesResponseParamsProxyToResponder implements CacheStorageCache.GetAllMatchedEntriesResponse {
+    static class CacheStorageCacheGetAllMatchedEntriesResponseParamsProxyToResponder implements CacheStorageCache.GetAllMatchedEntries_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1154,9 +1165,9 @@ WriteSideDataResponse callback) {
 
     static class CacheStorageCacheKeysResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CacheStorageCache.KeysResponse mCallback;
+        private final CacheStorageCache.Keys_Response mCallback;
 
-        CacheStorageCacheKeysResponseParamsForwardToCallback(CacheStorageCache.KeysResponse callback) {
+        CacheStorageCacheKeysResponseParamsForwardToCallback(CacheStorageCache.Keys_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1181,7 +1192,7 @@ WriteSideDataResponse callback) {
         }
     }
 
-    static class CacheStorageCacheKeysResponseParamsProxyToResponder implements CacheStorageCache.KeysResponse {
+    static class CacheStorageCacheKeysResponseParamsProxyToResponder implements CacheStorageCache.Keys_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1366,9 +1377,9 @@ WriteSideDataResponse callback) {
 
     static class CacheStorageCacheBatchResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CacheStorageCache.BatchResponse mCallback;
+        private final CacheStorageCache.Batch_Response mCallback;
 
-        CacheStorageCacheBatchResponseParamsForwardToCallback(CacheStorageCache.BatchResponse callback) {
+        CacheStorageCacheBatchResponseParamsForwardToCallback(CacheStorageCache.Batch_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1393,7 +1404,7 @@ WriteSideDataResponse callback) {
         }
     }
 
-    static class CacheStorageCacheBatchResponseParamsProxyToResponder implements CacheStorageCache.BatchResponse {
+    static class CacheStorageCacheBatchResponseParamsProxyToResponder implements CacheStorageCache.Batch_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1578,9 +1589,9 @@ WriteSideDataResponse callback) {
 
     static class CacheStorageCacheWriteSideDataResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CacheStorageCache.WriteSideDataResponse mCallback;
+        private final CacheStorageCache.WriteSideData_Response mCallback;
 
-        CacheStorageCacheWriteSideDataResponseParamsForwardToCallback(CacheStorageCache.WriteSideDataResponse callback) {
+        CacheStorageCacheWriteSideDataResponseParamsForwardToCallback(CacheStorageCache.WriteSideData_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1605,7 +1616,7 @@ WriteSideDataResponse callback) {
         }
     }
 
-    static class CacheStorageCacheWriteSideDataResponseParamsProxyToResponder implements CacheStorageCache.WriteSideDataResponse {
+    static class CacheStorageCacheWriteSideDataResponseParamsProxyToResponder implements CacheStorageCache.WriteSideData_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

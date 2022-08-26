@@ -13,8 +13,24 @@
 
 package org.chromium.payments.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class CanMakePaymentEventResponseType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        CanMakePaymentEventResponseType.INCOGNITO,
+        CanMakePaymentEventResponseType.NO_EXPLICITLY_VERIFIED_METHODS,
+        CanMakePaymentEventResponseType.NOT_INSTALLED,
+        CanMakePaymentEventResponseType.NO_URL_BASED_PAYMENT_METHODS,
+        CanMakePaymentEventResponseType.BOOLEAN_CONVERSION_ERROR,
+        CanMakePaymentEventResponseType.BROWSER_ERROR,
+        CanMakePaymentEventResponseType.INTERNAL_ERROR,
+        CanMakePaymentEventResponseType.NO_RESPONSE,
+        CanMakePaymentEventResponseType.REJECT,
+        CanMakePaymentEventResponseType.SUCCESS,
+        CanMakePaymentEventResponseType.TIMEOUT})
+    public @interface EnumType {}
 
     public static final int INCOGNITO = 0;
     public static final int NO_EXPLICITLY_VERIFIED_METHODS = 1;
@@ -27,16 +43,11 @@ public final class CanMakePaymentEventResponseType {
     public static final int REJECT = 8;
     public static final int SUCCESS = 9;
     public static final int TIMEOUT = 10;
-    public static final int INVALID_ACCOUNT_BALANCE_VALUE = 11;
-    public static final int MINIMAL_UI_RESPONSE_CONVERSION_ERROR = 12;
-    public static final int NO_ACCOUNT_BALANCE_VALUE = 13;
-    public static final int NO_CAN_MAKE_PAYMENT_VALUE = 14;
-    public static final int NO_READY_FOR_MINIMAL_UI_VALUE = 15;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 15;
+    public static final int MAX_VALUE = 10;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 15;
+        return value >= 0 && value <= 10;
     }
 
     public static void validate(int value) {

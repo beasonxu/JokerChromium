@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface NoStatePrefetchProcessor extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface NoStatePrefetchProcessor extends org.chromium.mojo.bindings.Int
 
     Manager<NoStatePrefetchProcessor, NoStatePrefetchProcessor.Proxy> MANAGER = NoStatePrefetchProcessor_Internal.MANAGER;
 
-
     void start(
 PrerenderAttributes prerenderAttribute);
-
 
 
     void cancel(

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class PermissionService_Internal {
 
@@ -69,7 +71,7 @@ class PermissionService_Internal {
         @Override
         public void hasPermission(
 PermissionDescriptor permission, 
-HasPermissionResponse callback) {
+HasPermission_Response callback) {
 
             PermissionServiceHasPermissionParams _message = new PermissionServiceHasPermissionParams();
 
@@ -91,7 +93,7 @@ HasPermissionResponse callback) {
         @Override
         public void requestPermission(
 PermissionDescriptor permission, boolean userGesture, 
-RequestPermissionResponse callback) {
+RequestPermission_Response callback) {
 
             PermissionServiceRequestPermissionParams _message = new PermissionServiceRequestPermissionParams();
 
@@ -115,7 +117,7 @@ RequestPermissionResponse callback) {
         @Override
         public void requestPermissions(
 PermissionDescriptor[] permission, boolean userGesture, 
-RequestPermissionsResponse callback) {
+RequestPermissions_Response callback) {
 
             PermissionServiceRequestPermissionsParams _message = new PermissionServiceRequestPermissionsParams();
 
@@ -139,7 +141,7 @@ RequestPermissionsResponse callback) {
         @Override
         public void revokePermission(
 PermissionDescriptor permission, 
-RevokePermissionResponse callback) {
+RevokePermission_Response callback) {
 
             PermissionServiceRevokePermissionParams _message = new PermissionServiceRevokePermissionParams();
 
@@ -459,9 +461,9 @@ PermissionDescriptor permission, int lastKnownStatus, PermissionObserver observe
 
     static class PermissionServiceHasPermissionResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PermissionService.HasPermissionResponse mCallback;
+        private final PermissionService.HasPermission_Response mCallback;
 
-        PermissionServiceHasPermissionResponseParamsForwardToCallback(PermissionService.HasPermissionResponse callback) {
+        PermissionServiceHasPermissionResponseParamsForwardToCallback(PermissionService.HasPermission_Response callback) {
             this.mCallback = callback;
         }
 
@@ -486,7 +488,7 @@ PermissionDescriptor permission, int lastKnownStatus, PermissionObserver observe
         }
     }
 
-    static class PermissionServiceHasPermissionResponseParamsProxyToResponder implements PermissionService.HasPermissionResponse {
+    static class PermissionServiceHasPermissionResponseParamsProxyToResponder implements PermissionService.HasPermission_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -656,9 +658,9 @@ PermissionDescriptor permission, int lastKnownStatus, PermissionObserver observe
 
     static class PermissionServiceRequestPermissionResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PermissionService.RequestPermissionResponse mCallback;
+        private final PermissionService.RequestPermission_Response mCallback;
 
-        PermissionServiceRequestPermissionResponseParamsForwardToCallback(PermissionService.RequestPermissionResponse callback) {
+        PermissionServiceRequestPermissionResponseParamsForwardToCallback(PermissionService.RequestPermission_Response callback) {
             this.mCallback = callback;
         }
 
@@ -683,7 +685,7 @@ PermissionDescriptor permission, int lastKnownStatus, PermissionObserver observe
         }
     }
 
-    static class PermissionServiceRequestPermissionResponseParamsProxyToResponder implements PermissionService.RequestPermissionResponse {
+    static class PermissionServiceRequestPermissionResponseParamsProxyToResponder implements PermissionService.RequestPermission_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -872,9 +874,9 @@ PermissionDescriptor permission, int lastKnownStatus, PermissionObserver observe
 
     static class PermissionServiceRequestPermissionsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PermissionService.RequestPermissionsResponse mCallback;
+        private final PermissionService.RequestPermissions_Response mCallback;
 
-        PermissionServiceRequestPermissionsResponseParamsForwardToCallback(PermissionService.RequestPermissionsResponse callback) {
+        PermissionServiceRequestPermissionsResponseParamsForwardToCallback(PermissionService.RequestPermissions_Response callback) {
             this.mCallback = callback;
         }
 
@@ -899,7 +901,7 @@ PermissionDescriptor permission, int lastKnownStatus, PermissionObserver observe
         }
     }
 
-    static class PermissionServiceRequestPermissionsResponseParamsProxyToResponder implements PermissionService.RequestPermissionsResponse {
+    static class PermissionServiceRequestPermissionsResponseParamsProxyToResponder implements PermissionService.RequestPermissions_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1062,9 +1064,9 @@ PermissionDescriptor permission, int lastKnownStatus, PermissionObserver observe
 
     static class PermissionServiceRevokePermissionResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PermissionService.RevokePermissionResponse mCallback;
+        private final PermissionService.RevokePermission_Response mCallback;
 
-        PermissionServiceRevokePermissionResponseParamsForwardToCallback(PermissionService.RevokePermissionResponse callback) {
+        PermissionServiceRevokePermissionResponseParamsForwardToCallback(PermissionService.RevokePermission_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1089,7 +1091,7 @@ PermissionDescriptor permission, int lastKnownStatus, PermissionObserver observe
         }
     }
 
-    static class PermissionServiceRevokePermissionResponseParamsProxyToResponder implements PermissionService.RevokePermissionResponse {
+    static class PermissionServiceRevokePermissionResponseParamsProxyToResponder implements PermissionService.RevokePermission_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

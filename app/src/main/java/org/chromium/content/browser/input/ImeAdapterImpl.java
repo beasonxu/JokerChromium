@@ -559,6 +559,7 @@ public class ImeAdapterImpl
 
     @Override
     public void onShowKeyboardReceiveResult(int resultCode) {
+        if (!isValid()) return;
         View containerView = getContainerView();
         if (resultCode == InputMethodManager.RESULT_SHOWN) {
             // If OSK is newly shown, delay the form focus until
@@ -720,10 +721,6 @@ public class ImeAdapterImpl
         hideKeyboard();
     }
 
-    public void reset() {
-        resetAndHideKeyboard();
-    }
-
     @CalledByNative
     private void onNativeDestroyed() {
         resetAndHideKeyboard();
@@ -798,10 +795,10 @@ public class ImeAdapterImpl
         if (mTextInputAction == TextInputAction.DEFAULT) {
             switch (actionCode) {
                 case EditorInfo.IME_ACTION_NEXT:
-                    advanceFocusInForm(FocusType.FORWARD);
+                    advanceFocusForIME(FocusType.FORWARD);
                     return true;
                 case EditorInfo.IME_ACTION_PREVIOUS:
-                    advanceFocusInForm(FocusType.BACKWARD);
+                    advanceFocusForIME(FocusType.BACKWARD);
                     return true;
             }
         }
@@ -819,9 +816,9 @@ public class ImeAdapterImpl
     }
 
     @Override
-    public void advanceFocusInForm(int focusType) {
+    public void advanceFocusForIME(int focusType) {
         if (mNativeImeAdapterAndroid == 0) return;
-        ImeAdapterImplJni.get().advanceFocusInForm(
+        ImeAdapterImplJni.get().advanceFocusForIME(
                 mNativeImeAdapterAndroid, ImeAdapterImpl.this, focusType);
     }
 
@@ -1189,6 +1186,6 @@ public class ImeAdapterImpl
         boolean requestTextInputStateUpdate(long nativeImeAdapterAndroid, ImeAdapterImpl caller);
         void requestCursorUpdate(long nativeImeAdapterAndroid, ImeAdapterImpl caller,
                 boolean immediateRequest, boolean monitorRequest);
-        void advanceFocusInForm(long nativeImeAdapterAndroid, ImeAdapterImpl caller, int focusType);
+        void advanceFocusForIME(long nativeImeAdapterAndroid, ImeAdapterImpl caller, int focusType);
     }
 }

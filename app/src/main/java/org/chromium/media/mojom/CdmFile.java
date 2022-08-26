@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface CdmFile extends org.chromium.mojo.bindings.Interface {
 
@@ -20,6 +22,11 @@ public interface CdmFile extends org.chromium.mojo.bindings.Interface {
 
     public static final class Status {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            Status.SUCCESS,
+            Status.FAILURE})
+        public @interface EnumType {}
 
         public static final int SUCCESS = 0;
         public static final int FAILURE = 1;
@@ -48,20 +55,18 @@ public interface CdmFile extends org.chromium.mojo.bindings.Interface {
 
     Manager<CdmFile, CdmFile.Proxy> MANAGER = CdmFile_Internal.MANAGER;
 
-
     void read(
 
-ReadResponse callback);
+Read_Response callback);
 
-    interface ReadResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, byte[]> { }
-
+    interface Read_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, byte[]> { }
 
 
     void write(
 byte[] data, 
-WriteResponse callback);
+Write_Response callback);
 
-    interface WriteResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
+    interface Write_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
 }

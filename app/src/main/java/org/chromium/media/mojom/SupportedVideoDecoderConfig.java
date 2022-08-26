@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class SupportedVideoDecoderConfig extends org.chromium.mojo.bindings.Struct {
 

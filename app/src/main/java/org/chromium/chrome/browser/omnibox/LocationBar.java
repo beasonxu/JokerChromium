@@ -9,15 +9,13 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 
-import org.chromium.chrome.browser.lifecycle.Destroyable;
-import org.chromium.chrome.browser.ntp.FakeboxDelegate;
 import org.chromium.chrome.browser.omnibox.voice.VoiceRecognitionHandler;
 import org.chromium.chrome.browser.tab.Tab;
 
 /**
  * Container that holds the {@link UrlBar} and SSL state related with the current {@link Tab}.
  */
-public interface LocationBar extends Destroyable {
+public interface LocationBar {
     /** Handle all necessary tasks that can be delayed until initialization completes. */
     default void onDeferredStartup() {}
 
@@ -33,6 +31,12 @@ public interface LocationBar extends Destroyable {
      * @param showTitle Whether the title should be shown.
      */
     void setShowTitle(boolean showTitle);
+
+    /**
+     * Sends an accessibility event to the URL bar to request accessibility focus on it (e.g. for
+     * TalkBack).
+     */
+    default void requestUrlBarAccessibilityFocus() {}
 
     /**
      * Triggers the cursor to be visible in the UrlBar without triggering any of the focus animation
@@ -69,10 +73,13 @@ public interface LocationBar extends Destroyable {
         return null;
     }
     /**
-     * Returns a (@link FakeboxDelegate}.
+     * Returns a (@link OmniboxStub}.
      *
-     * <p>TODO(crbug.com/1140287): Inject FakeboxDelegate where needed and remove this method.
+     * <p>TODO(crbug.com/1140287): Inject OmniboxStub where needed and remove this method.
      */
     @Nullable
-    FakeboxDelegate getFakeboxDelegate();
+    OmniboxStub getOmniboxStub();
+
+    /** Destroys the LocationBar. */
+    void destroy();
 }

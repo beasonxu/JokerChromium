@@ -13,8 +13,23 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ConnectionType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ConnectionType.CONNECTION_UNKNOWN,
+        ConnectionType.CONNECTION_ETHERNET,
+        ConnectionType.CONNECTION_WIFI,
+        ConnectionType.CONNECTION_2G,
+        ConnectionType.CONNECTION_3G,
+        ConnectionType.CONNECTION_4G,
+        ConnectionType.CONNECTION_NONE,
+        ConnectionType.CONNECTION_BLUETOOTH,
+        ConnectionType.CONNECTION_5G,
+        ConnectionType.CONNECTION_LAST})
+    public @interface EnumType {}
 
     public static final int CONNECTION_UNKNOWN = 0;
     public static final int CONNECTION_ETHERNET = 1;

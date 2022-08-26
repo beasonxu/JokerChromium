@@ -13,8 +13,17 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class CompositorFrameSinkType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        CompositorFrameSinkType.UNSPECIFIED,
+        CompositorFrameSinkType.VIDEO,
+        CompositorFrameSinkType.MEDIA_STREAM,
+        CompositorFrameSinkType.LAYER_TREE})
+    public @interface EnumType {}
 
     public static final int UNSPECIFIED = 0;
     public static final int VIDEO = 1;

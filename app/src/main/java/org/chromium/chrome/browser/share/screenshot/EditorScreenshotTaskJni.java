@@ -10,7 +10,7 @@ import org.chromium.ui.base.WindowAndroid;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class EditorScreenshotTaskJni implements EditorScreenshotTask.Natives {
+class EditorScreenshotTaskJni implements EditorScreenshotTask.Natives {
   private static EditorScreenshotTask.Natives testInstance;
 
   public static final JniStaticTestMocker<EditorScreenshotTask.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.share.screenshot.EditorScreenshotTask.Natives>() {

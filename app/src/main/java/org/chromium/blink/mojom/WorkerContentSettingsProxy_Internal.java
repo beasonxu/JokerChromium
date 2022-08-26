@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class WorkerContentSettingsProxy_Internal {
 
@@ -67,7 +69,7 @@ class WorkerContentSettingsProxy_Internal {
         @Override
         public void allowIndexedDb(
 
-AllowIndexedDbResponse callback) {
+AllowIndexedDb_Response callback) {
 
             WorkerContentSettingsProxyAllowIndexedDbParams _message = new WorkerContentSettingsProxyAllowIndexedDbParams();
 
@@ -87,7 +89,7 @@ AllowIndexedDbResponse callback) {
         @Override
         public void allowCacheStorage(
 
-AllowCacheStorageResponse callback) {
+AllowCacheStorage_Response callback) {
 
             WorkerContentSettingsProxyAllowCacheStorageParams _message = new WorkerContentSettingsProxyAllowCacheStorageParams();
 
@@ -107,7 +109,7 @@ AllowCacheStorageResponse callback) {
         @Override
         public void allowWebLocks(
 
-AllowWebLocksResponse callback) {
+AllowWebLocks_Response callback) {
 
             WorkerContentSettingsProxyAllowWebLocksParams _message = new WorkerContentSettingsProxyAllowWebLocksParams();
 
@@ -127,7 +129,7 @@ AllowWebLocksResponse callback) {
         @Override
         public void requestFileSystemAccessSync(
 
-RequestFileSystemAccessSyncResponse callback) {
+RequestFileSystemAccessSync_Response callback) {
 
             WorkerContentSettingsProxyRequestFileSystemAccessSyncParams _message = new WorkerContentSettingsProxyRequestFileSystemAccessSyncParams();
 
@@ -395,9 +397,9 @@ RequestFileSystemAccessSyncResponse callback) {
 
     static class WorkerContentSettingsProxyAllowIndexedDbResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final WorkerContentSettingsProxy.AllowIndexedDbResponse mCallback;
+        private final WorkerContentSettingsProxy.AllowIndexedDb_Response mCallback;
 
-        WorkerContentSettingsProxyAllowIndexedDbResponseParamsForwardToCallback(WorkerContentSettingsProxy.AllowIndexedDbResponse callback) {
+        WorkerContentSettingsProxyAllowIndexedDbResponseParamsForwardToCallback(WorkerContentSettingsProxy.AllowIndexedDb_Response callback) {
             this.mCallback = callback;
         }
 
@@ -422,7 +424,7 @@ RequestFileSystemAccessSyncResponse callback) {
         }
     }
 
-    static class WorkerContentSettingsProxyAllowIndexedDbResponseParamsProxyToResponder implements WorkerContentSettingsProxy.AllowIndexedDbResponse {
+    static class WorkerContentSettingsProxyAllowIndexedDbResponseParamsProxyToResponder implements WorkerContentSettingsProxy.AllowIndexedDb_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -575,9 +577,9 @@ RequestFileSystemAccessSyncResponse callback) {
 
     static class WorkerContentSettingsProxyAllowCacheStorageResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final WorkerContentSettingsProxy.AllowCacheStorageResponse mCallback;
+        private final WorkerContentSettingsProxy.AllowCacheStorage_Response mCallback;
 
-        WorkerContentSettingsProxyAllowCacheStorageResponseParamsForwardToCallback(WorkerContentSettingsProxy.AllowCacheStorageResponse callback) {
+        WorkerContentSettingsProxyAllowCacheStorageResponseParamsForwardToCallback(WorkerContentSettingsProxy.AllowCacheStorage_Response callback) {
             this.mCallback = callback;
         }
 
@@ -602,7 +604,7 @@ RequestFileSystemAccessSyncResponse callback) {
         }
     }
 
-    static class WorkerContentSettingsProxyAllowCacheStorageResponseParamsProxyToResponder implements WorkerContentSettingsProxy.AllowCacheStorageResponse {
+    static class WorkerContentSettingsProxyAllowCacheStorageResponseParamsProxyToResponder implements WorkerContentSettingsProxy.AllowCacheStorage_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -755,9 +757,9 @@ RequestFileSystemAccessSyncResponse callback) {
 
     static class WorkerContentSettingsProxyAllowWebLocksResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final WorkerContentSettingsProxy.AllowWebLocksResponse mCallback;
+        private final WorkerContentSettingsProxy.AllowWebLocks_Response mCallback;
 
-        WorkerContentSettingsProxyAllowWebLocksResponseParamsForwardToCallback(WorkerContentSettingsProxy.AllowWebLocksResponse callback) {
+        WorkerContentSettingsProxyAllowWebLocksResponseParamsForwardToCallback(WorkerContentSettingsProxy.AllowWebLocks_Response callback) {
             this.mCallback = callback;
         }
 
@@ -782,7 +784,7 @@ RequestFileSystemAccessSyncResponse callback) {
         }
     }
 
-    static class WorkerContentSettingsProxyAllowWebLocksResponseParamsProxyToResponder implements WorkerContentSettingsProxy.AllowWebLocksResponse {
+    static class WorkerContentSettingsProxyAllowWebLocksResponseParamsProxyToResponder implements WorkerContentSettingsProxy.AllowWebLocks_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -935,9 +937,9 @@ RequestFileSystemAccessSyncResponse callback) {
 
     static class WorkerContentSettingsProxyRequestFileSystemAccessSyncResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final WorkerContentSettingsProxy.RequestFileSystemAccessSyncResponse mCallback;
+        private final WorkerContentSettingsProxy.RequestFileSystemAccessSync_Response mCallback;
 
-        WorkerContentSettingsProxyRequestFileSystemAccessSyncResponseParamsForwardToCallback(WorkerContentSettingsProxy.RequestFileSystemAccessSyncResponse callback) {
+        WorkerContentSettingsProxyRequestFileSystemAccessSyncResponseParamsForwardToCallback(WorkerContentSettingsProxy.RequestFileSystemAccessSync_Response callback) {
             this.mCallback = callback;
         }
 
@@ -962,7 +964,7 @@ RequestFileSystemAccessSyncResponse callback) {
         }
     }
 
-    static class WorkerContentSettingsProxyRequestFileSystemAccessSyncResponseParamsProxyToResponder implements WorkerContentSettingsProxy.RequestFileSystemAccessSyncResponse {
+    static class WorkerContentSettingsProxyRequestFileSystemAccessSyncResponseParamsProxyToResponder implements WorkerContentSettingsProxy.RequestFileSystemAccessSync_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

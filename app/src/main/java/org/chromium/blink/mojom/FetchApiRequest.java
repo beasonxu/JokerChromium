@@ -13,11 +13,13 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class FetchApiRequest extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 112;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(112, 0)};
+    private static final int STRUCT_SIZE = 128;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(128, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int mode;
     public boolean isMainResourceLoad;
@@ -28,6 +30,8 @@ public final class FetchApiRequest extends org.chromium.mojo.bindings.Struct {
     public FetchApiRequestHeaders headers;
     public SerializedBlob blob;
     public FetchApiRequestBody body;
+    public org.chromium.url.internal.mojom.Origin requestInitiator;
+    public org.chromium.url.mojom.Url[] navigationRedirectChain;
     public Referrer referrer;
     public int credentialsMode;
     public int cacheMode;
@@ -145,44 +149,62 @@ public final class FetchApiRequest extends org.chromium.mojo.bindings.Struct {
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(64, true);
+                result.requestInitiator = org.chromium.url.internal.mojom.Origin.decode(decoder1);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(72, false);
+                {
+                    org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                    result.navigationRedirectChain = new org.chromium.url.mojom.Url[si1.elementsOrVersion];
+                    for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
+                        
+                        org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                        result.navigationRedirectChain[i1] = org.chromium.url.mojom.Url.decode(decoder2);
+                    }
+                }
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(80, true);
                 result.referrer = Referrer.decode(decoder1);
                 }
                 {
                     
-                result.credentialsMode = decoder0.readInt(72);
+                result.credentialsMode = decoder0.readInt(88);
                     org.chromium.network.mojom.CredentialsMode.validate(result.credentialsMode);
                     result.credentialsMode = org.chromium.network.mojom.CredentialsMode.toKnownValue(result.credentialsMode);
                 }
                 {
                     
-                result.cacheMode = decoder0.readInt(76);
+                result.cacheMode = decoder0.readInt(92);
                     FetchCacheMode.validate(result.cacheMode);
                     result.cacheMode = FetchCacheMode.toKnownValue(result.cacheMode);
                 }
                 {
                     
-                result.redirectMode = decoder0.readInt(80);
+                result.redirectMode = decoder0.readInt(96);
                     org.chromium.network.mojom.RedirectMode.validate(result.redirectMode);
                     result.redirectMode = org.chromium.network.mojom.RedirectMode.toKnownValue(result.redirectMode);
                 }
                 {
                     
-                result.priority = decoder0.readInt(84);
+                result.priority = decoder0.readInt(100);
                     org.chromium.network.mojom.RequestPriority.validate(result.priority);
                     result.priority = org.chromium.network.mojom.RequestPriority.toKnownValue(result.priority);
                 }
                 {
                     
-                result.integrity = decoder0.readString(88, true);
+                result.integrity = decoder0.readString(104, true);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(96, true);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(112, true);
                 result.fetchWindowId = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
                 }
                 {
                     
-                result.devtoolsStackId = decoder0.readString(104, true);
+                result.devtoolsStackId = decoder0.readString(120, true);
                 }
 
         } finally {
@@ -220,20 +242,32 @@ public final class FetchApiRequest extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.body, 56, true);
         
-        encoder0.encode(this.referrer, 64, true);
+        encoder0.encode(this.requestInitiator, 64, true);
         
-        encoder0.encode(this.credentialsMode, 72);
+        if (this.navigationRedirectChain == null) {
+            encoder0.encodeNullPointer(72, false);
+        } else {
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.navigationRedirectChain.length, 72, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            for (int i0 = 0; i0 < this.navigationRedirectChain.length; ++i0) {
+                
+                encoder1.encode(this.navigationRedirectChain[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
+            }
+        }
         
-        encoder0.encode(this.cacheMode, 76);
+        encoder0.encode(this.referrer, 80, true);
         
-        encoder0.encode(this.redirectMode, 80);
+        encoder0.encode(this.credentialsMode, 88);
         
-        encoder0.encode(this.priority, 84);
+        encoder0.encode(this.cacheMode, 92);
         
-        encoder0.encode(this.integrity, 88, true);
+        encoder0.encode(this.redirectMode, 96);
         
-        encoder0.encode(this.fetchWindowId, 96, true);
+        encoder0.encode(this.priority, 100);
         
-        encoder0.encode(this.devtoolsStackId, 104, true);
+        encoder0.encode(this.integrity, 104, true);
+        
+        encoder0.encode(this.fetchWindowId, 112, true);
+        
+        encoder0.encode(this.devtoolsStackId, 120, true);
     }
 }

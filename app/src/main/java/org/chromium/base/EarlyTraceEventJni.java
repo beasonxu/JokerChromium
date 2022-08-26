@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 @Generated("org.chromium.jni_generator.JniProcessor")
 @MainDex
 @CheckDiscard("crbug.com/993421")
-final class EarlyTraceEventJni implements EarlyTraceEvent.Natives {
+class EarlyTraceEventJni implements EarlyTraceEvent.Natives {
   private static EarlyTraceEvent.Natives testInstance;
 
   public static final JniStaticTestMocker<EarlyTraceEvent.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.base.EarlyTraceEvent.Natives>() {
@@ -46,13 +46,13 @@ final class EarlyTraceEventJni implements EarlyTraceEvent.Natives {
   }
 
   @Override
-  public void recordEarlyAsyncBeginEvent(String name, long id, long timestamp) {
-    GEN_JNI.org_chromium_base_EarlyTraceEvent_recordEarlyAsyncBeginEvent(name, id, timestamp);
+  public void recordEarlyAsyncBeginEvent(String name, long id, long timeNanos) {
+    GEN_JNI.org_chromium_base_EarlyTraceEvent_recordEarlyAsyncBeginEvent(name, id, timeNanos);
   }
 
   @Override
-  public void recordEarlyAsyncEndEvent(String name, long id, long timestamp) {
-    GEN_JNI.org_chromium_base_EarlyTraceEvent_recordEarlyAsyncEndEvent(name, id, timestamp);
+  public void recordEarlyAsyncEndEvent(String name, long id, long timeNanos) {
+    GEN_JNI.org_chromium_base_EarlyTraceEvent_recordEarlyAsyncEndEvent(name, id, timeNanos);
   }
 
   public static EarlyTraceEvent.Natives get() {

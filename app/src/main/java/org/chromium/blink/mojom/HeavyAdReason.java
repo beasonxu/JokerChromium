@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class HeavyAdReason {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        HeavyAdReason.NETWORK_TOTAL_LIMIT,
+        HeavyAdReason.CPU_TOTAL_LIMIT,
+        HeavyAdReason.CPU_PEAK_LIMIT})
+    public @interface EnumType {}
 
     public static final int NETWORK_TOTAL_LIMIT = 0;
     public static final int CPU_TOTAL_LIMIT = 1;

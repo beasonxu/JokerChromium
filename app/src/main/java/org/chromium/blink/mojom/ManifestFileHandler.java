@@ -13,15 +13,48 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class ManifestFileHandler extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 32;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
+    private static final int STRUCT_SIZE = 48;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+    public static final class LaunchType {
+        private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            LaunchType.SINGLE_CLIENT,
+            LaunchType.MULTIPLE_CLIENTS})
+        public @interface EnumType {}
+
+        public static final int SINGLE_CLIENT = 0;
+        public static final int MULTIPLE_CLIENTS = 1;
+        public static final int MIN_VALUE = 0;
+        public static final int MAX_VALUE = 1;
+
+        public static boolean isKnownValue(int value) {
+            return value >= 0 && value <= 1;
+        }
+
+        public static void validate(int value) {
+            if (IS_EXTENSIBLE || isKnownValue(value)) return;
+            throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
+        }
+
+        public static int toKnownValue(int value) {
+          return value;
+        }
+
+        private LaunchType() {}
+    }
     public org.chromium.url.mojom.Url action;
     public org.chromium.mojo_base.mojom.String16 name;
+    public ManifestImageResource[] icons;
     public java.util.Map<org.chromium.mojo_base.mojom.String16, org.chromium.mojo_base.mojom.String16[]> accept;
+    public int launchType;
 
     private ManifestFileHandler(int version) {
         super(STRUCT_SIZE, version);
@@ -70,6 +103,19 @@ public final class ManifestFileHandler extends org.chromium.mojo.bindings.Struct
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
                 {
+                    org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                    result.icons = new ManifestImageResource[si1.elementsOrVersion];
+                    for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
+                        
+                        org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                        result.icons[i1] = ManifestImageResource.decode(decoder2);
+                    }
+                }
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
+                {
                     decoder1.readDataHeaderForMap();
                     org.chromium.mojo_base.mojom.String16[] keys0;
                     org.chromium.mojo_base.mojom.String16[][] values0;
@@ -113,6 +159,12 @@ public final class ManifestFileHandler extends org.chromium.mojo.bindings.Struct
                     }
                 }
                 }
+                {
+                    
+                result.launchType = decoder0.readInt(40);
+                    ManifestFileHandler.LaunchType.validate(result.launchType);
+                    result.launchType = ManifestFileHandler.LaunchType.toKnownValue(result.launchType);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -129,10 +181,20 @@ public final class ManifestFileHandler extends org.chromium.mojo.bindings.Struct
         
         encoder0.encode(this.name, 16, false);
         
-        if (this.accept == null) {
+        if (this.icons == null) {
             encoder0.encodeNullPointer(24, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encoderForMap(24);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.icons.length, 24, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            for (int i0 = 0; i0 < this.icons.length; ++i0) {
+                
+                encoder1.encode(this.icons[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
+            }
+        }
+        
+        if (this.accept == null) {
+            encoder0.encodeNullPointer(32, false);
+        } else {
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encoderForMap(32);
             int size0 = this.accept.size();
             org.chromium.mojo_base.mojom.String16[] keys0 = new org.chromium.mojo_base.mojom.String16[size0];
             org.chromium.mojo_base.mojom.String16[][] values0 = new org.chromium.mojo_base.mojom.String16[size0][];
@@ -167,5 +229,7 @@ public final class ManifestFileHandler extends org.chromium.mojo.bindings.Struct
                 }
             }
         }
+        
+        encoder0.encode(this.launchType, 40);
     }
 }

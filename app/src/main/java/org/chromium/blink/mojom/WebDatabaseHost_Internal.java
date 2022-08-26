@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class WebDatabaseHost_Internal {
 
@@ -53,19 +55,17 @@ class WebDatabaseHost_Internal {
 
     private static final int GET_FILE_ATTRIBUTES_ORDINAL = 2;
 
-    private static final int GET_FILE_SIZE_ORDINAL = 3;
+    private static final int SET_FILE_SIZE_ORDINAL = 3;
 
-    private static final int SET_FILE_SIZE_ORDINAL = 4;
+    private static final int GET_SPACE_AVAILABLE_ORDINAL = 4;
 
-    private static final int GET_SPACE_AVAILABLE_ORDINAL = 5;
+    private static final int OPENED_ORDINAL = 5;
 
-    private static final int OPENED_ORDINAL = 6;
+    private static final int MODIFIED_ORDINAL = 6;
 
-    private static final int MODIFIED_ORDINAL = 7;
+    private static final int CLOSED_ORDINAL = 7;
 
-    private static final int CLOSED_ORDINAL = 8;
-
-    private static final int HANDLE_SQLITE_ERROR_ORDINAL = 9;
+    private static final int HANDLE_SQLITE_ERROR_ORDINAL = 8;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements WebDatabaseHost.Proxy {
@@ -79,7 +79,7 @@ class WebDatabaseHost_Internal {
         @Override
         public void openFile(
 org.chromium.mojo_base.mojom.String16 vfsFileName, int desiredFlags, 
-OpenFileResponse callback) {
+OpenFile_Response callback) {
 
             WebDatabaseHostOpenFileParams _message = new WebDatabaseHostOpenFileParams();
 
@@ -103,7 +103,7 @@ OpenFileResponse callback) {
         @Override
         public void deleteFile(
 org.chromium.mojo_base.mojom.String16 vfsFileName, boolean syncDir, 
-DeleteFileResponse callback) {
+DeleteFile_Response callback) {
 
             WebDatabaseHostDeleteFileParams _message = new WebDatabaseHostDeleteFileParams();
 
@@ -127,7 +127,7 @@ DeleteFileResponse callback) {
         @Override
         public void getFileAttributes(
 org.chromium.mojo_base.mojom.String16 vfsFileName, 
-GetFileAttributesResponse callback) {
+GetFileAttributes_Response callback) {
 
             WebDatabaseHostGetFileAttributesParams _message = new WebDatabaseHostGetFileAttributesParams();
 
@@ -147,31 +147,9 @@ GetFileAttributesResponse callback) {
 
 
         @Override
-        public void getFileSize(
-org.chromium.mojo_base.mojom.String16 vfsFileName, 
-GetFileSizeResponse callback) {
-
-            WebDatabaseHostGetFileSizeParams _message = new WebDatabaseHostGetFileSizeParams();
-
-            _message.vfsFileName = vfsFileName;
-
-
-            getProxyHandler().getMessageReceiver().acceptWithResponder(
-                    _message.serializeWithHeader(
-                            getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(
-                                    GET_FILE_SIZE_ORDINAL,
-                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
-                                    0)),
-                    new WebDatabaseHostGetFileSizeResponseParamsForwardToCallback(callback));
-
-        }
-
-
-        @Override
         public void setFileSize(
 org.chromium.mojo_base.mojom.String16 vfsFileName, long expectedSize, 
-SetFileSizeResponse callback) {
+SetFileSize_Response callback) {
 
             WebDatabaseHostSetFileSizeParams _message = new WebDatabaseHostSetFileSizeParams();
 
@@ -195,7 +173,7 @@ SetFileSizeResponse callback) {
         @Override
         public void getSpaceAvailable(
 org.chromium.url.internal.mojom.Origin origin, 
-GetSpaceAvailableResponse callback) {
+GetSpaceAvailable_Response callback) {
 
             WebDatabaseHostGetSpaceAvailableParams _message = new WebDatabaseHostGetSpaceAvailableParams();
 
@@ -216,7 +194,7 @@ GetSpaceAvailableResponse callback) {
 
         @Override
         public void opened(
-org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo_base.mojom.String16 databaseName, org.chromium.mojo_base.mojom.String16 databaseDescription, long estimatedSize) {
+org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo_base.mojom.String16 databaseName, org.chromium.mojo_base.mojom.String16 databaseDescription) {
 
             WebDatabaseHostOpenedParams _message = new WebDatabaseHostOpenedParams();
 
@@ -225,8 +203,6 @@ org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo_base.mojom.Stri
             _message.databaseName = databaseName;
 
             _message.databaseDescription = databaseDescription;
-
-            _message.estimatedSize = estimatedSize;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -337,14 +313,12 @@ org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo_base.mojom.Stri
 
 
 
-
-
                     case OPENED_ORDINAL: {
 
                         WebDatabaseHostOpenedParams data =
                                 WebDatabaseHostOpenedParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().opened(data.origin, data.databaseName, data.databaseDescription, data.estimatedSize);
+                        getImpl().opened(data.origin, data.databaseName, data.databaseDescription);
                         return true;
                     }
 
@@ -458,21 +432,6 @@ org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo_base.mojom.Stri
                                 WebDatabaseHostGetFileAttributesParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().getFileAttributes(data.vfsFileName, new WebDatabaseHostGetFileAttributesResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
-                        return true;
-                    }
-
-
-
-
-
-
-
-                    case GET_FILE_SIZE_ORDINAL: {
-
-                        WebDatabaseHostGetFileSizeParams data =
-                                WebDatabaseHostGetFileSizeParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().getFileSize(data.vfsFileName, new WebDatabaseHostGetFileSizeResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -661,9 +620,9 @@ org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo_base.mojom.Stri
 
     static class WebDatabaseHostOpenFileResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final WebDatabaseHost.OpenFileResponse mCallback;
+        private final WebDatabaseHost.OpenFile_Response mCallback;
 
-        WebDatabaseHostOpenFileResponseParamsForwardToCallback(WebDatabaseHost.OpenFileResponse callback) {
+        WebDatabaseHostOpenFileResponseParamsForwardToCallback(WebDatabaseHost.OpenFile_Response callback) {
             this.mCallback = callback;
         }
 
@@ -688,7 +647,7 @@ org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo_base.mojom.Stri
         }
     }
 
-    static class WebDatabaseHostOpenFileResponseParamsProxyToResponder implements WebDatabaseHost.OpenFileResponse {
+    static class WebDatabaseHostOpenFileResponseParamsProxyToResponder implements WebDatabaseHost.OpenFile_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -856,9 +815,9 @@ org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo_base.mojom.Stri
 
     static class WebDatabaseHostDeleteFileResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final WebDatabaseHost.DeleteFileResponse mCallback;
+        private final WebDatabaseHost.DeleteFile_Response mCallback;
 
-        WebDatabaseHostDeleteFileResponseParamsForwardToCallback(WebDatabaseHost.DeleteFileResponse callback) {
+        WebDatabaseHostDeleteFileResponseParamsForwardToCallback(WebDatabaseHost.DeleteFile_Response callback) {
             this.mCallback = callback;
         }
 
@@ -883,7 +842,7 @@ org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo_base.mojom.Stri
         }
     }
 
-    static class WebDatabaseHostDeleteFileResponseParamsProxyToResponder implements WebDatabaseHost.DeleteFileResponse {
+    static class WebDatabaseHostDeleteFileResponseParamsProxyToResponder implements WebDatabaseHost.DeleteFile_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1044,9 +1003,9 @@ org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo_base.mojom.Stri
 
     static class WebDatabaseHostGetFileAttributesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final WebDatabaseHost.GetFileAttributesResponse mCallback;
+        private final WebDatabaseHost.GetFileAttributes_Response mCallback;
 
-        WebDatabaseHostGetFileAttributesResponseParamsForwardToCallback(WebDatabaseHost.GetFileAttributesResponse callback) {
+        WebDatabaseHostGetFileAttributesResponseParamsForwardToCallback(WebDatabaseHost.GetFileAttributes_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1071,7 +1030,7 @@ org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo_base.mojom.Stri
         }
     }
 
-    static class WebDatabaseHostGetFileAttributesResponseParamsProxyToResponder implements WebDatabaseHost.GetFileAttributesResponse {
+    static class WebDatabaseHostGetFileAttributesResponseParamsProxyToResponder implements WebDatabaseHost.GetFileAttributes_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1097,194 +1056,6 @@ org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo_base.mojom.Stri
                             mCore,
                             new org.chromium.mojo.bindings.MessageHeader(
                                     GET_FILE_ATTRIBUTES_ORDINAL,
-                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG,
-                                    mRequestId));
-            mMessageReceiver.accept(_message);
-        }
-    }
-
-
-
-    
-    static final class WebDatabaseHostGetFileSizeParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public org.chromium.mojo_base.mojom.String16 vfsFileName;
-
-        private WebDatabaseHostGetFileSizeParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public WebDatabaseHostGetFileSizeParams() {
-            this(0);
-        }
-
-        public static WebDatabaseHostGetFileSizeParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static WebDatabaseHostGetFileSizeParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static WebDatabaseHostGetFileSizeParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            WebDatabaseHostGetFileSizeParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new WebDatabaseHostGetFileSizeParams(elementsOrVersion);
-                    {
-                        
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    result.vfsFileName = org.chromium.mojo_base.mojom.String16.decode(decoder1);
-                    }
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-            
-            encoder0.encode(this.vfsFileName, 8, false);
-        }
-    }
-
-
-
-    
-    static final class WebDatabaseHostGetFileSizeResponseParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public long size;
-
-        private WebDatabaseHostGetFileSizeResponseParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public WebDatabaseHostGetFileSizeResponseParams() {
-            this(0);
-        }
-
-        public static WebDatabaseHostGetFileSizeResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static WebDatabaseHostGetFileSizeResponseParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static WebDatabaseHostGetFileSizeResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            WebDatabaseHostGetFileSizeResponseParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new WebDatabaseHostGetFileSizeResponseParams(elementsOrVersion);
-                    {
-                        
-                    result.size = decoder0.readLong(8);
-                    }
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-            
-            encoder0.encode(this.size, 8);
-        }
-    }
-
-    static class WebDatabaseHostGetFileSizeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
-            implements org.chromium.mojo.bindings.MessageReceiver {
-        private final WebDatabaseHost.GetFileSizeResponse mCallback;
-
-        WebDatabaseHostGetFileSizeResponseParamsForwardToCallback(WebDatabaseHost.GetFileSizeResponse callback) {
-            this.mCallback = callback;
-        }
-
-        @Override
-        public boolean accept(org.chromium.mojo.bindings.Message message) {
-            try {
-                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
-                        message.asServiceMessage();
-                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
-                if (!header.validateHeader(GET_FILE_SIZE_ORDINAL,
-                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG)) {
-                    return false;
-                }
-
-                WebDatabaseHostGetFileSizeResponseParams response = WebDatabaseHostGetFileSizeResponseParams.deserialize(messageWithHeader.getPayload());
-
-                mCallback.call(response.size);
-                return true;
-            } catch (org.chromium.mojo.bindings.DeserializationException e) {
-                return false;
-            }
-        }
-    }
-
-    static class WebDatabaseHostGetFileSizeResponseParamsProxyToResponder implements WebDatabaseHost.GetFileSizeResponse {
-
-        private final org.chromium.mojo.system.Core mCore;
-        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
-        private final long mRequestId;
-
-        WebDatabaseHostGetFileSizeResponseParamsProxyToResponder(
-                org.chromium.mojo.system.Core core,
-                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
-                long requestId) {
-            mCore = core;
-            mMessageReceiver = messageReceiver;
-            mRequestId = requestId;
-        }
-
-        @Override
-        public void call(Long size) {
-            WebDatabaseHostGetFileSizeResponseParams _response = new WebDatabaseHostGetFileSizeResponseParams();
-
-            _response.size = size;
-
-            org.chromium.mojo.bindings.ServiceMessage _message =
-                    _response.serializeWithHeader(
-                            mCore,
-                            new org.chromium.mojo.bindings.MessageHeader(
-                                    GET_FILE_SIZE_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);
@@ -1427,9 +1198,9 @@ org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo_base.mojom.Stri
 
     static class WebDatabaseHostSetFileSizeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final WebDatabaseHost.SetFileSizeResponse mCallback;
+        private final WebDatabaseHost.SetFileSize_Response mCallback;
 
-        WebDatabaseHostSetFileSizeResponseParamsForwardToCallback(WebDatabaseHost.SetFileSizeResponse callback) {
+        WebDatabaseHostSetFileSizeResponseParamsForwardToCallback(WebDatabaseHost.SetFileSize_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1454,7 +1225,7 @@ org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo_base.mojom.Stri
         }
     }
 
-    static class WebDatabaseHostSetFileSizeResponseParamsProxyToResponder implements WebDatabaseHost.SetFileSizeResponse {
+    static class WebDatabaseHostSetFileSizeResponseParamsProxyToResponder implements WebDatabaseHost.SetFileSize_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1615,9 +1386,9 @@ org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo_base.mojom.Stri
 
     static class WebDatabaseHostGetSpaceAvailableResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final WebDatabaseHost.GetSpaceAvailableResponse mCallback;
+        private final WebDatabaseHost.GetSpaceAvailable_Response mCallback;
 
-        WebDatabaseHostGetSpaceAvailableResponseParamsForwardToCallback(WebDatabaseHost.GetSpaceAvailableResponse callback) {
+        WebDatabaseHostGetSpaceAvailableResponseParamsForwardToCallback(WebDatabaseHost.GetSpaceAvailable_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1642,7 +1413,7 @@ org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo_base.mojom.Stri
         }
     }
 
-    static class WebDatabaseHostGetSpaceAvailableResponseParamsProxyToResponder implements WebDatabaseHost.GetSpaceAvailableResponse {
+    static class WebDatabaseHostGetSpaceAvailableResponseParamsProxyToResponder implements WebDatabaseHost.GetSpaceAvailable_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1679,13 +1450,12 @@ org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo_base.mojom.Stri
     
     static final class WebDatabaseHostOpenedParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 40;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public org.chromium.url.internal.mojom.Origin origin;
         public org.chromium.mojo_base.mojom.String16 databaseName;
         public org.chromium.mojo_base.mojom.String16 databaseDescription;
-        public long estimatedSize;
 
         private WebDatabaseHostOpenedParams(int version) {
             super(STRUCT_SIZE, version);
@@ -1735,10 +1505,6 @@ org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo_base.mojom.Stri
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
                     result.databaseDescription = org.chromium.mojo_base.mojom.String16.decode(decoder1);
                     }
-                    {
-                        
-                    result.estimatedSize = decoder0.readLong(32);
-                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -1756,8 +1522,6 @@ org.chromium.url.internal.mojom.Origin origin, org.chromium.mojo_base.mojom.Stri
             encoder0.encode(this.databaseName, 16, false);
             
             encoder0.encode(this.databaseDescription, 24, false);
-            
-            encoder0.encode(this.estimatedSize, 32);
         }
     }
 

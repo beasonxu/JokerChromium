@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class SharedWorkerFactory_Internal {
 
@@ -60,7 +62,7 @@ class SharedWorkerFactory_Internal {
 
         @Override
         public void createSharedWorker(
-SharedWorkerInfo info, SharedWorkerToken token, org.chromium.url.internal.mojom.Origin constructorOrigin, String userAgent, UserAgentMetadata uaMetadata, boolean pauseOnStart, org.chromium.mojo_base.mojom.UnguessableToken devtoolsWorkerToken, RendererPreferences rendererPreferences, org.chromium.mojo.bindings.InterfaceRequest<RendererPreferenceWatcher> preferenceWatcherReceiver, WorkerContentSettingsProxy contentSettings, ServiceWorkerContainerInfoForClient serviceWorkerContainerInfo, org.chromium.mojo_base.mojom.UnguessableToken appcacheHostId, WorkerMainScriptLoadParams mainScriptLoadParams, UrlLoaderFactoryBundle subresourceLoaderFactories, ControllerServiceWorkerInfo controllerInfo, SharedWorkerHost host, org.chromium.mojo.bindings.InterfaceRequest<SharedWorker> sharedWorker, BrowserInterfaceBroker browserInterfaceBroker, long ukmSourceId) {
+SharedWorkerInfo info, SharedWorkerToken token, org.chromium.url.internal.mojom.Origin constructorOrigin, boolean isConstructorSecureContext, String userAgent, String fullUserAgent, String reducedUserAgent, UserAgentMetadata uaMetadata, boolean pauseOnStart, org.chromium.mojo_base.mojom.UnguessableToken devtoolsWorkerToken, RendererPreferences rendererPreferences, org.chromium.mojo.bindings.InterfaceRequest<RendererPreferenceWatcher> preferenceWatcherReceiver, WorkerContentSettingsProxy contentSettings, ServiceWorkerContainerInfoForClient serviceWorkerContainerInfo, WorkerMainScriptLoadParams mainScriptLoadParams, UrlLoaderFactoryBundle subresourceLoaderFactories, ControllerServiceWorkerInfo controllerInfo, SharedWorkerHost host, org.chromium.mojo.bindings.InterfaceRequest<SharedWorker> sharedWorker, BrowserInterfaceBroker browserInterfaceBroker, long ukmSourceId) {
 
             SharedWorkerFactoryCreateSharedWorkerParams _message = new SharedWorkerFactoryCreateSharedWorkerParams();
 
@@ -70,7 +72,13 @@ SharedWorkerInfo info, SharedWorkerToken token, org.chromium.url.internal.mojom.
 
             _message.constructorOrigin = constructorOrigin;
 
+            _message.isConstructorSecureContext = isConstructorSecureContext;
+
             _message.userAgent = userAgent;
+
+            _message.fullUserAgent = fullUserAgent;
+
+            _message.reducedUserAgent = reducedUserAgent;
 
             _message.uaMetadata = uaMetadata;
 
@@ -85,8 +93,6 @@ SharedWorkerInfo info, SharedWorkerToken token, org.chromium.url.internal.mojom.
             _message.contentSettings = contentSettings;
 
             _message.serviceWorkerContainerInfo = serviceWorkerContainerInfo;
-
-            _message.appcacheHostId = appcacheHostId;
 
             _message.mainScriptLoadParams = mainScriptLoadParams;
 
@@ -147,7 +153,7 @@ SharedWorkerInfo info, SharedWorkerToken token, org.chromium.url.internal.mojom.
                         SharedWorkerFactoryCreateSharedWorkerParams data =
                                 SharedWorkerFactoryCreateSharedWorkerParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().createSharedWorker(data.info, data.token, data.constructorOrigin, data.userAgent, data.uaMetadata, data.pauseOnStart, data.devtoolsWorkerToken, data.rendererPreferences, data.preferenceWatcherReceiver, data.contentSettings, data.serviceWorkerContainerInfo, data.appcacheHostId, data.mainScriptLoadParams, data.subresourceLoaderFactories, data.controllerInfo, data.host, data.sharedWorker, data.browserInterfaceBroker, data.ukmSourceId);
+                        getImpl().createSharedWorker(data.info, data.token, data.constructorOrigin, data.isConstructorSecureContext, data.userAgent, data.fullUserAgent, data.reducedUserAgent, data.uaMetadata, data.pauseOnStart, data.devtoolsWorkerToken, data.rendererPreferences, data.preferenceWatcherReceiver, data.contentSettings, data.serviceWorkerContainerInfo, data.mainScriptLoadParams, data.subresourceLoaderFactories, data.controllerInfo, data.host, data.sharedWorker, data.browserInterfaceBroker, data.ukmSourceId);
                         return true;
                     }
 
@@ -197,13 +203,16 @@ SharedWorkerInfo info, SharedWorkerToken token, org.chromium.url.internal.mojom.
     
     static final class SharedWorkerFactoryCreateSharedWorkerParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 152;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(152, 0)};
+        private static final int STRUCT_SIZE = 160;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(160, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public SharedWorkerInfo info;
         public SharedWorkerToken token;
         public org.chromium.url.internal.mojom.Origin constructorOrigin;
+        public boolean isConstructorSecureContext;
         public String userAgent;
+        public String fullUserAgent;
+        public String reducedUserAgent;
         public UserAgentMetadata uaMetadata;
         public boolean pauseOnStart;
         public org.chromium.mojo_base.mojom.UnguessableToken devtoolsWorkerToken;
@@ -211,7 +220,6 @@ SharedWorkerInfo info, SharedWorkerToken token, org.chromium.url.internal.mojom.
         public org.chromium.mojo.bindings.InterfaceRequest<RendererPreferenceWatcher> preferenceWatcherReceiver;
         public WorkerContentSettingsProxy contentSettings;
         public ServiceWorkerContainerInfoForClient serviceWorkerContainerInfo;
-        public org.chromium.mojo_base.mojom.UnguessableToken appcacheHostId;
         public WorkerMainScriptLoadParams mainScriptLoadParams;
         public UrlLoaderFactoryBundle subresourceLoaderFactories;
         public ControllerServiceWorkerInfo controllerInfo;
@@ -270,75 +278,82 @@ SharedWorkerInfo info, SharedWorkerToken token, org.chromium.url.internal.mojom.
                     }
                     {
                         
-                    result.userAgent = decoder0.readString(32, false);
+                    result.isConstructorSecureContext = decoder0.readBoolean(32, 0);
                     }
                     {
                         
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, false);
-                    result.uaMetadata = UserAgentMetadata.decode(decoder1);
+                    result.pauseOnStart = decoder0.readBoolean(32, 1);
                     }
                     {
                         
-                    result.pauseOnStart = decoder0.readBoolean(48, 0);
+                    result.preferenceWatcherReceiver = decoder0.readInterfaceRequest(36, false);
                     }
                     {
                         
-                    result.preferenceWatcherReceiver = decoder0.readInterfaceRequest(52, false);
+                    result.userAgent = decoder0.readString(40, false);
                     }
                     {
                         
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(56, false);
-                    result.devtoolsWorkerToken = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
+                    result.fullUserAgent = decoder0.readString(48, false);
+                    }
+                    {
+                        
+                    result.reducedUserAgent = decoder0.readString(56, false);
                     }
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(64, false);
+                    result.uaMetadata = UserAgentMetadata.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(72, false);
+                    result.devtoolsWorkerToken = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(80, false);
                     result.rendererPreferences = RendererPreferences.decode(decoder1);
                     }
                     {
                         
-                    result.contentSettings = decoder0.readServiceInterface(72, false, WorkerContentSettingsProxy.MANAGER);
+                    result.contentSettings = decoder0.readServiceInterface(88, false, WorkerContentSettingsProxy.MANAGER);
                     }
                     {
                         
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(80, true);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(96, true);
                     result.serviceWorkerContainerInfo = ServiceWorkerContainerInfoForClient.decode(decoder1);
                     }
                     {
                         
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(88, true);
-                    result.appcacheHostId = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
-                    }
-                    {
-                        
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(96, false);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(104, false);
                     result.mainScriptLoadParams = WorkerMainScriptLoadParams.decode(decoder1);
                     }
                     {
                         
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(104, false);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(112, false);
                     result.subresourceLoaderFactories = UrlLoaderFactoryBundle.decode(decoder1);
                     }
                     {
                         
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(112, true);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(120, true);
                     result.controllerInfo = ControllerServiceWorkerInfo.decode(decoder1);
                     }
                     {
                         
-                    result.host = decoder0.readServiceInterface(120, false, SharedWorkerHost.MANAGER);
+                    result.host = decoder0.readServiceInterface(128, false, SharedWorkerHost.MANAGER);
                     }
                     {
                         
-                    result.sharedWorker = decoder0.readInterfaceRequest(128, false);
+                    result.sharedWorker = decoder0.readInterfaceRequest(136, false);
                     }
                     {
                         
-                    result.browserInterfaceBroker = decoder0.readServiceInterface(132, false, BrowserInterfaceBroker.MANAGER);
+                    result.browserInterfaceBroker = decoder0.readServiceInterface(140, false, BrowserInterfaceBroker.MANAGER);
                     }
                     {
                         
-                    result.ukmSourceId = decoder0.readLong(144);
+                    result.ukmSourceId = decoder0.readLong(152);
                     }
 
             } finally {
@@ -358,37 +373,41 @@ SharedWorkerInfo info, SharedWorkerToken token, org.chromium.url.internal.mojom.
             
             encoder0.encode(this.constructorOrigin, 24, false);
             
-            encoder0.encode(this.userAgent, 32, false);
+            encoder0.encode(this.isConstructorSecureContext, 32, 0);
             
-            encoder0.encode(this.uaMetadata, 40, false);
+            encoder0.encode(this.pauseOnStart, 32, 1);
             
-            encoder0.encode(this.pauseOnStart, 48, 0);
+            encoder0.encode(this.preferenceWatcherReceiver, 36, false);
             
-            encoder0.encode(this.preferenceWatcherReceiver, 52, false);
+            encoder0.encode(this.userAgent, 40, false);
             
-            encoder0.encode(this.devtoolsWorkerToken, 56, false);
+            encoder0.encode(this.fullUserAgent, 48, false);
             
-            encoder0.encode(this.rendererPreferences, 64, false);
+            encoder0.encode(this.reducedUserAgent, 56, false);
             
-            encoder0.encode(this.contentSettings, 72, false, WorkerContentSettingsProxy.MANAGER);
+            encoder0.encode(this.uaMetadata, 64, false);
             
-            encoder0.encode(this.serviceWorkerContainerInfo, 80, true);
+            encoder0.encode(this.devtoolsWorkerToken, 72, false);
             
-            encoder0.encode(this.appcacheHostId, 88, true);
+            encoder0.encode(this.rendererPreferences, 80, false);
             
-            encoder0.encode(this.mainScriptLoadParams, 96, false);
+            encoder0.encode(this.contentSettings, 88, false, WorkerContentSettingsProxy.MANAGER);
             
-            encoder0.encode(this.subresourceLoaderFactories, 104, false);
+            encoder0.encode(this.serviceWorkerContainerInfo, 96, true);
             
-            encoder0.encode(this.controllerInfo, 112, true);
+            encoder0.encode(this.mainScriptLoadParams, 104, false);
             
-            encoder0.encode(this.host, 120, false, SharedWorkerHost.MANAGER);
+            encoder0.encode(this.subresourceLoaderFactories, 112, false);
             
-            encoder0.encode(this.sharedWorker, 128, false);
+            encoder0.encode(this.controllerInfo, 120, true);
             
-            encoder0.encode(this.browserInterfaceBroker, 132, false, BrowserInterfaceBroker.MANAGER);
+            encoder0.encode(this.host, 128, false, SharedWorkerHost.MANAGER);
             
-            encoder0.encode(this.ukmSourceId, 144);
+            encoder0.encode(this.sharedWorker, 136, false);
+            
+            encoder0.encode(this.browserInterfaceBroker, 140, false, BrowserInterfaceBroker.MANAGER);
+            
+            encoder0.encode(this.ukmSourceId, 152);
         }
     }
 

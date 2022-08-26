@@ -13,6 +13,8 @@
 
 package org.chromium.media_session.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface AudioFocusManagerDebug extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface AudioFocusManagerDebug extends org.chromium.mojo.bindings.Inter
 
     Manager<AudioFocusManagerDebug, AudioFocusManagerDebug.Proxy> MANAGER = AudioFocusManagerDebug_Internal.MANAGER;
 
-
     void getDebugInfoForRequest(
 org.chromium.mojo_base.mojom.UnguessableToken requestId, 
-GetDebugInfoForRequestResponse callback);
+GetDebugInfoForRequest_Response callback);
 
-    interface GetDebugInfoForRequestResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<MediaSessionDebugInfo> { }
+    interface GetDebugInfoForRequest_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<MediaSessionDebugInfo> { }
 
 
 }

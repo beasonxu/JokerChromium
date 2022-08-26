@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class WidgetInputHandlerHost_Internal {
 
@@ -173,7 +175,7 @@ boolean capture) {
         @Override
         public void requestMouseLock(
 boolean fromUserGesture, boolean unadjustedMovement, 
-RequestMouseLockResponse callback) {
+RequestMouseLock_Response callback) {
 
             WidgetInputHandlerHostRequestMouseLockParams _message = new WidgetInputHandlerHostRequestMouseLockParams();
 
@@ -901,9 +903,9 @@ RequestMouseLockResponse callback) {
 
     static class WidgetInputHandlerHostRequestMouseLockResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final WidgetInputHandlerHost.RequestMouseLockResponse mCallback;
+        private final WidgetInputHandlerHost.RequestMouseLock_Response mCallback;
 
-        WidgetInputHandlerHostRequestMouseLockResponseParamsForwardToCallback(WidgetInputHandlerHost.RequestMouseLockResponse callback) {
+        WidgetInputHandlerHostRequestMouseLockResponseParamsForwardToCallback(WidgetInputHandlerHost.RequestMouseLock_Response callback) {
             this.mCallback = callback;
         }
 
@@ -928,7 +930,7 @@ RequestMouseLockResponse callback) {
         }
     }
 
-    static class WidgetInputHandlerHostRequestMouseLockResponseParamsProxyToResponder implements WidgetInputHandlerHost.RequestMouseLockResponse {
+    static class WidgetInputHandlerHostRequestMouseLockResponseParamsProxyToResponder implements WidgetInputHandlerHost.RequestMouseLock_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

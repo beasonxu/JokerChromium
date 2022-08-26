@@ -13,6 +13,8 @@
 
 package org.chromium.proxy_resolver.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ProxyResolverFactory extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface ProxyResolverFactory extends org.chromium.mojo.bindings.Interfa
     }
 
     Manager<ProxyResolverFactory, ProxyResolverFactory.Proxy> MANAGER = ProxyResolverFactory_Internal.MANAGER;
-
 
     void createResolver(
 String pacScript, org.chromium.mojo.bindings.InterfaceRequest<ProxyResolver> receiver, ProxyResolverFactoryRequestClient client);

@@ -6,10 +6,11 @@ import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
+import org.chromium.content_public.browser.BrowserContextHandle;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class SafetyCheckBridgeJni implements SafetyCheckBridge.Natives {
+class SafetyCheckBridgeJni implements SafetyCheckBridge.Natives {
   private static SafetyCheckBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<SafetyCheckBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.safety_check.SafetyCheckBridge.Natives>() {
@@ -24,24 +25,13 @@ final class SafetyCheckBridgeJni implements SafetyCheckBridge.Natives {
   };
 
   @Override
-  public long init(SafetyCheckBridge safetyCheckBridge,
-      SafetyCheckBridge.SafetyCheckCommonObserver observer) {
-    return (long)GEN_JNI.org_chromium_chrome_browser_safety_1check_SafetyCheckBridge_init(safetyCheckBridge, observer);
+  public boolean userSignedIn(BrowserContextHandle browserContext) {
+    return (boolean)GEN_JNI.org_chromium_chrome_browser_safety_1check_SafetyCheckBridge_userSignedIn(browserContext);
   }
 
   @Override
-  public boolean userSignedIn() {
-    return (boolean)GEN_JNI.org_chromium_chrome_browser_safety_1check_SafetyCheckBridge_userSignedIn();
-  }
-
-  @Override
-  public void checkSafeBrowsing(long nativeSafetyCheckBridge, SafetyCheckBridge safetyCheckBridge) {
-    GEN_JNI.org_chromium_chrome_browser_safety_1check_SafetyCheckBridge_checkSafeBrowsing(nativeSafetyCheckBridge, safetyCheckBridge);
-  }
-
-  @Override
-  public void destroy(long nativeSafetyCheckBridge, SafetyCheckBridge safetyCheckBridge) {
-    GEN_JNI.org_chromium_chrome_browser_safety_1check_SafetyCheckBridge_destroy(nativeSafetyCheckBridge, safetyCheckBridge);
+  public int checkSafeBrowsing(BrowserContextHandle browserContext) {
+    return (int)GEN_JNI.org_chromium_chrome_browser_safety_1check_SafetyCheckBridge_checkSafeBrowsing(browserContext);
   }
 
   public static SafetyCheckBridge.Natives get() {

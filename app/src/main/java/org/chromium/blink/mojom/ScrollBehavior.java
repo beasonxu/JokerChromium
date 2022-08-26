@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ScrollBehavior {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ScrollBehavior.AUTO,
+        ScrollBehavior.INSTANT,
+        ScrollBehavior.SMOOTH})
+    public @interface EnumType {}
 
     public static final int AUTO = 0;
     public static final int INSTANT = 1;

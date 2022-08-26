@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class OriginPolicyManager_Internal {
 
@@ -63,7 +65,7 @@ class OriginPolicyManager_Internal {
         @Override
         public void retrieveOriginPolicy(
 org.chromium.url.internal.mojom.Origin origin, IsolationInfo isolationInfo, String headerValue, 
-RetrieveOriginPolicyResponse callback) {
+RetrieveOriginPolicy_Response callback) {
 
             OriginPolicyManagerRetrieveOriginPolicyParams _message = new OriginPolicyManagerRetrieveOriginPolicyParams();
 
@@ -346,9 +348,9 @@ org.chromium.url.internal.mojom.Origin origin) {
 
     static class OriginPolicyManagerRetrieveOriginPolicyResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final OriginPolicyManager.RetrieveOriginPolicyResponse mCallback;
+        private final OriginPolicyManager.RetrieveOriginPolicy_Response mCallback;
 
-        OriginPolicyManagerRetrieveOriginPolicyResponseParamsForwardToCallback(OriginPolicyManager.RetrieveOriginPolicyResponse callback) {
+        OriginPolicyManagerRetrieveOriginPolicyResponseParamsForwardToCallback(OriginPolicyManager.RetrieveOriginPolicy_Response callback) {
             this.mCallback = callback;
         }
 
@@ -373,7 +375,7 @@ org.chromium.url.internal.mojom.Origin origin) {
         }
     }
 
-    static class OriginPolicyManagerRetrieveOriginPolicyResponseParamsProxyToResponder implements OriginPolicyManager.RetrieveOriginPolicyResponse {
+    static class OriginPolicyManagerRetrieveOriginPolicyResponseParamsProxyToResponder implements OriginPolicyManager.RetrieveOriginPolicy_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

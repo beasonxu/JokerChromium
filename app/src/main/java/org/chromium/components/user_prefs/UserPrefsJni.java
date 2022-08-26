@@ -6,12 +6,12 @@ import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
-import org.chromium.components.embedder_support.browser_context.BrowserContextHandle;
 import org.chromium.components.prefs.PrefService;
+import org.chromium.content_public.browser.BrowserContextHandle;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-public final class UserPrefsJni implements UserPrefs.Natives {
+public class UserPrefsJni implements UserPrefs.Natives {
   private static UserPrefs.Natives testInstance;
 
   public static final JniStaticTestMocker<UserPrefs.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.user_prefs.UserPrefs.Natives>() {

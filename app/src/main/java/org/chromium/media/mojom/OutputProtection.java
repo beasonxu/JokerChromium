@@ -13,18 +13,26 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface OutputProtection extends org.chromium.mojo.bindings.Interface {
 
 
 
     public static final class ProtectionType {
-        private static final boolean IS_EXTENSIBLE = false;
+        private static final boolean IS_EXTENSIBLE = true;
+        @IntDef({
+
+            ProtectionType.NONE,
+            ProtectionType.HDCP})
+        public @interface EnumType {}
 
         public static final int NONE = 0;
         public static final int HDCP = 1;
         public static final int MIN_VALUE = 0;
         public static final int MAX_VALUE = 1;
+        public static final int DEFAULT_VALUE = 0;
 
         public static boolean isKnownValue(int value) {
             return value >= 0 && value <= 1;
@@ -36,7 +44,10 @@ public interface OutputProtection extends org.chromium.mojo.bindings.Interface {
         }
 
         public static int toKnownValue(int value) {
-          return value;
+          if (isKnownValue(value)) {
+            return value;
+          }
+          return DEFAULT_VALUE;
         }
 
         private ProtectionType() {}
@@ -44,7 +55,18 @@ public interface OutputProtection extends org.chromium.mojo.bindings.Interface {
 
 
     public static final class LinkType {
-        private static final boolean IS_EXTENSIBLE = false;
+        private static final boolean IS_EXTENSIBLE = true;
+        @IntDef({
+
+            LinkType.NONE,
+            LinkType.UNKNOWN,
+            LinkType.INTERNAL,
+            LinkType.VGA,
+            LinkType.HDMI,
+            LinkType.DVI,
+            LinkType.DISPLAYPORT,
+            LinkType.NETWORK})
+        public @interface EnumType {}
 
         public static final int NONE = 0;
         public static final int UNKNOWN = 1;
@@ -56,6 +78,7 @@ public interface OutputProtection extends org.chromium.mojo.bindings.Interface {
         public static final int NETWORK = 64;
         public static final int MIN_VALUE = 0;
         public static final int MAX_VALUE = 64;
+        public static final int DEFAULT_VALUE = 0;
 
         public static boolean isKnownValue(int value) {
             switch (value) {
@@ -78,7 +101,10 @@ public interface OutputProtection extends org.chromium.mojo.bindings.Interface {
         }
 
         public static int toKnownValue(int value) {
-          return value;
+          if (isKnownValue(value)) {
+            return value;
+          }
+          return DEFAULT_VALUE;
         }
 
         private LinkType() {}
@@ -90,20 +116,18 @@ public interface OutputProtection extends org.chromium.mojo.bindings.Interface {
 
     Manager<OutputProtection, OutputProtection.Proxy> MANAGER = OutputProtection_Internal.MANAGER;
 
-
     void queryStatus(
 
-QueryStatusResponse callback);
+QueryStatus_Response callback);
 
-    interface QueryStatusResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<Boolean, Integer, Integer> { }
-
+    interface QueryStatus_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<Boolean, Integer, Integer> { }
 
 
     void enableProtection(
 int desiredProtectionMask, 
-EnableProtectionResponse callback);
+EnableProtection_Response callback);
 
-    interface EnableProtectionResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
+    interface EnableProtection_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
 }

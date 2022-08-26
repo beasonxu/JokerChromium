@@ -13,8 +13,18 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ResolverType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ResolverType.RESOLVER_TYPE_FAIL,
+        ResolverType.RESOLVER_TYPE_FAIL_TIMEOUT,
+        ResolverType.RESOLVER_TYPE_SYSTEM,
+        ResolverType.RESOLVER_TYPE_IP_LITERAL,
+        ResolverType.RESOLVER_TYPE_DIRECT_LOOKUP})
+    public @interface EnumType {}
 
     public static final int RESOLVER_TYPE_FAIL = 0;
     public static final int RESOLVER_TYPE_FAIL_TIMEOUT = 1;

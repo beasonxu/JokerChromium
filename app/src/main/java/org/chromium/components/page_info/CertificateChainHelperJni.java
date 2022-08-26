@@ -10,7 +10,7 @@ import org.chromium.content_public.browser.WebContents;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class CertificateChainHelperJni implements CertificateChainHelper.Natives {
+class CertificateChainHelperJni implements CertificateChainHelper.Natives {
   private static CertificateChainHelper.Natives testInstance;
 
   public static final JniStaticTestMocker<CertificateChainHelper.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.page_info.CertificateChainHelper.Natives>() {

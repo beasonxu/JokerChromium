@@ -12,7 +12,7 @@ import org.chromium.chrome.browser.profiles.ProfileKey;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class DownloadBackgroundTaskJni implements DownloadBackgroundTask.Natives {
+class DownloadBackgroundTaskJni implements DownloadBackgroundTask.Natives {
   private static DownloadBackgroundTask.Natives testInstance;
 
   public static final JniStaticTestMocker<DownloadBackgroundTask.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.download.service.DownloadBackgroundTask.Natives>() {

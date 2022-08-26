@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class PrefServiceJni implements PrefService.Natives {
+class PrefServiceJni implements PrefService.Natives {
   private static PrefService.Natives testInstance;
 
   public static final JniStaticTestMocker<PrefService.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.prefs.PrefService.Natives>() {
@@ -26,6 +26,11 @@ final class PrefServiceJni implements PrefService.Natives {
   @Override
   public void clearPref(long nativePrefServiceAndroid, String preference) {
     GEN_JNI.org_chromium_components_prefs_PrefService_clearPref(nativePrefServiceAndroid, preference);
+  }
+
+  @Override
+  public boolean hasPrefPath(long nativePrefServiceAndroid, String preference) {
+    return (boolean)GEN_JNI.org_chromium_components_prefs_PrefService_hasPrefPath(nativePrefServiceAndroid, preference);
   }
 
   @Override

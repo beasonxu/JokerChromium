@@ -4,24 +4,29 @@
 
 package org.chromium.chrome.browser.customtabs.features.toolbar;
 import android.app.Activity;
+import android.content.res.ColorStateList;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.chromium.chrome.browser.browserservices.BrowserServicesIntentDataProvider;
+import org.chromium.blink.mojom.DisplayMode;
+import org.chromium.chrome.browser.browserservices.intents.BrowserServicesIntentDataProvider;
+import org.chromium.chrome.browser.browserservices.intents.WebappExtras;
 import org.chromium.chrome.browser.customtabs.content.CustomTabActivityTabProvider;
 import org.chromium.chrome.browser.customtabs.content.TabObserverRegistrar;
 import org.chromium.chrome.browser.customtabs.content.TabObserverRegistrar.CustomTabTabObserver;
 import org.chromium.chrome.browser.dependency_injection.ActivityScope;
-import org.chromium.chrome.browser.previews.Previews;
+import org.chromium.chrome.browser.omnibox.styles.OmniboxResourceProvider;
 import org.chromium.chrome.browser.tab.Tab;
 import org.chromium.chrome.browser.tab.TabSelectionType;
+import org.chromium.chrome.browser.theme.ThemeUtils;
 import org.chromium.chrome.browser.theme.TopUiThemeColorProvider;
 import org.chromium.chrome.browser.toolbar.ToolbarManager;
-import org.chromium.chrome.browser.webapps.WebDisplayMode;
-import org.chromium.chrome.browser.webapps.WebappExtras;
+import org.chromium.chrome.browser.ui.theme.BrandedColorScheme;
 import org.chromium.components.browser_ui.styles.ChromeColors;
+import org.chromium.ui.util.ColorUtils;
 import org.chromium.url.GURL;
 
 import java.lang.annotation.Retention;
@@ -77,12 +82,15 @@ public class CustomTabToolbarColorController {
      * surfaces with different values for {@link ToolbarColorType.DEFAULT_COLOR}.
      */
     public static int computeToolbarColorType(BrowserServicesIntentDataProvider intentDataProvider,
-            boolean useTabThemeColor, @Nullable Tab tab, BooleanFunction isPreview) {
+            boolean useTabThemeColor, @Nullable Tab tab) {
         if (intentDataProvider.isOpenedByChrome()) {
+            if (intentDataProvider.getColorProvider().hasCustomToolbarColor()) {
+                return ToolbarColorType.INTENT_TOOLBAR_COLOR;
+            }
             return (tab == null) ? ToolbarColorType.DEFAULT_COLOR : ToolbarColorType.THEME_COLOR;
         }
 
-        if (shouldUseDefaultThemeColorForFullscreen(intentDataProvider) || isPreview.get()) {
+        if (shouldUseDefaultThemeColorForFullscreen(intentDataProvider)) {
             return ToolbarColorType.DEFAULT_COLOR;
         }
 
@@ -90,8 +98,9 @@ public class CustomTabToolbarColorController {
             return ToolbarColorType.THEME_COLOR;
         }
 
-        return intentDataProvider.hasCustomToolbarColor() ? ToolbarColorType.INTENT_TOOLBAR_COLOR
-                                                          : ToolbarColorType.DEFAULT_COLOR;
+        return intentDataProvider.getColorProvider().hasCustomToolbarColor()
+                ? ToolbarColorType.INTENT_TOOLBAR_COLOR
+                : ToolbarColorType.DEFAULT_COLOR;
     }
 
     /**
@@ -157,29 +166,50 @@ public class CustomTabToolbarColorController {
         if (mToolbarManager == null) return;
 
         mToolbarManager.setShouldUpdateToolbarPrimaryColor(true);
-        mToolbarManager.onThemeColorChanged(computeColor(), false);
+        final Tab tab = mTabProvider.getTab();
+        final @ToolbarColorType int toolbarColorType =
+                computeToolbarColorType(mIntentDataProvider, mUseTabThemeColor, tab);
+        final @ColorInt int color = computeColor(tab, toolbarColorType);
+        final @BrandedColorScheme int brandedColorScheme =
+                computeBrandedColorScheme(toolbarColorType, color);
+        final ColorStateList tint =
+                ThemeUtils.getThemedToolbarIconTint(mActivity, brandedColorScheme);
+        mToolbarManager.onThemeColorChanged(color, false);
+        mToolbarManager.onTintChanged(tint, brandedColorScheme);
         mToolbarManager.setShouldUpdateToolbarPrimaryColor(false);
     }
 
-    private int computeColor() {
-        Tab tab = mTabProvider.getTab();
-        @ToolbarColorType
-        int toolbarColorType = computeToolbarColorType(
-                mIntentDataProvider, mUseTabThemeColor, tab, () -> Previews.isPreview(tab));
+    private @ColorInt int computeColor(Tab tab, @ToolbarColorType int toolbarColorType) {
         switch (toolbarColorType) {
             case ToolbarColorType.THEME_COLOR:
                 return mTopUiThemeColorProvider.calculateColor(tab, tab.getThemeColor());
             case ToolbarColorType.DEFAULT_COLOR:
                 return getDefaultColor();
             case ToolbarColorType.INTENT_TOOLBAR_COLOR:
-                return mIntentDataProvider.getToolbarColor();
+                return mIntentDataProvider.getColorProvider().getToolbarColor();
         }
         return getDefaultColor();
     }
 
+    private @BrandedColorScheme int computeBrandedColorScheme(
+            @ToolbarColorType int toolbarColorType, @ColorInt int toolbarColor) {
+        switch (toolbarColorType) {
+            case ToolbarColorType.THEME_COLOR:
+                return OmniboxResourceProvider.getBrandedColorScheme(
+                        mActivity, mIntentDataProvider.isIncognito(), toolbarColor);
+            case ToolbarColorType.DEFAULT_COLOR:
+                return mIntentDataProvider.isIncognito() ? BrandedColorScheme.INCOGNITO
+                                                         : BrandedColorScheme.APP_DEFAULT;
+            case ToolbarColorType.INTENT_TOOLBAR_COLOR:
+                return ColorUtils.shouldUseLightForegroundOnBackground(toolbarColor)
+                        ? BrandedColorScheme.DARK_BRANDED_THEME
+                        : BrandedColorScheme.LIGHT_BRANDED_THEME;
+        }
+        return BrandedColorScheme.APP_DEFAULT;
+    }
+
     private int getDefaultColor() {
-        return ChromeColors.getDefaultThemeColor(
-                mActivity.getResources(), mIntentDataProvider.isIncognito());
+        return ChromeColors.getDefaultThemeColor(mActivity, mIntentDataProvider.isIncognito());
     }
 
     private static boolean shouldUseDefaultThemeColorForFullscreen(
@@ -189,6 +219,6 @@ public class CustomTabToolbarColorController {
         // the page content when users swipe them in or they appear because the on-screen keyboard
         // was triggered.
         WebappExtras webappExtras = intentDataProvider.getWebappExtras();
-        return (webappExtras != null && webappExtras.displayMode == WebDisplayMode.FULLSCREEN);
+        return (webappExtras != null && webappExtras.displayMode == DisplayMode.FULLSCREEN);
     }
 }

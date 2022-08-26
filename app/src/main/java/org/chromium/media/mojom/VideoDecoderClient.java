@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface VideoDecoderClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,15 +25,12 @@ public interface VideoDecoderClient extends org.chromium.mojo.bindings.Interface
 
     Manager<VideoDecoderClient, VideoDecoderClient.Proxy> MANAGER = VideoDecoderClient_Internal.MANAGER;
 
-
     void onVideoFrameDecoded(
 VideoFrame frame, boolean canReadWithoutStalling, org.chromium.mojo_base.mojom.UnguessableToken releaseToken);
 
 
-
     void onWaiting(
 int reason);
-
 
 
     void requestOverlayInfo(

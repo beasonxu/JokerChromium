@@ -56,4 +56,23 @@ public interface SyncInvalidationsPayloadOrBuilder extends
    * @return The hint.
    */
   com.google.protobuf.ByteString getHint();
+
+  /**
+   * <pre>
+   * Version of invalidation, used to order incoming invalidations.
+   * </pre>
+   *
+   * <code>optional int64 version = 3;</code>
+   * @return Whether the version field is set.
+   */
+  boolean hasVersion();
+  /**
+   * <pre>
+   * Version of invalidation, used to order incoming invalidations.
+   * </pre>
+   *
+   * <code>optional int64 version = 3;</code>
+   * @return The version.
+   */
+  long getVersion();
 }

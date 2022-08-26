@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface TextSuggestionBackend extends org.chromium.mojo.bindings.Interface {
 
@@ -23,30 +25,24 @@ public interface TextSuggestionBackend extends org.chromium.mojo.bindings.Interf
 
     Manager<TextSuggestionBackend, TextSuggestionBackend.Proxy> MANAGER = TextSuggestionBackend_Internal.MANAGER;
 
-
     void applySpellCheckSuggestion(
 String suggestion);
-
 
 
     void applyTextSuggestion(
 int markerTag, int suggestionIndex);
 
 
-
     void deleteActiveSuggestionRange(
 );
-
 
 
     void onNewWordAddedToDictionary(
 String suggestion);
 
 
-
     void onSuggestionMenuClosed(
 );
-
 
 
     void suggestionMenuTimeoutCallback(

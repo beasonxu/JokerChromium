@@ -13,8 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class SharedWorkerCreationContextType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        SharedWorkerCreationContextType.NONSECURE,
+        SharedWorkerCreationContextType.SECURE})
+    public @interface EnumType {}
 
     public static final int NONSECURE = 0;
     public static final int SECURE = 1;

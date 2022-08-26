@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface AndroidOverlay extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface AndroidOverlay extends org.chromium.mojo.bindings.Interface {
     }
 
     Manager<AndroidOverlay, AndroidOverlay.Proxy> MANAGER = AndroidOverlay_Internal.MANAGER;
-
 
     void scheduleLayout(
 org.chromium.gfx.mojom.Rect rect);

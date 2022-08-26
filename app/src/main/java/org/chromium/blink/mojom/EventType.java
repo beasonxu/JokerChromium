@@ -13,8 +13,68 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class EventType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        EventType.UNDEFINED,
+        EventType.TYPE_FIRST,
+        EventType.MOUSE_DOWN,
+        EventType.MOUSE_TYPE_FIRST,
+        EventType.MOUSE_UP,
+        EventType.MOUSE_MOVE,
+        EventType.MOUSE_ENTER,
+        EventType.MOUSE_LEAVE,
+        EventType.CONTEXT_MENU,
+        EventType.MOUSE_TYPE_LAST,
+        EventType.MOUSE_WHEEL,
+        EventType.RAW_KEY_DOWN,
+        EventType.KEYBOARD_TYPE_FIRST,
+        EventType.KEY_DOWN,
+        EventType.KEY_UP,
+        EventType.CHAR,
+        EventType.KEYBOARD_TYPE_LAST,
+        EventType.GESTURE_SCROLL_BEGIN,
+        EventType.GESTURE_TYPE_FIRST,
+        EventType.GESTURE_SCROLL_END,
+        EventType.GESTURE_SCROLL_UPDATE,
+        EventType.GESTURE_FLING_START,
+        EventType.GESTURE_FLING_CANCEL,
+        EventType.GESTURE_PINCH_BEGIN,
+        EventType.GESTURE_PINCH_TYPE_FIRST,
+        EventType.GESTURE_PINCH_END,
+        EventType.GESTURE_PINCH_UPDATE,
+        EventType.GESTURE_PINCH_TYPE_LAST,
+        EventType.GESTURE_TAP_DOWN,
+        EventType.GESTURE_SHOW_PRESS,
+        EventType.GESTURE_TAP,
+        EventType.GESTURE_TAP_CANCEL,
+        EventType.GESTURE_SHORT_PRESS,
+        EventType.GESTURE_LONG_PRESS,
+        EventType.GESTURE_LONG_TAP,
+        EventType.GESTURE_TWO_FINGER_TAP,
+        EventType.GESTURE_TAP_UNCONFIRMED,
+        EventType.GESTURE_DOUBLE_TAP,
+        EventType.GESTURE_TYPE_LAST,
+        EventType.TOUCH_START,
+        EventType.TOUCH_TYPE_FIRST,
+        EventType.TOUCH_MOVE,
+        EventType.TOUCH_END,
+        EventType.TOUCH_CANCEL,
+        EventType.TOUCH_SCROLL_STARTED,
+        EventType.TOUCH_TYPE_LAST,
+        EventType.POINTER_DOWN,
+        EventType.POINTER_TYPE_FIRST,
+        EventType.POINTER_UP,
+        EventType.POINTER_MOVE,
+        EventType.POINTER_RAW_UPDATE,
+        EventType.POINTER_CANCEL,
+        EventType.POINTER_CAUSED_UA_ACTION,
+        EventType.POINTER_TYPE_LAST,
+        EventType.TYPE_LAST})
+    public @interface EnumType {}
 
     public static final int UNDEFINED = -1;
     public static final int TYPE_FIRST = -1;
@@ -48,33 +108,34 @@ public final class EventType {
     public static final int GESTURE_SHOW_PRESS = 20;
     public static final int GESTURE_TAP = 21;
     public static final int GESTURE_TAP_CANCEL = 22;
-    public static final int GESTURE_LONG_PRESS = 23;
-    public static final int GESTURE_LONG_TAP = 24;
-    public static final int GESTURE_TWO_FINGER_TAP = 25;
-    public static final int GESTURE_TAP_UNCONFIRMED = 26;
-    public static final int GESTURE_DOUBLE_TAP = 27;
-    public static final int GESTURE_TYPE_LAST = 27;
-    public static final int TOUCH_START = 28;
-    public static final int TOUCH_TYPE_FIRST = 28;
-    public static final int TOUCH_MOVE = 29;
-    public static final int TOUCH_END = 30;
-    public static final int TOUCH_CANCEL = 31;
-    public static final int TOUCH_SCROLL_STARTED = 32;
-    public static final int TOUCH_TYPE_LAST = 32;
-    public static final int POINTER_DOWN = 33;
-    public static final int POINTER_TYPE_FIRST = 33;
-    public static final int POINTER_UP = 34;
-    public static final int POINTER_MOVE = 35;
-    public static final int POINTER_RAW_UPDATE = 36;
-    public static final int POINTER_CANCEL = 37;
-    public static final int POINTER_CAUSED_UA_ACTION = 38;
-    public static final int POINTER_TYPE_LAST = 38;
-    public static final int TYPE_LAST = 38;
+    public static final int GESTURE_SHORT_PRESS = 23;
+    public static final int GESTURE_LONG_PRESS = 24;
+    public static final int GESTURE_LONG_TAP = 25;
+    public static final int GESTURE_TWO_FINGER_TAP = 26;
+    public static final int GESTURE_TAP_UNCONFIRMED = 27;
+    public static final int GESTURE_DOUBLE_TAP = 28;
+    public static final int GESTURE_TYPE_LAST = 28;
+    public static final int TOUCH_START = 29;
+    public static final int TOUCH_TYPE_FIRST = 29;
+    public static final int TOUCH_MOVE = 30;
+    public static final int TOUCH_END = 31;
+    public static final int TOUCH_CANCEL = 32;
+    public static final int TOUCH_SCROLL_STARTED = 33;
+    public static final int TOUCH_TYPE_LAST = 33;
+    public static final int POINTER_DOWN = 34;
+    public static final int POINTER_TYPE_FIRST = 34;
+    public static final int POINTER_UP = 35;
+    public static final int POINTER_MOVE = 36;
+    public static final int POINTER_RAW_UPDATE = 37;
+    public static final int POINTER_CANCEL = 38;
+    public static final int POINTER_CAUSED_UA_ACTION = 39;
+    public static final int POINTER_TYPE_LAST = 39;
+    public static final int TYPE_LAST = 39;
     public static final int MIN_VALUE = -1;
-    public static final int MAX_VALUE = 38;
+    public static final int MAX_VALUE = 39;
 
     public static boolean isKnownValue(int value) {
-        return value >= -1 && value <= 38;
+        return value >= -1 && value <= 39;
     }
 
     public static void validate(int value) {

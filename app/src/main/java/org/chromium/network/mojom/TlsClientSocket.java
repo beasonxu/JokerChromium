@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface TlsClientSocket extends org.chromium.mojo.bindings.Interface {
 

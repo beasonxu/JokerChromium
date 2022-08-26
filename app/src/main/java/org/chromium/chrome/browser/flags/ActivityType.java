@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -17,7 +17,7 @@ import java.lang.annotation.RetentionPolicy;
 
 @IntDef({
     ActivityType.TABBED, ActivityType.CUSTOM_TAB, ActivityType.TRUSTED_WEB_ACTIVITY,
-    ActivityType.WEBAPP, ActivityType.WEB_APK, ActivityType.MAX_VALUE
+    ActivityType.WEBAPP, ActivityType.WEB_APK, ActivityType.UNDECLARED, ActivityType.MAX_VALUE
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface ActivityType {
@@ -26,5 +26,6 @@ public @interface ActivityType {
   int TRUSTED_WEB_ACTIVITY = 2;
   int WEBAPP = 3;
   int WEB_APK = 4;
-  int MAX_VALUE = 4;
+  int UNDECLARED = 5;
+  int MAX_VALUE = 5;
 }

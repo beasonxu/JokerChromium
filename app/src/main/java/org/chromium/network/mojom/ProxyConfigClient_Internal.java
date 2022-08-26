@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class ProxyConfigClient_Internal {
 
@@ -80,7 +82,7 @@ ProxyConfigWithAnnotation proxyConfig) {
         @Override
         public void flushProxyConfig(
 
-FlushProxyConfigResponse callback) {
+FlushProxyConfig_Response callback) {
 
             ProxyConfigClientFlushProxyConfigParams _message = new ProxyConfigClientFlushProxyConfigParams();
 
@@ -372,9 +374,9 @@ FlushProxyConfigResponse callback) {
 
     static class ProxyConfigClientFlushProxyConfigResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ProxyConfigClient.FlushProxyConfigResponse mCallback;
+        private final ProxyConfigClient.FlushProxyConfig_Response mCallback;
 
-        ProxyConfigClientFlushProxyConfigResponseParamsForwardToCallback(ProxyConfigClient.FlushProxyConfigResponse callback) {
+        ProxyConfigClientFlushProxyConfigResponseParamsForwardToCallback(ProxyConfigClient.FlushProxyConfig_Response callback) {
             this.mCallback = callback;
         }
 
@@ -397,7 +399,7 @@ FlushProxyConfigResponse callback) {
         }
     }
 
-    static class ProxyConfigClientFlushProxyConfigResponseParamsProxyToResponder implements ProxyConfigClient.FlushProxyConfigResponse {
+    static class ProxyConfigClientFlushProxyConfigResponseParamsProxyToResponder implements ProxyConfigClient.FlushProxyConfig_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

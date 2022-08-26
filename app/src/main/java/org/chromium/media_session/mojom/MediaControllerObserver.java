@@ -13,6 +13,8 @@
 
 package org.chromium.media_session.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface MediaControllerObserver extends org.chromium.mojo.bindings.Interface {
 
@@ -23,25 +25,20 @@ public interface MediaControllerObserver extends org.chromium.mojo.bindings.Inte
 
     Manager<MediaControllerObserver, MediaControllerObserver.Proxy> MANAGER = MediaControllerObserver_Internal.MANAGER;
 
-
     void mediaSessionInfoChanged(
 MediaSessionInfo info);
-
 
 
     void mediaSessionMetadataChanged(
 MediaMetadata metadata);
 
 
-
     void mediaSessionActionsChanged(
 int[] action);
 
 
-
     void mediaSessionChanged(
 org.chromium.mojo_base.mojom.UnguessableToken requestId);
-
 
 
     void mediaSessionPositionChanged(

@@ -142,13 +142,14 @@ public final class UpdateProtos {
        */
       UNKNOWN_TYPE(-1),
       /**
+       * <pre>
+       * Inline updates are deprecated.
+       * INLINE = 1;
+       * </pre>
+       *
        * <code>INTENT = 0;</code>
        */
       INTENT(0),
-      /**
-       * <code>INLINE = 1;</code>
-       */
-      INLINE(1),
       ;
 
       /**
@@ -156,13 +157,14 @@ public final class UpdateProtos {
        */
       public static final int UNKNOWN_TYPE_VALUE = -1;
       /**
+       * <pre>
+       * Inline updates are deprecated.
+       * INLINE = 1;
+       * </pre>
+       *
        * <code>INTENT = 0;</code>
        */
       public static final int INTENT_VALUE = 0;
-      /**
-       * <code>INLINE = 1;</code>
-       */
-      public static final int INLINE_VALUE = 1;
 
 
       @java.lang.Override
@@ -184,7 +186,6 @@ public final class UpdateProtos {
         switch (value) {
           case -1: return UNKNOWN_TYPE;
           case 0: return INTENT;
-          case 1: return INLINE;
           default: return null;
         }
       }

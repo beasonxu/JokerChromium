@@ -13,8 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PreferredColorScheme {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PreferredColorScheme.DARK,
+        PreferredColorScheme.LIGHT})
+    public @interface EnumType {}
 
     public static final int DARK = 0;
     public static final int LIGHT = 1;

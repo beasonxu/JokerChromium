@@ -11,7 +11,7 @@ public final class SourceOuterClass {
   /**
    * <pre>
    * Types of source ids defined by
-   * https://cs.chromium.org/chromium/src/base/metrics/ukm_source_id.h?l=19
+   * https://cs.chromium.org/chromium/src/services/metrics/public/cpp/ukm_source_id.h
    * </pre>
    *
    * Protobuf enum {@code ukm.SourceType}
@@ -50,6 +50,10 @@ public final class SourceOuterClass {
      * <code>WORKER_ID = 7;</code>
      */
     WORKER_ID(7),
+    /**
+     * <code>NO_URL_ID = 8;</code>
+     */
+    NO_URL_ID(8),
     ;
 
     /**
@@ -84,6 +88,10 @@ public final class SourceOuterClass {
      * <code>WORKER_ID = 7;</code>
      */
     public static final int WORKER_ID_VALUE = 7;
+    /**
+     * <code>NO_URL_ID = 8;</code>
+     */
+    public static final int NO_URL_ID_VALUE = 8;
 
 
     @java.lang.Override
@@ -111,6 +119,7 @@ public final class SourceOuterClass {
         case 5: return PAYMENT_APP_ID;
         case 6: return DESKTOP_WEB_APP_ID;
         case 7: return WORKER_ID;
+        case 8: return NO_URL_ID;
         default: return null;
       }
     }
@@ -149,6 +158,122 @@ public final class SourceOuterClass {
     }
 
     // @@protoc_insertion_point(enum_scope:ukm.SourceType)
+  }
+
+  /**
+   * <pre>
+   * Android Activity Type defined by
+   * https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/flags/android/chrome_session_state.h?q=ActivityType
+   * </pre>
+   *
+   * Protobuf enum {@code ukm.AndroidActivityType}
+   */
+  public enum AndroidActivityType
+      implements com.google.protobuf.Internal.EnumLite {
+    /**
+     * <code>TABBED = 0;</code>
+     */
+    TABBED(0),
+    /**
+     * <code>CUSTOM_TAB = 1;</code>
+     */
+    CUSTOM_TAB(1),
+    /**
+     * <code>TRUSTED_WEB_ACTIVITY = 2;</code>
+     */
+    TRUSTED_WEB_ACTIVITY(2),
+    /**
+     * <code>WEB_APP = 3;</code>
+     */
+    WEB_APP(3),
+    /**
+     * <code>WEB_APK = 4;</code>
+     */
+    WEB_APK(4),
+    ;
+
+    /**
+     * <code>TABBED = 0;</code>
+     */
+    public static final int TABBED_VALUE = 0;
+    /**
+     * <code>CUSTOM_TAB = 1;</code>
+     */
+    public static final int CUSTOM_TAB_VALUE = 1;
+    /**
+     * <code>TRUSTED_WEB_ACTIVITY = 2;</code>
+     */
+    public static final int TRUSTED_WEB_ACTIVITY_VALUE = 2;
+    /**
+     * <code>WEB_APP = 3;</code>
+     */
+    public static final int WEB_APP_VALUE = 3;
+    /**
+     * <code>WEB_APK = 4;</code>
+     */
+    public static final int WEB_APK_VALUE = 4;
+
+
+    @java.lang.Override
+    public final int getNumber() {
+      return value;
+    }
+
+    /**
+     * @param value The number of the enum to look for.
+     * @return The enum associated with the given number.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static AndroidActivityType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static AndroidActivityType forNumber(int value) {
+      switch (value) {
+        case 0: return TABBED;
+        case 1: return CUSTOM_TAB;
+        case 2: return TRUSTED_WEB_ACTIVITY;
+        case 3: return WEB_APP;
+        case 4: return WEB_APK;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<AndroidActivityType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        AndroidActivityType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<AndroidActivityType>() {
+            @java.lang.Override
+            public AndroidActivityType findValueByNumber(int number) {
+              return AndroidActivityType.forNumber(number);
+            }
+          };
+
+    public static com.google.protobuf.Internal.EnumVerifier 
+        internalGetVerifier() {
+      return AndroidActivityTypeVerifier.INSTANCE;
+    }
+
+    private static final class AndroidActivityTypeVerifier implements 
+         com.google.protobuf.Internal.EnumVerifier { 
+            static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new AndroidActivityTypeVerifier();
+            @java.lang.Override
+            public boolean isInRange(int number) {
+              return AndroidActivityType.forNumber(number) != null;
+            }
+          };
+
+    private final int value;
+
+    private AndroidActivityType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:ukm.AndroidActivityType)
   }
 
   public interface SourceOrBuilder extends
@@ -368,6 +493,25 @@ public final class SourceOuterClass {
 
     /**
      * <pre>
+     * Metadata about the navigation that is set when the URL is recorded.
+     * </pre>
+     *
+     * <code>optional .ukm.Source.NavigationMetadata navigation_metadata = 17;</code>
+     * @return Whether the navigationMetadata field is set.
+     */
+    boolean hasNavigationMetadata();
+    /**
+     * <pre>
+     * Metadata about the navigation that is set when the URL is recorded.
+     * </pre>
+     *
+     * <code>optional .ukm.Source.NavigationMetadata navigation_metadata = 17;</code>
+     * @return The navigationMetadata.
+     */
+    org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata getNavigationMetadata();
+
+    /**
+     * <pre>
      * The URL of the source, as recorded in history. If this URL has not been
      * discovered by Google's crawler, it should not be recorded.
      * </pre>
@@ -436,6 +580,7 @@ public final class SourceOuterClass {
     /**
      * <pre>
      * Flag indicating if the metric was collected while inside a "custom tab".
+     * TODO(b/191457204): to be replaced by |android_activity_type| below.
      * </pre>
      *
      * <code>optional bool is_custom_tab = 7;</code>
@@ -445,12 +590,42 @@ public final class SourceOuterClass {
     /**
      * <pre>
      * Flag indicating if the metric was collected while inside a "custom tab".
+     * TODO(b/191457204): to be replaced by |android_activity_type| below.
      * </pre>
      *
      * <code>optional bool is_custom_tab = 7;</code>
      * @return The isCustomTab.
      */
     boolean getIsCustomTab();
+
+    /**
+     * <pre>
+     * For Android only. Denotes the Chrome activity type when the source was
+     * created. See
+     * https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/flags/android/chrome_session_state.h;l=20;drc=c14f6f4b9c44fe479a8d004576b42723b2a5feb6
+     * This field should eventually replace the |is_custom_tab| above because it
+     * additionally distinguishes between Trusted Web Activities, WebAPKs, and
+     * WebApps.
+     * </pre>
+     *
+     * <code>optional .ukm.AndroidActivityType android_activity_type = 18;</code>
+     * @return Whether the androidActivityType field is set.
+     */
+    boolean hasAndroidActivityType();
+    /**
+     * <pre>
+     * For Android only. Denotes the Chrome activity type when the source was
+     * created. See
+     * https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/flags/android/chrome_session_state.h;l=20;drc=c14f6f4b9c44fe479a8d004576b42723b2a5feb6
+     * This field should eventually replace the |is_custom_tab| above because it
+     * additionally distinguishes between Trusted Web Activities, WebAPKs, and
+     * WebApps.
+     * </pre>
+     *
+     * <code>optional .ukm.AndroidActivityType android_activity_type = 18;</code>
+     * @return The androidActivityType.
+     */
+    org.chromium.components.metrics.SourceOuterClass.AndroidActivityType getAndroidActivityType();
 
     /**
      * <pre>
@@ -501,32 +676,11 @@ public final class SourceOuterClass {
      * @return The tabId.
      */
     long getTabId();
-
-    /**
-     * <pre>
-     * Time between navigation and the first contentful paint, in milliseconds.
-     * Deprecated. Use ukm::Entry instead.
-     * </pre>
-     *
-     * <code>optional int64 first_contentful_paint_msec = 4 [deprecated = true];</code>
-     * @return Whether the firstContentfulPaintMsec field is set.
-     */
-    @java.lang.Deprecated boolean hasFirstContentfulPaintMsec();
-    /**
-     * <pre>
-     * Time between navigation and the first contentful paint, in milliseconds.
-     * Deprecated. Use ukm::Entry instead.
-     * </pre>
-     *
-     * <code>optional int64 first_contentful_paint_msec = 4 [deprecated = true];</code>
-     * @return The firstContentfulPaintMsec.
-     */
-    @java.lang.Deprecated long getFirstContentfulPaintMsec();
   }
   /**
    * <pre>
    * Source contains data related to a top-level navigation.
-   * Next tag: 17
+   * Next tag: 20
    * </pre>
    *
    * Protobuf type {@code ukm.Source}
@@ -682,6 +836,108 @@ public final class SourceOuterClass {
       }
 
       // @@protoc_insertion_point(enum_scope:ukm.Source.UrlScheme)
+    }
+
+    /**
+     * <pre>
+     * This signifies if the reported source is a navigation to the same origin as
+     * the previous document.
+     * Its value is "unset" for error pages and same document navigations.
+     * It is "same origin" when the previous document is of the same origin as the
+     * one we're navigating to.
+     * Otherwise, it is "cross origin".
+     * </pre>
+     *
+     * Protobuf enum {@code ukm.Source.SameOriginStatus}
+     */
+    public enum SameOriginStatus
+        implements com.google.protobuf.Internal.EnumLite {
+      /**
+       * <code>UNSET = 0;</code>
+       */
+      UNSET(0),
+      /**
+       * <code>SAME_ORIGIN = 1;</code>
+       */
+      SAME_ORIGIN(1),
+      /**
+       * <code>CROSS_ORIGIN = 2;</code>
+       */
+      CROSS_ORIGIN(2),
+      ;
+
+      /**
+       * <code>UNSET = 0;</code>
+       */
+      public static final int UNSET_VALUE = 0;
+      /**
+       * <code>SAME_ORIGIN = 1;</code>
+       */
+      public static final int SAME_ORIGIN_VALUE = 1;
+      /**
+       * <code>CROSS_ORIGIN = 2;</code>
+       */
+      public static final int CROSS_ORIGIN_VALUE = 2;
+
+
+      @java.lang.Override
+      public final int getNumber() {
+        return value;
+      }
+
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static SameOriginStatus valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static SameOriginStatus forNumber(int value) {
+        switch (value) {
+          case 0: return UNSET;
+          case 1: return SAME_ORIGIN;
+          case 2: return CROSS_ORIGIN;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<SameOriginStatus>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          SameOriginStatus> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<SameOriginStatus>() {
+              @java.lang.Override
+              public SameOriginStatus findValueByNumber(int number) {
+                return SameOriginStatus.forNumber(number);
+              }
+            };
+
+      public static com.google.protobuf.Internal.EnumVerifier 
+          internalGetVerifier() {
+        return SameOriginStatusVerifier.INSTANCE;
+      }
+
+      private static final class SameOriginStatusVerifier implements 
+           com.google.protobuf.Internal.EnumVerifier { 
+              static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new SameOriginStatusVerifier();
+              @java.lang.Override
+              public boolean isInRange(int number) {
+                return SameOriginStatus.forNumber(number) != null;
+              }
+            };
+
+      private final int value;
+
+      private SameOriginStatus(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:ukm.Source.SameOriginStatus)
     }
 
     public interface UrlInfoOrBuilder extends
@@ -1205,6 +1461,629 @@ public final class SourceOuterClass {
       private static volatile com.google.protobuf.Parser<UrlInfo> PARSER;
 
       public static com.google.protobuf.Parser<UrlInfo> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
+    public interface NavigationMetadataOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:ukm.Source.NavigationMetadata)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <pre>
+       * Whether this is the same origin as the previous document, cross-origin or
+       * unset.
+       * </pre>
+       *
+       * <code>optional .ukm.Source.SameOriginStatus same_origin_status = 1;</code>
+       * @return Whether the sameOriginStatus field is set.
+       */
+      boolean hasSameOriginStatus();
+      /**
+       * <pre>
+       * Whether this is the same origin as the previous document, cross-origin or
+       * unset.
+       * </pre>
+       *
+       * <code>optional .ukm.Source.SameOriginStatus same_origin_status = 1;</code>
+       * @return The sameOriginStatus.
+       */
+      org.chromium.components.metrics.SourceOuterClass.Source.SameOriginStatus getSameOriginStatus();
+
+      /**
+       * <pre>
+       * Whether this navigation is initiated by the renderer.
+       * Renderer-initiated navigations include navigations that were triggered
+       * from Javascript, by users interacting with the content (e.g. clicking
+       * on &lt;a&gt; links or submitting forms, or by client-side redirects.
+       * On the other hand, we have browser-initiated navigations, e.g. ones
+       * triggered by the user interacting with the browser's UI.
+       * </pre>
+       *
+       * <code>optional bool is_renderer_initiated = 2;</code>
+       * @return Whether the isRendererInitiated field is set.
+       */
+      boolean hasIsRendererInitiated();
+      /**
+       * <pre>
+       * Whether this navigation is initiated by the renderer.
+       * Renderer-initiated navigations include navigations that were triggered
+       * from Javascript, by users interacting with the content (e.g. clicking
+       * on &lt;a&gt; links or submitting forms, or by client-side redirects.
+       * On the other hand, we have browser-initiated navigations, e.g. ones
+       * triggered by the user interacting with the browser's UI.
+       * </pre>
+       *
+       * <code>optional bool is_renderer_initiated = 2;</code>
+       * @return The isRendererInitiated.
+       */
+      boolean getIsRendererInitiated();
+
+      /**
+       * <pre>
+       * Whether the navigation committed an error page, as a result of a network
+       * error.
+       * </pre>
+       *
+       * <code>optional bool is_error_page = 3;</code>
+       * @return Whether the isErrorPage field is set.
+       */
+      boolean hasIsErrorPage();
+      /**
+       * <pre>
+       * Whether the navigation committed an error page, as a result of a network
+       * error.
+       * </pre>
+       *
+       * <code>optional bool is_error_page = 3;</code>
+       * @return The isErrorPage.
+       */
+      boolean getIsErrorPage();
+    }
+    /**
+     * Protobuf type {@code ukm.Source.NavigationMetadata}
+     */
+    public  static final class NavigationMetadata extends
+        com.google.protobuf.GeneratedMessageLite<
+            NavigationMetadata, NavigationMetadata.Builder> implements
+        // @@protoc_insertion_point(message_implements:ukm.Source.NavigationMetadata)
+        NavigationMetadataOrBuilder {
+      private NavigationMetadata() {
+      }
+      private int bitField0_;
+      public static final int SAME_ORIGIN_STATUS_FIELD_NUMBER = 1;
+      private int sameOriginStatus_;
+      /**
+       * <pre>
+       * Whether this is the same origin as the previous document, cross-origin or
+       * unset.
+       * </pre>
+       *
+       * <code>optional .ukm.Source.SameOriginStatus same_origin_status = 1;</code>
+       * @return Whether the sameOriginStatus field is set.
+       */
+      @java.lang.Override
+      public boolean hasSameOriginStatus() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * Whether this is the same origin as the previous document, cross-origin or
+       * unset.
+       * </pre>
+       *
+       * <code>optional .ukm.Source.SameOriginStatus same_origin_status = 1;</code>
+       * @return The sameOriginStatus.
+       */
+      @java.lang.Override
+      public org.chromium.components.metrics.SourceOuterClass.Source.SameOriginStatus getSameOriginStatus() {
+        org.chromium.components.metrics.SourceOuterClass.Source.SameOriginStatus result = org.chromium.components.metrics.SourceOuterClass.Source.SameOriginStatus.forNumber(sameOriginStatus_);
+        return result == null ? org.chromium.components.metrics.SourceOuterClass.Source.SameOriginStatus.UNSET : result;
+      }
+      /**
+       * <pre>
+       * Whether this is the same origin as the previous document, cross-origin or
+       * unset.
+       * </pre>
+       *
+       * <code>optional .ukm.Source.SameOriginStatus same_origin_status = 1;</code>
+       * @param value The sameOriginStatus to set.
+       */
+      private void setSameOriginStatus(org.chromium.components.metrics.SourceOuterClass.Source.SameOriginStatus value) {
+        sameOriginStatus_ = value.getNumber();
+        bitField0_ |= 0x00000001;
+      }
+      /**
+       * <pre>
+       * Whether this is the same origin as the previous document, cross-origin or
+       * unset.
+       * </pre>
+       *
+       * <code>optional .ukm.Source.SameOriginStatus same_origin_status = 1;</code>
+       */
+      private void clearSameOriginStatus() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        sameOriginStatus_ = 0;
+      }
+
+      public static final int IS_RENDERER_INITIATED_FIELD_NUMBER = 2;
+      private boolean isRendererInitiated_;
+      /**
+       * <pre>
+       * Whether this navigation is initiated by the renderer.
+       * Renderer-initiated navigations include navigations that were triggered
+       * from Javascript, by users interacting with the content (e.g. clicking
+       * on &lt;a&gt; links or submitting forms, or by client-side redirects.
+       * On the other hand, we have browser-initiated navigations, e.g. ones
+       * triggered by the user interacting with the browser's UI.
+       * </pre>
+       *
+       * <code>optional bool is_renderer_initiated = 2;</code>
+       * @return Whether the isRendererInitiated field is set.
+       */
+      @java.lang.Override
+      public boolean hasIsRendererInitiated() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * Whether this navigation is initiated by the renderer.
+       * Renderer-initiated navigations include navigations that were triggered
+       * from Javascript, by users interacting with the content (e.g. clicking
+       * on &lt;a&gt; links or submitting forms, or by client-side redirects.
+       * On the other hand, we have browser-initiated navigations, e.g. ones
+       * triggered by the user interacting with the browser's UI.
+       * </pre>
+       *
+       * <code>optional bool is_renderer_initiated = 2;</code>
+       * @return The isRendererInitiated.
+       */
+      @java.lang.Override
+      public boolean getIsRendererInitiated() {
+        return isRendererInitiated_;
+      }
+      /**
+       * <pre>
+       * Whether this navigation is initiated by the renderer.
+       * Renderer-initiated navigations include navigations that were triggered
+       * from Javascript, by users interacting with the content (e.g. clicking
+       * on &lt;a&gt; links or submitting forms, or by client-side redirects.
+       * On the other hand, we have browser-initiated navigations, e.g. ones
+       * triggered by the user interacting with the browser's UI.
+       * </pre>
+       *
+       * <code>optional bool is_renderer_initiated = 2;</code>
+       * @param value The isRendererInitiated to set.
+       */
+      private void setIsRendererInitiated(boolean value) {
+        bitField0_ |= 0x00000002;
+        isRendererInitiated_ = value;
+      }
+      /**
+       * <pre>
+       * Whether this navigation is initiated by the renderer.
+       * Renderer-initiated navigations include navigations that were triggered
+       * from Javascript, by users interacting with the content (e.g. clicking
+       * on &lt;a&gt; links or submitting forms, or by client-side redirects.
+       * On the other hand, we have browser-initiated navigations, e.g. ones
+       * triggered by the user interacting with the browser's UI.
+       * </pre>
+       *
+       * <code>optional bool is_renderer_initiated = 2;</code>
+       */
+      private void clearIsRendererInitiated() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        isRendererInitiated_ = false;
+      }
+
+      public static final int IS_ERROR_PAGE_FIELD_NUMBER = 3;
+      private boolean isErrorPage_;
+      /**
+       * <pre>
+       * Whether the navigation committed an error page, as a result of a network
+       * error.
+       * </pre>
+       *
+       * <code>optional bool is_error_page = 3;</code>
+       * @return Whether the isErrorPage field is set.
+       */
+      @java.lang.Override
+      public boolean hasIsErrorPage() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <pre>
+       * Whether the navigation committed an error page, as a result of a network
+       * error.
+       * </pre>
+       *
+       * <code>optional bool is_error_page = 3;</code>
+       * @return The isErrorPage.
+       */
+      @java.lang.Override
+      public boolean getIsErrorPage() {
+        return isErrorPage_;
+      }
+      /**
+       * <pre>
+       * Whether the navigation committed an error page, as a result of a network
+       * error.
+       * </pre>
+       *
+       * <code>optional bool is_error_page = 3;</code>
+       * @param value The isErrorPage to set.
+       */
+      private void setIsErrorPage(boolean value) {
+        bitField0_ |= 0x00000004;
+        isErrorPage_ = value;
+      }
+      /**
+       * <pre>
+       * Whether the navigation committed an error page, as a result of a network
+       * error.
+       * </pre>
+       *
+       * <code>optional bool is_error_page = 3;</code>
+       */
+      private void clearIsErrorPage() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        isErrorPage_ = false;
+      }
+
+      public static org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return (Builder) DEFAULT_INSTANCE.createBuilder();
+      }
+      public static Builder newBuilder(org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata prototype) {
+        return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+      }
+
+      /**
+       * Protobuf type {@code ukm.Source.NavigationMetadata}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata, Builder> implements
+          // @@protoc_insertion_point(builder_implements:ukm.Source.NavigationMetadata)
+          org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadataOrBuilder {
+        // Construct using org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <pre>
+         * Whether this is the same origin as the previous document, cross-origin or
+         * unset.
+         * </pre>
+         *
+         * <code>optional .ukm.Source.SameOriginStatus same_origin_status = 1;</code>
+         * @return Whether the sameOriginStatus field is set.
+         */
+        @java.lang.Override
+        public boolean hasSameOriginStatus() {
+          return instance.hasSameOriginStatus();
+        }
+        /**
+         * <pre>
+         * Whether this is the same origin as the previous document, cross-origin or
+         * unset.
+         * </pre>
+         *
+         * <code>optional .ukm.Source.SameOriginStatus same_origin_status = 1;</code>
+         * @return The sameOriginStatus.
+         */
+        @java.lang.Override
+        public org.chromium.components.metrics.SourceOuterClass.Source.SameOriginStatus getSameOriginStatus() {
+          return instance.getSameOriginStatus();
+        }
+        /**
+         * <pre>
+         * Whether this is the same origin as the previous document, cross-origin or
+         * unset.
+         * </pre>
+         *
+         * <code>optional .ukm.Source.SameOriginStatus same_origin_status = 1;</code>
+         * @param value The enum numeric value on the wire for sameOriginStatus to set.
+         * @return This builder for chaining.
+         */
+        public Builder setSameOriginStatus(org.chromium.components.metrics.SourceOuterClass.Source.SameOriginStatus value) {
+          copyOnWrite();
+          instance.setSameOriginStatus(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Whether this is the same origin as the previous document, cross-origin or
+         * unset.
+         * </pre>
+         *
+         * <code>optional .ukm.Source.SameOriginStatus same_origin_status = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearSameOriginStatus() {
+          copyOnWrite();
+          instance.clearSameOriginStatus();
+          return this;
+        }
+
+        /**
+         * <pre>
+         * Whether this navigation is initiated by the renderer.
+         * Renderer-initiated navigations include navigations that were triggered
+         * from Javascript, by users interacting with the content (e.g. clicking
+         * on &lt;a&gt; links or submitting forms, or by client-side redirects.
+         * On the other hand, we have browser-initiated navigations, e.g. ones
+         * triggered by the user interacting with the browser's UI.
+         * </pre>
+         *
+         * <code>optional bool is_renderer_initiated = 2;</code>
+         * @return Whether the isRendererInitiated field is set.
+         */
+        @java.lang.Override
+        public boolean hasIsRendererInitiated() {
+          return instance.hasIsRendererInitiated();
+        }
+        /**
+         * <pre>
+         * Whether this navigation is initiated by the renderer.
+         * Renderer-initiated navigations include navigations that were triggered
+         * from Javascript, by users interacting with the content (e.g. clicking
+         * on &lt;a&gt; links or submitting forms, or by client-side redirects.
+         * On the other hand, we have browser-initiated navigations, e.g. ones
+         * triggered by the user interacting with the browser's UI.
+         * </pre>
+         *
+         * <code>optional bool is_renderer_initiated = 2;</code>
+         * @return The isRendererInitiated.
+         */
+        @java.lang.Override
+        public boolean getIsRendererInitiated() {
+          return instance.getIsRendererInitiated();
+        }
+        /**
+         * <pre>
+         * Whether this navigation is initiated by the renderer.
+         * Renderer-initiated navigations include navigations that were triggered
+         * from Javascript, by users interacting with the content (e.g. clicking
+         * on &lt;a&gt; links or submitting forms, or by client-side redirects.
+         * On the other hand, we have browser-initiated navigations, e.g. ones
+         * triggered by the user interacting with the browser's UI.
+         * </pre>
+         *
+         * <code>optional bool is_renderer_initiated = 2;</code>
+         * @param value The isRendererInitiated to set.
+         * @return This builder for chaining.
+         */
+        public Builder setIsRendererInitiated(boolean value) {
+          copyOnWrite();
+          instance.setIsRendererInitiated(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Whether this navigation is initiated by the renderer.
+         * Renderer-initiated navigations include navigations that were triggered
+         * from Javascript, by users interacting with the content (e.g. clicking
+         * on &lt;a&gt; links or submitting forms, or by client-side redirects.
+         * On the other hand, we have browser-initiated navigations, e.g. ones
+         * triggered by the user interacting with the browser's UI.
+         * </pre>
+         *
+         * <code>optional bool is_renderer_initiated = 2;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearIsRendererInitiated() {
+          copyOnWrite();
+          instance.clearIsRendererInitiated();
+          return this;
+        }
+
+        /**
+         * <pre>
+         * Whether the navigation committed an error page, as a result of a network
+         * error.
+         * </pre>
+         *
+         * <code>optional bool is_error_page = 3;</code>
+         * @return Whether the isErrorPage field is set.
+         */
+        @java.lang.Override
+        public boolean hasIsErrorPage() {
+          return instance.hasIsErrorPage();
+        }
+        /**
+         * <pre>
+         * Whether the navigation committed an error page, as a result of a network
+         * error.
+         * </pre>
+         *
+         * <code>optional bool is_error_page = 3;</code>
+         * @return The isErrorPage.
+         */
+        @java.lang.Override
+        public boolean getIsErrorPage() {
+          return instance.getIsErrorPage();
+        }
+        /**
+         * <pre>
+         * Whether the navigation committed an error page, as a result of a network
+         * error.
+         * </pre>
+         *
+         * <code>optional bool is_error_page = 3;</code>
+         * @param value The isErrorPage to set.
+         * @return This builder for chaining.
+         */
+        public Builder setIsErrorPage(boolean value) {
+          copyOnWrite();
+          instance.setIsErrorPage(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Whether the navigation committed an error page, as a result of a network
+         * error.
+         * </pre>
+         *
+         * <code>optional bool is_error_page = 3;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearIsErrorPage() {
+          copyOnWrite();
+          instance.clearIsErrorPage();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:ukm.Source.NavigationMetadata)
+      }
+      @java.lang.Override
+      @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+      protected final java.lang.Object dynamicMethod(
+          com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+          java.lang.Object arg0, java.lang.Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata();
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case BUILD_MESSAGE_INFO: {
+              java.lang.Object[] objects = new java.lang.Object[] {
+                "bitField0_",
+                "sameOriginStatus_",
+                org.chromium.components.metrics.SourceOuterClass.Source.SameOriginStatus.internalGetVerifier(),
+                "isRendererInitiated_",
+                "isErrorPage_",
+              };
+              java.lang.String info =
+                  "\u0001\u0003\u0000\u0001\u0001\u0003\u0003\u0000\u0000\u0000\u0001\u100c\u0000\u0002" +
+                  "\u1007\u0001\u0003\u1007\u0002";
+              return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+          }
+          // fall through
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            com.google.protobuf.Parser<org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata> parser = PARSER;
+            if (parser == null) {
+              synchronized (org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata.class) {
+                parser = PARSER;
+                if (parser == null) {
+                  parser =
+                      new DefaultInstanceBasedParser<org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata>(
+                          DEFAULT_INSTANCE);
+                  PARSER = parser;
+                }
+              }
+            }
+            return parser;
+        }
+        case GET_MEMOIZED_IS_INITIALIZED: {
+          return (byte) 1;
+        }
+        case SET_MEMOIZED_IS_INITIALIZED: {
+          return null;
+        }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:ukm.Source.NavigationMetadata)
+      private static final org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata DEFAULT_INSTANCE;
+      static {
+        NavigationMetadata defaultInstance = new NavigationMetadata();
+        // New instances are implicitly immutable so no need to make
+        // immutable.
+        DEFAULT_INSTANCE = defaultInstance;
+        com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+          NavigationMetadata.class, defaultInstance);
+      }
+
+      public static org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<NavigationMetadata> PARSER;
+
+      public static com.google.protobuf.Parser<NavigationMetadata> parser() {
         return DEFAULT_INSTANCE.getParserForType();
       }
     }
@@ -1892,6 +2771,72 @@ public final class SourceOuterClass {
       isSameDocumentNavigation_ = false;
     }
 
+    public static final int NAVIGATION_METADATA_FIELD_NUMBER = 17;
+    private org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata navigationMetadata_;
+    /**
+     * <pre>
+     * Metadata about the navigation that is set when the URL is recorded.
+     * </pre>
+     *
+     * <code>optional .ukm.Source.NavigationMetadata navigation_metadata = 17;</code>
+     */
+    @java.lang.Override
+    public boolean hasNavigationMetadata() {
+      return ((bitField0_ & 0x00000040) != 0);
+    }
+    /**
+     * <pre>
+     * Metadata about the navigation that is set when the URL is recorded.
+     * </pre>
+     *
+     * <code>optional .ukm.Source.NavigationMetadata navigation_metadata = 17;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata getNavigationMetadata() {
+      return navigationMetadata_ == null ? org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata.getDefaultInstance() : navigationMetadata_;
+    }
+    /**
+     * <pre>
+     * Metadata about the navigation that is set when the URL is recorded.
+     * </pre>
+     *
+     * <code>optional .ukm.Source.NavigationMetadata navigation_metadata = 17;</code>
+     */
+    private void setNavigationMetadata(org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata value) {
+      value.getClass();
+  navigationMetadata_ = value;
+      bitField0_ |= 0x00000040;
+      }
+    /**
+     * <pre>
+     * Metadata about the navigation that is set when the URL is recorded.
+     * </pre>
+     *
+     * <code>optional .ukm.Source.NavigationMetadata navigation_metadata = 17;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeNavigationMetadata(org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata value) {
+      value.getClass();
+  if (navigationMetadata_ != null &&
+          navigationMetadata_ != org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata.getDefaultInstance()) {
+        navigationMetadata_ =
+          org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata.newBuilder(navigationMetadata_).mergeFrom(value).buildPartial();
+      } else {
+        navigationMetadata_ = value;
+      }
+      bitField0_ |= 0x00000040;
+    }
+    /**
+     * <pre>
+     * Metadata about the navigation that is set when the URL is recorded.
+     * </pre>
+     *
+     * <code>optional .ukm.Source.NavigationMetadata navigation_metadata = 17;</code>
+     */
+    private void clearNavigationMetadata() {  navigationMetadata_ = null;
+      bitField0_ = (bitField0_ & ~0x00000040);
+    }
+
     public static final int URL_FIELD_NUMBER = 2;
     private java.lang.String url_;
     /**
@@ -1905,7 +2850,7 @@ public final class SourceOuterClass {
      */
     @java.lang.Override
     public boolean hasUrl() {
-      return ((bitField0_ & 0x00000040) != 0);
+      return ((bitField0_ & 0x00000080) != 0);
     }
     /**
      * <pre>
@@ -1946,7 +2891,7 @@ public final class SourceOuterClass {
     private void setUrl(
         java.lang.String value) {
       value.getClass();
-  bitField0_ |= 0x00000040;
+  bitField0_ |= 0x00000080;
       url_ = value;
     }
     /**
@@ -1958,7 +2903,7 @@ public final class SourceOuterClass {
      * <code>optional string url = 2;</code>
      */
     private void clearUrl() {
-      bitField0_ = (bitField0_ & ~0x00000040);
+      bitField0_ = (bitField0_ & ~0x00000080);
       url_ = getDefaultInstance().getUrl();
     }
     /**
@@ -1973,7 +2918,7 @@ public final class SourceOuterClass {
     private void setUrlBytes(
         com.google.protobuf.ByteString value) {
       url_ = value.toStringUtf8();
-      bitField0_ |= 0x00000040;
+      bitField0_ |= 0x00000080;
     }
 
     public static final int INITIAL_URL_FIELD_NUMBER = 6;
@@ -1990,7 +2935,7 @@ public final class SourceOuterClass {
      */
     @java.lang.Override
     public boolean hasInitialUrl() {
-      return ((bitField0_ & 0x00000080) != 0);
+      return ((bitField0_ & 0x00000100) != 0);
     }
     /**
      * <pre>
@@ -2034,7 +2979,7 @@ public final class SourceOuterClass {
     private void setInitialUrl(
         java.lang.String value) {
       value.getClass();
-  bitField0_ |= 0x00000080;
+  bitField0_ |= 0x00000100;
       initialUrl_ = value;
     }
     /**
@@ -2047,7 +2992,7 @@ public final class SourceOuterClass {
      * <code>optional string initial_url = 6;</code>
      */
     private void clearInitialUrl() {
-      bitField0_ = (bitField0_ & ~0x00000080);
+      bitField0_ = (bitField0_ & ~0x00000100);
       initialUrl_ = getDefaultInstance().getInitialUrl();
     }
     /**
@@ -2063,7 +3008,7 @@ public final class SourceOuterClass {
     private void setInitialUrlBytes(
         com.google.protobuf.ByteString value) {
       initialUrl_ = value.toStringUtf8();
-      bitField0_ |= 0x00000080;
+      bitField0_ |= 0x00000100;
     }
 
     public static final int IS_CUSTOM_TAB_FIELD_NUMBER = 7;
@@ -2071,6 +3016,7 @@ public final class SourceOuterClass {
     /**
      * <pre>
      * Flag indicating if the metric was collected while inside a "custom tab".
+     * TODO(b/191457204): to be replaced by |android_activity_type| below.
      * </pre>
      *
      * <code>optional bool is_custom_tab = 7;</code>
@@ -2078,11 +3024,12 @@ public final class SourceOuterClass {
      */
     @java.lang.Override
     public boolean hasIsCustomTab() {
-      return ((bitField0_ & 0x00000100) != 0);
+      return ((bitField0_ & 0x00000200) != 0);
     }
     /**
      * <pre>
      * Flag indicating if the metric was collected while inside a "custom tab".
+     * TODO(b/191457204): to be replaced by |android_activity_type| below.
      * </pre>
      *
      * <code>optional bool is_custom_tab = 7;</code>
@@ -2095,25 +3042,98 @@ public final class SourceOuterClass {
     /**
      * <pre>
      * Flag indicating if the metric was collected while inside a "custom tab".
+     * TODO(b/191457204): to be replaced by |android_activity_type| below.
      * </pre>
      *
      * <code>optional bool is_custom_tab = 7;</code>
      * @param value The isCustomTab to set.
      */
     private void setIsCustomTab(boolean value) {
-      bitField0_ |= 0x00000100;
+      bitField0_ |= 0x00000200;
       isCustomTab_ = value;
     }
     /**
      * <pre>
      * Flag indicating if the metric was collected while inside a "custom tab".
+     * TODO(b/191457204): to be replaced by |android_activity_type| below.
      * </pre>
      *
      * <code>optional bool is_custom_tab = 7;</code>
      */
     private void clearIsCustomTab() {
-      bitField0_ = (bitField0_ & ~0x00000100);
+      bitField0_ = (bitField0_ & ~0x00000200);
       isCustomTab_ = false;
+    }
+
+    public static final int ANDROID_ACTIVITY_TYPE_FIELD_NUMBER = 18;
+    private int androidActivityType_;
+    /**
+     * <pre>
+     * For Android only. Denotes the Chrome activity type when the source was
+     * created. See
+     * https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/flags/android/chrome_session_state.h;l=20;drc=c14f6f4b9c44fe479a8d004576b42723b2a5feb6
+     * This field should eventually replace the |is_custom_tab| above because it
+     * additionally distinguishes between Trusted Web Activities, WebAPKs, and
+     * WebApps.
+     * </pre>
+     *
+     * <code>optional .ukm.AndroidActivityType android_activity_type = 18;</code>
+     * @return Whether the androidActivityType field is set.
+     */
+    @java.lang.Override
+    public boolean hasAndroidActivityType() {
+      return ((bitField0_ & 0x00000400) != 0);
+    }
+    /**
+     * <pre>
+     * For Android only. Denotes the Chrome activity type when the source was
+     * created. See
+     * https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/flags/android/chrome_session_state.h;l=20;drc=c14f6f4b9c44fe479a8d004576b42723b2a5feb6
+     * This field should eventually replace the |is_custom_tab| above because it
+     * additionally distinguishes between Trusted Web Activities, WebAPKs, and
+     * WebApps.
+     * </pre>
+     *
+     * <code>optional .ukm.AndroidActivityType android_activity_type = 18;</code>
+     * @return The androidActivityType.
+     */
+    @java.lang.Override
+    public org.chromium.components.metrics.SourceOuterClass.AndroidActivityType getAndroidActivityType() {
+      org.chromium.components.metrics.SourceOuterClass.AndroidActivityType result = org.chromium.components.metrics.SourceOuterClass.AndroidActivityType.forNumber(androidActivityType_);
+      return result == null ? org.chromium.components.metrics.SourceOuterClass.AndroidActivityType.TABBED : result;
+    }
+    /**
+     * <pre>
+     * For Android only. Denotes the Chrome activity type when the source was
+     * created. See
+     * https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/flags/android/chrome_session_state.h;l=20;drc=c14f6f4b9c44fe479a8d004576b42723b2a5feb6
+     * This field should eventually replace the |is_custom_tab| above because it
+     * additionally distinguishes between Trusted Web Activities, WebAPKs, and
+     * WebApps.
+     * </pre>
+     *
+     * <code>optional .ukm.AndroidActivityType android_activity_type = 18;</code>
+     * @param value The androidActivityType to set.
+     */
+    private void setAndroidActivityType(org.chromium.components.metrics.SourceOuterClass.AndroidActivityType value) {
+      androidActivityType_ = value.getNumber();
+      bitField0_ |= 0x00000400;
+    }
+    /**
+     * <pre>
+     * For Android only. Denotes the Chrome activity type when the source was
+     * created. See
+     * https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/flags/android/chrome_session_state.h;l=20;drc=c14f6f4b9c44fe479a8d004576b42723b2a5feb6
+     * This field should eventually replace the |is_custom_tab| above because it
+     * additionally distinguishes between Trusted Web Activities, WebAPKs, and
+     * WebApps.
+     * </pre>
+     *
+     * <code>optional .ukm.AndroidActivityType android_activity_type = 18;</code>
+     */
+    private void clearAndroidActivityType() {
+      bitField0_ = (bitField0_ & ~0x00000400);
+      androidActivityType_ = 0;
     }
 
     public static final int NAVIGATION_TIME_MSEC_FIELD_NUMBER = 3;
@@ -2133,7 +3153,7 @@ public final class SourceOuterClass {
      */
     @java.lang.Override
     public boolean hasNavigationTimeMsec() {
-      return ((bitField0_ & 0x00000200) != 0);
+      return ((bitField0_ & 0x00000800) != 0);
     }
     /**
      * <pre>
@@ -2166,7 +3186,7 @@ public final class SourceOuterClass {
      * @param value The navigationTimeMsec to set.
      */
     private void setNavigationTimeMsec(long value) {
-      bitField0_ |= 0x00000200;
+      bitField0_ |= 0x00000800;
       navigationTimeMsec_ = value;
     }
     /**
@@ -2182,7 +3202,7 @@ public final class SourceOuterClass {
      * <code>optional int64 navigation_time_msec = 3;</code>
      */
     private void clearNavigationTimeMsec() {
-      bitField0_ = (bitField0_ & ~0x00000200);
+      bitField0_ = (bitField0_ & ~0x00000800);
       navigationTimeMsec_ = 0L;
     }
 
@@ -2199,7 +3219,7 @@ public final class SourceOuterClass {
      */
     @java.lang.Override
     public boolean hasTabId() {
-      return ((bitField0_ & 0x00000400) != 0);
+      return ((bitField0_ & 0x00001000) != 0);
     }
     /**
      * <pre>
@@ -2224,7 +3244,7 @@ public final class SourceOuterClass {
      * @param value The tabId to set.
      */
     private void setTabId(long value) {
-      bitField0_ |= 0x00000400;
+      bitField0_ |= 0x00001000;
       tabId_ = value;
     }
     /**
@@ -2236,62 +3256,8 @@ public final class SourceOuterClass {
      * <code>optional int64 tab_id = 10;</code>
      */
     private void clearTabId() {
-      bitField0_ = (bitField0_ & ~0x00000400);
+      bitField0_ = (bitField0_ & ~0x00001000);
       tabId_ = 0L;
-    }
-
-    public static final int FIRST_CONTENTFUL_PAINT_MSEC_FIELD_NUMBER = 4;
-    private long firstContentfulPaintMsec_;
-    /**
-     * <pre>
-     * Time between navigation and the first contentful paint, in milliseconds.
-     * Deprecated. Use ukm::Entry instead.
-     * </pre>
-     *
-     * <code>optional int64 first_contentful_paint_msec = 4 [deprecated = true];</code>
-     * @return Whether the firstContentfulPaintMsec field is set.
-     */
-    @java.lang.Override
-    @java.lang.Deprecated public boolean hasFirstContentfulPaintMsec() {
-      return ((bitField0_ & 0x00000800) != 0);
-    }
-    /**
-     * <pre>
-     * Time between navigation and the first contentful paint, in milliseconds.
-     * Deprecated. Use ukm::Entry instead.
-     * </pre>
-     *
-     * <code>optional int64 first_contentful_paint_msec = 4 [deprecated = true];</code>
-     * @return The firstContentfulPaintMsec.
-     */
-    @java.lang.Override
-    @java.lang.Deprecated public long getFirstContentfulPaintMsec() {
-      return firstContentfulPaintMsec_;
-    }
-    /**
-     * <pre>
-     * Time between navigation and the first contentful paint, in milliseconds.
-     * Deprecated. Use ukm::Entry instead.
-     * </pre>
-     *
-     * <code>optional int64 first_contentful_paint_msec = 4 [deprecated = true];</code>
-     * @param value The firstContentfulPaintMsec to set.
-     */
-    private void setFirstContentfulPaintMsec(long value) {
-      bitField0_ |= 0x00000800;
-      firstContentfulPaintMsec_ = value;
-    }
-    /**
-     * <pre>
-     * Time between navigation and the first contentful paint, in milliseconds.
-     * Deprecated. Use ukm::Entry instead.
-     * </pre>
-     *
-     * <code>optional int64 first_contentful_paint_msec = 4 [deprecated = true];</code>
-     */
-    private void clearFirstContentfulPaintMsec() {
-      bitField0_ = (bitField0_ & ~0x00000800);
-      firstContentfulPaintMsec_ = 0L;
     }
 
     public static org.chromium.components.metrics.SourceOuterClass.Source parseFrom(
@@ -2378,7 +3344,7 @@ public final class SourceOuterClass {
     /**
      * <pre>
      * Source contains data related to a top-level navigation.
-     * Next tag: 17
+     * Next tag: 20
      * </pre>
      *
      * Protobuf type {@code ukm.Source}
@@ -3116,6 +4082,77 @@ public final class SourceOuterClass {
 
       /**
        * <pre>
+       * Metadata about the navigation that is set when the URL is recorded.
+       * </pre>
+       *
+       * <code>optional .ukm.Source.NavigationMetadata navigation_metadata = 17;</code>
+       */
+      @java.lang.Override
+      public boolean hasNavigationMetadata() {
+        return instance.hasNavigationMetadata();
+      }
+      /**
+       * <pre>
+       * Metadata about the navigation that is set when the URL is recorded.
+       * </pre>
+       *
+       * <code>optional .ukm.Source.NavigationMetadata navigation_metadata = 17;</code>
+       */
+      @java.lang.Override
+      public org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata getNavigationMetadata() {
+        return instance.getNavigationMetadata();
+      }
+      /**
+       * <pre>
+       * Metadata about the navigation that is set when the URL is recorded.
+       * </pre>
+       *
+       * <code>optional .ukm.Source.NavigationMetadata navigation_metadata = 17;</code>
+       */
+      public Builder setNavigationMetadata(org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata value) {
+        copyOnWrite();
+        instance.setNavigationMetadata(value);
+        return this;
+        }
+      /**
+       * <pre>
+       * Metadata about the navigation that is set when the URL is recorded.
+       * </pre>
+       *
+       * <code>optional .ukm.Source.NavigationMetadata navigation_metadata = 17;</code>
+       */
+      public Builder setNavigationMetadata(
+          org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata.Builder builderForValue) {
+        copyOnWrite();
+        instance.setNavigationMetadata(builderForValue.build());
+        return this;
+      }
+      /**
+       * <pre>
+       * Metadata about the navigation that is set when the URL is recorded.
+       * </pre>
+       *
+       * <code>optional .ukm.Source.NavigationMetadata navigation_metadata = 17;</code>
+       */
+      public Builder mergeNavigationMetadata(org.chromium.components.metrics.SourceOuterClass.Source.NavigationMetadata value) {
+        copyOnWrite();
+        instance.mergeNavigationMetadata(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Metadata about the navigation that is set when the URL is recorded.
+       * </pre>
+       *
+       * <code>optional .ukm.Source.NavigationMetadata navigation_metadata = 17;</code>
+       */
+      public Builder clearNavigationMetadata() {  copyOnWrite();
+        instance.clearNavigationMetadata();
+        return this;
+      }
+
+      /**
+       * <pre>
        * The URL of the source, as recorded in history. If this URL has not been
        * discovered by Google's crawler, it should not be recorded.
        * </pre>
@@ -3297,6 +4334,7 @@ public final class SourceOuterClass {
       /**
        * <pre>
        * Flag indicating if the metric was collected while inside a "custom tab".
+       * TODO(b/191457204): to be replaced by |android_activity_type| below.
        * </pre>
        *
        * <code>optional bool is_custom_tab = 7;</code>
@@ -3309,6 +4347,7 @@ public final class SourceOuterClass {
       /**
        * <pre>
        * Flag indicating if the metric was collected while inside a "custom tab".
+       * TODO(b/191457204): to be replaced by |android_activity_type| below.
        * </pre>
        *
        * <code>optional bool is_custom_tab = 7;</code>
@@ -3321,6 +4360,7 @@ public final class SourceOuterClass {
       /**
        * <pre>
        * Flag indicating if the metric was collected while inside a "custom tab".
+       * TODO(b/191457204): to be replaced by |android_activity_type| below.
        * </pre>
        *
        * <code>optional bool is_custom_tab = 7;</code>
@@ -3335,6 +4375,7 @@ public final class SourceOuterClass {
       /**
        * <pre>
        * Flag indicating if the metric was collected while inside a "custom tab".
+       * TODO(b/191457204): to be replaced by |android_activity_type| below.
        * </pre>
        *
        * <code>optional bool is_custom_tab = 7;</code>
@@ -3343,6 +4384,78 @@ public final class SourceOuterClass {
       public Builder clearIsCustomTab() {
         copyOnWrite();
         instance.clearIsCustomTab();
+        return this;
+      }
+
+      /**
+       * <pre>
+       * For Android only. Denotes the Chrome activity type when the source was
+       * created. See
+       * https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/flags/android/chrome_session_state.h;l=20;drc=c14f6f4b9c44fe479a8d004576b42723b2a5feb6
+       * This field should eventually replace the |is_custom_tab| above because it
+       * additionally distinguishes between Trusted Web Activities, WebAPKs, and
+       * WebApps.
+       * </pre>
+       *
+       * <code>optional .ukm.AndroidActivityType android_activity_type = 18;</code>
+       * @return Whether the androidActivityType field is set.
+       */
+      @java.lang.Override
+      public boolean hasAndroidActivityType() {
+        return instance.hasAndroidActivityType();
+      }
+      /**
+       * <pre>
+       * For Android only. Denotes the Chrome activity type when the source was
+       * created. See
+       * https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/flags/android/chrome_session_state.h;l=20;drc=c14f6f4b9c44fe479a8d004576b42723b2a5feb6
+       * This field should eventually replace the |is_custom_tab| above because it
+       * additionally distinguishes between Trusted Web Activities, WebAPKs, and
+       * WebApps.
+       * </pre>
+       *
+       * <code>optional .ukm.AndroidActivityType android_activity_type = 18;</code>
+       * @return The androidActivityType.
+       */
+      @java.lang.Override
+      public org.chromium.components.metrics.SourceOuterClass.AndroidActivityType getAndroidActivityType() {
+        return instance.getAndroidActivityType();
+      }
+      /**
+       * <pre>
+       * For Android only. Denotes the Chrome activity type when the source was
+       * created. See
+       * https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/flags/android/chrome_session_state.h;l=20;drc=c14f6f4b9c44fe479a8d004576b42723b2a5feb6
+       * This field should eventually replace the |is_custom_tab| above because it
+       * additionally distinguishes between Trusted Web Activities, WebAPKs, and
+       * WebApps.
+       * </pre>
+       *
+       * <code>optional .ukm.AndroidActivityType android_activity_type = 18;</code>
+       * @param value The enum numeric value on the wire for androidActivityType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAndroidActivityType(org.chromium.components.metrics.SourceOuterClass.AndroidActivityType value) {
+        copyOnWrite();
+        instance.setAndroidActivityType(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * For Android only. Denotes the Chrome activity type when the source was
+       * created. See
+       * https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/flags/android/chrome_session_state.h;l=20;drc=c14f6f4b9c44fe479a8d004576b42723b2a5feb6
+       * This field should eventually replace the |is_custom_tab| above because it
+       * additionally distinguishes between Trusted Web Activities, WebAPKs, and
+       * WebApps.
+       * </pre>
+       *
+       * <code>optional .ukm.AndroidActivityType android_activity_type = 18;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAndroidActivityType() {
+        copyOnWrite();
+        instance.clearAndroidActivityType();
         return this;
       }
 
@@ -3474,62 +4587,6 @@ public final class SourceOuterClass {
         return this;
       }
 
-      /**
-       * <pre>
-       * Time between navigation and the first contentful paint, in milliseconds.
-       * Deprecated. Use ukm::Entry instead.
-       * </pre>
-       *
-       * <code>optional int64 first_contentful_paint_msec = 4 [deprecated = true];</code>
-       * @return Whether the firstContentfulPaintMsec field is set.
-       */
-      @java.lang.Override
-      @java.lang.Deprecated public boolean hasFirstContentfulPaintMsec() {
-        return instance.hasFirstContentfulPaintMsec();
-      }
-      /**
-       * <pre>
-       * Time between navigation and the first contentful paint, in milliseconds.
-       * Deprecated. Use ukm::Entry instead.
-       * </pre>
-       *
-       * <code>optional int64 first_contentful_paint_msec = 4 [deprecated = true];</code>
-       * @return The firstContentfulPaintMsec.
-       */
-      @java.lang.Override
-      @java.lang.Deprecated public long getFirstContentfulPaintMsec() {
-        return instance.getFirstContentfulPaintMsec();
-      }
-      /**
-       * <pre>
-       * Time between navigation and the first contentful paint, in milliseconds.
-       * Deprecated. Use ukm::Entry instead.
-       * </pre>
-       *
-       * <code>optional int64 first_contentful_paint_msec = 4 [deprecated = true];</code>
-       * @param value The firstContentfulPaintMsec to set.
-       * @return This builder for chaining.
-       */
-      @java.lang.Deprecated public Builder setFirstContentfulPaintMsec(long value) {
-        copyOnWrite();
-        instance.setFirstContentfulPaintMsec(value);
-        return this;
-      }
-      /**
-       * <pre>
-       * Time between navigation and the first contentful paint, in milliseconds.
-       * Deprecated. Use ukm::Entry instead.
-       * </pre>
-       *
-       * <code>optional int64 first_contentful_paint_msec = 4 [deprecated = true];</code>
-       * @return This builder for chaining.
-       */
-      @java.lang.Deprecated public Builder clearFirstContentfulPaintMsec() {
-        copyOnWrite();
-        instance.clearFirstContentfulPaintMsec();
-        return this;
-      }
-
       // @@protoc_insertion_point(builder_scope:ukm.Source)
     }
     @java.lang.Override
@@ -3550,7 +4607,6 @@ public final class SourceOuterClass {
               "id_",
               "url_",
               "navigationTimeMsec_",
-              "firstContentfulPaintMsec_",
               "initialUrl_",
               "isCustomTab_",
               "urls_",
@@ -3564,12 +4620,15 @@ public final class SourceOuterClass {
               org.chromium.components.metrics.SourceOuterClass.Source.UrlInfo.class,
               "type_",
               org.chromium.components.metrics.SourceOuterClass.SourceType.internalGetVerifier(),
+              "navigationMetadata_",
+              "androidActivityType_",
+              org.chromium.components.metrics.SourceOuterClass.AndroidActivityType.internalGetVerifier(),
             };
             java.lang.String info =
-                "\u0001\u000e\u0000\u0001\u0001\u0010\u000e\u0000\u0002\u0000\u0001\u1002\u0000\u0002" +
-                "\u1008\u0006\u0003\u1002\t\u0004\u1002\u000b\u0006\u1008\u0007\u0007\u1007\b\b\u001b" +
-                "\n\u1002\n\u000b\u1002\u0001\f\u1002\u0003\r\u1007\u0005\u000e\u1002\u0002\u000f" +
-                "\u001b\u0010\u100c\u0004";
+                "\u0001\u000f\u0000\u0001\u0001\u0012\u000f\u0000\u0002\u0000\u0001\u1002\u0000\u0002" +
+                "\u1008\u0007\u0003\u1002\u000b\u0006\u1008\b\u0007\u1007\t\b\u001b\n\u1002\f\u000b" +
+                "\u1002\u0001\f\u1002\u0003\r\u1007\u0005\u000e\u1002\u0002\u000f\u001b\u0010\u100c" +
+                "\u0004\u0011\u1009\u0006\u0012\u100c\n";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

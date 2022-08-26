@@ -4,8 +4,8 @@
 
 package org.chromium.chrome.browser.customtabs.dependency_injection;
 
-import org.chromium.chrome.browser.browserservices.BrowserServicesIntentDataProvider;
 import org.chromium.chrome.browser.browserservices.ClientAppDataRegister;
+import org.chromium.chrome.browser.browserservices.intents.BrowserServicesIntentDataProvider;
 import org.chromium.chrome.browser.browserservices.trustedwebactivityui.TwaIntentHandlingStrategy;
 import org.chromium.chrome.browser.browserservices.ui.controller.EmptyVerifier;
 import org.chromium.chrome.browser.browserservices.ui.controller.Verifier;
@@ -15,11 +15,13 @@ import org.chromium.chrome.browser.browserservices.ui.controller.webapps.WebApkV
 import org.chromium.chrome.browser.browserservices.verification.OriginVerifierFactory;
 import org.chromium.chrome.browser.browserservices.verification.OriginVerifierFactoryImpl;
 import org.chromium.chrome.browser.customtabs.CustomTabNightModeStateController;
+import org.chromium.chrome.browser.customtabs.DefaultBrowserProviderImpl;
+import org.chromium.chrome.browser.customtabs.content.CustomTabActivityNavigationController;
 import org.chromium.chrome.browser.customtabs.content.CustomTabIntentHandler.IntentIgnoringCriterion;
 import org.chromium.chrome.browser.customtabs.content.CustomTabIntentHandlingStrategy;
 import org.chromium.chrome.browser.customtabs.content.DefaultCustomTabIntentHandlingStrategy;
 import org.chromium.chrome.browser.flags.ActivityType;
-import org.chromium.chrome.browser.init.StartupTabPreloader;
+import org.chromium.chrome.browser.tabmodel.IncognitoTabHostRegistry;
 import org.chromium.chrome.browser.theme.TopUiThemeColorProvider;
 import org.chromium.chrome.browser.webapps.WebApkPostShareTargetNavigator;
 
@@ -34,23 +36,24 @@ import dagger.Reusable;
 @Module
 public class BaseCustomTabActivityModule {
     private final BrowserServicesIntentDataProvider mIntentDataProvider;
-    private final StartupTabPreloader mStartupTabPreloader;
     private final @ActivityType int mActivityType;
     private final CustomTabNightModeStateController mNightModeController;
     private final IntentIgnoringCriterion mIntentIgnoringCriterion;
     private final TopUiThemeColorProvider mTopUiThemeColorProvider;
+    private final CustomTabActivityNavigationController
+            .DefaultBrowserProvider mDefaultBrowserProvider;
 
     public BaseCustomTabActivityModule(BrowserServicesIntentDataProvider intentDataProvider,
-            StartupTabPreloader startupTabPreloader,
             CustomTabNightModeStateController nightModeController,
             IntentIgnoringCriterion intentIgnoringCriterion,
-            TopUiThemeColorProvider topUiThemeColorProvider) {
+            TopUiThemeColorProvider topUiThemeColorProvider,
+            CustomTabActivityNavigationController.DefaultBrowserProvider defaultBrowserProvider) {
         mIntentDataProvider = intentDataProvider;
-        mStartupTabPreloader = startupTabPreloader;
         mActivityType = intentDataProvider.getActivityType();
         mNightModeController = nightModeController;
         mIntentIgnoringCriterion = intentIgnoringCriterion;
         mTopUiThemeColorProvider = topUiThemeColorProvider;
+        mDefaultBrowserProvider = defaultBrowserProvider;
     }
 
     @Provides
@@ -66,11 +69,6 @@ public class BaseCustomTabActivityModule {
                        || mActivityType == ActivityType.WEB_APK)
                 ? twaHandler.get()
                 : defaultHandler.get();
-    }
-
-    @Provides
-    public StartupTabPreloader provideStartupTabPreloader() {
-        return mStartupTabPreloader;
     }
 
     @Provides
@@ -119,5 +117,25 @@ public class BaseCustomTabActivityModule {
     @Reusable
     public OriginVerifierFactory providesOriginVerifierFactory() {
         return new OriginVerifierFactoryImpl();
+    }
+
+    @Provides
+    @Reusable
+    public CustomTabActivityNavigationController.DefaultBrowserProvider
+    provideCustomTabDefaultBrowserProvider() {
+        return mDefaultBrowserProvider;
+    }
+
+    @Provides
+    public IncognitoTabHostRegistry provideIncognitoTabHostRegistry() {
+        return IncognitoTabHostRegistry.getInstance();
+    }
+
+    public interface Factory {
+        BaseCustomTabActivityModule create(BrowserServicesIntentDataProvider intentDataProvider,
+                CustomTabNightModeStateController nightModeController,
+                IntentIgnoringCriterion intentIgnoringCriterion,
+                TopUiThemeColorProvider topUiThemeColorProvider,
+                DefaultBrowserProviderImpl customTabDefaultBrowserProvider);
     }
 }

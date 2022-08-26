@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class VideoColorSpace extends org.chromium.mojo.bindings.Struct {
 
@@ -22,6 +24,9 @@ public final class VideoColorSpace extends org.chromium.mojo.bindings.Struct {
 
     public static final class PrimaryId {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+    })
+        public @interface EnumType {}
 
 
         public static boolean isKnownValue(int value) {
@@ -42,6 +47,9 @@ public final class VideoColorSpace extends org.chromium.mojo.bindings.Struct {
 
     public static final class TransferId {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+    })
+        public @interface EnumType {}
 
 
         public static boolean isKnownValue(int value) {
@@ -62,6 +70,9 @@ public final class VideoColorSpace extends org.chromium.mojo.bindings.Struct {
 
     public static final class MatrixId {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+    })
+        public @interface EnumType {}
 
 
         public static boolean isKnownValue(int value) {
@@ -82,6 +93,9 @@ public final class VideoColorSpace extends org.chromium.mojo.bindings.Struct {
 
     public static final class RangeId {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+    })
+        public @interface EnumType {}
 
 
         public static boolean isKnownValue(int value) {

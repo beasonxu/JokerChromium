@@ -7,7 +7,11 @@ package org.chromium.chrome.browser.omnibox.suggestions.base;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
+import android.view.accessibility.AccessibilityNodeInfo.AccessibilityAction;
 import android.widget.ImageView;
 
 import androidx.annotation.ColorRes;
@@ -15,12 +19,12 @@ import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.view.ViewCompat;
 
 import org.chromium.base.ApiCompatibilityUtils;
-import org.chromium.chrome.R;
+import org.chromium.chrome.browser.omnibox.R;
 import org.chromium.chrome.browser.omnibox.styles.OmniboxResourceProvider;
 import org.chromium.chrome.browser.omnibox.suggestions.SuggestionCommonProperties;
 import org.chromium.chrome.browser.omnibox.suggestions.base.BaseSuggestionViewProperties.Action;
+import org.chromium.chrome.browser.ui.theme.BrandedColorScheme;
 import org.chromium.components.browser_ui.styles.ChromeColors;
-import org.chromium.components.browser_ui.widget.RoundedCornerImageView;
 import org.chromium.ui.modelutil.PropertyKey;
 import org.chromium.ui.modelutil.PropertyModel;
 import org.chromium.ui.modelutil.PropertyModelChangeProcessor.ViewBinder;
@@ -56,7 +60,7 @@ public final class BaseSuggestionViewBinder<T extends View>
             ViewCompat.setLayoutDirection(
                     view, model.get(SuggestionCommonProperties.LAYOUT_DIRECTION));
             updateContentViewPadding(model, view.getDecoratedSuggestionView());
-        } else if (SuggestionCommonProperties.OMNIBOX_THEME == propertyKey) {
+        } else if (SuggestionCommonProperties.COLOR_SCHEME == propertyKey) {
             updateColorScheme(model, view);
         } else if (BaseSuggestionViewProperties.ACTIONS == propertyKey) {
             bindActionButtons(model, view, model.get(BaseSuggestionViewProperties.ACTIONS));
@@ -91,7 +95,6 @@ public final class BaseSuggestionViewBinder<T extends View>
 
         // Drawable retrieved once here (expensive) and will be copied multiple times (cheap).
         Drawable backgroundDrawable = getSelectableBackgroundDrawable(view, model);
-
         final List<ImageView> actionViews = view.getActionButtons();
         for (int index = 0; index < actionCount; index++) {
             final ImageView actionView = actionViews.get(index);
@@ -100,7 +103,26 @@ public final class BaseSuggestionViewBinder<T extends View>
             actionView.setContentDescription(action.accessibilityDescription);
             actionView.setBackground(copyDrawable(backgroundDrawable));
             updateIcon(actionView, action.icon,
-                    ChromeColors.getPrimaryIconTintRes(!useDarkColors(model)));
+                    ChromeColors.getPrimaryIconTintRes(isIncognito(model)));
+
+            actionView.setAccessibilityDelegate(new AccessibilityDelegate() {
+                @Override
+                public void onInitializeAccessibilityNodeInfo(
+                        View host, AccessibilityNodeInfo info) {
+                    super.onInitializeAccessibilityNodeInfo(host, info);
+                    info.addAction(AccessibilityAction.ACTION_CLICK);
+                }
+
+                @Override
+                public boolean performAccessibilityAction(
+                        View host, int accessibilityAction, Bundle arguments) {
+                    if (accessibilityAction == AccessibilityNodeInfo.ACTION_CLICK
+                            && action.onClickAnnouncement != null) {
+                        actionView.announceForAccessibility(action.onClickAnnouncement);
+                    }
+                    return super.performAccessibilityAction(host, accessibilityAction, arguments);
+                }
+            });
         }
     }
 
@@ -121,20 +143,19 @@ public final class BaseSuggestionViewBinder<T extends View>
             ImageView actionView = actionViews.get(index);
             actionView.setBackground(copyDrawable(backgroundDrawable));
             updateIcon(actionView, actions.get(index).icon,
-                    ChromeColors.getPrimaryIconTintRes(!useDarkColors(model)));
+                    ChromeColors.getPrimaryIconTintRes(isIncognito(model)));
         }
     }
 
-    /** @return Whether currently used color scheme is considered to be dark. */
-    private static boolean useDarkColors(PropertyModel model) {
-        return !OmniboxResourceProvider.isDarkMode(
-                model.get(SuggestionCommonProperties.OMNIBOX_THEME));
+    /** @return Whether the current {@link BrandedColorScheme} is INCOGNITO. */
+    private static boolean isIncognito(PropertyModel model) {
+        return model.get(SuggestionCommonProperties.COLOR_SCHEME) == BrandedColorScheme.INCOGNITO;
     }
 
     /** Update attributes of decorated suggestion icon. */
     private static <T extends View> void updateSuggestionIcon(
             PropertyModel model, BaseSuggestionView<T> baseView) {
-        final RoundedCornerImageView rciv = baseView.getSuggestionImageView();
+        final ImageView rciv = baseView.getSuggestionImageView();
         final SuggestionDrawableState sds = model.get(BaseSuggestionViewProperties.ICON);
 
         if (sds != null) {
@@ -151,16 +172,10 @@ public final class BaseSuggestionViewBinder<T extends View>
 
             rciv.setPadding(paddingStart, 0, paddingEnd, 0);
             rciv.setMinimumHeight(edgeSize);
-
-            // TODO(ender): move logic applying corner rounding to updateIcon when action images use
-            // RoundedCornerImageView too.
-            int radius = sds.useRoundedCorners
-                    ? res.getDimensionPixelSize(R.dimen.default_rounded_corner_radius)
-                    : 0;
-            rciv.setRoundedCorners(radius, radius, radius, radius);
+            rciv.setClipToOutline(sds.useRoundedCorners);
         }
 
-        updateIcon(rciv, sds, ChromeColors.getSecondaryIconTintRes(!useDarkColors(model)));
+        updateIcon(rciv, sds, ChromeColors.getSecondaryIconTintRes(isIncognito(model)));
     }
 
     /**
@@ -192,14 +207,10 @@ public final class BaseSuggestionViewBinder<T extends View>
                 verticalPadRes = R.dimen.omnibox_suggestion_compact_padding;
                 minimumHeightRes = R.dimen.omnibox_suggestion_compact_height;
                 break;
-            case BaseSuggestionViewProperties.Density.SEMICOMPACT:
+            case BaseSuggestionViewProperties.Density.DEFAULT:
+            default:
                 verticalPadRes = R.dimen.omnibox_suggestion_semicompact_padding;
                 minimumHeightRes = R.dimen.omnibox_suggestion_semicompact_height;
-                break;
-            case BaseSuggestionViewProperties.Density.COMFORTABLE:
-            default:
-                verticalPadRes = R.dimen.omnibox_suggestion_comfortable_padding;
-                minimumHeightRes = R.dimen.omnibox_suggestion_comfortable_height;
                 break;
         }
         final int verticalPad = view.getResources().getDimensionPixelSize(verticalPadRes);
@@ -219,9 +230,9 @@ public final class BaseSuggestionViewBinder<T extends View>
      * @param model A property model to look up relevant properties.
      * @return A selectable background drawable.
      */
-    private static Drawable getSelectableBackgroundDrawable(View view, PropertyModel model) {
+    public static Drawable getSelectableBackgroundDrawable(View view, PropertyModel model) {
         return OmniboxResourceProvider.resolveAttributeToDrawable(view.getContext(),
-                model.get(SuggestionCommonProperties.OMNIBOX_THEME),
+                model.get(SuggestionCommonProperties.COLOR_SCHEME),
                 R.attr.selectableItemBackground);
     }
 
@@ -239,8 +250,6 @@ public final class BaseSuggestionViewBinder<T extends View>
     /** Update image view using supplied drawable state object. */
     private static void updateIcon(
             ImageView view, SuggestionDrawableState sds, @ColorRes int tintRes) {
-        final Resources res = view.getContext().getResources();
-
         view.setVisibility(sds == null ? View.GONE : View.VISIBLE);
         if (sds == null) {
             // Release any drawable that is still attached to this view to reclaim memory.

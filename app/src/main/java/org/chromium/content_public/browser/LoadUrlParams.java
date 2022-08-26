@@ -28,28 +28,25 @@ import java.util.Map;
 @JNINamespace("content")
 public class LoadUrlParams {
     // Fields with counterparts in NavigationController::LoadURLParams.
-    // Package private so that NavigationController.loadUrl can pass them down to
-    // native code. Should not be accessed directly anywhere else outside of
-    // this class.
-    String mUrl;
-    Origin mInitiatorOrigin;
-    int mLoadUrlType;
-    int mTransitionType;
-    Referrer mReferrer;
+    private String mUrl;
+    private Origin mInitiatorOrigin;
+    private int mLoadUrlType;
+    private int mTransitionType;
+    private Referrer mReferrer;
     private Map<String, String> mExtraHeaders;
     private String mVerbatimHeaders;
-    int mUaOverrideOption;
-    ResourceRequestBody mPostData;
-    String mBaseUrlForDataUrl;
-    String mVirtualUrlForDataUrl;
-    String mDataUrlAsString;
-    boolean mCanLoadLocalResources;
-    boolean mIsRendererInitiated;
-    boolean mShouldReplaceCurrentEntry;
-    long mIntentReceivedTimestamp;
-    long mInputStartTimestamp;
-    boolean mHasUserGesture;
-    boolean mShouldClearHistoryList;
+    private int mUaOverrideOption;
+    private ResourceRequestBody mPostData;
+    private String mBaseUrlForDataUrl;
+    private String mVirtualUrlForDataUrl;
+    private String mDataUrlAsString;
+    private boolean mCanLoadLocalResources;
+    private boolean mIsRendererInitiated;
+    private boolean mShouldReplaceCurrentEntry;
+    private long mIntentReceivedTimestamp;
+    private long mInputStartTimestamp;
+    private boolean mHasUserGesture;
+    private boolean mShouldClearHistoryList;
 
     /**
      * Creates an instance with default page transition type.
@@ -65,6 +62,15 @@ public class LoadUrlParams {
      */
     public LoadUrlParams(GURL url) {
         this(url.getSpec(), PageTransition.LINK);
+    }
+
+    /**
+     * Creates an instance with the given page transition type.
+     * @param url the url to be loaded
+     * @param transitionType the PageTransitionType constant corresponding to the load
+     */
+    public LoadUrlParams(GURL url, int transitionType) {
+        this(url.getSpec(), transitionType);
     }
 
     /**
@@ -278,6 +284,7 @@ public class LoadUrlParams {
      */
     public void setExtraHeaders(Map<String, String> extraHeaders) {
         mExtraHeaders = extraHeaders;
+        verifyHeaders();
     }
 
     /**
@@ -330,6 +337,16 @@ public class LoadUrlParams {
      */
     public void setVerbatimHeaders(String headers) {
         mVerbatimHeaders = headers;
+        verifyHeaders();
+    }
+
+    private void verifyHeaders() {
+        // TODO(https://crbug.com/1199393): Merge extra and verbatim headers internally, and only
+        // expose one way to get headers, so users of this class don't miss headers.
+        if (mExtraHeaders != null && mVerbatimHeaders != null) {
+            // If both header types are set, ensure they're the same.
+            assert mVerbatimHeaders.equalsIgnoreCase(getExtraHeadersString());
+        }
     }
 
     /**
@@ -356,12 +373,12 @@ public class LoadUrlParams {
     }
 
     /**
-     * Set the post data of this load. This field is ignored unless load type is
-     * LoadURLType.HTTP_POST.
+     * Set the post data of this load, and if non-null, sets the load type to HTTP_POST.
      * @param postData Post data for this http post load.
      */
     public void setPostData(ResourceRequestBody postData) {
         mPostData = postData;
+        if (postData != null) setLoadType(LoadURLType.HTTP_POST);
     }
 
     /**
@@ -469,7 +486,8 @@ public class LoadUrlParams {
 
     /**
      * @param intentReceivedTimestamp the timestamp at which Chrome received the intent that
-     *                                triggered this URL load, as returned by System.currentMillis.
+     *                                triggered this URL load, as returned by
+     *                                SystemClock.uptimeMillis.
      */
     public void setIntentReceivedTimestamp(long intentReceivedTimestamp) {
         mIntentReceivedTimestamp = intentReceivedTimestamp;
@@ -484,7 +502,7 @@ public class LoadUrlParams {
 
     /**
      * @param inputStartTimestamp the timestamp of the event in the location bar that triggered
-     *                            this URL load, as returned by System.currentMillis.
+     *                            this URL load, as returned by SystemClock.uptimeMillis.
      */
     public void setInputStartTimestamp(long inputStartTimestamp) {
         mInputStartTimestamp = inputStartTimestamp;

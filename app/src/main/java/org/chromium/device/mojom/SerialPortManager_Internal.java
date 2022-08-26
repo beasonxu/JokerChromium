@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class SerialPortManager_Internal {
 
@@ -82,7 +84,7 @@ SerialPortManagerClient client) {
         @Override
         public void getDevices(
 
-GetDevicesResponse callback) {
+GetDevices_Response callback) {
 
             SerialPortManagerGetDevicesParams _message = new SerialPortManagerGetDevicesParams();
 
@@ -102,7 +104,7 @@ GetDevicesResponse callback) {
         @Override
         public void openPort(
 org.chromium.mojo_base.mojom.UnguessableToken token, boolean useAlternatePath, SerialConnectionOptions options, SerialPortClient client, SerialPortConnectionWatcher watcher, 
-OpenPortResponse callback) {
+OpenPort_Response callback) {
 
             SerialPortManagerOpenPortParams _message = new SerialPortManagerOpenPortParams();
 
@@ -444,9 +446,9 @@ OpenPortResponse callback) {
 
     static class SerialPortManagerGetDevicesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final SerialPortManager.GetDevicesResponse mCallback;
+        private final SerialPortManager.GetDevices_Response mCallback;
 
-        SerialPortManagerGetDevicesResponseParamsForwardToCallback(SerialPortManager.GetDevicesResponse callback) {
+        SerialPortManagerGetDevicesResponseParamsForwardToCallback(SerialPortManager.GetDevices_Response callback) {
             this.mCallback = callback;
         }
 
@@ -471,7 +473,7 @@ OpenPortResponse callback) {
         }
     }
 
-    static class SerialPortManagerGetDevicesResponseParamsProxyToResponder implements SerialPortManager.GetDevicesResponse {
+    static class SerialPortManagerGetDevicesResponseParamsProxyToResponder implements SerialPortManager.GetDevices_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -661,9 +663,9 @@ OpenPortResponse callback) {
 
     static class SerialPortManagerOpenPortResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final SerialPortManager.OpenPortResponse mCallback;
+        private final SerialPortManager.OpenPort_Response mCallback;
 
-        SerialPortManagerOpenPortResponseParamsForwardToCallback(SerialPortManager.OpenPortResponse callback) {
+        SerialPortManagerOpenPortResponseParamsForwardToCallback(SerialPortManager.OpenPort_Response callback) {
             this.mCallback = callback;
         }
 
@@ -688,7 +690,7 @@ OpenPortResponse callback) {
         }
     }
 
-    static class SerialPortManagerOpenPortResponseParamsProxyToResponder implements SerialPortManager.OpenPortResponse {
+    static class SerialPortManagerOpenPortResponseParamsProxyToResponder implements SerialPortManager.OpenPort_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

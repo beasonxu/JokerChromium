@@ -10,7 +10,7 @@ import org.chromium.chrome.browser.profiles.Profile;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class AutoFetchNotifierJni implements AutoFetchNotifier.Natives {
+class AutoFetchNotifierJni implements AutoFetchNotifier.Natives {
   private static AutoFetchNotifier.Natives testInstance;
 
   public static final JniStaticTestMocker<AutoFetchNotifier.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.offlinepages.AutoFetchNotifier.Natives>() {

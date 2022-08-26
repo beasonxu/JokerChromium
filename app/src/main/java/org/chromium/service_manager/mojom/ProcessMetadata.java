@@ -13,6 +13,8 @@
 
 package org.chromium.service_manager.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ProcessMetadata extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface ProcessMetadata extends org.chromium.mojo.bindings.Interface {
     }
 
     Manager<ProcessMetadata, ProcessMetadata.Proxy> MANAGER = ProcessMetadata_Internal.MANAGER;
-
 
     void setPid(
 org.chromium.mojo_base.mojom.ProcessId pid);

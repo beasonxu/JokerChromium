@@ -1,14 +1,14 @@
 package org.chromium.chrome.browser.customtabs;
 
+import android.app.Activity;
 import dagger.Lazy;
 import dagger.internal.DoubleCheck;
 import dagger.internal.Factory;
 import javax.annotation.Generated;
 import javax.inject.Provider;
 import org.chromium.base.supplier.Supplier;
-import org.chromium.chrome.browser.app.ChromeActivity;
 import org.chromium.chrome.browser.browser_controls.BrowserControlsStateProvider;
-import org.chromium.chrome.browser.browserservices.BrowserServicesIntentDataProvider;
+import org.chromium.chrome.browser.browserservices.intents.BrowserServicesIntentDataProvider;
 import org.chromium.chrome.browser.browserservices.ui.controller.Verifier;
 import org.chromium.chrome.browser.compositor.CompositorViewHolder;
 import org.chromium.chrome.browser.compositor.bottombar.ephemeraltab.EphemeralTabCoordinator;
@@ -16,8 +16,10 @@ import org.chromium.chrome.browser.customtabs.features.toolbar.CustomTabBrowserC
 import org.chromium.chrome.browser.fullscreen.FullscreenManager;
 import org.chromium.chrome.browser.init.ChromeActivityNativeDelegate;
 import org.chromium.chrome.browser.multiwindow.MultiWindowUtils;
+import org.chromium.chrome.browser.share.ShareDelegate;
 import org.chromium.chrome.browser.tabmodel.TabCreatorManager;
 import org.chromium.chrome.browser.tabmodel.TabModelSelector;
+import org.chromium.chrome.browser.ui.messages.snackbar.SnackbarManager;
 import org.chromium.components.externalauth.ExternalAuthUtils;
 import org.chromium.ui.modaldialog.ModalDialogManager;
 
@@ -30,7 +32,7 @@ import org.chromium.ui.modaldialog.ModalDialogManager;
     "rawtypes"
 })
 public final class CustomTabDelegateFactory_Factory implements Factory<CustomTabDelegateFactory> {
-  private final Provider<ChromeActivity<?>> activityProvider;
+  private final Provider<Activity> activityProvider;
 
   private final Provider<BrowserServicesIntentDataProvider> intentDataProvider;
 
@@ -58,7 +60,13 @@ public final class CustomTabDelegateFactory_Factory implements Factory<CustomTab
 
   private final Provider<Supplier<ModalDialogManager>> modalDialogManagerSupplierProvider;
 
-  public CustomTabDelegateFactory_Factory(Provider<ChromeActivity<?>> activityProvider,
+  private final Provider<SnackbarManager> snackbarManagerProvider;
+
+  private final Provider<Supplier<ShareDelegate>> shareDelegateSupplierProvider;
+
+  private final Provider<Integer> activityTypeProvider;
+
+  public CustomTabDelegateFactory_Factory(Provider<Activity> activityProvider,
       Provider<BrowserServicesIntentDataProvider> intentDataProvider,
       Provider<CustomTabBrowserControlsVisibilityDelegate> visibilityDelegateProvider,
       Provider<ExternalAuthUtils> authUtilsProvider,
@@ -70,7 +78,10 @@ public final class CustomTabDelegateFactory_Factory implements Factory<CustomTab
       Provider<TabCreatorManager> tabCreatorManagerProvider,
       Provider<Supplier<TabModelSelector>> tabModelSelectorSupplierProvider,
       Provider<Supplier<CompositorViewHolder>> compositorViewHolderSupplierProvider,
-      Provider<Supplier<ModalDialogManager>> modalDialogManagerSupplierProvider) {
+      Provider<Supplier<ModalDialogManager>> modalDialogManagerSupplierProvider,
+      Provider<SnackbarManager> snackbarManagerProvider,
+      Provider<Supplier<ShareDelegate>> shareDelegateSupplierProvider,
+      Provider<Integer> activityTypeProvider) {
     this.activityProvider = activityProvider;
     this.intentDataProvider = intentDataProvider;
     this.visibilityDelegateProvider = visibilityDelegateProvider;
@@ -85,15 +96,17 @@ public final class CustomTabDelegateFactory_Factory implements Factory<CustomTab
     this.tabModelSelectorSupplierProvider = tabModelSelectorSupplierProvider;
     this.compositorViewHolderSupplierProvider = compositorViewHolderSupplierProvider;
     this.modalDialogManagerSupplierProvider = modalDialogManagerSupplierProvider;
+    this.snackbarManagerProvider = snackbarManagerProvider;
+    this.shareDelegateSupplierProvider = shareDelegateSupplierProvider;
+    this.activityTypeProvider = activityTypeProvider;
   }
 
   @Override
   public CustomTabDelegateFactory get() {
-    return newInstance(activityProvider.get(), intentDataProvider.get(), visibilityDelegateProvider.get(), authUtilsProvider.get(), multiWindowUtilsProvider.get(), verifierProvider.get(), DoubleCheck.lazy(ephemeralTabCoordinatorProvider), chromeActivityNativeDelegateProvider.get(), browserControlsStateProvider.get(), fullscreenManagerProvider.get(), tabCreatorManagerProvider.get(), tabModelSelectorSupplierProvider.get(), compositorViewHolderSupplierProvider.get(), modalDialogManagerSupplierProvider.get());
+    return newInstance(activityProvider.get(), intentDataProvider.get(), visibilityDelegateProvider.get(), authUtilsProvider.get(), multiWindowUtilsProvider.get(), verifierProvider.get(), DoubleCheck.lazy(ephemeralTabCoordinatorProvider), chromeActivityNativeDelegateProvider.get(), browserControlsStateProvider.get(), fullscreenManagerProvider.get(), tabCreatorManagerProvider.get(), tabModelSelectorSupplierProvider.get(), compositorViewHolderSupplierProvider.get(), modalDialogManagerSupplierProvider.get(), DoubleCheck.lazy(snackbarManagerProvider), shareDelegateSupplierProvider.get(), activityTypeProvider.get());
   }
 
-  public static CustomTabDelegateFactory_Factory create(
-      Provider<ChromeActivity<?>> activityProvider,
+  public static CustomTabDelegateFactory_Factory create(Provider<Activity> activityProvider,
       Provider<BrowserServicesIntentDataProvider> intentDataProvider,
       Provider<CustomTabBrowserControlsVisibilityDelegate> visibilityDelegateProvider,
       Provider<ExternalAuthUtils> authUtilsProvider,
@@ -105,11 +118,14 @@ public final class CustomTabDelegateFactory_Factory implements Factory<CustomTab
       Provider<TabCreatorManager> tabCreatorManagerProvider,
       Provider<Supplier<TabModelSelector>> tabModelSelectorSupplierProvider,
       Provider<Supplier<CompositorViewHolder>> compositorViewHolderSupplierProvider,
-      Provider<Supplier<ModalDialogManager>> modalDialogManagerSupplierProvider) {
-    return new CustomTabDelegateFactory_Factory(activityProvider, intentDataProvider, visibilityDelegateProvider, authUtilsProvider, multiWindowUtilsProvider, verifierProvider, ephemeralTabCoordinatorProvider, chromeActivityNativeDelegateProvider, browserControlsStateProvider, fullscreenManagerProvider, tabCreatorManagerProvider, tabModelSelectorSupplierProvider, compositorViewHolderSupplierProvider, modalDialogManagerSupplierProvider);
+      Provider<Supplier<ModalDialogManager>> modalDialogManagerSupplierProvider,
+      Provider<SnackbarManager> snackbarManagerProvider,
+      Provider<Supplier<ShareDelegate>> shareDelegateSupplierProvider,
+      Provider<Integer> activityTypeProvider) {
+    return new CustomTabDelegateFactory_Factory(activityProvider, intentDataProvider, visibilityDelegateProvider, authUtilsProvider, multiWindowUtilsProvider, verifierProvider, ephemeralTabCoordinatorProvider, chromeActivityNativeDelegateProvider, browserControlsStateProvider, fullscreenManagerProvider, tabCreatorManagerProvider, tabModelSelectorSupplierProvider, compositorViewHolderSupplierProvider, modalDialogManagerSupplierProvider, snackbarManagerProvider, shareDelegateSupplierProvider, activityTypeProvider);
   }
 
-  public static CustomTabDelegateFactory newInstance(ChromeActivity<?> activity,
+  public static CustomTabDelegateFactory newInstance(Activity activity,
       BrowserServicesIntentDataProvider intentDataProvider,
       CustomTabBrowserControlsVisibilityDelegate visibilityDelegate, ExternalAuthUtils authUtils,
       MultiWindowUtils multiWindowUtils, Verifier verifier,
@@ -119,7 +135,9 @@ public final class CustomTabDelegateFactory_Factory implements Factory<CustomTab
       FullscreenManager fullscreenManager, TabCreatorManager tabCreatorManager,
       Supplier<TabModelSelector> tabModelSelectorSupplier,
       Supplier<CompositorViewHolder> compositorViewHolderSupplier,
-      Supplier<ModalDialogManager> modalDialogManagerSupplier) {
-    return new CustomTabDelegateFactory(activity, intentDataProvider, visibilityDelegate, authUtils, multiWindowUtils, verifier, ephemeralTabCoordinator, chromeActivityNativeDelegate, browserControlsStateProvider, fullscreenManager, tabCreatorManager, tabModelSelectorSupplier, compositorViewHolderSupplier, modalDialogManagerSupplier);
+      Supplier<ModalDialogManager> modalDialogManagerSupplier,
+      Lazy<SnackbarManager> snackbarManager, Supplier<ShareDelegate> shareDelegateSupplier,
+      int activityType) {
+    return new CustomTabDelegateFactory(activity, intentDataProvider, visibilityDelegate, authUtils, multiWindowUtils, verifier, ephemeralTabCoordinator, chromeActivityNativeDelegate, browserControlsStateProvider, fullscreenManager, tabCreatorManager, tabModelSelectorSupplier, compositorViewHolderSupplier, modalDialogManagerSupplier, snackbarManager, shareDelegateSupplier, activityType);
   }
 }

@@ -6,12 +6,16 @@ package org.chromium.components.browser_ui.widget.listmenu;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 
-import org.chromium.base.ApiCompatibilityUtils;
+import org.chromium.base.CollectionUtil;
 import org.chromium.base.ObserverList;
 import org.chromium.components.browser_ui.widget.R;
 import org.chromium.ui.widget.AnchoredPopupWindow;
@@ -28,22 +32,24 @@ import org.chromium.ui.widget.ChromeImageButton;
 public class ListMenuButton
         extends ChromeImageButton implements AnchoredPopupWindow.LayoutObserver {
     /**
-     * A listener that is notified when the popup menu is shown.
+     * A listener that is notified when the popup menu is shown or dismissed.
      */
     @FunctionalInterface
     public interface PopupMenuShownListener {
         void onPopupMenuShown();
+        default void onPopupMenuDismissed() {}
     }
 
-    private final int mMenuMaxWidth;
     private final boolean mMenuVerticalOverlapAnchor;
     private final boolean mMenuHorizontalOverlapAnchor;
 
-    private Drawable mMenuBackground;
+    private int mMenuMaxWidth;
     private AnchoredPopupWindow mPopupMenu;
     private ListMenuButtonDelegate mDelegate;
     private ObserverList<PopupMenuShownListener> mPopupListeners = new ObserverList<>();
     private boolean mTryToFitLargestItem;
+    private boolean mPositionedAtEnd;
+    private boolean mIsAttachedToWindow;
 
     /**
      * Creates a new {@link ListMenuButton}.
@@ -57,15 +63,11 @@ public class ListMenuButton
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ListMenuButton);
         mMenuMaxWidth = a.getDimensionPixelSize(R.styleable.ListMenuButton_menuMaxWidth,
                 getResources().getDimensionPixelSize(R.dimen.list_menu_width));
-        mMenuBackground = a.getDrawable(R.styleable.ListMenuButton_menuBackground);
-        if (mMenuBackground == null) {
-            mMenuBackground =
-                    ApiCompatibilityUtils.getDrawable(getResources(), R.drawable.popup_bg_tinted);
-        }
         mMenuHorizontalOverlapAnchor =
                 a.getBoolean(R.styleable.ListMenuButton_menuHorizontalOverlapAnchor, true);
         mMenuVerticalOverlapAnchor =
                 a.getBoolean(R.styleable.ListMenuButton_menuVerticalOverlapAnchor, true);
+        mPositionedAtEnd = a.getBoolean(R.styleable.ListMenuButton_menuPositionedAtEnd, true);
 
         a.recycle();
     }
@@ -77,8 +79,10 @@ public class ListMenuButton
      * @param context The string representation of the list item this button represents.
      */
     public void setContentDescriptionContext(String context) {
-        if (context == null) {
-            context = "";
+        if (TextUtils.isEmpty(context)) {
+            setContentDescription(
+                    getContext().getResources().getString(R.string.accessibility_toolbar_btn_menu));
+            return;
         }
         setContentDescription(getContext().getResources().getString(
                 R.string.accessibility_list_menu_button, context));
@@ -86,14 +90,32 @@ public class ListMenuButton
 
     /**
      * Sets the delegate this menu will rely on for populating the popup menu and handling selection
-     * responses.  The menu will not show or work without it.
+     * responses. The OnClickListener will be overridden by default to show menu. The menu will not
+     * show or work without the delegate.
      *
      * @param delegate The {@link ListMenuButtonDelegate} to use for menu creation and selection
      *         handling.
      */
     public void setDelegate(ListMenuButtonDelegate delegate) {
+        setDelegate(delegate, true);
+    }
+
+    /**
+     * Sets the delegate this menu will rely on for populating the popup menu and handling selection
+     * responses. The menu will not
+     * show or work without the delegate.
+     *
+     * @param delegate The {@link ListMenuButtonDelegate} to use for menu creation and selection
+     *         handling.
+     * @param overrideOnClickListener Whether to override the click listener which can trigger
+     *        the popup menu.
+     */
+    public void setDelegate(ListMenuButtonDelegate delegate, boolean overrideOnClickListener) {
         dismiss();
         mDelegate = delegate;
+        if (overrideOnClickListener) {
+            setOnClickListener((view) -> showMenu());
+        }
     }
 
     /**
@@ -109,9 +131,19 @@ public class ListMenuButton
      * Shows a popupWindow built by ListMenuButton
      */
     public void showMenu() {
+        if (!mIsAttachedToWindow) return;
+        dismiss();
         initPopupWindow();
         mPopupMenu.show();
-        notifyPopupListeners();
+        notifyPopupListeners(true);
+    }
+
+    /**
+     * Set the max width of the popup menu.
+     * @param maxWidth The max width of the popup.
+     */
+    public void setMenuMaxWidth(int maxWidth) {
+        mMenuMaxWidth = maxWidth;
     }
 
     /**
@@ -123,17 +155,31 @@ public class ListMenuButton
         ListMenu menu = mDelegate.getListMenu();
         menu.addContentViewClickRunnable(this::dismiss);
 
-        mPopupMenu = new AnchoredPopupWindow(getContext(), this, mMenuBackground,
-                menu.getContentView(), mDelegate.getRectProvider(this));
+        final View contentView = menu.getContentView();
+        ViewParent viewParent = contentView.getParent();
+        // TODO(crbug.com/1323202): figure out why contentView is not removed from popup menu.
+        if (viewParent instanceof ViewGroup) {
+            ((ViewGroup) viewParent).removeView(contentView);
+        }
+        mPopupMenu = new AnchoredPopupWindow(getContext(), this,
+                new ColorDrawable(Color.TRANSPARENT), contentView, mDelegate.getRectProvider(this));
         mPopupMenu.setVerticalOverlapAnchor(mMenuVerticalOverlapAnchor);
         mPopupMenu.setHorizontalOverlapAnchor(mMenuHorizontalOverlapAnchor);
         mPopupMenu.setMaxWidth(mMenuMaxWidth);
         if (mTryToFitLargestItem) {
-            mPopupMenu.setDesiredContentWidth(menu.getMaxItemWidth());
+            // Content width includes the padding around the items, so add it here.
+            final int lateralPadding = contentView.getPaddingLeft() + contentView.getPaddingRight();
+            mPopupMenu.setDesiredContentWidth(menu.getMaxItemWidth() + lateralPadding);
         }
         mPopupMenu.setFocusable(true);
         mPopupMenu.setLayoutObserver(this);
-        mPopupMenu.addOnDismissListener(() -> { mPopupMenu = null; });
+        mPopupMenu.addOnDismissListener(() -> {
+            mPopupMenu = null;
+            notifyPopupListeners(false);
+        });
+        // This should be called explicitly since it is not a default behavior on Android S
+        // in split-screen mode. See crbug.com/1246956.
+        mPopupMenu.setOutsideTouchable(true);
     }
 
     /**
@@ -158,8 +204,14 @@ public class ListMenuButton
     @Override
     public void onPreLayoutChange(
             boolean positionBelow, int x, int y, int width, int height, Rect anchorRect) {
-        mPopupMenu.setAnimationStyle(
-                positionBelow ? R.style.OverflowMenuAnim : R.style.OverflowMenuAnimBottom);
+        if (mPositionedAtEnd) {
+            mPopupMenu.setAnimationStyle(
+                    positionBelow ? R.style.EndIconMenuAnim : R.style.EndIconMenuAnimBottom);
+
+        } else {
+            mPopupMenu.setAnimationStyle(
+                    positionBelow ? R.style.StartIconMenuAnim : R.style.StartIconMenuAnimBottom);
+        }
     }
 
     /**
@@ -181,21 +233,36 @@ public class ListMenuButton
     protected void onFinishInflate() {
         super.onFinishInflate();
         if (TextUtils.isEmpty(getContentDescription())) setContentDescriptionContext("");
-        setOnClickListener((view) -> showMenu());
+    }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        mIsAttachedToWindow = true;
     }
 
     @Override
     protected void onDetachedFromWindow() {
         dismiss();
+        mIsAttachedToWindow = false;
         super.onDetachedFromWindow();
     }
 
     /**
      * Notify all of the PopupMenuShownListeners of a popup menu action.
+     * @param shown Whether the popup menu was shown or dismissed.
      */
-    private void notifyPopupListeners() {
-        for (PopupMenuShownListener l : mPopupListeners) {
-            l.onPopupMenuShown();
-        }
+    private void notifyPopupListeners(boolean shown) {
+        CollectionUtil.forEach(mPopupListeners.mObservers, l -> {
+            if (shown) {
+                l.onPopupMenuShown();
+            } else {
+                l.onPopupMenuDismissed();
+            }
+        });
+    }
+
+    void setAttachedToWindowForTesting() {
+        mIsAttachedToWindow = true;
     }
 }

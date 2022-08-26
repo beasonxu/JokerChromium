@@ -13,8 +13,15 @@
 
 package org.chromium.media_session.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class MediaSessionImageType {
     private static final boolean IS_EXTENSIBLE = true;
+    @IntDef({
+
+        MediaSessionImageType.ARTWORK,
+        MediaSessionImageType.SOURCE_ICON})
+    public @interface EnumType {}
 
     public static final int ARTWORK = 0;
     public static final int SOURCE_ICON = 1;

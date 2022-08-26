@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class StopFindAction {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        StopFindAction.STOP_FIND_ACTION_CLEAR_SELECTION,
+        StopFindAction.STOP_FIND_ACTION_KEEP_SELECTION,
+        StopFindAction.STOP_FIND_ACTION_ACTIVATE_SELECTION})
+    public @interface EnumType {}
 
     public static final int STOP_FIND_ACTION_CLEAR_SELECTION = 0;
     public static final int STOP_FIND_ACTION_KEEP_SELECTION = 1;

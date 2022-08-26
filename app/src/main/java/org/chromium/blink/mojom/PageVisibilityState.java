@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PageVisibilityState {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PageVisibilityState.VISIBLE,
+        PageVisibilityState.HIDDEN,
+        PageVisibilityState.HIDDEN_BUT_PAINTING})
+    public @interface EnumType {}
 
     public static final int VISIBLE = 0;
     public static final int HIDDEN = 1;

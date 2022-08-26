@@ -13,11 +13,13 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class UrlLoaderFactoryParams extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 104;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(104, 0)};
+    private static final int STRUCT_SIZE = 112;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(112, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int processId;
     public org.chromium.url.internal.mojom.Origin requestInitiatorOriginLock;
@@ -30,12 +32,14 @@ public final class UrlLoaderFactoryParams extends org.chromium.mojo.bindings.Str
     public boolean disableSecureDns;
     public boolean isTrusted;
     public boolean automaticallyAssignIsolationInfo;
+    public boolean provideLoadingStateUpdates;
     public org.chromium.mojo_base.mojom.UnguessableToken topFrameId;
     public UrlLoaderFactoryOverride factoryOverride;
     public ClientSecurityState clientSecurityState;
     public CrossOriginEmbedderPolicyReporter coepReporter;
     public CookieAccessObserver cookieObserver;
-    public AuthenticationAndCertificateObserver authCertObserver;
+    public UrlLoaderNetworkServiceObserver urlLoaderNetworkObserver;
+    public DevToolsObserver devtoolsObserver;
     public int trustTokenRedemptionPolicy;
     public String debugTag;
 
@@ -49,6 +53,7 @@ public final class UrlLoaderFactoryParams extends org.chromium.mojo.bindings.Str
         this.disableSecureDns = (boolean) false;
         this.isTrusted = (boolean) false;
         this.automaticallyAssignIsolationInfo = (boolean) false;
+        this.provideLoadingStateUpdates = (boolean) false;
         this.trustTokenRedemptionPolicy = (int) TrustTokenRedemptionPolicy.POTENTIALLY_PERMIT;
         this.debugTag = (String) "";
     }
@@ -116,6 +121,10 @@ public final class UrlLoaderFactoryParams extends org.chromium.mojo.bindings.Str
                 }
                 {
                     
+                result.provideLoadingStateUpdates = decoder0.readBoolean(12, 7);
+                }
+                {
+                    
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, true);
                 result.requestInitiatorOriginLock = org.chromium.url.internal.mojom.Origin.decode(decoder1);
                 }
@@ -153,17 +162,21 @@ public final class UrlLoaderFactoryParams extends org.chromium.mojo.bindings.Str
                 }
                 {
                     
-                result.authCertObserver = decoder0.readServiceInterface(80, true, AuthenticationAndCertificateObserver.MANAGER);
+                result.urlLoaderNetworkObserver = decoder0.readServiceInterface(80, true, UrlLoaderNetworkServiceObserver.MANAGER);
                 }
                 {
                     
-                result.trustTokenRedemptionPolicy = decoder0.readInt(88);
+                result.devtoolsObserver = decoder0.readServiceInterface(88, true, DevToolsObserver.MANAGER);
+                }
+                {
+                    
+                result.trustTokenRedemptionPolicy = decoder0.readInt(96);
                     TrustTokenRedemptionPolicy.validate(result.trustTokenRedemptionPolicy);
                     result.trustTokenRedemptionPolicy = TrustTokenRedemptionPolicy.toKnownValue(result.trustTokenRedemptionPolicy);
                 }
                 {
                     
-                result.debugTag = decoder0.readString(96, false);
+                result.debugTag = decoder0.readString(104, false);
                 }
 
         } finally {
@@ -193,6 +206,8 @@ public final class UrlLoaderFactoryParams extends org.chromium.mojo.bindings.Str
         
         encoder0.encode(this.automaticallyAssignIsolationInfo, 12, 6);
         
+        encoder0.encode(this.provideLoadingStateUpdates, 12, 7);
+        
         encoder0.encode(this.requestInitiatorOriginLock, 16, true);
         
         encoder0.encode(this.headerClient, 24, true, TrustedUrlLoaderHeaderClient.MANAGER);
@@ -209,10 +224,12 @@ public final class UrlLoaderFactoryParams extends org.chromium.mojo.bindings.Str
         
         encoder0.encode(this.cookieObserver, 72, true, CookieAccessObserver.MANAGER);
         
-        encoder0.encode(this.authCertObserver, 80, true, AuthenticationAndCertificateObserver.MANAGER);
+        encoder0.encode(this.urlLoaderNetworkObserver, 80, true, UrlLoaderNetworkServiceObserver.MANAGER);
         
-        encoder0.encode(this.trustTokenRedemptionPolicy, 88);
+        encoder0.encode(this.devtoolsObserver, 88, true, DevToolsObserver.MANAGER);
         
-        encoder0.encode(this.debugTag, 96, false);
+        encoder0.encode(this.trustTokenRedemptionPolicy, 96);
+        
+        encoder0.encode(this.debugTag, 104, false);
     }
 }

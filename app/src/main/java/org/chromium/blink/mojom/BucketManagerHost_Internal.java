@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class BucketManagerHost_Internal {
 
@@ -65,7 +67,7 @@ class BucketManagerHost_Internal {
         @Override
         public void openBucket(
 String name, BucketPolicies policy, 
-OpenBucketResponse callback) {
+OpenBucket_Response callback) {
 
             BucketManagerHostOpenBucketParams _message = new BucketManagerHostOpenBucketParams();
 
@@ -89,7 +91,7 @@ OpenBucketResponse callback) {
         @Override
         public void keys(
 
-KeysResponse callback) {
+Keys_Response callback) {
 
             BucketManagerHostKeysParams _message = new BucketManagerHostKeysParams();
 
@@ -109,7 +111,7 @@ KeysResponse callback) {
         @Override
         public void deleteBucket(
 String name, 
-DeleteBucketResponse callback) {
+DeleteBucket_Response callback) {
 
             BucketManagerHostDeleteBucketParams _message = new BucketManagerHostDeleteBucketParams();
 
@@ -360,7 +362,7 @@ DeleteBucketResponse callback) {
                 result = new BucketManagerHostOpenBucketResponseParams(elementsOrVersion);
                     {
                         
-                    result.remote = decoder0.readServiceInterface(8, false, BucketHost.MANAGER);
+                    result.remote = decoder0.readServiceInterface(8, true, BucketHost.MANAGER);
                     }
 
             } finally {
@@ -374,15 +376,15 @@ DeleteBucketResponse callback) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.remote, 8, false, BucketHost.MANAGER);
+            encoder0.encode(this.remote, 8, true, BucketHost.MANAGER);
         }
     }
 
     static class BucketManagerHostOpenBucketResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BucketManagerHost.OpenBucketResponse mCallback;
+        private final BucketManagerHost.OpenBucket_Response mCallback;
 
-        BucketManagerHostOpenBucketResponseParamsForwardToCallback(BucketManagerHost.OpenBucketResponse callback) {
+        BucketManagerHostOpenBucketResponseParamsForwardToCallback(BucketManagerHost.OpenBucket_Response callback) {
             this.mCallback = callback;
         }
 
@@ -407,7 +409,7 @@ DeleteBucketResponse callback) {
         }
     }
 
-    static class BucketManagerHostOpenBucketResponseParamsProxyToResponder implements BucketManagerHost.OpenBucketResponse {
+    static class BucketManagerHostOpenBucketResponseParamsProxyToResponder implements BucketManagerHost.OpenBucket_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -583,9 +585,9 @@ DeleteBucketResponse callback) {
 
     static class BucketManagerHostKeysResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BucketManagerHost.KeysResponse mCallback;
+        private final BucketManagerHost.Keys_Response mCallback;
 
-        BucketManagerHostKeysResponseParamsForwardToCallback(BucketManagerHost.KeysResponse callback) {
+        BucketManagerHostKeysResponseParamsForwardToCallback(BucketManagerHost.Keys_Response callback) {
             this.mCallback = callback;
         }
 
@@ -610,7 +612,7 @@ DeleteBucketResponse callback) {
         }
     }
 
-    static class BucketManagerHostKeysResponseParamsProxyToResponder implements BucketManagerHost.KeysResponse {
+    static class BucketManagerHostKeysResponseParamsProxyToResponder implements BucketManagerHost.Keys_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -772,9 +774,9 @@ DeleteBucketResponse callback) {
 
     static class BucketManagerHostDeleteBucketResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BucketManagerHost.DeleteBucketResponse mCallback;
+        private final BucketManagerHost.DeleteBucket_Response mCallback;
 
-        BucketManagerHostDeleteBucketResponseParamsForwardToCallback(BucketManagerHost.DeleteBucketResponse callback) {
+        BucketManagerHostDeleteBucketResponseParamsForwardToCallback(BucketManagerHost.DeleteBucket_Response callback) {
             this.mCallback = callback;
         }
 
@@ -799,7 +801,7 @@ DeleteBucketResponse callback) {
         }
     }
 
-    static class BucketManagerHostDeleteBucketResponseParamsProxyToResponder implements BucketManagerHost.DeleteBucketResponse {
+    static class BucketManagerHostDeleteBucketResponseParamsProxyToResponder implements BucketManagerHost.DeleteBucket_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

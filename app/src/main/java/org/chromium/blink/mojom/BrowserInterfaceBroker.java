@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface BrowserInterfaceBroker extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface BrowserInterfaceBroker extends org.chromium.mojo.bindings.Inter
     }
 
     Manager<BrowserInterfaceBroker, BrowserInterfaceBroker.Proxy> MANAGER = BrowserInterfaceBroker_Internal.MANAGER;
-
 
     void getInterface(
 org.chromium.mojo_base.mojom.GenericPendingReceiver receiver);

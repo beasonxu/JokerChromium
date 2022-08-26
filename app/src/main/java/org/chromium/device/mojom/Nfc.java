@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface Nfc extends org.chromium.mojo.bindings.Interface {
 
@@ -23,31 +25,37 @@ public interface Nfc extends org.chromium.mojo.bindings.Interface {
 
     Manager<Nfc, Nfc.Proxy> MANAGER = Nfc_Internal.MANAGER;
 
-
     void setClient(
 NfcClient client);
 
 
-
     void push(
 NdefMessage message, NdefWriteOptions options, 
-PushResponse callback);
+Push_Response callback);
 
-    interface PushResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<NdefError> { }
-
+    interface Push_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<NdefError> { }
 
 
     void cancelPush(
 );
 
 
+    void makeReadOnly(
+
+MakeReadOnly_Response callback);
+
+    interface MakeReadOnly_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<NdefError> { }
+
+
+    void cancelMakeReadOnly(
+);
+
 
     void watch(
 int id, 
-WatchResponse callback);
+Watch_Response callback);
 
-    interface WatchResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<NdefError> { }
-
+    interface Watch_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<NdefError> { }
 
 
     void cancelWatch(

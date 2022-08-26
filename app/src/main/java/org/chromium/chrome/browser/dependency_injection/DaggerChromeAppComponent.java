@@ -18,14 +18,14 @@ import org.chromium.chrome.browser.browserservices.ClearDataDialogResultRecorder
 import org.chromium.chrome.browser.browserservices.QualityEnforcer;
 import org.chromium.chrome.browser.browserservices.SessionDataHolder;
 import org.chromium.chrome.browser.browserservices.TrustedWebActivityClient;
-import org.chromium.chrome.browser.browserservices.TrustedWebActivityUmaRecorder;
+import org.chromium.chrome.browser.browserservices.metrics.TrustedWebActivityUmaRecorder;
+import org.chromium.chrome.browser.browserservices.permissiondelegation.InstalledWebappPermissionManager;
+import org.chromium.chrome.browser.browserservices.permissiondelegation.InstalledWebappPermissionStore;
 import org.chromium.chrome.browser.browserservices.permissiondelegation.LocationPermissionUpdater;
 import org.chromium.chrome.browser.browserservices.permissiondelegation.NotificationChannelPreserver;
 import org.chromium.chrome.browser.browserservices.permissiondelegation.NotificationChannelPreserver_Factory;
 import org.chromium.chrome.browser.browserservices.permissiondelegation.NotificationPermissionUpdater;
 import org.chromium.chrome.browser.browserservices.permissiondelegation.PermissionUpdater;
-import org.chromium.chrome.browser.browserservices.permissiondelegation.TrustedWebActivityPermissionManager;
-import org.chromium.chrome.browser.browserservices.permissiondelegation.TrustedWebActivityPermissionStore;
 import org.chromium.chrome.browser.browserservices.trustedwebactivityui.TwaFinishHandler;
 import org.chromium.chrome.browser.browserservices.trustedwebactivityui.TwaIntentHandlingStrategy;
 import org.chromium.chrome.browser.browserservices.trustedwebactivityui.controller.TrustedWebActivityBrowserControlsVisibilityManager;
@@ -69,6 +69,7 @@ import org.chromium.chrome.browser.customtabs.CustomTabActivityLifecycleUmaTrack
 import org.chromium.chrome.browser.customtabs.CustomTabBottomBarDelegate;
 import org.chromium.chrome.browser.customtabs.CustomTabCompositorContentInitializer;
 import org.chromium.chrome.browser.customtabs.CustomTabDelegateFactory;
+import org.chromium.chrome.browser.customtabs.CustomTabDownloadObserver;
 import org.chromium.chrome.browser.customtabs.CustomTabIncognitoManager;
 import org.chromium.chrome.browser.customtabs.CustomTabNavigationEventObserver;
 import org.chromium.chrome.browser.customtabs.CustomTabObserver;
@@ -88,16 +89,16 @@ import org.chromium.chrome.browser.customtabs.content.CustomTabActivityTabProvid
 import org.chromium.chrome.browser.customtabs.content.CustomTabIntentHandler;
 import org.chromium.chrome.browser.customtabs.content.CustomTabIntentHandlingStrategy;
 import org.chromium.chrome.browser.customtabs.content.DefaultCustomTabIntentHandlingStrategy;
-import org.chromium.chrome.browser.customtabs.content.ProfileProvider;
 import org.chromium.chrome.browser.customtabs.content.TabObserverRegistrar;
 import org.chromium.chrome.browser.customtabs.dependency_injection.BaseCustomTabActivityComponent;
 import org.chromium.chrome.browser.customtabs.dependency_injection.BaseCustomTabActivityModule;
 import org.chromium.chrome.browser.customtabs.dependency_injection.BaseCustomTabActivityModule_ProvideClientAppDataRegisterFactory;
+import org.chromium.chrome.browser.customtabs.dependency_injection.BaseCustomTabActivityModule_ProvideCustomTabDefaultBrowserProviderFactory;
+import org.chromium.chrome.browser.customtabs.dependency_injection.BaseCustomTabActivityModule_ProvideIncognitoTabHostRegistryFactory;
 import org.chromium.chrome.browser.customtabs.dependency_injection.BaseCustomTabActivityModule_ProvideIntentHandlerFactory;
 import org.chromium.chrome.browser.customtabs.dependency_injection.BaseCustomTabActivityModule_ProvideIntentIgnoringCriterionFactory;
 import org.chromium.chrome.browser.customtabs.dependency_injection.BaseCustomTabActivityModule_ProvideNightModeControllerFactory;
 import org.chromium.chrome.browser.customtabs.dependency_injection.BaseCustomTabActivityModule_ProvidePostShareTargetNavigatorFactory;
-import org.chromium.chrome.browser.customtabs.dependency_injection.BaseCustomTabActivityModule_ProvideStartupTabPreloaderFactory;
 import org.chromium.chrome.browser.customtabs.dependency_injection.BaseCustomTabActivityModule_ProvideTopUiThemeColorProviderFactory;
 import org.chromium.chrome.browser.customtabs.dependency_injection.BaseCustomTabActivityModule_ProvideVerifierFactory;
 import org.chromium.chrome.browser.customtabs.dependency_injection.BaseCustomTabActivityModule_ProvidesBrowserServicesIntentDataProviderFactory;
@@ -107,6 +108,7 @@ import org.chromium.chrome.browser.customtabs.features.toolbar.CustomTabBrowserC
 import org.chromium.chrome.browser.customtabs.features.toolbar.CustomTabToolbarColorController;
 import org.chromium.chrome.browser.customtabs.features.toolbar.CustomTabToolbarCoordinator;
 import org.chromium.chrome.browser.fullscreen.FullscreenManager;
+import org.chromium.chrome.browser.incognito.IncognitoCctProfileManager;
 import org.chromium.chrome.browser.metrics.ActivityTabStartupMetricsTracker;
 import org.chromium.chrome.browser.preferences.SharedPreferencesManager;
 import org.chromium.chrome.browser.tabmodel.AsyncTabParamsManager;
@@ -139,13 +141,13 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
 
   private volatile TrustedWebActivityUmaRecorder trustedWebActivityUmaRecorder;
 
-  private volatile Object trustedWebActivityPermissionStore = new MemoizedSentinel();
+  private volatile Object installedWebappPermissionStore = new MemoizedSentinel();
 
   private volatile Object notificationChannelPreserver = new MemoizedSentinel();
 
   private volatile Provider<NotificationChannelPreserver> notificationChannelPreserverProvider;
 
-  private volatile Object trustedWebActivityPermissionManager = new MemoizedSentinel();
+  private volatile Object installedWebappPermissionManager = new MemoizedSentinel();
 
   private volatile Object notificationPermissionUpdater = new MemoizedSentinel();
 
@@ -195,24 +197,24 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
   private TrustedWebActivityUmaRecorder trustedWebActivityUmaRecorder() {
     Object local = trustedWebActivityUmaRecorder;
     if (local == null) {
-      local = new TrustedWebActivityUmaRecorder(ChromeAppModule_ProvideChromeBrowserInitializerFactory.provideChromeBrowserInitializer(chromeAppModule));
+      local = new TrustedWebActivityUmaRecorder(ChromeAppModule_ProvideTwaUmaRecorderTaskHandlerFactory.provideTwaUmaRecorderTaskHandler(chromeAppModule));
       trustedWebActivityUmaRecorder = (TrustedWebActivityUmaRecorder) local;
     }
     return (TrustedWebActivityUmaRecorder) local;
   }
 
-  private TrustedWebActivityPermissionStore trustedWebActivityPermissionStore() {
-    Object local = trustedWebActivityPermissionStore;
+  private InstalledWebappPermissionStore installedWebappPermissionStore() {
+    Object local = installedWebappPermissionStore;
     if (local instanceof MemoizedSentinel) {
       synchronized (local) {
-        local = trustedWebActivityPermissionStore;
+        local = installedWebappPermissionStore;
         if (local instanceof MemoizedSentinel) {
           local = ChromeAppModule_ProvidesTwaPermissionStoreFactory.providesTwaPermissionStore(chromeAppModule);
-          trustedWebActivityPermissionStore = DoubleCheck.reentrantCheck(trustedWebActivityPermissionStore, local);
+          installedWebappPermissionStore = DoubleCheck.reentrantCheck(installedWebappPermissionStore, local);
         }
       }
     }
-    return (TrustedWebActivityPermissionStore) local;
+    return (InstalledWebappPermissionStore) local;
   }
 
   private NotificationChannelPreserver notificationChannelPreserver() {
@@ -221,7 +223,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
       synchronized (local) {
         local = notificationChannelPreserver;
         if (local instanceof MemoizedSentinel) {
-          local = NotificationChannelPreserver_Factory.newInstance(trustedWebActivityPermissionStore(), ChromeAppModule_ProvidesSiteChannelsManagerFactory.providesSiteChannelsManager(chromeAppModule));
+          local = NotificationChannelPreserver_Factory.newInstance(installedWebappPermissionStore(), ChromeAppModule_ProvidesSiteChannelsManagerFactory.providesSiteChannelsManager(chromeAppModule));
           notificationChannelPreserver = DoubleCheck.reentrantCheck(notificationChannelPreserver, local);
         }
       }
@@ -244,7 +246,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
       synchronized (local) {
         local = notificationPermissionUpdater;
         if (local instanceof MemoizedSentinel) {
-          local = new NotificationPermissionUpdater(resolveTwaPermissionManager(), resolveTrustedWebActivityClient());
+          local = new NotificationPermissionUpdater(resolvePermissionManager(), resolveTrustedWebActivityClient());
           notificationPermissionUpdater = DoubleCheck.reentrantCheck(notificationPermissionUpdater, local);
         }
       }
@@ -258,7 +260,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
       synchronized (local) {
         local = locationPermissionUpdater;
         if (local instanceof MemoizedSentinel) {
-          local = new LocationPermissionUpdater(resolveTwaPermissionManager(), resolveTrustedWebActivityClient(), trustedWebActivityUmaRecorder());
+          local = new LocationPermissionUpdater(resolvePermissionManager(), resolveTrustedWebActivityClient(), trustedWebActivityUmaRecorder());
           locationPermissionUpdater = DoubleCheck.reentrantCheck(locationPermissionUpdater, local);
         }
       }
@@ -337,18 +339,18 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
   }
 
   @Override
-  public TrustedWebActivityPermissionManager resolveTwaPermissionManager() {
-    Object local = trustedWebActivityPermissionManager;
+  public InstalledWebappPermissionManager resolvePermissionManager() {
+    Object local = installedWebappPermissionManager;
     if (local instanceof MemoizedSentinel) {
       synchronized (local) {
-        local = trustedWebActivityPermissionManager;
+        local = installedWebappPermissionManager;
         if (local instanceof MemoizedSentinel) {
-          local = new TrustedWebActivityPermissionManager(ChromeAppModule_ProvideContextFactory.provideContext(chromeAppModule), trustedWebActivityPermissionStore(), DoubleCheck.lazy(notificationChannelPreserverProvider()), trustedWebActivityUmaRecorder());
-          trustedWebActivityPermissionManager = DoubleCheck.reentrantCheck(trustedWebActivityPermissionManager, local);
+          local = new InstalledWebappPermissionManager(ChromeAppModule_ProvideContextFactory.provideContext(chromeAppModule), installedWebappPermissionStore(), DoubleCheck.lazy(notificationChannelPreserverProvider()), trustedWebActivityUmaRecorder());
+          installedWebappPermissionManager = DoubleCheck.reentrantCheck(installedWebappPermissionManager, local);
         }
       }
     }
-    return (TrustedWebActivityPermissionManager) local;
+    return (InstalledWebappPermissionManager) local;
   }
 
   @Override
@@ -358,7 +360,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
       synchronized (local) {
         local = permissionUpdater;
         if (local instanceof MemoizedSentinel) {
-          local = new PermissionUpdater(resolveTwaPermissionManager(), notificationPermissionUpdater(), locationPermissionUpdater());
+          local = new PermissionUpdater(resolvePermissionManager(), notificationPermissionUpdater(), locationPermissionUpdater());
           permissionUpdater = DoubleCheck.reentrantCheck(permissionUpdater, local);
         }
       }
@@ -373,7 +375,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
       synchronized (local) {
         local = trustedWebActivityClient;
         if (local instanceof MemoizedSentinel) {
-          local = new TrustedWebActivityClient(trustedWebActivityServiceConnectionPool(), resolveTwaPermissionManager(), trustedWebActivityUmaRecorder());
+          local = new TrustedWebActivityClient(trustedWebActivityServiceConnectionPool(), resolvePermissionManager(), trustedWebActivityUmaRecorder());
           trustedWebActivityClient = DoubleCheck.reentrantCheck(trustedWebActivityClient, local);
         }
       }
@@ -489,6 +491,8 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
 
     private volatile Provider<FullscreenManager> provideFullscreenManagerProvider;
 
+    private volatile CustomTabActivityNavigationController.DefaultBrowserProvider defaultBrowserProvider;
+
     private volatile Object customTabActivityNavigationController = new MemoizedSentinel();
 
     private volatile Provider<CustomTabDelegateFactory> customTabDelegateFactoryProvider;
@@ -523,7 +527,11 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
 
     private volatile Provider<EphemeralTabCoordinator> ephemeralTabCoordinatorProvider;
 
+    private volatile Provider<SnackbarManager> provideSnackbarManagerProvider;
+
     private volatile Object customTabDelegateFactory = new MemoizedSentinel();
+
+    private volatile Object customTabDownloadObserver = new MemoizedSentinel();
 
     private volatile Object customTabIncognitoManager = new MemoizedSentinel();
 
@@ -601,8 +609,6 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
 
     private volatile Object webappDisclosureController = new MemoizedSentinel();
 
-    private volatile Provider<SnackbarManager> provideSnackbarManagerProvider;
-
     private volatile Object disclosureInfobar = new MemoizedSentinel();
 
     private volatile Provider<ActivityTabStartupMetricsTracker> provideActivityTabStartupMetricsTrackerProvider;
@@ -612,6 +618,10 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
     private volatile Object webApkUpdateManager = new MemoizedSentinel();
 
     private volatile Provider<WebApkUpdateManager> webApkUpdateManagerProvider;
+
+    private volatile Object clientAppDataRecorder = new MemoizedSentinel();
+
+    private volatile Provider<ClientAppDataRecorder> clientAppDataRecorderProvider;
 
     private volatile Object webApkActivityCoordinator = new MemoizedSentinel();
 
@@ -630,10 +640,6 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
     private volatile Object trustedWebActivityOpenTimeRecorder = new MemoizedSentinel();
 
     private volatile Provider<TwaSplashController> twaSplashControllerProvider;
-
-    private volatile Object clientAppDataRecorder = new MemoizedSentinel();
-
-    private volatile Provider<ClientAppDataRecorder> clientAppDataRecorderProvider;
 
     private volatile Object qualityEnforcer = new MemoizedSentinel();
 
@@ -695,6 +701,15 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
       return (Provider<FullscreenManager>) local;
     }
 
+    private CustomTabActivityNavigationController.DefaultBrowserProvider defaultBrowserProvider() {
+      Object local = defaultBrowserProvider;
+      if (local == null) {
+        local = BaseCustomTabActivityModule_ProvideCustomTabDefaultBrowserProviderFactory.provideCustomTabDefaultBrowserProvider(baseCustomTabActivityModule);
+        defaultBrowserProvider = (CustomTabActivityNavigationController.DefaultBrowserProvider) local;
+      }
+      return (CustomTabActivityNavigationController.DefaultBrowserProvider) local;
+    }
+
     private Provider<CustomTabDelegateFactory> customTabDelegateFactoryProvider() {
       Object local = customTabDelegateFactoryProvider;
       if (local == null) {
@@ -751,7 +766,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
         synchronized (local) {
           local = chromeTabModelFilterFactory;
           if (local instanceof MemoizedSentinel) {
-            local = new ChromeTabModelFilterFactory();
+            local = new ChromeTabModelFilterFactory(ChromeActivityCommonsModule_ProvideActivityFactory.provideActivity(chromeActivityCommonsModule));
             chromeTabModelFilterFactory = DoubleCheck.reentrantCheck(chromeTabModelFilterFactory, local);
           }
         }
@@ -815,6 +830,19 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
       return (Provider<EphemeralTabCoordinator>) local;
     }
 
+    private Provider<SnackbarManager> snackbarManagerProvider() {
+      Object local = provideSnackbarManagerProvider;
+      if (local == null) {
+        local = new SwitchingProvider<>(8);
+        provideSnackbarManagerProvider = (Provider<SnackbarManager>) local;
+      }
+      return (Provider<SnackbarManager>) local;
+    }
+
+    private IncognitoCctProfileManager incognitoCctProfileManager() {
+      return new IncognitoCctProfileManager(ChromeActivityCommonsModule_ProvideWindowAndroidFactory.provideWindowAndroid(chromeActivityCommonsModule));
+    }
+
     private DefaultCustomTabIntentHandlingStrategy defaultCustomTabIntentHandlingStrategy() {
       Object local = defaultCustomTabIntentHandlingStrategy;
       if (local instanceof MemoizedSentinel) {
@@ -833,7 +861,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
         ) {
       Object local = defaultCustomTabIntentHandlingStrategyProvider;
       if (local == null) {
-        local = new SwitchingProvider<>(8);
+        local = new SwitchingProvider<>(9);
         defaultCustomTabIntentHandlingStrategyProvider = (Provider<DefaultCustomTabIntentHandlingStrategy>) local;
       }
       return (Provider<DefaultCustomTabIntentHandlingStrategy>) local;
@@ -879,7 +907,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
     private Provider<TwaIntentHandlingStrategy> twaIntentHandlingStrategyProvider() {
       Object local = twaIntentHandlingStrategyProvider;
       if (local == null) {
-        local = new SwitchingProvider<>(9);
+        local = new SwitchingProvider<>(10);
         twaIntentHandlingStrategyProvider = (Provider<TwaIntentHandlingStrategy>) local;
       }
       return (Provider<TwaIntentHandlingStrategy>) local;
@@ -892,7 +920,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
     private Provider<CustomTabToolbarCoordinator> customTabToolbarCoordinatorProvider() {
       Object local = customTabToolbarCoordinatorProvider;
       if (local == null) {
-        local = new SwitchingProvider<>(10);
+        local = new SwitchingProvider<>(11);
         customTabToolbarCoordinatorProvider = (Provider<CustomTabToolbarCoordinator>) local;
       }
       return (Provider<CustomTabToolbarCoordinator>) local;
@@ -901,7 +929,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
     private Provider<CustomTabBottomBarDelegate> customTabBottomBarDelegateProvider() {
       Object local = customTabBottomBarDelegateProvider;
       if (local == null) {
-        local = new SwitchingProvider<>(11);
+        local = new SwitchingProvider<>(12);
         customTabBottomBarDelegateProvider = (Provider<CustomTabBottomBarDelegate>) local;
       }
       return (Provider<CustomTabBottomBarDelegate>) local;
@@ -952,7 +980,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
     private Provider<WebApkVerifier> webApkVerifierProvider() {
       Object local = webApkVerifierProvider;
       if (local == null) {
-        local = new SwitchingProvider<>(12);
+        local = new SwitchingProvider<>(13);
         webApkVerifierProvider = (Provider<WebApkVerifier>) local;
       }
       return (Provider<WebApkVerifier>) local;
@@ -975,7 +1003,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
     private Provider<AddToHomescreenVerifier> addToHomescreenVerifierProvider() {
       Object local = addToHomescreenVerifierProvider;
       if (local == null) {
-        local = new SwitchingProvider<>(13);
+        local = new SwitchingProvider<>(14);
         addToHomescreenVerifierProvider = (Provider<AddToHomescreenVerifier>) local;
       }
       return (Provider<AddToHomescreenVerifier>) local;
@@ -996,7 +1024,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
         synchronized (local) {
           local = clientPackageNameProvider;
           if (local instanceof MemoizedSentinel) {
-            local = new ClientPackageNameProvider(ChromeActivityCommonsModule_ProvideChromeActivityFactory.provideChromeActivity(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideLifecycleDispatcherFactory.provideLifecycleDispatcher(chromeActivityCommonsModule), BaseCustomTabActivityModule_ProvidesBrowserServicesIntentDataProviderFactory.providesBrowserServicesIntentDataProvider(baseCustomTabActivityModule), AppHooksModule_ProvideCustomTabsConnectionFactory.provideCustomTabsConnection());
+            local = new ClientPackageNameProvider(ChromeActivityCommonsModule_ProvideLifecycleDispatcherFactory.provideLifecycleDispatcher(chromeActivityCommonsModule), BaseCustomTabActivityModule_ProvidesBrowserServicesIntentDataProviderFactory.providesBrowserServicesIntentDataProvider(baseCustomTabActivityModule), AppHooksModule_ProvideCustomTabsConnectionFactory.provideCustomTabsConnection(), ChromeActivityCommonsModule_SavedInstanceStateSupplierFactory.savedInstanceStateSupplier(chromeActivityCommonsModule));
             clientPackageNameProvider = DoubleCheck.reentrantCheck(clientPackageNameProvider, local);
           }
         }
@@ -1021,7 +1049,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
     private Provider<TwaVerifier> twaVerifierProvider() {
       Object local = twaVerifierProvider;
       if (local == null) {
-        local = new SwitchingProvider<>(14);
+        local = new SwitchingProvider<>(15);
         twaVerifierProvider = (Provider<TwaVerifier>) local;
       }
       return (Provider<TwaVerifier>) local;
@@ -1044,7 +1072,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
     private Provider<EmptyVerifier> emptyVerifierProvider() {
       Object local = emptyVerifierProvider;
       if (local == null) {
-        local = new SwitchingProvider<>(15);
+        local = new SwitchingProvider<>(16);
         emptyVerifierProvider = (Provider<EmptyVerifier>) local;
       }
       return (Provider<EmptyVerifier>) local;
@@ -1071,7 +1099,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
         synchronized (local) {
           local = immersiveModeController;
           if (local instanceof MemoizedSentinel) {
-            local = new ImmersiveModeController(ChromeActivityCommonsModule_ProvideLifecycleDispatcherFactory.provideLifecycleDispatcher(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideActivityFactory.provideActivity(chromeActivityCommonsModule));
+            local = new ImmersiveModeController(ChromeActivityCommonsModule_ProvideLifecycleDispatcherFactory.provideLifecycleDispatcher(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideActivityFactory.provideActivity(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideWindowAndroidFactory.provideWindowAndroid(chromeActivityCommonsModule));
             immersiveModeController = DoubleCheck.reentrantCheck(immersiveModeController, local);
           }
         }
@@ -1082,7 +1110,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
     private Provider<ImmersiveModeController> immersiveModeControllerProvider() {
       Object local = immersiveModeControllerProvider;
       if (local == null) {
-        local = new SwitchingProvider<>(16);
+        local = new SwitchingProvider<>(17);
         immersiveModeControllerProvider = (Provider<ImmersiveModeController>) local;
       }
       return (Provider<ImmersiveModeController>) local;
@@ -1176,15 +1204,6 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
       return (WebappDisclosureController) local;
     }
 
-    private Provider<SnackbarManager> snackbarManagerProvider() {
-      Object local = provideSnackbarManagerProvider;
-      if (local == null) {
-        local = new SwitchingProvider<>(17);
-        provideSnackbarManagerProvider = (Provider<SnackbarManager>) local;
-      }
-      return (Provider<SnackbarManager>) local;
-    }
-
     private DisclosureInfobar disclosureInfobar() {
       Object local = disclosureInfobar;
       if (local instanceof MemoizedSentinel) {
@@ -1214,7 +1233,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
         synchronized (local) {
           local = webApkActivityLifecycleUmaTracker;
           if (local instanceof MemoizedSentinel) {
-            local = new WebApkActivityLifecycleUmaTracker(ChromeActivityCommonsModule_ProvideChromeActivityFactory.provideChromeActivity(chromeActivityCommonsModule), BaseCustomTabActivityModule_ProvidesBrowserServicesIntentDataProviderFactory.providesBrowserServicesIntentDataProvider(baseCustomTabActivityModule), resolveSplashController(), ChromeActivityCommonsModule_ProvideLifecycleDispatcherFactory.provideLifecycleDispatcher(chromeActivityCommonsModule), webappDeferredStartupWithStorageHandler(), DoubleCheck.lazy(activityTabStartupMetricsTrackerProvider()));
+            local = new WebApkActivityLifecycleUmaTracker(ChromeActivityCommonsModule_ProvideActivityFactory.provideActivity(chromeActivityCommonsModule), BaseCustomTabActivityModule_ProvidesBrowserServicesIntentDataProviderFactory.providesBrowserServicesIntentDataProvider(baseCustomTabActivityModule), resolveSplashController(), ChromeActivityCommonsModule_ProvideLifecycleDispatcherFactory.provideLifecycleDispatcher(chromeActivityCommonsModule), webappDeferredStartupWithStorageHandler(), DoubleCheck.lazy(activityTabStartupMetricsTrackerProvider()), ChromeActivityCommonsModule_SavedInstanceStateSupplierFactory.savedInstanceStateSupplier(chromeActivityCommonsModule));
             webApkActivityLifecycleUmaTracker = DoubleCheck.reentrantCheck(webApkActivityLifecycleUmaTracker, local);
           }
         }
@@ -1245,6 +1264,33 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
       return (Provider<WebApkUpdateManager>) local;
     }
 
+    private ClientAppDataRecorder clientAppDataRecorder() {
+      Object local = clientAppDataRecorder;
+      if (local instanceof MemoizedSentinel) {
+        synchronized (local) {
+          local = clientAppDataRecorder;
+          if (local instanceof MemoizedSentinel) {
+            local = ClientAppDataRecorder_Factory.newInstance(ChromeAppModule_ProvideContextFactory.provideContext(DaggerChromeAppComponent.this.chromeAppModule), BaseCustomTabActivityModule_ProvideClientAppDataRegisterFactory.provideClientAppDataRegister(baseCustomTabActivityModule));
+            clientAppDataRecorder = DoubleCheck.reentrantCheck(clientAppDataRecorder, local);
+          }
+        }
+      }
+      return (ClientAppDataRecorder) local;
+    }
+
+    private Provider<ClientAppDataRecorder> clientAppDataRecorderProvider() {
+      Object local = clientAppDataRecorderProvider;
+      if (local == null) {
+        local = new SwitchingProvider<>(20);
+        clientAppDataRecorderProvider = (Provider<ClientAppDataRecorder>) local;
+      }
+      return (Provider<ClientAppDataRecorder>) local;
+    }
+
+    private TwaRegistrar twaRegistrar() {
+      return new TwaRegistrar(ChromeAppModule_ProvideContextFactory.provideContext(DaggerChromeAppComponent.this.chromeAppModule), DaggerChromeAppComponent.this.resolveTwaPermissionUpdater(), DoubleCheck.lazy(clientAppDataRecorderProvider()));
+    }
+
     private BrowserServicesStore browserServicesStore() {
       Object local = browserServicesStore;
       if (local instanceof MemoizedSentinel) {
@@ -1266,7 +1312,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
     private Provider<DisclosureInfobar> disclosureInfobarProvider() {
       Object local = disclosureInfobarProvider;
       if (local == null) {
-        local = new SwitchingProvider<>(20);
+        local = new SwitchingProvider<>(21);
         disclosureInfobarProvider = (Provider<DisclosureInfobar>) local;
       }
       return (Provider<DisclosureInfobar>) local;
@@ -1289,7 +1335,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
     private Provider<DisclosureSnackbar> disclosureSnackbarProvider() {
       Object local = disclosureSnackbarProvider;
       if (local == null) {
-        local = new SwitchingProvider<>(21);
+        local = new SwitchingProvider<>(22);
         disclosureSnackbarProvider = (Provider<DisclosureSnackbar>) local;
       }
       return (Provider<DisclosureSnackbar>) local;
@@ -1302,7 +1348,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
     private Provider<DisclosureNotification> disclosureNotificationProvider() {
       Object local = disclosureNotificationProvider;
       if (local == null) {
-        local = new SwitchingProvider<>(22);
+        local = new SwitchingProvider<>(23);
         disclosureNotificationProvider = (Provider<DisclosureNotification>) local;
       }
       return (Provider<DisclosureNotification>) local;
@@ -1343,37 +1389,10 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
     private Provider<TwaSplashController> twaSplashControllerProvider() {
       Object local = twaSplashControllerProvider;
       if (local == null) {
-        local = new SwitchingProvider<>(23);
+        local = new SwitchingProvider<>(24);
         twaSplashControllerProvider = (Provider<TwaSplashController>) local;
       }
       return (Provider<TwaSplashController>) local;
-    }
-
-    private ClientAppDataRecorder clientAppDataRecorder() {
-      Object local = clientAppDataRecorder;
-      if (local instanceof MemoizedSentinel) {
-        synchronized (local) {
-          local = clientAppDataRecorder;
-          if (local instanceof MemoizedSentinel) {
-            local = ClientAppDataRecorder_Factory.newInstance(ChromeAppModule_ProvideContextFactory.provideContext(DaggerChromeAppComponent.this.chromeAppModule), BaseCustomTabActivityModule_ProvideClientAppDataRegisterFactory.provideClientAppDataRegister(baseCustomTabActivityModule));
-            clientAppDataRecorder = DoubleCheck.reentrantCheck(clientAppDataRecorder, local);
-          }
-        }
-      }
-      return (ClientAppDataRecorder) local;
-    }
-
-    private Provider<ClientAppDataRecorder> clientAppDataRecorderProvider() {
-      Object local = clientAppDataRecorderProvider;
-      if (local == null) {
-        local = new SwitchingProvider<>(24);
-        clientAppDataRecorderProvider = (Provider<ClientAppDataRecorder>) local;
-      }
-      return (Provider<ClientAppDataRecorder>) local;
-    }
-
-    private TwaRegistrar twaRegistrar() {
-      return new TwaRegistrar(ChromeAppModule_ProvideContextFactory.provideContext(DaggerChromeAppComponent.this.chromeAppModule), DaggerChromeAppComponent.this.resolveTwaPermissionUpdater(), DoubleCheck.lazy(clientAppDataRecorderProvider()));
     }
 
     private QualityEnforcer qualityEnforcer() {
@@ -1432,7 +1451,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
         synchronized (local) {
           local = customTabActivityLifecycleUmaTracker;
           if (local instanceof MemoizedSentinel) {
-            local = new CustomTabActivityLifecycleUmaTracker(ChromeActivityCommonsModule_ProvideLifecycleDispatcherFactory.provideLifecycleDispatcher(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideChromeActivityFactory.provideChromeActivity(chromeActivityCommonsModule), BaseCustomTabActivityModule_ProvidesBrowserServicesIntentDataProviderFactory.providesBrowserServicesIntentDataProvider(baseCustomTabActivityModule), AppHooksModule_ProvideCustomTabsConnectionFactory.provideCustomTabsConnection());
+            local = new CustomTabActivityLifecycleUmaTracker(ChromeActivityCommonsModule_ProvideLifecycleDispatcherFactory.provideLifecycleDispatcher(chromeActivityCommonsModule), BaseCustomTabActivityModule_ProvidesBrowserServicesIntentDataProviderFactory.providesBrowserServicesIntentDataProvider(baseCustomTabActivityModule), ChromeActivityCommonsModule_ProvideActivityFactory.provideActivity(chromeActivityCommonsModule), ChromeActivityCommonsModule_SavedInstanceStateSupplierFactory.savedInstanceStateSupplier(chromeActivityCommonsModule));
             customTabActivityLifecycleUmaTracker = DoubleCheck.reentrantCheck(customTabActivityLifecycleUmaTracker, local);
           }
         }
@@ -1447,7 +1466,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
         synchronized (local) {
           local = customTabActivityNavigationController;
           if (local instanceof MemoizedSentinel) {
-            local = new CustomTabActivityNavigationController(resolveTabController(), resolveTabProvider(), BaseCustomTabActivityModule_ProvidesBrowserServicesIntentDataProviderFactory.providesBrowserServicesIntentDataProvider(baseCustomTabActivityModule), AppHooksModule_ProvideCustomTabsConnectionFactory.provideCustomTabsConnection(), DoubleCheck.lazy(customTabObserverProvider()), closeButtonNavigator(), ChromeAppModule_ProvideChromeBrowserInitializerFactory.provideChromeBrowserInitializer(DaggerChromeAppComponent.this.chromeAppModule), ChromeActivityCommonsModule_ProvideActivityFactory.provideActivity(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideLifecycleDispatcherFactory.provideLifecycleDispatcher(chromeActivityCommonsModule), DoubleCheck.lazy(fullscreenManagerProvider()));
+            local = new CustomTabActivityNavigationController(resolveTabController(), resolveTabProvider(), BaseCustomTabActivityModule_ProvidesBrowserServicesIntentDataProviderFactory.providesBrowserServicesIntentDataProvider(baseCustomTabActivityModule), AppHooksModule_ProvideCustomTabsConnectionFactory.provideCustomTabsConnection(), DoubleCheck.lazy(customTabObserverProvider()), closeButtonNavigator(), ChromeAppModule_ProvideChromeBrowserInitializerFactory.provideChromeBrowserInitializer(DaggerChromeAppComponent.this.chromeAppModule), ChromeActivityCommonsModule_ProvideActivityFactory.provideActivity(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideLifecycleDispatcherFactory.provideLifecycleDispatcher(chromeActivityCommonsModule), DoubleCheck.lazy(fullscreenManagerProvider()), defaultBrowserProvider());
             customTabActivityNavigationController = DoubleCheck.reentrantCheck(customTabActivityNavigationController, local);
           }
         }
@@ -1462,7 +1481,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
         synchronized (local) {
           local = customTabActivityTabController;
           if (local instanceof MemoizedSentinel) {
-            local = new CustomTabActivityTabController(ChromeActivityCommonsModule_ProvideChromeActivityFactory.provideChromeActivity(chromeActivityCommonsModule), DoubleCheck.lazy(customTabDelegateFactoryProvider()), AppHooksModule_ProvideCustomTabsConnectionFactory.provideCustomTabsConnection(), BaseCustomTabActivityModule_ProvidesBrowserServicesIntentDataProviderFactory.providesBrowserServicesIntentDataProvider(baseCustomTabActivityModule), ChromeActivityCommonsModule_ProvideActivityTabProviderFactory.provideActivityTabProvider(chromeActivityCommonsModule), resolveTabObserverRegistrar(), DoubleCheck.lazy(compositorViewHolderProvider()), ChromeActivityCommonsModule_ProvideLifecycleDispatcherFactory.provideLifecycleDispatcher(chromeActivityCommonsModule), ChromeAppModule_ProvideWarmupManagerFactory.provideWarmupManager(DaggerChromeAppComponent.this.chromeAppModule), resolveTabPersistencePolicy(), resolveTabFactory(), DoubleCheck.lazy(customTabObserverProvider()), webContentsFactory(), customTabNavigationEventObserver(), resolveTabProvider(), BaseCustomTabActivityModule_ProvideStartupTabPreloaderFactory.provideStartupTabPreloader(baseCustomTabActivityModule), new ReparentingTaskProvider(), DoubleCheck.lazy(customTabIncognitoManagerProvider()), new ProfileProvider(), DoubleCheck.lazy(DaggerChromeAppComponent.this.asyncTabParamsManagerProvider()));
+            local = new CustomTabActivityTabController(ChromeActivityCommonsModule_ProvideAppCompatActivityFactory.provideAppCompatActivity(chromeActivityCommonsModule), DoubleCheck.lazy(customTabDelegateFactoryProvider()), AppHooksModule_ProvideCustomTabsConnectionFactory.provideCustomTabsConnection(), BaseCustomTabActivityModule_ProvidesBrowserServicesIntentDataProviderFactory.providesBrowserServicesIntentDataProvider(baseCustomTabActivityModule), ChromeActivityCommonsModule_ProvideActivityTabProviderFactory.provideActivityTabProvider(chromeActivityCommonsModule), resolveTabObserverRegistrar(), DoubleCheck.lazy(compositorViewHolderProvider()), ChromeActivityCommonsModule_ProvideLifecycleDispatcherFactory.provideLifecycleDispatcher(chromeActivityCommonsModule), ChromeAppModule_ProvideWarmupManagerFactory.provideWarmupManager(DaggerChromeAppComponent.this.chromeAppModule), resolveTabPersistencePolicy(), resolveTabFactory(), DoubleCheck.lazy(customTabObserverProvider()), webContentsFactory(), customTabNavigationEventObserver(), resolveTabProvider(), new ReparentingTaskProvider(), DoubleCheck.lazy(customTabIncognitoManagerProvider()), DoubleCheck.lazy(DaggerChromeAppComponent.this.asyncTabParamsManagerProvider()), ChromeActivityCommonsModule_SavedInstanceStateSupplierFactory.savedInstanceStateSupplier(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideActivityWindowAndroidFactory.provideActivityWindowAndroid(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideTabModelInitializerFactory.provideTabModelInitializer(chromeActivityCommonsModule));
             customTabActivityTabController = DoubleCheck.reentrantCheck(customTabActivityTabController, local);
           }
         }
@@ -1477,7 +1496,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
         synchronized (local) {
           local = customTabActivityTabFactory;
           if (local instanceof MemoizedSentinel) {
-            local = new CustomTabActivityTabFactory(ChromeActivityCommonsModule_ProvideChromeActivityFactory.provideChromeActivity(chromeActivityCommonsModule), resolveTabPersistencePolicy(), chromeTabModelFilterFactory(), DoubleCheck.lazy(activityWindowAndroidProvider()), DoubleCheck.lazy(customTabDelegateFactoryProvider()), BaseCustomTabActivityModule_ProvidesBrowserServicesIntentDataProviderFactory.providesBrowserServicesIntentDataProvider(baseCustomTabActivityModule), BaseCustomTabActivityModule_ProvideStartupTabPreloaderFactory.provideStartupTabPreloader(baseCustomTabActivityModule), DoubleCheck.lazy(DaggerChromeAppComponent.this.asyncTabParamsManagerProvider()));
+            local = new CustomTabActivityTabFactory(ChromeActivityCommonsModule_ProvideActivityFactory.provideActivity(chromeActivityCommonsModule), resolveTabPersistencePolicy(), chromeTabModelFilterFactory(), DoubleCheck.lazy(activityWindowAndroidProvider()), DoubleCheck.lazy(customTabDelegateFactoryProvider()), BaseCustomTabActivityModule_ProvidesBrowserServicesIntentDataProviderFactory.providesBrowserServicesIntentDataProvider(baseCustomTabActivityModule), DoubleCheck.lazy(DaggerChromeAppComponent.this.asyncTabParamsManagerProvider()), ChromeActivityCommonsModule_ProvideTabCreatorManagerFactory.provideTabCreatorManager(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideTabModelSelectorSupplierFactory.provideTabModelSelectorSupplier(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideCompositorViewHolderSupplierFactory.provideCompositorViewHolderSupplier(chromeActivityCommonsModule));
             customTabActivityTabFactory = DoubleCheck.reentrantCheck(customTabActivityTabFactory, local);
           }
         }
@@ -1507,7 +1526,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
         synchronized (local) {
           local = customTabBottomBarDelegate;
           if (local instanceof MemoizedSentinel) {
-            local = new CustomTabBottomBarDelegate(ChromeActivityCommonsModule_ProvideActivityFactory.provideActivity(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideWindowAndroidFactory.provideWindowAndroid(chromeActivityCommonsModule), BaseCustomTabActivityModule_ProvidesBrowserServicesIntentDataProviderFactory.providesBrowserServicesIntentDataProvider(baseCustomTabActivityModule), ChromeActivityCommonsModule_ProvideBrowserControlsSizerFactory.provideBrowserControlsSizer(chromeActivityCommonsModule), BaseCustomTabActivityModule_ProvideNightModeControllerFactory.provideNightModeController(baseCustomTabActivityModule), ChromeAppModule_ProvideSystemNightModeMonitorFactory.provideSystemNightModeMonitor(DaggerChromeAppComponent.this.chromeAppModule), resolveTabProvider(), resolveCompositorContentInitializer());
+            local = new CustomTabBottomBarDelegate(ChromeActivityCommonsModule_ProvideActivityFactory.provideActivity(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideWindowAndroidFactory.provideWindowAndroid(chromeActivityCommonsModule), BaseCustomTabActivityModule_ProvidesBrowserServicesIntentDataProviderFactory.providesBrowserServicesIntentDataProvider(baseCustomTabActivityModule), ChromeActivityCommonsModule_ProvideBrowserControlsSizerFactory.provideBrowserControlsSizer(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideAutofillUiBottomInsetSupplierFactory.provideAutofillUiBottomInsetSupplier(chromeActivityCommonsModule), BaseCustomTabActivityModule_ProvideNightModeControllerFactory.provideNightModeController(baseCustomTabActivityModule), ChromeAppModule_ProvideSystemNightModeMonitorFactory.provideSystemNightModeMonitor(DaggerChromeAppComponent.this.chromeAppModule), resolveTabProvider(), resolveCompositorContentInitializer());
             customTabBottomBarDelegate = DoubleCheck.reentrantCheck(customTabBottomBarDelegate, local);
           }
         }
@@ -1537,12 +1556,27 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
         synchronized (local) {
           local = customTabDelegateFactory;
           if (local instanceof MemoizedSentinel) {
-            local = new CustomTabDelegateFactory(ChromeActivityCommonsModule_ProvideChromeActivityFactory.provideChromeActivity(chromeActivityCommonsModule), BaseCustomTabActivityModule_ProvidesBrowserServicesIntentDataProviderFactory.providesBrowserServicesIntentDataProvider(baseCustomTabActivityModule), customTabBrowserControlsVisibilityDelegate(), AppHooksModule_ProvideExternalAuthUtilsFactory.provideExternalAuthUtils(DaggerChromeAppComponent.this.appHooksModule), AppHooksModule_ProvideMultiWindowUtilsFactory.provideMultiWindowUtils(DaggerChromeAppComponent.this.appHooksModule), resolveVerifier(), DoubleCheck.lazy(ephemeralTabCoordinatorProvider()), ChromeActivityCommonsModule_ProvideChromeActivityNativeDelegateFactory.provideChromeActivityNativeDelegate(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideBrowserControlsStateProviderFactory.provideBrowserControlsStateProvider(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideFullscreenManagerFactory.provideFullscreenManager(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideTabCreatorManagerFactory.provideTabCreatorManager(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideTabModelSelectorSupplierFactory.provideTabModelSelectorSupplier(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideCompositorViewHolderSupplierFactory.provideCompositorViewHolderSupplier(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideModalDialogManagerSupplierFactory.provideModalDialogManagerSupplier(chromeActivityCommonsModule));
+            local = new CustomTabDelegateFactory(ChromeActivityCommonsModule_ProvideActivityFactory.provideActivity(chromeActivityCommonsModule), BaseCustomTabActivityModule_ProvidesBrowserServicesIntentDataProviderFactory.providesBrowserServicesIntentDataProvider(baseCustomTabActivityModule), customTabBrowserControlsVisibilityDelegate(), AppHooksModule_ProvideExternalAuthUtilsFactory.provideExternalAuthUtils(DaggerChromeAppComponent.this.appHooksModule), AppHooksModule_ProvideMultiWindowUtilsFactory.provideMultiWindowUtils(DaggerChromeAppComponent.this.appHooksModule), resolveVerifier(), DoubleCheck.lazy(ephemeralTabCoordinatorProvider()), ChromeActivityCommonsModule_ProvideChromeActivityNativeDelegateFactory.provideChromeActivityNativeDelegate(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideBrowserControlsStateProviderFactory.provideBrowserControlsStateProvider(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideFullscreenManagerFactory.provideFullscreenManager(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideTabCreatorManagerFactory.provideTabCreatorManager(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideTabModelSelectorSupplierFactory.provideTabModelSelectorSupplier(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideCompositorViewHolderSupplierFactory.provideCompositorViewHolderSupplier(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideModalDialogManagerSupplierFactory.provideModalDialogManagerSupplier(chromeActivityCommonsModule), DoubleCheck.lazy(snackbarManagerProvider()), ChromeActivityCommonsModule_ProvideShareDelegateSupplierFactory.provideShareDelegateSupplier(chromeActivityCommonsModule), chromeActivityCommonsModule.provideActivityType());
             customTabDelegateFactory = DoubleCheck.reentrantCheck(customTabDelegateFactory, local);
           }
         }
       }
       return (CustomTabDelegateFactory) local;
+    }
+
+    @Override
+    public CustomTabDownloadObserver resolveDownloadObserver() {
+      Object local = customTabDownloadObserver;
+      if (local instanceof MemoizedSentinel) {
+        synchronized (local) {
+          local = customTabDownloadObserver;
+          if (local instanceof MemoizedSentinel) {
+            local = new CustomTabDownloadObserver(ChromeActivityCommonsModule_ProvideActivityFactory.provideActivity(chromeActivityCommonsModule), resolveTabObserverRegistrar());
+            customTabDownloadObserver = DoubleCheck.reentrantCheck(customTabDownloadObserver, local);
+          }
+        }
+      }
+      return (CustomTabDownloadObserver) local;
     }
 
     @Override
@@ -1552,7 +1586,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
         synchronized (local) {
           local = customTabIncognitoManager;
           if (local instanceof MemoizedSentinel) {
-            local = new CustomTabIncognitoManager(ChromeActivityCommonsModule_ProvideActivityFactory.provideActivity(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideWindowAndroidFactory.provideWindowAndroid(chromeActivityCommonsModule), BaseCustomTabActivityModule_ProvidesBrowserServicesIntentDataProviderFactory.providesBrowserServicesIntentDataProvider(baseCustomTabActivityModule), resolveNavigationController(), resolveTabProvider(), ChromeActivityCommonsModule_ProvideLifecycleDispatcherFactory.provideLifecycleDispatcher(chromeActivityCommonsModule));
+            local = new CustomTabIncognitoManager(ChromeActivityCommonsModule_ProvideActivityFactory.provideActivity(chromeActivityCommonsModule), BaseCustomTabActivityModule_ProvidesBrowserServicesIntentDataProviderFactory.providesBrowserServicesIntentDataProvider(baseCustomTabActivityModule), resolveNavigationController(), ChromeActivityCommonsModule_ProvideLifecycleDispatcherFactory.provideLifecycleDispatcher(chromeActivityCommonsModule), BaseCustomTabActivityModule_ProvideIncognitoTabHostRegistryFactory.provideIncognitoTabHostRegistry(baseCustomTabActivityModule), incognitoCctProfileManager());
             customTabIncognitoManager = DoubleCheck.reentrantCheck(customTabIncognitoManager, local);
           }
         }
@@ -1636,11 +1670,6 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
     }
 
     @Override
-    public ProfileProvider resolveProfileProvider() {
-      return new ProfileProvider();
-    }
-
-    @Override
     public TabObserverRegistrar resolveTabObserverRegistrar() {
       Object local = tabObserverRegistrar;
       if (local instanceof MemoizedSentinel) {
@@ -1697,7 +1726,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
         synchronized (local) {
           local = webApkActivityCoordinator;
           if (local instanceof MemoizedSentinel) {
-            local = new WebApkActivityCoordinator(webappDeferredStartupWithStorageHandler(), webappDisclosureController(), disclosureInfobar(), webApkActivityLifecycleUmaTracker(), ChromeActivityCommonsModule_ProvideLifecycleDispatcherFactory.provideLifecycleDispatcher(chromeActivityCommonsModule), BaseCustomTabActivityModule_ProvidesBrowserServicesIntentDataProviderFactory.providesBrowserServicesIntentDataProvider(baseCustomTabActivityModule), DoubleCheck.lazy(webApkUpdateManagerProvider()));
+            local = new WebApkActivityCoordinator(webappDeferredStartupWithStorageHandler(), webappDisclosureController(), disclosureInfobar(), webApkActivityLifecycleUmaTracker(), ChromeActivityCommonsModule_ProvideLifecycleDispatcherFactory.provideLifecycleDispatcher(chromeActivityCommonsModule), BaseCustomTabActivityModule_ProvidesBrowserServicesIntentDataProviderFactory.providesBrowserServicesIntentDataProvider(baseCustomTabActivityModule), DoubleCheck.lazy(webApkUpdateManagerProvider()), twaRegistrar());
             webApkActivityCoordinator = DoubleCheck.reentrantCheck(webApkActivityCoordinator, local);
           }
         }
@@ -1727,7 +1756,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
         synchronized (local) {
           local = customTabTabPersistencePolicy;
           if (local instanceof MemoizedSentinel) {
-            local = new CustomTabTabPersistencePolicy(ChromeActivityCommonsModule_ProvideChromeActivityFactory.provideChromeActivity(chromeActivityCommonsModule));
+            local = new CustomTabTabPersistencePolicy(ChromeActivityCommonsModule_ProvideActivityFactory.provideActivity(chromeActivityCommonsModule), ChromeActivityCommonsModule_SavedInstanceStateSupplierFactory.savedInstanceStateSupplier(chromeActivityCommonsModule));
             customTabTabPersistencePolicy = DoubleCheck.reentrantCheck(customTabTabPersistencePolicy, local);
           }
         }
@@ -1747,7 +1776,7 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
         synchronized (local) {
           local = splashController;
           if (local instanceof MemoizedSentinel) {
-            local = new SplashController(ChromeActivityCommonsModule_ProvideChromeActivityFactory.provideChromeActivity(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideLifecycleDispatcherFactory.provideLifecycleDispatcher(chromeActivityCommonsModule), resolveTabObserverRegistrar(), customTabOrientationController(), resolveTwaFinishHandler(), resolveTabProvider(), DoubleCheck.lazy(compositorViewHolderProvider()));
+            local = new SplashController(ChromeActivityCommonsModule_ProvideActivityFactory.provideActivity(chromeActivityCommonsModule), ChromeActivityCommonsModule_ProvideLifecycleDispatcherFactory.provideLifecycleDispatcher(chromeActivityCommonsModule), resolveTabObserverRegistrar(), customTabOrientationController(), resolveTwaFinishHandler(), resolveTabProvider(), DoubleCheck.lazy(compositorViewHolderProvider()));
             splashController = DoubleCheck.reentrantCheck(splashController, local);
           }
         }
@@ -1790,35 +1819,35 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
           case 7: // org.chromium.chrome.browser.compositor.bottombar.ephemeraltab.EphemeralTabCoordinator 
           return (T) BaseCustomTabActivityComponentImpl.this.ephemeralTabCoordinator();
 
-          case 8: // org.chromium.chrome.browser.customtabs.content.DefaultCustomTabIntentHandlingStrategy 
+          case 8: // org.chromium.chrome.browser.ui.messages.snackbar.SnackbarManager 
+          return (T) ChromeActivityCommonsModule_ProvideSnackbarManagerFactory.provideSnackbarManager(BaseCustomTabActivityComponentImpl.this.chromeActivityCommonsModule);
+
+          case 9: // org.chromium.chrome.browser.customtabs.content.DefaultCustomTabIntentHandlingStrategy 
           return (T) BaseCustomTabActivityComponentImpl.this.defaultCustomTabIntentHandlingStrategy();
 
-          case 9: // org.chromium.chrome.browser.browserservices.trustedwebactivityui.TwaIntentHandlingStrategy 
+          case 10: // org.chromium.chrome.browser.browserservices.trustedwebactivityui.TwaIntentHandlingStrategy 
           return (T) BaseCustomTabActivityComponentImpl.this.twaIntentHandlingStrategy();
 
-          case 10: // org.chromium.chrome.browser.customtabs.features.toolbar.CustomTabToolbarCoordinator 
+          case 11: // org.chromium.chrome.browser.customtabs.features.toolbar.CustomTabToolbarCoordinator 
           return (T) BaseCustomTabActivityComponentImpl.this.resolveToolbarCoordinator();
 
-          case 11: // org.chromium.chrome.browser.customtabs.CustomTabBottomBarDelegate 
+          case 12: // org.chromium.chrome.browser.customtabs.CustomTabBottomBarDelegate 
           return (T) BaseCustomTabActivityComponentImpl.this.resolveBottomBarDelegate();
 
-          case 12: // org.chromium.chrome.browser.browserservices.ui.controller.webapps.WebApkVerifier 
+          case 13: // org.chromium.chrome.browser.browserservices.ui.controller.webapps.WebApkVerifier 
           return (T) BaseCustomTabActivityComponentImpl.this.webApkVerifier();
 
-          case 13: // org.chromium.chrome.browser.browserservices.ui.controller.webapps.AddToHomescreenVerifier 
+          case 14: // org.chromium.chrome.browser.browserservices.ui.controller.webapps.AddToHomescreenVerifier 
           return (T) BaseCustomTabActivityComponentImpl.this.addToHomescreenVerifier();
 
-          case 14: // org.chromium.chrome.browser.browserservices.ui.controller.trustedwebactivity.TwaVerifier 
+          case 15: // org.chromium.chrome.browser.browserservices.ui.controller.trustedwebactivity.TwaVerifier 
           return (T) BaseCustomTabActivityComponentImpl.this.twaVerifier();
 
-          case 15: // org.chromium.chrome.browser.browserservices.ui.controller.EmptyVerifier 
+          case 16: // org.chromium.chrome.browser.browserservices.ui.controller.EmptyVerifier 
           return (T) BaseCustomTabActivityComponentImpl.this.emptyVerifier();
 
-          case 16: // org.chromium.chrome.browser.customtabs.features.ImmersiveModeController 
+          case 17: // org.chromium.chrome.browser.customtabs.features.ImmersiveModeController 
           return (T) BaseCustomTabActivityComponentImpl.this.immersiveModeController();
-
-          case 17: // org.chromium.chrome.browser.ui.messages.snackbar.SnackbarManager 
-          return (T) ChromeActivityCommonsModule_ProvideSnackbarManagerFactory.provideSnackbarManager(BaseCustomTabActivityComponentImpl.this.chromeActivityCommonsModule);
 
           case 18: // org.chromium.chrome.browser.metrics.ActivityTabStartupMetricsTracker 
           return (T) ChromeActivityCommonsModule_ProvideActivityTabStartupMetricsTrackerFactory.provideActivityTabStartupMetricsTracker(BaseCustomTabActivityComponentImpl.this.chromeActivityCommonsModule);
@@ -1826,20 +1855,20 @@ public final class DaggerChromeAppComponent implements ChromeAppComponent {
           case 19: // org.chromium.chrome.browser.webapps.WebApkUpdateManager 
           return (T) BaseCustomTabActivityComponentImpl.this.webApkUpdateManager();
 
-          case 20: // org.chromium.chrome.browser.browserservices.ui.view.DisclosureInfobar 
+          case 20: // org.chromium.chrome.browser.browserservices.ui.controller.trustedwebactivity.ClientAppDataRecorder 
+          return (T) BaseCustomTabActivityComponentImpl.this.clientAppDataRecorder();
+
+          case 21: // org.chromium.chrome.browser.browserservices.ui.view.DisclosureInfobar 
           return (T) BaseCustomTabActivityComponentImpl.this.disclosureInfobar();
 
-          case 21: // org.chromium.chrome.browser.browserservices.ui.view.DisclosureSnackbar 
+          case 22: // org.chromium.chrome.browser.browserservices.ui.view.DisclosureSnackbar 
           return (T) BaseCustomTabActivityComponentImpl.this.disclosureSnackbar();
 
-          case 22: // org.chromium.chrome.browser.browserservices.ui.view.DisclosureNotification 
+          case 23: // org.chromium.chrome.browser.browserservices.ui.view.DisclosureNotification 
           return (T) BaseCustomTabActivityComponentImpl.this.disclosureNotification();
 
-          case 23: // org.chromium.chrome.browser.browserservices.ui.splashscreen.trustedwebactivity.TwaSplashController 
+          case 24: // org.chromium.chrome.browser.browserservices.ui.splashscreen.trustedwebactivity.TwaSplashController 
           return (T) BaseCustomTabActivityComponentImpl.this.twaSplashController();
-
-          case 24: // org.chromium.chrome.browser.browserservices.ui.controller.trustedwebactivity.ClientAppDataRecorder 
-          return (T) BaseCustomTabActivityComponentImpl.this.clientAppDataRecorder();
 
           default: throw new AssertionError(id);
         }

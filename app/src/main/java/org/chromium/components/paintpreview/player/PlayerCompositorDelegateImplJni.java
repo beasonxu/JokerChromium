@@ -15,7 +15,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class PlayerCompositorDelegateImplJni implements PlayerCompositorDelegateImpl.Natives {
+class PlayerCompositorDelegateImplJni implements PlayerCompositorDelegateImpl.Natives {
   private static PlayerCompositorDelegateImpl.Natives testInstance;
 
   public static final JniStaticTestMocker<PlayerCompositorDelegateImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.paintpreview.player.PlayerCompositorDelegateImpl.Natives>() {
@@ -31,9 +31,9 @@ final class PlayerCompositorDelegateImplJni implements PlayerCompositorDelegateI
 
   @Override
   public long initialize(PlayerCompositorDelegateImpl caller, long nativePaintPreviewBaseService,
-      byte[] proto, String urlSpec, String directoryKey, boolean mainFrameMode,
+      long captureResultPtr, String urlSpec, String directoryKey, boolean mainFrameMode,
       Callback<Integer> compositorErrorCallback, boolean isLowMemory) {
-    return (long)GEN_JNI.org_chromium_components_paintpreview_player_PlayerCompositorDelegateImpl_initialize(caller, nativePaintPreviewBaseService, proto, urlSpec, directoryKey, mainFrameMode, compositorErrorCallback, isLowMemory);
+    return (long)GEN_JNI.org_chromium_components_paintpreview_player_PlayerCompositorDelegateImpl_initialize(caller, nativePaintPreviewBaseService, captureResultPtr, urlSpec, directoryKey, mainFrameMode, compositorErrorCallback, isLowMemory);
   }
 
   @Override
@@ -62,6 +62,11 @@ final class PlayerCompositorDelegateImplJni implements PlayerCompositorDelegateI
   public String onClick(long nativePlayerCompositorDelegateAndroid, UnguessableToken frameGuid,
       int x, int y) {
     return (String)GEN_JNI.org_chromium_components_paintpreview_player_PlayerCompositorDelegateImpl_onClick(nativePlayerCompositorDelegateAndroid, frameGuid, x, y);
+  }
+
+  @Override
+  public int[] getRootFrameOffsets(long nativePlayerCompositorDelegateAndroid) {
+    return (int[])GEN_JNI.org_chromium_components_paintpreview_player_PlayerCompositorDelegateImpl_getRootFrameOffsets(nativePlayerCompositorDelegateAndroid);
   }
 
   @Override

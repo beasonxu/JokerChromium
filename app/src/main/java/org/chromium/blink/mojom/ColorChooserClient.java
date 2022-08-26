@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ColorChooserClient extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface ColorChooserClient extends org.chromium.mojo.bindings.Interface
     }
 
     Manager<ColorChooserClient, ColorChooserClient.Proxy> MANAGER = ColorChooserClient_Internal.MANAGER;
-
 
     void didChooseColor(
 int color);

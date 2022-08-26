@@ -13,8 +13,19 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class QuotaStatusCode {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        QuotaStatusCode.OK,
+        QuotaStatusCode.ERROR_NOT_SUPPORTED,
+        QuotaStatusCode.ERROR_INVALID_MODIFICATION,
+        QuotaStatusCode.ERROR_INVALID_ACCESS,
+        QuotaStatusCode.ERROR_ABORT,
+        QuotaStatusCode.UNKNOWN})
+    public @interface EnumType {}
 
     public static final int OK = 0;
     public static final int ERROR_NOT_SUPPORTED = 9;

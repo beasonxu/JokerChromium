@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface AudioLog extends org.chromium.mojo.bindings.Interface {
 
@@ -23,40 +25,32 @@ public interface AudioLog extends org.chromium.mojo.bindings.Interface {
 
     Manager<AudioLog, AudioLog.Proxy> MANAGER = AudioLog_Internal.MANAGER;
 
-
     void onCreated(
 AudioParameters params, String deviceId);
-
 
 
     void onStarted(
 );
 
 
-
     void onStopped(
 );
-
 
 
     void onClosed(
 );
 
 
-
     void onError(
 );
-
 
 
     void onSetVolume(
 double volume);
 
 
-
     void onProcessingStateChanged(
 String message);
-
 
 
     void onLogMessage(

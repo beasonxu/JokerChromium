@@ -288,8 +288,8 @@ public interface NigoriSpecificsOrBuilder extends
 
   /**
    * <pre>
-   * The time (in epoch milliseconds) at which the keystore migration was
-   * performed.
+   * The time (in milliseconds since Unix epoch) at which the keystore migration
+   * was performed.
    * </pre>
    *
    * <code>optional int64 keystore_migration_time = 32;</code>
@@ -298,8 +298,8 @@ public interface NigoriSpecificsOrBuilder extends
   boolean hasKeystoreMigrationTime();
   /**
    * <pre>
-   * The time (in epoch milliseconds) at which the keystore migration was
-   * performed.
+   * The time (in milliseconds since Unix epoch) at which the keystore migration
+   * was performed.
    * </pre>
    *
    * <code>optional int64 keystore_migration_time = 32;</code>
@@ -309,9 +309,9 @@ public interface NigoriSpecificsOrBuilder extends
 
   /**
    * <pre>
-   * The time (in epoch milliseconds) at which a custom passphrase was set.
-   * Note: this field may not be set if the custom passphrase was applied before
-   * this field was introduced.
+   * The time (in milliseconds since Unix epoch) at which a custom passphrase
+   * was set. Note: this field may not be set if the custom passphrase was
+   * applied before this field was introduced.
    * </pre>
    *
    * <code>optional int64 custom_passphrase_time = 33;</code>
@@ -320,9 +320,9 @@ public interface NigoriSpecificsOrBuilder extends
   boolean hasCustomPassphraseTime();
   /**
    * <pre>
-   * The time (in epoch milliseconds) at which a custom passphrase was set.
-   * Note: this field may not be set if the custom passphrase was applied before
-   * this field was introduced.
+   * The time (in milliseconds since Unix epoch) at which a custom passphrase
+   * was set. Note: this field may not be set if the custom passphrase was
+   * applied before this field was introduced.
    * </pre>
    *
    * <code>optional int64 custom_passphrase_time = 33;</code>
@@ -595,4 +595,34 @@ public interface NigoriSpecificsOrBuilder extends
    * @return The encryptOsPreferences.
    */
   boolean getEncryptOsPreferences();
+
+  /**
+   * <code>optional .sync_pb.NigoriSpecifics.TrustedVaultDebugInfo trusted_vault_debug_info = 50;</code>
+   * @return Whether the trustedVaultDebugInfo field is set.
+   */
+  boolean hasTrustedVaultDebugInfo();
+  /**
+   * <code>optional .sync_pb.NigoriSpecifics.TrustedVaultDebugInfo trusted_vault_debug_info = 50;</code>
+   * @return The trustedVaultDebugInfo.
+   */
+  org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo getTrustedVaultDebugInfo();
+
+  /**
+   * <pre>
+   * Boolean corresponding to whether workspace desk should be encrypted.
+   * </pre>
+   *
+   * <code>optional bool encrypt_workspace_desk = 51;</code>
+   * @return Whether the encryptWorkspaceDesk field is set.
+   */
+  boolean hasEncryptWorkspaceDesk();
+  /**
+   * <pre>
+   * Boolean corresponding to whether workspace desk should be encrypted.
+   * </pre>
+   *
+   * <code>optional bool encrypt_workspace_desk = 51;</code>
+   * @return The encryptWorkspaceDesk.
+   */
+  boolean getEncryptWorkspaceDesk();
 }

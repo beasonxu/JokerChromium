@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface IdleMonitor extends org.chromium.mojo.bindings.Interface {
 
@@ -23,9 +25,8 @@ public interface IdleMonitor extends org.chromium.mojo.bindings.Interface {
 
     Manager<IdleMonitor, IdleMonitor.Proxy> MANAGER = IdleMonitor_Internal.MANAGER;
 
-
     void update(
-IdleState state);
+IdleState state, boolean isOverriddenByDevtools);
 
 
 }

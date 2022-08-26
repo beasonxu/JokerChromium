@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface CustomProxyConfigClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,18 +25,18 @@ public interface CustomProxyConfigClient extends org.chromium.mojo.bindings.Inte
 
     Manager<CustomProxyConfigClient, CustomProxyConfigClient.Proxy> MANAGER = CustomProxyConfigClient_Internal.MANAGER;
 
-
     void onCustomProxyConfigUpdated(
-CustomProxyConfig proxyConfig);
+CustomProxyConfig proxyConfig, 
+OnCustomProxyConfigUpdated_Response callback);
 
+    interface OnCustomProxyConfigUpdated_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void markProxiesAsBad(
 org.chromium.mojo_base.mojom.TimeDelta bypassDuration, ProxyList badProxies, 
-MarkProxiesAsBadResponse callback);
+MarkProxiesAsBad_Response callback);
 
-    interface MarkProxiesAsBadResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface MarkProxiesAsBad_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void clearBadProxiesCache(

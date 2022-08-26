@@ -4,7 +4,7 @@
 
 package org.chromium.chrome.browser.ui.system;
 
-import android.content.res.Resources;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.view.View;
@@ -15,13 +15,16 @@ import androidx.annotation.Nullable;
 
 import org.chromium.base.ApiCompatibilityUtils;
 import org.chromium.base.CallbackController;
-import org.chromium.base.supplier.OneshotSupplier;
+import org.chromium.base.supplier.ObservableSupplier;
 import org.chromium.chrome.R;
 import org.chromium.chrome.browser.ActivityTabProvider;
-import org.chromium.chrome.browser.compositor.layouts.EmptyOverviewModeObserver;
-import org.chromium.chrome.browser.compositor.layouts.OverviewModeBehavior;
+import org.chromium.chrome.browser.layouts.FilterLayoutStateObserver;
+import org.chromium.chrome.browser.layouts.LayoutManager;
+import org.chromium.chrome.browser.layouts.LayoutStateProvider;
+import org.chromium.chrome.browser.layouts.LayoutStateProvider.LayoutStateObserver;
+import org.chromium.chrome.browser.layouts.LayoutType;
 import org.chromium.chrome.browser.lifecycle.ActivityLifecycleDispatcher;
-import org.chromium.chrome.browser.lifecycle.Destroyable;
+import org.chromium.chrome.browser.lifecycle.DestroyObserver;
 import org.chromium.chrome.browser.ntp.NewTabPage;
 import org.chromium.chrome.browser.status_indicator.StatusIndicatorCoordinator;
 import org.chromium.chrome.browser.tab.Tab;
@@ -41,7 +44,7 @@ import org.chromium.ui.util.ColorUtils;
  * Maintains the status bar color for a {@link Window}.
  */
 public class StatusBarColorController
-        implements Destroyable, TopToolbarCoordinator.UrlExpansionObserver,
+        implements DestroyObserver, TopToolbarCoordinator.UrlExpansionObserver,
                    StatusIndicatorCoordinator.StatusIndicatorObserver {
     public static final @ColorInt int UNDEFINED_STATUS_BAR_COLOR = Color.TRANSPARENT;
     public static final @ColorInt int DEFAULT_STATUS_BAR_COLOR = Color.argb(0x01, 0, 0, 0);
@@ -67,7 +70,7 @@ public class StatusBarColorController
 
     private final Window mWindow;
     private final boolean mIsTablet;
-    private @Nullable OverviewModeBehavior mOverviewModeBehavior;
+    private @Nullable LayoutStateProvider mLayoutStateProvider;
     private final StatusBarColorProvider mStatusBarColorProvider;
     private final ActivityTabProvider.ActivityTabTabObserver mStatusBarColorTabObserver;
     private final TabModelSelectorObserver mTabModelSelectorObserver;
@@ -79,7 +82,7 @@ public class StatusBarColorController
 
     private @Nullable TabModelSelector mTabModelSelector;
     private CallbackController mCallbackController = new CallbackController();
-    private @Nullable OverviewModeBehavior.OverviewModeObserver mOverviewModeObserver;
+    private @Nullable LayoutStateObserver mLayoutStateObserver;
     private @Nullable Tab mCurrentTab;
     private boolean mIsInOverviewMode;
     private boolean mIsIncognito;
@@ -97,26 +100,26 @@ public class StatusBarColorController
      *
      * @param window The Android app window, used to access decor view and set the status color.
      * @param isTablet Whether the current context is on a tablet.
-     * @param resources An Android resources object, used to load colors.
+     * @param context The Android context used to load colors.
      * @param statusBarColorProvider An implementation of {@link StatusBarColorProvider}.
-     * @param overviewModeBehaviorSupplier Supplies the overview mode behavior.
+     * @param layoutManagerSupplier Supplies the layout manager.
      * @param activityLifecycleDispatcher Allows observation of the activity lifecycle.
      * @param tabProvider The {@link ActivityTabProvider} to get current tab of the activity.
      * @param topUiThemeColorProvider The {@link ThemeColorProvider} for top UI.
      */
-    public StatusBarColorController(Window window, boolean isTablet, Resources resources,
+    public StatusBarColorController(Window window, boolean isTablet, Context context,
             StatusBarColorProvider statusBarColorProvider,
-            OneshotSupplier<OverviewModeBehavior> overviewModeBehaviorSupplier,
+            ObservableSupplier<LayoutManager> layoutManagerSupplier,
             ActivityLifecycleDispatcher activityLifecycleDispatcher,
             ActivityTabProvider tabProvider, TopUiThemeColorProvider topUiThemeColorProvider) {
         mWindow = window;
         mIsTablet = isTablet;
         mStatusBarColorProvider = statusBarColorProvider;
 
-        mStandardPrimaryBgColor = ChromeColors.getPrimaryBackgroundColor(resources, false);
-        mIncognitoPrimaryBgColor = ChromeColors.getPrimaryBackgroundColor(resources, true);
-        mStandardDefaultThemeColor = ChromeColors.getDefaultThemeColor(resources, false);
-        mIncognitoDefaultThemeColor = ChromeColors.getDefaultThemeColor(resources, true);
+        mStandardPrimaryBgColor = ChromeColors.getPrimaryBackgroundColor(context, false);
+        mIncognitoPrimaryBgColor = ChromeColors.getPrimaryBackgroundColor(context, true);
+        mStandardDefaultThemeColor = ChromeColors.getDefaultThemeColor(context, false);
+        mIncognitoDefaultThemeColor = ChromeColors.getDefaultThemeColor(context, true);
 
         mStatusIndicatorColor = UNDEFINED_STATUS_BAR_COLOR;
 
@@ -184,38 +187,38 @@ public class StatusBarColorController
             }
         };
 
-        if (overviewModeBehaviorSupplier != null) {
-            overviewModeBehaviorSupplier.onAvailable(
-                    mCallbackController.makeCancelable(overviewModeBehavior -> {
-                        assert overviewModeBehavior != null;
-                        mOverviewModeBehavior = overviewModeBehavior;
-                        mOverviewModeObserver = new EmptyOverviewModeObserver() {
+        if (layoutManagerSupplier != null) {
+            layoutManagerSupplier.addObserver(mCallbackController.makeCancelable(layoutManager -> {
+                assert layoutManager != null;
+                mLayoutStateProvider = layoutManager;
+                mLayoutStateObserver = new FilterLayoutStateObserver(
+                        LayoutType.TAB_SWITCHER, new LayoutStateObserver() {
                             @Override
-                            public void onOverviewModeStartedShowing(boolean showToolbar) {
+                            public void onStartedShowing(int layoutType, boolean showToolbar) {
                                 mIsInOverviewMode = true;
                                 updateStatusBarColor();
                             }
 
                             @Override
-                            public void onOverviewModeFinishedHiding() {
+                            public void onFinishedHiding(int layoutType) {
                                 mIsInOverviewMode = false;
                                 updateStatusBarColor();
                             }
-                        };
-                        mOverviewModeBehavior.addOverviewModeObserver(mOverviewModeObserver);
-                    }));
+                        });
+                mLayoutStateProvider.addObserver(mLayoutStateObserver);
+            }));
         }
 
         activityLifecycleDispatcher.register(this);
         mTopUiThemeColor = topUiThemeColorProvider;
     }
 
-    // Destroyable implementation.
+    // DestroyObserver implementation.
     @Override
-    public void destroy() {
+    public void onDestroy() {
         mStatusBarColorTabObserver.destroy();
-        if (mOverviewModeBehavior != null) {
-            mOverviewModeBehavior.removeOverviewModeObserver(mOverviewModeObserver);
+        if (mLayoutStateProvider != null) {
+            mLayoutStateProvider.removeObserver(mLayoutStateObserver);
         }
         if (mTabModelSelector != null) {
             mTabModelSelector.removeObserver(mTabModelSelectorObserver);
@@ -301,7 +304,9 @@ public class StatusBarColorController
         if (mIsInOverviewMode) {
             if (shouldDarkenStatusBarColor()) return Color.BLACK;
 
-            return (mIsIncognito && ToolbarColors.canUseIncognitoToolbarThemeColorInOverview())
+            return (mIsIncognito
+                           && ToolbarColors.canUseIncognitoToolbarThemeColorInOverview(
+                                   mWindow.getContext()))
                     ? mIncognitoPrimaryBgColor
                     : mStandardPrimaryBgColor;
         }
@@ -369,8 +374,8 @@ public class StatusBarColorController
 
         if (mScrimColor == 0) {
             final View root = mWindow.getDecorView().getRootView();
-            final Resources resources = root.getResources();
-            mScrimColor = ApiCompatibilityUtils.getColor(resources, R.color.black_alpha_65);
+            final Context context = root.getContext();
+            mScrimColor = context.getColor(R.color.default_scrim_color);
         }
         // Apply a color overlay if the scrim is showing.
         float scrimColorAlpha = (mScrimColor >>> 24) / 255f;

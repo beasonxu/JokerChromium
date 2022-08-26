@@ -5,6 +5,7 @@ import dagger.internal.Factory;
 import javax.annotation.Generated;
 import javax.inject.Provider;
 import org.chromium.chrome.browser.lifecycle.ActivityLifecycleDispatcher;
+import org.chromium.ui.base.WindowAndroid;
 
 @Generated(
     value = "dagger.internal.codegen.ComponentProcessor",
@@ -19,26 +20,29 @@ public final class ImmersiveModeController_Factory implements Factory<ImmersiveM
 
   private final Provider<Activity> activityProvider;
 
+  private final Provider<WindowAndroid> windowProvider;
+
   public ImmersiveModeController_Factory(
       Provider<ActivityLifecycleDispatcher> lifecycleDispatcherProvider,
-      Provider<Activity> activityProvider) {
+      Provider<Activity> activityProvider, Provider<WindowAndroid> windowProvider) {
     this.lifecycleDispatcherProvider = lifecycleDispatcherProvider;
     this.activityProvider = activityProvider;
+    this.windowProvider = windowProvider;
   }
 
   @Override
   public ImmersiveModeController get() {
-    return newInstance(lifecycleDispatcherProvider.get(), activityProvider.get());
+    return newInstance(lifecycleDispatcherProvider.get(), activityProvider.get(), windowProvider.get());
   }
 
   public static ImmersiveModeController_Factory create(
       Provider<ActivityLifecycleDispatcher> lifecycleDispatcherProvider,
-      Provider<Activity> activityProvider) {
-    return new ImmersiveModeController_Factory(lifecycleDispatcherProvider, activityProvider);
+      Provider<Activity> activityProvider, Provider<WindowAndroid> windowProvider) {
+    return new ImmersiveModeController_Factory(lifecycleDispatcherProvider, activityProvider, windowProvider);
   }
 
   public static ImmersiveModeController newInstance(ActivityLifecycleDispatcher lifecycleDispatcher,
-      Activity activity) {
-    return new ImmersiveModeController(lifecycleDispatcher, activity);
+      Activity activity, WindowAndroid window) {
+    return new ImmersiveModeController(lifecycleDispatcher, activity, window);
   }
 }

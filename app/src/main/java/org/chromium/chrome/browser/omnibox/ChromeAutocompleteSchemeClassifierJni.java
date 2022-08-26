@@ -10,7 +10,7 @@ import org.chromium.chrome.browser.profiles.Profile;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ChromeAutocompleteSchemeClassifierJni implements ChromeAutocompleteSchemeClassifier.Natives {
+public class ChromeAutocompleteSchemeClassifierJni implements ChromeAutocompleteSchemeClassifier.Natives {
   private static ChromeAutocompleteSchemeClassifier.Natives testInstance;
 
   public static final JniStaticTestMocker<ChromeAutocompleteSchemeClassifier.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.omnibox.ChromeAutocompleteSchemeClassifier.Natives>() {

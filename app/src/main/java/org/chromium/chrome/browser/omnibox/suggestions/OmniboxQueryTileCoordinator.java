@@ -12,9 +12,6 @@ import android.view.ViewGroup;
 
 import org.chromium.base.Callback;
 import org.chromium.base.task.PostTask;
-import org.chromium.chrome.browser.image_fetcher.ImageFetcher;
-import org.chromium.chrome.browser.image_fetcher.ImageFetcherConfig;
-import org.chromium.chrome.browser.image_fetcher.ImageFetcherFactory;
 import org.chromium.chrome.browser.profiles.Profile;
 import org.chromium.components.browser_ui.util.ConversionUtils;
 import org.chromium.components.browser_ui.util.GlobalDiscardableReferencePool;
@@ -22,6 +19,9 @@ import org.chromium.components.browser_ui.widget.image_tiles.ImageTile;
 import org.chromium.components.browser_ui.widget.image_tiles.ImageTileCoordinator;
 import org.chromium.components.browser_ui.widget.image_tiles.ImageTileCoordinatorFactory;
 import org.chromium.components.browser_ui.widget.image_tiles.TileConfig;
+import org.chromium.components.image_fetcher.ImageFetcher;
+import org.chromium.components.image_fetcher.ImageFetcherConfig;
+import org.chromium.components.image_fetcher.ImageFetcherFactory;
 import org.chromium.components.query_tiles.QueryTile;
 import org.chromium.components.query_tiles.QueryTileConstants;
 import org.chromium.components.query_tiles.TileUmaLogger;
@@ -77,7 +77,7 @@ public class OmniboxQueryTileCoordinator {
         LayoutInflater inflater =
                 (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         ViewGroup suggestionView = (ViewGroup) inflater.inflate(
-                org.chromium.chrome.R.layout.omnibox_query_tiles_suggestion, null);
+                org.chromium.chrome.browser.omnibox.R.layout.omnibox_query_tiles_suggestion, null);
 
         View tilesView = getTileCoordinator().getView();
         if (tilesView.getParent() != null) UiUtils.removeViewFromParent(tilesView);
@@ -128,7 +128,7 @@ public class OmniboxQueryTileCoordinator {
     private void getVisuals(ImageTile tile, Callback<List<Bitmap>> callback) {
         if (mTileWidth == null) {
             mTileWidth = mContext.getResources().getDimensionPixelSize(
-                    org.chromium.chrome.R.dimen.tile_ideal_width);
+                    org.chromium.chrome.browser.omnibox.R.dimen.tile_ideal_width);
         }
 
         QueryTile queryTile = (QueryTile) tile;
@@ -159,7 +159,8 @@ public class OmniboxQueryTileCoordinator {
      */
     private ImageFetcher createImageFetcher(Profile profile) {
         return ImageFetcherFactory.createImageFetcher(ImageFetcherConfig.IN_MEMORY_WITH_DISK_CACHE,
-                profile, GlobalDiscardableReferencePool.getReferencePool(), MAX_IMAGE_CACHE_SIZE);
+                profile.getProfileKey(), GlobalDiscardableReferencePool.getReferencePool(),
+                MAX_IMAGE_CACHE_SIZE);
     }
 
     private void onTileClicked(ImageTile tile) {

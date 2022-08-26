@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface SharedWorkerConnector extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface SharedWorkerConnector extends org.chromium.mojo.bindings.Interf
     }
 
     Manager<SharedWorkerConnector, SharedWorkerConnector.Proxy> MANAGER = SharedWorkerConnector_Internal.MANAGER;
-
 
     void connect(
 SharedWorkerInfo info, SharedWorkerClient client, int creationContextType, MessagePortDescriptor messagePort, BlobUrlToken blobUrlToken, long clientUkmSourceId);

@@ -1,6 +1,7 @@
 package org.chromium.mojo.system.impl;
 
 import java.lang.Integer;
+import java.lang.Long;
 import java.lang.Override;
 import java.nio.ByteBuffer;
 import javax.annotation.Generated;
@@ -15,7 +16,7 @@ import org.chromium.mojo.system.ResultAnd;
 @Generated("org.chromium.jni_generator.JniProcessor")
 @MainDex
 @CheckDiscard("crbug.com/993421")
-final class CoreImplJni implements CoreImpl.Natives {
+class CoreImplJni implements CoreImpl.Natives {
   private static CoreImpl.Natives testInstance;
 
   public static final JniStaticTestMocker<CoreImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.mojo.system.impl.CoreImpl.Natives>() {
@@ -34,86 +35,87 @@ final class CoreImplJni implements CoreImpl.Natives {
   }
 
   @Override
-  public ResultAnd<CoreImpl.IntegerPair> createMessagePipe(CoreImpl caller,
+  public ResultAnd<CoreImpl.RawHandlePair> createMessagePipe(CoreImpl caller,
       ByteBuffer optionsBuffer) {
-    return (ResultAnd<CoreImpl.IntegerPair>)GEN_JNI.org_chromium_mojo_system_impl_CoreImpl_createMessagePipe(caller, optionsBuffer);
+    return (ResultAnd<CoreImpl.RawHandlePair>)GEN_JNI.org_chromium_mojo_system_impl_CoreImpl_createMessagePipe(caller, optionsBuffer);
   }
 
   @Override
-  public ResultAnd<CoreImpl.IntegerPair> createDataPipe(CoreImpl caller, ByteBuffer optionsBuffer) {
-    return (ResultAnd<CoreImpl.IntegerPair>)GEN_JNI.org_chromium_mojo_system_impl_CoreImpl_createDataPipe(caller, optionsBuffer);
+  public ResultAnd<CoreImpl.RawHandlePair> createDataPipe(CoreImpl caller,
+      ByteBuffer optionsBuffer) {
+    return (ResultAnd<CoreImpl.RawHandlePair>)GEN_JNI.org_chromium_mojo_system_impl_CoreImpl_createDataPipe(caller, optionsBuffer);
   }
 
   @Override
-  public ResultAnd<Integer> createSharedBuffer(CoreImpl caller, ByteBuffer optionsBuffer,
+  public ResultAnd<Long> createSharedBuffer(CoreImpl caller, ByteBuffer optionsBuffer,
       long numBytes) {
-    return (ResultAnd<Integer>)GEN_JNI.org_chromium_mojo_system_impl_CoreImpl_createSharedBuffer(caller, optionsBuffer, numBytes);
+    return (ResultAnd<Long>)GEN_JNI.org_chromium_mojo_system_impl_CoreImpl_createSharedBuffer(caller, optionsBuffer, numBytes);
   }
 
   @Override
-  public int close(CoreImpl caller, int mojoHandle) {
+  public int close(CoreImpl caller, long mojoHandle) {
     return (int)GEN_JNI.org_chromium_mojo_system_impl_CoreImpl_close(caller, mojoHandle);
   }
 
   @Override
-  public int queryHandleSignalsState(CoreImpl caller, int mojoHandle,
+  public int queryHandleSignalsState(CoreImpl caller, long mojoHandle,
       ByteBuffer signalsStateBuffer) {
     return (int)GEN_JNI.org_chromium_mojo_system_impl_CoreImpl_queryHandleSignalsState(caller, mojoHandle, signalsStateBuffer);
   }
 
   @Override
-  public int writeMessage(CoreImpl caller, int mojoHandle, ByteBuffer bytes, int numBytes,
+  public int writeMessage(CoreImpl caller, long mojoHandle, ByteBuffer bytes, int numBytes,
       ByteBuffer handlesBuffer, int flags) {
     return (int)GEN_JNI.org_chromium_mojo_system_impl_CoreImpl_writeMessage(caller, mojoHandle, bytes, numBytes, handlesBuffer, flags);
   }
 
   @Override
-  public ResultAnd<MessagePipeHandle.ReadMessageResult> readMessage(CoreImpl caller, int mojoHandle,
-      int flags) {
+  public ResultAnd<MessagePipeHandle.ReadMessageResult> readMessage(CoreImpl caller,
+      long mojoHandle, int flags) {
     return (ResultAnd<MessagePipeHandle.ReadMessageResult>)GEN_JNI.org_chromium_mojo_system_impl_CoreImpl_readMessage(caller, mojoHandle, flags);
   }
 
   @Override
-  public ResultAnd<Integer> readData(CoreImpl caller, int mojoHandle, ByteBuffer elements,
+  public ResultAnd<Integer> readData(CoreImpl caller, long mojoHandle, ByteBuffer elements,
       int elementsSize, int flags) {
     return (ResultAnd<Integer>)GEN_JNI.org_chromium_mojo_system_impl_CoreImpl_readData(caller, mojoHandle, elements, elementsSize, flags);
   }
 
   @Override
-  public ResultAnd<ByteBuffer> beginReadData(CoreImpl caller, int mojoHandle, int numBytes,
+  public ResultAnd<ByteBuffer> beginReadData(CoreImpl caller, long mojoHandle, int numBytes,
       int flags) {
     return (ResultAnd<ByteBuffer>)GEN_JNI.org_chromium_mojo_system_impl_CoreImpl_beginReadData(caller, mojoHandle, numBytes, flags);
   }
 
   @Override
-  public int endReadData(CoreImpl caller, int mojoHandle, int numBytesRead) {
+  public int endReadData(CoreImpl caller, long mojoHandle, int numBytesRead) {
     return (int)GEN_JNI.org_chromium_mojo_system_impl_CoreImpl_endReadData(caller, mojoHandle, numBytesRead);
   }
 
   @Override
-  public ResultAnd<Integer> writeData(CoreImpl caller, int mojoHandle, ByteBuffer elements,
+  public ResultAnd<Integer> writeData(CoreImpl caller, long mojoHandle, ByteBuffer elements,
       int limit, int flags) {
     return (ResultAnd<Integer>)GEN_JNI.org_chromium_mojo_system_impl_CoreImpl_writeData(caller, mojoHandle, elements, limit, flags);
   }
 
   @Override
-  public ResultAnd<ByteBuffer> beginWriteData(CoreImpl caller, int mojoHandle, int numBytes,
+  public ResultAnd<ByteBuffer> beginWriteData(CoreImpl caller, long mojoHandle, int numBytes,
       int flags) {
     return (ResultAnd<ByteBuffer>)GEN_JNI.org_chromium_mojo_system_impl_CoreImpl_beginWriteData(caller, mojoHandle, numBytes, flags);
   }
 
   @Override
-  public int endWriteData(CoreImpl caller, int mojoHandle, int numBytesWritten) {
+  public int endWriteData(CoreImpl caller, long mojoHandle, int numBytesWritten) {
     return (int)GEN_JNI.org_chromium_mojo_system_impl_CoreImpl_endWriteData(caller, mojoHandle, numBytesWritten);
   }
 
   @Override
-  public ResultAnd<Integer> duplicate(CoreImpl caller, int mojoHandle, ByteBuffer optionsBuffer) {
-    return (ResultAnd<Integer>)GEN_JNI.org_chromium_mojo_system_impl_CoreImpl_duplicate(caller, mojoHandle, optionsBuffer);
+  public ResultAnd<Long> duplicate(CoreImpl caller, long mojoHandle, ByteBuffer optionsBuffer) {
+    return (ResultAnd<Long>)GEN_JNI.org_chromium_mojo_system_impl_CoreImpl_duplicate(caller, mojoHandle, optionsBuffer);
   }
 
   @Override
-  public ResultAnd<ByteBuffer> map(CoreImpl caller, int mojoHandle, long offset, long numBytes,
+  public ResultAnd<ByteBuffer> map(CoreImpl caller, long mojoHandle, long offset, long numBytes,
       int flags) {
     return (ResultAnd<ByteBuffer>)GEN_JNI.org_chromium_mojo_system_impl_CoreImpl_map(caller, mojoHandle, offset, numBytes, flags);
   }
@@ -129,8 +131,8 @@ final class CoreImplJni implements CoreImpl.Natives {
   }
 
   @Override
-  public int createPlatformHandle(int fd) {
-    return (int)GEN_JNI.org_chromium_mojo_system_impl_CoreImpl_createPlatformHandle(fd);
+  public long createPlatformHandle(int fd) {
+    return (long)GEN_JNI.org_chromium_mojo_system_impl_CoreImpl_createPlatformHandle(fd);
   }
 
   public static CoreImpl.Natives get() {

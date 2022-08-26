@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class QuotaManagerHost_Internal {
 
@@ -65,7 +67,7 @@ class QuotaManagerHost_Internal {
         @Override
         public void addChangeListener(
 QuotaChangeListener listener, 
-AddChangeListenerResponse callback) {
+AddChangeListener_Response callback) {
 
             QuotaManagerHostAddChangeListenerParams _message = new QuotaManagerHostAddChangeListenerParams();
 
@@ -87,7 +89,7 @@ AddChangeListenerResponse callback) {
         @Override
         public void queryStorageUsageAndQuota(
 int storageType, 
-QueryStorageUsageAndQuotaResponse callback) {
+QueryStorageUsageAndQuota_Response callback) {
 
             QuotaManagerHostQueryStorageUsageAndQuotaParams _message = new QuotaManagerHostQueryStorageUsageAndQuotaParams();
 
@@ -109,7 +111,7 @@ QueryStorageUsageAndQuotaResponse callback) {
         @Override
         public void requestStorageQuota(
 int storageType, long requestedSize, 
-RequestStorageQuotaResponse callback) {
+RequestStorageQuota_Response callback) {
 
             QuotaManagerHostRequestStorageQuotaParams _message = new QuotaManagerHostRequestStorageQuotaParams();
 
@@ -368,9 +370,9 @@ RequestStorageQuotaResponse callback) {
 
     static class QuotaManagerHostAddChangeListenerResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final QuotaManagerHost.AddChangeListenerResponse mCallback;
+        private final QuotaManagerHost.AddChangeListener_Response mCallback;
 
-        QuotaManagerHostAddChangeListenerResponseParamsForwardToCallback(QuotaManagerHost.AddChangeListenerResponse callback) {
+        QuotaManagerHostAddChangeListenerResponseParamsForwardToCallback(QuotaManagerHost.AddChangeListener_Response callback) {
             this.mCallback = callback;
         }
 
@@ -393,7 +395,7 @@ RequestStorageQuotaResponse callback) {
         }
     }
 
-    static class QuotaManagerHostAddChangeListenerResponseParamsProxyToResponder implements QuotaManagerHost.AddChangeListenerResponse {
+    static class QuotaManagerHostAddChangeListenerResponseParamsProxyToResponder implements QuotaManagerHost.AddChangeListener_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -577,9 +579,9 @@ RequestStorageQuotaResponse callback) {
 
     static class QuotaManagerHostQueryStorageUsageAndQuotaResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final QuotaManagerHost.QueryStorageUsageAndQuotaResponse mCallback;
+        private final QuotaManagerHost.QueryStorageUsageAndQuota_Response mCallback;
 
-        QuotaManagerHostQueryStorageUsageAndQuotaResponseParamsForwardToCallback(QuotaManagerHost.QueryStorageUsageAndQuotaResponse callback) {
+        QuotaManagerHostQueryStorageUsageAndQuotaResponseParamsForwardToCallback(QuotaManagerHost.QueryStorageUsageAndQuota_Response callback) {
             this.mCallback = callback;
         }
 
@@ -604,7 +606,7 @@ RequestStorageQuotaResponse callback) {
         }
     }
 
-    static class QuotaManagerHostQueryStorageUsageAndQuotaResponseParamsProxyToResponder implements QuotaManagerHost.QueryStorageUsageAndQuotaResponse {
+    static class QuotaManagerHostQueryStorageUsageAndQuotaResponseParamsProxyToResponder implements QuotaManagerHost.QueryStorageUsageAndQuota_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -795,9 +797,9 @@ RequestStorageQuotaResponse callback) {
 
     static class QuotaManagerHostRequestStorageQuotaResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final QuotaManagerHost.RequestStorageQuotaResponse mCallback;
+        private final QuotaManagerHost.RequestStorageQuota_Response mCallback;
 
-        QuotaManagerHostRequestStorageQuotaResponseParamsForwardToCallback(QuotaManagerHost.RequestStorageQuotaResponse callback) {
+        QuotaManagerHostRequestStorageQuotaResponseParamsForwardToCallback(QuotaManagerHost.RequestStorageQuota_Response callback) {
             this.mCallback = callback;
         }
 
@@ -822,7 +824,7 @@ RequestStorageQuotaResponse callback) {
         }
     }
 
-    static class QuotaManagerHostRequestStorageQuotaResponseParamsProxyToResponder implements QuotaManagerHost.RequestStorageQuotaResponse {
+    static class QuotaManagerHostRequestStorageQuotaResponseParamsProxyToResponder implements QuotaManagerHost.RequestStorageQuota_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

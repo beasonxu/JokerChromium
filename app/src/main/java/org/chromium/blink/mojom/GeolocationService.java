@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface GeolocationService extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface GeolocationService extends org.chromium.mojo.bindings.Interface
 
     Manager<GeolocationService, GeolocationService.Proxy> MANAGER = GeolocationService_Internal.MANAGER;
 
-
     void createGeolocation(
 org.chromium.mojo.bindings.InterfaceRequest<org.chromium.device.mojom.Geolocation> receiver, boolean userGesture, 
-CreateGeolocationResponse callback);
+CreateGeolocation_Response callback);
 
-    interface CreateGeolocationResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
+    interface CreateGeolocation_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
 }

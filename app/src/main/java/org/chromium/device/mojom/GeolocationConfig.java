@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface GeolocationConfig extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface GeolocationConfig extends org.chromium.mojo.bindings.Interface 
 
     Manager<GeolocationConfig, GeolocationConfig.Proxy> MANAGER = GeolocationConfig_Internal.MANAGER;
 
-
     void isHighAccuracyLocationBeingCaptured(
 
-IsHighAccuracyLocationBeingCapturedResponse callback);
+IsHighAccuracyLocationBeingCaptured_Response callback);
 
-    interface IsHighAccuracyLocationBeingCapturedResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
+    interface IsHighAccuracyLocationBeingCaptured_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
 }

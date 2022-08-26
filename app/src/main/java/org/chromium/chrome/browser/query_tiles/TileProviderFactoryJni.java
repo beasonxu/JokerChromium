@@ -11,7 +11,7 @@ import org.chromium.components.query_tiles.TileProvider;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class TileProviderFactoryJni implements TileProviderFactory.Natives {
+class TileProviderFactoryJni implements TileProviderFactory.Natives {
   private static TileProviderFactory.Natives testInstance;
 
   public static final JniStaticTestMocker<TileProviderFactory.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.query_tiles.TileProviderFactory.Natives>() {

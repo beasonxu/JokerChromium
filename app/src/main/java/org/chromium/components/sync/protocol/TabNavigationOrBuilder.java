@@ -387,47 +387,6 @@ public interface TabNavigationOrBuilder extends
 
   /**
    * <pre>
-   * A list of category identifiers for the URL.
-   * </pre>
-   *
-   * <code>repeated string content_pack_categories = 19;</code>
-   * @return A list containing the contentPackCategories.
-   */
-  java.util.List<java.lang.String>
-      getContentPackCategoriesList();
-  /**
-   * <pre>
-   * A list of category identifiers for the URL.
-   * </pre>
-   *
-   * <code>repeated string content_pack_categories = 19;</code>
-   * @return The count of contentPackCategories.
-   */
-  int getContentPackCategoriesCount();
-  /**
-   * <pre>
-   * A list of category identifiers for the URL.
-   * </pre>
-   *
-   * <code>repeated string content_pack_categories = 19;</code>
-   * @param index The index of the element to return.
-   * @return The contentPackCategories at the given index.
-   */
-  java.lang.String getContentPackCategories(int index);
-  /**
-   * <pre>
-   * A list of category identifiers for the URL.
-   * </pre>
-   *
-   * <code>repeated string content_pack_categories = 19;</code>
-   * @param index The index of the element to return.
-   * @return The contentPackCategories at the given index.
-   */
-  com.google.protobuf.ByteString
-      getContentPackCategoriesBytes(int index);
-
-  /**
-   * <pre>
    * The status code from the last navigation.
    * </pre>
    *

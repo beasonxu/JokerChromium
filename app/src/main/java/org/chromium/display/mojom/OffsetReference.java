@@ -13,8 +13,15 @@
 
 package org.chromium.display.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class OffsetReference {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        OffsetReference.TOP_LEFT,
+        OffsetReference.BOTTOM_RIGHT})
+    public @interface EnumType {}
 
     public static final int TOP_LEFT = 0;
     public static final int BOTTOM_RIGHT = 1;

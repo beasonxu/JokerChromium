@@ -14,7 +14,7 @@ import org.chromium.chrome.browser.profiles.Profile;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ExploreSitesBridgeExperimentalJni implements ExploreSitesBridgeExperimental.Natives {
+class ExploreSitesBridgeExperimentalJni implements ExploreSitesBridgeExperimental.Natives {
   private static ExploreSitesBridgeExperimental.Natives testInstance;
 
   public static final JniStaticTestMocker<ExploreSitesBridgeExperimental.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.explore_sites.ExploreSitesBridgeExperimental.Natives>() {

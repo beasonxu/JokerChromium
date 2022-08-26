@@ -15,9 +15,8 @@ import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.widget.AppCompatImageView;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.browser.omnibox.R;
 import org.chromium.chrome.browser.util.KeyNavigationUtil;
-import org.chromium.components.browser_ui.widget.RoundedCornerImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +66,6 @@ public class BaseSuggestionView<T extends View> extends SimpleHorizontalLayoutVi
     /**
      * @return List of Action views.
      */
-    @VisibleForTesting(otherwise = VisibleForTesting.PACKAGE_PRIVATE)
     public List<ImageView> getActionButtons() {
         return mActionButtons;
     }
@@ -166,7 +164,7 @@ public class BaseSuggestionView<T extends View> extends SimpleHorizontalLayoutVi
     }
 
     /** @return Widget holding suggestion decoration icon. */
-    RoundedCornerImageView getSuggestionImageView() {
+    ImageView getSuggestionImageView() {
         return mDecoratedView.getImageView();
     }
 }

@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class OmniboxUrlEmphasizerJni implements OmniboxUrlEmphasizer.Natives {
+public class OmniboxUrlEmphasizerJni implements OmniboxUrlEmphasizer.Natives {
   private static OmniboxUrlEmphasizer.Natives testInstance;
 
   public static final JniStaticTestMocker<OmniboxUrlEmphasizer.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.omnibox.OmniboxUrlEmphasizer.Natives>() {

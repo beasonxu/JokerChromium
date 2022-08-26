@@ -9,7 +9,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class PrintingContextJni implements PrintingContext.Natives {
+class PrintingContextJni implements PrintingContext.Natives {
   private static PrintingContext.Natives testInstance;
 
   public static final JniStaticTestMocker<PrintingContext.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.printing.PrintingContext.Natives>() {

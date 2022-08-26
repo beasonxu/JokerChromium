@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface FontAccessManager extends org.chromium.mojo.bindings.Interface {
 
@@ -23,20 +25,11 @@ public interface FontAccessManager extends org.chromium.mojo.bindings.Interface 
 
     Manager<FontAccessManager, FontAccessManager.Proxy> MANAGER = FontAccessManager_Internal.MANAGER;
 
-
     void enumerateLocalFonts(
 
-EnumerateLocalFontsResponse callback);
+EnumerateLocalFonts_Response callback);
 
-    interface EnumerateLocalFontsResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, org.chromium.mojo_base.mojom.ReadOnlySharedMemoryRegion> { }
-
-
-
-    void chooseLocalFonts(
-String[] selection, 
-ChooseLocalFontsResponse callback);
-
-    interface ChooseLocalFontsResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, FontMetadata[]> { }
+    interface EnumerateLocalFonts_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, org.chromium.mojo_base.mojom.ReadOnlySharedMemoryRegion> { }
 
 
 }

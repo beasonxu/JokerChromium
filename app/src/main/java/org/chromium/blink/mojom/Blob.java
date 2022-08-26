@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface Blob extends org.chromium.mojo.bindings.Interface {
 
@@ -23,53 +25,45 @@ public interface Blob extends org.chromium.mojo.bindings.Interface {
 
     Manager<Blob, Blob.Proxy> MANAGER = Blob_Internal.MANAGER;
 
-
     void clone(
 org.chromium.mojo.bindings.InterfaceRequest<Blob> blob);
-
 
 
     void asDataPipeGetter(
 org.chromium.mojo.bindings.InterfaceRequest<org.chromium.network.mojom.DataPipeGetter> dataPipeGetter);
 
 
-
     void readAll(
 org.chromium.mojo.system.DataPipe.ProducerHandle pipe, BlobReaderClient client);
-
 
 
     void readRange(
 long offset, long length, org.chromium.mojo.system.DataPipe.ProducerHandle pipe, BlobReaderClient client);
 
 
-
     void load(
 org.chromium.mojo.bindings.InterfaceRequest<org.chromium.network.mojom.UrlLoader> loader, String requestMethod, org.chromium.network.mojom.HttpRequestHeaders headers, org.chromium.network.mojom.UrlLoaderClient client);
 
 
-
     void readSideData(
 
-ReadSideDataResponse callback);
+ReadSideData_Response callback);
 
-    interface ReadSideDataResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.BigBuffer> { }
-
+    interface ReadSideData_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.BigBuffer> { }
 
 
     void captureSnapshot(
 
-CaptureSnapshotResponse callback);
+CaptureSnapshot_Response callback);
 
-    interface CaptureSnapshotResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Long, org.chromium.mojo_base.mojom.Time> { }
-
+    interface CaptureSnapshot_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Long, org.chromium.mojo_base.mojom.Time> { }
 
 
     void getInternalUuid(
 
-GetInternalUuidResponse callback);
+GetInternalUuid_Response callback);
 
-    interface GetInternalUuidResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<String> { }
+    interface GetInternalUuid_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<String> { }
 
 
 }

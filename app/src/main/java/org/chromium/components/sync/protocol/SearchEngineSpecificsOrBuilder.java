@@ -618,4 +618,46 @@ public interface SearchEngineSpecificsOrBuilder extends
    */
   com.google.protobuf.ByteString
       getNewTabUrlBytes();
+
+  /**
+   * <pre>
+   * Whether a search engine is 'active' and can be triggered via the omnibox by
+   * typing in the relevant keyword.
+   * </pre>
+   *
+   * <code>optional .sync_pb.SearchEngineSpecifics.ActiveStatus is_active = 27;</code>
+   * @return Whether the isActive field is set.
+   */
+  boolean hasIsActive();
+  /**
+   * <pre>
+   * Whether a search engine is 'active' and can be triggered via the omnibox by
+   * typing in the relevant keyword.
+   * </pre>
+   *
+   * <code>optional .sync_pb.SearchEngineSpecifics.ActiveStatus is_active = 27;</code>
+   * @return The isActive.
+   */
+  org.chromium.components.sync.protocol.SearchEngineSpecifics.ActiveStatus getIsActive();
+
+  /**
+   * <pre>
+   * The ID associated with the starter pack engine.  This is set to 0 if not a
+   * starter pack engine.
+   * </pre>
+   *
+   * <code>optional int32 starter_pack_id = 28;</code>
+   * @return Whether the starterPackId field is set.
+   */
+  boolean hasStarterPackId();
+  /**
+   * <pre>
+   * The ID associated with the starter pack engine.  This is set to 0 if not a
+   * starter pack engine.
+   * </pre>
+   *
+   * <code>optional int32 starter_pack_id = 28;</code>
+   * @return The starterPackId.
+   */
+  int getStarterPackId();
 }

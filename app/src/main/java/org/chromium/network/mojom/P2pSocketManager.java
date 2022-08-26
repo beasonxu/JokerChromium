@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface P2pSocketManager extends org.chromium.mojo.bindings.Interface {
 
@@ -23,18 +25,15 @@ public interface P2pSocketManager extends org.chromium.mojo.bindings.Interface {
 
     Manager<P2pSocketManager, P2pSocketManager.Proxy> MANAGER = P2pSocketManager_Internal.MANAGER;
 
-
     void startNetworkNotifications(
 P2pNetworkNotificationClient client);
 
 
-
     void getHostAddress(
 String hostName, boolean enableMdns, 
-GetHostAddressResponse callback);
+GetHostAddress_Response callback);
 
-    interface GetHostAddressResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<IpAddress[]> { }
-
+    interface GetHostAddress_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<IpAddress[]> { }
 
 
     void createSocket(

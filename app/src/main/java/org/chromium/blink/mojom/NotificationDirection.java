@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class NotificationDirection {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        NotificationDirection.LEFT_TO_RIGHT,
+        NotificationDirection.RIGHT_TO_LEFT,
+        NotificationDirection.AUTO})
+    public @interface EnumType {}
 
     public static final int LEFT_TO_RIGHT = 0;
     public static final int RIGHT_TO_LEFT = 1;

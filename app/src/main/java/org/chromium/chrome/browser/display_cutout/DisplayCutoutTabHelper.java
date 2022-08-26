@@ -8,16 +8,19 @@ import android.app.Activity;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
+import androidx.browser.trusted.TrustedWebActivityDisplayMode;
 
 import org.chromium.base.UserData;
 import org.chromium.base.UserDataHost;
-import org.chromium.chrome.browser.app.ChromeActivity;
+import org.chromium.base.supplier.ObservableSupplier;
+import org.chromium.chrome.browser.customtabs.BaseCustomTabActivity;
 import org.chromium.chrome.browser.tab.EmptyTabObserver;
 import org.chromium.chrome.browser.tab.Tab;
 import org.chromium.chrome.browser.tab.TabObserver;
 import org.chromium.chrome.browser.tab.TabSelectionType;
 import org.chromium.components.browser_ui.display_cutout.DisplayCutoutController;
 import org.chromium.components.browser_ui.widget.InsetObserverView;
+import org.chromium.components.browser_ui.widget.InsetObserverViewSupplier;
 import org.chromium.content_public.browser.WebContents;
 import org.chromium.content_public.browser.WebContentsObserver;
 import org.chromium.ui.base.WindowAndroid;
@@ -85,12 +88,27 @@ public class DisplayCutoutTabHelper implements UserData {
         }
         @Override
         public InsetObserverView getInsetObserverView() {
-            Activity activity = getAttachedActivity();
-            return activity == null ? null : ((ChromeActivity) activity).getInsetObserverView();
+            return InsetObserverViewSupplier.getValueOrNullFrom(mTab.getWindowAndroid());
+        }
+        @Override
+        public ObservableSupplier<Integer> getBrowserDisplayCutoutModeSupplier() {
+            WindowAndroid window = mTab.getWindowAndroid();
+            return window == null ? null : ActivityDisplayCutoutModeSupplier.from(window);
         }
         @Override
         public boolean isInteractable() {
             return mTab.isUserInteractable();
+        }
+
+        @Override
+        public boolean isInBrowserFullscreen() {
+            Activity activity = getAttachedActivity();
+            if (!(activity instanceof BaseCustomTabActivity)) {
+                return false;
+            }
+            BaseCustomTabActivity baseCustomTabActivity = (BaseCustomTabActivity) activity;
+            return (baseCustomTabActivity.getIntentDataProvider().getTwaDisplayMode()
+                            instanceof TrustedWebActivityDisplayMode.ImmersiveMode);
         }
     }
 

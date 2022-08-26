@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class FrameWidgetInputHandler_Internal {
 
@@ -91,13 +93,15 @@ class FrameWidgetInputHandler_Internal {
 
     private static final int ADJUST_SELECTION_BY_CHARACTER_OFFSET_ORDINAL = 21;
 
-    private static final int SELECT_WORD_AROUND_CARET_ORDINAL = 22;
+    private static final int SELECT_AROUND_CARET_ORDINAL = 22;
 
     private static final int MOVE_RANGE_SELECTION_EXTENT_ORDINAL = 23;
 
-    private static final int SCROLL_FOCUSED_EDITABLE_NODE_INTO_RECT_ORDINAL = 24;
+    private static final int SCROLL_FOCUSED_EDITABLE_NODE_INTO_VIEW_ORDINAL = 24;
 
-    private static final int MOVE_CARET_ORDINAL = 25;
+    private static final int WAIT_FOR_PAGE_SCALE_ANIMATION_FOR_TESTING_ORDINAL = 25;
+
+    private static final int MOVE_CARET_ORDINAL = 26;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements FrameWidgetInputHandler.Proxy {
@@ -491,21 +495,27 @@ int start, int end, int behavior) {
 
 
         @Override
-        public void selectWordAroundCaret(
+        public void selectAroundCaret(
+int granularity, boolean shouldShowHandle, boolean shouldShowContextMenu, 
+SelectAroundCaret_Response callback) {
 
-SelectWordAroundCaretResponse callback) {
+            FrameWidgetInputHandlerSelectAroundCaretParams _message = new FrameWidgetInputHandlerSelectAroundCaretParams();
 
-            FrameWidgetInputHandlerSelectWordAroundCaretParams _message = new FrameWidgetInputHandlerSelectWordAroundCaretParams();
+            _message.granularity = granularity;
+
+            _message.shouldShowHandle = shouldShowHandle;
+
+            _message.shouldShowContextMenu = shouldShowContextMenu;
 
 
             getProxyHandler().getMessageReceiver().acceptWithResponder(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(
-                                    SELECT_WORD_AROUND_CARET_ORDINAL,
+                                    SELECT_AROUND_CARET_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
                                     0)),
-                    new FrameWidgetInputHandlerSelectWordAroundCaretResponseParamsForwardToCallback(callback));
+                    new FrameWidgetInputHandlerSelectAroundCaretResponseParamsForwardToCallback(callback));
 
         }
 
@@ -528,18 +538,36 @@ org.chromium.gfx.mojom.Point extent) {
 
 
         @Override
-        public void scrollFocusedEditableNodeIntoRect(
-org.chromium.gfx.mojom.Rect rect) {
+        public void scrollFocusedEditableNodeIntoView(
+) {
 
-            FrameWidgetInputHandlerScrollFocusedEditableNodeIntoRectParams _message = new FrameWidgetInputHandlerScrollFocusedEditableNodeIntoRectParams();
-
-            _message.rect = rect;
+            FrameWidgetInputHandlerScrollFocusedEditableNodeIntoViewParams _message = new FrameWidgetInputHandlerScrollFocusedEditableNodeIntoViewParams();
 
 
             getProxyHandler().getMessageReceiver().accept(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(SCROLL_FOCUSED_EDITABLE_NODE_INTO_RECT_ORDINAL)));
+                            new org.chromium.mojo.bindings.MessageHeader(SCROLL_FOCUSED_EDITABLE_NODE_INTO_VIEW_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void waitForPageScaleAnimationForTesting(
+
+WaitForPageScaleAnimationForTesting_Response callback) {
+
+            FrameWidgetInputHandlerWaitForPageScaleAnimationForTestingParams _message = new FrameWidgetInputHandlerWaitForPageScaleAnimationForTestingParams();
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    WAIT_FOR_PAGE_SCALE_ANIMATION_FOR_TESTING_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new FrameWidgetInputHandlerWaitForPageScaleAnimationForTestingResponseParamsForwardToCallback(callback));
 
         }
 
@@ -883,14 +911,15 @@ org.chromium.gfx.mojom.Point point) {
 
 
 
-                    case SCROLL_FOCUSED_EDITABLE_NODE_INTO_RECT_ORDINAL: {
+                    case SCROLL_FOCUSED_EDITABLE_NODE_INTO_VIEW_ORDINAL: {
 
-                        FrameWidgetInputHandlerScrollFocusedEditableNodeIntoRectParams data =
-                                FrameWidgetInputHandlerScrollFocusedEditableNodeIntoRectParams.deserialize(messageWithHeader.getPayload());
+                        FrameWidgetInputHandlerScrollFocusedEditableNodeIntoViewParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().scrollFocusedEditableNodeIntoRect(data.rect);
+                        getImpl().scrollFocusedEditableNodeIntoView();
                         return true;
                     }
+
+
 
 
 
@@ -984,17 +1013,32 @@ org.chromium.gfx.mojom.Point point) {
 
 
 
-                    case SELECT_WORD_AROUND_CARET_ORDINAL: {
+                    case SELECT_AROUND_CARET_ORDINAL: {
 
-                        FrameWidgetInputHandlerSelectWordAroundCaretParams.deserialize(messageWithHeader.getPayload());
+                        FrameWidgetInputHandlerSelectAroundCaretParams data =
+                                FrameWidgetInputHandlerSelectAroundCaretParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().selectWordAroundCaret(new FrameWidgetInputHandlerSelectWordAroundCaretResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().selectAroundCaret(data.granularity, data.shouldShowHandle, data.shouldShowContextMenu, new FrameWidgetInputHandlerSelectAroundCaretResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
 
 
 
+
+
+
+
+
+
+
+                    case WAIT_FOR_PAGE_SCALE_ANIMATION_FOR_TESTING_ORDINAL: {
+
+                        FrameWidgetInputHandlerWaitForPageScaleAnimationForTestingParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().waitForPageScaleAnimationForTesting(new FrameWidgetInputHandlerWaitForPageScaleAnimationForTestingResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
 
 
 
@@ -2468,21 +2512,24 @@ org.chromium.gfx.mojom.Point point) {
 
 
     
-    static final class FrameWidgetInputHandlerSelectWordAroundCaretParams extends org.chromium.mojo.bindings.Struct {
+    static final class FrameWidgetInputHandlerSelectAroundCaretParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 8;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int granularity;
+        public boolean shouldShowHandle;
+        public boolean shouldShowContextMenu;
 
-        private FrameWidgetInputHandlerSelectWordAroundCaretParams(int version) {
+        private FrameWidgetInputHandlerSelectAroundCaretParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public FrameWidgetInputHandlerSelectWordAroundCaretParams() {
+        public FrameWidgetInputHandlerSelectAroundCaretParams() {
             this(0);
         }
 
-        public static FrameWidgetInputHandlerSelectWordAroundCaretParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static FrameWidgetInputHandlerSelectAroundCaretParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -2491,92 +2538,35 @@ org.chromium.gfx.mojom.Point point) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static FrameWidgetInputHandlerSelectWordAroundCaretParams deserialize(java.nio.ByteBuffer data) {
+        public static FrameWidgetInputHandlerSelectAroundCaretParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static FrameWidgetInputHandlerSelectWordAroundCaretParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static FrameWidgetInputHandlerSelectAroundCaretParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            FrameWidgetInputHandlerSelectWordAroundCaretParams result;
+            FrameWidgetInputHandlerSelectAroundCaretParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new FrameWidgetInputHandlerSelectWordAroundCaretParams(elementsOrVersion);
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-        }
-    }
-
-
-
-    
-    static final class FrameWidgetInputHandlerSelectWordAroundCaretResponseParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public boolean didSelect;
-        public int startAdjust;
-        public int endAdjust;
-
-        private FrameWidgetInputHandlerSelectWordAroundCaretResponseParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public FrameWidgetInputHandlerSelectWordAroundCaretResponseParams() {
-            this(0);
-        }
-
-        public static FrameWidgetInputHandlerSelectWordAroundCaretResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static FrameWidgetInputHandlerSelectWordAroundCaretResponseParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static FrameWidgetInputHandlerSelectWordAroundCaretResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            FrameWidgetInputHandlerSelectWordAroundCaretResponseParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new FrameWidgetInputHandlerSelectWordAroundCaretResponseParams(elementsOrVersion);
+                result = new FrameWidgetInputHandlerSelectAroundCaretParams(elementsOrVersion);
                     {
                         
-                    result.didSelect = decoder0.readBoolean(8, 0);
+                    result.granularity = decoder0.readInt(8);
+                        SelectionGranularity.validate(result.granularity);
+                        result.granularity = SelectionGranularity.toKnownValue(result.granularity);
                     }
                     {
                         
-                    result.startAdjust = decoder0.readInt(12);
+                    result.shouldShowHandle = decoder0.readBoolean(12, 0);
                     }
                     {
                         
-                    result.endAdjust = decoder0.readInt(16);
+                    result.shouldShowContextMenu = decoder0.readBoolean(12, 1);
                     }
 
             } finally {
@@ -2590,19 +2580,83 @@ org.chromium.gfx.mojom.Point point) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.didSelect, 8, 0);
+            encoder0.encode(this.granularity, 8);
             
-            encoder0.encode(this.startAdjust, 12);
+            encoder0.encode(this.shouldShowHandle, 12, 0);
             
-            encoder0.encode(this.endAdjust, 16);
+            encoder0.encode(this.shouldShowContextMenu, 12, 1);
         }
     }
 
-    static class FrameWidgetInputHandlerSelectWordAroundCaretResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
-            implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FrameWidgetInputHandler.SelectWordAroundCaretResponse mCallback;
 
-        FrameWidgetInputHandlerSelectWordAroundCaretResponseParamsForwardToCallback(FrameWidgetInputHandler.SelectWordAroundCaretResponse callback) {
+
+    
+    static final class FrameWidgetInputHandlerSelectAroundCaretResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public SelectAroundCaretResult result;
+
+        private FrameWidgetInputHandlerSelectAroundCaretResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public FrameWidgetInputHandlerSelectAroundCaretResponseParams() {
+            this(0);
+        }
+
+        public static FrameWidgetInputHandlerSelectAroundCaretResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static FrameWidgetInputHandlerSelectAroundCaretResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static FrameWidgetInputHandlerSelectAroundCaretResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            FrameWidgetInputHandlerSelectAroundCaretResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new FrameWidgetInputHandlerSelectAroundCaretResponseParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, true);
+                    result.result = SelectAroundCaretResult.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.result, 8, true);
+        }
+    }
+
+    static class FrameWidgetInputHandlerSelectAroundCaretResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final FrameWidgetInputHandler.SelectAroundCaret_Response mCallback;
+
+        FrameWidgetInputHandlerSelectAroundCaretResponseParamsForwardToCallback(FrameWidgetInputHandler.SelectAroundCaret_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2612,14 +2666,14 @@ org.chromium.gfx.mojom.Point point) {
                 org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
                         message.asServiceMessage();
                 org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
-                if (!header.validateHeader(SELECT_WORD_AROUND_CARET_ORDINAL,
+                if (!header.validateHeader(SELECT_AROUND_CARET_ORDINAL,
                                            org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
                     return false;
                 }
 
-                FrameWidgetInputHandlerSelectWordAroundCaretResponseParams response = FrameWidgetInputHandlerSelectWordAroundCaretResponseParams.deserialize(messageWithHeader.getPayload());
+                FrameWidgetInputHandlerSelectAroundCaretResponseParams response = FrameWidgetInputHandlerSelectAroundCaretResponseParams.deserialize(messageWithHeader.getPayload());
 
-                mCallback.call(response.didSelect, response.startAdjust, response.endAdjust);
+                mCallback.call(response.result);
                 return true;
             } catch (org.chromium.mojo.bindings.DeserializationException e) {
                 return false;
@@ -2627,13 +2681,13 @@ org.chromium.gfx.mojom.Point point) {
         }
     }
 
-    static class FrameWidgetInputHandlerSelectWordAroundCaretResponseParamsProxyToResponder implements FrameWidgetInputHandler.SelectWordAroundCaretResponse {
+    static class FrameWidgetInputHandlerSelectAroundCaretResponseParamsProxyToResponder implements FrameWidgetInputHandler.SelectAroundCaret_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
         private final long mRequestId;
 
-        FrameWidgetInputHandlerSelectWordAroundCaretResponseParamsProxyToResponder(
+        FrameWidgetInputHandlerSelectAroundCaretResponseParamsProxyToResponder(
                 org.chromium.mojo.system.Core core,
                 org.chromium.mojo.bindings.MessageReceiver messageReceiver,
                 long requestId) {
@@ -2643,20 +2697,16 @@ org.chromium.gfx.mojom.Point point) {
         }
 
         @Override
-        public void call(Boolean didSelect, Integer startAdjust, Integer endAdjust) {
-            FrameWidgetInputHandlerSelectWordAroundCaretResponseParams _response = new FrameWidgetInputHandlerSelectWordAroundCaretResponseParams();
+        public void call(SelectAroundCaretResult result) {
+            FrameWidgetInputHandlerSelectAroundCaretResponseParams _response = new FrameWidgetInputHandlerSelectAroundCaretResponseParams();
 
-            _response.didSelect = didSelect;
-
-            _response.startAdjust = startAdjust;
-
-            _response.endAdjust = endAdjust;
+            _response.result = result;
 
             org.chromium.mojo.bindings.ServiceMessage _message =
                     _response.serializeWithHeader(
                             mCore,
                             new org.chromium.mojo.bindings.MessageHeader(
-                                    SELECT_WORD_AROUND_CARET_ORDINAL,
+                                    SELECT_AROUND_CARET_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);
@@ -2730,22 +2780,21 @@ org.chromium.gfx.mojom.Point point) {
 
 
     
-    static final class FrameWidgetInputHandlerScrollFocusedEditableNodeIntoRectParams extends org.chromium.mojo.bindings.Struct {
+    static final class FrameWidgetInputHandlerScrollFocusedEditableNodeIntoViewParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public org.chromium.gfx.mojom.Rect rect;
 
-        private FrameWidgetInputHandlerScrollFocusedEditableNodeIntoRectParams(int version) {
+        private FrameWidgetInputHandlerScrollFocusedEditableNodeIntoViewParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public FrameWidgetInputHandlerScrollFocusedEditableNodeIntoRectParams() {
+        public FrameWidgetInputHandlerScrollFocusedEditableNodeIntoViewParams() {
             this(0);
         }
 
-        public static FrameWidgetInputHandlerScrollFocusedEditableNodeIntoRectParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static FrameWidgetInputHandlerScrollFocusedEditableNodeIntoViewParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -2754,27 +2803,22 @@ org.chromium.gfx.mojom.Point point) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static FrameWidgetInputHandlerScrollFocusedEditableNodeIntoRectParams deserialize(java.nio.ByteBuffer data) {
+        public static FrameWidgetInputHandlerScrollFocusedEditableNodeIntoViewParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static FrameWidgetInputHandlerScrollFocusedEditableNodeIntoRectParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static FrameWidgetInputHandlerScrollFocusedEditableNodeIntoViewParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            FrameWidgetInputHandlerScrollFocusedEditableNodeIntoRectParams result;
+            FrameWidgetInputHandlerScrollFocusedEditableNodeIntoViewParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new FrameWidgetInputHandlerScrollFocusedEditableNodeIntoRectParams(elementsOrVersion);
-                    {
-                        
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    result.rect = org.chromium.gfx.mojom.Rect.decode(decoder1);
-                    }
+                result = new FrameWidgetInputHandlerScrollFocusedEditableNodeIntoViewParams(elementsOrVersion);
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -2785,9 +2829,176 @@ org.chromium.gfx.mojom.Point point) {
         @SuppressWarnings("unchecked")
         @Override
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-            
-            encoder0.encode(this.rect, 8, false);
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+
+
+    
+    static final class FrameWidgetInputHandlerWaitForPageScaleAnimationForTestingParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private FrameWidgetInputHandlerWaitForPageScaleAnimationForTestingParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public FrameWidgetInputHandlerWaitForPageScaleAnimationForTestingParams() {
+            this(0);
+        }
+
+        public static FrameWidgetInputHandlerWaitForPageScaleAnimationForTestingParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static FrameWidgetInputHandlerWaitForPageScaleAnimationForTestingParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static FrameWidgetInputHandlerWaitForPageScaleAnimationForTestingParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            FrameWidgetInputHandlerWaitForPageScaleAnimationForTestingParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new FrameWidgetInputHandlerWaitForPageScaleAnimationForTestingParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+
+
+    
+    static final class FrameWidgetInputHandlerWaitForPageScaleAnimationForTestingResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private FrameWidgetInputHandlerWaitForPageScaleAnimationForTestingResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public FrameWidgetInputHandlerWaitForPageScaleAnimationForTestingResponseParams() {
+            this(0);
+        }
+
+        public static FrameWidgetInputHandlerWaitForPageScaleAnimationForTestingResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static FrameWidgetInputHandlerWaitForPageScaleAnimationForTestingResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static FrameWidgetInputHandlerWaitForPageScaleAnimationForTestingResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            FrameWidgetInputHandlerWaitForPageScaleAnimationForTestingResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new FrameWidgetInputHandlerWaitForPageScaleAnimationForTestingResponseParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+    static class FrameWidgetInputHandlerWaitForPageScaleAnimationForTestingResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final FrameWidgetInputHandler.WaitForPageScaleAnimationForTesting_Response mCallback;
+
+        FrameWidgetInputHandlerWaitForPageScaleAnimationForTestingResponseParamsForwardToCallback(FrameWidgetInputHandler.WaitForPageScaleAnimationForTesting_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(WAIT_FOR_PAGE_SCALE_ANIMATION_FOR_TESTING_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                mCallback.call();
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class FrameWidgetInputHandlerWaitForPageScaleAnimationForTestingResponseParamsProxyToResponder implements FrameWidgetInputHandler.WaitForPageScaleAnimationForTesting_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        FrameWidgetInputHandlerWaitForPageScaleAnimationForTestingResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call() {
+            FrameWidgetInputHandlerWaitForPageScaleAnimationForTestingResponseParams _response = new FrameWidgetInputHandlerWaitForPageScaleAnimationForTestingResponseParams();
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    WAIT_FOR_PAGE_SCALE_ANIMATION_FOR_TESTING_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
         }
     }
 

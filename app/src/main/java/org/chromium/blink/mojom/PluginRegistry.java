@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface PluginRegistry extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface PluginRegistry extends org.chromium.mojo.bindings.Interface {
 
     Manager<PluginRegistry, PluginRegistry.Proxy> MANAGER = PluginRegistry_Internal.MANAGER;
 
-
     void getPlugins(
-boolean refresh, org.chromium.url.internal.mojom.Origin mainFrameOrigin, 
-GetPluginsResponse callback);
+boolean refresh, 
+GetPlugins_Response callback);
 
-    interface GetPluginsResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<PluginInfo[]> { }
+    interface GetPlugins_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<PluginInfo[]> { }
 
 
 }

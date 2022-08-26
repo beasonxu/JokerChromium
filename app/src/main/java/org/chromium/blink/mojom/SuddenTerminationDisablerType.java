@@ -13,8 +13,17 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class SuddenTerminationDisablerType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        SuddenTerminationDisablerType.BEFORE_UNLOAD_HANDLER,
+        SuddenTerminationDisablerType.PAGE_HIDE_HANDLER,
+        SuddenTerminationDisablerType.UNLOAD_HANDLER,
+        SuddenTerminationDisablerType.VISIBILITY_CHANGE_HANDLER})
+    public @interface EnumType {}
 
     public static final int BEFORE_UNLOAD_HANDLER = 0;
     public static final int PAGE_HIDE_HANDLER = 1;

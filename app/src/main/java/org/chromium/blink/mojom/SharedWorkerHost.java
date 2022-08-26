@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface SharedWorkerHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,25 +25,20 @@ public interface SharedWorkerHost extends org.chromium.mojo.bindings.Interface {
 
     Manager<SharedWorkerHost, SharedWorkerHost.Proxy> MANAGER = SharedWorkerHost_Internal.MANAGER;
 
-
     void onConnected(
 int connectionId);
-
 
 
     void onContextClosed(
 );
 
 
-
     void onReadyForInspection(
 DevToolsAgent agent, org.chromium.mojo.bindings.InterfaceRequest<DevToolsAgentHost> agentHost);
 
 
-
     void onScriptLoadFailed(
 String errorMessage);
-
 
 
     void onFeatureUsed(

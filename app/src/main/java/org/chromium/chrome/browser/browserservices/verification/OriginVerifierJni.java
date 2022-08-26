@@ -12,7 +12,7 @@ import org.chromium.content_public.browser.WebContents;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class OriginVerifierJni implements OriginVerifier.Natives {
+public class OriginVerifierJni implements OriginVerifier.Natives {
   private static OriginVerifier.Natives testInstance;
 
   public static final JniStaticTestMocker<OriginVerifier.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.browserservices.verification.OriginVerifier.Natives>() {

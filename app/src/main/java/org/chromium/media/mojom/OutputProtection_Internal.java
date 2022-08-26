@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class OutputProtection_Internal {
 
@@ -63,7 +65,7 @@ class OutputProtection_Internal {
         @Override
         public void queryStatus(
 
-QueryStatusResponse callback) {
+QueryStatus_Response callback) {
 
             OutputProtectionQueryStatusParams _message = new OutputProtectionQueryStatusParams();
 
@@ -83,7 +85,7 @@ QueryStatusResponse callback) {
         @Override
         public void enableProtection(
 int desiredProtectionMask, 
-EnableProtectionResponse callback) {
+EnableProtection_Response callback) {
 
             OutputProtectionEnableProtectionParams _message = new OutputProtectionEnableProtectionParams();
 
@@ -336,9 +338,9 @@ EnableProtectionResponse callback) {
 
     static class OutputProtectionQueryStatusResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final OutputProtection.QueryStatusResponse mCallback;
+        private final OutputProtection.QueryStatus_Response mCallback;
 
-        OutputProtectionQueryStatusResponseParamsForwardToCallback(OutputProtection.QueryStatusResponse callback) {
+        OutputProtectionQueryStatusResponseParamsForwardToCallback(OutputProtection.QueryStatus_Response callback) {
             this.mCallback = callback;
         }
 
@@ -363,7 +365,7 @@ EnableProtectionResponse callback) {
         }
     }
 
-    static class OutputProtectionQueryStatusResponseParamsProxyToResponder implements OutputProtection.QueryStatusResponse {
+    static class OutputProtectionQueryStatusResponseParamsProxyToResponder implements OutputProtection.QueryStatus_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -527,9 +529,9 @@ EnableProtectionResponse callback) {
 
     static class OutputProtectionEnableProtectionResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final OutputProtection.EnableProtectionResponse mCallback;
+        private final OutputProtection.EnableProtection_Response mCallback;
 
-        OutputProtectionEnableProtectionResponseParamsForwardToCallback(OutputProtection.EnableProtectionResponse callback) {
+        OutputProtectionEnableProtectionResponseParamsForwardToCallback(OutputProtection.EnableProtection_Response callback) {
             this.mCallback = callback;
         }
 
@@ -554,7 +556,7 @@ EnableProtectionResponse callback) {
         }
     }
 
-    static class OutputProtectionEnableProtectionResponseParamsProxyToResponder implements OutputProtection.EnableProtectionResponse {
+    static class OutputProtectionEnableProtectionResponseParamsProxyToResponder implements OutputProtection.EnableProtection_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

@@ -14,7 +14,7 @@ import org.chromium.chrome.browser.profiles.ProfileKey;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class DownloadManagerServiceJni implements DownloadManagerService.Natives {
+class DownloadManagerServiceJni implements DownloadManagerService.Natives {
   private static DownloadManagerService.Natives testInstance;
 
   public static final JniStaticTestMocker<DownloadManagerService.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.download.DownloadManagerService.Natives>() {

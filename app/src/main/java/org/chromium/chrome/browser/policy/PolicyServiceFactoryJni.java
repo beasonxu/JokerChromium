@@ -11,7 +11,7 @@ import org.chromium.components.policy.PolicyService;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-public final class PolicyServiceFactoryJni implements PolicyServiceFactory.Natives {
+public class PolicyServiceFactoryJni implements PolicyServiceFactory.Natives {
   private static PolicyServiceFactory.Natives testInstance;
 
   public static final JniStaticTestMocker<PolicyServiceFactory.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.policy.PolicyServiceFactory.Natives>() {

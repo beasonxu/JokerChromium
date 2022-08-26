@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface MediaPlayerRendererClientExtension extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface MediaPlayerRendererClientExtension extends org.chromium.mojo.bi
 
     Manager<MediaPlayerRendererClientExtension, MediaPlayerRendererClientExtension.Proxy> MANAGER = MediaPlayerRendererClientExtension_Internal.MANAGER;
 
-
     void onVideoSizeChange(
 org.chromium.gfx.mojom.Size size);
-
 
 
     void onDurationChange(

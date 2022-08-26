@@ -13,6 +13,8 @@
 
 package org.chromium.content.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface LocalTrustTokenFulfiller extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface LocalTrustTokenFulfiller extends org.chromium.mojo.bindings.Int
 
     Manager<LocalTrustTokenFulfiller, LocalTrustTokenFulfiller.Proxy> MANAGER = LocalTrustTokenFulfiller_Internal.MANAGER;
 
-
     void fulfillTrustTokenIssuance(
 org.chromium.network.mojom.FulfillTrustTokenIssuanceRequest request, 
-FulfillTrustTokenIssuanceResponse callback);
+FulfillTrustTokenIssuance_Response callback);
 
-    interface FulfillTrustTokenIssuanceResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.network.mojom.FulfillTrustTokenIssuanceAnswer> { }
+    interface FulfillTrustTokenIssuance_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.network.mojom.FulfillTrustTokenIssuanceAnswer> { }
 
 
 }

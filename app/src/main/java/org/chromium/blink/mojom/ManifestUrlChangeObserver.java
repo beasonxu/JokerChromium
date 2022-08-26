@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ManifestUrlChangeObserver extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface ManifestUrlChangeObserver extends org.chromium.mojo.bindings.In
     }
 
     Manager<ManifestUrlChangeObserver, ManifestUrlChangeObserver.Proxy> MANAGER = ManifestUrlChangeObserver_Internal.MANAGER;
-
 
     void manifestUrlChanged(
 org.chromium.url.mojom.Url manifestUrl);

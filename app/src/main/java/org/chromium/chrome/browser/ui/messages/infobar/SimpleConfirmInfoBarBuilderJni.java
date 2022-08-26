@@ -13,7 +13,7 @@ import org.chromium.content_public.browser.WebContents;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class SimpleConfirmInfoBarBuilderJni implements SimpleConfirmInfoBarBuilder.Natives {
+class SimpleConfirmInfoBarBuilderJni implements SimpleConfirmInfoBarBuilder.Natives {
   private static SimpleConfirmInfoBarBuilder.Natives testInstance;
 
   public static final JniStaticTestMocker<SimpleConfirmInfoBarBuilder.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.ui.messages.infobar.SimpleConfirmInfoBarBuilder.Natives>() {

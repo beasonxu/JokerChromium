@@ -11,29 +11,38 @@ public interface IChildProcessService extends android.os.IInterface
     // On the first call to this method, the service will record the calling PID
     // and |clazz| and return true. Subsequent calls will only return true if the
     // calling PID and |clazz| matches the recorded values.
-
     @Override public boolean bindToCaller(java.lang.String clazz) throws android.os.RemoteException
     {
       return false;
     }
+    // Get the ApplicationInfo object used to load the code and resources of the
+    // child process, for validating that the parent is talking to a "matching"
+    // process.
+    @Override public android.content.pm.ApplicationInfo getAppInfo() throws android.os.RemoteException
+    {
+      return null;
+    }
     // Sets up the initial IPC channel.
-
     @Override public void setupConnection(android.os.Bundle args, org.chromium.base.process_launcher.IParentProcess parentProcess, java.util.List<android.os.IBinder> clientInterfaces) throws android.os.RemoteException
     {
     }
     // Forcefully kills the child process.
-
     @Override public void forceKill() throws android.os.RemoteException
     {
     }
     // Notifies about memory pressure. The argument is MemoryPressureLevel enum.
-
     @Override public void onMemoryPressure(int pressure) throws android.os.RemoteException
     {
     }
     // Dumps the stack for the child process without crashing it.
-
     @Override public void dumpProcessStack() throws android.os.RemoteException
+    {
+    }
+    // Takes the |bundle| potentially containing the shared memory region and
+    // uses it to replace the memory behind read only relocations in the child
+    // process. On error the bundle is silently ignored, disabling the memory
+    // optimization.
+    @Override public void consumeRelroBundle(android.os.Bundle bundle) throws android.os.RemoteException
     {
     }
     @Override
@@ -44,7 +53,6 @@ public interface IChildProcessService extends android.os.IInterface
   /** Local-side IPC implementation stub class. */
   public static abstract class Stub extends android.os.Binder implements org.chromium.base.process_launcher.IChildProcessService
   {
-    private static final java.lang.String DESCRIPTOR = "org.chromium.base.process_launcher.IChildProcessService";
     /** Construct the stub at attach it to the interface. */
     public Stub()
     {
@@ -79,6 +87,9 @@ public interface IChildProcessService extends android.os.IInterface
           reply.writeString(descriptor);
           return true;
         }
+      }
+      switch (code)
+      {
         case TRANSACTION_bindToCaller:
         {
           data.enforceInterface(descriptor);
@@ -87,6 +98,20 @@ public interface IChildProcessService extends android.os.IInterface
           boolean _result = this.bindToCaller(_arg0);
           reply.writeNoException();
           reply.writeInt(((_result)?(1):(0)));
+          return true;
+        }
+        case TRANSACTION_getAppInfo:
+        {
+          data.enforceInterface(descriptor);
+          android.content.pm.ApplicationInfo _result = this.getAppInfo();
+          reply.writeNoException();
+          if ((_result!=null)) {
+            reply.writeInt(1);
+            _result.writeToParcel(reply, android.os.Parcelable.PARCELABLE_WRITE_RETURN_VALUE);
+          }
+          else {
+            reply.writeInt(0);
+          }
           return true;
         }
         case TRANSACTION_setupConnection:
@@ -126,6 +151,19 @@ public interface IChildProcessService extends android.os.IInterface
           this.dumpProcessStack();
           return true;
         }
+        case TRANSACTION_consumeRelroBundle:
+        {
+          data.enforceInterface(descriptor);
+          android.os.Bundle _arg0;
+          if ((0!=data.readInt())) {
+            _arg0 = android.os.Bundle.CREATOR.createFromParcel(data);
+          }
+          else {
+            _arg0 = null;
+          }
+          this.consumeRelroBundle(_arg0);
+          return true;
+        }
         default:
         {
           return super.onTransact(code, data, reply, flags);
@@ -151,7 +189,6 @@ public interface IChildProcessService extends android.os.IInterface
       // On the first call to this method, the service will record the calling PID
       // and |clazz| and return true. Subsequent calls will only return true if the
       // calling PID and |clazz| matches the recorded values.
-
       @Override public boolean bindToCaller(java.lang.String clazz) throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
@@ -161,8 +198,10 @@ public interface IChildProcessService extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeString(clazz);
           boolean _status = mRemote.transact(Stub.TRANSACTION_bindToCaller, _data, _reply, 0);
-          if (!_status && getDefaultImpl() != null) {
-            return getDefaultImpl().bindToCaller(clazz);
+          if (!_status) {
+            if (getDefaultImpl() != null) {
+              return getDefaultImpl().bindToCaller(clazz);
+            }
           }
           _reply.readException();
           _result = (0!=_reply.readInt());
@@ -173,8 +212,37 @@ public interface IChildProcessService extends android.os.IInterface
         }
         return _result;
       }
+      // Get the ApplicationInfo object used to load the code and resources of the
+      // child process, for validating that the parent is talking to a "matching"
+      // process.
+      @Override public android.content.pm.ApplicationInfo getAppInfo() throws android.os.RemoteException
+      {
+        android.os.Parcel _data = android.os.Parcel.obtain();
+        android.os.Parcel _reply = android.os.Parcel.obtain();
+        android.content.pm.ApplicationInfo _result;
+        try {
+          _data.writeInterfaceToken(DESCRIPTOR);
+          boolean _status = mRemote.transact(Stub.TRANSACTION_getAppInfo, _data, _reply, 0);
+          if (!_status) {
+            if (getDefaultImpl() != null) {
+              return getDefaultImpl().getAppInfo();
+            }
+          }
+          _reply.readException();
+          if ((0!=_reply.readInt())) {
+            _result = android.content.pm.ApplicationInfo.CREATOR.createFromParcel(_reply);
+          }
+          else {
+            _result = null;
+          }
+        }
+        finally {
+          _reply.recycle();
+          _data.recycle();
+        }
+        return _result;
+      }
       // Sets up the initial IPC channel.
-
       @Override public void setupConnection(android.os.Bundle args, org.chromium.base.process_launcher.IParentProcess parentProcess, java.util.List<android.os.IBinder> clientInterfaces) throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
@@ -190,9 +258,11 @@ public interface IChildProcessService extends android.os.IInterface
           _data.writeStrongBinder((((parentProcess!=null))?(parentProcess.asBinder()):(null)));
           _data.writeBinderList(clientInterfaces);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setupConnection, _data, null, android.os.IBinder.FLAG_ONEWAY);
-          if (!_status && getDefaultImpl() != null) {
-            getDefaultImpl().setupConnection(args, parentProcess, clientInterfaces);
-            return;
+          if (!_status) {
+            if (getDefaultImpl() != null) {
+              getDefaultImpl().setupConnection(args, parentProcess, clientInterfaces);
+              return;
+            }
           }
         }
         finally {
@@ -200,16 +270,17 @@ public interface IChildProcessService extends android.os.IInterface
         }
       }
       // Forcefully kills the child process.
-
       @Override public void forceKill() throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_forceKill, _data, null, android.os.IBinder.FLAG_ONEWAY);
-          if (!_status && getDefaultImpl() != null) {
-            getDefaultImpl().forceKill();
-            return;
+          if (!_status) {
+            if (getDefaultImpl() != null) {
+              getDefaultImpl().forceKill();
+              return;
+            }
           }
         }
         finally {
@@ -217,7 +288,6 @@ public interface IChildProcessService extends android.os.IInterface
         }
       }
       // Notifies about memory pressure. The argument is MemoryPressureLevel enum.
-
       @Override public void onMemoryPressure(int pressure) throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
@@ -225,9 +295,11 @@ public interface IChildProcessService extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(pressure);
           boolean _status = mRemote.transact(Stub.TRANSACTION_onMemoryPressure, _data, null, android.os.IBinder.FLAG_ONEWAY);
-          if (!_status && getDefaultImpl() != null) {
-            getDefaultImpl().onMemoryPressure(pressure);
-            return;
+          if (!_status) {
+            if (getDefaultImpl() != null) {
+              getDefaultImpl().onMemoryPressure(pressure);
+              return;
+            }
           }
         }
         finally {
@@ -235,16 +307,45 @@ public interface IChildProcessService extends android.os.IInterface
         }
       }
       // Dumps the stack for the child process without crashing it.
-
       @Override public void dumpProcessStack() throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_dumpProcessStack, _data, null, android.os.IBinder.FLAG_ONEWAY);
-          if (!_status && getDefaultImpl() != null) {
-            getDefaultImpl().dumpProcessStack();
-            return;
+          if (!_status) {
+            if (getDefaultImpl() != null) {
+              getDefaultImpl().dumpProcessStack();
+              return;
+            }
+          }
+        }
+        finally {
+          _data.recycle();
+        }
+      }
+      // Takes the |bundle| potentially containing the shared memory region and
+      // uses it to replace the memory behind read only relocations in the child
+      // process. On error the bundle is silently ignored, disabling the memory
+      // optimization.
+      @Override public void consumeRelroBundle(android.os.Bundle bundle) throws android.os.RemoteException
+      {
+        android.os.Parcel _data = android.os.Parcel.obtain();
+        try {
+          _data.writeInterfaceToken(DESCRIPTOR);
+          if ((bundle!=null)) {
+            _data.writeInt(1);
+            bundle.writeToParcel(_data, 0);
+          }
+          else {
+            _data.writeInt(0);
+          }
+          boolean _status = mRemote.transact(Stub.TRANSACTION_consumeRelroBundle, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            if (getDefaultImpl() != null) {
+              getDefaultImpl().consumeRelroBundle(bundle);
+              return;
+            }
           }
         }
         finally {
@@ -254,10 +355,12 @@ public interface IChildProcessService extends android.os.IInterface
       public static org.chromium.base.process_launcher.IChildProcessService sDefaultImpl;
     }
     static final int TRANSACTION_bindToCaller = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);
-    static final int TRANSACTION_setupConnection = (android.os.IBinder.FIRST_CALL_TRANSACTION + 1);
-    static final int TRANSACTION_forceKill = (android.os.IBinder.FIRST_CALL_TRANSACTION + 2);
-    static final int TRANSACTION_onMemoryPressure = (android.os.IBinder.FIRST_CALL_TRANSACTION + 3);
-    static final int TRANSACTION_dumpProcessStack = (android.os.IBinder.FIRST_CALL_TRANSACTION + 4);
+    static final int TRANSACTION_getAppInfo = (android.os.IBinder.FIRST_CALL_TRANSACTION + 1);
+    static final int TRANSACTION_setupConnection = (android.os.IBinder.FIRST_CALL_TRANSACTION + 2);
+    static final int TRANSACTION_forceKill = (android.os.IBinder.FIRST_CALL_TRANSACTION + 3);
+    static final int TRANSACTION_onMemoryPressure = (android.os.IBinder.FIRST_CALL_TRANSACTION + 4);
+    static final int TRANSACTION_dumpProcessStack = (android.os.IBinder.FIRST_CALL_TRANSACTION + 5);
+    static final int TRANSACTION_consumeRelroBundle = (android.os.IBinder.FIRST_CALL_TRANSACTION + 6);
     public static boolean setDefaultImpl(org.chromium.base.process_launcher.IChildProcessService impl) {
       // Only one user of this interface can use this function
       // at a time. This is a heuristic to detect if two different
@@ -275,22 +378,27 @@ public interface IChildProcessService extends android.os.IInterface
       return Stub.Proxy.sDefaultImpl;
     }
   }
+  public static final java.lang.String DESCRIPTOR = "org.chromium.base.process_launcher.IChildProcessService";
   // |clazz| identifies the ClassLoader of the caller.
   // On the first call to this method, the service will record the calling PID
   // and |clazz| and return true. Subsequent calls will only return true if the
   // calling PID and |clazz| matches the recorded values.
-
   public boolean bindToCaller(java.lang.String clazz) throws android.os.RemoteException;
+  // Get the ApplicationInfo object used to load the code and resources of the
+  // child process, for validating that the parent is talking to a "matching"
+  // process.
+  public android.content.pm.ApplicationInfo getAppInfo() throws android.os.RemoteException;
   // Sets up the initial IPC channel.
-
   public void setupConnection(android.os.Bundle args, org.chromium.base.process_launcher.IParentProcess parentProcess, java.util.List<android.os.IBinder> clientInterfaces) throws android.os.RemoteException;
   // Forcefully kills the child process.
-
   public void forceKill() throws android.os.RemoteException;
   // Notifies about memory pressure. The argument is MemoryPressureLevel enum.
-
   public void onMemoryPressure(int pressure) throws android.os.RemoteException;
   // Dumps the stack for the child process without crashing it.
-
   public void dumpProcessStack() throws android.os.RemoteException;
+  // Takes the |bundle| potentially containing the shared memory region and
+  // uses it to replace the memory behind read only relocations in the child
+  // process. On error the bundle is silently ignored, disabling the memory
+  // optimization.
+  public void consumeRelroBundle(android.os.Bundle bundle) throws android.os.RemoteException;
 }

@@ -11,7 +11,7 @@ import org.chromium.url.GURL;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-public final class UrlUtilitiesJni implements UrlUtilities.Natives {
+public class UrlUtilitiesJni implements UrlUtilities.Natives {
   private static UrlUtilities.Natives testInstance;
 
   public static final JniStaticTestMocker<UrlUtilities.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.embedder_support.util.UrlUtilities.Natives>() {
@@ -24,21 +24,6 @@ public final class UrlUtilitiesJni implements UrlUtilities.Natives {
       testInstance = instance;
     }
   };
-
-  @Override
-  public boolean isDownloadable(GURL url) {
-    return (boolean)GEN_JNI.org_chromium_components_embedder_1support_util_UrlUtilities_isDownloadable(url);
-  }
-
-  @Override
-  public boolean isValidForIntentFallbackNavigation(String url) {
-    return (boolean)GEN_JNI.org_chromium_components_embedder_1support_util_UrlUtilities_isValidForIntentFallbackNavigation(url);
-  }
-
-  @Override
-  public boolean isAcceptedScheme(String url) {
-    return (boolean)GEN_JNI.org_chromium_components_embedder_1support_util_UrlUtilities_isAcceptedScheme(url);
-  }
 
   @Override
   public boolean sameDomainOrHost(String primaryUrl, String secondaryUrl,
@@ -84,6 +69,21 @@ public final class UrlUtilitiesJni implements UrlUtilities.Natives {
   @Override
   public boolean urlsFragmentsDiffer(String url, String url2) {
     return (boolean)GEN_JNI.org_chromium_components_embedder_1support_util_UrlUtilities_urlsFragmentsDiffer(url, url2);
+  }
+
+  @Override
+  public String escapeQueryParamValue(String url, boolean usePlus) {
+    return (String)GEN_JNI.org_chromium_components_embedder_1support_util_UrlUtilities_escapeQueryParamValue(url, usePlus);
+  }
+
+  @Override
+  public String getValueForKeyInQuery(GURL url, String key) {
+    return (String)GEN_JNI.org_chromium_components_embedder_1support_util_UrlUtilities_getValueForKeyInQuery(url, key);
+  }
+
+  @Override
+  public GURL clearPort(GURL url) {
+    return (GURL)GEN_JNI.org_chromium_components_embedder_1support_util_UrlUtilities_clearPort(url);
   }
 
   public static UrlUtilities.Natives get() {

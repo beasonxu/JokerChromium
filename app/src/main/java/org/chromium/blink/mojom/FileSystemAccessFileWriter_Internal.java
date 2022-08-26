@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class FileSystemAccessFileWriter_Internal {
 
@@ -67,7 +69,7 @@ class FileSystemAccessFileWriter_Internal {
         @Override
         public void write(
 long offset, org.chromium.mojo.system.DataPipe.ConsumerHandle stream, 
-WriteResponse callback) {
+Write_Response callback) {
 
             FileSystemAccessFileWriterWriteParams _message = new FileSystemAccessFileWriterWriteParams();
 
@@ -91,7 +93,7 @@ WriteResponse callback) {
         @Override
         public void truncate(
 long length, 
-TruncateResponse callback) {
+Truncate_Response callback) {
 
             FileSystemAccessFileWriterTruncateParams _message = new FileSystemAccessFileWriterTruncateParams();
 
@@ -113,7 +115,7 @@ TruncateResponse callback) {
         @Override
         public void close(
 
-CloseResponse callback) {
+Close_Response callback) {
 
             FileSystemAccessFileWriterCloseParams _message = new FileSystemAccessFileWriterCloseParams();
 
@@ -133,7 +135,7 @@ CloseResponse callback) {
         @Override
         public void abort(
 
-AbortResponse callback) {
+Abort_Response callback) {
 
             FileSystemAccessFileWriterAbortParams _message = new FileSystemAccessFileWriterAbortParams();
 
@@ -426,9 +428,9 @@ AbortResponse callback) {
 
     static class FileSystemAccessFileWriterWriteResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemAccessFileWriter.WriteResponse mCallback;
+        private final FileSystemAccessFileWriter.Write_Response mCallback;
 
-        FileSystemAccessFileWriterWriteResponseParamsForwardToCallback(FileSystemAccessFileWriter.WriteResponse callback) {
+        FileSystemAccessFileWriterWriteResponseParamsForwardToCallback(FileSystemAccessFileWriter.Write_Response callback) {
             this.mCallback = callback;
         }
 
@@ -453,7 +455,7 @@ AbortResponse callback) {
         }
     }
 
-    static class FileSystemAccessFileWriterWriteResponseParamsProxyToResponder implements FileSystemAccessFileWriter.WriteResponse {
+    static class FileSystemAccessFileWriterWriteResponseParamsProxyToResponder implements FileSystemAccessFileWriter.Write_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -616,9 +618,9 @@ AbortResponse callback) {
 
     static class FileSystemAccessFileWriterTruncateResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemAccessFileWriter.TruncateResponse mCallback;
+        private final FileSystemAccessFileWriter.Truncate_Response mCallback;
 
-        FileSystemAccessFileWriterTruncateResponseParamsForwardToCallback(FileSystemAccessFileWriter.TruncateResponse callback) {
+        FileSystemAccessFileWriterTruncateResponseParamsForwardToCallback(FileSystemAccessFileWriter.Truncate_Response callback) {
             this.mCallback = callback;
         }
 
@@ -643,7 +645,7 @@ AbortResponse callback) {
         }
     }
 
-    static class FileSystemAccessFileWriterTruncateResponseParamsProxyToResponder implements FileSystemAccessFileWriter.TruncateResponse {
+    static class FileSystemAccessFileWriterTruncateResponseParamsProxyToResponder implements FileSystemAccessFileWriter.Truncate_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -797,9 +799,9 @@ AbortResponse callback) {
 
     static class FileSystemAccessFileWriterCloseResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemAccessFileWriter.CloseResponse mCallback;
+        private final FileSystemAccessFileWriter.Close_Response mCallback;
 
-        FileSystemAccessFileWriterCloseResponseParamsForwardToCallback(FileSystemAccessFileWriter.CloseResponse callback) {
+        FileSystemAccessFileWriterCloseResponseParamsForwardToCallback(FileSystemAccessFileWriter.Close_Response callback) {
             this.mCallback = callback;
         }
 
@@ -824,7 +826,7 @@ AbortResponse callback) {
         }
     }
 
-    static class FileSystemAccessFileWriterCloseResponseParamsProxyToResponder implements FileSystemAccessFileWriter.CloseResponse {
+    static class FileSystemAccessFileWriterCloseResponseParamsProxyToResponder implements FileSystemAccessFileWriter.Close_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -978,9 +980,9 @@ AbortResponse callback) {
 
     static class FileSystemAccessFileWriterAbortResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemAccessFileWriter.AbortResponse mCallback;
+        private final FileSystemAccessFileWriter.Abort_Response mCallback;
 
-        FileSystemAccessFileWriterAbortResponseParamsForwardToCallback(FileSystemAccessFileWriter.AbortResponse callback) {
+        FileSystemAccessFileWriterAbortResponseParamsForwardToCallback(FileSystemAccessFileWriter.Abort_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1005,7 +1007,7 @@ AbortResponse callback) {
         }
     }
 
-    static class FileSystemAccessFileWriterAbortResponseParamsProxyToResponder implements FileSystemAccessFileWriter.AbortResponse {
+    static class FileSystemAccessFileWriterAbortResponseParamsProxyToResponder implements FileSystemAccessFileWriter.Abort_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

@@ -9,7 +9,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class NetworkChangeNotifierJni implements NetworkChangeNotifier.Natives {
+class NetworkChangeNotifierJni implements NetworkChangeNotifier.Natives {
   private static NetworkChangeNotifier.Natives testInstance;
 
   public static final JniStaticTestMocker<NetworkChangeNotifier.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.net.NetworkChangeNotifier.Natives>() {
@@ -26,6 +26,12 @@ final class NetworkChangeNotifierJni implements NetworkChangeNotifier.Natives {
   public void notifyConnectionTypeChanged(long nativePtr, NetworkChangeNotifier caller,
       int newConnectionType, long defaultNetId) {
     GEN_JNI.org_chromium_net_NetworkChangeNotifier_notifyConnectionTypeChanged(nativePtr, caller, newConnectionType, defaultNetId);
+  }
+
+  @Override
+  public void notifyConnectionCostChanged(long nativePtr, NetworkChangeNotifier caller,
+      int newConnectionCost) {
+    GEN_JNI.org_chromium_net_NetworkChangeNotifier_notifyConnectionCostChanged(nativePtr, caller, newConnectionCost);
   }
 
   @Override

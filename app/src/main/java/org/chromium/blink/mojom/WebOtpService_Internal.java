@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class WebOtpService_Internal {
 
@@ -63,7 +65,7 @@ class WebOtpService_Internal {
         @Override
         public void receive(
 
-ReceiveResponse callback) {
+Receive_Response callback) {
 
             WebOtpServiceReceiveParams _message = new WebOtpServiceReceiveParams();
 
@@ -321,9 +323,9 @@ ReceiveResponse callback) {
 
     static class WebOtpServiceReceiveResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final WebOtpService.ReceiveResponse mCallback;
+        private final WebOtpService.Receive_Response mCallback;
 
-        WebOtpServiceReceiveResponseParamsForwardToCallback(WebOtpService.ReceiveResponse callback) {
+        WebOtpServiceReceiveResponseParamsForwardToCallback(WebOtpService.Receive_Response callback) {
             this.mCallback = callback;
         }
 
@@ -348,7 +350,7 @@ ReceiveResponse callback) {
         }
     }
 
-    static class WebOtpServiceReceiveResponseParamsProxyToResponder implements WebOtpService.ReceiveResponse {
+    static class WebOtpServiceReceiveResponseParamsProxyToResponder implements WebOtpService.Receive_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

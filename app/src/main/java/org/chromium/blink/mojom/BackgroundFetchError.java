@@ -13,8 +13,22 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class BackgroundFetchError {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        BackgroundFetchError.NONE,
+        BackgroundFetchError.DUPLICATED_DEVELOPER_ID,
+        BackgroundFetchError.INVALID_ARGUMENT,
+        BackgroundFetchError.INVALID_ID,
+        BackgroundFetchError.STORAGE_ERROR,
+        BackgroundFetchError.SERVICE_WORKER_UNAVAILABLE,
+        BackgroundFetchError.QUOTA_EXCEEDED,
+        BackgroundFetchError.PERMISSION_DENIED,
+        BackgroundFetchError.REGISTRATION_LIMIT_EXCEEDED})
+    public @interface EnumType {}
 
     public static final int NONE = 0;
     public static final int DUPLICATED_DEVELOPER_ID = 1;

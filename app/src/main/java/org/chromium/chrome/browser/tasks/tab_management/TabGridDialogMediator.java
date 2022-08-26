@@ -19,10 +19,10 @@ import androidx.appcompat.content.res.AppCompatResources;
 
 import org.chromium.base.Callback;
 import org.chromium.base.metrics.RecordUserAction;
-import org.chromium.base.supplier.ObservableSupplier;
+import org.chromium.base.supplier.Supplier;
 import org.chromium.chrome.browser.share.ChromeShareExtras;
 import org.chromium.chrome.browser.share.ShareDelegate;
-import org.chromium.chrome.browser.share.ShareDelegateImpl.ShareOrigin;
+import org.chromium.chrome.browser.share.ShareDelegate.ShareOrigin;
 import org.chromium.chrome.browser.tab.Tab;
 import org.chromium.chrome.browser.tab.TabCreationState;
 import org.chromium.chrome.browser.tab.TabLaunchType;
@@ -34,11 +34,13 @@ import org.chromium.chrome.browser.tabmodel.TabModelFilter;
 import org.chromium.chrome.browser.tabmodel.TabModelObserver;
 import org.chromium.chrome.browser.tabmodel.TabModelSelector;
 import org.chromium.chrome.browser.tabmodel.TabModelSelectorObserver;
+import org.chromium.chrome.browser.tasks.ReturnToChromeUtil;
 import org.chromium.chrome.browser.tasks.tab_groups.TabGroupModelFilter;
 import org.chromium.chrome.browser.ui.messages.snackbar.Snackbar;
 import org.chromium.chrome.browser.ui.messages.snackbar.SnackbarManager;
 import org.chromium.chrome.tab_ui.R;
 import org.chromium.components.browser_ui.share.ShareParams;
+import org.chromium.components.browser_ui.widget.gesture.BackPressHandler;
 import org.chromium.components.embedder_support.util.UrlConstants;
 import org.chromium.content_public.browser.LoadUrlParams;
 import org.chromium.ui.KeyboardVisibilityDelegate;
@@ -55,7 +57,7 @@ public class TabGridDialogMediator implements SnackbarManager.SnackbarController
     /**
      * Defines an interface for a {@link TabGridDialogMediator} to control dialog.
      */
-    interface DialogController {
+    interface DialogController extends BackPressHandler {
         /**
          * Handles a reset event originated from {@link TabGridDialogMediator} and {@link
          * TabSwitcherMediator}.
@@ -105,7 +107,7 @@ public class TabGridDialogMediator implements SnackbarManager.SnackbarController
     private final TabSwitcherMediator.ResetHandler mTabSwitcherResetHandler;
     private final AnimationSourceViewProvider mAnimationSourceViewProvider;
     private final DialogHandler mTabGridDialogHandler;
-    private final ObservableSupplier<ShareDelegate> mShareDelegateSupplier;
+    private final Supplier<ShareDelegate> mShareDelegateSupplier;
     private final Runnable mScrimClickRunnable;
     private final String mComponentName;
 
@@ -122,8 +124,8 @@ public class TabGridDialogMediator implements SnackbarManager.SnackbarController
             TabModelSelector tabModelSelector, TabCreatorManager tabCreatorManager,
             TabSwitcherMediator.ResetHandler tabSwitcherResetHandler,
             AnimationSourceViewProvider animationSourceViewProvider,
-            ObservableSupplier<ShareDelegate> shareDelegateSupplier,
-            SnackbarManager snackbarManager, String componentName) {
+            Supplier<ShareDelegate> shareDelegateSupplier, SnackbarManager snackbarManager,
+            String componentName) {
         mContext = context;
         mModel = model;
         mTabModelSelector = tabModelSelector;
@@ -198,37 +200,11 @@ public class TabGridDialogMediator implements SnackbarManager.SnackbarController
         mTabModelSelectorObserver = new TabModelSelectorObserver() {
             @Override
             public void onTabModelSelected(TabModel newModel, TabModel oldModel) {
-                boolean isIncognito = newModel.isIncognito();
-                int dialogBackgroundResource = isIncognito
-                        ? R.drawable.tab_grid_dialog_background_incognito
-                        : R.drawable.tab_grid_dialog_background;
-                ColorStateList tintList = isIncognito
-                        ? AppCompatResources.getColorStateList(
-                                mContext, R.color.default_icon_color_light_tint_list)
-                        : AppCompatResources.getColorStateList(
-                                mContext, R.color.default_icon_color_tint_list);
-                int ungroupBarBackgroundColorId = isIncognito
-                        ? R.color.tab_grid_dialog_background_color_incognito
-                        : R.color.tab_grid_dialog_background_color;
-                int ungroupBarHoveredBackgroundColorId = isIncognito
-                        ? R.color.tab_grid_card_selected_color_incognito
-                        : R.color.tab_grid_card_selected_color;
-                int ungroupBarTextAppearance = isIncognito
-                        ? R.style.TextAppearance_TextMediumThick_Blue_Light
-                        : R.style.TextAppearance_TextMediumThick_Blue;
-
-                mModel.set(TabGridPanelProperties.DIALOG_BACKGROUND_RESOURCE_ID,
-                        dialogBackgroundResource);
-                mModel.set(TabGridPanelProperties.TINT, tintList);
-                mModel.set(TabGridPanelProperties.DIALOG_UNGROUP_BAR_BACKGROUND_COLOR_ID,
-                        ungroupBarBackgroundColorId);
-                mModel.set(TabGridPanelProperties.DIALOG_UNGROUP_BAR_HOVERED_BACKGROUND_COLOR_ID,
-                        ungroupBarHoveredBackgroundColorId);
-                mModel.set(TabGridPanelProperties.DIALOG_UNGROUP_BAR_TEXT_APPEARANCE,
-                        ungroupBarTextAppearance);
+                updateColorProperties(context, newModel.isIncognito());
             }
         };
         mTabModelSelector.addObserver(mTabModelSelectorObserver);
+        updateColorProperties(context, mTabModelSelector.isIncognitoSelected());
 
         // Setup ScrimView click Runnable.
         mScrimClickRunnable = () -> {
@@ -300,7 +276,7 @@ public class TabGridDialogMediator implements SnackbarManager.SnackbarController
         // Setup toolbar button click listeners.
         setupToolbarClickHandlers();
 
-        if (TabUiFeatureUtilities.isTabGroupsAndroidContinuationEnabled()) {
+        if (TabUiFeatureUtilities.isTabGroupsAndroidContinuationEnabled(mContext)) {
             // Setup toolbar edit text.
             setupToolbarEditText();
 
@@ -411,6 +387,34 @@ public class TabGridDialogMediator implements SnackbarManager.SnackbarController
                         R.plurals.bottom_tab_grid_title_placeholder, tabsCount, tabsCount));
     }
 
+    private void updateColorProperties(Context context, boolean isIncognito) {
+        int dialogBackgroundColor =
+                TabUiThemeProvider.getTabGridDialogBackgroundColor(context, isIncognito);
+        ColorStateList tintList = isIncognito ? AppCompatResources.getColorStateList(
+                                          mContext, R.color.default_icon_color_light_tint_list)
+                                              : AppCompatResources.getColorStateList(mContext,
+                                                      R.color.default_icon_color_tint_list);
+        int ungroupBarBackgroundColor =
+                TabUiThemeProvider.getTabGridDialogUngroupBarBackgroundColor(context, isIncognito);
+        int ungroupBarHoveredBackgroundColor =
+                TabUiThemeProvider.getTabGridDialogUngroupBarHoveredBackgroundColor(
+                        context, isIncognito);
+        int ungroupBarTextColor =
+                TabUiThemeProvider.getTabGridDialogUngroupBarTextColor(context, isIncognito);
+        int ungroupBarHoveredTextColor =
+                TabUiThemeProvider.getTabGridDialogUngroupBarHoveredTextColor(context, isIncognito);
+
+        mModel.set(TabGridPanelProperties.DIALOG_BACKGROUND_COLOR, dialogBackgroundColor);
+        mModel.set(TabGridPanelProperties.TINT, tintList);
+        mModel.set(TabGridPanelProperties.DIALOG_UNGROUP_BAR_BACKGROUND_COLOR,
+                ungroupBarBackgroundColor);
+        mModel.set(TabGridPanelProperties.DIALOG_UNGROUP_BAR_HOVERED_BACKGROUND_COLOR,
+                ungroupBarHoveredBackgroundColor);
+        mModel.set(TabGridPanelProperties.DIALOG_UNGROUP_BAR_TEXT_COLOR, ungroupBarTextColor);
+        mModel.set(TabGridPanelProperties.DIALOG_UNGROUP_BAR_HOVERED_TEXT_COLOR,
+                ungroupBarHoveredTextColor);
+    }
+
     private static int getRootId(Tab tab) {
         return CriticalPersistedTabData.from(tab).getRootId();
     }
@@ -515,8 +519,11 @@ public class TabGridDialogMediator implements SnackbarManager.SnackbarController
             Tab parentTabToAttach = relatedTabs.get(relatedTabs.size() - 1);
             mTabCreatorManager.getTabCreator(currentTab.isIncognito())
                     .createNewTab(new LoadUrlParams(UrlConstants.NTP_URL),
-                            TabLaunchType.FROM_CHROME_UI, parentTabToAttach);
+                            TabLaunchType.FROM_TAB_GROUP_UI, parentTabToAttach);
             RecordUserAction.record("MobileNewTabOpened." + mComponentName);
+            if (!currentTab.isIncognito()) {
+                ReturnToChromeUtil.onNewTabOpened();
+            }
         };
     }
 
@@ -620,7 +627,7 @@ public class TabGridDialogMediator implements SnackbarManager.SnackbarController
         List<Tab> tabgroup = getRelatedTabs(mCurrentTabId);
         assert tabgroup.size() > 0;
         for (int i = 0; i < tabgroup.size(); i++) {
-            sb.append(i + 1).append(". ").append(tabgroup.get(i).getUrlString()).append("\n");
+            sb.append(i + 1).append(". ").append(tabgroup.get(i).getUrl().getSpec()).append("\n");
         }
         return sb.toString();
     }

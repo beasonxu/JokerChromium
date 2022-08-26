@@ -13,6 +13,8 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class ResourceId extends org.chromium.mojo.bindings.Struct {
 

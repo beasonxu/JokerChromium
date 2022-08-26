@@ -13,8 +13,18 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ContentCategory {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ContentCategory.NONE,
+        ContentCategory.HOME_PAGE,
+        ContentCategory.ARTICLE,
+        ContentCategory.VIDEO,
+        ContentCategory.AUDIO})
+    public @interface EnumType {}
 
     public static final int NONE = 0;
     public static final int HOME_PAGE = 1;

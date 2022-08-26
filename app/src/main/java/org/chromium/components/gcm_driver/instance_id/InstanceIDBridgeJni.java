@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class InstanceIDBridgeJni implements InstanceIDBridge.Natives {
+class InstanceIDBridgeJni implements InstanceIDBridge.Natives {
   private static InstanceIDBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<InstanceIDBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.gcm_driver.instance_id.InstanceIDBridge.Natives>() {

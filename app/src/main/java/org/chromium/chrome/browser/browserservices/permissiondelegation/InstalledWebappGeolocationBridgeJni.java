@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class InstalledWebappGeolocationBridgeJni implements InstalledWebappGeolocationBridge.Natives {
+class InstalledWebappGeolocationBridgeJni implements InstalledWebappGeolocationBridge.Natives {
   private static InstalledWebappGeolocationBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<InstalledWebappGeolocationBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.browserservices.permissiondelegation.InstalledWebappGeolocationBridge.Natives>() {

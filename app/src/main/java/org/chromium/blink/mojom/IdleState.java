@@ -13,14 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class IdleState extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 16;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+    private static final int STRUCT_SIZE = 24;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-    public int user;
-    public int screen;
+    public org.chromium.mojo_base.mojom.TimeDelta idleTime;
+    public boolean screenLocked;
 
     private IdleState(int version) {
         super(STRUCT_SIZE, version);
@@ -57,15 +59,12 @@ public final class IdleState extends org.chromium.mojo.bindings.Struct {
             result = new IdleState(elementsOrVersion);
                 {
                     
-                result.user = decoder0.readInt(8);
-                    UserIdleState.validate(result.user);
-                    result.user = UserIdleState.toKnownValue(result.user);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, true);
+                result.idleTime = org.chromium.mojo_base.mojom.TimeDelta.decode(decoder1);
                 }
                 {
                     
-                result.screen = decoder0.readInt(12);
-                    ScreenIdleState.validate(result.screen);
-                    result.screen = ScreenIdleState.toKnownValue(result.screen);
+                result.screenLocked = decoder0.readBoolean(16, 0);
                 }
 
         } finally {
@@ -79,8 +78,8 @@ public final class IdleState extends org.chromium.mojo.bindings.Struct {
     protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
         org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         
-        encoder0.encode(this.user, 8);
+        encoder0.encode(this.idleTime, 8, true);
         
-        encoder0.encode(this.screen, 12);
+        encoder0.encode(this.screenLocked, 16, 0);
     }
 }

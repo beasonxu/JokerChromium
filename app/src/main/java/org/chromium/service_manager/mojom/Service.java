@@ -13,6 +13,8 @@
 
 package org.chromium.service_manager.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface Service extends org.chromium.mojo.bindings.Interface {
 
@@ -23,21 +25,18 @@ public interface Service extends org.chromium.mojo.bindings.Interface {
 
     Manager<Service, Service.Proxy> MANAGER = Service_Internal.MANAGER;
 
-
     void onStart(
 Identity identity, 
-OnStartResponse callback);
+OnStart_Response callback);
 
-    interface OnStartResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<org.chromium.mojo.bindings.InterfaceRequest<Connector>, org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported> { }
-
+    interface OnStart_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<org.chromium.mojo.bindings.InterfaceRequest<Connector>, org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported> { }
 
 
     void onBindInterface(
 BindSourceInfo source, String interfaceName, org.chromium.mojo.system.MessagePipeHandle interfacePipe, 
-OnBindInterfaceResponse callback);
+OnBindInterface_Response callback);
 
-    interface OnBindInterfaceResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface OnBindInterface_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void createPackagedServiceInstance(

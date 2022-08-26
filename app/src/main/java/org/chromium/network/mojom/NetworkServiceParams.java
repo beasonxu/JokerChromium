@@ -13,15 +13,19 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class NetworkServiceParams extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 24;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+    private static final int STRUCT_SIZE = 40;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int initialConnectionType;
     public int initialConnectionSubtype;
     public EnvironmentVariable[] environment;
+    public UrlLoaderNetworkServiceObserver defaultObserver;
+    public boolean firstPartySetsEnabled;
 
     private NetworkServiceParams(int version) {
         super(STRUCT_SIZE, version);
@@ -83,6 +87,14 @@ public final class NetworkServiceParams extends org.chromium.mojo.bindings.Struc
                     }
                 }
                 }
+                {
+                    
+                result.defaultObserver = decoder0.readServiceInterface(24, false, UrlLoaderNetworkServiceObserver.MANAGER);
+                }
+                {
+                    
+                result.firstPartySetsEnabled = decoder0.readBoolean(32, 0);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -108,5 +120,9 @@ public final class NetworkServiceParams extends org.chromium.mojo.bindings.Struc
                 encoder1.encode(this.environment[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
             }
         }
+        
+        encoder0.encode(this.defaultObserver, 24, false, UrlLoaderNetworkServiceObserver.MANAGER);
+        
+        encoder0.encode(this.firstPartySetsEnabled, 32, 0);
     }
 }

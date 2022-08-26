@@ -13,13 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class VisualProperties extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 112;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(112, 0)};
+    private static final int STRUCT_SIZE = 120;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(120, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-    public ScreenInfo screenInfo;
+    public org.chromium.display.mojom.ScreenInfos screenInfos;
     public boolean autoResizeEnabled;
     public org.chromium.gfx.mojom.Size minSizeForAutoResize;
     public org.chromium.gfx.mojom.Size maxSizeForAutoResize;
@@ -37,6 +39,7 @@ public final class VisualProperties extends org.chromium.mojo.bindings.Struct {
     public float compositingScaleFactor;
     public org.chromium.gfx.mojom.Rect[] rootWidgetWindowSegments;
     public boolean isPinchGestureActive;
+    public org.chromium.gfx.mojom.Rect windowControlsOverlayRect;
 
     private VisualProperties(int version) {
         super(STRUCT_SIZE, version);
@@ -78,7 +81,7 @@ public final class VisualProperties extends org.chromium.mojo.bindings.Struct {
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                result.screenInfo = ScreenInfo.decode(decoder1);
+                result.screenInfos = org.chromium.display.mojom.ScreenInfos.decode(decoder1);
                 }
                 {
                     
@@ -129,7 +132,7 @@ public final class VisualProperties extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(64, true);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(64, false);
                 result.browserControlsParams = org.chromium.cc.mojom.BrowserControlsParams.decode(decoder1);
                 }
                 {
@@ -166,6 +169,11 @@ public final class VisualProperties extends org.chromium.mojo.bindings.Struct {
                     }
                 }
                 }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(112, false);
+                result.windowControlsOverlayRect = org.chromium.gfx.mojom.Rect.decode(decoder1);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -178,7 +186,7 @@ public final class VisualProperties extends org.chromium.mojo.bindings.Struct {
     protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
         org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         
-        encoder0.encode(this.screenInfo, 8, false);
+        encoder0.encode(this.screenInfos, 8, false);
         
         encoder0.encode(this.autoResizeEnabled, 16, 0);
         
@@ -200,7 +208,7 @@ public final class VisualProperties extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.compositorViewportPixelRect, 56, false);
         
-        encoder0.encode(this.browserControlsParams, 64, true);
+        encoder0.encode(this.browserControlsParams, 64, false);
         
         encoder0.encode(this.localSurfaceId, 72, true);
         
@@ -221,5 +229,7 @@ public final class VisualProperties extends org.chromium.mojo.bindings.Struct {
                 encoder1.encode(this.rootWidgetWindowSegments[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
             }
         }
+        
+        encoder0.encode(this.windowControlsOverlayRect, 112, false);
     }
 }

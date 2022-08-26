@@ -13,6 +13,8 @@
 
 package org.chromium.media_session.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class MediaSessionDebugInfo extends org.chromium.mojo.bindings.Struct {
 

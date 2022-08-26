@@ -9,7 +9,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class PaintPreviewTabServiceFactoryJni implements PaintPreviewTabServiceFactory.Natives {
+class PaintPreviewTabServiceFactoryJni implements PaintPreviewTabServiceFactory.Natives {
   private static PaintPreviewTabServiceFactory.Natives testInstance;
 
   public static final JniStaticTestMocker<PaintPreviewTabServiceFactory.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.paint_preview.services.PaintPreviewTabServiceFactory.Natives>() {

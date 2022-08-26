@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface SynchronousCompositorControlHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface SynchronousCompositorControlHost extends org.chromium.mojo.bind
 
     Manager<SynchronousCompositorControlHost, SynchronousCompositorControlHost.Proxy> MANAGER = SynchronousCompositorControlHost_Internal.MANAGER;
 
-
     void returnFrame(
 int layerTreeFrameSinkId, int metadataVersion, org.chromium.viz.mojom.LocalSurfaceId localSurfaceId, org.chromium.viz.mojom.CompositorFrame frame, org.chromium.viz.mojom.HitTestRegionList hitTestRegionList);
-
 
 
     void beginFrameResponse(

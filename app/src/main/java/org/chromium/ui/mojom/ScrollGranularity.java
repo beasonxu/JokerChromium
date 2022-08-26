@@ -13,8 +13,13 @@
 
 package org.chromium.ui.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ScrollGranularity {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+})
+    public @interface EnumType {}
 
 
     public static boolean isKnownValue(int value) {

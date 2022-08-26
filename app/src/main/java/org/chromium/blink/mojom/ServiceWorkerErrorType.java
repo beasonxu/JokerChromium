@@ -13,8 +13,27 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ServiceWorkerErrorType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ServiceWorkerErrorType.NONE,
+        ServiceWorkerErrorType.ABORT,
+        ServiceWorkerErrorType.ACTIVATE,
+        ServiceWorkerErrorType.DISABLED,
+        ServiceWorkerErrorType.INSTALL,
+        ServiceWorkerErrorType.NAVIGATION,
+        ServiceWorkerErrorType.NETWORK,
+        ServiceWorkerErrorType.NOT_FOUND,
+        ServiceWorkerErrorType.SCRIPT_EVALUATE_FAILED,
+        ServiceWorkerErrorType.SECURITY,
+        ServiceWorkerErrorType.STATE,
+        ServiceWorkerErrorType.TIMEOUT,
+        ServiceWorkerErrorType.TYPE,
+        ServiceWorkerErrorType.UNKNOWN})
+    public @interface EnumType {}
 
     public static final int NONE = 0;
     public static final int ABORT = 1;

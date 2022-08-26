@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class PrerenderAttributes extends org.chromium.mojo.bindings.Struct {
 
@@ -20,7 +22,7 @@ public final class PrerenderAttributes extends org.chromium.mojo.bindings.Struct
     private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public org.chromium.url.mojom.Url url;
-    public int relType;
+    public int triggerType;
     public Referrer referrer;
     public org.chromium.gfx.mojom.Size viewSize;
 
@@ -64,9 +66,9 @@ public final class PrerenderAttributes extends org.chromium.mojo.bindings.Struct
                 }
                 {
                     
-                result.relType = decoder0.readInt(16);
-                    PrerenderRelType.validate(result.relType);
-                    result.relType = PrerenderRelType.toKnownValue(result.relType);
+                result.triggerType = decoder0.readInt(16);
+                    PrerenderTriggerType.validate(result.triggerType);
+                    result.triggerType = PrerenderTriggerType.toKnownValue(result.triggerType);
                 }
                 {
                     
@@ -92,7 +94,7 @@ public final class PrerenderAttributes extends org.chromium.mojo.bindings.Struct
         
         encoder0.encode(this.url, 8, false);
         
-        encoder0.encode(this.relType, 16);
+        encoder0.encode(this.triggerType, 16);
         
         encoder0.encode(this.referrer, 24, false);
         

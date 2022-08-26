@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class PushMessaging_Internal {
 
@@ -65,7 +67,7 @@ class PushMessaging_Internal {
         @Override
         public void subscribe(
 long serviceWorkerRegistrationId, PushSubscriptionOptions options, boolean userGesture, 
-SubscribeResponse callback) {
+Subscribe_Response callback) {
 
             PushMessagingSubscribeParams _message = new PushMessagingSubscribeParams();
 
@@ -91,7 +93,7 @@ SubscribeResponse callback) {
         @Override
         public void unsubscribe(
 long serviceWorkerRegistrationId, 
-UnsubscribeResponse callback) {
+Unsubscribe_Response callback) {
 
             PushMessagingUnsubscribeParams _message = new PushMessagingUnsubscribeParams();
 
@@ -113,7 +115,7 @@ UnsubscribeResponse callback) {
         @Override
         public void getSubscription(
 long serviceWorkerRegistrationId, 
-GetSubscriptionResponse callback) {
+GetSubscription_Response callback) {
 
             PushMessagingGetSubscriptionParams _message = new PushMessagingGetSubscriptionParams();
 
@@ -402,9 +404,9 @@ GetSubscriptionResponse callback) {
 
     static class PushMessagingSubscribeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PushMessaging.SubscribeResponse mCallback;
+        private final PushMessaging.Subscribe_Response mCallback;
 
-        PushMessagingSubscribeResponseParamsForwardToCallback(PushMessaging.SubscribeResponse callback) {
+        PushMessagingSubscribeResponseParamsForwardToCallback(PushMessaging.Subscribe_Response callback) {
             this.mCallback = callback;
         }
 
@@ -429,7 +431,7 @@ GetSubscriptionResponse callback) {
         }
     }
 
-    static class PushMessagingSubscribeResponseParamsProxyToResponder implements PushMessaging.SubscribeResponse {
+    static class PushMessagingSubscribeResponseParamsProxyToResponder implements PushMessaging.Subscribe_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -607,9 +609,9 @@ GetSubscriptionResponse callback) {
 
     static class PushMessagingUnsubscribeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PushMessaging.UnsubscribeResponse mCallback;
+        private final PushMessaging.Unsubscribe_Response mCallback;
 
-        PushMessagingUnsubscribeResponseParamsForwardToCallback(PushMessaging.UnsubscribeResponse callback) {
+        PushMessagingUnsubscribeResponseParamsForwardToCallback(PushMessaging.Unsubscribe_Response callback) {
             this.mCallback = callback;
         }
 
@@ -634,7 +636,7 @@ GetSubscriptionResponse callback) {
         }
     }
 
-    static class PushMessagingUnsubscribeResponseParamsProxyToResponder implements PushMessaging.UnsubscribeResponse {
+    static class PushMessagingUnsubscribeResponseParamsProxyToResponder implements PushMessaging.Unsubscribe_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -808,9 +810,9 @@ GetSubscriptionResponse callback) {
 
     static class PushMessagingGetSubscriptionResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PushMessaging.GetSubscriptionResponse mCallback;
+        private final PushMessaging.GetSubscription_Response mCallback;
 
-        PushMessagingGetSubscriptionResponseParamsForwardToCallback(PushMessaging.GetSubscriptionResponse callback) {
+        PushMessagingGetSubscriptionResponseParamsForwardToCallback(PushMessaging.GetSubscription_Response callback) {
             this.mCallback = callback;
         }
 
@@ -835,7 +837,7 @@ GetSubscriptionResponse callback) {
         }
     }
 
-    static class PushMessagingGetSubscriptionResponseParamsProxyToResponder implements PushMessaging.GetSubscriptionResponse {
+    static class PushMessagingGetSubscriptionResponseParamsProxyToResponder implements PushMessaging.GetSubscription_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

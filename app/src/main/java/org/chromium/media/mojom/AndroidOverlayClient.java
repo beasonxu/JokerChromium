@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface AndroidOverlayClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,23 +25,19 @@ public interface AndroidOverlayClient extends org.chromium.mojo.bindings.Interfa
 
     Manager<AndroidOverlayClient, AndroidOverlayClient.Proxy> MANAGER = AndroidOverlayClient_Internal.MANAGER;
 
-
     void onSurfaceReady(
 long surfaceKey);
-
 
 
     void onDestroyed(
 );
 
 
-
     void onSynchronouslyDestroyed(
 
-OnSynchronouslyDestroyedResponse callback);
+OnSynchronouslyDestroyed_Response callback);
 
-    interface OnSynchronouslyDestroyedResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface OnSynchronouslyDestroyed_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void onPowerEfficientState(

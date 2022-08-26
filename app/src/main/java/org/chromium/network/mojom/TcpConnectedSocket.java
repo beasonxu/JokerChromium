@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface TcpConnectedSocket extends org.chromium.mojo.bindings.Interface {
 
@@ -23,44 +25,39 @@ public interface TcpConnectedSocket extends org.chromium.mojo.bindings.Interface
 
     Manager<TcpConnectedSocket, TcpConnectedSocket.Proxy> MANAGER = TcpConnectedSocket_Internal.MANAGER;
 
-
     void upgradeToTls(
 HostPortPair hostPortPair, TlsClientSocketOptions options, MutableNetworkTrafficAnnotationTag trafficAnnotation, org.chromium.mojo.bindings.InterfaceRequest<TlsClientSocket> receiver, SocketObserver observer, 
-UpgradeToTlsResponse callback);
+UpgradeToTls_Response callback);
 
-    interface UpgradeToTlsResponse extends org.chromium.mojo.bindings.Callbacks.Callback4<Integer, org.chromium.mojo.system.DataPipe.ConsumerHandle, org.chromium.mojo.system.DataPipe.ProducerHandle, SslInfo> { }
-
+    interface UpgradeToTls_Response extends org.chromium.mojo.bindings.Callbacks.Callback4<Integer, org.chromium.mojo.system.DataPipe.ConsumerHandle, org.chromium.mojo.system.DataPipe.ProducerHandle, SslInfo> { }
 
 
     void setSendBufferSize(
 int sendBufferSize, 
-SetSendBufferSizeResponse callback);
+SetSendBufferSize_Response callback);
 
-    interface SetSendBufferSizeResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface SetSendBufferSize_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void setReceiveBufferSize(
 int receiveBufferSize, 
-SetReceiveBufferSizeResponse callback);
+SetReceiveBufferSize_Response callback);
 
-    interface SetReceiveBufferSizeResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface SetReceiveBufferSize_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void setNoDelay(
 boolean noDelay, 
-SetNoDelayResponse callback);
+SetNoDelay_Response callback);
 
-    interface SetNoDelayResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface SetNoDelay_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void setKeepAlive(
 boolean enable, int delaySecs, 
-SetKeepAliveResponse callback);
+SetKeepAlive_Response callback);
 
-    interface SetKeepAliveResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
+    interface SetKeepAlive_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
 }

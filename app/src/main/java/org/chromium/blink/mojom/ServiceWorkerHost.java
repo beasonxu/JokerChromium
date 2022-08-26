@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ServiceWorkerHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,83 +25,72 @@ public interface ServiceWorkerHost extends org.chromium.mojo.bindings.Interface 
 
     Manager<ServiceWorkerHost, ServiceWorkerHost.Proxy> MANAGER = ServiceWorkerHost_Internal.MANAGER;
 
-
     void setCachedMetadata(
 org.chromium.url.mojom.Url url, org.chromium.mojo_base.mojom.ReadOnlyBuffer data);
-
 
 
     void clearCachedMetadata(
 org.chromium.url.mojom.Url url);
 
 
-
     void getClients(
 ServiceWorkerClientQueryOptions options, 
-GetClientsResponse callback);
+GetClients_Response callback);
 
-    interface GetClientsResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<ServiceWorkerClientInfo[]> { }
-
+    interface GetClients_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<ServiceWorkerClientInfo[]> { }
 
 
     void getClient(
 String clientUuid, 
-GetClientResponse callback);
+GetClient_Response callback);
 
-    interface GetClientResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<ServiceWorkerClientInfo> { }
-
+    interface GetClient_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<ServiceWorkerClientInfo> { }
 
 
     void openNewTab(
 org.chromium.url.mojom.Url url, 
-OpenNewTabResponse callback);
+OpenNewTab_Response callback);
 
-    interface OpenNewTabResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<Boolean, ServiceWorkerClientInfo, String> { }
-
+    interface OpenNewTab_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<Boolean, ServiceWorkerClientInfo, String> { }
 
 
     void openPaymentHandlerWindow(
 org.chromium.url.mojom.Url url, 
-OpenPaymentHandlerWindowResponse callback);
+OpenPaymentHandlerWindow_Response callback);
 
-    interface OpenPaymentHandlerWindowResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<Boolean, ServiceWorkerClientInfo, String> { }
-
+    interface OpenPaymentHandlerWindow_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<Boolean, ServiceWorkerClientInfo, String> { }
 
 
     void postMessageToClient(
 String clientUuid, TransferableMessage message);
 
 
-
     void focusClient(
 String clientUuid, 
-FocusClientResponse callback);
+FocusClient_Response callback);
 
-    interface FocusClientResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<ServiceWorkerClientInfo> { }
-
+    interface FocusClient_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<ServiceWorkerClientInfo> { }
 
 
     void navigateClient(
 String clientUuid, org.chromium.url.mojom.Url url, 
-NavigateClientResponse callback);
+NavigateClient_Response callback);
 
-    interface NavigateClientResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<Boolean, ServiceWorkerClientInfo, String> { }
-
+    interface NavigateClient_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<Boolean, ServiceWorkerClientInfo, String> { }
 
 
     void skipWaiting(
 
-SkipWaitingResponse callback);
+SkipWaiting_Response callback);
 
-    interface SkipWaitingResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface SkipWaiting_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void claimClients(
 
-ClaimClientsResponse callback);
+ClaimClients_Response callback);
 
-    interface ClaimClientsResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, String> { }
+    interface ClaimClients_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, String> { }
 
 
 }

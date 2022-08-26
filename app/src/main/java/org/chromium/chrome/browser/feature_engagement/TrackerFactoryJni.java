@@ -11,7 +11,7 @@ import org.chromium.components.feature_engagement.Tracker;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class TrackerFactoryJni implements TrackerFactory.Natives {
+class TrackerFactoryJni implements TrackerFactory.Natives {
   private static TrackerFactory.Natives testInstance;
 
   public static final JniStaticTestMocker<TrackerFactory.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.feature_engagement.TrackerFactory.Natives>() {

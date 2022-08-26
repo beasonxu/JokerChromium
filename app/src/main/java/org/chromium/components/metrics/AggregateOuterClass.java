@@ -111,26 +111,10 @@ public final class AggregateOuterClass {
 
     /**
      * <pre>
-     * The total number of times this source/event was dropped due to whitelist.
-     * </pre>
-     *
-     * <code>optional uint64 dropped_due_to_whitelist = 7;</code>
-     * @return Whether the droppedDueToWhitelist field is set.
-     */
-    boolean hasDroppedDueToWhitelist();
-    /**
-     * <pre>
-     * The total number of times this source/event was dropped due to whitelist.
-     * </pre>
-     *
-     * <code>optional uint64 dropped_due_to_whitelist = 7;</code>
-     * @return The droppedDueToWhitelist.
-     */
-    long getDroppedDueToWhitelist();
-
-    /**
-     * <pre>
      * The total number of times this source/event was dropped due to filter.
+     * Unlike the others, records dropped for this reason are not included
+     * in the |total_count|.
+     * https://source.chromium.org/chromium/chromium/src/+/main:components/ukm/ukm_entry_filter.h
      * </pre>
      *
      * <code>optional uint64 dropped_due_to_filter = 8;</code>
@@ -140,12 +124,40 @@ public final class AggregateOuterClass {
     /**
      * <pre>
      * The total number of times this source/event was dropped due to filter.
+     * Unlike the others, records dropped for this reason are not included
+     * in the |total_count|.
+     * https://source.chromium.org/chromium/chromium/src/+/main:components/ukm/ukm_entry_filter.h
      * </pre>
      *
      * <code>optional uint64 dropped_due_to_filter = 8;</code>
      * @return The droppedDueToFilter.
      */
     long getDroppedDueToFilter();
+
+    /**
+     * <pre>
+     * The total number of times this source/event was dropped due to there
+     * being no configuration of UKM via Finch. Until a full configuration is
+     * delivered by Finch to the client, UKM is disabled but some basic
+     * information is still collected and counted here.
+     * </pre>
+     *
+     * <code>optional uint64 dropped_due_to_unconfigured = 9;</code>
+     * @return Whether the droppedDueToUnconfigured field is set.
+     */
+    boolean hasDroppedDueToUnconfigured();
+    /**
+     * <pre>
+     * The total number of times this source/event was dropped due to there
+     * being no configuration of UKM via Finch. Until a full configuration is
+     * delivered by Finch to the client, UKM is disabled but some basic
+     * information is still collected and counted here.
+     * </pre>
+     *
+     * <code>optional uint64 dropped_due_to_unconfigured = 9;</code>
+     * @return The droppedDueToUnconfigured.
+     */
+    long getDroppedDueToUnconfigured();
 
     /**
      * <code>repeated .ukm.Aggregate.Metric metrics = 6;</code>
@@ -163,7 +175,7 @@ public final class AggregateOuterClass {
   }
   /**
    * <pre>
-   * Next tag: 9
+   * Next tag: 10
    * </pre>
    *
    * Protobuf type {@code ukm.Aggregate}
@@ -279,17 +291,6 @@ public final class AggregateOuterClass {
       long getDroppedDueToSampling();
 
       /**
-       * <code>optional uint64 dropped_due_to_whitelist = 7;</code>
-       * @return Whether the droppedDueToWhitelist field is set.
-       */
-      boolean hasDroppedDueToWhitelist();
-      /**
-       * <code>optional uint64 dropped_due_to_whitelist = 7;</code>
-       * @return The droppedDueToWhitelist.
-       */
-      long getDroppedDueToWhitelist();
-
-      /**
        * <code>optional uint64 dropped_due_to_filter = 8;</code>
        * @return Whether the droppedDueToFilter field is set.
        */
@@ -299,11 +300,22 @@ public final class AggregateOuterClass {
        * @return The droppedDueToFilter.
        */
       long getDroppedDueToFilter();
+
+      /**
+       * <code>optional uint64 dropped_due_to_unconfigured = 9;</code>
+       * @return Whether the droppedDueToUnconfigured field is set.
+       */
+      boolean hasDroppedDueToUnconfigured();
+      /**
+       * <code>optional uint64 dropped_due_to_unconfigured = 9;</code>
+       * @return The droppedDueToUnconfigured.
+       */
+      long getDroppedDueToUnconfigured();
     }
     /**
      * <pre>
      * For each Event, we have a list of possible metrics included. Metric names
-     * cannot be repeated. There is no guarentee that all metrics that are
+     * cannot be repeated. There is no guarantee that all metrics that are
      * possible for a given event will be included in a single Aggregate.
      * </pre>
      *
@@ -585,40 +597,6 @@ public final class AggregateOuterClass {
         droppedDueToSampling_ = 0L;
       }
 
-      public static final int DROPPED_DUE_TO_WHITELIST_FIELD_NUMBER = 7;
-      private long droppedDueToWhitelist_;
-      /**
-       * <code>optional uint64 dropped_due_to_whitelist = 7;</code>
-       * @return Whether the droppedDueToWhitelist field is set.
-       */
-      @java.lang.Override
-      public boolean hasDroppedDueToWhitelist() {
-        return ((bitField0_ & 0x00000040) != 0);
-      }
-      /**
-       * <code>optional uint64 dropped_due_to_whitelist = 7;</code>
-       * @return The droppedDueToWhitelist.
-       */
-      @java.lang.Override
-      public long getDroppedDueToWhitelist() {
-        return droppedDueToWhitelist_;
-      }
-      /**
-       * <code>optional uint64 dropped_due_to_whitelist = 7;</code>
-       * @param value The droppedDueToWhitelist to set.
-       */
-      private void setDroppedDueToWhitelist(long value) {
-        bitField0_ |= 0x00000040;
-        droppedDueToWhitelist_ = value;
-      }
-      /**
-       * <code>optional uint64 dropped_due_to_whitelist = 7;</code>
-       */
-      private void clearDroppedDueToWhitelist() {
-        bitField0_ = (bitField0_ & ~0x00000040);
-        droppedDueToWhitelist_ = 0L;
-      }
-
       public static final int DROPPED_DUE_TO_FILTER_FIELD_NUMBER = 8;
       private long droppedDueToFilter_;
       /**
@@ -627,7 +605,7 @@ public final class AggregateOuterClass {
        */
       @java.lang.Override
       public boolean hasDroppedDueToFilter() {
-        return ((bitField0_ & 0x00000080) != 0);
+        return ((bitField0_ & 0x00000040) != 0);
       }
       /**
        * <code>optional uint64 dropped_due_to_filter = 8;</code>
@@ -642,15 +620,49 @@ public final class AggregateOuterClass {
        * @param value The droppedDueToFilter to set.
        */
       private void setDroppedDueToFilter(long value) {
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000040;
         droppedDueToFilter_ = value;
       }
       /**
        * <code>optional uint64 dropped_due_to_filter = 8;</code>
        */
       private void clearDroppedDueToFilter() {
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000040);
         droppedDueToFilter_ = 0L;
+      }
+
+      public static final int DROPPED_DUE_TO_UNCONFIGURED_FIELD_NUMBER = 9;
+      private long droppedDueToUnconfigured_;
+      /**
+       * <code>optional uint64 dropped_due_to_unconfigured = 9;</code>
+       * @return Whether the droppedDueToUnconfigured field is set.
+       */
+      @java.lang.Override
+      public boolean hasDroppedDueToUnconfigured() {
+        return ((bitField0_ & 0x00000080) != 0);
+      }
+      /**
+       * <code>optional uint64 dropped_due_to_unconfigured = 9;</code>
+       * @return The droppedDueToUnconfigured.
+       */
+      @java.lang.Override
+      public long getDroppedDueToUnconfigured() {
+        return droppedDueToUnconfigured_;
+      }
+      /**
+       * <code>optional uint64 dropped_due_to_unconfigured = 9;</code>
+       * @param value The droppedDueToUnconfigured to set.
+       */
+      private void setDroppedDueToUnconfigured(long value) {
+        bitField0_ |= 0x00000080;
+        droppedDueToUnconfigured_ = value;
+      }
+      /**
+       * <code>optional uint64 dropped_due_to_unconfigured = 9;</code>
+       */
+      private void clearDroppedDueToUnconfigured() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        droppedDueToUnconfigured_ = 0L;
       }
 
       public static org.chromium.components.metrics.AggregateOuterClass.Aggregate.Metric parseFrom(
@@ -737,7 +749,7 @@ public final class AggregateOuterClass {
       /**
        * <pre>
        * For each Event, we have a list of possible metrics included. Metric names
-       * cannot be repeated. There is no guarentee that all metrics that are
+       * cannot be repeated. There is no guarantee that all metrics that are
        * possible for a given event will be included in a single Aggregate.
        * </pre>
        *
@@ -1035,42 +1047,6 @@ public final class AggregateOuterClass {
         }
 
         /**
-         * <code>optional uint64 dropped_due_to_whitelist = 7;</code>
-         * @return Whether the droppedDueToWhitelist field is set.
-         */
-        @java.lang.Override
-        public boolean hasDroppedDueToWhitelist() {
-          return instance.hasDroppedDueToWhitelist();
-        }
-        /**
-         * <code>optional uint64 dropped_due_to_whitelist = 7;</code>
-         * @return The droppedDueToWhitelist.
-         */
-        @java.lang.Override
-        public long getDroppedDueToWhitelist() {
-          return instance.getDroppedDueToWhitelist();
-        }
-        /**
-         * <code>optional uint64 dropped_due_to_whitelist = 7;</code>
-         * @param value The droppedDueToWhitelist to set.
-         * @return This builder for chaining.
-         */
-        public Builder setDroppedDueToWhitelist(long value) {
-          copyOnWrite();
-          instance.setDroppedDueToWhitelist(value);
-          return this;
-        }
-        /**
-         * <code>optional uint64 dropped_due_to_whitelist = 7;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearDroppedDueToWhitelist() {
-          copyOnWrite();
-          instance.clearDroppedDueToWhitelist();
-          return this;
-        }
-
-        /**
          * <code>optional uint64 dropped_due_to_filter = 8;</code>
          * @return Whether the droppedDueToFilter field is set.
          */
@@ -1106,6 +1082,42 @@ public final class AggregateOuterClass {
           return this;
         }
 
+        /**
+         * <code>optional uint64 dropped_due_to_unconfigured = 9;</code>
+         * @return Whether the droppedDueToUnconfigured field is set.
+         */
+        @java.lang.Override
+        public boolean hasDroppedDueToUnconfigured() {
+          return instance.hasDroppedDueToUnconfigured();
+        }
+        /**
+         * <code>optional uint64 dropped_due_to_unconfigured = 9;</code>
+         * @return The droppedDueToUnconfigured.
+         */
+        @java.lang.Override
+        public long getDroppedDueToUnconfigured() {
+          return instance.getDroppedDueToUnconfigured();
+        }
+        /**
+         * <code>optional uint64 dropped_due_to_unconfigured = 9;</code>
+         * @param value The droppedDueToUnconfigured to set.
+         * @return This builder for chaining.
+         */
+        public Builder setDroppedDueToUnconfigured(long value) {
+          copyOnWrite();
+          instance.setDroppedDueToUnconfigured(value);
+          return this;
+        }
+        /**
+         * <code>optional uint64 dropped_due_to_unconfigured = 9;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearDroppedDueToUnconfigured() {
+          copyOnWrite();
+          instance.clearDroppedDueToUnconfigured();
+          return this;
+        }
+
         // @@protoc_insertion_point(builder_scope:ukm.Aggregate.Metric)
       }
       @java.lang.Override
@@ -1129,13 +1141,13 @@ public final class AggregateOuterClass {
                 "totalCount_",
                 "droppedDueToLimits_",
                 "droppedDueToSampling_",
-                "droppedDueToWhitelist_",
                 "droppedDueToFilter_",
+                "droppedDueToUnconfigured_",
               };
               java.lang.String info =
-                  "\u0001\b\u0000\u0001\u0001\b\b\u0000\u0000\u0000\u0001\u1005\u0000\u0002\u1000\u0001" +
-                  "\u0003\u1000\u0002\u0004\u1003\u0003\u0005\u1003\u0004\u0006\u1003\u0005\u0007\u1003" +
-                  "\u0006\b\u1003\u0007";
+                  "\u0001\b\u0000\u0001\u0001\t\b\u0000\u0000\u0000\u0001\u1005\u0000\u0002\u1000\u0001" +
+                  "\u0003\u1000\u0002\u0004\u1003\u0003\u0005\u1003\u0004\u0006\u1003\u0005\b\u1003" +
+                  "\u0006\t\u1003\u0007";
               return newMessageInfo(DEFAULT_INSTANCE, info, objects);
           }
           // fall through
@@ -1445,61 +1457,14 @@ public final class AggregateOuterClass {
       droppedDueToSampling_ = 0L;
     }
 
-    public static final int DROPPED_DUE_TO_WHITELIST_FIELD_NUMBER = 7;
-    private long droppedDueToWhitelist_;
-    /**
-     * <pre>
-     * The total number of times this source/event was dropped due to whitelist.
-     * </pre>
-     *
-     * <code>optional uint64 dropped_due_to_whitelist = 7;</code>
-     * @return Whether the droppedDueToWhitelist field is set.
-     */
-    @java.lang.Override
-    public boolean hasDroppedDueToWhitelist() {
-      return ((bitField0_ & 0x00000020) != 0);
-    }
-    /**
-     * <pre>
-     * The total number of times this source/event was dropped due to whitelist.
-     * </pre>
-     *
-     * <code>optional uint64 dropped_due_to_whitelist = 7;</code>
-     * @return The droppedDueToWhitelist.
-     */
-    @java.lang.Override
-    public long getDroppedDueToWhitelist() {
-      return droppedDueToWhitelist_;
-    }
-    /**
-     * <pre>
-     * The total number of times this source/event was dropped due to whitelist.
-     * </pre>
-     *
-     * <code>optional uint64 dropped_due_to_whitelist = 7;</code>
-     * @param value The droppedDueToWhitelist to set.
-     */
-    private void setDroppedDueToWhitelist(long value) {
-      bitField0_ |= 0x00000020;
-      droppedDueToWhitelist_ = value;
-    }
-    /**
-     * <pre>
-     * The total number of times this source/event was dropped due to whitelist.
-     * </pre>
-     *
-     * <code>optional uint64 dropped_due_to_whitelist = 7;</code>
-     */
-    private void clearDroppedDueToWhitelist() {
-      bitField0_ = (bitField0_ & ~0x00000020);
-      droppedDueToWhitelist_ = 0L;
-    }
-
     public static final int DROPPED_DUE_TO_FILTER_FIELD_NUMBER = 8;
     private long droppedDueToFilter_;
     /**
      * <pre>
      * The total number of times this source/event was dropped due to filter.
+     * Unlike the others, records dropped for this reason are not included
+     * in the |total_count|.
+     * https://source.chromium.org/chromium/chromium/src/+/main:components/ukm/ukm_entry_filter.h
      * </pre>
      *
      * <code>optional uint64 dropped_due_to_filter = 8;</code>
@@ -1507,11 +1472,14 @@ public final class AggregateOuterClass {
      */
     @java.lang.Override
     public boolean hasDroppedDueToFilter() {
-      return ((bitField0_ & 0x00000040) != 0);
+      return ((bitField0_ & 0x00000020) != 0);
     }
     /**
      * <pre>
      * The total number of times this source/event was dropped due to filter.
+     * Unlike the others, records dropped for this reason are not included
+     * in the |total_count|.
+     * https://source.chromium.org/chromium/chromium/src/+/main:components/ukm/ukm_entry_filter.h
      * </pre>
      *
      * <code>optional uint64 dropped_due_to_filter = 8;</code>
@@ -1524,25 +1492,93 @@ public final class AggregateOuterClass {
     /**
      * <pre>
      * The total number of times this source/event was dropped due to filter.
+     * Unlike the others, records dropped for this reason are not included
+     * in the |total_count|.
+     * https://source.chromium.org/chromium/chromium/src/+/main:components/ukm/ukm_entry_filter.h
      * </pre>
      *
      * <code>optional uint64 dropped_due_to_filter = 8;</code>
      * @param value The droppedDueToFilter to set.
      */
     private void setDroppedDueToFilter(long value) {
-      bitField0_ |= 0x00000040;
+      bitField0_ |= 0x00000020;
       droppedDueToFilter_ = value;
     }
     /**
      * <pre>
      * The total number of times this source/event was dropped due to filter.
+     * Unlike the others, records dropped for this reason are not included
+     * in the |total_count|.
+     * https://source.chromium.org/chromium/chromium/src/+/main:components/ukm/ukm_entry_filter.h
      * </pre>
      *
      * <code>optional uint64 dropped_due_to_filter = 8;</code>
      */
     private void clearDroppedDueToFilter() {
-      bitField0_ = (bitField0_ & ~0x00000040);
+      bitField0_ = (bitField0_ & ~0x00000020);
       droppedDueToFilter_ = 0L;
+    }
+
+    public static final int DROPPED_DUE_TO_UNCONFIGURED_FIELD_NUMBER = 9;
+    private long droppedDueToUnconfigured_;
+    /**
+     * <pre>
+     * The total number of times this source/event was dropped due to there
+     * being no configuration of UKM via Finch. Until a full configuration is
+     * delivered by Finch to the client, UKM is disabled but some basic
+     * information is still collected and counted here.
+     * </pre>
+     *
+     * <code>optional uint64 dropped_due_to_unconfigured = 9;</code>
+     * @return Whether the droppedDueToUnconfigured field is set.
+     */
+    @java.lang.Override
+    public boolean hasDroppedDueToUnconfigured() {
+      return ((bitField0_ & 0x00000040) != 0);
+    }
+    /**
+     * <pre>
+     * The total number of times this source/event was dropped due to there
+     * being no configuration of UKM via Finch. Until a full configuration is
+     * delivered by Finch to the client, UKM is disabled but some basic
+     * information is still collected and counted here.
+     * </pre>
+     *
+     * <code>optional uint64 dropped_due_to_unconfigured = 9;</code>
+     * @return The droppedDueToUnconfigured.
+     */
+    @java.lang.Override
+    public long getDroppedDueToUnconfigured() {
+      return droppedDueToUnconfigured_;
+    }
+    /**
+     * <pre>
+     * The total number of times this source/event was dropped due to there
+     * being no configuration of UKM via Finch. Until a full configuration is
+     * delivered by Finch to the client, UKM is disabled but some basic
+     * information is still collected and counted here.
+     * </pre>
+     *
+     * <code>optional uint64 dropped_due_to_unconfigured = 9;</code>
+     * @param value The droppedDueToUnconfigured to set.
+     */
+    private void setDroppedDueToUnconfigured(long value) {
+      bitField0_ |= 0x00000040;
+      droppedDueToUnconfigured_ = value;
+    }
+    /**
+     * <pre>
+     * The total number of times this source/event was dropped due to there
+     * being no configuration of UKM via Finch. Until a full configuration is
+     * delivered by Finch to the client, UKM is disabled but some basic
+     * information is still collected and counted here.
+     * </pre>
+     *
+     * <code>optional uint64 dropped_due_to_unconfigured = 9;</code>
+     */
+    private void clearDroppedDueToUnconfigured() {
+      bitField0_ = (bitField0_ & ~0x00000040);
+      droppedDueToUnconfigured_ = 0L;
     }
 
     public static final int METRICS_FIELD_NUMBER = 6;
@@ -1722,7 +1758,7 @@ public final class AggregateOuterClass {
 
     /**
      * <pre>
-     * Next tag: 9
+     * Next tag: 10
      * </pre>
      *
      * Protobuf type {@code ukm.Aggregate}
@@ -2004,59 +2040,10 @@ public final class AggregateOuterClass {
 
       /**
        * <pre>
-       * The total number of times this source/event was dropped due to whitelist.
-       * </pre>
-       *
-       * <code>optional uint64 dropped_due_to_whitelist = 7;</code>
-       * @return Whether the droppedDueToWhitelist field is set.
-       */
-      @java.lang.Override
-      public boolean hasDroppedDueToWhitelist() {
-        return instance.hasDroppedDueToWhitelist();
-      }
-      /**
-       * <pre>
-       * The total number of times this source/event was dropped due to whitelist.
-       * </pre>
-       *
-       * <code>optional uint64 dropped_due_to_whitelist = 7;</code>
-       * @return The droppedDueToWhitelist.
-       */
-      @java.lang.Override
-      public long getDroppedDueToWhitelist() {
-        return instance.getDroppedDueToWhitelist();
-      }
-      /**
-       * <pre>
-       * The total number of times this source/event was dropped due to whitelist.
-       * </pre>
-       *
-       * <code>optional uint64 dropped_due_to_whitelist = 7;</code>
-       * @param value The droppedDueToWhitelist to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDroppedDueToWhitelist(long value) {
-        copyOnWrite();
-        instance.setDroppedDueToWhitelist(value);
-        return this;
-      }
-      /**
-       * <pre>
-       * The total number of times this source/event was dropped due to whitelist.
-       * </pre>
-       *
-       * <code>optional uint64 dropped_due_to_whitelist = 7;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearDroppedDueToWhitelist() {
-        copyOnWrite();
-        instance.clearDroppedDueToWhitelist();
-        return this;
-      }
-
-      /**
-       * <pre>
        * The total number of times this source/event was dropped due to filter.
+       * Unlike the others, records dropped for this reason are not included
+       * in the |total_count|.
+       * https://source.chromium.org/chromium/chromium/src/+/main:components/ukm/ukm_entry_filter.h
        * </pre>
        *
        * <code>optional uint64 dropped_due_to_filter = 8;</code>
@@ -2069,6 +2056,9 @@ public final class AggregateOuterClass {
       /**
        * <pre>
        * The total number of times this source/event was dropped due to filter.
+       * Unlike the others, records dropped for this reason are not included
+       * in the |total_count|.
+       * https://source.chromium.org/chromium/chromium/src/+/main:components/ukm/ukm_entry_filter.h
        * </pre>
        *
        * <code>optional uint64 dropped_due_to_filter = 8;</code>
@@ -2081,6 +2071,9 @@ public final class AggregateOuterClass {
       /**
        * <pre>
        * The total number of times this source/event was dropped due to filter.
+       * Unlike the others, records dropped for this reason are not included
+       * in the |total_count|.
+       * https://source.chromium.org/chromium/chromium/src/+/main:components/ukm/ukm_entry_filter.h
        * </pre>
        *
        * <code>optional uint64 dropped_due_to_filter = 8;</code>
@@ -2095,6 +2088,9 @@ public final class AggregateOuterClass {
       /**
        * <pre>
        * The total number of times this source/event was dropped due to filter.
+       * Unlike the others, records dropped for this reason are not included
+       * in the |total_count|.
+       * https://source.chromium.org/chromium/chromium/src/+/main:components/ukm/ukm_entry_filter.h
        * </pre>
        *
        * <code>optional uint64 dropped_due_to_filter = 8;</code>
@@ -2103,6 +2099,70 @@ public final class AggregateOuterClass {
       public Builder clearDroppedDueToFilter() {
         copyOnWrite();
         instance.clearDroppedDueToFilter();
+        return this;
+      }
+
+      /**
+       * <pre>
+       * The total number of times this source/event was dropped due to there
+       * being no configuration of UKM via Finch. Until a full configuration is
+       * delivered by Finch to the client, UKM is disabled but some basic
+       * information is still collected and counted here.
+       * </pre>
+       *
+       * <code>optional uint64 dropped_due_to_unconfigured = 9;</code>
+       * @return Whether the droppedDueToUnconfigured field is set.
+       */
+      @java.lang.Override
+      public boolean hasDroppedDueToUnconfigured() {
+        return instance.hasDroppedDueToUnconfigured();
+      }
+      /**
+       * <pre>
+       * The total number of times this source/event was dropped due to there
+       * being no configuration of UKM via Finch. Until a full configuration is
+       * delivered by Finch to the client, UKM is disabled but some basic
+       * information is still collected and counted here.
+       * </pre>
+       *
+       * <code>optional uint64 dropped_due_to_unconfigured = 9;</code>
+       * @return The droppedDueToUnconfigured.
+       */
+      @java.lang.Override
+      public long getDroppedDueToUnconfigured() {
+        return instance.getDroppedDueToUnconfigured();
+      }
+      /**
+       * <pre>
+       * The total number of times this source/event was dropped due to there
+       * being no configuration of UKM via Finch. Until a full configuration is
+       * delivered by Finch to the client, UKM is disabled but some basic
+       * information is still collected and counted here.
+       * </pre>
+       *
+       * <code>optional uint64 dropped_due_to_unconfigured = 9;</code>
+       * @param value The droppedDueToUnconfigured to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDroppedDueToUnconfigured(long value) {
+        copyOnWrite();
+        instance.setDroppedDueToUnconfigured(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * The total number of times this source/event was dropped due to there
+       * being no configuration of UKM via Finch. Until a full configuration is
+       * delivered by Finch to the client, UKM is disabled but some basic
+       * information is still collected and counted here.
+       * </pre>
+       *
+       * <code>optional uint64 dropped_due_to_unconfigured = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDroppedDueToUnconfigured() {
+        copyOnWrite();
+        instance.clearDroppedDueToUnconfigured();
         return this;
       }
 
@@ -2232,13 +2292,13 @@ public final class AggregateOuterClass {
               "droppedDueToSampling_",
               "metrics_",
               org.chromium.components.metrics.AggregateOuterClass.Aggregate.Metric.class,
-              "droppedDueToWhitelist_",
               "droppedDueToFilter_",
+              "droppedDueToUnconfigured_",
             };
             java.lang.String info =
-                "\u0001\b\u0000\u0001\u0001\b\b\u0000\u0001\u0000\u0001\u1002\u0000\u0002\u1005\u0001" +
-                "\u0003\u1003\u0002\u0004\u1003\u0003\u0005\u1003\u0004\u0006\u001b\u0007\u1003\u0005" +
-                "\b\u1003\u0006";
+                "\u0001\b\u0000\u0001\u0001\t\b\u0000\u0001\u0000\u0001\u1002\u0000\u0002\u1005\u0001" +
+                "\u0003\u1003\u0002\u0004\u1003\u0003\u0005\u1003\u0004\u0006\u001b\b\u1003\u0005" +
+                "\t\u1003\u0006";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

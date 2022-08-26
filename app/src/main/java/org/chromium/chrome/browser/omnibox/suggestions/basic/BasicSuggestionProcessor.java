@@ -11,10 +11,10 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 
 import org.chromium.base.supplier.Supplier;
-import org.chromium.chrome.R;
-import org.chromium.chrome.browser.bookmarks.BookmarkBridge;
 import org.chromium.chrome.browser.omnibox.MatchClassificationStyle;
 import org.chromium.chrome.browser.omnibox.OmniboxSuggestionType;
+import org.chromium.chrome.browser.omnibox.R;
+import org.chromium.chrome.browser.omnibox.UrlBarData;
 import org.chromium.chrome.browser.omnibox.UrlBarEditingTextStateProvider;
 import org.chromium.chrome.browser.omnibox.suggestions.OmniboxSuggestionUiType;
 import org.chromium.chrome.browser.omnibox.suggestions.SuggestionHost;
@@ -25,15 +25,24 @@ import org.chromium.chrome.browser.omnibox.suggestions.basic.SuggestionViewPrope
 import org.chromium.components.favicon.LargeIconBridge;
 import org.chromium.components.omnibox.AutocompleteMatch;
 import org.chromium.ui.modelutil.PropertyModel;
+import org.chromium.url.GURL;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /** A class that handles model and view creation for the basic omnibox suggestions. */
 public class BasicSuggestionProcessor extends BaseSuggestionViewProcessor {
+    /** Bookmarked state of a URL */
+    public interface BookmarkState {
+        /**
+         * @param url URL to check.
+         * @return {@code true} if the given URL is bookmarked.
+         */
+        boolean isBookmarked(GURL url);
+    }
     private final @NonNull UrlBarEditingTextStateProvider mUrlBarEditingTextProvider;
     private final @NonNull Supplier<LargeIconBridge> mIconBridgeSupplier;
-    private final @NonNull Supplier<BookmarkBridge> mBookmarkBridgeSupplier;
+    private final @NonNull BookmarkState mBookmarkState;
     private final int mDesiredFaviconWidthPx;
 
     /**
@@ -47,14 +56,14 @@ public class BasicSuggestionProcessor extends BaseSuggestionViewProcessor {
             @NonNull SuggestionHost suggestionHost,
             @NonNull UrlBarEditingTextStateProvider editingTextProvider,
             @NonNull Supplier<LargeIconBridge> iconBridgeSupplier,
-            @NonNull Supplier<BookmarkBridge> bookmarkBridgeSupplier) {
+            @NonNull BookmarkState bookmarkState) {
         super(context, suggestionHost);
 
         mDesiredFaviconWidthPx = getContext().getResources().getDimensionPixelSize(
                 R.dimen.omnibox_suggestion_favicon_size);
         mUrlBarEditingTextProvider = editingTextProvider;
         mIconBridgeSupplier = iconBridgeSupplier;
-        mBookmarkBridgeSupplier = bookmarkBridgeSupplier;
+        mBookmarkState = bookmarkState;
     }
 
     @Override
@@ -96,8 +105,7 @@ public class BasicSuggestionProcessor extends BaseSuggestionViewProcessor {
                     return SuggestionIcon.MAGNIFIER;
             }
         } else {
-            BookmarkBridge bridge = mBookmarkBridgeSupplier.get();
-            if (bridge != null && bridge.isBookmarked(suggestion.getUrl())) {
+            if (mBookmarkState.isBookmarked(suggestion.getUrl())) {
                 return SuggestionIcon.BOOKMARK;
             } else {
                 return SuggestionIcon.GLOBE;
@@ -157,7 +165,8 @@ public class BasicSuggestionProcessor extends BaseSuggestionViewProcessor {
         boolean urlHighlighted = false;
 
         if (!isSearchSuggestion) {
-            if (!suggestion.getUrl().isEmpty()) {
+            if (!suggestion.getUrl().isEmpty()
+                    && UrlBarData.shouldShowUrl(suggestion.getUrl().getSpec(), false)) {
                 SuggestionSpannable str = new SuggestionSpannable(suggestion.getDisplayText());
                 urlHighlighted = applyHighlightToMatchRegions(
                         str, suggestion.getDisplayTextClassifications());

@@ -4,14 +4,15 @@
 
 package org.chromium.chrome.browser.tab;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 
 import org.chromium.base.compat.ApiHelperForO;
 import org.chromium.chrome.browser.ActivityTabProvider;
 import org.chromium.chrome.browser.lifecycle.ActivityLifecycleDispatcher;
-import org.chromium.chrome.browser.lifecycle.Destroyable;
+import org.chromium.chrome.browser.lifecycle.DestroyObserver;
 import org.chromium.content_public.browser.NavigationHandle;
 
 /**
@@ -40,20 +41,20 @@ import org.chromium.content_public.browser.NavigationHandle;
  *    content views become invisible, we have to use onDidStartNavigation rather than one of the
  *    later events.
  */
-public class AutofillSessionLifetimeController implements Destroyable {
+public class AutofillSessionLifetimeController implements DestroyObserver {
     private Activity mActivity;
     private final ActivityTabProvider.ActivityTabTabObserver mActivityTabObserver;
 
-    @TargetApi(Build.VERSION_CODES.O)
-    public AutofillSessionLifetimeController(
-            Activity activity,
+    @RequiresApi(Build.VERSION_CODES.O)
+    public AutofillSessionLifetimeController(Activity activity,
             ActivityLifecycleDispatcher lifecycleDispatcher,
             ActivityTabProvider activityTabProvider) {
         mActivity = activity;
         mActivityTabObserver = new ActivityTabProvider.ActivityTabTabObserver(activityTabProvider) {
             @Override
             public void onDidStartNavigation(Tab tab, NavigationHandle navigationHandle) {
-                if (navigationHandle.isInMainFrame() && !navigationHandle.isRendererInitiated()) {
+                if (navigationHandle.isInPrimaryMainFrame()
+                        && !navigationHandle.isRendererInitiated()) {
                     ApiHelperForO.cancelAutofillSession(mActivity);
                 }
             }
@@ -73,9 +74,9 @@ public class AutofillSessionLifetimeController implements Destroyable {
         lifecycleDispatcher.register(this);
     }
 
-    // Destroyable
+    // DestroyObserver
     @Override
-    public void destroy() {
+    public void onDestroy() {
         mActivityTabObserver.destroy();
         mActivity = null;
     }

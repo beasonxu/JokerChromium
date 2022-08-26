@@ -4,8 +4,9 @@ import android.app.Activity;
 import dagger.internal.Factory;
 import javax.annotation.Generated;
 import javax.inject.Provider;
+import org.chromium.base.supplier.ObservableSupplier;
 import org.chromium.chrome.browser.browser_controls.BrowserControlsSizer;
-import org.chromium.chrome.browser.browserservices.BrowserServicesIntentDataProvider;
+import org.chromium.chrome.browser.browserservices.intents.BrowserServicesIntentDataProvider;
 import org.chromium.chrome.browser.customtabs.content.CustomTabActivityTabProvider;
 import org.chromium.chrome.browser.night_mode.SystemNightModeMonitor;
 import org.chromium.ui.base.WindowAndroid;
@@ -27,6 +28,8 @@ public final class CustomTabBottomBarDelegate_Factory implements Factory<CustomT
 
   private final Provider<BrowserControlsSizer> browserControlsSizerProvider;
 
+  private final Provider<ObservableSupplier<Integer>> autofillUiBottomInsetSupplierProvider;
+
   private final Provider<CustomTabNightModeStateController> nightModeStateControllerProvider;
 
   private final Provider<SystemNightModeMonitor> systemNightModeMonitorProvider;
@@ -39,6 +42,7 @@ public final class CustomTabBottomBarDelegate_Factory implements Factory<CustomT
       Provider<WindowAndroid> windowAndroidProvider,
       Provider<BrowserServicesIntentDataProvider> dataProvider,
       Provider<BrowserControlsSizer> browserControlsSizerProvider,
+      Provider<ObservableSupplier<Integer>> autofillUiBottomInsetSupplierProvider,
       Provider<CustomTabNightModeStateController> nightModeStateControllerProvider,
       Provider<SystemNightModeMonitor> systemNightModeMonitorProvider,
       Provider<CustomTabActivityTabProvider> tabProvider,
@@ -47,6 +51,7 @@ public final class CustomTabBottomBarDelegate_Factory implements Factory<CustomT
     this.windowAndroidProvider = windowAndroidProvider;
     this.dataProvider = dataProvider;
     this.browserControlsSizerProvider = browserControlsSizerProvider;
+    this.autofillUiBottomInsetSupplierProvider = autofillUiBottomInsetSupplierProvider;
     this.nightModeStateControllerProvider = nightModeStateControllerProvider;
     this.systemNightModeMonitorProvider = systemNightModeMonitorProvider;
     this.tabProvider = tabProvider;
@@ -55,26 +60,28 @@ public final class CustomTabBottomBarDelegate_Factory implements Factory<CustomT
 
   @Override
   public CustomTabBottomBarDelegate get() {
-    return newInstance(activityProvider.get(), windowAndroidProvider.get(), dataProvider.get(), browserControlsSizerProvider.get(), nightModeStateControllerProvider.get(), systemNightModeMonitorProvider.get(), tabProvider.get(), compositorContentInitializerProvider.get());
+    return newInstance(activityProvider.get(), windowAndroidProvider.get(), dataProvider.get(), browserControlsSizerProvider.get(), autofillUiBottomInsetSupplierProvider.get(), nightModeStateControllerProvider.get(), systemNightModeMonitorProvider.get(), tabProvider.get(), compositorContentInitializerProvider.get());
   }
 
   public static CustomTabBottomBarDelegate_Factory create(Provider<Activity> activityProvider,
       Provider<WindowAndroid> windowAndroidProvider,
       Provider<BrowserServicesIntentDataProvider> dataProvider,
       Provider<BrowserControlsSizer> browserControlsSizerProvider,
+      Provider<ObservableSupplier<Integer>> autofillUiBottomInsetSupplierProvider,
       Provider<CustomTabNightModeStateController> nightModeStateControllerProvider,
       Provider<SystemNightModeMonitor> systemNightModeMonitorProvider,
       Provider<CustomTabActivityTabProvider> tabProvider,
       Provider<CustomTabCompositorContentInitializer> compositorContentInitializerProvider) {
-    return new CustomTabBottomBarDelegate_Factory(activityProvider, windowAndroidProvider, dataProvider, browserControlsSizerProvider, nightModeStateControllerProvider, systemNightModeMonitorProvider, tabProvider, compositorContentInitializerProvider);
+    return new CustomTabBottomBarDelegate_Factory(activityProvider, windowAndroidProvider, dataProvider, browserControlsSizerProvider, autofillUiBottomInsetSupplierProvider, nightModeStateControllerProvider, systemNightModeMonitorProvider, tabProvider, compositorContentInitializerProvider);
   }
 
   public static CustomTabBottomBarDelegate newInstance(Activity activity,
       WindowAndroid windowAndroid, BrowserServicesIntentDataProvider dataProvider,
       BrowserControlsSizer browserControlsSizer,
+      ObservableSupplier<Integer> autofillUiBottomInsetSupplier,
       CustomTabNightModeStateController nightModeStateController,
       SystemNightModeMonitor systemNightModeMonitor, CustomTabActivityTabProvider tabProvider,
       CustomTabCompositorContentInitializer compositorContentInitializer) {
-    return new CustomTabBottomBarDelegate(activity, windowAndroid, dataProvider, browserControlsSizer, nightModeStateController, systemNightModeMonitor, tabProvider, compositorContentInitializer);
+    return new CustomTabBottomBarDelegate(activity, windowAndroid, dataProvider, browserControlsSizer, autofillUiBottomInsetSupplier, nightModeStateController, systemNightModeMonitor, tabProvider, compositorContentInitializer);
   }
 }

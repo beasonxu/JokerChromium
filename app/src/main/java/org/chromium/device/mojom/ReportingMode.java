@@ -13,8 +13,15 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ReportingMode {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ReportingMode.ON_CHANGE,
+        ReportingMode.CONTINUOUS})
+    public @interface EnumType {}
 
     public static final int ON_CHANGE = 0;
     public static final int CONTINUOUS = 1;

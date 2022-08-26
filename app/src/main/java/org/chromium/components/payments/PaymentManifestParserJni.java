@@ -12,7 +12,7 @@ import org.chromium.url.GURL;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class PaymentManifestParserJni implements PaymentManifestParser.Natives {
+class PaymentManifestParserJni implements PaymentManifestParser.Natives {
   private static PaymentManifestParser.Natives testInstance;
 
   public static final JniStaticTestMocker<PaymentManifestParser.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.payments.PaymentManifestParser.Natives>() {

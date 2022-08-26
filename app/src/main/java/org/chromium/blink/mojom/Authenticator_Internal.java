@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class Authenticator_Internal {
 
@@ -67,7 +69,7 @@ class Authenticator_Internal {
         @Override
         public void makeCredential(
 PublicKeyCredentialCreationOptions options, 
-MakeCredentialResponse callback) {
+MakeCredential_Response callback) {
 
             AuthenticatorMakeCredentialParams _message = new AuthenticatorMakeCredentialParams();
 
@@ -89,7 +91,7 @@ MakeCredentialResponse callback) {
         @Override
         public void getAssertion(
 PublicKeyCredentialRequestOptions options, 
-GetAssertionResponse callback) {
+GetAssertion_Response callback) {
 
             AuthenticatorGetAssertionParams _message = new AuthenticatorGetAssertionParams();
 
@@ -111,7 +113,7 @@ GetAssertionResponse callback) {
         @Override
         public void isUserVerifyingPlatformAuthenticatorAvailable(
 
-IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
+IsUserVerifyingPlatformAuthenticatorAvailable_Response callback) {
 
             AuthenticatorIsUserVerifyingPlatformAuthenticatorAvailableParams _message = new AuthenticatorIsUserVerifyingPlatformAuthenticatorAvailableParams();
 
@@ -342,11 +344,12 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
     
     static final class AuthenticatorMakeCredentialResponseParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public int status;
         public MakeCredentialAuthenticatorResponse credential;
+        public WebAuthnDomExceptionDetails domExceptionDetails;
 
         private AuthenticatorMakeCredentialResponseParams(int version) {
             super(STRUCT_SIZE, version);
@@ -392,6 +395,11 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, true);
                     result.credential = MakeCredentialAuthenticatorResponse.decode(decoder1);
                     }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, true);
+                    result.domExceptionDetails = WebAuthnDomExceptionDetails.decode(decoder1);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -407,14 +415,16 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
             encoder0.encode(this.status, 8);
             
             encoder0.encode(this.credential, 16, true);
+            
+            encoder0.encode(this.domExceptionDetails, 24, true);
         }
     }
 
     static class AuthenticatorMakeCredentialResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Authenticator.MakeCredentialResponse mCallback;
+        private final Authenticator.MakeCredential_Response mCallback;
 
-        AuthenticatorMakeCredentialResponseParamsForwardToCallback(Authenticator.MakeCredentialResponse callback) {
+        AuthenticatorMakeCredentialResponseParamsForwardToCallback(Authenticator.MakeCredential_Response callback) {
             this.mCallback = callback;
         }
 
@@ -431,7 +441,7 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
 
                 AuthenticatorMakeCredentialResponseParams response = AuthenticatorMakeCredentialResponseParams.deserialize(messageWithHeader.getPayload());
 
-                mCallback.call(response.status, response.credential);
+                mCallback.call(response.status, response.credential, response.domExceptionDetails);
                 return true;
             } catch (org.chromium.mojo.bindings.DeserializationException e) {
                 return false;
@@ -439,7 +449,7 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
         }
     }
 
-    static class AuthenticatorMakeCredentialResponseParamsProxyToResponder implements Authenticator.MakeCredentialResponse {
+    static class AuthenticatorMakeCredentialResponseParamsProxyToResponder implements Authenticator.MakeCredential_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -455,12 +465,14 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
         }
 
         @Override
-        public void call(Integer status, MakeCredentialAuthenticatorResponse credential) {
+        public void call(Integer status, MakeCredentialAuthenticatorResponse credential, WebAuthnDomExceptionDetails domExceptionDetails) {
             AuthenticatorMakeCredentialResponseParams _response = new AuthenticatorMakeCredentialResponseParams();
 
             _response.status = status;
 
             _response.credential = credential;
+
+            _response.domExceptionDetails = domExceptionDetails;
 
             org.chromium.mojo.bindings.ServiceMessage _message =
                     _response.serializeWithHeader(
@@ -542,11 +554,12 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
     
     static final class AuthenticatorGetAssertionResponseParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public int status;
         public GetAssertionAuthenticatorResponse credential;
+        public WebAuthnDomExceptionDetails domExceptionDetails;
 
         private AuthenticatorGetAssertionResponseParams(int version) {
             super(STRUCT_SIZE, version);
@@ -592,6 +605,11 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, true);
                     result.credential = GetAssertionAuthenticatorResponse.decode(decoder1);
                     }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, true);
+                    result.domExceptionDetails = WebAuthnDomExceptionDetails.decode(decoder1);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -607,14 +625,16 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
             encoder0.encode(this.status, 8);
             
             encoder0.encode(this.credential, 16, true);
+            
+            encoder0.encode(this.domExceptionDetails, 24, true);
         }
     }
 
     static class AuthenticatorGetAssertionResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Authenticator.GetAssertionResponse mCallback;
+        private final Authenticator.GetAssertion_Response mCallback;
 
-        AuthenticatorGetAssertionResponseParamsForwardToCallback(Authenticator.GetAssertionResponse callback) {
+        AuthenticatorGetAssertionResponseParamsForwardToCallback(Authenticator.GetAssertion_Response callback) {
             this.mCallback = callback;
         }
 
@@ -631,7 +651,7 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
 
                 AuthenticatorGetAssertionResponseParams response = AuthenticatorGetAssertionResponseParams.deserialize(messageWithHeader.getPayload());
 
-                mCallback.call(response.status, response.credential);
+                mCallback.call(response.status, response.credential, response.domExceptionDetails);
                 return true;
             } catch (org.chromium.mojo.bindings.DeserializationException e) {
                 return false;
@@ -639,7 +659,7 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
         }
     }
 
-    static class AuthenticatorGetAssertionResponseParamsProxyToResponder implements Authenticator.GetAssertionResponse {
+    static class AuthenticatorGetAssertionResponseParamsProxyToResponder implements Authenticator.GetAssertion_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -655,12 +675,14 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
         }
 
         @Override
-        public void call(Integer status, GetAssertionAuthenticatorResponse credential) {
+        public void call(Integer status, GetAssertionAuthenticatorResponse credential, WebAuthnDomExceptionDetails domExceptionDetails) {
             AuthenticatorGetAssertionResponseParams _response = new AuthenticatorGetAssertionResponseParams();
 
             _response.status = status;
 
             _response.credential = credential;
+
+            _response.domExceptionDetails = domExceptionDetails;
 
             org.chromium.mojo.bindings.ServiceMessage _message =
                     _response.serializeWithHeader(
@@ -794,9 +816,9 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
 
     static class AuthenticatorIsUserVerifyingPlatformAuthenticatorAvailableResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Authenticator.IsUserVerifyingPlatformAuthenticatorAvailableResponse mCallback;
+        private final Authenticator.IsUserVerifyingPlatformAuthenticatorAvailable_Response mCallback;
 
-        AuthenticatorIsUserVerifyingPlatformAuthenticatorAvailableResponseParamsForwardToCallback(Authenticator.IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
+        AuthenticatorIsUserVerifyingPlatformAuthenticatorAvailableResponseParamsForwardToCallback(Authenticator.IsUserVerifyingPlatformAuthenticatorAvailable_Response callback) {
             this.mCallback = callback;
         }
 
@@ -821,7 +843,7 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
         }
     }
 
-    static class AuthenticatorIsUserVerifyingPlatformAuthenticatorAvailableResponseParamsProxyToResponder implements Authenticator.IsUserVerifyingPlatformAuthenticatorAvailableResponse {
+    static class AuthenticatorIsUserVerifyingPlatformAuthenticatorAvailableResponseParamsProxyToResponder implements Authenticator.IsUserVerifyingPlatformAuthenticatorAvailable_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

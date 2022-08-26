@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class NativeIoHost_Internal {
 
@@ -69,7 +71,7 @@ class NativeIoHost_Internal {
         @Override
         public void requestCapacityChange(
 long capacityDelta, 
-RequestCapacityChangeResponse callback) {
+RequestCapacityChange_Response callback) {
 
             NativeIoHostRequestCapacityChangeParams _message = new NativeIoHostRequestCapacityChangeParams();
 
@@ -91,7 +93,7 @@ RequestCapacityChangeResponse callback) {
         @Override
         public void openFile(
 String name, org.chromium.mojo.bindings.InterfaceRequest<NativeIoFileHost> fileHostReceiver, 
-OpenFileResponse callback) {
+OpenFile_Response callback) {
 
             NativeIoHostOpenFileParams _message = new NativeIoHostOpenFileParams();
 
@@ -115,7 +117,7 @@ OpenFileResponse callback) {
         @Override
         public void deleteFile(
 String name, 
-DeleteFileResponse callback) {
+DeleteFile_Response callback) {
 
             NativeIoHostDeleteFileParams _message = new NativeIoHostDeleteFileParams();
 
@@ -137,7 +139,7 @@ DeleteFileResponse callback) {
         @Override
         public void getAllFileNames(
 
-GetAllFileNamesResponse callback) {
+GetAllFileNames_Response callback) {
 
             NativeIoHostGetAllFileNamesParams _message = new NativeIoHostGetAllFileNamesParams();
 
@@ -157,7 +159,7 @@ GetAllFileNamesResponse callback) {
         @Override
         public void renameFile(
 String oldName, String newName, 
-RenameFileResponse callback) {
+RenameFile_Response callback) {
 
             NativeIoHostRenameFileParams _message = new NativeIoHostRenameFileParams();
 
@@ -456,9 +458,9 @@ RenameFileResponse callback) {
 
     static class NativeIoHostRequestCapacityChangeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NativeIoHost.RequestCapacityChangeResponse mCallback;
+        private final NativeIoHost.RequestCapacityChange_Response mCallback;
 
-        NativeIoHostRequestCapacityChangeResponseParamsForwardToCallback(NativeIoHost.RequestCapacityChangeResponse callback) {
+        NativeIoHostRequestCapacityChangeResponseParamsForwardToCallback(NativeIoHost.RequestCapacityChange_Response callback) {
             this.mCallback = callback;
         }
 
@@ -483,7 +485,7 @@ RenameFileResponse callback) {
         }
     }
 
-    static class NativeIoHostRequestCapacityChangeResponseParamsProxyToResponder implements NativeIoHost.RequestCapacityChangeResponse {
+    static class NativeIoHostRequestCapacityChangeResponseParamsProxyToResponder implements NativeIoHost.RequestCapacityChange_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -666,9 +668,9 @@ RenameFileResponse callback) {
 
     static class NativeIoHostOpenFileResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NativeIoHost.OpenFileResponse mCallback;
+        private final NativeIoHost.OpenFile_Response mCallback;
 
-        NativeIoHostOpenFileResponseParamsForwardToCallback(NativeIoHost.OpenFileResponse callback) {
+        NativeIoHostOpenFileResponseParamsForwardToCallback(NativeIoHost.OpenFile_Response callback) {
             this.mCallback = callback;
         }
 
@@ -693,7 +695,7 @@ RenameFileResponse callback) {
         }
     }
 
-    static class NativeIoHostOpenFileResponseParamsProxyToResponder implements NativeIoHost.OpenFileResponse {
+    static class NativeIoHostOpenFileResponseParamsProxyToResponder implements NativeIoHost.OpenFile_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -865,9 +867,9 @@ RenameFileResponse callback) {
 
     static class NativeIoHostDeleteFileResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NativeIoHost.DeleteFileResponse mCallback;
+        private final NativeIoHost.DeleteFile_Response mCallback;
 
-        NativeIoHostDeleteFileResponseParamsForwardToCallback(NativeIoHost.DeleteFileResponse callback) {
+        NativeIoHostDeleteFileResponseParamsForwardToCallback(NativeIoHost.DeleteFile_Response callback) {
             this.mCallback = callback;
         }
 
@@ -892,7 +894,7 @@ RenameFileResponse callback) {
         }
     }
 
-    static class NativeIoHostDeleteFileResponseParamsProxyToResponder implements NativeIoHost.DeleteFileResponse {
+    static class NativeIoHostDeleteFileResponseParamsProxyToResponder implements NativeIoHost.DeleteFile_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1070,9 +1072,9 @@ RenameFileResponse callback) {
 
     static class NativeIoHostGetAllFileNamesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NativeIoHost.GetAllFileNamesResponse mCallback;
+        private final NativeIoHost.GetAllFileNames_Response mCallback;
 
-        NativeIoHostGetAllFileNamesResponseParamsForwardToCallback(NativeIoHost.GetAllFileNamesResponse callback) {
+        NativeIoHostGetAllFileNamesResponseParamsForwardToCallback(NativeIoHost.GetAllFileNames_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1097,7 +1099,7 @@ RenameFileResponse callback) {
         }
     }
 
-    static class NativeIoHostGetAllFileNamesResponseParamsProxyToResponder implements NativeIoHost.GetAllFileNamesResponse {
+    static class NativeIoHostGetAllFileNamesResponseParamsProxyToResponder implements NativeIoHost.GetAllFileNames_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1267,9 +1269,9 @@ RenameFileResponse callback) {
 
     static class NativeIoHostRenameFileResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NativeIoHost.RenameFileResponse mCallback;
+        private final NativeIoHost.RenameFile_Response mCallback;
 
-        NativeIoHostRenameFileResponseParamsForwardToCallback(NativeIoHost.RenameFileResponse callback) {
+        NativeIoHostRenameFileResponseParamsForwardToCallback(NativeIoHost.RenameFile_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1294,7 +1296,7 @@ RenameFileResponse callback) {
         }
     }
 
-    static class NativeIoHostRenameFileResponseParamsProxyToResponder implements NativeIoHost.RenameFileResponse {
+    static class NativeIoHostRenameFileResponseParamsProxyToResponder implements NativeIoHost.RenameFile_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

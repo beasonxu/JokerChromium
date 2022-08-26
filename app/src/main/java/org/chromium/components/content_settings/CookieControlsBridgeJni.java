@@ -6,12 +6,12 @@ import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
-import org.chromium.components.embedder_support.browser_context.BrowserContextHandle;
+import org.chromium.content_public.browser.BrowserContextHandle;
 import org.chromium.content_public.browser.WebContents;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class CookieControlsBridgeJni implements CookieControlsBridge.Natives {
+class CookieControlsBridgeJni implements CookieControlsBridge.Natives {
   private static CookieControlsBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<CookieControlsBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.content_settings.CookieControlsBridge.Natives>() {

@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface SerialPortManagerClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface SerialPortManagerClient extends org.chromium.mojo.bindings.Inte
 
     Manager<SerialPortManagerClient, SerialPortManagerClient.Proxy> MANAGER = SerialPortManagerClient_Internal.MANAGER;
 
-
     void onPortAdded(
 SerialPortInfo portInfo);
-
 
 
     void onPortRemoved(

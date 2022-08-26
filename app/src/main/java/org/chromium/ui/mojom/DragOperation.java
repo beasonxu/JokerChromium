@@ -13,8 +13,17 @@
 
 package org.chromium.ui.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class DragOperation {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        DragOperation.NONE,
+        DragOperation.COPY,
+        DragOperation.LINK,
+        DragOperation.MOVE})
+    public @interface EnumType {}
 
     public static final int NONE = 0;
     public static final int COPY = 1;

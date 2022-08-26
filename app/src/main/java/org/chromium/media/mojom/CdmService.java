@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface CdmService extends org.chromium.mojo.bindings.Interface {
 
@@ -22,12 +24,6 @@ public interface CdmService extends org.chromium.mojo.bindings.Interface {
     }
 
     Manager<CdmService, CdmService.Proxy> MANAGER = CdmService_Internal.MANAGER;
-
-
-    void loadCdm(
-org.chromium.mojo_base.mojom.FilePath cdmPath);
-
-
 
     void createCdmFactory(
 org.chromium.mojo.bindings.InterfaceRequest<CdmFactory> factory, FrameInterfaceFactory frameInterfaces);

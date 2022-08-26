@@ -13,17 +13,27 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PreferredContrast {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PreferredContrast.MORE,
+        PreferredContrast.LESS,
+        PreferredContrast.NO_PREFERENCE,
+        PreferredContrast.CUSTOM})
+    public @interface EnumType {}
 
     public static final int MORE = 0;
     public static final int LESS = 1;
     public static final int NO_PREFERENCE = 2;
+    public static final int CUSTOM = 3;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 2;
+    public static final int MAX_VALUE = 3;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 2;
+        return value >= 0 && value <= 3;
     }
 
     public static void validate(int value) {

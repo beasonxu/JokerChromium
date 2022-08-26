@@ -11,7 +11,7 @@ import org.chromium.url.GURL;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-public final class PerformanceHintsObserverJni implements PerformanceHintsObserver.Natives {
+public class PerformanceHintsObserverJni implements PerformanceHintsObserver.Natives {
   private static PerformanceHintsObserver.Natives testInstance;
 
   public static final JniStaticTestMocker<PerformanceHintsObserver.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.performance_hints.PerformanceHintsObserver.Natives>() {

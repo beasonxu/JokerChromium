@@ -13,20 +13,27 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class BucketPolicies extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 40;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
+    private static final int STRUCT_SIZE = 32;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-    public String title;
     public boolean persisted;
+    public boolean hasPersisted;
     public int durability;
+    public boolean hasDurability;
     public long quota;
+    public boolean hasQuota;
     public org.chromium.mojo_base.mojom.Time expires;
 
     private BucketPolicies(int version) {
         super(STRUCT_SIZE, version);
+        this.hasPersisted = (boolean) false;
+        this.hasDurability = (boolean) false;
+        this.hasQuota = (boolean) false;
     }
 
     public BucketPolicies() {
@@ -60,25 +67,33 @@ public final class BucketPolicies extends org.chromium.mojo.bindings.Struct {
             result = new BucketPolicies(elementsOrVersion);
                 {
                     
-                result.title = decoder0.readString(8, false);
+                result.persisted = decoder0.readBoolean(8, 0);
                 }
                 {
                     
-                result.persisted = decoder0.readBoolean(16, 0);
+                result.hasPersisted = decoder0.readBoolean(8, 1);
                 }
                 {
                     
-                result.durability = decoder0.readInt(20);
+                result.hasDurability = decoder0.readBoolean(8, 2);
+                }
+                {
+                    
+                result.hasQuota = decoder0.readBoolean(8, 3);
+                }
+                {
+                    
+                result.durability = decoder0.readInt(12);
                     BucketDurability.validate(result.durability);
                     result.durability = BucketDurability.toKnownValue(result.durability);
                 }
                 {
                     
-                result.quota = decoder0.readLong(24);
+                result.quota = decoder0.readLong(16);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, true);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, true);
                 result.expires = org.chromium.mojo_base.mojom.Time.decode(decoder1);
                 }
 
@@ -93,14 +108,18 @@ public final class BucketPolicies extends org.chromium.mojo.bindings.Struct {
     protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
         org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         
-        encoder0.encode(this.title, 8, false);
+        encoder0.encode(this.persisted, 8, 0);
         
-        encoder0.encode(this.persisted, 16, 0);
+        encoder0.encode(this.hasPersisted, 8, 1);
         
-        encoder0.encode(this.durability, 20);
+        encoder0.encode(this.hasDurability, 8, 2);
         
-        encoder0.encode(this.quota, 24);
+        encoder0.encode(this.hasQuota, 8, 3);
         
-        encoder0.encode(this.expires, 32, true);
+        encoder0.encode(this.durability, 12);
+        
+        encoder0.encode(this.quota, 16);
+        
+        encoder0.encode(this.expires, 24, true);
     }
 }

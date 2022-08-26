@@ -13,8 +13,17 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ViewportStyle {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ViewportStyle.DEFAULT,
+        ViewportStyle.MOBILE,
+        ViewportStyle.TELEVISION,
+        ViewportStyle.LAST})
+    public @interface EnumType {}
 
     public static final int DEFAULT = 0;
     public static final int MOBILE = 1;

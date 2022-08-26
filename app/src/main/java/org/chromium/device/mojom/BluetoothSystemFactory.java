@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface BluetoothSystemFactory extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface BluetoothSystemFactory extends org.chromium.mojo.bindings.Inter
     }
 
     Manager<BluetoothSystemFactory, BluetoothSystemFactory.Proxy> MANAGER = BluetoothSystemFactory_Internal.MANAGER;
-
 
     void create(
 org.chromium.mojo.bindings.InterfaceRequest<BluetoothSystem> system, BluetoothSystemClient systemClient);

@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface KeySystemSupport extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,8 @@ public interface KeySystemSupport extends org.chromium.mojo.bindings.Interface {
 
     Manager<KeySystemSupport, KeySystemSupport.Proxy> MANAGER = KeySystemSupport_Internal.MANAGER;
 
-
-    void isKeySystemSupported(
-String keySystem, 
-IsKeySystemSupportedResponse callback);
-
-    interface IsKeySystemSupportedResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Boolean, KeySystemCapability> { }
+    void addObserver(
+KeySystemSupportObserver observer);
 
 
 }

@@ -13,8 +13,20 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ContextMenuDataMediaType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ContextMenuDataMediaType.NONE,
+        ContextMenuDataMediaType.IMAGE,
+        ContextMenuDataMediaType.VIDEO,
+        ContextMenuDataMediaType.AUDIO,
+        ContextMenuDataMediaType.CANVAS,
+        ContextMenuDataMediaType.FILE,
+        ContextMenuDataMediaType.PLUGIN})
+    public @interface EnumType {}
 
     public static final int NONE = 0;
     public static final int IMAGE = 1;

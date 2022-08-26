@@ -13,13 +13,15 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class DebugBorderQuadState extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 16;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+    private static final int STRUCT_SIZE = 24;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-    public int color;
+    public org.chromium.skia.mojom.SkColor4f color;
     public int width;
 
     private DebugBorderQuadState(int version) {
@@ -57,11 +59,12 @@ public final class DebugBorderQuadState extends org.chromium.mojo.bindings.Struc
             result = new DebugBorderQuadState(elementsOrVersion);
                 {
                     
-                result.color = decoder0.readInt(8);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                result.color = org.chromium.skia.mojom.SkColor4f.decode(decoder1);
                 }
                 {
                     
-                result.width = decoder0.readInt(12);
+                result.width = decoder0.readInt(16);
                 }
 
         } finally {
@@ -75,8 +78,8 @@ public final class DebugBorderQuadState extends org.chromium.mojo.bindings.Struc
     protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
         org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         
-        encoder0.encode(this.color, 8);
+        encoder0.encode(this.color, 8, false);
         
-        encoder0.encode(this.width, 12);
+        encoder0.encode(this.width, 16);
     }
 }

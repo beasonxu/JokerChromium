@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface PeerConnectionManager extends org.chromium.mojo.bindings.Interface {
 
@@ -23,30 +25,28 @@ public interface PeerConnectionManager extends org.chromium.mojo.bindings.Interf
 
     Manager<PeerConnectionManager, PeerConnectionManager.Proxy> MANAGER = PeerConnectionManager_Internal.MANAGER;
 
-
     void onSuspend(
 );
-
 
 
     void onThermalStateChange(
 int thermalState);
 
 
+    void onSpeedLimitChange(
+int speedLimit);
+
 
     void startEventLog(
 int peerConnectionLocalId, int outputPeriodMs);
-
 
 
     void stopEventLog(
 int peerConnectionLocalId);
 
 
-
     void getStandardStats(
 );
-
 
 
     void getLegacyStats(

@@ -25,8 +25,52 @@ public  final class DeviceInfoSpecifics extends
     signinScopedDeviceId_ = "";
     model_ = "";
     manufacturer_ = "";
+    fullHardwareClass_ = "";
   }
   private int bitField0_;
+  private int clientVersionInfoCase_ = 0;
+  private java.lang.Object clientVersionInfo_;
+  public enum ClientVersionInfoCase {
+    CHROME_VERSION_INFO(17),
+    GOOGLE_PLAY_SERVICES_VERSION_INFO(18),
+    CLIENTVERSIONINFO_NOT_SET(0);
+    private final int value;
+    private ClientVersionInfoCase(int value) {
+      this.value = value;
+    }
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static ClientVersionInfoCase valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static ClientVersionInfoCase forNumber(int value) {
+      switch (value) {
+        case 17: return CHROME_VERSION_INFO;
+        case 18: return GOOGLE_PLAY_SERVICES_VERSION_INFO;
+        case 0: return CLIENTVERSIONINFO_NOT_SET;
+        default: return null;
+      }
+    }
+    public int getNumber() {
+      return this.value;
+    }
+  };
+
+  @java.lang.Override
+  public ClientVersionInfoCase
+  getClientVersionInfoCase() {
+    return ClientVersionInfoCase.forNumber(
+        clientVersionInfoCase_);
+  }
+
+  private void clearClientVersionInfo() {
+    clientVersionInfoCase_ = 0;
+    clientVersionInfo_ = null;
+  }
+
   public static final int CACHE_GUID_FIELD_NUMBER = 1;
   private java.lang.String cacheGuid_;
   /**
@@ -239,6 +283,7 @@ public  final class DeviceInfoSpecifics extends
   /**
    * <pre>
    * The UserAgent used when contacting the Chrome Sync server.
+   * Only present when talking to the HTTP server.
    * </pre>
    *
    * <code>optional string sync_user_agent = 4;</code>
@@ -251,6 +296,7 @@ public  final class DeviceInfoSpecifics extends
   /**
    * <pre>
    * The UserAgent used when contacting the Chrome Sync server.
+   * Only present when talking to the HTTP server.
    * </pre>
    *
    * <code>optional string sync_user_agent = 4;</code>
@@ -263,6 +309,7 @@ public  final class DeviceInfoSpecifics extends
   /**
    * <pre>
    * The UserAgent used when contacting the Chrome Sync server.
+   * Only present when talking to the HTTP server.
    * </pre>
    *
    * <code>optional string sync_user_agent = 4;</code>
@@ -276,6 +323,7 @@ public  final class DeviceInfoSpecifics extends
   /**
    * <pre>
    * The UserAgent used when contacting the Chrome Sync server.
+   * Only present when talking to the HTTP server.
    * </pre>
    *
    * <code>optional string sync_user_agent = 4;</code>
@@ -290,6 +338,7 @@ public  final class DeviceInfoSpecifics extends
   /**
    * <pre>
    * The UserAgent used when contacting the Chrome Sync server.
+   * Only present when talking to the HTTP server.
    * </pre>
    *
    * <code>optional string sync_user_agent = 4;</code>
@@ -301,6 +350,7 @@ public  final class DeviceInfoSpecifics extends
   /**
    * <pre>
    * The UserAgent used when contacting the Chrome Sync server.
+   * Only present when talking to the HTTP server.
    * </pre>
    *
    * <code>optional string sync_user_agent = 4;</code>
@@ -317,46 +367,50 @@ public  final class DeviceInfoSpecifics extends
   /**
    * <pre>
    * The Chrome instance's version.  Updated (if necessary) on every startup.
+   * DEPRECATED in M92. Still populated for backward compatibility.
    * </pre>
    *
-   * <code>optional string chrome_version = 5;</code>
+   * <code>optional string chrome_version = 5 [deprecated = true];</code>
    * @return Whether the chromeVersion field is set.
    */
   @java.lang.Override
-  public boolean hasChromeVersion() {
+  @java.lang.Deprecated public boolean hasChromeVersion() {
     return ((bitField0_ & 0x00000010) != 0);
   }
   /**
    * <pre>
    * The Chrome instance's version.  Updated (if necessary) on every startup.
+   * DEPRECATED in M92. Still populated for backward compatibility.
    * </pre>
    *
-   * <code>optional string chrome_version = 5;</code>
+   * <code>optional string chrome_version = 5 [deprecated = true];</code>
    * @return The chromeVersion.
    */
   @java.lang.Override
-  public java.lang.String getChromeVersion() {
+  @java.lang.Deprecated public java.lang.String getChromeVersion() {
     return chromeVersion_;
   }
   /**
    * <pre>
    * The Chrome instance's version.  Updated (if necessary) on every startup.
+   * DEPRECATED in M92. Still populated for backward compatibility.
    * </pre>
    *
-   * <code>optional string chrome_version = 5;</code>
+   * <code>optional string chrome_version = 5 [deprecated = true];</code>
    * @return The bytes for chromeVersion.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
+  @java.lang.Deprecated public com.google.protobuf.ByteString
       getChromeVersionBytes() {
     return com.google.protobuf.ByteString.copyFromUtf8(chromeVersion_);
   }
   /**
    * <pre>
    * The Chrome instance's version.  Updated (if necessary) on every startup.
+   * DEPRECATED in M92. Still populated for backward compatibility.
    * </pre>
    *
-   * <code>optional string chrome_version = 5;</code>
+   * <code>optional string chrome_version = 5 [deprecated = true];</code>
    * @param value The chromeVersion to set.
    */
   private void setChromeVersion(
@@ -368,9 +422,10 @@ public  final class DeviceInfoSpecifics extends
   /**
    * <pre>
    * The Chrome instance's version.  Updated (if necessary) on every startup.
+   * DEPRECATED in M92. Still populated for backward compatibility.
    * </pre>
    *
-   * <code>optional string chrome_version = 5;</code>
+   * <code>optional string chrome_version = 5 [deprecated = true];</code>
    */
   private void clearChromeVersion() {
     bitField0_ = (bitField0_ & ~0x00000010);
@@ -379,9 +434,10 @@ public  final class DeviceInfoSpecifics extends
   /**
    * <pre>
    * The Chrome instance's version.  Updated (if necessary) on every startup.
+   * DEPRECATED in M92. Still populated for backward compatibility.
    * </pre>
    *
-   * <code>optional string chrome_version = 5;</code>
+   * <code>optional string chrome_version = 5 [deprecated = true];</code>
    * @param value The bytes for chromeVersion to set.
    */
   private void setChromeVersionBytes(
@@ -453,7 +509,7 @@ public  final class DeviceInfoSpecifics extends
   /**
    * <pre>
    * Device_id that is stable until user signs out. This device_id is used for
-   * annotating login scoped refresh token.
+   * annotating login scoped refresh token. Present only for Chrome Clients.
    * </pre>
    *
    * <code>optional string signin_scoped_device_id = 7;</code>
@@ -466,7 +522,7 @@ public  final class DeviceInfoSpecifics extends
   /**
    * <pre>
    * Device_id that is stable until user signs out. This device_id is used for
-   * annotating login scoped refresh token.
+   * annotating login scoped refresh token. Present only for Chrome Clients.
    * </pre>
    *
    * <code>optional string signin_scoped_device_id = 7;</code>
@@ -479,7 +535,7 @@ public  final class DeviceInfoSpecifics extends
   /**
    * <pre>
    * Device_id that is stable until user signs out. This device_id is used for
-   * annotating login scoped refresh token.
+   * annotating login scoped refresh token. Present only for Chrome Clients.
    * </pre>
    *
    * <code>optional string signin_scoped_device_id = 7;</code>
@@ -493,7 +549,7 @@ public  final class DeviceInfoSpecifics extends
   /**
    * <pre>
    * Device_id that is stable until user signs out. This device_id is used for
-   * annotating login scoped refresh token.
+   * annotating login scoped refresh token. Present only for Chrome Clients.
    * </pre>
    *
    * <code>optional string signin_scoped_device_id = 7;</code>
@@ -508,7 +564,7 @@ public  final class DeviceInfoSpecifics extends
   /**
    * <pre>
    * Device_id that is stable until user signs out. This device_id is used for
-   * annotating login scoped refresh token.
+   * annotating login scoped refresh token. Present only for Chrome Clients.
    * </pre>
    *
    * <code>optional string signin_scoped_device_id = 7;</code>
@@ -520,7 +576,7 @@ public  final class DeviceInfoSpecifics extends
   /**
    * <pre>
    * Device_id that is stable until user signs out. This device_id is used for
-   * annotating login scoped refresh token.
+   * annotating login scoped refresh token. Present only for Chrome Clients.
    * </pre>
    *
    * <code>optional string signin_scoped_device_id = 7;</code>
@@ -1020,6 +1076,261 @@ public  final class DeviceInfoSpecifics extends
     bitField0_ = (bitField0_ & ~0x00002000);
   }
 
+  public static final int PAASK_FIELDS_FIELD_NUMBER = 15;
+  private org.chromium.components.sync.protocol.PhoneAsASecurityKeySpecificFields paaskFields_;
+  /**
+   * <pre>
+   * Information for contacting this device in order to perform security key
+   * operations.
+   * </pre>
+   *
+   * <code>optional .sync_pb.PhoneAsASecurityKeySpecificFields paask_fields = 15;</code>
+   */
+  @java.lang.Override
+  public boolean hasPaaskFields() {
+    return ((bitField0_ & 0x00004000) != 0);
+  }
+  /**
+   * <pre>
+   * Information for contacting this device in order to perform security key
+   * operations.
+   * </pre>
+   *
+   * <code>optional .sync_pb.PhoneAsASecurityKeySpecificFields paask_fields = 15;</code>
+   */
+  @java.lang.Override
+  public org.chromium.components.sync.protocol.PhoneAsASecurityKeySpecificFields getPaaskFields() {
+    return paaskFields_ == null ? org.chromium.components.sync.protocol.PhoneAsASecurityKeySpecificFields.getDefaultInstance() : paaskFields_;
+  }
+  /**
+   * <pre>
+   * Information for contacting this device in order to perform security key
+   * operations.
+   * </pre>
+   *
+   * <code>optional .sync_pb.PhoneAsASecurityKeySpecificFields paask_fields = 15;</code>
+   */
+  private void setPaaskFields(org.chromium.components.sync.protocol.PhoneAsASecurityKeySpecificFields value) {
+    value.getClass();
+  paaskFields_ = value;
+    bitField0_ |= 0x00004000;
+    }
+  /**
+   * <pre>
+   * Information for contacting this device in order to perform security key
+   * operations.
+   * </pre>
+   *
+   * <code>optional .sync_pb.PhoneAsASecurityKeySpecificFields paask_fields = 15;</code>
+   */
+  @java.lang.SuppressWarnings({"ReferenceEquality"})
+  private void mergePaaskFields(org.chromium.components.sync.protocol.PhoneAsASecurityKeySpecificFields value) {
+    value.getClass();
+  if (paaskFields_ != null &&
+        paaskFields_ != org.chromium.components.sync.protocol.PhoneAsASecurityKeySpecificFields.getDefaultInstance()) {
+      paaskFields_ =
+        org.chromium.components.sync.protocol.PhoneAsASecurityKeySpecificFields.newBuilder(paaskFields_).mergeFrom(value).buildPartial();
+    } else {
+      paaskFields_ = value;
+    }
+    bitField0_ |= 0x00004000;
+  }
+  /**
+   * <pre>
+   * Information for contacting this device in order to perform security key
+   * operations.
+   * </pre>
+   *
+   * <code>optional .sync_pb.PhoneAsASecurityKeySpecificFields paask_fields = 15;</code>
+   */
+  private void clearPaaskFields() {  paaskFields_ = null;
+    bitField0_ = (bitField0_ & ~0x00004000);
+  }
+
+  public static final int FULL_HARDWARE_CLASS_FIELD_NUMBER = 16;
+  private java.lang.String fullHardwareClass_;
+  /**
+   * <pre>
+   * Unique hardware identifier string which details the HW combination of
+   * a ChromeOS device. This field will be empty on other OS devices.
+   * </pre>
+   *
+   * <code>optional string full_hardware_class = 16;</code>
+   * @return Whether the fullHardwareClass field is set.
+   */
+  @java.lang.Override
+  public boolean hasFullHardwareClass() {
+    return ((bitField0_ & 0x00008000) != 0);
+  }
+  /**
+   * <pre>
+   * Unique hardware identifier string which details the HW combination of
+   * a ChromeOS device. This field will be empty on other OS devices.
+   * </pre>
+   *
+   * <code>optional string full_hardware_class = 16;</code>
+   * @return The fullHardwareClass.
+   */
+  @java.lang.Override
+  public java.lang.String getFullHardwareClass() {
+    return fullHardwareClass_;
+  }
+  /**
+   * <pre>
+   * Unique hardware identifier string which details the HW combination of
+   * a ChromeOS device. This field will be empty on other OS devices.
+   * </pre>
+   *
+   * <code>optional string full_hardware_class = 16;</code>
+   * @return The bytes for fullHardwareClass.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getFullHardwareClassBytes() {
+    return com.google.protobuf.ByteString.copyFromUtf8(fullHardwareClass_);
+  }
+  /**
+   * <pre>
+   * Unique hardware identifier string which details the HW combination of
+   * a ChromeOS device. This field will be empty on other OS devices.
+   * </pre>
+   *
+   * <code>optional string full_hardware_class = 16;</code>
+   * @param value The fullHardwareClass to set.
+   */
+  private void setFullHardwareClass(
+      java.lang.String value) {
+    value.getClass();
+  bitField0_ |= 0x00008000;
+    fullHardwareClass_ = value;
+  }
+  /**
+   * <pre>
+   * Unique hardware identifier string which details the HW combination of
+   * a ChromeOS device. This field will be empty on other OS devices.
+   * </pre>
+   *
+   * <code>optional string full_hardware_class = 16;</code>
+   */
+  private void clearFullHardwareClass() {
+    bitField0_ = (bitField0_ & ~0x00008000);
+    fullHardwareClass_ = getDefaultInstance().getFullHardwareClass();
+  }
+  /**
+   * <pre>
+   * Unique hardware identifier string which details the HW combination of
+   * a ChromeOS device. This field will be empty on other OS devices.
+   * </pre>
+   *
+   * <code>optional string full_hardware_class = 16;</code>
+   * @param value The bytes for fullHardwareClass to set.
+   */
+  private void setFullHardwareClassBytes(
+      com.google.protobuf.ByteString value) {
+    fullHardwareClass_ = value.toStringUtf8();
+    bitField0_ |= 0x00008000;
+  }
+
+  public static final int CHROME_VERSION_INFO_FIELD_NUMBER = 17;
+  /**
+   * <code>.sync_pb.ChromeVersionInfo chrome_version_info = 17;</code>
+   */
+  @java.lang.Override
+  public boolean hasChromeVersionInfo() {
+    return clientVersionInfoCase_ == 17;
+  }
+  /**
+   * <code>.sync_pb.ChromeVersionInfo chrome_version_info = 17;</code>
+   */
+  @java.lang.Override
+  public org.chromium.components.sync.protocol.ChromeVersionInfo getChromeVersionInfo() {
+    if (clientVersionInfoCase_ == 17) {
+       return (org.chromium.components.sync.protocol.ChromeVersionInfo) clientVersionInfo_;
+    }
+    return org.chromium.components.sync.protocol.ChromeVersionInfo.getDefaultInstance();
+  }
+  /**
+   * <code>.sync_pb.ChromeVersionInfo chrome_version_info = 17;</code>
+   */
+  private void setChromeVersionInfo(org.chromium.components.sync.protocol.ChromeVersionInfo value) {
+    value.getClass();
+  clientVersionInfo_ = value;
+    clientVersionInfoCase_ = 17;
+  }
+  /**
+   * <code>.sync_pb.ChromeVersionInfo chrome_version_info = 17;</code>
+   */
+  private void mergeChromeVersionInfo(org.chromium.components.sync.protocol.ChromeVersionInfo value) {
+    value.getClass();
+  if (clientVersionInfoCase_ == 17 &&
+        clientVersionInfo_ != org.chromium.components.sync.protocol.ChromeVersionInfo.getDefaultInstance()) {
+      clientVersionInfo_ = org.chromium.components.sync.protocol.ChromeVersionInfo.newBuilder((org.chromium.components.sync.protocol.ChromeVersionInfo) clientVersionInfo_)
+          .mergeFrom(value).buildPartial();
+    } else {
+      clientVersionInfo_ = value;
+    }
+    clientVersionInfoCase_ = 17;
+  }
+  /**
+   * <code>.sync_pb.ChromeVersionInfo chrome_version_info = 17;</code>
+   */
+  private void clearChromeVersionInfo() {
+    if (clientVersionInfoCase_ == 17) {
+      clientVersionInfoCase_ = 0;
+      clientVersionInfo_ = null;
+    }
+  }
+
+  public static final int GOOGLE_PLAY_SERVICES_VERSION_INFO_FIELD_NUMBER = 18;
+  /**
+   * <code>.sync_pb.GooglePlayServicesVersionInfo google_play_services_version_info = 18;</code>
+   */
+  @java.lang.Override
+  public boolean hasGooglePlayServicesVersionInfo() {
+    return clientVersionInfoCase_ == 18;
+  }
+  /**
+   * <code>.sync_pb.GooglePlayServicesVersionInfo google_play_services_version_info = 18;</code>
+   */
+  @java.lang.Override
+  public org.chromium.components.sync.protocol.GooglePlayServicesVersionInfo getGooglePlayServicesVersionInfo() {
+    if (clientVersionInfoCase_ == 18) {
+       return (org.chromium.components.sync.protocol.GooglePlayServicesVersionInfo) clientVersionInfo_;
+    }
+    return org.chromium.components.sync.protocol.GooglePlayServicesVersionInfo.getDefaultInstance();
+  }
+  /**
+   * <code>.sync_pb.GooglePlayServicesVersionInfo google_play_services_version_info = 18;</code>
+   */
+  private void setGooglePlayServicesVersionInfo(org.chromium.components.sync.protocol.GooglePlayServicesVersionInfo value) {
+    value.getClass();
+  clientVersionInfo_ = value;
+    clientVersionInfoCase_ = 18;
+  }
+  /**
+   * <code>.sync_pb.GooglePlayServicesVersionInfo google_play_services_version_info = 18;</code>
+   */
+  private void mergeGooglePlayServicesVersionInfo(org.chromium.components.sync.protocol.GooglePlayServicesVersionInfo value) {
+    value.getClass();
+  if (clientVersionInfoCase_ == 18 &&
+        clientVersionInfo_ != org.chromium.components.sync.protocol.GooglePlayServicesVersionInfo.getDefaultInstance()) {
+      clientVersionInfo_ = org.chromium.components.sync.protocol.GooglePlayServicesVersionInfo.newBuilder((org.chromium.components.sync.protocol.GooglePlayServicesVersionInfo) clientVersionInfo_)
+          .mergeFrom(value).buildPartial();
+    } else {
+      clientVersionInfo_ = value;
+    }
+    clientVersionInfoCase_ = 18;
+  }
+  /**
+   * <code>.sync_pb.GooglePlayServicesVersionInfo google_play_services_version_info = 18;</code>
+   */
+  private void clearGooglePlayServicesVersionInfo() {
+    if (clientVersionInfoCase_ == 18) {
+      clientVersionInfoCase_ = 0;
+      clientVersionInfo_ = null;
+    }
+  }
+
   public static org.chromium.components.sync.protocol.DeviceInfoSpecifics parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1118,6 +1429,18 @@ public  final class DeviceInfoSpecifics extends
     // Construct using org.chromium.components.sync.protocol.DeviceInfoSpecifics.newBuilder()
     private Builder() {
       super(DEFAULT_INSTANCE);
+    }
+
+    @java.lang.Override
+    public ClientVersionInfoCase
+        getClientVersionInfoCase() {
+      return instance.getClientVersionInfoCase();
+    }
+
+    public Builder clearClientVersionInfo() {
+      copyOnWrite();
+      instance.clearClientVersionInfo();
+      return this;
     }
 
 
@@ -1338,6 +1661,7 @@ public  final class DeviceInfoSpecifics extends
     /**
      * <pre>
      * The UserAgent used when contacting the Chrome Sync server.
+     * Only present when talking to the HTTP server.
      * </pre>
      *
      * <code>optional string sync_user_agent = 4;</code>
@@ -1350,6 +1674,7 @@ public  final class DeviceInfoSpecifics extends
     /**
      * <pre>
      * The UserAgent used when contacting the Chrome Sync server.
+     * Only present when talking to the HTTP server.
      * </pre>
      *
      * <code>optional string sync_user_agent = 4;</code>
@@ -1362,6 +1687,7 @@ public  final class DeviceInfoSpecifics extends
     /**
      * <pre>
      * The UserAgent used when contacting the Chrome Sync server.
+     * Only present when talking to the HTTP server.
      * </pre>
      *
      * <code>optional string sync_user_agent = 4;</code>
@@ -1375,6 +1701,7 @@ public  final class DeviceInfoSpecifics extends
     /**
      * <pre>
      * The UserAgent used when contacting the Chrome Sync server.
+     * Only present when talking to the HTTP server.
      * </pre>
      *
      * <code>optional string sync_user_agent = 4;</code>
@@ -1390,6 +1717,7 @@ public  final class DeviceInfoSpecifics extends
     /**
      * <pre>
      * The UserAgent used when contacting the Chrome Sync server.
+     * Only present when talking to the HTTP server.
      * </pre>
      *
      * <code>optional string sync_user_agent = 4;</code>
@@ -1403,6 +1731,7 @@ public  final class DeviceInfoSpecifics extends
     /**
      * <pre>
      * The UserAgent used when contacting the Chrome Sync server.
+     * Only present when talking to the HTTP server.
      * </pre>
      *
      * <code>optional string sync_user_agent = 4;</code>
@@ -1419,50 +1748,54 @@ public  final class DeviceInfoSpecifics extends
     /**
      * <pre>
      * The Chrome instance's version.  Updated (if necessary) on every startup.
+     * DEPRECATED in M92. Still populated for backward compatibility.
      * </pre>
      *
-     * <code>optional string chrome_version = 5;</code>
+     * <code>optional string chrome_version = 5 [deprecated = true];</code>
      * @return Whether the chromeVersion field is set.
      */
     @java.lang.Override
-    public boolean hasChromeVersion() {
+    @java.lang.Deprecated public boolean hasChromeVersion() {
       return instance.hasChromeVersion();
     }
     /**
      * <pre>
      * The Chrome instance's version.  Updated (if necessary) on every startup.
+     * DEPRECATED in M92. Still populated for backward compatibility.
      * </pre>
      *
-     * <code>optional string chrome_version = 5;</code>
+     * <code>optional string chrome_version = 5 [deprecated = true];</code>
      * @return The chromeVersion.
      */
     @java.lang.Override
-    public java.lang.String getChromeVersion() {
+    @java.lang.Deprecated public java.lang.String getChromeVersion() {
       return instance.getChromeVersion();
     }
     /**
      * <pre>
      * The Chrome instance's version.  Updated (if necessary) on every startup.
+     * DEPRECATED in M92. Still populated for backward compatibility.
      * </pre>
      *
-     * <code>optional string chrome_version = 5;</code>
+     * <code>optional string chrome_version = 5 [deprecated = true];</code>
      * @return The bytes for chromeVersion.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
+    @java.lang.Deprecated public com.google.protobuf.ByteString
         getChromeVersionBytes() {
       return instance.getChromeVersionBytes();
     }
     /**
      * <pre>
      * The Chrome instance's version.  Updated (if necessary) on every startup.
+     * DEPRECATED in M92. Still populated for backward compatibility.
      * </pre>
      *
-     * <code>optional string chrome_version = 5;</code>
+     * <code>optional string chrome_version = 5 [deprecated = true];</code>
      * @param value The chromeVersion to set.
      * @return This builder for chaining.
      */
-    public Builder setChromeVersion(
+    @java.lang.Deprecated public Builder setChromeVersion(
         java.lang.String value) {
       copyOnWrite();
       instance.setChromeVersion(value);
@@ -1471,12 +1804,13 @@ public  final class DeviceInfoSpecifics extends
     /**
      * <pre>
      * The Chrome instance's version.  Updated (if necessary) on every startup.
+     * DEPRECATED in M92. Still populated for backward compatibility.
      * </pre>
      *
-     * <code>optional string chrome_version = 5;</code>
+     * <code>optional string chrome_version = 5 [deprecated = true];</code>
      * @return This builder for chaining.
      */
-    public Builder clearChromeVersion() {
+    @java.lang.Deprecated public Builder clearChromeVersion() {
       copyOnWrite();
       instance.clearChromeVersion();
       return this;
@@ -1484,13 +1818,14 @@ public  final class DeviceInfoSpecifics extends
     /**
      * <pre>
      * The Chrome instance's version.  Updated (if necessary) on every startup.
+     * DEPRECATED in M92. Still populated for backward compatibility.
      * </pre>
      *
-     * <code>optional string chrome_version = 5;</code>
+     * <code>optional string chrome_version = 5 [deprecated = true];</code>
      * @param value The bytes for chromeVersion to set.
      * @return This builder for chaining.
      */
-    public Builder setChromeVersionBytes(
+    @java.lang.Deprecated public Builder setChromeVersionBytes(
         com.google.protobuf.ByteString value) {
       copyOnWrite();
       instance.setChromeVersionBytes(value);
@@ -1560,7 +1895,7 @@ public  final class DeviceInfoSpecifics extends
     /**
      * <pre>
      * Device_id that is stable until user signs out. This device_id is used for
-     * annotating login scoped refresh token.
+     * annotating login scoped refresh token. Present only for Chrome Clients.
      * </pre>
      *
      * <code>optional string signin_scoped_device_id = 7;</code>
@@ -1573,7 +1908,7 @@ public  final class DeviceInfoSpecifics extends
     /**
      * <pre>
      * Device_id that is stable until user signs out. This device_id is used for
-     * annotating login scoped refresh token.
+     * annotating login scoped refresh token. Present only for Chrome Clients.
      * </pre>
      *
      * <code>optional string signin_scoped_device_id = 7;</code>
@@ -1586,7 +1921,7 @@ public  final class DeviceInfoSpecifics extends
     /**
      * <pre>
      * Device_id that is stable until user signs out. This device_id is used for
-     * annotating login scoped refresh token.
+     * annotating login scoped refresh token. Present only for Chrome Clients.
      * </pre>
      *
      * <code>optional string signin_scoped_device_id = 7;</code>
@@ -1600,7 +1935,7 @@ public  final class DeviceInfoSpecifics extends
     /**
      * <pre>
      * Device_id that is stable until user signs out. This device_id is used for
-     * annotating login scoped refresh token.
+     * annotating login scoped refresh token. Present only for Chrome Clients.
      * </pre>
      *
      * <code>optional string signin_scoped_device_id = 7;</code>
@@ -1616,7 +1951,7 @@ public  final class DeviceInfoSpecifics extends
     /**
      * <pre>
      * Device_id that is stable until user signs out. This device_id is used for
-     * annotating login scoped refresh token.
+     * annotating login scoped refresh token. Present only for Chrome Clients.
      * </pre>
      *
      * <code>optional string signin_scoped_device_id = 7;</code>
@@ -1630,7 +1965,7 @@ public  final class DeviceInfoSpecifics extends
     /**
      * <pre>
      * Device_id that is stable until user signs out. This device_id is used for
-     * annotating login scoped refresh token.
+     * annotating login scoped refresh token. Present only for Chrome Clients.
      * </pre>
      *
      * <code>optional string signin_scoped_device_id = 7;</code>
@@ -2159,6 +2494,266 @@ public  final class DeviceInfoSpecifics extends
       return this;
     }
 
+    /**
+     * <pre>
+     * Information for contacting this device in order to perform security key
+     * operations.
+     * </pre>
+     *
+     * <code>optional .sync_pb.PhoneAsASecurityKeySpecificFields paask_fields = 15;</code>
+     */
+    @java.lang.Override
+    public boolean hasPaaskFields() {
+      return instance.hasPaaskFields();
+    }
+    /**
+     * <pre>
+     * Information for contacting this device in order to perform security key
+     * operations.
+     * </pre>
+     *
+     * <code>optional .sync_pb.PhoneAsASecurityKeySpecificFields paask_fields = 15;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.PhoneAsASecurityKeySpecificFields getPaaskFields() {
+      return instance.getPaaskFields();
+    }
+    /**
+     * <pre>
+     * Information for contacting this device in order to perform security key
+     * operations.
+     * </pre>
+     *
+     * <code>optional .sync_pb.PhoneAsASecurityKeySpecificFields paask_fields = 15;</code>
+     */
+    public Builder setPaaskFields(org.chromium.components.sync.protocol.PhoneAsASecurityKeySpecificFields value) {
+      copyOnWrite();
+      instance.setPaaskFields(value);
+      return this;
+      }
+    /**
+     * <pre>
+     * Information for contacting this device in order to perform security key
+     * operations.
+     * </pre>
+     *
+     * <code>optional .sync_pb.PhoneAsASecurityKeySpecificFields paask_fields = 15;</code>
+     */
+    public Builder setPaaskFields(
+        org.chromium.components.sync.protocol.PhoneAsASecurityKeySpecificFields.Builder builderForValue) {
+      copyOnWrite();
+      instance.setPaaskFields(builderForValue.build());
+      return this;
+    }
+    /**
+     * <pre>
+     * Information for contacting this device in order to perform security key
+     * operations.
+     * </pre>
+     *
+     * <code>optional .sync_pb.PhoneAsASecurityKeySpecificFields paask_fields = 15;</code>
+     */
+    public Builder mergePaaskFields(org.chromium.components.sync.protocol.PhoneAsASecurityKeySpecificFields value) {
+      copyOnWrite();
+      instance.mergePaaskFields(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * Information for contacting this device in order to perform security key
+     * operations.
+     * </pre>
+     *
+     * <code>optional .sync_pb.PhoneAsASecurityKeySpecificFields paask_fields = 15;</code>
+     */
+    public Builder clearPaaskFields() {  copyOnWrite();
+      instance.clearPaaskFields();
+      return this;
+    }
+
+    /**
+     * <pre>
+     * Unique hardware identifier string which details the HW combination of
+     * a ChromeOS device. This field will be empty on other OS devices.
+     * </pre>
+     *
+     * <code>optional string full_hardware_class = 16;</code>
+     * @return Whether the fullHardwareClass field is set.
+     */
+    @java.lang.Override
+    public boolean hasFullHardwareClass() {
+      return instance.hasFullHardwareClass();
+    }
+    /**
+     * <pre>
+     * Unique hardware identifier string which details the HW combination of
+     * a ChromeOS device. This field will be empty on other OS devices.
+     * </pre>
+     *
+     * <code>optional string full_hardware_class = 16;</code>
+     * @return The fullHardwareClass.
+     */
+    @java.lang.Override
+    public java.lang.String getFullHardwareClass() {
+      return instance.getFullHardwareClass();
+    }
+    /**
+     * <pre>
+     * Unique hardware identifier string which details the HW combination of
+     * a ChromeOS device. This field will be empty on other OS devices.
+     * </pre>
+     *
+     * <code>optional string full_hardware_class = 16;</code>
+     * @return The bytes for fullHardwareClass.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getFullHardwareClassBytes() {
+      return instance.getFullHardwareClassBytes();
+    }
+    /**
+     * <pre>
+     * Unique hardware identifier string which details the HW combination of
+     * a ChromeOS device. This field will be empty on other OS devices.
+     * </pre>
+     *
+     * <code>optional string full_hardware_class = 16;</code>
+     * @param value The fullHardwareClass to set.
+     * @return This builder for chaining.
+     */
+    public Builder setFullHardwareClass(
+        java.lang.String value) {
+      copyOnWrite();
+      instance.setFullHardwareClass(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * Unique hardware identifier string which details the HW combination of
+     * a ChromeOS device. This field will be empty on other OS devices.
+     * </pre>
+     *
+     * <code>optional string full_hardware_class = 16;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearFullHardwareClass() {
+      copyOnWrite();
+      instance.clearFullHardwareClass();
+      return this;
+    }
+    /**
+     * <pre>
+     * Unique hardware identifier string which details the HW combination of
+     * a ChromeOS device. This field will be empty on other OS devices.
+     * </pre>
+     *
+     * <code>optional string full_hardware_class = 16;</code>
+     * @param value The bytes for fullHardwareClass to set.
+     * @return This builder for chaining.
+     */
+    public Builder setFullHardwareClassBytes(
+        com.google.protobuf.ByteString value) {
+      copyOnWrite();
+      instance.setFullHardwareClassBytes(value);
+      return this;
+    }
+
+    /**
+     * <code>.sync_pb.ChromeVersionInfo chrome_version_info = 17;</code>
+     */
+    @java.lang.Override
+    public boolean hasChromeVersionInfo() {
+      return instance.hasChromeVersionInfo();
+    }
+    /**
+     * <code>.sync_pb.ChromeVersionInfo chrome_version_info = 17;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.ChromeVersionInfo getChromeVersionInfo() {
+      return instance.getChromeVersionInfo();
+    }
+    /**
+     * <code>.sync_pb.ChromeVersionInfo chrome_version_info = 17;</code>
+     */
+    public Builder setChromeVersionInfo(org.chromium.components.sync.protocol.ChromeVersionInfo value) {
+      copyOnWrite();
+      instance.setChromeVersionInfo(value);
+      return this;
+    }
+    /**
+     * <code>.sync_pb.ChromeVersionInfo chrome_version_info = 17;</code>
+     */
+    public Builder setChromeVersionInfo(
+        org.chromium.components.sync.protocol.ChromeVersionInfo.Builder builderForValue) {
+      copyOnWrite();
+      instance.setChromeVersionInfo(builderForValue.build());
+      return this;
+    }
+    /**
+     * <code>.sync_pb.ChromeVersionInfo chrome_version_info = 17;</code>
+     */
+    public Builder mergeChromeVersionInfo(org.chromium.components.sync.protocol.ChromeVersionInfo value) {
+      copyOnWrite();
+      instance.mergeChromeVersionInfo(value);
+      return this;
+    }
+    /**
+     * <code>.sync_pb.ChromeVersionInfo chrome_version_info = 17;</code>
+     */
+    public Builder clearChromeVersionInfo() {
+      copyOnWrite();
+      instance.clearChromeVersionInfo();
+      return this;
+    }
+
+    /**
+     * <code>.sync_pb.GooglePlayServicesVersionInfo google_play_services_version_info = 18;</code>
+     */
+    @java.lang.Override
+    public boolean hasGooglePlayServicesVersionInfo() {
+      return instance.hasGooglePlayServicesVersionInfo();
+    }
+    /**
+     * <code>.sync_pb.GooglePlayServicesVersionInfo google_play_services_version_info = 18;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.GooglePlayServicesVersionInfo getGooglePlayServicesVersionInfo() {
+      return instance.getGooglePlayServicesVersionInfo();
+    }
+    /**
+     * <code>.sync_pb.GooglePlayServicesVersionInfo google_play_services_version_info = 18;</code>
+     */
+    public Builder setGooglePlayServicesVersionInfo(org.chromium.components.sync.protocol.GooglePlayServicesVersionInfo value) {
+      copyOnWrite();
+      instance.setGooglePlayServicesVersionInfo(value);
+      return this;
+    }
+    /**
+     * <code>.sync_pb.GooglePlayServicesVersionInfo google_play_services_version_info = 18;</code>
+     */
+    public Builder setGooglePlayServicesVersionInfo(
+        org.chromium.components.sync.protocol.GooglePlayServicesVersionInfo.Builder builderForValue) {
+      copyOnWrite();
+      instance.setGooglePlayServicesVersionInfo(builderForValue.build());
+      return this;
+    }
+    /**
+     * <code>.sync_pb.GooglePlayServicesVersionInfo google_play_services_version_info = 18;</code>
+     */
+    public Builder mergeGooglePlayServicesVersionInfo(org.chromium.components.sync.protocol.GooglePlayServicesVersionInfo value) {
+      copyOnWrite();
+      instance.mergeGooglePlayServicesVersionInfo(value);
+      return this;
+    }
+    /**
+     * <code>.sync_pb.GooglePlayServicesVersionInfo google_play_services_version_info = 18;</code>
+     */
+    public Builder clearGooglePlayServicesVersionInfo() {
+      copyOnWrite();
+      instance.clearGooglePlayServicesVersionInfo();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:sync_pb.DeviceInfoSpecifics)
   }
   @java.lang.Override
@@ -2175,6 +2770,8 @@ public  final class DeviceInfoSpecifics extends
       }
       case BUILD_MESSAGE_INFO: {
           java.lang.Object[] objects = new java.lang.Object[] {
+            "clientVersionInfo_",
+            "clientVersionInfoCase_",
             "bitField0_",
             "cacheGuid_",
             "clientName_",
@@ -2191,12 +2788,17 @@ public  final class DeviceInfoSpecifics extends
             "manufacturer_",
             "pulseIntervalInMinutes_",
             "invalidationFields_",
+            "paaskFields_",
+            "fullHardwareClass_",
+            org.chromium.components.sync.protocol.ChromeVersionInfo.class,
+            org.chromium.components.sync.protocol.GooglePlayServicesVersionInfo.class,
           };
           java.lang.String info =
-              "\u0001\u000e\u0000\u0001\u0001\u000e\u000e\u0000\u0000\u0000\u0001\u1008\u0000\u0002" +
+              "\u0001\u0012\u0001\u0001\u0001\u0012\u0012\u0000\u0000\u0000\u0001\u1008\u0000\u0002" +
               "\u1008\u0001\u0003\u100c\u0002\u0004\u1008\u0003\u0005\u1008\u0004\u0006\u1002\u0005" +
               "\u0007\u1008\u0006\b\u1002\u0007\t\u1009\b\n\u1009\t\u000b\u1008\n\f\u1008\u000b" +
-              "\r\u1004\f\u000e\u1009\r";
+              "\r\u1004\f\u000e\u1009\r\u000f\u1009\u000e\u0010\u1008\u000f\u0011\u103c\u0000\u0012" +
+              "\u103c\u0000";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

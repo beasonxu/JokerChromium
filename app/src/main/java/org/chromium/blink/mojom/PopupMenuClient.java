@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface PopupMenuClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface PopupMenuClient extends org.chromium.mojo.bindings.Interface {
 
     Manager<PopupMenuClient, PopupMenuClient.Proxy> MANAGER = PopupMenuClient_Internal.MANAGER;
 
-
     void didAcceptIndices(
 int[] indices);
-
 
 
     void didCancel(

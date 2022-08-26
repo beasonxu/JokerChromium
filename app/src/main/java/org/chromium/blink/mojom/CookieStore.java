@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface CookieStore extends org.chromium.mojo.bindings.Interface {
 
@@ -23,28 +25,25 @@ public interface CookieStore extends org.chromium.mojo.bindings.Interface {
 
     Manager<CookieStore, CookieStore.Proxy> MANAGER = CookieStore_Internal.MANAGER;
 
-
     void addSubscriptions(
 long serviceWorkerRegistrationId, CookieChangeSubscription[] subscription, 
-AddSubscriptionsResponse callback);
+AddSubscriptions_Response callback);
 
-    interface AddSubscriptionsResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface AddSubscriptions_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void removeSubscriptions(
 long serviceWorkerRegistrationId, CookieChangeSubscription[] subscription, 
-RemoveSubscriptionsResponse callback);
+RemoveSubscriptions_Response callback);
 
-    interface RemoveSubscriptionsResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface RemoveSubscriptions_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void getSubscriptions(
 long serviceWorkerRegistrationId, 
-GetSubscriptionsResponse callback);
+GetSubscriptions_Response callback);
 
-    interface GetSubscriptionsResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<CookieChangeSubscription[], Boolean> { }
+    interface GetSubscriptions_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<CookieChangeSubscription[], Boolean> { }
 
 
 }

@@ -7,10 +7,11 @@ import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.chrome.browser.touch_to_fill.data.Credential;
+import org.chromium.chrome.browser.touch_to_fill.data.WebAuthnCredential;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class TouchToFillBridgeJni implements TouchToFillBridge.Natives {
+class TouchToFillBridgeJni implements TouchToFillBridge.Natives {
   private static TouchToFillBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<TouchToFillBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.touch_to_fill.TouchToFillBridge.Natives>() {
@@ -27,6 +28,12 @@ final class TouchToFillBridgeJni implements TouchToFillBridge.Natives {
   @Override
   public void onCredentialSelected(long nativeTouchToFillViewImpl, Credential credential) {
     GEN_JNI.org_chromium_chrome_browser_touch_1to_1fill_TouchToFillBridge_onCredentialSelected(nativeTouchToFillViewImpl, credential);
+  }
+
+  @Override
+  public void onWebAuthnCredentialSelected(long nativeTouchToFillViewImpl,
+      WebAuthnCredential credential) {
+    GEN_JNI.org_chromium_chrome_browser_touch_1to_1fill_TouchToFillBridge_onWebAuthnCredentialSelected(nativeTouchToFillViewImpl, credential);
   }
 
   @Override

@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class FrameVisibility {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        FrameVisibility.RENDERED_OUT_OF_VIEWPORT,
+        FrameVisibility.RENDERED_IN_VIEWPORT,
+        FrameVisibility.NOT_RENDERED})
+    public @interface EnumType {}
 
     public static final int RENDERED_OUT_OF_VIEWPORT = 0;
     public static final int RENDERED_IN_VIEWPORT = 1;

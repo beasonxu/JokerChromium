@@ -30,7 +30,7 @@ public abstract class ErrorStrings {
     public static final String ATTEMPTED_INITIALIZATION_TWICE = "Attempted initialization twice.";
 
 
-    public static final String CANNOT_SHOW_IN_BACKGROUND_TAB = "Cannot show PaymentRequest UI in a background tab.";
+    public static final String CANNOT_SHOW_IN_BACKGROUND_TAB = "Cannot show PaymentRequest UI in a preview page or a background tab.";
 
 
     public static final String CANNOT_SHOW_TWICE = "Attempted show twice.";
@@ -102,6 +102,12 @@ public abstract class ErrorStrings {
     public static final String USER_CANCELLED = "User closed the Payment Request UI.";
 
 
+    public static final String WEB_AUTHN_OPERATION_TIMED_OUT_OR_NOT_ALLOWED = "The operation either timed out or was not allowed. See: https://www.w3.org/TR/webauthn-2/#sctn-privacy-considerations-client.";
+
+
+    public static final String SPC_USER_OPTED_OUT = "User opted out of the process.";
+
+
     public static final String INVALID_PAYMENT_DETAILS = "Invalid payment details.";
 
 
@@ -151,7 +157,7 @@ public abstract class ErrorStrings {
     public static final String UNRECOGNIZED_ACTIVITY_RESULT  =
             "Payment app returned unrecognized activity result %d.";
 
-    public static final String MINIMAL_UI_SUPPRESSED = "Payment minimal UI suppressed.";
+    public static final String SPC_AUTHN_UI_SUPPRESSED = "Secure Payment Confirmation Authn UI suppressed.";
 
     public static final String UNATHORIZED_SERVICE_REQUEST =
             "Caller's signature or package name does not match invoked app's.";

@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class MediaPlayerObserver_Internal {
 
@@ -65,11 +67,9 @@ class MediaPlayerObserver_Internal {
 
     private static final int ON_AUDIO_OUTPUT_SINK_CHANGED_ORDINAL = 8;
 
-    private static final int ON_AUDIO_OUTPUT_SINK_CHANGING_DISABLED_ORDINAL = 9;
+    private static final int ON_USE_AUDIO_SERVICE_CHANGED_ORDINAL = 9;
 
-    private static final int ON_BUFFER_UNDERFLOW_ORDINAL = 10;
-
-    private static final int ON_SEEK_ORDINAL = 11;
+    private static final int ON_AUDIO_OUTPUT_SINK_CHANGING_DISABLED_ORDINAL = 10;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements MediaPlayerObserver.Proxy {
@@ -236,6 +236,23 @@ String hashedDeviceId) {
 
 
         @Override
+        public void onUseAudioServiceChanged(
+boolean usesAudioService) {
+
+            MediaPlayerObserverOnUseAudioServiceChangedParams _message = new MediaPlayerObserverOnUseAudioServiceChangedParams();
+
+            _message.usesAudioService = usesAudioService;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(ON_USE_AUDIO_SERVICE_CHANGED_ORDINAL)));
+
+        }
+
+
+        @Override
         public void onAudioOutputSinkChangingDisabled(
 ) {
 
@@ -246,36 +263,6 @@ String hashedDeviceId) {
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(ON_AUDIO_OUTPUT_SINK_CHANGING_DISABLED_ORDINAL)));
-
-        }
-
-
-        @Override
-        public void onBufferUnderflow(
-) {
-
-            MediaPlayerObserverOnBufferUnderflowParams _message = new MediaPlayerObserverOnBufferUnderflowParams();
-
-
-            getProxyHandler().getMessageReceiver().accept(
-                    _message.serializeWithHeader(
-                            getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(ON_BUFFER_UNDERFLOW_ORDINAL)));
-
-        }
-
-
-        @Override
-        public void onSeek(
-) {
-
-            MediaPlayerObserverOnSeekParams _message = new MediaPlayerObserverOnSeekParams();
-
-
-            getProxyHandler().getMessageReceiver().accept(
-                    _message.serializeWithHeader(
-                            getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(ON_SEEK_ORDINAL)));
 
         }
 
@@ -427,35 +414,24 @@ String hashedDeviceId) {
 
 
 
+                    case ON_USE_AUDIO_SERVICE_CHANGED_ORDINAL: {
+
+                        MediaPlayerObserverOnUseAudioServiceChangedParams data =
+                                MediaPlayerObserverOnUseAudioServiceChangedParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().onUseAudioServiceChanged(data.usesAudioService);
+                        return true;
+                    }
+
+
+
+
+
                     case ON_AUDIO_OUTPUT_SINK_CHANGING_DISABLED_ORDINAL: {
 
                         MediaPlayerObserverOnAudioOutputSinkChangingDisabledParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().onAudioOutputSinkChangingDisabled();
-                        return true;
-                    }
-
-
-
-
-
-                    case ON_BUFFER_UNDERFLOW_ORDINAL: {
-
-                        MediaPlayerObserverOnBufferUnderflowParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().onBufferUnderflow();
-                        return true;
-                    }
-
-
-
-
-
-                    case ON_SEEK_ORDINAL: {
-
-                        MediaPlayerObserverOnSeekParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().onSeek();
                         return true;
                     }
 
@@ -487,8 +463,6 @@ String hashedDeviceId) {
                     case org.chromium.mojo.bindings.interfacecontrol.InterfaceControlMessagesConstants.RUN_MESSAGE_ID:
                         return org.chromium.mojo.bindings.InterfaceControlMessagesHelper.handleRun(
                                 getCore(), MediaPlayerObserver_Internal.MANAGER, messageWithHeader, receiver);
-
-
 
 
 
@@ -1105,6 +1079,69 @@ String hashedDeviceId) {
 
 
     
+    static final class MediaPlayerObserverOnUseAudioServiceChangedParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public boolean usesAudioService;
+
+        private MediaPlayerObserverOnUseAudioServiceChangedParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public MediaPlayerObserverOnUseAudioServiceChangedParams() {
+            this(0);
+        }
+
+        public static MediaPlayerObserverOnUseAudioServiceChangedParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static MediaPlayerObserverOnUseAudioServiceChangedParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static MediaPlayerObserverOnUseAudioServiceChangedParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            MediaPlayerObserverOnUseAudioServiceChangedParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new MediaPlayerObserverOnUseAudioServiceChangedParams(elementsOrVersion);
+                    {
+                        
+                    result.usesAudioService = decoder0.readBoolean(8, 0);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.usesAudioService, 8, 0);
+        }
+    }
+
+
+
+    
     static final class MediaPlayerObserverOnAudioOutputSinkChangingDisabledParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 8;
@@ -1144,118 +1181,6 @@ String hashedDeviceId) {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
                 result = new MediaPlayerObserverOnAudioOutputSinkChangingDisabledParams(elementsOrVersion);
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-        }
-    }
-
-
-
-    
-    static final class MediaPlayerObserverOnBufferUnderflowParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 8;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-
-        private MediaPlayerObserverOnBufferUnderflowParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public MediaPlayerObserverOnBufferUnderflowParams() {
-            this(0);
-        }
-
-        public static MediaPlayerObserverOnBufferUnderflowParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static MediaPlayerObserverOnBufferUnderflowParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static MediaPlayerObserverOnBufferUnderflowParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            MediaPlayerObserverOnBufferUnderflowParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new MediaPlayerObserverOnBufferUnderflowParams(elementsOrVersion);
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-        }
-    }
-
-
-
-    
-    static final class MediaPlayerObserverOnSeekParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 8;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-
-        private MediaPlayerObserverOnSeekParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public MediaPlayerObserverOnSeekParams() {
-            this(0);
-        }
-
-        public static MediaPlayerObserverOnSeekParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static MediaPlayerObserverOnSeekParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static MediaPlayerObserverOnSeekParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            MediaPlayerObserverOnSeekParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new MediaPlayerObserverOnSeekParams(elementsOrVersion);
 
             } finally {
                 decoder0.decreaseStackDepth();

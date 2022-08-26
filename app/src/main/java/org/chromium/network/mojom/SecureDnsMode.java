@@ -13,8 +13,16 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class SecureDnsMode {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        SecureDnsMode.OFF,
+        SecureDnsMode.AUTOMATIC,
+        SecureDnsMode.SECURE})
+    public @interface EnumType {}
 
     public static final int OFF = 0;
     public static final int AUTOMATIC = 1;

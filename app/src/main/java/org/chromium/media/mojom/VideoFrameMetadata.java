@@ -13,11 +13,13 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class VideoFrameMetadata extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 176;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(176, 0)};
+    private static final int STRUCT_SIZE = 184;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(184, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public boolean allowOverlay;
     public org.chromium.mojo_base.mojom.TimeTicks captureBeginTime;
@@ -25,8 +27,9 @@ public final class VideoFrameMetadata extends org.chromium.mojo.bindings.Struct 
     public boolean hasCaptureCounter;
     public int captureCounter;
     public org.chromium.gfx.mojom.Rect captureUpdateRect;
-    public boolean hasCopyMode;
-    public int copyMode;
+    public org.chromium.gfx.mojom.Rect regionCaptureRect;
+    public int cropVersion;
+    public boolean copyRequired;
     public boolean endOfStream;
     public org.chromium.mojo_base.mojom.TimeDelta frameDuration;
     public boolean hasFrameRate;
@@ -39,8 +42,10 @@ public final class VideoFrameMetadata extends org.chromium.mojo.bindings.Struct 
     public boolean wantsPromotionHint;
     public boolean protectedVideo;
     public boolean hwProtected;
+    public boolean isWebgpuCompatible;
     public org.chromium.mojo_base.mojom.UnguessableToken overlayPlaneId;
     public boolean powerEfficient;
+    public boolean textureOriginIsTopLeft;
     public boolean hasDeviceScaleFactor;
     public double deviceScaleFactor;
     public boolean hasPageScaleFactor;
@@ -58,7 +63,6 @@ public final class VideoFrameMetadata extends org.chromium.mojo.bindings.Struct 
     public double rtpTimestamp;
     public org.chromium.mojo_base.mojom.TimeTicks receiveTime;
     public org.chromium.mojo_base.mojom.TimeDelta wallclockFrameDuration;
-    public int hwProtectedValidationId;
 
     private VideoFrameMetadata(int version) {
         super(STRUCT_SIZE, version);
@@ -103,7 +107,7 @@ public final class VideoFrameMetadata extends org.chromium.mojo.bindings.Struct 
                 }
                 {
                     
-                result.hasCopyMode = decoder0.readBoolean(8, 2);
+                result.copyRequired = decoder0.readBoolean(8, 2);
                 }
                 {
                     
@@ -139,31 +143,39 @@ public final class VideoFrameMetadata extends org.chromium.mojo.bindings.Struct 
                 }
                 {
                     
-                result.powerEfficient = decoder0.readBoolean(9, 3);
+                result.isWebgpuCompatible = decoder0.readBoolean(9, 3);
                 }
                 {
                     
-                result.hasDeviceScaleFactor = decoder0.readBoolean(9, 4);
+                result.powerEfficient = decoder0.readBoolean(9, 4);
                 }
                 {
                     
-                result.hasPageScaleFactor = decoder0.readBoolean(9, 5);
+                result.textureOriginIsTopLeft = decoder0.readBoolean(9, 5);
                 }
                 {
                     
-                result.hasRootScrollOffsetX = decoder0.readBoolean(9, 6);
+                result.hasDeviceScaleFactor = decoder0.readBoolean(9, 6);
                 }
                 {
                     
-                result.hasRootScrollOffsetY = decoder0.readBoolean(9, 7);
+                result.hasPageScaleFactor = decoder0.readBoolean(9, 7);
                 }
                 {
                     
-                result.hasTopControlsVisibleHeight = decoder0.readBoolean(10, 0);
+                result.hasRootScrollOffsetX = decoder0.readBoolean(10, 0);
                 }
                 {
                     
-                result.hasRtpTimestamp = decoder0.readBoolean(10, 1);
+                result.hasRootScrollOffsetY = decoder0.readBoolean(10, 1);
+                }
+                {
+                    
+                result.hasTopControlsVisibleHeight = decoder0.readBoolean(10, 2);
+                }
+                {
+                    
+                result.hasRtpTimestamp = decoder0.readBoolean(10, 3);
                 }
                 {
                     
@@ -186,85 +198,84 @@ public final class VideoFrameMetadata extends org.chromium.mojo.bindings.Struct 
                 }
                 {
                     
-                result.copyMode = decoder0.readInt(40);
-                    CopyMode.validate(result.copyMode);
-                    result.copyMode = CopyMode.toKnownValue(result.copyMode);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, true);
+                result.regionCaptureRect = org.chromium.gfx.mojom.Rect.decode(decoder1);
                 }
                 {
                     
-                result.hwProtectedValidationId = decoder0.readInt(44);
+                result.cropVersion = decoder0.readInt(48);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(48, true);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(56, true);
                 result.frameDuration = org.chromium.mojo_base.mojom.TimeDelta.decode(decoder1);
                 }
                 {
                     
-                result.frameRate = decoder0.readDouble(56);
-                }
-                {
-                    
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(64, true);
-                result.referenceTime = org.chromium.mojo_base.mojom.TimeTicks.decode(decoder1);
+                result.frameRate = decoder0.readDouble(64);
                 }
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(72, true);
-                result.transformation = VideoTransformation.decode(decoder1);
+                result.referenceTime = org.chromium.mojo_base.mojom.TimeTicks.decode(decoder1);
                 }
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(80, true);
+                result.transformation = VideoTransformation.decode(decoder1);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(88, true);
                 result.overlayPlaneId = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
                 }
                 {
                     
-                result.deviceScaleFactor = decoder0.readDouble(88);
+                result.deviceScaleFactor = decoder0.readDouble(96);
                 }
                 {
                     
-                result.pageScaleFactor = decoder0.readDouble(96);
+                result.pageScaleFactor = decoder0.readDouble(104);
                 }
                 {
                     
-                result.rootScrollOffsetX = decoder0.readDouble(104);
+                result.rootScrollOffsetX = decoder0.readDouble(112);
                 }
                 {
                     
-                result.rootScrollOffsetY = decoder0.readDouble(112);
+                result.rootScrollOffsetY = decoder0.readDouble(120);
                 }
                 {
                     
-                result.topControlsVisibleHeight = decoder0.readDouble(120);
-                }
-                {
-                    
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(128, true);
-                result.decodeBeginTime = org.chromium.mojo_base.mojom.TimeTicks.decode(decoder1);
+                result.topControlsVisibleHeight = decoder0.readDouble(128);
                 }
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(136, true);
-                result.decodeEndTime = org.chromium.mojo_base.mojom.TimeTicks.decode(decoder1);
+                result.decodeBeginTime = org.chromium.mojo_base.mojom.TimeTicks.decode(decoder1);
                 }
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(144, true);
+                result.decodeEndTime = org.chromium.mojo_base.mojom.TimeTicks.decode(decoder1);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(152, true);
                 result.processingTime = org.chromium.mojo_base.mojom.TimeDelta.decode(decoder1);
                 }
                 {
                     
-                result.rtpTimestamp = decoder0.readDouble(152);
-                }
-                {
-                    
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(160, true);
-                result.receiveTime = org.chromium.mojo_base.mojom.TimeTicks.decode(decoder1);
+                result.rtpTimestamp = decoder0.readDouble(160);
                 }
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(168, true);
+                result.receiveTime = org.chromium.mojo_base.mojom.TimeTicks.decode(decoder1);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(176, true);
                 result.wallclockFrameDuration = org.chromium.mojo_base.mojom.TimeDelta.decode(decoder1);
                 }
 
@@ -283,7 +294,7 @@ public final class VideoFrameMetadata extends org.chromium.mojo.bindings.Struct 
         
         encoder0.encode(this.hasCaptureCounter, 8, 1);
         
-        encoder0.encode(this.hasCopyMode, 8, 2);
+        encoder0.encode(this.copyRequired, 8, 2);
         
         encoder0.encode(this.endOfStream, 8, 3);
         
@@ -301,19 +312,23 @@ public final class VideoFrameMetadata extends org.chromium.mojo.bindings.Struct 
         
         encoder0.encode(this.hwProtected, 9, 2);
         
-        encoder0.encode(this.powerEfficient, 9, 3);
+        encoder0.encode(this.isWebgpuCompatible, 9, 3);
         
-        encoder0.encode(this.hasDeviceScaleFactor, 9, 4);
+        encoder0.encode(this.powerEfficient, 9, 4);
         
-        encoder0.encode(this.hasPageScaleFactor, 9, 5);
+        encoder0.encode(this.textureOriginIsTopLeft, 9, 5);
         
-        encoder0.encode(this.hasRootScrollOffsetX, 9, 6);
+        encoder0.encode(this.hasDeviceScaleFactor, 9, 6);
         
-        encoder0.encode(this.hasRootScrollOffsetY, 9, 7);
+        encoder0.encode(this.hasPageScaleFactor, 9, 7);
         
-        encoder0.encode(this.hasTopControlsVisibleHeight, 10, 0);
+        encoder0.encode(this.hasRootScrollOffsetX, 10, 0);
         
-        encoder0.encode(this.hasRtpTimestamp, 10, 1);
+        encoder0.encode(this.hasRootScrollOffsetY, 10, 1);
+        
+        encoder0.encode(this.hasTopControlsVisibleHeight, 10, 2);
+        
+        encoder0.encode(this.hasRtpTimestamp, 10, 3);
         
         encoder0.encode(this.captureCounter, 12);
         
@@ -323,40 +338,40 @@ public final class VideoFrameMetadata extends org.chromium.mojo.bindings.Struct 
         
         encoder0.encode(this.captureUpdateRect, 32, true);
         
-        encoder0.encode(this.copyMode, 40);
+        encoder0.encode(this.regionCaptureRect, 40, true);
         
-        encoder0.encode(this.hwProtectedValidationId, 44);
+        encoder0.encode(this.cropVersion, 48);
         
-        encoder0.encode(this.frameDuration, 48, true);
+        encoder0.encode(this.frameDuration, 56, true);
         
-        encoder0.encode(this.frameRate, 56);
+        encoder0.encode(this.frameRate, 64);
         
-        encoder0.encode(this.referenceTime, 64, true);
+        encoder0.encode(this.referenceTime, 72, true);
         
-        encoder0.encode(this.transformation, 72, true);
+        encoder0.encode(this.transformation, 80, true);
         
-        encoder0.encode(this.overlayPlaneId, 80, true);
+        encoder0.encode(this.overlayPlaneId, 88, true);
         
-        encoder0.encode(this.deviceScaleFactor, 88);
+        encoder0.encode(this.deviceScaleFactor, 96);
         
-        encoder0.encode(this.pageScaleFactor, 96);
+        encoder0.encode(this.pageScaleFactor, 104);
         
-        encoder0.encode(this.rootScrollOffsetX, 104);
+        encoder0.encode(this.rootScrollOffsetX, 112);
         
-        encoder0.encode(this.rootScrollOffsetY, 112);
+        encoder0.encode(this.rootScrollOffsetY, 120);
         
-        encoder0.encode(this.topControlsVisibleHeight, 120);
+        encoder0.encode(this.topControlsVisibleHeight, 128);
         
-        encoder0.encode(this.decodeBeginTime, 128, true);
+        encoder0.encode(this.decodeBeginTime, 136, true);
         
-        encoder0.encode(this.decodeEndTime, 136, true);
+        encoder0.encode(this.decodeEndTime, 144, true);
         
-        encoder0.encode(this.processingTime, 144, true);
+        encoder0.encode(this.processingTime, 152, true);
         
-        encoder0.encode(this.rtpTimestamp, 152);
+        encoder0.encode(this.rtpTimestamp, 160);
         
-        encoder0.encode(this.receiveTime, 160, true);
+        encoder0.encode(this.receiveTime, 168, true);
         
-        encoder0.encode(this.wallclockFrameDuration, 168, true);
+        encoder0.encode(this.wallclockFrameDuration, 176, true);
     }
 }

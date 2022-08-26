@@ -13,7 +13,7 @@ import org.chromium.ui.base.WindowAndroid;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ThinWebViewImplJni implements ThinWebViewImpl.Natives {
+class ThinWebViewImplJni implements ThinWebViewImpl.Natives {
   private static ThinWebViewImpl.Natives testInstance;
 
   public static final JniStaticTestMocker<ThinWebViewImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.thinwebview.internal.ThinWebViewImpl.Natives>() {

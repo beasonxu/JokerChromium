@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class P2pSocketManager_Internal {
 
@@ -82,7 +84,7 @@ P2pNetworkNotificationClient client) {
         @Override
         public void getHostAddress(
 String hostName, boolean enableMdns, 
-GetHostAddressResponse callback) {
+GetHostAddress_Response callback) {
 
             P2pSocketManagerGetHostAddressParams _message = new P2pSocketManagerGetHostAddressParams();
 
@@ -458,9 +460,9 @@ int type, IpEndPoint localAddress, P2pPortRange portRange, P2pHostAndIpEndPoint 
 
     static class P2pSocketManagerGetHostAddressResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final P2pSocketManager.GetHostAddressResponse mCallback;
+        private final P2pSocketManager.GetHostAddress_Response mCallback;
 
-        P2pSocketManagerGetHostAddressResponseParamsForwardToCallback(P2pSocketManager.GetHostAddressResponse callback) {
+        P2pSocketManagerGetHostAddressResponseParamsForwardToCallback(P2pSocketManager.GetHostAddress_Response callback) {
             this.mCallback = callback;
         }
 
@@ -485,7 +487,7 @@ int type, IpEndPoint localAddress, P2pPortRange portRange, P2pHostAndIpEndPoint 
         }
     }
 
-    static class P2pSocketManagerGetHostAddressResponseParamsProxyToResponder implements P2pSocketManager.GetHostAddressResponse {
+    static class P2pSocketManagerGetHostAddressResponseParamsProxyToResponder implements P2pSocketManager.GetHostAddress_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

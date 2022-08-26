@@ -9,7 +9,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class DownloadStartupUtilsJni implements DownloadStartupUtils.Natives {
+class DownloadStartupUtilsJni implements DownloadStartupUtils.Natives {
   private static DownloadStartupUtils.Natives testInstance;
 
   public static final JniStaticTestMocker<DownloadStartupUtils.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.download.DownloadStartupUtils.Natives>() {

@@ -9,7 +9,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-public final class PrivacyPreferencesManagerImplJni implements PrivacyPreferencesManagerImpl.Natives {
+public class PrivacyPreferencesManagerImplJni implements PrivacyPreferencesManagerImpl.Natives {
   private static PrivacyPreferencesManagerImpl.Natives testInstance;
 
   public static final JniStaticTestMocker<PrivacyPreferencesManagerImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.privacy.settings.PrivacyPreferencesManagerImpl.Natives>() {
@@ -24,26 +24,6 @@ public final class PrivacyPreferencesManagerImplJni implements PrivacyPreference
   };
 
   @Override
-  public boolean canPrefetchAndPrerender() {
-    return (boolean)GEN_JNI.org_chromium_chrome_browser_privacy_settings_PrivacyPreferencesManagerImpl_canPrefetchAndPrerender();
-  }
-
-  @Override
-  public boolean getNetworkPredictionManaged() {
-    return (boolean)GEN_JNI.org_chromium_chrome_browser_privacy_settings_PrivacyPreferencesManagerImpl_getNetworkPredictionManaged();
-  }
-
-  @Override
-  public boolean getNetworkPredictionEnabled() {
-    return (boolean)GEN_JNI.org_chromium_chrome_browser_privacy_settings_PrivacyPreferencesManagerImpl_getNetworkPredictionEnabled();
-  }
-
-  @Override
-  public void setNetworkPredictionEnabled(boolean enabled) {
-    GEN_JNI.org_chromium_chrome_browser_privacy_settings_PrivacyPreferencesManagerImpl_setNetworkPredictionEnabled(enabled);
-  }
-
-  @Override
   public boolean isMetricsReportingEnabled() {
     return (boolean)GEN_JNI.org_chromium_chrome_browser_privacy_settings_PrivacyPreferencesManagerImpl_isMetricsReportingEnabled();
   }
@@ -54,8 +34,8 @@ public final class PrivacyPreferencesManagerImplJni implements PrivacyPreference
   }
 
   @Override
-  public boolean isMetricsReportingManaged() {
-    return (boolean)GEN_JNI.org_chromium_chrome_browser_privacy_settings_PrivacyPreferencesManagerImpl_isMetricsReportingManaged();
+  public boolean isMetricsReportingDisabledByPolicy() {
+    return (boolean)GEN_JNI.org_chromium_chrome_browser_privacy_settings_PrivacyPreferencesManagerImpl_isMetricsReportingDisabledByPolicy();
   }
 
   public static PrivacyPreferencesManagerImpl.Natives get() {

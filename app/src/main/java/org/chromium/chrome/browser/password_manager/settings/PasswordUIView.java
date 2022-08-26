@@ -99,8 +99,13 @@ public final class PasswordUIView implements PasswordManagerHandler {
     }
 
     @Override
-    public void showPasswordEntryEditingView(
-            Context context, SettingsLauncher settingsLauncher, int index) {
+    public void showPasswordEntryEditingView(Context context, SettingsLauncher settingsLauncher,
+            int index, boolean isBlockedCredential) {
+        if (isBlockedCredential) {
+            PasswordUIViewJni.get().handleShowBlockedCredentialView(mNativePasswordUIViewAndroid,
+                    context, settingsLauncher, index, PasswordUIView.this);
+            return;
+        }
         PasswordUIViewJni.get().handleShowPasswordEntryEditingView(mNativePasswordUIViewAndroid,
                 context, settingsLauncher, index, PasswordUIView.this);
     }
@@ -113,6 +118,15 @@ public final class PasswordUIView implements PasswordManagerHandler {
      */
     public static String getAccountDashboardURL() {
         return PasswordUIViewJni.get().getAccountDashboardURL();
+    }
+
+    /**
+     * Returns the URL of the help center article about trusted vault encryption.
+     *
+     * @return The string with the URL.
+     */
+    public static String getTrustedVaultLearnMoreURL() {
+        return PasswordUIViewJni.get().getTrustedVaultLearnMoreURL();
     }
 
     public static boolean hasAccountForLeakCheckRequest() {
@@ -144,12 +158,15 @@ public final class PasswordUIView implements PasswordManagerHandler {
         void handleRemoveSavedPasswordException(
                 long nativePasswordUIViewAndroid, PasswordUIView caller, int index);
         String getAccountDashboardURL();
+        String getTrustedVaultLearnMoreURL();
         boolean hasAccountForLeakCheckRequest();
         void destroy(long nativePasswordUIViewAndroid, PasswordUIView caller);
         void handleSerializePasswords(long nativePasswordUIViewAndroid, PasswordUIView caller,
                 String targetPath, IntStringCallback successCallback,
                 Callback<String> errorCallback);
         void handleShowPasswordEntryEditingView(long nativePasswordUIViewAndroid, Context context,
+                SettingsLauncher launcher, int index, PasswordUIView caller);
+        void handleShowBlockedCredentialView(long nativePasswordUIViewAndroid, Context context,
                 SettingsLauncher launcher, int index, PasswordUIView caller);
     }
 }

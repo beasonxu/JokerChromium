@@ -10,7 +10,7 @@ import org.chromium.url.GURL;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class OriginSecurityCheckerJni implements OriginSecurityChecker.Natives {
+class OriginSecurityCheckerJni implements OriginSecurityChecker.Natives {
   private static OriginSecurityChecker.Natives testInstance;
 
   public static final JniStaticTestMocker<OriginSecurityChecker.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.payments.OriginSecurityChecker.Natives>() {

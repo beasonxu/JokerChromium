@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface HasTrustTokensAnswerer extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface HasTrustTokensAnswerer extends org.chromium.mojo.bindings.Inter
 
     Manager<HasTrustTokensAnswerer, HasTrustTokensAnswerer.Proxy> MANAGER = HasTrustTokensAnswerer_Internal.MANAGER;
 
-
     void hasTrustTokens(
 org.chromium.url.internal.mojom.Origin issuer, 
-HasTrustTokensResponse callback);
+HasTrustTokens_Response callback);
 
-    interface HasTrustTokensResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<HasTrustTokensResult> { }
+    interface HasTrustTokens_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<HasTrustTokensResult> { }
 
 
 }

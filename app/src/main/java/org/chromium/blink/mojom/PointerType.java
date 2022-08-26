@@ -13,8 +13,17 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PointerType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PointerType.POINTER_NONE,
+        PointerType.POINTER_FIRST_TYPE,
+        PointerType.POINTER_COARSE_TYPE,
+        PointerType.POINTER_FINE_TYPE})
+    public @interface EnumType {}
 
     public static final int POINTER_NONE = 1;
     public static final int POINTER_FIRST_TYPE = 1;

@@ -1,11 +1,18 @@
 package org.chromium.chrome.browser.vr;
 
+import java.lang.String;
+import javax.annotation.Generated;
+import org.chromium.base.annotations.IdentifierNameString;
 import org.chromium.components.module_installer.builder.Module;
 import org.chromium.components.module_installer.engine.InstallEngine;
 import org.chromium.components.module_installer.engine.InstallListener;
 
+@Generated("org.chromium.components.module_installer.builder.ModuleInterfaceProcessor")
 public class VrModule {
-  private static final Module<VrDelegateProvider> sModule = new Module<VrDelegateProvider>("vr", VrDelegateProvider.class, "org.chromium.chrome.browser.vr.VrDelegateProviderImpl");
+  @IdentifierNameString
+  private static String sModuleClassString = "org.chromium.chrome.browser.vr.VrDelegateProviderImpl";
+
+  private static final Module<VrDelegateProvider> sModule = new Module<VrDelegateProvider>("vr", VrDelegateProvider.class, sModuleClassString);
 
   private VrModule() {
   }

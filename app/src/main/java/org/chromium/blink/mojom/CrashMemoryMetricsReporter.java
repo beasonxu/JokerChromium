@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface CrashMemoryMetricsReporter extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface CrashMemoryMetricsReporter extends org.chromium.mojo.bindings.I
     }
 
     Manager<CrashMemoryMetricsReporter, CrashMemoryMetricsReporter.Proxy> MANAGER = CrashMemoryMetricsReporter_Internal.MANAGER;
-
 
     void setSharedMemory(
 org.chromium.mojo_base.mojom.UnsafeSharedMemoryRegion sharedMetricsBuffer);

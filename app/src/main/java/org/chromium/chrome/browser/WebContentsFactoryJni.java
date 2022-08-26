@@ -11,7 +11,7 @@ import org.chromium.content_public.browser.WebContents;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class WebContentsFactoryJni implements WebContentsFactory.Natives {
+class WebContentsFactoryJni implements WebContentsFactory.Natives {
   private static WebContentsFactory.Natives testInstance;
 
   public static final JniStaticTestMocker<WebContentsFactory.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.WebContentsFactory.Natives>() {

@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class HostResolver_Internal {
 
@@ -86,7 +88,7 @@ HostPortPair host, NetworkIsolationKey networkIsolationKey, ResolveHostParameter
         @Override
         public void mdnsListen(
 HostPortPair host, int queryType, MdnsListenClient responseClient, 
-MdnsListenResponse callback) {
+MdnsListen_Response callback) {
 
             HostResolverMdnsListenParams _message = new HostResolverMdnsListenParams();
 
@@ -439,9 +441,9 @@ MdnsListenResponse callback) {
 
     static class HostResolverMdnsListenResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final HostResolver.MdnsListenResponse mCallback;
+        private final HostResolver.MdnsListen_Response mCallback;
 
-        HostResolverMdnsListenResponseParamsForwardToCallback(HostResolver.MdnsListenResponse callback) {
+        HostResolverMdnsListenResponseParamsForwardToCallback(HostResolver.MdnsListen_Response callback) {
             this.mCallback = callback;
         }
 
@@ -466,7 +468,7 @@ MdnsListenResponse callback) {
         }
     }
 
-    static class HostResolverMdnsListenResponseParamsProxyToResponder implements HostResolver.MdnsListenResponse {
+    static class HostResolverMdnsListenResponseParamsProxyToResponder implements HostResolver.MdnsListen_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

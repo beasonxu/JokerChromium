@@ -13,16 +13,25 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class GetKeyboardLayoutMapStatus {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        GetKeyboardLayoutMapStatus.SUCCESS,
+        GetKeyboardLayoutMapStatus.FAIL,
+        GetKeyboardLayoutMapStatus.DENIED})
+    public @interface EnumType {}
 
     public static final int SUCCESS = 0;
     public static final int FAIL = 1;
+    public static final int DENIED = 2;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 1;
+    public static final int MAX_VALUE = 2;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 1;
+        return value >= 0 && value <= 2;
     }
 
     public static void validate(int value) {

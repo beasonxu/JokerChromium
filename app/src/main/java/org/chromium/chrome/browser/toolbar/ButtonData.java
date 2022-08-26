@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 
+import org.chromium.chrome.browser.toolbar.adaptive.AdaptiveToolbarFeatures;
 import org.chromium.chrome.browser.toolbar.adaptive.AdaptiveToolbarFeatures.AdaptiveToolbarButtonVariant;
 import org.chromium.chrome.browser.user_education.IPHCommandBuilder;
 
@@ -40,6 +41,8 @@ public interface ButtonData {
         // TODO(crbug.com/1185382): make mOnClickListener @NonNull
         @Nullable
         private final View.OnClickListener mOnClickListener;
+        @Nullable
+        private final View.OnLongClickListener mOnLongClickListener;
         @StringRes
         private final int mContentDescriptionResId;
         private final boolean mSupportsTinting;
@@ -47,24 +50,20 @@ public interface ButtonData {
         private final IPHCommandBuilder mIPHCommandBuilder;
         @AdaptiveToolbarButtonVariant
         private final int mButtonVariant;
+        private final boolean mIsDynamicAction;
 
         public ButtonSpec(@NonNull Drawable drawable, @NonNull View.OnClickListener onClickListener,
-                int contentDescriptionResId, boolean supportsTinting,
-                @Nullable IPHCommandBuilder iphCommandBuilder,
+                @Nullable View.OnLongClickListener onLongClickListener, int contentDescriptionResId,
+                boolean supportsTinting, @Nullable IPHCommandBuilder iphCommandBuilder,
                 @AdaptiveToolbarButtonVariant int buttonVariant) {
             mDrawable = drawable;
             mOnClickListener = onClickListener;
+            mOnLongClickListener = onLongClickListener;
             mContentDescriptionResId = contentDescriptionResId;
             mSupportsTinting = supportsTinting;
             mIPHCommandBuilder = iphCommandBuilder;
             mButtonVariant = buttonVariant;
-        }
-
-        public ButtonSpec(Drawable drawable, View.OnClickListener onClickListener,
-                int contentDescriptionResId, boolean supportsTinting,
-                IPHCommandBuilder iphCommandBuilder) {
-            this(drawable, onClickListener, contentDescriptionResId, supportsTinting,
-                    iphCommandBuilder, AdaptiveToolbarButtonVariant.UNKNOWN);
+            mIsDynamicAction = AdaptiveToolbarFeatures.isDynamicAction(mButtonVariant);
         }
 
         /** Returns the {@link Drawable} for the button icon. */
@@ -77,6 +76,12 @@ public interface ButtonData {
         @NonNull
         public View.OnClickListener getOnClickListener() {
             return mOnClickListener;
+        }
+
+        /** Returns an optional {@link View.OnLongClickListener} used on the button. */
+        @NonNull
+        public View.OnLongClickListener getOnLongClickListener() {
+            return mOnLongClickListener;
         }
 
         /** Returns the resource if of the string describing the button. */
@@ -104,6 +109,11 @@ public interface ButtonData {
         @AdaptiveToolbarButtonVariant
         public int getButtonVariant() {
             return mButtonVariant;
+        }
+
+        /** Returns {@code true} if the button is a contextual page action. False otherwise. */
+        public boolean isDynamicAction() {
+            return mIsDynamicAction;
         }
     }
 }

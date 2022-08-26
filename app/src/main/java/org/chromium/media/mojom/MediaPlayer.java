@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface MediaPlayer extends org.chromium.mojo.bindings.Interface {
 
@@ -23,44 +25,56 @@ public interface MediaPlayer extends org.chromium.mojo.bindings.Interface {
 
     Manager<MediaPlayer, MediaPlayer.Proxy> MANAGER = MediaPlayer_Internal.MANAGER;
 
-
-    void addMediaPlayerObserver(
-org.chromium.mojo.bindings.AssociatedInterfaceNotSupported observer);
-
-
-
     void requestPlay(
 );
-
 
 
     void requestPause(
 boolean triggeredByUser);
 
 
-
     void requestSeekForward(
 org.chromium.mojo_base.mojom.TimeDelta seekTime);
-
 
 
     void requestSeekBackward(
 org.chromium.mojo_base.mojom.TimeDelta seekTime);
 
 
+    void requestSeekTo(
+org.chromium.mojo_base.mojom.TimeDelta seekTime);
+
 
     void requestEnterPictureInPicture(
 );
-
 
 
     void requestExitPictureInPicture(
 );
 
 
+    void requestMute(
+boolean mute);
+
+
+    void setVolumeMultiplier(
+double multiplier);
+
+
+    void setPersistentState(
+boolean persistent);
+
+
+    void setPowerExperimentState(
+boolean enabled);
+
 
     void setAudioSinkId(
 String sinkId);
+
+
+    void suspendForFrameClosed(
+);
 
 
 }

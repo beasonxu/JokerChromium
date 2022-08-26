@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface VideoDecodePerfHistory extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface VideoDecodePerfHistory extends org.chromium.mojo.bindings.Inter
 
     Manager<VideoDecodePerfHistory, VideoDecodePerfHistory.Proxy> MANAGER = VideoDecodePerfHistory_Internal.MANAGER;
 
-
     void getPerfInfo(
 PredictionFeatures features, 
-GetPerfInfoResponse callback);
+GetPerfInfo_Response callback);
 
-    interface GetPerfInfoResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Boolean, Boolean> { }
+    interface GetPerfInfo_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Boolean, Boolean> { }
 
 
 }

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class LockManager_Internal {
 
@@ -86,7 +88,7 @@ String name, int mode, int wait, org.chromium.mojo.bindings.AssociatedInterfaceN
         @Override
         public void queryState(
 
-QueryStateResponse callback) {
+QueryState_Response callback) {
 
             LockManagerQueryStateParams _message = new LockManagerQueryStateParams();
 
@@ -450,9 +452,9 @@ QueryStateResponse callback) {
 
     static class LockManagerQueryStateResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final LockManager.QueryStateResponse mCallback;
+        private final LockManager.QueryState_Response mCallback;
 
-        LockManagerQueryStateResponseParamsForwardToCallback(LockManager.QueryStateResponse callback) {
+        LockManagerQueryStateResponseParamsForwardToCallback(LockManager.QueryState_Response callback) {
             this.mCallback = callback;
         }
 
@@ -477,7 +479,7 @@ QueryStateResponse callback) {
         }
     }
 
-    static class LockManagerQueryStateResponseParamsProxyToResponder implements LockManager.QueryStateResponse {
+    static class LockManagerQueryStateResponseParamsProxyToResponder implements LockManager.QueryState_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

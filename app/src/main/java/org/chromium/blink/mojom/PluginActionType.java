@@ -13,8 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PluginActionType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PluginActionType.ROTATE90_CLOCKWISE,
+        PluginActionType.ROTATE90_COUNTERCLOCKWISE})
+    public @interface EnumType {}
 
     public static final int ROTATE90_CLOCKWISE = 0;
     public static final int ROTATE90_COUNTERCLOCKWISE = 1;

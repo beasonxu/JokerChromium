@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class InertialPhaseState {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        InertialPhaseState.UNKNOWN_MOMENTUM,
+        InertialPhaseState.NON_MOMENTUM,
+        InertialPhaseState.MOMENTUM})
+    public @interface EnumType {}
 
     public static final int UNKNOWN_MOMENTUM = 0;
     public static final int NON_MOMENTUM = 1;

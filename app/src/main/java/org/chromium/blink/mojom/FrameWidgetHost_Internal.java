@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class FrameWidgetHost_Internal {
 
@@ -61,9 +63,7 @@ class FrameWidgetHost_Internal {
 
     private static final int AUTOSCROLL_END_ORDINAL = 6;
 
-    private static final int DID_FIRST_VISUALLY_NON_EMPTY_PAINT_ORDINAL = 7;
-
-    private static final int START_DRAGGING_ORDINAL = 8;
+    private static final int START_DRAGGING_ORDINAL = 7;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements FrameWidgetHost.Proxy {
@@ -189,21 +189,6 @@ org.chromium.gfx.mojom.Vector2dF velocity) {
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(AUTOSCROLL_END_ORDINAL)));
-
-        }
-
-
-        @Override
-        public void didFirstVisuallyNonEmptyPaint(
-) {
-
-            FrameWidgetHostDidFirstVisuallyNonEmptyPaintParams _message = new FrameWidgetHostDidFirstVisuallyNonEmptyPaintParams();
-
-
-            getProxyHandler().getMessageReceiver().accept(
-                    _message.serializeWithHeader(
-                            getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(DID_FIRST_VISUALLY_NON_EMPTY_PAINT_ORDINAL)));
 
         }
 
@@ -354,18 +339,6 @@ DragData dragData, AllowedDragOperations operationsAllowed, org.chromium.skia.mo
 
 
 
-                    case DID_FIRST_VISUALLY_NON_EMPTY_PAINT_ORDINAL: {
-
-                        FrameWidgetHostDidFirstVisuallyNonEmptyPaintParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().didFirstVisuallyNonEmptyPaint();
-                        return true;
-                    }
-
-
-
-
-
                     case START_DRAGGING_ORDINAL: {
 
                         FrameWidgetHostStartDraggingParams data =
@@ -403,8 +376,6 @@ DragData dragData, AllowedDragOperations operationsAllowed, org.chromium.skia.mo
                     case org.chromium.mojo.bindings.interfacecontrol.InterfaceControlMessagesConstants.RUN_MESSAGE_ID:
                         return org.chromium.mojo.bindings.InterfaceControlMessagesHelper.handleRun(
                                 getCore(), FrameWidgetHost_Internal.MANAGER, messageWithHeader, receiver);
-
-
 
 
 
@@ -866,62 +837,6 @@ DragData dragData, AllowedDragOperations operationsAllowed, org.chromium.skia.mo
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
                 result = new FrameWidgetHostAutoscrollEndParams(elementsOrVersion);
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-        }
-    }
-
-
-
-    
-    static final class FrameWidgetHostDidFirstVisuallyNonEmptyPaintParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 8;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-
-        private FrameWidgetHostDidFirstVisuallyNonEmptyPaintParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public FrameWidgetHostDidFirstVisuallyNonEmptyPaintParams() {
-            this(0);
-        }
-
-        public static FrameWidgetHostDidFirstVisuallyNonEmptyPaintParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static FrameWidgetHostDidFirstVisuallyNonEmptyPaintParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static FrameWidgetHostDidFirstVisuallyNonEmptyPaintParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            FrameWidgetHostDidFirstVisuallyNonEmptyPaintParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new FrameWidgetHostDidFirstVisuallyNonEmptyPaintParams(elementsOrVersion);
 
             } finally {
                 decoder0.decreaseStackDepth();

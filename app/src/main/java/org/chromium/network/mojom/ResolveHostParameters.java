@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class ResolveHostParameters extends org.chromium.mojo.bindings.Struct {
 
@@ -22,6 +24,14 @@ public final class ResolveHostParameters extends org.chromium.mojo.bindings.Stru
 
     public static final class Source {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            Source.ANY,
+            Source.SYSTEM,
+            Source.DNS,
+            Source.MULTICAST_DNS,
+            Source.LOCAL_ONLY})
+        public @interface EnumType {}
 
         public static final int ANY = 0;
         public static final int SYSTEM = 1;
@@ -49,6 +59,12 @@ public final class ResolveHostParameters extends org.chromium.mojo.bindings.Stru
 
     public static final class CacheUsage {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            CacheUsage.ALLOWED,
+            CacheUsage.STALE_ALLOWED,
+            CacheUsage.DISALLOWED})
+        public @interface EnumType {}
 
         public static final int ALLOWED = 0;
         public static final int STALE_ALLOWED = 1;
@@ -71,6 +87,35 @@ public final class ResolveHostParameters extends org.chromium.mojo.bindings.Stru
 
         private CacheUsage() {}
     }
+
+    public static final class Purpose {
+        private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            Purpose.UNSPECIFIED,
+            Purpose.PRECONNECT})
+        public @interface EnumType {}
+
+        public static final int UNSPECIFIED = 0;
+        public static final int PRECONNECT = 1;
+        public static final int MIN_VALUE = 0;
+        public static final int MAX_VALUE = 1;
+
+        public static boolean isKnownValue(int value) {
+            return value >= 0 && value <= 1;
+        }
+
+        public static void validate(int value) {
+            if (IS_EXTENSIBLE || isKnownValue(value)) return;
+            throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
+        }
+
+        public static int toKnownValue(int value) {
+          return value;
+        }
+
+        private Purpose() {}
+    }
     public int dnsQueryType;
     public int initialPriority;
     public int source;
@@ -79,7 +124,8 @@ public final class ResolveHostParameters extends org.chromium.mojo.bindings.Stru
     public boolean includeCanonicalName;
     public boolean loopbackOnly;
     public boolean isSpeculative;
-    public int secureDnsModeOverride;
+    public int secureDnsPolicy;
+    public int purpose;
 
     private ResolveHostParameters(int version) {
         super(STRUCT_SIZE, version);
@@ -90,7 +136,8 @@ public final class ResolveHostParameters extends org.chromium.mojo.bindings.Stru
         this.includeCanonicalName = (boolean) false;
         this.loopbackOnly = (boolean) false;
         this.isSpeculative = (boolean) false;
-        this.secureDnsModeOverride = (int) OptionalSecureDnsMode.NO_OVERRIDE;
+        this.secureDnsPolicy = (int) SecureDnsPolicy.ALLOW;
+        this.purpose = (int) ResolveHostParameters.Purpose.UNSPECIFIED;
     }
 
     public ResolveHostParameters() {
@@ -164,9 +211,15 @@ public final class ResolveHostParameters extends org.chromium.mojo.bindings.Stru
                 }
                 {
                     
-                result.secureDnsModeOverride = decoder0.readInt(32);
-                    OptionalSecureDnsMode.validate(result.secureDnsModeOverride);
-                    result.secureDnsModeOverride = OptionalSecureDnsMode.toKnownValue(result.secureDnsModeOverride);
+                result.secureDnsPolicy = decoder0.readInt(32);
+                    SecureDnsPolicy.validate(result.secureDnsPolicy);
+                    result.secureDnsPolicy = SecureDnsPolicy.toKnownValue(result.secureDnsPolicy);
+                }
+                {
+                    
+                result.purpose = decoder0.readInt(36);
+                    ResolveHostParameters.Purpose.validate(result.purpose);
+                    result.purpose = ResolveHostParameters.Purpose.toKnownValue(result.purpose);
                 }
 
         } finally {
@@ -196,6 +249,8 @@ public final class ResolveHostParameters extends org.chromium.mojo.bindings.Stru
         
         encoder0.encode(this.isSpeculative, 28, 2);
         
-        encoder0.encode(this.secureDnsModeOverride, 32);
+        encoder0.encode(this.secureDnsPolicy, 32);
+        
+        encoder0.encode(this.purpose, 36);
     }
 }

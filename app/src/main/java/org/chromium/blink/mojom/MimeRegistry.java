@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface MimeRegistry extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface MimeRegistry extends org.chromium.mojo.bindings.Interface {
 
     Manager<MimeRegistry, MimeRegistry.Proxy> MANAGER = MimeRegistry_Internal.MANAGER;
 
-
     void getMimeTypeFromExtension(
 String extension, 
-GetMimeTypeFromExtensionResponse callback);
+GetMimeTypeFromExtension_Response callback);
 
-    interface GetMimeTypeFromExtensionResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<String> { }
+    interface GetMimeTypeFromExtension_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<String> { }
 
 
 }

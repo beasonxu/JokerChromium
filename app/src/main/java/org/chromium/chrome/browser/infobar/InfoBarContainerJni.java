@@ -10,7 +10,7 @@ import org.chromium.content_public.browser.WebContents;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class InfoBarContainerJni implements InfoBarContainer.Natives {
+class InfoBarContainerJni implements InfoBarContainer.Natives {
   private static InfoBarContainer.Natives testInstance;
 
   public static final JniStaticTestMocker<InfoBarContainer.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.infobar.InfoBarContainer.Natives>() {

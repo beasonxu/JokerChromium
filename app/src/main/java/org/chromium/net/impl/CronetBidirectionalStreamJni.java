@@ -11,7 +11,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class CronetBidirectionalStreamJni implements CronetBidirectionalStream.Natives {
+class CronetBidirectionalStreamJni implements CronetBidirectionalStream.Natives {
   private static CronetBidirectionalStream.Natives testInstance;
 
   public static final JniStaticTestMocker<CronetBidirectionalStream.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.net.impl.CronetBidirectionalStream.Natives>() {
@@ -29,8 +29,8 @@ final class CronetBidirectionalStreamJni implements CronetBidirectionalStream.Na
   public long createBidirectionalStream(CronetBidirectionalStream caller,
       long urlRequestContextAdapter, boolean sendRequestHeadersAutomatically,
       boolean enableMetricsCollection, boolean trafficStatsTagSet, int trafficStatsTag,
-      boolean trafficStatsUidSet, int trafficStatsUid) {
-    return (long)GEN_JNI.org_chromium_net_impl_CronetBidirectionalStream_createBidirectionalStream(caller, urlRequestContextAdapter, sendRequestHeadersAutomatically, enableMetricsCollection, trafficStatsTagSet, trafficStatsTag, trafficStatsUidSet, trafficStatsUid);
+      boolean trafficStatsUidSet, int trafficStatsUid, long networkHandle) {
+    return (long)GEN_JNI.org_chromium_net_impl_CronetBidirectionalStream_createBidirectionalStream(caller, urlRequestContextAdapter, sendRequestHeadersAutomatically, enableMetricsCollection, trafficStatsTagSet, trafficStatsTag, trafficStatsUidSet, trafficStatsUid, networkHandle);
   }
 
   @Override

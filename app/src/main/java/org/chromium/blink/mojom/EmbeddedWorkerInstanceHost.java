@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface EmbeddedWorkerInstanceHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,48 +25,39 @@ public interface EmbeddedWorkerInstanceHost extends org.chromium.mojo.bindings.I
 
     Manager<EmbeddedWorkerInstanceHost, EmbeddedWorkerInstanceHost.Proxy> MANAGER = EmbeddedWorkerInstanceHost_Internal.MANAGER;
 
-
     void requestTermination(
 
-RequestTerminationResponse callback);
+RequestTermination_Response callback);
 
-    interface RequestTerminationResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface RequestTermination_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void countFeature(
 int feature);
 
 
-
     void onReadyForInspection(
 DevToolsAgent agent, org.chromium.mojo.bindings.InterfaceRequest<DevToolsAgentHost> agentHost);
-
 
 
     void onScriptLoaded(
 );
 
 
-
     void onScriptEvaluationStart(
 );
-
 
 
     void onStarted(
 int status, boolean hasFetchHandler, int threadId, EmbeddedWorkerStartTiming startTiming);
 
 
-
     void onReportException(
 org.chromium.mojo_base.mojom.String16 errorMessage, int lineNumber, int columnNumber, org.chromium.url.mojom.Url sourceUrl);
 
 
-
     void onReportConsoleMessage(
 int source, int messageLevel, org.chromium.mojo_base.mojom.String16 message, int lineNumber, org.chromium.url.mojom.Url sourceUrl);
-
 
 
     void onStopped(

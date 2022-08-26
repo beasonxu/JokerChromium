@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import androidx.annotation.VisibleForTesting;
 
 import org.chromium.base.IntentUtils;
+import org.chromium.chrome.browser.BackPressHelper;
 import org.chromium.chrome.browser.IntentHandler;
 import org.chromium.chrome.browser.SnackbarActivity;
 import org.chromium.components.bookmarks.BookmarkId;
@@ -30,25 +31,23 @@ public class BookmarkActivity extends SnackbarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        boolean isIncognito = IntentUtils.safeGetBooleanExtra(
+                getIntent(), IntentHandler.EXTRA_INCOGNITO_MODE, false);
         mBookmarkManager = new BookmarkManager(this,
                 IntentUtils.safeGetParcelableExtra(
                         getIntent(), IntentHandler.EXTRA_PARENT_COMPONENT),
-                true, getSnackbarManager());
+                true, isIncognito, getSnackbarManager());
         String url = getIntent().getDataString();
         if (TextUtils.isEmpty(url)) url = UrlConstants.BOOKMARKS_URL;
         mBookmarkManager.updateForUrl(url);
         setContentView(mBookmarkManager.getView());
+        BackPressHelper.create(this, getOnBackPressedDispatcher(), mBookmarkManager::onBackPressed);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         mBookmarkManager.onDestroyed();
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (!mBookmarkManager.onBackPressed()) super.onBackPressed();
     }
 
     @Override

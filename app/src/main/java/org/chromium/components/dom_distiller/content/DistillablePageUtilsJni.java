@@ -10,7 +10,7 @@ import org.chromium.content_public.browser.WebContents;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class DistillablePageUtilsJni implements DistillablePageUtils.Natives {
+class DistillablePageUtilsJni implements DistillablePageUtils.Natives {
   private static DistillablePageUtils.Natives testInstance;
 
   public static final JniStaticTestMocker<DistillablePageUtils.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.dom_distiller.content.DistillablePageUtils.Natives>() {

@@ -12,34 +12,31 @@ import androidx.annotation.Nullable;
 import androidx.annotation.Px;
 import androidx.annotation.VisibleForTesting;
 
-import org.chromium.base.Callback;
 import org.chromium.base.supplier.Supplier;
-import org.chromium.chrome.browser.bookmarks.BookmarkBridge;
-import org.chromium.chrome.browser.flags.ChromeFeatureList;
-import org.chromium.chrome.browser.image_fetcher.ImageFetcher;
-import org.chromium.chrome.browser.image_fetcher.ImageFetcherConfig;
-import org.chromium.chrome.browser.image_fetcher.ImageFetcherFactory;
-import org.chromium.chrome.browser.omnibox.OmniboxSuggestionType;
 import org.chromium.chrome.browser.omnibox.UrlBarEditingTextStateProvider;
 import org.chromium.chrome.browser.omnibox.suggestions.answer.AnswerSuggestionProcessor;
 import org.chromium.chrome.browser.omnibox.suggestions.basic.BasicSuggestionProcessor;
+import org.chromium.chrome.browser.omnibox.suggestions.basic.BasicSuggestionProcessor.BookmarkState;
 import org.chromium.chrome.browser.omnibox.suggestions.clipboard.ClipboardSuggestionProcessor;
 import org.chromium.chrome.browser.omnibox.suggestions.editurl.EditUrlSuggestionProcessor;
 import org.chromium.chrome.browser.omnibox.suggestions.entity.EntitySuggestionProcessor;
 import org.chromium.chrome.browser.omnibox.suggestions.header.HeaderProcessor;
+import org.chromium.chrome.browser.omnibox.suggestions.mostvisited.ExploreIconProvider;
 import org.chromium.chrome.browser.omnibox.suggestions.mostvisited.MostVisitedTilesProcessor;
+import org.chromium.chrome.browser.omnibox.suggestions.pedal.PedalSuggestionProcessor;
 import org.chromium.chrome.browser.omnibox.suggestions.tail.TailSuggestionProcessor;
-import org.chromium.chrome.browser.omnibox.suggestions.tiles.TileSuggestionProcessor;
 import org.chromium.chrome.browser.profiles.Profile;
 import org.chromium.chrome.browser.share.ShareDelegate;
 import org.chromium.chrome.browser.tab.Tab;
 import org.chromium.components.browser_ui.util.ConversionUtils;
 import org.chromium.components.browser_ui.util.GlobalDiscardableReferencePool;
 import org.chromium.components.favicon.LargeIconBridge;
+import org.chromium.components.image_fetcher.ImageFetcher;
+import org.chromium.components.image_fetcher.ImageFetcherConfig;
+import org.chromium.components.image_fetcher.ImageFetcherFactory;
 import org.chromium.components.omnibox.AutocompleteMatch;
 import org.chromium.components.omnibox.AutocompleteResult;
 import org.chromium.components.omnibox.AutocompleteResult.GroupDetails;
-import org.chromium.components.query_tiles.QueryTile;
 import org.chromium.ui.modelutil.PropertyModel;
 
 import java.util.ArrayList;
@@ -54,25 +51,27 @@ class DropdownItemViewInfoListBuilder {
 
     private final @NonNull List<SuggestionProcessor> mPriorityOrderedSuggestionProcessors;
     private final @NonNull Supplier<Tab> mActivityTabSupplier;
-    private @NonNull AutocompleteController mAutocompleteController;
+    private final @NonNull OmniboxPedalDelegate mOmniboxPedalDelegate;
 
     private @Nullable HeaderProcessor mHeaderProcessor;
     private @Nullable Supplier<ShareDelegate> mShareDelegateSupplier;
     private @Nullable ImageFetcher mImageFetcher;
     private @Nullable LargeIconBridge mIconBridge;
-    private @Nullable BookmarkBridge mBookmarkBridge;
+    private @NonNull BookmarkState mBookmarkState;
+    private @NonNull ExploreIconProvider mExploreIconProvider;
     @Px
     private int mDropdownHeight;
-    private boolean mEnableAdaptiveSuggestionsCount;
-    private boolean mEnableNativeVoiceSuggestProvider;
     private boolean mBuiltListHasFullyConcealedElements;
 
-    DropdownItemViewInfoListBuilder(
-            AutocompleteController controller, @NonNull Supplier<Tab> tabSupplier) {
+    DropdownItemViewInfoListBuilder(@NonNull Supplier<Tab> tabSupplier, BookmarkState bookmarkState,
+            @NonNull ExploreIconProvider exploreIconProvider,
+            @NonNull OmniboxPedalDelegate omniboxPedalDelegate) {
         mPriorityOrderedSuggestionProcessors = new ArrayList<>();
         mDropdownHeight = DROPDOWN_HEIGHT_UNKNOWN;
-        mAutocompleteController = controller;
         mActivityTabSupplier = tabSupplier;
+        mBookmarkState = bookmarkState;
+        mExploreIconProvider = exploreIconProvider;
+        mOmniboxPedalDelegate = omniboxPedalDelegate;
     }
 
     /**
@@ -82,18 +81,15 @@ class DropdownItemViewInfoListBuilder {
      * @param host Component creating suggestion view delegates and responding to suggestion events.
      * @param delegate Component facilitating interactions with UI and Autocomplete mechanism.
      * @param textProvider Provider of querying/editing the Omnibox.
-     * @param queryTileSuggestionCallback Callback responding to QueryTile events.
      */
     void initDefaultProcessors(Context context, SuggestionHost host, AutocompleteDelegate delegate,
-            UrlBarEditingTextStateProvider textProvider,
-            Callback<List<QueryTile>> queryTileSuggestionCallback) {
+            UrlBarEditingTextStateProvider textProvider) {
         assert mPriorityOrderedSuggestionProcessors.size() == 0 : "Processors already initialized.";
 
         final Supplier<ImageFetcher> imageFetcherSupplier = () -> mImageFetcher;
         final Supplier<LargeIconBridge> iconBridgeSupplier = () -> mIconBridge;
         final Supplier<ShareDelegate> shareSupplier =
                 () -> mShareDelegateSupplier == null ? null : mShareDelegateSupplier.get();
-        final Supplier<BookmarkBridge> bookmarkSupplier = () -> mBookmarkBridge;
 
         mHeaderProcessor = new HeaderProcessor(context, host, delegate);
         registerSuggestionProcessor(new EditUrlSuggestionProcessor(
@@ -105,12 +101,12 @@ class DropdownItemViewInfoListBuilder {
         registerSuggestionProcessor(
                 new EntitySuggestionProcessor(context, host, imageFetcherSupplier));
         registerSuggestionProcessor(new TailSuggestionProcessor(context, host));
-        registerSuggestionProcessor(
-                new TileSuggestionProcessor(context, queryTileSuggestionCallback));
-        registerSuggestionProcessor(
-                new MostVisitedTilesProcessor(context, host, iconBridgeSupplier));
+        registerSuggestionProcessor(new MostVisitedTilesProcessor(context, host, iconBridgeSupplier,
+                mExploreIconProvider, GlobalDiscardableReferencePool.getReferencePool()));
+        registerSuggestionProcessor(new PedalSuggestionProcessor(context, host, textProvider,
+                iconBridgeSupplier, mBookmarkState, mOmniboxPedalDelegate, delegate));
         registerSuggestionProcessor(new BasicSuggestionProcessor(
-                context, host, textProvider, iconBridgeSupplier, bookmarkSupplier));
+                context, host, textProvider, iconBridgeSupplier, mBookmarkState));
     }
 
     void destroy() {
@@ -161,15 +157,10 @@ class DropdownItemViewInfoListBuilder {
             mImageFetcher = null;
         }
 
-        if (mBookmarkBridge != null) {
-            mBookmarkBridge.destroy();
-            mBookmarkBridge = null;
-        }
-
         mIconBridge = new LargeIconBridge(profile);
         mImageFetcher = ImageFetcherFactory.createImageFetcher(ImageFetcherConfig.IN_MEMORY_ONLY,
-                profile, GlobalDiscardableReferencePool.getReferencePool(), MAX_IMAGE_CACHE_SIZE);
-        mBookmarkBridge = new BookmarkBridge(profile);
+                profile.getProfileKey(), GlobalDiscardableReferencePool.getReferencePool(),
+                MAX_IMAGE_CACHE_SIZE);
     }
 
     /**
@@ -224,11 +215,6 @@ class DropdownItemViewInfoListBuilder {
 
     /** Signals that native initialization has completed. */
     void onNativeInitialized() {
-        mEnableAdaptiveSuggestionsCount =
-                ChromeFeatureList.isEnabled(ChromeFeatureList.OMNIBOX_ADAPTIVE_SUGGESTIONS_COUNT);
-        mEnableNativeVoiceSuggestProvider = ChromeFeatureList.isEnabled(
-                ChromeFeatureList.OMNIBOX_NATIVE_VOICE_SUGGEST_PROVIDER);
-
         mHeaderProcessor.onNativeInitialized();
         for (int index = 0; index < mPriorityOrderedSuggestionProcessors.size(); index++) {
             mPriorityOrderedSuggestionProcessors.get(index).onNativeInitialized();
@@ -254,16 +240,21 @@ class DropdownItemViewInfoListBuilder {
         // When Adaptive Suggestions are set, perform partial grouping by search vs url.
         // Take action only if we have more suggestions to offer than just a default match and
         // one suggestion (otherwise no need to perform grouping).
-        if (suggestionsCount > 2 && mEnableAdaptiveSuggestionsCount) {
+        if (suggestionsCount > 2) {
+            final int firstSuggestionWithHeader =
+                    getIndexOfFirstSuggestionWithHeader(autocompleteResult);
             final int numVisibleSuggestions = getVisibleSuggestionsCount(autocompleteResult);
             // TODO(crbug.com/1073169): this should either infer the count from UI height or supply
             // the default value if height is not known. For the time being we group the entire list
             // to mimic the native behavior.
-            autocompleteResult.groupSuggestionsBySearchVsURL(1, numVisibleSuggestions);
-            if (numVisibleSuggestions < suggestionsCount) {
+            if (firstSuggestionWithHeader > 1) {
+                autocompleteResult.groupSuggestionsBySearchVsURL(
+                        1, Math.min(numVisibleSuggestions, firstSuggestionWithHeader));
+            }
+            if (numVisibleSuggestions < firstSuggestionWithHeader) {
                 mBuiltListHasFullyConcealedElements = true;
                 autocompleteResult.groupSuggestionsBySearchVsURL(
-                        numVisibleSuggestions, suggestionsCount);
+                        numVisibleSuggestions, firstSuggestionWithHeader);
             } else {
                 mBuiltListHasFullyConcealedElements = false;
             }
@@ -341,11 +332,6 @@ class DropdownItemViewInfoListBuilder {
             if (suggestion.getGroupId() != AutocompleteMatch.INVALID_GROUP) {
                 break;
             }
-            // We do not include Java-sourced Voice suggestions in partial grouping. Terminate.
-            if (suggestion.getType() == OmniboxSuggestionType.VOICE_SUGGEST
-                    && !mEnableNativeVoiceSuggestProvider) {
-                break;
-            }
 
             final SuggestionProcessor processor =
                     getProcessorForSuggestion(suggestion, lastVisibleIndex);
@@ -354,6 +340,24 @@ class DropdownItemViewInfoListBuilder {
         }
 
         return lastVisibleIndex;
+    }
+
+    /**
+     * Returns the index of the first suggestion that has an associated group header ID.
+     * - If no suggestions have group header ID set, returns the size of the list.
+     * - If all suggestions have group header ID set, returns 0.
+     */
+    int getIndexOfFirstSuggestionWithHeader(AutocompleteResult autocompleteResult) {
+        final List<AutocompleteMatch> suggestions = autocompleteResult.getSuggestionsList();
+        // Suggestions with headers, if present, are always shown last. Iterate from the bottom of
+        // the list to avoid scanning entire list when there are no headers.
+        for (int suggestionIndex = suggestions.size() - 1; suggestionIndex >= 0;
+                suggestionIndex--) {
+            if (suggestions.get(suggestionIndex).getGroupId() == AutocompleteMatch.INVALID_GROUP) {
+                return suggestionIndex + 1;
+            }
+        }
+        return 0;
     }
 
     /** @return Whether built list contains fully concealed elements. */
@@ -375,14 +379,5 @@ class DropdownItemViewInfoListBuilder {
         }
         assert false : "No default handler for suggestions";
         return null;
-    }
-
-    /**
-     * Change the AutocompleteController instance that will be used by this class.
-     *
-     * @param controller New AutocompleteController to use.
-     */
-    void setAutocompleteControllerForTest(@NonNull AutocompleteController controller) {
-        mAutocompleteController = controller;
     }
 }

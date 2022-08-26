@@ -10,7 +10,7 @@ import org.chromium.chrome.browser.tab.Tab;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-public final class ReaderModeInfoBarJni implements ReaderModeInfoBar.Natives {
+public class ReaderModeInfoBarJni implements ReaderModeInfoBar.Natives {
   private static ReaderModeInfoBar.Natives testInstance;
 
   public static final JniStaticTestMocker<ReaderModeInfoBar.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.infobar.ReaderModeInfoBar.Natives>() {

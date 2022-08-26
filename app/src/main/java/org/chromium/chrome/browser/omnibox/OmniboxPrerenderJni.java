@@ -12,7 +12,7 @@ import org.chromium.chrome.browser.tab.Tab;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class OmniboxPrerenderJni implements OmniboxPrerender.Natives {
+class OmniboxPrerenderJni implements OmniboxPrerender.Natives {
   private static OmniboxPrerender.Natives testInstance;
 
   public static final JniStaticTestMocker<OmniboxPrerender.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.omnibox.OmniboxPrerender.Natives>() {

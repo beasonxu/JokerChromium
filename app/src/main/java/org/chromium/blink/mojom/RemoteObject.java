@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface RemoteObject extends org.chromium.mojo.bindings.Interface {
 
@@ -23,29 +25,25 @@ public interface RemoteObject extends org.chromium.mojo.bindings.Interface {
 
     Manager<RemoteObject, RemoteObject.Proxy> MANAGER = RemoteObject_Internal.MANAGER;
 
-
     void hasMethod(
 String name, 
-HasMethodResponse callback);
+HasMethod_Response callback);
 
-    interface HasMethodResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface HasMethod_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void getMethods(
 
-GetMethodsResponse callback);
+GetMethods_Response callback);
 
-    interface GetMethodsResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<String[]> { }
-
+    interface GetMethods_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<String[]> { }
 
 
     void invokeMethod(
 String name, RemoteInvocationArgument[] arguments, 
-InvokeMethodResponse callback);
+InvokeMethod_Response callback);
 
-    interface InvokeMethodResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<RemoteInvocationResult> { }
-
+    interface InvokeMethod_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<RemoteInvocationResult> { }
 
 
     void notifyReleasedObject(

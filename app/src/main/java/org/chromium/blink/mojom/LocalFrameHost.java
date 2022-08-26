@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface LocalFrameHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,314 +25,263 @@ public interface LocalFrameHost extends org.chromium.mojo.bindings.Interface {
 
     Manager<LocalFrameHost, LocalFrameHost.Proxy> MANAGER = LocalFrameHost_Internal.MANAGER;
 
-
     void enterFullscreen(
 FullscreenOptions options, 
-EnterFullscreenResponse callback);
+EnterFullscreen_Response callback);
 
-    interface EnterFullscreenResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface EnterFullscreen_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void exitFullscreen(
 );
 
 
-
     void fullscreenStateChanged(
 boolean isFullscreen, FullscreenOptions options);
-
 
 
     void registerProtocolHandler(
 String scheme, org.chromium.url.mojom.Url url, boolean userGesture);
 
 
-
     void unregisterProtocolHandler(
 String scheme, org.chromium.url.mojom.Url url, boolean userGesture);
-
 
 
     void didDisplayInsecureContent(
 );
 
 
-
     void didContainInsecureFormAction(
 );
 
 
-
-    void documentAvailableInMainFrame(
+    void mainDocumentElementAvailable(
 boolean usesTemporaryZoomLevel);
-
 
 
     void setNeedsOcclusionTracking(
 boolean needsTracking);
 
 
-
     void setVirtualKeyboardOverlayPolicy(
 boolean vkOverlaysContent);
-
 
 
     void visibilityChanged(
 int visibility);
 
 
-
     void didChangeThemeColor(
 org.chromium.skia.mojom.SkColor themeColor);
-
 
 
     void didChangeBackgroundColor(
 org.chromium.skia.mojom.SkColor backgroundColor, boolean colorAdjust);
 
 
-
     void didFailLoadWithError(
 org.chromium.url.mojom.Url url, int errorCode);
-
 
 
     void didFocusFrame(
 );
 
 
-
     void didCallFocus(
 );
-
-
-
-    void didAddContentSecurityPolicies(
-org.chromium.network.mojom.ContentSecurityPolicy[] policies);
-
 
 
     void enforceInsecureRequestPolicy(
 int policyBitmap);
 
 
-
     void enforceInsecureNavigationsSet(
 int[] set);
-
-
-
-    void didChangeActiveSchedulerTrackedFeatures(
-long featuresMask);
-
 
 
     void suddenTerminationDisablerChanged(
 boolean present, int disablerType);
 
 
-
     void hadStickyUserActivationBeforeNavigationChanged(
 boolean hasGesture);
 
 
-
     void scrollRectToVisibleInParentFrame(
-org.chromium.gfx.mojom.Rect rectToScroll, ScrollIntoViewParams params);
-
+org.chromium.gfx.mojom.RectF rectToScroll, ScrollIntoViewParams params);
 
 
     void bubbleLogicalScrollInParentFrame(
 int direction, int granularity);
 
 
-
-    void didAccessInitialDocument(
-);
-
-
-
     void didBlockNavigation(
 org.chromium.url.mojom.Url blockedUrl, org.chromium.url.mojom.Url initiatorUrl, int reason);
-
 
 
     void didChangeLoadProgress(
 double loadProgress);
 
 
-
     void didFinishLoad(
 org.chromium.url.mojom.Url validatedUrl);
-
 
 
     void dispatchLoad(
 );
 
 
-
     void goToEntryAtOffset(
 int offset, boolean hasUserGesture);
 
 
-
-    void renderFallbackContentInParentProcess(
-);
-
+    void navigateToNavigationApiKey(
+String key, boolean hasUserGesture);
 
 
     void updateTitle(
 org.chromium.mojo_base.mojom.String16 title, int titleDirection);
 
 
-
     void updateUserActivationState(
 int updateType, int notificationType);
-
 
 
     void handleAccessibilityFindInPageResult(
 FindInPageResultAxParams params);
 
 
-
     void handleAccessibilityFindInPageTermination(
 );
-
 
 
     void documentOnLoadCompleted(
 );
 
 
-
     void forwardResourceTimingToParent(
 ResourceTimingInfo timing);
 
 
-
-    void didFinishDocumentLoad(
+    void didDispatchDomContentLoadedEvent(
 );
 
 
-
     void runModalAlertDialog(
-org.chromium.mojo_base.mojom.String16 alertMessage, 
-RunModalAlertDialogResponse callback);
+org.chromium.mojo_base.mojom.String16 alertMessage, boolean disableThirdPartySubframeSuppresion, 
+RunModalAlertDialog_Response callback);
 
-    interface RunModalAlertDialogResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface RunModalAlertDialog_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void runModalConfirmDialog(
-org.chromium.mojo_base.mojom.String16 alertMessage, 
-RunModalConfirmDialogResponse callback);
+org.chromium.mojo_base.mojom.String16 alertMessage, boolean disableThirdPartySubframeSuppresion, 
+RunModalConfirmDialog_Response callback);
 
-    interface RunModalConfirmDialogResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface RunModalConfirmDialog_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void runModalPromptDialog(
-org.chromium.mojo_base.mojom.String16 alertMessage, org.chromium.mojo_base.mojom.String16 defaultValue, 
-RunModalPromptDialogResponse callback);
+org.chromium.mojo_base.mojom.String16 alertMessage, org.chromium.mojo_base.mojom.String16 defaultValue, boolean disableThirdPartySubframeSuppresion, 
+RunModalPromptDialog_Response callback);
 
-    interface RunModalPromptDialogResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Boolean, org.chromium.mojo_base.mojom.String16> { }
-
+    interface RunModalPromptDialog_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Boolean, org.chromium.mojo_base.mojom.String16> { }
 
 
     void runBeforeUnloadConfirm(
 boolean isReload, 
-RunBeforeUnloadConfirmResponse callback);
+RunBeforeUnloadConfirm_Response callback);
 
-    interface RunBeforeUnloadConfirmResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface RunBeforeUnloadConfirm_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void updateFaviconUrl(
 FaviconUrl[] faviconUrls);
 
 
-
     void downloadUrl(
 DownloadUrlParams params);
-
 
 
     void focusedElementChanged(
 boolean isEditableElement, org.chromium.gfx.mojom.Rect boundsInFrameWidget, int focusType);
 
 
-
     void textSelectionChanged(
 org.chromium.mojo_base.mojom.BigString16 text, int offset, org.chromium.gfx.mojom.Range range);
-
 
 
     void showPopupMenu(
 PopupMenuClient popupClient, org.chromium.gfx.mojom.Rect bounds, int itemHeight, double fontSize, int selectedItem, MenuItem[] menuItems, boolean rightAligned, boolean allowMultipleSelection);
 
 
+    void createNewPopupWidget(
+org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported popupHost, org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported blinkWidgetHost, org.chromium.mojo.bindings.AssociatedInterfaceNotSupported blinkWidget);
+
 
     void showContextMenu(
 org.chromium.mojo.bindings.AssociatedInterfaceNotSupported client, UntrustworthyContextMenuParams params);
 
 
-
     void didLoadResourceFromMemoryCache(
-org.chromium.url.mojom.Url url, String httpMethod, String mimeType, int requestDestination);
-
+org.chromium.url.mojom.Url url, String httpMethod, String mimeType, int requestDestination, boolean includeCredentials);
 
 
     void didChangeFrameOwnerProperties(
 FrameToken childFrameToken, FrameOwnerProperties frameOwnerProperties);
 
 
-
     void didChangeOpener(
 LocalFrameToken openerFrame);
-
 
 
     void didChangeFramePolicy(
 FrameToken childFrameToken, FramePolicy framePolicy);
 
 
-
-    void didChangeCspAttribute(
-FrameToken childFrameToken, org.chromium.network.mojom.ContentSecurityPolicy parsedCspAttribute);
-
+    void didChangeIframeAttributes(
+FrameToken childFrameToken, org.chromium.network.mojom.ContentSecurityPolicy parsedCspAttribute, boolean anonymous);
 
 
     void capturePaintPreviewOfSubframe(
 org.chromium.gfx.mojom.Rect clipRect, org.chromium.mojo_base.mojom.UnguessableToken guid);
 
 
-
-    void setModalCloseListener(
-ModalCloseListener listener);
-
+    void setCloseListener(
+CloseListener listener);
 
 
     void detach(
 );
 
 
-
     void getKeepAliveHandleFactory(
 org.chromium.mojo.bindings.InterfaceRequest<KeepAliveHandleFactory> factory);
-
 
 
     void didAddMessageToConsole(
 int logLevel, org.chromium.mojo_base.mojom.BigString16 msg, int lineNumber, org.chromium.mojo_base.mojom.String16 sourceId, org.chromium.mojo_base.mojom.BigString16 untrustedStackTrace);
 
 
-
     void frameSizeChanged(
 org.chromium.gfx.mojom.Size size);
+
+
+    void didUpdatePreferredColorScheme(
+int preferredColorScheme);
+
+
+    void didInferColorScheme(
+int colorScheme);
+
+
+    void didChangeSrcDoc(
+FrameToken childFrameToken, String srcdocValue);
+
+
+    void receivedDelegatedCapability(
+int delegatedCapability);
 
 
 }

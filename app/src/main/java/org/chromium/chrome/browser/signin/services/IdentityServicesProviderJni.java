@@ -7,12 +7,12 @@ import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.chrome.browser.profiles.Profile;
-import org.chromium.components.signin.AccountTrackerService;
+import org.chromium.components.signin.identitymanager.AccountTrackerService;
 import org.chromium.components.signin.identitymanager.IdentityManager;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-public final class IdentityServicesProviderJni implements IdentityServicesProvider.Natives {
+public class IdentityServicesProviderJni implements IdentityServicesProvider.Natives {
   private static IdentityServicesProvider.Natives testInstance;
 
   public static final JniStaticTestMocker<IdentityServicesProvider.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.signin.services.IdentityServicesProvider.Natives>() {

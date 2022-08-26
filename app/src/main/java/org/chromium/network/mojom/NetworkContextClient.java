@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface NetworkContextClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,52 +25,50 @@ public interface NetworkContextClient extends org.chromium.mojo.bindings.Interfa
 
     Manager<NetworkContextClient, NetworkContextClient.Proxy> MANAGER = NetworkContextClient_Internal.MANAGER;
 
-
     void onFileUploadRequested(
 int processId, boolean async, org.chromium.mojo_base.mojom.FilePath[] filePaths, 
-OnFileUploadRequestedResponse callback);
+OnFileUploadRequested_Response callback);
 
-    interface OnFileUploadRequestedResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, org.chromium.mojo_base.mojom.ReadOnlyFile[]> { }
-
+    interface OnFileUploadRequested_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, org.chromium.mojo_base.mojom.ReadOnlyFile[]> { }
 
 
     void onCanSendReportingReports(
 org.chromium.url.internal.mojom.Origin[] origins, 
-OnCanSendReportingReportsResponse callback);
+OnCanSendReportingReports_Response callback);
 
-    interface OnCanSendReportingReportsResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.url.internal.mojom.Origin[]> { }
-
+    interface OnCanSendReportingReports_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.url.internal.mojom.Origin[]> { }
 
 
     void onCanSendDomainReliabilityUpload(
 org.chromium.url.mojom.Url origin, 
-OnCanSendDomainReliabilityUploadResponse callback);
+OnCanSendDomainReliabilityUpload_Response callback);
 
-    interface OnCanSendDomainReliabilityUploadResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
-
-
-    void onClearSiteData(
-int processId, int routingId, org.chromium.url.mojom.Url url, String headerValue, int loadFlags, 
-OnClearSiteDataResponse callback);
-
-    interface OnClearSiteDataResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface OnCanSendDomainReliabilityUpload_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void onGenerateHttpNegotiateAuthToken(
 String serverAuthToken, boolean canDelegate, String authNegotiateAndroidAccountType, String spn, 
-OnGenerateHttpNegotiateAuthTokenResponse callback);
+OnGenerateHttpNegotiateAuthToken_Response callback);
 
-    interface OnGenerateHttpNegotiateAuthTokenResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, String> { }
-
+    interface OnGenerateHttpNegotiateAuthToken_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, String> { }
 
 
     void onTrustTokenIssuanceDivertedToSystem(
 FulfillTrustTokenIssuanceRequest request, 
-OnTrustTokenIssuanceDivertedToSystemResponse callback);
+OnTrustTokenIssuanceDivertedToSystem_Response callback);
 
-    interface OnTrustTokenIssuanceDivertedToSystemResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<FulfillTrustTokenIssuanceAnswer> { }
+    interface OnTrustTokenIssuanceDivertedToSystem_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<FulfillTrustTokenIssuanceAnswer> { }
+
+
+    void onCanSendSctAuditingReport(
+
+OnCanSendSctAuditingReport_Response callback);
+
+    interface OnCanSendSctAuditingReport_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
+
+
+    void onNewSctAuditingReportSent(
+);
 
 
 }

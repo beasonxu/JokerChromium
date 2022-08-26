@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class ContactsManager_Internal {
 
@@ -61,7 +63,7 @@ class ContactsManager_Internal {
         @Override
         public void select(
 boolean multiple, boolean includeNames, boolean includeEmails, boolean includeTel, boolean includeAddresses, boolean includeIcons, 
-SelectResponse callback) {
+Select_Response callback) {
 
             ContactsManagerSelectParams _message = new ContactsManagerSelectParams();
 
@@ -355,9 +357,9 @@ SelectResponse callback) {
 
     static class ContactsManagerSelectResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ContactsManager.SelectResponse mCallback;
+        private final ContactsManager.Select_Response mCallback;
 
-        ContactsManagerSelectResponseParamsForwardToCallback(ContactsManager.SelectResponse callback) {
+        ContactsManagerSelectResponseParamsForwardToCallback(ContactsManager.Select_Response callback) {
             this.mCallback = callback;
         }
 
@@ -382,7 +384,7 @@ SelectResponse callback) {
         }
     }
 
-    static class ContactsManagerSelectResponseParamsProxyToResponder implements ContactsManager.SelectResponse {
+    static class ContactsManagerSelectResponseParamsProxyToResponder implements ContactsManager.Select_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

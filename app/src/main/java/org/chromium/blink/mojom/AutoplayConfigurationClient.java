@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface AutoplayConfigurationClient extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface AutoplayConfigurationClient extends org.chromium.mojo.bindings.
     }
 
     Manager<AutoplayConfigurationClient, AutoplayConfigurationClient.Proxy> MANAGER = AutoplayConfigurationClient_Internal.MANAGER;
-
 
     void addAutoplayFlags(
 org.chromium.url.internal.mojom.Origin origin, int flags);

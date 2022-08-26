@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface SynchronousCompositorHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,15 +25,12 @@ public interface SynchronousCompositorHost extends org.chromium.mojo.bindings.In
 
     Manager<SynchronousCompositorHost, SynchronousCompositorHost.Proxy> MANAGER = SynchronousCompositorHost_Internal.MANAGER;
 
-
     void layerTreeFrameSinkCreated(
 );
 
 
-
     void updateState(
 SyncCompositorCommonRendererParams params);
-
 
 
     void setNeedsBeginFrames(

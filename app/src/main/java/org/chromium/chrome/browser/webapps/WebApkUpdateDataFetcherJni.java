@@ -11,7 +11,7 @@ import org.chromium.content_public.browser.WebContents;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class WebApkUpdateDataFetcherJni implements WebApkUpdateDataFetcher.Natives {
+class WebApkUpdateDataFetcherJni implements WebApkUpdateDataFetcher.Natives {
   private static WebApkUpdateDataFetcher.Natives testInstance;
 
   public static final JniStaticTestMocker<WebApkUpdateDataFetcher.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.webapps.WebApkUpdateDataFetcher.Natives>() {

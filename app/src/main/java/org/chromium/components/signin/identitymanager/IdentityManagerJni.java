@@ -13,7 +13,7 @@ import org.chromium.components.signin.base.CoreAccountInfo;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-public final class IdentityManagerJni implements IdentityManager.Natives {
+public class IdentityManagerJni implements IdentityManager.Natives {
   private static IdentityManager.Natives testInstance;
 
   public static final JniStaticTestMocker<IdentityManager.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.signin.identitymanager.IdentityManager.Natives>() {
@@ -33,9 +33,9 @@ public final class IdentityManagerJni implements IdentityManager.Natives {
   }
 
   @Override
-  public AccountInfo findExtendedAccountInfoForAccountWithRefreshTokenByEmailAddress(
-      long nativeIdentityManager, String email) {
-    return (AccountInfo)GEN_JNI.org_chromium_components_signin_identitymanager_IdentityManager_findExtendedAccountInfoForAccountWithRefreshTokenByEmailAddress(nativeIdentityManager, email);
+  public AccountInfo findExtendedAccountInfoByEmailAddress(long nativeIdentityManager,
+      String email) {
+    return (AccountInfo)GEN_JNI.org_chromium_components_signin_identitymanager_IdentityManager_findExtendedAccountInfoByEmailAddress(nativeIdentityManager, email);
   }
 
   @Override
@@ -44,9 +44,8 @@ public final class IdentityManagerJni implements IdentityManager.Natives {
   }
 
   @Override
-  public void forceRefreshOfExtendedAccountInfo(long nativeIdentityManager,
-      CoreAccountId coreAccountId) {
-    GEN_JNI.org_chromium_components_signin_identitymanager_IdentityManager_forceRefreshOfExtendedAccountInfo(nativeIdentityManager, coreAccountId);
+  public void refreshAccountInfoIfStale(long nativeIdentityManager, CoreAccountId coreAccountId) {
+    GEN_JNI.org_chromium_components_signin_identitymanager_IdentityManager_refreshAccountInfoIfStale(nativeIdentityManager, coreAccountId);
   }
 
   public static IdentityManager.Natives get() {

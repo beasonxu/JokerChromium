@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class MediaDevicesDispatcherHost_Internal {
 
@@ -59,6 +61,8 @@ class MediaDevicesDispatcherHost_Internal {
 
     private static final int ADD_MEDIA_DEVICES_LISTENER_ORDINAL = 5;
 
+    private static final int SET_CAPTURE_HANDLE_CONFIG_ORDINAL = 6;
+
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements MediaDevicesDispatcherHost.Proxy {
 
@@ -71,7 +75,7 @@ class MediaDevicesDispatcherHost_Internal {
         @Override
         public void enumerateDevices(
 boolean requestAudioInput, boolean requestVideoInput, boolean requestAudioOutput, boolean requestVideoInputCapabilities, boolean requestAudioInputCapabilities, 
-EnumerateDevicesResponse callback) {
+EnumerateDevices_Response callback) {
 
             MediaDevicesDispatcherHostEnumerateDevicesParams _message = new MediaDevicesDispatcherHostEnumerateDevicesParams();
 
@@ -101,7 +105,7 @@ EnumerateDevicesResponse callback) {
         @Override
         public void getVideoInputCapabilities(
 
-GetVideoInputCapabilitiesResponse callback) {
+GetVideoInputCapabilities_Response callback) {
 
             MediaDevicesDispatcherHostGetVideoInputCapabilitiesParams _message = new MediaDevicesDispatcherHostGetVideoInputCapabilitiesParams();
 
@@ -121,7 +125,7 @@ GetVideoInputCapabilitiesResponse callback) {
         @Override
         public void getAllVideoInputDeviceFormats(
 String deviceId, 
-GetAllVideoInputDeviceFormatsResponse callback) {
+GetAllVideoInputDeviceFormats_Response callback) {
 
             MediaDevicesDispatcherHostGetAllVideoInputDeviceFormatsParams _message = new MediaDevicesDispatcherHostGetAllVideoInputDeviceFormatsParams();
 
@@ -143,7 +147,7 @@ GetAllVideoInputDeviceFormatsResponse callback) {
         @Override
         public void getAvailableVideoInputDeviceFormats(
 String deviceId, 
-GetAvailableVideoInputDeviceFormatsResponse callback) {
+GetAvailableVideoInputDeviceFormats_Response callback) {
 
             MediaDevicesDispatcherHostGetAvailableVideoInputDeviceFormatsParams _message = new MediaDevicesDispatcherHostGetAvailableVideoInputDeviceFormatsParams();
 
@@ -165,7 +169,7 @@ GetAvailableVideoInputDeviceFormatsResponse callback) {
         @Override
         public void getAudioInputCapabilities(
 
-GetAudioInputCapabilitiesResponse callback) {
+GetAudioInputCapabilities_Response callback) {
 
             MediaDevicesDispatcherHostGetAudioInputCapabilitiesParams _message = new MediaDevicesDispatcherHostGetAudioInputCapabilitiesParams();
 
@@ -201,6 +205,23 @@ boolean subscribeAudioInput, boolean subscribeVideoInput, boolean subscribeAudio
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(ADD_MEDIA_DEVICES_LISTENER_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void setCaptureHandleConfig(
+CaptureHandleConfig config) {
+
+            MediaDevicesDispatcherHostSetCaptureHandleConfigParams _message = new MediaDevicesDispatcherHostSetCaptureHandleConfigParams();
+
+            _message.config = config;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(SET_CAPTURE_HANDLE_CONFIG_ORDINAL)));
 
         }
 
@@ -252,6 +273,19 @@ boolean subscribeAudioInput, boolean subscribeVideoInput, boolean subscribeAudio
                                 MediaDevicesDispatcherHostAddMediaDevicesListenerParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().addMediaDevicesListener(data.subscribeAudioInput, data.subscribeVideoInput, data.subscribeAudioOutput, data.listener);
+                        return true;
+                    }
+
+
+
+
+
+                    case SET_CAPTURE_HANDLE_CONFIG_ORDINAL: {
+
+                        MediaDevicesDispatcherHostSetCaptureHandleConfigParams data =
+                                MediaDevicesDispatcherHostSetCaptureHandleConfigParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().setCaptureHandleConfig(data.config);
                         return true;
                     }
 
@@ -356,6 +390,8 @@ boolean subscribeAudioInput, boolean subscribeVideoInput, boolean subscribeAudio
                         getImpl().getAudioInputCapabilities(new MediaDevicesDispatcherHostGetAudioInputCapabilitiesResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
+
+
 
 
 
@@ -606,9 +642,9 @@ boolean subscribeAudioInput, boolean subscribeVideoInput, boolean subscribeAudio
 
     static class MediaDevicesDispatcherHostEnumerateDevicesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final MediaDevicesDispatcherHost.EnumerateDevicesResponse mCallback;
+        private final MediaDevicesDispatcherHost.EnumerateDevices_Response mCallback;
 
-        MediaDevicesDispatcherHostEnumerateDevicesResponseParamsForwardToCallback(MediaDevicesDispatcherHost.EnumerateDevicesResponse callback) {
+        MediaDevicesDispatcherHostEnumerateDevicesResponseParamsForwardToCallback(MediaDevicesDispatcherHost.EnumerateDevices_Response callback) {
             this.mCallback = callback;
         }
 
@@ -633,7 +669,7 @@ boolean subscribeAudioInput, boolean subscribeVideoInput, boolean subscribeAudio
         }
     }
 
-    static class MediaDevicesDispatcherHostEnumerateDevicesResponseParamsProxyToResponder implements MediaDevicesDispatcherHost.EnumerateDevicesResponse {
+    static class MediaDevicesDispatcherHostEnumerateDevicesResponseParamsProxyToResponder implements MediaDevicesDispatcherHost.EnumerateDevices_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -807,9 +843,9 @@ boolean subscribeAudioInput, boolean subscribeVideoInput, boolean subscribeAudio
 
     static class MediaDevicesDispatcherHostGetVideoInputCapabilitiesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final MediaDevicesDispatcherHost.GetVideoInputCapabilitiesResponse mCallback;
+        private final MediaDevicesDispatcherHost.GetVideoInputCapabilities_Response mCallback;
 
-        MediaDevicesDispatcherHostGetVideoInputCapabilitiesResponseParamsForwardToCallback(MediaDevicesDispatcherHost.GetVideoInputCapabilitiesResponse callback) {
+        MediaDevicesDispatcherHostGetVideoInputCapabilitiesResponseParamsForwardToCallback(MediaDevicesDispatcherHost.GetVideoInputCapabilities_Response callback) {
             this.mCallback = callback;
         }
 
@@ -834,7 +870,7 @@ boolean subscribeAudioInput, boolean subscribeVideoInput, boolean subscribeAudio
         }
     }
 
-    static class MediaDevicesDispatcherHostGetVideoInputCapabilitiesResponseParamsProxyToResponder implements MediaDevicesDispatcherHost.GetVideoInputCapabilitiesResponse {
+    static class MediaDevicesDispatcherHostGetVideoInputCapabilitiesResponseParamsProxyToResponder implements MediaDevicesDispatcherHost.GetVideoInputCapabilities_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1011,9 +1047,9 @@ boolean subscribeAudioInput, boolean subscribeVideoInput, boolean subscribeAudio
 
     static class MediaDevicesDispatcherHostGetAllVideoInputDeviceFormatsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final MediaDevicesDispatcherHost.GetAllVideoInputDeviceFormatsResponse mCallback;
+        private final MediaDevicesDispatcherHost.GetAllVideoInputDeviceFormats_Response mCallback;
 
-        MediaDevicesDispatcherHostGetAllVideoInputDeviceFormatsResponseParamsForwardToCallback(MediaDevicesDispatcherHost.GetAllVideoInputDeviceFormatsResponse callback) {
+        MediaDevicesDispatcherHostGetAllVideoInputDeviceFormatsResponseParamsForwardToCallback(MediaDevicesDispatcherHost.GetAllVideoInputDeviceFormats_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1038,7 +1074,7 @@ boolean subscribeAudioInput, boolean subscribeVideoInput, boolean subscribeAudio
         }
     }
 
-    static class MediaDevicesDispatcherHostGetAllVideoInputDeviceFormatsResponseParamsProxyToResponder implements MediaDevicesDispatcherHost.GetAllVideoInputDeviceFormatsResponse {
+    static class MediaDevicesDispatcherHostGetAllVideoInputDeviceFormatsResponseParamsProxyToResponder implements MediaDevicesDispatcherHost.GetAllVideoInputDeviceFormats_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1215,9 +1251,9 @@ boolean subscribeAudioInput, boolean subscribeVideoInput, boolean subscribeAudio
 
     static class MediaDevicesDispatcherHostGetAvailableVideoInputDeviceFormatsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final MediaDevicesDispatcherHost.GetAvailableVideoInputDeviceFormatsResponse mCallback;
+        private final MediaDevicesDispatcherHost.GetAvailableVideoInputDeviceFormats_Response mCallback;
 
-        MediaDevicesDispatcherHostGetAvailableVideoInputDeviceFormatsResponseParamsForwardToCallback(MediaDevicesDispatcherHost.GetAvailableVideoInputDeviceFormatsResponse callback) {
+        MediaDevicesDispatcherHostGetAvailableVideoInputDeviceFormatsResponseParamsForwardToCallback(MediaDevicesDispatcherHost.GetAvailableVideoInputDeviceFormats_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1242,7 +1278,7 @@ boolean subscribeAudioInput, boolean subscribeVideoInput, boolean subscribeAudio
         }
     }
 
-    static class MediaDevicesDispatcherHostGetAvailableVideoInputDeviceFormatsResponseParamsProxyToResponder implements MediaDevicesDispatcherHost.GetAvailableVideoInputDeviceFormatsResponse {
+    static class MediaDevicesDispatcherHostGetAvailableVideoInputDeviceFormatsResponseParamsProxyToResponder implements MediaDevicesDispatcherHost.GetAvailableVideoInputDeviceFormats_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1412,9 +1448,9 @@ boolean subscribeAudioInput, boolean subscribeVideoInput, boolean subscribeAudio
 
     static class MediaDevicesDispatcherHostGetAudioInputCapabilitiesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final MediaDevicesDispatcherHost.GetAudioInputCapabilitiesResponse mCallback;
+        private final MediaDevicesDispatcherHost.GetAudioInputCapabilities_Response mCallback;
 
-        MediaDevicesDispatcherHostGetAudioInputCapabilitiesResponseParamsForwardToCallback(MediaDevicesDispatcherHost.GetAudioInputCapabilitiesResponse callback) {
+        MediaDevicesDispatcherHostGetAudioInputCapabilitiesResponseParamsForwardToCallback(MediaDevicesDispatcherHost.GetAudioInputCapabilities_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1439,7 +1475,7 @@ boolean subscribeAudioInput, boolean subscribeVideoInput, boolean subscribeAudio
         }
     }
 
-    static class MediaDevicesDispatcherHostGetAudioInputCapabilitiesResponseParamsProxyToResponder implements MediaDevicesDispatcherHost.GetAudioInputCapabilitiesResponse {
+    static class MediaDevicesDispatcherHostGetAudioInputCapabilitiesResponseParamsProxyToResponder implements MediaDevicesDispatcherHost.GetAudioInputCapabilities_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1552,6 +1588,70 @@ boolean subscribeAudioInput, boolean subscribeVideoInput, boolean subscribeAudio
             encoder0.encode(this.subscribeAudioOutput, 8, 2);
             
             encoder0.encode(this.listener, 12, false, MediaDevicesListener.MANAGER);
+        }
+    }
+
+
+
+    
+    static final class MediaDevicesDispatcherHostSetCaptureHandleConfigParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public CaptureHandleConfig config;
+
+        private MediaDevicesDispatcherHostSetCaptureHandleConfigParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public MediaDevicesDispatcherHostSetCaptureHandleConfigParams() {
+            this(0);
+        }
+
+        public static MediaDevicesDispatcherHostSetCaptureHandleConfigParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static MediaDevicesDispatcherHostSetCaptureHandleConfigParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static MediaDevicesDispatcherHostSetCaptureHandleConfigParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            MediaDevicesDispatcherHostSetCaptureHandleConfigParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new MediaDevicesDispatcherHostSetCaptureHandleConfigParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.config = CaptureHandleConfig.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.config, 8, false);
         }
     }
 

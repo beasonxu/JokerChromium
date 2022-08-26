@@ -13,15 +13,17 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class DispatchFetchEventParams extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 48;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
+    private static final int STRUCT_SIZE = 40;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public FetchApiRequest request;
     public String clientId;
-    public FetchEventPreloadHandle preloadHandle;
+    public org.chromium.mojo.bindings.InterfaceRequest<org.chromium.network.mojom.UrlLoaderClient> preloadUrlLoaderClientReceiver;
     public WorkerTimingContainer workerTimingRemote;
     public boolean isOfflineCapabilityCheck;
 
@@ -70,16 +72,15 @@ public final class DispatchFetchEventParams extends org.chromium.mojo.bindings.S
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, true);
-                result.preloadHandle = FetchEventPreloadHandle.decode(decoder1);
+                result.preloadUrlLoaderClientReceiver = decoder0.readInterfaceRequest(24, true);
                 }
                 {
                     
-                result.workerTimingRemote = decoder0.readServiceInterface(32, true, WorkerTimingContainer.MANAGER);
+                result.workerTimingRemote = decoder0.readServiceInterface(28, true, WorkerTimingContainer.MANAGER);
                 }
                 {
                     
-                result.isOfflineCapabilityCheck = decoder0.readBoolean(40, 0);
+                result.isOfflineCapabilityCheck = decoder0.readBoolean(36, 0);
                 }
 
         } finally {
@@ -97,10 +98,10 @@ public final class DispatchFetchEventParams extends org.chromium.mojo.bindings.S
         
         encoder0.encode(this.clientId, 16, false);
         
-        encoder0.encode(this.preloadHandle, 24, true);
+        encoder0.encode(this.preloadUrlLoaderClientReceiver, 24, true);
         
-        encoder0.encode(this.workerTimingRemote, 32, true, WorkerTimingContainer.MANAGER);
+        encoder0.encode(this.workerTimingRemote, 28, true, WorkerTimingContainer.MANAGER);
         
-        encoder0.encode(this.isOfflineCapabilityCheck, 40, 0);
+        encoder0.encode(this.isOfflineCapabilityCheck, 36, 0);
     }
 }

@@ -13,7 +13,7 @@ import org.chromium.url.GURL;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class DomDistillerTabUtilsJni implements DomDistillerTabUtils.Natives {
+class DomDistillerTabUtilsJni implements DomDistillerTabUtils.Natives {
   private static DomDistillerTabUtils.Natives testInstance;
 
   public static final JniStaticTestMocker<DomDistillerTabUtils.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.dom_distiller.DomDistillerTabUtils.Natives>() {

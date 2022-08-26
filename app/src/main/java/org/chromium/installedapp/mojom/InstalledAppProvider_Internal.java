@@ -13,6 +13,8 @@
 
 package org.chromium.installedapp.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class InstalledAppProvider_Internal {
 
@@ -61,7 +63,7 @@ class InstalledAppProvider_Internal {
         @Override
         public void filterInstalledApps(
 RelatedApplication[] relatedApps, org.chromium.url.mojom.Url manifestUrl, 
-FilterInstalledAppsResponse callback) {
+FilterInstalledApps_Response callback) {
 
             InstalledAppProviderFilterInstalledAppsParams _message = new InstalledAppProviderFilterInstalledAppsParams();
 
@@ -335,9 +337,9 @@ FilterInstalledAppsResponse callback) {
 
     static class InstalledAppProviderFilterInstalledAppsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final InstalledAppProvider.FilterInstalledAppsResponse mCallback;
+        private final InstalledAppProvider.FilterInstalledApps_Response mCallback;
 
-        InstalledAppProviderFilterInstalledAppsResponseParamsForwardToCallback(InstalledAppProvider.FilterInstalledAppsResponse callback) {
+        InstalledAppProviderFilterInstalledAppsResponseParamsForwardToCallback(InstalledAppProvider.FilterInstalledApps_Response callback) {
             this.mCallback = callback;
         }
 
@@ -362,7 +364,7 @@ FilterInstalledAppsResponse callback) {
         }
     }
 
-    static class InstalledAppProviderFilterInstalledAppsResponseParamsProxyToResponder implements InstalledAppProvider.FilterInstalledAppsResponse {
+    static class InstalledAppProviderFilterInstalledAppsResponseParamsProxyToResponder implements InstalledAppProvider.FilterInstalledApps_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

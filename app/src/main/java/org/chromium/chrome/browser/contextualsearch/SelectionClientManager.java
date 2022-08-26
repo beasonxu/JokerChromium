@@ -10,8 +10,9 @@ import android.view.textclassifier.TextClassifier;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
+import org.chromium.content_public.browser.SelectAroundCaretResult;
 import org.chromium.content_public.browser.SelectionClient;
-import org.chromium.content_public.browser.SelectionMetricsLogger;
+import org.chromium.content_public.browser.SelectionEventProcessor;
 import org.chromium.content_public.browser.SelectionPopupController;
 import org.chromium.content_public.browser.WebContents;
 import org.chromium.ui.touch_selection.SelectionEventType;
@@ -158,10 +159,9 @@ public class SelectionClientManager {
         }
 
         @Override
-        public void selectWordAroundCaretAck(boolean didSelect, int startAdjust, int endAdjust) {
-            mSmartSelectionClient.selectWordAroundCaretAck(didSelect, startAdjust, endAdjust);
-            mContextualSearchSelectionClient.selectWordAroundCaretAck(
-                    didSelect, startAdjust, endAdjust);
+        public void selectAroundCaretAck(@Nullable SelectAroundCaretResult result) {
+            mSmartSelectionClient.selectAroundCaretAck(result);
+            mContextualSearchSelectionClient.selectAroundCaretAck(result);
         }
 
         @Override
@@ -192,8 +192,8 @@ public class SelectionClientManager {
         }
 
         @Override
-        public SelectionMetricsLogger getSelectionMetricsLogger() {
-            return mSmartSelectionClient.getSelectionMetricsLogger();
+        public SelectionEventProcessor getSelectionEventProcessor() {
+            return mSmartSelectionClient.getSelectionEventProcessor();
         }
     }
 }

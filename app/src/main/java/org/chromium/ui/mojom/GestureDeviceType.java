@@ -13,8 +13,16 @@
 
 package org.chromium.ui.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class GestureDeviceType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        GestureDeviceType.DEVICE_UNKNOWN,
+        GestureDeviceType.DEVICE_TOUCHPAD,
+        GestureDeviceType.DEVICE_TOUCHSCREEN})
+    public @interface EnumType {}
 
     public static final int DEVICE_UNKNOWN = 0;
     public static final int DEVICE_TOUCHPAD = 1;

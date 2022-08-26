@@ -13,8 +13,17 @@
 
 package org.chromium.display.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PanelOrientation {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PanelOrientation.NORMAL,
+        PanelOrientation.BOTTOM_UP,
+        PanelOrientation.LEFT_UP,
+        PanelOrientation.RIGHT_UP})
+    public @interface EnumType {}
 
     public static final int NORMAL = 0;
     public static final int BOTTOM_UP = 1;

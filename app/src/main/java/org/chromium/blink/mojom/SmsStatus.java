@@ -13,8 +13,19 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class SmsStatus {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        SmsStatus.SUCCESS,
+        SmsStatus.UNHANDLED_REQUEST,
+        SmsStatus.CANCELLED,
+        SmsStatus.ABORTED,
+        SmsStatus.TIMEOUT,
+        SmsStatus.BACKEND_NOT_AVAILABLE})
+    public @interface EnumType {}
 
     public static final int SUCCESS = 0;
     public static final int UNHANDLED_REQUEST = 1;

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ContactsManager extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface ContactsManager extends org.chromium.mojo.bindings.Interface {
 
     Manager<ContactsManager, ContactsManager.Proxy> MANAGER = ContactsManager_Internal.MANAGER;
 
-
     void select(
 boolean multiple, boolean includeNames, boolean includeEmails, boolean includeTel, boolean includeAddresses, boolean includeIcons, 
-SelectResponse callback);
+Select_Response callback);
 
-    interface SelectResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<ContactInfo[]> { }
+    interface Select_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<ContactInfo[]> { }
 
 
 }

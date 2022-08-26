@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class TlsClientSocketOptions extends org.chromium.mojo.bindings.Struct {
 
@@ -26,7 +28,7 @@ public final class TlsClientSocketOptions extends org.chromium.mojo.bindings.Str
 
     private TlsClientSocketOptions(int version) {
         super(STRUCT_SIZE, version);
-        this.versionMin = (int) SslVersion.TLS1;
+        this.versionMin = (int) SslVersion.TLS12;
         this.versionMax = (int) SslVersion.TLS13;
         this.sendSslInfo = (boolean) false;
         this.unsafelySkipCertVerification = (boolean) false;

@@ -13,8 +13,17 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ClipboardFormat {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ClipboardFormat.PLAINTEXT,
+        ClipboardFormat.HTML,
+        ClipboardFormat.SMART_PASTE,
+        ClipboardFormat.BOOKMARK})
+    public @interface EnumType {}
 
     public static final int PLAINTEXT = 0;
     public static final int HTML = 1;

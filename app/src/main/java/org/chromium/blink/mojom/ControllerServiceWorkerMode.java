@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ControllerServiceWorkerMode {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ControllerServiceWorkerMode.NO_CONTROLLER,
+        ControllerServiceWorkerMode.NO_FETCH_EVENT_HANDLER,
+        ControllerServiceWorkerMode.CONTROLLED})
+    public @interface EnumType {}
 
     public static final int NO_CONTROLLER = 0;
     public static final int NO_FETCH_EVENT_HANDLER = 1;

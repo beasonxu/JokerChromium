@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class SystemInfoFeedbackSourceJni implements SystemInfoFeedbackSource.Natives {
+class SystemInfoFeedbackSourceJni implements SystemInfoFeedbackSource.Natives {
   private static SystemInfoFeedbackSource.Natives testInstance;
 
   public static final JniStaticTestMocker<SystemInfoFeedbackSource.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.feedback.SystemInfoFeedbackSource.Natives>() {

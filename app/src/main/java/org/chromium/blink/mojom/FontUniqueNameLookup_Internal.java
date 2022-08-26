@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class FontUniqueNameLookup_Internal {
 
@@ -63,7 +65,7 @@ class FontUniqueNameLookup_Internal {
         @Override
         public void getUniqueNameLookupTableIfAvailable(
 
-GetUniqueNameLookupTableIfAvailableResponse callback) {
+GetUniqueNameLookupTableIfAvailable_Response callback) {
 
             FontUniqueNameLookupGetUniqueNameLookupTableIfAvailableParams _message = new FontUniqueNameLookupGetUniqueNameLookupTableIfAvailableParams();
 
@@ -83,7 +85,7 @@ GetUniqueNameLookupTableIfAvailableResponse callback) {
         @Override
         public void getUniqueNameLookupTable(
 
-GetUniqueNameLookupTableResponse callback) {
+GetUniqueNameLookupTable_Response callback) {
 
             FontUniqueNameLookupGetUniqueNameLookupTableParams _message = new FontUniqueNameLookupGetUniqueNameLookupTableParams();
 
@@ -327,9 +329,9 @@ GetUniqueNameLookupTableResponse callback) {
 
     static class FontUniqueNameLookupGetUniqueNameLookupTableIfAvailableResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FontUniqueNameLookup.GetUniqueNameLookupTableIfAvailableResponse mCallback;
+        private final FontUniqueNameLookup.GetUniqueNameLookupTableIfAvailable_Response mCallback;
 
-        FontUniqueNameLookupGetUniqueNameLookupTableIfAvailableResponseParamsForwardToCallback(FontUniqueNameLookup.GetUniqueNameLookupTableIfAvailableResponse callback) {
+        FontUniqueNameLookupGetUniqueNameLookupTableIfAvailableResponseParamsForwardToCallback(FontUniqueNameLookup.GetUniqueNameLookupTableIfAvailable_Response callback) {
             this.mCallback = callback;
         }
 
@@ -354,7 +356,7 @@ GetUniqueNameLookupTableResponse callback) {
         }
     }
 
-    static class FontUniqueNameLookupGetUniqueNameLookupTableIfAvailableResponseParamsProxyToResponder implements FontUniqueNameLookup.GetUniqueNameLookupTableIfAvailableResponse {
+    static class FontUniqueNameLookupGetUniqueNameLookupTableIfAvailableResponseParamsProxyToResponder implements FontUniqueNameLookup.GetUniqueNameLookupTableIfAvailable_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -510,9 +512,9 @@ GetUniqueNameLookupTableResponse callback) {
 
     static class FontUniqueNameLookupGetUniqueNameLookupTableResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FontUniqueNameLookup.GetUniqueNameLookupTableResponse mCallback;
+        private final FontUniqueNameLookup.GetUniqueNameLookupTable_Response mCallback;
 
-        FontUniqueNameLookupGetUniqueNameLookupTableResponseParamsForwardToCallback(FontUniqueNameLookup.GetUniqueNameLookupTableResponse callback) {
+        FontUniqueNameLookupGetUniqueNameLookupTableResponseParamsForwardToCallback(FontUniqueNameLookup.GetUniqueNameLookupTable_Response callback) {
             this.mCallback = callback;
         }
 
@@ -537,7 +539,7 @@ GetUniqueNameLookupTableResponse callback) {
         }
     }
 
-    static class FontUniqueNameLookupGetUniqueNameLookupTableResponseParamsProxyToResponder implements FontUniqueNameLookup.GetUniqueNameLookupTableResponse {
+    static class FontUniqueNameLookupGetUniqueNameLookupTableResponseParamsProxyToResponder implements FontUniqueNameLookup.GetUniqueNameLookupTable_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

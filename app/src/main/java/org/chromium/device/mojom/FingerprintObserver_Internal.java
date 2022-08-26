@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class FingerprintObserver_Internal {
 
@@ -102,11 +104,11 @@ int scanResult, boolean isComplete, int percentComplete) {
 
         @Override
         public void onAuthScanDone(
-int scanResult, java.util.Map<String, String[]> matches) {
+FingerprintMessage msg, java.util.Map<String, String[]> matches) {
 
             FingerprintObserverOnAuthScanDoneParams _message = new FingerprintObserverOnAuthScanDoneParams();
 
-            _message.scanResult = scanResult;
+            _message.msg = msg;
 
             _message.matches = matches;
 
@@ -195,7 +197,7 @@ int scanResult, java.util.Map<String, String[]> matches) {
                         FingerprintObserverOnAuthScanDoneParams data =
                                 FingerprintObserverOnAuthScanDoneParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().onAuthScanDone(data.scanResult, data.matches);
+                        getImpl().onAuthScanDone(data.msg, data.matches);
                         return true;
                     }
 
@@ -398,10 +400,10 @@ int scanResult, java.util.Map<String, String[]> matches) {
     
     static final class FingerprintObserverOnAuthScanDoneParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public int scanResult;
+        public FingerprintMessage msg;
         public java.util.Map<String, String[]> matches;
 
         private FingerprintObserverOnAuthScanDoneParams(int version) {
@@ -439,13 +441,11 @@ int scanResult, java.util.Map<String, String[]> matches) {
                 result = new FingerprintObserverOnAuthScanDoneParams(elementsOrVersion);
                     {
                         
-                    result.scanResult = decoder0.readInt(8);
-                        ScanResult.validate(result.scanResult);
-                        result.scanResult = ScanResult.toKnownValue(result.scanResult);
+                    result.msg = FingerprintMessage.decode(decoder0, 8);
                     }
                     {
                         
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
                     {
                         decoder1.readDataHeaderForMap();
                         String[] keys0;
@@ -500,12 +500,12 @@ int scanResult, java.util.Map<String, String[]> matches) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.scanResult, 8);
+            encoder0.encode(this.msg, 8, false);
             
             if (this.matches == null) {
-                encoder0.encodeNullPointer(16, false);
+                encoder0.encodeNullPointer(24, false);
             } else {
-                org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encoderForMap(16);
+                org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encoderForMap(24);
                 int size0 = this.matches.size();
                 String[] keys0 = new String[size0];
                 String[][] values0 = new String[size0][];

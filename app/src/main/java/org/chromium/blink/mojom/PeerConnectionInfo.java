@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class PeerConnectionInfo extends org.chromium.mojo.bindings.Struct {
 
@@ -71,7 +73,7 @@ public final class PeerConnectionInfo extends org.chromium.mojo.bindings.Struct 
                 }
                 {
                     
-                result.url = decoder0.readString(32, false);
+                result.url = decoder0.readString(32, true);
                 }
 
         } finally {
@@ -91,6 +93,6 @@ public final class PeerConnectionInfo extends org.chromium.mojo.bindings.Struct 
         
         encoder0.encode(this.constraints, 24, false);
         
-        encoder0.encode(this.url, 32, false);
+        encoder0.encode(this.url, 32, true);
     }
 }

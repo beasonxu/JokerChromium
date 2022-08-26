@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ScreenOrientation extends org.chromium.mojo.bindings.Interface {
 
@@ -23,13 +25,11 @@ public interface ScreenOrientation extends org.chromium.mojo.bindings.Interface 
 
     Manager<ScreenOrientation, ScreenOrientation.Proxy> MANAGER = ScreenOrientation_Internal.MANAGER;
 
-
     void lockOrientation(
 int orientation, 
-LockOrientationResponse callback);
+LockOrientation_Response callback);
 
-    interface LockOrientationResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface LockOrientation_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void unlockOrientation(

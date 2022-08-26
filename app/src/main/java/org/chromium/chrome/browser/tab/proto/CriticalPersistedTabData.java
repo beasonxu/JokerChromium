@@ -165,6 +165,17 @@ public final class CriticalPersistedTabData {
      * @return The launchTypeAtCreation.
      */
     org.chromium.chrome.browser.tab.proto.CriticalPersistedTabData.CriticalPersistedTabDataProto.LaunchTypeAtCreation getLaunchTypeAtCreation();
+
+    /**
+     * <code>optional .org.chromium.chrome.browser.tab.proto.CriticalPersistedTabDataProto.UserAgentType user_agent = 9;</code>
+     * @return Whether the userAgent field is set.
+     */
+    boolean hasUserAgent();
+    /**
+     * <code>optional .org.chromium.chrome.browser.tab.proto.CriticalPersistedTabDataProto.UserAgentType user_agent = 9;</code>
+     * @return The userAgent.
+     */
+    org.chromium.chrome.browser.tab.proto.CriticalPersistedTabData.CriticalPersistedTabDataProto.UserAgentType getUserAgent();
   }
   /**
    * Protobuf type {@code org.chromium.chrome.browser.tab.proto.CriticalPersistedTabDataProto}
@@ -241,13 +252,37 @@ public final class CriticalPersistedTabData {
        */
       FROM_START_SURFACE(12),
       /**
-       * <code>SIZE = 13;</code>
+       * <code>FROM_TAB_GROUP_UI = 13;</code>
        */
-      SIZE(13),
+      FROM_TAB_GROUP_UI(13),
       /**
-       * <code>UNKNOWN = 14;</code>
+       * <code>FROM_LONGPRESS_BACKGROUND_IN_GROUP = 14;</code>
        */
-      UNKNOWN(14),
+      FROM_LONGPRESS_BACKGROUND_IN_GROUP(14),
+      /**
+       * <code>FROM_APP_WIDGET = 15;</code>
+       */
+      FROM_APP_WIDGET(15),
+      /**
+       * <code>FROM_LONGPRESS_INCOGNITO = 16;</code>
+       */
+      FROM_LONGPRESS_INCOGNITO(16),
+      /**
+       * <code>FROM_RECENT_TABS = 17;</code>
+       */
+      FROM_RECENT_TABS(17),
+      /**
+       * <code>FROM_READING_LIST = 18;</code>
+       */
+      FROM_READING_LIST(18),
+      /**
+       * <code>SIZE = 19;</code>
+       */
+      SIZE(19),
+      /**
+       * <code>UNKNOWN = 20;</code>
+       */
+      UNKNOWN(20),
       ;
 
       /**
@@ -303,13 +338,37 @@ public final class CriticalPersistedTabData {
        */
       public static final int FROM_START_SURFACE_VALUE = 12;
       /**
-       * <code>SIZE = 13;</code>
+       * <code>FROM_TAB_GROUP_UI = 13;</code>
        */
-      public static final int SIZE_VALUE = 13;
+      public static final int FROM_TAB_GROUP_UI_VALUE = 13;
       /**
-       * <code>UNKNOWN = 14;</code>
+       * <code>FROM_LONGPRESS_BACKGROUND_IN_GROUP = 14;</code>
        */
-      public static final int UNKNOWN_VALUE = 14;
+      public static final int FROM_LONGPRESS_BACKGROUND_IN_GROUP_VALUE = 14;
+      /**
+       * <code>FROM_APP_WIDGET = 15;</code>
+       */
+      public static final int FROM_APP_WIDGET_VALUE = 15;
+      /**
+       * <code>FROM_LONGPRESS_INCOGNITO = 16;</code>
+       */
+      public static final int FROM_LONGPRESS_INCOGNITO_VALUE = 16;
+      /**
+       * <code>FROM_RECENT_TABS = 17;</code>
+       */
+      public static final int FROM_RECENT_TABS_VALUE = 17;
+      /**
+       * <code>FROM_READING_LIST = 18;</code>
+       */
+      public static final int FROM_READING_LIST_VALUE = 18;
+      /**
+       * <code>SIZE = 19;</code>
+       */
+      public static final int SIZE_VALUE = 19;
+      /**
+       * <code>UNKNOWN = 20;</code>
+       */
+      public static final int UNKNOWN_VALUE = 20;
 
 
       @java.lang.Override
@@ -342,8 +401,14 @@ public final class CriticalPersistedTabData {
           case 10: return FROM_LAUNCH_NEW_INCOGNITO_TAB;
           case 11: return FROM_STARTUP;
           case 12: return FROM_START_SURFACE;
-          case 13: return SIZE;
-          case 14: return UNKNOWN;
+          case 13: return FROM_TAB_GROUP_UI;
+          case 14: return FROM_LONGPRESS_BACKGROUND_IN_GROUP;
+          case 15: return FROM_APP_WIDGET;
+          case 16: return FROM_LONGPRESS_INCOGNITO;
+          case 17: return FROM_RECENT_TABS;
+          case 18: return FROM_READING_LIST;
+          case 19: return SIZE;
+          case 20: return UNKNOWN;
           default: return null;
         }
       }
@@ -382,6 +447,122 @@ public final class CriticalPersistedTabData {
       }
 
       // @@protoc_insertion_point(enum_scope:org.chromium.chrome.browser.tab.proto.CriticalPersistedTabDataProto.LaunchTypeAtCreation)
+    }
+
+    /**
+     * <pre>
+     * User agent.
+     * Cannot define two same enum name in the same proto file.
+     * </pre>
+     *
+     * Protobuf enum {@code org.chromium.chrome.browser.tab.proto.CriticalPersistedTabDataProto.UserAgentType}
+     */
+    public enum UserAgentType
+        implements com.google.protobuf.Internal.EnumLite {
+      /**
+       * <code>DEFAULT = 0;</code>
+       */
+      DEFAULT(0),
+      /**
+       * <code>MOBILE = 1;</code>
+       */
+      MOBILE(1),
+      /**
+       * <code>DESKTOP = 2;</code>
+       */
+      DESKTOP(2),
+      /**
+       * <code>UNSET = 3;</code>
+       */
+      UNSET(3),
+      /**
+       * <code>USER_AGENT_SIZE = 4;</code>
+       */
+      USER_AGENT_SIZE(4),
+      ;
+
+      /**
+       * <code>DEFAULT = 0;</code>
+       */
+      public static final int DEFAULT_VALUE = 0;
+      /**
+       * <code>MOBILE = 1;</code>
+       */
+      public static final int MOBILE_VALUE = 1;
+      /**
+       * <code>DESKTOP = 2;</code>
+       */
+      public static final int DESKTOP_VALUE = 2;
+      /**
+       * <code>UNSET = 3;</code>
+       */
+      public static final int UNSET_VALUE = 3;
+      /**
+       * <code>USER_AGENT_SIZE = 4;</code>
+       */
+      public static final int USER_AGENT_SIZE_VALUE = 4;
+
+
+      @java.lang.Override
+      public final int getNumber() {
+        return value;
+      }
+
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static UserAgentType valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static UserAgentType forNumber(int value) {
+        switch (value) {
+          case 0: return DEFAULT;
+          case 1: return MOBILE;
+          case 2: return DESKTOP;
+          case 3: return UNSET;
+          case 4: return USER_AGENT_SIZE;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<UserAgentType>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          UserAgentType> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<UserAgentType>() {
+              @java.lang.Override
+              public UserAgentType findValueByNumber(int number) {
+                return UserAgentType.forNumber(number);
+              }
+            };
+
+      public static com.google.protobuf.Internal.EnumVerifier 
+          internalGetVerifier() {
+        return UserAgentTypeVerifier.INSTANCE;
+      }
+
+      private static final class UserAgentTypeVerifier implements 
+           com.google.protobuf.Internal.EnumVerifier { 
+              static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new UserAgentTypeVerifier();
+              @java.lang.Override
+              public boolean isInRange(int number) {
+                return UserAgentType.forNumber(number) != null;
+              }
+            };
+
+      private final int value;
+
+      private UserAgentType(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:org.chromium.chrome.browser.tab.proto.CriticalPersistedTabDataProto.UserAgentType)
     }
 
     private int bitField0_;
@@ -797,6 +978,41 @@ public final class CriticalPersistedTabData {
     private void clearLaunchTypeAtCreation() {
       bitField0_ = (bitField0_ & ~0x00000080);
       launchTypeAtCreation_ = 0;
+    }
+
+    public static final int USER_AGENT_FIELD_NUMBER = 9;
+    private int userAgent_;
+    /**
+     * <code>optional .org.chromium.chrome.browser.tab.proto.CriticalPersistedTabDataProto.UserAgentType user_agent = 9;</code>
+     * @return Whether the userAgent field is set.
+     */
+    @java.lang.Override
+    public boolean hasUserAgent() {
+      return ((bitField0_ & 0x00000100) != 0);
+    }
+    /**
+     * <code>optional .org.chromium.chrome.browser.tab.proto.CriticalPersistedTabDataProto.UserAgentType user_agent = 9;</code>
+     * @return The userAgent.
+     */
+    @java.lang.Override
+    public org.chromium.chrome.browser.tab.proto.CriticalPersistedTabData.CriticalPersistedTabDataProto.UserAgentType getUserAgent() {
+      org.chromium.chrome.browser.tab.proto.CriticalPersistedTabData.CriticalPersistedTabDataProto.UserAgentType result = org.chromium.chrome.browser.tab.proto.CriticalPersistedTabData.CriticalPersistedTabDataProto.UserAgentType.forNumber(userAgent_);
+      return result == null ? org.chromium.chrome.browser.tab.proto.CriticalPersistedTabData.CriticalPersistedTabDataProto.UserAgentType.DEFAULT : result;
+    }
+    /**
+     * <code>optional .org.chromium.chrome.browser.tab.proto.CriticalPersistedTabDataProto.UserAgentType user_agent = 9;</code>
+     * @param value The userAgent to set.
+     */
+    private void setUserAgent(org.chromium.chrome.browser.tab.proto.CriticalPersistedTabData.CriticalPersistedTabDataProto.UserAgentType value) {
+      userAgent_ = value.getNumber();
+      bitField0_ |= 0x00000100;
+    }
+    /**
+     * <code>optional .org.chromium.chrome.browser.tab.proto.CriticalPersistedTabDataProto.UserAgentType user_agent = 9;</code>
+     */
+    private void clearUserAgent() {
+      bitField0_ = (bitField0_ & ~0x00000100);
+      userAgent_ = 0;
     }
 
     public static org.chromium.chrome.browser.tab.proto.CriticalPersistedTabData.CriticalPersistedTabDataProto parseFrom(
@@ -1323,6 +1539,42 @@ public final class CriticalPersistedTabData {
         return this;
       }
 
+      /**
+       * <code>optional .org.chromium.chrome.browser.tab.proto.CriticalPersistedTabDataProto.UserAgentType user_agent = 9;</code>
+       * @return Whether the userAgent field is set.
+       */
+      @java.lang.Override
+      public boolean hasUserAgent() {
+        return instance.hasUserAgent();
+      }
+      /**
+       * <code>optional .org.chromium.chrome.browser.tab.proto.CriticalPersistedTabDataProto.UserAgentType user_agent = 9;</code>
+       * @return The userAgent.
+       */
+      @java.lang.Override
+      public org.chromium.chrome.browser.tab.proto.CriticalPersistedTabData.CriticalPersistedTabDataProto.UserAgentType getUserAgent() {
+        return instance.getUserAgent();
+      }
+      /**
+       * <code>optional .org.chromium.chrome.browser.tab.proto.CriticalPersistedTabDataProto.UserAgentType user_agent = 9;</code>
+       * @param value The enum numeric value on the wire for userAgent to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUserAgent(org.chromium.chrome.browser.tab.proto.CriticalPersistedTabData.CriticalPersistedTabDataProto.UserAgentType value) {
+        copyOnWrite();
+        instance.setUserAgent(value);
+        return this;
+      }
+      /**
+       * <code>optional .org.chromium.chrome.browser.tab.proto.CriticalPersistedTabDataProto.UserAgentType user_agent = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUserAgent() {
+        copyOnWrite();
+        instance.clearUserAgent();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:org.chromium.chrome.browser.tab.proto.CriticalPersistedTabDataProto)
     }
     @java.lang.Override
@@ -1349,11 +1601,13 @@ public final class CriticalPersistedTabData {
               "themeColor_",
               "launchTypeAtCreation_",
               org.chromium.chrome.browser.tab.proto.CriticalPersistedTabData.CriticalPersistedTabDataProto.LaunchTypeAtCreation.internalGetVerifier(),
+              "userAgent_",
+              org.chromium.chrome.browser.tab.proto.CriticalPersistedTabData.CriticalPersistedTabDataProto.UserAgentType.internalGetVerifier(),
             };
             java.lang.String info =
-                "\u0001\b\u0000\u0001\u0001\b\b\u0000\u0000\u0000\u0001\u1004\u0000\u0002\u1004\u0001" +
+                "\u0001\t\u0000\u0001\u0001\t\t\u0000\u0000\u0000\u0001\u1004\u0000\u0002\u1004\u0001" +
                 "\u0003\u1002\u0002\u0004\u100a\u0003\u0005\u1004\u0004\u0006\u1008\u0005\u0007\u1004" +
-                "\u0006\b\u100c\u0007";
+                "\u0006\b\u100c\u0007\t\u100c\b";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

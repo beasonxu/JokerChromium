@@ -12,7 +12,7 @@ import org.chromium.base.natives.GEN_JNI;
 @Generated("org.chromium.jni_generator.JniProcessor")
 @MainDex
 @CheckDiscard("crbug.com/993421")
-public final class RecordHistogramJni implements RecordHistogram.Natives {
+public class RecordHistogramJni implements RecordHistogram.Natives {
   private static RecordHistogram.Natives testInstance;
 
   public static final JniStaticTestMocker<RecordHistogram.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.base.metrics.RecordHistogram.Natives>() {
@@ -26,13 +26,23 @@ public final class RecordHistogramJni implements RecordHistogram.Natives {
   };
 
   @Override
-  public int getHistogramValueCountForTesting(String name, int sample) {
-    return (int)GEN_JNI.org_chromium_base_metrics_RecordHistogram_getHistogramValueCountForTesting(name, sample);
+  public int getHistogramValueCountForTesting(String name, int sample, long snapshotPtr) {
+    return (int)GEN_JNI.org_chromium_base_metrics_RecordHistogram_getHistogramValueCountForTesting(name, sample, snapshotPtr);
   }
 
   @Override
-  public int getHistogramTotalCountForTesting(String name) {
-    return (int)GEN_JNI.org_chromium_base_metrics_RecordHistogram_getHistogramTotalCountForTesting(name);
+  public int getHistogramTotalCountForTesting(String name, long snapshotPtr) {
+    return (int)GEN_JNI.org_chromium_base_metrics_RecordHistogram_getHistogramTotalCountForTesting(name, snapshotPtr);
+  }
+
+  @Override
+  public long createHistogramSnapshotForTesting() {
+    return (long)GEN_JNI.org_chromium_base_metrics_RecordHistogram_createHistogramSnapshotForTesting();
+  }
+
+  @Override
+  public void destroyHistogramSnapshotForTesting(long snapshotPtr) {
+    GEN_JNI.org_chromium_base_metrics_RecordHistogram_destroyHistogramSnapshotForTesting(snapshotPtr);
   }
 
   public static RecordHistogram.Natives get() {

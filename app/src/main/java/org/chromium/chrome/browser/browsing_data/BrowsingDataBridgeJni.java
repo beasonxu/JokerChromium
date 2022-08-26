@@ -12,7 +12,7 @@ import org.chromium.chrome.browser.profiles.Profile;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class BrowsingDataBridgeJni implements BrowsingDataBridge.Natives {
+class BrowsingDataBridgeJni implements BrowsingDataBridge.Natives {
   private static BrowsingDataBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<BrowsingDataBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.browsing_data.BrowsingDataBridge.Natives>() {
@@ -34,9 +34,8 @@ final class BrowsingDataBridgeJni implements BrowsingDataBridge.Natives {
   }
 
   @Override
-  public void clearSameSiteNoneData(BrowsingDataBridge caller, Profile profile, Runnable callback,
-      boolean clearStorage) {
-    GEN_JNI.org_chromium_chrome_browser_browsing_1data_BrowsingDataBridge_clearSameSiteNoneData(caller, profile, callback, clearStorage);
+  public void clearSameSiteNoneData(BrowsingDataBridge caller, Profile profile, Runnable callback) {
+    GEN_JNI.org_chromium_chrome_browser_browsing_1data_BrowsingDataBridge_clearSameSiteNoneData(caller, profile, callback);
   }
 
   @Override

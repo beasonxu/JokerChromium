@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class Referrer extends org.chromium.mojo.bindings.Struct {
 
@@ -24,6 +26,7 @@ public final class Referrer extends org.chromium.mojo.bindings.Struct {
 
     private Referrer(int version) {
         super(STRUCT_SIZE, version);
+        this.policy = (int) org.chromium.network.mojom.ReferrerPolicy.DEFAULT;
     }
 
     public Referrer() {

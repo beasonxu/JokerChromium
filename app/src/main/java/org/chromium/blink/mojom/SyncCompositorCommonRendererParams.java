@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class SyncCompositorCommonRendererParams extends org.chromium.mojo.bindings.Struct {
 
@@ -20,8 +22,8 @@ public final class SyncCompositorCommonRendererParams extends org.chromium.mojo.
     private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(64, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int version;
-    public org.chromium.gfx.mojom.ScrollOffset totalScrollOffset;
-    public org.chromium.gfx.mojom.ScrollOffset maxScrollOffset;
+    public org.chromium.gfx.mojom.PointF totalScrollOffset;
+    public org.chromium.gfx.mojom.PointF maxScrollOffset;
     public org.chromium.gfx.mojom.SizeF scrollableSize;
     public float pageScaleFactor;
     public float minPageScaleFactor;
@@ -81,12 +83,12 @@ public final class SyncCompositorCommonRendererParams extends org.chromium.mojo.
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
-                result.totalScrollOffset = org.chromium.gfx.mojom.ScrollOffset.decode(decoder1);
+                result.totalScrollOffset = org.chromium.gfx.mojom.PointF.decode(decoder1);
                 }
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
-                result.maxScrollOffset = org.chromium.gfx.mojom.ScrollOffset.decode(decoder1);
+                result.maxScrollOffset = org.chromium.gfx.mojom.PointF.decode(decoder1);
                 }
                 {
                     

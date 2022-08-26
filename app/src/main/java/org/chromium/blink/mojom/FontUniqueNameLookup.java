@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface FontUniqueNameLookup extends org.chromium.mojo.bindings.Interface {
 
@@ -23,20 +25,18 @@ public interface FontUniqueNameLookup extends org.chromium.mojo.bindings.Interfa
 
     Manager<FontUniqueNameLookup, FontUniqueNameLookup.Proxy> MANAGER = FontUniqueNameLookup_Internal.MANAGER;
 
-
     void getUniqueNameLookupTableIfAvailable(
 
-GetUniqueNameLookupTableIfAvailableResponse callback);
+GetUniqueNameLookupTableIfAvailable_Response callback);
 
-    interface GetUniqueNameLookupTableIfAvailableResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Boolean, org.chromium.mojo_base.mojom.ReadOnlySharedMemoryRegion> { }
-
+    interface GetUniqueNameLookupTableIfAvailable_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Boolean, org.chromium.mojo_base.mojom.ReadOnlySharedMemoryRegion> { }
 
 
     void getUniqueNameLookupTable(
 
-GetUniqueNameLookupTableResponse callback);
+GetUniqueNameLookupTable_Response callback);
 
-    interface GetUniqueNameLookupTableResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.ReadOnlySharedMemoryRegion> { }
+    interface GetUniqueNameLookupTable_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.ReadOnlySharedMemoryRegion> { }
 
 
 }

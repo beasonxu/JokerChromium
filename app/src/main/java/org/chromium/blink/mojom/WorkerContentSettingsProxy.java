@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface WorkerContentSettingsProxy extends org.chromium.mojo.bindings.Interface {
 
@@ -23,36 +25,32 @@ public interface WorkerContentSettingsProxy extends org.chromium.mojo.bindings.I
 
     Manager<WorkerContentSettingsProxy, WorkerContentSettingsProxy.Proxy> MANAGER = WorkerContentSettingsProxy_Internal.MANAGER;
 
-
     void allowIndexedDb(
 
-AllowIndexedDbResponse callback);
+AllowIndexedDb_Response callback);
 
-    interface AllowIndexedDbResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface AllowIndexedDb_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void allowCacheStorage(
 
-AllowCacheStorageResponse callback);
+AllowCacheStorage_Response callback);
 
-    interface AllowCacheStorageResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface AllowCacheStorage_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void allowWebLocks(
 
-AllowWebLocksResponse callback);
+AllowWebLocks_Response callback);
 
-    interface AllowWebLocksResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface AllowWebLocks_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void requestFileSystemAccessSync(
 
-RequestFileSystemAccessSyncResponse callback);
+RequestFileSystemAccessSync_Response callback);
 
-    interface RequestFileSystemAccessSyncResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
+    interface RequestFileSystemAccessSync_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
 }

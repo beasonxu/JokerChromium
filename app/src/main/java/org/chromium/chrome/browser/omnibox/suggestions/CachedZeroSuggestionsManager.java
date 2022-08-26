@@ -66,7 +66,7 @@ public class CachedZeroSuggestionsManager {
         SparseArray<GroupDetails> groupsDetails =
                 CachedZeroSuggestionsManager.readCachedGroupsDetails(manager);
         removeInvalidSuggestionsAndGroupsDetails(suggestions, groupsDetails);
-        return new AutocompleteResult(suggestions, groupsDetails);
+        return AutocompleteResult.fromCache(suggestions, groupsDetails);
     }
 
     /**
@@ -182,7 +182,7 @@ public class CachedZeroSuggestionsManager {
             AutocompleteMatch suggestion = new AutocompleteMatch(nativeType, subtypes, isSearchType,
                     0, 0, displayText, classifications, description, classifications, null, null,
                     url, GURL.emptyGURL(), null, isDeletable, postContentType, postData, groupId,
-                    null, null, false, null);
+                    null, null, false, null, null);
             suggestions.add(suggestion);
         }
 

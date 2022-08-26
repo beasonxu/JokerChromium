@@ -9,7 +9,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class NearOomMonitorJni implements NearOomMonitor.Natives {
+class NearOomMonitorJni implements NearOomMonitor.Natives {
   private static NearOomMonitor.Natives testInstance;
 
   public static final JniStaticTestMocker<NearOomMonitor.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.NearOomMonitor.Natives>() {

@@ -13,23 +13,26 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class TransferableResource extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 64;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(64, 0)};
+    private static final int STRUCT_SIZE = 72;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(72, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public ResourceId id;
     public int format;
     public int filter;
     public org.chromium.gfx.mojom.Size size;
     public org.chromium.gpu.mojom.MailboxHolder mailboxHolder;
-    public boolean readLockFencesEnabled;
+    public int synchronizationType;
     public boolean isSoftware;
     public boolean isOverlayCandidate;
     public boolean isBackedBySurfaceTexture;
     public boolean wantsPromotionHint;
     public org.chromium.gfx.mojom.ColorSpace colorSpace;
+    public org.chromium.gfx.mojom.HdrMetadata hdrMetadata;
     public org.chromium.gpu.mojom.VulkanYCbCrInfo ycbcrInfo;
 
     private TransferableResource(int version) {
@@ -92,23 +95,25 @@ public final class TransferableResource extends org.chromium.mojo.bindings.Struc
                 }
                 {
                     
-                result.readLockFencesEnabled = decoder0.readBoolean(40, 0);
+                result.synchronizationType = decoder0.readInt(40);
+                    SynchronizationType.validate(result.synchronizationType);
+                    result.synchronizationType = SynchronizationType.toKnownValue(result.synchronizationType);
                 }
                 {
                     
-                result.isSoftware = decoder0.readBoolean(40, 1);
+                result.isSoftware = decoder0.readBoolean(44, 0);
                 }
                 {
                     
-                result.isOverlayCandidate = decoder0.readBoolean(40, 2);
+                result.isOverlayCandidate = decoder0.readBoolean(44, 1);
                 }
                 {
                     
-                result.isBackedBySurfaceTexture = decoder0.readBoolean(40, 3);
+                result.isBackedBySurfaceTexture = decoder0.readBoolean(44, 2);
                 }
                 {
                     
-                result.wantsPromotionHint = decoder0.readBoolean(40, 4);
+                result.wantsPromotionHint = decoder0.readBoolean(44, 3);
                 }
                 {
                     
@@ -118,6 +123,11 @@ public final class TransferableResource extends org.chromium.mojo.bindings.Struc
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(56, true);
+                result.hdrMetadata = org.chromium.gfx.mojom.HdrMetadata.decode(decoder1);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(64, true);
                 result.ycbcrInfo = org.chromium.gpu.mojom.VulkanYCbCrInfo.decode(decoder1);
                 }
 
@@ -142,18 +152,20 @@ public final class TransferableResource extends org.chromium.mojo.bindings.Struc
         
         encoder0.encode(this.mailboxHolder, 32, false);
         
-        encoder0.encode(this.readLockFencesEnabled, 40, 0);
+        encoder0.encode(this.synchronizationType, 40);
         
-        encoder0.encode(this.isSoftware, 40, 1);
+        encoder0.encode(this.isSoftware, 44, 0);
         
-        encoder0.encode(this.isOverlayCandidate, 40, 2);
+        encoder0.encode(this.isOverlayCandidate, 44, 1);
         
-        encoder0.encode(this.isBackedBySurfaceTexture, 40, 3);
+        encoder0.encode(this.isBackedBySurfaceTexture, 44, 2);
         
-        encoder0.encode(this.wantsPromotionHint, 40, 4);
+        encoder0.encode(this.wantsPromotionHint, 44, 3);
         
         encoder0.encode(this.colorSpace, 48, false);
         
-        encoder0.encode(this.ycbcrInfo, 56, true);
+        encoder0.encode(this.hdrMetadata, 56, true);
+        
+        encoder0.encode(this.ycbcrInfo, 64, true);
     }
 }

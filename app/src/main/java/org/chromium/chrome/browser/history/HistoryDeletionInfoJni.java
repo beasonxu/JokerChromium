@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class HistoryDeletionInfoJni implements HistoryDeletionInfo.Natives {
+class HistoryDeletionInfoJni implements HistoryDeletionInfo.Natives {
   private static HistoryDeletionInfo.Natives testInstance;
 
   public static final JniStaticTestMocker<HistoryDeletionInfo.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.history.HistoryDeletionInfo.Natives>() {

@@ -10,7 +10,7 @@ import org.chromium.content_public.browser.WebContents;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class TabBrowserControlsConstraintsHelperJni implements TabBrowserControlsConstraintsHelper.Natives {
+class TabBrowserControlsConstraintsHelperJni implements TabBrowserControlsConstraintsHelper.Natives {
   private static TabBrowserControlsConstraintsHelper.Natives testInstance;
 
   public static final JniStaticTestMocker<TabBrowserControlsConstraintsHelper.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.tab.TabBrowserControlsConstraintsHelper.Natives>() {

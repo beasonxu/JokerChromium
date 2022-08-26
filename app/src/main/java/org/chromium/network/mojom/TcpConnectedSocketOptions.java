@@ -13,15 +13,18 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class TcpConnectedSocketOptions extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 24;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+    private static final int STRUCT_SIZE = 32;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int sendBufferSize;
     public int receiveBufferSize;
     public boolean noDelay;
+    public TcpKeepAliveOptions keepAliveOptions;
 
     private TcpConnectedSocketOptions(int version) {
         super(STRUCT_SIZE, version);
@@ -71,6 +74,11 @@ public final class TcpConnectedSocketOptions extends org.chromium.mojo.bindings.
                     
                 result.noDelay = decoder0.readBoolean(16, 0);
                 }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, true);
+                result.keepAliveOptions = TcpKeepAliveOptions.decode(decoder1);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -88,5 +96,7 @@ public final class TcpConnectedSocketOptions extends org.chromium.mojo.bindings.
         encoder0.encode(this.receiveBufferSize, 12);
         
         encoder0.encode(this.noDelay, 16, 0);
+        
+        encoder0.encode(this.keepAliveOptions, 24, true);
     }
 }

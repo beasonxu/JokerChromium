@@ -1,10 +1,17 @@
 package org.chromium.chrome.modules.cablev2_authenticator;
 
+import java.lang.String;
+import javax.annotation.Generated;
+import org.chromium.base.annotations.IdentifierNameString;
 import org.chromium.components.module_installer.engine.InstallEngine;
 import org.chromium.components.module_installer.engine.InstallListener;
 
+@Generated("org.chromium.components.module_installer.builder.ModuleInterfaceProcessor")
 public class Cablev2AuthenticatorModule {
-  private static final org.chromium.components.module_installer.builder.Module<Module> sModule = new org.chromium.components.module_installer.builder.Module<Module>("cablev2_authenticator", Module.class, "org.chromium.chrome.modules.cablev2_authenticator.ModuleImpl");
+  @IdentifierNameString
+  private static String sModuleClassString = "org.chromium.chrome.modules.cablev2_authenticator.ModuleImpl";
+
+  private static final org.chromium.components.module_installer.builder.Module<Module> sModule = new org.chromium.components.module_installer.builder.Module<Module>("cablev2_authenticator", Module.class, sModuleClassString);
 
   private Cablev2AuthenticatorModule() {
   }

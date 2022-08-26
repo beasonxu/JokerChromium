@@ -13,8 +13,17 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class InputEventResultSource {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        InputEventResultSource.UNKNOWN,
+        InputEventResultSource.COMPOSITOR_THREAD,
+        InputEventResultSource.MAIN_THREAD,
+        InputEventResultSource.BROWSER})
+    public @interface EnumType {}
 
     public static final int UNKNOWN = 0;
     public static final int COMPOSITOR_THREAD = 1;

@@ -70,8 +70,6 @@ public interface GetUpdatesResponseOrBuilder extends
    * |from_progress_marker| value for that datatype, the client should
    * interpret this to mean "no change from the previous state" and retain its
    * previous progress-marker value for that datatype.
-   * Progress markers in the context of a response will never have the
-   * |timestamp_token_for_migration| field set.
    * </pre>
    *
    * <code>repeated .sync_pb.DataTypeProgressMarker new_progress_marker = 5;</code>
@@ -92,8 +90,6 @@ public interface GetUpdatesResponseOrBuilder extends
    * |from_progress_marker| value for that datatype, the client should
    * interpret this to mean "no change from the previous state" and retain its
    * previous progress-marker value for that datatype.
-   * Progress markers in the context of a response will never have the
-   * |timestamp_token_for_migration| field set.
    * </pre>
    *
    * <code>repeated .sync_pb.DataTypeProgressMarker new_progress_marker = 5;</code>
@@ -113,8 +109,6 @@ public interface GetUpdatesResponseOrBuilder extends
    * |from_progress_marker| value for that datatype, the client should
    * interpret this to mean "no change from the previous state" and retain its
    * previous progress-marker value for that datatype.
-   * Progress markers in the context of a response will never have the
-   * |timestamp_token_for_migration| field set.
    * </pre>
    *
    * <code>repeated .sync_pb.DataTypeProgressMarker new_progress_marker = 5;</code>

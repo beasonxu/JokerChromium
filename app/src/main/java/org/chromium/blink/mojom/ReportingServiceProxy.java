@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ReportingServiceProxy extends org.chromium.mojo.bindings.Interface {
 
@@ -23,25 +25,20 @@ public interface ReportingServiceProxy extends org.chromium.mojo.bindings.Interf
 
     Manager<ReportingServiceProxy, ReportingServiceProxy.Proxy> MANAGER = ReportingServiceProxy_Internal.MANAGER;
 
-
     void queueInterventionReport(
 org.chromium.url.mojom.Url url, String id, String message, String sourceFile, int lineNumber, int columnNumber);
-
 
 
     void queueDeprecationReport(
 org.chromium.url.mojom.Url url, String id, org.chromium.mojo_base.mojom.Time anticipatedRemoval, String message, String sourceFile, int lineNumber, int columnNumber);
 
 
-
     void queueCspViolationReport(
 org.chromium.url.mojom.Url url, String group, String documentUrl, String referrer, String blockedUrl, String effectiveDirective, String originalPolicy, String sourceFile, String scriptSample, String disposition, short statusCode, int lineNumber, int columnNumber);
 
 
-
-    void queueFeaturePolicyViolationReport(
+    void queuePermissionsPolicyViolationReport(
 org.chromium.url.mojom.Url url, String policyId, String disposition, String message, String sourceFile, int lineNumber, int columnNumber);
-
 
 
     void queueDocumentPolicyViolationReport(

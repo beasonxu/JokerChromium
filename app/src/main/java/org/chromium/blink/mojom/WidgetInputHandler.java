@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface WidgetInputHandler extends org.chromium.mojo.bindings.Interface {
 
@@ -23,79 +25,68 @@ public interface WidgetInputHandler extends org.chromium.mojo.bindings.Interface
 
     Manager<WidgetInputHandler, WidgetInputHandler.Proxy> MANAGER = WidgetInputHandler_Internal.MANAGER;
 
-
     void setFocus(
-boolean focused);
-
+int state);
 
 
     void mouseCaptureLost(
 );
 
 
-
     void setEditCommandsForNextKeyEvent(
 EditCommand[] commands);
-
 
 
     void cursorVisibilityChanged(
 boolean visible);
 
 
-
     void imeSetComposition(
-org.chromium.mojo_base.mojom.String16 text, org.chromium.ui.mojom.ImeTextSpan[] imeTextSpans, org.chromium.gfx.mojom.Range range, int start, int end);
+org.chromium.mojo_base.mojom.String16 text, org.chromium.ui.mojom.ImeTextSpan[] imeTextSpans, org.chromium.gfx.mojom.Range range, int start, int end, 
+ImeSetComposition_Response callback);
 
+    interface ImeSetComposition_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void imeCommitText(
 org.chromium.mojo_base.mojom.String16 text, org.chromium.ui.mojom.ImeTextSpan[] imeTextSpans, org.chromium.gfx.mojom.Range range, int relativeCursorPosition, 
-ImeCommitTextResponse callback);
+ImeCommitText_Response callback);
 
-    interface ImeCommitTextResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface ImeCommitText_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void imeFinishComposingText(
 boolean keepSelection);
 
 
-
     void requestTextInputStateUpdate(
 );
-
 
 
     void requestCompositionUpdates(
 boolean immediateRequest, boolean monitorRequest);
 
 
-
     void dispatchEvent(
 Event event, 
-DispatchEventResponse callback);
+DispatchEvent_Response callback);
 
-    interface DispatchEventResponse extends org.chromium.mojo.bindings.Callbacks.Callback5<Integer, org.chromium.ui.mojom.LatencyInfo, Integer, DidOverscrollParams, TouchActionOptional> { }
-
+    interface DispatchEvent_Response extends org.chromium.mojo.bindings.Callbacks.Callback5<Integer, org.chromium.ui.mojom.LatencyInfo, Integer, DidOverscrollParams, TouchActionOptional> { }
 
 
     void dispatchNonBlockingEvent(
 Event event);
 
 
-
     void waitForInputProcessed(
 
-WaitForInputProcessedResponse callback);
+WaitForInputProcessed_Response callback);
 
-    interface WaitForInputProcessedResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface WaitForInputProcessed_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void attachSynchronousCompositor(
 SynchronousCompositorControlHost controlHost, org.chromium.mojo.bindings.AssociatedInterfaceNotSupported host, org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported compositorRequest);
-
 
 
     void getFrameWidgetInputHandler(

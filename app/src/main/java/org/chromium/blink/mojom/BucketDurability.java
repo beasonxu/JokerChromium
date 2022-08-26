@@ -13,8 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class BucketDurability {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        BucketDurability.RELAXED,
+        BucketDurability.STRICT})
+    public @interface EnumType {}
 
     public static final int RELAXED = 0;
     public static final int STRICT = 1;

@@ -13,6 +13,8 @@
 
 package org.chromium.ui.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class KeyData extends org.chromium.mojo.bindings.Struct {
 

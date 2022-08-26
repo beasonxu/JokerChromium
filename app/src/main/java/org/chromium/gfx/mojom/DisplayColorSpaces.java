@@ -13,6 +13,8 @@
 
 package org.chromium.gfx.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class DisplayColorSpaces extends org.chromium.mojo.bindings.Struct {
 
@@ -21,7 +23,8 @@ public final class DisplayColorSpaces extends org.chromium.mojo.bindings.Struct 
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public ColorSpace[] colorSpaces;
     public int[] bufferFormats;
-    public float sdrWhiteLevel;
+    public float sdrMaxLuminanceNits;
+    public float hdrMaxLuminanceRelative;
 
     private DisplayColorSpaces(int version) {
         super(STRUCT_SIZE, version);
@@ -80,7 +83,11 @@ public final class DisplayColorSpaces extends org.chromium.mojo.bindings.Struct 
                 }
                 {
                     
-                result.sdrWhiteLevel = decoder0.readFloat(24);
+                result.sdrMaxLuminanceNits = decoder0.readFloat(24);
+                }
+                {
+                    
+                result.hdrMaxLuminanceRelative = decoder0.readFloat(28);
                 }
 
         } finally {
@@ -106,6 +113,8 @@ public final class DisplayColorSpaces extends org.chromium.mojo.bindings.Struct 
         
         encoder0.encode(this.bufferFormats, 16, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, 6);
         
-        encoder0.encode(this.sdrWhiteLevel, 24);
+        encoder0.encode(this.sdrMaxLuminanceNits, 24);
+        
+        encoder0.encode(this.hdrMaxLuminanceRelative, 28);
     }
 }

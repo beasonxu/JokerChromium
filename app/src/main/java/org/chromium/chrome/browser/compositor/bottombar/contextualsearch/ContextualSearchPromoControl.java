@@ -14,15 +14,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.chromium.base.ApiCompatibilityUtils;
 import org.chromium.base.MathUtils;
 import org.chromium.chrome.R;
+import org.chromium.chrome.browser.ChromeSemanticColorUtils;
 import org.chromium.chrome.browser.compositor.bottombar.OverlayPanel;
 import org.chromium.chrome.browser.compositor.bottombar.OverlayPanelAnimation;
 import org.chromium.chrome.browser.compositor.bottombar.OverlayPanelInflater;
 import org.chromium.chrome.browser.compositor.bottombar.contextualsearch.ContextualSearchPanel.ContextualSearchPromoHost;
 import org.chromium.chrome.browser.contextualsearch.ContextualSearchManager;
 import org.chromium.chrome.browser.contextualsearch.ContextualSearchPreferenceFragment;
+import org.chromium.chrome.browser.contextualsearch.ContextualSearchUma;
+import org.chromium.chrome.browser.flags.ChromeFeatureList;
 import org.chromium.chrome.browser.layouts.animation.CompositorAnimator;
 import org.chromium.chrome.browser.settings.SettingsLauncherImpl;
 import org.chromium.components.browser_ui.settings.SettingsLauncher;
@@ -53,9 +55,6 @@ public class ContextualSearchPromoControl extends OverlayPanelInflater {
     /** Whether the Promo is visible. */
     private boolean mIsVisible;
 
-    /** Whether the Promo is mandatory. */
-    private boolean mIsMandatory;
-
     /** The opacity of the Promo. */
     private float mOpacity;
 
@@ -85,12 +84,15 @@ public class ContextualSearchPromoControl extends OverlayPanelInflater {
      */
     ContextualSearchPromoControl(OverlayPanel panel, ContextualSearchPromoHost host,
             Context context, ViewGroup container, DynamicResourceLoader resourceLoader) {
-        super(panel, R.layout.contextual_search_promo_view,
+        super(panel,
+                ChromeFeatureList.isEnabled(ChromeFeatureList.CONTEXTUAL_SEARCH_NEW_SETTINGS)
+                        ? R.layout.contextual_search_promo_view_revised
+                        : R.layout.contextual_search_promo_view,
                 R.id.contextual_search_promo, context, container, resourceLoader);
 
         mDpToPx = context.getResources().getDisplayMetrics().density;
-        mBackgroundColor = ApiCompatibilityUtils.getColor(
-                context.getResources(), R.color.contextual_search_promo_background_color);
+        mBackgroundColor =
+                ChromeSemanticColorUtils.getContextualSearchPromoBackgroundColor(context);
 
         mHost = host;
     }
@@ -101,9 +103,8 @@ public class ContextualSearchPromoControl extends OverlayPanelInflater {
 
     /**
      * Shows the Promo. This includes inflating the View and setting its initial state.
-     * @param isMandatory Whether the Promo is mandatory.
      */
-    void show(boolean isMandatory) {
+    void show() {
         if (mIsVisible) return;
 
         // Invalidates the View in order to generate a snapshot, but do not show the View yet.
@@ -111,7 +112,6 @@ public class ContextualSearchPromoControl extends OverlayPanelInflater {
         invalidate();
 
         mIsVisible = true;
-        mIsMandatory = isMandatory;
         mWasInteractive = false;
 
         mHeightPx = mContentHeightPx;
@@ -126,7 +126,6 @@ public class ContextualSearchPromoControl extends OverlayPanelInflater {
         hidePromoView();
 
         mIsVisible = false;
-        mIsMandatory = false;
 
         mHeightPx = 0.f;
         mOpacity = 0.f;
@@ -140,13 +139,7 @@ public class ContextualSearchPromoControl extends OverlayPanelInflater {
         if (!mIsVisible || !mOverlayPanel.isShowing()) return;
 
         if (isEnabled) {
-            boolean wasMandatory = mIsMandatory;
-            // Set mandatory state to false right now because it controls whether the Content
-            // can be displayed. See {@link ContextualSearchPanel#canDisplayContentInPanel}.
-            // Now that the feature is enabled, the host will try to show the Contents.
-            // See {@link ContextualSearchPanel#getContextualSearchPromoHost}.
-            mIsMandatory = false;
-            mHost.onPromoOptIn(wasMandatory);
+            mHost.onPromoOptIn();
         } else {
             mHost.onPromoOptOut();
         }
@@ -159,13 +152,6 @@ public class ContextualSearchPromoControl extends OverlayPanelInflater {
      */
     public boolean isVisible() {
         return mIsVisible;
-    }
-
-    /**
-     * @return Whether the Promo is mandatory.
-     */
-    public boolean isMandatory() {
-        return mIsMandatory;
     }
 
     /**
@@ -320,7 +306,7 @@ public class ContextualSearchPromoControl extends OverlayPanelInflater {
         super.invalidate(didViewSizeChange);
 
         if (didViewSizeChange) {
-            calculatePromoHeight();
+            onPromoViewSizeChange();
         }
     }
 
@@ -343,15 +329,19 @@ public class ContextualSearchPromoControl extends OverlayPanelInflater {
         // Fill in text with link to Settings.
         TextView promoText = (TextView) view.findViewById(R.id.contextual_search_promo_text);
 
-        NoUnderlineClickableSpan settingsLink = new NoUnderlineClickableSpan(view.getResources(),
+        NoUnderlineClickableSpan settingsLink = new NoUnderlineClickableSpan(view.getContext(),
                 (View ignored) -> ContextualSearchPromoControl.this.handleClickSettingsLink());
 
         promoText.setText(SpanApplier.applySpans(
-                view.getResources().getString(R.string.contextual_search_short_description),
+                view.getResources().getString(
+                        ChromeFeatureList.isEnabled(
+                                ChromeFeatureList.CONTEXTUAL_SEARCH_NEW_SETTINGS)
+                                ? R.string.contextual_search_promo_description
+                                : R.string.contextual_search_short_description),
                 new SpanApplier.SpanInfo("<link>", "</link>", settingsLink)));
         promoText.setMovementMethod(LinkMovementMethod.getInstance());
 
-        calculatePromoHeight();
+        onPromoViewSizeChange();
     }
 
     @Override
@@ -370,7 +360,8 @@ public class ContextualSearchPromoControl extends OverlayPanelInflater {
     private void handlePromoChoice(boolean hasEnabled) {
         if (!mHasHandledChoice) {
             mHasHandledChoice = true;
-            ContextualSearchManager.setContextualSearchState(hasEnabled);
+            ContextualSearchManager.setContextualSearchPromoCardSelection(hasEnabled);
+            ContextualSearchUma.logPromoCardChoice(hasEnabled);
         }
     }
 
@@ -424,6 +415,12 @@ public class ContextualSearchPromoControl extends OverlayPanelInflater {
 
         // The Promo can only be interacted when the View is being displayed.
         mWasInteractive = true;
+
+        ContextualSearchManager.onPromoShown();
+
+        if (ChromeFeatureList.isEnabled(ChromeFeatureList.CONTEXTUAL_SEARCH_NEW_SETTINGS)) {
+            updatePromoHeight();
+        }
     }
 
     /**
@@ -443,13 +440,19 @@ public class ContextualSearchPromoControl extends OverlayPanelInflater {
     }
 
     /**
-     * Calculates the content height of the Promo View, and adjusts the height of the Promo while
-     * preserving the proportion of the height with the content height. This should be called
-     * whenever the the size of the Promo View changes.
+     * This should be called whenever the the size of the Promo View changes or something inside the
+     * promo changes that could affect the overall size.
      */
-    private void calculatePromoHeight() {
+    private void onPromoViewSizeChange() {
         layout();
+        updatePromoHeight();
+    }
 
+    /**
+     * Calculates the content height of the Promo View, and adjusts the height of the Promo while
+     * preserving the proportion of the height with the content height.
+     */
+    private void updatePromoHeight() {
         final float previousContentHeight = mContentHeightPx;
         mContentHeightPx = getMeasuredHeight();
 

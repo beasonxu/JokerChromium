@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface PublicIpAddressGeolocationProvider extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface PublicIpAddressGeolocationProvider extends org.chromium.mojo.bi
     }
 
     Manager<PublicIpAddressGeolocationProvider, PublicIpAddressGeolocationProvider.Proxy> MANAGER = PublicIpAddressGeolocationProvider_Internal.MANAGER;
-
 
     void createGeolocation(
 org.chromium.network.mojom.MutablePartialNetworkTrafficAnnotationTag tag, org.chromium.mojo.bindings.InterfaceRequest<Geolocation> receiver);

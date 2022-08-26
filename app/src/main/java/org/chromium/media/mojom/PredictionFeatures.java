@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class PredictionFeatures extends org.chromium.mojo.bindings.Struct {
 

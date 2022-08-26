@@ -10,7 +10,7 @@ import org.chromium.url.GURL;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class UrlUtilJni implements UrlUtil.Natives {
+class UrlUtilJni implements UrlUtil.Natives {
   private static UrlUtil.Natives testInstance;
 
   public static final JniStaticTestMocker<UrlUtil.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.payments.UrlUtil.Natives>() {
@@ -26,6 +26,11 @@ final class UrlUtilJni implements UrlUtil.Natives {
   @Override
   public boolean isOriginAllowedToUseWebPaymentApis(GURL url) {
     return (boolean)GEN_JNI.org_chromium_components_payments_UrlUtil_isOriginAllowedToUseWebPaymentApis(url);
+  }
+
+  @Override
+  public boolean isValidUrlBasedPaymentMethodIdentifier(GURL url) {
+    return (boolean)GEN_JNI.org_chromium_components_payments_UrlUtil_isValidUrlBasedPaymentMethodIdentifier(url);
   }
 
   @Override

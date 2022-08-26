@@ -3,7 +3,6 @@ package org.chromium.chrome.browser.compositor.layouts.content;
 import android.graphics.Bitmap;
 import java.lang.Object;
 import java.lang.Override;
-import java.lang.String;
 import javax.annotation.Generated;
 import org.chromium.base.Callback;
 import org.chromium.base.JniStaticTestMocker;
@@ -11,10 +10,11 @@ import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.chrome.browser.tab.Tab;
+import org.chromium.url.GURL;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class TabContentManagerJni implements TabContentManager.Natives {
+class TabContentManagerJni implements TabContentManager.Natives {
   private static TabContentManager.Natives testInstance;
 
   public static final JniStaticTestMocker<TabContentManager.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.compositor.layouts.content.TabContentManager.Natives>() {
@@ -31,8 +31,8 @@ final class TabContentManagerJni implements TabContentManager.Natives {
   @Override
   public long init(TabContentManager caller, int defaultCacheSize, int approximationCacheSize,
       int compressionQueueMaxSize, int writeQueueMaxSize, boolean useApproximationThumbnail,
-      boolean saveJpegThumbnails) {
-    return (long)GEN_JNI.org_chromium_chrome_browser_compositor_layouts_content_TabContentManager_init(caller, defaultCacheSize, approximationCacheSize, compressionQueueMaxSize, writeQueueMaxSize, useApproximationThumbnail, saveJpegThumbnails);
+      boolean saveJpegThumbnails, double jpegAspectRatio) {
+    return (long)GEN_JNI.org_chromium_chrome_browser_compositor_layouts_content_TabContentManager_init(caller, defaultCacheSize, approximationCacheSize, compressionQueueMaxSize, writeQueueMaxSize, useApproximationThumbnail, saveJpegThumbnails, jpegAspectRatio);
   }
 
   @Override
@@ -55,19 +55,19 @@ final class TabContentManagerJni implements TabContentManager.Natives {
 
   @Override
   public void captureThumbnail(long nativeTabContentManager, TabContentManager caller, Object tab,
-      float thumbnailScale, boolean writeToCache, Callback<Bitmap> callback) {
-    GEN_JNI.org_chromium_chrome_browser_compositor_layouts_content_TabContentManager_captureThumbnail(nativeTabContentManager, caller, tab, thumbnailScale, writeToCache, callback);
+      float thumbnailScale, boolean writeToCache, double aspectRatio, Callback<Bitmap> callback) {
+    GEN_JNI.org_chromium_chrome_browser_compositor_layouts_content_TabContentManager_captureThumbnail(nativeTabContentManager, caller, tab, thumbnailScale, writeToCache, aspectRatio, callback);
   }
 
   @Override
   public void cacheTabWithBitmap(long nativeTabContentManager, TabContentManager caller, Object tab,
-      Object bitmap, float thumbnailScale) {
-    GEN_JNI.org_chromium_chrome_browser_compositor_layouts_content_TabContentManager_cacheTabWithBitmap(nativeTabContentManager, caller, tab, bitmap, thumbnailScale);
+      Object bitmap, float thumbnailScale, double aspectRatio) {
+    GEN_JNI.org_chromium_chrome_browser_compositor_layouts_content_TabContentManager_cacheTabWithBitmap(nativeTabContentManager, caller, tab, bitmap, thumbnailScale, aspectRatio);
   }
 
   @Override
   public void invalidateIfChanged(long nativeTabContentManager, TabContentManager caller, int tabId,
-      String url) {
+      GURL url) {
     GEN_JNI.org_chromium_chrome_browser_compositor_layouts_content_TabContentManager_invalidateIfChanged(nativeTabContentManager, caller, tabId, url);
   }
 
@@ -85,8 +85,8 @@ final class TabContentManagerJni implements TabContentManager.Natives {
 
   @Override
   public void getEtc1TabThumbnail(long nativeTabContentManager, TabContentManager caller, int tabId,
-      Callback<Bitmap> callback) {
-    GEN_JNI.org_chromium_chrome_browser_compositor_layouts_content_TabContentManager_getEtc1TabThumbnail(nativeTabContentManager, caller, tabId, callback);
+      double aspectRatio, Callback<Bitmap> callback) {
+    GEN_JNI.org_chromium_chrome_browser_compositor_layouts_content_TabContentManager_getEtc1TabThumbnail(nativeTabContentManager, caller, tabId, aspectRatio, callback);
   }
 
   @Override

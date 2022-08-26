@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface HidConnectionClient extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface HidConnectionClient extends org.chromium.mojo.bindings.Interfac
     }
 
     Manager<HidConnectionClient, HidConnectionClient.Proxy> MANAGER = HidConnectionClient_Internal.MANAGER;
-
 
     void onInputReport(
 byte reportId, byte[] buffer);

@@ -6,6 +6,7 @@ package org.chromium.chrome.browser.tabmodel.document;
 
 import android.app.Activity;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.Browser;
@@ -13,13 +14,14 @@ import android.provider.Browser;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.chromium.base.ApplicationStatus;
 import org.chromium.base.ContextUtils;
+import org.chromium.base.IntentUtils;
+import org.chromium.chrome.browser.ActivityUtils;
 import org.chromium.chrome.browser.ChromeTabbedActivity;
 import org.chromium.chrome.browser.IntentHandler;
 import org.chromium.chrome.browser.ServiceTabLauncher;
-import org.chromium.chrome.browser.app.ChromeActivity;
 import org.chromium.chrome.browser.app.tabmodel.AsyncTabParamsManagerSingleton;
+import org.chromium.chrome.browser.app.tabmodel.TabWindowManagerSingleton;
 import org.chromium.chrome.browser.document.ChromeLauncherActivity;
 import org.chromium.chrome.browser.multiwindow.MultiInstanceManager;
 import org.chromium.chrome.browser.multiwindow.MultiWindowUtils;
@@ -28,6 +30,7 @@ import org.chromium.chrome.browser.tab.TabBuilder;
 import org.chromium.chrome.browser.tab.TabIdManager;
 import org.chromium.chrome.browser.tab.TabLaunchType;
 import org.chromium.chrome.browser.tab.TabState;
+import org.chromium.chrome.browser.tab.state.SerializedCriticalPersistedTabData;
 import org.chromium.chrome.browser.tabmodel.AsyncTabCreationParams;
 import org.chromium.chrome.browser.tabmodel.AsyncTabCreator;
 import org.chromium.content_public.browser.LoadUrlParams;
@@ -55,13 +58,11 @@ public class TabDelegate extends AsyncTabCreator {
     private static Activity getActivityForTabId(int id) {
         if (id == Tab.INVALID_TAB_ID) return null;
 
-        for (Activity runningActivity : ApplicationStatus.getRunningActivities()) {
-            if (!(runningActivity instanceof ChromeActivity)) continue;
+        Tab tab = TabWindowManagerSingleton.getInstance().getTabById(id);
+        if (tab == null) return null;
 
-            ChromeActivity activity = (ChromeActivity) runningActivity;
-            if (activity.getTabModelSelector().getTabById(id) != null) return activity;
-        }
-        return null;
+        Context tabContext = tab.getContext();
+        return (tabContext instanceof Activity) ? (Activity) tabContext : null;
     }
 
     @Override
@@ -75,7 +76,8 @@ public class TabDelegate extends AsyncTabCreator {
      * The index is ignored in DocumentMode because Android handles the ordering of Tabs.
      */
     @Override
-    public Tab createFrozenTab(TabState state, byte[] criticalPersistedTabData, int id,
+    public Tab createFrozenTab(TabState state,
+            SerializedCriticalPersistedTabData criticalPersistedTabData, int id,
             boolean isIncognito, int index) {
         if (isIncognito != mIsIncognito) {
             throw new IllegalStateException("Incognito state mismatch. isIncognito: " + isIncognito
@@ -95,7 +97,7 @@ public class TabDelegate extends AsyncTabCreator {
 
     @Override
     public void createTabInOtherWindow(
-            LoadUrlParams loadUrlParams, Activity activity, int parentId) {
+            LoadUrlParams loadUrlParams, Activity activity, int parentId, Activity otherActivity) {
         Intent intent = createNewTabIntent(
                 new AsyncTabCreationParams(loadUrlParams), parentId, false);
 
@@ -104,8 +106,20 @@ public class TabDelegate extends AsyncTabCreator {
         if (targetActivity == null) return;
 
         MultiWindowUtils.setOpenInOtherWindowIntentExtras(intent, activity, targetActivity);
-        IntentHandler.addTrustedIntentExtras(intent);
+        IntentUtils.addTrustedIntentExtras(intent);
+
         MultiInstanceManager.onMultiInstanceModeStarted();
+        if (MultiWindowUtils.isMultiInstanceApi31Enabled()) {
+            // If there is a Chrome window running adjacently, open the link in it.
+            // Otherwise create a new window.
+            if (otherActivity != null) {
+                assert otherActivity instanceof ChromeTabbedActivity;
+                ((ChromeTabbedActivity) otherActivity).onNewIntent(intent);
+                return;
+            }
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+        }
         activity.startActivity(
                 intent, MultiWindowUtils.getOpenInOtherWindowActivityOptions(activity));
     }
@@ -155,7 +169,7 @@ public class TabDelegate extends AsyncTabCreator {
         if (componentName == null) {
             intent.setClass(ContextUtils.getApplicationContext(), ChromeLauncherActivity.class);
         } else {
-            ChromeTabbedActivity.setNonAliasedComponent(intent, componentName);
+            ActivityUtils.setNonAliasedComponentForMainBrowsingActivity(intent, componentName);
         }
         IntentHandler.setIntentExtraHeaders(
                 asyncParams.getLoadUrlParams().getExtraHeaders(), intent);

@@ -9,7 +9,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ArCoreInstallUtilsJni implements ArCoreInstallUtils.ArInstallHelperNative {
+class ArCoreInstallUtilsJni implements ArCoreInstallUtils.ArInstallHelperNative {
   private static ArCoreInstallUtils.ArInstallHelperNative testInstance;
 
   public static final JniStaticTestMocker<ArCoreInstallUtils.ArInstallHelperNative> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.webxr.ArCoreInstallUtils.ArInstallHelperNative>() {

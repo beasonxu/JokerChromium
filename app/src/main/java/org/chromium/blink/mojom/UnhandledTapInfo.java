@@ -13,20 +13,18 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class UnhandledTapInfo extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 24;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+    private static final int STRUCT_SIZE = 16;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public org.chromium.gfx.mojom.Point tappedPositionInViewport;
-    public int fontSizeInPixels;
-    public int elementTextRunLength;
 
     private UnhandledTapInfo(int version) {
         super(STRUCT_SIZE, version);
-        this.fontSizeInPixels = (int) 0;
-        this.elementTextRunLength = (int) 0;
     }
 
     public UnhandledTapInfo() {
@@ -63,14 +61,6 @@ public final class UnhandledTapInfo extends org.chromium.mojo.bindings.Struct {
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
                 result.tappedPositionInViewport = org.chromium.gfx.mojom.Point.decode(decoder1);
                 }
-                {
-                    
-                result.fontSizeInPixels = decoder0.readInt(16);
-                }
-                {
-                    
-                result.elementTextRunLength = decoder0.readInt(20);
-                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -84,9 +74,5 @@ public final class UnhandledTapInfo extends org.chromium.mojo.bindings.Struct {
         org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         
         encoder0.encode(this.tappedPositionInViewport, 8, false);
-        
-        encoder0.encode(this.fontSizeInPixels, 16);
-        
-        encoder0.encode(this.elementTextRunLength, 20);
     }
 }

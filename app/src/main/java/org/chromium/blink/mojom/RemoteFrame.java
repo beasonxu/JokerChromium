@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface RemoteFrame extends org.chromium.mojo.bindings.Interface {
 
@@ -23,164 +25,132 @@ public interface RemoteFrame extends org.chromium.mojo.bindings.Interface {
 
     Manager<RemoteFrame, RemoteFrame.Proxy> MANAGER = RemoteFrame_Internal.MANAGER;
 
-
     void willEnterFullscreen(
 FullscreenOptions options);
-
-
-
-    void addReplicatedContentSecurityPolicies(
-org.chromium.network.mojom.ContentSecurityPolicy[] csps);
-
-
-
-    void resetReplicatedContentSecurityPolicy(
-);
-
 
 
     void enforceInsecureNavigationsSet(
 int[] set);
 
 
-
     void setFrameOwnerProperties(
 FrameOwnerProperties properties);
-
 
 
     void enforceInsecureRequestPolicy(
 int policy);
 
 
-
     void setReplicatedOrigin(
 org.chromium.url.internal.mojom.Origin origin, boolean isPotentiallyTrustworthyUniqueOrigin);
 
 
-
-    void setReplicatedAdFrameType(
-int adFrameType);
-
+    void setReplicatedIsAdSubframe(
+boolean isAdSubframe);
 
 
     void setReplicatedName(
 String name, String uniqueName);
 
 
-
     void dispatchLoadEventForFrameOwner(
 );
-
 
 
     void setNeedsOcclusionTracking(
 boolean needsTracking);
 
 
-
     void collapse(
 boolean collapsed);
-
 
 
     void focus(
 );
 
 
-
     void setHadStickyUserActivationBeforeNavigation(
 boolean hasGesture);
-
 
 
     void bubbleLogicalScroll(
 int direction, int granularity);
 
 
-
     void updateUserActivationState(
 int stateUpdateType, int notificationType);
-
 
 
     void setEmbeddingToken(
 org.chromium.mojo_base.mojom.UnguessableToken embeddingToken);
 
 
-
     void setPageFocus(
 boolean isFocused);
-
 
 
     void renderFallbackContent(
 );
 
 
+    void renderFallbackContentWithResourceTiming(
+ResourceTimingInfo timing, String serverTimingValue);
+
 
     void addResourceTimingFromChild(
 ResourceTimingInfo timing);
 
 
-
     void scrollRectToVisible(
-org.chromium.gfx.mojom.Rect rect, ScrollIntoViewParams params);
-
+org.chromium.gfx.mojom.RectF rect, ScrollIntoViewParams params);
 
 
     void didStartLoading(
 );
 
 
-
     void didStopLoading(
 );
-
 
 
     void intrinsicSizingInfoOfChildChanged(
 IntrinsicSizingInfo sizingInfo);
 
 
-
     void didSetFramePolicyHeaders(
-int sandboxFlags, ParsedFeaturePolicyDeclaration[] parsedFeaturePolicy);
-
+int sandboxFlags, ParsedPermissionsPolicyDeclaration[] parsedPermissionsPolicy);
 
 
     void didUpdateFramePolicy(
 FramePolicy framePolicy);
 
 
-
     void updateOpener(
 FrameToken openerFrameToken);
-
 
 
     void detachAndDispose(
 );
 
 
-
     void enableAutoResize(
 org.chromium.gfx.mojom.Size minSize, org.chromium.gfx.mojom.Size maxSize);
-
 
 
     void disableAutoResize(
 );
 
 
-
     void didUpdateVisualProperties(
 org.chromium.cc.mojom.RenderFrameMetadata metadata);
 
 
-
     void setFrameSinkId(
 org.chromium.viz.mojom.FrameSinkId frameSinkId);
+
+
+    void childProcessGone(
+);
 
 
 }

@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class VideoDecodePerfHistory_Internal {
 
@@ -61,7 +63,7 @@ class VideoDecodePerfHistory_Internal {
         @Override
         public void getPerfInfo(
 PredictionFeatures features, 
-GetPerfInfoResponse callback) {
+GetPerfInfo_Response callback) {
 
             VideoDecodePerfHistoryGetPerfInfoParams _message = new VideoDecodePerfHistoryGetPerfInfoParams();
 
@@ -299,9 +301,9 @@ GetPerfInfoResponse callback) {
 
     static class VideoDecodePerfHistoryGetPerfInfoResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final VideoDecodePerfHistory.GetPerfInfoResponse mCallback;
+        private final VideoDecodePerfHistory.GetPerfInfo_Response mCallback;
 
-        VideoDecodePerfHistoryGetPerfInfoResponseParamsForwardToCallback(VideoDecodePerfHistory.GetPerfInfoResponse callback) {
+        VideoDecodePerfHistoryGetPerfInfoResponseParamsForwardToCallback(VideoDecodePerfHistory.GetPerfInfo_Response callback) {
             this.mCallback = callback;
         }
 
@@ -326,7 +328,7 @@ GetPerfInfoResponse callback) {
         }
     }
 
-    static class VideoDecodePerfHistoryGetPerfInfoResponseParamsProxyToResponder implements VideoDecodePerfHistory.GetPerfInfoResponse {
+    static class VideoDecodePerfHistoryGetPerfInfoResponseParamsProxyToResponder implements VideoDecodePerfHistory.GetPerfInfo_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

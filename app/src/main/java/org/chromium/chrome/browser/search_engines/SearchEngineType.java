@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -46,7 +46,10 @@ import java.lang.annotation.RetentionPolicy;
     SearchEngineType.SEARCH_ENGINE_GIVERO, SearchEngineType.SEARCH_ENGINE_GMX,
     SearchEngineType.SEARCH_ENGINE_INFO_COM, SearchEngineType.SEARCH_ENGINE_METAGER,
     SearchEngineType.SEARCH_ENGINE_OCEANHERO, SearchEngineType.SEARCH_ENGINE_PRIVACYWALL,
-    SearchEngineType.SEARCH_ENGINE_ECOSIA, SearchEngineType.SEARCH_ENGINE_MAX
+    SearchEngineType.SEARCH_ENGINE_ECOSIA, SearchEngineType.SEARCH_ENGINE_PETALSEARCH,
+    SearchEngineType.SEARCH_ENGINE_STARTER_PACK_BOOKMARKS,
+    SearchEngineType.SEARCH_ENGINE_STARTER_PACK_HISTORY,
+    SearchEngineType.SEARCH_ENGINE_STARTER_PACK_TABS, SearchEngineType.SEARCH_ENGINE_MAX
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface SearchEngineType {
@@ -114,5 +117,9 @@ public @interface SearchEngineType {
   int SEARCH_ENGINE_OCEANHERO = 57;
   int SEARCH_ENGINE_PRIVACYWALL = 58;
   int SEARCH_ENGINE_ECOSIA = 59;
-  int SEARCH_ENGINE_MAX = 60;
+  int SEARCH_ENGINE_PETALSEARCH = 60;
+  int SEARCH_ENGINE_STARTER_PACK_BOOKMARKS = 61;
+  int SEARCH_ENGINE_STARTER_PACK_HISTORY = 62;
+  int SEARCH_ENGINE_STARTER_PACK_TABS = 63;
+  int SEARCH_ENGINE_MAX = 64;
 }

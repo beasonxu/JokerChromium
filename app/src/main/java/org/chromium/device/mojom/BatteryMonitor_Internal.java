@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class BatteryMonitor_Internal {
 
@@ -61,7 +63,7 @@ class BatteryMonitor_Internal {
         @Override
         public void queryNextStatus(
 
-QueryNextStatusResponse callback) {
+QueryNextStatus_Response callback) {
 
             BatteryMonitorQueryNextStatusParams _message = new BatteryMonitorQueryNextStatusParams();
 
@@ -282,9 +284,9 @@ QueryNextStatusResponse callback) {
 
     static class BatteryMonitorQueryNextStatusResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BatteryMonitor.QueryNextStatusResponse mCallback;
+        private final BatteryMonitor.QueryNextStatus_Response mCallback;
 
-        BatteryMonitorQueryNextStatusResponseParamsForwardToCallback(BatteryMonitor.QueryNextStatusResponse callback) {
+        BatteryMonitorQueryNextStatusResponseParamsForwardToCallback(BatteryMonitor.QueryNextStatus_Response callback) {
             this.mCallback = callback;
         }
 
@@ -309,7 +311,7 @@ QueryNextStatusResponse callback) {
         }
     }
 
-    static class BatteryMonitorQueryNextStatusResponseParamsProxyToResponder implements BatteryMonitor.QueryNextStatusResponse {
+    static class BatteryMonitorQueryNextStatusResponseParamsProxyToResponder implements BatteryMonitor.QueryNextStatus_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

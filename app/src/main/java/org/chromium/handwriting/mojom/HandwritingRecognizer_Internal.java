@@ -13,6 +13,8 @@
 
 package org.chromium.handwriting.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class HandwritingRecognizer_Internal {
 
@@ -61,7 +63,7 @@ class HandwritingRecognizer_Internal {
         @Override
         public void getPrediction(
 HandwritingStroke[] strokes, HandwritingHints hints, 
-GetPredictionResponse callback) {
+GetPrediction_Response callback) {
 
             HandwritingRecognizerGetPredictionParams _message = new HandwritingRecognizerGetPredictionParams();
 
@@ -337,9 +339,9 @@ GetPredictionResponse callback) {
 
     static class HandwritingRecognizerGetPredictionResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final HandwritingRecognizer.GetPredictionResponse mCallback;
+        private final HandwritingRecognizer.GetPrediction_Response mCallback;
 
-        HandwritingRecognizerGetPredictionResponseParamsForwardToCallback(HandwritingRecognizer.GetPredictionResponse callback) {
+        HandwritingRecognizerGetPredictionResponseParamsForwardToCallback(HandwritingRecognizer.GetPrediction_Response callback) {
             this.mCallback = callback;
         }
 
@@ -364,7 +366,7 @@ GetPredictionResponse callback) {
         }
     }
 
-    static class HandwritingRecognizerGetPredictionResponseParamsProxyToResponder implements HandwritingRecognizer.GetPredictionResponse {
+    static class HandwritingRecognizerGetPredictionResponseParamsProxyToResponder implements HandwritingRecognizer.GetPrediction_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

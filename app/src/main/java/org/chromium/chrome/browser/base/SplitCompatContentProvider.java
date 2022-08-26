@@ -10,6 +10,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 
+import org.chromium.base.BundleUtils;
+
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
@@ -31,8 +33,8 @@ public class SplitCompatContentProvider extends ContentProvider {
         // when it is created.
         synchronized (mImplLock) {
             if (mImpl == null) {
-                Context context = SplitCompatUtils.createChromeContext(getContext());
-                mImpl = (Impl) SplitCompatUtils.newInstance(context, mContentProviderClassName);
+                Context context = SplitCompatApplication.createChromeContext(getContext());
+                mImpl = (Impl) BundleUtils.newInstance(context, mContentProviderClassName);
                 mImpl.setContentProvider(this);
             }
             return mImpl;
@@ -88,6 +90,10 @@ public class SplitCompatContentProvider extends ContentProvider {
 
         protected final Context getContext() {
             return mContentProvider.getContext();
+        }
+
+        protected final String getCallingPackage() {
+            return mContentProvider.getCallingPackage();
         }
 
         public abstract Cursor query(Uri uri, String[] projection, String selection,

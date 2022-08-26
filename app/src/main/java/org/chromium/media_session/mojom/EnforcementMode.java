@@ -13,8 +13,17 @@
 
 package org.chromium.media_session.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class EnforcementMode {
     private static final boolean IS_EXTENSIBLE = true;
+    @IntDef({
+
+        EnforcementMode.DEFAULT,
+        EnforcementMode.NONE,
+        EnforcementMode.SINGLE_GROUP,
+        EnforcementMode.SINGLE_SESSION})
+    public @interface EnumType {}
 
     public static final int DEFAULT = 0;
     public static final int NONE = 1;

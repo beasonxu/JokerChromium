@@ -220,8 +220,7 @@ public  final class GetUpdatesMessage extends
   private com.google.protobuf.Internal.ProtobufList<org.chromium.components.sync.protocol.DataTypeProgressMarker> fromProgressMarker_;
   /**
    * <pre>
-   * Per-datatype progress marker.  If present, the server will ignore
-   * the values of requested_types and from_timestamp, using this instead.
+   * Per-datatype progress marker.
    * With the exception of certain configuration or initial sync requests, the
    * client should include one instance of this field for each enabled data
    * type.
@@ -235,8 +234,7 @@ public  final class GetUpdatesMessage extends
   }
   /**
    * <pre>
-   * Per-datatype progress marker.  If present, the server will ignore
-   * the values of requested_types and from_timestamp, using this instead.
+   * Per-datatype progress marker.
    * With the exception of certain configuration or initial sync requests, the
    * client should include one instance of this field for each enabled data
    * type.
@@ -250,8 +248,7 @@ public  final class GetUpdatesMessage extends
   }
   /**
    * <pre>
-   * Per-datatype progress marker.  If present, the server will ignore
-   * the values of requested_types and from_timestamp, using this instead.
+   * Per-datatype progress marker.
    * With the exception of certain configuration or initial sync requests, the
    * client should include one instance of this field for each enabled data
    * type.
@@ -265,8 +262,7 @@ public  final class GetUpdatesMessage extends
   }
   /**
    * <pre>
-   * Per-datatype progress marker.  If present, the server will ignore
-   * the values of requested_types and from_timestamp, using this instead.
+   * Per-datatype progress marker.
    * With the exception of certain configuration or initial sync requests, the
    * client should include one instance of this field for each enabled data
    * type.
@@ -280,8 +276,7 @@ public  final class GetUpdatesMessage extends
   }
   /**
    * <pre>
-   * Per-datatype progress marker.  If present, the server will ignore
-   * the values of requested_types and from_timestamp, using this instead.
+   * Per-datatype progress marker.
    * With the exception of certain configuration or initial sync requests, the
    * client should include one instance of this field for each enabled data
    * type.
@@ -303,8 +298,7 @@ public  final class GetUpdatesMessage extends
 
   /**
    * <pre>
-   * Per-datatype progress marker.  If present, the server will ignore
-   * the values of requested_types and from_timestamp, using this instead.
+   * Per-datatype progress marker.
    * With the exception of certain configuration or initial sync requests, the
    * client should include one instance of this field for each enabled data
    * type.
@@ -320,8 +314,7 @@ public  final class GetUpdatesMessage extends
   }
   /**
    * <pre>
-   * Per-datatype progress marker.  If present, the server will ignore
-   * the values of requested_types and from_timestamp, using this instead.
+   * Per-datatype progress marker.
    * With the exception of certain configuration or initial sync requests, the
    * client should include one instance of this field for each enabled data
    * type.
@@ -336,8 +329,7 @@ public  final class GetUpdatesMessage extends
   }
   /**
    * <pre>
-   * Per-datatype progress marker.  If present, the server will ignore
-   * the values of requested_types and from_timestamp, using this instead.
+   * Per-datatype progress marker.
    * With the exception of certain configuration or initial sync requests, the
    * client should include one instance of this field for each enabled data
    * type.
@@ -353,8 +345,7 @@ public  final class GetUpdatesMessage extends
   }
   /**
    * <pre>
-   * Per-datatype progress marker.  If present, the server will ignore
-   * the values of requested_types and from_timestamp, using this instead.
+   * Per-datatype progress marker.
    * With the exception of certain configuration or initial sync requests, the
    * client should include one instance of this field for each enabled data
    * type.
@@ -370,8 +361,7 @@ public  final class GetUpdatesMessage extends
   }
   /**
    * <pre>
-   * Per-datatype progress marker.  If present, the server will ignore
-   * the values of requested_types and from_timestamp, using this instead.
+   * Per-datatype progress marker.
    * With the exception of certain configuration or initial sync requests, the
    * client should include one instance of this field for each enabled data
    * type.
@@ -384,8 +374,7 @@ public  final class GetUpdatesMessage extends
   }
   /**
    * <pre>
-   * Per-datatype progress marker.  If present, the server will ignore
-   * the values of requested_types and from_timestamp, using this instead.
+   * Per-datatype progress marker.
    * With the exception of certain configuration or initial sync requests, the
    * client should include one instance of this field for each enabled data
    * type.
@@ -404,7 +393,7 @@ public  final class GetUpdatesMessage extends
    * <pre>
    * Indicates whether the response should be sent in chunks.  This may be
    * needed for devices with limited memory resources.  If true, the response
-   * will include one or more ClientToServerResponses, with the frist one
+   * will include one or more ClientToServerResponses, with the first one
    * containing GetUpdatesMetadataResponse, and the remaining ones, if any,
    * containing GetUpdatesStreamingResponse.  These ClientToServerResponses are
    * delimited by a length prefix, which is encoded as a varint.
@@ -421,7 +410,7 @@ public  final class GetUpdatesMessage extends
    * <pre>
    * Indicates whether the response should be sent in chunks.  This may be
    * needed for devices with limited memory resources.  If true, the response
-   * will include one or more ClientToServerResponses, with the frist one
+   * will include one or more ClientToServerResponses, with the first one
    * containing GetUpdatesMetadataResponse, and the remaining ones, if any,
    * containing GetUpdatesStreamingResponse.  These ClientToServerResponses are
    * delimited by a length prefix, which is encoded as a varint.
@@ -438,7 +427,7 @@ public  final class GetUpdatesMessage extends
    * <pre>
    * Indicates whether the response should be sent in chunks.  This may be
    * needed for devices with limited memory resources.  If true, the response
-   * will include one or more ClientToServerResponses, with the frist one
+   * will include one or more ClientToServerResponses, with the first one
    * containing GetUpdatesMetadataResponse, and the remaining ones, if any,
    * containing GetUpdatesStreamingResponse.  These ClientToServerResponses are
    * delimited by a length prefix, which is encoded as a varint.
@@ -455,7 +444,7 @@ public  final class GetUpdatesMessage extends
    * <pre>
    * Indicates whether the response should be sent in chunks.  This may be
    * needed for devices with limited memory resources.  If true, the response
-   * will include one or more ClientToServerResponses, with the frist one
+   * will include one or more ClientToServerResponses, with the first one
    * containing GetUpdatesMetadataResponse, and the remaining ones, if any,
    * containing GetUpdatesStreamingResponse.  These ClientToServerResponses are
    * delimited by a length prefix, which is encoded as a varint.
@@ -1153,8 +1142,7 @@ public  final class GetUpdatesMessage extends
 
     /**
      * <pre>
-     * Per-datatype progress marker.  If present, the server will ignore
-     * the values of requested_types and from_timestamp, using this instead.
+     * Per-datatype progress marker.
      * With the exception of certain configuration or initial sync requests, the
      * client should include one instance of this field for each enabled data
      * type.
@@ -1169,8 +1157,7 @@ public  final class GetUpdatesMessage extends
     }
     /**
      * <pre>
-     * Per-datatype progress marker.  If present, the server will ignore
-     * the values of requested_types and from_timestamp, using this instead.
+     * Per-datatype progress marker.
      * With the exception of certain configuration or initial sync requests, the
      * client should include one instance of this field for each enabled data
      * type.
@@ -1183,8 +1170,7 @@ public  final class GetUpdatesMessage extends
       return instance.getFromProgressMarkerCount();
     }/**
      * <pre>
-     * Per-datatype progress marker.  If present, the server will ignore
-     * the values of requested_types and from_timestamp, using this instead.
+     * Per-datatype progress marker.
      * With the exception of certain configuration or initial sync requests, the
      * client should include one instance of this field for each enabled data
      * type.
@@ -1198,8 +1184,7 @@ public  final class GetUpdatesMessage extends
     }
     /**
      * <pre>
-     * Per-datatype progress marker.  If present, the server will ignore
-     * the values of requested_types and from_timestamp, using this instead.
+     * Per-datatype progress marker.
      * With the exception of certain configuration or initial sync requests, the
      * client should include one instance of this field for each enabled data
      * type.
@@ -1215,8 +1200,7 @@ public  final class GetUpdatesMessage extends
     }
     /**
      * <pre>
-     * Per-datatype progress marker.  If present, the server will ignore
-     * the values of requested_types and from_timestamp, using this instead.
+     * Per-datatype progress marker.
      * With the exception of certain configuration or initial sync requests, the
      * client should include one instance of this field for each enabled data
      * type.
@@ -1233,8 +1217,7 @@ public  final class GetUpdatesMessage extends
     }
     /**
      * <pre>
-     * Per-datatype progress marker.  If present, the server will ignore
-     * the values of requested_types and from_timestamp, using this instead.
+     * Per-datatype progress marker.
      * With the exception of certain configuration or initial sync requests, the
      * client should include one instance of this field for each enabled data
      * type.
@@ -1249,8 +1232,7 @@ public  final class GetUpdatesMessage extends
     }
     /**
      * <pre>
-     * Per-datatype progress marker.  If present, the server will ignore
-     * the values of requested_types and from_timestamp, using this instead.
+     * Per-datatype progress marker.
      * With the exception of certain configuration or initial sync requests, the
      * client should include one instance of this field for each enabled data
      * type.
@@ -1266,8 +1248,7 @@ public  final class GetUpdatesMessage extends
     }
     /**
      * <pre>
-     * Per-datatype progress marker.  If present, the server will ignore
-     * the values of requested_types and from_timestamp, using this instead.
+     * Per-datatype progress marker.
      * With the exception of certain configuration or initial sync requests, the
      * client should include one instance of this field for each enabled data
      * type.
@@ -1283,8 +1264,7 @@ public  final class GetUpdatesMessage extends
     }
     /**
      * <pre>
-     * Per-datatype progress marker.  If present, the server will ignore
-     * the values of requested_types and from_timestamp, using this instead.
+     * Per-datatype progress marker.
      * With the exception of certain configuration or initial sync requests, the
      * client should include one instance of this field for each enabled data
      * type.
@@ -1301,8 +1281,7 @@ public  final class GetUpdatesMessage extends
     }
     /**
      * <pre>
-     * Per-datatype progress marker.  If present, the server will ignore
-     * the values of requested_types and from_timestamp, using this instead.
+     * Per-datatype progress marker.
      * With the exception of certain configuration or initial sync requests, the
      * client should include one instance of this field for each enabled data
      * type.
@@ -1318,8 +1297,7 @@ public  final class GetUpdatesMessage extends
     }
     /**
      * <pre>
-     * Per-datatype progress marker.  If present, the server will ignore
-     * the values of requested_types and from_timestamp, using this instead.
+     * Per-datatype progress marker.
      * With the exception of certain configuration or initial sync requests, the
      * client should include one instance of this field for each enabled data
      * type.
@@ -1334,8 +1312,7 @@ public  final class GetUpdatesMessage extends
     }
     /**
      * <pre>
-     * Per-datatype progress marker.  If present, the server will ignore
-     * the values of requested_types and from_timestamp, using this instead.
+     * Per-datatype progress marker.
      * With the exception of certain configuration or initial sync requests, the
      * client should include one instance of this field for each enabled data
      * type.
@@ -1353,7 +1330,7 @@ public  final class GetUpdatesMessage extends
      * <pre>
      * Indicates whether the response should be sent in chunks.  This may be
      * needed for devices with limited memory resources.  If true, the response
-     * will include one or more ClientToServerResponses, with the frist one
+     * will include one or more ClientToServerResponses, with the first one
      * containing GetUpdatesMetadataResponse, and the remaining ones, if any,
      * containing GetUpdatesStreamingResponse.  These ClientToServerResponses are
      * delimited by a length prefix, which is encoded as a varint.
@@ -1370,7 +1347,7 @@ public  final class GetUpdatesMessage extends
      * <pre>
      * Indicates whether the response should be sent in chunks.  This may be
      * needed for devices with limited memory resources.  If true, the response
-     * will include one or more ClientToServerResponses, with the frist one
+     * will include one or more ClientToServerResponses, with the first one
      * containing GetUpdatesMetadataResponse, and the remaining ones, if any,
      * containing GetUpdatesStreamingResponse.  These ClientToServerResponses are
      * delimited by a length prefix, which is encoded as a varint.
@@ -1387,7 +1364,7 @@ public  final class GetUpdatesMessage extends
      * <pre>
      * Indicates whether the response should be sent in chunks.  This may be
      * needed for devices with limited memory resources.  If true, the response
-     * will include one or more ClientToServerResponses, with the frist one
+     * will include one or more ClientToServerResponses, with the first one
      * containing GetUpdatesMetadataResponse, and the remaining ones, if any,
      * containing GetUpdatesStreamingResponse.  These ClientToServerResponses are
      * delimited by a length prefix, which is encoded as a varint.
@@ -1406,7 +1383,7 @@ public  final class GetUpdatesMessage extends
      * <pre>
      * Indicates whether the response should be sent in chunks.  This may be
      * needed for devices with limited memory resources.  If true, the response
-     * will include one or more ClientToServerResponses, with the frist one
+     * will include one or more ClientToServerResponses, with the first one
      * containing GetUpdatesMetadataResponse, and the remaining ones, if any,
      * containing GetUpdatesStreamingResponse.  These ClientToServerResponses are
      * delimited by a length prefix, which is encoded as a varint.

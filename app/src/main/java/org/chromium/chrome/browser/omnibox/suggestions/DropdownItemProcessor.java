@@ -31,21 +31,12 @@ public interface DropdownItemProcessor {
     /**
      * @see org.chromium.chrome.browser.omnibox.UrlFocusChangeListener#onUrlFocusChange(boolean)
      */
-    default void onUrlFocusChange(boolean hasFocus) {}
+    void onUrlFocusChange(boolean hasFocus);
 
     /**
      * Signals that native initialization has completed.
      */
-    default void onNativeInitialized() {}
-
-    /**
-     * Record suggestion impressions for this processor.
-     * Purpose of this function is bookkeeping of presented views at the time user finishes
-     * interacting with omnibox (whether navigating somewhere, turning off screen, leaving omnibox
-     * or closing the app).
-     * This call is invoked once for every model created by the processor.
-     */
-    default void recordItemPresented(PropertyModel model) {}
+    void onNativeInitialized();
 
     /**
      * Signals that the dropdown list is about to be populated with new content.

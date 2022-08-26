@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface LockManager extends org.chromium.mojo.bindings.Interface {
 
@@ -20,6 +22,12 @@ public interface LockManager extends org.chromium.mojo.bindings.Interface {
 
     public static final class WaitMode {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            WaitMode.WAIT,
+            WaitMode.NO_WAIT,
+            WaitMode.PREEMPT})
+        public @interface EnumType {}
 
         public static final int WAIT = 0;
         public static final int NO_WAIT = 1;
@@ -49,17 +57,15 @@ public interface LockManager extends org.chromium.mojo.bindings.Interface {
 
     Manager<LockManager, LockManager.Proxy> MANAGER = LockManager_Internal.MANAGER;
 
-
     void requestLock(
 String name, int mode, int wait, org.chromium.mojo.bindings.AssociatedInterfaceNotSupported request);
 
 
-
     void queryState(
 
-QueryStateResponse callback);
+QueryState_Response callback);
 
-    interface QueryStateResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<LockInfo[], LockInfo[]> { }
+    interface QueryState_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<LockInfo[], LockInfo[]> { }
 
 
 }

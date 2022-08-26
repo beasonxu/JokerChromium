@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface CookieAccessObserver extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface CookieAccessObserver extends org.chromium.mojo.bindings.Interfa
 
     Manager<CookieAccessObserver, CookieAccessObserver.Proxy> MANAGER = CookieAccessObserver_Internal.MANAGER;
 
-
     void onCookiesAccessed(
 CookieAccessDetails details);
-
 
 
     void clone(

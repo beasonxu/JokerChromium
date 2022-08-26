@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class NetworkIsolationKey extends org.chromium.mojo.bindings.Struct {
 
@@ -21,7 +23,7 @@ public final class NetworkIsolationKey extends org.chromium.mojo.bindings.Struct
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public SchemefulSite topFrameSite;
     public SchemefulSite frameSite;
-    public boolean opaqueAndNonTransient;
+    public org.chromium.mojo_base.mojom.UnguessableToken nonce;
 
     private NetworkIsolationKey(int version) {
         super(STRUCT_SIZE, version);
@@ -68,7 +70,8 @@ public final class NetworkIsolationKey extends org.chromium.mojo.bindings.Struct
                 }
                 {
                     
-                result.opaqueAndNonTransient = decoder0.readBoolean(24, 0);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, true);
+                result.nonce = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
                 }
 
         } finally {
@@ -86,6 +89,6 @@ public final class NetworkIsolationKey extends org.chromium.mojo.bindings.Struct
         
         encoder0.encode(this.frameSite, 16, true);
         
-        encoder0.encode(this.opaqueAndNonTransient, 24, 0);
+        encoder0.encode(this.nonce, 24, true);
     }
 }

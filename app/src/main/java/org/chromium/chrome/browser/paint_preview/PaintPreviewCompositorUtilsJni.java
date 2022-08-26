@@ -9,7 +9,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class PaintPreviewCompositorUtilsJni implements PaintPreviewCompositorUtils.Natives {
+public class PaintPreviewCompositorUtilsJni implements PaintPreviewCompositorUtils.Natives {
   private static PaintPreviewCompositorUtils.Natives testInstance;
 
   public static final JniStaticTestMocker<PaintPreviewCompositorUtils.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.paint_preview.PaintPreviewCompositorUtils.Natives>() {

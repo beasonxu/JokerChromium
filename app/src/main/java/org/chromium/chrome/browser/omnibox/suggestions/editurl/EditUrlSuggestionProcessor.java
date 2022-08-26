@@ -8,9 +8,9 @@ import android.content.Context;
 
 import org.chromium.base.metrics.RecordUserAction;
 import org.chromium.base.supplier.Supplier;
-import org.chromium.chrome.R;
-import org.chromium.chrome.browser.flags.ChromeFeatureList;
+import org.chromium.chrome.browser.history_clusters.HistoryClustersTabHelper;
 import org.chromium.chrome.browser.omnibox.OmniboxSuggestionType;
+import org.chromium.chrome.browser.omnibox.R;
 import org.chromium.chrome.browser.omnibox.suggestions.OmniboxSuggestionUiType;
 import org.chromium.chrome.browser.omnibox.suggestions.SuggestionHost;
 import org.chromium.chrome.browser.omnibox.suggestions.UrlBarDelegate;
@@ -20,14 +20,14 @@ import org.chromium.chrome.browser.omnibox.suggestions.base.SuggestionDrawableSt
 import org.chromium.chrome.browser.omnibox.suggestions.base.SuggestionSpannable;
 import org.chromium.chrome.browser.omnibox.suggestions.basic.SuggestionViewProperties;
 import org.chromium.chrome.browser.share.ShareDelegate;
-import org.chromium.chrome.browser.share.ShareDelegateImpl.ShareOrigin;
+import org.chromium.chrome.browser.share.ShareDelegate.ShareOrigin;
 import org.chromium.chrome.browser.tab.SadTab;
 import org.chromium.chrome.browser.tab.Tab;
 import org.chromium.components.favicon.LargeIconBridge;
 import org.chromium.components.omnibox.AutocompleteMatch;
+import org.chromium.components.ukm.UkmRecorder;
 import org.chromium.ui.base.Clipboard;
 import org.chromium.ui.modelutil.PropertyModel;
-import org.chromium.url.GURL;
 
 import java.util.Arrays;
 
@@ -53,12 +53,6 @@ public class EditUrlSuggestionProcessor extends BaseSuggestionViewProcessor {
 
     /** Whether the omnibox has already cleared its content for the focus event. */
     private boolean mHasClearedOmniboxForFocus;
-
-    /** The URL of the last omnibox suggestion to be processed. */
-    private GURL mLastProcessedSuggestionURL;
-
-    /** The original title of the page. */
-    private String mOriginalTitle;
 
     /**
      * @param locationBarDelegate A means of modifying the location bar.
@@ -87,17 +81,10 @@ public class EditUrlSuggestionProcessor extends BaseSuggestionViewProcessor {
             return false;
         }
 
-        if (activeTab.isIncognito()
-                && !ChromeFeatureList.isEnabled(ChromeFeatureList.OMNIBOX_SEARCH_READY_INCOGNITO)) {
-            return false;
-        }
-
         if (suggestion.getType() != OmniboxSuggestionType.URL_WHAT_YOU_TYPED
                 || !suggestion.getUrl().equals(activeTab.getUrl())) {
             return false;
         }
-
-        mLastProcessedSuggestionURL = suggestion.getUrl();
 
         if (!mHasClearedOmniboxForFocus) {
             mHasClearedOmniboxForFocus = true;
@@ -120,14 +107,10 @@ public class EditUrlSuggestionProcessor extends BaseSuggestionViewProcessor {
     public void populateModel(AutocompleteMatch suggestion, PropertyModel model, int position) {
         super.populateModel(suggestion, model, position);
 
-        if (mOriginalTitle == null) {
-            mOriginalTitle = mTabSupplier.get().getTitle();
-        }
-
-        model.set(
-                SuggestionViewProperties.TEXT_LINE_1_TEXT, new SuggestionSpannable(mOriginalTitle));
+        model.set(SuggestionViewProperties.TEXT_LINE_1_TEXT,
+                new SuggestionSpannable(mTabSupplier.get().getTitle()));
         model.set(SuggestionViewProperties.TEXT_LINE_2_TEXT,
-                new SuggestionSpannable(mLastProcessedSuggestionURL.getSpec()));
+                new SuggestionSpannable(suggestion.getDisplayText()));
 
         setSuggestionDrawableState(model,
                 SuggestionDrawableState.Builder
@@ -151,7 +134,7 @@ public class EditUrlSuggestionProcessor extends BaseSuggestionViewProcessor {
                                         .setLarge(true)
                                         .setAllowTint(true)
                                         .build(),
-                                R.string.copy_link, this::onCopyLink),
+                                R.string.copy_link, () -> onCopyLink(suggestion)),
                         // TODO(https://crbug.com/1090187): do not re-use bookmark_item_edit here.
                         new Action(mContext,
                                 SuggestionDrawableState.Builder
@@ -160,15 +143,14 @@ public class EditUrlSuggestionProcessor extends BaseSuggestionViewProcessor {
                                         .setLarge(true)
                                         .setAllowTint(true)
                                         .build(),
-                                R.string.bookmark_item_edit, this::onEditLink)));
+                                R.string.bookmark_item_edit, () -> onEditLink(suggestion))));
 
-        fetchSuggestionFavicon(model, mLastProcessedSuggestionURL, mIconBridgeSupplier.get(), null);
+        fetchSuggestionFavicon(model, suggestion.getUrl(), mIconBridgeSupplier.get(), null);
     }
 
     @Override
     public void onUrlFocusChange(boolean hasFocus) {
         if (hasFocus) return;
-        mOriginalTitle = null;
         mHasClearedOmniboxForFocus = false;
     }
 
@@ -181,21 +163,27 @@ public class EditUrlSuggestionProcessor extends BaseSuggestionViewProcessor {
     /** Invoked when user interacts with Share action button. */
     private void onShareLink() {
         RecordUserAction.record("Omnibox.EditUrlSuggestion.Share");
+        Tab tab = mTabSupplier.get();
+        if (tab != null && tab.getWebContents() != null) {
+            new UkmRecorder.Bridge().recordEventWithBooleanMetric(
+                    mTabSupplier.get().getWebContents(), "Omnibox.EditUrlSuggestion.Share",
+                    "HasOccurred");
+        }
         mUrlBarDelegate.clearOmniboxFocus();
         // TODO(mdjones): This should only share the displayed URL instead of the background tab.
-        Tab activityTab = mTabSupplier.get();
-        mShareDelegateSupplier.get().share(activityTab, false, ShareOrigin.EDIT_URL);
+        mShareDelegateSupplier.get().share(mTabSupplier.get(), false, ShareOrigin.EDIT_URL);
     }
 
     /** Invoked when user interacts with Copy action button. */
-    private void onCopyLink() {
+    private void onCopyLink(AutocompleteMatch suggestion) {
         RecordUserAction.record("Omnibox.EditUrlSuggestion.Copy");
-        Clipboard.getInstance().copyUrlToClipboard(mLastProcessedSuggestionURL);
+        HistoryClustersTabHelper.onCurrentTabUrlCopied(mTabSupplier.get().getWebContents());
+        Clipboard.getInstance().copyUrlToClipboard(suggestion.getUrl());
     }
 
     /** Invoked when user interacts with Edit action button. */
-    private void onEditLink() {
+    private void onEditLink(AutocompleteMatch suggestion) {
         RecordUserAction.record("Omnibox.EditUrlSuggestion.Edit");
-        mUrlBarDelegate.setOmniboxEditingText(mLastProcessedSuggestionURL.getSpec());
+        mUrlBarDelegate.setOmniboxEditingText(suggestion.getUrl().getSpec());
     }
 }

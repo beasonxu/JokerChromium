@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class IdleManager_Internal {
 
@@ -60,12 +62,10 @@ class IdleManager_Internal {
 
         @Override
         public void addMonitor(
-org.chromium.mojo_base.mojom.TimeDelta threshold, IdleMonitor monitor, 
-AddMonitorResponse callback) {
+IdleMonitor monitor, 
+AddMonitor_Response callback) {
 
             IdleManagerAddMonitorParams _message = new IdleManagerAddMonitorParams();
-
-            _message.threshold = threshold;
 
             _message.monitor = monitor;
 
@@ -151,7 +151,7 @@ AddMonitorResponse callback) {
                         IdleManagerAddMonitorParams data =
                                 IdleManagerAddMonitorParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().addMonitor(data.threshold, data.monitor, new IdleManagerAddMonitorResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().addMonitor(data.monitor, new IdleManagerAddMonitorResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -170,10 +170,9 @@ AddMonitorResponse callback) {
     
     static final class IdleManagerAddMonitorParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public org.chromium.mojo_base.mojom.TimeDelta threshold;
         public IdleMonitor monitor;
 
         private IdleManagerAddMonitorParams(int version) {
@@ -211,12 +210,7 @@ AddMonitorResponse callback) {
                 result = new IdleManagerAddMonitorParams(elementsOrVersion);
                     {
                         
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    result.threshold = org.chromium.mojo_base.mojom.TimeDelta.decode(decoder1);
-                    }
-                    {
-                        
-                    result.monitor = decoder0.readServiceInterface(16, false, IdleMonitor.MANAGER);
+                    result.monitor = decoder0.readServiceInterface(8, false, IdleMonitor.MANAGER);
                     }
 
             } finally {
@@ -230,9 +224,7 @@ AddMonitorResponse callback) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.threshold, 8, false);
-            
-            encoder0.encode(this.monitor, 16, false, IdleMonitor.MANAGER);
+            encoder0.encode(this.monitor, 8, false, IdleMonitor.MANAGER);
         }
     }
 
@@ -311,9 +303,9 @@ AddMonitorResponse callback) {
 
     static class IdleManagerAddMonitorResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final IdleManager.AddMonitorResponse mCallback;
+        private final IdleManager.AddMonitor_Response mCallback;
 
-        IdleManagerAddMonitorResponseParamsForwardToCallback(IdleManager.AddMonitorResponse callback) {
+        IdleManagerAddMonitorResponseParamsForwardToCallback(IdleManager.AddMonitor_Response callback) {
             this.mCallback = callback;
         }
 
@@ -338,7 +330,7 @@ AddMonitorResponse callback) {
         }
     }
 
-    static class IdleManagerAddMonitorResponseParamsProxyToResponder implements IdleManager.AddMonitorResponse {
+    static class IdleManagerAddMonitorResponseParamsProxyToResponder implements IdleManager.AddMonitor_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

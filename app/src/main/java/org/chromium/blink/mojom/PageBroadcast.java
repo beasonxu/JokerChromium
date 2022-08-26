@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface PageBroadcast extends org.chromium.mojo.bindings.Interface {
 
@@ -23,37 +25,42 @@ public interface PageBroadcast extends org.chromium.mojo.bindings.Interface {
 
     Manager<PageBroadcast, PageBroadcast.Proxy> MANAGER = PageBroadcast_Internal.MANAGER;
 
-
     void setPageLifecycleState(
 PageLifecycleState state, PageRestoreParams pageRestoreParams, 
-SetPageLifecycleStateResponse callback);
+SetPageLifecycleState_Response callback);
 
-    interface SetPageLifecycleStateResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface SetPageLifecycleState_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void audioStateChanged(
 boolean isAudioPlaying);
 
 
+    void activatePrerenderedPage(
+PrerenderPageActivationParams prerenderPageActivationParams, 
+ActivatePrerenderedPage_Response callback);
+
+    interface ActivatePrerenderedPage_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
+
 
     void setInsidePortal(
 boolean isInsidePortal);
-
 
 
     void updateWebPreferences(
 WebPreferences preferences);
 
 
-
     void updateRendererPreferences(
 RendererPreferences preferences);
 
 
-
     void setHistoryOffsetAndLength(
 int offset, int length);
+
+
+    void setPageBaseBackgroundColor(
+org.chromium.skia.mojom.SkColor color);
 
 
 }

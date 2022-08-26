@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class ServiceWorkerObjectHost_Internal {
 
@@ -80,7 +82,7 @@ TransferableMessage message) {
         @Override
         public void terminateForTesting(
 
-TerminateForTestingResponse callback) {
+TerminateForTesting_Response callback) {
 
             ServiceWorkerObjectHostTerminateForTestingParams _message = new ServiceWorkerObjectHostTerminateForTestingParams();
 
@@ -372,9 +374,9 @@ TerminateForTestingResponse callback) {
 
     static class ServiceWorkerObjectHostTerminateForTestingResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ServiceWorkerObjectHost.TerminateForTestingResponse mCallback;
+        private final ServiceWorkerObjectHost.TerminateForTesting_Response mCallback;
 
-        ServiceWorkerObjectHostTerminateForTestingResponseParamsForwardToCallback(ServiceWorkerObjectHost.TerminateForTestingResponse callback) {
+        ServiceWorkerObjectHostTerminateForTestingResponseParamsForwardToCallback(ServiceWorkerObjectHost.TerminateForTesting_Response callback) {
             this.mCallback = callback;
         }
 
@@ -397,7 +399,7 @@ TerminateForTestingResponse callback) {
         }
     }
 
-    static class ServiceWorkerObjectHostTerminateForTestingResponseParamsProxyToResponder implements ServiceWorkerObjectHost.TerminateForTestingResponse {
+    static class ServiceWorkerObjectHostTerminateForTestingResponseParamsProxyToResponder implements ServiceWorkerObjectHost.TerminateForTesting_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

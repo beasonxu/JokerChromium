@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class LocalMainFrame_Internal {
 
@@ -53,23 +55,19 @@ class LocalMainFrame_Internal {
 
     private static final int CLOSE_PAGE_ORDINAL = 2;
 
-    private static final int PLUGIN_ACTION_AT_ORDINAL = 3;
+    private static final int SET_INITIAL_FOCUS_ORDINAL = 3;
 
-    private static final int SET_INITIAL_FOCUS_ORDINAL = 4;
+    private static final int ENABLE_PREFERRED_SIZE_CHANGED_MODE_ORDINAL = 4;
 
-    private static final int ENABLE_PREFERRED_SIZE_CHANGED_MODE_ORDINAL = 5;
+    private static final int ZOOM_TO_FIND_IN_PAGE_RECT_ORDINAL = 5;
 
-    private static final int ZOOM_TO_FIND_IN_PAGE_RECT_ORDINAL = 6;
+    private static final int INSTALL_COOP_ACCESS_MONITOR_ORDINAL = 6;
 
-    private static final int INSTALL_COOP_ACCESS_MONITOR_ORDINAL = 7;
+    private static final int ON_PORTAL_ACTIVATED_ORDINAL = 7;
 
-    private static final int ON_PORTAL_ACTIVATED_ORDINAL = 8;
+    private static final int FORWARD_MESSAGE_FROM_HOST_ORDINAL = 8;
 
-    private static final int FORWARD_MESSAGE_FROM_HOST_ORDINAL = 9;
-
-    private static final int UPDATE_BROWSER_CONTROLS_STATE_ORDINAL = 10;
-
-    private static final int UPDATE_WINDOW_CONTROLS_OVERLAY_ORDINAL = 11;
+    private static final int UPDATE_BROWSER_CONTROLS_STATE_ORDINAL = 9;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements LocalMainFrame.Proxy {
@@ -119,7 +117,7 @@ float scale) {
         @Override
         public void closePage(
 
-ClosePageResponse callback) {
+ClosePage_Response callback) {
 
             LocalMainFrameClosePageParams _message = new LocalMainFrameClosePageParams();
 
@@ -132,25 +130,6 @@ ClosePageResponse callback) {
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
                                     0)),
                     new LocalMainFrameClosePageResponseParamsForwardToCallback(callback));
-
-        }
-
-
-        @Override
-        public void pluginActionAt(
-org.chromium.gfx.mojom.Point location, int action) {
-
-            LocalMainFramePluginActionAtParams _message = new LocalMainFramePluginActionAtParams();
-
-            _message.location = location;
-
-            _message.action = action;
-
-
-            getProxyHandler().getMessageReceiver().accept(
-                    _message.serializeWithHeader(
-                            getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(PLUGIN_ACTION_AT_ORDINAL)));
 
         }
 
@@ -206,19 +185,13 @@ org.chromium.gfx.mojom.Rect rectInRootFrame) {
 
         @Override
         public void installCoopAccessMonitor(
-int reportType, FrameToken accessedWindow, org.chromium.network.mojom.CrossOriginOpenerPolicyReporter reporter, boolean endpointDefined, String reportedWindowUrl) {
+FrameToken accessedWindow, org.chromium.network.mojom.CrossOriginOpenerPolicyReporterParams coopReporterInfo) {
 
             LocalMainFrameInstallCoopAccessMonitorParams _message = new LocalMainFrameInstallCoopAccessMonitorParams();
 
-            _message.reportType = reportType;
-
             _message.accessedWindow = accessedWindow;
 
-            _message.reporter = reporter;
-
-            _message.endpointDefined = endpointDefined;
-
-            _message.reportedWindowUrl = reportedWindowUrl;
+            _message.coopReporterInfo = coopReporterInfo;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -232,7 +205,7 @@ int reportType, FrameToken accessedWindow, org.chromium.network.mojom.CrossOrigi
         @Override
         public void onPortalActivated(
 PortalToken portalToken, org.chromium.mojo.bindings.AssociatedInterfaceNotSupported portal, org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported portalClient, TransferableMessage data, long traceId, 
-OnPortalActivatedResponse callback) {
+OnPortalActivated_Response callback) {
 
             LocalMainFrameOnPortalActivatedParams _message = new LocalMainFrameOnPortalActivatedParams();
 
@@ -299,25 +272,6 @@ int constraints, int current, boolean animate) {
         }
 
 
-        @Override
-        public void updateWindowControlsOverlay(
-org.chromium.gfx.mojom.Rect windowControlsOverlayRect, org.chromium.gfx.mojom.Insets insets) {
-
-            LocalMainFrameUpdateWindowControlsOverlayParams _message = new LocalMainFrameUpdateWindowControlsOverlayParams();
-
-            _message.windowControlsOverlayRect = windowControlsOverlayRect;
-
-            _message.insets = insets;
-
-
-            getProxyHandler().getMessageReceiver().accept(
-                    _message.serializeWithHeader(
-                            getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(UPDATE_WINDOW_CONTROLS_OVERLAY_ORDINAL)));
-
-        }
-
-
     }
 
     static final class Stub extends org.chromium.mojo.bindings.Interface.Stub<LocalMainFrame> {
@@ -377,19 +331,6 @@ org.chromium.gfx.mojom.Rect windowControlsOverlayRect, org.chromium.gfx.mojom.In
 
 
 
-                    case PLUGIN_ACTION_AT_ORDINAL: {
-
-                        LocalMainFramePluginActionAtParams data =
-                                LocalMainFramePluginActionAtParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().pluginActionAt(data.location, data.action);
-                        return true;
-                    }
-
-
-
-
-
                     case SET_INITIAL_FOCUS_ORDINAL: {
 
                         LocalMainFrameSetInitialFocusParams data =
@@ -433,7 +374,7 @@ org.chromium.gfx.mojom.Rect windowControlsOverlayRect, org.chromium.gfx.mojom.In
                         LocalMainFrameInstallCoopAccessMonitorParams data =
                                 LocalMainFrameInstallCoopAccessMonitorParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().installCoopAccessMonitor(data.reportType, data.accessedWindow, data.reporter, data.endpointDefined, data.reportedWindowUrl);
+                        getImpl().installCoopAccessMonitor(data.accessedWindow, data.coopReporterInfo);
                         return true;
                     }
 
@@ -462,19 +403,6 @@ org.chromium.gfx.mojom.Rect windowControlsOverlayRect, org.chromium.gfx.mojom.In
                                 LocalMainFrameUpdateBrowserControlsStateParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().updateBrowserControlsState(data.constraints, data.current, data.animate);
-                        return true;
-                    }
-
-
-
-
-
-                    case UPDATE_WINDOW_CONTROLS_OVERLAY_ORDINAL: {
-
-                        LocalMainFrameUpdateWindowControlsOverlayParams data =
-                                LocalMainFrameUpdateWindowControlsOverlayParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().updateWindowControlsOverlay(data.windowControlsOverlayRect, data.insets);
                         return true;
                     }
 
@@ -539,8 +467,6 @@ org.chromium.gfx.mojom.Rect windowControlsOverlayRect, org.chromium.gfx.mojom.In
 
 
 
-
-
                     case ON_PORTAL_ACTIVATED_ORDINAL: {
 
                         LocalMainFrameOnPortalActivatedParams data =
@@ -549,8 +475,6 @@ org.chromium.gfx.mojom.Rect windowControlsOverlayRect, org.chromium.gfx.mojom.In
                         getImpl().onPortalActivated(data.portalToken, data.portal, data.portalClient, data.data, data.traceId, new LocalMainFrameOnPortalActivatedResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
-
-
 
 
 
@@ -815,9 +739,9 @@ org.chromium.gfx.mojom.Rect windowControlsOverlayRect, org.chromium.gfx.mojom.In
 
     static class LocalMainFrameClosePageResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final LocalMainFrame.ClosePageResponse mCallback;
+        private final LocalMainFrame.ClosePage_Response mCallback;
 
-        LocalMainFrameClosePageResponseParamsForwardToCallback(LocalMainFrame.ClosePageResponse callback) {
+        LocalMainFrameClosePageResponseParamsForwardToCallback(LocalMainFrame.ClosePage_Response callback) {
             this.mCallback = callback;
         }
 
@@ -840,7 +764,7 @@ org.chromium.gfx.mojom.Rect windowControlsOverlayRect, org.chromium.gfx.mojom.In
         }
     }
 
-    static class LocalMainFrameClosePageResponseParamsProxyToResponder implements LocalMainFrame.ClosePageResponse {
+    static class LocalMainFrameClosePageResponseParamsProxyToResponder implements LocalMainFrame.ClosePage_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -867,79 +791,6 @@ org.chromium.gfx.mojom.Rect windowControlsOverlayRect, org.chromium.gfx.mojom.In
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);
-        }
-    }
-
-
-
-    
-    static final class LocalMainFramePluginActionAtParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public org.chromium.gfx.mojom.Point location;
-        public int action;
-
-        private LocalMainFramePluginActionAtParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public LocalMainFramePluginActionAtParams() {
-            this(0);
-        }
-
-        public static LocalMainFramePluginActionAtParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static LocalMainFramePluginActionAtParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static LocalMainFramePluginActionAtParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            LocalMainFramePluginActionAtParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new LocalMainFramePluginActionAtParams(elementsOrVersion);
-                    {
-                        
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    result.location = org.chromium.gfx.mojom.Point.decode(decoder1);
-                    }
-                    {
-                        
-                    result.action = decoder0.readInt(16);
-                        PluginActionType.validate(result.action);
-                        result.action = PluginActionType.toKnownValue(result.action);
-                    }
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-            
-            encoder0.encode(this.location, 8, false);
-            
-            encoder0.encode(this.action, 16);
         }
     }
 
@@ -1131,14 +982,11 @@ org.chromium.gfx.mojom.Rect windowControlsOverlayRect, org.chromium.gfx.mojom.In
     
     static final class LocalMainFrameInstallCoopAccessMonitorParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 48;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public int reportType;
         public FrameToken accessedWindow;
-        public org.chromium.network.mojom.CrossOriginOpenerPolicyReporter reporter;
-        public boolean endpointDefined;
-        public String reportedWindowUrl;
+        public org.chromium.network.mojom.CrossOriginOpenerPolicyReporterParams coopReporterInfo;
 
         private LocalMainFrameInstallCoopAccessMonitorParams(int version) {
             super(STRUCT_SIZE, version);
@@ -1175,25 +1023,12 @@ org.chromium.gfx.mojom.Rect windowControlsOverlayRect, org.chromium.gfx.mojom.In
                 result = new LocalMainFrameInstallCoopAccessMonitorParams(elementsOrVersion);
                     {
                         
-                    result.reportType = decoder0.readInt(8);
-                        org.chromium.network.mojom.CoopAccessReportType.validate(result.reportType);
-                        result.reportType = org.chromium.network.mojom.CoopAccessReportType.toKnownValue(result.reportType);
+                    result.accessedWindow = FrameToken.decode(decoder0, 8);
                     }
                     {
                         
-                    result.endpointDefined = decoder0.readBoolean(12, 0);
-                    }
-                    {
-                        
-                    result.accessedWindow = FrameToken.decode(decoder0, 16);
-                    }
-                    {
-                        
-                    result.reporter = decoder0.readServiceInterface(32, false, org.chromium.network.mojom.CrossOriginOpenerPolicyReporter.MANAGER);
-                    }
-                    {
-                        
-                    result.reportedWindowUrl = decoder0.readString(40, false);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
+                    result.coopReporterInfo = org.chromium.network.mojom.CrossOriginOpenerPolicyReporterParams.decode(decoder1);
                     }
 
             } finally {
@@ -1207,15 +1042,9 @@ org.chromium.gfx.mojom.Rect windowControlsOverlayRect, org.chromium.gfx.mojom.In
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.reportType, 8);
+            encoder0.encode(this.accessedWindow, 8, false);
             
-            encoder0.encode(this.endpointDefined, 12, 0);
-            
-            encoder0.encode(this.accessedWindow, 16, false);
-            
-            encoder0.encode(this.reporter, 32, false, org.chromium.network.mojom.CrossOriginOpenerPolicyReporter.MANAGER);
-            
-            encoder0.encode(this.reportedWindowUrl, 40, false);
+            encoder0.encode(this.coopReporterInfo, 24, false);
         }
     }
 
@@ -1379,9 +1208,9 @@ org.chromium.gfx.mojom.Rect windowControlsOverlayRect, org.chromium.gfx.mojom.In
 
     static class LocalMainFrameOnPortalActivatedResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final LocalMainFrame.OnPortalActivatedResponse mCallback;
+        private final LocalMainFrame.OnPortalActivated_Response mCallback;
 
-        LocalMainFrameOnPortalActivatedResponseParamsForwardToCallback(LocalMainFrame.OnPortalActivatedResponse callback) {
+        LocalMainFrameOnPortalActivatedResponseParamsForwardToCallback(LocalMainFrame.OnPortalActivated_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1406,7 +1235,7 @@ org.chromium.gfx.mojom.Rect windowControlsOverlayRect, org.chromium.gfx.mojom.In
         }
     }
 
-    static class LocalMainFrameOnPortalActivatedResponseParamsProxyToResponder implements LocalMainFrame.OnPortalActivatedResponse {
+    static class LocalMainFrameOnPortalActivatedResponseParamsProxyToResponder implements LocalMainFrame.OnPortalActivated_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1588,78 +1417,6 @@ org.chromium.gfx.mojom.Rect windowControlsOverlayRect, org.chromium.gfx.mojom.In
             encoder0.encode(this.current, 12);
             
             encoder0.encode(this.animate, 16, 0);
-        }
-    }
-
-
-
-    
-    static final class LocalMainFrameUpdateWindowControlsOverlayParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public org.chromium.gfx.mojom.Rect windowControlsOverlayRect;
-        public org.chromium.gfx.mojom.Insets insets;
-
-        private LocalMainFrameUpdateWindowControlsOverlayParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public LocalMainFrameUpdateWindowControlsOverlayParams() {
-            this(0);
-        }
-
-        public static LocalMainFrameUpdateWindowControlsOverlayParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static LocalMainFrameUpdateWindowControlsOverlayParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static LocalMainFrameUpdateWindowControlsOverlayParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            LocalMainFrameUpdateWindowControlsOverlayParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new LocalMainFrameUpdateWindowControlsOverlayParams(elementsOrVersion);
-                    {
-                        
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    result.windowControlsOverlayRect = org.chromium.gfx.mojom.Rect.decode(decoder1);
-                    }
-                    {
-                        
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
-                    result.insets = org.chromium.gfx.mojom.Insets.decode(decoder1);
-                    }
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-            
-            encoder0.encode(this.windowControlsOverlayRect, 8, false);
-            
-            encoder0.encode(this.insets, 16, false);
         }
     }
 

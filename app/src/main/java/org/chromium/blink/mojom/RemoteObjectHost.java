@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface RemoteObjectHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,15 +25,12 @@ public interface RemoteObjectHost extends org.chromium.mojo.bindings.Interface {
 
     Manager<RemoteObjectHost, RemoteObjectHost.Proxy> MANAGER = RemoteObjectHost_Internal.MANAGER;
 
-
     void getObject(
 int objectId, org.chromium.mojo.bindings.InterfaceRequest<RemoteObject> receiver);
 
 
-
     void acquireObject(
 int objectId);
-
 
 
     void releaseObject(

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class PageLifecycleState extends org.chromium.mojo.bindings.Struct {
 
@@ -24,6 +26,7 @@ public final class PageLifecycleState extends org.chromium.mojo.bindings.Struct 
     public boolean isInBackForwardCache;
     public int pagehideDispatch;
     public boolean evictionEnabled;
+    public boolean shouldDispatchPageshowForDebugging;
 
     private PageLifecycleState(int version) {
         super(STRUCT_SIZE, version);
@@ -72,6 +75,10 @@ public final class PageLifecycleState extends org.chromium.mojo.bindings.Struct 
                 }
                 {
                     
+                result.shouldDispatchPageshowForDebugging = decoder0.readBoolean(8, 3);
+                }
+                {
+                    
                 result.visibility = decoder0.readInt(12);
                     PageVisibilityState.validate(result.visibility);
                     result.visibility = PageVisibilityState.toKnownValue(result.visibility);
@@ -99,6 +106,8 @@ public final class PageLifecycleState extends org.chromium.mojo.bindings.Struct 
         encoder0.encode(this.isInBackForwardCache, 8, 1);
         
         encoder0.encode(this.evictionEnabled, 8, 2);
+        
+        encoder0.encode(this.shouldDispatchPageshowForDebugging, 8, 3);
         
         encoder0.encode(this.visibility, 12);
         

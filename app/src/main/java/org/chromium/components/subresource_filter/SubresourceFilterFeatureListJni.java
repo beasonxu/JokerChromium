@@ -12,7 +12,7 @@ import org.chromium.base.natives.GEN_JNI;
 @Generated("org.chromium.jni_generator.JniProcessor")
 @MainDex
 @CheckDiscard("crbug.com/993421")
-final class SubresourceFilterFeatureListJni implements SubresourceFilterFeatureList.Natives {
+class SubresourceFilterFeatureListJni implements SubresourceFilterFeatureList.Natives {
   private static SubresourceFilterFeatureList.Natives testInstance;
 
   public static final JniStaticTestMocker<SubresourceFilterFeatureList.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.subresource_filter.SubresourceFilterFeatureList.Natives>() {

@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -21,7 +21,9 @@ import java.lang.annotation.RetentionPolicy;
     ManagePasswordsReferrer.PASSWORD_GENERATION_CONFIRMATION,
     ManagePasswordsReferrer.PROFILE_CHOOSER, ManagePasswordsReferrer.PASSWORDS_ACCESSORY_SHEET,
     ManagePasswordsReferrer.TOUCH_TO_FILL, ManagePasswordsReferrer.SAFE_STATE_BUBBLE,
-    ManagePasswordsReferrer.MAX_VALUE
+    ManagePasswordsReferrer.PASSWORD_BREACH_DIALOG, ManagePasswordsReferrer.SAFETY_CHECK,
+    ManagePasswordsReferrer.SAVE_UPDATE_BUBBLE, ManagePasswordsReferrer.PASSWORD_GENERATION_PROMPT,
+    ManagePasswordsReferrer.PASSWORDS_GOOGLE_WEBSITE, ManagePasswordsReferrer.MAX_VALUE
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface ManagePasswordsReferrer {
@@ -30,7 +32,7 @@ public @interface ManagePasswordsReferrer {
    */
   int CHROME_SETTINGS = 0;
   /**
-   * Corresponds to the manage passwords bubble when clicking the key icon. Only used on desktop.
+   * Corresponds to the manage passwords bubble when clicking the key icon.
    */
   int MANAGE_PASSWORDS_BUBBLE = 1;
   /**
@@ -52,7 +54,7 @@ public @interface ManagePasswordsReferrer {
   int PROFILE_CHOOSER = 5;
   /**
    * Corresponds to the passwords accessory sheet on Android, triggered by tapping on the key icon
-   * above in the keyboard accessory bar. Only used on Android.
+   * above in the keyboard accessory bar.
    */
   int PASSWORDS_ACCESSORY_SHEET = 6;
   /**
@@ -63,5 +65,27 @@ public @interface ManagePasswordsReferrer {
    * The bubble notifying the user that the last compromised password was updated.
    */
   int SAFE_STATE_BUBBLE = 8;
-  int MAX_VALUE = SAFE_STATE_BUBBLE;
+  /**
+   * The dialog notifying a user about compromised credentials on sign in. Only used on iOS.
+   */
+  int PASSWORD_BREACH_DIALOG = 9;
+  /**
+   * On Android, the Safety Check UI in settings opens the passwords page if no check was performed.
+   */
+  int SAFETY_CHECK = 10;
+  /**
+   * On Desktop, the Google Password Manager link was clicked in the footer of Save/Update bubble.
+   */
+  int SAVE_UPDATE_BUBBLE = 11;
+  /**
+   * On Desktop, the Google Password Manager link was clicked in the password generation prompt in
+   * the Autofill dropdown.
+   */
+  int PASSWORD_GENERATION_PROMPT = 12;
+  /**
+   * Corresponds to the situation when Chrome opens native Password Manager UI when navigating to
+   * specified website.
+   */
+  int PASSWORDS_GOOGLE_WEBSITE = 13;
+  int MAX_VALUE = PASSWORDS_GOOGLE_WEBSITE;
 }

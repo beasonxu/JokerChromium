@@ -9,7 +9,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class CachedFeatureFlagsJni implements CachedFeatureFlags.Natives {
+class CachedFeatureFlagsJni implements CachedFeatureFlags.Natives {
   private static CachedFeatureFlags.Natives testInstance;
 
   public static final JniStaticTestMocker<CachedFeatureFlags.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.flags.CachedFeatureFlags.Natives>() {

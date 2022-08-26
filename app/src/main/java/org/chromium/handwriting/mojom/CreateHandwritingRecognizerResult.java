@@ -13,16 +13,25 @@
 
 package org.chromium.handwriting.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class CreateHandwritingRecognizerResult {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        CreateHandwritingRecognizerResult.OK,
+        CreateHandwritingRecognizerResult.ERROR,
+        CreateHandwritingRecognizerResult.NOT_SUPPORTED})
+    public @interface EnumType {}
 
     public static final int OK = 0;
     public static final int ERROR = 1;
+    public static final int NOT_SUPPORTED = 2;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 1;
+    public static final int MAX_VALUE = 2;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 1;
+        return value >= 0 && value <= 2;
     }
 
     public static void validate(int value) {

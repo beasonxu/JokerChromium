@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class TranslateFeatureListJni implements TranslateFeatureList.Natives {
+class TranslateFeatureListJni implements TranslateFeatureList.Natives {
   private static TranslateFeatureList.Natives testInstance;
 
   public static final JniStaticTestMocker<TranslateFeatureList.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.translate.TranslateFeatureList.Natives>() {
@@ -27,6 +27,12 @@ final class TranslateFeatureListJni implements TranslateFeatureList.Natives {
   @Override
   public boolean isEnabled(String featureName) {
     return (boolean)GEN_JNI.org_chromium_components_translate_TranslateFeatureList_isEnabled(featureName);
+  }
+
+  @Override
+  public boolean getFieldTrialParamByFeatureAsBoolean(String featureName, String paramName,
+      boolean defaultValue) {
+    return (boolean)GEN_JNI.org_chromium_components_translate_TranslateFeatureList_getFieldTrialParamByFeatureAsBoolean(featureName, paramName, defaultValue);
   }
 
   public static TranslateFeatureList.Natives get() {

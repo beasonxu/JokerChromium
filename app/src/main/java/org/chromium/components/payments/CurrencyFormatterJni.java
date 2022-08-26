@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class CurrencyFormatterJni implements CurrencyFormatter.Natives {
+public class CurrencyFormatterJni implements CurrencyFormatter.Natives {
   private static CurrencyFormatter.Natives testInstance;
 
   public static final JniStaticTestMocker<CurrencyFormatter.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.payments.CurrencyFormatter.Natives>() {

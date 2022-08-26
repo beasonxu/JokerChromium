@@ -13,8 +13,20 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PushErrorType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PushErrorType.ABORT,
+        PushErrorType.NETWORK,
+        PushErrorType.NONE,
+        PushErrorType.NOT_ALLOWED,
+        PushErrorType.NOT_FOUND,
+        PushErrorType.NOT_SUPPORTED,
+        PushErrorType.INVALID_STATE})
+    public @interface EnumType {}
 
     public static final int ABORT = 0;
     public static final int NETWORK = 1;

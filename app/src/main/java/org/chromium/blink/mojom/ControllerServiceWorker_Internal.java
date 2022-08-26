@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class ControllerServiceWorker_Internal {
 
@@ -63,7 +65,7 @@ class ControllerServiceWorker_Internal {
         @Override
         public void dispatchFetchEventForSubresource(
 DispatchFetchEventParams params, ServiceWorkerFetchResponseCallback responseCallback, 
-DispatchFetchEventForSubresourceResponse callback) {
+DispatchFetchEventForSubresource_Response callback) {
 
             ControllerServiceWorkerDispatchFetchEventForSubresourceParams _message = new ControllerServiceWorkerDispatchFetchEventForSubresourceParams();
 
@@ -341,9 +343,9 @@ org.chromium.mojo.bindings.InterfaceRequest<ControllerServiceWorker> receiver, o
 
     static class ControllerServiceWorkerDispatchFetchEventForSubresourceResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ControllerServiceWorker.DispatchFetchEventForSubresourceResponse mCallback;
+        private final ControllerServiceWorker.DispatchFetchEventForSubresource_Response mCallback;
 
-        ControllerServiceWorkerDispatchFetchEventForSubresourceResponseParamsForwardToCallback(ControllerServiceWorker.DispatchFetchEventForSubresourceResponse callback) {
+        ControllerServiceWorkerDispatchFetchEventForSubresourceResponseParamsForwardToCallback(ControllerServiceWorker.DispatchFetchEventForSubresource_Response callback) {
             this.mCallback = callback;
         }
 
@@ -368,7 +370,7 @@ org.chromium.mojo.bindings.InterfaceRequest<ControllerServiceWorker> receiver, o
         }
     }
 
-    static class ControllerServiceWorkerDispatchFetchEventForSubresourceResponseParamsProxyToResponder implements ControllerServiceWorker.DispatchFetchEventForSubresourceResponse {
+    static class ControllerServiceWorkerDispatchFetchEventForSubresourceResponseParamsProxyToResponder implements ControllerServiceWorker.DispatchFetchEventForSubresource_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

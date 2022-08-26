@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class VideoCaptureObserver_Internal {
 
@@ -66,11 +68,11 @@ class VideoCaptureObserver_Internal {
 
         @Override
         public void onStateChanged(
-int state) {
+VideoCaptureResult result) {
 
             VideoCaptureObserverOnStateChangedParams _message = new VideoCaptureObserverOnStateChangedParams();
 
-            _message.state = state;
+            _message.result = result;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -172,7 +174,7 @@ int bufferId) {
                         VideoCaptureObserverOnStateChangedParams data =
                                 VideoCaptureObserverOnStateChangedParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().onStateChanged(data.state);
+                        getImpl().onStateChanged(data.result);
                         return true;
                     }
 
@@ -267,10 +269,10 @@ int bufferId) {
     
     static final class VideoCaptureObserverOnStateChangedParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public int state;
+        public VideoCaptureResult result;
 
         private VideoCaptureObserverOnStateChangedParams(int version) {
             super(STRUCT_SIZE, version);
@@ -307,9 +309,7 @@ int bufferId) {
                 result = new VideoCaptureObserverOnStateChangedParams(elementsOrVersion);
                     {
                         
-                    result.state = decoder0.readInt(8);
-                        VideoCaptureState.validate(result.state);
-                        result.state = VideoCaptureState.toKnownValue(result.state);
+                    result.result = VideoCaptureResult.decode(decoder0, 8);
                     }
 
             } finally {
@@ -323,7 +323,7 @@ int bufferId) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.state, 8);
+            encoder0.encode(this.result, 8, false);
         }
     }
 

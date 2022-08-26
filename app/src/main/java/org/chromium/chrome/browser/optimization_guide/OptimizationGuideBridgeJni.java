@@ -10,7 +10,7 @@ import org.chromium.url.GURL;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-public final class OptimizationGuideBridgeJni implements OptimizationGuideBridge.Natives {
+public class OptimizationGuideBridgeJni implements OptimizationGuideBridge.Natives {
   private static OptimizationGuideBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<OptimizationGuideBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.optimization_guide.OptimizationGuideBridge.Natives>() {
@@ -41,9 +41,26 @@ public final class OptimizationGuideBridgeJni implements OptimizationGuideBridge
   }
 
   @Override
+  public void canApplyOptimizationAsync(long nativeOptimizationGuideBridge, GURL url,
+      int optimizationType, OptimizationGuideBridge.OptimizationGuideCallback callback) {
+    GEN_JNI.org_chromium_chrome_browser_optimization_1guide_OptimizationGuideBridge_canApplyOptimizationAsync(nativeOptimizationGuideBridge, url, optimizationType, callback);
+  }
+
+  @Override
   public void canApplyOptimization(long nativeOptimizationGuideBridge, GURL url,
       int optimizationType, OptimizationGuideBridge.OptimizationGuideCallback callback) {
     GEN_JNI.org_chromium_chrome_browser_optimization_1guide_OptimizationGuideBridge_canApplyOptimization(nativeOptimizationGuideBridge, url, optimizationType, callback);
+  }
+
+  @Override
+  public void onNewPushNotification(long nativeOptimizationGuideBridge,
+      byte[] encodedNotification) {
+    GEN_JNI.org_chromium_chrome_browser_optimization_1guide_OptimizationGuideBridge_onNewPushNotification(nativeOptimizationGuideBridge, encodedNotification);
+  }
+
+  @Override
+  public void onDeferredStartup(long nativeOptimizationGuideBridge) {
+    GEN_JNI.org_chromium_chrome_browser_optimization_1guide_OptimizationGuideBridge_onDeferredStartup(nativeOptimizationGuideBridge);
   }
 
   public static OptimizationGuideBridge.Natives get() {

@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class JsonSanitizerJni implements JsonSanitizer.Natives {
+class JsonSanitizerJni implements JsonSanitizer.Natives {
   private static JsonSanitizer.Natives testInstance;
 
   public static final JniStaticTestMocker<JsonSanitizer.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.services.data_decoder.JsonSanitizer.Natives>() {

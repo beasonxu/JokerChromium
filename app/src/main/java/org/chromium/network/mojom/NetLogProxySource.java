@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface NetLogProxySource extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface NetLogProxySource extends org.chromium.mojo.bindings.Interface 
     }
 
     Manager<NetLogProxySource, NetLogProxySource.Proxy> MANAGER = NetLogProxySource_Internal.MANAGER;
-
 
     void updateCaptureModes(
 int modes);

@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class AboutSettingsBridgeJni implements AboutSettingsBridge.Natives {
+class AboutSettingsBridgeJni implements AboutSettingsBridge.Natives {
   private static AboutSettingsBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<AboutSettingsBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.about_settings.AboutSettingsBridge.Natives>() {

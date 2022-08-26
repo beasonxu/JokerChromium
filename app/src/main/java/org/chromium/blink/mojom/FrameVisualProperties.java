@@ -13,13 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class FrameVisualProperties extends org.chromium.mojo.bindings.Struct {
 
     private static final int STRUCT_SIZE = 104;
     private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(104, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-    public ScreenInfo screenInfo;
+    public org.chromium.display.mojom.ScreenInfos screenInfos;
     public boolean autoResizeEnabled;
     public boolean isPinchGestureActive;
     public int captureSequenceNumber;
@@ -73,7 +75,7 @@ public final class FrameVisualProperties extends org.chromium.mojo.bindings.Stru
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                result.screenInfo = ScreenInfo.decode(decoder1);
+                result.screenInfos = org.chromium.display.mojom.ScreenInfos.decode(decoder1);
                 }
                 {
                     
@@ -159,7 +161,7 @@ public final class FrameVisualProperties extends org.chromium.mojo.bindings.Stru
     protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
         org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         
-        encoder0.encode(this.screenInfo, 8, false);
+        encoder0.encode(this.screenInfos, 8, false);
         
         encoder0.encode(this.autoResizeEnabled, 16, 0);
         

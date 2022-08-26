@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class BlobUrlToken_Internal {
 
@@ -80,7 +82,7 @@ org.chromium.mojo.bindings.InterfaceRequest<BlobUrlToken> token) {
         @Override
         public void getToken(
 
-GetTokenResponse callback) {
+GetToken_Response callback) {
 
             BlobUrlTokenGetTokenParams _message = new BlobUrlTokenGetTokenParams();
 
@@ -379,9 +381,9 @@ GetTokenResponse callback) {
 
     static class BlobUrlTokenGetTokenResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BlobUrlToken.GetTokenResponse mCallback;
+        private final BlobUrlToken.GetToken_Response mCallback;
 
-        BlobUrlTokenGetTokenResponseParamsForwardToCallback(BlobUrlToken.GetTokenResponse callback) {
+        BlobUrlTokenGetTokenResponseParamsForwardToCallback(BlobUrlToken.GetToken_Response callback) {
             this.mCallback = callback;
         }
 
@@ -406,7 +408,7 @@ GetTokenResponse callback) {
         }
     }
 
-    static class BlobUrlTokenGetTokenResponseParamsProxyToResponder implements BlobUrlToken.GetTokenResponse {
+    static class BlobUrlTokenGetTokenResponseParamsProxyToResponder implements BlobUrlToken.GetToken_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

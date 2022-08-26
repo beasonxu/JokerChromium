@@ -23,6 +23,7 @@ import org.chromium.chrome.browser.tab.Tab;
 import org.chromium.chrome.browser.tabmodel.TabModelSelector;
 import org.chromium.chrome.browser.tasks.tab_management.TabListCoordinator.TabListMode;
 import org.chromium.chrome.tab_ui.R;
+import org.chromium.components.browser_ui.widget.gesture.BackPressHandler;
 import org.chromium.components.browser_ui.widget.selectable_list.SelectionDelegate;
 import org.chromium.ui.modelutil.LayoutViewBuilder;
 import org.chromium.ui.modelutil.PropertyModel;
@@ -40,7 +41,7 @@ class TabSelectionEditorCoordinator {
     /**
      * An interface to control the TabSelectionEditor.
      */
-    interface TabSelectionEditorController {
+    interface TabSelectionEditorController extends BackPressHandler {
         /**
          * Shows the TabSelectionEditor with the given {@link Tab}s.
          * @param tabs List of {@link Tab}s to show.
@@ -122,7 +123,7 @@ class TabSelectionEditorCoordinator {
 
     public TabSelectionEditorCoordinator(Context context, ViewGroup parentView,
             TabModelSelector tabModelSelector, TabContentManager tabContentManager,
-            @TabListMode int mode) {
+            @TabListMode int mode, ViewGroup rootView) {
         mContext = context;
         mParentView = parentView;
         mTabModelSelector = tabModelSelector;
@@ -137,7 +138,7 @@ class TabSelectionEditorCoordinator {
         mTabListCoordinator = new TabListCoordinator(mode, context, mTabModelSelector,
                 tabContentManager::getTabThumbnailWithCallback, null, false, null, null,
                 TabProperties.UiType.SELECTABLE, this::getSelectionDelegate, null,
-                mTabSelectionEditorLayout, false, COMPONENT_NAME);
+                mTabSelectionEditorLayout, false, COMPONENT_NAME, rootView);
 
         // Note: The TabSelectionEditorCoordinator is always created after native is initialized.
         assert LibraryLoader.getInstance().isInitialized();
@@ -212,7 +213,7 @@ class TabSelectionEditorCoordinator {
      * Destroy any members that needs clean up.
      */
     public void destroy() {
-        mTabListCoordinator.destroy();
+        mTabListCoordinator.onDestroy();
         mTabSelectionEditorLayout.destroy();
         mTabSelectionEditorMediator.destroy();
         mTabSelectionEditorLayoutChangeProcessor.destroy();

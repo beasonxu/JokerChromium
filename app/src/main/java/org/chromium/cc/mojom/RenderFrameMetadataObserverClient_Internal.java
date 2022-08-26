@@ -13,6 +13,8 @@
 
 package org.chromium.cc.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class RenderFrameMetadataObserverClient_Internal {
 
@@ -100,7 +102,7 @@ int frameToken) {
 
         @Override
         public void onRootScrollOffsetChanged(
-org.chromium.gfx.mojom.Vector2dF rootScrollOffset) {
+org.chromium.gfx.mojom.PointF rootScrollOffset) {
 
             RenderFrameMetadataObserverClientOnRootScrollOffsetChangedParams _message = new RenderFrameMetadataObserverClientOnRootScrollOffsetChangedParams();
 
@@ -368,7 +370,7 @@ org.chromium.gfx.mojom.Vector2dF rootScrollOffset) {
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public org.chromium.gfx.mojom.Vector2dF rootScrollOffset;
+        public org.chromium.gfx.mojom.PointF rootScrollOffset;
 
         private RenderFrameMetadataObserverClientOnRootScrollOffsetChangedParams(int version) {
             super(STRUCT_SIZE, version);
@@ -406,7 +408,7 @@ org.chromium.gfx.mojom.Vector2dF rootScrollOffset) {
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    result.rootScrollOffset = org.chromium.gfx.mojom.Vector2dF.decode(decoder1);
+                    result.rootScrollOffset = org.chromium.gfx.mojom.PointF.decode(decoder1);
                     }
 
             } finally {

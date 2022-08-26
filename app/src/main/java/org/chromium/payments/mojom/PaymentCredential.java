@@ -13,6 +13,8 @@
 
 package org.chromium.payments.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface PaymentCredential extends org.chromium.mojo.bindings.Interface {
 
@@ -23,28 +25,11 @@ public interface PaymentCredential extends org.chromium.mojo.bindings.Interface 
 
     Manager<PaymentCredential, PaymentCredential.Proxy> MANAGER = PaymentCredential_Internal.MANAGER;
 
+    void storePaymentCredential(
+byte[] credentialId, String rpId, byte[] userId, 
+StorePaymentCredential_Response callback);
 
-    void downloadIconAndShowUserPrompt(
-PaymentCredentialInstrument instrument, 
-DownloadIconAndShowUserPromptResponse callback);
-
-    interface DownloadIconAndShowUserPromptResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
-
-
-    void storePaymentCredentialAndHideUserPrompt(
-PaymentCredentialInstrument instrument, byte[] credentialId, String rpId, 
-StorePaymentCredentialAndHideUserPromptResponse callback);
-
-    interface StorePaymentCredentialAndHideUserPromptResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
-
-
-    void hideUserPrompt(
-
-HideUserPromptResponse callback);
-
-    interface HideUserPromptResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
+    interface StorePaymentCredential_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
 }

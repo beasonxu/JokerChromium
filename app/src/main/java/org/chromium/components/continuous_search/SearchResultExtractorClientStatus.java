@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -21,7 +21,9 @@ import java.lang.annotation.RetentionPolicy;
     SearchResultExtractorClientStatus.WEB_CONTENTS_GONE,
     SearchResultExtractorClientStatus.NATIVE_NOT_INITIALIZED,
     SearchResultExtractorClientStatus.ALREADY_CAPTURING,
-    SearchResultExtractorClientStatus.WEB_CONTENTS_HAS_NON_SRP_URL
+    SearchResultExtractorClientStatus.WEB_CONTENTS_HAS_NON_SRP_URL,
+    SearchResultExtractorClientStatus.NOT_ENOUGH_RESULTS,
+    SearchResultExtractorClientStatus.MAX_VALUE
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface SearchResultExtractorClientStatus {
@@ -32,4 +34,6 @@ public @interface SearchResultExtractorClientStatus {
   int NATIVE_NOT_INITIALIZED = 4;
   int ALREADY_CAPTURING = 5;
   int WEB_CONTENTS_HAS_NON_SRP_URL = 6;
+  int NOT_ENOUGH_RESULTS = 7;
+  int MAX_VALUE = 8;
 }

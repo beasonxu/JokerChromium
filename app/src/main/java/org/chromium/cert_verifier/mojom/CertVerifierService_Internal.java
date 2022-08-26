@@ -13,6 +13,8 @@
 
 package org.chromium.cert_verifier.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class CertVerifierService_Internal {
 
@@ -83,11 +85,17 @@ org.chromium.network.mojom.UrlLoaderFactory urlLoaderFactory, UrlLoaderFactoryCo
 
         @Override
         public void verify(
-RequestParams params, CertVerifierRequest certVerifierRequest) {
+RequestParams params, int netlogSourceType, int netlogSourceId, org.chromium.mojo_base.mojom.TimeTicks netlogSourceStartTime, CertVerifierRequest certVerifierRequest) {
 
             CertVerifierServiceVerifyParams _message = new CertVerifierServiceVerifyParams();
 
             _message.params = params;
+
+            _message.netlogSourceType = netlogSourceType;
+
+            _message.netlogSourceId = netlogSourceId;
+
+            _message.netlogSourceStartTime = netlogSourceStartTime;
 
             _message.certVerifierRequest = certVerifierRequest;
 
@@ -166,7 +174,7 @@ CertVerifierConfig config) {
                         CertVerifierServiceVerifyParams data =
                                 CertVerifierServiceVerifyParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().verify(data.params, data.certVerifierRequest);
+                        getImpl().verify(data.params, data.netlogSourceType, data.netlogSourceId, data.netlogSourceStartTime, data.certVerifierRequest);
                         return true;
                     }
 
@@ -303,10 +311,13 @@ CertVerifierConfig config) {
     
     static final class CertVerifierServiceVerifyParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final int STRUCT_SIZE = 40;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public RequestParams params;
+        public int netlogSourceType;
+        public int netlogSourceId;
+        public org.chromium.mojo_base.mojom.TimeTicks netlogSourceStartTime;
         public CertVerifierRequest certVerifierRequest;
 
         private CertVerifierServiceVerifyParams(int version) {
@@ -349,7 +360,20 @@ CertVerifierConfig config) {
                     }
                     {
                         
-                    result.certVerifierRequest = decoder0.readServiceInterface(16, false, CertVerifierRequest.MANAGER);
+                    result.netlogSourceType = decoder0.readInt(16);
+                    }
+                    {
+                        
+                    result.netlogSourceId = decoder0.readInt(20);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
+                    result.netlogSourceStartTime = org.chromium.mojo_base.mojom.TimeTicks.decode(decoder1);
+                    }
+                    {
+                        
+                    result.certVerifierRequest = decoder0.readServiceInterface(32, false, CertVerifierRequest.MANAGER);
                     }
 
             } finally {
@@ -365,7 +389,13 @@ CertVerifierConfig config) {
             
             encoder0.encode(this.params, 8, false);
             
-            encoder0.encode(this.certVerifierRequest, 16, false, CertVerifierRequest.MANAGER);
+            encoder0.encode(this.netlogSourceType, 16);
+            
+            encoder0.encode(this.netlogSourceId, 20);
+            
+            encoder0.encode(this.netlogSourceStartTime, 24, false);
+            
+            encoder0.encode(this.certVerifierRequest, 32, false, CertVerifierRequest.MANAGER);
         }
     }
 

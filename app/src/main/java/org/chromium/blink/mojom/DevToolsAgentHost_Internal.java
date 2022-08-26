@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class DevToolsAgentHost_Internal {
 
@@ -47,7 +49,7 @@ class DevToolsAgentHost_Internal {
     };
 
 
-    private static final int CHILD_WORKER_CREATED_ORDINAL = 0;
+    private static final int CHILD_TARGET_CREATED_ORDINAL = 0;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements DevToolsAgentHost.Proxy {
@@ -59,10 +61,10 @@ class DevToolsAgentHost_Internal {
 
 
         @Override
-        public void childWorkerCreated(
-DevToolsAgent workerDevtoolsAgent, org.chromium.mojo.bindings.InterfaceRequest<DevToolsAgentHost> workerDevtoolsAgentHost, org.chromium.url.mojom.Url url, String name, org.chromium.mojo_base.mojom.UnguessableToken devtoolsWorkerToken, boolean waitingForDebugger) {
+        public void childTargetCreated(
+DevToolsAgent workerDevtoolsAgent, org.chromium.mojo.bindings.InterfaceRequest<DevToolsAgentHost> workerDevtoolsAgentHost, org.chromium.url.mojom.Url url, String name, org.chromium.mojo_base.mojom.UnguessableToken devtoolsWorkerToken, boolean waitingForDebugger, int contextType) {
 
-            DevToolsAgentHostChildWorkerCreatedParams _message = new DevToolsAgentHostChildWorkerCreatedParams();
+            DevToolsAgentHostChildTargetCreatedParams _message = new DevToolsAgentHostChildTargetCreatedParams();
 
             _message.workerDevtoolsAgent = workerDevtoolsAgent;
 
@@ -76,11 +78,13 @@ DevToolsAgent workerDevtoolsAgent, org.chromium.mojo.bindings.InterfaceRequest<D
 
             _message.waitingForDebugger = waitingForDebugger;
 
+            _message.contextType = contextType;
+
 
             getProxyHandler().getMessageReceiver().accept(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(CHILD_WORKER_CREATED_ORDINAL)));
+                            new org.chromium.mojo.bindings.MessageHeader(CHILD_TARGET_CREATED_ORDINAL)));
 
         }
 
@@ -116,12 +120,12 @@ DevToolsAgent workerDevtoolsAgent, org.chromium.mojo.bindings.InterfaceRequest<D
 
 
 
-                    case CHILD_WORKER_CREATED_ORDINAL: {
+                    case CHILD_TARGET_CREATED_ORDINAL: {
 
-                        DevToolsAgentHostChildWorkerCreatedParams data =
-                                DevToolsAgentHostChildWorkerCreatedParams.deserialize(messageWithHeader.getPayload());
+                        DevToolsAgentHostChildTargetCreatedParams data =
+                                DevToolsAgentHostChildTargetCreatedParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().childWorkerCreated(data.workerDevtoolsAgent, data.workerDevtoolsAgentHost, data.url, data.name, data.devtoolsWorkerToken, data.waitingForDebugger);
+                        getImpl().childTargetCreated(data.workerDevtoolsAgent, data.workerDevtoolsAgentHost, data.url, data.name, data.devtoolsWorkerToken, data.waitingForDebugger, data.contextType);
                         return true;
                     }
 
@@ -169,10 +173,10 @@ DevToolsAgent workerDevtoolsAgent, org.chromium.mojo.bindings.InterfaceRequest<D
 
 
     
-    static final class DevToolsAgentHostChildWorkerCreatedParams extends org.chromium.mojo.bindings.Struct {
+    static final class DevToolsAgentHostChildTargetCreatedParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 48;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
+        private static final int STRUCT_SIZE = 56;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(56, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public DevToolsAgent workerDevtoolsAgent;
         public org.chromium.mojo.bindings.InterfaceRequest<DevToolsAgentHost> workerDevtoolsAgentHost;
@@ -180,16 +184,17 @@ DevToolsAgent workerDevtoolsAgent, org.chromium.mojo.bindings.InterfaceRequest<D
         public String name;
         public org.chromium.mojo_base.mojom.UnguessableToken devtoolsWorkerToken;
         public boolean waitingForDebugger;
+        public int contextType;
 
-        private DevToolsAgentHostChildWorkerCreatedParams(int version) {
+        private DevToolsAgentHostChildTargetCreatedParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public DevToolsAgentHostChildWorkerCreatedParams() {
+        public DevToolsAgentHostChildTargetCreatedParams() {
             this(0);
         }
 
-        public static DevToolsAgentHostChildWorkerCreatedParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static DevToolsAgentHostChildTargetCreatedParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -198,22 +203,22 @@ DevToolsAgent workerDevtoolsAgent, org.chromium.mojo.bindings.InterfaceRequest<D
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static DevToolsAgentHostChildWorkerCreatedParams deserialize(java.nio.ByteBuffer data) {
+        public static DevToolsAgentHostChildTargetCreatedParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static DevToolsAgentHostChildWorkerCreatedParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static DevToolsAgentHostChildTargetCreatedParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            DevToolsAgentHostChildWorkerCreatedParams result;
+            DevToolsAgentHostChildTargetCreatedParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new DevToolsAgentHostChildWorkerCreatedParams(elementsOrVersion);
+                result = new DevToolsAgentHostChildTargetCreatedParams(elementsOrVersion);
                     {
                         
                     result.workerDevtoolsAgent = decoder0.readServiceInterface(8, false, DevToolsAgent.MANAGER);
@@ -240,6 +245,12 @@ DevToolsAgent workerDevtoolsAgent, org.chromium.mojo.bindings.InterfaceRequest<D
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, false);
                     result.devtoolsWorkerToken = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
                     }
+                    {
+                        
+                    result.contextType = decoder0.readInt(48);
+                        DevToolsExecutionContextType.validate(result.contextType);
+                        result.contextType = DevToolsExecutionContextType.toKnownValue(result.contextType);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -263,6 +274,8 @@ DevToolsAgent workerDevtoolsAgent, org.chromium.mojo.bindings.InterfaceRequest<D
             encoder0.encode(this.name, 32, false);
             
             encoder0.encode(this.devtoolsWorkerToken, 40, false);
+            
+            encoder0.encode(this.contextType, 48);
         }
     }
 

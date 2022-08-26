@@ -11,7 +11,7 @@ import org.chromium.content_public.browser.WebContents;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-public final class WebApkPostShareTargetNavigatorJni implements WebApkPostShareTargetNavigator.Natives {
+public class WebApkPostShareTargetNavigatorJni implements WebApkPostShareTargetNavigator.Natives {
   private static WebApkPostShareTargetNavigator.Natives testInstance;
 
   public static final JniStaticTestMocker<WebApkPostShareTargetNavigator.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.webapps.WebApkPostShareTargetNavigator.Natives>() {

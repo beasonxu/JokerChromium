@@ -13,8 +13,18 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ServiceWorkerEventStatus {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ServiceWorkerEventStatus.COMPLETED,
+        ServiceWorkerEventStatus.REJECTED,
+        ServiceWorkerEventStatus.ABORTED,
+        ServiceWorkerEventStatus.TIMEOUT,
+        ServiceWorkerEventStatus.MAX})
+    public @interface EnumType {}
 
     public static final int COMPLETED = 0;
     public static final int REJECTED = 1;

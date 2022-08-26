@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PersistentNotificationError {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PersistentNotificationError.NONE,
+        PersistentNotificationError.INTERNAL_ERROR,
+        PersistentNotificationError.PERMISSION_DENIED})
+    public @interface EnumType {}
 
     public static final int NONE = 0;
     public static final int INTERNAL_ERROR = 1;

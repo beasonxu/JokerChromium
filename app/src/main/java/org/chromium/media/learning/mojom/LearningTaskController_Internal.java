@@ -13,6 +13,8 @@
 
 package org.chromium.media.learning.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class LearningTaskController_Internal {
 
@@ -145,7 +147,7 @@ org.chromium.mojo_base.mojom.UnguessableToken id, TargetValue defaultTarget) {
         @Override
         public void predictDistribution(
 FeatureValue[] features, 
-PredictDistributionResponse callback) {
+PredictDistribution_Response callback) {
 
             LearningTaskControllerPredictDistributionParams _message = new LearningTaskControllerPredictDistributionParams();
 
@@ -757,9 +759,9 @@ PredictDistributionResponse callback) {
 
     static class LearningTaskControllerPredictDistributionResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final LearningTaskController.PredictDistributionResponse mCallback;
+        private final LearningTaskController.PredictDistribution_Response mCallback;
 
-        LearningTaskControllerPredictDistributionResponseParamsForwardToCallback(LearningTaskController.PredictDistributionResponse callback) {
+        LearningTaskControllerPredictDistributionResponseParamsForwardToCallback(LearningTaskController.PredictDistribution_Response callback) {
             this.mCallback = callback;
         }
 
@@ -784,7 +786,7 @@ PredictDistributionResponse callback) {
         }
     }
 
-    static class LearningTaskControllerPredictDistributionResponseParamsProxyToResponder implements LearningTaskController.PredictDistributionResponse {
+    static class LearningTaskControllerPredictDistributionResponseParamsProxyToResponder implements LearningTaskController.PredictDistribution_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

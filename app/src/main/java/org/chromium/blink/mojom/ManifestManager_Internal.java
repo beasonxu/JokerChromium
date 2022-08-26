@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class ManifestManager_Internal {
 
@@ -63,7 +65,7 @@ class ManifestManager_Internal {
         @Override
         public void requestManifest(
 
-RequestManifestResponse callback) {
+RequestManifest_Response callback) {
 
             ManifestManagerRequestManifestParams _message = new ManifestManagerRequestManifestParams();
 
@@ -83,7 +85,7 @@ RequestManifestResponse callback) {
         @Override
         public void requestManifestDebugInfo(
 
-RequestManifestDebugInfoResponse callback) {
+RequestManifestDebugInfo_Response callback) {
 
             ManifestManagerRequestManifestDebugInfoParams _message = new ManifestManagerRequestManifestDebugInfoParams();
 
@@ -328,9 +330,9 @@ RequestManifestDebugInfoResponse callback) {
 
     static class ManifestManagerRequestManifestResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ManifestManager.RequestManifestResponse mCallback;
+        private final ManifestManager.RequestManifest_Response mCallback;
 
-        ManifestManagerRequestManifestResponseParamsForwardToCallback(ManifestManager.RequestManifestResponse callback) {
+        ManifestManagerRequestManifestResponseParamsForwardToCallback(ManifestManager.RequestManifest_Response callback) {
             this.mCallback = callback;
         }
 
@@ -355,7 +357,7 @@ RequestManifestDebugInfoResponse callback) {
         }
     }
 
-    static class ManifestManagerRequestManifestResponseParamsProxyToResponder implements ManifestManager.RequestManifestResponse {
+    static class ManifestManagerRequestManifestResponseParamsProxyToResponder implements ManifestManager.RequestManifest_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -527,9 +529,9 @@ RequestManifestDebugInfoResponse callback) {
 
     static class ManifestManagerRequestManifestDebugInfoResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ManifestManager.RequestManifestDebugInfoResponse mCallback;
+        private final ManifestManager.RequestManifestDebugInfo_Response mCallback;
 
-        ManifestManagerRequestManifestDebugInfoResponseParamsForwardToCallback(ManifestManager.RequestManifestDebugInfoResponse callback) {
+        ManifestManagerRequestManifestDebugInfoResponseParamsForwardToCallback(ManifestManager.RequestManifestDebugInfo_Response callback) {
             this.mCallback = callback;
         }
 
@@ -554,7 +556,7 @@ RequestManifestDebugInfoResponse callback) {
         }
     }
 
-    static class ManifestManagerRequestManifestDebugInfoResponseParamsProxyToResponder implements ManifestManager.RequestManifestDebugInfoResponse {
+    static class ManifestManagerRequestManifestDebugInfoResponseParamsProxyToResponder implements ManifestManager.RequestManifestDebugInfo_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

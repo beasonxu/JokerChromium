@@ -13,7 +13,7 @@ import org.chromium.content_public.browser.WebContents;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class CustomTabsConnectionJni implements CustomTabsConnection.Natives {
+class CustomTabsConnectionJni implements CustomTabsConnection.Natives {
   private static CustomTabsConnection.Natives testInstance;
 
   public static final JniStaticTestMocker<CustomTabsConnection.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.customtabs.CustomTabsConnection.Natives>() {

@@ -23,6 +23,7 @@ import android.view.GestureDetector;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.accessibility.AccessibilityEvent;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.TextView;
@@ -41,6 +42,7 @@ import org.chromium.base.SysUtils;
 import org.chromium.base.ThreadUtils;
 import org.chromium.base.compat.ApiHelperForO;
 import org.chromium.base.metrics.RecordUserAction;
+import org.chromium.components.browser_ui.share.ShareHelper;
 import org.chromium.ui.KeyboardVisibilityDelegate;
 import org.chromium.ui.base.WindowDelegate;
 
@@ -205,6 +207,8 @@ public abstract class UrlBar extends AutocompleteEditText {
         // the first draw.
         setFocusable(false);
         setFocusableInTouchMode(false);
+        setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_URI
+                | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
         // The HTC Sense IME will attempt to autocomplete words in the Omnibox when Prediction is
         // enabled.  We want to disable this feature and rely on the Omnibox's implementation.
@@ -308,6 +312,14 @@ public abstract class UrlBar extends AutocompleteEditText {
         mAllowFocus = allowFocus;
         setFocusable(allowFocus);
         setFocusableInTouchMode(allowFocus);
+    }
+
+    /**
+     * Sends an accessibility event to the URL bar to request accessibility focus on it (e.g. for
+     * TalkBack).
+     */
+    public void requestAccessibilityFocus() {
+        sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED);
     }
 
     /**
@@ -624,6 +636,7 @@ public abstract class UrlBar extends AutocompleteEditText {
 
         if (id == android.R.id.shareText) {
             RecordUserAction.record("Omnibox.LongPress.Share");
+            ShareHelper.recordShareSource(ShareHelper.ShareSourceAndroid.ANDROID_SHARE_SHEET);
         }
 
         return super.onTextContextMenuItem(id);

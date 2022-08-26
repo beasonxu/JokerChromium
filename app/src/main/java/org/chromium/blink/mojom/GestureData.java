@@ -13,17 +13,20 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class GestureData extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 96;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(96, 0)};
+    private static final int STRUCT_SIZE = 104;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(104, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public org.chromium.gfx.mojom.PointF screenPosition;
     public org.chromium.gfx.mojom.PointF widgetPosition;
     public int sourceDevice;
     public boolean isSourceTouchEventSetBlocking;
     public int primaryPointerType;
+    public int primaryUniqueTouchEventId;
     public int uniqueTouchEventId;
     public org.chromium.gfx.mojom.Size contactSize;
     public ScrollData scrollData;
@@ -94,41 +97,45 @@ public final class GestureData extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.uniqueTouchEventId = decoder0.readInt(36);
+                result.primaryUniqueTouchEventId = decoder0.readInt(36);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, true);
-                result.contactSize = org.chromium.gfx.mojom.Size.decode(decoder1);
+                result.uniqueTouchEventId = decoder0.readInt(40);
                 }
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(48, true);
-                result.scrollData = ScrollData.decode(decoder1);
+                result.contactSize = org.chromium.gfx.mojom.Size.decode(decoder1);
                 }
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(56, true);
-                result.pinchBeginData = PinchBeginData.decode(decoder1);
+                result.scrollData = ScrollData.decode(decoder1);
                 }
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(64, true);
-                result.pinchUpdateData = PinchUpdateData.decode(decoder1);
+                result.pinchBeginData = PinchBeginData.decode(decoder1);
                 }
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(72, true);
-                result.pinchEndData = PinchEndData.decode(decoder1);
+                result.pinchUpdateData = PinchUpdateData.decode(decoder1);
                 }
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(80, true);
-                result.tapData = TapData.decode(decoder1);
+                result.pinchEndData = PinchEndData.decode(decoder1);
                 }
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(88, true);
+                result.tapData = TapData.decode(decoder1);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(96, true);
                 result.flingData = FlingData.decode(decoder1);
                 }
 
@@ -153,20 +160,22 @@ public final class GestureData extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.primaryPointerType, 32);
         
-        encoder0.encode(this.uniqueTouchEventId, 36);
+        encoder0.encode(this.primaryUniqueTouchEventId, 36);
         
-        encoder0.encode(this.contactSize, 40, true);
+        encoder0.encode(this.uniqueTouchEventId, 40);
         
-        encoder0.encode(this.scrollData, 48, true);
+        encoder0.encode(this.contactSize, 48, true);
         
-        encoder0.encode(this.pinchBeginData, 56, true);
+        encoder0.encode(this.scrollData, 56, true);
         
-        encoder0.encode(this.pinchUpdateData, 64, true);
+        encoder0.encode(this.pinchBeginData, 64, true);
         
-        encoder0.encode(this.pinchEndData, 72, true);
+        encoder0.encode(this.pinchUpdateData, 72, true);
         
-        encoder0.encode(this.tapData, 80, true);
+        encoder0.encode(this.pinchEndData, 80, true);
         
-        encoder0.encode(this.flingData, 88, true);
+        encoder0.encode(this.tapData, 88, true);
+        
+        encoder0.encode(this.flingData, 96, true);
     }
 }

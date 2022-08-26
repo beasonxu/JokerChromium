@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ServiceWorkerStreamCallback extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface ServiceWorkerStreamCallback extends org.chromium.mojo.bindings.
 
     Manager<ServiceWorkerStreamCallback, ServiceWorkerStreamCallback.Proxy> MANAGER = ServiceWorkerStreamCallback_Internal.MANAGER;
 
-
     void onCompleted(
 );
-
 
 
     void onAborted(

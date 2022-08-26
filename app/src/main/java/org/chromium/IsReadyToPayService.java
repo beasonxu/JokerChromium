@@ -28,7 +28,6 @@ public interface IsReadyToPayService extends android.os.IInterface
   /** Local-side IPC implementation stub class. */
   public static abstract class Stub extends android.os.Binder implements org.chromium.IsReadyToPayService
   {
-    private static final java.lang.String DESCRIPTOR = "org.chromium.IsReadyToPayService";
     /** Construct the stub at attach it to the interface. */
     public Stub()
     {
@@ -63,6 +62,9 @@ public interface IsReadyToPayService extends android.os.IInterface
           reply.writeString(descriptor);
           return true;
         }
+      }
+      switch (code)
+      {
         case TRANSACTION_isReadyToPay:
         {
           data.enforceInterface(descriptor);
@@ -105,9 +107,11 @@ public interface IsReadyToPayService extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeStrongBinder((((callback!=null))?(callback.asBinder()):(null)));
           boolean _status = mRemote.transact(Stub.TRANSACTION_isReadyToPay, _data, null, android.os.IBinder.FLAG_ONEWAY);
-          if (!_status && getDefaultImpl() != null) {
-            getDefaultImpl().isReadyToPay(callback);
-            return;
+          if (!_status) {
+            if (getDefaultImpl() != null) {
+              getDefaultImpl().isReadyToPay(callback);
+              return;
+            }
           }
         }
         finally {
@@ -134,6 +138,7 @@ public interface IsReadyToPayService extends android.os.IInterface
       return Stub.Proxy.sDefaultImpl;
     }
   }
+  public static final java.lang.String DESCRIPTOR = "org.chromium.IsReadyToPayService";
   /**
        * Method that will be called on the Service to query
        * whether the payment app is ready for payment.

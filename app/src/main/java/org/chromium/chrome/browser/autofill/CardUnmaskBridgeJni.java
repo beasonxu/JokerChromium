@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class CardUnmaskBridgeJni implements CardUnmaskBridge.Natives {
+class CardUnmaskBridgeJni implements CardUnmaskBridge.Natives {
   private static CardUnmaskBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<CardUnmaskBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.autofill.CardUnmaskBridge.Natives>() {
@@ -37,8 +37,8 @@ final class CardUnmaskBridgeJni implements CardUnmaskBridge.Natives {
 
   @Override
   public void onUserInput(long nativeCardUnmaskPromptViewAndroid, CardUnmaskBridge caller,
-      String cvc, String month, String year, boolean shouldStoreLocally, boolean enableFidoAuth) {
-    GEN_JNI.org_chromium_chrome_browser_autofill_CardUnmaskBridge_onUserInput(nativeCardUnmaskPromptViewAndroid, caller, cvc, month, year, shouldStoreLocally, enableFidoAuth);
+      String cvc, String month, String year, boolean enableFidoAuth) {
+    GEN_JNI.org_chromium_chrome_browser_autofill_CardUnmaskBridge_onUserInput(nativeCardUnmaskPromptViewAndroid, caller, cvc, month, year, enableFidoAuth);
   }
 
   @Override

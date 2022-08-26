@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class CookieOptions extends org.chromium.mojo.bindings.Struct {
 
@@ -23,7 +25,7 @@ public final class CookieOptions extends org.chromium.mojo.bindings.Struct {
     public CookieSameSiteContext sameSiteCookieContext;
     public boolean updateAccessTime;
     public boolean returnExcludedCookies;
-    public int samePartyCookieContextType;
+    public SamePartyContext samePartyContext;
     public int fullPartyContextSize;
     public boolean isInNontrivialFirstPartySet;
 
@@ -32,7 +34,6 @@ public final class CookieOptions extends org.chromium.mojo.bindings.Struct {
         this.excludeHttponly = (boolean) true;
         this.updateAccessTime = (boolean) true;
         this.returnExcludedCookies = (boolean) false;
-        this.samePartyCookieContextType = (int) SamePartyCookieContextType.CROSS_PARTY;
         this.fullPartyContextSize = (int) 0;
         this.isInNontrivialFirstPartySet = (boolean) false;
     }
@@ -84,9 +85,7 @@ public final class CookieOptions extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.samePartyCookieContextType = decoder0.readInt(12);
-                    SamePartyCookieContextType.validate(result.samePartyCookieContextType);
-                    result.samePartyCookieContextType = SamePartyCookieContextType.toKnownValue(result.samePartyCookieContextType);
+                result.fullPartyContextSize = decoder0.readInt(12);
                 }
                 {
                     
@@ -95,7 +94,8 @@ public final class CookieOptions extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.fullPartyContextSize = decoder0.readInt(24);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
+                result.samePartyContext = SamePartyContext.decode(decoder1);
                 }
 
         } finally {
@@ -117,10 +117,10 @@ public final class CookieOptions extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.isInNontrivialFirstPartySet, 8, 3);
         
-        encoder0.encode(this.samePartyCookieContextType, 12);
+        encoder0.encode(this.fullPartyContextSize, 12);
         
         encoder0.encode(this.sameSiteCookieContext, 16, false);
         
-        encoder0.encode(this.fullPartyContextSize, 24);
+        encoder0.encode(this.samePartyContext, 24, false);
     }
 }

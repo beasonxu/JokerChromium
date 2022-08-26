@@ -13,17 +13,29 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PrivateNetworkRequestPolicy {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PrivateNetworkRequestPolicy.ALLOW,
+        PrivateNetworkRequestPolicy.WARN,
+        PrivateNetworkRequestPolicy.BLOCK,
+        PrivateNetworkRequestPolicy.PREFLIGHT_WARN,
+        PrivateNetworkRequestPolicy.PREFLIGHT_BLOCK})
+    public @interface EnumType {}
 
     public static final int ALLOW = 0;
-    public static final int BLOCK_FROM_INSECURE_TO_MORE_PRIVATE = 1;
-    public static final int WARN_FROM_INSECURE_TO_MORE_PRIVATE = 2;
+    public static final int WARN = 1;
+    public static final int BLOCK = 2;
+    public static final int PREFLIGHT_WARN = 3;
+    public static final int PREFLIGHT_BLOCK = 4;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 2;
+    public static final int MAX_VALUE = 4;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 2;
+        return value >= 0 && value <= 4;
     }
 
     public static void validate(int value) {

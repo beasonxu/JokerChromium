@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class CspViolation extends org.chromium.mojo.bindings.Struct {
 
@@ -27,7 +29,6 @@ public final class CspViolation extends org.chromium.mojo.bindings.Struct {
     public boolean useReportingApi;
     public String header;
     public int type;
-    public boolean afterRedirect;
     public SourceLocation sourceLocation;
 
     private CspViolation(int version) {
@@ -98,10 +99,6 @@ public final class CspViolation extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.afterRedirect = decoder0.readBoolean(48, 1);
-                }
-                {
-                    
                 result.type = decoder0.readInt(52);
                     ContentSecurityPolicyType.validate(result.type);
                     result.type = ContentSecurityPolicyType.toKnownValue(result.type);
@@ -146,8 +143,6 @@ public final class CspViolation extends org.chromium.mojo.bindings.Struct {
         }
         
         encoder0.encode(this.useReportingApi, 48, 0);
-        
-        encoder0.encode(this.afterRedirect, 48, 1);
         
         encoder0.encode(this.type, 52);
         

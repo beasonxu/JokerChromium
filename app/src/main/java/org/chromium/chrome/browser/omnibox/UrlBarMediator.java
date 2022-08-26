@@ -19,16 +19,13 @@ import androidx.annotation.VisibleForTesting;
 
 import org.chromium.base.Callback;
 import org.chromium.base.ContextUtils;
-import org.chromium.base.metrics.RecordHistogram;
 import org.chromium.chrome.browser.omnibox.UrlBar.ScrollType;
 import org.chromium.chrome.browser.omnibox.UrlBar.UrlTextChangeListener;
 import org.chromium.chrome.browser.omnibox.UrlBarCoordinator.SelectionState;
 import org.chromium.chrome.browser.omnibox.UrlBarProperties.AutocompleteText;
 import org.chromium.chrome.browser.omnibox.UrlBarProperties.UrlBarTextState;
-import org.chromium.chrome.browser.omnibox.suggestions.AutocompleteCoordinator;
+import org.chromium.chrome.browser.ui.theme.BrandedColorScheme;
 import org.chromium.components.omnibox.OmniboxUrlEmphasizer.UrlEmphasisSpan;
-import org.chromium.content_public.browser.BrowserStartupController;
-import org.chromium.ui.base.Clipboard;
 import org.chromium.ui.modelutil.PropertyModel;
 
 import java.net.MalformedURLException;
@@ -76,7 +73,7 @@ class UrlBarMediator
         mModel.set(UrlBarProperties.TEXT_CONTEXT_MENU_DELEGATE, this);
         mModel.set(UrlBarProperties.URL_TEXT_CHANGE_LISTENER, this);
         mModel.set(UrlBarProperties.TEXT_CHANGED_LISTENER, this);
-        setUseDarkTextColors(true);
+        setBrandedColorScheme(BrandedColorScheme.APP_DEFAULT);
     }
 
     public void destroy() {
@@ -227,15 +224,26 @@ class UrlBarMediator
     }
 
     /**
-     * Sets whether to use dark text colors.
+     * Sets the color scheme.
      *
+     * @param brandedColorScheme The {@link @BrandedColorScheme}.
      * @return Whether this resulted in a change from the previous value.
      */
-    public boolean setUseDarkTextColors(boolean useDarkColors) {
+    public boolean setBrandedColorScheme(@BrandedColorScheme int brandedColorScheme) {
         // TODO(bauerb): Make clients observe the property instead of checking the return value.
-        boolean previousValue = mModel.get(UrlBarProperties.USE_DARK_TEXT_COLORS);
-        mModel.set(UrlBarProperties.USE_DARK_TEXT_COLORS, useDarkColors);
-        return previousValue != useDarkColors;
+        @BrandedColorScheme
+        int previousValue = mModel.get(UrlBarProperties.BRANDED_COLOR_SCHEME);
+        mModel.set(UrlBarProperties.BRANDED_COLOR_SCHEME, brandedColorScheme);
+        return previousValue != brandedColorScheme;
+    }
+
+    /**
+     * Sets whether to use incognito colors.
+     *
+     * @param incognitoColorsEnabled Whether to use incognito colors.
+     */
+    public void setIncognitoColorsEnabled(boolean incognitoColorsEnabled) {
+        mModel.set(UrlBarProperties.INCOGNITO_COLORS_ENABLED, incognitoColorsEnabled);
     }
 
     /**
@@ -319,7 +327,6 @@ class UrlBarMediator
         }
 
         String stringToPaste = sanitizeTextForPaste(builder.toString());
-        recordPasteMetrics(stringToPaste);
         return stringToPaste;
     }
 
@@ -376,22 +383,6 @@ class UrlBarMediator
     public void afterTextChanged(Editable editable) {
         for (int i = 0; i < mTextChangedListeners.size(); i++) {
             mTextChangedListeners.get(i).afterTextChanged(editable);
-        }
-    }
-
-    private void recordPasteMetrics(String text) {
-        boolean isUrl = BrowserStartupController.getInstance().isFullBrowserStarted()
-                && AutocompleteCoordinator.qualifyPartialURLQuery(text) != null;
-
-        long age = System.currentTimeMillis() - Clipboard.getInstance().getLastModifiedTimeMs();
-        RecordHistogram.recordCustomTimesHistogram("MobileOmnibox.LongPressPasteAge", age,
-                MIN_TIME_MILLIS, MAX_TIME_MILLIS, NUM_OF_BUCKETS);
-        if (isUrl) {
-            RecordHistogram.recordCustomTimesHistogram("MobileOmnibox.LongPressPasteAge.URL", age,
-                    MIN_TIME_MILLIS, MAX_TIME_MILLIS, NUM_OF_BUCKETS);
-        } else {
-            RecordHistogram.recordCustomTimesHistogram("MobileOmnibox.LongPressPasteAge.TEXT", age,
-                    MIN_TIME_MILLIS, MAX_TIME_MILLIS, NUM_OF_BUCKETS);
         }
     }
 }

@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class CommitResult {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        CommitResult.OK,
+        CommitResult.ABORTED,
+        CommitResult.RESTART_CROSS_DOCUMENT})
+    public @interface EnumType {}
 
     public static final int OK = 0;
     public static final int ABORTED = 1;

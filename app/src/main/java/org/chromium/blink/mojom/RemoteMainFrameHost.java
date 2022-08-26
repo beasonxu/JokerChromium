@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface RemoteMainFrameHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,23 +25,19 @@ public interface RemoteMainFrameHost extends org.chromium.mojo.bindings.Interfac
 
     Manager<RemoteMainFrameHost, RemoteMainFrameHost.Proxy> MANAGER = RemoteMainFrameHost_Internal.MANAGER;
 
-
     void focusPage(
 );
-
 
 
     void takeFocus(
 boolean reverse);
 
 
-
     void updateTargetUrl(
 org.chromium.url.mojom.Url url, 
-UpdateTargetUrlResponse callback);
+UpdateTargetUrl_Response callback);
 
-    interface UpdateTargetUrlResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface UpdateTargetUrl_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void routeCloseEvent(

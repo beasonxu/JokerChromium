@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -17,21 +17,24 @@ import java.lang.annotation.RetentionPolicy;
 
 @IntDef({
     SigninReason.SIGNIN_PRIMARY_ACCOUNT, SigninReason.ADD_SECONDARY_ACCOUNT,
-    SigninReason.REAUTHENTICATION, SigninReason.UNLOCK, SigninReason.UNKNOWN_REASON,
-    SigninReason.FORCED_SIGNIN_PRIMARY_ACCOUNT, SigninReason.FETCH_LST_ONLY, SigninReason.MAX
+    SigninReason.REAUTHENTICATION, SigninReason.UNKNOWN_REASON,
+    SigninReason.FORCED_SIGNIN_PRIMARY_ACCOUNT, SigninReason.FETCH_LST_ONLY, SigninReason.MAX_VALUE
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface SigninReason {
   int SIGNIN_PRIMARY_ACCOUNT = 0;
   int ADD_SECONDARY_ACCOUNT = 1;
   int REAUTHENTICATION = 2;
-  int UNLOCK = 3;
+  /**
+   * REASON_UNLOCK = 3,  // DEPRECATED, profile unlocking was removed. This should never have been
+   * used to get signin URL.
+   */
   int UNKNOWN_REASON = 4;
   int FORCED_SIGNIN_PRIMARY_ACCOUNT = 5;
-  int FETCH_LST_ONLY = 6;
   /**
-   * token without actually signing into any profiles on Chrome. This allows the chrome signin page
-   * to work in incognito mode.
+   * Used to simply login and acquire a login scope token without actually signing into any profiles
+   * on Chrome. This allows the chrome signin page to work in incognito mode.
    */
-  int MAX = 7;
+  int FETCH_LST_ONLY = 6;
+  int MAX_VALUE = FETCH_LST_ONLY;
 }

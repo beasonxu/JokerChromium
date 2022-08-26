@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class AutofillNameFixFlowBridgeJni implements AutofillNameFixFlowBridge.Natives {
+class AutofillNameFixFlowBridgeJni implements AutofillNameFixFlowBridge.Natives {
   private static AutofillNameFixFlowBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<AutofillNameFixFlowBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.autofill.AutofillNameFixFlowBridge.Natives>() {
@@ -28,6 +28,11 @@ final class AutofillNameFixFlowBridgeJni implements AutofillNameFixFlowBridge.Na
   public void promptDismissed(long nativeCardNameFixFlowViewAndroid,
       AutofillNameFixFlowBridge caller) {
     GEN_JNI.org_chromium_chrome_browser_autofill_AutofillNameFixFlowBridge_promptDismissed(nativeCardNameFixFlowViewAndroid, caller);
+  }
+
+  @Override
+  public void onUserDismiss(long nativeCardNameFixFlowViewAndroid) {
+    GEN_JNI.org_chromium_chrome_browser_autofill_AutofillNameFixFlowBridge_onUserDismiss(nativeCardNameFixFlowViewAndroid);
   }
 
   @Override

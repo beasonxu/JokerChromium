@@ -16,6 +16,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 
 import org.chromium.components.browser_ui.widget.text.AlertDialogEditText;
+import org.chromium.url.GURL;
 
 /**
  * HTTP Authentication Dialog
@@ -55,14 +56,14 @@ public class LoginPrompt {
      *     given url being set as the web domain for the View control.
      * @param observer An interface to receive the result of the prompt.
      */
-    public LoginPrompt(Context context, String messageBody, String autofillUrl, Observer observer) {
+    public LoginPrompt(Context context, String messageBody, GURL autofillUrl, Observer observer) {
         mContext = context;
         mMessageBody = messageBody;
         mObserver = observer;
         createDialog(autofillUrl);
     }
 
-    private void createDialog(String autofillUrl) {
+    private void createDialog(GURL autofillUrl) {
         View v = LayoutInflater.from(mContext).inflate(R.layout.http_auth_dialog, null);
         mUsernameView = (AlertDialogEditText) v.findViewById(R.id.username);
         mPasswordView = (AlertDialogEditText) v.findViewById(R.id.password);
@@ -86,7 +87,7 @@ public class LoginPrompt {
         TextView explanationView = (TextView) v.findViewById(R.id.explanation);
         explanationView.setText(mMessageBody);
 
-        mDialog = new AlertDialog.Builder(mContext, R.style.Theme_Chromium_AlertDialog)
+        mDialog = new AlertDialog.Builder(mContext, R.style.ThemeOverlay_BrowserUI_AlertDialog)
                           .setTitle(R.string.login_dialog_title)
                           .setView(v)
                           .setPositiveButton(R.string.login_dialog_ok_button_label,

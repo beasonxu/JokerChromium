@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class CdmFactory_Internal {
 
@@ -60,12 +62,10 @@ class CdmFactory_Internal {
 
         @Override
         public void createCdm(
-String keySystem, CdmConfig cdmConfig, 
-CreateCdmResponse callback) {
+CdmConfig cdmConfig, 
+CreateCdm_Response callback) {
 
             CdmFactoryCreateCdmParams _message = new CdmFactoryCreateCdmParams();
-
-            _message.keySystem = keySystem;
 
             _message.cdmConfig = cdmConfig;
 
@@ -151,7 +151,7 @@ CreateCdmResponse callback) {
                         CdmFactoryCreateCdmParams data =
                                 CdmFactoryCreateCdmParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().createCdm(data.keySystem, data.cdmConfig, new CdmFactoryCreateCdmResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().createCdm(data.cdmConfig, new CdmFactoryCreateCdmResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -170,10 +170,9 @@ CreateCdmResponse callback) {
     
     static final class CdmFactoryCreateCdmParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public String keySystem;
         public CdmConfig cdmConfig;
 
         private CdmFactoryCreateCdmParams(int version) {
@@ -211,11 +210,7 @@ CreateCdmResponse callback) {
                 result = new CdmFactoryCreateCdmParams(elementsOrVersion);
                     {
                         
-                    result.keySystem = decoder0.readString(8, false);
-                    }
-                    {
-                        
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
                     result.cdmConfig = CdmConfig.decode(decoder1);
                     }
 
@@ -230,9 +225,7 @@ CreateCdmResponse callback) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.keySystem, 8, false);
-            
-            encoder0.encode(this.cdmConfig, 16, false);
+            encoder0.encode(this.cdmConfig, 8, false);
         }
     }
 
@@ -241,12 +234,11 @@ CreateCdmResponse callback) {
     
     static final class CdmFactoryCreateCdmResponseParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 40;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public ContentDecryptionModule cdm;
-        public org.chromium.mojo_base.mojom.UnguessableToken cdmId;
-        public Decryptor decryptor;
+        public CdmContext cdmContext;
         public String errorMessage;
 
         private CdmFactoryCreateCdmResponseParams(int version) {
@@ -289,15 +281,11 @@ CreateCdmResponse callback) {
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, true);
-                    result.cdmId = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
+                    result.cdmContext = CdmContext.decode(decoder1);
                     }
                     {
                         
-                    result.decryptor = decoder0.readServiceInterface(24, true, Decryptor.MANAGER);
-                    }
-                    {
-                        
-                    result.errorMessage = decoder0.readString(32, false);
+                    result.errorMessage = decoder0.readString(24, false);
                     }
 
             } finally {
@@ -313,19 +301,17 @@ CreateCdmResponse callback) {
             
             encoder0.encode(this.cdm, 8, true, ContentDecryptionModule.MANAGER);
             
-            encoder0.encode(this.cdmId, 16, true);
+            encoder0.encode(this.cdmContext, 16, true);
             
-            encoder0.encode(this.decryptor, 24, true, Decryptor.MANAGER);
-            
-            encoder0.encode(this.errorMessage, 32, false);
+            encoder0.encode(this.errorMessage, 24, false);
         }
     }
 
     static class CdmFactoryCreateCdmResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CdmFactory.CreateCdmResponse mCallback;
+        private final CdmFactory.CreateCdm_Response mCallback;
 
-        CdmFactoryCreateCdmResponseParamsForwardToCallback(CdmFactory.CreateCdmResponse callback) {
+        CdmFactoryCreateCdmResponseParamsForwardToCallback(CdmFactory.CreateCdm_Response callback) {
             this.mCallback = callback;
         }
 
@@ -342,7 +328,7 @@ CreateCdmResponse callback) {
 
                 CdmFactoryCreateCdmResponseParams response = CdmFactoryCreateCdmResponseParams.deserialize(messageWithHeader.getPayload());
 
-                mCallback.call(response.cdm, response.cdmId, response.decryptor, response.errorMessage);
+                mCallback.call(response.cdm, response.cdmContext, response.errorMessage);
                 return true;
             } catch (org.chromium.mojo.bindings.DeserializationException e) {
                 return false;
@@ -350,7 +336,7 @@ CreateCdmResponse callback) {
         }
     }
 
-    static class CdmFactoryCreateCdmResponseParamsProxyToResponder implements CdmFactory.CreateCdmResponse {
+    static class CdmFactoryCreateCdmResponseParamsProxyToResponder implements CdmFactory.CreateCdm_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -366,14 +352,12 @@ CreateCdmResponse callback) {
         }
 
         @Override
-        public void call(ContentDecryptionModule cdm, org.chromium.mojo_base.mojom.UnguessableToken cdmId, Decryptor decryptor, String errorMessage) {
+        public void call(ContentDecryptionModule cdm, CdmContext cdmContext, String errorMessage) {
             CdmFactoryCreateCdmResponseParams _response = new CdmFactoryCreateCdmResponseParams();
 
             _response.cdm = cdm;
 
-            _response.cdmId = cdmId;
-
-            _response.decryptor = decryptor;
+            _response.cdmContext = cdmContext;
 
             _response.errorMessage = errorMessage;
 

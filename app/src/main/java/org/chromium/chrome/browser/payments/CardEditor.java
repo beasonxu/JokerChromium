@@ -18,20 +18,21 @@ import org.chromium.base.Callback;
 import org.chromium.base.task.AsyncTask;
 import org.chromium.base.task.BackgroundOnlyAsyncTask;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.app.ChromeActivity;
 import org.chromium.chrome.browser.autofill.CreditCardScanner;
 import org.chromium.chrome.browser.autofill.PersonalDataManager;
 import org.chromium.chrome.browser.autofill.PersonalDataManager.AutofillProfile;
 import org.chromium.chrome.browser.autofill.PersonalDataManager.CreditCard;
 import org.chromium.chrome.browser.autofill.prefeditor.EditorBase;
-import org.chromium.chrome.browser.autofill.prefeditor.EditorFieldModel;
-import org.chromium.chrome.browser.autofill.prefeditor.EditorFieldModel.EditorFieldValidator;
-import org.chromium.chrome.browser.autofill.prefeditor.EditorFieldModel.EditorValueIconGenerator;
 import org.chromium.chrome.browser.autofill.prefeditor.EditorModel;
-import org.chromium.chrome.browser.autofill.settings.AutofillProfileBridge.DropdownKeyValue;
 import org.chromium.chrome.browser.preferences.ChromePreferenceKeys;
+import org.chromium.components.autofill.prefeditor.EditorFieldModel;
+import org.chromium.components.autofill.prefeditor.EditorFieldModel.DropdownKeyValue;
+import org.chromium.components.autofill.prefeditor.EditorFieldModel.EditorFieldValidator;
+import org.chromium.components.autofill.prefeditor.EditorFieldModel.EditorValueIconGenerator;
+import org.chromium.components.browser_ui.styles.SemanticColorUtils;
 import org.chromium.components.payments.BasicCardUtils;
 import org.chromium.components.payments.MethodStrings;
+import org.chromium.components.payments.PaymentFeatureList;
 import org.chromium.components.payments.PaymentRequestService;
 import org.chromium.content_public.browser.WebContents;
 import org.chromium.payments.mojom.PaymentMethodData;
@@ -159,7 +160,7 @@ public class CardEditor
     private boolean mIsScanning;
     private int mCurrentMonth;
     private int mCurrentYear;
-    private boolean mIsIncognito;
+    private boolean mIsOffTheRecord;
 
     /**
      * Builds a credit card editor.
@@ -169,9 +170,10 @@ public class CardEditor
      *                        billing addresses.
      * @param includeOrgLabel Whether the labels in the billing address dropdown should include the
      *                        organization name.
+     * @param isOffTheRecord  Whether the merchant WebContents's profile is in off-the-record mode.
      */
-    public CardEditor(
-            WebContents webContents, AddressEditor addressEditor, boolean includeOrgLabel) {
+    public CardEditor(WebContents webContents, AddressEditor addressEditor, boolean includeOrgLabel,
+            boolean isOffTheRecord) {
         assert webContents != null;
         assert addressEditor != null;
 
@@ -265,8 +267,7 @@ public class CardEditor
         };
         mCalendar.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
-        ChromeActivity activity = ChromeActivity.fromWebContents(mWebContents);
-        mIsIncognito = activity != null && activity.getCurrentTabModel().isIncognito();
+        mIsOffTheRecord = isOffTheRecord;
     }
 
     private boolean isCardNumberLengthMaximum(@Nullable CharSequence value) {
@@ -301,6 +302,9 @@ public class CardEditor
      * @param data Supported method and method specific data. Should not be null.
      */
     public void addAcceptedPaymentMethodIfRecognized(PaymentMethodData data) {
+        if (!PaymentFeatureList.isEnabled(PaymentFeatureList.PAYMENT_REQUEST_BASIC_CARD)) {
+            return;
+        }
         assert data != null;
         String method = data.supportedMethod;
         if (MethodStrings.BASIC_CARD.equals(method)) {
@@ -398,7 +402,7 @@ public class CardEditor
         addBillingAddressDropdown(editor, card);
 
         // Allow saving new cards on disk unless in incognito mode.
-        if (isNewCard && !mIsIncognito) addSaveCardCheckbox(editor);
+        if (isNewCard && !mIsOffTheRecord) addSaveCardCheckbox(editor);
 
         // If the user clicks [Cancel], send |toEdit| card back to the caller (will return original
         // state, which could be null, a full card, or a partial card).
@@ -488,7 +492,7 @@ public class CardEditor
                     mCardIconGenerator,
                     mContext.getString(R.string.pref_edit_dialog_field_required_validation_message),
                     mContext.getString(R.string.payments_card_number_invalid_validation_message),
-                    null /* value */);
+                    EditorFieldModel.LENGTH_COUNTER_LIMIT_NONE, null /* value */);
             if (mCanScan) {
                 mNumberField.addActionIcon(R.drawable.ic_photo_camera,
                         R.string.autofill_scan_credit_card, (Runnable) () -> {
@@ -509,7 +513,8 @@ public class CardEditor
                     null /* suggestions */, null /* formatter */, null /* validator */,
                     null /* valueIconGenerator */,
                     mContext.getString(R.string.pref_edit_dialog_field_required_validation_message),
-                    null /* invalidErrorMessage */, null /* value */);
+                    null /* invalidErrorMessage */, EditorFieldModel.LENGTH_COUNTER_LIMIT_NONE,
+                    null /* value */);
         }
         mNameField.setValue(card.getName());
         editor.addField(mNameField);
@@ -647,8 +652,8 @@ public class CardEditor
                 builder.append(editMessage);
                 int endIndex = builder.length();
 
-                Object foregroundSpanner = new ForegroundColorSpan(ApiCompatibilityUtils.getColor(
-                        mContext.getResources(), R.color.default_text_color_link));
+                Object foregroundSpanner = new ForegroundColorSpan(
+                        SemanticColorUtils.getDefaultTextColorLink(mContext));
                 builder.setSpan(foregroundSpanner, startIndex, endIndex, 0);
 
                 // The text size in the dropdown is 14dp.
@@ -788,7 +793,7 @@ public class CardEditor
 
         PersonalDataManager pdm = PersonalDataManager.getInstance();
         if (!card.getIsLocal()) {
-            if (!mIsIncognito) pdm.updateServerCardBillingAddress(card);
+            if (!mIsOffTheRecord) pdm.updateServerCardBillingAddress(card);
             return;
         }
 
@@ -806,12 +811,12 @@ public class CardEditor
         card.setIssuerIconDrawableId(displayableCard.getIssuerIconDrawableId());
 
         if (!isNewCard) {
-            if (!mIsIncognito) pdm.setCreditCard(card);
+            if (!mIsOffTheRecord) pdm.setCreditCard(card);
             return;
         }
 
         if (mSaveCardCheckbox != null && mSaveCardCheckbox.isChecked()) {
-            assert !mIsIncognito;
+            assert !mIsOffTheRecord;
             card.setGUID(pdm.setCreditCard(card));
         }
     }

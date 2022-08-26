@@ -326,7 +326,7 @@ public final class CastLogsProtos {
       /**
        * <pre>
        * The product type of Cast device sent from Cast-enabled devices.
-       * Next tag: 10
+       * Next tag: 12
        * </pre>
        *
        * Protobuf enum {@code metrics.CastLogsProto.CastDeviceInfo.CastProductType}
@@ -373,6 +373,14 @@ public final class CastLogsProtos {
          * <code>CAST_PRODUCT_TYPE_LITE = 9;</code>
          */
         CAST_PRODUCT_TYPE_LITE(9),
+        /**
+         * <code>CAST_PRODUCT_TYPE_CORE = 10;</code>
+         */
+        CAST_PRODUCT_TYPE_CORE(10),
+        /**
+         * <code>CAST_PRODUCT_TYPE_11 = 11;</code>
+         */
+        CAST_PRODUCT_TYPE_11(11),
         ;
 
         /**
@@ -415,6 +423,14 @@ public final class CastLogsProtos {
          * <code>CAST_PRODUCT_TYPE_LITE = 9;</code>
          */
         public static final int CAST_PRODUCT_TYPE_LITE_VALUE = 9;
+        /**
+         * <code>CAST_PRODUCT_TYPE_CORE = 10;</code>
+         */
+        public static final int CAST_PRODUCT_TYPE_CORE_VALUE = 10;
+        /**
+         * <code>CAST_PRODUCT_TYPE_11 = 11;</code>
+         */
+        public static final int CAST_PRODUCT_TYPE_11_VALUE = 11;
 
 
         @java.lang.Override
@@ -444,6 +460,8 @@ public final class CastLogsProtos {
             case 7: return CAST_PRODUCT_TYPE_CHROME_OS;
             case 8: return CAST_PRODUCT_TYPE_FUCHSIA_OS;
             case 9: return CAST_PRODUCT_TYPE_LITE;
+            case 10: return CAST_PRODUCT_TYPE_CORE;
+            case 11: return CAST_PRODUCT_TYPE_11;
             default: return null;
           }
         }
@@ -6038,11 +6056,30 @@ public final class CastLogsProtos {
        * @return The launchFrom.
        */
       org.chromium.components.metrics.CastLogsProtos.CastLogsProto.CastEventProto.LaunchFrom getLaunchFrom();
+
+      /**
+       * <pre>
+       * The Cast Core runtime type associated with this event.
+       * </pre>
+       *
+       * <code>optional .metrics.CastLogsProto.CastEventProto.RuntimeType runtime_type = 27;</code>
+       * @return Whether the runtimeType field is set.
+       */
+      boolean hasRuntimeType();
+      /**
+       * <pre>
+       * The Cast Core runtime type associated with this event.
+       * </pre>
+       *
+       * <code>optional .metrics.CastLogsProto.CastEventProto.RuntimeType runtime_type = 27;</code>
+       * @return The runtimeType.
+       */
+      org.chromium.components.metrics.CastLogsProtos.CastLogsProto.CastEventProto.RuntimeType getRuntimeType();
     }
     /**
      * <pre>
      * Stores Cast-enabled device specific events with a various context data.
-     * Next tag: 27
+     * Next tag: 28
      * </pre>
      *
      * Protobuf type {@code metrics.CastLogsProto.CastEventProto}
@@ -6208,6 +6245,108 @@ public final class CastLogsProtos {
         }
 
         // @@protoc_insertion_point(enum_scope:metrics.CastLogsProto.CastEventProto.LaunchFrom)
+      }
+
+      /**
+       * Protobuf enum {@code metrics.CastLogsProto.CastEventProto.RuntimeType}
+       */
+      public enum RuntimeType
+          implements com.google.protobuf.Internal.EnumLite {
+        /**
+         * <code>RUNTIME_TYPE_UNKNOWN = 0;</code>
+         */
+        RUNTIME_TYPE_UNKNOWN(0),
+        /**
+         * <code>RUNTIME_TYPE_CAST_WEB = 1;</code>
+         */
+        RUNTIME_TYPE_CAST_WEB(1),
+        /**
+         * <code>RUNTIME_TYPE_CAST_LITE = 2;</code>
+         */
+        RUNTIME_TYPE_CAST_LITE(2),
+        /**
+         * <code>RUNTIME_TYPE_NATIVE = 3;</code>
+         */
+        RUNTIME_TYPE_NATIVE(3),
+        ;
+
+        /**
+         * <code>RUNTIME_TYPE_UNKNOWN = 0;</code>
+         */
+        public static final int RUNTIME_TYPE_UNKNOWN_VALUE = 0;
+        /**
+         * <code>RUNTIME_TYPE_CAST_WEB = 1;</code>
+         */
+        public static final int RUNTIME_TYPE_CAST_WEB_VALUE = 1;
+        /**
+         * <code>RUNTIME_TYPE_CAST_LITE = 2;</code>
+         */
+        public static final int RUNTIME_TYPE_CAST_LITE_VALUE = 2;
+        /**
+         * <code>RUNTIME_TYPE_NATIVE = 3;</code>
+         */
+        public static final int RUNTIME_TYPE_NATIVE_VALUE = 3;
+
+
+        @java.lang.Override
+        public final int getNumber() {
+          return value;
+        }
+
+        /**
+         * @param value The number of the enum to look for.
+         * @return The enum associated with the given number.
+         * @deprecated Use {@link #forNumber(int)} instead.
+         */
+        @java.lang.Deprecated
+        public static RuntimeType valueOf(int value) {
+          return forNumber(value);
+        }
+
+        public static RuntimeType forNumber(int value) {
+          switch (value) {
+            case 0: return RUNTIME_TYPE_UNKNOWN;
+            case 1: return RUNTIME_TYPE_CAST_WEB;
+            case 2: return RUNTIME_TYPE_CAST_LITE;
+            case 3: return RUNTIME_TYPE_NATIVE;
+            default: return null;
+          }
+        }
+
+        public static com.google.protobuf.Internal.EnumLiteMap<RuntimeType>
+            internalGetValueMap() {
+          return internalValueMap;
+        }
+        private static final com.google.protobuf.Internal.EnumLiteMap<
+            RuntimeType> internalValueMap =
+              new com.google.protobuf.Internal.EnumLiteMap<RuntimeType>() {
+                @java.lang.Override
+                public RuntimeType findValueByNumber(int number) {
+                  return RuntimeType.forNumber(number);
+                }
+              };
+
+        public static com.google.protobuf.Internal.EnumVerifier 
+            internalGetVerifier() {
+          return RuntimeTypeVerifier.INSTANCE;
+        }
+
+        private static final class RuntimeTypeVerifier implements 
+             com.google.protobuf.Internal.EnumVerifier { 
+                static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new RuntimeTypeVerifier();
+                @java.lang.Override
+                public boolean isInRange(int number) {
+                  return RuntimeType.forNumber(number) != null;
+                }
+              };
+
+        private final int value;
+
+        private RuntimeType(int value) {
+          this.value = value;
+        }
+
+        // @@protoc_insertion_point(enum_scope:metrics.CastLogsProto.CastEventProto.RuntimeType)
       }
 
       public interface MetadataOrBuilder extends
@@ -8154,6 +8293,57 @@ public final class CastLogsProtos {
         launchFrom_ = 0;
       }
 
+      public static final int RUNTIME_TYPE_FIELD_NUMBER = 27;
+      private int runtimeType_;
+      /**
+       * <pre>
+       * The Cast Core runtime type associated with this event.
+       * </pre>
+       *
+       * <code>optional .metrics.CastLogsProto.CastEventProto.RuntimeType runtime_type = 27;</code>
+       * @return Whether the runtimeType field is set.
+       */
+      @java.lang.Override
+      public boolean hasRuntimeType() {
+        return ((bitField0_ & 0x00800000) != 0);
+      }
+      /**
+       * <pre>
+       * The Cast Core runtime type associated with this event.
+       * </pre>
+       *
+       * <code>optional .metrics.CastLogsProto.CastEventProto.RuntimeType runtime_type = 27;</code>
+       * @return The runtimeType.
+       */
+      @java.lang.Override
+      public org.chromium.components.metrics.CastLogsProtos.CastLogsProto.CastEventProto.RuntimeType getRuntimeType() {
+        org.chromium.components.metrics.CastLogsProtos.CastLogsProto.CastEventProto.RuntimeType result = org.chromium.components.metrics.CastLogsProtos.CastLogsProto.CastEventProto.RuntimeType.forNumber(runtimeType_);
+        return result == null ? org.chromium.components.metrics.CastLogsProtos.CastLogsProto.CastEventProto.RuntimeType.RUNTIME_TYPE_UNKNOWN : result;
+      }
+      /**
+       * <pre>
+       * The Cast Core runtime type associated with this event.
+       * </pre>
+       *
+       * <code>optional .metrics.CastLogsProto.CastEventProto.RuntimeType runtime_type = 27;</code>
+       * @param value The runtimeType to set.
+       */
+      private void setRuntimeType(org.chromium.components.metrics.CastLogsProtos.CastLogsProto.CastEventProto.RuntimeType value) {
+        runtimeType_ = value.getNumber();
+        bitField0_ |= 0x00800000;
+      }
+      /**
+       * <pre>
+       * The Cast Core runtime type associated with this event.
+       * </pre>
+       *
+       * <code>optional .metrics.CastLogsProto.CastEventProto.RuntimeType runtime_type = 27;</code>
+       */
+      private void clearRuntimeType() {
+        bitField0_ = (bitField0_ & ~0x00800000);
+        runtimeType_ = 0;
+      }
+
       public static org.chromium.components.metrics.CastLogsProtos.CastLogsProto.CastEventProto parseFrom(
           java.nio.ByteBuffer data)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -8238,7 +8428,7 @@ public final class CastLogsProtos {
       /**
        * <pre>
        * Stores Cast-enabled device specific events with a various context data.
-       * Next tag: 27
+       * Next tag: 28
        * </pre>
        *
        * Protobuf type {@code metrics.CastLogsProto.CastEventProto}
@@ -9898,6 +10088,58 @@ public final class CastLogsProtos {
           return this;
         }
 
+        /**
+         * <pre>
+         * The Cast Core runtime type associated with this event.
+         * </pre>
+         *
+         * <code>optional .metrics.CastLogsProto.CastEventProto.RuntimeType runtime_type = 27;</code>
+         * @return Whether the runtimeType field is set.
+         */
+        @java.lang.Override
+        public boolean hasRuntimeType() {
+          return instance.hasRuntimeType();
+        }
+        /**
+         * <pre>
+         * The Cast Core runtime type associated with this event.
+         * </pre>
+         *
+         * <code>optional .metrics.CastLogsProto.CastEventProto.RuntimeType runtime_type = 27;</code>
+         * @return The runtimeType.
+         */
+        @java.lang.Override
+        public org.chromium.components.metrics.CastLogsProtos.CastLogsProto.CastEventProto.RuntimeType getRuntimeType() {
+          return instance.getRuntimeType();
+        }
+        /**
+         * <pre>
+         * The Cast Core runtime type associated with this event.
+         * </pre>
+         *
+         * <code>optional .metrics.CastLogsProto.CastEventProto.RuntimeType runtime_type = 27;</code>
+         * @param value The enum numeric value on the wire for runtimeType to set.
+         * @return This builder for chaining.
+         */
+        public Builder setRuntimeType(org.chromium.components.metrics.CastLogsProtos.CastLogsProto.CastEventProto.RuntimeType value) {
+          copyOnWrite();
+          instance.setRuntimeType(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * The Cast Core runtime type associated with this event.
+         * </pre>
+         *
+         * <code>optional .metrics.CastLogsProto.CastEventProto.RuntimeType runtime_type = 27;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearRuntimeType() {
+          copyOnWrite();
+          instance.clearRuntimeType();
+          return this;
+        }
+
         // @@protoc_insertion_point(builder_scope:metrics.CastLogsProto.CastEventProto)
       }
       @java.lang.Override
@@ -9943,14 +10185,16 @@ public final class CastLogsProtos {
                 "hotwordModelId_",
                 "launchFrom_",
                 org.chromium.components.metrics.CastLogsProtos.CastLogsProto.CastEventProto.LaunchFrom.internalGetVerifier(),
+                "runtimeType_",
+                org.chromium.components.metrics.CastLogsProtos.CastLogsProto.CastEventProto.RuntimeType.internalGetVerifier(),
               };
               java.lang.String info =
-                  "\u0001\u001a\u0000\u0001\u0001\u001a\u001a\u0000\u0003\u0000\u0001\u1005\u0000\u0002" +
+                  "\u0001\u001b\u0000\u0001\u0001\u001b\u001b\u0000\u0003\u0000\u0001\u1005\u0000\u0002" +
                   "\u1002\u0001\u0003\u1006\u0002\u0004\u1005\u0004\u0005\u1005\u0005\u0006\u1006\u0007" +
                   "\u0007\u1006\b\b\u1002\t\t\u1005\u0006\n\u1005\n\u000b\u1008\u000b\f\u1006\f\r\u1008" +
                   "\r\u000e\u001b\u000f\u0013\u0010\u1008\u000e\u0011\u1008\u0011\u0012\u1002\u000f" +
                   "\u0013\u1006\u0003\u0014\u1008\u0012\u0015\u1008\u0010\u0016\u1008\u0013\u0017\u001a" +
-                  "\u0018\u1005\u0014\u0019\u1008\u0015\u001a\u100c\u0016";
+                  "\u0018\u1005\u0014\u0019\u1008\u0015\u001a\u100c\u0016\u001b\u100c\u0017";
               return newMessageInfo(DEFAULT_INSTANCE, info, objects);
           }
           // fall through
@@ -10312,7 +10556,7 @@ public final class CastLogsProtos {
       /**
        * <pre>
        * This is the last type of reboot the device encountered
-       * Next tag: 19
+       * Next tag: 22
        * </pre>
        *
        * Protobuf enum {@code metrics.CastLogsProto.CastDeviceMutableInfo.RebootType}
@@ -10436,6 +10680,18 @@ public final class CastLogsProtos {
          * <code>POWER_MANAGER = 18;</code>
          */
         POWER_MANAGER(18),
+        /**
+         * <code>EXPERIMENT_CHANGE = 19;</code>
+         */
+        EXPERIMENT_CHANGE(19),
+        /**
+         * <code>ANOMALY_DETECTION = 20;</code>
+         */
+        ANOMALY_DETECTION(20),
+        /**
+         * <code>KERNEL_PANIC = 21;</code>
+         */
+        KERNEL_PANIC(21),
         ;
 
         /**
@@ -10555,6 +10811,18 @@ public final class CastLogsProtos {
          * <code>POWER_MANAGER = 18;</code>
          */
         public static final int POWER_MANAGER_VALUE = 18;
+        /**
+         * <code>EXPERIMENT_CHANGE = 19;</code>
+         */
+        public static final int EXPERIMENT_CHANGE_VALUE = 19;
+        /**
+         * <code>ANOMALY_DETECTION = 20;</code>
+         */
+        public static final int ANOMALY_DETECTION_VALUE = 20;
+        /**
+         * <code>KERNEL_PANIC = 21;</code>
+         */
+        public static final int KERNEL_PANIC_VALUE = 21;
 
 
         @java.lang.Override
@@ -10593,6 +10861,9 @@ public final class CastLogsProtos {
             case 16: return REBOOT_TYPE_UNGRACEFUL_RESTART;
             case 17: return MULTI_SERVICE_BUG;
             case 18: return POWER_MANAGER;
+            case 19: return EXPERIMENT_CHANGE;
+            case 20: return ANOMALY_DETECTION;
+            case 21: return KERNEL_PANIC;
             default: return null;
           }
         }

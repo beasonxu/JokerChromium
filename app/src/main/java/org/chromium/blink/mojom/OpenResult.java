@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class OpenResult extends org.chromium.mojo.bindings.Union {
 

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface HidService extends org.chromium.mojo.bindings.Interface {
 
@@ -23,33 +25,36 @@ public interface HidService extends org.chromium.mojo.bindings.Interface {
 
     Manager<HidService, HidService.Proxy> MANAGER = HidService_Internal.MANAGER;
 
-
     void registerClient(
 org.chromium.mojo.bindings.AssociatedInterfaceNotSupported client);
 
 
-
     void getDevices(
 
-GetDevicesResponse callback);
+GetDevices_Response callback);
 
-    interface GetDevicesResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.device.mojom.HidDeviceInfo[]> { }
-
+    interface GetDevices_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.device.mojom.HidDeviceInfo[]> { }
 
 
     void requestDevice(
-HidDeviceFilter[] filters, 
-RequestDeviceResponse callback);
+HidDeviceFilter[] filters, HidDeviceFilter[] exclusionFilters, 
+RequestDevice_Response callback);
 
-    interface RequestDeviceResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.device.mojom.HidDeviceInfo[]> { }
-
+    interface RequestDevice_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.device.mojom.HidDeviceInfo[]> { }
 
 
     void connect(
 String deviceGuid, org.chromium.device.mojom.HidConnectionClient client, 
-ConnectResponse callback);
+Connect_Response callback);
 
-    interface ConnectResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.device.mojom.HidConnection> { }
+    interface Connect_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.device.mojom.HidConnection> { }
+
+
+    void forget(
+org.chromium.device.mojom.HidDeviceInfo deviceInfo, 
+Forget_Response callback);
+
+    interface Forget_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
 }

@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ServiceWorkerUpdateViaCache {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ServiceWorkerUpdateViaCache.IMPORTS,
+        ServiceWorkerUpdateViaCache.ALL,
+        ServiceWorkerUpdateViaCache.NONE})
+    public @interface EnumType {}
 
     public static final int IMPORTS = 0;
     public static final int ALL = 1;

@@ -13,6 +13,8 @@
 
 package org.chromium.filesystem.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class File_Internal {
 
@@ -85,7 +87,7 @@ class File_Internal {
         @Override
         public void close(
 
-CloseResponse callback) {
+Close_Response callback) {
 
             FileCloseParams _message = new FileCloseParams();
 
@@ -105,7 +107,7 @@ CloseResponse callback) {
         @Override
         public void read(
 int numBytesToRead, long offset, int whence, 
-ReadResponse callback) {
+Read_Response callback) {
 
             FileReadParams _message = new FileReadParams();
 
@@ -131,7 +133,7 @@ ReadResponse callback) {
         @Override
         public void write(
 byte[] bytesToWrite, long offset, int whence, 
-WriteResponse callback) {
+Write_Response callback) {
 
             FileWriteParams _message = new FileWriteParams();
 
@@ -157,7 +159,7 @@ WriteResponse callback) {
         @Override
         public void tell(
 
-TellResponse callback) {
+Tell_Response callback) {
 
             FileTellParams _message = new FileTellParams();
 
@@ -177,7 +179,7 @@ TellResponse callback) {
         @Override
         public void seek(
 long offset, int whence, 
-SeekResponse callback) {
+Seek_Response callback) {
 
             FileSeekParams _message = new FileSeekParams();
 
@@ -201,7 +203,7 @@ SeekResponse callback) {
         @Override
         public void stat(
 
-StatResponse callback) {
+Stat_Response callback) {
 
             FileStatParams _message = new FileStatParams();
 
@@ -221,7 +223,7 @@ StatResponse callback) {
         @Override
         public void truncate(
 long size, 
-TruncateResponse callback) {
+Truncate_Response callback) {
 
             FileTruncateParams _message = new FileTruncateParams();
 
@@ -243,7 +245,7 @@ TruncateResponse callback) {
         @Override
         public void touch(
 TimespecOrNow atime, TimespecOrNow mtime, 
-TouchResponse callback) {
+Touch_Response callback) {
 
             FileTouchParams _message = new FileTouchParams();
 
@@ -267,7 +269,7 @@ TouchResponse callback) {
         @Override
         public void dup(
 org.chromium.mojo.bindings.InterfaceRequest<File> file, 
-DupResponse callback) {
+Dup_Response callback) {
 
             FileDupParams _message = new FileDupParams();
 
@@ -289,7 +291,7 @@ DupResponse callback) {
         @Override
         public void flush(
 
-FlushResponse callback) {
+Flush_Response callback) {
 
             FileFlushParams _message = new FileFlushParams();
 
@@ -309,7 +311,7 @@ FlushResponse callback) {
         @Override
         public void lock(
 
-LockResponse callback) {
+Lock_Response callback) {
 
             FileLockParams _message = new FileLockParams();
 
@@ -329,7 +331,7 @@ LockResponse callback) {
         @Override
         public void unlock(
 
-UnlockResponse callback) {
+Unlock_Response callback) {
 
             FileUnlockParams _message = new FileUnlockParams();
 
@@ -349,7 +351,7 @@ UnlockResponse callback) {
         @Override
         public void asHandle(
 
-AsHandleResponse callback) {
+AsHandle_Response callback) {
 
             FileAsHandleParams _message = new FileAsHandleParams();
 
@@ -769,9 +771,9 @@ AsHandleResponse callback) {
 
     static class FileCloseResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final File.CloseResponse mCallback;
+        private final File.Close_Response mCallback;
 
-        FileCloseResponseParamsForwardToCallback(File.CloseResponse callback) {
+        FileCloseResponseParamsForwardToCallback(File.Close_Response callback) {
             this.mCallback = callback;
         }
 
@@ -796,7 +798,7 @@ AsHandleResponse callback) {
         }
     }
 
-    static class FileCloseResponseParamsProxyToResponder implements File.CloseResponse {
+    static class FileCloseResponseParamsProxyToResponder implements File.Close_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -981,9 +983,9 @@ AsHandleResponse callback) {
 
     static class FileReadResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final File.ReadResponse mCallback;
+        private final File.Read_Response mCallback;
 
-        FileReadResponseParamsForwardToCallback(File.ReadResponse callback) {
+        FileReadResponseParamsForwardToCallback(File.Read_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1008,7 +1010,7 @@ AsHandleResponse callback) {
         }
     }
 
-    static class FileReadResponseParamsProxyToResponder implements File.ReadResponse {
+    static class FileReadResponseParamsProxyToResponder implements File.Read_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1195,9 +1197,9 @@ AsHandleResponse callback) {
 
     static class FileWriteResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final File.WriteResponse mCallback;
+        private final File.Write_Response mCallback;
 
-        FileWriteResponseParamsForwardToCallback(File.WriteResponse callback) {
+        FileWriteResponseParamsForwardToCallback(File.Write_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1222,7 +1224,7 @@ AsHandleResponse callback) {
         }
     }
 
-    static class FileWriteResponseParamsProxyToResponder implements File.WriteResponse {
+    static class FileWriteResponseParamsProxyToResponder implements File.Write_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1386,9 +1388,9 @@ AsHandleResponse callback) {
 
     static class FileTellResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final File.TellResponse mCallback;
+        private final File.Tell_Response mCallback;
 
-        FileTellResponseParamsForwardToCallback(File.TellResponse callback) {
+        FileTellResponseParamsForwardToCallback(File.Tell_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1413,7 +1415,7 @@ AsHandleResponse callback) {
         }
     }
 
-    static class FileTellResponseParamsProxyToResponder implements File.TellResponse {
+    static class FileTellResponseParamsProxyToResponder implements File.Tell_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1593,9 +1595,9 @@ AsHandleResponse callback) {
 
     static class FileSeekResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final File.SeekResponse mCallback;
+        private final File.Seek_Response mCallback;
 
-        FileSeekResponseParamsForwardToCallback(File.SeekResponse callback) {
+        FileSeekResponseParamsForwardToCallback(File.Seek_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1620,7 +1622,7 @@ AsHandleResponse callback) {
         }
     }
 
-    static class FileSeekResponseParamsProxyToResponder implements File.SeekResponse {
+    static class FileSeekResponseParamsProxyToResponder implements File.Seek_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1785,9 +1787,9 @@ AsHandleResponse callback) {
 
     static class FileStatResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final File.StatResponse mCallback;
+        private final File.Stat_Response mCallback;
 
-        FileStatResponseParamsForwardToCallback(File.StatResponse callback) {
+        FileStatResponseParamsForwardToCallback(File.Stat_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1812,7 +1814,7 @@ AsHandleResponse callback) {
         }
     }
 
-    static class FileStatResponseParamsProxyToResponder implements File.StatResponse {
+    static class FileStatResponseParamsProxyToResponder implements File.Stat_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1976,9 +1978,9 @@ AsHandleResponse callback) {
 
     static class FileTruncateResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final File.TruncateResponse mCallback;
+        private final File.Truncate_Response mCallback;
 
-        FileTruncateResponseParamsForwardToCallback(File.TruncateResponse callback) {
+        FileTruncateResponseParamsForwardToCallback(File.Truncate_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2003,7 +2005,7 @@ AsHandleResponse callback) {
         }
     }
 
-    static class FileTruncateResponseParamsProxyToResponder implements File.TruncateResponse {
+    static class FileTruncateResponseParamsProxyToResponder implements File.Truncate_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2174,9 +2176,9 @@ AsHandleResponse callback) {
 
     static class FileTouchResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final File.TouchResponse mCallback;
+        private final File.Touch_Response mCallback;
 
-        FileTouchResponseParamsForwardToCallback(File.TouchResponse callback) {
+        FileTouchResponseParamsForwardToCallback(File.Touch_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2201,7 +2203,7 @@ AsHandleResponse callback) {
         }
     }
 
-    static class FileTouchResponseParamsProxyToResponder implements File.TouchResponse {
+    static class FileTouchResponseParamsProxyToResponder implements File.Touch_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2363,9 +2365,9 @@ AsHandleResponse callback) {
 
     static class FileDupResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final File.DupResponse mCallback;
+        private final File.Dup_Response mCallback;
 
-        FileDupResponseParamsForwardToCallback(File.DupResponse callback) {
+        FileDupResponseParamsForwardToCallback(File.Dup_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2390,7 +2392,7 @@ AsHandleResponse callback) {
         }
     }
 
-    static class FileDupResponseParamsProxyToResponder implements File.DupResponse {
+    static class FileDupResponseParamsProxyToResponder implements File.Dup_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2545,9 +2547,9 @@ AsHandleResponse callback) {
 
     static class FileFlushResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final File.FlushResponse mCallback;
+        private final File.Flush_Response mCallback;
 
-        FileFlushResponseParamsForwardToCallback(File.FlushResponse callback) {
+        FileFlushResponseParamsForwardToCallback(File.Flush_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2572,7 +2574,7 @@ AsHandleResponse callback) {
         }
     }
 
-    static class FileFlushResponseParamsProxyToResponder implements File.FlushResponse {
+    static class FileFlushResponseParamsProxyToResponder implements File.Flush_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2727,9 +2729,9 @@ AsHandleResponse callback) {
 
     static class FileLockResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final File.LockResponse mCallback;
+        private final File.Lock_Response mCallback;
 
-        FileLockResponseParamsForwardToCallback(File.LockResponse callback) {
+        FileLockResponseParamsForwardToCallback(File.Lock_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2754,7 +2756,7 @@ AsHandleResponse callback) {
         }
     }
 
-    static class FileLockResponseParamsProxyToResponder implements File.LockResponse {
+    static class FileLockResponseParamsProxyToResponder implements File.Lock_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2909,9 +2911,9 @@ AsHandleResponse callback) {
 
     static class FileUnlockResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final File.UnlockResponse mCallback;
+        private final File.Unlock_Response mCallback;
 
-        FileUnlockResponseParamsForwardToCallback(File.UnlockResponse callback) {
+        FileUnlockResponseParamsForwardToCallback(File.Unlock_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2936,7 +2938,7 @@ AsHandleResponse callback) {
         }
     }
 
-    static class FileUnlockResponseParamsProxyToResponder implements File.UnlockResponse {
+    static class FileUnlockResponseParamsProxyToResponder implements File.Unlock_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -3099,9 +3101,9 @@ AsHandleResponse callback) {
 
     static class FileAsHandleResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final File.AsHandleResponse mCallback;
+        private final File.AsHandle_Response mCallback;
 
-        FileAsHandleResponseParamsForwardToCallback(File.AsHandleResponse callback) {
+        FileAsHandleResponseParamsForwardToCallback(File.AsHandle_Response callback) {
             this.mCallback = callback;
         }
 
@@ -3126,7 +3128,7 @@ AsHandleResponse callback) {
         }
     }
 
-    static class FileAsHandleResponseParamsProxyToResponder implements File.AsHandleResponse {
+    static class FileAsHandleResponseParamsProxyToResponder implements File.AsHandle_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

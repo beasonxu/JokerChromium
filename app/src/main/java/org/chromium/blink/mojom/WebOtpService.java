@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface WebOtpService extends org.chromium.mojo.bindings.Interface {
 
@@ -23,13 +25,11 @@ public interface WebOtpService extends org.chromium.mojo.bindings.Interface {
 
     Manager<WebOtpService, WebOtpService.Proxy> MANAGER = WebOtpService_Internal.MANAGER;
 
-
     void receive(
 
-ReceiveResponse callback);
+Receive_Response callback);
 
-    interface ReceiveResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, String> { }
-
+    interface Receive_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, String> { }
 
 
     void abort(

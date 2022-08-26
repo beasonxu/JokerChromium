@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface NetworkChangeManager extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface NetworkChangeManager extends org.chromium.mojo.bindings.Interfa
 
     Manager<NetworkChangeManager, NetworkChangeManager.Proxy> MANAGER = NetworkChangeManager_Internal.MANAGER;
 
-
     void requestNotifications(
 NetworkChangeManagerClient clientRemote);
-
 
 
     void onNetworkChanged(

@@ -11,7 +11,7 @@ import org.chromium.content_public.browser.WebContents;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class PersonalDataManagerJni implements PersonalDataManager.Natives {
+class PersonalDataManagerJni implements PersonalDataManager.Natives {
   private static PersonalDataManager.Natives testInstance;
 
   public static final JniStaticTestMocker<PersonalDataManager.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.autofill.PersonalDataManager.Natives>() {
@@ -211,6 +211,12 @@ final class PersonalDataManagerJni implements PersonalDataManager.Natives {
   public long getCurrentDateForTesting(long nativePersonalDataManagerAndroid,
       PersonalDataManager caller) {
     return (long)GEN_JNI.org_chromium_chrome_browser_autofill_PersonalDataManager_getCurrentDateForTesting(nativePersonalDataManagerAndroid, caller);
+  }
+
+  @Override
+  public void clearServerDataForTesting(long nativePersonalDataManagerAndroid,
+      PersonalDataManager caller) {
+    GEN_JNI.org_chromium_chrome_browser_autofill_PersonalDataManager_clearServerDataForTesting(nativePersonalDataManagerAndroid, caller);
   }
 
   @Override

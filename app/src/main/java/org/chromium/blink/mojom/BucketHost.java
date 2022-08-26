@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface BucketHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,52 +25,46 @@ public interface BucketHost extends org.chromium.mojo.bindings.Interface {
 
     Manager<BucketHost, BucketHost.Proxy> MANAGER = BucketHost_Internal.MANAGER;
 
-
     void persist(
 
-PersistResponse callback);
+Persist_Response callback);
 
-    interface PersistResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Boolean, Boolean> { }
-
+    interface Persist_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Boolean, Boolean> { }
 
 
     void persisted(
 
-PersistedResponse callback);
+Persisted_Response callback);
 
-    interface PersistedResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Boolean, Boolean> { }
-
+    interface Persisted_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Boolean, Boolean> { }
 
 
     void estimate(
 
-EstimateResponse callback);
+Estimate_Response callback);
 
-    interface EstimateResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<Long, Long, Boolean> { }
-
+    interface Estimate_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<Long, Long, Boolean> { }
 
 
     void durability(
 
-DurabilityResponse callback);
+Durability_Response callback);
 
-    interface DurabilityResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, Boolean> { }
-
+    interface Durability_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, Boolean> { }
 
 
     void setExpires(
 org.chromium.mojo_base.mojom.Time expires, 
-SetExpiresResponse callback);
+SetExpires_Response callback);
 
-    interface SetExpiresResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface SetExpires_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void expires(
 
-ExpiresResponse callback);
+Expires_Response callback);
 
-    interface ExpiresResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<org.chromium.mojo_base.mojom.Time, Boolean> { }
+    interface Expires_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<org.chromium.mojo_base.mojom.Time, Boolean> { }
 
 
 }

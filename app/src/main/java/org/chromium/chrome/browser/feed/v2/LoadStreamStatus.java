@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -34,7 +34,12 @@ import java.lang.annotation.RetentionPolicy;
     LoadStreamStatus.LOAD_MORE_MODEL_IS_NOT_LOADED,
     LoadStreamStatus.LOAD_NOT_ALLOWED_DISABLED_BY_ENTERPRISE_POLICY,
     LoadStreamStatus.NETWORK_FETCH_FAILED, LoadStreamStatus.CANNOT_LOAD_MORE_NO_NEXT_PAGE_TOKEN,
-    LoadStreamStatus.DATA_IN_STORE_IS_EXPIRED, LoadStreamStatus.MAX_VALUE
+    LoadStreamStatus.DATA_IN_STORE_IS_EXPIRED, LoadStreamStatus.DATA_IN_STORE_IS_FOR_ANOTHER_USER,
+    LoadStreamStatus.ABORT_WITH_PENDING_CLEAR_ALL, LoadStreamStatus.ALREADY_HAVE_UNREAD_CONTENT,
+    LoadStreamStatus.NOT_A_WEB_FEED_SUBSCRIBER,
+    LoadStreamStatus.ACCOUNT_TOKEN_FETCH_FAILED_WRONG_ACCOUNT,
+    LoadStreamStatus.ACCOUNT_TOKEN_FETCH_TIMED_OUT, LoadStreamStatus.NETWORK_FETCH_TIMED_OUT,
+    LoadStreamStatus.LOAD_NOT_ALLOWED_DISABLED, LoadStreamStatus.MAX_VALUE
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface LoadStreamStatus {
@@ -77,5 +82,13 @@ public @interface LoadStreamStatus {
   int NETWORK_FETCH_FAILED = 18;
   int CANNOT_LOAD_MORE_NO_NEXT_PAGE_TOKEN = 19;
   int DATA_IN_STORE_IS_EXPIRED = 22;
-  int MAX_VALUE = DATA_IN_STORE_IS_EXPIRED;
+  int DATA_IN_STORE_IS_FOR_ANOTHER_USER = 23;
+  int ABORT_WITH_PENDING_CLEAR_ALL = 24;
+  int ALREADY_HAVE_UNREAD_CONTENT = 25;
+  int NOT_A_WEB_FEED_SUBSCRIBER = 26;
+  int ACCOUNT_TOKEN_FETCH_FAILED_WRONG_ACCOUNT = 27;
+  int ACCOUNT_TOKEN_FETCH_TIMED_OUT = 28;
+  int NETWORK_FETCH_TIMED_OUT = 29;
+  int LOAD_NOT_ALLOWED_DISABLED = 30;
+  int MAX_VALUE = LOAD_NOT_ALLOWED_DISABLED;
 }

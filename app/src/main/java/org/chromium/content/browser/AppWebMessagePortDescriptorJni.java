@@ -9,7 +9,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class AppWebMessagePortDescriptorJni implements AppWebMessagePortDescriptor.Native {
+class AppWebMessagePortDescriptorJni implements AppWebMessagePortDescriptor.Native {
   private static AppWebMessagePortDescriptor.Native testInstance;
 
   public static final JniStaticTestMocker<AppWebMessagePortDescriptor.Native> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content.browser.AppWebMessagePortDescriptor.Native>() {
@@ -29,17 +29,17 @@ final class AppWebMessagePortDescriptorJni implements AppWebMessagePortDescripto
   }
 
   @Override
-  public long create(int nativeHandle, long idLow, long idHigh, long sequenceNumber) {
-    return (long)GEN_JNI.org_chromium_content_browser_AppWebMessagePortDescriptor_create(nativeHandle, idLow, idHigh, sequenceNumber);
+  public long create(long mojoHandle, long idLow, long idHigh, long sequenceNumber) {
+    return (long)GEN_JNI.org_chromium_content_browser_AppWebMessagePortDescriptor_create(mojoHandle, idLow, idHigh, sequenceNumber);
   }
 
   @Override
-  public int takeHandleToEntangle(long blinkMessagePortDescriptor) {
-    return (int)GEN_JNI.org_chromium_content_browser_AppWebMessagePortDescriptor_takeHandleToEntangle(blinkMessagePortDescriptor);
+  public long takeHandleToEntangle(long blinkMessagePortDescriptor) {
+    return (long)GEN_JNI.org_chromium_content_browser_AppWebMessagePortDescriptor_takeHandleToEntangle(blinkMessagePortDescriptor);
   }
 
   @Override
-  public void giveDisentangledHandle(long blinkMessagePortDescriptor, int nativeHandle) {
+  public void giveDisentangledHandle(long blinkMessagePortDescriptor, long nativeHandle) {
     GEN_JNI.org_chromium_content_browser_AppWebMessagePortDescriptor_giveDisentangledHandle(blinkMessagePortDescriptor, nativeHandle);
   }
 

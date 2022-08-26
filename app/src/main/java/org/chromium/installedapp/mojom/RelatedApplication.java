@@ -13,6 +13,8 @@
 
 package org.chromium.installedapp.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class RelatedApplication extends org.chromium.mojo.bindings.Struct {
 

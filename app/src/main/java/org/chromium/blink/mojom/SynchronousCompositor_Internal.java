@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class SynchronousCompositor_Internal {
 
@@ -100,7 +102,7 @@ SyncCompositorDemandDrawHwParams drawParams) {
         @Override
         public void demandDrawHw(
 SyncCompositorDemandDrawHwParams drawParams, 
-DemandDrawHwResponse callback) {
+DemandDrawHw_Response callback) {
 
             SynchronousCompositorDemandDrawHwParams _message = new SynchronousCompositorDemandDrawHwParams();
 
@@ -122,7 +124,7 @@ DemandDrawHwResponse callback) {
         @Override
         public void setSharedMemory(
 org.chromium.mojo_base.mojom.WritableSharedMemoryRegion shmRegion, 
-SetSharedMemoryResponse callback) {
+SetSharedMemory_Response callback) {
 
             SynchronousCompositorSetSharedMemoryParams _message = new SynchronousCompositorSetSharedMemoryParams();
 
@@ -144,7 +146,7 @@ SetSharedMemoryResponse callback) {
         @Override
         public void demandDrawSw(
 SyncCompositorDemandDrawSwParams drawParams, 
-DemandDrawSwResponse callback) {
+DemandDrawSw_Response callback) {
 
             SynchronousCompositorDemandDrawSwParams _message = new SynchronousCompositorDemandDrawSwParams();
 
@@ -196,7 +198,7 @@ DemandDrawSwResponse callback) {
         @Override
         public void zoomBy(
 float delta, org.chromium.gfx.mojom.Point anchor, 
-ZoomByResponse callback) {
+ZoomBy_Response callback) {
 
             SynchronousCompositorZoomByParams _message = new SynchronousCompositorZoomByParams();
 
@@ -255,7 +257,7 @@ int layerTreeFrameSinkId, org.chromium.viz.mojom.ReturnedResource[] resources) {
 
         @Override
         public void setScroll(
-org.chromium.gfx.mojom.ScrollOffset offset) {
+org.chromium.gfx.mojom.PointF offset) {
 
             SynchronousCompositorSetScrollParams _message = new SynchronousCompositorSetScrollParams();
 
@@ -790,9 +792,9 @@ boolean paused) {
 
     static class SynchronousCompositorDemandDrawHwResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final SynchronousCompositor.DemandDrawHwResponse mCallback;
+        private final SynchronousCompositor.DemandDrawHw_Response mCallback;
 
-        SynchronousCompositorDemandDrawHwResponseParamsForwardToCallback(SynchronousCompositor.DemandDrawHwResponse callback) {
+        SynchronousCompositorDemandDrawHwResponseParamsForwardToCallback(SynchronousCompositor.DemandDrawHw_Response callback) {
             this.mCallback = callback;
         }
 
@@ -817,7 +819,7 @@ boolean paused) {
         }
     }
 
-    static class SynchronousCompositorDemandDrawHwResponseParamsProxyToResponder implements SynchronousCompositor.DemandDrawHwResponse {
+    static class SynchronousCompositorDemandDrawHwResponseParamsProxyToResponder implements SynchronousCompositor.DemandDrawHw_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -996,9 +998,9 @@ boolean paused) {
 
     static class SynchronousCompositorSetSharedMemoryResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final SynchronousCompositor.SetSharedMemoryResponse mCallback;
+        private final SynchronousCompositor.SetSharedMemory_Response mCallback;
 
-        SynchronousCompositorSetSharedMemoryResponseParamsForwardToCallback(SynchronousCompositor.SetSharedMemoryResponse callback) {
+        SynchronousCompositorSetSharedMemoryResponseParamsForwardToCallback(SynchronousCompositor.SetSharedMemory_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1023,7 +1025,7 @@ boolean paused) {
         }
     }
 
-    static class SynchronousCompositorSetSharedMemoryResponseParamsProxyToResponder implements SynchronousCompositor.SetSharedMemoryResponse {
+    static class SynchronousCompositorSetSharedMemoryResponseParamsProxyToResponder implements SynchronousCompositor.SetSharedMemory_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1202,9 +1204,9 @@ boolean paused) {
 
     static class SynchronousCompositorDemandDrawSwResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final SynchronousCompositor.DemandDrawSwResponse mCallback;
+        private final SynchronousCompositor.DemandDrawSw_Response mCallback;
 
-        SynchronousCompositorDemandDrawSwResponseParamsForwardToCallback(SynchronousCompositor.DemandDrawSwResponse callback) {
+        SynchronousCompositorDemandDrawSwResponseParamsForwardToCallback(SynchronousCompositor.DemandDrawSw_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1229,7 +1231,7 @@ boolean paused) {
         }
     }
 
-    static class SynchronousCompositorDemandDrawSwResponseParamsProxyToResponder implements SynchronousCompositor.DemandDrawSwResponse {
+    static class SynchronousCompositorDemandDrawSwResponseParamsProxyToResponder implements SynchronousCompositor.DemandDrawSw_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1514,9 +1516,9 @@ boolean paused) {
 
     static class SynchronousCompositorZoomByResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final SynchronousCompositor.ZoomByResponse mCallback;
+        private final SynchronousCompositor.ZoomBy_Response mCallback;
 
-        SynchronousCompositorZoomByResponseParamsForwardToCallback(SynchronousCompositor.ZoomByResponse callback) {
+        SynchronousCompositorZoomByResponseParamsForwardToCallback(SynchronousCompositor.ZoomBy_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1541,7 +1543,7 @@ boolean paused) {
         }
     }
 
-    static class SynchronousCompositorZoomByResponseParamsProxyToResponder implements SynchronousCompositor.ZoomByResponse {
+    static class SynchronousCompositorZoomByResponseParamsProxyToResponder implements SynchronousCompositor.ZoomBy_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1731,7 +1733,7 @@ boolean paused) {
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public org.chromium.gfx.mojom.ScrollOffset offset;
+        public org.chromium.gfx.mojom.PointF offset;
 
         private SynchronousCompositorSetScrollParams(int version) {
             super(STRUCT_SIZE, version);
@@ -1769,7 +1771,7 @@ boolean paused) {
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    result.offset = org.chromium.gfx.mojom.ScrollOffset.decode(decoder1);
+                    result.offset = org.chromium.gfx.mojom.PointF.decode(decoder1);
                     }
 
             } finally {

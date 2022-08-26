@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class FileUtilitiesHost_Internal {
 
@@ -61,7 +63,7 @@ class FileUtilitiesHost_Internal {
         @Override
         public void getFileInfo(
 org.chromium.mojo_base.mojom.FilePath path, 
-GetFileInfoResponse callback) {
+GetFileInfo_Response callback) {
 
             FileUtilitiesHostGetFileInfoParams _message = new FileUtilitiesHostGetFileInfoParams();
 
@@ -293,9 +295,9 @@ GetFileInfoResponse callback) {
 
     static class FileUtilitiesHostGetFileInfoResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileUtilitiesHost.GetFileInfoResponse mCallback;
+        private final FileUtilitiesHost.GetFileInfo_Response mCallback;
 
-        FileUtilitiesHostGetFileInfoResponseParamsForwardToCallback(FileUtilitiesHost.GetFileInfoResponse callback) {
+        FileUtilitiesHostGetFileInfoResponseParamsForwardToCallback(FileUtilitiesHost.GetFileInfo_Response callback) {
             this.mCallback = callback;
         }
 
@@ -320,7 +322,7 @@ GetFileInfoResponse callback) {
         }
     }
 
-    static class FileUtilitiesHostGetFileInfoResponseParamsProxyToResponder implements FileUtilitiesHost.GetFileInfoResponse {
+    static class FileUtilitiesHostGetFileInfoResponseParamsProxyToResponder implements FileUtilitiesHost.GetFileInfo_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

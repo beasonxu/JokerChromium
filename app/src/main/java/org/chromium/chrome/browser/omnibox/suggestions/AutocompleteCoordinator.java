@@ -18,10 +18,11 @@ import androidx.core.view.ViewCompat;
 
 import org.chromium.base.Callback;
 import org.chromium.base.StrictModeContext;
+import org.chromium.base.jank_tracker.JankTracker;
+import org.chromium.base.supplier.ObservableSupplier;
 import org.chromium.base.supplier.Supplier;
-import org.chromium.chrome.R;
-import org.chromium.chrome.browser.lifecycle.ActivityLifecycleDispatcher;
 import org.chromium.chrome.browser.omnibox.LocationBarDataProvider;
+import org.chromium.chrome.browser.omnibox.R;
 import org.chromium.chrome.browser.omnibox.UrlBar.UrlTextChangeListener;
 import org.chromium.chrome.browser.omnibox.UrlBarEditingTextStateProvider;
 import org.chromium.chrome.browser.omnibox.UrlFocusChangeListener;
@@ -30,6 +31,7 @@ import org.chromium.chrome.browser.omnibox.suggestions.SuggestionListViewBinder.
 import org.chromium.chrome.browser.omnibox.suggestions.answer.AnswerSuggestionViewBinder;
 import org.chromium.chrome.browser.omnibox.suggestions.base.BaseSuggestionView;
 import org.chromium.chrome.browser.omnibox.suggestions.base.BaseSuggestionViewBinder;
+import org.chromium.chrome.browser.omnibox.suggestions.basic.BasicSuggestionProcessor.BookmarkState;
 import org.chromium.chrome.browser.omnibox.suggestions.basic.SuggestionViewViewBinder;
 import org.chromium.chrome.browser.omnibox.suggestions.carousel.BaseCarouselSuggestionViewBinder;
 import org.chromium.chrome.browser.omnibox.suggestions.editurl.EditUrlSuggestionView;
@@ -37,16 +39,20 @@ import org.chromium.chrome.browser.omnibox.suggestions.editurl.EditUrlSuggestion
 import org.chromium.chrome.browser.omnibox.suggestions.entity.EntitySuggestionViewBinder;
 import org.chromium.chrome.browser.omnibox.suggestions.header.HeaderView;
 import org.chromium.chrome.browser.omnibox.suggestions.header.HeaderViewBinder;
+import org.chromium.chrome.browser.omnibox.suggestions.mostvisited.ExploreIconProvider;
 import org.chromium.chrome.browser.omnibox.suggestions.mostvisited.MostVisitedTilesProcessor;
+import org.chromium.chrome.browser.omnibox.suggestions.pedal.PedalSuggestionView;
+import org.chromium.chrome.browser.omnibox.suggestions.pedal.PedalSuggestionViewBinder;
 import org.chromium.chrome.browser.omnibox.suggestions.tail.TailSuggestionView;
 import org.chromium.chrome.browser.omnibox.suggestions.tail.TailSuggestionViewBinder;
 import org.chromium.chrome.browser.omnibox.voice.VoiceRecognitionHandler;
 import org.chromium.chrome.browser.profiles.Profile;
 import org.chromium.chrome.browser.share.ShareDelegate;
 import org.chromium.chrome.browser.tab.Tab;
+import org.chromium.chrome.browser.tabmodel.TabWindowManager;
+import org.chromium.chrome.browser.ui.theme.BrandedColorScheme;
 import org.chromium.chrome.browser.util.KeyNavigationUtil;
 import org.chromium.components.omnibox.AutocompleteMatch;
-import org.chromium.components.query_tiles.QueryTile;
 import org.chromium.ui.ViewProvider;
 import org.chromium.ui.modaldialog.ModalDialogManager;
 import org.chromium.ui.modelutil.LazyConstructionPropertyMcp;
@@ -61,21 +67,29 @@ import java.util.List;
  * Coordinator that handles the interactions with the autocomplete system.
  */
 public class AutocompleteCoordinator implements UrlFocusChangeListener, UrlTextChangeListener {
-    private final ViewGroup mParent;
-    private OmniboxQueryTileCoordinator mQueryTileCoordinator;
-    private AutocompleteMediator mMediator;
-    private OmniboxSuggestionsDropdown mDropdown;
+    private final @NonNull ViewGroup mParent;
+    private final @NonNull ObservableSupplier<Profile> mProfileSupplier;
+    private final @NonNull Callback<Profile> mProfileChangeCallback;
+    private final @NonNull AutocompleteMediator mMediator;
+    private final @NonNull Supplier<ModalDialogManager> mModalDialogManagerSupplier;
+    private @Nullable OmniboxSuggestionsDropdown mDropdown;
 
     public AutocompleteCoordinator(@NonNull ViewGroup parent,
             @NonNull AutocompleteDelegate delegate,
             @NonNull OmniboxSuggestionsDropdownEmbedder dropdownEmbedder,
             @NonNull UrlBarEditingTextStateProvider urlBarEditingTextProvider,
-            @NonNull ActivityLifecycleDispatcher lifecycleDispatcher,
             @NonNull Supplier<ModalDialogManager> modalDialogManagerSupplier,
             @NonNull Supplier<Tab> activityTabSupplier,
             @Nullable Supplier<ShareDelegate> shareDelegateSupplier,
-            @NonNull LocationBarDataProvider locationBarDataProvider) {
+            @NonNull LocationBarDataProvider locationBarDataProvider,
+            @NonNull ObservableSupplier<Profile> profileObservableSupplier,
+            @NonNull Callback<Tab> bringToForegroundCallback,
+            @NonNull Supplier<TabWindowManager> tabWindowManagerSupplier,
+            @NonNull BookmarkState bookmarkState, @NonNull JankTracker jankTracker,
+            @NonNull ExploreIconProvider exploreIconProvider,
+            @NonNull OmniboxPedalDelegate omniboxPedalDelegate) {
         mParent = parent;
+        mModalDialogManagerSupplier = modalDialogManagerSupplier;
         Context context = parent.getContext();
 
         PropertyModel listModel = new PropertyModel(SuggestionListProperties.ALL_KEYS);
@@ -85,12 +99,12 @@ public class AutocompleteCoordinator implements UrlFocusChangeListener, UrlTextC
         listModel.set(SuggestionListProperties.VISIBLE, false);
         listModel.set(SuggestionListProperties.SUGGESTION_MODELS, listItems);
 
-        mQueryTileCoordinator = new OmniboxQueryTileCoordinator(context, this::onTileSelected);
         mMediator = new AutocompleteMediator(context, delegate, urlBarEditingTextProvider,
-                new AutocompleteController(), listModel, new Handler(), lifecycleDispatcher,
-                modalDialogManagerSupplier, activityTabSupplier, shareDelegateSupplier,
-                locationBarDataProvider);
-        mMediator.initDefaultProcessors(mQueryTileCoordinator::setTiles);
+                listModel, new Handler(), modalDialogManagerSupplier, activityTabSupplier,
+                shareDelegateSupplier, locationBarDataProvider, bringToForegroundCallback,
+                tabWindowManagerSupplier, bookmarkState, jankTracker, exploreIconProvider,
+                omniboxPedalDelegate);
+        mMediator.initDefaultProcessors();
 
         listModel.set(SuggestionListProperties.OBSERVER, mMediator);
 
@@ -100,6 +114,10 @@ public class AutocompleteCoordinator implements UrlFocusChangeListener, UrlTextC
         LazyConstructionPropertyMcp.create(listModel, SuggestionListProperties.VISIBLE,
                 viewProvider, SuggestionListViewBinder::bind);
 
+        mProfileSupplier = profileObservableSupplier;
+        mProfileChangeCallback = this::setAutocompleteProfile;
+        mProfileSupplier.addObserver(mProfileChangeCallback);
+
         // https://crbug.com/966227 Set initial layout direction ahead of inflating the suggestions.
         updateSuggestionListLayoutDirection();
     }
@@ -108,10 +126,12 @@ public class AutocompleteCoordinator implements UrlFocusChangeListener, UrlTextC
      * Clean up resources used by this class.
      */
     public void destroy() {
-        mQueryTileCoordinator.destroy();
-        mQueryTileCoordinator = null;
+        mProfileSupplier.removeObserver(mProfileChangeCallback);
         mMediator.destroy();
-        mMediator = null;
+        if (mDropdown != null) {
+            mDropdown.destroy();
+            mDropdown = null;
+        }
     }
 
     private ViewProvider<SuggestionListViewHolder> createViewProvider(
@@ -176,11 +196,6 @@ public class AutocompleteCoordinator implements UrlFocusChangeListener, UrlTextC
                         new BaseSuggestionViewBinder<View>(SuggestionViewViewBinder::bind));
 
                 adapter.registerType(
-                        OmniboxSuggestionUiType.TILE_SUGGESTION,
-                        parent -> mQueryTileCoordinator.createView(parent.getContext()),
-                        mQueryTileCoordinator::bind);
-
-                adapter.registerType(
                         OmniboxSuggestionUiType.TILE_NAVSUGGEST,
                         MostVisitedTilesProcessor::createView,
                         BaseCarouselSuggestionViewBinder::bind);
@@ -189,6 +204,12 @@ public class AutocompleteCoordinator implements UrlFocusChangeListener, UrlTextC
                         OmniboxSuggestionUiType.HEADER,
                         parent -> new HeaderView(parent.getContext()),
                         HeaderViewBinder::bind);
+
+                adapter.registerType(
+                        OmniboxSuggestionUiType.PEDAL_SUGGESTION,
+                        parent -> new PedalSuggestionView<View>(
+                                parent.getContext(), R.layout.omnibox_basic_suggestion),
+                        new PedalSuggestionViewBinder<View>(SuggestionViewViewBinder::bind));
                 // clang-format on
 
                 ViewGroup container = (ViewGroup) ((ViewStub) mParent.getRootView().findViewById(
@@ -227,9 +248,9 @@ public class AutocompleteCoordinator implements UrlFocusChangeListener, UrlTextC
      * Updates the profile used for generating autocomplete suggestions.
      * @param profile The profile to be used.
      */
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     public void setAutocompleteProfile(Profile profile) {
         mMediator.setAutocompleteProfile(profile);
-        mQueryTileCoordinator.setProfile(profile);
     }
 
     /**
@@ -289,21 +310,19 @@ public class AutocompleteCoordinator implements UrlFocusChangeListener, UrlTextC
 
     /**
      * Update the visuals of the autocomplete UI.
-     * @param useDarkColors Whether dark colors should be applied to the UI.
-     * @param isIncognito Whether the UI is for incognito mode or not.
+     * @param brandedColorScheme The {@link @BrandedColorScheme}.
      */
-    public void updateVisualsForState(boolean useDarkColors, boolean isIncognito) {
-        mMediator.updateVisualsForState(useDarkColors, isIncognito);
+    public void updateVisualsForState(@BrandedColorScheme int brandedColorScheme) {
+        mMediator.updateVisualsForState(brandedColorScheme);
     }
 
     /**
-     * Sets to show cached zero suggest results. This will start both caching zero suggest results
-     * in shared preferences and also attempt to show them when appropriate without needing native
-     * initialization.
-     * @param showCachedZeroSuggestResults Whether cached zero suggest should be shown.
+     * Show cached zero suggest results.
+     * Enables Autocomplete subsystem to offer most recently presented suggestions in the event
+     * where Native counterpart is not yet initialized.
      */
-    public void setShowCachedZeroSuggestResults(boolean showCachedZeroSuggestResults) {
-        mMediator.setShowCachedZeroSuggestResults(showCachedZeroSuggestResults);
+    public void startCachedZeroSuggest() {
+        mMediator.startCachedZeroSuggest();
     }
 
     /**
@@ -314,14 +333,19 @@ public class AutocompleteCoordinator implements UrlFocusChangeListener, UrlTextC
      * @return Whether the key event was handled.
      */
     public boolean handleKeyEvent(int keyCode, KeyEvent event) {
-        boolean isShowingList = mDropdown != null && mDropdown.getViewGroup().isShown();
+        // Note: this method receives key events for key presses and key releases.
+        // Make sure we focus only on key press events alone.
+        if (!KeyNavigationUtil.isActionDown(event)) {
+            return false;
+        }
 
+        boolean isShowingList = mDropdown != null && mDropdown.getViewGroup().isShown();
         boolean isAnyDirection = KeyNavigationUtil.isGoAnyDirection(event);
+
         if (isShowingList && mMediator.getSuggestionCount() > 0 && isAnyDirection) {
             mMediator.allowPendingItemSelection();
         }
-        boolean isValidListKey = isAnyDirection || KeyNavigationUtil.isEnter(event);
-        if (isShowingList && isValidListKey && mDropdown.getViewGroup().onKeyDown(keyCode, event)) {
+        if (isShowingList && mDropdown.getViewGroup().onKeyDown(keyCode, event)) {
             return true;
         }
         if (KeyNavigationUtil.isEnter(event) && mParent.getVisibility() == View.VISIBLE) {
@@ -349,43 +373,38 @@ public class AutocompleteCoordinator implements UrlFocusChangeListener, UrlTextC
      * version (i.e. including the scheme, etc...).  If the query does not appear to be a URL,
      * this will return null.
      *
-     * TODO(crbug.com/966424): Fix the dependency issue and remove this method.
+     * Note:
+     * 1) This call is expensive. Use only when it is absolutely necessary to get the exact
+     *    information about how a given query string will be interpreted. For less restrictive
+     *    URL vs text matching, please defer to GURL.
+     * 2) this updates the internal state of the autocomplete controller just as start() does.
+     *    Future calls that reference autocomplete results by index, e.g. onSuggestionSelected(),
+     *    should reference the returned suggestion by index 0.
      *
+     * TODO(crbug.com/966424): Fix the dependency issue and remove this method.
+     *                       Please don't use this in any new code.
+     *
+     * @param profile The profile to expand the query for.
      * @param query The query to be expanded into a fully qualified URL if appropriate.
-     * @return The fully qualified URL or null.
+     * @return The AutocompleteMatch for a default / top match. This may be either SEARCH
+     *         match built with the user's default search engine, or a NAVIGATION match.
      */
     @Deprecated
-    public static String qualifyPartialURLQuery(String query) {
-        return AutocompleteControllerJni.get().qualifyPartialURLQuery(query);
+    public static AutocompleteMatch classify(@NonNull Profile profile, @NonNull String query) {
+        return AutocompleteController.getForProfile(profile).classify(query, false);
     }
 
     /**
      * Sends a zero suggest request to the server in order to pre-populate the result cache.
      */
     public void prefetchZeroSuggestResults() {
-        AutocompleteControllerJni.get().prefetchZeroSuggestResults();
-    }
-
-    /**
-     * Provides data and state for the toolbar component.
-     * @param locationBarDataProvider The data provider.
-     */
-    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
-    public void setLocationBarDataProviderForTesting(
-            LocationBarDataProvider locationBarDataProvider) {
-        mMediator.setLocationBarDataProviderForTesting(locationBarDataProvider);
+        mMediator.startPrefetch();
     }
 
     /** @return Suggestions Dropdown view, showing the list of suggestions. */
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     public OmniboxSuggestionsDropdown getSuggestionsDropdownForTest() {
         return mDropdown;
-    }
-
-    /** @param controller The instance of AutocompleteController to be used. */
-    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
-    public void setAutocompleteControllerForTest(AutocompleteController controller) {
-        mMediator.setAutocompleteControllerForTest(controller);
     }
 
     /** @return The current receiving OnSuggestionsReceived events. */
@@ -400,7 +419,14 @@ public class AutocompleteCoordinator implements UrlFocusChangeListener, UrlTextC
         return mMediator.getSuggestionModelListForTest();
     }
 
-    private void onTileSelected(QueryTile queryTile) {
-        mMediator.onQueryTileSelected(queryTile);
+    @VisibleForTesting
+    public @NonNull ModalDialogManager getModalDialogManagerForTest() {
+        assert mModalDialogManagerSupplier.hasValue();
+        return mModalDialogManagerSupplier.get();
+    }
+
+    @VisibleForTesting
+    public void stopAutocompleteForTest(boolean clearResults) {
+        mMediator.stopAutocomplete(clearResults);
     }
 }

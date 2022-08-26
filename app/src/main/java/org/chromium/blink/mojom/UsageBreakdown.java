@@ -13,15 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class UsageBreakdown extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 64;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(64, 0)};
+    private static final int STRUCT_SIZE = 56;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(56, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public long fileSystem;
     public long webSql;
-    public long appcache;
     public long indexedDatabase;
     public long serviceWorkerCache;
     public long serviceWorker;
@@ -31,7 +32,6 @@ public final class UsageBreakdown extends org.chromium.mojo.bindings.Struct {
         super(STRUCT_SIZE, version);
         this.fileSystem = (long) 0;
         this.webSql = (long) 0;
-        this.appcache = (long) 0;
         this.indexedDatabase = (long) 0;
         this.serviceWorkerCache = (long) 0;
         this.serviceWorker = (long) 0;
@@ -77,23 +77,19 @@ public final class UsageBreakdown extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.appcache = decoder0.readLong(24);
+                result.indexedDatabase = decoder0.readLong(24);
                 }
                 {
                     
-                result.indexedDatabase = decoder0.readLong(32);
+                result.serviceWorkerCache = decoder0.readLong(32);
                 }
                 {
                     
-                result.serviceWorkerCache = decoder0.readLong(40);
+                result.serviceWorker = decoder0.readLong(40);
                 }
                 {
                     
-                result.serviceWorker = decoder0.readLong(48);
-                }
-                {
-                    
-                result.backgroundFetch = decoder0.readLong(56);
+                result.backgroundFetch = decoder0.readLong(48);
                 }
 
         } finally {
@@ -111,14 +107,12 @@ public final class UsageBreakdown extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.webSql, 16);
         
-        encoder0.encode(this.appcache, 24);
+        encoder0.encode(this.indexedDatabase, 24);
         
-        encoder0.encode(this.indexedDatabase, 32);
+        encoder0.encode(this.serviceWorkerCache, 32);
         
-        encoder0.encode(this.serviceWorkerCache, 40);
+        encoder0.encode(this.serviceWorker, 40);
         
-        encoder0.encode(this.serviceWorker, 48);
-        
-        encoder0.encode(this.backgroundFetch, 56);
+        encoder0.encode(this.backgroundFetch, 48);
     }
 }

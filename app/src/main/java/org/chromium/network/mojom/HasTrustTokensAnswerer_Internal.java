@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class HasTrustTokensAnswerer_Internal {
 
@@ -61,7 +63,7 @@ class HasTrustTokensAnswerer_Internal {
         @Override
         public void hasTrustTokens(
 org.chromium.url.internal.mojom.Origin issuer, 
-HasTrustTokensResponse callback) {
+HasTrustTokens_Response callback) {
 
             HasTrustTokensAnswererHasTrustTokensParams _message = new HasTrustTokensAnswererHasTrustTokensParams();
 
@@ -293,9 +295,9 @@ HasTrustTokensResponse callback) {
 
     static class HasTrustTokensAnswererHasTrustTokensResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final HasTrustTokensAnswerer.HasTrustTokensResponse mCallback;
+        private final HasTrustTokensAnswerer.HasTrustTokens_Response mCallback;
 
-        HasTrustTokensAnswererHasTrustTokensResponseParamsForwardToCallback(HasTrustTokensAnswerer.HasTrustTokensResponse callback) {
+        HasTrustTokensAnswererHasTrustTokensResponseParamsForwardToCallback(HasTrustTokensAnswerer.HasTrustTokens_Response callback) {
             this.mCallback = callback;
         }
 
@@ -320,7 +322,7 @@ HasTrustTokensResponse callback) {
         }
     }
 
-    static class HasTrustTokensAnswererHasTrustTokensResponseParamsProxyToResponder implements HasTrustTokensAnswerer.HasTrustTokensResponse {
+    static class HasTrustTokensAnswererHasTrustTokensResponseParamsProxyToResponder implements HasTrustTokensAnswerer.HasTrustTokens_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

@@ -244,10 +244,10 @@ public  final class ClientConfigParams extends
   private boolean singleClient_;
   /**
    * <pre>
-   * Indicates that the client is not aware of any other active clients for the
-   * user. This flag shows that it is not necessary to send invalidations for
-   * the committed data. The client is considered active if it's DeviceInfo has
-   * updated recent enough.
+   * Indicates that the client is not aware of any other active clients
+   * interested in the committed data types. This flag shows that it is not
+   * necessary to send invalidations for the committed data. A client is
+   * considered active if it's DeviceInfo has updated recent enough.
    * </pre>
    *
    * <code>optional bool single_client = 4;</code>
@@ -259,10 +259,10 @@ public  final class ClientConfigParams extends
   }
   /**
    * <pre>
-   * Indicates that the client is not aware of any other active clients for the
-   * user. This flag shows that it is not necessary to send invalidations for
-   * the committed data. The client is considered active if it's DeviceInfo has
-   * updated recent enough.
+   * Indicates that the client is not aware of any other active clients
+   * interested in the committed data types. This flag shows that it is not
+   * necessary to send invalidations for the committed data. A client is
+   * considered active if it's DeviceInfo has updated recent enough.
    * </pre>
    *
    * <code>optional bool single_client = 4;</code>
@@ -274,10 +274,10 @@ public  final class ClientConfigParams extends
   }
   /**
    * <pre>
-   * Indicates that the client is not aware of any other active clients for the
-   * user. This flag shows that it is not necessary to send invalidations for
-   * the committed data. The client is considered active if it's DeviceInfo has
-   * updated recent enough.
+   * Indicates that the client is not aware of any other active clients
+   * interested in the committed data types. This flag shows that it is not
+   * necessary to send invalidations for the committed data. A client is
+   * considered active if it's DeviceInfo has updated recent enough.
    * </pre>
    *
    * <code>optional bool single_client = 4;</code>
@@ -289,10 +289,10 @@ public  final class ClientConfigParams extends
   }
   /**
    * <pre>
-   * Indicates that the client is not aware of any other active clients for the
-   * user. This flag shows that it is not necessary to send invalidations for
-   * the committed data. The client is considered active if it's DeviceInfo has
-   * updated recent enough.
+   * Indicates that the client is not aware of any other active clients
+   * interested in the committed data types. This flag shows that it is not
+   * necessary to send invalidations for the committed data. A client is
+   * considered active if it's DeviceInfo has updated recent enough.
    * </pre>
    *
    * <code>optional bool single_client = 4;</code>
@@ -853,10 +853,10 @@ public  final class ClientConfigParams extends
 
     /**
      * <pre>
-     * Indicates that the client is not aware of any other active clients for the
-     * user. This flag shows that it is not necessary to send invalidations for
-     * the committed data. The client is considered active if it's DeviceInfo has
-     * updated recent enough.
+     * Indicates that the client is not aware of any other active clients
+     * interested in the committed data types. This flag shows that it is not
+     * necessary to send invalidations for the committed data. A client is
+     * considered active if it's DeviceInfo has updated recent enough.
      * </pre>
      *
      * <code>optional bool single_client = 4;</code>
@@ -868,10 +868,10 @@ public  final class ClientConfigParams extends
     }
     /**
      * <pre>
-     * Indicates that the client is not aware of any other active clients for the
-     * user. This flag shows that it is not necessary to send invalidations for
-     * the committed data. The client is considered active if it's DeviceInfo has
-     * updated recent enough.
+     * Indicates that the client is not aware of any other active clients
+     * interested in the committed data types. This flag shows that it is not
+     * necessary to send invalidations for the committed data. A client is
+     * considered active if it's DeviceInfo has updated recent enough.
      * </pre>
      *
      * <code>optional bool single_client = 4;</code>
@@ -883,10 +883,10 @@ public  final class ClientConfigParams extends
     }
     /**
      * <pre>
-     * Indicates that the client is not aware of any other active clients for the
-     * user. This flag shows that it is not necessary to send invalidations for
-     * the committed data. The client is considered active if it's DeviceInfo has
-     * updated recent enough.
+     * Indicates that the client is not aware of any other active clients
+     * interested in the committed data types. This flag shows that it is not
+     * necessary to send invalidations for the committed data. A client is
+     * considered active if it's DeviceInfo has updated recent enough.
      * </pre>
      *
      * <code>optional bool single_client = 4;</code>
@@ -900,10 +900,10 @@ public  final class ClientConfigParams extends
     }
     /**
      * <pre>
-     * Indicates that the client is not aware of any other active clients for the
-     * user. This flag shows that it is not necessary to send invalidations for
-     * the committed data. The client is considered active if it's DeviceInfo has
-     * updated recent enough.
+     * Indicates that the client is not aware of any other active clients
+     * interested in the committed data types. This flag shows that it is not
+     * necessary to send invalidations for the committed data. A client is
+     * considered active if it's DeviceInfo has updated recent enough.
      * </pre>
      *
      * <code>optional bool single_client = 4;</code>

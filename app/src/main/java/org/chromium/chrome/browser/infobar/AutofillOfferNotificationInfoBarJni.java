@@ -10,7 +10,7 @@ import org.chromium.url.GURL;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class AutofillOfferNotificationInfoBarJni implements AutofillOfferNotificationInfoBar.Natives {
+class AutofillOfferNotificationInfoBarJni implements AutofillOfferNotificationInfoBar.Natives {
   private static AutofillOfferNotificationInfoBar.Natives testInstance;
 
   public static final JniStaticTestMocker<AutofillOfferNotificationInfoBar.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.infobar.AutofillOfferNotificationInfoBar.Natives>() {

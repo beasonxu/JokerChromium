@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface WebSocketConnector extends org.chromium.mojo.bindings.Interface {
 
@@ -23,9 +25,8 @@ public interface WebSocketConnector extends org.chromium.mojo.bindings.Interface
 
     Manager<WebSocketConnector, WebSocketConnector.Proxy> MANAGER = WebSocketConnector_Internal.MANAGER;
 
-
     void connect(
-org.chromium.url.mojom.Url url, String[] requestedProtocols, org.chromium.network.mojom.SiteForCookies siteForCookies, String userAgent, org.chromium.network.mojom.WebSocketHandshakeClient handshakeClient);
+org.chromium.url.mojom.Url url, String[] requestedProtocols, org.chromium.network.mojom.SiteForCookies siteForCookies, String userAgent, org.chromium.network.mojom.WebSocketHandshakeClient handshakeClient, org.chromium.mojo_base.mojom.UnguessableToken throttlingProfileId);
 
 
 }

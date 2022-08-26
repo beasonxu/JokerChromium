@@ -13,8 +13,18 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class V8CacheOptions {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        V8CacheOptions.DEFAULT,
+        V8CacheOptions.NONE,
+        V8CacheOptions.CODE,
+        V8CacheOptions.CODE_WITHOUT_HEAT_CHECK,
+        V8CacheOptions.FULL_CODE_WITHOUT_HEAT_CHECK})
+    public @interface EnumType {}
 
     public static final int DEFAULT = 0;
     public static final int NONE = 1;

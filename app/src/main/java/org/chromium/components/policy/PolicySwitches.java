@@ -27,12 +27,17 @@ public final class PolicySwitches {
     // Specifies the URL at which to upload encrypted reports.
     public static final String ENCRYPTED_REPORTING_URL = "encrypted-reporting-url";
 
-    // Always treat user as affiliated.
-    // TODO(antrim): Remove once test servers correctly produce affiliation ids.
-    public static final String USER_ALWAYS_AFFILIATED = "user-always-affiliated";
-
     // Set policy value by command line.
     public static final String CHROME_POLICY = "policy";
+
+    // Disables the verification of policy signing keys. It just works on Chrome OS
+    // test images and crashes otherwise.
+    // TODO(crbug.com/1225054): This flag might introduce security risks. Find a
+    // better solution to enable policy tast test for Family Link account.
+    public static final String DISABLE_POLICY_KEY_VERIFICATION = "disable-policy-key-verification";
+
+    // Specifies the base URL to contact the secure connect Api.
+    public static final String SECURE_CONNECT_API_URL = "secure-connect-api-url";
 
     // Prevents instantiation.
     private PolicySwitches() {}

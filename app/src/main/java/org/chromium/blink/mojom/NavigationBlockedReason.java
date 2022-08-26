@@ -13,8 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class NavigationBlockedReason {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        NavigationBlockedReason.REDIRECT_WITH_NO_USER_GESTURE,
+        NavigationBlockedReason.REDIRECT_WITH_NO_USER_GESTURE_SANDBOX})
+    public @interface EnumType {}
 
     public static final int REDIRECT_WITH_NO_USER_GESTURE = 0;
     public static final int REDIRECT_WITH_NO_USER_GESTURE_SANDBOX = 1;

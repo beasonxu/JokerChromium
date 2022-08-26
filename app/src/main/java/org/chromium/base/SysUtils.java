@@ -4,7 +4,6 @@
 
 package org.chromium.base;
 
-import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -123,8 +122,9 @@ public class SysUtils {
     }
 
     /**
-     * @return Whether or not this device should be considered a low end device.
+     * @return amount of physical ram detected in KB, or 0 if detection failed.
      */
+    @CalledByNative
     public static int amountOfPhysicalMemoryKB() {
         if (sAmountOfPhysicalMemoryKB == null) {
             sAmountOfPhysicalMemoryKB = detectAmountOfPhysicalMemoryKB();
@@ -160,7 +160,6 @@ public class SysUtils {
                 || pm.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY);
     }
 
-    @TargetApi(Build.VERSION_CODES.KITKAT)
     private static boolean detectLowEndDevice() {
         assert CommandLine.isInitialized();
         if (CommandLine.getInstance().hasSwitch(BaseSwitches.ENABLE_LOW_END_DEVICE_MODE)) {

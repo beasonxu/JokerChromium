@@ -16,9 +16,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import androidx.annotation.CallSuper;
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
@@ -26,8 +29,8 @@ import org.chromium.base.Callback;
 import org.chromium.base.ObserverList;
 import org.chromium.base.TraceEvent;
 import org.chromium.base.supplier.BooleanSupplier;
-import org.chromium.chrome.R;
-import org.chromium.chrome.browser.findinpage.FindToolbar;
+import org.chromium.base.supplier.ObservableSupplier;
+import org.chromium.chrome.browser.browser_controls.BrowserStateBrowserControlsVisibilityDelegate;
 import org.chromium.chrome.browser.omnibox.LocationBar;
 import org.chromium.chrome.browser.omnibox.LocationBarCoordinator;
 import org.chromium.chrome.browser.omnibox.NewTabPageDelegate;
@@ -42,13 +45,17 @@ import org.chromium.chrome.browser.theme.ThemeColorProvider.TintObserver;
 import org.chromium.chrome.browser.theme.ThemeUtils;
 import org.chromium.chrome.browser.toolbar.ButtonData;
 import org.chromium.chrome.browser.toolbar.HomeButton;
+import org.chromium.chrome.browser.toolbar.R;
 import org.chromium.chrome.browser.toolbar.TabCountProvider;
 import org.chromium.chrome.browser.toolbar.ToolbarDataProvider;
 import org.chromium.chrome.browser.toolbar.ToolbarProgressBar;
 import org.chromium.chrome.browser.toolbar.ToolbarTabController;
 import org.chromium.chrome.browser.toolbar.menu_button.MenuButtonCoordinator;
+import org.chromium.chrome.browser.toolbar.top.NavigationPopup.HistoryDelegate;
+import org.chromium.chrome.browser.toolbar.top.ToolbarTablet.OfflineDownloader;
 import org.chromium.chrome.browser.toolbar.top.TopToolbarCoordinator.UrlExpansionObserver;
 import org.chromium.chrome.browser.ui.appmenu.AppMenuButtonHelper;
+import org.chromium.chrome.browser.ui.theme.BrandedColorScheme;
 import org.chromium.ui.UiUtils;
 import org.chromium.ui.base.ViewUtils;
 
@@ -72,6 +79,8 @@ public abstract class ToolbarLayout
 
     @Nullable
     protected ToolbarProgressBar mProgressBar;
+    @Nullable
+    protected BooleanSupplier mPartnerHomepageEnabledSupplier;
 
     private boolean mNativeLibraryReady;
     private boolean mUrlHasFocus;
@@ -112,16 +121,23 @@ public abstract class ToolbarLayout
      * @param toolbarDataProvider The provider for toolbar data.
      * @param tabController       The controller that handles interactions with the tab.
      * @param menuButtonCoordinator Coordinator for interacting with the MenuButton.
-     * @param isInVrSupplier A supplier of the state of VR mode.
+     * @param isProgressBarVisibleSupplier A supplier of whether the progress bar should be visible.
+     * @param historyDelegate Delegate used to display navigation history.
+     * @param partnerHomepageEnabledSupplier A supplier of a boolean indicating that partner
+     *        homepage is enabled.
+     * @param offlineDownloader Triggers downloading an offline page.
      */
     @CallSuper
     protected void initialize(ToolbarDataProvider toolbarDataProvider,
             ToolbarTabController tabController, MenuButtonCoordinator menuButtonCoordinator,
-            BooleanSupplier isInVrSupplier) {
+            ObservableSupplier<Boolean> isProgressBarVisibleSupplier,
+            HistoryDelegate historyDelegate, BooleanSupplier partnerHomepageEnabledSupplier,
+            OfflineDownloader offlineDownloader) {
         mToolbarDataProvider = toolbarDataProvider;
         mToolbarTabController = tabController;
         mMenuButtonCoordinator = menuButtonCoordinator;
-        mProgressBar = createProgressBar(isInVrSupplier);
+        mPartnerHomepageEnabledSupplier = partnerHomepageEnabledSupplier;
+        mProgressBar = createProgressBar(isProgressBarVisibleSupplier);
     }
 
     /** @param overlay The coordinator for the texture version of the top toolbar. */
@@ -191,15 +207,8 @@ public abstract class ToolbarLayout
         return mThemeColorProvider == null ? mDefaultTint : mThemeColorProvider.getTint();
     }
 
-    /**
-     * @return Whether to use light assets.
-     */
-    protected boolean useLight() {
-        return mThemeColorProvider != null && mThemeColorProvider.useLight();
-    }
-
     @Override
-    public void onTintChanged(ColorStateList tint, boolean useLight) {}
+    public void onTintChanged(ColorStateList tint, @BrandedColorScheme int brandedColorScheme) {}
 
     @Override
     public void onThemeColorChanged(int color, boolean shouldAnimate) {}
@@ -215,9 +224,10 @@ public abstract class ToolbarLayout
     /**
      * @return A progress bar for Chrome to use.
      */
-    private ToolbarProgressBar createProgressBar(BooleanSupplier isInVrSupplier) {
+    private ToolbarProgressBar createProgressBar(
+            ObservableSupplier<Boolean> isProgressBarVisibleSupplier) {
         return new ToolbarProgressBar(
-                getContext(), getProgressBarHeight(), this, false, isInVrSupplier);
+                getContext(), getProgressBarHeight(), this, false, isProgressBarVisibleSupplier);
     }
 
     /**
@@ -279,6 +289,16 @@ public abstract class ToolbarLayout
 
             @Override
             public boolean isUsingBrandColor() {
+                return false;
+            }
+
+            @Override
+            public @DrawableRes int getSecurityIconResource(boolean isTablet) {
+                return 0;
+            }
+
+            @Override
+            public boolean isPaintPreview() {
                 return false;
             }
         };
@@ -453,15 +473,6 @@ public abstract class ToolbarLayout
     protected void setUrlBarHidden(boolean hide) {}
 
     /**
-     * @return The name of the publisher of the content if it can be reliably extracted, or null
-     *         otherwise.
-     */
-    @Nullable
-    protected String getContentPublisher() {
-        return null;
-    }
-
-    /**
      * Tells the Toolbar to update what buttons it is currently displaying.
      */
     void updateButtonVisibility() {}
@@ -571,8 +582,8 @@ public abstract class ToolbarLayout
      */
     void onTabContentViewChanged() {}
 
-    boolean isReadyForTextureCapture() {
-        return true;
+    CaptureReadinessResult isReadyForTextureCapture() {
+        return CaptureReadinessResult.unknown(/*isReady=*/true);
     }
 
     boolean setForceTextureCapture(boolean forceTextureCapture) {
@@ -605,9 +616,10 @@ public abstract class ToolbarLayout
 
     /**
      * Called when start surface state is changed.
+     * @param shouldBeVisible Whether toolbar layout should be visible.
      * @param isShowingStartSurface Whether start surface homepage is showing.
      */
-    void onStartSurfaceStateChanged(boolean isShowingStartSurface) {}
+    void onStartSurfaceStateChanged(boolean shouldBeVisible, boolean isShowingStartSurface) {}
 
     /**
      * Force to hide toolbar shadow.
@@ -790,8 +802,8 @@ public abstract class ToolbarLayout
     }
 
     private void maybeUnfocusUrlBar() {
-        if (getLocationBar() != null && getLocationBar().getFakeboxDelegate() != null) {
-            getLocationBar().getFakeboxDelegate().setUrlBarFocus(
+        if (getLocationBar() != null && getLocationBar().getOmniboxStub() != null) {
+            getLocationBar().getOmniboxStub().setUrlBarFocus(
                     false, null, OmniboxFocusReason.UNFOCUS);
         }
     }
@@ -827,4 +839,37 @@ public abstract class ToolbarLayout
     public HomeButton getHomeButton() {
         return null;
     }
+
+    /**
+     * Returns whether there are any ongoing animations.
+     */
+    @VisibleForTesting
+    public boolean isAnimationRunningForTesting() {
+        return false;
+    }
+
+    /**
+     * Sets the toolbar hairline color, if the toolbar has a hairline below it.
+     * @param toolbarColor The toolbar color to base the hairline color on.
+     */
+    protected void setToolbarHairlineColor(@ColorInt int toolbarColor) {
+        final ImageView shadow = getRootView().findViewById(R.id.toolbar_hairline);
+        shadow.setImageTintList(ColorStateList.valueOf(getToolbarHairlineColor(toolbarColor)));
+    }
+
+    /**
+     * Returns the border color between the toolbar and WebContents area.
+     * @param toolbarColor Toolbar color
+     */
+    public @ColorInt int getToolbarHairlineColor(@ColorInt int toolbarColor) {
+        return ThemeUtils.getToolbarHairlineColor(getContext(), toolbarColor, isIncognito());
+    }
+
+    /**
+     * Sets the {@link BrowserStateBrowserControlsVisibilityDelegate} instance the toolbar should
+     * use to manipulate the visibility of browser controls; notably, "browser controls" includes
+     * the toolbar itself.
+     */
+    public void setBrowserControlsVisibilityDelegate(
+            BrowserStateBrowserControlsVisibilityDelegate controlsVisibilityDelegate) {}
 }

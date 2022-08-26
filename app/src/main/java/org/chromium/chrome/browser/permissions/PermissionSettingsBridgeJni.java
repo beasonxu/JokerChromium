@@ -11,7 +11,7 @@ import org.chromium.content_public.browser.WebContents;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-public final class PermissionSettingsBridgeJni implements PermissionSettingsBridge.Natives {
+public class PermissionSettingsBridgeJni implements PermissionSettingsBridge.Natives {
   private static PermissionSettingsBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<PermissionSettingsBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.permissions.PermissionSettingsBridge.Natives>() {

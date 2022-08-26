@@ -7,11 +7,11 @@ import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
-import org.chromium.components.embedder_support.browser_context.BrowserContextHandle;
+import org.chromium.content_public.browser.BrowserContextHandle;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class SiteEngagementServiceJni implements SiteEngagementService.Natives {
+class SiteEngagementServiceJni implements SiteEngagementService.Natives {
   private static SiteEngagementService.Natives testInstance;
 
   public static final JniStaticTestMocker<SiteEngagementService.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.site_engagement.SiteEngagementService.Natives>() {

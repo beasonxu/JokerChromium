@@ -13,16 +13,25 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class HidBusType {
     private static final boolean IS_EXTENSIBLE = true;
+    @IntDef({
+
+        HidBusType.HID_BUS_TYPE_USB,
+        HidBusType.HID_BUS_TYPE_BLUETOOTH,
+        HidBusType.HID_BUS_TYPE_UNKNOWN})
+    public @interface EnumType {}
 
     public static final int HID_BUS_TYPE_USB = 0;
     public static final int HID_BUS_TYPE_BLUETOOTH = 1;
+    public static final int HID_BUS_TYPE_UNKNOWN = 2;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 1;
+    public static final int MAX_VALUE = 2;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 1;
+        return value >= 0 && value <= 2;
     }
 
     public static void validate(int value) {

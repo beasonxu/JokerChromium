@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface SpeechRecognitionSession extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface SpeechRecognitionSession extends org.chromium.mojo.bindings.Int
 
     Manager<SpeechRecognitionSession, SpeechRecognitionSession.Proxy> MANAGER = SpeechRecognitionSession_Internal.MANAGER;
 
-
     void abort(
 );
-
 
 
     void stopCapture(

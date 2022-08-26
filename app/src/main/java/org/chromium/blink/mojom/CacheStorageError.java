@@ -13,8 +13,23 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class CacheStorageError {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        CacheStorageError.SUCCESS,
+        CacheStorageError.ERROR_EXISTS,
+        CacheStorageError.ERROR_STORAGE,
+        CacheStorageError.ERROR_NOT_FOUND,
+        CacheStorageError.ERROR_QUOTA_EXCEEDED,
+        CacheStorageError.ERROR_CACHE_NAME_NOT_FOUND,
+        CacheStorageError.ERROR_QUERY_TOO_LARGE,
+        CacheStorageError.ERROR_NOT_IMPLEMENTED,
+        CacheStorageError.ERROR_DUPLICATE_OPERATION,
+        CacheStorageError.ERROR_CROSS_ORIGIN_RESOURCE_POLICY})
+    public @interface EnumType {}
 
     public static final int SUCCESS = 0;
     public static final int ERROR_EXISTS = 1;

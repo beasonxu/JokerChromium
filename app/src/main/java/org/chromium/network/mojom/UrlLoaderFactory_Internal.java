@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class UrlLoaderFactory_Internal {
 
@@ -62,13 +64,11 @@ class UrlLoaderFactory_Internal {
 
         @Override
         public void createLoaderAndStart(
-org.chromium.mojo.bindings.InterfaceRequest<UrlLoader> loader, int routingId, int requestId, int options, UrlRequest request, UrlLoaderClient client, MutableNetworkTrafficAnnotationTag trafficAnnotation) {
+org.chromium.mojo.bindings.InterfaceRequest<UrlLoader> loader, int requestId, int options, UrlRequest request, UrlLoaderClient client, MutableNetworkTrafficAnnotationTag trafficAnnotation) {
 
             UrlLoaderFactoryCreateLoaderAndStartParams _message = new UrlLoaderFactoryCreateLoaderAndStartParams();
 
             _message.loader = loader;
-
-            _message.routingId = routingId;
 
             _message.requestId = requestId;
 
@@ -142,7 +142,7 @@ org.chromium.mojo.bindings.InterfaceRequest<UrlLoaderFactory> factory) {
                         UrlLoaderFactoryCreateLoaderAndStartParams data =
                                 UrlLoaderFactoryCreateLoaderAndStartParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().createLoaderAndStart(data.loader, data.routingId, data.requestId, data.options, data.request, data.client, data.trafficAnnotation);
+                        getImpl().createLoaderAndStart(data.loader, data.requestId, data.options, data.request, data.client, data.trafficAnnotation);
                         return true;
                     }
 
@@ -211,7 +211,6 @@ org.chromium.mojo.bindings.InterfaceRequest<UrlLoaderFactory> factory) {
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public org.chromium.mojo.bindings.InterfaceRequest<UrlLoader> loader;
-        public int routingId;
         public int requestId;
         public int options;
         public UrlRequest request;
@@ -257,15 +256,11 @@ org.chromium.mojo.bindings.InterfaceRequest<UrlLoaderFactory> factory) {
                     }
                     {
                         
-                    result.routingId = decoder0.readInt(12);
+                    result.requestId = decoder0.readInt(12);
                     }
                     {
                         
-                    result.requestId = decoder0.readInt(16);
-                    }
-                    {
-                        
-                    result.options = decoder0.readInt(20);
+                    result.options = decoder0.readInt(16);
                     }
                     {
                         
@@ -295,11 +290,9 @@ org.chromium.mojo.bindings.InterfaceRequest<UrlLoaderFactory> factory) {
             
             encoder0.encode(this.loader, 8, false);
             
-            encoder0.encode(this.routingId, 12);
+            encoder0.encode(this.requestId, 12);
             
-            encoder0.encode(this.requestId, 16);
-            
-            encoder0.encode(this.options, 20);
+            encoder0.encode(this.options, 16);
             
             encoder0.encode(this.request, 24, false);
             

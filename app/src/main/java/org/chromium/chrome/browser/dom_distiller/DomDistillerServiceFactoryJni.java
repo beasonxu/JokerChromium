@@ -11,7 +11,7 @@ import org.chromium.components.dom_distiller.core.DomDistillerService;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class DomDistillerServiceFactoryJni implements DomDistillerServiceFactory.Natives {
+class DomDistillerServiceFactoryJni implements DomDistillerServiceFactory.Natives {
   private static DomDistillerServiceFactory.Natives testInstance;
 
   public static final JniStaticTestMocker<DomDistillerServiceFactory.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.dom_distiller.DomDistillerServiceFactory.Natives>() {

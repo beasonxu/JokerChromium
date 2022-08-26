@@ -13,6 +13,8 @@
 
 package org.chromium.display.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class GammaRampRgbEntry extends org.chromium.mojo.bindings.Struct {
 

@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -29,9 +29,10 @@ import java.lang.annotation.RetentionPolicy;
     OmniboxSuggestionType.VOICE_SUGGEST, OmniboxSuggestionType.PHYSICAL_WEB_DEPRECATED,
     OmniboxSuggestionType.PHYSICAL_WEB_OVERFLOW_DEPRECATED,
     OmniboxSuggestionType.TAB_SEARCH_DEPRECATED, OmniboxSuggestionType.DOCUMENT_SUGGESTION,
-    OmniboxSuggestionType.PEDAL, OmniboxSuggestionType.CLIPBOARD_TEXT,
+    OmniboxSuggestionType.PEDAL_DEPRECATED, OmniboxSuggestionType.CLIPBOARD_TEXT,
     OmniboxSuggestionType.CLIPBOARD_IMAGE, OmniboxSuggestionType.TILE_SUGGESTION,
-    OmniboxSuggestionType.TILE_NAVSUGGEST, OmniboxSuggestionType.NUM_TYPES
+    OmniboxSuggestionType.TILE_NAVSUGGEST, OmniboxSuggestionType.OPEN_TAB,
+    OmniboxSuggestionType.NUM_TYPES
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface OmniboxSuggestionType {
@@ -99,10 +100,17 @@ public @interface OmniboxSuggestionType {
    * URL or title, via HQP (deprecated).
    */
   int DOCUMENT_SUGGESTION = 24;
-  int PEDAL = 25;
+  int PEDAL_DEPRECATED = 25;
+  /**
+   * Pedals are now just action buttons attached to search matches.
+   */
   int CLIPBOARD_TEXT = 26;
   int CLIPBOARD_IMAGE = 27;
   int TILE_SUGGESTION = 28;
   int TILE_NAVSUGGEST = 29;
-  int NUM_TYPES = 30;
+  int OPEN_TAB = 30;
+  /**
+   * tabs.
+   */
+  int NUM_TYPES = 31;
 }

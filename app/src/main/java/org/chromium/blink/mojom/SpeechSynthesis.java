@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface SpeechSynthesis extends org.chromium.mojo.bindings.Interface {
 
@@ -23,25 +25,20 @@ public interface SpeechSynthesis extends org.chromium.mojo.bindings.Interface {
 
     Manager<SpeechSynthesis, SpeechSynthesis.Proxy> MANAGER = SpeechSynthesis_Internal.MANAGER;
 
-
     void addVoiceListObserver(
 SpeechSynthesisVoiceListObserver observer);
-
 
 
     void speak(
 SpeechSynthesisUtterance utterance, SpeechSynthesisClient client);
 
 
-
     void pause(
 );
 
 
-
     void resume(
 );
-
 
 
     void cancel(

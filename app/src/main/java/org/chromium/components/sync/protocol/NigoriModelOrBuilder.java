@@ -335,4 +335,23 @@ public interface NigoriModelOrBuilder extends
    */
   com.google.protobuf.ByteString
       getLastDefaultTrustedVaultKeyNameBytes();
+
+  /**
+   * <pre>
+   * Some debug-only fields for passphrase type TRUSTED_VAULT_PASSPHRASE.
+   * </pre>
+   *
+   * <code>optional .sync_pb.NigoriSpecifics.TrustedVaultDebugInfo trusted_vault_debug_info = 13;</code>
+   * @return Whether the trustedVaultDebugInfo field is set.
+   */
+  boolean hasTrustedVaultDebugInfo();
+  /**
+   * <pre>
+   * Some debug-only fields for passphrase type TRUSTED_VAULT_PASSPHRASE.
+   * </pre>
+   *
+   * <code>optional .sync_pb.NigoriSpecifics.TrustedVaultDebugInfo trusted_vault_debug_info = 13;</code>
+   * @return The trustedVaultDebugInfo.
+   */
+  org.chromium.components.sync.protocol.NigoriSpecifics.TrustedVaultDebugInfo getTrustedVaultDebugInfo();
 }

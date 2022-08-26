@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ContentDecryptionModule extends org.chromium.mojo.bindings.Interface {
 
@@ -23,65 +25,57 @@ public interface ContentDecryptionModule extends org.chromium.mojo.bindings.Inte
 
     Manager<ContentDecryptionModule, ContentDecryptionModule.Proxy> MANAGER = ContentDecryptionModule_Internal.MANAGER;
 
-
     void setClient(
 org.chromium.mojo.bindings.AssociatedInterfaceNotSupported client);
 
 
-
     void setServerCertificate(
 byte[] certificateData, 
-SetServerCertificateResponse callback);
+SetServerCertificate_Response callback);
 
-    interface SetServerCertificateResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<CdmPromiseResult> { }
-
+    interface SetServerCertificate_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<CdmPromiseResult> { }
 
 
     void getStatusForPolicy(
 int minHdcpVersion, 
-GetStatusForPolicyResponse callback);
+GetStatusForPolicy_Response callback);
 
-    interface GetStatusForPolicyResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<CdmPromiseResult, Integer> { }
-
+    interface GetStatusForPolicy_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<CdmPromiseResult, Integer> { }
 
 
     void createSessionAndGenerateRequest(
 int sessionType, int initDataType, byte[] initData, 
-CreateSessionAndGenerateRequestResponse callback);
+CreateSessionAndGenerateRequest_Response callback);
 
-    interface CreateSessionAndGenerateRequestResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<CdmPromiseResult, String> { }
-
+    interface CreateSessionAndGenerateRequest_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<CdmPromiseResult, String> { }
 
 
     void loadSession(
 int sessionType, String sessionId, 
-LoadSessionResponse callback);
+LoadSession_Response callback);
 
-    interface LoadSessionResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<CdmPromiseResult, String> { }
-
+    interface LoadSession_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<CdmPromiseResult, String> { }
 
 
     void updateSession(
 String sessionId, byte[] response, 
-UpdateSessionResponse callback);
+UpdateSession_Response callback);
 
-    interface UpdateSessionResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<CdmPromiseResult> { }
-
+    interface UpdateSession_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<CdmPromiseResult> { }
 
 
     void closeSession(
 String sessionId, 
-CloseSessionResponse callback);
+CloseSession_Response callback);
 
-    interface CloseSessionResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<CdmPromiseResult> { }
-
+    interface CloseSession_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<CdmPromiseResult> { }
 
 
     void removeSession(
 String sessionId, 
-RemoveSessionResponse callback);
+RemoveSession_Response callback);
 
-    interface RemoveSessionResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<CdmPromiseResult> { }
+    interface RemoveSession_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<CdmPromiseResult> { }
 
 
 }

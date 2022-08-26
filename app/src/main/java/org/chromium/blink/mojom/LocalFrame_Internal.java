@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class LocalFrame_Internal {
 
@@ -85,29 +87,51 @@ class LocalFrame_Internal {
 
     private static final int RENDER_FALLBACK_CONTENT_ORDINAL = 18;
 
-    private static final int BEFORE_UNLOAD_ORDINAL = 19;
+    private static final int RENDER_FALLBACK_CONTENT_WITH_RESOURCE_TIMING_ORDINAL = 19;
 
-    private static final int MEDIA_PLAYER_ACTION_AT_ORDINAL = 20;
+    private static final int BEFORE_UNLOAD_ORDINAL = 20;
 
-    private static final int ADVANCE_FOCUS_IN_FRAME_ORDINAL = 21;
+    private static final int MEDIA_PLAYER_ACTION_AT_ORDINAL = 21;
 
-    private static final int ADVANCE_FOCUS_IN_FORM_ORDINAL = 22;
+    private static final int PLUGIN_ACTION_AT_ORDINAL = 22;
 
-    private static final int REPORT_CONTENT_SECURITY_POLICY_VIOLATION_ORDINAL = 23;
+    private static final int ADVANCE_FOCUS_IN_FRAME_ORDINAL = 23;
 
-    private static final int DID_UPDATE_FRAME_POLICY_ORDINAL = 24;
+    private static final int ADVANCE_FOCUS_FOR_IME_ORDINAL = 24;
 
-    private static final int ON_SCREENS_CHANGE_ORDINAL = 25;
+    private static final int REPORT_CONTENT_SECURITY_POLICY_VIOLATION_ORDINAL = 25;
 
-    private static final int POST_MESSAGE_EVENT_ORDINAL = 26;
+    private static final int DID_UPDATE_FRAME_POLICY_ORDINAL = 26;
 
-    private static final int BIND_REPORTING_OBSERVER_ORDINAL = 27;
+    private static final int POST_MESSAGE_EVENT_ORDINAL = 27;
 
-    private static final int UPDATE_OPENER_ORDINAL = 28;
+    private static final int JAVA_SCRIPT_METHOD_EXECUTE_REQUEST_ORDINAL = 28;
 
-    private static final int GET_SAVABLE_RESOURCE_LINKS_ORDINAL = 29;
+    private static final int JAVA_SCRIPT_EXECUTE_REQUEST_ORDINAL = 29;
 
-    private static final int MIXED_CONTENT_FOUND_ORDINAL = 30;
+    private static final int JAVA_SCRIPT_EXECUTE_REQUEST_FOR_TESTS_ORDINAL = 30;
+
+    private static final int JAVA_SCRIPT_EXECUTE_REQUEST_IN_ISOLATED_WORLD_ORDINAL = 31;
+
+    private static final int BIND_REPORTING_OBSERVER_ORDINAL = 32;
+
+    private static final int UPDATE_OPENER_ORDINAL = 33;
+
+    private static final int GET_SAVABLE_RESOURCE_LINKS_ORDINAL = 34;
+
+    private static final int MIXED_CONTENT_FOUND_ORDINAL = 35;
+
+    private static final int BIND_DEV_TOOLS_AGENT_ORDINAL = 36;
+
+    private static final int EXTRACT_SMART_CLIP_DATA_ORDINAL = 37;
+
+    private static final int HANDLE_RENDERER_DEBUG_URL_ORDINAL = 38;
+
+    private static final int GET_CANONICAL_URL_FOR_SHARING_ORDINAL = 39;
+
+    private static final int GET_OPEN_GRAPH_METADATA_ORDINAL = 40;
+
+    private static final int SET_NAVIGATION_API_HISTORY_ENTRIES_FOR_RESTORE_ORDINAL = 41;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements LocalFrame.Proxy {
@@ -121,7 +145,7 @@ class LocalFrame_Internal {
         @Override
         public void getTextSurroundingSelection(
 int maxLength, 
-GetTextSurroundingSelectionResponse callback) {
+GetTextSurroundingSelection_Response callback) {
 
             LocalFrameGetTextSurroundingSelectionParams _message = new LocalFrameGetTextSurroundingSelectionParams();
 
@@ -439,9 +463,28 @@ int[] features) {
 
 
         @Override
+        public void renderFallbackContentWithResourceTiming(
+ResourceTimingInfo timing, String serverTimingValue) {
+
+            LocalFrameRenderFallbackContentWithResourceTimingParams _message = new LocalFrameRenderFallbackContentWithResourceTimingParams();
+
+            _message.timing = timing;
+
+            _message.serverTimingValue = serverTimingValue;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(RENDER_FALLBACK_CONTENT_WITH_RESOURCE_TIMING_ORDINAL)));
+
+        }
+
+
+        @Override
         public void beforeUnload(
 boolean isReload, 
-BeforeUnloadResponse callback) {
+BeforeUnload_Response callback) {
 
             LocalFrameBeforeUnloadParams _message = new LocalFrameBeforeUnloadParams();
 
@@ -480,6 +523,25 @@ org.chromium.gfx.mojom.Point location, MediaPlayerAction action) {
 
 
         @Override
+        public void pluginActionAt(
+org.chromium.gfx.mojom.Point location, int action) {
+
+            LocalFramePluginActionAtParams _message = new LocalFramePluginActionAtParams();
+
+            _message.location = location;
+
+            _message.action = action;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(PLUGIN_ACTION_AT_ORDINAL)));
+
+        }
+
+
+        @Override
         public void advanceFocusInFrame(
 int focusType, RemoteFrameToken sourceFrameToken) {
 
@@ -499,10 +561,10 @@ int focusType, RemoteFrameToken sourceFrameToken) {
 
 
         @Override
-        public void advanceFocusInForm(
+        public void advanceFocusForIme(
 int focusType) {
 
-            LocalFrameAdvanceFocusInFormParams _message = new LocalFrameAdvanceFocusInFormParams();
+            LocalFrameAdvanceFocusForImeParams _message = new LocalFrameAdvanceFocusForImeParams();
 
             _message.focusType = focusType;
 
@@ -510,7 +572,7 @@ int focusType) {
             getProxyHandler().getMessageReceiver().accept(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(ADVANCE_FOCUS_IN_FORM_ORDINAL)));
+                            new org.chromium.mojo.bindings.MessageHeader(ADVANCE_FOCUS_FOR_IME_ORDINAL)));
 
         }
 
@@ -550,21 +612,6 @@ FramePolicy framePolicy) {
 
 
         @Override
-        public void onScreensChange(
-) {
-
-            LocalFrameOnScreensChangeParams _message = new LocalFrameOnScreensChangeParams();
-
-
-            getProxyHandler().getMessageReceiver().accept(
-                    _message.serializeWithHeader(
-                            getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(ON_SCREENS_CHANGE_ORDINAL)));
-
-        }
-
-
-        @Override
         public void postMessageEvent(
 RemoteFrameToken sourceFrameToken, org.chromium.mojo_base.mojom.String16 sourceOrigin, org.chromium.mojo_base.mojom.String16 targetOrigin, TransferableMessage message) {
 
@@ -583,6 +630,112 @@ RemoteFrameToken sourceFrameToken, org.chromium.mojo_base.mojom.String16 sourceO
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(POST_MESSAGE_EVENT_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void javaScriptMethodExecuteRequest(
+org.chromium.mojo_base.mojom.String16 objectName, org.chromium.mojo_base.mojom.String16 methodName, org.chromium.mojo_base.mojom.ListValue arguments, boolean wantsResult, 
+JavaScriptMethodExecuteRequest_Response callback) {
+
+            LocalFrameJavaScriptMethodExecuteRequestParams _message = new LocalFrameJavaScriptMethodExecuteRequestParams();
+
+            _message.objectName = objectName;
+
+            _message.methodName = methodName;
+
+            _message.arguments = arguments;
+
+            _message.wantsResult = wantsResult;
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    JAVA_SCRIPT_METHOD_EXECUTE_REQUEST_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new LocalFrameJavaScriptMethodExecuteRequestResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void javaScriptExecuteRequest(
+org.chromium.mojo_base.mojom.BigString16 javascript, boolean wantsResult, 
+JavaScriptExecuteRequest_Response callback) {
+
+            LocalFrameJavaScriptExecuteRequestParams _message = new LocalFrameJavaScriptExecuteRequestParams();
+
+            _message.javascript = javascript;
+
+            _message.wantsResult = wantsResult;
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    JAVA_SCRIPT_EXECUTE_REQUEST_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new LocalFrameJavaScriptExecuteRequestResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void javaScriptExecuteRequestForTests(
+org.chromium.mojo_base.mojom.BigString16 javascript, boolean hasUserGesture, boolean resolvePromises, int worldId, 
+JavaScriptExecuteRequestForTests_Response callback) {
+
+            LocalFrameJavaScriptExecuteRequestForTestsParams _message = new LocalFrameJavaScriptExecuteRequestForTestsParams();
+
+            _message.javascript = javascript;
+
+            _message.hasUserGesture = hasUserGesture;
+
+            _message.resolvePromises = resolvePromises;
+
+            _message.worldId = worldId;
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    JAVA_SCRIPT_EXECUTE_REQUEST_FOR_TESTS_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new LocalFrameJavaScriptExecuteRequestForTestsResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void javaScriptExecuteRequestInIsolatedWorld(
+org.chromium.mojo_base.mojom.BigString16 javascript, boolean wantsResult, int worldId, 
+JavaScriptExecuteRequestInIsolatedWorld_Response callback) {
+
+            LocalFrameJavaScriptExecuteRequestInIsolatedWorldParams _message = new LocalFrameJavaScriptExecuteRequestInIsolatedWorldParams();
+
+            _message.javascript = javascript;
+
+            _message.wantsResult = wantsResult;
+
+            _message.worldId = worldId;
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    JAVA_SCRIPT_EXECUTE_REQUEST_IN_ISOLATED_WORLD_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new LocalFrameJavaScriptExecuteRequestInIsolatedWorldResponseParamsForwardToCallback(callback));
 
         }
 
@@ -624,7 +777,7 @@ FrameToken openerFrameToken) {
         @Override
         public void getSavableResourceLinks(
 
-GetSavableResourceLinksResponse callback) {
+GetSavableResourceLinks_Response callback) {
 
             LocalFrameGetSavableResourceLinksParams _message = new LocalFrameGetSavableResourceLinksParams();
 
@@ -666,6 +819,121 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(MIXED_CONTENT_FOUND_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void bindDevToolsAgent(
+org.chromium.mojo.bindings.AssociatedInterfaceNotSupported agentHost, org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported agent) {
+
+            LocalFrameBindDevToolsAgentParams _message = new LocalFrameBindDevToolsAgentParams();
+
+            _message.agentHost = agentHost;
+
+            _message.agent = agent;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(BIND_DEV_TOOLS_AGENT_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void extractSmartClipData(
+org.chromium.gfx.mojom.Rect rect, 
+ExtractSmartClipData_Response callback) {
+
+            LocalFrameExtractSmartClipDataParams _message = new LocalFrameExtractSmartClipDataParams();
+
+            _message.rect = rect;
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    EXTRACT_SMART_CLIP_DATA_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new LocalFrameExtractSmartClipDataResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void handleRendererDebugUrl(
+org.chromium.url.mojom.Url url) {
+
+            LocalFrameHandleRendererDebugUrlParams _message = new LocalFrameHandleRendererDebugUrlParams();
+
+            _message.url = url;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(HANDLE_RENDERER_DEBUG_URL_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void getCanonicalUrlForSharing(
+
+GetCanonicalUrlForSharing_Response callback) {
+
+            LocalFrameGetCanonicalUrlForSharingParams _message = new LocalFrameGetCanonicalUrlForSharingParams();
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    GET_CANONICAL_URL_FOR_SHARING_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new LocalFrameGetCanonicalUrlForSharingResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void getOpenGraphMetadata(
+
+GetOpenGraphMetadata_Response callback) {
+
+            LocalFrameGetOpenGraphMetadataParams _message = new LocalFrameGetOpenGraphMetadataParams();
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    GET_OPEN_GRAPH_METADATA_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new LocalFrameGetOpenGraphMetadataResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void setNavigationApiHistoryEntriesForRestore(
+NavigationApiHistoryEntryArrays entryArrays) {
+
+            LocalFrameSetNavigationApiHistoryEntriesForRestoreParams _message = new LocalFrameSetNavigationApiHistoryEntriesForRestoreParams();
+
+            _message.entryArrays = entryArrays;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(SET_NAVIGATION_API_HISTORY_ENTRIES_FOR_RESTORE_ORDINAL)));
 
         }
 
@@ -930,6 +1198,19 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
 
 
 
+                    case RENDER_FALLBACK_CONTENT_WITH_RESOURCE_TIMING_ORDINAL: {
+
+                        LocalFrameRenderFallbackContentWithResourceTimingParams data =
+                                LocalFrameRenderFallbackContentWithResourceTimingParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().renderFallbackContentWithResourceTiming(data.timing, data.serverTimingValue);
+                        return true;
+                    }
+
+
+
+
+
 
 
                     case MEDIA_PLAYER_ACTION_AT_ORDINAL: {
@@ -938,6 +1219,19 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
                                 LocalFrameMediaPlayerActionAtParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().mediaPlayerActionAt(data.location, data.action);
+                        return true;
+                    }
+
+
+
+
+
+                    case PLUGIN_ACTION_AT_ORDINAL: {
+
+                        LocalFramePluginActionAtParams data =
+                                LocalFramePluginActionAtParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().pluginActionAt(data.location, data.action);
                         return true;
                     }
 
@@ -958,12 +1252,12 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
 
 
 
-                    case ADVANCE_FOCUS_IN_FORM_ORDINAL: {
+                    case ADVANCE_FOCUS_FOR_IME_ORDINAL: {
 
-                        LocalFrameAdvanceFocusInFormParams data =
-                                LocalFrameAdvanceFocusInFormParams.deserialize(messageWithHeader.getPayload());
+                        LocalFrameAdvanceFocusForImeParams data =
+                                LocalFrameAdvanceFocusForImeParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().advanceFocusInForm(data.focusType);
+                        getImpl().advanceFocusForIme(data.focusType);
                         return true;
                     }
 
@@ -997,18 +1291,6 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
 
 
 
-                    case ON_SCREENS_CHANGE_ORDINAL: {
-
-                        LocalFrameOnScreensChangeParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().onScreensChange();
-                        return true;
-                    }
-
-
-
-
-
                     case POST_MESSAGE_EVENT_ORDINAL: {
 
                         LocalFramePostMessageEventParams data =
@@ -1017,6 +1299,14 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
                         getImpl().postMessageEvent(data.sourceFrameToken, data.sourceOrigin, data.targetOrigin, data.message);
                         return true;
                     }
+
+
+
+
+
+
+
+
 
 
 
@@ -1056,6 +1346,51 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
                                 LocalFrameMixedContentFoundParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().mixedContentFound(data.mainResourceUrl, data.mixedContentUrl, data.requestContext, data.wasAllowed, data.urlBeforeRedirects, data.hadRedirect, data.sourceLocation);
+                        return true;
+                    }
+
+
+
+
+
+                    case BIND_DEV_TOOLS_AGENT_ORDINAL: {
+
+                        LocalFrameBindDevToolsAgentParams data =
+                                LocalFrameBindDevToolsAgentParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().bindDevToolsAgent(data.agentHost, data.agent);
+                        return true;
+                    }
+
+
+
+
+
+
+
+                    case HANDLE_RENDERER_DEBUG_URL_ORDINAL: {
+
+                        LocalFrameHandleRendererDebugUrlParams data =
+                                LocalFrameHandleRendererDebugUrlParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().handleRendererDebugUrl(data.url);
+                        return true;
+                    }
+
+
+
+
+
+
+
+
+
+                    case SET_NAVIGATION_API_HISTORY_ENTRIES_FOR_RESTORE_ORDINAL: {
+
+                        LocalFrameSetNavigationApiHistoryEntriesForRestoreParams data =
+                                LocalFrameSetNavigationApiHistoryEntriesForRestoreParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().setNavigationApiHistoryEntriesForRestore(data.entryArrays);
                         return true;
                     }
 
@@ -1145,6 +1480,8 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
 
 
 
+
+
                     case BEFORE_UNLOAD_ORDINAL: {
 
                         LocalFrameBeforeUnloadParams data =
@@ -1174,6 +1511,66 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
 
 
 
+                    case JAVA_SCRIPT_METHOD_EXECUTE_REQUEST_ORDINAL: {
+
+                        LocalFrameJavaScriptMethodExecuteRequestParams data =
+                                LocalFrameJavaScriptMethodExecuteRequestParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().javaScriptMethodExecuteRequest(data.objectName, data.methodName, data.arguments, data.wantsResult, new LocalFrameJavaScriptMethodExecuteRequestResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
+                    case JAVA_SCRIPT_EXECUTE_REQUEST_ORDINAL: {
+
+                        LocalFrameJavaScriptExecuteRequestParams data =
+                                LocalFrameJavaScriptExecuteRequestParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().javaScriptExecuteRequest(data.javascript, data.wantsResult, new LocalFrameJavaScriptExecuteRequestResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
+                    case JAVA_SCRIPT_EXECUTE_REQUEST_FOR_TESTS_ORDINAL: {
+
+                        LocalFrameJavaScriptExecuteRequestForTestsParams data =
+                                LocalFrameJavaScriptExecuteRequestForTestsParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().javaScriptExecuteRequestForTests(data.javascript, data.hasUserGesture, data.resolvePromises, data.worldId, new LocalFrameJavaScriptExecuteRequestForTestsResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
+                    case JAVA_SCRIPT_EXECUTE_REQUEST_IN_ISOLATED_WORLD_ORDINAL: {
+
+                        LocalFrameJavaScriptExecuteRequestInIsolatedWorldParams data =
+                                LocalFrameJavaScriptExecuteRequestInIsolatedWorldParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().javaScriptExecuteRequestInIsolatedWorld(data.javascript, data.wantsResult, data.worldId, new LocalFrameJavaScriptExecuteRequestInIsolatedWorldResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
 
 
 
@@ -1183,6 +1580,55 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
                         LocalFrameGetSavableResourceLinksParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().getSavableResourceLinks(new LocalFrameGetSavableResourceLinksResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
+
+
+
+
+                    case EXTRACT_SMART_CLIP_DATA_ORDINAL: {
+
+                        LocalFrameExtractSmartClipDataParams data =
+                                LocalFrameExtractSmartClipDataParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().extractSmartClipData(data.rect, new LocalFrameExtractSmartClipDataResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
+
+
+                    case GET_CANONICAL_URL_FOR_SHARING_ORDINAL: {
+
+                        LocalFrameGetCanonicalUrlForSharingParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().getCanonicalUrlForSharing(new LocalFrameGetCanonicalUrlForSharingResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
+                    case GET_OPEN_GRAPH_METADATA_ORDINAL: {
+
+                        LocalFrameGetOpenGraphMetadataParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().getOpenGraphMetadata(new LocalFrameGetOpenGraphMetadataResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -1341,9 +1787,9 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
 
     static class LocalFrameGetTextSurroundingSelectionResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final LocalFrame.GetTextSurroundingSelectionResponse mCallback;
+        private final LocalFrame.GetTextSurroundingSelection_Response mCallback;
 
-        LocalFrameGetTextSurroundingSelectionResponseParamsForwardToCallback(LocalFrame.GetTextSurroundingSelectionResponse callback) {
+        LocalFrameGetTextSurroundingSelectionResponseParamsForwardToCallback(LocalFrame.GetTextSurroundingSelection_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1368,7 +1814,7 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
         }
     }
 
-    static class LocalFrameGetTextSurroundingSelectionResponseParamsProxyToResponder implements LocalFrame.GetTextSurroundingSelectionResponse {
+    static class LocalFrameGetTextSurroundingSelectionResponseParamsProxyToResponder implements LocalFrame.GetTextSurroundingSelection_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2527,6 +2973,77 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
 
 
     
+    static final class LocalFrameRenderFallbackContentWithResourceTimingParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public ResourceTimingInfo timing;
+        public String serverTimingValue;
+
+        private LocalFrameRenderFallbackContentWithResourceTimingParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameRenderFallbackContentWithResourceTimingParams() {
+            this(0);
+        }
+
+        public static LocalFrameRenderFallbackContentWithResourceTimingParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameRenderFallbackContentWithResourceTimingParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameRenderFallbackContentWithResourceTimingParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameRenderFallbackContentWithResourceTimingParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameRenderFallbackContentWithResourceTimingParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.timing = ResourceTimingInfo.decode(decoder1);
+                    }
+                    {
+                        
+                    result.serverTimingValue = decoder0.readString(16, false);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.timing, 8, false);
+            
+            encoder0.encode(this.serverTimingValue, 16, false);
+        }
+    }
+
+
+
+    
     static final class LocalFrameBeforeUnloadParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 16;
@@ -2668,9 +3185,9 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
 
     static class LocalFrameBeforeUnloadResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final LocalFrame.BeforeUnloadResponse mCallback;
+        private final LocalFrame.BeforeUnload_Response mCallback;
 
-        LocalFrameBeforeUnloadResponseParamsForwardToCallback(LocalFrame.BeforeUnloadResponse callback) {
+        LocalFrameBeforeUnloadResponseParamsForwardToCallback(LocalFrame.BeforeUnload_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2695,7 +3212,7 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
         }
     }
 
-    static class LocalFrameBeforeUnloadResponseParamsProxyToResponder implements LocalFrame.BeforeUnloadResponse {
+    static class LocalFrameBeforeUnloadResponseParamsProxyToResponder implements LocalFrame.BeforeUnload_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2806,6 +3323,79 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
 
 
     
+    static final class LocalFramePluginActionAtParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.gfx.mojom.Point location;
+        public int action;
+
+        private LocalFramePluginActionAtParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFramePluginActionAtParams() {
+            this(0);
+        }
+
+        public static LocalFramePluginActionAtParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFramePluginActionAtParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFramePluginActionAtParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFramePluginActionAtParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFramePluginActionAtParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.location = org.chromium.gfx.mojom.Point.decode(decoder1);
+                    }
+                    {
+                        
+                    result.action = decoder0.readInt(16);
+                        PluginActionType.validate(result.action);
+                        result.action = PluginActionType.toKnownValue(result.action);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.location, 8, false);
+            
+            encoder0.encode(this.action, 16);
+        }
+    }
+
+
+
+    
     static final class LocalFrameAdvanceFocusInFrameParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 24;
@@ -2879,22 +3469,22 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
 
 
     
-    static final class LocalFrameAdvanceFocusInFormParams extends org.chromium.mojo.bindings.Struct {
+    static final class LocalFrameAdvanceFocusForImeParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public int focusType;
 
-        private LocalFrameAdvanceFocusInFormParams(int version) {
+        private LocalFrameAdvanceFocusForImeParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public LocalFrameAdvanceFocusInFormParams() {
+        public LocalFrameAdvanceFocusForImeParams() {
             this(0);
         }
 
-        public static LocalFrameAdvanceFocusInFormParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static LocalFrameAdvanceFocusForImeParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -2903,22 +3493,22 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static LocalFrameAdvanceFocusInFormParams deserialize(java.nio.ByteBuffer data) {
+        public static LocalFrameAdvanceFocusForImeParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static LocalFrameAdvanceFocusInFormParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static LocalFrameAdvanceFocusForImeParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            LocalFrameAdvanceFocusInFormParams result;
+            LocalFrameAdvanceFocusForImeParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new LocalFrameAdvanceFocusInFormParams(elementsOrVersion);
+                result = new LocalFrameAdvanceFocusForImeParams(elementsOrVersion);
                     {
                         
                     result.focusType = decoder0.readInt(8);
@@ -3072,62 +3662,6 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
 
 
     
-    static final class LocalFrameOnScreensChangeParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 8;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-
-        private LocalFrameOnScreensChangeParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public LocalFrameOnScreensChangeParams() {
-            this(0);
-        }
-
-        public static LocalFrameOnScreensChangeParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static LocalFrameOnScreensChangeParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static LocalFrameOnScreensChangeParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            LocalFrameOnScreensChangeParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new LocalFrameOnScreensChangeParams(elementsOrVersion);
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-        }
-    }
-
-
-
-    
     static final class LocalFramePostMessageEventParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 40;
@@ -3210,6 +3744,834 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
             encoder0.encode(this.targetOrigin, 24, false);
             
             encoder0.encode(this.message, 32, false);
+        }
+    }
+
+
+
+    
+    static final class LocalFrameJavaScriptMethodExecuteRequestParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 40;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.mojo_base.mojom.String16 objectName;
+        public org.chromium.mojo_base.mojom.String16 methodName;
+        public org.chromium.mojo_base.mojom.ListValue arguments;
+        public boolean wantsResult;
+
+        private LocalFrameJavaScriptMethodExecuteRequestParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameJavaScriptMethodExecuteRequestParams() {
+            this(0);
+        }
+
+        public static LocalFrameJavaScriptMethodExecuteRequestParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameJavaScriptMethodExecuteRequestParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameJavaScriptMethodExecuteRequestParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameJavaScriptMethodExecuteRequestParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameJavaScriptMethodExecuteRequestParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.objectName = org.chromium.mojo_base.mojom.String16.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                    result.methodName = org.chromium.mojo_base.mojom.String16.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
+                    result.arguments = org.chromium.mojo_base.mojom.ListValue.decode(decoder1);
+                    }
+                    {
+                        
+                    result.wantsResult = decoder0.readBoolean(32, 0);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.objectName, 8, false);
+            
+            encoder0.encode(this.methodName, 16, false);
+            
+            encoder0.encode(this.arguments, 24, false);
+            
+            encoder0.encode(this.wantsResult, 32, 0);
+        }
+    }
+
+
+
+    
+    static final class LocalFrameJavaScriptMethodExecuteRequestResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.mojo_base.mojom.Value result;
+
+        private LocalFrameJavaScriptMethodExecuteRequestResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameJavaScriptMethodExecuteRequestResponseParams() {
+            this(0);
+        }
+
+        public static LocalFrameJavaScriptMethodExecuteRequestResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameJavaScriptMethodExecuteRequestResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameJavaScriptMethodExecuteRequestResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameJavaScriptMethodExecuteRequestResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameJavaScriptMethodExecuteRequestResponseParams(elementsOrVersion);
+                    {
+                        
+                    result.result = org.chromium.mojo_base.mojom.Value.decode(decoder0, 8);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.result, 8, false);
+        }
+    }
+
+    static class LocalFrameJavaScriptMethodExecuteRequestResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final LocalFrame.JavaScriptMethodExecuteRequest_Response mCallback;
+
+        LocalFrameJavaScriptMethodExecuteRequestResponseParamsForwardToCallback(LocalFrame.JavaScriptMethodExecuteRequest_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(JAVA_SCRIPT_METHOD_EXECUTE_REQUEST_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                LocalFrameJavaScriptMethodExecuteRequestResponseParams response = LocalFrameJavaScriptMethodExecuteRequestResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.result);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class LocalFrameJavaScriptMethodExecuteRequestResponseParamsProxyToResponder implements LocalFrame.JavaScriptMethodExecuteRequest_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        LocalFrameJavaScriptMethodExecuteRequestResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(org.chromium.mojo_base.mojom.Value result) {
+            LocalFrameJavaScriptMethodExecuteRequestResponseParams _response = new LocalFrameJavaScriptMethodExecuteRequestResponseParams();
+
+            _response.result = result;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    JAVA_SCRIPT_METHOD_EXECUTE_REQUEST_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class LocalFrameJavaScriptExecuteRequestParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.mojo_base.mojom.BigString16 javascript;
+        public boolean wantsResult;
+
+        private LocalFrameJavaScriptExecuteRequestParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameJavaScriptExecuteRequestParams() {
+            this(0);
+        }
+
+        public static LocalFrameJavaScriptExecuteRequestParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameJavaScriptExecuteRequestParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameJavaScriptExecuteRequestParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameJavaScriptExecuteRequestParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameJavaScriptExecuteRequestParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.javascript = org.chromium.mojo_base.mojom.BigString16.decode(decoder1);
+                    }
+                    {
+                        
+                    result.wantsResult = decoder0.readBoolean(16, 0);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.javascript, 8, false);
+            
+            encoder0.encode(this.wantsResult, 16, 0);
+        }
+    }
+
+
+
+    
+    static final class LocalFrameJavaScriptExecuteRequestResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.mojo_base.mojom.Value result;
+
+        private LocalFrameJavaScriptExecuteRequestResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameJavaScriptExecuteRequestResponseParams() {
+            this(0);
+        }
+
+        public static LocalFrameJavaScriptExecuteRequestResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameJavaScriptExecuteRequestResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameJavaScriptExecuteRequestResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameJavaScriptExecuteRequestResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameJavaScriptExecuteRequestResponseParams(elementsOrVersion);
+                    {
+                        
+                    result.result = org.chromium.mojo_base.mojom.Value.decode(decoder0, 8);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.result, 8, false);
+        }
+    }
+
+    static class LocalFrameJavaScriptExecuteRequestResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final LocalFrame.JavaScriptExecuteRequest_Response mCallback;
+
+        LocalFrameJavaScriptExecuteRequestResponseParamsForwardToCallback(LocalFrame.JavaScriptExecuteRequest_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(JAVA_SCRIPT_EXECUTE_REQUEST_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                LocalFrameJavaScriptExecuteRequestResponseParams response = LocalFrameJavaScriptExecuteRequestResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.result);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class LocalFrameJavaScriptExecuteRequestResponseParamsProxyToResponder implements LocalFrame.JavaScriptExecuteRequest_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        LocalFrameJavaScriptExecuteRequestResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(org.chromium.mojo_base.mojom.Value result) {
+            LocalFrameJavaScriptExecuteRequestResponseParams _response = new LocalFrameJavaScriptExecuteRequestResponseParams();
+
+            _response.result = result;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    JAVA_SCRIPT_EXECUTE_REQUEST_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class LocalFrameJavaScriptExecuteRequestForTestsParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.mojo_base.mojom.BigString16 javascript;
+        public boolean hasUserGesture;
+        public boolean resolvePromises;
+        public int worldId;
+
+        private LocalFrameJavaScriptExecuteRequestForTestsParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameJavaScriptExecuteRequestForTestsParams() {
+            this(0);
+        }
+
+        public static LocalFrameJavaScriptExecuteRequestForTestsParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameJavaScriptExecuteRequestForTestsParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameJavaScriptExecuteRequestForTestsParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameJavaScriptExecuteRequestForTestsParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameJavaScriptExecuteRequestForTestsParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.javascript = org.chromium.mojo_base.mojom.BigString16.decode(decoder1);
+                    }
+                    {
+                        
+                    result.hasUserGesture = decoder0.readBoolean(16, 0);
+                    }
+                    {
+                        
+                    result.resolvePromises = decoder0.readBoolean(16, 1);
+                    }
+                    {
+                        
+                    result.worldId = decoder0.readInt(20);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.javascript, 8, false);
+            
+            encoder0.encode(this.hasUserGesture, 16, 0);
+            
+            encoder0.encode(this.resolvePromises, 16, 1);
+            
+            encoder0.encode(this.worldId, 20);
+        }
+    }
+
+
+
+    
+    static final class LocalFrameJavaScriptExecuteRequestForTestsResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int resultType;
+        public org.chromium.mojo_base.mojom.Value result;
+
+        private LocalFrameJavaScriptExecuteRequestForTestsResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameJavaScriptExecuteRequestForTestsResponseParams() {
+            this(0);
+        }
+
+        public static LocalFrameJavaScriptExecuteRequestForTestsResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameJavaScriptExecuteRequestForTestsResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameJavaScriptExecuteRequestForTestsResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameJavaScriptExecuteRequestForTestsResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameJavaScriptExecuteRequestForTestsResponseParams(elementsOrVersion);
+                    {
+                        
+                    result.resultType = decoder0.readInt(8);
+                        JavaScriptExecutionResultType.validate(result.resultType);
+                        result.resultType = JavaScriptExecutionResultType.toKnownValue(result.resultType);
+                    }
+                    {
+                        
+                    result.result = org.chromium.mojo_base.mojom.Value.decode(decoder0, 16);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.resultType, 8);
+            
+            encoder0.encode(this.result, 16, false);
+        }
+    }
+
+    static class LocalFrameJavaScriptExecuteRequestForTestsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final LocalFrame.JavaScriptExecuteRequestForTests_Response mCallback;
+
+        LocalFrameJavaScriptExecuteRequestForTestsResponseParamsForwardToCallback(LocalFrame.JavaScriptExecuteRequestForTests_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(JAVA_SCRIPT_EXECUTE_REQUEST_FOR_TESTS_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                LocalFrameJavaScriptExecuteRequestForTestsResponseParams response = LocalFrameJavaScriptExecuteRequestForTestsResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.resultType, response.result);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class LocalFrameJavaScriptExecuteRequestForTestsResponseParamsProxyToResponder implements LocalFrame.JavaScriptExecuteRequestForTests_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        LocalFrameJavaScriptExecuteRequestForTestsResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(Integer resultType, org.chromium.mojo_base.mojom.Value result) {
+            LocalFrameJavaScriptExecuteRequestForTestsResponseParams _response = new LocalFrameJavaScriptExecuteRequestForTestsResponseParams();
+
+            _response.resultType = resultType;
+
+            _response.result = result;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    JAVA_SCRIPT_EXECUTE_REQUEST_FOR_TESTS_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class LocalFrameJavaScriptExecuteRequestInIsolatedWorldParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.mojo_base.mojom.BigString16 javascript;
+        public boolean wantsResult;
+        public int worldId;
+
+        private LocalFrameJavaScriptExecuteRequestInIsolatedWorldParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameJavaScriptExecuteRequestInIsolatedWorldParams() {
+            this(0);
+        }
+
+        public static LocalFrameJavaScriptExecuteRequestInIsolatedWorldParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameJavaScriptExecuteRequestInIsolatedWorldParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameJavaScriptExecuteRequestInIsolatedWorldParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameJavaScriptExecuteRequestInIsolatedWorldParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameJavaScriptExecuteRequestInIsolatedWorldParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.javascript = org.chromium.mojo_base.mojom.BigString16.decode(decoder1);
+                    }
+                    {
+                        
+                    result.wantsResult = decoder0.readBoolean(16, 0);
+                    }
+                    {
+                        
+                    result.worldId = decoder0.readInt(20);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.javascript, 8, false);
+            
+            encoder0.encode(this.wantsResult, 16, 0);
+            
+            encoder0.encode(this.worldId, 20);
+        }
+    }
+
+
+
+    
+    static final class LocalFrameJavaScriptExecuteRequestInIsolatedWorldResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.mojo_base.mojom.Value result;
+
+        private LocalFrameJavaScriptExecuteRequestInIsolatedWorldResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameJavaScriptExecuteRequestInIsolatedWorldResponseParams() {
+            this(0);
+        }
+
+        public static LocalFrameJavaScriptExecuteRequestInIsolatedWorldResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameJavaScriptExecuteRequestInIsolatedWorldResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameJavaScriptExecuteRequestInIsolatedWorldResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameJavaScriptExecuteRequestInIsolatedWorldResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameJavaScriptExecuteRequestInIsolatedWorldResponseParams(elementsOrVersion);
+                    {
+                        
+                    result.result = org.chromium.mojo_base.mojom.Value.decode(decoder0, 8);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.result, 8, false);
+        }
+    }
+
+    static class LocalFrameJavaScriptExecuteRequestInIsolatedWorldResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final LocalFrame.JavaScriptExecuteRequestInIsolatedWorld_Response mCallback;
+
+        LocalFrameJavaScriptExecuteRequestInIsolatedWorldResponseParamsForwardToCallback(LocalFrame.JavaScriptExecuteRequestInIsolatedWorld_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(JAVA_SCRIPT_EXECUTE_REQUEST_IN_ISOLATED_WORLD_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                LocalFrameJavaScriptExecuteRequestInIsolatedWorldResponseParams response = LocalFrameJavaScriptExecuteRequestInIsolatedWorldResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.result);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class LocalFrameJavaScriptExecuteRequestInIsolatedWorldResponseParamsProxyToResponder implements LocalFrame.JavaScriptExecuteRequestInIsolatedWorld_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        LocalFrameJavaScriptExecuteRequestInIsolatedWorldResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(org.chromium.mojo_base.mojom.Value result) {
+            LocalFrameJavaScriptExecuteRequestInIsolatedWorldResponseParams _response = new LocalFrameJavaScriptExecuteRequestInIsolatedWorldResponseParams();
+
+            _response.result = result;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    JAVA_SCRIPT_EXECUTE_REQUEST_IN_ISOLATED_WORLD_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
         }
     }
 
@@ -3461,9 +4823,9 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
 
     static class LocalFrameGetSavableResourceLinksResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final LocalFrame.GetSavableResourceLinksResponse mCallback;
+        private final LocalFrame.GetSavableResourceLinks_Response mCallback;
 
-        LocalFrameGetSavableResourceLinksResponseParamsForwardToCallback(LocalFrame.GetSavableResourceLinksResponse callback) {
+        LocalFrameGetSavableResourceLinksResponseParamsForwardToCallback(LocalFrame.GetSavableResourceLinks_Response callback) {
             this.mCallback = callback;
         }
 
@@ -3488,7 +4850,7 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
         }
     }
 
-    static class LocalFrameGetSavableResourceLinksResponseParamsProxyToResponder implements LocalFrame.GetSavableResourceLinksResponse {
+    static class LocalFrameGetSavableResourceLinksResponseParamsProxyToResponder implements LocalFrame.GetSavableResourceLinks_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -3628,6 +4990,775 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
             encoder0.encode(this.urlBeforeRedirects, 32, false);
             
             encoder0.encode(this.sourceLocation, 40, true);
+        }
+    }
+
+
+
+    
+    static final class LocalFrameBindDevToolsAgentParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.mojo.bindings.AssociatedInterfaceNotSupported agentHost;
+        public org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported agent;
+
+        private LocalFrameBindDevToolsAgentParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameBindDevToolsAgentParams() {
+            this(0);
+        }
+
+        public static LocalFrameBindDevToolsAgentParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameBindDevToolsAgentParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameBindDevToolsAgentParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameBindDevToolsAgentParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameBindDevToolsAgentParams(elementsOrVersion);
+                    {
+                        
+                    result.agentHost = decoder0.readAssociatedServiceInterfaceNotSupported(8, false);
+                    }
+                    {
+                        
+                    result.agent = decoder0.readAssociatedInterfaceRequestNotSupported(16, false);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.agentHost, 8, false);
+            
+            encoder0.encode(this.agent, 16, false);
+        }
+    }
+
+
+
+    
+    static final class LocalFrameExtractSmartClipDataParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.gfx.mojom.Rect rect;
+
+        private LocalFrameExtractSmartClipDataParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameExtractSmartClipDataParams() {
+            this(0);
+        }
+
+        public static LocalFrameExtractSmartClipDataParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameExtractSmartClipDataParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameExtractSmartClipDataParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameExtractSmartClipDataParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameExtractSmartClipDataParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.rect = org.chromium.gfx.mojom.Rect.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.rect, 8, false);
+        }
+    }
+
+
+
+    
+    static final class LocalFrameExtractSmartClipDataResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.mojo_base.mojom.String16 text;
+        public org.chromium.mojo_base.mojom.String16 html;
+        public org.chromium.gfx.mojom.Rect clipRect;
+
+        private LocalFrameExtractSmartClipDataResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameExtractSmartClipDataResponseParams() {
+            this(0);
+        }
+
+        public static LocalFrameExtractSmartClipDataResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameExtractSmartClipDataResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameExtractSmartClipDataResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameExtractSmartClipDataResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameExtractSmartClipDataResponseParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.text = org.chromium.mojo_base.mojom.String16.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                    result.html = org.chromium.mojo_base.mojom.String16.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
+                    result.clipRect = org.chromium.gfx.mojom.Rect.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.text, 8, false);
+            
+            encoder0.encode(this.html, 16, false);
+            
+            encoder0.encode(this.clipRect, 24, false);
+        }
+    }
+
+    static class LocalFrameExtractSmartClipDataResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final LocalFrame.ExtractSmartClipData_Response mCallback;
+
+        LocalFrameExtractSmartClipDataResponseParamsForwardToCallback(LocalFrame.ExtractSmartClipData_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(EXTRACT_SMART_CLIP_DATA_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                LocalFrameExtractSmartClipDataResponseParams response = LocalFrameExtractSmartClipDataResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.text, response.html, response.clipRect);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class LocalFrameExtractSmartClipDataResponseParamsProxyToResponder implements LocalFrame.ExtractSmartClipData_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        LocalFrameExtractSmartClipDataResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(org.chromium.mojo_base.mojom.String16 text, org.chromium.mojo_base.mojom.String16 html, org.chromium.gfx.mojom.Rect clipRect) {
+            LocalFrameExtractSmartClipDataResponseParams _response = new LocalFrameExtractSmartClipDataResponseParams();
+
+            _response.text = text;
+
+            _response.html = html;
+
+            _response.clipRect = clipRect;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    EXTRACT_SMART_CLIP_DATA_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class LocalFrameHandleRendererDebugUrlParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.url.mojom.Url url;
+
+        private LocalFrameHandleRendererDebugUrlParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameHandleRendererDebugUrlParams() {
+            this(0);
+        }
+
+        public static LocalFrameHandleRendererDebugUrlParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameHandleRendererDebugUrlParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameHandleRendererDebugUrlParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameHandleRendererDebugUrlParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameHandleRendererDebugUrlParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.url = org.chromium.url.mojom.Url.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.url, 8, false);
+        }
+    }
+
+
+
+    
+    static final class LocalFrameGetCanonicalUrlForSharingParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private LocalFrameGetCanonicalUrlForSharingParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameGetCanonicalUrlForSharingParams() {
+            this(0);
+        }
+
+        public static LocalFrameGetCanonicalUrlForSharingParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameGetCanonicalUrlForSharingParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameGetCanonicalUrlForSharingParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameGetCanonicalUrlForSharingParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameGetCanonicalUrlForSharingParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+
+
+    
+    static final class LocalFrameGetCanonicalUrlForSharingResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.url.mojom.Url canonicalUrl;
+
+        private LocalFrameGetCanonicalUrlForSharingResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameGetCanonicalUrlForSharingResponseParams() {
+            this(0);
+        }
+
+        public static LocalFrameGetCanonicalUrlForSharingResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameGetCanonicalUrlForSharingResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameGetCanonicalUrlForSharingResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameGetCanonicalUrlForSharingResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameGetCanonicalUrlForSharingResponseParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, true);
+                    result.canonicalUrl = org.chromium.url.mojom.Url.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.canonicalUrl, 8, true);
+        }
+    }
+
+    static class LocalFrameGetCanonicalUrlForSharingResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final LocalFrame.GetCanonicalUrlForSharing_Response mCallback;
+
+        LocalFrameGetCanonicalUrlForSharingResponseParamsForwardToCallback(LocalFrame.GetCanonicalUrlForSharing_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(GET_CANONICAL_URL_FOR_SHARING_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                LocalFrameGetCanonicalUrlForSharingResponseParams response = LocalFrameGetCanonicalUrlForSharingResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.canonicalUrl);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class LocalFrameGetCanonicalUrlForSharingResponseParamsProxyToResponder implements LocalFrame.GetCanonicalUrlForSharing_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        LocalFrameGetCanonicalUrlForSharingResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(org.chromium.url.mojom.Url canonicalUrl) {
+            LocalFrameGetCanonicalUrlForSharingResponseParams _response = new LocalFrameGetCanonicalUrlForSharingResponseParams();
+
+            _response.canonicalUrl = canonicalUrl;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    GET_CANONICAL_URL_FOR_SHARING_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class LocalFrameGetOpenGraphMetadataParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private LocalFrameGetOpenGraphMetadataParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameGetOpenGraphMetadataParams() {
+            this(0);
+        }
+
+        public static LocalFrameGetOpenGraphMetadataParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameGetOpenGraphMetadataParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameGetOpenGraphMetadataParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameGetOpenGraphMetadataParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameGetOpenGraphMetadataParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+
+
+    
+    static final class LocalFrameGetOpenGraphMetadataResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public OpenGraphMetadata metadata;
+
+        private LocalFrameGetOpenGraphMetadataResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameGetOpenGraphMetadataResponseParams() {
+            this(0);
+        }
+
+        public static LocalFrameGetOpenGraphMetadataResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameGetOpenGraphMetadataResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameGetOpenGraphMetadataResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameGetOpenGraphMetadataResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameGetOpenGraphMetadataResponseParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.metadata = OpenGraphMetadata.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.metadata, 8, false);
+        }
+    }
+
+    static class LocalFrameGetOpenGraphMetadataResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final LocalFrame.GetOpenGraphMetadata_Response mCallback;
+
+        LocalFrameGetOpenGraphMetadataResponseParamsForwardToCallback(LocalFrame.GetOpenGraphMetadata_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(GET_OPEN_GRAPH_METADATA_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                LocalFrameGetOpenGraphMetadataResponseParams response = LocalFrameGetOpenGraphMetadataResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.metadata);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class LocalFrameGetOpenGraphMetadataResponseParamsProxyToResponder implements LocalFrame.GetOpenGraphMetadata_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        LocalFrameGetOpenGraphMetadataResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(OpenGraphMetadata metadata) {
+            LocalFrameGetOpenGraphMetadataResponseParams _response = new LocalFrameGetOpenGraphMetadataResponseParams();
+
+            _response.metadata = metadata;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    GET_OPEN_GRAPH_METADATA_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class LocalFrameSetNavigationApiHistoryEntriesForRestoreParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public NavigationApiHistoryEntryArrays entryArrays;
+
+        private LocalFrameSetNavigationApiHistoryEntriesForRestoreParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameSetNavigationApiHistoryEntriesForRestoreParams() {
+            this(0);
+        }
+
+        public static LocalFrameSetNavigationApiHistoryEntriesForRestoreParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameSetNavigationApiHistoryEntriesForRestoreParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameSetNavigationApiHistoryEntriesForRestoreParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameSetNavigationApiHistoryEntriesForRestoreParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameSetNavigationApiHistoryEntriesForRestoreParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.entryArrays = NavigationApiHistoryEntryArrays.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.entryArrays, 8, false);
         }
     }
 

@@ -13,8 +13,16 @@
 
 package org.chromium.ui.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class DialogButton {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        DialogButton.NONE,
+        DialogButton.OK,
+        DialogButton.CANCEL})
+    public @interface EnumType {}
 
     public static final int NONE = 0;
     public static final int OK = 1;

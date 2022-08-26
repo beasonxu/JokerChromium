@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -25,6 +25,13 @@ import java.lang.annotation.RetentionPolicy;
     SignoutReason.SIGNIN_NOT_ALLOWED_ON_PROFILE_INIT,
     SignoutReason.FORCE_SIGNOUT_ALWAYS_ALLOWED_FOR_TEST, SignoutReason.USER_DELETED_ACCOUNT_COOKIES,
     SignoutReason.MOBILE_IDENTITY_CONSISTENCY_ROLLBACK, SignoutReason.ACCOUNT_ID_MIGRATION,
+    SignoutReason.IOS_ACCOUNT_REMOVED_FROM_DEVICE_AFTER_RESTORE,
+    SignoutReason.USER_CLICKED_REVOKE_SYNC_CONSENT_SETTINGS,
+    SignoutReason.USER_CLICKED_SIGNOUT_PROFILE_MENU,
+    SignoutReason.SIGNIN_RETRIGGERD_FROM_WEB_SIGNIN,
+    SignoutReason.USER_CLICKED_SIGNOUT_FROM_USER_POLICY_NOTIFICATION_DIALOG,
+    SignoutReason.ACCOUNT_EMAIL_UPDATED,
+    SignoutReason.USER_CLICKED_SIGNOUT_FROM_CLEAR_BROWSING_DATA_PAGE,
     SignoutReason.NUM_PROFILE_SIGNOUT_METRICS
 })
 @Retention(RetentionPolicy.SOURCE)
@@ -71,7 +78,7 @@ public @interface SignoutReason {
    */
   int USER_TUNED_OFF_SYNC_FROM_DICE_UI = 8;
   /**
-   * Android specific. Signout forced because the account was removed from the device.
+   * Signout forced because the account was removed from the device.
    */
   int ACCOUNT_REMOVED_FROM_DEVICE = 9;
   /**
@@ -95,7 +102,40 @@ public @interface SignoutReason {
    */
   int ACCOUNT_ID_MIGRATION = 14;
   /**
+   * iOS Specific. Sign-out forced because the account was removed from the device after a device
+   * restore.
+   */
+  int IOS_ACCOUNT_REMOVED_FROM_DEVICE_AFTER_RESTORE = 15;
+  /**
+   * User clicked to 'Turn off sync' from the settings page. Currently only available for Android
+   * Unicorn users.
+   */
+  int USER_CLICKED_REVOKE_SYNC_CONSENT_SETTINGS = 16;
+  /**
+   * User clicked to signout from the settings page.
+   */
+  int USER_CLICKED_SIGNOUT_PROFILE_MENU = 17;
+  /**
+   * User retriggered signin from the Android web sign-in bottomsheet.
+   */
+  int SIGNIN_RETRIGGERD_FROM_WEB_SIGNIN = 18;
+  /**
+   * User clicked on sign-out from the notification dialog for User Policy. The notification informs
+   * the user that from now on user policies may be effective on their browser if they Sync with
+   * their managed account. The user has the option to sign out to avoid user policies.
+   */
+  int USER_CLICKED_SIGNOUT_FROM_USER_POLICY_NOTIFICATION_DIALOG = 19;
+  /**
+   * The email address of the primary account on the device was updated, triggering an automatic
+   * signout followed by signin.
+   */
+  int ACCOUNT_EMAIL_UPDATED = 20;
+  /**
+   * User clicked on sign-out from the clear browsing data page.
+   */
+  int USER_CLICKED_SIGNOUT_FROM_CLEAR_BROWSING_DATA_PAGE = 21;
+  /**
    * Keep this as the last enum.
    */
-  int NUM_PROFILE_SIGNOUT_METRICS = 15;
+  int NUM_PROFILE_SIGNOUT_METRICS = 22;
 }

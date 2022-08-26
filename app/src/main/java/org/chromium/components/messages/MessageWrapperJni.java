@@ -9,7 +9,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class MessageWrapperJni implements MessageWrapper.Natives {
+class MessageWrapperJni implements MessageWrapper.Natives {
   private static MessageWrapper.Natives testInstance;
 
   public static final JniStaticTestMocker<MessageWrapper.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.messages.MessageWrapper.Natives>() {
@@ -31,6 +31,11 @@ final class MessageWrapperJni implements MessageWrapper.Natives {
   @Override
   public void handleSecondaryActionClick(long nativeMessageWrapper) {
     GEN_JNI.org_chromium_components_messages_MessageWrapper_handleSecondaryActionClick(nativeMessageWrapper);
+  }
+
+  @Override
+  public void handleSecondaryMenuItemSelected(long nativeMessageWrapper, int itemId) {
+    GEN_JNI.org_chromium_components_messages_MessageWrapper_handleSecondaryMenuItemSelected(nativeMessageWrapper, itemId);
   }
 
   @Override

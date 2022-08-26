@@ -13,6 +13,8 @@
 
 package org.chromium.media_session.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class AudioFocusRequestClient_Internal {
 
@@ -65,7 +67,7 @@ class AudioFocusRequestClient_Internal {
         @Override
         public void requestAudioFocus(
 MediaSessionInfo sessionInfo, int type, 
-RequestAudioFocusResponse callback) {
+RequestAudioFocus_Response callback) {
 
             AudioFocusRequestClientRequestAudioFocusParams _message = new AudioFocusRequestClientRequestAudioFocusParams();
 
@@ -361,9 +363,9 @@ MediaSessionInfo sessionInfo) {
 
     static class AudioFocusRequestClientRequestAudioFocusResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final AudioFocusRequestClient.RequestAudioFocusResponse mCallback;
+        private final AudioFocusRequestClient.RequestAudioFocus_Response mCallback;
 
-        AudioFocusRequestClientRequestAudioFocusResponseParamsForwardToCallback(AudioFocusRequestClient.RequestAudioFocusResponse callback) {
+        AudioFocusRequestClientRequestAudioFocusResponseParamsForwardToCallback(AudioFocusRequestClient.RequestAudioFocus_Response callback) {
             this.mCallback = callback;
         }
 
@@ -386,7 +388,7 @@ MediaSessionInfo sessionInfo) {
         }
     }
 
-    static class AudioFocusRequestClientRequestAudioFocusResponseParamsProxyToResponder implements AudioFocusRequestClient.RequestAudioFocusResponse {
+    static class AudioFocusRequestClientRequestAudioFocusResponseParamsProxyToResponder implements AudioFocusRequestClient.RequestAudioFocus_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

@@ -5,7 +5,8 @@ import dagger.internal.DoubleCheck;
 import dagger.internal.Factory;
 import javax.annotation.Generated;
 import javax.inject.Provider;
-import org.chromium.chrome.browser.browserservices.BrowserServicesIntentDataProvider;
+import org.chromium.chrome.browser.browserservices.intents.BrowserServicesIntentDataProvider;
+import org.chromium.chrome.browser.browserservices.ui.controller.trustedwebactivity.TwaRegistrar;
 import org.chromium.chrome.browser.browserservices.ui.controller.webapps.WebappDisclosureController;
 import org.chromium.chrome.browser.browserservices.ui.view.DisclosureInfobar;
 import org.chromium.chrome.browser.lifecycle.ActivityLifecycleDispatcher;
@@ -33,6 +34,8 @@ public final class WebApkActivityCoordinator_Factory implements Factory<WebApkAc
 
   private final Provider<WebApkUpdateManager> webApkUpdateManagerProvider;
 
+  private final Provider<TwaRegistrar> twaRegistrarProvider;
+
   public WebApkActivityCoordinator_Factory(
       Provider<WebappDeferredStartupWithStorageHandler> deferredStartupWithStorageHandlerProvider,
       Provider<WebappDisclosureController> disclosureControllerProvider,
@@ -40,7 +43,8 @@ public final class WebApkActivityCoordinator_Factory implements Factory<WebApkAc
       Provider<WebApkActivityLifecycleUmaTracker> webApkActivityLifecycleUmaTrackerProvider,
       Provider<ActivityLifecycleDispatcher> lifecycleDispatcherProvider,
       Provider<BrowserServicesIntentDataProvider> intendDataProvider,
-      Provider<WebApkUpdateManager> webApkUpdateManagerProvider) {
+      Provider<WebApkUpdateManager> webApkUpdateManagerProvider,
+      Provider<TwaRegistrar> twaRegistrarProvider) {
     this.deferredStartupWithStorageHandlerProvider = deferredStartupWithStorageHandlerProvider;
     this.disclosureControllerProvider = disclosureControllerProvider;
     this.disclosureInfobarProvider = disclosureInfobarProvider;
@@ -48,11 +52,12 @@ public final class WebApkActivityCoordinator_Factory implements Factory<WebApkAc
     this.lifecycleDispatcherProvider = lifecycleDispatcherProvider;
     this.intendDataProvider = intendDataProvider;
     this.webApkUpdateManagerProvider = webApkUpdateManagerProvider;
+    this.twaRegistrarProvider = twaRegistrarProvider;
   }
 
   @Override
   public WebApkActivityCoordinator get() {
-    return newInstance(deferredStartupWithStorageHandlerProvider.get(), disclosureControllerProvider.get(), disclosureInfobarProvider.get(), webApkActivityLifecycleUmaTrackerProvider.get(), lifecycleDispatcherProvider.get(), intendDataProvider.get(), DoubleCheck.lazy(webApkUpdateManagerProvider));
+    return newInstance(deferredStartupWithStorageHandlerProvider.get(), disclosureControllerProvider.get(), disclosureInfobarProvider.get(), webApkActivityLifecycleUmaTrackerProvider.get(), lifecycleDispatcherProvider.get(), intendDataProvider.get(), DoubleCheck.lazy(webApkUpdateManagerProvider), twaRegistrarProvider.get());
   }
 
   public static WebApkActivityCoordinator_Factory create(
@@ -62,8 +67,9 @@ public final class WebApkActivityCoordinator_Factory implements Factory<WebApkAc
       Provider<WebApkActivityLifecycleUmaTracker> webApkActivityLifecycleUmaTrackerProvider,
       Provider<ActivityLifecycleDispatcher> lifecycleDispatcherProvider,
       Provider<BrowserServicesIntentDataProvider> intendDataProvider,
-      Provider<WebApkUpdateManager> webApkUpdateManagerProvider) {
-    return new WebApkActivityCoordinator_Factory(deferredStartupWithStorageHandlerProvider, disclosureControllerProvider, disclosureInfobarProvider, webApkActivityLifecycleUmaTrackerProvider, lifecycleDispatcherProvider, intendDataProvider, webApkUpdateManagerProvider);
+      Provider<WebApkUpdateManager> webApkUpdateManagerProvider,
+      Provider<TwaRegistrar> twaRegistrarProvider) {
+    return new WebApkActivityCoordinator_Factory(deferredStartupWithStorageHandlerProvider, disclosureControllerProvider, disclosureInfobarProvider, webApkActivityLifecycleUmaTrackerProvider, lifecycleDispatcherProvider, intendDataProvider, webApkUpdateManagerProvider, twaRegistrarProvider);
   }
 
   public static WebApkActivityCoordinator newInstance(
@@ -72,7 +78,7 @@ public final class WebApkActivityCoordinator_Factory implements Factory<WebApkAc
       WebApkActivityLifecycleUmaTracker webApkActivityLifecycleUmaTracker,
       ActivityLifecycleDispatcher lifecycleDispatcher,
       BrowserServicesIntentDataProvider intendDataProvider,
-      Lazy<WebApkUpdateManager> webApkUpdateManager) {
-    return new WebApkActivityCoordinator(deferredStartupWithStorageHandler, disclosureController, disclosureInfobar, webApkActivityLifecycleUmaTracker, lifecycleDispatcher, intendDataProvider, webApkUpdateManager);
+      Lazy<WebApkUpdateManager> webApkUpdateManager, TwaRegistrar twaRegistrar) {
+    return new WebApkActivityCoordinator(deferredStartupWithStorageHandler, disclosureController, disclosureInfobar, webApkActivityLifecycleUmaTracker, lifecycleDispatcher, intendDataProvider, webApkUpdateManager, twaRegistrar);
   }
 }

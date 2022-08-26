@@ -13,8 +13,17 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class SslVersion {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        SslVersion.TLS1,
+        SslVersion.TLS11,
+        SslVersion.TLS12,
+        SslVersion.TLS13})
+    public @interface EnumType {}
 
     public static final int TLS1 = 0;
     public static final int TLS11 = 1;

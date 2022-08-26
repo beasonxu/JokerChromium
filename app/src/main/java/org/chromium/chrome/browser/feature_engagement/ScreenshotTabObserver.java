@@ -5,13 +5,14 @@
 package org.chromium.chrome.browser.feature_engagement;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.VisibleForTesting;
 
 import org.chromium.base.UserData;
 import org.chromium.base.metrics.RecordHistogram;
 import org.chromium.base.metrics.RecordUserAction;
-import org.chromium.chrome.browser.metrics.UkmRecorder;
 import org.chromium.chrome.browser.tab.EmptyTabObserver;
 import org.chromium.chrome.browser.tab.Tab;
+import org.chromium.components.ukm.UkmRecorder;
 import org.chromium.content_public.browser.WebContents;
 import org.chromium.ui.base.WindowAndroid;
 
@@ -28,6 +29,7 @@ public class ScreenshotTabObserver extends EmptyTabObserver implements UserData 
     public static final int SCREENSHOT_ACTION_COUNT = 3;
 
     private static final Class<ScreenshotTabObserver> USER_DATA_KEY = ScreenshotTabObserver.class;
+    private Runnable mOnReportCompleteForTesting;
 
     /**
      * Gets the existing observer if it exists, otherwise creates one.
@@ -107,7 +109,7 @@ public class ScreenshotTabObserver extends EmptyTabObserver implements UserData 
     /** Before leaving a page, report screenshot related UMA and reset screenshot counter. */
     private void reportScreenshotUMA(Tab tab) {
         if (mScreenshotsTaken > 0) {
-            RecordHistogram.recordCountHistogram(
+            RecordHistogram.recordCount1MHistogram(
                     "Tab.Screenshot.ScreenshotsPerPage", mScreenshotsTaken);
             RecordHistogram.recordEnumeratedHistogram(
                     "Tab.Screenshot.Action", mScreenshotAction, SCREENSHOT_ACTION_COUNT);
@@ -122,5 +124,14 @@ public class ScreenshotTabObserver extends EmptyTabObserver implements UserData 
 
         mScreenshotsTaken = 0;
         mScreenshotAction = SCREENSHOT_ACTION_NONE;
+        if (mOnReportCompleteForTesting != null) {
+            mOnReportCompleteForTesting.run();
+            mOnReportCompleteForTesting = null;
+        }
+    }
+
+    @VisibleForTesting
+    public void setOnReportCompleteForTesting(Runnable onReportCompleteForTesting) {
+        mOnReportCompleteForTesting = onReportCompleteForTesting;
     }
 }

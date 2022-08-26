@@ -13,6 +13,8 @@
 
 package org.chromium.cc.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class RenderFrameMetadataObserver_Internal {
 

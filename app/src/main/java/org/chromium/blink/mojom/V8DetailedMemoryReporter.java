@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface V8DetailedMemoryReporter extends org.chromium.mojo.bindings.Interface {
 
@@ -20,6 +22,12 @@ public interface V8DetailedMemoryReporter extends org.chromium.mojo.bindings.Int
 
     public static final class Mode {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            Mode.DEFAULT,
+            Mode.EAGER,
+            Mode.LAZY})
+        public @interface EnumType {}
 
         public static final int DEFAULT = 0;
         public static final int EAGER = 1;
@@ -49,12 +57,11 @@ public interface V8DetailedMemoryReporter extends org.chromium.mojo.bindings.Int
 
     Manager<V8DetailedMemoryReporter, V8DetailedMemoryReporter.Proxy> MANAGER = V8DetailedMemoryReporter_Internal.MANAGER;
 
-
     void getV8MemoryUsage(
 int mode, 
-GetV8MemoryUsageResponse callback);
+GetV8MemoryUsage_Response callback);
 
-    interface GetV8MemoryUsageResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<PerProcessV8MemoryUsage> { }
+    interface GetV8MemoryUsage_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<PerProcessV8MemoryUsage> { }
 
 
 }

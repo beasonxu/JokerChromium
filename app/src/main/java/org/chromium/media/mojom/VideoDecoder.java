@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface VideoDecoder extends org.chromium.mojo.bindings.Interface {
 
@@ -23,42 +25,36 @@ public interface VideoDecoder extends org.chromium.mojo.bindings.Interface {
 
     Manager<VideoDecoder, VideoDecoder.Proxy> MANAGER = VideoDecoder_Internal.MANAGER;
 
-
     void getSupportedConfigs(
 
-GetSupportedConfigsResponse callback);
+GetSupportedConfigs_Response callback);
 
-    interface GetSupportedConfigsResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<java.util.Map<Integer, SupportedVideoDecoderConfig[]>> { }
-
+    interface GetSupportedConfigs_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<SupportedVideoDecoderConfig[], Integer> { }
 
 
     void construct(
-org.chromium.mojo.bindings.AssociatedInterfaceNotSupported client, org.chromium.mojo.bindings.AssociatedInterfaceNotSupported mediaLog, org.chromium.mojo.bindings.InterfaceRequest<VideoFrameHandleReleaser> videoFrameHandleReleaser, org.chromium.mojo.system.DataPipe.ConsumerHandle decoderBufferPipe, CommandBufferId commandBufferId, int implementation, org.chromium.gfx.mojom.ColorSpace targetColorSpace);
-
+org.chromium.mojo.bindings.AssociatedInterfaceNotSupported client, MediaLog mediaLog, org.chromium.mojo.bindings.InterfaceRequest<VideoFrameHandleReleaser> videoFrameHandleReleaser, org.chromium.mojo.system.DataPipe.ConsumerHandle decoderBufferPipe, CommandBufferId commandBufferId, org.chromium.gfx.mojom.ColorSpace targetColorSpace);
 
 
     void initialize(
 VideoDecoderConfig config, boolean lowDelay, org.chromium.mojo_base.mojom.UnguessableToken cdmId, 
-InitializeResponse callback);
+Initialize_Response callback);
 
-    interface InitializeResponse extends org.chromium.mojo.bindings.Callbacks.Callback4<Status, Boolean, Integer, Integer> { }
-
+    interface Initialize_Response extends org.chromium.mojo.bindings.Callbacks.Callback4<DecoderStatus, Boolean, Integer, Integer> { }
 
 
     void decode(
 DecoderBuffer buffer, 
-DecodeResponse callback);
+Decode_Response callback);
 
-    interface DecodeResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Status> { }
-
+    interface Decode_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<DecoderStatus> { }
 
 
     void reset(
 
-ResetResponse callback);
+Reset_Response callback);
 
-    interface ResetResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface Reset_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void onOverlayInfoChanged(

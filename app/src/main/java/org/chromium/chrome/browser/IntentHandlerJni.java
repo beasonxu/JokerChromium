@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class IntentHandlerJni implements IntentHandler.Natives {
+class IntentHandlerJni implements IntentHandler.Natives {
   private static IntentHandler.Natives testInstance;
 
   public static final JniStaticTestMocker<IntentHandler.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.IntentHandler.Natives>() {

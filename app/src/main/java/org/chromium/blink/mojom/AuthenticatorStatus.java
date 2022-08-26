@@ -13,8 +13,37 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class AuthenticatorStatus {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        AuthenticatorStatus.SUCCESS,
+        AuthenticatorStatus.PENDING_REQUEST,
+        AuthenticatorStatus.NOT_ALLOWED_ERROR,
+        AuthenticatorStatus.INVALID_DOMAIN,
+        AuthenticatorStatus.INVALID_ICON_URL,
+        AuthenticatorStatus.CREDENTIAL_EXCLUDED,
+        AuthenticatorStatus.NOT_IMPLEMENTED,
+        AuthenticatorStatus.NOT_FOCUSED,
+        AuthenticatorStatus.RESIDENT_CREDENTIALS_UNSUPPORTED,
+        AuthenticatorStatus.USER_VERIFICATION_UNSUPPORTED,
+        AuthenticatorStatus.ALGORITHM_UNSUPPORTED,
+        AuthenticatorStatus.EMPTY_ALLOW_CREDENTIALS,
+        AuthenticatorStatus.ANDROID_NOT_SUPPORTED_ERROR,
+        AuthenticatorStatus.PROTECTION_POLICY_INCONSISTENT,
+        AuthenticatorStatus.ABORT_ERROR,
+        AuthenticatorStatus.OPAQUE_DOMAIN,
+        AuthenticatorStatus.INVALID_PROTOCOL,
+        AuthenticatorStatus.BAD_RELYING_PARTY_ID,
+        AuthenticatorStatus.CANNOT_READ_AND_WRITE_LARGE_BLOB,
+        AuthenticatorStatus.INVALID_ALLOW_CREDENTIALS_FOR_LARGE_BLOB,
+        AuthenticatorStatus.FAILED_TO_SAVE_CREDENTIAL_ID_FOR_PAYMENT_EXTENSION,
+        AuthenticatorStatus.REMOTE_DESKTOP_CLIENT_OVERRIDE_NOT_AUTHORIZED,
+        AuthenticatorStatus.ERROR_WITH_DOM_EXCEPTION_DETAILS,
+        AuthenticatorStatus.UNKNOWN_ERROR})
+    public @interface EnumType {}
 
     public static final int SUCCESS = 0;
     public static final int PENDING_REQUEST = 1;
@@ -22,27 +51,29 @@ public final class AuthenticatorStatus {
     public static final int INVALID_DOMAIN = 3;
     public static final int INVALID_ICON_URL = 4;
     public static final int CREDENTIAL_EXCLUDED = 5;
-    public static final int CREDENTIAL_NOT_RECOGNIZED = 6;
-    public static final int NOT_IMPLEMENTED = 7;
-    public static final int NOT_FOCUSED = 8;
-    public static final int RESIDENT_CREDENTIALS_UNSUPPORTED = 9;
-    public static final int USER_VERIFICATION_UNSUPPORTED = 10;
-    public static final int ALGORITHM_UNSUPPORTED = 11;
-    public static final int EMPTY_ALLOW_CREDENTIALS = 12;
-    public static final int ANDROID_NOT_SUPPORTED_ERROR = 13;
-    public static final int PROTECTION_POLICY_INCONSISTENT = 14;
-    public static final int ABORT_ERROR = 15;
-    public static final int OPAQUE_DOMAIN = 16;
-    public static final int INVALID_PROTOCOL = 17;
-    public static final int BAD_RELYING_PARTY_ID = 18;
-    public static final int CANNOT_READ_AND_WRITE_LARGE_BLOB = 19;
-    public static final int INVALID_ALLOW_CREDENTIALS_FOR_LARGE_BLOB = 20;
-    public static final int UNKNOWN_ERROR = 21;
+    public static final int NOT_IMPLEMENTED = 6;
+    public static final int NOT_FOCUSED = 7;
+    public static final int RESIDENT_CREDENTIALS_UNSUPPORTED = 8;
+    public static final int USER_VERIFICATION_UNSUPPORTED = 9;
+    public static final int ALGORITHM_UNSUPPORTED = 10;
+    public static final int EMPTY_ALLOW_CREDENTIALS = 11;
+    public static final int ANDROID_NOT_SUPPORTED_ERROR = 12;
+    public static final int PROTECTION_POLICY_INCONSISTENT = 13;
+    public static final int ABORT_ERROR = 14;
+    public static final int OPAQUE_DOMAIN = 15;
+    public static final int INVALID_PROTOCOL = 16;
+    public static final int BAD_RELYING_PARTY_ID = 17;
+    public static final int CANNOT_READ_AND_WRITE_LARGE_BLOB = 18;
+    public static final int INVALID_ALLOW_CREDENTIALS_FOR_LARGE_BLOB = 19;
+    public static final int FAILED_TO_SAVE_CREDENTIAL_ID_FOR_PAYMENT_EXTENSION = 20;
+    public static final int REMOTE_DESKTOP_CLIENT_OVERRIDE_NOT_AUTHORIZED = 21;
+    public static final int ERROR_WITH_DOM_EXCEPTION_DETAILS = 22;
+    public static final int UNKNOWN_ERROR = 23;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 21;
+    public static final int MAX_VALUE = 23;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 21;
+        return value >= 0 && value <= 23;
     }
 
     public static void validate(int value) {

@@ -13,6 +13,8 @@
 
 package org.chromium.service_manager.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class InterfaceProviderSpec extends org.chromium.mojo.bindings.Struct {
 
@@ -20,7 +22,7 @@ public final class InterfaceProviderSpec extends org.chromium.mojo.bindings.Stru
     private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public java.util.Map<String, InterfaceSet> provides;
-    public java.util.Map<String, CapabilitySet> requires;
+    public java.util.Map<String, CapabilitySet> needs;
 
     private InterfaceProviderSpec(int version) {
         super(STRUCT_SIZE, version);
@@ -125,9 +127,9 @@ public final class InterfaceProviderSpec extends org.chromium.mojo.bindings.Stru
                             }
                         }
                     }
-                    result.requires = new java.util.HashMap<String, CapabilitySet>();
+                    result.needs = new java.util.HashMap<String, CapabilitySet>();
                     for (int index0 = 0; index0 < keys0.length; ++index0) {
-                        result.requires.put(keys0[index0],  values0[index0]);
+                        result.needs.put(keys0[index0],  values0[index0]);
                     }
                 }
                 }
@@ -174,15 +176,15 @@ public final class InterfaceProviderSpec extends org.chromium.mojo.bindings.Stru
             }
         }
         
-        if (this.requires == null) {
+        if (this.needs == null) {
             encoder0.encodeNullPointer(16, false);
         } else {
             org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encoderForMap(16);
-            int size0 = this.requires.size();
+            int size0 = this.needs.size();
             String[] keys0 = new String[size0];
             CapabilitySet[] values0 = new CapabilitySet[size0];
             int index0 = 0;
-            for (java.util.Map.Entry<String, CapabilitySet> entry0 : this.requires.entrySet()) {
+            for (java.util.Map.Entry<String, CapabilitySet> entry0 : this.needs.entrySet()) {
                 keys0[index0] = entry0.getKey();
                 values0[index0] = entry0.getValue();
                 ++index0;

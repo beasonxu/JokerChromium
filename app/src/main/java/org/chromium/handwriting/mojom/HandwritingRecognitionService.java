@@ -13,6 +13,8 @@
 
 package org.chromium.handwriting.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface HandwritingRecognitionService extends org.chromium.mojo.bindings.Interface {
 
@@ -23,20 +25,18 @@ public interface HandwritingRecognitionService extends org.chromium.mojo.binding
 
     Manager<HandwritingRecognitionService, HandwritingRecognitionService.Proxy> MANAGER = HandwritingRecognitionService_Internal.MANAGER;
 
-
     void createHandwritingRecognizer(
 HandwritingModelConstraint constraint, 
-CreateHandwritingRecognizerResponse callback);
+CreateHandwritingRecognizer_Response callback);
 
-    interface CreateHandwritingRecognizerResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, HandwritingRecognizer> { }
+    interface CreateHandwritingRecognizer_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, HandwritingRecognizer> { }
 
 
+    void queryHandwritingRecognizer(
+HandwritingModelConstraint constraint, 
+QueryHandwritingRecognizer_Response callback);
 
-    void queryHandwritingRecognizerSupport(
-HandwritingFeatureQuery query, 
-QueryHandwritingRecognizerSupportResponse callback);
-
-    interface QueryHandwritingRecognizerSupportResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<HandwritingFeatureQueryResult> { }
+    interface QueryHandwritingRecognizer_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<QueryHandwritingRecognizerResult> { }
 
 
 }

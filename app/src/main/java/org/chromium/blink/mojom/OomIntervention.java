@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface OomIntervention extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface OomIntervention extends org.chromium.mojo.bindings.Interface {
     }
 
     Manager<OomIntervention, OomIntervention.Proxy> MANAGER = OomIntervention_Internal.MANAGER;
-
 
     void startDetection(
 OomInterventionHost host, DetectionArgs detectionArgs, boolean rendererPauseEnabled, boolean navigateAdsEnabled, boolean purgeV8MemoryEnabled);

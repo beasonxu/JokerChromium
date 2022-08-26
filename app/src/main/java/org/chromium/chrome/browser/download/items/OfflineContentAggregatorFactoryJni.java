@@ -10,7 +10,7 @@ import org.chromium.components.offline_items_collection.OfflineContentProvider;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class OfflineContentAggregatorFactoryJni implements OfflineContentAggregatorFactory.Natives {
+class OfflineContentAggregatorFactoryJni implements OfflineContentAggregatorFactory.Natives {
   private static OfflineContentAggregatorFactory.Natives testInstance;
 
   public static final JniStaticTestMocker<OfflineContentAggregatorFactory.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.download.items.OfflineContentAggregatorFactory.Natives>() {

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class ManifestShareTarget extends org.chromium.mojo.bindings.Struct {
 
@@ -22,6 +24,11 @@ public final class ManifestShareTarget extends org.chromium.mojo.bindings.Struct
 
     public static final class Method {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            Method.GET,
+            Method.POST})
+        public @interface EnumType {}
 
         public static final int GET = 0;
         public static final int POST = 1;
@@ -46,6 +53,11 @@ public final class ManifestShareTarget extends org.chromium.mojo.bindings.Struct
 
     public static final class Enctype {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            Enctype.FORM_URL_ENCODED,
+            Enctype.MULTIPART_FORM_DATA})
+        public @interface EnumType {}
 
         public static final int FORM_URL_ENCODED = 0;
         public static final int MULTIPART_FORM_DATA = 1;

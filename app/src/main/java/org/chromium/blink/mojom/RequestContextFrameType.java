@@ -13,8 +13,17 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class RequestContextFrameType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        RequestContextFrameType.AUXILIARY,
+        RequestContextFrameType.NESTED,
+        RequestContextFrameType.NONE,
+        RequestContextFrameType.TOP_LEVEL})
+    public @interface EnumType {}
 
     public static final int AUXILIARY = 0;
     public static final int NESTED = 1;

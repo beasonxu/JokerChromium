@@ -6,12 +6,18 @@ package org.chromium.chrome.browser.webapps;
 
 import androidx.annotation.NonNull;
 
-import org.chromium.chrome.browser.browserservices.BrowserServicesIntentDataProvider;
+import org.chromium.base.BuildInfo;
+import org.chromium.chrome.browser.browserservices.intents.BrowserServicesIntentDataProvider;
+import org.chromium.chrome.browser.browserservices.permissiondelegation.PermissionUpdater;
+import org.chromium.chrome.browser.browserservices.ui.controller.trustedwebactivity.TwaRegistrar;
 import org.chromium.chrome.browser.browserservices.ui.controller.webapps.WebappDisclosureController;
 import org.chromium.chrome.browser.browserservices.ui.view.DisclosureInfobar;
 import org.chromium.chrome.browser.dependency_injection.ActivityScope;
+import org.chromium.chrome.browser.flags.CachedFeatureFlags;
+import org.chromium.chrome.browser.flags.ChromeFeatureList;
 import org.chromium.chrome.browser.lifecycle.ActivityLifecycleDispatcher;
-import org.chromium.chrome.browser.lifecycle.Destroyable;
+import org.chromium.chrome.browser.lifecycle.DestroyObserver;
+import org.chromium.components.embedder_support.util.Origin;
 
 import javax.inject.Inject;
 
@@ -22,9 +28,10 @@ import dagger.Lazy;
  * Add methods here if other components need to communicate with the WebAPK activity component.
  */
 @ActivityScope
-public class WebApkActivityCoordinator implements Destroyable {
+public class WebApkActivityCoordinator implements DestroyObserver {
     private final BrowserServicesIntentDataProvider mIntentDataProvider;
     private final Lazy<WebApkUpdateManager> mWebApkUpdateManager;
+    private final TwaRegistrar mTwaRegistrar;
 
     @Inject
     public WebApkActivityCoordinator(
@@ -33,13 +40,14 @@ public class WebApkActivityCoordinator implements Destroyable {
             WebApkActivityLifecycleUmaTracker webApkActivityLifecycleUmaTracker,
             ActivityLifecycleDispatcher lifecycleDispatcher,
             BrowserServicesIntentDataProvider intendDataProvider,
-            Lazy<WebApkUpdateManager> webApkUpdateManager) {
+            Lazy<WebApkUpdateManager> webApkUpdateManager, TwaRegistrar twaRegistrar) {
         // We don't need to do anything with |disclosureController|, |disclosureInfobar| and
         // |webApkActivityLifecycleUmaTracker|. We just need to resolve
         // them so that they start working.
 
         mIntentDataProvider = intendDataProvider;
         mWebApkUpdateManager = webApkUpdateManager;
+        mTwaRegistrar = twaRegistrar;
 
         deferredStartupWithStorageHandler.addTask((storage, didCreateStorage) -> {
             if (lifecycleDispatcher.isActivityFinishingOrDestroyed()) return;
@@ -55,10 +63,27 @@ public class WebApkActivityCoordinator implements Destroyable {
         storage.incrementLaunchCount();
 
         mWebApkUpdateManager.get().updateIfNeeded(storage, mIntentDataProvider);
+
+        // The scope should not be empty here, this is for a WebAPK that just launched.
+        String scope = storage.getScope();
+        assert !scope.isEmpty();
+
+        Origin origin = Origin.create(scope);
+        String packageName = storage.getWebApkPackageName();
+
+        if (!BuildInfo.isAtLeastT()
+                || !CachedFeatureFlags.isEnabled(
+                        ChromeFeatureList
+                                .TRUSTED_WEB_ACTIVITY_NOTIFICATION_PERMISSION_DELEGATION)) {
+            return;
+        }
+
+        mTwaRegistrar.registerClient(packageName, origin);
+        PermissionUpdater.get().onWebApkLaunch(origin, packageName);
     }
 
     @Override
-    public void destroy() {
+    public void onDestroy() {
         // The common case is to be connected to just one WebAPK's services. For the sake of
         // simplicity disconnect from the services of all WebAPKs.
         ChromeWebApkHost.disconnectFromAllServices(true /* waitForPendingWork */);

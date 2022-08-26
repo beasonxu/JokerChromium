@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class DevToolsFrontendHost_Internal {
 
@@ -60,7 +62,7 @@ class DevToolsFrontendHost_Internal {
 
         @Override
         public void dispatchEmbedderMessage(
-String message) {
+org.chromium.mojo_base.mojom.DeprecatedDictionaryValue message) {
 
             DevToolsFrontendHostDispatchEmbedderMessageParams _message = new DevToolsFrontendHostDispatchEmbedderMessageParams();
 
@@ -164,7 +166,7 @@ String message) {
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public String message;
+        public org.chromium.mojo_base.mojom.DeprecatedDictionaryValue message;
 
         private DevToolsFrontendHostDispatchEmbedderMessageParams(int version) {
             super(STRUCT_SIZE, version);
@@ -201,7 +203,8 @@ String message) {
                 result = new DevToolsFrontendHostDispatchEmbedderMessageParams(elementsOrVersion);
                     {
                         
-                    result.message = decoder0.readString(8, false);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.message = org.chromium.mojo_base.mojom.DeprecatedDictionaryValue.decode(decoder1);
                     }
 
             } finally {

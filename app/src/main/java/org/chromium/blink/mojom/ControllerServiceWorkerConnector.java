@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ControllerServiceWorkerConnector extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface ControllerServiceWorkerConnector extends org.chromium.mojo.bind
     }
 
     Manager<ControllerServiceWorkerConnector, ControllerServiceWorkerConnector.Proxy> MANAGER = ControllerServiceWorkerConnector_Internal.MANAGER;
-
 
     void updateController(
 ControllerServiceWorker controller);

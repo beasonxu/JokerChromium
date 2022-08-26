@@ -16,7 +16,7 @@ import org.chromium.url.GURL;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class BookmarkBridgeJni implements BookmarkBridge.Natives {
+class BookmarkBridgeJni implements BookmarkBridge.Natives {
   private static BookmarkBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<BookmarkBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.bookmarks.BookmarkBridge.Natives>() {
@@ -31,9 +31,9 @@ final class BookmarkBridgeJni implements BookmarkBridge.Natives {
   };
 
   @Override
-  public long getBookmarkIdForWebContents(long nativeBookmarkBridge, BookmarkBridge caller,
+  public BookmarkId getBookmarkIdForWebContents(long nativeBookmarkBridge, BookmarkBridge caller,
       WebContents webContents, boolean onlyEditable) {
-    return (long)GEN_JNI.org_chromium_chrome_browser_bookmarks_BookmarkBridge_getBookmarkIdForWebContents(nativeBookmarkBridge, caller, webContents, onlyEditable);
+    return (BookmarkId)GEN_JNI.org_chromium_chrome_browser_bookmarks_BookmarkBridge_getBookmarkIdForWebContents(nativeBookmarkBridge, caller, webContents, onlyEditable);
   }
 
   @Override
@@ -52,6 +52,11 @@ final class BookmarkBridgeJni implements BookmarkBridge.Natives {
   public void getTopLevelFolderIDs(long nativeBookmarkBridge, BookmarkBridge caller,
       boolean getSpecial, boolean getNormal, List<BookmarkId> bookmarksList) {
     GEN_JNI.org_chromium_chrome_browser_bookmarks_BookmarkBridge_getTopLevelFolderIDs(nativeBookmarkBridge, caller, getSpecial, getNormal, bookmarksList);
+  }
+
+  @Override
+  public BookmarkId getReadingListFolder(long nativeBookmarkBridge, BookmarkBridge caller) {
+    return (BookmarkId)GEN_JNI.org_chromium_chrome_browser_bookmarks_BookmarkBridge_getReadingListFolder(nativeBookmarkBridge, caller);
   }
 
   @Override
@@ -86,6 +91,12 @@ final class BookmarkBridgeJni implements BookmarkBridge.Natives {
   }
 
   @Override
+  public String getBookmarkGuidByIdForTesting(long nativeBookmarkBridge, BookmarkBridge caller,
+      long id, int type) {
+    return (String)GEN_JNI.org_chromium_chrome_browser_bookmarks_BookmarkBridge_getBookmarkGuidByIdForTesting(nativeBookmarkBridge, caller, id, type);
+  }
+
+  @Override
   public int getChildCount(long nativeBookmarkBridge, BookmarkBridge caller, long id, int type) {
     return (int)GEN_JNI.org_chromium_chrome_browser_bookmarks_BookmarkBridge_getChildCount(nativeBookmarkBridge, caller, id, type);
   }
@@ -109,6 +120,12 @@ final class BookmarkBridgeJni implements BookmarkBridge.Natives {
   }
 
   @Override
+  public void getUpdatedProductPrices(long nativeBookmarkBridge, BookmarkBridge caller,
+      GURL[] gurls, BookmarkBridge.PriceUpdateCallback callback) {
+    GEN_JNI.org_chromium_chrome_browser_bookmarks_BookmarkBridge_getUpdatedProductPrices(nativeBookmarkBridge, caller, gurls, callback);
+  }
+
+  @Override
   public void setBookmarkTitle(long nativeBookmarkBridge, BookmarkBridge caller, long id, int type,
       String title) {
     GEN_JNI.org_chromium_chrome_browser_bookmarks_BookmarkBridge_setBookmarkTitle(nativeBookmarkBridge, caller, id, type, title);
@@ -118,6 +135,24 @@ final class BookmarkBridgeJni implements BookmarkBridge.Natives {
   public void setBookmarkUrl(long nativeBookmarkBridge, BookmarkBridge caller, long id, int type,
       GURL url) {
     GEN_JNI.org_chromium_chrome_browser_bookmarks_BookmarkBridge_setBookmarkUrl(nativeBookmarkBridge, caller, id, type, url);
+  }
+
+  @Override
+  public byte[] getPowerBookmarkMeta(long nativeBookmarkBridge, BookmarkBridge caller, long id,
+      int type) {
+    return (byte[])GEN_JNI.org_chromium_chrome_browser_bookmarks_BookmarkBridge_getPowerBookmarkMeta(nativeBookmarkBridge, caller, id, type);
+  }
+
+  @Override
+  public void setPowerBookmarkMeta(long nativeBookmarkBridge, BookmarkBridge caller, long id,
+      int type, byte[] meta) {
+    GEN_JNI.org_chromium_chrome_browser_bookmarks_BookmarkBridge_setPowerBookmarkMeta(nativeBookmarkBridge, caller, id, type, meta);
+  }
+
+  @Override
+  public void deletePowerBookmarkMeta(long nativeBookmarkBridge, BookmarkBridge caller, long id,
+      int type) {
+    GEN_JNI.org_chromium_chrome_browser_bookmarks_BookmarkBridge_deletePowerBookmarkMeta(nativeBookmarkBridge, caller, id, type);
   }
 
   @Override
@@ -176,6 +211,12 @@ final class BookmarkBridgeJni implements BookmarkBridge.Natives {
   }
 
   @Override
+  public BookmarkId addPowerBookmark(long nativeBookmarkBridge, BookmarkBridge caller,
+      WebContents webContents, BookmarkId parent, int index, String title, GURL url) {
+    return (BookmarkId)GEN_JNI.org_chromium_chrome_browser_bookmarks_BookmarkBridge_addPowerBookmark(nativeBookmarkBridge, caller, webContents, parent, index, title, url);
+  }
+
+  @Override
   public BookmarkId addToReadingList(long nativeBookmarkBridge, BookmarkBridge caller, String title,
       GURL url) {
     return (BookmarkId)GEN_JNI.org_chromium_chrome_browser_bookmarks_BookmarkBridge_addToReadingList(nativeBookmarkBridge, caller, title, url);
@@ -222,8 +263,15 @@ final class BookmarkBridgeJni implements BookmarkBridge.Natives {
 
   @Override
   public void searchBookmarks(long nativeBookmarkBridge, BookmarkBridge caller,
-      List<BookmarkId> bookmarkMatches, String query, int maxNumber) {
-    GEN_JNI.org_chromium_chrome_browser_bookmarks_BookmarkBridge_searchBookmarks(nativeBookmarkBridge, caller, bookmarkMatches, query, maxNumber);
+      List<BookmarkId> bookmarkMatches, String query, String[] tags, int powerBookmarkType,
+      int maxNumber) {
+    GEN_JNI.org_chromium_chrome_browser_bookmarks_BookmarkBridge_searchBookmarks(nativeBookmarkBridge, caller, bookmarkMatches, query, tags, powerBookmarkType, maxNumber);
+  }
+
+  @Override
+  public void getBookmarksOfType(long nativeBookmarkBridge, BookmarkBridge caller,
+      List<BookmarkId> bookmarkMatches, int powerBookmarkType) {
+    GEN_JNI.org_chromium_chrome_browser_bookmarks_BookmarkBridge_getBookmarksOfType(nativeBookmarkBridge, caller, bookmarkMatches, powerBookmarkType);
   }
 
   @Override

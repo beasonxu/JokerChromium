@@ -48,7 +48,6 @@ public interface IPaymentDetailsUpdateService extends android.os.IInterface
   /** Local-side IPC implementation stub class. */
   public static abstract class Stub extends android.os.Binder implements org.chromium.components.payments.IPaymentDetailsUpdateService
   {
-    private static final java.lang.String DESCRIPTOR = "org.chromium.components.payments.IPaymentDetailsUpdateService";
     /** Construct the stub at attach it to the interface. */
     public Stub()
     {
@@ -83,6 +82,9 @@ public interface IPaymentDetailsUpdateService extends android.os.IInterface
           reply.writeString(descriptor);
           return true;
         }
+      }
+      switch (code)
+      {
         case TRANSACTION_changePaymentMethod:
         {
           data.enforceInterface(descriptor);
@@ -165,9 +167,11 @@ public interface IPaymentDetailsUpdateService extends android.os.IInterface
           }
           _data.writeStrongBinder((((callback!=null))?(callback.asBinder()):(null)));
           boolean _status = mRemote.transact(Stub.TRANSACTION_changePaymentMethod, _data, null, android.os.IBinder.FLAG_ONEWAY);
-          if (!_status && getDefaultImpl() != null) {
-            getDefaultImpl().changePaymentMethod(paymentHandlerMethodData, callback);
-            return;
+          if (!_status) {
+            if (getDefaultImpl() != null) {
+              getDefaultImpl().changePaymentMethod(paymentHandlerMethodData, callback);
+              return;
+            }
           }
         }
         finally {
@@ -188,9 +192,11 @@ public interface IPaymentDetailsUpdateService extends android.os.IInterface
           _data.writeString(shippingOptionId);
           _data.writeStrongBinder((((callback!=null))?(callback.asBinder()):(null)));
           boolean _status = mRemote.transact(Stub.TRANSACTION_changeShippingOption, _data, null, android.os.IBinder.FLAG_ONEWAY);
-          if (!_status && getDefaultImpl() != null) {
-            getDefaultImpl().changeShippingOption(shippingOptionId, callback);
-            return;
+          if (!_status) {
+            if (getDefaultImpl() != null) {
+              getDefaultImpl().changeShippingOption(shippingOptionId, callback);
+              return;
+            }
           }
         }
         finally {
@@ -217,9 +223,11 @@ public interface IPaymentDetailsUpdateService extends android.os.IInterface
           }
           _data.writeStrongBinder((((callback!=null))?(callback.asBinder()):(null)));
           boolean _status = mRemote.transact(Stub.TRANSACTION_changeShippingAddress, _data, null, android.os.IBinder.FLAG_ONEWAY);
-          if (!_status && getDefaultImpl() != null) {
-            getDefaultImpl().changeShippingAddress(shippingAddress, callback);
-            return;
+          if (!_status) {
+            if (getDefaultImpl() != null) {
+              getDefaultImpl().changeShippingAddress(shippingAddress, callback);
+              return;
+            }
           }
         }
         finally {
@@ -248,6 +256,7 @@ public interface IPaymentDetailsUpdateService extends android.os.IInterface
       return Stub.Proxy.sDefaultImpl;
     }
   }
+  public static final java.lang.String DESCRIPTOR = "org.chromium.components.payments.IPaymentDetailsUpdateService";
   /**
        * Called to notify the browser that the user has selected a different
        * payment method.

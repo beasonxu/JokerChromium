@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface MediaSessionService extends org.chromium.mojo.bindings.Interface {
 
@@ -23,30 +25,32 @@ public interface MediaSessionService extends org.chromium.mojo.bindings.Interfac
 
     Manager<MediaSessionService, MediaSessionService.Proxy> MANAGER = MediaSessionService_Internal.MANAGER;
 
-
     void setClient(
 MediaSessionClient client);
-
 
 
     void setPlaybackState(
 int state);
 
 
-
     void setPositionState(
 org.chromium.media_session.mojom.MediaPosition position);
-
 
 
     void setMetadata(
 SpecMediaMetadata metadata);
 
 
+    void setMicrophoneState(
+int microphoneState);
+
+
+    void setCameraState(
+int cameraState);
+
 
     void enableAction(
 int action);
-
 
 
     void disableAction(

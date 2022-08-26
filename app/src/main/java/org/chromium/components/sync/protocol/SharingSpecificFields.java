@@ -85,6 +85,14 @@ public  final class SharingSpecificFields extends
      * <code>SHARED_CLIPBOARD_V2 = 8;</code>
      */
     SHARED_CLIPBOARD_V2(8),
+    /**
+     * <pre>
+     * Supports optimization guide push notification.
+     * </pre>
+     *
+     * <code>OPTIMIZATION_GUIDE_PUSH_NOTIFICATION = 9;</code>
+     */
+    OPTIMIZATION_GUIDE_PUSH_NOTIFICATION(9),
     ;
 
     /**
@@ -135,6 +143,14 @@ public  final class SharingSpecificFields extends
      * <code>SHARED_CLIPBOARD_V2 = 8;</code>
      */
     public static final int SHARED_CLIPBOARD_V2_VALUE = 8;
+    /**
+     * <pre>
+     * Supports optimization guide push notification.
+     * </pre>
+     *
+     * <code>OPTIMIZATION_GUIDE_PUSH_NOTIFICATION = 9;</code>
+     */
+    public static final int OPTIMIZATION_GUIDE_PUSH_NOTIFICATION_VALUE = 9;
 
 
     @java.lang.Override
@@ -162,6 +178,7 @@ public  final class SharingSpecificFields extends
         case 6: return DISCOVERY;
         case 7: return CLICK_TO_CALL_V2;
         case 8: return SHARED_CLIPBOARD_V2;
+        case 9: return OPTIMIZATION_GUIDE_PUSH_NOTIFICATION;
         default: return null;
       }
     }

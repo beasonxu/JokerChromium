@@ -13,12 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class DirectoryPickerOptions extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 8;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+    private static final int STRUCT_SIZE = 16;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+    public boolean requestWritable;
 
     private DirectoryPickerOptions(int version) {
         super(STRUCT_SIZE, version);
@@ -53,6 +56,10 @@ public final class DirectoryPickerOptions extends org.chromium.mojo.bindings.Str
             org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
             final int elementsOrVersion = mainDataHeader.elementsOrVersion;
             result = new DirectoryPickerOptions(elementsOrVersion);
+                {
+                    
+                result.requestWritable = decoder0.readBoolean(8, 0);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -63,6 +70,8 @@ public final class DirectoryPickerOptions extends org.chromium.mojo.bindings.Str
     @SuppressWarnings("unchecked")
     @Override
     protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-        encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        
+        encoder0.encode(this.requestWritable, 8, 0);
     }
 }

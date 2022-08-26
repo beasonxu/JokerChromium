@@ -6,19 +6,32 @@ package org.chromium.chrome.browser.tab;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.util.Size;
 import android.view.Display;
 
 import androidx.annotation.Nullable;
 
 import org.chromium.base.ApplicationStatus;
+import org.chromium.base.MathUtils;
 import org.chromium.chrome.R;
 import org.chromium.chrome.browser.flags.ChromeFeatureList;
+import org.chromium.chrome.browser.profiles.Profile;
+import org.chromium.chrome.browser.tab.state.CriticalPersistedTabData;
+import org.chromium.chrome.browser.tasks.tab_management.TabUiFeatureUtilities;
+import org.chromium.chrome.browser.tasks.tab_management.TabUiThemeProvider;
+import org.chromium.components.browser_ui.site_settings.WebsitePreferenceBridge;
+import org.chromium.components.content_settings.ContentSettingValues;
+import org.chromium.components.content_settings.ContentSettingsType;
+import org.chromium.content_public.browser.ContentFeatureList;
 import org.chromium.content_public.browser.WebContents;
+import org.chromium.ui.base.DeviceFormFactor;
 import org.chromium.ui.base.WindowAndroid;
 import org.chromium.ui.display.DisplayAndroidManager;
+import org.chromium.url.GURL;
 
 /**
  * Collection of utility methods that operates on Tab.
@@ -85,15 +98,30 @@ public class TabUtils {
         final boolean reloadOnChange = !tab.isNativePage();
         tab.getWebContents().getNavigationController().setUseDesktopUserAgent(
                 switchToDesktop, reloadOnChange);
-        if (forcedByUser) ((TabImpl) tab).setUserForcedUserAgent();
+        if (forcedByUser) {
+            @TabUserAgent
+            int tabUserAgent = switchToDesktop ? TabUserAgent.DESKTOP : TabUserAgent.MOBILE;
+            if (ContentFeatureList.isEnabled(ContentFeatureList.REQUEST_DESKTOP_SITE_GLOBAL)
+                    && isDesktopSiteGlobalEnabled(Profile.fromWebContents(tab.getWebContents()))
+                            == switchToDesktop) {
+                tabUserAgent = TabUserAgent.DEFAULT;
+            }
+            CriticalPersistedTabData.from(tab).setUserAgent(tabUserAgent);
+        }
     }
 
     /**
+     * Check if the tab is large enough for displaying desktop sites. This method will only check
+     * for tablets, if the device is a phone, will return false regardless of tab size.
      * @param tab The tab to be checked if the size is large enough for desktop site.
      * @return Whether or not the screen size is large enough for desktop sites.
      */
     public static boolean isTabLargeEnoughForDesktopSite(Tab tab) {
-        Activity activity = ((TabImpl) tab).getActivity();
+        if (!DeviceFormFactor.isNonMultiDisplayContextOnTablet(tab.getContext())) {
+            // The device is a phone, do not check the tab size.
+            return false;
+        }
+        Activity activity = getActivity(tab);
         if (activity == null) {
             // It is possible that we are in custom tabs or tests, and need to access the activity
             // differently.
@@ -107,5 +135,90 @@ public class TabUtils {
                 /* Set a very large size as default to serve as a disabled screen width. */ 4096);
 
         return minWidthForDesktopSite <= windowWidth;
+    }
+
+    /**
+     * Check if Request Desktop Site global setting is enabled.
+     * @param profile The profile of the tab.
+     *        Content settings have separate storage for incognito profiles.
+     *        For site-specific exceptions the actual profile is needed.
+     * @return Whether the desktop site should be requested.
+     */
+    public static boolean isDesktopSiteGlobalEnabled(Profile profile) {
+        return WebsitePreferenceBridge.isCategoryEnabled(
+                profile, ContentSettingsType.REQUEST_DESKTOP_SITE);
+    }
+
+    /**
+     * Check if Request Desktop Site global setting is enabled.
+     * @param profile The profile of the tab.
+     *        Content settings have separate storage for incognito profiles.
+     *        For site-specific exceptions the actual profile is needed.
+     * @param url The URL for the current web content.
+     * @return Whether the desktop site should be requested.
+     */
+    public static boolean isDesktopSiteEnabled(Profile profile, GURL url) {
+        return WebsitePreferenceBridge.getContentSetting(
+                       profile, ContentSettingsType.REQUEST_DESKTOP_SITE, url, url)
+                == ContentSettingValues.ALLOW;
+    }
+
+    /**
+     * Return aspect ratio for grid tab card based on form factor and orientation.
+     * @param context - Context of the application.
+     * @return Aspect ratio for the grid tab card.
+     */
+    public static float getTabThumbnailAspectRatio(Context context) {
+        if (TabUiFeatureUtilities.isTabletGridTabSwitcherPolishEnabled(context)
+                && context.getResources().getConfiguration().orientation
+                        == Configuration.ORIENTATION_LANDSCAPE) {
+            return (context.getResources().getConfiguration().screenWidthDp * 1.f)
+                    / (context.getResources().getConfiguration().screenHeightDp * 1.f);
+        }
+        float value = (float) TabUiFeatureUtilities.THUMBNAIL_ASPECT_RATIO.getValue();
+        return MathUtils.clamp(value, 0.5f, 2.0f);
+    }
+
+    /**
+     * Derive grid card height based on width, expected thumbnail aspect ratio and margins.
+     * @param cardWidthPx width of the card
+     * @param context to derive view margins
+     * @return computed card height.
+     */
+    public static int deriveGridCardHeight(int cardWidthPx, Context context) {
+        int tabThumbnailHeight = (int) ((cardWidthPx - getThumbnailWidthDiff(context))
+                / getTabThumbnailAspectRatio(context));
+        int cardHeightPx = tabThumbnailHeight + getThumbnailHeightDiff(context);
+        return cardHeightPx;
+    }
+
+    /**
+     * Derive thumbnail size based on parent card size.
+     * @param gridCardWidth width of parent card.
+     * @param gridCardHeight height of parent card.
+     * @param context to derive view margins.
+     * @return computed width and height of thumbnail.
+     */
+    public static Size deriveThumbnailSize(int gridCardWidth, int gridCardHeight, Context context) {
+        int thumbnailWidth = gridCardWidth - getThumbnailWidthDiff(context);
+        int thumbnailHeight = gridCardHeight - getThumbnailHeightDiff(context);
+        return new Size(thumbnailWidth, thumbnailHeight);
+    }
+
+    private static int getThumbnailHeightDiff(Context context) {
+        final int tabGridCardMargin = (int) TabUiThemeProvider.getTabGridCardMargin(context);
+        final int thumbnailMargin = (int) context.getResources().getDimension(
+                org.chromium.chrome.tab_ui.R.dimen.tab_grid_card_thumbnail_margin);
+        int heightMargins = (2 * tabGridCardMargin) + thumbnailMargin;
+        final int titleHeight = (int) context.getResources().getDimension(
+                org.chromium.chrome.tab_ui.R.dimen.tab_list_card_title_height);
+        return titleHeight + heightMargins;
+    }
+
+    private static int getThumbnailWidthDiff(Context context) {
+        final int tabGridCardMargin = (int) TabUiThemeProvider.getTabGridCardMargin(context);
+        final int thumbnailMargin = (int) context.getResources().getDimension(
+                org.chromium.chrome.tab_ui.R.dimen.tab_grid_card_thumbnail_margin);
+        return 2 * (tabGridCardMargin + thumbnailMargin);
     }
 }

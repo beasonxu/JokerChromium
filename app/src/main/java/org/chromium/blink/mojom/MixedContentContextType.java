@@ -13,8 +13,17 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class MixedContentContextType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        MixedContentContextType.NOT_MIXED_CONTENT,
+        MixedContentContextType.BLOCKABLE,
+        MixedContentContextType.OPTIONALLY_BLOCKABLE,
+        MixedContentContextType.SHOULD_BE_BLOCKABLE})
+    public @interface EnumType {}
 
     public static final int NOT_MIXED_CONTENT = 0;
     public static final int BLOCKABLE = 1;

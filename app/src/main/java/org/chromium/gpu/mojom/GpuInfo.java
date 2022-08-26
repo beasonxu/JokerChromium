@@ -13,11 +13,13 @@
 
 package org.chromium.gpu.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class GpuInfo extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 176;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(176, 0)};
+    private static final int STRUCT_SIZE = 184;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(184, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public org.chromium.mojo_base.mojom.TimeDelta initializationTime;
     public boolean optimus;
@@ -43,12 +45,12 @@ public final class GpuInfo extends org.chromium.mojo.bindings.Struct {
     public boolean inProcessGpu;
     public boolean passthroughCmdDecoder;
     public boolean canSupportThreadedTextureMailbox;
-    public VideoDecodeAcceleratorCapabilities videoDecodeAcceleratorCapabilities;
+    public VideoDecodeAcceleratorSupportedProfile[] videoDecodeAcceleratorSupportedProfiles;
     public VideoEncodeAcceleratorSupportedProfile[] videoEncodeAcceleratorSupportedProfiles;
     public boolean jpegDecodeAcceleratorSupported;
     public ImageDecodeAcceleratorSupportedProfile[] imageDecodeAcceleratorSupportedProfiles;
-    public boolean oopRasterizationSupported;
     public boolean subpixelFontRendering;
+    public int visibilityCallbackCallCount;
     public VulkanInfo vulkanInfo;
 
     private GpuInfo(int version) {
@@ -123,11 +125,7 @@ public final class GpuInfo extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.oopRasterizationSupported = decoder0.readBoolean(17, 0);
-                }
-                {
-                    
-                result.subpixelFontRendering = decoder0.readBoolean(17, 1);
+                result.subpixelFontRendering = decoder0.readBoolean(17, 0);
                 }
                 {
                     
@@ -206,7 +204,15 @@ public final class GpuInfo extends org.chromium.mojo.bindings.Struct {
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(144, false);
-                result.videoDecodeAcceleratorCapabilities = VideoDecodeAcceleratorCapabilities.decode(decoder1);
+                {
+                    org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                    result.videoDecodeAcceleratorSupportedProfiles = new VideoDecodeAcceleratorSupportedProfile[si1.elementsOrVersion];
+                    for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
+                        
+                        org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                        result.videoDecodeAcceleratorSupportedProfiles[i1] = VideoDecodeAcceleratorSupportedProfile.decode(decoder2);
+                    }
+                }
                 }
                 {
                     
@@ -236,7 +242,11 @@ public final class GpuInfo extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(168, true);
+                result.visibilityCallbackCallCount = decoder0.readInt(168);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(176, true);
                 result.vulkanInfo = VulkanInfo.decode(decoder1);
                 }
 
@@ -269,9 +279,7 @@ public final class GpuInfo extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.jpegDecodeAcceleratorSupported, 16, 7);
         
-        encoder0.encode(this.oopRasterizationSupported, 17, 0);
-        
-        encoder0.encode(this.subpixelFontRendering, 17, 1);
+        encoder0.encode(this.subpixelFontRendering, 17, 0);
         
         encoder0.encode(this.glResetNotificationStrategy, 20);
         
@@ -313,7 +321,15 @@ public final class GpuInfo extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.directRenderingVersion, 136, false);
         
-        encoder0.encode(this.videoDecodeAcceleratorCapabilities, 144, false);
+        if (this.videoDecodeAcceleratorSupportedProfiles == null) {
+            encoder0.encodeNullPointer(144, false);
+        } else {
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.videoDecodeAcceleratorSupportedProfiles.length, 144, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            for (int i0 = 0; i0 < this.videoDecodeAcceleratorSupportedProfiles.length; ++i0) {
+                
+                encoder1.encode(this.videoDecodeAcceleratorSupportedProfiles[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
+            }
+        }
         
         if (this.videoEncodeAcceleratorSupportedProfiles == null) {
             encoder0.encodeNullPointer(152, false);
@@ -335,6 +351,8 @@ public final class GpuInfo extends org.chromium.mojo.bindings.Struct {
             }
         }
         
-        encoder0.encode(this.vulkanInfo, 168, true);
+        encoder0.encode(this.visibilityCallbackCallCount, 168);
+        
+        encoder0.encode(this.vulkanInfo, 176, true);
     }
 }

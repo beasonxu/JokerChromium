@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface AppBannerController extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface AppBannerController extends org.chromium.mojo.bindings.Interfac
 
     Manager<AppBannerController, AppBannerController.Proxy> MANAGER = AppBannerController_Internal.MANAGER;
 
-
     void bannerPromptRequest(
 AppBannerService service, org.chromium.mojo.bindings.InterfaceRequest<AppBannerEvent> eventReceiver, String[] platform, 
-BannerPromptRequestResponse callback);
+BannerPromptRequest_Response callback);
 
-    interface BannerPromptRequestResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
+    interface BannerPromptRequest_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
 }

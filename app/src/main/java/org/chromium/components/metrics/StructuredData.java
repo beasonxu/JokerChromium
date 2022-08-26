@@ -14,8 +14,10 @@ public final class StructuredData {
 
     /**
      * <pre>
-     * A per-profile, per-client, per-event ID that is used only for structured
-     * metrics.
+     * A per-client, per-profile, per-project ID that is used only for structured
+     * metrics. For projects recorded from Chrome OS's platform2 repository, this
+     * ID is device-wide, not per-profile. The ID is rotated at least every 90
+     * days.
      * </pre>
      *
      * <code>optional fixed64 profile_event_id = 1;</code>
@@ -24,8 +26,10 @@ public final class StructuredData {
     boolean hasProfileEventId();
     /**
      * <pre>
-     * A per-profile, per-client, per-event ID that is used only for structured
-     * metrics.
+     * A per-client, per-profile, per-project ID that is used only for structured
+     * metrics. For projects recorded from Chrome OS's platform2 repository, this
+     * ID is device-wide, not per-profile. The ID is rotated at least every 90
+     * days.
      * </pre>
      *
      * <code>optional fixed64 profile_event_id = 1;</code>
@@ -69,12 +73,23 @@ public final class StructuredData {
      * <code>repeated .metrics.StructuredEventProto.Metric metrics = 3;</code>
      */
     int getMetricsCount();
+
+    /**
+     * <code>optional .metrics.StructuredEventProto.EventType event_type = 4;</code>
+     * @return Whether the eventType field is set.
+     */
+    boolean hasEventType();
+    /**
+     * <code>optional .metrics.StructuredEventProto.EventType event_type = 4;</code>
+     * @return The eventType.
+     */
+    org.chromium.components.metrics.StructuredData.StructuredEventProto.EventType getEventType();
   }
   /**
    * <pre>
    * One structured metrics event, containing several hashed and unhashed metrics
    * related to a single event type, tied to a single pseudonymous user.
-   * Next tag: 4
+   * Next tag: 5
    * </pre>
    *
    * Protobuf type {@code metrics.StructuredEventProto}
@@ -87,6 +102,106 @@ public final class StructuredData {
     private StructuredEventProto() {
       metrics_ = emptyProtobufList();
     }
+    /**
+     * <pre>
+     * Type of this event, which determines which log source the event is saved
+     * into. An event should have type RAW_STRING if and only if the event may
+     * contain raw string metrics, ie. strings that have not been HMAC'd. The
+     * UNKNOWN value is considered an error and should never be sent.
+     * </pre>
+     *
+     * Protobuf enum {@code metrics.StructuredEventProto.EventType}
+     */
+    public enum EventType
+        implements com.google.protobuf.Internal.EnumLite {
+      /**
+       * <code>UNKNOWN = 0;</code>
+       */
+      UNKNOWN(0),
+      /**
+       * <code>REGULAR = 1;</code>
+       */
+      REGULAR(1),
+      /**
+       * <code>RAW_STRING = 2;</code>
+       */
+      RAW_STRING(2),
+      ;
+
+      /**
+       * <code>UNKNOWN = 0;</code>
+       */
+      public static final int UNKNOWN_VALUE = 0;
+      /**
+       * <code>REGULAR = 1;</code>
+       */
+      public static final int REGULAR_VALUE = 1;
+      /**
+       * <code>RAW_STRING = 2;</code>
+       */
+      public static final int RAW_STRING_VALUE = 2;
+
+
+      @java.lang.Override
+      public final int getNumber() {
+        return value;
+      }
+
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static EventType valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static EventType forNumber(int value) {
+        switch (value) {
+          case 0: return UNKNOWN;
+          case 1: return REGULAR;
+          case 2: return RAW_STRING;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<EventType>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          EventType> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<EventType>() {
+              @java.lang.Override
+              public EventType findValueByNumber(int number) {
+                return EventType.forNumber(number);
+              }
+            };
+
+      public static com.google.protobuf.Internal.EnumVerifier 
+          internalGetVerifier() {
+        return EventTypeVerifier.INSTANCE;
+      }
+
+      private static final class EventTypeVerifier implements 
+           com.google.protobuf.Internal.EnumVerifier { 
+              static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new EventTypeVerifier();
+              @java.lang.Override
+              public boolean isInRange(int number) {
+                return EventType.forNumber(number) != null;
+              }
+            };
+
+      private final int value;
+
+      private EventType(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:metrics.StructuredEventProto.EventType)
+    }
+
     public interface MetricOrBuilder extends
         // @@protoc_insertion_point(interface_extends:metrics.StructuredEventProto.Metric)
         com.google.protobuf.MessageLiteOrBuilder {
@@ -124,6 +239,23 @@ public final class StructuredData {
        */
       long getValueInt64();
 
+      /**
+       * <code>string value_string = 4;</code>
+       * @return Whether the valueString field is set.
+       */
+      boolean hasValueString();
+      /**
+       * <code>string value_string = 4;</code>
+       * @return The valueString.
+       */
+      java.lang.String getValueString();
+      /**
+       * <code>string value_string = 4;</code>
+       * @return The bytes for valueString.
+       */
+      com.google.protobuf.ByteString
+          getValueStringBytes();
+
       public org.chromium.components.metrics.StructuredData.StructuredEventProto.Metric.ValueCase getValueCase();
     }
     /**
@@ -132,16 +264,19 @@ public final class StructuredData {
      * structured.xml that determine what is recorded.
      * 1. Metric name. This is a string, and the first 8 bytes of its MD5 hash is
      *    recorded as name_hash.
-     * 2. Kind. Each metric can store two kinds of values.
+     * 2. Kind. Each metric can store three kinds of values.
      *    - int64. The client supplies an int64 value for the metric, and that
-     *      value is recorded as-is in value_raw.
+     *      value is recorded as-is in value_int64.
+     *    - string. The client supplies a string value for the metric, which is
+     *      recorded as-is in value_string. This is sometimes referred to as a
+     *      "raw string" to differentiate from the following.
      *    - hashed-string. The client supplies an arbitrary string for the metric.
      *      The string itself is not recorded, instead, value_hmac records the
      *      first 8 bytes of:
      *          HMAC_SHA256(concat(string, metric_name), event_key)
-     *      The event_key is a per-profile, per-client, per-event secret 32-byte
+     *      The event_key is a per-profile, per-client, per-project secret 32-byte
      *      key used only for signing hashed values for this event. Keys should
-     *      never leave the device, and are rotated at most every 90 days.
+     *      never leave the device, and are rotated at least every 90 days.
      * </pre>
      *
      * Protobuf type {@code metrics.StructuredEventProto.Metric}
@@ -159,6 +294,7 @@ public final class StructuredData {
       public enum ValueCase {
         VALUE_HMAC(2),
         VALUE_INT64(3),
+        VALUE_STRING(4),
         VALUE_NOT_SET(0);
         private final int value;
         private ValueCase(int value) {
@@ -176,6 +312,7 @@ public final class StructuredData {
           switch (value) {
             case 2: return VALUE_HMAC;
             case 3: return VALUE_INT64;
+            case 4: return VALUE_STRING;
             case 0: return VALUE_NOT_SET;
             default: return null;
           }
@@ -307,6 +444,69 @@ public final class StructuredData {
         }
       }
 
+      public static final int VALUE_STRING_FIELD_NUMBER = 4;
+      /**
+       * <code>string value_string = 4;</code>
+       * @return Whether the valueString field is set.
+       */
+      @java.lang.Override
+      public boolean hasValueString() {
+        return valueCase_ == 4;
+      }
+      /**
+       * <code>string value_string = 4;</code>
+       * @return The valueString.
+       */
+      @java.lang.Override
+      public java.lang.String getValueString() {
+        java.lang.String ref = "";
+        if (valueCase_ == 4) {
+          ref = (java.lang.String) value_;
+        }
+        return ref;
+      }
+      /**
+       * <code>string value_string = 4;</code>
+       * @return The bytes for valueString.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getValueStringBytes() {
+        java.lang.String ref = "";
+        if (valueCase_ == 4) {
+          ref = (java.lang.String) value_;
+        }
+        return com.google.protobuf.ByteString.copyFromUtf8(ref);
+      }
+      /**
+       * <code>string value_string = 4;</code>
+       * @param value The valueString to set.
+       */
+      private void setValueString(
+          java.lang.String value) {
+        value.getClass();
+  valueCase_ = 4;
+        value_ = value;
+      }
+      /**
+       * <code>string value_string = 4;</code>
+       */
+      private void clearValueString() {
+        if (valueCase_ == 4) {
+          valueCase_ = 0;
+          value_ = null;
+        }
+      }
+      /**
+       * <code>string value_string = 4;</code>
+       * @param value The bytes for valueString to set.
+       */
+      private void setValueStringBytes(
+          com.google.protobuf.ByteString value) {
+        value_ = value.toStringUtf8();
+        valueCase_ = 4;
+      }
+
       public static org.chromium.components.metrics.StructuredData.StructuredEventProto.Metric parseFrom(
           java.nio.ByteBuffer data)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -394,16 +594,19 @@ public final class StructuredData {
        * structured.xml that determine what is recorded.
        * 1. Metric name. This is a string, and the first 8 bytes of its MD5 hash is
        *    recorded as name_hash.
-       * 2. Kind. Each metric can store two kinds of values.
+       * 2. Kind. Each metric can store three kinds of values.
        *    - int64. The client supplies an int64 value for the metric, and that
-       *      value is recorded as-is in value_raw.
+       *      value is recorded as-is in value_int64.
+       *    - string. The client supplies a string value for the metric, which is
+       *      recorded as-is in value_string. This is sometimes referred to as a
+       *      "raw string" to differentiate from the following.
        *    - hashed-string. The client supplies an arbitrary string for the metric.
        *      The string itself is not recorded, instead, value_hmac records the
        *      first 8 bytes of:
        *          HMAC_SHA256(concat(string, metric_name), event_key)
-       *      The event_key is a per-profile, per-client, per-event secret 32-byte
+       *      The event_key is a per-profile, per-client, per-project secret 32-byte
        *      key used only for signing hashed values for this event. Keys should
-       *      never leave the device, and are rotated at most every 90 days.
+       *      never leave the device, and are rotated at least every 90 days.
        * </pre>
        *
        * Protobuf type {@code metrics.StructuredEventProto.Metric}
@@ -539,6 +742,63 @@ public final class StructuredData {
           return this;
         }
 
+        /**
+         * <code>string value_string = 4;</code>
+         * @return Whether the valueString field is set.
+         */
+        @java.lang.Override
+        public boolean hasValueString() {
+          return instance.hasValueString();
+        }
+        /**
+         * <code>string value_string = 4;</code>
+         * @return The valueString.
+         */
+        @java.lang.Override
+        public java.lang.String getValueString() {
+          return instance.getValueString();
+        }
+        /**
+         * <code>string value_string = 4;</code>
+         * @return The bytes for valueString.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString
+            getValueStringBytes() {
+          return instance.getValueStringBytes();
+        }
+        /**
+         * <code>string value_string = 4;</code>
+         * @param value The valueString to set.
+         * @return This builder for chaining.
+         */
+        public Builder setValueString(
+            java.lang.String value) {
+          copyOnWrite();
+          instance.setValueString(value);
+          return this;
+        }
+        /**
+         * <code>string value_string = 4;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearValueString() {
+          copyOnWrite();
+          instance.clearValueString();
+          return this;
+        }
+        /**
+         * <code>string value_string = 4;</code>
+         * @param value The bytes for valueString to set.
+         * @return This builder for chaining.
+         */
+        public Builder setValueStringBytes(
+            com.google.protobuf.ByteString value) {
+          copyOnWrite();
+          instance.setValueStringBytes(value);
+          return this;
+        }
+
         // @@protoc_insertion_point(builder_scope:metrics.StructuredEventProto.Metric)
       }
       @java.lang.Override
@@ -561,8 +821,8 @@ public final class StructuredData {
                 "nameHash_",
               };
               java.lang.String info =
-                  "\u0001\u0003\u0001\u0001\u0001\u0003\u0003\u0000\u0000\u0000\u0001\u1005\u0000\u0002" +
-                  "\u1038\u0000\u0003\u1035\u0000";
+                  "\u0001\u0004\u0001\u0001\u0001\u0004\u0004\u0000\u0000\u0000\u0001\u1005\u0000\u0002" +
+                  "\u1038\u0000\u0003\u1035\u0000\u0004\u103b\u0000";
               return newMessageInfo(DEFAULT_INSTANCE, info, objects);
           }
           // fall through
@@ -622,8 +882,10 @@ public final class StructuredData {
     private long profileEventId_;
     /**
      * <pre>
-     * A per-profile, per-client, per-event ID that is used only for structured
-     * metrics.
+     * A per-client, per-profile, per-project ID that is used only for structured
+     * metrics. For projects recorded from Chrome OS's platform2 repository, this
+     * ID is device-wide, not per-profile. The ID is rotated at least every 90
+     * days.
      * </pre>
      *
      * <code>optional fixed64 profile_event_id = 1;</code>
@@ -635,8 +897,10 @@ public final class StructuredData {
     }
     /**
      * <pre>
-     * A per-profile, per-client, per-event ID that is used only for structured
-     * metrics.
+     * A per-client, per-profile, per-project ID that is used only for structured
+     * metrics. For projects recorded from Chrome OS's platform2 repository, this
+     * ID is device-wide, not per-profile. The ID is rotated at least every 90
+     * days.
      * </pre>
      *
      * <code>optional fixed64 profile_event_id = 1;</code>
@@ -648,8 +912,10 @@ public final class StructuredData {
     }
     /**
      * <pre>
-     * A per-profile, per-client, per-event ID that is used only for structured
-     * metrics.
+     * A per-client, per-profile, per-project ID that is used only for structured
+     * metrics. For projects recorded from Chrome OS's platform2 repository, this
+     * ID is device-wide, not per-profile. The ID is rotated at least every 90
+     * days.
      * </pre>
      *
      * <code>optional fixed64 profile_event_id = 1;</code>
@@ -661,8 +927,10 @@ public final class StructuredData {
     }
     /**
      * <pre>
-     * A per-profile, per-client, per-event ID that is used only for structured
-     * metrics.
+     * A per-client, per-profile, per-project ID that is used only for structured
+     * metrics. For projects recorded from Chrome OS's platform2 repository, this
+     * ID is device-wide, not per-profile. The ID is rotated at least every 90
+     * days.
      * </pre>
      *
      * <code>optional fixed64 profile_event_id = 1;</code>
@@ -824,6 +1092,41 @@ public final class StructuredData {
       metrics_.remove(index);
     }
 
+    public static final int EVENT_TYPE_FIELD_NUMBER = 4;
+    private int eventType_;
+    /**
+     * <code>optional .metrics.StructuredEventProto.EventType event_type = 4;</code>
+     * @return Whether the eventType field is set.
+     */
+    @java.lang.Override
+    public boolean hasEventType() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>optional .metrics.StructuredEventProto.EventType event_type = 4;</code>
+     * @return The eventType.
+     */
+    @java.lang.Override
+    public org.chromium.components.metrics.StructuredData.StructuredEventProto.EventType getEventType() {
+      org.chromium.components.metrics.StructuredData.StructuredEventProto.EventType result = org.chromium.components.metrics.StructuredData.StructuredEventProto.EventType.forNumber(eventType_);
+      return result == null ? org.chromium.components.metrics.StructuredData.StructuredEventProto.EventType.UNKNOWN : result;
+    }
+    /**
+     * <code>optional .metrics.StructuredEventProto.EventType event_type = 4;</code>
+     * @param value The eventType to set.
+     */
+    private void setEventType(org.chromium.components.metrics.StructuredData.StructuredEventProto.EventType value) {
+      eventType_ = value.getNumber();
+      bitField0_ |= 0x00000004;
+    }
+    /**
+     * <code>optional .metrics.StructuredEventProto.EventType event_type = 4;</code>
+     */
+    private void clearEventType() {
+      bitField0_ = (bitField0_ & ~0x00000004);
+      eventType_ = 0;
+    }
+
     public static org.chromium.components.metrics.StructuredData.StructuredEventProto parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -909,7 +1212,7 @@ public final class StructuredData {
      * <pre>
      * One structured metrics event, containing several hashed and unhashed metrics
      * related to a single event type, tied to a single pseudonymous user.
-     * Next tag: 4
+     * Next tag: 5
      * </pre>
      *
      * Protobuf type {@code metrics.StructuredEventProto}
@@ -927,8 +1230,10 @@ public final class StructuredData {
 
       /**
        * <pre>
-       * A per-profile, per-client, per-event ID that is used only for structured
-       * metrics.
+       * A per-client, per-profile, per-project ID that is used only for structured
+       * metrics. For projects recorded from Chrome OS's platform2 repository, this
+       * ID is device-wide, not per-profile. The ID is rotated at least every 90
+       * days.
        * </pre>
        *
        * <code>optional fixed64 profile_event_id = 1;</code>
@@ -940,8 +1245,10 @@ public final class StructuredData {
       }
       /**
        * <pre>
-       * A per-profile, per-client, per-event ID that is used only for structured
-       * metrics.
+       * A per-client, per-profile, per-project ID that is used only for structured
+       * metrics. For projects recorded from Chrome OS's platform2 repository, this
+       * ID is device-wide, not per-profile. The ID is rotated at least every 90
+       * days.
        * </pre>
        *
        * <code>optional fixed64 profile_event_id = 1;</code>
@@ -953,8 +1260,10 @@ public final class StructuredData {
       }
       /**
        * <pre>
-       * A per-profile, per-client, per-event ID that is used only for structured
-       * metrics.
+       * A per-client, per-profile, per-project ID that is used only for structured
+       * metrics. For projects recorded from Chrome OS's platform2 repository, this
+       * ID is device-wide, not per-profile. The ID is rotated at least every 90
+       * days.
        * </pre>
        *
        * <code>optional fixed64 profile_event_id = 1;</code>
@@ -968,8 +1277,10 @@ public final class StructuredData {
       }
       /**
        * <pre>
-       * A per-profile, per-client, per-event ID that is used only for structured
-       * metrics.
+       * A per-client, per-profile, per-project ID that is used only for structured
+       * metrics. For projects recorded from Chrome OS's platform2 repository, this
+       * ID is device-wide, not per-profile. The ID is rotated at least every 90
+       * days.
        * </pre>
        *
        * <code>optional fixed64 profile_event_id = 1;</code>
@@ -1143,6 +1454,42 @@ public final class StructuredData {
         return this;
       }
 
+      /**
+       * <code>optional .metrics.StructuredEventProto.EventType event_type = 4;</code>
+       * @return Whether the eventType field is set.
+       */
+      @java.lang.Override
+      public boolean hasEventType() {
+        return instance.hasEventType();
+      }
+      /**
+       * <code>optional .metrics.StructuredEventProto.EventType event_type = 4;</code>
+       * @return The eventType.
+       */
+      @java.lang.Override
+      public org.chromium.components.metrics.StructuredData.StructuredEventProto.EventType getEventType() {
+        return instance.getEventType();
+      }
+      /**
+       * <code>optional .metrics.StructuredEventProto.EventType event_type = 4;</code>
+       * @param value The enum numeric value on the wire for eventType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEventType(org.chromium.components.metrics.StructuredData.StructuredEventProto.EventType value) {
+        copyOnWrite();
+        instance.setEventType(value);
+        return this;
+      }
+      /**
+       * <code>optional .metrics.StructuredEventProto.EventType event_type = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEventType() {
+        copyOnWrite();
+        instance.clearEventType();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:metrics.StructuredEventProto)
     }
     @java.lang.Override
@@ -1164,10 +1511,12 @@ public final class StructuredData {
               "eventNameHash_",
               "metrics_",
               org.chromium.components.metrics.StructuredData.StructuredEventProto.Metric.class,
+              "eventType_",
+              org.chromium.components.metrics.StructuredData.StructuredEventProto.EventType.internalGetVerifier(),
             };
             java.lang.String info =
-                "\u0001\u0003\u0000\u0001\u0001\u0003\u0003\u0000\u0001\u0000\u0001\u1005\u0000\u0002" +
-                "\u1005\u0001\u0003\u001b";
+                "\u0001\u0004\u0000\u0001\u0001\u0004\u0004\u0000\u0001\u0000\u0001\u1005\u0000\u0002" +
+                "\u1005\u0001\u0003\u001b\u0004\u100c\u0002";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

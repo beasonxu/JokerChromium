@@ -13,8 +13,17 @@
 
 package org.chromium.display.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class Position {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        Position.TOP,
+        Position.RIGHT,
+        Position.BOTTOM,
+        Position.LEFT})
+    public @interface EnumType {}
 
     public static final int TOP = 0;
     public static final int RIGHT = 1;

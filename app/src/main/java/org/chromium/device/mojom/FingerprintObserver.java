@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface FingerprintObserver extends org.chromium.mojo.bindings.Interface {
 
@@ -23,20 +25,16 @@ public interface FingerprintObserver extends org.chromium.mojo.bindings.Interfac
 
     Manager<FingerprintObserver, FingerprintObserver.Proxy> MANAGER = FingerprintObserver_Internal.MANAGER;
 
-
     void onRestarted(
 );
-
 
 
     void onEnrollScanDone(
 int scanResult, boolean isComplete, int percentComplete);
 
 
-
     void onAuthScanDone(
-int scanResult, java.util.Map<String, String[]> matches);
-
+FingerprintMessage msg, java.util.Map<String, String[]> matches);
 
 
     void onSessionFailed(

@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface SensorProvider extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface SensorProvider extends org.chromium.mojo.bindings.Interface {
 
     Manager<SensorProvider, SensorProvider.Proxy> MANAGER = SensorProvider_Internal.MANAGER;
 
-
     void getSensor(
 int type, 
-GetSensorResponse callback);
+GetSensor_Response callback);
 
-    interface GetSensorResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, SensorInitParams> { }
+    interface GetSensor_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, SensorInitParams> { }
 
 
 }

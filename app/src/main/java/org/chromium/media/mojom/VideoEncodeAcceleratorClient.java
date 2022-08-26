@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface VideoEncodeAcceleratorClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,20 +25,16 @@ public interface VideoEncodeAcceleratorClient extends org.chromium.mojo.bindings
 
     Manager<VideoEncodeAcceleratorClient, VideoEncodeAcceleratorClient.Proxy> MANAGER = VideoEncodeAcceleratorClient_Internal.MANAGER;
 
-
     void requireBitstreamBuffers(
 int inputCount, org.chromium.gfx.mojom.Size inputCodedSize, int outputBufferSize);
-
 
 
     void bitstreamBufferReady(
 int bitstreamBufferId, BitstreamBufferMetadata metadata);
 
 
-
     void notifyError(
 int error);
-
 
 
     void notifyEncoderInfoChange(

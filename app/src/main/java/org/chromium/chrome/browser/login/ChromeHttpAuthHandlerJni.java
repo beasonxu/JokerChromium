@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ChromeHttpAuthHandlerJni implements ChromeHttpAuthHandler.Natives {
+class ChromeHttpAuthHandlerJni implements ChromeHttpAuthHandler.Natives {
   private static ChromeHttpAuthHandler.Natives testInstance;
 
   public static final JniStaticTestMocker<ChromeHttpAuthHandler.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.login.ChromeHttpAuthHandler.Natives>() {

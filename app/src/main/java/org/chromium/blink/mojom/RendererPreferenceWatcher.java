@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface RendererPreferenceWatcher extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface RendererPreferenceWatcher extends org.chromium.mojo.bindings.In
     }
 
     Manager<RendererPreferenceWatcher, RendererPreferenceWatcher.Proxy> MANAGER = RendererPreferenceWatcher_Internal.MANAGER;
-
 
     void notifyUpdate(
 RendererPreferences newPrefs);

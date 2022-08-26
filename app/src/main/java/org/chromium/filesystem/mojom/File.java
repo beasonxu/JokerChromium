@@ -13,6 +13,8 @@
 
 package org.chromium.filesystem.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface File extends org.chromium.mojo.bindings.Interface {
 
@@ -23,108 +25,95 @@ public interface File extends org.chromium.mojo.bindings.Interface {
 
     Manager<File, File.Proxy> MANAGER = File_Internal.MANAGER;
 
-
     void close(
 
-CloseResponse callback);
+Close_Response callback);
 
-    interface CloseResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface Close_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void read(
 int numBytesToRead, long offset, int whence, 
-ReadResponse callback);
+Read_Response callback);
 
-    interface ReadResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, byte[]> { }
-
+    interface Read_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, byte[]> { }
 
 
     void write(
 byte[] bytesToWrite, long offset, int whence, 
-WriteResponse callback);
+Write_Response callback);
 
-    interface WriteResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, Integer> { }
-
+    interface Write_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, Integer> { }
 
 
     void tell(
 
-TellResponse callback);
+Tell_Response callback);
 
-    interface TellResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, Long> { }
-
+    interface Tell_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, Long> { }
 
 
     void seek(
 long offset, int whence, 
-SeekResponse callback);
+Seek_Response callback);
 
-    interface SeekResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, Long> { }
-
+    interface Seek_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, Long> { }
 
 
     void stat(
 
-StatResponse callback);
+Stat_Response callback);
 
-    interface StatResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, FileInformation> { }
-
+    interface Stat_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, FileInformation> { }
 
 
     void truncate(
 long size, 
-TruncateResponse callback);
+Truncate_Response callback);
 
-    interface TruncateResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface Truncate_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void touch(
 TimespecOrNow atime, TimespecOrNow mtime, 
-TouchResponse callback);
+Touch_Response callback);
 
-    interface TouchResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface Touch_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void dup(
 org.chromium.mojo.bindings.InterfaceRequest<File> file, 
-DupResponse callback);
+Dup_Response callback);
 
-    interface DupResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface Dup_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void flush(
 
-FlushResponse callback);
+Flush_Response callback);
 
-    interface FlushResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface Flush_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void lock(
 
-LockResponse callback);
+Lock_Response callback);
 
-    interface LockResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface Lock_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void unlock(
 
-UnlockResponse callback);
+Unlock_Response callback);
 
-    interface UnlockResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface Unlock_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void asHandle(
 
-AsHandleResponse callback);
+AsHandle_Response callback);
 
-    interface AsHandleResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, org.chromium.mojo_base.mojom.File> { }
+    interface AsHandle_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, org.chromium.mojo_base.mojom.File> { }
 
 
 }

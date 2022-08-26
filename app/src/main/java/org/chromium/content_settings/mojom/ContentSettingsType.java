@@ -13,8 +13,13 @@
 
 package org.chromium.content_settings.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ContentSettingsType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+})
+    public @interface EnumType {}
 
 
     public static boolean isKnownValue(int value) {

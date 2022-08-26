@@ -11,14 +11,14 @@ import androidx.annotation.DrawableRes;
 
 import org.chromium.base.ThreadUtils;
 import org.chromium.base.supplier.Supplier;
-import org.chromium.chrome.R;
-import org.chromium.chrome.browser.image_fetcher.ImageFetcher;
 import org.chromium.chrome.browser.omnibox.OmniboxSuggestionType;
+import org.chromium.chrome.browser.omnibox.R;
 import org.chromium.chrome.browser.omnibox.UrlBarEditingTextStateProvider;
 import org.chromium.chrome.browser.omnibox.suggestions.OmniboxSuggestionUiType;
 import org.chromium.chrome.browser.omnibox.suggestions.SuggestionHost;
 import org.chromium.chrome.browser.omnibox.suggestions.base.BaseSuggestionViewProcessor;
 import org.chromium.chrome.browser.omnibox.suggestions.base.SuggestionDrawableState;
+import org.chromium.components.image_fetcher.ImageFetcher;
 import org.chromium.components.omnibox.AnswerType;
 import org.chromium.components.omnibox.AutocompleteMatch;
 import org.chromium.components.omnibox.SuggestionAnswer;
@@ -173,11 +173,9 @@ public class AnswerSuggestionProcessor extends BaseSuggestionViewProcessor {
                 case AnswerType.SPORTS:
                     return R.drawable.ic_google_round;
                 default:
-                    assert false : "Unsupported answer type";
                     break;
             }
-        } else {
-            assert suggestion.getType() == OmniboxSuggestionType.CALCULATOR;
+        } else if (suggestion.getType() == OmniboxSuggestionType.CALCULATOR) {
             return R.drawable.ic_equals_sign_round;
         }
         return R.drawable.ic_google_round;

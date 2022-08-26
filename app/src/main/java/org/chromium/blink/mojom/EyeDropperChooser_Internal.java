@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class EyeDropperChooser_Internal {
 
@@ -61,7 +63,7 @@ class EyeDropperChooser_Internal {
         @Override
         public void choose(
 
-ChooseResponse callback) {
+Choose_Response callback) {
 
             EyeDropperChooserChooseParams _message = new EyeDropperChooserChooseParams();
 
@@ -288,9 +290,9 @@ ChooseResponse callback) {
 
     static class EyeDropperChooserChooseResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final EyeDropperChooser.ChooseResponse mCallback;
+        private final EyeDropperChooser.Choose_Response mCallback;
 
-        EyeDropperChooserChooseResponseParamsForwardToCallback(EyeDropperChooser.ChooseResponse callback) {
+        EyeDropperChooserChooseResponseParamsForwardToCallback(EyeDropperChooser.Choose_Response callback) {
             this.mCallback = callback;
         }
 
@@ -315,7 +317,7 @@ ChooseResponse callback) {
         }
     }
 
-    static class EyeDropperChooserChooseResponseParamsProxyToResponder implements EyeDropperChooser.ChooseResponse {
+    static class EyeDropperChooserChooseResponseParamsProxyToResponder implements EyeDropperChooser.Choose_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

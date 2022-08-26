@@ -121,6 +121,20 @@ public final class PerfDataProtos {
     int getBuildIdsCount();
 
     /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    java.util.List<org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata> 
+        getPmuMappingsList();
+    /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata getPmuMappings(int index);
+    /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    int getPmuMappingsCount();
+
+    /**
      * <pre>
      * All the string metadata from the perf data file.
      * </pre>
@@ -160,6 +174,7 @@ public final class PerfDataProtos {
       events_ = emptyProtobufList();
       eventTypes_ = emptyProtobufList();
       buildIds_ = emptyProtobufList();
+      pmuMappings_ = emptyProtobufList();
     }
     public interface PerfEventAttrOrBuilder extends
         // @@protoc_insertion_point(interface_extends:metrics.PerfDataProto.PerfEventAttr)
@@ -8461,6 +8476,82 @@ public final class PerfDataProtos {
        * @return The mispredicted.
        */
       boolean getMispredicted();
+
+      /**
+       * <pre>
+       * Indicates a predicted branch.
+       * </pre>
+       *
+       * <code>optional bool predicted = 4;</code>
+       * @return Whether the predicted field is set.
+       */
+      boolean hasPredicted();
+      /**
+       * <pre>
+       * Indicates a predicted branch.
+       * </pre>
+       *
+       * <code>optional bool predicted = 4;</code>
+       * @return The predicted.
+       */
+      boolean getPredicted();
+
+      /**
+       * <pre>
+       * Indicates running in a hardware transaction
+       * </pre>
+       *
+       * <code>optional bool in_transaction = 5;</code>
+       * @return Whether the inTransaction field is set.
+       */
+      boolean hasInTransaction();
+      /**
+       * <pre>
+       * Indicates running in a hardware transaction
+       * </pre>
+       *
+       * <code>optional bool in_transaction = 5;</code>
+       * @return The inTransaction.
+       */
+      boolean getInTransaction();
+
+      /**
+       * <pre>
+       * Indicates aborting a hardware transaction
+       * </pre>
+       *
+       * <code>optional bool abort = 6;</code>
+       * @return Whether the abort field is set.
+       */
+      boolean hasAbort();
+      /**
+       * <pre>
+       * Indicates aborting a hardware transaction
+       * </pre>
+       *
+       * <code>optional bool abort = 6;</code>
+       * @return The abort.
+       */
+      boolean getAbort();
+
+      /**
+       * <pre>
+       * Cycle count to last branch
+       * </pre>
+       *
+       * <code>optional uint32 cycles = 7;</code>
+       * @return Whether the cycles field is set.
+       */
+      boolean hasCycles();
+      /**
+       * <pre>
+       * Cycle count to last branch
+       * </pre>
+       *
+       * <code>optional uint32 cycles = 7;</code>
+       * @return The cycles.
+       */
+      int getCycles();
     }
     /**
      * Protobuf type {@code metrics.PerfDataProto.BranchStackEntry}
@@ -8621,6 +8712,206 @@ public final class PerfDataProtos {
       private void clearMispredicted() {
         bitField0_ = (bitField0_ & ~0x00000004);
         mispredicted_ = false;
+      }
+
+      public static final int PREDICTED_FIELD_NUMBER = 4;
+      private boolean predicted_;
+      /**
+       * <pre>
+       * Indicates a predicted branch.
+       * </pre>
+       *
+       * <code>optional bool predicted = 4;</code>
+       * @return Whether the predicted field is set.
+       */
+      @java.lang.Override
+      public boolean hasPredicted() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <pre>
+       * Indicates a predicted branch.
+       * </pre>
+       *
+       * <code>optional bool predicted = 4;</code>
+       * @return The predicted.
+       */
+      @java.lang.Override
+      public boolean getPredicted() {
+        return predicted_;
+      }
+      /**
+       * <pre>
+       * Indicates a predicted branch.
+       * </pre>
+       *
+       * <code>optional bool predicted = 4;</code>
+       * @param value The predicted to set.
+       */
+      private void setPredicted(boolean value) {
+        bitField0_ |= 0x00000008;
+        predicted_ = value;
+      }
+      /**
+       * <pre>
+       * Indicates a predicted branch.
+       * </pre>
+       *
+       * <code>optional bool predicted = 4;</code>
+       */
+      private void clearPredicted() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        predicted_ = false;
+      }
+
+      public static final int IN_TRANSACTION_FIELD_NUMBER = 5;
+      private boolean inTransaction_;
+      /**
+       * <pre>
+       * Indicates running in a hardware transaction
+       * </pre>
+       *
+       * <code>optional bool in_transaction = 5;</code>
+       * @return Whether the inTransaction field is set.
+       */
+      @java.lang.Override
+      public boolean hasInTransaction() {
+        return ((bitField0_ & 0x00000010) != 0);
+      }
+      /**
+       * <pre>
+       * Indicates running in a hardware transaction
+       * </pre>
+       *
+       * <code>optional bool in_transaction = 5;</code>
+       * @return The inTransaction.
+       */
+      @java.lang.Override
+      public boolean getInTransaction() {
+        return inTransaction_;
+      }
+      /**
+       * <pre>
+       * Indicates running in a hardware transaction
+       * </pre>
+       *
+       * <code>optional bool in_transaction = 5;</code>
+       * @param value The inTransaction to set.
+       */
+      private void setInTransaction(boolean value) {
+        bitField0_ |= 0x00000010;
+        inTransaction_ = value;
+      }
+      /**
+       * <pre>
+       * Indicates running in a hardware transaction
+       * </pre>
+       *
+       * <code>optional bool in_transaction = 5;</code>
+       */
+      private void clearInTransaction() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        inTransaction_ = false;
+      }
+
+      public static final int ABORT_FIELD_NUMBER = 6;
+      private boolean abort_;
+      /**
+       * <pre>
+       * Indicates aborting a hardware transaction
+       * </pre>
+       *
+       * <code>optional bool abort = 6;</code>
+       * @return Whether the abort field is set.
+       */
+      @java.lang.Override
+      public boolean hasAbort() {
+        return ((bitField0_ & 0x00000020) != 0);
+      }
+      /**
+       * <pre>
+       * Indicates aborting a hardware transaction
+       * </pre>
+       *
+       * <code>optional bool abort = 6;</code>
+       * @return The abort.
+       */
+      @java.lang.Override
+      public boolean getAbort() {
+        return abort_;
+      }
+      /**
+       * <pre>
+       * Indicates aborting a hardware transaction
+       * </pre>
+       *
+       * <code>optional bool abort = 6;</code>
+       * @param value The abort to set.
+       */
+      private void setAbort(boolean value) {
+        bitField0_ |= 0x00000020;
+        abort_ = value;
+      }
+      /**
+       * <pre>
+       * Indicates aborting a hardware transaction
+       * </pre>
+       *
+       * <code>optional bool abort = 6;</code>
+       */
+      private void clearAbort() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        abort_ = false;
+      }
+
+      public static final int CYCLES_FIELD_NUMBER = 7;
+      private int cycles_;
+      /**
+       * <pre>
+       * Cycle count to last branch
+       * </pre>
+       *
+       * <code>optional uint32 cycles = 7;</code>
+       * @return Whether the cycles field is set.
+       */
+      @java.lang.Override
+      public boolean hasCycles() {
+        return ((bitField0_ & 0x00000040) != 0);
+      }
+      /**
+       * <pre>
+       * Cycle count to last branch
+       * </pre>
+       *
+       * <code>optional uint32 cycles = 7;</code>
+       * @return The cycles.
+       */
+      @java.lang.Override
+      public int getCycles() {
+        return cycles_;
+      }
+      /**
+       * <pre>
+       * Cycle count to last branch
+       * </pre>
+       *
+       * <code>optional uint32 cycles = 7;</code>
+       * @param value The cycles to set.
+       */
+      private void setCycles(int value) {
+        bitField0_ |= 0x00000040;
+        cycles_ = value;
+      }
+      /**
+       * <pre>
+       * Cycle count to last branch
+       * </pre>
+       *
+       * <code>optional uint32 cycles = 7;</code>
+       */
+      private void clearCycles() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        cycles_ = 0;
       }
 
       public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.BranchStackEntry parseFrom(
@@ -8874,6 +9165,214 @@ public final class PerfDataProtos {
           return this;
         }
 
+        /**
+         * <pre>
+         * Indicates a predicted branch.
+         * </pre>
+         *
+         * <code>optional bool predicted = 4;</code>
+         * @return Whether the predicted field is set.
+         */
+        @java.lang.Override
+        public boolean hasPredicted() {
+          return instance.hasPredicted();
+        }
+        /**
+         * <pre>
+         * Indicates a predicted branch.
+         * </pre>
+         *
+         * <code>optional bool predicted = 4;</code>
+         * @return The predicted.
+         */
+        @java.lang.Override
+        public boolean getPredicted() {
+          return instance.getPredicted();
+        }
+        /**
+         * <pre>
+         * Indicates a predicted branch.
+         * </pre>
+         *
+         * <code>optional bool predicted = 4;</code>
+         * @param value The predicted to set.
+         * @return This builder for chaining.
+         */
+        public Builder setPredicted(boolean value) {
+          copyOnWrite();
+          instance.setPredicted(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Indicates a predicted branch.
+         * </pre>
+         *
+         * <code>optional bool predicted = 4;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearPredicted() {
+          copyOnWrite();
+          instance.clearPredicted();
+          return this;
+        }
+
+        /**
+         * <pre>
+         * Indicates running in a hardware transaction
+         * </pre>
+         *
+         * <code>optional bool in_transaction = 5;</code>
+         * @return Whether the inTransaction field is set.
+         */
+        @java.lang.Override
+        public boolean hasInTransaction() {
+          return instance.hasInTransaction();
+        }
+        /**
+         * <pre>
+         * Indicates running in a hardware transaction
+         * </pre>
+         *
+         * <code>optional bool in_transaction = 5;</code>
+         * @return The inTransaction.
+         */
+        @java.lang.Override
+        public boolean getInTransaction() {
+          return instance.getInTransaction();
+        }
+        /**
+         * <pre>
+         * Indicates running in a hardware transaction
+         * </pre>
+         *
+         * <code>optional bool in_transaction = 5;</code>
+         * @param value The inTransaction to set.
+         * @return This builder for chaining.
+         */
+        public Builder setInTransaction(boolean value) {
+          copyOnWrite();
+          instance.setInTransaction(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Indicates running in a hardware transaction
+         * </pre>
+         *
+         * <code>optional bool in_transaction = 5;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearInTransaction() {
+          copyOnWrite();
+          instance.clearInTransaction();
+          return this;
+        }
+
+        /**
+         * <pre>
+         * Indicates aborting a hardware transaction
+         * </pre>
+         *
+         * <code>optional bool abort = 6;</code>
+         * @return Whether the abort field is set.
+         */
+        @java.lang.Override
+        public boolean hasAbort() {
+          return instance.hasAbort();
+        }
+        /**
+         * <pre>
+         * Indicates aborting a hardware transaction
+         * </pre>
+         *
+         * <code>optional bool abort = 6;</code>
+         * @return The abort.
+         */
+        @java.lang.Override
+        public boolean getAbort() {
+          return instance.getAbort();
+        }
+        /**
+         * <pre>
+         * Indicates aborting a hardware transaction
+         * </pre>
+         *
+         * <code>optional bool abort = 6;</code>
+         * @param value The abort to set.
+         * @return This builder for chaining.
+         */
+        public Builder setAbort(boolean value) {
+          copyOnWrite();
+          instance.setAbort(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Indicates aborting a hardware transaction
+         * </pre>
+         *
+         * <code>optional bool abort = 6;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearAbort() {
+          copyOnWrite();
+          instance.clearAbort();
+          return this;
+        }
+
+        /**
+         * <pre>
+         * Cycle count to last branch
+         * </pre>
+         *
+         * <code>optional uint32 cycles = 7;</code>
+         * @return Whether the cycles field is set.
+         */
+        @java.lang.Override
+        public boolean hasCycles() {
+          return instance.hasCycles();
+        }
+        /**
+         * <pre>
+         * Cycle count to last branch
+         * </pre>
+         *
+         * <code>optional uint32 cycles = 7;</code>
+         * @return The cycles.
+         */
+        @java.lang.Override
+        public int getCycles() {
+          return instance.getCycles();
+        }
+        /**
+         * <pre>
+         * Cycle count to last branch
+         * </pre>
+         *
+         * <code>optional uint32 cycles = 7;</code>
+         * @param value The cycles to set.
+         * @return This builder for chaining.
+         */
+        public Builder setCycles(int value) {
+          copyOnWrite();
+          instance.setCycles(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Cycle count to last branch
+         * </pre>
+         *
+         * <code>optional uint32 cycles = 7;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearCycles() {
+          copyOnWrite();
+          instance.clearCycles();
+          return this;
+        }
+
         // @@protoc_insertion_point(builder_scope:metrics.PerfDataProto.BranchStackEntry)
       }
       @java.lang.Override
@@ -8894,10 +9393,15 @@ public final class PerfDataProtos {
                 "fromIp_",
                 "toIp_",
                 "mispredicted_",
+                "predicted_",
+                "inTransaction_",
+                "abort_",
+                "cycles_",
               };
               java.lang.String info =
-                  "\u0001\u0003\u0000\u0001\u0001\u0003\u0003\u0000\u0000\u0000\u0001\u1003\u0000\u0002" +
-                  "\u1003\u0001\u0003\u1007\u0002";
+                  "\u0001\u0007\u0000\u0001\u0001\u0007\u0007\u0000\u0000\u0000\u0001\u1003\u0000\u0002" +
+                  "\u1003\u0001\u0003\u1007\u0002\u0004\u1007\u0003\u0005\u1007\u0004\u0006\u1007\u0005" +
+                  "\u0007\u100b\u0006";
               return newMessageInfo(DEFAULT_INSTANCE, info, objects);
           }
           // fall through
@@ -12863,6 +13367,25 @@ public final class PerfDataProtos {
        * @return The exitEvent.
        */
       org.chromium.components.metrics.PerfDataProtos.PerfDataProto.ForkEvent getExitEvent();
+
+      /**
+       * <pre>
+       * Time after boot in nanoseconds corresponding to the event.
+       * </pre>
+       *
+       * <code>optional uint64 timestamp = 10;</code>
+       * @return Whether the timestamp field is set.
+       */
+      boolean hasTimestamp();
+      /**
+       * <pre>
+       * Time after boot in nanoseconds corresponding to the event.
+       * </pre>
+       *
+       * <code>optional uint64 timestamp = 10;</code>
+       * @return The timestamp.
+       */
+      long getTimestamp();
     }
     /**
      * Protobuf type {@code metrics.PerfDataProto.PerfEvent}
@@ -13174,6 +13697,56 @@ public final class PerfDataProtos {
        */
       private void clearExitEvent() {  exitEvent_ = null;
         bitField0_ = (bitField0_ & ~0x00000020);
+      }
+
+      public static final int TIMESTAMP_FIELD_NUMBER = 10;
+      private long timestamp_;
+      /**
+       * <pre>
+       * Time after boot in nanoseconds corresponding to the event.
+       * </pre>
+       *
+       * <code>optional uint64 timestamp = 10;</code>
+       * @return Whether the timestamp field is set.
+       */
+      @java.lang.Override
+      public boolean hasTimestamp() {
+        return ((bitField0_ & 0x00000040) != 0);
+      }
+      /**
+       * <pre>
+       * Time after boot in nanoseconds corresponding to the event.
+       * </pre>
+       *
+       * <code>optional uint64 timestamp = 10;</code>
+       * @return The timestamp.
+       */
+      @java.lang.Override
+      public long getTimestamp() {
+        return timestamp_;
+      }
+      /**
+       * <pre>
+       * Time after boot in nanoseconds corresponding to the event.
+       * </pre>
+       *
+       * <code>optional uint64 timestamp = 10;</code>
+       * @param value The timestamp to set.
+       */
+      private void setTimestamp(long value) {
+        bitField0_ |= 0x00000040;
+        timestamp_ = value;
+      }
+      /**
+       * <pre>
+       * Time after boot in nanoseconds corresponding to the event.
+       * </pre>
+       *
+       * <code>optional uint64 timestamp = 10;</code>
+       */
+      private void clearTimestamp() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        timestamp_ = 0L;
       }
 
       public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfEvent parseFrom(
@@ -13583,6 +14156,58 @@ public final class PerfDataProtos {
           return this;
         }
 
+        /**
+         * <pre>
+         * Time after boot in nanoseconds corresponding to the event.
+         * </pre>
+         *
+         * <code>optional uint64 timestamp = 10;</code>
+         * @return Whether the timestamp field is set.
+         */
+        @java.lang.Override
+        public boolean hasTimestamp() {
+          return instance.hasTimestamp();
+        }
+        /**
+         * <pre>
+         * Time after boot in nanoseconds corresponding to the event.
+         * </pre>
+         *
+         * <code>optional uint64 timestamp = 10;</code>
+         * @return The timestamp.
+         */
+        @java.lang.Override
+        public long getTimestamp() {
+          return instance.getTimestamp();
+        }
+        /**
+         * <pre>
+         * Time after boot in nanoseconds corresponding to the event.
+         * </pre>
+         *
+         * <code>optional uint64 timestamp = 10;</code>
+         * @param value The timestamp to set.
+         * @return This builder for chaining.
+         */
+        public Builder setTimestamp(long value) {
+          copyOnWrite();
+          instance.setTimestamp(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Time after boot in nanoseconds corresponding to the event.
+         * </pre>
+         *
+         * <code>optional uint64 timestamp = 10;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearTimestamp() {
+          copyOnWrite();
+          instance.clearTimestamp();
+          return this;
+        }
+
         // @@protoc_insertion_point(builder_scope:metrics.PerfDataProto.PerfEvent)
       }
       @java.lang.Override
@@ -13606,11 +14231,12 @@ public final class PerfDataProtos {
                 "commEvent_",
                 "forkEvent_",
                 "exitEvent_",
+                "timestamp_",
               };
               java.lang.String info =
-                  "\u0001\u0006\u0000\u0001\u0001\t\u0006\u0000\u0000\u0000\u0001\u1009\u0000\u0002" +
+                  "\u0001\u0007\u0000\u0001\u0001\n\u0007\u0000\u0000\u0000\u0001\u1009\u0000\u0002" +
                   "\u1009\u0001\u0003\u1009\u0002\u0004\u1009\u0003\u0005\u1009\u0004\t\u1009\u0005" +
-                  "";
+                  "\n\u1003\u0006";
               return newMessageInfo(DEFAULT_INSTANCE, info, objects);
           }
           // fall through
@@ -15320,6 +15946,455 @@ public final class PerfDataProtos {
       }
     }
 
+    public interface PerfPMUMappingsMetadataOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:metrics.PerfDataProto.PerfPMUMappingsMetadata)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <pre>
+       * Mapping type.
+       * It is a number the kernel uses to map to PMU devices when initializing
+       * them. It is used to reconstruct the event type across different machines.
+       * </pre>
+       *
+       * <code>optional uint32 type = 1;</code>
+       * @return Whether the type field is set.
+       */
+      boolean hasType();
+      /**
+       * <pre>
+       * Mapping type.
+       * It is a number the kernel uses to map to PMU devices when initializing
+       * them. It is used to reconstruct the event type across different machines.
+       * </pre>
+       *
+       * <code>optional uint32 type = 1;</code>
+       * @return The type.
+       */
+      int getType();
+
+      /**
+       * <pre>
+       * Mapping name's md5 prefix.
+       * </pre>
+       *
+       * <code>optional uint64 name_md5_prefix = 3;</code>
+       * @return Whether the nameMd5Prefix field is set.
+       */
+      boolean hasNameMd5Prefix();
+      /**
+       * <pre>
+       * Mapping name's md5 prefix.
+       * </pre>
+       *
+       * <code>optional uint64 name_md5_prefix = 3;</code>
+       * @return The nameMd5Prefix.
+       */
+      long getNameMd5Prefix();
+    }
+    /**
+     * Protobuf type {@code metrics.PerfDataProto.PerfPMUMappingsMetadata}
+     */
+    public  static final class PerfPMUMappingsMetadata extends
+        com.google.protobuf.GeneratedMessageLite<
+            PerfPMUMappingsMetadata, PerfPMUMappingsMetadata.Builder> implements
+        // @@protoc_insertion_point(message_implements:metrics.PerfDataProto.PerfPMUMappingsMetadata)
+        PerfPMUMappingsMetadataOrBuilder {
+      private PerfPMUMappingsMetadata() {
+      }
+      private int bitField0_;
+      public static final int TYPE_FIELD_NUMBER = 1;
+      private int type_;
+      /**
+       * <pre>
+       * Mapping type.
+       * It is a number the kernel uses to map to PMU devices when initializing
+       * them. It is used to reconstruct the event type across different machines.
+       * </pre>
+       *
+       * <code>optional uint32 type = 1;</code>
+       * @return Whether the type field is set.
+       */
+      @java.lang.Override
+      public boolean hasType() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * Mapping type.
+       * It is a number the kernel uses to map to PMU devices when initializing
+       * them. It is used to reconstruct the event type across different machines.
+       * </pre>
+       *
+       * <code>optional uint32 type = 1;</code>
+       * @return The type.
+       */
+      @java.lang.Override
+      public int getType() {
+        return type_;
+      }
+      /**
+       * <pre>
+       * Mapping type.
+       * It is a number the kernel uses to map to PMU devices when initializing
+       * them. It is used to reconstruct the event type across different machines.
+       * </pre>
+       *
+       * <code>optional uint32 type = 1;</code>
+       * @param value The type to set.
+       */
+      private void setType(int value) {
+        bitField0_ |= 0x00000001;
+        type_ = value;
+      }
+      /**
+       * <pre>
+       * Mapping type.
+       * It is a number the kernel uses to map to PMU devices when initializing
+       * them. It is used to reconstruct the event type across different machines.
+       * </pre>
+       *
+       * <code>optional uint32 type = 1;</code>
+       */
+      private void clearType() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        type_ = 0;
+      }
+
+      public static final int NAME_MD5_PREFIX_FIELD_NUMBER = 3;
+      private long nameMd5Prefix_;
+      /**
+       * <pre>
+       * Mapping name's md5 prefix.
+       * </pre>
+       *
+       * <code>optional uint64 name_md5_prefix = 3;</code>
+       * @return Whether the nameMd5Prefix field is set.
+       */
+      @java.lang.Override
+      public boolean hasNameMd5Prefix() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * Mapping name's md5 prefix.
+       * </pre>
+       *
+       * <code>optional uint64 name_md5_prefix = 3;</code>
+       * @return The nameMd5Prefix.
+       */
+      @java.lang.Override
+      public long getNameMd5Prefix() {
+        return nameMd5Prefix_;
+      }
+      /**
+       * <pre>
+       * Mapping name's md5 prefix.
+       * </pre>
+       *
+       * <code>optional uint64 name_md5_prefix = 3;</code>
+       * @param value The nameMd5Prefix to set.
+       */
+      private void setNameMd5Prefix(long value) {
+        bitField0_ |= 0x00000002;
+        nameMd5Prefix_ = value;
+      }
+      /**
+       * <pre>
+       * Mapping name's md5 prefix.
+       * </pre>
+       *
+       * <code>optional uint64 name_md5_prefix = 3;</code>
+       */
+      private void clearNameMd5Prefix() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        nameMd5Prefix_ = 0L;
+      }
+
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return (Builder) DEFAULT_INSTANCE.createBuilder();
+      }
+      public static Builder newBuilder(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata prototype) {
+        return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+      }
+
+      /**
+       * Protobuf type {@code metrics.PerfDataProto.PerfPMUMappingsMetadata}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata, Builder> implements
+          // @@protoc_insertion_point(builder_implements:metrics.PerfDataProto.PerfPMUMappingsMetadata)
+          org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadataOrBuilder {
+        // Construct using org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <pre>
+         * Mapping type.
+         * It is a number the kernel uses to map to PMU devices when initializing
+         * them. It is used to reconstruct the event type across different machines.
+         * </pre>
+         *
+         * <code>optional uint32 type = 1;</code>
+         * @return Whether the type field is set.
+         */
+        @java.lang.Override
+        public boolean hasType() {
+          return instance.hasType();
+        }
+        /**
+         * <pre>
+         * Mapping type.
+         * It is a number the kernel uses to map to PMU devices when initializing
+         * them. It is used to reconstruct the event type across different machines.
+         * </pre>
+         *
+         * <code>optional uint32 type = 1;</code>
+         * @return The type.
+         */
+        @java.lang.Override
+        public int getType() {
+          return instance.getType();
+        }
+        /**
+         * <pre>
+         * Mapping type.
+         * It is a number the kernel uses to map to PMU devices when initializing
+         * them. It is used to reconstruct the event type across different machines.
+         * </pre>
+         *
+         * <code>optional uint32 type = 1;</code>
+         * @param value The type to set.
+         * @return This builder for chaining.
+         */
+        public Builder setType(int value) {
+          copyOnWrite();
+          instance.setType(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Mapping type.
+         * It is a number the kernel uses to map to PMU devices when initializing
+         * them. It is used to reconstruct the event type across different machines.
+         * </pre>
+         *
+         * <code>optional uint32 type = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearType() {
+          copyOnWrite();
+          instance.clearType();
+          return this;
+        }
+
+        /**
+         * <pre>
+         * Mapping name's md5 prefix.
+         * </pre>
+         *
+         * <code>optional uint64 name_md5_prefix = 3;</code>
+         * @return Whether the nameMd5Prefix field is set.
+         */
+        @java.lang.Override
+        public boolean hasNameMd5Prefix() {
+          return instance.hasNameMd5Prefix();
+        }
+        /**
+         * <pre>
+         * Mapping name's md5 prefix.
+         * </pre>
+         *
+         * <code>optional uint64 name_md5_prefix = 3;</code>
+         * @return The nameMd5Prefix.
+         */
+        @java.lang.Override
+        public long getNameMd5Prefix() {
+          return instance.getNameMd5Prefix();
+        }
+        /**
+         * <pre>
+         * Mapping name's md5 prefix.
+         * </pre>
+         *
+         * <code>optional uint64 name_md5_prefix = 3;</code>
+         * @param value The nameMd5Prefix to set.
+         * @return This builder for chaining.
+         */
+        public Builder setNameMd5Prefix(long value) {
+          copyOnWrite();
+          instance.setNameMd5Prefix(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Mapping name's md5 prefix.
+         * </pre>
+         *
+         * <code>optional uint64 name_md5_prefix = 3;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearNameMd5Prefix() {
+          copyOnWrite();
+          instance.clearNameMd5Prefix();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:metrics.PerfDataProto.PerfPMUMappingsMetadata)
+      }
+      @java.lang.Override
+      @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+      protected final java.lang.Object dynamicMethod(
+          com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+          java.lang.Object arg0, java.lang.Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata();
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case BUILD_MESSAGE_INFO: {
+              java.lang.Object[] objects = new java.lang.Object[] {
+                "bitField0_",
+                "type_",
+                "nameMd5Prefix_",
+              };
+              java.lang.String info =
+                  "\u0001\u0002\u0000\u0001\u0001\u0003\u0002\u0000\u0000\u0000\u0001\u100b\u0000\u0003" +
+                  "\u1003\u0001";
+              return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+          }
+          // fall through
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            com.google.protobuf.Parser<org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata> parser = PARSER;
+            if (parser == null) {
+              synchronized (org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata.class) {
+                parser = PARSER;
+                if (parser == null) {
+                  parser =
+                      new DefaultInstanceBasedParser<org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata>(
+                          DEFAULT_INSTANCE);
+                  PARSER = parser;
+                }
+              }
+            }
+            return parser;
+        }
+        case GET_MEMOIZED_IS_INITIALIZED: {
+          return (byte) 1;
+        }
+        case SET_MEMOIZED_IS_INITIALIZED: {
+          return null;
+        }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:metrics.PerfDataProto.PerfPMUMappingsMetadata)
+      private static final org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata DEFAULT_INSTANCE;
+      static {
+        PerfPMUMappingsMetadata defaultInstance = new PerfPMUMappingsMetadata();
+        // New instances are implicitly immutable so no need to make
+        // immutable.
+        DEFAULT_INSTANCE = defaultInstance;
+        com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+          PerfPMUMappingsMetadata.class, defaultInstance);
+      }
+
+      public static org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<PerfPMUMappingsMetadata> PARSER;
+
+      public static com.google.protobuf.Parser<PerfPMUMappingsMetadata> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
     public interface StringMetadataOrBuilder extends
         // @@protoc_insertion_point(interface_extends:metrics.PerfDataProto.StringMetadata)
         com.google.protobuf.MessageLiteOrBuilder {
@@ -16516,6 +17591,100 @@ public final class PerfDataProtos {
       buildIds_.remove(index);
     }
 
+    public static final int PMU_MAPPINGS_FIELD_NUMBER = 15;
+    private com.google.protobuf.Internal.ProtobufList<org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata> pmuMappings_;
+    /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    @java.lang.Override
+    public java.util.List<org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata> getPmuMappingsList() {
+      return pmuMappings_;
+    }
+    /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    public java.util.List<? extends org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadataOrBuilder> 
+        getPmuMappingsOrBuilderList() {
+      return pmuMappings_;
+    }
+    /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    @java.lang.Override
+    public int getPmuMappingsCount() {
+      return pmuMappings_.size();
+    }
+    /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata getPmuMappings(int index) {
+      return pmuMappings_.get(index);
+    }
+    /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    public org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadataOrBuilder getPmuMappingsOrBuilder(
+        int index) {
+      return pmuMappings_.get(index);
+    }
+    private void ensurePmuMappingsIsMutable() {
+      com.google.protobuf.Internal.ProtobufList<org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata> tmp = pmuMappings_;
+      if (!tmp.isModifiable()) {
+        pmuMappings_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(tmp);
+       }
+    }
+
+    /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    private void setPmuMappings(
+        int index, org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata value) {
+      value.getClass();
+  ensurePmuMappingsIsMutable();
+      pmuMappings_.set(index, value);
+    }
+    /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    private void addPmuMappings(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata value) {
+      value.getClass();
+  ensurePmuMappingsIsMutable();
+      pmuMappings_.add(value);
+    }
+    /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    private void addPmuMappings(
+        int index, org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata value) {
+      value.getClass();
+  ensurePmuMappingsIsMutable();
+      pmuMappings_.add(index, value);
+    }
+    /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    private void addAllPmuMappings(
+        java.lang.Iterable<? extends org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata> values) {
+      ensurePmuMappingsIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, pmuMappings_);
+    }
+    /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    private void clearPmuMappings() {
+      pmuMappings_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+     */
+    private void removePmuMappings(int index) {
+      ensurePmuMappingsIsMutable();
+      pmuMappings_.remove(index);
+    }
+
     public static final int STRING_METADATA_FIELD_NUMBER = 13;
     private org.chromium.components.metrics.PerfDataProtos.PerfDataProto.StringMetadata stringMetadata_;
     /**
@@ -17269,6 +18438,108 @@ public final class PerfDataProtos {
       }
 
       /**
+       * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+       */
+      @java.lang.Override
+      public java.util.List<org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata> getPmuMappingsList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getPmuMappingsList());
+      }
+      /**
+       * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+       */
+      @java.lang.Override
+      public int getPmuMappingsCount() {
+        return instance.getPmuMappingsCount();
+      }/**
+       * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+       */
+      @java.lang.Override
+      public org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata getPmuMappings(int index) {
+        return instance.getPmuMappings(index);
+      }
+      /**
+       * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+       */
+      public Builder setPmuMappings(
+          int index, org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata value) {
+        copyOnWrite();
+        instance.setPmuMappings(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+       */
+      public Builder setPmuMappings(
+          int index, org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata.Builder builderForValue) {
+        copyOnWrite();
+        instance.setPmuMappings(index,
+            builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+       */
+      public Builder addPmuMappings(org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata value) {
+        copyOnWrite();
+        instance.addPmuMappings(value);
+        return this;
+      }
+      /**
+       * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+       */
+      public Builder addPmuMappings(
+          int index, org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata value) {
+        copyOnWrite();
+        instance.addPmuMappings(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+       */
+      public Builder addPmuMappings(
+          org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata.Builder builderForValue) {
+        copyOnWrite();
+        instance.addPmuMappings(builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+       */
+      public Builder addPmuMappings(
+          int index, org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata.Builder builderForValue) {
+        copyOnWrite();
+        instance.addPmuMappings(index,
+            builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+       */
+      public Builder addAllPmuMappings(
+          java.lang.Iterable<? extends org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata> values) {
+        copyOnWrite();
+        instance.addAllPmuMappings(values);
+        return this;
+      }
+      /**
+       * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+       */
+      public Builder clearPmuMappings() {
+        copyOnWrite();
+        instance.clearPmuMappings();
+        return this;
+      }
+      /**
+       * <code>repeated .metrics.PerfDataProto.PerfPMUMappingsMetadata pmu_mappings = 15;</code>
+       */
+      public Builder removePmuMappings(int index) {
+        copyOnWrite();
+        instance.removePmuMappings(index);
+        return this;
+      }
+
+      /**
        * <pre>
        * All the string metadata from the perf data file.
        * </pre>
@@ -17367,10 +18638,12 @@ public final class PerfDataProtos {
               "eventTypes_",
               org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfEventType.class,
               "stringMetadata_",
+              "pmuMappings_",
+              org.chromium.components.metrics.PerfDataProtos.PerfDataProto.PerfPMUMappingsMetadata.class,
             };
             java.lang.String info =
-                "\u0001\u0007\u0000\u0001\u0001\r\u0007\u0000\u0004\u0000\u0001\u001b\u0002\u001b" +
-                "\u0003\u1003\u0000\u0004\u1009\u0001\u0007\u001b\n\u001b\r\u1009\u0002";
+                "\u0001\b\u0000\u0001\u0001\u000f\b\u0000\u0005\u0000\u0001\u001b\u0002\u001b\u0003" +
+                "\u1003\u0000\u0004\u1009\u0001\u0007\u001b\n\u001b\r\u1009\u0002\u000f\u001b";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

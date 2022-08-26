@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface AudioLogFactory extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface AudioLogFactory extends org.chromium.mojo.bindings.Interface {
     }
 
     Manager<AudioLogFactory, AudioLogFactory.Proxy> MANAGER = AudioLogFactory_Internal.MANAGER;
-
 
     void createAudioLog(
 int component, int componentId, org.chromium.mojo.bindings.InterfaceRequest<AudioLog> audioLogReceiver);

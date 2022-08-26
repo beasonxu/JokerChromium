@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface AudioInputStreamObserver extends org.chromium.mojo.bindings.Interface {
 
@@ -20,17 +22,29 @@ public interface AudioInputStreamObserver extends org.chromium.mojo.bindings.Int
 
     public static final class DisconnectReason {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            DisconnectReason.DEFAULT,
+            DisconnectReason.PLATFORM_ERROR,
+            DisconnectReason.TERMINATED_BY_CLIENT,
+            DisconnectReason.STREAM_CREATION_FAILED,
+            DisconnectReason.DOCUMENT_DESTROYED,
+            DisconnectReason.SYSTEM_PERMISSIONS,
+            DisconnectReason.DEVICE_IN_USE})
+        public @interface EnumType {}
 
         public static final int DEFAULT = 0;
         public static final int PLATFORM_ERROR = 1;
         public static final int TERMINATED_BY_CLIENT = 2;
         public static final int STREAM_CREATION_FAILED = 3;
         public static final int DOCUMENT_DESTROYED = 4;
+        public static final int SYSTEM_PERMISSIONS = 5;
+        public static final int DEVICE_IN_USE = 6;
         public static final int MIN_VALUE = 0;
-        public static final int MAX_VALUE = 4;
+        public static final int MAX_VALUE = 6;
 
         public static boolean isKnownValue(int value) {
-            return value >= 0 && value <= 4;
+            return value >= 0 && value <= 6;
         }
 
         public static void validate(int value) {
@@ -50,7 +64,6 @@ public interface AudioInputStreamObserver extends org.chromium.mojo.bindings.Int
     }
 
     Manager<AudioInputStreamObserver, AudioInputStreamObserver.Proxy> MANAGER = AudioInputStreamObserver_Internal.MANAGER;
-
 
     void didStartRecording(
 );

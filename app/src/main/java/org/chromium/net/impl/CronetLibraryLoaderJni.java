@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class CronetLibraryLoaderJni implements CronetLibraryLoader.Natives {
+class CronetLibraryLoaderJni implements CronetLibraryLoader.Natives {
   private static CronetLibraryLoader.Natives testInstance;
 
   public static final JniStaticTestMocker<CronetLibraryLoader.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.net.impl.CronetLibraryLoader.Natives>() {

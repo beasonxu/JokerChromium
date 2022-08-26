@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface SerialPort extends org.chromium.mojo.bindings.Interface {
 
@@ -23,70 +25,61 @@ public interface SerialPort extends org.chromium.mojo.bindings.Interface {
 
     Manager<SerialPort, SerialPort.Proxy> MANAGER = SerialPort_Internal.MANAGER;
 
-
     void startWriting(
 org.chromium.mojo.system.DataPipe.ConsumerHandle consumer);
-
 
 
     void startReading(
 org.chromium.mojo.system.DataPipe.ProducerHandle producer);
 
 
-
     void flush(
 int mode, 
-FlushResponse callback);
+Flush_Response callback);
 
-    interface FlushResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface Flush_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void drain(
 
-DrainResponse callback);
+Drain_Response callback);
 
-    interface DrainResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface Drain_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void getControlSignals(
 
-GetControlSignalsResponse callback);
+GetControlSignals_Response callback);
 
-    interface GetControlSignalsResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<SerialPortControlSignals> { }
-
+    interface GetControlSignals_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<SerialPortControlSignals> { }
 
 
     void setControlSignals(
 SerialHostControlSignals signals, 
-SetControlSignalsResponse callback);
+SetControlSignals_Response callback);
 
-    interface SetControlSignalsResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface SetControlSignals_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void configurePort(
 SerialConnectionOptions options, 
-ConfigurePortResponse callback);
+ConfigurePort_Response callback);
 
-    interface ConfigurePortResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface ConfigurePort_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void getPortInfo(
 
-GetPortInfoResponse callback);
+GetPortInfo_Response callback);
 
-    interface GetPortInfoResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<SerialConnectionInfo> { }
-
+    interface GetPortInfo_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<SerialConnectionInfo> { }
 
 
     void close(
+boolean flush, 
+Close_Response callback);
 
-CloseResponse callback);
-
-    interface CloseResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
+    interface Close_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
 }

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface PolicyContainerHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,12 @@ public interface PolicyContainerHost extends org.chromium.mojo.bindings.Interfac
 
     Manager<PolicyContainerHost, PolicyContainerHost.Proxy> MANAGER = PolicyContainerHost_Internal.MANAGER;
 
-
     void setReferrerPolicy(
 int referrerPolicy);
 
+
+    void addContentSecurityPolicies(
+org.chromium.network.mojom.ContentSecurityPolicy[] contentSecurityPolicies);
 
 
     void issueKeepAliveHandle(

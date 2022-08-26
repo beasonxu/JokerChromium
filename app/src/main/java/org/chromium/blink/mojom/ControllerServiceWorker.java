@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ControllerServiceWorker extends org.chromium.mojo.bindings.Interface {
 
@@ -23,13 +25,11 @@ public interface ControllerServiceWorker extends org.chromium.mojo.bindings.Inte
 
     Manager<ControllerServiceWorker, ControllerServiceWorker.Proxy> MANAGER = ControllerServiceWorker_Internal.MANAGER;
 
-
     void dispatchFetchEventForSubresource(
 DispatchFetchEventParams params, ServiceWorkerFetchResponseCallback responseCallback, 
-DispatchFetchEventForSubresourceResponse callback);
+DispatchFetchEventForSubresource_Response callback);
 
-    interface DispatchFetchEventForSubresourceResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface DispatchFetchEventForSubresource_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void clone(

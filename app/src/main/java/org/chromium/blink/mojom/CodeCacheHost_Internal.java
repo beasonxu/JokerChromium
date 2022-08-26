@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class CodeCacheHost_Internal {
 
@@ -90,7 +92,7 @@ int cacheType, org.chromium.url.mojom.Url url, org.chromium.mojo_base.mojom.Time
         @Override
         public void fetchCachedCode(
 int cacheType, org.chromium.url.mojom.Url url, 
-FetchCachedCodeResponse callback) {
+FetchCachedCode_Response callback) {
 
             CodeCacheHostFetchCachedCodeParams _message = new CodeCacheHostFetchCachedCodeParams();
 
@@ -517,9 +519,9 @@ org.chromium.url.mojom.Url url, org.chromium.mojo_base.mojom.Time expectedRespon
 
     static class CodeCacheHostFetchCachedCodeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CodeCacheHost.FetchCachedCodeResponse mCallback;
+        private final CodeCacheHost.FetchCachedCode_Response mCallback;
 
-        CodeCacheHostFetchCachedCodeResponseParamsForwardToCallback(CodeCacheHost.FetchCachedCodeResponse callback) {
+        CodeCacheHostFetchCachedCodeResponseParamsForwardToCallback(CodeCacheHost.FetchCachedCode_Response callback) {
             this.mCallback = callback;
         }
 
@@ -544,7 +546,7 @@ org.chromium.url.mojom.Url url, org.chromium.mojo_base.mojom.Time expectedRespon
         }
     }
 
-    static class CodeCacheHostFetchCachedCodeResponseParamsProxyToResponder implements CodeCacheHost.FetchCachedCodeResponse {
+    static class CodeCacheHostFetchCachedCodeResponseParamsProxyToResponder implements CodeCacheHost.FetchCachedCode_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

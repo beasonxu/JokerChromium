@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface P2pTrustedSocketManager extends org.chromium.mojo.bindings.Interface {
 
@@ -23,14 +25,20 @@ public interface P2pTrustedSocketManager extends org.chromium.mojo.bindings.Inte
 
     Manager<P2pTrustedSocketManager, P2pTrustedSocketManager.Proxy> MANAGER = P2pTrustedSocketManager_Internal.MANAGER;
 
-
     void startRtpDump(
 boolean incoming, boolean outgoing);
 
 
-
     void stopRtpDump(
 boolean incoming, boolean outgoing);
+
+
+    void pauseNetworkChangeNotifications(
+);
+
+
+    void resumeNetworkChangeNotifications(
+);
 
 
 }

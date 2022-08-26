@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 @Generated("org.chromium.jni_generator.JniProcessor")
 @MainDex
 @CheckDiscard("crbug.com/993421")
-final class TraceEventJni implements TraceEvent.Natives {
+class TraceEventJni implements TraceEvent.Natives {
   private static TraceEvent.Natives testInstance;
 
   public static final JniStaticTestMocker<TraceEvent.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.base.TraceEvent.Natives>() {
@@ -76,6 +76,27 @@ final class TraceEventJni implements TraceEvent.Natives {
   @Override
   public void finishAsync(String name, long id) {
     GEN_JNI.org_chromium_base_TraceEvent_finishAsync(name, id);
+  }
+
+  @Override
+  public boolean viewHierarchyDumpEnabled() {
+    return (boolean)GEN_JNI.org_chromium_base_TraceEvent_viewHierarchyDumpEnabled();
+  }
+
+  @Override
+  public void initViewHierarchyDump() {
+    GEN_JNI.org_chromium_base_TraceEvent_initViewHierarchyDump();
+  }
+
+  @Override
+  public long startActivityDump(String name, long dumpProtoPtr) {
+    return (long)GEN_JNI.org_chromium_base_TraceEvent_startActivityDump(name, dumpProtoPtr);
+  }
+
+  @Override
+  public void addViewDump(int id, int parentId, boolean isShown, boolean isDirty, String className,
+      String resourceName, long activityProtoPtr) {
+    GEN_JNI.org_chromium_base_TraceEvent_addViewDump(id, parentId, isShown, isDirty, className, resourceName, activityProtoPtr);
   }
 
   public static TraceEvent.Natives get() {

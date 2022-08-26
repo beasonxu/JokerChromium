@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class FileSystemAccessDataTransferToken_Internal {
 
@@ -63,7 +65,7 @@ class FileSystemAccessDataTransferToken_Internal {
         @Override
         public void getInternalId(
 
-GetInternalIdResponse callback) {
+GetInternalId_Response callback) {
 
             FileSystemAccessDataTransferTokenGetInternalIdParams _message = new FileSystemAccessDataTransferTokenGetInternalIdParams();
 
@@ -316,9 +318,9 @@ org.chromium.mojo.bindings.InterfaceRequest<FileSystemAccessDataTransferToken> t
 
     static class FileSystemAccessDataTransferTokenGetInternalIdResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemAccessDataTransferToken.GetInternalIdResponse mCallback;
+        private final FileSystemAccessDataTransferToken.GetInternalId_Response mCallback;
 
-        FileSystemAccessDataTransferTokenGetInternalIdResponseParamsForwardToCallback(FileSystemAccessDataTransferToken.GetInternalIdResponse callback) {
+        FileSystemAccessDataTransferTokenGetInternalIdResponseParamsForwardToCallback(FileSystemAccessDataTransferToken.GetInternalId_Response callback) {
             this.mCallback = callback;
         }
 
@@ -343,7 +345,7 @@ org.chromium.mojo.bindings.InterfaceRequest<FileSystemAccessDataTransferToken> t
         }
     }
 
-    static class FileSystemAccessDataTransferTokenGetInternalIdResponseParamsProxyToResponder implements FileSystemAccessDataTransferToken.GetInternalIdResponse {
+    static class FileSystemAccessDataTransferTokenGetInternalIdResponseParamsProxyToResponder implements FileSystemAccessDataTransferToken.GetInternalId_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

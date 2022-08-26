@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface AssociatedInterfaceProvider extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface AssociatedInterfaceProvider extends org.chromium.mojo.bindings.
     }
 
     Manager<AssociatedInterfaceProvider, AssociatedInterfaceProvider.Proxy> MANAGER = AssociatedInterfaceProvider_Internal.MANAGER;
-
 
     void getAssociatedInterface(
 String name, org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported receiver);

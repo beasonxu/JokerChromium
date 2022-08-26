@@ -13,8 +13,37 @@
 
 package org.chromium.ui.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class EventType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        EventType.UNKNOWN,
+        EventType.KEY_PRESSED,
+        EventType.KEY_RELEASED,
+        EventType.GESTURE_TAP,
+        EventType.GESTURE_SWIPE,
+        EventType.GESTURE_PINCH_BEGIN,
+        EventType.GESTURE_PINCH_END,
+        EventType.GESTURE_PINCH_UPDATE,
+        EventType.SCROLL,
+        EventType.SCROLL_FLING_START,
+        EventType.SCROLL_FLING_CANCEL,
+        EventType.CANCEL_MODE,
+        EventType.MOUSE_PRESSED_EVENT,
+        EventType.MOUSE_DRAGGED_EVENT,
+        EventType.MOUSE_RELEASED_EVENT,
+        EventType.MOUSE_MOVED_EVENT,
+        EventType.MOUSE_ENTERED_EVENT,
+        EventType.MOUSE_EXITED_EVENT,
+        EventType.MOUSE_WHEEL_EVENT,
+        EventType.MOUSE_CAPTURE_CHANGED_EVENT,
+        EventType.TOUCH_RELEASED,
+        EventType.TOUCH_PRESSED,
+        EventType.TOUCH_MOVED,
+        EventType.TOUCH_CANCELLED})
+    public @interface EnumType {}
 
     public static final int UNKNOWN = 0;
     public static final int KEY_PRESSED = 1;

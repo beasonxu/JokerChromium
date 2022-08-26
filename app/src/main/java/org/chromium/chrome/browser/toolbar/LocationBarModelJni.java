@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class LocationBarModelJni implements LocationBarModel.Natives {
+class LocationBarModelJni implements LocationBarModel.Natives {
   private static LocationBarModel.Natives testInstance;
 
   public static final JniStaticTestMocker<LocationBarModel.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.toolbar.LocationBarModel.Natives>() {

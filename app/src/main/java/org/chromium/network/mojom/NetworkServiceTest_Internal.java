@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class NetworkServiceTest_Internal {
 
@@ -53,35 +55,45 @@ class NetworkServiceTest_Internal {
 
     private static final int SIMULATE_NETWORK_QUALITY_CHANGE_ORDINAL = 2;
 
-    private static final int SIMULATE_CRASH_ORDINAL = 3;
+    private static final int FORCE_NETWORK_QUALITY_ESTIMATOR_REPORT_WIFI_AS_SLOW2_G_ORDINAL = 3;
 
-    private static final int MOCK_CERT_VERIFIER_SET_DEFAULT_RESULT_ORDINAL = 4;
+    private static final int SIMULATE_CRASH_ORDINAL = 4;
 
-    private static final int MOCK_CERT_VERIFIER_ADD_RESULT_FOR_CERT_AND_HOST_ORDINAL = 5;
+    private static final int MOCK_CERT_VERIFIER_SET_DEFAULT_RESULT_ORDINAL = 5;
 
-    private static final int SET_REQUIRE_CT_ORDINAL = 6;
+    private static final int MOCK_CERT_VERIFIER_ADD_RESULT_FOR_CERT_AND_HOST_ORDINAL = 6;
 
-    private static final int SET_TRANSPORT_SECURITY_STATE_SOURCE_ORDINAL = 7;
+    private static final int SET_REQUIRE_CT_ORDINAL = 7;
 
-    private static final int SET_ALLOW_NETWORK_ACCESS_TO_HOST_RESOLUTIONS_ORDINAL = 8;
+    private static final int SET_TRANSPORT_SECURITY_STATE_SOURCE_ORDINAL = 8;
 
-    private static final int CRASH_ON_RESOLVE_HOST_ORDINAL = 9;
+    private static final int SET_ALLOW_NETWORK_ACCESS_TO_HOST_RESOLUTIONS_ORDINAL = 9;
 
-    private static final int CRASH_ON_GET_COOKIE_LIST_ORDINAL = 10;
+    private static final int REPLACE_SYSTEM_DNS_CONFIG_ORDINAL = 10;
 
-    private static final int GET_LATEST_MEMORY_PRESSURE_LEVEL_ORDINAL = 11;
+    private static final int SET_TEST_DOH_CONFIG_ORDINAL = 11;
 
-    private static final int GET_PEER_TO_PEER_CONNECTIONS_COUNT_CHANGE_ORDINAL = 12;
+    private static final int CRASH_ON_RESOLVE_HOST_ORDINAL = 12;
 
-    private static final int GET_ENVIRONMENT_VARIABLE_VALUE_ORDINAL = 13;
+    private static final int CRASH_ON_GET_COOKIE_LIST_ORDINAL = 13;
 
-    private static final int LOG_ORDINAL = 14;
+    private static final int GET_LATEST_MEMORY_PRESSURE_LEVEL_ORDINAL = 14;
 
-    private static final int ACTIVATE_FIELD_TRIAL_ORDINAL = 15;
+    private static final int GET_PEER_TO_PEER_CONNECTIONS_COUNT_CHANGE_ORDINAL = 15;
 
-    private static final int SET_EV_POLICY_ORDINAL = 16;
+    private static final int GET_ENVIRONMENT_VARIABLE_VALUE_ORDINAL = 16;
 
-    private static final int GET_FIRST_PARTY_SET_ENTRIES_COUNT_ORDINAL = 17;
+    private static final int LOG_ORDINAL = 17;
+
+    private static final int ACTIVATE_FIELD_TRIAL_ORDINAL = 18;
+
+    private static final int SET_SCT_AUDITING_RETRY_DELAY_ORDINAL = 19;
+
+    private static final int OPEN_FILE_ORDINAL = 20;
+
+    private static final int ENUMERATE_FILES_ORDINAL = 21;
+
+    private static final int CREATE_SIMPLE_CACHE_ORDINAL = 22;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements NetworkServiceTest.Proxy {
@@ -95,7 +107,7 @@ class NetworkServiceTest_Internal {
         @Override
         public void addRules(
 Rule[] rules, 
-AddRulesResponse callback) {
+AddRules_Response callback) {
 
             NetworkServiceTestAddRulesParams _message = new NetworkServiceTestAddRulesParams();
 
@@ -117,7 +129,7 @@ AddRulesResponse callback) {
         @Override
         public void simulateNetworkChange(
 int type, 
-SimulateNetworkChangeResponse callback) {
+SimulateNetworkChange_Response callback) {
 
             NetworkServiceTestSimulateNetworkChangeParams _message = new NetworkServiceTestSimulateNetworkChangeParams();
 
@@ -139,7 +151,7 @@ SimulateNetworkChangeResponse callback) {
         @Override
         public void simulateNetworkQualityChange(
 int type, 
-SimulateNetworkQualityChangeResponse callback) {
+SimulateNetworkQualityChange_Response callback) {
 
             NetworkServiceTestSimulateNetworkQualityChangeParams _message = new NetworkServiceTestSimulateNetworkQualityChangeParams();
 
@@ -154,6 +166,26 @@ SimulateNetworkQualityChangeResponse callback) {
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
                                     0)),
                     new NetworkServiceTestSimulateNetworkQualityChangeResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void forceNetworkQualityEstimatorReportWifiAsSlow2G(
+
+ForceNetworkQualityEstimatorReportWifiAsSlow2G_Response callback) {
+
+            NetworkServiceTestForceNetworkQualityEstimatorReportWifiAsSlow2GParams _message = new NetworkServiceTestForceNetworkQualityEstimatorReportWifiAsSlow2GParams();
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    FORCE_NETWORK_QUALITY_ESTIMATOR_REPORT_WIFI_AS_SLOW2_G_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new NetworkServiceTestForceNetworkQualityEstimatorReportWifiAsSlow2GResponseParamsForwardToCallback(callback));
 
         }
 
@@ -176,7 +208,7 @@ SimulateNetworkQualityChangeResponse callback) {
         @Override
         public void mockCertVerifierSetDefaultResult(
 int defaultResult, 
-MockCertVerifierSetDefaultResultResponse callback) {
+MockCertVerifierSetDefaultResult_Response callback) {
 
             NetworkServiceTestMockCertVerifierSetDefaultResultParams _message = new NetworkServiceTestMockCertVerifierSetDefaultResultParams();
 
@@ -198,7 +230,7 @@ MockCertVerifierSetDefaultResultResponse callback) {
         @Override
         public void mockCertVerifierAddResultForCertAndHost(
 X509Certificate cert, String hostPattern, CertVerifyResult verifyResult, int rv, 
-MockCertVerifierAddResultForCertAndHostResponse callback) {
+MockCertVerifierAddResultForCertAndHost_Response callback) {
 
             NetworkServiceTestMockCertVerifierAddResultForCertAndHostParams _message = new NetworkServiceTestMockCertVerifierAddResultForCertAndHostParams();
 
@@ -226,7 +258,7 @@ MockCertVerifierAddResultForCertAndHostResponse callback) {
         @Override
         public void setRequireCt(
 int required, 
-SetRequireCtResponse callback) {
+SetRequireCt_Response callback) {
 
             NetworkServiceTestSetRequireCtParams _message = new NetworkServiceTestSetRequireCtParams();
 
@@ -248,7 +280,7 @@ SetRequireCtResponse callback) {
         @Override
         public void setTransportSecurityStateSource(
 short reportingPort, 
-SetTransportSecurityStateSourceResponse callback) {
+SetTransportSecurityStateSource_Response callback) {
 
             NetworkServiceTestSetTransportSecurityStateSourceParams _message = new NetworkServiceTestSetTransportSecurityStateSourceParams();
 
@@ -270,7 +302,7 @@ SetTransportSecurityStateSourceResponse callback) {
         @Override
         public void setAllowNetworkAccessToHostResolutions(
 
-SetAllowNetworkAccessToHostResolutionsResponse callback) {
+SetAllowNetworkAccessToHostResolutions_Response callback) {
 
             NetworkServiceTestSetAllowNetworkAccessToHostResolutionsParams _message = new NetworkServiceTestSetAllowNetworkAccessToHostResolutionsParams();
 
@@ -283,6 +315,50 @@ SetAllowNetworkAccessToHostResolutionsResponse callback) {
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
                                     0)),
                     new NetworkServiceTestSetAllowNetworkAccessToHostResolutionsResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void replaceSystemDnsConfig(
+
+ReplaceSystemDnsConfig_Response callback) {
+
+            NetworkServiceTestReplaceSystemDnsConfigParams _message = new NetworkServiceTestReplaceSystemDnsConfigParams();
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    REPLACE_SYSTEM_DNS_CONFIG_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new NetworkServiceTestReplaceSystemDnsConfigResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void setTestDohConfig(
+int secureDnsMode, DnsOverHttpsConfig dohConfig, 
+SetTestDohConfig_Response callback) {
+
+            NetworkServiceTestSetTestDohConfigParams _message = new NetworkServiceTestSetTestDohConfigParams();
+
+            _message.secureDnsMode = secureDnsMode;
+
+            _message.dohConfig = dohConfig;
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    SET_TEST_DOH_CONFIG_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new NetworkServiceTestSetTestDohConfigResponseParamsForwardToCallback(callback));
 
         }
 
@@ -322,7 +398,7 @@ String host) {
         @Override
         public void getLatestMemoryPressureLevel(
 
-GetLatestMemoryPressureLevelResponse callback) {
+GetLatestMemoryPressureLevel_Response callback) {
 
             NetworkServiceTestGetLatestMemoryPressureLevelParams _message = new NetworkServiceTestGetLatestMemoryPressureLevelParams();
 
@@ -342,7 +418,7 @@ GetLatestMemoryPressureLevelResponse callback) {
         @Override
         public void getPeerToPeerConnectionsCountChange(
 
-GetPeerToPeerConnectionsCountChangeResponse callback) {
+GetPeerToPeerConnectionsCountChange_Response callback) {
 
             NetworkServiceTestGetPeerToPeerConnectionsCountChangeParams _message = new NetworkServiceTestGetPeerToPeerConnectionsCountChangeParams();
 
@@ -362,7 +438,7 @@ GetPeerToPeerConnectionsCountChangeResponse callback) {
         @Override
         public void getEnvironmentVariableValue(
 String name, 
-GetEnvironmentVariableValueResponse callback) {
+GetEnvironmentVariableValue_Response callback) {
 
             NetworkServiceTestGetEnvironmentVariableValueParams _message = new NetworkServiceTestGetEnvironmentVariableValueParams();
 
@@ -384,7 +460,7 @@ GetEnvironmentVariableValueResponse callback) {
         @Override
         public void log(
 String message, 
-LogResponse callback) {
+Log_Response callback) {
 
             NetworkServiceTestLogParams _message = new NetworkServiceTestLogParams();
 
@@ -421,45 +497,95 @@ String fieldTrialName) {
 
 
         @Override
-        public void setEvPolicy(
-byte[] fingerprintSha256, String policyOid, 
-SetEvPolicyResponse callback) {
+        public void setSctAuditingRetryDelay(
+org.chromium.mojo_base.mojom.TimeDelta delay, 
+SetSctAuditingRetryDelay_Response callback) {
 
-            NetworkServiceTestSetEvPolicyParams _message = new NetworkServiceTestSetEvPolicyParams();
+            NetworkServiceTestSetSctAuditingRetryDelayParams _message = new NetworkServiceTestSetSctAuditingRetryDelayParams();
 
-            _message.fingerprintSha256 = fingerprintSha256;
-
-            _message.policyOid = policyOid;
+            _message.delay = delay;
 
 
             getProxyHandler().getMessageReceiver().acceptWithResponder(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(
-                                    SET_EV_POLICY_ORDINAL,
+                                    SET_SCT_AUDITING_RETRY_DELAY_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
                                     0)),
-                    new NetworkServiceTestSetEvPolicyResponseParamsForwardToCallback(callback));
+                    new NetworkServiceTestSetSctAuditingRetryDelayResponseParamsForwardToCallback(callback));
 
         }
 
 
         @Override
-        public void getFirstPartySetEntriesCount(
+        public void openFile(
+org.chromium.mojo_base.mojom.FilePath path, 
+OpenFile_Response callback) {
 
-GetFirstPartySetEntriesCountResponse callback) {
+            NetworkServiceTestOpenFileParams _message = new NetworkServiceTestOpenFileParams();
 
-            NetworkServiceTestGetFirstPartySetEntriesCountParams _message = new NetworkServiceTestGetFirstPartySetEntriesCountParams();
+            _message.path = path;
 
 
             getProxyHandler().getMessageReceiver().acceptWithResponder(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(
-                                    GET_FIRST_PARTY_SET_ENTRIES_COUNT_ORDINAL,
+                                    OPEN_FILE_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
                                     0)),
-                    new NetworkServiceTestGetFirstPartySetEntriesCountResponseParamsForwardToCallback(callback));
+                    new NetworkServiceTestOpenFileResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void enumerateFiles(
+org.chromium.mojo_base.mojom.FilePath path, HttpCacheBackendFileOperationsFactory factory, 
+EnumerateFiles_Response callback) {
+
+            NetworkServiceTestEnumerateFilesParams _message = new NetworkServiceTestEnumerateFilesParams();
+
+            _message.path = path;
+
+            _message.factory = factory;
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    ENUMERATE_FILES_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new NetworkServiceTestEnumerateFilesResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void createSimpleCache(
+HttpCacheBackendFileOperationsFactory factory, org.chromium.mojo_base.mojom.FilePath path, boolean reset, 
+CreateSimpleCache_Response callback) {
+
+            NetworkServiceTestCreateSimpleCacheParams _message = new NetworkServiceTestCreateSimpleCacheParams();
+
+            _message.factory = factory;
+
+            _message.path = path;
+
+            _message.reset = reset;
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    CREATE_SIMPLE_CACHE_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new NetworkServiceTestCreateSimpleCacheResponseParamsForwardToCallback(callback));
 
         }
 
@@ -501,6 +627,8 @@ GetFirstPartySetEntriesCountResponse callback) {
 
 
 
+
+
                     case SIMULATE_CRASH_ORDINAL: {
 
                         NetworkServiceTestSimulateCrashParams.deserialize(messageWithHeader.getPayload());
@@ -508,6 +636,10 @@ GetFirstPartySetEntriesCountResponse callback) {
                         getImpl().simulateCrash();
                         return true;
                     }
+
+
+
+
 
 
 
@@ -564,6 +696,10 @@ GetFirstPartySetEntriesCountResponse callback) {
                         getImpl().activateFieldTrial(data.fieldTrialName);
                         return true;
                     }
+
+
+
+
 
 
 
@@ -649,6 +785,20 @@ GetFirstPartySetEntriesCountResponse callback) {
 
 
 
+                    case FORCE_NETWORK_QUALITY_ESTIMATOR_REPORT_WIFI_AS_SLOW2_G_ORDINAL: {
+
+                        NetworkServiceTestForceNetworkQualityEstimatorReportWifiAsSlow2GParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().forceNetworkQualityEstimatorReportWifiAsSlow2G(new NetworkServiceTestForceNetworkQualityEstimatorReportWifiAsSlow2GResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
 
 
                     case MOCK_CERT_VERIFIER_SET_DEFAULT_RESULT_ORDINAL: {
@@ -725,6 +875,35 @@ GetFirstPartySetEntriesCountResponse callback) {
 
 
 
+                    case REPLACE_SYSTEM_DNS_CONFIG_ORDINAL: {
+
+                        NetworkServiceTestReplaceSystemDnsConfigParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().replaceSystemDnsConfig(new NetworkServiceTestReplaceSystemDnsConfigResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
+                    case SET_TEST_DOH_CONFIG_ORDINAL: {
+
+                        NetworkServiceTestSetTestDohConfigParams data =
+                                NetworkServiceTestSetTestDohConfigParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().setTestDohConfig(data.secureDnsMode, data.dohConfig, new NetworkServiceTestSetTestDohConfigResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
 
 
 
@@ -789,12 +968,12 @@ GetFirstPartySetEntriesCountResponse callback) {
 
 
 
-                    case SET_EV_POLICY_ORDINAL: {
+                    case SET_SCT_AUDITING_RETRY_DELAY_ORDINAL: {
 
-                        NetworkServiceTestSetEvPolicyParams data =
-                                NetworkServiceTestSetEvPolicyParams.deserialize(messageWithHeader.getPayload());
+                        NetworkServiceTestSetSctAuditingRetryDelayParams data =
+                                NetworkServiceTestSetSctAuditingRetryDelayParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().setEvPolicy(data.fingerprintSha256, data.policyOid, new NetworkServiceTestSetEvPolicyResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().setSctAuditingRetryDelay(data.delay, new NetworkServiceTestSetSctAuditingRetryDelayResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -804,11 +983,42 @@ GetFirstPartySetEntriesCountResponse callback) {
 
 
 
-                    case GET_FIRST_PARTY_SET_ENTRIES_COUNT_ORDINAL: {
+                    case OPEN_FILE_ORDINAL: {
 
-                        NetworkServiceTestGetFirstPartySetEntriesCountParams.deserialize(messageWithHeader.getPayload());
+                        NetworkServiceTestOpenFileParams data =
+                                NetworkServiceTestOpenFileParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().getFirstPartySetEntriesCount(new NetworkServiceTestGetFirstPartySetEntriesCountResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().openFile(data.path, new NetworkServiceTestOpenFileResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
+                    case ENUMERATE_FILES_ORDINAL: {
+
+                        NetworkServiceTestEnumerateFilesParams data =
+                                NetworkServiceTestEnumerateFilesParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().enumerateFiles(data.path, data.factory, new NetworkServiceTestEnumerateFilesResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
+                    case CREATE_SIMPLE_CACHE_ORDINAL: {
+
+                        NetworkServiceTestCreateSimpleCacheParams data =
+                                NetworkServiceTestCreateSimpleCacheParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().createSimpleCache(data.factory, data.path, data.reset, new NetworkServiceTestCreateSimpleCacheResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -960,9 +1170,9 @@ GetFirstPartySetEntriesCountResponse callback) {
 
     static class NetworkServiceTestAddRulesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkServiceTest.AddRulesResponse mCallback;
+        private final NetworkServiceTest.AddRules_Response mCallback;
 
-        NetworkServiceTestAddRulesResponseParamsForwardToCallback(NetworkServiceTest.AddRulesResponse callback) {
+        NetworkServiceTestAddRulesResponseParamsForwardToCallback(NetworkServiceTest.AddRules_Response callback) {
             this.mCallback = callback;
         }
 
@@ -985,7 +1195,7 @@ GetFirstPartySetEntriesCountResponse callback) {
         }
     }
 
-    static class NetworkServiceTestAddRulesResponseParamsProxyToResponder implements NetworkServiceTest.AddRulesResponse {
+    static class NetworkServiceTestAddRulesResponseParamsProxyToResponder implements NetworkServiceTest.AddRules_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1138,9 +1348,9 @@ GetFirstPartySetEntriesCountResponse callback) {
 
     static class NetworkServiceTestSimulateNetworkChangeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkServiceTest.SimulateNetworkChangeResponse mCallback;
+        private final NetworkServiceTest.SimulateNetworkChange_Response mCallback;
 
-        NetworkServiceTestSimulateNetworkChangeResponseParamsForwardToCallback(NetworkServiceTest.SimulateNetworkChangeResponse callback) {
+        NetworkServiceTestSimulateNetworkChangeResponseParamsForwardToCallback(NetworkServiceTest.SimulateNetworkChange_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1163,7 +1373,7 @@ GetFirstPartySetEntriesCountResponse callback) {
         }
     }
 
-    static class NetworkServiceTestSimulateNetworkChangeResponseParamsProxyToResponder implements NetworkServiceTest.SimulateNetworkChangeResponse {
+    static class NetworkServiceTestSimulateNetworkChangeResponseParamsProxyToResponder implements NetworkServiceTest.SimulateNetworkChange_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1316,9 +1526,9 @@ GetFirstPartySetEntriesCountResponse callback) {
 
     static class NetworkServiceTestSimulateNetworkQualityChangeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkServiceTest.SimulateNetworkQualityChangeResponse mCallback;
+        private final NetworkServiceTest.SimulateNetworkQualityChange_Response mCallback;
 
-        NetworkServiceTestSimulateNetworkQualityChangeResponseParamsForwardToCallback(NetworkServiceTest.SimulateNetworkQualityChangeResponse callback) {
+        NetworkServiceTestSimulateNetworkQualityChangeResponseParamsForwardToCallback(NetworkServiceTest.SimulateNetworkQualityChange_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1341,7 +1551,7 @@ GetFirstPartySetEntriesCountResponse callback) {
         }
     }
 
-    static class NetworkServiceTestSimulateNetworkQualityChangeResponseParamsProxyToResponder implements NetworkServiceTest.SimulateNetworkQualityChangeResponse {
+    static class NetworkServiceTestSimulateNetworkQualityChangeResponseParamsProxyToResponder implements NetworkServiceTest.SimulateNetworkQualityChange_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1365,6 +1575,175 @@ GetFirstPartySetEntriesCountResponse callback) {
                             mCore,
                             new org.chromium.mojo.bindings.MessageHeader(
                                     SIMULATE_NETWORK_QUALITY_CHANGE_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class NetworkServiceTestForceNetworkQualityEstimatorReportWifiAsSlow2GParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private NetworkServiceTestForceNetworkQualityEstimatorReportWifiAsSlow2GParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NetworkServiceTestForceNetworkQualityEstimatorReportWifiAsSlow2GParams() {
+            this(0);
+        }
+
+        public static NetworkServiceTestForceNetworkQualityEstimatorReportWifiAsSlow2GParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NetworkServiceTestForceNetworkQualityEstimatorReportWifiAsSlow2GParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NetworkServiceTestForceNetworkQualityEstimatorReportWifiAsSlow2GParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NetworkServiceTestForceNetworkQualityEstimatorReportWifiAsSlow2GParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NetworkServiceTestForceNetworkQualityEstimatorReportWifiAsSlow2GParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+
+
+    
+    static final class NetworkServiceTestForceNetworkQualityEstimatorReportWifiAsSlow2GResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private NetworkServiceTestForceNetworkQualityEstimatorReportWifiAsSlow2GResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NetworkServiceTestForceNetworkQualityEstimatorReportWifiAsSlow2GResponseParams() {
+            this(0);
+        }
+
+        public static NetworkServiceTestForceNetworkQualityEstimatorReportWifiAsSlow2GResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NetworkServiceTestForceNetworkQualityEstimatorReportWifiAsSlow2GResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NetworkServiceTestForceNetworkQualityEstimatorReportWifiAsSlow2GResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NetworkServiceTestForceNetworkQualityEstimatorReportWifiAsSlow2GResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NetworkServiceTestForceNetworkQualityEstimatorReportWifiAsSlow2GResponseParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+    static class NetworkServiceTestForceNetworkQualityEstimatorReportWifiAsSlow2GResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final NetworkServiceTest.ForceNetworkQualityEstimatorReportWifiAsSlow2G_Response mCallback;
+
+        NetworkServiceTestForceNetworkQualityEstimatorReportWifiAsSlow2GResponseParamsForwardToCallback(NetworkServiceTest.ForceNetworkQualityEstimatorReportWifiAsSlow2G_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(FORCE_NETWORK_QUALITY_ESTIMATOR_REPORT_WIFI_AS_SLOW2_G_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                mCallback.call();
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class NetworkServiceTestForceNetworkQualityEstimatorReportWifiAsSlow2GResponseParamsProxyToResponder implements NetworkServiceTest.ForceNetworkQualityEstimatorReportWifiAsSlow2G_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        NetworkServiceTestForceNetworkQualityEstimatorReportWifiAsSlow2GResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call() {
+            NetworkServiceTestForceNetworkQualityEstimatorReportWifiAsSlow2GResponseParams _response = new NetworkServiceTestForceNetworkQualityEstimatorReportWifiAsSlow2GResponseParams();
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    FORCE_NETWORK_QUALITY_ESTIMATOR_REPORT_WIFI_AS_SLOW2_G_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);
@@ -1548,9 +1927,9 @@ GetFirstPartySetEntriesCountResponse callback) {
 
     static class NetworkServiceTestMockCertVerifierSetDefaultResultResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkServiceTest.MockCertVerifierSetDefaultResultResponse mCallback;
+        private final NetworkServiceTest.MockCertVerifierSetDefaultResult_Response mCallback;
 
-        NetworkServiceTestMockCertVerifierSetDefaultResultResponseParamsForwardToCallback(NetworkServiceTest.MockCertVerifierSetDefaultResultResponse callback) {
+        NetworkServiceTestMockCertVerifierSetDefaultResultResponseParamsForwardToCallback(NetworkServiceTest.MockCertVerifierSetDefaultResult_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1573,7 +1952,7 @@ GetFirstPartySetEntriesCountResponse callback) {
         }
     }
 
-    static class NetworkServiceTestMockCertVerifierSetDefaultResultResponseParamsProxyToResponder implements NetworkServiceTest.MockCertVerifierSetDefaultResultResponse {
+    static class NetworkServiceTestMockCertVerifierSetDefaultResultResponseParamsProxyToResponder implements NetworkServiceTest.MockCertVerifierSetDefaultResult_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1747,9 +2126,9 @@ GetFirstPartySetEntriesCountResponse callback) {
 
     static class NetworkServiceTestMockCertVerifierAddResultForCertAndHostResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkServiceTest.MockCertVerifierAddResultForCertAndHostResponse mCallback;
+        private final NetworkServiceTest.MockCertVerifierAddResultForCertAndHost_Response mCallback;
 
-        NetworkServiceTestMockCertVerifierAddResultForCertAndHostResponseParamsForwardToCallback(NetworkServiceTest.MockCertVerifierAddResultForCertAndHostResponse callback) {
+        NetworkServiceTestMockCertVerifierAddResultForCertAndHostResponseParamsForwardToCallback(NetworkServiceTest.MockCertVerifierAddResultForCertAndHost_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1772,7 +2151,7 @@ GetFirstPartySetEntriesCountResponse callback) {
         }
     }
 
-    static class NetworkServiceTestMockCertVerifierAddResultForCertAndHostResponseParamsProxyToResponder implements NetworkServiceTest.MockCertVerifierAddResultForCertAndHostResponse {
+    static class NetworkServiceTestMockCertVerifierAddResultForCertAndHostResponseParamsProxyToResponder implements NetworkServiceTest.MockCertVerifierAddResultForCertAndHost_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1925,9 +2304,9 @@ GetFirstPartySetEntriesCountResponse callback) {
 
     static class NetworkServiceTestSetRequireCtResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkServiceTest.SetRequireCtResponse mCallback;
+        private final NetworkServiceTest.SetRequireCt_Response mCallback;
 
-        NetworkServiceTestSetRequireCtResponseParamsForwardToCallback(NetworkServiceTest.SetRequireCtResponse callback) {
+        NetworkServiceTestSetRequireCtResponseParamsForwardToCallback(NetworkServiceTest.SetRequireCt_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1950,7 +2329,7 @@ GetFirstPartySetEntriesCountResponse callback) {
         }
     }
 
-    static class NetworkServiceTestSetRequireCtResponseParamsProxyToResponder implements NetworkServiceTest.SetRequireCtResponse {
+    static class NetworkServiceTestSetRequireCtResponseParamsProxyToResponder implements NetworkServiceTest.SetRequireCt_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2101,9 +2480,9 @@ GetFirstPartySetEntriesCountResponse callback) {
 
     static class NetworkServiceTestSetTransportSecurityStateSourceResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkServiceTest.SetTransportSecurityStateSourceResponse mCallback;
+        private final NetworkServiceTest.SetTransportSecurityStateSource_Response mCallback;
 
-        NetworkServiceTestSetTransportSecurityStateSourceResponseParamsForwardToCallback(NetworkServiceTest.SetTransportSecurityStateSourceResponse callback) {
+        NetworkServiceTestSetTransportSecurityStateSourceResponseParamsForwardToCallback(NetworkServiceTest.SetTransportSecurityStateSource_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2126,7 +2505,7 @@ GetFirstPartySetEntriesCountResponse callback) {
         }
     }
 
-    static class NetworkServiceTestSetTransportSecurityStateSourceResponseParamsProxyToResponder implements NetworkServiceTest.SetTransportSecurityStateSourceResponse {
+    static class NetworkServiceTestSetTransportSecurityStateSourceResponseParamsProxyToResponder implements NetworkServiceTest.SetTransportSecurityStateSource_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2270,9 +2649,9 @@ GetFirstPartySetEntriesCountResponse callback) {
 
     static class NetworkServiceTestSetAllowNetworkAccessToHostResolutionsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkServiceTest.SetAllowNetworkAccessToHostResolutionsResponse mCallback;
+        private final NetworkServiceTest.SetAllowNetworkAccessToHostResolutions_Response mCallback;
 
-        NetworkServiceTestSetAllowNetworkAccessToHostResolutionsResponseParamsForwardToCallback(NetworkServiceTest.SetAllowNetworkAccessToHostResolutionsResponse callback) {
+        NetworkServiceTestSetAllowNetworkAccessToHostResolutionsResponseParamsForwardToCallback(NetworkServiceTest.SetAllowNetworkAccessToHostResolutions_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2295,7 +2674,7 @@ GetFirstPartySetEntriesCountResponse callback) {
         }
     }
 
-    static class NetworkServiceTestSetAllowNetworkAccessToHostResolutionsResponseParamsProxyToResponder implements NetworkServiceTest.SetAllowNetworkAccessToHostResolutionsResponse {
+    static class NetworkServiceTestSetAllowNetworkAccessToHostResolutionsResponseParamsProxyToResponder implements NetworkServiceTest.SetAllowNetworkAccessToHostResolutions_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2319,6 +2698,361 @@ GetFirstPartySetEntriesCountResponse callback) {
                             mCore,
                             new org.chromium.mojo.bindings.MessageHeader(
                                     SET_ALLOW_NETWORK_ACCESS_TO_HOST_RESOLUTIONS_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class NetworkServiceTestReplaceSystemDnsConfigParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private NetworkServiceTestReplaceSystemDnsConfigParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NetworkServiceTestReplaceSystemDnsConfigParams() {
+            this(0);
+        }
+
+        public static NetworkServiceTestReplaceSystemDnsConfigParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NetworkServiceTestReplaceSystemDnsConfigParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NetworkServiceTestReplaceSystemDnsConfigParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NetworkServiceTestReplaceSystemDnsConfigParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NetworkServiceTestReplaceSystemDnsConfigParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+
+
+    
+    static final class NetworkServiceTestReplaceSystemDnsConfigResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private NetworkServiceTestReplaceSystemDnsConfigResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NetworkServiceTestReplaceSystemDnsConfigResponseParams() {
+            this(0);
+        }
+
+        public static NetworkServiceTestReplaceSystemDnsConfigResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NetworkServiceTestReplaceSystemDnsConfigResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NetworkServiceTestReplaceSystemDnsConfigResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NetworkServiceTestReplaceSystemDnsConfigResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NetworkServiceTestReplaceSystemDnsConfigResponseParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+    static class NetworkServiceTestReplaceSystemDnsConfigResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final NetworkServiceTest.ReplaceSystemDnsConfig_Response mCallback;
+
+        NetworkServiceTestReplaceSystemDnsConfigResponseParamsForwardToCallback(NetworkServiceTest.ReplaceSystemDnsConfig_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(REPLACE_SYSTEM_DNS_CONFIG_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG)) {
+                    return false;
+                }
+
+                mCallback.call();
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class NetworkServiceTestReplaceSystemDnsConfigResponseParamsProxyToResponder implements NetworkServiceTest.ReplaceSystemDnsConfig_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        NetworkServiceTestReplaceSystemDnsConfigResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call() {
+            NetworkServiceTestReplaceSystemDnsConfigResponseParams _response = new NetworkServiceTestReplaceSystemDnsConfigResponseParams();
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    REPLACE_SYSTEM_DNS_CONFIG_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class NetworkServiceTestSetTestDohConfigParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int secureDnsMode;
+        public DnsOverHttpsConfig dohConfig;
+
+        private NetworkServiceTestSetTestDohConfigParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NetworkServiceTestSetTestDohConfigParams() {
+            this(0);
+        }
+
+        public static NetworkServiceTestSetTestDohConfigParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NetworkServiceTestSetTestDohConfigParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NetworkServiceTestSetTestDohConfigParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NetworkServiceTestSetTestDohConfigParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NetworkServiceTestSetTestDohConfigParams(elementsOrVersion);
+                    {
+                        
+                    result.secureDnsMode = decoder0.readInt(8);
+                        SecureDnsMode.validate(result.secureDnsMode);
+                        result.secureDnsMode = SecureDnsMode.toKnownValue(result.secureDnsMode);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                    result.dohConfig = DnsOverHttpsConfig.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.secureDnsMode, 8);
+            
+            encoder0.encode(this.dohConfig, 16, false);
+        }
+    }
+
+
+
+    
+    static final class NetworkServiceTestSetTestDohConfigResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private NetworkServiceTestSetTestDohConfigResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NetworkServiceTestSetTestDohConfigResponseParams() {
+            this(0);
+        }
+
+        public static NetworkServiceTestSetTestDohConfigResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NetworkServiceTestSetTestDohConfigResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NetworkServiceTestSetTestDohConfigResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NetworkServiceTestSetTestDohConfigResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NetworkServiceTestSetTestDohConfigResponseParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+    static class NetworkServiceTestSetTestDohConfigResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final NetworkServiceTest.SetTestDohConfig_Response mCallback;
+
+        NetworkServiceTestSetTestDohConfigResponseParamsForwardToCallback(NetworkServiceTest.SetTestDohConfig_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(SET_TEST_DOH_CONFIG_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG)) {
+                    return false;
+                }
+
+                mCallback.call();
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class NetworkServiceTestSetTestDohConfigResponseParamsProxyToResponder implements NetworkServiceTest.SetTestDohConfig_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        NetworkServiceTestSetTestDohConfigResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call() {
+            NetworkServiceTestSetTestDohConfigResponseParams _response = new NetworkServiceTestSetTestDohConfigResponseParams();
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    SET_TEST_DOH_CONFIG_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);
@@ -2567,9 +3301,9 @@ GetFirstPartySetEntriesCountResponse callback) {
 
     static class NetworkServiceTestGetLatestMemoryPressureLevelResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkServiceTest.GetLatestMemoryPressureLevelResponse mCallback;
+        private final NetworkServiceTest.GetLatestMemoryPressureLevel_Response mCallback;
 
-        NetworkServiceTestGetLatestMemoryPressureLevelResponseParamsForwardToCallback(NetworkServiceTest.GetLatestMemoryPressureLevelResponse callback) {
+        NetworkServiceTestGetLatestMemoryPressureLevelResponseParamsForwardToCallback(NetworkServiceTest.GetLatestMemoryPressureLevel_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2594,7 +3328,7 @@ GetFirstPartySetEntriesCountResponse callback) {
         }
     }
 
-    static class NetworkServiceTestGetLatestMemoryPressureLevelResponseParamsProxyToResponder implements NetworkServiceTest.GetLatestMemoryPressureLevelResponse {
+    static class NetworkServiceTestGetLatestMemoryPressureLevelResponseParamsProxyToResponder implements NetworkServiceTest.GetLatestMemoryPressureLevel_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2747,9 +3481,9 @@ GetFirstPartySetEntriesCountResponse callback) {
 
     static class NetworkServiceTestGetPeerToPeerConnectionsCountChangeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkServiceTest.GetPeerToPeerConnectionsCountChangeResponse mCallback;
+        private final NetworkServiceTest.GetPeerToPeerConnectionsCountChange_Response mCallback;
 
-        NetworkServiceTestGetPeerToPeerConnectionsCountChangeResponseParamsForwardToCallback(NetworkServiceTest.GetPeerToPeerConnectionsCountChangeResponse callback) {
+        NetworkServiceTestGetPeerToPeerConnectionsCountChangeResponseParamsForwardToCallback(NetworkServiceTest.GetPeerToPeerConnectionsCountChange_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2774,7 +3508,7 @@ GetFirstPartySetEntriesCountResponse callback) {
         }
     }
 
-    static class NetworkServiceTestGetPeerToPeerConnectionsCountChangeResponseParamsProxyToResponder implements NetworkServiceTest.GetPeerToPeerConnectionsCountChangeResponse {
+    static class NetworkServiceTestGetPeerToPeerConnectionsCountChangeResponseParamsProxyToResponder implements NetworkServiceTest.GetPeerToPeerConnectionsCountChange_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2934,9 +3668,9 @@ GetFirstPartySetEntriesCountResponse callback) {
 
     static class NetworkServiceTestGetEnvironmentVariableValueResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkServiceTest.GetEnvironmentVariableValueResponse mCallback;
+        private final NetworkServiceTest.GetEnvironmentVariableValue_Response mCallback;
 
-        NetworkServiceTestGetEnvironmentVariableValueResponseParamsForwardToCallback(NetworkServiceTest.GetEnvironmentVariableValueResponse callback) {
+        NetworkServiceTestGetEnvironmentVariableValueResponseParamsForwardToCallback(NetworkServiceTest.GetEnvironmentVariableValue_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2961,7 +3695,7 @@ GetFirstPartySetEntriesCountResponse callback) {
         }
     }
 
-    static class NetworkServiceTestGetEnvironmentVariableValueResponseParamsProxyToResponder implements NetworkServiceTest.GetEnvironmentVariableValueResponse {
+    static class NetworkServiceTestGetEnvironmentVariableValueResponseParamsProxyToResponder implements NetworkServiceTest.GetEnvironmentVariableValue_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -3114,9 +3848,9 @@ GetFirstPartySetEntriesCountResponse callback) {
 
     static class NetworkServiceTestLogResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkServiceTest.LogResponse mCallback;
+        private final NetworkServiceTest.Log_Response mCallback;
 
-        NetworkServiceTestLogResponseParamsForwardToCallback(NetworkServiceTest.LogResponse callback) {
+        NetworkServiceTestLogResponseParamsForwardToCallback(NetworkServiceTest.Log_Response callback) {
             this.mCallback = callback;
         }
 
@@ -3139,7 +3873,7 @@ GetFirstPartySetEntriesCountResponse callback) {
         }
     }
 
-    static class NetworkServiceTestLogResponseParamsProxyToResponder implements NetworkServiceTest.LogResponse {
+    static class NetworkServiceTestLogResponseParamsProxyToResponder implements NetworkServiceTest.Log_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -3235,23 +3969,22 @@ GetFirstPartySetEntriesCountResponse callback) {
 
 
     
-    static final class NetworkServiceTestSetEvPolicyParams extends org.chromium.mojo.bindings.Struct {
+    static final class NetworkServiceTestSetSctAuditingRetryDelayParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public byte[] fingerprintSha256;
-        public String policyOid;
+        public org.chromium.mojo_base.mojom.TimeDelta delay;
 
-        private NetworkServiceTestSetEvPolicyParams(int version) {
+        private NetworkServiceTestSetSctAuditingRetryDelayParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public NetworkServiceTestSetEvPolicyParams() {
+        public NetworkServiceTestSetSctAuditingRetryDelayParams() {
             this(0);
         }
 
-        public static NetworkServiceTestSetEvPolicyParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static NetworkServiceTestSetSctAuditingRetryDelayParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -3260,29 +3993,26 @@ GetFirstPartySetEntriesCountResponse callback) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static NetworkServiceTestSetEvPolicyParams deserialize(java.nio.ByteBuffer data) {
+        public static NetworkServiceTestSetSctAuditingRetryDelayParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static NetworkServiceTestSetEvPolicyParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static NetworkServiceTestSetSctAuditingRetryDelayParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            NetworkServiceTestSetEvPolicyParams result;
+            NetworkServiceTestSetSctAuditingRetryDelayParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new NetworkServiceTestSetEvPolicyParams(elementsOrVersion);
+                result = new NetworkServiceTestSetSctAuditingRetryDelayParams(elementsOrVersion);
                     {
                         
-                    result.fingerprintSha256 = decoder0.readBytes(8, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, 32);
-                    }
-                    {
-                        
-                    result.policyOid = decoder0.readString(16, false);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, true);
+                    result.delay = org.chromium.mojo_base.mojom.TimeDelta.decode(decoder1);
                     }
 
             } finally {
@@ -3296,30 +4026,28 @@ GetFirstPartySetEntriesCountResponse callback) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.fingerprintSha256, 8, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, 32);
-            
-            encoder0.encode(this.policyOid, 16, false);
+            encoder0.encode(this.delay, 8, true);
         }
     }
 
 
 
     
-    static final class NetworkServiceTestSetEvPolicyResponseParams extends org.chromium.mojo.bindings.Struct {
+    static final class NetworkServiceTestSetSctAuditingRetryDelayResponseParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 8;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
 
-        private NetworkServiceTestSetEvPolicyResponseParams(int version) {
+        private NetworkServiceTestSetSctAuditingRetryDelayResponseParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public NetworkServiceTestSetEvPolicyResponseParams() {
+        public NetworkServiceTestSetSctAuditingRetryDelayResponseParams() {
             this(0);
         }
 
-        public static NetworkServiceTestSetEvPolicyResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static NetworkServiceTestSetSctAuditingRetryDelayResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -3328,22 +4056,22 @@ GetFirstPartySetEntriesCountResponse callback) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static NetworkServiceTestSetEvPolicyResponseParams deserialize(java.nio.ByteBuffer data) {
+        public static NetworkServiceTestSetSctAuditingRetryDelayResponseParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static NetworkServiceTestSetEvPolicyResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static NetworkServiceTestSetSctAuditingRetryDelayResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            NetworkServiceTestSetEvPolicyResponseParams result;
+            NetworkServiceTestSetSctAuditingRetryDelayResponseParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new NetworkServiceTestSetEvPolicyResponseParams(elementsOrVersion);
+                result = new NetworkServiceTestSetSctAuditingRetryDelayResponseParams(elementsOrVersion);
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -3358,11 +4086,11 @@ GetFirstPartySetEntriesCountResponse callback) {
         }
     }
 
-    static class NetworkServiceTestSetEvPolicyResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+    static class NetworkServiceTestSetSctAuditingRetryDelayResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkServiceTest.SetEvPolicyResponse mCallback;
+        private final NetworkServiceTest.SetSctAuditingRetryDelay_Response mCallback;
 
-        NetworkServiceTestSetEvPolicyResponseParamsForwardToCallback(NetworkServiceTest.SetEvPolicyResponse callback) {
+        NetworkServiceTestSetSctAuditingRetryDelayResponseParamsForwardToCallback(NetworkServiceTest.SetSctAuditingRetryDelay_Response callback) {
             this.mCallback = callback;
         }
 
@@ -3372,7 +4100,7 @@ GetFirstPartySetEntriesCountResponse callback) {
                 org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
                         message.asServiceMessage();
                 org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
-                if (!header.validateHeader(SET_EV_POLICY_ORDINAL,
+                if (!header.validateHeader(SET_SCT_AUDITING_RETRY_DELAY_ORDINAL,
                                            org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG)) {
                     return false;
                 }
@@ -3385,13 +4113,13 @@ GetFirstPartySetEntriesCountResponse callback) {
         }
     }
 
-    static class NetworkServiceTestSetEvPolicyResponseParamsProxyToResponder implements NetworkServiceTest.SetEvPolicyResponse {
+    static class NetworkServiceTestSetSctAuditingRetryDelayResponseParamsProxyToResponder implements NetworkServiceTest.SetSctAuditingRetryDelay_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
         private final long mRequestId;
 
-        NetworkServiceTestSetEvPolicyResponseParamsProxyToResponder(
+        NetworkServiceTestSetSctAuditingRetryDelayResponseParamsProxyToResponder(
                 org.chromium.mojo.system.Core core,
                 org.chromium.mojo.bindings.MessageReceiver messageReceiver,
                 long requestId) {
@@ -3402,13 +4130,13 @@ GetFirstPartySetEntriesCountResponse callback) {
 
         @Override
         public void call() {
-            NetworkServiceTestSetEvPolicyResponseParams _response = new NetworkServiceTestSetEvPolicyResponseParams();
+            NetworkServiceTestSetSctAuditingRetryDelayResponseParams _response = new NetworkServiceTestSetSctAuditingRetryDelayResponseParams();
 
             org.chromium.mojo.bindings.ServiceMessage _message =
                     _response.serializeWithHeader(
                             mCore,
                             new org.chromium.mojo.bindings.MessageHeader(
-                                    SET_EV_POLICY_ORDINAL,
+                                    SET_SCT_AUDITING_RETRY_DELAY_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);
@@ -3418,78 +4146,22 @@ GetFirstPartySetEntriesCountResponse callback) {
 
 
     
-    static final class NetworkServiceTestGetFirstPartySetEntriesCountParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 8;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-
-        private NetworkServiceTestGetFirstPartySetEntriesCountParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public NetworkServiceTestGetFirstPartySetEntriesCountParams() {
-            this(0);
-        }
-
-        public static NetworkServiceTestGetFirstPartySetEntriesCountParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static NetworkServiceTestGetFirstPartySetEntriesCountParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static NetworkServiceTestGetFirstPartySetEntriesCountParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            NetworkServiceTestGetFirstPartySetEntriesCountParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new NetworkServiceTestGetFirstPartySetEntriesCountParams(elementsOrVersion);
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-        }
-    }
-
-
-
-    
-    static final class NetworkServiceTestGetFirstPartySetEntriesCountResponseParams extends org.chromium.mojo.bindings.Struct {
+    static final class NetworkServiceTestOpenFileParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public long entries;
+        public org.chromium.mojo_base.mojom.FilePath path;
 
-        private NetworkServiceTestGetFirstPartySetEntriesCountResponseParams(int version) {
+        private NetworkServiceTestOpenFileParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public NetworkServiceTestGetFirstPartySetEntriesCountResponseParams() {
+        public NetworkServiceTestOpenFileParams() {
             this(0);
         }
 
-        public static NetworkServiceTestGetFirstPartySetEntriesCountResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static NetworkServiceTestOpenFileParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -3498,25 +4170,26 @@ GetFirstPartySetEntriesCountResponse callback) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static NetworkServiceTestGetFirstPartySetEntriesCountResponseParams deserialize(java.nio.ByteBuffer data) {
+        public static NetworkServiceTestOpenFileParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static NetworkServiceTestGetFirstPartySetEntriesCountResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static NetworkServiceTestOpenFileParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            NetworkServiceTestGetFirstPartySetEntriesCountResponseParams result;
+            NetworkServiceTestOpenFileParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new NetworkServiceTestGetFirstPartySetEntriesCountResponseParams(elementsOrVersion);
+                result = new NetworkServiceTestOpenFileParams(elementsOrVersion);
                     {
                         
-                    result.entries = decoder0.readLong(8);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.path = org.chromium.mojo_base.mojom.FilePath.decode(decoder1);
                     }
 
             } finally {
@@ -3530,15 +4203,78 @@ GetFirstPartySetEntriesCountResponse callback) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.entries, 8);
+            encoder0.encode(this.path, 8, false);
         }
     }
 
-    static class NetworkServiceTestGetFirstPartySetEntriesCountResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
-            implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkServiceTest.GetFirstPartySetEntriesCountResponse mCallback;
 
-        NetworkServiceTestGetFirstPartySetEntriesCountResponseParamsForwardToCallback(NetworkServiceTest.GetFirstPartySetEntriesCountResponse callback) {
+
+    
+    static final class NetworkServiceTestOpenFileResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public boolean result;
+
+        private NetworkServiceTestOpenFileResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NetworkServiceTestOpenFileResponseParams() {
+            this(0);
+        }
+
+        public static NetworkServiceTestOpenFileResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NetworkServiceTestOpenFileResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NetworkServiceTestOpenFileResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NetworkServiceTestOpenFileResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NetworkServiceTestOpenFileResponseParams(elementsOrVersion);
+                    {
+                        
+                    result.result = decoder0.readBoolean(8, 0);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.result, 8, 0);
+        }
+    }
+
+    static class NetworkServiceTestOpenFileResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final NetworkServiceTest.OpenFile_Response mCallback;
+
+        NetworkServiceTestOpenFileResponseParamsForwardToCallback(NetworkServiceTest.OpenFile_Response callback) {
             this.mCallback = callback;
         }
 
@@ -3548,14 +4284,14 @@ GetFirstPartySetEntriesCountResponse callback) {
                 org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
                         message.asServiceMessage();
                 org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
-                if (!header.validateHeader(GET_FIRST_PARTY_SET_ENTRIES_COUNT_ORDINAL,
-                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG)) {
+                if (!header.validateHeader(OPEN_FILE_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
                     return false;
                 }
 
-                NetworkServiceTestGetFirstPartySetEntriesCountResponseParams response = NetworkServiceTestGetFirstPartySetEntriesCountResponseParams.deserialize(messageWithHeader.getPayload());
+                NetworkServiceTestOpenFileResponseParams response = NetworkServiceTestOpenFileResponseParams.deserialize(messageWithHeader.getPayload());
 
-                mCallback.call(response.entries);
+                mCallback.call(response.result);
                 return true;
             } catch (org.chromium.mojo.bindings.DeserializationException e) {
                 return false;
@@ -3563,13 +4299,13 @@ GetFirstPartySetEntriesCountResponse callback) {
         }
     }
 
-    static class NetworkServiceTestGetFirstPartySetEntriesCountResponseParamsProxyToResponder implements NetworkServiceTest.GetFirstPartySetEntriesCountResponse {
+    static class NetworkServiceTestOpenFileResponseParamsProxyToResponder implements NetworkServiceTest.OpenFile_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
         private final long mRequestId;
 
-        NetworkServiceTestGetFirstPartySetEntriesCountResponseParamsProxyToResponder(
+        NetworkServiceTestOpenFileResponseParamsProxyToResponder(
                 org.chromium.mojo.system.Core core,
                 org.chromium.mojo.bindings.MessageReceiver messageReceiver,
                 long requestId) {
@@ -3579,17 +4315,440 @@ GetFirstPartySetEntriesCountResponse callback) {
         }
 
         @Override
-        public void call(Long entries) {
-            NetworkServiceTestGetFirstPartySetEntriesCountResponseParams _response = new NetworkServiceTestGetFirstPartySetEntriesCountResponseParams();
+        public void call(Boolean result) {
+            NetworkServiceTestOpenFileResponseParams _response = new NetworkServiceTestOpenFileResponseParams();
 
-            _response.entries = entries;
+            _response.result = result;
 
             org.chromium.mojo.bindings.ServiceMessage _message =
                     _response.serializeWithHeader(
                             mCore,
                             new org.chromium.mojo.bindings.MessageHeader(
-                                    GET_FIRST_PARTY_SET_ENTRIES_COUNT_ORDINAL,
-                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG,
+                                    OPEN_FILE_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class NetworkServiceTestEnumerateFilesParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.mojo_base.mojom.FilePath path;
+        public HttpCacheBackendFileOperationsFactory factory;
+
+        private NetworkServiceTestEnumerateFilesParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NetworkServiceTestEnumerateFilesParams() {
+            this(0);
+        }
+
+        public static NetworkServiceTestEnumerateFilesParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NetworkServiceTestEnumerateFilesParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NetworkServiceTestEnumerateFilesParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NetworkServiceTestEnumerateFilesParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NetworkServiceTestEnumerateFilesParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.path = org.chromium.mojo_base.mojom.FilePath.decode(decoder1);
+                    }
+                    {
+                        
+                    result.factory = decoder0.readServiceInterface(16, false, HttpCacheBackendFileOperationsFactory.MANAGER);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.path, 8, false);
+            
+            encoder0.encode(this.factory, 16, false, HttpCacheBackendFileOperationsFactory.MANAGER);
+        }
+    }
+
+
+
+    
+    static final class NetworkServiceTestEnumerateFilesResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public FileEnumerationEntry[] entries;
+        public boolean error;
+
+        private NetworkServiceTestEnumerateFilesResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NetworkServiceTestEnumerateFilesResponseParams() {
+            this(0);
+        }
+
+        public static NetworkServiceTestEnumerateFilesResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NetworkServiceTestEnumerateFilesResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NetworkServiceTestEnumerateFilesResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NetworkServiceTestEnumerateFilesResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NetworkServiceTestEnumerateFilesResponseParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    {
+                        org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                        result.entries = new FileEnumerationEntry[si1.elementsOrVersion];
+                        for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
+                            
+                            org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                            result.entries[i1] = FileEnumerationEntry.decode(decoder2);
+                        }
+                    }
+                    }
+                    {
+                        
+                    result.error = decoder0.readBoolean(16, 0);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            if (this.entries == null) {
+                encoder0.encodeNullPointer(8, false);
+            } else {
+                org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.entries.length, 8, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                for (int i0 = 0; i0 < this.entries.length; ++i0) {
+                    
+                    encoder1.encode(this.entries[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
+                }
+            }
+            
+            encoder0.encode(this.error, 16, 0);
+        }
+    }
+
+    static class NetworkServiceTestEnumerateFilesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final NetworkServiceTest.EnumerateFiles_Response mCallback;
+
+        NetworkServiceTestEnumerateFilesResponseParamsForwardToCallback(NetworkServiceTest.EnumerateFiles_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(ENUMERATE_FILES_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                NetworkServiceTestEnumerateFilesResponseParams response = NetworkServiceTestEnumerateFilesResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.entries, response.error);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class NetworkServiceTestEnumerateFilesResponseParamsProxyToResponder implements NetworkServiceTest.EnumerateFiles_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        NetworkServiceTestEnumerateFilesResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(FileEnumerationEntry[] entries, Boolean error) {
+            NetworkServiceTestEnumerateFilesResponseParams _response = new NetworkServiceTestEnumerateFilesResponseParams();
+
+            _response.entries = entries;
+
+            _response.error = error;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    ENUMERATE_FILES_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class NetworkServiceTestCreateSimpleCacheParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public HttpCacheBackendFileOperationsFactory factory;
+        public org.chromium.mojo_base.mojom.FilePath path;
+        public boolean reset;
+
+        private NetworkServiceTestCreateSimpleCacheParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NetworkServiceTestCreateSimpleCacheParams() {
+            this(0);
+        }
+
+        public static NetworkServiceTestCreateSimpleCacheParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NetworkServiceTestCreateSimpleCacheParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NetworkServiceTestCreateSimpleCacheParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NetworkServiceTestCreateSimpleCacheParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NetworkServiceTestCreateSimpleCacheParams(elementsOrVersion);
+                    {
+                        
+                    result.factory = decoder0.readServiceInterface(8, false, HttpCacheBackendFileOperationsFactory.MANAGER);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                    result.path = org.chromium.mojo_base.mojom.FilePath.decode(decoder1);
+                    }
+                    {
+                        
+                    result.reset = decoder0.readBoolean(24, 0);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.factory, 8, false, HttpCacheBackendFileOperationsFactory.MANAGER);
+            
+            encoder0.encode(this.path, 16, false);
+            
+            encoder0.encode(this.reset, 24, 0);
+        }
+    }
+
+
+
+    
+    static final class NetworkServiceTestCreateSimpleCacheResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public SimpleCache backend;
+
+        private NetworkServiceTestCreateSimpleCacheResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NetworkServiceTestCreateSimpleCacheResponseParams() {
+            this(0);
+        }
+
+        public static NetworkServiceTestCreateSimpleCacheResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NetworkServiceTestCreateSimpleCacheResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NetworkServiceTestCreateSimpleCacheResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NetworkServiceTestCreateSimpleCacheResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NetworkServiceTestCreateSimpleCacheResponseParams(elementsOrVersion);
+                    {
+                        
+                    result.backend = decoder0.readServiceInterface(8, true, SimpleCache.MANAGER);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.backend, 8, true, SimpleCache.MANAGER);
+        }
+    }
+
+    static class NetworkServiceTestCreateSimpleCacheResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final NetworkServiceTest.CreateSimpleCache_Response mCallback;
+
+        NetworkServiceTestCreateSimpleCacheResponseParamsForwardToCallback(NetworkServiceTest.CreateSimpleCache_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(CREATE_SIMPLE_CACHE_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                NetworkServiceTestCreateSimpleCacheResponseParams response = NetworkServiceTestCreateSimpleCacheResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.backend);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class NetworkServiceTestCreateSimpleCacheResponseParamsProxyToResponder implements NetworkServiceTest.CreateSimpleCache_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        NetworkServiceTestCreateSimpleCacheResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(SimpleCache backend) {
+            NetworkServiceTestCreateSimpleCacheResponseParams _response = new NetworkServiceTestCreateSimpleCacheResponseParams();
+
+            _response.backend = backend;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    CREATE_SIMPLE_CACHE_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);
         }

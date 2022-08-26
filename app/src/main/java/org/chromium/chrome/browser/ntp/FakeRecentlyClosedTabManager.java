@@ -6,7 +6,7 @@ package org.chromium.chrome.browser.ntp;
 
 import androidx.annotation.Nullable;
 
-import org.chromium.chrome.browser.tab.Tab;
+import org.chromium.chrome.browser.tabmodel.TabModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,43 +16,61 @@ import java.util.List;
  */
 public class FakeRecentlyClosedTabManager implements RecentlyClosedTabManager {
     @Nullable
-    private Runnable mTabsUpdatedRunnable;
-    private List<RecentlyClosedTab> mTabs = new ArrayList<>();
+    private Runnable mEntriesUpdatedRunnable;
+    private List<RecentlyClosedEntry> mTabs = new ArrayList<>();
+
+    public FakeRecentlyClosedTabManager() {
+        mEntriesUpdatedRunnable = null;
+    }
 
     @Override
-    public void setTabsUpdatedRunnable(@Nullable Runnable runnable) {
-        mTabsUpdatedRunnable = runnable;
+    public void setEntriesUpdatedRunnable(@Nullable Runnable runnable) {
+        mEntriesUpdatedRunnable = runnable;
     }
 
     @Override
     public List<RecentlyClosedTab> getRecentlyClosedTabs(int maxTabCount) {
         List<RecentlyClosedTab> tabs = new ArrayList<>();
         for (int i = 0; i < maxTabCount && i < mTabs.size(); i++) {
-            tabs.add(mTabs.get(i));
+            tabs.add((RecentlyClosedTab) mTabs.get(i));
         }
         return tabs;
     }
 
     @Override
+    public List<RecentlyClosedEntry> getRecentlyClosedEntries(int maxEntryCount) {
+        List<RecentlyClosedEntry> entries = new ArrayList<>();
+        for (int i = 0; i < maxEntryCount && i < mTabs.size(); i++) {
+            entries.add(mTabs.get(i));
+        }
+        return entries;
+    }
+
+    @Override
     public boolean openRecentlyClosedTab(
-            Tab tab, RecentlyClosedTab recentTab, int windowOpenDisposition) {
+            TabModel tabModel, RecentlyClosedTab recentTab, int windowOpenDisposition) {
         return false;
     }
 
     @Override
-    public void openRecentlyClosedTab() {}
+    public boolean openRecentlyClosedEntry(TabModel tabModel, RecentlyClosedEntry recentEntry) {
+        return false;
+    }
 
     @Override
-    public void clearRecentlyClosedTabs() {
+    public void openMostRecentlyClosedEntry(TabModel tabModel) {}
+
+    @Override
+    public void clearRecentlyClosedEntries() {
         mTabs.clear();
-        if (mTabsUpdatedRunnable != null) mTabsUpdatedRunnable.run();
+        if (mEntriesUpdatedRunnable != null) mEntriesUpdatedRunnable.run();
     }
 
     @Override
     public void destroy() {}
 
-    public void setRecentlyClosedTabs(List<RecentlyClosedTab> tabs) {
+    public void setRecentlyClosedEntries(List<RecentlyClosedEntry> tabs) {
         mTabs = new ArrayList<>(tabs);
-        if (mTabsUpdatedRunnable != null) mTabsUpdatedRunnable.run();
+        if (mEntriesUpdatedRunnable != null) mEntriesUpdatedRunnable.run();
     }
 }

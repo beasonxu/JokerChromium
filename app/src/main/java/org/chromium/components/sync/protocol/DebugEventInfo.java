@@ -289,72 +289,6 @@ public  final class DebugEventInfo extends
     datatypesNotifiedFromServer_ = emptyIntList();
   }
 
-  public static final int DATATYPE_ASSOCIATION_STATS_FIELD_NUMBER = 5;
-  private org.chromium.components.sync.protocol.DatatypeAssociationStats datatypeAssociationStats_;
-  /**
-   * <pre>
-   * A datatype finished model association.
-   * </pre>
-   *
-   * <code>optional .sync_pb.DatatypeAssociationStats datatype_association_stats = 5;</code>
-   */
-  @java.lang.Override
-  public boolean hasDatatypeAssociationStats() {
-    return ((bitField0_ & 0x00000008) != 0);
-  }
-  /**
-   * <pre>
-   * A datatype finished model association.
-   * </pre>
-   *
-   * <code>optional .sync_pb.DatatypeAssociationStats datatype_association_stats = 5;</code>
-   */
-  @java.lang.Override
-  public org.chromium.components.sync.protocol.DatatypeAssociationStats getDatatypeAssociationStats() {
-    return datatypeAssociationStats_ == null ? org.chromium.components.sync.protocol.DatatypeAssociationStats.getDefaultInstance() : datatypeAssociationStats_;
-  }
-  /**
-   * <pre>
-   * A datatype finished model association.
-   * </pre>
-   *
-   * <code>optional .sync_pb.DatatypeAssociationStats datatype_association_stats = 5;</code>
-   */
-  private void setDatatypeAssociationStats(org.chromium.components.sync.protocol.DatatypeAssociationStats value) {
-    value.getClass();
-  datatypeAssociationStats_ = value;
-    bitField0_ |= 0x00000008;
-    }
-  /**
-   * <pre>
-   * A datatype finished model association.
-   * </pre>
-   *
-   * <code>optional .sync_pb.DatatypeAssociationStats datatype_association_stats = 5;</code>
-   */
-  @java.lang.SuppressWarnings({"ReferenceEquality"})
-  private void mergeDatatypeAssociationStats(org.chromium.components.sync.protocol.DatatypeAssociationStats value) {
-    value.getClass();
-  if (datatypeAssociationStats_ != null &&
-        datatypeAssociationStats_ != org.chromium.components.sync.protocol.DatatypeAssociationStats.getDefaultInstance()) {
-      datatypeAssociationStats_ =
-        org.chromium.components.sync.protocol.DatatypeAssociationStats.newBuilder(datatypeAssociationStats_).mergeFrom(value).buildPartial();
-    } else {
-      datatypeAssociationStats_ = value;
-    }
-    bitField0_ |= 0x00000008;
-  }
-  /**
-   * <pre>
-   * A datatype finished model association.
-   * </pre>
-   *
-   * <code>optional .sync_pb.DatatypeAssociationStats datatype_association_stats = 5;</code>
-   */
-  private void clearDatatypeAssociationStats() {  datatypeAssociationStats_ = null;
-    bitField0_ = (bitField0_ & ~0x00000008);
-  }
-
   public static org.chromium.components.sync.protocol.DebugEventInfo parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -730,77 +664,6 @@ public  final class DebugEventInfo extends
       return this;
     }
 
-    /**
-     * <pre>
-     * A datatype finished model association.
-     * </pre>
-     *
-     * <code>optional .sync_pb.DatatypeAssociationStats datatype_association_stats = 5;</code>
-     */
-    @java.lang.Override
-    public boolean hasDatatypeAssociationStats() {
-      return instance.hasDatatypeAssociationStats();
-    }
-    /**
-     * <pre>
-     * A datatype finished model association.
-     * </pre>
-     *
-     * <code>optional .sync_pb.DatatypeAssociationStats datatype_association_stats = 5;</code>
-     */
-    @java.lang.Override
-    public org.chromium.components.sync.protocol.DatatypeAssociationStats getDatatypeAssociationStats() {
-      return instance.getDatatypeAssociationStats();
-    }
-    /**
-     * <pre>
-     * A datatype finished model association.
-     * </pre>
-     *
-     * <code>optional .sync_pb.DatatypeAssociationStats datatype_association_stats = 5;</code>
-     */
-    public Builder setDatatypeAssociationStats(org.chromium.components.sync.protocol.DatatypeAssociationStats value) {
-      copyOnWrite();
-      instance.setDatatypeAssociationStats(value);
-      return this;
-      }
-    /**
-     * <pre>
-     * A datatype finished model association.
-     * </pre>
-     *
-     * <code>optional .sync_pb.DatatypeAssociationStats datatype_association_stats = 5;</code>
-     */
-    public Builder setDatatypeAssociationStats(
-        org.chromium.components.sync.protocol.DatatypeAssociationStats.Builder builderForValue) {
-      copyOnWrite();
-      instance.setDatatypeAssociationStats(builderForValue.build());
-      return this;
-    }
-    /**
-     * <pre>
-     * A datatype finished model association.
-     * </pre>
-     *
-     * <code>optional .sync_pb.DatatypeAssociationStats datatype_association_stats = 5;</code>
-     */
-    public Builder mergeDatatypeAssociationStats(org.chromium.components.sync.protocol.DatatypeAssociationStats value) {
-      copyOnWrite();
-      instance.mergeDatatypeAssociationStats(value);
-      return this;
-    }
-    /**
-     * <pre>
-     * A datatype finished model association.
-     * </pre>
-     *
-     * <code>optional .sync_pb.DatatypeAssociationStats datatype_association_stats = 5;</code>
-     */
-    public Builder clearDatatypeAssociationStats() {  copyOnWrite();
-      instance.clearDatatypeAssociationStats();
-      return this;
-    }
-
     // @@protoc_insertion_point(builder_scope:sync_pb.DebugEventInfo)
   }
   private byte memoizedIsInitialized = 2;
@@ -824,11 +687,10 @@ public  final class DebugEventInfo extends
             "syncCycleCompletedEventInfo_",
             "nudgingDatatype_",
             "datatypesNotifiedFromServer_",
-            "datatypeAssociationStats_",
           };
           java.lang.String info =
-              "\u0001\u0005\u0000\u0001\u0001\u0005\u0005\u0000\u0001\u0001\u0001\u100c\u0000\u0002" +
-              "\u1409\u0001\u0003\u1004\u0002\u0004\u0016\u0005\u1009\u0003";
+              "\u0001\u0004\u0000\u0001\u0001\u0004\u0004\u0000\u0001\u0001\u0001\u100c\u0000\u0002" +
+              "\u1409\u0001\u0003\u1004\u0002\u0004\u0016";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

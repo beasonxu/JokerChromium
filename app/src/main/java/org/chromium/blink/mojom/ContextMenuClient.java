@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ContextMenuClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface ContextMenuClient extends org.chromium.mojo.bindings.Interface 
 
     Manager<ContextMenuClient, ContextMenuClient.Proxy> MANAGER = ContextMenuClient_Internal.MANAGER;
 
-
     void customContextMenuAction(
 int action);
-
 
 
     void contextMenuClosed(

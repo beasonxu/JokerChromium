@@ -13,8 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class SelectionMenuBehavior {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        SelectionMenuBehavior.HIDE,
+        SelectionMenuBehavior.SHOW})
+    public @interface EnumType {}
 
     public static final int HIDE = 0;
     public static final int SHOW = 1;

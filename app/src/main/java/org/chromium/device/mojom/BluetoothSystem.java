@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface BluetoothSystem extends org.chromium.mojo.bindings.Interface {
 
@@ -20,6 +22,14 @@ public interface BluetoothSystem extends org.chromium.mojo.bindings.Interface {
 
     public static final class State {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            State.UNSUPPORTED,
+            State.UNAVAILABLE,
+            State.POWERED_OFF,
+            State.TRANSITIONING,
+            State.POWERED_ON})
+        public @interface EnumType {}
 
         public static final int UNSUPPORTED = 0;
         public static final int UNAVAILABLE = 1;
@@ -48,6 +58,13 @@ public interface BluetoothSystem extends org.chromium.mojo.bindings.Interface {
 
     public static final class SetPoweredResult {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            SetPoweredResult.SUCCESS,
+            SetPoweredResult.FAILED_UNKNOWN_REASON,
+            SetPoweredResult.FAILED_BLUETOOTH_UNAVAILABLE,
+            SetPoweredResult.FAILED_IN_PROGRESS})
+        public @interface EnumType {}
 
         public static final int SUCCESS = 0;
         public static final int FAILED_UNKNOWN_REASON = 1;
@@ -75,6 +92,12 @@ public interface BluetoothSystem extends org.chromium.mojo.bindings.Interface {
 
     public static final class ScanState {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            ScanState.NOT_SCANNING,
+            ScanState.TRANSITIONING,
+            ScanState.SCANNING})
+        public @interface EnumType {}
 
         public static final int NOT_SCANNING = 0;
         public static final int TRANSITIONING = 1;
@@ -101,6 +124,12 @@ public interface BluetoothSystem extends org.chromium.mojo.bindings.Interface {
 
     public static final class StartScanResult {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            StartScanResult.SUCCESS,
+            StartScanResult.FAILED_UNKNOWN_REASON,
+            StartScanResult.FAILED_BLUETOOTH_UNAVAILABLE})
+        public @interface EnumType {}
 
         public static final int SUCCESS = 0;
         public static final int FAILED_UNKNOWN_REASON = 1;
@@ -127,6 +156,12 @@ public interface BluetoothSystem extends org.chromium.mojo.bindings.Interface {
 
     public static final class StopScanResult {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            StopScanResult.SUCCESS,
+            StopScanResult.FAILED_UNKNOWN_REASON,
+            StopScanResult.FAILED_BLUETOOTH_UNAVAILABLE})
+        public @interface EnumType {}
 
         public static final int SUCCESS = 0;
         public static final int FAILED_UNKNOWN_REASON = 1;
@@ -156,52 +191,46 @@ public interface BluetoothSystem extends org.chromium.mojo.bindings.Interface {
 
     Manager<BluetoothSystem, BluetoothSystem.Proxy> MANAGER = BluetoothSystem_Internal.MANAGER;
 
-
     void getState(
 
-GetStateResponse callback);
+GetState_Response callback);
 
-    interface GetStateResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface GetState_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void setPowered(
 boolean powered, 
-SetPoweredResponse callback);
+SetPowered_Response callback);
 
-    interface SetPoweredResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface SetPowered_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void getScanState(
 
-GetScanStateResponse callback);
+GetScanState_Response callback);
 
-    interface GetScanStateResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface GetScanState_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void startScan(
 
-StartScanResponse callback);
+StartScan_Response callback);
 
-    interface StartScanResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface StartScan_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void stopScan(
 
-StopScanResponse callback);
+StopScan_Response callback);
 
-    interface StopScanResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface StopScan_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void getAvailableDevices(
 
-GetAvailableDevicesResponse callback);
+GetAvailableDevices_Response callback);
 
-    interface GetAvailableDevicesResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<BluetoothDeviceInfo[]> { }
+    interface GetAvailableDevices_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<BluetoothDeviceInfo[]> { }
 
 
 }

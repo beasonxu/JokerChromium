@@ -13,6 +13,8 @@
 
 package org.chromium.payments.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class PaymentHandlerHost_Internal {
 
@@ -65,7 +67,7 @@ class PaymentHandlerHost_Internal {
         @Override
         public void changePaymentMethod(
 PaymentHandlerMethodData methodData, 
-ChangePaymentMethodResponse callback) {
+ChangePaymentMethod_Response callback) {
 
             PaymentHandlerHostChangePaymentMethodParams _message = new PaymentHandlerHostChangePaymentMethodParams();
 
@@ -87,7 +89,7 @@ ChangePaymentMethodResponse callback) {
         @Override
         public void changeShippingOption(
 String shippingOptionId, 
-ChangeShippingOptionResponse callback) {
+ChangeShippingOption_Response callback) {
 
             PaymentHandlerHostChangeShippingOptionParams _message = new PaymentHandlerHostChangeShippingOptionParams();
 
@@ -109,7 +111,7 @@ ChangeShippingOptionResponse callback) {
         @Override
         public void changeShippingAddress(
 PaymentAddress shippingAddress, 
-ChangeShippingAddressResponse callback) {
+ChangeShippingAddress_Response callback) {
 
             PaymentHandlerHostChangeShippingAddressParams _message = new PaymentHandlerHostChangeShippingAddressParams();
 
@@ -375,9 +377,9 @@ ChangeShippingAddressResponse callback) {
 
     static class PaymentHandlerHostChangePaymentMethodResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PaymentHandlerHost.ChangePaymentMethodResponse mCallback;
+        private final PaymentHandlerHost.ChangePaymentMethod_Response mCallback;
 
-        PaymentHandlerHostChangePaymentMethodResponseParamsForwardToCallback(PaymentHandlerHost.ChangePaymentMethodResponse callback) {
+        PaymentHandlerHostChangePaymentMethodResponseParamsForwardToCallback(PaymentHandlerHost.ChangePaymentMethod_Response callback) {
             this.mCallback = callback;
         }
 
@@ -402,7 +404,7 @@ ChangeShippingAddressResponse callback) {
         }
     }
 
-    static class PaymentHandlerHostChangePaymentMethodResponseParamsProxyToResponder implements PaymentHandlerHost.ChangePaymentMethodResponse {
+    static class PaymentHandlerHostChangePaymentMethodResponseParamsProxyToResponder implements PaymentHandlerHost.ChangePaymentMethod_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -563,9 +565,9 @@ ChangeShippingAddressResponse callback) {
 
     static class PaymentHandlerHostChangeShippingOptionResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PaymentHandlerHost.ChangeShippingOptionResponse mCallback;
+        private final PaymentHandlerHost.ChangeShippingOption_Response mCallback;
 
-        PaymentHandlerHostChangeShippingOptionResponseParamsForwardToCallback(PaymentHandlerHost.ChangeShippingOptionResponse callback) {
+        PaymentHandlerHostChangeShippingOptionResponseParamsForwardToCallback(PaymentHandlerHost.ChangeShippingOption_Response callback) {
             this.mCallback = callback;
         }
 
@@ -590,7 +592,7 @@ ChangeShippingAddressResponse callback) {
         }
     }
 
-    static class PaymentHandlerHostChangeShippingOptionResponseParamsProxyToResponder implements PaymentHandlerHost.ChangeShippingOptionResponse {
+    static class PaymentHandlerHostChangeShippingOptionResponseParamsProxyToResponder implements PaymentHandlerHost.ChangeShippingOption_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -752,9 +754,9 @@ ChangeShippingAddressResponse callback) {
 
     static class PaymentHandlerHostChangeShippingAddressResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PaymentHandlerHost.ChangeShippingAddressResponse mCallback;
+        private final PaymentHandlerHost.ChangeShippingAddress_Response mCallback;
 
-        PaymentHandlerHostChangeShippingAddressResponseParamsForwardToCallback(PaymentHandlerHost.ChangeShippingAddressResponse callback) {
+        PaymentHandlerHostChangeShippingAddressResponseParamsForwardToCallback(PaymentHandlerHost.ChangeShippingAddress_Response callback) {
             this.mCallback = callback;
         }
 
@@ -779,7 +781,7 @@ ChangeShippingAddressResponse callback) {
         }
     }
 
-    static class PaymentHandlerHostChangeShippingAddressResponseParamsProxyToResponder implements PaymentHandlerHost.ChangeShippingAddressResponse {
+    static class PaymentHandlerHostChangeShippingAddressResponseParamsProxyToResponder implements PaymentHandlerHost.ChangeShippingAddress_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

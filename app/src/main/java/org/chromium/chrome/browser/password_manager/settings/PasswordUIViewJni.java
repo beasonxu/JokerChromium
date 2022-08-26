@@ -14,7 +14,7 @@ import org.chromium.components.browser_ui.settings.SettingsLauncher;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class PasswordUIViewJni implements PasswordUIView.Natives {
+class PasswordUIViewJni implements PasswordUIView.Natives {
   private static PasswordUIView.Natives testInstance;
 
   public static final JniStaticTestMocker<PasswordUIView.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.password_manager.settings.PasswordUIView.Natives>() {
@@ -74,6 +74,11 @@ final class PasswordUIViewJni implements PasswordUIView.Natives {
   }
 
   @Override
+  public String getTrustedVaultLearnMoreURL() {
+    return (String)GEN_JNI.org_chromium_chrome_browser_password_1manager_settings_PasswordUIView_getTrustedVaultLearnMoreURL();
+  }
+
+  @Override
   public boolean hasAccountForLeakCheckRequest() {
     return (boolean)GEN_JNI.org_chromium_chrome_browser_password_1manager_settings_PasswordUIView_hasAccountForLeakCheckRequest();
   }
@@ -93,6 +98,12 @@ final class PasswordUIViewJni implements PasswordUIView.Natives {
   public void handleShowPasswordEntryEditingView(long nativePasswordUIViewAndroid, Context context,
       SettingsLauncher launcher, int index, PasswordUIView caller) {
     GEN_JNI.org_chromium_chrome_browser_password_1manager_settings_PasswordUIView_handleShowPasswordEntryEditingView(nativePasswordUIViewAndroid, context, launcher, index, caller);
+  }
+
+  @Override
+  public void handleShowBlockedCredentialView(long nativePasswordUIViewAndroid, Context context,
+      SettingsLauncher launcher, int index, PasswordUIView caller) {
+    GEN_JNI.org_chromium_chrome_browser_password_1manager_settings_PasswordUIView_handleShowBlockedCredentialView(nativePasswordUIViewAndroid, context, launcher, index, caller);
   }
 
   public static PasswordUIView.Natives get() {

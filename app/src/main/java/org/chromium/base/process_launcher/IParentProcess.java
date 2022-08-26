@@ -7,29 +7,26 @@ public interface IParentProcess extends android.os.IInterface
   /** Default implementation for IParentProcess. */
   public static class Default implements org.chromium.base.process_launcher.IParentProcess
   {
-    // Sends the child pid to the parent process. This will be called before any
-    // third-party code is loaded, and will be a no-op after the first call.
-
-    @Override public void sendPid(int pid) throws android.os.RemoteException
+    // Sends the child pid and information from the app zygote (if any) to the
+    // parent process. This will be called before any third-party code is
+    // loaded, and will be a no-op after the first call.
+    //
+    // The |zygotePid| must be 0 if the process does not inherit from an app zygote
+    // or its app zygote did not produce a usable shared region containing
+    // linker relocations (RELRO FD).
+    @Override public void finishSetupConnection(int pid, int zygotePid, long zygoteStartupTimeMillis, android.os.Bundle relroBundle) throws android.os.RemoteException
     {
     }
-    // Report exception before calling into native main method. This is before
+    // Reports exception before calling into native main method. This is before
     // crash reporting is initialized, which means this exception would
     // otherwise not be reported.
     // Not oneway to ensure the browser receives the message before child exits.
-
     @Override public void reportExceptionInInit(java.lang.String exception) throws android.os.RemoteException
     {
     }
     // Tells the parent proces the child exited cleanly. Not oneway to ensure
     // the browser receives the message before child exits.
-
     @Override public void reportCleanExit() throws android.os.RemoteException
-    {
-    }
-    // Sends the PID and startup time of the app zygote if available.
-
-    @Override public void sendZygoteInfo(int zygotePid, long startupTimeMillis) throws android.os.RemoteException
     {
     }
     @Override
@@ -40,7 +37,6 @@ public interface IParentProcess extends android.os.IInterface
   /** Local-side IPC implementation stub class. */
   public static abstract class Stub extends android.os.Binder implements org.chromium.base.process_launcher.IParentProcess
   {
-    private static final java.lang.String DESCRIPTOR = "org.chromium.base.process_launcher.IParentProcess";
     /** Construct the stub at attach it to the interface. */
     public Stub()
     {
@@ -75,12 +71,26 @@ public interface IParentProcess extends android.os.IInterface
           reply.writeString(descriptor);
           return true;
         }
-        case TRANSACTION_sendPid:
+      }
+      switch (code)
+      {
+        case TRANSACTION_finishSetupConnection:
         {
           data.enforceInterface(descriptor);
           int _arg0;
           _arg0 = data.readInt();
-          this.sendPid(_arg0);
+          int _arg1;
+          _arg1 = data.readInt();
+          long _arg2;
+          _arg2 = data.readLong();
+          android.os.Bundle _arg3;
+          if ((0!=data.readInt())) {
+            _arg3 = android.os.Bundle.CREATOR.createFromParcel(data);
+          }
+          else {
+            _arg3 = null;
+          }
+          this.finishSetupConnection(_arg0, _arg1, _arg2, _arg3);
           return true;
         }
         case TRANSACTION_reportExceptionInInit:
@@ -97,16 +107,6 @@ public interface IParentProcess extends android.os.IInterface
           data.enforceInterface(descriptor);
           this.reportCleanExit();
           reply.writeNoException();
-          return true;
-        }
-        case TRANSACTION_sendZygoteInfo:
-        {
-          data.enforceInterface(descriptor);
-          int _arg0;
-          _arg0 = data.readInt();
-          long _arg1;
-          _arg1 = data.readLong();
-          this.sendZygoteInfo(_arg0, _arg1);
           return true;
         }
         default:
@@ -130,30 +130,44 @@ public interface IParentProcess extends android.os.IInterface
       {
         return DESCRIPTOR;
       }
-      // Sends the child pid to the parent process. This will be called before any
-      // third-party code is loaded, and will be a no-op after the first call.
-
-      @Override public void sendPid(int pid) throws android.os.RemoteException
+      // Sends the child pid and information from the app zygote (if any) to the
+      // parent process. This will be called before any third-party code is
+      // loaded, and will be a no-op after the first call.
+      //
+      // The |zygotePid| must be 0 if the process does not inherit from an app zygote
+      // or its app zygote did not produce a usable shared region containing
+      // linker relocations (RELRO FD).
+      @Override public void finishSetupConnection(int pid, int zygotePid, long zygoteStartupTimeMillis, android.os.Bundle relroBundle) throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(pid);
-          boolean _status = mRemote.transact(Stub.TRANSACTION_sendPid, _data, null, android.os.IBinder.FLAG_ONEWAY);
-          if (!_status && getDefaultImpl() != null) {
-            getDefaultImpl().sendPid(pid);
-            return;
+          _data.writeInt(zygotePid);
+          _data.writeLong(zygoteStartupTimeMillis);
+          if ((relroBundle!=null)) {
+            _data.writeInt(1);
+            relroBundle.writeToParcel(_data, 0);
+          }
+          else {
+            _data.writeInt(0);
+          }
+          boolean _status = mRemote.transact(Stub.TRANSACTION_finishSetupConnection, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            if (getDefaultImpl() != null) {
+              getDefaultImpl().finishSetupConnection(pid, zygotePid, zygoteStartupTimeMillis, relroBundle);
+              return;
+            }
           }
         }
         finally {
           _data.recycle();
         }
       }
-      // Report exception before calling into native main method. This is before
+      // Reports exception before calling into native main method. This is before
       // crash reporting is initialized, which means this exception would
       // otherwise not be reported.
       // Not oneway to ensure the browser receives the message before child exits.
-
       @Override public void reportExceptionInInit(java.lang.String exception) throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
@@ -162,9 +176,11 @@ public interface IParentProcess extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeString(exception);
           boolean _status = mRemote.transact(Stub.TRANSACTION_reportExceptionInInit, _data, _reply, 0);
-          if (!_status && getDefaultImpl() != null) {
-            getDefaultImpl().reportExceptionInInit(exception);
-            return;
+          if (!_status) {
+            if (getDefaultImpl() != null) {
+              getDefaultImpl().reportExceptionInInit(exception);
+              return;
+            }
           }
           _reply.readException();
         }
@@ -175,7 +191,6 @@ public interface IParentProcess extends android.os.IInterface
       }
       // Tells the parent proces the child exited cleanly. Not oneway to ensure
       // the browser receives the message before child exits.
-
       @Override public void reportCleanExit() throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
@@ -183,9 +198,11 @@ public interface IParentProcess extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_reportCleanExit, _data, _reply, 0);
-          if (!_status && getDefaultImpl() != null) {
-            getDefaultImpl().reportCleanExit();
-            return;
+          if (!_status) {
+            if (getDefaultImpl() != null) {
+              getDefaultImpl().reportCleanExit();
+              return;
+            }
           }
           _reply.readException();
         }
@@ -194,31 +211,11 @@ public interface IParentProcess extends android.os.IInterface
           _data.recycle();
         }
       }
-      // Sends the PID and startup time of the app zygote if available.
-
-      @Override public void sendZygoteInfo(int zygotePid, long startupTimeMillis) throws android.os.RemoteException
-      {
-        android.os.Parcel _data = android.os.Parcel.obtain();
-        try {
-          _data.writeInterfaceToken(DESCRIPTOR);
-          _data.writeInt(zygotePid);
-          _data.writeLong(startupTimeMillis);
-          boolean _status = mRemote.transact(Stub.TRANSACTION_sendZygoteInfo, _data, null, android.os.IBinder.FLAG_ONEWAY);
-          if (!_status && getDefaultImpl() != null) {
-            getDefaultImpl().sendZygoteInfo(zygotePid, startupTimeMillis);
-            return;
-          }
-        }
-        finally {
-          _data.recycle();
-        }
-      }
       public static org.chromium.base.process_launcher.IParentProcess sDefaultImpl;
     }
-    static final int TRANSACTION_sendPid = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);
+    static final int TRANSACTION_finishSetupConnection = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);
     static final int TRANSACTION_reportExceptionInInit = (android.os.IBinder.FIRST_CALL_TRANSACTION + 1);
     static final int TRANSACTION_reportCleanExit = (android.os.IBinder.FIRST_CALL_TRANSACTION + 2);
-    static final int TRANSACTION_sendZygoteInfo = (android.os.IBinder.FIRST_CALL_TRANSACTION + 3);
     public static boolean setDefaultImpl(org.chromium.base.process_launcher.IParentProcess impl) {
       // Only one user of this interface can use this function
       // at a time. This is a heuristic to detect if two different
@@ -236,21 +233,21 @@ public interface IParentProcess extends android.os.IInterface
       return Stub.Proxy.sDefaultImpl;
     }
   }
-  // Sends the child pid to the parent process. This will be called before any
-  // third-party code is loaded, and will be a no-op after the first call.
-
-  public void sendPid(int pid) throws android.os.RemoteException;
-  // Report exception before calling into native main method. This is before
+  public static final java.lang.String DESCRIPTOR = "org.chromium.base.process_launcher.IParentProcess";
+  // Sends the child pid and information from the app zygote (if any) to the
+  // parent process. This will be called before any third-party code is
+  // loaded, and will be a no-op after the first call.
+  //
+  // The |zygotePid| must be 0 if the process does not inherit from an app zygote
+  // or its app zygote did not produce a usable shared region containing
+  // linker relocations (RELRO FD).
+  public void finishSetupConnection(int pid, int zygotePid, long zygoteStartupTimeMillis, android.os.Bundle relroBundle) throws android.os.RemoteException;
+  // Reports exception before calling into native main method. This is before
   // crash reporting is initialized, which means this exception would
   // otherwise not be reported.
   // Not oneway to ensure the browser receives the message before child exits.
-
   public void reportExceptionInInit(java.lang.String exception) throws android.os.RemoteException;
   // Tells the parent proces the child exited cleanly. Not oneway to ensure
   // the browser receives the message before child exits.
-
   public void reportCleanExit() throws android.os.RemoteException;
-  // Sends the PID and startup time of the app zygote if available.
-
-  public void sendZygoteInfo(int zygotePid, long startupTimeMillis) throws android.os.RemoteException;
 }

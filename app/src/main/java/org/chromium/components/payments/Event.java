@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -40,6 +40,10 @@ public @interface Event {
    * PaymentRequest was triggered via .show() and a native UI was shown.
    */
   int SHOWN = 1 << 0;
+  /**
+   * A payment app was invoked, regardless of whether the UI was skipped or the pay button was
+   * actually clicked.
+   */
   int PAY_CLICKED = 1 << 1;
   int RECEIVED_INSTRUMENT_DETAILS = 1 << 2;
   /**

@@ -21,7 +21,6 @@ import android.widget.RemoteViews;
 import androidx.annotation.VisibleForTesting;
 
 import org.chromium.base.StrictModeContext;
-import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.notifications.NotificationMetadata;
 import org.chromium.components.browser_ui.notifications.NotificationWrapper;
 import org.chromium.components.browser_ui.notifications.NotificationWrapperBuilder;
@@ -129,19 +128,16 @@ public class CustomNotificationBuilder extends NotificationBuilderBase {
         addActionButtons(bigView);
         configureSettingsButton(bigView);
 
-        // Note: under the hood this is not a NotificationCompat builder so be mindful of the
-        // API level of methods you call on the builder.
-        // TODO(crbug.com/697104) We should probably use a Compat builder.
         NotificationWrapperBuilder builder =
                 NotificationWrapperBuilderFactory.createNotificationWrapperBuilder(
-                        false /* preferCompat */, mChannelId, mRemotePackageForBuilderContext,
-                        metadata);
+                        mChannelId, metadata);
         builder.setTicker(mTickerText);
         builder.setContentIntent(mContentIntent);
         builder.setDeleteIntent(mDeleteIntent);
         builder.setPriorityBeforeO(mPriority);
         builder.setDefaults(mDefaults);
         if (mVibratePattern != null) builder.setVibrate(mVibratePattern);
+        builder.setSilent(mSilent);
         builder.setWhen(mTimestamp);
         builder.setShowWhen(true);
         builder.setOnlyAlertOnce(!mRenotify);
@@ -215,7 +211,7 @@ public class CustomNotificationBuilder extends NotificationBuilderBase {
             }
 
             view.setTextViewText(R.id.button, action.title);
-            view.setOnClickPendingIntent(R.id.button, action.intent);
+            view.setOnClickPendingIntent(R.id.button, action.intent.getPendingIntent());
             bigView.addView(R.id.buttons, view);
         }
     }
@@ -228,7 +224,7 @@ public class CustomNotificationBuilder extends NotificationBuilderBase {
             bigView.setViewPadding(R.id.origin, leftPadding, 0, rightPadding, 0);
             return;
         }
-        bigView.setOnClickPendingIntent(R.id.origin, mSettingsAction.intent);
+        bigView.setOnClickPendingIntent(R.id.origin, mSettingsAction.intent.getPendingIntent());
         bigView.setInt(R.id.origin_settings_icon, "setColorFilter", BUTTON_ICON_COLOR_MATERIAL);
     }
 

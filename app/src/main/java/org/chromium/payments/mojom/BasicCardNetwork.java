@@ -13,8 +13,21 @@
 
 package org.chromium.payments.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class BasicCardNetwork {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        BasicCardNetwork.AMEX,
+        BasicCardNetwork.DINERS,
+        BasicCardNetwork.DISCOVER,
+        BasicCardNetwork.JCB,
+        BasicCardNetwork.MASTERCARD,
+        BasicCardNetwork.MIR,
+        BasicCardNetwork.UNIONPAY,
+        BasicCardNetwork.VISA})
+    public @interface EnumType {}
 
     public static final int AMEX = 0;
     public static final int DINERS = 1;

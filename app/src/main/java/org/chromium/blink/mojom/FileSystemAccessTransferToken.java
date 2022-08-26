@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface FileSystemAccessTransferToken extends org.chromium.mojo.bindings.Interface {
 
@@ -23,13 +25,11 @@ public interface FileSystemAccessTransferToken extends org.chromium.mojo.binding
 
     Manager<FileSystemAccessTransferToken, FileSystemAccessTransferToken.Proxy> MANAGER = FileSystemAccessTransferToken_Internal.MANAGER;
 
-
     void getInternalId(
 
-GetInternalIdResponse callback);
+GetInternalId_Response callback);
 
-    interface GetInternalIdResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.UnguessableToken> { }
-
+    interface GetInternalId_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.UnguessableToken> { }
 
 
     void clone(

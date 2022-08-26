@@ -9,7 +9,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class PlatformSensorJni implements PlatformSensor.Natives {
+class PlatformSensorJni implements PlatformSensor.Natives {
   private static PlatformSensor.Natives testInstance;
 
   public static final JniStaticTestMocker<PlatformSensor.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.device.sensors.PlatformSensor.Natives>() {

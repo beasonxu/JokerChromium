@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface CookieManager extends org.chromium.mojo.bindings.Interface {
 
@@ -23,111 +25,106 @@ public interface CookieManager extends org.chromium.mojo.bindings.Interface {
 
     Manager<CookieManager, CookieManager.Proxy> MANAGER = CookieManager_Internal.MANAGER;
 
-
     void getAllCookies(
 
-GetAllCookiesResponse callback);
+GetAllCookies_Response callback);
 
-    interface GetAllCookiesResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<CanonicalCookie[]> { }
-
+    interface GetAllCookies_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<CanonicalCookie[]> { }
 
 
     void getAllCookiesWithAccessSemantics(
 
-GetAllCookiesWithAccessSemanticsResponse callback);
+GetAllCookiesWithAccessSemantics_Response callback);
 
-    interface GetAllCookiesWithAccessSemanticsResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<CanonicalCookie[], int[]> { }
-
+    interface GetAllCookiesWithAccessSemantics_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<CanonicalCookie[], int[]> { }
 
 
     void getCookieList(
-org.chromium.url.mojom.Url url, CookieOptions cookieOptions, 
-GetCookieListResponse callback);
+org.chromium.url.mojom.Url url, CookieOptions cookieOptions, CookiePartitionKeyCollection cookiePartitionKeyCollection, 
+GetCookieList_Response callback);
 
-    interface GetCookieListResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<CookieWithAccessResult[], CookieWithAccessResult[]> { }
-
+    interface GetCookieList_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<CookieWithAccessResult[], CookieWithAccessResult[]> { }
 
 
     void setCanonicalCookie(
 CanonicalCookie cookie, org.chromium.url.mojom.Url sourceUrl, CookieOptions cookieOptions, 
-SetCanonicalCookieResponse callback);
+SetCanonicalCookie_Response callback);
 
-    interface SetCanonicalCookieResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<CookieAccessResult> { }
-
+    interface SetCanonicalCookie_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<CookieAccessResult> { }
 
 
     void deleteCanonicalCookie(
 CanonicalCookie cookie, 
-DeleteCanonicalCookieResponse callback);
+DeleteCanonicalCookie_Response callback);
 
-    interface DeleteCanonicalCookieResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface DeleteCanonicalCookie_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void deleteCookies(
 CookieDeletionFilter filter, 
-DeleteCookiesResponse callback);
+DeleteCookies_Response callback);
 
-    interface DeleteCookiesResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
+    interface DeleteCookies_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
+
+    void deleteSessionOnlyCookies(
+
+DeleteSessionOnlyCookies_Response callback);
+
+    interface DeleteSessionOnlyCookies_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void addCookieChangeListener(
 org.chromium.url.mojom.Url url, String name, CookieChangeListener listener);
 
 
-
     void addGlobalChangeListener(
 CookieChangeListener notificationPointer);
-
 
 
     void cloneInterface(
 org.chromium.mojo.bindings.InterfaceRequest<CookieManager> newInterface);
 
 
-
     void flushCookieStore(
 
-FlushCookieStoreResponse callback);
+FlushCookieStore_Response callback);
 
-    interface FlushCookieStoreResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface FlushCookieStore_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void allowFileSchemeCookies(
 boolean allow, 
-AllowFileSchemeCookiesResponse callback);
+AllowFileSchemeCookies_Response callback);
 
-    interface AllowFileSchemeCookiesResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface AllowFileSchemeCookies_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void setContentSettings(
 org.chromium.content_settings.mojom.ContentSettingPatternSource[] settings);
 
 
-
     void setForceKeepSessionState(
 );
-
 
 
     void blockThirdPartyCookies(
 boolean block);
 
 
-
     void setContentSettingsForLegacyCookieAccess(
 org.chromium.content_settings.mojom.ContentSettingPatternSource[] settings);
 
 
-
     void setStorageAccessGrantSettings(
 org.chromium.content_settings.mojom.ContentSettingPatternSource[] settings, 
-SetStorageAccessGrantSettingsResponse callback);
+SetStorageAccessGrantSettings_Response callback);
 
-    interface SetStorageAccessGrantSettingsResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
+    interface SetStorageAccessGrantSettings_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
+
+
+    void convertPartitionedCookiesToUnpartitioned(
+org.chromium.url.mojom.Url url);
 
 
 }

@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class TcpServerSocket_Internal {
 
@@ -61,7 +63,7 @@ class TcpServerSocket_Internal {
         @Override
         public void accept(
 SocketObserver observer, 
-AcceptResponse callback) {
+Accept_Response callback) {
 
             TcpServerSocketAcceptParams _message = new TcpServerSocketAcceptParams();
 
@@ -322,9 +324,9 @@ AcceptResponse callback) {
 
     static class TcpServerSocketAcceptResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final TcpServerSocket.AcceptResponse mCallback;
+        private final TcpServerSocket.Accept_Response mCallback;
 
-        TcpServerSocketAcceptResponseParamsForwardToCallback(TcpServerSocket.AcceptResponse callback) {
+        TcpServerSocketAcceptResponseParamsForwardToCallback(TcpServerSocket.Accept_Response callback) {
             this.mCallback = callback;
         }
 
@@ -349,7 +351,7 @@ AcceptResponse callback) {
         }
     }
 
-    static class TcpServerSocketAcceptResponseParamsProxyToResponder implements TcpServerSocket.AcceptResponse {
+    static class TcpServerSocketAcceptResponseParamsProxyToResponder implements TcpServerSocket.Accept_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

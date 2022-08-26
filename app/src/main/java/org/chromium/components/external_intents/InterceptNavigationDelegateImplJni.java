@@ -10,7 +10,7 @@ import org.chromium.content_public.browser.WebContents;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class InterceptNavigationDelegateImplJni implements InterceptNavigationDelegateImpl.Natives {
+class InterceptNavigationDelegateImplJni implements InterceptNavigationDelegateImpl.Natives {
   private static InterceptNavigationDelegateImpl.Natives testInstance;
 
   public static final JniStaticTestMocker<InterceptNavigationDelegateImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.external_intents.InterceptNavigationDelegateImpl.Natives>() {

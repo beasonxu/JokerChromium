@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ProxyConfigPollerClient extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface ProxyConfigPollerClient extends org.chromium.mojo.bindings.Inte
     }
 
     Manager<ProxyConfigPollerClient, ProxyConfigPollerClient.Proxy> MANAGER = ProxyConfigPollerClient_Internal.MANAGER;
-
 
     void onLazyProxyConfigPoll(
 );

@@ -11,7 +11,7 @@ import org.chromium.url.GURL;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class SiteIsolatorJni implements SiteIsolator.Natives {
+class SiteIsolatorJni implements SiteIsolator.Natives {
   private static SiteIsolator.Natives testInstance;
 
   public static final JniStaticTestMocker<SiteIsolator.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.browserservices.digitalgoods.SiteIsolator.Natives>() {

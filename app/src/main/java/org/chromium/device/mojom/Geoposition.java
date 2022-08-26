@@ -13,15 +13,25 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class Geoposition extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 88;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(88, 0)};
+    private static final int STRUCT_SIZE = 96;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(96, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
 
     public static final class ErrorCode {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            ErrorCode.NONE,
+            ErrorCode.PERMISSION_DENIED,
+            ErrorCode.POSITION_UNAVAILABLE,
+            ErrorCode.TIMEOUT,
+            ErrorCode.LAST})
+        public @interface EnumType {}
 
         public static final int NONE = 0;
         public static final int PERMISSION_DENIED = 1;
@@ -57,6 +67,7 @@ public final class Geoposition extends org.chromium.mojo.bindings.Struct {
     public org.chromium.mojo_base.mojom.Time timestamp;
     public int errorCode;
     public String errorMessage;
+    public String errorTechnical;
 
     private Geoposition(int version) {
         super(STRUCT_SIZE, version);
@@ -146,6 +157,10 @@ public final class Geoposition extends org.chromium.mojo.bindings.Struct {
                     
                 result.errorMessage = decoder0.readString(80, false);
                 }
+                {
+                    
+                result.errorTechnical = decoder0.readString(88, false);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -179,5 +194,7 @@ public final class Geoposition extends org.chromium.mojo.bindings.Struct {
         encoder0.encode(this.timestamp, 72, false);
         
         encoder0.encode(this.errorMessage, 80, false);
+        
+        encoder0.encode(this.errorTechnical, 88, false);
     }
 }

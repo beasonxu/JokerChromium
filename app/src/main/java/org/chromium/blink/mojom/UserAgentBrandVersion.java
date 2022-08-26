@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class UserAgentBrandVersion extends org.chromium.mojo.bindings.Struct {
 
@@ -20,7 +22,7 @@ public final class UserAgentBrandVersion extends org.chromium.mojo.bindings.Stru
     private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public String brand;
-    public String majorVersion;
+    public String version;
 
     private UserAgentBrandVersion(int version) {
         super(STRUCT_SIZE, version);
@@ -61,7 +63,7 @@ public final class UserAgentBrandVersion extends org.chromium.mojo.bindings.Stru
                 }
                 {
                     
-                result.majorVersion = decoder0.readString(16, false);
+                result.version = decoder0.readString(16, false);
                 }
 
         } finally {
@@ -77,6 +79,6 @@ public final class UserAgentBrandVersion extends org.chromium.mojo.bindings.Stru
         
         encoder0.encode(this.brand, 8, false);
         
-        encoder0.encode(this.majorVersion, 16, false);
+        encoder0.encode(this.version, 16, false);
     }
 }

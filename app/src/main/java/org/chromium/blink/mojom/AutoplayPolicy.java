@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class AutoplayPolicy {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        AutoplayPolicy.NO_USER_GESTURE_REQUIRED,
+        AutoplayPolicy.USER_GESTURE_REQUIRED,
+        AutoplayPolicy.DOCUMENT_USER_ACTIVATION_REQUIRED})
+    public @interface EnumType {}
 
     public static final int NO_USER_GESTURE_REQUIRED = 0;
     public static final int USER_GESTURE_REQUIRED = 1;

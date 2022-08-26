@@ -14,7 +14,7 @@ import org.chromium.components.signin.base.CoreAccountInfo;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class SigninManagerImplJni implements SigninManagerImpl.Natives {
+class SigninManagerImplJni implements SigninManagerImpl.Natives {
   private static SigninManagerImpl.Natives testInstance;
 
   public static final JniStaticTestMocker<SigninManagerImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.signin.SigninManagerImpl.Natives>() {
@@ -63,12 +63,6 @@ final class SigninManagerImplJni implements SigninManagerImpl.Natives {
   @Override
   public String getManagementDomain(long nativeSigninManagerAndroid) {
     return (String)GEN_JNI.org_chromium_chrome_browser_signin_SigninManagerImpl_getManagementDomain(nativeSigninManagerAndroid);
-  }
-
-  @Override
-  public void logOutAllAccountsForMobileIdentityConsistencyRollback(
-      long nativeSigninManagerAndroid) {
-    GEN_JNI.org_chromium_chrome_browser_signin_SigninManagerImpl_logOutAllAccountsForMobileIdentityConsistencyRollback(nativeSigninManagerAndroid);
   }
 
   @Override

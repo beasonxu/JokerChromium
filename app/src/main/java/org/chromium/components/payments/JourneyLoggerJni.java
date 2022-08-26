@@ -11,7 +11,7 @@ import org.chromium.content_public.browser.WebContents;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class JourneyLoggerJni implements JourneyLogger.Natives {
+class JourneyLoggerJni implements JourneyLogger.Natives {
   private static JourneyLogger.Natives testInstance;
 
   public static final JniStaticTestMocker<JourneyLogger.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.payments.JourneyLogger.Natives>() {
@@ -55,8 +55,23 @@ final class JourneyLoggerJni implements JourneyLogger.Natives {
   }
 
   @Override
-  public void setEventOccurred(long nativeJourneyLoggerAndroid, JourneyLogger caller, int event) {
-    GEN_JNI.org_chromium_components_payments_JourneyLogger_setEventOccurred(nativeJourneyLoggerAndroid, caller, event);
+  public void setSkippedShow(long nativeJourneyLoggerAndroid, JourneyLogger caller) {
+    GEN_JNI.org_chromium_components_payments_JourneyLogger_setSkippedShow(nativeJourneyLoggerAndroid, caller);
+  }
+
+  @Override
+  public void setShown(long nativeJourneyLoggerAndroid, JourneyLogger caller) {
+    GEN_JNI.org_chromium_components_payments_JourneyLogger_setShown(nativeJourneyLoggerAndroid, caller);
+  }
+
+  @Override
+  public void setReceivedInstrumentDetails(long nativeJourneyLoggerAndroid, JourneyLogger caller) {
+    GEN_JNI.org_chromium_components_payments_JourneyLogger_setReceivedInstrumentDetails(nativeJourneyLoggerAndroid, caller);
+  }
+
+  @Override
+  public void setPayClicked(long nativeJourneyLoggerAndroid, JourneyLogger caller) {
+    GEN_JNI.org_chromium_components_payments_JourneyLogger_setPayClicked(nativeJourneyLoggerAndroid, caller);
   }
 
   @Override
@@ -78,9 +93,9 @@ final class JourneyLoggerJni implements JourneyLogger.Natives {
   }
 
   @Override
-  public void setRequestedPaymentMethodTypes(long nativeJourneyLoggerAndroid, JourneyLogger caller,
-      boolean requestedBasicCard, boolean requestedMethodGoogle, boolean requestedMethodOther) {
-    GEN_JNI.org_chromium_components_payments_JourneyLogger_setRequestedPaymentMethodTypes(nativeJourneyLoggerAndroid, caller, requestedBasicCard, requestedMethodGoogle, requestedMethodOther);
+  public void setRequestedPaymentMethods(long nativeJourneyLoggerAndroid, JourneyLogger caller,
+      int[] methodTypes) {
+    GEN_JNI.org_chromium_components_payments_JourneyLogger_setRequestedPaymentMethods(nativeJourneyLoggerAndroid, caller, methodTypes);
   }
 
   @Override

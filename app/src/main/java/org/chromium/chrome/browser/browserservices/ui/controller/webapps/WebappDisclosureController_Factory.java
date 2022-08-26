@@ -3,7 +3,7 @@ package org.chromium.chrome.browser.browserservices.ui.controller.webapps;
 import dagger.internal.Factory;
 import javax.annotation.Generated;
 import javax.inject.Provider;
-import org.chromium.chrome.browser.browserservices.BrowserServicesIntentDataProvider;
+import org.chromium.chrome.browser.browserservices.intents.BrowserServicesIntentDataProvider;
 import org.chromium.chrome.browser.browserservices.ui.TrustedWebActivityModel;
 import org.chromium.chrome.browser.browserservices.ui.controller.CurrentPageVerifier;
 import org.chromium.chrome.browser.lifecycle.ActivityLifecycleDispatcher;

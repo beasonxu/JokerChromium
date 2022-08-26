@@ -13,20 +13,23 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class FramePolicy extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 32;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
+    private static final int STRUCT_SIZE = 40;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int sandboxFlags;
-    public ParsedFeaturePolicyDeclaration[] containerPolicy;
+    public ParsedPermissionsPolicyDeclaration[] containerPolicy;
     public java.util.Map<Integer, PolicyValue> requiredDocumentPolicy;
-    public boolean disallowDocumentAccess;
+    public boolean isFenced;
+    public int fencedFrameMode;
 
     private FramePolicy(int version) {
         super(STRUCT_SIZE, version);
-        this.disallowDocumentAccess = (boolean) false;
+        this.isFenced = (boolean) false;
     }
 
     public FramePolicy() {
@@ -66,18 +69,18 @@ public final class FramePolicy extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.disallowDocumentAccess = decoder0.readBoolean(12, 0);
+                result.isFenced = decoder0.readBoolean(12, 0);
                 }
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                    result.containerPolicy = new ParsedFeaturePolicyDeclaration[si1.elementsOrVersion];
+                    result.containerPolicy = new ParsedPermissionsPolicyDeclaration[si1.elementsOrVersion];
                     for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
                         
                         org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
-                        result.containerPolicy[i1] = ParsedFeaturePolicyDeclaration.decode(decoder2);
+                        result.containerPolicy[i1] = ParsedPermissionsPolicyDeclaration.decode(decoder2);
                     }
                 }
                 }
@@ -116,6 +119,12 @@ public final class FramePolicy extends org.chromium.mojo.bindings.Struct {
                     }
                 }
                 }
+                {
+                    
+                result.fencedFrameMode = decoder0.readInt(32);
+                    FencedFrameMode.validate(result.fencedFrameMode);
+                    result.fencedFrameMode = FencedFrameMode.toKnownValue(result.fencedFrameMode);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -130,7 +139,7 @@ public final class FramePolicy extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.sandboxFlags, 8);
         
-        encoder0.encode(this.disallowDocumentAccess, 12, 0);
+        encoder0.encode(this.isFenced, 12, 0);
         
         if (this.containerPolicy == null) {
             encoder0.encodeNullPointer(16, false);
@@ -167,5 +176,7 @@ public final class FramePolicy extends org.chromium.mojo.bindings.Struct {
                 }
             }
         }
+        
+        encoder0.encode(this.fencedFrameMode, 32);
     }
 }

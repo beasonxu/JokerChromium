@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class GCMDriverJni implements GCMDriver.Natives {
+class GCMDriverJni implements GCMDriver.Natives {
   private static GCMDriver.Natives testInstance;
 
   public static final JniStaticTestMocker<GCMDriver.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.gcm_driver.GCMDriver.Natives>() {

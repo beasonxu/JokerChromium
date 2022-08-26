@@ -10,7 +10,7 @@ import org.chromium.content_public.browser.WebContents;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class TrustedCdnJni implements TrustedCdn.Natives {
+public class TrustedCdnJni implements TrustedCdn.Natives {
   private static TrustedCdn.Natives testInstance;
 
   public static final JniStaticTestMocker<TrustedCdn.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.tab.TrustedCdn.Natives>() {

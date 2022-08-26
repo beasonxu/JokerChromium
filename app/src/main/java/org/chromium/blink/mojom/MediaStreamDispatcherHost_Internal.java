@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class MediaStreamDispatcherHost_Internal {
 
@@ -47,7 +49,7 @@ class MediaStreamDispatcherHost_Internal {
     };
 
 
-    private static final int GENERATE_STREAM_ORDINAL = 0;
+    private static final int GENERATE_STREAMS_ORDINAL = 0;
 
     private static final int CANCEL_REQUEST_ORDINAL = 1;
 
@@ -61,6 +63,8 @@ class MediaStreamDispatcherHost_Internal {
 
     private static final int ON_STREAM_STARTED_ORDINAL = 6;
 
+    private static final int GET_OPEN_DEVICE_ORDINAL = 7;
+
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements MediaStreamDispatcherHost.Proxy {
 
@@ -71,11 +75,11 @@ class MediaStreamDispatcherHost_Internal {
 
 
         @Override
-        public void generateStream(
+        public void generateStreams(
 int requestId, StreamControls controls, boolean userGesture, StreamSelectionInfo audioStreamSelectionInfo, 
-GenerateStreamResponse callback) {
+GenerateStreams_Response callback) {
 
-            MediaStreamDispatcherHostGenerateStreamParams _message = new MediaStreamDispatcherHostGenerateStreamParams();
+            MediaStreamDispatcherHostGenerateStreamsParams _message = new MediaStreamDispatcherHostGenerateStreamsParams();
 
             _message.requestId = requestId;
 
@@ -90,10 +94,10 @@ GenerateStreamResponse callback) {
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(
-                                    GENERATE_STREAM_ORDINAL,
+                                    GENERATE_STREAMS_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
                                     0)),
-                    new MediaStreamDispatcherHostGenerateStreamResponseParamsForwardToCallback(callback));
+                    new MediaStreamDispatcherHostGenerateStreamsResponseParamsForwardToCallback(callback));
 
         }
 
@@ -137,7 +141,7 @@ String deviceId, org.chromium.mojo_base.mojom.UnguessableToken sessionId) {
         @Override
         public void openDevice(
 int requestId, String deviceId, int type, 
-OpenDeviceResponse callback) {
+OpenDevice_Response callback) {
 
             MediaStreamDispatcherHostOpenDeviceParams _message = new MediaStreamDispatcherHostOpenDeviceParams();
 
@@ -211,6 +215,30 @@ String label) {
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(ON_STREAM_STARTED_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void getOpenDevice(
+int requestId, org.chromium.mojo_base.mojom.UnguessableToken sessionId, 
+GetOpenDevice_Response callback) {
+
+            MediaStreamDispatcherHostGetOpenDeviceParams _message = new MediaStreamDispatcherHostGetOpenDeviceParams();
+
+            _message.requestId = requestId;
+
+            _message.sessionId = sessionId;
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    GET_OPEN_DEVICE_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new MediaStreamDispatcherHostGetOpenDeviceResponseParamsForwardToCallback(callback));
 
         }
 
@@ -312,6 +340,8 @@ String label) {
                     }
 
 
+
+
                     default:
                         return false;
                 }
@@ -346,12 +376,12 @@ String label) {
 
 
 
-                    case GENERATE_STREAM_ORDINAL: {
+                    case GENERATE_STREAMS_ORDINAL: {
 
-                        MediaStreamDispatcherHostGenerateStreamParams data =
-                                MediaStreamDispatcherHostGenerateStreamParams.deserialize(messageWithHeader.getPayload());
+                        MediaStreamDispatcherHostGenerateStreamsParams data =
+                                MediaStreamDispatcherHostGenerateStreamsParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().generateStream(data.requestId, data.controls, data.userGesture, data.audioStreamSelectionInfo, new MediaStreamDispatcherHostGenerateStreamResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().generateStreams(data.requestId, data.controls, data.userGesture, data.audioStreamSelectionInfo, new MediaStreamDispatcherHostGenerateStreamsResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -381,6 +411,21 @@ String label) {
 
 
 
+
+
+
+
+
+                    case GET_OPEN_DEVICE_ORDINAL: {
+
+                        MediaStreamDispatcherHostGetOpenDeviceParams data =
+                                MediaStreamDispatcherHostGetOpenDeviceParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().getOpenDevice(data.requestId, data.sessionId, new MediaStreamDispatcherHostGetOpenDeviceResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
                     default:
                         return false;
                 }
@@ -393,7 +438,7 @@ String label) {
 
 
     
-    static final class MediaStreamDispatcherHostGenerateStreamParams extends org.chromium.mojo.bindings.Struct {
+    static final class MediaStreamDispatcherHostGenerateStreamsParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 32;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
@@ -403,15 +448,15 @@ String label) {
         public boolean userGesture;
         public StreamSelectionInfo audioStreamSelectionInfo;
 
-        private MediaStreamDispatcherHostGenerateStreamParams(int version) {
+        private MediaStreamDispatcherHostGenerateStreamsParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public MediaStreamDispatcherHostGenerateStreamParams() {
+        public MediaStreamDispatcherHostGenerateStreamsParams() {
             this(0);
         }
 
-        public static MediaStreamDispatcherHostGenerateStreamParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static MediaStreamDispatcherHostGenerateStreamsParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -420,22 +465,22 @@ String label) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static MediaStreamDispatcherHostGenerateStreamParams deserialize(java.nio.ByteBuffer data) {
+        public static MediaStreamDispatcherHostGenerateStreamsParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static MediaStreamDispatcherHostGenerateStreamParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static MediaStreamDispatcherHostGenerateStreamsParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            MediaStreamDispatcherHostGenerateStreamParams result;
+            MediaStreamDispatcherHostGenerateStreamsParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new MediaStreamDispatcherHostGenerateStreamParams(elementsOrVersion);
+                result = new MediaStreamDispatcherHostGenerateStreamsParams(elementsOrVersion);
                     {
                         
                     result.requestId = decoder0.readInt(8);
@@ -479,26 +524,25 @@ String label) {
 
 
     
-    static final class MediaStreamDispatcherHostGenerateStreamResponseParams extends org.chromium.mojo.bindings.Struct {
+    static final class MediaStreamDispatcherHostGenerateStreamsResponseParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 40;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public int result;
         public String label;
-        public MediaStreamDevice[] audioDevices;
-        public MediaStreamDevice[] videoDevices;
+        public StreamDevicesSet streamDevices;
         public boolean panTiltZoomAllowed;
 
-        private MediaStreamDispatcherHostGenerateStreamResponseParams(int version) {
+        private MediaStreamDispatcherHostGenerateStreamsResponseParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public MediaStreamDispatcherHostGenerateStreamResponseParams() {
+        public MediaStreamDispatcherHostGenerateStreamsResponseParams() {
             this(0);
         }
 
-        public static MediaStreamDispatcherHostGenerateStreamResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static MediaStreamDispatcherHostGenerateStreamsResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -507,22 +551,22 @@ String label) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static MediaStreamDispatcherHostGenerateStreamResponseParams deserialize(java.nio.ByteBuffer data) {
+        public static MediaStreamDispatcherHostGenerateStreamsResponseParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static MediaStreamDispatcherHostGenerateStreamResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static MediaStreamDispatcherHostGenerateStreamsResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            MediaStreamDispatcherHostGenerateStreamResponseParams result;
+            MediaStreamDispatcherHostGenerateStreamsResponseParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new MediaStreamDispatcherHostGenerateStreamResponseParams(elementsOrVersion);
+                result = new MediaStreamDispatcherHostGenerateStreamsResponseParams(elementsOrVersion);
                     {
                         
                     result.result = decoder0.readInt(8);
@@ -539,29 +583,8 @@ String label) {
                     }
                     {
                         
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
-                    {
-                        org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                        result.audioDevices = new MediaStreamDevice[si1.elementsOrVersion];
-                        for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
-                            
-                            org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
-                            result.audioDevices[i1] = MediaStreamDevice.decode(decoder2);
-                        }
-                    }
-                    }
-                    {
-                        
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
-                    {
-                        org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                        result.videoDevices = new MediaStreamDevice[si1.elementsOrVersion];
-                        for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
-                            
-                            org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
-                            result.videoDevices[i1] = MediaStreamDevice.decode(decoder2);
-                        }
-                    }
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, true);
+                    result.streamDevices = StreamDevicesSet.decode(decoder1);
                     }
 
             } finally {
@@ -581,33 +604,15 @@ String label) {
             
             encoder0.encode(this.label, 16, false);
             
-            if (this.audioDevices == null) {
-                encoder0.encodeNullPointer(24, false);
-            } else {
-                org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.audioDevices.length, 24, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                for (int i0 = 0; i0 < this.audioDevices.length; ++i0) {
-                    
-                    encoder1.encode(this.audioDevices[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
-                }
-            }
-            
-            if (this.videoDevices == null) {
-                encoder0.encodeNullPointer(32, false);
-            } else {
-                org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.videoDevices.length, 32, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                for (int i0 = 0; i0 < this.videoDevices.length; ++i0) {
-                    
-                    encoder1.encode(this.videoDevices[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
-                }
-            }
+            encoder0.encode(this.streamDevices, 24, true);
         }
     }
 
-    static class MediaStreamDispatcherHostGenerateStreamResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+    static class MediaStreamDispatcherHostGenerateStreamsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final MediaStreamDispatcherHost.GenerateStreamResponse mCallback;
+        private final MediaStreamDispatcherHost.GenerateStreams_Response mCallback;
 
-        MediaStreamDispatcherHostGenerateStreamResponseParamsForwardToCallback(MediaStreamDispatcherHost.GenerateStreamResponse callback) {
+        MediaStreamDispatcherHostGenerateStreamsResponseParamsForwardToCallback(MediaStreamDispatcherHost.GenerateStreams_Response callback) {
             this.mCallback = callback;
         }
 
@@ -617,14 +622,14 @@ String label) {
                 org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
                         message.asServiceMessage();
                 org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
-                if (!header.validateHeader(GENERATE_STREAM_ORDINAL,
+                if (!header.validateHeader(GENERATE_STREAMS_ORDINAL,
                                            org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
                     return false;
                 }
 
-                MediaStreamDispatcherHostGenerateStreamResponseParams response = MediaStreamDispatcherHostGenerateStreamResponseParams.deserialize(messageWithHeader.getPayload());
+                MediaStreamDispatcherHostGenerateStreamsResponseParams response = MediaStreamDispatcherHostGenerateStreamsResponseParams.deserialize(messageWithHeader.getPayload());
 
-                mCallback.call(response.result, response.label, response.audioDevices, response.videoDevices, response.panTiltZoomAllowed);
+                mCallback.call(response.result, response.label, response.streamDevices, response.panTiltZoomAllowed);
                 return true;
             } catch (org.chromium.mojo.bindings.DeserializationException e) {
                 return false;
@@ -632,13 +637,13 @@ String label) {
         }
     }
 
-    static class MediaStreamDispatcherHostGenerateStreamResponseParamsProxyToResponder implements MediaStreamDispatcherHost.GenerateStreamResponse {
+    static class MediaStreamDispatcherHostGenerateStreamsResponseParamsProxyToResponder implements MediaStreamDispatcherHost.GenerateStreams_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
         private final long mRequestId;
 
-        MediaStreamDispatcherHostGenerateStreamResponseParamsProxyToResponder(
+        MediaStreamDispatcherHostGenerateStreamsResponseParamsProxyToResponder(
                 org.chromium.mojo.system.Core core,
                 org.chromium.mojo.bindings.MessageReceiver messageReceiver,
                 long requestId) {
@@ -648,16 +653,14 @@ String label) {
         }
 
         @Override
-        public void call(Integer result, String label, MediaStreamDevice[] audioDevices, MediaStreamDevice[] videoDevices, Boolean panTiltZoomAllowed) {
-            MediaStreamDispatcherHostGenerateStreamResponseParams _response = new MediaStreamDispatcherHostGenerateStreamResponseParams();
+        public void call(Integer result, String label, StreamDevicesSet streamDevices, Boolean panTiltZoomAllowed) {
+            MediaStreamDispatcherHostGenerateStreamsResponseParams _response = new MediaStreamDispatcherHostGenerateStreamsResponseParams();
 
             _response.result = result;
 
             _response.label = label;
 
-            _response.audioDevices = audioDevices;
-
-            _response.videoDevices = videoDevices;
+            _response.streamDevices = streamDevices;
 
             _response.panTiltZoomAllowed = panTiltZoomAllowed;
 
@@ -665,7 +668,7 @@ String label) {
                     _response.serializeWithHeader(
                             mCore,
                             new org.chromium.mojo.bindings.MessageHeader(
-                                    GENERATE_STREAM_ORDINAL,
+                                    GENERATE_STREAMS_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);
@@ -965,9 +968,9 @@ String label) {
 
     static class MediaStreamDispatcherHostOpenDeviceResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final MediaStreamDispatcherHost.OpenDeviceResponse mCallback;
+        private final MediaStreamDispatcherHost.OpenDevice_Response mCallback;
 
-        MediaStreamDispatcherHostOpenDeviceResponseParamsForwardToCallback(MediaStreamDispatcherHost.OpenDeviceResponse callback) {
+        MediaStreamDispatcherHostOpenDeviceResponseParamsForwardToCallback(MediaStreamDispatcherHost.OpenDevice_Response callback) {
             this.mCallback = callback;
         }
 
@@ -992,7 +995,7 @@ String label) {
         }
     }
 
-    static class MediaStreamDispatcherHostOpenDeviceResponseParamsProxyToResponder implements MediaStreamDispatcherHost.OpenDeviceResponse {
+    static class MediaStreamDispatcherHostOpenDeviceResponseParamsProxyToResponder implements MediaStreamDispatcherHost.OpenDevice_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1231,6 +1234,213 @@ String label) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.label, 8, false);
+        }
+    }
+
+
+
+    
+    static final class MediaStreamDispatcherHostGetOpenDeviceParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int requestId;
+        public org.chromium.mojo_base.mojom.UnguessableToken sessionId;
+
+        private MediaStreamDispatcherHostGetOpenDeviceParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public MediaStreamDispatcherHostGetOpenDeviceParams() {
+            this(0);
+        }
+
+        public static MediaStreamDispatcherHostGetOpenDeviceParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static MediaStreamDispatcherHostGetOpenDeviceParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static MediaStreamDispatcherHostGetOpenDeviceParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            MediaStreamDispatcherHostGetOpenDeviceParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new MediaStreamDispatcherHostGetOpenDeviceParams(elementsOrVersion);
+                    {
+                        
+                    result.requestId = decoder0.readInt(8);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                    result.sessionId = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.requestId, 8);
+            
+            encoder0.encode(this.sessionId, 16, false);
+        }
+    }
+
+
+
+    
+    static final class MediaStreamDispatcherHostGetOpenDeviceResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int result;
+        public GetOpenDeviceResponse response;
+
+        private MediaStreamDispatcherHostGetOpenDeviceResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public MediaStreamDispatcherHostGetOpenDeviceResponseParams() {
+            this(0);
+        }
+
+        public static MediaStreamDispatcherHostGetOpenDeviceResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static MediaStreamDispatcherHostGetOpenDeviceResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static MediaStreamDispatcherHostGetOpenDeviceResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            MediaStreamDispatcherHostGetOpenDeviceResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new MediaStreamDispatcherHostGetOpenDeviceResponseParams(elementsOrVersion);
+                    {
+                        
+                    result.result = decoder0.readInt(8);
+                        MediaStreamRequestResult.validate(result.result);
+                        result.result = MediaStreamRequestResult.toKnownValue(result.result);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, true);
+                    result.response = GetOpenDeviceResponse.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.result, 8);
+            
+            encoder0.encode(this.response, 16, true);
+        }
+    }
+
+    static class MediaStreamDispatcherHostGetOpenDeviceResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final MediaStreamDispatcherHost.GetOpenDevice_Response mCallback;
+
+        MediaStreamDispatcherHostGetOpenDeviceResponseParamsForwardToCallback(MediaStreamDispatcherHost.GetOpenDevice_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(GET_OPEN_DEVICE_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                MediaStreamDispatcherHostGetOpenDeviceResponseParams response = MediaStreamDispatcherHostGetOpenDeviceResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.result, response.response);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class MediaStreamDispatcherHostGetOpenDeviceResponseParamsProxyToResponder implements MediaStreamDispatcherHost.GetOpenDevice_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        MediaStreamDispatcherHostGetOpenDeviceResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(Integer result, GetOpenDeviceResponse response) {
+            MediaStreamDispatcherHostGetOpenDeviceResponseParams _response = new MediaStreamDispatcherHostGetOpenDeviceResponseParams();
+
+            _response.result = result;
+
+            _response.response = response;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    GET_OPEN_DEVICE_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
         }
     }
 

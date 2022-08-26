@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface PeerConnectionTrackerHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,40 +25,40 @@ public interface PeerConnectionTrackerHost extends org.chromium.mojo.bindings.In
 
     Manager<PeerConnectionTrackerHost, PeerConnectionTrackerHost.Proxy> MANAGER = PeerConnectionTrackerHost_Internal.MANAGER;
 
-
     void addPeerConnection(
 PeerConnectionInfo info);
-
 
 
     void removePeerConnection(
 int lid);
 
 
-
     void updatePeerConnection(
 int lid, String type, String value);
-
 
 
     void onPeerConnectionSessionIdSet(
 int lid, String sessionId);
 
 
-
     void getUserMedia(
-String origin, boolean audio, boolean video, String audioConstraints, String videoConstraints);
+int requestId, boolean audio, boolean video, String audioConstraints, String videoConstraints);
 
+
+    void getUserMediaSuccess(
+int requestId, String streamId, String audioTrackInfo, String videoTrackInfo);
+
+
+    void getUserMediaFailure(
+int requestId, String error, String errorMessage);
 
 
     void webRtcEventLogWrite(
 int lid, byte[] output);
 
 
-
     void addStandardStats(
 int lid, org.chromium.mojo_base.mojom.ListValue value);
-
 
 
     void addLegacyStats(

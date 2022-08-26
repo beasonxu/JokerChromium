@@ -13,21 +13,25 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class CrossOriginOpenerPolicy extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 32;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
+    private static final int STRUCT_SIZE = 40;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int value;
     public String reportingEndpoint;
     public int reportOnlyValue;
     public String reportOnlyReportingEndpoint;
+    public int soapByDefaultValue;
 
     private CrossOriginOpenerPolicy(int version) {
         super(STRUCT_SIZE, version);
         this.value = (int) CrossOriginOpenerPolicyValue.UNSAFE_NONE;
         this.reportOnlyValue = (int) CrossOriginOpenerPolicyValue.UNSAFE_NONE;
+        this.soapByDefaultValue = (int) CrossOriginOpenerPolicyValue.UNSAFE_NONE;
     }
 
     public CrossOriginOpenerPolicy() {
@@ -79,6 +83,12 @@ public final class CrossOriginOpenerPolicy extends org.chromium.mojo.bindings.St
                     
                 result.reportOnlyReportingEndpoint = decoder0.readString(24, true);
                 }
+                {
+                    
+                result.soapByDefaultValue = decoder0.readInt(32);
+                    CrossOriginOpenerPolicyValue.validate(result.soapByDefaultValue);
+                    result.soapByDefaultValue = CrossOriginOpenerPolicyValue.toKnownValue(result.soapByDefaultValue);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -98,5 +108,7 @@ public final class CrossOriginOpenerPolicy extends org.chromium.mojo.bindings.St
         encoder0.encode(this.reportingEndpoint, 16, true);
         
         encoder0.encode(this.reportOnlyReportingEndpoint, 24, true);
+        
+        encoder0.encode(this.soapByDefaultValue, 32);
     }
 }

@@ -22,7 +22,6 @@ public interface IGpuProcessCallback extends android.os.IInterface
   /** Local-side IPC implementation stub class. */
   public static abstract class Stub extends android.os.Binder implements org.chromium.content.common.IGpuProcessCallback
   {
-    private static final java.lang.String DESCRIPTOR = "org.chromium.content.common.IGpuProcessCallback";
     /** Construct the stub at attach it to the interface. */
     public Stub()
     {
@@ -57,6 +56,9 @@ public interface IGpuProcessCallback extends android.os.IInterface
           reply.writeString(descriptor);
           return true;
         }
+      }
+      switch (code)
+      {
         case TRANSACTION_forwardSurfaceForSurfaceRequest:
         {
           data.enforceInterface(descriptor);
@@ -134,9 +136,11 @@ public interface IGpuProcessCallback extends android.os.IInterface
             _data.writeInt(0);
           }
           boolean _status = mRemote.transact(Stub.TRANSACTION_forwardSurfaceForSurfaceRequest, _data, null, android.os.IBinder.FLAG_ONEWAY);
-          if (!_status && getDefaultImpl() != null) {
-            getDefaultImpl().forwardSurfaceForSurfaceRequest(requestToken, surface);
-            return;
+          if (!_status) {
+            if (getDefaultImpl() != null) {
+              getDefaultImpl().forwardSurfaceForSurfaceRequest(requestToken, surface);
+              return;
+            }
           }
         }
         finally {
@@ -152,8 +156,10 @@ public interface IGpuProcessCallback extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(surfaceId);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getViewSurface, _data, _reply, 0);
-          if (!_status && getDefaultImpl() != null) {
-            return getDefaultImpl().getViewSurface(surfaceId);
+          if (!_status) {
+            if (getDefaultImpl() != null) {
+              return getDefaultImpl().getViewSurface(surfaceId);
+            }
           }
           _reply.readException();
           if ((0!=_reply.readInt())) {
@@ -190,6 +196,7 @@ public interface IGpuProcessCallback extends android.os.IInterface
       return Stub.Proxy.sDefaultImpl;
     }
   }
+  public static final java.lang.String DESCRIPTOR = "org.chromium.content.common.IGpuProcessCallback";
   public void forwardSurfaceForSurfaceRequest(org.chromium.base.UnguessableToken requestToken, android.view.Surface surface) throws android.os.RemoteException;
   public org.chromium.content.common.SurfaceWrapper getViewSurface(int surfaceId) throws android.os.RemoteException;
 }

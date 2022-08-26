@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class PageBroadcast_Internal {
 
@@ -51,13 +53,17 @@ class PageBroadcast_Internal {
 
     private static final int AUDIO_STATE_CHANGED_ORDINAL = 1;
 
-    private static final int SET_INSIDE_PORTAL_ORDINAL = 2;
+    private static final int ACTIVATE_PRERENDERED_PAGE_ORDINAL = 2;
 
-    private static final int UPDATE_WEB_PREFERENCES_ORDINAL = 3;
+    private static final int SET_INSIDE_PORTAL_ORDINAL = 3;
 
-    private static final int UPDATE_RENDERER_PREFERENCES_ORDINAL = 4;
+    private static final int UPDATE_WEB_PREFERENCES_ORDINAL = 4;
 
-    private static final int SET_HISTORY_OFFSET_AND_LENGTH_ORDINAL = 5;
+    private static final int UPDATE_RENDERER_PREFERENCES_ORDINAL = 5;
+
+    private static final int SET_HISTORY_OFFSET_AND_LENGTH_ORDINAL = 6;
+
+    private static final int SET_PAGE_BASE_BACKGROUND_COLOR_ORDINAL = 7;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements PageBroadcast.Proxy {
@@ -71,7 +77,7 @@ class PageBroadcast_Internal {
         @Override
         public void setPageLifecycleState(
 PageLifecycleState state, PageRestoreParams pageRestoreParams, 
-SetPageLifecycleStateResponse callback) {
+SetPageLifecycleState_Response callback) {
 
             PageBroadcastSetPageLifecycleStateParams _message = new PageBroadcastSetPageLifecycleStateParams();
 
@@ -105,6 +111,28 @@ boolean isAudioPlaying) {
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(AUDIO_STATE_CHANGED_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void activatePrerenderedPage(
+PrerenderPageActivationParams prerenderPageActivationParams, 
+ActivatePrerenderedPage_Response callback) {
+
+            PageBroadcastActivatePrerenderedPageParams _message = new PageBroadcastActivatePrerenderedPageParams();
+
+            _message.prerenderPageActivationParams = prerenderPageActivationParams;
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    ACTIVATE_PRERENDERED_PAGE_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new PageBroadcastActivatePrerenderedPageResponseParamsForwardToCallback(callback));
 
         }
 
@@ -179,6 +207,23 @@ int offset, int length) {
         }
 
 
+        @Override
+        public void setPageBaseBackgroundColor(
+org.chromium.skia.mojom.SkColor color) {
+
+            PageBroadcastSetPageBaseBackgroundColorParams _message = new PageBroadcastSetPageBaseBackgroundColorParams();
+
+            _message.color = color;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(SET_PAGE_BASE_BACKGROUND_COLOR_ORDINAL)));
+
+        }
+
+
     }
 
     static final class Stub extends org.chromium.mojo.bindings.Interface.Stub<PageBroadcast> {
@@ -220,6 +265,8 @@ int offset, int length) {
                         getImpl().audioStateChanged(data.isAudioPlaying);
                         return true;
                     }
+
+
 
 
 
@@ -274,6 +321,19 @@ int offset, int length) {
                     }
 
 
+
+
+
+                    case SET_PAGE_BASE_BACKGROUND_COLOR_ORDINAL: {
+
+                        PageBroadcastSetPageBaseBackgroundColorParams data =
+                                PageBroadcastSetPageBaseBackgroundColorParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().setPageBaseBackgroundColor(data.color);
+                        return true;
+                    }
+
+
                     default:
                         return false;
                 }
@@ -314,6 +374,23 @@ int offset, int length) {
                                 PageBroadcastSetPageLifecycleStateParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().setPageLifecycleState(data.state, data.pageRestoreParams, new PageBroadcastSetPageLifecycleStateResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
+
+
+                    case ACTIVATE_PRERENDERED_PAGE_ORDINAL: {
+
+                        PageBroadcastActivatePrerenderedPageParams data =
+                                PageBroadcastActivatePrerenderedPageParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().activatePrerenderedPage(data.prerenderPageActivationParams, new PageBroadcastActivatePrerenderedPageResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -467,9 +544,9 @@ int offset, int length) {
 
     static class PageBroadcastSetPageLifecycleStateResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PageBroadcast.SetPageLifecycleStateResponse mCallback;
+        private final PageBroadcast.SetPageLifecycleState_Response mCallback;
 
-        PageBroadcastSetPageLifecycleStateResponseParamsForwardToCallback(PageBroadcast.SetPageLifecycleStateResponse callback) {
+        PageBroadcastSetPageLifecycleStateResponseParamsForwardToCallback(PageBroadcast.SetPageLifecycleState_Response callback) {
             this.mCallback = callback;
         }
 
@@ -492,7 +569,7 @@ int offset, int length) {
         }
     }
 
-    static class PageBroadcastSetPageLifecycleStateResponseParamsProxyToResponder implements PageBroadcast.SetPageLifecycleStateResponse {
+    static class PageBroadcastSetPageLifecycleStateResponseParamsProxyToResponder implements PageBroadcast.SetPageLifecycleState_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -582,6 +659,183 @@ int offset, int length) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.isAudioPlaying, 8, 0);
+        }
+    }
+
+
+
+    
+    static final class PageBroadcastActivatePrerenderedPageParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public PrerenderPageActivationParams prerenderPageActivationParams;
+
+        private PageBroadcastActivatePrerenderedPageParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public PageBroadcastActivatePrerenderedPageParams() {
+            this(0);
+        }
+
+        public static PageBroadcastActivatePrerenderedPageParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static PageBroadcastActivatePrerenderedPageParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static PageBroadcastActivatePrerenderedPageParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            PageBroadcastActivatePrerenderedPageParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new PageBroadcastActivatePrerenderedPageParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.prerenderPageActivationParams = PrerenderPageActivationParams.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.prerenderPageActivationParams, 8, false);
+        }
+    }
+
+
+
+    
+    static final class PageBroadcastActivatePrerenderedPageResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private PageBroadcastActivatePrerenderedPageResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public PageBroadcastActivatePrerenderedPageResponseParams() {
+            this(0);
+        }
+
+        public static PageBroadcastActivatePrerenderedPageResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static PageBroadcastActivatePrerenderedPageResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static PageBroadcastActivatePrerenderedPageResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            PageBroadcastActivatePrerenderedPageResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new PageBroadcastActivatePrerenderedPageResponseParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+    static class PageBroadcastActivatePrerenderedPageResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final PageBroadcast.ActivatePrerenderedPage_Response mCallback;
+
+        PageBroadcastActivatePrerenderedPageResponseParamsForwardToCallback(PageBroadcast.ActivatePrerenderedPage_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(ACTIVATE_PRERENDERED_PAGE_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                mCallback.call();
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class PageBroadcastActivatePrerenderedPageResponseParamsProxyToResponder implements PageBroadcast.ActivatePrerenderedPage_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        PageBroadcastActivatePrerenderedPageResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call() {
+            PageBroadcastActivatePrerenderedPageResponseParams _response = new PageBroadcastActivatePrerenderedPageResponseParams();
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    ACTIVATE_PRERENDERED_PAGE_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
         }
     }
 
@@ -843,6 +1097,70 @@ int offset, int length) {
             encoder0.encode(this.offset, 8);
             
             encoder0.encode(this.length, 12);
+        }
+    }
+
+
+
+    
+    static final class PageBroadcastSetPageBaseBackgroundColorParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.skia.mojom.SkColor color;
+
+        private PageBroadcastSetPageBaseBackgroundColorParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public PageBroadcastSetPageBaseBackgroundColorParams() {
+            this(0);
+        }
+
+        public static PageBroadcastSetPageBaseBackgroundColorParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static PageBroadcastSetPageBaseBackgroundColorParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static PageBroadcastSetPageBaseBackgroundColorParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            PageBroadcastSetPageBaseBackgroundColorParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new PageBroadcastSetPageBaseBackgroundColorParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, true);
+                    result.color = org.chromium.skia.mojom.SkColor.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.color, 8, true);
         }
     }
 

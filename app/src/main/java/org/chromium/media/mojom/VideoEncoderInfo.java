@@ -13,18 +13,20 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class VideoEncoderInfo extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 48;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
+    private static final int STRUCT_SIZE = 40;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public String implementationName;
     public boolean supportsNativeHandle;
     public boolean hasTrustedRateController;
     public boolean isHardwareAccelerated;
     public boolean supportsSimulcast;
-    public ScalingSettings scalingSettings;
+    public boolean reportsAverageQp;
     public byte[][] fpsAllocation;
     public ResolutionBitrateLimit[] resolutionBitrateLimits;
 
@@ -83,12 +85,11 @@ public final class VideoEncoderInfo extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, true);
-                result.scalingSettings = ScalingSettings.decode(decoder1);
+                result.reportsAverageQp = decoder0.readBoolean(16, 4);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(5);
                     result.fpsAllocation = new byte[si1.elementsOrVersion][];
@@ -100,7 +101,7 @@ public final class VideoEncoderInfo extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     result.resolutionBitrateLimits = new ResolutionBitrateLimit[si1.elementsOrVersion];
@@ -133,12 +134,12 @@ public final class VideoEncoderInfo extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.supportsSimulcast, 16, 3);
         
-        encoder0.encode(this.scalingSettings, 24, true);
+        encoder0.encode(this.reportsAverageQp, 16, 4);
         
         if (this.fpsAllocation == null) {
-            encoder0.encodeNullPointer(32, false);
+            encoder0.encodeNullPointer(24, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.fpsAllocation.length, 32, 5);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.fpsAllocation.length, 24, 5);
             for (int i0 = 0; i0 < this.fpsAllocation.length; ++i0) {
                 
                 encoder1.encode(this.fpsAllocation[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
@@ -146,9 +147,9 @@ public final class VideoEncoderInfo extends org.chromium.mojo.bindings.Struct {
         }
         
         if (this.resolutionBitrateLimits == null) {
-            encoder0.encodeNullPointer(40, false);
+            encoder0.encodeNullPointer(32, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.resolutionBitrateLimits.length, 40, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.resolutionBitrateLimits.length, 32, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
             for (int i0 = 0; i0 < this.resolutionBitrateLimits.length; ++i0) {
                 
                 encoder1.encode(this.resolutionBitrateLimits[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);

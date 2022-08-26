@@ -9,7 +9,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class PrefetchBackgroundTaskJni implements PrefetchBackgroundTask.Natives {
+class PrefetchBackgroundTaskJni implements PrefetchBackgroundTask.Natives {
   private static PrefetchBackgroundTask.Natives testInstance;
 
   public static final JniStaticTestMocker<PrefetchBackgroundTask.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.offlinepages.prefetch.PrefetchBackgroundTask.Natives>() {

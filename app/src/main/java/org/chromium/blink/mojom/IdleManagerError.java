@@ -13,8 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class IdleManagerError {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        IdleManagerError.SUCCESS,
+        IdleManagerError.PERMISSION_DISABLED})
+    public @interface EnumType {}
 
     public static final int SUCCESS = 0;
     public static final int PERMISSION_DISABLED = 1;

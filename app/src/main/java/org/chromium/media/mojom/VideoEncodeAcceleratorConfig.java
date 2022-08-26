@@ -13,15 +13,22 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class VideoEncodeAcceleratorConfig extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 56;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(56, 0)};
+    private static final int STRUCT_SIZE = 72;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(72, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
 
     public static final class ContentType {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            ContentType.CAMERA,
+            ContentType.DISPLAY})
+        public @interface EnumType {}
 
         public static final int CAMERA = 0;
         public static final int DISPLAY = 1;
@@ -44,8 +51,44 @@ public final class VideoEncodeAcceleratorConfig extends org.chromium.mojo.bindin
         private ContentType() {}
     }
 
+    public static final class InterLayerPredMode {
+        private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            InterLayerPredMode.OFF,
+            InterLayerPredMode.ON,
+            InterLayerPredMode.ON_KEY_PIC})
+        public @interface EnumType {}
+
+        public static final int OFF = 0;
+        public static final int ON = 1;
+        public static final int ON_KEY_PIC = 2;
+        public static final int MIN_VALUE = 0;
+        public static final int MAX_VALUE = 2;
+
+        public static boolean isKnownValue(int value) {
+            return value >= 0 && value <= 2;
+        }
+
+        public static void validate(int value) {
+            if (IS_EXTENSIBLE || isKnownValue(value)) return;
+            throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
+        }
+
+        public static int toKnownValue(int value) {
+          return value;
+        }
+
+        private InterLayerPredMode() {}
+    }
+
     public static final class StorageType {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            StorageType.SHMEM,
+            StorageType.GPU_MEMORY_BUFFER})
+        public @interface EnumType {}
 
         public static final int SHMEM = 0;
         public static final int GPU_MEMORY_BUFFER = 1;
@@ -70,7 +113,7 @@ public final class VideoEncodeAcceleratorConfig extends org.chromium.mojo.bindin
     public int inputFormat;
     public org.chromium.gfx.mojom.Size inputVisibleSize;
     public int outputProfile;
-    public int initialBitrate;
+    public Bitrate bitrate;
     public int initialFramerate;
     public boolean hasInitialFramerate;
     public int gopLength;
@@ -82,6 +125,8 @@ public final class VideoEncodeAcceleratorConfig extends org.chromium.mojo.bindin
     public boolean hasStorageType;
     public int contentType;
     public SpatialLayer[] spatialLayers;
+    public int interLayerPred;
+    public boolean requireLowDelay;
 
     private VideoEncodeAcceleratorConfig(int version) {
         super(STRUCT_SIZE, version);
@@ -135,55 +180,65 @@ public final class VideoEncodeAcceleratorConfig extends org.chromium.mojo.bindin
                 }
                 {
                     
-                result.initialBitrate = decoder0.readInt(24);
+                result.bitrate = Bitrate.decode(decoder0, 24);
                 }
                 {
                     
-                result.initialFramerate = decoder0.readInt(28);
+                result.initialFramerate = decoder0.readInt(40);
                 }
                 {
                     
-                result.hasInitialFramerate = decoder0.readBoolean(32, 0);
+                result.hasInitialFramerate = decoder0.readBoolean(44, 0);
                 }
                 {
                     
-                result.hasGopLength = decoder0.readBoolean(32, 1);
+                result.hasGopLength = decoder0.readBoolean(44, 1);
                 }
                 {
                     
-                result.hasH264OutputLevel = decoder0.readBoolean(32, 2);
+                result.hasH264OutputLevel = decoder0.readBoolean(44, 2);
                 }
                 {
                     
-                result.isConstrainedH264 = decoder0.readBoolean(32, 3);
+                result.isConstrainedH264 = decoder0.readBoolean(44, 3);
                 }
                 {
                     
-                result.hasStorageType = decoder0.readBoolean(32, 4);
+                result.hasStorageType = decoder0.readBoolean(44, 4);
                 }
                 {
                     
-                result.h264OutputLevel = decoder0.readByte(33);
+                result.requireLowDelay = decoder0.readBoolean(44, 5);
                 }
                 {
                     
-                result.gopLength = decoder0.readInt(36);
+                result.h264OutputLevel = decoder0.readByte(45);
                 }
                 {
                     
-                result.storageType = decoder0.readInt(40);
+                result.gopLength = decoder0.readInt(48);
+                }
+                {
+                    
+                result.storageType = decoder0.readInt(52);
                     VideoEncodeAcceleratorConfig.StorageType.validate(result.storageType);
                     result.storageType = VideoEncodeAcceleratorConfig.StorageType.toKnownValue(result.storageType);
                 }
                 {
                     
-                result.contentType = decoder0.readInt(44);
+                result.contentType = decoder0.readInt(56);
                     VideoEncodeAcceleratorConfig.ContentType.validate(result.contentType);
                     result.contentType = VideoEncodeAcceleratorConfig.ContentType.toKnownValue(result.contentType);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(48, false);
+                result.interLayerPred = decoder0.readInt(60);
+                    VideoEncodeAcceleratorConfig.InterLayerPredMode.validate(result.interLayerPred);
+                    result.interLayerPred = VideoEncodeAcceleratorConfig.InterLayerPredMode.toKnownValue(result.interLayerPred);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(64, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     result.spatialLayers = new SpatialLayer[si1.elementsOrVersion];
@@ -212,32 +267,36 @@ public final class VideoEncodeAcceleratorConfig extends org.chromium.mojo.bindin
         
         encoder0.encode(this.inputVisibleSize, 16, false);
         
-        encoder0.encode(this.initialBitrate, 24);
+        encoder0.encode(this.bitrate, 24, false);
         
-        encoder0.encode(this.initialFramerate, 28);
+        encoder0.encode(this.initialFramerate, 40);
         
-        encoder0.encode(this.hasInitialFramerate, 32, 0);
+        encoder0.encode(this.hasInitialFramerate, 44, 0);
         
-        encoder0.encode(this.hasGopLength, 32, 1);
+        encoder0.encode(this.hasGopLength, 44, 1);
         
-        encoder0.encode(this.hasH264OutputLevel, 32, 2);
+        encoder0.encode(this.hasH264OutputLevel, 44, 2);
         
-        encoder0.encode(this.isConstrainedH264, 32, 3);
+        encoder0.encode(this.isConstrainedH264, 44, 3);
         
-        encoder0.encode(this.hasStorageType, 32, 4);
+        encoder0.encode(this.hasStorageType, 44, 4);
         
-        encoder0.encode(this.h264OutputLevel, 33);
+        encoder0.encode(this.requireLowDelay, 44, 5);
         
-        encoder0.encode(this.gopLength, 36);
+        encoder0.encode(this.h264OutputLevel, 45);
         
-        encoder0.encode(this.storageType, 40);
+        encoder0.encode(this.gopLength, 48);
         
-        encoder0.encode(this.contentType, 44);
+        encoder0.encode(this.storageType, 52);
+        
+        encoder0.encode(this.contentType, 56);
+        
+        encoder0.encode(this.interLayerPred, 60);
         
         if (this.spatialLayers == null) {
-            encoder0.encodeNullPointer(48, false);
+            encoder0.encodeNullPointer(64, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.spatialLayers.length, 48, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.spatialLayers.length, 64, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
             for (int i0 = 0; i0 < this.spatialLayers.length; ++i0) {
                 
                 encoder1.encode(this.spatialLayers[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);

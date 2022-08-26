@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class DisplayAgentJni implements DisplayAgent.Natives {
+class DisplayAgentJni implements DisplayAgent.Natives {
   private static DisplayAgent.Natives testInstance;
 
   public static final JniStaticTestMocker<DisplayAgent.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.notifications.scheduler.DisplayAgent.Natives>() {

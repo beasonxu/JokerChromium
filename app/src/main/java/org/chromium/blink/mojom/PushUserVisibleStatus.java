@@ -13,8 +13,18 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PushUserVisibleStatus {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PushUserVisibleStatus.REQUIRED_AND_SHOWN,
+        PushUserVisibleStatus.NOT_REQUIRED_BUT_SHOWN,
+        PushUserVisibleStatus.NOT_REQUIRED_AND_NOT_SHOWN,
+        PushUserVisibleStatus.REQUIRED_BUT_NOT_SHOWN_USED_GRACE,
+        PushUserVisibleStatus.REQUIRED_BUT_NOT_SHOWN_GRACE_EXCEEDED})
+    public @interface EnumType {}
 
     public static final int REQUIRED_AND_SHOWN = 0;
     public static final int NOT_REQUIRED_BUT_SHOWN = 1;

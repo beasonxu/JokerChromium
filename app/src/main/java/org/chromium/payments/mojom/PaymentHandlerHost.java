@@ -13,6 +13,8 @@
 
 package org.chromium.payments.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface PaymentHandlerHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,28 +25,25 @@ public interface PaymentHandlerHost extends org.chromium.mojo.bindings.Interface
 
     Manager<PaymentHandlerHost, PaymentHandlerHost.Proxy> MANAGER = PaymentHandlerHost_Internal.MANAGER;
 
-
     void changePaymentMethod(
 PaymentHandlerMethodData methodData, 
-ChangePaymentMethodResponse callback);
+ChangePaymentMethod_Response callback);
 
-    interface ChangePaymentMethodResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<PaymentRequestDetailsUpdate> { }
-
+    interface ChangePaymentMethod_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<PaymentRequestDetailsUpdate> { }
 
 
     void changeShippingOption(
 String shippingOptionId, 
-ChangeShippingOptionResponse callback);
+ChangeShippingOption_Response callback);
 
-    interface ChangeShippingOptionResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<PaymentRequestDetailsUpdate> { }
-
+    interface ChangeShippingOption_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<PaymentRequestDetailsUpdate> { }
 
 
     void changeShippingAddress(
 PaymentAddress shippingAddress, 
-ChangeShippingAddressResponse callback);
+ChangeShippingAddress_Response callback);
 
-    interface ChangeShippingAddressResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<PaymentRequestDetailsUpdate> { }
+    interface ChangeShippingAddress_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<PaymentRequestDetailsUpdate> { }
 
 
 }

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface BlobRegistry extends org.chromium.mojo.bindings.Interface {
 
@@ -23,29 +25,25 @@ public interface BlobRegistry extends org.chromium.mojo.bindings.Interface {
 
     Manager<BlobRegistry, BlobRegistry.Proxy> MANAGER = BlobRegistry_Internal.MANAGER;
 
-
     void register(
 org.chromium.mojo.bindings.InterfaceRequest<Blob> blob, String uuid, String contentType, String contentDisposition, DataElement[] elements, 
-RegisterResponse callback);
+Register_Response callback);
 
-    interface RegisterResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface Register_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void registerFromStream(
 String contentType, String contentDisposition, long lengthHint, org.chromium.mojo.system.DataPipe.ConsumerHandle data, org.chromium.mojo.bindings.AssociatedInterfaceNotSupported progressClient, 
-RegisterFromStreamResponse callback);
+RegisterFromStream_Response callback);
 
-    interface RegisterFromStreamResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<SerializedBlob> { }
-
+    interface RegisterFromStream_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<SerializedBlob> { }
 
 
     void getBlobFromUuid(
 org.chromium.mojo.bindings.InterfaceRequest<Blob> blob, String uuid, 
-GetBlobFromUuidResponse callback);
+GetBlobFromUuid_Response callback);
 
-    interface GetBlobFromUuidResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
+    interface GetBlobFromUuid_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
     void urlStoreForOrigin(

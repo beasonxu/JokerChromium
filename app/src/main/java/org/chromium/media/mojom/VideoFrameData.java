@@ -13,19 +13,19 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class VideoFrameData extends org.chromium.mojo.bindings.Union {
 
     public static final class Tag {
         public static final int EosData = 0;
         public static final int SharedBufferData = 1;
-        public static final int DmabufData = 2;
-        public static final int GpuMemoryBufferData = 3;
-        public static final int MailboxData = 4;
+        public static final int GpuMemoryBufferData = 2;
+        public static final int MailboxData = 3;
     };
     private EosVideoFrameData mEosData;
     private SharedBufferVideoFrameData mSharedBufferData;
-    private DmabufVideoFrameData mDmabufData;
     private GpuMemoryBufferVideoFrameData mGpuMemoryBufferData;
     private MailboxVideoFrameData mMailboxData;
 
@@ -47,16 +47,6 @@ public final class VideoFrameData extends org.chromium.mojo.bindings.Union {
     public SharedBufferVideoFrameData getSharedBufferData() {
         assert this.mTag == Tag.SharedBufferData;
         return this.mSharedBufferData;
-    }
-
-    public void setDmabufData(DmabufVideoFrameData dmabufData) {
-        this.mTag = Tag.DmabufData;
-        this.mDmabufData = dmabufData;
-    }
-
-    public DmabufVideoFrameData getDmabufData() {
-        assert this.mTag == Tag.DmabufData;
-        return this.mDmabufData;
     }
 
     public void setGpuMemoryBufferData(GpuMemoryBufferVideoFrameData gpuMemoryBufferData) {
@@ -93,11 +83,6 @@ public final class VideoFrameData extends org.chromium.mojo.bindings.Union {
             case Tag.SharedBufferData: {
                 
                 encoder0.encode(this.mSharedBufferData, offset + 8, false);
-                break;
-            }
-            case Tag.DmabufData: {
-                
-                encoder0.encode(this.mDmabufData, offset + 8, false);
                 break;
             }
             case Tag.GpuMemoryBufferData: {
@@ -139,13 +124,6 @@ public final class VideoFrameData extends org.chromium.mojo.bindings.Union {
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(offset + org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, false);
                 result.mSharedBufferData = SharedBufferVideoFrameData.decode(decoder1);
                 result.mTag = Tag.SharedBufferData;
-                break;
-            }
-            case Tag.DmabufData: {
-                
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(offset + org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, false);
-                result.mDmabufData = DmabufVideoFrameData.decode(decoder1);
-                result.mTag = Tag.DmabufData;
                 break;
             }
             case Tag.GpuMemoryBufferData: {

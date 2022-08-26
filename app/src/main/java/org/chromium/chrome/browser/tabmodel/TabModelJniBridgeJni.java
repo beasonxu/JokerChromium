@@ -11,7 +11,7 @@ import org.chromium.chrome.browser.tab.Tab;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class TabModelJniBridgeJni implements TabModelJniBridge.Natives {
+public class TabModelJniBridgeJni implements TabModelJniBridge.Natives {
   private static TabModelJniBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<TabModelJniBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.tabmodel.TabModelJniBridge.Natives>() {
@@ -26,8 +26,8 @@ final class TabModelJniBridgeJni implements TabModelJniBridge.Natives {
   };
 
   @Override
-  public long init(TabModelJniBridge caller, Profile profile, boolean isTabbedActivity) {
-    return (long)GEN_JNI.org_chromium_chrome_browser_tabmodel_TabModelJniBridge_init(caller, profile, isTabbedActivity);
+  public long init(TabModelJniBridge caller, Profile profile, int activityType) {
+    return (long)GEN_JNI.org_chromium_chrome_browser_tabmodel_TabModelJniBridge_init(caller, profile, activityType);
   }
 
   @Override

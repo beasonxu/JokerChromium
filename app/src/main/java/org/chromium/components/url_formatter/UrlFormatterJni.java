@@ -9,11 +9,12 @@ import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.annotations.MainDex;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.url.GURL;
+import org.chromium.url.Origin;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @MainDex
 @CheckDiscard("crbug.com/993421")
-public final class UrlFormatterJni implements UrlFormatter.Natives {
+public class UrlFormatterJni implements UrlFormatter.Natives {
   private static UrlFormatter.Natives testInstance;
 
   public static final JniStaticTestMocker<UrlFormatter.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.url_formatter.UrlFormatter.Natives>() {
@@ -65,6 +66,11 @@ public final class UrlFormatterJni implements UrlFormatter.Natives {
   @Override
   public String formatUrlForSecurityDisplay(GURL url, int schemeDisplay) {
     return (String)GEN_JNI.org_chromium_components_url_1formatter_UrlFormatter_formatUrlForSecurityDisplay(url, schemeDisplay);
+  }
+
+  @Override
+  public String formatOriginForSecurityDisplay(Origin origin, int schemeDisplay) {
+    return (String)GEN_JNI.org_chromium_components_url_1formatter_UrlFormatter_formatOriginForSecurityDisplay(origin, schemeDisplay);
   }
 
   @Override

@@ -13,8 +13,17 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class FaviconIconType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        FaviconIconType.INVALID,
+        FaviconIconType.FAVICON,
+        FaviconIconType.TOUCH_ICON,
+        FaviconIconType.TOUCH_PRECOMPOSED_ICON})
+    public @interface EnumType {}
 
     public static final int INVALID = 0;
     public static final int FAVICON = 1;

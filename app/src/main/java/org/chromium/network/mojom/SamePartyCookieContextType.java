@@ -13,8 +13,15 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class SamePartyCookieContextType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        SamePartyCookieContextType.CROSS_PARTY,
+        SamePartyCookieContextType.SAME_PARTY})
+    public @interface EnumType {}
 
     public static final int CROSS_PARTY = 0;
     public static final int SAME_PARTY = 1;

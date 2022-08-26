@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface PortalHost extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface PortalHost extends org.chromium.mojo.bindings.Interface {
     }
 
     Manager<PortalHost, PortalHost.Proxy> MANAGER = PortalHost_Internal.MANAGER;
-
 
     void postMessageToHost(
 TransferableMessage message);

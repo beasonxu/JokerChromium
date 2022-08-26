@@ -13,6 +13,8 @@
 
 package org.chromium.ui.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class EventConstantsConstants {
 
 
@@ -47,67 +49,72 @@ public final class EventConstantsConstants {
 
 
     
-    public static final int EVENT_FLAG_ALTGR_DOWN = (int) 32;
+    public static final int EVENT_FLAG_FUNCTION_DOWN = (int) 32;
 
 
 
     
-    public static final int EVENT_FLAG_MOD3_DOWN = (int) 64;
+    public static final int EVENT_FLAG_ALTGR_DOWN = (int) 64;
 
 
 
     
-    public static final int EVENT_FLAG_NUM_LOCK_ON = (int) 128;
+    public static final int EVENT_FLAG_MOD3_DOWN = (int) 128;
 
 
 
     
-    public static final int EVENT_FLAG_CAPS_LOCK_ON = (int) 256;
+    public static final int EVENT_FLAG_NUM_LOCK_ON = (int) 256;
 
 
 
     
-    public static final int EVENT_FLAG_SCROLL_LOCK_ON = (int) 512;
+    public static final int EVENT_FLAG_CAPS_LOCK_ON = (int) 512;
 
 
 
     
-    public static final int EVENT_FLAG_LEFT_MOUSE_BUTTON = (int) 1024;
+    public static final int EVENT_FLAG_SCROLL_LOCK_ON = (int) 1024;
 
 
 
     
-    public static final int EVENT_FLAG_MIDDLE_MOUSE_BUTTON = (int) 2048;
+    public static final int EVENT_FLAG_LEFT_MOUSE_BUTTON = (int) 2048;
 
 
 
     
-    public static final int EVENT_FLAG_RIGHT_MOUSE_BUTTON = (int) 4096;
+    public static final int EVENT_FLAG_MIDDLE_MOUSE_BUTTON = (int) 4096;
 
 
 
     
-    public static final int EVENT_FLAG_BACK_MOUSE_BUTTON = (int) 8192;
+    public static final int EVENT_FLAG_RIGHT_MOUSE_BUTTON = (int) 8192;
 
 
 
     
-    public static final int EVENT_FLAG_FORWARD_MOUSE_BUTTON = (int) 16384;
+    public static final int EVENT_FLAG_BACK_MOUSE_BUTTON = (int) 16384;
 
 
 
     
-    public static final int MOUSE_EVENT_FLAG_IS_DOUBLE_CLICK = (int) 32768;
+    public static final int EVENT_FLAG_FORWARD_MOUSE_BUTTON = (int) 32768;
 
 
 
     
-    public static final int MOUSE_EVENT_FLAG_IS_TRIPLE_CLICK = (int) 65536;
+    public static final int MOUSE_EVENT_FLAG_IS_DOUBLE_CLICK = (int) 65536;
 
 
 
     
-    public static final int MOUSE_EVENT_FLAG_IS_NON_CLIENT = (int) 131072;
+    public static final int MOUSE_EVENT_FLAG_IS_TRIPLE_CLICK = (int) 131072;
+
+
+
+    
+    public static final int MOUSE_EVENT_FLAG_IS_NON_CLIENT = (int) 262144;
 
 
 

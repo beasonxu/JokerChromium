@@ -6,12 +6,12 @@ import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
-import org.chromium.components.embedder_support.browser_context.BrowserContextHandle;
+import org.chromium.content_public.browser.BrowserContextHandle;
 import org.chromium.url.GURL;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class LargeIconBridgeJni implements LargeIconBridge.Natives {
+public class LargeIconBridgeJni implements LargeIconBridge.Natives {
   private static LargeIconBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<LargeIconBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.favicon.LargeIconBridge.Natives>() {

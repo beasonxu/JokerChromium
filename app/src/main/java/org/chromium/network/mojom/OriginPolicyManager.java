@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface OriginPolicyManager extends org.chromium.mojo.bindings.Interface {
 
@@ -23,13 +25,11 @@ public interface OriginPolicyManager extends org.chromium.mojo.bindings.Interfac
 
     Manager<OriginPolicyManager, OriginPolicyManager.Proxy> MANAGER = OriginPolicyManager_Internal.MANAGER;
 
-
     void retrieveOriginPolicy(
 org.chromium.url.internal.mojom.Origin origin, IsolationInfo isolationInfo, String headerValue, 
-RetrieveOriginPolicyResponse callback);
+RetrieveOriginPolicy_Response callback);
 
-    interface RetrieveOriginPolicyResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<OriginPolicy> { }
-
+    interface RetrieveOriginPolicy_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<OriginPolicy> { }
 
 
     void addExceptionFor(

@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class CookiesFetcherJni implements CookiesFetcher.Natives {
+class CookiesFetcherJni implements CookiesFetcher.Natives {
   private static CookiesFetcher.Natives testInstance;
 
   public static final JniStaticTestMocker<CookiesFetcher.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.cookies.CookiesFetcher.Natives>() {
@@ -31,9 +31,10 @@ final class CookiesFetcherJni implements CookiesFetcher.Natives {
 
   @Override
   public void restoreCookies(String name, String value, String domain, String path, long creation,
-      long expiration, long lastAccess, boolean secure, boolean httpOnly, int sameSite,
-      int priority, boolean sameParty, int sourceScheme, int sourcePort) {
-    GEN_JNI.org_chromium_chrome_browser_cookies_CookiesFetcher_restoreCookies(name, value, domain, path, creation, expiration, lastAccess, secure, httpOnly, sameSite, priority, sameParty, sourceScheme, sourcePort);
+      long expiration, long lastAccess, long lastUpdate, boolean secure, boolean httpOnly,
+      int sameSite, int priority, boolean sameParty, String partitionKey, int sourceScheme,
+      int sourcePort) {
+    GEN_JNI.org_chromium_chrome_browser_cookies_CookiesFetcher_restoreCookies(name, value, domain, path, creation, expiration, lastAccess, lastUpdate, secure, httpOnly, sameSite, priority, sameParty, partitionKey, sourceScheme, sourcePort);
   }
 
   public static CookiesFetcher.Natives get() {

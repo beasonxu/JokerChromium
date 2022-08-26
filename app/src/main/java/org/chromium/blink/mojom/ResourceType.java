@@ -13,8 +13,33 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ResourceType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ResourceType.MAIN_FRAME,
+        ResourceType.SUB_FRAME,
+        ResourceType.STYLESHEET,
+        ResourceType.SCRIPT,
+        ResourceType.IMAGE,
+        ResourceType.FONT_RESOURCE,
+        ResourceType.SUB_RESOURCE,
+        ResourceType.OBJECT,
+        ResourceType.MEDIA,
+        ResourceType.WORKER,
+        ResourceType.SHARED_WORKER,
+        ResourceType.PREFETCH,
+        ResourceType.FAVICON,
+        ResourceType.XHR,
+        ResourceType.PING,
+        ResourceType.SERVICE_WORKER,
+        ResourceType.CSP_REPORT,
+        ResourceType.PLUGIN_RESOURCE,
+        ResourceType.NAVIGATION_PRELOAD_MAIN_FRAME,
+        ResourceType.NAVIGATION_PRELOAD_SUB_FRAME})
+    public @interface EnumType {}
 
     public static final int MAIN_FRAME = 0;
     public static final int SUB_FRAME = 1;

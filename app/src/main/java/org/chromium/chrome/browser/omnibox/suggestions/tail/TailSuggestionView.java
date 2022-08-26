@@ -11,7 +11,7 @@ import android.view.Gravity;
 import android.widget.TextView;
 
 import org.chromium.base.ApiCompatibilityUtils;
-import org.chromium.chrome.R;
+import org.chromium.chrome.browser.omnibox.R;
 
 /** Container view for omnibox tail suggestions. */
 public class TailSuggestionView extends TextView {

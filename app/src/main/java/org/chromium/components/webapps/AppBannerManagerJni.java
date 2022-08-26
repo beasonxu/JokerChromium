@@ -11,7 +11,7 @@ import org.chromium.content_public.browser.WebContents;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class AppBannerManagerJni implements AppBannerManager.Natives {
+class AppBannerManagerJni implements AppBannerManager.Natives {
   private static AppBannerManager.Natives testInstance;
 
   public static final JniStaticTestMocker<AppBannerManager.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.webapps.AppBannerManager.Natives>() {
@@ -49,6 +49,11 @@ final class AppBannerManagerJni implements AppBannerManager.Natives {
   @Override
   public boolean isRunningForTesting(long nativeAppBannerManagerAndroid, AppBannerManager caller) {
     return (boolean)GEN_JNI.org_chromium_components_webapps_AppBannerManager_isRunningForTesting(nativeAppBannerManagerAndroid, caller);
+  }
+
+  @Override
+  public int getPipelineStatusForTesting(long nativeAppBannerManagerAndroid) {
+    return (int)GEN_JNI.org_chromium_components_webapps_AppBannerManager_getPipelineStatusForTesting(nativeAppBannerManagerAndroid);
   }
 
   @Override

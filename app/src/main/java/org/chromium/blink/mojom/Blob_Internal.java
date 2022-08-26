@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class Blob_Internal {
 
@@ -174,7 +176,7 @@ org.chromium.mojo.bindings.InterfaceRequest<org.chromium.network.mojom.UrlLoader
         @Override
         public void readSideData(
 
-ReadSideDataResponse callback) {
+ReadSideData_Response callback) {
 
             BlobReadSideDataParams _message = new BlobReadSideDataParams();
 
@@ -194,7 +196,7 @@ ReadSideDataResponse callback) {
         @Override
         public void captureSnapshot(
 
-CaptureSnapshotResponse callback) {
+CaptureSnapshot_Response callback) {
 
             BlobCaptureSnapshotParams _message = new BlobCaptureSnapshotParams();
 
@@ -214,7 +216,7 @@ CaptureSnapshotResponse callback) {
         @Override
         public void getInternalUuid(
 
-GetInternalUuidResponse callback) {
+GetInternalUuid_Response callback) {
 
             BlobGetInternalUuidParams _message = new BlobGetInternalUuidParams();
 
@@ -908,9 +910,9 @@ GetInternalUuidResponse callback) {
 
     static class BlobReadSideDataResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Blob.ReadSideDataResponse mCallback;
+        private final Blob.ReadSideData_Response mCallback;
 
-        BlobReadSideDataResponseParamsForwardToCallback(Blob.ReadSideDataResponse callback) {
+        BlobReadSideDataResponseParamsForwardToCallback(Blob.ReadSideData_Response callback) {
             this.mCallback = callback;
         }
 
@@ -935,7 +937,7 @@ GetInternalUuidResponse callback) {
         }
     }
 
-    static class BlobReadSideDataResponseParamsProxyToResponder implements Blob.ReadSideDataResponse {
+    static class BlobReadSideDataResponseParamsProxyToResponder implements Blob.ReadSideData_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1096,9 +1098,9 @@ GetInternalUuidResponse callback) {
 
     static class BlobCaptureSnapshotResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Blob.CaptureSnapshotResponse mCallback;
+        private final Blob.CaptureSnapshot_Response mCallback;
 
-        BlobCaptureSnapshotResponseParamsForwardToCallback(Blob.CaptureSnapshotResponse callback) {
+        BlobCaptureSnapshotResponseParamsForwardToCallback(Blob.CaptureSnapshot_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1123,7 +1125,7 @@ GetInternalUuidResponse callback) {
         }
     }
 
-    static class BlobCaptureSnapshotResponseParamsProxyToResponder implements Blob.CaptureSnapshotResponse {
+    static class BlobCaptureSnapshotResponseParamsProxyToResponder implements Blob.CaptureSnapshot_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1278,9 +1280,9 @@ GetInternalUuidResponse callback) {
 
     static class BlobGetInternalUuidResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Blob.GetInternalUuidResponse mCallback;
+        private final Blob.GetInternalUuid_Response mCallback;
 
-        BlobGetInternalUuidResponseParamsForwardToCallback(Blob.GetInternalUuidResponse callback) {
+        BlobGetInternalUuidResponseParamsForwardToCallback(Blob.GetInternalUuid_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1305,7 +1307,7 @@ GetInternalUuidResponse callback) {
         }
     }
 
-    static class BlobGetInternalUuidResponseParamsProxyToResponder implements Blob.GetInternalUuidResponse {
+    static class BlobGetInternalUuidResponseParamsProxyToResponder implements Blob.GetInternalUuid_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

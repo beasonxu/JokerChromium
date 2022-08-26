@@ -13,15 +13,16 @@
 
 package org.chromium.payments.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class PaymentMethodData extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 64;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(64, 0)};
+    private static final int STRUCT_SIZE = 56;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(56, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public String supportedMethod;
     public String stringifiedData;
-    public GooglePaymentMethodData gpayBridgeData;
     public int environment;
     public int minGooglePlayServicesVersion;
     public int apiVersion;
@@ -71,26 +72,21 @@ public final class PaymentMethodData extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, true);
-                result.gpayBridgeData = GooglePaymentMethodData.decode(decoder1);
-                }
-                {
-                    
-                result.environment = decoder0.readInt(32);
+                result.environment = decoder0.readInt(24);
                     AndroidPayEnvironment.validate(result.environment);
                     result.environment = AndroidPayEnvironment.toKnownValue(result.environment);
                 }
                 {
                     
-                result.minGooglePlayServicesVersion = decoder0.readInt(36);
+                result.minGooglePlayServicesVersion = decoder0.readInt(28);
                 }
                 {
                     
-                result.apiVersion = decoder0.readInt(40);
+                result.apiVersion = decoder0.readInt(32);
                 }
                 {
                     
-                result.supportedNetworks = decoder0.readInts(48, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                result.supportedNetworks = decoder0.readInts(40, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 {
                     for (int i1 = 0; i1 < result.supportedNetworks.length; ++i1) {
                         BasicCardNetwork.validate(result.supportedNetworks[i1]);
@@ -99,7 +95,7 @@ public final class PaymentMethodData extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(56, true);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(48, true);
                 result.securePaymentConfirmation = SecurePaymentConfirmationRequest.decode(decoder1);
                 }
 
@@ -118,16 +114,14 @@ public final class PaymentMethodData extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.stringifiedData, 16, false);
         
-        encoder0.encode(this.gpayBridgeData, 24, true);
+        encoder0.encode(this.environment, 24);
         
-        encoder0.encode(this.environment, 32);
+        encoder0.encode(this.minGooglePlayServicesVersion, 28);
         
-        encoder0.encode(this.minGooglePlayServicesVersion, 36);
+        encoder0.encode(this.apiVersion, 32);
         
-        encoder0.encode(this.apiVersion, 40);
+        encoder0.encode(this.supportedNetworks, 40, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
         
-        encoder0.encode(this.supportedNetworks, 48, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-        
-        encoder0.encode(this.securePaymentConfirmation, 56, true);
+        encoder0.encode(this.securePaymentConfirmation, 48, true);
     }
 }

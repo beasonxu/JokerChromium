@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface PortalClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface PortalClient extends org.chromium.mojo.bindings.Interface {
 
     Manager<PortalClient, PortalClient.Proxy> MANAGER = PortalClient_Internal.MANAGER;
 
-
     void forwardMessageFromGuest(
 TransferableMessage message, org.chromium.url.internal.mojom.Origin sourceOrigin);
-
 
 
     void dispatchLoadEvent(

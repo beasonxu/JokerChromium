@@ -13,6 +13,8 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface CompositorFrameSinkClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,24 +25,24 @@ public interface CompositorFrameSinkClient extends org.chromium.mojo.bindings.In
 
     Manager<CompositorFrameSinkClient, CompositorFrameSinkClient.Proxy> MANAGER = CompositorFrameSinkClient_Internal.MANAGER;
 
-
     void didReceiveCompositorFrameAck(
 ReturnedResource[] resources);
-
 
 
     void onBeginFrame(
 BeginFrameArgs args, java.util.Map<Integer, FrameTimingDetails> details);
 
 
-
     void onBeginFramePausedChanged(
 boolean paused);
 
 
-
     void reclaimResources(
 ReturnedResource[] resources);
+
+
+    void onCompositorFrameTransitionDirectiveProcessed(
+int sequenceId);
 
 
 }

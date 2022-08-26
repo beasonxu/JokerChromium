@@ -13,17 +13,27 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class LoadingMode {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        LoadingMode.DEFAULT,
+        LoadingMode.UNCREDENTIALED_PREFETCH,
+        LoadingMode.UNCREDENTIALED_PRERENDER,
+        LoadingMode.FENCED_FRAME})
+    public @interface EnumType {}
 
     public static final int DEFAULT = 0;
     public static final int UNCREDENTIALED_PREFETCH = 1;
     public static final int UNCREDENTIALED_PRERENDER = 2;
+    public static final int FENCED_FRAME = 3;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 2;
+    public static final int MAX_VALUE = 3;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 2;
+        return value >= 0 && value <= 3;
     }
 
     public static void validate(int value) {

@@ -13,6 +13,8 @@
 
 package org.chromium.webshare.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class ShareService_Internal {
 
@@ -61,7 +63,7 @@ class ShareService_Internal {
         @Override
         public void share(
 String title, String text, org.chromium.url.mojom.Url url, SharedFile[] files, 
-ShareResponse callback) {
+Share_Response callback) {
 
             ShareServiceShareParams _message = new ShareServiceShareParams();
 
@@ -338,9 +340,9 @@ ShareResponse callback) {
 
     static class ShareServiceShareResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final ShareService.ShareResponse mCallback;
+        private final ShareService.Share_Response mCallback;
 
-        ShareServiceShareResponseParamsForwardToCallback(ShareService.ShareResponse callback) {
+        ShareServiceShareResponseParamsForwardToCallback(ShareService.Share_Response callback) {
             this.mCallback = callback;
         }
 
@@ -365,7 +367,7 @@ ShareResponse callback) {
         }
     }
 
-    static class ShareServiceShareResponseParamsProxyToResponder implements ShareService.ShareResponse {
+    static class ShareServiceShareResponseParamsProxyToResponder implements ShareService.Share_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

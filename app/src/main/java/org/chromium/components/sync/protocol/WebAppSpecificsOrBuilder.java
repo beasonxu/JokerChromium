@@ -157,4 +157,33 @@ public interface WebAppSpecificsOrBuilder extends
    */
   com.google.protobuf.ByteString
       getUserLaunchOrdinalBytes();
+
+  /**
+   * <pre>
+   * Used to store id specified in the manifest.
+   * </pre>
+   *
+   * <code>optional string manifest_id = 9;</code>
+   * @return Whether the manifestId field is set.
+   */
+  boolean hasManifestId();
+  /**
+   * <pre>
+   * Used to store id specified in the manifest.
+   * </pre>
+   *
+   * <code>optional string manifest_id = 9;</code>
+   * @return The manifestId.
+   */
+  java.lang.String getManifestId();
+  /**
+   * <pre>
+   * Used to store id specified in the manifest.
+   * </pre>
+   *
+   * <code>optional string manifest_id = 9;</code>
+   * @return The bytes for manifestId.
+   */
+  com.google.protobuf.ByteString
+      getManifestIdBytes();
 }

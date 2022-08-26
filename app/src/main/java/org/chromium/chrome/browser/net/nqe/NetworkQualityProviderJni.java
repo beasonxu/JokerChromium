@@ -9,7 +9,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class NetworkQualityProviderJni implements NetworkQualityProvider.Natives {
+class NetworkQualityProviderJni implements NetworkQualityProvider.Natives {
   private static NetworkQualityProvider.Natives testInstance;
 
   public static final JniStaticTestMocker<NetworkQualityProvider.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.net.nqe.NetworkQualityProvider.Natives>() {

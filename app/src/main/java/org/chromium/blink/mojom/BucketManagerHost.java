@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface BucketManagerHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,28 +25,25 @@ public interface BucketManagerHost extends org.chromium.mojo.bindings.Interface 
 
     Manager<BucketManagerHost, BucketManagerHost.Proxy> MANAGER = BucketManagerHost_Internal.MANAGER;
 
-
     void openBucket(
 String name, BucketPolicies policy, 
-OpenBucketResponse callback);
+OpenBucket_Response callback);
 
-    interface OpenBucketResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<BucketHost> { }
-
+    interface OpenBucket_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<BucketHost> { }
 
 
     void keys(
 
-KeysResponse callback);
+Keys_Response callback);
 
-    interface KeysResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<String[], Boolean> { }
-
+    interface Keys_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<String[], Boolean> { }
 
 
     void deleteBucket(
 String name, 
-DeleteBucketResponse callback);
+DeleteBucket_Response callback);
 
-    interface DeleteBucketResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
+    interface DeleteBucket_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
 }

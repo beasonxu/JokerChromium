@@ -12,7 +12,7 @@ import org.chromium.chrome.browser.profiles.Profile;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-public final class EndpointFetcherJni implements EndpointFetcher.Natives {
+public class EndpointFetcherJni implements EndpointFetcher.Natives {
   private static EndpointFetcher.Natives testInstance;
 
   public static final JniStaticTestMocker<EndpointFetcher.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.endpoint_fetcher.EndpointFetcher.Natives>() {
@@ -29,21 +29,21 @@ public final class EndpointFetcherJni implements EndpointFetcher.Natives {
   @Override
   public void nativeFetchOAuth(Profile profile, String oathConsumerName, String url,
       String httpsMethod, String contentType, String[] scopes, String postData, long timeout,
-      Callback<EndpointResponse> callback) {
-    GEN_JNI.org_chromium_chrome_browser_endpoint_1fetcher_EndpointFetcher_nativeFetchOAuth(profile, oathConsumerName, url, httpsMethod, contentType, scopes, postData, timeout, callback);
+      int annotationHashCode, Callback<EndpointResponse> callback) {
+    GEN_JNI.org_chromium_chrome_browser_endpoint_1fetcher_EndpointFetcher_nativeFetchOAuth(profile, oathConsumerName, url, httpsMethod, contentType, scopes, postData, timeout, annotationHashCode, callback);
   }
 
   @Override
   public void nativeFetchChromeAPIKey(Profile profile, String url, String httpsMethod,
-      String contentType, String postData, long timeout, String[] headers,
+      String contentType, String postData, long timeout, String[] headers, int annotationHashCode,
       Callback<EndpointResponse> callback) {
-    GEN_JNI.org_chromium_chrome_browser_endpoint_1fetcher_EndpointFetcher_nativeFetchChromeAPIKey(profile, url, httpsMethod, contentType, postData, timeout, headers, callback);
+    GEN_JNI.org_chromium_chrome_browser_endpoint_1fetcher_EndpointFetcher_nativeFetchChromeAPIKey(profile, url, httpsMethod, contentType, postData, timeout, headers, annotationHashCode, callback);
   }
 
   @Override
-  public void nativeFetchWithNoAuth(Profile profile, String url,
+  public void nativeFetchWithNoAuth(Profile profile, String url, int annotationHashCode,
       Callback<EndpointResponse> callback) {
-    GEN_JNI.org_chromium_chrome_browser_endpoint_1fetcher_EndpointFetcher_nativeFetchWithNoAuth(profile, url, callback);
+    GEN_JNI.org_chromium_chrome_browser_endpoint_1fetcher_EndpointFetcher_nativeFetchWithNoAuth(profile, url, annotationHashCode, callback);
   }
 
   public static EndpointFetcher.Natives get() {

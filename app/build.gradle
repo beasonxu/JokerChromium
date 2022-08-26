@@ -113,22 +113,10 @@ dependencies {
     implementation files('libs\\third_party\\gif_player\\gif_player_java.jar')
 
 
-//    implementation files('libs\\base\\base_java.jar')
-//    implementation files('libs\\components\\version_info\\android\\version_constants_java.jar')
-//    implementation files('libs\\ui\\base\\mojom\\mojom_java.jar')
-//    implementation files('libs\\third_party\\metrics_proto\\metrics_proto_java.jar')
-//    implementation files('libs\\ui\\gfx\\mojom\\native_handle_types_java.jar')
-//    implementation files('libs\\ui\\base\\dragdrop\\mojom\\mojom_java.jar')
-//    implementation files('libs\\chrome\\browser\\preferences\\java.jar')
-//    implementation files('libs\\chrome\\browser\\tab\\java.jar')
-//    implementation files('libs\\cc\\mojom\\mojom_java.jar')
-//    implementation files('libs\\chrome\\browser\\version\\java.jar')
-//    implementation files('libs\\components\\services\\filesystem\\public\\mojom\\mojom_java.jar')
-//    implementation files('libs\\content\\public\\android\\content_java.jar')
-//    implementation files('libs\\media\\capture\\mojom\\video_capture_java.jar')
-//    implementation files('libs\\media\\mojo\\mojom\\mojom_java.jar')
-//    implementation files('libs\\mojo\\public\\java\\bindings_java.jar')
-//    implementation files('libs\\mojo\\public\\mojom\\base\\base_java.jar')
+    implementation("androidx.annotation:annotation:1.4.0")
+    // To use the Java-compatible @Experimental API annotation
+    implementation("androidx.annotation:annotation-experimental:1.2.0")
+
 
 
     def gmsVersion = '17.0.0'
@@ -171,12 +159,11 @@ dependencies {
     implementation 'com.squareup:javapoet:1.13.0'
     implementation 'com.google.android.material:material:1.2.0'
     implementation 'com.google.firebase:firebase-messaging:21.1.0'
-    implementation 'androidx.annotation:annotation:1.2.0'
     implementation "com.android.support:collections:28.0.0"
 //    implementation 'com.google.android.play:core:1.6.4'
     implementation "com.android.support:support-annotations:28.0.0"
     annotationProcessor "com.android.support:support-annotations:28.0.0"
-    implementation 'androidx.core:core:1.5.0-rc01'
+    implementation 'androidx.core:core:1.8.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

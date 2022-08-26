@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ServiceWorkerObject extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface ServiceWorkerObject extends org.chromium.mojo.bindings.Interfac
     }
 
     Manager<ServiceWorkerObject, ServiceWorkerObject.Proxy> MANAGER = ServiceWorkerObject_Internal.MANAGER;
-
 
     void stateChanged(
 int state);

@@ -13,8 +13,19 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class NativeIoErrorType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        NativeIoErrorType.SUCCESS,
+        NativeIoErrorType.UNKNOWN,
+        NativeIoErrorType.INVALID_STATE,
+        NativeIoErrorType.NOT_FOUND,
+        NativeIoErrorType.NO_MODIFICATION_ALLOWED,
+        NativeIoErrorType.NO_SPACE})
+    public @interface EnumType {}
 
     public static final int SUCCESS = 0;
     public static final int UNKNOWN = 1;

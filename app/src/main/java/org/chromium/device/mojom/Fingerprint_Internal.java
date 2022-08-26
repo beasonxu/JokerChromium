@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class Fingerprint_Internal {
 
@@ -81,7 +83,7 @@ class Fingerprint_Internal {
         @Override
         public void getRecordsForUser(
 String userId, 
-GetRecordsForUserResponse callback) {
+GetRecordsForUser_Response callback) {
 
             FingerprintGetRecordsForUserParams _message = new FingerprintGetRecordsForUserParams();
 
@@ -122,7 +124,7 @@ String userId, String label) {
         @Override
         public void cancelCurrentEnrollSession(
 
-CancelCurrentEnrollSessionResponse callback) {
+CancelCurrentEnrollSession_Response callback) {
 
             FingerprintCancelCurrentEnrollSessionParams _message = new FingerprintCancelCurrentEnrollSessionParams();
 
@@ -142,7 +144,7 @@ CancelCurrentEnrollSessionResponse callback) {
         @Override
         public void requestRecordLabel(
 String recordPath, 
-RequestRecordLabelResponse callback) {
+RequestRecordLabel_Response callback) {
 
             FingerprintRequestRecordLabelParams _message = new FingerprintRequestRecordLabelParams();
 
@@ -164,7 +166,7 @@ RequestRecordLabelResponse callback) {
         @Override
         public void setRecordLabel(
 String recordPath, String newLabel, 
-SetRecordLabelResponse callback) {
+SetRecordLabel_Response callback) {
 
             FingerprintSetRecordLabelParams _message = new FingerprintSetRecordLabelParams();
 
@@ -188,7 +190,7 @@ SetRecordLabelResponse callback) {
         @Override
         public void removeRecord(
 String recordPath, 
-RemoveRecordResponse callback) {
+RemoveRecord_Response callback) {
 
             FingerprintRemoveRecordParams _message = new FingerprintRemoveRecordParams();
 
@@ -225,7 +227,7 @@ RemoveRecordResponse callback) {
         @Override
         public void endCurrentAuthSession(
 
-EndCurrentAuthSessionResponse callback) {
+EndCurrentAuthSession_Response callback) {
 
             FingerprintEndCurrentAuthSessionParams _message = new FingerprintEndCurrentAuthSessionParams();
 
@@ -245,7 +247,7 @@ EndCurrentAuthSessionResponse callback) {
         @Override
         public void destroyAllRecords(
 
-DestroyAllRecordsResponse callback) {
+DestroyAllRecords_Response callback) {
 
             FingerprintDestroyAllRecordsParams _message = new FingerprintDestroyAllRecordsParams();
 
@@ -282,7 +284,7 @@ FingerprintObserver observer) {
         @Override
         public void requestType(
 
-RequestTypeResponse callback) {
+RequestType_Response callback) {
 
             FingerprintRequestTypeParams _message = new FingerprintRequestTypeParams();
 
@@ -731,9 +733,9 @@ RequestTypeResponse callback) {
 
     static class FingerprintGetRecordsForUserResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Fingerprint.GetRecordsForUserResponse mCallback;
+        private final Fingerprint.GetRecordsForUser_Response mCallback;
 
-        FingerprintGetRecordsForUserResponseParamsForwardToCallback(Fingerprint.GetRecordsForUserResponse callback) {
+        FingerprintGetRecordsForUserResponseParamsForwardToCallback(Fingerprint.GetRecordsForUser_Response callback) {
             this.mCallback = callback;
         }
 
@@ -758,7 +760,7 @@ RequestTypeResponse callback) {
         }
     }
 
-    static class FingerprintGetRecordsForUserResponseParamsProxyToResponder implements Fingerprint.GetRecordsForUserResponse {
+    static class FingerprintGetRecordsForUserResponseParamsProxyToResponder implements Fingerprint.GetRecordsForUser_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -981,9 +983,9 @@ RequestTypeResponse callback) {
 
     static class FingerprintCancelCurrentEnrollSessionResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Fingerprint.CancelCurrentEnrollSessionResponse mCallback;
+        private final Fingerprint.CancelCurrentEnrollSession_Response mCallback;
 
-        FingerprintCancelCurrentEnrollSessionResponseParamsForwardToCallback(Fingerprint.CancelCurrentEnrollSessionResponse callback) {
+        FingerprintCancelCurrentEnrollSessionResponseParamsForwardToCallback(Fingerprint.CancelCurrentEnrollSession_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1008,7 +1010,7 @@ RequestTypeResponse callback) {
         }
     }
 
-    static class FingerprintCancelCurrentEnrollSessionResponseParamsProxyToResponder implements Fingerprint.CancelCurrentEnrollSessionResponse {
+    static class FingerprintCancelCurrentEnrollSessionResponseParamsProxyToResponder implements Fingerprint.CancelCurrentEnrollSession_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1168,9 +1170,9 @@ RequestTypeResponse callback) {
 
     static class FingerprintRequestRecordLabelResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Fingerprint.RequestRecordLabelResponse mCallback;
+        private final Fingerprint.RequestRecordLabel_Response mCallback;
 
-        FingerprintRequestRecordLabelResponseParamsForwardToCallback(Fingerprint.RequestRecordLabelResponse callback) {
+        FingerprintRequestRecordLabelResponseParamsForwardToCallback(Fingerprint.RequestRecordLabel_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1195,7 +1197,7 @@ RequestTypeResponse callback) {
         }
     }
 
-    static class FingerprintRequestRecordLabelResponseParamsProxyToResponder implements Fingerprint.RequestRecordLabelResponse {
+    static class FingerprintRequestRecordLabelResponseParamsProxyToResponder implements Fingerprint.RequestRecordLabel_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1362,9 +1364,9 @@ RequestTypeResponse callback) {
 
     static class FingerprintSetRecordLabelResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Fingerprint.SetRecordLabelResponse mCallback;
+        private final Fingerprint.SetRecordLabel_Response mCallback;
 
-        FingerprintSetRecordLabelResponseParamsForwardToCallback(Fingerprint.SetRecordLabelResponse callback) {
+        FingerprintSetRecordLabelResponseParamsForwardToCallback(Fingerprint.SetRecordLabel_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1389,7 +1391,7 @@ RequestTypeResponse callback) {
         }
     }
 
-    static class FingerprintSetRecordLabelResponseParamsProxyToResponder implements Fingerprint.SetRecordLabelResponse {
+    static class FingerprintSetRecordLabelResponseParamsProxyToResponder implements Fingerprint.SetRecordLabel_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1549,9 +1551,9 @@ RequestTypeResponse callback) {
 
     static class FingerprintRemoveRecordResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Fingerprint.RemoveRecordResponse mCallback;
+        private final Fingerprint.RemoveRecord_Response mCallback;
 
-        FingerprintRemoveRecordResponseParamsForwardToCallback(Fingerprint.RemoveRecordResponse callback) {
+        FingerprintRemoveRecordResponseParamsForwardToCallback(Fingerprint.RemoveRecord_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1576,7 +1578,7 @@ RequestTypeResponse callback) {
         }
     }
 
-    static class FingerprintRemoveRecordResponseParamsProxyToResponder implements Fingerprint.RemoveRecordResponse {
+    static class FingerprintRemoveRecordResponseParamsProxyToResponder implements Fingerprint.RemoveRecord_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1785,9 +1787,9 @@ RequestTypeResponse callback) {
 
     static class FingerprintEndCurrentAuthSessionResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Fingerprint.EndCurrentAuthSessionResponse mCallback;
+        private final Fingerprint.EndCurrentAuthSession_Response mCallback;
 
-        FingerprintEndCurrentAuthSessionResponseParamsForwardToCallback(Fingerprint.EndCurrentAuthSessionResponse callback) {
+        FingerprintEndCurrentAuthSessionResponseParamsForwardToCallback(Fingerprint.EndCurrentAuthSession_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1812,7 +1814,7 @@ RequestTypeResponse callback) {
         }
     }
 
-    static class FingerprintEndCurrentAuthSessionResponseParamsProxyToResponder implements Fingerprint.EndCurrentAuthSessionResponse {
+    static class FingerprintEndCurrentAuthSessionResponseParamsProxyToResponder implements Fingerprint.EndCurrentAuthSession_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1965,9 +1967,9 @@ RequestTypeResponse callback) {
 
     static class FingerprintDestroyAllRecordsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Fingerprint.DestroyAllRecordsResponse mCallback;
+        private final Fingerprint.DestroyAllRecords_Response mCallback;
 
-        FingerprintDestroyAllRecordsResponseParamsForwardToCallback(Fingerprint.DestroyAllRecordsResponse callback) {
+        FingerprintDestroyAllRecordsResponseParamsForwardToCallback(Fingerprint.DestroyAllRecords_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1992,7 +1994,7 @@ RequestTypeResponse callback) {
         }
     }
 
-    static class FingerprintDestroyAllRecordsResponseParamsProxyToResponder implements Fingerprint.DestroyAllRecordsResponse {
+    static class FingerprintDestroyAllRecordsResponseParamsProxyToResponder implements Fingerprint.DestroyAllRecords_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2210,9 +2212,9 @@ RequestTypeResponse callback) {
 
     static class FingerprintRequestTypeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Fingerprint.RequestTypeResponse mCallback;
+        private final Fingerprint.RequestType_Response mCallback;
 
-        FingerprintRequestTypeResponseParamsForwardToCallback(Fingerprint.RequestTypeResponse callback) {
+        FingerprintRequestTypeResponseParamsForwardToCallback(Fingerprint.RequestType_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2237,7 +2239,7 @@ RequestTypeResponse callback) {
         }
     }
 
-    static class FingerprintRequestTypeResponseParamsProxyToResponder implements Fingerprint.RequestTypeResponse {
+    static class FingerprintRequestTypeResponseParamsProxyToResponder implements Fingerprint.RequestType_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

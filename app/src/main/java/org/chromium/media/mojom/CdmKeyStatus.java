@@ -13,8 +13,20 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class CdmKeyStatus {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        CdmKeyStatus.USABLE,
+        CdmKeyStatus.INTERNAL_ERROR,
+        CdmKeyStatus.EXPIRED,
+        CdmKeyStatus.OUTPUT_RESTRICTED,
+        CdmKeyStatus.OUTPUT_DOWNSCALED,
+        CdmKeyStatus.KEY_STATUS_PENDING,
+        CdmKeyStatus.RELEASED})
+    public @interface EnumType {}
 
     public static final int USABLE = 0;
     public static final int INTERNAL_ERROR = 1;

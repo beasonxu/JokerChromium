@@ -41,6 +41,11 @@ public class SuggestionsUiDelegateImpl implements SuggestionsUiDelegate {
     }
 
     @Override
+    public NativePageHost getNativePageHost() {
+        return mHost;
+    }
+
+    @Override
     public SnackbarManager getSnackbarManager() {
         return mSnackbarManager;
     }
@@ -67,6 +72,7 @@ public class SuggestionsUiDelegateImpl implements SuggestionsUiDelegate {
         mImageFetcher.onDestroy();
 
         for (DestructionObserver observer : mDestructionObservers) observer.onDestroy();
+        mDestructionObservers.clear();
 
         mIsDestroyed = true;
     }

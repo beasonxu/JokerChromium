@@ -1,7 +1,6 @@
 package org.chromium.chrome.browser.signin.services;
 
 import java.lang.Override;
-import java.lang.String;
 import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
@@ -10,7 +9,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-public final class SigninMetricsUtilsJni implements SigninMetricsUtils.Natives {
+public class SigninMetricsUtilsJni implements SigninMetricsUtils.Natives {
   private static SigninMetricsUtils.Natives testInstance;
 
   public static final JniStaticTestMocker<SigninMetricsUtils.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.signin.services.SigninMetricsUtils.Natives>() {
@@ -32,11 +31,6 @@ public final class SigninMetricsUtilsJni implements SigninMetricsUtils.Natives {
   @Override
   public void logSigninUserActionForAccessPoint(int accessPoint) {
     GEN_JNI.org_chromium_chrome_browser_signin_services_SigninMetricsUtils_logSigninUserActionForAccessPoint(accessPoint);
-  }
-
-  @Override
-  public boolean logWebSignin(String[] gaiaIds) {
-    return (boolean)GEN_JNI.org_chromium_chrome_browser_signin_services_SigninMetricsUtils_logWebSignin(gaiaIds);
   }
 
   public static SigninMetricsUtils.Natives get() {

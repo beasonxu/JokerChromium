@@ -31,19 +31,7 @@ public abstract class MethodStrings {
     public static final String GOOGLE_PLAY_BILLING = "https://play.google.com/billing";
 
 
-    public static final String INTERLEDGER = "interledger";
-
-
-    public static final String PAYEE_CREDIT_TRANSFER = "payee-credit-transfer";
-
-
-    public static final String PAYER_CREDIT_TRANSFER = "payer-credit-transfer";
-
-
     public static final String SECURE_PAYMENT_CONFIRMATION = "secure-payment-confirmation";
-
-
-    public static final String TOKENIZED_CARD = "tokenized-card";
 
     // Prevent instantiation.
     private MethodStrings() {}

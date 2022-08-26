@@ -13,8 +13,19 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class EngagementLevel {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        EngagementLevel.NONE,
+        EngagementLevel.MINIMAL,
+        EngagementLevel.LOW,
+        EngagementLevel.MEDIUM,
+        EngagementLevel.HIGH,
+        EngagementLevel.MAX})
+    public @interface EnumType {}
 
     public static final int NONE = 0;
     public static final int MINIMAL = 1;

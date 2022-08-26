@@ -10,7 +10,7 @@ import org.chromium.components.search_engines.TemplateUrlService;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-public final class TemplateUrlServiceFactoryJni implements TemplateUrlServiceFactory.Natives {
+public class TemplateUrlServiceFactoryJni implements TemplateUrlServiceFactory.Natives {
   private static TemplateUrlServiceFactory.Natives testInstance;
 
   public static final JniStaticTestMocker<TemplateUrlServiceFactory.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.search_engines.TemplateUrlServiceFactory.Natives>() {
@@ -27,11 +27,6 @@ public final class TemplateUrlServiceFactoryJni implements TemplateUrlServiceFac
   @Override
   public TemplateUrlService getTemplateUrlService() {
     return (TemplateUrlService)GEN_JNI.org_chromium_chrome_browser_search_1engines_TemplateUrlServiceFactory_getTemplateUrlService();
-  }
-
-  @Override
-  public boolean doesDefaultSearchEngineHaveLogo() {
-    return (boolean)GEN_JNI.org_chromium_chrome_browser_search_1engines_TemplateUrlServiceFactory_doesDefaultSearchEngineHaveLogo();
   }
 
   public static TemplateUrlServiceFactory.Natives get() {

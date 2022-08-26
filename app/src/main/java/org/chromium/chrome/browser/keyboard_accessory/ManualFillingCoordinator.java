@@ -10,14 +10,18 @@ import android.view.ViewStub;
 import androidx.annotation.VisibleForTesting;
 
 import org.chromium.base.ObserverList;
+import org.chromium.base.supplier.ObservableSupplier;
+import org.chromium.chrome.browser.back_press.BackPressManager;
 import org.chromium.chrome.browser.flags.ChromeFeatureList;
 import org.chromium.chrome.browser.keyboard_accessory.bar_component.KeyboardAccessoryCoordinator;
 import org.chromium.chrome.browser.keyboard_accessory.data.KeyboardAccessoryData;
 import org.chromium.chrome.browser.keyboard_accessory.data.PropertyProvider;
 import org.chromium.chrome.browser.keyboard_accessory.sheet_component.AccessorySheetCoordinator;
+import org.chromium.chrome.browser.password_manager.ConfirmationDialogHelper;
 import org.chromium.components.autofill.AutofillDelegate;
 import org.chromium.components.autofill.AutofillSuggestion;
 import org.chromium.components.browser_ui.bottomsheet.BottomSheetController;
+import org.chromium.content_public.browser.WebContents;
 import org.chromium.ui.DropdownPopupWindow;
 import org.chromium.ui.base.WindowAndroid;
 
@@ -30,8 +34,6 @@ import org.chromium.ui.base.WindowAndroid;
  * fields.
  */
 class ManualFillingCoordinator implements ManualFillingComponent {
-    private final ManualFillingComponentSupplier mComponentSupplier =
-            new ManualFillingComponentSupplier();
     private final ManualFillingMediator mMediator = new ManualFillingMediator();
     private ObserverList<Observer> mObserverList = new ObserverList<>();
 
@@ -39,7 +41,8 @@ class ManualFillingCoordinator implements ManualFillingComponent {
 
     @Override
     public void initialize(WindowAndroid windowAndroid, BottomSheetController sheetController,
-            ViewStub barStub, ViewStub sheetStub) {
+            SoftKeyboardDelegate keyboardDelegate, BackPressManager backPressManager,
+            ViewStub sheetStub, ViewStub barStub) {
         if (barStub == null || sheetStub == null) return; // The manual filling isn't needed.
         if (ChromeFeatureList.isEnabled(ChromeFeatureList.AUTOFILL_KEYBOARD_ACCESSORY)) {
             barStub.setLayoutResource(R.layout.keyboard_accessory_modern);
@@ -48,27 +51,38 @@ class ManualFillingCoordinator implements ManualFillingComponent {
         }
         sheetStub.setLayoutResource(R.layout.keyboard_accessory_sheet);
         initialize(windowAndroid, new KeyboardAccessoryCoordinator(mMediator, barStub),
-                new AccessorySheetCoordinator(sheetStub), sheetController);
-        mComponentSupplier.set(this);
-        mComponentSupplier.attach(windowAndroid.getUnownedUserDataHost());
+                new AccessorySheetCoordinator(sheetStub), sheetController, backPressManager,
+                keyboardDelegate, new ConfirmationDialogHelper(windowAndroid.getContext()));
     }
 
     @VisibleForTesting
     void initialize(WindowAndroid windowAndroid, KeyboardAccessoryCoordinator accessoryBar,
-            AccessorySheetCoordinator accessorySheet, BottomSheetController sheetController) {
-        mMediator.initialize(accessoryBar, accessorySheet, windowAndroid, sheetController);
+            AccessorySheetCoordinator accessorySheet, BottomSheetController sheetController,
+            BackPressManager backPressManager, SoftKeyboardDelegate keyboardDelegate,
+            ConfirmationDialogHelper confirmationHelper) {
+        mMediator.initialize(accessoryBar, accessorySheet, windowAndroid, sheetController,
+                backPressManager, keyboardDelegate, confirmationHelper);
     }
 
     @Override
     public void destroy() {
-        mComponentSupplier.destroy();
         for (Observer observer : mObserverList) observer.onDestroy();
         mMediator.destroy();
     }
 
     @Override
-    public boolean handleBackPress() {
-        return mMediator.handleBackPress();
+    public boolean onBackPressed() {
+        return mMediator.onBackPressed();
+    }
+
+    @Override
+    public void handleBackPress() {
+        mMediator.handleBackPress();
+    }
+
+    @Override
+    public ObservableSupplier<Boolean> getHandleBackPressChangedSupplier() {
+        return mMediator.getHandleBackPressChangedSupplier();
     }
 
     @Override
@@ -92,15 +106,21 @@ class ManualFillingCoordinator implements ManualFillingComponent {
     }
 
     @Override
-    public void registerActionProvider(
+    public void registerActionProvider(WebContents webContents,
             PropertyProvider<KeyboardAccessoryData.Action[]> actionProvider) {
-        mMediator.registerActionProvider(actionProvider);
+        mMediator.registerActionProvider(webContents, actionProvider);
     }
 
     @Override
-    public void registerSheetDataProvider(@AccessoryTabType int sheetType,
+    public void registerSheetDataProvider(WebContents webContents, @AccessoryTabType int sheetType,
             PropertyProvider<KeyboardAccessoryData.AccessorySheetData> sheetDataProvider) {
-        mMediator.registerSheetDataProvider(sheetType, sheetDataProvider);
+        mMediator.registerSheetDataProvider(webContents, sheetType, sheetDataProvider);
+    }
+
+    @Override
+    public void registerSheetUpdateDelegate(
+            WebContents webContents, UpdateAccessorySheetDelegate delegate) {
+        mMediator.registerSheetUpdateDelegate(webContents, delegate);
     }
 
     @Override
@@ -120,6 +140,11 @@ class ManualFillingCoordinator implements ManualFillingComponent {
     }
 
     @Override
+    public void showAccessorySheetTab(@AccessoryTabType int tabType) {
+        mMediator.showAccessorySheetTab(tabType);
+    }
+
+    @Override
     public void onResume() {
         mMediator.resume();
     }
@@ -135,6 +160,11 @@ class ManualFillingCoordinator implements ManualFillingComponent {
     }
 
     @Override
+    public ObservableSupplier<Integer> getBottomInsetSupplier() {
+        return mMediator.getBottomInsetSupplier();
+    }
+
+    @Override
     public boolean addObserver(Observer observer) {
         return mObserverList.addObserver(observer);
     }
@@ -142,6 +172,11 @@ class ManualFillingCoordinator implements ManualFillingComponent {
     @Override
     public boolean removeObserver(Observer observer) {
         return mObserverList.addObserver(observer);
+    }
+
+    @Override
+    public void confirmOperation(String title, String message, Runnable confirmedCallback) {
+        mMediator.confirmOperation(title, message, confirmedCallback);
     }
 
     @VisibleForTesting

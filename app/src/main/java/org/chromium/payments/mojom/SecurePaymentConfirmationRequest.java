@@ -13,15 +13,22 @@
 
 package org.chromium.payments.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class SecurePaymentConfirmationRequest extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 32;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
+    private static final int STRUCT_SIZE = 72;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(72, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public byte[][] credentialIds;
-    public byte[] networkData;
+    public byte[] challenge;
+    public org.chromium.blink.mojom.PaymentCredentialInstrument instrument;
     public org.chromium.mojo_base.mojom.TimeDelta timeout;
+    public org.chromium.url.internal.mojom.Origin payeeOrigin;
+    public String payeeName;
+    public String rpId;
+    public boolean showOptOut;
 
     private SecurePaymentConfirmationRequest(int version) {
         super(STRUCT_SIZE, version);
@@ -70,12 +77,34 @@ public final class SecurePaymentConfirmationRequest extends org.chromium.mojo.bi
                 }
                 {
                     
-                result.networkData = decoder0.readBytes(16, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                result.challenge = decoder0.readBytes(16, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, true);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
+                result.instrument = org.chromium.blink.mojom.PaymentCredentialInstrument.decode(decoder1);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, true);
                 result.timeout = org.chromium.mojo_base.mojom.TimeDelta.decode(decoder1);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, true);
+                result.payeeOrigin = org.chromium.url.internal.mojom.Origin.decode(decoder1);
+                }
+                {
+                    
+                result.payeeName = decoder0.readString(48, true);
+                }
+                {
+                    
+                result.rpId = decoder0.readString(56, false);
+                }
+                {
+                    
+                result.showOptOut = decoder0.readBoolean(64, 0);
                 }
 
         } finally {
@@ -99,8 +128,18 @@ public final class SecurePaymentConfirmationRequest extends org.chromium.mojo.bi
             }
         }
         
-        encoder0.encode(this.networkData, 16, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+        encoder0.encode(this.challenge, 16, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
         
-        encoder0.encode(this.timeout, 24, true);
+        encoder0.encode(this.instrument, 24, false);
+        
+        encoder0.encode(this.timeout, 32, true);
+        
+        encoder0.encode(this.payeeOrigin, 40, true);
+        
+        encoder0.encode(this.payeeName, 48, true);
+        
+        encoder0.encode(this.rpId, 56, false);
+        
+        encoder0.encode(this.showOptOut, 64, 0);
     }
 }

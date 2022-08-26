@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class HidConnection_Internal {
 
@@ -67,7 +69,7 @@ class HidConnection_Internal {
         @Override
         public void read(
 
-ReadResponse callback) {
+Read_Response callback) {
 
             HidConnectionReadParams _message = new HidConnectionReadParams();
 
@@ -87,7 +89,7 @@ ReadResponse callback) {
         @Override
         public void write(
 byte reportId, byte[] buffer, 
-WriteResponse callback) {
+Write_Response callback) {
 
             HidConnectionWriteParams _message = new HidConnectionWriteParams();
 
@@ -111,7 +113,7 @@ WriteResponse callback) {
         @Override
         public void getFeatureReport(
 byte reportId, 
-GetFeatureReportResponse callback) {
+GetFeatureReport_Response callback) {
 
             HidConnectionGetFeatureReportParams _message = new HidConnectionGetFeatureReportParams();
 
@@ -133,7 +135,7 @@ GetFeatureReportResponse callback) {
         @Override
         public void sendFeatureReport(
 byte reportId, byte[] buffer, 
-SendFeatureReportResponse callback) {
+SendFeatureReport_Response callback) {
 
             HidConnectionSendFeatureReportParams _message = new HidConnectionSendFeatureReportParams();
 
@@ -422,9 +424,9 @@ SendFeatureReportResponse callback) {
 
     static class HidConnectionReadResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final HidConnection.ReadResponse mCallback;
+        private final HidConnection.Read_Response mCallback;
 
-        HidConnectionReadResponseParamsForwardToCallback(HidConnection.ReadResponse callback) {
+        HidConnectionReadResponseParamsForwardToCallback(HidConnection.Read_Response callback) {
             this.mCallback = callback;
         }
 
@@ -449,7 +451,7 @@ SendFeatureReportResponse callback) {
         }
     }
 
-    static class HidConnectionReadResponseParamsProxyToResponder implements HidConnection.ReadResponse {
+    static class HidConnectionReadResponseParamsProxyToResponder implements HidConnection.Read_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -620,9 +622,9 @@ SendFeatureReportResponse callback) {
 
     static class HidConnectionWriteResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final HidConnection.WriteResponse mCallback;
+        private final HidConnection.Write_Response mCallback;
 
-        HidConnectionWriteResponseParamsForwardToCallback(HidConnection.WriteResponse callback) {
+        HidConnectionWriteResponseParamsForwardToCallback(HidConnection.Write_Response callback) {
             this.mCallback = callback;
         }
 
@@ -647,7 +649,7 @@ SendFeatureReportResponse callback) {
         }
     }
 
-    static class HidConnectionWriteResponseParamsProxyToResponder implements HidConnection.WriteResponse {
+    static class HidConnectionWriteResponseParamsProxyToResponder implements HidConnection.Write_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -814,9 +816,9 @@ SendFeatureReportResponse callback) {
 
     static class HidConnectionGetFeatureReportResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final HidConnection.GetFeatureReportResponse mCallback;
+        private final HidConnection.GetFeatureReport_Response mCallback;
 
-        HidConnectionGetFeatureReportResponseParamsForwardToCallback(HidConnection.GetFeatureReportResponse callback) {
+        HidConnectionGetFeatureReportResponseParamsForwardToCallback(HidConnection.GetFeatureReport_Response callback) {
             this.mCallback = callback;
         }
 
@@ -841,7 +843,7 @@ SendFeatureReportResponse callback) {
         }
     }
 
-    static class HidConnectionGetFeatureReportResponseParamsProxyToResponder implements HidConnection.GetFeatureReportResponse {
+    static class HidConnectionGetFeatureReportResponseParamsProxyToResponder implements HidConnection.GetFeatureReport_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1010,9 +1012,9 @@ SendFeatureReportResponse callback) {
 
     static class HidConnectionSendFeatureReportResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final HidConnection.SendFeatureReportResponse mCallback;
+        private final HidConnection.SendFeatureReport_Response mCallback;
 
-        HidConnectionSendFeatureReportResponseParamsForwardToCallback(HidConnection.SendFeatureReportResponse callback) {
+        HidConnectionSendFeatureReportResponseParamsForwardToCallback(HidConnection.SendFeatureReport_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1037,7 +1039,7 @@ SendFeatureReportResponse callback) {
         }
     }
 
-    static class HidConnectionSendFeatureReportResponseParamsProxyToResponder implements HidConnection.SendFeatureReportResponse {
+    static class HidConnectionSendFeatureReportResponseParamsProxyToResponder implements HidConnection.SendFeatureReport_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class FindInPage_Internal {
 
@@ -126,7 +128,7 @@ int action) {
         @Override
         public void getNearestFindResult(
 org.chromium.gfx.mojom.PointF point, 
-GetNearestFindResultResponse callback) {
+GetNearestFindResult_Response callback) {
 
             FindInPageGetNearestFindResultParams _message = new FindInPageGetNearestFindResultParams();
 
@@ -184,7 +186,7 @@ FindInPageClient client) {
         @Override
         public void findMatchRects(
 int currentVersion, 
-FindMatchRectsResponse callback) {
+FindMatchRects_Response callback) {
 
             FindInPageFindMatchRectsParams _message = new FindInPageFindMatchRectsParams();
 
@@ -705,9 +707,9 @@ FindMatchRectsResponse callback) {
 
     static class FindInPageGetNearestFindResultResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FindInPage.GetNearestFindResultResponse mCallback;
+        private final FindInPage.GetNearestFindResult_Response mCallback;
 
-        FindInPageGetNearestFindResultResponseParamsForwardToCallback(FindInPage.GetNearestFindResultResponse callback) {
+        FindInPageGetNearestFindResultResponseParamsForwardToCallback(FindInPage.GetNearestFindResult_Response callback) {
             this.mCallback = callback;
         }
 
@@ -732,7 +734,7 @@ FindMatchRectsResponse callback) {
         }
     }
 
-    static class FindInPageGetNearestFindResultResponseParamsProxyToResponder implements FindInPage.GetNearestFindResultResponse {
+    static class FindInPageGetNearestFindResultResponseParamsProxyToResponder implements FindInPage.GetNearestFindResult_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1058,9 +1060,9 @@ FindMatchRectsResponse callback) {
 
     static class FindInPageFindMatchRectsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FindInPage.FindMatchRectsResponse mCallback;
+        private final FindInPage.FindMatchRects_Response mCallback;
 
-        FindInPageFindMatchRectsResponseParamsForwardToCallback(FindInPage.FindMatchRectsResponse callback) {
+        FindInPageFindMatchRectsResponseParamsForwardToCallback(FindInPage.FindMatchRects_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1085,7 +1087,7 @@ FindMatchRectsResponse callback) {
         }
     }
 
-    static class FindInPageFindMatchRectsResponseParamsProxyToResponder implements FindInPage.FindMatchRectsResponse {
+    static class FindInPageFindMatchRectsResponseParamsProxyToResponder implements FindInPage.FindMatchRects_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

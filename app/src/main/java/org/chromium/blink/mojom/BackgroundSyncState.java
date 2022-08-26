@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class BackgroundSyncState {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        BackgroundSyncState.PENDING,
+        BackgroundSyncState.FIRING,
+        BackgroundSyncState.REREGISTERED_WHILE_FIRING})
+    public @interface EnumType {}
 
     public static final int PENDING = 0;
     public static final int FIRING = 1;

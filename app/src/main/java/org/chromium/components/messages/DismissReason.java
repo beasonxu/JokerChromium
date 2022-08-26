@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -18,7 +18,8 @@ import java.lang.annotation.RetentionPolicy;
 @IntDef({
     DismissReason.UNKNOWN, DismissReason.PRIMARY_ACTION, DismissReason.SECONDARY_ACTION,
     DismissReason.TIMER, DismissReason.GESTURE, DismissReason.TAB_SWITCHED,
-    DismissReason.TAB_DESTROYED, DismissReason.ACTIVITY_DESTROYED, DismissReason.SCOPE_DESTROYED
+    DismissReason.TAB_DESTROYED, DismissReason.ACTIVITY_DESTROYED, DismissReason.SCOPE_DESTROYED,
+    DismissReason.DISMISSED_BY_FEATURE, DismissReason.COUNT
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface DismissReason {
@@ -59,4 +60,12 @@ public @interface DismissReason {
    * A message was dismissed due to the destruction of the corresponding scopes.
    */
   int SCOPE_DESTROYED = 8;
+  /**
+   * A message was dismissed explicitly in feature code.
+   */
+  int DISMISSED_BY_FEATURE = 9;
+  /**
+   * Insert new values before this line.
+   */
+  int COUNT = 10;
 }

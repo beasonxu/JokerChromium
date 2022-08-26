@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface DedicatedWorkerHostFactoryClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,15 +25,12 @@ public interface DedicatedWorkerHostFactoryClient extends org.chromium.mojo.bind
 
     Manager<DedicatedWorkerHostFactoryClient, DedicatedWorkerHostFactoryClient.Proxy> MANAGER = DedicatedWorkerHostFactoryClient_Internal.MANAGER;
 
-
     void onWorkerHostCreated(
 BrowserInterfaceBroker browserInterfaceBroker, DedicatedWorkerHost host);
 
 
-
     void onScriptLoadStarted(
-ServiceWorkerContainerInfoForClient serviceWorkerContainerInfo, WorkerMainScriptLoadParams mainScriptLoadParams, UrlLoaderFactoryBundle subresourceLoaderFactories, org.chromium.mojo.bindings.InterfaceRequest<SubresourceLoaderUpdater> subresourceLoaderUpdater, ControllerServiceWorkerInfo controllerInfo);
-
+ServiceWorkerContainerInfoForClient serviceWorkerContainerInfo, WorkerMainScriptLoadParams mainScriptLoadParams, UrlLoaderFactoryBundle subresourceLoaderFactories, org.chromium.mojo.bindings.InterfaceRequest<SubresourceLoaderUpdater> subresourceLoaderUpdater, ControllerServiceWorkerInfo controllerInfo, BackForwardCacheControllerHost backForwardCacheControllerHost);
 
 
     void onScriptLoadStartFailed(

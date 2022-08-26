@@ -11,7 +11,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class CronetUrlRequestJni implements CronetUrlRequest.Natives {
+class CronetUrlRequestJni implements CronetUrlRequest.Natives {
   private static CronetUrlRequest.Natives testInstance;
 
   public static final JniStaticTestMocker<CronetUrlRequest.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.net.impl.CronetUrlRequest.Natives>() {
@@ -28,8 +28,8 @@ final class CronetUrlRequestJni implements CronetUrlRequest.Natives {
   public long createRequestAdapter(CronetUrlRequest caller, long urlRequestContextAdapter,
       String url, int priority, boolean disableCache, boolean disableConnectionMigration,
       boolean enableMetrics, boolean trafficStatsTagSet, int trafficStatsTag,
-      boolean trafficStatsUidSet, int trafficStatsUid, int idempotency) {
-    return (long)GEN_JNI.org_chromium_net_impl_CronetUrlRequest_createRequestAdapter(caller, urlRequestContextAdapter, url, priority, disableCache, disableConnectionMigration, enableMetrics, trafficStatsTagSet, trafficStatsTag, trafficStatsUidSet, trafficStatsUid, idempotency);
+      boolean trafficStatsUidSet, int trafficStatsUid, int idempotency, long networkHandle) {
+    return (long)GEN_JNI.org_chromium_net_impl_CronetUrlRequest_createRequestAdapter(caller, urlRequestContextAdapter, url, priority, disableCache, disableConnectionMigration, enableMetrics, trafficStatsTagSet, trafficStatsTag, trafficStatsUidSet, trafficStatsUid, idempotency, networkHandle);
   }
 
   @Override

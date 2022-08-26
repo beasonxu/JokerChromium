@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class PasswordGenerationDialogBridgeJni implements PasswordGenerationDialogBridge.Natives {
+class PasswordGenerationDialogBridgeJni implements PasswordGenerationDialogBridge.Natives {
   private static PasswordGenerationDialogBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<PasswordGenerationDialogBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.password_manager.PasswordGenerationDialogBridge.Natives>() {

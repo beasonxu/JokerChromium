@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface FindInPageClient extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface FindInPageClient extends org.chromium.mojo.bindings.Interface {
 
     Manager<FindInPageClient, FindInPageClient.Proxy> MANAGER = FindInPageClient_Internal.MANAGER;
 
-
     void setNumberOfMatches(
 int requestId, int numberOfMatches, int updateType);
-
 
 
     void setActiveMatch(

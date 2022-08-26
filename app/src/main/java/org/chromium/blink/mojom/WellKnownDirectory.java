@@ -13,8 +13,20 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class WellKnownDirectory {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        WellKnownDirectory.DEFAULT,
+        WellKnownDirectory.DIR_DESKTOP,
+        WellKnownDirectory.DIR_DOCUMENTS,
+        WellKnownDirectory.DIR_DOWNLOADS,
+        WellKnownDirectory.DIR_MUSIC,
+        WellKnownDirectory.DIR_PICTURES,
+        WellKnownDirectory.DIR_VIDEOS})
+    public @interface EnumType {}
 
     public static final int DEFAULT = 0;
     public static final int DIR_DESKTOP = 1;

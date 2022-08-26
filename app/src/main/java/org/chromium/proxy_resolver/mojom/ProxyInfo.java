@@ -13,6 +13,8 @@
 
 package org.chromium.proxy_resolver.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class ProxyInfo extends org.chromium.mojo.bindings.Struct {
 

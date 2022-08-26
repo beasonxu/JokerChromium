@@ -6,38 +6,41 @@ package org.chromium.chrome.browser.omnibox.voice;
 
 import static org.chromium.chrome.browser.preferences.ChromePreferenceKeys.ASSISTANT_VOICE_SEARCH_ENABLED;
 
+import android.accounts.Account;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 
-import androidx.annotation.ColorInt;
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.content.res.AppCompatResources;
 
+import org.chromium.base.Promise;
 import org.chromium.base.SysUtils;
 import org.chromium.base.metrics.RecordHistogram;
 import org.chromium.base.task.AsyncTask;
-import org.chromium.chrome.R;
-import org.chromium.chrome.browser.IntentHandler;
 import org.chromium.chrome.browser.flags.ChromeFeatureList;
 import org.chromium.chrome.browser.gsa.GSAState;
+import org.chromium.chrome.browser.omnibox.R;
 import org.chromium.chrome.browser.preferences.SharedPreferencesManager;
-import org.chromium.components.browser_ui.styles.ChromeColors;
+import org.chromium.chrome.browser.profiles.Profile;
+import org.chromium.chrome.browser.search_engines.TemplateUrlServiceFactory;
+import org.chromium.chrome.browser.signin.services.IdentityServicesProvider;
+import org.chromium.chrome.browser.theme.ThemeUtils;
+import org.chromium.chrome.browser.ui.theme.BrandedColorScheme;
 import org.chromium.components.externalauth.ExternalAuthUtils;
 import org.chromium.components.search_engines.TemplateUrlService;
-import org.chromium.components.signin.AccountManagerDelegateException;
 import org.chromium.components.signin.AccountManagerFacade;
+import org.chromium.components.signin.AccountManagerFacadeProvider;
 import org.chromium.components.signin.AccountsChangeObserver;
 import org.chromium.components.signin.base.CoreAccountInfo;
 import org.chromium.components.signin.identitymanager.ConsentLevel;
 import org.chromium.components.signin.identitymanager.IdentityManager;
 import org.chromium.components.signin.identitymanager.PrimaryAccountChangeEvent;
-import org.chromium.ui.util.ColorUtils;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -52,6 +55,8 @@ public class AssistantVoiceSearchService implements TemplateUrlService.TemplateU
                                                     IdentityManager.Observer,
                                                     AccountsChangeObserver {
     @VisibleForTesting
+    static final String STARTUP_HISTOGRAM_SUFFIX = ".Startup";
+    @VisibleForTesting
     static final String USER_ELIGIBILITY_HISTOGRAM = "Assistant.VoiceSearch.UserEligibility";
     @VisibleForTesting
     static final String USER_ELIGIBILITY_FAILURE_REASON_HISTOGRAM =
@@ -60,6 +65,7 @@ public class AssistantVoiceSearchService implements TemplateUrlService.TemplateU
     static final String AGSA_VERSION_HISTOGRAM = "Assistant.VoiceSearch.AgsaVersion";
     private static final String DEFAULT_ASSISTANT_AGSA_MIN_VERSION = "11.7";
     private static final boolean DEFAULT_ASSISTANT_COLORFUL_MIC_ENABLED = false;
+    private static Boolean sAlwaysUseAssistantVoiceSearchForTesting;
 
     // These values are persisted to logs. Entries should not be renumbered and
     // numeric values should never be reused.
@@ -69,7 +75,8 @@ public class AssistantVoiceSearchService implements TemplateUrlService.TemplateU
             EligibilityFailureReason.AGSA_NOT_GOOGLE_SIGNED,
             EligibilityFailureReason.NON_GOOGLE_SEARCH_ENGINE,
             EligibilityFailureReason.NO_CHROME_ACCOUNT, EligibilityFailureReason.LOW_END_DEVICE,
-            EligibilityFailureReason.MULTIPLE_ACCOUNTS_ON_DEVICE})
+            EligibilityFailureReason.MULTIPLE_ACCOUNTS_ON_DEVICE,
+            EligibilityFailureReason.AGSA_NOT_INSTALLED})
     @Retention(RetentionPolicy.SOURCE)
     @interface EligibilityFailureReason {
         int AGSA_CANT_HANDLE_INTENT = 0;
@@ -86,10 +93,11 @@ public class AssistantVoiceSearchService implements TemplateUrlService.TemplateU
         int NO_CHROME_ACCOUNT = 8;
         int LOW_END_DEVICE = 9;
         int MULTIPLE_ACCOUNTS_ON_DEVICE = 10;
+        int AGSA_NOT_INSTALLED = 11;
 
         // STOP: When updating this, also update values in enums.xml and make sure to update the
         // IntDef above.
-        int NUM_ENTRIES = 11;
+        int NUM_ENTRIES = 12;
     }
 
     /** Allows outside classes to listen for changes in this service. */
@@ -116,7 +124,7 @@ public class AssistantVoiceSearchService implements TemplateUrlService.TemplateU
     private boolean mIsDefaultSearchEngineGoogle;
     private boolean mIsAssistantVoiceSearchEnabled;
     private boolean mIsColorfulMicEnabled;
-    private boolean mShouldShowColorfulMic;
+    private boolean mShouldShowColorfulButtons;
     private boolean mIsMultiAccountCheckEnabled;
     private String mMinAgsaVersion;
 
@@ -171,7 +179,7 @@ public class AssistantVoiceSearchService implements TemplateUrlService.TemplateU
 
         mIsDefaultSearchEngineGoogle = mTemplateUrlService.isDefaultSearchEngineGoogle();
 
-        mShouldShowColorfulMic = isColorfulMicEnabled();
+        mShouldShowColorfulButtons = isColorfulMicEnabled();
     }
 
     /** @return Whether the user has had a chance to enable the feature. */
@@ -186,6 +194,9 @@ public class AssistantVoiceSearchService implements TemplateUrlService.TemplateU
      * - The consent flow must be accepted.
      */
     public boolean shouldRequestAssistantVoiceSearch() {
+        if (sAlwaysUseAssistantVoiceSearchForTesting != null) {
+            return sAlwaysUseAssistantVoiceSearchForTesting;
+        }
         return mIsAssistantVoiceSearchEnabled && canRequestAssistantVoiceSearch()
                 && isEnabledByPreference();
     }
@@ -196,6 +207,9 @@ public class AssistantVoiceSearchService implements TemplateUrlService.TemplateU
      * conditions.
      */
     public boolean canRequestAssistantVoiceSearch() {
+        if (sAlwaysUseAssistantVoiceSearchForTesting != null) {
+            return sAlwaysUseAssistantVoiceSearchForTesting;
+        }
         return mIsAssistantVoiceSearchEnabled
                 && isDeviceEligibleForAssistant(/* returnImmediately= */ true, /* outList= */ null);
     }
@@ -205,19 +219,16 @@ public class AssistantVoiceSearchService implements TemplateUrlService.TemplateU
      *         exist or reuse the existing Drawable's ConstantState if it does already exist.
      **/
     public Drawable getCurrentMicDrawable() {
-        return AppCompatResources.getDrawable(
-                mContext, mShouldShowColorfulMic ? R.drawable.ic_colorful_mic : R.drawable.btn_mic);
+        return AppCompatResources.getDrawable(mContext,
+                mShouldShowColorfulButtons ? R.drawable.ic_colorful_mic : R.drawable.btn_mic);
     }
 
     /** @return The correct ColorStateList for the current theme. */
-    public @Nullable ColorStateList getMicButtonColorStateList(
-            @ColorInt int primaryColor, Context context) {
-        if (mShouldShowColorfulMic) return null;
+    public @Nullable ColorStateList getButtonColorStateList(
+            @BrandedColorScheme int brandedColorScheme, Context context) {
+        if (mShouldShowColorfulButtons) return null;
 
-        final boolean useLightColors =
-                ColorUtils.shouldUseLightForegroundOnBackground(primaryColor);
-        int id = ChromeColors.getPrimaryIconTintRes(useLightColors);
-        return AppCompatResources.getColorStateList(context, id);
+        return ThemeUtils.getThemedToolbarIconTint(context, brandedColorScheme);
     }
 
     /** Called from {@link VoiceRecognitionHandler} after the consent flow has completed. */
@@ -262,6 +273,11 @@ public class AssistantVoiceSearchService implements TemplateUrlService.TemplateU
             boolean returnImmediately, List<Integer> outList) {
         assert returnImmediately || outList != null;
 
+        if (!mGsaState.isGsaInstalled()) {
+            if (returnImmediately) return false;
+            outList.add(EligibilityFailureReason.AGSA_NOT_INSTALLED);
+        }
+
         if (!mGsaState.canAgsaHandleIntent(getAssistantVoiceSearchIntent())) {
             if (returnImmediately) return false;
             outList.add(EligibilityFailureReason.AGSA_CANT_HANDLE_INTENT);
@@ -278,7 +294,7 @@ public class AssistantVoiceSearchService implements TemplateUrlService.TemplateU
             if (returnImmediately) return false;
             outList.add(EligibilityFailureReason.CHROME_NOT_GOOGLE_SIGNED);
         }
-        if (!mExternalAuthUtils.isGoogleSigned(IntentHandler.PACKAGE_GSA)) {
+        if (!mExternalAuthUtils.isGoogleSigned(GSAState.PACKAGE_NAME)) {
             if (returnImmediately) return false;
             outList.add(EligibilityFailureReason.AGSA_NOT_GOOGLE_SIGNED);
         }
@@ -288,7 +304,7 @@ public class AssistantVoiceSearchService implements TemplateUrlService.TemplateU
             outList.add(EligibilityFailureReason.NON_GOOGLE_SEARCH_ENGINE);
         }
 
-        if (!mIdentityManager.hasPrimaryAccount()) {
+        if (!mIdentityManager.hasPrimaryAccount(ConsentLevel.SYNC)) {
             if (returnImmediately) return false;
             outList.add(EligibilityFailureReason.NO_CHROME_ACCOUNT);
         }
@@ -311,7 +327,7 @@ public class AssistantVoiceSearchService implements TemplateUrlService.TemplateU
     /** @return The Intent for Assistant voice search. */
     public Intent getAssistantVoiceSearchIntent() {
         Intent intent = new Intent(Intent.ACTION_SEARCH);
-        intent.setPackage(IntentHandler.PACKAGE_GSA);
+        intent.setPackage(GSAState.PACKAGE_NAME);
         return intent;
     }
 
@@ -322,20 +338,65 @@ public class AssistantVoiceSearchService implements TemplateUrlService.TemplateU
     }
 
     /**
-     * Reports user eligilibility,
-     * - If the user is eligible, then it only reports to USER_ELIGIBILITY_HISTOGRAM.
-     * - If the user is ineligible, then it reports to USER_ELIGIBILITY_HISTOGRAM and the reason
-     *   to USER_ELIGIBILITY_FAILURE_REASON_HISTOGRAM.
+     * Records user eligibility to histograms that are specific to voice search init.
+     *
+     * This should be called each time an Assistant voice search is started.
+     *
+     * See reportUserEligibility for details on which histograms are recorded.
      */
-    void reportUserEligibility() {
+    void reportMicPressUserEligibility() {
+        // The base histogram (no suffix) is used to record the per-mic-press eligibility.
+        reportUserEligibility("");
+    }
+
+    /**
+     * Records user eligibility to histograms that are specific to browser startup.
+     *
+     * This should be only be called once per browser startup.
+     *
+     * See reportUserEligibility for details on which histograms are recorded.
+     */
+    public static void reportStartupUserEligibility(Context context) {
+        AssistantVoiceSearchService service =
+                new AssistantVoiceSearchService(context, ExternalAuthUtils.getInstance(),
+                        TemplateUrlServiceFactory.get(), GSAState.getInstance(context),
+                        /*observer=*/null, SharedPreferencesManager.getInstance(),
+                        IdentityServicesProvider.get().getIdentityManager(
+                                Profile.getLastUsedRegularProfile()),
+                        AccountManagerFacadeProvider.getInstance());
+        service.reportUserEligibility(STARTUP_HISTOGRAM_SUFFIX);
+    }
+
+    /**
+     * Reports user eligilibility to a histogram determined by |timingSuffix|,
+     * - User eligibility is always reported to USER_ELIGIBILITY_HISTOGRAM + suffix.
+     * - If the user is ineligible, it also reports the reasons for ineligibility to
+     *   USER_ELIGIBILITY_FAILURE_REASON_HISTOGRAM + suffix.
+     * - If AGSA is available, the version number is reported to AGSA_VERSION_HISTOGRAM + suffix.
+     *
+     * @param timingSuffix The suffix to attach to the histograms to indicate the point at which
+     *        they are being recorded. For example, this can be used to specifically report
+     *        eligibility on browser startup.
+     */
+    private void reportUserEligibility(String timingSuffix) {
         List<Integer> failureReasons = new ArrayList<>();
         boolean eligible = isDeviceEligibleForAssistant(
                 /* returnImmediately= */ false, /* outList */ failureReasons);
-        RecordHistogram.recordBooleanHistogram(USER_ELIGIBILITY_HISTOGRAM, eligible);
+        RecordHistogram.recordBooleanHistogram(USER_ELIGIBILITY_HISTOGRAM + timingSuffix, eligible);
+
+        // See notes in {@link GSAState#parseAgsaMajorMinorVersionAsInteger} for details about this
+        // number.
+        Integer versionNumber =
+                mGsaState.parseAgsaMajorMinorVersionAsInteger(mGsaState.getAgsaVersionName());
+        if (versionNumber != null) {
+            RecordHistogram.recordSparseHistogram(
+                    AGSA_VERSION_HISTOGRAM + timingSuffix, (int) versionNumber);
+        }
 
         for (@EligibilityFailureReason int reason : failureReasons) {
-            RecordHistogram.recordEnumeratedHistogram(USER_ELIGIBILITY_FAILURE_REASON_HISTOGRAM,
-                    reason, EligibilityFailureReason.NUM_ENTRIES);
+            RecordHistogram.recordEnumeratedHistogram(
+                    USER_ELIGIBILITY_FAILURE_REASON_HISTOGRAM + timingSuffix, reason,
+                    EligibilityFailureReason.NUM_ENTRIES);
         }
     }
 
@@ -345,11 +406,11 @@ public class AssistantVoiceSearchService implements TemplateUrlService.TemplateU
         new AsyncTask<Boolean>() {
             @Override
             protected Boolean doInBackground() {
-                return mShouldShowColorfulMic != shouldShowColorfulMic;
+                return mShouldShowColorfulButtons != shouldShowColorfulMic;
             }
             @Override
             protected void onPostExecute(Boolean notify) {
-                mShouldShowColorfulMic = shouldShowColorfulMic;
+                mShouldShowColorfulButtons = shouldShowColorfulMic;
                 if (notify) notifyObserver();
             }
         }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
@@ -358,14 +419,10 @@ public class AssistantVoiceSearchService implements TemplateUrlService.TemplateU
     /** Wrapped multi-account check to handle the exception. */
     @VisibleForTesting
     boolean doesViolateMultiAccountCheck() {
-        if (!mAccountManagerFacade.isCachePopulated()) return true;
-
-        try {
-            return mAccountManagerFacade.getGoogleAccounts().size() > 1;
-        } catch (AccountManagerDelegateException e) {
-            // In case of an exception -- we can't be sure so default to true.
-            return true;
-        }
+        // In case of the accounts cannot be fetched -- we can't be sure so default to true.
+        final Promise<List<Account>> promise = mAccountManagerFacade.getAccounts();
+        return !mExternalAuthUtils.canUseGooglePlayServices() || !promise.isFulfilled()
+                || promise.getResult().size() > 1;
     }
 
     // TemplateUrlService.TemplateUrlServiceObserver implementation
@@ -376,7 +433,7 @@ public class AssistantVoiceSearchService implements TemplateUrlService.TemplateU
         if (mIsDefaultSearchEngineGoogle == searchEngineGoogle) return;
 
         mIsDefaultSearchEngineGoogle = searchEngineGoogle;
-        mShouldShowColorfulMic = isColorfulMicEnabled();
+        mShouldShowColorfulButtons = isColorfulMicEnabled();
         notifyObserver();
     }
 
@@ -399,10 +456,14 @@ public class AssistantVoiceSearchService implements TemplateUrlService.TemplateU
     /** Enable the colorful mic for testing purposes. */
     void setColorfulMicEnabledForTesting(boolean enabled) {
         mIsColorfulMicEnabled = enabled;
-        mShouldShowColorfulMic = enabled;
+        mShouldShowColorfulButtons = enabled;
     }
 
     void setMultiAccountCheckEnabledForTesting(boolean enabled) {
         mIsMultiAccountCheckEnabled = enabled;
+    }
+
+    static void setAlwaysUseAssistantVoiceSearchForTestingEnabled(Boolean enabled) {
+        sAlwaysUseAssistantVoiceSearchForTesting = enabled;
     }
 }

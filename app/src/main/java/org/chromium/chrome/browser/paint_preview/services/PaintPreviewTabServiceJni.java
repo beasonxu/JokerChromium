@@ -13,7 +13,7 @@ import org.chromium.content_public.browser.WebContents;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class PaintPreviewTabServiceJni implements PaintPreviewTabService.Natives {
+class PaintPreviewTabServiceJni implements PaintPreviewTabService.Natives {
   private static PaintPreviewTabService.Natives testInstance;
 
   public static final JniStaticTestMocker<PaintPreviewTabService.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.paint_preview.services.PaintPreviewTabService.Natives>() {
@@ -29,8 +29,9 @@ final class PaintPreviewTabServiceJni implements PaintPreviewTabService.Natives 
 
   @Override
   public void captureTabAndroid(long nativePaintPreviewTabService, int tabId,
-      WebContents webContents, Callback<Boolean> successCallback) {
-    GEN_JNI.org_chromium_chrome_browser_paint_1preview_services_PaintPreviewTabService_captureTabAndroid(nativePaintPreviewTabService, tabId, webContents, successCallback);
+      WebContents webContents, boolean accessibilityEnabled, float pageScaleFactor,
+      int scrollOffsetX, int scrollOffsetY, Callback<Boolean> successCallback) {
+    GEN_JNI.org_chromium_chrome_browser_paint_1preview_services_PaintPreviewTabService_captureTabAndroid(nativePaintPreviewTabService, tabId, webContents, accessibilityEnabled, pageScaleFactor, scrollOffsetX, scrollOffsetY, successCallback);
   }
 
   @Override

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class AppBannerController_Internal {
 
@@ -61,7 +63,7 @@ class AppBannerController_Internal {
         @Override
         public void bannerPromptRequest(
 AppBannerService service, org.chromium.mojo.bindings.InterfaceRequest<AppBannerEvent> eventReceiver, String[] platform, 
-BannerPromptRequestResponse callback) {
+BannerPromptRequest_Response callback) {
 
             AppBannerControllerBannerPromptRequestParams _message = new AppBannerControllerBannerPromptRequestParams();
 
@@ -327,9 +329,9 @@ BannerPromptRequestResponse callback) {
 
     static class AppBannerControllerBannerPromptRequestResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final AppBannerController.BannerPromptRequestResponse mCallback;
+        private final AppBannerController.BannerPromptRequest_Response mCallback;
 
-        AppBannerControllerBannerPromptRequestResponseParamsForwardToCallback(AppBannerController.BannerPromptRequestResponse callback) {
+        AppBannerControllerBannerPromptRequestResponseParamsForwardToCallback(AppBannerController.BannerPromptRequest_Response callback) {
             this.mCallback = callback;
         }
 
@@ -354,7 +356,7 @@ BannerPromptRequestResponse callback) {
         }
     }
 
-    static class AppBannerControllerBannerPromptRequestResponseParamsProxyToResponder implements AppBannerController.BannerPromptRequestResponse {
+    static class AppBannerControllerBannerPromptRequestResponseParamsProxyToResponder implements AppBannerController.BannerPromptRequest_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

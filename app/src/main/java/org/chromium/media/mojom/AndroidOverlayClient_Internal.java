@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class AndroidOverlayClient_Internal {
 
@@ -99,7 +101,7 @@ long surfaceKey) {
         @Override
         public void onSynchronouslyDestroyed(
 
-OnSynchronouslyDestroyedResponse callback) {
+OnSynchronouslyDestroyed_Response callback) {
 
             AndroidOverlayClientOnSynchronouslyDestroyedParams _message = new AndroidOverlayClientOnSynchronouslyDestroyedParams();
 
@@ -492,9 +494,9 @@ boolean isPowerEfficient) {
 
     static class AndroidOverlayClientOnSynchronouslyDestroyedResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final AndroidOverlayClient.OnSynchronouslyDestroyedResponse mCallback;
+        private final AndroidOverlayClient.OnSynchronouslyDestroyed_Response mCallback;
 
-        AndroidOverlayClientOnSynchronouslyDestroyedResponseParamsForwardToCallback(AndroidOverlayClient.OnSynchronouslyDestroyedResponse callback) {
+        AndroidOverlayClientOnSynchronouslyDestroyedResponseParamsForwardToCallback(AndroidOverlayClient.OnSynchronouslyDestroyed_Response callback) {
             this.mCallback = callback;
         }
 
@@ -517,7 +519,7 @@ boolean isPowerEfficient) {
         }
     }
 
-    static class AndroidOverlayClientOnSynchronouslyDestroyedResponseParamsProxyToResponder implements AndroidOverlayClient.OnSynchronouslyDestroyedResponse {
+    static class AndroidOverlayClientOnSynchronouslyDestroyedResponseParamsProxyToResponder implements AndroidOverlayClient.OnSynchronouslyDestroyed_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

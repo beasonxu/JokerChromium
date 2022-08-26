@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface NativeIoFileHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface NativeIoFileHost extends org.chromium.mojo.bindings.Interface {
 
     Manager<NativeIoFileHost, NativeIoFileHost.Proxy> MANAGER = NativeIoFileHost_Internal.MANAGER;
 
-
     void close(
 
-CloseResponse callback);
+Close_Response callback);
 
-    interface CloseResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
+    interface Close_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
 }

@@ -9,7 +9,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class WebApkInstallerJni implements WebApkInstaller.Natives {
+class WebApkInstallerJni implements WebApkInstaller.Natives {
   private static WebApkInstaller.Natives testInstance;
 
   public static final JniStaticTestMocker<WebApkInstaller.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.webapps.WebApkInstaller.Natives>() {

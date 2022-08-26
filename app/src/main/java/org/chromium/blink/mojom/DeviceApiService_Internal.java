@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class DeviceApiService_Internal {
 
@@ -47,17 +49,15 @@ class DeviceApiService_Internal {
     };
 
 
-    private static final int GET_MANAGED_CONFIGURATION_ORDINAL = 0;
+    private static final int GET_DIRECTORY_ID_ORDINAL = 0;
 
-    private static final int SUBSCRIBE_TO_MANAGED_CONFIGURATION_ORDINAL = 1;
+    private static final int GET_HOSTNAME_ORDINAL = 1;
 
-    private static final int GET_DIRECTORY_ID_ORDINAL = 2;
+    private static final int GET_SERIAL_NUMBER_ORDINAL = 2;
 
-    private static final int GET_SERIAL_NUMBER_ORDINAL = 3;
+    private static final int GET_ANNOTATED_ASSET_ID_ORDINAL = 3;
 
-    private static final int GET_ANNOTATED_ASSET_ID_ORDINAL = 4;
-
-    private static final int GET_ANNOTATED_LOCATION_ORDINAL = 5;
+    private static final int GET_ANNOTATED_LOCATION_ORDINAL = 4;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements DeviceApiService.Proxy {
@@ -69,48 +69,9 @@ class DeviceApiService_Internal {
 
 
         @Override
-        public void getManagedConfiguration(
-String[] keys, 
-GetManagedConfigurationResponse callback) {
-
-            DeviceApiServiceGetManagedConfigurationParams _message = new DeviceApiServiceGetManagedConfigurationParams();
-
-            _message.keys = keys;
-
-
-            getProxyHandler().getMessageReceiver().acceptWithResponder(
-                    _message.serializeWithHeader(
-                            getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(
-                                    GET_MANAGED_CONFIGURATION_ORDINAL,
-                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
-                                    0)),
-                    new DeviceApiServiceGetManagedConfigurationResponseParamsForwardToCallback(callback));
-
-        }
-
-
-        @Override
-        public void subscribeToManagedConfiguration(
-ManagedConfigurationObserver observer) {
-
-            DeviceApiServiceSubscribeToManagedConfigurationParams _message = new DeviceApiServiceSubscribeToManagedConfigurationParams();
-
-            _message.observer = observer;
-
-
-            getProxyHandler().getMessageReceiver().accept(
-                    _message.serializeWithHeader(
-                            getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(SUBSCRIBE_TO_MANAGED_CONFIGURATION_ORDINAL)));
-
-        }
-
-
-        @Override
         public void getDirectoryId(
 
-GetDirectoryIdResponse callback) {
+GetDirectoryId_Response callback) {
 
             DeviceApiServiceGetDirectoryIdParams _message = new DeviceApiServiceGetDirectoryIdParams();
 
@@ -128,9 +89,29 @@ GetDirectoryIdResponse callback) {
 
 
         @Override
+        public void getHostname(
+
+GetHostname_Response callback) {
+
+            DeviceApiServiceGetHostnameParams _message = new DeviceApiServiceGetHostnameParams();
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    GET_HOSTNAME_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new DeviceApiServiceGetHostnameResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
         public void getSerialNumber(
 
-GetSerialNumberResponse callback) {
+GetSerialNumber_Response callback) {
 
             DeviceApiServiceGetSerialNumberParams _message = new DeviceApiServiceGetSerialNumberParams();
 
@@ -150,7 +131,7 @@ GetSerialNumberResponse callback) {
         @Override
         public void getAnnotatedAssetId(
 
-GetAnnotatedAssetIdResponse callback) {
+GetAnnotatedAssetId_Response callback) {
 
             DeviceApiServiceGetAnnotatedAssetIdParams _message = new DeviceApiServiceGetAnnotatedAssetIdParams();
 
@@ -170,7 +151,7 @@ GetAnnotatedAssetIdResponse callback) {
         @Override
         public void getAnnotatedLocation(
 
-GetAnnotatedLocationResponse callback) {
+GetAnnotatedLocation_Response callback) {
 
             DeviceApiServiceGetAnnotatedLocationParams _message = new DeviceApiServiceGetAnnotatedLocationParams();
 
@@ -220,19 +201,6 @@ GetAnnotatedLocationResponse callback) {
 
 
 
-                    case SUBSCRIBE_TO_MANAGED_CONFIGURATION_ORDINAL: {
-
-                        DeviceApiServiceSubscribeToManagedConfigurationParams data =
-                                DeviceApiServiceSubscribeToManagedConfigurationParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().subscribeToManagedConfiguration(data.observer);
-                        return true;
-                    }
-
-
-
-
-
 
 
 
@@ -272,12 +240,11 @@ GetAnnotatedLocationResponse callback) {
 
 
 
-                    case GET_MANAGED_CONFIGURATION_ORDINAL: {
+                    case GET_DIRECTORY_ID_ORDINAL: {
 
-                        DeviceApiServiceGetManagedConfigurationParams data =
-                                DeviceApiServiceGetManagedConfigurationParams.deserialize(messageWithHeader.getPayload());
+                        DeviceApiServiceGetDirectoryIdParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().getManagedConfiguration(data.keys, new DeviceApiServiceGetManagedConfigurationResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().getDirectoryId(new DeviceApiServiceGetDirectoryIdResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -287,13 +254,11 @@ GetAnnotatedLocationResponse callback) {
 
 
 
+                    case GET_HOSTNAME_ORDINAL: {
 
+                        DeviceApiServiceGetHostnameParams.deserialize(messageWithHeader.getPayload());
 
-                    case GET_DIRECTORY_ID_ORDINAL: {
-
-                        DeviceApiServiceGetDirectoryIdParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().getDirectoryId(new DeviceApiServiceGetDirectoryIdResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().getHostname(new DeviceApiServiceGetHostnameResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -349,334 +314,6 @@ GetAnnotatedLocationResponse callback) {
             }
         }
     }
-
-
-    
-    static final class DeviceApiServiceGetManagedConfigurationParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public String[] keys;
-
-        private DeviceApiServiceGetManagedConfigurationParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public DeviceApiServiceGetManagedConfigurationParams() {
-            this(0);
-        }
-
-        public static DeviceApiServiceGetManagedConfigurationParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static DeviceApiServiceGetManagedConfigurationParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static DeviceApiServiceGetManagedConfigurationParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            DeviceApiServiceGetManagedConfigurationParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new DeviceApiServiceGetManagedConfigurationParams(elementsOrVersion);
-                    {
-                        
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    {
-                        org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                        result.keys = new String[si1.elementsOrVersion];
-                        for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
-                            
-                            result.keys[i1] = decoder1.readString(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
-                        }
-                    }
-                    }
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-            
-            if (this.keys == null) {
-                encoder0.encodeNullPointer(8, false);
-            } else {
-                org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.keys.length, 8, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                for (int i0 = 0; i0 < this.keys.length; ++i0) {
-                    
-                    encoder1.encode(this.keys[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
-                }
-            }
-        }
-    }
-
-
-
-    
-    static final class DeviceApiServiceGetManagedConfigurationResponseParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public java.util.Map<String, String> configurations;
-
-        private DeviceApiServiceGetManagedConfigurationResponseParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public DeviceApiServiceGetManagedConfigurationResponseParams() {
-            this(0);
-        }
-
-        public static DeviceApiServiceGetManagedConfigurationResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static DeviceApiServiceGetManagedConfigurationResponseParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static DeviceApiServiceGetManagedConfigurationResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            DeviceApiServiceGetManagedConfigurationResponseParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new DeviceApiServiceGetManagedConfigurationResponseParams(elementsOrVersion);
-                    {
-                        
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    {
-                        decoder1.readDataHeaderForMap();
-                        String[] keys0;
-                        String[] values0;
-                        {
-                            
-                            org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, false);
-                            {
-                                org.chromium.mojo.bindings.DataHeader si2 = decoder2.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                                keys0 = new String[si2.elementsOrVersion];
-                                for (int i2 = 0; i2 < si2.elementsOrVersion; ++i2) {
-                                    
-                                    keys0[i2] = decoder2.readString(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i2, false);
-                                }
-                            }
-                        }
-                        {
-                            
-                            org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE, false);
-                            {
-                                org.chromium.mojo.bindings.DataHeader si2 = decoder2.readDataHeaderForPointerArray(keys0.length);
-                                values0 = new String[si2.elementsOrVersion];
-                                for (int i2 = 0; i2 < si2.elementsOrVersion; ++i2) {
-                                    
-                                    values0[i2] = decoder2.readString(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i2, false);
-                                }
-                            }
-                        }
-                        result.configurations = new java.util.HashMap<String, String>();
-                        for (int index0 = 0; index0 < keys0.length; ++index0) {
-                            result.configurations.put(keys0[index0],  values0[index0]);
-                        }
-                    }
-                    }
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-            
-            if (this.configurations == null) {
-                encoder0.encodeNullPointer(8, false);
-            } else {
-                org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encoderForMap(8);
-                int size0 = this.configurations.size();
-                String[] keys0 = new String[size0];
-                String[] values0 = new String[size0];
-                int index0 = 0;
-                for (java.util.Map.Entry<String, String> entry0 : this.configurations.entrySet()) {
-                    keys0[index0] = entry0.getKey();
-                    values0[index0] = entry0.getValue();
-                    ++index0;
-                }
-                
-                {
-                    org.chromium.mojo.bindings.Encoder encoder2 = encoder1.encodePointerArray(keys0.length, org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                    for (int i1 = 0; i1 < keys0.length; ++i1) {
-                        
-                        encoder2.encode(keys0[i1], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
-                    }
-                }
-                
-                {
-                    org.chromium.mojo.bindings.Encoder encoder2 = encoder1.encodePointerArray(values0.length, org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                    for (int i1 = 0; i1 < values0.length; ++i1) {
-                        
-                        encoder2.encode(values0[i1], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
-                    }
-                }
-            }
-        }
-    }
-
-    static class DeviceApiServiceGetManagedConfigurationResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
-            implements org.chromium.mojo.bindings.MessageReceiver {
-        private final DeviceApiService.GetManagedConfigurationResponse mCallback;
-
-        DeviceApiServiceGetManagedConfigurationResponseParamsForwardToCallback(DeviceApiService.GetManagedConfigurationResponse callback) {
-            this.mCallback = callback;
-        }
-
-        @Override
-        public boolean accept(org.chromium.mojo.bindings.Message message) {
-            try {
-                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
-                        message.asServiceMessage();
-                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
-                if (!header.validateHeader(GET_MANAGED_CONFIGURATION_ORDINAL,
-                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
-                    return false;
-                }
-
-                DeviceApiServiceGetManagedConfigurationResponseParams response = DeviceApiServiceGetManagedConfigurationResponseParams.deserialize(messageWithHeader.getPayload());
-
-                mCallback.call(response.configurations);
-                return true;
-            } catch (org.chromium.mojo.bindings.DeserializationException e) {
-                return false;
-            }
-        }
-    }
-
-    static class DeviceApiServiceGetManagedConfigurationResponseParamsProxyToResponder implements DeviceApiService.GetManagedConfigurationResponse {
-
-        private final org.chromium.mojo.system.Core mCore;
-        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
-        private final long mRequestId;
-
-        DeviceApiServiceGetManagedConfigurationResponseParamsProxyToResponder(
-                org.chromium.mojo.system.Core core,
-                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
-                long requestId) {
-            mCore = core;
-            mMessageReceiver = messageReceiver;
-            mRequestId = requestId;
-        }
-
-        @Override
-        public void call(java.util.Map<String, String> configurations) {
-            DeviceApiServiceGetManagedConfigurationResponseParams _response = new DeviceApiServiceGetManagedConfigurationResponseParams();
-
-            _response.configurations = configurations;
-
-            org.chromium.mojo.bindings.ServiceMessage _message =
-                    _response.serializeWithHeader(
-                            mCore,
-                            new org.chromium.mojo.bindings.MessageHeader(
-                                    GET_MANAGED_CONFIGURATION_ORDINAL,
-                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
-                                    mRequestId));
-            mMessageReceiver.accept(_message);
-        }
-    }
-
-
-
-    
-    static final class DeviceApiServiceSubscribeToManagedConfigurationParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public ManagedConfigurationObserver observer;
-
-        private DeviceApiServiceSubscribeToManagedConfigurationParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public DeviceApiServiceSubscribeToManagedConfigurationParams() {
-            this(0);
-        }
-
-        public static DeviceApiServiceSubscribeToManagedConfigurationParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static DeviceApiServiceSubscribeToManagedConfigurationParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static DeviceApiServiceSubscribeToManagedConfigurationParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            DeviceApiServiceSubscribeToManagedConfigurationParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new DeviceApiServiceSubscribeToManagedConfigurationParams(elementsOrVersion);
-                    {
-                        
-                    result.observer = decoder0.readServiceInterface(8, false, ManagedConfigurationObserver.MANAGER);
-                    }
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-            
-            encoder0.encode(this.observer, 8, false, ManagedConfigurationObserver.MANAGER);
-        }
-    }
-
 
 
     
@@ -798,9 +435,9 @@ GetAnnotatedLocationResponse callback) {
 
     static class DeviceApiServiceGetDirectoryIdResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final DeviceApiService.GetDirectoryIdResponse mCallback;
+        private final DeviceApiService.GetDirectoryId_Response mCallback;
 
-        DeviceApiServiceGetDirectoryIdResponseParamsForwardToCallback(DeviceApiService.GetDirectoryIdResponse callback) {
+        DeviceApiServiceGetDirectoryIdResponseParamsForwardToCallback(DeviceApiService.GetDirectoryId_Response callback) {
             this.mCallback = callback;
         }
 
@@ -825,7 +462,7 @@ GetAnnotatedLocationResponse callback) {
         }
     }
 
-    static class DeviceApiServiceGetDirectoryIdResponseParamsProxyToResponder implements DeviceApiService.GetDirectoryIdResponse {
+    static class DeviceApiServiceGetDirectoryIdResponseParamsProxyToResponder implements DeviceApiService.GetDirectoryId_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -851,6 +488,186 @@ GetAnnotatedLocationResponse callback) {
                             mCore,
                             new org.chromium.mojo.bindings.MessageHeader(
                                     GET_DIRECTORY_ID_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class DeviceApiServiceGetHostnameParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private DeviceApiServiceGetHostnameParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public DeviceApiServiceGetHostnameParams() {
+            this(0);
+        }
+
+        public static DeviceApiServiceGetHostnameParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static DeviceApiServiceGetHostnameParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static DeviceApiServiceGetHostnameParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            DeviceApiServiceGetHostnameParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new DeviceApiServiceGetHostnameParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+
+
+    
+    static final class DeviceApiServiceGetHostnameResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public DeviceAttributeResult result;
+
+        private DeviceApiServiceGetHostnameResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public DeviceApiServiceGetHostnameResponseParams() {
+            this(0);
+        }
+
+        public static DeviceApiServiceGetHostnameResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static DeviceApiServiceGetHostnameResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static DeviceApiServiceGetHostnameResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            DeviceApiServiceGetHostnameResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new DeviceApiServiceGetHostnameResponseParams(elementsOrVersion);
+                    {
+                        
+                    result.result = DeviceAttributeResult.decode(decoder0, 8);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.result, 8, false);
+        }
+    }
+
+    static class DeviceApiServiceGetHostnameResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final DeviceApiService.GetHostname_Response mCallback;
+
+        DeviceApiServiceGetHostnameResponseParamsForwardToCallback(DeviceApiService.GetHostname_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(GET_HOSTNAME_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                DeviceApiServiceGetHostnameResponseParams response = DeviceApiServiceGetHostnameResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.result);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class DeviceApiServiceGetHostnameResponseParamsProxyToResponder implements DeviceApiService.GetHostname_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        DeviceApiServiceGetHostnameResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(DeviceAttributeResult result) {
+            DeviceApiServiceGetHostnameResponseParams _response = new DeviceApiServiceGetHostnameResponseParams();
+
+            _response.result = result;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    GET_HOSTNAME_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);
@@ -978,9 +795,9 @@ GetAnnotatedLocationResponse callback) {
 
     static class DeviceApiServiceGetSerialNumberResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final DeviceApiService.GetSerialNumberResponse mCallback;
+        private final DeviceApiService.GetSerialNumber_Response mCallback;
 
-        DeviceApiServiceGetSerialNumberResponseParamsForwardToCallback(DeviceApiService.GetSerialNumberResponse callback) {
+        DeviceApiServiceGetSerialNumberResponseParamsForwardToCallback(DeviceApiService.GetSerialNumber_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1005,7 +822,7 @@ GetAnnotatedLocationResponse callback) {
         }
     }
 
-    static class DeviceApiServiceGetSerialNumberResponseParamsProxyToResponder implements DeviceApiService.GetSerialNumberResponse {
+    static class DeviceApiServiceGetSerialNumberResponseParamsProxyToResponder implements DeviceApiService.GetSerialNumber_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1158,9 +975,9 @@ GetAnnotatedLocationResponse callback) {
 
     static class DeviceApiServiceGetAnnotatedAssetIdResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final DeviceApiService.GetAnnotatedAssetIdResponse mCallback;
+        private final DeviceApiService.GetAnnotatedAssetId_Response mCallback;
 
-        DeviceApiServiceGetAnnotatedAssetIdResponseParamsForwardToCallback(DeviceApiService.GetAnnotatedAssetIdResponse callback) {
+        DeviceApiServiceGetAnnotatedAssetIdResponseParamsForwardToCallback(DeviceApiService.GetAnnotatedAssetId_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1185,7 +1002,7 @@ GetAnnotatedLocationResponse callback) {
         }
     }
 
-    static class DeviceApiServiceGetAnnotatedAssetIdResponseParamsProxyToResponder implements DeviceApiService.GetAnnotatedAssetIdResponse {
+    static class DeviceApiServiceGetAnnotatedAssetIdResponseParamsProxyToResponder implements DeviceApiService.GetAnnotatedAssetId_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1338,9 +1155,9 @@ GetAnnotatedLocationResponse callback) {
 
     static class DeviceApiServiceGetAnnotatedLocationResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final DeviceApiService.GetAnnotatedLocationResponse mCallback;
+        private final DeviceApiService.GetAnnotatedLocation_Response mCallback;
 
-        DeviceApiServiceGetAnnotatedLocationResponseParamsForwardToCallback(DeviceApiService.GetAnnotatedLocationResponse callback) {
+        DeviceApiServiceGetAnnotatedLocationResponseParamsForwardToCallback(DeviceApiService.GetAnnotatedLocation_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1365,7 +1182,7 @@ GetAnnotatedLocationResponse callback) {
         }
     }
 
-    static class DeviceApiServiceGetAnnotatedLocationResponseParamsProxyToResponder implements DeviceApiService.GetAnnotatedLocationResponse {
+    static class DeviceApiServiceGetAnnotatedLocationResponseParamsProxyToResponder implements DeviceApiService.GetAnnotatedLocation_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

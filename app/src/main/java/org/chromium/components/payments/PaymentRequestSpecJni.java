@@ -11,7 +11,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class PaymentRequestSpecJni implements PaymentRequestSpec.Natives {
+class PaymentRequestSpecJni implements PaymentRequestSpec.Natives {
   private static PaymentRequestSpec.Natives testInstance;
 
   public static final JniStaticTestMocker<PaymentRequestSpec.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.payments.PaymentRequestSpec.Natives>() {
@@ -69,6 +69,11 @@ final class PaymentRequestSpecJni implements PaymentRequestSpec.Natives {
   @Override
   public byte[] getPaymentOptions(long nativePaymentRequestSpec) {
     return (byte[])GEN_JNI.org_chromium_components_payments_PaymentRequestSpec_getPaymentOptions(nativePaymentRequestSpec);
+  }
+
+  @Override
+  public boolean isSecurePaymentConfirmationRequested(long nativePaymentRequestSpec) {
+    return (boolean)GEN_JNI.org_chromium_components_payments_PaymentRequestSpec_isSecurePaymentConfirmationRequested(nativePaymentRequestSpec);
   }
 
   public static PaymentRequestSpec.Natives get() {

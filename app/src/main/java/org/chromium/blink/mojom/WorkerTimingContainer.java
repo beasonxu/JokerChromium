@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface WorkerTimingContainer extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface WorkerTimingContainer extends org.chromium.mojo.bindings.Interf
     }
 
     Manager<WorkerTimingContainer, WorkerTimingContainer.Proxy> MANAGER = WorkerTimingContainer_Internal.MANAGER;
-
 
     void addPerformanceEntry(
 PerformanceMarkOrMeasure entry);

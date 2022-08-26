@@ -11,7 +11,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class JniPaymentAppJni implements JniPaymentApp.Natives {
+class JniPaymentAppJni implements JniPaymentApp.Natives {
   private static JniPaymentApp.Natives testInstance;
 
   public static final JniStaticTestMocker<JniPaymentApp.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.payments.JniPaymentApp.Natives>() {
@@ -72,11 +72,6 @@ final class JniPaymentAppJni implements JniPaymentApp.Natives {
   }
 
   @Override
-  public boolean isUserGestureRequiredToSkipUi(long nativeJniPaymentApp) {
-    return (boolean)GEN_JNI.org_chromium_components_payments_JniPaymentApp_isUserGestureRequiredToSkipUi(nativeJniPaymentApp);
-  }
-
-  @Override
   public void invokePaymentApp(long nativeJniPaymentApp, JniPaymentApp callback) {
     GEN_JNI.org_chromium_components_payments_JniPaymentApp_invokePaymentApp(nativeJniPaymentApp, callback);
   }
@@ -99,21 +94,6 @@ final class JniPaymentAppJni implements JniPaymentApp.Natives {
   @Override
   public void abortPaymentApp(long nativeJniPaymentApp, JniPaymentApp callback) {
     GEN_JNI.org_chromium_components_payments_JniPaymentApp_abortPaymentApp(nativeJniPaymentApp, callback);
-  }
-
-  @Override
-  public boolean isReadyForMinimalUI(long nativeJniPaymentApp) {
-    return (boolean)GEN_JNI.org_chromium_components_payments_JniPaymentApp_isReadyForMinimalUI(nativeJniPaymentApp);
-  }
-
-  @Override
-  public String accountBalance(long nativeJniPaymentApp) {
-    return (String)GEN_JNI.org_chromium_components_payments_JniPaymentApp_accountBalance(nativeJniPaymentApp);
-  }
-
-  @Override
-  public void disableShowingOwnUI(long nativeJniPaymentApp) {
-    GEN_JNI.org_chromium_components_payments_JniPaymentApp_disableShowingOwnUI(nativeJniPaymentApp);
   }
 
   @Override
@@ -140,6 +120,11 @@ final class JniPaymentAppJni implements JniPaymentApp.Natives {
   @Override
   public void freeNativeObject(long nativeJniPaymentApp) {
     GEN_JNI.org_chromium_components_payments_JniPaymentApp_freeNativeObject(nativeJniPaymentApp);
+  }
+
+  @Override
+  public byte[] setAppSpecificResponseFields(long nativeJniPaymentApp, ByteBuffer paymentResponse) {
+    return (byte[])GEN_JNI.org_chromium_components_payments_JniPaymentApp_setAppSpecificResponseFields(nativeJniPaymentApp, paymentResponse);
   }
 
   public static JniPaymentApp.Natives get() {

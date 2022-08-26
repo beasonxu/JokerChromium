@@ -6,7 +6,6 @@ package org.chromium.components.browser_ui.widget.text;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.ViewStructure;
 import android.widget.EditText;
@@ -14,7 +13,7 @@ import android.widget.EditText;
 import androidx.appcompat.widget.AppCompatEditText;
 
 import org.chromium.base.ApiCompatibilityUtils;
-import org.chromium.base.annotations.VerifiesOnO;
+import org.chromium.url.GURL;
 
 /**
  * Wrapper class needed due to b/122113958.
@@ -24,15 +23,14 @@ import org.chromium.base.annotations.VerifiesOnO;
  * calling {@link ApiCompatibilityUtils#setPasswordEditTextContentDescription(EditText)} after
  * the change.
  */
-@VerifiesOnO
 public class AlertDialogEditText extends AppCompatEditText {
-    private String mUrl;
+    private GURL mUrl;
 
     public AlertDialogEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public void setUrl(String url) {
+    public void setUrl(GURL url) {
         mUrl = url;
     }
 
@@ -45,8 +43,8 @@ public class AlertDialogEditText extends AppCompatEditText {
     @Override
     @SuppressLint("NewApi")
     public void onProvideAutofillStructure(ViewStructure structure, int flags) {
-        if (!TextUtils.isEmpty(mUrl)) {
-            structure.setWebDomain(mUrl);
+        if (mUrl != null && !mUrl.isEmpty()) {
+            structure.setWebDomain(mUrl.getSpec());
         }
         super.onProvideAutofillStructure(structure, flags);
     }

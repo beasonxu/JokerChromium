@@ -13,6 +13,8 @@
 
 package org.chromium.shape_detection.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface FaceDetectionProvider extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface FaceDetectionProvider extends org.chromium.mojo.bindings.Interf
     }
 
     Manager<FaceDetectionProvider, FaceDetectionProvider.Proxy> MANAGER = FaceDetectionProvider_Internal.MANAGER;
-
 
     void createFaceDetection(
 org.chromium.mojo.bindings.InterfaceRequest<FaceDetection> receiver, FaceDetectorOptions options);

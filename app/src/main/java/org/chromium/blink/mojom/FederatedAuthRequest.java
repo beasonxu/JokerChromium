@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface FederatedAuthRequest extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,36 @@ public interface FederatedAuthRequest extends org.chromium.mojo.bindings.Interfa
 
     Manager<FederatedAuthRequest, FederatedAuthRequest.Proxy> MANAGER = FederatedAuthRequest_Internal.MANAGER;
 
-
     void requestIdToken(
-org.chromium.url.mojom.Url provider, String idRequest, 
-RequestIdTokenResponse callback);
+org.chromium.url.mojom.Url provider, String clientId, String nonce, boolean preferAutoSignIn, 
+RequestIdToken_Response callback);
 
-    interface RequestIdTokenResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, String> { }
+    interface RequestIdToken_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, String> { }
+
+
+    void cancelTokenRequest(
+);
+
+
+    void revoke(
+org.chromium.url.mojom.Url provider, String clientId, String accountId, 
+Revoke_Response callback);
+
+    interface Revoke_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
+
+
+    void logout(
+org.chromium.url.mojom.Url provider, String accountId, 
+Logout_Response callback);
+
+    interface Logout_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
+
+
+    void logoutRps(
+LogoutRpsRequest[] rpLogoutRequests, 
+LogoutRps_Response callback);
+
+    interface LogoutRps_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
 }

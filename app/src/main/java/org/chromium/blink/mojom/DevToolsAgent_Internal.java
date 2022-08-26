@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class DevToolsAgent_Internal {
 
@@ -51,7 +53,7 @@ class DevToolsAgent_Internal {
 
     private static final int INSPECT_ELEMENT_ORDINAL = 1;
 
-    private static final int REPORT_CHILD_WORKERS_ORDINAL = 2;
+    private static final int REPORT_CHILD_TARGETS_ORDINAL = 2;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements DevToolsAgent.Proxy {
@@ -64,7 +66,7 @@ class DevToolsAgent_Internal {
 
         @Override
         public void attachDevToolsSession(
-org.chromium.mojo.bindings.AssociatedInterfaceNotSupported host, org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported session, org.chromium.mojo.bindings.InterfaceRequest<DevToolsSession> ioSession, DevToolsSessionState reattachSessionState, boolean clientExpectsBinaryResponses, String sessionId) {
+org.chromium.mojo.bindings.AssociatedInterfaceNotSupported host, org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported session, org.chromium.mojo.bindings.InterfaceRequest<DevToolsSession> ioSession, DevToolsSessionState reattachSessionState, boolean clientExpectsBinaryResponses, boolean clientIsTrusted, String sessionId) {
 
             DevToolsAgentAttachDevToolsSessionParams _message = new DevToolsAgentAttachDevToolsSessionParams();
 
@@ -77,6 +79,8 @@ org.chromium.mojo.bindings.AssociatedInterfaceNotSupported host, org.chromium.mo
             _message.reattachSessionState = reattachSessionState;
 
             _message.clientExpectsBinaryResponses = clientExpectsBinaryResponses;
+
+            _message.clientIsTrusted = clientIsTrusted;
 
             _message.sessionId = sessionId;
 
@@ -107,11 +111,11 @@ org.chromium.gfx.mojom.Point point) {
 
 
         @Override
-        public void reportChildWorkers(
+        public void reportChildTargets(
 boolean report, boolean waitForDebugger, 
-ReportChildWorkersResponse callback) {
+ReportChildTargets_Response callback) {
 
-            DevToolsAgentReportChildWorkersParams _message = new DevToolsAgentReportChildWorkersParams();
+            DevToolsAgentReportChildTargetsParams _message = new DevToolsAgentReportChildTargetsParams();
 
             _message.report = report;
 
@@ -122,10 +126,10 @@ ReportChildWorkersResponse callback) {
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(
-                                    REPORT_CHILD_WORKERS_ORDINAL,
+                                    REPORT_CHILD_TARGETS_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
                                     0)),
-                    new DevToolsAgentReportChildWorkersResponseParamsForwardToCallback(callback));
+                    new DevToolsAgentReportChildTargetsResponseParamsForwardToCallback(callback));
 
         }
 
@@ -166,7 +170,7 @@ ReportChildWorkersResponse callback) {
                         DevToolsAgentAttachDevToolsSessionParams data =
                                 DevToolsAgentAttachDevToolsSessionParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().attachDevToolsSession(data.host, data.session, data.ioSession, data.reattachSessionState, data.clientExpectsBinaryResponses, data.sessionId);
+                        getImpl().attachDevToolsSession(data.host, data.session, data.ioSession, data.reattachSessionState, data.clientExpectsBinaryResponses, data.clientIsTrusted, data.sessionId);
                         return true;
                     }
 
@@ -224,12 +228,12 @@ ReportChildWorkersResponse callback) {
 
 
 
-                    case REPORT_CHILD_WORKERS_ORDINAL: {
+                    case REPORT_CHILD_TARGETS_ORDINAL: {
 
-                        DevToolsAgentReportChildWorkersParams data =
-                                DevToolsAgentReportChildWorkersParams.deserialize(messageWithHeader.getPayload());
+                        DevToolsAgentReportChildTargetsParams data =
+                                DevToolsAgentReportChildTargetsParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().reportChildWorkers(data.report, data.waitForDebugger, new DevToolsAgentReportChildWorkersResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().reportChildTargets(data.report, data.waitForDebugger, new DevToolsAgentReportChildTargetsResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -256,6 +260,7 @@ ReportChildWorkersResponse callback) {
         public org.chromium.mojo.bindings.InterfaceRequest<DevToolsSession> ioSession;
         public DevToolsSessionState reattachSessionState;
         public boolean clientExpectsBinaryResponses;
+        public boolean clientIsTrusted;
         public String sessionId;
 
         private DevToolsAgentAttachDevToolsSessionParams(int version) {
@@ -314,6 +319,10 @@ ReportChildWorkersResponse callback) {
                     }
                     {
                         
+                    result.clientIsTrusted = decoder0.readBoolean(32, 1);
+                    }
+                    {
+                        
                     result.sessionId = decoder0.readString(40, false);
                     }
 
@@ -337,6 +346,8 @@ ReportChildWorkersResponse callback) {
             encoder0.encode(this.reattachSessionState, 24, true);
             
             encoder0.encode(this.clientExpectsBinaryResponses, 32, 0);
+            
+            encoder0.encode(this.clientIsTrusted, 32, 1);
             
             encoder0.encode(this.sessionId, 40, false);
         }
@@ -409,7 +420,7 @@ ReportChildWorkersResponse callback) {
 
 
     
-    static final class DevToolsAgentReportChildWorkersParams extends org.chromium.mojo.bindings.Struct {
+    static final class DevToolsAgentReportChildTargetsParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
@@ -417,15 +428,15 @@ ReportChildWorkersResponse callback) {
         public boolean report;
         public boolean waitForDebugger;
 
-        private DevToolsAgentReportChildWorkersParams(int version) {
+        private DevToolsAgentReportChildTargetsParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public DevToolsAgentReportChildWorkersParams() {
+        public DevToolsAgentReportChildTargetsParams() {
             this(0);
         }
 
-        public static DevToolsAgentReportChildWorkersParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static DevToolsAgentReportChildTargetsParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -434,22 +445,22 @@ ReportChildWorkersResponse callback) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static DevToolsAgentReportChildWorkersParams deserialize(java.nio.ByteBuffer data) {
+        public static DevToolsAgentReportChildTargetsParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static DevToolsAgentReportChildWorkersParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static DevToolsAgentReportChildTargetsParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            DevToolsAgentReportChildWorkersParams result;
+            DevToolsAgentReportChildTargetsParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new DevToolsAgentReportChildWorkersParams(elementsOrVersion);
+                result = new DevToolsAgentReportChildTargetsParams(elementsOrVersion);
                     {
                         
                     result.report = decoder0.readBoolean(8, 0);
@@ -479,21 +490,21 @@ ReportChildWorkersResponse callback) {
 
 
     
-    static final class DevToolsAgentReportChildWorkersResponseParams extends org.chromium.mojo.bindings.Struct {
+    static final class DevToolsAgentReportChildTargetsResponseParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 8;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
 
-        private DevToolsAgentReportChildWorkersResponseParams(int version) {
+        private DevToolsAgentReportChildTargetsResponseParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public DevToolsAgentReportChildWorkersResponseParams() {
+        public DevToolsAgentReportChildTargetsResponseParams() {
             this(0);
         }
 
-        public static DevToolsAgentReportChildWorkersResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static DevToolsAgentReportChildTargetsResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -502,22 +513,22 @@ ReportChildWorkersResponse callback) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static DevToolsAgentReportChildWorkersResponseParams deserialize(java.nio.ByteBuffer data) {
+        public static DevToolsAgentReportChildTargetsResponseParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static DevToolsAgentReportChildWorkersResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static DevToolsAgentReportChildTargetsResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            DevToolsAgentReportChildWorkersResponseParams result;
+            DevToolsAgentReportChildTargetsResponseParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new DevToolsAgentReportChildWorkersResponseParams(elementsOrVersion);
+                result = new DevToolsAgentReportChildTargetsResponseParams(elementsOrVersion);
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -532,11 +543,11 @@ ReportChildWorkersResponse callback) {
         }
     }
 
-    static class DevToolsAgentReportChildWorkersResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+    static class DevToolsAgentReportChildTargetsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final DevToolsAgent.ReportChildWorkersResponse mCallback;
+        private final DevToolsAgent.ReportChildTargets_Response mCallback;
 
-        DevToolsAgentReportChildWorkersResponseParamsForwardToCallback(DevToolsAgent.ReportChildWorkersResponse callback) {
+        DevToolsAgentReportChildTargetsResponseParamsForwardToCallback(DevToolsAgent.ReportChildTargets_Response callback) {
             this.mCallback = callback;
         }
 
@@ -546,7 +557,7 @@ ReportChildWorkersResponse callback) {
                 org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
                         message.asServiceMessage();
                 org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
-                if (!header.validateHeader(REPORT_CHILD_WORKERS_ORDINAL,
+                if (!header.validateHeader(REPORT_CHILD_TARGETS_ORDINAL,
                                            org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
                     return false;
                 }
@@ -559,13 +570,13 @@ ReportChildWorkersResponse callback) {
         }
     }
 
-    static class DevToolsAgentReportChildWorkersResponseParamsProxyToResponder implements DevToolsAgent.ReportChildWorkersResponse {
+    static class DevToolsAgentReportChildTargetsResponseParamsProxyToResponder implements DevToolsAgent.ReportChildTargets_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
         private final long mRequestId;
 
-        DevToolsAgentReportChildWorkersResponseParamsProxyToResponder(
+        DevToolsAgentReportChildTargetsResponseParamsProxyToResponder(
                 org.chromium.mojo.system.Core core,
                 org.chromium.mojo.bindings.MessageReceiver messageReceiver,
                 long requestId) {
@@ -576,13 +587,13 @@ ReportChildWorkersResponse callback) {
 
         @Override
         public void call() {
-            DevToolsAgentReportChildWorkersResponseParams _response = new DevToolsAgentReportChildWorkersResponseParams();
+            DevToolsAgentReportChildTargetsResponseParams _response = new DevToolsAgentReportChildTargetsResponseParams();
 
             org.chromium.mojo.bindings.ServiceMessage _message =
                     _response.serializeWithHeader(
                             mCore,
                             new org.chromium.mojo.bindings.MessageHeader(
-                                    REPORT_CHILD_WORKERS_ORDINAL,
+                                    REPORT_CHILD_TARGETS_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);

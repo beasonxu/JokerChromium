@@ -5,18 +5,22 @@
 package org.chromium.content.browser.framehost;
 
 import android.graphics.Bitmap;
+import android.os.SystemClock;
 
 import androidx.annotation.VisibleForTesting;
 
+import org.chromium.base.Log;
 import org.chromium.base.annotations.CalledByNative;
 import org.chromium.base.annotations.JNINamespace;
 import org.chromium.base.annotations.NativeMethods;
+import org.chromium.base.metrics.RecordHistogram;
 import org.chromium.content_public.browser.LoadUrlParams;
 import org.chromium.content_public.browser.NavigationController;
 import org.chromium.content_public.browser.NavigationEntry;
 import org.chromium.content_public.browser.NavigationHistory;
 import org.chromium.content_public.common.ResourceRequestBody;
 import org.chromium.url.GURL;
+import org.chromium.url.Origin;
 
 /**
  * The NavigationControllerImpl Java wrapper to allow communicating with the native
@@ -26,6 +30,7 @@ import org.chromium.url.GURL;
 // TODO(tedchoc): Remove the package restriction once this class moves to a non-public content
 //                package whose visibility will be enforced via DEPS.
 /* package */ class NavigationControllerImpl implements NavigationController {
+    private static final String TAG = "NavigationController";
 
     private long mNativeNavigationControllerAndroid;
 
@@ -161,15 +166,24 @@ import org.chromium.url.GURL;
     @Override
     public void loadUrl(LoadUrlParams params) {
         if (mNativeNavigationControllerAndroid != 0) {
+            String headers = params.getExtraHeaders() == null ? params.getVerbatimHeaders()
+                                                              : params.getExtraHeadersString();
+            long inputStart = params.getInputStartTimestamp() == 0
+                    ? params.getIntentReceivedTimestamp()
+                    : params.getInputStartTimestamp();
+            RecordHistogram.recordTimesHistogram("Android.Omnibox.InputToNavigationControllerStart",
+                    SystemClock.elapsedRealtime() - inputStart);
             NavigationControllerImplJni.get().loadUrl(mNativeNavigationControllerAndroid,
                     NavigationControllerImpl.this, params.getUrl(), params.getLoadUrlType(),
                     params.getTransitionType(),
                     params.getReferrer() != null ? params.getReferrer().getUrl() : null,
                     params.getReferrer() != null ? params.getReferrer().getPolicy() : 0,
-                    params.getUserAgentOverrideOption(), params.getExtraHeadersString(),
-                    params.getPostData(), params.getBaseUrl(), params.getVirtualUrlForDataUrl(),
+                    params.getUserAgentOverrideOption(), headers, params.getPostData(),
+                    params.getBaseUrl(), params.getVirtualUrlForDataUrl(),
                     params.getDataUrlAsString(), params.getCanLoadLocalResources(),
-                    params.getIsRendererInitiated(), params.getShouldReplaceCurrentEntry());
+                    params.getIsRendererInitiated(), params.getShouldReplaceCurrentEntry(),
+                    params.getInitiatorOrigin(), params.getHasUserGesture(),
+                    params.getShouldClearHistoryList(), inputStart);
         }
     }
 
@@ -219,6 +233,11 @@ import org.chromium.url.GURL;
     @Override
     public void setUseDesktopUserAgent(boolean override, boolean reloadOnChange) {
         if (mNativeNavigationControllerAndroid != 0) {
+            Log.i(TAG,
+                    "Thread dump for debugging, override: " + override
+                            + " reloadOnChange: " + reloadOnChange);
+            Thread.dumpStack();
+
             NavigationControllerImplJni.get().setUseDesktopUserAgent(
                     mNativeNavigationControllerAndroid, NavigationControllerImpl.this, override,
                     reloadOnChange);
@@ -309,9 +328,9 @@ import org.chromium.url.GURL;
     @CalledByNative
     private static NavigationEntry createNavigationEntry(int index, GURL url, GURL virtualUrl,
             GURL originalUrl, GURL referrerUrl, String title, Bitmap favicon, int transition,
-            long timestamp) {
+            long timestamp, boolean isInitialEntry) {
         return new NavigationEntry(index, url, virtualUrl, originalUrl, referrerUrl, title, favicon,
-                transition, timestamp);
+                transition, timestamp, isInitialEntry);
     }
 
     @NativeMethods
@@ -348,7 +367,8 @@ import org.chromium.url.GURL;
                 int referrerPolicy, int uaOverrideOption, String extraHeaders,
                 ResourceRequestBody postData, String baseUrlForDataUrl, String virtualUrlForDataUrl,
                 String dataUrlAsString, boolean canLoadLocalResources, boolean isRendererInitiated,
-                boolean shouldReplaceCurrentEntry);
+                boolean shouldReplaceCurrentEntry, Origin initiatorOrigin, boolean hasUserGesture,
+                boolean shouldClearHistoryList, long inputStart);
         void clearHistory(long nativeNavigationControllerAndroid, NavigationControllerImpl caller);
         int getNavigationHistory(long nativeNavigationControllerAndroid,
                 NavigationControllerImpl caller, Object history);

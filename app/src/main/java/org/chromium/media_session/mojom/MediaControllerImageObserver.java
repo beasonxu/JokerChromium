@@ -13,6 +13,8 @@
 
 package org.chromium.media_session.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface MediaControllerImageObserver extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface MediaControllerImageObserver extends org.chromium.mojo.bindings
     }
 
     Manager<MediaControllerImageObserver, MediaControllerImageObserver.Proxy> MANAGER = MediaControllerImageObserver_Internal.MANAGER;
-
 
     void mediaControllerImageChanged(
 int type, MediaImageBitmap bitmap);

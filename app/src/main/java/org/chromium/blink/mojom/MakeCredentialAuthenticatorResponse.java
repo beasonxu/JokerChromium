@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class MakeCredentialAuthenticatorResponse extends org.chromium.mojo.bindings.Struct {
 
@@ -20,16 +22,17 @@ public final class MakeCredentialAuthenticatorResponse extends org.chromium.mojo
     private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(56, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public CommonCredentialInfo info;
+    public int authenticatorAttachment;
     public byte[] attestationObject;
     public int[] transports;
     public boolean echoHmacCreateSecret;
     public boolean hmacCreateSecret;
     public boolean echoPrf;
     public boolean prf;
+    public boolean echoCredBlob;
+    public boolean credBlob;
     public byte[] publicKeyDer;
     public int publicKeyAlgo;
-    public boolean echoUserVerificationMethods;
-    public UvmEntry[] userVerificationMethods;
     public boolean echoCredProps;
     public boolean hasCredPropsRk;
     public boolean credPropsRk;
@@ -76,11 +79,61 @@ public final class MakeCredentialAuthenticatorResponse extends org.chromium.mojo
                 }
                 {
                     
-                result.attestationObject = decoder0.readBytes(16, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                result.authenticatorAttachment = decoder0.readInt(16);
+                    AuthenticatorAttachment.validate(result.authenticatorAttachment);
+                    result.authenticatorAttachment = AuthenticatorAttachment.toKnownValue(result.authenticatorAttachment);
                 }
                 {
                     
-                result.transports = decoder0.readInts(24, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                result.echoHmacCreateSecret = decoder0.readBoolean(20, 0);
+                }
+                {
+                    
+                result.hmacCreateSecret = decoder0.readBoolean(20, 1);
+                }
+                {
+                    
+                result.echoPrf = decoder0.readBoolean(20, 2);
+                }
+                {
+                    
+                result.prf = decoder0.readBoolean(20, 3);
+                }
+                {
+                    
+                result.echoCredBlob = decoder0.readBoolean(20, 4);
+                }
+                {
+                    
+                result.credBlob = decoder0.readBoolean(20, 5);
+                }
+                {
+                    
+                result.echoCredProps = decoder0.readBoolean(20, 6);
+                }
+                {
+                    
+                result.hasCredPropsRk = decoder0.readBoolean(20, 7);
+                }
+                {
+                    
+                result.credPropsRk = decoder0.readBoolean(21, 0);
+                }
+                {
+                    
+                result.echoLargeBlob = decoder0.readBoolean(21, 1);
+                }
+                {
+                    
+                result.supportsLargeBlob = decoder0.readBoolean(21, 2);
+                }
+                {
+                    
+                result.attestationObject = decoder0.readBytes(24, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                }
+                {
+                    
+                result.transports = decoder0.readInts(32, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 {
                     for (int i1 = 0; i1 < result.transports.length; ++i1) {
                         AuthenticatorTransport.validate(result.transports[i1]);
@@ -89,66 +142,11 @@ public final class MakeCredentialAuthenticatorResponse extends org.chromium.mojo
                 }
                 {
                     
-                result.echoHmacCreateSecret = decoder0.readBoolean(32, 0);
-                }
-                {
-                    
-                result.hmacCreateSecret = decoder0.readBoolean(32, 1);
-                }
-                {
-                    
-                result.echoPrf = decoder0.readBoolean(32, 2);
-                }
-                {
-                    
-                result.prf = decoder0.readBoolean(32, 3);
-                }
-                {
-                    
-                result.echoUserVerificationMethods = decoder0.readBoolean(32, 4);
-                }
-                {
-                    
-                result.echoCredProps = decoder0.readBoolean(32, 5);
-                }
-                {
-                    
-                result.hasCredPropsRk = decoder0.readBoolean(32, 6);
-                }
-                {
-                    
-                result.credPropsRk = decoder0.readBoolean(32, 7);
-                }
-                {
-                    
-                result.echoLargeBlob = decoder0.readBoolean(33, 0);
-                }
-                {
-                    
-                result.supportsLargeBlob = decoder0.readBoolean(33, 1);
-                }
-                {
-                    
-                result.publicKeyAlgo = decoder0.readInt(36);
-                }
-                {
-                    
                 result.publicKeyDer = decoder0.readBytes(40, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(48, true);
-                if (decoder1 == null) {
-                    result.userVerificationMethods = null;
-                } else {
-                    org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                    result.userVerificationMethods = new UvmEntry[si1.elementsOrVersion];
-                    for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
-                        
-                        org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
-                        result.userVerificationMethods[i1] = UvmEntry.decode(decoder2);
-                    }
-                }
+                result.publicKeyAlgo = decoder0.readInt(48);
                 }
 
         } finally {
@@ -164,42 +162,36 @@ public final class MakeCredentialAuthenticatorResponse extends org.chromium.mojo
         
         encoder0.encode(this.info, 8, false);
         
-        encoder0.encode(this.attestationObject, 16, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+        encoder0.encode(this.authenticatorAttachment, 16);
         
-        encoder0.encode(this.transports, 24, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+        encoder0.encode(this.echoHmacCreateSecret, 20, 0);
         
-        encoder0.encode(this.echoHmacCreateSecret, 32, 0);
+        encoder0.encode(this.hmacCreateSecret, 20, 1);
         
-        encoder0.encode(this.hmacCreateSecret, 32, 1);
+        encoder0.encode(this.echoPrf, 20, 2);
         
-        encoder0.encode(this.echoPrf, 32, 2);
+        encoder0.encode(this.prf, 20, 3);
         
-        encoder0.encode(this.prf, 32, 3);
+        encoder0.encode(this.echoCredBlob, 20, 4);
         
-        encoder0.encode(this.echoUserVerificationMethods, 32, 4);
+        encoder0.encode(this.credBlob, 20, 5);
         
-        encoder0.encode(this.echoCredProps, 32, 5);
+        encoder0.encode(this.echoCredProps, 20, 6);
         
-        encoder0.encode(this.hasCredPropsRk, 32, 6);
+        encoder0.encode(this.hasCredPropsRk, 20, 7);
         
-        encoder0.encode(this.credPropsRk, 32, 7);
+        encoder0.encode(this.credPropsRk, 21, 0);
         
-        encoder0.encode(this.echoLargeBlob, 33, 0);
+        encoder0.encode(this.echoLargeBlob, 21, 1);
         
-        encoder0.encode(this.supportsLargeBlob, 33, 1);
+        encoder0.encode(this.supportsLargeBlob, 21, 2);
         
-        encoder0.encode(this.publicKeyAlgo, 36);
+        encoder0.encode(this.attestationObject, 24, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+        
+        encoder0.encode(this.transports, 32, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
         
         encoder0.encode(this.publicKeyDer, 40, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
         
-        if (this.userVerificationMethods == null) {
-            encoder0.encodeNullPointer(48, true);
-        } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.userVerificationMethods.length, 48, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-            for (int i0 = 0; i0 < this.userVerificationMethods.length; ++i0) {
-                
-                encoder1.encode(this.userVerificationMethods[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
-            }
-        }
+        encoder0.encode(this.publicKeyAlgo, 48);
     }
 }

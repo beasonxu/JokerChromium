@@ -13,6 +13,8 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class Gpu_Internal {
 
@@ -82,7 +84,7 @@ org.chromium.mojo.bindings.InterfaceRequest<GpuMemoryBufferFactory> receiver) {
         @Override
         public void establishGpuChannel(
 
-EstablishGpuChannelResponse callback) {
+EstablishGpuChannel_Response callback) {
 
             GpuEstablishGpuChannelParams _message = new GpuEstablishGpuChannelParams();
 
@@ -436,9 +438,9 @@ org.chromium.mojo.bindings.InterfaceRequest<org.chromium.media.mojom.VideoEncode
 
     static class GpuEstablishGpuChannelResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final Gpu.EstablishGpuChannelResponse mCallback;
+        private final Gpu.EstablishGpuChannel_Response mCallback;
 
-        GpuEstablishGpuChannelResponseParamsForwardToCallback(Gpu.EstablishGpuChannelResponse callback) {
+        GpuEstablishGpuChannelResponseParamsForwardToCallback(Gpu.EstablishGpuChannel_Response callback) {
             this.mCallback = callback;
         }
 
@@ -463,7 +465,7 @@ org.chromium.mojo.bindings.InterfaceRequest<org.chromium.media.mojom.VideoEncode
         }
     }
 
-    static class GpuEstablishGpuChannelResponseParamsProxyToResponder implements Gpu.EstablishGpuChannelResponse {
+    static class GpuEstablishGpuChannelResponseParamsProxyToResponder implements Gpu.EstablishGpuChannel_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

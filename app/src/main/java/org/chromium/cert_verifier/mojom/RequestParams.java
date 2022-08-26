@@ -13,6 +13,8 @@
 
 package org.chromium.cert_verifier.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class RequestParams extends org.chromium.mojo.bindings.Struct {
 
@@ -22,8 +24,8 @@ public final class RequestParams extends org.chromium.mojo.bindings.Struct {
     public org.chromium.network.mojom.X509Certificate certificate;
     public String hostname;
     public int flags;
-    public String ocspResponse;
-    public String sctList;
+    public org.chromium.mojo_base.mojom.ByteString ocspResponse;
+    public org.chromium.mojo_base.mojom.ByteString sctList;
 
     private RequestParams(int version) {
         super(STRUCT_SIZE, version);
@@ -73,11 +75,13 @@ public final class RequestParams extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.ocspResponse = decoder0.readString(32, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
+                result.ocspResponse = org.chromium.mojo_base.mojom.ByteString.decode(decoder1);
                 }
                 {
                     
-                result.sctList = decoder0.readString(40, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, false);
+                result.sctList = org.chromium.mojo_base.mojom.ByteString.decode(decoder1);
                 }
 
         } finally {

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface DevToolsFrontend extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface DevToolsFrontend extends org.chromium.mojo.bindings.Interface {
 
     Manager<DevToolsFrontend, DevToolsFrontend.Proxy> MANAGER = DevToolsFrontend_Internal.MANAGER;
 
-
     void setupDevToolsFrontend(
 String apiScript, org.chromium.mojo.bindings.AssociatedInterfaceNotSupported host);
-
 
 
     void setupDevToolsExtensionApi(

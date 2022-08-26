@@ -87,6 +87,7 @@ public interface DeviceInfoSpecificsOrBuilder extends
   /**
    * <pre>
    * The UserAgent used when contacting the Chrome Sync server.
+   * Only present when talking to the HTTP server.
    * </pre>
    *
    * <code>optional string sync_user_agent = 4;</code>
@@ -96,6 +97,7 @@ public interface DeviceInfoSpecificsOrBuilder extends
   /**
    * <pre>
    * The UserAgent used when contacting the Chrome Sync server.
+   * Only present when talking to the HTTP server.
    * </pre>
    *
    * <code>optional string sync_user_agent = 4;</code>
@@ -105,6 +107,7 @@ public interface DeviceInfoSpecificsOrBuilder extends
   /**
    * <pre>
    * The UserAgent used when contacting the Chrome Sync server.
+   * Only present when talking to the HTTP server.
    * </pre>
    *
    * <code>optional string sync_user_agent = 4;</code>
@@ -116,30 +119,33 @@ public interface DeviceInfoSpecificsOrBuilder extends
   /**
    * <pre>
    * The Chrome instance's version.  Updated (if necessary) on every startup.
+   * DEPRECATED in M92. Still populated for backward compatibility.
    * </pre>
    *
-   * <code>optional string chrome_version = 5;</code>
+   * <code>optional string chrome_version = 5 [deprecated = true];</code>
    * @return Whether the chromeVersion field is set.
    */
-  boolean hasChromeVersion();
+  @java.lang.Deprecated boolean hasChromeVersion();
   /**
    * <pre>
    * The Chrome instance's version.  Updated (if necessary) on every startup.
+   * DEPRECATED in M92. Still populated for backward compatibility.
    * </pre>
    *
-   * <code>optional string chrome_version = 5;</code>
+   * <code>optional string chrome_version = 5 [deprecated = true];</code>
    * @return The chromeVersion.
    */
-  java.lang.String getChromeVersion();
+  @java.lang.Deprecated java.lang.String getChromeVersion();
   /**
    * <pre>
    * The Chrome instance's version.  Updated (if necessary) on every startup.
+   * DEPRECATED in M92. Still populated for backward compatibility.
    * </pre>
    *
-   * <code>optional string chrome_version = 5;</code>
+   * <code>optional string chrome_version = 5 [deprecated = true];</code>
    * @return The bytes for chromeVersion.
    */
-  com.google.protobuf.ByteString
+  @java.lang.Deprecated com.google.protobuf.ByteString
       getChromeVersionBytes();
 
   /**
@@ -168,7 +174,7 @@ public interface DeviceInfoSpecificsOrBuilder extends
   /**
    * <pre>
    * Device_id that is stable until user signs out. This device_id is used for
-   * annotating login scoped refresh token.
+   * annotating login scoped refresh token. Present only for Chrome Clients.
    * </pre>
    *
    * <code>optional string signin_scoped_device_id = 7;</code>
@@ -178,7 +184,7 @@ public interface DeviceInfoSpecificsOrBuilder extends
   /**
    * <pre>
    * Device_id that is stable until user signs out. This device_id is used for
-   * annotating login scoped refresh token.
+   * annotating login scoped refresh token. Present only for Chrome Clients.
    * </pre>
    *
    * <code>optional string signin_scoped_device_id = 7;</code>
@@ -188,7 +194,7 @@ public interface DeviceInfoSpecificsOrBuilder extends
   /**
    * <pre>
    * Device_id that is stable until user signs out. This device_id is used for
-   * annotating login scoped refresh token.
+   * annotating login scoped refresh token. Present only for Chrome Clients.
    * </pre>
    *
    * <code>optional string signin_scoped_device_id = 7;</code>
@@ -365,4 +371,81 @@ public interface DeviceInfoSpecificsOrBuilder extends
    * @return The invalidationFields.
    */
   org.chromium.components.sync.protocol.InvalidationSpecificFields getInvalidationFields();
+
+  /**
+   * <pre>
+   * Information for contacting this device in order to perform security key
+   * operations.
+   * </pre>
+   *
+   * <code>optional .sync_pb.PhoneAsASecurityKeySpecificFields paask_fields = 15;</code>
+   * @return Whether the paaskFields field is set.
+   */
+  boolean hasPaaskFields();
+  /**
+   * <pre>
+   * Information for contacting this device in order to perform security key
+   * operations.
+   * </pre>
+   *
+   * <code>optional .sync_pb.PhoneAsASecurityKeySpecificFields paask_fields = 15;</code>
+   * @return The paaskFields.
+   */
+  org.chromium.components.sync.protocol.PhoneAsASecurityKeySpecificFields getPaaskFields();
+
+  /**
+   * <pre>
+   * Unique hardware identifier string which details the HW combination of
+   * a ChromeOS device. This field will be empty on other OS devices.
+   * </pre>
+   *
+   * <code>optional string full_hardware_class = 16;</code>
+   * @return Whether the fullHardwareClass field is set.
+   */
+  boolean hasFullHardwareClass();
+  /**
+   * <pre>
+   * Unique hardware identifier string which details the HW combination of
+   * a ChromeOS device. This field will be empty on other OS devices.
+   * </pre>
+   *
+   * <code>optional string full_hardware_class = 16;</code>
+   * @return The fullHardwareClass.
+   */
+  java.lang.String getFullHardwareClass();
+  /**
+   * <pre>
+   * Unique hardware identifier string which details the HW combination of
+   * a ChromeOS device. This field will be empty on other OS devices.
+   * </pre>
+   *
+   * <code>optional string full_hardware_class = 16;</code>
+   * @return The bytes for fullHardwareClass.
+   */
+  com.google.protobuf.ByteString
+      getFullHardwareClassBytes();
+
+  /**
+   * <code>.sync_pb.ChromeVersionInfo chrome_version_info = 17;</code>
+   * @return Whether the chromeVersionInfo field is set.
+   */
+  boolean hasChromeVersionInfo();
+  /**
+   * <code>.sync_pb.ChromeVersionInfo chrome_version_info = 17;</code>
+   * @return The chromeVersionInfo.
+   */
+  org.chromium.components.sync.protocol.ChromeVersionInfo getChromeVersionInfo();
+
+  /**
+   * <code>.sync_pb.GooglePlayServicesVersionInfo google_play_services_version_info = 18;</code>
+   * @return Whether the googlePlayServicesVersionInfo field is set.
+   */
+  boolean hasGooglePlayServicesVersionInfo();
+  /**
+   * <code>.sync_pb.GooglePlayServicesVersionInfo google_play_services_version_info = 18;</code>
+   * @return The googlePlayServicesVersionInfo.
+   */
+  org.chromium.components.sync.protocol.GooglePlayServicesVersionInfo getGooglePlayServicesVersionInfo();
+
+  public org.chromium.components.sync.protocol.DeviceInfoSpecifics.ClientVersionInfoCase getClientVersionInfoCase();
 }

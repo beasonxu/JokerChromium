@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class MediaPlayerRendererExtension_Internal {
 
@@ -61,7 +63,7 @@ class MediaPlayerRendererExtension_Internal {
         @Override
         public void initiateScopedSurfaceRequest(
 
-InitiateScopedSurfaceRequestResponse callback) {
+InitiateScopedSurfaceRequest_Response callback) {
 
             MediaPlayerRendererExtensionInitiateScopedSurfaceRequestParams _message = new MediaPlayerRendererExtensionInitiateScopedSurfaceRequestParams();
 
@@ -282,9 +284,9 @@ InitiateScopedSurfaceRequestResponse callback) {
 
     static class MediaPlayerRendererExtensionInitiateScopedSurfaceRequestResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final MediaPlayerRendererExtension.InitiateScopedSurfaceRequestResponse mCallback;
+        private final MediaPlayerRendererExtension.InitiateScopedSurfaceRequest_Response mCallback;
 
-        MediaPlayerRendererExtensionInitiateScopedSurfaceRequestResponseParamsForwardToCallback(MediaPlayerRendererExtension.InitiateScopedSurfaceRequestResponse callback) {
+        MediaPlayerRendererExtensionInitiateScopedSurfaceRequestResponseParamsForwardToCallback(MediaPlayerRendererExtension.InitiateScopedSurfaceRequest_Response callback) {
             this.mCallback = callback;
         }
 
@@ -309,7 +311,7 @@ InitiateScopedSurfaceRequestResponse callback) {
         }
     }
 
-    static class MediaPlayerRendererExtensionInitiateScopedSurfaceRequestResponseParamsProxyToResponder implements MediaPlayerRendererExtension.InitiateScopedSurfaceRequestResponse {
+    static class MediaPlayerRendererExtensionInitiateScopedSurfaceRequestResponseParamsProxyToResponder implements MediaPlayerRendererExtension.InitiateScopedSurfaceRequest_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

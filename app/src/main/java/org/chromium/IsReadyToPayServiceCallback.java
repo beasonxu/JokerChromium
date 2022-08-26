@@ -28,7 +28,6 @@ public interface IsReadyToPayServiceCallback extends android.os.IInterface
   /** Local-side IPC implementation stub class. */
   public static abstract class Stub extends android.os.Binder implements org.chromium.IsReadyToPayServiceCallback
   {
-    private static final java.lang.String DESCRIPTOR = "org.chromium.IsReadyToPayServiceCallback";
     /** Construct the stub at attach it to the interface. */
     public Stub()
     {
@@ -63,6 +62,9 @@ public interface IsReadyToPayServiceCallback extends android.os.IInterface
           reply.writeString(descriptor);
           return true;
         }
+      }
+      switch (code)
+      {
         case TRANSACTION_handleIsReadyToPay:
         {
           data.enforceInterface(descriptor);
@@ -105,9 +107,11 @@ public interface IsReadyToPayServiceCallback extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(((isReadyToPay)?(1):(0)));
           boolean _status = mRemote.transact(Stub.TRANSACTION_handleIsReadyToPay, _data, null, android.os.IBinder.FLAG_ONEWAY);
-          if (!_status && getDefaultImpl() != null) {
-            getDefaultImpl().handleIsReadyToPay(isReadyToPay);
-            return;
+          if (!_status) {
+            if (getDefaultImpl() != null) {
+              getDefaultImpl().handleIsReadyToPay(isReadyToPay);
+              return;
+            }
           }
         }
         finally {
@@ -134,6 +138,7 @@ public interface IsReadyToPayServiceCallback extends android.os.IInterface
       return Stub.Proxy.sDefaultImpl;
     }
   }
+  public static final java.lang.String DESCRIPTOR = "org.chromium.IsReadyToPayServiceCallback";
   /**
        * Method to be called by the Service to indicate
        * whether the payment app is ready for payment.

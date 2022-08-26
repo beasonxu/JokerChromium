@@ -13,6 +13,8 @@
 
 package org.chromium.payments.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class PaymentManager_Internal {
 
@@ -96,7 +98,7 @@ org.chromium.url.mojom.Url contextUrl, String serviceWorkerScope) {
         @Override
         public void deletePaymentInstrument(
 String instrumentKey, 
-DeletePaymentInstrumentResponse callback) {
+DeletePaymentInstrument_Response callback) {
 
             PaymentManagerDeletePaymentInstrumentParams _message = new PaymentManagerDeletePaymentInstrumentParams();
 
@@ -118,7 +120,7 @@ DeletePaymentInstrumentResponse callback) {
         @Override
         public void getPaymentInstrument(
 String instrumentKey, 
-GetPaymentInstrumentResponse callback) {
+GetPaymentInstrument_Response callback) {
 
             PaymentManagerGetPaymentInstrumentParams _message = new PaymentManagerGetPaymentInstrumentParams();
 
@@ -140,7 +142,7 @@ GetPaymentInstrumentResponse callback) {
         @Override
         public void keysOfPaymentInstruments(
 
-KeysOfPaymentInstrumentsResponse callback) {
+KeysOfPaymentInstruments_Response callback) {
 
             PaymentManagerKeysOfPaymentInstrumentsParams _message = new PaymentManagerKeysOfPaymentInstrumentsParams();
 
@@ -160,7 +162,7 @@ KeysOfPaymentInstrumentsResponse callback) {
         @Override
         public void hasPaymentInstrument(
 String instrumentKey, 
-HasPaymentInstrumentResponse callback) {
+HasPaymentInstrument_Response callback) {
 
             PaymentManagerHasPaymentInstrumentParams _message = new PaymentManagerHasPaymentInstrumentParams();
 
@@ -182,7 +184,7 @@ HasPaymentInstrumentResponse callback) {
         @Override
         public void setPaymentInstrument(
 String instrumentKey, PaymentInstrument instrument, 
-SetPaymentInstrumentResponse callback) {
+SetPaymentInstrument_Response callback) {
 
             PaymentManagerSetPaymentInstrumentParams _message = new PaymentManagerSetPaymentInstrumentParams();
 
@@ -206,7 +208,7 @@ SetPaymentInstrumentResponse callback) {
         @Override
         public void clearPaymentInstruments(
 
-ClearPaymentInstrumentsResponse callback) {
+ClearPaymentInstruments_Response callback) {
 
             PaymentManagerClearPaymentInstrumentsParams _message = new PaymentManagerClearPaymentInstrumentsParams();
 
@@ -243,7 +245,7 @@ String userHint) {
         @Override
         public void enableDelegations(
 int[] delegations, 
-EnableDelegationsResponse callback) {
+EnableDelegations_Response callback) {
 
             PaymentManagerEnableDelegationsParams _message = new PaymentManagerEnableDelegationsParams();
 
@@ -676,9 +678,9 @@ EnableDelegationsResponse callback) {
 
     static class PaymentManagerDeletePaymentInstrumentResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PaymentManager.DeletePaymentInstrumentResponse mCallback;
+        private final PaymentManager.DeletePaymentInstrument_Response mCallback;
 
-        PaymentManagerDeletePaymentInstrumentResponseParamsForwardToCallback(PaymentManager.DeletePaymentInstrumentResponse callback) {
+        PaymentManagerDeletePaymentInstrumentResponseParamsForwardToCallback(PaymentManager.DeletePaymentInstrument_Response callback) {
             this.mCallback = callback;
         }
 
@@ -703,7 +705,7 @@ EnableDelegationsResponse callback) {
         }
     }
 
-    static class PaymentManagerDeletePaymentInstrumentResponseParamsProxyToResponder implements PaymentManager.DeletePaymentInstrumentResponse {
+    static class PaymentManagerDeletePaymentInstrumentResponseParamsProxyToResponder implements PaymentManager.DeletePaymentInstrument_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -873,9 +875,9 @@ EnableDelegationsResponse callback) {
 
     static class PaymentManagerGetPaymentInstrumentResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PaymentManager.GetPaymentInstrumentResponse mCallback;
+        private final PaymentManager.GetPaymentInstrument_Response mCallback;
 
-        PaymentManagerGetPaymentInstrumentResponseParamsForwardToCallback(PaymentManager.GetPaymentInstrumentResponse callback) {
+        PaymentManagerGetPaymentInstrumentResponseParamsForwardToCallback(PaymentManager.GetPaymentInstrument_Response callback) {
             this.mCallback = callback;
         }
 
@@ -900,7 +902,7 @@ EnableDelegationsResponse callback) {
         }
     }
 
-    static class PaymentManagerGetPaymentInstrumentResponseParamsProxyToResponder implements PaymentManager.GetPaymentInstrumentResponse {
+    static class PaymentManagerGetPaymentInstrumentResponseParamsProxyToResponder implements PaymentManager.GetPaymentInstrument_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1080,9 +1082,9 @@ EnableDelegationsResponse callback) {
 
     static class PaymentManagerKeysOfPaymentInstrumentsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PaymentManager.KeysOfPaymentInstrumentsResponse mCallback;
+        private final PaymentManager.KeysOfPaymentInstruments_Response mCallback;
 
-        PaymentManagerKeysOfPaymentInstrumentsResponseParamsForwardToCallback(PaymentManager.KeysOfPaymentInstrumentsResponse callback) {
+        PaymentManagerKeysOfPaymentInstrumentsResponseParamsForwardToCallback(PaymentManager.KeysOfPaymentInstruments_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1107,7 +1109,7 @@ EnableDelegationsResponse callback) {
         }
     }
 
-    static class PaymentManagerKeysOfPaymentInstrumentsResponseParamsProxyToResponder implements PaymentManager.KeysOfPaymentInstrumentsResponse {
+    static class PaymentManagerKeysOfPaymentInstrumentsResponseParamsProxyToResponder implements PaymentManager.KeysOfPaymentInstruments_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1271,9 +1273,9 @@ EnableDelegationsResponse callback) {
 
     static class PaymentManagerHasPaymentInstrumentResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PaymentManager.HasPaymentInstrumentResponse mCallback;
+        private final PaymentManager.HasPaymentInstrument_Response mCallback;
 
-        PaymentManagerHasPaymentInstrumentResponseParamsForwardToCallback(PaymentManager.HasPaymentInstrumentResponse callback) {
+        PaymentManagerHasPaymentInstrumentResponseParamsForwardToCallback(PaymentManager.HasPaymentInstrument_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1298,7 +1300,7 @@ EnableDelegationsResponse callback) {
         }
     }
 
-    static class PaymentManagerHasPaymentInstrumentResponseParamsProxyToResponder implements PaymentManager.HasPaymentInstrumentResponse {
+    static class PaymentManagerHasPaymentInstrumentResponseParamsProxyToResponder implements PaymentManager.HasPaymentInstrument_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1468,9 +1470,9 @@ EnableDelegationsResponse callback) {
 
     static class PaymentManagerSetPaymentInstrumentResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PaymentManager.SetPaymentInstrumentResponse mCallback;
+        private final PaymentManager.SetPaymentInstrument_Response mCallback;
 
-        PaymentManagerSetPaymentInstrumentResponseParamsForwardToCallback(PaymentManager.SetPaymentInstrumentResponse callback) {
+        PaymentManagerSetPaymentInstrumentResponseParamsForwardToCallback(PaymentManager.SetPaymentInstrument_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1495,7 +1497,7 @@ EnableDelegationsResponse callback) {
         }
     }
 
-    static class PaymentManagerSetPaymentInstrumentResponseParamsProxyToResponder implements PaymentManager.SetPaymentInstrumentResponse {
+    static class PaymentManagerSetPaymentInstrumentResponseParamsProxyToResponder implements PaymentManager.SetPaymentInstrument_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1650,9 +1652,9 @@ EnableDelegationsResponse callback) {
 
     static class PaymentManagerClearPaymentInstrumentsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PaymentManager.ClearPaymentInstrumentsResponse mCallback;
+        private final PaymentManager.ClearPaymentInstruments_Response mCallback;
 
-        PaymentManagerClearPaymentInstrumentsResponseParamsForwardToCallback(PaymentManager.ClearPaymentInstrumentsResponse callback) {
+        PaymentManagerClearPaymentInstrumentsResponseParamsForwardToCallback(PaymentManager.ClearPaymentInstruments_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1677,7 +1679,7 @@ EnableDelegationsResponse callback) {
         }
     }
 
-    static class PaymentManagerClearPaymentInstrumentsResponseParamsProxyToResponder implements PaymentManager.ClearPaymentInstrumentsResponse {
+    static class PaymentManagerClearPaymentInstrumentsResponseParamsProxyToResponder implements PaymentManager.ClearPaymentInstruments_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1907,9 +1909,9 @@ EnableDelegationsResponse callback) {
 
     static class PaymentManagerEnableDelegationsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PaymentManager.EnableDelegationsResponse mCallback;
+        private final PaymentManager.EnableDelegations_Response mCallback;
 
-        PaymentManagerEnableDelegationsResponseParamsForwardToCallback(PaymentManager.EnableDelegationsResponse callback) {
+        PaymentManagerEnableDelegationsResponseParamsForwardToCallback(PaymentManager.EnableDelegations_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1934,7 +1936,7 @@ EnableDelegationsResponse callback) {
         }
     }
 
-    static class PaymentManagerEnableDelegationsResponseParamsProxyToResponder implements PaymentManager.EnableDelegationsResponse {
+    static class PaymentManagerEnableDelegationsResponseParamsProxyToResponder implements PaymentManager.EnableDelegations_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

@@ -15,9 +15,10 @@ import androidx.preference.Preference;
 import org.chromium.base.Callback;
 import org.chromium.base.CommandLine;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.browserservices.permissiondelegation.TrustedWebActivityPermissionManager;
+import org.chromium.chrome.browser.browserservices.permissiondelegation.InstalledWebappPermissionManager;
 import org.chromium.chrome.browser.feedback.HelpAndFeedbackLauncherImpl;
 import org.chromium.chrome.browser.flags.ChromeFeatureList;
+import org.chromium.chrome.browser.incognito.IncognitoUtils;
 import org.chromium.chrome.browser.notifications.channels.SiteChannelsManager;
 import org.chromium.chrome.browser.privacy_sandbox.PrivacySandboxBridge;
 import org.chromium.chrome.browser.privacy_sandbox.PrivacySandboxSnackbarController;
@@ -33,11 +34,12 @@ import org.chromium.components.browser_ui.site_settings.SiteSettingsCategory;
 import org.chromium.components.browser_ui.site_settings.SiteSettingsDelegate;
 import org.chromium.components.browser_ui.widget.RoundedIconGenerator;
 import org.chromium.components.content_settings.ContentSettingsType;
-import org.chromium.components.embedder_support.browser_context.BrowserContextHandle;
 import org.chromium.components.embedder_support.util.Origin;
-import org.chromium.components.page_info.PageInfoFeatureList;
+import org.chromium.content_public.browser.BrowserContextHandle;
 import org.chromium.content_public.browser.ContentFeatureList;
+import org.chromium.content_public.common.ContentFeatures;
 import org.chromium.content_public.common.ContentSwitches;
+import org.chromium.url.GURL;
 
 import java.util.Set;
 
@@ -54,13 +56,13 @@ public class ChromeSiteSettingsDelegate implements SiteSettingsDelegate {
     private static final float FAVICON_TEXT_SIZE_FRACTION = 0.625f;
 
     private final Context mContext;
-    private final BrowserContextHandle mBrowserContext;
+    private final Profile mProfile;
     private ManagedPreferenceDelegate mManagedPreferenceDelegate;
     private PrivacySandboxSnackbarController mPrivacySandboxController;
 
-    public ChromeSiteSettingsDelegate(Context context, BrowserContextHandle browserContext) {
+    public ChromeSiteSettingsDelegate(Context context, Profile profile) {
         mContext = context;
-        mBrowserContext = browserContext;
+        mProfile = profile;
     }
 
     /**
@@ -75,7 +77,7 @@ public class ChromeSiteSettingsDelegate implements SiteSettingsDelegate {
 
     @Override
     public BrowserContextHandle getBrowserContextHandle() {
-        return mBrowserContext;
+        return mProfile;
     }
 
     @Override
@@ -92,8 +94,8 @@ public class ChromeSiteSettingsDelegate implements SiteSettingsDelegate {
     }
 
     @Override
-    public void getFaviconImageForURL(String faviconUrl, Callback<Bitmap> callback) {
-        new FaviconLoader(faviconUrl, callback);
+    public void getFaviconImageForURL(GURL faviconUrl, Callback<Bitmap> callback) {
+        new FaviconLoader(faviconUrl, callback, mProfile);
     }
 
     /**
@@ -104,30 +106,27 @@ public class ChromeSiteSettingsDelegate implements SiteSettingsDelegate {
      * has been called.
      */
     private class FaviconLoader implements FaviconImageCallback {
-        private final String mFaviconUrl;
+        private final GURL mFaviconUrl;
         private final Callback<Bitmap> mCallback;
         private final int mFaviconSizePx;
         // Loads the favicons asynchronously.
         private final FaviconHelper mFaviconHelper;
 
-        private FaviconLoader(String faviconUrl, Callback<Bitmap> callback) {
+        private FaviconLoader(GURL faviconUrl, Callback<Bitmap> callback, Profile profile) {
             mFaviconUrl = faviconUrl;
             mCallback = callback;
             mFaviconSizePx =
                     mContext.getResources().getDimensionPixelSize(R.dimen.default_favicon_size);
             mFaviconHelper = new FaviconHelper();
 
-            // TODO(https://crbug.com/1048632): Use the current profile (i.e., regular profile or
-            // incognito profile) instead of always using regular profile. It works correctly now,
-            // but it is not safe.
             if (!mFaviconHelper.getLocalFaviconImageForURL(
-                        Profile.getLastUsedRegularProfile(), mFaviconUrl, mFaviconSizePx, this)) {
-                onFaviconAvailable(/*image=*/null, mFaviconUrl);
+                        profile, mFaviconUrl, mFaviconSizePx, this)) {
+                onFaviconAvailable(/*image=*/null, null);
             }
         }
 
         @Override
-        public void onFaviconAvailable(Bitmap image, String iconUrl) {
+        public void onFaviconAvailable(Bitmap image, GURL unusedIconUrl) {
             mFaviconHelper.destroy();
 
             if (image == null) {
@@ -153,17 +152,29 @@ public class ChromeSiteSettingsDelegate implements SiteSettingsDelegate {
             // great to dynamically remove the preference in this way.
             case SiteSettingsCategory.Type.ADS:
                 return SiteSettingsCategory.adsCategoryEnabled();
+            case SiteSettingsCategory.Type.AUTO_DARK_WEB_CONTENT:
+                return ChromeFeatureList.isEnabled(
+                        ChromeFeatureList.DARKEN_WEBSITES_CHECKBOX_IN_THEMES_SETTING);
             case SiteSettingsCategory.Type.BLUETOOTH:
                 return ContentFeatureList.isEnabled(
                         ContentFeatureList.WEB_BLUETOOTH_NEW_PERMISSIONS_BACKEND);
             case SiteSettingsCategory.Type.BLUETOOTH_SCANNING:
                 return CommandLine.getInstance().hasSwitch(
                         ContentSwitches.ENABLE_EXPERIMENTAL_WEB_PLATFORM_FEATURES);
+            case SiteSettingsCategory.Type.FEDERATED_IDENTITY_API:
+                return ContentFeatureList.isEnabled(ContentFeatures.FED_CM);
+            case SiteSettingsCategory.Type.REQUEST_DESKTOP_SITE:
+                return ContentFeatureList.isEnabled(ContentFeatureList.REQUEST_DESKTOP_SITE_GLOBAL);
             case SiteSettingsCategory.Type.NFC:
                 return ContentFeatureList.isEnabled(ContentFeatureList.WEB_NFC);
             default:
                 return true;
         }
+    }
+
+    @Override
+    public boolean isIncognitoModeEnabled() {
+        return IncognitoUtils.isIncognitoModeEnabled();
     }
 
     @Override
@@ -185,7 +196,7 @@ public class ChromeSiteSettingsDelegate implements SiteSettingsDelegate {
     @Nullable
     public String getDelegateAppNameForOrigin(Origin origin, @ContentSettingsType int type) {
         if (type == ContentSettingsType.NOTIFICATIONS) {
-            return TrustedWebActivityPermissionManager.get().getDelegateAppName(origin);
+            return InstalledWebappPermissionManager.get().getDelegateAppName(origin);
         }
 
         return null;
@@ -195,15 +206,10 @@ public class ChromeSiteSettingsDelegate implements SiteSettingsDelegate {
     @Nullable
     public String getDelegatePackageNameForOrigin(Origin origin, @ContentSettingsType int type) {
         if (type == ContentSettingsType.NOTIFICATIONS) {
-            return TrustedWebActivityPermissionManager.get().getDelegatePackageName(origin);
+            return InstalledWebappPermissionManager.get().getDelegatePackageName(origin);
         }
 
         return null;
-    }
-
-    @Override
-    public boolean isPageInfoV2Enabled() {
-        return PageInfoFeatureList.isEnabled(PageInfoFeatureList.PAGE_INFO_V2);
     }
 
     @Override
@@ -233,23 +239,21 @@ public class ChromeSiteSettingsDelegate implements SiteSettingsDelegate {
 
     @Override
     public Set<String> getAllDelegatedNotificationOrigins() {
-        return TrustedWebActivityPermissionManager.get().getAllDelegatedOrigins();
+        return InstalledWebappPermissionManager.get().getAllDelegatedOrigins();
     }
 
     @Override
     public void maybeDisplayPrivacySandboxSnackbar() {
         // Only show the snackbar when the Privacy Sandbox APIs are enabled.
-        if (mPrivacySandboxController != null
-                && PrivacySandboxBridge.isPrivacySandboxSettingsFunctional()
-                && PrivacySandboxBridge.isPrivacySandboxEnabled()) {
+        if (mPrivacySandboxController != null && PrivacySandboxBridge.isPrivacySandboxEnabled()
+                && !PrivacySandboxBridge.isPrivacySandboxRestricted()) {
             mPrivacySandboxController.showSnackbar();
         }
     }
 
     @Override
     public void dismissPrivacySandboxSnackbar() {
-        if (mPrivacySandboxController != null
-                && PrivacySandboxBridge.isPrivacySandboxSettingsFunctional()) {
+        if (mPrivacySandboxController != null) {
             mPrivacySandboxController.dismissSnackbar();
         }
     }

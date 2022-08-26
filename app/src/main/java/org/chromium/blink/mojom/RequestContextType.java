@@ -13,26 +13,66 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class RequestContextType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        RequestContextType.UNSPECIFIED,
+        RequestContextType.ATTRIBUTION_SRC,
+        RequestContextType.AUDIO,
+        RequestContextType.BEACON,
+        RequestContextType.CSP_REPORT,
+        RequestContextType.DOWNLOAD,
+        RequestContextType.EMBED,
+        RequestContextType.EVENT_SOURCE,
+        RequestContextType.FAVICON,
+        RequestContextType.FETCH,
+        RequestContextType.FONT,
+        RequestContextType.FORM,
+        RequestContextType.FRAME,
+        RequestContextType.HYPERLINK,
+        RequestContextType.IFRAME,
+        RequestContextType.IMAGE,
+        RequestContextType.IMAGE_SET,
+        RequestContextType.INTERNAL,
+        RequestContextType.LOCATION,
+        RequestContextType.MANIFEST,
+        RequestContextType.OBJECT,
+        RequestContextType.PING,
+        RequestContextType.PLUGIN,
+        RequestContextType.PREFETCH,
+        RequestContextType.SCRIPT,
+        RequestContextType.SERVICE_WORKER,
+        RequestContextType.SHARED_WORKER,
+        RequestContextType.SUBRESOURCE,
+        RequestContextType.SUBRESOURCE_WEBBUNDLE,
+        RequestContextType.STYLE,
+        RequestContextType.TRACK,
+        RequestContextType.VIDEO,
+        RequestContextType.WORKER,
+        RequestContextType.XML_HTTP_REQUEST,
+        RequestContextType.XSLT})
+    public @interface EnumType {}
 
     public static final int UNSPECIFIED = 0;
-    public static final int AUDIO = 1;
-    public static final int BEACON = 2;
-    public static final int CSP_REPORT = 3;
-    public static final int DOWNLOAD = 4;
-    public static final int EMBED = 5;
-    public static final int EVENT_SOURCE = 6;
-    public static final int FAVICON = 7;
-    public static final int FETCH = 8;
-    public static final int FONT = 9;
-    public static final int FORM = 10;
-    public static final int FRAME = 11;
-    public static final int HYPERLINK = 12;
-    public static final int IFRAME = 13;
-    public static final int IMAGE = 14;
-    public static final int IMAGE_SET = 15;
-    public static final int IMPORT = 16;
+    public static final int ATTRIBUTION_SRC = 1;
+    public static final int AUDIO = 2;
+    public static final int BEACON = 3;
+    public static final int CSP_REPORT = 4;
+    public static final int DOWNLOAD = 5;
+    public static final int EMBED = 6;
+    public static final int EVENT_SOURCE = 7;
+    public static final int FAVICON = 8;
+    public static final int FETCH = 9;
+    public static final int FONT = 10;
+    public static final int FORM = 11;
+    public static final int FRAME = 12;
+    public static final int HYPERLINK = 13;
+    public static final int IFRAME = 14;
+    public static final int IMAGE = 15;
+    public static final int IMAGE_SET = 16;
     public static final int INTERNAL = 17;
     public static final int LOCATION = 18;
     public static final int MANIFEST = 19;

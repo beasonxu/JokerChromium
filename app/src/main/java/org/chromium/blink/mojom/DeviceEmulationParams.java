@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class DeviceEmulationParams extends org.chromium.mojo.bindings.Struct {
 
@@ -105,8 +107,8 @@ public final class DeviceEmulationParams extends org.chromium.mojo.bindings.Stru
                 {
                     
                 result.screenOrientationType = decoder0.readInt(56);
-                    ScreenOrientation.validate(result.screenOrientationType);
-                    result.screenOrientationType = ScreenOrientation.toKnownValue(result.screenOrientationType);
+                    org.chromium.display.mojom.ScreenOrientation.validate(result.screenOrientationType);
+                    result.screenOrientationType = org.chromium.display.mojom.ScreenOrientation.toKnownValue(result.screenOrientationType);
                 }
                 {
                     

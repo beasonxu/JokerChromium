@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -18,7 +18,8 @@ import java.lang.annotation.RetentionPolicy;
 @IntDef({
     SchedulerClientType.TEST1, SchedulerClientType.TEST2, SchedulerClientType.TEST3,
     SchedulerClientType.UNKNOWN, SchedulerClientType.WEB_UI, SchedulerClientType.CHROME_UPDATE,
-    SchedulerClientType.PREFETCH, SchedulerClientType.READING_LIST, SchedulerClientType.MAX_VALUE
+    SchedulerClientType.PREFETCH, SchedulerClientType.READING_LIST,
+    SchedulerClientType.FEATURE_GUIDE, SchedulerClientType.MAX_VALUE
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface SchedulerClientType {
@@ -41,12 +42,16 @@ public @interface SchedulerClientType {
    */
   int CHROME_UPDATE = 2;
   /**
-   * Offline prefetch notification.
+   * Offline prefetch notification. (Deprecated)
    */
   int PREFETCH = 3;
   /**
    * Reading list weekly notification.
    */
   int READING_LIST = 4;
-  int MAX_VALUE = READING_LIST;
+  /**
+   * Feature guide specific notifications.
+   */
+  int FEATURE_GUIDE = 5;
+  int MAX_VALUE = FEATURE_GUIDE;
 }

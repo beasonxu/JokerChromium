@@ -13,8 +13,27 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class PushUnregistrationReason {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        PushUnregistrationReason.UNKNOWN,
+        PushUnregistrationReason.JAVASCRIPT_API,
+        PushUnregistrationReason.PERMISSION_REVOKED,
+        PushUnregistrationReason.DELIVERY_UNKNOWN_APP_ID,
+        PushUnregistrationReason.DELIVERY_PERMISSION_DENIED,
+        PushUnregistrationReason.DELIVERY_NO_SERVICE_WORKER,
+        PushUnregistrationReason.GCM_STORE_RESET,
+        PushUnregistrationReason.SERVICE_WORKER_UNREGISTERED,
+        PushUnregistrationReason.SUBSCRIBE_STORAGE_CORRUPT,
+        PushUnregistrationReason.GET_SUBSCRIPTION_STORAGE_CORRUPT,
+        PushUnregistrationReason.SERVICE_WORKER_DATABASE_WIPED,
+        PushUnregistrationReason.SUBSCRIPTION_EXPIRED,
+        PushUnregistrationReason.REFRESH_FINISHED,
+        PushUnregistrationReason.PERMISSION_REVOKED_ABUSIVE})
+    public @interface EnumType {}
 
     public static final int UNKNOWN = 0;
     public static final int JAVASCRIPT_API = 1;

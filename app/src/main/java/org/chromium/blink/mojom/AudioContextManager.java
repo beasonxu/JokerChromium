@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface AudioContextManager extends org.chromium.mojo.bindings.Interface {
 
@@ -23,10 +25,8 @@ public interface AudioContextManager extends org.chromium.mojo.bindings.Interfac
 
     Manager<AudioContextManager, AudioContextManager.Proxy> MANAGER = AudioContextManager_Internal.MANAGER;
 
-
     void audioContextAudiblePlaybackStarted(
 int id);
-
 
 
     void audioContextAudiblePlaybackStopped(

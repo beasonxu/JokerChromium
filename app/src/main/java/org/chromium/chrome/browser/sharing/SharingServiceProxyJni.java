@@ -15,7 +15,7 @@ import org.chromium.chrome.browser.profiles.Profile;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class SharingServiceProxyJni implements SharingServiceProxy.Natives {
+class SharingServiceProxyJni implements SharingServiceProxy.Natives {
   private static SharingServiceProxy.Natives testInstance;
 
   public static final JniStaticTestMocker<SharingServiceProxy.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.sharing.SharingServiceProxy.Natives>() {

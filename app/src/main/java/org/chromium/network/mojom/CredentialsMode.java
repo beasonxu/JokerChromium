@@ -13,8 +13,17 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class CredentialsMode {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        CredentialsMode.OMIT,
+        CredentialsMode.SAME_ORIGIN,
+        CredentialsMode.INCLUDE,
+        CredentialsMode.OMIT_BUG_775438_WORKAROUND})
+    public @interface EnumType {}
 
     public static final int OMIT = 0;
     public static final int SAME_ORIGIN = 1;

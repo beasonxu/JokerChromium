@@ -12,7 +12,7 @@ import org.chromium.content_public.browser.RenderFrameHost;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class WebContextFetcherJni implements WebContextFetcher.Natives {
+class WebContextFetcherJni implements WebContextFetcher.Natives {
   private static WebContextFetcher.Natives testInstance;
 
   public static final JniStaticTestMocker<WebContextFetcher.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.javascript.WebContextFetcher.Natives>() {

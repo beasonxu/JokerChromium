@@ -13,11 +13,13 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class CookieDeletionFilter extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 72;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(72, 0)};
+    private static final int STRUCT_SIZE = 80;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(80, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public org.chromium.mojo_base.mojom.Time createdAfterTime;
     public org.chromium.mojo_base.mojom.Time createdBeforeTime;
@@ -27,6 +29,7 @@ public final class CookieDeletionFilter extends org.chromium.mojo.bindings.Struc
     public String hostName;
     public org.chromium.url.mojom.Url url;
     public int sessionControl;
+    public CookiePartitionKeyCollection cookiePartitionKeyCollection;
 
     private CookieDeletionFilter(int version) {
         super(STRUCT_SIZE, version);
@@ -119,6 +122,11 @@ public final class CookieDeletionFilter extends org.chromium.mojo.bindings.Struc
                     CookieDeletionSessionControl.validate(result.sessionControl);
                     result.sessionControl = CookieDeletionSessionControl.toKnownValue(result.sessionControl);
                 }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(72, false);
+                result.cookiePartitionKeyCollection = CookiePartitionKeyCollection.decode(decoder1);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -162,5 +170,7 @@ public final class CookieDeletionFilter extends org.chromium.mojo.bindings.Struc
         encoder0.encode(this.url, 56, true);
         
         encoder0.encode(this.sessionControl, 64);
+        
+        encoder0.encode(this.cookiePartitionKeyCollection, 72, false);
     }
 }

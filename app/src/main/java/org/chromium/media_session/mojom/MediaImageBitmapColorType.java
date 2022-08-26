@@ -13,8 +13,15 @@
 
 package org.chromium.media_session.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class MediaImageBitmapColorType {
     private static final boolean IS_EXTENSIBLE = true;
+    @IntDef({
+
+        MediaImageBitmapColorType.RGBA_8888,
+        MediaImageBitmapColorType.BGRA_8888})
+    public @interface EnumType {}
 
     public static final int RGBA_8888 = 0;
     public static final int BGRA_8888 = 1;

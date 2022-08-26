@@ -13,8 +13,15 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class TrustTokenRefreshPolicy {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        TrustTokenRefreshPolicy.USE_CACHED,
+        TrustTokenRefreshPolicy.REFRESH})
+    public @interface EnumType {}
 
     public static final int USE_CACHED = 0;
     public static final int REFRESH = 1;

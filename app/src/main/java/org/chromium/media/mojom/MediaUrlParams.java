@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class MediaUrlParams extends org.chromium.mojo.bindings.Struct {
 
@@ -20,7 +22,7 @@ public final class MediaUrlParams extends org.chromium.mojo.bindings.Struct {
     private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public org.chromium.url.mojom.Url mediaUrl;
-    public org.chromium.url.mojom.Url siteForCookies;
+    public org.chromium.network.mojom.SiteForCookies siteForCookies;
     public org.chromium.url.internal.mojom.Origin topFrameOrigin;
     public boolean allowCredentials;
     public boolean isHls;
@@ -66,7 +68,7 @@ public final class MediaUrlParams extends org.chromium.mojo.bindings.Struct {
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
-                result.siteForCookies = org.chromium.url.mojom.Url.decode(decoder1);
+                result.siteForCookies = org.chromium.network.mojom.SiteForCookies.decode(decoder1);
                 }
                 {
                     

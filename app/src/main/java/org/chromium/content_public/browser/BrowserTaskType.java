@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -17,7 +17,8 @@ import java.lang.annotation.RetentionPolicy;
 
 @IntDef({
     BrowserTaskType.DEFAULT, BrowserTaskType.BOOTSTRAP, BrowserTaskType.PRECONNECT,
-    BrowserTaskType.BROWSER_TASK_TYPE_LAST
+    BrowserTaskType.USER_INPUT, BrowserTaskType.NAVIGATION_NETWORK_RESPONSE,
+    BrowserTaskType.SERVICE_WORKER_STORAGE_CONTROL_RESPONSE, BrowserTaskType.BROWSER_TASK_TYPE_LAST
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface BrowserTaskType {
@@ -34,7 +35,23 @@ public @interface BrowserTaskType {
    */
   int PRECONNECT = 2;
   /**
+   * A subset of tasks related to user input.
+   */
+  int USER_INPUT = 3;
+  /**
+   * Tasks processing navigation network request's response from the network service. NOTE: This
+   * task type should not be used for other navigation-related tasks as they should be ordered
+   * w.r.t. IPC channel and the UI thread's default task runner. Reach out to navigation-dev@ before
+   * adding new usages. TODO(altimin): Make this content-internal.
+   */
+  int NAVIGATION_NETWORK_RESPONSE = 4;
+  /**
+   * Tasks processing ServiceWorker's storage control's response. TODO(chikamune): Make this
+   * content-internal.
+   */
+  int SERVICE_WORKER_STORAGE_CONTROL_RESPONSE = 5;
+  /**
    * Used to validate values in Java
    */
-  int BROWSER_TASK_TYPE_LAST = 3;
+  int BROWSER_TASK_TYPE_LAST = 6;
 }

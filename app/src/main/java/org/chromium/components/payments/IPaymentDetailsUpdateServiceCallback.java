@@ -37,7 +37,6 @@ public interface IPaymentDetailsUpdateServiceCallback extends android.os.IInterf
   /** Local-side IPC implementation stub class. */
   public static abstract class Stub extends android.os.Binder implements org.chromium.components.payments.IPaymentDetailsUpdateServiceCallback
   {
-    private static final java.lang.String DESCRIPTOR = "org.chromium.components.payments.IPaymentDetailsUpdateServiceCallback";
     /** Construct the stub at attach it to the interface. */
     public Stub()
     {
@@ -72,6 +71,9 @@ public interface IPaymentDetailsUpdateServiceCallback extends android.os.IInterf
           reply.writeString(descriptor);
           return true;
         }
+      }
+      switch (code)
+      {
         case TRANSACTION_updateWith:
         {
           data.enforceInterface(descriptor);
@@ -132,9 +134,11 @@ public interface IPaymentDetailsUpdateServiceCallback extends android.os.IInterf
             _data.writeInt(0);
           }
           boolean _status = mRemote.transact(Stub.TRANSACTION_updateWith, _data, null, android.os.IBinder.FLAG_ONEWAY);
-          if (!_status && getDefaultImpl() != null) {
-            getDefaultImpl().updateWith(updatedPaymentDetails);
-            return;
+          if (!_status) {
+            if (getDefaultImpl() != null) {
+              getDefaultImpl().updateWith(updatedPaymentDetails);
+              return;
+            }
           }
         }
         finally {
@@ -151,9 +155,11 @@ public interface IPaymentDetailsUpdateServiceCallback extends android.os.IInterf
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_paymentDetailsNotUpdated, _data, null, android.os.IBinder.FLAG_ONEWAY);
-          if (!_status && getDefaultImpl() != null) {
-            getDefaultImpl().paymentDetailsNotUpdated();
-            return;
+          if (!_status) {
+            if (getDefaultImpl() != null) {
+              getDefaultImpl().paymentDetailsNotUpdated();
+              return;
+            }
           }
         }
         finally {
@@ -181,6 +187,7 @@ public interface IPaymentDetailsUpdateServiceCallback extends android.os.IInterf
       return Stub.Proxy.sDefaultImpl;
     }
   }
+  public static final java.lang.String DESCRIPTOR = "org.chromium.components.payments.IPaymentDetailsUpdateServiceCallback";
   /**
        * Called to notify the invoked payment app about updated payment details
        * received from the merchant.

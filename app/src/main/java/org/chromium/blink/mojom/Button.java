@@ -13,8 +13,21 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class Button {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        Button.NO_BUTTON,
+        Button.LEFT,
+        Button.MIDDLE,
+        Button.RIGHT,
+        Button.BARREL,
+        Button.BACK,
+        Button.FORWARD,
+        Button.ERASER})
+    public @interface EnumType {}
 
     public static final int NO_BUTTON = -1;
     public static final int LEFT = 0;

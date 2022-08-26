@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class FetchHandlerExistence {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        FetchHandlerExistence.UNKNOWN,
+        FetchHandlerExistence.EXISTS,
+        FetchHandlerExistence.DOES_NOT_EXIST})
+    public @interface EnumType {}
 
     public static final int UNKNOWN = 0;
     public static final int EXISTS = 1;

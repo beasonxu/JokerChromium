@@ -13,6 +13,8 @@
 
 package org.chromium.service_manager.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface InterfaceProvider extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface InterfaceProvider extends org.chromium.mojo.bindings.Interface 
     }
 
     Manager<InterfaceProvider, InterfaceProvider.Proxy> MANAGER = InterfaceProvider_Internal.MANAGER;
-
 
     void getInterface(
 String interfaceName, org.chromium.mojo.system.MessagePipeHandle pipe);

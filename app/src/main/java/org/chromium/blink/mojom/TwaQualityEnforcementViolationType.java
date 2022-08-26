@@ -13,8 +13,16 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class TwaQualityEnforcementViolationType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        TwaQualityEnforcementViolationType.HTTP_ERROR,
+        TwaQualityEnforcementViolationType.UNAVAILABLE_OFFLINE,
+        TwaQualityEnforcementViolationType.DIGITAL_ASSET_LINKS})
+    public @interface EnumType {}
 
     public static final int HTTP_ERROR = 0;
     public static final int UNAVAILABLE_OFFLINE = 1;

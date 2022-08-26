@@ -15,7 +15,7 @@ import org.chromium.ui.resources.ResourceManager;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class CompositorViewJni implements CompositorView.Natives {
+class CompositorViewJni implements CompositorView.Natives {
   private static CompositorView.Natives testInstance;
 
   public static final JniStaticTestMocker<CompositorView.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.compositor.CompositorView.Natives>() {
@@ -136,6 +136,11 @@ final class CompositorViewJni implements CompositorView.Natives {
   @Override
   public void preserveChildSurfaceControls(long nativeCompositorView, CompositorView caller) {
     GEN_JNI.org_chromium_chrome_browser_compositor_CompositorView_preserveChildSurfaceControls(nativeCompositorView, caller);
+  }
+
+  @Override
+  public void setDidSwapBuffersCallbackEnabled(long nativeCompositorView, boolean enabled) {
+    GEN_JNI.org_chromium_chrome_browser_compositor_CompositorView_setDidSwapBuffersCallbackEnabled(nativeCompositorView, enabled);
   }
 
   public static CompositorView.Natives get() {

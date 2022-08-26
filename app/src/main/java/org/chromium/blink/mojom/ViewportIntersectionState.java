@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class ViewportIntersectionState extends org.chromium.mojo.bindings.Struct {
 
@@ -24,7 +26,7 @@ public final class ViewportIntersectionState extends org.chromium.mojo.bindings.
     public org.chromium.gfx.mojom.Rect compositorVisibleRect;
     public int occlusionState;
     public org.chromium.gfx.mojom.Size mainFrameViewportSize;
-    public org.chromium.gfx.mojom.Point mainFrameScrollOffset;
+    public org.chromium.gfx.mojom.Point mainFrameScrollPosition;
     public org.chromium.gfx.mojom.Transform mainFrameTransform;
 
     private ViewportIntersectionState(int version) {
@@ -90,7 +92,7 @@ public final class ViewportIntersectionState extends org.chromium.mojo.bindings.
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(48, false);
-                result.mainFrameScrollOffset = org.chromium.gfx.mojom.Point.decode(decoder1);
+                result.mainFrameScrollPosition = org.chromium.gfx.mojom.Point.decode(decoder1);
                 }
                 {
                     
@@ -119,7 +121,7 @@ public final class ViewportIntersectionState extends org.chromium.mojo.bindings.
         
         encoder0.encode(this.mainFrameViewportSize, 40, false);
         
-        encoder0.encode(this.mainFrameScrollOffset, 48, false);
+        encoder0.encode(this.mainFrameScrollPosition, 48, false);
         
         encoder0.encode(this.mainFrameTransform, 56, false);
     }

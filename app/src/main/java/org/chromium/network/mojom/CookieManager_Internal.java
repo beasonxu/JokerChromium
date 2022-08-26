@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class CookieManager_Internal {
 
@@ -59,25 +61,29 @@ class CookieManager_Internal {
 
     private static final int DELETE_COOKIES_ORDINAL = 5;
 
-    private static final int ADD_COOKIE_CHANGE_LISTENER_ORDINAL = 6;
+    private static final int DELETE_SESSION_ONLY_COOKIES_ORDINAL = 6;
 
-    private static final int ADD_GLOBAL_CHANGE_LISTENER_ORDINAL = 7;
+    private static final int ADD_COOKIE_CHANGE_LISTENER_ORDINAL = 7;
 
-    private static final int CLONE_INTERFACE_ORDINAL = 8;
+    private static final int ADD_GLOBAL_CHANGE_LISTENER_ORDINAL = 8;
 
-    private static final int FLUSH_COOKIE_STORE_ORDINAL = 9;
+    private static final int CLONE_INTERFACE_ORDINAL = 9;
 
-    private static final int ALLOW_FILE_SCHEME_COOKIES_ORDINAL = 10;
+    private static final int FLUSH_COOKIE_STORE_ORDINAL = 10;
 
-    private static final int SET_CONTENT_SETTINGS_ORDINAL = 11;
+    private static final int ALLOW_FILE_SCHEME_COOKIES_ORDINAL = 11;
 
-    private static final int SET_FORCE_KEEP_SESSION_STATE_ORDINAL = 12;
+    private static final int SET_CONTENT_SETTINGS_ORDINAL = 12;
 
-    private static final int BLOCK_THIRD_PARTY_COOKIES_ORDINAL = 13;
+    private static final int SET_FORCE_KEEP_SESSION_STATE_ORDINAL = 13;
 
-    private static final int SET_CONTENT_SETTINGS_FOR_LEGACY_COOKIE_ACCESS_ORDINAL = 14;
+    private static final int BLOCK_THIRD_PARTY_COOKIES_ORDINAL = 14;
 
-    private static final int SET_STORAGE_ACCESS_GRANT_SETTINGS_ORDINAL = 15;
+    private static final int SET_CONTENT_SETTINGS_FOR_LEGACY_COOKIE_ACCESS_ORDINAL = 15;
+
+    private static final int SET_STORAGE_ACCESS_GRANT_SETTINGS_ORDINAL = 16;
+
+    private static final int CONVERT_PARTITIONED_COOKIES_TO_UNPARTITIONED_ORDINAL = 17;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements CookieManager.Proxy {
@@ -91,7 +97,7 @@ class CookieManager_Internal {
         @Override
         public void getAllCookies(
 
-GetAllCookiesResponse callback) {
+GetAllCookies_Response callback) {
 
             CookieManagerGetAllCookiesParams _message = new CookieManagerGetAllCookiesParams();
 
@@ -111,7 +117,7 @@ GetAllCookiesResponse callback) {
         @Override
         public void getAllCookiesWithAccessSemantics(
 
-GetAllCookiesWithAccessSemanticsResponse callback) {
+GetAllCookiesWithAccessSemantics_Response callback) {
 
             CookieManagerGetAllCookiesWithAccessSemanticsParams _message = new CookieManagerGetAllCookiesWithAccessSemanticsParams();
 
@@ -130,14 +136,16 @@ GetAllCookiesWithAccessSemanticsResponse callback) {
 
         @Override
         public void getCookieList(
-org.chromium.url.mojom.Url url, CookieOptions cookieOptions, 
-GetCookieListResponse callback) {
+org.chromium.url.mojom.Url url, CookieOptions cookieOptions, CookiePartitionKeyCollection cookiePartitionKeyCollection, 
+GetCookieList_Response callback) {
 
             CookieManagerGetCookieListParams _message = new CookieManagerGetCookieListParams();
 
             _message.url = url;
 
             _message.cookieOptions = cookieOptions;
+
+            _message.cookiePartitionKeyCollection = cookiePartitionKeyCollection;
 
 
             getProxyHandler().getMessageReceiver().acceptWithResponder(
@@ -155,7 +163,7 @@ GetCookieListResponse callback) {
         @Override
         public void setCanonicalCookie(
 CanonicalCookie cookie, org.chromium.url.mojom.Url sourceUrl, CookieOptions cookieOptions, 
-SetCanonicalCookieResponse callback) {
+SetCanonicalCookie_Response callback) {
 
             CookieManagerSetCanonicalCookieParams _message = new CookieManagerSetCanonicalCookieParams();
 
@@ -181,7 +189,7 @@ SetCanonicalCookieResponse callback) {
         @Override
         public void deleteCanonicalCookie(
 CanonicalCookie cookie, 
-DeleteCanonicalCookieResponse callback) {
+DeleteCanonicalCookie_Response callback) {
 
             CookieManagerDeleteCanonicalCookieParams _message = new CookieManagerDeleteCanonicalCookieParams();
 
@@ -203,7 +211,7 @@ DeleteCanonicalCookieResponse callback) {
         @Override
         public void deleteCookies(
 CookieDeletionFilter filter, 
-DeleteCookiesResponse callback) {
+DeleteCookies_Response callback) {
 
             CookieManagerDeleteCookiesParams _message = new CookieManagerDeleteCookiesParams();
 
@@ -218,6 +226,26 @@ DeleteCookiesResponse callback) {
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
                                     0)),
                     new CookieManagerDeleteCookiesResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void deleteSessionOnlyCookies(
+
+DeleteSessionOnlyCookies_Response callback) {
+
+            CookieManagerDeleteSessionOnlyCookiesParams _message = new CookieManagerDeleteSessionOnlyCookiesParams();
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    DELETE_SESSION_ONLY_COOKIES_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new CookieManagerDeleteSessionOnlyCookiesResponseParamsForwardToCallback(callback));
 
         }
 
@@ -280,7 +308,7 @@ org.chromium.mojo.bindings.InterfaceRequest<CookieManager> newInterface) {
         @Override
         public void flushCookieStore(
 
-FlushCookieStoreResponse callback) {
+FlushCookieStore_Response callback) {
 
             CookieManagerFlushCookieStoreParams _message = new CookieManagerFlushCookieStoreParams();
 
@@ -300,7 +328,7 @@ FlushCookieStoreResponse callback) {
         @Override
         public void allowFileSchemeCookies(
 boolean allow, 
-AllowFileSchemeCookiesResponse callback) {
+AllowFileSchemeCookies_Response callback) {
 
             CookieManagerAllowFileSchemeCookiesParams _message = new CookieManagerAllowFileSchemeCookiesParams();
 
@@ -388,7 +416,7 @@ org.chromium.content_settings.mojom.ContentSettingPatternSource[] settings) {
         @Override
         public void setStorageAccessGrantSettings(
 org.chromium.content_settings.mojom.ContentSettingPatternSource[] settings, 
-SetStorageAccessGrantSettingsResponse callback) {
+SetStorageAccessGrantSettings_Response callback) {
 
             CookieManagerSetStorageAccessGrantSettingsParams _message = new CookieManagerSetStorageAccessGrantSettingsParams();
 
@@ -403,6 +431,23 @@ SetStorageAccessGrantSettingsResponse callback) {
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
                                     0)),
                     new CookieManagerSetStorageAccessGrantSettingsResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void convertPartitionedCookiesToUnpartitioned(
+org.chromium.url.mojom.Url url) {
+
+            CookieManagerConvertPartitionedCookiesToUnpartitionedParams _message = new CookieManagerConvertPartitionedCookiesToUnpartitionedParams();
+
+            _message.url = url;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(CONVERT_PARTITIONED_COOKIES_TO_UNPARTITIONED_ORDINAL)));
 
         }
 
@@ -433,6 +478,8 @@ SetStorageAccessGrantSettingsResponse callback) {
                     case org.chromium.mojo.bindings.interfacecontrol.InterfaceControlMessagesConstants.RUN_OR_CLOSE_PIPE_MESSAGE_ID:
                         return org.chromium.mojo.bindings.InterfaceControlMessagesHelper.handleRunOrClosePipe(
                                 CookieManager_Internal.MANAGER, messageWithHeader);
+
+
 
 
 
@@ -543,6 +590,19 @@ SetStorageAccessGrantSettingsResponse callback) {
 
 
 
+
+
+
+                    case CONVERT_PARTITIONED_COOKIES_TO_UNPARTITIONED_ORDINAL: {
+
+                        CookieManagerConvertPartitionedCookiesToUnpartitionedParams data =
+                                CookieManagerConvertPartitionedCookiesToUnpartitionedParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().convertPartitionedCookiesToUnpartitioned(data.url);
+                        return true;
+                    }
+
+
                     default:
                         return false;
                 }
@@ -610,7 +670,7 @@ SetStorageAccessGrantSettingsResponse callback) {
                         CookieManagerGetCookieListParams data =
                                 CookieManagerGetCookieListParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().getCookieList(data.url, data.cookieOptions, new CookieManagerGetCookieListResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().getCookieList(data.url, data.cookieOptions, data.cookiePartitionKeyCollection, new CookieManagerGetCookieListResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -656,6 +716,20 @@ SetStorageAccessGrantSettingsResponse callback) {
                                 CookieManagerDeleteCookiesParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().deleteCookies(data.filter, new CookieManagerDeleteCookiesResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
+                    case DELETE_SESSION_ONLY_COOKIES_ORDINAL: {
+
+                        CookieManagerDeleteSessionOnlyCookiesParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().deleteSessionOnlyCookies(new CookieManagerDeleteSessionOnlyCookiesResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -716,6 +790,8 @@ SetStorageAccessGrantSettingsResponse callback) {
                         getImpl().setStorageAccessGrantSettings(data.settings, new CookieManagerSetStorageAccessGrantSettingsResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
+
+
 
 
                     default:
@@ -865,9 +941,9 @@ SetStorageAccessGrantSettingsResponse callback) {
 
     static class CookieManagerGetAllCookiesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CookieManager.GetAllCookiesResponse mCallback;
+        private final CookieManager.GetAllCookies_Response mCallback;
 
-        CookieManagerGetAllCookiesResponseParamsForwardToCallback(CookieManager.GetAllCookiesResponse callback) {
+        CookieManagerGetAllCookiesResponseParamsForwardToCallback(CookieManager.GetAllCookies_Response callback) {
             this.mCallback = callback;
         }
 
@@ -892,7 +968,7 @@ SetStorageAccessGrantSettingsResponse callback) {
         }
     }
 
-    static class CookieManagerGetAllCookiesResponseParamsProxyToResponder implements CookieManager.GetAllCookiesResponse {
+    static class CookieManagerGetAllCookiesResponseParamsProxyToResponder implements CookieManager.GetAllCookies_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1074,9 +1150,9 @@ SetStorageAccessGrantSettingsResponse callback) {
 
     static class CookieManagerGetAllCookiesWithAccessSemanticsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CookieManager.GetAllCookiesWithAccessSemanticsResponse mCallback;
+        private final CookieManager.GetAllCookiesWithAccessSemantics_Response mCallback;
 
-        CookieManagerGetAllCookiesWithAccessSemanticsResponseParamsForwardToCallback(CookieManager.GetAllCookiesWithAccessSemanticsResponse callback) {
+        CookieManagerGetAllCookiesWithAccessSemanticsResponseParamsForwardToCallback(CookieManager.GetAllCookiesWithAccessSemantics_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1101,7 +1177,7 @@ SetStorageAccessGrantSettingsResponse callback) {
         }
     }
 
-    static class CookieManagerGetAllCookiesWithAccessSemanticsResponseParamsProxyToResponder implements CookieManager.GetAllCookiesWithAccessSemanticsResponse {
+    static class CookieManagerGetAllCookiesWithAccessSemanticsResponseParamsProxyToResponder implements CookieManager.GetAllCookiesWithAccessSemantics_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1140,11 +1216,12 @@ SetStorageAccessGrantSettingsResponse callback) {
     
     static final class CookieManagerGetCookieListParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public org.chromium.url.mojom.Url url;
         public CookieOptions cookieOptions;
+        public CookiePartitionKeyCollection cookiePartitionKeyCollection;
 
         private CookieManagerGetCookieListParams(int version) {
             super(STRUCT_SIZE, version);
@@ -1189,6 +1266,11 @@ SetStorageAccessGrantSettingsResponse callback) {
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
                     result.cookieOptions = CookieOptions.decode(decoder1);
                     }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
+                    result.cookiePartitionKeyCollection = CookiePartitionKeyCollection.decode(decoder1);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -1204,6 +1286,8 @@ SetStorageAccessGrantSettingsResponse callback) {
             encoder0.encode(this.url, 8, false);
             
             encoder0.encode(this.cookieOptions, 16, false);
+            
+            encoder0.encode(this.cookiePartitionKeyCollection, 24, false);
         }
     }
 
@@ -1313,9 +1397,9 @@ SetStorageAccessGrantSettingsResponse callback) {
 
     static class CookieManagerGetCookieListResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CookieManager.GetCookieListResponse mCallback;
+        private final CookieManager.GetCookieList_Response mCallback;
 
-        CookieManagerGetCookieListResponseParamsForwardToCallback(CookieManager.GetCookieListResponse callback) {
+        CookieManagerGetCookieListResponseParamsForwardToCallback(CookieManager.GetCookieList_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1340,7 +1424,7 @@ SetStorageAccessGrantSettingsResponse callback) {
         }
     }
 
-    static class CookieManagerGetCookieListResponseParamsProxyToResponder implements CookieManager.GetCookieListResponse {
+    static class CookieManagerGetCookieListResponseParamsProxyToResponder implements CookieManager.GetCookieList_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1520,9 +1604,9 @@ SetStorageAccessGrantSettingsResponse callback) {
 
     static class CookieManagerSetCanonicalCookieResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CookieManager.SetCanonicalCookieResponse mCallback;
+        private final CookieManager.SetCanonicalCookie_Response mCallback;
 
-        CookieManagerSetCanonicalCookieResponseParamsForwardToCallback(CookieManager.SetCanonicalCookieResponse callback) {
+        CookieManagerSetCanonicalCookieResponseParamsForwardToCallback(CookieManager.SetCanonicalCookie_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1547,7 +1631,7 @@ SetStorageAccessGrantSettingsResponse callback) {
         }
     }
 
-    static class CookieManagerSetCanonicalCookieResponseParamsProxyToResponder implements CookieManager.SetCanonicalCookieResponse {
+    static class CookieManagerSetCanonicalCookieResponseParamsProxyToResponder implements CookieManager.SetCanonicalCookie_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1708,9 +1792,9 @@ SetStorageAccessGrantSettingsResponse callback) {
 
     static class CookieManagerDeleteCanonicalCookieResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CookieManager.DeleteCanonicalCookieResponse mCallback;
+        private final CookieManager.DeleteCanonicalCookie_Response mCallback;
 
-        CookieManagerDeleteCanonicalCookieResponseParamsForwardToCallback(CookieManager.DeleteCanonicalCookieResponse callback) {
+        CookieManagerDeleteCanonicalCookieResponseParamsForwardToCallback(CookieManager.DeleteCanonicalCookie_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1735,7 +1819,7 @@ SetStorageAccessGrantSettingsResponse callback) {
         }
     }
 
-    static class CookieManagerDeleteCanonicalCookieResponseParamsProxyToResponder implements CookieManager.DeleteCanonicalCookieResponse {
+    static class CookieManagerDeleteCanonicalCookieResponseParamsProxyToResponder implements CookieManager.DeleteCanonicalCookie_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1896,9 +1980,9 @@ SetStorageAccessGrantSettingsResponse callback) {
 
     static class CookieManagerDeleteCookiesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CookieManager.DeleteCookiesResponse mCallback;
+        private final CookieManager.DeleteCookies_Response mCallback;
 
-        CookieManagerDeleteCookiesResponseParamsForwardToCallback(CookieManager.DeleteCookiesResponse callback) {
+        CookieManagerDeleteCookiesResponseParamsForwardToCallback(CookieManager.DeleteCookies_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1923,7 +2007,7 @@ SetStorageAccessGrantSettingsResponse callback) {
         }
     }
 
-    static class CookieManagerDeleteCookiesResponseParamsProxyToResponder implements CookieManager.DeleteCookiesResponse {
+    static class CookieManagerDeleteCookiesResponseParamsProxyToResponder implements CookieManager.DeleteCookies_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1949,6 +2033,186 @@ SetStorageAccessGrantSettingsResponse callback) {
                             mCore,
                             new org.chromium.mojo.bindings.MessageHeader(
                                     DELETE_COOKIES_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class CookieManagerDeleteSessionOnlyCookiesParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private CookieManagerDeleteSessionOnlyCookiesParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public CookieManagerDeleteSessionOnlyCookiesParams() {
+            this(0);
+        }
+
+        public static CookieManagerDeleteSessionOnlyCookiesParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static CookieManagerDeleteSessionOnlyCookiesParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static CookieManagerDeleteSessionOnlyCookiesParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            CookieManagerDeleteSessionOnlyCookiesParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new CookieManagerDeleteSessionOnlyCookiesParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+
+
+    
+    static final class CookieManagerDeleteSessionOnlyCookiesResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int numDeleted;
+
+        private CookieManagerDeleteSessionOnlyCookiesResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public CookieManagerDeleteSessionOnlyCookiesResponseParams() {
+            this(0);
+        }
+
+        public static CookieManagerDeleteSessionOnlyCookiesResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static CookieManagerDeleteSessionOnlyCookiesResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static CookieManagerDeleteSessionOnlyCookiesResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            CookieManagerDeleteSessionOnlyCookiesResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new CookieManagerDeleteSessionOnlyCookiesResponseParams(elementsOrVersion);
+                    {
+                        
+                    result.numDeleted = decoder0.readInt(8);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.numDeleted, 8);
+        }
+    }
+
+    static class CookieManagerDeleteSessionOnlyCookiesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final CookieManager.DeleteSessionOnlyCookies_Response mCallback;
+
+        CookieManagerDeleteSessionOnlyCookiesResponseParamsForwardToCallback(CookieManager.DeleteSessionOnlyCookies_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(DELETE_SESSION_ONLY_COOKIES_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                CookieManagerDeleteSessionOnlyCookiesResponseParams response = CookieManagerDeleteSessionOnlyCookiesResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.numDeleted);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class CookieManagerDeleteSessionOnlyCookiesResponseParamsProxyToResponder implements CookieManager.DeleteSessionOnlyCookies_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        CookieManagerDeleteSessionOnlyCookiesResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(Integer numDeleted) {
+            CookieManagerDeleteSessionOnlyCookiesResponseParams _response = new CookieManagerDeleteSessionOnlyCookiesResponseParams();
+
+            _response.numDeleted = numDeleted;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    DELETE_SESSION_ONLY_COOKIES_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);
@@ -2273,9 +2537,9 @@ SetStorageAccessGrantSettingsResponse callback) {
 
     static class CookieManagerFlushCookieStoreResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CookieManager.FlushCookieStoreResponse mCallback;
+        private final CookieManager.FlushCookieStore_Response mCallback;
 
-        CookieManagerFlushCookieStoreResponseParamsForwardToCallback(CookieManager.FlushCookieStoreResponse callback) {
+        CookieManagerFlushCookieStoreResponseParamsForwardToCallback(CookieManager.FlushCookieStore_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2298,7 +2562,7 @@ SetStorageAccessGrantSettingsResponse callback) {
         }
     }
 
-    static class CookieManagerFlushCookieStoreResponseParamsProxyToResponder implements CookieManager.FlushCookieStoreResponse {
+    static class CookieManagerFlushCookieStoreResponseParamsProxyToResponder implements CookieManager.FlushCookieStore_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2456,9 +2720,9 @@ SetStorageAccessGrantSettingsResponse callback) {
 
     static class CookieManagerAllowFileSchemeCookiesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CookieManager.AllowFileSchemeCookiesResponse mCallback;
+        private final CookieManager.AllowFileSchemeCookies_Response mCallback;
 
-        CookieManagerAllowFileSchemeCookiesResponseParamsForwardToCallback(CookieManager.AllowFileSchemeCookiesResponse callback) {
+        CookieManagerAllowFileSchemeCookiesResponseParamsForwardToCallback(CookieManager.AllowFileSchemeCookies_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2483,7 +2747,7 @@ SetStorageAccessGrantSettingsResponse callback) {
         }
     }
 
-    static class CookieManagerAllowFileSchemeCookiesResponseParamsProxyToResponder implements CookieManager.AllowFileSchemeCookiesResponse {
+    static class CookieManagerAllowFileSchemeCookiesResponseParamsProxyToResponder implements CookieManager.AllowFileSchemeCookies_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2932,9 +3196,9 @@ SetStorageAccessGrantSettingsResponse callback) {
 
     static class CookieManagerSetStorageAccessGrantSettingsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CookieManager.SetStorageAccessGrantSettingsResponse mCallback;
+        private final CookieManager.SetStorageAccessGrantSettings_Response mCallback;
 
-        CookieManagerSetStorageAccessGrantSettingsResponseParamsForwardToCallback(CookieManager.SetStorageAccessGrantSettingsResponse callback) {
+        CookieManagerSetStorageAccessGrantSettingsResponseParamsForwardToCallback(CookieManager.SetStorageAccessGrantSettings_Response callback) {
             this.mCallback = callback;
         }
 
@@ -2957,7 +3221,7 @@ SetStorageAccessGrantSettingsResponse callback) {
         }
     }
 
-    static class CookieManagerSetStorageAccessGrantSettingsResponseParamsProxyToResponder implements CookieManager.SetStorageAccessGrantSettingsResponse {
+    static class CookieManagerSetStorageAccessGrantSettingsResponseParamsProxyToResponder implements CookieManager.SetStorageAccessGrantSettings_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -2984,6 +3248,70 @@ SetStorageAccessGrantSettingsResponse callback) {
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class CookieManagerConvertPartitionedCookiesToUnpartitionedParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.url.mojom.Url url;
+
+        private CookieManagerConvertPartitionedCookiesToUnpartitionedParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public CookieManagerConvertPartitionedCookiesToUnpartitionedParams() {
+            this(0);
+        }
+
+        public static CookieManagerConvertPartitionedCookiesToUnpartitionedParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static CookieManagerConvertPartitionedCookiesToUnpartitionedParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static CookieManagerConvertPartitionedCookiesToUnpartitionedParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            CookieManagerConvertPartitionedCookiesToUnpartitionedParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new CookieManagerConvertPartitionedCookiesToUnpartitionedParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.url = org.chromium.url.mojom.Url.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.url, 8, false);
         }
     }
 

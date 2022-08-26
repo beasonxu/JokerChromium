@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class SecureDnsBridgeJni implements SecureDnsBridge.Natives {
+class SecureDnsBridgeJni implements SecureDnsBridge.Natives {
   private static SecureDnsBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<SecureDnsBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.privacy.secure_dns.SecureDnsBridge.Natives>() {
@@ -45,13 +45,13 @@ final class SecureDnsBridgeJni implements SecureDnsBridge.Natives {
   }
 
   @Override
-  public String getTemplates() {
-    return (String)GEN_JNI.org_chromium_chrome_browser_privacy_secure_1dns_SecureDnsBridge_getTemplates();
+  public String getConfig() {
+    return (String)GEN_JNI.org_chromium_chrome_browser_privacy_secure_1dns_SecureDnsBridge_getConfig();
   }
 
   @Override
-  public boolean setTemplates(String templates) {
-    return (boolean)GEN_JNI.org_chromium_chrome_browser_privacy_secure_1dns_SecureDnsBridge_setTemplates(templates);
+  public boolean setConfig(String config) {
+    return (boolean)GEN_JNI.org_chromium_chrome_browser_privacy_secure_1dns_SecureDnsBridge_setConfig(config);
   }
 
   @Override
@@ -60,8 +60,8 @@ final class SecureDnsBridgeJni implements SecureDnsBridge.Natives {
   }
 
   @Override
-  public void updateDropdownHistograms(String oldTemplate, String newTemplate) {
-    GEN_JNI.org_chromium_chrome_browser_privacy_secure_1dns_SecureDnsBridge_updateDropdownHistograms(oldTemplate, newTemplate);
+  public void updateDropdownHistograms(String oldConfig, String newConfig) {
+    GEN_JNI.org_chromium_chrome_browser_privacy_secure_1dns_SecureDnsBridge_updateDropdownHistograms(oldConfig, newConfig);
   }
 
   @Override
@@ -70,13 +70,8 @@ final class SecureDnsBridgeJni implements SecureDnsBridge.Natives {
   }
 
   @Override
-  public String[] splitTemplateGroup(String group) {
-    return (String[])GEN_JNI.org_chromium_chrome_browser_privacy_secure_1dns_SecureDnsBridge_splitTemplateGroup(group);
-  }
-
-  @Override
-  public boolean probeServer(String dohTemplate) {
-    return (boolean)GEN_JNI.org_chromium_chrome_browser_privacy_secure_1dns_SecureDnsBridge_probeServer(dohTemplate);
+  public boolean probeConfig(String dohConfig) {
+    return (boolean)GEN_JNI.org_chromium_chrome_browser_privacy_secure_1dns_SecureDnsBridge_probeConfig(dohConfig);
   }
 
   public static SecureDnsBridge.Natives get() {

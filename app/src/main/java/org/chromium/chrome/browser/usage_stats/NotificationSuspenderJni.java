@@ -12,7 +12,7 @@ import org.chromium.chrome.browser.profiles.Profile;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class NotificationSuspenderJni implements NotificationSuspender.Natives {
+class NotificationSuspenderJni implements NotificationSuspender.Natives {
   private static NotificationSuspender.Natives testInstance;
 
   public static final JniStaticTestMocker<NotificationSuspender.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.usage_stats.NotificationSuspender.Natives>() {

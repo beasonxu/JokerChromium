@@ -1,7 +1,9 @@
 package org.chromium.content.browser.webcontents;
 
 import android.graphics.Rect;
+import android.view.ViewStructure;
 import java.lang.Override;
+import java.lang.Runnable;
 import java.lang.String;
 import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
@@ -9,7 +11,7 @@ import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.content.browser.RenderWidgetHostViewImpl;
-import org.chromium.content_public.browser.AccessibilitySnapshotCallback;
+import org.chromium.content.browser.accessibility.ViewStructureBuilder;
 import org.chromium.content_public.browser.ImageDownloadCallback;
 import org.chromium.content_public.browser.JavaScriptCallback;
 import org.chromium.content_public.browser.MessagePort;
@@ -23,7 +25,7 @@ import org.chromium.url.GURL;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class WebContentsImplJni implements WebContentsImpl.Natives {
+class WebContentsImplJni implements WebContentsImpl.Natives {
   private static WebContentsImpl.Natives testInstance;
 
   public static final JniStaticTestMocker<WebContentsImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content.browser.webcontents.WebContentsImpl.Natives>() {
@@ -48,30 +50,28 @@ final class WebContentsImplJni implements WebContentsImpl.Natives {
   }
 
   @Override
-  public void clearNativeReference(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_clearNativeReference(nativeWebContentsAndroid, caller);
+  public void clearNativeReference(long nativeWebContentsAndroid) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_clearNativeReference(nativeWebContentsAndroid);
   }
 
   @Override
-  public WindowAndroid getTopLevelNativeWindow(long nativeWebContentsAndroid,
-      WebContentsImpl caller) {
-    return (WindowAndroid)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getTopLevelNativeWindow(nativeWebContentsAndroid, caller);
+  public WindowAndroid getTopLevelNativeWindow(long nativeWebContentsAndroid) {
+    return (WindowAndroid)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getTopLevelNativeWindow(nativeWebContentsAndroid);
   }
 
   @Override
-  public void setTopLevelNativeWindow(long nativeWebContentsAndroid, WebContentsImpl caller,
-      WindowAndroid windowAndroid) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_setTopLevelNativeWindow(nativeWebContentsAndroid, caller, windowAndroid);
+  public void setTopLevelNativeWindow(long nativeWebContentsAndroid, WindowAndroid windowAndroid) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_setTopLevelNativeWindow(nativeWebContentsAndroid, windowAndroid);
   }
 
   @Override
-  public RenderFrameHost getMainFrame(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    return (RenderFrameHost)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getMainFrame(nativeWebContentsAndroid, caller);
+  public RenderFrameHost getMainFrame(long nativeWebContentsAndroid) {
+    return (RenderFrameHost)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getMainFrame(nativeWebContentsAndroid);
   }
 
   @Override
-  public RenderFrameHost getFocusedFrame(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    return (RenderFrameHost)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getFocusedFrame(nativeWebContentsAndroid, caller);
+  public RenderFrameHost getFocusedFrame(long nativeWebContentsAndroid) {
+    return (RenderFrameHost)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getFocusedFrame(nativeWebContentsAndroid);
   }
 
   @Override
@@ -81,21 +81,18 @@ final class WebContentsImplJni implements WebContentsImpl.Natives {
   }
 
   @Override
-  public RenderFrameHost[] getAllRenderFrameHosts(long nativeWebContentsAndroid,
-      WebContentsImpl caller) {
-    return (RenderFrameHost[])GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getAllRenderFrameHosts(nativeWebContentsAndroid, caller);
+  public RenderFrameHost[] getAllRenderFrameHosts(long nativeWebContentsAndroid) {
+    return (RenderFrameHost[])GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getAllRenderFrameHosts(nativeWebContentsAndroid);
   }
 
   @Override
-  public RenderWidgetHostViewImpl getRenderWidgetHostView(long nativeWebContentsAndroid,
-      WebContentsImpl caller) {
-    return (RenderWidgetHostViewImpl)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getRenderWidgetHostView(nativeWebContentsAndroid, caller);
+  public RenderWidgetHostViewImpl getRenderWidgetHostView(long nativeWebContentsAndroid) {
+    return (RenderWidgetHostViewImpl)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getRenderWidgetHostView(nativeWebContentsAndroid);
   }
 
   @Override
-  public WebContentsImpl[] getInnerWebContents(long nativeWebContentsAndroid,
-      WebContentsImpl caller) {
-    return (WebContentsImpl[])GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getInnerWebContents(nativeWebContentsAndroid, caller);
+  public WebContentsImpl[] getInnerWebContents(long nativeWebContentsAndroid) {
+    return (WebContentsImpl[])GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getInnerWebContents(nativeWebContentsAndroid);
   }
 
   @Override
@@ -104,307 +101,296 @@ final class WebContentsImplJni implements WebContentsImpl.Natives {
   }
 
   @Override
-  public String getTitle(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    return (String)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getTitle(nativeWebContentsAndroid, caller);
+  public String getTitle(long nativeWebContentsAndroid) {
+    return (String)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getTitle(nativeWebContentsAndroid);
   }
 
   @Override
-  public GURL getVisibleURL(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    return (GURL)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getVisibleURL(nativeWebContentsAndroid, caller);
+  public GURL getVisibleURL(long nativeWebContentsAndroid) {
+    return (GURL)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getVisibleURL(nativeWebContentsAndroid);
   }
 
   @Override
-  public String getEncoding(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    return (String)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getEncoding(nativeWebContentsAndroid, caller);
+  public String getEncoding(long nativeWebContentsAndroid) {
+    return (String)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getEncoding(nativeWebContentsAndroid);
   }
 
   @Override
-  public boolean isLoading(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    return (boolean)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_isLoading(nativeWebContentsAndroid, caller);
+  public boolean isLoading(long nativeWebContentsAndroid) {
+    return (boolean)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_isLoading(nativeWebContentsAndroid);
   }
 
   @Override
-  public boolean isLoadingToDifferentDocument(long nativeWebContentsAndroid,
-      WebContentsImpl caller) {
-    return (boolean)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_isLoadingToDifferentDocument(nativeWebContentsAndroid, caller);
+  public boolean shouldShowLoadingUI(long nativeWebContentsAndroid) {
+    return (boolean)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_shouldShowLoadingUI(nativeWebContentsAndroid);
   }
 
   @Override
-  public void dispatchBeforeUnload(long nativeWebContentsAndroid, WebContentsImpl caller,
-      boolean autoCancel) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_dispatchBeforeUnload(nativeWebContentsAndroid, caller, autoCancel);
+  public void dispatchBeforeUnload(long nativeWebContentsAndroid, boolean autoCancel) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_dispatchBeforeUnload(nativeWebContentsAndroid, autoCancel);
   }
 
   @Override
-  public void stop(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_stop(nativeWebContentsAndroid, caller);
+  public void stop(long nativeWebContentsAndroid) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_stop(nativeWebContentsAndroid);
   }
 
   @Override
-  public void cut(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_cut(nativeWebContentsAndroid, caller);
+  public void cut(long nativeWebContentsAndroid) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_cut(nativeWebContentsAndroid);
   }
 
   @Override
-  public void copy(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_copy(nativeWebContentsAndroid, caller);
+  public void copy(long nativeWebContentsAndroid) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_copy(nativeWebContentsAndroid);
   }
 
   @Override
-  public void paste(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_paste(nativeWebContentsAndroid, caller);
+  public void paste(long nativeWebContentsAndroid) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_paste(nativeWebContentsAndroid);
   }
 
   @Override
-  public void pasteAsPlainText(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_pasteAsPlainText(nativeWebContentsAndroid, caller);
+  public void pasteAsPlainText(long nativeWebContentsAndroid) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_pasteAsPlainText(nativeWebContentsAndroid);
   }
 
   @Override
-  public void replace(long nativeWebContentsAndroid, WebContentsImpl caller, String word) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_replace(nativeWebContentsAndroid, caller, word);
+  public void replace(long nativeWebContentsAndroid, String word) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_replace(nativeWebContentsAndroid, word);
   }
 
   @Override
-  public void selectAll(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_selectAll(nativeWebContentsAndroid, caller);
+  public void selectAll(long nativeWebContentsAndroid) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_selectAll(nativeWebContentsAndroid);
   }
 
   @Override
-  public void collapseSelection(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_collapseSelection(nativeWebContentsAndroid, caller);
+  public void collapseSelection(long nativeWebContentsAndroid) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_collapseSelection(nativeWebContentsAndroid);
   }
 
   @Override
-  public void onHide(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_onHide(nativeWebContentsAndroid, caller);
+  public void onHide(long nativeWebContentsAndroid) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_onHide(nativeWebContentsAndroid);
   }
 
   @Override
-  public void onShow(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_onShow(nativeWebContentsAndroid, caller);
+  public void onShow(long nativeWebContentsAndroid) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_onShow(nativeWebContentsAndroid);
   }
 
   @Override
-  public void setImportance(long nativeWebContentsAndroid, WebContentsImpl caller, int importance) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_setImportance(nativeWebContentsAndroid, caller, importance);
+  public void setImportance(long nativeWebContentsAndroid, int importance) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_setImportance(nativeWebContentsAndroid, importance);
   }
 
   @Override
-  public void suspendAllMediaPlayers(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_suspendAllMediaPlayers(nativeWebContentsAndroid, caller);
+  public void suspendAllMediaPlayers(long nativeWebContentsAndroid) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_suspendAllMediaPlayers(nativeWebContentsAndroid);
   }
 
   @Override
-  public void setAudioMuted(long nativeWebContentsAndroid, WebContentsImpl caller, boolean mute) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_setAudioMuted(nativeWebContentsAndroid, caller, mute);
+  public void setAudioMuted(long nativeWebContentsAndroid, boolean mute) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_setAudioMuted(nativeWebContentsAndroid, mute);
   }
 
   @Override
-  public boolean focusLocationBarByDefault(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    return (boolean)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_focusLocationBarByDefault(nativeWebContentsAndroid, caller);
+  public boolean focusLocationBarByDefault(long nativeWebContentsAndroid) {
+    return (boolean)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_focusLocationBarByDefault(nativeWebContentsAndroid);
   }
 
   @Override
-  public boolean isFullscreenForCurrentTab(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    return (boolean)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_isFullscreenForCurrentTab(nativeWebContentsAndroid, caller);
+  public boolean isFullscreenForCurrentTab(long nativeWebContentsAndroid) {
+    return (boolean)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_isFullscreenForCurrentTab(nativeWebContentsAndroid);
   }
 
   @Override
-  public void exitFullscreen(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_exitFullscreen(nativeWebContentsAndroid, caller);
+  public void exitFullscreen(long nativeWebContentsAndroid) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_exitFullscreen(nativeWebContentsAndroid);
   }
 
   @Override
-  public void scrollFocusedEditableNodeIntoView(long nativeWebContentsAndroid,
-      WebContentsImpl caller) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_scrollFocusedEditableNodeIntoView(nativeWebContentsAndroid, caller);
+  public void scrollFocusedEditableNodeIntoView(long nativeWebContentsAndroid) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_scrollFocusedEditableNodeIntoView(nativeWebContentsAndroid);
   }
 
   @Override
-  public void selectWordAroundCaret(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_selectWordAroundCaret(nativeWebContentsAndroid, caller);
+  public void selectAroundCaret(long nativeWebContentsAndroid, int granularity,
+      boolean shouldShowHandle, boolean shouldShowContextMenu) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_selectAroundCaret(nativeWebContentsAndroid, granularity, shouldShowHandle, shouldShowContextMenu);
   }
 
   @Override
-  public void adjustSelectionByCharacterOffset(long nativeWebContentsAndroid,
-      WebContentsImpl caller, int startAdjust, int endAdjust, boolean showSelectionMenu) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_adjustSelectionByCharacterOffset(nativeWebContentsAndroid, caller, startAdjust, endAdjust, showSelectionMenu);
+  public void adjustSelectionByCharacterOffset(long nativeWebContentsAndroid, int startAdjust,
+      int endAdjust, boolean showSelectionMenu) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_adjustSelectionByCharacterOffset(nativeWebContentsAndroid, startAdjust, endAdjust, showSelectionMenu);
   }
 
   @Override
-  public GURL getLastCommittedURL(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    return (GURL)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getLastCommittedURL(nativeWebContentsAndroid, caller);
+  public GURL getLastCommittedURL(long nativeWebContentsAndroid) {
+    return (GURL)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getLastCommittedURL(nativeWebContentsAndroid);
   }
 
   @Override
-  public boolean isIncognito(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    return (boolean)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_isIncognito(nativeWebContentsAndroid, caller);
+  public boolean isIncognito(long nativeWebContentsAndroid) {
+    return (boolean)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_isIncognito(nativeWebContentsAndroid);
   }
 
   @Override
-  public void resumeLoadingCreatedWebContents(long nativeWebContentsAndroid,
-      WebContentsImpl caller) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_resumeLoadingCreatedWebContents(nativeWebContentsAndroid, caller);
+  public void resumeLoadingCreatedWebContents(long nativeWebContentsAndroid) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_resumeLoadingCreatedWebContents(nativeWebContentsAndroid);
   }
 
   @Override
-  public void evaluateJavaScript(long nativeWebContentsAndroid, WebContentsImpl caller,
-      String script, JavaScriptCallback callback) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_evaluateJavaScript(nativeWebContentsAndroid, caller, script, callback);
+  public void evaluateJavaScript(long nativeWebContentsAndroid, String script,
+      JavaScriptCallback callback) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_evaluateJavaScript(nativeWebContentsAndroid, script, callback);
   }
 
   @Override
-  public void evaluateJavaScriptForTests(long nativeWebContentsAndroid, WebContentsImpl caller,
-      String script, JavaScriptCallback callback) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_evaluateJavaScriptForTests(nativeWebContentsAndroid, caller, script, callback);
+  public void evaluateJavaScriptForTests(long nativeWebContentsAndroid, String script,
+      JavaScriptCallback callback) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_evaluateJavaScriptForTests(nativeWebContentsAndroid, script, callback);
   }
 
   @Override
-  public void addMessageToDevToolsConsole(long nativeWebContentsAndroid, WebContentsImpl caller,
-      int level, String message) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_addMessageToDevToolsConsole(nativeWebContentsAndroid, caller, level, message);
+  public void addMessageToDevToolsConsole(long nativeWebContentsAndroid, int level,
+      String message) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_addMessageToDevToolsConsole(nativeWebContentsAndroid, level, message);
   }
 
   @Override
-  public void postMessageToMainFrame(long nativeWebContentsAndroid, WebContentsImpl caller,
-      String message, String sourceOrigin, String targetOrigin, MessagePort[] ports) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_postMessageToMainFrame(nativeWebContentsAndroid, caller, message, sourceOrigin, targetOrigin, ports);
+  public void postMessageToMainFrame(long nativeWebContentsAndroid, String message,
+      String sourceOrigin, String targetOrigin, MessagePort[] ports) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_postMessageToMainFrame(nativeWebContentsAndroid, message, sourceOrigin, targetOrigin, ports);
   }
 
   @Override
-  public boolean hasAccessedInitialDocument(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    return (boolean)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_hasAccessedInitialDocument(nativeWebContentsAndroid, caller);
+  public boolean hasAccessedInitialDocument(long nativeWebContentsAndroid) {
+    return (boolean)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_hasAccessedInitialDocument(nativeWebContentsAndroid);
   }
 
   @Override
-  public int getThemeColor(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    return (int)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getThemeColor(nativeWebContentsAndroid, caller);
+  public int getThemeColor(long nativeWebContentsAndroid) {
+    return (int)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getThemeColor(nativeWebContentsAndroid);
   }
 
   @Override
-  public float getLoadProgress(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    return (float)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getLoadProgress(nativeWebContentsAndroid, caller);
+  public float getLoadProgress(long nativeWebContentsAndroid) {
+    return (float)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getLoadProgress(nativeWebContentsAndroid);
   }
 
   @Override
-  public void requestSmartClipExtract(long nativeWebContentsAndroid, WebContentsImpl caller,
+  public void requestSmartClipExtract(long nativeWebContentsAndroid,
       WebContentsImpl.SmartClipCallback callback, int x, int y, int width, int height) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_requestSmartClipExtract(nativeWebContentsAndroid, caller, callback, x, y, width, height);
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_requestSmartClipExtract(nativeWebContentsAndroid, callback, x, y, width, height);
   }
 
   @Override
-  public void requestAccessibilitySnapshot(long nativeWebContentsAndroid, WebContentsImpl caller,
-      AccessibilitySnapshotCallback callback) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_requestAccessibilitySnapshot(nativeWebContentsAndroid, caller, callback);
+  public void requestAccessibilitySnapshot(long nativeWebContentsAndroid,
+      ViewStructure viewStructureRoot, ViewStructureBuilder viewStructureBuilder,
+      Runnable doneCallback) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_requestAccessibilitySnapshot(nativeWebContentsAndroid, viewStructureRoot, viewStructureBuilder, doneCallback);
   }
 
   @Override
-  public void setOverscrollRefreshHandler(long nativeWebContentsAndroid, WebContentsImpl caller,
+  public void setOverscrollRefreshHandler(long nativeWebContentsAndroid,
       OverscrollRefreshHandler nativeOverscrollRefreshHandler) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_setOverscrollRefreshHandler(nativeWebContentsAndroid, caller, nativeOverscrollRefreshHandler);
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_setOverscrollRefreshHandler(nativeWebContentsAndroid, nativeOverscrollRefreshHandler);
   }
 
   @Override
-  public void setSpatialNavigationDisabled(long nativeWebContentsAndroid, WebContentsImpl caller,
-      boolean disabled) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_setSpatialNavigationDisabled(nativeWebContentsAndroid, caller, disabled);
+  public void setSpatialNavigationDisabled(long nativeWebContentsAndroid, boolean disabled) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_setSpatialNavigationDisabled(nativeWebContentsAndroid, disabled);
   }
 
   @Override
-  public int downloadImage(long nativeWebContentsAndroid, WebContentsImpl caller, String url,
-      boolean isFavicon, int maxBitmapSize, boolean bypassCache, ImageDownloadCallback callback) {
-    return (int)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_downloadImage(nativeWebContentsAndroid, caller, url, isFavicon, maxBitmapSize, bypassCache, callback);
+  public int downloadImage(long nativeWebContentsAndroid, GURL url, boolean isFavicon,
+      int maxBitmapSize, boolean bypassCache, ImageDownloadCallback callback) {
+    return (int)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_downloadImage(nativeWebContentsAndroid, url, isFavicon, maxBitmapSize, bypassCache, callback);
   }
 
   @Override
-  public void setHasPersistentVideo(long nativeWebContentsAndroid, WebContentsImpl caller,
-      boolean value) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_setHasPersistentVideo(nativeWebContentsAndroid, caller, value);
+  public void setHasPersistentVideo(long nativeWebContentsAndroid, boolean value) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_setHasPersistentVideo(nativeWebContentsAndroid, value);
   }
 
   @Override
-  public boolean hasActiveEffectivelyFullscreenVideo(long nativeWebContentsAndroid,
-      WebContentsImpl caller) {
-    return (boolean)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_hasActiveEffectivelyFullscreenVideo(nativeWebContentsAndroid, caller);
+  public boolean hasActiveEffectivelyFullscreenVideo(long nativeWebContentsAndroid) {
+    return (boolean)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_hasActiveEffectivelyFullscreenVideo(nativeWebContentsAndroid);
   }
 
   @Override
-  public boolean isPictureInPictureAllowedForFullscreenVideo(long nativeWebContentsAndroid,
-      WebContentsImpl caller) {
-    return (boolean)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_isPictureInPictureAllowedForFullscreenVideo(nativeWebContentsAndroid, caller);
+  public boolean isPictureInPictureAllowedForFullscreenVideo(long nativeWebContentsAndroid) {
+    return (boolean)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_isPictureInPictureAllowedForFullscreenVideo(nativeWebContentsAndroid);
   }
 
   @Override
-  public Rect getFullscreenVideoSize(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    return (Rect)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getFullscreenVideoSize(nativeWebContentsAndroid, caller);
+  public Rect getFullscreenVideoSize(long nativeWebContentsAndroid) {
+    return (Rect)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getFullscreenVideoSize(nativeWebContentsAndroid);
   }
 
   @Override
-  public void setSize(long nativeWebContentsAndroid, WebContentsImpl caller, int width,
-      int height) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_setSize(nativeWebContentsAndroid, caller, width, height);
+  public void setSize(long nativeWebContentsAndroid, int width, int height) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_setSize(nativeWebContentsAndroid, width, height);
   }
 
   @Override
-  public int getWidth(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    return (int)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getWidth(nativeWebContentsAndroid, caller);
+  public int getWidth(long nativeWebContentsAndroid) {
+    return (int)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getWidth(nativeWebContentsAndroid);
   }
 
   @Override
-  public int getHeight(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    return (int)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getHeight(nativeWebContentsAndroid, caller);
+  public int getHeight(long nativeWebContentsAndroid) {
+    return (int)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getHeight(nativeWebContentsAndroid);
   }
 
   @Override
-  public EventForwarder getOrCreateEventForwarder(long nativeWebContentsAndroid,
-      WebContentsImpl caller) {
-    return (EventForwarder)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getOrCreateEventForwarder(nativeWebContentsAndroid, caller);
+  public EventForwarder getOrCreateEventForwarder(long nativeWebContentsAndroid) {
+    return (EventForwarder)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_getOrCreateEventForwarder(nativeWebContentsAndroid);
   }
 
   @Override
-  public void setViewAndroidDelegate(long nativeWebContentsAndroid, WebContentsImpl caller,
+  public void setViewAndroidDelegate(long nativeWebContentsAndroid,
       ViewAndroidDelegate viewDelegate) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_setViewAndroidDelegate(nativeWebContentsAndroid, caller, viewDelegate);
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_setViewAndroidDelegate(nativeWebContentsAndroid, viewDelegate);
   }
 
   @Override
-  public void sendOrientationChangeEvent(long nativeWebContentsAndroid, WebContentsImpl caller,
-      int orientation) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_sendOrientationChangeEvent(nativeWebContentsAndroid, caller, orientation);
+  public void sendOrientationChangeEvent(long nativeWebContentsAndroid, int orientation) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_sendOrientationChangeEvent(nativeWebContentsAndroid, orientation);
   }
 
   @Override
-  public void onScaleFactorChanged(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_onScaleFactorChanged(nativeWebContentsAndroid, caller);
+  public void onScaleFactorChanged(long nativeWebContentsAndroid) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_onScaleFactorChanged(nativeWebContentsAndroid);
   }
 
   @Override
-  public void setFocus(long nativeWebContentsAndroid, WebContentsImpl caller, boolean focused) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_setFocus(nativeWebContentsAndroid, caller, focused);
+  public void setFocus(long nativeWebContentsAndroid, boolean focused) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_setFocus(nativeWebContentsAndroid, focused);
   }
 
   @Override
-  public void setDisplayCutoutSafeArea(long nativeWebContentsAndroid, WebContentsImpl caller,
-      int top, int left, int bottom, int right) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_setDisplayCutoutSafeArea(nativeWebContentsAndroid, caller, top, left, bottom, right);
+  public void setDisplayCutoutSafeArea(long nativeWebContentsAndroid, int top, int left, int bottom,
+      int right) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_setDisplayCutoutSafeArea(nativeWebContentsAndroid, top, left, bottom, right);
   }
 
   @Override
-  public void notifyRendererPreferenceUpdate(long nativeWebContentsAndroid,
-      WebContentsImpl caller) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_notifyRendererPreferenceUpdate(nativeWebContentsAndroid, caller);
+  public void notifyRendererPreferenceUpdate(long nativeWebContentsAndroid) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_notifyRendererPreferenceUpdate(nativeWebContentsAndroid);
   }
 
   @Override
-  public void notifyBrowserControlsHeightChanged(long nativeWebContentsAndroid,
-      WebContentsImpl caller) {
-    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_notifyBrowserControlsHeightChanged(nativeWebContentsAndroid, caller);
+  public void notifyBrowserControlsHeightChanged(long nativeWebContentsAndroid) {
+    GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_notifyBrowserControlsHeightChanged(nativeWebContentsAndroid);
   }
 
   @Override
-  public boolean isBeingDestroyed(long nativeWebContentsAndroid, WebContentsImpl caller) {
-    return (boolean)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_isBeingDestroyed(nativeWebContentsAndroid, caller);
+  public boolean isBeingDestroyed(long nativeWebContentsAndroid) {
+    return (boolean)GEN_JNI.org_chromium_content_browser_webcontents_WebContentsImpl_isBeingDestroyed(nativeWebContentsAndroid);
   }
 
   public static WebContentsImpl.Natives get() {

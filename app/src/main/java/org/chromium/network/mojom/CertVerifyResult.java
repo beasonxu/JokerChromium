@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class CertVerifyResult extends org.chromium.mojo.bindings.Struct {
 

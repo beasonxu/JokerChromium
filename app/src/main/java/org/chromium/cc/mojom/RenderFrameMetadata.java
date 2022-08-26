@@ -13,14 +13,16 @@
 
 package org.chromium.cc.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class RenderFrameMetadata extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 120;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(120, 0)};
+    private static final int STRUCT_SIZE = 136;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(136, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int rootBackgroundColor;
-    public org.chromium.gfx.mojom.Vector2dF rootScrollOffset;
+    public org.chromium.gfx.mojom.PointF rootScrollOffset;
     public boolean isScrollOffsetAtTop;
     public org.chromium.viz.mojom.Selection selection;
     public boolean isMobileOptimized;
@@ -33,6 +35,8 @@ public final class RenderFrameMetadata extends org.chromium.mojo.bindings.Struct
     public float topControlsHeight;
     public float topControlsShownRatio;
     public int newVerticalScrollDirection;
+    public org.chromium.mojo_base.mojom.TimeDelta previousSurfacesVisualUpdateDuration;
+    public org.chromium.mojo_base.mojom.TimeDelta currentSurfaceVisualUpdateDuration;
     public float bottomControlsHeight;
     public float bottomControlsShownRatio;
     public float topControlsMinHeightOffset;
@@ -100,7 +104,7 @@ public final class RenderFrameMetadata extends org.chromium.mojo.bindings.Struct
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, true);
-                result.rootScrollOffset = org.chromium.gfx.mojom.Vector2dF.decode(decoder1);
+                result.rootScrollOffset = org.chromium.gfx.mojom.PointF.decode(decoder1);
                 }
                 {
                     
@@ -150,36 +154,46 @@ public final class RenderFrameMetadata extends org.chromium.mojo.bindings.Struct
                 }
                 {
                     
-                result.bottomControlsHeight = decoder0.readFloat(80);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(80, false);
+                result.previousSurfacesVisualUpdateDuration = org.chromium.mojo_base.mojom.TimeDelta.decode(decoder1);
                 }
                 {
                     
-                result.bottomControlsShownRatio = decoder0.readFloat(84);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(88, false);
+                result.currentSurfaceVisualUpdateDuration = org.chromium.mojo_base.mojom.TimeDelta.decode(decoder1);
                 }
                 {
                     
-                result.topControlsMinHeightOffset = decoder0.readFloat(88);
+                result.bottomControlsHeight = decoder0.readFloat(96);
                 }
                 {
                     
-                result.bottomControlsMinHeightOffset = decoder0.readFloat(92);
+                result.bottomControlsShownRatio = decoder0.readFloat(100);
                 }
                 {
                     
-                result.minPageScaleFactor = decoder0.readFloat(96);
+                result.topControlsMinHeightOffset = decoder0.readFloat(104);
                 }
                 {
                     
-                result.maxPageScaleFactor = decoder0.readFloat(100);
+                result.bottomControlsMinHeightOffset = decoder0.readFloat(108);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(104, false);
+                result.minPageScaleFactor = decoder0.readFloat(112);
+                }
+                {
+                    
+                result.maxPageScaleFactor = decoder0.readFloat(116);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(120, false);
                 result.scrollableViewportSize = org.chromium.gfx.mojom.SizeF.decode(decoder1);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(112, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(128, false);
                 result.rootLayerSize = org.chromium.gfx.mojom.SizeF.decode(decoder1);
                 }
 
@@ -226,20 +240,24 @@ public final class RenderFrameMetadata extends org.chromium.mojo.bindings.Struct
         
         encoder0.encode(this.newVerticalScrollDirection, 76);
         
-        encoder0.encode(this.bottomControlsHeight, 80);
+        encoder0.encode(this.previousSurfacesVisualUpdateDuration, 80, false);
         
-        encoder0.encode(this.bottomControlsShownRatio, 84);
+        encoder0.encode(this.currentSurfaceVisualUpdateDuration, 88, false);
         
-        encoder0.encode(this.topControlsMinHeightOffset, 88);
+        encoder0.encode(this.bottomControlsHeight, 96);
         
-        encoder0.encode(this.bottomControlsMinHeightOffset, 92);
+        encoder0.encode(this.bottomControlsShownRatio, 100);
         
-        encoder0.encode(this.minPageScaleFactor, 96);
+        encoder0.encode(this.topControlsMinHeightOffset, 104);
         
-        encoder0.encode(this.maxPageScaleFactor, 100);
+        encoder0.encode(this.bottomControlsMinHeightOffset, 108);
         
-        encoder0.encode(this.scrollableViewportSize, 104, false);
+        encoder0.encode(this.minPageScaleFactor, 112);
         
-        encoder0.encode(this.rootLayerSize, 112, false);
+        encoder0.encode(this.maxPageScaleFactor, 116);
+        
+        encoder0.encode(this.scrollableViewportSize, 120, false);
+        
+        encoder0.encode(this.rootLayerSize, 128, false);
     }
 }

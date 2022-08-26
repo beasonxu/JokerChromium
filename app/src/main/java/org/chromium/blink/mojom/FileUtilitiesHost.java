@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface FileUtilitiesHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface FileUtilitiesHost extends org.chromium.mojo.bindings.Interface 
 
     Manager<FileUtilitiesHost, FileUtilitiesHost.Proxy> MANAGER = FileUtilitiesHost_Internal.MANAGER;
 
-
     void getFileInfo(
 org.chromium.mojo_base.mojom.FilePath path, 
-GetFileInfoResponse callback);
+GetFileInfo_Response callback);
 
-    interface GetFileInfoResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.FileInfo> { }
+    interface GetFileInfo_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.FileInfo> { }
 
 
 }

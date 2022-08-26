@@ -1,5 +1,5 @@
 
-// Copyright 2021 The Chromium Authors. All rights reserved.
+// Copyright 2022 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -23,7 +23,7 @@ import java.lang.annotation.RetentionPolicy;
     ShortcutSource.APP_BANNER_WEBAPK, ShortcutSource.WEBAPK_UNKNOWN,
     ShortcutSource.TRUSTED_WEB_ACTIVITY, ShortcutSource.WEBAPK_SHARE_TARGET,
     ShortcutSource.EXTERNAL_INTENT_FROM_CHROME, ShortcutSource.WEBAPK_SHARE_TARGET_FILE,
-    ShortcutSource.COUNT
+    ShortcutSource.CHROME_SERVICE, ShortcutSource.COUNT
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface ShortcutSource {
@@ -79,5 +79,10 @@ public @interface ShortcutSource {
    * Used for WebAPK intents received as a result of binary file sharing events.
    */
   int WEBAPK_SHARE_TARGET_FILE = 15;
-  int COUNT = 16;
+  /**
+   * Used for WebAPKs added by the Chrome Android service after the install was requested by another
+   * app.
+   */
+  int CHROME_SERVICE = 16;
+  int COUNT = 17;
 }

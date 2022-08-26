@@ -13,8 +13,17 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class FileSystemType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        FileSystemType.TEMPORARY,
+        FileSystemType.PERSISTENT,
+        FileSystemType.ISOLATED,
+        FileSystemType.EXTERNAL})
+    public @interface EnumType {}
 
     public static final int TEMPORARY = 0;
     public static final int PERSISTENT = 1;

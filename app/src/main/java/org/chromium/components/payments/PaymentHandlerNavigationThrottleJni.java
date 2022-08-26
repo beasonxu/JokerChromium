@@ -10,7 +10,7 @@ import org.chromium.content_public.browser.WebContents;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class PaymentHandlerNavigationThrottleJni implements PaymentHandlerNavigationThrottle.Natives {
+class PaymentHandlerNavigationThrottleJni implements PaymentHandlerNavigationThrottle.Natives {
   private static PaymentHandlerNavigationThrottle.Natives testInstance;
 
   public static final JniStaticTestMocker<PaymentHandlerNavigationThrottle.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.payments.PaymentHandlerNavigationThrottle.Natives>() {

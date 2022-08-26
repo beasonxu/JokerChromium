@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface CacheStorage extends org.chromium.mojo.bindings.Interface {
 
@@ -23,44 +25,39 @@ public interface CacheStorage extends org.chromium.mojo.bindings.Interface {
 
     Manager<CacheStorage, CacheStorage.Proxy> MANAGER = CacheStorage_Internal.MANAGER;
 
-
     void has(
 org.chromium.mojo_base.mojom.String16 cacheName, long traceId, 
-HasResponse callback);
+Has_Response callback);
 
-    interface HasResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface Has_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void delete(
 org.chromium.mojo_base.mojom.String16 cacheName, long traceId, 
-DeleteResponse callback);
+Delete_Response callback);
 
-    interface DeleteResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface Delete_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void keys(
 long traceId, 
-KeysResponse callback);
+Keys_Response callback);
 
-    interface KeysResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.String16[]> { }
-
+    interface Keys_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.String16[]> { }
 
 
     void match(
-FetchApiRequest request, MultiCacheQueryOptions matchOptions, boolean inRelatedFetchEvent, long traceId, 
-MatchResponse callback);
+FetchApiRequest request, MultiCacheQueryOptions matchOptions, boolean inRelatedFetchEvent, boolean inRangeFetchEvent, long traceId, 
+Match_Response callback);
 
-    interface MatchResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<MatchResult> { }
-
+    interface Match_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<MatchResult> { }
 
 
     void open(
 org.chromium.mojo_base.mojom.String16 cacheName, long traceId, 
-OpenResponse callback);
+Open_Response callback);
 
-    interface OpenResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<OpenResult> { }
+    interface Open_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<OpenResult> { }
 
 
 }

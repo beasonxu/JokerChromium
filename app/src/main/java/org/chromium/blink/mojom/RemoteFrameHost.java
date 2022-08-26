@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface RemoteFrameHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,74 +25,64 @@ public interface RemoteFrameHost extends org.chromium.mojo.bindings.Interface {
 
     Manager<RemoteFrameHost, RemoteFrameHost.Proxy> MANAGER = RemoteFrameHost_Internal.MANAGER;
 
-
     void setInheritedEffectiveTouchAction(
 int touchAction);
-
 
 
     void updateRenderThrottlingStatus(
 boolean isThrottled, boolean subtreeThrottled, boolean displayLocked);
 
 
-
     void visibilityChanged(
 int visibility);
-
 
 
     void didFocusFrame(
 );
 
 
-
     void checkCompleted(
 );
-
 
 
     void capturePaintPreviewOfCrossProcessSubframe(
 org.chromium.gfx.mojom.Rect clipRect, org.chromium.mojo_base.mojom.UnguessableToken guid);
 
 
-
     void setIsInert(
 boolean inert);
-
 
 
     void didChangeOpener(
 LocalFrameToken openerFrame);
 
 
-
     void advanceFocus(
 int focusType, LocalFrameToken sourceFrameToken);
-
 
 
     void routeMessageEvent(
 LocalFrameToken sourceFrameToken, org.chromium.mojo_base.mojom.String16 sourceOrigin, org.chromium.mojo_base.mojom.String16 targetOrigin, TransferableMessage message);
 
 
-
     void printCrossProcessSubframe(
 org.chromium.gfx.mojom.Rect frameContentRect, int documentCookie);
-
 
 
     void detach(
 );
 
 
-
     void updateViewportIntersection(
 ViewportIntersectionState intersectionState, FrameVisualProperties visualProperties);
 
 
-
     void synchronizeVisualProperties(
 FrameVisualProperties properties);
+
+
+    void openUrl(
+OpenUrlParams params);
 
 
 }

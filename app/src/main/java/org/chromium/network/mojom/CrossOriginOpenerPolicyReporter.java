@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface CrossOriginOpenerPolicyReporter extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface CrossOriginOpenerPolicyReporter extends org.chromium.mojo.bindi
     }
 
     Manager<CrossOriginOpenerPolicyReporter, CrossOriginOpenerPolicyReporter.Proxy> MANAGER = CrossOriginOpenerPolicyReporter_Internal.MANAGER;
-
 
     void queueAccessReport(
 int reportType, String property, SourceLocation sourceLocation, String reportedWindowUrl);

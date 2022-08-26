@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface DateTimeChooser extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,15 @@ public interface DateTimeChooser extends org.chromium.mojo.bindings.Interface {
 
     Manager<DateTimeChooser, DateTimeChooser.Proxy> MANAGER = DateTimeChooser_Internal.MANAGER;
 
-
     void openDateTimeDialog(
 DateTimeDialogValue value, 
-OpenDateTimeDialogResponse callback);
+OpenDateTimeDialog_Response callback);
 
-    interface OpenDateTimeDialogResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Boolean, Double> { }
+    interface OpenDateTimeDialog_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Boolean, Double> { }
+
+
+    void closeDateTimeDialog(
+);
 
 
 }

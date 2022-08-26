@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class CdmStorage_Internal {
 
@@ -61,7 +63,7 @@ class CdmStorage_Internal {
         @Override
         public void open(
 String fileName, 
-OpenResponse callback) {
+Open_Response callback) {
 
             CdmStorageOpenParams _message = new CdmStorageOpenParams();
 
@@ -300,9 +302,9 @@ OpenResponse callback) {
 
     static class CdmStorageOpenResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final CdmStorage.OpenResponse mCallback;
+        private final CdmStorage.Open_Response mCallback;
 
-        CdmStorageOpenResponseParamsForwardToCallback(CdmStorage.OpenResponse callback) {
+        CdmStorageOpenResponseParamsForwardToCallback(CdmStorage.Open_Response callback) {
             this.mCallback = callback;
         }
 
@@ -327,7 +329,7 @@ OpenResponse callback) {
         }
     }
 
-    static class CdmStorageOpenResponseParamsProxyToResponder implements CdmStorage.OpenResponse {
+    static class CdmStorageOpenResponseParamsProxyToResponder implements CdmStorage.Open_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

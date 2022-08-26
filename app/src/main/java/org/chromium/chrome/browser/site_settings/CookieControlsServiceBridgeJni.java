@@ -9,7 +9,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class CookieControlsServiceBridgeJni implements CookieControlsServiceBridge.Natives {
+class CookieControlsServiceBridgeJni implements CookieControlsServiceBridge.Natives {
   private static CookieControlsServiceBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<CookieControlsServiceBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.site_settings.CookieControlsServiceBridge.Natives>() {

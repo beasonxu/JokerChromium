@@ -9,7 +9,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class DistilledPagePrefsJni implements DistilledPagePrefs.Natives {
+class DistilledPagePrefsJni implements DistilledPagePrefs.Natives {
   private static DistilledPagePrefs.Natives testInstance;
 
   public static final JniStaticTestMocker<DistilledPagePrefs.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.dom_distiller.core.DistilledPagePrefs.Natives>() {

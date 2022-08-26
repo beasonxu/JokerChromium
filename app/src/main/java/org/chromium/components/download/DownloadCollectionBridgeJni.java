@@ -9,7 +9,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class DownloadCollectionBridgeJni implements DownloadCollectionBridge.Natives {
+class DownloadCollectionBridgeJni implements DownloadCollectionBridge.Natives {
   private static DownloadCollectionBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<DownloadCollectionBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.download.DownloadCollectionBridge.Natives>() {

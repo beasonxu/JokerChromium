@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class AudioInputStreamClient_Internal {
 
@@ -62,9 +64,11 @@ class AudioInputStreamClient_Internal {
 
         @Override
         public void onError(
-) {
+int code) {
 
             AudioInputStreamClientOnErrorParams _message = new AudioInputStreamClientOnErrorParams();
+
+            _message.code = code;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -125,9 +129,10 @@ boolean isMuted) {
 
                     case ON_ERROR_ORDINAL: {
 
-                        AudioInputStreamClientOnErrorParams.deserialize(messageWithHeader.getPayload());
+                        AudioInputStreamClientOnErrorParams data =
+                                AudioInputStreamClientOnErrorParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().onError();
+                        getImpl().onError(data.code);
                         return true;
                     }
 
@@ -192,9 +197,10 @@ boolean isMuted) {
     
     static final class AudioInputStreamClientOnErrorParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 8;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int code;
 
         private AudioInputStreamClientOnErrorParams(int version) {
             super(STRUCT_SIZE, version);
@@ -229,6 +235,12 @@ boolean isMuted) {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
                 result = new AudioInputStreamClientOnErrorParams(elementsOrVersion);
+                    {
+                        
+                    result.code = decoder0.readInt(8);
+                        InputStreamErrorCode.validate(result.code);
+                        result.code = InputStreamErrorCode.toKnownValue(result.code);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -239,7 +251,9 @@ boolean isMuted) {
         @SuppressWarnings("unchecked")
         @Override
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.code, 8);
         }
     }
 

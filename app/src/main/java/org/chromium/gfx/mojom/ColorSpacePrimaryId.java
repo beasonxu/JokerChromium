@@ -13,8 +13,29 @@
 
 package org.chromium.gfx.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ColorSpacePrimaryId {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ColorSpacePrimaryId.INVALID,
+        ColorSpacePrimaryId.BT709,
+        ColorSpacePrimaryId.BT470M,
+        ColorSpacePrimaryId.BT470BG,
+        ColorSpacePrimaryId.SMPTE170M,
+        ColorSpacePrimaryId.SMPTE240M,
+        ColorSpacePrimaryId.FILM,
+        ColorSpacePrimaryId.BT2020,
+        ColorSpacePrimaryId.SMPTEST428_1,
+        ColorSpacePrimaryId.SMPTEST431_2,
+        ColorSpacePrimaryId.P3,
+        ColorSpacePrimaryId.XYZ_D50,
+        ColorSpacePrimaryId.ADOBE_RGB,
+        ColorSpacePrimaryId.APPLE_GENERIC_RGB,
+        ColorSpacePrimaryId.WIDE_GAMUT_COLOR_SPIN,
+        ColorSpacePrimaryId.CUSTOM})
+    public @interface EnumType {}
 
     public static final int INVALID = 0;
     public static final int BT709 = 1;
@@ -26,7 +47,7 @@ public final class ColorSpacePrimaryId {
     public static final int BT2020 = 7;
     public static final int SMPTEST428_1 = 8;
     public static final int SMPTEST431_2 = 9;
-    public static final int SMPTEST432_1 = 10;
+    public static final int P3 = 10;
     public static final int XYZ_D50 = 11;
     public static final int ADOBE_RGB = 12;
     public static final int APPLE_GENERIC_RGB = 13;

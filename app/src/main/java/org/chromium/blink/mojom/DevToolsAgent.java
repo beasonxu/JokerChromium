@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface DevToolsAgent extends org.chromium.mojo.bindings.Interface {
 
@@ -23,22 +25,19 @@ public interface DevToolsAgent extends org.chromium.mojo.bindings.Interface {
 
     Manager<DevToolsAgent, DevToolsAgent.Proxy> MANAGER = DevToolsAgent_Internal.MANAGER;
 
-
     void attachDevToolsSession(
-org.chromium.mojo.bindings.AssociatedInterfaceNotSupported host, org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported session, org.chromium.mojo.bindings.InterfaceRequest<DevToolsSession> ioSession, DevToolsSessionState reattachSessionState, boolean clientExpectsBinaryResponses, String sessionId);
-
+org.chromium.mojo.bindings.AssociatedInterfaceNotSupported host, org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported session, org.chromium.mojo.bindings.InterfaceRequest<DevToolsSession> ioSession, DevToolsSessionState reattachSessionState, boolean clientExpectsBinaryResponses, boolean clientIsTrusted, String sessionId);
 
 
     void inspectElement(
 org.chromium.gfx.mojom.Point point);
 
 
-
-    void reportChildWorkers(
+    void reportChildTargets(
 boolean report, boolean waitForDebugger, 
-ReportChildWorkersResponse callback);
+ReportChildTargets_Response callback);
 
-    interface ReportChildWorkersResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
+    interface ReportChildTargets_Response extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
 }

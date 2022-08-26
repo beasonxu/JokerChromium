@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface PresentationConnection extends org.chromium.mojo.bindings.Interface {
 
@@ -23,15 +25,12 @@ public interface PresentationConnection extends org.chromium.mojo.bindings.Inter
 
     Manager<PresentationConnection, PresentationConnection.Proxy> MANAGER = PresentationConnection_Internal.MANAGER;
 
-
     void onMessage(
 PresentationConnectionMessage message);
 
 
-
     void didChangeState(
 int state);
-
 
 
     void didClose(

@@ -13,8 +13,15 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class DefaultCredentials {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        DefaultCredentials.DISALLOW_DEFAULT_CREDENTIALS,
+        DefaultCredentials.ALLOW_DEFAULT_CREDENTIALS})
+    public @interface EnumType {}
 
     public static final int DISALLOW_DEFAULT_CREDENTIALS = 0;
     public static final int ALLOW_DEFAULT_CREDENTIALS = 1;

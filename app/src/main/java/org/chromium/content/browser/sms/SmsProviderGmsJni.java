@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class SmsProviderGmsJni implements SmsProviderGms.Natives {
+class SmsProviderGmsJni implements SmsProviderGms.Natives {
   private static SmsProviderGms.Natives testInstance;
 
   public static final JniStaticTestMocker<SmsProviderGms.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content.browser.sms.SmsProviderGms.Natives>() {

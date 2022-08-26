@@ -13,6 +13,8 @@
 
 package org.chromium.media_session.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class AudioFocusManagerDebug_Internal {
 
@@ -61,7 +63,7 @@ class AudioFocusManagerDebug_Internal {
         @Override
         public void getDebugInfoForRequest(
 org.chromium.mojo_base.mojom.UnguessableToken requestId, 
-GetDebugInfoForRequestResponse callback) {
+GetDebugInfoForRequest_Response callback) {
 
             AudioFocusManagerDebugGetDebugInfoForRequestParams _message = new AudioFocusManagerDebugGetDebugInfoForRequestParams();
 
@@ -293,9 +295,9 @@ GetDebugInfoForRequestResponse callback) {
 
     static class AudioFocusManagerDebugGetDebugInfoForRequestResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final AudioFocusManagerDebug.GetDebugInfoForRequestResponse mCallback;
+        private final AudioFocusManagerDebug.GetDebugInfoForRequest_Response mCallback;
 
-        AudioFocusManagerDebugGetDebugInfoForRequestResponseParamsForwardToCallback(AudioFocusManagerDebug.GetDebugInfoForRequestResponse callback) {
+        AudioFocusManagerDebugGetDebugInfoForRequestResponseParamsForwardToCallback(AudioFocusManagerDebug.GetDebugInfoForRequest_Response callback) {
             this.mCallback = callback;
         }
 
@@ -320,7 +322,7 @@ GetDebugInfoForRequestResponse callback) {
         }
     }
 
-    static class AudioFocusManagerDebugGetDebugInfoForRequestResponseParamsProxyToResponder implements AudioFocusManagerDebug.GetDebugInfoForRequestResponse {
+    static class AudioFocusManagerDebugGetDebugInfoForRequestResponseParamsProxyToResponder implements AudioFocusManagerDebug.GetDebugInfoForRequest_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class ResourceLoadInfoNotifier_Internal {
 
@@ -106,19 +108,17 @@ org.chromium.network.mojom.UrlRequestRedirectInfo redirectInfo, org.chromium.net
 
         @Override
         public void notifyResourceResponseReceived(
-long requestId, org.chromium.url.mojom.Url responseUrl, org.chromium.network.mojom.UrlResponseHead head, int requestDestination, int previewsState) {
+long requestId, org.chromium.url.mojom.SchemeHostPort finalResponseUrl, org.chromium.network.mojom.UrlResponseHead head, int requestDestination) {
 
             ResourceLoadInfoNotifierNotifyResourceResponseReceivedParams _message = new ResourceLoadInfoNotifierNotifyResourceResponseReceivedParams();
 
             _message.requestId = requestId;
 
-            _message.responseUrl = responseUrl;
+            _message.finalResponseUrl = finalResponseUrl;
 
             _message.head = head;
 
             _message.requestDestination = requestDestination;
-
-            _message.previewsState = previewsState;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -262,7 +262,7 @@ org.chromium.mojo.bindings.InterfaceRequest<ResourceLoadInfoNotifier> pendingRes
                         ResourceLoadInfoNotifierNotifyResourceResponseReceivedParams data =
                                 ResourceLoadInfoNotifierNotifyResourceResponseReceivedParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().notifyResourceResponseReceived(data.requestId, data.responseUrl, data.head, data.requestDestination, data.previewsState);
+                        getImpl().notifyResourceResponseReceived(data.requestId, data.finalResponseUrl, data.head, data.requestDestination);
                         return true;
                     }
 
@@ -508,10 +508,9 @@ org.chromium.mojo.bindings.InterfaceRequest<ResourceLoadInfoNotifier> pendingRes
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public long requestId;
-        public org.chromium.url.mojom.Url responseUrl;
+        public org.chromium.url.mojom.SchemeHostPort finalResponseUrl;
         public org.chromium.network.mojom.UrlResponseHead head;
         public int requestDestination;
-        public int previewsState;
 
         private ResourceLoadInfoNotifierNotifyResourceResponseReceivedParams(int version) {
             super(STRUCT_SIZE, version);
@@ -553,7 +552,7 @@ org.chromium.mojo.bindings.InterfaceRequest<ResourceLoadInfoNotifier> pendingRes
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
-                    result.responseUrl = org.chromium.url.mojom.Url.decode(decoder1);
+                    result.finalResponseUrl = org.chromium.url.mojom.SchemeHostPort.decode(decoder1);
                     }
                     {
                         
@@ -565,10 +564,6 @@ org.chromium.mojo.bindings.InterfaceRequest<ResourceLoadInfoNotifier> pendingRes
                     result.requestDestination = decoder0.readInt(32);
                         org.chromium.network.mojom.RequestDestination.validate(result.requestDestination);
                         result.requestDestination = org.chromium.network.mojom.RequestDestination.toKnownValue(result.requestDestination);
-                    }
-                    {
-                        
-                    result.previewsState = decoder0.readInt(36);
                     }
 
             } finally {
@@ -584,13 +579,11 @@ org.chromium.mojo.bindings.InterfaceRequest<ResourceLoadInfoNotifier> pendingRes
             
             encoder0.encode(this.requestId, 8);
             
-            encoder0.encode(this.responseUrl, 16, false);
+            encoder0.encode(this.finalResponseUrl, 16, false);
             
             encoder0.encode(this.head, 24, false);
             
             encoder0.encode(this.requestDestination, 32);
-            
-            encoder0.encode(this.previewsState, 36);
         }
     }
 

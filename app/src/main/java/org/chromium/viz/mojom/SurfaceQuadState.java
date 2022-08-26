@@ -13,14 +13,16 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class SurfaceQuadState extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 24;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+    private static final int STRUCT_SIZE = 32;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public SurfaceRange surfaceRange;
-    public int defaultBackgroundColor;
+    public org.chromium.skia.mojom.SkColor4f defaultBackgroundColor;
     public boolean stretchContentToFillBounds;
     public boolean isReflection;
     public boolean allowMerge;
@@ -65,19 +67,20 @@ public final class SurfaceQuadState extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.defaultBackgroundColor = decoder0.readInt(16);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                result.defaultBackgroundColor = org.chromium.skia.mojom.SkColor4f.decode(decoder1);
                 }
                 {
                     
-                result.stretchContentToFillBounds = decoder0.readBoolean(20, 0);
+                result.stretchContentToFillBounds = decoder0.readBoolean(24, 0);
                 }
                 {
                     
-                result.isReflection = decoder0.readBoolean(20, 1);
+                result.isReflection = decoder0.readBoolean(24, 1);
                 }
                 {
                     
-                result.allowMerge = decoder0.readBoolean(20, 2);
+                result.allowMerge = decoder0.readBoolean(24, 2);
                 }
 
         } finally {
@@ -93,12 +96,12 @@ public final class SurfaceQuadState extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.surfaceRange, 8, false);
         
-        encoder0.encode(this.defaultBackgroundColor, 16);
+        encoder0.encode(this.defaultBackgroundColor, 16, false);
         
-        encoder0.encode(this.stretchContentToFillBounds, 20, 0);
+        encoder0.encode(this.stretchContentToFillBounds, 24, 0);
         
-        encoder0.encode(this.isReflection, 20, 1);
+        encoder0.encode(this.isReflection, 24, 1);
         
-        encoder0.encode(this.allowMerge, 20, 2);
+        encoder0.encode(this.allowMerge, 24, 2);
     }
 }

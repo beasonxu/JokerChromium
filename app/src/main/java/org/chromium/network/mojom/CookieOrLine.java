@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class CookieOrLine extends org.chromium.mojo.bindings.Union {
 

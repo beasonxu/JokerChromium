@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface DisplayCutoutClient extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface DisplayCutoutClient extends org.chromium.mojo.bindings.Interfac
     }
 
     Manager<DisplayCutoutClient, DisplayCutoutClient.Proxy> MANAGER = DisplayCutoutClient_Internal.MANAGER;
-
 
     void setSafeArea(
 DisplayCutoutSafeArea safeArea);

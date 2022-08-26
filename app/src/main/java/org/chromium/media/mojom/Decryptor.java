@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface Decryptor extends org.chromium.mojo.bindings.Interface {
 
@@ -20,6 +22,9 @@ public interface Decryptor extends org.chromium.mojo.bindings.Interface {
 
     public static final class Status {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+    })
+        public @interface EnumType {}
 
 
         public static boolean isKnownValue(int value) {
@@ -41,6 +46,9 @@ public interface Decryptor extends org.chromium.mojo.bindings.Interface {
 
     public static final class StreamType {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+    })
+        public @interface EnumType {}
 
 
         public static boolean isKnownValue(int value) {
@@ -65,60 +73,51 @@ public interface Decryptor extends org.chromium.mojo.bindings.Interface {
 
     Manager<Decryptor, Decryptor.Proxy> MANAGER = Decryptor_Internal.MANAGER;
 
-
     void initialize(
 org.chromium.mojo.system.DataPipe.ConsumerHandle audioPipe, org.chromium.mojo.system.DataPipe.ConsumerHandle videoPipe, org.chromium.mojo.system.DataPipe.ConsumerHandle decryptPipe, org.chromium.mojo.system.DataPipe.ProducerHandle decryptedPipe);
 
 
-
     void decrypt(
 int streamType, DecoderBuffer encrypted, 
-DecryptResponse callback);
+Decrypt_Response callback);
 
-    interface DecryptResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, DecoderBuffer> { }
-
+    interface Decrypt_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, DecoderBuffer> { }
 
 
     void cancelDecrypt(
 int streamType);
 
 
-
     void initializeAudioDecoder(
 AudioDecoderConfig config, 
-InitializeAudioDecoderResponse callback);
+InitializeAudioDecoder_Response callback);
 
-    interface InitializeAudioDecoderResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface InitializeAudioDecoder_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void initializeVideoDecoder(
 VideoDecoderConfig config, 
-InitializeVideoDecoderResponse callback);
+InitializeVideoDecoder_Response callback);
 
-    interface InitializeVideoDecoderResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
-
+    interface InitializeVideoDecoder_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
     void decryptAndDecodeAudio(
 DecoderBuffer encrypted, 
-DecryptAndDecodeAudioResponse callback);
+DecryptAndDecodeAudio_Response callback);
 
-    interface DecryptAndDecodeAudioResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, AudioBuffer[]> { }
-
+    interface DecryptAndDecodeAudio_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, AudioBuffer[]> { }
 
 
     void decryptAndDecodeVideo(
 DecoderBuffer encrypted, 
-DecryptAndDecodeVideoResponse callback);
+DecryptAndDecodeVideo_Response callback);
 
-    interface DecryptAndDecodeVideoResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<Integer, VideoFrame, FrameResourceReleaser> { }
-
+    interface DecryptAndDecodeVideo_Response extends org.chromium.mojo.bindings.Callbacks.Callback3<Integer, VideoFrame, FrameResourceReleaser> { }
 
 
     void resetDecoder(
 int streamType);
-
 
 
     void deinitializeDecoder(

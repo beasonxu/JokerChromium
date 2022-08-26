@@ -13,7 +13,7 @@ import org.chromium.chrome.browser.tab.Tab;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ForeignSessionHelperJni implements ForeignSessionHelper.Natives {
+class ForeignSessionHelperJni implements ForeignSessionHelper.Natives {
   private static ForeignSessionHelper.Natives testInstance;
 
   public static final JniStaticTestMocker<ForeignSessionHelper.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.ntp.ForeignSessionHelper.Natives>() {

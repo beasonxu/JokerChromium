@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class PeerConnectionTrackerHost_Internal {
 
@@ -57,11 +59,15 @@ class PeerConnectionTrackerHost_Internal {
 
     private static final int GET_USER_MEDIA_ORDINAL = 4;
 
-    private static final int WEB_RTC_EVENT_LOG_WRITE_ORDINAL = 5;
+    private static final int GET_USER_MEDIA_SUCCESS_ORDINAL = 5;
 
-    private static final int ADD_STANDARD_STATS_ORDINAL = 6;
+    private static final int GET_USER_MEDIA_FAILURE_ORDINAL = 6;
 
-    private static final int ADD_LEGACY_STATS_ORDINAL = 7;
+    private static final int WEB_RTC_EVENT_LOG_WRITE_ORDINAL = 7;
+
+    private static final int ADD_STANDARD_STATS_ORDINAL = 8;
+
+    private static final int ADD_LEGACY_STATS_ORDINAL = 9;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements PeerConnectionTrackerHost.Proxy {
@@ -148,11 +154,11 @@ int lid, String sessionId) {
 
         @Override
         public void getUserMedia(
-String origin, boolean audio, boolean video, String audioConstraints, String videoConstraints) {
+int requestId, boolean audio, boolean video, String audioConstraints, String videoConstraints) {
 
             PeerConnectionTrackerHostGetUserMediaParams _message = new PeerConnectionTrackerHostGetUserMediaParams();
 
-            _message.origin = origin;
+            _message.requestId = requestId;
 
             _message.audio = audio;
 
@@ -167,6 +173,50 @@ String origin, boolean audio, boolean video, String audioConstraints, String vid
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(GET_USER_MEDIA_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void getUserMediaSuccess(
+int requestId, String streamId, String audioTrackInfo, String videoTrackInfo) {
+
+            PeerConnectionTrackerHostGetUserMediaSuccessParams _message = new PeerConnectionTrackerHostGetUserMediaSuccessParams();
+
+            _message.requestId = requestId;
+
+            _message.streamId = streamId;
+
+            _message.audioTrackInfo = audioTrackInfo;
+
+            _message.videoTrackInfo = videoTrackInfo;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(GET_USER_MEDIA_SUCCESS_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void getUserMediaFailure(
+int requestId, String error, String errorMessage) {
+
+            PeerConnectionTrackerHostGetUserMediaFailureParams _message = new PeerConnectionTrackerHostGetUserMediaFailureParams();
+
+            _message.requestId = requestId;
+
+            _message.error = error;
+
+            _message.errorMessage = errorMessage;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(GET_USER_MEDIA_FAILURE_ORDINAL)));
 
         }
 
@@ -316,7 +366,33 @@ int lid, org.chromium.mojo_base.mojom.ListValue value) {
                         PeerConnectionTrackerHostGetUserMediaParams data =
                                 PeerConnectionTrackerHostGetUserMediaParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().getUserMedia(data.origin, data.audio, data.video, data.audioConstraints, data.videoConstraints);
+                        getImpl().getUserMedia(data.requestId, data.audio, data.video, data.audioConstraints, data.videoConstraints);
+                        return true;
+                    }
+
+
+
+
+
+                    case GET_USER_MEDIA_SUCCESS_ORDINAL: {
+
+                        PeerConnectionTrackerHostGetUserMediaSuccessParams data =
+                                PeerConnectionTrackerHostGetUserMediaSuccessParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().getUserMediaSuccess(data.requestId, data.streamId, data.audioTrackInfo, data.videoTrackInfo);
+                        return true;
+                    }
+
+
+
+
+
+                    case GET_USER_MEDIA_FAILURE_ORDINAL: {
+
+                        PeerConnectionTrackerHostGetUserMediaFailureParams data =
+                                PeerConnectionTrackerHostGetUserMediaFailureParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().getUserMediaFailure(data.requestId, data.error, data.errorMessage);
                         return true;
                     }
 
@@ -387,6 +463,10 @@ int lid, org.chromium.mojo_base.mojom.ListValue value) {
                     case org.chromium.mojo.bindings.interfacecontrol.InterfaceControlMessagesConstants.RUN_MESSAGE_ID:
                         return org.chromium.mojo.bindings.InterfaceControlMessagesHelper.handleRun(
                                 getCore(), PeerConnectionTrackerHost_Internal.MANAGER, messageWithHeader, receiver);
+
+
+
+
 
 
 
@@ -693,10 +773,10 @@ int lid, org.chromium.mojo_base.mojom.ListValue value) {
     
     static final class PeerConnectionTrackerHostGetUserMediaParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 40;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public String origin;
+        public int requestId;
         public boolean audio;
         public boolean video;
         public String audioConstraints;
@@ -737,23 +817,23 @@ int lid, org.chromium.mojo_base.mojom.ListValue value) {
                 result = new PeerConnectionTrackerHostGetUserMediaParams(elementsOrVersion);
                     {
                         
-                    result.origin = decoder0.readString(8, false);
+                    result.requestId = decoder0.readInt(8);
                     }
                     {
                         
-                    result.audio = decoder0.readBoolean(16, 0);
+                    result.audio = decoder0.readBoolean(12, 0);
                     }
                     {
                         
-                    result.video = decoder0.readBoolean(16, 1);
+                    result.video = decoder0.readBoolean(12, 1);
                     }
                     {
                         
-                    result.audioConstraints = decoder0.readString(24, false);
+                    result.audioConstraints = decoder0.readString(16, false);
                     }
                     {
                         
-                    result.videoConstraints = decoder0.readString(32, false);
+                    result.videoConstraints = decoder0.readString(24, false);
                     }
 
             } finally {
@@ -767,15 +847,176 @@ int lid, org.chromium.mojo_base.mojom.ListValue value) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.origin, 8, false);
+            encoder0.encode(this.requestId, 8);
             
-            encoder0.encode(this.audio, 16, 0);
+            encoder0.encode(this.audio, 12, 0);
             
-            encoder0.encode(this.video, 16, 1);
+            encoder0.encode(this.video, 12, 1);
             
-            encoder0.encode(this.audioConstraints, 24, false);
+            encoder0.encode(this.audioConstraints, 16, false);
             
-            encoder0.encode(this.videoConstraints, 32, false);
+            encoder0.encode(this.videoConstraints, 24, false);
+        }
+    }
+
+
+
+    
+    static final class PeerConnectionTrackerHostGetUserMediaSuccessParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 40;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int requestId;
+        public String streamId;
+        public String audioTrackInfo;
+        public String videoTrackInfo;
+
+        private PeerConnectionTrackerHostGetUserMediaSuccessParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public PeerConnectionTrackerHostGetUserMediaSuccessParams() {
+            this(0);
+        }
+
+        public static PeerConnectionTrackerHostGetUserMediaSuccessParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static PeerConnectionTrackerHostGetUserMediaSuccessParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static PeerConnectionTrackerHostGetUserMediaSuccessParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            PeerConnectionTrackerHostGetUserMediaSuccessParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new PeerConnectionTrackerHostGetUserMediaSuccessParams(elementsOrVersion);
+                    {
+                        
+                    result.requestId = decoder0.readInt(8);
+                    }
+                    {
+                        
+                    result.streamId = decoder0.readString(16, false);
+                    }
+                    {
+                        
+                    result.audioTrackInfo = decoder0.readString(24, false);
+                    }
+                    {
+                        
+                    result.videoTrackInfo = decoder0.readString(32, false);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.requestId, 8);
+            
+            encoder0.encode(this.streamId, 16, false);
+            
+            encoder0.encode(this.audioTrackInfo, 24, false);
+            
+            encoder0.encode(this.videoTrackInfo, 32, false);
+        }
+    }
+
+
+
+    
+    static final class PeerConnectionTrackerHostGetUserMediaFailureParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int requestId;
+        public String error;
+        public String errorMessage;
+
+        private PeerConnectionTrackerHostGetUserMediaFailureParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public PeerConnectionTrackerHostGetUserMediaFailureParams() {
+            this(0);
+        }
+
+        public static PeerConnectionTrackerHostGetUserMediaFailureParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static PeerConnectionTrackerHostGetUserMediaFailureParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static PeerConnectionTrackerHostGetUserMediaFailureParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            PeerConnectionTrackerHostGetUserMediaFailureParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new PeerConnectionTrackerHostGetUserMediaFailureParams(elementsOrVersion);
+                    {
+                        
+                    result.requestId = decoder0.readInt(8);
+                    }
+                    {
+                        
+                    result.error = decoder0.readString(16, false);
+                    }
+                    {
+                        
+                    result.errorMessage = decoder0.readString(24, false);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.requestId, 8);
+            
+            encoder0.encode(this.error, 16, false);
+            
+            encoder0.encode(this.errorMessage, 24, false);
         }
     }
 

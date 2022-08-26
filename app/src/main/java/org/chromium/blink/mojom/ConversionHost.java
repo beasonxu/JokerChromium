@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ConversionHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,9 +25,12 @@ public interface ConversionHost extends org.chromium.mojo.bindings.Interface {
 
     Manager<ConversionHost, ConversionHost.Proxy> MANAGER = ConversionHost_Internal.MANAGER;
 
+    void registerDataHost(
+org.chromium.mojo.bindings.InterfaceRequest<AttributionDataHost> dataHost);
 
-    void registerConversion(
-Conversion conversion);
+
+    void registerNavigationDataHost(
+org.chromium.mojo.bindings.InterfaceRequest<AttributionDataHost> dataHost, AttributionSrcToken attributionSrcToken);
 
 
 }

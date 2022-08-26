@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface PointerLockContext extends org.chromium.mojo.bindings.Interface {
 
@@ -23,12 +25,11 @@ public interface PointerLockContext extends org.chromium.mojo.bindings.Interface
 
     Manager<PointerLockContext, PointerLockContext.Proxy> MANAGER = PointerLockContext_Internal.MANAGER;
 
-
     void requestMouseLockChange(
 boolean unadjustedMovement, 
-RequestMouseLockChangeResponse callback);
+RequestMouseLockChange_Response callback);
 
-    interface RequestMouseLockChangeResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
+    interface RequestMouseLockChange_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
 }

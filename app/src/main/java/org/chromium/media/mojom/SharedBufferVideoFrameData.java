@@ -13,20 +13,20 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class SharedBufferVideoFrameData extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 40;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
+    private static final int STRUCT_SIZE = 32;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-    public org.chromium.mojo.system.SharedBufferHandle frameData;
-    public long frameDataSize;
+    public org.chromium.mojo_base.mojom.UnsafeSharedMemoryRegion frameData;
     public int[] strides;
     public int[] offsets;
 
     private SharedBufferVideoFrameData(int version) {
         super(STRUCT_SIZE, version);
-        this.frameData = org.chromium.mojo.system.InvalidHandle.INSTANCE;
     }
 
     public SharedBufferVideoFrameData() {
@@ -60,19 +60,16 @@ public final class SharedBufferVideoFrameData extends org.chromium.mojo.bindings
             result = new SharedBufferVideoFrameData(elementsOrVersion);
                 {
                     
-                result.frameData = decoder0.readSharedBufferHandle(8, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                result.frameData = org.chromium.mojo_base.mojom.UnsafeSharedMemoryRegion.decode(decoder1);
                 }
                 {
                     
-                result.frameDataSize = decoder0.readLong(16);
+                result.strides = decoder0.readInts(16, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 }
                 {
                     
-                result.strides = decoder0.readInts(24, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                }
-                {
-                    
-                result.offsets = decoder0.readInts(32, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                result.offsets = decoder0.readInts(24, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 }
 
         } finally {
@@ -88,10 +85,8 @@ public final class SharedBufferVideoFrameData extends org.chromium.mojo.bindings
         
         encoder0.encode(this.frameData, 8, false);
         
-        encoder0.encode(this.frameDataSize, 16);
+        encoder0.encode(this.strides, 16, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
         
-        encoder0.encode(this.strides, 24, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-        
-        encoder0.encode(this.offsets, 32, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+        encoder0.encode(this.offsets, 24, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
     }
 }

@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface VideoCaptureHost extends org.chromium.mojo.bindings.Interface {
 
@@ -23,56 +25,46 @@ public interface VideoCaptureHost extends org.chromium.mojo.bindings.Interface {
 
     Manager<VideoCaptureHost, VideoCaptureHost.Proxy> MANAGER = VideoCaptureHost_Internal.MANAGER;
 
-
     void start(
 org.chromium.mojo_base.mojom.UnguessableToken deviceId, org.chromium.mojo_base.mojom.UnguessableToken sessionId, VideoCaptureParams params, VideoCaptureObserver observer);
-
 
 
     void stop(
 org.chromium.mojo_base.mojom.UnguessableToken deviceId);
 
 
-
     void pause(
 org.chromium.mojo_base.mojom.UnguessableToken deviceId);
-
 
 
     void resume(
 org.chromium.mojo_base.mojom.UnguessableToken deviceId, org.chromium.mojo_base.mojom.UnguessableToken sessionId, VideoCaptureParams params);
 
 
-
     void requestRefreshFrame(
 org.chromium.mojo_base.mojom.UnguessableToken deviceId);
 
 
-
     void releaseBuffer(
-org.chromium.mojo_base.mojom.UnguessableToken deviceId, int bufferId, VideoFrameFeedback feedback);
-
+org.chromium.mojo_base.mojom.UnguessableToken deviceId, int bufferId, VideoCaptureFeedback feedback);
 
 
     void getDeviceSupportedFormats(
 org.chromium.mojo_base.mojom.UnguessableToken deviceId, org.chromium.mojo_base.mojom.UnguessableToken sessionId, 
-GetDeviceSupportedFormatsResponse callback);
+GetDeviceSupportedFormats_Response callback);
 
-    interface GetDeviceSupportedFormatsResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<VideoCaptureFormat[]> { }
-
+    interface GetDeviceSupportedFormats_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<VideoCaptureFormat[]> { }
 
 
     void getDeviceFormatsInUse(
 org.chromium.mojo_base.mojom.UnguessableToken deviceId, org.chromium.mojo_base.mojom.UnguessableToken sessionId, 
-GetDeviceFormatsInUseResponse callback);
+GetDeviceFormatsInUse_Response callback);
 
-    interface GetDeviceFormatsInUseResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<VideoCaptureFormat[]> { }
-
+    interface GetDeviceFormatsInUse_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<VideoCaptureFormat[]> { }
 
 
     void onFrameDropped(
 org.chromium.mojo_base.mojom.UnguessableToken deviceId, int reason);
-
 
 
     void onLog(

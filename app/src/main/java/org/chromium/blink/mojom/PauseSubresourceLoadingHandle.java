@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface PauseSubresourceLoadingHandle extends org.chromium.mojo.bindings.Interface {
 

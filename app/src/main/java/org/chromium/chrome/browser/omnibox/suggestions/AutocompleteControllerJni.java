@@ -15,7 +15,7 @@ import org.chromium.url.GURL;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class AutocompleteControllerJni implements AutocompleteController.Natives {
+public class AutocompleteControllerJni implements AutocompleteController.Natives {
   private static AutocompleteController.Natives testInstance;
 
   public static final JniStaticTestMocker<AutocompleteController.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.omnibox.suggestions.AutocompleteController.Natives>() {
@@ -30,74 +30,63 @@ final class AutocompleteControllerJni implements AutocompleteController.Natives 
   };
 
   @Override
-  public long init(AutocompleteController caller, Profile profile) {
-    return (long)GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_init(caller, profile);
-  }
-
-  @Override
-  public void releaseJavaObject(long nativeAutocompleteControllerAndroid) {
-    GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_releaseJavaObject(nativeAutocompleteControllerAndroid);
-  }
-
-  @Override
-  public void start(long nativeAutocompleteControllerAndroid, AutocompleteController caller,
-      String text, int cursorPosition, String desiredTld, String currentUrl, int pageClassification,
+  public void start(long nativeAutocompleteControllerAndroid, String text, int cursorPosition,
+      String desiredTld, String currentUrl, int pageClassification,
       boolean preventInlineAutocomplete, boolean preferKeyword, boolean allowExactKeywordMatch,
-      boolean wantAsynchronousMatches, String queryTileId, boolean isQueryStartedFromTiles) {
-    GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_start(nativeAutocompleteControllerAndroid, caller, text, cursorPosition, desiredTld, currentUrl, pageClassification, preventInlineAutocomplete, preferKeyword, allowExactKeywordMatch, wantAsynchronousMatches, queryTileId, isQueryStartedFromTiles);
+      boolean wantAsynchronousMatches) {
+    GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_start(nativeAutocompleteControllerAndroid, text, cursorPosition, desiredTld, currentUrl, pageClassification, preventInlineAutocomplete, preferKeyword, allowExactKeywordMatch, wantAsynchronousMatches);
   }
 
   @Override
-  public AutocompleteMatch classify(long nativeAutocompleteControllerAndroid,
-      AutocompleteController caller, String text, boolean focusedFromFakebox) {
-    return (AutocompleteMatch)GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_classify(nativeAutocompleteControllerAndroid, caller, text, focusedFromFakebox);
+  public AutocompleteMatch classify(long nativeAutocompleteControllerAndroid, String text,
+      boolean focusedFromFakebox) {
+    return (AutocompleteMatch)GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_classify(nativeAutocompleteControllerAndroid, text, focusedFromFakebox);
   }
 
   @Override
-  public void stop(long nativeAutocompleteControllerAndroid, AutocompleteController caller,
-      boolean clearResults) {
-    GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_stop(nativeAutocompleteControllerAndroid, caller, clearResults);
+  public void stop(long nativeAutocompleteControllerAndroid, boolean clearResults) {
+    GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_stop(nativeAutocompleteControllerAndroid, clearResults);
   }
 
   @Override
-  public void resetSession(long nativeAutocompleteControllerAndroid,
-      AutocompleteController caller) {
-    GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_resetSession(nativeAutocompleteControllerAndroid, caller);
+  public void resetSession(long nativeAutocompleteControllerAndroid) {
+    GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_resetSession(nativeAutocompleteControllerAndroid);
   }
 
   @Override
-  public void onSuggestionSelected(long nativeAutocompleteControllerAndroid,
-      AutocompleteController caller, int selectedIndex, int disposition, int hashCode,
-      String currentPageUrl, int pageClassification, long elapsedTimeSinceModified,
+  public void onSuggestionSelected(long nativeAutocompleteControllerAndroid, int matchIndex,
+      int disposition, String currentPageUrl, int pageClassification, long elapsedTimeSinceModified,
       int completedLength, WebContents webContents) {
-    GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_onSuggestionSelected(nativeAutocompleteControllerAndroid, caller, selectedIndex, disposition, hashCode, currentPageUrl, pageClassification, elapsedTimeSinceModified, completedLength, webContents);
+    GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_onSuggestionSelected(nativeAutocompleteControllerAndroid, matchIndex, disposition, currentPageUrl, pageClassification, elapsedTimeSinceModified, completedLength, webContents);
   }
 
   @Override
-  public void onOmniboxFocused(long nativeAutocompleteControllerAndroid,
-      AutocompleteController caller, String omniboxText, String currentUrl, int pageClassification,
-      String currentTitle) {
-    GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_onOmniboxFocused(nativeAutocompleteControllerAndroid, caller, omniboxText, currentUrl, pageClassification, currentTitle);
+  public void onOmniboxFocused(long nativeAutocompleteControllerAndroid, String omniboxText,
+      String currentUrl, int pageClassification, String currentTitle) {
+    GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_onOmniboxFocused(nativeAutocompleteControllerAndroid, omniboxText, currentUrl, pageClassification, currentTitle);
   }
 
   @Override
-  public void deleteSuggestion(long nativeAutocompleteControllerAndroid,
-      AutocompleteController caller, int selectedIndex, int hashCode) {
-    GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_deleteSuggestion(nativeAutocompleteControllerAndroid, caller, selectedIndex, hashCode);
+  public void deleteMatchElement(long nativeAutocompleteControllerAndroid, int matchIndex,
+      int elementIndex) {
+    GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_deleteMatchElement(nativeAutocompleteControllerAndroid, matchIndex, elementIndex);
   }
 
   @Override
-  public GURL updateMatchDestinationURLWithQueryFormulationTime(
-      long nativeAutocompleteControllerAndroid, AutocompleteController caller, int selectedIndex,
-      int hashCode, long elapsedTimeSinceInputChange, String newQueryText,
-      String[] newQueryParams) {
-    return (GURL)GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_updateMatchDestinationURLWithQueryFormulationTime(nativeAutocompleteControllerAndroid, caller, selectedIndex, hashCode, elapsedTimeSinceInputChange, newQueryText, newQueryParams);
+  public void deleteMatch(long nativeAutocompleteControllerAndroid, int matchIndex) {
+    GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_deleteMatch(nativeAutocompleteControllerAndroid, matchIndex);
   }
 
   @Override
-  public Tab findMatchingTabWithUrl(long nativeAutocompleteControllerAndroid,
-      AutocompleteController caller, GURL url) {
-    return (Tab)GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_findMatchingTabWithUrl(nativeAutocompleteControllerAndroid, caller, url);
+  public GURL updateMatchDestinationURLWithAdditionalAssistedQueryStats(
+      long nativeAutocompleteControllerAndroid, int matchIndex, long elapsedTimeSinceInputChange,
+      String newQueryText, String[] newQueryParams) {
+    return (GURL)GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_updateMatchDestinationURLWithAdditionalAssistedQueryStats(nativeAutocompleteControllerAndroid, matchIndex, elapsedTimeSinceInputChange, newQueryText, newQueryParams);
+  }
+
+  @Override
+  public Tab getMatchingTabForSuggestion(long nativeAutocompleteControllerAndroid, int matchIndex) {
+    return (Tab)GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_getMatchingTabForSuggestion(nativeAutocompleteControllerAndroid, matchIndex);
   }
 
   @Override
@@ -107,13 +96,13 @@ final class AutocompleteControllerJni implements AutocompleteController.Natives 
   }
 
   @Override
-  public String qualifyPartialURLQuery(String query) {
-    return (String)GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_qualifyPartialURLQuery(query);
+  public void startPrefetch(long nativeAutocompleteControllerAndroid) {
+    GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_startPrefetch(nativeAutocompleteControllerAndroid);
   }
 
   @Override
-  public void prefetchZeroSuggestResults() {
-    GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_prefetchZeroSuggestResults();
+  public AutocompleteController getForProfile(Profile profile) {
+    return (AutocompleteController)GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_getForProfile(profile);
   }
 
   public static AutocompleteController.Natives get() {

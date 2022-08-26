@@ -13,6 +13,8 @@
 
 package org.chromium.filesystem.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class FileOpenDetails extends org.chromium.mojo.bindings.Struct {
 

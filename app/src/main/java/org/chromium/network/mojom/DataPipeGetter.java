@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface DataPipeGetter extends org.chromium.mojo.bindings.Interface {
 
@@ -23,13 +25,11 @@ public interface DataPipeGetter extends org.chromium.mojo.bindings.Interface {
 
     Manager<DataPipeGetter, DataPipeGetter.Proxy> MANAGER = DataPipeGetter_Internal.MANAGER;
 
-
     void read(
 org.chromium.mojo.system.DataPipe.ProducerHandle pipe, 
-ReadResponse callback);
+Read_Response callback);
 
-    interface ReadResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, Long> { }
-
+    interface Read_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, Long> { }
 
 
     void clone(

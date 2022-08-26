@@ -4,7 +4,7 @@ import dagger.internal.Factory;
 import javax.annotation.Generated;
 import javax.inject.Provider;
 import org.chromium.chrome.browser.browserservices.BrowserServicesStore;
-import org.chromium.chrome.browser.browserservices.TrustedWebActivityUmaRecorder;
+import org.chromium.chrome.browser.browserservices.metrics.TrustedWebActivityUmaRecorder;
 import org.chromium.chrome.browser.browserservices.ui.TrustedWebActivityModel;
 import org.chromium.chrome.browser.browserservices.ui.controller.CurrentPageVerifier;
 import org.chromium.chrome.browser.lifecycle.ActivityLifecycleDispatcher;

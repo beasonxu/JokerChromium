@@ -13,6 +13,8 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class CopyOutputResult extends org.chromium.mojo.bindings.Struct {
 
@@ -20,6 +22,7 @@ public final class CopyOutputResult extends org.chromium.mojo.bindings.Struct {
     private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(64, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int format;
+    public int destination;
     public org.chromium.gfx.mojom.Rect rect;
     public BitmapInSharedMemory bitmap;
     public org.chromium.gpu.mojom.Mailbox mailbox;
@@ -68,6 +71,12 @@ public final class CopyOutputResult extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
+                result.destination = decoder0.readInt(12);
+                    CopyOutputResultDestination.validate(result.destination);
+                    result.destination = CopyOutputResultDestination.toKnownValue(result.destination);
+                }
+                {
+                    
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
                 result.rect = org.chromium.gfx.mojom.Rect.decode(decoder1);
                 }
@@ -108,6 +117,8 @@ public final class CopyOutputResult extends org.chromium.mojo.bindings.Struct {
         org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         
         encoder0.encode(this.format, 8);
+        
+        encoder0.encode(this.destination, 12);
         
         encoder0.encode(this.rect, 16, false);
         

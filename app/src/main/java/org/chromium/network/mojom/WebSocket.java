@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface WebSocket extends org.chromium.mojo.bindings.Interface {
 
@@ -23,15 +25,12 @@ public interface WebSocket extends org.chromium.mojo.bindings.Interface {
 
     Manager<WebSocket, WebSocket.Proxy> MANAGER = WebSocket_Internal.MANAGER;
 
-
     void sendMessage(
 int type, long dataLength);
 
 
-
     void startReceiving(
 );
-
 
 
     void startClosingHandshake(

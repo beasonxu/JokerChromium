@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class PhoneNumberUtilJni implements PhoneNumberUtil.Natives {
+class PhoneNumberUtilJni implements PhoneNumberUtil.Natives {
   private static PhoneNumberUtil.Natives testInstance;
 
   public static final JniStaticTestMocker<PhoneNumberUtil.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.autofill.PhoneNumberUtil.Natives>() {

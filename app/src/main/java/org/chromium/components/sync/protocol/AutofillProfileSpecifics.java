@@ -18,6 +18,7 @@ public  final class AutofillProfileSpecifics extends
   private AutofillProfileSpecifics() {
     guid_ = "";
     origin_ = "";
+    profileLabel_ = "";
     nameHonorific_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
     nameFirst_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
     nameMiddle_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
@@ -56,7 +57,7 @@ public  final class AutofillProfileSpecifics extends
     addressHomeAptNum_ = "";
     addressHomeFloor_ = "";
     phoneHomeWholeNumber_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
-    label_ = "";
+    deprecatedLabel_ = "";
     phoneFaxWholeNumber_ = "";
   }
   /**
@@ -447,6 +448,96 @@ public  final class AutofillProfileSpecifics extends
   private void clearUseDate() {
     bitField0_ = (bitField0_ & ~0x00000008);
     useDate_ = 0L;
+  }
+
+  public static final int PROFILE_LABEL_FIELD_NUMBER = 62;
+  private java.lang.String profileLabel_;
+  /**
+   * <pre>
+   * A user chosen profile label that is used to identify the profile.
+   * The value of the label can be freely chosen by the user. Two possible label
+   * values are '$HOME$' or '$WORK$' which have a special meaning.
+   * </pre>
+   *
+   * <code>optional string profile_label = 62;</code>
+   * @return Whether the profileLabel field is set.
+   */
+  @java.lang.Override
+  public boolean hasProfileLabel() {
+    return ((bitField0_ & 0x00000010) != 0);
+  }
+  /**
+   * <pre>
+   * A user chosen profile label that is used to identify the profile.
+   * The value of the label can be freely chosen by the user. Two possible label
+   * values are '$HOME$' or '$WORK$' which have a special meaning.
+   * </pre>
+   *
+   * <code>optional string profile_label = 62;</code>
+   * @return The profileLabel.
+   */
+  @java.lang.Override
+  public java.lang.String getProfileLabel() {
+    return profileLabel_;
+  }
+  /**
+   * <pre>
+   * A user chosen profile label that is used to identify the profile.
+   * The value of the label can be freely chosen by the user. Two possible label
+   * values are '$HOME$' or '$WORK$' which have a special meaning.
+   * </pre>
+   *
+   * <code>optional string profile_label = 62;</code>
+   * @return The bytes for profileLabel.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getProfileLabelBytes() {
+    return com.google.protobuf.ByteString.copyFromUtf8(profileLabel_);
+  }
+  /**
+   * <pre>
+   * A user chosen profile label that is used to identify the profile.
+   * The value of the label can be freely chosen by the user. Two possible label
+   * values are '$HOME$' or '$WORK$' which have a special meaning.
+   * </pre>
+   *
+   * <code>optional string profile_label = 62;</code>
+   * @param value The profileLabel to set.
+   */
+  private void setProfileLabel(
+      java.lang.String value) {
+    value.getClass();
+  bitField0_ |= 0x00000010;
+    profileLabel_ = value;
+  }
+  /**
+   * <pre>
+   * A user chosen profile label that is used to identify the profile.
+   * The value of the label can be freely chosen by the user. Two possible label
+   * values are '$HOME$' or '$WORK$' which have a special meaning.
+   * </pre>
+   *
+   * <code>optional string profile_label = 62;</code>
+   */
+  private void clearProfileLabel() {
+    bitField0_ = (bitField0_ & ~0x00000010);
+    profileLabel_ = getDefaultInstance().getProfileLabel();
+  }
+  /**
+   * <pre>
+   * A user chosen profile label that is used to identify the profile.
+   * The value of the label can be freely chosen by the user. Two possible label
+   * values are '$HOME$' or '$WORK$' which have a special meaning.
+   * </pre>
+   *
+   * <code>optional string profile_label = 62;</code>
+   * @param value The bytes for profileLabel to set.
+   */
+  private void setProfileLabelBytes(
+      com.google.protobuf.ByteString value) {
+    profileLabel_ = value.toStringUtf8();
+    bitField0_ |= 0x00000010;
   }
 
   public static final int NAME_HONORIFIC_FIELD_NUMBER = 26;
@@ -2350,7 +2441,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasCompanyName() {
-    return ((bitField0_ & 0x00000010) != 0);
+    return ((bitField0_ & 0x00000020) != 0);
   }
   /**
    * <code>optional string company_name = 6;</code>
@@ -2376,14 +2467,14 @@ public  final class AutofillProfileSpecifics extends
   private void setCompanyName(
       java.lang.String value) {
     value.getClass();
-  bitField0_ |= 0x00000010;
+  bitField0_ |= 0x00000020;
     companyName_ = value;
   }
   /**
    * <code>optional string company_name = 6;</code>
    */
   private void clearCompanyName() {
-    bitField0_ = (bitField0_ & ~0x00000010);
+    bitField0_ = (bitField0_ & ~0x00000020);
     companyName_ = getDefaultInstance().getCompanyName();
   }
   /**
@@ -2393,7 +2484,7 @@ public  final class AutofillProfileSpecifics extends
   private void setCompanyNameBytes(
       com.google.protobuf.ByteString value) {
     companyName_ = value.toStringUtf8();
-    bitField0_ |= 0x00000010;
+    bitField0_ |= 0x00000020;
   }
 
   public static final int ADDRESS_HOME_LINE1_FIELD_NUMBER = 7;
@@ -2415,7 +2506,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeLine1() {
-    return ((bitField0_ & 0x00000020) != 0);
+    return ((bitField0_ & 0x00000040) != 0);
   }
   /**
    * <pre>
@@ -2474,7 +2565,7 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeLine1(
       java.lang.String value) {
     value.getClass();
-  bitField0_ |= 0x00000020;
+  bitField0_ |= 0x00000040;
     addressHomeLine1_ = value;
   }
   /**
@@ -2492,7 +2583,7 @@ public  final class AutofillProfileSpecifics extends
    * <code>optional string address_home_line1 = 7;</code>
    */
   private void clearAddressHomeLine1() {
-    bitField0_ = (bitField0_ & ~0x00000020);
+    bitField0_ = (bitField0_ & ~0x00000040);
     addressHomeLine1_ = getDefaultInstance().getAddressHomeLine1();
   }
   /**
@@ -2513,7 +2604,7 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeLine1Bytes(
       com.google.protobuf.ByteString value) {
     addressHomeLine1_ = value.toStringUtf8();
-    bitField0_ |= 0x00000020;
+    bitField0_ |= 0x00000040;
   }
 
   public static final int ADDRESS_HOME_LINE2_FIELD_NUMBER = 8;
@@ -2524,7 +2615,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeLine2() {
-    return ((bitField0_ & 0x00000040) != 0);
+    return ((bitField0_ & 0x00000080) != 0);
   }
   /**
    * <code>optional string address_home_line2 = 8;</code>
@@ -2550,14 +2641,14 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeLine2(
       java.lang.String value) {
     value.getClass();
-  bitField0_ |= 0x00000040;
+  bitField0_ |= 0x00000080;
     addressHomeLine2_ = value;
   }
   /**
    * <code>optional string address_home_line2 = 8;</code>
    */
   private void clearAddressHomeLine2() {
-    bitField0_ = (bitField0_ & ~0x00000040);
+    bitField0_ = (bitField0_ & ~0x00000080);
     addressHomeLine2_ = getDefaultInstance().getAddressHomeLine2();
   }
   /**
@@ -2567,7 +2658,7 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeLine2Bytes(
       com.google.protobuf.ByteString value) {
     addressHomeLine2_ = value.toStringUtf8();
-    bitField0_ |= 0x00000040;
+    bitField0_ |= 0x00000080;
   }
 
   public static final int ADDRESS_HOME_CITY_FIELD_NUMBER = 9;
@@ -2578,7 +2669,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeCity() {
-    return ((bitField0_ & 0x00000080) != 0);
+    return ((bitField0_ & 0x00000100) != 0);
   }
   /**
    * <code>optional string address_home_city = 9;</code>
@@ -2604,14 +2695,14 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeCity(
       java.lang.String value) {
     value.getClass();
-  bitField0_ |= 0x00000080;
+  bitField0_ |= 0x00000100;
     addressHomeCity_ = value;
   }
   /**
    * <code>optional string address_home_city = 9;</code>
    */
   private void clearAddressHomeCity() {
-    bitField0_ = (bitField0_ & ~0x00000080);
+    bitField0_ = (bitField0_ & ~0x00000100);
     addressHomeCity_ = getDefaultInstance().getAddressHomeCity();
   }
   /**
@@ -2621,7 +2712,7 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeCityBytes(
       com.google.protobuf.ByteString value) {
     addressHomeCity_ = value.toStringUtf8();
-    bitField0_ |= 0x00000080;
+    bitField0_ |= 0x00000100;
   }
 
   public static final int ADDRESS_HOME_STATE_FIELD_NUMBER = 10;
@@ -2632,7 +2723,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeState() {
-    return ((bitField0_ & 0x00000100) != 0);
+    return ((bitField0_ & 0x00000200) != 0);
   }
   /**
    * <code>optional string address_home_state = 10;</code>
@@ -2658,14 +2749,14 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeState(
       java.lang.String value) {
     value.getClass();
-  bitField0_ |= 0x00000100;
+  bitField0_ |= 0x00000200;
     addressHomeState_ = value;
   }
   /**
    * <code>optional string address_home_state = 10;</code>
    */
   private void clearAddressHomeState() {
-    bitField0_ = (bitField0_ & ~0x00000100);
+    bitField0_ = (bitField0_ & ~0x00000200);
     addressHomeState_ = getDefaultInstance().getAddressHomeState();
   }
   /**
@@ -2675,7 +2766,7 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeStateBytes(
       com.google.protobuf.ByteString value) {
     addressHomeState_ = value.toStringUtf8();
-    bitField0_ |= 0x00000100;
+    bitField0_ |= 0x00000200;
   }
 
   public static final int ADDRESS_HOME_ZIP_FIELD_NUMBER = 11;
@@ -2686,7 +2777,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeZip() {
-    return ((bitField0_ & 0x00000200) != 0);
+    return ((bitField0_ & 0x00000400) != 0);
   }
   /**
    * <code>optional string address_home_zip = 11;</code>
@@ -2712,14 +2803,14 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeZip(
       java.lang.String value) {
     value.getClass();
-  bitField0_ |= 0x00000200;
+  bitField0_ |= 0x00000400;
     addressHomeZip_ = value;
   }
   /**
    * <code>optional string address_home_zip = 11;</code>
    */
   private void clearAddressHomeZip() {
-    bitField0_ = (bitField0_ & ~0x00000200);
+    bitField0_ = (bitField0_ & ~0x00000400);
     addressHomeZip_ = getDefaultInstance().getAddressHomeZip();
   }
   /**
@@ -2729,7 +2820,7 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeZipBytes(
       com.google.protobuf.ByteString value) {
     addressHomeZip_ = value.toStringUtf8();
-    bitField0_ |= 0x00000200;
+    bitField0_ |= 0x00000400;
   }
 
   public static final int ADDRESS_HOME_COUNTRY_FIELD_NUMBER = 12;
@@ -2740,7 +2831,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeCountry() {
-    return ((bitField0_ & 0x00000400) != 0);
+    return ((bitField0_ & 0x00000800) != 0);
   }
   /**
    * <code>optional string address_home_country = 12;</code>
@@ -2766,14 +2857,14 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeCountry(
       java.lang.String value) {
     value.getClass();
-  bitField0_ |= 0x00000400;
+  bitField0_ |= 0x00000800;
     addressHomeCountry_ = value;
   }
   /**
    * <code>optional string address_home_country = 12;</code>
    */
   private void clearAddressHomeCountry() {
-    bitField0_ = (bitField0_ & ~0x00000400);
+    bitField0_ = (bitField0_ & ~0x00000800);
     addressHomeCountry_ = getDefaultInstance().getAddressHomeCountry();
   }
   /**
@@ -2783,7 +2874,7 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeCountryBytes(
       com.google.protobuf.ByteString value) {
     addressHomeCountry_ = value.toStringUtf8();
-    bitField0_ |= 0x00000400;
+    bitField0_ |= 0x00000800;
   }
 
   public static final int ADDRESS_HOME_STREET_ADDRESS_FIELD_NUMBER = 17;
@@ -2798,7 +2889,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeStreetAddress() {
-    return ((bitField0_ & 0x00000800) != 0);
+    return ((bitField0_ & 0x00001000) != 0);
   }
   /**
    * <pre>
@@ -2836,7 +2927,7 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeStreetAddress(
       java.lang.String value) {
     value.getClass();
-  bitField0_ |= 0x00000800;
+  bitField0_ |= 0x00001000;
     addressHomeStreetAddress_ = value;
   }
   /**
@@ -2847,7 +2938,7 @@ public  final class AutofillProfileSpecifics extends
    * <code>optional string address_home_street_address = 17;</code>
    */
   private void clearAddressHomeStreetAddress() {
-    bitField0_ = (bitField0_ & ~0x00000800);
+    bitField0_ = (bitField0_ & ~0x00001000);
     addressHomeStreetAddress_ = getDefaultInstance().getAddressHomeStreetAddress();
   }
   /**
@@ -2861,7 +2952,7 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeStreetAddressBytes(
       com.google.protobuf.ByteString value) {
     addressHomeStreetAddress_ = value.toStringUtf8();
-    bitField0_ |= 0x00000800;
+    bitField0_ |= 0x00001000;
   }
 
   public static final int ADDRESS_HOME_SORTING_CODE_FIELD_NUMBER = 18;
@@ -2872,7 +2963,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeSortingCode() {
-    return ((bitField0_ & 0x00001000) != 0);
+    return ((bitField0_ & 0x00002000) != 0);
   }
   /**
    * <code>optional string address_home_sorting_code = 18;</code>
@@ -2898,14 +2989,14 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeSortingCode(
       java.lang.String value) {
     value.getClass();
-  bitField0_ |= 0x00001000;
+  bitField0_ |= 0x00002000;
     addressHomeSortingCode_ = value;
   }
   /**
    * <code>optional string address_home_sorting_code = 18;</code>
    */
   private void clearAddressHomeSortingCode() {
-    bitField0_ = (bitField0_ & ~0x00001000);
+    bitField0_ = (bitField0_ & ~0x00002000);
     addressHomeSortingCode_ = getDefaultInstance().getAddressHomeSortingCode();
   }
   /**
@@ -2915,7 +3006,7 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeSortingCodeBytes(
       com.google.protobuf.ByteString value) {
     addressHomeSortingCode_ = value.toStringUtf8();
-    bitField0_ |= 0x00001000;
+    bitField0_ |= 0x00002000;
   }
 
   public static final int ADDRESS_HOME_DEPENDENT_LOCALITY_FIELD_NUMBER = 19;
@@ -2926,7 +3017,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeDependentLocality() {
-    return ((bitField0_ & 0x00002000) != 0);
+    return ((bitField0_ & 0x00004000) != 0);
   }
   /**
    * <code>optional string address_home_dependent_locality = 19;</code>
@@ -2952,14 +3043,14 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeDependentLocality(
       java.lang.String value) {
     value.getClass();
-  bitField0_ |= 0x00002000;
+  bitField0_ |= 0x00004000;
     addressHomeDependentLocality_ = value;
   }
   /**
    * <code>optional string address_home_dependent_locality = 19;</code>
    */
   private void clearAddressHomeDependentLocality() {
-    bitField0_ = (bitField0_ & ~0x00002000);
+    bitField0_ = (bitField0_ & ~0x00004000);
     addressHomeDependentLocality_ = getDefaultInstance().getAddressHomeDependentLocality();
   }
   /**
@@ -2969,7 +3060,7 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeDependentLocalityBytes(
       com.google.protobuf.ByteString value) {
     addressHomeDependentLocality_ = value.toStringUtf8();
-    bitField0_ |= 0x00002000;
+    bitField0_ |= 0x00004000;
   }
 
   public static final int ADDRESS_HOME_LANGUAGE_CODE_FIELD_NUMBER = 20;
@@ -2980,7 +3071,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeLanguageCode() {
-    return ((bitField0_ & 0x00004000) != 0);
+    return ((bitField0_ & 0x00008000) != 0);
   }
   /**
    * <code>optional string address_home_language_code = 20;</code>
@@ -3006,14 +3097,14 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeLanguageCode(
       java.lang.String value) {
     value.getClass();
-  bitField0_ |= 0x00004000;
+  bitField0_ |= 0x00008000;
     addressHomeLanguageCode_ = value;
   }
   /**
    * <code>optional string address_home_language_code = 20;</code>
    */
   private void clearAddressHomeLanguageCode() {
-    bitField0_ = (bitField0_ & ~0x00004000);
+    bitField0_ = (bitField0_ & ~0x00008000);
     addressHomeLanguageCode_ = getDefaultInstance().getAddressHomeLanguageCode();
   }
   /**
@@ -3023,7 +3114,7 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeLanguageCodeBytes(
       com.google.protobuf.ByteString value) {
     addressHomeLanguageCode_ = value.toStringUtf8();
-    bitField0_ |= 0x00004000;
+    bitField0_ |= 0x00008000;
   }
 
   public static final int ADDRESS_HOME_THOROUGHFARE_NAME_FIELD_NUMBER = 38;
@@ -3034,7 +3125,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeThoroughfareName() {
-    return ((bitField0_ & 0x00008000) != 0);
+    return ((bitField0_ & 0x00010000) != 0);
   }
   /**
    * <code>optional string address_home_thoroughfare_name = 38;</code>
@@ -3060,14 +3151,14 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeThoroughfareName(
       java.lang.String value) {
     value.getClass();
-  bitField0_ |= 0x00008000;
+  bitField0_ |= 0x00010000;
     addressHomeThoroughfareName_ = value;
   }
   /**
    * <code>optional string address_home_thoroughfare_name = 38;</code>
    */
   private void clearAddressHomeThoroughfareName() {
-    bitField0_ = (bitField0_ & ~0x00008000);
+    bitField0_ = (bitField0_ & ~0x00010000);
     addressHomeThoroughfareName_ = getDefaultInstance().getAddressHomeThoroughfareName();
   }
   /**
@@ -3077,7 +3168,7 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeThoroughfareNameBytes(
       com.google.protobuf.ByteString value) {
     addressHomeThoroughfareName_ = value.toStringUtf8();
-    bitField0_ |= 0x00008000;
+    bitField0_ |= 0x00010000;
   }
 
   public static final int ADDRESS_HOME_THOROUGHFARE_NUMBER_FIELD_NUMBER = 39;
@@ -3088,7 +3179,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeThoroughfareNumber() {
-    return ((bitField0_ & 0x00010000) != 0);
+    return ((bitField0_ & 0x00020000) != 0);
   }
   /**
    * <code>optional string address_home_thoroughfare_number = 39;</code>
@@ -3114,14 +3205,14 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeThoroughfareNumber(
       java.lang.String value) {
     value.getClass();
-  bitField0_ |= 0x00010000;
+  bitField0_ |= 0x00020000;
     addressHomeThoroughfareNumber_ = value;
   }
   /**
    * <code>optional string address_home_thoroughfare_number = 39;</code>
    */
   private void clearAddressHomeThoroughfareNumber() {
-    bitField0_ = (bitField0_ & ~0x00010000);
+    bitField0_ = (bitField0_ & ~0x00020000);
     addressHomeThoroughfareNumber_ = getDefaultInstance().getAddressHomeThoroughfareNumber();
   }
   /**
@@ -3131,7 +3222,7 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeThoroughfareNumberBytes(
       com.google.protobuf.ByteString value) {
     addressHomeThoroughfareNumber_ = value.toStringUtf8();
-    bitField0_ |= 0x00010000;
+    bitField0_ |= 0x00020000;
   }
 
   public static final int ADDRESS_HOME_DEPENDENT_THOROUGHFARE_NAME_FIELD_NUMBER = 40;
@@ -3142,7 +3233,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeDependentThoroughfareName() {
-    return ((bitField0_ & 0x00020000) != 0);
+    return ((bitField0_ & 0x00040000) != 0);
   }
   /**
    * <code>optional string address_home_dependent_thoroughfare_name = 40;</code>
@@ -3168,14 +3259,14 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeDependentThoroughfareName(
       java.lang.String value) {
     value.getClass();
-  bitField0_ |= 0x00020000;
+  bitField0_ |= 0x00040000;
     addressHomeDependentThoroughfareName_ = value;
   }
   /**
    * <code>optional string address_home_dependent_thoroughfare_name = 40;</code>
    */
   private void clearAddressHomeDependentThoroughfareName() {
-    bitField0_ = (bitField0_ & ~0x00020000);
+    bitField0_ = (bitField0_ & ~0x00040000);
     addressHomeDependentThoroughfareName_ = getDefaultInstance().getAddressHomeDependentThoroughfareName();
   }
   /**
@@ -3185,7 +3276,7 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeDependentThoroughfareNameBytes(
       com.google.protobuf.ByteString value) {
     addressHomeDependentThoroughfareName_ = value.toStringUtf8();
-    bitField0_ |= 0x00020000;
+    bitField0_ |= 0x00040000;
   }
 
   public static final int ADDRESS_HOME_PREMISE_NAME_FIELD_NUMBER = 41;
@@ -3196,7 +3287,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomePremiseName() {
-    return ((bitField0_ & 0x00040000) != 0);
+    return ((bitField0_ & 0x00080000) != 0);
   }
   /**
    * <code>optional string address_home_premise_name = 41;</code>
@@ -3222,14 +3313,14 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomePremiseName(
       java.lang.String value) {
     value.getClass();
-  bitField0_ |= 0x00040000;
+  bitField0_ |= 0x00080000;
     addressHomePremiseName_ = value;
   }
   /**
    * <code>optional string address_home_premise_name = 41;</code>
    */
   private void clearAddressHomePremiseName() {
-    bitField0_ = (bitField0_ & ~0x00040000);
+    bitField0_ = (bitField0_ & ~0x00080000);
     addressHomePremiseName_ = getDefaultInstance().getAddressHomePremiseName();
   }
   /**
@@ -3239,7 +3330,7 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomePremiseNameBytes(
       com.google.protobuf.ByteString value) {
     addressHomePremiseName_ = value.toStringUtf8();
-    bitField0_ |= 0x00040000;
+    bitField0_ |= 0x00080000;
   }
 
   public static final int ADDRESS_HOME_SUBPREMISE_NAME_FIELD_NUMBER = 42;
@@ -3250,7 +3341,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeSubpremiseName() {
-    return ((bitField0_ & 0x00080000) != 0);
+    return ((bitField0_ & 0x00100000) != 0);
   }
   /**
    * <code>optional string address_home_subpremise_name = 42;</code>
@@ -3276,14 +3367,14 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeSubpremiseName(
       java.lang.String value) {
     value.getClass();
-  bitField0_ |= 0x00080000;
+  bitField0_ |= 0x00100000;
     addressHomeSubpremiseName_ = value;
   }
   /**
    * <code>optional string address_home_subpremise_name = 42;</code>
    */
   private void clearAddressHomeSubpremiseName() {
-    bitField0_ = (bitField0_ & ~0x00080000);
+    bitField0_ = (bitField0_ & ~0x00100000);
     addressHomeSubpremiseName_ = getDefaultInstance().getAddressHomeSubpremiseName();
   }
   /**
@@ -3293,7 +3384,7 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeSubpremiseNameBytes(
       com.google.protobuf.ByteString value) {
     addressHomeSubpremiseName_ = value.toStringUtf8();
-    bitField0_ |= 0x00080000;
+    bitField0_ |= 0x00100000;
   }
 
   public static final int ADDRESS_HOME_APT_NUM_FIELD_NUMBER = 56;
@@ -3304,7 +3395,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeAptNum() {
-    return ((bitField0_ & 0x00100000) != 0);
+    return ((bitField0_ & 0x00200000) != 0);
   }
   /**
    * <code>optional string address_home_apt_num = 56;</code>
@@ -3330,14 +3421,14 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeAptNum(
       java.lang.String value) {
     value.getClass();
-  bitField0_ |= 0x00100000;
+  bitField0_ |= 0x00200000;
     addressHomeAptNum_ = value;
   }
   /**
    * <code>optional string address_home_apt_num = 56;</code>
    */
   private void clearAddressHomeAptNum() {
-    bitField0_ = (bitField0_ & ~0x00100000);
+    bitField0_ = (bitField0_ & ~0x00200000);
     addressHomeAptNum_ = getDefaultInstance().getAddressHomeAptNum();
   }
   /**
@@ -3347,7 +3438,7 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeAptNumBytes(
       com.google.protobuf.ByteString value) {
     addressHomeAptNum_ = value.toStringUtf8();
-    bitField0_ |= 0x00100000;
+    bitField0_ |= 0x00200000;
   }
 
   public static final int ADDRESS_HOME_FLOOR_FIELD_NUMBER = 57;
@@ -3358,7 +3449,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeFloor() {
-    return ((bitField0_ & 0x00200000) != 0);
+    return ((bitField0_ & 0x00400000) != 0);
   }
   /**
    * <code>optional string address_home_floor = 57;</code>
@@ -3384,14 +3475,14 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeFloor(
       java.lang.String value) {
     value.getClass();
-  bitField0_ |= 0x00200000;
+  bitField0_ |= 0x00400000;
     addressHomeFloor_ = value;
   }
   /**
    * <code>optional string address_home_floor = 57;</code>
    */
   private void clearAddressHomeFloor() {
-    bitField0_ = (bitField0_ & ~0x00200000);
+    bitField0_ = (bitField0_ & ~0x00400000);
     addressHomeFloor_ = getDefaultInstance().getAddressHomeFloor();
   }
   /**
@@ -3401,7 +3492,7 @@ public  final class AutofillProfileSpecifics extends
   private void setAddressHomeFloorBytes(
       com.google.protobuf.ByteString value) {
     addressHomeFloor_ = value.toStringUtf8();
-    bitField0_ |= 0x00200000;
+    bitField0_ |= 0x00400000;
   }
 
   public static final int ADDRESS_HOME_CITY_STATUS_FIELD_NUMBER = 43;
@@ -3416,7 +3507,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeCityStatus() {
-    return ((bitField0_ & 0x00400000) != 0);
+    return ((bitField0_ & 0x00800000) != 0);
   }
   /**
    * <pre>
@@ -3441,7 +3532,7 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomeCityStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomeCityStatus_ = value.getNumber();
-    bitField0_ |= 0x00400000;
+    bitField0_ |= 0x00800000;
   }
   /**
    * <pre>
@@ -3451,7 +3542,7 @@ public  final class AutofillProfileSpecifics extends
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_city_status = 43;</code>
    */
   private void clearAddressHomeCityStatus() {
-    bitField0_ = (bitField0_ & ~0x00400000);
+    bitField0_ = (bitField0_ & ~0x00800000);
     addressHomeCityStatus_ = 0;
   }
 
@@ -3463,7 +3554,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeStateStatus() {
-    return ((bitField0_ & 0x00800000) != 0);
+    return ((bitField0_ & 0x01000000) != 0);
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_state_status = 44;</code>
@@ -3480,13 +3571,13 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomeStateStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomeStateStatus_ = value.getNumber();
-    bitField0_ |= 0x00800000;
+    bitField0_ |= 0x01000000;
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_state_status = 44;</code>
    */
   private void clearAddressHomeStateStatus() {
-    bitField0_ = (bitField0_ & ~0x00800000);
+    bitField0_ = (bitField0_ & ~0x01000000);
     addressHomeStateStatus_ = 0;
   }
 
@@ -3498,7 +3589,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeZipStatus() {
-    return ((bitField0_ & 0x01000000) != 0);
+    return ((bitField0_ & 0x02000000) != 0);
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_zip_status = 45;</code>
@@ -3515,13 +3606,13 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomeZipStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomeZipStatus_ = value.getNumber();
-    bitField0_ |= 0x01000000;
+    bitField0_ |= 0x02000000;
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_zip_status = 45;</code>
    */
   private void clearAddressHomeZipStatus() {
-    bitField0_ = (bitField0_ & ~0x01000000);
+    bitField0_ = (bitField0_ & ~0x02000000);
     addressHomeZipStatus_ = 0;
   }
 
@@ -3533,7 +3624,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeCountryStatus() {
-    return ((bitField0_ & 0x02000000) != 0);
+    return ((bitField0_ & 0x04000000) != 0);
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_country_status = 46;</code>
@@ -3550,13 +3641,13 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomeCountryStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomeCountryStatus_ = value.getNumber();
-    bitField0_ |= 0x02000000;
+    bitField0_ |= 0x04000000;
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_country_status = 46;</code>
    */
   private void clearAddressHomeCountryStatus() {
-    bitField0_ = (bitField0_ & ~0x02000000);
+    bitField0_ = (bitField0_ & ~0x04000000);
     addressHomeCountryStatus_ = 0;
   }
 
@@ -3568,7 +3659,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeStreetAddressStatus() {
-    return ((bitField0_ & 0x04000000) != 0);
+    return ((bitField0_ & 0x08000000) != 0);
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_street_address_status = 47;</code>
@@ -3585,13 +3676,13 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomeStreetAddressStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomeStreetAddressStatus_ = value.getNumber();
-    bitField0_ |= 0x04000000;
+    bitField0_ |= 0x08000000;
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_street_address_status = 47;</code>
    */
   private void clearAddressHomeStreetAddressStatus() {
-    bitField0_ = (bitField0_ & ~0x04000000);
+    bitField0_ = (bitField0_ & ~0x08000000);
     addressHomeStreetAddressStatus_ = 0;
   }
 
@@ -3603,7 +3694,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeSortingCodeStatus() {
-    return ((bitField0_ & 0x08000000) != 0);
+    return ((bitField0_ & 0x10000000) != 0);
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_sorting_code_status = 48;</code>
@@ -3620,13 +3711,13 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomeSortingCodeStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomeSortingCodeStatus_ = value.getNumber();
-    bitField0_ |= 0x08000000;
+    bitField0_ |= 0x10000000;
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_sorting_code_status = 48;</code>
    */
   private void clearAddressHomeSortingCodeStatus() {
-    bitField0_ = (bitField0_ & ~0x08000000);
+    bitField0_ = (bitField0_ & ~0x10000000);
     addressHomeSortingCodeStatus_ = 0;
   }
 
@@ -3638,7 +3729,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeDependentLocalityStatus() {
-    return ((bitField0_ & 0x10000000) != 0);
+    return ((bitField0_ & 0x20000000) != 0);
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_dependent_locality_status = 49;</code>
@@ -3655,13 +3746,13 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomeDependentLocalityStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomeDependentLocalityStatus_ = value.getNumber();
-    bitField0_ |= 0x10000000;
+    bitField0_ |= 0x20000000;
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_dependent_locality_status = 49;</code>
    */
   private void clearAddressHomeDependentLocalityStatus() {
-    bitField0_ = (bitField0_ & ~0x10000000);
+    bitField0_ = (bitField0_ & ~0x20000000);
     addressHomeDependentLocalityStatus_ = 0;
   }
 
@@ -3673,7 +3764,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeLanguageCodeStatus() {
-    return ((bitField0_ & 0x20000000) != 0);
+    return ((bitField0_ & 0x40000000) != 0);
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_language_code_status = 50;</code>
@@ -3690,13 +3781,13 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomeLanguageCodeStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomeLanguageCodeStatus_ = value.getNumber();
-    bitField0_ |= 0x20000000;
+    bitField0_ |= 0x40000000;
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_language_code_status = 50;</code>
    */
   private void clearAddressHomeLanguageCodeStatus() {
-    bitField0_ = (bitField0_ & ~0x20000000);
+    bitField0_ = (bitField0_ & ~0x40000000);
     addressHomeLanguageCodeStatus_ = 0;
   }
 
@@ -3708,7 +3799,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeThoroughfareNameStatus() {
-    return ((bitField0_ & 0x40000000) != 0);
+    return ((bitField0_ & 0x80000000) != 0);
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_thoroughfare_name_status = 51;</code>
@@ -3725,13 +3816,13 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomeThoroughfareNameStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomeThoroughfareNameStatus_ = value.getNumber();
-    bitField0_ |= 0x40000000;
+    bitField0_ |= 0x80000000;
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_thoroughfare_name_status = 51;</code>
    */
   private void clearAddressHomeThoroughfareNameStatus() {
-    bitField0_ = (bitField0_ & ~0x40000000);
+    bitField0_ = (bitField0_ & ~0x80000000);
     addressHomeThoroughfareNameStatus_ = 0;
   }
 
@@ -3743,7 +3834,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeThoroughfareNumberStatus() {
-    return ((bitField0_ & 0x80000000) != 0);
+    return ((bitField1_ & 0x00000001) != 0);
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_thoroughfare_number_status = 52;</code>
@@ -3760,13 +3851,13 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomeThoroughfareNumberStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomeThoroughfareNumberStatus_ = value.getNumber();
-    bitField0_ |= 0x80000000;
+    bitField1_ |= 0x00000001;
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_thoroughfare_number_status = 52;</code>
    */
   private void clearAddressHomeThoroughfareNumberStatus() {
-    bitField0_ = (bitField0_ & ~0x80000000);
+    bitField1_ = (bitField1_ & ~0x00000001);
     addressHomeThoroughfareNumberStatus_ = 0;
   }
 
@@ -3778,7 +3869,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeDependentThoroughfareNameStatus() {
-    return ((bitField1_ & 0x00000001) != 0);
+    return ((bitField1_ & 0x00000002) != 0);
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_dependent_thoroughfare_name_status = 53;</code>
@@ -3795,13 +3886,13 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomeDependentThoroughfareNameStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomeDependentThoroughfareNameStatus_ = value.getNumber();
-    bitField1_ |= 0x00000001;
+    bitField1_ |= 0x00000002;
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_dependent_thoroughfare_name_status = 53;</code>
    */
   private void clearAddressHomeDependentThoroughfareNameStatus() {
-    bitField1_ = (bitField1_ & ~0x00000001);
+    bitField1_ = (bitField1_ & ~0x00000002);
     addressHomeDependentThoroughfareNameStatus_ = 0;
   }
 
@@ -3813,7 +3904,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomePremiseNameStatus() {
-    return ((bitField1_ & 0x00000002) != 0);
+    return ((bitField1_ & 0x00000004) != 0);
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_premise_name_status = 54;</code>
@@ -3830,13 +3921,13 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomePremiseNameStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomePremiseNameStatus_ = value.getNumber();
-    bitField1_ |= 0x00000002;
+    bitField1_ |= 0x00000004;
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_premise_name_status = 54;</code>
    */
   private void clearAddressHomePremiseNameStatus() {
-    bitField1_ = (bitField1_ & ~0x00000002);
+    bitField1_ = (bitField1_ & ~0x00000004);
     addressHomePremiseNameStatus_ = 0;
   }
 
@@ -3848,7 +3939,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeSubpremiseNameStatus() {
-    return ((bitField1_ & 0x00000004) != 0);
+    return ((bitField1_ & 0x00000008) != 0);
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_subpremise_name_status = 55;</code>
@@ -3865,13 +3956,13 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomeSubpremiseNameStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomeSubpremiseNameStatus_ = value.getNumber();
-    bitField1_ |= 0x00000004;
+    bitField1_ |= 0x00000008;
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_subpremise_name_status = 55;</code>
    */
   private void clearAddressHomeSubpremiseNameStatus() {
-    bitField1_ = (bitField1_ & ~0x00000004);
+    bitField1_ = (bitField1_ & ~0x00000008);
     addressHomeSubpremiseNameStatus_ = 0;
   }
 
@@ -3883,7 +3974,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeAptNumStatus() {
-    return ((bitField1_ & 0x00000008) != 0);
+    return ((bitField1_ & 0x00000010) != 0);
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_apt_num_status = 58;</code>
@@ -3900,13 +3991,13 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomeAptNumStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomeAptNumStatus_ = value.getNumber();
-    bitField1_ |= 0x00000008;
+    bitField1_ |= 0x00000010;
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_apt_num_status = 58;</code>
    */
   private void clearAddressHomeAptNumStatus() {
-    bitField1_ = (bitField1_ & ~0x00000008);
+    bitField1_ = (bitField1_ & ~0x00000010);
     addressHomeAptNumStatus_ = 0;
   }
 
@@ -3918,7 +4009,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeFloorStatus() {
-    return ((bitField1_ & 0x00000010) != 0);
+    return ((bitField1_ & 0x00000020) != 0);
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_floor_status = 59;</code>
@@ -3935,13 +4026,13 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomeFloorStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomeFloorStatus_ = value.getNumber();
-    bitField1_ |= 0x00000010;
+    bitField1_ |= 0x00000020;
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_floor_status = 59;</code>
    */
   private void clearAddressHomeFloorStatus() {
-    bitField1_ = (bitField1_ & ~0x00000010);
+    bitField1_ = (bitField1_ & ~0x00000020);
     addressHomeFloorStatus_ = 0;
   }
 
@@ -4073,194 +4164,278 @@ public  final class AutofillProfileSpecifics extends
     phoneHomeWholeNumber_.add(value.toStringUtf8());
   }
 
-  public static final int VALIDITY_STATE_BITFIELD_FIELD_NUMBER = 24;
-  private long validityStateBitfield_;
+  public static final int DISALLOW_SETTINGS_VISIBLE_UPDATES_FIELD_NUMBER = 63;
+  private boolean disallowSettingsVisibleUpdates_;
   /**
    * <pre>
-   * Validity bitfield.
-   * Each set of two bits represents the validity state of a specific part of
-   * the Autofill address. For more info please refer to autofill_profile.h.
+   * The state indicates if the profile qualifies to get merged with a
+   * profile observed in a form submission. If true, the profile can still be
+   * updated silently, but it should not be considered for merges that need to
+   * involve user interactions.
    * </pre>
    *
-   * <code>optional int64 validity_state_bitfield = 24;</code>
-   * @return Whether the validityStateBitfield field is set.
+   * <code>optional bool disallow_settings_visible_updates = 63;</code>
+   * @return Whether the disallowSettingsVisibleUpdates field is set.
    */
   @java.lang.Override
-  public boolean hasValidityStateBitfield() {
-    return ((bitField1_ & 0x00000020) != 0);
-  }
-  /**
-   * <pre>
-   * Validity bitfield.
-   * Each set of two bits represents the validity state of a specific part of
-   * the Autofill address. For more info please refer to autofill_profile.h.
-   * </pre>
-   *
-   * <code>optional int64 validity_state_bitfield = 24;</code>
-   * @return The validityStateBitfield.
-   */
-  @java.lang.Override
-  public long getValidityStateBitfield() {
-    return validityStateBitfield_;
-  }
-  /**
-   * <pre>
-   * Validity bitfield.
-   * Each set of two bits represents the validity state of a specific part of
-   * the Autofill address. For more info please refer to autofill_profile.h.
-   * </pre>
-   *
-   * <code>optional int64 validity_state_bitfield = 24;</code>
-   * @param value The validityStateBitfield to set.
-   */
-  private void setValidityStateBitfield(long value) {
-    bitField1_ |= 0x00000020;
-    validityStateBitfield_ = value;
-  }
-  /**
-   * <pre>
-   * Validity bitfield.
-   * Each set of two bits represents the validity state of a specific part of
-   * the Autofill address. For more info please refer to autofill_profile.h.
-   * </pre>
-   *
-   * <code>optional int64 validity_state_bitfield = 24;</code>
-   */
-  private void clearValidityStateBitfield() {
-    bitField1_ = (bitField1_ & ~0x00000020);
-    validityStateBitfield_ = 0L;
-  }
-
-  public static final int IS_CLIENT_VALIDITY_STATES_UPDATED_FIELD_NUMBER = 25;
-  private boolean isClientValidityStatesUpdated_;
-  /**
-   * <pre>
-   * Denotes whether the validity_state_bitfield is updated according to the
-   * changes in the autofill profile values.
-   * </pre>
-   *
-   * <code>optional bool is_client_validity_states_updated = 25;</code>
-   * @return Whether the isClientValidityStatesUpdated field is set.
-   */
-  @java.lang.Override
-  public boolean hasIsClientValidityStatesUpdated() {
+  public boolean hasDisallowSettingsVisibleUpdates() {
     return ((bitField1_ & 0x00000040) != 0);
   }
   /**
    * <pre>
-   * Denotes whether the validity_state_bitfield is updated according to the
-   * changes in the autofill profile values.
+   * The state indicates if the profile qualifies to get merged with a
+   * profile observed in a form submission. If true, the profile can still be
+   * updated silently, but it should not be considered for merges that need to
+   * involve user interactions.
    * </pre>
    *
-   * <code>optional bool is_client_validity_states_updated = 25;</code>
-   * @return The isClientValidityStatesUpdated.
+   * <code>optional bool disallow_settings_visible_updates = 63;</code>
+   * @return The disallowSettingsVisibleUpdates.
    */
   @java.lang.Override
-  public boolean getIsClientValidityStatesUpdated() {
-    return isClientValidityStatesUpdated_;
+  public boolean getDisallowSettingsVisibleUpdates() {
+    return disallowSettingsVisibleUpdates_;
   }
   /**
    * <pre>
-   * Denotes whether the validity_state_bitfield is updated according to the
-   * changes in the autofill profile values.
+   * The state indicates if the profile qualifies to get merged with a
+   * profile observed in a form submission. If true, the profile can still be
+   * updated silently, but it should not be considered for merges that need to
+   * involve user interactions.
    * </pre>
    *
-   * <code>optional bool is_client_validity_states_updated = 25;</code>
-   * @param value The isClientValidityStatesUpdated to set.
+   * <code>optional bool disallow_settings_visible_updates = 63;</code>
+   * @param value The disallowSettingsVisibleUpdates to set.
    */
-  private void setIsClientValidityStatesUpdated(boolean value) {
+  private void setDisallowSettingsVisibleUpdates(boolean value) {
     bitField1_ |= 0x00000040;
-    isClientValidityStatesUpdated_ = value;
+    disallowSettingsVisibleUpdates_ = value;
   }
   /**
    * <pre>
-   * Denotes whether the validity_state_bitfield is updated according to the
-   * changes in the autofill profile values.
+   * The state indicates if the profile qualifies to get merged with a
+   * profile observed in a form submission. If true, the profile can still be
+   * updated silently, but it should not be considered for merges that need to
+   * involve user interactions.
    * </pre>
    *
-   * <code>optional bool is_client_validity_states_updated = 25;</code>
+   * <code>optional bool disallow_settings_visible_updates = 63;</code>
    */
-  private void clearIsClientValidityStatesUpdated() {
+  private void clearDisallowSettingsVisibleUpdates() {
     bitField1_ = (bitField1_ & ~0x00000040);
-    isClientValidityStatesUpdated_ = false;
+    disallowSettingsVisibleUpdates_ = false;
   }
 
-  public static final int LABEL_FIELD_NUMBER = 1;
-  private java.lang.String label_;
+  public static final int BIRTHDATE_DAY_FIELD_NUMBER = 64;
+  private int birthdateDay_;
   /**
    * <pre>
-   * Deprecated.
+   * Birthdate fields.
    * </pre>
    *
-   * <code>optional string label = 1 [deprecated = true];</code>
-   * @return Whether the label field is set.
+   * <code>optional int32 birthdate_day = 64;</code>
+   * @return Whether the birthdateDay field is set.
    */
   @java.lang.Override
-  @java.lang.Deprecated public boolean hasLabel() {
+  public boolean hasBirthdateDay() {
     return ((bitField1_ & 0x00000080) != 0);
   }
   /**
    * <pre>
+   * Birthdate fields.
+   * </pre>
+   *
+   * <code>optional int32 birthdate_day = 64;</code>
+   * @return The birthdateDay.
+   */
+  @java.lang.Override
+  public int getBirthdateDay() {
+    return birthdateDay_;
+  }
+  /**
+   * <pre>
+   * Birthdate fields.
+   * </pre>
+   *
+   * <code>optional int32 birthdate_day = 64;</code>
+   * @param value The birthdateDay to set.
+   */
+  private void setBirthdateDay(int value) {
+    bitField1_ |= 0x00000080;
+    birthdateDay_ = value;
+  }
+  /**
+   * <pre>
+   * Birthdate fields.
+   * </pre>
+   *
+   * <code>optional int32 birthdate_day = 64;</code>
+   */
+  private void clearBirthdateDay() {
+    bitField1_ = (bitField1_ & ~0x00000080);
+    birthdateDay_ = 0;
+  }
+
+  public static final int BIRTHDATE_MONTH_FIELD_NUMBER = 65;
+  private int birthdateMonth_;
+  /**
+   * <code>optional int32 birthdate_month = 65;</code>
+   * @return Whether the birthdateMonth field is set.
+   */
+  @java.lang.Override
+  public boolean hasBirthdateMonth() {
+    return ((bitField1_ & 0x00000100) != 0);
+  }
+  /**
+   * <code>optional int32 birthdate_month = 65;</code>
+   * @return The birthdateMonth.
+   */
+  @java.lang.Override
+  public int getBirthdateMonth() {
+    return birthdateMonth_;
+  }
+  /**
+   * <code>optional int32 birthdate_month = 65;</code>
+   * @param value The birthdateMonth to set.
+   */
+  private void setBirthdateMonth(int value) {
+    bitField1_ |= 0x00000100;
+    birthdateMonth_ = value;
+  }
+  /**
+   * <code>optional int32 birthdate_month = 65;</code>
+   */
+  private void clearBirthdateMonth() {
+    bitField1_ = (bitField1_ & ~0x00000100);
+    birthdateMonth_ = 0;
+  }
+
+  public static final int BIRTHDATE_YEAR_FIELD_NUMBER = 66;
+  private int birthdateYear_;
+  /**
+   * <pre>
+   * 4 digits.
+   * </pre>
+   *
+   * <code>optional int32 birthdate_year = 66;</code>
+   * @return Whether the birthdateYear field is set.
+   */
+  @java.lang.Override
+  public boolean hasBirthdateYear() {
+    return ((bitField1_ & 0x00000200) != 0);
+  }
+  /**
+   * <pre>
+   * 4 digits.
+   * </pre>
+   *
+   * <code>optional int32 birthdate_year = 66;</code>
+   * @return The birthdateYear.
+   */
+  @java.lang.Override
+  public int getBirthdateYear() {
+    return birthdateYear_;
+  }
+  /**
+   * <pre>
+   * 4 digits.
+   * </pre>
+   *
+   * <code>optional int32 birthdate_year = 66;</code>
+   * @param value The birthdateYear to set.
+   */
+  private void setBirthdateYear(int value) {
+    bitField1_ |= 0x00000200;
+    birthdateYear_ = value;
+  }
+  /**
+   * <pre>
+   * 4 digits.
+   * </pre>
+   *
+   * <code>optional int32 birthdate_year = 66;</code>
+   */
+  private void clearBirthdateYear() {
+    bitField1_ = (bitField1_ & ~0x00000200);
+    birthdateYear_ = 0;
+  }
+
+  public static final int DEPRECATED_LABEL_FIELD_NUMBER = 1;
+  private java.lang.String deprecatedLabel_;
+  /**
+   * <pre>
    * Deprecated.
    * </pre>
    *
-   * <code>optional string label = 1 [deprecated = true];</code>
-   * @return The label.
+   * <code>optional string deprecated_label = 1 [deprecated = true];</code>
+   * @return Whether the deprecatedLabel field is set.
    */
   @java.lang.Override
-  @java.lang.Deprecated public java.lang.String getLabel() {
-    return label_;
+  @java.lang.Deprecated public boolean hasDeprecatedLabel() {
+    return ((bitField1_ & 0x00000400) != 0);
   }
   /**
    * <pre>
    * Deprecated.
    * </pre>
    *
-   * <code>optional string label = 1 [deprecated = true];</code>
-   * @return The bytes for label.
+   * <code>optional string deprecated_label = 1 [deprecated = true];</code>
+   * @return The deprecatedLabel.
+   */
+  @java.lang.Override
+  @java.lang.Deprecated public java.lang.String getDeprecatedLabel() {
+    return deprecatedLabel_;
+  }
+  /**
+   * <pre>
+   * Deprecated.
+   * </pre>
+   *
+   * <code>optional string deprecated_label = 1 [deprecated = true];</code>
+   * @return The bytes for deprecatedLabel.
    */
   @java.lang.Override
   @java.lang.Deprecated public com.google.protobuf.ByteString
-      getLabelBytes() {
-    return com.google.protobuf.ByteString.copyFromUtf8(label_);
+      getDeprecatedLabelBytes() {
+    return com.google.protobuf.ByteString.copyFromUtf8(deprecatedLabel_);
   }
   /**
    * <pre>
    * Deprecated.
    * </pre>
    *
-   * <code>optional string label = 1 [deprecated = true];</code>
-   * @param value The label to set.
+   * <code>optional string deprecated_label = 1 [deprecated = true];</code>
+   * @param value The deprecatedLabel to set.
    */
-  private void setLabel(
+  private void setDeprecatedLabel(
       java.lang.String value) {
     value.getClass();
-  bitField1_ |= 0x00000080;
-    label_ = value;
+  bitField1_ |= 0x00000400;
+    deprecatedLabel_ = value;
   }
   /**
    * <pre>
    * Deprecated.
    * </pre>
    *
-   * <code>optional string label = 1 [deprecated = true];</code>
+   * <code>optional string deprecated_label = 1 [deprecated = true];</code>
    */
-  private void clearLabel() {
-    bitField1_ = (bitField1_ & ~0x00000080);
-    label_ = getDefaultInstance().getLabel();
+  private void clearDeprecatedLabel() {
+    bitField1_ = (bitField1_ & ~0x00000400);
+    deprecatedLabel_ = getDefaultInstance().getDeprecatedLabel();
   }
   /**
    * <pre>
    * Deprecated.
    * </pre>
    *
-   * <code>optional string label = 1 [deprecated = true];</code>
-   * @param value The bytes for label to set.
+   * <code>optional string deprecated_label = 1 [deprecated = true];</code>
+   * @param value The bytes for deprecatedLabel to set.
    */
-  private void setLabelBytes(
+  private void setDeprecatedLabelBytes(
       com.google.protobuf.ByteString value) {
-    label_ = value.toStringUtf8();
-    bitField1_ |= 0x00000080;
+    deprecatedLabel_ = value.toStringUtf8();
+    bitField1_ |= 0x00000400;
   }
 
   public static final int PHONE_FAX_WHOLE_NUMBER_FIELD_NUMBER = 14;
@@ -4271,7 +4446,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   @java.lang.Deprecated public boolean hasPhoneFaxWholeNumber() {
-    return ((bitField1_ & 0x00000100) != 0);
+    return ((bitField1_ & 0x00000800) != 0);
   }
   /**
    * <code>optional string phone_fax_whole_number = 14 [deprecated = true];</code>
@@ -4297,14 +4472,14 @@ public  final class AutofillProfileSpecifics extends
   private void setPhoneFaxWholeNumber(
       java.lang.String value) {
     value.getClass();
-  bitField1_ |= 0x00000100;
+  bitField1_ |= 0x00000800;
     phoneFaxWholeNumber_ = value;
   }
   /**
    * <code>optional string phone_fax_whole_number = 14 [deprecated = true];</code>
    */
   private void clearPhoneFaxWholeNumber() {
-    bitField1_ = (bitField1_ & ~0x00000100);
+    bitField1_ = (bitField1_ & ~0x00000800);
     phoneFaxWholeNumber_ = getDefaultInstance().getPhoneFaxWholeNumber();
   }
   /**
@@ -4314,7 +4489,99 @@ public  final class AutofillProfileSpecifics extends
   private void setPhoneFaxWholeNumberBytes(
       com.google.protobuf.ByteString value) {
     phoneFaxWholeNumber_ = value.toStringUtf8();
-    bitField1_ |= 0x00000100;
+    bitField1_ |= 0x00000800;
+  }
+
+  public static final int VALIDITY_STATE_BITFIELD_FIELD_NUMBER = 24;
+  private long validityStateBitfield_;
+  /**
+   * <pre>
+   * The following validity-related fields have only been used in combination
+   * with an experimental features that are disabled for all clients and have
+   * been removed in M100.
+   * </pre>
+   *
+   * <code>optional int64 validity_state_bitfield = 24 [deprecated = true];</code>
+   * @return Whether the validityStateBitfield field is set.
+   */
+  @java.lang.Override
+  @java.lang.Deprecated public boolean hasValidityStateBitfield() {
+    return ((bitField1_ & 0x00001000) != 0);
+  }
+  /**
+   * <pre>
+   * The following validity-related fields have only been used in combination
+   * with an experimental features that are disabled for all clients and have
+   * been removed in M100.
+   * </pre>
+   *
+   * <code>optional int64 validity_state_bitfield = 24 [deprecated = true];</code>
+   * @return The validityStateBitfield.
+   */
+  @java.lang.Override
+  @java.lang.Deprecated public long getValidityStateBitfield() {
+    return validityStateBitfield_;
+  }
+  /**
+   * <pre>
+   * The following validity-related fields have only been used in combination
+   * with an experimental features that are disabled for all clients and have
+   * been removed in M100.
+   * </pre>
+   *
+   * <code>optional int64 validity_state_bitfield = 24 [deprecated = true];</code>
+   * @param value The validityStateBitfield to set.
+   */
+  private void setValidityStateBitfield(long value) {
+    bitField1_ |= 0x00001000;
+    validityStateBitfield_ = value;
+  }
+  /**
+   * <pre>
+   * The following validity-related fields have only been used in combination
+   * with an experimental features that are disabled for all clients and have
+   * been removed in M100.
+   * </pre>
+   *
+   * <code>optional int64 validity_state_bitfield = 24 [deprecated = true];</code>
+   */
+  private void clearValidityStateBitfield() {
+    bitField1_ = (bitField1_ & ~0x00001000);
+    validityStateBitfield_ = 0L;
+  }
+
+  public static final int IS_CLIENT_VALIDITY_STATES_UPDATED_FIELD_NUMBER = 25;
+  private boolean isClientValidityStatesUpdated_;
+  /**
+   * <code>optional bool is_client_validity_states_updated = 25 [deprecated = true];</code>
+   * @return Whether the isClientValidityStatesUpdated field is set.
+   */
+  @java.lang.Override
+  @java.lang.Deprecated public boolean hasIsClientValidityStatesUpdated() {
+    return ((bitField1_ & 0x00002000) != 0);
+  }
+  /**
+   * <code>optional bool is_client_validity_states_updated = 25 [deprecated = true];</code>
+   * @return The isClientValidityStatesUpdated.
+   */
+  @java.lang.Override
+  @java.lang.Deprecated public boolean getIsClientValidityStatesUpdated() {
+    return isClientValidityStatesUpdated_;
+  }
+  /**
+   * <code>optional bool is_client_validity_states_updated = 25 [deprecated = true];</code>
+   * @param value The isClientValidityStatesUpdated to set.
+   */
+  private void setIsClientValidityStatesUpdated(boolean value) {
+    bitField1_ |= 0x00002000;
+    isClientValidityStatesUpdated_ = value;
+  }
+  /**
+   * <code>optional bool is_client_validity_states_updated = 25 [deprecated = true];</code>
+   */
+  private void clearIsClientValidityStatesUpdated() {
+    bitField1_ = (bitField1_ & ~0x00002000);
+    isClientValidityStatesUpdated_ = false;
   }
 
   public static org.chromium.components.sync.protocol.AutofillProfileSpecifics parseFrom(
@@ -4623,6 +4890,99 @@ public  final class AutofillProfileSpecifics extends
     public Builder clearUseDate() {
       copyOnWrite();
       instance.clearUseDate();
+      return this;
+    }
+
+    /**
+     * <pre>
+     * A user chosen profile label that is used to identify the profile.
+     * The value of the label can be freely chosen by the user. Two possible label
+     * values are '$HOME$' or '$WORK$' which have a special meaning.
+     * </pre>
+     *
+     * <code>optional string profile_label = 62;</code>
+     * @return Whether the profileLabel field is set.
+     */
+    @java.lang.Override
+    public boolean hasProfileLabel() {
+      return instance.hasProfileLabel();
+    }
+    /**
+     * <pre>
+     * A user chosen profile label that is used to identify the profile.
+     * The value of the label can be freely chosen by the user. Two possible label
+     * values are '$HOME$' or '$WORK$' which have a special meaning.
+     * </pre>
+     *
+     * <code>optional string profile_label = 62;</code>
+     * @return The profileLabel.
+     */
+    @java.lang.Override
+    public java.lang.String getProfileLabel() {
+      return instance.getProfileLabel();
+    }
+    /**
+     * <pre>
+     * A user chosen profile label that is used to identify the profile.
+     * The value of the label can be freely chosen by the user. Two possible label
+     * values are '$HOME$' or '$WORK$' which have a special meaning.
+     * </pre>
+     *
+     * <code>optional string profile_label = 62;</code>
+     * @return The bytes for profileLabel.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getProfileLabelBytes() {
+      return instance.getProfileLabelBytes();
+    }
+    /**
+     * <pre>
+     * A user chosen profile label that is used to identify the profile.
+     * The value of the label can be freely chosen by the user. Two possible label
+     * values are '$HOME$' or '$WORK$' which have a special meaning.
+     * </pre>
+     *
+     * <code>optional string profile_label = 62;</code>
+     * @param value The profileLabel to set.
+     * @return This builder for chaining.
+     */
+    public Builder setProfileLabel(
+        java.lang.String value) {
+      copyOnWrite();
+      instance.setProfileLabel(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * A user chosen profile label that is used to identify the profile.
+     * The value of the label can be freely chosen by the user. Two possible label
+     * values are '$HOME$' or '$WORK$' which have a special meaning.
+     * </pre>
+     *
+     * <code>optional string profile_label = 62;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearProfileLabel() {
+      copyOnWrite();
+      instance.clearProfileLabel();
+      return this;
+    }
+    /**
+     * <pre>
+     * A user chosen profile label that is used to identify the profile.
+     * The value of the label can be freely chosen by the user. Two possible label
+     * values are '$HOME$' or '$WORK$' which have a special meaning.
+     * </pre>
+     *
+     * <code>optional string profile_label = 62;</code>
+     * @param value The bytes for profileLabel to set.
+     * @return This builder for chaining.
+     */
+    public Builder setProfileLabelBytes(
+        com.google.protobuf.ByteString value) {
+      copyOnWrite();
+      instance.setProfileLabelBytes(value);
       return this;
     }
 
@@ -8177,170 +8537,258 @@ public  final class AutofillProfileSpecifics extends
 
     /**
      * <pre>
-     * Validity bitfield.
-     * Each set of two bits represents the validity state of a specific part of
-     * the Autofill address. For more info please refer to autofill_profile.h.
+     * The state indicates if the profile qualifies to get merged with a
+     * profile observed in a form submission. If true, the profile can still be
+     * updated silently, but it should not be considered for merges that need to
+     * involve user interactions.
      * </pre>
      *
-     * <code>optional int64 validity_state_bitfield = 24;</code>
-     * @return Whether the validityStateBitfield field is set.
+     * <code>optional bool disallow_settings_visible_updates = 63;</code>
+     * @return Whether the disallowSettingsVisibleUpdates field is set.
      */
     @java.lang.Override
-    public boolean hasValidityStateBitfield() {
-      return instance.hasValidityStateBitfield();
+    public boolean hasDisallowSettingsVisibleUpdates() {
+      return instance.hasDisallowSettingsVisibleUpdates();
     }
     /**
      * <pre>
-     * Validity bitfield.
-     * Each set of two bits represents the validity state of a specific part of
-     * the Autofill address. For more info please refer to autofill_profile.h.
+     * The state indicates if the profile qualifies to get merged with a
+     * profile observed in a form submission. If true, the profile can still be
+     * updated silently, but it should not be considered for merges that need to
+     * involve user interactions.
      * </pre>
      *
-     * <code>optional int64 validity_state_bitfield = 24;</code>
-     * @return The validityStateBitfield.
+     * <code>optional bool disallow_settings_visible_updates = 63;</code>
+     * @return The disallowSettingsVisibleUpdates.
      */
     @java.lang.Override
-    public long getValidityStateBitfield() {
-      return instance.getValidityStateBitfield();
+    public boolean getDisallowSettingsVisibleUpdates() {
+      return instance.getDisallowSettingsVisibleUpdates();
     }
     /**
      * <pre>
-     * Validity bitfield.
-     * Each set of two bits represents the validity state of a specific part of
-     * the Autofill address. For more info please refer to autofill_profile.h.
+     * The state indicates if the profile qualifies to get merged with a
+     * profile observed in a form submission. If true, the profile can still be
+     * updated silently, but it should not be considered for merges that need to
+     * involve user interactions.
      * </pre>
      *
-     * <code>optional int64 validity_state_bitfield = 24;</code>
-     * @param value The validityStateBitfield to set.
+     * <code>optional bool disallow_settings_visible_updates = 63;</code>
+     * @param value The disallowSettingsVisibleUpdates to set.
      * @return This builder for chaining.
      */
-    public Builder setValidityStateBitfield(long value) {
+    public Builder setDisallowSettingsVisibleUpdates(boolean value) {
       copyOnWrite();
-      instance.setValidityStateBitfield(value);
+      instance.setDisallowSettingsVisibleUpdates(value);
       return this;
     }
     /**
      * <pre>
-     * Validity bitfield.
-     * Each set of two bits represents the validity state of a specific part of
-     * the Autofill address. For more info please refer to autofill_profile.h.
+     * The state indicates if the profile qualifies to get merged with a
+     * profile observed in a form submission. If true, the profile can still be
+     * updated silently, but it should not be considered for merges that need to
+     * involve user interactions.
      * </pre>
      *
-     * <code>optional int64 validity_state_bitfield = 24;</code>
+     * <code>optional bool disallow_settings_visible_updates = 63;</code>
      * @return This builder for chaining.
      */
-    public Builder clearValidityStateBitfield() {
+    public Builder clearDisallowSettingsVisibleUpdates() {
       copyOnWrite();
-      instance.clearValidityStateBitfield();
-      return this;
-    }
-
-    /**
-     * <pre>
-     * Denotes whether the validity_state_bitfield is updated according to the
-     * changes in the autofill profile values.
-     * </pre>
-     *
-     * <code>optional bool is_client_validity_states_updated = 25;</code>
-     * @return Whether the isClientValidityStatesUpdated field is set.
-     */
-    @java.lang.Override
-    public boolean hasIsClientValidityStatesUpdated() {
-      return instance.hasIsClientValidityStatesUpdated();
-    }
-    /**
-     * <pre>
-     * Denotes whether the validity_state_bitfield is updated according to the
-     * changes in the autofill profile values.
-     * </pre>
-     *
-     * <code>optional bool is_client_validity_states_updated = 25;</code>
-     * @return The isClientValidityStatesUpdated.
-     */
-    @java.lang.Override
-    public boolean getIsClientValidityStatesUpdated() {
-      return instance.getIsClientValidityStatesUpdated();
-    }
-    /**
-     * <pre>
-     * Denotes whether the validity_state_bitfield is updated according to the
-     * changes in the autofill profile values.
-     * </pre>
-     *
-     * <code>optional bool is_client_validity_states_updated = 25;</code>
-     * @param value The isClientValidityStatesUpdated to set.
-     * @return This builder for chaining.
-     */
-    public Builder setIsClientValidityStatesUpdated(boolean value) {
-      copyOnWrite();
-      instance.setIsClientValidityStatesUpdated(value);
-      return this;
-    }
-    /**
-     * <pre>
-     * Denotes whether the validity_state_bitfield is updated according to the
-     * changes in the autofill profile values.
-     * </pre>
-     *
-     * <code>optional bool is_client_validity_states_updated = 25;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearIsClientValidityStatesUpdated() {
-      copyOnWrite();
-      instance.clearIsClientValidityStatesUpdated();
+      instance.clearDisallowSettingsVisibleUpdates();
       return this;
     }
 
     /**
      * <pre>
+     * Birthdate fields.
+     * </pre>
+     *
+     * <code>optional int32 birthdate_day = 64;</code>
+     * @return Whether the birthdateDay field is set.
+     */
+    @java.lang.Override
+    public boolean hasBirthdateDay() {
+      return instance.hasBirthdateDay();
+    }
+    /**
+     * <pre>
+     * Birthdate fields.
+     * </pre>
+     *
+     * <code>optional int32 birthdate_day = 64;</code>
+     * @return The birthdateDay.
+     */
+    @java.lang.Override
+    public int getBirthdateDay() {
+      return instance.getBirthdateDay();
+    }
+    /**
+     * <pre>
+     * Birthdate fields.
+     * </pre>
+     *
+     * <code>optional int32 birthdate_day = 64;</code>
+     * @param value The birthdateDay to set.
+     * @return This builder for chaining.
+     */
+    public Builder setBirthdateDay(int value) {
+      copyOnWrite();
+      instance.setBirthdateDay(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * Birthdate fields.
+     * </pre>
+     *
+     * <code>optional int32 birthdate_day = 64;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearBirthdateDay() {
+      copyOnWrite();
+      instance.clearBirthdateDay();
+      return this;
+    }
+
+    /**
+     * <code>optional int32 birthdate_month = 65;</code>
+     * @return Whether the birthdateMonth field is set.
+     */
+    @java.lang.Override
+    public boolean hasBirthdateMonth() {
+      return instance.hasBirthdateMonth();
+    }
+    /**
+     * <code>optional int32 birthdate_month = 65;</code>
+     * @return The birthdateMonth.
+     */
+    @java.lang.Override
+    public int getBirthdateMonth() {
+      return instance.getBirthdateMonth();
+    }
+    /**
+     * <code>optional int32 birthdate_month = 65;</code>
+     * @param value The birthdateMonth to set.
+     * @return This builder for chaining.
+     */
+    public Builder setBirthdateMonth(int value) {
+      copyOnWrite();
+      instance.setBirthdateMonth(value);
+      return this;
+    }
+    /**
+     * <code>optional int32 birthdate_month = 65;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearBirthdateMonth() {
+      copyOnWrite();
+      instance.clearBirthdateMonth();
+      return this;
+    }
+
+    /**
+     * <pre>
+     * 4 digits.
+     * </pre>
+     *
+     * <code>optional int32 birthdate_year = 66;</code>
+     * @return Whether the birthdateYear field is set.
+     */
+    @java.lang.Override
+    public boolean hasBirthdateYear() {
+      return instance.hasBirthdateYear();
+    }
+    /**
+     * <pre>
+     * 4 digits.
+     * </pre>
+     *
+     * <code>optional int32 birthdate_year = 66;</code>
+     * @return The birthdateYear.
+     */
+    @java.lang.Override
+    public int getBirthdateYear() {
+      return instance.getBirthdateYear();
+    }
+    /**
+     * <pre>
+     * 4 digits.
+     * </pre>
+     *
+     * <code>optional int32 birthdate_year = 66;</code>
+     * @param value The birthdateYear to set.
+     * @return This builder for chaining.
+     */
+    public Builder setBirthdateYear(int value) {
+      copyOnWrite();
+      instance.setBirthdateYear(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * 4 digits.
+     * </pre>
+     *
+     * <code>optional int32 birthdate_year = 66;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearBirthdateYear() {
+      copyOnWrite();
+      instance.clearBirthdateYear();
+      return this;
+    }
+
+    /**
+     * <pre>
      * Deprecated.
      * </pre>
      *
-     * <code>optional string label = 1 [deprecated = true];</code>
-     * @return Whether the label field is set.
+     * <code>optional string deprecated_label = 1 [deprecated = true];</code>
+     * @return Whether the deprecatedLabel field is set.
      */
     @java.lang.Override
-    @java.lang.Deprecated public boolean hasLabel() {
-      return instance.hasLabel();
+    @java.lang.Deprecated public boolean hasDeprecatedLabel() {
+      return instance.hasDeprecatedLabel();
     }
     /**
      * <pre>
      * Deprecated.
      * </pre>
      *
-     * <code>optional string label = 1 [deprecated = true];</code>
-     * @return The label.
+     * <code>optional string deprecated_label = 1 [deprecated = true];</code>
+     * @return The deprecatedLabel.
      */
     @java.lang.Override
-    @java.lang.Deprecated public java.lang.String getLabel() {
-      return instance.getLabel();
+    @java.lang.Deprecated public java.lang.String getDeprecatedLabel() {
+      return instance.getDeprecatedLabel();
     }
     /**
      * <pre>
      * Deprecated.
      * </pre>
      *
-     * <code>optional string label = 1 [deprecated = true];</code>
-     * @return The bytes for label.
+     * <code>optional string deprecated_label = 1 [deprecated = true];</code>
+     * @return The bytes for deprecatedLabel.
      */
     @java.lang.Override
     @java.lang.Deprecated public com.google.protobuf.ByteString
-        getLabelBytes() {
-      return instance.getLabelBytes();
+        getDeprecatedLabelBytes() {
+      return instance.getDeprecatedLabelBytes();
     }
     /**
      * <pre>
      * Deprecated.
      * </pre>
      *
-     * <code>optional string label = 1 [deprecated = true];</code>
-     * @param value The label to set.
+     * <code>optional string deprecated_label = 1 [deprecated = true];</code>
+     * @param value The deprecatedLabel to set.
      * @return This builder for chaining.
      */
-    @java.lang.Deprecated public Builder setLabel(
+    @java.lang.Deprecated public Builder setDeprecatedLabel(
         java.lang.String value) {
       copyOnWrite();
-      instance.setLabel(value);
+      instance.setDeprecatedLabel(value);
       return this;
     }
     /**
@@ -8348,12 +8796,12 @@ public  final class AutofillProfileSpecifics extends
      * Deprecated.
      * </pre>
      *
-     * <code>optional string label = 1 [deprecated = true];</code>
+     * <code>optional string deprecated_label = 1 [deprecated = true];</code>
      * @return This builder for chaining.
      */
-    @java.lang.Deprecated public Builder clearLabel() {
+    @java.lang.Deprecated public Builder clearDeprecatedLabel() {
       copyOnWrite();
-      instance.clearLabel();
+      instance.clearDeprecatedLabel();
       return this;
     }
     /**
@@ -8361,14 +8809,14 @@ public  final class AutofillProfileSpecifics extends
      * Deprecated.
      * </pre>
      *
-     * <code>optional string label = 1 [deprecated = true];</code>
-     * @param value The bytes for label to set.
+     * <code>optional string deprecated_label = 1 [deprecated = true];</code>
+     * @param value The bytes for deprecatedLabel to set.
      * @return This builder for chaining.
      */
-    @java.lang.Deprecated public Builder setLabelBytes(
+    @java.lang.Deprecated public Builder setDeprecatedLabelBytes(
         com.google.protobuf.ByteString value) {
       copyOnWrite();
-      instance.setLabelBytes(value);
+      instance.setDeprecatedLabelBytes(value);
       return this;
     }
 
@@ -8429,6 +8877,102 @@ public  final class AutofillProfileSpecifics extends
       return this;
     }
 
+    /**
+     * <pre>
+     * The following validity-related fields have only been used in combination
+     * with an experimental features that are disabled for all clients and have
+     * been removed in M100.
+     * </pre>
+     *
+     * <code>optional int64 validity_state_bitfield = 24 [deprecated = true];</code>
+     * @return Whether the validityStateBitfield field is set.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated public boolean hasValidityStateBitfield() {
+      return instance.hasValidityStateBitfield();
+    }
+    /**
+     * <pre>
+     * The following validity-related fields have only been used in combination
+     * with an experimental features that are disabled for all clients and have
+     * been removed in M100.
+     * </pre>
+     *
+     * <code>optional int64 validity_state_bitfield = 24 [deprecated = true];</code>
+     * @return The validityStateBitfield.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated public long getValidityStateBitfield() {
+      return instance.getValidityStateBitfield();
+    }
+    /**
+     * <pre>
+     * The following validity-related fields have only been used in combination
+     * with an experimental features that are disabled for all clients and have
+     * been removed in M100.
+     * </pre>
+     *
+     * <code>optional int64 validity_state_bitfield = 24 [deprecated = true];</code>
+     * @param value The validityStateBitfield to set.
+     * @return This builder for chaining.
+     */
+    @java.lang.Deprecated public Builder setValidityStateBitfield(long value) {
+      copyOnWrite();
+      instance.setValidityStateBitfield(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * The following validity-related fields have only been used in combination
+     * with an experimental features that are disabled for all clients and have
+     * been removed in M100.
+     * </pre>
+     *
+     * <code>optional int64 validity_state_bitfield = 24 [deprecated = true];</code>
+     * @return This builder for chaining.
+     */
+    @java.lang.Deprecated public Builder clearValidityStateBitfield() {
+      copyOnWrite();
+      instance.clearValidityStateBitfield();
+      return this;
+    }
+
+    /**
+     * <code>optional bool is_client_validity_states_updated = 25 [deprecated = true];</code>
+     * @return Whether the isClientValidityStatesUpdated field is set.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated public boolean hasIsClientValidityStatesUpdated() {
+      return instance.hasIsClientValidityStatesUpdated();
+    }
+    /**
+     * <code>optional bool is_client_validity_states_updated = 25 [deprecated = true];</code>
+     * @return The isClientValidityStatesUpdated.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated public boolean getIsClientValidityStatesUpdated() {
+      return instance.getIsClientValidityStatesUpdated();
+    }
+    /**
+     * <code>optional bool is_client_validity_states_updated = 25 [deprecated = true];</code>
+     * @param value The isClientValidityStatesUpdated to set.
+     * @return This builder for chaining.
+     */
+    @java.lang.Deprecated public Builder setIsClientValidityStatesUpdated(boolean value) {
+      copyOnWrite();
+      instance.setIsClientValidityStatesUpdated(value);
+      return this;
+    }
+    /**
+     * <code>optional bool is_client_validity_states_updated = 25 [deprecated = true];</code>
+     * @return This builder for chaining.
+     */
+    @java.lang.Deprecated public Builder clearIsClientValidityStatesUpdated() {
+      copyOnWrite();
+      instance.clearIsClientValidityStatesUpdated();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:sync_pb.AutofillProfileSpecifics)
   }
   @java.lang.Override
@@ -8447,7 +8991,7 @@ public  final class AutofillProfileSpecifics extends
           java.lang.Object[] objects = new java.lang.Object[] {
             "bitField0_",
             "bitField1_",
-            "label_",
+            "deprecatedLabel_",
             "nameFirst_",
             "nameMiddle_",
             "nameLast_",
@@ -8532,18 +9076,24 @@ public  final class AutofillProfileSpecifics extends
             "nameFullWithHonorific_",
             "nameFullWithHonorificStatus_",
             org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus.internalGetVerifier(),
+            "profileLabel_",
+            "disallowSettingsVisibleUpdates_",
+            "birthdateDay_",
+            "birthdateMonth_",
+            "birthdateYear_",
           };
           java.lang.String info =
-              "\u0001=\u0000\u0002\u0001==\u0000\u0014\u0000\u0001\u1008\'\u0002\u001a\u0003\u001a" +
-              "\u0004\u001a\u0005\u001a\u0006\u1008\u0004\u0007\u1008\u0005\b\u1008\u0006\t\u1008" +
-              "\u0007\n\u1008\b\u000b\u1008\t\f\u1008\n\r\u001a\u000e\u1008(\u000f\u1008\u0000\u0010" +
-              "\u1008\u0001\u0011\u1008\u000b\u0012\u1008\f\u0013\u1008\r\u0014\u1008\u000e\u0015" +
-              "\u001a\u0016\u1002\u0002\u0017\u1002\u0003\u0018\u1002%\u0019\u1007&\u001a\u001a" +
+              "\u0001B\u0000\u0002\u0001BB\u0000\u0014\u0000\u0001\u1008*\u0002\u001a\u0003\u001a" +
+              "\u0004\u001a\u0005\u001a\u0006\u1008\u0005\u0007\u1008\u0006\b\u1008\u0007\t\u1008" +
+              "\b\n\u1008\t\u000b\u1008\n\f\u1008\u000b\r\u001a\u000e\u1008+\u000f\u1008\u0000\u0010" +
+              "\u1008\u0001\u0011\u1008\f\u0012\u1008\r\u0013\u1008\u000e\u0014\u1008\u000f\u0015" +
+              "\u001a\u0016\u1002\u0002\u0017\u1002\u0003\u0018\u1002,\u0019\u1007-\u001a\u001a" +
               "\u001b\u001a\u001c\u001a\u001d\u001a\u001e\u001e\u001f\u001e \u001e!\u001e\"\u001e" +
-              "#\u001e$\u001e%\u001e&\u1008\u000f\'\u1008\u0010(\u1008\u0011)\u1008\u0012*\u1008" +
-              "\u0013+\u100c\u0016,\u100c\u0017-\u100c\u0018.\u100c\u0019/\u100c\u001a0\u100c\u001b" +
-              "1\u100c\u001c2\u100c\u001d3\u100c\u001e4\u100c\u001f5\u100c 6\u100c!7\u100c\"8\u1008" +
-              "\u00149\u1008\u0015:\u100c#;\u100c$<\u001a=\u001e";
+              "#\u001e$\u001e%\u001e&\u1008\u0010\'\u1008\u0011(\u1008\u0012)\u1008\u0013*\u1008" +
+              "\u0014+\u100c\u0017,\u100c\u0018-\u100c\u0019.\u100c\u001a/\u100c\u001b0\u100c\u001c" +
+              "1\u100c\u001d2\u100c\u001e3\u100c\u001f4\u100c 5\u100c!6\u100c\"7\u100c#8\u1008\u0015" +
+              "9\u1008\u0016:\u100c$;\u100c%<\u001a=\u001e>\u1008\u0004?\u1007&@\u1004\'A\u1004" +
+              "(B\u1004)";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class MenuItem extends org.chromium.mojo.bindings.Struct {
 
@@ -22,6 +24,14 @@ public final class MenuItem extends org.chromium.mojo.bindings.Struct {
 
     public static final class Type {
         private static final boolean IS_EXTENSIBLE = false;
+        @IntDef({
+
+            Type.OPTION,
+            Type.CHECKABLE_OPTION,
+            Type.GROUP,
+            Type.SEPARATOR,
+            Type.SUB_MENU})
+        public @interface EnumType {}
 
         public static final int OPTION = 0;
         public static final int CHECKABLE_OPTION = 1;

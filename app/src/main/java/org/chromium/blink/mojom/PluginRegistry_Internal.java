@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class PluginRegistry_Internal {
 
@@ -60,14 +62,12 @@ class PluginRegistry_Internal {
 
         @Override
         public void getPlugins(
-boolean refresh, org.chromium.url.internal.mojom.Origin mainFrameOrigin, 
-GetPluginsResponse callback) {
+boolean refresh, 
+GetPlugins_Response callback) {
 
             PluginRegistryGetPluginsParams _message = new PluginRegistryGetPluginsParams();
 
             _message.refresh = refresh;
-
-            _message.mainFrameOrigin = mainFrameOrigin;
 
 
             getProxyHandler().getMessageReceiver().acceptWithResponder(
@@ -151,7 +151,7 @@ GetPluginsResponse callback) {
                         PluginRegistryGetPluginsParams data =
                                 PluginRegistryGetPluginsParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().getPlugins(data.refresh, data.mainFrameOrigin, new PluginRegistryGetPluginsResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().getPlugins(data.refresh, new PluginRegistryGetPluginsResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -170,11 +170,10 @@ GetPluginsResponse callback) {
     
     static final class PluginRegistryGetPluginsParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public boolean refresh;
-        public org.chromium.url.internal.mojom.Origin mainFrameOrigin;
 
         private PluginRegistryGetPluginsParams(int version) {
             super(STRUCT_SIZE, version);
@@ -213,11 +212,6 @@ GetPluginsResponse callback) {
                         
                     result.refresh = decoder0.readBoolean(8, 0);
                     }
-                    {
-                        
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
-                    result.mainFrameOrigin = org.chromium.url.internal.mojom.Origin.decode(decoder1);
-                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -231,8 +225,6 @@ GetPluginsResponse callback) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.refresh, 8, 0);
-            
-            encoder0.encode(this.mainFrameOrigin, 16, false);
         }
     }
 
@@ -318,9 +310,9 @@ GetPluginsResponse callback) {
 
     static class PluginRegistryGetPluginsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PluginRegistry.GetPluginsResponse mCallback;
+        private final PluginRegistry.GetPlugins_Response mCallback;
 
-        PluginRegistryGetPluginsResponseParamsForwardToCallback(PluginRegistry.GetPluginsResponse callback) {
+        PluginRegistryGetPluginsResponseParamsForwardToCallback(PluginRegistry.GetPlugins_Response callback) {
             this.mCallback = callback;
         }
 
@@ -345,7 +337,7 @@ GetPluginsResponse callback) {
         }
     }
 
-    static class PluginRegistryGetPluginsResponseParamsProxyToResponder implements PluginRegistry.GetPluginsResponse {
+    static class PluginRegistryGetPluginsResponseParamsProxyToResponder implements PluginRegistry.GetPlugins_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

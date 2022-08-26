@@ -9,11 +9,11 @@ import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
-import org.chromium.components.embedder_support.browser_context.BrowserContextHandle;
+import org.chromium.content_public.browser.BrowserContextHandle;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-public final class LevelDBPersistedDataStorageJni implements LevelDBPersistedDataStorage.Natives {
+public class LevelDBPersistedDataStorageJni implements LevelDBPersistedDataStorage.Natives {
   private static LevelDBPersistedDataStorage.Natives testInstance;
 
   public static final JniStaticTestMocker<LevelDBPersistedDataStorage.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.tab.state.LevelDBPersistedDataStorage.Natives>() {
@@ -50,6 +50,12 @@ public final class LevelDBPersistedDataStorageJni implements LevelDBPersistedDat
   @Override
   public void delete(long nativePersistedStateDB, String key, Runnable onComplete) {
     GEN_JNI.org_chromium_chrome_browser_tab_state_LevelDBPersistedDataStorage_delete(nativePersistedStateDB, key, onComplete);
+  }
+
+  @Override
+  public void performMaintenance(long nativePersistedStateDB, String[] keysToKeep, String dataId,
+      Runnable onComplete) {
+    GEN_JNI.org_chromium_chrome_browser_tab_state_LevelDBPersistedDataStorage_performMaintenance(nativePersistedStateDB, keysToKeep, dataId, onComplete);
   }
 
   public static LevelDBPersistedDataStorage.Natives get() {

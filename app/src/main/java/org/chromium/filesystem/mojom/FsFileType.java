@@ -13,8 +13,16 @@
 
 package org.chromium.filesystem.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class FsFileType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        FsFileType.UNKNOWN,
+        FsFileType.REGULAR_FILE,
+        FsFileType.DIRECTORY})
+    public @interface EnumType {}
 
     public static final int UNKNOWN = 0;
     public static final int REGULAR_FILE = 1;

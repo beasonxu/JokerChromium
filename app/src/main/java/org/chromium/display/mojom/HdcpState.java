@@ -13,8 +13,16 @@
 
 package org.chromium.display.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class HdcpState {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        HdcpState.HDCP_STATE_UNDESIRED,
+        HdcpState.HDCP_STATE_DESIRED,
+        HdcpState.HDCP_STATE_ENABLED})
+    public @interface EnumType {}
 
     public static final int HDCP_STATE_UNDESIRED = 0;
     public static final int HDCP_STATE_DESIRED = 1;

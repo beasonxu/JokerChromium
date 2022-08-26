@@ -14,12 +14,12 @@ import org.chromium.chrome.browser.browserservices.TrustedWebActivityClient;
     "rawtypes"
 })
 public final class NotificationPermissionUpdater_Factory implements Factory<NotificationPermissionUpdater> {
-  private final Provider<TrustedWebActivityPermissionManager> permissionManagerProvider;
+  private final Provider<InstalledWebappPermissionManager> permissionManagerProvider;
 
   private final Provider<TrustedWebActivityClient> trustedWebActivityClientProvider;
 
   public NotificationPermissionUpdater_Factory(
-      Provider<TrustedWebActivityPermissionManager> permissionManagerProvider,
+      Provider<InstalledWebappPermissionManager> permissionManagerProvider,
       Provider<TrustedWebActivityClient> trustedWebActivityClientProvider) {
     this.permissionManagerProvider = permissionManagerProvider;
     this.trustedWebActivityClientProvider = trustedWebActivityClientProvider;
@@ -31,13 +31,13 @@ public final class NotificationPermissionUpdater_Factory implements Factory<Noti
   }
 
   public static NotificationPermissionUpdater_Factory create(
-      Provider<TrustedWebActivityPermissionManager> permissionManagerProvider,
+      Provider<InstalledWebappPermissionManager> permissionManagerProvider,
       Provider<TrustedWebActivityClient> trustedWebActivityClientProvider) {
     return new NotificationPermissionUpdater_Factory(permissionManagerProvider, trustedWebActivityClientProvider);
   }
 
   public static NotificationPermissionUpdater newInstance(
-      TrustedWebActivityPermissionManager permissionManager,
+      InstalledWebappPermissionManager permissionManager,
       TrustedWebActivityClient trustedWebActivityClient) {
     return new NotificationPermissionUpdater(permissionManager, trustedWebActivityClient);
   }

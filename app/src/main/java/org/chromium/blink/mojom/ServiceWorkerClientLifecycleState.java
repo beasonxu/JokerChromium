@@ -13,8 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class ServiceWorkerClientLifecycleState {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        ServiceWorkerClientLifecycleState.ACTIVE,
+        ServiceWorkerClientLifecycleState.FROZEN})
+    public @interface EnumType {}
 
     public static final int ACTIVE = 0;
     public static final int FROZEN = 1;

@@ -9,11 +9,12 @@ import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
-import org.chromium.components.embedder_support.browser_context.BrowserContextHandle;
+import org.chromium.content_public.browser.BrowserContextHandle;
+import org.chromium.url.GURL;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-public final class WebsitePreferenceBridgeJni implements WebsitePreferenceBridge.Natives {
+public class WebsitePreferenceBridgeJni implements WebsitePreferenceBridge.Natives {
   private static WebsitePreferenceBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<WebsitePreferenceBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.browser_ui.site_settings.WebsitePreferenceBridge.Natives>() {
@@ -78,8 +79,8 @@ public final class WebsitePreferenceBridgeJni implements WebsitePreferenceBridge
 
   @Override
   public void revokeObjectPermission(BrowserContextHandle browserContextHandle, int type,
-      String origin, String embedder, String object) {
-    GEN_JNI.org_chromium_components_browser_1ui_site_1settings_WebsitePreferenceBridge_revokeObjectPermission(browserContextHandle, type, origin, embedder, object);
+      String origin, String object) {
+    GEN_JNI.org_chromium_components_browser_1ui_site_1settings_WebsitePreferenceBridge_revokeObjectPermission(browserContextHandle, type, origin, object);
   }
 
   @Override
@@ -110,21 +111,20 @@ public final class WebsitePreferenceBridgeJni implements WebsitePreferenceBridge
   }
 
   @Override
-  public int getSettingForOrigin(BrowserContextHandle browserContextHandle, int contentSettingsType,
-      String origin, String embedder) {
-    return (int)GEN_JNI.org_chromium_components_browser_1ui_site_1settings_WebsitePreferenceBridge_getSettingForOrigin(browserContextHandle, contentSettingsType, origin, embedder);
+  public int getPermissionSettingForOrigin(BrowserContextHandle browserContextHandle,
+      int contentSettingsType, String origin, String embedder) {
+    return (int)GEN_JNI.org_chromium_components_browser_1ui_site_1settings_WebsitePreferenceBridge_getPermissionSettingForOrigin(browserContextHandle, contentSettingsType, origin, embedder);
   }
 
   @Override
-  public void setSettingForOrigin(BrowserContextHandle browserContextHandle,
+  public void setPermissionSettingForOrigin(BrowserContextHandle browserContextHandle,
       int contentSettingsType, String origin, String embedder, int value) {
-    GEN_JNI.org_chromium_components_browser_1ui_site_1settings_WebsitePreferenceBridge_setSettingForOrigin(browserContextHandle, contentSettingsType, origin, embedder, value);
+    GEN_JNI.org_chromium_components_browser_1ui_site_1settings_WebsitePreferenceBridge_setPermissionSettingForOrigin(browserContextHandle, contentSettingsType, origin, embedder, value);
   }
 
   @Override
-  public boolean isPermissionControlledByDSE(BrowserContextHandle browserContextHandle,
-      int contentSettingsType, String origin) {
-    return (boolean)GEN_JNI.org_chromium_components_browser_1ui_site_1settings_WebsitePreferenceBridge_isPermissionControlledByDSE(browserContextHandle, contentSettingsType, origin);
+  public boolean isDSEOrigin(BrowserContextHandle browserContextHandle, String origin) {
+    return (boolean)GEN_JNI.org_chromium_components_browser_1ui_site_1settings_WebsitePreferenceBridge_isDSEOrigin(browserContextHandle, origin);
   }
 
   @Override
@@ -163,20 +163,33 @@ public final class WebsitePreferenceBridgeJni implements WebsitePreferenceBridge
   }
 
   @Override
-  public void setContentSettingForPattern(BrowserContextHandle browserContextHandle,
+  public int getContentSetting(BrowserContextHandle browserContextHandle, int contentSettingType,
+      GURL primaryUrl, GURL secondaryUrl) {
+    return (int)GEN_JNI.org_chromium_components_browser_1ui_site_1settings_WebsitePreferenceBridge_getContentSetting(browserContextHandle, contentSettingType, primaryUrl, secondaryUrl);
+  }
+
+  @Override
+  public void setContentSettingDefaultScope(BrowserContextHandle browserContextHandle,
+      int contentSettingType, GURL primaryUrl, GURL secondaryUrl, int setting) {
+    GEN_JNI.org_chromium_components_browser_1ui_site_1settings_WebsitePreferenceBridge_setContentSettingDefaultScope(browserContextHandle, contentSettingType, primaryUrl, secondaryUrl, setting);
+  }
+
+  @Override
+  public void setContentSettingCustomScope(BrowserContextHandle browserContextHandle,
       int contentSettingType, String primaryPattern, String secondaryPattern, int setting) {
-    GEN_JNI.org_chromium_components_browser_1ui_site_1settings_WebsitePreferenceBridge_setContentSettingForPattern(browserContextHandle, contentSettingType, primaryPattern, secondaryPattern, setting);
+    GEN_JNI.org_chromium_components_browser_1ui_site_1settings_WebsitePreferenceBridge_setContentSettingCustomScope(browserContextHandle, contentSettingType, primaryPattern, secondaryPattern, setting);
   }
 
   @Override
-  public int getContentSetting(BrowserContextHandle browserContextHandle, int contentSettingType) {
-    return (int)GEN_JNI.org_chromium_components_browser_1ui_site_1settings_WebsitePreferenceBridge_getContentSetting(browserContextHandle, contentSettingType);
+  public int getDefaultContentSetting(BrowserContextHandle browserContextHandle,
+      int contentSettingType) {
+    return (int)GEN_JNI.org_chromium_components_browser_1ui_site_1settings_WebsitePreferenceBridge_getDefaultContentSetting(browserContextHandle, contentSettingType);
   }
 
   @Override
-  public void setContentSetting(BrowserContextHandle browserContextHandle, int contentSettingType,
-      int setting) {
-    GEN_JNI.org_chromium_components_browser_1ui_site_1settings_WebsitePreferenceBridge_setContentSetting(browserContextHandle, contentSettingType, setting);
+  public void setDefaultContentSetting(BrowserContextHandle browserContextHandle,
+      int contentSettingType, int setting) {
+    GEN_JNI.org_chromium_components_browser_1ui_site_1settings_WebsitePreferenceBridge_setDefaultContentSetting(browserContextHandle, contentSettingType, setting);
   }
 
   @Override

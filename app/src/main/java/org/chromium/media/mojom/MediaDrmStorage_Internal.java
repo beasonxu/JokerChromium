@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class MediaDrmStorage_Internal {
 
@@ -69,7 +71,7 @@ class MediaDrmStorage_Internal {
         @Override
         public void initialize(
 
-InitializeResponse callback) {
+Initialize_Response callback) {
 
             MediaDrmStorageInitializeParams _message = new MediaDrmStorageInitializeParams();
 
@@ -89,7 +91,7 @@ InitializeResponse callback) {
         @Override
         public void onProvisioned(
 
-OnProvisionedResponse callback) {
+OnProvisioned_Response callback) {
 
             MediaDrmStorageOnProvisionedParams _message = new MediaDrmStorageOnProvisionedParams();
 
@@ -109,7 +111,7 @@ OnProvisionedResponse callback) {
         @Override
         public void savePersistentSession(
 String sessionId, SessionData sessionData, 
-SavePersistentSessionResponse callback) {
+SavePersistentSession_Response callback) {
 
             MediaDrmStorageSavePersistentSessionParams _message = new MediaDrmStorageSavePersistentSessionParams();
 
@@ -133,7 +135,7 @@ SavePersistentSessionResponse callback) {
         @Override
         public void loadPersistentSession(
 String sessionId, 
-LoadPersistentSessionResponse callback) {
+LoadPersistentSession_Response callback) {
 
             MediaDrmStorageLoadPersistentSessionParams _message = new MediaDrmStorageLoadPersistentSessionParams();
 
@@ -155,7 +157,7 @@ LoadPersistentSessionResponse callback) {
         @Override
         public void removePersistentSession(
 String sessionId, 
-RemovePersistentSessionResponse callback) {
+RemovePersistentSession_Response callback) {
 
             MediaDrmStorageRemovePersistentSessionParams _message = new MediaDrmStorageRemovePersistentSessionParams();
 
@@ -452,9 +454,9 @@ RemovePersistentSessionResponse callback) {
 
     static class MediaDrmStorageInitializeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final MediaDrmStorage.InitializeResponse mCallback;
+        private final MediaDrmStorage.Initialize_Response mCallback;
 
-        MediaDrmStorageInitializeResponseParamsForwardToCallback(MediaDrmStorage.InitializeResponse callback) {
+        MediaDrmStorageInitializeResponseParamsForwardToCallback(MediaDrmStorage.Initialize_Response callback) {
             this.mCallback = callback;
         }
 
@@ -479,7 +481,7 @@ RemovePersistentSessionResponse callback) {
         }
     }
 
-    static class MediaDrmStorageInitializeResponseParamsProxyToResponder implements MediaDrmStorage.InitializeResponse {
+    static class MediaDrmStorageInitializeResponseParamsProxyToResponder implements MediaDrmStorage.Initialize_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -634,9 +636,9 @@ RemovePersistentSessionResponse callback) {
 
     static class MediaDrmStorageOnProvisionedResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final MediaDrmStorage.OnProvisionedResponse mCallback;
+        private final MediaDrmStorage.OnProvisioned_Response mCallback;
 
-        MediaDrmStorageOnProvisionedResponseParamsForwardToCallback(MediaDrmStorage.OnProvisionedResponse callback) {
+        MediaDrmStorageOnProvisionedResponseParamsForwardToCallback(MediaDrmStorage.OnProvisioned_Response callback) {
             this.mCallback = callback;
         }
 
@@ -661,7 +663,7 @@ RemovePersistentSessionResponse callback) {
         }
     }
 
-    static class MediaDrmStorageOnProvisionedResponseParamsProxyToResponder implements MediaDrmStorage.OnProvisionedResponse {
+    static class MediaDrmStorageOnProvisionedResponseParamsProxyToResponder implements MediaDrmStorage.OnProvisioned_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -829,9 +831,9 @@ RemovePersistentSessionResponse callback) {
 
     static class MediaDrmStorageSavePersistentSessionResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final MediaDrmStorage.SavePersistentSessionResponse mCallback;
+        private final MediaDrmStorage.SavePersistentSession_Response mCallback;
 
-        MediaDrmStorageSavePersistentSessionResponseParamsForwardToCallback(MediaDrmStorage.SavePersistentSessionResponse callback) {
+        MediaDrmStorageSavePersistentSessionResponseParamsForwardToCallback(MediaDrmStorage.SavePersistentSession_Response callback) {
             this.mCallback = callback;
         }
 
@@ -856,7 +858,7 @@ RemovePersistentSessionResponse callback) {
         }
     }
 
-    static class MediaDrmStorageSavePersistentSessionResponseParamsProxyToResponder implements MediaDrmStorage.SavePersistentSessionResponse {
+    static class MediaDrmStorageSavePersistentSessionResponseParamsProxyToResponder implements MediaDrmStorage.SavePersistentSession_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1017,9 +1019,9 @@ RemovePersistentSessionResponse callback) {
 
     static class MediaDrmStorageLoadPersistentSessionResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final MediaDrmStorage.LoadPersistentSessionResponse mCallback;
+        private final MediaDrmStorage.LoadPersistentSession_Response mCallback;
 
-        MediaDrmStorageLoadPersistentSessionResponseParamsForwardToCallback(MediaDrmStorage.LoadPersistentSessionResponse callback) {
+        MediaDrmStorageLoadPersistentSessionResponseParamsForwardToCallback(MediaDrmStorage.LoadPersistentSession_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1044,7 +1046,7 @@ RemovePersistentSessionResponse callback) {
         }
     }
 
-    static class MediaDrmStorageLoadPersistentSessionResponseParamsProxyToResponder implements MediaDrmStorage.LoadPersistentSessionResponse {
+    static class MediaDrmStorageLoadPersistentSessionResponseParamsProxyToResponder implements MediaDrmStorage.LoadPersistentSession_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1204,9 +1206,9 @@ RemovePersistentSessionResponse callback) {
 
     static class MediaDrmStorageRemovePersistentSessionResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final MediaDrmStorage.RemovePersistentSessionResponse mCallback;
+        private final MediaDrmStorage.RemovePersistentSession_Response mCallback;
 
-        MediaDrmStorageRemovePersistentSessionResponseParamsForwardToCallback(MediaDrmStorage.RemovePersistentSessionResponse callback) {
+        MediaDrmStorageRemovePersistentSessionResponseParamsForwardToCallback(MediaDrmStorage.RemovePersistentSession_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1231,7 +1233,7 @@ RemovePersistentSessionResponse callback) {
         }
     }
 
-    static class MediaDrmStorageRemovePersistentSessionResponseParamsProxyToResponder implements MediaDrmStorage.RemovePersistentSessionResponse {
+    static class MediaDrmStorageRemovePersistentSessionResponseParamsProxyToResponder implements MediaDrmStorage.RemovePersistentSession_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

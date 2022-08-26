@@ -8,10 +8,11 @@ import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.content_public.browser.WebContents;
+import org.chromium.url.GURL;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class InstantAppsSettingsJni implements InstantAppsSettings.Natives {
+class InstantAppsSettingsJni implements InstantAppsSettings.Natives {
   private static InstantAppsSettings.Natives testInstance;
 
   public static final JniStaticTestMocker<InstantAppsSettings.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.instantapps.InstantAppsSettings.Natives>() {
@@ -26,7 +27,7 @@ final class InstantAppsSettingsJni implements InstantAppsSettings.Natives {
   };
 
   @Override
-  public boolean getInstantAppDefault(WebContents webContents, String url) {
+  public boolean getInstantAppDefault(WebContents webContents, GURL url) {
     return (boolean)GEN_JNI.org_chromium_chrome_browser_instantapps_InstantAppsSettings_getInstantAppDefault(webContents, url);
   }
 

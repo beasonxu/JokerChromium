@@ -11,7 +11,7 @@ import org.chromium.content_public.browser.WebContents;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-public final class ProfileJni implements Profile.Natives {
+public class ProfileJni implements Profile.Natives {
   private static Profile.Natives testInstance;
 
   public static final JniStaticTestMocker<Profile.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.profiles.Profile.Natives>() {
@@ -46,13 +46,14 @@ public final class ProfileJni implements Profile.Natives {
 
   @Override
   public Object getOffTheRecordProfile(long nativeProfileAndroid, Profile caller,
-      OTRProfileID otrProfileID) {
-    return (Object)GEN_JNI.org_chromium_chrome_browser_profiles_Profile_getOffTheRecordProfile(nativeProfileAndroid, caller, otrProfileID);
+      OTRProfileID otrProfileID, boolean createIfNeeded) {
+    return (Object)GEN_JNI.org_chromium_chrome_browser_profiles_Profile_getOffTheRecordProfile(nativeProfileAndroid, caller, otrProfileID, createIfNeeded);
   }
 
   @Override
-  public Object getPrimaryOTRProfile(long nativeProfileAndroid, Profile caller) {
-    return (Object)GEN_JNI.org_chromium_chrome_browser_profiles_Profile_getPrimaryOTRProfile(nativeProfileAndroid, caller);
+  public Object getPrimaryOTRProfile(long nativeProfileAndroid, Profile caller,
+      boolean createIfNeeded) {
+    return (Object)GEN_JNI.org_chromium_chrome_browser_profiles_Profile_getPrimaryOTRProfile(nativeProfileAndroid, caller, createIfNeeded);
   }
 
   @Override

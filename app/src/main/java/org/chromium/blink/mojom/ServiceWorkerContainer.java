@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface ServiceWorkerContainer extends org.chromium.mojo.bindings.Interface {
 
@@ -23,15 +25,12 @@ public interface ServiceWorkerContainer extends org.chromium.mojo.bindings.Inter
 
     Manager<ServiceWorkerContainer, ServiceWorkerContainer.Proxy> MANAGER = ServiceWorkerContainer_Internal.MANAGER;
 
-
     void setController(
 ControllerServiceWorkerInfo controllerInfo, boolean shouldNotifyControllerchange);
 
 
-
     void postMessageToClient(
 ServiceWorkerObjectInfo source, TransferableMessage message);
-
 
 
     void countFeature(

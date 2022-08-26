@@ -13,6 +13,8 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class GpuMemoryBufferFactory_Internal {
 
@@ -65,7 +67,7 @@ class GpuMemoryBufferFactory_Internal {
         @Override
         public void createGpuMemoryBuffer(
 org.chromium.gfx.mojom.GpuMemoryBufferId id, org.chromium.gfx.mojom.Size size, int format, int usage, 
-CreateGpuMemoryBufferResponse callback) {
+CreateGpuMemoryBuffer_Response callback) {
 
             GpuMemoryBufferFactoryCreateGpuMemoryBufferParams _message = new GpuMemoryBufferFactoryCreateGpuMemoryBufferParams();
 
@@ -112,7 +114,7 @@ org.chromium.gfx.mojom.GpuMemoryBufferId id, org.chromium.gpu.mojom.SyncToken sy
         @Override
         public void copyGpuMemoryBuffer(
 org.chromium.gfx.mojom.GpuMemoryBufferHandle bufferHandle, org.chromium.mojo_base.mojom.UnsafeSharedMemoryRegion sharedMemory, 
-CopyGpuMemoryBufferResponse callback) {
+CopyGpuMemoryBuffer_Response callback) {
 
             GpuMemoryBufferFactoryCopyGpuMemoryBufferParams _message = new GpuMemoryBufferFactoryCopyGpuMemoryBufferParams();
 
@@ -404,9 +406,9 @@ CopyGpuMemoryBufferResponse callback) {
 
     static class GpuMemoryBufferFactoryCreateGpuMemoryBufferResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final GpuMemoryBufferFactory.CreateGpuMemoryBufferResponse mCallback;
+        private final GpuMemoryBufferFactory.CreateGpuMemoryBuffer_Response mCallback;
 
-        GpuMemoryBufferFactoryCreateGpuMemoryBufferResponseParamsForwardToCallback(GpuMemoryBufferFactory.CreateGpuMemoryBufferResponse callback) {
+        GpuMemoryBufferFactoryCreateGpuMemoryBufferResponseParamsForwardToCallback(GpuMemoryBufferFactory.CreateGpuMemoryBuffer_Response callback) {
             this.mCallback = callback;
         }
 
@@ -431,7 +433,7 @@ CopyGpuMemoryBufferResponse callback) {
         }
     }
 
-    static class GpuMemoryBufferFactoryCreateGpuMemoryBufferResponseParamsProxyToResponder implements GpuMemoryBufferFactory.CreateGpuMemoryBufferResponse {
+    static class GpuMemoryBufferFactoryCreateGpuMemoryBufferResponseParamsProxyToResponder implements GpuMemoryBufferFactory.CreateGpuMemoryBuffer_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -672,9 +674,9 @@ CopyGpuMemoryBufferResponse callback) {
 
     static class GpuMemoryBufferFactoryCopyGpuMemoryBufferResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final GpuMemoryBufferFactory.CopyGpuMemoryBufferResponse mCallback;
+        private final GpuMemoryBufferFactory.CopyGpuMemoryBuffer_Response mCallback;
 
-        GpuMemoryBufferFactoryCopyGpuMemoryBufferResponseParamsForwardToCallback(GpuMemoryBufferFactory.CopyGpuMemoryBufferResponse callback) {
+        GpuMemoryBufferFactoryCopyGpuMemoryBufferResponseParamsForwardToCallback(GpuMemoryBufferFactory.CopyGpuMemoryBuffer_Response callback) {
             this.mCallback = callback;
         }
 
@@ -699,7 +701,7 @@ CopyGpuMemoryBufferResponse callback) {
         }
     }
 
-    static class GpuMemoryBufferFactoryCopyGpuMemoryBufferResponseParamsProxyToResponder implements GpuMemoryBufferFactory.CopyGpuMemoryBufferResponse {
+    static class GpuMemoryBufferFactoryCopyGpuMemoryBufferResponseParamsProxyToResponder implements GpuMemoryBufferFactory.CopyGpuMemoryBuffer_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

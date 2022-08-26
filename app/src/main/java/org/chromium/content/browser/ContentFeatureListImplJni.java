@@ -12,7 +12,7 @@ import org.chromium.base.natives.GEN_JNI;
 @Generated("org.chromium.jni_generator.JniProcessor")
 @MainDex
 @CheckDiscard("crbug.com/993421")
-public final class ContentFeatureListImplJni implements ContentFeatureListImpl.Natives {
+public class ContentFeatureListImplJni implements ContentFeatureListImpl.Natives {
   private static ContentFeatureListImpl.Natives testInstance;
 
   public static final JniStaticTestMocker<ContentFeatureListImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content.browser.ContentFeatureListImpl.Natives>() {
@@ -29,6 +29,18 @@ public final class ContentFeatureListImplJni implements ContentFeatureListImpl.N
   @Override
   public boolean isEnabled(String featureName) {
     return (boolean)GEN_JNI.org_chromium_content_browser_ContentFeatureListImpl_isEnabled(featureName);
+  }
+
+  @Override
+  public int getFieldTrialParamByFeatureAsInt(String featureName, String paramName,
+      int defaultValue) {
+    return (int)GEN_JNI.org_chromium_content_browser_ContentFeatureListImpl_getFieldTrialParamByFeatureAsInt(featureName, paramName, defaultValue);
+  }
+
+  @Override
+  public boolean getFieldTrialParamByFeatureAsBoolean(String featureName, String paramName,
+      boolean defaultValue) {
+    return (boolean)GEN_JNI.org_chromium_content_browser_ContentFeatureListImpl_getFieldTrialParamByFeatureAsBoolean(featureName, paramName, defaultValue);
   }
 
   public static ContentFeatureListImpl.Natives get() {

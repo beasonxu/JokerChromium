@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class AutofillExpirationDateFixFlowBridgeJni implements AutofillExpirationDateFixFlowBridge.Natives {
+class AutofillExpirationDateFixFlowBridgeJni implements AutofillExpirationDateFixFlowBridge.Natives {
   private static AutofillExpirationDateFixFlowBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<AutofillExpirationDateFixFlowBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.autofill.AutofillExpirationDateFixFlowBridge.Natives>() {
@@ -34,6 +34,12 @@ final class AutofillExpirationDateFixFlowBridgeJni implements AutofillExpiration
   public void onUserAccept(long nativeCardExpirationDateFixFlowViewAndroid,
       AutofillExpirationDateFixFlowBridge caller, String month, String year) {
     GEN_JNI.org_chromium_chrome_browser_autofill_AutofillExpirationDateFixFlowBridge_onUserAccept(nativeCardExpirationDateFixFlowViewAndroid, caller, month, year);
+  }
+
+  @Override
+  public void onUserDismiss(long nativeCardExpirationDateFixFlowViewAndroid,
+      AutofillExpirationDateFixFlowBridge caller) {
+    GEN_JNI.org_chromium_chrome_browser_autofill_AutofillExpirationDateFixFlowBridge_onUserDismiss(nativeCardExpirationDateFixFlowViewAndroid, caller);
   }
 
   public static AutofillExpirationDateFixFlowBridge.Natives get() {

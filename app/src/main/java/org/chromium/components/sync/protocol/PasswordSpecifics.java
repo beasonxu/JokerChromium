@@ -241,6 +241,157 @@ public  final class PasswordSpecifics extends
     bitField0_ = (bitField0_ & ~0x00000004);
   }
 
+  public static final int ENCRYPTED_NOTES_BACKUP_FIELD_NUMBER = 4;
+  private org.chromium.components.sync.protocol.EncryptedData encryptedNotesBackup_;
+  /**
+   * <pre>
+   * An encrypted backup of the notes field inside the PasswordSpecificsData.
+   * The Sync server preserves the contents of this field across commits from
+   * legacy clients that don't set this field. It is the responsibility of Sync
+   * clients to populate the contents of PasswordSpecificsData notes fields
+   * using the contents of this field. This should be deprecated together with
+   * the logic for preserving it on the server when clients without support for
+   * the |notes| field are no longer allowed by the server (below support
+   * version horizon).
+   * Encryption key considerations:
+   * a) For commits, the client must use the same key for both encrypted blobs.
+   * b) For handling getupdates, the two keys may NOT necessarily match the
+   *    encryption key used, as in theory the new blob could be "behind" if key
+   *    rotation took place. As of today, it is safe to assume that if
+   *    |encrypted| is decryptable by a client, then |encrypted_notes_backup|
+   *    must be decryptable too (i.e. the Nigori keybag should include older
+   *    versions of the key). But not the other way round.
+   * If both `encrypted_notes_backup` and the `notes` in `encrypted` are
+   * populated, the one in notes is considered the authoritative value.
+   * </pre>
+   *
+   * <code>optional .sync_pb.EncryptedData encrypted_notes_backup = 4;</code>
+   */
+  @java.lang.Override
+  public boolean hasEncryptedNotesBackup() {
+    return ((bitField0_ & 0x00000008) != 0);
+  }
+  /**
+   * <pre>
+   * An encrypted backup of the notes field inside the PasswordSpecificsData.
+   * The Sync server preserves the contents of this field across commits from
+   * legacy clients that don't set this field. It is the responsibility of Sync
+   * clients to populate the contents of PasswordSpecificsData notes fields
+   * using the contents of this field. This should be deprecated together with
+   * the logic for preserving it on the server when clients without support for
+   * the |notes| field are no longer allowed by the server (below support
+   * version horizon).
+   * Encryption key considerations:
+   * a) For commits, the client must use the same key for both encrypted blobs.
+   * b) For handling getupdates, the two keys may NOT necessarily match the
+   *    encryption key used, as in theory the new blob could be "behind" if key
+   *    rotation took place. As of today, it is safe to assume that if
+   *    |encrypted| is decryptable by a client, then |encrypted_notes_backup|
+   *    must be decryptable too (i.e. the Nigori keybag should include older
+   *    versions of the key). But not the other way round.
+   * If both `encrypted_notes_backup` and the `notes` in `encrypted` are
+   * populated, the one in notes is considered the authoritative value.
+   * </pre>
+   *
+   * <code>optional .sync_pb.EncryptedData encrypted_notes_backup = 4;</code>
+   */
+  @java.lang.Override
+  public org.chromium.components.sync.protocol.EncryptedData getEncryptedNotesBackup() {
+    return encryptedNotesBackup_ == null ? org.chromium.components.sync.protocol.EncryptedData.getDefaultInstance() : encryptedNotesBackup_;
+  }
+  /**
+   * <pre>
+   * An encrypted backup of the notes field inside the PasswordSpecificsData.
+   * The Sync server preserves the contents of this field across commits from
+   * legacy clients that don't set this field. It is the responsibility of Sync
+   * clients to populate the contents of PasswordSpecificsData notes fields
+   * using the contents of this field. This should be deprecated together with
+   * the logic for preserving it on the server when clients without support for
+   * the |notes| field are no longer allowed by the server (below support
+   * version horizon).
+   * Encryption key considerations:
+   * a) For commits, the client must use the same key for both encrypted blobs.
+   * b) For handling getupdates, the two keys may NOT necessarily match the
+   *    encryption key used, as in theory the new blob could be "behind" if key
+   *    rotation took place. As of today, it is safe to assume that if
+   *    |encrypted| is decryptable by a client, then |encrypted_notes_backup|
+   *    must be decryptable too (i.e. the Nigori keybag should include older
+   *    versions of the key). But not the other way round.
+   * If both `encrypted_notes_backup` and the `notes` in `encrypted` are
+   * populated, the one in notes is considered the authoritative value.
+   * </pre>
+   *
+   * <code>optional .sync_pb.EncryptedData encrypted_notes_backup = 4;</code>
+   */
+  private void setEncryptedNotesBackup(org.chromium.components.sync.protocol.EncryptedData value) {
+    value.getClass();
+  encryptedNotesBackup_ = value;
+    bitField0_ |= 0x00000008;
+    }
+  /**
+   * <pre>
+   * An encrypted backup of the notes field inside the PasswordSpecificsData.
+   * The Sync server preserves the contents of this field across commits from
+   * legacy clients that don't set this field. It is the responsibility of Sync
+   * clients to populate the contents of PasswordSpecificsData notes fields
+   * using the contents of this field. This should be deprecated together with
+   * the logic for preserving it on the server when clients without support for
+   * the |notes| field are no longer allowed by the server (below support
+   * version horizon).
+   * Encryption key considerations:
+   * a) For commits, the client must use the same key for both encrypted blobs.
+   * b) For handling getupdates, the two keys may NOT necessarily match the
+   *    encryption key used, as in theory the new blob could be "behind" if key
+   *    rotation took place. As of today, it is safe to assume that if
+   *    |encrypted| is decryptable by a client, then |encrypted_notes_backup|
+   *    must be decryptable too (i.e. the Nigori keybag should include older
+   *    versions of the key). But not the other way round.
+   * If both `encrypted_notes_backup` and the `notes` in `encrypted` are
+   * populated, the one in notes is considered the authoritative value.
+   * </pre>
+   *
+   * <code>optional .sync_pb.EncryptedData encrypted_notes_backup = 4;</code>
+   */
+  @java.lang.SuppressWarnings({"ReferenceEquality"})
+  private void mergeEncryptedNotesBackup(org.chromium.components.sync.protocol.EncryptedData value) {
+    value.getClass();
+  if (encryptedNotesBackup_ != null &&
+        encryptedNotesBackup_ != org.chromium.components.sync.protocol.EncryptedData.getDefaultInstance()) {
+      encryptedNotesBackup_ =
+        org.chromium.components.sync.protocol.EncryptedData.newBuilder(encryptedNotesBackup_).mergeFrom(value).buildPartial();
+    } else {
+      encryptedNotesBackup_ = value;
+    }
+    bitField0_ |= 0x00000008;
+  }
+  /**
+   * <pre>
+   * An encrypted backup of the notes field inside the PasswordSpecificsData.
+   * The Sync server preserves the contents of this field across commits from
+   * legacy clients that don't set this field. It is the responsibility of Sync
+   * clients to populate the contents of PasswordSpecificsData notes fields
+   * using the contents of this field. This should be deprecated together with
+   * the logic for preserving it on the server when clients without support for
+   * the |notes| field are no longer allowed by the server (below support
+   * version horizon).
+   * Encryption key considerations:
+   * a) For commits, the client must use the same key for both encrypted blobs.
+   * b) For handling getupdates, the two keys may NOT necessarily match the
+   *    encryption key used, as in theory the new blob could be "behind" if key
+   *    rotation took place. As of today, it is safe to assume that if
+   *    |encrypted| is decryptable by a client, then |encrypted_notes_backup|
+   *    must be decryptable too (i.e. the Nigori keybag should include older
+   *    versions of the key). But not the other way round.
+   * If both `encrypted_notes_backup` and the `notes` in `encrypted` are
+   * populated, the one in notes is considered the authoritative value.
+   * </pre>
+   *
+   * <code>optional .sync_pb.EncryptedData encrypted_notes_backup = 4;</code>
+   */
+  private void clearEncryptedNotesBackup() {  encryptedNotesBackup_ = null;
+    bitField0_ = (bitField0_ & ~0x00000008);
+  }
+
   public static org.chromium.components.sync.protocol.PasswordSpecifics parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -583,6 +734,179 @@ public  final class PasswordSpecifics extends
       return this;
     }
 
+    /**
+     * <pre>
+     * An encrypted backup of the notes field inside the PasswordSpecificsData.
+     * The Sync server preserves the contents of this field across commits from
+     * legacy clients that don't set this field. It is the responsibility of Sync
+     * clients to populate the contents of PasswordSpecificsData notes fields
+     * using the contents of this field. This should be deprecated together with
+     * the logic for preserving it on the server when clients without support for
+     * the |notes| field are no longer allowed by the server (below support
+     * version horizon).
+     * Encryption key considerations:
+     * a) For commits, the client must use the same key for both encrypted blobs.
+     * b) For handling getupdates, the two keys may NOT necessarily match the
+     *    encryption key used, as in theory the new blob could be "behind" if key
+     *    rotation took place. As of today, it is safe to assume that if
+     *    |encrypted| is decryptable by a client, then |encrypted_notes_backup|
+     *    must be decryptable too (i.e. the Nigori keybag should include older
+     *    versions of the key). But not the other way round.
+     * If both `encrypted_notes_backup` and the `notes` in `encrypted` are
+     * populated, the one in notes is considered the authoritative value.
+     * </pre>
+     *
+     * <code>optional .sync_pb.EncryptedData encrypted_notes_backup = 4;</code>
+     */
+    @java.lang.Override
+    public boolean hasEncryptedNotesBackup() {
+      return instance.hasEncryptedNotesBackup();
+    }
+    /**
+     * <pre>
+     * An encrypted backup of the notes field inside the PasswordSpecificsData.
+     * The Sync server preserves the contents of this field across commits from
+     * legacy clients that don't set this field. It is the responsibility of Sync
+     * clients to populate the contents of PasswordSpecificsData notes fields
+     * using the contents of this field. This should be deprecated together with
+     * the logic for preserving it on the server when clients without support for
+     * the |notes| field are no longer allowed by the server (below support
+     * version horizon).
+     * Encryption key considerations:
+     * a) For commits, the client must use the same key for both encrypted blobs.
+     * b) For handling getupdates, the two keys may NOT necessarily match the
+     *    encryption key used, as in theory the new blob could be "behind" if key
+     *    rotation took place. As of today, it is safe to assume that if
+     *    |encrypted| is decryptable by a client, then |encrypted_notes_backup|
+     *    must be decryptable too (i.e. the Nigori keybag should include older
+     *    versions of the key). But not the other way round.
+     * If both `encrypted_notes_backup` and the `notes` in `encrypted` are
+     * populated, the one in notes is considered the authoritative value.
+     * </pre>
+     *
+     * <code>optional .sync_pb.EncryptedData encrypted_notes_backup = 4;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.EncryptedData getEncryptedNotesBackup() {
+      return instance.getEncryptedNotesBackup();
+    }
+    /**
+     * <pre>
+     * An encrypted backup of the notes field inside the PasswordSpecificsData.
+     * The Sync server preserves the contents of this field across commits from
+     * legacy clients that don't set this field. It is the responsibility of Sync
+     * clients to populate the contents of PasswordSpecificsData notes fields
+     * using the contents of this field. This should be deprecated together with
+     * the logic for preserving it on the server when clients without support for
+     * the |notes| field are no longer allowed by the server (below support
+     * version horizon).
+     * Encryption key considerations:
+     * a) For commits, the client must use the same key for both encrypted blobs.
+     * b) For handling getupdates, the two keys may NOT necessarily match the
+     *    encryption key used, as in theory the new blob could be "behind" if key
+     *    rotation took place. As of today, it is safe to assume that if
+     *    |encrypted| is decryptable by a client, then |encrypted_notes_backup|
+     *    must be decryptable too (i.e. the Nigori keybag should include older
+     *    versions of the key). But not the other way round.
+     * If both `encrypted_notes_backup` and the `notes` in `encrypted` are
+     * populated, the one in notes is considered the authoritative value.
+     * </pre>
+     *
+     * <code>optional .sync_pb.EncryptedData encrypted_notes_backup = 4;</code>
+     */
+    public Builder setEncryptedNotesBackup(org.chromium.components.sync.protocol.EncryptedData value) {
+      copyOnWrite();
+      instance.setEncryptedNotesBackup(value);
+      return this;
+      }
+    /**
+     * <pre>
+     * An encrypted backup of the notes field inside the PasswordSpecificsData.
+     * The Sync server preserves the contents of this field across commits from
+     * legacy clients that don't set this field. It is the responsibility of Sync
+     * clients to populate the contents of PasswordSpecificsData notes fields
+     * using the contents of this field. This should be deprecated together with
+     * the logic for preserving it on the server when clients without support for
+     * the |notes| field are no longer allowed by the server (below support
+     * version horizon).
+     * Encryption key considerations:
+     * a) For commits, the client must use the same key for both encrypted blobs.
+     * b) For handling getupdates, the two keys may NOT necessarily match the
+     *    encryption key used, as in theory the new blob could be "behind" if key
+     *    rotation took place. As of today, it is safe to assume that if
+     *    |encrypted| is decryptable by a client, then |encrypted_notes_backup|
+     *    must be decryptable too (i.e. the Nigori keybag should include older
+     *    versions of the key). But not the other way round.
+     * If both `encrypted_notes_backup` and the `notes` in `encrypted` are
+     * populated, the one in notes is considered the authoritative value.
+     * </pre>
+     *
+     * <code>optional .sync_pb.EncryptedData encrypted_notes_backup = 4;</code>
+     */
+    public Builder setEncryptedNotesBackup(
+        org.chromium.components.sync.protocol.EncryptedData.Builder builderForValue) {
+      copyOnWrite();
+      instance.setEncryptedNotesBackup(builderForValue.build());
+      return this;
+    }
+    /**
+     * <pre>
+     * An encrypted backup of the notes field inside the PasswordSpecificsData.
+     * The Sync server preserves the contents of this field across commits from
+     * legacy clients that don't set this field. It is the responsibility of Sync
+     * clients to populate the contents of PasswordSpecificsData notes fields
+     * using the contents of this field. This should be deprecated together with
+     * the logic for preserving it on the server when clients without support for
+     * the |notes| field are no longer allowed by the server (below support
+     * version horizon).
+     * Encryption key considerations:
+     * a) For commits, the client must use the same key for both encrypted blobs.
+     * b) For handling getupdates, the two keys may NOT necessarily match the
+     *    encryption key used, as in theory the new blob could be "behind" if key
+     *    rotation took place. As of today, it is safe to assume that if
+     *    |encrypted| is decryptable by a client, then |encrypted_notes_backup|
+     *    must be decryptable too (i.e. the Nigori keybag should include older
+     *    versions of the key). But not the other way round.
+     * If both `encrypted_notes_backup` and the `notes` in `encrypted` are
+     * populated, the one in notes is considered the authoritative value.
+     * </pre>
+     *
+     * <code>optional .sync_pb.EncryptedData encrypted_notes_backup = 4;</code>
+     */
+    public Builder mergeEncryptedNotesBackup(org.chromium.components.sync.protocol.EncryptedData value) {
+      copyOnWrite();
+      instance.mergeEncryptedNotesBackup(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * An encrypted backup of the notes field inside the PasswordSpecificsData.
+     * The Sync server preserves the contents of this field across commits from
+     * legacy clients that don't set this field. It is the responsibility of Sync
+     * clients to populate the contents of PasswordSpecificsData notes fields
+     * using the contents of this field. This should be deprecated together with
+     * the logic for preserving it on the server when clients without support for
+     * the |notes| field are no longer allowed by the server (below support
+     * version horizon).
+     * Encryption key considerations:
+     * a) For commits, the client must use the same key for both encrypted blobs.
+     * b) For handling getupdates, the two keys may NOT necessarily match the
+     *    encryption key used, as in theory the new blob could be "behind" if key
+     *    rotation took place. As of today, it is safe to assume that if
+     *    |encrypted| is decryptable by a client, then |encrypted_notes_backup|
+     *    must be decryptable too (i.e. the Nigori keybag should include older
+     *    versions of the key). But not the other way round.
+     * If both `encrypted_notes_backup` and the `notes` in `encrypted` are
+     * populated, the one in notes is considered the authoritative value.
+     * </pre>
+     *
+     * <code>optional .sync_pb.EncryptedData encrypted_notes_backup = 4;</code>
+     */
+    public Builder clearEncryptedNotesBackup() {  copyOnWrite();
+      instance.clearEncryptedNotesBackup();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:sync_pb.PasswordSpecifics)
   }
   @java.lang.Override
@@ -603,10 +927,11 @@ public  final class PasswordSpecifics extends
             "encrypted_",
             "clientOnlyEncryptedData_",
             "unencryptedMetadata_",
+            "encryptedNotesBackup_",
           };
           java.lang.String info =
-              "\u0001\u0003\u0000\u0001\u0001\u0003\u0003\u0000\u0000\u0000\u0001\u1009\u0000\u0002" +
-              "\u1009\u0001\u0003\u1009\u0002";
+              "\u0001\u0004\u0000\u0001\u0001\u0004\u0004\u0000\u0000\u0000\u0001\u1009\u0000\u0002" +
+              "\u1009\u0001\u0003\u1009\u0002\u0004\u1009\u0003";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

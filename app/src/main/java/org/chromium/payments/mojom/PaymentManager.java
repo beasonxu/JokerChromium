@@ -13,6 +13,8 @@
 
 package org.chromium.payments.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface PaymentManager extends org.chromium.mojo.bindings.Interface {
 
@@ -23,70 +25,61 @@ public interface PaymentManager extends org.chromium.mojo.bindings.Interface {
 
     Manager<PaymentManager, PaymentManager.Proxy> MANAGER = PaymentManager_Internal.MANAGER;
 
-
     void init(
 org.chromium.url.mojom.Url contextUrl, String serviceWorkerScope);
 
 
-
     void deletePaymentInstrument(
 String instrumentKey, 
-DeletePaymentInstrumentResponse callback);
+DeletePaymentInstrument_Response callback);
 
-    interface DeletePaymentInstrumentResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface DeletePaymentInstrument_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void getPaymentInstrument(
 String instrumentKey, 
-GetPaymentInstrumentResponse callback);
+GetPaymentInstrument_Response callback);
 
-    interface GetPaymentInstrumentResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<PaymentInstrument, Integer> { }
-
+    interface GetPaymentInstrument_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<PaymentInstrument, Integer> { }
 
 
     void keysOfPaymentInstruments(
 
-KeysOfPaymentInstrumentsResponse callback);
+KeysOfPaymentInstruments_Response callback);
 
-    interface KeysOfPaymentInstrumentsResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<String[], Integer> { }
-
+    interface KeysOfPaymentInstruments_Response extends org.chromium.mojo.bindings.Callbacks.Callback2<String[], Integer> { }
 
 
     void hasPaymentInstrument(
 String instrumentKey, 
-HasPaymentInstrumentResponse callback);
+HasPaymentInstrument_Response callback);
 
-    interface HasPaymentInstrumentResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface HasPaymentInstrument_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void setPaymentInstrument(
 String instrumentKey, PaymentInstrument instrument, 
-SetPaymentInstrumentResponse callback);
+SetPaymentInstrument_Response callback);
 
-    interface SetPaymentInstrumentResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface SetPaymentInstrument_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void clearPaymentInstruments(
 
-ClearPaymentInstrumentsResponse callback);
+ClearPaymentInstruments_Response callback);
 
-    interface ClearPaymentInstrumentsResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
+    interface ClearPaymentInstruments_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
     void setUserHint(
 String userHint);
 
 
-
     void enableDelegations(
 int[] delegations, 
-EnableDelegationsResponse callback);
+EnableDelegations_Response callback);
 
-    interface EnableDelegationsResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
+    interface EnableDelegations_Response extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
 }

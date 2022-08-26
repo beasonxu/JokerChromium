@@ -13,8 +13,24 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class MediaStreamType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        MediaStreamType.NO_SERVICE,
+        MediaStreamType.DEVICE_AUDIO_CAPTURE,
+        MediaStreamType.DEVICE_VIDEO_CAPTURE,
+        MediaStreamType.GUM_TAB_AUDIO_CAPTURE,
+        MediaStreamType.GUM_TAB_VIDEO_CAPTURE,
+        MediaStreamType.GUM_DESKTOP_VIDEO_CAPTURE,
+        MediaStreamType.GUM_DESKTOP_AUDIO_CAPTURE,
+        MediaStreamType.DISPLAY_VIDEO_CAPTURE,
+        MediaStreamType.DISPLAY_AUDIO_CAPTURE,
+        MediaStreamType.DISPLAY_VIDEO_CAPTURE_THIS_TAB,
+        MediaStreamType.NUM_MEDIA_TYPES})
+    public @interface EnumType {}
 
     public static final int NO_SERVICE = 0;
     public static final int DEVICE_AUDIO_CAPTURE = 1;

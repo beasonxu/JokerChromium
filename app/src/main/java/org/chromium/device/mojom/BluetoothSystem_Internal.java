@@ -13,6 +13,8 @@
 
 package org.chromium.device.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class BluetoothSystem_Internal {
 
@@ -71,7 +73,7 @@ class BluetoothSystem_Internal {
         @Override
         public void getState(
 
-GetStateResponse callback) {
+GetState_Response callback) {
 
             BluetoothSystemGetStateParams _message = new BluetoothSystemGetStateParams();
 
@@ -91,7 +93,7 @@ GetStateResponse callback) {
         @Override
         public void setPowered(
 boolean powered, 
-SetPoweredResponse callback) {
+SetPowered_Response callback) {
 
             BluetoothSystemSetPoweredParams _message = new BluetoothSystemSetPoweredParams();
 
@@ -113,7 +115,7 @@ SetPoweredResponse callback) {
         @Override
         public void getScanState(
 
-GetScanStateResponse callback) {
+GetScanState_Response callback) {
 
             BluetoothSystemGetScanStateParams _message = new BluetoothSystemGetScanStateParams();
 
@@ -133,7 +135,7 @@ GetScanStateResponse callback) {
         @Override
         public void startScan(
 
-StartScanResponse callback) {
+StartScan_Response callback) {
 
             BluetoothSystemStartScanParams _message = new BluetoothSystemStartScanParams();
 
@@ -153,7 +155,7 @@ StartScanResponse callback) {
         @Override
         public void stopScan(
 
-StopScanResponse callback) {
+StopScan_Response callback) {
 
             BluetoothSystemStopScanParams _message = new BluetoothSystemStopScanParams();
 
@@ -173,7 +175,7 @@ StopScanResponse callback) {
         @Override
         public void getAvailableDevices(
 
-GetAvailableDevicesResponse callback) {
+GetAvailableDevices_Response callback) {
 
             BluetoothSystemGetAvailableDevicesParams _message = new BluetoothSystemGetAvailableDevicesParams();
 
@@ -476,9 +478,9 @@ GetAvailableDevicesResponse callback) {
 
     static class BluetoothSystemGetStateResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BluetoothSystem.GetStateResponse mCallback;
+        private final BluetoothSystem.GetState_Response mCallback;
 
-        BluetoothSystemGetStateResponseParamsForwardToCallback(BluetoothSystem.GetStateResponse callback) {
+        BluetoothSystemGetStateResponseParamsForwardToCallback(BluetoothSystem.GetState_Response callback) {
             this.mCallback = callback;
         }
 
@@ -503,7 +505,7 @@ GetAvailableDevicesResponse callback) {
         }
     }
 
-    static class BluetoothSystemGetStateResponseParamsProxyToResponder implements BluetoothSystem.GetStateResponse {
+    static class BluetoothSystemGetStateResponseParamsProxyToResponder implements BluetoothSystem.GetState_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -665,9 +667,9 @@ GetAvailableDevicesResponse callback) {
 
     static class BluetoothSystemSetPoweredResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BluetoothSystem.SetPoweredResponse mCallback;
+        private final BluetoothSystem.SetPowered_Response mCallback;
 
-        BluetoothSystemSetPoweredResponseParamsForwardToCallback(BluetoothSystem.SetPoweredResponse callback) {
+        BluetoothSystemSetPoweredResponseParamsForwardToCallback(BluetoothSystem.SetPowered_Response callback) {
             this.mCallback = callback;
         }
 
@@ -692,7 +694,7 @@ GetAvailableDevicesResponse callback) {
         }
     }
 
-    static class BluetoothSystemSetPoweredResponseParamsProxyToResponder implements BluetoothSystem.SetPoweredResponse {
+    static class BluetoothSystemSetPoweredResponseParamsProxyToResponder implements BluetoothSystem.SetPowered_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -847,9 +849,9 @@ GetAvailableDevicesResponse callback) {
 
     static class BluetoothSystemGetScanStateResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BluetoothSystem.GetScanStateResponse mCallback;
+        private final BluetoothSystem.GetScanState_Response mCallback;
 
-        BluetoothSystemGetScanStateResponseParamsForwardToCallback(BluetoothSystem.GetScanStateResponse callback) {
+        BluetoothSystemGetScanStateResponseParamsForwardToCallback(BluetoothSystem.GetScanState_Response callback) {
             this.mCallback = callback;
         }
 
@@ -874,7 +876,7 @@ GetAvailableDevicesResponse callback) {
         }
     }
 
-    static class BluetoothSystemGetScanStateResponseParamsProxyToResponder implements BluetoothSystem.GetScanStateResponse {
+    static class BluetoothSystemGetScanStateResponseParamsProxyToResponder implements BluetoothSystem.GetScanState_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1029,9 +1031,9 @@ GetAvailableDevicesResponse callback) {
 
     static class BluetoothSystemStartScanResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BluetoothSystem.StartScanResponse mCallback;
+        private final BluetoothSystem.StartScan_Response mCallback;
 
-        BluetoothSystemStartScanResponseParamsForwardToCallback(BluetoothSystem.StartScanResponse callback) {
+        BluetoothSystemStartScanResponseParamsForwardToCallback(BluetoothSystem.StartScan_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1056,7 +1058,7 @@ GetAvailableDevicesResponse callback) {
         }
     }
 
-    static class BluetoothSystemStartScanResponseParamsProxyToResponder implements BluetoothSystem.StartScanResponse {
+    static class BluetoothSystemStartScanResponseParamsProxyToResponder implements BluetoothSystem.StartScan_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1211,9 +1213,9 @@ GetAvailableDevicesResponse callback) {
 
     static class BluetoothSystemStopScanResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BluetoothSystem.StopScanResponse mCallback;
+        private final BluetoothSystem.StopScan_Response mCallback;
 
-        BluetoothSystemStopScanResponseParamsForwardToCallback(BluetoothSystem.StopScanResponse callback) {
+        BluetoothSystemStopScanResponseParamsForwardToCallback(BluetoothSystem.StopScan_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1238,7 +1240,7 @@ GetAvailableDevicesResponse callback) {
         }
     }
 
-    static class BluetoothSystemStopScanResponseParamsProxyToResponder implements BluetoothSystem.StopScanResponse {
+    static class BluetoothSystemStopScanResponseParamsProxyToResponder implements BluetoothSystem.StopScan_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1408,9 +1410,9 @@ GetAvailableDevicesResponse callback) {
 
     static class BluetoothSystemGetAvailableDevicesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final BluetoothSystem.GetAvailableDevicesResponse mCallback;
+        private final BluetoothSystem.GetAvailableDevices_Response mCallback;
 
-        BluetoothSystemGetAvailableDevicesResponseParamsForwardToCallback(BluetoothSystem.GetAvailableDevicesResponse callback) {
+        BluetoothSystemGetAvailableDevicesResponseParamsForwardToCallback(BluetoothSystem.GetAvailableDevices_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1435,7 +1437,7 @@ GetAvailableDevicesResponse callback) {
         }
     }
 
-    static class BluetoothSystemGetAvailableDevicesResponseParamsProxyToResponder implements BluetoothSystem.GetAvailableDevicesResponse {
+    static class BluetoothSystemGetAvailableDevicesResponseParamsProxyToResponder implements BluetoothSystem.GetAvailableDevices_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

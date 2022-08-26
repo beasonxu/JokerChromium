@@ -13,7 +13,7 @@ import org.chromium.payments.mojom.PaymentMethodData;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class CanMakePaymentQueryJni implements CanMakePaymentQuery.Natives {
+class CanMakePaymentQueryJni implements CanMakePaymentQuery.Natives {
   private static CanMakePaymentQuery.Natives testInstance;
 
   public static final JniStaticTestMocker<CanMakePaymentQuery.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.payments.CanMakePaymentQuery.Natives>() {

@@ -59,6 +59,8 @@ public class MenuButtonCoordinator {
      *         a pending update.
      * @param isInOverviewModeSupplier Supplier of overview mode state.
      * @param themeColorProvider Provider of theme color changes.
+     * @param menuButtonStateSupplier Supplief of the menu button state.
+     * @param onMenuButtonClicked Runnable to run on menu button click.
      * @param menuButtonId Resource id that should be used to locate the underlying view.
      */
     public MenuButtonCoordinator(OneshotSupplier<AppMenuCoordinator> appMenuCoordinatorSupplier,
@@ -66,6 +68,7 @@ public class MenuButtonCoordinator {
             WindowAndroid windowAndroid, SetFocusFunction setUrlBarFocusFunction,
             Runnable requestRenderRunnable, boolean shouldShowAppUpdateBadge,
             Supplier<Boolean> isInOverviewModeSupplier, ThemeColorProvider themeColorProvider,
+            Supplier<MenuButtonState> menuButtonStateSupplier, Runnable onMenuButtonClicked,
             @IdRes int menuButtonId) {
         mActivity = windowAndroid.getActivity().get();
         mMenuButton = mActivity.findViewById(menuButtonId);
@@ -74,15 +77,16 @@ public class MenuButtonCoordinator {
                                          new ShowBadgeProperty(false, false))
                                  .with(MenuButtonProperties.THEME,
                                          new ThemeProperty(themeColorProvider.getTint(),
-                                                 themeColorProvider.useLight()))
+                                                 themeColorProvider.getBrandedColorScheme()))
                                  .with(MenuButtonProperties.IS_VISIBLE, true)
+                                 .with(MenuButtonProperties.STATE_SUPPLIER, menuButtonStateSupplier)
                                  .build();
         mMediator = new MenuButtonMediator(mPropertyModel, shouldShowAppUpdateBadge,
                 ()
                         -> mActivity.isFinishing() || mActivity.isDestroyed(),
                 requestRenderRunnable, themeColorProvider, isInOverviewModeSupplier,
                 controlsVisibilityDelegate, setUrlBarFocusFunction, appMenuCoordinatorSupplier,
-                windowAndroid);
+                windowAndroid, menuButtonStateSupplier, onMenuButtonClicked);
         mMediator.getMenuButtonHelperSupplier().addObserver(
                 (helper) -> mAppMenuButtonHelper = helper);
         if (mMenuButton != null) {
@@ -113,13 +117,17 @@ public class MenuButtonCoordinator {
 
     /**
      * Set the underlying MenuButton view. Use only if the MenuButton instance isn't available at
-     * construction time, e.g. if it's lazily inflated. This should only be called once.
+     * construction time, e.g. if it's lazily inflated. This should only be called once, unless
+     * switching the active toolbar.
      * @param menuButton The underlying MenuButton view.
      */
     public void setMenuButton(MenuButton menuButton) {
-        assert mMenuButton == null;
         assert menuButton != null;
         mMenuButton = menuButton;
+
+        if (mChangeProcessor != null) {
+            mChangeProcessor.destroy();
+        }
         mChangeProcessor = PropertyModelChangeProcessor.create(
                 mPropertyModel, menuButton, new MenuButtonViewBinder());
     }
@@ -180,13 +188,9 @@ public class MenuButtonCoordinator {
         mAppMenuButtonHelper = null;
     }
 
-    /**
-     * Signal to MenuButtonCoordinator that native is initialized and it's safe to access
-     * dependencies that require native, e.g. the UpdateMenuItemHelper.
-     */
-    public void onNativeInitialized() {
-        if (mMediator == null) return;
-        mMediator.onNativeInitialized();
+    /** @return Observer for menu state change. */
+    public @Nullable Runnable getStateObserver() {
+        return mMediator != null ? mMediator::updateStateChanged : null;
     }
 
     @Nullable
@@ -237,5 +241,10 @@ public class MenuButtonCoordinator {
     public Animator getUrlFocusingAnimator(boolean isFocusingUrl) {
         return mMediator.getUrlFocusingAnimator(isFocusingUrl,
                 mMenuButton != null && mMenuButton.getLayoutDirection() == LAYOUT_DIRECTION_RTL);
+    }
+
+    /** Returns whether the menu button is currently showing an update badge. */
+    public boolean isShowingUpdateBadge() {
+        return mPropertyModel.get(MenuButtonProperties.SHOW_UPDATE_BADGE).mShowUpdateBadge;
     }
 }

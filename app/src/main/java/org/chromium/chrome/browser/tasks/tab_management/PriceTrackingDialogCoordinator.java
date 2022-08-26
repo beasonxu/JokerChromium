@@ -10,8 +10,10 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
 import org.chromium.chrome.browser.price_tracking.PriceDropNotificationManager;
+import org.chromium.chrome.browser.price_tracking.PriceTrackingUtilities;
 import org.chromium.chrome.browser.tabmodel.TabModelSelector;
 import org.chromium.chrome.tab_ui.R;
+import org.chromium.ui.modaldialog.DialogDismissalCause;
 import org.chromium.ui.modaldialog.ModalDialogManager;
 import org.chromium.ui.modaldialog.ModalDialogProperties;
 import org.chromium.ui.modelutil.PropertyModel;
@@ -26,7 +28,8 @@ class PriceTrackingDialogCoordinator implements OnCheckedChangeListener {
 
     PriceTrackingDialogCoordinator(Context context, ModalDialogManager modalDialogManager,
             TabSwitcherMediator.ResetHandler resetHandler, TabModelSelector tabModelSelector,
-            PriceDropNotificationManager notificationManager) {
+            PriceDropNotificationManager notificationManager,
+            @TabListCoordinator.TabListMode int mode) {
         mDialogView = (PriceTrackingDialogView) LayoutInflater.from(context).inflate(
                 R.layout.price_tracking_dialog_layout, null, false);
         mDialogView.setupTrackPricesSwitchOnCheckedChangeListener(this);
@@ -40,9 +43,15 @@ class PriceTrackingDialogCoordinator implements OnCheckedChangeListener {
 
             @Override
             public void onDismiss(PropertyModel model, int dismissalCause) {
-                resetHandler.resetWithTabList(
-                        tabModelSelector.getTabModelFilterProvider().getCurrentTabModelFilter(),
-                        false, TabSwitcherMediator.isShowingTabsInMRUOrder());
+                if (dismissalCause == DialogDismissalCause.ACTIVITY_DESTROYED) return;
+
+                // We only need to call resetWithTabList under GRID tab switcher. For now it's used
+                // to show/hide price drop cards on tabs timely.
+                if (mode == TabListCoordinator.TabListMode.GRID) {
+                    resetHandler.resetWithTabList(
+                            tabModelSelector.getTabModelFilterProvider().getCurrentTabModelFilter(),
+                            false, TabSwitcherCoordinator.isShowingTabsInMRUOrder(mode));
+                }
             }
         };
 
@@ -54,7 +63,7 @@ class PriceTrackingDialogCoordinator implements OnCheckedChangeListener {
     }
 
     void show() {
-        mDialogView.setupPriceAlertsRowMenuVisibility();
+        mDialogView.setupRowMenuVisibility();
         mDialogView.updateSwitch();
         mModalDialogManager.showDialog(mModel, ModalDialogManager.ModalDialogType.APP);
     }

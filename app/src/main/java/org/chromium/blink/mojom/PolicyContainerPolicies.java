@@ -13,17 +13,22 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class PolicyContainerPolicies extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 16;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+    private static final int STRUCT_SIZE = 32;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+    public int crossOriginEmbedderPolicy;
     public int referrerPolicy;
     public int ipAddressSpace;
+    public org.chromium.network.mojom.ContentSecurityPolicy[] contentSecurityPolicies;
 
     private PolicyContainerPolicies(int version) {
         super(STRUCT_SIZE, version);
+        this.crossOriginEmbedderPolicy = (int) org.chromium.network.mojom.CrossOriginEmbedderPolicyValue.NONE;
         this.referrerPolicy = (int) org.chromium.network.mojom.ReferrerPolicy.DEFAULT;
         this.ipAddressSpace = (int) org.chromium.network.mojom.IpAddressSpace.UNKNOWN;
     }
@@ -59,15 +64,34 @@ public final class PolicyContainerPolicies extends org.chromium.mojo.bindings.St
             result = new PolicyContainerPolicies(elementsOrVersion);
                 {
                     
-                result.referrerPolicy = decoder0.readInt(8);
+                result.crossOriginEmbedderPolicy = decoder0.readInt(8);
+                    org.chromium.network.mojom.CrossOriginEmbedderPolicyValue.validate(result.crossOriginEmbedderPolicy);
+                    result.crossOriginEmbedderPolicy = org.chromium.network.mojom.CrossOriginEmbedderPolicyValue.toKnownValue(result.crossOriginEmbedderPolicy);
+                }
+                {
+                    
+                result.referrerPolicy = decoder0.readInt(12);
                     org.chromium.network.mojom.ReferrerPolicy.validate(result.referrerPolicy);
                     result.referrerPolicy = org.chromium.network.mojom.ReferrerPolicy.toKnownValue(result.referrerPolicy);
                 }
                 {
                     
-                result.ipAddressSpace = decoder0.readInt(12);
+                result.ipAddressSpace = decoder0.readInt(16);
                     org.chromium.network.mojom.IpAddressSpace.validate(result.ipAddressSpace);
                     result.ipAddressSpace = org.chromium.network.mojom.IpAddressSpace.toKnownValue(result.ipAddressSpace);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
+                {
+                    org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                    result.contentSecurityPolicies = new org.chromium.network.mojom.ContentSecurityPolicy[si1.elementsOrVersion];
+                    for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
+                        
+                        org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                        result.contentSecurityPolicies[i1] = org.chromium.network.mojom.ContentSecurityPolicy.decode(decoder2);
+                    }
+                }
                 }
 
         } finally {
@@ -81,8 +105,20 @@ public final class PolicyContainerPolicies extends org.chromium.mojo.bindings.St
     protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
         org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         
-        encoder0.encode(this.referrerPolicy, 8);
+        encoder0.encode(this.crossOriginEmbedderPolicy, 8);
         
-        encoder0.encode(this.ipAddressSpace, 12);
+        encoder0.encode(this.referrerPolicy, 12);
+        
+        encoder0.encode(this.ipAddressSpace, 16);
+        
+        if (this.contentSecurityPolicies == null) {
+            encoder0.encodeNullPointer(24, false);
+        } else {
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.contentSecurityPolicies.length, 24, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            for (int i0 = 0; i0 < this.contentSecurityPolicies.length; ++i0) {
+                
+                encoder1.encode(this.contentSecurityPolicies[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
+            }
+        }
     }
 }

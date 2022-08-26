@@ -13,7 +13,7 @@ import org.chromium.chrome.browser.profiles.Profile;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class RequestCoordinatorBridgeJni implements RequestCoordinatorBridge.Natives {
+public class RequestCoordinatorBridgeJni implements RequestCoordinatorBridge.Natives {
   private static RequestCoordinatorBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<RequestCoordinatorBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.offlinepages.RequestCoordinatorBridge.Natives>() {

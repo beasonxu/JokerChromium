@@ -35,21 +35,20 @@ import org.chromium.ui.widget.ChromeBulletSpan;
  */
 public class PrivacySandboxSettingsFragment
         extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener {
-    public static final String PRIVACY_SANDBOX_DEFAULT_URL =
-            "https://web.dev/digging-into-the-privacy-sandbox/";
-    public static final String EXPERIMENT_URL_PARAM = "website-url";
+    public static final String PRIVACY_SANDBOX_URL = "https://www.privacysandbox.com";
     // Key for the argument with which the PrivacySandbox fragment will be launched. The value for
     // this argument should be part of the PrivacySandboxReferrer enum, which contains all points of
     // entry to the Privacy Sandbox UI.
     public static final String PRIVACY_SANDBOX_REFERRER = "privacy-sandbox-referrer";
 
+    public static final String EXPERIMENT_DESCRIPTION_TITLE = "privacy_sandbox_title";
     public static final String EXPERIMENT_DESCRIPTION_PREFERENCE = "privacy_sandbox_description";
     public static final String TOGGLE_DESCRIPTION_PREFERENCE = "privacy_sandbox_toggle_description";
     public static final String TOGGLE_PREFERENCE = "privacy_sandbox_toggle";
+    public static final String FLOC_PREFERENCE = "floc_page";
 
     private @PrivacySandboxReferrer int mPrivacySandboxReferrer;
     private PrivacySandboxHelpers.CustomTabIntentHelper mCustomTabHelper;
-    private PrivacySandboxHelpers.TrustedIntentHelper mTrustedIntentHelper;
 
     public static CharSequence getStatusString(Context context) {
         return context.getString(PrivacySandboxBridge.isPrivacySandboxEnabled()
@@ -62,20 +61,26 @@ public class PrivacySandboxSettingsFragment
      */
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
+        assert !ChromeFeatureList.isEnabled(ChromeFeatureList.PRIVACY_SANDBOX_SETTINGS_3);
         // Add all preferences and set the title.
         getActivity().setTitle(R.string.prefs_privacy_sandbox);
         SettingsUtils.addPreferencesFromResource(this, R.xml.privacy_sandbox_preferences);
+
+        // Modify the Privacy Sandbox elements.
+        getPreferenceScreen().removePreference(findPreference(EXPERIMENT_DESCRIPTION_TITLE));
+        updateFlocPreference();
+
         // Format the Privacy Sandbox description, which has a link.
         findPreference(EXPERIMENT_DESCRIPTION_PREFERENCE)
                 .setSummary(SpanApplier.applySpans(
-                        getContext().getString(R.string.privacy_sandbox_description),
+                        getContext().getString(R.string.privacy_sandbox_description_two),
                         new SpanInfo("<link>", "</link>",
-                                new NoUnderlineClickableSpan(getContext().getResources(),
-                                        (widget) -> openUrlInCct(getPrivacySandboxUrl())))));
+                                new NoUnderlineClickableSpan(getContext(),
+                                        (widget) -> openUrlInCct(PRIVACY_SANDBOX_URL)))));
         // Format the toggle description, which has bullet points.
         findPreference(TOGGLE_DESCRIPTION_PREFERENCE)
                 .setSummary(SpanApplier.applySpans(
-                        getContext().getString(R.string.privacy_sandbox_toggle_description),
+                        getContext().getString(R.string.privacy_sandbox_toggle_description_two),
                         new SpanInfo("<li1>", "</li1>", new ChromeBulletSpan(getContext())),
                         new SpanInfo("<li2>", "</li2>", new ChromeBulletSpan(getContext()))));
 
@@ -99,6 +104,7 @@ public class PrivacySandboxSettingsFragment
         RecordUserAction.record(enabled ? "Settings.PrivacySandbox.ApisEnabled"
                                         : "Settings.PrivacySandbox.ApisDisabled");
         PrivacySandboxBridge.setPrivacySandboxEnabled(enabled);
+        updateFlocPreference();
         return true;
     }
 
@@ -122,20 +128,24 @@ public class PrivacySandboxSettingsFragment
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.menu_id_targeted_help) {
             // Action for the question mark button.
-            openUrlInCct(getPrivacySandboxUrl());
+            openUrlInCct(PRIVACY_SANDBOX_URL);
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateFlocPreference();
     }
 
     /**
      * Set the necessary CCT helpers to be able to natively open links. This is needed because the
      * helpers are not modularized.
      */
-    public void setCctHelpers(PrivacySandboxHelpers.CustomTabIntentHelper tabHelper,
-            PrivacySandboxHelpers.TrustedIntentHelper intentHelper) {
+    public void setCustomTabIntentHelper(PrivacySandboxHelpers.CustomTabIntentHelper tabHelper) {
         mCustomTabHelper = tabHelper;
-        mTrustedIntentHelper = intentHelper;
     }
 
     private ChromeManagedPreferenceDelegate createManagedPreferenceDelegate() {
@@ -145,17 +155,8 @@ public class PrivacySandboxSettingsFragment
         };
     }
 
-    private String getPrivacySandboxUrl() {
-        // Get the URL from Finch, if defined.
-        String url = ChromeFeatureList.getFieldTrialParamByFeature(
-                ChromeFeatureList.PRIVACY_SANDBOX_SETTINGS, EXPERIMENT_URL_PARAM);
-        if (url == null || url.isEmpty()) return PRIVACY_SANDBOX_DEFAULT_URL;
-        return url;
-    }
-
     private void openUrlInCct(String url) {
         assert (mCustomTabHelper != null)
-                && (mTrustedIntentHelper != null)
             : "CCT helpers must be set on PrivacySandboxSettingsFragment before opening a link.";
         CustomTabsIntent customTabIntent =
                 new CustomTabsIntent.Builder().setShowTitle(true).build();
@@ -164,7 +165,7 @@ public class PrivacySandboxSettingsFragment
                 getContext(), customTabIntent.intent);
         intent.setPackage(getContext().getPackageName());
         intent.putExtra(Browser.EXTRA_APPLICATION_ID, getContext().getPackageName());
-        mTrustedIntentHelper.addTrustedIntentExtras(intent);
+        IntentUtils.addTrustedIntentExtras(intent);
         IntentUtils.safeStartActivity(getContext(), intent);
     }
 
@@ -187,6 +188,15 @@ public class PrivacySandboxSettingsFragment
             RecordUserAction.record("Settings.PrivacySandbox.OpenedFromSettingsParent");
         } else if (mPrivacySandboxReferrer == PrivacySandboxReferrer.COOKIES_SNACKBAR) {
             RecordUserAction.record("Settings.PrivacySandbox.OpenedFromCookiesPageToast");
+        }
+    }
+
+    private void updateFlocPreference() {
+        // Update the Preference linking to the FLoC page if shown.
+        Preference flocPreference = findPreference(FLOC_PREFERENCE);
+        if (flocPreference != null) {
+            flocPreference.setEnabled(PrivacySandboxBridge.isPrivacySandboxEnabled());
+            flocPreference.setSummary(PrivacySandboxBridge.getFlocStatusString());
         }
     }
 }

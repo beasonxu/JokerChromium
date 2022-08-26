@@ -13,8 +13,17 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class MediaDeviceType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        MediaDeviceType.MEDIA_AUDIO_INPUT,
+        MediaDeviceType.MEDIA_VIDEO_INPUT,
+        MediaDeviceType.MEDIA_AUDIO_OUTPUT,
+        MediaDeviceType.NUM_MEDIA_DEVICE_TYPES})
+    public @interface EnumType {}
 
     public static final int MEDIA_AUDIO_INPUT = 0;
     public static final int MEDIA_VIDEO_INPUT = 1;

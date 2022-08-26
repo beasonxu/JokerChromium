@@ -13,6 +13,8 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class KeySystemSupport_Internal {
 
@@ -47,7 +49,7 @@ class KeySystemSupport_Internal {
     };
 
 
-    private static final int IS_KEY_SYSTEM_SUPPORTED_ORDINAL = 0;
+    private static final int ADD_OBSERVER_ORDINAL = 0;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements KeySystemSupport.Proxy {
@@ -59,23 +61,18 @@ class KeySystemSupport_Internal {
 
 
         @Override
-        public void isKeySystemSupported(
-String keySystem, 
-IsKeySystemSupportedResponse callback) {
+        public void addObserver(
+KeySystemSupportObserver observer) {
 
-            KeySystemSupportIsKeySystemSupportedParams _message = new KeySystemSupportIsKeySystemSupportedParams();
+            KeySystemSupportAddObserverParams _message = new KeySystemSupportAddObserverParams();
 
-            _message.keySystem = keySystem;
+            _message.observer = observer;
 
 
-            getProxyHandler().getMessageReceiver().acceptWithResponder(
+            getProxyHandler().getMessageReceiver().accept(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(
-                                    IS_KEY_SYSTEM_SUPPORTED_ORDINAL,
-                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
-                                    0)),
-                    new KeySystemSupportIsKeySystemSupportedResponseParamsForwardToCallback(callback));
+                            new org.chromium.mojo.bindings.MessageHeader(ADD_OBSERVER_ORDINAL)));
 
         }
 
@@ -110,6 +107,17 @@ IsKeySystemSupportedResponse callback) {
 
 
 
+
+                    case ADD_OBSERVER_ORDINAL: {
+
+                        KeySystemSupportAddObserverParams data =
+                                KeySystemSupportAddObserverParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().addObserver(data.observer);
+                        return true;
+                    }
+
+
                     default:
                         return false;
                 }
@@ -141,19 +149,6 @@ IsKeySystemSupportedResponse callback) {
 
 
 
-
-
-
-                    case IS_KEY_SYSTEM_SUPPORTED_ORDINAL: {
-
-                        KeySystemSupportIsKeySystemSupportedParams data =
-                                KeySystemSupportIsKeySystemSupportedParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().isKeySystemSupported(data.keySystem, new KeySystemSupportIsKeySystemSupportedResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
-                        return true;
-                    }
-
-
                     default:
                         return false;
                 }
@@ -166,22 +161,22 @@ IsKeySystemSupportedResponse callback) {
 
 
     
-    static final class KeySystemSupportIsKeySystemSupportedParams extends org.chromium.mojo.bindings.Struct {
+    static final class KeySystemSupportAddObserverParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public String keySystem;
+        public KeySystemSupportObserver observer;
 
-        private KeySystemSupportIsKeySystemSupportedParams(int version) {
+        private KeySystemSupportAddObserverParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public KeySystemSupportIsKeySystemSupportedParams() {
+        public KeySystemSupportAddObserverParams() {
             this(0);
         }
 
-        public static KeySystemSupportIsKeySystemSupportedParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static KeySystemSupportAddObserverParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -190,25 +185,25 @@ IsKeySystemSupportedResponse callback) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static KeySystemSupportIsKeySystemSupportedParams deserialize(java.nio.ByteBuffer data) {
+        public static KeySystemSupportAddObserverParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static KeySystemSupportIsKeySystemSupportedParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static KeySystemSupportAddObserverParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            KeySystemSupportIsKeySystemSupportedParams result;
+            KeySystemSupportAddObserverParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new KeySystemSupportIsKeySystemSupportedParams(elementsOrVersion);
+                result = new KeySystemSupportAddObserverParams(elementsOrVersion);
                     {
                         
-                    result.keySystem = decoder0.readString(8, false);
+                    result.observer = decoder0.readServiceInterface(8, false, KeySystemSupportObserver.MANAGER);
                     }
 
             } finally {
@@ -222,141 +217,7 @@ IsKeySystemSupportedResponse callback) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.keySystem, 8, false);
-        }
-    }
-
-
-
-    
-    static final class KeySystemSupportIsKeySystemSupportedResponseParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public boolean isSupported;
-        public KeySystemCapability keySystemCapability;
-
-        private KeySystemSupportIsKeySystemSupportedResponseParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public KeySystemSupportIsKeySystemSupportedResponseParams() {
-            this(0);
-        }
-
-        public static KeySystemSupportIsKeySystemSupportedResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static KeySystemSupportIsKeySystemSupportedResponseParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static KeySystemSupportIsKeySystemSupportedResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            KeySystemSupportIsKeySystemSupportedResponseParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new KeySystemSupportIsKeySystemSupportedResponseParams(elementsOrVersion);
-                    {
-                        
-                    result.isSupported = decoder0.readBoolean(8, 0);
-                    }
-                    {
-                        
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, true);
-                    result.keySystemCapability = KeySystemCapability.decode(decoder1);
-                    }
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-            
-            encoder0.encode(this.isSupported, 8, 0);
-            
-            encoder0.encode(this.keySystemCapability, 16, true);
-        }
-    }
-
-    static class KeySystemSupportIsKeySystemSupportedResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
-            implements org.chromium.mojo.bindings.MessageReceiver {
-        private final KeySystemSupport.IsKeySystemSupportedResponse mCallback;
-
-        KeySystemSupportIsKeySystemSupportedResponseParamsForwardToCallback(KeySystemSupport.IsKeySystemSupportedResponse callback) {
-            this.mCallback = callback;
-        }
-
-        @Override
-        public boolean accept(org.chromium.mojo.bindings.Message message) {
-            try {
-                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
-                        message.asServiceMessage();
-                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
-                if (!header.validateHeader(IS_KEY_SYSTEM_SUPPORTED_ORDINAL,
-                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG)) {
-                    return false;
-                }
-
-                KeySystemSupportIsKeySystemSupportedResponseParams response = KeySystemSupportIsKeySystemSupportedResponseParams.deserialize(messageWithHeader.getPayload());
-
-                mCallback.call(response.isSupported, response.keySystemCapability);
-                return true;
-            } catch (org.chromium.mojo.bindings.DeserializationException e) {
-                return false;
-            }
-        }
-    }
-
-    static class KeySystemSupportIsKeySystemSupportedResponseParamsProxyToResponder implements KeySystemSupport.IsKeySystemSupportedResponse {
-
-        private final org.chromium.mojo.system.Core mCore;
-        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
-        private final long mRequestId;
-
-        KeySystemSupportIsKeySystemSupportedResponseParamsProxyToResponder(
-                org.chromium.mojo.system.Core core,
-                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
-                long requestId) {
-            mCore = core;
-            mMessageReceiver = messageReceiver;
-            mRequestId = requestId;
-        }
-
-        @Override
-        public void call(Boolean isSupported, KeySystemCapability keySystemCapability) {
-            KeySystemSupportIsKeySystemSupportedResponseParams _response = new KeySystemSupportIsKeySystemSupportedResponseParams();
-
-            _response.isSupported = isSupported;
-
-            _response.keySystemCapability = keySystemCapability;
-
-            org.chromium.mojo.bindings.ServiceMessage _message =
-                    _response.serializeWithHeader(
-                            mCore,
-                            new org.chromium.mojo.bindings.MessageHeader(
-                                    IS_KEY_SYSTEM_SUPPORTED_ORDINAL,
-                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG,
-                                    mRequestId));
-            mMessageReceiver.accept(_message);
+            encoder0.encode(this.observer, 8, false, KeySystemSupportObserver.MANAGER);
         }
     }
 

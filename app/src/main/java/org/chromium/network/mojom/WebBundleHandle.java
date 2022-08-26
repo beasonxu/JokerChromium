@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface WebBundleHandle extends org.chromium.mojo.bindings.Interface {
 
@@ -23,15 +25,12 @@ public interface WebBundleHandle extends org.chromium.mojo.bindings.Interface {
 
     Manager<WebBundleHandle, WebBundleHandle.Proxy> MANAGER = WebBundleHandle_Internal.MANAGER;
 
-
     void clone(
 org.chromium.mojo.bindings.InterfaceRequest<WebBundleHandle> receiver);
 
 
-
     void onWebBundleError(
 int type, String message);
-
 
 
     void onWebBundleLoadFinished(

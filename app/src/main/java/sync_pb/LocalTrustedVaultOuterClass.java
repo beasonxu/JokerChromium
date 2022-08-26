@@ -359,6 +359,27 @@ public final class LocalTrustedVaultOuterClass {
      * @return The deviceRegistered.
      */
     boolean getDeviceRegistered();
+
+    /**
+     * <pre>
+     * Used to trigger another device registration attempt, even if device is
+     * already registered. Not set if `device_registered` is false.
+     * </pre>
+     *
+     * <code>optional int32 device_registered_version = 3;</code>
+     * @return Whether the deviceRegisteredVersion field is set.
+     */
+    boolean hasDeviceRegisteredVersion();
+    /**
+     * <pre>
+     * Used to trigger another device registration attempt, even if device is
+     * already registered. Not set if `device_registered` is false.
+     * </pre>
+     *
+     * <code>optional int32 device_registered_version = 3;</code>
+     * @return The deviceRegisteredVersion.
+     */
+    int getDeviceRegisteredVersion();
   }
   /**
    * Protobuf type {@code sync_pb.LocalDeviceRegistrationInfo}
@@ -475,6 +496,60 @@ public final class LocalTrustedVaultOuterClass {
     private void clearDeviceRegistered() {
       bitField0_ = (bitField0_ & ~0x00000002);
       deviceRegistered_ = false;
+    }
+
+    public static final int DEVICE_REGISTERED_VERSION_FIELD_NUMBER = 3;
+    private int deviceRegisteredVersion_;
+    /**
+     * <pre>
+     * Used to trigger another device registration attempt, even if device is
+     * already registered. Not set if `device_registered` is false.
+     * </pre>
+     *
+     * <code>optional int32 device_registered_version = 3;</code>
+     * @return Whether the deviceRegisteredVersion field is set.
+     */
+    @java.lang.Override
+    public boolean hasDeviceRegisteredVersion() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <pre>
+     * Used to trigger another device registration attempt, even if device is
+     * already registered. Not set if `device_registered` is false.
+     * </pre>
+     *
+     * <code>optional int32 device_registered_version = 3;</code>
+     * @return The deviceRegisteredVersion.
+     */
+    @java.lang.Override
+    public int getDeviceRegisteredVersion() {
+      return deviceRegisteredVersion_;
+    }
+    /**
+     * <pre>
+     * Used to trigger another device registration attempt, even if device is
+     * already registered. Not set if `device_registered` is false.
+     * </pre>
+     *
+     * <code>optional int32 device_registered_version = 3;</code>
+     * @param value The deviceRegisteredVersion to set.
+     */
+    private void setDeviceRegisteredVersion(int value) {
+      bitField0_ |= 0x00000004;
+      deviceRegisteredVersion_ = value;
+    }
+    /**
+     * <pre>
+     * Used to trigger another device registration attempt, even if device is
+     * already registered. Not set if `device_registered` is false.
+     * </pre>
+     *
+     * <code>optional int32 device_registered_version = 3;</code>
+     */
+    private void clearDeviceRegisteredVersion() {
+      bitField0_ = (bitField0_ & ~0x00000004);
+      deviceRegisteredVersion_ = 0;
     }
 
     public static sync_pb.LocalTrustedVaultOuterClass.LocalDeviceRegistrationInfo parseFrom(
@@ -680,6 +755,62 @@ public final class LocalTrustedVaultOuterClass {
         return this;
       }
 
+      /**
+       * <pre>
+       * Used to trigger another device registration attempt, even if device is
+       * already registered. Not set if `device_registered` is false.
+       * </pre>
+       *
+       * <code>optional int32 device_registered_version = 3;</code>
+       * @return Whether the deviceRegisteredVersion field is set.
+       */
+      @java.lang.Override
+      public boolean hasDeviceRegisteredVersion() {
+        return instance.hasDeviceRegisteredVersion();
+      }
+      /**
+       * <pre>
+       * Used to trigger another device registration attempt, even if device is
+       * already registered. Not set if `device_registered` is false.
+       * </pre>
+       *
+       * <code>optional int32 device_registered_version = 3;</code>
+       * @return The deviceRegisteredVersion.
+       */
+      @java.lang.Override
+      public int getDeviceRegisteredVersion() {
+        return instance.getDeviceRegisteredVersion();
+      }
+      /**
+       * <pre>
+       * Used to trigger another device registration attempt, even if device is
+       * already registered. Not set if `device_registered` is false.
+       * </pre>
+       *
+       * <code>optional int32 device_registered_version = 3;</code>
+       * @param value The deviceRegisteredVersion to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDeviceRegisteredVersion(int value) {
+        copyOnWrite();
+        instance.setDeviceRegisteredVersion(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Used to trigger another device registration attempt, even if device is
+       * already registered. Not set if `device_registered` is false.
+       * </pre>
+       *
+       * <code>optional int32 device_registered_version = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDeviceRegisteredVersion() {
+        copyOnWrite();
+        instance.clearDeviceRegisteredVersion();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:sync_pb.LocalDeviceRegistrationInfo)
     }
     @java.lang.Override
@@ -699,10 +830,11 @@ public final class LocalTrustedVaultOuterClass {
               "bitField0_",
               "privateKeyMaterial_",
               "deviceRegistered_",
+              "deviceRegisteredVersion_",
             };
             java.lang.String info =
-                "\u0001\u0002\u0000\u0001\u0001\u0002\u0002\u0000\u0000\u0000\u0001\u100a\u0000\u0002" +
-                "\u1007\u0001";
+                "\u0001\u0003\u0000\u0001\u0001\u0003\u0003\u0000\u0000\u0000\u0001\u100a\u0000\u0002" +
+                "\u1007\u0001\u0003\u1004\u0002";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -808,7 +940,7 @@ public final class LocalTrustedVaultOuterClass {
 
     /**
      * <pre>
-     * The version corresponding to the last element in |vault_key|.
+     * The version corresponding to the last element in `vault_key`.
      * </pre>
      *
      * <code>optional int32 last_vault_key_version = 3;</code>
@@ -817,7 +949,7 @@ public final class LocalTrustedVaultOuterClass {
     boolean hasLastVaultKeyVersion();
     /**
      * <pre>
-     * The version corresponding to the last element in |vault_key|.
+     * The version corresponding to the last element in `vault_key`.
      * </pre>
      *
      * <code>optional int32 last_vault_key_version = 3;</code>
@@ -827,7 +959,7 @@ public final class LocalTrustedVaultOuterClass {
 
     /**
      * <pre>
-     * Indicates whether |vault_key| is stale, i.e. that the latest locally
+     * Indicates whether `vault_key` is stale, i.e. that the latest locally
      * available key isn't the latest key in the vault. New keys need to be
      * fetched through key retrieval procedure or by following key rotation.
      * </pre>
@@ -838,7 +970,7 @@ public final class LocalTrustedVaultOuterClass {
     boolean hasKeysAreStale();
     /**
      * <pre>
-     * Indicates whether |vault_key| is stale, i.e. that the latest locally
+     * Indicates whether `vault_key` is stale, i.e. that the latest locally
      * available key isn't the latest key in the vault. New keys need to be
      * fetched through key retrieval procedure or by following key rotation.
      * </pre>
@@ -889,6 +1021,27 @@ public final class LocalTrustedVaultOuterClass {
      * @return The lastFailedRequestMillisSinceUnixEpoch.
      */
     long getLastFailedRequestMillisSinceUnixEpoch();
+
+    /**
+     * <pre>
+     * Whether keys relevant for the user should be deleted when account becomes
+     * non-primary.
+     * </pre>
+     *
+     * <code>optional bool should_delete_keys_when_non_primary = 7;</code>
+     * @return Whether the shouldDeleteKeysWhenNonPrimary field is set.
+     */
+    boolean hasShouldDeleteKeysWhenNonPrimary();
+    /**
+     * <pre>
+     * Whether keys relevant for the user should be deleted when account becomes
+     * non-primary.
+     * </pre>
+     *
+     * <code>optional bool should_delete_keys_when_non_primary = 7;</code>
+     * @return The shouldDeleteKeysWhenNonPrimary.
+     */
+    boolean getShouldDeleteKeysWhenNonPrimary();
   }
   /**
    * Protobuf type {@code sync_pb.LocalTrustedVaultPerUser}
@@ -1096,7 +1249,7 @@ public final class LocalTrustedVaultOuterClass {
     private int lastVaultKeyVersion_;
     /**
      * <pre>
-     * The version corresponding to the last element in |vault_key|.
+     * The version corresponding to the last element in `vault_key`.
      * </pre>
      *
      * <code>optional int32 last_vault_key_version = 3;</code>
@@ -1108,7 +1261,7 @@ public final class LocalTrustedVaultOuterClass {
     }
     /**
      * <pre>
-     * The version corresponding to the last element in |vault_key|.
+     * The version corresponding to the last element in `vault_key`.
      * </pre>
      *
      * <code>optional int32 last_vault_key_version = 3;</code>
@@ -1120,7 +1273,7 @@ public final class LocalTrustedVaultOuterClass {
     }
     /**
      * <pre>
-     * The version corresponding to the last element in |vault_key|.
+     * The version corresponding to the last element in `vault_key`.
      * </pre>
      *
      * <code>optional int32 last_vault_key_version = 3;</code>
@@ -1132,7 +1285,7 @@ public final class LocalTrustedVaultOuterClass {
     }
     /**
      * <pre>
-     * The version corresponding to the last element in |vault_key|.
+     * The version corresponding to the last element in `vault_key`.
      * </pre>
      *
      * <code>optional int32 last_vault_key_version = 3;</code>
@@ -1146,7 +1299,7 @@ public final class LocalTrustedVaultOuterClass {
     private boolean keysAreStale_;
     /**
      * <pre>
-     * Indicates whether |vault_key| is stale, i.e. that the latest locally
+     * Indicates whether `vault_key` is stale, i.e. that the latest locally
      * available key isn't the latest key in the vault. New keys need to be
      * fetched through key retrieval procedure or by following key rotation.
      * </pre>
@@ -1160,7 +1313,7 @@ public final class LocalTrustedVaultOuterClass {
     }
     /**
      * <pre>
-     * Indicates whether |vault_key| is stale, i.e. that the latest locally
+     * Indicates whether `vault_key` is stale, i.e. that the latest locally
      * available key isn't the latest key in the vault. New keys need to be
      * fetched through key retrieval procedure or by following key rotation.
      * </pre>
@@ -1174,7 +1327,7 @@ public final class LocalTrustedVaultOuterClass {
     }
     /**
      * <pre>
-     * Indicates whether |vault_key| is stale, i.e. that the latest locally
+     * Indicates whether `vault_key` is stale, i.e. that the latest locally
      * available key isn't the latest key in the vault. New keys need to be
      * fetched through key retrieval procedure or by following key rotation.
      * </pre>
@@ -1188,7 +1341,7 @@ public final class LocalTrustedVaultOuterClass {
     }
     /**
      * <pre>
-     * Indicates whether |vault_key| is stale, i.e. that the latest locally
+     * Indicates whether `vault_key` is stale, i.e. that the latest locally
      * available key isn't the latest key in the vault. New keys need to be
      * fetched through key retrieval procedure or by following key rotation.
      * </pre>
@@ -1322,6 +1475,60 @@ public final class LocalTrustedVaultOuterClass {
     private void clearLastFailedRequestMillisSinceUnixEpoch() {
       bitField0_ = (bitField0_ & ~0x00000010);
       lastFailedRequestMillisSinceUnixEpoch_ = 0L;
+    }
+
+    public static final int SHOULD_DELETE_KEYS_WHEN_NON_PRIMARY_FIELD_NUMBER = 7;
+    private boolean shouldDeleteKeysWhenNonPrimary_;
+    /**
+     * <pre>
+     * Whether keys relevant for the user should be deleted when account becomes
+     * non-primary.
+     * </pre>
+     *
+     * <code>optional bool should_delete_keys_when_non_primary = 7;</code>
+     * @return Whether the shouldDeleteKeysWhenNonPrimary field is set.
+     */
+    @java.lang.Override
+    public boolean hasShouldDeleteKeysWhenNonPrimary() {
+      return ((bitField0_ & 0x00000020) != 0);
+    }
+    /**
+     * <pre>
+     * Whether keys relevant for the user should be deleted when account becomes
+     * non-primary.
+     * </pre>
+     *
+     * <code>optional bool should_delete_keys_when_non_primary = 7;</code>
+     * @return The shouldDeleteKeysWhenNonPrimary.
+     */
+    @java.lang.Override
+    public boolean getShouldDeleteKeysWhenNonPrimary() {
+      return shouldDeleteKeysWhenNonPrimary_;
+    }
+    /**
+     * <pre>
+     * Whether keys relevant for the user should be deleted when account becomes
+     * non-primary.
+     * </pre>
+     *
+     * <code>optional bool should_delete_keys_when_non_primary = 7;</code>
+     * @param value The shouldDeleteKeysWhenNonPrimary to set.
+     */
+    private void setShouldDeleteKeysWhenNonPrimary(boolean value) {
+      bitField0_ |= 0x00000020;
+      shouldDeleteKeysWhenNonPrimary_ = value;
+    }
+    /**
+     * <pre>
+     * Whether keys relevant for the user should be deleted when account becomes
+     * non-primary.
+     * </pre>
+     *
+     * <code>optional bool should_delete_keys_when_non_primary = 7;</code>
+     */
+    private void clearShouldDeleteKeysWhenNonPrimary() {
+      bitField0_ = (bitField0_ & ~0x00000020);
+      shouldDeleteKeysWhenNonPrimary_ = false;
     }
 
     public static sync_pb.LocalTrustedVaultOuterClass.LocalTrustedVaultPerUser parseFrom(
@@ -1623,7 +1830,7 @@ public final class LocalTrustedVaultOuterClass {
 
       /**
        * <pre>
-       * The version corresponding to the last element in |vault_key|.
+       * The version corresponding to the last element in `vault_key`.
        * </pre>
        *
        * <code>optional int32 last_vault_key_version = 3;</code>
@@ -1635,7 +1842,7 @@ public final class LocalTrustedVaultOuterClass {
       }
       /**
        * <pre>
-       * The version corresponding to the last element in |vault_key|.
+       * The version corresponding to the last element in `vault_key`.
        * </pre>
        *
        * <code>optional int32 last_vault_key_version = 3;</code>
@@ -1647,7 +1854,7 @@ public final class LocalTrustedVaultOuterClass {
       }
       /**
        * <pre>
-       * The version corresponding to the last element in |vault_key|.
+       * The version corresponding to the last element in `vault_key`.
        * </pre>
        *
        * <code>optional int32 last_vault_key_version = 3;</code>
@@ -1661,7 +1868,7 @@ public final class LocalTrustedVaultOuterClass {
       }
       /**
        * <pre>
-       * The version corresponding to the last element in |vault_key|.
+       * The version corresponding to the last element in `vault_key`.
        * </pre>
        *
        * <code>optional int32 last_vault_key_version = 3;</code>
@@ -1675,7 +1882,7 @@ public final class LocalTrustedVaultOuterClass {
 
       /**
        * <pre>
-       * Indicates whether |vault_key| is stale, i.e. that the latest locally
+       * Indicates whether `vault_key` is stale, i.e. that the latest locally
        * available key isn't the latest key in the vault. New keys need to be
        * fetched through key retrieval procedure or by following key rotation.
        * </pre>
@@ -1689,7 +1896,7 @@ public final class LocalTrustedVaultOuterClass {
       }
       /**
        * <pre>
-       * Indicates whether |vault_key| is stale, i.e. that the latest locally
+       * Indicates whether `vault_key` is stale, i.e. that the latest locally
        * available key isn't the latest key in the vault. New keys need to be
        * fetched through key retrieval procedure or by following key rotation.
        * </pre>
@@ -1703,7 +1910,7 @@ public final class LocalTrustedVaultOuterClass {
       }
       /**
        * <pre>
-       * Indicates whether |vault_key| is stale, i.e. that the latest locally
+       * Indicates whether `vault_key` is stale, i.e. that the latest locally
        * available key isn't the latest key in the vault. New keys need to be
        * fetched through key retrieval procedure or by following key rotation.
        * </pre>
@@ -1719,7 +1926,7 @@ public final class LocalTrustedVaultOuterClass {
       }
       /**
        * <pre>
-       * Indicates whether |vault_key| is stale, i.e. that the latest locally
+       * Indicates whether `vault_key` is stale, i.e. that the latest locally
        * available key isn't the latest key in the vault. New keys need to be
        * fetched through key retrieval procedure or by following key rotation.
        * </pre>
@@ -1864,6 +2071,62 @@ public final class LocalTrustedVaultOuterClass {
         return this;
       }
 
+      /**
+       * <pre>
+       * Whether keys relevant for the user should be deleted when account becomes
+       * non-primary.
+       * </pre>
+       *
+       * <code>optional bool should_delete_keys_when_non_primary = 7;</code>
+       * @return Whether the shouldDeleteKeysWhenNonPrimary field is set.
+       */
+      @java.lang.Override
+      public boolean hasShouldDeleteKeysWhenNonPrimary() {
+        return instance.hasShouldDeleteKeysWhenNonPrimary();
+      }
+      /**
+       * <pre>
+       * Whether keys relevant for the user should be deleted when account becomes
+       * non-primary.
+       * </pre>
+       *
+       * <code>optional bool should_delete_keys_when_non_primary = 7;</code>
+       * @return The shouldDeleteKeysWhenNonPrimary.
+       */
+      @java.lang.Override
+      public boolean getShouldDeleteKeysWhenNonPrimary() {
+        return instance.getShouldDeleteKeysWhenNonPrimary();
+      }
+      /**
+       * <pre>
+       * Whether keys relevant for the user should be deleted when account becomes
+       * non-primary.
+       * </pre>
+       *
+       * <code>optional bool should_delete_keys_when_non_primary = 7;</code>
+       * @param value The shouldDeleteKeysWhenNonPrimary to set.
+       * @return This builder for chaining.
+       */
+      public Builder setShouldDeleteKeysWhenNonPrimary(boolean value) {
+        copyOnWrite();
+        instance.setShouldDeleteKeysWhenNonPrimary(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Whether keys relevant for the user should be deleted when account becomes
+       * non-primary.
+       * </pre>
+       *
+       * <code>optional bool should_delete_keys_when_non_primary = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearShouldDeleteKeysWhenNonPrimary() {
+        copyOnWrite();
+        instance.clearShouldDeleteKeysWhenNonPrimary();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:sync_pb.LocalTrustedVaultPerUser)
     }
     @java.lang.Override
@@ -1888,10 +2151,12 @@ public final class LocalTrustedVaultOuterClass {
               "keysAreStale_",
               "localDeviceRegistrationInfo_",
               "lastFailedRequestMillisSinceUnixEpoch_",
+              "shouldDeleteKeysWhenNonPrimary_",
             };
             java.lang.String info =
-                "\u0001\u0006\u0000\u0001\u0001\u0006\u0006\u0000\u0001\u0000\u0001\u100a\u0000\u0002" +
-                "\u001b\u0003\u1004\u0001\u0004\u1007\u0002\u0005\u1009\u0003\u0006\u1002\u0004";
+                "\u0001\u0007\u0000\u0001\u0001\u0007\u0007\u0000\u0001\u0000\u0001\u100a\u0000\u0002" +
+                "\u001b\u0003\u1004\u0001\u0004\u1007\u0002\u0005\u1009\u0003\u0006\u1002\u0004\u0007" +
+                "\u1007\u0005";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -1963,6 +2228,25 @@ public final class LocalTrustedVaultOuterClass {
      * <code>repeated .sync_pb.LocalTrustedVaultPerUser user = 1;</code>
      */
     int getUserCount();
+
+    /**
+     * <pre>
+     * Version of the stored data, used to perform data migrations.
+     * </pre>
+     *
+     * <code>optional int32 data_version = 2;</code>
+     * @return Whether the dataVersion field is set.
+     */
+    boolean hasDataVersion();
+    /**
+     * <pre>
+     * Version of the stored data, used to perform data migrations.
+     * </pre>
+     *
+     * <code>optional int32 data_version = 2;</code>
+     * @return The dataVersion.
+     */
+    int getDataVersion();
   }
   /**
    * Protobuf type {@code sync_pb.LocalTrustedVault}
@@ -1975,6 +2259,7 @@ public final class LocalTrustedVaultOuterClass {
     private LocalTrustedVault() {
       user_ = emptyProtobufList();
     }
+    private int bitField0_;
     public static final int USER_FIELD_NUMBER = 1;
     private com.google.protobuf.Internal.ProtobufList<sync_pb.LocalTrustedVaultOuterClass.LocalTrustedVaultPerUser> user_;
     /**
@@ -2067,6 +2352,56 @@ public final class LocalTrustedVaultOuterClass {
     private void removeUser(int index) {
       ensureUserIsMutable();
       user_.remove(index);
+    }
+
+    public static final int DATA_VERSION_FIELD_NUMBER = 2;
+    private int dataVersion_;
+    /**
+     * <pre>
+     * Version of the stored data, used to perform data migrations.
+     * </pre>
+     *
+     * <code>optional int32 data_version = 2;</code>
+     * @return Whether the dataVersion field is set.
+     */
+    @java.lang.Override
+    public boolean hasDataVersion() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * Version of the stored data, used to perform data migrations.
+     * </pre>
+     *
+     * <code>optional int32 data_version = 2;</code>
+     * @return The dataVersion.
+     */
+    @java.lang.Override
+    public int getDataVersion() {
+      return dataVersion_;
+    }
+    /**
+     * <pre>
+     * Version of the stored data, used to perform data migrations.
+     * </pre>
+     *
+     * <code>optional int32 data_version = 2;</code>
+     * @param value The dataVersion to set.
+     */
+    private void setDataVersion(int value) {
+      bitField0_ |= 0x00000001;
+      dataVersion_ = value;
+    }
+    /**
+     * <pre>
+     * Version of the stored data, used to perform data migrations.
+     * </pre>
+     *
+     * <code>optional int32 data_version = 2;</code>
+     */
+    private void clearDataVersion() {
+      bitField0_ = (bitField0_ & ~0x00000001);
+      dataVersion_ = 0;
     }
 
     public static sync_pb.LocalTrustedVaultOuterClass.LocalTrustedVault parseFrom(
@@ -2266,6 +2601,58 @@ public final class LocalTrustedVaultOuterClass {
         return this;
       }
 
+      /**
+       * <pre>
+       * Version of the stored data, used to perform data migrations.
+       * </pre>
+       *
+       * <code>optional int32 data_version = 2;</code>
+       * @return Whether the dataVersion field is set.
+       */
+      @java.lang.Override
+      public boolean hasDataVersion() {
+        return instance.hasDataVersion();
+      }
+      /**
+       * <pre>
+       * Version of the stored data, used to perform data migrations.
+       * </pre>
+       *
+       * <code>optional int32 data_version = 2;</code>
+       * @return The dataVersion.
+       */
+      @java.lang.Override
+      public int getDataVersion() {
+        return instance.getDataVersion();
+      }
+      /**
+       * <pre>
+       * Version of the stored data, used to perform data migrations.
+       * </pre>
+       *
+       * <code>optional int32 data_version = 2;</code>
+       * @param value The dataVersion to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDataVersion(int value) {
+        copyOnWrite();
+        instance.setDataVersion(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Version of the stored data, used to perform data migrations.
+       * </pre>
+       *
+       * <code>optional int32 data_version = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDataVersion() {
+        copyOnWrite();
+        instance.clearDataVersion();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:sync_pb.LocalTrustedVault)
     }
     @java.lang.Override
@@ -2282,11 +2669,14 @@ public final class LocalTrustedVaultOuterClass {
         }
         case BUILD_MESSAGE_INFO: {
             java.lang.Object[] objects = new java.lang.Object[] {
+              "bitField0_",
               "user_",
               sync_pb.LocalTrustedVaultOuterClass.LocalTrustedVaultPerUser.class,
+              "dataVersion_",
             };
             java.lang.String info =
-                "\u0001\u0001\u0000\u0000\u0001\u0001\u0001\u0000\u0001\u0000\u0001\u001b";
+                "\u0001\u0002\u0000\u0001\u0001\u0002\u0002\u0000\u0001\u0000\u0001\u001b\u0002\u1004" +
+                "\u0000";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

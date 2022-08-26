@@ -13,18 +13,31 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class CrossOriginOpenerPolicyValue {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
 
-    public static final int SAME_ORIGIN = 0;
+        CrossOriginOpenerPolicyValue.UNSAFE_NONE,
+        CrossOriginOpenerPolicyValue.SAME_ORIGIN_ALLOW_POPUPS,
+        CrossOriginOpenerPolicyValue.SAME_ORIGIN,
+        CrossOriginOpenerPolicyValue.SAME_ORIGIN_PLUS_COEP,
+        CrossOriginOpenerPolicyValue.RESTRICT_PROPERTIES,
+        CrossOriginOpenerPolicyValue.RESTRICT_PROPERTIES_PLUS_COEP})
+    public @interface EnumType {}
+
+    public static final int UNSAFE_NONE = 0;
     public static final int SAME_ORIGIN_ALLOW_POPUPS = 1;
-    public static final int UNSAFE_NONE = 2;
+    public static final int SAME_ORIGIN = 2;
     public static final int SAME_ORIGIN_PLUS_COEP = 3;
+    public static final int RESTRICT_PROPERTIES = 4;
+    public static final int RESTRICT_PROPERTIES_PLUS_COEP = 5;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 3;
+    public static final int MAX_VALUE = 5;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 3;
+        return value >= 0 && value <= 5;
     }
 
     public static void validate(int value) {

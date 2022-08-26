@@ -13,15 +13,31 @@
 
 package org.chromium.media.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class CodecMetadata extends org.chromium.mojo.bindings.Union {
 
     public static final class Tag {
-        public static final int Vp8 = 0;
-        public static final int Vp9 = 1;
+        public static final int H264 = 0;
+        public static final int Vp8 = 1;
+        public static final int Vp9 = 2;
+        public static final int Av1 = 3;
     };
+    private H264Metadata mH264;
     private Vp8Metadata mVp8;
     private Vp9Metadata mVp9;
+    private Av1Metadata mAv1;
+
+    public void setH264(H264Metadata h264) {
+        this.mTag = Tag.H264;
+        this.mH264 = h264;
+    }
+
+    public H264Metadata getH264() {
+        assert this.mTag == Tag.H264;
+        return this.mH264;
+    }
 
     public void setVp8(Vp8Metadata vp8) {
         this.mTag = Tag.Vp8;
@@ -43,12 +59,27 @@ public final class CodecMetadata extends org.chromium.mojo.bindings.Union {
         return this.mVp9;
     }
 
+    public void setAv1(Av1Metadata av1) {
+        this.mTag = Tag.Av1;
+        this.mAv1 = av1;
+    }
+
+    public Av1Metadata getAv1() {
+        assert this.mTag == Tag.Av1;
+        return this.mAv1;
+    }
+
 
     @Override
     protected final void encode(org.chromium.mojo.bindings.Encoder encoder0, int offset) {
         encoder0.encode(org.chromium.mojo.bindings.BindingsHelper.UNION_SIZE, offset);
         encoder0.encode(this.mTag, offset + 4);
         switch (mTag) {
+            case Tag.H264: {
+                
+                encoder0.encode(this.mH264, offset + 8, false);
+                break;
+            }
             case Tag.Vp8: {
                 
                 encoder0.encode(this.mVp8, offset + 8, false);
@@ -57,6 +88,11 @@ public final class CodecMetadata extends org.chromium.mojo.bindings.Union {
             case Tag.Vp9: {
                 
                 encoder0.encode(this.mVp9, offset + 8, false);
+                break;
+            }
+            case Tag.Av1: {
+                
+                encoder0.encode(this.mAv1, offset + 8, false);
                 break;
             }
             default: {
@@ -76,6 +112,13 @@ public final class CodecMetadata extends org.chromium.mojo.bindings.Union {
         }
         CodecMetadata result = new CodecMetadata();
         switch (dataHeader.elementsOrVersion) {
+            case Tag.H264: {
+                
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(offset + org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, false);
+                result.mH264 = H264Metadata.decode(decoder1);
+                result.mTag = Tag.H264;
+                break;
+            }
             case Tag.Vp8: {
                 
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(offset + org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, false);
@@ -88,6 +131,13 @@ public final class CodecMetadata extends org.chromium.mojo.bindings.Union {
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(offset + org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, false);
                 result.mVp9 = Vp9Metadata.decode(decoder1);
                 result.mTag = Tag.Vp9;
+                break;
+            }
+            case Tag.Av1: {
+                
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(offset + org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, false);
+                result.mAv1 = Av1Metadata.decode(decoder1);
+                result.mTag = Tag.Av1;
                 break;
             }
             default: {

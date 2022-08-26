@@ -15,12 +15,13 @@ public interface ClientStatusOrBuilder extends
    * is set.  The client may not assume that any particular action will be
    * taken.  There is no guarantee the problem will be addressed in a reasonable
    * amount of time.
+   * TODO(crbug.com/1315573): Deprecated in M103.
    * </pre>
    *
-   * <code>optional bool hierarchy_conflict_detected = 1;</code>
+   * <code>optional bool hierarchy_conflict_detected = 1 [deprecated = true];</code>
    * @return Whether the hierarchyConflictDetected field is set.
    */
-  boolean hasHierarchyConflictDetected();
+  @java.lang.Deprecated boolean hasHierarchyConflictDetected();
   /**
    * <pre>
    * Flag to indicate if the client has detected hierarchy conflcits.  The flag
@@ -29,12 +30,13 @@ public interface ClientStatusOrBuilder extends
    * is set.  The client may not assume that any particular action will be
    * taken.  There is no guarantee the problem will be addressed in a reasonable
    * amount of time.
+   * TODO(crbug.com/1315573): Deprecated in M103.
    * </pre>
    *
-   * <code>optional bool hierarchy_conflict_detected = 1;</code>
+   * <code>optional bool hierarchy_conflict_detected = 1 [deprecated = true];</code>
    * @return The hierarchyConflictDetected.
    */
-  boolean getHierarchyConflictDetected();
+  @java.lang.Deprecated boolean getHierarchyConflictDetected();
 
   /**
    * <pre>

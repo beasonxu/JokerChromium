@@ -13,6 +13,8 @@
 
 package org.chromium.network.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class ProxyConfig extends org.chromium.mojo.bindings.Struct {
 
@@ -20,6 +22,7 @@ public final class ProxyConfig extends org.chromium.mojo.bindings.Struct {
     private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public boolean autoDetect;
+    public boolean fromSystem;
     public org.chromium.mojo_base.mojom.BigString pacUrl;
     public boolean pacMandatory;
     public ProxyRules proxyRules;
@@ -63,7 +66,11 @@ public final class ProxyConfig extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.pacMandatory = decoder0.readBoolean(8, 1);
+                result.fromSystem = decoder0.readBoolean(8, 1);
+                }
+                {
+                    
+                result.pacMandatory = decoder0.readBoolean(8, 2);
                 }
                 {
                     
@@ -89,7 +96,9 @@ public final class ProxyConfig extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.autoDetect, 8, 0);
         
-        encoder0.encode(this.pacMandatory, 8, 1);
+        encoder0.encode(this.fromSystem, 8, 1);
+        
+        encoder0.encode(this.pacMandatory, 8, 2);
         
         encoder0.encode(this.pacUrl, 16, false);
         

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class WidgetInputHandler_Internal {
 
@@ -86,11 +88,11 @@ class WidgetInputHandler_Internal {
 
         @Override
         public void setFocus(
-boolean focused) {
+int state) {
 
             WidgetInputHandlerSetFocusParams _message = new WidgetInputHandlerSetFocusParams();
 
-            _message.focused = focused;
+            _message.state = state;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -152,7 +154,8 @@ boolean visible) {
 
         @Override
         public void imeSetComposition(
-org.chromium.mojo_base.mojom.String16 text, org.chromium.ui.mojom.ImeTextSpan[] imeTextSpans, org.chromium.gfx.mojom.Range range, int start, int end) {
+org.chromium.mojo_base.mojom.String16 text, org.chromium.ui.mojom.ImeTextSpan[] imeTextSpans, org.chromium.gfx.mojom.Range range, int start, int end, 
+ImeSetComposition_Response callback) {
 
             WidgetInputHandlerImeSetCompositionParams _message = new WidgetInputHandlerImeSetCompositionParams();
 
@@ -167,10 +170,14 @@ org.chromium.mojo_base.mojom.String16 text, org.chromium.ui.mojom.ImeTextSpan[] 
             _message.end = end;
 
 
-            getProxyHandler().getMessageReceiver().accept(
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(IME_SET_COMPOSITION_ORDINAL)));
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    IME_SET_COMPOSITION_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new WidgetInputHandlerImeSetCompositionResponseParamsForwardToCallback(callback));
 
         }
 
@@ -178,7 +185,7 @@ org.chromium.mojo_base.mojom.String16 text, org.chromium.ui.mojom.ImeTextSpan[] 
         @Override
         public void imeCommitText(
 org.chromium.mojo_base.mojom.String16 text, org.chromium.ui.mojom.ImeTextSpan[] imeTextSpans, org.chromium.gfx.mojom.Range range, int relativeCursorPosition, 
-ImeCommitTextResponse callback) {
+ImeCommitText_Response callback) {
 
             WidgetInputHandlerImeCommitTextParams _message = new WidgetInputHandlerImeCommitTextParams();
 
@@ -257,7 +264,7 @@ boolean immediateRequest, boolean monitorRequest) {
         @Override
         public void dispatchEvent(
 Event event, 
-DispatchEventResponse callback) {
+DispatchEvent_Response callback) {
 
             WidgetInputHandlerDispatchEventParams _message = new WidgetInputHandlerDispatchEventParams();
 
@@ -296,7 +303,7 @@ Event event) {
         @Override
         public void waitForInputProcessed(
 
-WaitForInputProcessedResponse callback) {
+WaitForInputProcessed_Response callback) {
 
             WidgetInputHandlerWaitForInputProcessedParams _message = new WidgetInputHandlerWaitForInputProcessedParams();
 
@@ -387,7 +394,7 @@ org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported interfaceReque
                         WidgetInputHandlerSetFocusParams data =
                                 WidgetInputHandlerSetFocusParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().setFocus(data.focused);
+                        getImpl().setFocus(data.state);
                         return true;
                     }
 
@@ -430,17 +437,6 @@ org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported interfaceReque
                     }
 
 
-
-
-
-                    case IME_SET_COMPOSITION_ORDINAL: {
-
-                        WidgetInputHandlerImeSetCompositionParams data =
-                                WidgetInputHandlerImeSetCompositionParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().imeSetComposition(data.text, data.imeTextSpans, data.range, data.start, data.end);
-                        return true;
-                    }
 
 
 
@@ -568,6 +564,19 @@ org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported interfaceReque
 
 
 
+                    case IME_SET_COMPOSITION_ORDINAL: {
+
+                        WidgetInputHandlerImeSetCompositionParams data =
+                                WidgetInputHandlerImeSetCompositionParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().imeSetComposition(data.text, data.imeTextSpans, data.range, data.start, data.end, new WidgetInputHandlerImeSetCompositionResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
 
 
                     case IME_COMMIT_TEXT_ORDINAL: {
@@ -638,7 +647,7 @@ org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported interfaceReque
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public boolean focused;
+        public int state;
 
         private WidgetInputHandlerSetFocusParams(int version) {
             super(STRUCT_SIZE, version);
@@ -675,7 +684,9 @@ org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported interfaceReque
                 result = new WidgetInputHandlerSetFocusParams(elementsOrVersion);
                     {
                         
-                    result.focused = decoder0.readBoolean(8, 0);
+                    result.state = decoder0.readInt(8);
+                        FocusState.validate(result.state);
+                        result.state = FocusState.toKnownValue(result.state);
                     }
 
             } finally {
@@ -689,7 +700,7 @@ org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported interfaceReque
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.focused, 8, 0);
+            encoder0.encode(this.state, 8);
         }
     }
 
@@ -1005,6 +1016,119 @@ org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported interfaceReque
 
 
     
+    static final class WidgetInputHandlerImeSetCompositionResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private WidgetInputHandlerImeSetCompositionResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public WidgetInputHandlerImeSetCompositionResponseParams() {
+            this(0);
+        }
+
+        public static WidgetInputHandlerImeSetCompositionResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static WidgetInputHandlerImeSetCompositionResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static WidgetInputHandlerImeSetCompositionResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            WidgetInputHandlerImeSetCompositionResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new WidgetInputHandlerImeSetCompositionResponseParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+    static class WidgetInputHandlerImeSetCompositionResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final WidgetInputHandler.ImeSetComposition_Response mCallback;
+
+        WidgetInputHandlerImeSetCompositionResponseParamsForwardToCallback(WidgetInputHandler.ImeSetComposition_Response callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(IME_SET_COMPOSITION_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                mCallback.call();
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class WidgetInputHandlerImeSetCompositionResponseParamsProxyToResponder implements WidgetInputHandler.ImeSetComposition_Response {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        WidgetInputHandlerImeSetCompositionResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call() {
+            WidgetInputHandlerImeSetCompositionResponseParams _response = new WidgetInputHandlerImeSetCompositionResponseParams();
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    IME_SET_COMPOSITION_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
     static final class WidgetInputHandlerImeCommitTextParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 40;
@@ -1163,9 +1287,9 @@ org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported interfaceReque
 
     static class WidgetInputHandlerImeCommitTextResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final WidgetInputHandler.ImeCommitTextResponse mCallback;
+        private final WidgetInputHandler.ImeCommitText_Response mCallback;
 
-        WidgetInputHandlerImeCommitTextResponseParamsForwardToCallback(WidgetInputHandler.ImeCommitTextResponse callback) {
+        WidgetInputHandlerImeCommitTextResponseParamsForwardToCallback(WidgetInputHandler.ImeCommitText_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1188,7 +1312,7 @@ org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported interfaceReque
         }
     }
 
-    static class WidgetInputHandlerImeCommitTextResponseParamsProxyToResponder implements WidgetInputHandler.ImeCommitTextResponse {
+    static class WidgetInputHandlerImeCommitTextResponseParamsProxyToResponder implements WidgetInputHandler.ImeCommitText_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1571,9 +1695,9 @@ org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported interfaceReque
 
     static class WidgetInputHandlerDispatchEventResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final WidgetInputHandler.DispatchEventResponse mCallback;
+        private final WidgetInputHandler.DispatchEvent_Response mCallback;
 
-        WidgetInputHandlerDispatchEventResponseParamsForwardToCallback(WidgetInputHandler.DispatchEventResponse callback) {
+        WidgetInputHandlerDispatchEventResponseParamsForwardToCallback(WidgetInputHandler.DispatchEvent_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1598,7 +1722,7 @@ org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported interfaceReque
         }
     }
 
-    static class WidgetInputHandlerDispatchEventResponseParamsProxyToResponder implements WidgetInputHandler.DispatchEventResponse {
+    static class WidgetInputHandlerDispatchEventResponseParamsProxyToResponder implements WidgetInputHandler.DispatchEvent_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -1816,9 +1940,9 @@ org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported interfaceReque
 
     static class WidgetInputHandlerWaitForInputProcessedResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final WidgetInputHandler.WaitForInputProcessedResponse mCallback;
+        private final WidgetInputHandler.WaitForInputProcessed_Response mCallback;
 
-        WidgetInputHandlerWaitForInputProcessedResponseParamsForwardToCallback(WidgetInputHandler.WaitForInputProcessedResponse callback) {
+        WidgetInputHandlerWaitForInputProcessedResponseParamsForwardToCallback(WidgetInputHandler.WaitForInputProcessed_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1841,7 +1965,7 @@ org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported interfaceReque
         }
     }
 
-    static class WidgetInputHandlerWaitForInputProcessedResponseParamsProxyToResponder implements WidgetInputHandler.WaitForInputProcessedResponse {
+    static class WidgetInputHandlerWaitForInputProcessedResponseParamsProxyToResponder implements WidgetInputHandler.WaitForInputProcessed_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

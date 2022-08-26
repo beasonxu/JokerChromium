@@ -13,6 +13,8 @@
 
 package org.chromium.viz.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public final class TileQuadState extends org.chromium.mojo.bindings.Struct {
 

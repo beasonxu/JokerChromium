@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 public interface DiskAllocator extends org.chromium.mojo.bindings.Interface {
 
@@ -22,7 +24,6 @@ public interface DiskAllocator extends org.chromium.mojo.bindings.Interface {
     }
 
     Manager<DiskAllocator, DiskAllocator.Proxy> MANAGER = DiskAllocator_Internal.MANAGER;
-
 
     void provideTemporaryFile(
 org.chromium.mojo_base.mojom.File file);

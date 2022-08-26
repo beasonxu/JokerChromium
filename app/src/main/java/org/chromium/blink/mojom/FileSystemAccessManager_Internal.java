@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class FileSystemAccessManager_Internal {
 
@@ -69,7 +71,7 @@ class FileSystemAccessManager_Internal {
         @Override
         public void getSandboxedFileSystem(
 
-GetSandboxedFileSystemResponse callback) {
+GetSandboxedFileSystem_Response callback) {
 
             FileSystemAccessManagerGetSandboxedFileSystemParams _message = new FileSystemAccessManagerGetSandboxedFileSystemParams();
 
@@ -89,7 +91,7 @@ GetSandboxedFileSystemResponse callback) {
         @Override
         public void chooseEntries(
 FilePickerOptions options, CommonFilePickerOptions commonOptions, 
-ChooseEntriesResponse callback) {
+ChooseEntries_Response callback) {
 
             FileSystemAccessManagerChooseEntriesParams _message = new FileSystemAccessManagerChooseEntriesParams();
 
@@ -151,7 +153,7 @@ FileSystemAccessTransferToken token, org.chromium.mojo.bindings.InterfaceRequest
         @Override
         public void getEntryFromDataTransferToken(
 FileSystemAccessDataTransferToken token, 
-GetEntryFromDataTransferTokenResponse callback) {
+GetEntryFromDataTransferToken_Response callback) {
 
             FileSystemAccessManagerGetEntryFromDataTransferTokenParams _message = new FileSystemAccessManagerGetEntryFromDataTransferTokenParams();
 
@@ -445,9 +447,9 @@ GetEntryFromDataTransferTokenResponse callback) {
 
     static class FileSystemAccessManagerGetSandboxedFileSystemResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemAccessManager.GetSandboxedFileSystemResponse mCallback;
+        private final FileSystemAccessManager.GetSandboxedFileSystem_Response mCallback;
 
-        FileSystemAccessManagerGetSandboxedFileSystemResponseParamsForwardToCallback(FileSystemAccessManager.GetSandboxedFileSystemResponse callback) {
+        FileSystemAccessManagerGetSandboxedFileSystemResponseParamsForwardToCallback(FileSystemAccessManager.GetSandboxedFileSystem_Response callback) {
             this.mCallback = callback;
         }
 
@@ -472,7 +474,7 @@ GetEntryFromDataTransferTokenResponse callback) {
         }
     }
 
-    static class FileSystemAccessManagerGetSandboxedFileSystemResponseParamsProxyToResponder implements FileSystemAccessManager.GetSandboxedFileSystemResponse {
+    static class FileSystemAccessManagerGetSandboxedFileSystemResponseParamsProxyToResponder implements FileSystemAccessManager.GetSandboxedFileSystem_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -667,9 +669,9 @@ GetEntryFromDataTransferTokenResponse callback) {
 
     static class FileSystemAccessManagerChooseEntriesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemAccessManager.ChooseEntriesResponse mCallback;
+        private final FileSystemAccessManager.ChooseEntries_Response mCallback;
 
-        FileSystemAccessManagerChooseEntriesResponseParamsForwardToCallback(FileSystemAccessManager.ChooseEntriesResponse callback) {
+        FileSystemAccessManagerChooseEntriesResponseParamsForwardToCallback(FileSystemAccessManager.ChooseEntries_Response callback) {
             this.mCallback = callback;
         }
 
@@ -694,7 +696,7 @@ GetEntryFromDataTransferTokenResponse callback) {
         }
     }
 
-    static class FileSystemAccessManagerChooseEntriesResponseParamsProxyToResponder implements FileSystemAccessManager.ChooseEntriesResponse {
+    static class FileSystemAccessManagerChooseEntriesResponseParamsProxyToResponder implements FileSystemAccessManager.ChooseEntries_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
@@ -997,9 +999,9 @@ GetEntryFromDataTransferTokenResponse callback) {
 
     static class FileSystemAccessManagerGetEntryFromDataTransferTokenResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final FileSystemAccessManager.GetEntryFromDataTransferTokenResponse mCallback;
+        private final FileSystemAccessManager.GetEntryFromDataTransferToken_Response mCallback;
 
-        FileSystemAccessManagerGetEntryFromDataTransferTokenResponseParamsForwardToCallback(FileSystemAccessManager.GetEntryFromDataTransferTokenResponse callback) {
+        FileSystemAccessManagerGetEntryFromDataTransferTokenResponseParamsForwardToCallback(FileSystemAccessManager.GetEntryFromDataTransferToken_Response callback) {
             this.mCallback = callback;
         }
 
@@ -1024,7 +1026,7 @@ GetEntryFromDataTransferTokenResponse callback) {
         }
     }
 
-    static class FileSystemAccessManagerGetEntryFromDataTransferTokenResponseParamsProxyToResponder implements FileSystemAccessManager.GetEntryFromDataTransferTokenResponse {
+    static class FileSystemAccessManagerGetEntryFromDataTransferTokenResponseParamsProxyToResponder implements FileSystemAccessManager.GetEntryFromDataTransferToken_Response {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;

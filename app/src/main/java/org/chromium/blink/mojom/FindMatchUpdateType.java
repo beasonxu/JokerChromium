@@ -13,8 +13,15 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 public final class FindMatchUpdateType {
     private static final boolean IS_EXTENSIBLE = false;
+    @IntDef({
+
+        FindMatchUpdateType.FINAL_UPDATE,
+        FindMatchUpdateType.MORE_UPDATES_COMING})
+    public @interface EnumType {}
 
     public static final int FINAL_UPDATE = 0;
     public static final int MORE_UPDATES_COMING = 1;

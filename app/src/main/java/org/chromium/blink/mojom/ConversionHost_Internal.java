@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class ConversionHost_Internal {
 
@@ -47,7 +49,9 @@ class ConversionHost_Internal {
     };
 
 
-    private static final int REGISTER_CONVERSION_ORDINAL = 0;
+    private static final int REGISTER_DATA_HOST_ORDINAL = 0;
+
+    private static final int REGISTER_NAVIGATION_DATA_HOST_ORDINAL = 1;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements ConversionHost.Proxy {
@@ -59,18 +63,37 @@ class ConversionHost_Internal {
 
 
         @Override
-        public void registerConversion(
-Conversion conversion) {
+        public void registerDataHost(
+org.chromium.mojo.bindings.InterfaceRequest<AttributionDataHost> dataHost) {
 
-            ConversionHostRegisterConversionParams _message = new ConversionHostRegisterConversionParams();
+            ConversionHostRegisterDataHostParams _message = new ConversionHostRegisterDataHostParams();
 
-            _message.conversion = conversion;
+            _message.dataHost = dataHost;
 
 
             getProxyHandler().getMessageReceiver().accept(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(REGISTER_CONVERSION_ORDINAL)));
+                            new org.chromium.mojo.bindings.MessageHeader(REGISTER_DATA_HOST_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void registerNavigationDataHost(
+org.chromium.mojo.bindings.InterfaceRequest<AttributionDataHost> dataHost, AttributionSrcToken attributionSrcToken) {
+
+            ConversionHostRegisterNavigationDataHostParams _message = new ConversionHostRegisterNavigationDataHostParams();
+
+            _message.dataHost = dataHost;
+
+            _message.attributionSrcToken = attributionSrcToken;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(REGISTER_NAVIGATION_DATA_HOST_ORDINAL)));
 
         }
 
@@ -106,12 +129,25 @@ Conversion conversion) {
 
 
 
-                    case REGISTER_CONVERSION_ORDINAL: {
+                    case REGISTER_DATA_HOST_ORDINAL: {
 
-                        ConversionHostRegisterConversionParams data =
-                                ConversionHostRegisterConversionParams.deserialize(messageWithHeader.getPayload());
+                        ConversionHostRegisterDataHostParams data =
+                                ConversionHostRegisterDataHostParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().registerConversion(data.conversion);
+                        getImpl().registerDataHost(data.dataHost);
+                        return true;
+                    }
+
+
+
+
+
+                    case REGISTER_NAVIGATION_DATA_HOST_ORDINAL: {
+
+                        ConversionHostRegisterNavigationDataHostParams data =
+                                ConversionHostRegisterNavigationDataHostParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().registerNavigationDataHost(data.dataHost, data.attributionSrcToken);
                         return true;
                     }
 
@@ -147,6 +183,8 @@ Conversion conversion) {
 
 
 
+
+
                     default:
                         return false;
                 }
@@ -159,22 +197,22 @@ Conversion conversion) {
 
 
     
-    static final class ConversionHostRegisterConversionParams extends org.chromium.mojo.bindings.Struct {
+    static final class ConversionHostRegisterDataHostParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public Conversion conversion;
+        public org.chromium.mojo.bindings.InterfaceRequest<AttributionDataHost> dataHost;
 
-        private ConversionHostRegisterConversionParams(int version) {
+        private ConversionHostRegisterDataHostParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public ConversionHostRegisterConversionParams() {
+        public ConversionHostRegisterDataHostParams() {
             this(0);
         }
 
-        public static ConversionHostRegisterConversionParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static ConversionHostRegisterDataHostParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -183,26 +221,25 @@ Conversion conversion) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static ConversionHostRegisterConversionParams deserialize(java.nio.ByteBuffer data) {
+        public static ConversionHostRegisterDataHostParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static ConversionHostRegisterConversionParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static ConversionHostRegisterDataHostParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            ConversionHostRegisterConversionParams result;
+            ConversionHostRegisterDataHostParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new ConversionHostRegisterConversionParams(elementsOrVersion);
+                result = new ConversionHostRegisterDataHostParams(elementsOrVersion);
                     {
                         
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    result.conversion = Conversion.decode(decoder1);
+                    result.dataHost = decoder0.readInterfaceRequest(8, false);
                     }
 
             } finally {
@@ -216,7 +253,78 @@ Conversion conversion) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.conversion, 8, false);
+            encoder0.encode(this.dataHost, 8, false);
+        }
+    }
+
+
+
+    
+    static final class ConversionHostRegisterNavigationDataHostParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.mojo.bindings.InterfaceRequest<AttributionDataHost> dataHost;
+        public AttributionSrcToken attributionSrcToken;
+
+        private ConversionHostRegisterNavigationDataHostParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public ConversionHostRegisterNavigationDataHostParams() {
+            this(0);
+        }
+
+        public static ConversionHostRegisterNavigationDataHostParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static ConversionHostRegisterNavigationDataHostParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static ConversionHostRegisterNavigationDataHostParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            ConversionHostRegisterNavigationDataHostParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new ConversionHostRegisterNavigationDataHostParams(elementsOrVersion);
+                    {
+                        
+                    result.dataHost = decoder0.readInterfaceRequest(8, false);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                    result.attributionSrcToken = AttributionSrcToken.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.dataHost, 8, false);
+            
+            encoder0.encode(this.attributionSrcToken, 16, false);
         }
     }
 

@@ -13,6 +13,8 @@
 
 package org.chromium.blink.mojom;
 
+import androidx.annotation.IntDef;
+
 
 class ReportingServiceProxy_Internal {
 
@@ -53,7 +55,7 @@ class ReportingServiceProxy_Internal {
 
     private static final int QUEUE_CSP_VIOLATION_REPORT_ORDINAL = 2;
 
-    private static final int QUEUE_FEATURE_POLICY_VIOLATION_REPORT_ORDINAL = 3;
+    private static final int QUEUE_PERMISSIONS_POLICY_VIOLATION_REPORT_ORDINAL = 3;
 
     private static final int QUEUE_DOCUMENT_POLICY_VIOLATION_REPORT_ORDINAL = 4;
 
@@ -164,10 +166,10 @@ org.chromium.url.mojom.Url url, String group, String documentUrl, String referre
 
 
         @Override
-        public void queueFeaturePolicyViolationReport(
+        public void queuePermissionsPolicyViolationReport(
 org.chromium.url.mojom.Url url, String policyId, String disposition, String message, String sourceFile, int lineNumber, int columnNumber) {
 
-            ReportingServiceProxyQueueFeaturePolicyViolationReportParams _message = new ReportingServiceProxyQueueFeaturePolicyViolationReportParams();
+            ReportingServiceProxyQueuePermissionsPolicyViolationReportParams _message = new ReportingServiceProxyQueuePermissionsPolicyViolationReportParams();
 
             _message.url = url;
 
@@ -187,7 +189,7 @@ org.chromium.url.mojom.Url url, String policyId, String disposition, String mess
             getProxyHandler().getMessageReceiver().accept(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(QUEUE_FEATURE_POLICY_VIOLATION_REPORT_ORDINAL)));
+                            new org.chromium.mojo.bindings.MessageHeader(QUEUE_PERMISSIONS_POLICY_VIOLATION_REPORT_ORDINAL)));
 
         }
 
@@ -293,12 +295,12 @@ org.chromium.url.mojom.Url url, String group, String policyId, String dispositio
 
 
 
-                    case QUEUE_FEATURE_POLICY_VIOLATION_REPORT_ORDINAL: {
+                    case QUEUE_PERMISSIONS_POLICY_VIOLATION_REPORT_ORDINAL: {
 
-                        ReportingServiceProxyQueueFeaturePolicyViolationReportParams data =
-                                ReportingServiceProxyQueueFeaturePolicyViolationReportParams.deserialize(messageWithHeader.getPayload());
+                        ReportingServiceProxyQueuePermissionsPolicyViolationReportParams data =
+                                ReportingServiceProxyQueuePermissionsPolicyViolationReportParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().queueFeaturePolicyViolationReport(data.url, data.policyId, data.disposition, data.message, data.sourceFile, data.lineNumber, data.columnNumber);
+                        getImpl().queuePermissionsPolicyViolationReport(data.url, data.policyId, data.disposition, data.message, data.sourceFile, data.lineNumber, data.columnNumber);
                         return true;
                     }
 
@@ -721,7 +723,7 @@ org.chromium.url.mojom.Url url, String group, String policyId, String dispositio
 
 
     
-    static final class ReportingServiceProxyQueueFeaturePolicyViolationReportParams extends org.chromium.mojo.bindings.Struct {
+    static final class ReportingServiceProxyQueuePermissionsPolicyViolationReportParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 56;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(56, 0)};
@@ -734,15 +736,15 @@ org.chromium.url.mojom.Url url, String group, String policyId, String dispositio
         public int lineNumber;
         public int columnNumber;
 
-        private ReportingServiceProxyQueueFeaturePolicyViolationReportParams(int version) {
+        private ReportingServiceProxyQueuePermissionsPolicyViolationReportParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public ReportingServiceProxyQueueFeaturePolicyViolationReportParams() {
+        public ReportingServiceProxyQueuePermissionsPolicyViolationReportParams() {
             this(0);
         }
 
-        public static ReportingServiceProxyQueueFeaturePolicyViolationReportParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static ReportingServiceProxyQueuePermissionsPolicyViolationReportParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -751,22 +753,22 @@ org.chromium.url.mojom.Url url, String group, String policyId, String dispositio
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static ReportingServiceProxyQueueFeaturePolicyViolationReportParams deserialize(java.nio.ByteBuffer data) {
+        public static ReportingServiceProxyQueuePermissionsPolicyViolationReportParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static ReportingServiceProxyQueueFeaturePolicyViolationReportParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static ReportingServiceProxyQueuePermissionsPolicyViolationReportParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            ReportingServiceProxyQueueFeaturePolicyViolationReportParams result;
+            ReportingServiceProxyQueuePermissionsPolicyViolationReportParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new ReportingServiceProxyQueueFeaturePolicyViolationReportParams(elementsOrVersion);
+                result = new ReportingServiceProxyQueuePermissionsPolicyViolationReportParams(elementsOrVersion);
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
