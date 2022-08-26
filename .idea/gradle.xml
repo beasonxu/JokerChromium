@@ -48,6 +48,7 @@
             <option value="$PROJECT_DIR$/browser/ui_default_browser_promo" />
             <option value="$PROJECT_DIR$/browser/ui_favicon" />
             <option value="$PROJECT_DIR$/browser/ui_messages" />
+            <option value="$PROJECT_DIR$/browser/ui_quickaction" />
             <option value="$PROJECT_DIR$/browser/user_education" />
             <option value="$PROJECT_DIR$/browser/video_tutorials" />
             <option value="$PROJECT_DIR$/browser/webapps" />
@@ -69,6 +70,7 @@
             <option value="$PROJECT_DIR$/components/browser_ui_share" />
             <option value="$PROJECT_DIR$/components/browser_ui_site_settings" />
             <option value="$PROJECT_DIR$/components/browser_ui_styles" />
+            <option value="$PROJECT_DIR$/components/browser_ui_theme" />
             <option value="$PROJECT_DIR$/components/browser_ui_util" />
             <option value="$PROJECT_DIR$/components/browser_ui_widget" />
             <option value="$PROJECT_DIR$/components/embedder_support" />

@@ -10,8 +10,6 @@ import android.content.DialogInterface;
 
 import androidx.appcompat.app.AlertDialog;
 
-import org.chromium.chrome.R;
-
 /**
  * A dialog to notify user of network errors while loading WebAPK's start URL.
  */

@@ -31,7 +31,6 @@ import androidx.appcompat.content.res.AppCompatResources;
 
 import org.chromium.base.annotations.CalledByNative;
 import org.chromium.base.annotations.NativeMethods;
-import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.util.AvatarGenerator;
 import org.chromium.components.url_formatter.UrlFormatter;
 import org.chromium.ui.base.WindowAndroid;

@@ -2,7 +2,7 @@
 
 set -e
 
-PRO_DIR="/Users/shuxinghu/Desktop/chromeTemp1"
+PRO_DIR="/Users/shuxinghu/Documents/workStation/JokerChromium/"
 BASE_DIR="/Users/shuxinghu/Desktop/chromium/src"
 RELEASE_DIR="${BASE_DIR}/out/Default"
 APP_DIR="${PRO_DIR}/app"
@@ -499,8 +499,19 @@ clean_project() {
 }
 
 do_sync() {
-	rm -rf "$PRO_DIR"
-  sync_chrome
+
+
+	local del_files="|DEPS|DIR_METADATA|LAYOUT_OWNERS|README|OWNERS|COPYING|BUILD|LICENSE|README.chromium|*\.template|*\.tmpl|R\.java|.*\.stamp|.*stamp\.d|.*\.py|.*\.flags|.*\.gn|.*Test\.java|.*test\.java|"
+  	find "$PRO_DIR" -not \( -name 'JniStaticTestMocker.java' -or -name 'MockedInTests.java' -or -name 'EditorObserverForTest.java' \
+  	  -or -name 'PaymentUiServiceTestInterface.java' -or -name 'FlushForTesting.java' -or -name 'NetworkServiceTest.java' -or -name 'HitTestRegionList.java' \
+  	  -or -name 'HitTestRegion.java' -or -name 'AttestationConveyancePreference.java' -or -name 'NetworkServiceTest_Internal.java' \) \
+  	 -regextype "posix-egrep" -regex ".*/(${del_files})" -type f -print0 | \
+  		xargs -0 rm -f
+
+  	local langs="af|am|as|ar|az|b\+sr\+Latn|be|bn|bs|bg|ca|cs|da|de|el|en-rGB|en-rUS|es|es-rUS|et|eu|fa|fi|fr|fr-rCA|gl|gu|hdpi|hi|hr|hu|hy|in|is|it|iw"
+  	langs="$langs|ja|ka|kk|km|ko|kn|ky|lo|lt|lv|mk|ml|mn|mr|ms|my|ne|nb|nl|or|pa|pl|pt-rBR|pt-rPT|si|sq|ro|ru|sk|sl|sr|sv|sw|ta|te|th|tl|tr|ur|uk|uz|vi|zu|zh-rHK|zh-rTW|"
+  	find "$PRO_DIR" -regextype "posix-egrep" -regex ".*values-($langs)" -print0 | xargs -0 rm -rf
+#  sync_chrome
 #  sync_assets
 #  sync_messages
 #  sync_aidl

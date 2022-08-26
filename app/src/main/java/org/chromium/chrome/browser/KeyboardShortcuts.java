@@ -12,7 +12,6 @@ import android.view.KeyboardShortcutInfo;
 
 import androidx.annotation.RequiresApi;
 
-import org.chromium.chrome.R;
 import org.chromium.chrome.browser.fullscreen.FullscreenManager;
 import org.chromium.chrome.browser.tab.Tab;
 import org.chromium.chrome.browser.tabmodel.TabModel;

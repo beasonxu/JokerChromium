@@ -14,7 +14,6 @@ import androidx.preference.Preference;
 
 import org.chromium.base.Callback;
 import org.chromium.base.CommandLine;
-import org.chromium.chrome.R;
 import org.chromium.chrome.browser.browserservices.permissiondelegation.InstalledWebappPermissionManager;
 import org.chromium.chrome.browser.feedback.HelpAndFeedbackLauncherImpl;
 import org.chromium.chrome.browser.flags.ChromeFeatureList;

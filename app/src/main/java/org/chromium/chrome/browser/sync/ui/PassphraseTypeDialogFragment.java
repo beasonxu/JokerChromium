@@ -23,7 +23,6 @@ import androidx.fragment.app.DialogFragment;
 
 import org.chromium.base.ContextUtils;
 import org.chromium.base.IntentUtils;
-import org.chromium.chrome.R;
 import org.chromium.chrome.browser.ChromeStringConstants;
 import org.chromium.components.sync.PassphraseType;
 import org.chromium.ui.text.SpanApplier;
