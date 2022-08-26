@@ -75,6 +75,7 @@
 <string name="price_drop_spotted_content">"See which item in your open tabs has a lower price"</string>
 <string name="price_drop_spotted_show_me">"Show me"</string>
 <string name="price_drop_spotted_lower_price">"Lower price"</string>
+<string name="accessibility_tab_price_card">"The price of this item recently dropped from %1$s to %2$s"</string>
 <string name="price_drop_alerts_card_title">"Get alerts for price drops?"</string>
 <string name="price_drop_alerts_card_get_notified_content">"You\'ll get an alert when there\'s a lower price in an open tab"</string>
 <string name="price_drop_alerts_card_get_notified">"Get notified"</string>
@@ -85,4 +86,40 @@
 <string name="track_prices_on_tabs_description">"See price drops on your tabs"</string>
 <string name="price_drop_alerts">"Price drop alerts"</string>
 <string name="price_drop_alerts_description">"Get notified when prices drop"</string>
+<string name="price_drop_notification_content_title">"%1$s price drop on %2$s"</string>
+<string name="price_drop_notification_content_text">"Now %1$s on %2$s"</string>
+<string name="price_drop_notification_action_visit_site">"Visit site"</string>
+<string name="price_drop_notification_action_turn_off_alert">"Stop tracking product"</string>
+<string name="merchant_viewer_message_title">"View store info?"</string>
+<string name="merchant_viewer_message_title_see_reviews">"See store reviews?"</string>
+<string name="merchant_viewer_message_action">"View"</string>
+<string name="merchant_viewer_message_description_rating">"%1$s/%2$s rating"</string>
+<plurals name="merchant_viewer_message_description_reviews">
+  <item quantity="one">"(%1$s review)"</item>
+  <item quantity="other">"(%1$s reviews)"</item>
+</plurals>
+<plurals name="merchant_viewer_message_description_reviews_from_google">
+  <item quantity="one">"%1$s review from Google"</item>
+  <item quantity="other">"%1$s reviews from Google"</item>
+</plurals>
+<string name="merchant_viewer_message_rating_numerical">"%1$.1f/%2$d"</string>
+<string name="merchant_viewer_message_rating_word">"rating"</string>
+<plurals name="accessibility_merchant_viewer_message_description">
+  <item quantity="one">" %1$s/%2$s rating, %3$d review"</item>
+  <item quantity="other">"%1$s/%2$s rating, %3$d reviews"</item>
+</plurals>
+<string name="accessibility_merchant_viewer_message_announcement">"View store info, option available near top of the screen"</string>
+<string name="merchant_viewer_preview_sheet_title">"Google | About this store"</string>
+<string name="merchant_viewer_omnibox_icon_iph">"View store info"</string>
+<string name="page_info_store_info_title">"Store info"</string>
+<string name="page_info_store_info_description_with_no_review">"(store rating)"</string>
+<string name="page_info_store_info_description_with_no_rating">"See return policy and more"</string>
+<string name="merchant_viewer_preview_sheet_description">"Information about this store"</string>
+<string name="merchant_viewer_preview_sheet_opened_half">"Information about this store opened at half height"</string>
+<string name="merchant_viewer_preview_sheet_opened_full">"Information about this store opened at full height"</string>
+<string name="merchant_viewer_preview_sheet_closed">"Information about this store closed"</string>
+<string name="close_all_tabs_dialog_title">"Close all tabs?"</string>
+<string name="close_all_tabs_dialog_message">"You can find your closed tabs in Recent tabs under the Chrome main menu"</string>
+<string name="close_all_tabs_dialog_title_incognito">"Close all Incognito tabs?"</string>
+<string name="close_all_tabs_dialog_message_incognito">"Your activity in these Incognito tabs will be cleared from this device"</string>
 </resources>

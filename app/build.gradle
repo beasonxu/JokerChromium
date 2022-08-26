@@ -57,13 +57,14 @@ android {
                         "$rootDir/base_res",
                         "$rootDir/components/payments/src/main/google_pay_res",
                         "$rootDir/app/src/main/res",
-                        "$rootDir/app/src/main/res_base",
-                        "$rootDir/app/src/main/res_chromium",
-                        "$rootDir/app/src/main/res_chromium_base",
-                        "$rootDir/app/src/main/res_gen",
-                        "$rootDir/app/src/main/res_vr",
-                        "$rootDir/app/src/main/res_template",
-                        "$rootDir/app/src/main/res_download",
+//                        "$rootDir/app/src/main/res_base",
+//                        "$rootDir/app/src/main/res_chromium",
+//                        "$rootDir/app/src/main/res_chromium_base",
+//                        "$rootDir/app/src/main/res_gen",
+//                        "$rootDir/app/src/main/res_vr",
+//                        "$rootDir/app/src/main/res_template",
+//                        "$rootDir/app/src/main/res_download",
+
 //                        "$rootDir/libraries_res/ui_res/res",
 //                        "$rootDir/libraries_res/components_res/res",
 //                        "$rootDir/libraries_res/components_res/widget_res",
@@ -118,7 +119,7 @@ dependencies {
     implementation("androidx.annotation:annotation-experimental:1.2.0")
 
 
-
+    implementation "androidx.appcompat:appcompat:1.6.0"
     def gmsVersion = '17.0.0'
     implementation "com.google.android.gms:play-services-basement:${gmsVersion}"
     implementation "com.google.android.gms:play-services-tasks:${gmsVersion}"
@@ -157,7 +158,7 @@ dependencies {
     implementation 'com.google.vr:sdk-base:1.130.0'
     implementation 'com.google.auto.service:auto-service:1.0'
     implementation 'com.squareup:javapoet:1.13.0'
-    implementation 'com.google.android.material:material:1.2.0'
+    implementation 'com.google.android.material:material:1.6.0'
     implementation 'com.google.firebase:firebase-messaging:21.1.0'
     implementation "com.android.support:collections:28.0.0"
 //    implementation 'com.google.android.play:core:1.6.4'
@@ -168,7 +169,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     testImplementation group: 'com.google.truth', name: 'truth', version: '1.1.2'
-    implementation project(':components:autofill')
+    /*implementation project(':components:autofill')
     implementation project(':components:embedder_support')
     implementation project(':components:embedder_support_delegate')
     implementation project(':components:messages')
@@ -245,7 +246,7 @@ dependencies {
     implementation project(':chrome_start_surface')
     implementation project(':chrome_vr')
     implementation project(':media')
-    implementation project(':base')
+    implementation project(':base')*/
 
 //    implementation files('libs\\chrome\\android\\chrome_java.jar')
 //    implementation files('libs\\chrome\\browser\\thumbnail\\generator\\java.jar')
