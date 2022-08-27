@@ -7,7 +7,7 @@
     <item android:maxLevel="@integer/list_item_level_default" android:drawable="@drawable/oval_surface_1" />
     <item android:maxLevel="@integer/list_item_level_selected">
         <shape android:shape="oval">
-            <solid android:color="@macro/default_control_color_active" />
+            <solid android:color="@color/macro_default_control_color_active" />
         </shape>
     </item>
     <item android:maxLevel="@integer/list_item_level_incognito">

@@ -21,6 +21,6 @@
             android:layout_gravity="bottom|center_horizontal"
             android:importantForAccessibility="no"
             android:src="@drawable/drag_handlebar"
-            android:tint="@macro/drag_handlebar_color" />
+            android:tint="@color/macro_drag_handlebar_color" />
     </FrameLayout>
 </FrameLayout>

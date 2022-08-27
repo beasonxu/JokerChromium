@@ -8,7 +8,7 @@
     android:height="20dp"
     android:viewportWidth="128"
     android:viewportHeight="80"
-    android:tint="@macro/default_icon_color">
+    android:tint="@color/macro_default_icon_color">
 
     <path
         android:fillType="evenOdd"

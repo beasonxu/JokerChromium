@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="autofill_save_card_prompt_confirm">"पुष्टी करा"</string>
+<string name="autofill_mobile_save_card_to_cloud_confirmation_dialog_explanation">"सुरक्षित आणि आणखी जलद चेकआउट करण्यासाठी तुमच्या Google खाते मध्ये तुमचे कार्ड व बिलिंग माहिती सेव्ह करा"</string>
+<string name="autofill_mobile_save_card_to_cloud_confirmation_dialog_explanation_with_account_name">"सुरक्षित आणि आणखी जलद चेकआउट करण्यासाठी तुमच्या ^1 Google खाते मध्ये तुमचे कार्ड व बिलिंग माहिती सेव्ह करा"</string>
+<string name="autofill_fix_flow_prompt_save_card_label">"कार्ड सेव्ह करा"</string>
+<string name="autofill_save_card_prompt_cardholder_name_tooltip">"हे नाव तुमच्या Google खात्यावरून आहे"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_cvc">"तुमचे CVC तपासा आणि पुन्हा प्रयत्न करा"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_date">"तुमची कालबाह्यता तारीख तपासा आणि पुन्हा प्रयत्न करा"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_cvc_and_expiration">"तुमची कालबाह्यता तारीख आणि CVC तपासा आणि पुन्हा प्रयत्न करा"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_month">"तुमचा कालबाह्यता महिना तपासा आणि पुन्हा प्रयत्न करा"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_year">"तुमचे कालबाह्यता वर्ष तपासा आणि पुन्हा प्रयत्न करा"</string>
+<string name="autofill_card_unmask_prompt_enable_fido_auth_checkbox">"यापुढे कार्डे निश्चित करण्यासाठी स्क्रीन लॉक वापरा"</string>
+<string name="autofill_card_unmask_verification_in_progress">"कार्डची निश्चिती करत आहे…"</string>
+<string name="autofill_card_unmask_verification_success">"आपल्या कार्डची पुष्टी केली"</string>
+<string name="autofill_expiration_date_separator">"/"</string>
+<string name="autofill_card_unmask_new_card_link">"कार्ड अपडेट करा"</string>
+<string name="autofill_wallet_management_link_text">"संपादन"</string>
+<string name="autofill_from_google_account_long">"Google Pay वरून"</string>
+<string name="autofill_virtual_card_enrollment_accept_button_label">"होय"</string>
+<string name="autofill_virtual_card_enrollment_dialog_title_label">"व्हर्च्युअल कार्डसह ते आणखी सुरक्षित करायचे आहे का?"</string>
+<string name="autofill_virtual_card_number_switch_label">"व्हर्च्युअल कार्ड"</string>
+<string name="autofill_offers_reminder_description_text">"चेकआउट करताना %1$s वापरून पेमेंट करा."</string>
+<string name="autofill_offers_reminder_deep_link_text">"तपशील पहा"</string>
+<string name="autofill_payments_otp_verification_dialog_title">"पडताळणी कोड एंटर करा"</string>
+<string name="autofill_payments_otp_verification_dialog_cant_find_code_message">"तुमचा कोड सापडत नाही का? &lt;link&gt;नवीन कोड मिळवा&lt;/link&gt;"</string>
+<string name="autofill_payments_otp_verification_dialog_otp_input_hint">"%1$s - अंकी कोड एंटर करा"</string>
+<string name="autofill_payments_otp_verification_dialog_positive_button_label">"पुष्टी करा"</string>
+<string name="autofill_payments_otp_verification_dialog_negative_button_label">"रद्द करा"</string>
+<string name="autofill_edit_credit_card">"कार्ड संपादित करा"</string>
+<string name="autofill_create_credit_card">"कार्ड जोडा"</string>
+<string name="autofill_clear_local_copy_button">"कॉपी साफ करा"</string>
+<string name="autofill_cc_amex">"American Express"</string>
+<string name="autofill_cc_diners">"Diners Club"</string>
+<string name="autofill_cc_discover">"Discover"</string>
+<string name="autofill_cc_jcb">"JCB"</string>
+<string name="autofill_cc_mastercard">"Mastercard"</string>
+<string name="autofill_cc_mir">"Mir"</string>
+<string name="autofill_cc_union_pay">"China UnionPay"</string>
+<string name="autofill_cc_visa">"Visa"</string>
+<string name="autofill_address_summary_separator">", "</string>
+<string name="autofill_scan_credit_card">"नवीन कार्ड स्कॅन करा"</string>
+<string name="autofill_enable_profiles_toggle_sublabel">"फोन नंबर, ईमेल ॲड्रेस आणि शिपिंग पत्ते यांसारखी माहिती समाविष्ट आहे"</string>
+<string name="autofill_enable_credit_cards_toggle_sublabel">"तुमच्या सेव्ह केलेल्या पेमेंट पद्धतींसह पेमेंट फॉर्म भरते"</string>
+<string name="autofill_addresses_settings_title">"पत्ते आणि बरेच काही"</string>
+<string name="autofill_payment_methods">"पेमेंट पद्धती"</string>
+<string name="autofill_enable_profiles_toggle_label">"पत्ते भरा आणि सेव्ह करा"</string>
+<string name="autofill_enable_credit_cards_toggle_label">"पेमेंट पद्धती सेव्ह करा आणि भरा"</string>
+<string name="enable_credit_card_fido_auth_label">"स्क्रीन लॉक"</string>
+<string name="enable_credit_card_fido_auth_sublabel">"कार्डांची जलद खात्री करण्यासाठी स्क्रीन लॉक वापरा"</string>
+<string name="autofill_update_address_prompt_new_values_section_label">"नवीन"</string>
+<string name="autofill_update_address_prompt_old_values_section_label">"जुना"</string>
+<string name="autofill_save_address_prompt_edit_button_tooltip">"पत्ता संपादित करा"</string>
+<string name="autofill_edit_address_dialog_title">"पत्ता संपादित करा"</string>
+<string name="http_post_warning_title">"फॉर्म रीसबमिशनची पुष्टी करा"</string>
+<string name="http_post_warning">"तुम्ही जे पेज शोधत आहत ते तुम्ही एंटर केलेली माहिती वापरत आहे. त्या पेजकडे परत गेल्यास कदाचित तुम्ही केलेल्या कोणत्याही क्रियेची पुनरावृत्ती होईल. तुम्ही सुरू ठेवू इच्छिता?"</string>
+<string name="http_post_warning_resend">"सुरू ठेवा"</string>
+<string name="login_dialog_title">"साइन इन करा"</string>
+<string name="login_dialog_ok_button_label">"साइन इन करा"</string>
+<string name="login_dialog_username_field">"वापरकर्ता नाव"</string>
+<string name="login_dialog_password_field">"पासवर्ड"</string>
+<string name="sad_tab_title">"च्चक!"</string>
+<string name="sad_tab_message">"हे वेबपेज प्रदर्शित करताना काहीतरी चूक झाली."</string>
+<string name="sad_tab_reload_label">"रीलोड करा"</string>
+<string name="sad_tab_send_feedback_label">"अभिप्राय पाठवा"</string>
+<string name="sad_tab_reload_title">"हे पृष्‍ठ उघडू शकत नाही"</string>
+<string name="sad_tab_reload_try">"खालील टिपा वापरून पहा:"</string>
+<string name="sad_tab_reload_incognito">"पेज नवीन गुप्त टॅबमध्ये उघडा"</string>
+<string name="sad_tab_reload_restart_browser">"Chromium रीस्टार्ट करा"</string>
+<string name="sad_tab_reload_restart_device">"तुमचा डिव्हाइस रीस्टार्ट करा"</string>
+<string name="sad_tab_reload_learn_more">"आणखी जाणून घ्या"</string>
+<string name="new_tab_otr_title">"तुम्ही गुप्त मोडमध्ये आहात"</string>
+<string name="new_tab_otr_subtitle">"आता तुम्ही खाजगीरित्या ब्राउझ करू शकता आणि हे डिव्हाइस वापरणारे इतर लोक तुमचे क्रियाकलाप पाहू शकणार नाहीत. तथापि, डाउनलोड आणि बुकमार्क सेव्ह केले जातील."</string>
+<string name="new_tab_otr_subtitle_with_reading_list">"आता तुम्ही खाजगीरीत्या ब्राउझ करू शकता आणि हे डिव्हाइस वापरणाऱ्या इतर लोकांना तुमची अ‍ॅक्टिव्हिटी पाहता येणार नाही. तरीही, डाउनलोड, बुकमार्क आणि वाचन सूची आयटम सेव्ह केले जातील."</string>
+<string name="new_tab_otr_not_saved">"Chromium हे पुढील माहिती &lt;em&gt;सेव्ह करणार नाही&lt;/em&gt;:
+          &lt;ul&gt;
+            &lt;li&gt;तुमचा ब्राउझिंग इतिहास
+            &lt;li&gt;कुकी आणि साइट डेटा
+            &lt;li&gt;फॉर्ममध्ये एंटर केलेली माहिती
+          &lt;/ul&gt;"</string>
+<string name="new_tab_otr_visible">"तुमच्या पुढील ॲक्टिव्हिटी &lt;em&gt;अद्याप दिसतील&lt;/em&gt;:
+        &lt;ul&gt;
+          &lt;li&gt;तुम्ही पाहत असलेल्या वेबसाइट
+          &lt;li&gt;तुमचा एम्पलॉयर किंवा शाळा
+          &lt;li&gt;तुमचा इंटरनेट सेवा पुरवठादार
+        &lt;/ul&gt;"</string>
+<string name="new_tab_otr_cookie_controls_controlled_tooltip_text">"हे सेटिंग कुकी सेटिंग्जमध्ये नियंत्रित केले जाते."</string>
+<string name="new_tab_otr_third_party_cookie">"तृतीय-पक्ष कुकीज ब्लॉक करा"</string>
+<string name="new_tab_otr_third_party_cookie_sublabel">"सुरू असताना, साइट संपूर्ण वेबवर तुमचा माग ठेवणाऱ्या कुकी वापरू शकत नाहीत. काही साइटवरील वैशिष्ट्यांमध्ये खंड पडू शकतो."</string>
+<string name="revamped_incognito_ntp_title">"Chromium मधील गुप्त मोड"</string>
+<string name="revamped_incognito_ntp_does_header">"गुप्त मोड काय करतो"</string>
+<string name="revamped_incognito_ntp_does_description">"तुम्ही Chromium मधील सर्व गुप्त टॅब बंद करता, तेव्हा त्या टॅबमधील तुमची अ‍ॅक्टिव्हिटी ही या डिव्हाइसवरून साफ केली जाते:
+          &lt;ul&gt;
+            &lt;li&gt;ब्राउझिंग अ‍ॅक्टिव्हिटी&lt;/li&gt;
+            &lt;li&gt;शोध इतिहास&lt;/li&gt;
+            &lt;li&gt;फॉर्ममध्ये एंटर केलेली माहिती&lt;/li&gt;
+          &lt;/ul&gt;"</string>
+<string name="revamped_incognito_ntp_does_not_header">"गुप्त मोड काय करत नाही"</string>
+<string name="revamped_incognito_ntp_does_not_description">"गुप्त मोडमुळे तुमचे ऑनलाइन अस्तित्व नाहीसे होत नाही:
+        &lt;ul&gt;
+          &lt;li&gt;ते वापरत असलेल्या साइट आणि सेवा भेटी पाहू शकतात&lt;/li&gt;
+          &lt;li&gt;नियोक्ते किंवा शाळा ब्राउझिंग अ‍ॅक्टिव्हिटीचा माग ठेवू शकतात&lt;/li&gt;
+          &lt;li&gt;इंटरनेट सेवा पुरवठादार हे वेब ट्रॅफिकवर लक्ष ठेऊ शकतात&lt;/li&gt;
+        &lt;/ul&gt;"</string>
+<string name="revamped_incognito_ntp_learn_more">"&lt;a&gt;Chromium मधील गुप्त मोड याबद्दल अधिक जाणून घ्या&lt;/a&gt;"</string>
+<string name="revamped_incognito_ntp_otr_third_party_cookie">"गुप्त मोडमधील तृतीय पक्ष कुकी ब्लॉक करा"</string>
+<string name="revamped_incognito_ntp_otr_third_party_cookie_sublabel">"साइट या तुमचा संपूर्ण वेबवर माग ठेवणाऱ्या कुकी वापरू शकत नाहीत. काही साइटवरील वैशिष्ट्यांमध्ये खंड पडू शकतो."</string>
+<string name="ntp_article_suggestions_section_header">"तुमच्यासाठी लेख"</string>
+<string name="ntp_article_suggestions_section_empty">"तुम्ही सुचविलेले लेख येथे दिसतील"</string>
+<string name="page_info_permission_ads_subtitle">"साइट अनाहूत किंवा दिशाभूल करणाऱ्या जाहिराती दाखवते"</string>
+<string name="payments_method_of_payment_label">"पेमेंट पद्धत"</string>
+<string name="payments_contact_details_label">"संपर्क माहिती"</string>
+<string name="payments_add_contact_details_label">"संपर्क माहिती जोडा"</string>
+<string name="payments_edit_contact_details_label">"संपर्क माहिती संपादित करा"</string>
+<string name="payments_add_billing_address">"बिलिंग पत्ता जोडा"</string>
+<string name="payments_add_name_on_card">"कार्डवर नाव जोडा"</string>
+<string name="payments_add_valid_card_number">"वैध कार्ड नंबर जोडा"</string>
+<string name="payments_add_more_information">"अधिक माहिती जोडा"</string>
+<string name="payments_edit_card">"कार्ड संपादित करा"</string>
+<string name="payments_add_phone_number">"फोन नंबर जोडा"</string>
+<string name="payments_add_recipient">"नाव जोडा"</string>
+<string name="payments_add_valid_address">"वैध पत्ता जोडा"</string>
+<string name="payments_add_email">"ईमेल जोडा"</string>
+<string name="payments_add_name">"नाव जोडा"</string>
+<string name="payments_order_summary_label">"ऑर्डर सारांश"</string>
+<string name="payment_request_payment_method_section_name">"पेमेंट"</string>
+<string name="payments_shipping_summary_label">"शिपिंग"</string>
+<string name="payments_shipping_address_label">"वहनावळ पत्ता"</string>
+<string name="payments_shipping_option_label">"शिपिंग पद्धत"</string>
+<string name="payments_delivery_summary_label">"वितरण"</string>
+<string name="payments_delivery_address_label">"वितरण पत्ता"</string>
+<string name="payments_delivery_option_label">"वितरण पद्धत"</string>
+<string name="payments_pickup_summary_label">"घेणे"</string>
+<string name="payments_pickup_address_label">"घेण्याचा पत्ता"</string>
+<string name="payments_pickup_option_label">"पिकअप पद्धत"</string>
+<string name="payments_edit_button">"संपादन"</string>
+<string name="payments_pay_button">"पेमेंट करा"</string>
+<string name="payments_continue_button">"सुरू ठेवा"</string>
+<string name="payments_add_contact">"संपर्क माहिती जोडा"</string>
+<string name="payments_add_card">"कार्ड जोडा"</string>
+<string name="payments_add_address">"पत्ता जोडा"</string>
+<string name="payments_edit_address">"पत्ता संपादित करा"</string>
+<string name="payments_name_field_in_contact_details">"नाव"</string>
+<string name="payments_save_card_to_device_checkbox">"या डिव्हाइसवर हे कार्ड सेव्ह करा"</string>
+<string name="payments_accepted_cards_label">"स्वीकारलेली कार्ड"</string>
+<string name="payments_credit_card_expiration_date_abbr">"समाप्त होते: %1$s/%2$s"</string>
+<string name="payments_loading_message">"लोड करत आहे"</string>
+<string name="payments_checking_option">"तपासत आहे"</string>
+<string name="payments_updated_label">"अपडेट केलेले"</string>
+<string name="payments_error_message">"तुमच्या मागणीवर प्रक्रिया करताना एरर आली, कृपया पुन्हा प्रयत्न करा."</string>
+<string name="payments_card_and_address_settings">"तुम्ही कार्ड आणि पत्ते BEGIN_LINKसेटिंग्जEND_LINK मध्ये व्यवस्थापित करू शकता."</string>
+<string name="payments_card_and_address_settings_signed_in">"कार्ड आणि पत्ते Chrome आणि आपल्या Google खात्याकडील (%1$s) आहेत. तुम्ही त्यांना BEGIN_LINKसेटिंग्‍जEND_LINK मधून व्यवस्थापित करू शकता."</string>
+<string name="payments_card_and_address_settings_signed_out">"कार्ड आणि पत्ते Chrome कडील आहेत. तुम्ही त्यांना BEGIN_LINKसेटिंग्‍जEND_LINK मधून व्यवस्थापित करू शकता."</string>
+<string name="settings_can_make_payment_toggle_label">"तुम्ही पेमेंट पद्धती सेव्ह केल्या आहेत का हे तपासण्याची साइटला परवानगी द्या"</string>
+<string name="payments_required_field_message">"* फील्ड आवश्यक आहे"</string>
+<string name="payments_phone_invalid_validation_message">"वैध फोन नंबर एंटर करा"</string>
+<string name="payments_email_invalid_validation_message">"वैध ईमेल ॲड्रेस एंटर करा"</string>
+<string name="payments_card_number_invalid_validation_message">"वैध कार्ड नंबर एंटर करा"</string>
+<string name="payments_card_expiration_invalid_validation_message">"वैध समाप्ती दिनांक एंटर करा"</string>
+<string name="payments_invalid_address">"वैध पत्ता एंटर करा"</string>
+<string name="payments_billing_address_required">"बिलिंग पत्ता आवश्यक आहे"</string>
+<string name="payments_name_on_card_required">"कार्डधारकाचे नाव आवश्यक"</string>
+<string name="payments_more_information_required">"अधिक माहिती आवश्यक आहे"</string>
+<string name="payments_phone_number_required">"फोन नंबर आवश्यक आहे"</string>
+<string name="payments_recipient_required">"नाव आवश्यक आहे"</string>
+<string name="payments_email_required">"ईमेल आवश्यक आहे"</string>
+<string name="payments_name_required">"नाव आवश्यक आहे"</string>
+<string name="pref_edit_dialog_field_required_validation_message">"या जागा भरणे आवश्यक"</string>
+<string name="payments_select_shipping_address_for_shipping_methods">"शिपिंग पद्धती आणि आवश्यकता पाहण्यासाठी, एक पत्ता निवडा"</string>
+<string name="payments_unsupported_shipping_address">"या पत्त्यावर पाठवू शकत नाही. वेगळा पत्ता निवडा."</string>
+<string name="payments_select_delivery_address_for_delivery_methods">"वितरण पद्धती आणि आवश्यकता पाहण्यासाठी, एक पत्ता निवडा"</string>
+<string name="payments_unsupported_delivery_address">"या पत्त्यावर देऊ शकत नाही. वेगळा पत्ता निवडा."</string>
+<string name="payments_select_pickup_address_for_pickup_methods">"पिकअप पद्धती आणि आवश्यकता पाहण्यासाठी, एक पत्ता निवडा"</string>
+<string name="payments_unsupported_pickup_address">"या पत्त्यावरून पिक अप करू शकत नाही. वेगळा पत्ता निवडा."</string>
+<string name="payments_android_app_error">"पेमेंट ॲप उघडू शकत नाही"</string>
+<string name="external_payment_app_leave_incognito_warning">"बाह्य ॲप्लिकेशनमार्फत पेमेंट करण्यासाठी गुप्त मोडमधून बाहेर पडत आहे. पुढे सुरू ठेवायचे आहे का?"</string>
+<string name="payment_handler_sheet_description">"पेमेंट हँडलर शीट"</string>
+<string name="payment_handler_sheet_opened_half">"पेमेंट हँडलर शीट अर्धे उघडलेले आहे"</string>
+<string name="payment_handler_sheet_opened_full">"पेमेंट हँडलर शीट उघडलेले आहे"</string>
+<string name="payment_handler_sheet_closed">"पेमेंट हँडलर शीट बंद केलेले आहे"</string>
+<string name="secure_payment_confirmation_verify_purchase">"तुमच्‍या खरेदीची पडताळणी करा"</string>
+<string name="secure_payment_confirmation_store_label">"Store"</string>
+<string name="secure_payment_confirmation_total_label">"एकूण"</string>
+<string name="no_matching_credential_description">"तुमच्या पेमेंटची पडताळणी करण्यासाठी %1$s ने अतिरिक्त पावले उचलणे आवश्यक असू शकते"</string>
+<string name="secure_payment_confirmation_authentication_sheet_description">"सुरक्षित पेमेंट क्रेडेंशियल ची ऑथेंटिकेशन शीट"</string>
+<string name="secure_payment_confirmation_authentication_sheet_opened">"सुरक्षित पेमेंट क्रेडेंशियल ची ऑथेंटिकेशन शीट उघडी आहे"</string>
+<string name="secure_payment_confirmation_authentication_sheet_closed">"सुरक्षित पेमेंट क्रेडेंशियल ची ऑथेंटिकेशन शीट बंद आहे"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_description">"सुरक्षित पेमेंट क्रेडेंशियल याची जुळणारे कोणतेही क्रेडेंशियल नाही ही शीट"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_opened">"सुरक्षित पेमेंट क्रेडेंशियल याची जुळणारे कोणतेही क्रेडेंशियल नाही ही शीट उघडली आहे"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_closed">"सुरक्षित पेमेंट क्रेडेंशियल याची जुळणारे कोणतेही क्रेडेंशियल नाही ही शीट बंद केली आहे"</string>
+<string name="bluetooth_scanning_prompt_no_devices_found_prompt">"कोणतीही जवळपासची डिव्हाइस आढळली नाहीत."</string>
+<string name="bluetooth_scanning_prompt_allow_button_text">"परवानगी द्या"</string>
+<string name="bluetooth_scanning_prompt_block_button_text">"ब्लॉक करा"</string>
+<string name="blocked_ads_prompt_title">"जाहिराती ब्लॉक केल्या"</string>
+<string name="blocked_ads_dialog_title">"जाहिराती ब्लॉक केल्या"</string>
+<string name="blocked_ads_dialog_message">"ही साइट नको असलेल्या किंवा दिशाभूल करणाऱ्या जाहिराती दाखवते. ^1"</string>
+<string name="blocked_ads_dialog_always_allow">"या साइटला अनुमती द्या"</string>
+<string name="blocked_ads_dialog_learn_more">"अधिक जाणून घ्या"</string>
+<string name="sync_enter_passphrase_body">"तुमचा डेटा तुमच्या सिंक सांकेतिक पासफ्रेझासह एंक्रिप्ट केलेला केला जातो. सिंक सुरू करण्यासाठी तो एंटर करा."</string>
+<string name="translate_infobar_error">"अरेरे. हे पृष्‍ठ भाषांतरित केले जाऊ शकले नाही."</string>
+<string name="translate_button">"भाषांतर करा"</string>
+<string name="translate_never_translate_site">"या साइटचा कधीही भाषांतर करु नका"</string>
+<string name="translate_dont_offer_site">"या साइटचे भाषांतर करणे ऑफर करू नका"</string>
+<string name="translate_option_always_translate">"नेहमी पेज %1$sमध्ये भाषांतरित करा"</string>
+<string name="translate_option_never_translate">"पेज %1$s मध्ये कधीही भाषांतरित करू नका"</string>
+<string name="translate_dont_offer_lang">"पेजचे %1$s मध्ये भाषांतर करणे ऑफर करू नका"</string>
+<string name="translate_option_more_language">"आणखी भाषा…"</string>
+<string name="translate_option_not_source_language">"पेज %1$sमध्ये नाही?"</string>
+<string name="translate_snackbar_always_translate">"आतापासून पेज %1$sमधून %2$sमध्ये भाषांतरित केली जातील"</string>
+<string name="translate_snackbar_language_never">"%1$sमधील पेज भाषांतरीत केले जाणार नाही"</string>
+<string name="translate_snackbar_site_never">"या साइटचे भाषांतर होणार नाही"</string>
+<string name="translate_snackbar_cancel">"रद्द करा"</string>
+<string name="management_browser_reporting">"ब्राउझर"</string>
+<string name="management_browser_reporting_explanation">"तुमचा अ‍ॅडमिनिस्ट्रेटर हे पाहू शकतो:"</string>
+<string name="management_extension_report_username">"तुमच्या डिव्हाइसचे वापरकर्ता नाव आणि Chrome चे वापरकर्ता नाव"</string>
+<string name="management_extension_report_version">"तुमच्या डिव्हाइस आणि ब्राउझरविषयी आवृत्ती माहिती"</string>
+<string name="history_clusters_journeys_tab_label">"प्रवास"</string>
+<string name="history_clusters_search_your_journeys">"तुमचे प्रवास शोधा"</string>
+<string name="clear">"साफ करा"</string>
+<string name="show_content">"दर्शवा"</string>
+<string name="hide_content">"लपवा"</string>
+<string name="choose">"निवडा"</string>
+</resources>

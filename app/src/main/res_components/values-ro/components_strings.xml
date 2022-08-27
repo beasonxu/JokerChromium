@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="autofill_save_card_prompt_confirm">"Confirmați"</string>
+<string name="autofill_mobile_save_card_to_cloud_confirmation_dialog_explanation">"Salvează-ți cardul și informațiile de facturare în Contul Google ca să finalizezi achizițiile mai rapid și în siguranță"</string>
+<string name="autofill_mobile_save_card_to_cloud_confirmation_dialog_explanation_with_account_name">"Salvează-ți cardul și informațiile de facturare în Contul Google ^1 ca să finalizezi achizițiile mai rapid și în siguranță"</string>
+<string name="autofill_fix_flow_prompt_save_card_label">"Salvează cardul"</string>
+<string name="autofill_save_card_prompt_cardholder_name_tooltip">"Acest nume provine din Contul tău Google"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_cvc">"Verifică codul CVC și încearcă din nou"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_date">"Verifică data de expirare și încearcă din nou"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_cvc_and_expiration">"Verifică data de expirare și codul CVC și încearcă din nou"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_month">"Verifică luna în care expiră și încearcă din nou"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_year">"Verifică anul în care expiră și încearcă din nou"</string>
+<string name="autofill_card_unmask_prompt_enable_fido_auth_checkbox">"Folosește blocarea ecranului ca să confirmi cardurile de acum înainte"</string>
+<string name="autofill_card_unmask_verification_in_progress">"Se confirmă cardul…"</string>
+<string name="autofill_card_unmask_verification_success">"Cardul tău este confirmat"</string>
+<string name="autofill_expiration_date_separator">"/"</string>
+<string name="autofill_card_unmask_new_card_link">"Actualizează cardul"</string>
+<string name="autofill_wallet_management_link_text">"Editează"</string>
+<string name="autofill_from_google_account_long">"Din Google Pay"</string>
+<string name="autofill_virtual_card_enrollment_accept_button_label">"Da"</string>
+<string name="autofill_virtual_card_enrollment_dialog_title_label">"Vrei să-l securizezi folosind un card virtual?"</string>
+<string name="autofill_virtual_card_number_switch_label">"Card virtual"</string>
+<string name="autofill_offers_reminder_description_text">"Plătești cu %1$s la finalizarea achiziției."</string>
+<string name="autofill_offers_reminder_deep_link_text">"Vezi detaliile"</string>
+<string name="autofill_payments_otp_verification_dialog_title">"Introdu codul de verificare"</string>
+<string name="autofill_payments_otp_verification_dialog_cant_find_code_message">"Nu găsești codul? &lt;link&gt;Obține un cod nou&lt;/link&gt;"</string>
+<string name="autofill_payments_otp_verification_dialog_otp_input_hint">"Introdu codul de %1$s cifre"</string>
+<string name="autofill_payments_otp_verification_dialog_positive_button_label">"Confirmați"</string>
+<string name="autofill_payments_otp_verification_dialog_negative_button_label">"Anulează"</string>
+<string name="autofill_edit_credit_card">"Editează cardul"</string>
+<string name="autofill_create_credit_card">"Adaugă un card"</string>
+<string name="autofill_clear_local_copy_button">"Șterge copia"</string>
+<string name="autofill_cc_amex">"American Express"</string>
+<string name="autofill_cc_diners">"Diners Club"</string>
+<string name="autofill_cc_discover">"Discover"</string>
+<string name="autofill_cc_jcb">"JCB"</string>
+<string name="autofill_cc_mastercard">"Mastercard"</string>
+<string name="autofill_cc_mir">"Mir"</string>
+<string name="autofill_cc_union_pay">"China UnionPay"</string>
+<string name="autofill_cc_visa">"Visa"</string>
+<string name="autofill_address_summary_separator">", "</string>
+<string name="autofill_scan_credit_card">"Scanează un card nou"</string>
+<string name="autofill_enable_profiles_toggle_sublabel">"Include informații precum numerele de telefon, adresele de e-mail și adresele de expediere"</string>
+<string name="autofill_enable_credit_cards_toggle_sublabel">"Completează formularele de plată cu metodele de plată salvate"</string>
+<string name="autofill_addresses_settings_title">"Adrese și altele"</string>
+<string name="autofill_payment_methods">"Metode de plată"</string>
+<string name="autofill_enable_profiles_toggle_label">"Salvează și completează adresele"</string>
+<string name="autofill_enable_credit_cards_toggle_label">"Salvează și completează metodele de plată"</string>
+<string name="enable_credit_card_fido_auth_label">"Blocarea ecranului"</string>
+<string name="enable_credit_card_fido_auth_sublabel">"Folosește blocarea ecranului pentru a confirma mai repede cardurile"</string>
+<string name="autofill_update_address_prompt_new_values_section_label">"Nou"</string>
+<string name="autofill_update_address_prompt_old_values_section_label">"Veche"</string>
+<string name="autofill_save_address_prompt_edit_button_tooltip">"Editează adresa"</string>
+<string name="autofill_edit_address_dialog_title">"Editează adresa"</string>
+<string name="http_post_warning_title">"Confirmă retrimiterea formularului"</string>
+<string name="http_post_warning">"Pagina pe care o cauți a utilizat informațiile pe care le-ai introdus. Întoarcerea la acea pagină ar putea face ca orice acțiune să fie repetată. Vrei să continui?"</string>
+<string name="http_post_warning_resend">"Continuă"</string>
+<string name="login_dialog_title">"Conectează-te"</string>
+<string name="login_dialog_ok_button_label">"Conectează-te"</string>
+<string name="login_dialog_username_field">"Nume de utilizator"</string>
+<string name="login_dialog_password_field">"Parolă"</string>
+<string name="sad_tab_title">"Of, nu mai merge!"</string>
+<string name="sad_tab_message">"A apărut o eroare la afișarea paginii web."</string>
+<string name="sad_tab_reload_label">"Reîncarcă"</string>
+<string name="sad_tab_send_feedback_label">"Trimiteți feedback"</string>
+<string name="sad_tab_reload_title">"Pagina nu poate fi deschisă"</string>
+<string name="sad_tab_reload_try">"Încearcă următoarele sfaturi:"</string>
+<string name="sad_tab_reload_incognito">"Deschide pagina într-o filă incognito nouă"</string>
+<string name="sad_tab_reload_restart_browser">"repornește Chromium;"</string>
+<string name="sad_tab_reload_restart_device">"Reporniți gadgetul"</string>
+<string name="sad_tab_reload_learn_more">"Află mai multe"</string>
+<string name="new_tab_otr_title">"Ai trecut în modul incognito"</string>
+<string name="new_tab_otr_subtitle">"Acum poți naviga în mod privat, iar celelalte persoane care folosesc acest dispozitiv nu îți vor vedea activitatea. Cu toate acestea, descărcările și marcajele vor fi salvate."</string>
+<string name="new_tab_otr_subtitle_with_reading_list">"Acum poți naviga în mod privat, iar celelalte persoane care folosesc acest dispozitiv nu îți vor vedea activitatea. Totuși, descărcările, marcajele și elementele din lista de lecturi vor fi salvate."</string>
+<string name="new_tab_otr_not_saved">"Chromium &lt;em&gt;nu va salva&lt;/em&gt; următoarele informații:
+        &lt;ul&gt;
+          &lt;li&gt;istoricul de navigare,
+          &lt;li&gt;cookie-urile și datele de pe site-uri,
+          &lt;li&gt;informațiile introduse în formulare.
+        &lt;/ul&gt;"</string>
+<string name="new_tab_otr_visible">"Este posibil ca activitatea ta &lt;em&gt;să fie în continuare vizibilă&lt;/em&gt; pentru:
+        &lt;ul&gt;
+          &lt;li&gt;site-urile pe care le accesezi;
+          &lt;li&gt;angajatorul sau școala ta;
+          &lt;li&gt;furnizorul de servicii de internet.
+        &lt;/ul&gt;"</string>
+<string name="new_tab_otr_cookie_controls_controlled_tooltip_text">"Setarea este controlată din setările cookie-urilor."</string>
+<string name="new_tab_otr_third_party_cookie">"Blochează cookie-urile terță parte"</string>
+<string name="new_tab_otr_third_party_cookie_sublabel">"Dacă opțiunea este activată, site-urile nu pot folosi cookie-uri care te urmăresc pe web. Este posibil ca funcțiile de pe anumite site-uri să fie întrerupte."</string>
+<string name="revamped_incognito_ntp_title">"Modul incognito în Chromium"</string>
+<string name="revamped_incognito_ntp_does_header">"Ce face modul incognito"</string>
+<string name="revamped_incognito_ntp_does_description">"Când închizi toate filele incognito din Chromium, activitatea ta din acele file este ștearsă de pe dispozitiv:
+          &lt;ul&gt;
+            &lt;li&gt;activitatea de navigare,&lt;/li&gt;
+            &lt;li&gt;istoricul căutărilor&lt;/li&gt;
+            &lt;li&gt;informațiile introduse în formulare.&lt;/li&gt;
+          &lt;/ul&gt;"</string>
+<string name="revamped_incognito_ntp_does_not_header">"Ce nu face modul incognito"</string>
+<string name="revamped_incognito_ntp_does_not_description">"Modul incognito nu îți asigură invizibilitatea online:
+        &lt;ul&gt;
+          &lt;li&gt;site-urile și serviciile pe care le folosesc știu când le accesezi;&lt;/li&gt;
+          &lt;li&gt;angajatorii sau școlile pot să urmărească activitatea de navigare;&lt;/li&gt;
+          &lt;li&gt;furnizorii de servicii de internet pot monitoriza traficul pe web.&lt;/li&gt;
+        &lt;/ul&gt;"</string>
+<string name="revamped_incognito_ntp_learn_more">"&lt;a&gt;Află mai multe despre modul incognito în Chromium&lt;/a&gt;"</string>
+<string name="revamped_incognito_ntp_otr_third_party_cookie">"Blochează cookie-urile terță parte în modul incognito"</string>
+<string name="revamped_incognito_ntp_otr_third_party_cookie_sublabel">"Site-urile nu pot folosi cookie-uri care te urmăresc pe web. Este posibil ca funcțiile de pe anumite site-uri să fie întrerupte."</string>
+<string name="ntp_article_suggestions_section_header">"Articole pentru tine"</string>
+<string name="ntp_article_suggestions_section_empty">"Articolele sugerate apar aici"</string>
+<string name="page_info_permission_ads_subtitle">"Site-ul afișează anunțuri deranjante sau înșelătoare"</string>
+<string name="payments_method_of_payment_label">"Metodă de plată"</string>
+<string name="payments_contact_details_label">"Informații de contact"</string>
+<string name="payments_add_contact_details_label">"Adaugă informații de contact"</string>
+<string name="payments_edit_contact_details_label">"Editează informațiile de contact"</string>
+<string name="payments_add_billing_address">"Adaugă o adresă de facturare"</string>
+<string name="payments_add_name_on_card">"Adaugă numele de pe card"</string>
+<string name="payments_add_valid_card_number">"Adaugă un număr de card valid"</string>
+<string name="payments_add_more_information">"Adaugă mai multe informații"</string>
+<string name="payments_edit_card">"Editează cardul"</string>
+<string name="payments_add_phone_number">"Adăugați telefon
+"</string>
+<string name="payments_add_recipient">"Adăugați un nume"</string>
+<string name="payments_add_valid_address">"Adaugă o adresă validă"</string>
+<string name="payments_add_email">"Adaugă o adresă de e-mail"</string>
+<string name="payments_add_name">"Adăugați un nume"</string>
+<string name="payments_order_summary_label">"Rezumatul comenzii"</string>
+<string name="payment_request_payment_method_section_name">"Plată"</string>
+<string name="payments_shipping_summary_label">"Expediere"</string>
+<string name="payments_shipping_address_label">"Adresa de expediere"</string>
+<string name="payments_shipping_option_label">"Metodă de expediere"</string>
+<string name="payments_delivery_summary_label">"Livrare"</string>
+<string name="payments_delivery_address_label">"Adresă de livrare"</string>
+<string name="payments_delivery_option_label">"Metodă de livrare"</string>
+<string name="payments_pickup_summary_label">"Preluare"</string>
+<string name="payments_pickup_address_label">"Adresa de preluare"</string>
+<string name="payments_pickup_option_label">"Metodă de preluare"</string>
+<string name="payments_edit_button">"Editează"</string>
+<string name="payments_pay_button">"Plătește"</string>
+<string name="payments_continue_button">"Continuă"</string>
+<string name="payments_add_contact">"Adaugă informații de contact"</string>
+<string name="payments_add_card">"Adaugă un card"</string>
+<string name="payments_add_address">"Adaugă o adresă"</string>
+<string name="payments_edit_address">"Editează adresa"</string>
+<string name="payments_name_field_in_contact_details">"Nume"</string>
+<string name="payments_save_card_to_device_checkbox">"Salvează cardul pe acest dispozitiv"</string>
+<string name="payments_accepted_cards_label">"Carduri acceptate"</string>
+<string name="payments_credit_card_expiration_date_abbr">"Expiră în %1$s/%2$s"</string>
+<string name="payments_loading_message">"Se încarcă"</string>
+<string name="payments_checking_option">"Se verifică"</string>
+<string name="payments_updated_label">"Actualizat"</string>
+<string name="payments_error_message">"A apărut o eroare la procesarea comenzii. Încearcă din nou."</string>
+<string name="payments_card_and_address_settings">"Poți să gestionezi cardurile și adresele în BEGIN_LINKSetăriEND_LINK."</string>
+<string name="payments_card_and_address_settings_signed_in">"Cardurile și adresele sunt din Chrome și din Contul Google (%1$s). Poți să le gestionezi în BEGIN_LINKSetăriEND_LINK."</string>
+<string name="payments_card_and_address_settings_signed_out">"Cardurile și adresele sunt din Chrome. Le poți gestiona în BEGIN_LINKSetăriEND_LINK."</string>
+<string name="settings_can_make_payment_toggle_label">"Permite site-urilor să verifice dacă ai salvat metode de plată"</string>
+<string name="payments_required_field_message">"* Câmp obligatoriu"</string>
+<string name="payments_phone_invalid_validation_message">"Introdu un număr de telefon valid"</string>
+<string name="payments_email_invalid_validation_message">"Introdu o adresă de e-mail validă"</string>
+<string name="payments_card_number_invalid_validation_message">"Introdu un număr de card valid"</string>
+<string name="payments_card_expiration_invalid_validation_message">"Introdu o dată de expirare validă"</string>
+<string name="payments_invalid_address">"Introdu o adresă validă"</string>
+<string name="payments_billing_address_required">"Adresa de facturare este obligatorie"</string>
+<string name="payments_name_on_card_required">"Este necesar numele titularului cardului"</string>
+<string name="payments_more_information_required">"Sunt necesare mai multe informații"</string>
+<string name="payments_phone_number_required">"Numărul de telefon este obligatoriu"</string>
+<string name="payments_recipient_required">"Numele este obligatoriu"</string>
+<string name="payments_email_required">"Adresa de e-mail este obligatorie"</string>
+<string name="payments_name_required">"Numele este obligatoriu"</string>
+<string name="pref_edit_dialog_field_required_validation_message">"Câmp obligatoriu"</string>
+<string name="payments_select_shipping_address_for_shipping_methods">"Pentru a vedea metodele de expediere și cerințele, selectează o adresă"</string>
+<string name="payments_unsupported_shipping_address">"Nu se poate expedia la această adresă. Selectează altă adresă."</string>
+<string name="payments_select_delivery_address_for_delivery_methods">"Pentru a vedea metodele de livrare și cerințele, selectează o adresă"</string>
+<string name="payments_unsupported_delivery_address">"Nu se poate livra la această adresă. Selectează altă adresă."</string>
+<string name="payments_select_pickup_address_for_pickup_methods">"Pentru a vedea metodele de preluare și cerințele, selectează o adresă"</string>
+<string name="payments_unsupported_pickup_address">"Nu se poate prelua de la această adresă. Selectează altă adresă."</string>
+<string name="payments_android_app_error">"Nu se poate deschide aplicația de plată"</string>
+<string name="external_payment_app_leave_incognito_warning">"Vei părăsi modul incognito pentru a plăti folosind o aplicație externă. Continui?"</string>
+<string name="payment_handler_sheet_description">"Foaia handlerului pentru plăți"</string>
+<string name="payment_handler_sheet_opened_half">"Foaia handlerului pentru plăți este pe jumătate deschisă"</string>
+<string name="payment_handler_sheet_opened_full">"Foaia handlerului pentru plăți este deschisă"</string>
+<string name="payment_handler_sheet_closed">"Foaia handlerului pentru plăți este închisă"</string>
+<string name="secure_payment_confirmation_verify_purchase">"Confirmă achiziția"</string>
+<string name="secure_payment_confirmation_store_label">"Magazin"</string>
+<string name="secure_payment_confirmation_total_label">"Total"</string>
+<string name="no_matching_credential_description">"Poate fi necesar ca %1$s să parcurgă câțiva pași suplimentari pentru a confirma plata"</string>
+<string name="secure_payment_confirmation_authentication_sheet_description">"Foaie de autentificare cu date de conectare pentru plăți securizate"</string>
+<string name="secure_payment_confirmation_authentication_sheet_opened">"Foaia de autentificare cu date de conectare pentru plăți securizate este deschisă"</string>
+<string name="secure_payment_confirmation_authentication_sheet_closed">"Foaia de autentificare cu date de conectare pentru plăți securizate este închisă"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_description">"Foaia „Datele de conectare pentru plăți securizate nu corespund datelor de conectare”"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_opened">"Foaia „Datele de conectare pentru plăți securizate nu corespund datelor de conectare” este deschisă"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_closed">"Foaia „Datele de conectare pentru plăți securizate nu corespund datelor de conectare” este închisă"</string>
+<string name="bluetooth_scanning_prompt_no_devices_found_prompt">"Nu a fost găsit niciun dispozitiv în apropiere."</string>
+<string name="bluetooth_scanning_prompt_allow_button_text">"Permite"</string>
+<string name="bluetooth_scanning_prompt_block_button_text">"Blochează"</string>
+<string name="blocked_ads_prompt_title">"Anunțurile au fost blocate"</string>
+<string name="blocked_ads_dialog_title">"Anunțurile au fost blocate"</string>
+<string name="blocked_ads_dialog_message">"Acest site afișează anunțuri deranjante sau înșelătoare. ^1"</string>
+<string name="blocked_ads_dialog_always_allow">"Permite pentru acest site"</string>
+<string name="blocked_ads_dialog_learn_more">"Află mai multe"</string>
+<string name="sync_enter_passphrase_body">"Datele sunt criptate cu expresia de acces pentru sincronizare. Introdu-o pentru a începe sincronizarea."</string>
+<string name="translate_infobar_error">"Hopa. Această pagină nu a putut fi tradusă."</string>
+<string name="translate_button">"Tradu"</string>
+<string name="translate_never_translate_site">"Nu traduce niciodată acest site"</string>
+<string name="translate_dont_offer_site">"Nu oferi traducerea acestui site"</string>
+<string name="translate_option_always_translate">"Tradu întotdeauna paginile în %1$s"</string>
+<string name="translate_option_never_translate">"Nu traduce niciodată paginile în %1$s"</string>
+<string name="translate_dont_offer_lang">"Nu oferi traducerea paginilor în %1$s"</string>
+<string name="translate_option_more_language">"Mai multe limbi"</string>
+<string name="translate_option_not_source_language">"Pagina nu este în %1$s?"</string>
+<string name="translate_snackbar_always_translate">"Paginile în %1$s vor fi traduse în %2$s de acum înainte"</string>
+<string name="translate_snackbar_language_never">"Paginile în %1$s nu vor fi traduse"</string>
+<string name="translate_snackbar_site_never">"Acest site nu va fi tradus"</string>
+<string name="translate_snackbar_cancel">"Anulează"</string>
+<string name="management_browser_reporting">"Browser"</string>
+<string name="management_browser_reporting_explanation">"Administratorul tău poate să vadă:"</string>
+<string name="management_extension_report_username">"Numele de utilizator al dispozitivului și numele de utilizator Chrome"</string>
+<string name="management_extension_report_version">"Informații despre versiunea dispozitivului și browserului"</string>
+<string name="history_clusters_journeys_tab_label">"Parcursuri"</string>
+<string name="history_clusters_search_your_journeys">"Caută parcursuri"</string>
+<string name="clear">"Șterge"</string>
+<string name="show_content">"Afișează"</string>
+<string name="hide_content">"Ascunde"</string>
+<string name="choose">"Alegeți"</string>
+</resources>

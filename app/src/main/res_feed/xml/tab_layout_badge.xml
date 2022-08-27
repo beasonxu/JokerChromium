@@ -5,7 +5,7 @@
 
 <badge
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:backgroundColor="@macro/default_text_color_accent1"
+    app:backgroundColor="@color/macro_default_text_color_accent1"
     app:badgeRadius="2.5dp"
     app:horizontalOffset="-5dp"
     app:verticalOffset="2dp"/>

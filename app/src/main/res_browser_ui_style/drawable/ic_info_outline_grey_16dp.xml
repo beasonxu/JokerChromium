@@ -8,7 +8,7 @@
     android:height="16dp"
     android:viewportWidth="16"
     android:viewportHeight="16"
-    android:tint="@macro/default_icon_color">
+    android:tint="@color/macro_default_icon_color">
 
     <path
         android:pathData="M -1 -1 H 17 V 17 H -1 V -1 Z" />
