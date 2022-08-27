@@ -54,16 +54,23 @@ android {
         main {
             res {
                 srcDirs += [
-                        "$rootDir/base_res",
-                        "$rootDir/components/payments/src/main/google_pay_res",
+//                        "$rootDir/base_res",
+//                        "$rootDir/components/payments/src/main/google_pay_res",
                         "$rootDir/app/src/main/res",
                         "$rootDir/app/src/main/res_base",
                         "$rootDir/app/src/main/res_chromium",
                         "$rootDir/app/src/main/res_chromium_base",
-                        "$rootDir/app/src/main/res_gen",
+                        "$rootDir/app/src/main/res_browser_ui_theme",
+
+                        "$rootDir/app/src/main/res_browser_ui_style",
+                        "$rootDir/app/src/main/res_browser_ui_widget",
                         "$rootDir/app/src/main/res_vr",
-//                        "$rootDir/app/src/main/res_template",
-//                        "$rootDir/app/src/main/res_download",
+                        "$rootDir/app/src/main/res_ui",
+                        "$rootDir/app/src/main/res_feed",
+                        "$rootDir/app/src/main/res_omnibox",
+                        "$rootDir/app/src/main/res_setting",
+
+
 
 //                        "$rootDir/libraries_res/ui_res/res",
 //                        "$rootDir/libraries_res/components_res/res",
@@ -174,7 +181,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     testImplementation group: 'com.google.truth', name: 'truth', version: '1.1.2'
-    implementation project(':components:autofill')
+/*    implementation project(':components:autofill')
     implementation project(':components:embedder_support')
     implementation project(':components:embedder_support_delegate')
     implementation project(':components:messages')
@@ -254,7 +261,7 @@ dependencies {
     implementation project(':chrome_vr')
     implementation project(':media')
     implementation project(':base')
-    implementation project(':browser:ui_quickaction')
+    implementation project(':browser:ui_quickaction')*/
 
 
 

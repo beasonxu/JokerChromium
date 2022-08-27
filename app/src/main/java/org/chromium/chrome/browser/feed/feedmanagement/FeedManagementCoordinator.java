@@ -12,7 +12,7 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import org.chromium.chrome.browser.feed.R;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.feed.StreamKind;
 import org.chromium.chrome.browser.feed.feedmanagement.FeedManagementMediator.AutoplayManagementLauncher;
 import org.chromium.chrome.browser.feed.feedmanagement.FeedManagementMediator.FollowManagementLauncher;

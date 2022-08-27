@@ -1,3 +1,7 @@
+include ':app'
+
+/*
+
 include ':browser:download_internal'
 include ':browser:privacy_sandbox'
 include ':browser:webapps'
@@ -14,7 +18,7 @@ include ':browser:language'
 include ':components:webapk_lib_common'
 include ':browser:toolbar'
 include ':browser:theme'
-include ':app'
+
 include ':base'
 include ':base_res'
 include ':browser'
@@ -88,6 +92,6 @@ include ':ui'
 
 
 include ':components:browser_ui_theme'
-include ':browser:ui_quickaction'
+include ':browser:ui_quickaction'*/
 
 

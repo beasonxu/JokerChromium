@@ -3,7 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_dino.xml" value="0.1" />
         <entry key="app/src/main/res/layout/modal_dialog_container.xml" value="0.1" />
+        <entry key="app/src/main/res_feed/xml/feed_autoplay_preferences.xml" value="0.8145161290322581" />
+        <entry key="browser/feed/src/main/res/drawable/back_arrow.xml" value="0.1" />
+        <entry key="browser/feed/src/main/res/xml/feed_autoplay_preferences.xml" value="0.8145161290322581" />
+        <entry key="browser/language/src/main/res/layout/accept_languages_item.xml" value="0.1" />
+        <entry key="browser/language/src/main/res/layout/accept_languages_list.xml" value="0.1" />
+        <entry key="browser/language/src/main/res/layout/add_languages_main.xml" value="0.8145161290322581" />
+        <entry key="browser/ui_quickaction/src/main/res/drawable/ic_dino.xml" value="0.1" />
+        <entry key="browser/ui_quickaction/src/main/res/layout/quick_action_search_widget_dino_layout.xml" value="0.1" />
         <entry key="components/browser_ui_styles/src/main/res/drawable/ic_ar_core_install.xml" value="0.1" />
         <entry key="ui/src/main/res/font/accent_font.xml" value="0.14537037037037037" />
       </map>
