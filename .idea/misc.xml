@@ -56,6 +56,7 @@
         <entry key="app/src/main/res_content_public/layout/date_time_picker_dialog.xml" value="0.1" />
         <entry key="app/src/main/res_content_public/layout/multi_field_time_picker_dialog.xml" value="0.1" />
         <entry key="app/src/main/res_content_public/layout/two_field_date_picker.xml" value="0.1" />
+        <entry key="app/src/main/res_download/drawable/infobar_download_complete.xml" value="0.1" />
         <entry key="app/src/main/res_feed/layout/feed_spinner.xml" value="0.1" />
         <entry key="app/src/main/res_feed/layout/follow_management_item.xml" value="0.1" />
         <entry key="app/src/main/res_feed/xml/feed_autoplay_preferences.xml" value="0.8145161290322581" />
