@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"‏Chrome کی سروس کی شرائط 31 مارچ کو بدل رہی ہیں"</string>
+<string name="tos_notification_body_text">"براہ کرم نئی شرائط کا جائزہ لیں"</string>
+<string name="tos_notification_ack_button_text">"سمجھ آ گئی"</string>
+<string name="tos_notification_review_button_text">"جائزہ لیں"</string>
+<string name="webapp_update_dialog_title_name">"نام میں ہوئی اپ ڈیٹ کا جائزہ لیں"</string>
+<string name="webapp_update_dialog_title_icon">"آئیکن اپ ڈیٹ کا جائزہ لیں"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"نام اور آئیکن کے اپ ڈیٹس کا جائزہ لیں"</string>
+<string name="webapp_update_explanation">"اگر یہ ویب ایپ آپ کو سوچنے پر مجبور کر رہی ہو کہ یہ ایک مختلف ایپ ہے تو اسے اَن انسٹال کریں۔"</string>
+<string name="webapp_update_current_icon">"موجودہ آئیکن"</string>
+<string name="webapp_update_new_icon">"نیا آئیکن"</string>
+<string name="webapp_update_negative_button">"ایپ کو اَن انسٹال کریں"</string>
+<string name="search_or_type_web_address">"ویب پتہ تلاش کریں یا ٹائپ کریں"</string>
+<string name="password_manager_username_label">"صارف کا نام"</string>
+<string name="password_manager_password_label">"پاس ورڈ"</string>
+<string name="password_manager_update_button">"اپ ڈيٹ کریں"</string>
+<string name="confirm_username_dialog_title">"اپنے صارف نام کی توثیق کریں"</string>
+<string name="options_homepage_title">"ہوم صفحہ"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"اس فون کے ساتھ توثیق کریں"</string>
+<string name="cablev2_get_assertion_notification_title">"اپنی شناخت کی توثیق کریں"</string>
+</resources>

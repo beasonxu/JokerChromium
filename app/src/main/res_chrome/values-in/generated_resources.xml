@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Persyaratan Layanan Chrome akan berubah pada 31 Maret"</string>
+<string name="tos_notification_body_text">"Harap tinjau persyaratan baru"</string>
+<string name="tos_notification_ack_button_text">"Mengerti"</string>
+<string name="tos_notification_review_button_text">"Tinjau"</string>
+<string name="webapp_update_dialog_title_name">"Tinjau pembaruan nama"</string>
+<string name="webapp_update_dialog_title_icon">"Tinjau pembaruan ikon"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"Tinjau pembaruan nama &amp; ikon"</string>
+<string name="webapp_update_explanation">"Uninstal aplikasi web ini jika mencoba mengelabui Anda agar berpikir bahwa ini adalah aplikasi yang berbeda."</string>
+<string name="webapp_update_current_icon">"Ikon saat ini"</string>
+<string name="webapp_update_new_icon">"Ikon baru"</string>
+<string name="webapp_update_negative_button">"Uninstal aplikasi"</string>
+<string name="search_or_type_web_address">"Telusuri atau ketik alamat web"</string>
+<string name="password_manager_username_label">"Nama Pengguna"</string>
+<string name="password_manager_password_label">"Sandi"</string>
+<string name="password_manager_update_button">"Perbarui"</string>
+<string name="confirm_username_dialog_title">"Konfirmasi nama pengguna Anda"</string>
+<string name="options_homepage_title">"Beranda"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"Verifikasi dengan ponsel ini"</string>
+<string name="cablev2_get_assertion_notification_title">"Verifikasi identitas Anda"</string>
+</resources>

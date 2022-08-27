@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Kushtet e shërbimit të Chrome ndryshojnë më 31 mars"</string>
+<string name="tos_notification_body_text">"Shqyrto kushtet e reja"</string>
+<string name="tos_notification_ack_button_text">"E kuptova"</string>
+<string name="tos_notification_review_button_text">"Rishiko"</string>
+<string name="webapp_update_dialog_title_name">"Shqyrto përditësimin e emrit"</string>
+<string name="webapp_update_dialog_title_icon">"Shqyrto përditësimin e ikonës"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"Shqyrto përditësimet e emrit dhe të ikonës"</string>
+<string name="webapp_update_explanation">"Nëse ky aplikacion uebi po përpiqet të ta hedhë që të mendosh se është aplikacion tjetër, çinstaloje."</string>
+<string name="webapp_update_current_icon">"Ikona aktuale"</string>
+<string name="webapp_update_new_icon">"Ikonë e re"</string>
+<string name="webapp_update_negative_button">"Çinstalo aplikacionin"</string>
+<string name="search_or_type_web_address">"Kërko ose shkruaj adresën e uebit"</string>
+<string name="password_manager_username_label">"Emri i përdoruesit"</string>
+<string name="password_manager_password_label">"Fjalëkalimi"</string>
+<string name="password_manager_update_button">"Përditësoje"</string>
+<string name="confirm_username_dialog_title">"Konfirmo emrin tënd të përdoruesit"</string>
+<string name="options_homepage_title">"Faqja bazë"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"Verifikohu me këtë telefon"</string>
+<string name="cablev2_get_assertion_notification_title">"Verifiko identitetin"</string>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Chrome की सेवा की शर्तें 31 मार्च से बदलने वाली हैं"</string>
+<string name="tos_notification_body_text">"कृपया सेवा की नई शर्तों को ध्यान से पढ़ें"</string>
+<string name="tos_notification_ack_button_text">"समझ लिया"</string>
+<string name="tos_notification_review_button_text">"समीक्षा करें"</string>
+<string name="webapp_update_dialog_title_name">"नाम में हुआ बदलाव देखें"</string>
+<string name="webapp_update_dialog_title_icon">"आइकॉन में हुआ बदलाव देखें"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"नाम और आइकॉन में हुए बदलाव देखें"</string>
+<string name="webapp_update_explanation">"अगर यह वेब ऐप्लिकेशन आपको गुमराह करने की कोशिश कर रहा है कि यह एक अलग ऐप्लिकेशन है, तो इसे अनइंस्टॉल करें."</string>
+<string name="webapp_update_current_icon">"मौजूदा आइकॉन"</string>
+<string name="webapp_update_new_icon">"नया आइकॉन"</string>
+<string name="webapp_update_negative_button">"ऐप्लिकेशन अनइंस्टॉल करें"</string>
+<string name="search_or_type_web_address">"वेब पता खोजें या लिखें"</string>
+<string name="password_manager_username_label">"उपयोगकर्ता नाम"</string>
+<string name="password_manager_password_label">"पासवर्ड"</string>
+<string name="password_manager_update_button">"अपडेट करें"</string>
+<string name="confirm_username_dialog_title">"अपने उपयोगकर्ता नाम की पुष्टि करें"</string>
+<string name="options_homepage_title">"होमपेज"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"इस फ़ोन की मदद से पुष्टि करें"</string>
+<string name="cablev2_get_assertion_notification_title">"अपनी पहचान की पुष्टि करें"</string>
+</resources>

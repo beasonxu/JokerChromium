@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Chrome-ის მომსახურების პირობები შეიცვლება 31 მარტს"</string>
+<string name="tos_notification_body_text">"გთხოვთ, გადახედოთ ახალ პირობებს"</string>
+<string name="tos_notification_ack_button_text">"კარგი"</string>
+<string name="tos_notification_review_button_text">"გადახედვა"</string>
+<string name="webapp_update_dialog_title_name">"შეამოწმეთ სახელის განახლება"</string>
+<string name="webapp_update_dialog_title_icon">"შეამოწმეთ ხატულის განახლება"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"სახელისა და ხატულის განახლებების გადახედვა"</string>
+<string name="webapp_update_explanation">"თუ თვლით, რომ ეს ვებ-აპი ცდილობს, სხვა აპად გაასაღოს თავი, გირჩევთ მის დეინსტალაციას."</string>
+<string name="webapp_update_current_icon">"მიმდინარე ხატულა"</string>
+<string name="webapp_update_new_icon">"ახალი ხატულა"</string>
+<string name="webapp_update_negative_button">"აპის დეინსტალაცია"</string>
+<string name="search_or_type_web_address">"წამოიწყეთ ძიება, ან აკრიფეთ ვებ-მისამართი"</string>
+<string name="password_manager_username_label">"მომხმარებლის სახელი"</string>
+<string name="password_manager_password_label">"პაროლი"</string>
+<string name="password_manager_update_button">"განახლება"</string>
+<string name="confirm_username_dialog_title">"დაადასტურეთ თქვენი მომხმარებლის სახელი"</string>
+<string name="options_homepage_title">"საწყისი გვერდი"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"ამ ტელეფონით დადასტურება"</string>
+<string name="cablev2_get_assertion_notification_title">"დაადასტურეთ ვინაობა"</string>
+</resources>

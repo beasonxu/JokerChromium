@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"31. martā tiks mainīti Chrome pakalpojumu sniegšanas noteikumi"</string>
+<string name="tos_notification_body_text">"Lūdzu, pārskatiet jaunos noteikumus."</string>
+<string name="tos_notification_ack_button_text">"Sapratu!"</string>
+<string name="tos_notification_review_button_text">"Pārskatīt"</string>
+<string name="webapp_update_dialog_title_name">"Pārskatiet nosaukuma izmaiņas"</string>
+<string name="webapp_update_dialog_title_icon">"Pārskatiet ikonas izmaiņas"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"Pārskatiet nosaukuma un ikonas izmaiņas"</string>
+<string name="webapp_update_explanation">"Ja šī tīmekļa lietotne ir maldinošs citas lietotnes atdarinājums, atinstalējiet to."</string>
+<string name="webapp_update_current_icon">"Pašreizējā ikona"</string>
+<string name="webapp_update_new_icon">"Jaunā ikona"</string>
+<string name="webapp_update_negative_button">"Atinstalēt lietotni"</string>
+<string name="search_or_type_web_address">"Meklējiet vai ievadiet tīmekļa adresi"</string>
+<string name="password_manager_username_label">"Lietotājvārds"</string>
+<string name="password_manager_password_label">"Parole"</string>
+<string name="password_manager_update_button">"Atjaunināt"</string>
+<string name="confirm_username_dialog_title">"Lietotājvārda apstiprināšana"</string>
+<string name="options_homepage_title">"Sākumlapa"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"Veiciet verifikāciju, izmantojot šo tālruni"</string>
+<string name="cablev2_get_assertion_notification_title">"Identitātes apstiprināšana"</string>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"‏התנאים וההגבלות של Chrome ישתנו ב-31 במרץ"</string>
+<string name="tos_notification_body_text">"יש לקרוא את התנאים החדשים"</string>
+<string name="tos_notification_ack_button_text">"הבנתי"</string>
+<string name="tos_notification_review_button_text">"עיון"</string>
+<string name="webapp_update_dialog_title_name">"בדיקת עדכון השם"</string>
+<string name="webapp_update_dialog_title_icon">"בדיקת העדכון של הסמל"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"בדיקה של עדכוני הסמל והשם"</string>
+<string name="webapp_update_explanation">"אם אפליקציית האינטרנט הזו מנסה להטעות אותך ולחשוב שמדובר באפליקציה אחרת, צריך להסיר אותה."</string>
+<string name="webapp_update_current_icon">"הסמל הנוכחי"</string>
+<string name="webapp_update_new_icon">"הסמל החדש"</string>
+<string name="webapp_update_negative_button">"הסרת אפליקציה"</string>
+<string name="search_or_type_web_address">"יש להזין ביטוי לחיפוש או כתובת אינטרנט"</string>
+<string name="password_manager_username_label">"שם משתמש"</string>
+<string name="password_manager_password_label">"סיסמה"</string>
+<string name="password_manager_update_button">"עדכון"</string>
+<string name="confirm_username_dialog_title">"יש לאשר את שם המשתמש שלך"</string>
+<string name="options_homepage_title">"דף הבית"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"אימות באמצעות הטלפון הזה"</string>
+<string name="cablev2_get_assertion_notification_title">"אימות זהות"</string>
+</resources>

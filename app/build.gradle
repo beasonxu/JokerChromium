@@ -75,6 +75,10 @@ android {
                         "$rootDir/app/src/main/res_payments",
                         "$rootDir/app/src/main/res_autofill",
                         "$rootDir/app/src/main/res_components",
+                        "$rootDir/app/src/main/res_infobars",
+                        "$rootDir/app/src/main/res_share",
+                        "$rootDir/app/src/main/res_chrome",
+                        "$rootDir/app/src/main/res_tab",
 
 
 

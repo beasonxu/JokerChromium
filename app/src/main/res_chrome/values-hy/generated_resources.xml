@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Chrome-ի օգտագործման պայմանները կթարմացվեն մարտի 31-ին"</string>
+<string name="tos_notification_body_text">"Ծանոթացեք նոր պայմաններին"</string>
+<string name="tos_notification_ack_button_text">"Պատրաստ է"</string>
+<string name="tos_notification_review_button_text">"Դիտել"</string>
+<string name="webapp_update_dialog_title_name">"Դիտեք անվան փոփոխությունները"</string>
+<string name="webapp_update_dialog_title_icon">"Դիտեք պատկերակի փոփոխությունները"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"Դիտեք անվան և պատկերակի փոփոխությունները"</string>
+<string name="webapp_update_explanation">"Եթե այս վեբ հավելվածը փորձում է խաբեությամբ համոզել, որ այն մեկ այլ հավելված է, անմիջապես ապատեղադրեք այն։"</string>
+<string name="webapp_update_current_icon">"Ընթացիկ պատկերակ"</string>
+<string name="webapp_update_new_icon">"Նոր պատկերակ"</string>
+<string name="webapp_update_negative_button">"Ապատեղադրել հավելվածը"</string>
+<string name="search_or_type_web_address">"Որոնեք կամ մուտքագրեք վեբ հասցեն"</string>
+<string name="password_manager_username_label">"Օգտանուն"</string>
+<string name="password_manager_password_label">"Գաղտնաբառ"</string>
+<string name="password_manager_update_button">"Թարմացնել"</string>
+<string name="confirm_username_dialog_title">"Հաստատեք ձեր օգտանունը"</string>
+<string name="options_homepage_title">"Գլխավոր էջ"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"Հաստատեք այս հեռախոսով"</string>
+<string name="cablev2_get_assertion_notification_title">"Հաստատեք ձեր ինքնությունը"</string>
+</resources>

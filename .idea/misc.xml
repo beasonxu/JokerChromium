@@ -22,6 +22,14 @@
         <entry key="app/src/main/res/drawable/tile_view_hairline_border_background.xml" value="0.1" />
         <entry key="app/src/main/res/layout/autofill_billing_address_dropdown.xml" value="0.1" />
         <entry key="app/src/main/res/layout/autofill_card_unmask_prompt.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/autofill_editor_base_buttons.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/autofill_save_address_profile_prompt.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/autofill_server_data_label.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/contextual_search_related_searches_in_content_view.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/contextual_search_related_searches_view.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/contextual_search_term_view.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/default_search_engine_first_run_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/explore_sites_loading_error_view.xml" value="0.1" />
         <entry key="app/src/main/res/layout/modal_dialog_container.xml" value="0.1" />
         <entry key="app/src/main/res_browser_ui_style/drawable/checkmark_blue.xml" value="0.1" />
         <entry key="app/src/main/res_browser_ui_style/drawable/gm_ads_click_24.xml" value="0.1" />

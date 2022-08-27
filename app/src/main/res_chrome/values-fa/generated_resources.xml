@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"‏«شرایط خدمات Chrome» در تاریخ ۳۱ مارس تغییر می‌کند"</string>
+<string name="tos_notification_body_text">"لطفاً «شرایط» جدید را مرور کنید"</string>
+<string name="tos_notification_ack_button_text">"متوجه شدم"</string>
+<string name="tos_notification_review_button_text">"مرور"</string>
+<string name="webapp_update_dialog_title_name">"مرور به‌روزرسانی نام"</string>
+<string name="webapp_update_dialog_title_icon">"مرور به‌روزرسانی نماد"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"مرور به‌روزرسانی‌های نام و نماد"</string>
+<string name="webapp_update_explanation">"اگر این برنامه وب می‌خواهد شما را فریب دهد که فکر کنید برنامه دیگری است، آن را حذف نصب کنید."</string>
+<string name="webapp_update_current_icon">"نماد کنونی"</string>
+<string name="webapp_update_new_icon">"نماد جدید"</string>
+<string name="webapp_update_negative_button">"حذف نصب برنامه"</string>
+<string name="search_or_type_web_address">"نشانی وب را جستجو یا تایپ کنید"</string>
+<string name="password_manager_username_label">"نام کاربری"</string>
+<string name="password_manager_password_label">"گذرواژه"</string>
+<string name="password_manager_update_button">"به‌روزرسانی"</string>
+<string name="confirm_username_dialog_title">"نام کاربری‌تان را تأیید کنید"</string>
+<string name="options_homepage_title">"صفحه اصلی"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"تأیید کردن با این تلفن"</string>
+<string name="cablev2_get_assertion_notification_title">"هویتتان را به‌تأیید برسانید"</string>
+</resources>

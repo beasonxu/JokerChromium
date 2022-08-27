@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Chrome-н Үйлчилгээний нөхцөлийг гуравдугаар сарын 31-ний өдөр өөрчилнө"</string>
+<string name="tos_notification_body_text">"Шинэ нөхцөлийг шалгаж үзнэ үү"</string>
+<string name="tos_notification_ack_button_text">"Ойлголоо"</string>
+<string name="tos_notification_review_button_text">"Шалгах"</string>
+<string name="webapp_update_dialog_title_name">"Нэрийн шинэчлэлтийг шалгах"</string>
+<string name="webapp_update_dialog_title_icon">"Дүрс тэмдгийн шинэчлэлтийг шалгах"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"Нэр болон дүрс тэмдгийн шинэчлэлтүүдийг шалгах"</string>
+<string name="webapp_update_explanation">"Хэрэв энэ веб апп өөрийгөө өөр апп гэж танд итгүүлж, хуурахаар оролдож байвал үүнийг устгана уу."</string>
+<string name="webapp_update_current_icon">"Одоогийн дүрс тэмдэг"</string>
+<string name="webapp_update_new_icon">"Шинэ дүрс тэмдэг"</string>
+<string name="webapp_update_negative_button">"Аппыг устгах"</string>
+<string name="search_or_type_web_address">"Хайх эсвэл веб хаяг бичих"</string>
+<string name="password_manager_username_label">"Хэрэглэгчийн нэр"</string>
+<string name="password_manager_password_label">"Нууц үг"</string>
+<string name="password_manager_update_button">"Шинэчлэх"</string>
+<string name="confirm_username_dialog_title">"Хэрэглэгчийн нэрээ баталгаажуулна уу"</string>
+<string name="options_homepage_title">"Нүүр хуудас"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"Энэ утсаар бататгана уу"</string>
+<string name="cablev2_get_assertion_notification_title">"Өөрийгөө баталгаажуулах"</string>
+</resources>

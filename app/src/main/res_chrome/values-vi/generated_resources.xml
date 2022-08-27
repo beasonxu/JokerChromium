@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Điều khoản dịch vụ của Chrome sẽ thay đổi từ ngày 31 tháng 3"</string>
+<string name="tos_notification_body_text">"Vui lòng xem các điều khoản mới này"</string>
+<string name="tos_notification_ack_button_text">"Bỏ qua"</string>
+<string name="tos_notification_review_button_text">"Xem"</string>
+<string name="webapp_update_dialog_title_name">"Xem lại bản cập nhật tên"</string>
+<string name="webapp_update_dialog_title_icon">"Xem lại bản cập nhật biểu tượng"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"Xem lại các lần cập nhật tên và biểu tượng"</string>
+<string name="webapp_update_explanation">"Nếu ứng dụng web này cố gắng lừa bạn rằng đó là một ứng dụng khác, hãy gỡ cài đặt ứng dụng web đó."</string>
+<string name="webapp_update_current_icon">"Biểu tượng hiện tại"</string>
+<string name="webapp_update_new_icon">"Biểu tượng mới"</string>
+<string name="webapp_update_negative_button">"Gỡ cài đặt ứng dụng"</string>
+<string name="search_or_type_web_address">"Tìm kiếm hoặc nhập địa chỉ web"</string>
+<string name="password_manager_username_label">"Tên người dùng"</string>
+<string name="password_manager_password_label">"Mật khẩu"</string>
+<string name="password_manager_update_button">"Cập nhật"</string>
+<string name="confirm_username_dialog_title">"Xác nhận tên người dùng"</string>
+<string name="options_homepage_title">"Trang chủ"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"Xác minh bằng điện thoại này"</string>
+<string name="cablev2_get_assertion_notification_title">"Xác minh danh tính của bạn"</string>
+</resources>

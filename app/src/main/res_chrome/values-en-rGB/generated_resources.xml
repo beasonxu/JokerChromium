@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Chrome\'s Terms of Service are changing on 31 March"</string>
+<string name="tos_notification_body_text">"Please review the new terms"</string>
+<string name="tos_notification_ack_button_text">"Got it"</string>
+<string name="tos_notification_review_button_text">"Review"</string>
+<string name="webapp_update_dialog_title_name">"Review name update"</string>
+<string name="webapp_update_dialog_title_icon">"Review icon update"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"Review name and icon updates"</string>
+<string name="webapp_update_explanation">"If this web app is trying to trick you into thinking it\'s a different app, uninstall it."</string>
+<string name="webapp_update_current_icon">"Current icon"</string>
+<string name="webapp_update_new_icon">"New icon"</string>
+<string name="webapp_update_negative_button">"Uninstall app"</string>
+<string name="search_or_type_web_address">"Search or type web address"</string>
+<string name="password_manager_username_label">"Username"</string>
+<string name="password_manager_password_label">"Password"</string>
+<string name="password_manager_update_button">"Update"</string>
+<string name="confirm_username_dialog_title">"Confirm your username"</string>
+<string name="options_homepage_title">"Homepage"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"Verify with this phone"</string>
+<string name="cablev2_get_assertion_notification_title">"Verify your identity"</string>
+</resources>

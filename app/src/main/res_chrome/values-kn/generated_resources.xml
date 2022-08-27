@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"ಮಾರ್ಚ್ 31 ರಿಂದ Chrome ನ ಸೇವಾ ನಿಯಮಗಳು ಬದಲಾಗುತ್ತಿವೆ"</string>
+<string name="tos_notification_body_text">"ಹೊಸ ನಿಯಮಗಳನ್ನು ಪರಿಶೀಲಿಸಿ"</string>
+<string name="tos_notification_ack_button_text">"ಅರ್ಥವಾಯಿತು"</string>
+<string name="tos_notification_review_button_text">"ಪರಿಶೀಲಿಸಿ"</string>
+<string name="webapp_update_dialog_title_name">"ಹೆಸರಿನ ಅಪ್‌ಡೇಟ್ ಅನ್ನು ಪರಿಶೀಲಿಸಿ"</string>
+<string name="webapp_update_dialog_title_icon">"ಐಕಾನ್ ಅಪ್‌ಡೇಟ್ ಅನ್ನು ಪರಿಶೀಲಿಸಿ"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"ಹೆಸರು ಮತ್ತು ಐಕಾನ್ ಅಪ್‌ಡೇಟ್‌ಗಳನ್ನು ಪರಿಶೀಲಿಸಿ"</string>
+<string name="webapp_update_explanation">"ಈ ವೆಬ್ ಆ್ಯಪ್, ಇದು ವಿಭಿನ್ನ ಆ್ಯಪ್ ಆಗಿದೆಯೇ ಎಂದು ನೀವು ಯೋಚನೆ ಮಾಡುವಂತೆ ಮಾಡಿದರೆ, ನಿಮ್ಮನ್ನು ಮೋಸಗೊಳಿಸಲು ಪ್ರಯತ್ನಿಸುತ್ತಿದ್ದರೆ, ಅದನ್ನು ಅನ್‌ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಿ."</string>
+<string name="webapp_update_current_icon">"ಪ್ರಸ್ತುತ ಐಕಾನ್"</string>
+<string name="webapp_update_new_icon">"ಹೊಸ ಐಕಾನ್"</string>
+<string name="webapp_update_negative_button">"ಆ್ಯಪ್‌ ಅನ್‌ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಿ"</string>
+<string name="search_or_type_web_address">"ವೆಬ್ ವಿಳಾಸವನ್ನು ಹುಡುಕಿ ಅಥವಾ ಟೈಪ್ ಮಾಡಿ"</string>
+<string name="password_manager_username_label">"ಬಳಕೆದಾರರಹೆಸರು"</string>
+<string name="password_manager_password_label">"ಪಾಸ್‌ವರ್ಡ್"</string>
+<string name="password_manager_update_button">"ಅಪ್‌ಡೇಟ್‌‌"</string>
+<string name="confirm_username_dialog_title">"ನಿಮ್ಮ ಬಳಕೆದಾರರ ಹೆಸರನ್ನು ದೃಢೀಕರಿಸಿ"</string>
+<string name="options_homepage_title">"ಮುಖಪುಟ"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"ಈ ಫೋನ್ ಅನ್ನು ಪರಿಶೀಲಿಸಿ"</string>
+<string name="cablev2_get_assertion_notification_title">"ನಿಮ್ಮ ಗುರುತನ್ನು ಖಚಿತಪಡಿಸಿ"</string>
+</resources>

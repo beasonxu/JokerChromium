@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Magbabago na ang Mga Tuntunin ng Serbisyo ng Chrome sa Marso 31"</string>
+<string name="tos_notification_body_text">"Pakisuri ang mga bagong tuntunin"</string>
+<string name="tos_notification_ack_button_text">"Nakuha ko"</string>
+<string name="tos_notification_review_button_text">"Suriin"</string>
+<string name="webapp_update_dialog_title_name">"Suriin ang update sa pangalan"</string>
+<string name="webapp_update_dialog_title_icon">"Suriin ang update sa icon"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"Suriin ang mga update sa pangalan at icon"</string>
+<string name="webapp_update_explanation">"Kung sinusubukan kang linlangin ng web app na ito para maisip mong ibang app ito, i-uninstall ito."</string>
+<string name="webapp_update_current_icon">"Kasalukuyang icon"</string>
+<string name="webapp_update_new_icon">"Bagong icon"</string>
+<string name="webapp_update_negative_button">"I-uninstall ang app"</string>
+<string name="search_or_type_web_address">"Maghanap o mag-type ng web address"</string>
+<string name="password_manager_username_label">"Username"</string>
+<string name="password_manager_password_label">"Password"</string>
+<string name="password_manager_update_button">"I-update"</string>
+<string name="confirm_username_dialog_title">"Kumpirmahin ang iyong username"</string>
+<string name="options_homepage_title">"Homepage"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"Mag-verify gamit ang teleponong ito"</string>
+<string name="cablev2_get_assertion_notification_title">"I-verify ang iyong pagkakakilanlan"</string>
+</resources>

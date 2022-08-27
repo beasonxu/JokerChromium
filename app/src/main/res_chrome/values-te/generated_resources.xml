@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"మార్చి 31న Chrome సర్వీస్ నియమాలు మారుతున్నాయి"</string>
+<string name="tos_notification_body_text">"దయచేసి కొత్త నిబంధనలను రివ్యూ చేయండి"</string>
+<string name="tos_notification_ack_button_text">"అర్థమైంది"</string>
+<string name="tos_notification_review_button_text">"రివ్యూ చేయండి"</string>
+<string name="webapp_update_dialog_title_name">"పేరుకు సంబంధించిన అప్‌డేట్‌ను రివ్యూ చేయండి"</string>
+<string name="webapp_update_dialog_title_icon">"చిహ్నానికి సంబంధించిన అప్‌డేట్‌ను రివ్యూ చేయండి"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"పేరు &amp; చిహ్నం అప్‌డేట్‌లను రివ్యూ చేయండి"</string>
+<string name="webapp_update_explanation">"ఇది వేరే యాప్ అని మీరు అనుకునేలా మిమ్మల్ని ఈ వెబ్ యాప్ మోసగించడానికి ట్రై చేస్తున్నట్లయితే, దాన్ని అన్‌ఇన్‌స్టాల్ చేయండి."</string>
+<string name="webapp_update_current_icon">"ప్రస్తుత చిహ్నం"</string>
+<string name="webapp_update_new_icon">"కొత్త చిహ్నం"</string>
+<string name="webapp_update_negative_button">"యాప్‌ను అన్‌ఇన్‌స్టాల్ చేయి"</string>
+<string name="search_or_type_web_address">"వెతకండి లేదా వెబ్ అడ్రస్‌ టైప్ చేయండి"</string>
+<string name="password_manager_username_label">"యూజర్‌పేరు"</string>
+<string name="password_manager_password_label">"పాస్‌వర్డ్"</string>
+<string name="password_manager_update_button">"అప్‌డేట్‌"</string>
+<string name="confirm_username_dialog_title">"మీ యూజర్‌నేమ్‌ను నిర్ధారించండి"</string>
+<string name="options_homepage_title">"హోమ్‌పేజీ"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"ఈ ఫోన్‌తో వెరిఫై చేయండి"</string>
+<string name="cablev2_get_assertion_notification_title">"మీ గుర్తింపును వెరిఫై చేయండి"</string>
+</resources>

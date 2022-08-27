@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Chrome’un Xidmət Şərtləri 31 martda dəyişəcək"</string>
+<string name="tos_notification_body_text">"Yeni şərtləri nəzərdən keçirin"</string>
+<string name="tos_notification_ack_button_text">"Anladım"</string>
+<string name="tos_notification_review_button_text">"Nəzərdən keçirin"</string>
+<string name="webapp_update_dialog_title_name">"Ad güncəlləməsini nəzərdən keçirin"</string>
+<string name="webapp_update_dialog_title_icon">"İkona güncəlləməsini nəzərdən keçirin"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"Ad və işarə güncəlləmələrini nəzərdən keçirin"</string>
+<string name="webapp_update_explanation">"Bu veb tətbiq fərqli bir tətbiq olduğunu düşünmənizə çalışırsa, onu ləğv edin."</string>
+<string name="webapp_update_current_icon">"Cari işarə"</string>
+<string name="webapp_update_new_icon">"Yeni işarə"</string>
+<string name="webapp_update_negative_button">"Tətbiqi ləğv edin"</string>
+<string name="search_or_type_web_address">"Veb ünvanı axtarın və yazın"</string>
+<string name="password_manager_username_label">"İstifadəçi adı"</string>
+<string name="password_manager_password_label">"Parol"</string>
+<string name="password_manager_update_button">"Güncəlləşdirin"</string>
+<string name="confirm_username_dialog_title">"İstifadəçi adınızı təsdiq edin"</string>
+<string name="options_homepage_title">"Əsas Səhifə"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"Bu telefon ilə doğrulayın"</string>
+<string name="cablev2_get_assertion_notification_title">"Kimliyinizi doğrulayın"</string>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"As Condicións de servizo de Chrome cambiarán o 31 de marzo"</string>
+<string name="tos_notification_body_text">"Revísaas"</string>
+<string name="tos_notification_ack_button_text">"De acordo"</string>
+<string name="tos_notification_review_button_text">"Revisar"</string>
+<string name="webapp_update_dialog_title_name">"Revisa o cambio do nome"</string>
+<string name="webapp_update_dialog_title_icon">"Revisa o cambio da icona"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"Revisa as modificacións do nome e da icona"</string>
+<string name="webapp_update_explanation">"Se esta aplicación web está tentando enganarte para que penses que se trata dunha distinta, desinstálaa."</string>
+<string name="webapp_update_current_icon">"Icona actual"</string>
+<string name="webapp_update_new_icon">"Icona nova"</string>
+<string name="webapp_update_negative_button">"Desinstalar aplicación"</string>
+<string name="search_or_type_web_address">"Busca ou escribe o enderezo web"</string>
+<string name="password_manager_username_label">"Nome de usuario"</string>
+<string name="password_manager_password_label">"Contrasinal"</string>
+<string name="password_manager_update_button">"Actualizar"</string>
+<string name="confirm_username_dialog_title">"Confirma o teu nome de usuario"</string>
+<string name="options_homepage_title">"Páxina de inicio"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"Verificar o acceso con este dispositivo"</string>
+<string name="cablev2_get_assertion_notification_title">"Verifica a túa identidade"</string>
+</resources>

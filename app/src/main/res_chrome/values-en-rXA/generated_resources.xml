@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Çĥrömé\'š Ţérmš öƒ Šérvîçé åré çĥåñĝîñĝ Mårçĥ 31 - one two three four five six seven eight"</string>
+<string name="tos_notification_body_text">"Þļéåšé révîéŵ ţĥé ñéŵ ţérmš - one two three four five"</string>
+<string name="tos_notification_ack_button_text">"Ĝöţ îţ - one two"</string>
+<string name="tos_notification_review_button_text">"®évîéŵ - one"</string>
+<string name="webapp_update_dialog_title_name">"®évîéŵ ñåmé ûþðåţé - one two three"</string>
+<string name="webapp_update_dialog_title_icon">"®évîéŵ îçöñ ûþðåţé - one two three"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"®évîéŵ ñåmé &amp; îçöñ ûþðåţéš - one two three four"</string>
+<string name="webapp_update_explanation">"Îƒ ţĥîš ŵéb åþþ îš ţrýîñĝ ţö ţrîçķ ýöû îñţö ţĥîñķîñĝ îţ\'š å ðîƒƒéréñţ åþþ, ûñîñšţåļļ îţ. - one two three four five six seven eight nine ten - one two three four five six seven"</string>
+<string name="webapp_update_current_icon">"Çûrréñţ îçöñ - one two"</string>
+<string name="webapp_update_new_icon">"Ñéŵ îçöñ - one two"</string>
+<string name="webapp_update_negative_button">"Ûñîñšţåļļ åþþ - one two"</string>
+<string name="search_or_type_web_address">"Šéårçĥ ör ţýþé ŵéb åððréšš - one two three four five"</string>
+<string name="password_manager_username_label">"Ûšérñåmé - one"</string>
+<string name="password_manager_password_label">"Þåššŵörð - one"</string>
+<string name="password_manager_update_button">"Ûþðåţé - one"</string>
+<string name="confirm_username_dialog_title">"Çöñƒîrm ýöûr ûšérñåmé - one two three"</string>
+<string name="options_homepage_title">"Ĥöméþåĝé - one"</string>
+<string name="autofill_from_google_account">"Ĝööĝļé Þåý - one two"</string>
+<string name="cablev2_make_credential_notification_title">"Vérîƒý ŵîţĥ ţĥîš þĥöñé - one two three four"</string>
+<string name="cablev2_get_assertion_notification_title">"Vérîƒý ýöûr îðéñţîţý - one two three"</string>
+</resources>

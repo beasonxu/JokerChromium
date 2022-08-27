@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Zmluvné podmienky prehliadača Chrome sa 31. marca zmenia"</string>
+<string name="tos_notification_body_text">"Prečítajte si nové zmluvné podmienky"</string>
+<string name="tos_notification_ack_button_text">"Dobre"</string>
+<string name="tos_notification_review_button_text">"Prezrieť"</string>
+<string name="webapp_update_dialog_title_name">"Kontrola aktualizácie názvu"</string>
+<string name="webapp_update_dialog_title_icon">"Kontrola aktualizácie ikony"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"Pozrite si aktualizácie názvu a ikony"</string>
+<string name="webapp_update_explanation">"Ak sa vás táto webová aplikácia snaží presvedčiť, že nie je tá, za ktorú ju pokladáte, odinštalujte ju."</string>
+<string name="webapp_update_current_icon">"Aktuálna ikona"</string>
+<string name="webapp_update_new_icon">"Nová ikona"</string>
+<string name="webapp_update_negative_button">"Odinštalovať aplikáciu"</string>
+<string name="search_or_type_web_address">"Zadajte dopyt alebo webovú adresu"</string>
+<string name="password_manager_username_label">"Meno používateľa"</string>
+<string name="password_manager_password_label">"Heslo"</string>
+<string name="password_manager_update_button">"Aktualizovať"</string>
+<string name="confirm_username_dialog_title">"Potvrďte svoje používateľské meno"</string>
+<string name="options_homepage_title">"Domovská stránka"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"Overiť týmto telefónom"</string>
+<string name="cablev2_get_assertion_notification_title">"Overenie totožnosti"</string>
+</resources>
