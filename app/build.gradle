@@ -86,6 +86,8 @@ android {
                         "$rootDir/app/src/main/res_page_info",
                         "$rootDir/app/src/main/res_ui_logo",
                         "$rootDir/app/src/main/res_content_public",
+                        "$rootDir/app/src/main/res_download",
+                        "$rootDir/app/src/main/res_modaldialog",
 
 
 

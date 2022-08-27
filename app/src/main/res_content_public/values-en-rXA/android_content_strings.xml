@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="actionbar_share">"Šĥåré - one"</string>
+<string name="actionbar_web_search">"Ŵéb šéårçĥ - one two"</string>
+<string name="actionbar_textselection_title">"Ţéxţ šéļéçţîöñ - one two"</string>
+<string name="add_to_dictionary">"Åðð ţö ðîçţîöñårý - one two three"</string>
+<string name="delete_suggestion_text">"Ðéļéţé - one"</string>
+<string name="profiler_started_toast">"Þröƒîļér šţårţéð - one two"</string>
+<string name="profiler_stopped_toast">"Þröƒîļér ƒîñîšĥéð. ®éšûļţš åré îñ %1$s. - one two three four five six"</string>
+<string name="profiler_no_storage_toast">"Çåñ\'ţ šţårţ þröƒîļér béçåûšé éxţérñåļ šţöråĝé îš ñöţ réåðý - one two three four five six seven eight nine"</string>
+<string name="profiler_error_toast">"Fåîļéð ţö šţårţ þröƒîļér - one two three four"</string>
+<string name="accessibility_date_picker_month">"Möñţĥ - one"</string>
+<string name="accessibility_date_picker_year">"Ýéår - one"</string>
+<string name="date_picker_dialog_set">"Šéţ - one"</string>
+<string name="month_picker_dialog_title">"Šéţ möñţĥ - one two"</string>
+<string name="accessibility_date_picker_week">"Ŵééķ - one"</string>
+<string name="week_picker_dialog_title">"Šéţ ŵééķ - one two"</string>
+<string name="time_picker_dialog_am">"ÅM - one"</string>
+<string name="time_picker_dialog_pm">"ÞM - one"</string>
+<string name="time_picker_dialog_title">"Šéţ ţîmé - one two"</string>
+<string name="accessibility_time_picker_hour">"Ĥöûr - one"</string>
+<string name="accessibility_time_picker_minute">"Mîñûţé - one"</string>
+<string name="accessibility_time_picker_second">"Šéçöñð - one"</string>
+<string name="accessibility_time_picker_milli">"Mîļļîšéçöñð - one"</string>
+<string name="accessibility_time_picker_ampm">"ÅM/ÞM - one"</string>
+<string name="time_picker_dialog_hour_minute_separator">": "</string>
+<string name="time_picker_dialog_minute_second_separator">": "</string>
+<string name="time_picker_dialog_second_subsecond_separator">". "</string>
+<string name="date_time_picker_dialog_title">"Šéţ ðåţé åñð ţîmé - one two three four"</string>
+<string name="accessibility_datetime_picker_date">"Ðåţé - one"</string>
+<string name="accessibility_datetime_picker_time">"Ţîmé - one"</string>
+<string name="date_picker_dialog_other_button_label">"Öţĥér - one"</string>
+<string name="date_picker_dialog_title">"Šéţ ðåţé - one two"</string>
+<string name="date_picker_dialog_clear">"Çļéår - one"</string>
+<string name="speech_recognition_service_not_found">"Ĝööĝļé šþééçĥ éñĝîñé çåñ\'ţ bé ƒöûñð - one two three four five six"</string>
+</resources>
