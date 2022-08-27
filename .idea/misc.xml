@@ -33,6 +33,7 @@
         <entry key="app/src/main/res/layout/modal_dialog_container.xml" value="0.1" />
         <entry key="app/src/main/res/layout/new_tab_page_layout.xml" value="0.1" />
         <entry key="app/src/main/res/layout/os_version_unsupported_text.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/page_info_about_this_site_view.xml" value="0.1" />
         <entry key="app/src/main/res_browser_ui_style/drawable/checkmark_blue.xml" value="0.1" />
         <entry key="app/src/main/res_browser_ui_style/drawable/gm_ads_click_24.xml" value="0.1" />
         <entry key="app/src/main/res_browser_ui_style/drawable/ic_account_circle_24dp.xml" value="0.1" />
@@ -49,12 +50,17 @@
         <entry key="app/src/main/res_browser_ui_widget/drawable/bottom_sheet_background.xml" value="0.1" />
         <entry key="app/src/main/res_browser_ui_widget/drawable/ic_check_googblue_24dp_animated.xml" value="0.1" />
         <entry key="app/src/main/res_browser_ui_widget/drawable/search_toolbar_modern_bg.xml" value="0.1" />
+        <entry key="app/src/main/res_browser_ui_widget/layout/search_toolbar.xml" value="0.1" />
         <entry key="app/src/main/res_feed/layout/feed_spinner.xml" value="0.1" />
         <entry key="app/src/main/res_feed/layout/follow_management_item.xml" value="0.1" />
         <entry key="app/src/main/res_feed/xml/feed_autoplay_preferences.xml" value="0.8145161290322581" />
         <entry key="app/src/main/res_omnibox/drawable/ic_content_copy_black.xml" value="0.1" />
         <entry key="app/src/main/res_omnibox/drawable/ic_equals_sign_round.xml" value="0.1" />
+        <entry key="app/src/main/res_page_info/layout/page_info_container.xml" value="0.1" />
+        <entry key="app/src/main/res_page_info/layout/page_info_row.xml" value="0.1" />
+        <entry key="app/src/main/res_toolbar/layout/tab_switcher_toolbar.xml" value="0.1" />
         <entry key="app/src/main/res_webapp_browser/layout/image_zoom_view.xml" value="0.1" />
+        <entry key="app/src/main/res_webapp_browser/layout/pwa_install_bottom_sheet_content.xml" value="0.1" />
         <entry key="browser/feed/src/main/res/drawable/back_arrow.xml" value="0.1" />
         <entry key="browser/feed/src/main/res/xml/feed_autoplay_preferences.xml" value="0.8145161290322581" />
         <entry key="browser/language/src/main/res/layout/accept_languages_item.xml" value="0.1" />

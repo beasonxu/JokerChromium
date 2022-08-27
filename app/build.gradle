@@ -83,6 +83,8 @@ android {
                         "$rootDir/app/src/main/res_webapp_browser",
                         "$rootDir/app/src/main/res_video_tutorials",
                         "$rootDir/app/src/main/res_permissions",
+                        "$rootDir/app/src/main/res_page_info",
+                        "$rootDir/app/src/main/res_ui_logo",
 
 
 
