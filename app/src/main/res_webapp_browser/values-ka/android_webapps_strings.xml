@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"აპის Google Play Store-იდან მიღება: %s"</string>
+<string name="app_banner_install">"ინსტალაცია"</string>
+<string name="menu_add_to_homescreen">"მთავარ ეკრანზე დამატება"</string>
+<string name="menu_add_to_homescreen_install">"დააინსტალირეთ პროგრამა"</string>
+<string name="added_to_homescreen">"%1$s დაემატა მთავარ ეკრანს"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"ამ აპის ინსტალაცია"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"ეკრანის ანაბეჭდი"</string>
+<string name="image_zoom_content_description">"ეკრანის ანაბეჭდი. შეეხეთ დასახურად."</string>
+<string name="webapk_install_in_progress">"ჯერ კიდევ მიმდინარეობს წინა საიტის დამატება"</string>
+<string name="webapk_install_failed">"ინსტალაცია ვერ მოხერხდა"</string>
+</resources>

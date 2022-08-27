@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"Λήψη της εφαρμογής από το Google Play Store: %s"</string>
+<string name="app_banner_install">"Εγκατάσταση"</string>
+<string name="menu_add_to_homescreen">"Προσθήκη στην αρχική οθόνη"</string>
+<string name="menu_add_to_homescreen_install">"Εγκατάσταση εφαρμογής"</string>
+<string name="added_to_homescreen">"Ο ιστότοπος %1$s προστέθηκε στην αρχική οθόνη σας"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"Εγκατάσταση αυτής της εφαρμογής"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"Στιγμιότυπο οθόνης"</string>
+<string name="image_zoom_content_description">"Στιγμιότυπο οθόνης. Πατήστε για κλείσιμο."</string>
+<string name="webapk_install_in_progress">"Η προσθήκη του προηγούμενου ιστοτόπου δεν έχει ολοκληρωθεί"</string>
+<string name="webapk_install_failed">"Η εγκατάσταση απέτυχε"</string>
+</resources>

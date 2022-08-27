@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"Preuzmite aplikaciju s Google Play trgovine: %s"</string>
+<string name="app_banner_install">"Instaliraj"</string>
+<string name="menu_add_to_homescreen">"Dodaj na početni ekran"</string>
+<string name="menu_add_to_homescreen_install">"Instaliranje aplikacije"</string>
+<string name="added_to_homescreen">"Web lokacija %1$s je dodana na vaš Početni ekran"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"Instalirajte ovu aplikaciju"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"Snimak ekrana"</string>
+<string name="image_zoom_content_description">"Snimak ekrana. Dodirnite da zatvorite."</string>
+<string name="webapk_install_in_progress">"Prethodna web lokacija se još uvijek dodaje"</string>
+<string name="webapk_install_failed">"Instaliranje nije uspjelo"</string>
+</resources>

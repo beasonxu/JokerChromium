@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"Google Play Store-এর থেকে অ্যাপ্লিকেশানটি পান: %s"</string>
+<string name="app_banner_install">"ইনস্টল করুন"</string>
+<string name="menu_add_to_homescreen">"হোম স্ক্রীনে যোগ করুন"</string>
+<string name="menu_add_to_homescreen_install">"অ্যাপ্লিকেশান ইনস্টল করুন"</string>
+<string name="added_to_homescreen">"আপনার হোম স্ক্রীনে %1$s কে যোগ করা হয়েছে"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"এই অ্যাপ ইনস্টল করুন"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"স্ক্রিনশট"</string>
+<string name="image_zoom_content_description">"স্ক্রিনশট। বন্ধ করতে ট্যাপ করুন।"</string>
+<string name="webapk_install_in_progress">"এখনও পূর্বের সাইট যোগ করছে"</string>
+<string name="webapk_install_failed">"ইনস্টল করা যায়নি"</string>
+</resources>

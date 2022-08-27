@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"‏התקנת האפליקציה מחנות Google Play‏: %s"</string>
+<string name="app_banner_install">"התקנה"</string>
+<string name="menu_add_to_homescreen">"הוספה לדף הבית"</string>
+<string name="menu_add_to_homescreen_install">"התקנת האפליקציה"</string>
+<string name="added_to_homescreen">"האתר %1$s נוסף למסך דף הבית שלך"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"התקנת האפליקציה"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"צילום מסך"</string>
+<string name="image_zoom_content_description">"צילום מסך. אפשר להקיש כדי לסגור."</string>
+<string name="webapk_install_in_progress">"עדיין מוסיף את האתר הקודם"</string>
+<string name="webapk_install_failed">"ההתקנה נכשלה"</string>
+</resources>

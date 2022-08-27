@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"Изтегляне на приложението от Google Play Магазин: %s"</string>
+<string name="app_banner_install">"Инсталиране"</string>
+<string name="menu_add_to_homescreen">"Добавяне към началния екран"</string>
+<string name="menu_add_to_homescreen_install">"Инсталиране на приложението"</string>
+<string name="added_to_homescreen">"Добавихте %1$s към началния екран"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"Инсталиране на това приложение"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"Eкранна снимка"</string>
+<string name="image_zoom_content_description">"Екранна снимка. Докоснете за затваряне."</string>
+<string name="webapk_install_in_progress">"Още се добавя предишният сайт"</string>
+<string name="webapk_install_failed">"Инсталирането не бе успешно"</string>
+</resources>

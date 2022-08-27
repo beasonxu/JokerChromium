@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"ເອົາ​ແອັບ​ຈາກ Google Play Store: %s"</string>
+<string name="app_banner_install">"​ຕິດ​ຕັ້ງ"</string>
+<string name="menu_add_to_homescreen">"ເພີ່ມໃສ່ໜ້າຈໍຫຼັກ"</string>
+<string name="menu_add_to_homescreen_install">"ຕິດຕັ້ງແອັບ"</string>
+<string name="added_to_homescreen">"%1$s ຖືກເພີ່ມ​ເຂົ້າ​ໃສ່​ໜ້າ​ຈໍ​ຫຼັກ​ຂອງ​ທ່ານ​ແລ້ວ"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"ຕິດຕັ້ງແອັບນີ້"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"ຮູບຖ່າຍໜ້າຈໍ"</string>
+<string name="image_zoom_content_description">"ຮູບໜ້າຈໍ. ແຕະເພື່ອປິດ."</string>
+<string name="webapk_install_in_progress">"ຍັງກຳລັງເພີ່ມເວັບໄຊກ່ອນໜ້ານີ້ຢູ່"</string>
+<string name="webapk_install_failed">"ຕິດຕັ້ງບໍ່ສໍາເລັດ"</string>
+</resources>

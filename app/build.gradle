@@ -81,6 +81,8 @@ android {
                         "$rootDir/app/src/main/res_tab",
                         "$rootDir/app/src/main/res_chrome_feed",
                         "$rootDir/app/src/main/res_webapp_browser",
+                        "$rootDir/app/src/main/res_video_tutorials",
+                        "$rootDir/app/src/main/res_permissions",
 
 
 

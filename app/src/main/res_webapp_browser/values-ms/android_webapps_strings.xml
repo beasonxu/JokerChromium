@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"Dapatkan apl daripada Gedung Play Google: %s"</string>
+<string name="app_banner_install">"Pasang"</string>
+<string name="menu_add_to_homescreen">"Tambahkan kepada Skrin utama"</string>
+<string name="menu_add_to_homescreen_install">"Pasang apl"</string>
+<string name="added_to_homescreen">"%1$s telah ditambahkan ke skrin Utama anda"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"Pasang apl ini"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"Tangkapan skrin"</string>
+<string name="image_zoom_content_description">"Tangkapan skrin. Ketik untuk tutup."</string>
+<string name="webapk_install_in_progress">"Masih menambahkan tapak yang terdahulu"</string>
+<string name="webapk_install_failed">"Gagal memasang"</string>
+</resources>

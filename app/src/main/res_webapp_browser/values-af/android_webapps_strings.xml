@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"Kry die program van die Google Play Winkel af: %s"</string>
+<string name="app_banner_install">"Installeer"</string>
+<string name="menu_add_to_homescreen">"Voeg by tuisskerm"</string>
+<string name="menu_add_to_homescreen_install">"Installeer program"</string>
+<string name="added_to_homescreen">"%1$s is by jou tuisskerm gevoeg"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"Installeer hierdie program"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"Skermkiekie"</string>
+<string name="image_zoom_content_description">"Skermkiekie. Tik om toe te maak."</string>
+<string name="webapk_install_in_progress">"Voeg steeds vorige werf by"</string>
+<string name="webapk_install_failed">"Kon nie installeer nie"</string>
+</resources>

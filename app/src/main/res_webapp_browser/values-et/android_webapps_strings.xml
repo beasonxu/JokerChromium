@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"Hankige rakendus Google Play poest: %s"</string>
+<string name="app_banner_install">"Installi"</string>
+<string name="menu_add_to_homescreen">"Avaekraanile lisamine"</string>
+<string name="menu_add_to_homescreen_install">"Rakenduse installimine"</string>
+<string name="added_to_homescreen">"%1$s lisati teie avaekraanile"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"Installige see rakendus"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"Ekraanipilt"</string>
+<string name="image_zoom_content_description">"Ekraanipilt. Puudutage sulgemiseks."</string>
+<string name="webapk_install_in_progress">"Eelmist saiti alles lisatakse"</string>
+<string name="webapk_install_failed">"Installimine ebaõnnestus"</string>
+</resources>

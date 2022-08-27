@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"Sækja forritið í Google Play Store: %s"</string>
+<string name="app_banner_install">"Setja upp"</string>
+<string name="menu_add_to_homescreen">"Setja á heimaskjá"</string>
+<string name="menu_add_to_homescreen_install">"Setja upp forrit"</string>
+<string name="added_to_homescreen">"%1$s var bætt við heimaskjáinn þinn"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"Setja þetta forrit upp"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"Skjámynd"</string>
+<string name="image_zoom_content_description">"Skjámynd. Ýttu til að loka."</string>
+<string name="webapk_install_in_progress">"Er enn að bæta fyrra vefsvæði við"</string>
+<string name="webapk_install_failed">"Ekki tókst að setja upp"</string>
+</resources>

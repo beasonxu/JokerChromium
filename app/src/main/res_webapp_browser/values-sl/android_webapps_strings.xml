@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"Prenos aplikacije iz Trgovine Google Play: %s"</string>
+<string name="app_banner_install">"Namesti"</string>
+<string name="menu_add_to_homescreen">"Dodajanje na začetni zaslon"</string>
+<string name="menu_add_to_homescreen_install">"Namestitev aplikacije"</string>
+<string name="added_to_homescreen">"Spletno mesto %1$s je bilo dodano na začetni zaslon"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"Namestite to aplikacijo"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"Posnetek zaslona"</string>
+<string name="image_zoom_content_description">"Posnetek zaslona. Dotaknite se, če ga želite zapreti."</string>
+<string name="webapk_install_in_progress">"Dodajanje prejšnjega spletnega mesta še vedno poteka"</string>
+<string name="webapk_install_failed">"Namestitev ni uspela"</string>
+</resources>

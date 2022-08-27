@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"從 Google Play 商店取得應用程式：%s"</string>
+<string name="app_banner_install">"安裝"</string>
+<string name="menu_add_to_homescreen">"加到主畫面"</string>
+<string name="menu_add_to_homescreen_install">"安裝應用程式"</string>
+<string name="added_to_homescreen">"「%1$s」已加入您的主畫面"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"安裝這個應用程式"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"螢幕截圖"</string>
+<string name="image_zoom_content_description">"螢幕截圖。輕觸即可關閉。"</string>
+<string name="webapk_install_in_progress">"仍在新增先前的網站"</string>
+<string name="webapk_install_failed">"無法安裝"</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"Descarcă aplicația din Magazinul Google Play: %s"</string>
+<string name="app_banner_install">"Instalează"</string>
+<string name="menu_add_to_homescreen">"Adaugă pe ecran pornire"</string>
+<string name="menu_add_to_homescreen_install">"Instalați aplicația"</string>
+<string name="added_to_homescreen">"Site-ul %1$s a fost adăugat pe ecranul de pornire"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"Instalează aplicația"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"Captură de ecran"</string>
+<string name="image_zoom_content_description">"Captură de ecran. Atinge pentru a închide."</string>
+<string name="webapk_install_in_progress">"Încă se adaugă site-ul anterior"</string>
+<string name="webapk_install_failed">"Nu s-a instalat"</string>
+</resources>

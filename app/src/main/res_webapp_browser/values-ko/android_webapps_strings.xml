@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"Google Play 스토어에서 앱 다운로드: %s"</string>
+<string name="app_banner_install">"설치"</string>
+<string name="menu_add_to_homescreen">"홈 화면에 추가"</string>
+<string name="menu_add_to_homescreen_install">"앱 설치"</string>
+<string name="added_to_homescreen">"%1$s이(가) 홈 화면에 추가됨"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"앱 설치"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"스크린샷"</string>
+<string name="image_zoom_content_description">"스크린샷입니다. 닫으려면 탭하세요."</string>
+<string name="webapk_install_in_progress">"아직 이전 사이트 추가 중"</string>
+<string name="webapk_install_failed">"설치하지 못했습니다."</string>
+</resources>

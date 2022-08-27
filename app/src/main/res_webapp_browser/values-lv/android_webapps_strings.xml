@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"Iegūstiet lietotni Google Play veikalā: %s"</string>
+<string name="app_banner_install">"Instalēt"</string>
+<string name="menu_add_to_homescreen">"Pievienot sākuma ekrānam"</string>
+<string name="menu_add_to_homescreen_install">"Instalēt lietotni"</string>
+<string name="added_to_homescreen">"Vietne %1$s tika pievienota sākuma ekrānam."</string>
+<string name="pwa_install_bottom_sheet_accessibility">"Instalēt šo lietotni"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"Ekrānuzņēmums"</string>
+<string name="image_zoom_content_description">"Ekrānuzņēmums. Pieskarieties, lai to aizvērtu."</string>
+<string name="webapk_install_in_progress">"Joprojām notiek iepriekšējās vietnes pievienošana"</string>
+<string name="webapk_install_failed">"Neizdevās instalēt"</string>
+</resources>
