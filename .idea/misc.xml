@@ -34,6 +34,7 @@
         <entry key="app/src/main/res/layout/new_tab_page_layout.xml" value="0.1" />
         <entry key="app/src/main/res/layout/os_version_unsupported_text.xml" value="0.1" />
         <entry key="app/src/main/res/layout/page_info_about_this_site_view.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/bookmark_action_bar_menu.xml" value="0.1234375" />
         <entry key="app/src/main/res_browser_ui_style/drawable/checkmark_blue.xml" value="0.1" />
         <entry key="app/src/main/res_browser_ui_style/drawable/gm_ads_click_24.xml" value="0.1" />
         <entry key="app/src/main/res_browser_ui_style/drawable/ic_account_circle_24dp.xml" value="0.1" />
