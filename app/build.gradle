@@ -79,6 +79,8 @@ android {
                         "$rootDir/app/src/main/res_share",
                         "$rootDir/app/src/main/res_chrome",
                         "$rootDir/app/src/main/res_tab",
+                        "$rootDir/app/src/main/res_chrome_feed",
+                        "$rootDir/app/src/main/res_webapp_browser",
 
 
 
