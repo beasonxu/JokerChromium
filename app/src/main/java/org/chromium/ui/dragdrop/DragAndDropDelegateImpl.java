@@ -43,7 +43,7 @@ import org.chromium.base.MathUtils;
 import org.chromium.base.compat.ApiHelperForN;
 import org.chromium.base.compat.ApiHelperForO;
 import org.chromium.base.metrics.RecordHistogram;
-import org.chromium.ui.R;
+import org.chromium.chrome.R;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

@@ -23,8 +23,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.Px;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.graphics.ColorUtils;
-
-import org.chromium.ui.R;
+import org.chromium.chrome.R;
 
 /**
  * A helper class to create and maintain a background drawable with customized background color,

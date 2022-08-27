@@ -23,7 +23,7 @@ import androidx.annotation.StringRes;
 import androidx.annotation.StyleRes;
 
 import org.chromium.base.SysUtils;
-import org.chromium.ui.R;
+import org.chromium.chrome.R;
 import org.chromium.ui.display.DisplayAndroid;
 
 /**

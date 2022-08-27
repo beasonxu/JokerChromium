@@ -17,7 +17,8 @@ import androidx.annotation.StyleRes;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.widget.AppCompatButton;
 
-import org.chromium.ui.R;
+import org.chromium.chrome.R;
+
 
 /**
  * A Material-styled button with a customizable background color. On L devices, this is a true

@@ -13,7 +13,7 @@ import android.view.View;
 import androidx.annotation.ColorRes;
 
 import org.chromium.base.Callback;
-import org.chromium.ui.R;
+import org.chromium.chrome.R;
 import org.chromium.ui.util.AttrUtils;
 
 /**
