@@ -27,7 +27,7 @@ import androidx.recyclerview.widget.RecyclerView.OnScrollListener;
 
 import org.chromium.components.browser_ui.widget.FadingShadow;
 import org.chromium.components.browser_ui.widget.FadingShadowView;
-import org.chromium.components.browser_ui.widget.R;
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.widget.displaystyle.DisplayStyleObserver;
 import org.chromium.components.browser_ui.widget.displaystyle.HorizontalDisplayStyle;
 import org.chromium.components.browser_ui.widget.displaystyle.UiConfig;

@@ -21,7 +21,7 @@ import androidx.core.os.BuildCompat;
 
 import org.chromium.base.annotations.CalledByNative;
 import org.chromium.base.compat.ApiHelperForP;
-import org.chromium.build.BuildConfig;
+import org.chromium.chrome.BuildConfig;
 
 /**
  * BuildInfo is a utility class providing easy access to {@link PackageInfo} information. This is

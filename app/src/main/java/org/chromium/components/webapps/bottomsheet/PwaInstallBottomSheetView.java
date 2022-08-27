@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.chromium.components.webapps.R;
+import org.chromium.chrome.R;
 import org.chromium.components.webapps.WebappsIconUtils;
 
 /**

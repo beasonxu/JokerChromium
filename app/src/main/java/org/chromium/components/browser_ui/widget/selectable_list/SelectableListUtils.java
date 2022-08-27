@@ -12,7 +12,7 @@ import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.chromium.components.browser_ui.widget.R;
+import org.chromium.chrome.R;
 
 /** A set of utils to be used alongside SelectableListLayout. */
 public class SelectableListUtils {

@@ -17,7 +17,7 @@ import android.os.UserHandle;
 import androidx.annotation.RequiresApi;
 
 import org.chromium.base.compat.ApiHelperForQ;
-import org.chromium.build.BuildConfig;
+import org.chromium.chrome.BuildConfig;
 
 import java.lang.reflect.Method;
 import java.util.concurrent.Executor;

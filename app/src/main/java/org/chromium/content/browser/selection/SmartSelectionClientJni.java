@@ -13,11 +13,11 @@ import org.chromium.content_public.browser.WebContents;
 class SmartSelectionClientJni implements SmartSelectionClient.Natives {
   private static SmartSelectionClient.Natives testInstance;
 
-  public static final JniStaticTestMocker<SmartSelectionClient.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content.browser.selection.SmartSelectionClient.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<SmartSelectionClient.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<SmartSelectionClient.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.content.browser.selection.SmartSelectionClient.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        SmartSelectionClient.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

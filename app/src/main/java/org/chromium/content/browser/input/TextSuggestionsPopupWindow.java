@@ -10,7 +10,7 @@ import android.text.Spanned;
 import android.text.style.TextAppearanceSpan;
 import android.view.View;
 
-import org.chromium.content.R;
+import org.chromium.chrome.R;
 import org.chromium.ui.base.WindowAndroid;
 
 /**

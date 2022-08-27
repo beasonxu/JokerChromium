@@ -7,7 +7,7 @@ package org.chromium.content.browser.picker;
 import android.annotation.SuppressLint;
 import android.content.Context;
 
-import org.chromium.content.R;
+import org.chromium.chrome.R;
 
 import java.text.DateFormatSymbols;
 import java.util.Arrays;

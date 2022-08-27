@@ -19,7 +19,7 @@ import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 
 import org.chromium.chrome.browser.download.home.list.ListItem;
 import org.chromium.chrome.browser.download.home.list.UiUtils;
-import org.chromium.chrome.browser.download.internal.R;
+import org.chromium.chrome.R;
 import org.chromium.components.offline_items_collection.OfflineItemVisuals;
 import org.chromium.ui.modelutil.PropertyModel;
 

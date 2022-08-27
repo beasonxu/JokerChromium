@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="all_passwords_bottom_sheet_content_description">"\'ట‌చ్ చేసి నింపాల్సిన ఆధారాల లిస్ట్‌\'."</string>
+<string name="all_passwords_bottom_sheet_half_height">"\'టచ్ చేసి నింపాల్సిన ఆధారాల లిస్ట్‌\' సగం ఎత్తులో తెరవబడింది."</string>
+<string name="all_passwords_bottom_sheet_full_height">"\'ట‌చ్ చేసి నింపాల్సిన ఆధారాల లిస్ట్‌\' పూర్తి ఎత్తులో తెరవబడింది."</string>
+<string name="all_passwords_bottom_sheet_closed">"\'టచ్ చేసి నింపాల్సిన ఆధారాల లిస్ట్‌\' మూసివేయబడింది."</string>
+<string name="all_passwords_bottom_sheet_title">"పాస్‌వర్డ్‌లు"</string>
+<string name="all_passwords_bottom_sheet_title_gpm">"పాస్‌వర్డ్‌ను ఎంచుకోండి"</string>
+<string name="all_passwords_bottom_sheet_search_hint">"సెర్చ్"</string>
+<string name="all_passwords_bottom_sheet_no_password">"పాస్‌వర్డ్ ఏదీ లేదు"</string>
+<string name="all_passwords_bottom_sheet_warning_dialog_message_first">"మీకు %s మీద నమ్మకం ఉంటే, ఇదివరకే సేవ్ చేసిన మీ పాస్‌వర్డ్‌ను మీరు మరొక సైట్‌కు ఉపయోగించవచ్చు."</string>
+<string name="all_passwords_bottom_sheet_warning_dialog_message_second">"ప్రతి సైట్‌కు ఒక విభిన్నమైన పాస్‌వర్డ్‌ను ఉపయోగించడానికి ట్రై చేయండి."</string>
+<string name="all_passwords_bottom_sheet_subtitle">"మీకు %s మీద నమ్మకం ఉంటే, సైన్ ఇన్ చేయడం కోసం మీరు సేవ్ చేసిన పాస్ట్‌వర్డ్‌ను ఉపయోగించవచ్చు"</string>
+<string name="autofill_keyboard_accessory_content_description">"అందుబాటులో ఉన్న పాస్‌వర్డ్‌లు"</string>
+<string name="autofill_keyboard_accessory_modern_content_description">"కీబోర్డ్ పైభాగాన స్వీయ పూరణ సూచనలు అందుబాటులో ఉన్నాయి"</string>
+<string name="keyboard_accessory_sheet_hide">"కీబోర్డ్‌ను చూపు"</string>
+<string name="iph_keyboard_accessory_fill_with_chrome">"Chrome ఆటోఫిల్ సూచనను ఉపయోగించండి"</string>
+<string name="iph_keyboard_accessory_swipe_for_more">"మరిన్ని సూచనలను చూడటం కోసం స్వైప్ చేయండి"</string>
+<string name="password_generation_accessory_button">"శక్తివంతమైన పాస్‌వర్డ్‌ని సూచించు"</string>
+<string name="password_generation_accessory_button_short">"పాస్‌వర్డ్‌ని సూచించు"</string>
+<string name="password_accessory_sheet_toggle">"పాస్‌వర్డ్‌లను చూపుతుంది"</string>
+<string name="password_accessory_sheet_opened">"సేవ్ చేసిన పాస్‌వర్డ్‌లు మరియు పాస్‌వర్డ్ ఎంపికలను చూపిస్తోంది"</string>
+<string name="address_accessory_sheet_title">"అడ్రస్‌లు"</string>
+<string name="address_accessory_sheet_toggle">"అడ్రస్‌లను చూపుతుంది"</string>
+<string name="address_accessory_sheet_opened">"సేవ్ చేసిన అడ్రస్‌లను చూపుతోంది"</string>
+<string name="credit_card_accessory_sheet_toggle">"పేమెంట్ ఆప్షన్‌లను చూపుతుంది"</string>
+<string name="credit_card_accessory_sheet_opened">"సేవ్ చేసిన పేమెంట్ ఆప్షన్‌లను చూపుతోంది"</string>
+<string name="iph_keyboard_accessory_payment_virtual_cards">"అదనపు భద్రత కోసం మీ వర్చువల్ కార్డ్‌ను ఉపయోగించండి"</string>
+</resources>

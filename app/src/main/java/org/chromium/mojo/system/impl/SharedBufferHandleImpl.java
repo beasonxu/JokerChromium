@@ -27,7 +27,7 @@ class SharedBufferHandleImpl extends HandleBase implements SharedBufferHandle {
     }
 
     /**
-     * @see org.chromium.mojo.system.SharedBufferHandle#pass()
+     * @see SharedBufferHandle#pass()
      */
     @Override
     public SharedBufferHandle pass() {

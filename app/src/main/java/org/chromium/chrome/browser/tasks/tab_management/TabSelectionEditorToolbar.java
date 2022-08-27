@@ -12,7 +12,7 @@ import android.widget.Button;
 import androidx.annotation.ColorInt;
 import androidx.annotation.PluralsRes;
 
-import org.chromium.chrome.tab_ui.R;
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.styles.SemanticColorUtils;
 import org.chromium.components.browser_ui.widget.NumberRollView;
 import org.chromium.components.browser_ui.widget.TintedDrawable;

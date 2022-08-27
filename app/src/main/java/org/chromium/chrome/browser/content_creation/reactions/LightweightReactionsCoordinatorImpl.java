@@ -16,7 +16,7 @@ import androidx.fragment.app.FragmentManager;
 
 import org.chromium.base.Callback;
 import org.chromium.chrome.browser.content_creation.reactions.LightweightReactionsMediator.GifGeneratorHost;
-import org.chromium.chrome.browser.content_creation.reactions.internal.R;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.content_creation.reactions.scene.SceneCoordinator;
 import org.chromium.chrome.browser.content_creation.reactions.toolbar.ToolbarControlsDelegate;
 import org.chromium.chrome.browser.content_creation.reactions.toolbar.ToolbarCoordinator;

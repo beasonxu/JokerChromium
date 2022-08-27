@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 
 import org.chromium.base.TraceEvent;
 import org.chromium.chrome.browser.theme.ThemeUtils;
-import org.chromium.chrome.browser.toolbar.R;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.toolbar.TabCountProvider;
 import org.chromium.chrome.browser.toolbar.TabSwitcherDrawable;
 import org.chromium.chrome.browser.ui.theme.BrandedColorScheme;

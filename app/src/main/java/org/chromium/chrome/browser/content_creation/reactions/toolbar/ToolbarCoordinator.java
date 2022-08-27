@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import org.chromium.chrome.browser.content_creation.reactions.internal.R;
+import org.chromium.chrome.R;
 import org.chromium.components.content_creation.reactions.ReactionMetadata;
 import org.chromium.ui.base.ViewUtils;
 

@@ -47,7 +47,7 @@ abstract class HandleBase implements Handle {
     }
 
     /**
-     * @see org.chromium.mojo.system.Handle#close()
+     * @see Handle#close()
      */
     @Override
     public void close() {
@@ -60,7 +60,7 @@ abstract class HandleBase implements Handle {
     }
 
     /**
-     * @see org.chromium.mojo.system.Handle#querySignalsState()
+     * @see Handle#querySignalsState()
      */
     @Override
     public HandleSignalsState querySignalsState() {
@@ -68,7 +68,7 @@ abstract class HandleBase implements Handle {
     }
 
     /**
-     * @see org.chromium.mojo.system.Handle#isValid()
+     * @see Handle#isValid()
      */
     @Override
     public boolean isValid() {
@@ -76,7 +76,7 @@ abstract class HandleBase implements Handle {
     }
 
     /**
-     * @see org.chromium.mojo.system.Handle#toUntypedHandle()
+     * @see Handle#toUntypedHandle()
      */
     @Override
     public UntypedHandle toUntypedHandle() {
@@ -84,7 +84,7 @@ abstract class HandleBase implements Handle {
     }
 
     /**
-     * @see org.chromium.mojo.system.Handle#getCore()
+     * @see Handle#getCore()
      */
     @Override
     public Core getCore() {
@@ -121,7 +121,7 @@ abstract class HandleBase implements Handle {
      * Close the handle if it is valid. Necessary because we cannot let handle leak, and we cannot
      * ensure that every handle will be manually closed.
      *
-     * @see java.lang.Object#finalize()
+     * @see Object#finalize()
      */
     @Override
     protected final void finalize() throws Throwable {

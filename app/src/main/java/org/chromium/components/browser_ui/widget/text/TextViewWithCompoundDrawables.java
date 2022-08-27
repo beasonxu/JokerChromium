@@ -16,7 +16,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 
-import org.chromium.components.browser_ui.widget.R;
+import org.chromium.chrome.R;
 
 /**
  * A {@link TextView} with support for explicitly sizing and tinting compound drawables.

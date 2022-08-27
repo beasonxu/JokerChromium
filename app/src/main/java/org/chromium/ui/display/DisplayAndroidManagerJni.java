@@ -14,11 +14,11 @@ import org.chromium.base.natives.GEN_JNI;
 class DisplayAndroidManagerJni implements DisplayAndroidManager.Natives {
   private static DisplayAndroidManager.Natives testInstance;
 
-  public static final JniStaticTestMocker<DisplayAndroidManager.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.ui.display.DisplayAndroidManager.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<DisplayAndroidManager.Natives> TEST_HOOKS = new JniStaticTestMocker<DisplayAndroidManager.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.ui.display.DisplayAndroidManager.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        DisplayAndroidManager.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

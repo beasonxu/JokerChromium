@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import org.chromium.chrome.browser.download.home.list.ListItem;
 import org.chromium.chrome.browser.download.home.list.ListProperties;
-import org.chromium.chrome.browser.download.internal.R;
+import org.chromium.chrome.R;
 import org.chromium.ui.modelutil.PropertyModel;
 
 /**

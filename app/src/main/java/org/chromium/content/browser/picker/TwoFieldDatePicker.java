@@ -15,7 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.NumberPicker.OnValueChangeListener;
 
-import org.chromium.content.R;
+import org.chromium.chrome.R;
 
 import java.util.Calendar;
 import java.util.Locale;

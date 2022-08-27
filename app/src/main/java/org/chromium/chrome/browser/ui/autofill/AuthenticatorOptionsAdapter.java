@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import org.chromium.chrome.browser.ui.autofill.data.AuthenticatorOption;
-import org.chromium.chrome.browser.ui.autofill.internal.R;
+import org.chromium.chrome.R;
 
 import java.util.List;
 

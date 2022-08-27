@@ -12,7 +12,7 @@ import androidx.annotation.IntDef;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 
-import org.chromium.components.browser_ui.widget.R;
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.widget.impression.ImpressionTracker;
 import org.chromium.components.browser_ui.widget.impression.OneShotImpressionListener;
 import org.chromium.ui.modelutil.PropertyModel;

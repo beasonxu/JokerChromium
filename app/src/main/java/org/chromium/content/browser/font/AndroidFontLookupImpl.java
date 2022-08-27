@@ -28,7 +28,7 @@ import org.chromium.base.task.SequencedTaskRunner;
 import org.chromium.base.task.TaskTraits;
 import org.chromium.blink.mojom.AndroidFontLookup;
 import org.chromium.blink_public.common.BlinkFeatures;
-import org.chromium.content.R;
+import org.chromium.chrome.R;
 import org.chromium.content_public.browser.ContentFeatureList;
 import org.chromium.mojo.bindings.ExecutorFactory;
 import org.chromium.mojo.system.Core;

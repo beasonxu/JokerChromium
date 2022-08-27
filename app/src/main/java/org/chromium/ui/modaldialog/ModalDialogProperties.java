@@ -50,8 +50,8 @@ public class ModalDialogProperties {
         void onDismiss(PropertyModel model, @DialogDismissalCause int dismissalCause);
     }
 
-    @IntDef({ModalDialogProperties.ButtonType.POSITIVE, ModalDialogProperties.ButtonType.NEGATIVE,
-            ModalDialogProperties.ButtonType.TITLE_ICON})
+    @IntDef({ButtonType.POSITIVE, ButtonType.NEGATIVE,
+            ButtonType.TITLE_ICON})
     @Retention(RetentionPolicy.SOURCE)
     public @interface ButtonType {
         int POSITIVE = 0;
@@ -62,9 +62,9 @@ public class ModalDialogProperties {
     /**
      * Styles of the primary and negative button. Only one of them can be filled at the same time.
      */
-    @IntDef({ModalDialogProperties.ButtonStyles.PRIMARY_OUTLINE_NEGATIVE_OUTLINE,
-            ModalDialogProperties.ButtonStyles.PRIMARY_FILLED_NEGATIVE_OUTLINE,
-            ModalDialogProperties.ButtonStyles.PRIMARY_OUTLINE_NEGATIVE_FILLED})
+    @IntDef({ButtonStyles.PRIMARY_OUTLINE_NEGATIVE_OUTLINE,
+            ButtonStyles.PRIMARY_FILLED_NEGATIVE_OUTLINE,
+            ButtonStyles.PRIMARY_OUTLINE_NEGATIVE_FILLED})
     @Retention(RetentionPolicy.SOURCE)
     public @interface ButtonStyles {
         int PRIMARY_OUTLINE_NEGATIVE_OUTLINE = 0;

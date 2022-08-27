@@ -28,7 +28,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener;
 import androidx.recyclerview.widget.SnapHelper;
 
-import org.chromium.chrome.browser.content_creation.internal.R;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.flags.ChromeFeatureList;
 import org.chromium.components.content_creation.notes.models.NoteTemplate;
 import org.chromium.ui.modelutil.LayoutViewBuilder;

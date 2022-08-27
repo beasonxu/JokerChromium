@@ -33,7 +33,7 @@ import org.chromium.base.annotations.NativeMethods;
 import org.chromium.base.compat.ApiHelperForM;
 import org.chromium.base.metrics.RecordHistogram;
 import org.chromium.base.metrics.UmaRecorderHolder;
-import org.chromium.build.BuildConfig;
+import org.chromium.chrome.BuildConfig;
 import org.chromium.build.NativeLibraries;
 
 import java.lang.annotation.Retention;

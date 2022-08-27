@@ -17,7 +17,7 @@ import androidx.annotation.IntDef;
 import org.chromium.base.Callback;
 import org.chromium.base.metrics.RecordHistogram;
 import org.chromium.chrome.browser.feed.FeedServiceBridge;
-import org.chromium.chrome.browser.feed.R;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.feed.StreamKind;
 import org.chromium.chrome.browser.feed.v2.FeedUserActionType;
 import org.chromium.chrome.browser.feed.webfeed.WebFeedSnackbarController.FeedLauncher;

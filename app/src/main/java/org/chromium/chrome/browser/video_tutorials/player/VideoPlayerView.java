@@ -13,7 +13,7 @@ import android.widget.LinearLayout.LayoutParams;
 
 import org.chromium.chrome.browser.video_tutorials.PlaybackStateObserver.WatchStateInfo;
 import org.chromium.chrome.browser.video_tutorials.PlaybackStateObserver.WatchStateInfo.State;
-import org.chromium.chrome.browser.video_tutorials.R;
+import org.chromium.chrome.R;
 import org.chromium.components.thinwebview.ThinWebView;
 import org.chromium.ui.modelutil.PropertyModel;
 

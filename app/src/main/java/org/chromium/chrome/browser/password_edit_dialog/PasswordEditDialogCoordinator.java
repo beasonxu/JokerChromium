@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.annotation.VisibleForTesting;
 
-import org.chromium.build.BuildConfig;
+import org.chromium.chrome.BuildConfig;
 import org.chromium.chrome.browser.flags.ChromeFeatureList;
 import org.chromium.chrome.browser.password_manager.PasswordManagerResourceProvider;
 import org.chromium.chrome.browser.password_manager.PasswordManagerResourceProviderFactory;

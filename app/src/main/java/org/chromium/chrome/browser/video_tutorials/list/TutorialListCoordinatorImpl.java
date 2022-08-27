@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView.OnScrollListener;
 import androidx.recyclerview.widget.RecyclerView.State;
 
 import org.chromium.base.Callback;
-import org.chromium.chrome.browser.video_tutorials.R;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.video_tutorials.Tutorial;
 import org.chromium.chrome.browser.video_tutorials.VideoTutorialService;
 import org.chromium.components.browser_ui.widget.FadingShadow;

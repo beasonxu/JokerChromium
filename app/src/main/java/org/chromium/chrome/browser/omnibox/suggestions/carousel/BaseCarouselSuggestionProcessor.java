@@ -6,7 +6,7 @@ package org.chromium.chrome.browser.omnibox.suggestions.carousel;
 
 import android.content.Context;
 
-import org.chromium.chrome.browser.omnibox.R;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.omnibox.suggestions.SuggestionProcessor;
 
 /** The base processor implementation for the Carousel suggestions. */

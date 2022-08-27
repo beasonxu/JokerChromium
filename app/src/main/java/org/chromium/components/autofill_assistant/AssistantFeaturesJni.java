@@ -14,11 +14,11 @@ import org.chromium.base.natives.GEN_JNI;
 class AssistantFeaturesJni implements AssistantFeatures.Natives {
   private static AssistantFeatures.Natives testInstance;
 
-  public static final JniStaticTestMocker<AssistantFeatures.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.autofill_assistant.AssistantFeatures.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<AssistantFeatures.Natives> TEST_HOOKS = new JniStaticTestMocker<AssistantFeatures.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.components.autofill_assistant.AssistantFeatures.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        AssistantFeatures.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

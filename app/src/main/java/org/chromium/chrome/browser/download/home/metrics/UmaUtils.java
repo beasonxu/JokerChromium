@@ -11,7 +11,7 @@ import org.chromium.base.metrics.RecordHistogram;
 import org.chromium.base.metrics.RecordUserAction;
 import org.chromium.chrome.browser.download.home.filter.Filters;
 import org.chromium.chrome.browser.download.home.filter.Filters.FilterType;
-import org.chromium.chrome.browser.download.internal.R;
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.share.ShareHelper;
 import org.chromium.components.offline_items_collection.OfflineItem;
 import org.chromium.components.offline_items_collection.OfflineItemFilter;

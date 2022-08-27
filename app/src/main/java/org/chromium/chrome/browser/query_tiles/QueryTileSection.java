@@ -15,7 +15,7 @@ import org.chromium.base.task.PostTask;
 import org.chromium.chrome.browser.flags.ChromeFeatureList;
 import org.chromium.chrome.browser.profiles.Profile;
 import org.chromium.components.browser_ui.util.GlobalDiscardableReferencePool;
-import org.chromium.components.browser_ui.widget.R;
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.widget.image_tiles.ImageTile;
 import org.chromium.components.browser_ui.widget.image_tiles.ImageTileCoordinator;
 import org.chromium.components.browser_ui.widget.image_tiles.ImageTileCoordinatorFactory;

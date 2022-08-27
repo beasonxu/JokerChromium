@@ -14,11 +14,11 @@ import org.chromium.content_public.browser.WebContents;
 class StarterJni implements Starter.Natives {
   private static Starter.Natives testInstance;
 
-  public static final JniStaticTestMocker<Starter.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.autofill_assistant.Starter.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<Starter.Natives> TEST_HOOKS = new JniStaticTestMocker<Starter.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.components.autofill_assistant.Starter.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        Starter.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

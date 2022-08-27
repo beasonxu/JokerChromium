@@ -29,7 +29,7 @@ class UntypedHandleImpl extends HandleBase implements UntypedHandle {
     }
 
     /**
-     * @see org.chromium.mojo.system.UntypedHandle#pass()
+     * @see UntypedHandle#pass()
      */
     @Override
     public UntypedHandle pass() {
@@ -37,7 +37,7 @@ class UntypedHandleImpl extends HandleBase implements UntypedHandle {
     }
 
     /**
-     * @see org.chromium.mojo.system.UntypedHandle#toMessagePipeHandle()
+     * @see UntypedHandle#toMessagePipeHandle()
      */
     @Override
     public MessagePipeHandle toMessagePipeHandle() {
@@ -45,7 +45,7 @@ class UntypedHandleImpl extends HandleBase implements UntypedHandle {
     }
 
     /**
-     * @see org.chromium.mojo.system.UntypedHandle#toDataPipeConsumerHandle()
+     * @see UntypedHandle#toDataPipeConsumerHandle()
      */
     @Override
     public ConsumerHandle toDataPipeConsumerHandle() {
@@ -53,7 +53,7 @@ class UntypedHandleImpl extends HandleBase implements UntypedHandle {
     }
 
     /**
-     * @see org.chromium.mojo.system.UntypedHandle#toDataPipeProducerHandle()
+     * @see UntypedHandle#toDataPipeProducerHandle()
      */
     @Override
     public ProducerHandle toDataPipeProducerHandle() {
@@ -61,7 +61,7 @@ class UntypedHandleImpl extends HandleBase implements UntypedHandle {
     }
 
     /**
-     * @see org.chromium.mojo.system.UntypedHandle#toSharedBufferHandle()
+     * @see UntypedHandle#toSharedBufferHandle()
      */
     @Override
     public SharedBufferHandle toSharedBufferHandle() {

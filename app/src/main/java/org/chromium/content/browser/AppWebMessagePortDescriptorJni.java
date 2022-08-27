@@ -12,11 +12,11 @@ import org.chromium.base.natives.GEN_JNI;
 class AppWebMessagePortDescriptorJni implements AppWebMessagePortDescriptor.Native {
   private static AppWebMessagePortDescriptor.Native testInstance;
 
-  public static final JniStaticTestMocker<AppWebMessagePortDescriptor.Native> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content.browser.AppWebMessagePortDescriptor.Native>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<AppWebMessagePortDescriptor.Native> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<AppWebMessagePortDescriptor.Native>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.content.browser.AppWebMessagePortDescriptor.Native instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        AppWebMessagePortDescriptor.Native instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

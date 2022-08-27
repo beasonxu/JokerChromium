@@ -8,7 +8,7 @@ import android.os.Bundle;
 
 import org.chromium.chrome.browser.SynchronousInitializationActivity;
 import org.chromium.chrome.browser.profiles.Profile;
-import org.chromium.chrome.browser.video_tutorials.R;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.video_tutorials.Tutorial;
 import org.chromium.chrome.browser.video_tutorials.VideoTutorialService;
 import org.chromium.chrome.browser.video_tutorials.VideoTutorialServiceFactory;

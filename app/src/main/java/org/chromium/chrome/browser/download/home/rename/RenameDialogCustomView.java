@@ -18,7 +18,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import org.chromium.base.Callback;
-import org.chromium.chrome.browser.download.internal.R;
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.widget.text.AlertDialogEditText;
 import org.chromium.components.offline_items_collection.RenameResult;
 

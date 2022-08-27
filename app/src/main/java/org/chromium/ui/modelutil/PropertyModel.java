@@ -14,7 +14,7 @@ import androidx.annotation.StringRes;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.util.ObjectsCompat;
 
-import org.chromium.build.BuildConfig;
+import org.chromium.chrome.BuildConfig;
 
 import java.util.ArrayList;
 import java.util.Collection;

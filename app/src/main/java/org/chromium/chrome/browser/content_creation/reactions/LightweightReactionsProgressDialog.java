@@ -17,7 +17,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
 import org.chromium.base.task.PostTask;
-import org.chromium.chrome.browser.content_creation.reactions.internal.R;
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.widget.MaterialProgressBar;
 import org.chromium.content_public.browser.UiThreadTaskTraits;
 

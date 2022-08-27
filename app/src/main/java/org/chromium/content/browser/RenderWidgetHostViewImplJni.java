@@ -14,11 +14,11 @@ import org.chromium.base.natives.GEN_JNI;
 class RenderWidgetHostViewImplJni implements RenderWidgetHostViewImpl.Natives {
   private static RenderWidgetHostViewImpl.Natives testInstance;
 
-  public static final JniStaticTestMocker<RenderWidgetHostViewImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content.browser.RenderWidgetHostViewImpl.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<RenderWidgetHostViewImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<RenderWidgetHostViewImpl.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.content.browser.RenderWidgetHostViewImpl.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        RenderWidgetHostViewImpl.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

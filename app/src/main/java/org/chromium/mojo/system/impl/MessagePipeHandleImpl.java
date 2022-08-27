@@ -30,7 +30,7 @@ class MessagePipeHandleImpl extends HandleBase implements MessagePipeHandle {
     }
 
     /**
-     * @see org.chromium.mojo.system.MessagePipeHandle#pass()
+     * @see MessagePipeHandle#pass()
      */
     @Override
     public MessagePipeHandle pass() {

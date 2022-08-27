@@ -12,7 +12,7 @@ import androidx.core.view.ViewCompat;
 
 /**
  * Provides a {@link Rect} for the location of a {@link View} in its window, see
- * {@link View#getLocationOnScreen(int[])}. When view bound changes, {@link RectProvider.Observer}
+ * {@link View#getLocationOnScreen(int[])}. When view bound changes, {@link Observer}
  * will be notified.
  */
 public class ViewRectProvider extends RectProvider

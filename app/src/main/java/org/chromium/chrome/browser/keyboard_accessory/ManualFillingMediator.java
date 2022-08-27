@@ -7,16 +7,20 @@ package org.chromium.chrome.browser.keyboard_accessory;
 import static org.chromium.chrome.browser.flags.ChromeFeatureList.AUTOFILL_ENABLE_MANUAL_FALLBACK_FOR_VIRTUAL_CARDS;
 import static org.chromium.chrome.browser.flags.ChromeFeatureList.AUTOFILL_KEYBOARD_ACCESSORY;
 import static org.chromium.chrome.browser.flags.ChromeFeatureList.AUTOFILL_MANUAL_FALLBACK_ANDROID;
+import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.BAR;
+import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.EXTENDING_KEYBOARD;
+import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.FLOATING;
+import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.FLOATING_BAR;
+import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.FLOATING_SHEET;
+import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.HIDDEN;
+import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.HIDDEN_SHEET;
 import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.KEYBOARD_EXTENSION_STATE;
-import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.KeyboardExtensionState.EXTENDING_KEYBOARD;
-import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.KeyboardExtensionState.FLOATING_BAR;
-import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.KeyboardExtensionState.FLOATING_SHEET;
-import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.KeyboardExtensionState.HIDDEN;
-import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.KeyboardExtensionState.REPLACING_KEYBOARD;
-import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.KeyboardExtensionState.WAITING_TO_REPLACE;
 import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.PORTRAIT_ORIENTATION;
+import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.REPLACING_KEYBOARD;
 import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.SHOW_WHEN_VISIBLE;
 import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.SUPPRESSED_BY_BOTTOM_SHEET;
+import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.VISIBLE_SHEET;
+import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.WAITING_TO_REPLACE;
 
 import android.util.SparseArray;
 import android.view.Surface;
@@ -31,6 +35,7 @@ import org.chromium.base.TraceEvent;
 import org.chromium.base.supplier.ObservableSupplier;
 import org.chromium.base.supplier.ObservableSupplierImpl;
 import org.chromium.base.supplier.Supplier;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.app.ChromeActivity;
 import org.chromium.chrome.browser.back_press.BackPressManager;
 import org.chromium.chrome.browser.compositor.CompositorViewHolder;
@@ -725,19 +730,19 @@ class ManualFillingMediator
     }
 
     private boolean isFloating(@KeyboardExtensionState int state) {
-        return (state & StateProperty.FLOATING) != 0;
+        return (state & FLOATING) != 0;
     }
 
     private boolean requiresVisibleBar(@KeyboardExtensionState int state) {
-        return (state & StateProperty.BAR) != 0;
+        return (state & BAR) != 0;
     }
 
     private boolean requiresVisibleSheet(@KeyboardExtensionState int state) {
-        return (state & StateProperty.VISIBLE_SHEET) != 0;
+        return (state & VISIBLE_SHEET) != 0;
     }
 
     private boolean requiresHiddenSheet(int state) {
-        return (state & StateProperty.HIDDEN_SHEET) != 0;
+        return (state & HIDDEN_SHEET) != 0;
     }
 
     private boolean shouldHideOnBackPress() {

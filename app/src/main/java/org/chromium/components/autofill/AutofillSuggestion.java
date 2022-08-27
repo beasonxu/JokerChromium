@@ -49,7 +49,7 @@ public class AutofillSuggestion extends DropdownItemBase {
      * @param featureForIPH The IPH feature for the autofill suggestion. If present, it'll be
      *         attempted to be shown in the keyboard accessory.
      *
-     * Use the {@link AutofillSuggestion.Builder} instead.
+     * Use the {@link Builder} instead.
      */
     @Deprecated
     public AutofillSuggestion(String label, String sublabel, String itemTag, int iconId,

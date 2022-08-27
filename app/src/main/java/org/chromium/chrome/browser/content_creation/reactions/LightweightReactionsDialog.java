@@ -17,7 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
-import org.chromium.chrome.browser.content_creation.reactions.internal.R;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.content_creation.reactions.scene.SceneCoordinator;
 
 /**

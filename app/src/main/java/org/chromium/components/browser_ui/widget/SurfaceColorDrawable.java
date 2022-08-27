@@ -18,6 +18,7 @@ import androidx.annotation.Px;
 
 import com.google.android.material.elevation.ElevationOverlayProvider;
 
+import org.chromium.chrome.R;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 

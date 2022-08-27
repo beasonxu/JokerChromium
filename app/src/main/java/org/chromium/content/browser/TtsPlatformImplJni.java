@@ -12,10 +12,10 @@ import org.chromium.base.natives.GEN_JNI;
 class TtsPlatformImplJni implements TtsPlatformImpl.Natives {
   private static TtsPlatformImpl.Natives testInstance;
 
-  public static final JniStaticTestMocker<TtsPlatformImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content.browser.TtsPlatformImpl.Natives>() {
-    @java.lang.Override
-    public void setInstanceForTesting(org.chromium.content.browser.TtsPlatformImpl.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+  public static final JniStaticTestMocker<TtsPlatformImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<TtsPlatformImpl.Natives>() {
+    @Override
+    public void setInstanceForTesting(TtsPlatformImpl.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

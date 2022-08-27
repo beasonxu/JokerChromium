@@ -13,11 +13,11 @@ import org.chromium.base.natives.GEN_JNI;
 class TextSuggestionHostJni implements TextSuggestionHost.Natives {
   private static TextSuggestionHost.Natives testInstance;
 
-  public static final JniStaticTestMocker<TextSuggestionHost.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content.browser.input.TextSuggestionHost.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<TextSuggestionHost.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<TextSuggestionHost.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.content.browser.input.TextSuggestionHost.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        TextSuggestionHost.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import org.chromium.chrome.browser.content_creation.internal.R;
+import org.chromium.chrome.R;
 
 /**
  * The view for the top bar.

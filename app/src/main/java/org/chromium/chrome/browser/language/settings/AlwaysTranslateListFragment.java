@@ -6,7 +6,7 @@ package org.chromium.chrome.browser.language.settings;
 
 import android.content.Context;
 
-import org.chromium.chrome.browser.language.R;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.translate.TranslateBridge;
 
 import java.util.Collection;

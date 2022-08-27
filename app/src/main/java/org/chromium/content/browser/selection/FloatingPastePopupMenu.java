@@ -14,7 +14,7 @@ import android.view.View;
 
 import androidx.annotation.RequiresApi;
 
-import org.chromium.content.R;
+import org.chromium.chrome.R;
 import org.chromium.ui.base.DeviceFormFactor;
 
 /**

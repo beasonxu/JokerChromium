@@ -22,6 +22,7 @@ import org.chromium.base.Log;
 import org.chromium.base.StrictModeContext;
 import org.chromium.base.ThreadUtils;
 import org.chromium.base.annotations.CalledByNative;
+import org.chromium.chrome.R;
 import org.chromium.components.webapk.lib.client.WebApkValidator;
 import org.chromium.ui.widget.Toast;
 

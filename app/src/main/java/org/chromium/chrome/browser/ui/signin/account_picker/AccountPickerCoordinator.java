@@ -7,7 +7,7 @@ package org.chromium.chrome.browser.ui.signin.account_picker;
 import androidx.annotation.MainThread;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.chromium.chrome.browser.ui.signin.R;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.ui.signin.account_picker.AccountPickerProperties.AddAccountRowProperties;
 import org.chromium.chrome.browser.ui.signin.account_picker.AccountPickerProperties.ItemType;
 import org.chromium.ui.modelutil.LayoutViewBuilder;

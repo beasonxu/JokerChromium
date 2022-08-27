@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import org.chromium.base.supplier.Supplier;
-import org.chromium.components.browser_ui.widget.R;
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.widget.image_tiles.TileSizeSupplier.TileSize;
 import org.chromium.ui.modelutil.RecyclerViewAdapter;
 

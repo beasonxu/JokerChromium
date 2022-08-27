@@ -14,7 +14,7 @@ import android.util.Property;
 
 import androidx.appcompat.app.ActionBar;
 
-import org.chromium.chrome.browser.toolbar.R;
+import org.chromium.chrome.R;
 
 /**
  * This class controls the how toolbar animates while the action mode bar is being shown. It also

@@ -14,7 +14,7 @@ import androidx.annotation.IdRes;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
-import org.chromium.build.BuildConfig;
+import org.chromium.chrome.BuildConfig;
 
 import java.lang.ref.WeakReference;
 
@@ -27,7 +27,7 @@ import java.lang.ref.WeakReference;
  * The logic in the {@link #fastFindViewById(int)} method would be in {@link #findViewById(int)} if
  * it weren't final on the {@link View} class.
  *
- * {@link android.view.ViewGroup.OnHierarchyChangeListener}s cannot be used on ViewGroups that are
+ * {@link OnHierarchyChangeListener}s cannot be used on ViewGroups that are
  * children of this group since they would overwrite the listeners that are critical to this class'
  * functionality.
  *

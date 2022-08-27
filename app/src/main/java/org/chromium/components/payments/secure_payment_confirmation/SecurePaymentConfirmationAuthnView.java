@@ -13,7 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import org.chromium.components.payments.R;
+import org.chromium.chrome.R;
 
 /**
  * The view of the SecurePaymentConfirmation Authn UI. This view does not have a peeked or half-open

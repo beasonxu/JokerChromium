@@ -29,7 +29,7 @@ import org.chromium.chrome.browser.download.DownloadLocationDialogMetrics;
 import org.chromium.chrome.browser.download.DownloadLocationDialogMetrics.DownloadLocationSuggestionEvent;
 import org.chromium.chrome.browser.download.DownloadLocationDialogType;
 import org.chromium.chrome.browser.download.DownloadPromptStatus;
-import org.chromium.chrome.browser.download.R;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.download.StringUtils;
 import org.chromium.chrome.browser.download.settings.DownloadDirectoryAdapter;
 import org.chromium.chrome.browser.flags.ChromeFeatureList;

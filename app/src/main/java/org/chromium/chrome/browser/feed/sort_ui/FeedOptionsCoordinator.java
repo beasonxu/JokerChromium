@@ -12,7 +12,7 @@ import androidx.annotation.StringRes;
 import androidx.annotation.VisibleForTesting;
 
 import org.chromium.chrome.browser.feed.FeedServiceBridge;
-import org.chromium.chrome.browser.feed.R;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.feed.v2.ContentOrder;
 import org.chromium.components.browser_ui.widget.chips.ChipProperties;
 import org.chromium.components.browser_ui.widget.chips.ChipView;

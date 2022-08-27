@@ -8,7 +8,7 @@ import androidx.annotation.IntDef;
 import androidx.annotation.VisibleForTesting;
 
 import org.chromium.base.annotations.CheckDiscard;
-import org.chromium.build.BuildConfig;
+import org.chromium.chrome.BuildConfig;
 import org.chromium.chrome.browser.preferences.ChromePreferenceKeys;
 
 import java.lang.annotation.Retention;

@@ -17,7 +17,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import org.chromium.chrome.browser.signin.services.FREMobileIdentityConsistencyFieldTrial;
-import org.chromium.chrome.browser.ui.signin.R;
+import org.chromium.chrome.R;
 import org.chromium.ui.widget.ButtonCompat;
 import org.chromium.ui.widget.TextViewWithClickableSpans;
 

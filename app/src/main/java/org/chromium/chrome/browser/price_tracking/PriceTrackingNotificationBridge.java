@@ -26,7 +26,7 @@ import org.chromium.chrome.browser.price_tracking.proto.Notifications.ChromeNoti
 import org.chromium.chrome.browser.price_tracking.proto.Notifications.ChromeNotification.NotificationDataType;
 import org.chromium.chrome.browser.price_tracking.proto.Notifications.ExpandedView;
 import org.chromium.chrome.browser.price_tracking.proto.Notifications.PriceDropNotificationPayload;
-import org.chromium.chrome.tab_ui.R;
+import org.chromium.chrome.R;
 import org.chromium.components.commerce.PriceTracking.ProductPrice;
 import org.chromium.components.embedder_support.util.UrlUtilities;
 import org.chromium.components.optimization_guide.proto.CommonTypesProto.Any;

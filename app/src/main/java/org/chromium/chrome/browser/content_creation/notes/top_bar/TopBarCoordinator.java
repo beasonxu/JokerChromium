@@ -6,7 +6,7 @@ package org.chromium.chrome.browser.content_creation.notes.top_bar;
 import android.content.Context;
 import android.view.View;
 
-import org.chromium.chrome.browser.content_creation.internal.R;
+import org.chromium.chrome.R;
 
 /**
  * Coordinator for the TopBar.

@@ -1,23 +1,22 @@
 package org.chromium.chrome.browser.feed;
 
-import java.lang.Object;
-import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
+
+import javax.annotation.Generated;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
 public class FeedServiceBridgeJni implements FeedServiceBridge.Natives {
   private static FeedServiceBridge.Natives testInstance;
 
-  public static final JniStaticTestMocker<FeedServiceBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.feed.FeedServiceBridge.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<FeedServiceBridge.Natives> TEST_HOOKS = new JniStaticTestMocker<FeedServiceBridge.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.chrome.browser.feed.FeedServiceBridge.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        FeedServiceBridge.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

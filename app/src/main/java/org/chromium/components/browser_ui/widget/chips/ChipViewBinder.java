@@ -6,7 +6,7 @@ package org.chromium.components.browser_ui.widget.chips;
 
 import android.text.TextUtils;
 
-import org.chromium.components.browser_ui.widget.R;
+import org.chromium.chrome.R;
 import org.chromium.ui.modelutil.PropertyKey;
 import org.chromium.ui.modelutil.PropertyModel;
 

@@ -3,7 +3,6 @@ package org.chromium.ui.base;
 import java.lang.Override;
 import java.lang.String;
 import javax.annotation.Generated;
-import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.annotations.MainDex;
@@ -15,15 +14,7 @@ import org.chromium.base.natives.GEN_JNI;
 class UiBaseFeatureListJni implements UiBaseFeatureList.Natives {
   private static UiBaseFeatureList.Natives testInstance;
 
-  public static final JniStaticTestMocker<UiBaseFeatureList.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.ui.base.UiBaseFeatureList.Natives>() {
-    @java.lang.Override
-    public void setInstanceForTesting(org.chromium.ui.base.UiBaseFeatureList.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
-        throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
-      }
-      testInstance = instance;
-    }
-  };
+
 
   @Override
   public boolean isEnabled(String featureName) {

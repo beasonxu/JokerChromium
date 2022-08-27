@@ -25,7 +25,7 @@ import org.chromium.base.annotations.CalledByNative;
 import org.chromium.base.annotations.JNINamespace;
 import org.chromium.base.annotations.NativeMethods;
 import org.chromium.blink.mojom.SpeechRecognitionErrorCode;
-import org.chromium.content.R;
+import org.chromium.chrome.R;
 import org.chromium.content_public.browser.SpeechRecognition;
 import org.chromium.ui.widget.Toast;
 

@@ -15,7 +15,7 @@ import androidx.appcompat.widget.SwitchCompat;
 
 import org.chromium.chrome.browser.price_tracking.PriceTrackingFeatures;
 import org.chromium.chrome.browser.price_tracking.PriceTrackingUtilities;
-import org.chromium.chrome.tab_ui.R;
+import org.chromium.chrome.R;
 import org.chromium.ui.widget.ChromeImageButton;
 
 /**

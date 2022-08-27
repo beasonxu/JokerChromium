@@ -15,7 +15,7 @@ import androidx.core.view.MarginLayoutParamsCompat;
 
 import com.google.android.material.color.MaterialColors;
 
-import org.chromium.chrome.browser.omnibox.R;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.omnibox.suggestions.base.SimpleHorizontalLayoutView;
 import org.chromium.chrome.browser.util.KeyNavigationUtil;
 import org.chromium.components.browser_ui.widget.chips.ChipView;

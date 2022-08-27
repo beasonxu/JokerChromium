@@ -11,7 +11,7 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.IntDef;
 import androidx.core.content.res.ResourcesCompat;
 
-import org.chromium.chrome.tab_ui.R;
+import org.chromium.chrome.R;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

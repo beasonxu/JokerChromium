@@ -227,7 +227,7 @@ public class KeyboardVisibilityDelegate {
     /**
      * Adds a listener that is updated of keyboard visibility changes. This works as a best guess.
      *
-     * @see org.chromium.ui.KeyboardVisibilityDelegate#isKeyboardShowing(Context, View)
+     * @see KeyboardVisibilityDelegate#isKeyboardShowing(Context, View)
      */
     public void addKeyboardVisibilityListener(KeyboardVisibilityListener listener) {
         if (mKeyboardVisibilityListeners.isEmpty()) {

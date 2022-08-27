@@ -13,11 +13,11 @@ import org.chromium.content_public.browser.WebContents;
 class ContentUiEventHandlerJni implements ContentUiEventHandler.Natives {
   private static ContentUiEventHandler.Natives testInstance;
 
-  public static final JniStaticTestMocker<ContentUiEventHandler.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content.browser.ContentUiEventHandler.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<ContentUiEventHandler.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<ContentUiEventHandler.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.content.browser.ContentUiEventHandler.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        ContentUiEventHandler.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

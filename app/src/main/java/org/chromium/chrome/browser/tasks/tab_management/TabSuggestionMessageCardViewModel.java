@@ -6,11 +6,12 @@ package org.chromium.chrome.browser.tasks.tab_management;
 
 import static org.chromium.chrome.browser.tasks.tab_management.TabListModel.CardProperties.CARD_ALPHA;
 import static org.chromium.chrome.browser.tasks.tab_management.TabListModel.CardProperties.CARD_TYPE;
-import static org.chromium.chrome.browser.tasks.tab_management.TabListModel.CardProperties.ModelType.MESSAGE;
+import static org.chromium.chrome.browser.tasks.tab_management.TabListModel.CardProperties.MESSAGE;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.tasks.tab_management.suggestions.TabSuggestion;
 import org.chromium.ui.modelutil.PropertyModel;
 
@@ -33,9 +34,9 @@ public class TabSuggestionMessageCardViewModel {
         String descriptionTextTemplate = getDescriptionTextTemplate(context, data.getActionType());
         String descriptionText = String.format(Locale.getDefault(), "%d", data.getSize());
         String actionText =
-                context.getString(org.chromium.chrome.tab_ui.R.string.tab_suggestion_review_button);
+                context.getString(R.string.tab_suggestion_review_button);
         String dismissButtonContextDescription = context.getString(
-                org.chromium.chrome.tab_ui.R.string.accessibility_tab_suggestion_dismiss_button);
+                R.string.accessibility_tab_suggestion_dismiss_button);
 
         return new PropertyModel.Builder(MessageCardViewProperties.ALL_KEYS)
                 .with(MessageCardViewProperties.MESSAGE_TYPE,
@@ -66,10 +67,10 @@ public class TabSuggestionMessageCardViewModel {
         switch (suggestionActionType) {
             case TabSuggestion.TabSuggestionAction.GROUP:
                 return context.getString(
-                        org.chromium.chrome.tab_ui.R.string.tab_suggestion_group_tabs_message);
+                        R.string.tab_suggestion_group_tabs_message);
             case TabSuggestion.TabSuggestionAction.CLOSE:
                 return context.getString(
-                        org.chromium.chrome.tab_ui.R.string.tab_suggestion_close_stale_message);
+                        R.string.tab_suggestion_close_stale_message);
             default:
                 assert false : "Invalid TabSuggestionAction";
                 return "";

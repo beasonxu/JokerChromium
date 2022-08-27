@@ -9,7 +9,7 @@ package org.chromium;
 public interface IsReadyToPayServiceCallback extends android.os.IInterface
 {
   /** Default implementation for IsReadyToPayServiceCallback. */
-  public static class Default implements org.chromium.IsReadyToPayServiceCallback
+  public static class Default implements IsReadyToPayServiceCallback
   {
     /**
          * Method to be called by the Service to indicate
@@ -26,7 +26,7 @@ public interface IsReadyToPayServiceCallback extends android.os.IInterface
     }
   }
   /** Local-side IPC implementation stub class. */
-  public static abstract class Stub extends android.os.Binder implements org.chromium.IsReadyToPayServiceCallback
+  public static abstract class Stub extends android.os.Binder implements IsReadyToPayServiceCallback
   {
     /** Construct the stub at attach it to the interface. */
     public Stub()
@@ -37,16 +37,16 @@ public interface IsReadyToPayServiceCallback extends android.os.IInterface
      * Cast an IBinder object into an org.chromium.IsReadyToPayServiceCallback interface,
      * generating a proxy if needed.
      */
-    public static org.chromium.IsReadyToPayServiceCallback asInterface(android.os.IBinder obj)
+    public static IsReadyToPayServiceCallback asInterface(android.os.IBinder obj)
     {
       if ((obj==null)) {
         return null;
       }
       android.os.IInterface iin = obj.queryLocalInterface(DESCRIPTOR);
-      if (((iin!=null)&&(iin instanceof org.chromium.IsReadyToPayServiceCallback))) {
-        return ((org.chromium.IsReadyToPayServiceCallback)iin);
+      if (((iin!=null)&&(iin instanceof IsReadyToPayServiceCallback))) {
+        return ((IsReadyToPayServiceCallback)iin);
       }
-      return new org.chromium.IsReadyToPayServiceCallback.Stub.Proxy(obj);
+      return new Proxy(obj);
     }
     @Override public android.os.IBinder asBinder()
     {
@@ -54,7 +54,7 @@ public interface IsReadyToPayServiceCallback extends android.os.IInterface
     }
     @Override public boolean onTransact(int code, android.os.Parcel data, android.os.Parcel reply, int flags) throws android.os.RemoteException
     {
-      java.lang.String descriptor = DESCRIPTOR;
+      String descriptor = DESCRIPTOR;
       switch (code)
       {
         case INTERFACE_TRANSACTION:
@@ -79,7 +79,7 @@ public interface IsReadyToPayServiceCallback extends android.os.IInterface
         }
       }
     }
-    private static class Proxy implements org.chromium.IsReadyToPayServiceCallback
+    private static class Proxy implements IsReadyToPayServiceCallback
     {
       private android.os.IBinder mRemote;
       Proxy(android.os.IBinder remote)
@@ -90,7 +90,7 @@ public interface IsReadyToPayServiceCallback extends android.os.IInterface
       {
         return mRemote;
       }
-      public java.lang.String getInterfaceDescriptor()
+      public String getInterfaceDescriptor()
       {
         return DESCRIPTOR;
       }
@@ -118,27 +118,27 @@ public interface IsReadyToPayServiceCallback extends android.os.IInterface
           _data.recycle();
         }
       }
-      public static org.chromium.IsReadyToPayServiceCallback sDefaultImpl;
+      public static IsReadyToPayServiceCallback sDefaultImpl;
     }
     static final int TRANSACTION_handleIsReadyToPay = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);
-    public static boolean setDefaultImpl(org.chromium.IsReadyToPayServiceCallback impl) {
+    public static boolean setDefaultImpl(IsReadyToPayServiceCallback impl) {
       // Only one user of this interface can use this function
       // at a time. This is a heuristic to detect if two different
       // users in the same process use this function.
-      if (Stub.Proxy.sDefaultImpl != null) {
+      if (Proxy.sDefaultImpl != null) {
         throw new IllegalStateException("setDefaultImpl() called twice");
       }
       if (impl != null) {
-        Stub.Proxy.sDefaultImpl = impl;
+        Proxy.sDefaultImpl = impl;
         return true;
       }
       return false;
     }
-    public static org.chromium.IsReadyToPayServiceCallback getDefaultImpl() {
-      return Stub.Proxy.sDefaultImpl;
+    public static IsReadyToPayServiceCallback getDefaultImpl() {
+      return Proxy.sDefaultImpl;
     }
   }
-  public static final java.lang.String DESCRIPTOR = "org.chromium.IsReadyToPayServiceCallback";
+  public static final String DESCRIPTOR = "org.chromium.IsReadyToPayServiceCallback";
   /**
        * Method to be called by the Service to indicate
        * whether the payment app is ready for payment.

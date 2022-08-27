@@ -18,11 +18,11 @@ import org.chromium.url.Origin;
 class RenderFrameHostImplJni implements RenderFrameHostImpl.Natives {
   private static RenderFrameHostImpl.Natives testInstance;
 
-  public static final JniStaticTestMocker<RenderFrameHostImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content.browser.framehost.RenderFrameHostImpl.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<RenderFrameHostImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<RenderFrameHostImpl.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.content.browser.framehost.RenderFrameHostImpl.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        RenderFrameHostImpl.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

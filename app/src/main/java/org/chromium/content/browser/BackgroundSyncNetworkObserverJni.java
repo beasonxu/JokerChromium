@@ -12,11 +12,11 @@ import org.chromium.base.natives.GEN_JNI;
 class BackgroundSyncNetworkObserverJni implements BackgroundSyncNetworkObserver.Natives {
   private static BackgroundSyncNetworkObserver.Natives testInstance;
 
-  public static final JniStaticTestMocker<BackgroundSyncNetworkObserver.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content.browser.BackgroundSyncNetworkObserver.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<BackgroundSyncNetworkObserver.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<BackgroundSyncNetworkObserver.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.content.browser.BackgroundSyncNetworkObserver.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        BackgroundSyncNetworkObserver.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

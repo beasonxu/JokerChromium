@@ -4,7 +4,7 @@
 
 package org.chromium.components.embedder_support.application;
 
-import org.chromium.build.BuildConfig;
+import org.chromium.chrome.BuildConfig;
 
 /**
  * Simple class containing build specific Firebase app IDs.

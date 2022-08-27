@@ -13,10 +13,10 @@ import org.chromium.base.natives.GEN_JNI;
 class LocalizationUtilsJni implements LocalizationUtils.Natives {
   private static LocalizationUtils.Natives testInstance;
 
-  public static final JniStaticTestMocker<LocalizationUtils.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.ui.base.LocalizationUtils.Natives>() {
-    @java.lang.Override
-    public void setInstanceForTesting(org.chromium.ui.base.LocalizationUtils.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+  public static final JniStaticTestMocker<LocalizationUtils.Natives> TEST_HOOKS = new JniStaticTestMocker<LocalizationUtils.Natives>() {
+    @Override
+    public void setInstanceForTesting(LocalizationUtils.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

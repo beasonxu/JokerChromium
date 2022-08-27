@@ -41,7 +41,7 @@ import org.chromium.base.TraceEvent;
 import org.chromium.base.compat.ApiHelperForM;
 import org.chromium.base.compat.ApiHelperForO;
 import org.chromium.base.compat.ApiHelperForP;
-import org.chromium.build.BuildConfig;
+import org.chromium.chrome.BuildConfig;
 
 import java.io.IOException;
 import java.net.Socket;

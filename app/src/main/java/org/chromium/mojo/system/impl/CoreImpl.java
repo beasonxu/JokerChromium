@@ -160,7 +160,7 @@ public class CoreImpl implements Core {
     }
 
     /**
-     * @see org.chromium.mojo.system.Core#acquireNativeHandle(long)
+     * @see Core#acquireNativeHandle(long)
      */
     @Override
     public UntypedHandle acquireNativeHandle(long handle) {
@@ -168,7 +168,7 @@ public class CoreImpl implements Core {
     }
 
     /**
-     * @see org.chromium.mojo.system.Core#wrapFileDescriptor(ParcelFileDescriptor)
+     * @see Core#wrapFileDescriptor(ParcelFileDescriptor)
      */
     @Override
     public UntypedHandle wrapFileDescriptor(ParcelFileDescriptor fd) {

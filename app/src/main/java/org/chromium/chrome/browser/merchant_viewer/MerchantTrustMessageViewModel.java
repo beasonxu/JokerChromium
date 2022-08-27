@@ -19,7 +19,7 @@ import androidx.core.content.res.ResourcesCompat;
 
 import org.chromium.chrome.browser.merchant_viewer.RatingStarSpan.RatingStarType;
 import org.chromium.chrome.browser.merchant_viewer.proto.MerchantTrustSignalsOuterClass.MerchantTrustSignalsV2;
-import org.chromium.chrome.tab_ui.R;
+import org.chromium.chrome.R;
 import org.chromium.components.messages.DismissReason;
 import org.chromium.components.messages.MessageBannerProperties;
 import org.chromium.components.messages.MessageIdentifier;

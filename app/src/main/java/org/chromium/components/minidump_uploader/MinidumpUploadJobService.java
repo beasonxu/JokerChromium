@@ -13,7 +13,8 @@ import android.os.SystemClock;
 
 import org.chromium.base.ContextUtils;
 import org.chromium.base.Log;
-import org.chromium.build.BuildConfig;
+import org.chromium.chrome.BuildConfig;
+
 
 /**
  * Class that interacts with the Android JobScheduler to upload Minidumps at appropriate times.

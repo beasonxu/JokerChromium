@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
-import org.chromium.components.webapps.R;
+import org.chromium.chrome.R;
 
 /**
  * UI for the zoomed image view used for screenshots in the bottom-sheet UI for PWA installs.

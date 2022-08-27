@@ -83,7 +83,7 @@ public class EventForwarder {
                             || event.getActionMasked() == MotionEvent.ACTION_UP
                             || event.getActionMasked() == MotionEvent.ACTION_CANCEL);
 
-            if (apiVersion >= android.os.Build.VERSION_CODES.M && !isTouchpadScroll) {
+            if (apiVersion >= Build.VERSION_CODES.M && !isTouchpadScroll) {
                 return onMouseEvent(event);
             }
         }
@@ -146,7 +146,7 @@ public class EventForwarder {
             float scale = getEventSourceScaling();
 
             int gestureClassification = 0;
-            if (Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 gestureClassification = ApiHelperForQ.getClassification(event);
             }
 

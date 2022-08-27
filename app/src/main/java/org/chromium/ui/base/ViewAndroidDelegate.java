@@ -496,7 +496,7 @@ public class ViewAndroidDelegate {
     }
 
     /**
-     * @see InputConnection#performPrivateCommand(java.lang.String, android.os.Bundle)
+     * @see InputConnection#performPrivateCommand(String, Bundle)
      */
     public void performPrivateImeCommand(String action, Bundle data) {}
 

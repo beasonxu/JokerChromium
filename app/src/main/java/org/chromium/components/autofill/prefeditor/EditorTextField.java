@@ -29,7 +29,7 @@ import androidx.core.view.ViewCompat;
 
 import com.google.android.material.textfield.TextInputLayout;
 
-import org.chromium.components.autofill.R;
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.widget.TintedDrawable;
 
 import java.util.ArrayList;
@@ -91,7 +91,7 @@ public class EditorTextField extends FrameLayout implements EditorFieldView, Vie
         });
 
         mIconsLayer = findViewById(R.id.icons_layer);
-        mIconsLayer.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+        mIconsLayer.addOnLayoutChangeListener(new OnLayoutChangeListener() {
             @Override
             public void onLayoutChange(View v, int left, int top, int right, int bottom,
                     int oldLeft, int oldTop, int oldRight, int oldBottom) {

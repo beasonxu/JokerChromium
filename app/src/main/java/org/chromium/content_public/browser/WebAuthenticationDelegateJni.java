@@ -12,11 +12,11 @@ import org.chromium.base.natives.GEN_JNI;
 class WebAuthenticationDelegateJni implements WebAuthenticationDelegate.Natives {
   private static WebAuthenticationDelegate.Natives testInstance;
 
-  public static final JniStaticTestMocker<WebAuthenticationDelegate.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content_public.browser.WebAuthenticationDelegate.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<WebAuthenticationDelegate.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<WebAuthenticationDelegate.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.content_public.browser.WebAuthenticationDelegate.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        WebAuthenticationDelegate.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

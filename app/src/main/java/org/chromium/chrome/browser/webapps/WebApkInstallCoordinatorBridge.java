@@ -63,7 +63,7 @@ public class WebApkInstallCoordinatorBridge {
     }
 
     @NativeMethods
-    interface Natives {
+    public interface Natives {
         long init(WebApkInstallCoordinatorBridge caller);
         void install(long nativeWebApkInstallCoordinatorBridge,
                 WebApkInstallCoordinatorBridge caller, byte[] apkProto, Bitmap primaryIcon,

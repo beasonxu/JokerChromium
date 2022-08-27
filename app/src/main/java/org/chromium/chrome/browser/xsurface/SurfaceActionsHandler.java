@@ -100,7 +100,7 @@ public interface SurfaceActionsHandler {
 
         /** The callback to be informed of completion, or null. */
         @Nullable
-        default WebFeedFollowUpdate.Callback callback() {
+        default Callback callback() {
             return null;
         }
     }

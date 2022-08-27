@@ -8,7 +8,7 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-import org.chromium.chrome.browser.incognito.R;
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.widget.listmenu.ListMenuButton;
 import org.chromium.components.browser_ui.widget.listmenu.ListMenuButtonDelegate;
 import org.chromium.ui.modelutil.PropertyKey;

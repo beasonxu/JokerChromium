@@ -9,7 +9,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 
-import org.chromium.content.R;
+import org.chromium.chrome.R;
 import org.chromium.content.browser.picker.TwoFieldDatePicker.OnMonthOrWeekChangedListener;
 
 /**

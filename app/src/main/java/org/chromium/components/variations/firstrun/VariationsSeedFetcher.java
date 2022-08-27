@@ -19,7 +19,7 @@ import org.chromium.base.FileUtils;
 import org.chromium.base.Log;
 import org.chromium.base.ThreadUtils;
 import org.chromium.base.metrics.RecordHistogram;
-import org.chromium.build.BuildConfig;
+import org.chromium.chrome.BuildConfig;
 import org.chromium.components.variations.VariationsCompressionUtils;
 import org.chromium.components.variations.VariationsCompressionUtils.DeltaPatchException;
 import org.chromium.components.variations.VariationsCompressionUtils.InstanceManipulations;

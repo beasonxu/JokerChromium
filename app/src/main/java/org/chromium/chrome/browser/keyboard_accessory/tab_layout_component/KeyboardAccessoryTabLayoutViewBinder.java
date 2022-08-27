@@ -10,7 +10,7 @@ import static org.chromium.chrome.browser.keyboard_accessory.tab_layout_componen
 
 import com.google.android.material.tabs.TabLayout;
 
-import org.chromium.chrome.browser.keyboard_accessory.R;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.keyboard_accessory.data.KeyboardAccessoryData;
 import org.chromium.ui.modelutil.ListModel;
 import org.chromium.ui.modelutil.ListModelChangeProcessor;

@@ -7,7 +7,7 @@ package org.chromium.chrome.browser.merchant_viewer;
 import android.view.View;
 
 import org.chromium.base.supplier.Supplier;
-import org.chromium.chrome.tab_ui.R;
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.bottomsheet.BottomSheetContent;
 
 /**

@@ -224,7 +224,7 @@ public class AccessibilityUtil {
      *         Switch Access.
      */
     private boolean canPerformGestures(AccessibilityServiceInfo service) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        if (Build.VERSION.SDK_INT >= VERSION_CODES.N) {
             return (service.getCapabilities()
                            & AccessibilityServiceInfo.CAPABILITY_CAN_PERFORM_GESTURES)
                     != 0;

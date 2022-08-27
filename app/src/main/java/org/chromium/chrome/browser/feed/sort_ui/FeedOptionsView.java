@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 
-import org.chromium.chrome.browser.feed.R;
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.widget.chips.ChipView;
 
 /**

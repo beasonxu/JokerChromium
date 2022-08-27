@@ -13,6 +13,7 @@ import android.widget.BaseAdapter;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
+import org.chromium.chrome.R;
 import org.chromium.ui.modelutil.ListObservable.ListObserver;
 import org.chromium.ui.modelutil.PropertyModelChangeProcessor.ViewBinder;
 
@@ -21,9 +22,9 @@ import java.util.Collection;
 /**
  * Adapter for providing data and views to a ListView.
  *
- * To use, register a {@link PropertyModelChangeProcessor.ViewBinder} and {@link ViewBuilder}
+ * To use, register a {@link ViewBinder} and {@link ViewBuilder}
  * for each view type in the list using
- * {@link #registerType(int, ViewBuilder, PropertyModelChangeProcessor.ViewBinder)}.
+ * {@link #registerType(int, ViewBuilder, ViewBinder)}.
  * The constructor takes a {@link ListObservable} list in the form of a {@link ModelList}. Any
  * changes that occur in the list will be automatically updated in the view.
  *
@@ -156,7 +157,7 @@ public class ModelListAdapter extends BaseAdapter implements MVCListAdapter {
         }
 
         PropertyModel model = mModelList.get(position).model;
-        PropertyModelChangeProcessor.ViewBinder binder =
+        ViewBinder binder =
                 mViewBuilderMap.get(mModelList.get(position).type).second;
 
         // 3. Attach a PropertyModelChangeProcessor and PropertyModel to the view (for #1/2 above
@@ -186,7 +187,7 @@ public class ModelListAdapter extends BaseAdapter implements MVCListAdapter {
      */
     @VisibleForTesting
     static void bindNewModel(PropertyModel newModel, @Nullable PropertyModel oldModel, View view,
-            PropertyModelChangeProcessor.ViewBinder binder) {
+            ViewBinder binder) {
         Collection<PropertyKey> setProperties = newModel.getAllSetProperties();
         for (PropertyKey key : newModel.getAllProperties()) {
             if (oldModel != null) {

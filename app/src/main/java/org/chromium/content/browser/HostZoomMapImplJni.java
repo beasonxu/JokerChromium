@@ -14,10 +14,10 @@ import org.chromium.content_public.browser.WebContents;
 public class HostZoomMapImplJni implements HostZoomMapImpl.Natives {
   private static HostZoomMapImpl.Natives testInstance;
 
-  public static final JniStaticTestMocker<HostZoomMapImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content.browser.HostZoomMapImpl.Natives>() {
-    @java.lang.Override
-    public void setInstanceForTesting(org.chromium.content.browser.HostZoomMapImpl.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+  public static final JniStaticTestMocker<HostZoomMapImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<HostZoomMapImpl.Natives>() {
+    @Override
+    public void setInstanceForTesting(HostZoomMapImpl.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

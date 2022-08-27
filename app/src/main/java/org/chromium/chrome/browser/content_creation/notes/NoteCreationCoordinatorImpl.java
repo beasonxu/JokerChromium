@@ -13,7 +13,7 @@ import android.view.View;
 
 import androidx.fragment.app.FragmentActivity;
 
-import org.chromium.chrome.browser.content_creation.internal.R;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.content_creation.notes.fonts.GoogleFontService;
 import org.chromium.chrome.browser.content_creation.notes.images.ImageService;
 import org.chromium.chrome.browser.content_creation.notes.top_bar.TopBarCoordinator;

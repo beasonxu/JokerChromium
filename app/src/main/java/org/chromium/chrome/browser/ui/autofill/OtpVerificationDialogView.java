@@ -21,7 +21,7 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 
 import org.chromium.chrome.browser.ui.autofill.OtpVerificationDialogProperties.ViewDelegate;
-import org.chromium.chrome.browser.ui.autofill.internal.R;
+import org.chromium.chrome.R;
 import org.chromium.ui.text.NoUnderlineClickableSpan;
 import org.chromium.ui.text.SpanApplier;
 import org.chromium.ui.text.SpanApplier.SpanInfo;

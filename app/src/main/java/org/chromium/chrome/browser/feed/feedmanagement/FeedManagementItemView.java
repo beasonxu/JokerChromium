@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.chromium.chrome.browser.feed.R;
+import org.chromium.chrome.R;
 
 /**
  * View class for the individual line items in the feed management interstitial.

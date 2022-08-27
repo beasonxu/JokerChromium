@@ -15,7 +15,7 @@ import java.lang.ref.WeakReference;
 
 /**
  * A {@link KeyboardVisibilityDelegate} that listens to a given activity for layout changes. It
- * notifies {@link KeyboardVisibilityDelegate.KeyboardVisibilityListener} whenever the layout change
+ * notifies {@link KeyboardVisibilityListener} whenever the layout change
  * is suspected to be caused by a keyboard.
  */
 public class ActivityKeyboardVisibilityDelegate

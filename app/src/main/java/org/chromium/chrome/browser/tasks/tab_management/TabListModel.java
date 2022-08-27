@@ -7,10 +7,9 @@ package org.chromium.chrome.browser.tasks.tab_management;
 import static org.chromium.chrome.browser.tasks.tab_management.MessageCardViewProperties.MESSAGE_TYPE;
 import static org.chromium.chrome.browser.tasks.tab_management.TabListModel.CardProperties.CARD_ALPHA;
 import static org.chromium.chrome.browser.tasks.tab_management.TabListModel.CardProperties.CARD_TYPE;
-import static org.chromium.chrome.browser.tasks.tab_management.TabListModel.CardProperties.ModelType.MESSAGE;
-import static org.chromium.chrome.browser.tasks.tab_management.TabListModel.CardProperties.ModelType.NEW_TAB_TILE;
-import static org.chromium.chrome.browser.tasks.tab_management.TabListModel.CardProperties.ModelType.OTHERS;
-import static org.chromium.chrome.browser.tasks.tab_management.TabListModel.CardProperties.ModelType.TAB;
+import static org.chromium.chrome.browser.tasks.tab_management.TabListModel.CardProperties.MESSAGE;
+import static org.chromium.chrome.browser.tasks.tab_management.TabListModel.CardProperties.NEW_TAB_TILE;
+import static org.chromium.chrome.browser.tasks.tab_management.TabListModel.CardProperties.TAB;
 import static org.chromium.chrome.browser.tasks.tab_management.TabProperties.TAB_ID;
 
 import android.util.Pair;
@@ -31,6 +30,7 @@ import java.util.List;
 
 // TODO(meiliang): Rename TabListModel to CardListModel, since this ModelList not only contains
 // Tabs anymore.
+
 /**
  * A {@link PropertyListModel} implementation to keep information about a list of
  * {@link org.chromium.chrome.browser.tab.Tab}s.
@@ -40,15 +40,18 @@ class TabListModel extends ModelList {
      * Required properties for each {@link PropertyModel} managed by this {@link ModelList}.
      */
     static class CardProperties {
-        /** Supported Model type within this ModelList. */
+        /**
+         * Supported Model type within this ModelList.
+         */
         @IntDef({TAB, MESSAGE, NEW_TAB_TILE, OTHERS})
         @Retention(RetentionPolicy.SOURCE)
         public @interface ModelType {
-            int TAB = 0;
-            int MESSAGE = 1;
-            int NEW_TAB_TILE = 2;
-            int OTHERS = 3;
         }
+        public static final int TAB = 0;
+        public static final int MESSAGE = 1;
+        public static final int NEW_TAB_TILE = 2;
+        public static final int OTHERS = 3;
+
 
         public static final PropertyModel.ReadableIntPropertyKey CARD_TYPE =
                 new PropertyModel.ReadableIntPropertyKey();
@@ -59,6 +62,7 @@ class TabListModel extends ModelList {
 
     /**
      * Convert the given tab ID to an index to match during partial updates.
+     *
      * @param tabId The tab ID to search for.
      * @return The index within the model {@link org.chromium.ui.modelutil.SimpleList}.
      */
@@ -72,6 +76,7 @@ class TabListModel extends ModelList {
 
     /**
      * Find the Nth TAB card in the {@link TabListModel}.
+     *
      * @param n N of the Nth TAB card.
      * @return The index of Nth TAB card in the {@link TabListModel}.
      */
@@ -93,6 +98,7 @@ class TabListModel extends ModelList {
 
     /**
      * Get the number of TAB cards before the given index in TabListModel.
+     *
      * @param index The given index in TabListModel.
      * @return The number of TAB cards before the given index.
      */
@@ -108,6 +114,7 @@ class TabListModel extends ModelList {
 
     /**
      * Get the index of the last tab before the given index in TabListModel.
+     *
      * @param index The given index in TabListModel.
      * @return The index of the tab before the given index in TabListModel.
      */
@@ -120,6 +127,7 @@ class TabListModel extends ModelList {
 
     /**
      * Get the index of the first tab after the given index in TabListModel.
+     *
      * @param index The given index in TabListModel.
      * @return The index of the tab after the given index in TabListModel.
      */
@@ -132,6 +140,7 @@ class TabListModel extends ModelList {
 
     /**
      * Gets the new position of the Tab with {@link tabId} from a sorted list with MRU order.
+     *
      * @param tabId The id of the Tab to insert into the list.
      */
     public int getNewPositionInMruOrderList(int tabId) {
@@ -141,8 +150,8 @@ class TabListModel extends ModelList {
             PropertyModel model = get(pos).model;
             if (model.get(CARD_TYPE) != TAB
                     || (PseudoTab.fromTabId(model.get(TabProperties.TAB_ID)).getTimestampMillis()
-                                    - timestamp
-                            >= 0)) {
+                    - timestamp
+                    >= 0)) {
                 pos++;
             } else {
                 break;
@@ -153,6 +162,7 @@ class TabListModel extends ModelList {
 
     /**
      * Get the index that matches a message item that has the given message type.
+     *
      * @param messageType The message type to match.
      * @return The index within the model.
      */
@@ -181,6 +191,7 @@ class TabListModel extends ModelList {
 
     /**
      * Get the index that matches the new tab tile in TabListModel.
+     *
      * @return The index within the model.
      */
     public int getIndexForNewTabTile() {
@@ -211,8 +222,9 @@ class TabListModel extends ModelList {
     /**
      * Sync the {@link TabListModel} with updated information. Update tab id of
      * the item in {@code index} with the current selected {@code tab} of the group.
-     * @param selectedTab   The current selected tab in the group.
-     * @param index         The index of the item in {@link TabListModel} that needs to be updated.
+     *
+     * @param selectedTab The current selected tab in the group.
+     * @param index       The index of the item in {@link TabListModel} that needs to be updated.
      */
     void updateTabListModelIdForGroup(Tab selectedTab, int index) {
         if (get(index).model.get(CARD_TYPE) != TAB) return;
@@ -228,8 +240,8 @@ class TabListModel extends ModelList {
      * all of its related Tabs to find the desIndex, i.e., the index of the current group / Tab to
      * move to.
      *
-     * @param tabModel   The tabModel that owns the tabs.
-     * @param tabs       The list that contains tabs of the newly merged group.
+     * @param tabModel The tabModel that owns the tabs.
+     * @param tabs     The list that contains tabs of the newly merged group.
      * @return A Pair with its first member as the index of the tab that is selected to merge and
      * the second member as the index of the tab that is being merged into.
      */
@@ -254,10 +266,11 @@ class TabListModel extends ModelList {
     /**
      * This method updates the information in {@link TabListModel} of the selected tab when a merge
      * related operation happens.
-     * @param index         The index of the item in {@link TabListModel} that needs to be updated.
-     * @param isSelected    Whether the tab is selected or not in a merge related operation. If
-     *         selected, update the corresponding item in {@link TabListModel} to the selected
-     *         state. If not, restore it to original state.
+     *
+     * @param index      The index of the item in {@link TabListModel} that needs to be updated.
+     * @param isSelected Whether the tab is selected or not in a merge related operation. If
+     *                   selected, update the corresponding item in {@link TabListModel} to the selected
+     *                   state. If not, restore it to original state.
      */
     void updateSelectedTabForMergeToGroup(int index, boolean isSelected) {
         if (index < 0 || index >= size()) return;
@@ -265,7 +278,7 @@ class TabListModel extends ModelList {
         assert get(index).model.get(CARD_TYPE) == TAB;
 
         int status = isSelected ? ClosableTabGridView.AnimationStatus.SELECTED_CARD_ZOOM_IN
-                                : ClosableTabGridView.AnimationStatus.SELECTED_CARD_ZOOM_OUT;
+                : ClosableTabGridView.AnimationStatus.SELECTED_CARD_ZOOM_OUT;
         if (get(index).model.get(TabProperties.CARD_ANIMATION_STATUS) == status) return;
 
         get(index).model.set(TabProperties.CARD_ANIMATION_STATUS, status);
@@ -275,10 +288,11 @@ class TabListModel extends ModelList {
     /**
      * This method updates the information in {@link TabListModel} of the hovered tab when a merge
      * related operation happens.
-     * @param index         The index of the item in {@link TabListModel} that needs to be updated.
-     * @param isHovered     Whether the tab is hovered or not in a merge related operation. If
-     *         hovered, update the corresponding item in {@link TabListModel} to the hovered state.
-     *         If not, restore it to original state.
+     *
+     * @param index     The index of the item in {@link TabListModel} that needs to be updated.
+     * @param isHovered Whether the tab is hovered or not in a merge related operation. If
+     *                  hovered, update the corresponding item in {@link TabListModel} to the hovered state.
+     *                  If not, restore it to original state.
      */
     void updateHoveredTabForMergeToGroup(int index, boolean isHovered) {
         if (index < 0 || index >= size()) return;
@@ -286,7 +300,7 @@ class TabListModel extends ModelList {
         assert get(index).model.get(CARD_TYPE) == TAB;
 
         int status = isHovered ? ClosableTabGridView.AnimationStatus.HOVERED_CARD_ZOOM_IN
-                               : ClosableTabGridView.AnimationStatus.HOVERED_CARD_ZOOM_OUT;
+                : ClosableTabGridView.AnimationStatus.HOVERED_CARD_ZOOM_OUT;
         if (get(index).model.get(TabProperties.CARD_ANIMATION_STATUS) == status) return;
 
         get(index).model.set(TabProperties.CARD_ANIMATION_STATUS, status);

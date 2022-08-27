@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import org.chromium.base.ObserverList;
 import org.chromium.components.browser_ui.styles.ChromeColors;
-import org.chromium.components.browser_ui.widget.R;
+import org.chromium.chrome.R;
 
 import java.util.Collections;
 import java.util.List;

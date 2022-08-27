@@ -11,7 +11,7 @@ import android.text.TextUtils;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.StringDef;
 
-import org.chromium.chrome.browser.notifications.R;
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.notifications.channels.ChannelDefinitions;
 
 import java.lang.annotation.Retention;

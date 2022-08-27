@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 
 import androidx.preference.Preference;
 
-import org.chromium.chrome.browser.toolbar.R;
+import org.chromium.chrome.R;
 
 /**
  * Fragment that allows the user to configure toolbar shorcut preferences.

@@ -12,7 +12,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 
-import org.chromium.components.browser_ui.widget.R;
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.widget.RoundedCornerImageView;
 import org.chromium.ui.UiUtils;
 

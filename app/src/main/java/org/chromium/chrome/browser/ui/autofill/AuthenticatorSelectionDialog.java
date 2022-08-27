@@ -12,7 +12,7 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.chromium.chrome.browser.ui.autofill.data.AuthenticatorOption;
-import org.chromium.chrome.browser.ui.autofill.internal.R;
+import org.chromium.chrome.R;
 import org.chromium.ui.modaldialog.DialogDismissalCause;
 import org.chromium.ui.modaldialog.ModalDialogManager;
 import org.chromium.ui.modaldialog.ModalDialogProperties;

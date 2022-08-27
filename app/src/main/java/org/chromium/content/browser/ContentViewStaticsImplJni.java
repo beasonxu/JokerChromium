@@ -12,11 +12,11 @@ import org.chromium.base.natives.GEN_JNI;
 class ContentViewStaticsImplJni implements ContentViewStaticsImpl.Natives {
   private static ContentViewStaticsImpl.Natives testInstance;
 
-  public static final JniStaticTestMocker<ContentViewStaticsImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content.browser.ContentViewStaticsImpl.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<ContentViewStaticsImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<ContentViewStaticsImpl.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.content.browser.ContentViewStaticsImpl.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        ContentViewStaticsImpl.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

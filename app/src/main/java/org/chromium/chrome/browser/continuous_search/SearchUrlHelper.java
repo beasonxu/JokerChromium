@@ -6,6 +6,7 @@ package org.chromium.chrome.browser.continuous_search;
 
 import org.chromium.base.annotations.JNINamespace;
 import org.chromium.base.annotations.NativeMethods;
+import org.chromium.components.continuous_search.SearchUrlHelperJni;
 import org.chromium.content_public.browser.WebContents;
 import org.chromium.url.GURL;
 
@@ -69,7 +70,7 @@ public class SearchUrlHelper {
     }
 
     @NativeMethods
-    interface Natives {
+    public interface Natives {
         boolean isGoogleDomainUrl(GURL url);
         String getQueryIfValidSrpUrl(GURL url);
         int getSrpPageCategoryFromUrl(GURL url);

@@ -26,7 +26,7 @@ import com.google.android.material.badge.BadgeUtils;
 import com.google.android.material.tabs.TabLayout;
 
 import org.chromium.chrome.browser.feed.FeedUma;
-import org.chromium.chrome.browser.feed.R;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.flags.ChromeFeatureList;
 import org.chromium.chrome.browser.user_education.IPHCommandBuilder;
 import org.chromium.chrome.browser.user_education.UserEducationHelper;

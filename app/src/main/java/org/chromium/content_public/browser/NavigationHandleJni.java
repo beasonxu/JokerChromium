@@ -13,11 +13,11 @@ import org.chromium.base.natives.GEN_JNI;
 class NavigationHandleJni implements NavigationHandle.Natives {
   private static NavigationHandle.Natives testInstance;
 
-  public static final JniStaticTestMocker<NavigationHandle.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content_public.browser.NavigationHandle.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<NavigationHandle.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<NavigationHandle.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.content_public.browser.NavigationHandle.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        NavigationHandle.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

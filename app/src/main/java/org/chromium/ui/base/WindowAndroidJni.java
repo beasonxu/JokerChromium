@@ -12,10 +12,10 @@ import org.chromium.base.natives.GEN_JNI;
 class WindowAndroidJni implements WindowAndroid.Natives {
   private static WindowAndroid.Natives testInstance;
 
-  public static final JniStaticTestMocker<WindowAndroid.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.ui.base.WindowAndroid.Natives>() {
-    @java.lang.Override
-    public void setInstanceForTesting(org.chromium.ui.base.WindowAndroid.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+  public static final JniStaticTestMocker<WindowAndroid.Natives> TEST_HOOKS = new JniStaticTestMocker<WindowAndroid.Natives>() {
+    @Override
+    public void setInstanceForTesting(WindowAndroid.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

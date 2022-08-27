@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import androidx.appcompat.content.res.AppCompatResources;
 
 import org.chromium.chrome.browser.download.home.list.ListItem;
-import org.chromium.chrome.browser.download.internal.R;
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.widget.async_image.AutoAnimatorDrawable;
 import org.chromium.ui.modelutil.PropertyModel;
 

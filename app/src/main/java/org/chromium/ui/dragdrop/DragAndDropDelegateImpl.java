@@ -50,7 +50,7 @@ import java.lang.annotation.RetentionPolicy;
 
 /**
  * Drag and drop helper class in charge of building the clip data, wrapping calls to
- * {@link android.view.View#startDragAndDrop}. Also used for mocking out real function calls to
+ * {@link View#startDragAndDrop}. Also used for mocking out real function calls to
  * Android.
  */
 public class DragAndDropDelegateImpl implements DragAndDropDelegate, DragStateTracker {
@@ -90,7 +90,7 @@ public class DragAndDropDelegateImpl implements DragAndDropDelegate, DragStateTr
 
     // Implements ViewAndroidDelegate.DragAndDropDelegate
     /**
-     * Wrapper to call {@link android.view.View#startDragAndDrop}.
+     * Wrapper to call {@link View#startDragAndDrop}.
      * @see ViewAndroidDelegate#startDragAndDrop(Bitmap, DropDataAndroid)
      * */
     @Override
@@ -236,7 +236,7 @@ public class DragAndDropDelegateImpl implements DragAndDropDelegate, DragStateTr
         }
     }
 
-    protected View.DragShadowBuilder createDragShadowBuilder(Context context, Bitmap shadowImage,
+    protected DragShadowBuilder createDragShadowBuilder(Context context, Bitmap shadowImage,
             boolean isImage, int windowWidth, int windowHeight) {
         ImageView imageView = new ImageView(context);
         if (isImage) {
@@ -366,7 +366,7 @@ public class DragAndDropDelegateImpl implements DragAndDropDelegate, DragStateTr
             return;
         }
         // TODO(shuyng): Read image data in background thread.
-        if (VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        if (VERSION.SDK_INT >= VERSION_CODES.N) {
             dragAndDropPermissions.release();
         }
     }

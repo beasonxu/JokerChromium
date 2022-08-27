@@ -6,7 +6,8 @@ package org.chromium.content.browser.picker;
 
 import android.content.Context;
 
-import org.chromium.content.R;
+
+import org.chromium.chrome.R;
 
 import java.util.Calendar;
 import java.util.TimeZone;

@@ -13,7 +13,7 @@ import androidx.annotation.VisibleForTesting;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.chromium.chrome.browser.ui.signin.R;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.ui.signin.account_picker.AccountPickerCoordinator.Listener;
 import org.chromium.ui.modaldialog.DialogDismissalCause;
 import org.chromium.ui.modaldialog.ModalDialogManager;

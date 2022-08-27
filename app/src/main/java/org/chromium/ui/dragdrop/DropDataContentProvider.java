@@ -30,10 +30,10 @@ import java.io.OutputStream;
 /** ContentProvider for image data of Drag and Drop. */
 public class DropDataContentProvider extends ContentProvider {
     /**
-     * Implement {@link ContentProvider.PipeDataWriter} to be used by {@link
+     * Implement {@link PipeDataWriter} to be used by {@link
      * ContentProvider#openPipeHelper}, in order to stream image data to drop target.
      */
-    private static class DropPipeDataWriter implements ContentProvider.PipeDataWriter<byte[]> {
+    private static class DropPipeDataWriter implements PipeDataWriter<byte[]> {
         @Override
         public void writeDataToPipe(ParcelFileDescriptor output, Uri uri, String mimeType,
                 Bundle opts, byte[] imageBytes) {

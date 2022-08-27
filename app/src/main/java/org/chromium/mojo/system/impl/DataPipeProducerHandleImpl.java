@@ -29,7 +29,7 @@ class DataPipeProducerHandleImpl extends HandleBase implements ProducerHandle {
     }
 
     /**
-     * @see org.chromium.mojo.system.DataPipe.ProducerHandle#pass()
+     * @see ProducerHandle#pass()
      */
     @Override
     public ProducerHandle pass() {

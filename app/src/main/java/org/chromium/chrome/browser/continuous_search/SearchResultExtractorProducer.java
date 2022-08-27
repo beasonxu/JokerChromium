@@ -12,9 +12,11 @@ import org.chromium.base.TraceEvent;
 import org.chromium.base.annotations.CalledByNative;
 import org.chromium.base.annotations.JNINamespace;
 import org.chromium.base.annotations.NativeMethods;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.flags.ChromeFeatureList;
 import org.chromium.chrome.browser.tab.Tab;
 import org.chromium.components.continuous_search.SearchResultExtractorClientStatus;
+import org.chromium.components.continuous_search.SearchResultExtractorProducerJni;
 import org.chromium.content_public.browser.WebContents;
 import org.chromium.url.GURL;
 
@@ -195,7 +197,7 @@ public class SearchResultExtractorProducer extends SearchResultProducer {
     }
 
     @NativeMethods
-    interface Natives {
+    public interface Natives {
         long create(SearchResultExtractorProducer producer);
         void fetchResults(
                 long nativeSearchResultExtractorProducer, WebContents webContents, String query);

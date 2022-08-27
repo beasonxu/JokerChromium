@@ -12,7 +12,7 @@ import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 
-import org.chromium.chrome.browser.download.R;
+import org.chromium.chrome.R;
 
 /**
  * A {@link TimePickerDialog} subclass for download time selection. Works on all Android versions.

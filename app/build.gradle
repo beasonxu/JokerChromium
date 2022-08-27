@@ -17,6 +17,18 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+
+        buildConfigField "boolean", "IS_MULTIDEX_ENABLED", "false"
+        buildConfigField "boolean", "ENABLE_ASSERTS", "false"
+        buildConfigField "boolean", "IS_UBSAN", "false"
+        buildConfigField "boolean", "IS_CHROME_BRANDED", "false"
+        buildConfigField "boolean", "BUNDLES_SUPPORTED", "false"
+        buildConfigField "boolean", "IS_INCREMENTAL_INSTALL", "false"
+        buildConfigField "boolean", "ISOLATED_SPLITS_ENABLED", "false"
+        buildConfigField "int", "R_STRING_PRODUCT_VERSION", "104.2"
+        buildConfigField "int", "MIN_SDK_VERSION", "23"
+
+
         multiDexEnabled true
         ndk {
             abiFilters "armeabi-v7a"
@@ -90,6 +102,12 @@ android {
                         "$rootDir/app/src/main/res_modaldialog",
                         "$rootDir/app/src/main/res_browser_ui",
                         "$rootDir/app/src/main/res_features_tab_ui",
+                        "$rootDir/app/src/main/res_site_setting",
+                        "$rootDir/app/src/main/res_signin",
+                        "$rootDir/app/src/main/res_component_payment",
+                        "$rootDir/app/src/main/res_tab_ui",
+                        "$rootDir/app/src/main/res_bottom_sheet",
+                        "$rootDir/app/src/main/res_keyboard",
 
 
 
@@ -105,22 +123,15 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
-    implementation files('libs\\ui\\android\\ui_no_recycler_view_java.jar')
-    implementation files('libs\\components\\browser_ui\\photo_picker\\android\\java.jar')
-    implementation files('libs\\url\\gurl_java.jar')
-    implementation files('libs\\third_party\\gif_player\\gif_player_java.jar')
+//    implementation files('libs\\ui\\android\\ui_no_recycler_view_java.jar')
+//    implementation files('libs\\components\\browser_ui\\photo_picker\\android\\java.jar')
+//    implementation files('libs\\url\\gurl_java.jar')
+//    implementation files('libs\\third_party\\gif_player\\gif_player_java.jar')
 
-
-    implementation("androidx.annotation:annotation:1.4.0")
-    // To use the Java-compatible @Experimental API annotation
-    implementation("androidx.annotation:annotation-experimental:1.2.0")
 
     implementation("androidx.startup:startup-runtime:1.1.1")
 
 
-    implementation("androidx.appcompat:appcompat:1.5.0")
-    // For loading and tinting drawables on older versions of the platform
-    implementation("androidx.appcompat:appcompat-resources:1.5.0")
 
 
     def gmsVersion = '17.0.0'
@@ -162,99 +173,25 @@ dependencies {
     implementation 'com.squareup:javapoet:1.13.0'
     implementation 'com.google.android.material:material:1.6.0'
     implementation 'com.google.firebase:firebase-messaging:21.1.0'
-    implementation "com.android.support:collections:28.0.0"
+    implementation 'androidx.collection:collection:1.0.0'
 //    implementation 'com.google.android.play:core:1.6.4'
-    implementation "com.android.support:support-annotations:28.0.0"
-    annotationProcessor "com.android.support:support-annotations:28.0.0"
+    implementation 'androidx.annotation:annotation:1.0.0'
+    annotationProcessor 'androidx.annotation:annotation:1.0.0'
     implementation 'androidx.core:core:1.8.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     testImplementation group: 'com.google.truth', name: 'truth', version: '1.1.2'
-/*    implementation project(':components:autofill')
-    implementation project(':components:embedder_support')
-    implementation project(':components:embedder_support_delegate')
-    implementation project(':components:messages')
-    implementation project(':components:browser_ui_bottomsheet')
-    implementation project(':components:browser_ui_bottomsheet_internal')
-    implementation project(':components:browser_ui_modaldialog')
-    implementation project(':components:browser_ui_widget')
-    implementation project(':components:browser_ui_styles')
-    implementation project(':components:browser_ui_theme')
-
-    implementation project(':components:browser_ui_site_settings')
-    implementation project(':components:browser_ui_settings')
-    implementation project(':components:browser_ui_contacts_picker')
-    implementation project(':components:browser_ui_util')
-    implementation project(':components:browser_ui_photo_picker')
-    implementation project(':components:browser_ui_client_certificate')
-    implementation project(':components:browser_ui_media')
-    implementation project(':components:browser_ui_http_auth')
-    implementation project(':components:browser_ui_share')
-    implementation project(':components:infobars')
-    implementation project(':components:media_router')
-    implementation project(':components:omnibox')
-    implementation project(':components:page_info')
-    implementation project(':components:permissions')
-    implementation project(':components:payments')
-    implementation project(':components:translate')
-    implementation project(':components:find_in_page')
-    implementation project(':components:external_intents')
-    implementation project(':components:subresource_filter')
-    implementation project(':components:javascript_dialogs')
-    implementation project(':components:webxr')
-    implementation project(':components:webrtc')
-    implementation project(':components:webapps')
-    implementation project(':browser:continuous_search')
-//    implementation project(':browser:autofill_assistant')
-    implementation project(':browser:banners')
-    implementation project(':browser:feed')
-    implementation project(':browser:feedback')
-    implementation project(':browser:feed_webfeed')
-    implementation project(':browser:keyboard_accessory')
-    implementation project(':browser:password_check')
-    implementation project(':browser:password_check_internal')
-    implementation project(':browser:ui_favicon')
-    implementation project(':browser:ui_messages')
-    implementation project(':browser:ui_appmenu_internal')
-    implementation project(':browser:download')
-    implementation project(':browser:share')
-    implementation project(':browser:video_tutorials')
-    implementation project(':browser:paint_preview')
-    implementation project(':browser:image_descriptions')
-    implementation project(':browser:user_education')
-    implementation project(':browser:touch_to_fill')
-    implementation project(':browser:safety_check')
-    implementation project(':browser:ui_default_browser_promo')
-    implementation project(':browser:privacy_secure_dns')
-    implementation project(':browser:safe_browsing_settings')
-    implementation project(':browser:customtabs_content')
-    implementation project(':browser:download')
-    implementation project(':browser:toolbar')
-    implementation project(':browser:language')
-    implementation project(':browser:signin_ui')
-    implementation project(':browser:signin_services')
-    implementation project(':browser:incognito_interstitial')
-    implementation project(':browser:password_manager_settings')
-    implementation project(':browser:password_entry_edit')
-    implementation project(':browser:webapps')
-    implementation project(':browser:privacy_sandbox')
-    implementation project(':browser:download_internal')
-    implementation project(':splash')
-    implementation project(':ui')
-    implementation project(':third_party:data_chart')
-    implementation project(':third_party:android_media')
-    implementation project(':content')
-    implementation project(':chrome_ui_messages')
-    implementation project(':chrome_tab_ui')
-    implementation project(':chrome_start_surface')
-    implementation project(':chrome_vr')
-    implementation project(':media')
-    implementation project(':base')
-    implementation project(':browser:ui_quickaction')*/
 
 
+    implementation("androidx.appcompat:appcompat:1.5.0")
+    // For loading and tinting drawables on older versions of the platform
+    implementation("androidx.appcompat:appcompat-resources:1.5.0")
 
+    implementation("androidx.annotation:annotation:1.4.0")
+    implementation("androidx.annotation:annotation-experimental:1.2.0")
+    implementation("androidx.legacy:legacy-support-core-utils:1.0.0")
+    implementation ("com.google.flatbuffers:flatbuffers-java:2.0.3")
 
 }
 

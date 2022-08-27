@@ -8,7 +8,7 @@ import android.content.Context;
 import android.text.format.DateUtils;
 
 import org.chromium.base.ContextUtils;
-import org.chromium.components.browser_ui.util.R;
+import org.chromium.chrome.R;
 
 import java.util.Calendar;
 import java.util.Date;

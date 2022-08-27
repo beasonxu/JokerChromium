@@ -14,11 +14,11 @@ import org.chromium.base.natives.GEN_JNI;
 class ContactsDialogHostJni implements ContactsDialogHost.Natives {
   private static ContactsDialogHost.Natives testInstance;
 
-  public static final JniStaticTestMocker<ContactsDialogHost.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content.browser.ContactsDialogHost.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<ContactsDialogHost.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<ContactsDialogHost.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.content.browser.ContactsDialogHost.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        ContactsDialogHost.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

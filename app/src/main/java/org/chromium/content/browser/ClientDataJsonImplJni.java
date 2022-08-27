@@ -14,11 +14,11 @@ import org.chromium.base.natives.GEN_JNI;
 public class ClientDataJsonImplJni implements ClientDataJsonImpl.Natives {
   private static ClientDataJsonImpl.Natives testInstance;
 
-  public static final JniStaticTestMocker<ClientDataJsonImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content.browser.ClientDataJsonImpl.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<ClientDataJsonImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<ClientDataJsonImpl.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.content.browser.ClientDataJsonImpl.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        ClientDataJsonImpl.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

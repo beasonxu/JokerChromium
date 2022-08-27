@@ -6,7 +6,7 @@ package org.chromium.content.browser.picker;
 
 import android.content.Context;
 
-import org.chromium.content.R;
+import org.chromium.chrome.R;
 
 /**
  * A week picker dialog.

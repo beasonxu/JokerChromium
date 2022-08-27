@@ -4,18 +4,6 @@
 
 package org.chromium.chrome.browser.password_entry_edit;
 
-import static org.chromium.chrome.browser.password_entry_edit.CredentialEditMediator.CredentialEditError.DUPLICATE_USERNAME;
-import static org.chromium.chrome.browser.password_entry_edit.CredentialEditMediator.CredentialEditError.EMPTY_PASSWORD;
-import static org.chromium.chrome.browser.password_entry_edit.CredentialEditMediator.CredentialEditError.ERROR_COUNT;
-import static org.chromium.chrome.browser.password_entry_edit.CredentialEditMediator.CredentialEntryAction.ACTION_COUNT;
-import static org.chromium.chrome.browser.password_entry_edit.CredentialEditMediator.CredentialEntryAction.COPIED_PASSWORD;
-import static org.chromium.chrome.browser.password_entry_edit.CredentialEditMediator.CredentialEntryAction.COPIED_USERNAME;
-import static org.chromium.chrome.browser.password_entry_edit.CredentialEditMediator.CredentialEntryAction.DELETED;
-import static org.chromium.chrome.browser.password_entry_edit.CredentialEditMediator.CredentialEntryAction.EDITED_PASSWORD;
-import static org.chromium.chrome.browser.password_entry_edit.CredentialEditMediator.CredentialEntryAction.EDITED_USERNAME;
-import static org.chromium.chrome.browser.password_entry_edit.CredentialEditMediator.CredentialEntryAction.EDITED_USERNAME_AND_PASSWORD;
-import static org.chromium.chrome.browser.password_entry_edit.CredentialEditMediator.CredentialEntryAction.MASKED_PASSWORD;
-import static org.chromium.chrome.browser.password_entry_edit.CredentialEditMediator.CredentialEntryAction.UNMASKED_PASSWORD;
 import static org.chromium.chrome.browser.password_entry_edit.CredentialEditProperties.DUPLICATE_USERNAME_ERROR;
 import static org.chromium.chrome.browser.password_entry_edit.CredentialEditProperties.EMPTY_PASSWORD_ERROR;
 import static org.chromium.chrome.browser.password_entry_edit.CredentialEditProperties.FEDERATION_ORIGIN;
@@ -32,6 +20,7 @@ import androidx.annotation.IntDef;
 
 import org.chromium.base.Callback;
 import org.chromium.base.metrics.RecordHistogram;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.password_entry_edit.CredentialEditCoordinator.CredentialActionDelegate;
 import org.chromium.chrome.browser.password_entry_edit.CredentialEntryFragmentViewBase.UiActionHandler;
 import org.chromium.chrome.browser.password_manager.ConfirmationDialogHelper;
@@ -73,7 +62,7 @@ public class CredentialEditMediator implements UiActionHandler {
 
     /**
      * The action that the user takes within the credential entry UI.
-     *
+     * <p>
      * These values are persisted to logs. Entries should not be renumbered and
      * numeric values should never be reused.
      */
@@ -81,82 +70,88 @@ public class CredentialEditMediator implements UiActionHandler {
             EDITED_USERNAME, EDITED_PASSWORD, EDITED_USERNAME_AND_PASSWORD, ACTION_COUNT})
     @Retention(RetentionPolicy.SOURCE)
     public @interface CredentialEntryAction {
-        /**
-         * The credential entry was deleted. Recorded after the user confirms it, when a
-         * confirmation dialog is prompted.
-         */
-        int DELETED = 0;
-
-        /**
-         * The username was copied.
-         */
-        int COPIED_USERNAME = 1;
-
-        /**
-         * The password was unmasked. Recorded after successful reauth is one was performed.
-         */
-        int UNMASKED_PASSWORD = 2;
-
-        /**
-         * The password was masked.
-         */
-        int MASKED_PASSWORD = 3;
-
-        /**
-         * The password was copied. Recorded after successful reauth is one was performed.
-         */
-        int COPIED_PASSWORD = 4;
-
-        /**
-         * The username was edited. Recorded after the user presses the save button".
-         */
-        int EDITED_USERNAME = 5;
-
-        /**
-         * The password was edited. Recorded after the user presses the save button".
-         */
-        int EDITED_PASSWORD = 6;
-
-        /**
-         * Both username and password were edited. Recorded after the user presses the save button".
-         */
-        int EDITED_USERNAME_AND_PASSWORD = 7;
-
-        int ACTION_COUNT = 8;
     }
 
     /**
-     *  The error displayed in the UI while the user is editing a credential.
-     *
-     *  These values are persisted to logs. Entries should not be renumbered and
-     *  numeric values should never be reused.
+     * The credential entry was deleted. Recorded after the user confirms it, when a
+     * confirmation dialog is prompted.
+     */
+    public static final int DELETED = 0;
+
+    /**
+     * The username was copied.
+     */
+    public static final int COPIED_USERNAME = 1;
+
+    /**
+     * The password was unmasked. Recorded after successful reauth is one was performed.
+     */
+    public static final int UNMASKED_PASSWORD = 2;
+
+    /**
+     * The password was masked.
+     */
+    public static final int MASKED_PASSWORD = 3;
+
+    /**
+     * The password was copied. Recorded after successful reauth is one was performed.
+     */
+    public static final int COPIED_PASSWORD = 4;
+
+    /**
+     * The username was edited. Recorded after the user presses the save button".
+     */
+    public static final int EDITED_USERNAME = 5;
+
+    /**
+     * The password was edited. Recorded after the user presses the save button".
+     */
+    public static final int EDITED_PASSWORD = 6;
+
+    /**
+     * Both username and password were edited. Recorded after the user presses the save button".
+     */
+    public static final int EDITED_USERNAME_AND_PASSWORD = 7;
+
+    public static final int ACTION_COUNT = 8;
+
+
+    /**
+     * The error displayed in the UI while the user is editing a credential.
+     * <p>
+     * These values are persisted to logs. Entries should not be renumbered and
+     * numeric values should never be reused.
      */
     @IntDef({EMPTY_PASSWORD, DUPLICATE_USERNAME, ERROR_COUNT})
     @Retention(RetentionPolicy.SOURCE)
     public @interface CredentialEditError {
-        /**
-         *  The password field is empty.
-         */
-        int EMPTY_PASSWORD = 0;
-
-        /**
-         * The username in the username field is already saved for this site/app.
-         */
-        int DUPLICATE_USERNAME = 1;
-
-        int ERROR_COUNT = 2;
     }
 
+    /**
+     * The password field is empty.
+     */
+    public static final int EMPTY_PASSWORD = 0;
+
+    /**
+     * The username in the username field is already saved for this site/app.
+     */
+    public static final int DUPLICATE_USERNAME = 1;
+
+    public static final int ERROR_COUNT = 2;
+
+
     CredentialEditMediator(PasswordAccessReauthenticationHelper reauthenticationHelper,
-            ConfirmationDialogHelper deleteDialogHelper,
-            CredentialActionDelegate credentialActionDelegate, Runnable helpLauncher,
-            boolean isBlockedCredential) {
+                           ConfirmationDialogHelper deleteDialogHelper,
+                           CredentialActionDelegate credentialActionDelegate, Runnable helpLauncher,
+                           boolean isBlockedCredential) {
         mReauthenticationHelper = reauthenticationHelper;
         mDeleteDialogHelper = deleteDialogHelper;
         mCredentialActionDelegate = credentialActionDelegate;
         mHelpLauncher = helpLauncher;
         mIsBlockedCredential = isBlockedCredential;
-    };
+    }
+
+    ;
 
     void initialize(PropertyModel model) {
         mModel = model;
@@ -229,7 +224,7 @@ public class CredentialEditMediator implements UiActionHandler {
         recordUsernameCopied();
         Clipboard.getInstance().setText("username", mModel.get(USERNAME));
         Toast.makeText(context, R.string.password_entry_viewer_username_copied_into_clipboard,
-                     Toast.LENGTH_SHORT)
+                        Toast.LENGTH_SHORT)
                 .show();
     }
 
@@ -268,7 +263,7 @@ public class CredentialEditMediator implements UiActionHandler {
                     SAVED_PASSWORD_ACTION_HISTOGRAM, COPIED_PASSWORD, ACTION_COUNT);
             Clipboard.getInstance().setPassword(mModel.get(PASSWORD));
             Toast.makeText(context, R.string.password_entry_viewer_password_copied_into_clipboard,
-                         Toast.LENGTH_SHORT)
+                            Toast.LENGTH_SHORT)
                     .show();
         });
     }

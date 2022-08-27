@@ -9,7 +9,7 @@ import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.chromium.chrome.browser.keyboard_accessory.R;
+import org.chromium.chrome.R;
 
 /**
  * This decoration adds a space between the last info view and the first non-info view. This allows

@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import org.chromium.chrome.tab_ui.R;
+import org.chromium.chrome.R;
 
 /**
  * Contains store opening and closing times for physical store website.

@@ -74,17 +74,17 @@ public class MimeTypeUtils {
      *         allow access to the file, for example on Android T+ where READ_EXTERNAL_STORAGE has
      *         been replaced with a handful of READ_MEDIA_* permissions.
      */
-    public @Nullable static String getPermissionNameForMimeType(@MimeTypeUtils.Type int mimeType) {
+    public @Nullable static String getPermissionNameForMimeType(@Type int mimeType) {
         if (useExternalStoragePermission()) {
             return permission.READ_EXTERNAL_STORAGE;
         }
 
         switch (mimeType) {
-            case MimeTypeUtils.Type.AUDIO:
+            case Type.AUDIO:
                 return PermissionConstants.READ_MEDIA_AUDIO;
-            case MimeTypeUtils.Type.IMAGE:
+            case Type.IMAGE:
                 return PermissionConstants.READ_MEDIA_IMAGES;
-            case MimeTypeUtils.Type.VIDEO:
+            case Type.VIDEO:
                 return PermissionConstants.READ_MEDIA_VIDEO;
             default:
                 return null;

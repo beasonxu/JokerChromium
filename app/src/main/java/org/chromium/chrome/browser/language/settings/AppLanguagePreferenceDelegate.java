@@ -9,7 +9,7 @@ import android.content.res.Resources;
 
 import org.chromium.base.BuildInfo;
 import org.chromium.chrome.browser.language.AppLocaleUtils;
-import org.chromium.chrome.browser.language.R;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.ui.messages.snackbar.Snackbar;
 import org.chromium.chrome.browser.ui.messages.snackbar.SnackbarManager;
 import org.chromium.chrome.browser.ui.messages.snackbar.SnackbarManager.SnackbarController;

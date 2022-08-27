@@ -21,7 +21,7 @@ import org.chromium.base.annotations.CalledByNative;
 import org.chromium.base.annotations.MainDex;
 import org.chromium.base.compat.ApiHelperForM;
 import org.chromium.base.compat.ApiHelperForQ;
-import org.chromium.base.compat.ApiHelperForR;
+import org.chromium.chrome.R;
 import org.chromium.base.task.AsyncTask;
 
 import java.io.File;

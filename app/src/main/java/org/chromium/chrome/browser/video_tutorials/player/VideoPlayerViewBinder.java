@@ -7,7 +7,7 @@ package org.chromium.chrome.browser.video_tutorials.player;
 import android.view.View;
 import android.widget.TextView;
 
-import org.chromium.chrome.browser.video_tutorials.R;
+import org.chromium.chrome.R;
 import org.chromium.ui.modelutil.PropertyKey;
 import org.chromium.ui.modelutil.PropertyModel;
 import org.chromium.ui.modelutil.PropertyModelChangeProcessor.ViewBinder;

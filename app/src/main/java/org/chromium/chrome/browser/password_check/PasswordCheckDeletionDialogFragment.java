@@ -9,7 +9,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
 
-import org.chromium.chrome.browser.password_check.internal.R;
+import org.chromium.chrome.R;
 
 /**
  * Shows the dialog that confirms the user really wants to delete a credential.

@@ -1,22 +1,22 @@
 package org.chromium.components.component_updater;
 
-import java.lang.Override;
-import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
+
+import javax.annotation.Generated;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
 class UpdateSchedulerJni implements UpdateScheduler.Natives {
   private static UpdateScheduler.Natives testInstance;
 
-  public static final JniStaticTestMocker<UpdateScheduler.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.component_updater.UpdateScheduler.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<UpdateScheduler.Natives> TEST_HOOKS = new JniStaticTestMocker<UpdateScheduler.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.components.component_updater.UpdateScheduler.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        UpdateScheduler.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

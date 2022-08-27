@@ -42,7 +42,7 @@ import androidx.core.graphics.drawable.DrawableCompat;
 
 import org.chromium.chrome.browser.password_check.PasswordCheckProperties.ItemType;
 import org.chromium.chrome.browser.password_check.helper.PasswordCheckIconHelper;
-import org.chromium.chrome.browser.password_check.internal.R;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.ui.favicon.FaviconUtils;
 import org.chromium.components.browser_ui.widget.listmenu.BasicListMenu;
 import org.chromium.components.browser_ui.widget.listmenu.ListMenu;

@@ -13,11 +13,11 @@ import org.chromium.base.natives.GEN_JNI;
 class LoadUrlParamsJni implements LoadUrlParams.Natives {
   private static LoadUrlParams.Natives testInstance;
 
-  public static final JniStaticTestMocker<LoadUrlParams.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content_public.browser.LoadUrlParams.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<LoadUrlParams.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<LoadUrlParams.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.content_public.browser.LoadUrlParams.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        LoadUrlParams.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

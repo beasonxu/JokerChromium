@@ -19,7 +19,7 @@ import androidx.annotation.Nullable;
 import org.chromium.chrome.browser.download.DirectoryOption;
 import org.chromium.chrome.browser.download.DownloadDialogBridge;
 import org.chromium.chrome.browser.download.DownloadDirectoryProvider;
-import org.chromium.chrome.browser.download.R;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.download.StringUtils;
 
 import java.util.ArrayList;

@@ -20,7 +20,7 @@ import org.chromium.base.task.PostTask;
 import org.chromium.base.task.TaskTraits;
 import org.chromium.chrome.browser.content_creation.reactions.LightweightReactionsMediator;
 import org.chromium.chrome.browser.content_creation.reactions.ReactionGifDrawable;
-import org.chromium.chrome.browser.content_creation.reactions.internal.R;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.content_creation.reactions.toolbar.ToolbarReactionsDelegate;
 import org.chromium.chrome.browser.flags.ChromeFeatureList;
 import org.chromium.components.content_creation.reactions.ReactionMetadata;

@@ -19,7 +19,6 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import org.chromium.chrome.R;
 
-
 /**
  * A Material-styled button with a customizable background color. On L devices, this is a true
  * Material button. On earlier devices, the button is similar but lacks ripples and a shadow.

@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 
 import org.chromium.chrome.browser.download.DownloadLaterMetrics;
 import org.chromium.chrome.browser.download.DownloadLaterMetrics.DownloadLaterUiEvent;
-import org.chromium.chrome.browser.download.R;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.download.dialogs.DownloadDateTimePickerDialogProperties.State;
 import org.chromium.chrome.browser.preferences.Pref;
 import org.chromium.components.prefs.PrefService;

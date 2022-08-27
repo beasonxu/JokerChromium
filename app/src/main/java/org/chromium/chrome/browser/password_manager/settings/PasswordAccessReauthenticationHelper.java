@@ -12,7 +12,7 @@ import androidx.fragment.app.FragmentManager;
 
 import org.chromium.base.Callback;
 import org.chromium.base.metrics.RecordHistogram;
-import org.chromium.chrome.browser.password_manager.R;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.password_manager.ReauthResult;
 import org.chromium.chrome.browser.password_manager.settings.ReauthenticationManager.ReauthScope;
 import org.chromium.ui.widget.Toast;

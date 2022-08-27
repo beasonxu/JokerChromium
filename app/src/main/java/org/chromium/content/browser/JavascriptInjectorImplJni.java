@@ -16,11 +16,11 @@ import org.chromium.content_public.browser.WebContents;
 class JavascriptInjectorImplJni implements JavascriptInjectorImpl.Natives {
   private static JavascriptInjectorImpl.Natives testInstance;
 
-  public static final JniStaticTestMocker<JavascriptInjectorImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content.browser.JavascriptInjectorImpl.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<JavascriptInjectorImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<JavascriptInjectorImpl.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.content.browser.JavascriptInjectorImpl.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        JavascriptInjectorImpl.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

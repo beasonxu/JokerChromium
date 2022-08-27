@@ -72,7 +72,6 @@ class InterfaceRegistrarImpl {
         public void registerInterfaces(InterfaceRegistry registry, Void v) {
             registry.addInterface(
                     AndroidOverlayProvider.MANAGER, new AndroidOverlayProviderImpl.Factory());
-            // TODO(avayvod): Register the PresentationService implementation here.
             registry.addInterface(AndroidFontLookup.MANAGER, new AndroidFontLookupImpl.Factory());
             registry.addInterface(
                     LocalTrustTokenFulfiller.MANAGER, () -> TrustTokenFulfillerManager.create());

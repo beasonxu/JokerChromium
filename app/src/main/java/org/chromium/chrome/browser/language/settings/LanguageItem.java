@@ -9,7 +9,7 @@ import android.text.TextUtils;
 import org.chromium.base.ContextUtils;
 import org.chromium.chrome.browser.language.AppLocaleUtils;
 import org.chromium.chrome.browser.language.GlobalAppLocaleController;
-import org.chromium.chrome.browser.language.R;
+import org.chromium.chrome.R;
 
 import java.util.Comparator;
 import java.util.Locale;

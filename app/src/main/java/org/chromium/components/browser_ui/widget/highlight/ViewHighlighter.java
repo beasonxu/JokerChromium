@@ -15,7 +15,7 @@ import androidx.annotation.Px;
 import androidx.core.view.ViewCompat;
 
 import org.chromium.base.ContextUtils;
-import org.chromium.components.browser_ui.widget.R;
+import org.chromium.chrome.R;
 
 /**
  * A helper class to draw an overlay layer on the top of a view to enable highlighting. The overlay

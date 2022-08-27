@@ -12,7 +12,6 @@ import android.text.style.BulletSpan;
 
 import org.chromium.chrome.R;
 
-
 /**
  * A wrapper around Android's BulletSpan that provides default styling and adjusts the bullet
  * positioning to prevent it from being cut off.

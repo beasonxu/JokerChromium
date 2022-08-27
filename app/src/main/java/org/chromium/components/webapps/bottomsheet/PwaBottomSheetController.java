@@ -27,7 +27,7 @@ import org.chromium.components.browser_ui.bottomsheet.EmptyBottomSheetObserver;
 import org.chromium.components.webapps.AddToHomescreenProperties;
 import org.chromium.components.webapps.AddToHomescreenViewDelegate;
 import org.chromium.components.webapps.InstallTrigger;
-import org.chromium.components.webapps.R;
+import org.chromium.chrome.R;
 import org.chromium.components.webapps.WebappInstallSource;
 import org.chromium.content_public.browser.NavigationHandle;
 import org.chromium.content_public.browser.Visibility;

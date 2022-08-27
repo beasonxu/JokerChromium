@@ -4,17 +4,6 @@
 
 package org.chromium.chrome.browser.keyboard_accessory;
 
-import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.KeyboardExtensionState.EXTENDING_KEYBOARD;
-import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.KeyboardExtensionState.FLOATING_BAR;
-import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.KeyboardExtensionState.FLOATING_SHEET;
-import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.KeyboardExtensionState.HIDDEN;
-import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.KeyboardExtensionState.REPLACING_KEYBOARD;
-import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.KeyboardExtensionState.WAITING_TO_REPLACE;
-import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.StateProperty.BAR;
-import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.StateProperty.FLOATING;
-import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.StateProperty.HIDDEN_SHEET;
-import static org.chromium.chrome.browser.keyboard_accessory.ManualFillingProperties.StateProperty.VISIBLE_SHEET;
-
 import androidx.annotation.IntDef;
 
 import org.chromium.ui.modelutil.PropertyModel;
@@ -42,11 +31,12 @@ class ManualFillingProperties {
     @IntDef({BAR, VISIBLE_SHEET, HIDDEN_SHEET})
     @Retention(RetentionPolicy.SOURCE)
     public @interface StateProperty {
-        int BAR = 0x1; // Any state either shows it or hides it - there is no neutral stance.
-        int VISIBLE_SHEET = 0x2; // A state with this property shows the sheet container.
-        int HIDDEN_SHEET = 0x4; // A state with this property hides the sheet container.
-        int FLOATING = 0x8; // A state with this property is not attached to a keyboard.
     }
+    public static final int BAR = 0x1; // Any state either shows it or hides it - there is no neutral stance.
+    public static final    int VISIBLE_SHEET = 0x2; // A state with this property shows the sheet container.
+    public static final    int HIDDEN_SHEET = 0x4; // A state with this property hides the sheet container.
+    public static final    int FLOATING = 0x8; // A state with this property is not attached to a keyboard.
+
 
     /**
      * A state is composed of {@link StateProperty}s. A state must ensure the properties are
@@ -61,13 +51,14 @@ class ManualFillingProperties {
             FLOATING_SHEET})
     @Retention(RetentionPolicy.SOURCE)
     public @interface KeyboardExtensionState {
-        int HIDDEN = HIDDEN_SHEET; // == 4
-        int EXTENDING_KEYBOARD = BAR | HIDDEN_SHEET; // == 5
-        int REPLACING_KEYBOARD = BAR | VISIBLE_SHEET; // == 3
-        int WAITING_TO_REPLACE = BAR; // == 1
-        int FLOATING_BAR = BAR | HIDDEN_SHEET | FLOATING; // == 13
-        int FLOATING_SHEET = BAR | VISIBLE_SHEET | FLOATING; // == 11
     }
+    public static final int HIDDEN = HIDDEN_SHEET; // == 4
+    public static final int EXTENDING_KEYBOARD = BAR | HIDDEN_SHEET; // == 5
+    public static final  int REPLACING_KEYBOARD = BAR | VISIBLE_SHEET; // == 3
+    public static final   int WAITING_TO_REPLACE = BAR; // == 1
+    public static final   int FLOATING_BAR = BAR | HIDDEN_SHEET | FLOATING; // == 13
+    public static final   int FLOATING_SHEET = BAR | VISIBLE_SHEET | FLOATING; // == 11
+
 
     static PropertyModel createFillingModel() {
         return new PropertyModel

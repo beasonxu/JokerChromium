@@ -13,11 +13,11 @@ import org.chromium.base.natives.GEN_JNI;
 class SpeechRecognitionImplJni implements SpeechRecognitionImpl.Natives {
   private static SpeechRecognitionImpl.Natives testInstance;
 
-  public static final JniStaticTestMocker<SpeechRecognitionImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content.browser.SpeechRecognitionImpl.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<SpeechRecognitionImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<SpeechRecognitionImpl.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.content.browser.SpeechRecognitionImpl.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        SpeechRecognitionImpl.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;
