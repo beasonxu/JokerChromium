@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="iph_tab_groups_quickly_compare_pages_text">"เปรียบเทียบหน้าต่างๆ อย่างรวดเร็วด้วยการสร้างกลุ่ม แตะลิงก์ค้างไว้เพื่อเริ่มต้น"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_text">"แตะเพื่อดูแท็บอื่น"</string>
+<string name="iph_tab_groups_your_tabs_together_text">"แท็บของคุณมีการจัดกลุ่มเข้าด้วยกันที่นี่"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_accessibility_text">"สลับไปมาระหว่างแท็บในกลุ่มแท็บบริเวณด้านล่างของหน้าจอ"</string>
+<string name="undo_bar_group_tabs_message">"จัดกลุ่มไว้ %1$s แท็บ"</string>
+<plurals name="bottom_tab_grid_title_placeholder">
+  <item quantity="one">"%1$d แท็บ"</item>
+  <item quantity="other">"%1$d แท็บ"</item>
+</plurals>
+<string name="bottom_tab_grid_new_tab">"เพิ่มแท็บใหม่ลงในกลุ่ม"</string>
+<string name="accessibility_bottom_tab_grid_close_tab_sheet">"ซ่อนตารางกริดแบบเต็มหน้าจอ"</string>
+<string name="accessibility_bottom_tab_strip_expand_tab_sheet">"แสดงแท็บของกลุ่มในตารางกริดแบบเต็มหน้าจอ"</string>
+<string name="accessibility_bottom_tab_strip_close_strip">"ปิดแนวแท็บ"</string>
+<string name="tabswitcher_create_group">"สร้างกลุ่ม"</string>
+<string name="accessibility_tab_switcher">"ตัวสลับแท็บ"</string>
+<string name="accessibility_close_tab_group_button">"ปิดกลุ่มแท็บที่มีแท็บอยู่ %1$s แท็บ"</string>
+<string name="accessibility_close_tab_group_button_with_group_name">"เลือกกลุ่ม %1$s ที่มีแท็บอยู่ %2$s แท็บ"</string>
+<string name="tab_selection_editor_group">"จัดกลุ่ม"</string>
+<string name="tab_selection_editor_toolbar_select_tabs">"เลือกแท็บ"</string>
+<plurals name="accessibility_tab_selection_editor_group_button">
+  <item quantity="one">"จัดกลุ่มแท็บที่เลือก %1$d แท็บ"</item>
+  <item quantity="other">"จัดกลุ่มแท็บที่เลือก %1$d แท็บ"</item>
+</plurals>
+<string name="accessibility_tab_selection_editor_back_button">"ซ่อนโหมดเลือกหลายรายการ"</string>
+<string name="accessibility_tab_selection_editor">"โหมดเลือกหลายรายการ"</string>
+<string name="tab_grid_dialog_remove_from_group">"นำออกจากกลุ่ม"</string>
+<string name="tab_grid_dialog_toolbar_remove_from_group">"นำแท็บออกจากกลุ่ม"</string>
+<string name="tab_grid_dialog_selection_mode_remove">"นำออก"</string>
+<string name="tab_grid_dialog_toolbar_share_group">"แชร์กลุ่ม"</string>
+<string name="tab_grid_dialog_toolbar_edit_group_name">"แก้ไขชื่อกลุ่ม"</string>
+<string name="accessibility_expand_tab_group">"ขยายกลุ่มแท็บที่มีแท็บอยู่ %1$s แท็บ"</string>
+<string name="accessibility_expand_tab_group_with_group_name">"ขยายกลุ่มแท็บ %1$s จำนวน %2$s แท็บ"</string>
+<plurals name="accessibility_tab_selection_dialog_remove_button">
+  <item quantity="one">"นำแท็บที่เลือก %1$d แท็บออกจากกลุ่ม"</item>
+  <item quantity="other">"นำแท็บที่เลือก %1$d แท็บออกจากกลุ่ม"</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button">
+  <item quantity="one">"ยุบ %1$d แท็บ"</item>
+  <item quantity="other">"ยุบกลุ่มแท็บที่มีแท็บอยู่ %1$d แท็บ"</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button_with_group_name">
+  <item quantity="one">"ยุบ %1$d แท็บ"</item>
+  <item quantity="other">"ยุบกลุ่มแท็บ %1$s ที่มีแท็บอยู่ %2$d แท็บ"</item>
+</plurals>
+<string name="accessibility_tab_grid_dialog">"ขยายกลุ่มแท็บแล้ว"</string>
+<string name="iph_drag_and_drop_introduction">"ลากแท็บเพื่อจัดกลุ่ม"</string>
+<string name="iph_drag_and_drop_show_me">"แสดงให้ฉันเห็น"</string>
+<string name="iph_drag_and_drop_title">"จัดระเบียบ"</string>
+<string name="iph_drag_and_drop_content">"หากต้องการจัดกลุ่มแท็บ ให้แตะแท็บหนึ่งค้างไว้ แล้วลากไปที่อีกแท็บ"</string>
+<string name="tab_switcher_carousel_title">"ท่องเว็บต่อไป"</string>
+<string name="tab_switcher_carousel_view_all">"ดูทั้งหมด"</string>
+<string name="tab_suggestion_review_button">"ดู"</string>
+<string name="tab_suggestion_close_tab_action_button">"ปิด"</string>
+<string name="tab_suggestion_close_stale_message">"คุณไม่ได้ใช้แท็บ %1$s แท็บมาระยะหนึ่งแล้ว ปิดแท็บเหล่านั้นไหม"</string>
+<string name="tab_suggestion_group_tabs_message">"ดูเหมือนว่ามีแท็บที่เกี่ยวข้อง %1$s แท็บ ต้องการจัดกลุ่มแท็บไหม"</string>
+<string name="accessibility_tab_suggestion_review_button">"ดูคำแนะนำ"</string>
+<string name="accessibility_tab_suggestion_close_stale_message">"คำแนะนำ: คุณไม่ได้ใช้แท็บ %1$s แท็บมาระยะหนึ่งแล้ว ปิดแท็บเหล่านั้นไหม"</string>
+<string name="accessibility_tab_suggestion_group_tabs_message">"คำแนะนำ: ดูเหมือนว่ามีแท็บที่เกี่ยวข้อง %1$s แท็บ ต้องการจัดกลุ่มแท็บไหม"</string>
+<string name="accessibility_tab_suggestion_dismiss_button">"ปิดคำแนะนำ"</string>
+<plurals name="accessibility_tab_suggestion_close_tab_action_button">
+  <item quantity="one">"ปิดแท็บที่เลือก %1$d แท็บ"</item>
+  <item quantity="other">"ปิดแท็บที่เลือก %1$d แท็บ"</item>
+</plurals>
+<string name="accessibility_tab_movement_left">"ย้ายแท็บไปทางซ้าย"</string>
+<string name="accessibility_tab_movement_right">"ย้ายแท็บไปทางขวา"</string>
+<string name="accessibility_tab_movement_up">"เลื่อนแท็บขึ้น"</string>
+<string name="accessibility_tab_movement_down">"ย้ายแท็บลงล่าง"</string>
+<string name="undo_tab_strip_closure_message">"ปิดแนวแท็บแล้ว"</string>
+<string name="tab_strip_info_bar_question">"ไม่ต้องแสดงแนวแท็บอีกใช่ไหม"</string>
+<string name="tab_strip_info_bar_no_reshow">"ไม่ต้องแสดงอีก"</string>
+<string name="tab_strip_info_bar_reshow">"แสดงทีหลัง"</string>
+<string name="price_drop_spotted_title">"พบการลดราคา"</string>
+<string name="price_drop_spotted_content">"ดูสินค้าราคาต่ำกว่าในแท็บที่เปิดอยู่"</string>
+<string name="price_drop_spotted_show_me">"แสดงให้ฉันเห็น"</string>
+<string name="price_drop_spotted_lower_price">"ราคาต่ำกว่า"</string>
+<string name="accessibility_tab_price_card">"ราคาสินค้านี้เพิ่งลดลงจาก %1$s เหลือ %2$s"</string>
+<string name="price_drop_alerts_card_title">"รับการแจ้งเตือนการลดราคาไหม"</string>
+<string name="price_drop_alerts_card_get_notified_content">"คุณจะได้รับการแจ้งเตือนเมื่อมีสินค้าราคาต่ำกว่าในแท็บที่เปิดอยู่"</string>
+<string name="price_drop_alerts_card_get_notified">"รับการแจ้งเตือน"</string>
+<string name="price_drop_alerts_card_go_to_settings_content">"หากต้องการรับการแจ้งเตือนเมื่อมีสินค้าราคาต่ำกว่าในแท็บที่เปิดอยู่ ให้เปิดการแจ้งเตือนในการตั้งค่า"</string>
+<string name="price_drop_alerts_card_go_to_settings">"ไปที่การตั้งค่า"</string>
+<string name="price_tracking_settings">"การตั้งค่าการติดตามราคา"</string>
+<string name="track_prices_on_tabs">"ติดตามราคาในแท็บ"</string>
+<string name="track_prices_on_tabs_description">"ดูการลดราคาในแท็บ"</string>
+<string name="price_drop_alerts">"การแจ้งเตือนการลดราคา"</string>
+<string name="price_drop_alerts_description">"รับการแจ้งเตือนเมื่อมีการลดราคา"</string>
+<string name="price_drop_notification_content_title">"ลดราคา %1$s สำหรับ %2$s"</string>
+<string name="price_drop_notification_content_text">"ตอนนี้ราคา %1$s ใน %2$s"</string>
+<string name="price_drop_notification_action_visit_site">"ไปที่เว็บไซต์"</string>
+<string name="price_drop_notification_action_turn_off_alert">"หยุดติดตามผลิตภัณฑ์"</string>
+<string name="merchant_viewer_message_title">"ดูข้อมูลร้านค้าไหม"</string>
+<string name="merchant_viewer_message_title_see_reviews">"ดูรีวิวร้านค้าไหม"</string>
+<string name="merchant_viewer_message_action">"มุมมอง"</string>
+<string name="merchant_viewer_message_description_rating">"การให้คะแนน %1$s/%2$s"</string>
+<plurals name="merchant_viewer_message_description_reviews">
+  <item quantity="one">"(%1$s รีวิว)"</item>
+  <item quantity="other">"(%1$s รีวิว)"</item>
+</plurals>
+<plurals name="merchant_viewer_message_description_reviews_from_google">
+  <item quantity="one">"รีวิวจาก Google %1$s รายการ"</item>
+  <item quantity="other">"รีวิวจาก Google %1$s รายการ"</item>
+</plurals>
+<string name="merchant_viewer_message_rating_numerical">"%1$.1f/%2$d"</string>
+<string name="merchant_viewer_message_rating_word">"การให้คะแนน"</string>
+<plurals name="accessibility_merchant_viewer_message_description">
+  <item quantity="one">" การให้คะแนน %1$s/%2$s, %3$d รีวิว"</item>
+  <item quantity="other">"การให้คะแนน %1$s/%2$s, %3$d รีวิว"</item>
+</plurals>
+<string name="accessibility_merchant_viewer_message_announcement">"ดูข้อมูลร้านค้า ตัวเลือกจะอยู่ตรงบริเวณด้านบนของหน้าจอ"</string>
+<string name="merchant_viewer_preview_sheet_title">"Google | เกี่ยวกับร้านนี้"</string>
+<string name="merchant_viewer_omnibox_icon_iph">"ดูข้อมูลร้านค้า"</string>
+<string name="page_info_store_info_title">"ข้อมูลร้านค้า"</string>
+<string name="page_info_store_info_description_with_no_review">"(คะแนนร้านค้า)"</string>
+<string name="page_info_store_info_description_with_no_rating">"ดูนโยบายคืนสินค้าและอื่นๆ"</string>
+<string name="merchant_viewer_preview_sheet_description">"ข้อมูลเกี่ยวกับร้านนี้"</string>
+<string name="merchant_viewer_preview_sheet_opened_half">"เปิดข้อมูลเกี่ยวกับร้านนี้ที่ระดับความสูงครึ่งหนึ่งของหน้าจอแล้ว"</string>
+<string name="merchant_viewer_preview_sheet_opened_full">"เปิดข้อมูลเกี่ยวกับร้านนี้ที่ระดับเต็มความสูงของหน้าจอแล้ว"</string>
+<string name="merchant_viewer_preview_sheet_closed">"ปิดข้อมูลเกี่ยวกับร้านนี้แล้ว"</string>
+<string name="close_all_tabs_dialog_title">"ปิดแท็บทั้งหมดใช่ไหม"</string>
+<string name="close_all_tabs_dialog_message">"คุณค้นหาแท็บที่ปิดไปได้ในแท็บล่าสุดในส่วนเมนูหลักของ Chrome"</string>
+<string name="close_all_tabs_dialog_title_incognito">"ปิดแท็บที่ไม่ระบุตัวตนทั้งหมดใช่ไหม"</string>
+<string name="close_all_tabs_dialog_message_incognito">"ระบบจะลบกิจกรรมในแท็บที่ไม่ระบุตัวตนเหล่านี้ออกจากอุปกรณ์นี้"</string>
+</resources>

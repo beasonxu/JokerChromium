@@ -89,6 +89,7 @@ android {
                         "$rootDir/app/src/main/res_download",
                         "$rootDir/app/src/main/res_modaldialog",
                         "$rootDir/app/src/main/res_browser_ui",
+                        "$rootDir/app/src/main/res_features_tab_ui",
 
 
 

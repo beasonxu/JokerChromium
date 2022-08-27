@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="iph_tab_groups_quickly_compare_pages_text">"Барактарды топко бириктирип, тез салыштырып чыгыңыз. Баштоо үчүн, шилтемени коё бербей басып туруңуз."</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_text">"Башка өтмөктү көрүү үчүн таптап коюңуз"</string>
+<string name="iph_tab_groups_your_tabs_together_text">"Өтмөктөрүңүз бул жерге топтолот"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_accessibility_text">"Экраныңыздын ылдый жагында жайгашкан өтмөктөрдүн тобунан өтмөктөрүңүздү которуштуруңуз"</string>
+<string name="undo_bar_group_tabs_message">"%1$s өтмөк топтолду"</string>
+<plurals name="bottom_tab_grid_title_placeholder">
+  <item quantity="one">"%1$d өтмөк"</item>
+  <item quantity="other">"%1$d өтмөк"</item>
+</plurals>
+<string name="bottom_tab_grid_new_tab">"Топко жаңы өтмөк кошуу"</string>
+<string name="accessibility_bottom_tab_grid_close_tab_sheet">"Толук экран торчосун жашыруу"</string>
+<string name="accessibility_bottom_tab_strip_expand_tab_sheet">"Топтун өтмөктөрүн толук экрандагы торчодо көрсөтүү"</string>
+<string name="accessibility_bottom_tab_strip_close_strip">"Өтмөк тасмасын жабуу"</string>
+<string name="tabswitcher_create_group">"Топ түзүү"</string>
+<string name="accessibility_tab_switcher">"Өтмөк которуштургуч"</string>
+<string name="accessibility_close_tab_group_button">"%1$s өтмөктөн турган өтмөктөр тобун жабуу"</string>
+<string name="accessibility_close_tab_group_button_with_group_name">"%1$s тобундагы %2$s өтмөктү жабуу"</string>
+<string name="tab_selection_editor_group">"Топ"</string>
+<string name="tab_selection_editor_toolbar_select_tabs">"Өтмөктөрдү тандоо"</string>
+<plurals name="accessibility_tab_selection_editor_group_button">
+  <item quantity="one">"%1$d тандалган өтмөктү топко бириктирүү"</item>
+  <item quantity="other">"%1$d тандалган өтмөктү топко бириктирүү"</item>
+</plurals>
+<string name="accessibility_tab_selection_editor_back_button">"Бир нече тандоосу бар режимди жашыруу"</string>
+<string name="accessibility_tab_selection_editor">"Бир нече тандоосу бар режим"</string>
+<string name="tab_grid_dialog_remove_from_group">"Топтон алып салуу"</string>
+<string name="tab_grid_dialog_toolbar_remove_from_group">"Топтогу өтмөктөрдү алып салуу"</string>
+<string name="tab_grid_dialog_selection_mode_remove">"Алып салуу"</string>
+<string name="tab_grid_dialog_toolbar_share_group">"Топту бөлүшүү"</string>
+<string name="tab_grid_dialog_toolbar_edit_group_name">"Топтун аталышын өзгөртүү"</string>
+<string name="accessibility_expand_tab_group">"%1$s өтмөктөн турган өтмөктөр тобу жайылып көрүнсүн."</string>
+<string name="accessibility_expand_tab_group_with_group_name">"%1$s өтмөктөр тобу %2$s өтмөктө жайылып көрүнсүн."</string>
+<plurals name="accessibility_tab_selection_dialog_remove_button">
+  <item quantity="one">"Топтогу тандалган %1$d өтмөк өчүрүлсүн."</item>
+  <item quantity="other">"Топтогу тандалган %1$d өтмөк өчүрүлсүн."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button">
+  <item quantity="one">"%1$d өтмөк жыйыштырылсын."</item>
+  <item quantity="other">"%1$d өтмөктөн турган өтмөктөр тобу жыйыштырылсын."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button_with_group_name">
+  <item quantity="one">"%1$d өтмөк жыйыштырылсын."</item>
+  <item quantity="other">"%1$s өтмөктөр тобундагы %2$d өтмөк жыйыштырылсын."</item>
+</plurals>
+<string name="accessibility_tab_grid_dialog">"Өтмөктөр тобу жайылып көрсөтүлдү"</string>
+<string name="iph_drag_and_drop_introduction">"Топтоо үчүн өтмөктөрдү сүйрөп келиңиз"</string>
+<string name="iph_drag_and_drop_show_me">"Көрсөтчү гана"</string>
+<string name="iph_drag_and_drop_title">"Иреттеп алыңыз"</string>
+<string name="iph_drag_and_drop_content">"Өтмөктөрдү топко кошуу үчүн алардын бирин басып кармап туруңуз. Андан кийин аны башка өтмөккө сүйрөңүз."</string>
+<string name="tab_switcher_carousel_title">"Серептөөнү улантуу"</string>
+<string name="tab_switcher_carousel_view_all">"Баарын көрүү"</string>
+<string name="tab_suggestion_review_button">"Карап көрүү"</string>
+<string name="tab_suggestion_close_tab_action_button">"Жабуу"</string>
+<string name="tab_suggestion_close_stale_message">"Өтмөктөрүңүздүн %1$s акыркы убакта колдонулган жок. Алар жабылсынбы?"</string>
+<string name="tab_suggestion_group_tabs_message">"%1$s өтмөк окшош окшойт. Алар топко бириктирилсинби?"</string>
+<string name="accessibility_tab_suggestion_review_button">"Сунуштарды карап чыгуу."</string>
+<string name="accessibility_tab_suggestion_close_stale_message">"Сунуш: Өтмөктөрүңүздүн %1$s акыркы убакта колдонулган жок. Алар жабылсынбы?"</string>
+<string name="accessibility_tab_suggestion_group_tabs_message">"Сунуш: %1$s өтмөк окшош окшойт. Алар топко бириктирилсинби?"</string>
+<string name="accessibility_tab_suggestion_dismiss_button">"Сунушту жабуу."</string>
+<plurals name="accessibility_tab_suggestion_close_tab_action_button">
+  <item quantity="one">"Тандалган %1$d өтмөктү жабуу"</item>
+  <item quantity="other">"Тандалган %1$d өтмөктү жабуу"</item>
+</plurals>
+<string name="accessibility_tab_movement_left">"Өтмөктү солго жылдыруу"</string>
+<string name="accessibility_tab_movement_right">"Өтмөктү оңго жылдыруу"</string>
+<string name="accessibility_tab_movement_up">"Өтмөктү жогору жылдыруу"</string>
+<string name="accessibility_tab_movement_down">"Өтмөктү төмөн жылдыруу"</string>
+<string name="undo_tab_strip_closure_message">"Өтмөк тасмасы жабылды"</string>
+<string name="tab_strip_info_bar_question">"Өтмөк тасмасы экинчи көрсөтүлбөсүнбү?"</string>
+<string name="tab_strip_info_bar_no_reshow">"Экинчи көрүнбөсүн"</string>
+<string name="tab_strip_info_bar_reshow">"Кийинчерээк көрсөтүү"</string>
+<string name="price_drop_spotted_title">"Баалардын түшкөнү аныкталды"</string>
+<string name="price_drop_spotted_content">"Ачык өтмөктөрүңүздө кайсы нерсе арзандаганын көрүңүз"</string>
+<string name="price_drop_spotted_show_me">"Көрсөтчү гана"</string>
+<string name="price_drop_spotted_lower_price">"Арзаныраак баа"</string>
+<string name="accessibility_tab_price_card">"%1$s турган бул нерсенин баасы %2$s болуп калды"</string>
+<string name="price_drop_alerts_card_title">"Баалардын арзандаганы жөнүндө эскертүүлөрдү алгыңыз келеби?"</string>
+<string name="price_drop_alerts_card_get_notified_content">"Төмөндөгөн баа тууралуу эскертүүнү ачылган өтмөктө көрөсүз"</string>
+<string name="price_drop_alerts_card_get_notified">"Ооба"</string>
+<string name="price_drop_alerts_card_go_to_settings_content">"Төмөндөгөн баа тууралуу эскертүүнү ачылган өтмөктө көрүү үчүн Жөндөөлөрдөн билдирмелерди күйгүзүңүз."</string>
+<string name="price_drop_alerts_card_go_to_settings">"Жөндөөлөргө өтүү"</string>
+<string name="price_tracking_settings">"Бааларга көз салуу жөндөөлөрү"</string>
+<string name="track_prices_on_tabs">"Бааларга өтмөктөрдө көз салуу"</string>
+<string name="track_prices_on_tabs_description">"Төмөндөгөн бааларды өтмөктөрдө көрөсүз"</string>
+<string name="price_drop_alerts">"Баалардын түшкөнү жөнүндө эскертүүлөр"</string>
+<string name="price_drop_alerts_description">"Баалар төмөндөгөндө билдирме алып турасыз"</string>
+<string name="price_drop_notification_content_title">"%2$s %1$s арзандайт"</string>
+<string name="price_drop_notification_content_text">"%2$s сайтында эми %1$s"</string>
+<string name="price_drop_notification_action_visit_site">"Сайтка баш багуу"</string>
+<string name="price_drop_notification_action_turn_off_alert">"Товарга көз салууну токтотуу"</string>
+<string name="merchant_viewer_message_title">"Дүкөн тууралуу маалыматты көрөсүзбү?"</string>
+<string name="merchant_viewer_message_title_see_reviews">"Дүкөн жөнүндө жазылган сын-пикирлерди көрөсүзбү?"</string>
+<string name="merchant_viewer_message_action">"Көрүнүш"</string>
+<string name="merchant_viewer_message_description_rating">"Рейтинг: %1$s/%2$s"</string>
+<plurals name="merchant_viewer_message_description_reviews">
+  <item quantity="one">"(%1$s сын-пикир)"</item>
+  <item quantity="other">"(%1$s сын-пикир)"</item>
+</plurals>
+<plurals name="merchant_viewer_message_description_reviews_from_google">
+  <item quantity="one">"Google\'да жазылган %1$s сын-пикир"</item>
+  <item quantity="other">"Google\'да жазылган %1$s сын-пикир"</item>
+</plurals>
+<string name="merchant_viewer_message_rating_numerical">"%1$.1f/%2$d"</string>
+<string name="merchant_viewer_message_rating_word">"рейтинг"</string>
+<plurals name="accessibility_merchant_viewer_message_description">
+  <item quantity="one">" Рейтинг: %1$s/%2$s, %3$d сын-пикир"</item>
+  <item quantity="other">"Рейтинг: %1$s/%2$s, %3$d сын-пикир"</item>
+</plurals>
+<string name="accessibility_merchant_viewer_message_announcement">"Дүкөн тууралуу маалыматты көрүңүз. Параметр экрандын жогору жагында берилген"</string>
+<string name="merchant_viewer_preview_sheet_title">"Google | Бул дүкөн тууралуу"</string>
+<string name="merchant_viewer_omnibox_icon_iph">"Дүкөн жөнүндө маалыматты көрүү"</string>
+<string name="page_info_store_info_title">"Дүкөн жөнүндө маалымат"</string>
+<string name="page_info_store_info_description_with_no_review">"(дүкөндүн рейтинги)"</string>
+<string name="page_info_store_info_description_with_no_rating">"Кайтаруу саясатын жана башкаларды окуп чыгыңыз"</string>
+<string name="merchant_viewer_preview_sheet_description">"Бул дүкөн тууралуу маалымат"</string>
+<string name="merchant_viewer_preview_sheet_opened_half">"Бул дүкөн тууралуу маалымат жарым экранда ачылды"</string>
+<string name="merchant_viewer_preview_sheet_opened_full">"Бул дүкөн тууралуу маалымат толук экранда ачылды"</string>
+<string name="merchant_viewer_preview_sheet_closed">"Бул дүкөн тууралуу маалымат жабык"</string>
+<string name="close_all_tabs_dialog_title">"Бардык өтмөктөр жабылсынбы?"</string>
+<string name="close_all_tabs_dialog_message">"Жабылган өтмөктөрүңүздү Chome\'дун негизги менюсундагы \"Акыркы өтмөктөр\" бөлүмүнөн таба аласыз"</string>
+<string name="close_all_tabs_dialog_title_incognito">"Бардык жашыруун өтмөктөр жабылсынбы?"</string>
+<string name="close_all_tabs_dialog_message_incognito">"Ушул Жашыруун өтмөктөрдө издеген нерселериңиз бул түзмөктөн өчүрүлөт"</string>
+</resources>

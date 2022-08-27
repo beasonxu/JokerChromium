@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="iph_tab_groups_quickly_compare_pages_text">"Vergelijk pagina\'s snel door een groep te maken. Tik op een link en houd deze vast om te beginnen."</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_text">"Tik om nog een tabblad te bekijken"</string>
+<string name="iph_tab_groups_your_tabs_together_text">"Je tabbladen zijn hier gegroepeerd"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_accessibility_text">"Je kunt onderaan het scherm schakelen tussen tabbladen in je tabbladgroep"</string>
+<string name="undo_bar_group_tabs_message">"%1$s tabbladen gegroepeerd"</string>
+<plurals name="bottom_tab_grid_title_placeholder">
+  <item quantity="one">"%1$d tabblad"</item>
+  <item quantity="other">"%1$d tabbladen"</item>
+</plurals>
+<string name="bottom_tab_grid_new_tab">"Nieuw tabblad aan groep toevoegen"</string>
+<string name="accessibility_bottom_tab_grid_close_tab_sheet">"Raster op volledig scherm verbergen"</string>
+<string name="accessibility_bottom_tab_strip_expand_tab_sheet">"Tabbladen van groep bekijken in raster op volledig scherm"</string>
+<string name="accessibility_bottom_tab_strip_close_strip">"Tabbladstrook sluiten"</string>
+<string name="tabswitcher_create_group">"Groep maken"</string>
+<string name="accessibility_tab_switcher">"Tabbladschakelaar"</string>
+<string name="accessibility_close_tab_group_button">"Tabbladgroep met %1$s tabbladen sluiten"</string>
+<string name="accessibility_close_tab_group_button_with_group_name">"De groep %1$s met %2$s tabbladen sluiten"</string>
+<string name="tab_selection_editor_group">"Groep"</string>
+<string name="tab_selection_editor_toolbar_select_tabs">"Tabbladen selecteren"</string>
+<plurals name="accessibility_tab_selection_editor_group_button">
+  <item quantity="one">"%1$d geselecteerd tabblad groeperen"</item>
+  <item quantity="other">"%1$d geselecteerde tabbladen groeperen"</item>
+</plurals>
+<string name="accessibility_tab_selection_editor_back_button">"Optie om meerdere tabbladen te selecteren verbergen"</string>
+<string name="accessibility_tab_selection_editor">"Optie om meerdere tabbladen te selecteren"</string>
+<string name="tab_grid_dialog_remove_from_group">"Uit groep verwijderen"</string>
+<string name="tab_grid_dialog_toolbar_remove_from_group">"Tabbladen uit groep verwijderen"</string>
+<string name="tab_grid_dialog_selection_mode_remove">"Verwijderen"</string>
+<string name="tab_grid_dialog_toolbar_share_group">"Groep delen"</string>
+<string name="tab_grid_dialog_toolbar_edit_group_name">"Groepsnaam bewerken"</string>
+<string name="accessibility_expand_tab_group">"Tabbladgroep met %1$s tabbladen uitvouwen"</string>
+<string name="accessibility_expand_tab_group_with_group_name">"De tabbladgroep %1$s uitvouwen met %2$s tabbladen."</string>
+<plurals name="accessibility_tab_selection_dialog_remove_button">
+  <item quantity="one">"%1$d geselecteerd tabblad uit groep verwijderen."</item>
+  <item quantity="other">"%1$d geselecteerde tabbladen uit groep verwijderen."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button">
+  <item quantity="one">"%1$d tabblad samenvouwen."</item>
+  <item quantity="other">"Tabbladgroep met %1$d tabbladen samenvouwen."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button_with_group_name">
+  <item quantity="one">"%1$d tabblad samenvouwen."</item>
+  <item quantity="other">"De tabbladgroep %1$s met %2$d tabbladen samenvouwen."</item>
+</plurals>
+<string name="accessibility_tab_grid_dialog">"Tabbladgroep uitgevouwen"</string>
+<string name="iph_drag_and_drop_introduction">"Sleep de tabbladen om ze te groeperen"</string>
+<string name="iph_drag_and_drop_show_me">"Tonen"</string>
+<string name="iph_drag_and_drop_title">"Georganiseerd werken"</string>
+<string name="iph_drag_and_drop_content">"Groepeer tabbladen door ze vast te houden en naar andere tabbladen te slepen."</string>
+<string name="tab_switcher_carousel_title">"Verder browsen"</string>
+<string name="tab_switcher_carousel_view_all">"Alles bekijken"</string>
+<string name="tab_suggestion_review_button">"Bekijken"</string>
+<string name="tab_suggestion_close_tab_action_button">"Sluiten"</string>
+<string name="tab_suggestion_close_stale_message">"%1$s van je tabbladen zijn niet recent gebruikt. Wil je ze sluiten?"</string>
+<string name="tab_suggestion_group_tabs_message">"%1$s tabbladen lijken gerelateerd. Wil je deze groeperen?"</string>
+<string name="accessibility_tab_suggestion_review_button">"Bekijk de suggesties."</string>
+<string name="accessibility_tab_suggestion_close_stale_message">"Suggestie: %1$s van je tabbladen zijn niet recent gebruikt. Wil je ze sluiten?"</string>
+<string name="accessibility_tab_suggestion_group_tabs_message">"Suggestie: %1$s tabbladen lijken gerelateerd. Wil je deze groeperen?"</string>
+<string name="accessibility_tab_suggestion_dismiss_button">"Sluit de suggesties."</string>
+<plurals name="accessibility_tab_suggestion_close_tab_action_button">
+  <item quantity="one">"%1$d geselecteerd tabblad sluiten"</item>
+  <item quantity="other">"%1$d geselecteerde tabbladen sluiten"</item>
+</plurals>
+<string name="accessibility_tab_movement_left">"Tabblad naar links verplaatsen"</string>
+<string name="accessibility_tab_movement_right">"Tabblad naar rechts verplaatsen"</string>
+<string name="accessibility_tab_movement_up">"Tabblad omhoog verplaatsen"</string>
+<string name="accessibility_tab_movement_down">"Tabblad naar beneden verplaatsen"</string>
+<string name="undo_tab_strip_closure_message">"Tabbladstrook gesloten"</string>
+<string name="tab_strip_info_bar_question">"Tabbladstrook niet meer bekijken?"</string>
+<string name="tab_strip_info_bar_no_reshow">"Niet meer bekijken"</string>
+<string name="tab_strip_info_bar_reshow">"Later bekijken"</string>
+<string name="price_drop_spotted_title">"Prijsdaling opgemerkt"</string>
+<string name="price_drop_spotted_content">"Bekijk welk item op je geopende tabbladen een lagere prijs heeft"</string>
+<string name="price_drop_spotted_show_me">"Tonen"</string>
+<string name="price_drop_spotted_lower_price">"Lagere prijs"</string>
+<string name="accessibility_tab_price_card">"De prijs van dit item is recent verlaagd van %1$s naar %2$s"</string>
+<string name="price_drop_alerts_card_title">"Meldingen krijgen voor prijsdalingen?"</string>
+<string name="price_drop_alerts_card_get_notified_content">"Je krijgt een melding als er een lagere prijs is op een geopend tabblad"</string>
+<string name="price_drop_alerts_card_get_notified">"Meldingen krijgen"</string>
+<string name="price_drop_alerts_card_go_to_settings_content">"Wil je een melding krijgen als er een lagere prijs is op een geopend tabblad, zet dan meldingen aan in Instellingen."</string>
+<string name="price_drop_alerts_card_go_to_settings">"Naar Instellingen"</string>
+<string name="price_tracking_settings">"Instellingen voor prijstracking"</string>
+<string name="track_prices_on_tabs">"Prijzen volgen op tabbladen"</string>
+<string name="track_prices_on_tabs_description">"Prijsdalingen bekijken op je tabbladen"</string>
+<string name="price_drop_alerts">"Meldingen over prijsdalingen"</string>
+<string name="price_drop_alerts_description">"Melding krijgen als prijzen dalen"</string>
+<string name="price_drop_notification_content_title">"Prijsdaling van %1$s voor %2$s"</string>
+<string name="price_drop_notification_content_text">"Nu %1$s op %2$s"</string>
+<string name="price_drop_notification_action_visit_site">"Site bezoeken"</string>
+<string name="price_drop_notification_action_turn_off_alert">"Product niet meer volgen"</string>
+<string name="merchant_viewer_message_title">"Winkelinformatie bekijken?"</string>
+<string name="merchant_viewer_message_title_see_reviews">"Winkelreviews bekijken?"</string>
+<string name="merchant_viewer_message_action">"Weergave"</string>
+<string name="merchant_viewer_message_description_rating">"%1$s/%2$s beoordeling"</string>
+<plurals name="merchant_viewer_message_description_reviews">
+  <item quantity="one">"(%1$s review)"</item>
+  <item quantity="other">"(%1$s reviews)"</item>
+</plurals>
+<plurals name="merchant_viewer_message_description_reviews_from_google">
+  <item quantity="one">"%1$s review van Google"</item>
+  <item quantity="other">"%1$s reviews van Google"</item>
+</plurals>
+<string name="merchant_viewer_message_rating_numerical">"%1$.1f/%2$d"</string>
+<string name="merchant_viewer_message_rating_word">"beoordeling"</string>
+<plurals name="accessibility_merchant_viewer_message_description">
+  <item quantity="one">" %1$s/%2$s beoordeling, %3$d review"</item>
+  <item quantity="other">"%1$s/%2$s beoordeling, %3$d reviews"</item>
+</plurals>
+<string name="accessibility_merchant_viewer_message_announcement">"Winkelinformatie bekijken, optie beschikbaar bovenaan het scherm"</string>
+<string name="merchant_viewer_preview_sheet_title">"Google | Over deze winkel"</string>
+<string name="merchant_viewer_omnibox_icon_iph">"Winkelinformatie bekijken"</string>
+<string name="page_info_store_info_title">"Winkelinformatie"</string>
+<string name="page_info_store_info_description_with_no_review">"(winkelbeoordeling)"</string>
+<string name="page_info_store_info_description_with_no_rating">"Retourbeleid en meer bekijken"</string>
+<string name="merchant_viewer_preview_sheet_description">"Informatie over deze winkel"</string>
+<string name="merchant_viewer_preview_sheet_opened_half">"Informatie over deze winkel is op halve hoogte geopend"</string>
+<string name="merchant_viewer_preview_sheet_opened_full">"Informatie over deze winkel is op volledige hoogte geopend"</string>
+<string name="merchant_viewer_preview_sheet_closed">"Informatie over deze winkel gesloten"</string>
+<string name="close_all_tabs_dialog_title">"Alle tabbladen sluiten?"</string>
+<string name="close_all_tabs_dialog_message">"Je kunt je gesloten tabbladen vinden in Recente tabbladen in het hoofdmenu van Chrome"</string>
+<string name="close_all_tabs_dialog_title_incognito">"Alle incognitotabbladen sluiten?"</string>
+<string name="close_all_tabs_dialog_message_incognito">"Je activiteit in deze incognitotabbladen wordt verwijderd van dit apparaat"</string>
+</resources>

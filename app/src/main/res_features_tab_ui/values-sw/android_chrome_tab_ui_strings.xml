@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="iph_tab_groups_quickly_compare_pages_text">"Linganisha kurasa kwa haraka kwa kuanzisha kikundi. Ili uanze, gusa na ushikilie kiungo."</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_text">"Gusa ili uone kichupo kingine"</string>
+<string name="iph_tab_groups_your_tabs_together_text">"Vichupo vyako vimewekwa katika kikundi kimoja hapa"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_accessibility_text">"Badili kati ya vichupo vilivyo katika kikundi chako cha vichupo karibu na sehemu ya chini ya skrini"</string>
+<string name="undo_bar_group_tabs_message">"Umeweka pamoja vichupo %1$s"</string>
+<plurals name="bottom_tab_grid_title_placeholder">
+  <item quantity="one">"Kichupo %1$d"</item>
+  <item quantity="other">"Vichupo %1$d"</item>
+</plurals>
+<string name="bottom_tab_grid_new_tab">"Ongeza kichupo kipya kwenye kikundi"</string>
+<string name="accessibility_bottom_tab_grid_close_tab_sheet">"Ficha gridi ya skrini nzima"</string>
+<string name="accessibility_bottom_tab_strip_expand_tab_sheet">"Onyesha vichupo vya kikundi katika gridi ya skrini nzima"</string>
+<string name="accessibility_bottom_tab_strip_close_strip">"Funga ukanda wa vichupo"</string>
+<string name="tabswitcher_create_group">"Unda kikundi"</string>
+<string name="accessibility_tab_switcher">"Kibadilishaji cha Vichupo"</string>
+<string name="accessibility_close_tab_group_button">"Funga kikundi chenye vichupo %1$s"</string>
+<string name="accessibility_close_tab_group_button_with_group_name">"Funga kikundi cha %1$s chenye vichupo %2$s"</string>
+<string name="tab_selection_editor_group">"Kikundi"</string>
+<string name="tab_selection_editor_toolbar_select_tabs">"Chagua vichupo"</string>
+<plurals name="accessibility_tab_selection_editor_group_button">
+  <item quantity="one">"Panga kichupo %1$d kilichochaguliwa"</item>
+  <item quantity="other">"Panga pamoja vichupo %1$d vilivyochaguliwa"</item>
+</plurals>
+<string name="accessibility_tab_selection_editor_back_button">"Ficha hali ya kuchagua vingi"</string>
+<string name="accessibility_tab_selection_editor">"Hali ya kuchagua vingi"</string>
+<string name="tab_grid_dialog_remove_from_group">"Ondoa kwenye kikundi"</string>
+<string name="tab_grid_dialog_toolbar_remove_from_group">"Ondoa vichupo kwenye kikundi"</string>
+<string name="tab_grid_dialog_selection_mode_remove">"Ondoa"</string>
+<string name="tab_grid_dialog_toolbar_share_group">"Shiriki kikundi"</string>
+<string name="tab_grid_dialog_toolbar_edit_group_name">"Badilisha jina la kikundi"</string>
+<string name="accessibility_expand_tab_group">"Panua kikundi chenye vichupo %1$s."</string>
+<string name="accessibility_expand_tab_group_with_group_name">"Panua kikundi cha kichupo cha %1$s chenye vichupo %2$s."</string>
+<plurals name="accessibility_tab_selection_dialog_remove_button">
+  <item quantity="one">"Ondoa kichupo %1$d kilichochaguliwa kwenye kikundi."</item>
+  <item quantity="other">"Ondoa vichupo %1$d vilivyochaguliwa kwenye kikundi."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button">
+  <item quantity="one">"Kunja kichupo %1$d."</item>
+  <item quantity="other">"Kunja kikundi chenye vichupo %1$d."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button_with_group_name">
+  <item quantity="one">"Kunja kichupo %1$d."</item>
+  <item quantity="other">"Kunja kikundi cha %1$s chenye vichupo %2$d."</item>
+</plurals>
+<string name="accessibility_tab_grid_dialog">"Kikundi cha vichupo kimepanuliwa"</string>
+<string name="iph_drag_and_drop_introduction">"Buruta vichupo ili uviweke katika kikundi"</string>
+<string name="iph_drag_and_drop_show_me">"Nionyeshe"</string>
+<string name="iph_drag_and_drop_title">"Weka kwa utaratibu"</string>
+<string name="iph_drag_and_drop_content">"Ili upange vichupo katika makundi, gusa na ushikilie kichupo. Kisha, kiburute kwenye kichupo kingine."</string>
+<string name="tab_switcher_carousel_title">"Endelea kuvinjari"</string>
+<string name="tab_switcher_carousel_view_all">"Angalia vyote"</string>
+<string name="tab_suggestion_review_button">"Maoni"</string>
+<string name="tab_suggestion_close_tab_action_button">"Funga"</string>
+<string name="tab_suggestion_close_stale_message">"Hujatumia vichupo vyako %1$s hivi karibuni. Je, tuvifunge?"</string>
+<string name="tab_suggestion_group_tabs_message">"Vichupo %1$s vinaonekana kuwa vinahusiana. Ungependa kuvipanga pamoja?"</string>
+<string name="accessibility_tab_suggestion_review_button">"Soma mapendekezo."</string>
+<string name="accessibility_tab_suggestion_close_stale_message">"Pendekezo: Hujatumia vichupo %1$s hivi majuzi. Ungependa tuvifunge?"</string>
+<string name="accessibility_tab_suggestion_group_tabs_message">"Pendekezo: Vichupo %1$s vinaonekana kuwa vinahusiana. Ungependa kuvipanga pamoja?"</string>
+<string name="accessibility_tab_suggestion_dismiss_button">"Ondoa mapendekezo."</string>
+<plurals name="accessibility_tab_suggestion_close_tab_action_button">
+  <item quantity="one">"Funga kichupo %1$d ulichochagua"</item>
+  <item quantity="other">"Funga vichupo %1$d ulivyochagua"</item>
+</plurals>
+<string name="accessibility_tab_movement_left">"Sogeza kichupo kushoto"</string>
+<string name="accessibility_tab_movement_right">"Sogeza kichupo kulia"</string>
+<string name="accessibility_tab_movement_up">"Sogeza kichupo juu"</string>
+<string name="accessibility_tab_movement_down">"Sogeza kichupo chini"</string>
+<string name="undo_tab_strip_closure_message">"Ukanda wa vichupo umefungwa"</string>
+<string name="tab_strip_info_bar_question">"Hungependa kuonyeshwa ukanda wa vichupo tena?"</string>
+<string name="tab_strip_info_bar_no_reshow">"Usionyeshe tena"</string>
+<string name="tab_strip_info_bar_reshow">"Onyesha baadaye"</string>
+<string name="price_drop_spotted_title">"Punguo la bei limetambuliwa"</string>
+<string name="price_drop_spotted_content">"Angalia bidhaa iliyo na bei nafuu katika vichupo ulivyovifungua"</string>
+<string name="price_drop_spotted_show_me">"Nionyeshe"</string>
+<string name="price_drop_spotted_lower_price">"Bei nafuu"</string>
+<string name="accessibility_tab_price_card">"Hivi majuzi, bei ya kipengee hiki ilipunguzwa kutoka %1$s ikawa %2$s"</string>
+<string name="price_drop_alerts_card_title">"Ungependa kupata arifa kuhusu punguzo la bei?"</string>
+<string name="price_drop_alerts_card_get_notified_content">"Utapata arifa wakati kuna bei nafuu zaidi katika kichupo ulichokifungua"</string>
+<string name="price_drop_alerts_card_get_notified">"Pata arifa"</string>
+<string name="price_drop_alerts_card_go_to_settings_content">"Washa arifa katika Mipangilio ili upate arifa wakati kuna bei nafuu zaidi katika kichupo ulichokifungua."</string>
+<string name="price_drop_alerts_card_go_to_settings">"Nenda kwenye Mipangilio"</string>
+<string name="price_tracking_settings">"Mipangilio ya kufuatilia bei"</string>
+<string name="track_prices_on_tabs">"Fuatilia bei kwenye vichupo"</string>
+<string name="track_prices_on_tabs_description">"Angalia puzungo la bei kwenye vichupo vyako"</string>
+<string name="price_drop_alerts">"Arifa kuhusu punguzo la bei"</string>
+<string name="price_drop_alerts_description">"Pata arifa bei zinapopunguzwa"</string>
+<string name="price_drop_notification_content_title">"Punguzo la bei la %1$s kwenye %2$s"</string>
+<string name="price_drop_notification_content_text">"Bei ya sasa ni %1$s kwenye %2$s"</string>
+<string name="price_drop_notification_action_visit_site">"Tembelea tovuti"</string>
+<string name="price_drop_notification_action_turn_off_alert">"Acha kufuatilia bidhaa"</string>
+<string name="merchant_viewer_message_title">"Ungependa kuangalia maelezo ya duka?"</string>
+<string name="merchant_viewer_message_title_see_reviews">"Je, unaona maoni kuhusu duka?"</string>
+<string name="merchant_viewer_message_action">"Mwonekano"</string>
+<string name="merchant_viewer_message_description_rating">"Imekadiriwa alama %1$s/%2$s"</string>
+<plurals name="merchant_viewer_message_description_reviews">
+  <item quantity="one">"(Maoni %1$s)"</item>
+  <item quantity="other">"(Maoni %1$s)"</item>
+</plurals>
+<plurals name="merchant_viewer_message_description_reviews_from_google">
+  <item quantity="one">"Maoni %1$s kutoka Google"</item>
+  <item quantity="other">"Maoni %1$s kutoka Google"</item>
+</plurals>
+<string name="merchant_viewer_message_rating_numerical">"%1$.1f/%2$d"</string>
+<string name="merchant_viewer_message_rating_word">"ukadiriaji"</string>
+<plurals name="accessibility_merchant_viewer_message_description">
+  <item quantity="one">" Imekadiriwa alama %1$s/%2$s, maoni %3$d"</item>
+  <item quantity="other">"Imekadiriwa alama %1$s/%2$s, maoni %3$d"</item>
+</plurals>
+<string name="accessibility_merchant_viewer_message_announcement">"Angalia maelezo ya duka, chaguo hili linapatikana karibu na sehemu ya juu ya skrini"</string>
+<string name="merchant_viewer_preview_sheet_title">"Google | Kuhusu duka hili"</string>
+<string name="merchant_viewer_omnibox_icon_iph">"Angalia maelezo ya duka"</string>
+<string name="page_info_store_info_title">"Maelezo ya duka"</string>
+<string name="page_info_store_info_description_with_no_review">"(ukadiriaji wa duka)"</string>
+<string name="page_info_store_info_description_with_no_rating">"Angalia sera ya kurejesha bidhaa na mengine"</string>
+<string name="merchant_viewer_preview_sheet_description">"Maelezo kuhusu duka hili"</string>
+<string name="merchant_viewer_preview_sheet_opened_half">"Maelezo kuhusu duka hili yamefunguliwa kwenye nusu ya skrini"</string>
+<string name="merchant_viewer_preview_sheet_opened_full">"Maelezo kuhusu duka hili yamefunguliwa kwenye skrini nzima"</string>
+<string name="merchant_viewer_preview_sheet_closed">"Maelezo kuhusu duka hili yamefungwa"</string>
+<string name="close_all_tabs_dialog_title">"Unataka kufunga vichupo vyote?"</string>
+<string name="close_all_tabs_dialog_message">"Unaweza kupata vichupo vyako ulivyovifunga kwenye vichupo vya Hivi Karibuni chini ya menyu kuu ya Chrome"</string>
+<string name="close_all_tabs_dialog_title_incognito">"Unataka ufunge vichupo fiche vyote?"</string>
+<string name="close_all_tabs_dialog_message_incognito">"Shughuli yako katika vichupo fiche hivi itafutwa kwenye kifaa hiki"</string>
+</resources>

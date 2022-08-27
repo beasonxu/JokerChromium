@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="iph_tab_groups_quickly_compare_pages_text">"කණ්ඩායමක් කිරීමෙන් ඉක්මනින් පිටු සංසන්දන කරන්න. පටන් ගැනීමට, සබැඳියක් ස්පර්ශ කර අල්ලා සිටින්න."</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_text">"වෙනත් පටිත්තක් බැලීමට තට්ටු කරන්න"</string>
+<string name="iph_tab_groups_your_tabs_together_text">"ඔබේ පටිති මෙහි එකට කණ්ඩායම් කෙරේ"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_accessibility_text">"තිරයේ පහළ අසල ඔබේ පටිති සමූහයේ පටිති අතර මාරු වන්න"</string>
+<string name="undo_bar_group_tabs_message">"පටිති %1$s සමූහගත කළා"</string>
+<plurals name="bottom_tab_grid_title_placeholder">
+  <item quantity="one">"%1$d පටිත්තක්"</item>
+  <item quantity="other">"පටිති %1$d ක්"</item>
+</plurals>
+<string name="bottom_tab_grid_new_tab">"සමූහයට නව පටිත්ත එක් කරන්න"</string>
+<string name="accessibility_bottom_tab_grid_close_tab_sheet">"පූර්ණ තිර ජාලකය සඟවන්න"</string>
+<string name="accessibility_bottom_tab_strip_expand_tab_sheet">"පූර්ණ තිර ජාලකයේ සමූහයේ පටිති පෙන්වන්න"</string>
+<string name="accessibility_bottom_tab_strip_close_strip">"ටැබ් තීරුව වසන්න"</string>
+<string name="tabswitcher_create_group">"කණ්ඩායම සාදන්න"</string>
+<string name="accessibility_tab_switcher">"ටැබ මාරුව"</string>
+<string name="accessibility_close_tab_group_button">"ටැබ සමූහය ටැබ %1$sක් සමග වසන්න"</string>
+<string name="accessibility_close_tab_group_button_with_group_name">"%1$s සමූහය ටැබ %2$sක් සමග දිග හරින්න"</string>
+<string name="tab_selection_editor_group">"සමූහය"</string>
+<string name="tab_selection_editor_toolbar_select_tabs">"පටිති තෝරන්න"</string>
+<plurals name="accessibility_tab_selection_editor_group_button">
+  <item quantity="one">"%1$d තේරූ පටිත්ත සමූහ කරන්න"</item>
+  <item quantity="other">"තේරූ පටිති %1$d සමූහ කරන්න"</item>
+</plurals>
+<string name="accessibility_tab_selection_editor_back_button">"බහු-තේරීම් ප්‍රකාරය සඟවන්න"</string>
+<string name="accessibility_tab_selection_editor">"බහු-තේරීම් ප්‍රකාරය"</string>
+<string name="tab_grid_dialog_remove_from_group">"කණ්ඩායමෙන් ඉවත් කරන්න"</string>
+<string name="tab_grid_dialog_toolbar_remove_from_group">"සමූහයෙන් පටිති ඉවත් කරන්න"</string>
+<string name="tab_grid_dialog_selection_mode_remove">"ඉවත් කරන්න"</string>
+<string name="tab_grid_dialog_toolbar_share_group">"සමූහය බෙදා ගන්න"</string>
+<string name="tab_grid_dialog_toolbar_edit_group_name">"සමූහ නම සංස්කරණය කරන්න"</string>
+<string name="accessibility_expand_tab_group">"ටැබ සමූහය ටැබ %1$sක් සමග දිග හරින්න."</string>
+<string name="accessibility_expand_tab_group_with_group_name">"%1$s ටැබ සමූහය %2$s ටැබ සමග දිග හරින්න."</string>
+<plurals name="accessibility_tab_selection_dialog_remove_button">
+  <item quantity="one">"සමූහයෙන් තෝරා ගත් ටැබ %1$dක් ඉවත් කරන්න."</item>
+  <item quantity="other">"සමූහයෙන් තෝරා ගත් ටැබ %1$dක් ඉවත් කරන්න."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button">
+  <item quantity="one">"ටැබ %1$dක් හකුළන්න."</item>
+  <item quantity="other">"ටැබ සමූහය ටැබ %1$dක් සමග හකුළන්න."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button_with_group_name">
+  <item quantity="one">"ටැබ %1$dක් හකුළන්න."</item>
+  <item quantity="other">"%1$s ටැබ සමූහය ටැබ %2$dක් සමග හකුළන්න."</item>
+</plurals>
+<string name="accessibility_tab_grid_dialog">"ටැබ සමූහය දිග හරින ලදි"</string>
+<string name="iph_drag_and_drop_introduction">"පටිති කණ්ඩායම් කිරීමට ඒවා අදින්න"</string>
+<string name="iph_drag_and_drop_show_me">"මට පෙන්වන්න"</string>
+<string name="iph_drag_and_drop_title">"සංවිධාන වන්න"</string>
+<string name="iph_drag_and_drop_content">"පටිති කණ්ඩායම් කිරීමට, පටිත්තක් ස්පර්ශ කර අල්ලා සිටින්න. පසුව, එය වෙනත් පටිත්තකට අදින්න."</string>
+<string name="tab_switcher_carousel_title">"දිගටම බ්‍රවුස් කරන්න"</string>
+<string name="tab_switcher_carousel_view_all">"සියල්ල බලන්න"</string>
+<string name="tab_suggestion_review_button">"සමාලෝචන කරන්න"</string>
+<string name="tab_suggestion_close_tab_action_button">"වසන්න"</string>
+<string name="tab_suggestion_close_stale_message">"ඔබේ පටිතිවලින් %1$s ක් මෑතදී භාවිත වී නැත. ඒවා වසන්නද?"</string>
+<string name="tab_suggestion_group_tabs_message">"පටිති %1$s ක් අදාළ බව පෙනේ. ඒවා සමූහ කරන්නද?"</string>
+<string name="accessibility_tab_suggestion_review_button">"යෝජනා සමාලෝචන කරන්න."</string>
+<string name="accessibility_tab_suggestion_close_stale_message">"යෝජනාව: ඔබේ පටිතිවලින් %1$s ක් මෑතදී භාවිත වී නැත. ඒවා වසන්නද?"</string>
+<string name="accessibility_tab_suggestion_group_tabs_message">"යෝජනාව: පටිති %1$s ක් අදාළ බව පෙනේ. ඒවා සමූහ කරන්නද?"</string>
+<string name="accessibility_tab_suggestion_dismiss_button">"යෝජනා ඉවත ලන්න."</string>
+<plurals name="accessibility_tab_suggestion_close_tab_action_button">
+  <item quantity="one">"තේරූ %1$d පටිත්ත වසන්න"</item>
+  <item quantity="other">"තේරූ පටිති %1$d වසරන්න"</item>
+</plurals>
+<string name="accessibility_tab_movement_left">"පටිත්ත වමට ගෙන යන්න"</string>
+<string name="accessibility_tab_movement_right">"පටිත්ත දකුණට ගෙන යන්න"</string>
+<string name="accessibility_tab_movement_up">"පටිත්ත ඉහළට ගෙන යන්න"</string>
+<string name="accessibility_tab_movement_down">"පටිත්ත පහළට ගෙන යන්න"</string>
+<string name="undo_tab_strip_closure_message">"වැසූ පටිත්ත තීරුව"</string>
+<string name="tab_strip_info_bar_question">"පටිත්ත තීරුව නැවත නොපෙන්වන්නද?"</string>
+<string name="tab_strip_info_bar_no_reshow">"නැවත නොපෙන්වන්න"</string>
+<string name="tab_strip_info_bar_reshow">"පසුව පෙන්වන්න"</string>
+<string name="price_drop_spotted_title">"මිල පහත වැටීමක් හඳුනා ගන්නා ලදි"</string>
+<string name="price_drop_spotted_content">"ඔබගේ විවෘත ටැබවල වඩා අඩු මිලක් ඇති අයිතමය බලන්න"</string>
+<string name="price_drop_spotted_show_me">"මට පෙන්වන්න"</string>
+<string name="price_drop_spotted_lower_price">"අඩු මිල"</string>
+<string name="accessibility_tab_price_card">"මෙම අයිතමයෙහි මිල මෑතකදී %1$s සිට %2$s දක්වා පහත වැටී ඇත"</string>
+<string name="price_drop_alerts_card_title">"මිල පහත වැටීම් සඳහා ඇඟවීම් ලබා ගන්නද?"</string>
+<string name="price_drop_alerts_card_get_notified_content">"විවෘත ටැබයක අඩු මිලක් ඇති විට ඔබට ඇඟවීමක් ලැබෙනු ඇත"</string>
+<string name="price_drop_alerts_card_get_notified">"දැනුම්දීම් ලබන්න"</string>
+<string name="price_drop_alerts_card_go_to_settings_content">"විවෘත ටැබ් එකක අඩු මිලක් ඇති විට ඇඟවීමක් ලබා ගැනීමට, සැකසීම්වල දැනුම්දීම් ක්‍රියාත්මක කරන්න."</string>
+<string name="price_drop_alerts_card_go_to_settings">"සැකසීම් වෙත යන්න"</string>
+<string name="price_tracking_settings">"මිල හඹා යාමේ සැකසීම්"</string>
+<string name="track_prices_on_tabs">"ටැබවල මිල ගණන් හඹා යන්න"</string>
+<string name="track_prices_on_tabs_description">"ඔබගේ ටැබවල මිල පහත වැටීම් බලන්න"</string>
+<string name="price_drop_alerts">"මිල පහත වැටීම් ඇඟවීම්"</string>
+<string name="price_drop_alerts_description">"මිල පහත වැටුණ විට දැනුම්දීම් ලබා ගන්න"</string>
+<string name="price_drop_notification_content_title">"%2$s හි %1$sක මිල අඩු වීමක්"</string>
+<string name="price_drop_notification_content_text">"දැන් %2$s හි %1$s"</string>
+<string name="price_drop_notification_action_visit_site">"අඩවියට පිවිසෙන්න"</string>
+<string name="price_drop_notification_action_turn_off_alert">"නිෂ්පාදනය හඹා යාම නවත්වන්න"</string>
+<string name="merchant_viewer_message_title">"අලෙවිසැල් තොරතුරු බලන්නද?"</string>
+<string name="merchant_viewer_message_title_see_reviews">"වෙළඳසැල් සමාලෝචන බලන්නද?"</string>
+<string name="merchant_viewer_message_action">"දසුන"</string>
+<string name="merchant_viewer_message_description_rating">"ඇගයීම %1$s/%2$s"</string>
+<plurals name="merchant_viewer_message_description_reviews">
+  <item quantity="one">"(සමාලෝචන %1$s)"</item>
+  <item quantity="other">"(සමාලෝචන %1$s)"</item>
+</plurals>
+<plurals name="merchant_viewer_message_description_reviews_from_google">
+  <item quantity="one">"Google වෙතින් සමාලෝචන %1$s"</item>
+  <item quantity="other">"Google වෙතින් සමාලෝචන %1$s"</item>
+</plurals>
+<string name="merchant_viewer_message_rating_numerical">"%1$.1f/%2$d"</string>
+<string name="merchant_viewer_message_rating_word">"ඇගයීම"</string>
+<plurals name="accessibility_merchant_viewer_message_description">
+  <item quantity="one">" ඇගයීම %1$s/%2$s, සමාලෝචන %3$d"</item>
+  <item quantity="other">"ඇගයීම %1$s/%2$s, සමාලෝචන %3$d"</item>
+</plurals>
+<string name="accessibility_merchant_viewer_message_announcement">"අලෙවිසැල් තොරතුරු බලන්න, තිරයේ ඉහළින්ම ඇති විකල්පය"</string>
+<string name="merchant_viewer_preview_sheet_title">"Google | මෙම අලෙවිසල පිළිබඳව"</string>
+<string name="merchant_viewer_omnibox_icon_iph">"වෙළඳසැල් තොරතුරු බලන්න"</string>
+<string name="page_info_store_info_title">"වෙළඳසැල් තොරතුරු"</string>
+<string name="page_info_store_info_description_with_no_review">"(වෙළඳසැල් ඇගයීම)"</string>
+<string name="page_info_store_info_description_with_no_rating">"ආපසු යැවීමේ ප්‍රතිපත්තිය සහ තවත් දේ බලන්න"</string>
+<string name="merchant_viewer_preview_sheet_description">"මෙම වෙළඳසැල පිළිබඳ තොරතුරු"</string>
+<string name="merchant_viewer_preview_sheet_opened_half">"මෙම වෙළඳසැල පිළිබඳ තොරතුරු අර්ධ උසෙහිදී විවෘත විය"</string>
+<string name="merchant_viewer_preview_sheet_opened_full">"මෙම වෙළඳසැල පිළිබඳ තොරතුරු පූර්ණ උසෙහිදී විවෘත විය"</string>
+<string name="merchant_viewer_preview_sheet_closed">"මෙම වෙළඳසැල පිළිබඳ තොරතුරු වසා ඇත"</string>
+<string name="close_all_tabs_dialog_title">"සියලු ටැබ වසන්නද?"</string>
+<string name="close_all_tabs_dialog_message">"Chrome ප්‍රධාන මෙනුව යටතේ ඇති මෑත ටැබ තුළ ඔබට ඔබගේ වසන ලද ටැබ සොයා ගත හැකිය"</string>
+<string name="close_all_tabs_dialog_title_incognito">"සියලු අප්‍රකට ටැබ වසන්නද?"</string>
+<string name="close_all_tabs_dialog_message_incognito">"මෙම අප්‍රකට ටැබවල ඔබගේ ක්‍රියාකාරකම් මෙම උපාංගයෙන් ඉවත් කරනු ඇත"</string>
+</resources>
