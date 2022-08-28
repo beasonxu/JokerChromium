@@ -22,7 +22,7 @@ import org.chromium.content_public.browser.BrowserStartupController;
 
 import java.text.NumberFormat;
 import java.util.Locale;
-
+import org.chromium.chrome.R;
 /** Helper class to handle converting downloads to UI strings. */
 public final class StringUtils {
     @VisibleForTesting

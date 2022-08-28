@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 package org.chromium.chrome.browser.prefetch.settings;
-
+import org.chromium.chrome.R;
 /**
  * Fragment containing extended preloading settings.
  */

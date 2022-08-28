@@ -24,7 +24,7 @@ import org.chromium.device.gamepad.GamepadList;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import org.chromium.chrome.R;
 /**
  * Implements app-level keyboard shortcuts for ChromeTabbedActivity and DocumentActivity.
  */

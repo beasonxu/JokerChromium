@@ -6,6 +6,8 @@ package org.chromium.chrome.browser.touch_to_fill;
 
 import androidx.annotation.DrawableRes;
 
+import org.chromium.chrome.R;
+
 /**
  * Public version of {@link TouchToFillResourceProviderImpl}.
  * Downstream could provide a different implementation.

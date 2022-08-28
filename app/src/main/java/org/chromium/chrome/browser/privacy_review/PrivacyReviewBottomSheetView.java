@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 package org.chromium.chrome.browser.privacy_review;
-
+import org.chromium.chrome.R;
 import android.view.View;
 
 import androidx.annotation.Nullable;

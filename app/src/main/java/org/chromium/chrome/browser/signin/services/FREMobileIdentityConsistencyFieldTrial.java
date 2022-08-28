@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 package org.chromium.chrome.browser.signin.services;
-
+import org.chromium.chrome.R;
 import android.util.Pair;
 
 import androidx.annotation.AnyThread;

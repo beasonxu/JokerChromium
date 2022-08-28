@@ -25,7 +25,7 @@ import org.chromium.components.browser_ui.styles.SemanticColorUtils;
 import org.chromium.content_public.browser.RenderWidgetHostView;
 import org.chromium.content_public.browser.WebContents;
 import org.chromium.ui.util.ColorUtils;
-
+import org.chromium.chrome.R;
 /**
  * Utility methods for theme colors.
  */

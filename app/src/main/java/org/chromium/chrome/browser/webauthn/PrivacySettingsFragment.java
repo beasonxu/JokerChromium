@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 
 import org.chromium.base.annotations.NativeMethods;
 import org.chromium.ui.widget.Toast;
-
+import org.chromium.chrome.R;
 /**
  * Shows a fragment for revoking linked caBLEv2 devices.
  *

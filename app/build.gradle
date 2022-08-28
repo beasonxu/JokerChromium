@@ -124,6 +124,12 @@ android {
                         "$rootDir/app/src/main/res_night_mode",
                         "$rootDir/app/src/main/res_image_descriptions",
                         "$rootDir/app/src/main/res_multiwindow",
+                        "$rootDir/app/src/main/res_webauthn",
+                        "$rootDir/app/src/main/res_prefetch",
+                        "$rootDir/app/src/main/res_privacy_review",
+                        "$rootDir/app/src/main/res_incognito",
+                        "$rootDir/app/src/main/res_content_creation",
+                        "$rootDir/app/src/main/res_reactions",
 
 
 

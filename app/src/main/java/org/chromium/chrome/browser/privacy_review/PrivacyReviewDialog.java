@@ -16,7 +16,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import org.chromium.components.browser_ui.bottomsheet.BottomSheetController;
 import org.chromium.ui.widget.ButtonCompat;
-
+import org.chromium.chrome.R;
 /**
  * UI for the Privacy Review dialog in Privacy and security settings.
  */

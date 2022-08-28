@@ -584,11 +584,11 @@ public class DownloadMessageUiControllerImpl implements DownloadMessageUiControl
             info.iconType = IconType.VECTOR_DRAWABLE;
         } else if (resultState == ResultState.FAILED) {
             stringRes = R.plurals.download_message_multiple_download_failed;
-            info.icon = org.chromium.components.browser_ui.widget.R.drawable
+            info.icon = R.drawable
                                 .ic_error_outline_googblue_24dp;
         } else if (resultState == ResultState.PENDING) {
             stringRes = R.plurals.download_message_multiple_download_pending;
-            info.icon = org.chromium.components.browser_ui.widget.R.drawable
+            info.icon = R.drawable
                                 .ic_error_outline_googblue_24dp;
         } else if (resultState == ResultState.SCHEDULED) {
             stringRes = R.plurals.download_message_multiple_download_scheduled;

@@ -50,6 +50,7 @@ import org.chromium.ui.modelutil.PropertyKey;
 import org.chromium.ui.modelutil.PropertyModel;
 import org.chromium.ui.modelutil.RecyclerViewAdapter;
 import org.chromium.ui.modelutil.SimpleRecyclerViewMcp;
+import org.chromium.chrome.R;
 
 /**
  * Provides functions that map {@link TouchToFillProperties} changes in a {@link PropertyModel} to

@@ -19,7 +19,7 @@ import org.chromium.components.browser_ui.settings.ManagedPreferencesUtils;
 import org.chromium.components.browser_ui.widget.RadioButtonWithDescription;
 import org.chromium.components.browser_ui.widget.RadioButtonWithDescriptionAndAuxButton;
 import org.chromium.components.browser_ui.widget.RadioButtonWithDescriptionLayout;
-
+import org.chromium.chrome.R;
 /**
  * A radio button group used for Preload Pages. Currently, it has 3 options:
  * Extended Preloading, Standard Preloading and No Preloading.

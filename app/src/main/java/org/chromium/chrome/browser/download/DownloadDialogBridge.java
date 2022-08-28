@@ -35,7 +35,7 @@ import org.chromium.ui.modaldialog.DialogDismissalCause;
 import org.chromium.ui.modaldialog.ModalDialogManager;
 import org.chromium.ui.modaldialog.ModalDialogManagerHolder;
 import org.chromium.ui.modelutil.PropertyModel;
-
+import org.chromium.chrome.R;
 /**
  * Glues download dialogs UI code and handles the communication to download native backend.
  * When {@link ChromeFeatureList#DOWNLOAD_LATER} is enabled, the following dialogs will be shown in

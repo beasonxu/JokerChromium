@@ -69,7 +69,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
+import org.chromium.chrome.R;
 /**
  * This class handles OMA downloads according to the steps described in
  * http://xml.coverpages.org/OMA-Download-OTA-V10-20020620.pdf:

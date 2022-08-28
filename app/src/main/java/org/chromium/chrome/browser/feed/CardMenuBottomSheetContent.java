@@ -8,6 +8,7 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.bottomsheet.BottomSheetContent;
 
 /**

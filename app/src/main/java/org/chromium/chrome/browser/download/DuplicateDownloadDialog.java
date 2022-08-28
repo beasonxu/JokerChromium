@@ -21,7 +21,7 @@ import org.chromium.ui.modaldialog.DialogDismissalCause;
 import org.chromium.ui.modaldialog.ModalDialogManager;
 import org.chromium.ui.modaldialog.ModalDialogProperties;
 import org.chromium.ui.modelutil.PropertyModel;
-
+import org.chromium.chrome.R;
 /**
  * Dialog for confirming that user want to download a file that already exists on disk, using the
  * default model dialog from ModalDialogManager.

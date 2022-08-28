@@ -13,7 +13,7 @@ import org.chromium.chrome.browser.ui.appmenu.AppMenuHandler;
 import org.chromium.chrome.browser.user_education.IPHCommandBuilder;
 import org.chromium.chrome.browser.user_education.UserEducationHelper;
 import org.chromium.components.feature_engagement.FeatureConstants;
-
+import org.chromium.chrome.R;
 /**
  * Controller to manage when and how we show multi-instance in-product help messages to users.
  */
