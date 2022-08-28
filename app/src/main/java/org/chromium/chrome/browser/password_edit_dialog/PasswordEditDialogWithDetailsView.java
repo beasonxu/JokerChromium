@@ -16,6 +16,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import org.chromium.base.Callback;
+import org.chromium.chrome.R;
 
 import java.util.List;
 

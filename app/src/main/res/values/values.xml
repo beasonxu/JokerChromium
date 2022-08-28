@@ -41,4 +41,6 @@
 
     <!-- Revamped Incognito NTP -->
     <integer name="descriptions_weight">1</integer>
+
+    <string name="current_detected_ui_locale_name">en-US</string>
 </resources>

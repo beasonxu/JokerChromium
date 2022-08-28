@@ -6,6 +6,7 @@ package org.chromium.chrome.browser.password_edit_dialog;
 
 import android.content.res.Resources;
 
+import org.chromium.chrome.R;
 import org.chromium.ui.modaldialog.DialogDismissalCause;
 import org.chromium.ui.modaldialog.ModalDialogManager;
 import org.chromium.ui.modaldialog.ModalDialogProperties;

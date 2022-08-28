@@ -25,6 +25,7 @@ import androidx.preference.PreferenceViewHolder;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.privacy.secure_dns.SecureDnsBridge.Entry;
 import org.chromium.components.browser_ui.widget.RadioButtonWithDescription;
 import org.chromium.components.browser_ui.widget.RadioButtonWithDescriptionLayout;

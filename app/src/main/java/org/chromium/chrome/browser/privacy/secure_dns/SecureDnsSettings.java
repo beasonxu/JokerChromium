@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import androidx.preference.PreferenceFragmentCompat;
 
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.net.SecureDnsManagementMode;
 import org.chromium.chrome.browser.privacy.secure_dns.SecureDnsProviderPreference.State;
 import org.chromium.chrome.browser.settings.ChromeManagedPreferenceDelegate;

@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import org.chromium.base.Callback;
+import org.chromium.chrome.R;
 
 import java.util.List;
 

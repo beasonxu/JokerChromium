@@ -143,6 +143,7 @@ android {
                         "$rootDir/app/src/main/res_metrics",
                         "$rootDir/app/src/main/res_privacy_sandbox",
                         "$rootDir/app/src/main/res_password_entry_edit",
+                        "$rootDir/app/src/main/res_password_dialog",
 
 
 

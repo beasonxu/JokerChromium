@@ -10,6 +10,7 @@ import android.content.Intent;
 
 import org.chromium.base.Callback;
 import org.chromium.base.Log;
+import org.chromium.chrome.R;
 
 import java.util.List;
 import java.util.Locale;
