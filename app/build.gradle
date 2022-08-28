@@ -131,6 +131,11 @@ android {
                         "$rootDir/app/src/main/res_content_creation",
                         "$rootDir/app/src/main/res_reactions",
                         "$rootDir/app/src/main/res_touch_to_fill",
+                        "$rootDir/app/src/main/res_find_in_page",
+                        "$rootDir/app/src/main/res_start_surface",
+                        "$rootDir/app/src/main/res_features",
+                        "$rootDir/app/src/main/res_media_router",
+                        "$rootDir/app/src/main/res_webid",
 
 
 

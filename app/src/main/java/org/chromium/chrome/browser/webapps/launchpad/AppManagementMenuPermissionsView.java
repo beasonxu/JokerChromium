@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import org.chromium.ui.modelutil.PropertyModel.WritableIntPropertyKey;
-
+import org.chromium.chrome.R;
 /**
  * View for app management menu permission buttons.
  */

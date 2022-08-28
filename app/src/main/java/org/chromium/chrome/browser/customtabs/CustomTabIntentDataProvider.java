@@ -53,7 +53,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.List;
-
+import org.chromium.chrome.R;
 /**
  * A model class that parses the incoming intent for Custom Tabs specific customization data.
  *

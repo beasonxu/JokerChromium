@@ -14,6 +14,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.widget.RoundedIconGenerator;
 import org.chromium.ui.base.ViewUtils;
 import org.chromium.url.GURL;

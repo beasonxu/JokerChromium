@@ -164,7 +164,7 @@ import org.chromium.url.GURL;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
-
+import org.chromium.chrome.R;
 /**
  * The root UI coordinator. This class will eventually be responsible for inflating and managing
  * lifecycle of the main UI components.

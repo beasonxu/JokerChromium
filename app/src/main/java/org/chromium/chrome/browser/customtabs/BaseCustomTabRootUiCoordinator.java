@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 package org.chromium.chrome.browser.customtabs;
-
+import org.chromium.chrome.R;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -48,7 +48,7 @@ import org.chromium.components.feature_engagement.Tracker;
 import org.chromium.ui.base.ActivityWindowAndroid;
 import org.chromium.ui.base.IntentRequestTracker;
 import org.chromium.ui.modaldialog.ModalDialogManager;
-
+import org.chromium.chrome.R;
 /**
  * A {@link RootUiCoordinator} variant that controls UI for {@link BaseCustomTabActivity}.
  */

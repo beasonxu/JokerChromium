@@ -15,7 +15,7 @@ import androidx.annotation.StringRes;
 import org.chromium.base.Callback;
 import org.chromium.chrome.browser.contextmenu.ChipRenderParams;
 import org.chromium.ui.base.WindowAndroid;
-
+import org.chromium.chrome.R;
 /**
  * Base class for defining methods where different behavior is required by downstream targets.
  * The correct version of {@link LensControllerDelegateImpl} will be determined at compile time

@@ -25,7 +25,7 @@ import org.chromium.components.embedder_support.util.UrlUtilities;
 import org.chromium.url.GURL;
 
 import java.util.List;
-
+import org.chromium.chrome.R;
 /**
  * This is a helper class to use favicon_service.cc's functionality.
  *

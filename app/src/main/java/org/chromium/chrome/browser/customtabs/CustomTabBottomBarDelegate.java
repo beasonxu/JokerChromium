@@ -45,7 +45,7 @@ import org.chromium.ui.interpolators.BakedBezierInterpolator;
 import java.util.List;
 
 import javax.inject.Inject;
-
+import org.chromium.chrome.R;
 /**
  * Delegate that manages bottom bar area inside of {@link CustomTabActivity}.
  */

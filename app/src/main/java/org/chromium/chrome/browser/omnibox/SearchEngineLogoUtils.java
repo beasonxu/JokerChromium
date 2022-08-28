@@ -33,7 +33,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.HashMap;
 import java.util.Map;
-
+import org.chromium.chrome.R;
 /**
  * Collection of shared code for displaying search engine logos.
  */

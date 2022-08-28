@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 package org.chromium.chrome.browser.toolbar;
-
+import org.chromium.chrome.R;
 import static org.chromium.components.browser_ui.widget.listmenu.BasicListMenu.buildMenuListItem;
 
 import android.content.Context;
@@ -24,7 +24,7 @@ import org.chromium.components.browser_ui.widget.listmenu.ListMenuButton;
 import org.chromium.components.browser_ui.widget.listmenu.ListMenuButtonDelegate;
 import org.chromium.ui.modelutil.MVCListAdapter.ModelList;
 import org.chromium.ui.widget.RectProvider;
-
+import org.chromium.chrome.R;
 /**
  * The home button.
  * TODO(crbug.com/1056422): Fix the visibility bug on NTP.

@@ -52,7 +52,7 @@ import org.chromium.ui.widget.ButtonCompat;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import org.chromium.chrome.R;
 /**
  * Provides functions that map {@link AccountSelectionProperties} changes in a {@link PropertyModel}
  * to the suitable method in {@link AccountSelectionView}.

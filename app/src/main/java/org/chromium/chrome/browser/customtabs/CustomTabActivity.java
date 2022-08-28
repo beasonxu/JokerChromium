@@ -50,7 +50,7 @@ import org.chromium.components.page_info.PageInfoController.OpenedFromSource;
 import org.chromium.content_public.browser.LoadUrlParams;
 import org.chromium.content_public.browser.WebContents;
 import org.chromium.ui.util.ColorUtils;
-
+import org.chromium.chrome.R;
 /**
  * The activity for custom tabs. It will be launched on top of a client's task.
  */

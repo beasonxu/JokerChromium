@@ -26,7 +26,7 @@ import org.chromium.ui.modelutil.PropertyModelChangeProcessor;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-
+import org.chromium.chrome.R;
 /**
  * Coordinates the interactions with the UrlBar text component.
  */

@@ -16,7 +16,7 @@ import org.chromium.ui.base.LocalizationUtils;
 import org.chromium.ui.interpolators.BakedBezierInterpolator;
 import org.chromium.ui.modelutil.PropertyKey;
 import org.chromium.ui.modelutil.PropertyModel;
-
+import org.chromium.chrome.R;
 /**
  * This is a helper class for app menu.
  */

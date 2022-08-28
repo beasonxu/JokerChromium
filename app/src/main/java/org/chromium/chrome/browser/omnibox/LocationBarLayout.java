@@ -31,7 +31,7 @@ import org.chromium.ui.base.DeviceFormFactor;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import org.chromium.chrome.R;
 /**
  * This class represents the location bar where the user types in URLs and
  * search terms.

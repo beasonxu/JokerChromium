@@ -36,7 +36,7 @@ import java.lang.annotation.RetentionPolicy;
 
 import javax.inject.Inject;
 import javax.inject.Named;
-
+import org.chromium.chrome.R;
 /**
  * A {@link TabObserver} that also handles custom tabs specific logging and messaging.
  */

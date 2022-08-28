@@ -31,7 +31,7 @@ import org.chromium.ui.modelutil.PropertyModel;
 import org.chromium.ui.modelutil.PropertyModelChangeProcessor;
 import org.chromium.ui.widget.Toast;
 import org.chromium.webapk.lib.client.WebApkNavigationClient;
-
+import org.chromium.chrome.R;
 /**
  * Coordinator for displaying the app management menu.
  */

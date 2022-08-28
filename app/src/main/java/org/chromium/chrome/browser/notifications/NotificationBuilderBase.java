@@ -35,7 +35,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+import org.chromium.chrome.R;
 /**
  * Abstract base class for building a notification. Stores all given arguments for later use.
  */

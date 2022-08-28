@@ -11,6 +11,8 @@ import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
+import org.chromium.chrome.R;
+
 /**
  * A class to display the dialogs the user may encounter when switching to/from or signing into/out
  * of a managed account.

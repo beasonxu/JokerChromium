@@ -44,7 +44,7 @@ import org.chromium.url.GURL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
+import org.chromium.chrome.R;
 class HistoryClustersMediator extends RecyclerView.OnScrollListener implements SearchDelegate {
     @VisibleForTesting
 

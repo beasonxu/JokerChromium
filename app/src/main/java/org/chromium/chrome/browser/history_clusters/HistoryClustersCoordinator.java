@@ -26,7 +26,7 @@ import org.chromium.ui.modelutil.MVCListAdapter.ModelList;
 import org.chromium.ui.modelutil.PropertyModel;
 import org.chromium.ui.modelutil.PropertyModelChangeProcessor;
 import org.chromium.ui.modelutil.SimpleRecyclerViewAdapter;
-
+import org.chromium.chrome.R;
 /**
  * Root component for the HistoryClusters UI component, which displays lists of related history
  * visits grouped into clusters.

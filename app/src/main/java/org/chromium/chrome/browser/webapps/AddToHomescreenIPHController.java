@@ -42,7 +42,7 @@ import org.chromium.ui.base.WindowAndroid;
 import org.chromium.ui.modaldialog.ModalDialogManager;
 import org.chromium.ui.modelutil.PropertyModel;
 import org.chromium.url.GURL;
-
+import org.chromium.chrome.R;
 /**
  * This class is responsible for rendering the 'Add to home screen' IPH, such as IPH bubble/message
  * creation, metrics logging etc.

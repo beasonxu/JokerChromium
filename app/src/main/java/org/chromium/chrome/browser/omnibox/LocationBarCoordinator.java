@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 package org.chromium.chrome.browser.omnibox;
-
+import org.chromium.chrome.R;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.content.res.Configuration;

@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 
+import org.chromium.chrome.R;
+
 import java.lang.ref.WeakReference;
 
 /**

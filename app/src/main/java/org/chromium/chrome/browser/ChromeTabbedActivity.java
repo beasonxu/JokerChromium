@@ -222,7 +222,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
-
+import org.chromium.chrome.R;
 /**
  * This is the main activity for ChromeMobile when not running in document mode.  All the tabs
  * are accessible via a chrome specific tab switching UI.

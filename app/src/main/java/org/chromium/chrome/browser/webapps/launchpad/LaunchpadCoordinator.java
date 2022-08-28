@@ -13,6 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.chromium.base.supplier.Supplier;
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.settings.SettingsLauncher;
 import org.chromium.ui.modaldialog.ModalDialogManager;
 

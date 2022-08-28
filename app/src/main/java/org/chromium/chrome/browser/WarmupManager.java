@@ -43,7 +43,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
+import org.chromium.chrome.R;
 /**
  * This class is a singleton that holds utilities for warming up Chrome and prerendering urls
  * without creating the Activity.

@@ -37,7 +37,7 @@ import java.lang.ref.WeakReference;
 
 import jp.tomorrowkey.android.gifplayer.BaseGifDrawable;
 import jp.tomorrowkey.android.gifplayer.BaseGifImage;
-
+import org.chromium.chrome.R;
 /**
  * This view shows the default search provider's logo and fades in a new logo if one becomes
  * available. It also maintains a {@link BaseGifDrawable} that will be played when the user clicks

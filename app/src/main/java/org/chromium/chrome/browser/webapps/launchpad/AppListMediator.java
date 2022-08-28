@@ -17,7 +17,7 @@ import org.chromium.ui.widget.Toast;
 import org.chromium.webapk.lib.client.WebApkNavigationClient;
 
 import java.util.List;
-
+import org.chromium.chrome.R;
 /**
  * Mediator class for launchpad app list. Handles updating the list model for current
  * app list.

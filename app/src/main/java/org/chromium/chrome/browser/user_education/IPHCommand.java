@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 import org.chromium.components.browser_ui.widget.highlight.ViewHighlighter.HighlightParams;
 import org.chromium.ui.widget.AnchoredPopupWindow;
 import org.chromium.ui.widget.ViewRectProvider;
-
+import org.chromium.chrome.R;
 /**
  * Class encapsulating the data needed to show in-product help (IPH).
  */

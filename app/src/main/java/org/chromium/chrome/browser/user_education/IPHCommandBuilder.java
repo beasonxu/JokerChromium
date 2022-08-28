@@ -17,7 +17,7 @@ import org.chromium.components.browser_ui.widget.highlight.ViewHighlighter.Highl
 import org.chromium.components.browser_ui.widget.textbubble.TextBubble;
 import org.chromium.ui.widget.AnchoredPopupWindow;
 import org.chromium.ui.widget.ViewRectProvider;
-
+import org.chromium.chrome.R;
 /**
  * Builder for (@see IPHCommand.java). Use this instead of constructing an IPHCommand directly.
  */

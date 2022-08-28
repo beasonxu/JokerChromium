@@ -4,6 +4,7 @@
 
 package org.chromium.chrome.browser.safety_check;
 import org.chromium.chrome.R;
+import org.chromium.chrome.R;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;

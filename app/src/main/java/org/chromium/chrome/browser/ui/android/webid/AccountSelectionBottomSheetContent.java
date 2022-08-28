@@ -10,6 +10,7 @@ import android.view.accessibility.AccessibilityEvent;
 import androidx.annotation.Nullable;
 
 import org.chromium.base.supplier.Supplier;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.ui.android.webid.AccountSelectionProperties.ItemProperties;
 import org.chromium.components.browser_ui.bottomsheet.BottomSheetContent;
 import org.chromium.ui.modelutil.PropertyKey;

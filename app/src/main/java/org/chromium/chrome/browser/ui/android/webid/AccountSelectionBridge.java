@@ -20,7 +20,7 @@ import org.chromium.ui.base.WindowAndroid;
 import org.chromium.url.GURL;
 
 import java.util.Arrays;
-
+import org.chromium.chrome.R;
 /**
  * This bridge creates and initializes a {@link AccountSelectionComponent} on construction and
  * forwards native calls to it.

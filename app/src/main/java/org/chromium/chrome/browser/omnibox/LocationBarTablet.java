@@ -12,7 +12,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import org.chromium.ui.base.LocalizationUtils;
-
+import org.chromium.chrome.R;
 /**
  * Location bar for tablet form factors.
  */

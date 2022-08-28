@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import org.chromium.base.ApiCompatibilityUtils;
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.widget.displaystyle.UiConfig;
 import org.chromium.components.browser_ui.widget.displaystyle.ViewResizer;
 
@@ -54,7 +55,7 @@ public class FeedStreamViewResizer extends ViewResizer {
         int defaultPaddingPixels = activity.getResources().getDimensionPixelSize(
                 R.dimen.content_suggestions_card_modern_margin);
         int minWidePaddingPixels = activity.getResources().getDimensionPixelSize(
-                org.chromium.chrome.tab_ui.R.dimen.ntp_wide_card_lateral_margins);
+                R.dimen.ntp_wide_card_lateral_margins);
 
         FeedStreamViewResizer viewResizer = new FeedStreamViewResizer(
                 activity, view, config, defaultPaddingPixels, minWidePaddingPixels);

@@ -34,7 +34,7 @@ import org.chromium.ui.util.ColorUtils;
 import org.chromium.url.GURL;
 
 import javax.inject.Inject;
-
+import org.chromium.chrome.R;
 /**
  * Helper that updates the Android task description given the state of the current tab.
  *

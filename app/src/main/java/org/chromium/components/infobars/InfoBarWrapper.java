@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 package org.chromium.components.infobars;
-
+import org.chromium.chrome.R;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;

@@ -16,7 +16,7 @@ import org.chromium.ui.modelutil.MVCListAdapter.ModelList;
 import org.chromium.ui.modelutil.SimpleRecyclerViewAdapter;
 
 import java.util.List;
-
+import org.chromium.chrome.R;
 /**
  * The coordinator to display the list of installed web apps in launchpad.
  */

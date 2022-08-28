@@ -30,7 +30,7 @@ import org.chromium.ui.modelutil.PropertyModelChangeProcessor;
 import org.chromium.ui.modelutil.SimpleRecyclerViewAdapter;
 
 import java.util.List;
-
+import org.chromium.chrome.R;
 /**
  * Creates the AccountSelection component. AccountSelection uses a bottom sheet to let the
  * user select an account.

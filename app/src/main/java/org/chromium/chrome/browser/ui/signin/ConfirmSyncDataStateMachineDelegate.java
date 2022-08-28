@@ -14,6 +14,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import org.chromium.chrome.R;
 import org.chromium.ui.modaldialog.ModalDialogManager;
 
 /**

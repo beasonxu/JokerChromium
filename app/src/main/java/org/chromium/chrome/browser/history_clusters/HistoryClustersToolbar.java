@@ -10,7 +10,7 @@ import android.widget.EditText;
 
 import org.chromium.components.browser_ui.widget.selectable_list.SelectableListToolbar;
 import org.chromium.ui.modelutil.PropertyModel;
-
+import org.chromium.chrome.R;
 /**
  * Toolbar for controlling the list of history clusters in the Journeys UI.
  */

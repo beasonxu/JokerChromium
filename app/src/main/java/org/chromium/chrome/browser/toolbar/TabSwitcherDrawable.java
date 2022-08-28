@@ -21,7 +21,7 @@ import org.chromium.chrome.browser.ui.theme.BrandedColorScheme;
 import org.chromium.components.browser_ui.widget.TintedDrawable;
 
 import java.util.Locale;
-
+import org.chromium.chrome.R;
 /**
  * A drawable for the tab switcher icon.
  */

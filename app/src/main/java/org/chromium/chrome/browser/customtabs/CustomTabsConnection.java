@@ -88,7 +88,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
-
+import org.chromium.chrome.R;
 /**
  * Implementation of the ICustomTabsService interface.
  *

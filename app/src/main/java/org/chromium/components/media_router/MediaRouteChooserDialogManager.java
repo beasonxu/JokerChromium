@@ -18,7 +18,7 @@ import androidx.mediarouter.app.MediaRouteChooserDialog;
 import androidx.mediarouter.app.MediaRouteChooserDialogFragment;
 import androidx.mediarouter.media.MediaRouteSelector;
 import androidx.mediarouter.media.MediaRouter;
-
+import org.chromium.chrome.R;
 /**
  * Manages the dialog responsible for selecting a {@link MediaSink}.
  */

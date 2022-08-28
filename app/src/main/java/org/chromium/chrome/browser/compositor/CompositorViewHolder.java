@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 package org.chromium.chrome.browser.compositor;
-
+import org.chromium.chrome.R;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;

@@ -6,6 +6,8 @@ package org.chromium.chrome.browser.password_manager;
 
 import androidx.annotation.DrawableRes;
 
+import org.chromium.chrome.R;
+
 /**
  * Public version of {@link PasswordManagerResourceProviderImpl}.
  * Downstream may provide a different implementation.

@@ -57,7 +57,7 @@ import org.chromium.url.URI;
 
 import java.net.URISyntaxException;
 import java.util.Objects;
-
+import org.chromium.chrome.R;
 /**
  * Provides a way of accessing toolbar data and state.
  */

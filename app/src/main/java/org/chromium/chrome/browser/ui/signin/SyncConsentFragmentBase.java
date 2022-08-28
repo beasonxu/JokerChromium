@@ -24,6 +24,7 @@ import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 
 import org.chromium.base.metrics.RecordUserAction;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.SyncFirstSetupCompleteSource;
 import org.chromium.chrome.browser.consent_auditor.ConsentAuditorFeature;
 import org.chromium.chrome.browser.flags.ChromeFeatureList;

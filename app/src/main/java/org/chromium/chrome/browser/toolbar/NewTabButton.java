@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 package org.chromium.chrome.browser.toolbar;
-
+import org.chromium.chrome.R;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.util.AttributeSet;

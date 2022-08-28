@@ -37,7 +37,7 @@ import org.chromium.ui.base.PageTransition;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
-
+import org.chromium.chrome.R;
 /**
  * Base class for defining methods where different behavior is required by downstream targets.
  * The correct version of {@link LocaleManagerDelegateImpl} will be determined at compile time
