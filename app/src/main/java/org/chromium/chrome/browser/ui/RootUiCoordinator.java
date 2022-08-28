@@ -986,8 +986,10 @@ public class RootUiCoordinator
     public void onPerformDirectAction(String actionId, Bundle arguments,
             CancellationSignal cancellationSignal, Consumer<Bundle> callback) {
         if (mDirectActionInitializer == null) return;
-        mDirectActionInitializer.onPerformDirectAction(
-                actionId, arguments, cancellationSignal, callback);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            mDirectActionInitializer.onPerformDirectAction(
+                    actionId, arguments, cancellationSignal, callback);
+        }
     }
 
     /**
@@ -1001,7 +1003,9 @@ public class RootUiCoordinator
      */
     public void onGetDirectActions(CancellationSignal cancellationSignal, Consumer<List> callback) {
         if (mDirectActionInitializer == null) return;
-        mDirectActionInitializer.onGetDirectActions(cancellationSignal, callback);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            mDirectActionInitializer.onGetDirectActions(cancellationSignal, callback);
+        }
     }
 
     // Protected class methods
@@ -1317,7 +1321,7 @@ public class RootUiCoordinator
         // TODO(1093999): Componentize SnackbarManager so BottomSheetController can own this.
         Callback<View> sheetInitializedCallback = (view) -> {
             mBottomSheetSnackbarManager = new SnackbarManager(mActivity,
-                    view.findViewById(org.chromium.components.browser_ui.bottomsheet.R.id
+                    view.findViewById(R.id
                                               .bottom_sheet_snackbar_container),
                     mWindowAndroid);
         };

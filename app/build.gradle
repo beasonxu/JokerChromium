@@ -136,6 +136,9 @@ android {
                         "$rootDir/app/src/main/res_features",
                         "$rootDir/app/src/main/res_media_router",
                         "$rootDir/app/src/main/res_webid",
+                        "$rootDir/app/src/main/res_loading_modal",
+                        "$rootDir/app/src/main/res_app_memu",
+                        "$rootDir/app/src/main/res_history_clusters",
 
 
 

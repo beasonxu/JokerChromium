@@ -123,6 +123,7 @@
         <entry key="app/src/main/res_video_tutorials/layout/video_tutorial_large_card.xml" value="0.1" />
         <entry key="app/src/main/res_webapp_browser/layout/image_zoom_view.xml" value="0.1" />
         <entry key="app/src/main/res_webapp_browser/layout/pwa_install_bottom_sheet_content.xml" value="0.1" />
+        <entry key="app/src/main/res_webid/layout/account_selection_header_item.xml" value="0.1" />
         <entry key="browser/feed/src/main/res/drawable/back_arrow.xml" value="0.1" />
         <entry key="browser/feed/src/main/res/xml/feed_autoplay_preferences.xml" value="0.8145161290322581" />
         <entry key="browser/language/src/main/res/layout/accept_languages_item.xml" value="0.1" />
