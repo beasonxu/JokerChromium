@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.IntDef;
 import androidx.annotation.LayoutRes;
 
+import org.chromium.chrome.R;
 import org.chromium.components.translate.TranslateMessage.MenuItem;
 
 import java.lang.annotation.Retention;

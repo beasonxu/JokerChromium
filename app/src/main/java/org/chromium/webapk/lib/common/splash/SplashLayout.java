@@ -16,6 +16,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.chromium.chrome.R;
+
+
 /**
  * Contains utility methods for drawing splash screen. The methods are applicable for both home
  * screen shortcuts and WebAPKs.

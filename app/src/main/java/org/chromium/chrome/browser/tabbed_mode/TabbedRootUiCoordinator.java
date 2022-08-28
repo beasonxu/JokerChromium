@@ -4,6 +4,7 @@
 
 package org.chromium.chrome.browser.tabbed_mode;
 
+import android.os.Build;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 
@@ -592,7 +593,9 @@ public class TabbedRootUiCoordinator extends RootUiCoordinator {
                         if (controller == null) {
                             return;
                         }
-                        controller.setNavigationBarScrimFraction(scrimFraction);
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
+                            controller.setNavigationBarScrimFraction(scrimFraction);
+                        }
                     }
                 };
         return new ScrimCoordinator(mActivity, delegate, coordinator,

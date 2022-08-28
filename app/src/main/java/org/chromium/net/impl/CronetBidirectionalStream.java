@@ -247,11 +247,11 @@ public class CronetBidirectionalStream extends ExperimentalBidirectionalStream {
     }
 
     CronetBidirectionalStream(CronetUrlRequestContext requestContext, String url,
-            @CronetEngineBase.StreamPriority int priority, Callback callback, Executor executor,
-            String httpMethod, List<Map.Entry<String, String>> requestHeaders,
-            boolean delayRequestHeadersUntilNextFlush, Collection<Object> requestAnnotations,
-            boolean trafficStatsTagSet, int trafficStatsTag, boolean trafficStatsUidSet,
-            int trafficStatsUid, @Nullable Network network) {
+                              @CronetEngineBase.StreamPriority int priority, Callback callback, Executor executor,
+                              String httpMethod, List<Map.Entry<String, String>> requestHeaders,
+                              boolean delayRequestHeadersUntilNextFlush, Collection<Object> requestAnnotations,
+                              boolean trafficStatsTagSet, int trafficStatsTag, boolean trafficStatsUidSet,
+                              int trafficStatsUid, @Nullable Network network) {
         mRequestContext = requestContext;
         mInitialUrl = url;
         mInitialPriority = convertStreamPriority(priority);

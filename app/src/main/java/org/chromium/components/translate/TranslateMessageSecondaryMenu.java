@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.widget.listmenu.ListMenu;
 import org.chromium.components.translate.TranslateMessage.MenuItem;
 import org.chromium.ui.UiUtils;

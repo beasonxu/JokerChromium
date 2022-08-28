@@ -22,6 +22,8 @@ import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.view.MarginLayoutParamsCompat;
 import androidx.core.view.ViewCompat;
 
+import org.chromium.chrome.R;
+
 import java.util.List;
 import java.util.Set;
 

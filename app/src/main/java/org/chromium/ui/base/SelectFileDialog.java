@@ -99,31 +99,32 @@ public class SelectFileDialog implements WindowAndroid.IntentCallback, PhotoPick
      * or an external source (such as the Android picker). These values are persisted to logs.
      * Entries should not be renumbered and numeric values should never be reused.
      */
-    @IntDef({FileSelectedAction.MEDIA_PICKER_IMAGE_BY_MIME_TYPE,
-            FileSelectedAction.MEDIA_PICKER_VIDEO_BY_MIME_TYPE,
-            FileSelectedAction.MEDIA_PICKER_OTHER_BY_MIME_TYPE,
-            FileSelectedAction.MEDIA_PICKER_IMAGE_BY_EXTENSION,
-            FileSelectedAction.MEDIA_PICKER_VIDEO_BY_EXTENSION,
-            FileSelectedAction.MEDIA_PICKER_OTHER_BY_EXTENSION,
-            FileSelectedAction.MEDIA_PICKER_UNKNOWN_TYPE,
-            FileSelectedAction.EXTERNAL_PICKER_IMAGE_BY_MIME_TYPE,
-            FileSelectedAction.EXTERNAL_PICKER_VIDEO_BY_MIME_TYPE,
-            FileSelectedAction.EXTERNAL_PICKER_OTHER_BY_MIME_TYPE,
-            FileSelectedAction.EXTERNAL_PICKER_IMAGE_BY_EXTENSION,
-            FileSelectedAction.EXTERNAL_PICKER_VIDEO_BY_EXTENSION,
-            FileSelectedAction.EXTERNAL_PICKER_OTHER_BY_EXTENSION,
-            FileSelectedAction.EXTERNAL_PICKER_UNKNOWN_TYPE})
+    @IntDef({MEDIA_PICKER_IMAGE_BY_MIME_TYPE,
+           MEDIA_PICKER_VIDEO_BY_MIME_TYPE,
+           MEDIA_PICKER_OTHER_BY_MIME_TYPE,
+           MEDIA_PICKER_IMAGE_BY_EXTENSION,
+           MEDIA_PICKER_VIDEO_BY_EXTENSION,
+           MEDIA_PICKER_OTHER_BY_EXTENSION,
+           MEDIA_PICKER_UNKNOWN_TYPE,
+           EXTERNAL_PICKER_IMAGE_BY_MIME_TYPE,
+           EXTERNAL_PICKER_VIDEO_BY_MIME_TYPE,
+           EXTERNAL_PICKER_OTHER_BY_MIME_TYPE,
+           EXTERNAL_PICKER_IMAGE_BY_EXTENSION,
+           EXTERNAL_PICKER_VIDEO_BY_EXTENSION,
+           EXTERNAL_PICKER_OTHER_BY_EXTENSION,
+           EXTERNAL_PICKER_UNKNOWN_TYPE})
     private @interface FileSelectedAction {
+    }
         // MediaPicker was used to pick a photo, as determined by its MIME type.
-        int MEDIA_PICKER_IMAGE_BY_MIME_TYPE = 0;
+    public static final   int MEDIA_PICKER_IMAGE_BY_MIME_TYPE = 0;
 
         // MediaPicker was used to pick a video, as determined by its MIME type.
-        int MEDIA_PICKER_VIDEO_BY_MIME_TYPE = 1;
+    public static final   int MEDIA_PICKER_VIDEO_BY_MIME_TYPE = 1;
 
         // MediaPicker was used to pick a file, but the ContentResolver returned a MIME type that
         // corresponds to neither an image, nor a video. This is not expected to happen, unless more
         // formats are added to the MediaPicker.
-        int MEDIA_PICKER_OTHER_BY_MIME_TYPE = 2;
+        public static final     int MEDIA_PICKER_OTHER_BY_MIME_TYPE = 2;
 
         // MediaPicker was used to pick a photo, as determined by its file extension. This is
         // primarily for images fresh off of the camera (where the ContentResolver doesn't know
@@ -131,54 +132,54 @@ public class SelectFileDialog implements WindowAndroid.IntentCallback, PhotoPick
         // photo in the MediaPicker but the ContentResolver didn't know its MIME type. It is
         // unlikely, though, because those URIs don't normally contain the extension (except when
         // camera is the source), so these would more likely show up as MEDIA_PICKER_UNKNOWN_TYPE.
-        int MEDIA_PICKER_IMAGE_BY_EXTENSION = 3;
+        public static final    int MEDIA_PICKER_IMAGE_BY_EXTENSION = 3;
 
         // Same comment applies as for MEDIA_PICKER_VIDEO_BY_EXTENSION, except in this case for a
         // video. Please note though that, in the emulator, the ContentResolver *is* able to lookup
         // the MIME types for videos (where it fails to do so for photos), so videos may be counted
         // as MEDIA_PICKER_VIDEO_BY_MIME_TYPE instead.
-        int MEDIA_PICKER_VIDEO_BY_EXTENSION = 4;
+        public static final    int MEDIA_PICKER_VIDEO_BY_EXTENSION = 4;
 
         // MediaPicker was used to pick something other than a video/photo, as determined by the
         // file extension. This is not expected to happen, unless more formats are added to the
         // MediaPicker.
-        int MEDIA_PICKER_OTHER_BY_EXTENSION = 5;
+        public static final   int MEDIA_PICKER_OTHER_BY_EXTENSION = 5;
 
         // MediaPicker was used, but neither the MIME type nor the extension provided clues as to
         // what type of file it was (or the URI was null).
-        int MEDIA_PICKER_UNKNOWN_TYPE = 6;
+        public static final    int MEDIA_PICKER_UNKNOWN_TYPE = 6;
 
         // An external source (Android intent) was used to pick a photo, as determined by its MIME
         // type.
-        int EXTERNAL_PICKER_IMAGE_BY_MIME_TYPE = 7;
+        public static final   int EXTERNAL_PICKER_IMAGE_BY_MIME_TYPE = 7;
 
         // An external source (Android intent) was used to pick a video, as determined by its MIME
         // type.
-        int EXTERNAL_PICKER_VIDEO_BY_MIME_TYPE = 8;
+        public static final  int EXTERNAL_PICKER_VIDEO_BY_MIME_TYPE = 8;
 
         // An external source (Android intent) was used to pick something other than a video/photo,
         // as determined by the MIME type.
-        int EXTERNAL_PICKER_OTHER_BY_MIME_TYPE = 9;
+        public static final    int EXTERNAL_PICKER_OTHER_BY_MIME_TYPE = 9;
 
         // An external source (Android intent) was used to pick a photo, as determined by its file
         // extension.
-        int EXTERNAL_PICKER_IMAGE_BY_EXTENSION = 10;
+        public static final    int EXTERNAL_PICKER_IMAGE_BY_EXTENSION = 10;
 
         // An external source (Android intent) was used to pick a video, as determined by its file
         // extension.
-        int EXTERNAL_PICKER_VIDEO_BY_EXTENSION = 11;
+        public static final     int EXTERNAL_PICKER_VIDEO_BY_EXTENSION = 11;
 
         // An external source (Android intent) was used to pick something other than a video/photo,
         // as determined by its file extension.
-        int EXTERNAL_PICKER_OTHER_BY_EXTENSION = 12;
+        public static final     int EXTERNAL_PICKER_OTHER_BY_EXTENSION = 12;
 
         // An external source (Android intent) was used, but neither the MIME type nor the file
         // extension provided clues as to what type of file it was (or the URI was null).
-        int EXTERNAL_PICKER_UNKNOWN_TYPE = 13;
+        public static final    int EXTERNAL_PICKER_UNKNOWN_TYPE = 13;
 
         // Keeps track of the number of options above. Must be the highest number.
-        int COUNT = 14;
-    }
+        public static final    int COUNT = 14;
+    
 
     /**
      * If set, overrides the WindowAndroid passed in {@link selectFile()}.
@@ -1128,8 +1129,8 @@ public class SelectFileDialog implements WindowAndroid.IntentCallback, PhotoPick
     private int getMediaType(
             Uri mediaUri, boolean mediaPickerWasUsed, ContentResolver contentResolver) {
         if (mediaUri == null) {
-            return mediaPickerWasUsed ? FileSelectedAction.MEDIA_PICKER_UNKNOWN_TYPE
-                                      : FileSelectedAction.EXTERNAL_PICKER_UNKNOWN_TYPE;
+            return mediaPickerWasUsed ?MEDIA_PICKER_UNKNOWN_TYPE
+                                      :EXTERNAL_PICKER_UNKNOWN_TYPE;
         }
 
         // Note: ContentResolver also allows MEDIA_TYPE to be queried instead, but that is less
@@ -1149,16 +1150,16 @@ public class SelectFileDialog implements WindowAndroid.IntentCallback, PhotoPick
                     if (mimeType != null) {
                         if (mimeType.startsWith("image/")) {
                             mediaType = mediaPickerWasUsed
-                                    ? FileSelectedAction.MEDIA_PICKER_IMAGE_BY_MIME_TYPE
-                                    : FileSelectedAction.EXTERNAL_PICKER_IMAGE_BY_MIME_TYPE;
+                                    ?MEDIA_PICKER_IMAGE_BY_MIME_TYPE
+                                    :EXTERNAL_PICKER_IMAGE_BY_MIME_TYPE;
                         } else if (mimeType.startsWith("video/")) {
                             mediaType = mediaPickerWasUsed
-                                    ? FileSelectedAction.MEDIA_PICKER_VIDEO_BY_MIME_TYPE
-                                    : FileSelectedAction.EXTERNAL_PICKER_VIDEO_BY_MIME_TYPE;
+                                    ?MEDIA_PICKER_VIDEO_BY_MIME_TYPE
+                                    :EXTERNAL_PICKER_VIDEO_BY_MIME_TYPE;
                         } else {
                             mediaType = mediaPickerWasUsed
-                                    ? FileSelectedAction.MEDIA_PICKER_OTHER_BY_MIME_TYPE
-                                    : FileSelectedAction.EXTERNAL_PICKER_OTHER_BY_MIME_TYPE;
+                                    ?MEDIA_PICKER_OTHER_BY_MIME_TYPE
+                                    :EXTERNAL_PICKER_OTHER_BY_MIME_TYPE;
                         }
                     }
                 }
@@ -1177,29 +1178,29 @@ public class SelectFileDialog implements WindowAndroid.IntentCallback, PhotoPick
             for (String right : POPULAR_IMAGE_EXTENSIONS) {
                 if (extension.equalsIgnoreCase(right)) {
                     return mediaPickerWasUsed
-                            ? FileSelectedAction.MEDIA_PICKER_IMAGE_BY_EXTENSION
-                            : FileSelectedAction.EXTERNAL_PICKER_IMAGE_BY_EXTENSION;
+                            ? MEDIA_PICKER_IMAGE_BY_EXTENSION
+                            :EXTERNAL_PICKER_IMAGE_BY_EXTENSION;
                 }
             }
             for (String right : POPULAR_VIDEO_EXTENSIONS) {
                 if (extension.equalsIgnoreCase(right)) {
                     return mediaPickerWasUsed
-                            ? FileSelectedAction.MEDIA_PICKER_VIDEO_BY_EXTENSION
-                            : FileSelectedAction.EXTERNAL_PICKER_VIDEO_BY_EXTENSION;
+                            ?MEDIA_PICKER_VIDEO_BY_EXTENSION
+                            :EXTERNAL_PICKER_VIDEO_BY_EXTENSION;
                 }
             }
 
-            return mediaPickerWasUsed ? FileSelectedAction.MEDIA_PICKER_OTHER_BY_EXTENSION
-                                      : FileSelectedAction.EXTERNAL_PICKER_OTHER_BY_EXTENSION;
+            return mediaPickerWasUsed ?MEDIA_PICKER_OTHER_BY_EXTENSION
+                                      :EXTERNAL_PICKER_OTHER_BY_EXTENSION;
         }
 
-        return mediaPickerWasUsed ? FileSelectedAction.MEDIA_PICKER_UNKNOWN_TYPE
-                                  : FileSelectedAction.EXTERNAL_PICKER_UNKNOWN_TYPE;
+        return mediaPickerWasUsed ?MEDIA_PICKER_UNKNOWN_TYPE
+                                  :EXTERNAL_PICKER_UNKNOWN_TYPE;
     }
 
     private static void logFileSelectedAction(@FileSelectedAction int action) {
         RecordHistogram.recordEnumeratedHistogram(
-                "Android.SelectFileDialogContentSelected", action, FileSelectedAction.COUNT);
+                "Android.SelectFileDialogContentSelected", action,COUNT);
     }
 
     private static boolean shouldShowPhotoPicker() {

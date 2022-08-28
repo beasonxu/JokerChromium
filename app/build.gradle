@@ -45,22 +45,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    aaptOptions {
-        noCompress "dat", "bin", "pak", "unwind_cfi_32" //pak资源文件不能压缩
-    }
-
-    lintOptions {
-        abortOnError false
-        checkReleaseBuilds false//部分代码lint检查是通过不了的
-        ignoreWarnings true
-        disable 'MissingTranslation'
-    }
-
     packagingOptions {
-        exclude 'META-INF/NOTICE' // will not include NOTICE file
-        exclude 'META-INF/LICENSE' // will not include LICENSE file
-        exclude 'META-INF/INDEX.LIST' // will not include INDEX.LIST file
+        resources {
+            excludes += ['META-INF/NOTICE', 'META-INF/LICENSE', 'META-INF/INDEX.LIST']
+        }
     }
+
 
     sourceSets {
         main {
@@ -108,6 +98,13 @@ android {
                         "$rootDir/app/src/main/res_tab_ui",
                         "$rootDir/app/src/main/res_bottom_sheet",
                         "$rootDir/app/src/main/res_keyboard",
+                        "$rootDir/app/src/main/res_translate",
+                        "$rootDir/app/src/main/res_webapp",
+                        "$rootDir/app/src/main/res_photo_picker",
+                        "$rootDir/app/src/main/res_media",
+                        "$rootDir/app/src/main/res_app",
+                        "$rootDir/app/src/main/res_down_internal",
+                        "$rootDir/app/src/main/res_continuous_search",
 
 
 
@@ -119,19 +116,32 @@ android {
             }
         }
     }
+    androidResources {
+        noCompress 'dat', 'bin', 'pak', 'unwind_cfi_32'
+    }
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+        disable 'MissingTranslation', 'MissingTranslation'
+        ignoreWarnings true
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
 //    implementation files('libs\\ui\\android\\ui_no_recycler_view_java.jar')
-//    implementation files('libs\\components\\browser_ui\\photo_picker\\android\\java.jar')
 //    implementation files('libs\\url\\gurl_java.jar')
 //    implementation files('libs\\third_party\\gif_player\\gif_player_java.jar')
 
 
     implementation("androidx.startup:startup-runtime:1.1.1")
+    implementation files('libs/components/photo_picker/android/java.jar')
+    implementation files('libs/third_party/gif_player/gif_player_java.jar')
+    implementation files('libs/ui/android/ui_no_recycler_view_java.jar')
+    implementation files('libs/url/gurl_java.jar')
 
-
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
+    implementation("androidx.recyclerview:recyclerview-selection:1.1.0")
 
 
     def gmsVersion = '17.0.0'

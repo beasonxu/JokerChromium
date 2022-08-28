@@ -15,6 +15,7 @@ import android.widget.Button;
 
 import androidx.annotation.IntDef;
 
+import org.chromium.chrome.R;
 import org.chromium.ui.widget.ButtonCompat;
 
 import java.lang.annotation.Retention;

@@ -19,6 +19,7 @@ import java.io.IOException;
 
 // Note "InputPort" is named in the Web MIDI manner. It corresponds to MidiOutputPort class in the
 // Android API.
+
 /**
  * A MidiInputPortAndroid provides data to the associated midi::MidiInputPortAndroid object.
  */

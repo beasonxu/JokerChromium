@@ -37,6 +37,7 @@
         <entry key="app/src/main/res/menu/bookmark_action_bar_menu.xml" value="0.1234375" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.1234375" />
         <entry key="app/src/main/res/xml/google_services_preferences.xml" value="0.8145161290322581" />
+        <entry key="app/src/main/res_app/layout/main.xml" value="0.1" />
         <entry key="app/src/main/res_browser_ui_style/drawable/checkmark_blue.xml" value="0.1" />
         <entry key="app/src/main/res_browser_ui_style/drawable/gm_ads_click_24.xml" value="0.1" />
         <entry key="app/src/main/res_browser_ui_style/drawable/ic_account_circle_24dp.xml" value="0.1" />
@@ -60,6 +61,7 @@
         <entry key="app/src/main/res_content_public/layout/date_time_picker_dialog.xml" value="0.1" />
         <entry key="app/src/main/res_content_public/layout/multi_field_time_picker_dialog.xml" value="0.1" />
         <entry key="app/src/main/res_content_public/layout/two_field_date_picker.xml" value="0.1" />
+        <entry key="app/src/main/res_download/drawable/group_card_item_border.xml" value="0.1" />
         <entry key="app/src/main/res_download/drawable/infobar_download_complete.xml" value="0.1" />
         <entry key="app/src/main/res_feed/layout/feed_spinner.xml" value="0.1" />
         <entry key="app/src/main/res_feed/layout/follow_management_item.xml" value="0.1" />
@@ -75,6 +77,8 @@
         <entry key="app/src/main/res_page_info/layout/page_info_container.xml" value="0.1" />
         <entry key="app/src/main/res_page_info/layout/page_info_row.xml" value="0.1" />
         <entry key="app/src/main/res_payments/drawable/elo_card.xml" value="0.1" />
+        <entry key="app/src/main/res_photo_picker/drawable/ic_photo_camera_grey.xml" value="0.1" />
+        <entry key="app/src/main/res_photo_picker/layout/video_player.xml" value="0.1" />
         <entry key="app/src/main/res_signin/layout/personalized_signin_promo_view_header.xml" value="0.1" />
         <entry key="app/src/main/res_site_setting/layout/four_state_cookie_settings_preference.xml" value="0.1" />
         <entry key="app/src/main/res_site_setting/xml/single_website_preferences.xml" value="0.8145161290322581" />
@@ -89,6 +93,15 @@
         <entry key="app/src/main/res_tab_ui/drawable/tab_strip_fading_edge_start.xml" value="0.1" />
         <entry key="app/src/main/res_tab_ui/layout/bottom_tab_grid_toolbar.xml" value="0.1" />
         <entry key="app/src/main/res_toolbar/layout/tab_switcher_toolbar.xml" value="0.1" />
+        <entry key="app/src/main/res_translate/layout/translate_menu_extended_item.xml" value="0.1" />
+        <entry key="app/src/main/res_translate/layout/translate_menu_item.xml" value="0.1" />
+        <entry key="app/src/main/res_translate/layout/translate_menu_item_checked.xml" value="0.1" />
+        <entry key="app/src/main/res_video_tutorials/drawable/circular_media_button_background.xml" value="0.1" />
+        <entry key="app/src/main/res_video_tutorials/layout/language_card.xml" value="0.1" />
+        <entry key="app/src/main/res_video_tutorials/layout/language_picker.xml" value="0.1" />
+        <entry key="app/src/main/res_video_tutorials/layout/video_player_controls.xml" value="0.1" />
+        <entry key="app/src/main/res_video_tutorials/layout/video_player_loading.xml" value="0.1" />
+        <entry key="app/src/main/res_video_tutorials/layout/video_tutorial_large_card.xml" value="0.1" />
         <entry key="app/src/main/res_webapp_browser/layout/image_zoom_view.xml" value="0.1" />
         <entry key="app/src/main/res_webapp_browser/layout/pwa_install_bottom_sheet_content.xml" value="0.1" />
         <entry key="browser/feed/src/main/res/drawable/back_arrow.xml" value="0.1" />
@@ -103,5 +116,5 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
 </project>

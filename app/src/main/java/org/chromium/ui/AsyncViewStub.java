@@ -21,6 +21,7 @@ import org.chromium.base.Callback;
 import org.chromium.base.ObserverList;
 import org.chromium.base.ThreadUtils;
 import org.chromium.base.TraceEvent;
+import org.chromium.chrome.R;
 
 /**
  * An implementation of ViewStub that inflates the view in a background thread. Callbacks are still

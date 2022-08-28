@@ -34,6 +34,7 @@ import androidx.core.math.MathUtils;
 import androidx.core.view.GestureDetectorCompat;
 
 import org.chromium.base.task.PostTask;
+import org.chromium.chrome.R;
 import org.chromium.content_public.browser.UiThreadTaskTraits;
 import org.chromium.ui.UiUtils;
 

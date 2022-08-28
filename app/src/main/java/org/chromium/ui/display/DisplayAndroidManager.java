@@ -21,6 +21,7 @@ import org.chromium.base.annotations.CalledByNative;
 import org.chromium.base.annotations.JNINamespace;
 import org.chromium.base.annotations.MainDex;
 import org.chromium.base.annotations.NativeMethods;
+import org.chromium.base.compat.ApiHelperForR;
 import org.chromium.chrome.R;
 
 /**

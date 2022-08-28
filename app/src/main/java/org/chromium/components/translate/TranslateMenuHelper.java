@@ -25,6 +25,7 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 
 import org.chromium.base.supplier.Supplier;
+import org.chromium.chrome.R;
 
 import java.util.ArrayList;
 import java.util.List;

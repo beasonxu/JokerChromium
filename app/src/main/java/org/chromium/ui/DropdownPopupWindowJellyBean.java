@@ -21,6 +21,7 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 
 import org.chromium.base.Log;
+import org.chromium.chrome.R;
 
 import java.lang.reflect.Method;
 

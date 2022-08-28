@@ -1,0 +1,49 @@
+package org.chromium.components.translate;
+
+import org.chromium.base.JniStaticTestMocker;
+import org.chromium.base.NativeLibraryLoadedStatus;
+import org.chromium.base.annotations.CheckDiscard;
+import org.chromium.base.natives.GEN_JNI;
+
+import javax.annotation.Generated;
+
+@Generated("org.chromium.jni_generator.JniProcessor")
+@CheckDiscard("crbug.com/993421")
+class TranslateFeatureListJni implements TranslateFeatureList.Natives {
+  private static TranslateFeatureList.Natives testInstance;
+
+  public static final JniStaticTestMocker<TranslateFeatureList.Natives> TEST_HOOKS = new JniStaticTestMocker<TranslateFeatureList.Natives>() {
+    @Override
+    public void setInstanceForTesting(
+        TranslateFeatureList.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
+        throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
+      }
+      testInstance = instance;
+    }
+  };
+
+  @Override
+  public boolean isEnabled(String featureName) {
+    return (boolean)GEN_JNI.org_chromium_components_translate_TranslateFeatureList_isEnabled(featureName);
+  }
+
+  @Override
+  public boolean getFieldTrialParamByFeatureAsBoolean(String featureName, String paramName,
+      boolean defaultValue) {
+    return (boolean)GEN_JNI.org_chromium_components_translate_TranslateFeatureList_getFieldTrialParamByFeatureAsBoolean(featureName, paramName, defaultValue);
+  }
+
+  public static TranslateFeatureList.Natives get() {
+    if (GEN_JNI.TESTING_ENABLED) {
+      if (testInstance != null) {
+        return testInstance;
+      }
+      if (GEN_JNI.REQUIRE_MOCK) {
+        throw new UnsupportedOperationException("No mock found for the native implementation for org.chromium.components.translate.TranslateFeatureList.Natives. The current configuration requires all native implementations to have a mock instance.");
+      }
+    }
+    NativeLibraryLoadedStatus.checkLoaded(false);
+    return new TranslateFeatureListJni();
+  }
+}
