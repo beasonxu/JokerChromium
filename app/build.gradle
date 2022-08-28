@@ -145,6 +145,7 @@ android {
                         "$rootDir/app/src/main/res_password_entry_edit",
                         "$rootDir/app/src/main/res_password_dialog",
                         "$rootDir/app/src/main/res_privacy",
+                        "$rootDir/app/src/main/res_safety_check",
 
 
 
