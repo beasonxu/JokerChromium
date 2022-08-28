@@ -88,6 +88,7 @@
         <entry key="app/src/main/res_page_info/layout/page_info_container.xml" value="0.1" />
         <entry key="app/src/main/res_page_info/layout/page_info_row.xml" value="0.1" />
         <entry key="app/src/main/res_password_check/drawable/ic_autofill_assistant_white_24dp.xml" value="0.1" />
+        <entry key="app/src/main/res_password_check/drawable/password_check_positive.xml" value="0.1" />
         <entry key="app/src/main/res_payments/drawable/elo_card.xml" value="0.1" />
         <entry key="app/src/main/res_photo_picker/drawable/ic_photo_camera_grey.xml" value="0.1" />
         <entry key="app/src/main/res_photo_picker/layout/video_player.xml" value="0.1" />

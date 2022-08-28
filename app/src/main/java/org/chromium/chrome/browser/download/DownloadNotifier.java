@@ -19,7 +19,7 @@ public interface DownloadNotifier {
      * @param isSupportedMimeType Whether the MIME type can be viewed inside browser.
      */
     void notifyDownloadSuccessful(DownloadInfo downloadInfo, long systemDownloadId,
-            boolean canResolve, boolean isSupportedMimeType);
+                                  boolean canResolve, boolean isSupportedMimeType);
 
     /**
      * Add a download failed notification.
@@ -65,9 +65,4 @@ public interface DownloadNotifier {
      * @param downloadInfo   Info about the removed download.
      */
     void removeDownloadNotification(int notificationId, DownloadInfo downloadInfo);
-
-    /**
-     * Called to resume all the pending download entries in SharedPreferences.
-     */
-    void resumePendingDownloads();
 }

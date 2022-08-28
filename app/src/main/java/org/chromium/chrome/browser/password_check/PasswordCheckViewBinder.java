@@ -192,7 +192,7 @@ class PasswordCheckViewBinder {
                     data.mUrlOrAppName, PasswordCheckIconHelper.getIconColor(data, context),
                     FaviconUtils.createCircularIconGenerator(context), resources,
                     resources.getDimensionPixelSize(
-                            org.chromium.chrome.browser.ui.favicon.R.dimen.default_favicon_size)));
+                            R.dimen.default_favicon_size)));
         } else {
             assert false : "Unhandled update to property:" + propertyKey;
         }

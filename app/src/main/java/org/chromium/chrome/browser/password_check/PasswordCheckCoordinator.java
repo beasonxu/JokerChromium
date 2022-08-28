@@ -98,7 +98,7 @@ class PasswordCheckCoordinator implements PasswordCheckComponentUi, LifecycleObs
         PasswordCheckIconHelper iconHelper = new PasswordCheckIconHelper(
                 new LargeIconBridge(Profile.getLastUsedRegularProfile()),
                 mFragmentView.getResources().getDimensionPixelSize(
-                        org.chromium.chrome.browser.ui.favicon.R.dimen.default_favicon_size));
+                        R.dimen.default_favicon_size));
         mMediator = new PasswordCheckMediator(changePasswordHelper, mReauthenticationHelper,
                 mReauthenticatorBridge, mSettingsLauncher, iconHelper);
     }

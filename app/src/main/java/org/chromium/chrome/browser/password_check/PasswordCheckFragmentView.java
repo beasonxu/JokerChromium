@@ -14,6 +14,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.password_manager.PasswordCheckReferrer;
 
 /**
