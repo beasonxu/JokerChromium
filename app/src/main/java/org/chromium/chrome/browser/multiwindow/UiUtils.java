@@ -20,7 +20,7 @@ import org.chromium.components.favicon.LargeIconBridge;
 import org.chromium.ui.modaldialog.DialogDismissalCause;
 import org.chromium.ui.modelutil.PropertyModel;
 import org.chromium.url.GURL;
-
+import org.chromium.chrome.R;
 /**
  * Common util methods for multi-instance UI.
  */

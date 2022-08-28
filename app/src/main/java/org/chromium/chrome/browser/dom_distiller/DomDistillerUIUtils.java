@@ -13,7 +13,7 @@ import org.chromium.base.annotations.JNINamespace;
 import org.chromium.base.metrics.RecordUserAction;
 import org.chromium.content_public.browser.WebContents;
 import org.chromium.ui.base.WindowAndroid;
-
+import org.chromium.chrome.R;
 /**
  * Java implementation of dom_distiller::android::DistillerUIHandleAndroid.
  */

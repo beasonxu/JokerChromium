@@ -25,7 +25,7 @@ android {
         buildConfigField "boolean", "BUNDLES_SUPPORTED", "false"
         buildConfigField "boolean", "IS_INCREMENTAL_INSTALL", "false"
         buildConfigField "boolean", "ISOLATED_SPLITS_ENABLED", "false"
-        buildConfigField "String", "R_STRING_PRODUCT_VERSION", "104.2"
+        buildConfigField "int", "R_STRING_PRODUCT_VERSION", "104"
         buildConfigField "int", "MIN_SDK_VERSION", "23"
 
 
@@ -118,6 +118,12 @@ android {
                         "$rootDir/app/src/main/res_embedder_support",
                         "$rootDir/app/src/main/res_blocked_content",
                         "$rootDir/app/src/main/res_javascript_dialogs",
+                        "$rootDir/app/src/main/res_ui_favicon",
+                        "$rootDir/app/src/main/res_webrtc",
+                        "$rootDir/app/src/main/res_notification",
+                        "$rootDir/app/src/main/res_night_mode",
+                        "$rootDir/app/src/main/res_image_descriptions",
+                        "$rootDir/app/src/main/res_multiwindow",
 
 
 
@@ -157,23 +163,22 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview-selection:1.1.0")
 
 
-    def gmsVersion = '20.2.0'
-    implementation "com.google.android.gms:play-services-basement:${gmsVersion}"
-    implementation "com.google.android.gms:play-services-tasks:${gmsVersion}"
-    implementation "com.google.android.gms:play-services-base:${gmsVersion}"
-    implementation "com.google.android.gms:play-services-auth-base:${gmsVersion}"
-    implementation "com.google.android.gms:play-services-auth-api-phone:17.5.0"
-    implementation "com.google.android.gms:play-services-auth:${gmsVersion}"
-    implementation "com.google.android.gms:play-services-cast:${gmsVersion}"
-    implementation "com.google.android.gms:play-services-cast-framework:${gmsVersion}"
-    implementation "com.google.android.gms:play-services-iid:${gmsVersion}"
-    implementation "com.google.android.gms:play-services-instantapps:${gmsVersion}"
-    implementation "com.google.android.gms:play-services-gcm:${gmsVersion}"
-    implementation "com.google.android.gms:play-services-location:${gmsVersion}"
-    implementation "com.google.android.gms:play-services-vision-common:18.0.0"
-    implementation "com.google.android.gms:play-services-vision:18.0.0"
+    implementation "com.google.android.gms:play-services-basement:18.1.0"
+    implementation "com.google.android.gms:play-services-tasks:18.0.2"
+    implementation "com.google.android.gms:play-services-base:18.1.0"
+    implementation "com.google.android.gms:play-services-auth-base:18.0.3"
+    implementation "com.google.android.gms:play-services-auth-api-phone:18.0.1"
+    implementation "com.google.android.gms:play-services-auth-base:18.0.3"
+    implementation "com.google.android.gms:play-services-cast:21.1.0"
+    implementation "com.google.android.gms:play-services-cast-framework:20.1.0"
+    implementation "com.google.android.gms:play-services-iid:17.0.0"
+    implementation "com.google.android.gms:play-services-instantapps:18.0.1"
+    implementation "com.google.android.gms:play-services-gcm:17.0.0"
+    implementation "com.google.android.gms:play-services-location-license:12.0.1"
+    implementation "com.google.android.gms:play-services-vision-common:19.1.3"
+    implementation "com.google.android.gms:play-services-vision:20.1.3"
     implementation "com.google.android.gms:play-services-fido:18.1.0"
-    implementation 'com.google.android.gms:play-services-location:10.0.0'
+    implementation 'com.google.android.gms:play-services-location:17.1.0'
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
     implementation "com.google.dagger:dagger:$DAGGER_VERSION"
     implementation 'com.google.protobuf:protobuf-java:3.8.0'

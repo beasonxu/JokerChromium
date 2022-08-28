@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import org.chromium.ui.modelutil.PropertyKey;
 import org.chromium.ui.modelutil.PropertyModel;
-
+import org.chromium.chrome.R;
 class TargetSelectorItemViewBinder {
     public static void bind(PropertyModel model, View view, PropertyKey propertyKey) {
         if (TargetSelectorItemProperties.FAVICON == propertyKey) {

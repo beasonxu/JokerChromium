@@ -30,7 +30,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
+import org.chromium.chrome.R;
 /**
  * The view that shows the positions of the find in page matches and allows scrubbing
  * between the entries.

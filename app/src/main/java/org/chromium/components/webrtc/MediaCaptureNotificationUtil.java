@@ -18,7 +18,7 @@ import org.chromium.components.browser_ui.notifications.NotificationWrapperBuild
 import org.chromium.components.browser_ui.notifications.PendingIntentProvider;
 import org.chromium.components.url_formatter.SchemeDisplay;
 import org.chromium.components.url_formatter.UrlFormatter;
-
+import org.chromium.chrome.R;
 /**
  * Helper to build a notification for Media Capture and Streams.
  */

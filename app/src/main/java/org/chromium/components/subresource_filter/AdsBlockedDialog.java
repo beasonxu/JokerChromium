@@ -26,7 +26,7 @@ import org.chromium.ui.modaldialog.ModalDialogProperties;
 import org.chromium.ui.modaldialog.ModalDialogProperties.ButtonType;
 import org.chromium.ui.modelutil.PropertyModel;
 import org.chromium.ui.text.NoUnderlineClickableSpan;
-
+import org.chromium.chrome.R;
 /**
  * Java part of AdsBlockedDialog pair providing communication between native ads blocked
  * delegate code and Java ads blocked dialog UI components.

@@ -24,7 +24,7 @@ import org.chromium.ui.modelutil.PropertyModel;
 
 import java.util.Iterator;
 import java.util.List;
-
+import org.chromium.chrome.R;
 /**
  * Coordinator to construct the move target selector dialog.
  */

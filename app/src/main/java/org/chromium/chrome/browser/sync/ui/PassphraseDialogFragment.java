@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 package org.chromium.chrome.browser.sync.ui;
-
+import org.chromium.chrome.R;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;

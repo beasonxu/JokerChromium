@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 package org.chromium.chrome.browser.browsing_data;
-
+import org.chromium.chrome.R;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;

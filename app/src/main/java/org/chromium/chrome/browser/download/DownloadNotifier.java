@@ -65,4 +65,9 @@ public interface DownloadNotifier {
      * @param downloadInfo   Info about the removed download.
      */
     void removeDownloadNotification(int notificationId, DownloadInfo downloadInfo);
+
+    /**
+     * Called to resume all the pending download entries in SharedPreferences.
+     */
+    void resumePendingDownloads();
 }

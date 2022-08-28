@@ -4,7 +4,7 @@
 // found in the LICENSE file.
 
 package org.chromium.chrome.browser.keyboard_accessory;
-
+import org.chromium.chrome.R;
 import android.app.Activity;
 import android.util.SparseArray;
 

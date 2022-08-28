@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 package org.chromium.chrome.browser.dom_distiller;
-
+import org.chromium.chrome.R;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.util.AttributeSet;

@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
-
+import org.chromium.chrome.R;
 /** Content view class for close confirmation dialog. */
 public class CloseConfirmationDialogView extends LinearLayout {
     public CloseConfirmationDialogView(Context context) {

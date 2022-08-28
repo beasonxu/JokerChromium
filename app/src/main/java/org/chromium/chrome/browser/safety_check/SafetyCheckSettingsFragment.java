@@ -16,7 +16,7 @@ import androidx.preference.PreferenceFragmentCompat;
 
 import org.chromium.components.browser_ui.settings.SettingsUtils;
 import org.chromium.ui.widget.ButtonCompat;
-
+import org.chromium.chrome.R;
 /**
  * Settings fragment containing Safety check. This class represents a View in the MVC paradigm.
  */

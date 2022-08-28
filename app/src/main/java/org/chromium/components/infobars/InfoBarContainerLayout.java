@@ -21,7 +21,7 @@ import android.widget.FrameLayout;
 import org.chromium.ui.widget.OptimizedFrameLayout;
 
 import java.util.ArrayList;
-
+import org.chromium.chrome.R;
 /**
  * Layout that displays infobars in a stack. Handles all the animations when adding or removing
  * infobars and when swapping infobar contents.

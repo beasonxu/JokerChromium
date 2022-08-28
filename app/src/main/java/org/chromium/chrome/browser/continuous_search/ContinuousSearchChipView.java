@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 package org.chromium.chrome.browser.continuous_search;
-
+import org.chromium.chrome.R;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.Gravity;

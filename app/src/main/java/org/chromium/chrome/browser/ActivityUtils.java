@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 package org.chromium.chrome.browser;
-
+import org.chromium.chrome.R;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;

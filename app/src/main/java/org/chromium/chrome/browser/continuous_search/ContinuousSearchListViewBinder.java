@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 package org.chromium.chrome.browser.continuous_search;
-
+import org.chromium.chrome.R;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
 import android.view.View;
