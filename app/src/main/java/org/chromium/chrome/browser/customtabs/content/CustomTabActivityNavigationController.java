@@ -4,6 +4,9 @@
 
 package org.chromium.chrome.browser.customtabs.content;
 
+import static org.chromium.chrome.browser.customtabs.content.CustomTabActivityNavigationController.FinishReason.OTHER;
+import static org.chromium.chrome.browser.customtabs.content.CustomTabActivityNavigationController.FinishReason.REPARENTING;
+import static org.chromium.chrome.browser.customtabs.content.CustomTabActivityNavigationController.FinishReason.USER_NAVIGATION;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -55,11 +58,11 @@ public class CustomTabActivityNavigationController implements StartStopWithNativ
 
     @IntDef({USER_NAVIGATION, REPARENTING, OTHER})
     @Retention(RetentionPolicy.SOURCE)
-    public @interface FinishReason {}
-    public static final  int USER_NAVIGATION = 0;
-    public static final  int REPARENTING = 1;
-    public static final  int OTHER = 2;
-
+    public @interface FinishReason {
+        int USER_NAVIGATION = 0;
+        int REPARENTING = 1;
+        int OTHER = 2;
+    }
 
     /** A handler of back presses. */
     public interface BackHandler {

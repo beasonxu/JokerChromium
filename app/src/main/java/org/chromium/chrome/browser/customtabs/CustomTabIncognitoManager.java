@@ -46,11 +46,11 @@ public class CustomTabIncognitoManager implements NativeInitObserver, DestroyObs
 
     @Inject
     public CustomTabIncognitoManager(Activity activity,
-            BrowserServicesIntentDataProvider intentDataProvider,
-            CustomTabActivityNavigationController navigationController,
-            ActivityLifecycleDispatcher lifecycleDispatcher,
-            IncognitoTabHostRegistry incognitoTabHostRegistry,
-            IncognitoCctProfileManager incognitoCctProfileManager) {
+                                     BrowserServicesIntentDataProvider intentDataProvider,
+                                     CustomTabActivityNavigationController navigationController,
+                                     ActivityLifecycleDispatcher lifecycleDispatcher,
+                                     IncognitoTabHostRegistry incognitoTabHostRegistry,
+                                     IncognitoCctProfileManager incognitoCctProfileManager) {
         mActivity = activity;
         mIntentDataProvider = intentDataProvider;
         mNavigationController = navigationController;
