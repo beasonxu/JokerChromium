@@ -116,6 +116,7 @@ android {
                         "$rootDir/app/src/main/blocked_content",
                         "$rootDir/app/src/main/res_http_auth",
                         "$rootDir/app/src/main/res_embedder_support",
+                        "$rootDir/app/src/main/res_blocked_content",
 
 
 
