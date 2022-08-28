@@ -12,7 +12,7 @@ import android.util.AttributeSet;
 
 import org.chromium.components.browser_ui.widget.ViewResourceFrameLayout;
 import org.chromium.ui.resources.dynamics.ViewResourceAdapter;
-
+import org.chromium.chrome.R;
 /**
  * A {@link ViewResourceFrameLayout} that specifically handles redraw of the top shadow of the view
  * it represents.

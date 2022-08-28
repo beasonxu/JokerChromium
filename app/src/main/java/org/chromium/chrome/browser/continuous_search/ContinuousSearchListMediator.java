@@ -34,7 +34,7 @@ import org.chromium.url.GURL;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-
+import org.chromium.chrome.R;
 /**
  * Business logic for the UI component of Continuous Search Navigation. This class updates the UI on
  * search result updates.

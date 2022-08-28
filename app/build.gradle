@@ -112,6 +112,8 @@ android {
                         "$rootDir/app/src/main/res_management",
                         "$rootDir/app/src/main/res_password_check",
                         "$rootDir/app/src/main/res_safe_browsing",
+                        "$rootDir/app/src/main/res_password_manager",
+                        "$rootDir/app/src/main/blocked_content",
 
 
 

@@ -32,7 +32,7 @@ import org.chromium.ui.modelutil.MVCListAdapter.ModelList;
 import org.chromium.ui.modelutil.PropertyModel;
 import org.chromium.ui.modelutil.PropertyModelChangeProcessor;
 import org.chromium.ui.modelutil.SimpleRecyclerViewAdapter;
-
+import org.chromium.chrome.R;
 /**
  * Coordinator for Continuous Search Navigation UI: A RecyclerView that displays items provided
  * by the CSN infrastructure.

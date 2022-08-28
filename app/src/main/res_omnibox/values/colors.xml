@@ -40,5 +40,9 @@
     <color name="url_bar_secondary_text_incognito">@color/default_text_color_secondary_light</color>
 
     <color name="text_highlight_color_incognito">@color/baseline_primary_200_alpha_20</color>
-
+    <!-- URL Emphasizer colors -->
+    <color name="url_emphasis_non_emphasized_text">@color/default_text_color_secondary_dark</color>
+    <color name="url_emphasis_light_non_emphasized_text">@color/white_alpha_50</color>
+    <color name="url_emphasis_emphasized_text">@color/default_text_color_dark</color>
+    <color name="url_emphasis_light_emphasized_text">@android:color/white</color>
 </resources>

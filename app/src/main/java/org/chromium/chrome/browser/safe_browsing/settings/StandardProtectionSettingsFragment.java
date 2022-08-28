@@ -18,7 +18,7 @@ import org.chromium.components.browser_ui.settings.ChromeSwitchPreference;
 import org.chromium.components.browser_ui.settings.ManagedPreferenceDelegate;
 import org.chromium.components.prefs.PrefService;
 import org.chromium.components.user_prefs.UserPrefs;
-
+import org.chromium.chrome.R;
 /**
  * Fragment containing standard protection settings.
  */

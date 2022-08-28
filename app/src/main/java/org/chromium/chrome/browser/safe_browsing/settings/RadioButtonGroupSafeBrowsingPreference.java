@@ -22,7 +22,7 @@ import org.chromium.components.browser_ui.settings.ManagedPreferencesUtils;
 import org.chromium.components.browser_ui.widget.RadioButtonWithDescription;
 import org.chromium.components.browser_ui.widget.RadioButtonWithDescriptionAndAuxButton;
 import org.chromium.components.browser_ui.widget.RadioButtonWithDescriptionLayout;
-
+import org.chromium.chrome.R;
 /**
  * <p>
  * A radio button group used for Safe Browsing. Currently, it has 3 options: Enhanced Protection,

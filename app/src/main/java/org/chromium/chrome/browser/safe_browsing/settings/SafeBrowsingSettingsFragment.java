@@ -22,7 +22,7 @@ import org.chromium.components.browser_ui.settings.FragmentSettingsLauncher;
 import org.chromium.components.browser_ui.settings.ManagedPreferenceDelegate;
 import org.chromium.components.browser_ui.settings.SettingsLauncher;
 import org.chromium.components.browser_ui.settings.TextMessagePreference;
-
+import org.chromium.chrome.R;
 /**
  * Fragment containing Safe Browsing settings.
  */

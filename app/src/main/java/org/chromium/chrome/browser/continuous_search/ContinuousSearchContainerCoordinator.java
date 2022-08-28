@@ -21,7 +21,7 @@ import org.chromium.ui.modelutil.PropertyModel;
 import org.chromium.ui.modelutil.PropertyModelChangeProcessor;
 import org.chromium.ui.resources.ResourceManager;
 import org.chromium.ui.resources.dynamics.ViewResourceAdapter;
-
+import org.chromium.chrome.R;
 /**
  * Coordinator in charge of managing the container for Continuous Search Navigation. The container
  * takes care of positioning itself in the top controls area and hosts the CSN list.
