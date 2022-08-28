@@ -43,7 +43,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-
+import org.chromium.chrome.R;
 /**
  * A class for keeping track of common data associated with showing photos in
  * the photo picker, for example the RecyclerView and the bitmap caches.

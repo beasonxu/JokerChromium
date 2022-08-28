@@ -73,13 +73,16 @@
         <entry key="app/src/main/res_keyboard/layout/keyboard_accessory_modern.xml" value="0.1" />
         <entry key="app/src/main/res_keyboard/layout/keyboard_accessory_tabs.xml" value="0.1" />
         <entry key="app/src/main/res_language/layout/add_languages_main.xml" value="0.13880445795339413" />
+        <entry key="app/src/main/res_message_internal/layout/message_banner_view.xml" value="0.1" />
         <entry key="app/src/main/res_omnibox/drawable/ic_content_copy_black.xml" value="0.1" />
         <entry key="app/src/main/res_omnibox/drawable/ic_equals_sign_round.xml" value="0.1" />
         <entry key="app/src/main/res_page_info/layout/page_info_container.xml" value="0.1" />
         <entry key="app/src/main/res_page_info/layout/page_info_row.xml" value="0.1" />
+        <entry key="app/src/main/res_password_check/drawable/ic_autofill_assistant_white_24dp.xml" value="0.1" />
         <entry key="app/src/main/res_payments/drawable/elo_card.xml" value="0.1" />
         <entry key="app/src/main/res_photo_picker/drawable/ic_photo_camera_grey.xml" value="0.1" />
         <entry key="app/src/main/res_photo_picker/layout/video_player.xml" value="0.1" />
+        <entry key="app/src/main/res_share/layout/share_dialog_item.xml" value="0.1" />
         <entry key="app/src/main/res_signin/layout/personalized_signin_promo_view_header.xml" value="0.1" />
         <entry key="app/src/main/res_site_setting/layout/four_state_cookie_settings_preference.xml" value="0.1" />
         <entry key="app/src/main/res_site_setting/xml/single_website_preferences.xml" value="0.8145161290322581" />

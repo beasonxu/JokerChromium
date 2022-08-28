@@ -40,7 +40,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-
+import org.chromium.chrome.R;
 /**
  * Shows a list of all sites. When the user selects a site, SingleWebsiteSettings
  * is launched to allow the user to see or modify the settings for that particular website.

@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 
 import androidx.preference.DialogPreference;
 import androidx.preference.PreferenceViewHolder;
-
+import org.chromium.chrome.R;
 /**
  * Dialog that prompts the user to clear website storage on the device.
  */

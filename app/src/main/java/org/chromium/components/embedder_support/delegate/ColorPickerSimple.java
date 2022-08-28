@@ -12,7 +12,7 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.ListView;
 
 import org.chromium.components.embedder_support.delegate.ColorSuggestionListAdapter.OnColorSuggestionClickListener;
-
+import org.chromium.chrome.R;
 /**
  * Draws a grid of (predefined) colors and allows the user to choose one of
  * those colors.

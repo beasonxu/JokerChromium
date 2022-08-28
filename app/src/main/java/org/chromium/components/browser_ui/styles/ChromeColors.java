@@ -15,7 +15,7 @@ import androidx.appcompat.content.res.AppCompatResources;
 
 import com.google.android.material.color.MaterialColors;
 import com.google.android.material.elevation.ElevationOverlayProvider;
-
+import org.chromium.chrome.R;
 /**
  * Provides common default colors for Chrome UI.
  */

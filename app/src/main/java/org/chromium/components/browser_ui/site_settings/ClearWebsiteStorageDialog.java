@@ -13,7 +13,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceDialogFragmentCompat;
 
 import org.chromium.base.Callback;
-
+import org.chromium.chrome.R;
 /**
  * The fragment used to display the clear website storage confirmation dialog.
  */

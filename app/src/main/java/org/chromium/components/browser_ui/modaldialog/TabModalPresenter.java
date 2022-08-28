@@ -28,7 +28,7 @@ import org.chromium.ui.modaldialog.ModalDialogProperties;
 import org.chromium.ui.modelutil.PropertyKey;
 import org.chromium.ui.modelutil.PropertyModel;
 import org.chromium.ui.modelutil.PropertyModelChangeProcessor;
-
+import org.chromium.chrome.R;
 /**
  * A base class for presenting a single tab modal dialog.
  *

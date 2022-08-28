@@ -27,7 +27,7 @@ import org.chromium.components.browser_ui.settings.ManagedPreferencesUtils;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Locale;
-
+import org.chromium.chrome.R;
 /**
  * Shows a particular chosen object (e.g. a USB device) and the list of sites that have been
  * granted access to it by the user.

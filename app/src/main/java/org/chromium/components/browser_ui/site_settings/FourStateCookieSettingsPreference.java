@@ -19,7 +19,7 @@ import org.chromium.components.browser_ui.settings.ManagedPreferencesUtils;
 import org.chromium.components.browser_ui.widget.RadioButtonWithDescription;
 import org.chromium.components.browser_ui.widget.text.TextViewWithCompoundDrawables;
 import org.chromium.components.content_settings.CookieControlsMode;
-
+import org.chromium.chrome.R;
 /**
  * A 4-state radio group Preference used for the Cookies subpage of SiteSettings.
  */

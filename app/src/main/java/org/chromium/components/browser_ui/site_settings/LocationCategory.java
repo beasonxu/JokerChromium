@@ -11,7 +11,7 @@ import android.content.res.Resources;
 import org.chromium.components.content_settings.ContentSettingsType;
 import org.chromium.components.location.LocationUtils;
 import org.chromium.content_public.browser.BrowserContextHandle;
-
+import org.chromium.chrome.R;
 /**
  * A class for dealing with the Geolocation category.
  */

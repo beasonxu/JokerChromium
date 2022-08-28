@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
-
+import org.chromium.chrome.R;
 /**
  * Adapter that provides the list of activities via which a web page can be shared.
  */

@@ -16,7 +16,7 @@ import org.chromium.components.content_settings.ContentSettingValues;
 import org.chromium.components.content_settings.CookieControlsMode;
 import org.chromium.components.user_prefs.UserPrefs;
 import org.chromium.content_public.browser.BrowserContextHandle;
-
+import org.chromium.chrome.R;
 /**
  * The main Site Settings screen, which shows all the site settings categories: All sites, Location,
  * Microphone, etc. By clicking into one of these categories, the user can see or and modify

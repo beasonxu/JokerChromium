@@ -18,7 +18,7 @@ import org.chromium.components.infobars.InfoBarControlLayout;
 import org.chromium.components.infobars.InfoBarLayout;
 import org.chromium.ui.KeyboardVisibilityDelegate;
 import org.chromium.ui.base.WindowAndroid;
-
+import org.chromium.chrome.R;
 /**
  * An InfoBar that asks for the user's permission to share the SMS with the page.
  */

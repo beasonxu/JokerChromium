@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 package org.chromium.components.browser_ui.photo_picker;
-
+import org.chromium.chrome.R;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;

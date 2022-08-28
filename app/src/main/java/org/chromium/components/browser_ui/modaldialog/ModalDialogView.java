@@ -31,7 +31,7 @@ import org.chromium.ui.modaldialog.ModalDialogProperties;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.reflect.Field;
-
+import org.chromium.chrome.R;
 /**
  * Generic dialog view for app modal or tab modal alert dialogs.
  */

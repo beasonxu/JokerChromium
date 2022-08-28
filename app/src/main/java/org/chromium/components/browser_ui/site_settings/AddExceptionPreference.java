@@ -30,7 +30,7 @@ import androidx.preference.PreferenceViewHolder;
 import org.chromium.base.ApiCompatibilityUtils;
 import org.chromium.components.browser_ui.styles.SemanticColorUtils;
 import org.chromium.ui.KeyboardVisibilityDelegate;
-
+import org.chromium.chrome.R;
 /**
  * A utility class for the UI recording exceptions to the blocked list for site
  * settings.

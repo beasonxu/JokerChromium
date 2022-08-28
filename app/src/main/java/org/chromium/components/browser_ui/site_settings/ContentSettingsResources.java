@@ -25,7 +25,7 @@ import org.chromium.components.browser_ui.settings.SettingsUtils;
 import org.chromium.components.content_settings.ContentSettingValues;
 import org.chromium.components.content_settings.ContentSettingsType;
 import org.chromium.device.DeviceFeatureList;
-
+import org.chromium.chrome.R;
 /**
  * A class with utility functions that get the appropriate string and icon resources for the
  * Android UI that allows managing content settings.

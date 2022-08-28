@@ -17,7 +17,7 @@ import org.chromium.components.browser_ui.accessibility.FontSizePrefs.FontSizePr
 import org.chromium.components.browser_ui.settings.ChromeBaseCheckBoxPreference;
 import org.chromium.components.browser_ui.settings.ChromeSwitchPreference;
 import org.chromium.components.browser_ui.settings.SettingsUtils;
-
+import org.chromium.chrome.R;
 /**
  * Fragment to keep track of all the accessibility related preferences.
  */

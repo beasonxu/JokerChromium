@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-
+import org.chromium.chrome.R;
 /**
  * A data adapter for the Photo Picker.
  */

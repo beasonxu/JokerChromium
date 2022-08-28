@@ -32,7 +32,7 @@ import org.chromium.ui.text.SpanApplier.SpanInfo;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-
+import org.chromium.chrome.R;
 /**
  * A base class for dealing with website settings categories.
  */

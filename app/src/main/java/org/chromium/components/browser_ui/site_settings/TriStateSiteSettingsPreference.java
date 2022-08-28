@@ -13,7 +13,7 @@ import androidx.preference.PreferenceViewHolder;
 
 import org.chromium.components.browser_ui.widget.RadioButtonWithDescription;
 import org.chromium.components.content_settings.ContentSettingValues;
-
+import org.chromium.chrome.R;
 /**
  * A 3-state Allowed/Ask/Blocked radio group Preference used for SiteSettings.
  */

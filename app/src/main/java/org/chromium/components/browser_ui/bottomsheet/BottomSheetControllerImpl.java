@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.PriorityQueue;
-
+import org.chromium.chrome.R;
 /**
  * This class is responsible for managing the content shown by the {@link BottomSheet}. Features
  * wishing to show content in the {@link BottomSheet} UI must implement {@link BottomSheetContent}

@@ -17,7 +17,7 @@ import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 
 import androidx.core.view.MarginLayoutParamsCompat;
-
+import org.chromium.chrome.R;
 /**
  * The adapter used to populate ColorPickerSimple.
  */

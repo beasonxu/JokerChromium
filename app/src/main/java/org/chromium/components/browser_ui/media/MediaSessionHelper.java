@@ -37,7 +37,7 @@ import org.chromium.url.GURL;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
-
+import org.chromium.chrome.R;
 /**
  * Glue code that relays events from the {@link org.chromium.content.browser.MediaSession} for a
  * WebContents to a delegate (ultimately, to {@link MediaNotificationController}).

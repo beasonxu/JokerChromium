@@ -12,7 +12,7 @@ import androidx.annotation.ColorRes;
 import androidx.annotation.DimenRes;
 
 import com.google.android.material.color.MaterialColors;
-
+import org.chromium.chrome.R;
 /**
  * Provides semantic color values, typically in place of <macro>s which currently cannot be used in
  * Java code, or for surface colors that must be calculated to Java code.

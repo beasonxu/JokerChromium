@@ -17,7 +17,7 @@ import androidx.appcompat.app.AlertDialog;
 
 import org.chromium.components.browser_ui.widget.text.AlertDialogEditText;
 import org.chromium.url.GURL;
-
+import org.chromium.chrome.R;
 /**
  * HTTP Authentication Dialog
  *

@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 package org.chromium.components.browser_ui.photo_picker;
-
+import org.chromium.chrome.R;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.os.SystemClock;
@@ -16,7 +16,7 @@ import org.chromium.base.task.AsyncTask;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import org.chromium.chrome.R;
 /**
  * Holds on to a {@link PickerBitmapView} that displays information about a picker bitmap.
  */

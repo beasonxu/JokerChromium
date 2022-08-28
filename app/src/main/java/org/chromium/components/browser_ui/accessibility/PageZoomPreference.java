@@ -16,7 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
-
+import org.chromium.chrome.R;
 /**
  * Custom preference for the page zoom section of Accessibility Settings.
  */

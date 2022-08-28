@@ -32,7 +32,7 @@ import java.security.cert.CertificateEncodingException;
 import java.security.cert.X509Certificate;
 
 import javax.security.auth.x500.X500Principal;
-
+import org.chromium.chrome.R;
 /**
  * Handles selection of client certificate on the Java side. This class is responsible for selection
  * of the client certificate to be used for authentication and retrieval of the private key and full

@@ -41,7 +41,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
+import org.chromium.chrome.R;
 /**
  * A class that manages the notification, foreground service, and {@link MediaSessionCompat} for a
  * specific type of media.

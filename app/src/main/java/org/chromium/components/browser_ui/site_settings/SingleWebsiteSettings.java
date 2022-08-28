@@ -40,7 +40,7 @@ import org.chromium.content_public.browser.BrowserContextHandle;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-
+import org.chromium.chrome.R;
 /**
  * Shows the permissions and other settings for a particular website.
  */

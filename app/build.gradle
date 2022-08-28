@@ -114,6 +114,8 @@ android {
                         "$rootDir/app/src/main/res_safe_browsing",
                         "$rootDir/app/src/main/res_password_manager",
                         "$rootDir/app/src/main/blocked_content",
+                        "$rootDir/app/src/main/res_http_auth",
+                        "$rootDir/app/src/main/res_embedder_support",
 
 
 

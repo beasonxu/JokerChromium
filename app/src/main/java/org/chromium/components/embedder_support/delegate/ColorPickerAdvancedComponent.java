@@ -12,7 +12,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 import org.chromium.base.ApiCompatibilityUtils;
-
+import org.chromium.chrome.R;
 /**
  * Encapsulates a single gradient view of the HSV color display, including its label, gradient
  * view and seek bar.

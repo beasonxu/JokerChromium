@@ -45,7 +45,7 @@ import org.chromium.ui.base.WindowAndroid.IntentCallback;
 
 import java.util.Collections;
 import java.util.List;
-
+import org.chromium.chrome.R;
 /**
  * A helper class that helps to start an intent to share titles and URLs.
  */

@@ -19,7 +19,7 @@ import androidx.preference.PreferenceViewHolder;
 import org.chromium.components.browser_ui.settings.ChromeImageViewPreference;
 import org.chromium.components.embedder_support.util.UrlUtilities;
 import org.chromium.url.GURL;
-
+import org.chromium.chrome.R;
 /**
  * A preference that displays a website's favicon and URL and, optionally, the amount of local
  * storage used by the site. This preference can also display an additional icon on the right side

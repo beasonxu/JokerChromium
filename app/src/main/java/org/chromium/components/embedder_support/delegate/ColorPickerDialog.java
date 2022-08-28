@@ -15,7 +15,7 @@ import android.widget.TextView;
 import androidx.annotation.VisibleForTesting;
 
 import org.chromium.ui.LayoutInflaterUtils;
-
+import org.chromium.chrome.R;
 /**
  * UI for the color chooser that shows on the Android platform as a result of
  * &lt;input type=color &gt; form element.

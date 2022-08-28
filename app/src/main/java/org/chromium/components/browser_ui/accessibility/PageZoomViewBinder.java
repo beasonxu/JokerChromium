@@ -9,7 +9,7 @@ import android.widget.SeekBar;
 
 import org.chromium.ui.modelutil.PropertyKey;
 import org.chromium.ui.modelutil.PropertyModel;
-
+import org.chromium.chrome.R;
 /**
  * ViewBinder for the page zoom feature.
  */
