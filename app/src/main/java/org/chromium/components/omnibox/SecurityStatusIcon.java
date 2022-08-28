@@ -8,7 +8,7 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.StringRes;
 
 import org.chromium.components.security_state.ConnectionSecurityLevel;
-
+import org.chromium.chrome.R;
 /** Utility class to get security state info for the omnibox. */
 public class SecurityStatusIcon {
     /**

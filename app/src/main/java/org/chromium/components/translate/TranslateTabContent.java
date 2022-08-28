@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
+import org.chromium.chrome.R;
 /**
  * The content of the tab shown in the TranslateTabLayout.
  */

@@ -14,7 +14,7 @@ import org.chromium.base.TraceEvent;
 import org.chromium.components.browser_ui.styles.ChromeColors;
 import org.chromium.components.browser_ui.styles.SemanticColorUtils;
 import org.chromium.third_party.android.swiperefresh.SwipeRefreshLayout;
-
+import org.chromium.chrome.R;
 /**
  * A class for handling overscroll to refresh behavior for the Paint Preview player. This is based
  * on the modified version of the Android compat library's SwipeRefreshLayout due to the Player's
@@ -44,7 +44,7 @@ public class PlayerSwipeRefreshHandler implements OverscrollHandler {
                 new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
         // Use the same colors as {@link org.chromium.chrome.browser.SwipeRefreshHandler}.
         mSwipeRefreshLayout.setProgressBackgroundColorSchemeColor(
-                ChromeColors.getSurfaceColor(context, org.chromium.ui.R.dimen.default_elevation_2));
+                ChromeColors.getSurfaceColor(context, R.dimen.default_elevation_2));
         mSwipeRefreshLayout.setColorSchemeColors(
                 SemanticColorUtils.getDefaultControlColorActive(context));
         mSwipeRefreshLayout.setEnabled(true);

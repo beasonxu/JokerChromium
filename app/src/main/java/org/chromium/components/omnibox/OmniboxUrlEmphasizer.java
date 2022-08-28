@@ -18,7 +18,7 @@ import org.chromium.components.embedder_support.util.UrlConstants;
 import org.chromium.components.security_state.ConnectionSecurityLevel;
 
 import java.util.Locale;
-
+import org.chromium.chrome.R;
 /**
  * A helper class that emphasizes the various components of a URL. Useful in the
  * Omnibox and Page Info popup where different parts of the URL should appear

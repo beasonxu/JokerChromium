@@ -20,7 +20,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import org.chromium.base.StrictModeContext;
 import org.chromium.components.browser_ui.widget.animation.Interpolators;
-
+import org.chromium.chrome.R;
 /**
  * TabLayout shown in the TranslateCompactInfoBar.
  */
