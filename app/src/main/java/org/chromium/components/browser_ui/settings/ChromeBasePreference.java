@@ -59,7 +59,7 @@ public class ChromeBasePreference extends Preference {
         setSingleLineTitle(false);
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ChromeBasePreference);
-        mIconTint = a.getColorStateList(R.styleable.ChromeBasePreference_iconTint);
+        mIconTint = a.getColorStateList(R.styleable.ChromeBasePreference_iconTints);
         mUserAction = a.getString(R.styleable.ChromeBasePreference_userAction);
         a.recycle();
     }

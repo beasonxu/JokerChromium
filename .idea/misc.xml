@@ -74,6 +74,7 @@
         <entry key="app/src/main/res_keyboard/layout/keyboard_accessory_tabs.xml" value="0.1" />
         <entry key="app/src/main/res_language/layout/add_languages_main.xml" value="0.13880445795339413" />
         <entry key="app/src/main/res_message_internal/layout/message_banner_view.xml" value="0.1" />
+        <entry key="app/src/main/res_multiwindow/drawable/checkmark_24dp.xml" value="0.1" />
         <entry key="app/src/main/res_night_mode/layout/radio_button_group_theme_preference.xml" value="0.1" />
         <entry key="app/src/main/res_night_mode/xml/theme_preferences.xml" value="0.8145161290322581" />
         <entry key="app/src/main/res_omnibox/drawable/ic_content_copy_black.xml" value="0.1" />
@@ -84,6 +85,9 @@
         <entry key="app/src/main/res_payments/drawable/elo_card.xml" value="0.1" />
         <entry key="app/src/main/res_photo_picker/drawable/ic_photo_camera_grey.xml" value="0.1" />
         <entry key="app/src/main/res_photo_picker/layout/video_player.xml" value="0.1" />
+        <entry key="app/src/main/res_reactions/drawable/border.xml" value="0.1" />
+        <entry key="app/src/main/res_reactions/drawable/border_inset.xml" value="0.1" />
+        <entry key="app/src/main/res_reactions/layout/reactions_dialog.xml" value="0.1" />
         <entry key="app/src/main/res_share/layout/share_dialog_item.xml" value="0.1" />
         <entry key="app/src/main/res_signin/drawable/logo_avatar_anonymous.xml" value="0.1" />
         <entry key="app/src/main/res_signin/layout/personalized_signin_promo_view_header.xml" value="0.1" />
@@ -100,6 +104,7 @@
         <entry key="app/src/main/res_tab_ui/drawable/tab_strip_fading_edge_start.xml" value="0.1" />
         <entry key="app/src/main/res_tab_ui/layout/bottom_tab_grid_toolbar.xml" value="0.1" />
         <entry key="app/src/main/res_toolbar/layout/tab_switcher_toolbar.xml" value="0.1" />
+        <entry key="app/src/main/res_touch_to_fill/drawable/touch_to_fill_credential_background.xml" value="0.1" />
         <entry key="app/src/main/res_translate/layout/translate_menu_extended_item.xml" value="0.1" />
         <entry key="app/src/main/res_translate/layout/translate_menu_item.xml" value="0.1" />
         <entry key="app/src/main/res_translate/layout/translate_menu_item_checked.xml" value="0.1" />

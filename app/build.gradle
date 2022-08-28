@@ -130,6 +130,7 @@ android {
                         "$rootDir/app/src/main/res_incognito",
                         "$rootDir/app/src/main/res_content_creation",
                         "$rootDir/app/src/main/res_reactions",
+                        "$rootDir/app/src/main/res_touch_to_fill",
 
 
 
@@ -176,7 +177,7 @@ dependencies {
     implementation "com.google.android.gms:play-services-auth-api-phone:18.0.1"
     implementation "com.google.android.gms:play-services-auth-base:18.0.3"
     implementation "com.google.android.gms:play-services-cast:21.1.0"
-    implementation "com.google.android.gms:play-services-cast-framework:20.1.0"
+    implementation "com.google.android.gms:play-services-cast-framework:21.1.0"
     implementation "com.google.android.gms:play-services-iid:17.0.0"
     implementation "com.google.android.gms:play-services-instantapps:18.0.1"
     implementation "com.google.android.gms:play-services-gcm:17.0.0"

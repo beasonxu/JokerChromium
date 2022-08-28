@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="touch_to_fill_sheet_title_single">"Gaan voort met rekening"</string>
+<string name="touch_to_fill_sheet_title">"Kies \'n rekening"</string>
+<string name="touch_to_fill_sheet_uniform_title">"Gebruik gestoorde wagwoord?"</string>
+<string name="touch_to_fill_sheet_subtitle_not_secure">"%1$s (not secure)"</string>
+<string name="touch_to_fill_sheet_subtitle_submission">"Jy sal aanmeld by %1$s"</string>
+<string name="touch_to_fill_sheet_subtitle_insecure_submission">"Jy sal aanmeld by %1$s (not secure)"</string>
+<string name="touch_to_fill_content_description">"Lys eiebewyse wat met aanraking ingevul moet word."</string>
+<string name="touch_to_fill_sheet_half_height">"Lys eiebewyse wat met aanraking ingevul moet word, is teen halwe hoogte oopgemaak."</string>
+<string name="touch_to_fill_sheet_full_height">"Lys eiebewyse wat met aanraking ingevul moet word, is teen volle hoogte oopgemaak."</string>
+<string name="touch_to_fill_sheet_closed">"Lys eiebewyse wat met aanraking ingevul moet word, is toegemaak."</string>
+<string name="manage_passwords">"Bestuur wagwoorde"</string>
+<string name="touch_to_fill_continue">"Gaan voort"</string>
+<string name="touch_to_fill_signin">"Meld aan"</string>
+<string name="touch_to_fill_sheet_generic_title">"Meld by hierdie werf aan?"</string>
+</resources>

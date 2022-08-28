@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="touch_to_fill_sheet_title_single">"Çöñţîñûé ŵîţĥ åççöûñţ - one two three"</string>
+<string name="touch_to_fill_sheet_title">"Çĥööšé åñ åççöûñţ - one two three"</string>
+<string name="touch_to_fill_sheet_uniform_title">"Ûšé šåvéð þåššŵörð¿ - one two three"</string>
+<string name="touch_to_fill_sheet_subtitle_not_secure">"%1$s (not secure) - one"</string>
+<string name="touch_to_fill_sheet_subtitle_submission">"Ýöû\'ļļ šîĝñ îñ ţö %1$s - one two three four five"</string>
+<string name="touch_to_fill_sheet_subtitle_insecure_submission">"Ýöû\'ļļ šîĝñ îñ ţö %1$s (not secure) - one two three four five"</string>
+<string name="touch_to_fill_content_description">"Ļîšţ öƒ çréðéñţîåļš ţö bé ƒîļļéð öñ ţöûçĥ. - one two three four five six seven eight"</string>
+<string name="touch_to_fill_sheet_half_height">"Ļîšţ öƒ çréðéñţîåļš ţö bé ƒîļļéð öñ ţöûçĥ öþéñéð åţ ĥåļƒ ĥéîĝĥţ. - one two three four five six seven eight nine ten - one two"</string>
+<string name="touch_to_fill_sheet_full_height">"Ļîšţ öƒ çréðéñţîåļš ţö bé ƒîļļéð öñ ţöûçĥ öþéñéð åţ ƒûļļ ĥéîĝĥţ. - one two three four five six seven eight nine ten - one two"</string>
+<string name="touch_to_fill_sheet_closed">"Ļîšţ öƒ çréðéñţîåļš ţö bé ƒîļļéð öñ ţöûçĥ îš çļöšéð. - one two three four five six seven eight nine ten"</string>
+<string name="manage_passwords">"Måñåĝé þåššŵörðš - one two"</string>
+<string name="touch_to_fill_continue">"Çöñţîñûé - one"</string>
+<string name="touch_to_fill_signin">"Šîĝñ îñ - one two"</string>
+<string name="touch_to_fill_sheet_generic_title">"Šîĝñ îñ ţö ţĥîš šîţé¿ - one two three four five"</string>
+</resources>

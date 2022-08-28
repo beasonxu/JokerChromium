@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="touch_to_fill_sheet_title_single">"Շարունակել հաշվով"</string>
+<string name="touch_to_fill_sheet_title">"Ընտրեք հաշիվ"</string>
+<string name="touch_to_fill_sheet_uniform_title">"Օգտագործե՞լ պահված գաղտնաբառը"</string>
+<string name="touch_to_fill_sheet_subtitle_not_secure">"%1$s (not secure)"</string>
+<string name="touch_to_fill_sheet_subtitle_submission">"Դուք մուտք կգործեք %1$s կայք"</string>
+<string name="touch_to_fill_sheet_subtitle_insecure_submission">"Դուք մուտք կգործեք %1$s (not secure) կայք"</string>
+<string name="touch_to_fill_content_description">"Մուտքի տվյալները, որոնք պետք է լրացվեն հպման ժամանակ։"</string>
+<string name="touch_to_fill_sheet_half_height">"Մուտքի տվյալները, որոնք պետք է լրացվեն հպումով, ցուցադրված են էկրանի կեսով:"</string>
+<string name="touch_to_fill_sheet_full_height">"Մուտքի տվյալները, որոնք պետք է լրացվեն հպումով, ցուցադրված են ամբողջ էկրանով:"</string>
+<string name="touch_to_fill_sheet_closed">"Մուտքի տվյալները, որոնք պետք է լրացվեն հպումով, ցուցադրված չեն։"</string>
+<string name="manage_passwords">"Կառավարել գաղտնաբառերը"</string>
+<string name="touch_to_fill_continue">"Շարունակել"</string>
+<string name="touch_to_fill_signin">"Մուտք գործել"</string>
+<string name="touch_to_fill_sheet_generic_title">"Մուտք գործե՞լ այս կայք"</string>
+</resources>
