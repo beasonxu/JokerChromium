@@ -140,6 +140,8 @@ android {
                         "$rootDir/app/src/main/res_app_memu",
                         "$rootDir/app/src/main/res_history_clusters",
                         "$rootDir/app/src/main/res_launchpad",
+                        "$rootDir/app/src/main/res_metrics",
+                        "$rootDir/app/src/main/res_privacy_sandbox",
 
 
 

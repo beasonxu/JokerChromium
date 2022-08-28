@@ -11,6 +11,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.settings.SettingsLauncher;
 import org.chromium.ui.widget.ButtonCompat;
 

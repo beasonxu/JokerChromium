@@ -20,6 +20,7 @@ import androidx.annotation.StringRes;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.graphics.drawable.DrawableCompat;
 
+import org.chromium.chrome.R;
 import org.chromium.ui.drawable.StateListDrawableBuilder;
 import org.chromium.ui.text.SpanApplier;
 import org.chromium.ui.widget.ButtonCompat;

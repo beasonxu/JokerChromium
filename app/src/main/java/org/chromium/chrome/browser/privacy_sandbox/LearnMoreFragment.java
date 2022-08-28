@@ -12,6 +12,7 @@ import android.text.style.StyleSpan;
 import androidx.annotation.StringRes;
 import androidx.preference.PreferenceFragmentCompat;
 
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.settings.LongSummaryTextMessagePreference;
 import org.chromium.components.browser_ui.settings.SettingsUtils;
 import org.chromium.ui.text.SpanApplier;

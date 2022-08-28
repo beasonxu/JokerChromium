@@ -9,6 +9,7 @@ import android.view.View;
 
 import androidx.preference.PreferenceFragmentCompat;
 
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.settings.ChromeBasePreference;
 import org.chromium.components.browser_ui.settings.SettingsUtils;
 import org.chromium.ui.text.NoUnderlineClickableSpan;

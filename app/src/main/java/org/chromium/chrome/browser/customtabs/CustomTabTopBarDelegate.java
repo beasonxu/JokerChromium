@@ -11,6 +11,7 @@ import android.view.ViewStub;
 
 import androidx.annotation.Nullable;
 
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.dependency_injection.ActivityScope;
 
 import javax.inject.Inject;

@@ -15,6 +15,7 @@ import androidx.preference.PreferenceFragmentCompat;
 
 import org.chromium.base.IntentUtils;
 import org.chromium.base.metrics.RecordUserAction;
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.settings.ChromeSwitchPreference;
 import org.chromium.components.browser_ui.settings.SettingsUtils;
 import org.chromium.ui.text.NoUnderlineClickableSpan;

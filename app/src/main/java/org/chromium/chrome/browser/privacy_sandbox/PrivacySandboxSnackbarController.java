@@ -8,6 +8,7 @@ import android.content.Context;
 
 import org.chromium.base.ThreadUtils;
 import org.chromium.base.metrics.RecordUserAction;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.ui.messages.snackbar.Snackbar;
 import org.chromium.chrome.browser.ui.messages.snackbar.SnackbarManager;
 import org.chromium.components.browser_ui.settings.SettingsLauncher;

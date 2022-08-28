@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package org.chromium.chrome.browser.omnibox.suggestions;
+package suggestions;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import org.chromium.base.Callback;
 import org.chromium.base.task.PostTask;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.profiles.Profile;
 import org.chromium.components.browser_ui.util.ConversionUtils;
 import org.chromium.components.browser_ui.util.GlobalDiscardableReferencePool;
@@ -77,7 +78,7 @@ public class OmniboxQueryTileCoordinator {
         LayoutInflater inflater =
                 (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         ViewGroup suggestionView = (ViewGroup) inflater.inflate(
-                org.chromium.chrome.browser.omnibox.R.layout.omnibox_query_tiles_suggestion, null);
+                R.layout.omnibox_query_tiles_suggestion, null);
 
         View tilesView = getTileCoordinator().getView();
         if (tilesView.getParent() != null) UiUtils.removeViewFromParent(tilesView);
@@ -128,7 +129,7 @@ public class OmniboxQueryTileCoordinator {
     private void getVisuals(ImageTile tile, Callback<List<Bitmap>> callback) {
         if (mTileWidth == null) {
             mTileWidth = mContext.getResources().getDimensionPixelSize(
-                    org.chromium.chrome.browser.omnibox.R.dimen.tile_ideal_width);
+                    R.dimen.tile_ideal_width);
         }
 
         QueryTile queryTile = (QueryTile) tile;
