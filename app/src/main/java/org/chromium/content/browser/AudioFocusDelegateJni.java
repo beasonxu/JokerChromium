@@ -12,7 +12,7 @@ import org.chromium.base.natives.GEN_JNI;
 class AudioFocusDelegateJni implements AudioFocusDelegate.Natives {
   private static AudioFocusDelegate.Natives testInstance;
 
-  public static final JniStaticTestMocker<AudioFocusDelegate.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<AudioFocusDelegate.Natives>() {
+  public static final JniStaticTestMocker<AudioFocusDelegate.Natives> TEST_HOOKS = new JniStaticTestMocker<AudioFocusDelegate.Natives>() {
     @Override
     public void setInstanceForTesting(
         AudioFocusDelegate.Natives instance) {

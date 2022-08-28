@@ -13,7 +13,7 @@ import org.chromium.base.natives.GEN_JNI;
 class SpeechRecognitionImplJni implements SpeechRecognitionImpl.Natives {
   private static SpeechRecognitionImpl.Natives testInstance;
 
-  public static final JniStaticTestMocker<SpeechRecognitionImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<SpeechRecognitionImpl.Natives>() {
+  public static final JniStaticTestMocker<SpeechRecognitionImpl.Natives> TEST_HOOKS = new JniStaticTestMocker<SpeechRecognitionImpl.Natives>() {
     @Override
     public void setInstanceForTesting(
         SpeechRecognitionImpl.Natives instance) {

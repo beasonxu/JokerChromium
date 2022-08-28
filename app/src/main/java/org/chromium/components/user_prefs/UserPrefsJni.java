@@ -14,10 +14,10 @@ import org.chromium.content_public.browser.BrowserContextHandle;
 public class UserPrefsJni implements UserPrefs.Natives {
   private static UserPrefs.Natives testInstance;
 
-  public static final JniStaticTestMocker<UserPrefs.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.user_prefs.UserPrefs.Natives>() {
-    @java.lang.Override
-    public void setInstanceForTesting(org.chromium.components.user_prefs.UserPrefs.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+  public static final JniStaticTestMocker<UserPrefs.Natives> TEST_HOOKS = new JniStaticTestMocker<UserPrefs.Natives>() {
+    @Override
+    public void setInstanceForTesting(UserPrefs.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

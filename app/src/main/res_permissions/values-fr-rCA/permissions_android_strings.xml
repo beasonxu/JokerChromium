@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s a besoin de votre autorisation pour accéder à votre appareil photo afin de créer une carte 3D de votre environnement."</string>
+<string name="infobar_missing_camera_permission_text">"%1$s a besoin de votre autorisation pour accéder à votre appareil photo pour ce site."</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s a besoin de votre autorisation pour accéder à votre microphone pour ce site"</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s a besoin de votre autorisation pour accéder à votre appareil photo et à votre microphone pour ce site."</string>
+<string name="infobar_missing_location_permission_text">"%1$s a besoin d\'accéder à votre position afin de la partager avec ce site."</string>
+<string name="infobar_update_permissions_button_text">"Continuer"</string>
+<string name="nfc_disabled_on_device_message">"Pour continuer, activez la CCP dans les paramètres d\'Android"</string>
+<string name="nfc_prompt_turn_on">"Activer"</string>
+<string name="overlay_detected_dialog_title">"Ce site ne peut pas demander votre autorisation"</string>
+<string name="overlay_detected_dialog_message">"Fermez toutes les bulles ou superpositions des autres applications, puis réessayez."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Obtenir de l\'aide&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Associer"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Niveau du signal : %d barre"</item>
+  <item quantity="other">"Niveau du signal : %d barres"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Appareil connecté"</string>
+<string name="bluetooth_dialog_title">"%1$s veut s\'associer"</string>
+<string name="bluetooth_not_found">"Aucun appareil compatible trouvé"</string>
+<string name="bluetooth_searching">"&lt;link&gt;Obtenir de l\'aide&lt;/link&gt; pendant la recherche d\'appareils…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Obtenir de l\'aide&lt;/link1&gt; ou &lt;link2&gt;effectuer une nouvelle recherche&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Google Chrome nécessite l\'accès à votre position pour rechercher des appareils. L\'accès à la position est &lt;services_link&gt;désactivé pour cet appareil&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Google Chrome nécessite l\'accès à votre position pour rechercher des appareils. &lt;permission_link&gt;Mettre à jour les autorisations&lt;/permission_link&gt;. L\'accès à la position est également &lt;services_link&gt;désactivé pour cet appareil&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome doit avoir l\'autorisation de rechercher les appareils à proximité. &lt;permission_link&gt;Mettez les autorisations à jour.&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission">"Google Chrome nécessite l\'accès à votre position pour rechercher des appareils. &lt;permission_link&gt;Mettre les autorisations à jour&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Obtenir de l\'aide&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome n\'est pas en mesure d\'activer l\'adaptateur Bluetooth"</string>
+<string name="bluetooth_adapter_off">"&lt;link&gt;Activez le Bluetooth&lt;/link&gt; pour autoriser l\'association"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s veut rechercher des appareils Bluetooth à proximité. Les appareils suivants ont été détectés :"</string>
+<string name="bluetooth_scanning_device_unknown">"Appareil inconnu ou non pris en charge (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

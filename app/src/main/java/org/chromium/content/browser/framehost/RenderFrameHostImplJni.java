@@ -18,7 +18,7 @@ import org.chromium.url.Origin;
 class RenderFrameHostImplJni implements RenderFrameHostImpl.Natives {
   private static RenderFrameHostImpl.Natives testInstance;
 
-  public static final JniStaticTestMocker<RenderFrameHostImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<RenderFrameHostImpl.Natives>() {
+  public static final JniStaticTestMocker<RenderFrameHostImpl.Natives> TEST_HOOKS = new JniStaticTestMocker<RenderFrameHostImpl.Natives>() {
     @Override
     public void setInstanceForTesting(
         RenderFrameHostImpl.Natives instance) {

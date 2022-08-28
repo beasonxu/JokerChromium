@@ -13,11 +13,11 @@ import org.chromium.base.natives.GEN_JNI;
 public class PaymentFeatureListJni implements PaymentFeatureList.Natives {
   private static PaymentFeatureList.Natives testInstance;
 
-  public static final JniStaticTestMocker<PaymentFeatureList.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.payments.PaymentFeatureList.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<PaymentFeatureList.Natives> TEST_HOOKS = new JniStaticTestMocker<PaymentFeatureList.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.components.payments.PaymentFeatureList.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        PaymentFeatureList.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

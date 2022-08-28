@@ -15,7 +15,7 @@ import org.chromium.content.common.SurfaceWrapper;
 class GpuProcessCallbackJni implements GpuProcessCallback.Natives {
   private static GpuProcessCallback.Natives testInstance;
 
-  public static final JniStaticTestMocker<GpuProcessCallback.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<GpuProcessCallback.Natives>() {
+  public static final JniStaticTestMocker<GpuProcessCallback.Natives> TEST_HOOKS = new JniStaticTestMocker<GpuProcessCallback.Natives>() {
     @Override
     public void setInstanceForTesting(
         GpuProcessCallback.Natives instance) {

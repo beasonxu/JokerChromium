@@ -12,7 +12,7 @@ import org.chromium.base.natives.GEN_JNI;
 class DateTimeChooserAndroidJni implements DateTimeChooserAndroid.Natives {
   private static DateTimeChooserAndroid.Natives testInstance;
 
-  public static final JniStaticTestMocker<DateTimeChooserAndroid.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<DateTimeChooserAndroid.Natives>() {
+  public static final JniStaticTestMocker<DateTimeChooserAndroid.Natives> TEST_HOOKS = new JniStaticTestMocker<DateTimeChooserAndroid.Natives>() {
     @Override
     public void setInstanceForTesting(
         DateTimeChooserAndroid.Natives instance) {

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s heeft toegangsrechten voor de camera nodig om een 3D-kaart van je omgeving te maken."</string>
+<string name="infobar_missing_camera_permission_text">"%1$s heeft toegangsrechten voor je camera nodig voor deze site"</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s heeft toegangsrechten voor je microfoon nodig voor deze site"</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s heeft toegangsrechten voor je camera en microfoon nodig voor deze site"</string>
+<string name="infobar_missing_location_permission_text">"%1$s heeft toegang tot je locatie nodig om je locatie met deze site te delen"</string>
+<string name="infobar_update_permissions_button_text">"Doorgaan"</string>
+<string name="nfc_disabled_on_device_message">"Zet NFC aan bij de Android-instellingen om door te gaan"</string>
+<string name="nfc_prompt_turn_on">"Aanzetten"</string>
+<string name="overlay_detected_dialog_title">"Deze site kan niet om je toestemming vragen"</string>
+<string name="overlay_detected_dialog_message">"Sluit alle ballonnen of overlays van andere apps. Probeer het vervolgens opnieuw."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Hulp krijgen&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Koppelen"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Signaalsterkte: %d streepje"</item>
+  <item quantity="other">"Signaalsterkte: %d streepjes"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Gekoppeld apparaat"</string>
+<string name="bluetooth_dialog_title">"%1$s wil koppelen"</string>
+<string name="bluetooth_not_found">"Geen geschikte apparaten gevonden"</string>
+<string name="bluetooth_searching">"&lt;link&gt;Hulp&lt;/link&gt; bij het zoeken naar apparaten…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Hulp vragen&lt;/link1&gt; of &lt;link2&gt;opnieuw scannen&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Chrome heeft locatietoegang nodig om naar apparaten te scannen. Locatietoegang is &lt;services_link&gt;uitgezet voor dit apparaat&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Chrome heeft locatietoegang nodig om naar apparaten te scannen. &lt;permission_link&gt;Rechten updaten&lt;/permission_link&gt;. Locatietoegang is ook &lt;services_link&gt;uitgezet voor dit apparaat&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome heeft rechten nodig om te scannen naar apparaten in de buurt. &lt;permission_link&gt;Rechten updaten&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission">"Chrome heeft locatietoegang nodig om naar apparaten te zoeken. &lt;permission_link&gt;Rechten updaten&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Hulp krijgen&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome kan de Bluetooth-adapter niet aanzetten"</string>
+<string name="bluetooth_adapter_off">"&lt;link&gt;Zet Bluetooth aan&lt;/link&gt; om te koppelen"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s wil scannen naar Bluetooth-apparaten in de buurt. De volgende apparaten zijn gevonden:"</string>
+<string name="bluetooth_scanning_device_unknown">"Onbekend of niet-ondersteund apparaat (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

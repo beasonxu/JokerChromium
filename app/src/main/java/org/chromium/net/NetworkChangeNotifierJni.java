@@ -1,20 +1,20 @@
 package org.chromium.net;
 
+import java.lang.Override;
+import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
-
-import javax.annotation.Generated;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
 class NetworkChangeNotifierJni implements NetworkChangeNotifier.Natives {
   private static NetworkChangeNotifier.Natives testInstance;
 
-  public static final JniStaticTestMocker<NetworkChangeNotifier.Natives> TEST_HOOKS = new JniStaticTestMocker<org.chromium.net.NetworkChangeNotifier.Natives>() {
+  public static final JniStaticTestMocker<NetworkChangeNotifier.Natives> TEST_HOOKS = new JniStaticTestMocker<NetworkChangeNotifier.Natives>() {
     @Override
-    public void setInstanceForTesting(org.chromium.net.NetworkChangeNotifier.Natives instance) {
+    public void setInstanceForTesting(NetworkChangeNotifier.Natives instance) {
       if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }

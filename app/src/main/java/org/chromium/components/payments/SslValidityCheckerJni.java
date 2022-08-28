@@ -14,11 +14,11 @@ import org.chromium.content_public.browser.WebContents;
 class SslValidityCheckerJni implements SslValidityChecker.Natives {
   private static SslValidityChecker.Natives testInstance;
 
-  public static final JniStaticTestMocker<SslValidityChecker.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.payments.SslValidityChecker.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<SslValidityChecker.Natives> TEST_HOOKS = new JniStaticTestMocker<SslValidityChecker.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.components.payments.SslValidityChecker.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        SslValidityChecker.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

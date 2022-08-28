@@ -14,11 +14,11 @@ import org.chromium.base.natives.GEN_JNI;
 class JniPaymentAppJni implements JniPaymentApp.Natives {
   private static JniPaymentApp.Natives testInstance;
 
-  public static final JniStaticTestMocker<JniPaymentApp.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.payments.JniPaymentApp.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<JniPaymentApp.Natives> TEST_HOOKS = new JniStaticTestMocker<JniPaymentApp.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.components.payments.JniPaymentApp.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        JniPaymentApp.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

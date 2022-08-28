@@ -12,7 +12,7 @@ import org.chromium.base.natives.GEN_JNI;
 class SelectPopupJni implements SelectPopup.Natives {
   private static SelectPopup.Natives testInstance;
 
-  public static final JniStaticTestMocker<SelectPopup.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<SelectPopup.Natives>() {
+  public static final JniStaticTestMocker<SelectPopup.Natives> TEST_HOOKS = new JniStaticTestMocker<SelectPopup.Natives>() {
     @Override
     public void setInstanceForTesting(
         SelectPopup.Natives instance) {

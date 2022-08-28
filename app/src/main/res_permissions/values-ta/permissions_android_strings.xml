@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"உங்களைச் சுற்றியுள்ள இடங்களின் 3D வரைபடத்தை உருவாக்க, %1$s ஆப்ஸுக்கு உங்கள் கேமராவை அணுக அனுமதி தேவை."</string>
+<string name="infobar_missing_camera_permission_text">"இந்தத் தளத்திற்காகக் கேமராவை அணுக, %1$s ஆப்ஸுக்கு அனுமதி தேவை."</string>
+<string name="infobar_missing_microphone_permission_text">"இந்தத் தளத்திற்காக மைக்ரோஃபோனை அணுக, %1$s ஆப்ஸுக்கு அனுமதி தேவை."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"இந்தத் தளத்திற்காகக் கேமராவையும் மைக்ரோஃபோனையும் அணுக, %1$s ஆப்ஸுக்கு அனுமதி தேவை."</string>
+<string name="infobar_missing_location_permission_text">"இந்தத் தளத்துடன் உங்கள் இருப்பிட விவரத்தைப் பகிர, %1$s ஆப்ஸுக்கு உங்கள் இருப்பிடத்திற்கான அணுகல் தேவை."</string>
+<string name="infobar_update_permissions_button_text">"தொடர்க"</string>
+<string name="nfc_disabled_on_device_message">"தொடர்வதற்கு Android அமைப்புகளில் NFCயை இயக்கவும்"</string>
+<string name="nfc_prompt_turn_on">"இயக்கு"</string>
+<string name="overlay_detected_dialog_title">"இந்தத் தளத்தால் உங்களிடம் அனுமதி கேட்க முடியவில்லை"</string>
+<string name="overlay_detected_dialog_message">"பிற ஆப்ஸின் ஏதேனும் குமிழ்களோ மேல் அடுக்குகளோ இருப்பின் அவற்றை மூடியபிறகு மீண்டும் முயலவும்."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;உதவி பெறுக&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"இணை"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"சிக்னல் வலிமையின் அளவு: %d கோடு"</item>
+  <item quantity="other">"சிக்னல் வலிமையின் அளவு: %d கோடுகள்"</item>
+</plurals>
+<string name="bluetooth_device_connected">"இணைத்த சாதனம்"</string>
+<string name="bluetooth_dialog_title">"%1$s இணைய விரும்புகிறது"</string>
+<string name="bluetooth_not_found">"இணக்கமான சாதனங்கள் இல்லை"</string>
+<string name="bluetooth_searching">"சாதனங்களைத் தேடும் போது &lt;link&gt;உதவி பெறுக&lt;/link&gt;…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;உதவி பெறுக&lt;/link1&gt; அல்லது &lt;link2&gt;மீண்டும் ஸ்கேன் செய்க&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"சாதனங்களைத் தேட Chromeமுக்கு இருப்பிட அணுகல் தேவை. இருப்பிட அணுகல், &lt;services_link&gt;இந்தச் சாதனத்தில் முடக்கப்பட்டுள்ளது&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"சாதனங்களைத் தேட Chromeமுக்கு இருப்பிட அணுகல் தேவை. &lt;permission_link&gt;அனுமதிகளை மாற்றவும்&lt;/permission_link&gt;. இருப்பிட அணுகலும் &lt;services_link&gt;இந்தச் சாதனத்தில் முடக்கப்பட்டுள்ளது&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"அருகிலுள்ள சாதனங்களைக் கண்டறிய Chromeமிற்கு அனுமதி தேவை. &lt;permission_link&gt;அனுமதிகளை மாற்றுக&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"சாதனங்களைக் கண்டறிய Chromeமுக்கு இருப்பிட அணுகல் தேவை. &lt;permission_link&gt;அனுமதிகளைப் புதுப்பிக்கவும்&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;உதவி பெறுக&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome ஆல் புளூடூத் அடாப்டரை இயக்க முடியவில்லை"</string>
+<string name="bluetooth_adapter_off">"இணைத்தலை அனுமதிக்க, &lt;link&gt;புளூடூத்தை இயக்கவும்&lt;/link&gt;"</string>
+<string name="bluetooth_scanning_prompt_origin">"அருகிலுள்ள புளூடூத் சாதனங்களை %1$s ஸ்கேன் செய்ய விரும்புகிறது. இவை கண்டறியப்பட்டுள்ளன:"</string>
+<string name="bluetooth_scanning_device_unknown">"அறியாத அல்லது ஆதரிக்கப்படாத சாதனம் (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

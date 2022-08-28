@@ -14,11 +14,11 @@ import org.chromium.base.natives.GEN_JNI;
 class LibraryLoaderJni implements LibraryLoader.Natives {
   private static LibraryLoader.Natives testInstance;
 
-  public static final JniStaticTestMocker<LibraryLoader.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.base.library_loader.LibraryLoader.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<LibraryLoader.Natives> TEST_HOOKS = new JniStaticTestMocker<LibraryLoader.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.base.library_loader.LibraryLoader.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        LibraryLoader.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

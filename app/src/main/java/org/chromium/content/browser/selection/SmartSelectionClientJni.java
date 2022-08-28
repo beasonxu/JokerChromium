@@ -13,7 +13,7 @@ import org.chromium.content_public.browser.WebContents;
 class SmartSelectionClientJni implements SmartSelectionClient.Natives {
   private static SmartSelectionClient.Natives testInstance;
 
-  public static final JniStaticTestMocker<SmartSelectionClient.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<SmartSelectionClient.Natives>() {
+  public static final JniStaticTestMocker<SmartSelectionClient.Natives> TEST_HOOKS = new JniStaticTestMocker<SmartSelectionClient.Natives>() {
     @Override
     public void setInstanceForTesting(
         SmartSelectionClient.Natives instance) {

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s ka nevojë për leje për t\'u qasur te kamera jote për të krijuar një hartë 3D të ambientit tënd rrethues."</string>
+<string name="infobar_missing_camera_permission_text">"%1$s ka nevojë për leje për t\'u qasur te kamera jote për këtë sajt."</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s ka nevojë për leje për t\'u qasur te mikrofoni yt për këtë sajt."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s ka nevojë për leje për t\'u qasur te kamera dhe mikrofoni yt për këtë sajt."</string>
+<string name="infobar_missing_location_permission_text">"%1$s ka nevojë për qasje te vendndodhja jote për të ndarë vendndodhjen me këtë sajt."</string>
+<string name="infobar_update_permissions_button_text">"Vazhdo"</string>
+<string name="nfc_disabled_on_device_message">"Për të vazhduar, aktivizo NFC-në te cilësimet e Android"</string>
+<string name="nfc_prompt_turn_on">"Aktivizo"</string>
+<string name="overlay_detected_dialog_title">"Ky sajt nuk mund të kërkojë lejen tënde"</string>
+<string name="overlay_detected_dialog_message">"Mbyll çdo flluskë ose mbivendosje nga aplikacionet e tjera. Më pas provo përsëri."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Kërko ndihmë&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Çifto"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Niveli i forcës së sinjalit: %d shirit"</item>
+  <item quantity="other">"Niveli i forcës së sinjalit: %d shirita"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Pajisja e lidhur"</string>
+<string name="bluetooth_dialog_title">"%1$s dëshiron të çiftohet"</string>
+<string name="bluetooth_not_found">"Nuk u gjetën pajisje të përputhshme"</string>
+<string name="bluetooth_searching">"&lt;link&gt;Kërko ndihmë&lt;/link&gt; gjatë skanimit për pajisje…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Kërko ndihmë&lt;/link1&gt; ose &lt;link2&gt;skano sërish&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Chrome ka nevojë për qasjen te vendndodhja për të skanuar për pajisje. Qasja te vendndodhja është &lt;services_link&gt;e çaktivizuar për këtë pajisje&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Chrome ka nevojë për qasjen te vendndodhja për të skanuar për pajisje. &lt;permission_link&gt;Përditëso lejet&lt;/permission_link&gt;. Qasja te vendndodhja është po ashtu &lt;services_link&gt;e çaktivizuar për këtë pajisje&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome ka nevojë për leje për të skanuar për pajisjet në afërsi. &lt;permission_link&gt;Përditëso lejet&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"Chrome ka nevojë për qasjen te vendndodhja për të skanuar për pajisje. &lt;permission_link&gt;Përditëso lejet&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Kërko ndihmë&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome nuk mund ta aktivizojë përshtatësin e Bluetooth-it"</string>
+<string name="bluetooth_adapter_off">"&lt;link&gt;Aktivizo Bluetooth-in&lt;/link&gt; për të lejuar çiftimin"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s dëshiron të skanojë për pajisje Bluetooth në afërsi. Janë gjetur pajisjet e mëposhtme:"</string>
+<string name="bluetooth_scanning_device_unknown">"Pajisje e panjohur ose e pambështetur (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

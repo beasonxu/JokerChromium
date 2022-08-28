@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
+import org.chromium.chrome.R;
 import org.chromium.ui.DropdownItemBase;
 import org.chromium.url.GURL;
 

@@ -13,7 +13,7 @@ import org.chromium.content_public.browser.WebContents;
 class SelectionPopupControllerImplJni implements SelectionPopupControllerImpl.Natives {
   private static SelectionPopupControllerImpl.Natives testInstance;
 
-  public static final JniStaticTestMocker<SelectionPopupControllerImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<SelectionPopupControllerImpl.Natives>() {
+  public static final JniStaticTestMocker<SelectionPopupControllerImpl.Natives> TEST_HOOKS = new JniStaticTestMocker<SelectionPopupControllerImpl.Natives>() {
     @Override
     public void setInstanceForTesting(
         SelectionPopupControllerImpl.Natives instance) {

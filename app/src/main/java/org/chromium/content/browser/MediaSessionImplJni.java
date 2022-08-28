@@ -13,7 +13,7 @@ import org.chromium.content_public.browser.WebContents;
 class MediaSessionImplJni implements MediaSessionImpl.Natives {
   private static MediaSessionImpl.Natives testInstance;
 
-  public static final JniStaticTestMocker<MediaSessionImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<MediaSessionImpl.Natives>() {
+  public static final JniStaticTestMocker<MediaSessionImpl.Natives> TEST_HOOKS = new JniStaticTestMocker<MediaSessionImpl.Natives>() {
     @Override
     public void setInstanceForTesting(
         MediaSessionImpl.Natives instance) {

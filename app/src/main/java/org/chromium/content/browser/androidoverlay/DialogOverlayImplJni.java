@@ -14,11 +14,11 @@ import org.chromium.gfx.mojom.Rect;
 class DialogOverlayImplJni implements DialogOverlayImpl.Natives {
   private static DialogOverlayImpl.Natives testInstance;
 
-  public static final JniStaticTestMocker<DialogOverlayImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.content.browser.androidoverlay.DialogOverlayImpl.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<DialogOverlayImpl.Natives> TEST_HOOKS = new JniStaticTestMocker<DialogOverlayImpl.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.content.browser.androidoverlay.DialogOverlayImpl.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        DialogOverlayImpl.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

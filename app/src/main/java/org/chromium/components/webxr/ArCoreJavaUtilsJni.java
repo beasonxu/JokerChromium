@@ -14,11 +14,11 @@ import org.chromium.ui.base.WindowAndroid;
 class ArCoreJavaUtilsJni implements ArCoreJavaUtils.Natives {
   private static ArCoreJavaUtils.Natives testInstance;
 
-  public static final JniStaticTestMocker<ArCoreJavaUtils.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.webxr.ArCoreJavaUtils.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<ArCoreJavaUtils.Natives> TEST_HOOKS = new JniStaticTestMocker<ArCoreJavaUtils.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.components.webxr.ArCoreJavaUtils.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        ArCoreJavaUtils.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

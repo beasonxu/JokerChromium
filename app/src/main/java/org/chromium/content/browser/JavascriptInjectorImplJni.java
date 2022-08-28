@@ -16,7 +16,7 @@ import org.chromium.content_public.browser.WebContents;
 class JavascriptInjectorImplJni implements JavascriptInjectorImpl.Natives {
   private static JavascriptInjectorImpl.Natives testInstance;
 
-  public static final JniStaticTestMocker<JavascriptInjectorImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<JavascriptInjectorImpl.Natives>() {
+  public static final JniStaticTestMocker<JavascriptInjectorImpl.Natives> TEST_HOOKS = new JniStaticTestMocker<JavascriptInjectorImpl.Natives>() {
     @Override
     public void setInstanceForTesting(
         JavascriptInjectorImpl.Natives instance) {

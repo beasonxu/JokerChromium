@@ -14,7 +14,7 @@ import org.chromium.base.natives.GEN_JNI;
 public class ClientDataJsonImplJni implements ClientDataJsonImpl.Natives {
   private static ClientDataJsonImpl.Natives testInstance;
 
-  public static final JniStaticTestMocker<ClientDataJsonImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<ClientDataJsonImpl.Natives>() {
+  public static final JniStaticTestMocker<ClientDataJsonImpl.Natives> TEST_HOOKS = new JniStaticTestMocker<ClientDataJsonImpl.Natives>() {
     @Override
     public void setInstanceForTesting(
         ClientDataJsonImpl.Natives instance) {

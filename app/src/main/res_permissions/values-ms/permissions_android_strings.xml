@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s memerlukan kebenaran untuk mengakses kamera anda untuk membuat peta 3D persekitaran anda."</string>
+<string name="infobar_missing_camera_permission_text">"%1$s memerlukan kebenaran untuk mengakses kamera anda untuk laman ini."</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s memerlukan kebenaran untuk mengakses mikrofon anda untuk laman ini."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s memerlukan kebenaran untuk mengakses kamera dan mikrofon anda untuk laman ini."</string>
+<string name="infobar_missing_location_permission_text">"%1$s memerlukan akses kepada lokasi anda untuk berkongsi lokasi dengan laman ini."</string>
+<string name="infobar_update_permissions_button_text">"Teruskan"</string>
+<string name="nfc_disabled_on_device_message">"Hidupkan NFC dalam tetapan Android untuk meneruskan"</string>
+<string name="nfc_prompt_turn_on">"Hidupkan"</string>
+<string name="overlay_detected_dialog_title">"Tapak ini tidak boleh meminta kebenaran anda"</string>
+<string name="overlay_detected_dialog_message">"Tutup sebarang gelembung atau tindanan daripada apl lain. Kemudian cuba lagi."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Dapatkan bantuan&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Gandingkan"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Tahap Kekuatan Isyarat: %d bar"</item>
+  <item quantity="other">"Tahap Kekuatan Isyarat: %d bar"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Peranti Bersambung"</string>
+<string name="bluetooth_dialog_title">"%1$s mahu digandingkan"</string>
+<string name="bluetooth_not_found">"Tiada peranti yang serasi ditemui"</string>
+<string name="bluetooth_searching">"&lt;link&gt;Dapatkan bantuan&lt;/link&gt; semasa mengimbas peranti…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Dapatkan bantuan&lt;/link1&gt; atau &lt;link2&gt;imbas semula&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Chrome memerlukan akses lokasi untuk mengimbas peranti. Akses lokasi &lt;services_link&gt;dimatikan untuk peranti ini&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Chrome memerlukan akses lokasi untuk mengimbas peranti. &lt;permission_link&gt;Kemas kini kebenaran&lt;/permission_link&gt;. Akses lokasi turut &lt;services_link&gt;dimatikan untuk peranti ini&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome memerlukan kebenaran untuk mengimbas peranti berdekatan. &lt;permission_link&gt;Kemas kini kebenaran&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"Chrome memerlukan akses lokasi untuk mengimbas peranti. &lt;permission_link&gt;Kemaskinikan kebenaran&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Dapatkan bantuan&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome tidak dapat menghidupkan penyesuai Bluetooth"</string>
+<string name="bluetooth_adapter_off">"&lt;link&gt;Hidupkan Bluetooth&lt;/link&gt; untuk membenarkan penggandingan"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s mahu mengimbas untuk mengesan peranti Bluetooth berdekatan. Peranti berikut telah dijumpai:"</string>
+<string name="bluetooth_scanning_device_unknown">"Peranti tidak diketahui atau tidak disokong (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

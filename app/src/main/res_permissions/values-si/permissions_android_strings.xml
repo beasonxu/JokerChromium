@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s හට ඔබගේ වටපිටාවේ 3D සිතියමක් තැනීමට ඔබගේ කැමරාවට ප්‍රවේශ වීමට අවසර අවශ්‍යයි"</string>
+<string name="infobar_missing_camera_permission_text">"%1$s හට මෙම අඩවිය සදහා ඔබගේ කැමරාවට ප්‍රවේශ වීමට අවසර අවශ්‍යයි"</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s හට මෙම අඩවිය සදහා ඔබගේ මයික්‍රෆෝනයට ප්‍රවේශ වීමට අවසර අවශ්‍යයි"</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s හට මෙම අඩවිය සදහා ඔබගේ කැමරාවට සහ මයික්‍රෆෝනයට ප්‍රවේශ වීමට අවසර අවශ්‍යයි"</string>
+<string name="infobar_missing_location_permission_text">"%1$s හට මෙම අඩවිය සමඟ ඔබගේ ස්ථානය බෙදා ගැනීමට ඔබගේ ස්ථානයට ප්‍රවේශය අවශ්‍යයි"</string>
+<string name="infobar_update_permissions_button_text">"කරගෙන යන්න"</string>
+<string name="nfc_disabled_on_device_message">"ඉදිරියට යාමට Android සැකසීම් තුළ NFC සක්‍රීය කරන්න"</string>
+<string name="nfc_prompt_turn_on">"ක්‍රියාත්මක කරන්න"</string>
+<string name="overlay_detected_dialog_title">"මෙම අඩවියට ඔබගේ අවසරය ඉල්ලිය නොහැකිය"</string>
+<string name="overlay_detected_dialog_message">"වෙනත් යෙදුම් වෙතින් වන යම් බුබුළු හෝ උඩැතිරි වසන්න. අනතුරුව, නැවත උත්සාහ කරන්න."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;උදවු ගන්න&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"යුගල කරන්න"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"සංඥා ප්‍රබලතා මට්ටම: කණු %d"</item>
+  <item quantity="other">"සංඥා ප්‍රබලතා මට්ටම: කණු %d"</item>
+</plurals>
+<string name="bluetooth_device_connected">"සම්බන්ධිත උපාංගය"</string>
+<string name="bluetooth_dialog_title">"%1$s හට යුගල වීමට අවශ්‍යය"</string>
+<string name="bluetooth_not_found">"ගැළපෙන උපාංග හමු නොවිණි"</string>
+<string name="bluetooth_searching">"උපාංග සඳහා ස්කෑන් කරන අතරතුර &lt;link&gt;උදවු ලබා ගන්න&lt;/link&gt;…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;උදවු ලබා ගන්න&lt;/link1&gt; නැතහොත් &lt;link2&gt;නැවත ස්කෑන් කරන්න&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Chrome හට උපාංග සඳහා ස්කෑන් කිරීමට ස්ථාන ප්‍රවේශය අවශ්‍යයි. &lt;services_link&gt;මෙම උපාංගය සඳහා ස්ථාන ප්‍රවේශය&lt;/services_link&gt; ක්‍රියාවිරහිතයි."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Chrome හට උපාංග සඳහා ස්කෑන් කිරීමට ස්ථාන ප්‍රවේශය අවශ්‍යයි. &lt;permission_link&gt;අවසර යාවත්කාලීන කරන්න&lt;/permission_link&gt;. ස්ථාන ප්‍රවේශය &lt;services_link&gt;මෙම උපාංගය සඳහාද ක්‍රියාවිරහිතයි&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"අවට උපාංග සඳහා ස්කෑන් කිරීමට Chrome හට අවසරය අවශ්‍ය වේ. &lt;permission_link&gt;අවසර යාවත්කාලීන කරන්න&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"උපාංග සඳහා පරිලෝකනය කිරීමට, Chrome හට ස්ථාන ප්‍රවේශය අවශ්‍ය වේ. &lt;permission_link&gt;යාවත්කාලීන අවසර&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;උදවු ගන්න&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome හට බ්ලූටූත් ඇඩප්ටරය ක්‍රියාත්මක කිරීමට නොහැකිය"</string>
+<string name="bluetooth_adapter_off">"යුගලනයට ඉඩ දීමට &lt;link&gt;බ්ලූටූත් ක්‍රියාත්මක කරන්න&lt;/link&gt;"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s හට අවට බ්ලූටූත් උපාංග සඳහා ස්කෑන් කිරීමට අවශ්‍යයි. පහත උපාංග සොයාගනු ලැබීය:"</string>
+<string name="bluetooth_scanning_device_unknown">"නොදන්නා හෝ සහය නොදැක්වෙන උපාංගය (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

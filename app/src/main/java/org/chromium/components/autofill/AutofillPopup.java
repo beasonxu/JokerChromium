@@ -13,6 +13,7 @@ import android.view.accessibility.AccessibilityEvent;
 import android.widget.AdapterView;
 import android.widget.PopupWindow;
 
+import org.chromium.chrome.R;
 import org.chromium.ui.DropdownItem;
 import org.chromium.ui.DropdownPopupWindow;
 

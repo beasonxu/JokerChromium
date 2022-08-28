@@ -14,11 +14,11 @@ import org.chromium.content_public.browser.WebContents;
 class JourneyLoggerJni implements JourneyLogger.Natives {
   private static JourneyLogger.Natives testInstance;
 
-  public static final JniStaticTestMocker<JourneyLogger.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.payments.JourneyLogger.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<JourneyLogger.Natives> TEST_HOOKS = new JniStaticTestMocker<JourneyLogger.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.components.payments.JourneyLogger.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        JourneyLogger.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

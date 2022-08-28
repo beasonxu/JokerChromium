@@ -13,7 +13,7 @@ import org.chromium.base.natives.GEN_JNI;
 class SmsProviderGmsJni implements SmsProviderGms.Natives {
   private static SmsProviderGms.Natives testInstance;
 
-  public static final JniStaticTestMocker<SmsProviderGms.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<SmsProviderGms.Natives>() {
+  public static final JniStaticTestMocker<SmsProviderGms.Natives> TEST_HOOKS = new JniStaticTestMocker<SmsProviderGms.Natives>() {
     @Override
     public void setInstanceForTesting(
         SmsProviderGms.Natives instance) {

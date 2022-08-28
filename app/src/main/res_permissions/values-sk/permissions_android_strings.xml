@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"Aplikácia %1$s potrebuje povolenie použiť kameru, aby mohla vytvoriť 3D mapu vášho okolia."</string>
+<string name="infobar_missing_camera_permission_text">"Aplikácia %1$s potrebuje povolenie pre tento web na prístup ku kamere."</string>
+<string name="infobar_missing_microphone_permission_text">"Aplikácia %1$s potrebuje povolenie pre tento web na prístup k mikrofónu."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"Aplikácia %1$s potrebuje povolenie pre tento web na prístup ku kamere a mikrofónu."</string>
+<string name="infobar_missing_location_permission_text">"Aplikácia %1$s potrebuje prístup k vašej polohe, aby ju mohla zdieľať s týmto webom."</string>
+<string name="infobar_update_permissions_button_text">"Pokračovať"</string>
+<string name="nfc_disabled_on_device_message">"Ak chcete pokračovať, zapnite NFC v nastaveniach Androidu"</string>
+<string name="nfc_prompt_turn_on">"Zapnúť"</string>
+<string name="overlay_detected_dialog_title">"Tento web nemôže žiadať o vaše povolenie"</string>
+<string name="overlay_detected_dialog_message">"Zatvorte všetky bubliny či prekrytia z iných aplikácií. Potom to skúste znova."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Získať pomoc&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Párovať"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Úroveň sily signálu: %d čiarka"</item>
+  <item quantity="few">"Úroveň sily signálu: %d čiarky"</item>
+  <item quantity="many">"Úroveň sily signálu: %d čiarky"</item>
+  <item quantity="other">"Úroveň sily signálu: %d čiarok"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Pripojené zariadenie"</string>
+<string name="bluetooth_dialog_title">"%1$s žiada o spárovanie"</string>
+<string name="bluetooth_not_found">"Nenašli sa žiadne kompatibilné zariadenia"</string>
+<string name="bluetooth_searching">"&lt;link&gt;Získajte pomoc&lt;/link&gt; s vyhľadávaním zariadení…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Získajte pomoc&lt;/link1&gt; alebo &lt;link2&gt;znova spustite vyhľadávanie&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Na to, aby mohol Chrome hľadať zariadenia, musí mať prístup k polohe. Prístup k polohe je v tomto zariadení &lt;services_link&gt;vypnutý&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Na to, aby mohol Chrome hľadať zariadenia, musí mať prístup k polohe. &lt;permission_link&gt;Aktualizujte povolenia&lt;/permission_link&gt;. Prístup k polohe je &lt;services_link&gt;vypnutý aj v tomto zariadení&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome vyžaduje povolenie hľadať zariadenia v okolí. &lt;permission_link&gt;Aktualizovať povolenia&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission">"Na to, aby mohol Chrome hľadať zariadenia, musí mať prístup k polohe. &lt;permission_link&gt;Aktualizovať povolenia&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Získať pomoc&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome nedokáže zapnúť adaptér Bluetooth"</string>
+<string name="bluetooth_adapter_off">"Povoľte párovanie &lt;link&gt;zapnutím rozhrania Bluetooth&lt;/link&gt;"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s chce vyhľadávať zariadenia Bluetooth nablízku. Našli sa tieto zariadenia:"</string>
+<string name="bluetooth_scanning_device_unknown">"Neznáme alebo nepodporované zariadenie (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

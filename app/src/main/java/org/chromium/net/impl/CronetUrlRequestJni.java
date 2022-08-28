@@ -1,13 +1,13 @@
 package org.chromium.net.impl;
 
+import java.lang.Override;
+import java.lang.String;
+import java.nio.ByteBuffer;
+import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
-
-import java.nio.ByteBuffer;
-
-import javax.annotation.Generated;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")

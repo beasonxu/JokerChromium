@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s inahitaji ruhusa ya kufikia kamera yako ili iunde ramani ya 3D ya mazingira yako."</string>
+<string name="infobar_missing_camera_permission_text">"%1$s inahitaji ruhusa ya kufikia kamera yako kwa ajili ya tovuti hii."</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s inahitaji ruhusa ya kufikia maikrofoni yako kwa ajili ya tovuti hii."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s inahitaji ruhusa ya kufikia kamera na maikrofoni yako kwa ajili ya tovuti hii."</string>
+<string name="infobar_missing_location_permission_text">"%1$s inahitaji kufikia maelezo ya mahali ulipo ili kuyashiriki na tovuti hii."</string>
+<string name="infobar_update_permissions_button_text">"Endelea"</string>
+<string name="nfc_disabled_on_device_message">"Ili uendelee, washa NFC katika mipangilio ya Android"</string>
+<string name="nfc_prompt_turn_on">"Washa"</string>
+<string name="overlay_detected_dialog_title">"Tovuti hii haiwezi kukuomba ruhusa"</string>
+<string name="overlay_detected_dialog_message">"Zima viputo au matangazo yoyote yaliyowekelewa juu kutoka programu zingine. Kisha, jaribu tena."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Pata usaidizi&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Oanisha"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Kiwango cha Udhibiti wa Mawimbi: upau %d"</item>
+  <item quantity="other">"Kiwango cha Udhibiti wa Mawimbi: pau %d"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Kifaa Kilichounganishwa"</string>
+<string name="bluetooth_dialog_title">"%1$s inataka kuoanisha"</string>
+<string name="bluetooth_not_found">"Haikupata vifaa vyovyote vinavyooana"</string>
+<string name="bluetooth_searching">"&lt;link&gt;Pata usaidizi&lt;/link&gt; huku ukitafuta vifaa…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Pata usaidizi&lt;/link1&gt; au &lt;link2&gt;tafuta tena&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Chrome inahitaji idhini ya kufikia mahali ili itafute vifaa. Kipengele cha kufikia mahali &lt;services_link&gt;kimezimwa kwenye kifaa hiki&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Chrome inahitaji idhini ya kufikia mahali ili itafute vifaa. &lt;permission_link&gt;Badilisha ruhusa&lt;/permission_link&gt;. Kipengele cha idhini ya kufikia mahali pia &lt;services_link&gt;kimezimwa kwenye kifaa hiki&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome inahitaji ruhusa ya kutafuta vifaa vilivyo karibu. &lt;permission_link&gt;Sasisha ruhusa&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"Chrome inahitaji idhini ya kufikia mahali ili ichanganue vifaa. &lt;permission_link&gt;Ruhusa za sasisho&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Pata usaidizi&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome imeshindwa kuwasha adapta ya Bluetooth"</string>
+<string name="bluetooth_adapter_off">"&lt;link&gt;Washa Bluetooth&lt;/link&gt; ili uruhusu kuoanisha"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s inataka kutafuta vifaa vya Bluetooth vilivyo karibu. Vifaa vifuatavyo vimepatikana:"</string>
+<string name="bluetooth_scanning_device_unknown">"Kifaa kisichojulikana au kisichotumika (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

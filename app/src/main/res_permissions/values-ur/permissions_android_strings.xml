@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"‏اپنے اطراف کا 3D نقشہ تخلیق کرنے کی خاطر %1$s کو آپ کے کیمرے تک رسائی کی اجازت درکار ہے۔"</string>
+<string name="infobar_missing_camera_permission_text">"%1$s کو اس سائٹ کیلئے آپ کے کیمرے تک رسائی کی اجازت درکار ہے۔"</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s کو اس سائٹ کیلئے آپ کے مائیکروفون تک رسائی کی اجازت درکار ہے۔"</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s کو اس سائٹ کیلئے آپ کے کیمرا اور مائیکروفون تک رسائی کی اجازتیں درکار ہیں۔"</string>
+<string name="infobar_missing_location_permission_text">"%1$s کو اس سائٹ کے ساتھ آپ کے مقام کا اشتراک کرنے کیلئے آپ کے مقام تک رسائی درکار ہے۔"</string>
+<string name="infobar_update_permissions_button_text">"جاری رکھیں"</string>
+<string name="nfc_disabled_on_device_message">"‏جاری رکھنے کے لیے، Android کی ترتیبات میں NFC آن کریں"</string>
+<string name="nfc_prompt_turn_on">"آن کریں"</string>
+<string name="overlay_detected_dialog_title">"یہ سائٹ آپ کی اجازت نہیں طلب کر سکتی"</string>
+<string name="overlay_detected_dialog_message">"دیگر ایپس سے کسی بھی بلبلے اور اوور لیز کو بند کریں۔ پھر، دوبارہ کوشش کریں۔"</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;مدد حاصل کریں&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"جوڑا بنائيں"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"سگنل کی مضبوطی کی سطح: %d بار"</item>
+  <item quantity="other">"سگنل کی مضبوطی کی سطح: %d بارز"</item>
+</plurals>
+<string name="bluetooth_device_connected">"منسلک آلہ"</string>
+<string name="bluetooth_dialog_title">"%1$s جوڑا بنانا چاہتی ہے"</string>
+<string name="bluetooth_not_found">"کوئی مطابقت پذیر آلہ نہیں ملا"</string>
+<string name="bluetooth_searching">"آلات کو اسکین کرتے وقت &lt;link&gt;مدد حاصل کریں&lt;/link&gt;…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;مدد حاصل کریں&lt;/link1&gt; یا &lt;link2&gt;دوبارہ اسکین کریں&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"‏Chrome کو آلات اسکین کرنے کیلئے مقام تک رسائی کی ضرورت ہے۔ مقام تک رسائی &lt;services_link&gt;اس آلہ کیلئے آف&lt;/services_link&gt; ہے۔"</string>
+<string name="bluetooth_need_location_permission_and_services_on">"‏Chrome کو آلات اسکین کرنے کیلئے مقام تک رسائی کی ضرورت ہے۔ &lt;permission_link&gt;اجازتوں کو اپ ڈیٹ کریں&lt;/permission_link&gt;۔ مقام تک رسائی بھی &lt;services_link&gt;اس آلہ کیلئے آف&lt;/services_link&gt; ہے۔"</string>
+<string name="bluetooth_need_nearby_devices_permission">"‏قریبی آلات کو اسکین کرنے کے لیے Chrome کو اجازت درکار ہے۔ &lt;permission_link&gt;اجازتیں اپ ڈیٹ کریں&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission">"‏Chrome کو آلات اسکین کرنے کیلئے مقام تک رسائی کی ضرورت ہے۔ &lt;permission_link&gt;اجازتوں کو اپ ڈیٹ کریں&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;مدد حاصل کریں&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"‏Chrome بلوٹوتھ اڈاپٹر آن کرنے سے قاصر ہے"</string>
+<string name="bluetooth_adapter_off">"جوڑا بنانے کی اجازت دینے کیلئے &lt;link&gt;بلوٹوتھ کو آن کریں&lt;/link&gt;"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s قریبی بلوٹوتھ آلات کے لیے اسکین کرنا چاہتی ہے، مندرجہ ذیل آلات ملے ہیں:"</string>
+<string name="bluetooth_scanning_device_unknown">"نا معلوم یا غیر تعاون یافتہ آلہ (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"‎%1$s (%2$s)‎"</string>
+</resources>

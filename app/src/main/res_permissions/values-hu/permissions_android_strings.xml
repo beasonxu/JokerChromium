@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"A %1$s engedélyt igényel a kamerához való hozzáféréshez annak érdekében, hogy 3D-s térképet készíthessen az Ön környezetéről."</string>
+<string name="infobar_missing_camera_permission_text">"A %1$s engedélyt igényel ahhoz, hogy hozzáférjen a kamerához ennél a webhelynél."</string>
+<string name="infobar_missing_microphone_permission_text">"A %1$s engedélyt igényel ahhoz, hogy hozzáférjen a mikrofonhoz ennél a webhelynél."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"A %1$s engedélyt igényel ahhoz, hogy hozzáférjen a kamerához és a mikrofonhoz ennél a webhelynél."</string>
+<string name="infobar_missing_location_permission_text">"A %1$s a helyadatokhoz való hozzáférést igényel ahhoz, hogy megoszthassa az Ön tartózkodási helyét a webhellyel."</string>
+<string name="infobar_update_permissions_button_text">"Tovább"</string>
+<string name="nfc_disabled_on_device_message">"A folytatáshoz kapcsolja be az NFC-t az Android beállításai között"</string>
+<string name="nfc_prompt_turn_on">"Bekapcsolás"</string>
+<string name="overlay_detected_dialog_title">"Ez a webhely nem kérhet engedélyt Öntől"</string>
+<string name="overlay_detected_dialog_message">"Zárjon be minden, más alkalmazásokból származó buborékot és fedvényt. Ezután próbálja újra."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Kérjen segítséget&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Párosítás"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Jelerősség szintje: %d sáv"</item>
+  <item quantity="other">"Jelerősség szintje: %d sáv"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Csatlakoztatott eszköz"</string>
+<string name="bluetooth_dialog_title">"A(z) %1$s párosítást szeretne végrehajtani"</string>
+<string name="bluetooth_not_found">"Nem találhatók kompatibilis eszközök"</string>
+<string name="bluetooth_searching">"&lt;link&gt;Kérjen segítséget&lt;/link&gt;, miközben eszközöket keresünk…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Kérjen segítséget&lt;/link1&gt;, vagy &lt;link2&gt;keressen rá újra&lt;/link2&gt;."</string>
+<string name="bluetooth_need_location_services_on">"A Chrome-nak hozzá kell férnie a tartózkodási helyhez, hogy eszközöket kereshessen. A tartózkodási helyhez való hozzáférés &lt;services_link&gt;ki van kapcsolva ezen az eszközön&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"A Chrome-nak hozzá kell férnie a tartózkodási helyhez, hogy eszközöket kereshessen. &lt;permission_link&gt;Frissítse az engedélyeket&lt;/permission_link&gt;. A helyadatokhoz való hozzáférés is &lt;services_link&gt;ki van kapcsolva ezen az eszközön&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"A Chrome-nak engedélyre van szüksége, hogy közelben lévő eszközöket kereshessen. &lt;permission_link&gt;Engedélyek frissítése&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"A Chrome-nak hozzá kell férnie a tartózkodási helyhez, hogy eszközöket kereshessen. &lt;permission_link&gt;Frissítse az engedélyeket&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Kérjen segítséget&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"A Chrome nem tudja bekapcsolni a Bluetooth-adaptert"</string>
+<string name="bluetooth_adapter_off">"A párosítás engedélyezéséhez &lt;link&gt;kapcsolja be a Bluetooth funkciót&lt;/link&gt;"</string>
+<string name="bluetooth_scanning_prompt_origin">"A(z) %1$s szeretné megkeresni a közeli Bluetooth-eszközöket. A következő eszközöket találta:"</string>
+<string name="bluetooth_scanning_device_unknown">"Ismeretlen vagy nem támogatott eszköz (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

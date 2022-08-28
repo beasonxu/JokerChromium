@@ -12,7 +12,7 @@ import org.chromium.base.natives.GEN_JNI;
 class ContentViewStaticsImplJni implements ContentViewStaticsImpl.Natives {
   private static ContentViewStaticsImpl.Natives testInstance;
 
-  public static final JniStaticTestMocker<ContentViewStaticsImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<ContentViewStaticsImpl.Natives>() {
+  public static final JniStaticTestMocker<ContentViewStaticsImpl.Natives> TEST_HOOKS = new JniStaticTestMocker<ContentViewStaticsImpl.Natives>() {
     @Override
     public void setInstanceForTesting(
         ContentViewStaticsImpl.Natives instance) {

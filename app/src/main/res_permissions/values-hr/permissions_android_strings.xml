@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s treba dopuštenje za pristup kameri radi izrade 3D karte vašeg okruženja."</string>
+<string name="infobar_missing_camera_permission_text">"%1$s treba dopuštenje za pristup kameri za ovu web-lokaciju."</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s treba dopuštenje za pristup mikrofonu za ovu web-lokaciju."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s treba dopuštenje za pristup kameri i mikrofonu za ovu web-lokaciju."</string>
+<string name="infobar_missing_location_permission_text">"%1$s treba dopuštenje za pristup vašoj lokaciji da bi je podijelio s ovom web-lokacijom."</string>
+<string name="infobar_update_permissions_button_text">"Nastavi"</string>
+<string name="nfc_disabled_on_device_message">"Da biste nastavili, uključite NFC u postavkama Androida"</string>
+<string name="nfc_prompt_turn_on">"Uključi"</string>
+<string name="overlay_detected_dialog_title">"Ova web-lokacija ne može tražiti vaše dopuštenje"</string>
+<string name="overlay_detected_dialog_message">"Zatvorite sve oblačiće i preklapanja iz drugih aplikacija. Zatim pokušajte ponovo."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Potražite pomoć&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Upari"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Jačina signala: %d crtica"</item>
+  <item quantity="few">"Jačina signala: %d crtice"</item>
+  <item quantity="other">"Jačina signala: %d crtica"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Povezani uređaj"</string>
+<string name="bluetooth_dialog_title">"Web-lokacija %1$s želi se upariti"</string>
+<string name="bluetooth_not_found">"Nije pronađen nijedan kompatibilni uređaj"</string>
+<string name="bluetooth_searching">"&lt;link&gt;Potražite pomoć&lt;/link&gt; tijekom traženja uređaja…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Potražite pomoć&lt;/link1&gt; ili &lt;link2&gt;pretražite ponovo&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Chrome treba pristup lokaciji kako bi skenirao uređaje. Pristup lokaciji &lt;services_link&gt;isključen je za ovaj uređaj&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Chrome treba pristup lokaciji kako bi skenirao uređaje. &lt;permission_link&gt;Ažurirajte dopuštenja&lt;/permission_link&gt;. Pristup lokaciji također je &lt;services_link&gt;isključen za ovaj uređaj&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome treba dopuštenje za pretraživanje uređaja u blizini. &lt;permission_link&gt;Ažurirajte dopuštenja&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"Chrome treba pristup lokaciji kako bi skenirao uređaje. &lt;permission_link&gt;Ažuriraj dopuštenja&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Potražite pomoć&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome ne može uključiti Bluetooth adapter"</string>
+<string name="bluetooth_adapter_off">"&lt;link&gt;Uključite Bluetooth&lt;/link&gt; da biste omogućili uparivanje"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s želi potražiti Bluetooth uređaje u blizini. Pronađeni su sljedeći uređaji:"</string>
+<string name="bluetooth_scanning_device_unknown">"Nepoznati ili nepodržani uređaj (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s ətrafınızın 3D xəritəsini yaratmaq üçün kameranıza giriş icazəsi tələb edir."</string>
+<string name="infobar_missing_camera_permission_text">"%1$s bu sayt üçün kameraya giriş tələb edir"</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s bu sayt üçün mikrofona giriş tələb edir"</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s bu sayt üçün kamera və mikrofona giriş tələb edir"</string>
+<string name="infobar_missing_location_permission_text">"%1$s məkanı bu saytla paylaşmaq üçün məkana giriş tələb edir"</string>
+<string name="infobar_update_permissions_button_text">"Davam edin"</string>
+<string name="nfc_disabled_on_device_message">"Davam etmək üçün Android ayarlarında NFC\'ni yandırın"</string>
+<string name="nfc_prompt_turn_on">"Aktiv edin"</string>
+<string name="overlay_detected_dialog_title">"Bu sayt icazənizi istəyə bilməz"</string>
+<string name="overlay_detected_dialog_message">"Digər tətbiqlərdən olan istənilən qabarcıq və ya örtükləri bağlayın. Sonra yenidən cəhd edin."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Yardım alın&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Qoşulsun"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Siqnal Gücü Səviyyəsi: %d panel"</item>
+  <item quantity="other">"Siqnal Gücü Səviyyəsi: %d panel"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Qoşulmuş Cihaz"</string>
+<string name="bluetooth_dialog_title">"%1$s ütləndirmək istəyir"</string>
+<string name="bluetooth_not_found">"Uyğun cihaz tapılmadı"</string>
+<string name="bluetooth_searching">"Cihaz axtararkın &lt;link&gt;yardım alın&lt;/link&gt;…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Yardım alın&lt;/link1&gt; və ya &lt;link2&gt;təkrar skan edin&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Chrome, cihazları skan etmək üçün məkana giriş tələb edir. Məkan girişi &lt;services_link&gt;bu cihaz üçün deaktiv edilib&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Chrome cihazları skan etmək üçün məkana giriş tələb edir. &lt;permission_link&gt;İcazələri yeniləyin&lt;/permission_link&gt;. Məkana giriş həm də &lt;services_link&gt;bu cihaz üçün söndürülüb&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome yaxınlıqdakı cihazları skanlamaq üçün icazə istəyir. &lt;permission_link&gt;İcazələri yeniləyin&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"Chrome cihazları skan etmək üçün məkana giriş tələb edir. &lt;permission_link&gt;İcazələri yeniləyin&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Yardım alın&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome Bluetooth adapterini aktivləşdirə bilmir"</string>
+<string name="bluetooth_adapter_off">"Qoşalaşdırmağa icazə vermək üçün &lt;link&gt;Bluetooth\'u aktiv edin&lt;/link&gt;"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s yaxınlıqdakı Bluetooth cihazlarını axtarmaq istəyir. Aşağıdakı cihazlar tapıldı:"</string>
+<string name="bluetooth_scanning_device_unknown">"Naməlum və ya dəstəklənməyən cihaz (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

@@ -13,11 +13,11 @@ import org.chromium.content_public.browser.WebContents;
 public class PolicyAuditorJni implements PolicyAuditor.Natives {
   private static PolicyAuditor.Natives testInstance;
 
-  public static final JniStaticTestMocker<PolicyAuditor.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.policy.PolicyAuditor.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<PolicyAuditor.Natives> TEST_HOOKS = new JniStaticTestMocker<PolicyAuditor.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.chrome.browser.policy.PolicyAuditor.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        PolicyAuditor.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

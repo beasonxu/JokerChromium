@@ -14,6 +14,8 @@ import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
+import org.chromium.chrome.R;
+
 import java.text.NumberFormat;
 
 /**

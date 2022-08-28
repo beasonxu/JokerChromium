@@ -1,15 +1,15 @@
 package org.chromium.components.image_fetcher;
 
 import android.graphics.Bitmap;
-
+import java.lang.Override;
+import java.lang.String;
+import javax.annotation.Generated;
 import org.chromium.base.Callback;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.components.embedder_support.simple_factory_key.SimpleFactoryKeyHandle;
-
-import javax.annotation.Generated;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")

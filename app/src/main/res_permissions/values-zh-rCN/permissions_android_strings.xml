@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"“%1$s”需要获得相应权限，才能使用您的摄像头创建周边环境的 3D 地图。"</string>
+<string name="infobar_missing_camera_permission_text">"“%1$s”需要获得相应权限，才能允许此网站使用您的摄像头。"</string>
+<string name="infobar_missing_microphone_permission_text">"“%1$s”需要获得相应权限，才能允许此网站使用您的麦克风。"</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"“%1$s”需要获得相应权限，才能允许此网站使用您的摄像头和麦克风。"</string>
+<string name="infobar_missing_location_permission_text">"“%1$s”需要获得位置信息使用权限，才能将您的位置信息共享给此网站。"</string>
+<string name="infobar_update_permissions_button_text">"继续"</string>
+<string name="nfc_disabled_on_device_message">"要继续，请在 Android 设置中开启 NFC"</string>
+<string name="nfc_prompt_turn_on">"启用"</string>
+<string name="overlay_detected_dialog_title">"此网站无法请求您授权"</string>
+<string name="overlay_detected_dialog_message">"请关闭来自其他应用的所有气泡或叠加层，然后重试。"</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;获取帮助&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"配对"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"信号强度：%d 格"</item>
+  <item quantity="other">"信号强度：%d 格"</item>
+</plurals>
+<string name="bluetooth_device_connected">"连接的设备"</string>
+<string name="bluetooth_dialog_title">"%1$s 希望与以下所选设备配对："</string>
+<string name="bluetooth_not_found">"未找到任何兼容设备"</string>
+<string name="bluetooth_searching">"正在搜寻设备…&lt;link&gt;获取帮助&lt;/link&gt;"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;获取帮助&lt;/link1&gt;或&lt;link2&gt;重新扫描&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Chrome 需要拥有位置信息使用权才能扫描设备。&lt;services_link&gt;此设备的位置信息使用权已被停用&lt;/services_link&gt;。"</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Chrome 需要拥有位置信息使用权才能扫描设备。请&lt;permission_link&gt;更新权限&lt;/permission_link&gt;。&lt;services_link&gt;此设备的位置信息使用权也已被停用&lt;/services_link&gt;。"</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome 需要获得相应权限，才能搜寻附近的设备。&lt;permission_link&gt;更新权限&lt;/permission_link&gt;。"</string>
+<string name="bluetooth_need_location_permission">"Chrome 需要拥有位置信息权限才能扫描设备。&lt;permission_link&gt;更新权限&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;获取帮助&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome 无法开启蓝牙适配器"</string>
+<string name="bluetooth_adapter_off">"请&lt;link&gt;开启蓝牙&lt;/link&gt;以允许配对"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s 想搜索附近的蓝牙设备，并发现了以下设备："</string>
+<string name="bluetooth_scanning_device_unknown">"未知或不支持的设备 (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

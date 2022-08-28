@@ -15,11 +15,11 @@ import org.chromium.url.GURL;
 class PaymentManifestParserJni implements PaymentManifestParser.Natives {
   private static PaymentManifestParser.Natives testInstance;
 
-  public static final JniStaticTestMocker<PaymentManifestParser.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.payments.PaymentManifestParser.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<PaymentManifestParser.Natives> TEST_HOOKS = new JniStaticTestMocker<PaymentManifestParser.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.components.payments.PaymentManifestParser.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        PaymentManifestParser.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

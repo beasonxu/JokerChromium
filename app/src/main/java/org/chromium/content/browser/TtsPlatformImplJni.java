@@ -12,7 +12,7 @@ import org.chromium.base.natives.GEN_JNI;
 class TtsPlatformImplJni implements TtsPlatformImpl.Natives {
   private static TtsPlatformImpl.Natives testInstance;
 
-  public static final JniStaticTestMocker<TtsPlatformImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<TtsPlatformImpl.Natives>() {
+  public static final JniStaticTestMocker<TtsPlatformImpl.Natives> TEST_HOOKS = new JniStaticTestMocker<TtsPlatformImpl.Natives>() {
     @Override
     public void setInstanceForTesting(TtsPlatformImpl.Natives instance) {
       if (!GEN_JNI.TESTING_ENABLED) {

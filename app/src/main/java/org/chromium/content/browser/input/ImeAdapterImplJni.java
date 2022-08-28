@@ -16,7 +16,7 @@ import org.chromium.content_public.browser.WebContents;
 class ImeAdapterImplJni implements ImeAdapterImpl.Natives {
   private static ImeAdapterImpl.Natives testInstance;
 
-  public static final JniStaticTestMocker<ImeAdapterImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<ImeAdapterImpl.Natives>() {
+  public static final JniStaticTestMocker<ImeAdapterImpl.Natives> TEST_HOOKS = new JniStaticTestMocker<ImeAdapterImpl.Natives>() {
     @Override
     public void setInstanceForTesting(
         ImeAdapterImpl.Natives instance) {

@@ -83,6 +83,7 @@
         <entry key="app/src/main/res_photo_picker/drawable/ic_photo_camera_grey.xml" value="0.1" />
         <entry key="app/src/main/res_photo_picker/layout/video_player.xml" value="0.1" />
         <entry key="app/src/main/res_share/layout/share_dialog_item.xml" value="0.1" />
+        <entry key="app/src/main/res_signin/drawable/logo_avatar_anonymous.xml" value="0.1" />
         <entry key="app/src/main/res_signin/layout/personalized_signin_promo_view_header.xml" value="0.1" />
         <entry key="app/src/main/res_site_setting/layout/four_state_cookie_settings_preference.xml" value="0.1" />
         <entry key="app/src/main/res_site_setting/xml/single_website_preferences.xml" value="0.8145161290322581" />

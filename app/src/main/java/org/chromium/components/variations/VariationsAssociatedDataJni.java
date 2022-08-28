@@ -13,11 +13,11 @@ import org.chromium.base.natives.GEN_JNI;
 class VariationsAssociatedDataJni implements VariationsAssociatedData.Natives {
   private static VariationsAssociatedData.Natives testInstance;
 
-  public static final JniStaticTestMocker<VariationsAssociatedData.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.variations.VariationsAssociatedData.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<VariationsAssociatedData.Natives> TEST_HOOKS = new JniStaticTestMocker<VariationsAssociatedData.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.components.variations.VariationsAssociatedData.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        VariationsAssociatedData.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

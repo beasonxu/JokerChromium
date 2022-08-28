@@ -14,7 +14,7 @@ import org.chromium.base.natives.GEN_JNI;
 class RenderWidgetHostViewImplJni implements RenderWidgetHostViewImpl.Natives {
   private static RenderWidgetHostViewImpl.Natives testInstance;
 
-  public static final JniStaticTestMocker<RenderWidgetHostViewImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<RenderWidgetHostViewImpl.Natives>() {
+  public static final JniStaticTestMocker<RenderWidgetHostViewImpl.Natives> TEST_HOOKS = new JniStaticTestMocker<RenderWidgetHostViewImpl.Natives>() {
     @Override
     public void setInstanceForTesting(
         RenderWidgetHostViewImpl.Natives instance) {

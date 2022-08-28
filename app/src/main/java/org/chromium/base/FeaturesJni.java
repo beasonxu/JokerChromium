@@ -1,10 +1,11 @@
 package org.chromium.base;
 
+import java.lang.Override;
+import java.lang.String;
+import javax.annotation.Generated;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.annotations.MainDex;
 import org.chromium.base.natives.GEN_JNI;
-
-import javax.annotation.Generated;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @MainDex

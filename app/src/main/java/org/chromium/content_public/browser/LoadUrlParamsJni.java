@@ -13,7 +13,7 @@ import org.chromium.base.natives.GEN_JNI;
 class LoadUrlParamsJni implements LoadUrlParams.Natives {
   private static LoadUrlParams.Natives testInstance;
 
-  public static final JniStaticTestMocker<LoadUrlParams.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<LoadUrlParams.Natives>() {
+  public static final JniStaticTestMocker<LoadUrlParams.Natives> TEST_HOOKS = new JniStaticTestMocker<LoadUrlParams.Natives>() {
     @Override
     public void setInstanceForTesting(
         LoadUrlParams.Natives instance) {

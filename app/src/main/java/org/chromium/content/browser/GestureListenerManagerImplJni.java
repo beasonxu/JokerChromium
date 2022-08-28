@@ -13,7 +13,7 @@ import org.chromium.content.browser.webcontents.WebContentsImpl;
 class GestureListenerManagerImplJni implements GestureListenerManagerImpl.Natives {
   private static GestureListenerManagerImpl.Natives testInstance;
 
-  public static final JniStaticTestMocker<GestureListenerManagerImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<GestureListenerManagerImpl.Natives>() {
+  public static final JniStaticTestMocker<GestureListenerManagerImpl.Natives> TEST_HOOKS = new JniStaticTestMocker<GestureListenerManagerImpl.Natives>() {
     @Override
     public void setInstanceForTesting(
         GestureListenerManagerImpl.Natives instance) {

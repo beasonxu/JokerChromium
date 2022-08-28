@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s ñééðš þérmîššîöñ ţö åççéšš ýöûr çåmérå ţö çréåţé å 3Ð måþ öƒ ýöûr šûrröûñðîñĝš. - one two three four five six seven eight nine ten - one two three four five"</string>
+<string name="infobar_missing_camera_permission_text">"%1$s ñééðš þérmîššîöñ ţö åççéšš ýöûr çåmérå ƒör ţĥîš šîţé. - one two three four five six seven eight nine ten"</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s ñééðš þérmîššîöñ ţö åççéšš ýöûr mîçröþĥöñé ƒör ţĥîš šîţé. - one two three four five six seven eight nine ten"</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s ñééðš þérmîššîöñ ţö åççéšš ýöûr çåmérå åñð mîçröþĥöñé ƒör ţĥîš šîţé. - one two three four five six seven eight nine ten - one two"</string>
+<string name="infobar_missing_location_permission_text">"%1$s ñééðš åççéšš ţö ýöûr ļöçåţîöñ ţö šĥåré ýöûr ļöçåţîöñ ŵîţĥ ţĥîš šîţé. - one two three four five six seven eight nine ten - one two three"</string>
+<string name="infobar_update_permissions_button_text">"Çöñţîñûé - one"</string>
+<string name="nfc_disabled_on_device_message">"Ţö çöñţîñûé, ţûrñ öñ ÑFÇ îñ Åñðröîð šéţţîñĝš - one two three four five six seven eight"</string>
+<string name="nfc_prompt_turn_on">"Ţûrñ öñ - one two"</string>
+<string name="overlay_detected_dialog_title">"Ţĥîš šîţé çåñ’ţ åšķ ƒör ýöûr þérmîššîöñ - one two three four five six seven"</string>
+<string name="overlay_detected_dialog_message">"Çļöšé åñý bûbbļéš ör övérļåýš ƒröm öţĥér åþþš. Ţĥéñ, ţrý åĝåîñ. - one two three four five six seven eight nine ten - one"</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Ĝéţ ĥéļþ&lt;/link&gt; - one two three four"</string>
+<string name="bluetooth_confirm_button">"Þåîr - one"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Šîĝñåļ Šţréñĝţĥ Ļévéļ: %d bår - one two three four"</item>
+  <item quantity="other">"Šîĝñåļ Šţréñĝţĥ Ļévéļ: %d bårš - one two three four"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Çöññéçţéð Ðévîçé - one two"</string>
+<string name="bluetooth_dialog_title">"%1$s ŵåñţš ţö þåîr - one two three four"</string>
+<string name="bluetooth_not_found">"Ñö çömþåţîbļé ðévîçéš ƒöûñð - one two three four"</string>
+<string name="bluetooth_searching">"&lt;link&gt;Ĝéţ ĥéļþ&lt;/link&gt; ŵĥîļé šçåññîñĝ ƒör ðévîçéš… - one two three four five six seven eight"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Ĝéţ ĥéļþ&lt;/link1&gt; ör &lt;link2&gt;ré-šçåñ&lt;/link2&gt; - one two three four five six seven eight"</string>
+<string name="bluetooth_need_location_services_on">"Çĥrömé ñééðš ļöçåţîöñ åççéšš ţö šçåñ ƒör ðévîçéš. Ļöçåţîöñ åççéšš îš &lt;services_link&gt;ţûrñéð öƒƒ ƒör ţĥîš ðévîçé&lt;/services_link&gt;. - one two three four five six seven eight nine ten - one two three four five six seven eight"</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Çĥrömé ñééðš ļöçåţîöñ åççéšš ţö šçåñ ƒör ðévîçéš. &lt;permission_link&gt;Ûþðåţé þérmîššîöñš&lt;/permission_link&gt;. Ļöçåţîöñ åççéšš îš åļšö &lt;services_link&gt;ţûrñéð öƒƒ ƒör ţĥîš ðévîçé&lt;/services_link&gt;. - one two three four five six seven eight nine ten - one two three four five six seven eight nine ten - one two three"</string>
+<string name="bluetooth_need_nearby_devices_permission">"Çĥrömé ñééðš þérmîššîöñ ţö šçåñ ƒör ñéårbý ðévîçéš. &lt;permission_link&gt;Ûþðåţé þérmîššîöñš&lt;/permission_link&gt;. - one two three four five six seven eight nine ten - one two"</string>
+<string name="bluetooth_need_location_permission">"Çĥrömé ñééðš ļöçåţîöñ åççéšš ţö šçåñ ƒör ðévîçéš. &lt;permission_link&gt;Ûþðåţé þérmîššîöñš&lt;/permission_link&gt; - one two three four five six seven eight nine ten - one two"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Ĝéţ ĥéļþ&lt;/link&gt; - one two three four"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Çĥrömé îš ûñåbļé ţö ţûrñ öñ Bļûéţööţĥ åðåþţér - one two three four five six seven eight"</string>
+<string name="bluetooth_adapter_off">"&lt;link&gt;Ţûrñ öñ Bļûéţööţĥ&lt;/link&gt; ţö åļļöŵ þåîrîñĝ - one two three four five six seven eight"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s ŵåñţš ţö šçåñ ƒör ñéårbý Bļûéţööţĥ ðévîçéš. Ţĥé ƒöļļöŵîñĝ ðévîçéš ĥåvé bééñ ƒöûñð: - one two three four five six seven eight nine ten - one two three four"</string>
+<string name="bluetooth_scanning_device_unknown">"Ûñķñöŵñ ör ûñšûþþörţéð ðévîçé (%1$s) - one two three four five"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s) - one two"</string>
+</resources>

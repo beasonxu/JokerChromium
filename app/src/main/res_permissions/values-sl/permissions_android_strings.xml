@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s potrebuje dovoljenje za dostop do fotoaparata zaradi ustvarjanja tridimenzionalnega zemljevida okolice."</string>
+<string name="infobar_missing_camera_permission_text">"%1$s potrebuje dovoljenje za dostop do fotoaparata za to spletno mesto."</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s potrebuje dovoljenje za dostop do mikrofona za to spletno mesto."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s potrebuje dovoljenje za dostop do fotoaparata in mikrofona za to spletno mesto."</string>
+<string name="infobar_missing_location_permission_text">"%1$s potrebuje dostop do vaše lokacije, da jo bo lahko delil s tem spletnim mestom."</string>
+<string name="infobar_update_permissions_button_text">"Naprej"</string>
+<string name="nfc_disabled_on_device_message">"Če želite nadaljevati, v nastavitvah za Android vklopite tehnologijo NFC"</string>
+<string name="nfc_prompt_turn_on">"Vklopi"</string>
+<string name="overlay_detected_dialog_title">"To spletno mesto ne more zahtevati vašega dovoljenja"</string>
+<string name="overlay_detected_dialog_message">"Zaprite morebitne oblačke ali prekrivanja drugih aplikacij. Nato poskusite znova."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Poiščite pomoč&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Seznani"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Moč signala: %d črtica"</item>
+  <item quantity="two">"Moč signala: %d črtici"</item>
+  <item quantity="few">"Moč signala: %d črtice"</item>
+  <item quantity="other">"Moč signala: %d črtic"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Povezana naprava"</string>
+<string name="bluetooth_dialog_title">"%1$s želi opraviti seznanitev"</string>
+<string name="bluetooth_not_found">"Ni združljivih naprav"</string>
+<string name="bluetooth_searching">"&lt;link&gt;Poiščite pomoč&lt;/link&gt; med iskanjem naprav …"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Poiščite pomoč&lt;/link1&gt; ali &lt;link2&gt;znova iščite&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Chrome za iskanje naprav potrebuje dostop do lokacije. Dostop do lokacije &lt;services_link&gt;je izklopljen za to napravo&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Chrome za iskanje naprav potrebuje dostop do lokacije. &lt;permission_link&gt;Posodobite dovoljenja&lt;/permission_link&gt;. Dostop do lokacije je prav tako &lt;services_link&gt;izklopljen za to napravo&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome potrebuje dovoljenje za iskanje naprav v bližini. &lt;permission_link&gt;Posodobitev dovoljenj&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"Chrome za iskanje naprav potrebuje dostop do lokacije. &lt;permission_link&gt;Posodobite dovoljenja&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Poiščite pomoč&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome ne more vklopiti vmesnika za Bluetooth"</string>
+<string name="bluetooth_adapter_off">"&lt;link&gt;Vklopite Bluetooth&lt;/link&gt;, če želite dovoliti seznanjanje"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s želi iskati naprave Bluetooth v bližini. Najdene so bile te naprave:"</string>
+<string name="bluetooth_scanning_device_unknown">"Neznana ali nepodprta naprava (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

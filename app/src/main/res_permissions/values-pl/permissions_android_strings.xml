@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"Aby utworzyć mapę 3D Twojego otoczenia, %1$s potrzebuje uprawnień dostępu do aparatu."</string>
+<string name="infobar_missing_camera_permission_text">"%1$s potrzebuje uprawnień dostępu do aparatu na tej stronie."</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s potrzebuje uprawnień dostępu do mikrofonu na tej stronie."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s potrzebuje uprawnień dostępu do aparatu i mikrofonu na tej stronie."</string>
+<string name="infobar_missing_location_permission_text">"%1$s musi mieć dostęp do Twojej lokalizacji, żeby udostępnić ją tej stronie"</string>
+<string name="infobar_update_permissions_button_text">"Dalej"</string>
+<string name="nfc_disabled_on_device_message">"Aby kontynuować, włącz NFC w ustawieniach Androida"</string>
+<string name="nfc_prompt_turn_on">"Włącz"</string>
+<string name="overlay_detected_dialog_title">"Ta strona nie może prosić o Twoją zgodę"</string>
+<string name="overlay_detected_dialog_message">"Zamknij wszystkie dymki i nakładki z innych aplikacji. Następnie spróbuj ponownie."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Poproś o pomoc&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Sparuj"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Poziom siły sygnału: %d słupek"</item>
+  <item quantity="few">"Poziom siły sygnału: %d słupki"</item>
+  <item quantity="many">"Poziom siły sygnału: %d słupków"</item>
+  <item quantity="other">"Poziom siły sygnału: %d słupka"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Połączone urządzenie"</string>
+<string name="bluetooth_dialog_title">"%1$s chce się sparować"</string>
+<string name="bluetooth_not_found">"Nie znaleziono zgodnych urządzeń"</string>
+<string name="bluetooth_searching">"&lt;link&gt;Pomoc&lt;/link&gt; w trakcie wyszukiwania urządzeń…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Skorzystaj z pomocy&lt;/link1&gt; lub &lt;link2&gt;skanuj ponownie&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Aby wyszukać urządzenia, Chrome potrzebuje dostępu do lokalizacji. Dostęp jest &lt;services_link&gt;wyłączony na tym urządzeniu&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Aby wyszukać urządzenia, Chrome potrzebuje dostępu do lokalizacji. &lt;permission_link&gt;Zwiększ uprawnienia&lt;/permission_link&gt;. Dostęp do lokalizacji jest &lt;services_link&gt;wyłączony na tym urządzeniu&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome potrzebuje uprawnień do wyszukiwania urządzeń w pobliżu. &lt;permission_link&gt;Zmień uprawnienia&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission">"Aby wyszukać urządzenia, Chrome potrzebuje dostępu do lokalizacji. &lt;permission_link&gt;Zwiększ uprawnienia&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Poproś o pomoc&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome nie może włączyć adaptera Bluetooth"</string>
+<string name="bluetooth_adapter_off">"&lt;link&gt;Włącz Bluetooth&lt;/link&gt;, by umożliwić parowanie"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s chce wyszukać urządzenia Bluetooth w pobliżu. Znaleziono te urządzenia:"</string>
+<string name="bluetooth_scanning_device_unknown">"Nieznane lub nieobsługiwane urządzenie (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

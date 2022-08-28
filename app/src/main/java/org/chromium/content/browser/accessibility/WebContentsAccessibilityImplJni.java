@@ -16,7 +16,7 @@ import org.chromium.content_public.browser.WebContents;
 class WebContentsAccessibilityImplJni implements WebContentsAccessibilityImpl.Natives {
   private static WebContentsAccessibilityImpl.Natives testInstance;
 
-  public static final JniStaticTestMocker<WebContentsAccessibilityImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<WebContentsAccessibilityImpl.Natives>() {
+  public static final JniStaticTestMocker<WebContentsAccessibilityImpl.Natives> TEST_HOOKS = new JniStaticTestMocker<WebContentsAccessibilityImpl.Natives>() {
     @Override
     public void setInstanceForTesting(
         WebContentsAccessibilityImpl.Natives instance) {

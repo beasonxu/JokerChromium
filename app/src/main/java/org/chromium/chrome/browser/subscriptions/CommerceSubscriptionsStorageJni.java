@@ -1,15 +1,16 @@
 package org.chromium.chrome.browser.subscriptions;
 
+import java.lang.Override;
+import java.lang.Runnable;
+import java.lang.String;
+import java.util.List;
+import javax.annotation.Generated;
 import org.chromium.base.Callback;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.content_public.browser.BrowserContextHandle;
-
-import java.util.List;
-
-import javax.annotation.Generated;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")

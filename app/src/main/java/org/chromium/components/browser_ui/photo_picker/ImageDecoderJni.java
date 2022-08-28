@@ -1,11 +1,11 @@
 package org.chromium.components.browser_ui.photo_picker;
 
+import java.lang.Override;
+import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
-
-import javax.annotation.Generated;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
@@ -25,7 +25,6 @@ class ImageDecoderJni implements ImageDecoder.Natives {
 
   @Override
   public void initializePhotoPickerSandbox() {
-    GEN_JNI.org_chromium_components_browser_1ui_photo_1picker_ImageDecoder_initializePhotoPickerSandbox();
   }
 
   public static ImageDecoder.Natives get() {

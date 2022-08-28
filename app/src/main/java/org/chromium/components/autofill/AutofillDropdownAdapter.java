@@ -24,6 +24,7 @@ import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.view.MarginLayoutParamsCompat;
 import androidx.core.view.ViewCompat;
 
+import org.chromium.chrome.R;
 import org.chromium.ui.DropdownDividerDrawable;
 import org.chromium.ui.DropdownItem;
 

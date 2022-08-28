@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"మీ పరిసరాల 3D మ్యాప్‌ను క్రియేట్ చేయడానికి %1$s‌కు మీ కెమెరాను యాక్సెస్ చేసే అనుమతి కావాలి."</string>
+<string name="infobar_missing_camera_permission_text">"ఈ సైట్ కోసం మీ కెమెరాను యాక్సెస్ చేయడానికి %1$s‌కు అనుమతి అవసరం."</string>
+<string name="infobar_missing_microphone_permission_text">"ఈ సైట్ కోసం మీ మైక్రోఫోన్‌ను యాక్సెస్ చేయడానికి %1$s‌కు అనుమతి అవసరం."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"ఈ సైట్ కోసం మీ కెమెరా, మైక్రోఫోన్‌ను యాక్సెస్ చేయడానికి %1$s‌కు అనుమతి అవసరం."</string>
+<string name="infobar_missing_location_permission_text">"ఈ సైట్‌తో మీ లొకేషన్‌ను షేర్ చేయడానికి %1$s‌కు మీ లొకేషన్ యాక్సెస్ అవసరం."</string>
+<string name="infobar_update_permissions_button_text">"కొనసాగించు"</string>
+<string name="nfc_disabled_on_device_message">"కొనసాగించడానికి, Android సెట్టింగ్‌లలో NFCని ఆన్ చేయండి"</string>
+<string name="nfc_prompt_turn_on">"ఆన్ చేయండి"</string>
+<string name="overlay_detected_dialog_title">"మీ అనుమతిని అడగడం ఈ సైట్‌కు సాధ్యం కాదు"</string>
+<string name="overlay_detected_dialog_message">"ఇతర యాప్‌ల బబుల్‌లను లేదా ఓవర్‌లేలను మూసివేయండి. ఆపై, మళ్లీ ట్రై చేయండి."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;సహాయం పొందండి&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"జత చేయి"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"సిగ్నల్ సామర్థ్యం స్థాయి: %d బార్"</item>
+  <item quantity="other">"సిగ్నల్ సామర్థ్యం స్థాయి: %d బార్‌లు"</item>
+</plurals>
+<string name="bluetooth_device_connected">"కనెక్ట్ చేసిన డివైజ్"</string>
+<string name="bluetooth_dialog_title">"%1$s దీనితో జత చేయాలనుకుంటోంది"</string>
+<string name="bluetooth_not_found">"అనుకూల పరికరాలు ఏవీ కనుగొనబడలేదు"</string>
+<string name="bluetooth_searching">"పరికరాల కోసం స్కాన్ చేస్తున్నప్పుడు &lt;link&gt;సహాయం పొందండి&lt;/link&gt;…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;సహాయం పొందండి&lt;/link1&gt; లేదా &lt;link2&gt;మళ్లీ స్కాన్ చేయండి&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"పరికరాల కోసం స్కాన్ చేయడానికి Chromeకు స్థాన యాక్సెస్ అవసరం. స్థాన యాక్సెస్ &lt;services_link&gt;ఈ పరికరానికి ఆఫ్ చేయబడింది&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"పరికరాల కోసం స్కాన్ చేయడానికి Chromeకు స్థాన యాక్సెస్ అవసరం. &lt;permission_link&gt;అనుమతులను అప్‌డేట్ చేయండి&lt;/permission_link&gt;. అలాగే స్థాన యాక్సెస్ &lt;services_link&gt;ఈ పరికరానికి ఆఫ్ చేయబడింది&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"సమీపంలోని పరికరాల కోసం స్కాన్ చేయడానికి Chromeకు అనుమతి అవసరం. &lt;permission_link&gt;అనుమతులను అప్‌డేట్ చేయండి&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"పరికరాల కోసం స్కాన్ చేయడానికి Chromeకు స్థాన యాక్సెస్ అవసరం. &lt;permission_link&gt;అనుమతులను అప్‌డేట్ చేయండి&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;సహాయం పొందండి&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome బ్లూటూత్ అడాప్టర్‌ను ఆన్ చేయలేకపోయింది"</string>
+<string name="bluetooth_adapter_off">"జత చేయడాన్ని అనుమతించడానికి &lt;link&gt;బ్లూటూత్‌ను ఆన్ చేయండి&lt;/link&gt;"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s సమీపంలోని బ్లూటూత్ పరికరాల కోసం స్కాన్ చేయాలనుకుంటోంది. కింది పరికరాలు కనుగొనబడ్డాయి:"</string>
+<string name="bluetooth_scanning_device_unknown">"తెలియని లేదా మద్దతు లేని పరికరం (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

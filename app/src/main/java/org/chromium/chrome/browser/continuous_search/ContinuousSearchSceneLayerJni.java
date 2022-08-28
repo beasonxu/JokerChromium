@@ -1,13 +1,13 @@
 package org.chromium.chrome.browser.continuous_search;
 
+import java.lang.Override;
+import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.chrome.browser.layouts.scene_layer.SceneLayer;
 import org.chromium.ui.resources.ResourceManager;
-
-import javax.annotation.Generated;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")

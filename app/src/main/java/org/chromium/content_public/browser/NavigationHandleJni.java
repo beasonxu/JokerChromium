@@ -13,7 +13,7 @@ import org.chromium.base.natives.GEN_JNI;
 class NavigationHandleJni implements NavigationHandle.Natives {
   private static NavigationHandle.Natives testInstance;
 
-  public static final JniStaticTestMocker<NavigationHandle.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<NavigationHandle.Natives>() {
+  public static final JniStaticTestMocker<NavigationHandle.Natives> TEST_HOOKS = new JniStaticTestMocker<NavigationHandle.Natives>() {
     @Override
     public void setInstanceForTesting(
         NavigationHandle.Natives instance) {

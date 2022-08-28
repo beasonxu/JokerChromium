@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s skal have adgangstilladelse til dit kamera for at oprette et 3D-kort over dine omgivelser."</string>
+<string name="infobar_missing_camera_permission_text">"%1$s skal have tilladelse til at bruge dit kamera på dette website."</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s skal have tilladelse til at bruge din mikrofon på dette website."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s skal have tilladelse til at bruge dit kamera og din mikrofon på dette website."</string>
+<string name="infobar_missing_location_permission_text">"%1$s skal have adgang til din lokation for at dele din lokation med dette website."</string>
+<string name="infobar_update_permissions_button_text">"Fortsæt"</string>
+<string name="nfc_disabled_on_device_message">"Aktivér NFC i Android-indstillingerne for at fortsætte"</string>
+<string name="nfc_prompt_turn_on">"Aktivér"</string>
+<string name="overlay_detected_dialog_title">"Dette website kan ikke anmode om din tilladelse"</string>
+<string name="overlay_detected_dialog_message">"Luk alle bobler og overlejringer fra andre apps. Prøv derefter igen."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Få hjælp&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Start parring"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Signalstyrkeniveau: %d søjle"</item>
+  <item quantity="other">"Signalstyrkeniveau: %d søjler"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Tilsluttet enhed"</string>
+<string name="bluetooth_dialog_title">"%1$s vil gerne parre"</string>
+<string name="bluetooth_not_found">"Der blev ikke fundet nogen kompatible enheder"</string>
+<string name="bluetooth_searching">"&lt;link&gt;Få hjælp&lt;/link&gt;, mens der scannes efter enheder…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Få hjælp&lt;/link1&gt;, eller &lt;link2&gt;scan igen&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Chrome skal have lokationsadgang for at kunne scanne efter enheder. Lokationsadgang er &lt;services_link&gt;slået fra på denne enhed&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Chrome skal have lokationsadgang for at kunne scanne efter enheder. &lt;permission_link&gt;Opdater tilladelser&lt;/permission_link&gt;. Lokationsadgang er også &lt;services_link&gt;slået fra på denne enhed&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome kræver tilladelse til at scanne efter enheder i nærheden. &lt;permission_link&gt;Opdater tilladelser&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"Chrome skal bruge lokationsadgang for at kunne scanne efter enheder. &lt;permission_link&gt;Opdater tilladelser&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Få hjælp&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome kan ikke slå Bluetooth-adapteren til"</string>
+<string name="bluetooth_adapter_off">"&lt;link&gt;Slå Bluetooth til&lt;/link&gt; for at tillade parring"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s vil gerne søge efter Bluetooth-enheder i nærheden. Følgende enheder blev fundet:"</string>
+<string name="bluetooth_scanning_device_unknown">"Ukendt eller ikke-understøttet enhed (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

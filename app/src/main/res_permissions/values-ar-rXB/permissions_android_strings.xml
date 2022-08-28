@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s ‮needs‬ ‮permission‬ ‮to‬ ‮access‬ ‮your‬ ‮camera‬ ‮to‬ ‮create‬ ‮a‬ 3‮D‬ ‮map‬ ‮of‬ ‮your‬ ‮surroundings‬."</string>
+<string name="infobar_missing_camera_permission_text">"%1$s ‮needs‬ ‮permission‬ ‮to‬ ‮access‬ ‮your‬ ‮camera‬ ‮for‬ ‮this‬ ‮site‬."</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s ‮needs‬ ‮permission‬ ‮to‬ ‮access‬ ‮your‬ ‮microphone‬ ‮for‬ ‮this‬ ‮site‬."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s ‮needs‬ ‮permission‬ ‮to‬ ‮access‬ ‮your‬ ‮camera‬ ‮and‬ ‮microphone‬ ‮for‬ ‮this‬ ‮site‬."</string>
+<string name="infobar_missing_location_permission_text">"%1$s ‮needs‬ ‮access‬ ‮to‬ ‮your‬ ‮location‬ ‮to‬ ‮share‬ ‮your‬ ‮location‬ ‮with‬ ‮this‬ ‮site‬."</string>
+<string name="infobar_update_permissions_button_text">"‮Continue‬"</string>
+<string name="nfc_disabled_on_device_message">"‮To‬ ‮continue‬, ‮turn‬ ‮on‬ ‮NFC‬ ‮in‬ ‮Android‬ ‮settings‬"</string>
+<string name="nfc_prompt_turn_on">"‮Turn‬ ‮on‬"</string>
+<string name="overlay_detected_dialog_title">"‮This‬ ‮site‬ ‮can‬’‮t‬ ‮ask‬ ‮for‬ ‮your‬ ‮permission‬"</string>
+<string name="overlay_detected_dialog_message">"‮Close‬ ‮any‬ ‮bubbles‬ ‮or‬ ‮overlays‬ ‮from‬ ‮other‬ ‮apps‬. ‮Then‬, ‮try‬ ‮again‬."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;‮Get‬ ‮help‬&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"‮Pair‬"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"‮Signal‬ ‮Strength‬ ‮Level‬: %d ‮bar‬"</item>
+  <item quantity="other">"‮Signal‬ ‮Strength‬ ‮Level‬: %d ‮bars‬"</item>
+</plurals>
+<string name="bluetooth_device_connected">"‮Connected‬ ‮Device‬"</string>
+<string name="bluetooth_dialog_title">"%1$s ‮wants‬ ‮to‬ ‮pair‬"</string>
+<string name="bluetooth_not_found">"‮No‬ ‮compatible‬ ‮devices‬ ‮found‬"</string>
+<string name="bluetooth_searching">"&lt;link&gt;‮Get‬ ‮help‬&lt;/link&gt; ‮while‬ ‮scanning‬ ‮for‬ ‮devices‬…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;‮Get‬ ‮help‬&lt;/link1&gt; ‮or‬ &lt;link2&gt;‮re‬-‮scan‬&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"‮Chrome‬ ‮needs‬ ‮location‬ ‮access‬ ‮to‬ ‮scan‬ ‮for‬ ‮devices‬. ‮Location‬ ‮access‬ ‮is‬ &lt;services_link&gt;‮turned‬ ‮off‬ ‮for‬ ‮this‬ ‮device‬&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"‮Chrome‬ ‮needs‬ ‮location‬ ‮access‬ ‮to‬ ‮scan‬ ‮for‬ ‮devices‬. &lt;permission_link&gt;‮Update‬ ‮permissions‬&lt;/permission_link&gt;. ‮Location‬ ‮access‬ ‮is‬ ‮also‬ &lt;services_link&gt;‮turned‬ ‮off‬ ‮for‬ ‮this‬ ‮device‬&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"‮Chrome‬ ‮needs‬ ‮permission‬ ‮to‬ ‮scan‬ ‮for‬ ‮nearby‬ ‮devices‬. &lt;permission_link&gt;‮Update‬ ‮permissions‬&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"‮Chrome‬ ‮needs‬ ‮location‬ ‮access‬ ‮to‬ ‮scan‬ ‮for‬ ‮devices‬. &lt;permission_link&gt;‮Update‬ ‮permissions‬&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;‮Get‬ ‮help‬&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"‮Chrome‬ ‮is‬ ‮unable‬ ‮to‬ ‮turn‬ ‮on‬ ‮Bluetooth‬ ‮adapter‬"</string>
+<string name="bluetooth_adapter_off">"&lt;link&gt;‮Turn‬ ‮on‬ ‮Bluetooth‬&lt;/link&gt; ‮to‬ ‮allow‬ ‮pairing‬"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s ‮wants‬ ‮to‬ ‮scan‬ ‮for‬ ‮nearby‬ ‮Bluetooth‬ ‮devices‬. ‮The‬ ‮following‬ ‮devices‬ ‮have‬ ‮been‬ ‮found‬:"</string>
+<string name="bluetooth_scanning_device_unknown">"‮Unknown‬ ‮or‬ ‮unsupported‬ ‮device‬ (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s necesita permiso para acceder á cámara co fin de crear un mapa 3D do que te rodea."</string>
+<string name="infobar_missing_camera_permission_text">"%1$s necesita permiso para que este sitio poida acceder á cámara."</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s necesita permiso para que este sitio poida acceder ao micrófono."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s necesita permiso para que este sitio poida acceder á cámara e ao micrófono."</string>
+<string name="infobar_missing_location_permission_text">"%1$s necesita acceder á túa localización para compartila con este sitio."</string>
+<string name="infobar_update_permissions_button_text">"Continuar"</string>
+<string name="nfc_disabled_on_device_message">"Para continuar, activa a NFC na configuración de Android"</string>
+<string name="nfc_prompt_turn_on">"Activar"</string>
+<string name="overlay_detected_dialog_title">"Este sitio non pode pedirche permiso"</string>
+<string name="overlay_detected_dialog_message">"Pecha todas as burbullas ou superposicións doutras aplicacións. Despois, téntao de novo."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Obter axuda&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Sincronizar"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Nivel de intensidade do sinal: %d barra"</item>
+  <item quantity="other">"Nivel de intensidade do sinal: %d barras"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Dispositivo conectado"</string>
+<string name="bluetooth_dialog_title">"%1$s quere sincronizarse"</string>
+<string name="bluetooth_not_found">"Non se atoparon dispositivos compatibles"</string>
+<string name="bluetooth_searching">"Podes &lt;link&gt;obter axuda&lt;/link&gt; mentres se buscan dispositivos…"</string>
+<string name="bluetooth_not_seeing_it_idle">"Podes &lt;link1&gt;obter axuda&lt;/link1&gt; ou &lt;link2&gt;volver buscar&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Chrome necesita acceder á localización para buscar dispositivos. O acceso á localización deste dispositivo está &lt;services_link&gt;desactivado&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Chrome necesita acceder á localización para buscar dispositivos. &lt;permission_link&gt;Actualizar permisos&lt;/permission_link&gt;. O acceso á localización deste dispositivo está &lt;services_link&gt;desactivado&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome necesita permiso para buscar dispositivos próximos. &lt;permission_link&gt;Actualizar permisos&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"Chrome precisa acceder á localización para analizar dispositivos. &lt;permission_link&gt;Actualizar permisos&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Obter axuda&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome non é capaz de activar o adaptador de Bluetooth"</string>
+<string name="bluetooth_adapter_off">"&lt;link&gt;Activa o Bluetooth&lt;/link&gt; para permitir a sincronización"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s quere buscar dispositivos Bluetooth cerca. Atopáronse os seguintes dispositivos:"</string>
+<string name="bluetooth_scanning_device_unknown">"Dispositivo descoñecido ou non compatible (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

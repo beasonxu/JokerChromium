@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"तपाईं वरपरको ठाउँको 3D नक्सा बनाउन %1$s लाई तपाईंको क्यामेरा प्रयोग गर्ने अनुमति दिनु पर्ने हुन्छ।"</string>
+<string name="infobar_missing_camera_permission_text">"यो साइटका हकमा %1$s लाई तपाईंको क्यामेरा प्रयोग गर्ने अनुमति दिनु पर्ने हुन्छ।"</string>
+<string name="infobar_missing_microphone_permission_text">"यो साइटका हकमा %1$s लाई तपाईंको माइक्रोफोन प्रयोग गर्ने अनुमति दिनु पर्ने हुन्छ।"</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"यो साइटका हकमा %1$s लाई तपाईंको क्यामेरा र माइक्रोफोन प्रयोग गर्ने अनुमति दिनु पर्ने हुन्छ।"</string>
+<string name="infobar_missing_location_permission_text">"यो साइटसँग तपाईंको लोकेसन सेयर गर्न %1$s लाई तपाईंको लोकेसन प्रयोग गर्ने अनुमति दिनु पर्ने हुन्छ।"</string>
+<string name="infobar_update_permissions_button_text">"जारी राख्नुहोस्"</string>
+<string name="nfc_disabled_on_device_message">"अगाडि बढ्न Android सम्बन्धी सेटिङमा गई NFC अन गर्नुहोस्"</string>
+<string name="nfc_prompt_turn_on">"अन गर्नुहोस्"</string>
+<string name="overlay_detected_dialog_title">"यो साइट तपाईंको अनुमति माग्न सक्दैन"</string>
+<string name="overlay_detected_dialog_message">"अन्य एपका सबै बबल वा ओभरले बन्द गर्नुहोस्। त्यसपछि, फेरि प्रयास गर्नुहोस्।"</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;मद्दत प्राप्त गर्नुहोस्&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"जोडा  बनाउनुहोस्"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"सङ्केतको क्षमता स्तर: %d बार"</item>
+  <item quantity="other">"सङ्केतको क्षमता स्तर: %d बारहरू"</item>
+</plurals>
+<string name="bluetooth_device_connected">"जडित यन्त्र"</string>
+<string name="bluetooth_dialog_title">"%1$s जोडा बनाउन चाहन्छ"</string>
+<string name="bluetooth_not_found">"कुनै पनि मिल्दाजुल्दा यन्त्र भेटिएनन्"</string>
+<string name="bluetooth_searching">"अन्य यन्त्रहरूलाई स्क्यान गर्दा &lt;link&gt;मद्दत प्राप्त गर्नुहोस्&lt;/link&gt;…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;मद्दत प्राप्त गर्नुहोस्&lt;/link1&gt; वा &lt;link2&gt;पुन:स्क्यान गर्नुहोस्&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"यन्त्रहरू स्क्यान गर्न Chrome लाई स्थान माथिको पहुँच चाहिन्छ। यस यन्त्रमा स्थान माथिको पहुँचलाई &lt;services_link&gt;निष्क्रिय पारिएको छ&lt;/services_link&gt;।"</string>
+<string name="bluetooth_need_location_permission_and_services_on">"यन्त्रहरू स्क्यान गर्न Chrome लाई स्थान माथिको पहुँच चाहिन्छ। &lt;permission_link&gt;अनुमतिहरूलाई अपडेट गर्नुहोस्&lt;/permission_link&gt;। यो डिभाइसमा स्थान माथिको पहुँचलाई पनि &lt;services_link&gt;निष्क्रिय पारिएको छ&lt;/services_link&gt;।"</string>
+<string name="bluetooth_need_nearby_devices_permission">"नजिकैका डिभाइसहरू स्क्यान गर्नका निम्ति Chrome लाई अनुमति दिनु पर्ने हुन्छ। &lt;permission_link&gt;अनुमति बदल्नुहोस्&lt;/permission_link&gt;।"</string>
+<string name="bluetooth_need_location_permission">"Chrome डिभाइसहरूको लागि स्क्यान गर्न स्थान पहुँच आवश्यक छ। &lt;permission_link&gt; अनुमतिहरू अपडेट गर्नुहोस्&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;मद्दत प्राप्त गर्नुहोस्&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome ले ब्लुटुथ एडाप्टरलाई सक्रिय गर्न सकेन"</string>
+<string name="bluetooth_adapter_off">"जोडा बनाउने प्रक्रियालाई अनुमति दिन &lt;link&gt;ब्लुटुथ&lt;/link&gt; लाई अन गर्नुहोस्"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s वरपरका ब्लुटुथ यन्त्रहरू खोज्न स्क्यान गर्न चाहन्छ। निम्न यन्त्रहरू फेला परेका छन्:"</string>
+<string name="bluetooth_scanning_device_unknown">"अज्ञात वा प्रयोग गर्न नमिल्ने यन्त्र (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

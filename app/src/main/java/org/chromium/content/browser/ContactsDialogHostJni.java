@@ -14,7 +14,7 @@ import org.chromium.base.natives.GEN_JNI;
 class ContactsDialogHostJni implements ContactsDialogHost.Natives {
   private static ContactsDialogHost.Natives testInstance;
 
-  public static final JniStaticTestMocker<ContactsDialogHost.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<ContactsDialogHost.Natives>() {
+  public static final JniStaticTestMocker<ContactsDialogHost.Natives> TEST_HOOKS = new JniStaticTestMocker<ContactsDialogHost.Natives>() {
     @Override
     public void setInstanceForTesting(
         ContactsDialogHost.Natives instance) {

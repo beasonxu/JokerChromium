@@ -13,11 +13,11 @@ import org.chromium.base.natives.GEN_JNI;
 class GeoLanguageProviderBridgeJni implements GeoLanguageProviderBridge.Natives {
   private static GeoLanguageProviderBridge.Natives testInstance;
 
-  public static final JniStaticTestMocker<GeoLanguageProviderBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.language.GeoLanguageProviderBridge.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<GeoLanguageProviderBridge.Natives> TEST_HOOKS = new JniStaticTestMocker<GeoLanguageProviderBridge.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.components.language.GeoLanguageProviderBridge.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        GeoLanguageProviderBridge.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

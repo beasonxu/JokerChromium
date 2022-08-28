@@ -13,7 +13,7 @@ import org.chromium.base.natives.GEN_JNI;
 class TextSuggestionHostJni implements TextSuggestionHost.Natives {
   private static TextSuggestionHost.Natives testInstance;
 
-  public static final JniStaticTestMocker<TextSuggestionHost.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<TextSuggestionHost.Natives>() {
+  public static final JniStaticTestMocker<TextSuggestionHost.Natives> TEST_HOOKS = new JniStaticTestMocker<TextSuggestionHost.Natives>() {
     @Override
     public void setInstanceForTesting(
         TextSuggestionHost.Natives instance) {

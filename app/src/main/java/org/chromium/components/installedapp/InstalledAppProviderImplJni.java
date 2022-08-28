@@ -16,11 +16,11 @@ import org.chromium.content_public.browser.BrowserContextHandle;
 class InstalledAppProviderImplJni implements InstalledAppProviderImpl.Natives {
   private static InstalledAppProviderImpl.Natives testInstance;
 
-  public static final JniStaticTestMocker<InstalledAppProviderImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.installedapp.InstalledAppProviderImpl.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<InstalledAppProviderImpl.Natives> TEST_HOOKS = new JniStaticTestMocker<InstalledAppProviderImpl.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.components.installedapp.InstalledAppProviderImpl.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        InstalledAppProviderImpl.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

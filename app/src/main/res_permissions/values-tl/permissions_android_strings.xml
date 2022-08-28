@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"Kailangan ng %1$s ng pahintulot na i-access ang iyong camera para gumawa ng 3D na mapa ng kapaligiran mo"</string>
+<string name="infobar_missing_camera_permission_text">"Kailangan ng %1$s ng pahintulot na i-access ang iyong camera para sa site na ito"</string>
+<string name="infobar_missing_microphone_permission_text">"Kailangan ng %1$s ng pahintulot na i-access ang iyong mikropono para sa site na ito"</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"Kailangan ng %1$s ng pahintulot na i-access ang iyong camera at mikropono para sa site na ito"</string>
+<string name="infobar_missing_location_permission_text">"Kailangan ng %1$s ng access sa iyong lokasyon para ibahagi ang lokasyon mo sa site na ito"</string>
+<string name="infobar_update_permissions_button_text">"Magpatuloy"</string>
+<string name="nfc_disabled_on_device_message">"Para magpatuloy, i-on ang NFC sa mga setting ng Android"</string>
+<string name="nfc_prompt_turn_on">"I-on"</string>
+<string name="overlay_detected_dialog_title">"Hindi puwedeng hingin ng site na ito ang iyong pahintulot"</string>
+<string name="overlay_detected_dialog_message">"Isara ang anumang bubble o overlay mula sa iba pang app. Pagkatapos ay subukan ulit."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Humingi ng tulong&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Ipares"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Antas ng Lakas ng Signal: %d bar"</item>
+  <item quantity="other">"Antas ng Lakas ng Signal: %d na bar"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Nakakonektang Device"</string>
+<string name="bluetooth_dialog_title">"Gustong makipagpares ng %1$s"</string>
+<string name="bluetooth_not_found">"Walang nahanap na tugmang device"</string>
+<string name="bluetooth_searching">"&lt;link&gt;Humingi ng tulong&lt;/link&gt; habang nag-ii-scan ng mga device…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Humingi ng tulong&lt;/link1&gt; o &lt;link2&gt;muling mag-scan&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Kailangan ng Chrome ng access sa lokasyon upang magkapag-scan ng mga device. Ang access sa lokasyon ay &lt;services_link&gt;naka-off para sa device na ito&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Kailangan ng Chrome ng access sa lokasyon upang makapag-scan ng mga device. &lt;permission_link&gt;I-update ang mga pahintulot&lt;/permission_link&gt;. Ang access sa lokasyon ay &lt;services_link&gt;naka-off din para sa device na ito&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Nangangailangan ng pahintulot ang Chrome para makapag-scan ng mga kalapit na device. &lt;permission_link&gt;I-update ang mga pahintulot&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"Kailangan ng Chrome ng access sa lokasyon upang makapag-scan at makakita ng mga device. &lt;permission_link&gt;I-update ang mga pahintulot&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Humingi ng tulong&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Hindi ma-on ng Chrome ang Bluetooth adapter"</string>
+<string name="bluetooth_adapter_off">"&lt;link&gt;I-on ang Bluetooth&lt;/link&gt; upang payagan ang pagpapares"</string>
+<string name="bluetooth_scanning_prompt_origin">"Gustong mag-scan ng %1$s para sa mga Bluetooth device na nasa malapit. Nahanap ang mga sumusunod na device:"</string>
+<string name="bluetooth_scanning_device_unknown">"Hindi alam o hindi sinusuportahang device (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

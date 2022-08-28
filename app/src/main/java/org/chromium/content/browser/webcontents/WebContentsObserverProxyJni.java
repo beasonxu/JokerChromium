@@ -12,7 +12,7 @@ import org.chromium.base.natives.GEN_JNI;
 class WebContentsObserverProxyJni implements WebContentsObserverProxy.Natives {
   private static WebContentsObserverProxy.Natives testInstance;
 
-  public static final JniStaticTestMocker<WebContentsObserverProxy.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<WebContentsObserverProxy.Natives>() {
+  public static final JniStaticTestMocker<WebContentsObserverProxy.Natives> TEST_HOOKS = new JniStaticTestMocker<WebContentsObserverProxy.Natives>() {
     @Override
     public void setInstanceForTesting(
         WebContentsObserverProxy.Natives instance) {

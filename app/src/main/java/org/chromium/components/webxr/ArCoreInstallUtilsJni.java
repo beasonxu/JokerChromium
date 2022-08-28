@@ -12,11 +12,11 @@ import org.chromium.base.natives.GEN_JNI;
 class ArCoreInstallUtilsJni implements ArCoreInstallUtils.ArInstallHelperNative {
   private static ArCoreInstallUtils.ArInstallHelperNative testInstance;
 
-  public static final JniStaticTestMocker<ArCoreInstallUtils.ArInstallHelperNative> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.webxr.ArCoreInstallUtils.ArInstallHelperNative>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<ArCoreInstallUtils.ArInstallHelperNative> TEST_HOOKS = new JniStaticTestMocker<ArCoreInstallUtils.ArInstallHelperNative>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.components.webxr.ArCoreInstallUtils.ArInstallHelperNative instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        ArCoreInstallUtils.ArInstallHelperNative instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

@@ -12,7 +12,7 @@ import org.chromium.base.natives.GEN_JNI;
 class ChildProcessLauncherHelperImplJni implements ChildProcessLauncherHelperImpl.Natives {
   private static ChildProcessLauncherHelperImpl.Natives testInstance;
 
-  public static final JniStaticTestMocker<ChildProcessLauncherHelperImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<ChildProcessLauncherHelperImpl.Natives>() {
+  public static final JniStaticTestMocker<ChildProcessLauncherHelperImpl.Natives> TEST_HOOKS = new JniStaticTestMocker<ChildProcessLauncherHelperImpl.Natives>() {
     @Override
     public void setInstanceForTesting(
         ChildProcessLauncherHelperImpl.Natives instance) {

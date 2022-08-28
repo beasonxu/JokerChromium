@@ -16,11 +16,11 @@ import org.chromium.payments.mojom.PaymentMethodData;
 class CanMakePaymentQueryJni implements CanMakePaymentQuery.Natives {
   private static CanMakePaymentQuery.Natives testInstance;
 
-  public static final JniStaticTestMocker<CanMakePaymentQuery.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.payments.CanMakePaymentQuery.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<CanMakePaymentQuery.Natives> TEST_HOOKS = new JniStaticTestMocker<CanMakePaymentQuery.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.components.payments.CanMakePaymentQuery.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        CanMakePaymentQuery.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

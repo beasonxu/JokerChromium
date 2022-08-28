@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s برای ایجاد نقشه سه‌بعدی از محیط اطرافتان، باید اجازه دسترسی به دوربین داشته باشد."</string>
+<string name="infobar_missing_camera_permission_text">"%1$s برای این سایت باید اجازه دسترسی به دوربین داشته باشد."</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s برای این سایت باید اجازه دسترسی به میکروفون داشته باشد."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s برای این سایت باید اجازه دسترسی به دوربین و میکروفون داشته باشد."</string>
+<string name="infobar_missing_location_permission_text">"%1$s برای هم‌رسانی مکانتان با این سایت باید به مکانتان دسترسی داشته باشد."</string>
+<string name="infobar_update_permissions_button_text">"ادامه"</string>
+<string name="nfc_disabled_on_device_message">"‏برای ادامه دادن، NFC را در تنظیمات Android روشن کنید"</string>
+<string name="nfc_prompt_turn_on">"روشن کردن"</string>
+<string name="overlay_detected_dialog_title">"این سایت نمی‌تواند اجازه شما را درخواست کند"</string>
+<string name="overlay_detected_dialog_message">"حبابک‌ها یا هم‌پوشانی‌های برنامه‌های دیگر را ببندید. سپس، دوباره امتحان کنید."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;دریافت راهنمایی&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"مرتبط‌سازی"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"سطح قدرت سیگنال: %d نوار"</item>
+  <item quantity="other">"سطح قدرت سیگنال: %d نوار"</item>
+</plurals>
+<string name="bluetooth_device_connected">"دستگاه متصل"</string>
+<string name="bluetooth_dialog_title">"%1$s می‌خواهد مرتبط شود"</string>
+<string name="bluetooth_not_found">"هیچ دستگاه سازگاری پیدا نشد"</string>
+<string name="bluetooth_searching">"&lt;link&gt;دریافت راهنمایی&lt;/link&gt; درحین اسکن دستگاه‌ها…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;دریافت راهنمایی&lt;/link1&gt; یا &lt;link2&gt;اسکن مجدد&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"‏Chrome برای جستجوی دستگاه‌ها باید به مکان دسترسی داشته باشد. دسترسی به مکان &lt;services_link&gt;برای این دستگاه خاموش است&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"‏Chrome برای جستجوی دستگاه‌ها باید به مکان دسترسی داشته باشد. &lt;permission_link&gt;به‌روزرسانی مجوزها&lt;/permission_link&gt; . دسترسی به مکان نیز &lt;services_link&gt;برای این دستگاه خاموش است&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"‏Chrome برای اسکن دستگاه‌های اطراف به اجازه نیاز دارد. &lt;permission_link&gt;اجازه‌ها را به‌روزرسانی کنید&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"‏Chrome برای جستجوی دستگاه‌ها باید به مکان دسترسی داشته باشد. &lt;permission_link&gt;به‌روزرسانی مجوزها&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;دریافت راهنمایی&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"‏Chrome قادر به روشن کردن آداپتور بلوتوث نیست"</string>
+<string name="bluetooth_adapter_off">"&lt;link&gt;بلوتوث را روشن کنید&lt;/link&gt; تا مرتبط‌سازی امکان‌پذیر شود"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s می‌خواهد دستگاه‌های «بلوتوث» اطراف را جستجو کند. دستگاه‌های زیر پیدا شدند:"</string>
+<string name="bluetooth_scanning_device_unknown">"دستگاه ناشناس یا پشتیبانی‌نشده (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

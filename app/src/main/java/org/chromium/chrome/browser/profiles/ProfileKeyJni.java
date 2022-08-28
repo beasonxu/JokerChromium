@@ -12,11 +12,11 @@ import org.chromium.base.natives.GEN_JNI;
 class ProfileKeyJni implements ProfileKey.Natives {
   private static ProfileKey.Natives testInstance;
 
-  public static final JniStaticTestMocker<ProfileKey.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.profiles.ProfileKey.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<ProfileKey.Natives> TEST_HOOKS = new JniStaticTestMocker<ProfileKey.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.chrome.browser.profiles.ProfileKey.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        ProfileKey.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

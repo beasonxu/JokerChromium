@@ -1,12 +1,12 @@
 package org.chromium.components.commerce.core;
 
+import java.lang.Override;
+import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.url.GURL;
-
-import javax.annotation.Generated;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")

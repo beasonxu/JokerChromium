@@ -13,11 +13,11 @@ import org.chromium.base.natives.GEN_JNI;
 public class ErrorMessageUtilJni implements ErrorMessageUtil.Natives {
   private static ErrorMessageUtil.Natives testInstance;
 
-  public static final JniStaticTestMocker<ErrorMessageUtil.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.payments.ErrorMessageUtil.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<ErrorMessageUtil.Natives> TEST_HOOKS = new JniStaticTestMocker<ErrorMessageUtil.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.components.payments.ErrorMessageUtil.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        ErrorMessageUtil.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

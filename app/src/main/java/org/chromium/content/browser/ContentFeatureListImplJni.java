@@ -15,7 +15,7 @@ import org.chromium.base.natives.GEN_JNI;
 public class ContentFeatureListImplJni implements ContentFeatureListImpl.Natives {
   private static ContentFeatureListImpl.Natives testInstance;
 
-  public static final JniStaticTestMocker<ContentFeatureListImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<ContentFeatureListImpl.Natives>() {
+  public static final JniStaticTestMocker<ContentFeatureListImpl.Natives> TEST_HOOKS = new JniStaticTestMocker<ContentFeatureListImpl.Natives>() {
     @Override
     public void setInstanceForTesting(
         ContentFeatureListImpl.Natives instance) {

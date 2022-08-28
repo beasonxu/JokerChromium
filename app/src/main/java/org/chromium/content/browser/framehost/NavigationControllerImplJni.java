@@ -18,7 +18,7 @@ import org.chromium.url.Origin;
 class NavigationControllerImplJni implements NavigationControllerImpl.Natives {
   private static NavigationControllerImpl.Natives testInstance;
 
-  public static final JniStaticTestMocker<NavigationControllerImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<NavigationControllerImpl.Natives>() {
+  public static final JniStaticTestMocker<NavigationControllerImpl.Natives> TEST_HOOKS = new JniStaticTestMocker<NavigationControllerImpl.Natives>() {
     @Override
     public void setInstanceForTesting(
         NavigationControllerImpl.Natives instance) {

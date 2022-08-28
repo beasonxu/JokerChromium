@@ -14,7 +14,7 @@ import org.chromium.content_public.browser.WebContents;
 class CaptioningControllerJni implements CaptioningController.Natives {
   private static CaptioningController.Natives testInstance;
 
-  public static final JniStaticTestMocker<CaptioningController.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<CaptioningController.Natives>() {
+  public static final JniStaticTestMocker<CaptioningController.Natives> TEST_HOOKS = new JniStaticTestMocker<CaptioningController.Natives>() {
     @Override
     public void setInstanceForTesting(
         CaptioningController.Natives instance) {

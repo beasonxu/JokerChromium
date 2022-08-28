@@ -12,7 +12,7 @@ import org.chromium.base.natives.GEN_JNI;
 class WebAuthenticationDelegateJni implements WebAuthenticationDelegate.Natives {
   private static WebAuthenticationDelegate.Natives testInstance;
 
-  public static final JniStaticTestMocker<WebAuthenticationDelegate.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<WebAuthenticationDelegate.Natives>() {
+  public static final JniStaticTestMocker<WebAuthenticationDelegate.Natives> TEST_HOOKS = new JniStaticTestMocker<WebAuthenticationDelegate.Natives>() {
     @Override
     public void setInstanceForTesting(
         WebAuthenticationDelegate.Natives instance) {

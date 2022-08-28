@@ -12,7 +12,7 @@ import org.chromium.base.natives.GEN_JNI;
 class BrowserAccessibilityStateJni implements BrowserAccessibilityState.Natives {
   private static BrowserAccessibilityState.Natives testInstance;
 
-  public static final JniStaticTestMocker<BrowserAccessibilityState.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<BrowserAccessibilityState.Natives>() {
+  public static final JniStaticTestMocker<BrowserAccessibilityState.Natives> TEST_HOOKS = new JniStaticTestMocker<BrowserAccessibilityState.Natives>() {
     @Override
     public void setInstanceForTesting(
         BrowserAccessibilityState.Natives instance) {

@@ -13,7 +13,7 @@ import org.chromium.content_public.browser.WebContents;
 class ContentUiEventHandlerJni implements ContentUiEventHandler.Natives {
   private static ContentUiEventHandler.Natives testInstance;
 
-  public static final JniStaticTestMocker<ContentUiEventHandler.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<ContentUiEventHandler.Natives>() {
+  public static final JniStaticTestMocker<ContentUiEventHandler.Natives> TEST_HOOKS = new JniStaticTestMocker<ContentUiEventHandler.Natives>() {
     @Override
     public void setInstanceForTesting(
         ContentUiEventHandler.Natives instance) {

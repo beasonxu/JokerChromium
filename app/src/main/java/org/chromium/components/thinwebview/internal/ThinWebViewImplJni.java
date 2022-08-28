@@ -1,5 +1,7 @@
 package org.chromium.components.thinwebview.internal;
 
+import java.lang.Override;
+import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
@@ -8,8 +10,6 @@ import org.chromium.components.embedder_support.delegate.WebContentsDelegateAndr
 import org.chromium.components.thinwebview.CompositorView;
 import org.chromium.content_public.browser.WebContents;
 import org.chromium.ui.base.WindowAndroid;
-
-import javax.annotation.Generated;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")

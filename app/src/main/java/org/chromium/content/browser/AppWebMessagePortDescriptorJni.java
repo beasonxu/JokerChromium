@@ -12,7 +12,7 @@ import org.chromium.base.natives.GEN_JNI;
 class AppWebMessagePortDescriptorJni implements AppWebMessagePortDescriptor.Native {
   private static AppWebMessagePortDescriptor.Native testInstance;
 
-  public static final JniStaticTestMocker<AppWebMessagePortDescriptor.Native> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<AppWebMessagePortDescriptor.Native>() {
+  public static final JniStaticTestMocker<AppWebMessagePortDescriptor.Native> TEST_HOOKS = new JniStaticTestMocker<AppWebMessagePortDescriptor.Native>() {
     @Override
     public void setInstanceForTesting(
         AppWebMessagePortDescriptor.Native instance) {

@@ -28,7 +28,7 @@ import org.chromium.url.GURL;
 class WebContentsImplJni implements WebContentsImpl.Natives {
   private static WebContentsImpl.Natives testInstance;
 
-  public static final JniStaticTestMocker<WebContentsImpl.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<WebContentsImpl.Natives>() {
+  public static final JniStaticTestMocker<WebContentsImpl.Natives> TEST_HOOKS = new JniStaticTestMocker<WebContentsImpl.Natives>() {
     @Override
     public void setInstanceForTesting(
         WebContentsImpl.Natives instance) {

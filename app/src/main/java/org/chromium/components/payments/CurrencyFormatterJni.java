@@ -13,11 +13,11 @@ import org.chromium.base.natives.GEN_JNI;
 public class CurrencyFormatterJni implements CurrencyFormatter.Natives {
   private static CurrencyFormatter.Natives testInstance;
 
-  public static final JniStaticTestMocker<CurrencyFormatter.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.payments.CurrencyFormatter.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<CurrencyFormatter.Natives> TEST_HOOKS = new JniStaticTestMocker<CurrencyFormatter.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.components.payments.CurrencyFormatter.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        CurrencyFormatter.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;

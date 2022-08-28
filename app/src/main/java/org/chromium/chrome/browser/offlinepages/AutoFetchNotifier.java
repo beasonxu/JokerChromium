@@ -4,6 +4,9 @@
 
 package org.chromium.chrome.browser.offlinepages;
 
+import static org.chromium.chrome.browser.IntentHandler.*;
+import static org.chromium.chrome.browser.offlinepages.AutoFetchNotifier.NotificationAction.*;
+
 import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -74,18 +77,18 @@ public class AutoFetchNotifier {
      * Additions should be treated as APPEND ONLY to keep the UMA metric semantics the same over
      * time.
      */
-    @IntDef({NotificationAction.SHOWN, NotificationAction.COMPLETE,
-            NotificationAction.CANCEL_PRESSED, NotificationAction.DISMISSED})
+    @IntDef({SHOWN, COMPLETE,
+            CANCEL_PRESSED, DISMISSED})
     @Retention(RetentionPolicy.SOURCE)
     public @interface NotificationAction {
-        int SHOWN = 0;
-        int COMPLETE = 1;
-        int CANCEL_PRESSED = 2;
-        int DISMISSED = 3;
-        int TAPPED = 4;
-
-        int NUM_ENTRIES = 5;
     }
+       public static final int SHOWN = 0;
+        public static final int COMPLETE = 1;
+        public static final int CANCEL_PRESSED = 2;
+        public static final  int DISMISSED = 3;
+        public static final int TAPPED = 4;
+        public static final int NUM_ENTRIES = 5;
+
 
     /**
      * Dismisses the in-progress notification and cancels request, triggered when the notification
@@ -97,9 +100,9 @@ public class AutoFetchNotifier {
             // Error check the action stored in the intent. Ignore the intent if it looks invalid.
             @NotificationAction
             int action = IntentUtils.safeGetIntExtra(
-                    intent, EXTRA_ACTION, NotificationAction.NUM_ENTRIES);
-            if (action != NotificationAction.CANCEL_PRESSED
-                    && action != NotificationAction.DISMISSED) {
+                    intent, EXTRA_ACTION, NUM_ENTRIES);
+            if (action != CANCEL_PRESSED
+                    && action != DISMISSED) {
                 return;
             }
 
@@ -125,7 +128,7 @@ public class AutoFetchNotifier {
             // possible that the prefs-based value is out of sync with the system notification, in
             // which case we still try to remove the notification even if we think it's not there.
             if (isShowingInProgressNotification()) {
-                reportInProgressNotificationAction(NotificationAction.COMPLETE);
+                reportInProgressNotificationAction(COMPLETE);
             }
             closeInProgressNotification();
             return;
@@ -145,12 +148,12 @@ public class AutoFetchNotifier {
         // Create intents for cancellation, both by pressing 'cancel', and swiping away.
         Intent cancelButtonIntent = new Intent(context, InProgressCancelReceiver.class);
         cancelButtonIntent.putExtra(Browser.EXTRA_APPLICATION_ID, context.getPackageName());
-        cancelButtonIntent.putExtra(EXTRA_ACTION, NotificationAction.CANCEL_PRESSED);
+        cancelButtonIntent.putExtra(EXTRA_ACTION, CANCEL_PRESSED);
         cancelButtonIntent.setPackage(context.getPackageName());
 
         Intent deleteIntent = new Intent(context, InProgressCancelReceiver.class);
         deleteIntent.putExtra(Browser.EXTRA_APPLICATION_ID, context.getPackageName());
-        deleteIntent.putExtra(EXTRA_ACTION, NotificationAction.DISMISSED);
+        deleteIntent.putExtra(EXTRA_ACTION, DISMISSED);
         deleteIntent.setPackage(context.getPackageName());
 
         String title = context.getResources().getQuantityString(
@@ -181,7 +184,7 @@ public class AutoFetchNotifier {
         NotificationUmaTracker.getInstance().onNotificationShown(
                 NotificationUmaTracker.SystemNotificationType.OFFLINE_PAGES,
                 notification.getNotification());
-        reportInProgressNotificationAction(NotificationAction.SHOWN);
+        reportInProgressNotificationAction(SHOWN);
         if (mTestHooks != null) {
             mTestHooks.inProgressNotificationShown(cancelButtonIntent, deleteIntent);
         }
@@ -203,8 +206,8 @@ public class AutoFetchNotifier {
         @NotificationAction
         int currentAction = prefs.readInt(
                 ChromePreferenceKeys.OFFLINE_AUTO_FETCH_USER_CANCEL_ACTION_IN_PROGRESS,
-                NotificationAction.NUM_ENTRIES);
-        if (currentAction == NotificationAction.NUM_ENTRIES) {
+                NUM_ENTRIES);
+        if (currentAction == NUM_ENTRIES) {
             return;
         }
         reportInProgressNotificationAction(currentAction);
@@ -220,8 +223,8 @@ public class AutoFetchNotifier {
     public static boolean autoFetchInProgressNotificationCanceled() {
         return SharedPreferencesManager.getInstance().readInt(
                        ChromePreferenceKeys.OFFLINE_AUTO_FETCH_USER_CANCEL_ACTION_IN_PROGRESS,
-                       NotificationAction.NUM_ENTRIES)
-                != NotificationAction.NUM_ENTRIES;
+                       NUM_ENTRIES)
+                != NUM_ENTRIES;
     }
 
     /**
@@ -233,13 +236,13 @@ public class AutoFetchNotifier {
             // Error check the action stored in the intent. Ignore the intent if it looks invalid.
             @NotificationAction
             int action = IntentUtils.safeGetIntExtra(
-                    intent, EXTRA_ACTION, NotificationAction.NUM_ENTRIES);
-            if (action != NotificationAction.TAPPED && action != NotificationAction.DISMISSED) {
+                    intent, EXTRA_ACTION, NUM_ENTRIES);
+            if (action != TAPPED && action != DISMISSED) {
                 return;
             }
 
             reportCompleteNotificationAction(action);
-            if (action != NotificationAction.TAPPED) {
+            if (action != TAPPED) {
                 // If action == DISMISSED, the notification is already automatically removed.
                 return;
             }
@@ -287,11 +290,11 @@ public class AutoFetchNotifier {
         // the page load. This will result in opening a new tab if there was a redirect (because
         // the URL doesn't match the old dino page), which is not ideal.
         clickIntent.putExtra(EXTRA_URL, finalUrl);
-        clickIntent.putExtra(TabOpenType.REUSE_TAB_ORIGINAL_URL_STRING, originalUrl);
+        clickIntent.putExtra(REUSE_TAB_ORIGINAL_URL_STRING, originalUrl);
         IntentHandler.setIntentExtraHeaders(params.getExtraHeaders(), clickIntent);
-        clickIntent.putExtra(TabOpenType.REUSE_TAB_MATCHING_ID_STRING, tabId);
+        clickIntent.putExtra(REUSE_TAB_MATCHING_ID_STRING, tabId);
         clickIntent.putExtra(Browser.EXTRA_APPLICATION_ID, context.getPackageName());
-        clickIntent.putExtra(EXTRA_ACTION, NotificationAction.TAPPED);
+        clickIntent.putExtra(EXTRA_ACTION, TAPPED);
         IntentHandler.setTabLaunchType(clickIntent, TabLaunchType.FROM_CHROME_UI);
 
         clickIntent.setPackage(context.getPackageName());
@@ -302,7 +305,7 @@ public class AutoFetchNotifier {
         // Intent for swiping away.
         Intent deleteIntent = new Intent(context, CompleteNotificationReceiver.class);
         deleteIntent.putExtra(Browser.EXTRA_APPLICATION_ID, context.getPackageName());
-        deleteIntent.putExtra(EXTRA_ACTION, NotificationAction.DISMISSED);
+        deleteIntent.putExtra(EXTRA_ACTION, DISMISSED);
         deleteIntent.setPackage(context.getPackageName());
 
         // Create the notification.
@@ -335,7 +338,7 @@ public class AutoFetchNotifier {
         NotificationUmaTracker.getInstance().onNotificationShown(
                 NotificationUmaTracker.SystemNotificationType.OFFLINE_PAGES,
                 notification.getNotification());
-        reportCompleteNotificationAction(NotificationAction.SHOWN);
+        reportCompleteNotificationAction(SHOWN);
         if (mTestHooks != null) {
             mTestHooks.completeNotificationShown(clickIntent, deleteIntent);
         }
@@ -344,13 +347,13 @@ public class AutoFetchNotifier {
     private static void reportInProgressNotificationAction(@NotificationAction int action) {
         RecordHistogram.recordEnumeratedHistogram(
                 "OfflinePages.AutoFetch.InProgressNotificationAction", action,
-                NotificationAction.NUM_ENTRIES);
+                NUM_ENTRIES);
     }
 
     private static void reportCompleteNotificationAction(@NotificationAction int action) {
         RecordHistogram.recordEnumeratedHistogram(
                 "OfflinePages.AutoFetch.CompleteNotificationAction", action,
-                NotificationAction.NUM_ENTRIES);
+                NUM_ENTRIES);
     }
 
     private static boolean isShowingInProgressNotification() {

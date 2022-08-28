@@ -1,20 +1,20 @@
 package org.chromium.net.impl;
 
+import java.lang.Override;
+import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
-
-import javax.annotation.Generated;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
 class CronetUploadDataStreamJni implements CronetUploadDataStream.Natives {
   private static CronetUploadDataStream.Natives testInstance;
 
-  public static final JniStaticTestMocker<CronetUploadDataStream.Natives> TEST_HOOKS = new JniStaticTestMocker<org.chromium.net.impl.CronetUploadDataStream.Natives>() {
+  public static final JniStaticTestMocker<CronetUploadDataStream.Natives> TEST_HOOKS = new JniStaticTestMocker<CronetUploadDataStream.Natives>() {
     @Override
-    public void setInstanceForTesting(org.chromium.net.impl.CronetUploadDataStream.Natives instance) {
+    public void setInstanceForTesting(CronetUploadDataStream.Natives instance) {
       if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }

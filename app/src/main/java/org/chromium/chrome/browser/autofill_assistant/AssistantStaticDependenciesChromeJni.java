@@ -13,11 +13,11 @@ import org.chromium.components.autofill_assistant.AssistantStaticDependencies;
 class AssistantStaticDependenciesChromeJni implements AssistantStaticDependenciesChrome.Natives {
   private static AssistantStaticDependenciesChrome.Natives testInstance;
 
-  public static final JniStaticTestMocker<AssistantStaticDependenciesChrome.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.autofill_assistant.AssistantStaticDependenciesChrome.Natives>() {
-    @java.lang.Override
+  public static final JniStaticTestMocker<AssistantStaticDependenciesChrome.Natives> TEST_HOOKS = new JniStaticTestMocker<AssistantStaticDependenciesChrome.Natives>() {
+    @Override
     public void setInstanceForTesting(
-        org.chromium.chrome.browser.autofill_assistant.AssistantStaticDependenciesChrome.Natives instance) {
-      if (!org.chromium.base.natives.GEN_JNI.TESTING_ENABLED) {
+        AssistantStaticDependenciesChrome.Natives instance) {
+      if (!GEN_JNI.TESTING_ENABLED) {
         throw new RuntimeException("Tried to set a JNI mock when mocks aren't enabled!");
       }
       testInstance = instance;
