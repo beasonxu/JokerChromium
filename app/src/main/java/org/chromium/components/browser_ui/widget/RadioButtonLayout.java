@@ -12,6 +12,8 @@ import android.widget.RadioGroup;
 
 import androidx.annotation.Nullable;
 
+import org.chromium.chrome.R;
+
 import java.util.List;
 
 /**

@@ -27,6 +27,7 @@ import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.content.res.ResourcesCompat;
 
 import org.chromium.base.StrictModeContext;
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.widget.DualControlLayout;
 import org.chromium.components.browser_ui.widget.RadioButtonLayout;
 import org.chromium.ui.widget.ChromeImageView;
