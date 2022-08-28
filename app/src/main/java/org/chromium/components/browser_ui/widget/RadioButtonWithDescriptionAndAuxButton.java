@@ -12,6 +12,8 @@ import android.widget.ImageButton;
 
 import androidx.annotation.VisibleForTesting;
 
+import org.chromium.chrome.R;
+
 /**
  * <p>
  * A RadioButton with a primary and descriptive text to the right, and an aux button at the end.

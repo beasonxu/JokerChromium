@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import androidx.annotation.VisibleForTesting;
 
+import org.chromium.chrome.R;
 import org.chromium.ui.KeyboardVisibilityDelegate;
 
 import java.util.ArrayList;

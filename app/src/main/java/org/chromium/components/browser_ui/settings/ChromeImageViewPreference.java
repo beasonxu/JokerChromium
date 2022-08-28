@@ -19,6 +19,8 @@ import androidx.appcompat.content.res.AppCompatResources;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
+import org.chromium.chrome.R;
+
 /**
  * A preference that supports some Chrome-specific customizations:
  *

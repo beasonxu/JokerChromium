@@ -27,6 +27,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.view.ViewCompat;
 
+import org.chromium.chrome.R;
+
 /**
  * A custom {@link ImageView} that is able to render bitmaps and colors with rounded off corners.
  * The corner radii should be set through attributes. E.g.

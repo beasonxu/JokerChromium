@@ -31,7 +31,7 @@ import org.chromium.components.feature_engagement.Tracker;
 import org.chromium.ui.modaldialog.ModalDialogManager;
 import org.chromium.ui.modaldialog.ModalDialogManager.ModalDialogManagerObserver;
 import org.chromium.ui.modelutil.PropertyModel;
-
+import org.chromium.chrome.R;
 /**
  * Handles displaying the voice search button on toolbar depending on several conditions (e.g.
  * device width, whether NTP is shown, whether voice is enabled).

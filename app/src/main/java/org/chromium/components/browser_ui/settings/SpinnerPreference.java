@@ -17,6 +17,8 @@ import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
+import org.chromium.chrome.R;
+
 /**
  * A preference that takes value from a specified list of objects, presented as a dropdown.
  */

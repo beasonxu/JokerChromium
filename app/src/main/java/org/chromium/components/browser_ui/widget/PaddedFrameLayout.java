@@ -9,6 +9,8 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
+import org.chromium.chrome.R;
+
 /**
  * A layout for displaying a View with padding, borders, and a maximum width and/or height. E.g.:
  *

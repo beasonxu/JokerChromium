@@ -12,6 +12,7 @@ import android.view.View;
 
 import androidx.preference.PreferenceViewHolder;
 
+import org.chromium.chrome.R;
 import org.chromium.ui.widget.TextViewWithClickableSpans;
 
 /**

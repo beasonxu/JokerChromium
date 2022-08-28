@@ -9,6 +9,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.styles.ChromeColors;
 
 /**

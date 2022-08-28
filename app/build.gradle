@@ -105,6 +105,13 @@ android {
                         "$rootDir/app/src/main/res_app",
                         "$rootDir/app/src/main/res_down_internal",
                         "$rootDir/app/src/main/res_continuous_search",
+                        "$rootDir/app/src/main/res_message",
+                        "$rootDir/app/src/main/res_message_internal",
+                        "$rootDir/app/src/main/res_contacts_picker",
+                        "$rootDir/app/src/main/res_search_engines",
+                        "$rootDir/app/src/main/res_management",
+                        "$rootDir/app/src/main/res_password_check",
+                        "$rootDir/app/src/main/res_safe_browsing",
 
 
 

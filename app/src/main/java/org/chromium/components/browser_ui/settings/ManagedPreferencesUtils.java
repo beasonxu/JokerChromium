@@ -17,6 +17,7 @@ import androidx.annotation.StringRes;
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
 
+import org.chromium.chrome.R;
 import org.chromium.ui.base.ViewUtils;
 import org.chromium.ui.widget.Toast;
 

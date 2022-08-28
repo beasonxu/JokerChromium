@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
 
 import org.chromium.base.task.AsyncTask;
+import org.chromium.chrome.R;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

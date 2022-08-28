@@ -12,6 +12,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
 import org.chromium.base.ApiCompatibilityUtils;
+import org.chromium.chrome.R;
 
 /**
  * A preference with a clickable "Learn more" link.

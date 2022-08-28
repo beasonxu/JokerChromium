@@ -3,6 +3,8 @@
 // found in the LICENSE file.
 package org.chromium.chrome.browser.safe_browsing;
 
+import static org.chromium.chrome.browser.IntentHandler.*;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -74,7 +76,7 @@ public class SafeBrowsingReferringAppBridge {
 
         @ExternalAppId
         int externalId = IntentHandler.determineExternalIntentSource(intent);
-        if (externalId != ExternalAppId.OTHER) {
+        if (externalId != OTHER) {
             return new ReferringAppInfo(ReferringAppInfo.ReferringAppSource.KNOWN_APP_ID,
                     externalAppIdToString(externalId));
         }
@@ -109,37 +111,37 @@ public class SafeBrowsingReferringAppBridge {
 
     private static String externalAppIdToString(@ExternalAppId int appId) {
         switch (appId) {
-            case ExternalAppId.OTHER:
+            case OTHER:
                 return "other";
-            case ExternalAppId.GMAIL:
+            case GMAIL:
                 return "gmail";
-            case ExternalAppId.FACEBOOK:
+            case FACEBOOK:
                 return "facebook";
-            case ExternalAppId.PLUS:
+            case PLUS:
                 return "plus";
-            case ExternalAppId.TWITTER:
+            case TWITTER:
                 return "twitter";
-            case ExternalAppId.CHROME:
+            case CHROME:
                 return "chrome";
-            case ExternalAppId.HANGOUTS:
+            case HANGOUTS:
                 return "google.hangouts";
-            case ExternalAppId.MESSENGER:
+            case MESSENGER:
                 return "android.messages";
-            case ExternalAppId.NEWS:
+            case NEWS:
                 return "google.news";
-            case ExternalAppId.LINE:
+            case LINE:
                 return "line";
-            case ExternalAppId.WHATSAPP:
+            case WHATSAPP:
                 return "whatsapp";
-            case ExternalAppId.GSA:
+            case GSA:
                 return "google.search.app";
-            case ExternalAppId.WEBAPK:
+            case WEBAPK:
                 return "webapk";
-            case ExternalAppId.YAHOO_MAIL:
+            case YAHOO_MAIL:
                 return "yahoo.mail";
-            case ExternalAppId.VIBER:
+            case VIBER:
                 return "viber";
-            case ExternalAppId.YOUTUBE:
+            case YOUTUBE:
                 return "youtube";
             default:
                 assert false : "not reached";

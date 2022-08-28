@@ -21,6 +21,7 @@ import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import org.chromium.chrome.R;
 import org.chromium.ui.UiUtils;
 import org.chromium.ui.widget.ChromeImageView;
 

@@ -13,6 +13,7 @@ import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.widget.chips.ChipView;
 import org.chromium.ui.text.SpanApplier;
 

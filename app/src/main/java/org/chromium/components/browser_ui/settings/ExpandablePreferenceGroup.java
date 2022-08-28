@@ -15,6 +15,7 @@ import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.preference.PreferenceGroup;
 import androidx.preference.PreferenceViewHolder;
 
+import org.chromium.chrome.R;
 import org.chromium.ui.drawable.StateListDrawableBuilder;
 import org.chromium.ui.widget.CheckableImageView;
 

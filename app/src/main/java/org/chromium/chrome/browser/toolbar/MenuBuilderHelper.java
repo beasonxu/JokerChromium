@@ -8,7 +8,7 @@ import android.view.View;
 
 import org.chromium.ui.widget.RectProvider;
 import org.chromium.ui.widget.ViewRectProvider;
-
+import org.chromium.chrome.R;
 /**
  * A helper class for sharing common code for building a list menu button.
  */

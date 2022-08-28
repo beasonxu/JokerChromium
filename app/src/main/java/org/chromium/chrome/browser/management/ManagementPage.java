@@ -8,7 +8,7 @@ import org.chromium.chrome.browser.profiles.Profile;
 import org.chromium.chrome.browser.ui.native_page.BasicNativePage;
 import org.chromium.chrome.browser.ui.native_page.NativePageHost;
 import org.chromium.components.embedder_support.util.UrlConstants;
-
+import org.chromium.chrome.R;
 /**
  * Native page that displays whether the current profile is managed or not.
  */

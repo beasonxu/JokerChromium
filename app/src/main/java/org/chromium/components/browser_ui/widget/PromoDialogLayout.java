@@ -17,6 +17,7 @@ import android.widget.TextView;
 import androidx.core.view.ViewCompat;
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 
+import org.chromium.chrome.R;
 import org.chromium.components.browser_ui.widget.PromoDialog.DialogParams;
 
 /**

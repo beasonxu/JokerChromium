@@ -7,6 +7,7 @@ package org.chromium.chrome.browser.management;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.profiles.Profile;
 import org.chromium.chrome.browser.ui.native_page.NativePageHost;
 import org.chromium.ui.modelutil.PropertyModelChangeProcessor;

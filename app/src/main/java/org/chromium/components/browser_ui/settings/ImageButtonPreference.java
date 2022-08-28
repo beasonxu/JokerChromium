@@ -11,6 +11,7 @@ import android.view.View;
 import androidx.annotation.DrawableRes;
 import androidx.preference.PreferenceViewHolder;
 
+import org.chromium.chrome.R;
 import org.chromium.ui.widget.ChromeImageButton;
 
 /**

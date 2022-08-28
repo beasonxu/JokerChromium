@@ -18,6 +18,8 @@ import androidx.annotation.DrawableRes;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 
+import org.chromium.chrome.R;
+
 /**
  * Implementation of BitmapDrawable that allows to tint the color of the drawable for all
  * bitmap drawable states.

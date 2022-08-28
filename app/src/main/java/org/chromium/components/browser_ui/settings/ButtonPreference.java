@@ -12,6 +12,8 @@ import android.widget.Button;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
+import org.chromium.chrome.R;
+
 /**
  * A {@link Preference} that provides button functionality.
  *

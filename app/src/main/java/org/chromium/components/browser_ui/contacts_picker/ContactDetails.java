@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.chromium.blink.mojom.ContactIconBlob;
+import org.chromium.chrome.R;
 import org.chromium.payments.mojom.PaymentAddress;
 
 import java.util.ArrayList;

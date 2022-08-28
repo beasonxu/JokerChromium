@@ -13,6 +13,8 @@ import android.widget.ScrollView;
 
 import androidx.annotation.IntDef;
 
+import org.chromium.chrome.R;
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 

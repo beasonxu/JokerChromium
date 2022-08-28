@@ -7,6 +7,7 @@ package org.chromium.chrome.browser.management;
 import android.content.Context;
 import android.text.SpannableString;
 
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.enterprise.util.ManagedBrowserUtils;
 import org.chromium.chrome.browser.profiles.Profile;
 import org.chromium.chrome.browser.ui.native_page.NativePageHost;

@@ -17,6 +17,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat.AccessibilityActionCompat;
 
 import org.chromium.base.TraceEvent;
+import org.chromium.chrome.R;
 import org.chromium.ui.base.ViewUtils;
 
 /**

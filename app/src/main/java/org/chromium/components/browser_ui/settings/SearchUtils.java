@@ -14,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 
+import org.chromium.chrome.R;
+
 /**
  * A helper class for applying the default search behavior to search items in Chromium settings.
  */

@@ -9,6 +9,8 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
+import org.chromium.chrome.R;
+
 /**
  * A {@link FragmentActivity} for junit tests that gets the necessary themes and theme overlays
  * applied to prevent issues caused by missing styles.

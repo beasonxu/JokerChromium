@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.VisibleForTesting;
 
+import org.chromium.chrome.R;
+
 import java.util.ArrayList;
 
 /**

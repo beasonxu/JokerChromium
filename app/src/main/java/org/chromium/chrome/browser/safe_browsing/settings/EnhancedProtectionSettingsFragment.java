@@ -4,6 +4,8 @@
 
 package org.chromium.chrome.browser.safe_browsing.settings;
 
+import org.chromium.chrome.R;
+
 /**
  * Fragment containing enhanced protection settings.
  */
