@@ -251,34 +251,32 @@ public class IntentHandler {
      * Values should be enumerated from 0 and can't have gaps. When removing items,
      * comment them out and keep existing numeric values stable.
      */
-    @IntDef({OTHER, GMAIL, FACEBOOK, PLUS,
-            TWITTER, CHROME, HANGOUTS,
-            MESSENGER, NEWS, LINE, WHATSAPP,
-            GSA, WEBAPK, YAHOO_MAIL, VIBER,
-            YOUTUBE})
+    @IntDef({ExternalAppId.OTHER, ExternalAppId.GMAIL, ExternalAppId.FACEBOOK, ExternalAppId.PLUS,
+            ExternalAppId.TWITTER, ExternalAppId.CHROME, ExternalAppId.HANGOUTS,
+            ExternalAppId.MESSENGER, ExternalAppId.NEWS, ExternalAppId.LINE, ExternalAppId.WHATSAPP,
+            ExternalAppId.GSA, ExternalAppId.WEBAPK, ExternalAppId.YAHOO_MAIL, ExternalAppId.VIBER,
+            ExternalAppId.YOUTUBE})
     @Retention(RetentionPolicy.SOURCE)
     public @interface ExternalAppId {
-
+        int OTHER = 0;
+        int GMAIL = 1;
+        int FACEBOOK = 2;
+        int PLUS = 3;
+        int TWITTER = 4;
+        int CHROME = 5;
+        int HANGOUTS = 6;
+        int MESSENGER = 7;
+        int NEWS = 8;
+        int LINE = 9;
+        int WHATSAPP = 10;
+        int GSA = 11;
+        int WEBAPK = 12;
+        int YAHOO_MAIL = 13;
+        int VIBER = 14;
+        int YOUTUBE = 15;
+        // Update ClientAppId in enums.xml when adding new items.
+        int NUM_ENTRIES = 16;
     }
-    public static final   int OTHER = 0;
-    public static final   int GMAIL = 1;
-    public static final   int FACEBOOK = 2;
-    public static final   int PLUS = 3;
-    public static final   int TWITTER = 4;
-    public static final   int CHROME = 5;
-    public static final    int HANGOUTS = 6;
-    public static final    int MESSENGER = 7;
-    public static final    int NEWS = 8;
-    public static final    int LINE = 9;
-    public static final     int WHATSAPP = 10;
-    public static final     int GSA = 11;
-    public static final    int WEBAPK = 12;
-    public static final    int YAHOO_MAIL = 13;
-    public static final   int VIBER = 14;
-    public static final   int YOUTUBE = 15;
-    // Update ClientAppId in enums.xml when adding new items.
-    public static final  int NUM_ENTRIES = 16;
-
 
     /**
      * Represents apps that launch Incognito CCT.
@@ -325,32 +323,32 @@ public class IntentHandler {
      */
     private static DelayedScreenLockIntentHandler sDelayedScreenIntentHandler;
 
-    @IntDef({OPEN_NEW_TAB, REUSE_URL_MATCHING_TAB_ELSE_NEW_TAB,
-            REUSE_APP_ID_MATCHING_TAB_ELSE_NEW_TAB, CLOBBER_CURRENT_TAB,
-            BRING_TAB_TO_FRONT, OPEN_NEW_INCOGNITO_TAB,
-            REUSE_TAB_MATCHING_ID_ELSE_NEW_TAB})
+    @IntDef({TabOpenType.OPEN_NEW_TAB, TabOpenType.REUSE_URL_MATCHING_TAB_ELSE_NEW_TAB,
+            TabOpenType.REUSE_APP_ID_MATCHING_TAB_ELSE_NEW_TAB, TabOpenType.CLOBBER_CURRENT_TAB,
+            TabOpenType.BRING_TAB_TO_FRONT, TabOpenType.OPEN_NEW_INCOGNITO_TAB,
+            TabOpenType.REUSE_TAB_MATCHING_ID_ELSE_NEW_TAB})
     @Retention(RetentionPolicy.SOURCE)
     public @interface TabOpenType {
-    }
-    public static final int OPEN_NEW_TAB = 0;
-    // Tab is reused only if the URLs perfectly match.
-    public static final  int REUSE_URL_MATCHING_TAB_ELSE_NEW_TAB = 1;
-    // Tab is reused only if there's an existing tab opened by the same app ID.
-    public static final   int REUSE_APP_ID_MATCHING_TAB_ELSE_NEW_TAB = 2;
-    public static final    int CLOBBER_CURRENT_TAB = 3;
-    public static final   int BRING_TAB_TO_FRONT = 4;
-    // Opens a new incognito tab.
-    public static final    int OPEN_NEW_INCOGNITO_TAB = 5;
-    // Tab is reused only if the tab ID exists (tab ID is specified with the integer extra
-    // REUSE_TAB_MATCHING_ID_STRING), and if the tab matches either the requested URL, or
-    // the URL provided in the REUSE_TAB_ORIGINAL_URL_STRING extra.
-    // Otherwise, the URL is opened in a new tab. REUSE_TAB_ORIGINAL_URL_STRING can be used if
-    // the intent url is a result of a redirect, so that a tab pointing at the original URL can
-    // be reused.
-    public static final    int REUSE_TAB_MATCHING_ID_ELSE_NEW_TAB = 6;
-    public static final   String REUSE_TAB_MATCHING_ID_STRING = "REUSE_TAB_MATCHING_ID";
-    public static final String REUSE_TAB_ORIGINAL_URL_STRING = "REUSE_TAB_ORIGINAL_URL";
+        int OPEN_NEW_TAB = 0;
+        // Tab is reused only if the URLs perfectly match.
+        int REUSE_URL_MATCHING_TAB_ELSE_NEW_TAB = 1;
+        // Tab is reused only if there's an existing tab opened by the same app ID.
+        int REUSE_APP_ID_MATCHING_TAB_ELSE_NEW_TAB = 2;
+        int CLOBBER_CURRENT_TAB = 3;
+        int BRING_TAB_TO_FRONT = 4;
+        // Opens a new incognito tab.
+        int OPEN_NEW_INCOGNITO_TAB = 5;
+        // Tab is reused only if the tab ID exists (tab ID is specified with the integer extra
+        // REUSE_TAB_MATCHING_ID_STRING), and if the tab matches either the requested URL, or
+        // the URL provided in the REUSE_TAB_ORIGINAL_URL_STRING extra.
+        // Otherwise, the URL is opened in a new tab. REUSE_TAB_ORIGINAL_URL_STRING can be used if
+        // the intent url is a result of a redirect, so that a tab pointing at the original URL can
+        // be reused.
+        int REUSE_TAB_MATCHING_ID_ELSE_NEW_TAB = 6;
 
+        String REUSE_TAB_MATCHING_ID_STRING = "REUSE_TAB_MATCHING_ID";
+        String REUSE_TAB_ORIGINAL_URL_STRING = "REUSE_TAB_ORIGINAL_URL";
+    }
 
     @IntDef({BringToFrontSource.ACTIVATE_TAB, BringToFrontSource.NOTIFICATION,
             BringToFrontSource.SEARCH_ACTIVITY})
@@ -407,32 +405,32 @@ public class IntentHandler {
      * @return ExternalAppId representing the app.
      */
     public static @ExternalAppId int determineExternalIntentSource(Intent intent) {
-        if (wasIntentSenderChrome(intent)) return CHROME;
+        if (wasIntentSenderChrome(intent)) return ExternalAppId.CHROME;
 
         String appId = IntentUtils.safeGetStringExtra(intent, Browser.EXTRA_APPLICATION_ID);
         @ExternalAppId
-        int externalId = OTHER;
+        int externalId = ExternalAppId.OTHER;
         if (appId == null) {
             String url = getUrlFromIntent(intent);
             String referrer = getReferrerUrl(intent);
             if (url != null && url.startsWith(TWITTER_LINK_PREFIX)) {
-                externalId = TWITTER;
+                externalId = ExternalAppId.TWITTER;
             } else if (FACEBOOK_REFERRER_URL.equals(referrer)) {
                 // This happens when "Links Open Externally" is checked in the Facebook app.
-                externalId = FACEBOOK;
+                externalId = ExternalAppId.FACEBOOK;
             } else if (url != null && url.startsWith(NEWS_LINK_PREFIX)) {
-                externalId = NEWS;
+                externalId = ExternalAppId.NEWS;
             } else if (url != null
                     && (url.startsWith(YOUTUBE_LINK_PREFIX_HTTPS)
                     || url.startsWith(YOUTUBE_LINK_PREFIX_HTTP))) {
-                externalId = YOUTUBE;
+                externalId = ExternalAppId.YOUTUBE;
             } else {
                 Bundle headers = IntentUtils.safeGetBundleExtra(intent, Browser.EXTRA_HEADERS);
                 if (headers != null
                         && FACEBOOK_INTERNAL_BROWSER_REFERRER.equals(headers.get("Referer"))) {
                     // This happens when "Links Open Externally" is unchecked in the Facebook app,
                     // and we use "Open With..." from the internal browser.
-                    externalId = FACEBOOK;
+                    externalId = ExternalAppId.FACEBOOK;
                 }
             }
         } else {
@@ -448,29 +446,29 @@ public class IntentHandler {
      */
     public static @ExternalAppId int mapPackageToExternalAppId(String packageName) {
         if (packageName.equals(PACKAGE_PLUS)) {
-            return PLUS;
+            return ExternalAppId.PLUS;
         } else if (packageName.equals(PACKAGE_GMAIL)) {
-            return GMAIL;
+            return ExternalAppId.GMAIL;
         } else if (packageName.equals(PACKAGE_HANGOUTS)) {
-            return HANGOUTS;
+            return ExternalAppId.HANGOUTS;
         } else if (packageName.equals(PACKAGE_MESSENGER)) {
-            return MESSENGER;
+            return ExternalAppId.MESSENGER;
         } else if (packageName.equals(PACKAGE_LINE)) {
-            return LINE;
+            return ExternalAppId.LINE;
         } else if (packageName.equals(PACKAGE_WHATSAPP)) {
-            return WHATSAPP;
+            return ExternalAppId.WHATSAPP;
         } else if (packageName.equals(PACKAGE_GSA)) {
-            return GSA;
+            return ExternalAppId.GSA;
         } else if (packageName.equals(ContextUtils.getApplicationContext().getPackageName())) {
-            return CHROME;
+            return ExternalAppId.CHROME;
         } else if (packageName.startsWith(WEBAPK_PACKAGE_PREFIX)) {
-            return WEBAPK;
+            return ExternalAppId.WEBAPK;
         } else if (packageName.equals(PACKAGE_YAHOO_MAIL)) {
-            return YAHOO_MAIL;
+            return ExternalAppId.YAHOO_MAIL;
         } else if (packageName.equals(PACKAGE_VIBER)) {
-            return VIBER;
+            return ExternalAppId.VIBER;
         }
-        return OTHER;
+        return ExternalAppId.OTHER;
     }
 
     private void recordExternalIntentSourceUMA(Intent intent) {
@@ -478,9 +476,9 @@ public class IntentHandler {
         int externalId = determineExternalIntentSource(intent);
 
         // Don't record external app page loads for intents we sent.
-        if (externalId == CHROME) return;
+        if (externalId == ExternalAppId.CHROME) return;
         RecordHistogram.recordEnumeratedHistogram(
-                "MobileIntent.PageLoadDueToExternalApp", externalId, NUM_ENTRIES);
+                "MobileIntent.PageLoadDueToExternalApp", externalId, ExternalAppId.NUM_ENTRIES);
     }
 
     /**
@@ -521,14 +519,14 @@ public class IntentHandler {
         int tabOpenType = getTabOpenType(intent);
         int tabIdToBringToFront = getBringTabToFrontId(intent);
         if (url == null && tabIdToBringToFront == Tab.INVALID_TAB_ID
-                && tabOpenType != OPEN_NEW_INCOGNITO_TAB) {
+                && tabOpenType != TabOpenType.OPEN_NEW_INCOGNITO_TAB) {
             return handleWebSearchIntent(intent)
                     || TranslateIntentHandler.handleTranslateTabIntent(intent, mDelegate);
         }
 
         LoadUrlParams loadUrlParams = createLoadUrlParamsForIntent(url, intent);
 
-        if (isIntentForMhtmlFileOrContent(intent) && tabOpenType == OPEN_NEW_TAB
+        if (isIntentForMhtmlFileOrContent(intent) && tabOpenType == TabOpenType.OPEN_NEW_TAB
                 && loadUrlParams.getReferrer() == null
                 && loadUrlParams.getVerbatimHeaders() == null) {
             handleMhtmlFileOrContentIntent(url, intent);
@@ -735,7 +733,7 @@ public class IntentHandler {
             loadUrlParams.setVerbatimHeaders(maybeAddAdditionalContentHeaders(
                     intent, url, loadUrlParams.getVerbatimHeaders()));
             processUrlViewIntent(
-                    loadUrlParams, OPEN_NEW_TAB, null, Tab.INVALID_TAB_ID, intent);
+                    loadUrlParams, TabOpenType.OPEN_NEW_TAB, null, Tab.INVALID_TAB_ID, intent);
         }, Profile.getLastUsedRegularProfile());
     }
 
@@ -1120,33 +1118,33 @@ public class IntentHandler {
     private @TabOpenType int getTabOpenType(Intent intent) {
         if (IntentUtils.safeGetBooleanExtra(
                 intent, WebappConstants.REUSE_URL_MATCHING_TAB_ELSE_NEW_TAB, false)) {
-            return REUSE_URL_MATCHING_TAB_ELSE_NEW_TAB;
+            return TabOpenType.REUSE_URL_MATCHING_TAB_ELSE_NEW_TAB;
         }
         if (IntentUtils.safeGetBooleanExtra(intent, EXTRA_OPEN_NEW_INCOGNITO_TAB, false)) {
-            return OPEN_NEW_INCOGNITO_TAB;
+            return TabOpenType.OPEN_NEW_INCOGNITO_TAB;
         }
         if (getBringTabToFrontId(intent) != Tab.INVALID_TAB_ID) {
-            return BRING_TAB_TO_FRONT;
+            return TabOpenType.BRING_TAB_TO_FRONT;
         }
 
         String appId = IntentUtils.safeGetStringExtra(intent, Browser.EXTRA_APPLICATION_ID);
         // Due to users complaints, we are NOT reusing tabs for apps that do not specify an appId.
         if (appId == null
                 || IntentUtils.safeGetBooleanExtra(intent, Browser.EXTRA_CREATE_NEW_TAB, false)) {
-            return OPEN_NEW_TAB;
+            return TabOpenType.OPEN_NEW_TAB;
         }
 
         int tabId = IntentUtils.safeGetIntExtra(
-                intent, REUSE_TAB_MATCHING_ID_STRING, Tab.INVALID_TAB_ID);
+                intent, TabOpenType.REUSE_TAB_MATCHING_ID_STRING, Tab.INVALID_TAB_ID);
         if (tabId != Tab.INVALID_TAB_ID) {
-            return REUSE_TAB_MATCHING_ID_ELSE_NEW_TAB;
+            return TabOpenType.REUSE_TAB_MATCHING_ID_ELSE_NEW_TAB;
         }
 
         // Intents from chrome open in the same tab by default, all others only clobber
         // tabs created by the same app.
         return mActivity.getPackageName().equals(appId)
-                ? CLOBBER_CURRENT_TAB
-                : REUSE_APP_ID_MATCHING_TAB_ELSE_NEW_TAB;
+                ? TabOpenType.CLOBBER_CURRENT_TAB
+                : TabOpenType.REUSE_APP_ID_MATCHING_TAB_ELSE_NEW_TAB;
     }
 
     private static boolean isInvalidScheme(String scheme) {

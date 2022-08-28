@@ -38,6 +38,7 @@
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.1234375" />
         <entry key="app/src/main/res/xml/google_services_preferences.xml" value="0.8145161290322581" />
         <entry key="app/src/main/res_app/layout/main.xml" value="0.1" />
+        <entry key="app/src/main/res_app_memu/layout/menu_item.xml" value="0.1" />
         <entry key="app/src/main/res_autofill/layout/progress_bar.xml" value="0.1" />
         <entry key="app/src/main/res_browser_ui_style/drawable/checkmark_blue.xml" value="0.1" />
         <entry key="app/src/main/res_browser_ui_style/drawable/gm_ads_click_24.xml" value="0.1" />

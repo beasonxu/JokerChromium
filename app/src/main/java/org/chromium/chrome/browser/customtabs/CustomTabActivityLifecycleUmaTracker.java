@@ -115,8 +115,8 @@ public class CustomTabActivityLifecycleUmaTracker implements PauseResumeWithNati
 
     @Inject
     public CustomTabActivityLifecycleUmaTracker(ActivityLifecycleDispatcher lifecycleDispatcher,
-            BrowserServicesIntentDataProvider intentDataProvider, Activity activity,
-            @Named(SAVED_INSTANCE_SUPPLIER) Supplier<Bundle> savedInstanceStateSupplier) {
+                                                BrowserServicesIntentDataProvider intentDataProvider, Activity activity,
+                                                @Named(SAVED_INSTANCE_SUPPLIER) Supplier<Bundle> savedInstanceStateSupplier) {
         mIntentDataProvider = intentDataProvider;
         mActivity = activity;
         mSavedInstanceStateSupplier = savedInstanceStateSupplier;

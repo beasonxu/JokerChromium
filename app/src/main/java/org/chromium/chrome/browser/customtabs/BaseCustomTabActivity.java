@@ -6,7 +6,8 @@ package org.chromium.chrome.browser.customtabs;
 
 import static androidx.browser.customtabs.CustomTabsIntent.COLOR_SCHEME_DARK;
 import static androidx.browser.customtabs.CustomTabsIntent.COLOR_SCHEME_LIGHT;
-import static org.chromium.chrome.browser.customtabs.content.CustomTabActivityNavigationController.USER_NAVIGATION;
+
+import static org.chromium.chrome.browser.customtabs.content.CustomTabActivityNavigationController.FinishReason.USER_NAVIGATION;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -181,11 +182,11 @@ public abstract class BaseCustomTabActivity extends ChromeActivity<BaseCustomTab
 
         BaseCustomTabActivityModule baseCustomTabsModule = overridenBaseCustomTabFactory != null
                 ? overridenBaseCustomTabFactory.create(mIntentDataProvider,
-                        mNightModeStateController, intentIgnoringCriterion,
-                        getTopUiThemeColorProvider(), new DefaultBrowserProviderImpl())
+                mNightModeStateController, intentIgnoringCriterion,
+                getTopUiThemeColorProvider(), new DefaultBrowserProviderImpl())
                 : new BaseCustomTabActivityModule(mIntentDataProvider, mNightModeStateController,
-                        intentIgnoringCriterion, getTopUiThemeColorProvider(),
-                        new DefaultBrowserProviderImpl());
+                intentIgnoringCriterion, getTopUiThemeColorProvider(),
+                new DefaultBrowserProviderImpl());
         BaseCustomTabActivityComponent component =
                 ChromeApplicationImpl.getComponent().createBaseCustomTabActivityComponent(
                         commonsModule, baseCustomTabsModule);
@@ -273,7 +274,7 @@ public abstract class BaseCustomTabActivity extends ChromeActivity<BaseCustomTab
     private int getColorScheme() {
         if (mNightModeStateController != null) {
             return mNightModeStateController.isInNightMode() ? COLOR_SCHEME_DARK
-                                                             : COLOR_SCHEME_LIGHT;
+                    : COLOR_SCHEME_LIGHT;
         }
         assert false : "NightModeStateController should have been already created";
         return COLOR_SCHEME_LIGHT;
@@ -521,7 +522,7 @@ public abstract class BaseCustomTabActivity extends ChromeActivity<BaseCustomTab
             return super.onKeyDown(keyCode, event);
         }
         return KeyboardShortcuts.onKeyDown(event, true, false, getTabModelSelector(),
-                       /* menuOrKeyboardActionController= */ this, getToolbarManager())
+                /* menuOrKeyboardActionController= */ this, getToolbarManager())
                 || super.onKeyDown(keyCode, event);
     }
 

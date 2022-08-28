@@ -12,6 +12,7 @@ import androidx.annotation.IntDef;
 import androidx.annotation.Nullable;
 
 import org.chromium.base.ContextUtils;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.notifications.NotificationUmaTracker;
 import org.chromium.chrome.browser.notifications.NotificationWrapperBuilderFactory;
 import org.chromium.chrome.browser.notifications.channels.ChromeChannelDefinitions;
