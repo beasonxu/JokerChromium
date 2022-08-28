@@ -17,6 +17,8 @@ import androidx.annotation.Nullable;
 import androidx.core.view.ViewCompat;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+
+import org.chromium.chrome.R;
 import org.chromium.ui.widget.ButtonCompat;
 import org.chromium.ui.widget.ChromeImageButton;
 

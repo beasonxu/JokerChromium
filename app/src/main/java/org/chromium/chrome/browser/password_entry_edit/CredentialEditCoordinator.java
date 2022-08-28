@@ -9,6 +9,7 @@ import static org.chromium.chrome.browser.password_entry_edit.CredentialEditProp
 import static org.chromium.chrome.browser.password_entry_edit.CredentialEditProperties.UI_ACTION_HANDLER;
 import static org.chromium.chrome.browser.password_entry_edit.CredentialEditProperties.URL_OR_APP;
 
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.feedback.HelpAndFeedbackLauncher;
 import org.chromium.chrome.browser.password_entry_edit.CredentialEntryFragmentViewBase.ComponentStateDelegate;
 import org.chromium.chrome.browser.password_manager.ConfirmationDialogHelper;

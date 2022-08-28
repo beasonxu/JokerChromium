@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import androidx.appcompat.content.res.AppCompatResources;
 
+import org.chromium.chrome.R;
 import org.chromium.components.content_settings.ContentSettingValues;
 import org.chromium.ui.modelutil.PropertyKey;
 import org.chromium.ui.modelutil.PropertyModel;

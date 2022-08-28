@@ -9,6 +9,7 @@ import android.app.Activity;
 import androidx.annotation.VisibleForTesting;
 
 import org.chromium.base.supplier.Supplier;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.ui.native_page.BasicNativePage;
 import org.chromium.chrome.browser.ui.native_page.NativePageHost;
 import org.chromium.components.browser_ui.settings.SettingsLauncher;

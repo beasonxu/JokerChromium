@@ -9,6 +9,7 @@ import android.content.Context;
 import androidx.annotation.VisibleForTesting;
 
 import org.chromium.base.annotations.NativeMethods;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.device.DeviceConditions;
 import org.chromium.chrome.browser.preferences.ChromePreferenceKeys;
 import org.chromium.chrome.browser.preferences.Pref;

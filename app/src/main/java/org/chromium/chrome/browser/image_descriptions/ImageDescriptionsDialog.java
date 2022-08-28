@@ -14,6 +14,7 @@ import androidx.annotation.IntDef;
 import androidx.annotation.Nullable;
 
 import org.chromium.base.metrics.RecordHistogram;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.device.DeviceConditions;
 import org.chromium.chrome.browser.profiles.Profile;
 import org.chromium.components.browser_ui.widget.RadioButtonWithDescription;

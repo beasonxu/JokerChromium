@@ -768,11 +768,11 @@ public class VrShellDelegate
 
         SimpleConfirmInfoBarBuilder.create(tab.getWebContents(), listener,
                 InfoBarIdentifier.VR_FEEDBACK_INFOBAR_ANDROID, tab.getContext(),
-                org.chromium.chrome.vr.R.drawable.vr_services,
+                R.drawable.vr_services,
                 ContextUtils.getApplicationContext().getString(
-                        org.chromium.chrome.vr.R.string.vr_shell_feedback_infobar_description),
+                        R.string.vr_shell_feedback_infobar_description),
                 ContextUtils.getApplicationContext().getString(
-                        org.chromium.chrome.vr.R.string.vr_shell_feedback_infobar_feedback_button),
+                        R.string.vr_shell_feedback_infobar_feedback_button),
                 tab.getContext().getString(R.string.no_thanks), null /* linkText */,
                 true /* autoExpire  */);
     }

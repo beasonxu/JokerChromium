@@ -11,6 +11,8 @@ import android.view.MenuItem;
 
 import androidx.preference.PreferenceFragmentCompat;
 
+import org.chromium.chrome.R;
+
 /**
  * Base structure to be shared by fragments displaying: saved credentials to be edited, saved
  * federated credentials and sites blocklisted for saving by the user.

@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import org.chromium.chrome.R;
+
 /**
  * This class is responsible for rendering a fragment containing details about a site that
  * the user blocked from saving.
