@@ -18,7 +18,7 @@ import org.chromium.components.browser_ui.site_settings.SiteSettingsPreferenceFr
 import org.chromium.components.content_settings.CookieControlsStatus;
 import org.chromium.ui.text.NoUnderlineClickableSpan;
 import org.chromium.ui.text.SpanApplier;
-
+import org.chromium.chrome.R;
 /**
  * View showing a toggle and a description for third-party cookie blocking for a site.
  */

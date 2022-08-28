@@ -27,7 +27,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.LinkedList;
 import java.util.List;
-
+import org.chromium.chrome.R;
 /**
  * Singleton instance which controls the display of modal permission dialogs. This class is lazily
  * initiated when getInstance() is first called.

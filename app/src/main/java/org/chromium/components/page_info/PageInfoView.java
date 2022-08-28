@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
+import org.chromium.chrome.R;
 /**
  * Represents the view inside the page info popup.
  */

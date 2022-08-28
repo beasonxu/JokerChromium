@@ -28,7 +28,7 @@ import org.chromium.ui.modaldialog.DialogDismissalCause;
 import org.chromium.ui.modaldialog.ModalDialogManager;
 import org.chromium.ui.modaldialog.ModalDialogProperties;
 import org.chromium.ui.modelutil.PropertyModel;
-
+import org.chromium.chrome.R;
 /**
  * Represents the dialog containing the page info view.
  */

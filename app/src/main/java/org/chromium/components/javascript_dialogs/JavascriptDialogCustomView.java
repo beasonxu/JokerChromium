@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
-
+import org.chromium.chrome.R;
 /**
  * The JavaScript dialog that is either app modal or tab modal.
  */

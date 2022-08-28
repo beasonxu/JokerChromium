@@ -22,7 +22,7 @@ import androidx.appcompat.content.res.AppCompatResources;
 import org.chromium.base.ApiCompatibilityUtils;
 import org.chromium.ui.base.ViewUtils;
 import org.chromium.ui.widget.ChromeImageView;
-
+import org.chromium.chrome.R;
 /**
  * View showing an icon, title and subtitle for a page info row.
  */

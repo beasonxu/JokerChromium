@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 
 import java.util.List;
-
+import org.chromium.chrome.R;
 /**
  * Class for controlling the page info ad personalization section.
  */

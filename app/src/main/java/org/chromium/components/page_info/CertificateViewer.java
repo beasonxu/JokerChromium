@@ -37,7 +37,7 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
+import org.chromium.chrome.R;
 /**
  * UI component for displaying certificate information.
  */

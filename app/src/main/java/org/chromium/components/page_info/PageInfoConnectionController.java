@@ -19,7 +19,7 @@ import org.chromium.components.omnibox.SecurityStatusIcon;
 import org.chromium.components.security_state.ConnectionSecurityLevel;
 import org.chromium.components.security_state.SecurityStateModel;
 import org.chromium.content_public.browser.WebContents;
-
+import org.chromium.chrome.R;
 /**
  * Class for controlling the page info connection section.
  */

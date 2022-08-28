@@ -20,7 +20,7 @@ import org.chromium.components.content_settings.CookieControlsObserver;
 import org.chromium.components.embedder_support.util.Origin;
 
 import java.util.Collection;
-
+import org.chromium.chrome.R;
 /**
  * Class for controlling the page info cookies section.
  */

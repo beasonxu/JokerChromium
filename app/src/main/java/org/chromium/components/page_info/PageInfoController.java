@@ -59,7 +59,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-
+import org.chromium.chrome.R;
 /**
  * Java side of Android implementation of the page info UI.
  */

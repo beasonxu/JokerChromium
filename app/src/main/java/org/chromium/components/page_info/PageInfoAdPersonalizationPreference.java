@@ -13,7 +13,7 @@ import org.chromium.components.browser_ui.settings.SettingsUtils;
 import org.chromium.components.browser_ui.site_settings.SiteSettingsPreferenceFragment;
 
 import java.util.List;
-
+import org.chromium.chrome.R;
 /**
  * View showing showing details about ad personalization of a site.
  */

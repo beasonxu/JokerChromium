@@ -15,7 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import org.chromium.ui.widget.ChromeImageButton;
-
+import org.chromium.chrome.R;
 /**
  * Represents the url, a sub page header and container for page info content.
  */

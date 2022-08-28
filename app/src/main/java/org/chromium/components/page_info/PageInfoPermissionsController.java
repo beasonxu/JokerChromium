@@ -26,7 +26,7 @@ import org.chromium.content_public.browser.BrowserContextHandle;
 
 import java.util.Collection;
 import java.util.List;
-
+import org.chromium.chrome.R;
 /**
  * Class for controlling the page info permissions section.
  */

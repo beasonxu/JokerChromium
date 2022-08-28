@@ -19,7 +19,7 @@ import org.chromium.ui.permissions.AndroidPermissionDelegate;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import org.chromium.chrome.R;
 /**
  * This class is a helper for PageInfoController. It contains the logic required to turn a set of
  * permission values into PermissionParams suitable for PageInfoView to display.

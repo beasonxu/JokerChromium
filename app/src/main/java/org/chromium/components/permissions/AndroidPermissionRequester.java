@@ -14,6 +14,7 @@ import android.widget.TextView;
 import org.chromium.base.BuildInfo;
 import org.chromium.base.CollectionUtil;
 import org.chromium.base.annotations.CalledByNative;
+import org.chromium.chrome.R;
 import org.chromium.components.content_settings.ContentSettingsType;
 import org.chromium.ui.base.WindowAndroid;
 import org.chromium.ui.modaldialog.DialogDismissalCause;

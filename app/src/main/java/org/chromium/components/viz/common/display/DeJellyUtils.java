@@ -20,6 +20,7 @@ import org.chromium.base.ContextUtils;
 import org.chromium.base.annotations.CalledByNative;
 import org.chromium.base.annotations.JNINamespace;
 import org.chromium.base.annotations.MainDex;
+import org.chromium.base.compat.ApiHelperForR;
 import org.chromium.chrome.R;
 
 import java.lang.reflect.Field;

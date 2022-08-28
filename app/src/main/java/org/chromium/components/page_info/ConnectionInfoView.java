@@ -33,7 +33,7 @@ import org.chromium.ui.modaldialog.ModalDialogManager;
 import org.chromium.ui.modaldialog.ModalDialogProperties;
 import org.chromium.ui.modelutil.PropertyModel;
 import org.chromium.ui.widget.ButtonCompat;
-
+import org.chromium.chrome.R;
 /**
  * Java side of Android implementation of the page info UI.
  */
