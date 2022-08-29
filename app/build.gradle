@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply from: "$rootDir/gradle/android-lint.gradle"
 
 android {
     compileSdkVersion COMPILE_SDK_VERSION
@@ -33,6 +32,14 @@ android {
         ndk {
             abiFilters "armeabi-v7a"
         }
+    }
+
+
+    dexOptions {
+        javaMaxHeapSize "8g"
+    }
+    configurations {
+        all*.exclude group: 'com.google.guava', module: 'listenablefuture'
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
