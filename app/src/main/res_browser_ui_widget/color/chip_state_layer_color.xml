@@ -1,45 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright 2022 The Chromium Authors. All rights reserved.
-     Use of this source code is governed by a BSD-style license that can be
-     found in the LICENSE file.
--->
-
-<!-- Translucent layer that will overlay the chip background based on the current state. This
-     separate layer is used to make overlaying dynamic colors easier. -->
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- disabled -->
-    <item android:color="@android:color/transparent"
-        android:state_enabled="false" />
-
-    <!-- selected & pressed -->
-    <item android:alpha="@dimen/chip_state_layer_selected_pressed_alpha" android:color="@color/chip_state_layer_selected_color"
-        android:state_pressed="true"
-        android:state_selected="true" />
-
-    <!-- selected & hover & focused -->
-    <!-- selected & focused -->
-    <item android:alpha="@dimen/chip_state_layer_selected_focused_alpha" android:color="@color/chip_state_layer_selected_color"
-        android:state_selected="true"
-        android:state_focused="true" />
-
-    <!-- selected & hover -->
-    <item android:alpha="@dimen/chip_state_layer_selected_hover_alpha" android:color="@color/chip_state_layer_selected_color"
-        android:state_hovered="true"
-        android:state_selected="true" />
-
-    <!-- pressed -->
-    <item android:alpha="@dimen/chip_state_layer_pressed_alpha" android:color="@color/chip_state_layer_color"
-        android:state_pressed="true" />
-
-    <!-- hover & focused -->
-    <!-- focused -->
-    <item android:alpha="@dimen/chip_state_layer_focused_alpha" android:color="@color/chip_state_layer_color"
-        android:state_focused="true" />
-
-    <!-- hover -->
-    <item android:alpha="@dimen/chip_state_layer_hover_alpha" android:color="@color/chip_state_layer_color"
-        android:state_hovered="true"/>
-
-    <!-- default state -->
-    <item android:color="@android:color/transparent"/>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false" android:color="@android:color/transparent" />
+    <item android:state_selected="true" android:state_pressed="true" android:color="?colorOnSecondaryContainer" android:alpha="@dimen/chip_state_layer_selected_pressed_alpha" />
+    <item android:state_focused="true" android:state_selected="true" android:color="?colorOnSecondaryContainer" android:alpha="@dimen/chip_state_layer_selected_focused_alpha" />
+    <item android:state_selected="true" android:color="?colorOnSecondaryContainer" android:alpha="@dimen/chip_state_layer_selected_hover_alpha" android:state_hovered="true" />
+    <item android:state_pressed="true" android:color="?colorOnSurfaceVariant" android:alpha="@dimen/chip_state_layer_pressed_alpha" />
+    <item android:state_focused="true" android:color="?colorOnSurfaceVariant" android:alpha="@dimen/chip_state_layer_focused_alpha" />
+    <item android:color="?colorOnSurfaceVariant" android:alpha="@dimen/chip_state_layer_hover_alpha" android:state_hovered="true" />
+    <item android:color="@android:color/transparent" />
 </selector>
