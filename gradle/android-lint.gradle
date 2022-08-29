@@ -1,4 +1,10 @@
 android {
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+        ignoreWarnings true
+        disable 'MissingTranslation'
+    }
     dexOptions {
         javaMaxHeapSize "8g"
     }

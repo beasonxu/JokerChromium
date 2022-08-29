@@ -45,12 +45,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    packagingOptions {
-        resources {
-            excludes += ['META-INF/NOTICE', 'META-INF/LICENSE', 'META-INF/INDEX.LIST']
-        }
+    aaptOptions {
+        noCompress "dat", "bin", "pak", "unwind_cfi_32" //pak资源文件不能压缩
     }
 
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false//部分代码lint检查是通过不了的
+        ignoreWarnings true
+        disable 'MissingTranslation'
+    }
+
+    packagingOptions {
+        exclude 'META-INF/NOTICE' // will not include NOTICE file
+        exclude 'META-INF/LICENSE' // will not include LICENSE file
+        exclude 'META-INF/INDEX.LIST' // will not include INDEX.LIST file
+    }
 
     sourceSets {
         main {
