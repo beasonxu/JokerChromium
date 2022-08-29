@@ -74,7 +74,7 @@
     </style>
 
     <style name="ProgressBarStyle" parent="Widget.AppCompat.ProgressBar">
-        <item name="android:indeterminateTint">@color/macro_default_icon_color_accent1</item>
+        <item name="android:indeterminateTint">@color/default_icon_color_accent1</item>
     </style>
 
     <!-- Switch styling for dark theme -->
@@ -104,9 +104,9 @@
 
     <style name="ModernToolbar" parent="Widget.MaterialComponents.Toolbar">
         <item name="titleTextAppearance">@style/TextAppearance.Headline.Primary</item>
-        <item name="titleTextColor">@color/macro_default_text_color</item>
+        <item name="titleTextColor">@color/default_text_color</item>
         <item name="windowActionBarOverlay">true</item>
-        <item name="android:background">@color/macro_default_bg_color</item>
+        <item name="android:background">@color/default_bg_color</item>
     </style>
 
     <style name="TextButton.OnAccent1" tools:ignore="UnusedResources">

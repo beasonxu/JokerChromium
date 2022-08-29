@@ -9,7 +9,7 @@
     android:height="24dp"
     android:viewportWidth="24"
     android:viewportHeight="24"
-    android:tint="@color/macro_default_icon_color">
+    android:tint="@color/default_icon_color">
     <path
         android:pathData="M 16.63 12.926 L 12.926 12.926 L 12.926 16.63 L 11.074 16.63 L 11.074 12.926 L 7.37 12.926 L 7.37 11.074 L 11.074 11.074 L 11.074 7.37 L 12.926 7.37 L 12.926 11.074 L 16.63 11.074 Z"
         android:fillColor="@android:color/white"

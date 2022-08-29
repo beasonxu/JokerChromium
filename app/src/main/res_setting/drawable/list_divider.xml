@@ -8,7 +8,7 @@
      that mirrors the Android one. -->
 <shape
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:tint="@color/macro_divider_line_bg_color">
+    android:tint="@color/divider_line_bg_color">
     <solid android:color="@android:color/black" />
     <size
         android:height="1dp"

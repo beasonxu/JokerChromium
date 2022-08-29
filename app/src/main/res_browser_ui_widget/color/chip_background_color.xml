@@ -9,9 +9,9 @@
     <item android:color="@android:color/transparent" android:state_enabled="false" />
 
     <!-- selected -->
-    <item android:color="@color/macro_chip_bg_selected_color"
+    <item android:color="@color/chip_bg_selected_color"
         android:state_selected="true" />
 
     <!-- default state -->
-    <item android:color="@color/macro_chip_bg_color" />
+    <item android:color="@color/chip_bg_color" />
 </selector>

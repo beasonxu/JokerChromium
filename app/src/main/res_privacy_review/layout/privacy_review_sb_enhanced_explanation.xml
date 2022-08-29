@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:iconImage="@drawable/ic_security_grey"
-        app:iconTint="@color/macro_default_icon_color"
+        app:iconTint="@color/default_icon_color"
         app:summaryText="@string/privacy_review_sb_enhanced_item_one" />
 
     <org.chromium.chrome.browser.privacy_review.PrivacyReviewExplanationItem
@@ -43,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:iconImage="@drawable/ic_vpn_key_grey"
-        app:iconTint="@color/macro_default_icon_color"
+        app:iconTint="@color/default_icon_color"
         app:summaryText="@string/privacy_review_sb_enhanced_item_three" />
 
     <org.chromium.chrome.browser.privacy_review.PrivacyReviewExplanationItem

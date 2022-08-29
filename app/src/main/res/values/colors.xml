@@ -28,8 +28,8 @@
 
     <!-- Account Signin Colors -->
     <!-- As in dimens.xml, signin uses values from the First Run Experience -->
-    <color name="signin_head_background">@color/macro_default_bg_color</color>
-    <color name="signin_body_background">@color/macro_default_bg_color</color>
+    <color name="signin_head_background">@color/default_bg_color</color>
+    <color name="signin_body_background">@color/default_bg_color</color>
     <color name="signin_header_animation_background">@color/modern_grey_50</color>
     <color name="signin_header_animation_line_light">#E8E9EB</color>
     <color name="signin_header_animation_line_dark">#BDC0C5</color>
@@ -42,7 +42,7 @@
     <color name="incognito_emphasis">@android:color/white</color>
 
     <!-- Overlay Panel colors -->
-    <color name="overlay_panel_bar_background_color">@color/macro_default_bg_color</color>
+    <color name="overlay_panel_bar_background_color">@color/default_bg_color</color>
 
     <!-- Find in Page colors -->
     <color name="find_in_page_query_white_color">@android:color/white</color>
@@ -74,7 +74,7 @@
     <color name="media_viewer_bg">#000000</color>
     <color name="image_viewer_bg">#0E0E0E</color>
     <color name="thumbnail_placeholder_on_primary_bg" tools:ignore="UnusedResources">@color/default_bg_color_secondary</color>
-    <color name="tab_layout_selected_tab_color">@color/macro_default_text_color_accent1</color>
+    <color name="tab_layout_selected_tab_color">@color/default_text_color_accent1</color>
     <color name="web_notification_text">#CCCCCC</color>
 
 </resources>

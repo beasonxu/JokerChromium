@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/ic_business"
             android:importantForAccessibility="no"
-            app:tint="@color/macro_default_icon_color_accent1" />
+            app:tint="@color/default_icon_color_accent1" />
 
         <TextView
             android:id="@+id/page_zoom_preview_large_text"

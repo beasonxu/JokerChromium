@@ -5,5 +5,5 @@
 -->
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:alpha="@dimen/default_disabled_alpha" android:color="@color/macro_default_icon_color" />
+    <item android:alpha="@dimen/default_disabled_alpha" android:color="@color/default_icon_color" />
 </selector>

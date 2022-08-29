@@ -8,7 +8,7 @@
     android:height="24dp"
     android:viewportWidth="24.0"
     android:viewportHeight="24.0"
-    android:tint="@color/macro_default_icon_color_accent1">
+    android:tint="@color/default_icon_color_accent1">
     <path
         android:fillColor="@color/default_icon_color_accent1_baseline"
         android:pathData="M9,16.2L4.8,12l-1.4,1.4L9,19 21,7l-1.4,-1.4L9,16.2z"/>

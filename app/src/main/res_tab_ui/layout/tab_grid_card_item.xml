@@ -73,7 +73,7 @@
                 style="@style/HorizontalDivider"
                 android:layout_below="@id/tab_title"
                 android:visibility="?attr/tabGridDividerVisible"
-                android:background="@color/macro_divider_line_bg_color"/>
+                android:background="@color/divider_line_bg_color"/>
             <org.chromium.ui.widget.ButtonCompat
                 android:id="@+id/create_group_button"
                 android:layout_width="wrap_content"
@@ -101,7 +101,7 @@
             android:id="@+id/action_button"
             android:scaleType="center"
             android:layout_gravity="end"
-            android:tint="@color/macro_default_icon_color"
+            android:tint="@color/default_icon_color"
             style="?attr/tabGridActionButtonStyle"/>
     </FrameLayout>
 </merge>

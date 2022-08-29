@@ -12,32 +12,32 @@
         android:state_enabled="false" />
 
     <!-- selected & pressed -->
-    <item android:alpha="@dimen/chip_state_layer_selected_pressed_alpha" android:color="@color/macro_chip_state_layer_selected_color"
+    <item android:alpha="@dimen/chip_state_layer_selected_pressed_alpha" android:color="@color/chip_state_layer_selected_color"
         android:state_pressed="true"
         android:state_selected="true" />
 
     <!-- selected & hover & focused -->
     <!-- selected & focused -->
-    <item android:alpha="@dimen/chip_state_layer_selected_focused_alpha" android:color="@color/macro_chip_state_layer_selected_color"
+    <item android:alpha="@dimen/chip_state_layer_selected_focused_alpha" android:color="@color/chip_state_layer_selected_color"
         android:state_selected="true"
         android:state_focused="true" />
 
     <!-- selected & hover -->
-    <item android:alpha="@dimen/chip_state_layer_selected_hover_alpha" android:color="@color/macro_chip_state_layer_selected_color"
+    <item android:alpha="@dimen/chip_state_layer_selected_hover_alpha" android:color="@color/chip_state_layer_selected_color"
         android:state_hovered="true"
         android:state_selected="true" />
 
     <!-- pressed -->
-    <item android:alpha="@dimen/chip_state_layer_pressed_alpha" android:color="@color/macro_chip_state_layer_color"
+    <item android:alpha="@dimen/chip_state_layer_pressed_alpha" android:color="@color/chip_state_layer_color"
         android:state_pressed="true" />
 
     <!-- hover & focused -->
     <!-- focused -->
-    <item android:alpha="@dimen/chip_state_layer_focused_alpha" android:color="@color/macro_chip_state_layer_color"
+    <item android:alpha="@dimen/chip_state_layer_focused_alpha" android:color="@color/chip_state_layer_color"
         android:state_focused="true" />
 
     <!-- hover -->
-    <item android:alpha="@dimen/chip_state_layer_hover_alpha" android:color="@color/macro_chip_state_layer_color"
+    <item android:alpha="@dimen/chip_state_layer_hover_alpha" android:color="@color/chip_state_layer_color"
         android:state_hovered="true"/>
 
     <!-- default state -->

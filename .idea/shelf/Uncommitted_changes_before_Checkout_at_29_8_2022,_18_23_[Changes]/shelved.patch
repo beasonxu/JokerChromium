@@ -1,0 +1,30 @@
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_1_8\" default=\"true\" project-jdk-name=\"1.8\" project-jdk-type=\"JavaSDK\" />\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision bb20f5bbf049ba8353662a85176ea364e4937023)
++++ b/.idea/misc.xml	(date 1661768090087)
+@@ -1,4 +1,17 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
++  <component name="DesignSurface">
++    <option name="filePathToZoomLevelMap">
++      <map>
++        <entry key="app/src/main/res/drawable-v31/app_menu_bg.xml" value="0.3965" />
++        <entry key="app/src/main/res/drawable/$avd_hide_password__0.xml" value="0.3965" />
++        <entry key="app/src/main/res/layout/modal_dialog_view.xml" value="0.2947916666666667" />
++        <entry key="components/browser_ui_modaldialog/src/main/res/layout/modal_dialog_title.xml" value="0.30885416666666665" />
++        <entry key="components/browser_ui_modaldialog/src/main/res/layout/modal_dialog_view.xml" value="0.30885416666666665" />
++        <entry key="splash/src/main/res/layout/webapp_splash_screen_large.xml" value="0.43125" />
++        <entry key="third_party/android_media/src/main/res/layout/media_controller.xml" value="0.43125" />
++      </map>
++    </option>
++  </component>
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+ </project>
+\ No newline at end of file

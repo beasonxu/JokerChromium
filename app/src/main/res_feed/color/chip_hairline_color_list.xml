@@ -5,5 +5,5 @@
 -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:alpha="@dimen/default_disabled_alpha"
-        android:color="@color/macro_hairline_stroke_color"/>
+        android:color="@color/hairline_stroke_color"/>
 </selector>
