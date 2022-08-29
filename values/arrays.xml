@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="AdditionalDnsQueryTypesEnabledEntries">
+        <item>Allow additional DNS query types</item>
+        <item>Prevent additional DNS query types</item>
+    </string-array>
+    <string-array name="AdditionalDnsQueryTypesEnabledValues">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+    <string-array name="AlternateErrorPagesEnabledEntries">
+        <item>Enable alternate error pages</item>
+        <item>Disable alternate error pages</item>
+    </string-array>
+    <string-array name="AlternateErrorPagesEnabledValues">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+    <string-array name="AutofillAddressEnabledEntries">
+        <item>Enable AutoFill for addresses</item>
+        <item>Disable AutoFill for addresses</item>
+    </string-array>
+    <string-array name="AutofillAddressEnabledValues">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+    <string-array name="AutofillCreditCardEnabledEntries">
+        <item>Enable AutoFill for credit cards</item>
+        <item>Disable AutoFill for credit cards</item>
+    </string-array>
+    <string-array name="AutofillCreditCardEnabledValues">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+    <string-array name="BackForwardCacheEnabledEntries">
+        <item>Allow the back-forward cache to be used</item>
+        <item>Do not allow the back-forward cache to be used</item>
+    </string-array>
+    <string-array name="BackForwardCacheEnabledValues">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+    <string-array name="BlockThirdPartyCookiesEntries">
+        <item>Block 3rd party cookies</item>
+        <item>Allow 3rd party cookies</item>
+        <item>Allow 3rd party cookies, but allow the user to change this setting</item>
+    </string-array>
+    <string-array name="BlockThirdPartyCookiesValues">
+        <item>True</item>
+        <item>False</item>
+        <item>None</item>
+    </string-array>
+    <string-array name="BrowserSigninEntries">
+        <item>Disable browser sign-in</item>
+        <item>Enable browser sign-in</item>
+    </string-array>
+    <string-array name="BrowserSigninValues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="CECPQ2EnabledEntries">
+        <item>Enable default CECPQ2 rollout process</item>
+        <item>Disable CECPQ2</item>
+    </string-array>
+    <string-array name="CECPQ2EnabledValues">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+    <string-array name="CORSNonWildcardRequestHeadersSupportEntries">
+        <item>Support CORS non-wildcard request headers.</item>
+        <item>Do not support CORS non-wildcard request headers.</item>
+    </string-array>
+    <string-array name="CORSNonWildcardRequestHeadersSupportValues">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+    <string-array name="CloudUserPolicyMergeEntries">
+        <item>Enable merging of user-level cloud policies.</item>
+        <item>Disable merging of user-level cloud policies.</item>
+    </string-array>
+    <string-array name="CloudUserPolicyMergeValues">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+    <string-array name="CloudUserPolicyOverridesCloudMachinePolicyEntries">
+        <item>Allow user cloud policies to override machine cloud policies.</item>
+        <item>Prevent user cloud policies from overriding machine cloud policies.</item>
+    </string-array>
+    <string-array name="CloudUserPolicyOverridesCloudMachinePolicyValues">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+    <string-array name="ContextualSearchEnabledEntries">
+        <item>Allow users to use Touch to Search</item>
+        <item>Prevent users from using Touch to Search</item>
+    </string-array>
+    <string-array name="ContextualSearchEnabledValues">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+    <string-array name="DefaultCookiesSettingEntries">
+        <item>Allow all sites to set local data</item>
+        <item>Do not allow any site to set local data</item>
+        <item>Keep cookies for the duration of the session</item>
+    </string-array>
+    <string-array name="DefaultCookiesSettingValues">
+        <item>1</item>
+        <item>2</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="DefaultGeolocationSettingEntries">
+        <item>"Allow sites to track the users' physical location"</item>
+        <item>"Do not allow any site to track the users' physical location"</item>
+        <item>"Ask whenever a site wants to track the users' physical location"</item>
+    </string-array>
+    <string-array name="DefaultGeolocationSettingValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="DefaultJavaScriptJitSettingEntries">
+        <item>Allow any site to run JavaScript JIT</item>
+        <item>Do not allow any site to run JavaScript JIT</item>
+    </string-array>
+    <string-array name="DefaultJavaScriptJitSettingValues">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="DefaultJavaScriptSettingEntries">
+        <item>Allow all sites to run JavaScript</item>
+        <item>Do not allow any site to run JavaScript</item>
+    </string-array>
+    <string-array name="DefaultJavaScriptSettingValues">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="DefaultPopupsSettingEntries">
+        <item>Allow all sites to show pop-ups</item>
+        <item>Do not allow any site to show pop-ups</item>
+    </string-array>
+    <string-array name="DefaultPopupsSettingValues">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="DefaultSearchProviderEnabledEntries">
+        <item>Enable the default search provider</item>
+        <item>Disable the default search provider</item>
+        <item>Enable the default search provider and allow users to modify the search provier list</item>
+    </string-array>
+    <string-array name="DefaultSearchProviderEnabledValues">
+        <item>True</item>
+        <item>False</item>
+        <item>None</item>
+    </string-array>
+    <string-array name="DefaultSensorsSettingEntries">
+        <item>Allow sites to access sensors</item>
+        <item>Do not allow any site to access sensors</item>
+    </string-array>
+    <string-array name="DefaultSensorsSettingValues">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="DefaultWebBluetoothGuardSettingEntries">
+        <item>Do not allow any site to request access to Bluetooth devices via the Web Bluetooth API</item>
+        <item>Allow sites to ask the user to grant access to a nearby Bluetooth device</item>
+    </string-array>
+    <string-array name="DefaultWebBluetoothGuardSettingValues">
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="DefaultWebUsbGuardSettingEntries">
+        <item>Do not allow any site to request access to USB devices via the WebUSB API</item>
+        <item>Allow sites to ask the user to grant access to a connected USB device</item>
+    </string-array>
+    <string-array name="DefaultWebUsbGuardSettingValues">
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="DisableAuthNegotiateCnameLookupEntries">
+        <item>Disable CNAME lookup during Kerberos authentication</item>
+        <item>Use CNAME lookup during Kerberos authentication</item>
+    </string-array>
+    <string-array name="DisableAuthNegotiateCnameLookupValues">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+    <string-array name="DnsOverHttpsModeEntries">
+        <item>Disable DNS-over-HTTPS</item>
+        <item>Enable DNS-over-HTTPS with insecure fallback</item>
+        <item>Enable DNS-over-HTTPS without insecure fallback</item>
+    </string-array>
+    <string-array name="DnsOverHttpsModeValues">
+        <item>off</item>
+        <item>automatic</item>
+        <item>secure</item>
+    </string-array>
+    <array name="ExplicitlyAllowedNetworkPortsEntries" />
+    <array name="ExplicitlyAllowedNetworkPortsValues" />
+    <string-array name="ForceGoogleSafeSearchEntries">
+        <item>Force the use of SafeSearch in Google Search</item>
+        <item>Do not enforce the use of SafeSearch in Google Search</item>
+    </string-array>
+    <string-array name="ForceGoogleSafeSearchValues">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+    <string-array name="ForceMajorVersionToMinorPositionInUserAgentEntries">
+        <item>Default to browser settings for User-Agent string version.</item>
+        <item>The User-Agent string will not freeze the major version.</item>
+        <item>"The User-Agent string will freeze the major version as 99 and include the browser's major version in the minor position."</item>
+    </string-array>
+    <string-array name="ForceMajorVersionToMinorPositionInUserAgentValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="ForceYouTubeRestrictEntries">
+        <item>Do not enforce Restricted Mode on YouTube</item>
+        <item>Enforce at least Moderate Restricted Mode on YouTube</item>
+        <item>Enforce Strict Restricted Mode for YouTube</item>
+    </string-array>
+    <string-array name="ForceYouTubeRestrictValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="HttpsOnlyModeEntries">
+        <item>Allow users to enable HTTPS-Only Mode</item>
+        <item>Do not allow users to enable HTTPS-Only Mode</item>
+        <item>Force enable HTTPS-Only Mode (not supported yet)</item>
+    </string-array>
+    <string-array name="HttpsOnlyModeValues">
+        <item>allowed</item>
+        <item>disallowed</item>
+        <item>force_enabled</item>
+    </string-array>
+    <string-array name="IncognitoModeAvailabilityEntries">
+        <item>Incognito mode available</item>
+        <item>Incognito mode disabled</item>
+    </string-array>
+    <string-array name="IncognitoModeAvailabilityValues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="InsecurePrivateNetworkRequestsAllowedEntries">
+        <item>Allow insecure websites to make requests to any network endpoint</item>
+        <item>Use default behavior when determining if insecure websites can make requests to any network endpoint</item>
+    </string-array>
+    <string-array name="InsecurePrivateNetworkRequestsAllowedValues">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+    <string-array name="LensCameraAssistedSearchEnabledEntries">
+        <item>Enable Google Lens camera assisted search for Enterprise user</item>
+        <item>Disable Google Lens camera assisted search for Enterprise user</item>
+    </string-array>
+    <string-array name="LensCameraAssistedSearchEnabledValues">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+    <string-array name="NTPContentSuggestionsEnabledEntries">
+        <item>Show content suggestions on the New Tab page</item>
+        <item>Do not show content suggestions on the New Tab page</item>
+    </string-array>
+    <string-array name="NTPContentSuggestionsEnabledValues">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+    <string-array name="NetworkPredictionOptionsEntries">
+        <item>Predict network actions on any network connection</item>
+        <item>Predict network actions on any network that is not cellular. (Deprecated in 50, removed in 52. After 52, if value 1 is set, it will be treated as 0 - predict network actions on any network connection.)</item>
+        <item>Do not predict network actions on any network connection</item>
+    </string-array>
+    <string-array name="NetworkPredictionOptionsValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="NtlmV2EnabledEntries">
+        <item>Turn NTLMv2 on</item>
+        <item>Turn NTLMv2 off</item>
+    </string-array>
+    <string-array name="NtlmV2EnabledValues">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+    <string-array name="PasswordLeakDetectionEnabledEntries">
+        <item>Enable password leak detection</item>
+        <item>Disable password leak detection</item>
+    </string-array>
+    <string-array name="PasswordLeakDetectionEnabledValues">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+    <string-array name="PasswordManagerEnabledEntries">
+        <item>Enable saving passwords using the password manager</item>
+        <item>Disable saving passwords using the password manager</item>
+    </string-array>
+    <string-array name="PasswordManagerEnabledValues">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+    <string-array name="PrintingEnabledEntries">
+        <item>Enable printing</item>
+        <item>Disable printing</item>
+    </string-array>
+    <string-array name="PrintingEnabledValues">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+    <string-array name="SSLVersionMinEntries">
+        <item>TLS 1.2</item>
+    </string-array>
+    <string-array name="SSLVersionMinValues">
+        <item>tls1.2</item>
+    </string-array>
+    <string-array name="SafeBrowsingProtectionLevelEntries">
+        <item>Safe Browsing is never active.</item>
+        <item>Safe Browsing is active in the standard mode.</item>
+        <item>Safe Browsing is active in the enhanced mode. This mode provides better security, but requires sharing more browsing information with Google.</item>
+    </string-array>
+    <string-array name="SafeBrowsingProtectionLevelValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="SavingBrowserHistoryDisabledEntries">
+        <item>Disable saving browser history</item>
+        <item>Enable saving browser history</item>
+    </string-array>
+    <string-array name="SavingBrowserHistoryDisabledValues">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+    <string-array name="SearchSuggestEnabledEntries">
+        <item>Enable search suggestions</item>
+        <item>Disable search suggestions</item>
+    </string-array>
+    <string-array name="SearchSuggestEnabledValues">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+    <string-array name="SetTimeoutWithout1MsClampEnabledEntries">
+        <item>Javascript setTimeout() with a timeout of 0ms will not clamp to 1ms.</item>
+        <item>Javascript setTimeout() with a timeout of 0ms will clamp to 1ms.</item>
+        <item>"'Default behavior for setTimeout() function clamp."</item>
+    </string-array>
+    <string-array name="SetTimeoutWithout1MsClampEnabledValues">
+        <item>True</item>
+        <item>False</item>
+        <item>None</item>
+    </string-array>
+    <string-array name="SuppressDifferentOriginSubframeDialogsEntries">
+        <item>Block JavaScript dialogs triggered from a different origin subframe.</item>
+        <item>Allow JavaScript dialogs triggered from a different origin subframe.</item>
+    </string-array>
+    <string-array name="SuppressDifferentOriginSubframeDialogsValues">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+    <string-array name="TosDialogBehaviorEntries">
+        <item>Use default browser behavior, shows the ToS and waits for the user to accept.</item>
+        <item>Automatically skips ToS and loads the browser.</item>
+    </string-array>
+    <string-array name="TosDialogBehaviorValues">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="UnthrottledNestedTimeoutEnabledEntries">
+        <item>Javascript setTimeout() will not be clamped until a higher nesting threshold.</item>
+        <item>Javascript setTimeout() will be clamped after a normal nesting threshold.</item>
+        <item>Default behavior for setTimeout() function nested clamp.</item>
+    </string-array>
+    <string-array name="UnthrottledNestedTimeoutEnabledValues">
+        <item>True</item>
+        <item>False</item>
+        <item>None</item>
+    </string-array>
+    <string-array name="UrlParamFilterEnabledEntries">
+        <item>Allow the browser to filter URL parameters.</item>
+        <item>Disallow any filtering of URL parameters.</item>
+    </string-array>
+    <string-array name="UrlParamFilterEnabledValues">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+    <string-array name="UserAgentClientHintsGREASEUpdateEnabledEntries">
+        <item>Allow the updated User-Agent GREASE algorithm to be run.</item>
+        <item>Force the prior User-Agent GREASE algorithm to be used.</item>
+    </string-array>
+    <string-array name="UserAgentClientHintsGREASEUpdateEnabledValues">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+    <string-array name="UserAgentReductionEntries">
+        <item>User Agent reduction will be controllable via Field-Trials and Origin-Trials.</item>
+        <item>User Agent reduction disabled, and not enabled by Field-Trials or Origin-Trials.</item>
+        <item>User Agent reduction will be enabled for all origins.</item>
+    </string-array>
+    <string-array name="UserAgentReductionValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="WebSQLAccessEntries">
+        <item>Force WebSQL to be enabled.</item>
+        <item>Allow WebSQL to be disabled by Chrome flag.</item>
+    </string-array>
+    <string-array name="WebSQLAccessValues">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+    <string-array name="WebXRImmersiveArEnabledEntries">
+        <item>"Allow creating WebXR's \"immersive-ar\" sessions"</item>
+        <item>"Prevent creating WebXR's \"immersive-ar\" sessions"</item>
+    </string-array>
+    <string-array name="WebXRImmersiveArEnabledValues">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+    <array name="cast_expanded_controller_default_control_buttons">
+        <item>@id/cast_button_type_closed_caption</item>
+        <item>@id/cast_button_type_skip_previous</item>
+        <item>@id/cast_button_type_skip_next</item>
+        <item>@id/cast_button_type_mute_toggle</item>
+    </array>
+    <array name="cast_mini_controller_default_control_buttons">
+        <item>@id/cast_button_type_empty</item>
+        <item>@id/cast_button_type_empty</item>
+        <item>@id/cast_button_type_play_pause_toggle</item>
+    </array>
+    <array name="chrome_preloaded_google_sans_fonts">
+        <item>@font/chrome_google_sans</item>
+        <item>@font/chrome_google_sans_medium</item>
+        <item>@font/chrome_google_sans_bold</item>
+    </array>
+    <array name="ui_com_google_android_gms_fonts_certs">
+        <item>@array/ui_com_google_android_gms_fonts_certs_dev</item>
+        <item>@array/ui_com_google_android_gms_fonts_certs_prod</item>
+    </array>
+    <string-array name="ui_com_google_android_gms_fonts_certs_dev">
+        <item>MIIEqDCCA5CgAwIBAgIJANWFuGx90071MA0GCSqGSIb3DQEBBAUAMIGUMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEQMA4GA1UEChMHQW5kcm9pZDEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDEiMCAGCSqGSIb3DQEJARYTYW5kcm9pZEBhbmRyb2lkLmNvbTAeFw0wODA0MTUyMzM2NTZaFw0zNTA5MDEyMzM2NTZaMIGUMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEQMA4GA1UEChMHQW5kcm9pZDEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDEiMCAGCSqGSIb3DQEJARYTYW5kcm9pZEBhbmRyb2lkLmNvbTCCASAwDQYJKoZIhvcNAQEBBQADggENADCCAQgCggEBANbOLggKv+IxTdGNs8/TGFy0PTP6DHThvbbR24kT9ixcOd9W+EaBPWW+wPPKQmsHxajtWjmQwWfna8mZuSeJS48LIgAZlKkpFeVyxW0qMBujb8X8ETrWy550NaFtI6t9+u7hZeTfHwqNvacKhp1RbE6dBRGWynwMVX8XW8N1+UjFaq6GCJukT4qmpN2afb8sCjUigq0GuMwYXrFVee74bQgLHWGJwPmvmLHC69EH6kWr22ijx4OKXlSIx2xT1AsSHee70w5iDBiK4aph27yH3TxkXy9V89TDdexAcKk/cVHYNnDBapcavl7y0RiQ4biu8ymM8Ga/nmzhRKya6G0cGw8CAQOjgfwwgfkwHQYDVR0OBBYEFI0cxb6VTEM8YYY6FbBMvAPyT+CyMIHJBgNVHSMEgcEwgb6AFI0cxb6VTEM8YYY6FbBMvAPyT+CyoYGapIGXMIGUMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEQMA4GA1UEChMHQW5kcm9pZDEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDEiMCAGCSqGSIb3DQEJARYTYW5kcm9pZEBhbmRyb2lkLmNvbYIJANWFuGx90071MAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQEEBQADggEBABnTDPEF+3iSP0wNfdIjIz1AlnrPzgAIHVvXxunW7SBrDhEglQZBbKJEk5kT0mtKoOD1JMrSu1xuTKEBahWRbqHsXclaXjoBADb0kkjVEJu/Lh5hgYZnOjvlba8Ld7HCKePCVePoTJBdI4fvugnL8TsgK05aIskyY0hKI9L8KfqfGTl1lzOv2KoWD0KWwtAWPoGChZxmQ+nBli+gwYMzM1vAkP+aayLe0a1EQimlOalO762r0GXO0ks+UeXde2Z4e+8S/pf7pITEI/tP+MxJTALw9QUWEv9lKTk+jkbqxbsh8nfBUapfKqYn0eidpwq2AzVp3juYl7//fKnaPhJD9gs=</item>
+    </string-array>
+    <string-array name="ui_com_google_android_gms_fonts_certs_prod">
+        <item>MIIEQzCCAyugAwIBAgIJAMLgh0ZkSjCNMA0GCSqGSIb3DQEBBAUAMHQxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtHb29nbGUgSW5jLjEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDAeFw0wODA4MjEyMzEzMzRaFw0zNjAxMDcyMzEzMzRaMHQxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtHb29nbGUgSW5jLjEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDCCASAwDQYJKoZIhvcNAQEBBQADggENADCCAQgCggEBAKtWLgDYO6IIrgqWbxJOKdoR8qtW0I9Y4sypEwPpt1TTcvZApxsdyxMJZ2JORland2qSGT2y5b+3JKkedxiLDmpHpDsz2WCbdxgxRczfey5YZnTJ4VZbH0xqWVW/8lGmPav5xVwnIiJS6HXk+BVKZF+JcWjAsb/GEuq/eFdpuzSqeYTcfi6idkyugwfYwXFU1+5fZKUaRKYCwkkFQVfcAs1fXA5V+++FGfvjJ/CxURaSxaBvGdGDhfXE28LWuT9ozCl5xw4Yq5OGazvV24mZVSoOO0yZ31j7kYvtwYK6NeADwbSxDdJEqO4k//0zOHKrUiGYXtqw/A0LFFtqoZKFjnkCAQOjgdkwgdYwHQYDVR0OBBYEFMd9jMIhF1Ylmn/Tgt9r45jk14alMIGmBgNVHSMEgZ4wgZuAFMd9jMIhF1Ylmn/Tgt9r45jk14aloXikdjB0MQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLR29vZ2xlIEluYy4xEDAOBgNVBAsTB0FuZHJvaWQxEDAOBgNVBAMTB0FuZHJvaWSCCQDC4IdGZEowjTAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBAUAA4IBAQBt0lLO74UwLDYKqs6Tm8/yzKkEu116FmH4rkaymUIE0P9KaMftGlMexFlaYjzmB2OxZyl6euNXEsQH8gjwyxCUKRJNexBiGcCEyj6z+a1fuHHvkiaai+KL8W1EyNmgjmyy8AW7P+LLlkR+ho5zEHatRbM/YAnqGcFh5iZBqpknHf1SKMXFh4dd239FJ1jWYfbMDMy3NS5CTMQ2XFI1MvcyUTdZPErjQfTbQe3aDQsQcafEQPD+nqActifKZ0Np0IS9L9kR/wbNvyz6ENwPiTrjV2KRkEjH78ZMcUQXg0L3BYHJ3lc69Vs5Ddf9uUGGMYldX3WfMBEmh/9iFBDAaTCK</item>
+    </string-array>
+</resources>
