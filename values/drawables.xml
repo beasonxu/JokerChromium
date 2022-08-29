@@ -6,6 +6,8 @@
     <item type="drawable" name="circular_progress_bar_background_small">@drawable/oval_surface_1</item>
     <item type="drawable" name="dialog_bg_tinted">@drawable/dialog_bg_baseline</item>
     <item type="drawable" name="ic_error_24dp_filled">@drawable/ic_error_grey800_24dp_filled</item>
+    <item type="drawable" name="ic_launcher">@mipmap/app_icon</item>
+    <item type="drawable" name="ic_launcher_round">@mipmap/app_icon</item>
     <item type="drawable" name="ic_more_vert_24dp">@drawable/ic_more_vert_24dp_on_light_bg</item>
     <item type="drawable" name="ic_offline_pin_24dp">@drawable/ic_offline_pin_24dp_on_light_bg</item>
     <item type="drawable" name="ic_play_circle_filled_24dp">@drawable/ic_play_circle_filled_24dp_on_light_bg</item>

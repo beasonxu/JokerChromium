@@ -54,6 +54,7 @@
         <entry key="app/src/main/res_browser_ui_style/drawable/ic_info_outline_grey_24dp.xml" value="0.1" />
         <entry key="app/src/main/res_browser_ui_style/drawable/ic_lightbulb_24dp.xml" value="0.1" />
         <entry key="app/src/main/res_browser_ui_style/drawable/ic_link_24dp.xml" value="0.1" />
+        <entry key="app/src/main/res_browser_ui_widget/drawable-v23/dialog_bg_no_shadow.xml" value="0.1" />
         <entry key="app/src/main/res_browser_ui_widget/drawable/bottom_sheet_background.xml" value="0.1" />
         <entry key="app/src/main/res_browser_ui_widget/drawable/ic_check_googblue_24dp_animated.xml" value="0.1" />
         <entry key="app/src/main/res_browser_ui_widget/drawable/search_toolbar_modern_bg.xml" value="0.1" />
@@ -71,6 +72,7 @@
         <entry key="app/src/main/res_feed/xml/feed_autoplay_preferences.xml" value="0.8145161290322581" />
         <entry key="app/src/main/res_keyboard/drawable/autofill_chip_inset.xml" value="0.1" />
         <entry key="app/src/main/res_keyboard/layout/all_passwords_bottom_sheet.xml" value="0.1" />
+        <entry key="app/src/main/res_keyboard/layout/credit_card_accessory_sheet.xml" value="0.10157041540020263" />
         <entry key="app/src/main/res_keyboard/layout/keyboard_accessory.xml" value="0.1" />
         <entry key="app/src/main/res_keyboard/layout/keyboard_accessory_modern.xml" value="0.1" />
         <entry key="app/src/main/res_keyboard/layout/keyboard_accessory_tabs.xml" value="0.1" />
@@ -89,6 +91,7 @@
         <entry key="app/src/main/res_page_info/layout/page_info_row.xml" value="0.1" />
         <entry key="app/src/main/res_password_check/drawable/ic_autofill_assistant_white_24dp.xml" value="0.1" />
         <entry key="app/src/main/res_password_check/drawable/password_check_positive.xml" value="0.1" />
+        <entry key="app/src/main/res_password_check/layout/password_check_header_item.xml" value="0.1" />
         <entry key="app/src/main/res_payments/drawable/elo_card.xml" value="0.1" />
         <entry key="app/src/main/res_photo_picker/drawable/ic_photo_camera_grey.xml" value="0.1" />
         <entry key="app/src/main/res_photo_picker/layout/video_player.xml" value="0.1" />

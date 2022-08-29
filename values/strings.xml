@@ -244,11 +244,6 @@
     <string name="WebUsbBlockedForUrlsTitle">Block WebUSB on these sites</string>
     <string name="WebXRImmersiveArEnabledDesc">Configures whether the sites that the user navigates to are allowed to create immersive Augmented Reality sessions using WebXR Device API. When this policy is unset or enabled, the WebXR Device API will accept \"immersive-ar\" during session creation, thus allowing the users to enter Augmented Reality experiences. When this policy is disabled, the WebXR Device API will reject requests to create sessions with mode set to \"immersive-ar\". The existing \"immersive-ar\" sessions (if any) will not be terminated. For more details about \"immersive-ar\" sessions, please see WebXR Augmented Reality Module specfication.</string>
     <string name="WebXRImmersiveArEnabledTitle">"Allow creating WebXR's \"immersive-ar\" sessions"</string>
-    <string name="__arcore_cancel">Cancel</string>
-    <string name="__arcore_continue">Continue</string>
-    <string name="__arcore_install_app">This application requires the latest version of Google Play Services for AR.</string>
-    <string name="__arcore_install_feature">This feature requires the latest version of Google Play Services for AR.</string>
-    <string name="__arcore_installing">Installing Google Play Services for AR…</string>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_up_description">Navigate up</string>
     <string name="abc_action_menu_overflow_description">More options</string>
@@ -616,7 +611,6 @@
     <string name="avs_setting_enabled_description">Google Assistant provides a better voice experience for searching the web and engaging with sites you have open. Google Assistant will receive the URL and contents of sites you use with it.</string>
     <string name="avs_setting_enabled_title">Enhanced voice search</string>
     <string name="back">Back</string>
-    <string name="back_button_content_description">back</string>
     <string name="background_sync_permission_title">Background sync</string>
     <string name="blocked_ads_dialog_always_allow">Allow for this site</string>
     <string name="blocked_ads_dialog_learn_more">Learn more</string>
@@ -739,7 +733,6 @@
     <string name="cablev2_your_devices_body">When you’re signed into the same Google Account, other devices can use this phone as a security key.</string>
     <string name="can_make_payment_title">Access payment methods</string>
     <string name="cancel">Cancel</string>
-    <string name="cancel_button">Cancel</string>
     <string name="card_unmask_input_hint">CVC</string>
     <string name="cast_ad_label">Ad</string>
     <string name="cast_casting_to_device">Casting to %1$s</string>
@@ -748,7 +741,6 @@
     <string name="cast_closed_captions_unavailable">Closed captions unavailable</string>
     <string name="cast_connecting_to_device">Connecting to %1$s</string>
     <string name="cast_disconnect">Disconnect</string>
-    <string name="cast_dynamic_group_name_format">%1$s + %2$d</string>
     <string name="cast_expanded_controller_ad_image_description">Image displayed while the cast receiver is playing an ad</string>
     <string name="cast_expanded_controller_ad_in_progress">Ad in progress…</string>
     <string name="cast_expanded_controller_background_image">Album art</string>
@@ -1006,17 +998,6 @@ Tap any word to search. To refine your search, touch &amp; hold to select more o
     <string name="desktop_site_title">Desktop site</string>
     <string name="details_link">Details</string>
     <string name="dev_ui_module_title">Developer UI</string>
-    <string name="dialog_button_got_it">GOT IT</string>
-    <string name="dialog_button_open_help_center">OPEN HELP CENTER</string>
-    <string name="dialog_message_incompatible_phone">A Daydream-ready phone is required. Visit the Daydream Help Center for more information.</string>
-    <string name="dialog_message_no_cardboard">Get the Cardboard app in order to configure your viewer.</string>
-    <string name="dialog_title">Configure</string>
-    <string name="dialog_title_incompatible_phone">Incompatible phone</string>
-    <string name="dialog_title_vr_core_not_enabled">Setup required</string>
-    <string name="dialog_title_vr_core_not_installed">Install required</string>
-    <string name="dialog_title_warning">Warning</string>
-    <string name="dialog_vr_core_not_enabled">This application may not work properly without enabling Google VR Services, please enable this in phone Settings before continuing.</string>
-    <string name="dialog_vr_core_not_installed">This application may not work properly without Google VR Services. Please install Google VR Services from the Play Store before continuing.</string>
     <string name="dino_widget_text">Chrome Dino</string>
     <string name="dino_widget_title">Chromium dino</string>
     <string name="disable_price_tracking_menu_item">Stop tracking price</string>
@@ -1224,8 +1205,6 @@ For example, some websites may respond to this request by showing you ads that a
     <string name="fre_welcome">Welcome to Chrome</string>
     <string name="gcm_fallback_notification_channel_label">Miscellaneous</string>
     <string name="gif_copied">GIF Copied</string>
-    <string name="go_to_playstore_button">Go to the Play Store</string>
-    <string name="go_to_vr_listeners_settings_button">Go to Settings</string>
     <string name="google_privacy_policy_url">https://policies.google.com/privacy</string>
     <string name="google_terms_of_service_dark_mode_url">https://policies.google.com/terms/embedded?color_scheme=dark</string>
     <string name="google_terms_of_service_title">Google Terms of Service</string>
@@ -1394,7 +1373,6 @@ For example, some websites may respond to this request by showing you ads that a
     <string name="keyboard_shortcut_webpage_group_header">Webpage shortcuts</string>
     <string name="keyboard_shortcut_zoom_in">Make everything on the page bigger</string>
     <string name="keyboard_shortcut_zoom_out">Make everything on the page smaller</string>
-    <string name="label">Label</string>
     <string name="language_settings">Languages</string>
     <string name="languages_content_description">To show content in your preferred languages, the sites you visit can see your preferences</string>
     <string name="languages_content_title">Content languages</string>
@@ -1473,21 +1451,31 @@ For example, some websites may respond to this request by showing you ads that a
     <string name="login_dialog_title">Sign in</string>
     <string name="login_dialog_username_field">Username</string>
     <string name="low_memory_error">Unable to complete previous operation due to low memory</string>
+    <string name="m3_ref_typeface_brand_display_regular">sans-serif</string>
     <string name="m3_ref_typeface_brand_medium">sans-serif-medium</string>
     <string name="m3_ref_typeface_brand_regular">sans-serif</string>
     <string name="m3_ref_typeface_plain_medium">sans-serif-medium</string>
     <string name="m3_ref_typeface_plain_regular">sans-serif</string>
+    <string name="m3_sys_motion_easing_accelerated">cubic-bezier(0.4, 0.0, 1.0, 1.0)</string>
+    <string name="m3_sys_motion_easing_decelerated">cubic-bezier(0.0, 0.0, 0.2, 1.0)</string>
     <string name="m3_sys_motion_easing_emphasized">path(M 0,0 C 0.05, 0, 0.133333, 0.06, 0.166666, 0.4 C 0.208333, 0.82, 0.25, 1, 1, 1)</string>
-    <string name="m3_sys_motion_easing_emphasized_accelerate">cubic-bezier(0.3, 0.0, 0.8, 0.2)</string>
-    <string name="m3_sys_motion_easing_emphasized_decelerate">cubic-bezier(0.1, 0.7, 0.1, 1.0)</string>
-    <string name="m3_sys_motion_easing_emphasized_path_data">M 0,0 C 0.05, 0, 0.133333, 0.06, 0.166666, 0.4 C 0.208333, 0.82, 0.25, 1, 1, 1</string>
-    <string name="m3_sys_motion_easing_legacy">cubic-bezier(0.4, 0.0, 0.2, 1.0)</string>
-    <string name="m3_sys_motion_easing_legacy_accelerate">cubic-bezier(0.4, 0.0, 1.0, 1.0)</string>
-    <string name="m3_sys_motion_easing_legacy_decelerate">cubic-bezier(0.0, 0.0, 0.2, 1.0)</string>
     <string name="m3_sys_motion_easing_linear">cubic-bezier(0.0, 0.0, 1.0, 1.0)</string>
-    <string name="m3_sys_motion_easing_standard">cubic-bezier(0.2, 0.0, 0.0, 1.0)</string>
-    <string name="m3_sys_motion_easing_standard_accelerate">cubic-bezier(0.3, 0.0, 1.0, 1.0)</string>
-    <string name="m3_sys_motion_easing_standard_decelerate">cubic-bezier(0.0, 0.0, 0.0, 1.0)</string>
+    <string name="m3_sys_motion_easing_standard">path(M 0,0 C 0.05, 0, 0.133333, 0.06, 0.166666, 0.4 C 0.208333, 0.82, 0.25, 1, 1, 1)</string>
+    <string name="m3_sys_typescale_body_large_font">sans-serif</string>
+    <string name="m3_sys_typescale_body_medium_font">sans-serif</string>
+    <string name="m3_sys_typescale_body_small_font">sans-serif</string>
+    <string name="m3_sys_typescale_display_large_font">sans-serif</string>
+    <string name="m3_sys_typescale_display_medium_font">sans-serif</string>
+    <string name="m3_sys_typescale_display_small_font">sans-serif</string>
+    <string name="m3_sys_typescale_headline_large_font">sans-serif</string>
+    <string name="m3_sys_typescale_headline_medium_font">sans-serif</string>
+    <string name="m3_sys_typescale_headline_small_font">sans-serif</string>
+    <string name="m3_sys_typescale_label_large_font">sans-serif-medium</string>
+    <string name="m3_sys_typescale_label_medium_font">sans-serif-medium</string>
+    <string name="m3_sys_typescale_label_small_font">sans-serif-medium</string>
+    <string name="m3_sys_typescale_title_large_font">sans-serif</string>
+    <string name="m3_sys_typescale_title_medium_font">sans-serif-medium</string>
+    <string name="m3_sys_typescale_title_small_font">sans-serif-medium</string>
     <string name="manage_metrics_settings">Manage usage data sharing</string>
     <string name="manage_passwords">Manage passwords</string>
     <string name="manage_passwords_text">View and manage saved passwords in your &lt;link>Google Account&lt;/link></string>
@@ -1715,7 +1703,6 @@ For example, some websites may respond to this request by showing you ads that a
     <string name="nfc_permission_title">NFC devices</string>
     <string name="nfc_prompt_turn_on">Turn on</string>
     <string name="no_bookmarks">No bookmarks</string>
-    <string name="no_browser_text">No browser to open website</string>
     <string name="no_matching_credential_description">%1$s may need to take additional steps to verify your payment</string>
     <string name="no_saved_website_settings">Files saved by websites appear here</string>
     <string name="no_thanks">No thanks</string>
@@ -2058,8 +2045,6 @@ For example, some websites may respond to this request by showing you ads that a
     <string name="photo_picker_select_image">Select an image</string>
     <string name="photo_picker_select_images">Select images</string>
     <string name="photo_picker_video_duration">%1$s / %2$s</string>
-    <string name="place_your_phone_into_cardboard">Place your phone into your Cardboard viewer</string>
-    <string name="place_your_viewer_into_viewer_format">Place your phone into your %s viewer</string>
     <string name="policy_dialog_proceed">Accept and sign in</string>
     <string name="popup_permission_title">Pop-ups and redirects</string>
     <string name="powered_by_chrome_message">Powered by Chrome</string>
@@ -2266,6 +2251,7 @@ Trust tokens improve privacy on the web and can’t be used to find out who you 
     <string name="privacy_sync_and_services_link_sync_on">For more settings that relate to privacy, security, and data collection, see &lt;link1>Sync&lt;/link1> and &lt;link2>Google services&lt;/link2></string>
     <string name="proceed_oma_download_message">Proceed to download the content?</string>
     <string name="product_logo_enterprise_alt_text">Chromium Enterprise logo</string>
+    <string name="product_version">104.0.5112.97</string>
     <string name="profiler_error_toast">Failed to start profiler</string>
     <string name="profiler_no_storage_toast">"Can't start profiler because external storage is not ready"</string>
     <string name="profiler_started_toast">Profiler started</string>
@@ -2479,7 +2465,6 @@ Trust tokens improve privacy on the web and can’t be used to find out who you 
     <string name="settings_automatic_mode_description">Secure DNS may not be available all the time</string>
     <string name="settings_automatic_mode_label">Use your current service provider</string>
     <string name="settings_automatic_mode_summary">Automatic</string>
-    <string name="settings_button_content_description">settings</string>
     <string name="settings_can_make_payment_toggle_label">Allow sites to check if you have payment methods saved</string>
     <string name="settings_custom">Custom</string>
     <string name="settings_https_first_mode_summary">Upgrade navigations to HTTPS and warn you before loading sites that don’t support it</string>
@@ -2498,7 +2483,6 @@ Trust tokens improve privacy on the web and can’t be used to find out who you 
     <string name="settings_secure_dns_title">Use secure DNS</string>
     <string name="settings_secure_dropdown_mode_description">Choose another provider</string>
     <string name="settings_secure_dropdown_mode_privacy_policy">"See this provider's &lt;a target=\"_blank\" href=\"$1\">privacy policy&lt;/a>"</string>
-    <string name="setup_button">Setup</string>
     <string name="share">Share</string>
     <string name="share_link_chooser_title">Share via</string>
     <string name="shared_clipboard_notification_text">Copied to your clipboard</string>
@@ -2641,8 +2625,6 @@ If you turn on sync, metrics may also include info about URLs you visit"</string
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="suppress_js_modal_dialogs">Prevent this page from creating additional dialogs</string>
     <string name="survey_module_title">Surveys</string>
-    <string name="switch_viewer_action">Switch</string>
-    <string name="switch_viewer_prompt">Using a different viewer?</string>
     <string name="sync_account_info">Signed in as %1$s.</string>
     <string name="sync_autofill">Addresses and more</string>
     <string name="sync_bookmarks">Bookmarks</string>
