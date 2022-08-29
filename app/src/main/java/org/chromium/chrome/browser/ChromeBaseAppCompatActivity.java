@@ -129,6 +129,8 @@ public class ChromeBaseAppCompatActivity extends AppCompatActivity
 
     @Override
     public void setTheme(@StyleRes int resid) {
+
+        String resName = getResources().getResourceName(resid);
         super.setTheme(resid);
         mThemeResIds.add(resid);
     }
