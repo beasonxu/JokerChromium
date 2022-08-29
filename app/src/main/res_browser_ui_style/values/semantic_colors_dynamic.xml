@@ -3,45 +3,45 @@
      Use of this source code is governed by a BSD-style license that can be
      found in the LICENSE file. -->
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <color name="default_bg_color">@color/default_bg_color_dark</color>
-    <color name="default_bg_color_elev_0">@color/default_bg_color_dark</color>
+    <color name="default_bg_color">?colorSurface</color>
+    <color name="default_bg_color_elev_0">?colorSurface</color>
 
-    <color name="default_control_color_active">@color/default_control_color_active_dark</color>
-    <color name="default_control_color_normal">@color/default_control_color_normal_dark</color>
+    <color name="default_control_color_active">?colorPrimary</color>
+    <color name="default_control_color_normal">?colorOnSurfaceVariant</color>
 
-    <color name="default_icon_color">@color/default_icon_color_light</color>
-    <color name="default_icon_color_accent1">@color/default_control_color_active_dark</color>
-    <color name="default_icon_color_inverse">@color/default_icon_color_dark</color>
+    <color name="default_icon_color">?colorOnSurface</color>
+    <color name="default_icon_color_accent1">?colorPrimary</color>
+    <color name="default_icon_color_inverse">?colorOnSurfaceInverse</color>
     <color name="default_icon_color_on_accent1">?colorOnPrimary</color>
-    <color name="default_icon_color_secondary">@color/default_control_color_normal_dark</color>
+    <color name="default_icon_color_secondary">?colorOnSurfaceVariant</color>
 
-    <color name="default_text_color">@color/default_icon_color_light</color>
-    <color name="default_text_color_accent1">@color/default_control_color_active_dark</color>
+    <color name="default_text_color">?colorOnSurface</color>
+    <color name="default_text_color_accent1">?colorPrimary</color>
     <color name="default_text_color_on_accent1">?colorOnPrimary</color>
     <color name="default_text_color_on_accent2_container">?colorOnSecondaryContainer</color>
-    <color name="default_text_color_secondary">@color/default_control_color_normal_dark</color>
+    <color name="default_text_color_secondary">?colorOnSurfaceVariant</color>
 
     <color name="switch_enabled_unchecked_color_dark">?colorOutline</color>
-    <color name="switch_enabled_unchecked_color_light">@color/default_icon_color_light</color>
-    <color name="switch_track_disabled_color">@color/default_icon_color_light</color>
-    <color name="switch_thumb_disabled_color">@color/default_icon_color_dark</color>
+    <color name="switch_enabled_unchecked_color_light">?colorOnSurface</color>
+    <color name="switch_track_disabled_color">?colorOnSurface</color>
+    <color name="switch_thumb_disabled_color">?colorOnSurfaceInverse</color>
 
     <color name="hairline_stroke_color">?colorOutline</color>
-    <color name="divider_line_bg_color">@color/default_bg_color_darkVariant</color>
+    <color name="divider_line_bg_color">?colorSurfaceVariant</color>
     <color name="drag_handlebar_color" tools:ignore="UnusedResources">@color/divider_line_bg_color</color>
 
     <color name="chip_bg_color">@color/default_bg_color</color>
     <color name="chip_bg_selected_color">?colorSecondaryContainer</color>
     <color name="chip_outline_color">?colorOutline</color>
-    <color name="chip_outline_focused_color">@color/default_icon_color_light</color>
-    <color name="chip_state_layer_color">@color/default_control_color_normal_dark</color>
+    <color name="chip_outline_focused_color">?colorOnSurface</color>
+    <color name="chip_state_layer_color">?colorOnSurfaceVariant</color>
     <color name="chip_state_layer_selected_color">?colorOnSecondaryContainer</color>
 
     <color name="toolbar_background_primary" >@color/default_bg_color</color>
 
     <!-- Gated by full dynamic colors param, no fallback needed. -->
-    <color name="circular_progress_icon_color_small_large">@color/default_control_color_active_dark</color>
-    <color name="circular_progress_outer_circle_progress_color_small">@color/default_control_color_active_dark</color>
+    <color name="circular_progress_icon_color_small_large">?colorPrimary</color>
+    <color name="circular_progress_outer_circle_progress_color_small">?colorPrimary</color>
 
     <!-- Colors that will be experimented with. -->
     <color name="default_text_color_link">@color/default_text_color_link_baseline</color>
