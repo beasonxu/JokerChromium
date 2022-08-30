@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"„%1$s“ reikia leidimo, kad galėtų naudoti vaizdo kamerą jūsų aplinkos 3D žemėlapiui kurti."</string>
+<string name="infobar_missing_camera_permission_text">"„%1$s“ reikia leidimo, kad galėtų naudoti vaizdo kamerą šioje svetainėje"</string>
+<string name="infobar_missing_microphone_permission_text">"„%1$s“ reikia leidimo, kad galėtų naudoti mikrofoną šioje svetainėje"</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"„%1$s“ reikia leidimo, kad galėtų naudoti vaizdo kamerą ir mikrofoną šioje svetainėje"</string>
+<string name="infobar_missing_location_permission_text">"„%1$s“ reikia leidimo, kad galėtų naudoti vietovės informaciją ir bendrinti ją su šia svetaine"</string>
+<string name="infobar_update_permissions_button_text">"Tęskite"</string>
+<string name="nfc_disabled_on_device_message">"Jei norite tęsti, „Android“ nustatymuose įjunkite ALR"</string>
+<string name="nfc_prompt_turn_on">"Įjungti"</string>
+<string name="overlay_detected_dialog_title">"Šioje svetainėje negalima prašyti jūsų leidimo"</string>
+<string name="overlay_detected_dialog_message">"Uždarykite visus debesėlius ar kitų programų perdangas. Tada bandykite dar kartą."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Gaukite pagalbos&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Susieti"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Signalo stiprumo lygis: %d juosta"</item>
+  <item quantity="few">"Signalo stiprumo lygis: %d juostos"</item>
+  <item quantity="many">"Signalo stiprumo lygis: %d juostos"</item>
+  <item quantity="other">"Signalo stiprumo lygis: %d juostų"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Prijungtas įrenginys"</string>
+<string name="bluetooth_dialog_title">"Svetainė %1$s nori būti susieta su"</string>
+<string name="bluetooth_not_found">"Nerasta jokių suderinamų įrenginių"</string>
+<string name="bluetooth_searching">"&lt;link&gt;Gaukite pagalbos&lt;/link&gt;, kol ieškoma įrenginių…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Gaukite pagalbos&lt;/link1&gt; arba &lt;link2&gt;ieškokite iš naujo&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"„Chrome“ reikalinga prieiga prie informacijos apie vietovę, kad galėtų nuskaityti įrenginius. Galimybė pasiekti informaciją apie vietovę &lt;services_link&gt;išjungta šiame įrenginyje&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"„Chrome“ reikalinga prieiga prie informacijos apie vietovę, kad galėtų nuskaityti įrenginius. &lt;permission_link&gt;Atnaujinkite leidimus&lt;/permission_link&gt;. Be to, galimybė pasiekti informaciją apie vietovę &lt;services_link&gt;išjungta šiame įrenginyje&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"„Chrome“ reikia leidimo nuskaityti įrenginius netoliese. &lt;permission_link&gt;Atnaujinkite leidimus&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"„Chrome“ reikalinga prieiga prie vietos, kad galėtų nuskaityti įrenginius. &lt;permission_link&gt;Atnaujinkite leidimus&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Gaukite pagalbos&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"„Chrome“ nepavyksta įjungti „Bluetooth“ adapterio"</string>
+<string name="bluetooth_adapter_off">"&lt;link&gt;Įjunkite „Bluetooth“&lt;/link&gt;, kad būtų leidžiama susieti"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s nori nuskaityti netoliese esančius „Bluetooth“ įrenginius. Rasti šie įrenginiai:"</string>
+<string name="bluetooth_scanning_device_unknown">"Nežinomas arba nepalaikomas įrenginys (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"„%1$s“ (%2$s)"</string>
+</resources>

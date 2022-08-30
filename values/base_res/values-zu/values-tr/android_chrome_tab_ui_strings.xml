@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="iph_tab_groups_quickly_compare_pages_text">"Grup oluşturarak sayfaları hızlıca karşılaştırın. Başlamak için bir bağlantıya dokunup basılı tutun."</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_text">"Başka bir sekmeyi görmek için dokunun"</string>
+<string name="iph_tab_groups_your_tabs_together_text">"Sekmeleriniz burada gruplandırılır"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_accessibility_text">"Ekranın altına yakın bir yerde bulunan sekme grubunuzdaki sekmeler arasında geçiş yapın"</string>
+<string name="undo_bar_group_tabs_message">"%1$s sekme gruplandı"</string>
+<plurals name="bottom_tab_grid_title_placeholder">
+  <item quantity="one">"%1$d sekme"</item>
+  <item quantity="other">"%1$d sekme"</item>
+</plurals>
+<string name="bottom_tab_grid_new_tab">"Gruba yeni sekme ekler"</string>
+<string name="accessibility_bottom_tab_grid_close_tab_sheet">"Tam ekran ızgarayı gizler"</string>
+<string name="accessibility_bottom_tab_strip_expand_tab_sheet">"Grubun sekmelerini tam ekran ızgarada gösterir"</string>
+<string name="accessibility_bottom_tab_strip_close_strip">"Sekme şeridini kapat"</string>
+<string name="tabswitcher_create_group">"Grup oluştur"</string>
+<string name="accessibility_tab_switcher">"Sekme Değiştirici"</string>
+<string name="accessibility_close_tab_group_button">"%1$s sekmeli sekme grubunu kapat"</string>
+<string name="accessibility_close_tab_group_button_with_group_name">"%2$s sekmeli %1$s grubunu kapat"</string>
+<string name="tab_selection_editor_group">"Grup"</string>
+<string name="tab_selection_editor_toolbar_select_tabs">"Sekmeleri seçin"</string>
+<plurals name="accessibility_tab_selection_editor_group_button">
+  <item quantity="one">"Seçilen %1$d sekmeyi gruplandır"</item>
+  <item quantity="other">"Seçilen %1$d sekmeyi gruplandır"</item>
+</plurals>
+<string name="accessibility_tab_selection_editor_back_button">"Çoklu seçim modunu gizle"</string>
+<string name="accessibility_tab_selection_editor">"Çoklu seçim modu"</string>
+<string name="tab_grid_dialog_remove_from_group">"Gruptan kaldır"</string>
+<string name="tab_grid_dialog_toolbar_remove_from_group">"Sekmeleri gruptan kaldır"</string>
+<string name="tab_grid_dialog_selection_mode_remove">"Kaldır"</string>
+<string name="tab_grid_dialog_toolbar_share_group">"Grubu paylaş"</string>
+<string name="tab_grid_dialog_toolbar_edit_group_name">"Grup adını düzenle"</string>
+<string name="accessibility_expand_tab_group">"%1$s sekmeli sekme grubunu genişlet."</string>
+<string name="accessibility_expand_tab_group_with_group_name">"%1$s adlı %2$s sekmeli sekme grubunu genişletin."</string>
+<plurals name="accessibility_tab_selection_dialog_remove_button">
+  <item quantity="one">"Seçilen %1$d sekmeyi gruptan kaldır."</item>
+  <item quantity="other">"Seçilen %1$d sekmeyi gruptan kaldır."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button">
+  <item quantity="one">"%1$d sekmeyi daralt."</item>
+  <item quantity="other">"%1$d sekmeli sekme grubunu daralt."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button_with_group_name">
+  <item quantity="one">"%1$d sekmeyi daralt."</item>
+  <item quantity="other">"%2$d sekmeli %1$s sekme grubunu daralt."</item>
+</plurals>
+<string name="accessibility_tab_grid_dialog">"Sekme grubu genişletildi"</string>
+<string name="iph_drag_and_drop_introduction">"Gruplandırmak için sekmeleri sürükleyin"</string>
+<string name="iph_drag_and_drop_show_me">"Göster"</string>
+<string name="iph_drag_and_drop_title">"Organize çalışın"</string>
+<string name="iph_drag_and_drop_content">"Sekmeleri gruplamak için bir sekmeye dokunup basılı tutun. Ardından başka bir sekmenin üzerine sürükleyin."</string>
+<string name="tab_switcher_carousel_title">"Göz atmaya devam edin"</string>
+<string name="tab_switcher_carousel_view_all">"Tümünü göster"</string>
+<string name="tab_suggestion_review_button">"İncele"</string>
+<string name="tab_suggestion_close_tab_action_button">"Kapat"</string>
+<string name="tab_suggestion_close_stale_message">"%1$s sekmeyi son zamanlarda hiç kullanmadınız. Bunlar kapatılsın mı?"</string>
+<string name="tab_suggestion_group_tabs_message">"%1$s sekme birbiriyle ilgili görünüyor. Bunlar gruplandırılsın mı?"</string>
+<string name="accessibility_tab_suggestion_review_button">"Önerileri inceleyin."</string>
+<string name="accessibility_tab_suggestion_close_stale_message">"Öneri: %1$s sekmeyi son zamanlarda hiç kullanmadınız. Bunlar kapatılsın mı?"</string>
+<string name="accessibility_tab_suggestion_group_tabs_message">"Öneri: %1$s sekme birbiriyle ilgili görünüyor. Bunlar gruplandırılsın mı?"</string>
+<string name="accessibility_tab_suggestion_dismiss_button">"Önerileri kapat."</string>
+<plurals name="accessibility_tab_suggestion_close_tab_action_button">
+  <item quantity="one">"Seçilen %1$d sekmeyi kapat"</item>
+  <item quantity="other">"Seçilen %1$d sekmeyi kapat"</item>
+</plurals>
+<string name="accessibility_tab_movement_left">"Sekmeyi sola taşı"</string>
+<string name="accessibility_tab_movement_right">"Sekmeyi sağa taşı"</string>
+<string name="accessibility_tab_movement_up">"Sekmeyi yukarı taşı"</string>
+<string name="accessibility_tab_movement_down">"Sekmeyi aşağı taşı"</string>
+<string name="undo_tab_strip_closure_message">"Sekme şeridi kapalı"</string>
+<string name="tab_strip_info_bar_question">"Sekme şeridi tekrar gösterilmesin mi?"</string>
+<string name="tab_strip_info_bar_no_reshow">"Bir daha gösterme"</string>
+<string name="tab_strip_info_bar_reshow">"Daha sonra göster"</string>
+<string name="price_drop_spotted_title">"Fiyat düşüşü belirlendi"</string>
+<string name="price_drop_spotted_content">"Açık sekmelerinizdeki hangi öğenin fiyatının daha düşük olduğunu görün"</string>
+<string name="price_drop_spotted_show_me">"Göster"</string>
+<string name="price_drop_spotted_lower_price">"Daha düşük fiyat"</string>
+<string name="accessibility_tab_price_card">"Yakın zamanda bu ürünün %1$s olan fiyatı düştü ve %2$s oldu"</string>
+<string name="price_drop_alerts_card_title">"Fiyat düşüşü uyarıları alınsın mı?"</string>
+<string name="price_drop_alerts_card_get_notified_content">"Açık bir sekmede daha düşük fiyat varsa uyarı alırsınız"</string>
+<string name="price_drop_alerts_card_get_notified">"Haberdar olun"</string>
+<string name="price_drop_alerts_card_go_to_settings_content">"Açık bir sekmede daha düşük fiyat olduğunda uyarı almak için Ayarlar\'da bildirimleri açın."</string>
+<string name="price_drop_alerts_card_go_to_settings">"Ayarlar\'a git"</string>
+<string name="price_tracking_settings">"Fiyat takibi ayarları"</string>
+<string name="track_prices_on_tabs">"Sekmelerde fiyatları takip et"</string>
+<string name="track_prices_on_tabs_description">"Sekmelerinizde fiyat düşüşlerini görün"</string>
+<string name="price_drop_alerts">"Fiyat düşüşü uyarıları"</string>
+<string name="price_drop_alerts_description">"Fiyatlar düştüğünde haberdar olun"</string>
+<string name="price_drop_notification_content_title">"%2$s ürünün fiyatı %1$s düştü"</string>
+<string name="price_drop_notification_content_text">"Şimdi %2$s sitesinde %1$s"</string>
+<string name="price_drop_notification_action_visit_site">"Siteye git"</string>
+<string name="price_drop_notification_action_turn_off_alert">"Ürünü takip etmeyi bırak"</string>
+<string name="merchant_viewer_message_title">"Mağaza bilgileri görüntülensin mi?"</string>
+<string name="merchant_viewer_message_title_see_reviews">"Mağaza yorumları gösterilsin mi?"</string>
+<string name="merchant_viewer_message_action">"Görüntüle"</string>
+<string name="merchant_viewer_message_description_rating">"%1$s/%2$s puan"</string>
+<plurals name="merchant_viewer_message_description_reviews">
+  <item quantity="one">"(%1$s yorum)"</item>
+  <item quantity="other">"(%1$s yorum)"</item>
+</plurals>
+<plurals name="merchant_viewer_message_description_reviews_from_google">
+  <item quantity="one">"Google\'dan %1$s yorum"</item>
+  <item quantity="other">"Google\'dan %1$s yorum"</item>
+</plurals>
+<string name="merchant_viewer_message_rating_numerical">"%1$.1f/%2$d"</string>
+<string name="merchant_viewer_message_rating_word">"puan"</string>
+<plurals name="accessibility_merchant_viewer_message_description">
+  <item quantity="one">" %1$s/%2$s puan, %3$d yorum"</item>
+  <item quantity="other">"%1$s/%2$s puan, %3$d yorum"</item>
+</plurals>
+<string name="accessibility_merchant_viewer_message_announcement">"Mağaza bilgilerini görüntüleme seçeneği, ekranın üst kısmına yakın bir yerdedir"</string>
+<string name="merchant_viewer_preview_sheet_title">"Google | Bu mağaza hakkında"</string>
+<string name="merchant_viewer_omnibox_icon_iph">"Mağaza bilgilerini görün"</string>
+<string name="page_info_store_info_title">"Mağaza bilgileri"</string>
+<string name="page_info_store_info_description_with_no_review">"(mağaza puanı)"</string>
+<string name="page_info_store_info_description_with_no_rating">"İade politikasını ve daha fazlasını görün"</string>
+<string name="merchant_viewer_preview_sheet_description">"Bu mağazayla ilgili bilgiler"</string>
+<string name="merchant_viewer_preview_sheet_opened_half">"Bu mağazayla ilgili bilgiler ekranın yarısına kadar açıldı"</string>
+<string name="merchant_viewer_preview_sheet_opened_full">"Bu mağazayla ilgili bilgiler tam ekranda açıldı"</string>
+<string name="merchant_viewer_preview_sheet_closed">"Bu mağazayla ilgili bilgiler kapatıldı"</string>
+<string name="close_all_tabs_dialog_title">"Tüm sekmeler kapatılsın mı?"</string>
+<string name="close_all_tabs_dialog_message">"Kapatılan sekmelerinizi, Chrome ana menüsündeki son sekmelerde bulabilirsiniz"</string>
+<string name="close_all_tabs_dialog_title_incognito">"Tüm gizli sekmeler kapatılsın mı?"</string>
+<string name="close_all_tabs_dialog_message_incognito">"Bu gizli sekmelerdeki etkinliğiniz bu cihazdan silinecektir"</string>
+</resources>

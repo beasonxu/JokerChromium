@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="touch_to_fill_sheet_title_single">"Kontynuuj na koncie"</string>
+<string name="touch_to_fill_sheet_title">"Wybierz konto"</string>
+<string name="touch_to_fill_sheet_uniform_title">"Czy użyć zapisanego hasła?"</string>
+<string name="touch_to_fill_sheet_subtitle_not_secure">"%1$s (not secure)"</string>
+<string name="touch_to_fill_sheet_subtitle_submission">"Zalogujesz się w witrynie %1$s"</string>
+<string name="touch_to_fill_sheet_subtitle_insecure_submission">"Zalogujesz się w witrynie %1$s (not secure)"</string>
+<string name="touch_to_fill_content_description">"Lista uprawnień do wypełnienia po kliknięciu."</string>
+<string name="touch_to_fill_sheet_half_height">"Lista uprawnień do wypełnienia po kliknięciu jest otwarta do połowy wysokości."</string>
+<string name="touch_to_fill_sheet_full_height">"Lista uprawnień do wypełnienia po kliknięciu jest otwarta na całą wysokość."</string>
+<string name="touch_to_fill_sheet_closed">"Lista uprawnień do wypełnienia po kliknięciu jest zamknięta."</string>
+<string name="manage_passwords">"Zarządzaj hasłami"</string>
+<string name="touch_to_fill_continue">"Dalej"</string>
+<string name="touch_to_fill_signin">"Zaloguj się"</string>
+<string name="touch_to_fill_sheet_generic_title">"Chcesz się zalogować na tej stronie?"</string>
+</resources>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="iph_tab_groups_quickly_compare_pages_text">"ប្រៀបធៀបទំព័រ​យ៉ាងរហ័សដោយ​ការបង្កើតក្រុម។ ដើម្បីចាប់ផ្ដើម សូមចុច​តំណឱ្យជាប់។"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_text">"ចុចដើម្បីមើល​ផ្ទាំងផ្សេងទៀត"</string>
+<string name="iph_tab_groups_your_tabs_together_text">"ផ្ទាំងរបស់អ្នកត្រូវ​បានដាក់ជាក្រុម​រួមគ្នានៅទីនេះ"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_accessibility_text">"ប្ដូររវាងផ្ទាំង​នៅក្នុងក្រុម​ផ្ទាំងរបស់​អ្នកនៅជិតផ្នែកខាង​ក្រោមបំផុតរបស់​អេក្រង់"</string>
+<string name="undo_bar_group_tabs_message">"បានដាក់ផ្ទាំង %1$s ជាក្រុម"</string>
+<plurals name="bottom_tab_grid_title_placeholder">
+  <item quantity="one">"ផ្ទាំង %1$d"</item>
+  <item quantity="other">"ផ្ទាំង %1$d"</item>
+</plurals>
+<string name="bottom_tab_grid_new_tab">"បញ្ចូលផ្ទាំង​ថ្មីទៅក្រុម"</string>
+<string name="accessibility_bottom_tab_grid_close_tab_sheet">"លាក់ក្រឡា​ពេញ​អេក្រង់"</string>
+<string name="accessibility_bottom_tab_strip_expand_tab_sheet">"បង្ហាញផ្ទាំង​របស់ក្រុមនៅក្នុងក្រឡា​ពេញ​អេក្រង់"</string>
+<string name="accessibility_bottom_tab_strip_close_strip">"បិទរបារផ្ទាំង"</string>
+<string name="tabswitcher_create_group">"បង្កើត​ក្រុម"</string>
+<string name="accessibility_tab_switcher">"មុខងារប្ដូរផ្ទាំង"</string>
+<string name="accessibility_close_tab_group_button">"បិទក្រុមផ្ទាំង​ដែលមាន %1$sផ្ទាំង"</string>
+<string name="accessibility_close_tab_group_button_with_group_name">"បិទក្រុម %1$s ដែលមាន %2$sផ្ទាំង"</string>
+<string name="tab_selection_editor_group">"ដាក់ជាក្រុម"</string>
+<string name="tab_selection_editor_toolbar_select_tabs">"ជ្រើសរើសផ្ទាំង"</string>
+<plurals name="accessibility_tab_selection_editor_group_button">
+  <item quantity="one">"បញ្ចូលផ្ទាំង​ដែលបានជ្រើសរើស %1$d ​ទៅក្នុងក្រុម"</item>
+  <item quantity="other">"បញ្ចូលផ្ទាំង​ដែលបានជ្រើសរើស %1$d ​ទៅក្នុងក្រុម"</item>
+</plurals>
+<string name="accessibility_tab_selection_editor_back_button">"លាក់មុខងារ​ជ្រើសរើសច្រើន"</string>
+<string name="accessibility_tab_selection_editor">"មុខងារ​ជ្រើសរើសច្រើន"</string>
+<string name="tab_grid_dialog_remove_from_group">"លុបចេញ​ពីក្រុម"</string>
+<string name="tab_grid_dialog_toolbar_remove_from_group">"លុបផ្ទាំង​ចេញពីក្រុម"</string>
+<string name="tab_grid_dialog_selection_mode_remove">"ដកចេញ"</string>
+<string name="tab_grid_dialog_toolbar_share_group">"ចែករំលែកក្រុម"</string>
+<string name="tab_grid_dialog_toolbar_edit_group_name">"កែ​ឈ្មោះក្រុម"</string>
+<string name="accessibility_expand_tab_group">"ពង្រីកក្រុមផ្ទាំង​ដែលមាន %1$sផ្ទាំង។"</string>
+<string name="accessibility_expand_tab_group_with_group_name">"ពង្រីកក្រុមផ្ទាំង %1$s ជាមួយផ្ទាំង %2$s។"</string>
+<plurals name="accessibility_tab_selection_dialog_remove_button">
+  <item quantity="one">"លុបផ្ទាំង %1$d ដែល​បានជ្រើសរើស​ពីក្រុម។"</item>
+  <item quantity="other">"លុបផ្ទាំង %1$d ដែល​បានជ្រើសរើស​ពីក្រុម។"</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button">
+  <item quantity="one">"បង្រួមផ្ទាំង %1$d។"</item>
+  <item quantity="other">"បង្រួមក្រុមផ្ទាំង​ដែលមាន %1$dផ្ទាំង។"</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button_with_group_name">
+  <item quantity="one">"បង្រួមផ្ទាំង %1$d។"</item>
+  <item quantity="other">"បង្រួមក្រុមផ្ទាំង %1$s ដែលមាន %2$dផ្ទាំង។"</item>
+</plurals>
+<string name="accessibility_tab_grid_dialog">"បានពង្រីក​ក្រុមផ្ទាំង"</string>
+<string name="iph_drag_and_drop_introduction">"អូសផ្ទាំង​នានា ដើម្បី​ដាក់ផ្ទាំង​ទាំងនោះ​ជាក្រុម"</string>
+<string name="iph_drag_and_drop_show_me">"បង្ហាញខ្ញុំ"</string>
+<string name="iph_drag_and_drop_title">"រៀបចំឱ្យមានសណ្តាប់ធ្នាប់"</string>
+<string name="iph_drag_and_drop_content">"ដើម្បីដាក់​ផ្ទាំង​ជាក្រុម សូម​ចុចផ្ទាំង​ឱ្យជាប់។ រួចអូស​ផ្ទាំងនោះ​ដាក់លើ​ផ្ទាំង​ផ្សេងទៀត។"</string>
+<string name="tab_switcher_carousel_title">"ការអានបន្ត"</string>
+<string name="tab_switcher_carousel_view_all">"មើលទាំងអស់"</string>
+<string name="tab_suggestion_review_button">"ពិនិត្យមើល"</string>
+<string name="tab_suggestion_close_tab_action_button">"បិទ"</string>
+<string name="tab_suggestion_close_stale_message">"ផ្ទាំង %1$s របស់អ្នក​មិនត្រូវបាន​ប្រើទេ​នាពេល​ថ្មីៗនេះ។ បិទផ្ទាំង​ទាំងនោះឬ?"</string>
+<string name="tab_suggestion_group_tabs_message">"ផ្ទាំង %1$s ហាក់ដូចជាពាក់ព័ន្ធគ្នា។ បញ្ចូលផ្ទាំងទាំងនេះទៅក្នុងក្រុមឬ?"</string>
+<string name="accessibility_tab_suggestion_review_button">"ពិនិត្យមើល​ការណែនាំ​។"</string>
+<string name="accessibility_tab_suggestion_close_stale_message">"ការណែនាំ៖ ផ្ទាំង %1$s របស់អ្នក​មិនត្រូវបាន​ប្រើទេ​នាពេល​ថ្មីៗនេះ។ បិទផ្ទាំង​ទាំងនោះឬ?"</string>
+<string name="accessibility_tab_suggestion_group_tabs_message">"ការណែនាំ៖ ផ្ទាំង %1$s ហាក់ដូចជាពាក់ព័ន្ធគ្នា។ បញ្ចូលផ្ទាំងទាំងនេះទៅក្នុងក្រុមឬ?"</string>
+<string name="accessibility_tab_suggestion_dismiss_button">"ច្រានចោល​ការណែនាំ​។"</string>
+<plurals name="accessibility_tab_suggestion_close_tab_action_button">
+  <item quantity="one">"បិទ​ផ្ទាំង​ដែលបាន​ជ្រើសរើស %1$d"</item>
+  <item quantity="other">"បិទ​ផ្ទាំង​ដែលបាន​ជ្រើសរើស %1$d"</item>
+</plurals>
+<string name="accessibility_tab_movement_left">"ផ្លាស់ទី​ផ្ទាំង​ទៅ​ខាងឆ្វេង"</string>
+<string name="accessibility_tab_movement_right">"ផ្លាស់ទី​ផ្ទាំង​ទៅ​ខាងស្ដាំ"</string>
+<string name="accessibility_tab_movement_up">"រំកិល​ផ្ទាំង​ឡើងលើ"</string>
+<string name="accessibility_tab_movement_down">"ផ្លាស់ទី​ផ្ទាំង​ចុះក្រោម"</string>
+<string name="undo_tab_strip_closure_message">"បានបិទរបារផ្ទាំង"</string>
+<string name="tab_strip_info_bar_question">"កុំបង្ហាញរបារផ្ទាំងម្ដងទៀតឬ?"</string>
+<string name="tab_strip_info_bar_no_reshow">"កុំបង្ហាញម្ដងទៀត"</string>
+<string name="tab_strip_info_bar_reshow">"បង្ហាញពេលក្រោយ"</string>
+<string name="price_drop_spotted_title">"បានរកឃើញ​ការធ្លាក់ថ្លៃ"</string>
+<string name="price_drop_spotted_content">"មើលថាតើ​ទំនិញមួយ​ណានៅក្នុងផ្ទាំងដែលអ្នក​កំពុង​បើក​មានតម្លៃ​ទាបជាងមុន"</string>
+<string name="price_drop_spotted_show_me">"បង្ហាញខ្ញុំ"</string>
+<string name="price_drop_spotted_lower_price">"តម្លៃ​ទាប​ជាង​មុន"</string>
+<string name="accessibility_tab_price_card">"តម្លៃទំនិញនេះ​បានធ្លាក់ចុះ​ថ្មីៗនេះ​ពី %1$s ទៅ %2$s"</string>
+<string name="price_drop_alerts_card_title">"ទទួលបានការជូនដំណឹងអំពីការធ្លាក់ថ្លៃឬ?"</string>
+<string name="price_drop_alerts_card_get_notified_content">"អ្នកនឹងទទួលបាន​ការជូនដំណឹង នៅពេលមានតម្លៃទាបជាងមុននៅក្នុងផ្ទាំងដែលកំពុងបើក"</string>
+<string name="price_drop_alerts_card_get_notified">"ទទួល​ការជូន​ដំណឹង"</string>
+<string name="price_drop_alerts_card_go_to_settings_content">"ដើម្បី​ទទួលបាន​ការជូនដំណឹង នៅពេល​មានតម្លៃទាបជាងមុន​នៅក្នុងផ្ទាំងដែល​កំពុងបើក សូមបើក​ការជូនដំណឹង​នៅក្នុងការកំណត់។"</string>
+<string name="price_drop_alerts_card_go_to_settings">"ចូលទៅកាន់ការកំណត់"</string>
+<string name="price_tracking_settings">"ការកំណត់ការតាមដានតម្លៃ"</string>
+<string name="track_prices_on_tabs">"តាមដានតម្លៃនៅក្នុងផ្ទាំង"</string>
+<string name="track_prices_on_tabs_description">"មើលការធ្លាក់ថ្លៃនៅក្នុងផ្ទាំងរបស់អ្នក"</string>
+<string name="price_drop_alerts">"ការជូនដំណឹងអំពីការធ្លាក់ថ្លៃ"</string>
+<string name="price_drop_alerts_description">"ទទួលបានការជូនដំណឹងនៅពេលធ្លាក់ថ្លៃ"</string>
+<string name="price_drop_notification_content_title">"ធ្លាក់ថ្លៃ %1$s សម្រាប់ %2$s"</string>
+<string name="price_drop_notification_content_text">"ឥឡូវនេះ %1$s នៅលើ %2$s"</string>
+<string name="price_drop_notification_action_visit_site">"ចូលមើលគេហទំព័រ"</string>
+<string name="price_drop_notification_action_turn_off_alert">"បញ្ឈប់ការតាមដានផលិតផល"</string>
+<string name="merchant_viewer_message_title">"មើលព័ត៌មានអំពីហាងឬ?"</string>
+<string name="merchant_viewer_message_title_see_reviews">"មើលការវាយតម្លៃហាងឬ?"</string>
+<string name="merchant_viewer_message_action">"មើល"</string>
+<string name="merchant_viewer_message_description_rating">"ការវាយតម្លៃដោយដាក់ផ្កាយ %1$s/%2$s"</string>
+<plurals name="merchant_viewer_message_description_reviews">
+  <item quantity="one">"(មតិវាយតម្លៃ %1$s)"</item>
+  <item quantity="other">"(មតិវាយតម្លៃ %1$s)"</item>
+</plurals>
+<plurals name="merchant_viewer_message_description_reviews_from_google">
+  <item quantity="one">"ការវាយតម្លៃ %1$s ពី Google"</item>
+  <item quantity="other">"ការវាយតម្លៃ %1$s ពី Google"</item>
+</plurals>
+<string name="merchant_viewer_message_rating_numerical">"%1$.1f/%2$d"</string>
+<string name="merchant_viewer_message_rating_word">"ការវាយតម្លៃដោយដាក់ផ្កាយ"</string>
+<plurals name="accessibility_merchant_viewer_message_description">
+  <item quantity="one">" ការវាយតម្លៃដោយដាក់ផ្កាយ %1$s/%2$s, មតិវាយតម្លៃ %3$d"</item>
+  <item quantity="other">"ការវាយតម្លៃដោយដាក់ផ្កាយ %1$s/%2$s, មតិវាយតម្លៃ %3$d"</item>
+</plurals>
+<string name="accessibility_merchant_viewer_message_announcement">"មើលព័ត៌មានអំពីហាង ជម្រើសមាននៅជិតផ្នែកខាងលើអេក្រង់"</string>
+<string name="merchant_viewer_preview_sheet_title">"Google | អំពី​ហាងនេះ"</string>
+<string name="merchant_viewer_omnibox_icon_iph">"មើលព័ត៌មានអំពីហាង"</string>
+<string name="page_info_store_info_title">"ព័ត៌មានអំពីហាង"</string>
+<string name="page_info_store_info_description_with_no_review">"(ការវាយ​តម្លៃហាង)"</string>
+<string name="page_info_store_info_description_with_no_rating">"មើលគោលការណ៍បញ្ជូនទំនិញមកវិញ និងអ្វីៗជាច្រើនទៀត"</string>
+<string name="merchant_viewer_preview_sheet_description">"ព័ត៌មានអំពី​ហាងនេះ"</string>
+<string name="merchant_viewer_preview_sheet_opened_half">"បានបើក​ព័ត៌មានអំពី​ហាងនេះ​ពាក់កណ្ដាល​អេក្រង់"</string>
+<string name="merchant_viewer_preview_sheet_opened_full">"បានបើក​ព័ត៌មានអំពី​ហាងនេះ​ពេញអេក្រង់"</string>
+<string name="merchant_viewer_preview_sheet_closed">"បានបិទ​ព័ត៌មាន​អំពីហាងនេះ"</string>
+<string name="close_all_tabs_dialog_title">"បិទផ្ទាំង​ទាំងអស់ឬ?"</string>
+<string name="close_all_tabs_dialog_message">"អ្នកអាចស្វែងរក​ផ្ទាំងដែលអ្នកបានបិទ​នៅក្នុងផ្ទាំង \"ថ្មីៗ\" ខាងក្រោមម៉ឺនុយ​ចម្បងរបស់ Chrome"</string>
+<string name="close_all_tabs_dialog_title_incognito">"បិទ​ផ្ទាំងឯកជន​ទាំងអស់ឬ?"</string>
+<string name="close_all_tabs_dialog_message_incognito">"សកម្មភាព​របស់អ្នក​នៅក្នុង​ផ្ទាំងឯកជន​ទាំងនេះ​នឹងត្រូវបាន​សម្អាតចេញពី​ឧបករណ៍នេះ"</string>
+</resources>

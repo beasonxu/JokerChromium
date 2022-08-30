@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"‏دریافت برنامه از فروشگاه Google Play: ‏%s"</string>
+<string name="app_banner_install">"نصب"</string>
+<string name="menu_add_to_homescreen">"افزودن به صفحه اصلی"</string>
+<string name="menu_add_to_homescreen_install">"نصب برنامه"</string>
+<string name="added_to_homescreen">"%1$s به صفحه اصلی شما اضافه شد"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"نصب این برنامه"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"نماگرفت"</string>
+<string name="image_zoom_content_description">"نماگرفت. برای بستن ضربه بزنید."</string>
+<string name="webapk_install_in_progress">"همچنان درحال افزودن سایت قبلی"</string>
+<string name="webapk_install_failed">"نصب انجام نشد"</string>
+</resources>

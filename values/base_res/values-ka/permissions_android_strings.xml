@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s საჭიროებს თქვენს კამერაზე წვდომის ნებართვას, თქვენი გარემოს 3-განზომილებიანი რუკის შექმნა რომ შეძლოს."</string>
+<string name="infobar_missing_camera_permission_text">"%1$s საჭიროებს თქვენს კამერაზე წვდომის ნებართვას ამ საიტისთვის."</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s საჭიროებს თქვენს მიკროფონზე წვდომის ნებართვას ამ საიტისთვის."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s საჭიროებს თქვენს კამერასა და მიკროფონზე წვდომის ნებართვას ამ საიტისთვის."</string>
+<string name="infobar_missing_location_permission_text">"%1$s საჭიროებს თქვენს მდებარეობაზე წვდომის ნებართვას ამ საიტისთვის გასაზიარებლად."</string>
+<string name="infobar_update_permissions_button_text">"გაგრძელება"</string>
+<string name="nfc_disabled_on_device_message">"გასაგრძელებლად Android-ის პარამეტრებიდან ჩართეთ NFC"</string>
+<string name="nfc_prompt_turn_on">"ჩართვა"</string>
+<string name="overlay_detected_dialog_title">"ამ საიტს არ შეუძლია თქვენი ნებართვის თხოვნა"</string>
+<string name="overlay_detected_dialog_message">"დახურეთ სხვა აპების ბუშტები ან გადაფარვები, შემდეგ კი ხელახლა ცადეთ."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;მიიღეთ დახმარება&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"დაწყვილება"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"სიგნალის სიძლიერის დონე: %d ხაზი"</item>
+  <item quantity="other">"სიგნალის სიძლიერის დონე: %d ხაზი"</item>
+</plurals>
+<string name="bluetooth_device_connected">"დაკავშირებული მოწყობილობა"</string>
+<string name="bluetooth_dialog_title">"%1$s დაწყვილებას ითხოვს"</string>
+<string name="bluetooth_not_found">"თავსებადი მოწყობილობები ვერ მოიძებნა"</string>
+<string name="bluetooth_searching">"&lt;link&gt;მიიღეთ დახმარება&lt;/link&gt;, სანამ მოწყობილობების სკანირება მიმდინარეობს…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;დახმარების მიღება&lt;/link1&gt; ან &lt;link2&gt;ხელახლა სკანირება&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"მოწყობილობების სკანირებისთვის, Chrome მდებარეობაზე წვდომას საჭიროებს. მდებარეობაზე წვდომა &lt;services_link&gt;ამ მოწყობილობისთვის გამორთულია&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"მოწყობილობების სკანირებისთვის, Chrome მდებარეობაზე წვდომას საჭიროებს. გთხოვთ, &lt;permission_link&gt;განაახლოთ ნებართვები&lt;/permission_link&gt;. მდებარეობაზე წვდომა &lt;services_link&gt;ამ მოწყობილობისთვისაც გამორთულია&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome საჭიროებს ახლომახლო მოწყობილობების სკანირების ნებართვას. &lt;permission_link&gt;ნებართვების განახლება&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"მოწყობილობების სკანირებისთვის Chrome მდებარეობაზე წვდომას საჭიროებს. &lt;permission_link&gt;ნებართვების განახლება&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;მიიღეთ დახმარება&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome-ის მიერ Bluetooth ადაპტერი ვერ ჩაირთო"</string>
+<string name="bluetooth_adapter_off">"დაწყვილების დასაშვებად, &lt;link&gt;ჩართეთ Bluetooth&lt;/link&gt;"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s ითხოვს ახლომდებარე Bluetooth მოწყობილობების სკანირებას. ნაპოვნია შემდეგი მოწყობილობები:"</string>
+<string name="bluetooth_scanning_device_unknown">"უცნობი ან მხარდაუჭერელი მოწყობილობა (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s necesita permiso para acceder a tu cámara para crear un mapa 3D de tu entorno."</string>
+<string name="infobar_missing_camera_permission_text">"%1$s necesita permiso para acceder a la cámara en este sitio."</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s necesita permiso para acceder al micrófono en este sitio."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s necesita permiso para acceder a la cámara y al micrófono en este sitio."</string>
+<string name="infobar_missing_location_permission_text">"%1$s necesita acceder a tu ubicación para compartirla con este sitio."</string>
+<string name="infobar_update_permissions_button_text">"Continuar"</string>
+<string name="nfc_disabled_on_device_message">"Para continuar, activa el NFC en los ajustes de Android."</string>
+<string name="nfc_prompt_turn_on">"Activar"</string>
+<string name="overlay_detected_dialog_title">"Este sitio web no puede solicitarte permiso"</string>
+<string name="overlay_detected_dialog_message">"Cierra todos los cuadros o superposiciones de otras aplicaciones. A continuación, inténtalo de nuevo."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Obtener ayuda&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Emparejar"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Nivel de intensidad de la señal: %d barra"</item>
+  <item quantity="other">"Nivel de intensidad de la señal: %d barras"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Dispositivo conectado"</string>
+<string name="bluetooth_dialog_title">"%1$s quiere emparejarse"</string>
+<string name="bluetooth_not_found">"No se han podido encontrar dispositivos compatibles"</string>
+<string name="bluetooth_searching">"&lt;link&gt;Obtener ayuda&lt;/link&gt; mientras se buscan dispositivos…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Obtener ayuda&lt;/link1&gt; o &lt;link2&gt;volver a buscar&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Chrome necesita acceder a la ubicación para buscar dispositivos. El acceso a la ubicación está &lt;services_link&gt;desactivado en este dispositivo&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Chrome necesita acceder a la ubicación para buscar dispositivos. &lt;permission_link&gt;Actualizar permisos&lt;/permission_link&gt;. El acceso a la ubicación también está &lt;services_link&gt;desactivado en este dispositivo&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome necesita permiso para buscar dispositivos cercanos. &lt;permission_link&gt;Actualizar permisos&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"Chrome necesita acceder a la ubicación para buscar dispositivos. &lt;permission_link&gt;Actualizar los permisos&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Obtener ayuda&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome no ha podido activar el adaptador Bluetooth"</string>
+<string name="bluetooth_adapter_off">"&lt;link&gt;Activa el Bluetooth&lt;/link&gt; para permitir la vinculación"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s quiere buscar dispositivos Bluetooth cercanos. Se han encontrado los siguientes dispositivos:"</string>
+<string name="bluetooth_scanning_device_unknown">"Dispositivo desconocido o no compatible (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

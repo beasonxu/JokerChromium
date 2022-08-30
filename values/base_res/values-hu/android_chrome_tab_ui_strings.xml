@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="iph_tab_groups_quickly_compare_pages_text">"Csoport kialakításával gyorsan összehasonlíthat oldalakat. A kezdéshez tartsa lenyomva ujját a kívánt linken."</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_text">"Koppintson másik lap megtekintéséhez"</string>
+<string name="iph_tab_groups_your_tabs_together_text">"A lapok itt vannak csoportosítva"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_accessibility_text">"Válthat a képernyő aljánál lévő lapcsoport lapjai között"</string>
+<string name="undo_bar_group_tabs_message">"%1$s lap csoportosítva"</string>
+<plurals name="bottom_tab_grid_title_placeholder">
+  <item quantity="one">"%1$d lap"</item>
+  <item quantity="other">"%1$d lap"</item>
+</plurals>
+<string name="bottom_tab_grid_new_tab">"Új lap hozzáadása a csoporthoz"</string>
+<string name="accessibility_bottom_tab_grid_close_tab_sheet">"Teljes képernyős rács elrejtése"</string>
+<string name="accessibility_bottom_tab_strip_expand_tab_sheet">"A csoportban lévő lapok teljes képernyős rácsszerkezetben való megjelenítése"</string>
+<string name="accessibility_bottom_tab_strip_close_strip">"Lapsor bezárása"</string>
+<string name="tabswitcher_create_group">"Csoport létrehozása"</string>
+<string name="accessibility_tab_switcher">"Lapváltó"</string>
+<string name="accessibility_close_tab_group_button">"%1$s lapot tartalmazó lapcsoport bezárása"</string>
+<string name="accessibility_close_tab_group_button_with_group_name">"A következő, %2$s lapot tartalmazó csoport bezárása: %1$s"</string>
+<string name="tab_selection_editor_group">"Csoport"</string>
+<string name="tab_selection_editor_toolbar_select_tabs">"Lapok kiválasztása"</string>
+<plurals name="accessibility_tab_selection_editor_group_button">
+  <item quantity="one">"%1$d kijelölt lap csoportba helyezése"</item>
+  <item quantity="other">"%1$d kijelölt lap csoportba helyezése"</item>
+</plurals>
+<string name="accessibility_tab_selection_editor_back_button">"Több lapot kiválasztó mód elrejtése"</string>
+<string name="accessibility_tab_selection_editor">"Több lapot kiválasztó mód"</string>
+<string name="tab_grid_dialog_remove_from_group">"Eltávolítás a csoportból"</string>
+<string name="tab_grid_dialog_toolbar_remove_from_group">"Lapok eltávolítása"</string>
+<string name="tab_grid_dialog_selection_mode_remove">"Eltávolítás"</string>
+<string name="tab_grid_dialog_toolbar_share_group">"Csoport megosztása"</string>
+<string name="tab_grid_dialog_toolbar_edit_group_name">"Csoportnév szerkesztése"</string>
+<string name="accessibility_expand_tab_group">"%1$s lapot tartalmazó lapcsoport kibontása."</string>
+<string name="accessibility_expand_tab_group_with_group_name">"A következő, %2$s lapot tartalmazó lapcsoport kibontása: %1$s."</string>
+<plurals name="accessibility_tab_selection_dialog_remove_button">
+  <item quantity="one">"%1$d kiválasztott lap eltávolítása a csoportból."</item>
+  <item quantity="other">"%1$d kiválasztott lap eltávolítása a csoportból."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button">
+  <item quantity="one">"%1$d lap összecsukása."</item>
+  <item quantity="other">"%1$d lapot tartalmazó lapcsoport összecsukása."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button_with_group_name">
+  <item quantity="one">"%1$d lap összecsukása."</item>
+  <item quantity="other">"A következő, %2$d lapot tartalmazó lapcsoport összecsukása: %1$s."</item>
+</plurals>
+<string name="accessibility_tab_grid_dialog">"Lapcsoport kibontva"</string>
+<string name="iph_drag_and_drop_introduction">"A lapokat húzással csoportosíthatja"</string>
+<string name="iph_drag_and_drop_show_me">"Megjelenítés"</string>
+<string name="iph_drag_and_drop_title">"Könnyebb rendszerezés"</string>
+<string name="iph_drag_and_drop_content">"Lapok csoportosításához tartsa nyomva az egyik lapot, majd húzza rá a másikra."</string>
+<string name="tab_switcher_carousel_title">"Böngészés folytatása"</string>
+<string name="tab_switcher_carousel_view_all">"Összes megtekintése"</string>
+<string name="tab_suggestion_review_button">"Áttekintés"</string>
+<string name="tab_suggestion_close_tab_action_button">"Bezárás"</string>
+<string name="tab_suggestion_close_stale_message">"%1$s lapot nem használt mostanában. Szeretné bezárni őket?"</string>
+<string name="tab_suggestion_group_tabs_message">"Úgy tűnik, %1$s lap kapcsolódik egymáshoz. Csoportosítja őket?"</string>
+<string name="accessibility_tab_suggestion_review_button">"Javaslatok áttekintése."</string>
+<string name="accessibility_tab_suggestion_close_stale_message">"Javaslat: %1$s lapot nem használt mostanában. Szeretné bezárni őket?"</string>
+<string name="accessibility_tab_suggestion_group_tabs_message">"Javaslat: Úgy tűnik, %1$s lap kapcsolódik egymáshoz. Csoportosítja őket?"</string>
+<string name="accessibility_tab_suggestion_dismiss_button">"Javaslatok elvetése."</string>
+<plurals name="accessibility_tab_suggestion_close_tab_action_button">
+  <item quantity="one">"%1$d kijelölt lap bezárása"</item>
+  <item quantity="other">"%1$d kijelölt lap bezárása"</item>
+</plurals>
+<string name="accessibility_tab_movement_left">"Lap mozgatása balra"</string>
+<string name="accessibility_tab_movement_right">"Lap mozgatása jobbra"</string>
+<string name="accessibility_tab_movement_up">"Lap mozgatása felfelé"</string>
+<string name="accessibility_tab_movement_down">"Lap mozgatása lefelé"</string>
+<string name="undo_tab_strip_closure_message">"Lapsor bezárva"</string>
+<string name="tab_strip_info_bar_question">"Ne jelenjen meg újra ez a lapsor?"</string>
+<string name="tab_strip_info_bar_no_reshow">"Ne jelenjen meg többé"</string>
+<string name="tab_strip_info_bar_reshow">"Máskor megjelenhet"</string>
+<string name="price_drop_spotted_title">"Árcsökkenés észlelve"</string>
+<string name="price_drop_spotted_content">"Láthatja, hogy a megnyitott lapokon lévő termékek közül melyiknek alacsonyabb az ára"</string>
+<string name="price_drop_spotted_show_me">"Megjelenítés"</string>
+<string name="price_drop_spotted_lower_price">"Alacsonyabb ár"</string>
+<string name="accessibility_tab_price_card">"A tétel ára nemrég csökkent. Régi ár: %1$s, új ár: %2$s"</string>
+<string name="price_drop_alerts_card_title">"Szeretne értesítéseket kapni az árcsökkenésekről?"</string>
+<string name="price_drop_alerts_card_get_notified_content">"Értesítést kap, ha alacsonyabb ár áll rendelkezésre az egyik megnyitott lapon."</string>
+<string name="price_drop_alerts_card_get_notified">"Értesítések kérése"</string>
+<string name="price_drop_alerts_card_go_to_settings_content">"Ha értesítést szeretne kapni, amikor alacsonyabb ár áll rendelkezésre az egyik megnyitott lapon, kapcsolja be az értesítéseket a Beállításokban."</string>
+<string name="price_drop_alerts_card_go_to_settings">"Beállítások"</string>
+<string name="price_tracking_settings">"Az árkövetés beállításai"</string>
+<string name="track_prices_on_tabs">"Árkövetés a megnyitott lapokon"</string>
+<string name="track_prices_on_tabs_description">"Láthatja az árcsökkenéseket a megnyitott lapokon"</string>
+<string name="price_drop_alerts">"Árcsökkenési értesítések"</string>
+<string name="price_drop_alerts_description">"Értesítést kaphat az árcsökkenésekről"</string>
+<string name="price_drop_notification_content_title">"%1$s értékű árcsökkenés a következő terméknél: %2$s"</string>
+<string name="price_drop_notification_content_text">"Most %1$s áron a következő webhelyen: %2$s"</string>
+<string name="price_drop_notification_action_visit_site">"Webhely felkeresése"</string>
+<string name="price_drop_notification_action_turn_off_alert">"Termék nyomon követésének leállítása"</string>
+<string name="merchant_viewer_message_title">"Megtekinti az üzlet adatait?"</string>
+<string name="merchant_viewer_message_title_see_reviews">"Lát véleményeket az üzletről?"</string>
+<string name="merchant_viewer_message_action">"Nézet"</string>
+<string name="merchant_viewer_message_description_rating">"Értékelés: %2$s/%1$s"</string>
+<plurals name="merchant_viewer_message_description_reviews">
+  <item quantity="one">"(%1$s vélemény)"</item>
+  <item quantity="other">"(%1$s vélemény)"</item>
+</plurals>
+<plurals name="merchant_viewer_message_description_reviews_from_google">
+  <item quantity="one">"%1$s vélemény a Google-on"</item>
+  <item quantity="other">"%1$s vélemény a Google-on"</item>
+</plurals>
+<string name="merchant_viewer_message_rating_numerical">"%2$d/%1$.1f"</string>
+<string name="merchant_viewer_message_rating_word">"értékelés"</string>
+<plurals name="accessibility_merchant_viewer_message_description">
+  <item quantity="one">" Értékelés: %2$s/%1$s, %3$d vélemény"</item>
+  <item quantity="other">"Értékelés: %2$s/%1$s, %3$d vélemény"</item>
+</plurals>
+<string name="accessibility_merchant_viewer_message_announcement">"Az üzlet adatainak megtekintése; a lehetőség a képernyő tetején található"</string>
+<string name="merchant_viewer_preview_sheet_title">"Google | Az üzletről"</string>
+<string name="merchant_viewer_omnibox_icon_iph">"Üzletadatok megtekintése"</string>
+<string name="page_info_store_info_title">"Üzletadatok"</string>
+<string name="page_info_store_info_description_with_no_review">"(az üzlet értékelése)"</string>
+<string name="page_info_store_info_description_with_no_rating">"Visszaküldési irányelvek és egyebek megjelenítése"</string>
+<string name="merchant_viewer_preview_sheet_description">"Információ erről az üzletről"</string>
+<string name="merchant_viewer_preview_sheet_opened_half">"Az üzlettel kapcsolatos információs panel félmagasságban van megnyitva"</string>
+<string name="merchant_viewer_preview_sheet_opened_full">"Az üzlettel kapcsolatos információs panel teljes magasságban meg van nyitva"</string>
+<string name="merchant_viewer_preview_sheet_closed">"Az üzlettel kapcsolatos információs panel be van zárva"</string>
+<string name="close_all_tabs_dialog_title">"Az összes lapot bezárja?"</string>
+<string name="close_all_tabs_dialog_message">"A bezárt lapokat a Chrome főmenüjének Nemrég megnyitott lapok szakaszában találja"</string>
+<string name="close_all_tabs_dialog_title_incognito">"Bezárja az összes inkognitó lapot?"</string>
+<string name="close_all_tabs_dialog_message_incognito">"Az ezeken az inkognitó lapokon végzett tevékenységei törlődnek erről az eszközről"</string>
+</resources>

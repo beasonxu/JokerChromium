@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s запытвае дазвол на доступ да камеры, каб стварыць 3D-карту асяроддзя."</string>
+<string name="infobar_missing_camera_permission_text">"%1$s запытвае дазвол на доступ да камеры для гэтага сайта."</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s запытвае дазвол на доступ да мікрафона для гэтага сайта."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s запытвае дазвол на доступ да камеры і мікрафона для гэтага сайта."</string>
+<string name="infobar_missing_location_permission_text">"%1$s запытвае доступ да вашага месцазнаходжання, каб абагуліць яго з гэтым сайтам."</string>
+<string name="infobar_update_permissions_button_text">"Працягнуць"</string>
+<string name="nfc_disabled_on_device_message">"Каб працягнуць, уключыце NFC у наладах Android"</string>
+<string name="nfc_prompt_turn_on">"Уключыць"</string>
+<string name="overlay_detected_dialog_title">"Сайт не можа запытаць у вас дазвол"</string>
+<string name="overlay_detected_dialog_message">"Закрыйце ўсе ўсплывальныя апавяшчэнні або накладкі ад іншых праграм. Затым паўтарыце спробу."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Даведка&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Спалучыць"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Узровень сігналу: %d палоска"</item>
+  <item quantity="few">"Узровень сігналу: %d палоскі"</item>
+  <item quantity="many">"Узровень сігналу: %d палосак"</item>
+  <item quantity="other">"Узровень сігналу: %d палоскі"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Падключаная прылада"</string>
+<string name="bluetooth_dialog_title">"Сайт %1$s запытвае спалучэнне"</string>
+<string name="bluetooth_not_found">"Сумяшчальныя прылады не знойдзены"</string>
+<string name="bluetooth_searching">"&lt;link&gt;Атрымайце даведку&lt;/link&gt; падчас пошуку прылад…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Атрымайце даведку&lt;/link1&gt; або &lt;link2&gt;паўтарыце пошук&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Для пошуку прылад Chrome патрабуе доступу да месцазнаходжання. Доступ да месцазнаходжання &lt;services_link&gt;для гэтай прылады выключаны&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Для пошуку прылад браўзеру Chrome патрабуецца доступ да месцазнаходжання. &lt;permission_link&gt;Змяніце дазволы&lt;/permission_link&gt;. Доступ да месцазнаходжання &lt;services_link&gt;для гэтай прылады таксама выключаны&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Браўзеру Chrome патрабуецца дазвол для праверкі наяўнасці прылад паблізу. &lt;permission_link&gt;Змяніце дазволы&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"Для пошуку прылад Chrome патрабуе доступу да месцазнаходжання. &lt;permission_link&gt;Дазволы на абнаўленне&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Даведка&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Браўзеру Chrome не ўдалося ўключыць Bluetooth-адаптар"</string>
+<string name="bluetooth_adapter_off">"Каб дазволіць спалучэнне, &lt;link&gt;уключыце Bluetooth&lt;/link&gt;"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s запытвае пошук прылад Bluetooth паблізу. Знойдзены наступныя прылады:"</string>
+<string name="bluetooth_scanning_device_unknown">"Прылада невядомая або не падтрымліваецца (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"Google ပလေးစတိုးမှ အက်ပ်အားရယူမည်- %s"</string>
+<string name="app_banner_install">"တပ်ဆင်ရန်"</string>
+<string name="menu_add_to_homescreen">"ပင်မမျက်နှာပြင်သို့ ထည့်ရန်"</string>
+<string name="menu_add_to_homescreen_install">"အက်ပ် ထည့်သွင်းရန်"</string>
+<string name="added_to_homescreen">"%1$sကို သင်၏ ပင်မ မျက်နှာပြင်သို့ ထည့်ပေးခဲ့သည်"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"ဤအက်ပ်ကို ထည့်သွင်းရန်"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"မျက်နှာပြင် လျှပ်တပြက်ပုံ"</string>
+<string name="image_zoom_content_description">"ဖန်သားပြင်ဓာတ်ပုံ။ ပိတ်ရန် တို့ပါ။"</string>
+<string name="webapk_install_in_progress">"ယခင်ဆိုက်ကို ထည့်သွင်းနေဆဲဖြစ်သည်"</string>
+<string name="webapk_install_failed">"ထည့်သွင်း၍မရပါ"</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"Tải ứng dụng từ Cửa hàng Google Play: %s"</string>
+<string name="app_banner_install">"Cài đặt"</string>
+<string name="menu_add_to_homescreen">"Thêm vào Màn hình chính"</string>
+<string name="menu_add_to_homescreen_install">"Cài đặt ứng dụng"</string>
+<string name="added_to_homescreen">"Đã thêm %1$s vào Màn hình chính của bạn"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"Cài đặt ứng dụng này"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"Ảnh chụp màn hình"</string>
+<string name="image_zoom_content_description">"Ảnh chụp màn hình. Nhấn để đóng."</string>
+<string name="webapk_install_in_progress">"Vẫn đang thêm trang web trước"</string>
+<string name="webapk_install_failed">"Không cài đặt được"</string>
+</resources>

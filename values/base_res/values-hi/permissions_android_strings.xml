@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"आपके आस-पास की जगह का 3D मैप बनाने के लिए, %1$s को आपके कैमरे का ऐक्सेस चाहिए."</string>
+<string name="infobar_missing_camera_permission_text">"इस साइट के लिए, %1$s को आपके कैमरे का ऐक्सेस चाहिए."</string>
+<string name="infobar_missing_microphone_permission_text">"इस साइट के लिए, %1$s को आपके माइक्रोफ़ोन का ऐक्सेस चाहिए."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"इस साइट के लिए, %1$s को आपके कैमरे और माइक्रोफ़ोन का ऐक्सेस चाहिए."</string>
+<string name="infobar_missing_location_permission_text">"आपकी जगह की जानकारी इस साइट के साथ शेयर करने के लिए, %1$s को आपकी जगह की जानकारी का ऐक्सेस चाहिए."</string>
+<string name="infobar_update_permissions_button_text">"जारी रखें"</string>
+<string name="nfc_disabled_on_device_message">"जारी रखने के लिए, Android सेटिंग में जाकर NFC को चालू करें"</string>
+<string name="nfc_prompt_turn_on">"चालू करें"</string>
+<string name="overlay_detected_dialog_title">"यह साइट आपकी अनुमति के लिए नहीं पूछ सकती"</string>
+<string name="overlay_detected_dialog_message">"अन्य ऐप्लिकेशन के किसी भी बबल या ओवरले को बंद करें. इसके बाद फिर से कोशिश करें."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;सहायता पाएं&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"युग्‍मित करें"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"सिग्नल सशक्तता का स्तर: %d बार"</item>
+  <item quantity="other">"सिग्नल सशक्तता का स्तर: %d बार"</item>
+</plurals>
+<string name="bluetooth_device_connected">"कनेक्ट किया गया डिवाइस"</string>
+<string name="bluetooth_dialog_title">"%1$s युग्मित करना चाहता है"</string>
+<string name="bluetooth_not_found">"कोई संगत डिवाइस नहीं मिला"</string>
+<string name="bluetooth_searching">"डिवाइस स्कैन करने में &lt;link&gt;सहायता पाएं&lt;/link&gt;…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;सहायता पाएं&lt;/link1&gt; या &lt;link2&gt;फिर से स्कैन करें&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"डिवाइस स्कैन करने के लिए Chrome को जगह की जानकारी का एक्सेस की ज़रूरत होती है. जगह की जानकारी का एक्सेस &lt;services_link&gt;इस डिवाइस के लिए बंद&lt;/services_link&gt; है."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"डिवाइस स्कैन करने के लिए Chrome को जगह की जानकारी का एक्सेस की ज़रूरत होती है. &lt;permission_link&gt;अनुमतियां अपडेट करें&lt;/permission_link&gt;. जगह की जानकारी का एक्सेस &lt;services_link&gt;इस डिवाइस के लिए भी बंद&lt;/services_link&gt; है."</string>
+<string name="bluetooth_need_nearby_devices_permission">"आस-पास मौजूद डिवाइसें स्कैन करने के लिए, Chrome को अनुमति चाहिए. &lt;permission_link&gt;अनुमतियां अपडेट करें&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"डिवाइस स्‍कैन करने के लिए Chrome को जगह की जानकारी का एक्‍सेस की ज़रूरत है. &lt;permission_link&gt;अनुमतियां अपडेट करें&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;सहायता पाएं&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome, ब्लूटूथ एडाप्टर को चालू नहीं कर सका"</string>
+<string name="bluetooth_adapter_off">"युग्मन की अनुमति देने के लिए &lt;link&gt;ब्लूटूथ चालू करें&lt;/link&gt;"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s आस-पास मौजूद ब्लूटूथ वाले डिवाइस स्कैन करना चाहती है. ये डिवाइस मिले हैं:"</string>
+<string name="bluetooth_scanning_device_unknown">"अज्ञात या काम न करने वाला डिवाइस (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

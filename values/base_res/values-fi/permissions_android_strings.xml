@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s tarvitsee pääsyn kameraasi ympäristön 3D-kartoittamista varten."</string>
+<string name="infobar_missing_camera_permission_text">"%1$s tarvitsee pääsyn kameraasi tällä sivustolla."</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s tarvitsee pääsyn mikrofoniisi tällä sivustolla."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s tarvitsee pääsyn kameraasi ja mikrofoniisi tällä sivustolla."</string>
+<string name="infobar_missing_location_permission_text">"%1$s tarvitsee pääsyn sijaintiisi, jotta se voidaan jakaa tälle sivustolle."</string>
+<string name="infobar_update_permissions_button_text">"Jatka"</string>
+<string name="nfc_disabled_on_device_message">"Laita NFC päälle Android-laitteella jatkaaksesi"</string>
+<string name="nfc_prompt_turn_on">"Ota käyttöön"</string>
+<string name="overlay_detected_dialog_title">"Tämä sivusto ei saa pyytää lupaasi"</string>
+<string name="overlay_detected_dialog_message">"Sulje kuplat tai peittokuvat muista sovelluksista. Yritä sitten uudelleen."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Tutustu ohjeisiin&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Muodosta laitepari"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Signaalin voimakkuus: %d palkki"</item>
+  <item quantity="other">"Signaalin voimakkuus: %d palkkia"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Yhdistetty laite"</string>
+<string name="bluetooth_dialog_title">"%1$s haluaa muodostaa laiteparin"</string>
+<string name="bluetooth_not_found">"Yhteensopivia laitteita ei löytynyt."</string>
+<string name="bluetooth_searching">"&lt;link&gt;Tutustu ohjeisiin&lt;/link&gt; laitteiden skannauksen aikana…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Lue ohjeita&lt;/link1&gt; tai &lt;link2&gt;hae uudelleen&lt;/link2&gt;."</string>
+<string name="bluetooth_need_location_services_on">"Chrome tarvitsee sijaintitietoja hakeakseen laitteita. Sijaintitiedot on &lt;services_link&gt;poistettu käytöstä tällä laitteella&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Chrome tarvitsee sijaintitietoja hakeakseen laitteita. &lt;permission_link&gt;Päivitä käyttöoikeudet&lt;/permission_link&gt;. Sijaintitiedot on lisäksi &lt;services_link&gt;poistettu käytöstä tällä laitteella&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome tarvitsee luvan lähellä olevien laitteiden hakemiseen. &lt;permission_link&gt;Päivitä luvat&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"Chrome tarvitsee sijaintitietojen käyttöoikeuden hakeakseen laitteita. &lt;permission_link&gt;Päivitä käyttöoikeudet&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Tutustu ohjeisiin&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome ei voi ottaa käyttöön Bluetooth-sovitinta."</string>
+<string name="bluetooth_adapter_off">"&lt;link&gt;Ota Bluetooth käyttöön&lt;/link&gt;, jotta laiteparin muodostus onnistuu."</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s haluaa etsiä lähellä olevia Bluetooth-laitteita. Seuraavat laitteet löydettiin:"</string>
+<string name="bluetooth_scanning_device_unknown">"Tuntematon tai ei-tuettu laite (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Chrome-ren Zerbitzu-baldintzak martxoaren 31n aldatuko dira"</string>
+<string name="tos_notification_body_text">"Irakurri baldintza berriak"</string>
+<string name="tos_notification_ack_button_text">"Ados"</string>
+<string name="tos_notification_review_button_text">"Berrikusi"</string>
+<string name="webapp_update_dialog_title_name">"Berrikusi aldatutako izena"</string>
+<string name="webapp_update_dialog_title_icon">"Berrikusi aldatutako ikonoa"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"Berrikusi izenaren eta ikonoaren berritasunak"</string>
+<string name="webapp_update_explanation">"Sareko aplikazio hau beste aplikazio baten plantak egiten ari bada, desinstala ezazu."</string>
+<string name="webapp_update_current_icon">"Une honetako ikonoa"</string>
+<string name="webapp_update_new_icon">"Ikono berria"</string>
+<string name="webapp_update_negative_button">"Desinstalatu aplikazioa"</string>
+<string name="search_or_type_web_address">"Bilatu edo idatzi webgunearen helbidea"</string>
+<string name="password_manager_username_label">"Erabiltzaile-izena"</string>
+<string name="password_manager_password_label">"Pasahitza"</string>
+<string name="password_manager_update_button">"Eguneratu"</string>
+<string name="confirm_username_dialog_title">"Berretsi erabiltzaile-izena"</string>
+<string name="options_homepage_title">"Orri nagusia"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"Egiaztatu telefono honekin"</string>
+<string name="cablev2_get_assertion_notification_title">"Egiaztatu zeu zarela"</string>
+</resources>

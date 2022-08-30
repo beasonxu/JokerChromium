@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"Google Play Store ನಿಂದ ಅಪ್ಲಿಕೇಶನ್ ಪಡೆದುಕೊಳ್ಳಿ: %s"</string>
+<string name="app_banner_install">"ಇನ್‌ಸ್ಟಾಲ್"</string>
+<string name="menu_add_to_homescreen">"ಹೋಮ್ ಪರದೆಗೆ ಸೇರಿಸಿ"</string>
+<string name="menu_add_to_homescreen_install">"ಅಪ್ಲಿಕೇಶನ್ ಸ್ಥಾಪಿಸಿ"</string>
+<string name="added_to_homescreen">"%1$s ಅನ್ನು ನಿಮ್ಮ ಹೋಮ್ ಪರದೆಗೆ ಸೇರಿಸಲಾಗಿದೆ"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"ಈ ಆ್ಯಪ್ ಅನ್ನು ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಿ"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"ಸ್ಕ್ರೀನ್‌ಶಾಟ್"</string>
+<string name="image_zoom_content_description">"ಸ್ಕ್ರೀನ್‌ಶಾಟ್. ಮುಚ್ಚಲು ಟ್ಯಾಪ್ ಮಾಡಿ."</string>
+<string name="webapk_install_in_progress">"ಇನ್ನೂ ಹಿಂದಿನ ಸೈಟ್ ಅನ್ನು ಸೇರಿಸಲಾಗುತ್ತಿದೆ"</string>
+<string name="webapk_install_failed">"ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಲು ವಿಫಲವಾಗಿದೆ"</string>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"‏بنود خدمة Chrome ستتغيّر في 31 آذار (مارس)"</string>
+<string name="tos_notification_body_text">"يُرجى مراجعة البنود الجديدة."</string>
+<string name="tos_notification_ack_button_text">"تم"</string>
+<string name="tos_notification_review_button_text">"مراجعة"</string>
+<string name="webapp_update_dialog_title_name">"مراجعة التعديل الذي تم إجراؤه على الاسم"</string>
+<string name="webapp_update_dialog_title_icon">"مراجعة التعديل الذي تم إجراؤه على الرمز"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"مراجعة التعديلات التي تم إجراؤها على الأسماء والرموز"</string>
+<string name="webapp_update_explanation">"إذا كان تطبيق الويب هذا يحاول خداعك عن طريق انتحال هوية تطبيق آخر، عليك إلغاء تثبيته."</string>
+<string name="webapp_update_current_icon">"الرمز الحالي"</string>
+<string name="webapp_update_new_icon">"رمز جديد"</string>
+<string name="webapp_update_negative_button">"إلغاء تثبيت التطبيق"</string>
+<string name="search_or_type_web_address">"البحث عن عنوان الويب أو إدخاله"</string>
+<string name="password_manager_username_label">"اسم المستخدم"</string>
+<string name="password_manager_password_label">"كلمة المرور"</string>
+<string name="password_manager_update_button">"تحديث"</string>
+<string name="confirm_username_dialog_title">"تأكيد اسم المستخدم"</string>
+<string name="options_homepage_title">"الصفحة الرئيسية"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"إثبات الهوية باستخدام هذا الهاتف"</string>
+<string name="cablev2_get_assertion_notification_title">"إثبات هويتك"</string>
+</resources>

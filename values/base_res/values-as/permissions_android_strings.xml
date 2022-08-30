@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"আপোনাৰ চৌপাশৰ এখন 3D মেপ সৃষ্টি কৰিবলৈ %1$sক আপোনাৰ কেমেৰা এক্সেছ কৰিবলৈ অনুমতিৰ প্ৰয়োজন।"</string>
+<string name="infobar_missing_camera_permission_text">"এই ছাইটটোৰ বাবে আপোনাৰ কেমেৰা এক্সেছ কৰিবলৈ %1$sক অনুমতিৰ প্ৰয়োজন।"</string>
+<string name="infobar_missing_microphone_permission_text">"%1$sক এই ছাইটৰ বাবে আপোনাৰ মাইক্ৰ’ফ’ন এক্সেছ কৰিবলৈ অনুমতিৰ প্ৰয়োজন।"</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"এই ছাইটটোৰ বাবে আপোনাৰ কেমেৰা আৰু মাইক্ৰ’ফ’ন এক্সেছ কৰিবলৈ %1$sক অনুমতিৰ প্ৰয়োজন।"</string>
+<string name="infobar_missing_location_permission_text">"আপোনাৰ অৱস্থান এই ছাইটটোৰ সৈতে শ্বেয়াৰ কৰিবলৈ %1$sএ আপোনাৰ অৱস্থান এক্সেছ কৰাৰ প্ৰয়োজন।"</string>
+<string name="infobar_update_permissions_button_text">"অব্যাহত ৰাখক"</string>
+<string name="nfc_disabled_on_device_message">"অব্যাহত ৰাখিবলৈ Android ছেটিংসমূহত NFC অন কৰক"</string>
+<string name="nfc_prompt_turn_on">"অন কৰক"</string>
+<string name="overlay_detected_dialog_title">"এই ছাইটটোৱে আপোনাৰ অনুমতি বিচাৰিব নোৱাৰে"</string>
+<string name="overlay_detected_dialog_message">"অন্য এপৰ যিকোনো বাবল অথবা অ’ভাৰলে’ বন্ধ কৰক। তাৰ পাছত পুনৰ চেষ্টা কৰক।"</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;সহায় লওক&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"পেয়াৰ কৰক"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"ছিগনেলৰ ক্ষমতাৰ স্তৰ: %d বাৰ"</item>
+  <item quantity="other">"ছিগনেলৰ ক্ষমতাৰ স্তৰ: %d বাৰ"</item>
+</plurals>
+<string name="bluetooth_device_connected">"সংযোজিত ডিভাইচ"</string>
+<string name="bluetooth_dialog_title">"%1$sএ পেয়াৰ কৰিব বিচাৰে"</string>
+<string name="bluetooth_not_found">"খাপ খোৱা কোনো ডিভাইচ বিচাৰি পোৱা নগ’ল"</string>
+<string name="bluetooth_searching">"ডিভাইচৰ বাবে স্কেন কৰাৰ ক্ষেত্ৰত &lt;link&gt;সহায় পাওক&lt;/link&gt;…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;সহায় পাওক&lt;/link1&gt; বা &lt;link2&gt;পুনৰ-স্কেন কৰক&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"ডিভাইচ স্কেন কৰিবলৈ Chromeএ অৱস্থান এক্সেছ কৰাটো প্ৰয়োজনীয়। এই ডিভাইচটোৰ বাবে &lt;services_link&gt;অৱস্থান এক্সেছ অফ কৰা আছে৷&lt;/services_link&gt;"</string>
+<string name="bluetooth_need_location_permission_and_services_on">"ডিভাইচ স্কেন কৰিবলৈ Chromeএ অৱস্থান এক্সেছ কৰাটো প্ৰয়োজনীয়। &lt;permission_link&gt;অনুমতি আপডে’ট কৰক&lt;/permission_link&gt;। অৱস্থান ইতিহাস &lt;services_link&gt;এই ডিভাইচটোৰ বাবেও অফ কৰি থোৱা হৈছে&lt;/services_link&gt;।"</string>
+<string name="bluetooth_need_nearby_devices_permission">"নিকটৱৰ্তী ডিভাইচ স্কেন কৰিবলৈ Chromeক অনুমতি লাগে। &lt;permission_link&gt;অনুমতি আপডে’ট কৰক&lt;/permission_link&gt;।"</string>
+<string name="bluetooth_need_location_permission">"ডিভাইচ স্কেন কৰিবলৈ Chromeএ অৱস্থান এক্সেছ কৰাটো প্ৰয়োজনীয়। &lt;permission_link&gt;অনুমতি আপডে’ট কৰক&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;সহায় লওক&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chromeএ ব্লুটুথ এডাপ্টৰটো অন কৰিবলৈ সক্ষম নহ’ল"</string>
+<string name="bluetooth_adapter_off">"যোৰা লগোৱাৰ অনুমতি দিবলৈ &lt;link&gt;ব্লুটুথ অন কৰক&lt;/link&gt;"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$sএ নিকটৱৰ্তী ব্লুটুথ ডিভাইচবোৰ বিচাৰি স্কেন কৰিব বিচাৰে। এই ডিভাইচকেইটা বিচাৰি পোৱা গৈছে:"</string>
+<string name="bluetooth_scanning_device_unknown">"অজ্ঞাত অথবা অসমৰ্থিত ডিভাইচ (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

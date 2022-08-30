@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"Çevrenizin 3D haritasını oluşturmak için %1$s uygulamasının kameranıza erişim iznine ihtiyacı var."</string>
+<string name="infobar_missing_camera_permission_text">"%1$s uygulamasının bu sitede kameranıza erişmesi için izin gerekiyor."</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s uygulamasının bu sitede mikrofonunuza erişmesi için izin gerekiyor."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s uygulamasının bu sitede kameranıza ve mikrofonunuza erişmesi için izin gerekiyor."</string>
+<string name="infobar_missing_location_permission_text">"%1$s uygulamasının konumunuzu bu siteyle paylaşabilmesi için konum bilgilerinize erişmesi gerekiyor."</string>
+<string name="infobar_update_permissions_button_text">"Devam et"</string>
+<string name="nfc_disabled_on_device_message">"Devam etmek için Android ayarlarında NFC\'yi açın"</string>
+<string name="nfc_prompt_turn_on">"Etkinleştir"</string>
+<string name="overlay_detected_dialog_title">"Bu site izninizi isteyemiyor"</string>
+<string name="overlay_detected_dialog_message">"Diğer uygulamalardaki balonları veya yer paylaşımlı öğeleri kapatın. Daha sonra tekrar deneyin."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Yardım alın&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Eşle"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Sinyal Gücü Düzeyi: %d çubuk"</item>
+  <item quantity="other">"Sinyal Gücü Düzeyi: %d çubuk"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Bağlı Cihaz"</string>
+<string name="bluetooth_dialog_title">"%1$s eşlenmek istiyor"</string>
+<string name="bluetooth_not_found">"Uyumlu cihaz bulunamadı"</string>
+<string name="bluetooth_searching">"Cihazlar taranırken &lt;link&gt;yardım alın&lt;/link&gt;…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Yardım alın&lt;/link1&gt; veya &lt;link2&gt;yeniden tarayın&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Chrome\'un cihazları taraması için konum bilgilerine erişmesi gerekiyor. Konum bilgilerine erişim &lt;services_link&gt;bu cihaz için kapalı&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Chrome\'un cihazları taraması için konum bilgilerine erişmesi gerekiyor. &lt;permission_link&gt;İzinleri güncelleyin&lt;/permission_link&gt;. Ayrıca, konum bilgilerine erişim &lt;services_link&gt;bu cihaz için kapalı&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome\'un yakındaki cihazları taraması için izin gerekiyor. &lt;permission_link&gt;İzinleri güncelle&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission">"Chrome\'un cihazları taraması için konuma erişmesi gerekiyor. &lt;permission_link&gt;İzinleri güncelleyin&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Yardım alın&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome, Bluetooth adaptörünü açamıyor"</string>
+<string name="bluetooth_adapter_off">"Eşleşmeye izin vermek için &lt;link&gt;Bluetooth\'u açın&lt;/link&gt;"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s, yakındaki Bluetooth cihazlar için tarama yapmak istiyor. Şu cihazlar bulundu:"</string>
+<string name="bluetooth_scanning_device_unknown">"Bilinmeyen veya desteklenmeyen cihaz (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

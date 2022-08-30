@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="iph_tab_groups_quickly_compare_pages_text">"এটা গোট বনাই পৃষ্ঠাসমূহ দ্ৰুতভাৱে তুলনা কৰক। আৰম্ভ কৰিবলৈ এটা লিংকত স্পৰ্শ কৰি ধৰি ৰাখক।"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_text">"অন্য এটা টেব চাবলৈ টিপক"</string>
+<string name="iph_tab_groups_your_tabs_together_text">"আপোনাৰ টেবসমূহ ইয়াত একগোট কৰা হৈছে"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_accessibility_text">"স্ক্রীণৰ একেবাৰে তলৰ কাষত থকা টেবৰ গোটৰ টেবসমূহ সলনা সলনিকৈ ব্যৱহাৰ কৰক"</string>
+<string name="undo_bar_group_tabs_message">"%1$sটা টেব এক গোট কৰা হৈছে"</string>
+<plurals name="bottom_tab_grid_title_placeholder">
+  <item quantity="one">"%1$dটা টেব"</item>
+  <item quantity="other">"%1$dটা টেব"</item>
+</plurals>
+<string name="bottom_tab_grid_new_tab">"গোটত নতুন টেব যোগ কৰক"</string>
+<string name="accessibility_bottom_tab_grid_close_tab_sheet">"সম্পূৰ্ণ স্ক্রীণৰ গ্ৰিড লুকুৱাওক"</string>
+<string name="accessibility_bottom_tab_strip_expand_tab_sheet">"গোটৰ টেব সম্পূৰ্ণ স্ক্রীণৰ গ্রিডত দেখুৱাওক"</string>
+<string name="accessibility_bottom_tab_strip_close_strip">"টেবৰ ষ্ট্রিপ বন্ধ কৰক"</string>
+<string name="tabswitcher_create_group">"গোট সৃষ্টি কৰক"</string>
+<string name="accessibility_tab_switcher">"টেব সলনি কৰোঁতা"</string>
+<string name="accessibility_close_tab_group_button">"%1$s টা টেবযুক্ত টেবৰ গোট বন্ধ কৰক"</string>
+<string name="accessibility_close_tab_group_button_with_group_name">"%2$s টা টেবযুক্ত %1$s গোটটো বন্ধ কৰক"</string>
+<string name="tab_selection_editor_group">"গোট"</string>
+<string name="tab_selection_editor_toolbar_select_tabs">"টেবসমূহ বাছনি কৰক"</string>
+<plurals name="accessibility_tab_selection_editor_group_button">
+  <item quantity="one">"%1$d টা বাছনি কৰা টেবৰ গোট বনাওক"</item>
+  <item quantity="other">"%1$d টা বাছনি কৰা টেবৰ গোট বনাওক"</item>
+</plurals>
+<string name="accessibility_tab_selection_editor_back_button">"একাধিক বাছনি কৰিব পৰা ম’ডটো লুকুৱাওক"</string>
+<string name="accessibility_tab_selection_editor">"একাধিক বাছনি কৰা ম’ড"</string>
+<string name="tab_grid_dialog_remove_from_group">"গোটৰ পৰা আঁতৰাওক"</string>
+<string name="tab_grid_dialog_toolbar_remove_from_group">"গোটটোৰ পৰা টেবসমূহ আঁতৰাওক"</string>
+<string name="tab_grid_dialog_selection_mode_remove">"আঁতৰাওক"</string>
+<string name="tab_grid_dialog_toolbar_share_group">"গোট শ্বেয়াৰ কৰক"</string>
+<string name="tab_grid_dialog_toolbar_edit_group_name">"গোটৰ নাম সম্পাদনা কৰক"</string>
+<string name="accessibility_expand_tab_group">"%1$s টা টেবযুক্ত টেবৰ গোটটো বিস্তাৰ কৰক।"</string>
+<string name="accessibility_expand_tab_group_with_group_name">"%1$s টেবৰ গোটটো %2$s টা টেবৰ সৈতে বিস্তাৰ কৰক।"</string>
+<plurals name="accessibility_tab_selection_dialog_remove_button">
+  <item quantity="one">"গোটৰ পৰা %1$d টা বাছনি কৰা টেব আঁতৰাওক।"</item>
+  <item quantity="other">"গোটৰ পৰা %1$d টা বাছনি কৰা টেব আঁতৰাওক।"</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button">
+  <item quantity="one">"%1$d টা টেব সংকোচন কৰক।"</item>
+  <item quantity="other">"%1$d টা টেবযুক্ত টেবৰ গোটটো সংকোচন কৰক।"</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button_with_group_name">
+  <item quantity="one">"%1$d টা টেব সংকোচন কৰক।"</item>
+  <item quantity="other">"%2$d টা টেবযুক্ত %1$s টেবৰ গোটটো সংকোচন কৰক।"</item>
+</plurals>
+<string name="accessibility_tab_grid_dialog">"টেবৰ গোটটো বিস্তাৰ কৰা হৈছে"</string>
+<string name="iph_drag_and_drop_introduction">"এক গোট কৰিবলৈ টেববোৰ টানি আনি এৰক"</string>
+<string name="iph_drag_and_drop_show_me">"মোক দেখুৱাওক"</string>
+<string name="iph_drag_and_drop_title">"সংগঠিত হৈ থাকক"</string>
+<string name="iph_drag_and_drop_content">"টেববোৰ একগোট কৰিবলৈ, এটা টেবত স্পৰ্শ কৰি ধৰি ৰাখক। তাৰপাছত, এইটো অন্য এটা টেবলৈ টানি আনি এৰক।"</string>
+<string name="tab_switcher_carousel_title">"ব্ৰাউজ কৰা অব্যাহত ৰাখক"</string>
+<string name="tab_switcher_carousel_view_all">"সকলো চাওক"</string>
+<string name="tab_suggestion_review_button">"পৰ্যালোচনা কৰক"</string>
+<string name="tab_suggestion_close_tab_action_button">"বন্ধ কৰক"</string>
+<string name="tab_suggestion_close_stale_message">"শেহতীয়াকৈ আপোনাৰ %1$sটা টেব ব্যৱহাৰ কৰা হোৱা নাই। সেইকেইটা বন্ধ কৰিবনে?"</string>
+<string name="tab_suggestion_group_tabs_message">"%1$s টা টেব জড়িত যেন লাগিছে। সেইকেইটা একগোট কৰিবনে?"</string>
+<string name="accessibility_tab_suggestion_review_button">"পৰামৰ্শসমূহ পৰ্যালোচনা কৰক।"</string>
+<string name="accessibility_tab_suggestion_close_stale_message">"পৰামৰ্শ: শেহতীয়াকৈ আপোনাৰ %1$s টা টেব ব্যৱহাৰ কৰা হোৱা নাই। সেইকেইটা বন্ধ কৰিবনে?"</string>
+<string name="accessibility_tab_suggestion_group_tabs_message">"পৰামৰ্শ: %1$sটা টেব জড়িত যেন লাগিছে। সেইকেইটা একগোট কৰিবনে?"</string>
+<string name="accessibility_tab_suggestion_dismiss_button">"পৰামৰ্শসমূহ বাতিল কৰক।"</string>
+<plurals name="accessibility_tab_suggestion_close_tab_action_button">
+  <item quantity="one">"%1$d টা বাছনি কৰা টেব বন্ধ কৰক"</item>
+  <item quantity="other">"%1$d টা বাছনি কৰা টেব বন্ধ কৰক"</item>
+</plurals>
+<string name="accessibility_tab_movement_left">"টেবটো বাওঁফাললৈ নিয়ক"</string>
+<string name="accessibility_tab_movement_right">"টেবটো সোঁফাললৈ নিয়ক"</string>
+<string name="accessibility_tab_movement_up">"টেবটো ওপৰলৈ নিয়ক"</string>
+<string name="accessibility_tab_movement_down">"টেবটো তললৈ নিয়ক"</string>
+<string name="undo_tab_strip_closure_message">"বন্ধ কৰা টেবৰ ষ্ট্ৰিপ"</string>
+<string name="tab_strip_info_bar_question">"টেবৰ ষ্ট্ৰিপটো পুনৰ নেদেখুৱায় নেকি?"</string>
+<string name="tab_strip_info_bar_no_reshow">"পুনৰ নেদেখুৱাব"</string>
+<string name="tab_strip_info_bar_reshow">"পাছত দেখুৱাওক"</string>
+<string name="price_drop_spotted_title">"মূল্য কমা বুলি ধৰা পৰিছে"</string>
+<string name="price_drop_spotted_content">"আপোনাৰ খোলা থকা টেবসমূহত কোনটো বস্তুৰ মূল্য কম সেয়া চাওক"</string>
+<string name="price_drop_spotted_show_me">"মোক দেখুৱাওক"</string>
+<string name="price_drop_spotted_lower_price">"কম মূল্য"</string>
+<string name="accessibility_tab_price_card">"শেহতীয়াকৈ এইটো বস্তুৰ মূল্য %1$sৰ পৰা %2$sলৈ হ্ৰাস পাইছে"</string>
+<string name="price_drop_alerts_card_title">"মূল্য কমাৰ সতৰ্কবাৰ্তা পাবলৈ বিচাৰেনে?"</string>
+<string name="price_drop_alerts_card_get_notified_content">"খোলা থকা কোনো টেবত কম মূল্যৰ তথ্য উপলব্ধ হ’লে আপুনি এটা সতৰ্কবাৰ্তা লাভ কৰিব"</string>
+<string name="price_drop_alerts_card_get_notified">"জাননী পাওক"</string>
+<string name="price_drop_alerts_card_go_to_settings_content">"খোলা থকা কোনো টেবত কম মূল্যৰ তথ্য উপলব্ধ হ’লে সতৰ্কবাৰ্তা লাভ কৰিবলৈ ছেটিঙলৈ গৈ জাননী অন কৰক।"</string>
+<string name="price_drop_alerts_card_go_to_settings">"ছেটিংসমূহলৈ যাওক"</string>
+<string name="price_tracking_settings">"মূল্য ট্ৰেক কৰাৰ ছেটিং"</string>
+<string name="track_prices_on_tabs">"টেবত মূল্য ট্ৰেক কৰক"</string>
+<string name="track_prices_on_tabs_description">"আপোনাৰ টেবসমূহত মূল্য কমাৰ বিষয়ে তথ্য চাওক"</string>
+<string name="price_drop_alerts">"মূল্য কমাৰ সতৰ্কবাৰ্তা"</string>
+<string name="price_drop_alerts_description">"মূল্য কমিলে জাননী পাওক"</string>
+<string name="price_drop_notification_content_title">"%2$sৰ দাম %1$s কমিছে"</string>
+<string name="price_drop_notification_content_text">"এতিয়া %2$sত %1$s"</string>
+<string name="price_drop_notification_action_visit_site">"ছাইটটোলৈ যাওক"</string>
+<string name="price_drop_notification_action_turn_off_alert">"প্ৰ\'ডাক্ট ট্ৰেক কৰাটো বন্ধ কৰক"</string>
+<string name="merchant_viewer_message_title">"ষ্ট’ৰৰ তথ্য চাব নেকি?"</string>
+<string name="merchant_viewer_message_title_see_reviews">"ষ্ট\'ৰৰ পর্যালোচনা চাবনে?"</string>
+<string name="merchant_viewer_message_action">"চাওক"</string>
+<string name="merchant_viewer_message_description_rating">"%1$s/%2$s মূল্যাংকন"</string>
+<plurals name="merchant_viewer_message_description_reviews">
+  <item quantity="one">"(%1$s টা পৰ্যালোচনা)"</item>
+  <item quantity="other">"(%1$s টা পৰ্যালোচনা)"</item>
+</plurals>
+<plurals name="merchant_viewer_message_description_reviews_from_google">
+  <item quantity="one">"Googleৰ পৰা %1$s টা পর্যালোচনা"</item>
+  <item quantity="other">"Googleৰ পৰা %1$s টা পর্যালোচনা"</item>
+</plurals>
+<string name="merchant_viewer_message_rating_numerical">"%1$.1f/%2$d"</string>
+<string name="merchant_viewer_message_rating_word">"মূল্যাংকন"</string>
+<plurals name="accessibility_merchant_viewer_message_description">
+  <item quantity="one">" %1$s/%2$s মূল্যাংকন, %3$d টা পৰ্যালোচনা"</item>
+  <item quantity="other">"%1$s/%2$s মূল্যাংকন, %3$d টা পৰ্যালোচনা"</item>
+</plurals>
+<string name="accessibility_merchant_viewer_message_announcement">"ষ্ট’ৰৰ তথ্য চাওক, বিকল্পটো স্ক্ৰীনখনৰ প্ৰায় শীৰ্ষত আছে"</string>
+<string name="merchant_viewer_preview_sheet_title">"Google | এই ষ্ট\'ৰখনৰ বিষয়ে"</string>
+<string name="merchant_viewer_omnibox_icon_iph">"ষ্ট’ৰৰ তথ্য চাওক"</string>
+<string name="page_info_store_info_title">"ষ্ট’ৰৰ তথ্য"</string>
+<string name="page_info_store_info_description_with_no_review">"(ষ্ট’ৰৰ মূল্যাংকন)"</string>
+<string name="page_info_store_info_description_with_no_rating">"উভতাই দিয়াৰ নীতি আৰু অন্য বহুতো চাওক"</string>
+<string name="merchant_viewer_preview_sheet_description">"এই দোকানৰ বিষয়ে তথ্য"</string>
+<string name="merchant_viewer_preview_sheet_opened_half">"এই দোকানৰ বিষয়ে তথ্য আধা স্ক্ৰীনত দেখুওৱা হৈছে"</string>
+<string name="merchant_viewer_preview_sheet_opened_full">"এই দোকানৰ বিষয়ে তথ্য পূৰ্ণ স্ক্ৰীনত দেখুওৱা হৈছে"</string>
+<string name="merchant_viewer_preview_sheet_closed">"এই দোকানৰ বিষয়ে তথ্য দেখুওৱা বন্ধ হৈছে"</string>
+<string name="close_all_tabs_dialog_title">"আটাইবোৰ টেব বন্ধ কৰিবনে?"</string>
+<string name="close_all_tabs_dialog_message">"আপুনি Chromeৰ মুখ্য মেনুখনৰ তলত থকা শেহতীয়া টেবত আপোনাৰ বন্ধ কৰা টেব বিচাৰিব পাৰে"</string>
+<string name="close_all_tabs_dialog_title_incognito">"আটাইবোৰ ইনক’গনিট’ টেব বন্ধ কৰিবনে?"</string>
+<string name="close_all_tabs_dialog_message_incognito">"এই ইনক’গনিট’ টেবসমূহত আপুনি কৰা কাৰ্যকলাপ এই ডিভাইচটোৰ পৰা মচা হ’ব"</string>
+</resources>

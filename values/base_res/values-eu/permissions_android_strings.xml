@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"Kamera atzitzeko baimena behar du %1$s-k ingurunearen hiru dimentsioko mapa bat sortzeko"</string>
+<string name="infobar_missing_camera_permission_text">"Webgune honen izenean kamera atzitzeko baimena behar du %1$s-k."</string>
+<string name="infobar_missing_microphone_permission_text">"Webgune honen izenean mikrofonoa atzitzeko baimena behar du %1$s-k."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"Webgune honen izenean kamera eta mikrofonoa atzitzeko baimena behar du %1$s-k."</string>
+<string name="infobar_missing_location_permission_text">"Kokapena webgune honekin partekatzeko baimena behar du %1$s-k."</string>
+<string name="infobar_update_permissions_button_text">"Egin aurrera"</string>
+<string name="nfc_disabled_on_device_message">"Aurrera egiteko, joan Android-en ezarpenetara eta aktibatu NFC"</string>
+<string name="nfc_prompt_turn_on">"Aktibatu"</string>
+<string name="overlay_detected_dialog_title">"Webguneak ezin dizu eskatu baimena"</string>
+<string name="overlay_detected_dialog_message">"Itxi beste aplikazioetako burbuilak edo gainjartzeak. Ondoren, saiatu berriro."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Lortu laguntza&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Parekatu"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Seinalearen indarra: %d barra"</item>
+  <item quantity="other">"Seinalearen indarra: %d barra"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Konektatutako gailua"</string>
+<string name="bluetooth_dialog_title">"%1$s webguneak parekatu egin nahi du"</string>
+<string name="bluetooth_not_found">"Ez da aurkitu gailu bateragarririk"</string>
+<string name="bluetooth_searching">"&lt;link&gt;Lortu laguntza&lt;/link&gt; gailurik dagoen egiaztatu bitartean…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Lortu laguntza&lt;/link1&gt; edo &lt;link2&gt;bilatu berriro&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Chrome-k kokapenerako sarbidea izan behar du gailuak bilatzeko. Kokapenerako sarbidea &lt;services_link&gt;desaktibatuta dago gailu honetan&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Chrome-k kokapenerako sarbidea izan behar du gailuak bilatzeko. &lt;permission_link&gt;Eguneratu baimenak&lt;/permission_link&gt;. Kokapenerako sarbidea &lt;services_link&gt;desaktibatuta dago gailu honetan&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome-k inguruko gailuak bilatzeko baimena behar du. &lt;permission_link&gt;Eguneratu baimenak&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"Kokapenerako sarbidea izan behar du Chrome-k gailuak bilatzeko. &lt;permission_link&gt;Aldatu baimenak&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Lortu laguntza&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome-k ezin du aktibatu Bluetooth egokigailua"</string>
+<string name="bluetooth_adapter_off">"Parekatzeko, &lt;link&gt;aktibatu Bluetooth-a&lt;/link&gt;"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s webguneak inguruko Bluetooth bidezko gailuak bilatu nahi ditu. Gailu hauek aurkitu dira:"</string>
+<string name="bluetooth_scanning_device_unknown">"Gailu ezezaguna edo bateraezina (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

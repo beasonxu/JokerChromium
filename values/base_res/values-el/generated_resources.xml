@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Οι Όροι Παροχής Υπηρεσιών του Chrome αλλάζουν στις 31 Μαρτίου"</string>
+<string name="tos_notification_body_text">"Ελέγξτε τους νέους όρους."</string>
+<string name="tos_notification_ack_button_text">"Κατάλαβα!"</string>
+<string name="tos_notification_review_button_text">"Έλεγχος"</string>
+<string name="webapp_update_dialog_title_name">"Έλεγχος ενημέρωσης ονόματος"</string>
+<string name="webapp_update_dialog_title_icon">"Έλεγχος ενημέρωσης εικονιδίου"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"Έλεγχος ενημερώσεων ονόματος και εικονιδίου"</string>
+<string name="webapp_update_explanation">"Εάν αυτή η εφαρμογή ιστού προσπαθεί να σας εξαπατήσει έτσι ώστε να πιστέψετε ότι πρόκειται για διαφορετική εφαρμογή, απεγκαταστήστε την."</string>
+<string name="webapp_update_current_icon">"Τρέχον εικονίδιο"</string>
+<string name="webapp_update_new_icon">"Νέο εικονίδιο"</string>
+<string name="webapp_update_negative_button">"Απεγκατάσταση εφαρμογής"</string>
+<string name="search_or_type_web_address">"Αναζητήστε ή πληκτρ. μια διεύθ. ιστού"</string>
+<string name="password_manager_username_label">"Όνομα χρήστη"</string>
+<string name="password_manager_password_label">"Κωδικός πρόσβασης"</string>
+<string name="password_manager_update_button">"Ενημέρωση"</string>
+<string name="confirm_username_dialog_title">"Επιβεβαίωση του ονόματος χρήστη"</string>
+<string name="options_homepage_title">"Αρχική σελίδα"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"Επαλήθευση με αυτό το τηλέφωνο"</string>
+<string name="cablev2_get_assertion_notification_title">"Επαλήθευση της ταυτότητάς σας"</string>
+</resources>

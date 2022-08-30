@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="autofill_save_card_prompt_confirm">"నిర్ధారించు"</string>
+<string name="autofill_mobile_save_card_to_cloud_confirmation_dialog_explanation">"సురక్షితమైన, వేగవంతమైన చెక్ అవుట్‌ల కోసం మీ కార్డ్, అలాగే బిల్లింగ్ సమాచారాన్ని మీ Google ఖాతాలో సేవ్ చేయండి"</string>
+<string name="autofill_mobile_save_card_to_cloud_confirmation_dialog_explanation_with_account_name">"సురక్షితమైన, వేగవంతమైన చెక్ అవుట్‌ల కోసం మీ కార్డ్, అలాగే బిల్లింగ్ సమాచారాన్ని మీ Google ఖాతా ^1‌లో సేవ్ చేయండి"</string>
+<string name="autofill_fix_flow_prompt_save_card_label">"కార్డ్‌ని సేవ్ చేయండి"</string>
+<string name="autofill_save_card_prompt_cardholder_name_tooltip">"ఇది మీ Google ఖాతాలో ఉన్న పేరు"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_cvc">"మీ CVCని చెక్ చేసి, మళ్లీ ప్రయత్నించండి"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_date">"మీ గడువు ముగింపు తేదీని చెక్ చేసి, మళ్లీ ప్రయత్నించండి"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_cvc_and_expiration">"మీ గడువు ముగింపు తేదీ మరియు CVCని చెక్ చేసి, మళ్లీ ప్రయత్నించండి"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_month">"మీ గడువు ముగింపు నెలను చెక్ చేసి, మళ్లీ ప్రయత్నించండి"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_year">"మీ గడువు ముగింపు సంవత్సరాన్ని చెక్ చేసి, మళ్లీ ప్రయత్నించండి"</string>
+<string name="autofill_card_unmask_prompt_enable_fido_auth_checkbox">"ఇప్పటి నుండి కార్డ్‌లను నిర్ధారించడానికి స్క్రీన్ లాక్‌ను ఉపయోగించండి"</string>
+<string name="autofill_card_unmask_verification_in_progress">"కార్డ్‌ నిర్ధారించబడుతోంది…"</string>
+<string name="autofill_card_unmask_verification_success">"మీ కార్డ్ నిర్ధారించబడింది"</string>
+<string name="autofill_expiration_date_separator">"/"</string>
+<string name="autofill_card_unmask_new_card_link">"కార్డ్‌ని అప్‌డేట్ చేయండి"</string>
+<string name="autofill_wallet_management_link_text">"ఎడిట్"</string>
+<string name="autofill_from_google_account_long">"Google Pay నుండి"</string>
+<string name="autofill_virtual_card_enrollment_accept_button_label">"అవును"</string>
+<string name="autofill_virtual_card_enrollment_dialog_title_label">"వర్చువల్ కార్డ్‌తో దీన్ని మరింత సురక్షితంగా ఉంచాలనుకుంటున్నారా?"</string>
+<string name="autofill_virtual_card_number_switch_label">"వర్చువల్ కార్డ్"</string>
+<string name="autofill_offers_reminder_description_text">"చెక్అవుట్‌లో %1$sతో పేమెంట్ చేయండి."</string>
+<string name="autofill_offers_reminder_deep_link_text">"వివరాలను చూడండి"</string>
+<string name="autofill_payments_otp_verification_dialog_title">"వెరిఫికేషన్ కోడ్‌ను ఎంటర్ చేయండి"</string>
+<string name="autofill_payments_otp_verification_dialog_cant_find_code_message">"మీ కోడ్‌ను కనుగొనలేకపోయారా? &lt;link&gt;కొత్త కోడ్‌ను పొందండి&lt;/link&gt;"</string>
+<string name="autofill_payments_otp_verification_dialog_otp_input_hint">"%1$s-అంకెల కోడ్‌ను ఎంటర్ చేయండి"</string>
+<string name="autofill_payments_otp_verification_dialog_positive_button_label">"నిర్ధారించు"</string>
+<string name="autofill_payments_otp_verification_dialog_negative_button_label">"రద్దు చేయండి"</string>
+<string name="autofill_edit_credit_card">"కార్డ్‌ను ఎడిట్ చేయండి"</string>
+<string name="autofill_create_credit_card">"కార్డ్‌ను జోడించు"</string>
+<string name="autofill_clear_local_copy_button">"కాపీని తీసివేయండి"</string>
+<string name="autofill_cc_amex">"అమెరికన్ ఎక్స్‌ప్రెస్"</string>
+<string name="autofill_cc_diners">"డైనర్స్ క్లబ్"</string>
+<string name="autofill_cc_discover">"కనుగొను"</string>
+<string name="autofill_cc_jcb">"JCB"</string>
+<string name="autofill_cc_mastercard">"Mastercard"</string>
+<string name="autofill_cc_mir">"Mir"</string>
+<string name="autofill_cc_union_pay">"చైనా యూనియన్ పే"</string>
+<string name="autofill_cc_visa">"వీసా"</string>
+<string name="autofill_address_summary_separator">", "</string>
+<string name="autofill_scan_credit_card">"కొత్త కార్డ్‌ను స్కాన్ చేయండి"</string>
+<string name="autofill_enable_profiles_toggle_sublabel">"ఫోన్ నంబర్‌లు, ఈమెయిల్‌ అడ్రస్‌లు మరియు డెలివరీ అడ్రస్‌ల వంటి సమాచారం ఉంటుంది"</string>
+<string name="autofill_enable_credit_cards_toggle_sublabel">"పేమెంట్ ఫారమ్‌లను, మీరు సేవ్ చేసిన పేమెంట్ ఆప్షన్‌లతో ఫిల్ చేస్తుంది"</string>
+<string name="autofill_addresses_settings_title">"అడ్రస్‌లు, మరికొన్ని వివరాలు"</string>
+<string name="autofill_payment_methods">"పేమెంట్ ఆప్షన్‌లు"</string>
+<string name="autofill_enable_profiles_toggle_label">"అడ్రస్‌లను సేవ్ చేసి, పూరించండి"</string>
+<string name="autofill_enable_credit_cards_toggle_label">"పేమెంట్ ఆప్షన్‌లను సేవ్ చేసి, ఆటోమేటిక్‌గా ఫిల్ చేయండి"</string>
+<string name="enable_credit_card_fido_auth_label">"స్క్రీన్ లాక్"</string>
+<string name="enable_credit_card_fido_auth_sublabel">"కార్డ్‌లను వేగంగా నిర్ధారించడానికి స్క్రీన్‌లాక్‌ను ఉపయోగించండి"</string>
+<string name="autofill_update_address_prompt_new_values_section_label">"కొత్త"</string>
+<string name="autofill_update_address_prompt_old_values_section_label">"పాతది"</string>
+<string name="autofill_save_address_prompt_edit_button_tooltip">"అడ్రస్‌ను ఎడిట్ చేయండి"</string>
+<string name="autofill_edit_address_dialog_title">"అడ్రస్‌ను ఎడిట్ చేయండి"</string>
+<string name="http_post_warning_title">"ఫారమ్ పునఃసమర్పణను నిర్థారించండి"</string>
+<string name="http_post_warning">"మీరు వెతికే పేజీ మీరు ఎంటర్ చేసిన సమాచారాన్ని ఉపయోగించుకుంది. ఆ పేజీకి తిరిగి వెళ్ల‌డం ద్వారా మీరు చేసిన ఏ చర్య అయినా రిపీట్‌ చేయ‌వలసి వస్తుంది. మీరు కొనసాగాలని అనుకుంటున్నారా?"</string>
+<string name="http_post_warning_resend">"కొనసాగించు"</string>
+<string name="login_dialog_title">"సైన్ ఇన్"</string>
+<string name="login_dialog_ok_button_label">"సైన్ ఇన్"</string>
+<string name="login_dialog_username_field">"యూజర్‌పేరు"</string>
+<string name="login_dialog_password_field">"పాస్‌వర్డ్"</string>
+<string name="sad_tab_title">"ఆవ్, స్నాప్!"</string>
+<string name="sad_tab_message">"ఈ వెబ్ పేజీని ప్రదర్శిస్తున్నప్పుడు ఏదో తప్పు జరిగింది."</string>
+<string name="sad_tab_reload_label">"మళ్లీ లోడ్ చేయి"</string>
+<string name="sad_tab_send_feedback_label">"ప్రతిస్పందనను పంపండి"</string>
+<string name="sad_tab_reload_title">"ఈ పేజీని తెరవడం సాధ్యపడదు"</string>
+<string name="sad_tab_reload_try">"కింది చిట్కాలను ప్రయత్నించండి:"</string>
+<string name="sad_tab_reload_incognito">"కొత్త అజ్ఞాత ట్యాబ్‌లో పేజీని తెరవండి"</string>
+<string name="sad_tab_reload_restart_browser">"Chromiumని పునఃప్రారంభించండి"</string>
+<string name="sad_tab_reload_restart_device">"మీ పరికరాన్ని పునఃప్రారంభించండి"</string>
+<string name="sad_tab_reload_learn_more">"మరింత తెలుసుకోండి"</string>
+<string name="new_tab_otr_title">"మీరు అజ్ఞాత మోడ్‌లోకి వెళ్లారు"</string>
+<string name="new_tab_otr_subtitle">"‌ఇప్పుడు మీరు వ్యక్తిగతంగా బ్రౌజ్ చేయవచ్చు మరియు ఈ పరికరాన్ని ఉపయోగించే ఇతర వ్యక్తులకు మీ కార్య‌క‌లాపం కనిపించదు. అయినప్పటికీ, డౌన్‌లోడ్‌లు మరియు బుక్‌మార్క్‌లు సేవ్ చేయబడతాయి."</string>
+<string name="new_tab_otr_subtitle_with_reading_list">"ఇప్పుడు మీరు ప్రైవేట్‌గా బ్రౌజ్ చేయవచ్చు, ఈ పరికరాన్ని ఉపయోగించే ఇతర వ్యక్తులు మీ యాక్టివిటీని చూడలేరు. అయినప్పటికీ, డౌన్‌లోడ్‌లు, బుక్‌మార్క్‌లు, చదవాల్సిన ఐటెమ్‌ల లిస్ట్ సేవ్ చేయబడతాయి."</string>
+<string name="new_tab_otr_not_saved">"Chromium ఈ కింది సమాచారాన్ని &lt;em&gt;సేవ్ చేయదు&lt;/em&gt;:
+          &lt;ul&gt;
+            &lt;li&gt;మీ బ్రౌజింగ్ హిస్టరీ
+            &lt;li&gt;కుక్కీలు, సైట్ డేటా
+            &lt;li&gt;ఫారమ్‌లలో ఎంటర్ చేసిన సమాచారం
+          &lt;/ul&gt;"</string>
+<string name="new_tab_otr_visible">"మీ కార్యాచరణ వీరికి &lt;em&gt;ఇప్పటికీ కనిపించవచ్చు&lt;/em&gt;:
+        &lt;ul&gt;
+          &lt;li&gt;మీరు సందర్శించే వెబ్‌సైట్‌లు
+
+          &lt;li&gt;మీ యజమాని లేదా పాఠశాల నిర్వాహకులు
+
+          &lt;li&gt;మీ ఇంటర్నెట్ సేవా ప్రదాత
+        &lt;/ul&gt;"</string>
+<string name="new_tab_otr_cookie_controls_controlled_tooltip_text">"ఈ సెట్టింగ్, కుక్కీల సెట్టింగ్‌లలో నియంత్రించబడుతోంది."</string>
+<string name="new_tab_otr_third_party_cookie">"థర్డ్ పార్టీ కుక్కీలను బ్లాక్ చేయండి"</string>
+<string name="new_tab_otr_third_party_cookie_sublabel">"ఆన్‌లో ఉన్నప్పుడు, వెబ్ అంతటా మిమ్మల్ని ట్రాక్ చేయడానికి ఉపయోగించే కుక్కీలను సైట్‌లు ఉపయోగించడం సాధ్యం కాదు. కొన్ని సైట్‌లలోని ఫీచర్‌లు సరిగ్గా పని చేయకపోవచ్చు."</string>
+<string name="revamped_incognito_ntp_title">"Chromiumలో అజ్ఞాత మోడ్"</string>
+<string name="revamped_incognito_ntp_does_header">"అజ్ఞాత మోడ్ ఏమి చేస్తుంది"</string>
+<string name="revamped_incognito_ntp_does_description">"మీరు అన్ని Chromium అజ్ఞాత ట్యాబ్‌లను మూసివేసినప్పుడు, ఆ ట్యాబ్‌లలోని మీ యాక్టివిటీ ఈ పరికరం నుండి తీసివేయబడుతుంది:
+          &lt;ul&gt;
+            &lt;li&gt;బ్రౌజింగ్ యాక్టివిటీ&lt;/li&gt;
+            &lt;li&gt;సెర్చ్ హిస్టరీ&lt;/li&gt;
+            &lt;li&gt;ఫారమ్‌లలో ఎంటర్ చేసిన సమాచారం&lt;/li&gt;
+          &lt;/ul&gt;"</string>
+<string name="revamped_incognito_ntp_does_not_header">"అజ్ఞాత మోడ్ ఏమి చేయదు"</string>
+<string name="revamped_incognito_ntp_does_not_description">"అజ్ఞాత మోడ్‌ను ఉపయోగిస్తున్నంత మాత్రాన మీరు ఆన్‌లైన్‌లో ఇతరులకు కనపడరని అర్ధం కాదు:
+        &lt;ul&gt;
+          &lt;li&gt;వారు ఉపయోగించే సైట్‌లు, సర్వీస్‌లు వారి సందర్శనలను చూడగలవు&lt;/li&gt;
+          &lt;li&gt;యాజమాన్య సంస్థలు లేదా పాఠశాలలు బ్రౌజింగ్ యాక్టివిటీని ట్రాక్ చేయగలవు&lt;/li&gt;
+          &lt;li&gt;ఇంటర్నెట్ సర్వీస్ ప్రొవైడర్‌లు వెబ్ ట్రాఫిక్‌ను మానిటర్ చేయగలవు&lt;/li&gt;
+        &lt;/ul&gt;"</string>
+<string name="revamped_incognito_ntp_learn_more">"&lt;a&gt;Chromiumలో అజ్ఞాత మోడ్ గురించి మరింత తెలుసుకోండి&lt;/a&gt;"</string>
+<string name="revamped_incognito_ntp_otr_third_party_cookie">"అజ్ఞాత మోడ్‌లో థర్డ్-పార్టీ కుక్కీలను బ్లాక్ చేయండి"</string>
+<string name="revamped_incognito_ntp_otr_third_party_cookie_sublabel">"వెబ్ అంతటా మిమ్మల్ని ట్రాక్ చేయడానికి ఉపయోగించే కుక్కీలను సైట్‌లు ఉపయోగించడం సాధ్యం కాదు. కొన్ని సైట్‌లలోని ఫీచర్‌లు సరిగ్గా పని చేయకపోవచ్చు."</string>
+<string name="ntp_article_suggestions_section_header">"మీ కోసం కథనాలు"</string>
+<string name="ntp_article_suggestions_section_empty">"మీకు సూచించిన కథనాలు ఇక్కడ కనిపిస్తాయి"</string>
+<string name="page_info_permission_ads_subtitle">"సైట్ అనుచితమైన లేదా తప్పుదారి పట్టించే ప్రకటనలను చూపుతుంది"</string>
+<string name="payments_method_of_payment_label">"పేమెంట్ ఆప్షన్‌"</string>
+<string name="payments_contact_details_label">"సంప్రదింపు సమాచారం"</string>
+<string name="payments_add_contact_details_label">"సంప్రదింపు సమాచారాన్ని జోడించు"</string>
+<string name="payments_edit_contact_details_label">"సంప్రదింపు సమాచారాన్ని ఎడిట్ చేయండి"</string>
+<string name="payments_add_billing_address">"బిల్లింగ్ అడ్రస్‌ను జోడించండి"</string>
+<string name="payments_add_name_on_card">"కార్డ్‌లో పేరుని జోడించండి"</string>
+<string name="payments_add_valid_card_number">"చెల్లుబాటయ్యే కార్డ్ నంబర్‌ను జోడించండి"</string>
+<string name="payments_add_more_information">"మరింత సమాచారాన్ని జోడించండి"</string>
+<string name="payments_edit_card">"కార్డ్‌ను ఎడిట్ చేయండి"</string>
+<string name="payments_add_phone_number">"ఫోన్ నం. జోడిం."</string>
+<string name="payments_add_recipient">"పేరు జోడించండి"</string>
+<string name="payments_add_valid_address">"చెల్లుబాటు అయ్యే అడ్రస్‌ను జోడించండి"</string>
+<string name="payments_add_email">"ఈమెయిల్‌ను జోడించండి"</string>
+<string name="payments_add_name">"పేరు జోడించండి"</string>
+<string name="payments_order_summary_label">"ఆర్డర్ సారాంశం"</string>
+<string name="payment_request_payment_method_section_name">"చెల్లింపు"</string>
+<string name="payments_shipping_summary_label">"ఓడ రవాణా"</string>
+<string name="payments_shipping_address_label">"షిప్పింగ్ అడ్రస్‌"</string>
+<string name="payments_shipping_option_label">"రవాణా పద్ధతి"</string>
+<string name="payments_delivery_summary_label">"డెలివరీ"</string>
+<string name="payments_delivery_address_label">"డెలివరీ అడ్రస్‌"</string>
+<string name="payments_delivery_option_label">"డెలివరీ పద్ధతి"</string>
+<string name="payments_pickup_summary_label">"పికప్"</string>
+<string name="payments_pickup_address_label">"పికప్ అడ్రస్‌"</string>
+<string name="payments_pickup_option_label">"పికప్ పద్ధతి"</string>
+<string name="payments_edit_button">"ఎడిట్"</string>
+<string name="payments_pay_button">"చెల్లింపు"</string>
+<string name="payments_continue_button">"కొనసాగించు"</string>
+<string name="payments_add_contact">"సంప్రదింపు సమాచారాన్ని జోడించు"</string>
+<string name="payments_add_card">"కార్డ్‌ను జోడించు"</string>
+<string name="payments_add_address">"అడ్రస్‌ను జోడించు"</string>
+<string name="payments_edit_address">"అడ్రస్‌ను ఎడిట్ చేయండి"</string>
+<string name="payments_name_field_in_contact_details">"పేరు"</string>
+<string name="payments_save_card_to_device_checkbox">"ఈ కార్డ్‌ను ఈ పరికరానికి సేవ్ చేయి"</string>
+<string name="payments_accepted_cards_label">"ఆమోదించబడే కార్డ్‌లు"</string>
+<string name="payments_credit_card_expiration_date_abbr">"గడువు ముగింపు %1$s/%2$s"</string>
+<string name="payments_loading_message">"లోడ్ చేస్తోంది"</string>
+<string name="payments_checking_option">"చెక్ చేస్తోంది"</string>
+<string name="payments_updated_label">"అప్‌డేట్ చేయబడింది"</string>
+<string name="payments_error_message">"మీ ఆర్డర్‌ను ప్రాసెస్ చేస్తున్నప్పుడు ఎర్రర్ ఏర్పడింది. దయచేసి మళ్లీ ప్రయత్నించండి."</string>
+<string name="payments_card_and_address_settings">"మీరు కార్డ్‌లు మరియు అడ్రస్‌లను BEGIN_LINKసెట్టింగ్‌లEND_LINKలో నిర్వహించగలరు."</string>
+<string name="payments_card_and_address_settings_signed_in">"కార్డ్‌లు, అడ్రస్‌లు- Chrome నుండి, మీ Google ఖాతా (%1$s) నుండి పొందినవి. మీరు BEGIN_LINKసెట్టింగ్‌లుEND_LINKలో వాటిని నిర్వహించవచ్చు."</string>
+<string name="payments_card_and_address_settings_signed_out">"కార్డ్‌లు మరియు అడ్రస్‌లు Chrome నుండి పొందినవి. మీరు BEGIN_LINKసెట్టింగ్‌లుEND_LINKలో వాటిని నిర్వహించవచ్చు."</string>
+<string name="settings_can_make_payment_toggle_label">"ఏవైనా పేమెంట్ ఆప్షన్‌లను మీరు సేవ్ చేశారో లేదో చెక్ చేసేందుకు వెబ్‌సైట్‌లను అనుమతించండి"</string>
+<string name="payments_required_field_message">"* అవసరమైన ఫీల్డ్"</string>
+<string name="payments_phone_invalid_validation_message">"చెల్లుబాటు అయ్యే ఫోన్ నంబర్‌ను నమోదు చేయండి"</string>
+<string name="payments_email_invalid_validation_message">"చెల్లుబాటు అయ్యే ఈమెయిల్‌ అడ్రస్‌ను నమోదు చేయండి"</string>
+<string name="payments_card_number_invalid_validation_message">"చెల్లుబాటు అయ్యే కార్డ్ నంబర్‌ను నమోదు చేయండి"</string>
+<string name="payments_card_expiration_invalid_validation_message">"చెల్లుబాటు అయ్యే గడువు ముగింపు తేదీని నమోదు చేయండి"</string>
+<string name="payments_invalid_address">"చెల్లుబాటు అయ్యే అడ్రస్‌ను నమోదు చేయండి"</string>
+<string name="payments_billing_address_required">"బిల్లింగ్ అడ్రస్‌ ఆవశ్యకం"</string>
+<string name="payments_name_on_card_required">"కార్డుదారుని పేరు అవసరం"</string>
+<string name="payments_more_information_required">"మరింత సమాచారం ఆవశ్యకం"</string>
+<string name="payments_phone_number_required">"ఫోన్ నంబర్ అవసరం"</string>
+<string name="payments_recipient_required">"పేరు ఆవశ్యకం"</string>
+<string name="payments_email_required">"ఈమెయిల్‌ అవ‌స‌రం"</string>
+<string name="payments_name_required">"పేరు ఆవశ్యకం"</string>
+<string name="pref_edit_dialog_field_required_validation_message">"అవసరమైన ఫీల్డ్"</string>
+<string name="payments_select_shipping_address_for_shipping_methods">"రవాణా పద్ధతులు మరియు అవసరాలను చూడాలంటే, అడ్రస్‌ను ఎంచుకోండి"</string>
+<string name="payments_unsupported_shipping_address">"ఈ అడ్రస్‌కు రవాణా చేయడం సాధ్యం కాదు. వేరే అడ్రస్‌ను ఎంచుకోండి."</string>
+<string name="payments_select_delivery_address_for_delivery_methods">"డెలివరీ పద్ధతులు మరియు అవసరాలను చూడాలంటే, అడ్రస్‌ను ఎంచుకోండి"</string>
+<string name="payments_unsupported_delivery_address">"ఈ అడ్రస్‌కు డెలివరీ చేయడం సాధ్యం కాదు. వేరే అడ్రస్‌ను ఎంచుకోండి."</string>
+<string name="payments_select_pickup_address_for_pickup_methods">"పికప్ పద్ధతులు మరియు అవసరాలను చూడాలంటే, అడ్రస్‌ను ఎంచుకోండి"</string>
+<string name="payments_unsupported_pickup_address">"ఈ అడ్రస్‌ నుండి పికప్ చేసుకోవడం సాధ్యం కాదు. వేరే అడ్రస్‌ను ఎంచుకోండి."</string>
+<string name="payments_android_app_error">"చెల్లింపు యాప్‌ను తెరవడం సాధ్యం కాదు"</string>
+<string name="external_payment_app_leave_incognito_warning">"వెలుపలి అప్లికేషన్ ద్వారా పేమెంట్ చేయడానికి అజ్ఞాత మోడ్ నుండి నిష్క్రమిస్తోంది. కొనసాగించాలా?"</string>
+<string name="payment_handler_sheet_description">"చెల్లింపు హ్యాండ్లర్ షీట్"</string>
+<string name="payment_handler_sheet_opened_half">"చెల్లింపు హ్యాండ్లర్ షీట్ సగం తెరవబడింది"</string>
+<string name="payment_handler_sheet_opened_full">"చెల్లింపు హ్యాండ్లర్ షీట్ తెరవబడింది"</string>
+<string name="payment_handler_sheet_closed">"చెల్లింపు హ్యాండ్లర్ షీట్ మూసివేయబడింది"</string>
+<string name="secure_payment_confirmation_verify_purchase">"మీ కొనుగోలును వెరిఫై చేయండి"</string>
+<string name="secure_payment_confirmation_store_label">"స్టోర్"</string>
+<string name="secure_payment_confirmation_total_label">"మొత్తం"</string>
+<string name="no_matching_credential_description">"మీ పేమెంట్‌ను వెరిఫై చేయడానికి, %1$s అదనపు దశలను తీసుకోవాల్సి రావచ్చు"</string>
+<string name="secure_payment_confirmation_authentication_sheet_description">"సురక్షిత పేమెంట్ ఆధారాల ప్రామాణీకరణ షీట్"</string>
+<string name="secure_payment_confirmation_authentication_sheet_opened">"సురక్షిత పేమెంట్ ఆధారాల ప్రామాణీకరణ షీట్ తెరవబడింది"</string>
+<string name="secure_payment_confirmation_authentication_sheet_closed">"సురక్షిత పేమెంట్ ఆధారాల ప్రామాణీకరణ షీట్ మూయబడింది"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_description">"సురక్షితమైన పేమెంట్ ఆధారానికి సంబంధించిన మ్యాచ్ అయ్యే ఆధారాల షీట్ ఏదీ లేదు"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_opened">"సురక్షితమైన పేమెంట్ ఆధారానికి సంబంధించిన మ్యాచ్ అయ్యే ఆధారాల షీట్ ఏదీ తెరవబడలేదు"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_closed">"సురక్షితమైన పేమెంట్ ఆధారానికి సంబంధించిన మ్యాచ్ అయ్యే ఆధారాల షీట్ ఏదీ మూసివేయబడలేదు"</string>
+<string name="bluetooth_scanning_prompt_no_devices_found_prompt">"సమీప పరికరాలు ఏవీ కనుగొనబడలేదు."</string>
+<string name="bluetooth_scanning_prompt_allow_button_text">"అనుమతించండి"</string>
+<string name="bluetooth_scanning_prompt_block_button_text">"నిరోధించు"</string>
+<string name="blocked_ads_prompt_title">"ప్రకటనలు బ్లాక్ చేయబడ్డాయి"</string>
+<string name="blocked_ads_dialog_title">"ప్రకటనలు బ్లాక్ చేయబడ్డాయి"</string>
+<string name="blocked_ads_dialog_message">"ఈ సైట్ అనుచితమైన లేదా తప్పుదారి పట్టించే యాడ్‌లను చూపుతుంది. ^1"</string>
+<string name="blocked_ads_dialog_always_allow">"ఈ సైట్‌కు అనుమతించండి"</string>
+<string name="blocked_ads_dialog_learn_more">"మరింత తెలుసుకోండి"</string>
+<string name="sync_enter_passphrase_body">"మీ సింక్‌ రహస్య పదబంధంతో మీ డేటా ఎన్‌క్రిప్ట్ చేయ‌బ‌డింది. సింక్‌ను ప్రారంభించడానికి దీన్ని నమోదు చేయండి."</string>
+<string name="translate_infobar_error">"అయ్యో. ఈ పేజీని అనువదించడం సాధ్యపడలేదు."</string>
+<string name="translate_button">"అనువదించు"</string>
+<string name="translate_never_translate_site">"ఈ సైట్‌ను ఎప్పటికీ అనువదించవద్దు"</string>
+<string name="translate_dont_offer_site">"ఈ సైట్‌ను అనువాదం చేసే సదుపాయాన్ని అందించవద్దు"</string>
+<string name="translate_option_always_translate">"%1$sలో ఉన్న పేజీలను ఎల్లప్పుడూ అనువదించు"</string>
+<string name="translate_option_never_translate">"%1$sలో ఉన్న పేజీలను ఎప్పుడూ అనువదించవద్దు"</string>
+<string name="translate_dont_offer_lang">"%1$sలోని పేజీలను అనువాదం చేసే సదుపాయాన్ని అందించవద్దు"</string>
+<string name="translate_option_more_language">"మరిన్ని భాషలు"</string>
+<string name="translate_option_not_source_language">"పేజీ %1$sలో లేదా?"</string>
+<string name="translate_snackbar_always_translate">"ఇప్పటి నుండి %1$sలో ఉన్న పేజీలు %2$sకు అనువదించబడతాయి"</string>
+<string name="translate_snackbar_language_never">"%1$sలో ఉన్న పేజీలు అనువదించబడవు"</string>
+<string name="translate_snackbar_site_never">"ఈ సైట్ అనువదించబడదు"</string>
+<string name="translate_snackbar_cancel">"రద్దు చేయండి"</string>
+<string name="management_browser_reporting">"బ్రౌజర్"</string>
+<string name="management_browser_reporting_explanation">"మీ నిర్వాహకుడు వీటిని చూడగలరు:"</string>
+<string name="management_extension_report_username">"మీ పరికరం వినియోగదారు పేరు మరియు Chrome వినియోగదారు పేరు"</string>
+<string name="management_extension_report_version">"మీ పరికరం, బ్రౌజర్‌ల వెర్షన్ సమాచారం"</string>
+<string name="history_clusters_journeys_tab_label">"Chrome హిస్టరీలో మీ యాక్టివిటీలు"</string>
+<string name="history_clusters_search_your_journeys">"మీ బ్రౌజింగ్ జర్నీలను సెర్చ్ చేయండి"</string>
+<string name="clear">"క్లియర్ చేయండి"</string>
+<string name="show_content">"చూపించు"</string>
+<string name="hide_content">"దాచిపెట్టు"</string>
+<string name="choose">"ఎంచుకోండి"</string>
+</resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s се нуждае от разрешение за достъп до камерата ви, за да създаде триизмерна карта на заобикалящата ви среда."</string>
+<string name="infobar_missing_camera_permission_text">"%1$s се нуждае от разрешение за достъп до камерата ви за този сайт."</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s се нуждае от разрешение за достъп до микрофона ви за този сайт."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s се нуждае от разрешение за достъп до камерата и микрофона ви за този сайт."</string>
+<string name="infobar_missing_location_permission_text">"%1$s се нуждае от достъп до данните за местоположението ви, за да ги сподели с този сайт."</string>
+<string name="infobar_update_permissions_button_text">"Напред"</string>
+<string name="nfc_disabled_on_device_message">"За да продължите, включете NFC в настройките на Android"</string>
+<string name="nfc_prompt_turn_on">"Включване"</string>
+<string name="overlay_detected_dialog_title">"Този сайт не може да извежда запитвания за разрешения"</string>
+<string name="overlay_detected_dialog_message">"Затворете всички балончета и наслагвания от други приложения. След това опитайте отново."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Получете помощ&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Сдвояване"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Сила на сигнала: %d чертичка"</item>
+  <item quantity="other">"Сила на сигнала: %d чертички"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Свързано устройство"</string>
+<string name="bluetooth_dialog_title">"%1$s иска да се сдвои"</string>
+<string name="bluetooth_not_found">"Няма намерени съвместими устройства"</string>
+<string name="bluetooth_searching">"&lt;link&gt;Получете помощ&lt;/link&gt;, докато се сканира за устройства…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Получете помощ&lt;/link1&gt; или &lt;link2&gt;сканирайте отново&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Chrome се нуждае от достъп до местоположението, за да сканира за устройства, но съответните услуги са &lt;services_link&gt;изключени за това устройство&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Chrome се нуждае от достъп до местоположението, за да сканира за устройства. &lt;permission_link&gt;Актуализирайте разрешенията&lt;/permission_link&gt;. Също така услугите за местоположение са &lt;services_link&gt;изключени за това устройство&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome има нужда от разрешение да сканира за устройства в близост. &lt;permission_link&gt;Актуализиране на разрешенията&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"Chrome се нуждае от достъп до местоположението, за да сканира за устройства. &lt;permission_link&gt;Актуализиране на разрешенията&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Получете помощ&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome не може да включи адаптера за Bluetooth"</string>
+<string name="bluetooth_adapter_off">"&lt;link&gt;Включете Bluetooth&lt;/link&gt;, за да разрешите сдвояването"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s иска да сканира за устройства с Bluetooth в близост. Намерени са следните:"</string>
+<string name="bluetooth_scanning_device_unknown">"Неизвестно или неподдържано устройство (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

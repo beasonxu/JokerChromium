@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Chrome xizmat shartlari 31-mart kuni yangilanadi"</string>
+<string name="tos_notification_body_text">"Yangi shartlar bilan tanishib chiqing"</string>
+<string name="tos_notification_ack_button_text">"Tushunarli"</string>
+<string name="tos_notification_review_button_text">"Tekshirish"</string>
+<string name="webapp_update_dialog_title_name">"Nom oʻzgarishi tekshiruvi"</string>
+<string name="webapp_update_dialog_title_icon">"Belgi oʻzgarishi tekshiruvi"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"Nom va belgi oʻzgarishlari tekshiruvi"</string>
+<string name="webapp_update_explanation">"Agar bu veb ilova shubhali ishlasa, uni oʻchirib tashlang."</string>
+<string name="webapp_update_current_icon">"Joriy belgi"</string>
+<string name="webapp_update_new_icon">"Yangi belgi"</string>
+<string name="webapp_update_negative_button">"Ilovani oʻchirish"</string>
+<string name="search_or_type_web_address">"Qidiring yoki sayt manzilini kiriting"</string>
+<string name="password_manager_username_label">"Foydalanuvchi nomi"</string>
+<string name="password_manager_password_label">"Parol"</string>
+<string name="password_manager_update_button">"Yangilash"</string>
+<string name="confirm_username_dialog_title">"Foydalanuvchi nomini tasdiqlang"</string>
+<string name="options_homepage_title">"Bosh sahifa"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"Bu telefonni tasdiqlang"</string>
+<string name="cablev2_get_assertion_notification_title">"Shaxsni tasdiqlash"</string>
+</resources>

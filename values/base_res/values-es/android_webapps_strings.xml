@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"Descarga la aplicación en Google Play Store: %s"</string>
+<string name="app_banner_install">"Instalar"</string>
+<string name="menu_add_to_homescreen">"Añadir a pantalla de inicio"</string>
+<string name="menu_add_to_homescreen_install">"Instalar aplicación"</string>
+<string name="added_to_homescreen">"Se ha añadido %1$s a la pantalla de inicio"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"Instalar esta aplicación"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"Captura de pantalla"</string>
+<string name="image_zoom_content_description">"Captura de pantalla. Toca para cerrarla."</string>
+<string name="webapk_install_in_progress">"Aún se está añadiendo el sitio web anterior"</string>
+<string name="webapk_install_failed">"No se ha podido instalar"</string>
+</resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s ต้องการสิทธิ์เข้าถึงกล้องเพื่อสร้างแผนที่ 3 มิติของสิ่งที่อยู่รอบตัวคุณ"</string>
+<string name="infobar_missing_camera_permission_text">"%1$s ต้องการสิทธิ์เข้าถึงกล้องสำหรับเว็บไซต์นี้"</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s ต้องการสิทธิ์เข้าถึงไมโครโฟนสำหรับเว็บไซต์นี้"</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s ต้องการสิทธิ์เข้าถึงกล้องและไมโครโฟนสำหรับเว็บไซต์นี้"</string>
+<string name="infobar_missing_location_permission_text">"%1$s ต้องการสิทธิ์เข้าถึงตำแหน่งของคุณเพื่อแชร์ตำแหน่งกับเว็บไซต์นี้"</string>
+<string name="infobar_update_permissions_button_text">"ต่อไป"</string>
+<string name="nfc_disabled_on_device_message">"หากต้องการดำเนินการต่อ ให้เปิด NFC ในการตั้งค่าของ Android"</string>
+<string name="nfc_prompt_turn_on">"เปิด"</string>
+<string name="overlay_detected_dialog_title">"เว็บไซต์นี้ขอสิทธิ์จากคุณไม่ได้"</string>
+<string name="overlay_detected_dialog_message">"ปิดบับเบิลหรือการวางซ้อนทั้งหมดจากแอปอื่นๆ แล้วลองอีกครั้ง"</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;ขอความช่วยเหลือ&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"จับคู่"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"ระดับความแรงของสัญญาณ: %d แถบ"</item>
+  <item quantity="other">"ระดับความแรงของสัญญาณ: %d แถบ"</item>
+</plurals>
+<string name="bluetooth_device_connected">"อุปกรณ์ที่เชื่อมต่อ"</string>
+<string name="bluetooth_dialog_title">"%1$s ต้องการจับคู่"</string>
+<string name="bluetooth_not_found">"ไม่พบอุปกรณ์ที่เข้ากันได้"</string>
+<string name="bluetooth_searching">"&lt;link&gt;รับความช่วยเหลือ&lt;/link&gt;ระหว่างการค้นหาอุปกรณ์…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;รับความช่วยเหลือ&lt;/link1&gt;หรือ&lt;link2&gt;สแกนใหม่&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Chrome ต้องมีสิทธิ์เข้าถึงตำแหน่งเพื่อสแกนหาอุปกรณ์ ตัวเลือกสิทธิ์เข้าถึงตำแหน่ง&lt;services_link&gt;สำหรับอุปกรณ์เครื่องนี้ปิดอยู่&lt;/services_link&gt;"</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Chrome ต้องมีสิทธิ์เข้าถึงตำแหน่งเพื่อสแกนหาอุปกรณ์ โปรด&lt;permission_link&gt;อัปเดตสิทธิ์&lt;/permission_link&gt; การเข้าถึงตำแหน่ง&lt;services_link&gt;สำหรับอุปกรณ์เครื่องนี้ยังปิดอยู่&lt;/services_link&gt;"</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome ต้องได้รับสิทธิ์ในการสแกนหาอุปกรณ์ที่อยู่ใกล้เคียง &lt;permission_link&gt;อัปเดตสิทธิ์&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission">"Chrome ต้องมีสิทธิ์เข้าถึงตำแหน่งเพื่อสแกนหาอุปกรณ์ โปรด&lt;permission_link&gt;อัปเดตสิทธิ์&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;ขอความช่วยเหลือ&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome ไม่สามารถเปิดอะแดปเตอร์บลูทูธ"</string>
+<string name="bluetooth_adapter_off">"&lt;link&gt;เปิดบลูทูธ&lt;/link&gt;เพื่อให้จับคู่ได้"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s ต้องการสแกนหาอุปกรณ์บลูทูธที่อยู่ใกล้เคียงและได้พบอุปกรณ์ต่อไปนี้"</string>
+<string name="bluetooth_scanning_device_unknown">"อุปกรณ์ที่ไม่รู้จักหรือไม่รองรับ (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

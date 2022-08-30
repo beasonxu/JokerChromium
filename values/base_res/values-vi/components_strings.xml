@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="autofill_save_card_prompt_confirm">"Xác nhận"</string>
+<string name="autofill_mobile_save_card_to_cloud_confirmation_dialog_explanation">"Lưu thông tin thẻ và thông tin thanh toán vào Tài khoản Google để thanh toán an toàn và nhanh hơn"</string>
+<string name="autofill_mobile_save_card_to_cloud_confirmation_dialog_explanation_with_account_name">"Lưu thông tin thẻ và thông tin thanh toán vào Tài khoản Google ^1 để thanh toán an toàn và nhanh hơn"</string>
+<string name="autofill_fix_flow_prompt_save_card_label">"Lưu thẻ"</string>
+<string name="autofill_save_card_prompt_cardholder_name_tooltip">"Tên này lấy từ Tài khoản Google của bạn"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_cvc">"Kiểm tra CVC của bạn và thử lại"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_date">"Kiểm tra ngày hết hạn của bạn và thử lại"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_cvc_and_expiration">"Kiểm tra ngày hết hạn và CVC của bạn rồi thử lại"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_month">"Kiểm tra tháng hết hạn của bạn và thử lại"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_year">"Kiểm tra năm hết hạn của bạn và thử lại"</string>
+<string name="autofill_card_unmask_prompt_enable_fido_auth_checkbox">"Từ giờ trở đi, dùng phương thức khóa màn hình để xác nhận các thẻ"</string>
+<string name="autofill_card_unmask_verification_in_progress">"Đang xác nhận thẻ…"</string>
+<string name="autofill_card_unmask_verification_success">"Thẻ của bạn đã được xác nhận"</string>
+<string name="autofill_expiration_date_separator">"/"</string>
+<string name="autofill_card_unmask_new_card_link">"Cập nhật thẻ"</string>
+<string name="autofill_wallet_management_link_text">"Chỉnh sửa"</string>
+<string name="autofill_from_google_account_long">"Từ Google Pay"</string>
+<string name="autofill_virtual_card_enrollment_accept_button_label">"Có"</string>
+<string name="autofill_virtual_card_enrollment_dialog_title_label">"Tăng cường bảo mật nhờ thẻ ảo?"</string>
+<string name="autofill_virtual_card_number_switch_label">"Thẻ ảo"</string>
+<string name="autofill_offers_reminder_description_text">"Thanh toán bằng %1$s khi thanh toán."</string>
+<string name="autofill_offers_reminder_deep_link_text">"Xem thông tin chi tiết"</string>
+<string name="autofill_payments_otp_verification_dialog_title">"Nhập mã xác minh"</string>
+<string name="autofill_payments_otp_verification_dialog_cant_find_code_message">"Bạn không tìm thấy mã? &lt;link&gt;Nhận mã mới&lt;/link&gt;"</string>
+<string name="autofill_payments_otp_verification_dialog_otp_input_hint">"Nhập mã có %1$s chữ số"</string>
+<string name="autofill_payments_otp_verification_dialog_positive_button_label">"Xác nhận"</string>
+<string name="autofill_payments_otp_verification_dialog_negative_button_label">"Hủy"</string>
+<string name="autofill_edit_credit_card">"Chỉnh sửa thẻ"</string>
+<string name="autofill_create_credit_card">"Thêm thẻ"</string>
+<string name="autofill_clear_local_copy_button">"Xóa bản sao"</string>
+<string name="autofill_cc_amex">"American Express"</string>
+<string name="autofill_cc_diners">"Diners Club"</string>
+<string name="autofill_cc_discover">"Khám phá"</string>
+<string name="autofill_cc_jcb">"JCB"</string>
+<string name="autofill_cc_mastercard">"Mastercard"</string>
+<string name="autofill_cc_mir">"Mir"</string>
+<string name="autofill_cc_union_pay">"China UnionPay"</string>
+<string name="autofill_cc_visa">"Visa"</string>
+<string name="autofill_address_summary_separator">", "</string>
+<string name="autofill_scan_credit_card">"Quét thẻ mới"</string>
+<string name="autofill_enable_profiles_toggle_sublabel">"Bao gồm các thông tin như số điện thoại, địa chỉ email và địa chỉ giao hàng"</string>
+<string name="autofill_enable_credit_cards_toggle_sublabel">"Điền vào biểu mẫu thanh toán bằng phương thức thanh toán đã lưu"</string>
+<string name="autofill_addresses_settings_title">"Địa chỉ và các lựa chọn khác"</string>
+<string name="autofill_payment_methods">"Phương thức thanh toán"</string>
+<string name="autofill_enable_profiles_toggle_label">"Lưu và điền địa chỉ"</string>
+<string name="autofill_enable_credit_cards_toggle_label">"Lưu và điền phương thức thanh toán"</string>
+<string name="enable_credit_card_fido_auth_label">"Phương thức khóa màn hình"</string>
+<string name="enable_credit_card_fido_auth_sublabel">"Dùng phương thức khóa màn hình để xác nhận các thẻ nhanh hơn"</string>
+<string name="autofill_update_address_prompt_new_values_section_label">"Mới"</string>
+<string name="autofill_update_address_prompt_old_values_section_label">"Cũ"</string>
+<string name="autofill_save_address_prompt_edit_button_tooltip">"Chỉnh sửa địa chỉ"</string>
+<string name="autofill_edit_address_dialog_title">"Chỉnh sửa địa chỉ"</string>
+<string name="http_post_warning_title">"Xác nhận việc Gửi lại Biểu mẫu"</string>
+<string name="http_post_warning">"Trang mà bạn đang tìm sử dụng thông tin bạn đã nhập vào. Việc quay lại trang đó có thể lặp lại bất kỳ tác vụ nào bạn đã thực hiện. Bạn có muốn tiếp tục không?"</string>
+<string name="http_post_warning_resend">"Tiếp tục"</string>
+<string name="login_dialog_title">"Đăng nhập"</string>
+<string name="login_dialog_ok_button_label">"Đăng nhập"</string>
+<string name="login_dialog_username_field">"Tên người dùng"</string>
+<string name="login_dialog_password_field">"Mật khẩu"</string>
+<string name="sad_tab_title">"Ôi, hỏng! "</string>
+<string name="sad_tab_message">"Đã xảy ra lỗi khi hiển thị trang web này."</string>
+<string name="sad_tab_reload_label">"Tải lại"</string>
+<string name="sad_tab_send_feedback_label">"Gửi ý kiến phản hồi"</string>
+<string name="sad_tab_reload_title">"Không thể mở trang này"</string>
+<string name="sad_tab_reload_try">"Thử các mẹo sau:"</string>
+<string name="sad_tab_reload_incognito">"Mở trang trong thẻ Ẩn danh mới"</string>
+<string name="sad_tab_reload_restart_browser">"Khởi động lại Chromium"</string>
+<string name="sad_tab_reload_restart_device">"Khởi động lại thiết bị của bạn"</string>
+<string name="sad_tab_reload_learn_more">"Tìm hiểu thêm"</string>
+<string name="new_tab_otr_title">"Bạn đã chuyển sang chế độ Ẩn danh"</string>
+<string name="new_tab_otr_subtitle">"Giờ đây, bạn có thể duyệt web riêng tư và người khác sử dụng thiết bị này sẽ không thấy hoạt động của bạn. Tuy nhiên, tài nguyên đã tải xuống và dấu trang sẽ được lưu."</string>
+<string name="new_tab_otr_subtitle_with_reading_list">"Giờ đây, bạn có thể duyệt web ở chế độ riêng tư. Những người khác dùng thiết bị này sẽ không nhìn thấy hoạt động của bạn. Tuy nhiên, hệ thống sẽ lưu các tệp đã tải xuống, dấu trang và các mục có trong danh sách đọc."</string>
+<string name="new_tab_otr_not_saved">"Chromium &lt;em&gt;sẽ không lưu&lt;/em&gt; những thông tin sau:
+        &lt;ul&gt;
+          &lt;li&gt;Nhật ký duyệt web của bạn
+          &lt;li&gt;Cookie và dữ liệu trang web
+          &lt;li&gt;Thông tin đã nhập vào biểu mẫu
+        &lt;/ul&gt;"</string>
+<string name="new_tab_otr_visible">"Hoạt động của bạn &lt;em&gt;có thể vẫn hiển thị&lt;/em&gt; với:
+        &lt;ul&gt;
+          &lt;li&gt;Trang web bạn truy cập
+          &lt;li&gt;Chủ lao động hoặc trường học của bạn
+          &lt;li&gt;Nhà cung cấp dịch vụ Internet của bạn
+        &lt;/ul&gt;"</string>
+<string name="new_tab_otr_cookie_controls_controlled_tooltip_text">"Bạn có thể kiểm soát tùy chọn cài đặt này trong phần Cài đặt cookie."</string>
+<string name="new_tab_otr_third_party_cookie">"Chặn cookie của bên thứ ba"</string>
+<string name="new_tab_otr_third_party_cookie_sublabel">"Khi tùy chọn này bật, các trang web không thể dùng cookie theo dõi bạn trên web. Do đó, các tính năng trên một số trang web có thể hoạt động không đúng cách."</string>
+<string name="revamped_incognito_ntp_title">"Chế độ ẩn danh trên Chromium"</string>
+<string name="revamped_incognito_ntp_does_header">"Những điều Chế độ ẩn danh sẽ làm"</string>
+<string name="revamped_incognito_ntp_does_description">"Khi bạn đóng tất cả các thẻ ẩn danh trên Chromium, chúng tôi sẽ xoá khỏi thiết bị những hoạt động sau đây của bạn trên những thẻ đó:
+          &lt;ul&gt;
+            &lt;li&gt;Hoạt động duyệt web&lt;/li&gt;
+            &lt;li&gt;Nhật ký tìm kiếm&lt;/li&gt;
+            &lt;li&gt;Thông tin đã nhập vào biểu mẫu&lt;/li&gt;
+          &lt;/ul&gt;"</string>
+<string name="revamped_incognito_ntp_does_not_header">"Những điều Chế độ ẩn danh không làm"</string>
+<string name="revamped_incognito_ntp_does_not_description">"Chế độ ẩn danh không ẩn các hoạt động sau đây của bạn trên mạng:
+        &lt;ul&gt;
+          &lt;li&gt;Trang web và dịch vụ bạn sử dụng có thể xem lượt truy cập&lt;/li&gt;
+          &lt;li&gt;Doanh nghiệp hoặc trường học có thể theo dõi hoạt động duyệt web&lt;/li&gt;
+          &lt;li&gt;Nhà cung cấp dịch vụ Internet có thể giám sát lưu lượng truy cập web&lt;/li&gt;
+        &lt;/ul&gt;"</string>
+<string name="revamped_incognito_ntp_learn_more">"&lt;a&gt;Tìm hiểu thêm về Chế độ ẩn danh trên Chromium&lt;/a&gt;"</string>
+<string name="revamped_incognito_ntp_otr_third_party_cookie">"Chặn cookie của bên thứ ba ở Chế độ ẩn danh"</string>
+<string name="revamped_incognito_ntp_otr_third_party_cookie_sublabel">"Các trang web không thể dùng cookie theo dõi bạn trên web. Do đó, tính năng trên một số trang web có thể hoạt động không đúng cách."</string>
+<string name="ntp_article_suggestions_section_header">"Tin bài dành cho bạn"</string>
+<string name="ntp_article_suggestions_section_empty">"Bài viết đề xuất cho bạn sẽ xuất hiện ở đây"</string>
+<string name="page_info_permission_ads_subtitle">"Trang web hiển thị quảng cáo xâm nhập hoặc quảng cáo gây hiểu nhầm"</string>
+<string name="payments_method_of_payment_label">"Phương thức thanh toán"</string>
+<string name="payments_contact_details_label">"Thông tin liên hệ"</string>
+<string name="payments_add_contact_details_label">"Thêm thông tin liên hệ"</string>
+<string name="payments_edit_contact_details_label">"Chỉnh sửa thông tin liên hệ"</string>
+<string name="payments_add_billing_address">"Thêm địa chỉ thanh toán"</string>
+<string name="payments_add_name_on_card">"Thêm tên trên thẻ"</string>
+<string name="payments_add_valid_card_number">"Thêm số thẻ hợp lệ"</string>
+<string name="payments_add_more_information">"Thêm thông tin khác"</string>
+<string name="payments_edit_card">"Chỉnh sửa thẻ"</string>
+<string name="payments_add_phone_number">"Thêm số đ.thoại
+"</string>
+<string name="payments_add_recipient">"Thêm tên"</string>
+<string name="payments_add_valid_address">"Thêm địa chỉ hợp lệ"</string>
+<string name="payments_add_email">"Thêm email"</string>
+<string name="payments_add_name">"Thêm tên"</string>
+<string name="payments_order_summary_label">"Tóm tắt đơn đặt hàng"</string>
+<string name="payment_request_payment_method_section_name">"Thanh toán"</string>
+<string name="payments_shipping_summary_label">"Địa chỉ gửi hàng"</string>
+<string name="payments_shipping_address_label">"Ðịa chỉ giao hàng"</string>
+<string name="payments_shipping_option_label">"Phương thức giao hàng"</string>
+<string name="payments_delivery_summary_label">"Giao hàng"</string>
+<string name="payments_delivery_address_label">"Địa chỉ giao hàng"</string>
+<string name="payments_delivery_option_label">"Phương thức phân phối"</string>
+<string name="payments_pickup_summary_label">"Nhận hàng"</string>
+<string name="payments_pickup_address_label">"Địa chỉ nhận hàng"</string>
+<string name="payments_pickup_option_label">"Phương thức nhận hàng"</string>
+<string name="payments_edit_button">"Chỉnh sửa"</string>
+<string name="payments_pay_button">"Thanh toán"</string>
+<string name="payments_continue_button">"Tiếp tục"</string>
+<string name="payments_add_contact">"Thêm thông tin liên hệ"</string>
+<string name="payments_add_card">"Thêm thẻ"</string>
+<string name="payments_add_address">"Thêm địa chỉ"</string>
+<string name="payments_edit_address">"Chỉnh sửa địa chỉ"</string>
+<string name="payments_name_field_in_contact_details">"Tên"</string>
+<string name="payments_save_card_to_device_checkbox">"Lưu thẻ này vào thiết bị này"</string>
+<string name="payments_accepted_cards_label">"Thẻ được chấp nhận"</string>
+<string name="payments_credit_card_expiration_date_abbr">"Ngày hết hạn %1$s/%2$s"</string>
+<string name="payments_loading_message">"Đang tải"</string>
+<string name="payments_checking_option">"Đang kiểm tra"</string>
+<string name="payments_updated_label">"Đã cập nhật"</string>
+<string name="payments_error_message">"Đã xảy ra lỗi khi xử lý đơn đặt hàng của bạn. Vui lòng thử lại."</string>
+<string name="payments_card_and_address_settings">"Bạn có thể quản lý thẻ và địa chỉ trong BEGIN_LINKCài đặtEND_LINK."</string>
+<string name="payments_card_and_address_settings_signed_in">"Thẻ và địa chỉ từ Chrome và Tài khoản Google của bạn (%1$s). Bạn có thể quản lý thẻ và địa chỉ trong BEGIN_LINKCài đặtEND_LINK."</string>
+<string name="payments_card_and_address_settings_signed_out">"Thẻ và địa chỉ từ Chrome. Bạn có thể quản lý thẻ và địa chỉ trong BEGIN_LINKCài đặtEND_LINK."</string>
+<string name="settings_can_make_payment_toggle_label">"Cho phép các trang web kiểm tra xem bạn đã lưu phương thức thanh toán hay chưa"</string>
+<string name="payments_required_field_message">"Trường * là bắt buộc"</string>
+<string name="payments_phone_invalid_validation_message">"Nhập số điện thoại hợp lệ"</string>
+<string name="payments_email_invalid_validation_message">"Nhập địa chỉ email hợp lệ"</string>
+<string name="payments_card_number_invalid_validation_message">"Nhập số thẻ hợp lệ"</string>
+<string name="payments_card_expiration_invalid_validation_message">"Nhập ngày hết hạn hợp lệ"</string>
+<string name="payments_invalid_address">"Nhập địa chỉ hợp lệ"</string>
+<string name="payments_billing_address_required">"Yêu cầu địa chỉ thanh toán"</string>
+<string name="payments_name_on_card_required">"Yêu cầu tên chủ thẻ"</string>
+<string name="payments_more_information_required">"Yêu cầu thêm thông tin"</string>
+<string name="payments_phone_number_required">"Phải có số điện thoại"</string>
+<string name="payments_recipient_required">"Cần có tên"</string>
+<string name="payments_email_required">"Cần có email"</string>
+<string name="payments_name_required">"Cần có tên"</string>
+<string name="pref_edit_dialog_field_required_validation_message">"Trường bắt buộc"</string>
+<string name="payments_select_shipping_address_for_shipping_methods">"Để xem các yêu cầu và phương thức giao hàng, hãy chọn một địa chỉ"</string>
+<string name="payments_unsupported_shipping_address">"Không thể giao hàng đến địa chỉ này. Chọn một địa chỉ khác."</string>
+<string name="payments_select_delivery_address_for_delivery_methods">"Để xem các yêu cầu và phương thức phân phối, hãy chọn một địa chỉ"</string>
+<string name="payments_unsupported_delivery_address">"Không thể phân phối đến địa chỉ này. Chọn một địa chỉ khác."</string>
+<string name="payments_select_pickup_address_for_pickup_methods">"Để xem các yêu cầu và phương thức nhận hàng, hãy chọn một địa chỉ"</string>
+<string name="payments_unsupported_pickup_address">"Không thể nhận hàng từ địa chỉ này. Chọn một địa chỉ khác."</string>
+<string name="payments_android_app_error">"Không thể mở ứng dụng thanh toán"</string>
+<string name="external_payment_app_leave_incognito_warning">"Đang thoát khỏi chế độ Ẩn danh để thanh toán qua một ứng dụng bên ngoài. Bạn muốn tiếp tục?"</string>
+<string name="payment_handler_sheet_description">"Trang tính trình xử lý thanh toán"</string>
+<string name="payment_handler_sheet_opened_half">"Trang tính trình xử lý thanh toán đang mở trên nửa màn hình"</string>
+<string name="payment_handler_sheet_opened_full">"Trang tính trình xử lý thanh toán đang mở"</string>
+<string name="payment_handler_sheet_closed">"Trang tính trình xử lý thanh toán đang đóng"</string>
+<string name="secure_payment_confirmation_verify_purchase">"Xác minh giao dịch mua của bạn"</string>
+<string name="secure_payment_confirmation_store_label">"Cửa hàng"</string>
+<string name="secure_payment_confirmation_total_label">"Tổng cộng"</string>
+<string name="no_matching_credential_description">"%1$s có thể cần thực hiện các bước bổ sung để xác minh khoản thanh toán của bạn"</string>
+<string name="secure_payment_confirmation_authentication_sheet_description">"Bảng xác thực thông tin thanh toán an toàn"</string>
+<string name="secure_payment_confirmation_authentication_sheet_opened">"Đã mở bảng xác thực thông tin thanh toán an toàn"</string>
+<string name="secure_payment_confirmation_authentication_sheet_closed">"Đã đóng bảng xác thực thông tin thanh toán an toàn"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_description">"Thông tin xác thực thanh toán an toàn không khớp với bảng thông tin xác thực"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_opened">"Đã mở thông tin xác thực thanh toán an toàn không khớp với bảng thông tin xác thực"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_closed">"Đã đóng thông tin xác thực thanh toán an toàn không khớp với bảng thông tin xác thực"</string>
+<string name="bluetooth_scanning_prompt_no_devices_found_prompt">"Không tìm thấy thiết bị lân cận."</string>
+<string name="bluetooth_scanning_prompt_allow_button_text">"Cho phép"</string>
+<string name="bluetooth_scanning_prompt_block_button_text">"Chặn"</string>
+<string name="blocked_ads_prompt_title">"Đã chặn quảng cáo"</string>
+<string name="blocked_ads_dialog_title">"Đã chặn quảng cáo"</string>
+<string name="blocked_ads_dialog_message">"Trang web này hiện quảng cáo xâm nhập hoặc quảng cáo gây hiểu nhầm. ^1"</string>
+<string name="blocked_ads_dialog_always_allow">"Cho phép đối với trang web này"</string>
+<string name="blocked_ads_dialog_learn_more">"Tìm hiểu thêm"</string>
+<string name="sync_enter_passphrase_body">"Dữ liệu của bạn đã được mã hóa bằng cụm mật khẩu đồng bộ hóa. Nhập cụm mật khẩu đó để bắt đầu đồng bộ hóa."</string>
+<string name="translate_infobar_error">"Rất tiếc. Không thể dịch trang này."</string>
+<string name="translate_button">"Dịch"</string>
+<string name="translate_never_translate_site">"Không bao giờ dịch trang web này"</string>
+<string name="translate_dont_offer_site">"Không đề xuất dịch trang web này"</string>
+<string name="translate_option_always_translate">"Luôn dịch các trang viết bằng %1$s"</string>
+<string name="translate_option_never_translate">"Không bao giờ dịch các trang viết bằng %1$s"</string>
+<string name="translate_dont_offer_lang">"Không đề xuất dịch các trang xuất hiện ở %1$s"</string>
+<string name="translate_option_more_language">"Ngôn ngữ khác"</string>
+<string name="translate_option_not_source_language">"Trang này không được viết bằng %1$s?"</string>
+<string name="translate_snackbar_always_translate">"Kể từ bây giờ trở đi, các trang viết bằng %1$s sẽ được dịch sang %2$s"</string>
+<string name="translate_snackbar_language_never">"Các trang viết bằng %1$s sẽ không được dịch"</string>
+<string name="translate_snackbar_site_never">"Trang web này sẽ không được dịch"</string>
+<string name="translate_snackbar_cancel">"Hủy"</string>
+<string name="management_browser_reporting">"Trình duyệt"</string>
+<string name="management_browser_reporting_explanation">"Quản trị viên của bạn có thể xem:"</string>
+<string name="management_extension_report_username">"Tên người dùng Chrome và tên người dùng thiết bị của bạn"</string>
+<string name="management_extension_report_version">"Thông tin phiên bản về thiết bị và trình duyệt của bạn"</string>
+<string name="history_clusters_journeys_tab_label">"Hành trình"</string>
+<string name="history_clusters_search_your_journeys">"Tìm kiếm trong Hành trình"</string>
+<string name="clear">"Xóa"</string>
+<string name="show_content">"Hiển thị"</string>
+<string name="hide_content">"Ẩn"</string>
+<string name="choose">"Chọn"</string>
+</resources>

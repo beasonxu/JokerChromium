@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="color_picker_button_more">"Möré - one"</string>
+<string name="color_picker_hue">"Ĥûé - one"</string>
+<string name="color_picker_saturation">"Šåţûråţîöñ - one"</string>
+<string name="color_picker_value">"Våļûé - one"</string>
+<string name="color_picker_button_set">"Šéţ - one"</string>
+<string name="color_picker_button_cancel">"Çåñçéļ - one"</string>
+<string name="color_picker_dialog_title">"Šéļéçţ çöļör - one two"</string>
+<string name="color_picker_button_red">"®éð - one"</string>
+<string name="color_picker_button_cyan">"Çýåñ - one"</string>
+<string name="color_picker_button_blue">"Bļûé - one"</string>
+<string name="color_picker_button_green">"Ĝrééñ - one"</string>
+<string name="color_picker_button_magenta">"Måĝéñţå - one"</string>
+<string name="color_picker_button_yellow">"Ýéļļöŵ - one"</string>
+<string name="color_picker_button_black">"Bļåçķ - one"</string>
+<string name="color_picker_button_white">"Ŵĥîţé - one"</string>
+</resources>

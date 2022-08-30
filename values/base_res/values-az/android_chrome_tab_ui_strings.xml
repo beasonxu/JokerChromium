@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="iph_tab_groups_quickly_compare_pages_text">"Qruplaşdırmaqla səhifələri asanlıqla müqayisə edin. Başlamaq üçün linkə toxunub saxlayın."</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_text">"Başqa taba baxmaq üçün klikləyin"</string>
+<string name="iph_tab_groups_your_tabs_together_text">"Tablar burada qruplaşdırılır"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_accessibility_text">"Ekranın aşağısındakı tab qrupunda tablar arasında keçid edin"</string>
+<string name="undo_bar_group_tabs_message">"%1$s tab qruplaşdırıldı"</string>
+<plurals name="bottom_tab_grid_title_placeholder">
+  <item quantity="one">"%1$d tab"</item>
+  <item quantity="other">"%1$d tab"</item>
+</plurals>
+<string name="bottom_tab_grid_new_tab">"Qrupa yeni tab əlavə edin"</string>
+<string name="accessibility_bottom_tab_grid_close_tab_sheet">"Tam ekran cədvəlini gizlədin"</string>
+<string name="accessibility_bottom_tab_strip_expand_tab_sheet">"Qrup tabını tam ekran cədvəlində göstərin"</string>
+<string name="accessibility_bottom_tab_strip_close_strip">"Tab zolağını bağlayın"</string>
+<string name="tabswitcher_create_group">"Qrup yaradın"</string>
+<string name="accessibility_tab_switcher">"Tab Keçiricisi"</string>
+<string name="accessibility_close_tab_group_button">"%1$s tab olan tab qrupunu bağlayın"</string>
+<string name="accessibility_close_tab_group_button_with_group_name">"%2$s tab olan %1$s qrupunu bağlayın"</string>
+<string name="tab_selection_editor_group">"Qrup"</string>
+<string name="tab_selection_editor_toolbar_select_tabs">"Tablar seçin"</string>
+<plurals name="accessibility_tab_selection_editor_group_button">
+  <item quantity="one">"%1$d seçilmiş tabı qruplaşdırın"</item>
+  <item quantity="other">"%1$d seçilmiş tabı qruplaşdırın"</item>
+</plurals>
+<string name="accessibility_tab_selection_editor_back_button">"Çoxsaylı seçim rejimini gizlədin"</string>
+<string name="accessibility_tab_selection_editor">"Çoxsaylı seçim rejimi"</string>
+<string name="tab_grid_dialog_remove_from_group">"Qrupdan çıxarın"</string>
+<string name="tab_grid_dialog_toolbar_remove_from_group">"Tabları qrupdan silin"</string>
+<string name="tab_grid_dialog_selection_mode_remove">"Silin"</string>
+<string name="tab_grid_dialog_toolbar_share_group">"Qrupu paylaşın"</string>
+<string name="tab_grid_dialog_toolbar_edit_group_name">"Qrup adına düzəliş edin"</string>
+<string name="accessibility_expand_tab_group">"%1$s tab olan tab qrupunu genişləndirin."</string>
+<string name="accessibility_expand_tab_group_with_group_name">"%1$s tab qrupunu %2$s tab ilə genişləndirin."</string>
+<plurals name="accessibility_tab_selection_dialog_remove_button">
+  <item quantity="one">"%1$d seçilmiş tabı qrupdan silin."</item>
+  <item quantity="other">"%1$d seçilmiş tabı qrupdan silin."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button">
+  <item quantity="one">"%1$d tabını yığcamlaşdırın."</item>
+  <item quantity="other">"%1$d tab olan tab qrupunu yığcamlaşdırın."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button_with_group_name">
+  <item quantity="one">"%1$d tabını yığcamlaşdırın."</item>
+  <item quantity="other">"%2$d tab olan %1$s tab qrupunu yığcamlaşdırın."</item>
+</plurals>
+<string name="accessibility_tab_grid_dialog">"Tab qrupu genişləndirildi"</string>
+<string name="iph_drag_and_drop_introduction">"Tabları qruplaşdırmaq üçün sürüşdürün"</string>
+<string name="iph_drag_and_drop_show_me">"Mənə göstərin"</string>
+<string name="iph_drag_and_drop_title">"Sistemləşdirin"</string>
+<string name="iph_drag_and_drop_content">"Panelləri qruplaşdırmaq üçün panelə toxunub saxlayın. Daha sonra digər panelin üzərinə çəkin."</string>
+<string name="tab_switcher_carousel_title">"Axtarmağa davam edin"</string>
+<string name="tab_switcher_carousel_view_all">"Hamısına baxın"</string>
+<string name="tab_suggestion_review_button">"Nəzərdən keçirin"</string>
+<string name="tab_suggestion_close_tab_action_button">"Qapat"</string>
+<string name="tab_suggestion_close_stale_message">"%1$s tab son zamanlarda istifadə edilməyib. Onlar bağlansın?"</string>
+<string name="tab_suggestion_group_tabs_message">"%1$s tab əlaqəli görünür. Onlar qruplaşdırılsın?"</string>
+<string name="accessibility_tab_suggestion_review_button">"Təklifləri nəzərdən keçirin."</string>
+<string name="accessibility_tab_suggestion_close_stale_message">"Təklif: %1$s tabel bu yaxınlarda istifadə edilməyib. Bağlansınlar?"</string>
+<string name="accessibility_tab_suggestion_group_tabs_message">"Təklif: %1$s tab əlaqəli görünür. Onlar qruplaşdırılsın?"</string>
+<string name="accessibility_tab_suggestion_dismiss_button">"Təkliflərdən imtina edin."</string>
+<plurals name="accessibility_tab_suggestion_close_tab_action_button">
+  <item quantity="one">"Seçilmiş %1$d tabeli bağlayın"</item>
+  <item quantity="other">"Seçilmiş %1$d tabeli bağlayın"</item>
+</plurals>
+<string name="accessibility_tab_movement_left">"Tabı sola daşıyın"</string>
+<string name="accessibility_tab_movement_right">"Tabı sağa daşıyın"</string>
+<string name="accessibility_tab_movement_up">"Tabı yuxarıya daşıyın"</string>
+<string name="accessibility_tab_movement_down">"Tabı aşağıya daşıyın"</string>
+<string name="undo_tab_strip_closure_message">"Tab zolağı bağlıdır"</string>
+<string name="tab_strip_info_bar_question">"Tab zolağı bir daha göstərilməsin?"</string>
+<string name="tab_strip_info_bar_no_reshow">"Göstərilməsin"</string>
+<string name="tab_strip_info_bar_reshow">"Sonra göstərin"</string>
+<string name="price_drop_spotted_title">"Qiymət endirimi aşkarlandı"</string>
+<string name="price_drop_spotted_content">"Açıq tablarda hansı əşyanın qiymətinin daha aşağı olduğuna baxın"</string>
+<string name="price_drop_spotted_show_me">"Mənə göstərin"</string>
+<string name="price_drop_spotted_lower_price">"Aşağı qiymət"</string>
+<string name="accessibility_tab_price_card">"Bu element bu yaxınlarda %1$s qiymətindən %2$s qiymətinə endirilib"</string>
+<string name="price_drop_alerts_card_title">"Qiymət endirimləri üçün xəbərdarlıq alınsın?"</string>
+<string name="price_drop_alerts_card_get_notified_content">"Qiymət endirildikdə açıq tabda bildiriş alacaqsınız"</string>
+<string name="price_drop_alerts_card_get_notified">"Bildiriş alın"</string>
+<string name="price_drop_alerts_card_go_to_settings_content">"Qiymət endirildikdə açıq tabda bildiriş almaq üçün Ayarlarda bildirişləri aktiv edin."</string>
+<string name="price_drop_alerts_card_go_to_settings">"Ayarlara keçin"</string>
+<string name="price_tracking_settings">"Qiymət izləmə ayarları"</string>
+<string name="track_prices_on_tabs">"Tablarda qiymətləri izləyin"</string>
+<string name="track_prices_on_tabs_description">"Tablarda qiymət endirimləri göstərilsin"</string>
+<string name="price_drop_alerts">"Qiymət endirimi siqnalları"</string>
+<string name="price_drop_alerts_description">"Qiymət endirildikdə bildiriş alın"</string>
+<string name="price_drop_notification_content_title">"%2$s üçün %1$s endirim"</string>
+<string name="price_drop_notification_content_text">"İndi %2$s saytında %1$s"</string>
+<string name="price_drop_notification_action_visit_site">"Sayta daxil olun"</string>
+<string name="price_drop_notification_action_turn_off_alert">"Məhsulu izləməyi dayandırın"</string>
+<string name="merchant_viewer_message_title">"Mağaza məlumatlarına baxılsın?"</string>
+<string name="merchant_viewer_message_title_see_reviews">"Mağaza rəyləri göstərilsin?"</string>
+<string name="merchant_viewer_message_action">"Görünüş"</string>
+<string name="merchant_viewer_message_description_rating">"%1$s/%2$s reytinq"</string>
+<plurals name="merchant_viewer_message_description_reviews">
+  <item quantity="one">"(%1$s rəy)"</item>
+  <item quantity="other">"(%1$s rəy)"</item>
+</plurals>
+<plurals name="merchant_viewer_message_description_reviews_from_google">
+  <item quantity="one">"Google\'dan %1$s rəy"</item>
+  <item quantity="other">"Google\'dan %1$s rəy"</item>
+</plurals>
+<string name="merchant_viewer_message_rating_numerical">"%1$.1f/%2$d"</string>
+<string name="merchant_viewer_message_rating_word">"reytinq"</string>
+<plurals name="accessibility_merchant_viewer_message_description">
+  <item quantity="one">" %1$s/%2$s reytinq, %3$d rəy"</item>
+  <item quantity="other">"%1$s/%2$s reytinq, %3$d rəy"</item>
+</plurals>
+<string name="accessibility_merchant_viewer_message_announcement">"Mağaza məlumatlarına baxın, seçim ekranın yuxarı hissəsində əlçatandır"</string>
+<string name="merchant_viewer_preview_sheet_title">"Google | Bu mağaza haqqında"</string>
+<string name="merchant_viewer_omnibox_icon_iph">"Mağaza məlumatlarına baxın"</string>
+<string name="page_info_store_info_title">"Mağaza məlumatları"</string>
+<string name="page_info_store_info_description_with_no_review">"(mağaza reytinqi)"</string>
+<string name="page_info_store_info_description_with_no_rating">"Qaytarma siyasətinə və digər məlumatlara baxın"</string>
+<string name="merchant_viewer_preview_sheet_description">"Bu mağaza haqqında məlumatlar"</string>
+<string name="merchant_viewer_preview_sheet_opened_half">"Bu mağaza haqqında məlumatlar yarım hündürlükdə açılıb"</string>
+<string name="merchant_viewer_preview_sheet_opened_full">"Bu mağaza haqqında məlumatlar tam hündürlükdə açılıb"</string>
+<string name="merchant_viewer_preview_sheet_closed">"Bu mağaza haqqında məlumatlar bağlanıb"</string>
+<string name="close_all_tabs_dialog_title">"Bütün tablar bağlansın?"</string>
+<string name="close_all_tabs_dialog_message">"Qapalı tablarınızı Chrome əsas menyusunda Son tablarda tapa bilərsiniz"</string>
+<string name="close_all_tabs_dialog_title_incognito">"Bütün Anonim tablar bağlansın?"</string>
+<string name="close_all_tabs_dialog_message_incognito">"Bu Anonim tablardakı fəaliyyətiniz bu cihazdan silinəcək"</string>
+</resources>

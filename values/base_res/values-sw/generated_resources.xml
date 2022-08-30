@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Sheria na Masharti ya Chrome yatabadilika tarehe 31 Machi"</string>
+<string name="tos_notification_body_text">"Tafadhali pitia Sheria na Masharti mapya"</string>
+<string name="tos_notification_ack_button_text">"Nimeelewa"</string>
+<string name="tos_notification_review_button_text">"Maoni"</string>
+<string name="webapp_update_dialog_title_name">"Kagua mabadiliko ya jina"</string>
+<string name="webapp_update_dialog_title_icon">"Kagua mabadiliko ya aikoni"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"Kagua mabadiliko ya jina na aikoni"</string>
+<string name="webapp_update_explanation">"Iwapo programu hii ya wavuti inajaribu kukuhadaa ili ufikirie kwamba ni programu tofauti, iondoe."</string>
+<string name="webapp_update_current_icon">"Aikoni ya sasa"</string>
+<string name="webapp_update_new_icon">"Aikoni mpya"</string>
+<string name="webapp_update_negative_button">"Ondoa programu"</string>
+<string name="search_or_type_web_address">"Tafuta au andika anwani ya wavuti"</string>
+<string name="password_manager_username_label">"Jina la mtumiaji"</string>
+<string name="password_manager_password_label">"Nenosiri"</string>
+<string name="password_manager_update_button">"Sasisha"</string>
+<string name="confirm_username_dialog_title">"Thibitisha jina lako la mtumiaji"</string>
+<string name="options_homepage_title">"Ukurasa wa Mwanzo"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"Thibitisha kwa kutumia simu hii"</string>
+<string name="cablev2_get_assertion_notification_title">"Thibitisha utambulisho wako"</string>
+</resources>

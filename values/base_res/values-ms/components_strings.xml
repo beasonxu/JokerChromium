@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="autofill_save_card_prompt_confirm">"Sahkan"</string>
+<string name="autofill_mobile_save_card_to_cloud_confirmation_dialog_explanation">"Simpan kad dan maklumat pengebilan ke Google Account anda untuk semak keluar yang selamat dan lebih pantas"</string>
+<string name="autofill_mobile_save_card_to_cloud_confirmation_dialog_explanation_with_account_name">"Simpan kad dan maklumat pengebilan anda pada Google Account anda, ^1, untuk semak keluar yang selamat dan lebih pantas"</string>
+<string name="autofill_fix_flow_prompt_save_card_label">"Simpan kad"</string>
+<string name="autofill_save_card_prompt_cardholder_name_tooltip">"Nama ini daripada Akaun Google anda"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_cvc">"Semak CVC anda dan cuba lagi"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_date">"Semak tarikh tamat tempoh anda dan cuba lagi"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_cvc_and_expiration">"Semak tarikh tamat tempoh serta CVC anda dan cuba lagi"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_month">"Semak bulan tamat tempoh anda dan cuba lagi"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_year">"Semak tahun tamat tempoh anda dan cuba lagi"</string>
+<string name="autofill_card_unmask_prompt_enable_fido_auth_checkbox">"Gunakan kunci skrin untuk mengesahkan kad mulai sekarang"</string>
+<string name="autofill_card_unmask_verification_in_progress">"Mengesahkan kad…"</string>
+<string name="autofill_card_unmask_verification_success">"Kad anda telah disahkan"</string>
+<string name="autofill_expiration_date_separator">"/"</string>
+<string name="autofill_card_unmask_new_card_link">"Kemas kini kad"</string>
+<string name="autofill_wallet_management_link_text">"Edit"</string>
+<string name="autofill_from_google_account_long">"Daripada Google Pay"</string>
+<string name="autofill_virtual_card_enrollment_accept_button_label">"Ya"</string>
+<string name="autofill_virtual_card_enrollment_dialog_title_label">"Jadikannya lebih selamat dengan kad maya?"</string>
+<string name="autofill_virtual_card_number_switch_label">"Kad maya"</string>
+<string name="autofill_offers_reminder_description_text">"Buat bayaran menggunakan %1$s semasa daftar keluar."</string>
+<string name="autofill_offers_reminder_deep_link_text">"Lihat butiran"</string>
+<string name="autofill_payments_otp_verification_dialog_title">"Masukkan Kod Pengesahan"</string>
+<string name="autofill_payments_otp_verification_dialog_cant_find_code_message">"Tidak menemukan kod anda? &lt;link&gt;Dapatkan kod baharu&lt;/link&gt;"</string>
+<string name="autofill_payments_otp_verification_dialog_otp_input_hint">"Masukkan kod %1$s digit"</string>
+<string name="autofill_payments_otp_verification_dialog_positive_button_label">"Sahkan"</string>
+<string name="autofill_payments_otp_verification_dialog_negative_button_label">"Batal"</string>
+<string name="autofill_edit_credit_card">"Edit kad"</string>
+<string name="autofill_create_credit_card">"Tambah kad"</string>
+<string name="autofill_clear_local_copy_button">"Hapuskan salinan"</string>
+<string name="autofill_cc_amex">"American Express"</string>
+<string name="autofill_cc_diners">"Diners Club"</string>
+<string name="autofill_cc_discover">"Temui"</string>
+<string name="autofill_cc_jcb">"JCB"</string>
+<string name="autofill_cc_mastercard">"Mastercard"</string>
+<string name="autofill_cc_mir">"Mir"</string>
+<string name="autofill_cc_union_pay">"China UnionPay"</string>
+<string name="autofill_cc_visa">"Visa"</string>
+<string name="autofill_address_summary_separator">", "</string>
+<string name="autofill_scan_credit_card">"Imbas kad baharu"</string>
+<string name="autofill_enable_profiles_toggle_sublabel">"Merangkumi maklumat seperti nombor telefon, alamat e-mel dan alamat penghantaran"</string>
+<string name="autofill_enable_credit_cards_toggle_sublabel">"Mengisi borang pembayaran dengan kaedah pembayaran yang disimpan"</string>
+<string name="autofill_addresses_settings_title">"Alamat dan pelbagai lagi"</string>
+<string name="autofill_payment_methods">"Kaedah pembayaran"</string>
+<string name="autofill_enable_profiles_toggle_label">"Simpan dan lengkapkan alamat"</string>
+<string name="autofill_enable_credit_cards_toggle_label">"Simpan dan lengkapkan kaedah pembayaran"</string>
+<string name="enable_credit_card_fido_auth_label">"Kunci skrin"</string>
+<string name="enable_credit_card_fido_auth_sublabel">"Gunakan kunci skrin untuk mengesahkan kad dengan lebih cepat"</string>
+<string name="autofill_update_address_prompt_new_values_section_label">"Baharu"</string>
+<string name="autofill_update_address_prompt_old_values_section_label">"Lama"</string>
+<string name="autofill_save_address_prompt_edit_button_tooltip">"Edit alamat"</string>
+<string name="autofill_edit_address_dialog_title">"Edit alamat"</string>
+<string name="http_post_warning_title">"Sahkan Penyerahan Semula Borang"</string>
+<string name="http_post_warning">"Halaman yang anda cari untuk maklumat terpakai yang anda masukkan. Kembali ke halaman tersebut mungkin menyebabkan mana-mana tindakan yang anda ambil akan diulang. Adakah anda mahu teruskan?"</string>
+<string name="http_post_warning_resend">"Teruskan"</string>
+<string name="login_dialog_title">"Log masuk"</string>
+<string name="login_dialog_ok_button_label">"Log masuk"</string>
+<string name="login_dialog_username_field">"Nama pengguna"</string>
+<string name="login_dialog_password_field">"Kata laluan"</string>
+<string name="sad_tab_title">"Oh, Tidak!"</string>
+<string name="sad_tab_message">"Kesilapan berlaku semasa memaparkan halaman web ini."</string>
+<string name="sad_tab_reload_label">"Muat Semula"</string>
+<string name="sad_tab_send_feedback_label">"Hantar Maklum Balas"</string>
+<string name="sad_tab_reload_title">"Tidak dapat membuka halaman ini"</string>
+<string name="sad_tab_reload_try">"Cuba petua berikut:"</string>
+<string name="sad_tab_reload_incognito">"Buka halaman dalam tab Inkognito baharu"</string>
+<string name="sad_tab_reload_restart_browser">"Mulakan semula Chromium"</string>
+<string name="sad_tab_reload_restart_device">"Mulakan semula peranti anda"</string>
+<string name="sad_tab_reload_learn_more">"Ketahui lebih lanjut"</string>
+<string name="new_tab_otr_title">"Anda menggunakan mod Inkognito"</string>
+<string name="new_tab_otr_subtitle">"Kini, anda boleh menyemak imbas secara sulit dan orang lain yang menggunakan peranti ini tidak akan melihat aktiviti anda. Namun begitu, muat turun dan penanda halaman akan disimpan."</string>
+<string name="new_tab_otr_subtitle_with_reading_list">"Kini anda boleh menyemak imbas secara sulit dan orang lain yang menggunakan peranti ini tidak akan dapat melihat aktiviti anda. Namun begitu, muat turun, penanda halaman dan item senarai bacaan akan disimpan."</string>
+<string name="new_tab_otr_not_saved">"Chromium &lt;em&gt;tidak akan menyimpan&lt;/em&gt; maklumat berikut:
+          &lt;ul&gt;
+            &lt;li&gt;Sejarah penyemakan imbas anda
+            &lt;li&gt;Kuki dan data laman
+            &lt;li&gt;Maklumat yang dimasukkan dalam borang
+          &lt;/ul&gt;"</string>
+<string name="new_tab_otr_visible">"Aktiviti anda &lt;em&gt;mungkin masih boleh dilihat&lt;/em&gt; oleh:
+        &lt;ul&gt;
+          &lt;li&gt;Tapak web yang anda lawati
+          &lt;li&gt;Majikan atau institusi pengajian anda
+          &lt;li&gt;Penyedia perkhidmatan Internet anda
+        &lt;/ul&gt;"</string>
+<string name="new_tab_otr_cookie_controls_controlled_tooltip_text">"Tetapan ini dikawal dalam tetapan Kuki."</string>
+<string name="new_tab_otr_third_party_cookie">"Sekat kuki pihak ketiga"</string>
+<string name="new_tab_otr_third_party_cookie_sublabel">"Apabila pilihan ini dihidupkan, tapak tidak dapat menggunakan kuki yang menjejaki anda merentas web. Ciri pada sesetengah tapak mungkin rosak."</string>
+<string name="revamped_incognito_ntp_title">"Inkognito dalam Chromium"</string>
+<string name="revamped_incognito_ntp_does_header">"Perkara yang dilakukan oleh Inkognito"</string>
+<string name="revamped_incognito_ntp_does_description">"Apabila anda menutup semua tab Inkognito Chromium, aktiviti anda dalam tab tersebut dikosongkan daripada peranti ini:
+          &lt;ul&gt;
+            &lt;li&gt;Aktiviti penyemakan imbas&lt;/li&gt;
+            &lt;li&gt;Sejarah carian&lt;/li&gt;
+            &lt;li&gt;Maklumat yang dimasukkan dalam borang&lt;/li&gt;
+          &lt;/ul&gt;"</string>
+<string name="revamped_incognito_ntp_does_not_header">"Perkara yang tidak dilakukan oleh Inkognito"</string>
+<string name="revamped_incognito_ntp_does_not_description">"Inkognito tidak menjadikan anda halimunan dalam talian:
+        &lt;ul&gt;
+          &lt;li&gt;Laman dan perkhidmatan yang mereka gunakan boleh melihat lawatan&lt;/li&gt;
+          &lt;li&gt;Majikan atau institusi pengajian boleh menjejak aktiviti penyemakan imbas&lt;/li&gt;
+          &lt;li&gt;Penyedia perkhidmatan Internet boleh memantau trafik web&lt;/li&gt;
+        &lt;/ul&gt;"</string>
+<string name="revamped_incognito_ntp_learn_more">"&lt;a&gt;Ketahui lebih lanjut tentang Inkognito dalam Chromium&lt;/a&gt;"</string>
+<string name="revamped_incognito_ntp_otr_third_party_cookie">"Sekat kuki pihak ketiga dalam Inkognito"</string>
+<string name="revamped_incognito_ntp_otr_third_party_cookie_sublabel">"Laman tidak dapat menggunakan kuki untuk menjejaki anda merentas web. Ciri pada sesetengah laman mungkin rosak."</string>
+<string name="ntp_article_suggestions_section_header">"Artikel untuk anda"</string>
+<string name="ntp_article_suggestions_section_empty">"Artikel cadangan anda dipaparkan di sini"</string>
+<string name="page_info_permission_ads_subtitle">"Tapak menyiarkan iklan yang mengganggu atau mengelirukan"</string>
+<string name="payments_method_of_payment_label">"Kaedah pembayaran"</string>
+<string name="payments_contact_details_label">"Maklumat hubungan"</string>
+<string name="payments_add_contact_details_label">"Tambahkan maklumat hubungan"</string>
+<string name="payments_edit_contact_details_label">"Edit maklumat hubungan"</string>
+<string name="payments_add_billing_address">"Tambahkan alamat pengebilan"</string>
+<string name="payments_add_name_on_card">"Tambahkan nama pada kad"</string>
+<string name="payments_add_valid_card_number">"Tambahkan nombor kad yang sah"</string>
+<string name="payments_add_more_information">"Tambahkan maklumat lanjut"</string>
+<string name="payments_edit_card">"Edit kad"</string>
+<string name="payments_add_phone_number">"Tambah no. tel.
+"</string>
+<string name="payments_add_recipient">"Tambah nama"</string>
+<string name="payments_add_valid_address">"Tambahkan alamat yang sah"</string>
+<string name="payments_add_email">"Tambah e-mel"</string>
+<string name="payments_add_name">"Tambah nama"</string>
+<string name="payments_order_summary_label">"Ringkasan pesanan"</string>
+<string name="payment_request_payment_method_section_name">"Pembayaran"</string>
+<string name="payments_shipping_summary_label">"Penghantaran"</string>
+<string name="payments_shipping_address_label">"Alamat penghantaran"</string>
+<string name="payments_shipping_option_label">"Kaedah penghantaran"</string>
+<string name="payments_delivery_summary_label">"Penghantaran"</string>
+<string name="payments_delivery_address_label">"Alamat penghantaran"</string>
+<string name="payments_delivery_option_label">"Kaedah penghantaran"</string>
+<string name="payments_pickup_summary_label">"Pengambilan"</string>
+<string name="payments_pickup_address_label">"Alamat pengambilan"</string>
+<string name="payments_pickup_option_label">"Kaedah pengambilan"</string>
+<string name="payments_edit_button">"Edit"</string>
+<string name="payments_pay_button">"Bayar"</string>
+<string name="payments_continue_button">"Teruskan"</string>
+<string name="payments_add_contact">"Tambahkan maklumat hubungan"</string>
+<string name="payments_add_card">"Tambah kad"</string>
+<string name="payments_add_address">"Tambahkan alamat"</string>
+<string name="payments_edit_address">"Edit alamat"</string>
+<string name="payments_name_field_in_contact_details">"Nama"</string>
+<string name="payments_save_card_to_device_checkbox">"Simpan kad ini pada peranti ini"</string>
+<string name="payments_accepted_cards_label">"Kad diterima"</string>
+<string name="payments_credit_card_expiration_date_abbr">"Tamat tempoh pada %1$s/%2$s"</string>
+<string name="payments_loading_message">"Memuatkan"</string>
+<string name="payments_checking_option">"Menyemak"</string>
+<string name="payments_updated_label">"Dikemas kini"</string>
+<string name="payments_error_message">"Ralat berlaku semasa memproses pesanan anda. Sila cuba lagi."</string>
+<string name="payments_card_and_address_settings">"Anda boleh mengurus kad dan alamat dalam BEGIN_LINKTetapanEND_LINK."</string>
+<string name="payments_card_and_address_settings_signed_in">"Kad dan alamat adalah daripada Chrome dan Akaun Google anda (%1$s). Anda boleh mengurus kad dan alamat ini dalam BEGIN_LINKTetapanEND_LINK."</string>
+<string name="payments_card_and_address_settings_signed_out">"Kad dan alamat adalah daripada Chrome. Anda boleh mengurus kad dan alamat ini dalam BEGIN_LINKTetapanEND_LINK."</string>
+<string name="settings_can_make_payment_toggle_label">"Benarkan tapak menyemak sama ada anda mempunyai kaedah pembayaran yang disimpan"</string>
+<string name="payments_required_field_message">"* Medan perlu diisi"</string>
+<string name="payments_phone_invalid_validation_message">"Masukkan nombor telefon yang sah"</string>
+<string name="payments_email_invalid_validation_message">"Masukkan alamat e-mel yang sah"</string>
+<string name="payments_card_number_invalid_validation_message">"Masukkan nombor kad yang sah"</string>
+<string name="payments_card_expiration_invalid_validation_message">"Masukkan tarikh tamat tempoh yang sah"</string>
+<string name="payments_invalid_address">"Masukkan alamat yang sah"</string>
+<string name="payments_billing_address_required">"Alamat pengebilan diperlukan"</string>
+<string name="payments_name_on_card_required">"Nama pemegang kad diperlukan"</string>
+<string name="payments_more_information_required">"Maklumat lanjut diperlukan"</string>
+<string name="payments_phone_number_required">"Nombor telefon diperlukan"</string>
+<string name="payments_recipient_required">"Nama diperlukan"</string>
+<string name="payments_email_required">"E-mel diperlukan"</string>
+<string name="payments_name_required">"Nama diperlukan"</string>
+<string name="pref_edit_dialog_field_required_validation_message">"Medan yang diperlukan"</string>
+<string name="payments_select_shipping_address_for_shipping_methods">"Pilih alamat untuk melihat kaedah dan syarat penghantaran"</string>
+<string name="payments_unsupported_shipping_address">"Tidak dapat menghantar ke alamat ini. Pilih alamat lain."</string>
+<string name="payments_select_delivery_address_for_delivery_methods">"Pilih alamat untuk melihat kaedah dan syarat penghantaran"</string>
+<string name="payments_unsupported_delivery_address">"Tidak dapat menghantar ke alamat ini. Pilih alamat lain."</string>
+<string name="payments_select_pickup_address_for_pickup_methods">"Pilih alamat untuk melihat kaedah dan syarat pengambilan"</string>
+<string name="payments_unsupported_pickup_address">"Tidak boleh mengambil dari alamat ini. Pilih alamat lain."</string>
+<string name="payments_android_app_error">"Tidak dapat membuka apl pembayaran"</string>
+<string name="external_payment_app_leave_incognito_warning">"Meninggalkan mod Inkognito untuk membuat bayaran melalui aplikasi luar. Teruskan?"</string>
+<string name="payment_handler_sheet_description">"Helaian pengendali pembayaran"</string>
+<string name="payment_handler_sheet_opened_half">"Helaian pengendali pembayaran dibuka separuh"</string>
+<string name="payment_handler_sheet_opened_full">"Helaian pengendali pembayaran dibuka"</string>
+<string name="payment_handler_sheet_closed">"Helaian pengendali pembayaran ditutup"</string>
+<string name="secure_payment_confirmation_verify_purchase">"Sahkan pembelian anda"</string>
+<string name="secure_payment_confirmation_store_label">"Kedai"</string>
+<string name="secure_payment_confirmation_total_label">"Jumlah"</string>
+<string name="no_matching_credential_description">"%1$s mungkin perlu mengambil langkah tambahan untuk mengesahkan pembayaran anda"</string>
+<string name="secure_payment_confirmation_authentication_sheet_description">"Helaian pengesahan bukti kelayakan pembayaran selamat"</string>
+<string name="secure_payment_confirmation_authentication_sheet_opened">"Helaian pengesahan bukti kelayakan pembayaran selamat dibuka"</string>
+<string name="secure_payment_confirmation_authentication_sheet_closed">"Helaian pengesahan bukti kelayakan pembayaran selamat ditutup"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_description">"Bukti kelayakan pembayaran selamat tiada helaian bukti kelayakan yang sepadan"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_opened">"Bukti kelayakan pembayaran selamat tiada helaian bukti kelayakan yang sepadan dibuka"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_closed">"Bukti kelayakan pembayaran selamat tiada helaian bukti kelayakan yang sepadan ditutup"</string>
+<string name="bluetooth_scanning_prompt_no_devices_found_prompt">"Tiada peranti berdekatan dijumpai."</string>
+<string name="bluetooth_scanning_prompt_allow_button_text">"Benarkan"</string>
+<string name="bluetooth_scanning_prompt_block_button_text">"Sekat"</string>
+<string name="blocked_ads_prompt_title">"Iklan disekat"</string>
+<string name="blocked_ads_dialog_title">"Iklan disekat"</string>
+<string name="blocked_ads_dialog_message">"Laman ini menyiarkan iklan yang mengganggu atau mengelirukan. ^1"</string>
+<string name="blocked_ads_dialog_always_allow">"Benarkan untuk tapak ini"</string>
+<string name="blocked_ads_dialog_learn_more">"Ketahui lebih lanjut"</string>
+<string name="sync_enter_passphrase_body">"Data anda disulitkan dengan ungkapan laluan segerak anda. Masukkannya untuk memulakan penyegerakan."</string>
+<string name="translate_infobar_error">"Op. Halaman ini tidak dapat diterjemahkan."</string>
+<string name="translate_button">"Terjemah"</string>
+<string name="translate_never_translate_site">"Jangan sekali-kali menterjemahkan tapak ini"</string>
+<string name="translate_dont_offer_site">"Jangan tawarkan untuk menterjemahkan tapak ini"</string>
+<string name="translate_option_always_translate">"Sentiasa terjemahkan halaman dalam %1$s"</string>
+<string name="translate_option_never_translate">"Jangan sekali-kali terjemahkan halaman dalam %1$s"</string>
+<string name="translate_dont_offer_lang">"Jangan tawarkan untuk menterjemahkan halaman dalam %1$s"</string>
+<string name="translate_option_more_language">"Lagi bahasa"</string>
+<string name="translate_option_not_source_language">"Halaman bukan dalam %1$s?"</string>
+<string name="translate_snackbar_always_translate">"Halaman dalam %1$s akan diterjemahkan kepada %2$s bermula dari sekarang"</string>
+<string name="translate_snackbar_language_never">"Halaman dalam %1$s tidak akan diterjemahkan"</string>
+<string name="translate_snackbar_site_never">"Tapak ini tidak akan diterjemah"</string>
+<string name="translate_snackbar_cancel">"Batal"</string>
+<string name="management_browser_reporting">"Penyemak Imbas"</string>
+<string name="management_browser_reporting_explanation">"Pentadbir anda dapat melihat:"</string>
+<string name="management_extension_report_username">"Nama pengguna peranti dan nama pengguna Chrome anda"</string>
+<string name="management_extension_report_version">"Maklumat versi tentang peranti dan penyemak imbas anda"</string>
+<string name="history_clusters_journeys_tab_label">"Perjalanan"</string>
+<string name="history_clusters_search_your_journeys">"Cari Perjalanan anda"</string>
+<string name="clear">"Kosongkan"</string>
+<string name="show_content">"Paparkan"</string>
+<string name="hide_content">"Sembunyikan"</string>
+<string name="choose">"Pilih"</string>
+</resources>

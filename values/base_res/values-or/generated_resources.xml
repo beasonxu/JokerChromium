@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"ମାର୍ଚ୍ଚ 31ରୁ Chromeର ସେବାର ସର୍ତ୍ତାବଳୀ ବଦଳିବାକୁ ଯାଉଛି"</string>
+<string name="tos_notification_body_text">"ଦୟାକରି ନୂଆ ସର୍ତ୍ତାବଳୀର ସମୀକ୍ଷା କରନ୍ତୁ"</string>
+<string name="tos_notification_ack_button_text">"ବୁଝିଗଲି"</string>
+<string name="tos_notification_review_button_text">"ସମୀକ୍ଷା କରନ୍ତୁ"</string>
+<string name="webapp_update_dialog_title_name">"ସମୀକ୍ଷା ନାମରେ ଅପଡେଟ୍"</string>
+<string name="webapp_update_dialog_title_icon">"ସମୀକ୍ଷା ଆଇକନ୍ ଅପଡେଟ୍"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"ନାମ ଓ ଆଇକନ୍ ସମ୍ବନ୍ଧିତ ଅପଡେଟଗୁଡ଼ିକର ସମୀକ୍ଷା କରନ୍ତୁ"</string>
+<string name="webapp_update_explanation">"ଯଦି ଆପଣଙ୍କୁ ଏହା ଏକ ଭିନ୍ନ ଆପ୍ ବୋଲି ଭାବିବା ପାଇଁ ଏହି ୱେବ୍ ଆପ୍ କୌଶଳରେ ଚେଷ୍ଟା କରୁଛି, ତେବେ ଏହାକୁ ଅନଇନଷ୍ଟଲ୍ କରନ୍ତୁ।"</string>
+<string name="webapp_update_current_icon">"ବର୍ତ୍ତମାନର ଆଇକନ୍"</string>
+<string name="webapp_update_new_icon">"ନୂଆ ଆଇକନ୍"</string>
+<string name="webapp_update_negative_button">"ଆପ୍ ଅନଇନଷ୍ଟଲ୍ କରନ୍ତୁ"</string>
+<string name="search_or_type_web_address">"ୱେବ୍‌ ଠିକଣା ସନ୍ଧାନ କିମ୍ବା ଟାଇପ୍‌ କରନ୍ତୁ"</string>
+<string name="password_manager_username_label">"ଉପଯୋଗକର୍ତ୍ତାନାମ"</string>
+<string name="password_manager_password_label">"ପାସ୍‌ୱର୍ଡ"</string>
+<string name="password_manager_update_button">"ଅପ୍‍‍ଡେଟ୍"</string>
+<string name="confirm_username_dialog_title">"ଆପଣଙ୍କ ଉପଯୋଗକର୍ତ୍ତାନାମ ସୁନିଶ୍ଚିତ କରନ୍ତୁ"</string>
+<string name="options_homepage_title">"ମୂଳ ପୃଷ୍ଠା"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"ଏହି ଫୋନ୍ ମାଧ୍ୟମରେ ଯାଞ୍ଚ କରନ୍ତୁ"</string>
+<string name="cablev2_get_assertion_notification_title">"ଆପଣଙ୍କ ପରିଚୟ ଯାଞ୍ଚ କରନ୍ତୁ"</string>
+</resources>

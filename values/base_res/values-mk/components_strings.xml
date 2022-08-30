@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="autofill_save_card_prompt_confirm">"Потврди"</string>
+<string name="autofill_mobile_save_card_to_cloud_confirmation_dialog_explanation">"Зачувајте ги податоците за картичката и наплата на вашата сметка на Google за побезбедно и побрзо плаќање"</string>
+<string name="autofill_mobile_save_card_to_cloud_confirmation_dialog_explanation_with_account_name">"Зачувајте ги податоците за картичката и наплата на вашата сметка на Google ^1 за побезбедно и побрзо плаќање"</string>
+<string name="autofill_fix_flow_prompt_save_card_label">"Зачувај ја картичката"</string>
+<string name="autofill_save_card_prompt_cardholder_name_tooltip">"Ова име е од вашата сметка на Google"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_cvc">"Проверете го КВК и обидете се повторно."</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_date">"Проверете го датумот на истекување и обидете се повторно"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_cvc_and_expiration">"Проверете го датумот на истекување на КВК и обидете се повторно"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_month">"Проверете го месецот на истекување и обидете се повторно"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_year">"Проверете ја годината на истекување и обидете се повторно"</string>
+<string name="autofill_card_unmask_prompt_enable_fido_auth_checkbox">"Отсега користете заклучување екран за потврдување на картичките"</string>
+<string name="autofill_card_unmask_verification_in_progress">"Се потврдува картичката…"</string>
+<string name="autofill_card_unmask_verification_success">"Вашата картичка е потврдена"</string>
+<string name="autofill_expiration_date_separator">"/"</string>
+<string name="autofill_card_unmask_new_card_link">"Ажурирајте ја картичката"</string>
+<string name="autofill_wallet_management_link_text">"Измени"</string>
+<string name="autofill_from_google_account_long">"Од Google Pay"</string>
+<string name="autofill_virtual_card_enrollment_accept_button_label">"Да"</string>
+<string name="autofill_virtual_card_enrollment_dialog_title_label">"Дали сакате поголема безбедност со виртуелна картичка?"</string>
+<string name="autofill_virtual_card_number_switch_label">"Виртуелна картичка"</string>
+<string name="autofill_offers_reminder_description_text">"Платете со %1$s при наплатата."</string>
+<string name="autofill_offers_reminder_deep_link_text">"Прикажи детали"</string>
+<string name="autofill_payments_otp_verification_dialog_title">"Внесете го кодот за потврда"</string>
+<string name="autofill_payments_otp_verification_dialog_cant_find_code_message">"Не можете да го најдете кодот? &lt;link&gt;Преземете нов код&lt;/link&gt;"</string>
+<string name="autofill_payments_otp_verification_dialog_otp_input_hint">"Внесете го %1$s-цифрениот код"</string>
+<string name="autofill_payments_otp_verification_dialog_positive_button_label">"Потврди"</string>
+<string name="autofill_payments_otp_verification_dialog_negative_button_label">"Откажи"</string>
+<string name="autofill_edit_credit_card">"Уредете ја картичката"</string>
+<string name="autofill_create_credit_card">"Додај картичка"</string>
+<string name="autofill_clear_local_copy_button">"Исчисти копија"</string>
+<string name="autofill_cc_amex">"American Express"</string>
+<string name="autofill_cc_diners">"Diners Club"</string>
+<string name="autofill_cc_discover">"Откриј"</string>
+<string name="autofill_cc_jcb">"JCB"</string>
+<string name="autofill_cc_mastercard">"Mastercard"</string>
+<string name="autofill_cc_mir">"Mir"</string>
+<string name="autofill_cc_union_pay">"China UnionPay"</string>
+<string name="autofill_cc_visa">"Visa"</string>
+<string name="autofill_address_summary_separator">", "</string>
+<string name="autofill_scan_credit_card">"Скенирај нова картичка"</string>
+<string name="autofill_enable_profiles_toggle_sublabel">"Вклучува информации како телефонски броеви, адреси на е-пошта и адреси за испорака"</string>
+<string name="autofill_enable_credit_cards_toggle_sublabel">"Ги пополнува формуларите за плаќање со вашите зачувани начини на плаќање"</string>
+<string name="autofill_addresses_settings_title">"Адреси и друго"</string>
+<string name="autofill_payment_methods">"Начини на плаќање"</string>
+<string name="autofill_enable_profiles_toggle_label">"Зачувувај и пополнувај адреси"</string>
+<string name="autofill_enable_credit_cards_toggle_label">"Зачувувај и пополнувај начини на плаќање"</string>
+<string name="enable_credit_card_fido_auth_label">"Заклучување екран"</string>
+<string name="enable_credit_card_fido_auth_sublabel">"Користете заклучување екран за побрзо потврдување на картичките"</string>
+<string name="autofill_update_address_prompt_new_values_section_label">"Ново"</string>
+<string name="autofill_update_address_prompt_old_values_section_label">"Старата"</string>
+<string name="autofill_save_address_prompt_edit_button_tooltip">"Измени адреса"</string>
+<string name="autofill_edit_address_dialog_title">"Измени адреса"</string>
+<string name="http_post_warning_title">"Потврди повторно поднесување на формулар"</string>
+<string name="http_post_warning">"Страницата што ја барате ги искористи информациите што ги внесовте. Враќањето на страницата може да предизвика да се повтори некое дејство. Дали сакате да продолжитe?"</string>
+<string name="http_post_warning_resend">"Продолжи"</string>
+<string name="login_dialog_title">"Најави се"</string>
+<string name="login_dialog_ok_button_label">"Најави се"</string>
+<string name="login_dialog_username_field">"Корисничко име"</string>
+<string name="login_dialog_password_field">"Лозинка"</string>
+<string name="sad_tab_title">"По ѓаволите!"</string>
+<string name="sad_tab_message">"Нешто тргна наопаку при прикажувањето на оваа веб-страница."</string>
+<string name="sad_tab_reload_label">"Повторно вчитај"</string>
+<string name="sad_tab_send_feedback_label">"Испратете повратни информации"</string>
+<string name="sad_tab_reload_title">"Не може да се отвори страницава"</string>
+<string name="sad_tab_reload_try">"Испробајте ги следните совети:"</string>
+<string name="sad_tab_reload_incognito">"Отворете ја страницата во нова инкогнито картичка"</string>
+<string name="sad_tab_reload_restart_browser">"Рестартирајте го Chromium"</string>
+<string name="sad_tab_reload_restart_device">"Рестартирај го уредот"</string>
+<string name="sad_tab_reload_learn_more">"Дознајте повеќе"</string>
+<string name="new_tab_otr_title">"Влеговте во режим „Инкогнито“"</string>
+<string name="new_tab_otr_subtitle">"Сега може да прелистувате приватно, а другите луѓе кои го користат уредов нема да ја видат вашата активност. Сепак, преземањата и обележувачите ќе се зачуваат."</string>
+<string name="new_tab_otr_subtitle_with_reading_list">"Сега може да прелистувате приватно, а другите луѓе кои го користат уредов нема да ја гледаат вашата активност. Меѓутоа, преземањата, обележувачите и ставките на списокот за читање ќе се зачуваат."</string>
+<string name="new_tab_otr_not_saved">"Chromium &lt;em&gt;нема да ги зачувува&lt;/em&gt; следниве податоци:
+        &lt;ul&gt;
+          &lt;li&gt;вашата историја на прелистувањето
+          &lt;li&gt;колачиња и податоци од сајтовите
+          &lt;li&gt;податоци внесени во формулари
+        &lt;/ul&gt;"</string>
+<string name="new_tab_otr_visible">"Вашата активност &lt;em&gt;сѐ уште може да е видлива&lt;/em&gt; за:
+        &lt;ul&gt;
+          &lt;li&gt;веб-сајтовите што ги посетувате
+          &lt;li&gt;работодавачот или училиштето
+          &lt;li&gt;интернет операторот
+        &lt;/ul&gt;"</string>
+<string name="new_tab_otr_cookie_controls_controlled_tooltip_text">"Поставкава се контролира во поставките за колачиња."</string>
+<string name="new_tab_otr_third_party_cookie">"Блокирај колачиња од трети лица"</string>
+<string name="new_tab_otr_third_party_cookie_sublabel">"Кога е вклучено, сајтовите не може да користат колачиња што ве следат на интернет. Функциите на некои сајтови може да не функционираат."</string>
+<string name="revamped_incognito_ntp_title">"„Инкогнито“ во Chromium"</string>
+<string name="revamped_incognito_ntp_does_header">"Што прави „Инкогнито“"</string>
+<string name="revamped_incognito_ntp_does_description">"Кога ќе ги затворите сите картички „Инкогнито“ на Chromium, вашата активност во тие картички се брише од уредов:
+          &lt;ul&gt;
+            &lt;li&gt;активност од прелистувањето&lt;/li&gt;
+            &lt;li&gt;историја на пребарување&lt;/li&gt;
+            &lt;li&gt;податоци внесени во формулари&lt;/li&gt;
+          &lt;/ul&gt;"</string>
+<string name="revamped_incognito_ntp_does_not_header">"Што не прави „Инкогнито“"</string>
+<string name="revamped_incognito_ntp_does_not_description">"Со „Инкогнито“ не станувате невидливи онлајн:
+        &lt;ul&gt;
+          &lt;li&gt;сајтовите и услугите што се користат може да ги видат посетите&lt;/li&gt;
+          &lt;li&gt;работодавачите или училиштата може да ја следат вашата активност од прелистувањето&lt;/li&gt;
+          &lt;li&gt;интернет-операторите може да го следат сообраќајот на интернет&lt;/li&gt;
+        &lt;/ul&gt;"</string>
+<string name="revamped_incognito_ntp_learn_more">"&lt;a&gt;Дознајте повеќе за „Инкогнито“ во Chromium&lt;/a&gt;"</string>
+<string name="revamped_incognito_ntp_otr_third_party_cookie">"Блокирајте колачиња од трети страни во „Инкогнито“"</string>
+<string name="revamped_incognito_ntp_otr_third_party_cookie_sublabel">"Сајтовите не можe да користат колачиња што ве следат на интернет Функциите на некои сајтови можеби нема да работат."</string>
+<string name="ntp_article_suggestions_section_header">"Статии за вас"</string>
+<string name="ntp_article_suggestions_section_empty">"Предложените статии ќе се појавуваат тука"</string>
+<string name="page_info_permission_ads_subtitle">"Сајтот прикажува нападни или лажни реклами"</string>
+<string name="payments_method_of_payment_label">"Начин на плаќање"</string>
+<string name="payments_contact_details_label">"Податоци за контакт"</string>
+<string name="payments_add_contact_details_label">"Додај информации за контакт"</string>
+<string name="payments_edit_contact_details_label">"Уредете ги информациите за контакт"</string>
+<string name="payments_add_billing_address">"Додајте адреса за наплата"</string>
+<string name="payments_add_name_on_card">"Додајте име на картичка"</string>
+<string name="payments_add_valid_card_number">"Додајте валиден број на картичка"</string>
+<string name="payments_add_more_information">"Додајте повеќе информации"</string>
+<string name="payments_edit_card">"Уредете ја картичката"</string>
+<string name="payments_add_phone_number">"Додајте телефонски број"</string>
+<string name="payments_add_recipient">"Додај име"</string>
+<string name="payments_add_valid_address">"Додавање важечка адреса"</string>
+<string name="payments_add_email">"Додајте е-пошта"</string>
+<string name="payments_add_name">"Додај име"</string>
+<string name="payments_order_summary_label">"Краток преглед на нарачка"</string>
+<string name="payment_request_payment_method_section_name">"Плаќање"</string>
+<string name="payments_shipping_summary_label">"Испорака"</string>
+<string name="payments_shipping_address_label">"Адреса на испорака"</string>
+<string name="payments_shipping_option_label">"Метод на испорака"</string>
+<string name="payments_delivery_summary_label">"Испорака"</string>
+<string name="payments_delivery_address_label">"Адреса на испорака"</string>
+<string name="payments_delivery_option_label">"Метод на достава"</string>
+<string name="payments_pickup_summary_label">"Подигнување"</string>
+<string name="payments_pickup_address_label">"Адреса за подигнување"</string>
+<string name="payments_pickup_option_label">"Метод за подигнување"</string>
+<string name="payments_edit_button">"Измени"</string>
+<string name="payments_pay_button">"Плати"</string>
+<string name="payments_continue_button">"Продолжи"</string>
+<string name="payments_add_contact">"Додај информации за контакт"</string>
+<string name="payments_add_card">"Додај картичка"</string>
+<string name="payments_add_address">"Додај адреса"</string>
+<string name="payments_edit_address">"Измени адреса"</string>
+<string name="payments_name_field_in_contact_details">"Име"</string>
+<string name="payments_save_card_to_device_checkbox">"Зачувај ја картичкава на уредов"</string>
+<string name="payments_accepted_cards_label">"Прифатени картички"</string>
+<string name="payments_credit_card_expiration_date_abbr">"Истекува на %1$s/%2$s"</string>
+<string name="payments_loading_message">"Се вчитува"</string>
+<string name="payments_checking_option">"Се проверува"</string>
+<string name="payments_updated_label">"Ажурно"</string>
+<string name="payments_error_message">"Настана грешка при обработката на вашата нарачка. Обидете се повторно."</string>
+<string name="payments_card_and_address_settings">"Може да управувате со картичките и адресите во BEGIN_LINK„Поставки“END_LINK."</string>
+<string name="payments_card_and_address_settings_signed_in">"Картичките и адресите се од Chrome и од вашата сметка на Google (%1$s). Со нив може да управувате во BEGIN_LINKПоставкиEND_LINK."</string>
+<string name="payments_card_and_address_settings_signed_out">"Картичките и адресите се од Chrome. Со нив може да управувате во BEGIN_LINKПоставкиEND_LINK."</string>
+<string name="settings_can_make_payment_toggle_label">"Дозволете сајтовите да проверуваат дали имате зачувани начини на плаќање"</string>
+<string name="payments_required_field_message">"* Полето е задолжително"</string>
+<string name="payments_phone_invalid_validation_message">"Внесете важечки телефонски број"</string>
+<string name="payments_email_invalid_validation_message">"Внесете важечка адреса на е-пошта"</string>
+<string name="payments_card_number_invalid_validation_message">"Внесете важечки број на картичка"</string>
+<string name="payments_card_expiration_invalid_validation_message">"Внесете важечки датум на истекување"</string>
+<string name="payments_invalid_address">"Внесете важечка адреса"</string>
+<string name="payments_billing_address_required">"Адресата за наплата е задолжителна"</string>
+<string name="payments_name_on_card_required">"Името на сопственикот на картичката е задолжително"</string>
+<string name="payments_more_information_required">"Потребни се повеќе информации"</string>
+<string name="payments_phone_number_required">"Потребен е телефонски број"</string>
+<string name="payments_recipient_required">"Потребно е име"</string>
+<string name="payments_email_required">"Потребна е е-пошта"</string>
+<string name="payments_name_required">"Потребно е име"</string>
+<string name="pref_edit_dialog_field_required_validation_message">"Задолжително поле"</string>
+<string name="payments_select_shipping_address_for_shipping_methods">"За да ги видите методите и условите за испорака, изберете адреса"</string>
+<string name="payments_unsupported_shipping_address">"Не може да се испорача на оваа адреса. Изберете друга."</string>
+<string name="payments_select_delivery_address_for_delivery_methods">"За да ги видите методите и условите за доставување, изберете адреса"</string>
+<string name="payments_unsupported_delivery_address">"Не може да се достави на оваа адреса. Изберете друга."</string>
+<string name="payments_select_pickup_address_for_pickup_methods">"За да ги видите методите и условите за подигнување, изберете адреса"</string>
+<string name="payments_unsupported_pickup_address">"Не може да се подигне од оваа адреса. Изберете друга."</string>
+<string name="payments_android_app_error">"Не може да се отвори апликацијата за плаќање"</string>
+<string name="external_payment_app_leave_incognito_warning">"Ќе излезете од режимот „Инкогнито“ за да платите преку надворешна апликација. Дали сакате да продолжите?"</string>
+<string name="payment_handler_sheet_description">"Лист на ракувачот со плаќања"</string>
+<string name="payment_handler_sheet_opened_half">"Листот на ракувачот со плаќања е отворен на половина екран"</string>
+<string name="payment_handler_sheet_opened_full">"Листот на ракувачот со плаќања е отворен"</string>
+<string name="payment_handler_sheet_closed">"Листот на ракувачот со плаќања е затворен"</string>
+<string name="secure_payment_confirmation_verify_purchase">"Потврдете го купувањето"</string>
+<string name="secure_payment_confirmation_store_label">"Продавница"</string>
+<string name="secure_payment_confirmation_total_label">"Вкупно"</string>
+<string name="no_matching_credential_description">"%1$s можеби ќе треба да преземе дополнителни чекори за да го потврди вашето плаќање"</string>
+<string name="secure_payment_confirmation_authentication_sheet_description">"Лист за проверка на акредитиви за безбедно плаќање"</string>
+<string name="secure_payment_confirmation_authentication_sheet_opened">"Листот за проверка на акредитиви за безбедно плаќање е отворен"</string>
+<string name="secure_payment_confirmation_authentication_sheet_closed">"Листот за проверка на акредитиви за безбедно плаќање е затворен"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_description">"Лист што означува дека нема акредитив што се совпаѓа за акредитивот за безбедно плаќање"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_opened">"Листот што означува дека нема акредитив што се совпаѓа за акредитивот за безбедно плаќање е отворен"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_closed">"Листот што означува дека нема акредитив што се совпаѓа за акредитивот за безбедно плаќање е затворен"</string>
+<string name="bluetooth_scanning_prompt_no_devices_found_prompt">"Не се најдени уреди во близина."</string>
+<string name="bluetooth_scanning_prompt_allow_button_text">"Дозволи"</string>
+<string name="bluetooth_scanning_prompt_block_button_text">"Блокирај"</string>
+<string name="blocked_ads_prompt_title">"Рекламите се блокирани"</string>
+<string name="blocked_ads_dialog_title">"Рекламите се блокирани"</string>
+<string name="blocked_ads_dialog_message">"Сајтов прикажува нападни или лажни реклами. ^1"</string>
+<string name="blocked_ads_dialog_always_allow">"Дозволи за овој сајт"</string>
+<string name="blocked_ads_dialog_learn_more">"Дознајте повеќе"</string>
+<string name="sync_enter_passphrase_body">"Вашите податоци се шифрирани со лозинката за синхронизирање. Внесете ја за да го започнете синхронизирањето."</string>
+<string name="translate_infobar_error">"Оваа страница не може да се преведе."</string>
+<string name="translate_button">"Преведи"</string>
+<string name="translate_never_translate_site">"Никогаш не преведувај ја оваа локација"</string>
+<string name="translate_dont_offer_site">"Не нуди превод на сајтов"</string>
+<string name="translate_option_always_translate">"Секогаш преведувај ги страниците на %1$s"</string>
+<string name="translate_option_never_translate">"Никогаш не преведувај страници на %1$s"</string>
+<string name="translate_dont_offer_lang">"Не нуди превод на страници на %1$s"</string>
+<string name="translate_option_more_language">"Повеќе јазици"</string>
+<string name="translate_option_not_source_language">"Страницата не е на %1$s?"</string>
+<string name="translate_snackbar_always_translate">"Отсега-натаму, страниците на %1$s ќе се преведуваат на %2$s"</string>
+<string name="translate_snackbar_language_never">"Страниците на %1$s нема да се преведуваат"</string>
+<string name="translate_snackbar_site_never">"Сајтов нема да се преведе"</string>
+<string name="translate_snackbar_cancel">"Откажи"</string>
+<string name="management_browser_reporting">"Прелистувач"</string>
+<string name="management_browser_reporting_explanation">"Администраторот може да гледа:"</string>
+<string name="management_extension_report_username">"Корисничкото име на вашиот уред и корисничкото име на Chrome"</string>
+<string name="management_extension_report_version">"Информации за верзијата за уредот и прелистувачот"</string>
+<string name="history_clusters_journeys_tab_label">"Патувања"</string>
+<string name="history_clusters_search_your_journeys">"Пребарајте ги вашите „Патувања“"</string>
+<string name="clear">"Исчисти"</string>
+<string name="show_content">"Прикажи"</string>
+<string name="hide_content">"Сокриј"</string>
+<string name="choose">"Избери"</string>
+</resources>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"Додаток %1$s запитує доступ до камери, щоб створити 3D-карту вашого оточення."</string>
+<string name="infobar_missing_camera_permission_text">"Додаток %1$s запитує доступ до камери для цього сайту."</string>
+<string name="infobar_missing_microphone_permission_text">"Додаток %1$s запитує доступ до мікрофона для цього сайту."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"Додаток %1$s запитує доступ до камери й мікрофона для цього сайту."</string>
+<string name="infobar_missing_location_permission_text">"Додаток %1$s запитує доступ до геоданих, щоб повідомляти цьому сайту ваше місцезнаходження."</string>
+<string name="infobar_update_permissions_button_text">"Продовжити"</string>
+<string name="nfc_disabled_on_device_message">"Щоб продовжити, увімкніть NFC в налаштуваннях Android"</string>
+<string name="nfc_prompt_turn_on">"Увімкнути"</string>
+<string name="overlay_detected_dialog_title">"Цей сайт не може запитувати у вас дозвіл"</string>
+<string name="overlay_detected_dialog_message">"Закрийте спливаючі чати або накладання з інших додатків. Потім повторіть спробу."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Довідка&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Підключити"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Рівень сигналу: %d поділка"</item>
+  <item quantity="few">"Рівень сигналу: %d поділки"</item>
+  <item quantity="many">"Рівень сигналу: %d поділок"</item>
+  <item quantity="other">"Рівень сигналу: %d поділки"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Під’єднаний пристрій"</string>
+<string name="bluetooth_dialog_title">"Сайт %1$s хоче підключитися до пристрою"</string>
+<string name="bluetooth_not_found">"Сумісних пристроїв не знайдено"</string>
+<string name="bluetooth_searching">"&lt;link&gt;Довідка&lt;/link&gt; під час пошуку пристроїв…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Отримайте допомогу&lt;/link1&gt; або &lt;link2&gt;повторіть сканування&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Щоб шукати пристрої, Chrome потрібен доступ до геоданих. Доступ до геоданих &lt;services_link&gt;вимкнено на цьому пристрої&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Щоб шукати пристрої, Chrome потрібен доступ до геоданих. &lt;permission_link&gt;Оновити дозволи&lt;/permission_link&gt;. Доступ до геоданих також &lt;services_link&gt;вимкнено на цьому пристрої&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Надайте веб-переглядачу Chrome дозвіл шукати пристрої поблизу. &lt;permission_link&gt;Оновити дозволи.&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission">"Щоб знаходити пристрої, Chrome потрібний доступ до геоданих. &lt;permission_link&gt;Оновлити дозволи&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Довідка&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome не може ввімкнути адаптер Bluetooth"</string>
+<string name="bluetooth_adapter_off">"&lt;link&gt;Увімкніть Bluetooth&lt;/link&gt;, щоб підключити"</string>
+<string name="bluetooth_scanning_prompt_origin">"Сайт %1$s хоче шукати пристрої Bluetooth поруч. Виявлено такі пристрої:"</string>
+<string name="bluetooth_scanning_device_unknown">"Невідомий чи непідтримуваний пристрій (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"يحتاج متصفِّح %1$s إلى إذن للوصول إلى الكاميرا من أجل إنشاء خريطة ثلاثية الأبعاد للبيئة المحيطة بك."</string>
+<string name="infobar_missing_camera_permission_text">"يحتاج متصفّح %1$s إلى منح هذا الموقع الإلكتروني إذنًا لاستخدام الكاميرا."</string>
+<string name="infobar_missing_microphone_permission_text">"يحتاج متصفّح %1$s إلى منح هذا الموقع الإلكتروني إذنًا لاستخدام الميكروفون."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"يحتاج متصفّح %1$s إلى منح هذا الموقع الإلكتروني إذنًا لاستخدام الميكروفون والكاميرا."</string>
+<string name="infobar_missing_location_permission_text">"يحتاج متصفِّح %1$s إلى الوصول إلى موقعك الجغرافي لمشاركته مع هذا الموقع الإلكتروني."</string>
+<string name="infobar_update_permissions_button_text">"متابعة"</string>
+<string name="nfc_disabled_on_device_message">"‏للمواصلة، عليك تفعيل ميزة NFC في إعدادات Android."</string>
+<string name="nfc_prompt_turn_on">"تفعيل"</string>
+<string name="overlay_detected_dialog_title">"يتعذّر على الموقع الإلكتروني هذا طلب الإذن"</string>
+<string name="overlay_detected_dialog_message">"يُرجى إغلاق أيّ فقاعات محادثات أو تراكبات من التطبيقات الأخرى، ثم إعادة المحاولة مرة أخرى."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;الحصول على مساعدة&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"إقران"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"مستوى قوة الإشارة: شريط واحد (%d)"</item>
+  <item quantity="zero">"مستوى قوة الإشارة: %d شريط"</item>
+  <item quantity="two">"مستوى قوة الإشارة: شريطان (%d)"</item>
+  <item quantity="few">"مستوى قوة الإشارة: %d أشرطة"</item>
+  <item quantity="many">"مستوى قوة الإشارة: %d شريطًا"</item>
+  <item quantity="other">"مستوى قوة الإشارة: %d شريط"</item>
+</plurals>
+<string name="bluetooth_device_connected">"جهاز متصل"</string>
+<string name="bluetooth_dialog_title">"يريد %1$s الاقتران"</string>
+<string name="bluetooth_not_found">"لم يتم العثور على أي أجهزة متوافقة"</string>
+<string name="bluetooth_searching">"&lt;link&gt;الحصول على مساعدة&lt;/link&gt; أثناء البحث عن الأجهزة…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;الحصول على مساعدة&lt;/link1&gt; أو &lt;link2&gt;إعادة الفحص&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"‏يحتاج Chrome للوصول إلى الموقع للبحث عن الأجهزة. الوصول إلى الموقع &lt;services_link&gt;غير مفعّل لهذا الجهاز&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"‏يحتاج Chrome للوصول إلى الموقع للبحث عن الأجهزة. &lt;permission_link&gt;تحديث الأذونات&lt;/permission_link&gt;. الوصول إلى الموقع &lt;services_link&gt;غير مفعّل لهذا الجهاز&lt;/services_link&gt; أيضًا."</string>
+<string name="bluetooth_need_nearby_devices_permission">"‏يحتاج Chrome إلى إذن للبحث عن الأجهزة المجاورة. &lt;permission_link&gt;تعديل الأذونات&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission">"‏يحتاج Chrome للوصول إلى المواقع للبحث عن الأجهزة. &lt;permission_link&gt;تحديث الأذونات&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;الحصول على مساعدة&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"‏يتعذر على Chrome تشغيل محوّل البلوتوث"</string>
+<string name="bluetooth_adapter_off">"&lt;link&gt;تفعيل البلوتوث&lt;/link&gt; للسماح بالإقران"</string>
+<string name="bluetooth_scanning_prompt_origin">"يريد %1$s البحث عن أجهزة البلوتوث المجاورة. وتم العثور على الأجهزة التالية:"</string>
+<string name="bluetooth_scanning_device_unknown">"جهاز غير معروف أو غير متوافق (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

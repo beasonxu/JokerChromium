@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"നിങ്ങളുടെ ചുറ്റുപാടിന്റെ 3D മാപ്പ് സൃഷ്ടിക്കുന്നതിന് നിങ്ങളുടെ ക്യാമറ ആക്സസ് ചെയ്യാൻ %1$s എന്നതിന് അനുമതി ആവശ്യമാണ്."</string>
+<string name="infobar_missing_camera_permission_text">"ഈ സൈറ്റിനായി, %1$s എന്നതിന് നിങ്ങളുടെ ക്യാമറ ആക്‌സസ് ചെയ്യാനുള്ള അനുമതി ആവശ്യമാണ്."</string>
+<string name="infobar_missing_microphone_permission_text">"ഈ സൈറ്റിനായി, %1$s എന്നതിന് നിങ്ങളുടെ മൈക്രോഫോൺ ആക്‌സസ് ചെയ്യാനുള്ള അനുമതി ആവശ്യമാണ്."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"ഈ സൈറ്റിനായി, %1$s എന്നതിന് നിങ്ങളുടെ ക്യാമറയും മൈക്രോഫോണും ആക്‌സസ് ചെയ്യാനുള്ള അനുമതി ആവശ്യമാണ്."</string>
+<string name="infobar_missing_location_permission_text">"%1$s എന്നതിന് ഈ സൈറ്റുമായി ലൊക്കേഷൻ പങ്കിടുന്നതിന് നിങ്ങളുടെ ലൊക്കേഷനിലേക്കുള്ള ആക്‌സസ് ആവശ്യമാണ്."</string>
+<string name="infobar_update_permissions_button_text">"തുടരുക"</string>
+<string name="nfc_disabled_on_device_message">"തുടരാൻ, Android ക്രമീകരണത്തിൽ NFC ഓണാക്കുക"</string>
+<string name="nfc_prompt_turn_on">"ഓൺ ചെയ്യുക"</string>
+<string name="overlay_detected_dialog_title">"ഈ സൈറ്റിന് നിങ്ങളുടെ അനുമതി ചോദിക്കാനാകുന്നില്ല"</string>
+<string name="overlay_detected_dialog_message">"മറ്റ് ആപ്പുകളിൽ നിന്നുള്ള എല്ലാ ബബിളുകളോ ഓവർലേകളോ അടയ്‌ക്കുക. പിന്നീട് വീണ്ടും ശ്രമിക്കുക."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;സഹായം തേടുക&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"ജോടിയാക്കുക"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"സിഗ്‌നൽ സ്‌ട്രെംഗ്‌ത്ത് ലെവൽ %d ബാർ"</item>
+  <item quantity="other">"സിഗ്‌നൽ സ്‌ട്രെംഗ്‌ത്ത് ലെവൽ %d ബാറുകൾ"</item>
+</plurals>
+<string name="bluetooth_device_connected">"കണക്റ്റ് ചെയ്‌തിരിക്കുന്ന ഉപകരണം"</string>
+<string name="bluetooth_dialog_title">"%1$s ജോടിയാക്കാൻ താൽപ്പര്യപ്പെടുന്നു"</string>
+<string name="bluetooth_not_found">"അനുയോജ്യമായ ഉപകരണങ്ങളൊന്നും കണ്ടെത്തിയില്ല"</string>
+<string name="bluetooth_searching">"&lt;link&gt;ഉപകരണങ്ങൾ&lt;/link&gt; സ്‌കാൻ ചെയ്യുമ്പോൾ സഹായം തേടുക…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;സഹായം തേടുക&lt;/link1&gt; അല്ലെങ്കിൽ &lt;link2&gt;വീണ്ടും സ്‌കാൻ ചെയ്യുക&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"ഉപകരണങ്ങൾ സ്‌കാൻ ചെയ്യാൻ Chrome-ന് ലൊക്കേഷൻ ആക്‌സസ് ആവശ്യമാണ്. ഈ ഉപകരണത്തിന്റെ &lt;services_link&gt;ലൊക്കേഷൻ ആക്‌സസ് ഓഫാണ്&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"ഉപകരണങ്ങൾ സ്‌കാൻ ചെയ്യാൻ Chrome-ന് ലൊക്കേഷൻ ആക്‌സസ് ആവശ്യമാണ്. &lt;permission_link&gt;അനുമതികൾ അപ്‌ഡേറ്റ് ചെയ്യുക&lt;/permission_link&gt;. ഈ ഉപകരണത്തിന്റെ &lt;services_link&gt;ലൊക്കേഷൻ ആക്‌സസും ഓഫാക്കിയിരിക്കുകയാണ്&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"സമീപമുള്ള ഉപകരണങ്ങൾ സ്‌കാൻ ചെയ്യാൻ Chrome-ന് അനുമതി ആവശ്യമാണ്. &lt;permission_link&gt;അനുമതികൾ അപ്‌ഡേറ്റ് ചെയ്യുക&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"ഉപകരണങ്ങൾ സ്‌കാൻ ചെയ്യുന്നതിന് Chrome-ന് ലൊക്കേഷൻ ആക്‌സസ് ആവശ്യമാണ്. &lt;permission_link&gt;അനുമതികൾ അപ്‌ഡേറ്റ് ചെയ്യുക&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;സഹായം തേടുക&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome-ന് Bluetooth അഡാപ്‌റ്റർ ഓണാക്കാനാവുന്നില്ല"</string>
+<string name="bluetooth_adapter_off">"ജോടിയാക്കാൻ, &lt;link&gt;Bluetooth ഓണാക്കുക&lt;/link&gt;"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s എന്നതിന് സമീപമുള്ള Bluetooth ഉപകരണങ്ങൾ സ്‌കാൻ ചെയ്യണമെന്നുണ്ട്. ഇനിപ്പറയുന്ന ഉപകരണങ്ങൾ കണ്ടെത്തി:"</string>
+<string name="bluetooth_scanning_device_unknown">"പരിചിതമല്ലാത്തതോ പിന്തുണയ്‌ക്കാത്തതോ ആയ ഉപകരണം (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

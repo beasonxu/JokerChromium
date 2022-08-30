@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"Усталяваць праграму з Крамы Google Play: %s"</string>
+<string name="app_banner_install">"Усталяваць"</string>
+<string name="menu_add_to_homescreen">"Дадаць на галоўны экран"</string>
+<string name="menu_add_to_homescreen_install">"Усталяваць праграму"</string>
+<string name="added_to_homescreen">"Карыстальнік %1$s дададзены на галоўны экран"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"Усталяваць гэту праграму"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"Здымак экрана"</string>
+<string name="image_zoom_content_description">"Здымак экрана. Дакраніцеся, каб закрыць."</string>
+<string name="webapk_install_in_progress">"Ідзе дадаванне папярэдняга сайта"</string>
+<string name="webapk_install_failed">"Збой усталявання"</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"ទទួលកម្មវិធីនេះពី Google Play Store: %s"</string>
+<string name="app_banner_install">"តំឡើង"</string>
+<string name="menu_add_to_homescreen">"បន្ថែមទៅអេក្រង់ដើម"</string>
+<string name="menu_add_to_homescreen_install">"តំឡើងកម្មវិធី"</string>
+<string name="added_to_homescreen">"%1$s ត្រូវបានបន្ថែមទៅអេក្រង់ដើមរបស់អ្នក"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"ដំឡើង​កម្មវិធី​នេះ"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"ថតអេក្រង់"</string>
+<string name="image_zoom_content_description">"រូបថត​អេក្រង់។ ចុចដើម្បីបិទ។"</string>
+<string name="webapk_install_in_progress">"កំពុង​បញ្ចូល​ទំព័រ​ពីមុន​នៅឡើយ"</string>
+<string name="webapk_install_failed">"មិនអាច​ដំឡើងបានទេ"</string>
+</resources>

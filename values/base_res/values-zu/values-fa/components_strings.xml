@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="autofill_save_card_prompt_confirm">"تأیید"</string>
+<string name="autofill_mobile_save_card_to_cloud_confirmation_dialog_explanation">"‏برای تسویه‌حساب ایمن و سریع‌تر، اطلاعات کارت و صورت‌حساب را در «حساب Google» خودتان ذخیره کنید"</string>
+<string name="autofill_mobile_save_card_to_cloud_confirmation_dialog_explanation_with_account_name">"‏برای تسویه‌حساب ایمن و سریع‌تر، اطلاعات کارت و صورت‌حساب را در «حساب Google» ^1 ذخیره کنید"</string>
+<string name="autofill_fix_flow_prompt_save_card_label">"ذخیره کارت"</string>
+<string name="autofill_save_card_prompt_cardholder_name_tooltip">"‏این نام از حساب Google شما گرفته شده است"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_cvc">"‏CVC را بررسی کرده و دوباره امتحان کنید"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_date">"تاریخ انقضا را بررسی و دوباره امتحان کنید"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_cvc_and_expiration">"‏تاریخ انقضا و CVC را بررسی کرده و دوباره امتحان کنید"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_month">"ماه انقضا را بررسی و دوباره امتحان کنید"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_year">"سال انقضا را بررسی و دوباره امتحان کنید"</string>
+<string name="autofill_card_unmask_prompt_enable_fido_auth_checkbox">"ازاین‌به‌بعد برای تأیید رساندن کارت‌ها از قفل صفحه استفاده کنید"</string>
+<string name="autofill_card_unmask_verification_in_progress">"درحال تأیید کردن کارت…"</string>
+<string name="autofill_card_unmask_verification_success">"کارتتان تأیید شد"</string>
+<string name="autofill_expiration_date_separator">"/"</string>
+<string name="autofill_card_unmask_new_card_link">"به‌روزرسانی کارت"</string>
+<string name="autofill_wallet_management_link_text">"ویرایش"</string>
+<string name="autofill_from_google_account_long">"‏از Google Pay"</string>
+<string name="autofill_virtual_card_enrollment_accept_button_label">"بله"</string>
+<string name="autofill_virtual_card_enrollment_dialog_title_label">"می‌خواهید آن را با کارت مجازی ایمن‌تر کنیم؟"</string>
+<string name="autofill_virtual_card_number_switch_label">"کارت مجازی"</string>
+<string name="autofill_offers_reminder_description_text">"هنگام تصفیه حساب، با %1$s پرداخت کنید."</string>
+<string name="autofill_offers_reminder_deep_link_text">"دیدن جزئیات"</string>
+<string name="autofill_payments_otp_verification_dialog_title">"کد درستی‌سنجی را وارد کنید"</string>
+<string name="autofill_payments_otp_verification_dialog_cant_find_code_message">"نمی‌توانید کدتان را پیدا کنید؟ &lt;link&gt;کد جدید دریافت کنید&lt;/link&gt;"</string>
+<string name="autofill_payments_otp_verification_dialog_otp_input_hint">"کد %1$s رقمی را وارد کنید"</string>
+<string name="autofill_payments_otp_verification_dialog_positive_button_label">"تأیید"</string>
+<string name="autofill_payments_otp_verification_dialog_negative_button_label">"لغو"</string>
+<string name="autofill_edit_credit_card">"ویرایش کارت"</string>
+<string name="autofill_create_credit_card">"افزودن کارت"</string>
+<string name="autofill_clear_local_copy_button">"پاک کردن نسخه کپی"</string>
+<string name="autofill_cc_amex">"American Express"</string>
+<string name="autofill_cc_diners">"Diners Club"</string>
+<string name="autofill_cc_discover">"کشف کردن"</string>
+<string name="autofill_cc_jcb">"JCB"</string>
+<string name="autofill_cc_mastercard">"مسترکارت"</string>
+<string name="autofill_cc_mir">"Mir"</string>
+<string name="autofill_cc_union_pay">"China UnionPay"</string>
+<string name="autofill_cc_visa">"ویزا"</string>
+<string name="autofill_address_summary_separator">"، "</string>
+<string name="autofill_scan_credit_card">"اسکن کارت جدید"</string>
+<string name="autofill_enable_profiles_toggle_sublabel">"شامل اطلاعاتی مانند شماره تلفن، نشانی ایمیل، و نشانی تحویل کالا می‌شود"</string>
+<string name="autofill_enable_credit_cards_toggle_sublabel">"فرم‌های پرداخت را با روش‌های پرداخت ذخیره‌شده‌تان پر می‌کند"</string>
+<string name="autofill_addresses_settings_title">"نشانی‌ها و سایر موارد"</string>
+<string name="autofill_payment_methods">"روش‌های پرداخت"</string>
+<string name="autofill_enable_profiles_toggle_label">"ذخیره و تکمیل نشانی"</string>
+<string name="autofill_enable_credit_cards_toggle_label">"ذخیره و تکمیل روش‌های پرداخت"</string>
+<string name="enable_credit_card_fido_auth_label">"قفل صفحه"</string>
+<string name="enable_credit_card_fido_auth_sublabel">"برای به‌تأیید رساندن سریع‌تر کارت‌ها، از قفل صفحه استفاده شود"</string>
+<string name="autofill_update_address_prompt_new_values_section_label">"جدید"</string>
+<string name="autofill_update_address_prompt_old_values_section_label">"قدیمی"</string>
+<string name="autofill_save_address_prompt_edit_button_tooltip">"ویرایش آدرس"</string>
+<string name="autofill_edit_address_dialog_title">"ویرایش آدرس"</string>
+<string name="http_post_warning_title">"تأیید ارسال مجدد فرم"</string>
+<string name="http_post_warning">"صفحه‌ای که جستجو می‌کنید از اطلاعاتی استفاده می‌کند که شما وارد کرده‌اید. بازگشت به آن صفحه ممکن است باعث شود اقدامی را که قبلاً انجام دادید دوباره تکرار کنید. آیا می‌خواهید ادامه دهید؟"</string>
+<string name="http_post_warning_resend">"ادامه"</string>
+<string name="login_dialog_title">"ورود به سیستم"</string>
+<string name="login_dialog_ok_button_label">"ورود به سیستم"</string>
+<string name="login_dialog_username_field">"نام کاربری"</string>
+<string name="login_dialog_password_field">"گذرواژه"</string>
+<string name="sad_tab_title">"اوه، نه!"</string>
+<string name="sad_tab_message">"هنگام نمایش این صفحه وب مشکلی پیش آمد."</string>
+<string name="sad_tab_reload_label">"تازه‌سازی"</string>
+<string name="sad_tab_send_feedback_label">"ارسال بازخورد"</string>
+<string name="sad_tab_reload_title">"این صفحه نمی‌تواند باز شود"</string>
+<string name="sad_tab_reload_try">"نکته‌های زیر را امتحان کنید:"</string>
+<string name="sad_tab_reload_incognito">"صفحه را در برگه «ناشناس» جدیدی باز کنید"</string>
+<string name="sad_tab_reload_restart_browser">"‏Chromium را راه‌اندازی مجدد کنید"</string>
+<string name="sad_tab_reload_restart_device">"راه‌اندازی دستگاه خود"</string>
+<string name="sad_tab_reload_learn_more">"بیشتر بدانید"</string>
+<string name="new_tab_otr_title">"به «حالت ناشناس» رفته‌اید"</string>
+<string name="new_tab_otr_subtitle">"اکنون می‌توانید به‌طور خصوصی مرور کنید و سایر افرادی که از این دستگاه استفاده می‌کنند فعالیت شما را نخواهند دید. بااین‌وجود بارگیری‌ها و نشانک‌ها ذخیره خواهند شد."</string>
+<string name="new_tab_otr_subtitle_with_reading_list">"اکنون می‌توانید به‌طور خصوصی مرور کنید و افراد دیگری که از این دستگاه استفاده می‌کنند فعالیت شما را نخواهند دید. باوجوداین، بارگیری‌ها، نشانک‌ها، و موارد فهرست خواندن ذخیره خواهند شد."</string>
+<string name="new_tab_otr_not_saved">"‏Chromium اطلاعات زیر را &lt;em&gt;ذخیره نخواهد کرد&lt;/em&gt;:
+          &lt;ul&gt;
+            &lt;li&gt;سابقه مرور شما
+            &lt;li&gt;داده‌های سایت و کوکی‌ها
+            &lt;li&gt;اطلاعات واردشده در فرم‌ها
+          &lt;/ul&gt;"</string>
+<string name="new_tab_otr_visible">"فعالیت شما &lt;em&gt;ممکن است در موارد زیر قابل‌رؤیت باشد&lt;/em&gt;:
+        &lt;ul&gt;
+          &lt;li&gt;در وب‌سایت‌هایی که بازدید می‌کنید
+          &lt;li&gt;برای کارفرما یا مدرسه‌‌تان
+          &lt;li&gt;برای ارائه‌دهنده خدمات اینترنت شما
+        &lt;/ul&gt;"</string>
+<string name="new_tab_otr_cookie_controls_controlled_tooltip_text">"این تنظیم در «تنظیمات کوکی‌ها» کنترل می‌شود."</string>
+<string name="new_tab_otr_third_party_cookie">"مسدود کردن کوکی‌های شخص ثالث"</string>
+<string name="new_tab_otr_third_party_cookie_sublabel">"وقتی روشن باشد، سایت‌ها نمی‌توانند از کوکی‌هایی که شما را در وب ردیابی می‌کند استفاده کنند. ویژگی‌های بعضی از سایت‌ها ممکن است درست کار نکنند."</string>
+<string name="revamped_incognito_ntp_title">"‏«حالت ناشناس» در Chromium"</string>
+<string name="revamped_incognito_ntp_does_header">"«حالت ناشناس» چه کارهایی انجام می‌دهد"</string>
+<string name="revamped_incognito_ntp_does_description">"‏وقتی همه برگه‌های ناشناس Chromium را ببندید، فعالیتتان در این برگه‌ها از دستگاهتان پاک می‌شود:
+          &lt;ul&gt;
+            &lt;li&gt;فعالیت مرور&lt;/li&gt;
+            &lt;li&gt;سابقه جستجو&lt;/li&gt;
+            &lt;li&gt;اطلاعات واردشده در فرم‌ها&lt;/li&gt;
+          &lt;/ul&gt;"</string>
+<string name="revamped_incognito_ntp_does_not_header">"«حالت ناشناس» چه کارهایی انجام نمی‌دهد"</string>
+<string name="revamped_incognito_ntp_does_not_description">"«حالت ناشناس» شما را در دنیای آنلاین نامرئی نمی‌کند:
+        &lt;ul&gt;
+          &lt;li&gt;سایت‌ها و سرویس‌هایی که استفاده می‌کنند می‌توانند بازدیدها را ببینند&lt;/li&gt;
+          &lt;li&gt;کارفرمایان یا مدارس می‌توانند فعالیت مرور را ردیابی کنند&lt;/li&gt;
+          &lt;li&gt;رسانندگان خدمات اینترنتی می‌توانند ترافیک وب را پایش کنند&lt;/li&gt;
+        &lt;/ul&gt;"</string>
+<string name="revamped_incognito_ntp_learn_more">"‏&lt;a&gt;درباره «حالت ناشناس» در Chromium بیشتر بدانید&lt;/a&gt;"</string>
+<string name="revamped_incognito_ntp_otr_third_party_cookie">"مسدود کردن کوکی‌های شخص ثالث در «حالت ناشناس»"</string>
+<string name="revamped_incognito_ntp_otr_third_party_cookie_sublabel">"سایت‌ها نمی‌توانند از کوکی‌هایی که شما را در وب ردیابی می‌کند استفاده کنند. ویژگی‌های برخی سایت‌ها ممکن است کار نکنند."</string>
+<string name="ntp_article_suggestions_section_header">"مقالاتی برای شما"</string>
+<string name="ntp_article_suggestions_section_empty">"مقاله‌های پیشنهادی شما در اینجا نشان داده می‌شوند"</string>
+<string name="page_info_permission_ads_subtitle">"سایتْ آگهی‌های مزاحم یا گمراه‌کننده نشان می‌دهد"</string>
+<string name="payments_method_of_payment_label">"روش پرداخت"</string>
+<string name="payments_contact_details_label">"اطلاعات تماس"</string>
+<string name="payments_add_contact_details_label">"افزودن اطلاعات تماس"</string>
+<string name="payments_edit_contact_details_label">"ویرایش اطلاعات تماس"</string>
+<string name="payments_add_billing_address">"افزودن نشانی صورتحساب"</string>
+<string name="payments_add_name_on_card">"افزودن نام روی کارت"</string>
+<string name="payments_add_valid_card_number">"افزودن شماره کارت معتبر"</string>
+<string name="payments_add_more_information">"افزودن اطلاعات بیشتر"</string>
+<string name="payments_edit_card">"ویرایش کارت"</string>
+<string name="payments_add_phone_number">"افزودن شماره تلفن"</string>
+<string name="payments_add_recipient">"افزودن نام"</string>
+<string name="payments_add_valid_address">"نشانی معتبری اضافه کنید"</string>
+<string name="payments_add_email">"افزودن ایمیل"</string>
+<string name="payments_add_name">"افزودن نام"</string>
+<string name="payments_order_summary_label">"خلاصه سفارش"</string>
+<string name="payment_request_payment_method_section_name">"پرداخت"</string>
+<string name="payments_shipping_summary_label">"ارسال"</string>
+<string name="payments_shipping_address_label">"اطلاعات ارسال"</string>
+<string name="payments_shipping_option_label">"روش ارسال"</string>
+<string name="payments_delivery_summary_label">"ارسال"</string>
+<string name="payments_delivery_address_label">"نشانی تحویل کالا"</string>
+<string name="payments_delivery_option_label">"روش تحویل"</string>
+<string name="payments_pickup_summary_label">"تحویل گرفتن"</string>
+<string name="payments_pickup_address_label">"نشانی تحویل گرفتن"</string>
+<string name="payments_pickup_option_label">"روش تحویل گرفتن"</string>
+<string name="payments_edit_button">"ویرایش"</string>
+<string name="payments_pay_button">"پرداخت"</string>
+<string name="payments_continue_button">"ادامه"</string>
+<string name="payments_add_contact">"افزودن اطلاعات تماس"</string>
+<string name="payments_add_card">"افزودن کارت"</string>
+<string name="payments_add_address">"افزودن آدرس"</string>
+<string name="payments_edit_address">"ویرایش آدرس"</string>
+<string name="payments_name_field_in_contact_details">"نام"</string>
+<string name="payments_save_card_to_device_checkbox">"این کارت را در این دستگاه ذخیره کنید"</string>
+<string name="payments_accepted_cards_label">"کارت‌های قابل‌ قبول"</string>
+<string name="payments_credit_card_expiration_date_abbr">"تاریخ انقضا %1$s/%2$s"</string>
+<string name="payments_loading_message">"در حال بارگیری"</string>
+<string name="payments_checking_option">"در حال بررسی"</string>
+<string name="payments_updated_label">"به‌روزرسانی ‌شد"</string>
+<string name="payments_error_message">"هنگام پردازش سفارش شما خطایی روی داد. لطفاً دوباره امتحان کنید."</string>
+<string name="payments_card_and_address_settings">"می‌توانید در BEGIN_LINKتنظیماتEND_LINK، کارت‌ها و نشانی‌ها را مدیریت کنید."</string>
+<string name="payments_card_and_address_settings_signed_in">"‏کارت‌ها و نشانی‌ها از Chrome و حساب Google شما (%1$s) هستند. می‌توانید آن‌ها را در BEGIN_LINKتنظیماتEND_LINK مدیریت کنید."</string>
+<string name="payments_card_and_address_settings_signed_out">"‏کارت‌ها و نشانی‌ها از Chrome‌ هستند. می‌توانید آن‌ها را در BEGIN_LINKتنظیماتEND_LINK مدیریت کنید."</string>
+<string name="settings_can_make_payment_toggle_label">"سایت‌ها بتوانند بررسی کنند روش پرداخت ذخیره‌شده‌ای دارید یا نه"</string>
+<string name="payments_required_field_message">"* این فیلد اجباری است"</string>
+<string name="payments_phone_invalid_validation_message">"شماره تلفن معتبری وارد کنید"</string>
+<string name="payments_email_invalid_validation_message">"نشانی ایمیل معتبری وارد کنید"</string>
+<string name="payments_card_number_invalid_validation_message">"شماره کارت معتبری وارد کنید"</string>
+<string name="payments_card_expiration_invalid_validation_message">"تاریخ انقضای معتبری وارد کنید"</string>
+<string name="payments_invalid_address">"نشانی معتبری وارد کنید"</string>
+<string name="payments_billing_address_required">"نشانی صورت‌حساب لازم است"</string>
+<string name="payments_name_on_card_required">"نام صاحب حساب الزامی است"</string>
+<string name="payments_more_information_required">"اطلاعات بیشتری نیاز است"</string>
+<string name="payments_phone_number_required">"شماره تلفن ضروری است"</string>
+<string name="payments_recipient_required">"نام ضروری است"</string>
+<string name="payments_email_required">"ایمیل ضروری است"</string>
+<string name="payments_name_required">"نام ضروری است"</string>
+<string name="pref_edit_dialog_field_required_validation_message">"قسمت الزامی"</string>
+<string name="payments_select_shipping_address_for_shipping_methods">"برای دیدن روش‌های ارسال و شرایط موردنیاز، یک نشانی انتخاب کنید"</string>
+<string name="payments_unsupported_shipping_address">"ارسال به این نشانی ممکن نیست. نشانی دیگری را انتخاب کنید."</string>
+<string name="payments_select_delivery_address_for_delivery_methods">"برای دیدن روش‌های تحویل و شرایط موردنیاز، یک نشانی انتخاب کنید"</string>
+<string name="payments_unsupported_delivery_address">"تحویل به این نشانی ممکن نیست. نشانی دیگری را انتخاب کنید."</string>
+<string name="payments_select_pickup_address_for_pickup_methods">"برای دیدن روش‌های تحویل گرفتن و شرایط موردنیاز، یک نشانی انتخاب کنید"</string>
+<string name="payments_unsupported_pickup_address">"تحویل گرفتن از این نشانی ممکن نیست. نشانی دیگری را انتخاب کنید."</string>
+<string name="payments_android_app_error">"برنامه پرداخت باز نشد"</string>
+<string name="external_payment_app_leave_incognito_warning">"برای پرداخت ازطریق یک برنامه خارجی، از «حالت ناشناس» خارج می‌شوید. ادامه می‌دهید؟"</string>
+<string name="payment_handler_sheet_description">"برگ کنترل‌کننده پرداخت"</string>
+<string name="payment_handler_sheet_opened_half">"برگ کنترل‌کننده پرداخت نیمه‌باز است"</string>
+<string name="payment_handler_sheet_opened_full">"برگ کنترل‌کننده پرداخت باز است"</string>
+<string name="payment_handler_sheet_closed">"برگ کنترل‌کننده پرداخت بسته است"</string>
+<string name="secure_payment_confirmation_verify_purchase">"به تأیید رساندن خرید"</string>
+<string name="secure_payment_confirmation_store_label">"فروشگاه"</string>
+<string name="secure_payment_confirmation_total_label">"مجموع"</string>
+<string name="no_matching_credential_description">"%1$s ممکن است برای تأیید پرداخت شما به انجام مراحل تکمیلی نیاز داشته باشد"</string>
+<string name="secure_payment_confirmation_authentication_sheet_description">"برگ اصالت‌سنجی اطلاعات کاربری پرداخت امن"</string>
+<string name="secure_payment_confirmation_authentication_sheet_opened">"برگ اصالت‌سنجی اطلاعات کاربری پرداخت امن باز شد"</string>
+<string name="secure_payment_confirmation_authentication_sheet_closed">"برگ اصالت‌سنجی اطلاعات کاربری پرداخت امن بسته شد"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_description">"برگ «اطلاعات کاربری مطابقت ندارد» در روند وارد کردن اطلاعات کاربری پرداخت امن"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_opened">"برگ «اطلاعات کاربری مطابقت ندارد» در روند وارد کردن اطلاعات کاربری پرداخت امن باز شد"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_closed">"برگ «اطلاعات کاربری مطابقت ندارد» در روند وارد کردن اطلاعات کاربری پرداخت امن بسته شد"</string>
+<string name="bluetooth_scanning_prompt_no_devices_found_prompt">"هیچ دستگاه نزدیکی پیدا نشد."</string>
+<string name="bluetooth_scanning_prompt_allow_button_text">"اجازه دادن"</string>
+<string name="bluetooth_scanning_prompt_block_button_text">"مسدود کردن"</string>
+<string name="blocked_ads_prompt_title">"آگهی‌ها مسدود شدند"</string>
+<string name="blocked_ads_dialog_title">"آگهی‌ها مسدود شدند"</string>
+<string name="blocked_ads_dialog_message">"این سایتْ آگهی‌های مزاحم یا گمراه‌کننده نشان می‌دهد. ^1"</string>
+<string name="blocked_ads_dialog_always_allow">"مجاز برای این سایت"</string>
+<string name="blocked_ads_dialog_learn_more">"بیشتر بدانید"</string>
+<string name="sync_enter_passphrase_body">"داده‌های شما با گذرعبارت همگام‌سازی رمزگذاری می‌شود. برای شروع همگام‌سازی آن را وارد کنید."</string>
+<string name="translate_infobar_error">"متأسفیم. این صفحه ترجمه نشد."</string>
+<string name="translate_button">"ترجمه"</string>
+<string name="translate_never_translate_site">"این سایت هرگز ترجمه نشود"</string>
+<string name="translate_dont_offer_site">"ترجمه این سایت پیشنهاد نشود"</string>
+<string name="translate_option_always_translate">"صفحه‌های %1$s همیشه ترجمه شوند"</string>
+<string name="translate_option_never_translate">"هرگز صفحه‌های %1$s ترجمه نشوند"</string>
+<string name="translate_dont_offer_lang">"ترجمه صفحه‌های %1$s پیشنهاد نشود"</string>
+<string name="translate_option_more_language">"زبان‌های بیشتر"</string>
+<string name="translate_option_not_source_language">"صفحه به زبان %1$s وجود ندارد؟"</string>
+<string name="translate_snackbar_always_translate">"از این به بعد، صفحه‌های %1$s، به %2$s ترجمه خواهند شد"</string>
+<string name="translate_snackbar_language_never">"صفحه‌های %1$s ترجمه نخواند شد"</string>
+<string name="translate_snackbar_site_never">"این سایت ترجمه نخواهد شد"</string>
+<string name="translate_snackbar_cancel">"لغو"</string>
+<string name="management_browser_reporting">"مرورگر"</string>
+<string name="management_browser_reporting_explanation">"سرپرستتان می‌تواند این موارد را ببیند:"</string>
+<string name="management_extension_report_username">"‏نام کاربری شما در دستگاه و Chrome"</string>
+<string name="management_extension_report_version">"اطلاعات مربوط به نسخه دستگاه و مرورگر"</string>
+<string name="history_clusters_journeys_tab_label">"سفرها"</string>
+<string name="history_clusters_search_your_journeys">"«سفرهای جستجو» را جستجو کنید"</string>
+<string name="clear">"پاک کردن"</string>
+<string name="show_content">"نمایش"</string>
+<string name="hide_content">"عدم نمایش"</string>
+<string name="choose">"انتخاب"</string>
+</resources>

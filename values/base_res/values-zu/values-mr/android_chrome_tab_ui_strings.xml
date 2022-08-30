@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="iph_tab_groups_quickly_compare_pages_text">"गट बनवून त्वरित पेजशी तुलना करा. सुरू करण्यासाठी, लिंकला स्पर्श करा आणि धरून ठेवा."</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_text">"दुसरा टॅब पाहण्यासाठी टॅप करा"</string>
+<string name="iph_tab_groups_your_tabs_together_text">"तुमचे टॅब येथे एकत्रित केले आहेत"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_accessibility_text">"स्क्रीनच्या तळाजवळ तुमच्या टॅब गटातील टॅब दरम्यान स्विच करा"</string>
+<string name="undo_bar_group_tabs_message">"%1$s टॅबची गटामध्ये विभागणी केली आहे"</string>
+<plurals name="bottom_tab_grid_title_placeholder">
+  <item quantity="one">"%1$d टॅब"</item>
+  <item quantity="other">"%1$d टॅब"</item>
+</plurals>
+<string name="bottom_tab_grid_new_tab">"गटामध्ये नवीन टॅब जोडा"</string>
+<string name="accessibility_bottom_tab_grid_close_tab_sheet">"फुलस्क्रीन ग्रिड लपवा"</string>
+<string name="accessibility_bottom_tab_strip_expand_tab_sheet">"फुलस्क्रीन ग्रिडमध्ये गटाचे टॅब दाखवा"</string>
+<string name="accessibility_bottom_tab_strip_close_strip">"टॅब स्ट्रिप बंद करा"</string>
+<string name="tabswitcher_create_group">"गट तयार करा"</string>
+<string name="accessibility_tab_switcher">"टॅब स्विचर"</string>
+<string name="accessibility_close_tab_group_button">"%1$s टॅब असलेला टॅब गट बंद करा"</string>
+<string name="accessibility_close_tab_group_button_with_group_name">"%2$s टॅब असलेला %1$s गट बंद करा"</string>
+<string name="tab_selection_editor_group">"गट"</string>
+<string name="tab_selection_editor_toolbar_select_tabs">"टॅब निवडा"</string>
+<plurals name="accessibility_tab_selection_editor_group_button">
+  <item quantity="one">"निवडलेल्या %1$d टॅबचा गट बनवा"</item>
+  <item quantity="other">"निवडलेल्या %1$d टॅबचा गट बनवा"</item>
+</plurals>
+<string name="accessibility_tab_selection_editor_back_button">"एकाहून अधिक निवड मोड लपवा"</string>
+<string name="accessibility_tab_selection_editor">"एकाहून अधिक निवड मोड"</string>
+<string name="tab_grid_dialog_remove_from_group">"गटामधून काढून टाका"</string>
+<string name="tab_grid_dialog_toolbar_remove_from_group">"गटामधून टॅब काढून टाका"</string>
+<string name="tab_grid_dialog_selection_mode_remove">"काढून टाका"</string>
+<string name="tab_grid_dialog_toolbar_share_group">"गट शेअर करा"</string>
+<string name="tab_grid_dialog_toolbar_edit_group_name">"गटाचे नाव संपादित करा"</string>
+<string name="accessibility_expand_tab_group">"%1$s टॅबसह टॅब गटाचा विस्तार करा."</string>
+<string name="accessibility_expand_tab_group_with_group_name">"%1$s टॅब गटाचा %2$s टॅबसह विस्तार करा."</string>
+<plurals name="accessibility_tab_selection_dialog_remove_button">
+  <item quantity="one">"गटामधून निवडलेला %1$d टॅब काढून टाका."</item>
+  <item quantity="other">"गटामधून निवडलेले %1$d टॅब काढून टाका."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button">
+  <item quantity="one">"%1$d टॅब कोलॅप्स करा."</item>
+  <item quantity="other">"%1$d टॅबचा गट असलेले टॅब कोलॅप्स करा."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button_with_group_name">
+  <item quantity="one">"%1$d टॅब कोलॅप्स करा."</item>
+  <item quantity="other">"%2$d टॅबचा गट असलेले %1$s टॅब कोलॅप्स करा."</item>
+</plurals>
+<string name="accessibility_tab_grid_dialog">"टॅब गटाचा विस्तार केला आहे"</string>
+<string name="iph_drag_and_drop_introduction">"त्यांचा गट बनवण्यासाठी टॅबना ड्रॅग करा"</string>
+<string name="iph_drag_and_drop_show_me">"मला दर्शवा"</string>
+<string name="iph_drag_and_drop_title">"व्यवस्‍थापित करा"</string>
+<string name="iph_drag_and_drop_content">"टॅबचा गट करण्यासाठी, टॅबला स्पर्श करा आणि धरून ठेवा. नंतर, तो दुसऱ्या टॅबवर ड्रॅग करा."</string>
+<string name="tab_switcher_carousel_title">"ब्राउझ करणे सुरू ठेवा"</string>
+<string name="tab_switcher_carousel_view_all">"सर्व पहा"</string>
+<string name="tab_suggestion_review_button">"पुनरावलोकन करा"</string>
+<string name="tab_suggestion_close_tab_action_button">"बंद करा"</string>
+<string name="tab_suggestion_close_stale_message">"तुमच्या %1$s चा काही दिवसांपासून वापर केला गेला नाही. ते बंद करायचे आहेत का?"</string>
+<string name="tab_suggestion_group_tabs_message">"%1$s टॅब संबंधित वाटतात. त्यांचा गट बनवायचा का?"</string>
+<string name="accessibility_tab_suggestion_review_button">"सूचनांचे पुनरावलोकन करा."</string>
+<string name="accessibility_tab_suggestion_close_stale_message">"सूचना: तुमच्या टॅबपैकी %1$s चा काही दिवसांपासून वापर केला गेला नाही. ते बंद करायचे आहेत का?"</string>
+<string name="accessibility_tab_suggestion_group_tabs_message">"सूचना: %1$s टॅब संबंधित वाटतात. त्यांचा गट बनवायचा का?"</string>
+<string name="accessibility_tab_suggestion_dismiss_button">"सूचना डिसमिस करा."</string>
+<plurals name="accessibility_tab_suggestion_close_tab_action_button">
+  <item quantity="one">"निवडलेला %1$d टॅब बंद करा"</item>
+  <item quantity="other">"निवडलेले %1$d टॅब बंद करा"</item>
+</plurals>
+<string name="accessibility_tab_movement_left">"टॅब डावीकडे हलवा"</string>
+<string name="accessibility_tab_movement_right">"टॅब उजवीकडे हलवा"</string>
+<string name="accessibility_tab_movement_up">"टॅब वर हलवा"</string>
+<string name="accessibility_tab_movement_down">"टॅब खाली हलवा"</string>
+<string name="undo_tab_strip_closure_message">"बंद केलेली टॅब स्ट्रिप"</string>
+<string name="tab_strip_info_bar_question">"टॅब स्ट्रिप पुन्हा दाखवायची नाही का?"</string>
+<string name="tab_strip_info_bar_no_reshow">"पुन्हा दाखवू नका"</string>
+<string name="tab_strip_info_bar_reshow">"नंतर दाखवा"</string>
+<string name="price_drop_spotted_title">"किमतीतील घट आढळली"</string>
+<string name="price_drop_spotted_content">"तुमच्या उघड्या असलेल्या टॅबमध्ये कोणत्या आयटमची किंमत आणखी कमी आहे ते पहा"</string>
+<string name="price_drop_spotted_show_me">"मला दर्शवा"</string>
+<string name="price_drop_spotted_lower_price">"आणखी कमी किंमत"</string>
+<string name="accessibility_tab_price_card">"या आयटमची किंमत अलीकडे %1$s वरून %2$s इतकी कमी झाली"</string>
+<string name="price_drop_alerts_card_title">"किंमत कमी झाल्याच्या सूचना मिळवायच्या आहेत का?"</string>
+<string name="price_drop_alerts_card_get_notified_content">"उघड्या टॅबमध्ये किंमत कमी असताना तुम्हाला सूचना मिळेल"</string>
+<string name="price_drop_alerts_card_get_notified">"सूचना मिळवा"</string>
+<string name="price_drop_alerts_card_go_to_settings_content">"कमी किंमत उपलब्ध असताना उघड्या टॅबमध्ये सूचना मिळवण्यासाठी, सेंटिंग्ज मध्ये सूचना सुरू करा."</string>
+<string name="price_drop_alerts_card_go_to_settings">"सेटिंग्ज वर जा"</string>
+<string name="price_tracking_settings">"किंमत ट्रॅक करण्याची सेटिंग्ज"</string>
+<string name="track_prices_on_tabs">"टॅबवर किमती ट्रॅक करा"</string>
+<string name="track_prices_on_tabs_description">"तुमच्या टॅबवर कमी झालेली किंमत पहा"</string>
+<string name="price_drop_alerts">"किमतीमध्ये घट झाल्याच्या सूचना"</string>
+<string name="price_drop_alerts_description">"किमतीमध्ये घट झाल्यावर सूचना मिळवा"</string>
+<string name="price_drop_notification_content_title">"%2$s पासून किमतीमध्ये %1$s घसरण"</string>
+<string name="price_drop_notification_content_text">"आता %2$s वर %1$s मध्ये आहे"</string>
+<string name="price_drop_notification_action_visit_site">"साइटवर भेट द्या"</string>
+<string name="price_drop_notification_action_turn_off_alert">"उत्पादनाचा माग ठेवणे थांबवा"</string>
+<string name="merchant_viewer_message_title">"स्टोअरची माहिती पाहायची आहे का?"</string>
+<string name="merchant_viewer_message_title_see_reviews">"स्टोअरशी संबंधित पुनरावलोकने पहायची आहेत का?"</string>
+<string name="merchant_viewer_message_action">"पहा"</string>
+<string name="merchant_viewer_message_description_rating">"%1$s/%2$s रेटिंग"</string>
+<plurals name="merchant_viewer_message_description_reviews">
+  <item quantity="one">"(%1$s परीक्षण)"</item>
+  <item quantity="other">"(%1$s परीक्षणे)"</item>
+</plurals>
+<plurals name="merchant_viewer_message_description_reviews_from_google">
+  <item quantity="one">"Google कडून %1$s पुनरावलोकन"</item>
+  <item quantity="other">"Google कडून %1$s पुनरावलोकने"</item>
+</plurals>
+<string name="merchant_viewer_message_rating_numerical">"%1$.1f/%2$d"</string>
+<string name="merchant_viewer_message_rating_word">"रेटिंग"</string>
+<plurals name="accessibility_merchant_viewer_message_description">
+  <item quantity="one">" %1$s/%2$s रेटिंग, %3$d परीक्षण"</item>
+  <item quantity="other">"%1$s/%2$s रेटिंग, %3$d परीक्षणे"</item>
+</plurals>
+<string name="accessibility_merchant_viewer_message_announcement">"स्टोअरची माहिती पहा, पर्याय स्क्रीनच्या सर्वात वर उपलब्ध आहे"</string>
+<string name="merchant_viewer_preview_sheet_title">"Google | या स्टोअरबद्दल"</string>
+<string name="merchant_viewer_omnibox_icon_iph">"स्टोअरची माहिती पहा"</string>
+<string name="page_info_store_info_title">"स्टोअरची माहिती"</string>
+<string name="page_info_store_info_description_with_no_review">"(स्टोअरचे रेटिंग)"</string>
+<string name="page_info_store_info_description_with_no_rating">"रिटर्न धोरण आणि आणखी बरेच काही पहा"</string>
+<string name="merchant_viewer_preview_sheet_description">"या स्टोअरविषयी माहिती"</string>
+<string name="merchant_viewer_preview_sheet_opened_half">"या स्टोअरविषयी माहिती अर्ध्या उंचीवर उघडली आहे"</string>
+<string name="merchant_viewer_preview_sheet_opened_full">"या स्टोअरविषयी माहिती पूर्ण उंचीवर उघडली आहे"</string>
+<string name="merchant_viewer_preview_sheet_closed">"या स्टोअरसंबंधित माहिती बंद केली"</string>
+<string name="close_all_tabs_dialog_title">"सर्व टॅब बंद करायचे आहेत का?"</string>
+<string name="close_all_tabs_dialog_message">"Chrome च्या मुख्य मेनू अंतर्गत अलीकडील टॅबमध्ये तुम्ही तुमचे बंद केलेले टॅब पाहू शकता"</string>
+<string name="close_all_tabs_dialog_title_incognito">"सर्व गुप्त टॅब बंद करायचे आहेत का?"</string>
+<string name="close_all_tabs_dialog_message_incognito">"या गुप्त टॅबमधील तुमची अ‍ॅक्टिव्हिटी या डिव्हाइसवरून साफ केली जाईल"</string>
+</resources>

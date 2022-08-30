@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="iph_tab_groups_quickly_compare_pages_text">"Бүлэг үүсгэх байдлаар хуудаснуудыг хурдан харьцуулаарай. Эхлүүлэхийн тулд холбоосыг удаан дарна уу."</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_text">"Өөр табыг харахын тулд товшино уу"</string>
+<string name="iph_tab_groups_your_tabs_together_text">"Таны табуудыг энд бүлэглэсэн болно"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_accessibility_text">"Дэлгэцийн доод хэсгийн ойролцоо байгаа табын бүлгээсээ таб хооронд сэлгэнэ үү"</string>
+<string name="undo_bar_group_tabs_message">"%1$s табыг бүлэглэсэн"</string>
+<plurals name="bottom_tab_grid_title_placeholder">
+  <item quantity="one">"%1$d таб"</item>
+  <item quantity="other">"%1$d таб"</item>
+</plurals>
+<string name="bottom_tab_grid_new_tab">"Бүлэгт шинэ таб нэмэх"</string>
+<string name="accessibility_bottom_tab_grid_close_tab_sheet">"Бүтэн дэлгэцийн торыг нуух"</string>
+<string name="accessibility_bottom_tab_strip_expand_tab_sheet">"Бүлгийн табуудыг бүтэн дэлгэцийн торонд харуулах"</string>
+<string name="accessibility_bottom_tab_strip_close_strip">"Tab мессежийг хаах"</string>
+<string name="tabswitcher_create_group">"Бүлэг үүсгэх"</string>
+<string name="accessibility_tab_switcher">"Таб хооронд шилжүүлэгч"</string>
+<string name="accessibility_close_tab_group_button">"%1$s таб бүхий бүлэг табыг хаах."</string>
+<string name="accessibility_close_tab_group_button_with_group_name">"%2$s таб бүхий %1$s бүлгийг хаах"</string>
+<string name="tab_selection_editor_group">"Бүлэг"</string>
+<string name="tab_selection_editor_toolbar_select_tabs">"Таб сонгох"</string>
+<plurals name="accessibility_tab_selection_editor_group_button">
+  <item quantity="one">"Сонгосон %1$d табыг бүлэглэх"</item>
+  <item quantity="other">"Сонгосон %1$d табыг бүлэглэх"</item>
+</plurals>
+<string name="accessibility_tab_selection_editor_back_button">"Олон сонголттой горимыг нуух"</string>
+<string name="accessibility_tab_selection_editor">"Олон сонголттой горим"</string>
+<string name="tab_grid_dialog_remove_from_group">"Бүлгээс хасах"</string>
+<string name="tab_grid_dialog_toolbar_remove_from_group">"Бүлгээс табыг хасах"</string>
+<string name="tab_grid_dialog_selection_mode_remove">"Хасах"</string>
+<string name="tab_grid_dialog_toolbar_share_group">"Бүлгийг хуваалцах"</string>
+<string name="tab_grid_dialog_toolbar_edit_group_name">"Бүлгийн нэрийг засах"</string>
+<string name="accessibility_expand_tab_group">"%1$s таб бүхий бүлэг табыг дэлгэх."</string>
+<string name="accessibility_expand_tab_group_with_group_name">"%2$s табтай %1$s таб бүлгийг дэлгэнэ үү."</string>
+<plurals name="accessibility_tab_selection_dialog_remove_button">
+  <item quantity="one">"Сонгосон %1$d табыг бүлгээс хасах."</item>
+  <item quantity="other">"Сонгосон %1$d табыг бүлгээс хасах."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button">
+  <item quantity="one">"%1$d табыг хураах."</item>
+  <item quantity="other">"%1$d таб бүхий бүлэг табыг хураах."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button_with_group_name">
+  <item quantity="one">"%1$d табыг хураах."</item>
+  <item quantity="other">"%2$d таб бүхий %1$s бүлэг табыг хураах."</item>
+</plurals>
+<string name="accessibility_tab_grid_dialog">"Бүлэг табыг дэлгэсэн"</string>
+<string name="iph_drag_and_drop_introduction">"Бүлэглэхийн тулд табыг чирж зөөнө үү"</string>
+<string name="iph_drag_and_drop_show_me">"Надад үзүүлнэ үү"</string>
+<string name="iph_drag_and_drop_title">"Зохион байгуулалттай болох"</string>
+<string name="iph_drag_and_drop_content">"Табуудыг бүлэглэхийн тулд таб дээр хүрээд, удаан дарна уу. Тэгээд уг табыг нөгөө рүү нь чирж зөөнө үү."</string>
+<string name="tab_switcher_carousel_title">"Тасралтгүй үзэх"</string>
+<string name="tab_switcher_carousel_view_all">"Бүгдийг харах"</string>
+<string name="tab_suggestion_review_button">"Шалгах"</string>
+<string name="tab_suggestion_close_tab_action_button">"Хаах"</string>
+<string name="tab_suggestion_close_stale_message">"Таны табуудаас %1$s-г нь сүүлийн үед ашиглаагүй байна. Тэдгээрийг хаах уу?"</string>
+<string name="tab_suggestion_group_tabs_message">"%1$s таб холбоотой бололтой. Эдгээрийг бүлэглэх үү?"</string>
+<string name="accessibility_tab_suggestion_review_button">"Зөвлөмжийг шалгах."</string>
+<string name="accessibility_tab_suggestion_close_stale_message">"Зөвлөмж: Таны табуудаас %1$s-г нь сүүлийн үед ашиглаагүй байна. Тэдгээрийг хаах уу?"</string>
+<string name="accessibility_tab_suggestion_group_tabs_message">"Зөвлөмж: %1$s таб холбоотой бололтой. Эдгээрийг бүлэглэх үү?"</string>
+<string name="accessibility_tab_suggestion_dismiss_button">"Зөвлөмжийг үл хэрэгсэх."</string>
+<plurals name="accessibility_tab_suggestion_close_tab_action_button">
+  <item quantity="one">"Сонгосон %1$d табыг хаах"</item>
+  <item quantity="other">"Сонгосон %1$d табыг хаах"</item>
+</plurals>
+<string name="accessibility_tab_movement_left">"Табыг зүүн тийш зөөх"</string>
+<string name="accessibility_tab_movement_right">"Табыг баруун тийш зөөх"</string>
+<string name="accessibility_tab_movement_up">"Табыг дээш зөөх"</string>
+<string name="accessibility_tab_movement_down">"Табыг доош зөөх"</string>
+<string name="undo_tab_strip_closure_message">"Tab мессежийг хаасан"</string>
+<string name="tab_strip_info_bar_question">"Tab мессежийг дахин харуулахгүй байх уу?"</string>
+<string name="tab_strip_info_bar_no_reshow">"Дахиж бүү харуул"</string>
+<string name="tab_strip_info_bar_reshow">"Дараа харуулах"</string>
+<string name="price_drop_spotted_title">"Үнийн уналт илрүүллээ"</string>
+<string name="price_drop_spotted_content">"Таны нээлттэй табд аль зүйл илүү хямд үнэтэй байгааг хараарай"</string>
+<string name="price_drop_spotted_show_me">"Надад үзүүлнэ үү"</string>
+<string name="price_drop_spotted_lower_price">"Илүү хямд үнэ"</string>
+<string name="accessibility_tab_price_card">"Энэ зүйлийн үнэ саяхан %1$s-с %2$s болж буурсан"</string>
+<string name="price_drop_alerts_card_title">"Үнэ бууралтын сэрэмжлүүлэг авах уу?"</string>
+<string name="price_drop_alerts_card_get_notified_content">"Та нээлттэй табд илүү хямд үнэ байгаа тохиолдолд сэрэмжлүүлэг авна"</string>
+<string name="price_drop_alerts_card_get_notified">"Мэдэгдэл авах"</string>
+<string name="price_drop_alerts_card_go_to_settings_content">"Та нээлттэй табд илүү хямд үнэ байгаа тохиолдолд сэрэмжлүүлэг авахын тулд Тохиргоо хэсэгт мэдэгдлийг асаана уу."</string>
+<string name="price_drop_alerts_card_go_to_settings">"Тохиргоо руу очих"</string>
+<string name="price_tracking_settings">"Үнийн хяналтын тохиргоо"</string>
+<string name="track_prices_on_tabs">"Табууд дээрх үнийг хянах"</string>
+<string name="track_prices_on_tabs_description">"Табууд дээрх үнэ бууралтыг хараарай"</string>
+<string name="price_drop_alerts">"Үнэ бууралтын сэрэмжлүүлэг"</string>
+<string name="price_drop_alerts_description">"Үнэ буурсан тохиолдолд мэдэгдэл аваарай"</string>
+<string name="price_drop_notification_content_title">"%2$s-н үнэ %1$s-р буурсан"</string>
+<string name="price_drop_notification_content_text">"%2$s дээр одоо %1$s байна"</string>
+<string name="price_drop_notification_action_visit_site">"Сайтад зочлох"</string>
+<string name="price_drop_notification_action_turn_off_alert">"Бүтээгдэхүүн хянахаа зогсоох"</string>
+<string name="merchant_viewer_message_title">"Дэлгүүрийн мэдээллийг үзэх үү?"</string>
+<string name="merchant_viewer_message_title_see_reviews">"Дэлгүүрийн шүүмжүүдийг харах уу?"</string>
+<string name="merchant_viewer_message_action">"Харах"</string>
+<string name="merchant_viewer_message_description_rating">"%1$s/%2$s үнэлгээ"</string>
+<plurals name="merchant_viewer_message_description_reviews">
+  <item quantity="one">"(%1$s шүүмж)"</item>
+  <item quantity="other">"(%1$s шүүмж)"</item>
+</plurals>
+<plurals name="merchant_viewer_message_description_reviews_from_google">
+  <item quantity="one">"Google-н %1$s шүүмж"</item>
+  <item quantity="other">"Google-н %1$s шүүмж"</item>
+</plurals>
+<string name="merchant_viewer_message_rating_numerical">"%1$.1f/%2$d"</string>
+<string name="merchant_viewer_message_rating_word">"үнэлгээ"</string>
+<plurals name="accessibility_merchant_viewer_message_description">
+  <item quantity="one">" %1$s/%2$s үнэлгээ, %3$d шүүмж"</item>
+  <item quantity="other">"%1$s/%2$s үнэлгээ, %3$d шүүмж"</item>
+</plurals>
+<string name="accessibility_merchant_viewer_message_announcement">"Дэлгэцийн дээд хэсгийн ойролцоо боломжтой дэлгүүрийн мэдээллийг үзэх сонголт"</string>
+<string name="merchant_viewer_preview_sheet_title">"Google | Энэ дэлгүүрийн тухай"</string>
+<string name="merchant_viewer_omnibox_icon_iph">"Дэлгүүрийн мэдээллийг үзэх"</string>
+<string name="page_info_store_info_title">"Дэлгүүрийн мэдээлэл"</string>
+<string name="page_info_store_info_description_with_no_review">"(дэлгүүрийн үнэлгээ)"</string>
+<string name="page_info_store_info_description_with_no_rating">"Буцаалтын бодлого болон илүү ихийг хараарай"</string>
+<string name="merchant_viewer_preview_sheet_description">"Энэ дэлгүүрийн талаарх мэдээлэл"</string>
+<string name="merchant_viewer_preview_sheet_opened_half">"Энэ дэлгүүрийн талаарх мэдээллийг тал өндөртэйгээр нээсэн"</string>
+<string name="merchant_viewer_preview_sheet_opened_full">"Энэ дэлгүүрийн талаарх мэдээллийг бүтэн өндөртэйгээр нээсэн"</string>
+<string name="merchant_viewer_preview_sheet_closed">"Энэ дэлгүүрийн талаарх мэдээллийг хаасан"</string>
+<string name="close_all_tabs_dialog_title">"Бүх табыг хаах уу?"</string>
+<string name="close_all_tabs_dialog_message">"Та хаасан табуудаа Chrome-н үндсэн цэсийн доор байх Саяхны табууд хэсгээс олох боломжтой"</string>
+<string name="close_all_tabs_dialog_title_incognito">"Бүх Нууцлалтай табыг хаах уу?"</string>
+<string name="close_all_tabs_dialog_message_incognito">"Таны эдгээр Нууцлалтай таб дахь үйл ажиллагааг энэ төхөөрөмжөөс арилгана"</string>
+</resources>

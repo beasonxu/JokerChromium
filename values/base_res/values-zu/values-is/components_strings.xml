@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="autofill_save_card_prompt_confirm">"Staðfesta"</string>
+<string name="autofill_mobile_save_card_to_cloud_confirmation_dialog_explanation">"Vistaðu korta- og innheimtuupplýsingarnar þínar á Google reikningnum þínum fyrir öruggari og hraðari greiðslur"</string>
+<string name="autofill_mobile_save_card_to_cloud_confirmation_dialog_explanation_with_account_name">"Vistaðu korta- og innheimtuupplýsingarnar þínar á Google reikningnum þínum ^1 fyrir öruggari og hraðari greiðslur"</string>
+<string name="autofill_fix_flow_prompt_save_card_label">"Viltu vista kort?"</string>
+<string name="autofill_save_card_prompt_cardholder_name_tooltip">"Þetta nafn kemur af Google reikningnum þínum"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_cvc">"Athugaðu CVC-númerið og reyndu aftur"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_date">"Athugaðu gildistímann og reyndu aftur"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_cvc_and_expiration">"Athugaðu gildistímann og CVC-númerið og reyndu aftur"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_month">"Athugaðu mánuð gildistímans og reyndu aftur"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_year">"Athugaðu ár gildistímans og reyndu aftur"</string>
+<string name="autofill_card_unmask_prompt_enable_fido_auth_checkbox">"Nota skjálás til að staðfesta spjöld héðan í frá"</string>
+<string name="autofill_card_unmask_verification_in_progress">"Staðfestir kort…"</string>
+<string name="autofill_card_unmask_verification_success">"Kortið er staðfest"</string>
+<string name="autofill_expiration_date_separator">"/"</string>
+<string name="autofill_card_unmask_new_card_link">"Uppfæra kort"</string>
+<string name="autofill_wallet_management_link_text">"Breyta"</string>
+<string name="autofill_from_google_account_long">"Frá Google Pay"</string>
+<string name="autofill_virtual_card_enrollment_accept_button_label">"Já"</string>
+<string name="autofill_virtual_card_enrollment_dialog_title_label">"Auka öryggið með sýndarkorti?"</string>
+<string name="autofill_virtual_card_number_switch_label">"Sýndarkort"</string>
+<string name="autofill_offers_reminder_description_text">"Greiddu með %1$s þegar þú gengur frá kaupunum."</string>
+<string name="autofill_offers_reminder_deep_link_text">"Sjá upplýsingar"</string>
+<string name="autofill_payments_otp_verification_dialog_title">"Sláðu inn staðfestingarkóða"</string>
+<string name="autofill_payments_otp_verification_dialog_cant_find_code_message">"Finnurðu ekki kóðann? &lt;link&gt;Fá nýjan kóða&lt;/link&gt;"</string>
+<string name="autofill_payments_otp_verification_dialog_otp_input_hint">"Sláðu inn %1$s stafa kóða"</string>
+<string name="autofill_payments_otp_verification_dialog_positive_button_label">"Staðfesta"</string>
+<string name="autofill_payments_otp_verification_dialog_negative_button_label">"Hætta við"</string>
+<string name="autofill_edit_credit_card">"Breyta korti"</string>
+<string name="autofill_create_credit_card">"Bæta við korti"</string>
+<string name="autofill_clear_local_copy_button">"Hreinsa eintak"</string>
+<string name="autofill_cc_amex">"American Express"</string>
+<string name="autofill_cc_diners">"Diners Club"</string>
+<string name="autofill_cc_discover">"Discover"</string>
+<string name="autofill_cc_jcb">"JCB"</string>
+<string name="autofill_cc_mastercard">"Mastercard"</string>
+<string name="autofill_cc_mir">"Mir"</string>
+<string name="autofill_cc_union_pay">"China UnionPay"</string>
+<string name="autofill_cc_visa">"Visa"</string>
+<string name="autofill_address_summary_separator">", "</string>
+<string name="autofill_scan_credit_card">"Skanna nýtt kort"</string>
+<string name="autofill_enable_profiles_toggle_sublabel">"Upplýsingar á borð við símanúmer, netföng og heimilisföng"</string>
+<string name="autofill_enable_credit_cards_toggle_sublabel">"Fyllir inn greiðsluupplýsingar með vistuðum greiðslumátum"</string>
+<string name="autofill_addresses_settings_title">"Heimilisföng og fleira"</string>
+<string name="autofill_payment_methods">"Greiðslumátar"</string>
+<string name="autofill_enable_profiles_toggle_label">"Vista og fylla út heimilisföng"</string>
+<string name="autofill_enable_credit_cards_toggle_label">"Vista og fylla út greiðslumáta"</string>
+<string name="enable_credit_card_fido_auth_label">"Skjálás"</string>
+<string name="enable_credit_card_fido_auth_sublabel">"Notaðu skjálás til að staðfesta kort hraðar"</string>
+<string name="autofill_update_address_prompt_new_values_section_label">"Nýtt"</string>
+<string name="autofill_update_address_prompt_old_values_section_label">"Gamalt"</string>
+<string name="autofill_save_address_prompt_edit_button_tooltip">"Breyta heimilisfangi"</string>
+<string name="autofill_edit_address_dialog_title">"Breyta heimilisfangi"</string>
+<string name="http_post_warning_title">"Staðfesta endursendingu eyðublaðs"</string>
+<string name="http_post_warning">"Síðan sem þú ert að leita að notaðist við upplýsingar sem þú færðir inn. Ef þú ferð aftur á þá síðu er hugsanlegt að aðgerðir þínar verði endurteknar. Viltu halda áfram?"</string>
+<string name="http_post_warning_resend">"Halda áfram"</string>
+<string name="login_dialog_title">"Skrá inn"</string>
+<string name="login_dialog_ok_button_label">"Skrá inn"</string>
+<string name="login_dialog_username_field">"Notandanafn"</string>
+<string name="login_dialog_password_field">"Aðgangsorð"</string>
+<string name="sad_tab_title">"Rækallinn!"</string>
+<string name="sad_tab_message">"Eitthvað fór úrskeiðis við að birta þessa vefsíðu."</string>
+<string name="sad_tab_reload_label">"Endurhlaða"</string>
+<string name="sad_tab_send_feedback_label">"Senda ábendingu"</string>
+<string name="sad_tab_reload_title">"Ekki tókst að opna þessa síðu"</string>
+<string name="sad_tab_reload_try">"Prófaðu eftirfarandi:"</string>
+<string name="sad_tab_reload_incognito">"Opna síðu í nýjum huliðsflipa"</string>
+<string name="sad_tab_reload_restart_browser">"Endurræsa Chromium"</string>
+<string name="sad_tab_reload_restart_device">"Endurræstu tækið"</string>
+<string name="sad_tab_reload_learn_more">"Frekari upplýsingar"</string>
+<string name="new_tab_otr_title">"Þú ferð nú huldu höfði"</string>
+<string name="new_tab_otr_subtitle">"Nú geturðu vafrað í næði og aðrir notendur tækisins geta ekki séð það sem þú gerir. Niðurhal og bókamerki eru hinsvegar vistuð."</string>
+<string name="new_tab_otr_subtitle_with_reading_list">"Nú geturðu vafrað í næði og aðrir notendur tækisins geta ekki séð það sem þú gerir. Niðurhal, bókamerki og atriði á leslista verða þó vistuð."</string>
+<string name="new_tab_otr_not_saved">"Chromium &lt;em&gt;vistar ekki&lt;/em&gt; eftirfarandi upplýsingar:
+        &lt;ul&gt;
+          &lt;li&gt;Vafraferilinn þinn
+          &lt;li&gt;Fótspor og gögn vefsvæða
+          &lt;li&gt;Upplýsingar sem eru færðar inn í eyðublöð
+        &lt;/ul&gt;"</string>
+<string name="new_tab_otr_visible">"Virkni þín &lt;em&gt;gæti verið sýnileg&lt;/em&gt; eftirfarandi:
+        &lt;ul&gt;
+          &lt;li&gt;Vefsvæðum sem þú heimsækir
+          &lt;li&gt;Vinnuveitandanum eða skólanum þínum
+          &lt;li&gt;Netþjónustu þinni
+        &lt;/ul&gt;"</string>
+<string name="new_tab_otr_cookie_controls_controlled_tooltip_text">"Fótsporastillingar stjórna þessari stillingu."</string>
+<string name="new_tab_otr_third_party_cookie">"Loka á fótspor frá þriðja aðila"</string>
+<string name="new_tab_otr_third_party_cookie_sublabel">"Þegar kveikt er á þessu geta vefsvæði ekki notað fótspor sem rekja virkni þína á vefnum. Ekki er víst að allir eiginleikar á öllum vefsvæðum virki."</string>
+<string name="revamped_incognito_ntp_title">"Huliðsstilling í Chromium"</string>
+<string name="revamped_incognito_ntp_does_header">"Huliðsstilling gerir eftirfarandi"</string>
+<string name="revamped_incognito_ntp_does_description">"Þegar þú lokar öllum huliðsflipum í Chromium er virkni þín á þessum flipum hreinsuð úr tækinu:
+          &lt;ul&gt;
+            &lt;li&gt;Vafranotkun&lt;/li&gt;
+            &lt;li&gt;Leitarferill&lt;/li&gt;
+            &lt;li&gt;Upplýsingar sem eru færðar inn í eyðublöð&lt;/li&gt;
+          &lt;/ul&gt;"</string>
+<string name="revamped_incognito_ntp_does_not_header">"Huliðsstilling gerir ekki eftirfarandi"</string>
+<string name="revamped_incognito_ntp_does_not_description">"Huliðsstilling gerir þig ekki ósýnilega(n) á netinu:
+        &lt;ul&gt;
+          &lt;li&gt;Vefsvæði og þjónusturnar sem þau nota fá upplýsingar um heimsóknir&lt;/li&gt;
+          &lt;li&gt;Vinnuveitendur eða skólar geta rakið vafranotkun&lt;/li&gt;
+          &lt;li&gt;Netþjónustur geta fylgst með netumferð&lt;/li&gt;
+        &lt;/ul&gt;"</string>
+<string name="revamped_incognito_ntp_learn_more">"&lt;a&gt;Nánar um huliðsstillingu í Chromium&lt;/a&gt;"</string>
+<string name="revamped_incognito_ntp_otr_third_party_cookie">"Loka á fótspor þriðju aðila í huliðsstillingu"</string>
+<string name="revamped_incognito_ntp_otr_third_party_cookie_sublabel">"Vefsvæði geta ekki notað fótspor sem rekja virkni þína á vefnum. Ekki er víst að allir eiginleikar á öllum vefsvæðum virki."</string>
+<string name="ntp_article_suggestions_section_header">"Greinar fyrir þig"</string>
+<string name="ntp_article_suggestions_section_empty">"Tillögur að greinum birtast hér"</string>
+<string name="page_info_permission_ads_subtitle">"Vefsvæðið sýnir ágengar eða villandi auglýsingar."</string>
+<string name="payments_method_of_payment_label">"Greiðslumáti"</string>
+<string name="payments_contact_details_label">"Samskiptaupplýsingar"</string>
+<string name="payments_add_contact_details_label">"Bæta við samskiptaupplýsingum"</string>
+<string name="payments_edit_contact_details_label">"Breyta samskiptaupplýsingum"</string>
+<string name="payments_add_billing_address">"Bæta við heimilisfangi greiðanda"</string>
+<string name="payments_add_name_on_card">"Bæta við nafni á korti"</string>
+<string name="payments_add_valid_card_number">"Bæta við gildu kortanúmeri"</string>
+<string name="payments_add_more_information">"Bæta við fleiri upplýsingum"</string>
+<string name="payments_edit_card">"Breyta korti"</string>
+<string name="payments_add_phone_number">"Bæta við símanúmeri"</string>
+<string name="payments_add_recipient">"Bæta við nafni"</string>
+<string name="payments_add_valid_address">"Bæta gildu heimilisfangi við"</string>
+<string name="payments_add_email">"Bæta við netfangi"</string>
+<string name="payments_add_name">"Bæta við nafni"</string>
+<string name="payments_order_summary_label">"Yfirlit pöntunar"</string>
+<string name="payment_request_payment_method_section_name">"Greiðslumáti"</string>
+<string name="payments_shipping_summary_label">"Sending"</string>
+<string name="payments_shipping_address_label">"Sendingarheimilisfang"</string>
+<string name="payments_shipping_option_label">"Sendingarmáti"</string>
+<string name="payments_delivery_summary_label">"Sending"</string>
+<string name="payments_delivery_address_label">"Sendingarheimilisfang"</string>
+<string name="payments_delivery_option_label">"Afhendingarmáti"</string>
+<string name="payments_pickup_summary_label">"Afhending"</string>
+<string name="payments_pickup_address_label">"Heimilisfang afhendingar"</string>
+<string name="payments_pickup_option_label">"Afhendingarmáti"</string>
+<string name="payments_edit_button">"Breyta"</string>
+<string name="payments_pay_button">"Greiða"</string>
+<string name="payments_continue_button">"Halda áfram"</string>
+<string name="payments_add_contact">"Bæta við samskiptaupplýsingum"</string>
+<string name="payments_add_card">"Bæta við korti"</string>
+<string name="payments_add_address">"Bæta við heimilisfangi"</string>
+<string name="payments_edit_address">"Breyta heimilisfangi"</string>
+<string name="payments_name_field_in_contact_details">"Nafn"</string>
+<string name="payments_save_card_to_device_checkbox">"Vista kortið á þessu tæki"</string>
+<string name="payments_accepted_cards_label">"Gild greiðslukort"</string>
+<string name="payments_credit_card_expiration_date_abbr">"Rennur út %1$s/%2$s"</string>
+<string name="payments_loading_message">"Hleður"</string>
+<string name="payments_checking_option">"Kannar"</string>
+<string name="payments_updated_label">"Uppfært"</string>
+<string name="payments_error_message">"Villa kom upp þegar verið var að vinna úr pöntuninni þinni. Reyndu aftur."</string>
+<string name="payments_card_and_address_settings">"Þú getur haft umsjón með kortum og heimilisföngum í BEGIN_LINKstillingunumEND_LINK."</string>
+<string name="payments_card_and_address_settings_signed_in">"Kort og heimilisföng eru fengin úr Chrome og Google reikningnum þínum (%1$s). Þú getur haft umsjón með þeim í BEGIN_LINKstillingunumEND_LINK."</string>
+<string name="payments_card_and_address_settings_signed_out">"Spjöld og heimilisföng eru úr Chrome. Þú getur haft umsjón með þeim í BEGIN_LINKstillingunumEND_LINK."</string>
+<string name="settings_can_make_payment_toggle_label">"Leyfa vefsvæðum að athuga hvort þú hafir vistað greiðslumáta"</string>
+<string name="payments_required_field_message">"* Reiturinn má ekki vera auður"</string>
+<string name="payments_phone_invalid_validation_message">"Færðu inn gilt símanúmer"</string>
+<string name="payments_email_invalid_validation_message">"Sláðu inn gilt netfang"</string>
+<string name="payments_card_number_invalid_validation_message">"Færðu inn gilt kortanúmer"</string>
+<string name="payments_card_expiration_invalid_validation_message">"Færðu inn gilda lokadagsetningu"</string>
+<string name="payments_invalid_address">"Færðu inn gilt heimilisfang"</string>
+<string name="payments_billing_address_required">"Heimilisfangs greiðanda er krafist"</string>
+<string name="payments_name_on_card_required">"Nafn korthafa er nauðsynlegt"</string>
+<string name="payments_more_information_required">"Frekari upplýsinga er krafist"</string>
+<string name="payments_phone_number_required">"Símanúmers er krafist"</string>
+<string name="payments_recipient_required">"Heiti er nauðsynlegt"</string>
+<string name="payments_email_required">"Netfang er nauðsynlegt"</string>
+<string name="payments_name_required">"Heiti er nauðsynlegt"</string>
+<string name="pref_edit_dialog_field_required_validation_message">"Nauðsynlegur reitur"</string>
+<string name="payments_select_shipping_address_for_shipping_methods">"Veldu heimilisfang til að sjá sendingarmáta og kröfur"</string>
+<string name="payments_unsupported_shipping_address">"Ekki er hægt að senda á þetta heimilisfang. Veldu annað heimilisfang."</string>
+<string name="payments_select_delivery_address_for_delivery_methods">"Veldu heimilisfang til að sjá sendingarmáta og kröfur"</string>
+<string name="payments_unsupported_delivery_address">"Ekki er hægt að senda á þetta heimilisfang. Veldu annað heimilisfang."</string>
+<string name="payments_select_pickup_address_for_pickup_methods">"Veldu heimilisfang til að sjá afhendingarmáta og kröfur"</string>
+<string name="payments_unsupported_pickup_address">"Ekki er hægt að sækja frá þessu heimilisfangi. Veldu annað heimilisfang."</string>
+<string name="payments_android_app_error">"Ekki var hægt að opna greiðsluforritið"</string>
+<string name="external_payment_app_leave_incognito_warning">"Slekkur á huliðsstillingu til að greiða með öðru forriti. Halda áfram?"</string>
+<string name="payment_handler_sheet_description">"Greiðsluhjálparforrit"</string>
+<string name="payment_handler_sheet_opened_half">"Greiðsluhjálparforritið er opið á hálfum skjánum"</string>
+<string name="payment_handler_sheet_opened_full">"Greiðsluhjálparforrit er opið"</string>
+<string name="payment_handler_sheet_closed">"Greiðsluhjálparforritið er lokað"</string>
+<string name="secure_payment_confirmation_verify_purchase">"Staðfestu kaupin"</string>
+<string name="secure_payment_confirmation_store_label">"Verslun"</string>
+<string name="secure_payment_confirmation_total_label">"Samtals"</string>
+<string name="no_matching_credential_description">"%1$s þarf hugsanlega að framkvæma viðbótarskref til að staðfesta greiðsluna frá þér"</string>
+<string name="secure_payment_confirmation_authentication_sheet_description">"Sannvottunarsíða fyrir skilríki öruggrar greiðslu"</string>
+<string name="secure_payment_confirmation_authentication_sheet_opened">"Sannvottunarsíða fyrir skilríki öruggrar greiðslu var opnuð"</string>
+<string name="secure_payment_confirmation_authentication_sheet_closed">"Sannvottunarsíðu fyrir skilríki öruggrar greiðslu var lokað"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_description">"Skilríki öruggrar greiðslu — tilkynningasíða um engin samsvarandi skilríki"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_opened">"Skilríki öruggrar greiðslu — tilkynningasíða um engin samsvarandi skilríki var opnuð"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_closed">"Skilríki öruggrar greiðslu — tilkynningasíðu um engin samsvarandi skilríki var lokað"</string>
+<string name="bluetooth_scanning_prompt_no_devices_found_prompt">"Engin nálæg tæki fundust."</string>
+<string name="bluetooth_scanning_prompt_allow_button_text">"Leyfa"</string>
+<string name="bluetooth_scanning_prompt_block_button_text">"Setja á bannlista"</string>
+<string name="blocked_ads_prompt_title">"Lokað á auglýsingar"</string>
+<string name="blocked_ads_dialog_title">"Lokað á auglýsingar"</string>
+<string name="blocked_ads_dialog_message">"Þetta vefsvæði sýnir ágengar eða villandi auglýsingar. ^1"</string>
+<string name="blocked_ads_dialog_always_allow">"Leyfa fyrir þetta vefsvæði"</string>
+<string name="blocked_ads_dialog_learn_more">"Frekari upplýsingar"</string>
+<string name="sync_enter_passphrase_body">"Gögnin þín eru dulkóðuð með aðgangsorði samstillingar. Sláðu það inn til að hefja samstillingu."</string>
+<string name="translate_infobar_error">"Úbbs. Þessa síðu er ekki hægt að þýða."</string>
+<string name="translate_button">"Þýða"</string>
+<string name="translate_never_translate_site">"Aldrei þýða þetta vefsvæði"</string>
+<string name="translate_dont_offer_site">"Ekki bjóða upp á að þýða þessa síðu"</string>
+<string name="translate_option_always_translate">"Þýða alltaf síður á þessu tungumáli: %1$s"</string>
+<string name="translate_option_never_translate">"Þýða aldrei síður á þessu tungumáli: %1$s"</string>
+<string name="translate_dont_offer_lang">"Ekki bjóða upp á að þýða síður á %1$s"</string>
+<string name="translate_option_more_language">"Fleiri tungumál"</string>
+<string name="translate_option_not_source_language">"Er tungumál síðunnar ekki %1$s?"</string>
+<string name="translate_snackbar_always_translate">"Síður á málinu „%1$s“ verða héðan í frá þýddar yfir á eftirfarandi tungumál: %2$s"</string>
+<string name="translate_snackbar_language_never">"Síður á þessu tungumáli verða ekki þýddar: %1$s"</string>
+<string name="translate_snackbar_site_never">"Þetta vefsvæði verður ekki þýtt"</string>
+<string name="translate_snackbar_cancel">"Hætta við"</string>
+<string name="management_browser_reporting">"Vafri"</string>
+<string name="management_browser_reporting_explanation">"Kerfisstjórinn þinn getur séð:"</string>
+<string name="management_extension_report_username">"Notandanafn tækisins og notandanafn í Chrome"</string>
+<string name="management_extension_report_version">"Upplýsingar um útgáfu tækisins þíns og vafrans"</string>
+<string name="history_clusters_journeys_tab_label">"Ferðir"</string>
+<string name="history_clusters_search_your_journeys">"Leita í ferlunum þínum"</string>
+<string name="clear">"Hreinsa"</string>
+<string name="show_content">"Sýna"</string>
+<string name="hide_content">"Fela"</string>
+<string name="choose">"Velja"</string>
+</resources>

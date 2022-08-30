@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"သင့်ပတ်ဝန်းကျင်၏ 3D မြေပုံ ပြုလုပ်ရန် %1$s က သင့်ကင်မရာသုံးခွင့် လိုအပ်သည်။"</string>
+<string name="infobar_missing_camera_permission_text">"ဤဝဘ်ဆိုက်အတွက် %1$s က သင့်ကင်မရာသုံးခွင့် လိုအပ်သည်။"</string>
+<string name="infobar_missing_microphone_permission_text">"ဤဝဘ်ဆိုက်အတွက် %1$s က သင့်မိုက်ခရိုဖုန်းသုံးခွင့် လိုအပ်သည်။"</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"ဤဝဘ်ဆိုက်အတွက် %1$s က သင့်ကင်မရာနှင့် မိုက်ခရိုဖုန်းသုံးခွင့် လိုအပ်သည်။"</string>
+<string name="infobar_missing_location_permission_text">"သင်၏တည်နေရာကို ဤဝဘ်ဆိုက်နှင့် မျှဝေရန် %1$s က သင့်တည်နေရာသုံးခွင့် လိုအပ်သည်။"</string>
+<string name="infobar_update_permissions_button_text">"ဆက်လုပ်ရန်"</string>
+<string name="nfc_disabled_on_device_message">"ရှေ့ဆက်ရန် Android ဆက်တင်များတွင် NFC ကို ဖွင့်ပါ"</string>
+<string name="nfc_prompt_turn_on">"ဖွင့်ရန်"</string>
+<string name="overlay_detected_dialog_title">"ဤဝဘ်ဆိုက်က သင့်ကို ခွင့်ပြုချက်တောင်း၍မရပါ"</string>
+<string name="overlay_detected_dialog_message">"အခြားအက်ပ်များမှ ပူဖောင်းကွက် (သို့) ထပ်ပိုးလွှာမှန်သမျှကို ပိတ်ပါ။ ထို့နောက် ထပ်စမ်းကြည့်ပါ။"</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;အကူအညီရယူရန်&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"တွဲချိတ်ပါ"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"လိုင်းဆွဲအားအဆင့်- %d ဘား"</item>
+  <item quantity="other">"လိုင်းဆွဲအားအဆင့်- %d ဘား"</item>
+</plurals>
+<string name="bluetooth_device_connected">"ချိတ်ဆက်ထားသော စက်ပစ္စည်း"</string>
+<string name="bluetooth_dialog_title">"%1$s သည် တွဲချိတ်လိုပါသည်"</string>
+<string name="bluetooth_not_found">"ကိုက်ညီမှုရှိသည့် စက်ပစ္စည်းများ မတွေ့ပါ"</string>
+<string name="bluetooth_searching">"စက်ပစ္စည်းများကို ရှာဖွေနေစဉ် &lt;link&gt;အကူအညီရယူပါ&lt;/link&gt;…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;အကူအညီ ရယူပါ&lt;/link1&gt; သို့မဟုတ် &lt;link2&gt;ထပ်မံရှာဖွေပါ&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Chrome သည် စက်ပစ္စည်းများကိုရှာဖွေရန်အတွက် တည်နေရာအားအသုံးပြုခွင့်ရှိရန် လိုအပ်ပါသည်။ တည်နေရာအသုံးပြုခွင့်ကို &lt;services_link&gt;ဤစက်ပစ္စည်းအတွက် ပိတ်ထားပါသည်&lt;/services_link&gt;။"</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Chrome သည် စက်ပစ္စည်းများကို ရှာဖွေနိုင်ရန်အတွက် တည်နေရာအားအသုံးပြုခွင့်ရှိရန် လိုအပ်ပါသည်။ &lt;permission_link&gt;ခွင့်ပြုချက်များကို အပ်ဒိတ်လုပ်ပါ&lt;/permission_link&gt;။ တည်နေရာအသုံးပြုခွင့်ကို &lt;services_link&gt;ဤစက်ပစ္စည်းအတွက်လည်း ပိတ်ထားပါသည်&lt;/services_link&gt;။"</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome သည် အနီးတစ်ဝိုက်ရှိ စက်များကို ရှာဖွေရန် ခွင့်ပြုချက် လိုအပ်သည်။ &lt;permission_link&gt;ခွင့်ပြုချက်များ အပ်ဒိတ်လုပ်ပါ&lt;/permission_link&gt;။"</string>
+<string name="bluetooth_need_location_permission">"Chrome သည် ကိရိယာများ စကင်လုပ်ရန် တည်နေရာကို အသုံးပြုရန် လိုအပ်ပါသည်။ &lt;permission_link&gt;အပ်ဒိတ် ခွင့်ပြုချက်များ&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;အကူအညီရယူရန်&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome က ဘလူးတုသ် ကြားခံကိရိယာကို ဖွင့်မပေးနိုင်ပါ"</string>
+<string name="bluetooth_adapter_off">"ချိတ်တွဲခြင်းကို ခွင့်ပြုရန် &lt;link&gt;ဘလူးတုသ်ကိုဖွင့်ပါ&lt;/link&gt;"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s သည် အနီးတစ်ဝိုက်ရှိ ဘလူးတုသ်စက်များကို ရှာဖွေလိုသည်။ အောက်ပါစက်များကို တွေ့ရှိထားသည်-"</string>
+<string name="bluetooth_scanning_device_unknown">"အမျိုးအမည်မသိ သို့မဟုတ် ပံ့ပိုးမထားသည့် ကိရိယာ ( %1$s )"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

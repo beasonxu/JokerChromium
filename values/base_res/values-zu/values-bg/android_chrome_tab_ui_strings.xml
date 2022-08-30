@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="iph_tab_groups_quickly_compare_pages_text">"Сравнявайте бързо страници, като създадете група. За да започнете, докоснете и задръжте дадена връзка."</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_text">"Докоснете, за да видите друг раздел"</string>
+<string name="iph_tab_groups_your_tabs_together_text">"Разделите ви са групирани заедно тук"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_accessibility_text">"Превключвайте между разделите в групата в долната част на екрана"</string>
+<string name="undo_bar_group_tabs_message">"%1$s раздела са групирани"</string>
+<plurals name="bottom_tab_grid_title_placeholder">
+  <item quantity="one">"%1$d раздел"</item>
+  <item quantity="other">"%1$d раздела"</item>
+</plurals>
+<string name="bottom_tab_grid_new_tab">"Добавяне на нов раздел към групата"</string>
+<string name="accessibility_bottom_tab_grid_close_tab_sheet">"Скриване на решетката на цял екран"</string>
+<string name="accessibility_bottom_tab_strip_expand_tab_sheet">"Показване на разделите от групата в решетка на цял екран"</string>
+<string name="accessibility_bottom_tab_strip_close_strip">"Затваряне на лентата с раздели"</string>
+<string name="tabswitcher_create_group">"Създаване на група"</string>
+<string name="accessibility_tab_switcher">"Превключвател на раздели"</string>
+<string name="accessibility_close_tab_group_button">"Затваряне на групата с раздели с(ъс) %1$s раздела."</string>
+<string name="accessibility_close_tab_group_button_with_group_name">"Затваряне на групата с раздели „%1$s“ с(ъс) %2$s раздела."</string>
+<string name="tab_selection_editor_group">"Група"</string>
+<string name="tab_selection_editor_toolbar_select_tabs">"Избиране на раздели"</string>
+<plurals name="accessibility_tab_selection_editor_group_button">
+  <item quantity="one">"Добавяне на %1$d избран раздел към група"</item>
+  <item quantity="other">"Добавяне на %1$d избрани раздела към група"</item>
+</plurals>
+<string name="accessibility_tab_selection_editor_back_button">"Изход от режима за избор на няколко раздела"</string>
+<string name="accessibility_tab_selection_editor">"Режим за избор на няколко раздела"</string>
+<string name="tab_grid_dialog_remove_from_group">"Премахване от групата"</string>
+<string name="tab_grid_dialog_toolbar_remove_from_group">"Премахване на раздели"</string>
+<string name="tab_grid_dialog_selection_mode_remove">"Премахване"</string>
+<string name="tab_grid_dialog_toolbar_share_group">"Споделяне на групата"</string>
+<string name="tab_grid_dialog_toolbar_edit_group_name">"Редактиране на името на групата"</string>
+<string name="accessibility_expand_tab_group">"Разгъване на групата с раздели с(ъс) %1$s раздела."</string>
+<string name="accessibility_expand_tab_group_with_group_name">"Разгъване на групата с раздели „%1$s“ със %2$s раздела."</string>
+<plurals name="accessibility_tab_selection_dialog_remove_button">
+  <item quantity="one">"Премахване на %1$d избран раздел от групата."</item>
+  <item quantity="other">"Премахване на %1$d избрани раздела от групата."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button">
+  <item quantity="one">"Свиване на %1$d раздел."</item>
+  <item quantity="other">"Свиване на групата с раздели с(ъс) %1$d раздела."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button_with_group_name">
+  <item quantity="one">"Свиване на %1$d раздел."</item>
+  <item quantity="other">"Свиване на групата с раздели „%1$s“ с(ъс) %2$d раздела."</item>
+</plurals>
+<string name="accessibility_tab_grid_dialog">"Групата с раздели е разгъната"</string>
+<string name="iph_drag_and_drop_introduction">"Преместете с плъзгане разделите, за да ги групирате"</string>
+<string name="iph_drag_and_drop_show_me">"Покажете ми"</string>
+<string name="iph_drag_and_drop_title">"Организиране"</string>
+<string name="iph_drag_and_drop_content">"За да групирате раздели, докоснете и задръжте някой от тях. След това го преместете с плъзгане върху друг."</string>
+<string name="tab_switcher_carousel_title">"Продължаване на сърфирането"</string>
+<string name="tab_switcher_carousel_view_all">"Преглед на всички"</string>
+<string name="tab_suggestion_review_button">"Преглед"</string>
+<string name="tab_suggestion_close_tab_action_button">"Затваряне"</string>
+<string name="tab_suggestion_close_stale_message">"%1$s от разделите ви не са използвани наскоро. Искате ли да ги затворите?"</string>
+<string name="tab_suggestion_group_tabs_message">"%1$s раздела изглеждат сродни. Искате ли да ги групирате?"</string>
+<string name="accessibility_tab_suggestion_review_button">"Преглед на предложенията."</string>
+<string name="accessibility_tab_suggestion_close_stale_message">"Предложение: %1$s от разделите ви не са използвани наскоро. Искате ли да ги затворите?"</string>
+<string name="accessibility_tab_suggestion_group_tabs_message">"Предложение: %1$s раздела изглеждат сродни. Искате ли да ги групирате?"</string>
+<string name="accessibility_tab_suggestion_dismiss_button">"Отхвърляне на предложенията."</string>
+<plurals name="accessibility_tab_suggestion_close_tab_action_button">
+  <item quantity="one">"Затваряне на избрания %1$d раздел"</item>
+  <item quantity="other">"Затваряне на избраните %1$d раздела"</item>
+</plurals>
+<string name="accessibility_tab_movement_left">"Преместване на раздела наляво"</string>
+<string name="accessibility_tab_movement_right">"Преместване на раздела надясно"</string>
+<string name="accessibility_tab_movement_up">"Преместване на раздела нагоре"</string>
+<string name="accessibility_tab_movement_down">"Преместване на раздела надолу"</string>
+<string name="undo_tab_strip_closure_message">"Затворихте лентата с раздели"</string>
+<string name="tab_strip_info_bar_question">"Лентата с раздели да се скрие ли за постоянно?"</string>
+<string name="tab_strip_info_bar_no_reshow">"Да не се показва отново"</string>
+<string name="tab_strip_info_bar_reshow">"Показване по-късно"</string>
+<string name="price_drop_spotted_title">"Установено бе намаление на цена"</string>
+<string name="price_drop_spotted_content">"Вижте кой артикул в отворените раздели е с по-ниска цена"</string>
+<string name="price_drop_spotted_show_me">"Покажете ми"</string>
+<string name="price_drop_spotted_lower_price">"По-ниска цена"</string>
+<string name="accessibility_tab_price_card">"Цената на този артикул наскоро бе намалена от %1$s на %2$s"</string>
+<string name="price_drop_alerts_card_title">"Искате ли да получавате сигнали за понижение на цените?"</string>
+<string name="price_drop_alerts_card_get_notified_content">"Ще получите сигнал, когато цената в отворен раздел е по-ниска"</string>
+<string name="price_drop_alerts_card_get_notified">"Получаване на известия"</string>
+<string name="price_drop_alerts_card_go_to_settings_content">"За да получавате сигнал, когато цената в отворен раздел е по-ниска, включете известията от настройките."</string>
+<string name="price_drop_alerts_card_go_to_settings">"Към настройките"</string>
+<string name="price_tracking_settings">"Настройки за проследяването на цените"</string>
+<string name="track_prices_on_tabs">"Проследяване на цените в разделите"</string>
+<string name="track_prices_on_tabs_description">"Преглед на пониженията на цените от разделите ви"</string>
+<string name="price_drop_alerts">"Сигнали за понижение на цените"</string>
+<string name="price_drop_alerts_description">"Получаване на известия при понижения на цени"</string>
+<string name="price_drop_notification_content_title">"Понижение на цената на %2$s в размер на %1$s"</string>
+<string name="price_drop_notification_content_text">"Сега цената е %1$s в(ъв) %2$s"</string>
+<string name="price_drop_notification_action_visit_site">"Към сайта"</string>
+<string name="price_drop_notification_action_turn_off_alert">"Спиране на следенето на продукта"</string>
+<string name="merchant_viewer_message_title">"Искате ли да прегледате информацията за магазина?"</string>
+<string name="merchant_viewer_message_title_see_reviews">"Искате ли да видите отзивите за магазина?"</string>
+<string name="merchant_viewer_message_action">"Изглед"</string>
+<string name="merchant_viewer_message_description_rating">"Оценка: %1$s/%2$s"</string>
+<plurals name="merchant_viewer_message_description_reviews">
+  <item quantity="one">"(%1$s отзив)"</item>
+  <item quantity="other">"(%1$s отзива)"</item>
+</plurals>
+<plurals name="merchant_viewer_message_description_reviews_from_google">
+  <item quantity="one">"%1$s отзив от Google"</item>
+  <item quantity="other">"%1$s отзива от Google"</item>
+</plurals>
+<string name="merchant_viewer_message_rating_numerical">"%1$.1f/%2$d"</string>
+<string name="merchant_viewer_message_rating_word">"оценка"</string>
+<plurals name="accessibility_merchant_viewer_message_description">
+  <item quantity="one">" Оценка: %1$s/%2$s, %3$d отзив"</item>
+  <item quantity="other">"Оценка: %1$s/%2$s, %3$d отзива"</item>
+</plurals>
+<string name="accessibility_merchant_viewer_message_announcement">"Преглед на информацията за магазина – опцията е близо до горната част на екрана"</string>
+<string name="merchant_viewer_preview_sheet_title">"Google | Всичко за този магазин"</string>
+<string name="merchant_viewer_omnibox_icon_iph">"Преглед на информацията за магазина"</string>
+<string name="page_info_store_info_title">"Информация за магазина"</string>
+<string name="page_info_store_info_description_with_no_review">"(оценка на магазина)"</string>
+<string name="page_info_store_info_description_with_no_rating">"Вижте правилата за връщане и др."</string>
+<string name="merchant_viewer_preview_sheet_description">"Информация за този магазин"</string>
+<string name="merchant_viewer_preview_sheet_opened_half">"Информацията за този магазин е отворена на половината височина"</string>
+<string name="merchant_viewer_preview_sheet_opened_full">"Информацията за този магазин е отворена на пълната височина"</string>
+<string name="merchant_viewer_preview_sheet_closed">"Информацията за този магазин е затворена"</string>
+<string name="close_all_tabs_dialog_title">"Искате ли да затворите всички раздели?"</string>
+<string name="close_all_tabs_dialog_message">"Можете да намерите затворените си раздели в секцията „Скорошни раздели“ в главното меню на Chrome"</string>
+<string name="close_all_tabs_dialog_title_incognito">"Да се затворят ли всички раздели в режим „инкогнито“?"</string>
+<string name="close_all_tabs_dialog_message_incognito">"Активността ви в съответните раздели в режим „инкогнито“ ще бъде изчистена от това устройство"</string>
+</resources>

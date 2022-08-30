@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="iph_tab_groups_quickly_compare_pages_text">"Qûîçķļý çömþåré þåĝéš bý måķîñĝ å ĝröûþ. Ţö šţårţ, ţöûçĥ &amp; ĥöļð å ļîñķ. - one two three four five six seven eight nine ten - one two three"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_text">"Ţåþ ţö šéé åñöţĥér ţåb - one two three four five"</string>
+<string name="iph_tab_groups_your_tabs_together_text">"Ýöûr ţåbš åré ĝröûþéð ţöĝéţĥér ĥéré - one two three four five six"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_accessibility_text">"Šŵîţçĥ béţŵééñ ţåbš îñ ýöûr ţåb ĝröûþ ñéår böţţöm öƒ šçrééñ - one two three four five six seven eight nine ten - one"</string>
+<string name="undo_bar_group_tabs_message">"%1$s ţåbš ĝröûþéð - one two three"</string>
+<plurals name="bottom_tab_grid_title_placeholder">
+  <item quantity="one">"%1$d ţåb - one two"</item>
+  <item quantity="other">"%1$d ţåbš - one two"</item>
+</plurals>
+<string name="bottom_tab_grid_new_tab">"Åðð ñéŵ ţåb ţö ĝröûþ - one two three four five"</string>
+<string name="accessibility_bottom_tab_grid_close_tab_sheet">"Ĥîðé ƒûļļšçrééñ ĝrîð - one two three"</string>
+<string name="accessibility_bottom_tab_strip_expand_tab_sheet">"Šĥöŵ ĝröûþ\'š ţåbš îñ ƒûļļšçrééñ ĝrîð - one two three four five six"</string>
+<string name="accessibility_bottom_tab_strip_close_strip">"Çļöšé ţåb šţrîþ - one two three"</string>
+<string name="tabswitcher_create_group">"Çréåţé ĝröûþ - one two"</string>
+<string name="accessibility_tab_switcher">"Ţåb Šŵîţçĥér - one two"</string>
+<string name="accessibility_close_tab_group_button">"Çļöšé ţåb ĝröûþ ŵîţĥ %1$s ţåbš - one two three four five six"</string>
+<string name="accessibility_close_tab_group_button_with_group_name">"Çļöšé %1$s ĝröûþ ŵîţĥ %2$s ţåbš - one two three four five six"</string>
+<string name="tab_selection_editor_group">"Ĝröûþ - one"</string>
+<string name="tab_selection_editor_toolbar_select_tabs">"Šéļéçţ ţåbš - one two"</string>
+<plurals name="accessibility_tab_selection_editor_group_button">
+  <item quantity="one">"Ĝröûþ %1$d šéļéçţéð ţåb - one two three four"</item>
+  <item quantity="other">"Ĝröûþ %1$d šéļéçţéð ţåbš - one two three four"</item>
+</plurals>
+<string name="accessibility_tab_selection_editor_back_button">"Ĥîðé mûļţî-šéļéçţ möðé - one two three"</string>
+<string name="accessibility_tab_selection_editor">"Mûļţî-šéļéçţ möðé - one two"</string>
+<string name="tab_grid_dialog_remove_from_group">"®émövé ƒröm ĝröûþ - one two three"</string>
+<string name="tab_grid_dialog_toolbar_remove_from_group">"®émövé ţåbš ƒröm ĝröûþ - one two three four"</string>
+<string name="tab_grid_dialog_selection_mode_remove">"®émövé - one"</string>
+<string name="tab_grid_dialog_toolbar_share_group">"Šĥåré ĝröûþ - one two"</string>
+<string name="tab_grid_dialog_toolbar_edit_group_name">"Éðîţ ĝröûþ ñåmé - one two three"</string>
+<string name="accessibility_expand_tab_group">"Éxþåñð ţåb ĝröûþ ŵîţĥ %1$s ţåbš. - one two three four five six"</string>
+<string name="accessibility_expand_tab_group_with_group_name">"Éxþåñð %1$s ţåb ĝröûþ ŵîţĥ %2$s ţåbš. - one two three four five six seven"</string>
+<plurals name="accessibility_tab_selection_dialog_remove_button">
+  <item quantity="one">"®émövé %1$d šéļéçţéð ţåb ƒröm ĝröûþ. - one two three four five six"</item>
+  <item quantity="other">"®émövé %1$d šéļéçţéð ţåbš ƒröm ĝröûþ. - one two three four five six"</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button">
+  <item quantity="one">"Çöļļåþšé %1$d ţåb. - one two three four five six"</item>
+  <item quantity="other">"Çöļļåþšé ţåb ĝröûþ ŵîţĥ %1$d ţåbš. - one two three four five six"</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button_with_group_name">
+  <item quantity="one">"Çöļļåþšé %1$d ţåb. - one two three four five six seven"</item>
+  <item quantity="other">"Çöļļåþšé %1$s ţåb ĝröûþ ŵîţĥ %2$d ţåbš. - one two three four five six seven"</item>
+</plurals>
+<string name="accessibility_tab_grid_dialog">"Ţåb ĝröûþ éxþåñðéð - one two three"</string>
+<string name="iph_drag_and_drop_introduction">"Ðråĝ ţåbš ţö ĝröûþ ţĥém - one two three four five"</string>
+<string name="iph_drag_and_drop_show_me">"Šĥöŵ mé - one two"</string>
+<string name="iph_drag_and_drop_title">"Ĝéţ örĝåñîžéð - one two"</string>
+<string name="iph_drag_and_drop_content">"Ţö ĝröûþ ţåbš, ţöûçĥ &amp; ĥöļð å ţåb. Ţĥéñ, ðråĝ îţ öñţö åñöţĥér ţåb. - one two three four five six seven eight nine ten - one two three"</string>
+<string name="tab_switcher_carousel_title">"Çöñţîñûé bröŵšîñĝ - one two"</string>
+<string name="tab_switcher_carousel_view_all">"Vîéŵ åļļ - one two"</string>
+<string name="tab_suggestion_review_button">"®évîéŵ - one"</string>
+<string name="tab_suggestion_close_tab_action_button">"Çļöšé - one"</string>
+<string name="tab_suggestion_close_stale_message">"%1$s öƒ ýöûr ţåbš ĥåvéñ\'ţ bééñ ûšéð ļåţéļý. Çļöšé ţĥém¿ - one two three four five six seven eight nine ten"</string>
+<string name="tab_suggestion_group_tabs_message">"%1$s ţåbš šéém réļåţéð. Ĝröûþ ţĥém¿ - one two three four five six"</string>
+<string name="accessibility_tab_suggestion_review_button">"®évîéŵ ţĥé šûĝĝéšţîöñš. - one two three"</string>
+<string name="accessibility_tab_suggestion_close_stale_message">"Šûĝĝéšţîöñ: %1$s öƒ ýöûr ţåbš ĥåvéñ\'ţ bééñ ûšéð ļåţéļý. Çļöšé ţĥém¿ - one two three four five six seven eight nine ten - one"</string>
+<string name="accessibility_tab_suggestion_group_tabs_message">"Šûĝĝéšţîöñ: %1$s ţåbš šéém réļåţéð. Ĝröûþ ţĥém¿ - one two three four five six seven"</string>
+<string name="accessibility_tab_suggestion_dismiss_button">"Ðîšmîšš ţĥé šûĝĝéšţîöñš. - one two three"</string>
+<plurals name="accessibility_tab_suggestion_close_tab_action_button">
+  <item quantity="one">"Çļöšé %1$d šéļéçţéð ţåb - one two three four"</item>
+  <item quantity="other">"Çļöšé %1$d šéļéçţéð ţåbš - one two three four"</item>
+</plurals>
+<string name="accessibility_tab_movement_left">"Mövé ţåb ļéƒţ - one two three"</string>
+<string name="accessibility_tab_movement_right">"Mövé ţåb rîĝĥţ - one two three"</string>
+<string name="accessibility_tab_movement_up">"Mövé ţåb ûþ - one two three"</string>
+<string name="accessibility_tab_movement_down">"Mövé ţåb ðöŵñ - one two three"</string>
+<string name="undo_tab_strip_closure_message">"Çļöšéð ţåb šţrîþ - one two three"</string>
+<string name="tab_strip_info_bar_question">"Ðöñ\'ţ šĥöŵ ţåb šţrîþ åĝåîñ¿ - one two three four five"</string>
+<string name="tab_strip_info_bar_no_reshow">"Ðöñ\'ţ šĥöŵ åĝåîñ - one two three"</string>
+<string name="tab_strip_info_bar_reshow">"Šĥöŵ ļåţér - one two"</string>
+<string name="price_drop_spotted_title">"Þrîçé ðröþ šþöţţéð - one two three"</string>
+<string name="price_drop_spotted_content">"Šéé ŵĥîçĥ îţém îñ ýöûr öþéñ ţåbš ĥåš å ļöŵér þrîçé - one two three four five six seven eight nine ten - one"</string>
+<string name="price_drop_spotted_show_me">"Šĥöŵ mé - one two"</string>
+<string name="price_drop_spotted_lower_price">"Ļöŵér þrîçé - one two"</string>
+<string name="accessibility_tab_price_card">"Ţĥé þrîçé öƒ ţĥîš îţém réçéñţļý ðröþþéð ƒröm %1$s ţö %2$s - one two three four five six seven eight nine ten - one"</string>
+<string name="price_drop_alerts_card_title">"Ĝéţ åļérţš ƒör þrîçé ðröþš¿ - one two three four five"</string>
+<string name="price_drop_alerts_card_get_notified_content">"Ýöû\'ļļ ĝéţ åñ åļérţ ŵĥéñ ţĥéré\'š å ļöŵér þrîçé îñ åñ öþéñ ţåb - one two three four five six seven eight nine ten - one two three"</string>
+<string name="price_drop_alerts_card_get_notified">"Ĝéţ ñöţîƒîéð - one two"</string>
+<string name="price_drop_alerts_card_go_to_settings_content">"Ţö ĝéţ åñ åļérţ ŵĥéñ ţĥéré\'š å ļöŵér þrîçé îñ åñ öþéñ ţåb, ţûrñ öñ ñöţîƒîçåţîöñš îñ Šéţţîñĝš. - one two three four five six seven eight nine ten - one two three four five six seven eight"</string>
+<string name="price_drop_alerts_card_go_to_settings">"Ĝö ţö Šéţţîñĝš - one two three"</string>
+<string name="price_tracking_settings">"Þrîçé ţråçķîñĝ šéţţîñĝš - one two three"</string>
+<string name="track_prices_on_tabs">"Ţråçķ þrîçéš öñ ţåbš - one two three four"</string>
+<string name="track_prices_on_tabs_description">"Šéé þrîçé ðröþš öñ ýöûr ţåbš - one two three four five six"</string>
+<string name="price_drop_alerts">"Þrîçé ðröþ åļérţš - one two three"</string>
+<string name="price_drop_alerts_description">"Ĝéţ ñöţîƒîéð ŵĥéñ þrîçéš ðröþ - one two three four five"</string>
+<string name="price_drop_notification_content_title">"%1$s þrîçé ðröþ öñ %2$s - one two three four five"</string>
+<string name="price_drop_notification_content_text">"Ñöŵ %1$s öñ %2$s - one two three four"</string>
+<string name="price_drop_notification_action_visit_site">"Vîšîţ šîţé - one two"</string>
+<string name="price_drop_notification_action_turn_off_alert">"Šţöþ ţråçķîñĝ þröðûçţ - one two three"</string>
+<string name="merchant_viewer_message_title">"Vîéŵ šţöré îñƒö¿ - one two three"</string>
+<string name="merchant_viewer_message_title_see_reviews">"Šéé šţöré révîéŵš¿ - one two three"</string>
+<string name="merchant_viewer_message_action">"Vîéŵ - one"</string>
+<string name="merchant_viewer_message_description_rating">"%1$s/%2$s råţîñĝ - one two three"</string>
+<plurals name="merchant_viewer_message_description_reviews">
+  <item quantity="one">"(%1$s révîéŵ) - one two"</item>
+  <item quantity="other">"(%1$s révîéŵš) - one two"</item>
+</plurals>
+<plurals name="merchant_viewer_message_description_reviews_from_google">
+  <item quantity="one">"%1$s révîéŵ ƒröm Ĝööĝļé - one two three four"</item>
+  <item quantity="other">"%1$s révîéŵš ƒröm Ĝööĝļé - one two three four"</item>
+</plurals>
+<string name="merchant_viewer_message_rating_numerical">"%1$.1f/%2$d - one two"</string>
+<string name="merchant_viewer_message_rating_word">"råţîñĝ - one"</string>
+<plurals name="accessibility_merchant_viewer_message_description">
+  <item quantity="one">" %1$s/%2$s råţîñĝ, %3$d révîéŵ - one two three four five"</item>
+  <item quantity="other">"%1$s/%2$s råţîñĝ, %3$d révîéŵš - one two three four five"</item>
+</plurals>
+<string name="accessibility_merchant_viewer_message_announcement">"Vîéŵ šţöré îñƒö, öþţîöñ åvåîļåbļé ñéår ţöþ öƒ ţĥé šçrééñ - one two three four five six seven eight nine ten"</string>
+<string name="merchant_viewer_preview_sheet_title">"Ĝööĝļé | Åböûţ ţĥîš šţöré - one two three four"</string>
+<string name="merchant_viewer_omnibox_icon_iph">"Vîéŵ šţöré îñƒö - one two three"</string>
+<string name="page_info_store_info_title">"Šţöré îñƒö - one two"</string>
+<string name="page_info_store_info_description_with_no_review">"(šţöré råţîñĝ) - one two"</string>
+<string name="page_info_store_info_description_with_no_rating">"Šéé réţûrñ þöļîçý åñð möré - one two three four five"</string>
+<string name="merchant_viewer_preview_sheet_description">"Îñƒörmåţîöñ åböûţ ţĥîš šţöré - one two three four"</string>
+<string name="merchant_viewer_preview_sheet_opened_half">"Îñƒörmåţîöñ åböûţ ţĥîš šţöré öþéñéð åţ ĥåļƒ ĥéîĝĥţ - one two three four five six seven eight"</string>
+<string name="merchant_viewer_preview_sheet_opened_full">"Îñƒörmåţîöñ åböûţ ţĥîš šţöré öþéñéð åţ ƒûļļ ĥéîĝĥţ - one two three four five six seven eight"</string>
+<string name="merchant_viewer_preview_sheet_closed">"Îñƒörmåţîöñ åböûţ ţĥîš šţöré çļöšéð - one two three four five"</string>
+<string name="close_all_tabs_dialog_title">"Çļöšé åļļ ţåbš¿ - one two three"</string>
+<string name="close_all_tabs_dialog_message">"Ýöû çåñ ƒîñð ýöûr çļöšéð ţåbš îñ ®éçéñţ ţåbš ûñðér ţĥé Çĥrömé måîñ méñû - one two three four five six seven eight nine ten - one two three four"</string>
+<string name="close_all_tabs_dialog_title_incognito">"Çļöšé åļļ Îñçöĝñîţö ţåbš¿ - one two three four"</string>
+<string name="close_all_tabs_dialog_message_incognito">"Ýöûr åçţîvîţý îñ ţĥéšé Îñçöĝñîţö ţåbš ŵîļļ bé çļéåréð ƒröm ţĥîš ðévîçé - one two three four five six seven eight nine ten - one two"</string>
+</resources>

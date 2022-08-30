@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s браузеріне айналаңыздың 3D картасын жасау үшін камераны пайдалану рұқсаты керек."</string>
+<string name="infobar_missing_camera_permission_text">"%1$s браузеріне бұл сайтта камераны пайдалану үшін рұқсат керек."</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s браузеріне бұл сайтта микрофонды пайдалану үшін рұқсат керек."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s браузеріне бұл сайтта камера мен микрофонды пайдалану үшін рұқсат керек."</string>
+<string name="infobar_missing_location_permission_text">"Локацияңызды осы сайтпен бөлісу үшін %1$s браузеріне локация рұқсаты керек."</string>
+<string name="infobar_update_permissions_button_text">"Жалғастыру"</string>
+<string name="nfc_disabled_on_device_message">"Жалғастыру үшін Android параметрлерінде NFC функциясын қосыңыз."</string>
+<string name="nfc_prompt_turn_on">"Қосу"</string>
+<string name="overlay_detected_dialog_title">"Бұл сайт сізден рұқсат сұрай алмайды"</string>
+<string name="overlay_detected_dialog_message">"Басқа қолданбалардағы қалқыма хабарларды немесе оверлейлерді жабыңыз. Одан кейін әрекетті қайталап көріңіз."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Анықтама алу&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Жұптау"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Сигнал деңгейі: %d сызықша"</item>
+  <item quantity="other">"Сигнал деңгейі: %d сызықша"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Қосылған құрылғы"</string>
+<string name="bluetooth_dialog_title">"%1$s сайты жұптасқысы келеді"</string>
+<string name="bluetooth_not_found">"Үйлесімді құрылғылар табылмады"</string>
+<string name="bluetooth_searching">"Құрылғыларды сканерлеу кезінде &lt;link&gt;анықтама алыңыз&lt;/link&gt;…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Анықтама алыңыз&lt;/link1&gt; немесе &lt;link2&gt;қайта сканерлеңіз&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Құрылғыларды іздеу үшін Chrome жүйесіне орналасу орны деректеріне кіру рұқсаты қажет. Мұндай рұқсат &lt;services_link&gt;бұл құрылғы үшін өшірілген&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Құрылғыларды іздеу үшін Chrome жүйесіне орналасу орны деректеріне кіру рұқсаты қажет. &lt;permission_link&gt;Рұқсаттарды жаңартыңыз&lt;/permission_link&gt;. Орналасу орны деректеріне кіру рұқсаты &lt;services_link&gt;бұл құрылғы үшін өшірулі&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome браузеріне Nearby құрылғыларын сканерлеу рұқсаты қажет. &lt;permission_link&gt;Рұқсаттарды жаңарту&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"Құрылғыларды тексеру үшін Chrome орналасқан жер мәліметтерін пайдалануы қажет. &lt;permission_link&gt;Рұқсаттарды жаңарту&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Анықтама алу&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome қолданбасы Bluetooth адаптерін қоса алмайды"</string>
+<string name="bluetooth_adapter_off">"Жұптау үшін &lt;link&gt;Bluetooth қосыңыз&lt;/link&gt;"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s маңайдағы Bluetooth құрылғыларын іздеуде. Мына құрылғылар табылды:"</string>
+<string name="bluetooth_scanning_device_unknown">"Белгісіз немесе жарамсыз құрылғы (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

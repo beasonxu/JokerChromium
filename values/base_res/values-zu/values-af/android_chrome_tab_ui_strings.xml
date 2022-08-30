@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="iph_tab_groups_quickly_compare_pages_text">"Vergelyk bladsye vinnig deur \'n groep te maak. Raak en hou \'n skakel om te begin."</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_text">"Tik om nog \'n oortjie te sien"</string>
+<string name="iph_tab_groups_your_tabs_together_text">"Jou oortjies word hier saamgegroepeer"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_accessibility_text">"Wissel tussen oortjies in jou oortjiegroep naby die onderkant van die skerm"</string>
+<string name="undo_bar_group_tabs_message">"%1$s oortjies gegroepeer"</string>
+<plurals name="bottom_tab_grid_title_placeholder">
+  <item quantity="one">"%1$d oortjie"</item>
+  <item quantity="other">"%1$d oortjies"</item>
+</plurals>
+<string name="bottom_tab_grid_new_tab">"Voeg nuwe oortjie by groep"</string>
+<string name="accessibility_bottom_tab_grid_close_tab_sheet">"Versteek volskermrooster"</string>
+<string name="accessibility_bottom_tab_strip_expand_tab_sheet">"Wys groep se oortjies in volskermrooster"</string>
+<string name="accessibility_bottom_tab_strip_close_strip">"Maak oortjiestrook toe"</string>
+<string name="tabswitcher_create_group">"Skep groep"</string>
+<string name="accessibility_tab_switcher">"Oortjiewisselaar"</string>
+<string name="accessibility_close_tab_group_button">"Maak oortjiegroep met %1$s oortjies toe"</string>
+<string name="accessibility_close_tab_group_button_with_group_name">"Maak %1$s-groep met %2$s oortjies toe"</string>
+<string name="tab_selection_editor_group">"Groep"</string>
+<string name="tab_selection_editor_toolbar_select_tabs">"Kies oortjies"</string>
+<plurals name="accessibility_tab_selection_editor_group_button">
+  <item quantity="one">"Groepeer %1$d geselekteerde oortjie"</item>
+  <item quantity="other">"Groepeer %1$d geselekteerde oortjies"</item>
+</plurals>
+<string name="accessibility_tab_selection_editor_back_button">"Versteek multikeusemodus"</string>
+<string name="accessibility_tab_selection_editor">"Multikeusemodus"</string>
+<string name="tab_grid_dialog_remove_from_group">"Verwyder uit groep"</string>
+<string name="tab_grid_dialog_toolbar_remove_from_group">"Verwyder oortjies uit groep"</string>
+<string name="tab_grid_dialog_selection_mode_remove">"Verwyder"</string>
+<string name="tab_grid_dialog_toolbar_share_group">"Deel groep"</string>
+<string name="tab_grid_dialog_toolbar_edit_group_name">"Wysig groep se naam"</string>
+<string name="accessibility_expand_tab_group">"Vou oortjiegroep met %1$s oortjies uit."</string>
+<string name="accessibility_expand_tab_group_with_group_name">"Vou %1$s-oortjiegroep met %2$s oortjies uit."</string>
+<plurals name="accessibility_tab_selection_dialog_remove_button">
+  <item quantity="one">"Verwyder %1$d geselekteerde oortjie uit die groep."</item>
+  <item quantity="other">"Verwyder %1$d geselekteerde oortjies uit die groep."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button">
+  <item quantity="one">"Vou %1$d oortjie in."</item>
+  <item quantity="other">"Vou oortjiegroep met %1$d oortjies in."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button_with_group_name">
+  <item quantity="one">"Vou %1$d oortjie in."</item>
+  <item quantity="other">"Vou %1$s-oortjiegroep met %2$d oortjies in."</item>
+</plurals>
+<string name="accessibility_tab_grid_dialog">"Oortjiegroep is uitgevou"</string>
+<string name="iph_drag_and_drop_introduction">"Sleep oortjies om hulle te groepeer"</string>
+<string name="iph_drag_and_drop_show_me">"Wys my"</string>
+<string name="iph_drag_and_drop_title">"Raak georganiseerd"</string>
+<string name="iph_drag_and_drop_content">"Raak en hou \'n oortjie om oortjies te groepeer. Sleep dit dan op \'n ander oortjie."</string>
+<string name="tab_switcher_carousel_title">"Hou aan blaai"</string>
+<string name="tab_switcher_carousel_view_all">"Bekyk alles"</string>
+<string name="tab_suggestion_review_button">"Gaan na"</string>
+<string name="tab_suggestion_close_tab_action_button">"Maak toe"</string>
+<string name="tab_suggestion_close_stale_message">"%1$s van jou oortjies is nie onlangs gebruik nie. Maak hulle toe?"</string>
+<string name="tab_suggestion_group_tabs_message">"%1$s oortjies lyk of hulle verwant is. Groepeer hulle?"</string>
+<string name="accessibility_tab_suggestion_review_button">"Gaan die voorstelle na."</string>
+<string name="accessibility_tab_suggestion_close_stale_message">"Voorstel: %1$s van jou oortjies is nie onlangs gebruik nie. Maak hulle toe?"</string>
+<string name="accessibility_tab_suggestion_group_tabs_message">"Voorstel: %1$s oortjies lyk of hulle verwant is. Groepeer hulle?"</string>
+<string name="accessibility_tab_suggestion_dismiss_button">"Maak die voorstelle toe."</string>
+<plurals name="accessibility_tab_suggestion_close_tab_action_button">
+  <item quantity="one">"Maak %1$d gekose oortjie toe"</item>
+  <item quantity="other">"Maak %1$d gekose oortjies toe"</item>
+</plurals>
+<string name="accessibility_tab_movement_left">"Skuif oortjie na links"</string>
+<string name="accessibility_tab_movement_right">"Skuif oortjie na regs"</string>
+<string name="accessibility_tab_movement_up">"Skuif oortjie op"</string>
+<string name="accessibility_tab_movement_down">"Skuif oortjie ondertoe"</string>
+<string name="undo_tab_strip_closure_message">"Oortjiestrook is toegemaak"</string>
+<string name="tab_strip_info_bar_question">"Moenie weer hierdie oortjiestrook wys nie?"</string>
+<string name="tab_strip_info_bar_no_reshow">"Moenie weer wys nie"</string>
+<string name="tab_strip_info_bar_reshow">"Wys later"</string>
+<string name="price_drop_spotted_title">"Prysdaling is opgemerk"</string>
+<string name="price_drop_spotted_content">"Sien watter item in jou oop oortjies \'n laer prys het"</string>
+<string name="price_drop_spotted_show_me">"Wys my"</string>
+<string name="price_drop_spotted_lower_price">"Laer prys"</string>
+<string name="accessibility_tab_price_card">"Hierdie item se prys het onlangs van %1$s na %2$s gedaal"</string>
+<string name="price_drop_alerts_card_title">"Kry opletberigte oor prysdalings?"</string>
+<string name="price_drop_alerts_card_get_notified_content">"Jy sal \'n opletberig kry wanneer daar \'n laer prys in \'n oop oortjie is"</string>
+<string name="price_drop_alerts_card_get_notified">"Word in kennis gestel"</string>
+<string name="price_drop_alerts_card_go_to_settings_content">"Skakel kennisgewings in Instellings aan om \'n kennisgewing te kry wanneer daar \'n laer prys in \'n oop oortjie is."</string>
+<string name="price_drop_alerts_card_go_to_settings">"Gaan na Instellings"</string>
+<string name="price_tracking_settings">"Prysnasporinginstellings"</string>
+<string name="track_prices_on_tabs">"Spoor pryse na in oortjies"</string>
+<string name="track_prices_on_tabs_description">"Sien prysdalings in jou oortjies"</string>
+<string name="price_drop_alerts">"Opletberigte oor prysverlagings"</string>
+<string name="price_drop_alerts_description">"Word in kennis gestel wanneer pryse daal"</string>
+<string name="price_drop_notification_content_title">"Prysverlaging van %1$s op %2$s"</string>
+<string name="price_drop_notification_content_text">"Nou %1$s op %2$s"</string>
+<string name="price_drop_notification_action_visit_site">"Besoek werf"</string>
+<string name="price_drop_notification_action_turn_off_alert">"Hou op om produk na te spoor"</string>
+<string name="merchant_viewer_message_title">"Bekyk winkelinligting?"</string>
+<string name="merchant_viewer_message_title_see_reviews">"Sien winkelresensies?"</string>
+<string name="merchant_viewer_message_action">"Bekyk"</string>
+<string name="merchant_viewer_message_description_rating">"%1$s/%2$s-gradering"</string>
+<plurals name="merchant_viewer_message_description_reviews">
+  <item quantity="one">"(%1$s resensie)"</item>
+  <item quantity="other">"(%1$s resensies)"</item>
+</plurals>
+<plurals name="merchant_viewer_message_description_reviews_from_google">
+  <item quantity="one">"%1$s resensie van Google af"</item>
+  <item quantity="other">"%1$s resensies van Google af"</item>
+</plurals>
+<string name="merchant_viewer_message_rating_numerical">"%1$.1f/%2$d"</string>
+<string name="merchant_viewer_message_rating_word">"gradering"</string>
+<plurals name="accessibility_merchant_viewer_message_description">
+  <item quantity="one">" %1$s/%2$s gradering, %3$d resensie"</item>
+  <item quantity="other">"%1$s/%2$s gradering, %3$d resensies"</item>
+</plurals>
+<string name="accessibility_merchant_viewer_message_announcement">"Bekyk winkelinligting; opsie beskikbaar naby bokant van die skerm"</string>
+<string name="merchant_viewer_preview_sheet_title">"Google | Meer oor hierdie winkel"</string>
+<string name="merchant_viewer_omnibox_icon_iph">"Bekyk winkelinligting"</string>
+<string name="page_info_store_info_title">"Winkelinligting"</string>
+<string name="page_info_store_info_description_with_no_review">"(winkelgradering)"</string>
+<string name="page_info_store_info_description_with_no_rating">"Lees terugsendingbeleid en meer"</string>
+<string name="merchant_viewer_preview_sheet_description">"Inligting oor hierdie winkel"</string>
+<string name="merchant_viewer_preview_sheet_opened_half">"Inligting oor hierdie winkel is teen halwe hoogte oopgemaak"</string>
+<string name="merchant_viewer_preview_sheet_opened_full">"Inligting oor hierdie winkel is teen volle hoogte oopgemaak"</string>
+<string name="merchant_viewer_preview_sheet_closed">"Inligting oor hierdie winkel is toegemaak"</string>
+<string name="close_all_tabs_dialog_title">"Maak alle oortjies toe?"</string>
+<string name="close_all_tabs_dialog_message">"Jy kan jou geslote oortjies in Onlangse oortjies op die Chrome-hoofkieslys kry"</string>
+<string name="close_all_tabs_dialog_title_incognito">"Maak alle Incognito-oortjies toe?"</string>
+<string name="close_all_tabs_dialog_message_incognito">"Jou aktiwiteit in hierdie Incognito-oortjies sal van hierdie toestel af uitgevee word"</string>
+</resources>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="iph_tab_groups_quickly_compare_pages_text">"Compare páginas rapidamente através da criação de um grupo. Para começar, toque sem soltar num link."</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_text">"Toque para ver outro separador."</string>
+<string name="iph_tab_groups_your_tabs_together_text">"Os separadores estão agrupados aqui."</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_accessibility_text">"Alterne entre separadores no grupo de separadores junto à parte inferior do ecrã."</string>
+<string name="undo_bar_group_tabs_message">"%1$s separadores agrupados"</string>
+<plurals name="bottom_tab_grid_title_placeholder">
+  <item quantity="one">"%1$d separador"</item>
+  <item quantity="other">"%1$d separadores"</item>
+</plurals>
+<string name="bottom_tab_grid_new_tab">"Adicionar um novo separador ao grupo"</string>
+<string name="accessibility_bottom_tab_grid_close_tab_sheet">"Ocultar grelha em ecrã inteiro"</string>
+<string name="accessibility_bottom_tab_strip_expand_tab_sheet">"Mostrar os separadores do grupo numa grelha em ecrã inteiro"</string>
+<string name="accessibility_bottom_tab_strip_close_strip">"Fechar Faixa de separadores"</string>
+<string name="tabswitcher_create_group">"Criar grupo"</string>
+<string name="accessibility_tab_switcher">"Comutador de separadores"</string>
+<string name="accessibility_close_tab_group_button">"Feche o grupo de separadores com %1$s separadores."</string>
+<string name="accessibility_close_tab_group_button_with_group_name">"Feche o grupo %1$s com %2$s separadores."</string>
+<string name="tab_selection_editor_group">"Grupo"</string>
+<string name="tab_selection_editor_toolbar_select_tabs">"Selecione separadores"</string>
+<plurals name="accessibility_tab_selection_editor_group_button">
+  <item quantity="one">"Agrupar %1$d separador selecionado"</item>
+  <item quantity="other">"Agrupar %1$d separadores selecionados"</item>
+</plurals>
+<string name="accessibility_tab_selection_editor_back_button">"Ocultar modo de seleção múltipla"</string>
+<string name="accessibility_tab_selection_editor">"Modo de seleção múltipla"</string>
+<string name="tab_grid_dialog_remove_from_group">"Remover do grupo"</string>
+<string name="tab_grid_dialog_toolbar_remove_from_group">"Remover separadores do grupo"</string>
+<string name="tab_grid_dialog_selection_mode_remove">"Remover"</string>
+<string name="tab_grid_dialog_toolbar_share_group">"Partilhar grupo"</string>
+<string name="tab_grid_dialog_toolbar_edit_group_name">"Editar nome do grupo"</string>
+<string name="accessibility_expand_tab_group">"Expandir o grupo de separadores com %1$s separadores"</string>
+<string name="accessibility_expand_tab_group_with_group_name">"Expanda o grupo de separadores %1$s com %2$s separadores."</string>
+<plurals name="accessibility_tab_selection_dialog_remove_button">
+  <item quantity="one">"Remova %1$d separador selecionado do grupo."</item>
+  <item quantity="other">"Remova %1$d separadores selecionados do grupo."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button">
+  <item quantity="one">"Reduza %1$d separador."</item>
+  <item quantity="other">"Reduza o grupo de separadores com %1$d separadores."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button_with_group_name">
+  <item quantity="one">"Reduza %1$d separador."</item>
+  <item quantity="other">"Reduza o grupo de separadores %1$s com %2$d separadores."</item>
+</plurals>
+<string name="accessibility_tab_grid_dialog">"Grupo de separadores expandido"</string>
+<string name="iph_drag_and_drop_introduction">"Arraste os separadores para os agrupar."</string>
+<string name="iph_drag_and_drop_show_me">"Mostrar"</string>
+<string name="iph_drag_and_drop_title">"Organize-se"</string>
+<string name="iph_drag_and_drop_content">"Para agrupar separadores, toque sem soltar num separador. Em seguida, arraste-o para cima de outro separador."</string>
+<string name="tab_switcher_carousel_title">"Continue a navegar"</string>
+<string name="tab_switcher_carousel_view_all">"Ver todos"</string>
+<string name="tab_suggestion_review_button">"Rever"</string>
+<string name="tab_suggestion_close_tab_action_button">"Fechar"</string>
+<string name="tab_suggestion_close_stale_message">"%1$s dos seus separadores não foram utilizados recentemente. Pretende fechá-los?"</string>
+<string name="tab_suggestion_group_tabs_message">"%1$s separadores parecem estar relacionados. Pretende agrupá-los?"</string>
+<string name="accessibility_tab_suggestion_review_button">"Reveja as sugestões."</string>
+<string name="accessibility_tab_suggestion_close_stale_message">"Sugestão: %1$s dos seus separadores não foram utilizados recentemente. Pretende fechá-los?"</string>
+<string name="accessibility_tab_suggestion_group_tabs_message">"Sugestão: %1$s separadores parecem estar relacionados. Pretende agrupá-los?"</string>
+<string name="accessibility_tab_suggestion_dismiss_button">"Ignore as sugestões."</string>
+<plurals name="accessibility_tab_suggestion_close_tab_action_button">
+  <item quantity="one">"Fechar %1$d separador selecionado"</item>
+  <item quantity="other">"Fechar %1$d separadores selecionados"</item>
+</plurals>
+<string name="accessibility_tab_movement_left">"Mover o separador para a esquerda"</string>
+<string name="accessibility_tab_movement_right">"Mover separador para a direita"</string>
+<string name="accessibility_tab_movement_up">"Mover separador para cima"</string>
+<string name="accessibility_tab_movement_down">"Mover o separador para baixo"</string>
+<string name="undo_tab_strip_closure_message">"Faixa de separadores fechada"</string>
+<string name="tab_strip_info_bar_question">"Não mostrar a Faixa de separadores novamente?"</string>
+<string name="tab_strip_info_bar_no_reshow">"Não mostrar de novo"</string>
+<string name="tab_strip_info_bar_reshow">"Mostrar mais tarde"</string>
+<string name="price_drop_spotted_title">"Descida do preço detetada"</string>
+<string name="price_drop_spotted_content">"Veja qual dos itens nos seus separadores abertos tem um preço mais baixo."</string>
+<string name="price_drop_spotted_show_me">"Mostrar"</string>
+<string name="price_drop_spotted_lower_price">"Preço mais baixo"</string>
+<string name="accessibility_tab_price_card">"O preço deste artigo desceu recentemente de %1$s para %2$s"</string>
+<string name="price_drop_alerts_card_title">"Pretende obter alertas para descidas de preços?"</string>
+<string name="price_drop_alerts_card_get_notified_content">"Receberá um alerta quando existir um preço inferior num separador aberto."</string>
+<string name="price_drop_alerts_card_get_notified">"Receber notificações"</string>
+<string name="price_drop_alerts_card_go_to_settings_content">"Para receber um alerta quando existir um preço inferior num separador aberto, ative as notificações nas Definições."</string>
+<string name="price_drop_alerts_card_go_to_settings">"Aceder às Definições"</string>
+<string name="price_tracking_settings">"Definições de monitorização de preços"</string>
+<string name="track_prices_on_tabs">"Monitorize os preços nos separadores."</string>
+<string name="track_prices_on_tabs_description">"Veja as descidas de preços nos seus separadores."</string>
+<string name="price_drop_alerts">"Alertas de descida do preço"</string>
+<string name="price_drop_alerts_description">"Receba notificações quando os preços descerem."</string>
+<string name="price_drop_notification_content_title">"%2$s: descida do preço de %1$s"</string>
+<string name="price_drop_notification_content_text">"Agora a %1$s em %2$s"</string>
+<string name="price_drop_notification_action_visit_site">"Visitar site"</string>
+<string name="price_drop_notification_action_turn_off_alert">"Deixar de monitorizar produto"</string>
+<string name="merchant_viewer_message_title">"Pretende ver informações sobre a loja?"</string>
+<string name="merchant_viewer_message_title_see_reviews">"Ver críticas de lojas?"</string>
+<string name="merchant_viewer_message_action">"Ver"</string>
+<string name="merchant_viewer_message_description_rating">"Classificação de %1$s/%2$s"</string>
+<plurals name="merchant_viewer_message_description_reviews">
+  <item quantity="one">"(%1$s crítica)"</item>
+  <item quantity="other">"(%1$s críticas)"</item>
+</plurals>
+<plurals name="merchant_viewer_message_description_reviews_from_google">
+  <item quantity="one">"%1$s crítica da Google"</item>
+  <item quantity="other">"%1$s críticas da Google"</item>
+</plurals>
+<string name="merchant_viewer_message_rating_numerical">"%1$.1f/%2$d"</string>
+<string name="merchant_viewer_message_rating_word">"classificação"</string>
+<plurals name="accessibility_merchant_viewer_message_description">
+  <item quantity="one">"Classificação de %1$s/%2$s, %3$d crítica"</item>
+  <item quantity="other">"Classificação de %1$s/%2$s, %3$d críticas"</item>
+</plurals>
+<string name="accessibility_merchant_viewer_message_announcement">"Veja informações da loja, opção disponível junto à parte superior do ecrã"</string>
+<string name="merchant_viewer_preview_sheet_title">"Google | Acerca desta loja"</string>
+<string name="merchant_viewer_omnibox_icon_iph">"Veja as informações da loja"</string>
+<string name="page_info_store_info_title">"Informações da loja"</string>
+<string name="page_info_store_info_description_with_no_review">"(classificação da loja)"</string>
+<string name="page_info_store_info_description_with_no_rating">"Veja a Política de Devolução e muito mais"</string>
+<string name="merchant_viewer_preview_sheet_description">"Informações acerca desta loja"</string>
+<string name="merchant_viewer_preview_sheet_opened_half">"Informações acerca desta loja abertas a meia altura"</string>
+<string name="merchant_viewer_preview_sheet_opened_full">"Informações acerca desta loja abertas à altura total"</string>
+<string name="merchant_viewer_preview_sheet_closed">"Informações acerca desta loja fechadas"</string>
+<string name="close_all_tabs_dialog_title">"Fechar todos os separadores?"</string>
+<string name="close_all_tabs_dialog_message">"Pode encontrar os seus separadores fechados em Separadores recentes no menu principal do Chrome"</string>
+<string name="close_all_tabs_dialog_title_incognito">"Fechar todos os separadores de navegação anónima?"</string>
+<string name="close_all_tabs_dialog_message_incognito">"A sua atividade nestes separadores de navegação anónima vai ser limpa deste dispositivo"</string>
+</resources>

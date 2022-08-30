@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="iph_tab_groups_quickly_compare_pages_text">"Crea un grup per comparar pàgines ràpidament. Per començar, mantén premut un enllaç."</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_text">"Toca per veure una altra pestanya"</string>
+<string name="iph_tab_groups_your_tabs_together_text">"Les teves pestanyes s\'agrupen aquí"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_accessibility_text">"Canvia de pestanya al grup de pestanyes de la part inferior de la pantalla"</string>
+<string name="undo_bar_group_tabs_message">"S\'han agrupat %1$s pestanyes"</string>
+<plurals name="bottom_tab_grid_title_placeholder">
+  <item quantity="one">"%1$d pestanya"</item>
+  <item quantity="other">"%1$d pestanyes"</item>
+</plurals>
+<string name="bottom_tab_grid_new_tab">"Afegeix una pestanya nova al grup"</string>
+<string name="accessibility_bottom_tab_grid_close_tab_sheet">"Amaga la quadrícula en pantalla completa"</string>
+<string name="accessibility_bottom_tab_strip_expand_tab_sheet">"Mostra les pestanyes del grup en una quadrícula en pantalla completa"</string>
+<string name="accessibility_bottom_tab_strip_close_strip">"Tanca la barra de pestanyes"</string>
+<string name="tabswitcher_create_group">"Crea un grup"</string>
+<string name="accessibility_tab_switcher">"Selector de pestanyes"</string>
+<string name="accessibility_close_tab_group_button">"Tanca el grup format per %1$s pestanyes"</string>
+<string name="accessibility_close_tab_group_button_with_group_name">"Tanca el grup %1$s format per %2$s pestanyes"</string>
+<string name="tab_selection_editor_group">"Grup"</string>
+<string name="tab_selection_editor_toolbar_select_tabs">"Selecciona pestanyes"</string>
+<plurals name="accessibility_tab_selection_editor_group_button">
+  <item quantity="one">"Agrupa %1$d pestanya seleccionada"</item>
+  <item quantity="other">"Agrupa les %1$d pestanyes seleccionades"</item>
+</plurals>
+<string name="accessibility_tab_selection_editor_back_button">"Amaga el mode de multiselecció"</string>
+<string name="accessibility_tab_selection_editor">"Mode de multiselecció"</string>
+<string name="tab_grid_dialog_remove_from_group">"Suprimeix del grup"</string>
+<string name="tab_grid_dialog_toolbar_remove_from_group">"Suprimeix les pestanyes"</string>
+<string name="tab_grid_dialog_selection_mode_remove">"Suprimeix"</string>
+<string name="tab_grid_dialog_toolbar_share_group">"Comparteix el grup"</string>
+<string name="tab_grid_dialog_toolbar_edit_group_name">"Edita el nom del grup"</string>
+<string name="accessibility_expand_tab_group">"Desplega el grup format per %1$s pestanyes."</string>
+<string name="accessibility_expand_tab_group_with_group_name">"Desplega el grup de pestanyes %1$s amb %2$s pestanyes."</string>
+<plurals name="accessibility_tab_selection_dialog_remove_button">
+  <item quantity="one">"Suprimeix %1$d pestanya seleccionada del grup."</item>
+  <item quantity="other">"Suprimeix %1$d pestanyes seleccionades del grup."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button">
+  <item quantity="one">"Replega %1$d pestanya."</item>
+  <item quantity="other">"Replega el grup format per %1$d pestanyes."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button_with_group_name">
+  <item quantity="one">"Replega %1$d pestanya."</item>
+  <item quantity="other">"Replega el grup %1$s format per %2$d pestanyes."</item>
+</plurals>
+<string name="accessibility_tab_grid_dialog">"El grup de pestanyes s\'ha desplegat"</string>
+<string name="iph_drag_and_drop_introduction">"Arrossega les pestanyes per agrupar-les"</string>
+<string name="iph_drag_and_drop_show_me">"Mostra-m\'ho"</string>
+<string name="iph_drag_and_drop_title">"Organitza el contingut"</string>
+<string name="iph_drag_and_drop_content">"Per agrupar les pestanyes, mantén-ne una premuda. A continuació, arrossega-la fins a una altra."</string>
+<string name="tab_switcher_carousel_title">"Continua navegant"</string>
+<string name="tab_switcher_carousel_view_all">"Mostra-ho tot"</string>
+<string name="tab_suggestion_review_button">"Revisa"</string>
+<string name="tab_suggestion_close_tab_action_button">"Tanca"</string>
+<string name="tab_suggestion_close_stale_message">"%1$s de les teves pestanyes no s\'han utilitzat últimament. Vols tancar-les?"</string>
+<string name="tab_suggestion_group_tabs_message">"Sembla que hi ha %1$s pestanyes relacionades. Vols agrupar-les?"</string>
+<string name="accessibility_tab_suggestion_review_button">"Revisa els suggeriments."</string>
+<string name="accessibility_tab_suggestion_close_stale_message">"Suggeriment: %1$s de les teves pestanyes no s\'han utilitzat últimament. Vols tancar-les?"</string>
+<string name="accessibility_tab_suggestion_group_tabs_message">"Suggeriment: sembla que hi ha %1$s pestanyes relacionades. Vols agrupar-les?"</string>
+<string name="accessibility_tab_suggestion_dismiss_button">"Ignora els suggeriments."</string>
+<plurals name="accessibility_tab_suggestion_close_tab_action_button">
+  <item quantity="one">"Tanca %1$d pestanya seleccionada"</item>
+  <item quantity="other">"Tanca les %1$d pestanyes seleccionades"</item>
+</plurals>
+<string name="accessibility_tab_movement_left">"Mou la pestanya cap a l\'esquerra"</string>
+<string name="accessibility_tab_movement_right">"Mou la pestanya cap a la dreta"</string>
+<string name="accessibility_tab_movement_up">"Mou la pestanya cap amunt"</string>
+<string name="accessibility_tab_movement_down">"Mou la pestanya cap avall"</string>
+<string name="undo_tab_strip_closure_message">"Barra de pestanyes tancada"</string>
+<string name="tab_strip_info_bar_question">"No vols que es torni a mostrar la barra de pestanyes?"</string>
+<string name="tab_strip_info_bar_no_reshow">"No ho tornis a mostrar"</string>
+<string name="tab_strip_info_bar_reshow">"Mostra més tard"</string>
+<string name="price_drop_spotted_title">"S\'ha detectat una baixada de preu"</string>
+<string name="price_drop_spotted_content">"Descobreix quin element de les pestanyes que hi ha obertes té un preu més baix"</string>
+<string name="price_drop_spotted_show_me">"Mostra-m\'ho"</string>
+<string name="price_drop_spotted_lower_price">"Preu més baix"</string>
+<string name="accessibility_tab_price_card">"El preu d\'aquest article fa poc ha baixat de %1$s a %2$s"</string>
+<string name="price_drop_alerts_card_title">"Vols rebre alertes de baixades de preu?"</string>
+<string name="price_drop_alerts_card_get_notified_content">"Rebràs una alerta quan hi hagi un preu més baix en una pestanya oberta"</string>
+<string name="price_drop_alerts_card_get_notified">"Rep notificacions"</string>
+<string name="price_drop_alerts_card_go_to_settings_content">"Per rebre una alerta quan hi hagi un preu més baix en una pestanya oberta, activa les notificacions a Configuració."</string>
+<string name="price_drop_alerts_card_go_to_settings">"Ves a Configuració"</string>
+<string name="price_tracking_settings">"Configuració del seguiment dels preus"</string>
+<string name="track_prices_on_tabs">"Seguiment dels preus a les pestanyes"</string>
+<string name="track_prices_on_tabs_description">"Consulta les baixades de preu a les pestanyes"</string>
+<string name="price_drop_alerts">"Alertes de baixada de preu"</string>
+<string name="price_drop_alerts_description">"Rep notificacions quan baixin els preus"</string>
+<string name="price_drop_notification_content_title">"Baixada de preu de %1$s per a %2$s"</string>
+<string name="price_drop_notification_content_text">"Ara costa %1$s a %2$s"</string>
+<string name="price_drop_notification_action_visit_site">"Visita el lloc web"</string>
+<string name="price_drop_notification_action_turn_off_alert">"Atura el seguiment del producte"</string>
+<string name="merchant_viewer_message_title">"Vols consultar la informació de la botiga?"</string>
+<string name="merchant_viewer_message_title_see_reviews">"Vols veure les ressenyes de la botiga?"</string>
+<string name="merchant_viewer_message_action">"Mostra"</string>
+<string name="merchant_viewer_message_description_rating">"Puntuació: %1$s/%2$s"</string>
+<plurals name="merchant_viewer_message_description_reviews">
+  <item quantity="one">"(%1$s ressenya)"</item>
+  <item quantity="other">"(%1$s ressenyes)"</item>
+</plurals>
+<plurals name="merchant_viewer_message_description_reviews_from_google">
+  <item quantity="one">"%1$s ressenya de Google"</item>
+  <item quantity="other">"%1$s ressenyes de Google"</item>
+</plurals>
+<string name="merchant_viewer_message_rating_numerical">"%1$.1f/%2$d"</string>
+<string name="merchant_viewer_message_rating_word">"puntuació"</string>
+<plurals name="accessibility_merchant_viewer_message_description">
+  <item quantity="one">" Puntuació: %1$s/%2$s, %3$d ressenya"</item>
+  <item quantity="other">"Puntuació: %1$s/%2$s, %3$d ressenyes"</item>
+</plurals>
+<string name="accessibility_merchant_viewer_message_announcement">"Consulta la informació de la botiga, opció disponible a prop de la part superior de la pantalla"</string>
+<string name="merchant_viewer_preview_sheet_title">"Google | Sobre aquesta botiga"</string>
+<string name="merchant_viewer_omnibox_icon_iph">"Consulta la informació de la botiga"</string>
+<string name="page_info_store_info_title">"Informació de la botiga"</string>
+<string name="page_info_store_info_description_with_no_review">"(puntuació de la botiga)"</string>
+<string name="page_info_store_info_description_with_no_rating">"Consulta la política de devolució i més detalls"</string>
+<string name="merchant_viewer_preview_sheet_description">"Informació sobre aquesta botiga"</string>
+<string name="merchant_viewer_preview_sheet_opened_half">"S\'ha obert a mitja alçada la informació sobre aquesta botiga"</string>
+<string name="merchant_viewer_preview_sheet_opened_full">"S\'ha obert a alçada completa la informació sobre aquesta botiga"</string>
+<string name="merchant_viewer_preview_sheet_closed">"S\'ha tancat la informació sobre aquesta botiga"</string>
+<string name="close_all_tabs_dialog_title">"Vols tancar totes les pestanyes?"</string>
+<string name="close_all_tabs_dialog_message">"Pots trobar les teves pestanyes tancades a Pestanyes recents, al menú principal de Chrome"</string>
+<string name="close_all_tabs_dialog_title_incognito">"Vols tancar totes les pestanyes d\'incògnit?"</string>
+<string name="close_all_tabs_dialog_message_incognito">"La teva activitat en aquestes pestanyes d\'incògnit s\'esborrarà del dispositiu"</string>
+</resources>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="iph_tab_groups_quickly_compare_pages_text">"Du kannst Seiten schnell miteinander vergleichen, indem du eine Gruppe erstellst. Berühre und halte einen Link, um den Vorgang zu starten."</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_text">"Tippen, um einen anderen Tab zu sehen"</string>
+<string name="iph_tab_groups_your_tabs_together_text">"Deine Tabs werden hier in Gruppen zusammengefasst"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_accessibility_text">"Am unteren Bildschirmrand kannst du zwischen den Tabs in deiner Tabgruppe wechseln"</string>
+<string name="undo_bar_group_tabs_message">"%1$s Tabs gruppiert"</string>
+<plurals name="bottom_tab_grid_title_placeholder">
+  <item quantity="one">"%1$d Tab"</item>
+  <item quantity="other">"%1$d Tabs"</item>
+</plurals>
+<string name="bottom_tab_grid_new_tab">"Der Gruppe einen neuen Tab hinzufügen"</string>
+<string name="accessibility_bottom_tab_grid_close_tab_sheet">"Vollbildraster ausblenden"</string>
+<string name="accessibility_bottom_tab_strip_expand_tab_sheet">"Tabs der Gruppe in Vollbildraster anzeigen"</string>
+<string name="accessibility_bottom_tab_strip_close_strip">"Tableiste schließen"</string>
+<string name="tabswitcher_create_group">"Gruppe erstellen"</string>
+<string name="accessibility_tab_switcher">"Tab-Wechsler"</string>
+<string name="accessibility_close_tab_group_button">"Tabgruppe mit %1$s Tabs schließen"</string>
+<string name="accessibility_close_tab_group_button_with_group_name">"Tabgruppe \"%1$s\" mit %2$s Tabs schließen"</string>
+<string name="tab_selection_editor_group">"Gruppe"</string>
+<string name="tab_selection_editor_toolbar_select_tabs">"Tabs auswählen"</string>
+<plurals name="accessibility_tab_selection_editor_group_button">
+  <item quantity="one">"%1$d ausgewählten Tab gruppieren"</item>
+  <item quantity="other">"%1$d ausgewählte Tabs gruppieren"</item>
+</plurals>
+<string name="accessibility_tab_selection_editor_back_button">"Modus für die Mehrfachauswahl ausblenden"</string>
+<string name="accessibility_tab_selection_editor">"Mehrfachauswahl"</string>
+<string name="tab_grid_dialog_remove_from_group">"Aus Gruppe entfernen"</string>
+<string name="tab_grid_dialog_toolbar_remove_from_group">"Tabs aus der Gruppe verschieben"</string>
+<string name="tab_grid_dialog_selection_mode_remove">"Entfernen"</string>
+<string name="tab_grid_dialog_toolbar_share_group">"Gruppe teilen"</string>
+<string name="tab_grid_dialog_toolbar_edit_group_name">"Gruppenname bearbeiten"</string>
+<string name="accessibility_expand_tab_group">"Tabgruppe mit %1$s Tabs maximieren"</string>
+<string name="accessibility_expand_tab_group_with_group_name">"Tabgruppe \"%1$s\" mit %2$s Tabs maximieren."</string>
+<plurals name="accessibility_tab_selection_dialog_remove_button">
+  <item quantity="one">"%1$d ausgewählten Tab aus der Gruppe entfernen"</item>
+  <item quantity="other">"%1$d ausgewählte Tabs aus der Gruppe entfernen"</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button">
+  <item quantity="one">"%1$d Tab minimieren"</item>
+  <item quantity="other">"Tabgruppe mit %1$d Tabs minimieren"</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button_with_group_name">
+  <item quantity="one">"%1$d Tab minimieren"</item>
+  <item quantity="other">"Tabgruppe \"%1$s\" mit %2$d Tabs minimieren"</item>
+</plurals>
+<string name="accessibility_tab_grid_dialog">"Tabgruppe maximiert"</string>
+<string name="iph_drag_and_drop_introduction">"Tabs zum Gruppieren ziehen"</string>
+<string name="iph_drag_and_drop_show_me">"Zeigen"</string>
+<string name="iph_drag_and_drop_title">"Besser organisiert"</string>
+<string name="iph_drag_and_drop_content">"Wenn du Tabs gruppieren möchtest, berühre und halte einen Tab. Ziehe ihn dann auf einen anderen Tab."</string>
+<string name="tab_switcher_carousel_title">"Weitersurfen"</string>
+<string name="tab_switcher_carousel_view_all">"Alle anzeigen"</string>
+<string name="tab_suggestion_review_button">"Ansehen"</string>
+<string name="tab_suggestion_close_tab_action_button">"Schließen"</string>
+<string name="tab_suggestion_close_stale_message">"%1$s von deinen Tabs wurden längere Zeit nicht verwendet. Möchtest du sie schließen?"</string>
+<string name="tab_suggestion_group_tabs_message">"%1$s Tabs scheinen zusammenzugehören. Sollen sie gruppiert werden?"</string>
+<string name="accessibility_tab_suggestion_review_button">"Vorschläge ansehen."</string>
+<string name="accessibility_tab_suggestion_close_stale_message">"Vorschlag: %1$s von deinen Tabs wurden längere Zeit nicht verwendet. Möchtest du sie schließen?"</string>
+<string name="accessibility_tab_suggestion_group_tabs_message">"Vorschlag: %1$s Tabs scheinen zusammenzugehören. Sollen sie gruppiert werden?"</string>
+<string name="accessibility_tab_suggestion_dismiss_button">"Vorschläge ablehnen."</string>
+<plurals name="accessibility_tab_suggestion_close_tab_action_button">
+  <item quantity="one">"%1$d ausgewählten Tab schließen"</item>
+  <item quantity="other">"%1$d ausgewählte Tabs schließen"</item>
+</plurals>
+<string name="accessibility_tab_movement_left">"Tab nach links bewegen"</string>
+<string name="accessibility_tab_movement_right">"Tab nach rechts verschieben"</string>
+<string name="accessibility_tab_movement_up">"Tab nach oben verschieben"</string>
+<string name="accessibility_tab_movement_down">"Tab nach unten verschieben"</string>
+<string name="undo_tab_strip_closure_message">"Tableiste geschlossen"</string>
+<string name="tab_strip_info_bar_question">"Tableiste nicht mehr anzeigen?"</string>
+<string name="tab_strip_info_bar_no_reshow">"Nicht mehr anzeigen"</string>
+<string name="tab_strip_info_bar_reshow">"Später anzeigen"</string>
+<string name="price_drop_spotted_title">"Preisnachlass entdeckt"</string>
+<string name="price_drop_spotted_content">"Sieh nach, welcher Artikel auf deinen geöffneten Tabs zu einem günstigeren Preis erhältlich ist"</string>
+<string name="price_drop_spotted_show_me">"Zeigen"</string>
+<string name="price_drop_spotted_lower_price">"Günstigerer Preis"</string>
+<string name="accessibility_tab_price_card">"Der Preis dieses Artikels ist kürzlich von %1$s auf %2$s gefallen"</string>
+<string name="price_drop_alerts_card_title">"Benachrichtigungen bei Preisnachlässen erhalten?"</string>
+<string name="price_drop_alerts_card_get_notified_content">"Du erhältst eine Benachrichtigung, wenn auf einem offenen Tab ein günstigerer Preis verfügbar ist"</string>
+<string name="price_drop_alerts_card_get_notified">"Benachrichtigungen erhalten"</string>
+<string name="price_drop_alerts_card_go_to_settings_content">"Falls du benachrichtigt werden möchtest, wenn auf einem offenen Tab ein günstigerer Preis verfügbar ist, aktiviere Benachrichtigungen in den Einstellungen."</string>
+<string name="price_drop_alerts_card_go_to_settings">"Zu den Einstellungen"</string>
+<string name="price_tracking_settings">"Einstellungen für die Preisbeobachtung"</string>
+<string name="track_prices_on_tabs">"Preise auf Tabs beobachten"</string>
+<string name="track_prices_on_tabs_description">"Preisnachlässe auf deinen Tabs sehen"</string>
+<string name="price_drop_alerts">"Benachrichtigungen bei Preisnachlässen"</string>
+<string name="price_drop_alerts_description">"Benachrichtigt werden, wenn günstigere Preise verfügbar sind"</string>
+<string name="price_drop_notification_content_title">"%1$s Preisnachlass auf das Produkt „%2$s“"</string>
+<string name="price_drop_notification_content_text">"Jetzt %1$s auf %2$s"</string>
+<string name="price_drop_notification_action_visit_site">"Zur Website"</string>
+<string name="price_drop_notification_action_turn_off_alert">"Produkt nicht mehr beobachten"</string>
+<string name="merchant_viewer_message_title">"Geschäftsinformationen anzeigen?"</string>
+<string name="merchant_viewer_message_title_see_reviews">"Möchtest du dir Händlerrezensionen ansehen?"</string>
+<string name="merchant_viewer_message_action">"Anzeigen"</string>
+<string name="merchant_viewer_message_description_rating">"Bewertung: %1$s/%2$s"</string>
+<plurals name="merchant_viewer_message_description_reviews">
+  <item quantity="one">"(%1$s Rezension)"</item>
+  <item quantity="other">"(%1$s Rezensionen)"</item>
+</plurals>
+<plurals name="merchant_viewer_message_description_reviews_from_google">
+  <item quantity="one">"%1$s Rezension von Google"</item>
+  <item quantity="other">"%1$s Rezensionen von Google"</item>
+</plurals>
+<string name="merchant_viewer_message_rating_numerical">"%1$.1f/%2$d"</string>
+<string name="merchant_viewer_message_rating_word">"Bewertung"</string>
+<plurals name="accessibility_merchant_viewer_message_description">
+  <item quantity="one">" Bewertung: %1$s/%2$s, %3$d Rezension"</item>
+  <item quantity="other">"Bewertung: %1$s/%2$s, %3$d Rezensionen"</item>
+</plurals>
+<string name="accessibility_merchant_viewer_message_announcement">"Geschäftsinformationen anzeigen, Option ist oben auf dem Bildschirm verfügbar"</string>
+<string name="merchant_viewer_preview_sheet_title">"Google | Informationen zu diesem Händler"</string>
+<string name="merchant_viewer_omnibox_icon_iph">"Händlerinfo anzeigen"</string>
+<string name="page_info_store_info_title">"Händlerinfo"</string>
+<string name="page_info_store_info_description_with_no_review">"(Händlerbewertung)"</string>
+<string name="page_info_store_info_description_with_no_rating">"Rückgabebedingungen und mehr"</string>
+<string name="merchant_viewer_preview_sheet_description">"Informationen zu diesem Händler"</string>
+<string name="merchant_viewer_preview_sheet_opened_half">"Informationen zu diesem Händler sind halb geöffnet"</string>
+<string name="merchant_viewer_preview_sheet_opened_full">"Informationen zu diesem Händler sind vollständig geöffnet"</string>
+<string name="merchant_viewer_preview_sheet_closed">"Informationen zu diesem Händler sind geschlossen"</string>
+<string name="close_all_tabs_dialog_title">"Alle Tabs schließen?"</string>
+<string name="close_all_tabs_dialog_message">"Deine geschlossenen Tabs findest du im Chrome-Hauptmenü unter „Zuletzt geöffnete Tabs“"</string>
+<string name="close_all_tabs_dialog_title_incognito">"Alle Inkognitotabs schließen?"</string>
+<string name="close_all_tabs_dialog_message_incognito">"Deine Aktivitäten auf diesen Inkognitotabs werden von diesem Gerät gelöscht"</string>
+</resources>

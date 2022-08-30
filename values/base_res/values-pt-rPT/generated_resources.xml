@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Os Termos de Utilização do Chrome vão ser alterados a 31 de março"</string>
+<string name="tos_notification_body_text">"Reveja os novos termos."</string>
+<string name="tos_notification_ack_button_text">"Entendido"</string>
+<string name="tos_notification_review_button_text">"Rever"</string>
+<string name="webapp_update_dialog_title_name">"Analise a atualização do nome"</string>
+<string name="webapp_update_dialog_title_icon">"Analise a atualização do ícone"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"Analise as atualizações do nome e do ícone"</string>
+<string name="webapp_update_explanation">"Se esta app para a Web estiver a tentar fazer-se passar por uma app diferente, desinstale-a."</string>
+<string name="webapp_update_current_icon">"Ícone atual"</string>
+<string name="webapp_update_new_icon">"Novo ícone"</string>
+<string name="webapp_update_negative_button">"Desinstalar app"</string>
+<string name="search_or_type_web_address">"Pesquise ou escreva o endereço Web"</string>
+<string name="password_manager_username_label">"Nome de utilizador"</string>
+<string name="password_manager_password_label">"Palavra-passe"</string>
+<string name="password_manager_update_button">"Atualizar"</string>
+<string name="confirm_username_dialog_title">"Confirme o seu nome de utilizador"</string>
+<string name="options_homepage_title">"Página inicial"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"Valide com este telemóvel"</string>
+<string name="cablev2_get_assertion_notification_title">"Valide a sua identidade"</string>
+</resources>

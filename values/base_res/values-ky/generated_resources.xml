@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Chrome’дун Тейлөө шарттары 31-марттан кийин өзгөргөнү жатат"</string>
+<string name="tos_notification_body_text">"Жаңы шарттарды карап чыгыңыз"</string>
+<string name="tos_notification_ack_button_text">"Түшүндүм"</string>
+<string name="tos_notification_review_button_text">"Карап көрүү"</string>
+<string name="webapp_update_dialog_title_name">"Аталышка киргизилген өзгөртүүнү карап көрүү"</string>
+<string name="webapp_update_dialog_title_icon">"Cүрөтчөгө киргизилген өзгөртүүнү карап көрүү"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"Аталышка жана сүрөтчөгө киргизилген өзгөртүүлөрдү карап көрүү"</string>
+<string name="webapp_update_explanation">"Эгер бул веб колдонмо шектүү иштеп жатса, аны чыгарып салыңыз."</string>
+<string name="webapp_update_current_icon">"Учурдагы сүрөтчө"</string>
+<string name="webapp_update_new_icon">"Жаңы сүрөтчө"</string>
+<string name="webapp_update_negative_button">"Колдонмону чыгарып салуу"</string>
+<string name="search_or_type_web_address">"Веб даректи издеңиз же териңиз"</string>
+<string name="password_manager_username_label">"Колдонуучунун ысымы"</string>
+<string name="password_manager_password_label">"Сырсөз"</string>
+<string name="password_manager_update_button">"Жаңыртуу"</string>
+<string name="confirm_username_dialog_title">"Колдонуучунун атын ырастаңыз"</string>
+<string name="options_homepage_title">"Башкы бет"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"Ушул телефон менен ырастаңыз"</string>
+<string name="cablev2_get_assertion_notification_title">"Өздүгүңүздү ырастаңыз"</string>
+</resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s necessita permís per accedir a la càmera i poder crear un mapa 3D del teu entorn."</string>
+<string name="infobar_missing_camera_permission_text">"Per visitar aquest lloc web, %1$s necessita permís per accedir a la càmera."</string>
+<string name="infobar_missing_microphone_permission_text">"Per visitar aquest lloc web, %1$s necessita permís per accedir al micròfon."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"Per visitar aquest lloc web, %1$s necessita permís per accedir a la càmera i al micròfon."</string>
+<string name="infobar_missing_location_permission_text">"%1$s necessita accedir a la teva ubicació per compartir-la amb aquest lloc web."</string>
+<string name="infobar_update_permissions_button_text">"Continua"</string>
+<string name="nfc_disabled_on_device_message">"Per continuar, activa l\'NFC a la configuració d\'Android"</string>
+<string name="nfc_prompt_turn_on">"Activa"</string>
+<string name="overlay_detected_dialog_title">"Aquest lloc web no pot demanar el teu permís"</string>
+<string name="overlay_detected_dialog_message">"Tanca els quadres d\'ajuda o les superposicions d\'altres aplicacions. Després, torna-ho a provar."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Obteniu ajuda&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Vincula"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Intensitat del senyal: %d barra"</item>
+  <item quantity="other">"Intensitat del senyal: %d barres"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Dispositiu connectat"</string>
+<string name="bluetooth_dialog_title">"%1$s es vol vincular"</string>
+<string name="bluetooth_not_found">"No s\'ha trobat cap dispositiu compatible"</string>
+<string name="bluetooth_searching">"&lt;link&gt;Obtén ajuda&lt;/link&gt; mentre se cerquen dispositius…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Obtén ajuda&lt;/link1&gt; o &lt;link2&gt;torna a fer la cerca&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Chrome necessita accedir a la ubicació per poder cercar dispositius, però aquesta funció està &lt;services_link&gt;desactivada en aquest dispositiu&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Chrome necessita accedir a la ubicació per poder cercar dispositius. &lt;permission_link&gt;Actualitza els permisos&lt;/permission_link&gt;. L\'accés a la ubicació també està &lt;services_link&gt;desactivat en aquest dispositiu&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome necessita permís per cercar dispositius propers. &lt;permission_link&gt;Actualitza els permisos&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"Chrome necessita accedir a la ubicació per poder cercar dispositius. &lt;permission_link&gt;Actualitza els permisos&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Obteniu ajuda&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome no pot activar l\'adaptador Bluetooth"</string>
+<string name="bluetooth_adapter_off">"Per permetre la vinculació, &lt;link&gt;activa el Bluetooth&lt;/link&gt;"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s vol cercar dispositius Bluetooth propers. S\'han trobat els dispositius següents:"</string>
+<string name="bluetooth_scanning_device_unknown">"Dispositiu desconegut o no admès (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

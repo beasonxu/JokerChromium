@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Pogoji storitve za Chrome se bodo spremenili 31. marca"</string>
+<string name="tos_notification_body_text">"Preglejte nove pogoje"</string>
+<string name="tos_notification_ack_button_text">"Razumem"</string>
+<string name="tos_notification_review_button_text">"Pregled"</string>
+<string name="webapp_update_dialog_title_name">"Pregled posodobitve imena"</string>
+<string name="webapp_update_dialog_title_icon">"Pregled posodobitve ikone"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"Preglejte posodobitve imen in ikon"</string>
+<string name="webapp_update_explanation">"Če vas ta spletni program poskuša zavesti, da gre za drug program, ga odmestite."</string>
+<string name="webapp_update_current_icon">"Trenutna ikona"</string>
+<string name="webapp_update_new_icon">"Nova ikona"</string>
+<string name="webapp_update_negative_button">"Odmesti aplikacijo"</string>
+<string name="search_or_type_web_address">"Iščite ali vnesite spletni naslov"</string>
+<string name="password_manager_username_label">"Uporabniško ime"</string>
+<string name="password_manager_password_label">"Geslo"</string>
+<string name="password_manager_update_button">"Posodobi"</string>
+<string name="confirm_username_dialog_title">"Potrditev uporabniškega imena"</string>
+<string name="options_homepage_title">"Domača stran"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"Preverjanje s tem telefonom"</string>
+<string name="cablev2_get_assertion_notification_title">"Preverjanje identitete"</string>
+</resources>

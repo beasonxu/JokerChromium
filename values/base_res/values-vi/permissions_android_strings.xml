@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s cần có quyền truy cập máy ảnh của bạn để tạo bản đồ 3D của các khu vực xung quanh bạn."</string>
+<string name="infobar_missing_camera_permission_text">"%1$s cần có quyền truy cập máy ảnh của bạn cho trang web này."</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s cần có quyền truy cập micrô của bạn cho trang web này."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s cần có quyền truy cập máy ảnh và micrô của bạn cho trang web này."</string>
+<string name="infobar_missing_location_permission_text">"%1$s cần quyền truy cập thông tin vị trí của bạn để chia sẻ thông tin vị trí cho trang web này."</string>
+<string name="infobar_update_permissions_button_text">"Tiếp tục"</string>
+<string name="nfc_disabled_on_device_message">"Để tiếp tục, hãy bật NFC trong phần cài đặt Android"</string>
+<string name="nfc_prompt_turn_on">"Bật"</string>
+<string name="overlay_detected_dialog_title">"Trang web này không thể yêu cầu bạn cấp quyền"</string>
+<string name="overlay_detected_dialog_message">"Đóng mọi cửa sổ chú giải hoặc lớp phủ của các ứng dụng khác. Sau đó, hãy thử lại."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Nhận trợ giúp&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Ghép nối"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Mức cường độ tín hiệu: %d vạch"</item>
+  <item quantity="other">"Mức cường độ tín hiệu: %d vạch"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Thiết bị đã kết nối"</string>
+<string name="bluetooth_dialog_title">"%1$s muốn ghép nối"</string>
+<string name="bluetooth_not_found">"Không tìm thấy thiết bị tương thích"</string>
+<string name="bluetooth_searching">"&lt;link&gt;Nhận trợ giúp&lt;/link&gt; trong khi quét tìm thiết bị…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Nhận trợ giúp&lt;/link1&gt; hoặc &lt;link2&gt;quét lại&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Chrome cần có quyền truy cập vị trí để quét tìm thiết bị. Tính năng truy cập vị trí bị &lt;services_link&gt;tắt cho thiết bị này&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Chrome cần có quyền truy cập vị trí để quét tìm thiết bị. &lt;permission_link&gt;Cập nhật quyền&lt;/permission_link&gt;. Tính năng truy cập vị trí cũng bị &lt;services_link&gt;tắt cho thiết bị này&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome cần có quyền để quét tìm các thiết bị ở gần. &lt;permission_link&gt;Cập nhật quyền&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"Chrome cần có quyền truy cập vị trí để quét tìm thiết bị. &lt;permission_link&gt;Cập nhật quyền&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Nhận trợ giúp&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome không thể bật bộ điều hợp Bluetooth"</string>
+<string name="bluetooth_adapter_off">"&lt;link&gt;Bật Bluetooth&lt;/link&gt; để cho phép ghép nối"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s muốn quét tìm các thiết bị Bluetooth ở gần và đã tìm thấy các thiết bị sau đây:"</string>
+<string name="bluetooth_scanning_device_unknown">"Thiết bị không xác định hoặc không được hỗ trợ (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

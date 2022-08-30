@@ -1,0 +1,1302 @@
+<?xml version="1.0" ?>
+<!--DO NOT MODIFY THIS FILE DIRECTLY!
+IT IS GENERATED FROM policy_templates.json.
+chrome version: 104.0.5112.97-->
+<resources>
+  <string name="AdditionalDnsQueryTypesEnabledTitle">Allow DNS queries for additional DNS record types</string>
+  <string name="AdditionalDnsQueryTypesEnabledDesc">This policy controls whether Google Chrome may query additional DNS record types when making insecure DNS requests. This policy has no effect on DNS queries made via Secure DNS, which may always query additional DNS types.
+
+If this policy is unset or set to Enabled, additional types such as HTTPS (DNS type 65) may be queried in addition to A (DNS type 1) and AAAA (DNS type 28).
+
+If this policy is set to Disabled, DNS will only be queried for A (DNS type 1) and/or AAAA (DNS type 28).
+
+This policy is a temporary measure and will be removed in future versions of Google Chrome. After removal of the policy, Google Chrome will always be able to query additional DNS types.</string>
+  <string-array name="AdditionalDnsQueryTypesEnabledEntries">
+    <item>Allow additional DNS query types</item>
+    <item>Prevent additional DNS query types</item>
+  </string-array>
+  <string-array name="AdditionalDnsQueryTypesEnabledValues">
+    <item>True</item>
+    <item>False</item>
+  </string-array>
+  <string name="AllHttpAuthSchemesAllowedForOriginsTitle">List of origins allowing all HTTP authentication</string>
+  <string name="AllHttpAuthSchemesAllowedForOriginsDesc">Setting the policy specifies for which origins to allow all the HTTP authentication schemes Google Chrome supports regardless of the AuthSchemes policy.
+
+Format the origin pattern according to this format (https://www.chromium.org/administrators/url-blocklist-filter-format). Up to 1,000 exceptions can be defined in AllHttpAuthSchemesAllowedForOrigins.
+Wildcards are allowed for the whole origin or parts of the origin, either the scheme, host, port.</string>
+  <string name="AllowedDomainsForAppsTitle">Define domains allowed to access Google Workspace</string>
+  <string name="AllowedDomainsForAppsDesc">Setting the policy turns on Chrome\'s restricted sign-in feature in Google Workspace and prevents users from changing this setting. Users can only access Google tools using accounts from the specified domains (to allow gmail or googlemail accounts, add consumer_accounts to the list of domains). This setting prevents users from signing in and adding a Secondary Account on a managed device that requires Google authentication, if that account doesn\'t belong to one of the explicitly allowed domains.
+
+Leaving this setting empty or unset means users can access Google Workspace with any account.
+
+Users cannot change or override this setting.
+
+Note: This policy causes the X-GoogApps-Allowed-Domains header to be appended to all HTTP and HTTPS requests to all google.com domains, as described in https://support.google.com/a/answer/1668854.</string>
+  <string name="AlternateErrorPagesEnabledTitle">Enable alternate error pages</string>
+  <string name="AlternateErrorPagesEnabledDesc">Setting the policy to True means Google Chrome uses alternate error pages built into (such as \&quot;page not found\&quot;). Setting the policy to False means Google Chrome never uses alternate error pages.
+
+If you set the policy, users can\'t change it. If not set, the policy is on, but users can change this setting.</string>
+  <string-array name="AlternateErrorPagesEnabledEntries">
+    <item>Enable alternate error pages</item>
+    <item>Disable alternate error pages</item>
+  </string-array>
+  <string-array name="AlternateErrorPagesEnabledValues">
+    <item>True</item>
+    <item>False</item>
+  </string-array>
+  <string name="AuthAndroidNegotiateAccountTypeTitle">Account type for HTTP Negotiate authentication</string>
+  <string name="AuthAndroidNegotiateAccountTypeDesc">Setting the policy specifies the type of accounts provided by the Android authentication app that supports HTTP Negotiate authentication (such as Kerberos authentication). This information should be available from the supplier of the authentication app. For details, see The Chromium Projects ( https://goo.gl/hajyfN )
+
+Leaving the policy unset turns off HTTP Negotiate authentication on Android.</string>
+  <string name="AuthNegotiateDelegateAllowlistTitle">Kerberos delegation server allowlist</string>
+  <string name="AuthNegotiateDelegateAllowlistDesc">Setting the policy assigns servers that Google Chrome may delegate to. Separate multiple server names with commas. Wildcards, *, are allowed.
+
+Leaving the policy unset means Google Chrome won\'t delegate user credentials, even if a server is detected as intranet.</string>
+  <string name="AuthSchemesTitle">Supported authentication schemes</string>
+  <string name="AuthSchemesDesc">Setting the policy specifies which HTTP authentication schemes Google Chrome supports.
+
+Leaving the policy unset employs all 4 schemes.
+
+Valid values:
+
+* basic
+
+* digest
+
+* ntlm
+
+* negotiate
+
+Note: Separate multiple values with commas.</string>
+  <string name="AuthServerAllowlistTitle">Authentication server allowlist</string>
+  <string name="AuthServerAllowlistDesc">Setting the policy specifies which servers should be allowed for integrated authentication. Integrated authentication is only on when Google Chrome gets an authentication challenge from a proxy or from a server in this permitted list.
+
+Leaving the policy unset means Google Chrome tries to detect if a server is on the intranet. Only then will it respond to IWA requests. If a server is detected as internet, then Google Chrome ignores IWA requests from it.
+
+Note: Separate multiple server names with commas. Wildcards, *, are allowed.</string>
+  <string name="AutofillAddressEnabledTitle">Enable AutoFill for addresses</string>
+  <string name="AutofillAddressEnabledDesc">Setting the policy to True or leaving it unset gives users control of Autofill for addresses in the UI.
+
+Setting the policy to False means Autofill never suggests or fills address information, nor does it save additional address information that users submit while browsing the web.</string>
+  <string-array name="AutofillAddressEnabledEntries">
+    <item>Enable AutoFill for addresses</item>
+    <item>Disable AutoFill for addresses</item>
+  </string-array>
+  <string-array name="AutofillAddressEnabledValues">
+    <item>True</item>
+    <item>False</item>
+  </string-array>
+  <string name="AutofillCreditCardEnabledTitle">Enable AutoFill for credit cards</string>
+  <string name="AutofillCreditCardEnabledDesc">Setting the policy to True or leaving it unset means users can control autofill suggestions for credit cards in the UI.
+
+Setting the policy to False means autofill never suggests or fills credit card information, nor will it save additional credit card information that users might submit while browsing the web.</string>
+  <string-array name="AutofillCreditCardEnabledEntries">
+    <item>Enable AutoFill for credit cards</item>
+    <item>Disable AutoFill for credit cards</item>
+  </string-array>
+  <string-array name="AutofillCreditCardEnabledValues">
+    <item>True</item>
+    <item>False</item>
+  </string-array>
+  <string name="BackForwardCacheEnabledTitle">Control the BackForwardCache feature.</string>
+  <string name="BackForwardCacheEnabledDesc">When enabled the BackForwardCache feature allows the use of the back-forward cache. When navigating away from a page, its current state (document tree, script, etc.) may be preserved in the back-forward cache. If the browser navigates back to the page, the page may be restored from the back-forward cache and displayed in the state it was in before being cached.
+
+This feature might cause issues for some websites that do not expect this caching. In particular, some websites depend on the \&quot;unload\&quot; event being dispatched when the browser navigates away from the page. The \&quot;unload\&quot; event will not be dispatched if the page enters the back-forward cache.
+
+If this policy is set to enabled or not set,
+the BackForwardCache feature will be enabled.
+
+If this policy is set to disabled then the feature will be force disabled.
+</string>
+  <string-array name="BackForwardCacheEnabledEntries">
+    <item>Allow the back-forward cache to be used</item>
+    <item>Do not allow the back-forward cache to be used</item>
+  </string-array>
+  <string-array name="BackForwardCacheEnabledValues">
+    <item>True</item>
+    <item>False</item>
+  </string-array>
+  <string name="BlockThirdPartyCookiesTitle">Block third party cookies</string>
+  <string name="BlockThirdPartyCookiesDesc">Setting the policy to Enabled prevents webpage elements that aren\'t from the domain that\'s in the browser\'s address bar from setting cookies. Setting the policy to Disabled lets those elements set cookies and prevents users from changing this setting.
+
+Leaving it unset turns third-party cookies on, but users can change this setting.</string>
+  <string-array name="BlockThirdPartyCookiesEntries">
+    <item>Block 3rd party cookies</item>
+    <item>Allow 3rd party cookies</item>
+    <item>Allow 3rd party cookies, but allow the user to change this setting</item>
+  </string-array>
+  <string-array name="BlockThirdPartyCookiesValues">
+    <item>True</item>
+    <item>False</item>
+    <item>None</item>
+  </string-array>
+  <string name="BrowserSigninTitle">Browser sign in settings</string>
+  <string name="BrowserSigninDesc">This policy controls the sign-in behavior of the browser. It allows you to specify if the user can sign in to Google Chrome with their account and use account related services like Google Chrome Sync.
+
+If the policy is set to \&quot;Disable browser sign-in\&quot; then the user cannot sign in to the browser and use account-based services. In this case browser-level features like Google Chrome Sync cannot be used and will be unavailable. On iOS, if the user was signed in and the policy is set to \&quot;Disabled\&quot; they will be signed out immediately. On other platforms, they will be signed out the next time they run Google Chrome. On all platforms, their local profile data like bookmarks, passwords etc. will be preserved and still usable. The user will still be able to sign into and use Google web services like Gmail.
+
+If the policy is set to \&quot;Enable browser sign-in,\&quot; then the user is allowed to sign in to the browser. On all platforms except iOS, the user is automatically signed in to the browser when signed in to Google web services like Gmail. Being signed in to the browser means the user\'s account information will be kept by the browser. However, it does not mean that Google Chrome Sync will be turned on by default; the user must separately opt-in to use this feature. Enabling this policy will prevent the user from turning off the setting that allows browser sign-in. To control the availability of Google Chrome Sync, use the SyncDisabled policy.
+
+If the policy is set to \&quot;Force browser sign-in\&quot; the user is presented with an account selection dialog and has to choose and sign in to an account to use the browser. This ensures that for managed accounts the policies associated with the account are applied and enforced. The default value of BrowserGuestModeEnabled will be set to disabled. Note that existing unsigned profiles will be locked and inaccessible after enabling this policy. For more information, see help center article: https://support.google.com/chrome/a/answer/7572556 . This option is not supported on Linux, Android or iOS. It will fall back to \&quot;Enable browser sign-in\&quot; if used.
+
+If this policy is not set then the user can decide if they want to enable browser sign-in in the Google Chrome settings and use it as they see fit.</string>
+  <string-array name="BrowserSigninEntries">
+    <item>Disable browser sign-in</item>
+    <item>Enable browser sign-in</item>
+  </string-array>
+  <string-array name="BrowserSigninValues">
+    <item>0</item>
+    <item>1</item>
+  </string-array>
+  <string name="BrowsingDataLifetimeTitle">Browsing Data Lifetime Settings</string>
+  <string name="BrowsingDataLifetimeDesc">Configures browsing data lifetime settings for Google Chrome. This policy allows admins to configure (per data-type) when data is deleted by the browser. This is useful for customers that work with sensitive customer data. The policy will only take effect if SyncDisabled is set to true.
+
+The available data types are \'browsing_history\', \'download_history\', \'cookies_and_other_site_data\', \'cached_images_and_files\', \'password_signin\', \'autofill\', \'site_settings\' and \'hosted_app_data\'.
+
+The browser will automatically remove data of selected types that is older than \'time_to_live_in_hours\'. The minimum value that can be set is 1 hour.
+
+The deletion of expired data will happen 15 seconds after the browser starts then every hour while the browser is running.</string>
+  <string name="BuiltInDnsClientEnabledTitle">Use built-in DNS client</string>
+  <string name="BuiltInDnsClientEnabledDesc">This policy controls which software stack is used to communicate with the DNS server: the Operating System DNS client, or Google Chrome\'s built-in DNS client. This policy does not affect which DNS servers are used: if, for example, the operating system is configured to use an enterprise DNS server, that same server would be used by the built-in DNS client. It also does not control if DNS-over-HTTPS is used; Google Chrome will always use the built-in resolver for DNS-over-HTTPS requests. Please see the DnsOverHttpsMode policy for information on controlling DNS-over-HTTPS.
+
+If this policy is set to Enabled, the built-in DNS client will be used, if available.
+
+If this policy is set to Disabled, the built-in DNS client will only be used when DNS-over-HTTPS is in use.
+
+If this policy is left unset, the built-in DNS client will be enabled by default on macOS, Android (when neither Private DNS nor VPN are enabled) and Google Chrome OS.</string>
+  <string name="CECPQ2EnabledTitle">CECPQ2 post-quantum key-agreement enabled for TLS</string>
+  <string name="CECPQ2EnabledDesc">If this policy is not configured, or is set to enabled, then Google Chrome will follow the default rollout process for CECPQ2, a post-quantum key-agreement algorithm in TLS.
+
+CECPQ2 results in larger TLS messages which, in very rare cases, can trigger bugs in some networking hardware. This policy can be set to False to disable CECPQ2 while networking issues are resolved.
+
+This policy is a temporary measure and will be removed in future versions of Google Chrome.</string>
+  <string-array name="CECPQ2EnabledEntries">
+    <item>Enable default CECPQ2 rollout process</item>
+    <item>Disable CECPQ2</item>
+  </string-array>
+  <string-array name="CECPQ2EnabledValues">
+    <item>True</item>
+    <item>False</item>
+  </string-array>
+  <string name="CORSNonWildcardRequestHeadersSupportTitle">CORS non-wildcard request headers support</string>
+  <string name="CORSNonWildcardRequestHeadersSupportDesc">Configures support of CORS non-wildcard request headers.
+
+Google Chrome version 97 introduces support for CORS non-wildcard request headers. When scripts make a cross-origin network request via fetch() and XMLHttpRequest with a script-added Authorization header, the header must be explicitly allowed by the Access-Control-Allow-Headers header in the CORS preflight response. \&quot;Explicitly\&quot; here means that the wild card symbol \&quot;*\&quot; doesn\'t cover the Authorization header. See https://www.chromestatus.com/feature/5768642492891136 for more detail.
+
+If this policy is not set, or set to True, Google Chrome will support the CORS non-wildcard request headers and behave as described above.
+
+When this policy is set to False, chrome will allow the wildcard symbol (\&quot;*\&quot;) in the Access-Control-Allow-Headers header in the CORS preflight response to cover the Authorization header.
+
+This Enterprise policy is temporary; it\'s intended to be removed in the future.</string>
+  <string-array name="CORSNonWildcardRequestHeadersSupportEntries">
+    <item>Support CORS non-wildcard request headers.</item>
+    <item>Do not support CORS non-wildcard request headers.</item>
+  </string-array>
+  <string-array name="CORSNonWildcardRequestHeadersSupportValues">
+    <item>True</item>
+    <item>False</item>
+  </string-array>
+  <string name="CertificateTransparencyEnforcementDisabledForCasTitle">Disable Certificate Transparency enforcement for a list of subjectPublicKeyInfo hashes</string>
+  <string name="CertificateTransparencyEnforcementDisabledForCasDesc">Setting the policy turns off enforcement of Certificate Transparency disclosure requirements for a list of subjectPublicKeyInfo hashes. Enterprise hosts can keep using certificates that otherwise wouldn\'t be trusted (because they weren\'t properly publicly disclosed). To turn off enforcement, the hash must meet one of these conditions:
+
+* It\'s of the server certificate\'s subjectPublicKeyInfo.
+
+* It\'s of a subjectPublicKeyInfo that appears in a Certificate Authority (CA) certificate in the certificate chain. That CA certificate is constrained through the X.509v3 nameConstraints extension, one or more directoryName nameConstraints are present in the permittedSubtrees, and the directoryName has an organizationName attribute.
+
+* It\'s of a subjectPublicKeyInfo that appears in a CA certificate in the certificate chain, the CA certificate has one or more organizationName attributes in the certificate Subject, and the server\'s certificate has the same number of organizationName attributes, in the same order, and with byte-for-byte identical values.
+
+Specify a subjectPublicKeyInfo hash by linking the hash algorithm name, a slash, and the Base64 encoding of that hash algorithm applied to the DER-encoded subjectPublicKeyInfo of the specified certificate. Base64 encoding format matches that of an SPKI Fingerprint. The only recognized hash algorithm is sha256; others are ignored.
+
+Leaving the policy unset means that if certificates requiring disclosure through Certificate Transparency aren\'t disclosed, then Google Chrome doesn\'t trust those certificates.</string>
+  <string name="CertificateTransparencyEnforcementDisabledForLegacyCasTitle">Disable Certificate Transparency enforcement for a list of Legacy Certificate Authorities</string>
+  <string name="CertificateTransparencyEnforcementDisabledForLegacyCasDesc">Setting the policy turns off enforcement of Certificate Transparency disclosure requirements for a list of Legacy Certificate Authorities (CA) for certificate chains with a specified subjectPublicKeyInfo hash. Enterprise hosts can keep using certificates that otherwise wouldn\'t be trusted (because they weren\'t properly publicly disclosed). To turn off enforcement, the subjectPublicKeyInfo hash must appear in a CA certificate recognized as a Legacy CA. A Legacy CA is publicly trusted by one or more operating systems supported by Google Chrome, but not Android Open Source Project or Google Chrome OS.
+
+Specify a subjectPublicKeyInfo hash by linking the hash algorithm name, a slash and the Base64 encoding of that hash algorithm applied to the DER-encoded subjectPublicKeyInfo of the specified certificate. Base64 encoding format matches that of an SPKI Fingerprint. The only recognized hash algorithm is sha256; others are ignored.
+
+Leaving the policy unset means that if certificates requiring disclosure through Certificate Transparency aren\'t disclosed, then Google Chrome doesn\'t trust those certificates.</string>
+  <string name="CertificateTransparencyEnforcementDisabledForUrlsTitle">Disable Certificate Transparency enforcement for a list of URLs</string>
+  <string name="CertificateTransparencyEnforcementDisabledForUrlsDesc">Setting the policy turns off Certificate Transparency disclosure requirements for the hostnames in the specified URLs. While making it harder to detect misissued certificates, hosts can keep using certificates that otherwise wouldn\'t be trusted (because they weren\'t properly publicly disclosed).
+
+Leaving the policy unset means that if certificates requiring disclosure through Certificate Transparency aren\'t disclosed, then Google Chrome doesn\'t trust those certificates.
+
+A URL pattern follows this format ( https://www.chromium.org/administrators/url-blocklist-filter-format ). However, because the validity of certificates for a given hostname is independent of the scheme, port, or path, Google Chrome only considers the hostname portion of the URL. Wildcard hosts aren\'t supported.</string>
+  <string name="CloudManagementEnrollmentTokenTitle">The enrollment token of cloud policy</string>
+  <string name="CloudManagementEnrollmentTokenDesc">Setting the policy means Google Chrome tries to register itself with Chrome Browser Cloud Management. The value of this policy is an enrollment token you can retrieve from the Google Admin console.
+
+See https://support.google.com/chrome/a/answer/9301891?ref_topic=9301744 for details.</string>
+  <string name="CloudPolicyOverridesPlatformPolicyTitle">Google Chrome cloud policy overrides Platform policy.</string>
+  <string name="CloudPolicyOverridesPlatformPolicyDesc">Setting the policy to Enabled means cloud policy takes precedence if it conflicts with platform policy.
+
+Setting the policy to Disabled or leaving it unset means platform policy takes precedence if it conflicts with cloud policy.
+
+This mandatory policy affects machine scope cloud policies.
+
+This policy is only available on Google Chrome; it has no effect on Google Update.</string>
+  <string name="CloudUserPolicyMergeTitle">Enables merging of user cloud policies into machine-level policies</string>
+  <string name="CloudUserPolicyMergeDesc">Setting the policy to Enabled allows policies associated with a Google Workspace account to be merged into machine-level policies.
+
+Only policies originating from secure users can be merged. A secure user is affiliated with the organization that manages their browser using Chrome Browser Cloud Management. All other user-level policies will always be ignored.
+
+Policies that need to be merged also need to be set in either PolicyListMultipleSourceMergeList or PolicyDictionaryMultipleSourceMergeList. This policy will be ignored if neither of the two aforementioned policies is configured.
+
+Leaving the policy unset or setting it to Disabled prevents user-level cloud policies from being merged with policies from any other sources.</string>
+  <string-array name="CloudUserPolicyMergeEntries">
+    <item>Enable merging of user-level cloud policies.</item>
+    <item>Disable merging of user-level cloud policies.</item>
+  </string-array>
+  <string-array name="CloudUserPolicyMergeValues">
+    <item>True</item>
+    <item>False</item>
+  </string-array>
+  <string name="CloudUserPolicyOverridesCloudMachinePolicyTitle">Allow user cloud policies to override Chrome Browser Cloud Management policies.</string>
+  <string name="CloudUserPolicyOverridesCloudMachinePolicyDesc">Setting the policy to Enabled allows policies associated with a Google Workspace account to take precedence if they conflict with Chrome Browser Cloud Management policies.
+
+Only policies originating from secure users can take precedence. A secure user is affiliated with the organization that manages their browser using Chrome Browser Cloud Management. All other user-level policies will have default precedence.
+
+The policy can be combined with CloudPolicyOverridesPlatformPolicy. If both policies are enabled, user cloud policies will also take precedence over conflicting platform policies.
+
+Leaving the policy unset or setting it to disabled causes user-level cloud policies to have default priority.</string>
+  <string-array name="CloudUserPolicyOverridesCloudMachinePolicyEntries">
+    <item>Allow user cloud policies to override machine cloud policies.</item>
+    <item>Prevent user cloud policies from overriding machine cloud policies.</item>
+  </string-array>
+  <string-array name="CloudUserPolicyOverridesCloudMachinePolicyValues">
+    <item>True</item>
+    <item>False</item>
+  </string-array>
+  <string name="ContextualSearchEnabledTitle">Enable Touch to Search</string>
+  <string name="ContextualSearchEnabledDesc">Setting the policy to True or leaving it unset makes Touch to Search available to the user, and they can turn the feature on or off.
+
+Setting the policy to False turns Touch to Search off completely.</string>
+  <string-array name="ContextualSearchEnabledEntries">
+    <item>Allow users to use Touch to Search</item>
+    <item>Prevent users from using Touch to Search</item>
+  </string-array>
+  <string-array name="ContextualSearchEnabledValues">
+    <item>True</item>
+    <item>False</item>
+  </string-array>
+  <string name="CookiesAllowedForUrlsTitle">Allow cookies on these sites</string>
+  <string name="CookiesAllowedForUrlsDesc">Allows you to set a list of url patterns that specify sites which are allowed to set cookies.
+
+If this policy is left not set the global default value will be used for all sites either from the DefaultCookiesSetting policy if it is set, or the user\'s personal configuration otherwise.
+
+See also policies CookiesBlockedForUrls and CookiesSessionOnlyForUrls. Note that there must be no conflicting URL patterns between these three policies - it is unspecified which policy takes precedence.
+
+For detailed information on valid url patterns, please see https://cloud.google.com/docs/chrome-enterprise/policies/url-patterns. * is not an accepted value for this policy.</string>
+  <string name="CookiesBlockedForUrlsTitle">Block cookies on these sites</string>
+  <string name="CookiesBlockedForUrlsDesc">Setting the policy lets you make a list of URL patterns that specify sites that can\'t set cookies.
+
+Leaving the policy unset results in the use of DefaultCookiesSetting for all sites, if it\'s set. If not, the user\'s personal setting applies.
+
+While no specific policy takes precedence, see CookiesAllowedForUrls and CookiesSessionOnlyForUrls. URL patterns among these 3 policies must not conflict.
+
+For detailed information on valid url patterns, please see https://cloud.google.com/docs/chrome-enterprise/policies/url-patterns. * is not an accepted value for this policy.</string>
+  <string name="CookiesSessionOnlyForUrlsTitle">Limit cookies from matching URLs to the current session</string>
+  <string name="CookiesSessionOnlyForUrlsDesc">Unless the RestoreOnStartup policy is set to permanently restore URLs from previous sessions, then setting CookiesSessionOnlyForUrls lets you make a list of URL patterns that specify sites that can and can\'t set cookies for one session.
+
+Leaving the policy unset results in the use of DefaultCookiesSetting for all sites, if it\'s set. If not, the user\'s personal setting applies. URLs not covered by the patterns specified also result in the use of defaults.
+
+While no specific policy takes precedence, see CookiesBlockedForUrls and CookiesAllowedForUrls. URL patterns among these 3 policies must not conflict.
+
+For detailed information on valid url patterns, please see https://cloud.google.com/docs/chrome-enterprise/policies/url-patterns. * is not an accepted value for this policy.</string>
+  <string name="DefaultCookiesSettingTitle">Default cookies setting</string>
+  <string name="DefaultCookiesSettingDesc">Unless the RestoreOnStartup policy is set to permanently restore URLs from previous sessions, then setting CookiesSessionOnlyForUrls lets you make a list of URL patterns that specify sites that can and can\'t set cookies for one session.
+
+Leaving the policy unset results in the use of DefaultCookiesSetting for all sites, if it\'s set. If not, the user\'s personal setting applies. URLs not covered by the patterns specified also result in the use of defaults.
+
+While no specific policy takes precedence, see CookiesBlockedForUrls and CookiesAllowedForUrls. URL patterns among these 3 policies must not conflict.</string>
+  <string-array name="DefaultCookiesSettingEntries">
+    <item>Allow all sites to set local data</item>
+    <item>Do not allow any site to set local data</item>
+    <item>Keep cookies for the duration of the session</item>
+  </string-array>
+  <string-array name="DefaultCookiesSettingValues">
+    <item>1</item>
+    <item>2</item>
+    <item>4</item>
+  </string-array>
+  <string name="DefaultGeolocationSettingTitle">Default geolocation setting</string>
+  <string name="DefaultGeolocationSettingDesc">Setting the policy to 1 lets sites track the users\' physical location as the default state. Setting the policy to 2 denies this tracking by default. You can set the policy to ask whenever a site wants to track the users\' physical location.
+
+Leaving the policy unset means the AskGeolocation policy applies, but users can change this setting.</string>
+  <string-array name="DefaultGeolocationSettingEntries">
+    <item>Allow sites to track the users\' physical location</item>
+    <item>Do not allow any site to track the users\' physical location</item>
+    <item>Ask whenever a site wants to track the users\' physical location</item>
+  </string-array>
+  <string-array name="DefaultGeolocationSettingValues">
+    <item>1</item>
+    <item>2</item>
+    <item>3</item>
+  </string-array>
+  <string name="DefaultJavaScriptJitSettingTitle">Control use of JavaScript JIT</string>
+  <string name="DefaultJavaScriptJitSettingDesc">Allows you to set whether Google Chrome will run the v8 JavaScript engine with JIT (Just In Time) compiler enabled or not.
+
+Disabling the JavaScript JIT will mean that Google Chrome may render web content more slowly, and may also disable parts of JavaScript including WebAssembly. Disabling the JavaScript JIT may allow Google Chrome to render web content in a more secure configuration.
+
+This policy can be overridden for specific URL patterns using the JavaScriptJitAllowedForSites and JavaScriptJitBlockedForSites policies.
+
+If this policy is left not set, JavaScript JIT is enabled.</string>
+  <string-array name="DefaultJavaScriptJitSettingEntries">
+    <item>Allow any site to run JavaScript JIT</item>
+    <item>Do not allow any site to run JavaScript JIT</item>
+  </string-array>
+  <string-array name="DefaultJavaScriptJitSettingValues">
+    <item>1</item>
+    <item>2</item>
+  </string-array>
+  <string name="DefaultJavaScriptSettingTitle">Default JavaScript setting</string>
+  <string name="DefaultJavaScriptSettingDesc">Setting the policy to 1 lets websites run JavaScript. Setting the policy to 2 denies JavaScript.
+
+Leaving it unset allows JavaScript, but users can change this setting.</string>
+  <string-array name="DefaultJavaScriptSettingEntries">
+    <item>Allow all sites to run JavaScript</item>
+    <item>Do not allow any site to run JavaScript</item>
+  </string-array>
+  <string-array name="DefaultJavaScriptSettingValues">
+    <item>1</item>
+    <item>2</item>
+  </string-array>
+  <string name="DefaultPopupsSettingTitle">Default pop-ups setting</string>
+  <string name="DefaultPopupsSettingDesc">Setting the policy to 1 lets websites display pop-ups. Setting the policy to 2 denies pop-ups.
+
+Leaving it unset means BlockPopups applies, but users can change this setting.</string>
+  <string-array name="DefaultPopupsSettingEntries">
+    <item>Allow all sites to show pop-ups</item>
+    <item>Do not allow any site to show pop-ups</item>
+  </string-array>
+  <string-array name="DefaultPopupsSettingValues">
+    <item>1</item>
+    <item>2</item>
+  </string-array>
+  <string name="DefaultSearchProviderAlternateURLsTitle">List of alternate URLs for the default search provider</string>
+  <string name="DefaultSearchProviderAlternateURLsDesc">If DefaultSearchProviderEnabled is on, then setting DefaultSearchProviderAlternateURLs specifies a list of alternate URLs for extracting search terms from the search engine. The URLs should include the string \'{searchTerms}\'.
+
+Leaving DefaultSearchProviderAlternateURLs unset means no alternate URLs are used to extract search terms.</string>
+  <string name="DefaultSearchProviderEnabledTitle">Enable the default search provider</string>
+  <string name="DefaultSearchProviderEnabledDesc">Setting the policy to Enabled means a default search is performed when a user enters non-URL text in the address bar. To specify the default search provider, set the rest of the default search policies. If you leave those policies empty, the user can choose the default provider. Setting the policy to Disabled means there\'s no search when the user enters non-URL text in the address bar.
+
+If you set the policy, users can\'t change it in Google Chrome. If not set, the default search provider is on, and users can set the search provider list.
+
+On Microsoft® Windows®, this functionality is only available on instances that are joined to a Microsoft® Active Directory® domain, running on Windows 10 Pro, or enrolled in Chrome Browser Cloud Management. On macOS, this functionality is only available on instances that are managed via MDM, or joined to a domain via MCX.</string>
+  <string-array name="DefaultSearchProviderEnabledEntries">
+    <item>Enable the default search provider</item>
+    <item>Disable the default search provider</item>
+    <item>Enable the default search provider and allow users to modify the search provier list</item>
+  </string-array>
+  <string-array name="DefaultSearchProviderEnabledValues">
+    <item>True</item>
+    <item>False</item>
+    <item>None</item>
+  </string-array>
+  <string name="DefaultSearchProviderEncodingsTitle">Default search provider encodings</string>
+  <string name="DefaultSearchProviderEncodingsDesc">If DefaultSearchProviderEnabled is on, setting DefaultSearchProviderEncodings specifies the character encodings supported by the search provider. Encodings are code page names such as UTF-8, GB2312, and ISO-8859-1. They\'re tried in the order provided.
+
+Leaving DefaultSearchProviderEncodings unset puts UTF-8 in use.</string>
+  <string name="DefaultSearchProviderIconURLTitle">Default search provider icon</string>
+  <string name="DefaultSearchProviderIconURLDesc">If DefaultSearchProviderEnabled is on, then setting DefaultSearchProviderIconURL specifies the default search provider\'s favorite icon URL.
+
+Leaving DefaultSearchProviderIconURL unset means there\'s no icon for the search provider.</string>
+  <string name="DefaultSearchProviderImageURLTitle">Parameter providing search-by-image feature for the default search provider</string>
+  <string name="DefaultSearchProviderImageURLDesc">If DefaultSearchProviderEnabled is on, then setting DefaultSearchProviderImageURL specifies the URL of the search engine used for image search. (If DefaultSearchProviderImageURLPostParams is set, then image search requests use the POST method instead.)
+
+Leaving DefaultSearchProviderImageURL unset means no image search is used.</string>
+  <string name="DefaultSearchProviderImageURLPostParamsTitle">Parameters for image URL which uses POST</string>
+  <string name="DefaultSearchProviderImageURLPostParamsDesc">If DefaultSearchProviderEnabled is on, then setting DefaultSearchProviderImageURLPostParams specifies the parameters during image search with POST. It consists of comma-separated, name-value pairs. If a value is a template parameter, such as {imageThumbnail}, real image thumbnail data replaces it.
+
+Leaving DefaultSearchProviderImageURLPostParams unset means image search request is sent using the GET method.</string>
+  <string name="DefaultSearchProviderKeywordTitle">Default search provider keyword</string>
+  <string name="DefaultSearchProviderKeywordDesc">If DefaultSearchProviderEnabled is on, then setting DefaultSearchProviderKeyword specifies the keyword or shortcut used in the address bar to trigger the search for this provider.
+
+Leaving DefaultSearchProviderKeyword unset means no keyword activates the search provider.</string>
+  <string name="DefaultSearchProviderNameTitle">Default search provider name</string>
+  <string name="DefaultSearchProviderNameDesc">If DefaultSearchProviderEnabled is on, then setting DefaultSearchProviderName specifies the default search provider\'s name.
+
+Leaving DefaultSearchProviderName unset means the hostname specified by the search URL is used.</string>
+  <string name="DefaultSearchProviderNewTabURLTitle">Default search provider new tab page URL</string>
+  <string name="DefaultSearchProviderNewTabURLDesc">If DefaultSearchProviderEnabled is on, then setting DefaultSearchProviderNewTabURL specifies the URL of the search engine used to provide a New Tab page.
+
+Leaving DefaultSearchProviderNewTabURL unset means no new tab page is provided.</string>
+  <string name="DefaultSearchProviderSearchURLTitle">Default search provider search URL</string>
+  <string name="DefaultSearchProviderSearchURLDesc">If DefaultSearchProviderEnabled is on, then setting DefaultSearchProviderSearchURL specifies the URL of the search engine used during a default search. The URL should include the string \'{searchTerms}\', replaced in the query by the user\'s search terms.
+
+You can specify Google\'s search URL as: \'{google:baseURL}search?q={searchTerms}&amp;amp;{google:RLZ}{google:originalQueryForSuggestion}{google:assistedQueryStats}{google:searchFieldtrialParameter}{google:searchClient}{google:sourceId}ie={inputEncoding}\'.</string>
+  <string name="DefaultSearchProviderSearchURLPostParamsTitle">Parameters for search URL which uses POST</string>
+  <string name="DefaultSearchProviderSearchURLPostParamsDesc">If DefaultSearchProviderEnabled is on, then setting DefaultSearchProviderSearchURLPostParams specifies the parameters when searching a URL with POST. It consists of comma-separated, name-value pairs. If a value is a template parameter, such as \'{searchTerms}\', real search terms data replaces it.
+
+Leaving DefaultSearchProviderSearchURLPostParams unset means search requests are sent using the GET method.</string>
+  <string name="DefaultSearchProviderSuggestURLTitle">Default search provider suggest URL</string>
+  <string name="DefaultSearchProviderSuggestURLDesc">If DefaultSearchProviderEnabled is on, then setting DefaultSearchProviderSuggestURL specifies the URL of the search engine to provide search suggestions. The URL should include the string \'{searchTerms}\', replaced in the query by the user\'s search terms.
+
+You can specify Google\'s search URL as: \'{google:baseURL}complete/search?output=chrome&amp;amp;q={searchTerms}\'.</string>
+  <string name="DefaultSearchProviderSuggestURLPostParamsTitle">Parameters for suggest URL which uses POST</string>
+  <string name="DefaultSearchProviderSuggestURLPostParamsDesc">If DefaultSearchProviderEnabled is on, then setting DefaultSearchProviderSuggestURLPostParams specifies the parameters during suggestion search with POST. It consists of comma-separated, name-value pairs. If a value is a template parameter, such as \'{searchTerms}\', real search terms data replaces it.
+
+Leaving DefaultSearchProviderSuggestURLPostParams unset unset means suggest search requests are sent using the GET method.</string>
+  <string name="DefaultSensorsSettingTitle">Default sensors setting</string>
+  <string name="DefaultSensorsSettingDesc">Setting the policy to 1 lets websites access and use sensors such as motion and light. Setting the policy to 2 denies acess to sensors.
+
+Leaving it unset means AllowSensors applies, but users can change this setting.</string>
+  <string-array name="DefaultSensorsSettingEntries">
+    <item>Allow sites to access sensors</item>
+    <item>Do not allow any site to access sensors</item>
+  </string-array>
+  <string-array name="DefaultSensorsSettingValues">
+    <item>1</item>
+    <item>2</item>
+  </string-array>
+  <string name="DefaultWebBluetoothGuardSettingTitle">Control use of the Web Bluetooth API</string>
+  <string name="DefaultWebBluetoothGuardSettingDesc">Setting the policy to 3 lets websites ask for access to nearby Bluetooth devices. Setting the policy to 2 denies access to nearby Bluetooth devices.
+
+Leaving the policy unset lets sites ask for access, but users can change this setting.</string>
+  <string-array name="DefaultWebBluetoothGuardSettingEntries">
+    <item>Do not allow any site to request access to Bluetooth devices via the Web Bluetooth API</item>
+    <item>Allow sites to ask the user to grant access to a nearby Bluetooth device</item>
+  </string-array>
+  <string-array name="DefaultWebBluetoothGuardSettingValues">
+    <item>2</item>
+    <item>3</item>
+  </string-array>
+  <string name="DefaultWebUsbGuardSettingTitle">Control use of the WebUSB API</string>
+  <string name="DefaultWebUsbGuardSettingDesc">Setting the policy to 3 lets websites ask for access to connected USB devices. Setting the policy to 2 denies access to connected USB devices.
+
+Leaving it unset lets websites ask for access, but users can change this setting.</string>
+  <string-array name="DefaultWebUsbGuardSettingEntries">
+    <item>Do not allow any site to request access to USB devices via the WebUSB API</item>
+    <item>Allow sites to ask the user to grant access to a connected USB device</item>
+  </string-array>
+  <string-array name="DefaultWebUsbGuardSettingValues">
+    <item>2</item>
+    <item>3</item>
+  </string-array>
+  <string name="DisableAuthNegotiateCnameLookupTitle">Disable CNAME lookup when negotiating Kerberos authentication</string>
+  <string name="DisableAuthNegotiateCnameLookupDesc">Setting the policy to Enabled skips CNAME lookup. The server name is used as entered when generating the Kerberos SPN.
+
+Setting the policy to Disabled or leaving it unset means CNAME lookup determines the canonical name of the server when generating the Kerberos SPN.</string>
+  <string-array name="DisableAuthNegotiateCnameLookupEntries">
+    <item>Disable CNAME lookup during Kerberos authentication</item>
+    <item>Use CNAME lookup during Kerberos authentication</item>
+  </string-array>
+  <string-array name="DisableAuthNegotiateCnameLookupValues">
+    <item>True</item>
+    <item>False</item>
+  </string-array>
+  <string name="DisableSafeBrowsingProceedAnywayTitle">Disable proceeding from the Safe Browsing warning page</string>
+  <string name="DisableSafeBrowsingProceedAnywayDesc">Setting the policy to Enabled prevents users from proceeding past the warning page the Safe Browsing service shows to the malicious site. This policy only prevents users from proceeding on Safe Browsing warnings such as malware and phishing, not for SSL certificate-related issues such as invalid or expired certificates.
+
+Setting the policy to Disabled or leaving it unset means users can choose to proceed to the flagged site after the warning appears.
+
+See more about Safe Browsing ( https://developers.google.com/safe-browsing ).</string>
+  <string name="DnsOverHttpsModeTitle">Controls the mode of DNS-over-HTTPS</string>
+  <string name="DnsOverHttpsModeDesc">Controls the mode of the DNS-over-HTTPS resolver. Please note that this policy will only set the default mode for each query. The mode may be overridden for special types of queries such as requests to resolve a DNS-over-HTTPS server hostname.
+
+The \&quot;off\&quot; mode will disable DNS-over-HTTPS.
+
+The \&quot;automatic\&quot; mode will send DNS-over-HTTPS queries first if a DNS-over-HTTPS server is available and may fallback to sending insecure queries on error.
+
+The \&quot;secure\&quot; mode will only send DNS-over-HTTPS queries and will fail to resolve on error.
+
+On Android Pie and above, if DNS-over-TLS is active, Google Chrome will not send insecure DNS requests.
+
+If this policy is unset the browser may send DNS-over-HTTPS requests to a resolver associated with the user\'s configured system resolver.</string>
+  <string-array name="DnsOverHttpsModeEntries">
+    <item>Disable DNS-over-HTTPS</item>
+    <item>Enable DNS-over-HTTPS with insecure fallback</item>
+    <item>Enable DNS-over-HTTPS without insecure fallback</item>
+  </string-array>
+  <string-array name="DnsOverHttpsModeValues">
+    <item>off</item>
+    <item>automatic</item>
+    <item>secure</item>
+  </string-array>
+  <string name="DnsOverHttpsTemplatesTitle">Specify URI template of desired DNS-over-HTTPS resolver</string>
+  <string name="DnsOverHttpsTemplatesDesc">The URI template of the desired DNS-over-HTTPS resolver. To specify multiple DNS-over-HTTPS resolvers, separate the corresponding URI templates with spaces.
+
+If the DnsOverHttpsMode is set to \&quot;secure\&quot; then this policy must be set and not empty.
+
+If the DnsOverHttpsMode is set to \&quot;automatic\&quot; and this policy is set then the URI templates specified will be used; if this policy is unset then hardcoded mappings will be used to attempt to upgrade the user\'s current DNS resolver to a DoH resolver operated by the same provider.
+
+If the URI template contains a dns variable, requests to the resolver will use GET; otherwise requests will use POST.
+
+Incorrectly formatted templates will be ignored.</string>
+  <string name="EditBookmarksEnabledTitle">Enable or disable bookmark editing</string>
+  <string name="EditBookmarksEnabledDesc">Setting the policy to True or leaving it unset lets users add, remove, or modify bookmarks.
+
+Setting the policy to False means users can\'t add, remove, or modify bookmarks. They can still use existing bookmarks.</string>
+  <string name="EnableExperimentalPoliciesTitle">Enables experimental policies</string>
+  <string name="EnableExperimentalPoliciesDesc">Allows Google Chrome to load experimental policies.
+
+WARNING: Experimental policies are unsupported and subject to change or be removed without notice in future version of the browser!
+
+An experimental policy may not be finished or still have known or unknown defects. It may be changed or even removed without any notification. By enabling experimental policies, you could lose browser data or compromise your security or privacy.
+
+If a policy is not in the list and it\'s not officially released, its value will be ignored on Beta and Stable channel.
+
+If a policy is in the list and it\'s not officially released, its value will be applied.
+
+This policy has no effect on already released policies.</string>
+  <string name="EnableMediaRouterTitle">Enable Google Cast</string>
+  <string name="EnableMediaRouterDesc">Setting the policy to Enabled or leaving it unset turns on Google Cast, which users can launch from the app menu, page context menus, media controls on Cast-enabled websites, and (if shown) the Cast toolbar icon.
+
+Setting the policy to Disabled turns off Google Cast.</string>
+  <string name="EnterpriseHardwarePlatformAPIEnabledTitle">Enables managed extensions to use the Enterprise Hardware Platform API</string>
+  <string name="EnterpriseHardwarePlatformAPIEnabledDesc">Setting the policy to True lets extensions installed by enterprise policy use the Enterprise Hardware Platform API.
+
+Setting the policy to False or leaving it unset prevents extensions from using this API.
+
+Note: This policy also applies to component extensions, such as the Hangout Services extension.</string>
+  <string name="ExplicitlyAllowedNetworkPortsTitle">Explicitly allowed network ports</string>
+  <string name="ExplicitlyAllowedNetworkPortsDesc">There is a list of restricted ports built into Google Chrome. Connections to these ports will fail. This setting permits bypassing that list. The value is a comma-separated list of zero or more ports that outgoing connections will be permitted on.
+
+Ports are restricted to prevent Google Chrome being used as a vector to exploit various network vulnerabilities. Setting this policy may expose your network to attacks. This policy is intended as a temporary workaround for errors with code \&quot;ERR_UNSAFE_PORT\&quot; while migrating a service running on a blocked port to a standard port (ie. port 80 or 443).
+
+Malicious websites can easily detect that this policy is set, and for what ports, and use that information to target attacks.
+
+Each port here is labelled with a date that it can be unblocked until. After that date the port will be restricted regardless of this setting.
+
+Leaving the value empty or unset means that all restricted ports will be blocked. If there is a mixture of valid and invalid values, the valid ones will be applied.
+
+This policy overrides the \&quot;--explicitly-allowed-ports\&quot; command-line option.</string>
+  <string-array name="ExplicitlyAllowedNetworkPortsEntries"/>
+  <string-array name="ExplicitlyAllowedNetworkPortsValues"/>
+  <string name="ForceGoogleSafeSearchTitle">Force Google SafeSearch</string>
+  <string name="ForceGoogleSafeSearchDesc">Setting the policy to Enabled means SafeSearch in Google Search is always active, and users can\'t change this setting.
+
+Setting the policy to Disabled or leaving it unset means SafeSearch in Google Search is not enforced.</string>
+  <string-array name="ForceGoogleSafeSearchEntries">
+    <item>Force the use of SafeSearch in Google Search</item>
+    <item>Do not enforce the use of SafeSearch in Google Search</item>
+  </string-array>
+  <string-array name="ForceGoogleSafeSearchValues">
+    <item>True</item>
+    <item>False</item>
+  </string-array>
+  <string name="ForceMajorVersionToMinorPositionInUserAgentTitle">Freeze User-Agent string major version at 99</string>
+  <string name="ForceMajorVersionToMinorPositionInUserAgentDesc">This policy controls whether the User-Agent string major
+version should be frozen at 99.
+
+The User-Agent request header lets websites identify the application,
+operating system, vendor, and/or version of the requesting user agent.
+Some websites make assumptions about how this header is formatted and may
+encounter issues with version strings that include three digits in the
+major position (e.g. 100.0.0.0).
+
+Setting the policy to \'Default\' or leaving it unset will default to
+browser settings for the User-Agent string major version.
+If set to \'ForceDisabled\', the User-Agent string will not freeze the
+major version.
+If set to \'ForceEnabled\', the User-Agent string will always report the
+major version as 99 and include the browser\'s major version in the minor
+position. For example, browser version 101.0.0.0 would send a User-Agent
+request header that reports version 99.101.0.0.
+
+This policy is temporary and will be deprecated in the future. Note that
+if this policy and
+User-Agent Reduction are
+both enabled, the User-Agent version string will always be 99.0.0.0.</string>
+  <string-array name="ForceMajorVersionToMinorPositionInUserAgentEntries">
+    <item>Default to browser settings for User-Agent string version.</item>
+    <item>The User-Agent string will not freeze the major version.</item>
+    <item>The User-Agent string will freeze the major version as 99 and include the browser\'s major version in the minor position.</item>
+  </string-array>
+  <string-array name="ForceMajorVersionToMinorPositionInUserAgentValues">
+    <item>0</item>
+    <item>1</item>
+    <item>2</item>
+  </string-array>
+  <string name="ForceYouTubeRestrictTitle">Force minimum YouTube Restricted Mode</string>
+  <string name="ForceYouTubeRestrictDesc">Setting the policy enforces a minimum Restricted mode on YouTube and prevents users from picking a less restricted mode. If you set it to:
+
+* Strict, Strict Restricted mode on YouTube is always active.
+
+* Moderate, the user may only pick Moderate Restricted mode and Strict Restricted mode on YouTube, but can\'t turn off Restricted mode.
+
+* Off or if no value is set, Restricted mode on YouTube isn\'t enforced by Chrome. External policies such as YouTube policies might still enforce Restricted mode.</string>
+  <string-array name="ForceYouTubeRestrictEntries">
+    <item>Do not enforce Restricted Mode on YouTube</item>
+    <item>Enforce at least Moderate Restricted Mode on YouTube</item>
+    <item>Enforce Strict Restricted Mode for YouTube</item>
+  </string-array>
+  <string-array name="ForceYouTubeRestrictValues">
+    <item>0</item>
+    <item>1</item>
+    <item>2</item>
+  </string-array>
+  <string name="HSTSPolicyBypassListTitle">List of names that will bypass the HSTS policy check</string>
+  <string name="HSTSPolicyBypassListDesc">Setting the policy specifies a list of hostnames that bypass preloaded HSTS upgrades from http to https.
+
+Only single-label hostnames are allowed in this policy, and this policy only applies to \&quot;static\&quot; HSTS-preloaded entries (for instance, \&quot;app\&quot;, \&quot;new\&quot;, \&quot;search\&quot;, \&quot;play\&quot;). This policy does not prevent HSTS upgrades for servers that have \&quot;dynamically\&quot; requested HSTS upgrades using a Strict-Transport-Security response header.
+
+Supplied hostnames must be canonicalized: Any IDNs must be converted to their A-label format, and all ASCII letters must be lowercase. This policy only applies to the specific single-label hostnames specified, not to subdomains of those names.</string>
+  <string name="HomepageLocationTitle">Configure the home page URL</string>
+  <string name="HomepageLocationDesc">Setting the policy sets the default homepage URL in Google Chrome. You open the homepage using the Home button. On desktop, the RestoreOnStartup policies control the pages that open on startup.
+
+If the homepage is set to the New Tab Page, by the user or HomepageIsNewTabPage, this policy has no effect.
+
+ The URL needs a standard scheme, such as http://example.com or https://example.com. When this policy is set, users can\'t change their homepage URL in Google Chrome.
+
+Leaving both HomepageLocation and HomepageIsNewTabPage unset lets users choose their homepage.
+
+On Microsoft® Windows®, this functionality is only available on instances that are joined to a Microsoft® Active Directory® domain domain, running on Windows 10 Pro, or enrolled in Chrome Browser Cloud Management. On macOS, this functionality is only available on instances that are managed via MDM, or joined to a domain via MCX.</string>
+  <string name="HttpsOnlyModeTitle">Allow HTTPS-Only Mode to be enabled</string>
+  <string name="HttpsOnlyModeDesc">This policy controls whether users can enable HTTPS-Only Mode in Settings. HTTPS-Only Mode upgrades all navigations to HTTPS.
+If this setting is not set or set to allowed, users will be allowed to enable HTTPS-Only Mode.
+If this setting is set to disallowed, users will not be allowed to enable HTTPS-Only Mode.
+Force enabling HTTPS-Only Mode is not currently supported.</string>
+  <string-array name="HttpsOnlyModeEntries">
+    <item>Allow users to enable HTTPS-Only Mode</item>
+    <item>Do not allow users to enable HTTPS-Only Mode</item>
+    <item>Force enable HTTPS-Only Mode (not supported yet)</item>
+  </string-array>
+  <string-array name="HttpsOnlyModeValues">
+    <item>allowed</item>
+    <item>disallowed</item>
+    <item>force_enabled</item>
+  </string-array>
+  <string name="IncognitoModeAvailabilityTitle">Incognito mode availability</string>
+  <string name="IncognitoModeAvailabilityDesc">Specifies whether the user may open pages in Incognito mode in Google Chrome.
+
+If \'Enabled\' is selected or the policy is left unset, pages may be opened in Incognito mode.
+
+If \'Disabled\' is selected, pages may not be opened in Incognito mode.
+
+If \'Forced\' is selected, pages may be opened ONLY in Incognito mode. Note that \'Forced\' does not work for Android-on-Chrome
+
+Note: On iOS, if the policy is changed during a session, it will only take effect on relaunch.</string>
+  <string-array name="IncognitoModeAvailabilityEntries">
+    <item>Incognito mode available</item>
+    <item>Incognito mode disabled</item>
+  </string-array>
+  <string-array name="IncognitoModeAvailabilityValues">
+    <item>0</item>
+    <item>1</item>
+  </string-array>
+  <string name="InsecureFormsWarningsEnabledTitle">Enable warnings for insecure forms</string>
+  <string name="InsecureFormsWarningsEnabledDesc">This policy controls the treatment for insecure forms (forms that submit over HTTP) embedded in secure (HTTPS) sites in the browser.
+If the policy is enabled or unset, a full page warning will be shown when an insecure form is submitted. Additionally, a warning bubble will be shown next to the form fields when they are focused, and autofill will be disabled for those forms.
+If the policy is disabled, warnings will not be shown for insecure forms, and autofill will work normally.</string>
+  <string name="InsecurePrivateNetworkRequestsAllowedTitle">Specifies whether to allow websites to make requests to more-private network endpoints in an insecure manner</string>
+  <string name="InsecurePrivateNetworkRequestsAllowedDesc">Controls whether websites are allowed to make requests to more-private network endpoints in an insecure manner.
+
+When this policy is set to true, all Private Network Access checks are disabled for all origins. This may allow attackers to perform CSRF attacks on private network servers.
+
+When this policy is either not set or set to false, the default behavior for requests to more-private network endpoints will depend on the user\'s personal configuration for the BlockInsecurePrivateNetworkRequests, PrivateNetworkAccessSendPreflights, and PrivateNetworkAccessRespectPreflightResults feature flags, which may be set by field trials or on the command line.
+
+This policy relates to the Private Network Access specification. See https://wicg.github.io/private-network-access/ for more details.
+
+A network endpoint is more private than another if:
+1) Its IP address is localhost and the other is not.
+2) Its IP address is private and the other is public.
+In the future, depending on spec evolution, this policy might apply to all cross-origin requests directed at private IPs or localhost.
+
+When this policy is set to true, websites are allowed to make requests to any network endpoint, subject to other cross-origin checks.</string>
+  <string-array name="InsecurePrivateNetworkRequestsAllowedEntries">
+    <item>Allow insecure websites to make requests to any network endpoint</item>
+    <item>Use default behavior when determining if insecure websites can make requests to any network endpoint</item>
+  </string-array>
+  <string-array name="InsecurePrivateNetworkRequestsAllowedValues">
+    <item>True</item>
+    <item>False</item>
+  </string-array>
+  <string name="InsecurePrivateNetworkRequestsAllowedForUrlsTitle">Allow the listed sites to make requests to more-private network endpoints in an insecure manner.</string>
+  <string name="InsecurePrivateNetworkRequestsAllowedForUrlsDesc">List of URL patterns. Requests initiated from websites served by matching origins are not subject to Private Network Access checks.
+
+If unset, this policy behaves as if set to the empty list.
+
+For origins not covered by the patterns specified here, the global default value will be used either from the InsecurePrivateNetworkRequestsAllowed policy, if it is set, or the user\'s personal configuration otherwise.
+
+For detailed information on valid URL patterns, please see https://cloud.google.com/docs/chrome-enterprise/policies/url-patterns.</string>
+  <string name="IntensiveWakeUpThrottlingEnabledTitle">Control the IntensiveWakeUpThrottling feature.</string>
+  <string name="IntensiveWakeUpThrottlingEnabledDesc">When enabled the IntensiveWakeUpThrottling feature causes Javascript timers in background tabs to be aggressively throttled and coalesced, running no more than once per minute after a page has been backgrounded for 5 minutes or more.
+
+This is a web standards compliant feature, but it may break functionality
+on some websites by causing certain actions to be delayed by up to a
+minute. However, it results in significant CPU and battery savings when
+enabled. See https://bit.ly/30b1XR4 for more details.
+
+If this policy is set to enabled then the feature will be force enabled, and
+users will not be able to override this.
+
+If this policy is set to disabled then the feature will be force disabled, and
+users will not be able to override this.
+
+If this policy is left unset then the feature will be controlled by its
+own internal logic, which can be manually configured by users.
+
+Note that the policy is applied per renderer process, with the most recent
+value of the policy setting in force when a renderer process starts. A full
+restart is required to ensure that all loaded tabs receive a consistent
+policy setting. It is harmless for processes to be running with different
+values of this policy.
+</string>
+  <string name="IsolateOriginsAndroidTitle">Enable Site Isolation for specified origins on Android devices</string>
+  <string name="IsolateOriginsAndroidDesc">Setting the policy means each of the named origins in a comma-separated list runs in a dedicated process on Android. Each named origin\'s process will only be allowed to contain documents from that origin and its subdomains. For example, specifying https://a1.example.com/ allows https://a2.a1.example.com/ in the same process, but not https://example.com or https://b.example.com. Note that Android isolates certain sensitive sites by default starting in Google Chrome version 77, and this policy extends that mode to isolate specific additional origins.
+
+Since Google Chrome 77, you can also specify a range of origins to isolate using a wildcard. For example, specifying https://[*.]corp.example.com will give every origin underneath https://corp.example.com its own dedicated process, including https://corp.example.com itself, https://a1.corp.example.com, and https://a2.a1.corp.example.com.
+
+Note that origins isolated by this policy will be unable to script other origins in the same site, which is otherwise possible if two same-site documents modify their document.domain values to match. Administrators should confirm this uncommon behavior is not used on an origin before isolating it.
+
+Setting the policy to Disabled turns off any form of site isolation, including isolation of sensitive sites and field trials of IsolateOriginsAndroid, SitePerProcessAndroid, and other site isolation modes. Users can still turn on IsolateOrigins manually, through the command line flag.
+
+Leaving the policy unset lets users change this setting.
+
+Note: Isolating too many sites on Android may cause performance problems, especially on low-memory devices. This policy applies only to Chrome on Android running on devices with strictly more than 1 GB of RAM. To apply the policy on non-Android platforms, use IsolateOrigins.</string>
+  <string name="JavaScriptAllowedForUrlsTitle">Allow JavaScript on these sites</string>
+  <string name="JavaScriptAllowedForUrlsDesc">Setting the policy lets you set a list of URL patterns that specify the sites that can run JavaScript.
+
+Leaving the policy unset means DefaultJavaScriptSetting applies for all sites, if it\'s set. If not, the user\'s personal setting applies.
+
+For detailed information on valid url patterns, please see https://cloud.google.com/docs/chrome-enterprise/policies/url-patterns. * is not an accepted value for this policy.</string>
+  <string name="JavaScriptBlockedForUrlsTitle">Block JavaScript on these sites</string>
+  <string name="JavaScriptBlockedForUrlsDesc">Setting the policy lets you set a list of URL patterns that specify the sites that can\'t run JavaScript.
+
+Leaving the policy unset means DefaultJavaScriptSetting applies for all sites, if it\'s set. If not, the user\'s personal setting applies.
+
+For detailed information on valid url patterns, please see https://cloud.google.com/docs/chrome-enterprise/policies/url-patterns. * is not an accepted value for this policy.</string>
+  <string name="JavaScriptJitAllowedForSitesTitle">Allow JavaScript to use JIT on these sites</string>
+  <string name="JavaScriptJitAllowedForSitesDesc">Allows you to set a list of site url patterns that specify sites which are allowed to run JavaScript with JIT (Just In Time) compiler enabled.
+
+For detailed information on valid site url patterns, please see https://cloud.google.com/docs/chrome-enterprise/policies/url-patterns. * is not an accepted value for this policy.
+
+JavaScript JIT policy exceptions will only be enforced at a site granularity (eTLD+1). A policy set for only subdomain.site.com will not correctly apply to site.com or subdomain.site.com since they both resolve to the same eTLD+1 (site.com) for which there is no policy. In this case, policy must be set on site.com to apply correctly for both site.com and subdomain.site.com.
+
+This policy applies on a frame-by-frame basis and not based on top level origin url alone, so e.g. if site-one.com is listed in the JavaScriptJitAllowedForSites policy but site-one.com loads a frame containing site-two.com then site-one.com will have JavaScript JIT enabled, but site-two.com will use the policy from DefaultJavaScriptJitSetting, if set, or default to JavaScript JIT enabled.
+
+If this policy is not set for a site then the policy from DefaultJavaScriptJitSetting applies to the site, if set, otherwise Javascript JIT is enabled for the site.</string>
+  <string name="JavaScriptJitBlockedForSitesTitle">Block JavaScript from using JIT on these sites</string>
+  <string name="JavaScriptJitBlockedForSitesDesc">Allows you to set a list of site url patterns that specify sites which are not allowed to run JavaScript JIT (Just In Time) compiler enabled.
+
+Disabling the JavaScript JIT will mean that Google Chrome may render web content more slowly, and may also disable parts of JavaScript including WebAssembly. Disabling the JavaScript JIT may allow Google Chrome to render web content in a more secure configuration.
+
+For detailed information on valid url patterns, please see https://cloud.google.com/docs/chrome-enterprise/policies/url-patterns. * is not an accepted value for this policy.
+
+JavaScript JIT policy exceptions will only be enforced at a site granularity (eTLD+1). A policy set for only subdomain.site.com will not correctly apply to site.com or subdomain.site.com since they both resolve to the same eTLD+1 (site.com) for which there is no policy. In this case, policy must be set on site.com to apply correctly for both site.com and subdomain.site.com.
+
+This policy applies on a frame-by-frame basis and not based on top level origin url alone, so e.g. if site-one.com is listed in the JavaScriptJitBlockedForSites policy but site-one.com loads a frame containing site-two.com then site-one.com will have JavaScript JIT disabled, but site-two.com will use the policy from DefaultJavaScriptJitSetting, if set, or default to JavaScript JIT enabled.
+
+If this policy is not set for a site then the policy from DefaultJavaScriptJitSetting applies to the site, if set, otherwise JavaScript JIT is enabled for the site.</string>
+  <string name="LegacySameSiteCookieBehaviorEnabledForDomainListTitle">Revert to legacy SameSite behavior for cookies on these sites</string>
+  <string name="LegacySameSiteCookieBehaviorEnabledForDomainListDesc">Cookies set for domains matching these patterns will revert to legacy SameSite behavior. Reverting to legacy behavior causes cookies that don\'t specify a SameSite attribute to be treated as if they were \&quot;SameSite=None\&quot;, removes the requirement for \&quot;SameSite=None\&quot; cookies to carry the \&quot;Secure\&quot; attribute, and skips the scheme comparison when evaluating if two sites are same-site. See https://www.chromium.org/administrators/policy-list-3/cookie-legacy-samesite-policies for full description.
+
+For cookies on domains not covered by the patterns specified here, or for all cookies if this policy is not set, the global default value will be the user\'s personal configuration.
+
+For detailed information on valid patterns, please see https://cloud.google.com/docs/chrome-enterprise/policies/url-patterns.
+
+Note that patterns you list here are treated as domains, not URLs, so you should not specify a scheme or port.</string>
+  <string name="LensCameraAssistedSearchEnabledTitle">Allow Google Lens camera assisted search</string>
+  <string name="LensCameraAssistedSearchEnabledDesc">Leaving the policy unset or setting it to Enabled allows users to search with their cameras using Google Lens. Setting the policy to Disabled means users can\'t see the Google Lens button in the search box when Google Lens camera assisted search is supported.</string>
+  <string-array name="LensCameraAssistedSearchEnabledEntries">
+    <item>Enable Google Lens camera assisted search for Enterprise user</item>
+    <item>Disable Google Lens camera assisted search for Enterprise user</item>
+  </string-array>
+  <string-array name="LensCameraAssistedSearchEnabledValues">
+    <item>True</item>
+    <item>False</item>
+  </string-array>
+  <string name="LookalikeWarningAllowlistDomainsTitle">Suppress lookalike domain warnings on domains</string>
+  <string name="LookalikeWarningAllowlistDomainsDesc">This policy prevents the display of lookalike URL warnings on the sites listed. These warnings are typically shown on sites that Google Chrome believes might be trying to spoof another site the user is familiar with.
+
+If the policy is enabled and set to one or more domains, no lookalike warnings pages will be shown when the user visits pages on that domain.
+
+If the policy is not set, or set to an empty list, warnings may appear on any site the user visits.
+
+A hostname can be allowed with a complete host match, or any domain match. For example, a URL like \&quot;https://foo.example.com/bar\&quot; may have warnings suppressed if this list includes either \&quot;foo.example.com\&quot; or \&quot;example.com\&quot;.</string>
+  <string name="ManagedBookmarksTitle">Managed Bookmarks</string>
+  <string name="ManagedBookmarksDesc">Setting the policy sets up a list of bookmarks where each one is a dictionary with the keys \&quot;name\&quot; and \&quot;url\&quot;. These keys hold the bookmark\'s name and target. Admins can set up a subfolder by defining a bookmark without a \&quot;url\&quot; key, but with an additional \&quot;children\&quot; key. This key also has a list of bookmarks, some of which can also be folders. Chrome amends incomplete URLs as if they were submitted through the address bar. For example, \&quot;google.com\&quot; becomes \&quot;https://google.com/\&quot;.
+
+Users can\'t change the folders the bookmarks are placed in (though they can hide it from the bookmark bar). The default folder name for managed bookmarks is \&quot;Managed bookmarks\&quot; but it can be changed by adding a new sub-dictionary to the policy with a single key named \&quot;toplevel_name\&quot; with the desired folder name as its value. Managed bookmarks are not synced to the user account and extensions can\'t modify them.</string>
+  <string name="NTPContentSuggestionsEnabledTitle">Show content suggestions on the New Tab page</string>
+  <string name="NTPContentSuggestionsEnabledDesc">Setting the policy to True or leaving it unset displays autogenerated content suggestions on the New Tab page, based on the user\'s browsing history, interests, or location.
+
+Setting the policy to False prevents autogenerated content suggestions from appearing on the New Tab page.</string>
+  <string-array name="NTPContentSuggestionsEnabledEntries">
+    <item>Show content suggestions on the New Tab page</item>
+    <item>Do not show content suggestions on the New Tab page</item>
+  </string-array>
+  <string-array name="NTPContentSuggestionsEnabledValues">
+    <item>True</item>
+    <item>False</item>
+  </string-array>
+  <string name="NetworkPredictionOptionsTitle">Enable network prediction</string>
+  <string name="NetworkPredictionOptionsDesc">This policy controls network prediction in Google Chrome. It controls DNS prefetching, TCP, and SSL preconnection and prerendering of webpages.
+
+If you set the policy, users can\'t change it. Leaving it unset turns on network prediction, but the user can change it.</string>
+  <string-array name="NetworkPredictionOptionsEntries">
+    <item>Predict network actions on any network connection</item>
+    <item>Predict network actions on any network that is not cellular.
+(Deprecated in 50, removed in 52. After 52, if value 1 is set, it will be treated as 0 - predict network actions on any network connection.)</item>
+    <item>Do not predict network actions on any network connection</item>
+  </string-array>
+  <string-array name="NetworkPredictionOptionsValues">
+    <item>0</item>
+    <item>1</item>
+    <item>2</item>
+  </string-array>
+  <string name="NtlmV2EnabledTitle">Enable NTLMv2 authentication.</string>
+  <string name="NtlmV2EnabledDesc">Setting the policy to Enabled or leaving it unset turns NTLMv2 on.
+
+Setting the policy to Disabled turns NTLMv2 off.
+
+All recent versions of Samba and Microsoft® Windows® servers support NTLMv2. This should only be turned off for backward compatibility as it reduces the security of authentication.</string>
+  <string-array name="NtlmV2EnabledEntries">
+    <item>Turn NTLMv2 on</item>
+    <item>Turn NTLMv2 off</item>
+  </string-array>
+  <string-array name="NtlmV2EnabledValues">
+    <item>True</item>
+    <item>False</item>
+  </string-array>
+  <string name="OverrideSecurityRestrictionsOnInsecureOriginTitle">Origins or hostname patterns for which restrictions on
+insecure origins should not apply</string>
+  <string name="OverrideSecurityRestrictionsOnInsecureOriginDesc">Setting the policy specifies a list of origins (URLs) or hostname patterns (such as *.example.com) for which security restrictions on insecure origins won\'t apply. Organizations can specify origins for legacy applications that can\'t deploy TLS or set up a staging server for internal web development, so developers can test out features requiring secure contexts without having to deploy TLS on the staging server. This policy also prevents the origin from being labeled \&quot;Not Secure\&quot; in the address bar.
+
+Setting a list of URLs in this policy amounts to setting the command-line flag --unsafely-treat-insecure-origin-as-secure to a comma-separated list of the same URLs. The policy overrides the command-line flag and UnsafelyTreatInsecureOriginAsSecure, if present.
+
+For more information on secure contexts, see Secure Contexts ( https://www.w3.org/TR/secure-contexts ).</string>
+  <string name="PasswordLeakDetectionEnabledTitle">Enable leak detection for entered credentials</string>
+  <string name="PasswordLeakDetectionEnabledDesc">Setting the policy to Enabled lets users have Google Chrome check whether usernames and passwords entered were part of a leak.
+
+If the policy is set, users can\'t change it in Google Chrome. If not set, credential leak checking is allowed, but the user can turn it off.
+
+This behavior will not trigger if Safe Browsing is disabled (either by policy or by the user). In order to force Safe Browsing on, use the SafeBrowsingEnabled policy or the SafeBrowsingProtectionLevel policy.</string>
+  <string-array name="PasswordLeakDetectionEnabledEntries">
+    <item>Enable password leak detection</item>
+    <item>Disable password leak detection</item>
+  </string-array>
+  <string-array name="PasswordLeakDetectionEnabledValues">
+    <item>True</item>
+    <item>False</item>
+  </string-array>
+  <string name="PasswordManagerEnabledTitle">Enable saving passwords to the password manager</string>
+  <string name="PasswordManagerEnabledDesc">Setting the policy to Enabled means users have Google Chrome remember passwords and provide them the next time they sign in to a site.
+
+Setting the policy to Disabled means users can\'t save new passwords, but previously saved passwords will still work.
+
+If the policy is set, users can\'t change it in Google Chrome. If not set, the user can turn off password saving.</string>
+  <string-array name="PasswordManagerEnabledEntries">
+    <item>Enable saving passwords using the password manager</item>
+    <item>Disable saving passwords using the password manager</item>
+  </string-array>
+  <string-array name="PasswordManagerEnabledValues">
+    <item>True</item>
+    <item>False</item>
+  </string-array>
+  <string name="PaymentMethodQueryEnabledTitle">Allow websites to query for available payment methods.</string>
+  <string name="PaymentMethodQueryEnabledDesc">Allows you to set whether websites are allowed to check if the user has payment methods saved.
+
+If this policy is set to disabled, websites that use PaymentRequest.canMakePayment or PaymentRequest.hasEnrolledInstrument API will be informed that no payment methods are available.
+
+If the setting is enabled or not set then websites are allowed to check if the user has payment methods saved.</string>
+  <string name="PolicyListMultipleSourceMergeListTitle">Allow merging list policies from different sources</string>
+  <string name="PolicyListMultipleSourceMergeListDesc">Setting the policy allows merging of selected policies when they come from different sources, with the same scopes and level.
+
+Use the wildcard character \'*\' to allow merging of all list policies.
+
+If a policy is in the list and there\'s conflict between sources with:
+
+* The same scopes and level: The values merge into a new policy list.
+
+* Different scopes or level: The policy with the highest priority applies.
+
+If a policy isn\'t in the list and there\'s conflict between sources, scopes, or level, the policy with the highest priority applies.</string>
+  <string name="PopupsAllowedForUrlsTitle">Allow pop-ups on these sites</string>
+  <string name="PopupsAllowedForUrlsDesc">Setting the policy lets you set a list of URL patterns that specify the sites that can open pop-ups.
+
+Leaving the policy unset means DefaultPopupsSetting applies for all sites, if it\'s set. If not, the user\'s personal setting applies.
+
+For detailed information on valid url patterns, please see https://cloud.google.com/docs/chrome-enterprise/policies/url-patterns.  * is not an accepted value for this policy.</string>
+  <string name="PopupsBlockedForUrlsTitle">Block pop-ups on these sites</string>
+  <string name="PopupsBlockedForUrlsDesc">Setting the policy lets you set a list of URL patterns that specify the sites that can\'t open pop-ups.
+
+Leaving the policy unset means DefaultPopupsSetting applies for all sites, if it\'s set. If not, the user\'s personal setting applies.
+
+For detailed information on valid url patterns, please see https://cloud.google.com/docs/chrome-enterprise/policies/url-patterns. * is not an accepted value for this policy.</string>
+  <string name="PrintingEnabledTitle">Enable printing</string>
+  <string name="PrintingEnabledDesc">Setting the policy to Enabled or leaving it unset lets users print in Google Chrome, and users can\'t change this setting.
+
+Setting the policy to Disabled means users can\'t print from Google Chrome. Printing is off in the three dots menu, extensions, and JavaScript applications.</string>
+  <string-array name="PrintingEnabledEntries">
+    <item>Enable printing</item>
+    <item>Disable printing</item>
+  </string-array>
+  <string-array name="PrintingEnabledValues">
+    <item>True</item>
+    <item>False</item>
+  </string-array>
+  <string name="PromptForDownloadLocationTitle">Ask where to save each file before downloading</string>
+  <string name="PromptForDownloadLocationDesc">Setting the policy to Enabled means users are asked where to save each file before downloading. Setting the policy to Disabled has downloads start immediately, and users aren\'t asked where to save the file.
+
+Leaving the policy unset lets users change this setting.</string>
+  <string name="ProxySettingsTitle">Proxy settings</string>
+  <string name="ProxySettingsDesc">Setting the policy configures the proxy settings for Chrome and ARC-apps, which ignore all proxy-related options specified from the command line.
+
+ Leaving the policy unset lets users choose their proxy settings.
+
+ Setting the ProxySettings policy accepts the following fields:
+   * ProxyMode, which lets you specify the proxy server Chrome uses and prevents users from changing proxy settings
+   * ProxyPacUrl, a URL to a proxy .pac file
+   * ProxyPacMandatory, which prevents the network stack from falling back to direct connections with invalid or unavailable PAC script
+   * ProxyServer, a URL of the proxy server
+   * ProxyBypassList, a list of hosts for which the proxy will be bypassed
+
+ The ProxyServerMode field is deprecated in favor of the ProxyMode field.
+
+  For ProxyMode, if you choose the value:
+    * direct, a proxy is never used and all other fields are ignored.
+    * system, the systems\'s proxy is used and all other fields are ignored.
+    * auto_detect, all other fields are ignored.
+    * fixed_servers, the ProxyServer and ProxyBypassList fields are used.
+    * pac_script, the ProxyPacUrl, ProxyPacMandatory and ProxyBypassList fields are used.
+
+Note: For more detailed examples, visit The Chromium Projects ( https://www.chromium.org/developers/design-documents/network-settings#TOC-Command-line-options-for-proxy-sett ).</string>
+  <string name="RestrictAccountsToPatternsTitle">Restrict accounts that are visible in Google Chrome</string>
+  <string name="RestrictAccountsToPatternsDesc">Contains a list of patterns which are used to control the visibility of accounts in Google Chrome.
+
+Each Google account on the device will be compared to patterns stored in this policy to determine the account visibility in Google Chrome. The account will be visible if its name matches any pattern on the list. Otherwise, the account will be hidden.
+
+Use the wildcard character \'*\' to match zero or more arbitrary characters. The escape character is \'\\\', so to match actual \'*\' or \'\\\' characters, put a \'\\\' in front of them.
+
+If this policy is not set, all Google accounts on the device will be visible in Google Chrome.</string>
+  <string name="SSLErrorOverrideAllowedTitle">Allow proceeding from the SSL warning page</string>
+  <string name="SSLErrorOverrideAllowedDesc">Setting the policy to Enabled or leaving it unset lets users click through warning pages Google Chrome shows when users navigate to sites that have SSL errors.
+
+Setting the policy to Disabled prevent users from clicking through any warning pages.</string>
+  <string name="SSLErrorOverrideAllowedForOriginsTitle">Allow proceeding from the SSL warning page on specific origins</string>
+  <string name="SSLErrorOverrideAllowedForOriginsDesc">If SSLErrorOverrideAllowed is Disabled, setting the policy lets you set a list of origin patterns that specify the sites where a user can click through warning pages Google Chrome shows when users navigate to sites that have SSL errors. Users will not be able to click through SSL warning pages on origins that are not on this list.
+
+If SSLErrorOverrideAllowed is Enabled or unset, this policy does nothing.
+
+Leaving the policy unset means SSLErrorOverrideAllowed applies for all sites.
+
+For detailed information on valid input patterns, please see https://cloud.google.com/docs/chrome-enterprise/policies/url-patterns. * is not an accepted value for this policy. This policy only matches based on origin, so any path in the URL pattern is ignored.</string>
+  <string name="SSLVersionMinTitle">Minimum SSL version enabled</string>
+  <string name="SSLVersionMinDesc">Setting the policy to a valid value means Google Chrome won\'t use SSL/TLS versions less than the specified version. Unrecognized values are ignored.
+
+If this policy is not set, then Google Chrome will show an error for TLS 1.0 and TLS 1.1, but the user will be able to bypass it.
+
+If this policy is set to \&quot;tls1.2\&quot;, the user will not be able to bypass this error.
+
+Support for setting this policy to \&quot;tls1\&quot; or \&quot;tls1.1\&quot; was removed in version 91. Suppressing the TLS 1.0/1.1 warning is no longer supported.</string>
+  <string-array name="SSLVersionMinEntries">
+    <item>TLS 1.2</item>
+  </string-array>
+  <string-array name="SSLVersionMinValues">
+    <item>tls1.2</item>
+  </string-array>
+  <string name="SafeBrowsingExtendedReportingEnabledTitle">Enable Safe Browsing Extended Reporting</string>
+  <string name="SafeBrowsingExtendedReportingEnabledDesc">Setting the policy to Enabled turns on Google Chrome\'s Safe Browsing Extended Reporting, which sends some system information and page content to Google servers to help detect dangerous apps and sites.
+
+Setting the policy to Disabled means reports are never sent.
+
+If you set this policy, users can\'t change it. If not set, users can decide whether to send reports or not.
+
+See more about Safe Browsing ( https://developers.google.com/safe-browsing ).</string>
+  <string name="SafeBrowsingProtectionLevelTitle">Safe Browsing Protection Level</string>
+  <string name="SafeBrowsingProtectionLevelDesc">Allows you to control whether Google Chrome\'s Safe Browsing feature is enabled and the mode it operates in.
+
+If this policy is set to \'NoProtection\' (value 0), Safe Browsing is never active.
+
+If this policy is set to \'StandardProtection\' (value 1, which is the default), Safe Browsing is always active in the standard mode.
+
+If this policy is set to \'EnhancedProtection\' (value 2), Safe Browsing is always active in the enhanced mode, which provides better security, but requires sharing more browsing information with Google.
+
+If you set this policy as mandatory, users cannot change or override the Safe Browsing setting in Google Chrome.
+
+If this policy is left not set, Safe Browsing will operate in Standard Protection mode but users can change this setting.
+
+See https://developers.google.com/safe-browsing for more info on Safe Browsing.</string>
+  <string-array name="SafeBrowsingProtectionLevelEntries">
+    <item>Safe Browsing is never active.</item>
+    <item>Safe Browsing is active in the standard mode.</item>
+    <item>Safe Browsing is active in the enhanced mode. This mode provides better security, but requires sharing more browsing information with Google.</item>
+  </string-array>
+  <string-array name="SafeBrowsingProtectionLevelValues">
+    <item>0</item>
+    <item>1</item>
+    <item>2</item>
+  </string-array>
+  <string name="SavingBrowserHistoryDisabledTitle">Disable saving browser history</string>
+  <string name="SavingBrowserHistoryDisabledDesc">Setting the policy to Enabled means browsing history is not saved, tab syncing is off and users can\'t change this setting.
+
+Setting the policy to Disabled or leaving it unset saves browsing history.</string>
+  <string-array name="SavingBrowserHistoryDisabledEntries">
+    <item>Disable saving browser history</item>
+    <item>Enable saving browser history</item>
+  </string-array>
+  <string-array name="SavingBrowserHistoryDisabledValues">
+    <item>True</item>
+    <item>False</item>
+  </string-array>
+  <string name="ScrollToTextFragmentEnabledTitle">Enable scrolling to text specified in URL fragments</string>
+  <string name="ScrollToTextFragmentEnabledDesc">This feature allows for hyperlinks and address bar URL navigations to target specific text within a web page, which will be scrolled to once the loading of the web page is complete.
+
+If you enable or don\'t configure this policy, web page scrolling to specific text fragments via URL will be enabled.
+
+If you disable this policy, web page scrolling to specific text fragments via URL will be disabled.</string>
+  <string name="SearchSuggestEnabledTitle">Enable search suggestions</string>
+  <string name="SearchSuggestEnabledDesc">Setting the policy to True turns on search suggestions in Google Chrome\'s address bar. Setting the policy to False turns off these search suggestions.
+
+Suggestions based on bookmarks or history are unaffected by the policy.
+
+If you set the policy, users can\'t change it. If not set, search suggestions are on at first, but users can turn them off any time.</string>
+  <string-array name="SearchSuggestEnabledEntries">
+    <item>Enable search suggestions</item>
+    <item>Disable search suggestions</item>
+  </string-array>
+  <string-array name="SearchSuggestEnabledValues">
+    <item>True</item>
+    <item>False</item>
+  </string-array>
+  <string name="SensorsAllowedForUrlsTitle">Allow access to sensors on these sites</string>
+  <string name="SensorsAllowedForUrlsDesc">Setting the policy lets you set a list of URL patterns that specify the sites that can access sensors like motion and light sensors.
+
+Leaving the policy unset means DefaultSensorsSetting applies for all sites, if it\'s set. If not, the user\'s personal setting applies.
+
+If the same URL pattern exists in both this policy and the SensorsBlockedForUrls policy, the latter is prioritized and access to motion or light sensors will be blocked.
+
+For detailed information on valid url patterns, please see https://cloud.google.com/docs/chrome-enterprise/policies/url-patterns. * is not an accepted value for this policy.</string>
+  <string name="SensorsBlockedForUrlsTitle">Block access to sensors on these sites</string>
+  <string name="SensorsBlockedForUrlsDesc">Setting the policy lets you set a list of URL patterns that specify the sites that can\'t access sensors like motion and light sensors.
+
+Leaving the policy unset means DefaultSensorsSetting applies for all sites, if it\'s set. If not, the user\'s personal setting applies.
+
+If the same URL pattern exists in both this policy and the SensorsAllowedForUrls policy, this policy is prioritized and access to motion or light sensors will be blocked.
+
+For detailed information on valid url patterns, please see https://cloud.google.com/docs/chrome-enterprise/policies/url-patterns. * is not an accepted value for this policy.</string>
+  <string name="SetTimeoutWithout1MsClampEnabledTitle">Control Javascript setTimeout() function minimum timeout.</string>
+  <string name="SetTimeoutWithout1MsClampEnabledDesc">When the policy is set to Enabled, the Javascript setTimeout() with a timeout of 0ms will not clamp to 1ms.
+When the policy is set to Disabled,  the Javascript setTimeout() with a timeout of 0ms will clamp to 1ms.
+When the policy is unset, use the browser\'s default behavior for setTimeout() function clamp.
+
+This is a web standards compliant feature, but it may change task ordering
+on a web page, leading to unexpected behavior on sites that are dependent on
+a certain ordering in some way. It also may affect sites with a lot of setTimeout()
+with a timeout of 0ms usage, e.g. increasing CPU load.
+
+For users where this policy is unset, Chrome will roll out the change gradually on the stable channel.
+
+This is a temporary policy that is planned be removed in Chrome 105. This deadline may be extended if there is a need for it among enterprises.
+</string>
+  <string-array name="SetTimeoutWithout1MsClampEnabledEntries">
+    <item>Javascript setTimeout() with a timeout of 0ms will not clamp to 1ms.</item>
+    <item>Javascript setTimeout() with a timeout of 0ms will clamp to 1ms.</item>
+    <item>\'Default behavior for setTimeout() function clamp.</item>
+  </string-array>
+  <string-array name="SetTimeoutWithout1MsClampEnabledValues">
+    <item>True</item>
+    <item>False</item>
+    <item>None</item>
+  </string-array>
+  <string name="SharedClipboardEnabledTitle">Enable the Shared Clipboard Feature</string>
+  <string name="SharedClipboardEnabledDesc">Enable the Shared Clipboard feature which allows users to send text between Chrome Desktops and an Android device when Sync is enabled and the user is Signed-in.
+
+If this policy is set to true, the capability of sending text, cross device, for chrome user is enabled.
+
+If this policy is set to false, the capability of sending text, cross device, for chrome user is disabled.
+
+If you set this policy, users cannot change or override it.
+
+If this policy is left unset, the shared clipboard feature is enabled by default.
+
+It is up to the admins to set policies in all platforms they care about. It\'s recommended to set this policy to one value in all platforms.</string>
+  <string name="SitePerProcessAndroidTitle">Enable Site Isolation for every site</string>
+  <string name="SitePerProcessAndroidDesc">Setting the policy to Enabled isolates all sites on Android, such that each site runs in its own process, and it prevents users from opting out. A site is a scheme plus eTLD+1 (e.g., https://example.com). Note that Android isolates certain sensitive sites by default starting in Google Chrome version 77, and this policy extends that default site isolation mode to apply to all sites.
+
+Setting the policy to Disabled turns off any form of site isolation, including isolation of sensitive sites and field trials of IsolateOriginsAndroid, SitePerProcessAndroid, and other site isolation modes. Users can still turn the policy on manually.
+
+Leaving the policy unset means users can change this setting.
+
+IsolateOriginsAndroid might also be useful for isolating specific origins at a finer granularity than site (e.g., https://a.example.com).
+
+Note: Support for isolating every site on Android will improve, but currently it may cause performance problems, especially on low-end devices. This policy applies only to Chrome on Android running on devices with strictly more than 1 GB of RAM. To isolate specific sites while limiting performance impact for users, use IsolateOriginsAndroid with a list of the sites you want to isolate.  To apply the policy on non-Android platforms, use SitePerProcess.</string>
+  <string name="SuppressDifferentOriginSubframeDialogsTitle">Suppress JavaScript Dialogs triggered from different origin subframes</string>
+  <string name="SuppressDifferentOriginSubframeDialogsDesc">As described in https://www.chromestatus.com/feature/5148698084376576 , JavaScript modal dialogs, triggered by window.alert, window.confirm, and window.prompt, will be blocked in Google Chrome if triggered from a subframe whose origin is different from the main frame origin.
+This policy allows overriding that change.
+If the policy is set to enabled or unset, JavaScript dialogs triggered from a different origin subframe will be blocked.
+If the policy is set to disabled, JavaScript dialogs triggered from a different origin subframe will not be blocked.
+
+This policy will be removed in Google Chrome version 95.</string>
+  <string-array name="SuppressDifferentOriginSubframeDialogsEntries">
+    <item>Block JavaScript dialogs triggered from a different origin subframe.</item>
+    <item>Allow JavaScript dialogs triggered from a different origin subframe.</item>
+  </string-array>
+  <string-array name="SuppressDifferentOriginSubframeDialogsValues">
+    <item>True</item>
+    <item>False</item>
+  </string-array>
+  <string name="SyncTypesListDisabledTitle">List of types that should be excluded from synchronization</string>
+  <string name="SyncTypesListDisabledDesc">If this policy is set all specified data types will be excluded from synchronization both for Chrome Sync as well as for roaming profile synchronization. This can be beneficial to reduce the size of the roaming profile or limit the type of data uploaded to the Chrome Sync Servers.
+
+The current data types for this policy are: \&quot;bookmarks\&quot;, \&quot;readingList\&quot;, \&quot;preferences\&quot;, \&quot;passwords\&quot;, \&quot;autofill\&quot;, \&quot;themes\&quot;, \&quot;typedUrls\&quot;, \&quot;extensions\&quot;, \&quot;apps\&quot;, \&quot;tabs\&quot;, \&quot;wifiConfigurations\&quot;. Those names are case sensitive!</string>
+  <string name="TosDialogBehaviorTitle">Configuring the ToS behavior during first-run for CCT</string>
+  <string name="TosDialogBehaviorDesc">By default the Terms of Service are shown when CCT is first-run. Setting this policy to SkipTosDialog will cause the Terms of Service dialog to not appear during the first-run-experience or subsequent runs. Setting this policy to StandardTosDialog or leaving it unset will cause the Terms of Service dialog to appear during the first-run-experience. The other caveats are:
+
+- This policy only works on fully managed Android devices that can be configured by Unified Endpoint Management vendors.
+
+- If this policy is SkipTosDialog the BrowserSignin policy will have no effect.
+
+- If this policy is SkipTosDialog metrics​ will not be sent to the server.
+
+- If this policy is SkipTosDialog the browser will have limited functionality.
+
+- If this policy is SkipTosDialog admins must communicate this to end users of the device.</string>
+  <string-array name="TosDialogBehaviorEntries">
+    <item>Use default browser behavior, shows the ToS and waits for the user to accept.</item>
+    <item>Automatically skips ToS and loads the browser.</item>
+  </string-array>
+  <string-array name="TosDialogBehaviorValues">
+    <item>1</item>
+    <item>2</item>
+  </string-array>
+  <string name="TranslateEnabledTitle">Enable Translate</string>
+  <string name="TranslateEnabledDesc">Setting the policy to True provides translation functionality when it\'s appropriate for users by showing an integrated translate toolbar in Google Chrome and a translate option on the right-click context menu. Setting the policy to False shuts off all built-in translate features.
+
+If you set the policy, users can\'t change this function. Leaving it unset lets them change the setting.</string>
+  <string name="URLAllowlistTitle">Allow access to a list of URLs</string>
+  <string name="URLAllowlistDesc">Setting the policy provides access to the listed URLs, as exceptions to URLBlocklist. See that policy\'s description for the format of entries of this list. For example, setting URLBlocklist to * will block all requests, and you can use this policy to allow access to a limited list of URLs. Use it to open exceptions to certain schemes, subdomains of other domains, ports, or specific paths, using the format specified at ( https://www.chromium.org/administrators/url-blocklist-filter-format ). The most specific filter determines if a URL is blocked or allowed. The URLAllowlist policy takes precedence over URLBlocklist. This policy is limited to 1,000 entries.
+
+This policy also allows enabling the automatic invocation by the browser of external application registered as protocol handlers for the listed protocols like \&quot;tel:\&quot; or \&quot;ssh:\&quot;.
+
+Leaving the policy unset allows no exceptions to URLBlocklist.
+
+From Google Chrome version 92, this policy is also supported in the headless mode.
+
+On Microsoft® Windows®, this functionality is only available on instances that are joined to a Microsoft® Active Directory® domain, running on Windows 10 Pro, or enrolled in Chrome Browser Cloud Management. On macOS, this functionality is only available on instances that are managed via MDM, or joined to a domain via MCX.</string>
+  <string name="URLBlocklistTitle">Block access to a list of URLs</string>
+  <string name="URLBlocklistDesc">Setting the policy prevents webpages with prohibited URLs from loading. It provides a list of URL patterns that specify forbidden URLs. Leaving the policy unset means no URLs are prohibited in the browser. Format the URL pattern according to this format ( https://www.chromium.org/administrators/url-blocklist-filter-format ). Up to 1,000 exceptions can be defined in URLAllowlist.
+
+From Google Chrome version 73, you can block javascript://* URLs. However, it affects only JavaScript entered in the address bar (or, for example, bookmarklets). In-page JavaScript URLs with dynamically loaded data aren\'t subject to this policy. For example, if you block example.com/abc, then example.com can still load example.com/abc using XMLHTTPRequest.
+
+From Google Chrome version 92, this policy is also supported in the headless mode.
+
+Note: Blocking internal chrome://* URLs can lead to unexpected errors.</string>
+  <string name="UnthrottledNestedTimeoutEnabledTitle">Control the nesting threshold before which Javascript setTimeout() function start being clamped.</string>
+  <string name="UnthrottledNestedTimeoutEnabledDesc">setTimeout(…, 0) is commonly used to break down long Javascript tasks.
+When the policy is set to Enabled, setTimeouts and setIntervals with an interval smaller than 4ms are not clamped as aggressively.
+This improves short horizon performance, but websites abusing the API will still eventually have their setTimeouts clamped.
+
+This may change task ordering on a web page, leading to unexpected behavior on sites that are dependent on a certain ordering in some way.
+It also may affect sites with a lot of setTimeout() with a timeout of 0ms usage, e.g. increasing CPU load.
+
+For users where this policy is unset, Chrome will roll out the change gradually on the stable channel.
+
+This is a temporary policy that is planned be removed in Chrome 107. This deadline may be extended if there is a need for it among enterprises.
+</string>
+  <string-array name="UnthrottledNestedTimeoutEnabledEntries">
+    <item>Javascript setTimeout() will not be clamped until a higher nesting threshold.</item>
+    <item>Javascript setTimeout() will be clamped after a normal nesting threshold.</item>
+    <item>Default behavior for setTimeout() function nested clamp.</item>
+  </string-array>
+  <string-array name="UnthrottledNestedTimeoutEnabledValues">
+    <item>True</item>
+    <item>False</item>
+    <item>None</item>
+  </string-array>
+  <string name="UrlKeyedAnonymizedDataCollectionEnabledTitle">Enable URL-keyed anonymized data collection</string>
+  <string name="UrlKeyedAnonymizedDataCollectionEnabledDesc">Setting the policy to Enabled means URL-keyed anonymized data collection, which sends URLs of pages the user visits to Google to make searches and browsing better, is always active.
+
+Setting the policy to Disabled results in no URL-keyed anonymized data collection.
+
+If you set the policy, users can\'t change. If not set, then URL-keyed anonymized data collection at first, but users can change it.</string>
+  <string name="UrlParamFilterEnabledTitle">Control the URL parameter filter feature</string>
+  <string name="UrlParamFilterEnabledDesc">When enabled or not set, the URL parameter filter may remove some parameters when a user selects \&quot;Open Link in Incognito Window\&quot; from the context menu.
+When disabled, no filtering is performed.
+This policy is temporary and may be removed in a future release.</string>
+  <string-array name="UrlParamFilterEnabledEntries">
+    <item>Allow the browser to filter URL parameters.</item>
+    <item>Disallow any filtering of URL parameters.</item>
+  </string-array>
+  <string-array name="UrlParamFilterEnabledValues">
+    <item>True</item>
+    <item>False</item>
+  </string-array>
+  <string name="UserAgentClientHintsGREASEUpdateEnabledTitle">Control the User-Agent Client Hints GREASE Update feature.</string>
+  <string name="UserAgentClientHintsGREASEUpdateEnabledDesc">When enabled the User-Agent Client Hints GREASE Update feature aligns the User-Agent GREASE algorithm with the latest spec.
+The updated spec may break some websites that restrict the characters that requests may contain. See the spec for more information: https://wicg.github.io/ua-client-hints/#grease
+If this policy is enabled or not set, the browser will decide which User-Agent GREASE algorithm to use. If the policy is disabled the prior User-Agent GREASE algorithm is used.
+This policy is a temporary measure and will be removed in a future release.</string>
+  <string-array name="UserAgentClientHintsGREASEUpdateEnabledEntries">
+    <item>Allow the updated User-Agent GREASE algorithm to be run.</item>
+    <item>Force the prior User-Agent GREASE algorithm to be used.</item>
+  </string-array>
+  <string-array name="UserAgentClientHintsGREASEUpdateEnabledValues">
+    <item>True</item>
+    <item>False</item>
+  </string-array>
+  <string name="UserAgentReductionTitle">Enable or disable the User-Agent Reduction.</string>
+  <string name="UserAgentReductionDesc">The User-Agent HTTP request header is scheduled to be reduced. In order to facilitate testing and compatibility, this policy can enable the reduction feature for all websites, or disable the ability for origin trials or field trials to enable the feature.
+
+To learn more about the User-Agent Reduction and its timeline, read here:
+
+https://blog.chromium.org/2021/09/user-agent-reduction-origin-trial-and-dates.html
+</string>
+  <string-array name="UserAgentReductionEntries">
+    <item>User Agent reduction will be controllable via Field-Trials and Origin-Trials.</item>
+    <item>User Agent reduction disabled, and not enabled by Field-Trials or Origin-Trials.</item>
+    <item>User Agent reduction will be enabled for all origins.</item>
+  </string-array>
+  <string-array name="UserAgentReductionValues">
+    <item>0</item>
+    <item>1</item>
+    <item>2</item>
+  </string-array>
+  <string name="WebRtcUdpPortRangeTitle">Restrict the range of local UDP ports used by WebRTC</string>
+  <string name="WebRtcUdpPortRangeDesc">If the policy is set, the UDP port range used by WebRTC is restricted to the specified port interval (endpoints included).
+
+If the policy is not set, or if it is set to the empty string or an invalid port range, WebRTC is allowed to use any available local UDP port.</string>
+  <string name="WebSQLAccessTitle">Force WebSQL to be enabled.</string>
+  <string name="WebSQLAccessDesc">WebSQL is on by default as of M101, but can be disabled via Chrome flag.
+If this policy is set to false or unset, WebSQL can be disabled.
+If this policy is set to true, WebSQL cannot be disabled.</string>
+  <string-array name="WebSQLAccessEntries">
+    <item>Force WebSQL to be enabled.</item>
+    <item>Allow WebSQL to be disabled by Chrome flag.</item>
+  </string-array>
+  <string-array name="WebSQLAccessValues">
+    <item>True</item>
+    <item>False</item>
+  </string-array>
+  <string name="WebUsbAllowDevicesForUrlsTitle">Automatically grant permission to these sites to connect to USB devices with the given vendor and product IDs.</string>
+  <string name="WebUsbAllowDevicesForUrlsDesc">Setting the policy lets you list the URL patterns that specify which sites are automatically granted permission to access a USB device with the given vendor and product IDs. Each item in the list requires both devices and urls fields for the policy to be valid. Each item in the devices field can have a vendor_id and product_id field. Omitting the vendor_id field will create a policy matching any device. Omitting the product_id field will create a policy matching any device with the given vendor ID. A policy which has a product_id field without a vendor_id field is invalid.
+
+The USB permission model will grant the specified URL permission to access the USB device as a top-level origin. If embedded frames need to access USB devices, the \'usb\' feature-policy header should be used to grant access. The URL must be valid, otherwise the policy is ignored.
+
+Deprecated: The USB permission model used to support specifying both the requesting and embedding URLs. This is deprecated and only supported for backwards compatiblity in this manner: if both a requesting and embedding URL is specified, then the embedding URL will be granted the permission as top-level origin and the requsting URL will be ignored entirely.
+
+This policy overrides DefaultWebUsbGuardSetting, WebUsbAskForUrls, WebUsbBlockedForUrls and the user\'s preferences.
+
+This policy only affects access to USB devices through the WebUSB API. To grant access to USB devices through the Web Serial API see the SerialAllowUsbDevicesForUrls policy.</string>
+  <string name="WebUsbAskForUrlsTitle">Allow WebUSB on these sites</string>
+  <string name="WebUsbAskForUrlsDesc">Setting the policy lets you list the URL patterns that specify which sites can ask users to grant them access to a USB device.
+
+Leaving the policy unset means DefaultWebUsbGuardSetting applies for all sites, if it\'s set. If not, users\' personal settings apply.
+
+URL patterns must not conflict with WebUsbAskForUrls. Neither policy takes precedence if a URL matches with both.
+
+For detailed information on valid url patterns, please see https://cloud.google.com/docs/chrome-enterprise/policies/url-patterns. * is not an accepted value for this policy.</string>
+  <string name="WebUsbBlockedForUrlsTitle">Block WebUSB on these sites</string>
+  <string name="WebUsbBlockedForUrlsDesc">Setting the policy lets you list the URL patterns that specify which sites can\'t ask users to grant them access to a USB device.
+
+Leaving the policy unset means DefaultWebUsbGuardSetting applies for all sites, if it\'s set. If not, the user\'s personal setting applies.
+
+URL patterns can\'t conflict with WebUsbAskForUrls. Neither policy takes precedence if a URL matches with both.
+
+For detailed information on valid url patterns, please see https://cloud.google.com/docs/chrome-enterprise/policies/url-patterns. * is not an accepted value for this policy.</string>
+  <string name="WebXRImmersiveArEnabledTitle">Allow creating WebXR\'s \&quot;immersive-ar\&quot; sessions</string>
+  <string name="WebXRImmersiveArEnabledDesc">Configures whether the sites that the user navigates to are allowed to create immersive Augmented Reality sessions using WebXR Device API.
+
+When this policy is unset or enabled, the WebXR Device API will accept \&quot;immersive-ar\&quot; during session creation, thus allowing the users to enter Augmented Reality experiences.
+
+When this policy is disabled, the WebXR Device API will reject requests to create sessions with mode set to \&quot;immersive-ar\&quot;. The existing \&quot;immersive-ar\&quot; sessions (if any) will not be terminated.
+
+For more details about \&quot;immersive-ar\&quot; sessions, please see WebXR Augmented Reality Module specfication.</string>
+  <string-array name="WebXRImmersiveArEnabledEntries">
+    <item>Allow creating WebXR\'s \&quot;immersive-ar\&quot; sessions</item>
+    <item>Prevent creating WebXR\'s \&quot;immersive-ar\&quot; sessions</item>
+  </string-array>
+  <string-array name="WebXRImmersiveArEnabledValues">
+    <item>True</item>
+    <item>False</item>
+  </string-array>
+</resources>

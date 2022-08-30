@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Syarat Perkhidmatan Chrome akan berubah pada 31 Mac"</string>
+<string name="tos_notification_body_text">"Sila semak syarat baharu"</string>
+<string name="tos_notification_ack_button_text">"Faham"</string>
+<string name="tos_notification_review_button_text">"Semak"</string>
+<string name="webapp_update_dialog_title_name">"Semak kemaskinian nama"</string>
+<string name="webapp_update_dialog_title_icon">"Semak kemaskinian ikon"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"Semak kemaskinian nama &amp; ikon"</string>
+<string name="webapp_update_explanation">"Jika apl web ini cuba memperdaya anda agar menganggapnya apl lain, nyahpasang apl ini."</string>
+<string name="webapp_update_current_icon">"Ikon semasa"</string>
+<string name="webapp_update_new_icon">"Ikon baharu"</string>
+<string name="webapp_update_negative_button">"Nyahpasang apl"</string>
+<string name="search_or_type_web_address">"Cari atau taip alamat web"</string>
+<string name="password_manager_username_label">"Nama pengguna"</string>
+<string name="password_manager_password_label">"Kata laluan"</string>
+<string name="password_manager_update_button">"Kemas kini"</string>
+<string name="confirm_username_dialog_title">"Sahkan nama pengguna anda"</string>
+<string name="options_homepage_title">"Halaman utama"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"Sahkan menggunakan telefon ini"</string>
+<string name="cablev2_get_assertion_notification_title">"Sahkan identiti anda"</string>
+</resources>

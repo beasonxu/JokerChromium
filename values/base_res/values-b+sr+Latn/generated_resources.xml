@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Chrome uslovi korišćenja usluge se menjaju 31. marta"</string>
+<string name="tos_notification_body_text">"Pregledajte nove uslove"</string>
+<string name="tos_notification_ack_button_text">"Važi"</string>
+<string name="tos_notification_review_button_text">"Pregledaj"</string>
+<string name="webapp_update_dialog_title_name">"Pregledajte ažuriranje naziva"</string>
+<string name="webapp_update_dialog_title_icon">"Pregledajte ažuriranje ikone"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"Pregledajte ažuriranja imena i ikona"</string>
+<string name="webapp_update_explanation">"Ako ova veb-aplikacija pokušava da vas prevari da je neka druga aplikacija, deinstalirajte je."</string>
+<string name="webapp_update_current_icon">"Aktuelna ikona"</string>
+<string name="webapp_update_new_icon">"Nova ikona"</string>
+<string name="webapp_update_negative_button">"Deinstaliraj aplikaciju"</string>
+<string name="search_or_type_web_address">"Pretražite ili unesite veb-adresu"</string>
+<string name="password_manager_username_label">"Korisničko ime"</string>
+<string name="password_manager_password_label">"Lozinka"</string>
+<string name="password_manager_update_button">"Ažuriraj"</string>
+<string name="confirm_username_dialog_title">"Potvrdite korisničko ime"</string>
+<string name="options_homepage_title">"Početna stranica"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"Potvrdite pomoću ovog telefona"</string>
+<string name="cablev2_get_assertion_notification_title">"Verifikujte identitet"</string>
+</resources>

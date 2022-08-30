@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"ข้อกำหนดในการให้บริการของ Chrome จะมีการเปลี่ยนแปลงในวันที่ 31 มีนาคม"</string>
+<string name="tos_notification_body_text">"โปรดอ่านข้อกำหนดใหม่"</string>
+<string name="tos_notification_ack_button_text">"สำเร็จ"</string>
+<string name="tos_notification_review_button_text">"ดู"</string>
+<string name="webapp_update_dialog_title_name">"ตรวจสอบการอัปเดตชื่อ"</string>
+<string name="webapp_update_dialog_title_icon">"ตรวจสอบการอัปเดตไอคอน"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"ตรวจสอบการอัปเดตชื่อและไอคอน"</string>
+<string name="webapp_update_explanation">"โปรดถอนการติดตั้งหากเว็บแอปนี้พยายามหลอกล่อคุณให้คิดว่าเป็นแอปอื่น"</string>
+<string name="webapp_update_current_icon">"ไอคอนปัจจุบัน"</string>
+<string name="webapp_update_new_icon">"ไอคอนใหม่"</string>
+<string name="webapp_update_negative_button">"ถอนการติดตั้งแอป"</string>
+<string name="search_or_type_web_address">"ค้นหาหรือพิมพ์ที่อยู่เว็บ"</string>
+<string name="password_manager_username_label">"ชื่อผู้ใช้"</string>
+<string name="password_manager_password_label">"รหัสผ่าน"</string>
+<string name="password_manager_update_button">"อัปเดต"</string>
+<string name="confirm_username_dialog_title">"ยืนยันชื่อผู้ใช้ของคุณ"</string>
+<string name="options_homepage_title">"หน้าแรก"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"ยืนยันด้วยโทรศัพท์เครื่องนี้"</string>
+<string name="cablev2_get_assertion_notification_title">"ยืนยันตัวตนของคุณ"</string>
+</resources>

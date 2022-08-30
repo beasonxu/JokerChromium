@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Умовы выкарыстання Chrome зменяцца 31 сакавіка"</string>
+<string name="tos_notification_body_text">"Азнаёмцеся з новымі ўмовамі"</string>
+<string name="tos_notification_ack_button_text">"Зразумела"</string>
+<string name="tos_notification_review_button_text">"Праглядзець"</string>
+<string name="webapp_update_dialog_title_name">"Праверце новае імя"</string>
+<string name="webapp_update_dialog_title_icon">"Праверце новы значок"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"Праверце новы значок і імя"</string>
+<string name="webapp_update_explanation">"Калі гэта вэб-праграма спрабуе выдаць сябе за іншую, выдаліце яе."</string>
+<string name="webapp_update_current_icon">"Бягучы значок"</string>
+<string name="webapp_update_new_icon">"Новы значок"</string>
+<string name="webapp_update_negative_button">"Выдаліць праграму"</string>
+<string name="search_or_type_web_address">"Увядзіце пошукавы запыт або вэб-адрас"</string>
+<string name="password_manager_username_label">"Імя карыстальніка"</string>
+<string name="password_manager_password_label">"Пароль"</string>
+<string name="password_manager_update_button">"Абнавіць"</string>
+<string name="confirm_username_dialog_title">"Пацвердзіце імя карыстальніка"</string>
+<string name="options_homepage_title">"Галоўная старонка"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"Праходзьце спраўджанне з дапамогай тэлефона"</string>
+<string name="cablev2_get_assertion_notification_title">"Спраўдзіце сваю асобу"</string>
+</resources>

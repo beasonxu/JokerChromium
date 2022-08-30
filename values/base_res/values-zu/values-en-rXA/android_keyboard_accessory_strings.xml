@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="all_passwords_bottom_sheet_content_description">"Ļîšţ öƒ çréðéñţîåļš ţö bé ƒîļļéð öñ ţöûçĥ. - one two three four five six seven eight"</string>
+<string name="all_passwords_bottom_sheet_half_height">"Ļîšţ öƒ çréðéñţîåļš ţö bé ƒîļļéð öñ ţöûçĥ öþéñéð åţ ĥåļƒ ĥéîĝĥţ. - one two three four five six seven eight nine ten - one two"</string>
+<string name="all_passwords_bottom_sheet_full_height">"Ļîšţ öƒ çréðéñţîåļš ţö bé ƒîļļéð öñ ţöûçĥ öþéñéð åţ ƒûļļ ĥéîĝĥţ. - one two three four five six seven eight nine ten - one two"</string>
+<string name="all_passwords_bottom_sheet_closed">"Ļîšţ öƒ çréðéñţîåļš ţö bé ƒîļļéð öñ ţöûçĥ îš çļöšéð. - one two three four five six seven eight nine ten"</string>
+<string name="all_passwords_bottom_sheet_title">"Þåššŵörðš - one"</string>
+<string name="all_passwords_bottom_sheet_title_gpm">"Šéļéçţ þåššŵörð - one two"</string>
+<string name="all_passwords_bottom_sheet_search_hint">"Šéårçĥ - one"</string>
+<string name="all_passwords_bottom_sheet_no_password">"Ñö þåššŵörð - one two"</string>
+<string name="all_passwords_bottom_sheet_warning_dialog_message_first">"Îƒ ýöû ţrûšţ %s, ýöû çåñ ûšé å šåvéð þåššŵörð ƒör åñöţĥér šîţé. - one two three four five six seven eight nine ten - one two three"</string>
+<string name="all_passwords_bottom_sheet_warning_dialog_message_second">"Ţrý ţö ûšé å ûñîqûé þåššŵörð ƒör évérý šîţé. - one two three four five six seven eight nine"</string>
+<string name="all_passwords_bottom_sheet_subtitle">"Îƒ ýöû ţrûšţ %s, ýöû çåñ ûšé å šåvéð þåššŵörð ţö šîĝñ îñ - one two three four five six seven eight nine ten - one two three"</string>
+<string name="autofill_keyboard_accessory_content_description">"Þåššŵörðš åvåîļåbļé - one two"</string>
+<string name="autofill_keyboard_accessory_modern_content_description">"Åûţöƒîļļ šûĝĝéšţîöñš åvåîļåbļé åbövé ţĥé ķéýböårð - one two three four five six"</string>
+<string name="keyboard_accessory_sheet_hide">"Šĥöŵ ķéýböårð - one two"</string>
+<string name="iph_keyboard_accessory_fill_with_chrome">"Ûšé Çĥrömé åûţöƒîļļ šûĝĝéšţîöñ - one two three four"</string>
+<string name="iph_keyboard_accessory_swipe_for_more">"Šŵîþé ţö šéé möré šûĝĝéšţîöñš - one two three four five"</string>
+<string name="password_generation_accessory_button">"Šûĝĝéšţ šţröñĝ þåššŵörð - one two three"</string>
+<string name="password_generation_accessory_button_short">"Šûĝĝéšţ þåššŵörð - one two"</string>
+<string name="password_accessory_sheet_toggle">"Šĥöŵ þåššŵörðš - one two"</string>
+<string name="password_accessory_sheet_opened">"Šĥöŵîñĝ šåvéð þåššŵörðš åñð þåššŵörð öþţîöñš - one two three four five six"</string>
+<string name="address_accessory_sheet_title">"Åððréššéš - one"</string>
+<string name="address_accessory_sheet_toggle">"Šĥöŵ Åððréššéš - one two"</string>
+<string name="address_accessory_sheet_opened">"Šĥöŵîñĝ šåvéð åððréššéš - one two three"</string>
+<string name="credit_card_accessory_sheet_toggle">"Šĥöŵ þåýméñţ méţĥöðš - one two three"</string>
+<string name="credit_card_accessory_sheet_opened">"Šĥöŵîñĝ šåvéð þåýméñţ méţĥöðš - one two three four"</string>
+<string name="iph_keyboard_accessory_payment_virtual_cards">"Ûšé ýöûr vîrţûåļ çårð ƒör åððéð šéçûrîţý - one two three four five six seven"</string>
+</resources>

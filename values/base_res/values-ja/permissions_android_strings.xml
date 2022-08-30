@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"周囲の 3D マップを作成するには、%1$s にカメラの使用を許可する必要があります。"</string>
+<string name="infobar_missing_camera_permission_text">"このサイトを利用するには、%1$s でカメラの使用を許可する必要があります。"</string>
+<string name="infobar_missing_microphone_permission_text">"このサイトを利用するには、%1$s でマイクの使用を許可する必要があります。"</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"このサイトを利用するには、%1$s でカメラとマイクの使用を許可する必要があります。"</string>
+<string name="infobar_missing_location_permission_text">"このサイトで現在地を共有するには、%1$s で位置情報の使用を許可する必要があります。"</string>
+<string name="infobar_update_permissions_button_text">"続行"</string>
+<string name="nfc_disabled_on_device_message">"続行するには、Android の設定で NFC をオンにしてください。"</string>
+<string name="nfc_prompt_turn_on">"オンにする"</string>
+<string name="overlay_detected_dialog_title">"このサイトは権限を要求できません"</string>
+<string name="overlay_detected_dialog_message">"他のアプリのバブルやオーバーレイをすべて閉じてから、もう一度お試しください。"</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;ヘルプ&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"ペア設定"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"電波強度: レベル %d"</item>
+  <item quantity="other">"電波強度: レベル %d"</item>
+</plurals>
+<string name="bluetooth_device_connected">"接続しているデバイス"</string>
+<string name="bluetooth_dialog_title">"%1$s がペア設定を要求しています"</string>
+<string name="bluetooth_not_found">"対応デバイスが見つかりませんでした"</string>
+<string name="bluetooth_searching">"デバイスのスキャン中… &lt;link&gt;ヘルプ&lt;/link&gt;"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;ヘルプ&lt;/link1&gt;または&lt;link2&gt;再スキャン&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Chrome ではデバイスをスキャンするために現在地情報にアクセスする必要があります。現在地情報へのアクセスは&lt;services_link&gt;このデバイスでオフになっています&lt;/services_link&gt;。"</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Chrome ではデバイスをスキャンするために現在地情報にアクセスする必要があります。&lt;permission_link&gt;権限を更新&lt;/permission_link&gt;してください。また、現在地情報へのアクセスが&lt;services_link&gt;このデバイスでオフになっています&lt;/services_link&gt;。"</string>
+<string name="bluetooth_need_nearby_devices_permission">"付近のデバイスをスキャンするには Chrome に権限を許可する必要があります。&lt;permission_link&gt;権限を変更&lt;/permission_link&gt;してください。"</string>
+<string name="bluetooth_need_location_permission">"デバイスをスキャンするには、Chrome で位置情報にアクセスする必要があります。&lt;permission_link&gt;権限を更新&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;ヘルプ&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome から Bluetooth アダプタをオンにできません"</string>
+<string name="bluetooth_adapter_off">"ペア設定するには &lt;link&gt;Bluetooth をオン&lt;/link&gt;にしてください"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s が近くの Bluetooth デバイスのスキャンを求めています。検出済みのデバイスは次のとおりです。"</string>
+<string name="bluetooth_scanning_device_unknown">"不明またはサポートされていないデバイス（%1$s）"</string>
+<string name="item_chooser_item_name_with_id">"%1$s（%2$s）"</string>
+</resources>

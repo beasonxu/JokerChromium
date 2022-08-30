@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"Thola uhlelo lokusebenza kusukela ku-Google Play Isitolo: %s"</string>
+<string name="app_banner_install">"Faka"</string>
+<string name="menu_add_to_homescreen">"Engeza kusikrini sasekhaya"</string>
+<string name="menu_add_to_homescreen_install">"Faka uhlelo lokusebenza"</string>
+<string name="added_to_homescreen">"I-%1$s iye yangezwa kusikrini sakho sasekhaya"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"Faka lolu hlelo lokusebenza"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"Isithombe-skrini"</string>
+<string name="image_zoom_content_description">"Isithombe-skrini. Thepha ukuze uvale."</string>
+<string name="webapk_install_in_progress">"Isangeza isayithi langaphambilini"</string>
+<string name="webapk_install_failed">"Yehlulekile ukufaka"</string>
+</resources>

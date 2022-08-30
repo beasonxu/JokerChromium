@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="low_memory_error">"Հնարավոր չէ ավարտել նախորդ գործողությունը, քանի որ հիշողությունը բավարար չէ"</string>
+<string name="opening_file_error">"Չհաջողվեց բացել ընտրված ֆայլը"</string>
+<string name="copy_to_clipboard_failure_message">"Չհաջողվեց պատճենել սեղմատախտակին"</string>
+<string name="link_copied">"Հղումը պատճենվեց"</string>
+</resources>

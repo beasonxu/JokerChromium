@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"I-%1$s idinga imvume yokufinyelela kwikhamera yakho ukuze isungule imephu ye-3D yendawo yakho ekuzungezile."</string>
+<string name="infobar_missing_camera_permission_text">"I-%1$s idinga imvume yokufinyelela kukhamera yakho kule sayithi."</string>
+<string name="infobar_missing_microphone_permission_text">"I-%1$s idinga imvume ukuze ifinyelele kumakrofoni yakho kuleli sayithi."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"I-%1$s idinga imvume ukuze ifinyelele kukhamera yakho nemakrofoni yaleli sayithi."</string>
+<string name="infobar_missing_location_permission_text">"I-%1$s idinga ukufinyelela kundawo yakho ukuze yabelane ngendawo yakho naleli sayithi."</string>
+<string name="infobar_update_permissions_button_text">"Qhubeka"</string>
+<string name="nfc_disabled_on_device_message">"Ukuze uqhubeke, vula i-NFC kuzilungiselelo ze-Android"</string>
+<string name="nfc_prompt_turn_on">"Vula"</string>
+<string name="overlay_detected_dialog_title">"Leli sayithi alikwazi ukucela imvume yakho"</string>
+<string name="overlay_detected_dialog_message">"Vala noma imaphi amabhamuza noma ukumboza okuvela kwezinye izinhlelo zokusebenza. Bese, uyazama futhi."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Thola usizo&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Banqa"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Ileveli yamandla esignali: %d ibha"</item>
+  <item quantity="other">"Ileveli yamandla esignali: %d amabha"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Idivayisi exhunyiwe"</string>
+<string name="bluetooth_dialog_title">"%1$s ufuna ukubhangqa"</string>
+<string name="bluetooth_not_found">"Awekho amadivayisi asebenzisanayo atholakele"</string>
+<string name="bluetooth_searching">"&lt;link&gt;Thola usizo&lt;/link&gt; ngenkathi uskenela amadivayisi…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Thola usizo&lt;/link1&gt; noma &lt;link2&gt;phinda uskene&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"I-Chrome idinga ukufinyelela kwendawo ukuze iskene amadivayisi. Ukufinyelela kwendawo &lt;services_link&gt;kuvaliwe kule divayisi&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"I-Chrome idinga ukufinyelela kwendawo ukuze iskene amadivayisi. &lt;permission_link&gt;Buyekeza izimvume&lt;/permission_link&gt;. Ukufinyelela kwendawo nakho &lt;services_link&gt;kuvaliwe kule divayisi&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"I-Chrome idinga imvume yokuskena amadivayisi aseduze. &lt;permission_link&gt;Buyekeza izimvume&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"I-Chrome idinga ukufinyelela kwendawo ukuze iskenele amadivayisi. &lt;permission_link&gt;Buyekeza izimvume&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Thola usizo&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"I-Chrome ayikwazi ukuvula i-adaptha ye-Bluetooth"</string>
+<string name="bluetooth_adapter_off">"&lt;link&gt;Vula i-Bluetooth&lt;/link&gt; ukuvumela ukumatanisa"</string>
+<string name="bluetooth_scanning_prompt_origin">"I-%1$s ifuna ukuskenela amadivayisi aseduze e-Bluetooth. Amadivayisi alandelayo atholiwe:"</string>
+<string name="bluetooth_scanning_device_unknown">"Idivayisi engaziwa noma engasekelwe (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

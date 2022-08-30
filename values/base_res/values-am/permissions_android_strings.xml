@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s የዙሪያዎ 3ል ካርታ መፍጠር እንዲችል ካሜራዎን የመድረስ ፈቃድ ያስፈልገዋል።"</string>
+<string name="infobar_missing_camera_permission_text">"%1$s ለዚህ ጣቢያ የእርስዎን ካሜራ የመድረስ ፈቃድ ያስፈልገዋል።"</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s ለዚህ ጣቢያ የእርስዎን ማይክሮፎን የመድረስ ፈቃድ ያስፈልገዋል"</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s ለዚህ ጣቢያ የእርስዎን ካሜራ እና ማይክሮፎን የመድረስ ፈቃድ ያስፈልገዋል።"</string>
+<string name="infobar_missing_location_permission_text">"%1$s አካባቢዎን ለዚህ ጣቢያ ለማጋራት የአካባቢዎ መዳረሻ ያስፈልገዋል።"</string>
+<string name="infobar_update_permissions_button_text">"ቀጥል"</string>
+<string name="nfc_disabled_on_device_message">"ለመቀጤል በAndroid ቅንብሮች ላይ NFCን ያብሩ"</string>
+<string name="nfc_prompt_turn_on">"አብራ"</string>
+<string name="overlay_detected_dialog_title">"ይህ ጣቢያ የእርስዎን ፈቃድ መጠየቅ አይችልም"</string>
+<string name="overlay_detected_dialog_message">"ከሌሎች መተግበሪያዎች የሚመጡ ማናቸውንም አረፋዎች ወይም ተደራቢዎች ይዝጉ። ከዚያም እንደገና ይሞክሩ።"</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;እገዛ ያግኙ&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"አጣምር"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"የሲግናል ጥንካሬ ደረጃ፦ %d አሞሌ"</item>
+  <item quantity="other">"የሲግናል ጥንካሬ ደረጃ፦ %d አሞሌዎች"</item>
+</plurals>
+<string name="bluetooth_device_connected">"የተገናኘ መሣሪያ"</string>
+<string name="bluetooth_dialog_title">"%1$s መጣመር ይፈልጋል"</string>
+<string name="bluetooth_not_found">"ምንም ተኳሃኝ መሣሪያዎች አልተገኙም"</string>
+<string name="bluetooth_searching">"መሣሪያዎችን እየቃኙ ሳሉ &lt;link&gt;እገዛን ያግኙ&lt;/link&gt;…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;እገዛን ያግኙ&lt;/link1&gt; ወይም &lt;link2&gt;ዳግም ይቃኙ&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Chrome መሣሪያዎችን መቃኘት እንዲችል የአካባቢ መዳረሻ ያስፈልገዋል። የአካባቢ መዳረሻ &lt;services_link&gt;ለዚህ መሣሪያ ጠፍቷል&lt;/services_link&gt;።"</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Chrome መሣሪያዎችን መቃኘት እንዲችል የአካባቢ መዳረሻ ያስፈልገዋል። &lt;permission_link&gt;ፈቃዶችን ያዘምኑ&lt;/permission_link&gt;። የአካባቢ መዳረሻ እንዲሁም &lt;services_link&gt;ለዚህ መዳረሻ ጠፍቷል&lt;/services_link&gt;።"</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome በአቅራቢያ ያሉ መሣሪያዎችን ለመቃኘት ፈቃድ ያስፈልገዋል። &lt;permission_link&gt;ፈቃዶችን ያዘምኑ&lt;/permission_link&gt;።"</string>
+<string name="bluetooth_need_location_permission">"Chrome መሣሪያዎችን ለመቃኘት የአካባቢ መዳረሻ ያስፈልገዋል። &lt;permission_link&gt;ፍቃዶችን ያዘምኑ&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;እገዛ ያግኙ&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome የብሉቱዝ አስማሚውን ማብራት አልቻለም"</string>
+<string name="bluetooth_adapter_off">"ማጣመርን ለመፍቀድ &lt;link&gt;ብሉቱዝን ያብሩ&lt;/link&gt;"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s በአቅራቢያ የብሉቱዝ መሣሪያዎች ካሉ መቃኘት ይፈልጋል። የሚከተሉት መሣሪያዎች ተገኝተዋል፦"</string>
+<string name="bluetooth_scanning_device_unknown">"ያልታወቀ ወይም የማይደገፍ መሣሪያ (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

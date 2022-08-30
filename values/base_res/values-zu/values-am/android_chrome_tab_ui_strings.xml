@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="iph_tab_groups_quickly_compare_pages_text">"ስብስብ በመፍጠር በፍጥነት ገጾችን ያነጻጽሩ። ለመጀመር አንድ አገናኝን ነክተው ይያዙ።"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_text">"ሌላ ትር ለመመልከት መታ ያድርጉ"</string>
+<string name="iph_tab_groups_your_tabs_together_text">"የእርስዎ ትሮች እዚህ አብረው ይቦደናሉ"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_accessibility_text">"ከማያው ግርጌ አጠገብ በትር ቡድንዎ ውስጥ ባሉ ትሮች መካከይ ይቀያይሩ"</string>
+<string name="undo_bar_group_tabs_message">"%1$s ትሮች ተሰብስበዋል"</string>
+<plurals name="bottom_tab_grid_title_placeholder">
+  <item quantity="one">"%1$d ትር"</item>
+  <item quantity="other">"%1$d ትሮች"</item>
+</plurals>
+<string name="bottom_tab_grid_new_tab">"አዲስ ትር ወደ ቡድን አክል"</string>
+<string name="accessibility_bottom_tab_grid_close_tab_sheet">"የሙሉ ማያ ፍርግርግን ደብቅ"</string>
+<string name="accessibility_bottom_tab_strip_expand_tab_sheet">"የቡድን ትሮች በሙሉ ማያ ፍርግርግ አሳይ"</string>
+<string name="accessibility_bottom_tab_strip_close_strip">"የትር ድርድርን ዝጋ"</string>
+<string name="tabswitcher_create_group">"ቡድን ይፍጠሩ"</string>
+<string name="accessibility_tab_switcher">"የትር መቀያየሪያ"</string>
+<string name="accessibility_close_tab_group_button">"የትር ቡድንን ከ%1$s ትሮች ጋር ይዝጉ"</string>
+<string name="accessibility_close_tab_group_button_with_group_name">"የ%1$s ቡድንን ከ%2$s ትሮች ጋር ይዝጉ"</string>
+<string name="tab_selection_editor_group">"ቡድን"</string>
+<string name="tab_selection_editor_toolbar_select_tabs">"ትሮችን ምረጥ"</string>
+<plurals name="accessibility_tab_selection_editor_group_button">
+  <item quantity="one">"%1$d የተመረጠ ትር ቦድን"</item>
+  <item quantity="other">"%1$d የተመረጡ ትሮችን ቦድን"</item>
+</plurals>
+<string name="accessibility_tab_selection_editor_back_button">"ባለብዙ ምርጫ ሁነታን ደብቅ"</string>
+<string name="accessibility_tab_selection_editor">"ባለብዙ ምርጫ ሁነታ"</string>
+<string name="tab_grid_dialog_remove_from_group">"ከቡድን አስወግድ"</string>
+<string name="tab_grid_dialog_toolbar_remove_from_group">"ትሮችን ከቡድን ያስወግዱ"</string>
+<string name="tab_grid_dialog_selection_mode_remove">"አስወግድ"</string>
+<string name="tab_grid_dialog_toolbar_share_group">"ቡድንን አጋራ"</string>
+<string name="tab_grid_dialog_toolbar_edit_group_name">"የቡድን ስም ያርትዑ"</string>
+<string name="accessibility_expand_tab_group">"ከ%1$s ትሮች ጋር የትር ቡድኖችን ይዘርጉ።"</string>
+<string name="accessibility_expand_tab_group_with_group_name">"የ%1$s ትር ስብስብ በ%2$s ትሮች ያስፉ።"</string>
+<plurals name="accessibility_tab_selection_dialog_remove_button">
+  <item quantity="one">"ከቡድን %1$d የተመረጠ ትርን ያስወግዱ።"</item>
+  <item quantity="other">"ከቡድን %1$d የተመረጡ ትሮችን ያስወግዱ።"</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button">
+  <item quantity="one">"%1$d ትርን ሰብስብ።"</item>
+  <item quantity="other">"ከ%1$d ትሮች ጋር የትር ቡድንን ሰብስብ።"</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button_with_group_name">
+  <item quantity="one">"%1$d ትርን ሰብስብ።"</item>
+  <item quantity="other">"የ%1$s ትር ቡድንን ከ%2$d ትሮች ጋር ሰብስብ።"</item>
+</plurals>
+<string name="accessibility_tab_grid_dialog">"የትር ቡድን ተዘርግቷል"</string>
+<string name="iph_drag_and_drop_introduction">"ለመቦደን ትሮችን ይጎትቱ"</string>
+<string name="iph_drag_and_drop_show_me">"አሳየኝ"</string>
+<string name="iph_drag_and_drop_title">"ይደራጁ"</string>
+<string name="iph_drag_and_drop_content">"ትሮችን ለመቦደን፣ ትርን ነካ አድርገው ይያዙ። በመቀጠል፣ ወደ ሌላ ትር ይጎትቱት።"</string>
+<string name="tab_switcher_carousel_title">"ማሰሱን ይቀጥሉ"</string>
+<string name="tab_switcher_carousel_view_all">"ሁሉንም አሳይ"</string>
+<string name="tab_suggestion_review_button">"ገምግም"</string>
+<string name="tab_suggestion_close_tab_action_button">"ዝጋ"</string>
+<string name="tab_suggestion_close_stale_message">"%1$s ትሮችዎ በቅርቡ ስራ ላይ አልዋሉም። ይዘጉ?"</string>
+<string name="tab_suggestion_group_tabs_message">"%1$s ትሮች የሚዛመዱ ይመስላሉ ይቦደኑ?"</string>
+<string name="accessibility_tab_suggestion_review_button">"ጥቆማ ሐሳቦችን ይገምግሙ።"</string>
+<string name="accessibility_tab_suggestion_close_stale_message">"ጥቆማ ሐሳብ፦ ከእርስዎ ትሮች %1$s ያክሉ በቅርቡ ጥቅም ላይ አልዋሉም። ይዘጉ?"</string>
+<string name="accessibility_tab_suggestion_group_tabs_message">"የአስተያየት ጥቆማ፦ %1$s ትሮች የሚዛመዱ ይመስላሉ። ይቦደኑ?"</string>
+<string name="accessibility_tab_suggestion_dismiss_button">"ጥቆማ ሐሳቦችን ያሰናብቱ።"</string>
+<plurals name="accessibility_tab_suggestion_close_tab_action_button">
+  <item quantity="one">"የተመረጠ %1$d ትር ዝጋ"</item>
+  <item quantity="other">"የተመረጡ %1$d ትሮችን ዝጋ"</item>
+</plurals>
+<string name="accessibility_tab_movement_left">"ትርን ወደ ግራ አንቀሳቅስ"</string>
+<string name="accessibility_tab_movement_right">"ቅርን ወደ ቀኝ አንቀሳቅስ"</string>
+<string name="accessibility_tab_movement_up">"ትርን ወደ ላይ አንቀሳቅስ"</string>
+<string name="accessibility_tab_movement_down">"ትርን ወደ ታች ያንቀሳቅሱ"</string>
+<string name="undo_tab_strip_closure_message">"የትር ድርድር ተዘግቷል"</string>
+<string name="tab_strip_info_bar_question">"የትር ድርድር ዳግም አይታይ?"</string>
+<string name="tab_strip_info_bar_no_reshow">"ዳግም አታሳይ"</string>
+<string name="tab_strip_info_bar_reshow">"በኋላ አሳይ"</string>
+<string name="price_drop_spotted_title">"የዋጋ ቅነሳ ታይቷል"</string>
+<string name="price_drop_spotted_content">"በክፍት ትሮችዎ ውስጥ የትኛው ንጥል የተሻለ ዋጋ እንዳለው ይመልከቱ"</string>
+<string name="price_drop_spotted_show_me">"አሳየኝ"</string>
+<string name="price_drop_spotted_lower_price">"ዝቅተኛ ዋጋ"</string>
+<string name="accessibility_tab_price_card">"የዚህ ንጥል ዋጋ በቅርቡ ከ%1$s ወደ %2$s ቀንሷል"</string>
+<string name="price_drop_alerts_card_title">"ለዋጋ ቅነሳዎች ማንቂያዎችን ያግኙ?"</string>
+<string name="price_drop_alerts_card_get_notified_content">"በክፍት ትር ውስጥ ዝቅተኛ ዋጋ ሲኖር ማንቂያ ይደርስዎታል"</string>
+<string name="price_drop_alerts_card_get_notified">"ማሳወቂያ ይድረሰዎት"</string>
+<string name="price_drop_alerts_card_go_to_settings_content">"በክፍት ትር ውስጥ ዝቅተኛ ዋጋ ሲኖር ማንቂያ ለማግኘት በቅንብሮች ውስጥ ማሳወቂያዎችን ያብሩ።"</string>
+<string name="price_drop_alerts_card_go_to_settings">"ወደ ቅንብሮች ሂድ"</string>
+<string name="price_tracking_settings">"የዋጋ መከታተያ ቅንብሮች"</string>
+<string name="track_prices_on_tabs">"በትሮች ላይ ዋጋዎችን ይከታተሉ"</string>
+<string name="track_prices_on_tabs_description">"በትሮችዎ ላይ የዋጋ ቅነሳዎችን ይመልከቱ"</string>
+<string name="price_drop_alerts">"የዋጋ ቅነሳ ማንቂያዎች"</string>
+<string name="price_drop_alerts_description">"ዋጋዎች ሲቀነሱ ማሳወቂያ ያግኙ"</string>
+<string name="price_drop_notification_content_title">"%2$s ላይ የ%1$s ዋጋ ቅናሽ"</string>
+<string name="price_drop_notification_content_text">"አሁን %1$s %2$s ላይ"</string>
+<string name="price_drop_notification_action_visit_site">"ጣቢያ ይጎብኙ"</string>
+<string name="price_drop_notification_action_turn_off_alert">"ምርቱን መከታተል አቁም"</string>
+<string name="merchant_viewer_message_title">"የመደብር መረጃ ይታይ?"</string>
+<string name="merchant_viewer_message_title_see_reviews">"የመደብር ግምገማዎችን ይመለከታሉ?"</string>
+<string name="merchant_viewer_message_action">"አሳይ"</string>
+<string name="merchant_viewer_message_description_rating">"%1$s/%2$s ደረጃ"</string>
+<plurals name="merchant_viewer_message_description_reviews">
+  <item quantity="one">"(%1$s ግምገማ)"</item>
+  <item quantity="other">"(%1$s ግምገማዎች)"</item>
+</plurals>
+<plurals name="merchant_viewer_message_description_reviews_from_google">
+  <item quantity="one">"%1$s ግምገማ ከGoogle"</item>
+  <item quantity="other">"%1$s ግምገማዎች ከGoogle"</item>
+</plurals>
+<string name="merchant_viewer_message_rating_numerical">"%1$.1f/%2$d"</string>
+<string name="merchant_viewer_message_rating_word">"የተሰጡ ደረጃዎች"</string>
+<plurals name="accessibility_merchant_viewer_message_description">
+  <item quantity="one">" %1$s/%2$s ደረጃ፣ %3$d ግምገማ"</item>
+  <item quantity="other">"%1$s/%2$s ደረጃ፣%3$d ግምገማዎች"</item>
+</plurals>
+<string name="accessibility_merchant_viewer_message_announcement">"የመደብር መረጃን ይመልከቱ፣ አማራጩ ከማያ ገጹ አናት አጠገብ ይገኛል"</string>
+<string name="merchant_viewer_preview_sheet_title">"Google | ስለዚህ መደብር"</string>
+<string name="merchant_viewer_omnibox_icon_iph">"የመደብር መረጃን ይመልከቱ"</string>
+<string name="page_info_store_info_title">"የመደብር መረጃ"</string>
+<string name="page_info_store_info_description_with_no_review">"(የተሰጠ ደረጃ)"</string>
+<string name="page_info_store_info_description_with_no_rating">"የመመለሻ መመሪያን እና ሌሎችንም ይመልከቱ"</string>
+<string name="merchant_viewer_preview_sheet_description">"ስለዚህ መደብር መረጃ"</string>
+<string name="merchant_viewer_preview_sheet_opened_half">"ስለዚህ መደብር መረጃ በግማሽ ቁመት ተከፍቷል"</string>
+<string name="merchant_viewer_preview_sheet_opened_full">"ስለዚህ መደብር መረጃ በሙሉ ቁመት ተከፍቷል"</string>
+<string name="merchant_viewer_preview_sheet_closed">"ስለዚህ መደብር መረጃ ተዘግቷል"</string>
+<string name="close_all_tabs_dialog_title">"ሁሉም ትሮች ይዘጉ?"</string>
+<string name="close_all_tabs_dialog_message">"የተዘጉ ትሮችን በChrome ዋና ምናሌ ስር ባሉ በቅርብ ጊዜ ትሮች ውስጥ ማግኘት ይችላሉ"</string>
+<string name="close_all_tabs_dialog_title_incognito">"ሁሉም ማንነት የማያሳውቁ ትሮች ይዘጉ?"</string>
+<string name="close_all_tabs_dialog_message_incognito">"በእነዚህ ማንነት የማያሳውቁ ትሮች ውስጥ የሚኖርዎት እንቅስቃሴ ከዚህ መሣሪያ ላይ ይጸዳል።"</string>
+</resources>

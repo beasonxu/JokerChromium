@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"৩১ মাৰ্চৰ পৰা Chromeৰ সেৱাৰ চর্তাৱলী সলনি হ’ব"</string>
+<string name="tos_notification_body_text">"অনুগ্ৰহ কৰি নতুন চৰ্তাৱলী পৰ্যালোচনা কৰক"</string>
+<string name="tos_notification_ack_button_text">"বুজি পালোঁ"</string>
+<string name="tos_notification_review_button_text">"পৰ্যালোচনা কৰক"</string>
+<string name="webapp_update_dialog_title_name">"নামৰ আপডে’ট পৰ্যালোচনা কৰক"</string>
+<string name="webapp_update_dialog_title_icon">"চিহ্নৰ আপডে\'ট পৰ্যালোচনা কৰক"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"নাম আৰু চিহ্নৰ আপডে’ট পৰ্যালোচনা কৰক"</string>
+<string name="webapp_update_explanation">"যদি এই ৱেব এপ্‌টোৱে আপোনাক অন্য এটা এপ্ বুলি জালত পেলাবলৈ চেষ্টা কৰি আছে, এইটোক আনইনষ্টল কৰক।"</string>
+<string name="webapp_update_current_icon">"বৰ্তমানৰ চিহ্ন"</string>
+<string name="webapp_update_new_icon">"নতুন চিহ্ন"</string>
+<string name="webapp_update_negative_button">"এপ্ আনইনষ্টল কৰক"</string>
+<string name="search_or_type_web_address">"সন্ধান কৰক বা ৱেব ঠিকনা টাইপ কৰক"</string>
+<string name="password_manager_username_label">"ব্যৱহাৰকাৰীৰ নাম"</string>
+<string name="password_manager_password_label">"পাছৱৰ্ড"</string>
+<string name="password_manager_update_button">"আপডে\'ট কৰক"</string>
+<string name="confirm_username_dialog_title">"আপোনাৰ ব্যৱহাৰকাৰীৰ নামটো নিশ্চিত কৰক"</string>
+<string name="options_homepage_title">"গৃহ পৃষ্ঠা"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"এই ফ\'নটোৰ জৰিয়তে সত্যাপন কৰক"</string>
+<string name="cablev2_get_assertion_notification_title">"আপোনাৰ পৰিচয় সত্যাপন কৰক"</string>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"លក្ខខណ្ឌ​ប្រើប្រាស់​របស់ Chrome នឹងផ្លាស់ប្ដូរ​នៅថ្ងៃទី 31 ខែមីនា"</string>
+<string name="tos_notification_body_text">"សូម​ពិនិត្យមើល​លក្ខខណ្ឌ​ថ្មី"</string>
+<string name="tos_notification_ack_button_text">"យល់ហើយ"</string>
+<string name="tos_notification_review_button_text">"ពិនិត្យមើល"</string>
+<string name="webapp_update_dialog_title_name">"ពិនិត្យមើល​ការប្ដូរឈ្មោះ"</string>
+<string name="webapp_update_dialog_title_icon">"ពិនិត្យមើល​ការប្ដូរ​រូបតំណាង"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"ពិនិត្យមើលការប្ដូរឈ្មោះ និងរូបតំណាង"</string>
+<string name="webapp_update_explanation">"ប្រសិនបើ​កម្មវិធីលើ​អ៊ីនធឺណិតនេះ​កំពុងព្យាយាម​បោកបញ្ឆោតអ្នកឱ្យគិតថា វាគឺជាកម្មវិធីផ្សេង សូមលុប​វាចេញ។"</string>
+<string name="webapp_update_current_icon">"រូបតំណាង​បច្ចុប្បន្ន"</string>
+<string name="webapp_update_new_icon">"រូបតំណាង​ថ្មី"</string>
+<string name="webapp_update_negative_button">"លុប​កម្មវិធី"</string>
+<string name="search_or_type_web_address">"ស្វែងរក ឬវាយ​បញ្ចូល​អាសយដ្ឋានទំព័រ"</string>
+<string name="password_manager_username_label">"ឈ្មោះអ្នកប្រើ"</string>
+<string name="password_manager_password_label">"ពាក្យសម្ងាត់"</string>
+<string name="password_manager_update_button">"ធ្វើបច្ចុប្បន្នភាព"</string>
+<string name="confirm_username_dialog_title">"បញ្ជាក់ឈ្មោះអ្នកប្រើប្រាស់របស់អ្នក"</string>
+<string name="options_homepage_title">"ទំព័រដើម"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"ផ្ទៀងផ្ទាត់​ដោយប្រើ​ទូរសព្ទ​នេះ"</string>
+<string name="cablev2_get_assertion_notification_title">"ផ្ទៀងផ្ទាត់អត្តសញ្ញាណរបស់អ្នក"</string>
+</resources>

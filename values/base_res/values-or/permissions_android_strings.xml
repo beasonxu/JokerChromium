@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s ଆପଣଙ୍କ ପରିପାର୍ଶ୍ୱର ଏକ 3D ମ୍ୟାପ ତିଆରି କରିବା ପାଇଁ ଆପଣଙ୍କ କ୍ୟାମେରାକୁ ଆକ୍ସେସ କରିବାକୁ ଅନୁମତି ଆବଶ୍ୟକ କରେ।"</string>
+<string name="infobar_missing_camera_permission_text">"%1$s ଏହି ସାଇଟ ପାଇଁ ଆପଣଙ୍କ କ୍ୟାମେରାକୁ ଆକ୍ସେସ କରିବାକୁ ଅନୁମତି ଆବଶ୍ୟକ କରେ।"</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s ଏହି ସାଇଟ ପାଇଁ ଆପଣଙ୍କ ମାଇକ୍ରୋଫୋନକୁ ଆକ୍ସେସ କରିବାକୁ ଅନୁମତି ଆବଶ୍ୟକ କରେ।"</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s ଏହି ସାଇଟ ପାଇଁ ଆପଣଙ୍କ କ୍ୟାମେରା ଏବଂ ମାଇକ୍ରୋଫୋନକୁ ଆକ୍ସେସ କରିବାକୁ ଅନୁମତି ଆବଶ୍ୟକ କରେ।"</string>
+<string name="infobar_missing_location_permission_text">"%1$s ଏହି ସାଇଟ ସହ ଆପଣଙ୍କ ଲୋକେସନ ସେୟାର କରିବା ପାଇଁ ଆପଣଙ୍କ ଲୋକେସନକୁ ଆକ୍ସେସ ଆବଶ୍ୟକ କରେ।"</string>
+<string name="infobar_update_permissions_button_text">"ଜାରି ରଖନ୍ତୁ"</string>
+<string name="nfc_disabled_on_device_message">"ଜାରି ରଖିବା ପାଇଁ, Android ସେଟିଂସରେ NFC ଚାଲୁ କରନ୍ତୁ"</string>
+<string name="nfc_prompt_turn_on">"ଚାଲୁ କରନ୍ତୁ"</string>
+<string name="overlay_detected_dialog_title">"ଏହି ସାଇଟ୍ ଆପଣଙ୍କ ଅନୁମତି ମାଗିପାରିବ ନାହିଁ"</string>
+<string name="overlay_detected_dialog_message">"ଅନ୍ୟ ଆପଗୁଡ଼ିକରୁ ଯେ କୌଣସି ବବଲ୍ କିମ୍ବା ଓଭରଲେକୁ ବନ୍ଦ କରନ୍ତୁ। ତାପରେ, ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।"</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;ସାହାଯ୍ୟ ପାଆନ୍ତୁ&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"ପେୟାର୍ କରନ୍ତୁ"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"ସିଗ୍‍ନାଲ୍‌ ଦକ୍ଷତାର ସ୍ତର: %dଟି ବାର୍‍"</item>
+  <item quantity="other">"ସିଗ୍‍ନାଲ୍‌ ଦକ୍ଷତାର ସ୍ତର: %dଟି ବାର୍‍"</item>
+</plurals>
+<string name="bluetooth_device_connected">"ସଂଯୁକ୍ତ ଥିବା ଡିଭାଇସ୍"</string>
+<string name="bluetooth_dialog_title">"%1$s ପେୟାର୍‌ କରିବାକୁ ଚାହୁଁଛି"</string>
+<string name="bluetooth_not_found">"କୌଣସି ସୁସଙ୍ଗତ ଡିଭାଇସ୍ ମିଳିଲା ନାହିଁ।"</string>
+<string name="bluetooth_searching">"ଯେତେବେଳେ, ଡିଭାଇସ୍‌ ପାଇଁ ସ୍କାନିଂ କରୁଛନ୍ତି, ସେତେବେଳେ&lt;link&gt;ସାହାଯ୍ୟ ପ୍ରାପ୍ତ କରନ୍ତୁ&lt;/link&gt;…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;ସାହାଯ୍ୟ ପାଆନ୍ତୁ&lt;/link1&gt; କିମ୍ବା &lt;link2&gt;ପୁନଃ-ସ୍କାନ୍ କରନ୍ତୁ&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"ଡିଭାଇସ୍‌ଗୁଡ଼ିକୁ ସ୍କାନ୍ କରିବାକୁ Chrome ଲୋକେସନ୍ ଆକ୍‌ସେସ୍ ଆବଶ୍ୟକ କରୁଛି। &lt;services_link&gt;ଏହି ଡିଭାଇସ୍ ପାଇଁ&lt;/services_link&gt; ଲୋକେସନ୍ ଆକ୍‌ସେସ୍ ବନ୍ଦ ଅଛି।"</string>
+<string name="bluetooth_need_location_permission_and_services_on">"ଡିଭାଇସ୍‌ଗୁଡ଼ିକୁ ସ୍କାନ୍ କରିବାକୁ Chrome ଲୋକେସନ୍ ଆକ୍‌ସେସ୍ ଆବଶ୍ୟକ କରେ। &lt;permission_link&gt;ଅପ୍‌ଡେଟ୍ ଅନୁମତି&lt;/permission_link&gt;। ଲୋକେସନ୍‍ ଆକ୍ସେସ୍‍ ମଧ୍ୟ &lt;services_link&gt;ଏହି ଡିଭାଇସ୍‍ ପାଇଁ ବନ୍ଦ ଅଛି&lt;/services_link&gt;।"</string>
+<string name="bluetooth_need_nearby_devices_permission">"ଆଖପାଖର ଡିଭାଇସଗୁଡ଼ିକ ପାଇଁ ସ୍କାନ୍ କରିବାକୁ Chrome ଅନୁମତି ଆବଶ୍ୟକ କରେ। &lt;permission_link&gt;ଅନୁମତିଗୁଡ଼ିକ ଅପଡେଟ୍ କରନ୍ତୁ&lt;/permission_link&gt;।"</string>
+<string name="bluetooth_need_location_permission">"ଡିଭାଇସ୍ ପାଇଁ ସ୍କାନ୍ କରିବାକୁ Chrome ଲୋକେସନ୍ ଆକ୍ସେସ୍ ଆବଶ୍ୟକ କରେ। &lt;permission_link&gt;ଅପ୍‌ଡେଟ୍ ଅନୁମତି&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;ସାହାଯ୍ୟ ପାଆନ୍ତୁ&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"ବ୍ଲୁଟୁଥ୍‍ ଆଡପ୍ଟର୍ ଚାଲୁ କରିବାରେ Chrome ଅକ୍ଷମ ଅଟେ"</string>
+<string name="bluetooth_adapter_off">"ପେୟାରିଂକୁ ଅନୁମତି ଦେବା ପାଇଁ &lt;link&gt;ବ୍ଲୁଟୁଥ୍ ଚାଲୁ କରନ୍ତୁ&lt;/link&gt;"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s ଆଖପାଖର ବ୍ଲୁଟୁଥ୍ ଡିଭାଇସ୍‌ଗୁଡ଼ିକୁ ସ୍କାନ୍ କରିବାକୁ ଚାହୁଁଛି। ନିମ୍ନୋକ୍ତ ଡିଭାଇସ୍‌ଗୁଡ଼ିକ ମିଳିଛି:"</string>
+<string name="bluetooth_scanning_device_unknown">"ଅଜଣା କିମ୍ବା ଅସମର୍ଥିତ ଡିଭାଇସ୍ (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

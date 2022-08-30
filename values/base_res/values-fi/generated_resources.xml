@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Chromen käyttöehdot muuttuvat 31.3."</string>
+<string name="tos_notification_body_text">"Lue uudet ehdot"</string>
+<string name="tos_notification_ack_button_text">"Ymmärretty"</string>
+<string name="tos_notification_review_button_text">"Tarkista"</string>
+<string name="webapp_update_dialog_title_name">"Katso nimen muutos"</string>
+<string name="webapp_update_dialog_title_icon">"Katso kuvakkeen muutos"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"Katso nimen ja kuvakkeen muutokset"</string>
+<string name="webapp_update_explanation">"Jos tämä verkkosovellus yrittää huijata sinua luulemaan, että se on jokin toinen sovellus, poista se."</string>
+<string name="webapp_update_current_icon">"Nykyinen kuvake"</string>
+<string name="webapp_update_new_icon">"Uusi kuvake"</string>
+<string name="webapp_update_negative_button">"Poista sovellus"</string>
+<string name="search_or_type_web_address">"Hae tai kirjoita verkko-osoite"</string>
+<string name="password_manager_username_label">"Käyttäjätunnus"</string>
+<string name="password_manager_password_label">"Salasana"</string>
+<string name="password_manager_update_button">"Päivitä"</string>
+<string name="confirm_username_dialog_title">"Vahvista käyttäjätunnuksesi"</string>
+<string name="options_homepage_title">"Etusivu"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"Todenna tällä puhelimella"</string>
+<string name="cablev2_get_assertion_notification_title">"Vahvista henkilöllisyys"</string>
+</resources>

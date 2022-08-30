@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="iph_tab_groups_quickly_compare_pages_text">"建立群組以快速比較多個頁面。輕觸並按住連結即可開始建立。"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_text">"輕按即可查看另一個分頁"</string>
+<string name="iph_tab_groups_your_tabs_together_text">"您的分頁在這裡分組顯示"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_accessibility_text">"喺接近畫面底部附近嘅分頁群組入面切換分頁"</string>
+<string name="undo_bar_group_tabs_message">"已將 %1$s 個分頁加入群組"</string>
+<plurals name="bottom_tab_grid_title_placeholder">
+  <item quantity="one">"%1$d 個分頁"</item>
+  <item quantity="other">"%1$d 個分頁"</item>
+</plurals>
+<string name="bottom_tab_grid_new_tab">"喺群組入面加新嘅分頁"</string>
+<string name="accessibility_bottom_tab_grid_close_tab_sheet">"隱藏全螢幕網格"</string>
+<string name="accessibility_bottom_tab_strip_expand_tab_sheet">"用全螢幕網格顯示群組嘅分頁"</string>
+<string name="accessibility_bottom_tab_strip_close_strip">"關閉分頁列"</string>
+<string name="tabswitcher_create_group">"建立群組"</string>
+<string name="accessibility_tab_switcher">"分頁切換工具"</string>
+<string name="accessibility_close_tab_group_button">"閂有 %1$s 個分頁嘅分頁群組"</string>
+<string name="accessibility_close_tab_group_button_with_group_name">"閂有 %2$s 個分頁嘅「%1$s」群組"</string>
+<string name="tab_selection_editor_group">"群組"</string>
+<string name="tab_selection_editor_toolbar_select_tabs">"選取分頁"</string>
+<plurals name="accessibility_tab_selection_editor_group_button">
+  <item quantity="one">"將 %1$d 個揀咗嘅分頁分組"</item>
+  <item quantity="other">"將 %1$d 個揀咗嘅分頁分組"</item>
+</plurals>
+<string name="accessibility_tab_selection_editor_back_button">"隱藏多重選取模式"</string>
+<string name="accessibility_tab_selection_editor">"多重選取模式"</string>
+<string name="tab_grid_dialog_remove_from_group">"從群組中移除"</string>
+<string name="tab_grid_dialog_toolbar_remove_from_group">"從群組中移除分頁"</string>
+<string name="tab_grid_dialog_selection_mode_remove">"移除"</string>
+<string name="tab_grid_dialog_toolbar_share_group">"分享群組項目"</string>
+<string name="tab_grid_dialog_toolbar_edit_group_name">"編輯群組名稱"</string>
+<string name="accessibility_expand_tab_group">"展開有 %1$s 個分頁嘅分頁群組。"</string>
+<string name="accessibility_expand_tab_group_with_group_name">"用 %2$s 個分頁展開「%1$s」分頁群組。"</string>
+<plurals name="accessibility_tab_selection_dialog_remove_button">
+  <item quantity="one">"由群組度移除 %1$d 個揀咗嘅分頁。"</item>
+  <item quantity="other">"由群組度移除 %1$d 個揀咗嘅分頁。"</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button">
+  <item quantity="one">"收合 %1$d 個分頁。"</item>
+  <item quantity="other">"收合有 %1$d 個分頁嘅分頁群組。"</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button_with_group_name">
+  <item quantity="one">"收合 %1$d 個分頁。"</item>
+  <item quantity="other">"收合有 %2$d 個分頁嘅「%1$s」分頁群組。"</item>
+</plurals>
+<string name="accessibility_tab_grid_dialog">"展開咗分頁群組"</string>
+<string name="iph_drag_and_drop_introduction">"拖曳分頁來分組"</string>
+<string name="iph_drag_and_drop_show_me">"顯示"</string>
+<string name="iph_drag_and_drop_title">"讓所有內容變得井井有條"</string>
+<string name="iph_drag_and_drop_content">"如要將分頁加入群組，請輕觸並按住分頁，然後將它拖曳到其他分頁上。"</string>
+<string name="tab_switcher_carousel_title">"繼續瀏覽"</string>
+<string name="tab_switcher_carousel_view_all">"查看全部"</string>
+<string name="tab_suggestion_review_button">"查看"</string>
+<string name="tab_suggestion_close_tab_action_button">"關閉"</string>
+<string name="tab_suggestion_close_stale_message">"您有 %1$s 個分頁最近沒有使用過。要關閉這些分頁嗎？"</string>
+<string name="tab_suggestion_group_tabs_message">"似乎有 %1$s 個相關的分頁。要唔要將佢哋分組？"</string>
+<string name="accessibility_tab_suggestion_review_button">"睇下建議。"</string>
+<string name="accessibility_tab_suggestion_close_stale_message">"我有建議：你有 %1$s 個分頁最近冇用過，係咪要閂咗佢？"</string>
+<string name="accessibility_tab_suggestion_group_tabs_message">"建議：似乎有 %1$s 個相關嘅分頁。要唔要將佢哋分組？"</string>
+<string name="accessibility_tab_suggestion_dismiss_button">"閂建議。"</string>
+<plurals name="accessibility_tab_suggestion_close_tab_action_button">
+  <item quantity="one">"閂 %1$d 個揀咗嘅分頁"</item>
+  <item quantity="other">"閂 %1$d 個揀咗嘅分頁"</item>
+</plurals>
+<string name="accessibility_tab_movement_left">"將分頁左移"</string>
+<string name="accessibility_tab_movement_right">"移去右邊"</string>
+<string name="accessibility_tab_movement_up">"將分頁上移"</string>
+<string name="accessibility_tab_movement_down">"下移分頁"</string>
+<string name="undo_tab_strip_closure_message">"已關閉分頁列"</string>
+<string name="tab_strip_info_bar_question">"不要再顯示分頁列嗎？"</string>
+<string name="tab_strip_info_bar_no_reshow">"不要再顯示"</string>
+<string name="tab_strip_info_bar_reshow">"稍後再顯示"</string>
+<string name="price_drop_spotted_title">"有商品降價"</string>
+<string name="price_drop_spotted_content">"查看已開啟分頁中有哪項產品降價"</string>
+<string name="price_drop_spotted_show_me">"顯示"</string>
+<string name="price_drop_spotted_lower_price">"較低價格"</string>
+<string name="accessibility_tab_price_card">"呢件商品嘅價格最近由 %1$s 減到 %2$s"</string>
+<string name="price_drop_alerts_card_title">"要接收降價快訊嗎？"</string>
+<string name="price_drop_alerts_card_get_notified_content">"當開啟的分頁中有產品降價，您就會收到通知"</string>
+<string name="price_drop_alerts_card_get_notified">"接收通知"</string>
+<string name="price_drop_alerts_card_go_to_settings_content">"如要在開啟的分頁有降價產品時收到通知，請在「設定」中啟用通知功能。"</string>
+<string name="price_drop_alerts_card_go_to_settings">"前往「設定」"</string>
+<string name="price_tracking_settings">"價格追蹤設定"</string>
+<string name="track_prices_on_tabs">"在分頁上追蹤價格"</string>
+<string name="track_prices_on_tabs_description">"在分頁上查看降價資料"</string>
+<string name="price_drop_alerts">"降價快訊"</string>
+<string name="price_drop_alerts_description">"在降價時收到通知"</string>
+<string name="price_drop_notification_content_title">"%2$s 降價 %1$s"</string>
+<string name="price_drop_notification_content_text">"在 %2$s 上現售 %1$s"</string>
+<string name="price_drop_notification_action_visit_site">"瀏覽網站"</string>
+<string name="price_drop_notification_action_turn_off_alert">"停止追蹤產品"</string>
+<string name="merchant_viewer_message_title">"要查看商店資料嗎？"</string>
+<string name="merchant_viewer_message_title_see_reviews">"要查看商店評論嗎？"</string>
+<string name="merchant_viewer_message_action">"檢視"</string>
+<string name="merchant_viewer_message_description_rating">"評分：%1$s/%2$s"</string>
+<plurals name="merchant_viewer_message_description_reviews">
+  <item quantity="one">"(%1$s 則評論)"</item>
+  <item quantity="other">"(%1$s 則評論)"</item>
+</plurals>
+<plurals name="merchant_viewer_message_description_reviews_from_google">
+  <item quantity="one">"%1$s 個來自 Google 的評論"</item>
+  <item quantity="other">"%1$s 個來自 Google 的評論"</item>
+</plurals>
+<string name="merchant_viewer_message_rating_numerical">"%1$.1f/%2$d"</string>
+<string name="merchant_viewer_message_rating_word">"評分"</string>
+<plurals name="accessibility_merchant_viewer_message_description">
+  <item quantity="one">" %1$s 分，滿分係 %2$s 分，有 %3$d 則評論"</item>
+  <item quantity="other">"%1$s 分，滿分係 %2$s 分，有 %3$d 則評論"</item>
+</plurals>
+<string name="accessibility_merchant_viewer_message_announcement">"商店資料同可用選項喺螢幕最頂嘅附近"</string>
+<string name="merchant_viewer_preview_sheet_title">"Google | 關於此商店"</string>
+<string name="merchant_viewer_omnibox_icon_iph">"查看商店資料"</string>
+<string name="page_info_store_info_title">"商店資料"</string>
+<string name="page_info_store_info_description_with_no_review">"(商店評分)"</string>
+<string name="page_info_store_info_description_with_no_rating">"查看退貨政策等資料"</string>
+<string name="merchant_viewer_preview_sheet_description">"此商店的資料"</string>
+<string name="merchant_viewer_preview_sheet_opened_half">"關於呢間商店嘅資料宜家顯示喺畫面下半部"</string>
+<string name="merchant_viewer_preview_sheet_opened_full">"關於呢間商店嘅資料宜家顯示喺成個畫面"</string>
+<string name="merchant_viewer_preview_sheet_closed">"閂咗關於呢間商店嘅資料"</string>
+<string name="close_all_tabs_dialog_title">"要關閉所有分頁嗎？"</string>
+<string name="close_all_tabs_dialog_message">"在 Chrome 主選單下的「最近開啟的分頁」中，可以查看關閉的分頁"</string>
+<string name="close_all_tabs_dialog_title_incognito">"要關閉所有無痕式分頁嗎？"</string>
+<string name="close_all_tabs_dialog_message_incognito">"系統將會從此裝置清除您在這些無痕式分頁中的活動"</string>
+</resources>

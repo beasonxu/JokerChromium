@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"Lietotnei %1$s ir nepieciešama atļauja piekļūt jūsu kamerai, lai varētu izveidot jūsu apkārtnes 3D karti."</string>
+<string name="infobar_missing_camera_permission_text">"Lietotnei %1$s ir nepieciešama atļauja piekļūt jūsu kamerai šajā vietnē."</string>
+<string name="infobar_missing_microphone_permission_text">"Lietotnei %1$s ir nepieciešama atļauja piekļūt jūsu mikrofonam šajā vietnē."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"Lietotnei %1$s ir nepieciešama atļauja piekļūt jūsu kamerai un mikrofonam šajā vietnē."</string>
+<string name="infobar_missing_location_permission_text">"Lietotnei %1$s ir nepieciešama piekļuve jūsu atrašanās vietas datiem, lai varētu tos kopīgot ar šo vietni."</string>
+<string name="infobar_update_permissions_button_text">"Turpināt"</string>
+<string name="nfc_disabled_on_device_message">"Lai turpinātu, Android ierīces iestatījumos ieslēdziet NFC savienojumu"</string>
+<string name="nfc_prompt_turn_on">"Ieslēgt"</string>
+<string name="overlay_detected_dialog_title">"Šī vietne nevar pieprasīt jums atļauju"</string>
+<string name="overlay_detected_dialog_message">"Aizveriet citu lietotņu burbuļus vai pārklājumus. Pēc tam mēģiniet vēlreiz."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Saņemt palīdzību&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Savienot pārī"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Signāla stipruma līmenis: %d josla"</item>
+  <item quantity="zero">"Signāla stipruma līmenis: %d joslu"</item>
+  <item quantity="other">"Signāla stipruma līmenis: %d joslas"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Pievienota ierīce"</string>
+<string name="bluetooth_dialog_title">"%1$s vēlas savienot pārī"</string>
+<string name="bluetooth_not_found">"Netika atrastas saderīgas ierīces."</string>
+<string name="bluetooth_searching">"&lt;link&gt;Saņemiet palīdzību&lt;/link&gt;, meklējot ierīces…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Saņemiet palīdzību&lt;/link1&gt; vai &lt;link2&gt;meklējiet ierīces atkārtoti&lt;/link2&gt;."</string>
+<string name="bluetooth_need_location_services_on">"Lai meklētu ierīces, pārlūkam Chrome ir nepieciešama piekļuve atrašanās vietas datiem. &lt;services_link&gt;Šajā ierīcē ir izslēgta piekļuve atrašanās vietas datiem&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Lai meklētu ierīces, pārlūkam Chrome ir nepieciešama piekļuve atrašanās vietas datiem. &lt;permission_link&gt;Atjauniniet atļaujas&lt;/permission_link&gt;. Piekļuve atrašanās vietas datiem ir arī &lt;services_link&gt;izslēgta šai ierīcei&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Pārlūkā Chrome tiek pieprasīta atļauja meklēt tuvumā esošas ierīces. &lt;permission_link&gt;Atjaunināt atļaujas&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"Lai meklētu ierīces, pārlūkam Chrome ir nepieciešama piekļuve atrašanās vietai. &lt;permission_link&gt;Atjauniniet atļaujas&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Saņemt palīdzību&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome nevar ieslēgt Bluetooth adapteri."</string>
+<string name="bluetooth_adapter_off">"Lai atļautu savienošanu pārī, &lt;link&gt;ieslēdziet Bluetooth&lt;/link&gt;."</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s vēlas meklēt tuvumā esošas Bluetooth ierīces. Ir atrastas šīs ierīces:"</string>
+<string name="bluetooth_scanning_device_unknown">"Nezināma vai neatbalstīta ierīce (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

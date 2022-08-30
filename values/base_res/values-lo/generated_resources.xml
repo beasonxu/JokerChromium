@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"ຂໍ້ກຳນົດບໍລິການຂອງ Chrome ຈະມີການປ່ຽນແປງໃນວັນທີ 31 ມີນາ"</string>
+<string name="tos_notification_body_text">"ກະລຸນາກວດເບິ່ງຂໍ້ກຳນົດໃໝ່"</string>
+<string name="tos_notification_ack_button_text">"ເຂົ້າໃຈແລ້ວ"</string>
+<string name="tos_notification_review_button_text">"ກວດສອບ"</string>
+<string name="webapp_update_dialog_title_name">"ກວດສອບການອັບເດດຊື່"</string>
+<string name="webapp_update_dialog_title_icon">"ກວດສອບການອັບເດດໄອຄອນ"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"ກວດສອບອັບເດດຊື່ ແລະ ໄອຄອນ"</string>
+<string name="webapp_update_explanation">"ຫາກເວັບແອັບນີ້ພະຍາຍາມຫຼອກລໍ້ໃຫ້ທ່ານຄິດວ່າມັນເປັນແອັບອື່ນ, ໃຫ້ຖອນການຕິດຕັ້ງມັນອອກ."</string>
+<string name="webapp_update_current_icon">"ໄອຄອນປັດຈຸບັນ"</string>
+<string name="webapp_update_new_icon">"ໄອຄອນໃໝ່"</string>
+<string name="webapp_update_negative_button">"ຖອນການຕິດຕັ້ງແອັບ"</string>
+<string name="search_or_type_web_address">"ຊອກຫາ ຫຼື ພິມທີ່ຢູ່ເວັບ"</string>
+<string name="password_manager_username_label">"ຊື່​ຜູ້​ໃຊ້"</string>
+<string name="password_manager_password_label">"ລະຫັດຜ່ານ"</string>
+<string name="password_manager_update_button">"ອັບເດດ"</string>
+<string name="confirm_username_dialog_title">"ຢືນຢັນຊື່ຜູ້ໃຊ້ຂອງທ່ານ"</string>
+<string name="options_homepage_title">"ຫນ້າ​ຫຼັກ"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"ຢັ້ງຢືນດ້ວຍໂທລະສັບນີ້"</string>
+<string name="cablev2_get_assertion_notification_title">"ຢັ້ງຢືນຕົວຕົນຂອງທ່ານ"</string>
+</resources>

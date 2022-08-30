@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"৩১ মার্চ থেকে Chrome-এর \'পরিষেবার শর্তাবলী\'-তে পরিবর্তন হতে চলেছে"</string>
+<string name="tos_notification_body_text">"নতুন শর্তাবলী ভাল করে পড়ে নিন"</string>
+<string name="tos_notification_ack_button_text">"বুঝেছি"</string>
+<string name="tos_notification_review_button_text">"পর্যালোচনা করুন"</string>
+<string name="webapp_update_dialog_title_name">"নামের আপডেট দেখে নিন"</string>
+<string name="webapp_update_dialog_title_icon">"আইকনের আপডেট দেখে নিন"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"নাম এবং আইকনের আপডেট দেখে নিন"</string>
+<string name="webapp_update_explanation">"যদি এই ওয়েব অ্যাপ কৌশলে নিজেকে অন্য অ্যাপ হিসেবে দেখিয়ে আপনাকে প্রতারিত করে, তাহলে এটি আনইনস্টল করুন।"</string>
+<string name="webapp_update_current_icon">"বর্তমান আইকন"</string>
+<string name="webapp_update_new_icon">"নতুন আইকন"</string>
+<string name="webapp_update_negative_button">"অ্যাপ আনইনস্টল করুন"</string>
+<string name="search_or_type_web_address">"ওয়েব ঠিকানা খুঁজুন বা লিখুন"</string>
+<string name="password_manager_username_label">"ইউজারনেম"</string>
+<string name="password_manager_password_label">"পাসওয়ার্ড"</string>
+<string name="password_manager_update_button">"আপডেট করুন"</string>
+<string name="confirm_username_dialog_title">"আপনার ইউজারনেম কনফার্ম করুন"</string>
+<string name="options_homepage_title">"হোমপেজ"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"এই ফোনের সাহায্যে যাচাই করুন"</string>
+<string name="cablev2_get_assertion_notification_title">"আপনার পরিচয় যাচাই করুন"</string>
+</resources>

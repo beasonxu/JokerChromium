@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/cast_ic_mini_controller_rewind30.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/custom_tabs_handle_view_shape.xml" value="0.1" />
+        <entry key="app/src/main/res/xml/do_not_track_preferences.xml" value="0.1" />
+        <entry key="app/src/main/res_app/xml/do_not_track_preferences.xml" value="0.1" />
         <entry key="browser/feed/src/main/res/drawable/hairline_border_card_background_with_inset.xml" value="0.1" />
         <entry key="components/browser_ui_contacts_picker/src/main/res/layout/contacts_picker_dialog.xml" value="0.13880445795339413" />
         <entry key="components/browser_ui_photo_picker/src/main/res/layout/photo_picker_toolbar.xml" value="0.13880445795339413" />

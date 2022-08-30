@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="autofill_save_card_prompt_confirm">"Подтвердить"</string>
+<string name="autofill_mobile_save_card_to_cloud_confirmation_dialog_explanation">"Сохранив данные банковской карты и платежную информацию в своем аккаунте Google, вы сможете оплачивать покупки быстрее. Это безопасно."</string>
+<string name="autofill_mobile_save_card_to_cloud_confirmation_dialog_explanation_with_account_name">"Сохраните карту и платежную информацию в аккаунте Google (^1) для безопасной и более быстрой оплаты покупок."</string>
+<string name="autofill_fix_flow_prompt_save_card_label">"Сохранить карту"</string>
+<string name="autofill_save_card_prompt_cardholder_name_tooltip">"Это имя из вашего аккаунта Google"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_cvc">"Проверьте CVC-код и повторите попытку"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_date">"Проверьте срок действия и повторите попытку"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_cvc_and_expiration">"Проверьте срок действия и CVC-код, а затем повторите попытку"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_month">"Проверьте месяц в сроке действия карты и повторите попытку"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_year">"Проверьте год в сроке действия карты и повторите попытку"</string>
+<string name="autofill_card_unmask_prompt_enable_fido_auth_checkbox">"Использовать способ разблокировки экрана для подтверждения карт"</string>
+<string name="autofill_card_unmask_verification_in_progress">"Подтверждение карты…"</string>
+<string name="autofill_card_unmask_verification_success">"Ваша карта подтверждена"</string>
+<string name="autofill_expiration_date_separator">"/"</string>
+<string name="autofill_card_unmask_new_card_link">"Изменить информацию о карте"</string>
+<string name="autofill_wallet_management_link_text">"Изменить"</string>
+<string name="autofill_from_google_account_long">"Из Google Pay"</string>
+<string name="autofill_virtual_card_enrollment_accept_button_label">"Да"</string>
+<string name="autofill_virtual_card_enrollment_dialog_title_label">"Защитить ее с помощью виртуальной?"</string>
+<string name="autofill_virtual_card_number_switch_label">"Виртуальная карта"</string>
+<string name="autofill_offers_reminder_description_text">"Оплатите с помощью %1$s."</string>
+<string name="autofill_offers_reminder_deep_link_text">"Подробнее…"</string>
+<string name="autofill_payments_otp_verification_dialog_title">"Введите код подтверждения"</string>
+<string name="autofill_payments_otp_verification_dialog_cant_find_code_message">"Не можете найти код? &lt;link&gt;Получить новый&lt;/link&gt;"</string>
+<string name="autofill_payments_otp_verification_dialog_otp_input_hint">"Введите %1$s-значный код"</string>
+<string name="autofill_payments_otp_verification_dialog_positive_button_label">"Подтвердить"</string>
+<string name="autofill_payments_otp_verification_dialog_negative_button_label">"Отмена"</string>
+<string name="autofill_edit_credit_card">"Изменение данных карты"</string>
+<string name="autofill_create_credit_card">"Добавить карту"</string>
+<string name="autofill_clear_local_copy_button">"Удалить данные"</string>
+<string name="autofill_cc_amex">"American Express"</string>
+<string name="autofill_cc_diners">"Diners Club"</string>
+<string name="autofill_cc_discover">"Рекомендации"</string>
+<string name="autofill_cc_jcb">"JCB"</string>
+<string name="autofill_cc_mastercard">"Mastercard"</string>
+<string name="autofill_cc_mir">"Мир"</string>
+<string name="autofill_cc_union_pay">"China UnionPay"</string>
+<string name="autofill_cc_visa">"Visa"</string>
+<string name="autofill_address_summary_separator">", "</string>
+<string name="autofill_scan_credit_card">"Сканировать новую карту"</string>
+<string name="autofill_enable_profiles_toggle_sublabel">"В том числе телефонные номера, адреса электронной почты и адреса доставки."</string>
+<string name="autofill_enable_credit_cards_toggle_sublabel">"Сохранять и автоматически заполнять платежные данные"</string>
+<string name="autofill_addresses_settings_title">"Адреса и другие данные"</string>
+<string name="autofill_payment_methods">"Способы оплаты"</string>
+<string name="autofill_enable_profiles_toggle_label">"Сохранять и автоматически подставлять адреса"</string>
+<string name="autofill_enable_credit_cards_toggle_label">"Сохранять и автоматически подставлять платежные данные"</string>
+<string name="enable_credit_card_fido_auth_label">"Блокировка экрана"</string>
+<string name="enable_credit_card_fido_auth_sublabel">"Использовать блокировку экрана для быстрого подтверждения карт"</string>
+<string name="autofill_update_address_prompt_new_values_section_label">"Новый"</string>
+<string name="autofill_update_address_prompt_old_values_section_label">"Старый"</string>
+<string name="autofill_save_address_prompt_edit_button_tooltip">"Изменить адрес"</string>
+<string name="autofill_edit_address_dialog_title">"Изменить адрес"</string>
+<string name="http_post_warning_title">"Подтвердите повторную отправку формы"</string>
+<string name="http_post_warning">"На странице, которую вы ищете, использовалась введенная вами информация. При возврате на эту страницу может потребоваться повторить выполненные ранее действия. Продолжить?"</string>
+<string name="http_post_warning_resend">"Продолжить"</string>
+<string name="login_dialog_title">"Вход"</string>
+<string name="login_dialog_ok_button_label">"Вход"</string>
+<string name="login_dialog_username_field">"Имя пользователя"</string>
+<string name="login_dialog_password_field">"Пароль"</string>
+<string name="sad_tab_title">"Опаньки…"</string>
+<string name="sad_tab_message">"При загрузке этой страницы возникли неполадки."</string>
+<string name="sad_tab_reload_label">"Перезагрузить"</string>
+<string name="sad_tab_send_feedback_label">"Отправить отзыв"</string>
+<string name="sad_tab_reload_title">"Не удалось открыть страницу"</string>
+<string name="sad_tab_reload_try">"Попробуйте сделать следующее:"</string>
+<string name="sad_tab_reload_incognito">"Открыть страницу в новой вкладке инкогнито"</string>
+<string name="sad_tab_reload_restart_browser">"Перезапустите Chromium."</string>
+<string name="sad_tab_reload_restart_device">"Перезапуск устройства"</string>
+<string name="sad_tab_reload_learn_more">"Подробнее"</string>
+<string name="new_tab_otr_title">"Режим инкогнито"</string>
+<string name="new_tab_otr_subtitle">"Ваши действия в режиме инкогнито будут недоступны другим пользователям этого устройства. Однако закладки и скачанные файлы сохранятся."</string>
+<string name="new_tab_otr_subtitle_with_reading_list">"Ваши действия в режиме инкогнито будут недоступны другим пользователям этого устройства. Однако закладки, скачанные файлы и объекты из списка для чтения сохранятся."</string>
+<string name="new_tab_otr_not_saved">"В Chromium &lt;em&gt;не будет сохраняться&lt;/em&gt; следующая информация:
+        &lt;ul&gt;
+          &lt;li&gt;история браузера;
+          &lt;li&gt;файлы cookie и данные сайтов;
+          &lt;li&gt;сведения, указанные в формах.
+        &lt;/ul&gt;"</string>
+<string name="new_tab_otr_visible">"Ваши действия &lt;em&gt;будут видны&lt;/em&gt;:
+        &lt;ul&gt;
+          &lt;li&gt;сайтам, которые вы посещаете;
+          &lt;li&gt;вашему системному администратору;
+          &lt;li&gt;интернет-провайдеру.
+        &lt;/ul&gt;"</string>
+<string name="new_tab_otr_cookie_controls_controlled_tooltip_text">"Этот параметр можно изменить в настройках файлов cookie"</string>
+<string name="new_tab_otr_third_party_cookie">"Блокировать сторонние файлы cookie"</string>
+<string name="new_tab_otr_third_party_cookie_sublabel">"Когда эта настройка включена, сайты не могут использовать файлы cookie, которые отслеживают ваши действия в Интернете. Из-за этого некоторые функции на сайтах могут работать некорректно."</string>
+<string name="revamped_incognito_ntp_title">"Режим инкогнито в Chromium"</string>
+<string name="revamped_incognito_ntp_does_header">"Что не сохраняется в режиме инкогнито"</string>
+<string name="revamped_incognito_ntp_does_description">"Когда вы закроете все вкладки инкогнито в Chromium, с этого устройства будет удалена связанная с ними информация:
+          &lt;ul&gt;
+            &lt;li&gt;сведения о действиях в браузере;&lt;/li&gt;
+            &lt;li&gt;история поиска;&lt;/li&gt;
+            &lt;li&gt;данные, указанные в формах.&lt;/li&gt;
+          &lt;/ul&gt;"</string>
+<string name="revamped_incognito_ntp_does_not_header">"Что сохраняется в режиме инкогнито"</string>
+<string name="revamped_incognito_ntp_does_not_description">"Режим инкогнито не позволяет скрыть информацию о ваших действиях в интернете:
+        &lt;ul&gt;
+          &lt;li&gt;Сайты и используемые ими сервисы регистрируют посещения.&lt;/li&gt;
+          &lt;li&gt;Работодатели и администраторы образовательных учреждений могут отслеживать действия в браузере.&lt;/li&gt;
+          &lt;li&gt;Интернет-провайдеры могут анализировать трафик.&lt;/li&gt;
+        &lt;/ul&gt;"</string>
+<string name="revamped_incognito_ntp_learn_more">"Подробнее &lt;a&gt;о режиме инкогнито в Chromium&lt;/a&gt;…"</string>
+<string name="revamped_incognito_ntp_otr_third_party_cookie">"Блокировать сторонние файлы cookie в режиме инкогнито"</string>
+<string name="revamped_incognito_ntp_otr_third_party_cookie_sublabel">"Сайтам запрещается использовать файлы cookie, которые отслеживают ваши действия в интернете. Из-за этого некоторые функции сайтов могут работать некорректно."</string>
+<string name="ntp_article_suggestions_section_header">"Статьи для вас"</string>
+<string name="ntp_article_suggestions_section_empty">"Здесь появятся рекомендуемые статьи."</string>
+<string name="page_info_permission_ads_subtitle">"Сайт показывает навязчивую или вводящую в заблуждение рекламу"</string>
+<string name="payments_method_of_payment_label">"Способ оплаты"</string>
+<string name="payments_contact_details_label">"Контактные данные"</string>
+<string name="payments_add_contact_details_label">"Добавить контактные данные"</string>
+<string name="payments_edit_contact_details_label">"Изменить контактную информацию"</string>
+<string name="payments_add_billing_address">"Добавьте платежный адрес"</string>
+<string name="payments_add_name_on_card">"Укажите имя владельца карты"</string>
+<string name="payments_add_valid_card_number">"Введите номер действующей карты"</string>
+<string name="payments_add_more_information">"Укажите дополнительную информацию"</string>
+<string name="payments_edit_card">"Изменение данных карты"</string>
+<string name="payments_add_phone_number">"Добавьте номер"</string>
+<string name="payments_add_recipient">"Добавьте имя"</string>
+<string name="payments_add_valid_address">"Введите действительный адрес"</string>
+<string name="payments_add_email">"Добавление адреса электронной почты"</string>
+<string name="payments_add_name">"Добавьте имя"</string>
+<string name="payments_order_summary_label">"Информация о заказе"</string>
+<string name="payment_request_payment_method_section_name">"Платеж"</string>
+<string name="payments_shipping_summary_label">"Адрес доставки"</string>
+<string name="payments_shipping_address_label">"Адрес доставки"</string>
+<string name="payments_shipping_option_label">"Способ доставки"</string>
+<string name="payments_delivery_summary_label">"Доставка"</string>
+<string name="payments_delivery_address_label">"Адрес доставки"</string>
+<string name="payments_delivery_option_label">"Способ доставки"</string>
+<string name="payments_pickup_summary_label">"Получение"</string>
+<string name="payments_pickup_address_label">"Адрес выдачи"</string>
+<string name="payments_pickup_option_label">"Способ выдачи"</string>
+<string name="payments_edit_button">"Изменить"</string>
+<string name="payments_pay_button">"Оплатить"</string>
+<string name="payments_continue_button">"Продолжить"</string>
+<string name="payments_add_contact">"Добавить контактные данные"</string>
+<string name="payments_add_card">"Добавить карту"</string>
+<string name="payments_add_address">"Добавить адрес"</string>
+<string name="payments_edit_address">"Изменить адрес"</string>
+<string name="payments_name_field_in_contact_details">"Имя"</string>
+<string name="payments_save_card_to_device_checkbox">"Сохранить карту на этом устройстве"</string>
+<string name="payments_accepted_cards_label">"Карты, которые принимаются к оплате"</string>
+<string name="payments_credit_card_expiration_date_abbr">"Срок действия: до %1$s/%2$s"</string>
+<string name="payments_loading_message">"Загрузка…"</string>
+<string name="payments_checking_option">"Проверка"</string>
+<string name="payments_updated_label">"Обновлено"</string>
+<string name="payments_error_message">"При обработке заказа произошла ошибка. Повторите попытку."</string>
+<string name="payments_card_and_address_settings">"Сведения о картах и адресах можно изменить в BEGIN_LINKнастройкахEND_LINK."</string>
+<string name="payments_card_and_address_settings_signed_in">"Это карты и адреса, указанные в Chrome и вашем аккаунте Google (%1$s). Вы можете изменить их на странице BEGIN_LINKНастройкиEND_LINK."</string>
+<string name="payments_card_and_address_settings_signed_out">"Это карты и адреса, указанные в Chrome. Вы можете изменить их на странице BEGIN_LINKНастройкиEND_LINK."</string>
+<string name="settings_can_make_payment_toggle_label">"Разрешить сайтам проверять наличие сохраненных способов оплаты"</string>
+<string name="payments_required_field_message">"*Обязательное поле"</string>
+<string name="payments_phone_invalid_validation_message">"Укажите действительный номер телефона."</string>
+<string name="payments_email_invalid_validation_message">"Укажите действительный адрес электронной почты."</string>
+<string name="payments_card_number_invalid_validation_message">"Введите действительный номер карты."</string>
+<string name="payments_card_expiration_invalid_validation_message">"Укажите правильный срок действия."</string>
+<string name="payments_invalid_address">"Укажите действительный адрес."</string>
+<string name="payments_billing_address_required">"Необходимо указать платежный адрес"</string>
+<string name="payments_name_on_card_required">"Укажите имя владельца карты."</string>
+<string name="payments_more_information_required">"Информации недостаточно"</string>
+<string name="payments_phone_number_required">"Укажите номер телефона"</string>
+<string name="payments_recipient_required">"Введите имя или название"</string>
+<string name="payments_email_required">"Введите адрес электронной почты"</string>
+<string name="payments_name_required">"Введите имя или название"</string>
+<string name="pref_edit_dialog_field_required_validation_message">"Поле, обязательное для заполнения"</string>
+<string name="payments_select_shipping_address_for_shipping_methods">"Выберите адрес, чтобы посмотреть способы и условия доставки."</string>
+<string name="payments_unsupported_shipping_address">"Невозможно отправить заказ по этому адресу. Выберите другой вариант."</string>
+<string name="payments_select_delivery_address_for_delivery_methods">"Выберите адрес, чтобы посмотреть способы и условия доставки."</string>
+<string name="payments_unsupported_delivery_address">"Невозможно доставить заказ по этому адресу. Выберите другой вариант."</string>
+<string name="payments_select_pickup_address_for_pickup_methods">"Выберите адрес, чтобы посмотреть способы и условия получения."</string>
+<string name="payments_unsupported_pickup_address">"Этот адрес не поддерживается. Выберите другой."</string>
+<string name="payments_android_app_error">"Не удалось открыть Payments"</string>
+<string name="external_payment_app_leave_incognito_warning">"Вы выйдете из режима инкогнито, чтобы выполнить оплату во внешнем приложении. Продолжить?"</string>
+<string name="payment_handler_sheet_description">"Лист с обработчиком платежа"</string>
+<string name="payment_handler_sheet_opened_half">"Лист с обработчиком платежа открыт на половину высоты"</string>
+<string name="payment_handler_sheet_opened_full">"Лист с обработчиком платежа открыт"</string>
+<string name="payment_handler_sheet_closed">"Лист с обработчиком платежа закрыт"</string>
+<string name="secure_payment_confirmation_verify_purchase">"Подтвердите покупку"</string>
+<string name="secure_payment_confirmation_store_label">"Магазин"</string>
+<string name="secure_payment_confirmation_total_label">"Всего"</string>
+<string name="no_matching_credential_description">"Сайт %1$s может выполнить дополнительные действия, чтобы подтвердить ваш платеж."</string>
+<string name="secure_payment_confirmation_authentication_sheet_description">"Экран проверки учетных данных для защищенных платежей"</string>
+<string name="secure_payment_confirmation_authentication_sheet_opened">"Открыт экран проверки учетных данных для защищенных платежей"</string>
+<string name="secure_payment_confirmation_authentication_sheet_closed">"Экран проверки учетных данных для защищенных платежей закрыт"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_description">"Экран несоответствия учетных данных для защищенных платежей"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_opened">"Экран несоответствия учетных данных для защищенных платежей открыт"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_closed">"Экран несоответствия учетных данных для защищенных платежей закрыт"</string>
+<string name="bluetooth_scanning_prompt_no_devices_found_prompt">"Устройства поблизости не найдены."</string>
+<string name="bluetooth_scanning_prompt_allow_button_text">"Разрешить"</string>
+<string name="bluetooth_scanning_prompt_block_button_text">"Блокировать"</string>
+<string name="blocked_ads_prompt_title">"Реклама заблокирована"</string>
+<string name="blocked_ads_dialog_title">"Реклама заблокирована"</string>
+<string name="blocked_ads_dialog_message">"Этот сайт показывает навязчивую или вводящую в заблуждение рекламу. ^1"</string>
+<string name="blocked_ads_dialog_always_allow">"Показывать уведомления с этого сайта"</string>
+<string name="blocked_ads_dialog_learn_more">"Подробнее"</string>
+<string name="sync_enter_passphrase_body">"Данные зашифрованы с помощью кодовой фразы. Введите ее, чтобы начать синхронизацию."</string>
+<string name="translate_infobar_error">"Не удалось перевести страницу"</string>
+<string name="translate_button">"Перевести"</string>
+<string name="translate_never_translate_site">"Никогда не переводить этот сайт"</string>
+<string name="translate_dont_offer_site">"Не предлагать переводить этот сайт"</string>
+<string name="translate_option_always_translate">"Переводить страницы на этом языке: %1$s"</string>
+<string name="translate_option_never_translate">"Не переводить страницы на этом языке: %1$s"</string>
+<string name="translate_dont_offer_lang">"Не предлагать перевести страницы на этом языке: %1$s"</string>
+<string name="translate_option_more_language">"Другие языки"</string>
+<string name="translate_option_not_source_language">"Язык страницы не %1$s?"</string>
+<string name="translate_snackbar_always_translate">"Страницы на этом языке (%1$s) будут автоматически переводиться на %2$s"</string>
+<string name="translate_snackbar_language_never">"Страницы на этом языке (%1$s) не будут переводиться автоматически"</string>
+<string name="translate_snackbar_site_never">"Этот сайт не будет переводиться автоматически"</string>
+<string name="translate_snackbar_cancel">"Отмена"</string>
+<string name="management_browser_reporting">"Браузер"</string>
+<string name="management_browser_reporting_explanation">"Администратор может отслеживать:"</string>
+<string name="management_extension_report_username">"Имя пользователя устройства и браузера Chrome"</string>
+<string name="management_extension_report_version">"Версия вашего устройства и браузера"</string>
+<string name="history_clusters_journeys_tab_label">"Сеансы"</string>
+<string name="history_clusters_search_your_journeys">"Поиск по теме"</string>
+<string name="clear">"Удалить"</string>
+<string name="show_content">"Показать"</string>
+<string name="hide_content">"Скрыть"</string>
+<string name="choose">"Выбрать"</string>
+</resources>

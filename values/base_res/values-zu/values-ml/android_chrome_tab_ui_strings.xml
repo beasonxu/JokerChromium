@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="iph_tab_groups_quickly_compare_pages_text">"ഒരു ഗ്രൂപ്പ് സൃഷ്‌ടിച്ചുകൊണ്ട്, വേഗത്തിൽ പേജുകൾ താരതമ്യം ചെയ്യൂ. ആരംഭിക്കാൻ ഒരു ലിങ്ക് സ്‌പർശിച്ച് പിടിക്കുക."</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_text">"മറ്റൊരു ടാബ് കാണാൻ ടാപ്പ് ചെയ്യുക"</string>
+<string name="iph_tab_groups_your_tabs_together_text">"നിങ്ങളുടെ ടാബുകൾ ഇവിടെ ഒന്നിച്ച് ഗ്രൂപ്പ് ചെയ്യപ്പെടും"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_accessibility_text">"സ്ക്രീനിന്റെ ചുവടെയുള്ള നിങ്ങളുടെ ടാബ് ഗ്രൂപ്പിലെ, ടാബുകൾക്കിടയിൽ മാറുക"</string>
+<string name="undo_bar_group_tabs_message">"%1$s ടാബുകൾ ഗ്രൂപ്പ് ചെയ്‌തു"</string>
+<plurals name="bottom_tab_grid_title_placeholder">
+  <item quantity="one">"%1$d ടാബ്"</item>
+  <item quantity="other">"%1$d ടാബുകൾ"</item>
+</plurals>
+<string name="bottom_tab_grid_new_tab">"ഗ്രൂപ്പിലേക്ക് പുതിയ ടാബ് ചേർക്കുക"</string>
+<string name="accessibility_bottom_tab_grid_close_tab_sheet">"പൂർണ്ണസ്ക്രീൻ ഗ്രിഡ് മറയ്ക്കുക"</string>
+<string name="accessibility_bottom_tab_strip_expand_tab_sheet">"ഗ്രൂപ്പിന്റെ ടാബുകൾ പൂർണ്ണസ്ക്രീൻ ഗ്രിഡിൽ കാണിക്കുക"</string>
+<string name="accessibility_bottom_tab_strip_close_strip">"തുറന്ന് വച്ചിട്ടുള്ള ടാബുകൾ അടയ്ക്കുക"</string>
+<string name="tabswitcher_create_group">"ഗ്രൂപ്പ് സൃഷ്‌ടിക്കുക"</string>
+<string name="accessibility_tab_switcher">"ടാബ് സ്വിച്ചർ"</string>
+<string name="accessibility_close_tab_group_button">"%1$s ടാബുകളുള്ള ടാബ് ഗ്രൂപ്പ് അടയ്ക്കുക"</string>
+<string name="accessibility_close_tab_group_button_with_group_name">"%2$s ടാബുകളുള്ള %1$s ഗ്രൂപ്പ് അടയ്ക്കുക"</string>
+<string name="tab_selection_editor_group">"ഗ്രൂപ്പ്"</string>
+<string name="tab_selection_editor_toolbar_select_tabs">"തിരഞ്ഞെടുക്കൂ"</string>
+<plurals name="accessibility_tab_selection_editor_group_button">
+  <item quantity="one">"തിരഞ്ഞെടുത്ത %1$d ടാബ് ഗ്രൂപ്പ് ചെയ്യുക"</item>
+  <item quantity="other">"തിരഞ്ഞെടുത്ത %1$d ടാബുകൾ ഗ്രൂപ്പ് ചെയ്യുക"</item>
+</plurals>
+<string name="accessibility_tab_selection_editor_back_button">"ഒന്നിലധികം തിരഞ്ഞെടുക്കൽ മോഡ് മറയ്ക്കുക"</string>
+<string name="accessibility_tab_selection_editor">"ഒന്നിലധികം തിരഞ്ഞെടുക്കൽ മോഡ്"</string>
+<string name="tab_grid_dialog_remove_from_group">"ഗ്രൂപ്പിൽ നിന്ന് നീക്കം ചെയ്യുക"</string>
+<string name="tab_grid_dialog_toolbar_remove_from_group">"ഗ്രൂപ്പിൽ നിന്ന് ടാബുകൾ നീക്കൂ"</string>
+<string name="tab_grid_dialog_selection_mode_remove">"നീക്കംചെയ്യൂ"</string>
+<string name="tab_grid_dialog_toolbar_share_group">"ഗ്രൂപ്പ് പങ്കിടുക"</string>
+<string name="tab_grid_dialog_toolbar_edit_group_name">"ഗ്രൂപ്പിന്റെ പേര് എഡിറ്റ് ചെയ്യുക"</string>
+<string name="accessibility_expand_tab_group">"%1$s ടാബുകളുള്ള ടാബ് ഗ്രൂപ്പ് വികസിപ്പിക്കുക."</string>
+<string name="accessibility_expand_tab_group_with_group_name">"%1$s ടാബ് ഗ്രൂപ്പ്, %2$s ടാബുകൾ ഉപയോഗിച്ച് വികസിപ്പിക്കുക."</string>
+<plurals name="accessibility_tab_selection_dialog_remove_button">
+  <item quantity="one">"തിരഞ്ഞെടുത്ത %1$d ടാബ്, ഗ്രൂപ്പിൽ നിന്ന് നീക്കം ചെയ്യുക."</item>
+  <item quantity="other">"തിരഞ്ഞെടുത്ത %1$d ടാബുകൾ, ഗ്രൂപ്പിൽ നിന്ന് നീക്കം ചെയ്യുക."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button">
+  <item quantity="one">"%1$d ടാബ് ചുരുക്കുക."</item>
+  <item quantity="other">"%1$d ടാബുകളുള്ള ടാബ് ഗ്രൂപ്പ് ചുരുക്കുക."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button_with_group_name">
+  <item quantity="one">"%1$d ടാബ് ചുരുക്കുക."</item>
+  <item quantity="other">"%2$d ടാബുകളുള്ള %1$s ടാബ് ഗ്രൂപ്പ് ചുരുക്കുക."</item>
+</plurals>
+<string name="accessibility_tab_grid_dialog">"ടാബ് ഗ്രൂപ്പ് വികസിപ്പിച്ചു"</string>
+<string name="iph_drag_and_drop_introduction">"ടാബുകൾ ഗ്രൂപ്പ് ചെയ്യാൻ അവ വലിച്ചിടുക"</string>
+<string name="iph_drag_and_drop_show_me">"എന്നെ കാണിക്കുക"</string>
+<string name="iph_drag_and_drop_title">"ഓർഗനൈസ് ചെയ്‌ത നിലയിൽ തുടരുക"</string>
+<string name="iph_drag_and_drop_content">"ടാബുകൾ ഗ്രൂപ്പ് ചെയ്യാൻ, ഒരു ടാബിൽ സ്‌പർശിച്ച് പിടിക്കുക. തുടർന്ന്, അത് മറ്റൊരു ടാബിലേക്ക് വലിച്ചിടുക."</string>
+<string name="tab_switcher_carousel_title">"ബ്രൗസിംഗ് തുടരുക"</string>
+<string name="tab_switcher_carousel_view_all">"എല്ലാം കാണുക"</string>
+<string name="tab_suggestion_review_button">"അവലോകനം ചെയ്യുക"</string>
+<string name="tab_suggestion_close_tab_action_button">"അടയ്ക്കുക"</string>
+<string name="tab_suggestion_close_stale_message">"നിങ്ങളുടെ ടാബുകളിൽ %1$s എണ്ണം അടുത്തിടെ ഉപയോഗിച്ചിട്ടില്ല. അവ അടയ്‌ക്കണോ?"</string>
+<string name="tab_suggestion_group_tabs_message">"%1$s ടാബുകൾ സമാനമാണെന്ന് തോന്നുന്നു. അവ ഗ്രൂപ്പ് ചെയ്യണോ?"</string>
+<string name="accessibility_tab_suggestion_review_button">"നിർദ്ദേശങ്ങൾ അവലോകനം ചെയ്യുക."</string>
+<string name="accessibility_tab_suggestion_close_stale_message">"നിർദ്ദേശം: നിങ്ങളുടെ ടാബുകളിൽ %1$s എണ്ണം അടുത്തിടെ ഉപയോഗിച്ചിട്ടില്ല. അവ അടയ്‌ക്കണോ?"</string>
+<string name="accessibility_tab_suggestion_group_tabs_message">"നിർദ്ദേശം: %1$s ടാബുകൾ സമാനമാണെന്ന് തോന്നുന്നു. അവ ഗ്രൂപ്പ് ചെയ്യണോ?"</string>
+<string name="accessibility_tab_suggestion_dismiss_button">"നിർദ്ദേശങ്ങൾ ഡിസ്‌മിസ് ചെയ്യുക."</string>
+<plurals name="accessibility_tab_suggestion_close_tab_action_button">
+  <item quantity="one">"തിരഞ്ഞെടുത്ത %1$d ടാബ് അടയ്‌ക്കുക"</item>
+  <item quantity="other">"തിരഞ്ഞെടുത്ത %1$d ടാബുകൾ അടയ്‌ക്കുക"</item>
+</plurals>
+<string name="accessibility_tab_movement_left">"ടാബ് ഇടത്തേക്ക് നീക്കുക"</string>
+<string name="accessibility_tab_movement_right">"ടാബ് വലത്തേക്ക് നീക്കുക"</string>
+<string name="accessibility_tab_movement_up">"ടാബ് മുകളിലേക്ക് നീക്കുക"</string>
+<string name="accessibility_tab_movement_down">"ടാബ് താഴേക്ക് നീക്കുക"</string>
+<string name="undo_tab_strip_closure_message">"തുറന്ന് വച്ച ടാബുകൾ അടച്ചു"</string>
+<string name="tab_strip_info_bar_question">"തുറന്ന് വച്ചിട്ടുള്ള ടാബുകൾ വീണ്ടും കാണിക്കേണ്ടതില്ലേ?"</string>
+<string name="tab_strip_info_bar_no_reshow">"വീണ്ടും കാണിക്കരുത്"</string>
+<string name="tab_strip_info_bar_reshow">"പിന്നീട് കാണിക്കുക"</string>
+<string name="price_drop_spotted_title">"വിലയിടിവ് കണ്ടെത്തി"</string>
+<string name="price_drop_spotted_content">"തുറന്നിരിക്കുന്ന ടാബുകളിൽ ഏത് ഇനത്തിനാണ് കുറഞ്ഞ വിലയുള്ളതെന്ന് കാണുക"</string>
+<string name="price_drop_spotted_show_me">"എന്നെ കാണിക്കുക"</string>
+<string name="price_drop_spotted_lower_price">"കുറഞ്ഞ വില"</string>
+<string name="accessibility_tab_price_card">"ഈ ഇനത്തിന്റെ വില അടുത്തിടെ %1$s എന്നതിൽ നിന്ന് %2$s ആയി കുറഞ്ഞു"</string>
+<string name="price_drop_alerts_card_title">"വിലയിടിവിന് മുന്നറിയിപ്പുകൾ നേടണോ?"</string>
+<string name="price_drop_alerts_card_get_notified_content">"തുറന്നിരിക്കുന്ന ടാബിൽ, വിലക്കുറവുള്ളപ്പോൾ നിങ്ങൾക്ക് മുന്നറിയിപ്പ് ലഭിക്കും"</string>
+<string name="price_drop_alerts_card_get_notified">"അറിയിപ്പ് നേടുക"</string>
+<string name="price_drop_alerts_card_go_to_settings_content">"തുറന്നിരിക്കുന്ന ടാബിൽ വിലക്കുറവുള്ളപ്പോൾ അറിയിപ്പ് ലഭിക്കാൻ ക്രമീകരണത്തിൽ അറിയിപ്പുകൾ ഓണാക്കുക."</string>
+<string name="price_drop_alerts_card_go_to_settings">"ക്രമീകരണത്തിലേക്ക് പോകുക"</string>
+<string name="price_tracking_settings">"നിരക്ക് ട്രാക്ക് ചെയ്യൽ ക്രമീകരണം"</string>
+<string name="track_prices_on_tabs">"ടാബുകളിൽ നിരക്കുകൾ ട്രാക്ക് ചെയ്യുക"</string>
+<string name="track_prices_on_tabs_description">"നിങ്ങളുടെ ടാബുകളിൽ വിലയിടിവുകൾ കാണുക"</string>
+<string name="price_drop_alerts">"വിലയിടിവ് മുന്നറിയിപ്പുകൾ"</string>
+<string name="price_drop_alerts_description">"വിലയിടിയുമ്പോൾ അറിയിപ്പ് നേടുക"</string>
+<string name="price_drop_notification_content_title">"%2$s എന്നതിന് %1$s വിലക്കുറവ്"</string>
+<string name="price_drop_notification_content_text">"%2$s -ൽ ഇപ്പോൾ %1$s-ന് ലഭ്യം"</string>
+<string name="price_drop_notification_action_visit_site">"സൈറ്റ് സന്ദർശിക്കുക"</string>
+<string name="price_drop_notification_action_turn_off_alert">"ഉൽപ്പന്നം ട്രാക്ക് ചെയ്യുന്നത് നിർത്തുക"</string>
+<string name="merchant_viewer_message_title">"സ്റ്റോർ വിവരങ്ങൾ കാണണോ?"</string>
+<string name="merchant_viewer_message_title_see_reviews">"സ്റ്റോർ റിവ്യൂകൾ കാണണോ?"</string>
+<string name="merchant_viewer_message_action">"കാണുക"</string>
+<string name="merchant_viewer_message_description_rating">"%1$s/%2$s റേറ്റിംഗ്"</string>
+<plurals name="merchant_viewer_message_description_reviews">
+  <item quantity="one">"(%1$s റിവ്യൂ)"</item>
+  <item quantity="other">"(%1$s റിവ്യൂകൾ)"</item>
+</plurals>
+<plurals name="merchant_viewer_message_description_reviews_from_google">
+  <item quantity="one">"Google-ൽ നിന്നുള്ള %1$s റിവ്യൂ"</item>
+  <item quantity="other">"Google-ൽ നിന്നുള്ള %1$s റിവ്യൂകൾ"</item>
+</plurals>
+<string name="merchant_viewer_message_rating_numerical">"%1$.1f/%2$d"</string>
+<string name="merchant_viewer_message_rating_word">"റേറ്റിംഗ്"</string>
+<plurals name="accessibility_merchant_viewer_message_description">
+  <item quantity="one">" %1$s/%2$s റേറ്റിംഗ്, %3$d റിവ്യൂ"</item>
+  <item quantity="other">"%1$s/%2$s റേറ്റിംഗ്, %3$d റിവ്യൂകൾ"</item>
+</plurals>
+<string name="accessibility_merchant_viewer_message_announcement">"സ്റ്റോർ വിവരങ്ങൾ കാണുക, സ്ക്രീനിന്റെ മുകൾ ഭാഗത്തിന് സമീപം ഓപ്ഷൻ ലഭ്യമാണ്"</string>
+<string name="merchant_viewer_preview_sheet_title">"Google | ഈ സ്റ്റോറിനെക്കുറിച്ച്"</string>
+<string name="merchant_viewer_omnibox_icon_iph">"സ്റ്റോർ വിവരങ്ങൾ കാണുക"</string>
+<string name="page_info_store_info_title">"സ്റ്റോർ വിവരങ്ങൾ"</string>
+<string name="page_info_store_info_description_with_no_review">"(സ്റ്റോർ റേറ്റിംഗ്)"</string>
+<string name="page_info_store_info_description_with_no_rating">"മടക്കി നൽകൽ നയവും മറ്റും കാണുക"</string>
+<string name="merchant_viewer_preview_sheet_description">"ഈ സ്റ്റോറിനെ കുറിച്ചുള്ള വിവരങ്ങൾ"</string>
+<string name="merchant_viewer_preview_sheet_opened_half">"ഈ സ്റ്റോറിനെ കുറിച്ചുള്ള വിവരങ്ങളുടെ പകുതി ഉയരത്തിൽ തുറന്ന ലിസ്റ്റ്"</string>
+<string name="merchant_viewer_preview_sheet_opened_full">"ഈ സ്റ്റോറിനെ കുറിച്ചുള്ള വിവരങ്ങളുടെ മുഴുവൻ ഉയരത്തിൽ തുറന്ന ലിസ്റ്റ്"</string>
+<string name="merchant_viewer_preview_sheet_closed">"ഈ സ്റ്റോറിനെ കുറിച്ചുള്ള വിവരങ്ങൾ അടച്ചു"</string>
+<string name="close_all_tabs_dialog_title">"എല്ലാ ടാബുകളും അടയ്‌ക്കണോ?"</string>
+<string name="close_all_tabs_dialog_message">"Chrome പ്രധാന മെനുവിന് കീഴിലുള്ള \'അടുത്തിടെ തുറന്ന ടാബുകളിൽ\' നിങ്ങളുടെ അടച്ച ടാബുകൾ കണ്ടെത്താം"</string>
+<string name="close_all_tabs_dialog_title_incognito">"എല്ലാ അദൃശ്യ ടാബുകളും അടയ്‌ക്കണോ?"</string>
+<string name="close_all_tabs_dialog_message_incognito">"ഈ അദൃശ്യ ടാബുകളിൽ നിന്നുള്ള നിങ്ങളുടെ ആക്റ്റിവിറ്റി ഈ ഉപകരണത്തിൽ നിന്ന് മായ്ക്കും"</string>
+</resources>

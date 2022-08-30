@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="iph_tab_groups_quickly_compare_pages_text">"Confronta rapidamente le pagine creando un gruppo. Innanzitutto, tocca e tieni premuto un link."</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_text">"Tocca per visualizzare un\'altra scheda"</string>
+<string name="iph_tab_groups_your_tabs_together_text">"Le schede sono raggruppate qui"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_accessibility_text">"Passa da una scheda all\'altra del gruppo di schede nella parte inferiore dello schermo"</string>
+<string name="undo_bar_group_tabs_message">"%1$s schede raggruppate"</string>
+<plurals name="bottom_tab_grid_title_placeholder">
+  <item quantity="one">"%1$d scheda"</item>
+  <item quantity="other">"%1$d schede"</item>
+</plurals>
+<string name="bottom_tab_grid_new_tab">"Aggiungi una nuova scheda al gruppo"</string>
+<string name="accessibility_bottom_tab_grid_close_tab_sheet">"Nascondi la griglia a schermo intero"</string>
+<string name="accessibility_bottom_tab_strip_expand_tab_sheet">"Mostra le schede del gruppo in una griglia a schermo intero"</string>
+<string name="accessibility_bottom_tab_strip_close_strip">"Chiudi la tabstrip"</string>
+<string name="tabswitcher_create_group">"Crea gruppo"</string>
+<string name="accessibility_tab_switcher">"Selettore di schede"</string>
+<string name="accessibility_close_tab_group_button">"Chiudi il gruppo di schede con %1$s schede"</string>
+<string name="accessibility_close_tab_group_button_with_group_name">"Chiudi il gruppo %1$s con %2$s schede"</string>
+<string name="tab_selection_editor_group">"Gruppo"</string>
+<string name="tab_selection_editor_toolbar_select_tabs">"Seleziona schede"</string>
+<plurals name="accessibility_tab_selection_editor_group_button">
+  <item quantity="one">"Raggruppa %1$d scheda selezionata"</item>
+  <item quantity="other">"Raggruppa %1$d schede selezionate"</item>
+</plurals>
+<string name="accessibility_tab_selection_editor_back_button">"Nascondi modalità di selezione multipla"</string>
+<string name="accessibility_tab_selection_editor">"Modalità di selezione multipla"</string>
+<string name="tab_grid_dialog_remove_from_group">"Rimuovi dal gruppo"</string>
+<string name="tab_grid_dialog_toolbar_remove_from_group">"Rimuovi schede dal gruppo"</string>
+<string name="tab_grid_dialog_selection_mode_remove">"Rimuovi"</string>
+<string name="tab_grid_dialog_toolbar_share_group">"Condividi gruppo"</string>
+<string name="tab_grid_dialog_toolbar_edit_group_name">"Modifica nome gruppo"</string>
+<string name="accessibility_expand_tab_group">"Espandi il gruppo di schede con %1$s schede"</string>
+<string name="accessibility_expand_tab_group_with_group_name">"Espandi il gruppo di schede %1$s con %2$s schede."</string>
+<plurals name="accessibility_tab_selection_dialog_remove_button">
+  <item quantity="one">"Rimuovi %1$d scheda selezionata dal gruppo."</item>
+  <item quantity="other">"Rimuovi %1$d schede selezionate dal gruppo."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button">
+  <item quantity="one">"Comprimi %1$d scheda."</item>
+  <item quantity="other">"Comprimi il gruppo di schede con %1$d schede."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button_with_group_name">
+  <item quantity="one">"Comprimi %1$d scheda."</item>
+  <item quantity="other">"Comprimi il gruppo di schede %1$s contenente %2$d schede."</item>
+</plurals>
+<string name="accessibility_tab_grid_dialog">"Gruppo di schede espanso"</string>
+<string name="iph_drag_and_drop_introduction">"Trascina le schede per raggrupparle"</string>
+<string name="iph_drag_and_drop_show_me">"Mostrami"</string>
+<string name="iph_drag_and_drop_title">"Organizzazione"</string>
+<string name="iph_drag_and_drop_content">"Per raggruppare le schede, tocca e tienine premuta una. Poi trascinala su un\'altra scheda."</string>
+<string name="tab_switcher_carousel_title">"Continua la navigazione"</string>
+<string name="tab_switcher_carousel_view_all">"Visualizza tutti"</string>
+<string name="tab_suggestion_review_button">"Visualizza"</string>
+<string name="tab_suggestion_close_tab_action_button">"Chiudi"</string>
+<string name="tab_suggestion_close_stale_message">"%1$s delle tue schede non sono state usate ultimamente. Vuoi chiuderle?"</string>
+<string name="tab_suggestion_group_tabs_message">"%1$s schede sembrano correlate. Vuoi raggrupparle?"</string>
+<string name="accessibility_tab_suggestion_review_button">"Controlla i suggerimenti."</string>
+<string name="accessibility_tab_suggestion_close_stale_message">"Suggerimento: %1$s delle tue schede non sono state usate ultimamente. Vuoi chiuderle?"</string>
+<string name="accessibility_tab_suggestion_group_tabs_message">"Suggerimento: %1$s schede sembrano correlate. Vuoi raggrupparle?"</string>
+<string name="accessibility_tab_suggestion_dismiss_button">"Ignora i suggerimenti."</string>
+<plurals name="accessibility_tab_suggestion_close_tab_action_button">
+  <item quantity="one">"Chiudi %1$d scheda selezionata"</item>
+  <item quantity="other">"Chiudi %1$d schede selezionate"</item>
+</plurals>
+<string name="accessibility_tab_movement_left">"Sposta scheda a sinistra"</string>
+<string name="accessibility_tab_movement_right">"Sposta scheda a destra"</string>
+<string name="accessibility_tab_movement_up">"Sposta scheda in alto"</string>
+<string name="accessibility_tab_movement_down">"Sposta scheda in basso"</string>
+<string name="undo_tab_strip_closure_message">"Tabstrip chiusa"</string>
+<string name="tab_strip_info_bar_question">"Non vuoi più mostrare la tabstrip?"</string>
+<string name="tab_strip_info_bar_no_reshow">"Non mostrare più"</string>
+<string name="tab_strip_info_bar_reshow">"Mostra più tardi"</string>
+<string name="price_drop_spotted_title">"Prezzo in calo rilevato"</string>
+<string name="price_drop_spotted_content">"Scopri quale articolo nelle schede aperte ha un prezzo più basso"</string>
+<string name="price_drop_spotted_show_me">"Mostrami"</string>
+<string name="price_drop_spotted_lower_price">"Prezzo più basso"</string>
+<string name="accessibility_tab_price_card">"Il prezzo di questo articolo è recentemente sceso da %1$s a %2$s"</string>
+<string name="price_drop_alerts_card_title">"Vuoi ricevere avvisi sui cali di prezzo?"</string>
+<string name="price_drop_alerts_card_get_notified_content">"Riceverai un avviso quando ci sarà un prezzo più basso in una scheda aperta"</string>
+<string name="price_drop_alerts_card_get_notified">"Ricevi notifiche"</string>
+<string name="price_drop_alerts_card_go_to_settings_content">"Attiva le notifiche nelle Impostazioni per ricevere un avviso quando ci sarà un prezzo più basso in una scheda aperta."</string>
+<string name="price_drop_alerts_card_go_to_settings">"Vai a Impostazioni"</string>
+<string name="price_tracking_settings">"Impostazioni di monitoraggio dei prezzi"</string>
+<string name="track_prices_on_tabs">"Monitora prezzi nelle schede"</string>
+<string name="track_prices_on_tabs_description">"Visualizza i cali di prezzo nelle tue schede"</string>
+<string name="price_drop_alerts">"Avvisi su cali di prezzo"</string>
+<string name="price_drop_alerts_description">"Ricevi notifiche in caso di calo dei prezzi"</string>
+<string name="price_drop_notification_content_title">"%1$s in meno su %2$s"</string>
+<string name="price_drop_notification_content_text">"Ora a %1$s su %2$s"</string>
+<string name="price_drop_notification_action_visit_site">"Visita il sito"</string>
+<string name="price_drop_notification_action_turn_off_alert">"Interrompi il monitoraggio del prodotto"</string>
+<string name="merchant_viewer_message_title">"Vuoi visualizzare le informazioni sul negozio?"</string>
+<string name="merchant_viewer_message_title_see_reviews">"Vuoi visualizzare le recensioni sul negozio?"</string>
+<string name="merchant_viewer_message_action">"Visualizza"</string>
+<string name="merchant_viewer_message_description_rating">"Valutazione di %1$s/%2$s"</string>
+<plurals name="merchant_viewer_message_description_reviews">
+  <item quantity="one">"(%1$s recensione)"</item>
+  <item quantity="other">"(%1$s recensioni)"</item>
+</plurals>
+<plurals name="merchant_viewer_message_description_reviews_from_google">
+  <item quantity="one">"%1$s recensione da Google"</item>
+  <item quantity="other">"%1$s recensioni da Google"</item>
+</plurals>
+<string name="merchant_viewer_message_rating_numerical">"%1$.1f/%2$d"</string>
+<string name="merchant_viewer_message_rating_word">"valutazione"</string>
+<plurals name="accessibility_merchant_viewer_message_description">
+  <item quantity="one">"Valutazione di %1$s/%2$s, %3$d recensione"</item>
+  <item quantity="other">"Valutazione di %1$s/%2$s, %3$d recensioni"</item>
+</plurals>
+<string name="accessibility_merchant_viewer_message_announcement">"Visualizza informazioni sul negozio, opzione disponibile nella parte superiore dello schermo"</string>
+<string name="merchant_viewer_preview_sheet_title">"Google | Informazioni su questo negozio"</string>
+<string name="merchant_viewer_omnibox_icon_iph">"Visualizza informazioni sul negozio"</string>
+<string name="page_info_store_info_title">"Informazioni sul negozio"</string>
+<string name="page_info_store_info_description_with_no_review">"(valutazione del negozio)"</string>
+<string name="page_info_store_info_description_with_no_rating">"Visualizza le norme sui resi e non solo"</string>
+<string name="merchant_viewer_preview_sheet_description">"Informazioni su questo negozio"</string>
+<string name="merchant_viewer_preview_sheet_opened_half">"Informazioni su questo negozio aperte nella parte inferiore dello schermo"</string>
+<string name="merchant_viewer_preview_sheet_opened_full">"Informazioni su questo negozio aperte a schermo intero"</string>
+<string name="merchant_viewer_preview_sheet_closed">"Informazioni su questo negozio chiuse"</string>
+<string name="close_all_tabs_dialog_title">"Vuoi chiudere tutte le schede?"</string>
+<string name="close_all_tabs_dialog_message">"Puoi trovare le tue schede chiuse in Schede recenti sotto al menu principale di Chrome"</string>
+<string name="close_all_tabs_dialog_title_incognito">"Chiudere tutte le schede di navigazione in incognito?"</string>
+<string name="close_all_tabs_dialog_message_incognito">"La tua attività in queste schede di navigazione in incognito verrà cancellata da questo dispositivo"</string>
+</resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s moet toestemming hê om toegang te kry tot jou kamera om ’n 3D-kaart van jou omgewing te skep."</string>
+<string name="infobar_missing_camera_permission_text">"%1$s het toestemming nodig om toegang te kry tot jou kamera vir hierdie werf."</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s het toestemming nodig om toegang te kry tot jou mikrofoon vir hierdie werf."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s het toestemming nodig om toegang te kry tot jou kamera en mikrofoon vir hierdie werf"</string>
+<string name="infobar_missing_location_permission_text">"%1$s het toegang tot jou ligging nodig om jou ligging met hierdie werf te deel."</string>
+<string name="infobar_update_permissions_button_text">"Gaan voort"</string>
+<string name="nfc_disabled_on_device_message">"Skakel NFC in Android-instellings aan om voort te gaan"</string>
+<string name="nfc_prompt_turn_on">"Skakel aan"</string>
+<string name="overlay_detected_dialog_title">"Hierdie werf kan nie vir jou toestemming vra nie"</string>
+<string name="overlay_detected_dialog_message">"Maak enige borrels en oorleggers van ander programme af toe. Probeer dan weer."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Kry hulp&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Bind saam"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Seinsterktevlak: %d stafie"</item>
+  <item quantity="other">"Seinsterktevlak: %d stafies"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Gekoppelde toestel"</string>
+<string name="bluetooth_dialog_title">"%1$s wil saambind"</string>
+<string name="bluetooth_not_found">"Geen versoenbare toestelle gekry nie"</string>
+<string name="bluetooth_searching">"&lt;link&gt;Kry hulp&lt;/link&gt; terwyl toestelle gesoek word …"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Kry hulp&lt;/link1&gt; of &lt;link2&gt;soek weer&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Chrome benodig liggingtoegang om toestelle te soek. Liggingtoegang is &lt;services_link&gt;afgeskakel vir hierdie toestel&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Chrome benodig liggingtoegang om toestelle te soek. &lt;permission_link&gt;Dateer toestemmings op&lt;/permission_link&gt;. Liggingtoegang is ook &lt;services_link&gt;afgeskakel vir hierdie toestel&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome het toestemming nodig om toestelle in die omtrek te soek. &lt;permission_link&gt;Dateer toestemmings op&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission">"Chrome benodig liggingtoegang om toestelle te soek. &lt;permission_link&gt;Dateer toestemmings op&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Kry hulp&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome kan nie Bluetooth-aansluitprop aanskakel nie"</string>
+<string name="bluetooth_adapter_off">"&lt;link&gt;Skakel Bluetooth aan&lt;/link&gt; om saambinding moontlik te maak"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s wil vir Bluetooth-toestelle in die omtrek soek. Die volgende toestelle is gekry:"</string>
+<string name="bluetooth_scanning_device_unknown">"Onbekende of ongesteunde toestel (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Chrome の利用規約が 3 月 31 日に更新されます"</string>
+<string name="tos_notification_body_text">"新しい利用規約をご確認ください"</string>
+<string name="tos_notification_ack_button_text">"閉じる"</string>
+<string name="tos_notification_review_button_text">"内容を確認"</string>
+<string name="webapp_update_dialog_title_name">"新しい名前を確認"</string>
+<string name="webapp_update_dialog_title_icon">"新しいアイコンを確認"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"新しい名前とアイコンを確認"</string>
+<string name="webapp_update_explanation">"このウェブアプリが別のアプリになりすまそうとしている場合は、アンインストールしてください。"</string>
+<string name="webapp_update_current_icon">"現在のアイコン"</string>
+<string name="webapp_update_new_icon">"アイコンが新しくなりました"</string>
+<string name="webapp_update_negative_button">"アプリをアンインストール"</string>
+<string name="search_or_type_web_address">"検索語句またはウェブアドレスを入力"</string>
+<string name="password_manager_username_label">"ユーザー名"</string>
+<string name="password_manager_password_label">"パスワード"</string>
+<string name="password_manager_update_button">"更新"</string>
+<string name="confirm_username_dialog_title">"ユーザー名の確認"</string>
+<string name="options_homepage_title">"トップページ"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"このスマートフォンで認証"</string>
+<string name="cablev2_get_assertion_notification_title">"本人確認"</string>
+</resources>

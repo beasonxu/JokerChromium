@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Vilkårene for bruk av Chrome endres 31. mars"</string>
+<string name="tos_notification_body_text">"Les gjennom de nye vilkårene"</string>
+<string name="tos_notification_ack_button_text">"Skjønner"</string>
+<string name="tos_notification_review_button_text">"Se gjennom"</string>
+<string name="webapp_update_dialog_title_name">"Gjennomgå navneoppdatering"</string>
+<string name="webapp_update_dialog_title_icon">"Gjennomgå ikonoppdatering"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"Gjennomgå navne- og ikonoppdateringer"</string>
+<string name="webapp_update_explanation">"Hvis dette nettprogrammet prøver å lure deg til å tro at det er en annen app, må du avinstallere det."</string>
+<string name="webapp_update_current_icon">"Nåværende ikon"</string>
+<string name="webapp_update_new_icon">"Nytt ikon"</string>
+<string name="webapp_update_negative_button">"Avinstaller appen"</string>
+<string name="search_or_type_web_address">"Skriv inn søkeord eller en nettadresse"</string>
+<string name="password_manager_username_label">"Brukernavn"</string>
+<string name="password_manager_password_label">"Passord"</string>
+<string name="password_manager_update_button">"Oppdater"</string>
+<string name="confirm_username_dialog_title">"Bekreft brukernavnet ditt"</string>
+<string name="options_homepage_title">"Startside"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"Bekreft med denne telefonen"</string>
+<string name="cablev2_get_assertion_notification_title">"Bekreft identiteten din"</string>
+</resources>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="iph_tab_groups_quickly_compare_pages_text">"Sammenlign sider raskt ved å lage en gruppe. For å begynne, trykk og hold på en link."</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_text">"Trykk for å se en annen fane"</string>
+<string name="iph_tab_groups_your_tabs_together_text">"Fanene dine er gruppert sammen her"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_accessibility_text">"Bytt mellom faner i fanegruppen på nedre del av skjermen"</string>
+<string name="undo_bar_group_tabs_message">"%1$s faner er gruppert."</string>
+<plurals name="bottom_tab_grid_title_placeholder">
+  <item quantity="one">"%1$d fane"</item>
+  <item quantity="other">"%1$d faner"</item>
+</plurals>
+<string name="bottom_tab_grid_new_tab">"Legg til ny fane i gruppen"</string>
+<string name="accessibility_bottom_tab_grid_close_tab_sheet">"Skjul fullskjermrutenett"</string>
+<string name="accessibility_bottom_tab_strip_expand_tab_sheet">"Vis gruppens faner i fullskjermrutenett"</string>
+<string name="accessibility_bottom_tab_strip_close_strip">"Lukk faneraden"</string>
+<string name="tabswitcher_create_group">"Opprett en gruppe"</string>
+<string name="accessibility_tab_switcher">"Fanevelger"</string>
+<string name="accessibility_close_tab_group_button">"Lukk fanegruppe med %1$s faner"</string>
+<string name="accessibility_close_tab_group_button_with_group_name">"Lukk %1$s-gruppen med %2$s faner"</string>
+<string name="tab_selection_editor_group">"Gruppér"</string>
+<string name="tab_selection_editor_toolbar_select_tabs">"Velg faner"</string>
+<plurals name="accessibility_tab_selection_editor_group_button">
+  <item quantity="one">"Gruppér %1$d valgt fane"</item>
+  <item quantity="other">"Gruppér %1$d valgte faner"</item>
+</plurals>
+<string name="accessibility_tab_selection_editor_back_button">"Skjul flervalgsmodus"</string>
+<string name="accessibility_tab_selection_editor">"Flervalgsmodus"</string>
+<string name="tab_grid_dialog_remove_from_group">"Fjern fra gruppen"</string>
+<string name="tab_grid_dialog_toolbar_remove_from_group">"Fjern faner fra gruppen"</string>
+<string name="tab_grid_dialog_selection_mode_remove">"Fjern"</string>
+<string name="tab_grid_dialog_toolbar_share_group">"Del gruppe"</string>
+<string name="tab_grid_dialog_toolbar_edit_group_name">"Endre gruppenavnet"</string>
+<string name="accessibility_expand_tab_group">"Utvid fanegruppen med %1$s faner."</string>
+<string name="accessibility_expand_tab_group_with_group_name">"Utvid fanegruppen %1$s med %2$s faner."</string>
+<plurals name="accessibility_tab_selection_dialog_remove_button">
+  <item quantity="one">"Fjern %1$d valgt fane fra gruppen."</item>
+  <item quantity="other">"Fjern %1$d valgte faner fra gruppen."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button">
+  <item quantity="one">"Skjul %1$d fane."</item>
+  <item quantity="other">"Skjul fanegruppe med %1$d faner."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button_with_group_name">
+  <item quantity="one">"Skjul %1$d fane."</item>
+  <item quantity="other">"Skjul %1$s fanegruppe med %2$d faner."</item>
+</plurals>
+<string name="accessibility_tab_grid_dialog">"Fanegruppen er utvidet"</string>
+<string name="iph_drag_and_drop_introduction">"Dra faner for å gruppere dem"</string>
+<string name="iph_drag_and_drop_show_me">"Vis meg"</string>
+<string name="iph_drag_and_drop_title">"Få orden på ting"</string>
+<string name="iph_drag_and_drop_content">"For å gruppere faner, trykk og hold på en fane. Dra den deretter oppå en annen fane."</string>
+<string name="tab_switcher_carousel_title">"Fortsett å surfe"</string>
+<string name="tab_switcher_carousel_view_all">"Vis alle"</string>
+<string name="tab_suggestion_review_button">"Se gjennom"</string>
+<string name="tab_suggestion_close_tab_action_button">"Lukk"</string>
+<string name="tab_suggestion_close_stale_message">"%1$s av fanene dine er ikke brukt i det siste. Vil du lukke dem?"</string>
+<string name="tab_suggestion_group_tabs_message">"%1$s faner ser ut til å være relaterte. Vil du gruppere dem?"</string>
+<string name="accessibility_tab_suggestion_review_button">"Gjennomgå forslagene."</string>
+<string name="accessibility_tab_suggestion_close_stale_message">"Forslag: %1$s av fanene dine er ikke brukt i det siste. Vil du lukke dem?"</string>
+<string name="accessibility_tab_suggestion_group_tabs_message">"Forslag: %1$s faner ser ut til å være relaterte. Vil du gruppere dem?"</string>
+<string name="accessibility_tab_suggestion_dismiss_button">"Avvis forslagene."</string>
+<plurals name="accessibility_tab_suggestion_close_tab_action_button">
+  <item quantity="one">"Lukk %1$d valgt fane"</item>
+  <item quantity="other">"Lukk %1$d valgte faner"</item>
+</plurals>
+<string name="accessibility_tab_movement_left">"Flytt fanen mot venstre"</string>
+<string name="accessibility_tab_movement_right">"Flytt fanen mot høyre"</string>
+<string name="accessibility_tab_movement_up">"Flytt fanen oppover"</string>
+<string name="accessibility_tab_movement_down">"Flytt fanen nedover"</string>
+<string name="undo_tab_strip_closure_message">"Lukket faneraden"</string>
+<string name="tab_strip_info_bar_question">"Vil du at faneraden ikke skal vises igjen?"</string>
+<string name="tab_strip_info_bar_no_reshow">"Ikke vis igjen"</string>
+<string name="tab_strip_info_bar_reshow">"Vis senere"</string>
+<string name="price_drop_spotted_title">"Oppdaget et avslag"</string>
+<string name="price_drop_spotted_content">"Se hvilken vare i de åpne fanene dine som har en lavere pris"</string>
+<string name="price_drop_spotted_show_me">"Vis meg"</string>
+<string name="price_drop_spotted_lower_price">"Lavere pris"</string>
+<string name="accessibility_tab_price_card">"Prisen på denne varen falt nylig fra %1$s til %2$s"</string>
+<string name="price_drop_alerts_card_title">"Vil du ha varsler om avslag?"</string>
+<string name="price_drop_alerts_card_get_notified_content">"Du blir varslet når det finnes en lavere pris på en åpen fane"</string>
+<string name="price_drop_alerts_card_get_notified">"Bli varslet"</string>
+<string name="price_drop_alerts_card_go_to_settings_content">"For å bli varslet når det finnes en lavere pris på en åpen fane, slå på varsler i Innstillinger."</string>
+<string name="price_drop_alerts_card_go_to_settings">"Gå til Innstillinger"</string>
+<string name="price_tracking_settings">"Innstillinger for prissporing"</string>
+<string name="track_prices_on_tabs">"Spor priser på faner"</string>
+<string name="track_prices_on_tabs_description">"Se avslag på fanene dine"</string>
+<string name="price_drop_alerts">"Varsler om avslag"</string>
+<string name="price_drop_alerts_description">"Bli varslet når priser går ned"</string>
+<string name="price_drop_notification_content_title">"%1$s avslag på %2$s"</string>
+<string name="price_drop_notification_content_text">"Nå %1$s på %2$s"</string>
+<string name="price_drop_notification_action_visit_site">"Besøk nettstedet"</string>
+<string name="price_drop_notification_action_turn_off_alert">"Slutt å spore produktet"</string>
+<string name="merchant_viewer_message_title">"Vil du se informasjon om butikken?"</string>
+<string name="merchant_viewer_message_title_see_reviews">"Vil du se butikkanmeldelser?"</string>
+<string name="merchant_viewer_message_action">"Visning"</string>
+<string name="merchant_viewer_message_description_rating">"Vurdering: %1$s/%2$s"</string>
+<plurals name="merchant_viewer_message_description_reviews">
+  <item quantity="one">"(%1$s anmeldelse)"</item>
+  <item quantity="other">"(%1$s anmeldelser)"</item>
+</plurals>
+<plurals name="merchant_viewer_message_description_reviews_from_google">
+  <item quantity="one">"%1$s anmeldelse fra Google"</item>
+  <item quantity="other">"%1$s anmeldelser fra Google"</item>
+</plurals>
+<string name="merchant_viewer_message_rating_numerical">"%1$.1f/%2$d"</string>
+<string name="merchant_viewer_message_rating_word">"vurdering"</string>
+<plurals name="accessibility_merchant_viewer_message_description">
+  <item quantity="one">" Vurdering: %1$s/%2$s, %3$d anmeldelse"</item>
+  <item quantity="other">"Vurdering: %1$s/%2$s, %3$d anmeldelser"</item>
+</plurals>
+<string name="accessibility_merchant_viewer_message_announcement">"Vis butikkinformasjon – alternativet er tilgjengelig nær toppen av skjermen"</string>
+<string name="merchant_viewer_preview_sheet_title">"Google | Om denne butikken"</string>
+<string name="merchant_viewer_omnibox_icon_iph">"Se butikkinformasjon"</string>
+<string name="page_info_store_info_title">"Butikkinformasjon"</string>
+<string name="page_info_store_info_description_with_no_review">"(butikkvurdering)"</string>
+<string name="page_info_store_info_description_with_no_rating">"Se retningslinjer for retur med mer"</string>
+<string name="merchant_viewer_preview_sheet_description">"Informasjon om denne butikken"</string>
+<string name="merchant_viewer_preview_sheet_opened_half">"Informasjon om denne butikken er åpnet i halv høyde"</string>
+<string name="merchant_viewer_preview_sheet_opened_full">"Informasjon om denne butikken er åpnet i full høyde"</string>
+<string name="merchant_viewer_preview_sheet_closed">"Informasjon om denne butikken er lukket"</string>
+<string name="close_all_tabs_dialog_title">"Vil du lukke alle faner?"</string>
+<string name="close_all_tabs_dialog_message">"Du finner de lukkede fanene dine under Nylige faner på hovedmenyen i Chrome"</string>
+<string name="close_all_tabs_dialog_title_incognito">"Vil du lukke alle inkognitofaner?"</string>
+<string name="close_all_tabs_dialog_message_incognito">"Aktiviteten din på disse inkognitofanene blir fjernet fra enheten"</string>
+</resources>

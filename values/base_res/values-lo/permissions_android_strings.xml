@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s ຕ້ອງການການອະນຸຍາດເພື່ອເຂົ້າເຖິງກ້ອງຂອງທ່ານເພື່ອສ້າງແຜນທີ່ 3 ມິຕິຂອງສະພາບແວດລ້ອມອ້ອມຂ້າງຂອງທ່ານ."</string>
+<string name="infobar_missing_camera_permission_text">"%1$s ຕ້ອງການການອະນຸຍາດເພື່ອເຂົ້າເຖິງກ້ອງຖ່າຍຮູບຂອງທ່ານສຳລັບເວັບໄຊນີ້."</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s ຕ້ອງການການອະນຸຍາດເພື່ອເຂົ້າເຖິງໄມໂຄຣໂຟນຂອງທ່ານສຳລັບເວັບໄຊນີ້."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s ຕ້ອງການການອະນຸຍາດເພື່ອເຂົ້າເຖິງກ້ອງຖ່າຍຮູບ ແລະ ໄມໂຄຣໂຟນຂອງທ່ານສຳລັບເວັບໄຊນີ້."</string>
+<string name="infobar_missing_location_permission_text">"%1$s ຕ້ອງການເຂົ້າເຖິງສະຖານທີ່ຂອງທ່ານເພື່ອແບ່ງປັນສະຖານທີ່ຂອງທ່ານກັບເວັບໄຊນີ້."</string>
+<string name="infobar_update_permissions_button_text">"ສືບຕໍ່"</string>
+<string name="nfc_disabled_on_device_message">"ເພື່ອສືບຕໍ່, ກະລຸນາເປີດ NFC ໃນການຕັ້ງຄ່າ Android"</string>
+<string name="nfc_prompt_turn_on">"ເປີດ"</string>
+<string name="overlay_detected_dialog_title">"ເວັບໄຊນີ້ບໍ່ສາມາດຂໍເອົາການອະນຸຍາດຂອງທ່ານໄດ້"</string>
+<string name="overlay_detected_dialog_message">"ປິດຟອງຂໍ້ຄວາມ ຫຼື ການສະແດງທັບຈາກແອັບອື່ນ. ຈາກນັ້ນລອງອີກຄັ້ງ."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;ຂໍຄວາມຊ່ວຍເຫຼືອ&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"ຈັບ​ຄູ່"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"ລະດັບຄວາມແຮງສັນຍານ: %d ຂີດ"</item>
+  <item quantity="other">"ລະດັບຄວາມແຮງສັນຍານ: %d ຂີດ"</item>
+</plurals>
+<string name="bluetooth_device_connected">"ອຸປະກອນທີ່ເຊື່ອມຕໍ່ແລ້ວ"</string>
+<string name="bluetooth_dialog_title">"%1$s ຕ້ອງການຈັບຄູ່"</string>
+<string name="bluetooth_not_found">"ບໍ່ພົບອຸປະກອນທີ່ເຂົ້າກັນໄດ້"</string>
+<string name="bluetooth_searching">"&lt;link&gt;ຂໍຄວາມຊ່ວຍເຫຼືອ&lt;/link&gt; ໃນຂະນະສະແກນຫາອຸປະກອນ…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;ຂໍຄວາມຊ່ວຍເຫຼືອ&lt;/link1&gt; ຫຼື &lt;link2&gt;ສະແກນຄືນໃໝ່&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Chrome ຈຳເປັນຕ້ອງເຂົ້າເຖິງສະຖານທີ່ເພື່ອສະແກນຫາອຸປະກອນ. ການເຂົ້າເຖິງສະຖານທີ່ &lt;services_link&gt;ປິດຢູ່ສຳລັບອຸປະກອນນີ້&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Chrome ຈຳເປັນຕ້ອງເຂົ້າເຖິງສະຖານທີ່ເພື່ອສະແກນຫາອຸປະກອນ. ກະລຸນາ &lt;permission_link&gt;ອັບເດດການອະນຸຍາດ&lt;/permission_link&gt;. ນອກນັ້ນ, ການເຂົ້າເຖິງສະຖານທີ່ແມ່ນ &lt;services_link&gt;ປິດຢູ່ສຳລັບອຸປະກອນນີ້&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome ຕ້ອງການການອະນຸຍາດເພື່ອສະແກນຫາອຸປະກອນທີ່ຢູ່ໃກ້ຄຽງ. &lt;permission_link&gt;ອັບເດດການອະນຸຍາດ&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"Chrome ຕ້ອງການ​ມີ​ການ​ເຂົ້າ​ເຖິງ​ທີ່​ຕັ້ງ​ເພື່ອ​ສະ​ແກນ​ຫາ​ອຸປະກອນ. ກະລຸນາ &lt;permission_link&gt;ອັບ​ເດດ​ການ​ອະນຸຍາດ&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;ຂໍຄວາມຊ່ວຍເຫຼືອ&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome ບໍ່ສາມາດເປີດອະແດັບເຕີ Bluetooth ໄດ້"</string>
+<string name="bluetooth_adapter_off">"&lt;link&gt;ເປີດ Bluetooth&lt;/link&gt; ເພື່ອອະນຸຍາດການຈັບຄູ່"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s ຕ້ອງການສະແກນຫາອຸປະກອນ Bluetooth ທີ່ຢູ່ໃກ້ຄຽງ, ພົບເຫັນອຸປະກອນຕໍ່ໄປນີ້ແລ້ວ:"</string>
+<string name="bluetooth_scanning_device_unknown">"ອຸປະກອນທີ່ບໍ່ຮູ້ຈັກ ຫຼື ບໍ່ຮອງຮັບ (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

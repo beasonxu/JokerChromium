@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s atrofingizning 3D xaritasini yaratishi uchun kameradan foydalanishiga ruxsat berilmagan."</string>
+<string name="infobar_missing_camera_permission_text">"%1$s bu saytda kameradan foydalanishiga ruxsat berilmagan."</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s bu saytda mikrofondan foydalanishiga ruxsat berilmagan."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s bu saytda kamera va mikrofondan foydalanishiga ruxsat berilmagan."</string>
+<string name="infobar_missing_location_permission_text">"%1$s bu saytda joylashuv axborotidan foydalanishiga ruxsat berilmagan."</string>
+<string name="infobar_update_permissions_button_text">"Davom etish"</string>
+<string name="nfc_disabled_on_device_message">"Davom etish uchun Android sozlamalari orqali NFC funksiyasini yoqing"</string>
+<string name="nfc_prompt_turn_on">"Yoqish"</string>
+<string name="overlay_detected_dialog_title">"Bu sayt sizdan ruxsat soʻray olmaydi"</string>
+<string name="overlay_detected_dialog_message">"Har qanday pufakchalar va boshqa ilovalarning ustki ochilishini yopish Keyin qaytadan urining."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Yordam markazi&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Ulanish"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Signal darajasi: %d chiziqda"</item>
+  <item quantity="other">"Signal darajasi: %d chiziqda"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Ulangan qurilma"</string>
+<string name="bluetooth_dialog_title">"%1$s qurilmangizga ulanmoqchi"</string>
+<string name="bluetooth_not_found">"Mos qurilmalar topilmadi"</string>
+<string name="bluetooth_searching">"Qurilmalar qidirilayotganda &lt;link&gt;yordam sahifasiga o‘ting&lt;/link&gt;"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Yordam sahifalariga o‘ting&lt;/link1&gt; yoki &lt;link2&gt;qaytadan qidiring&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Qurilmalarni tekshirish uchun Chrome brauzeriga joylashuv ma’lumotlarini ko‘rish ruxsati zarur. &lt;services_link&gt;Ushbu qurilma uchun joylashuv ma’lumotlariga ruxsat o‘chirib qo‘yilgan&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Qurilmalarni tekshirish uchun Chrome brauzeriga joylashuv ma’lumotlarini ko‘rish ruxsati zarur. &lt;permission_link&gt;Ruxsatlarni yangilang&lt;/permission_link&gt;. &lt;services_link&gt;Ushbu qurilma uchun joylashuv ma’lumotlariga ruxsat ham o‘chirib qo‘yilgan&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome yaqin-atrofdagi qurilmalarni qidirishi uchun ruxsat berish kerak. &lt;permission_link&gt;Ruxsatnomalarni yangilash&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"Qurilmalarni tekshirish uchun Chrome brauzeriga joylashuv ma’lumotlarini ko‘rish ruxsati zarur. &lt;permission_link&gt;Ruxsatlarni yangilang&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Yordam markazi&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Bluetooth adapterini yoqib bo‘lmadi"</string>
+<string name="bluetooth_adapter_off">"Ulanishga ruxsat berish uchun &lt;link&gt;Bluetooth’ni yoqing&lt;/link&gt;"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s sayti yaqin-atrofdagi Bluetooth qurilmalarni tekshirmoqchi. Quyidagi qurilmalar topilgan:"</string>
+<string name="bluetooth_scanning_device_unknown">"Notanish yoki qoʻllab-quvvatlanmaydigan qurilma (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

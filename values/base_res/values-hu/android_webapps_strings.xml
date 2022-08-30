@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"Alkalmazás beszerzése a Google Play Áruházból: %s"</string>
+<string name="app_banner_install">"Telepítés"</string>
+<string name="menu_add_to_homescreen">"Kezdőképernyőre"</string>
+<string name="menu_add_to_homescreen_install">"Alkalmazás telepítése"</string>
+<string name="added_to_homescreen">"A(z) %1$s felkerült a kezdőképernyőre"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"Alkalmazás telepítése"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"Képernyőkép"</string>
+<string name="image_zoom_content_description">"Képernyőkép. Koppintson a bezáráshoz."</string>
+<string name="webapk_install_in_progress">"Az előző webhely hozzáadása még folyamatban van"</string>
+<string name="webapk_install_failed">"Nem sikerült a telepítés"</string>
+</resources>

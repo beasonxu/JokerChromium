@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"Získat aplikaci z Obchodu Google Play: %s"</string>
+<string name="app_banner_install">"Instalovat"</string>
+<string name="menu_add_to_homescreen">"Přidat na plochu"</string>
+<string name="menu_add_to_homescreen_install">"Instalovat aplikaci"</string>
+<string name="added_to_homescreen">"Na plochu byl přidán web %1$s"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"Nainstalovat aplikaci"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"Snímek obrazovky"</string>
+<string name="image_zoom_content_description">"Snímek obrazovky. Klepnutím zavřete."</string>
+<string name="webapk_install_in_progress">"Předchozí web se stále přidává"</string>
+<string name="webapk_install_failed">"Instalace se nezdařila"</string>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"3월 31일부터 Chrome의 서비스 약관이 변경됩니다"</string>
+<string name="tos_notification_body_text">"새로운 약관을 검토해 주세요."</string>
+<string name="tos_notification_ack_button_text">"확인"</string>
+<string name="tos_notification_review_button_text">"검토"</string>
+<string name="webapp_update_dialog_title_name">"이름 업데이트 검토"</string>
+<string name="webapp_update_dialog_title_icon">"아이콘 업데이트 검토"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"이름 및 아이콘 업데이트 검토"</string>
+<string name="webapp_update_explanation">"웹 앱이 다른 앱인 것처럼 사용자를 속이려 한다면 앱을 제거하시기 바랍니다."</string>
+<string name="webapp_update_current_icon">"현재 아이콘"</string>
+<string name="webapp_update_new_icon">"새로운 아이콘"</string>
+<string name="webapp_update_negative_button">"앱 제거"</string>
+<string name="search_or_type_web_address">"웹 주소 검색 또는 입력"</string>
+<string name="password_manager_username_label">"사용자이름"</string>
+<string name="password_manager_password_label">"비밀번호"</string>
+<string name="password_manager_update_button">"업데이트"</string>
+<string name="confirm_username_dialog_title">"사용자 이름 확인"</string>
+<string name="options_homepage_title">"홈페이지"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"이 휴대전화로 확인"</string>
+<string name="cablev2_get_assertion_notification_title">"본인 확인"</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"Google Play дүкенінен қолданба алу: %s"</string>
+<string name="app_banner_install">"Орнату"</string>
+<string name="menu_add_to_homescreen">"Негізгі экранға қосу"</string>
+<string name="menu_add_to_homescreen_install">"Қолданбаны орнату"</string>
+<string name="added_to_homescreen">"Негізгі экранға %1$s қосылды"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"Осы қолданбаны орнату"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"Скриншот"</string>
+<string name="image_zoom_content_description">"Скриншот. Жабу үшін түртіңіз."</string>
+<string name="webapk_install_in_progress">"Алдыңғы сайт әлі енгізілуде"</string>
+<string name="webapk_install_failed">"Орнатылмады"</string>
+</resources>

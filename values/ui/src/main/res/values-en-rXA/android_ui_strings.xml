@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="low_memory_error">"Ûñåbļé ţö çömþļéţé þrévîöûš öþéråţîöñ ðûé ţö ļöŵ mémörý - one two three four five six seven eight nine"</string>
+<string name="opening_file_error">"Fåîļéð ţö öþéñ šéļéçţéð ƒîļé - one two three four five"</string>
+<string name="copy_to_clipboard_failure_message">"Fåîļéð ţö çöþý ţö ţĥé çļîþböårð - one two three four five six"</string>
+<string name="link_copied">"Ļîñķ çöþîéð - one two"</string>
+</resources>

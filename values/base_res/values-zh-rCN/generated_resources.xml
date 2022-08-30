@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Chrome 的《服务条款》将于 3 月 31 日变更"</string>
+<string name="tos_notification_body_text">"请查阅新版条款"</string>
+<string name="tos_notification_ack_button_text">"知道了"</string>
+<string name="tos_notification_review_button_text">"查看"</string>
+<string name="webapp_update_dialog_title_name">"查看名称更新"</string>
+<string name="webapp_update_dialog_title_icon">"查看图标更新"</string>
+<string name="webapp_update_dialog_title_name_and_icon">"查看名称和图标的新变化"</string>
+<string name="webapp_update_explanation">"如果此 Web 应用试图诱骗您认为它是另一款应用，请卸载它。"</string>
+<string name="webapp_update_current_icon">"当前图标"</string>
+<string name="webapp_update_new_icon">"新图标"</string>
+<string name="webapp_update_negative_button">"卸载应用"</string>
+<string name="search_or_type_web_address">"搜索或输入网址"</string>
+<string name="password_manager_username_label">"用户名"</string>
+<string name="password_manager_password_label">"密码"</string>
+<string name="password_manager_update_button">"更新"</string>
+<string name="confirm_username_dialog_title">"确认您的用户名"</string>
+<string name="options_homepage_title">"主页"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="cablev2_make_credential_notification_title">"使用此手机验证"</string>
+<string name="cablev2_get_assertion_notification_title">"验证您的身份"</string>
+</resources>

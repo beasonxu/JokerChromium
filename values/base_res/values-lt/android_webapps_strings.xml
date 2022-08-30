@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"Gauti programą iš „Google Play“ parduotuvės: %s"</string>
+<string name="app_banner_install">"Įdiegti"</string>
+<string name="menu_add_to_homescreen">"Pridėti prie pagr. ekrano"</string>
+<string name="menu_add_to_homescreen_install">"Įdiegti programą"</string>
+<string name="added_to_homescreen">"Svetainė „%1$s“ pridėta prie pagrindinio ekrano"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"Įdiegti šią programą"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"Ekrano kopija"</string>
+<string name="image_zoom_content_description">"Ekrano kopija. Palieskite, kad uždarytumėte."</string>
+<string name="webapk_install_in_progress">"Vis dar pridedama ankstesnė svetainė"</string>
+<string name="webapk_install_failed">"Nepavyko įdiegti"</string>
+</resources>

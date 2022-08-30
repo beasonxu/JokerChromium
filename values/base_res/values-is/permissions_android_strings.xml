@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"%1$s þarf leyfi til að nota myndavélina til að búa til þrívíddarkort af umhverfinu."</string>
+<string name="infobar_missing_camera_permission_text">"%1$s þarf leyfi til að nota myndavélina á þessu vefsvæði."</string>
+<string name="infobar_missing_microphone_permission_text">"%1$s þarf leyfi til að nota hljóðnemann á þessu vefsvæði."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"%1$s þarf leyfi til að nota myndavélina og hljóðnemann á þessu vefsvæði."</string>
+<string name="infobar_missing_location_permission_text">"%1$s þarf staðsetningaraðgang til að deila staðsetningu þinni með þessu vefsvæði."</string>
+<string name="infobar_update_permissions_button_text">"Halda áfram"</string>
+<string name="nfc_disabled_on_device_message">"Kveiktu á NFC í stillingum Android til að halda áfram"</string>
+<string name="nfc_prompt_turn_on">"Kveikja"</string>
+<string name="overlay_detected_dialog_title">"Þetta vefsvæði getur ekki beðið þig um heimild"</string>
+<string name="overlay_detected_dialog_message">"Lokaðu öllum blöðrum eða yfirlögnum úr öðrum forritum. Reyndu svo aftur."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Fá aðstoð&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Para"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Sendistyrkur: %d stika"</item>
+  <item quantity="other">"Sendistyrkur: %d stikur"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Tengt tæki"</string>
+<string name="bluetooth_dialog_title">"%1$s vill parast"</string>
+<string name="bluetooth_not_found">"Engin samhæf tæki fundust"</string>
+<string name="bluetooth_searching">"&lt;link&gt;Fáðu aðstoð&lt;/link&gt; á meðan leitað er að tækjum…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Fáðu aðstoð&lt;/link1&gt; eða &lt;link2&gt;leitaðu aftur&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Chrome þarf að hafa aðgang að staðsetningu til að geta leitað að tækjum. Aðgangur að staðsetningu er &lt;services_link&gt;óvirkur fyrir þetta tæki&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Chrome þarf að hafa aðgang að staðsetningu til að geta leitað að tækjum. &lt;permission_link&gt;Uppfæra heimildir&lt;/permission_link&gt;. Aðgangur að staðsetningu er einnig &lt;services_link&gt;óvirkur fyrir þetta tæki&lt;/services_link&gt;."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Chrome þarf heimild til að leita að nálægum tækjum. &lt;permission_link&gt;Uppfæra heimildir&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"Chrome þarf að hafa aðgang að staðsetningu til að geta leitað að tækjum. &lt;permission_link&gt;Uppfæra heimildir&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Fá aðstoð&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome getur ekki kveikt á Bluetooth-millistykki"</string>
+<string name="bluetooth_adapter_off">"&lt;link&gt;Kveiktu á Bluetooth&lt;/link&gt; til að leyfa pörun"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s vill leita að nálægum Bluetooth-tækjum. Eftirfarandi tæki hafa fundist:"</string>
+<string name="bluetooth_scanning_device_unknown">"Óþekkt eða óstutt tæki (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>

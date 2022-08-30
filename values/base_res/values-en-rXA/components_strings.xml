@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="autofill_save_card_prompt_confirm">"Çöñƒîrm - one"</string>
+<string name="autofill_mobile_save_card_to_cloud_confirmation_dialog_explanation">"Šåvé ýöûr çårð åñð bîļļîñĝ îñƒö ţö ýöûr Ĝööĝļé Åççöûñţ ƒör šéçûré åñð ƒåšţér çĥéçķöûţš - one two three four five six seven eight nine ten - one two three four five"</string>
+<string name="autofill_mobile_save_card_to_cloud_confirmation_dialog_explanation_with_account_name">"Šåvé ýöûr çårð åñð bîļļîñĝ îñƒö ţö ýöûr Ĝööĝļé Åççöûñţ ^1 ƒör šéçûré åñð ƒåšţér çĥéçķöûţš - one two three four five six seven eight nine ten - one two three four five six"</string>
+<string name="autofill_fix_flow_prompt_save_card_label">"Šåvé çårð - one two"</string>
+<string name="autofill_save_card_prompt_cardholder_name_tooltip">"Ţĥîš ñåmé îš ƒröm ýöûr Ĝööĝļé Åççöûñţ - one two three four five six seven"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_cvc">"Çĥéçķ ýöûr ÇVÇ åñð ţrý åĝåîñ - one two three four five six"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_date">"Çĥéçķ ýöûr éxþîråţîöñ ðåţé åñð ţrý åĝåîñ - one two three four five six seven"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_cvc_and_expiration">"Çĥéçķ ýöûr éxþîråţîöñ ðåţé åñð ÇVÇ åñð ţrý åĝåîñ - one two three four five six seven eight nine"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_month">"Çĥéçķ ýöûr éxþîråţîöñ möñţĥ åñð ţrý åĝåîñ - one two three four five six seven"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_year">"Çĥéçķ ýöûr éxþîråţîöñ ýéår åñð ţrý åĝåîñ - one two three four five six seven"</string>
+<string name="autofill_card_unmask_prompt_enable_fido_auth_checkbox">"Ûšé šçrééñ ļöçķ ţö çöñƒîrm çårðš ƒröm ñöŵ öñ - one two three four five six seven eight nine"</string>
+<string name="autofill_card_unmask_verification_in_progress">"Çöñƒîrmîñĝ çårð… - one two"</string>
+<string name="autofill_card_unmask_verification_success">"Ýöûr çårð îš çöñƒîrméð - one two three four"</string>
+<string name="autofill_expiration_date_separator">"/ "</string>
+<string name="autofill_card_unmask_new_card_link">"Ûþðåţé çårð - one two"</string>
+<string name="autofill_wallet_management_link_text">"Éðîţ - one"</string>
+<string name="autofill_from_google_account_long">"Fröm Ĝööĝļé Þåý - one two three"</string>
+<string name="autofill_virtual_card_enrollment_accept_button_label">"Ýéš - one"</string>
+<string name="autofill_virtual_card_enrollment_dialog_title_label">"Måķé îţ möré šéçûré ŵîţĥ å vîrţûåļ çårð¿ - one two three four five six seven eight"</string>
+<string name="autofill_virtual_card_number_switch_label">"Vîrţûåļ çårð - one two"</string>
+<string name="autofill_offers_reminder_description_text">"Þåý ŵîţĥ %1$s åţ çĥéçķöûţ. - one two three four five"</string>
+<string name="autofill_offers_reminder_deep_link_text">"Šéé ðéţåîļš - one two"</string>
+<string name="autofill_payments_otp_verification_dialog_title">"Éñţér Vérîƒîçåţîöñ Çöðé - one two three"</string>
+<string name="autofill_payments_otp_verification_dialog_cant_find_code_message">"Çåñ\'ţ ƒîñð ýöûr çöðé¿ &lt;link&gt;Ĝéţ ñéŵ çöðé&lt;/link&gt; - one two three four five six seven eight nine"</string>
+<string name="autofill_payments_otp_verification_dialog_otp_input_hint">"Éñţér %1$s-ðîĝîţ çöðé - one two three four"</string>
+<string name="autofill_payments_otp_verification_dialog_positive_button_label">"Çöñƒîrm - one"</string>
+<string name="autofill_payments_otp_verification_dialog_negative_button_label">"Çåñçéļ - one"</string>
+<string name="autofill_edit_credit_card">"Éðîţ çårð - one two"</string>
+<string name="autofill_create_credit_card">"Åðð çårð - one two"</string>
+<string name="autofill_clear_local_copy_button">"Çļéår çöþý - one two"</string>
+<string name="autofill_cc_amex">"Åmérîçåñ Éxþréšš - one two"</string>
+<string name="autofill_cc_diners">"Ðîñérš Çļûb - one two"</string>
+<string name="autofill_cc_discover">"Ðîšçövér - one"</string>
+<string name="autofill_cc_jcb">"ĴÇB - one"</string>
+<string name="autofill_cc_mastercard">"Måšţérçårð - one"</string>
+<string name="autofill_cc_mir">"Mîr - one"</string>
+<string name="autofill_cc_union_pay">"Çĥîñå ÛñîöñÞåý - one two"</string>
+<string name="autofill_cc_visa">"Vîšå - one"</string>
+<string name="autofill_address_summary_separator">",  "</string>
+<string name="autofill_scan_credit_card">"Šçåñ ñéŵ çårð - one two three"</string>
+<string name="autofill_enable_profiles_toggle_sublabel">"Îñçļûðéš îñƒörmåţîöñ ļîķé þĥöñé ñûmbérš, émåîļ åððréššéš, åñð šĥîþþîñĝ åððréššéš - one two three four five six seven eight nine ten"</string>
+<string name="autofill_enable_credit_cards_toggle_sublabel">"Fîļļš îñ þåýméñţ ƒörmš ŵîţĥ ýöûr šåvéð þåýméñţ méţĥöðš - one two three four five six seven eight nine"</string>
+<string name="autofill_addresses_settings_title">"Åððréššéš åñð möré - one two three"</string>
+<string name="autofill_payment_methods">"Þåýméñţ méţĥöðš - one two"</string>
+<string name="autofill_enable_profiles_toggle_label">"Šåvé åñð ƒîļļ åððréššéš - one two three four"</string>
+<string name="autofill_enable_credit_cards_toggle_label">"Šåvé åñð ƒîļļ þåýméñţ méţĥöðš - one two three four five"</string>
+<string name="enable_credit_card_fido_auth_label">"Šçrééñ ļöçķ - one two"</string>
+<string name="enable_credit_card_fido_auth_sublabel">"Ûšé šçrééñ ļöçķ ţö çöñƒîrm çårðš ƒåšţér - one two three four five six seven"</string>
+<string name="autofill_update_address_prompt_new_values_section_label">"Ñéŵ - one"</string>
+<string name="autofill_update_address_prompt_old_values_section_label">"Öļð - one"</string>
+<string name="autofill_save_address_prompt_edit_button_tooltip">"Éðîţ åððréšš - one two"</string>
+<string name="autofill_edit_address_dialog_title">"Éðîţ åððréšš - one two"</string>
+<string name="http_post_warning_title">"Çöñƒîrm Förm ®éšûbmîššîöñ - one two three"</string>
+<string name="http_post_warning">"Ţĥé þåĝé ţĥåţ ýöû\'ré ļööķîñĝ ƒör ûšéð îñƒörmåţîöñ ţĥåţ ýöû éñţéréð. ®éţûrñîñĝ ţö ţĥåţ þåĝé mîĝĥţ çåûšé åñý åçţîöñ ýöû ţööķ ţö bé réþéåţéð. Ðö ýöû ŵåñţ ţö çöñţîñûé¿ - one two three four five six seven eight nine ten - one two three four five six seven eight nine ten - one two three four five six seven eight nine"</string>
+<string name="http_post_warning_resend">"Çöñţîñûé - one"</string>
+<string name="login_dialog_title">"Šîĝñ îñ - one two"</string>
+<string name="login_dialog_ok_button_label">"Šîĝñ îñ - one two"</string>
+<string name="login_dialog_username_field">"Ûšérñåmé - one"</string>
+<string name="login_dialog_password_field">"Þåššŵörð - one"</string>
+<string name="sad_tab_title">"Åŵ, Šñåþ¡ - one two"</string>
+<string name="sad_tab_message">"Šöméţĥîñĝ ŵéñţ ŵröñĝ ŵĥîļé ðîšþļåýîñĝ ţĥîš ŵébþåĝé. - one two three four five six seven"</string>
+<string name="sad_tab_reload_label">"®éļöåð - one"</string>
+<string name="sad_tab_send_feedback_label">"Šéñð Fééðbåçķ - one two"</string>
+<string name="sad_tab_reload_title">"Çåñ\'ţ öþéñ ţĥîš þåĝé - one two three four"</string>
+<string name="sad_tab_reload_try">"Ţrý ţĥé ƒöļļöŵîñĝ ţîþš: - one two three four"</string>
+<string name="sad_tab_reload_incognito">"Öþéñ þåĝé îñ å ñéŵ Îñçöĝñîţö ţåb - one two three four five six seven"</string>
+<string name="sad_tab_reload_restart_browser">"®éšţårţ Çĥrömîûm - one two"</string>
+<string name="sad_tab_reload_restart_device">"®éšţårţ ýöûr ðévîçé - one two three"</string>
+<string name="sad_tab_reload_learn_more">"Ļéårñ möré - one two"</string>
+<string name="new_tab_otr_title">"Ýöû’vé ĝöñé Îñçöĝñîţö - one two three"</string>
+<string name="new_tab_otr_subtitle">"Ñöŵ ýöû çåñ bröŵšé þrîvåţéļý, åñð öţĥér þéöþļé ŵĥö ûšé ţĥîš ðévîçé ŵöñ’ţ šéé ýöûr åçţîvîţý. Ĥöŵévér, ðöŵñļöåðš åñð bööķmårķš ŵîļļ bé šåvéð. - one two three four five six seven eight nine ten - one two three four five six seven eight nine ten - one two three"</string>
+<string name="new_tab_otr_subtitle_with_reading_list">"Ñöŵ ýöû çåñ bröŵšé þrîvåţéļý, åñð öţĥér þéöþļé ŵĥö ûšé ţĥîš ðévîçé ŵöñ’ţ šéé ýöûr åçţîvîţý. Ĥöŵévér, ðöŵñļöåðš, bööķmårķš åñð réåðîñĝ ļîšţ îţémš ŵîļļ bé šåvéð. - one two three four five six seven eight nine ten - one two three four five six seven eight nine ten - one two three four five six"</string>
+<string name="new_tab_otr_not_saved">"Çĥrömîûm &lt;em&gt;ŵöñ’ţ šåvé&lt;/em&gt; ţĥé ƒöļļöŵîñĝ îñƒörmåţîöñ:
+          &lt;ul&gt;
+            &lt;li&gt;Ýöûr bröŵšîñĝ ĥîšţörý
+            &lt;li&gt;Çööķîéš åñð šîţé ðåţå
+            &lt;li&gt;Îñƒörmåţîöñ éñţéréð îñ ƒörmš
+          &lt;/ul&gt; - one two three four five six seven eight nine ten - one two three four five six seven eight nine ten - one two three four"</string>
+<string name="new_tab_otr_visible">"Ýöûr åçţîvîţý &lt;em&gt;mîĝĥţ šţîļļ bé vîšîbļé&lt;/em&gt; ţö:
+        &lt;ul&gt;
+          &lt;li&gt;Ŵébšîţéš ýöû vîšîţ
+          &lt;li&gt;Ýöûr émþļöýér ör šçĥööļ
+          &lt;li&gt;Ýöûr îñţérñéţ šérvîçé þrövîðér
+        &lt;/ul&gt; - one two three four five six seven eight nine ten - one two three four five six seven eight nine ten - one two three four five"</string>
+<string name="new_tab_otr_cookie_controls_controlled_tooltip_text">"Ţĥîš šéţţîñĝ îš çöñţröļļéð îñ Çööķîéš šéţţîñĝš. - one two three four five six seven"</string>
+<string name="new_tab_otr_third_party_cookie">"Bļöçķ ţĥîrð-þårţý çööķîéš - one two three"</string>
+<string name="new_tab_otr_third_party_cookie_sublabel">"Ŵĥéñ öñ, šîţéš çåñ\'ţ ûšé çööķîéš ţĥåţ ţråçķ ýöû åçröšš ţĥé ŵéb. Féåţûréš öñ šömé šîţéš måý bréåķ. - one two three four five six seven eight nine ten - one two three four five six seven eight"</string>
+<string name="revamped_incognito_ntp_title">"Îñçöĝñîţö îñ Çĥrömîûm - one two three"</string>
+<string name="revamped_incognito_ntp_does_header">"Ŵĥåţ Îñçöĝñîţö ðöéš - one two three"</string>
+<string name="revamped_incognito_ntp_does_description">"Ŵĥéñ ýöû çļöšé åļļ Çĥrömîûm Îñçöĝñîţö ţåbš, ýöûr åçţîvîţý îñ ţĥöšé ţåbš îš çļéåréð ƒröm ţĥîš ðévîçé:
+          &lt;ul&gt;
+            &lt;li&gt;Bröŵšîñĝ åçţîvîţý&lt;/li&gt;
+            &lt;li&gt;Šéårçĥ ĥîšţörý&lt;/li&gt;
+            &lt;li&gt;Îñƒörmåţîöñ éñţéréð îñ ƒörmš&lt;/li&gt;
+          &lt;/ul&gt; - one two three four five six seven eight nine ten - one two three four five six seven eight nine ten - one two three four five six seven eight nine ten - one two three"</string>
+<string name="revamped_incognito_ntp_does_not_header">"Ŵĥåţ Îñçöĝñîţö ðöéšñ’ţ ðö - one two three four"</string>
+<string name="revamped_incognito_ntp_does_not_description">"Îñçöĝñîţö ðöéš ñöţ måķé ýöû îñvîšîbļé öñļîñé:
+        &lt;ul&gt;
+          &lt;li&gt;Šîţéš åñð ţĥé šérvîçéš ţĥéý ûšé çåñ šéé vîšîţš&lt;/li&gt;
+          &lt;li&gt;Émþļöýérš ör šçĥööļš çåñ ţråçķ bröŵšîñĝ åçţîvîţý&lt;/li&gt;
+          &lt;li&gt;Îñţérñéţ šérvîçé þrövîðérš çåñ möñîţör ŵéb ţråƒƒîç&lt;/li&gt;
+        &lt;/ul&gt; - one two three four five six seven eight nine ten - one two three four five six seven eight nine ten - one two three four five six seven eight nine ten - one two three four five six seven eight"</string>
+<string name="revamped_incognito_ntp_learn_more">"&lt;a&gt;Ļéårñ möré åböûţ Îñçöĝñîţö îñ Çĥrömîûm&lt;/a&gt; - one two three four five six seven eight"</string>
+<string name="revamped_incognito_ntp_otr_third_party_cookie">"Bļöçķ ţĥîrð þårţý çööķîéš îñ Îñçöĝñîţö - one two three four five six"</string>
+<string name="revamped_incognito_ntp_otr_third_party_cookie_sublabel">"Šîţéš çåñ\'ţ ûšé çööķîéš ţĥåţ ţråçķ ýöû åçröšš ţĥé ŵéb. Féåţûréš öñ šömé šîţéš måý bréåķ. - one two three four five six seven eight nine ten - one two three four five six"</string>
+<string name="ntp_article_suggestions_section_header">"Årţîçļéš ƒör ýöû - one two three"</string>
+<string name="ntp_article_suggestions_section_empty">"Ýöûr šûĝĝéšţéð årţîçļéš åþþéår ĥéré - one two three four five"</string>
+<string name="page_info_permission_ads_subtitle">"Šîţé šĥöŵš îñţrûšîvé ör mîšļéåðîñĝ åðš - one two three four five six"</string>
+<string name="payments_method_of_payment_label">"Þåýméñţ méţĥöð - one two"</string>
+<string name="payments_contact_details_label">"Çöñţåçţ îñƒö - one two"</string>
+<string name="payments_add_contact_details_label">"Åðð çöñţåçţ îñƒö - one two three"</string>
+<string name="payments_edit_contact_details_label">"Éðîţ çöñţåçţ îñƒö - one two three"</string>
+<string name="payments_add_billing_address">"Åðð bîļļîñĝ åððréšš - one two three"</string>
+<string name="payments_add_name_on_card">"Åðð ñåmé öñ çårð - one two three four"</string>
+<string name="payments_add_valid_card_number">"Åðð våļîð çårð ñûmbér - one two three four"</string>
+<string name="payments_add_more_information">"Åðð möré îñƒörmåţîöñ - one two three"</string>
+<string name="payments_edit_card">"Éðîţ çårð - one two"</string>
+<string name="payments_add_phone_number">"Åðð þĥöñé ñûmbér - one two three"</string>
+<string name="payments_add_recipient">"Åðð ñåmé - one two"</string>
+<string name="payments_add_valid_address">"Åðð våļîð åððréšš - one two three"</string>
+<string name="payments_add_email">"Åðð émåîļ - one two"</string>
+<string name="payments_add_name">"Åðð ñåmé - one two"</string>
+<string name="payments_order_summary_label">"Örðér šûmmårý - one two"</string>
+<string name="payment_request_payment_method_section_name">"Þåýméñţ - one"</string>
+<string name="payments_shipping_summary_label">"Šĥîþþîñĝ - one"</string>
+<string name="payments_shipping_address_label">"Šĥîþþîñĝ åððréšš - one two"</string>
+<string name="payments_shipping_option_label">"Šĥîþþîñĝ méţĥöð - one two"</string>
+<string name="payments_delivery_summary_label">"Ðéļîvérý - one"</string>
+<string name="payments_delivery_address_label">"Ðéļîvérý åððréšš - one two"</string>
+<string name="payments_delivery_option_label">"Ðéļîvérý méţĥöð - one two"</string>
+<string name="payments_pickup_summary_label">"Þîçķûþ - one"</string>
+<string name="payments_pickup_address_label">"Þîçķûþ åððréšš - one two"</string>
+<string name="payments_pickup_option_label">"Þîçķûþ méţĥöð - one two"</string>
+<string name="payments_edit_button">"Éðîţ - one"</string>
+<string name="payments_pay_button">"Þåý - one"</string>
+<string name="payments_continue_button">"Çöñţîñûé - one"</string>
+<string name="payments_add_contact">"Åðð çöñţåçţ îñƒö - one two three"</string>
+<string name="payments_add_card">"Åðð çårð - one two"</string>
+<string name="payments_add_address">"Åðð åððréšš - one two"</string>
+<string name="payments_edit_address">"Éðîţ åððréšš - one two"</string>
+<string name="payments_name_field_in_contact_details">"Ñåmé - one"</string>
+<string name="payments_save_card_to_device_checkbox">"Šåvé ţĥîš çårð ţö ţĥîš ðévîçé - one two three four five six"</string>
+<string name="payments_accepted_cards_label">"Åççéþţéð çårðš - one two"</string>
+<string name="payments_credit_card_expiration_date_abbr">"Éxþîréš %1$s/%2$s - one two three"</string>
+<string name="payments_loading_message">"Ļöåðîñĝ - one"</string>
+<string name="payments_checking_option">"Çĥéçķîñĝ - one"</string>
+<string name="payments_updated_label">"Ûþðåţéð - one"</string>
+<string name="payments_error_message">"Ţĥéré ŵåš åñ érrör þröçéššîñĝ ýöûr örðér. Þļéåšé ţrý åĝåîñ. - one two three four five six seven eight nine ten"</string>
+<string name="payments_card_and_address_settings">"Ýöû çåñ måñåĝé çårðš åñð åððréššéš îñ BEGIN_LINKŠéţţîñĝšEND_LINK. - one two three four five six seven eight nine ten"</string>
+<string name="payments_card_and_address_settings_signed_in">"Çårðš åñð åððréššéš åré ƒröm Çĥrömé åñð ýöûr Ĝööĝļé Åççöûñţ (%1$s). Ýöû çåñ måñåĝé ţĥém îñ BEGIN_LINKŠéţţîñĝšEND_LINK. - one two three four five six seven eight nine ten - one two three four five six seven eight nine"</string>
+<string name="payments_card_and_address_settings_signed_out">"Çårðš åñð åððréššéš åré ƒröm Çĥrömé. Ýöû çåñ måñåĝé ţĥém îñ BEGIN_LINKŠéţţîñĝšEND_LINK. - one two three four five six seven eight nine ten - one two three four"</string>
+<string name="settings_can_make_payment_toggle_label">"Åļļöŵ šîţéš ţö çĥéçķ îƒ ýöû ĥåvé þåýméñţ méţĥöðš šåvéð - one two three four five six seven eight nine ten"</string>
+<string name="payments_required_field_message">"* Fîéļð îš réqûîréð - one two three"</string>
+<string name="payments_phone_invalid_validation_message">"Éñţér å våļîð þĥöñé ñûmbér - one two three four five"</string>
+<string name="payments_email_invalid_validation_message">"Éñţér å våļîð émåîļ åððréšš - one two three four five"</string>
+<string name="payments_card_number_invalid_validation_message">"Éñţér å våļîð çårð ñûmbér - one two three four five"</string>
+<string name="payments_card_expiration_invalid_validation_message">"Éñţér å våļîð éxþîråţîöñ ðåţé - one two three four five"</string>
+<string name="payments_invalid_address">"Éñţér å våļîð åððréšš - one two three four"</string>
+<string name="payments_billing_address_required">"Bîļļîñĝ åððréšš réqûîréð - one two three"</string>
+<string name="payments_name_on_card_required">"Çårðĥöļðér ñåmé réqûîréð - one two three"</string>
+<string name="payments_more_information_required">"Möré îñƒörmåţîöñ réqûîréð - one two three"</string>
+<string name="payments_phone_number_required">"Þĥöñé ñûmbér réqûîréð - one two three"</string>
+<string name="payments_recipient_required">"Ñåmé réqûîréð - one two"</string>
+<string name="payments_email_required">"Émåîļ réqûîréð - one two"</string>
+<string name="payments_name_required">"Ñåmé réqûîréð - one two"</string>
+<string name="pref_edit_dialog_field_required_validation_message">"®éqûîréð ƒîéļð - one two"</string>
+<string name="payments_select_shipping_address_for_shipping_methods">"Ţö šéé šĥîþþîñĝ méţĥöðš åñð réqûîréméñţš, šéļéçţ åñ åððréšš - one two three four five six seven eight nine"</string>
+<string name="payments_unsupported_shipping_address">"Çåñ’ţ šĥîþ ţö ţĥîš åððréšš. Šéļéçţ å ðîƒƒéréñţ åððréšš. - one two three four five six seven eight nine"</string>
+<string name="payments_select_delivery_address_for_delivery_methods">"Ţö šéé ðéļîvérý méţĥöðš åñð réqûîréméñţš, šéļéçţ åñ åððréšš - one two three four five six seven eight nine"</string>
+<string name="payments_unsupported_delivery_address">"Çåñ’ţ ðéļîvér ţö ţĥîš åððréšš. Šéļéçţ å ðîƒƒéréñţ åððréšš. - one two three four five six seven eight nine"</string>
+<string name="payments_select_pickup_address_for_pickup_methods">"Ţö šéé þîçķûþ méţĥöðš åñð réqûîréméñţš, šéļéçţ åñ åððréšš - one two three four five six seven eight nine"</string>
+<string name="payments_unsupported_pickup_address">"Çåñ’ţ þîçķ ûþ ƒröm ţĥîš åððréšš. Šéļéçţ å ðîƒƒéréñţ åððréšš. - one two three four five six seven eight nine ten"</string>
+<string name="payments_android_app_error">"Çåñ’ţ öþéñ þåýméñţ åþþ - one two three four"</string>
+<string name="external_payment_app_leave_incognito_warning">"Ļéåvîñĝ Îñçöĝñîţö möðé ţö þåý vîå åñ éxţérñåļ åþþļîçåţîöñ. Çöñţîñûé¿ - one two three four five six seven eight nine ten"</string>
+<string name="payment_handler_sheet_description">"Þåýméñţ ĥåñðļér šĥééţ - one two three"</string>
+<string name="payment_handler_sheet_opened_half">"Þåýméñţ ĥåñðļér šĥééţ îš ĥåļƒ-öþéñéð - one two three four five"</string>
+<string name="payment_handler_sheet_opened_full">"Þåýméñţ ĥåñðļér šĥééţ îš öþéñéð - one two three four five"</string>
+<string name="payment_handler_sheet_closed">"Þåýméñţ ĥåñðļér šĥééţ îš çļöšéð - one two three four five"</string>
+<string name="secure_payment_confirmation_verify_purchase">"Vérîƒý ýöûr þûrçĥåšé - one two three"</string>
+<string name="secure_payment_confirmation_store_label">"Šţöré - one"</string>
+<string name="secure_payment_confirmation_total_label">"Ţöţåļ - one"</string>
+<string name="no_matching_credential_description">"%1$s måý ñééð ţö ţåķé åððîţîöñåļ šţéþš ţö vérîƒý ýöûr þåýméñţ - one two three four five six seven eight nine ten - one"</string>
+<string name="secure_payment_confirmation_authentication_sheet_description">"Šéçûré þåýméñţ çréðéñţîåļ åûţĥéñţîçåţîöñ šĥééţ - one two three four five"</string>
+<string name="secure_payment_confirmation_authentication_sheet_opened">"Šéçûré þåýméñţ çréðéñţîåļ åûţĥéñţîçåţîöñ šĥééţ îš öþéñéð - one two three four five six seven"</string>
+<string name="secure_payment_confirmation_authentication_sheet_closed">"Šéçûré þåýméñţ çréðéñţîåļ åûţĥéñţîçåţîöñ šĥééţ îš çļöšéð - one two three four five six seven"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_description">"Šéçûré þåýméñţ çréðéñţîåļ ñö måţçĥîñĝ çréðéñţîåļ šĥééţ - one two three four five six seven"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_opened">"Šéçûré þåýméñţ çréðéñţîåļ ñö måţçĥîñĝ çréðéñţîåļ šĥééţ îš öþéñéð - one two three four five six seven eight nine"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_closed">"Šéçûré þåýméñţ çréðéñţîåļ ñö måţçĥîñĝ çréðéñţîåļ šĥééţ îš çļöšéð - one two three four five six seven eight nine"</string>
+<string name="bluetooth_scanning_prompt_no_devices_found_prompt">"Ñö ñéårbý ðévîçéš ƒöûñð. - one two three four"</string>
+<string name="bluetooth_scanning_prompt_allow_button_text">"Åļļöŵ - one"</string>
+<string name="bluetooth_scanning_prompt_block_button_text">"Bļöçķ - one"</string>
+<string name="blocked_ads_prompt_title">"Åðš bļöçķéð - one two"</string>
+<string name="blocked_ads_dialog_title">"Åðš bļöçķéð - one two"</string>
+<string name="blocked_ads_dialog_message">"Ţĥîš šîţé šĥöŵš îñţrûšîvé ör mîšļéåðîñĝ åðš. ^1 - one two three four five six seven eight"</string>
+<string name="blocked_ads_dialog_always_allow">"Åļļöŵ ƒör ţĥîš šîţé - one two three four"</string>
+<string name="blocked_ads_dialog_learn_more">"Ļéårñ möré - one two"</string>
+<string name="sync_enter_passphrase_body">"Ýöûr ðåţå îš éñçrýþţéð ŵîţĥ ýöûr šýñç þåššþĥråšé. Éñţér îţ ţö šţårţ šýñç. - one two three four five six seven eight nine ten - one two three"</string>
+<string name="translate_infobar_error">"Ööþš. Ţĥîš þåĝé çöûļð ñöţ bé ţråñšļåţéð. - one two three four five six seven"</string>
+<string name="translate_button">"Ţråñšļåţé - one"</string>
+<string name="translate_never_translate_site">"Ñévér ţråñšļåţé ţĥîš šîţé - one two three four"</string>
+<string name="translate_dont_offer_site">"Ðöñ‘ţ öƒƒér ţö ţråñšļåţé ţĥîš šîţé - one two three four five six"</string>
+<string name="translate_option_always_translate">"Åļŵåýš ţråñšļåţé þåĝéš îñ %1$s - one two three four five"</string>
+<string name="translate_option_never_translate">"Ñévér ţråñšļåţé þåĝéš îñ %1$s - one two three four five"</string>
+<string name="translate_dont_offer_lang">"Ðöñ‘ţ öƒƒér ţö ţråñšļåţé þåĝéš îñ %1$s - one two three four five six seven"</string>
+<string name="translate_option_more_language">"Möré ļåñĝûåĝéš - one two"</string>
+<string name="translate_option_not_source_language">"Þåĝé îš ñöţ îñ %1$s¿ - one two three four five"</string>
+<string name="translate_snackbar_always_translate">"Þåĝéš îñ %1$s ŵîļļ bé ţråñšļåţéð ţö %2$s ƒröm ñöŵ öñ - one two three four five six seven eight nine ten - one"</string>
+<string name="translate_snackbar_language_never">"Þåĝéš îñ %1$s ŵîļļ ñöţ bé ţråñšļåţéð - one two three four five six seven"</string>
+<string name="translate_snackbar_site_never">"Ţĥîš šîţé ŵîļļ ñöţ bé ţråñšļåţéð - one two three four five six"</string>
+<string name="translate_snackbar_cancel">"Çåñçéļ - one"</string>
+<string name="management_browser_reporting">"Bröŵšér - one"</string>
+<string name="management_browser_reporting_explanation">"Ýöûr åðmîñîšţråţör çåñ šéé: - one two three four"</string>
+<string name="management_extension_report_username">"Ýöûr ðévîçé ûšérñåmé åñð Çĥrömé ûšérñåmé - one two three four five six"</string>
+<string name="management_extension_report_version">"Véršîöñ îñƒörmåţîöñ åböûţ ýöûr ðévîçé åñð bröŵšér - one two three four five six seven"</string>
+<string name="history_clusters_journeys_tab_label">"Ĵöûrñéýš - one"</string>
+<string name="history_clusters_search_your_journeys">"Šéårçĥ ýöûr Ĵöûrñéýš - one two three"</string>
+<string name="clear">"Çļéår - one"</string>
+<string name="show_content">"Šĥöŵ - one"</string>
+<string name="hide_content">"Ĥîðé - one"</string>
+<string name="choose">"Çĥööšé - one"</string>
+</resources>

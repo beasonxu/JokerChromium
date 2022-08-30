@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="autofill_save_card_prompt_confirm">"Bekreft"</string>
+<string name="autofill_mobile_save_card_to_cloud_confirmation_dialog_explanation">"Lagre kortet ditt og faktureringsinformasjonen din i Google-kontoen for sikker og raskere betaling"</string>
+<string name="autofill_mobile_save_card_to_cloud_confirmation_dialog_explanation_with_account_name">"Lagre kortet og faktureringsinformasjonen i Google-kontoen din (^1) for sikker og raskere betaling"</string>
+<string name="autofill_fix_flow_prompt_save_card_label">"Lagre kortet"</string>
+<string name="autofill_save_card_prompt_cardholder_name_tooltip">"Dette navnet er fra Google-kontoen din"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_cvc">"Kontrollér CVC-koden din, og prøv igjen."</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_date">"Kontrollér utløpsdatoen, og prøv igjen"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_cvc_and_expiration">"Kontrollér utløpsdatoen og CVC-koden, og prøv igjen."</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_month">"Kontrollér utløpsmåneden, og prøv igjen"</string>
+<string name="autofill_card_unmask_prompt_error_try_again_expiration_year">"Kontrollér utløpsdatoen, og prøv igjen"</string>
+<string name="autofill_card_unmask_prompt_enable_fido_auth_checkbox">"Bruk skjermlås til å bekrefte kort fra nå av"</string>
+<string name="autofill_card_unmask_verification_in_progress">"Bekrefter kortet …"</string>
+<string name="autofill_card_unmask_verification_success">"Kortet ditt er bekreftet"</string>
+<string name="autofill_expiration_date_separator">"/"</string>
+<string name="autofill_card_unmask_new_card_link">"Oppdater kortet"</string>
+<string name="autofill_wallet_management_link_text">"Endre"</string>
+<string name="autofill_from_google_account_long">"Fra Google Pay"</string>
+<string name="autofill_virtual_card_enrollment_accept_button_label">"Ja"</string>
+<string name="autofill_virtual_card_enrollment_dialog_title_label">"Vil du gjøre det sikrere med et virtuelt kort?"</string>
+<string name="autofill_virtual_card_number_switch_label">"Virtuelt kort"</string>
+<string name="autofill_offers_reminder_description_text">"Betal med %1$s i kassen."</string>
+<string name="autofill_offers_reminder_deep_link_text">"Se detaljer"</string>
+<string name="autofill_payments_otp_verification_dialog_title">"Skriv inn bekreftelseskoden"</string>
+<string name="autofill_payments_otp_verification_dialog_cant_find_code_message">"Finner du ikke koden? &lt;link&gt;Få en ny kode&lt;/link&gt;"</string>
+<string name="autofill_payments_otp_verification_dialog_otp_input_hint">"Skriv inn den %1$s-sifrede koden"</string>
+<string name="autofill_payments_otp_verification_dialog_positive_button_label">"Bekreft"</string>
+<string name="autofill_payments_otp_verification_dialog_negative_button_label">"Avbryt"</string>
+<string name="autofill_edit_credit_card">"Endre kortet"</string>
+<string name="autofill_create_credit_card">"Legg til et kort"</string>
+<string name="autofill_clear_local_copy_button">"Slett kopi"</string>
+<string name="autofill_cc_amex">"American Express"</string>
+<string name="autofill_cc_diners">"Diners Club"</string>
+<string name="autofill_cc_discover">"Discover"</string>
+<string name="autofill_cc_jcb">"JCB"</string>
+<string name="autofill_cc_mastercard">"Mastercard"</string>
+<string name="autofill_cc_mir">"Mir"</string>
+<string name="autofill_cc_union_pay">"China UnionPay"</string>
+<string name="autofill_cc_visa">"Visa"</string>
+<string name="autofill_address_summary_separator">", "</string>
+<string name="autofill_scan_credit_card">"Skann nytt kort"</string>
+<string name="autofill_enable_profiles_toggle_sublabel">"Inkluderer informasjon som telefonnumre, e-postadresser og leveringsadresser"</string>
+<string name="autofill_enable_credit_cards_toggle_sublabel">"Fyll ut betalingsskjemaer med de lagrede betalingsmåtene dine"</string>
+<string name="autofill_addresses_settings_title">"Adresser med mer"</string>
+<string name="autofill_payment_methods">"Betalingsmåter"</string>
+<string name="autofill_enable_profiles_toggle_label">"Lagre og fyll inn adresser"</string>
+<string name="autofill_enable_credit_cards_toggle_label">"Lagre og fyll ut betalingsmåter"</string>
+<string name="enable_credit_card_fido_auth_label">"Skjermlås"</string>
+<string name="enable_credit_card_fido_auth_sublabel">"Bruk skjermlås til å bekrefte kort raskere"</string>
+<string name="autofill_update_address_prompt_new_values_section_label">"Ny"</string>
+<string name="autofill_update_address_prompt_old_values_section_label">"Gamle"</string>
+<string name="autofill_save_address_prompt_edit_button_tooltip">"Rediger adresse"</string>
+<string name="autofill_edit_address_dialog_title">"Rediger adresse"</string>
+<string name="http_post_warning_title">"Bekreft ny innsending av skjema"</string>
+<string name="http_post_warning">"Siden du ser etter, brukte informasjon som du anga. Hvis du går tilbake til denne siden, kan det føre til at handlinger som er utført, blir gjentatt. Vil du fortsette?"</string>
+<string name="http_post_warning_resend">"Fortsett"</string>
+<string name="login_dialog_title">"Logg på"</string>
+<string name="login_dialog_ok_button_label">"Logg på"</string>
+<string name="login_dialog_username_field">"Brukernavn"</string>
+<string name="login_dialog_password_field">"Passord"</string>
+<string name="sad_tab_title">"Æsj!"</string>
+<string name="sad_tab_message">"Noe gikk galt da denne nettsiden skulle åpnes."</string>
+<string name="sad_tab_reload_label">"Last inn på nytt"</string>
+<string name="sad_tab_send_feedback_label">"Send tilbakemelding"</string>
+<string name="sad_tab_reload_title">"Kan ikke åpne denne siden"</string>
+<string name="sad_tab_reload_try">"Prøv følgende tips:"</string>
+<string name="sad_tab_reload_incognito">"Åpne siden i et nytt inkognitovindu"</string>
+<string name="sad_tab_reload_restart_browser">"Start Chromium på nytt"</string>
+<string name="sad_tab_reload_restart_device">"Start enheten din på nytt"</string>
+<string name="sad_tab_reload_learn_more">"Finn ut mer"</string>
+<string name="new_tab_otr_title">"Nå er du inkognito"</string>
+<string name="new_tab_otr_subtitle">"Nå kan du surfe privat. Andre som bruker denne enheten, ser ikke aktiviteten din, men nedlastinger og bokmerker blir lagret."</string>
+<string name="new_tab_otr_subtitle_with_reading_list">"Nå kan du surfe privat. Andre som bruker denne enheten, ser ikke aktiviteten din. Derimot blir nedlastinger, bokmerker og elementer på leselisten lagret."</string>
+<string name="new_tab_otr_not_saved">"Chromium &lt;em&gt;lagrer ikke&lt;/em&gt; følgende informasjon:
+        &lt;ul&gt;
+          &lt;li&gt;Nettleserloggen din
+          &lt;li&gt;Informasjonskapsler og nettstedsdata
+          &lt;li&gt;Informasjon du legger inn i skjemaer
+        &lt;/ul&gt;"</string>
+<string name="new_tab_otr_visible">"Aktiviteten din &lt;em&gt;kan fortsatt være synlig&lt;/em&gt; for
+        &lt;ul&gt;
+          &lt;li&gt;nettsteder du besøker
+          &lt;li&gt;arbeidsgiveren eller skolen din
+          &lt;li&gt;Internett-leverandøren din
+        &lt;/ul&gt;"</string>
+<string name="new_tab_otr_cookie_controls_controlled_tooltip_text">"Dette styres i innstillingene for informasjonskapsler."</string>
+<string name="new_tab_otr_third_party_cookie">"Blokkér informasjonskapsler fra tredjeparter"</string>
+<string name="new_tab_otr_third_party_cookie_sublabel">"Når dette er på, kan ikke nettsteder bruke informasjonskapsler som sporer deg på nettet. Det kan hende at funksjoner på enkelte nettsteder slutter å fungere."</string>
+<string name="revamped_incognito_ntp_title">"Inkognito i Chromium"</string>
+<string name="revamped_incognito_ntp_does_header">"Dette gjør Inkognito"</string>
+<string name="revamped_incognito_ntp_does_description">"Når du lukker alle inkognitofaner i Chromium, blir aktiviteten din på de aktuelle fanene fjernet fra enheten:
+          &lt;ul&gt;
+            &lt;li&gt;Nettleseraktivitet&lt;/li&gt;
+            &lt;li&gt;Søkelogg&lt;/li&gt;
+            &lt;li&gt;Informasjon du har lagt inn i skjemaer&lt;/li&gt;
+          &lt;/ul&gt;"</string>
+<string name="revamped_incognito_ntp_does_not_header">"Dette gjør Inkognito ikke"</string>
+<string name="revamped_incognito_ntp_does_not_description">"Inkognito gjør deg ikke usynlig på nettet:
+        &lt;ul&gt;
+          &lt;li&gt;Nettsteder og tjenestene de bruker, kan se når du besøker dem&lt;/li&gt;
+          &lt;li&gt;Arbeidsgivere og skoler kan spore nettleseraktivitet&lt;/li&gt;
+          &lt;li&gt;Internettleverandører kan overvåke nettrafikk&lt;/li&gt;
+        &lt;/ul&gt;"</string>
+<string name="revamped_incognito_ntp_learn_more">"&lt;a&gt;Finn ut mer om Inkognito i Chromium&lt;/a&gt;"</string>
+<string name="revamped_incognito_ntp_otr_third_party_cookie">"Blokkér informasjonskapsler fra tredjepart i inkognitomodus"</string>
+<string name="revamped_incognito_ntp_otr_third_party_cookie_sublabel">"Nettsteder kan ikke bruke informasjonskapsler som sporer deg på nettet. Det kan hende at funksjoner på enkelte nettsteder slutter å fungere."</string>
+<string name="ntp_article_suggestions_section_header">"Artikler for deg"</string>
+<string name="ntp_article_suggestions_section_empty">"De foreslåtte artiklene dine vises her"</string>
+<string name="page_info_permission_ads_subtitle">"Nettstedet viser forstyrrende eller villedende annonser"</string>
+<string name="payments_method_of_payment_label">"Betalingsmåte"</string>
+<string name="payments_contact_details_label">"Kontaktinformasjon"</string>
+<string name="payments_add_contact_details_label">"Legg til kontaktinformasjon"</string>
+<string name="payments_edit_contact_details_label">"Endre kontaktinformasjonen"</string>
+<string name="payments_add_billing_address">"Legg til faktureringsadresse"</string>
+<string name="payments_add_name_on_card">"Legg til navnet på kortet"</string>
+<string name="payments_add_valid_card_number">"Legg til et gyldig kortnummer"</string>
+<string name="payments_add_more_information">"Legg til mer informasjon"</string>
+<string name="payments_edit_card">"Endre kortet"</string>
+<string name="payments_add_phone_number">"Legg til telefonnummer"</string>
+<string name="payments_add_recipient">"Legg til navn"</string>
+<string name="payments_add_valid_address">"Du må angi en gyldig adresse"</string>
+<string name="payments_add_email">"Legg til e-post"</string>
+<string name="payments_add_name">"Legg til navn"</string>
+<string name="payments_order_summary_label">"Bestillingssammendrag"</string>
+<string name="payment_request_payment_method_section_name">"Betaling"</string>
+<string name="payments_shipping_summary_label">"Forsendelse"</string>
+<string name="payments_shipping_address_label">"Leveringsadresse"</string>
+<string name="payments_shipping_option_label">"Leveringsmetode"</string>
+<string name="payments_delivery_summary_label">"Levering"</string>
+<string name="payments_delivery_address_label">"Leveringsadresse"</string>
+<string name="payments_delivery_option_label">"Leveringsmetode"</string>
+<string name="payments_pickup_summary_label">"Henting"</string>
+<string name="payments_pickup_address_label">"Henteadresse"</string>
+<string name="payments_pickup_option_label">"Hentemetode"</string>
+<string name="payments_edit_button">"Endre"</string>
+<string name="payments_pay_button">"Betal"</string>
+<string name="payments_continue_button">"Fortsett"</string>
+<string name="payments_add_contact">"Legg til kontaktinformasjon"</string>
+<string name="payments_add_card">"Legg til et kort"</string>
+<string name="payments_add_address">"Legg til adresse"</string>
+<string name="payments_edit_address">"Rediger adresse"</string>
+<string name="payments_name_field_in_contact_details">"Navn"</string>
+<string name="payments_save_card_to_device_checkbox">"Lagre dette kortet på denne enheten"</string>
+<string name="payments_accepted_cards_label">"Godkjente kort"</string>
+<string name="payments_credit_card_expiration_date_abbr">"Utløper %1$s/%2$s"</string>
+<string name="payments_loading_message">"Laster inn"</string>
+<string name="payments_checking_option">"Kontrollerer"</string>
+<string name="payments_updated_label">"Oppdatert"</string>
+<string name="payments_error_message">"Det oppsto en feil under behandlingen av bestillingen din. Prøv på nytt."</string>
+<string name="payments_card_and_address_settings">"Du kan administrere kort og adresser i BEGIN_LINKInnstillingerEND_LINK."</string>
+<string name="payments_card_and_address_settings_signed_in">"Kortene og adressene er fra Chrome og Google-kontoen din (%1$s). Du kan administrere dem i BEGIN_LINKInnstillingerEND_LINK."</string>
+<string name="payments_card_and_address_settings_signed_out">"Kortene og adressene er fra Chrome. Du kan administrere dem i BEGIN_LINKInnstillingerEND_LINK."</string>
+<string name="settings_can_make_payment_toggle_label">"Tillatt nettsteder å sjekke om du har noen lagrede betalingsmåter"</string>
+<string name="payments_required_field_message">"* Feltet er obligatorisk"</string>
+<string name="payments_phone_invalid_validation_message">"Angi et gyldig telefonnummer"</string>
+<string name="payments_email_invalid_validation_message">"Angi en gyldig e-postadresse"</string>
+<string name="payments_card_number_invalid_validation_message">"Angi et gyldig kortnummer"</string>
+<string name="payments_card_expiration_invalid_validation_message">"Angi en gyldig utløpsdato"</string>
+<string name="payments_invalid_address">"Angi en gyldig adresse"</string>
+<string name="payments_billing_address_required">"Fakturaadresse er obligatorisk"</string>
+<string name="payments_name_on_card_required">"Kortinnhaverens navn er obligatorisk"</string>
+<string name="payments_more_information_required">"Mer informasjon er nødvendig"</string>
+<string name="payments_phone_number_required">"Det kreves et telefonnummer"</string>
+<string name="payments_recipient_required">"Navn er obligatorisk"</string>
+<string name="payments_email_required">"E-post er obligatorisk"</string>
+<string name="payments_name_required">"Navn er obligatorisk"</string>
+<string name="pref_edit_dialog_field_required_validation_message">"Obligatorisk felt"</string>
+<string name="payments_select_shipping_address_for_shipping_methods">"For å se fraktmetoder og -krav, velg en adresse"</string>
+<string name="payments_unsupported_shipping_address">"Kan ikke sende til denne adressen. Velg en annen adresse."</string>
+<string name="payments_select_delivery_address_for_delivery_methods">"For å se leveringsmetoder og -krav, velg en adresse"</string>
+<string name="payments_unsupported_delivery_address">"Kan ikke levere til denne adressen. Velg en annen adresse."</string>
+<string name="payments_select_pickup_address_for_pickup_methods">"For å se hentemetoder og -krav, velg en adresse"</string>
+<string name="payments_unsupported_pickup_address">"Kan ikke hente på denne adressen. Velg en annen adresse."</string>
+<string name="payments_android_app_error">"Kan ikke åpne betalingsappen"</string>
+<string name="external_payment_app_leave_incognito_warning">"Går ut av Inkognitomodus for å betale via en ekstern app. Vil du fortsette?"</string>
+<string name="payment_handler_sheet_description">"Ark for betalingsbehandling"</string>
+<string name="payment_handler_sheet_opened_half">"Arket for betalingsbehandling er halvveis åpnet"</string>
+<string name="payment_handler_sheet_opened_full">"Arket for betalingsbehandling er åpnet"</string>
+<string name="payment_handler_sheet_closed">"Arket for betalingsbehandling er lukket"</string>
+<string name="secure_payment_confirmation_verify_purchase">"Bekreft kjøpet"</string>
+<string name="secure_payment_confirmation_store_label">"Butikk"</string>
+<string name="secure_payment_confirmation_total_label">"Totalt"</string>
+<string name="no_matching_credential_description">"%1$s må kanskje utføre flere trinn for å bekrefte betalingen din"</string>
+<string name="secure_payment_confirmation_authentication_sheet_description">"Ark for sikker autentisering av betalingslegitimasjon"</string>
+<string name="secure_payment_confirmation_authentication_sheet_opened">"Ark for sikker autentisering av betalingslegitimasjon er åpnet"</string>
+<string name="secure_payment_confirmation_authentication_sheet_closed">"Ark for sikker autentisering av betalingslegitimasjon er lukket"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_description">"Ark for sikker betalingslegitimasjon uten samsvarende legitimasjon"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_opened">"Ark for sikker betalingslegitimasjon uten samsvarende legitimasjon er åpnet"</string>
+<string name="secure_payment_confirmation_no_matching_credential_sheet_closed">"Ark for sikker betalingslegitimasjon uten samsvarende legitimasjon er lukket"</string>
+<string name="bluetooth_scanning_prompt_no_devices_found_prompt">"Fant ingen enheter i nærheten."</string>
+<string name="bluetooth_scanning_prompt_allow_button_text">"Tillat"</string>
+<string name="bluetooth_scanning_prompt_block_button_text">"Blokkér"</string>
+<string name="blocked_ads_prompt_title">"Annonser er blokkert"</string>
+<string name="blocked_ads_dialog_title">"Annonser er blokkert"</string>
+<string name="blocked_ads_dialog_message">"Dette nettstedet viser forstyrrende eller villedende annonser. ^1"</string>
+<string name="blocked_ads_dialog_always_allow">"Tillat for dette nettstedet"</string>
+<string name="blocked_ads_dialog_learn_more">"Finn ut mer"</string>
+<string name="sync_enter_passphrase_body">"Dataene dine er kryptert med passordfrasen din for synkronisering. Skriv den inn for å starte synkroniseringen."</string>
+<string name="translate_infobar_error">"Beklager. Denne siden kunne ikke oversettes."</string>
+<string name="translate_button">"Oversett"</string>
+<string name="translate_never_translate_site">"Oversett aldri dette nettstedet"</string>
+<string name="translate_dont_offer_site">"Ikke tilby å oversette dette nettstedet"</string>
+<string name="translate_option_always_translate">"Oversett alltid sider på %1$s"</string>
+<string name="translate_option_never_translate">"Oversett aldri sider på %1$s"</string>
+<string name="translate_dont_offer_lang">"Ikke tilby å oversette sider på %1$s"</string>
+<string name="translate_option_more_language">"Flere språk"</string>
+<string name="translate_option_not_source_language">"Er ikke siden på %1$s?"</string>
+<string name="translate_snackbar_always_translate">"Fra nå av oversettes sider på %1$s til %2$s"</string>
+<string name="translate_snackbar_language_never">"Sider på %1$s oversettes ikke"</string>
+<string name="translate_snackbar_site_never">"Dette nettstedet oversettes ikke"</string>
+<string name="translate_snackbar_cancel">"Avbryt"</string>
+<string name="management_browser_reporting">"Nettleser"</string>
+<string name="management_browser_reporting_explanation">"Administratoren kan se"</string>
+<string name="management_extension_report_username">"Brukernavnet ditt på enheten og i Chrome"</string>
+<string name="management_extension_report_version">"Versjonsinformasjon om enheten og nettleseren din"</string>
+<string name="history_clusters_journeys_tab_label">"Reiser"</string>
+<string name="history_clusters_search_your_journeys">"Søk i søkereisene dine"</string>
+<string name="clear">"Tøm"</string>
+<string name="show_content">"Vis"</string>
+<string name="hide_content">"Skjul"</string>
+<string name="choose">"Velg"</string>
+</resources>

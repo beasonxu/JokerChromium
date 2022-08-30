@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"Таны орчин тойрны 3D газрын зургийг үүсгэхийн тулд %1$s-д камерт тань хандах зөвшөөрөл шаардлагатай."</string>
+<string name="infobar_missing_camera_permission_text">"Энэ сайтад таны камерыг ашиглахын тулд %1$s-д камерт тань хандах зөвшөөрөл шаардлагатай."</string>
+<string name="infobar_missing_microphone_permission_text">"Энэ сайтад таны микрофоныг ашиглахын тулд %1$s-д микрофонд тань хандах зөвшөөрөл шаардлагатай."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"Энэ сайтад таны камер болон микрофоныг ашиглахын тулд %1$s-д эдгээрт хандах зөвшөөрөл шаардлагатай."</string>
+<string name="infobar_missing_location_permission_text">"Энэ сайттай таны байршлыг хуваалцахын тулд %1$s-д таны байршилд хандах зөвшөөрөл шаардлагатай."</string>
+<string name="infobar_update_permissions_button_text">"Цааш"</string>
+<string name="nfc_disabled_on_device_message">"Үргэлжлүүлэхийн тулд Android-н тохиргоо хэсэгт NFC-г асаана уу"</string>
+<string name="nfc_prompt_turn_on">"Асаах"</string>
+<string name="overlay_detected_dialog_title">"Энэ сайт танаас зөвшөөрөл хүсэх боломжгүй"</string>
+<string name="overlay_detected_dialog_message">"Бусад аппын аливаа бөмбөлөг эсвэл давхарлалтыг хаана уу. Дараа нь дахин оролдоно уу."</string>
+<string name="bluetooth_adapter_off_help">"&lt;link&gt;Тусламж авах&lt;/link&gt;"</string>
+<string name="bluetooth_confirm_button">"Холбох"</string>
+<plurals name="signal_strength_level_n_bars">
+  <item quantity="one">"Дохионы хүчний түвшин: %d мөр"</item>
+  <item quantity="other">"Дохионы хүчний түвшин: %d мөр"</item>
+</plurals>
+<string name="bluetooth_device_connected">"Холбосон төхөөрөмж"</string>
+<string name="bluetooth_dialog_title">"%1$s холбогдох хүсэлтэй байна"</string>
+<string name="bluetooth_not_found">"Тохирох төхөөрөмж олдсонгүй"</string>
+<string name="bluetooth_searching">"Төхөөрөмж хайх үед &lt;link&gt;тусламж авах&lt;/link&gt;…"</string>
+<string name="bluetooth_not_seeing_it_idle">"&lt;link1&gt;Тусламж авах&lt;/link1&gt; эсвэл &lt;link2&gt;дахин скан хийх&lt;/link2&gt;"</string>
+<string name="bluetooth_need_location_services_on">"Төхөөрөмжүүд хайхын тулд Chrome-д байршлын хандалт хэрэгтэй. &lt;services_link&gt;Энэ төхөөрөмжид&lt;/services_link&gt; байршлын хандалт унтраалттай байна."</string>
+<string name="bluetooth_need_location_permission_and_services_on">"Төхөөрөмжүүд хайхын тулд Chrome-д байршлын хандалт хэрэгтэй. &lt;permission_link&gt;Зөвшөөрлийг шинэчлэх&lt;/permission_link&gt;. &lt;services_link&gt;Энэ төхөөрөмжид&lt;/services_link&gt; байршлын хандалт унтраалттай байна."</string>
+<string name="bluetooth_need_nearby_devices_permission">"Ойролцоох төхөөрөмжүүдийг скан хийхийн тулд Chrome-д зөвшөөрөл шаардлагатай. &lt;permission_link&gt;Зөвшөөрлийг шинэчилнэ үү&lt;/permission_link&gt;."</string>
+<string name="bluetooth_need_location_permission">"Төхөөрөмжийг хайхын тулд Chrome-д байршлын хандалт шаардлагатай. &lt;permission_link&gt;Шинэчлэлтийн зөвшөөрөл&lt;/permission_link&gt;"</string>
+<string name="bluetooth_need_location_permission_help">"&lt;link&gt;Тусламж авах&lt;/link&gt;"</string>
+<string name="bluetooth_unable_to_turn_on_adapter">"Chrome Bluetooth тохируулагчийг асаах боломжгүй байна"</string>
+<string name="bluetooth_adapter_off">"Холбохыг зөвшөөрөхийн тулд &lt;link&gt;Bluetooth-г асаана уу&lt;/link&gt;"</string>
+<string name="bluetooth_scanning_prompt_origin">"%1$s ойролцоох Bluetooth төхөөрөмжүүдийг скан хийх хүсэлтэй байна. Дараах төхөөрөмжүүд олдлоо:"</string>
+<string name="bluetooth_scanning_device_unknown">"Үл мэдэгдэх эсвэл дэмжигдээгүй төхөөрөмж (%1$s)"</string>
+<string name="item_chooser_item_name_with_id">"%1$s (%2$s)"</string>
+</resources>
