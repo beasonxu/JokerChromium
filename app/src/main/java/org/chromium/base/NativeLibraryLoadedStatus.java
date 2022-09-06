@@ -20,7 +20,7 @@ public class NativeLibraryLoadedStatus {
 
     public static void checkLoaded(boolean isMainDex) {
         // Necessary to make sure all of these calls are stripped in release builds.
-        if (!BuildConfig.DCHECK_IS_ON) return;
+        if (!Build2Config.DCHECK_IS_ON) return;
 
         if (sProvider == null) return;
 

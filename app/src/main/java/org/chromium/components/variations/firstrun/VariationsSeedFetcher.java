@@ -10,7 +10,7 @@ import android.os.SystemClock;
 import androidx.annotation.IntDef;
 import androidx.annotation.VisibleForTesting;
 
-import org.chromium.base.BuildConfig;
+import org.chromium.base.Build2Config;
 import org.chromium.base.ContextUtils;
 import org.chromium.base.FileUtils;
 import org.chromium.base.Log;
@@ -151,7 +151,7 @@ public class VariationsSeedFetcher {
 
         @Override
         public String toString() {
-            if (BuildConfig.DCHECK_IS_ON) {
+            if (Build2Config.DCHECK_IS_ON) {
                 return "SeedInfo{signature=\"" + signature + "\" country=\"" + country
                         + "\" date=\"" + date + " isGzipCompressed=" + isGzipCompressed
                         + " seedData=" + Arrays.toString(seedData);

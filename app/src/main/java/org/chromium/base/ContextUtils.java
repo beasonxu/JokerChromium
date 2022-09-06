@@ -111,7 +111,7 @@ public class ContextUtils {
     private static void initJavaSideApplicationContext(Context appContext) {
         assert appContext != null;
         // Guard against anyone trying to downcast.
-        if (BuildConfig.DCHECK_IS_ON && appContext instanceof Application) {
+        if (Build2Config.DCHECK_IS_ON && appContext instanceof Application) {
             appContext = new ContextWrapper(appContext);
         }
         sApplicationContext = appContext;

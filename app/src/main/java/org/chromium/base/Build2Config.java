@@ -1,5 +1,5 @@
 package org.chromium.base;
-public class BuildConfig {
+public class Build2Config {
     public static final boolean IS_MULTIDEX_ENABLED = false;
     public static final boolean DCHECK_IS_ON = false;
     public static final boolean IS_UBSAN = false;

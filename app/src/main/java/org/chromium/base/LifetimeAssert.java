@@ -122,7 +122,7 @@ public class LifetimeAssert {
     }
 
     public static LifetimeAssert create(Object target) {
-        if (!BuildConfig.DCHECK_IS_ON) {
+        if (!Build2Config.DCHECK_IS_ON) {
             return null;
         }
         return new LifetimeAssert(
@@ -130,7 +130,7 @@ public class LifetimeAssert {
     }
 
     public static LifetimeAssert create(Object target, boolean safeToGc) {
-        if (!BuildConfig.DCHECK_IS_ON) {
+        if (!Build2Config.DCHECK_IS_ON) {
             return null;
         }
         return new LifetimeAssert(
@@ -138,7 +138,7 @@ public class LifetimeAssert {
     }
 
     public static void setSafeToGc(LifetimeAssert asserter, boolean value) {
-        if (BuildConfig.DCHECK_IS_ON) {
+        if (Build2Config.DCHECK_IS_ON) {
             // This guaratees that the target object is reachable until after mSafeToGc value
             // is updated here. See comment on Reference.reachabilityFence and review comments
             // on https://chromium-review.googlesource.com/c/chromium/src/+/1887151 for a
@@ -153,7 +153,7 @@ public class LifetimeAssert {
     }
 
     public static void assertAllInstancesDestroyedForTesting() throws LifetimeAssertException {
-        if (!BuildConfig.DCHECK_IS_ON) {
+        if (!Build2Config.DCHECK_IS_ON) {
             return;
         }
         synchronized (WrappedReference.sActiveWrappers) {

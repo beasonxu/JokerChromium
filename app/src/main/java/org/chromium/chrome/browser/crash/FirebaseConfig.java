@@ -4,7 +4,7 @@
 
 package org.chromium.chrome.browser.crash;
 
-import org.chromium.base.BuildConfig;
+import org.chromium.base.Build2Config;
 import org.chromium.components.version_info.Channel;
 import org.chromium.components.version_info.VersionConstants;
 
@@ -21,7 +21,7 @@ public class FirebaseConfig {
      * @return the channel dependent Firebase app ID.
      */
     public static String getFirebaseAppId() {
-        if (BuildConfig.IS_CHROME_BRANDED) {
+        if (Build2Config.IS_CHROME_BRANDED) {
             if (VersionConstants.CHANNEL == Channel.CANARY) {
                 return "1:850546144789:android:54d7b17bce961ff1";
             } else if (VersionConstants.CHANNEL == Channel.DEV) {

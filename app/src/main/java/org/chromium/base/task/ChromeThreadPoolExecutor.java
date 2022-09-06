@@ -10,7 +10,7 @@ import android.os.Process;
 
 import androidx.annotation.VisibleForTesting;
 
-import org.chromium.base.BuildConfig;
+import org.chromium.base.Build2Config;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -76,11 +76,11 @@ class ChromeThreadPoolExecutor extends ThreadPoolExecutor {
                 blamedClass = field.get(runnable).getClass();
             }
         } catch (NoSuchFieldException e) {
-            if (BuildConfig.DCHECK_IS_ON) {
+            if (Build2Config.DCHECK_IS_ON) {
                 throw new RuntimeException(e);
             }
         } catch (IllegalAccessException e) {
-            if (BuildConfig.DCHECK_IS_ON) {
+            if (Build2Config.DCHECK_IS_ON) {
                 throw new RuntimeException(e);
             }
         }

@@ -19,7 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 
 import org.chromium.base.BaseSwitches;
-import org.chromium.base.BuildConfig;
+import org.chromium.base.Build2Config;
 import org.chromium.base.CommandLine;
 import org.chromium.base.ContextUtils;
 import org.chromium.base.JNIUtils;
@@ -421,7 +421,7 @@ public class LibraryLoader {
 
     @CheckDiscard("Can't use @RemovableInRelease because Release build with DCHECK_IS_ON needs it")
     public void enableJniChecks() {
-        if (!BuildConfig.DCHECK_IS_ON) return;
+        if (!Build2Config.DCHECK_IS_ON) return;
 
         NativeLibraryLoadedStatus.setProvider(new NativeLibraryLoadedStatusProvider() {
             @Override
@@ -865,7 +865,7 @@ public class LibraryLoader {
     public static void setEnvForNative() {
         // The setenv API was added in L. On older versions of Android, we should still see ubsan
         // reports, but they will not have stack traces.
-        if (BuildConfig.IS_UBSAN && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build2Config.IS_UBSAN && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             try {
                 // This value is duplicated in build/android/pylib/constants/__init__.py.
                 Os.setenv("UBSAN_OPTIONS",

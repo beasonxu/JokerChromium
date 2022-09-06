@@ -15,7 +15,7 @@ import androidx.annotation.IntDef;
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
 
-import org.chromium.base.BuildConfig;
+import org.chromium.base.Build2Config;
 import org.chromium.base.Callback;
 import org.chromium.base.ContextUtils;
 import org.chromium.base.metrics.RecordHistogram;
@@ -173,7 +173,7 @@ class SafetyCheckMediator implements PasswordCheck.Observer, SafetyCheckCommonOb
         // Set the listener for clicking the updates element.
         mModel.set(SafetyCheckProperties.UPDATES_CLICK_LISTENER,
                 (Preference.OnPreferenceClickListener) (p) -> {
-                    if (!BuildConfig.IS_CHROME_BRANDED) {
+                    if (!Build2Config.IS_CHROME_BRANDED) {
                         return true;
                     }
                     String chromeAppId = ContextUtils.getApplicationContext().getPackageName();

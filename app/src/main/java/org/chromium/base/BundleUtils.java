@@ -30,14 +30,14 @@ import java.util.Arrays;
  * Important notes about bundle status as interpreted by this class:
  *
  * <ul>
- *   <li>If {@link BuildConfig#BUNDLES_SUPPORTED} is false, then we are definitely not in a bundle,
+ *   <li>If {@link Build2Config#BUNDLES_SUPPORTED} is false, then we are definitely not in a bundle,
  *   and ProGuard is able to strip out the bundle support library.</li>
- *   <li>If {@link BuildConfig#BUNDLES_SUPPORTED} is true, then we MIGHT be in a bundle.
+ *   <li>If {@link Build2Config#BUNDLES_SUPPORTED} is true, then we MIGHT be in a bundle.
  *   {@link BundleUtils#sIsBundle} is the source of truth.</li>
  * </ul>
  *
  * We need two fields to store one bit of information here to ensure that ProGuard can optimize out
- * the bundle support library (since {@link BuildConfig#BUNDLES_SUPPORTED} is final) and so that
+ * the bundle support library (since {@link Build2Config#BUNDLES_SUPPORTED} is final) and so that
  * we can dynamically set whether or not we're in a bundle for targets that use static shared
  * library APKs.
  */
@@ -66,7 +66,7 @@ public final class BundleUtils {
      * @return true if the current build is a bundle.
      */
     public static boolean isBundle() {
-        if (!BuildConfig.BUNDLES_SUPPORTED) {
+        if (!Build2Config.BUNDLES_SUPPORTED) {
             return false;
         }
         assert sIsBundle != null;
@@ -79,7 +79,7 @@ public final class BundleUtils {
 
     @CalledByNative
     public static boolean isolatedSplitsEnabled() {
-        return BuildConfig.ISOLATED_SPLITS_ENABLED;
+        return Build2Config.ISOLATED_SPLITS_ENABLED;
     }
 
     /**

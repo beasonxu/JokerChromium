@@ -168,14 +168,14 @@ public class BuildInfo {
 
             String currentResourcesVersion = "Not Enabled";
             // Controlled by target specific build flags.
-            if (BuildConfig.R_STRING_PRODUCT_VERSION != 0) {
+            if (Build2Config.R_STRING_PRODUCT_VERSION != 0) {
                 try {
                     // This value can be compared with the actual product version to determine if
                     // corrupted resources were the cause of a crash. This can happen if the app
                     // loads resources from the outdated package  during an update
                     // (http://crbug.com/820591).
                     currentResourcesVersion = ContextUtils.getApplicationContext().getString(
-                            BuildConfig.R_STRING_PRODUCT_VERSION);
+                            Build2Config.R_STRING_PRODUCT_VERSION);
                 } catch (Exception e) {
                     currentResourcesVersion = "Not found";
                 }

@@ -295,7 +295,7 @@ public class ApplicationStatus {
             }
 
             private void checkCallback(Activity activity) {
-                if (BuildConfig.DCHECK_IS_ON) {
+                if (Build2Config.DCHECK_IS_ON) {
                     assert reachesWindowCallback(activity.getWindow().getCallback());
                 }
             }

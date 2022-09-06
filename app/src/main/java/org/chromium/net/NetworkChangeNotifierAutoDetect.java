@@ -35,7 +35,7 @@ import androidx.annotation.VisibleForTesting;
 
 import org.chromium.base.ApplicationState;
 import org.chromium.base.ApplicationStatus;
-import org.chromium.base.BuildConfig;
+import org.chromium.base.Build2Config;
 import org.chromium.base.ContextUtils;
 import org.chromium.base.StrictModeContext;
 import org.chromium.base.compat.ApiHelperForM;
@@ -968,7 +968,7 @@ public class NetworkChangeNotifierAutoDetect extends BroadcastReceiver {
     }
 
     private void assertOnThread() {
-        if (BuildConfig.DCHECK_IS_ON && !onThread()) {
+        if (Build2Config.DCHECK_IS_ON && !onThread()) {
             throw new IllegalStateException(
                     "Must be called on NetworkChangeNotifierAutoDetect thread.");
         }

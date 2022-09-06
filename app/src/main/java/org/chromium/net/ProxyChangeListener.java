@@ -19,7 +19,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 
-import org.chromium.base.BuildConfig;
+import org.chromium.base.Build2Config;
 import org.chromium.base.ContextUtils;
 import org.chromium.base.Log;
 import org.chromium.base.annotations.CalledByNative;
@@ -292,7 +292,7 @@ public class ProxyChangeListener {
     }
 
     private void assertOnThread() {
-        if (BuildConfig.DCHECK_IS_ON && !onThread()) {
+        if (Build2Config.DCHECK_IS_ON && !onThread()) {
             throw new IllegalStateException("Must be called on ProxyChangeListener thread.");
         }
     }

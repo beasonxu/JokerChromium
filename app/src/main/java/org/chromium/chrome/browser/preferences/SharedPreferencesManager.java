@@ -10,7 +10,7 @@ import android.content.SharedPreferences.Editor;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
-import org.chromium.base.BuildConfig;
+import org.chromium.base.Build2Config;
 import org.chromium.base.ContextUtils;
 import org.chromium.base.StrictModeContext;
 
@@ -53,7 +53,7 @@ public class SharedPreferencesManager {
 
     private void maybeInitializeChecker() {
         // Create a working key checker, which does not happen in production builds.
-        if (BuildConfig.DCHECK_IS_ON) {
+        if (Build2Config.DCHECK_IS_ON) {
             mKeyChecker = ChromePreferenceKeyChecker.getInstance();
         }
     }

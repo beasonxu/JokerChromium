@@ -4,7 +4,7 @@
 
 package org.chromium.components.embedder_support.application;
 
-import org.chromium.base.BuildConfig;
+import org.chromium.base.Build2Config;
 
 /**
  * Simple class containing build specific Firebase app IDs.
@@ -19,7 +19,7 @@ public final class FirebaseConfig {
      * @return the Firebase app ID.
      */
     public static String getFirebaseAppIdForPackage(String packageName) {
-        if (!BuildConfig.IS_CHROME_BRANDED || packageName == null) return "";
+        if (!Build2Config.IS_CHROME_BRANDED || packageName == null) return "";
 
         switch (packageName) {
             case "com.chrome.canary":
