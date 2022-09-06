@@ -18,7 +18,7 @@ import java.util.Collection;
 import java.util.concurrent.Executor;
 
 /**
- * Implements {@link org.chromium.net.ExperimentalUrlRequest.Builder}.
+ * Implements {@link ExperimentalUrlRequest.Builder}.
  */
 public class UrlRequestBuilderImpl extends ExperimentalUrlRequest.Builder {
     private static final String ACCEPT_ENCODING = "Accept-Encoding";

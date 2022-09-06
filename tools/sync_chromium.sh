@@ -59,7 +59,7 @@ sync_components() {
 		${components}/variations/android/java/src/* \
 		${components}/version_info/android/java/src/* \
 		${components}/viz/service/java/src/* \
-    ${components}/browser_ui/android/bottomsheet/internal/java/src* \   ok
+    ${components}/browser_ui/android/bottomsheet/internal/java/src* \
     ${components}/browser_ui/android/bottomsheet/java/src* \
     ${components}/browser_ui/banners/android/java/src* \
     ${components}/browser_ui/client_certificate/android/java/src* \

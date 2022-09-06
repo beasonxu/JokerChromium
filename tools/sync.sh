@@ -443,8 +443,8 @@ sync_chrome() {
   cp -r ${BASE_DIR}/chrome/android/modules/dev_ui/provider/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/chrome/android/features/start_surface/internal/java/src/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/chrome/android/features/dev_ui/public/java/generated_java/input_srcjars/* ${src_dir}
-  cp -r ${RELEASE_DIR}/gen/components/cronet/android/cronet_impl_native_base_java/generated_java/input_srcjars/* ${src_dir}
-  cp -r ${RELEASE_DIR}/gen/components/cronet/android/cronet_impl_common_base_java/generated_java/input_srcjars/* ${src_dir}
+#  cp -r ${RELEASE_DIR}/gen/components/cronet/android/cronet_impl_native_base_java/generated_java/input_srcjars/* ${src_dir}
+#  cp -r ${RELEASE_DIR}/gen/components/cronet/android/cronet_impl_common_base_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/chrome/browser/touch_to_fill/android/internal/java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/chrome/android/modules/dev_ui/provider/java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/components/browser_ui/client_certificate/android/java/generated_java/input_srcjars/* ${src_dir}
@@ -455,7 +455,7 @@ sync_chrome() {
   cp -r ${RELEASE_DIR}/gen/device/bluetooth/java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/services/device/generic_sensor/java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/services/device/usb/java/generated_java/input_srcjars/* ${src_dir}
-  cp -r ${RELEASE_DIR}/gen/components/cronet/android/cronet_impl_common_base_java/generated_java/input_srcjars/* ${src_dir}
+#  cp -r ${RELEASE_DIR}/gen/components/cronet/android/cronet_impl_common_base_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${BASE_DIR}/services/device/wake_lock/power_save_blocker/android/java/src/* ${src_dir}
   cp ${RELEASE_DIR}/gen/chrome/android/chrome_public_apk/generated_java/input_srcjars/org/chromium/base/natives/GEN_JNI.java ${src_dir}/org/chromium/base/natives/
 
@@ -981,7 +981,7 @@ do_sync() {
   sync_splash
   sync_libs
   sync_chrome_vr
-  sync_third_party_res
+  #sync_third_party_res
   sync_media
   clean_project
   # NativeLibraries

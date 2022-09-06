@@ -138,7 +138,7 @@ public final class CronetUrlRequest extends UrlRequestBase {
     }
 
     CronetUrlRequest(CronetUrlRequestContext requestContext, String url, int priority,
-            UrlRequest.Callback callback, Executor executor, Collection<Object> requestAnnotations,
+            Callback callback, Executor executor, Collection<Object> requestAnnotations,
             boolean disableCache, boolean disableConnectionMigration, boolean allowDirectExecutor,
             boolean trafficStatsTagSet, int trafficStatsTag, boolean trafficStatsUidSet,
             int trafficStatsUid, RequestFinishedInfo.Listener requestFinishedListener,
@@ -343,7 +343,7 @@ public final class CronetUrlRequest extends UrlRequestBase {
     }
 
     @Override
-    public void getStatus(UrlRequest.StatusListener unsafeListener) {
+    public void getStatus(StatusListener unsafeListener) {
         final VersionSafeCallbacks.UrlRequestStatusListener listener =
                 new VersionSafeCallbacks.UrlRequestStatusListener(unsafeListener);
         synchronized (mUrlRequestAdapterLock) {
@@ -356,7 +356,7 @@ public final class CronetUrlRequest extends UrlRequestBase {
         Runnable task = new Runnable() {
             @Override
             public void run() {
-                listener.onStatus(UrlRequest.Status.INVALID);
+                listener.onStatus(Status.INVALID);
             }
         };
         postTaskToExecutor(task);

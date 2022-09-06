@@ -39,7 +39,7 @@ public abstract class CronetEngineBase extends ExperimentalCronetEngine {
      *         {@link UrlRequest.Builder#REQUEST_PRIORITY_IDLE REQUEST_PRIORITY_*}
      *         values.
      * @param requestAnnotations Objects to pass on to
-     *        {@link org.chromium.net.RequestFinishedInfo.Listener}.
+     *        {@link RequestFinishedInfo.Listener}.
      * @param disableCache disables cache for the request.
      *         If context is not set up to use cache this param has no effect.
      * @param disableConnectionMigration disables connection migration for this
@@ -84,7 +84,7 @@ public abstract class CronetEngineBase extends ExperimentalCronetEngine {
      *         headers until flush() is called, and try to combine them
      *         with the next data frame.
      * @param requestAnnotations Objects to pass on to
-     *       {@link org.chromium.net.RequestFinishedInfo.Listener}.
+     *       {@link RequestFinishedInfo.Listener}.
      * @param trafficStatsTagSet {@code true} if {@code trafficStatsTag} represents a TrafficStats
      *         tag to apply to sockets used to perform this request.
      * @param trafficStatsTag TrafficStats tag to apply to sockets used to perform this request.

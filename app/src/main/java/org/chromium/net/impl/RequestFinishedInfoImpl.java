@@ -17,12 +17,12 @@ import java.util.Collection;
 import java.util.Collections;
 
 /**
- * Implements information about a finished request. Passed to {@link RequestFinishedInfo.Listener}.
+ * Implements information about a finished request. Passed to {@link Listener}.
  */
 public class RequestFinishedInfoImpl extends RequestFinishedInfo {
     private final String mUrl;
     private final Collection<Object> mAnnotations;
-    private final RequestFinishedInfo.Metrics mMetrics;
+    private final Metrics mMetrics;
 
     @FinishedReason
     private final int mFinishedReason;
@@ -37,7 +37,7 @@ public class RequestFinishedInfoImpl extends RequestFinishedInfo {
     public @interface FinishedReason {}
 
     public RequestFinishedInfoImpl(String url, Collection<Object> annotations,
-            RequestFinishedInfo.Metrics metrics, @FinishedReason int finishedReason,
+            Metrics metrics, @FinishedReason int finishedReason,
             @Nullable UrlResponseInfo responseInfo, @Nullable CronetException exception) {
         mUrl = url;
         mAnnotations = annotations;
