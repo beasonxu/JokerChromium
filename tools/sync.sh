@@ -2,19 +2,20 @@
 
 set -e
 
-PRO_DIR="/f/chromiumcopy"
-BASE_DIR="/f/chromium/src"
-RELEASE_DIR="${BASE_DIR}/out/90"
+PRO_DIR="/home/sxh/chromiumcopy22"
+BASE_DIR="/home/sxh/chromium/src"
+RELEASE_DIR="${BASE_DIR}/out/arm66"
 APP_DIR="${PRO_DIR}/app"
-LIB_DIR="${BASE_DIR}/out/90/lib.java"
+LIB_DIR="${BASE_DIR}/out/arm66/lib.java"
 MODULES_DIR="${PRO_DIR}"
 
 sync_chrome() {
-  mkdir -p ${APP_DIR}/{src/main/java,libs}
-	local src_dir="${APP_DIR}/src/main/java"
+  mkdir -p ${APP_DIR}/src/main/java
+  mkdir -p ${APP_DIR}/libs
+  local src_dir="${APP_DIR}/src/main/java"
   mkdir -p ${APP_DIR}/src/main
   mkdir -p ${APP_DIR}/src/main/res_gen
-	local res_dir="${APP_DIR}/src/main"
+  local res_dir="${APP_DIR}/src/main"
   cp -r ${BASE_DIR}/chrome/android/java/src/* ${src_dir}
   cp -r ${BASE_DIR}/base/android/java/src/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/base/base_java/generated_java/input_srcjars/* ${src_dir}
@@ -77,7 +78,7 @@ sync_chrome() {
   cp -r ${RELEASE_DIR}/gen/services/network/public/mojom/mojom_schemeful_site_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/android_mojo_bindings_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/chrome/browser/version/templates/* ${src_dir}
-  cp -r ${RELEASE_DIR}/gen/components/cronet/android/templates/* ${src_dir}
+#  cp -r ${RELEASE_DIR}/gen/components/cronet/android/templates/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/components/version_info/android/java/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/media/capture/mojom/video_capture_java/generated_java/input_srcjars/* ${src_dir}
   cp -r ${RELEASE_DIR}/gen/services/device/public/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
@@ -518,23 +519,23 @@ sync_base() {
 }
 
 sync_assets() {
-	local asset_dir="${APP_DIR}/src/main/assets"
-	mkdir -p "$asset_dir"
-	mkdir -p "${asset_dir}/locales"
+  local asset_dir="${APP_DIR}/src/main/assets"
+  mkdir -p "$asset_dir"
+  mkdir -p "${asset_dir}/locales"
 
-	cp ${RELEASE_DIR}/*.dat \
-		${RELEASE_DIR}/gen/chrome/android/chrome_apk_paks/*.pak \
-		"$asset_dir"
+  cp ${RELEASE_DIR}/*.dat \
+    ${RELEASE_DIR}/gen/chrome/android/chrome_apk_paks/*.pak \
+    "$asset_dir"
 
-	cp ${RELEASE_DIR}/gen/chrome/android/chrome_apk_paks/locales/{en-US,zh-CN}.pak \
-		"${asset_dir}/locales"
-	cp ${RELEASE_DIR}/snapshot_blob.bin "$asset_dir"/snapshot_blob_32.bin
+  cp ${RELEASE_DIR}/gen/chrome/android/chrome_apk_paks/locales/*.pak \
+    "${asset_dir}/locales"
+  cp ${RELEASE_DIR}/snapshot_blob.bin "$asset_dir"/snapshot_blob_32.bin
 }
 
 sync_aidl() {
     mkdir -p ${APP_DIR}/src/main/aidl
     mkdir -p ${APP_DIR}/src/main/aidl/com/google/vr/keyboard
-	  local aidl_dir="${APP_DIR}/src/main/aidl"
+    local aidl_dir="${APP_DIR}/src/main/aidl"
 
     cp -r ${BASE_DIR}/third_party/gvr-android-keyboard/com/google/vr/keyboard/IGvrKeyboardLoader.aidl \
           ${APP_DIR}/src/main/aidl/com/google/vr/keyboard
@@ -542,16 +543,16 @@ sync_aidl() {
     local runtime_library_aidl="${APP_DIR}/src/main/aidl/org/chromium/webapk/lib/runtime_library"
     mkdir -p "$runtime_library_aidl"
     mv -f ${APP_DIR}/src/main/java/org/chromium/webapk/lib/runtime_library/*.aidl \
-		  "$runtime_library_aidl"
+      "$runtime_library_aidl"
 
 }
 
 sync_ui() {
-	mkdir -p ${MODULES_DIR}/ui/src/main/res
+  mkdir -p ${MODULES_DIR}/ui/src/main/res
 cp -r ${BASE_DIR}/ui/android/java/res/* \
-		${RELEASE_DIR}/gen/ui/android/ui_strings_grd_grit_output/* \
-		${RELEASE_DIR}/gen/chrome/browser/ui/android/strings/ui_strings_grd_grit_output/* \
-		"${MODULES_DIR}/ui/src/main/res"
+    ${RELEASE_DIR}/gen/ui/android/ui_strings_grd_grit_output/* \
+    ${RELEASE_DIR}/gen/chrome/browser/ui/android/strings/ui_strings_grd_grit_output/* \
+    "${MODULES_DIR}/ui/src/main/res"
 }
 
 sync_components(){
@@ -920,50 +921,50 @@ clean_project() {
     ${APP_DIR}/src/main/java/org/chromium/chrome/browser/vr/VrDelegateProviderImpl.java \
     ${APP_DIR}/src/main/java/org/chromium/chrome/browser/download/home/StubbedOfflineContentProvider.java \
     ${APP_DIR}/src/main/java/org/chromium/chrome/browser/download/home/StubbedProvider.java \
-		${APP_DIR}/src/main/java/{src,test,templates}
+    ${APP_DIR}/src/main/java/{src,test,templates}
 
-	# local feed_dir="${APP_DIR}/src/main/java/com/google/android/libraries/feed"
-	# find "$feed_dir" -regextype "posix-egrep" -regex ".*/(testing|test_data|res)" -type d -print0 | \
-	# 	xargs -0 rm -rf
+  # local feed_dir="${APP_DIR}/src/main/java/com/google/android/libraries/feed"
+  # find "$feed_dir" -regextype "posix-egrep" -regex ".*/(testing|test_data|res)" -type d -print0 | \
+  #   xargs -0 rm -rf
 
-	# find "$feed_dir" -regextype "posix-egrep" -regex ".*/AndroidManifest.xml" -type f -print0 | \
-	# 	xargs -0 rm -f
+  # find "$feed_dir" -regextype "posix-egrep" -regex ".*/AndroidManifest.xml" -type f -print0 | \
+  #   xargs -0 rm -f
 
   #.*Test.*\.java|.*test.*\.java|.*Test\.java|.*test\.java|"
-	local del_files="|DEPS|DIR_METADATA|LAYOUT_OWNERS|README|OWNERS|COPYING|BUILD|LICENSE|README.chromium|*\.template|*\.tmpl|R\.java|.*\.stamp|.*stamp\.d|.*\.py|.*\.flags|.*\.gn|.*Test.*\.java|.*test.*\.java|.*Test\.java|.*test\.java|"
-	find "$PRO_DIR" -not \( -name 'JniStaticTestMocker.java' -or -name 'MockedInTests.java' -or -name 'EditorObserverForTest.java' \
-	  -or -name 'PaymentUiServiceTestInterface.java' -or -name 'FlushForTesting.java' -or -name 'NetworkServiceTest.java' -or -name 'HitTestRegionList.java' \
-	  -or -name 'HitTestRegion.java' -or -name 'AttestationConveyancePreference.java' -or -name 'NetworkServiceTest_Internal.java' \) \
-	 -regextype "posix-egrep" -regex ".*/(${del_files})" -type f -print0 | \
-		xargs -0 rm -f
+  local del_files="|DEPS|DIR_METADATA|LAYOUT_OWNERS|README|OWNERS|COPYING|BUILD|LICENSE|README.chromium|*\.template|*\.tmpl|R\.java|.*\.stamp|.*stamp\.d|.*\.py|.*\.flags|.*\.gn|.*Test.*\.java|.*test.*\.java|.*Test\.java|.*test\.java|"
+  find "$PRO_DIR" -not \( -name 'JniStaticTestMocker.java' -or -name 'MockedInTests.java' -or -name 'EditorObserverForTest.java' \
+    -or -name 'PaymentUiServiceTestInterface.java' -or -name 'FlushForTesting.java' -or -name 'NetworkServiceTest.java' -or -name 'HitTestRegionList.java' \
+    -or -name 'HitTestRegion.java' -or -name 'AttestationConveyancePreference.java' -or -name 'NetworkServiceTest_Internal.java' \) \
+   -regextype "posix-egrep" -regex ".*/(${del_files})" -type f -print0 | \
+    xargs -0 rm -f
 
-	local langs="af|am|as|ar|az|b\+sr\+Latn|be|bn|bs|bg|ca|cs|da|de|el|en-rGB|en-rUS|es|es-rUS|et|eu|fa|fi|fr|fr-rCA|gl|gu|hdpi|hi|hr|hu|hy|in|is|it|iw"
-	langs="$langs|ja|ka|kk|km|ko|kn|ky|lo|lt|lv|mk|ml|mn|mr|ms|my|ne|nb|nl|or|pa|pl|pt-rBR|pt-rPT|si|sq|ro|ru|sk|sl|sr|sv|sw|ta|te|th|tl|tr|ur|uk|uz|vi|zu|zh-rHK|zh-rTW|"
-	find "$PRO_DIR" -regextype "posix-egrep" -regex ".*values-($langs)" -print0 | xargs -0 rm -rf
+  local langs="af|am|as|ar|az|b\+sr\+Latn|be|bn|bs|bg|ca|cs|da|de|el|en-rGB|en-rUS|es|es-rUS|et|eu|fa|fi|fr|fr-rCA|gl|gu|hdpi|hi|hr|hu|hy|in|is|it|iw"
+  langs="$langs|ja|ka|kk|km|ko|kn|ky|lo|lt|lv|mk|ml|mn|mr|ms|my|ne|nb|nl|or|pa|pl|pt-rBR|pt-rPT|si|sq|ro|ru|sk|sl|sr|sv|sw|ta|te|th|tl|tr|ur|uk|uz|vi|zu|zh-rHK|zh-rTW|"
+  find "$PRO_DIR" -regextype "posix-egrep" -regex ".*values-($langs)" -print0 | xargs -0 rm -rf
 
-#	find "${PRO_DIR}/libraries_res" -regextype "posix-egrep" -regex ".*/app_icon\.png" -type f -print0 | xargs -0 rm -f
+# find "${PRO_DIR}/libraries_res" -regextype "posix-egrep" -regex ".*/app_icon\.png" -type f -print0 | xargs -0 rm -f
 
-#	local aidls
-#	aidls=$(find "${APP_DIR}/src/main/aidl" -name "*.aidl" -type f)
-#	local j_file;
-#	for aidl in $aidls; do
-#		j_file="$(basename "$aidl" ".aidl")"
-#		find "${APP_DIR}/src/main/java" -name "${j_file}.java" -type f -print0 | xargs -0 rm -f
-#	done
+# local aidls
+# aidls=$(find "${APP_DIR}/src/main/aidl" -name "*.aidl" -type f)
+# local j_file;
+# for aidl in $aidls; do
+#   j_file="$(basename "$aidl" ".aidl")"
+#   find "${APP_DIR}/src/main/java" -name "${j_file}.java" -type f -print0 | xargs -0 rm -f
+# done
 
-	local empty_dirs;
-	while :; do
-		empty_dirs="$(find "$PRO_DIR" -type d -empty)"
-		if [ -n "$empty_dirs" ]; then
-			echo "$empty_dirs" | xargs rm -rf
-		else
-			break
-		fi
-	done
+  local empty_dirs;
+  while :; do
+    empty_dirs="$(find "$PRO_DIR" -type d -empty)"
+    if [ -n "$empty_dirs" ]; then
+      echo "$empty_dirs" | xargs rm -rf
+    else
+      break
+    fi
+  done
 }
 
 do_sync() {
-	rm -rf "$PRO_DIR"
+  rm -rf "$PRO_DIR"
   sync_chrome
   sync_assets
   sync_messages
@@ -982,8 +983,8 @@ do_sync() {
   sync_chrome_vr
   sync_third_party_res
   sync_media
-	clean_project
-	# NativeLibraries
+  clean_project
+  # NativeLibraries
 }
 
 do_sync
