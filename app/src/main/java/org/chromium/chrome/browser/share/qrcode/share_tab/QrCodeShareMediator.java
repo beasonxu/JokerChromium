@@ -19,7 +19,7 @@ import android.text.TextUtils.TruncateAt;
 import android.view.View;
 
 import org.chromium.base.metrics.RecordUserAction;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.download.DownloadController;
 import org.chromium.chrome.browser.flags.ChromeFeatureList;
 import org.chromium.chrome.browser.init.ChromeBrowserInitializer;

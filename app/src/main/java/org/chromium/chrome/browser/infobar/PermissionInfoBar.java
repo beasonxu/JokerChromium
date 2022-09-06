@@ -10,7 +10,7 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 
 import org.chromium.base.annotations.CalledByNative;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.settings.SettingsLauncherImpl;
 import org.chromium.components.browser_ui.settings.SettingsLauncher;
 import org.chromium.components.browser_ui.site_settings.SingleCategorySettings;

@@ -19,7 +19,7 @@ import androidx.annotation.VisibleForTesting;
 import androidx.mediarouter.media.MediaRouter;
 
 import org.chromium.base.ContextUtils;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.base.SplitCompatService;
 import org.chromium.chrome.browser.notifications.NotificationConstants;
 import org.chromium.chrome.browser.notifications.NotificationUmaTracker;

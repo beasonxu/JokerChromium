@@ -14,7 +14,7 @@ import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.browser.trusted.sharing.ShareData;
 
 import org.chromium.base.ContextUtils;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.browserservices.BrowserServicesIntentDataProvider;
 import org.chromium.chrome.browser.flags.ActivityType;
 import org.chromium.components.browser_ui.widget.TintedDrawable;

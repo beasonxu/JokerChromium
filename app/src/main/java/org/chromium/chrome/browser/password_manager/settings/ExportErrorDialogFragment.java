@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 
 /**
  * Shows the dialog that explains to the user the error which just happened during exporting and

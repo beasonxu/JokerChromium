@@ -9,7 +9,7 @@ import android.graphics.Bitmap;
 
 import androidx.annotation.VisibleForTesting;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.image_editor.ImageEditorDialogCoordinator;
 import org.chromium.chrome.browser.modules.ModuleInstallUi;
 import org.chromium.chrome.browser.share.share_sheet.ChromeOptionShareCallback;

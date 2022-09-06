@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 
 /**
  * The adapter that populates the list popup for password generation with data. There is only

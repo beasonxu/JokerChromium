@@ -49,7 +49,7 @@ public class TabbedModeTabModelOrchestrator extends TabModelOrchestrator {
             markTabModelsInitialized();
             Toast.makeText(activity,
                          activity.getString(
-                                 org.chromium.chrome.R.string.unsupported_number_of_windows),
+                                 org.chromium.chrome.stable.R.string.unsupported_number_of_windows),
                          Toast.LENGTH_LONG)
                     .show();
             return false;

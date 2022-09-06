@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.chromium.base.ApiCompatibilityUtils;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.lens.LensFeature;
 import org.chromium.ui.base.ViewUtils;
 import org.chromium.ui.modelutil.PropertyKey;
@@ -25,11 +25,11 @@ class SearchBoxViewBinder
     @Override
     public final void bind(PropertyModel model, View view, PropertyKey propertyKey) {
         ImageView voiceSearchButton =
-                view.findViewById(org.chromium.chrome.R.id.voice_search_button);
+                view.findViewById(org.chromium.chrome.stable.R.id.voice_search_button);
         ImageView lensButton =
                 LensFeature.SEARCH_BOX_START_VARIANT_LENS_CAMERA_ASSISTED_SEARCH.getValue()
-                ? view.findViewById(org.chromium.chrome.R.id.lens_camera_button_start)
-                : view.findViewById(org.chromium.chrome.R.id.lens_camera_button_end);
+                ? view.findViewById(org.chromium.chrome.stable.R.id.lens_camera_button_start)
+                : view.findViewById(org.chromium.chrome.stable.R.id.lens_camera_button_end);
         View searchBoxContainer = view;
         final TextView searchBoxTextView = searchBoxContainer.findViewById(R.id.search_box_text);
         final ChipView chipView = searchBoxContainer.findViewById(R.id.query_tiles_chip);
@@ -71,7 +71,7 @@ class SearchBoxViewBinder
             boolean isHintVisible = model.get(SearchBoxProperties.SEARCH_HINT_VISIBILITY);
             searchBoxTextView.setHint(isHintVisible
                             ? view.getContext().getString(
-                                    org.chromium.chrome.R.string.search_or_type_web_address)
+                                    org.chromium.chrome.stable.R.string.search_or_type_web_address)
                             : null);
         } else if (SearchBoxProperties.VOICE_SEARCH_CLICK_CALLBACK == propertyKey) {
             voiceSearchButton.setOnClickListener(

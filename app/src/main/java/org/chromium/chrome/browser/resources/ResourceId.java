@@ -1,5 +1,5 @@
 package org.chromium.chrome.browser.resources;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 class ResourceId {
     static int[] getResourceIdList() {
         int[] resourceList = {

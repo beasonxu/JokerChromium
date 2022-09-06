@@ -5,7 +5,7 @@
 package org.chromium.chrome.browser.share.send_tab_to_self;
 
 import org.chromium.base.annotations.CalledByNative;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.components.infobars.InfoBar;
 import org.chromium.components.infobars.InfoBarCompactLayout;
 

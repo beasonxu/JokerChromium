@@ -11,7 +11,7 @@ import android.text.SpannableStringBuilder;
 import androidx.annotation.IntDef;
 import androidx.annotation.Nullable;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.native_page.ContextMenuManager;
 import org.chromium.chrome.browser.native_page.NativePageNavigationDelegate;
 import org.chromium.chrome.browser.profiles.Profile;

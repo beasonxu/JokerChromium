@@ -7,7 +7,7 @@ package org.chromium.chrome.browser.infobar;
 import android.text.SpannableString;
 import android.text.Spanned;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.components.infobars.ConfirmInfoBar;
 import org.chromium.components.infobars.InfoBarControlLayout;
 import org.chromium.components.infobars.InfoBarLayout;

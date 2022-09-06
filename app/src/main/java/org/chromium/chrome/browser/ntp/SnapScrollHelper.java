@@ -12,7 +12,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 
 /**
  * This class handles snap scroll for the search box on a {@link NewTabPage}.

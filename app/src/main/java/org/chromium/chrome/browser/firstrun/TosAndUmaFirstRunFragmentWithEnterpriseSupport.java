@@ -19,7 +19,7 @@ import org.chromium.base.Log;
 import org.chromium.base.ThreadUtils;
 import org.chromium.base.metrics.RecordHistogram;
 import org.chromium.base.supplier.OneshotSupplierImpl;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.policy.EnterpriseInfo;
 import org.chromium.chrome.browser.policy.PolicyServiceFactory;
 import org.chromium.components.browser_ui.widget.LoadingView;

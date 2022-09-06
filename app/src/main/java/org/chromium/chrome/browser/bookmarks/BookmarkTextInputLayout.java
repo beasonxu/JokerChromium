@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 
 import com.google.android.material.textfield.TextInputLayout;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 
 /**
  * Wraps around {@link TextInputLayout} to implement a basic empty field error behavior

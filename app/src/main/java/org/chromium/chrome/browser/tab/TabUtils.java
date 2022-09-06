@@ -14,7 +14,7 @@ import android.view.Display;
 import androidx.annotation.Nullable;
 
 import org.chromium.base.ApplicationStatus;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.flags.ChromeFeatureList;
 import org.chromium.content_public.browser.WebContents;
 import org.chromium.ui.base.WindowAndroid;

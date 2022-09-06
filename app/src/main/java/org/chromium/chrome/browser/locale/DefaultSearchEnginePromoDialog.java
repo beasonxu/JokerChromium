@@ -15,7 +15,7 @@ import androidx.annotation.VisibleForTesting;
 
 import org.chromium.base.Callback;
 import org.chromium.base.metrics.RecordUserAction;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.locale.LocaleManager.SearchEnginePromoType;
 import org.chromium.components.browser_ui.widget.PromoDialog;
 import org.chromium.components.browser_ui.widget.RadioButtonLayout;

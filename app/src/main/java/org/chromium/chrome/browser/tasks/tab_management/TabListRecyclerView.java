@@ -223,7 +223,7 @@ class TabListRecyclerView
             Context context = getContext();
             mShadowImageView = new ImageView(context);
             mShadowImageView.setImageDrawable(AppCompatResources.getDrawable(
-                    context, org.chromium.chrome.R.drawable.modern_toolbar_shadow));
+                    context, org.chromium.chrome.stable.R.drawable.modern_toolbar_shadow));
             mShadowImageView.setScaleType(ImageView.ScaleType.FIT_XY);
             mShadowImageView.setTag(SHADOW_VIEW_TAG);
             Resources res = context.getResources();
@@ -232,7 +232,7 @@ class TabListRecyclerView
                 FrameLayout.LayoutParams params =
                         new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT,
                                 res.getDimensionPixelSize(
-                                        org.chromium.chrome.R.dimen.toolbar_shadow_height),
+                                        org.chromium.chrome.stable.R.dimen.toolbar_shadow_height),
                                 Gravity.TOP);
                 mShadowImageView.setLayoutParams(params);
                 mShadowImageView.setTranslationY(mShadowTopOffset);
@@ -247,7 +247,7 @@ class TabListRecyclerView
                 RelativeLayout.LayoutParams params =
                         new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                                 res.getDimensionPixelSize(
-                                        org.chromium.chrome.R.dimen.toolbar_shadow_height));
+                                        org.chromium.chrome.stable.R.dimen.toolbar_shadow_height));
                 params.addRule(RelativeLayout.BELOW, toolbar.getId());
                 parent.addView(mShadowImageView, params);
             }

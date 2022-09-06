@@ -9,7 +9,7 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.download.DownloadInfoBarController;
 import org.chromium.chrome.browser.download.DownloadManagerService;
 import org.chromium.chrome.browser.feature_engagement.TrackerFactory;

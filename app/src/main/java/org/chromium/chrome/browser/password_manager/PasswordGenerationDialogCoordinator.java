@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import androidx.annotation.NonNull;
 
 import org.chromium.base.Callback;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.app.ChromeActivity;
 import org.chromium.ui.modaldialog.DialogDismissalCause;
 import org.chromium.ui.modaldialog.ModalDialogManager;

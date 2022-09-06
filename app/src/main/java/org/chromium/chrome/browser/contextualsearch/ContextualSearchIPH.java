@@ -10,7 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.PopupWindow.OnDismissListener;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.compositor.bottombar.contextualsearch.ContextualSearchPanel;
 import org.chromium.chrome.browser.compositor.bottombar.contextualsearch.ContextualSearchPanelInterface;
 import org.chromium.chrome.browser.feature_engagement.TrackerFactory;

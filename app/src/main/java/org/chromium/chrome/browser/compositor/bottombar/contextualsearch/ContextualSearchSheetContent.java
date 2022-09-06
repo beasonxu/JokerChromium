@@ -6,7 +6,7 @@ package org.chromium.chrome.browser.compositor.bottombar.contextualsearch;
 
 import android.view.View;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.components.browser_ui.bottomsheet.BottomSheetContent;
 
 class ContextualSearchSheetContent implements BottomSheetContent {

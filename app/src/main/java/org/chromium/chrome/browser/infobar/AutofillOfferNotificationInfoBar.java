@@ -13,7 +13,7 @@ import android.text.style.StyleSpan;
 
 import org.chromium.base.annotations.CalledByNative;
 import org.chromium.base.annotations.NativeMethods;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.components.infobars.ConfirmInfoBar;
 import org.chromium.components.infobars.InfoBarControlLayout;
 import org.chromium.components.infobars.InfoBarLayout;

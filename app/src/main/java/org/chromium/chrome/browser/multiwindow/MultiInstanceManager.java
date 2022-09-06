@@ -312,7 +312,7 @@ public class MultiInstanceManager
 
     @Override
     public boolean handleMenuOrKeyboardAction(int id, boolean fromMenu) {
-        if (id == org.chromium.chrome.R.id.move_to_other_window_menu_id) {
+        if (id == org.chromium.chrome.stable.R.id.move_to_other_window_menu_id) {
             TabModelOrchestrator tabModelOrchestrator = mTabModelOrchestratorSupplier.get();
             if (tabModelOrchestrator == null) return true;
             TabModelSelector tabModelSelector = tabModelOrchestrator.getTabModelSelector();

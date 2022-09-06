@@ -14,7 +14,7 @@ import androidx.annotation.IntDef;
 import androidx.annotation.StringRes;
 
 import org.chromium.base.metrics.RecordUserAction;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.offlinepages.OfflinePageBridge;
 import org.chromium.chrome.browser.tasks.tab_management.TabUiFeatureUtilities;
 import org.chromium.ui.base.WindowAndroid.OnCloseContextMenuListener;

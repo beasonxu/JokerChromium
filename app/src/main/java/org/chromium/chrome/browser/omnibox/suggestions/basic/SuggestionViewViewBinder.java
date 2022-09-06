@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.ColorRes;
 
 import org.chromium.base.ApiCompatibilityUtils;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.omnibox.styles.OmniboxResourceProvider;
 import org.chromium.chrome.browser.omnibox.suggestions.SuggestionCommonProperties;
 import org.chromium.chrome.browser.omnibox.suggestions.base.SuggestionSpannable;

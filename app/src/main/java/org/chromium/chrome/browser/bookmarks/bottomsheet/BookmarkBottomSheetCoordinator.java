@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.chromium.base.ApiCompatibilityUtils;
 import org.chromium.base.Callback;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.bookmarks.BookmarkBridge.BookmarkItem;
 import org.chromium.chrome.browser.bookmarks.BookmarkModel;
 import org.chromium.chrome.browser.bookmarks.BookmarkUtils;
@@ -81,9 +81,9 @@ public class BookmarkBottomSheetCoordinator {
 
         // Load bookmark model data into recycler view.
         View contentView = LayoutInflater.from(mContext).inflate(
-                org.chromium.chrome.R.layout.bookmark_bottom_sheet, /*root=*/null);
+                org.chromium.chrome.stable.R.layout.bookmark_bottom_sheet, /*root=*/null);
         RecyclerView sheetItemListView =
-                contentView.findViewById(org.chromium.chrome.R.id.sheet_item_list);
+                contentView.findViewById(org.chromium.chrome.stable.R.id.sheet_item_list);
         SimpleRecyclerViewAdapter adapter = new SimpleRecyclerViewAdapter(loadTopLevelFolders());
         adapter.registerType(ItemType.FOLDER_ROW,
                 new LayoutViewBuilder(R.layout.bookmark_bottom_sheet_folder_row),

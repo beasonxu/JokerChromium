@@ -11,7 +11,7 @@ import android.widget.ListView;
 import androidx.annotation.VisibleForTesting;
 import androidx.fragment.app.ListFragment;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 
 /**
  * A preference fragment for selecting a default search engine.

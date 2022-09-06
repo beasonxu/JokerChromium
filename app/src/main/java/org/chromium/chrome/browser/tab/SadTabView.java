@@ -10,7 +10,7 @@ import android.view.Gravity;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.ui.widget.ButtonCompat;
 
 /**

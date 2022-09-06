@@ -19,7 +19,7 @@ import android.widget.TextView.BufferType;
 import androidx.core.text.TextUtilsCompat;
 import androidx.core.view.ViewCompat;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.app.ChromeActivity;
 import org.chromium.ui.modaldialog.DialogDismissalCause;
 import org.chromium.ui.modaldialog.ModalDialogManager;

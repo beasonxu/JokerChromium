@@ -11,7 +11,7 @@ import android.provider.Settings;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.accessibility.FontSizePrefs;
 import org.chromium.chrome.browser.accessibility.FontSizePrefs.FontSizePrefsObserver;
 import org.chromium.chrome.browser.image_descriptions.ImageDescriptionsController;

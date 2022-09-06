@@ -8,7 +8,7 @@ import android.text.TextUtils;
 
 import androidx.annotation.Nullable;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.components.autofill.EditableOption;
 
 import java.util.ArrayList;

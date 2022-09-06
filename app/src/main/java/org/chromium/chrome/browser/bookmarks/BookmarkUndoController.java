@@ -6,7 +6,7 @@ package org.chromium.chrome.browser.bookmarks;
 
 import android.content.Context;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.bookmarks.BookmarkBridge.BookmarkItem;
 import org.chromium.chrome.browser.bookmarks.BookmarkBridge.BookmarkModelObserver;
 import org.chromium.chrome.browser.bookmarks.BookmarkModel.BookmarkDeleteObserver;

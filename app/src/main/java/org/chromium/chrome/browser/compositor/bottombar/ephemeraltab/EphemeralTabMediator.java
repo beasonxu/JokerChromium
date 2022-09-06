@@ -10,7 +10,7 @@ import android.os.Handler;
 import androidx.annotation.DrawableRes;
 
 import org.chromium.base.ContextUtils;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.profiles.Profile;
 import org.chromium.components.browser_ui.bottomsheet.BottomSheetController;
 import org.chromium.components.embedder_support.delegate.WebContentsDelegateAndroid;

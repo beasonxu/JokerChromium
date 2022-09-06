@@ -73,9 +73,9 @@ public class ContextualSearchPanelCoordinator implements ContextualSearchPanelIn
 
         final Resources resources = mContext.getResources();
         mToolbarHeightPx = resources.getDimensionPixelSize(
-                org.chromium.chrome.R.dimen.sheet_tab_toolbar_height);
+                org.chromium.chrome.stable.R.dimen.sheet_tab_toolbar_height);
         mFullHeightFraction = ResourcesCompat.getFloat(resources,
-                org.chromium.chrome.R.dimen.contextual_search_sheet_full_height_fraction);
+                org.chromium.chrome.stable.R.dimen.contextual_search_sheet_full_height_fraction);
     }
 
     private void createWebContents() {

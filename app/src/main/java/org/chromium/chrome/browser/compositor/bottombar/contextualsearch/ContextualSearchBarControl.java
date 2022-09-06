@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.VisibleForTesting;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.compositor.bottombar.OverlayPanelAnimation;
 import org.chromium.chrome.browser.contextualsearch.QuickActionCategory;
 import org.chromium.chrome.browser.contextualsearch.ResolvedSearchTerm.CardTag;

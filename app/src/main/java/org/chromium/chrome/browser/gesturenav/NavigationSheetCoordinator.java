@@ -16,7 +16,7 @@ import androidx.annotation.DimenRes;
 
 import org.chromium.base.metrics.RecordHistogram;
 import org.chromium.base.supplier.Supplier;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.gesturenav.NavigationSheetMediator.ItemProperties;
 import org.chromium.chrome.browser.profiles.Profile;
 import org.chromium.components.browser_ui.bottomsheet.BottomSheetContent;

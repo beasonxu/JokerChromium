@@ -18,7 +18,7 @@ import com.google.android.apps.chrome.appwidget.bookmarks.BookmarkThumbnailWidge
 
 import org.chromium.base.ContextUtils;
 import org.chromium.base.IntentUtils;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 
 /**
  * Widget that shows a preview of the user's bookmarks.

@@ -16,7 +16,7 @@ import androidx.annotation.Nullable;
 import org.chromium.base.Log;
 import org.chromium.base.ThreadUtils;
 import org.chromium.base.metrics.RecordUserAction;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.AppHooks;
 import org.chromium.chrome.browser.profiles.Profile;
 import org.chromium.components.embedder_support.util.UrlConstants;

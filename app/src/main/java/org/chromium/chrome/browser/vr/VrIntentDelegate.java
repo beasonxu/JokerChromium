@@ -12,7 +12,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.Display;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 
 /** Intent-specific delegate to call into VR. */
 public abstract class VrIntentDelegate {

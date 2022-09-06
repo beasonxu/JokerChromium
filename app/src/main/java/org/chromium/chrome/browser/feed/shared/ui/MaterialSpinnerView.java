@@ -16,7 +16,7 @@ import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 
 import org.chromium.base.FeatureList;
 import org.chromium.base.TraceEvent;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.flags.ChromeFeatureList;
 
 /** View that shows a Material themed spinner. */

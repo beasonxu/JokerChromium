@@ -16,7 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.chromium.base.IntentUtils;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.settings.SettingsLauncherImpl;
 import org.chromium.chrome.browser.signin.ui.SigninActivityLauncher.AccessPoint;
 import org.chromium.chrome.browser.sync.ProfileSyncService;

@@ -19,7 +19,7 @@ import androidx.core.view.ViewCompat;
 import org.chromium.base.Callback;
 import org.chromium.base.StrictModeContext;
 import org.chromium.base.supplier.Supplier;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.lifecycle.ActivityLifecycleDispatcher;
 import org.chromium.chrome.browser.omnibox.LocationBarDataProvider;
 import org.chromium.chrome.browser.omnibox.UrlBar.UrlTextChangeListener;

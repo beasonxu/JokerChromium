@@ -16,7 +16,7 @@ import android.provider.Settings;
 
 import androidx.appcompat.app.AlertDialog;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.download.DownloadController;
 import org.chromium.chrome.browser.share.BitmapDownloadRequest;
 import org.chromium.ui.base.AndroidPermissionDelegate;

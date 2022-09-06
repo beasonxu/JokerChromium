@@ -29,7 +29,7 @@ import androidx.core.view.ViewCompat;
 
 import com.google.android.material.textfield.TextInputLayout;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.components.browser_ui.widget.TintedDrawable;
 
 /** Handles validation and display of one field from the {@link EditorFieldModel}. */

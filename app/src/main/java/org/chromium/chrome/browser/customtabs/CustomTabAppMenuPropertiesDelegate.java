@@ -19,7 +19,7 @@ import androidx.core.graphics.drawable.DrawableCompat;
 
 import org.chromium.base.ContextUtils;
 import org.chromium.base.supplier.ObservableSupplier;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.ActivityTabProvider;
 import org.chromium.chrome.browser.DefaultBrowserInfo;
 import org.chromium.chrome.browser.app.appmenu.AppMenuPropertiesDelegateImpl;

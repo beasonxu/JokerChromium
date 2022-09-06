@@ -8,7 +8,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.ntp.TitleUtil;
 import org.chromium.chrome.browser.suggestions.SiteSuggestion;
 import org.chromium.components.browser_ui.widget.tile.TileView;

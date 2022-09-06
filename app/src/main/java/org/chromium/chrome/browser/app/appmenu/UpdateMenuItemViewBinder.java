@@ -20,7 +20,7 @@ import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.graphics.drawable.DrawableCompat;
 
 import org.chromium.base.ApiCompatibilityUtils;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.omaha.UpdateMenuItemHelper;
 import org.chromium.chrome.browser.ui.appmenu.AppMenuClickHandler;
 import org.chromium.chrome.browser.ui.appmenu.CustomViewBinder;

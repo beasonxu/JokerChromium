@@ -22,7 +22,7 @@ import android.content.res.Resources;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.browserservices.ui.TrustedWebActivityModel;
 import org.chromium.chrome.browser.browserservices.ui.trustedwebactivity.DisclosureAcceptanceBroadcastReceiver;
 import org.chromium.chrome.browser.lifecycle.ActivityLifecycleDispatcher;

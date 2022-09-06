@@ -12,7 +12,7 @@ import android.view.View;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.components.browser_ui.widget.MaterialProgressBar;
 
 /**

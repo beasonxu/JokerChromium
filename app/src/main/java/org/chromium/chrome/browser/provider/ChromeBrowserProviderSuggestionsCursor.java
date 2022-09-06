@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.database.AbstractCursor;
 import android.database.Cursor;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 
 /**
  * For bookmarks/history suggestions, wrap the cursor returned in one that can feed

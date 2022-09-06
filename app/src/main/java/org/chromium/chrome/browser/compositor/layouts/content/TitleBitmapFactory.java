@@ -17,7 +17,7 @@ import android.util.Log;
 import android.view.InflateException;
 
 import org.chromium.base.ApiCompatibilityUtils;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 
 /**
  * A factory that creates text and favicon bitmaps.

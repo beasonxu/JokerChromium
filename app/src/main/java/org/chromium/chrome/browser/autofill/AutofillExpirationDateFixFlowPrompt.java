@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.app.ChromeActivity;
 import org.chromium.chrome.browser.autofill.AutofillUiUtils.ErrorType;
 import org.chromium.ui.modaldialog.DialogDismissalCause;

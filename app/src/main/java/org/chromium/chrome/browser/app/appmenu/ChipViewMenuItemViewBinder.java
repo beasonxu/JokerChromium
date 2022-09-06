@@ -15,7 +15,7 @@ import androidx.annotation.ColorRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.content.res.AppCompatResources;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.app.appmenu.AppMenuPropertiesDelegateImpl.ThreeButtonActionBarType;
 import org.chromium.chrome.browser.ui.appmenu.AppMenuClickHandler;
 import org.chromium.chrome.browser.ui.appmenu.CustomViewBinder;

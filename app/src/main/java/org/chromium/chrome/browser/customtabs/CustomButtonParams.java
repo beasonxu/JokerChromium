@@ -27,7 +27,7 @@ import androidx.browser.customtabs.CustomTabsIntent;
 
 import org.chromium.base.IntentUtils;
 import org.chromium.base.Log;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.theme.ThemeUtils;
 import org.chromium.components.browser_ui.widget.TintedDrawable;
 import org.chromium.ui.util.ColorUtils;

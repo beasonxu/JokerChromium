@@ -21,7 +21,7 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 import androidx.core.util.ObjectsCompat;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 
 import java.util.HashMap;
 import java.util.Map;

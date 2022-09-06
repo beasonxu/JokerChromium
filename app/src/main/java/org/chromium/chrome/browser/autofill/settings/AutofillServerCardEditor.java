@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import org.chromium.base.annotations.UsedByReflection;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.ChromeStringConstants;
 import org.chromium.chrome.browser.autofill.PersonalDataManager;
 import org.chromium.chrome.browser.autofill.PersonalDataManager.AutofillProfile;

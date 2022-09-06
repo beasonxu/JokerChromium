@@ -17,7 +17,7 @@ import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 import org.chromium.base.annotations.CalledByNative;
 import org.chromium.base.annotations.NativeMethods;
 import org.chromium.base.task.PostTask;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.download.DownloadInfoBarController;
 import org.chromium.chrome.browser.tab.Tab;
 import org.chromium.components.infobars.InfoBar;

@@ -17,7 +17,7 @@ import androidx.annotation.VisibleForTesting;
 
 import org.chromium.base.MemoryPressureListener;
 import org.chromium.base.memory.MemoryPressureCallback;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.feed.shared.FeedFeatures;
 import org.chromium.chrome.browser.feed.shared.stream.Stream;
 import org.chromium.chrome.browser.feed.shared.stream.Stream.ContentChangedListener;

@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 
 import androidx.core.view.ViewCompat;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 
 /**
  * A page shown during the First Run Experience. It modifies the layout for a better appearance

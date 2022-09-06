@@ -6,7 +6,7 @@ package org.chromium.chrome.browser.safe_browsing;
 import org.chromium.base.annotations.CalledByNative;
 import org.chromium.base.annotations.JNINamespace;
 import org.chromium.base.annotations.NativeMethods;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.app.ChromeActivity;
 import org.chromium.chrome.browser.password_manager.PasswordManagerDialogContents;
 import org.chromium.chrome.browser.password_manager.PasswordManagerDialogCoordinator;

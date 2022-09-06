@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 
 import org.chromium.base.Callback;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.AppHooks;
 import org.chromium.chrome.browser.contextmenu.ChipRenderParams;
 import org.chromium.ui.base.WindowAndroid;

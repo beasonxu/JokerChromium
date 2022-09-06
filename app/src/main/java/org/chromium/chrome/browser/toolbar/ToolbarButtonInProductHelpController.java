@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import org.chromium.base.supplier.ObservableSupplier;
 import org.chromium.base.supplier.Supplier;
 import org.chromium.base.task.PostTask;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.app.appmenu.AppMenuPropertiesDelegateImpl;
 import org.chromium.chrome.browser.datareduction.DataReductionSavingsMilestonePromo;
 import org.chromium.chrome.browser.download.DownloadUtils;

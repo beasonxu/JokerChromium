@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.FrameLayout;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.components.browser_ui.modaldialog.ModalDialogView;
 import org.chromium.components.browser_ui.modaldialog.ModalDialogViewBinder;
 import org.chromium.ui.modaldialog.DialogDismissalCause;

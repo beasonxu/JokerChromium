@@ -23,7 +23,7 @@ import androidx.fragment.app.FragmentManager;
 import org.chromium.base.Callback;
 import org.chromium.base.Consumer;
 import org.chromium.base.supplier.Supplier;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.feature_engagement.TrackerFactory;
 import org.chromium.chrome.browser.flags.ChromeFeatureList;
 import org.chromium.chrome.browser.instantapps.InstantAppsHandler;

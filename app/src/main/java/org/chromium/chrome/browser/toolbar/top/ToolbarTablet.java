@@ -27,7 +27,7 @@ import androidx.core.view.ViewCompat;
 import org.chromium.base.ApiCompatibilityUtils;
 import org.chromium.base.metrics.RecordUserAction;
 import org.chromium.base.supplier.BooleanSupplier;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.NavigationPopup;
 import org.chromium.chrome.browser.download.DownloadUtils;
 import org.chromium.chrome.browser.omnibox.LocationBar;

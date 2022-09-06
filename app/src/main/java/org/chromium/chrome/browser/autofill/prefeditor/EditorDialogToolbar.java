@@ -11,7 +11,7 @@ import android.view.MenuItem;
 
 import androidx.appcompat.widget.Toolbar;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 
 /** Simple class for displaying a toolbar in the editor dialog. */
 public class EditorDialogToolbar extends Toolbar {

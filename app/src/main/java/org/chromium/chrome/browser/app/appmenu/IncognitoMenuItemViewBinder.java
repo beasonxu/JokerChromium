@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.incognito.IncognitoUtils;
 import org.chromium.chrome.browser.ui.appmenu.AppMenuClickHandler;
 import org.chromium.chrome.browser.ui.appmenu.CustomViewBinder;

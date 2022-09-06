@@ -34,7 +34,7 @@ import androidx.core.text.TextUtilsCompat;
 import androidx.core.view.ViewCompat;
 
 import org.chromium.base.task.AsyncTask;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.app.ChromeActivity;
 import org.chromium.chrome.browser.autofill.AutofillUiUtils.ErrorType;
 import org.chromium.chrome.browser.flags.ChromeFeatureList;

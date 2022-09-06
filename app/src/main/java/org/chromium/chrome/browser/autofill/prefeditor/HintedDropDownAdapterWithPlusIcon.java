@@ -13,7 +13,7 @@ import android.widget.TextView;
 import androidx.core.view.ViewCompat;
 
 import org.chromium.base.ApiCompatibilityUtils;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.components.browser_ui.widget.TintedDrawable;
 import org.chromium.ui.UiUtils;
 

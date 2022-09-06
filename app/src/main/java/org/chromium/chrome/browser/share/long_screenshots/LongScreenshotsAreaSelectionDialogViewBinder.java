@@ -7,7 +7,7 @@ package org.chromium.chrome.browser.share.long_screenshots;
 import android.view.View;
 import android.widget.ImageButton;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.ui.modelutil.PropertyKey;
 import org.chromium.ui.modelutil.PropertyModel;
 

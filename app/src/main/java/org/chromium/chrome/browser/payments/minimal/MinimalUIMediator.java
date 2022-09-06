@@ -18,7 +18,7 @@ import android.view.View.OnClickListener;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.payments.minimal.MinimalUICoordinator.CompleteAndCloseObserver;
 import org.chromium.chrome.browser.payments.minimal.MinimalUICoordinator.ConfirmObserver;
 import org.chromium.chrome.browser.payments.minimal.MinimalUICoordinator.DismissObserver;

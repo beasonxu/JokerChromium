@@ -19,7 +19,7 @@ import androidx.appcompat.app.AlertDialog;
 
 import org.chromium.base.annotations.CalledByNative;
 import org.chromium.base.annotations.NativeMethods;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.ui.base.WindowAndroid;
 
 /**

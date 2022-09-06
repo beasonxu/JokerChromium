@@ -35,7 +35,7 @@ import androidx.fragment.app.Fragment;
 
 import org.chromium.base.ApiCompatibilityUtils;
 import org.chromium.base.metrics.RecordHistogram;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.sync.ProfileSyncService;
 import org.chromium.components.browser_ui.settings.SettingsUtils;
 import org.chromium.ui.text.SpanApplier;

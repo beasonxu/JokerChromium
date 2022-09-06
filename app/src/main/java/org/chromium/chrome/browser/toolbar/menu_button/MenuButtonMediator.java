@@ -20,7 +20,7 @@ import org.chromium.base.supplier.ObservableSupplier;
 import org.chromium.base.supplier.ObservableSupplierImpl;
 import org.chromium.base.supplier.OneshotSupplier;
 import org.chromium.base.supplier.Supplier;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.browser_controls.BrowserStateBrowserControlsVisibilityDelegate;
 import org.chromium.chrome.browser.omaha.UpdateMenuItemHelper;
 import org.chromium.chrome.browser.omaha.UpdateMenuItemHelper.MenuButtonState;
@@ -193,7 +193,7 @@ class MenuButtonMediator implements AppMenuObserver {
             return;
         }
         mAppMenuPropertiesDelegate.loadingStateChanged(isLoading);
-        mAppMenuHandler.menuItemContentChanged(org.chromium.chrome.R.id.icon_row_menu_id);
+        mAppMenuHandler.menuItemContentChanged(org.chromium.chrome.stable.R.id.icon_row_menu_id);
     }
 
     ObservableSupplier<AppMenuButtonHelper> getMenuButtonHelperSupplier() {
@@ -261,7 +261,7 @@ class MenuButtonMediator implements AppMenuObserver {
         } else {
             mPropertyModel.set(MenuButtonProperties.CONTENT_DESCRIPTION,
                     mResources.getString(
-                            org.chromium.chrome.R.string.accessibility_toolbar_btn_menu));
+                            org.chromium.chrome.stable.R.string.accessibility_toolbar_btn_menu));
         }
     }
 

@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.ui.modelutil.RecyclerViewAdapter;
 
 /** Factory to create CategoryCardViewHolder objects. */

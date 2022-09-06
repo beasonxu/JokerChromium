@@ -8,7 +8,7 @@ import android.content.res.Resources;
 import android.view.View;
 
 import org.chromium.base.Callback;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.ui.modaldialog.ModalDialogProperties;
 import org.chromium.ui.modelutil.PropertyModel;
 

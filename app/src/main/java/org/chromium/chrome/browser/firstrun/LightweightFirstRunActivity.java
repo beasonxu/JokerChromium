@@ -22,7 +22,7 @@ import androidx.annotation.VisibleForTesting;
 import org.chromium.base.IntentUtils;
 import org.chromium.base.ThreadUtils;
 import org.chromium.base.metrics.RecordHistogram;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.customtabs.CustomTabActivity;
 import org.chromium.chrome.browser.policy.EnterpriseInfo;
 import org.chromium.components.browser_ui.widget.LoadingView;

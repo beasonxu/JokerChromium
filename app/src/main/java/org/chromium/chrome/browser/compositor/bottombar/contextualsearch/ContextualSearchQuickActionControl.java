@@ -20,7 +20,7 @@ import androidx.core.graphics.drawable.DrawableCompat;
 import org.chromium.base.ApiCompatibilityUtils;
 import org.chromium.base.IntentUtils;
 import org.chromium.base.PackageManagerUtils;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.ChromeTabbedActivity;
 import org.chromium.chrome.browser.ChromeTabbedActivity2;
 import org.chromium.chrome.browser.IntentHandler;

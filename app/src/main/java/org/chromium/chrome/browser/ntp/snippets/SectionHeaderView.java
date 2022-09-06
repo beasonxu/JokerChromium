@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.feed.FeedUma;
 import org.chromium.chrome.browser.suggestions.SuggestionsMetrics;
 import org.chromium.chrome.browser.user_education.IPHCommandBuilder;

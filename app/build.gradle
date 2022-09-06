@@ -6,7 +6,7 @@ android {
     buildToolsVersion BUILD_TOOLS_VERSION
 
     defaultConfig {
-        applicationId "org.chromium.chrome"
+        applicationId "org.chromium.chrome.stable"
         minSdkVersion MIN_SDK_VERSION
         targetSdkVersion TARGET_SDK_VERSION
         versionCode VERSION_CODE
@@ -19,7 +19,7 @@ android {
         }
         multiDexEnabled true
         ndk {
-            abiFilters "armeabi-v7a"
+            abiFilters "arm64-v8a"
         }
     }
     compileOptions {

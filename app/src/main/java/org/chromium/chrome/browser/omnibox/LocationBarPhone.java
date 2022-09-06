@@ -12,7 +12,7 @@ import android.view.TouchDelegate;
 import android.view.View;
 import android.widget.FrameLayout;
 import org.chromium.base.TraceEvent;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 
 /**
  * A location bar implementation specific for smaller/phone screens.

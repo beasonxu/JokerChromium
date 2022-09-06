@@ -8,7 +8,7 @@ import android.content.Context;
 
 import androidx.annotation.VisibleForTesting;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.payments.ui.LineItem;
 import org.chromium.components.browser_ui.bottomsheet.BottomSheetController;
 import org.chromium.components.payments.CurrencyFormatter;

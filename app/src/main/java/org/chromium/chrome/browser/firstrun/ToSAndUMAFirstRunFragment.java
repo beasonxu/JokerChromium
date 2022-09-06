@@ -22,7 +22,7 @@ import androidx.annotation.VisibleForTesting;
 import androidx.fragment.app.Fragment;
 
 import org.chromium.base.metrics.RecordHistogram;
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.version.ChromeVersionInfo;
 import org.chromium.components.signin.ChildAccountStatus;
 import org.chromium.ui.text.NoUnderlineClickableSpan;

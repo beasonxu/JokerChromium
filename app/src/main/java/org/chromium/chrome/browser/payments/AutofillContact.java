@@ -9,7 +9,7 @@ import android.text.TextUtils;
 
 import androidx.annotation.Nullable;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.stable.R;
 import org.chromium.chrome.browser.autofill.PersonalDataManager.AutofillProfile;
 import org.chromium.components.autofill.EditableOption;
 import org.chromium.payments.mojom.PayerDetail;
